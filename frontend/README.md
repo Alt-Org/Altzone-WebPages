@@ -1,0 +1,1 @@
+https://feature-sliced.design/
