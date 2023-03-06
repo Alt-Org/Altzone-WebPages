@@ -1,0 +1,70 @@
+.Button {
+  cursor: pointer;
+  color: var(--primary-color);
+  padding: 6px 15px;
+}
+
+.clear,
+.clearInverted {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.clearInverted {
+  color: var(--inverted-primary-color);
+}
+
+.outline {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: none;
+}
+
+.background {
+  background: var(--bg-color);
+  color: var(--primary-color);
+  border: none;
+}
+
+.backgroundInverted {
+  background: var(--inverted-bg-color);
+  color: var(--inverted-primary-color);
+  border: none;
+}
+
+.square {
+  padding: 0;
+}
+
+.square.sizeM {
+  width: var(--font-line-m);
+  height: var(--font-line-m);
+}
+
+.square.sizeL {
+  width: var(--font-line-l);
+  height: var(--font-line-l);
+}
+
+.square.sizeXL {
+  width: var(--font-line-xl);
+  height: var(--font-line-xl);
+}
+
+.sizeM {
+  font: var(--font-m);
+}
+
+.sizeL {
+  font: var(--font-l);
+}
+
+.sizeXL {
+  font: var(--font-xl);
+}
+
+.disabled {
+  opacity: 0.5;
+}

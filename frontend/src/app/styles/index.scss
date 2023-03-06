@@ -1,0 +1,23 @@
+@import "reset";
+@import "variables/global.scss";
+@import "themes/light";
+@import "themes/dark";
+
+body {
+  font: var(--font-m);
+  color: var(--primary-color);
+}
+
+.app {
+  min-height: 100vh;
+  background: var(--bg-color);
+}
+
+.content-page {
+  display: flex;
+}
+
+.page-wrapper {
+  flex-grow: 1;
+  padding: 20px;
+}
