@@ -1,7 +1,7 @@
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo, ReactNode} from "react";
 import cls from "./HeroSection.module.scss";
-import backgroundImage from '@/shared/assets/images/introBackground.png';
+import backgroundImage from '@/shared/assets/images/introBackground.avif';
 
 interface HeroSectionProps {
     className?: string;
