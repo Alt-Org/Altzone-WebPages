@@ -1,8 +1,7 @@
 import {CSSProperties, memo, useState} from "react";
 import cls from "./NavbarTouch.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
-// import navLogo from "@/shared/assets/images/navLogo.png";
-import navLogo from "@/shared/assets/images/navLogoReal.png";
+import navLogo from "@/shared/assets/images/altLogo.png";
 import {Sidebar} from "@/widgets/Sidebar";
 
 interface NavbarTouchProps {
@@ -42,7 +41,9 @@ export default memo(( props : NavbarTouchProps) => {
             <nav className={classNames(cls.Navbar, mods)} style={style}>
                 <div className={cls.NavbarTouch}>
                     <div className={cls.NavbarTouch__left} onClick={handleBurgerButtonClick}>{currentButton}</div>
-                    <img src={navLogo} alt="nav logo" className={cls.navLogo + ' ' + cls.NavbarTouch__center} loading='lazy'/>
+                    <img src={navLogo} alt="nav logo" className={cls.navLogo + ' ' + cls.NavbarTouch__center}
+                         loading='lazy'
+                    />
                 </div>
                 <Sidebar isCollapsed={!isMenuOpen}/>
             </nav>

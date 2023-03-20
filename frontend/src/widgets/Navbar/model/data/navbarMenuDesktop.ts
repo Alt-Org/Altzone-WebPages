@@ -1,5 +1,4 @@
-// import navLogo from "@/shared/assets/images/navLogo.png";
-import navLogo from "@/shared/assets/images/navLogoReal.png";
+import navLogo from "@/shared/assets/images/altLogo.png";
 import {NavbarMenu} from "../types/types";
 
 export const navbarMenuDesktop:  NavbarMenu = [
