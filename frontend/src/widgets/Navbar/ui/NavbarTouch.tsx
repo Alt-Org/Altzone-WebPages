@@ -42,7 +42,7 @@ export default memo(( props : NavbarTouchProps) => {
                 <div className={cls.NavbarTouch}>
                     <div className={cls.NavbarTouch__left} onClick={handleBurgerButtonClick}>{currentButton}</div>
                     <img src={navLogo} alt="nav logo" className={cls.navLogo + ' ' + cls.NavbarTouch__center}
-                         loading='lazy'
+                         // loading='lazy'
                     />
                 </div>
                 <Sidebar isCollapsed={!isMenuOpen}/>
