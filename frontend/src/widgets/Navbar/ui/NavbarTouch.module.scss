@@ -6,7 +6,7 @@
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
-  max-width: 1200px;
+  max-width: 1000px;
 }
 
 .NavbarTouch{
@@ -29,6 +29,7 @@
 
 .navLogo {
   height: var(--navbar-logo-height);
+  width: var(--navbar-logo-width);
 }
 
 .overlayed {

@@ -1,7 +1,8 @@
 import {CSSProperties, memo, useState} from "react";
 import cls from "./NavbarTouch.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
-import navLogo from "@/shared/assets/images/navLogo.png";
+// import navLogo from "@/shared/assets/images/navLogo.png";
+import navLogo from "@/shared/assets/images/navLogoReal.png";
 import {Sidebar} from "@/widgets/Sidebar";
 
 interface NavbarTouchProps {

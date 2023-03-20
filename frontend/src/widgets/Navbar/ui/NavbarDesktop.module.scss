@@ -20,6 +20,9 @@
 .leftSide{
   display: flex;
   justify-content: space-around;
+  //justify-content: end;
+  //gap: 80px;
+  //justify-content: space-around;
 }
 
 .center{
@@ -30,6 +33,8 @@
 .rightSide{
   display: flex;
   justify-content: space-around;
+  //gap: 80px;
+  //justify-content: space-around;
 }
 
 .item{
@@ -56,6 +61,7 @@
 
 .navLogo {
   height: var(--navbar-logo-height);
+  width: var(--navbar-logo-width);
 }
 
 .overlayed {

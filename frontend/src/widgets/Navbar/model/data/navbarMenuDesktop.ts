@@ -1,5 +1,5 @@
-import {RoutePath} from "@/app/providers/router/config/routeConfig";
-import navLogo from "@/shared/assets/images/navLogo.png";
+// import navLogo from "@/shared/assets/images/navLogo.png";
+import navLogo from "@/shared/assets/images/navLogoReal.png";
 import {NavbarMenu} from "../types/types";
 
 export const navbarMenuDesktop:  NavbarMenu = [
@@ -42,6 +42,14 @@ export const navbarMenuDesktop:  NavbarMenu = [
         type: "navLink",
         position : "right"
     },
+
+    // {
+    //     name : 'Tekijat',
+    //     path: '/#workers',
+    //     isActive: false,
+    //     type: "navLink",
+    //     position : "right"
+    // },
 
     // {
     //     name : '⠀⠀⠀⠀',
