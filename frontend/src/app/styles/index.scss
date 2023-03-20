@@ -1,10 +1,12 @@
+@import "fonts.scss";
 @import "reset";
 @import "variables/global.scss";
 @import "themes/light";
 @import "themes/dark";
 
 body {
-  font: var(--font-m);
+  //font: var(--font-m);
+  font: 16px/24px 'Bombing';
   color: var(--primary-color);
 }
 
@@ -13,11 +15,11 @@ body {
   background: var(--bg-color);
 }
 
-.content-page {
-  display: flex;
-}
-
-.page-wrapper {
-  flex-grow: 1;
-  padding: 20px;
-}
+//.content-page {
+//  display: flex;
+//}
+//
+//.page-wrapper {
+//  flex-grow: 1;
+//  //padding: 20px;
+//}
