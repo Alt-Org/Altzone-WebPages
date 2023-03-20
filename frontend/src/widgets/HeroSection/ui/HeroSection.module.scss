@@ -1,0 +1,30 @@
+.HeroSection {
+  height: 100%;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: flex-end;
+  //justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  //grid-template-columns: 20% 20% 20% 20% 20%;
+  //grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-template-rows: repeat(5, auto);
+
+  //grid-template-columns: auto auto auto auto auto;
+  //grid-template-rows: auto auto auto auto auto;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.childrenWrapper{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  //justify-content: center;
+  grid-column-start: 3;
+  grid-row-start: 4;
+
+}

@@ -1,0 +1,42 @@
+.Navbar {
+  font: var(--font-xxl);
+  height: var(--navbar-height);
+  background: var(--inverted-bg-color);
+  //margin: 25px auto 0;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1200px;
+}
+
+.NavbarTouch{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.NavbarTouch__left {
+  align-self: start;
+  grid-column: 1;
+  cursor: pointer;
+  user-select: none;
+  z-index: var(--navbar-z-index);
+}
+.NavbarTouch__center{
+  justify-self: center;
+  grid-column: 2;
+}
+
+.navLogo {
+  height: var(--navbar-logo-height);
+}
+
+.overlayed {
+  background-color: rgba(4, 255, 4, 0);
+  z-index: var(--navbar-z-index);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+

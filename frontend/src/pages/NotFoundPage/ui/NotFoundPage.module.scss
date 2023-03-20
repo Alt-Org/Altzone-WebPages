@@ -1,7 +1,8 @@
 .NotFoundPage {
+  color: var(--secondary-color);
+  font: var(--font-xxxl);
   display: flex;
   justify-content: center;
   align-items: center;
-  font: var(--font-l);
-  height: 100%;
+  min-height: 100vh;
 }
