@@ -83,7 +83,7 @@ const renderNavbarItems = ( items: NavbarMenu , positionChecker: PositionChecker
                         src={item.src}
                         alt={item.name}
                         className={itemLogoClassname}
-                        loading="lazy"
+                        // loading="lazy"
                     />
                 );
             }
