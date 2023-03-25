@@ -4,8 +4,21 @@
   background: rgba(0, 0, 0, 0.65);
   position: fixed;
   top: 0;
-  left: 0;
   transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.SidebarLeft{
+  left: 0;
+  right: unset;
+}
+
+.SidebarRight{
+  right: 0;
+  left: unset;
+}
+
+.button{
+  width: 33px;
 }
 
 .items {
@@ -25,6 +38,8 @@
   opacity: 1;
   transition: width 0.4s ease-in, opacity 0.4s ease-in;
 }
+
+
 
 
 // todo animation for button when collapsing

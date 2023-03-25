@@ -10,6 +10,7 @@ interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navBarItemsList?: NavbarMenuTouch;
+    side? : 'left'| 'right'
 }
 
 export default memo(( props : NavbarTouchProps) => {
@@ -17,7 +18,8 @@ export default memo(( props : NavbarTouchProps) => {
     const {
         overlayed,
         marginTop,
-        navBarItemsList
+        navBarItemsList,
+        side = 'left'
     } = props;
 
     const style = marginTop
@@ -28,6 +30,11 @@ export default memo(( props : NavbarTouchProps) => {
         [cls.overlayed]: overlayed,
     } as Record<string, boolean>;
 
+    const sidebarMods: Record<string, boolean> = {
+        [cls.left] : side === 'left',
+        [cls.right] : side === 'right',
+    } as Record<string, boolean>;
+
     const sidebarItemsList: SidebarItemType[] = useMemo(
         () =>
             navBarItemsList
@@ -36,11 +43,10 @@ export default memo(( props : NavbarTouchProps) => {
         [navBarItemsList]
     );
 
-
         return (
             <nav className={classNames(cls.Navbar, mods)} style={style}>
                 <div className={cls.NavbarTouch}>
-                    <Sidebar className={cls.NavbarTouch__left} sidebarItemsList={sidebarItemsList}/>
+                    <Sidebar className={classNames(cls.NavbarTouch__burger, sidebarMods)} sidebarItemsList={sidebarItemsList} side={side} />
                     <img src={navLogo} alt="nav logo" className={cls.navLogo + ' ' + cls.NavbarTouch__center}
                     />
                 </div>
