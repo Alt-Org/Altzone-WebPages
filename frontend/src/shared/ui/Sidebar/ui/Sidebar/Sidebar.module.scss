@@ -5,17 +5,17 @@
   position: fixed;
   top: 0;
   transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
+
+  &.left{
+    left: 0;
+  }
+
+  &.right{
+    right: 0;
+  }
 }
 
-.SidebarLeft{
-  left: 0;
-  right: unset;
-}
-
-.SidebarRight{
-  right: 0;
-  left: unset;
-}
+.side
 
 .button{
   width: 33px;

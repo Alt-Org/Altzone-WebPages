@@ -21,11 +21,11 @@
   user-select: none;
   z-index: var(--navbar-z-index);
 
-  &.left{
+  & .left{
     grid-column: 1;
   }
 
-  &.right{
+  & .right{
     grid-column: 3;
     justify-self: end;
   }
