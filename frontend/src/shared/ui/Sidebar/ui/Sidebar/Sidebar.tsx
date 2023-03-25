@@ -1,16 +1,17 @@
 import {classNames} from "@/shared/lib/classNames/classNames";
 import cls from "./Sidebar.module.scss";
 import {SidebarItemType} from "@/shared/ui/Sidebar/model/items";
-import {ReactNode, useEffect, useMemo, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import {SidebarItem} from "@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem";
 
 
 interface SidebarProps {
     className?: string;
     sidebarItemsList: SidebarItemType[];
+    side? : 'left'| 'right'
 }
 
-export const Sidebar = ({ className = '',  sidebarItemsList}: SidebarProps) => {
+export const Sidebar = ({ className = '',  sidebarItemsList , side = 'left'}: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -22,7 +23,9 @@ export const Sidebar = ({ className = '',  sidebarItemsList}: SidebarProps) => {
 
     const mods = {
         [cls.collapsed]: isCollapsed,
-        [cls.expanded]: !isCollapsed
+        [cls.expanded]: !isCollapsed,
+        [cls.SidebarLeft] : side === 'left',
+        [cls.SidebarRight] : side === 'right',
     }
 
     const buttonMods = {
@@ -59,12 +62,11 @@ export const Sidebar = ({ className = '',  sidebarItemsList}: SidebarProps) => {
 
     return (
         <>
-            <div className={classNames(cls.button,buttonMods, [className])} onClick={handleBurgerButtonClick}>{currentButton}</div>
+            <div className={classNames(cls.button, buttonMods, [className])} onClick={handleBurgerButtonClick}>{currentButton}</div>
         <div
             data-testid='sidebar'
             ref={sidebarRef}
-            className={classNames(cls.Sidebar, mods, [
-            ])}
+            className={classNames(cls.Sidebar, mods, [side])}
         >
             <div className={cls.items}>
             {itemsList}

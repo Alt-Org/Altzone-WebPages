@@ -14,13 +14,24 @@
   grid-template-columns: 1fr 2fr 1fr;
 }
 
-.NavbarTouch__left {
+
+.NavbarTouch__burger {
   align-self: start;
-  grid-column: 1;
   cursor: pointer;
   user-select: none;
   z-index: var(--navbar-z-index);
+
+  &.left{
+    grid-column: 1;
+  }
+
+  &.right{
+    grid-column: 3;
+    justify-self: end;
+  }
+
 }
+
 .NavbarTouch__center{
   justify-self: center;
   grid-column: 2;
@@ -28,7 +39,6 @@
 
 .navLogo {
   height: var(--navbar-logo-height);
-  //width: var(--navbar-logo-width);
 }
 
 .overlayed {
