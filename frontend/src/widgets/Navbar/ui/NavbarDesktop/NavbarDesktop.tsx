@@ -39,60 +39,107 @@ export default memo(( props : NavbarProps) => {
     const itemLogoClassname = cls.item + ' ' + cls.navLogo;
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
 
+
     return (
         <nav className={classNames(cls.Navbar, mods)} style={style}>
             <div className={cls.navMenu}>
-
                 <div className={cls.leftSide}>
-                    {renderNavbarItems(navbarMenu, isLeftSide, itemLinkClassname ,itemLogoClassname ,itemFakeLinkClassname)}
+                    <NavbarItems
+                        items={navbarMenu}
+                        positionChecker={isLeftSide}
+                        itemLinkClassname={itemLinkClassname}
+                        itemLogoClassname={itemLogoClassname}
+                        itemFakeLinkClassname={itemFakeLinkClassname}
+                    />
                 </div>
-
-
                 <div className={cls.center}>
-                    {renderNavbarItems(navbarMenu, isCenter, itemLinkClassname ,itemLogoClassname,itemFakeLinkClassname)}
+                    <NavbarItems
+                        items={navbarMenu}
+                        positionChecker={isCenter}
+                        itemLinkClassname={itemLinkClassname}
+                        itemLogoClassname={itemLogoClassname}
+                        itemFakeLinkClassname={itemFakeLinkClassname}
+                    />
                 </div>
-
-
                 <div className={cls.rightSide}>
-                    {renderNavbarItems(navbarMenu, isRightSide, itemLinkClassname ,itemLogoClassname,itemFakeLinkClassname)}
+                    <NavbarItems
+                        items={navbarMenu}
+                        positionChecker={isRightSide}
+                        itemLinkClassname={itemLinkClassname}
+                        itemLogoClassname={itemLogoClassname}
+                        itemFakeLinkClassname={itemFakeLinkClassname}
+                    />
                 </div>
             </div>
         </nav>
     );
 
+
 });
 
 
 
-const renderNavbarItems = ( items: NavbarMenu , positionChecker: PositionChecker, itemLinkClassname: string, itemLogoClassname: string , itemFakeLinkClassname: string) => {
-    return items
-        .filter((item) => positionChecker(item.position))
-        .map((item) => {
-            if (isNavbarLinkObject(item)) {
-                return (
-                    <AppLink theme={AppLinkTheme.PRIMARY} to={item.path} className={itemLinkClassname} key={item.path}>
-                        <span>{item.name}</span>
-                    </AppLink>
-                );
-            }
+interface NavbarItemsProps {
+    items: NavbarMenu;
+    positionChecker: PositionChecker;
+    itemLinkClassname: string;
+    itemLogoClassname: string;
+    itemFakeLinkClassname: string;
+}
 
-            if (isNavLogoObject(item)) {
-                return (
-                    <img
-                        key={item.src}
-                        src={item.src}
-                        alt={item.name}
-                        className={itemLogoClassname}
-                        // loading="lazy"
-                    />
-                );
-            }
+const NavbarItems = memo(
+    ({
+         items,
+         positionChecker,
+         itemLinkClassname,
+         itemLogoClassname,
+         itemFakeLinkClassname,
+     }: NavbarItemsProps) => {
+        return (
+            <>
+                {items
+                    .filter((item) => positionChecker(item.position))
+                    .map((item) => {
+                        if (isNavbarLinkObject(item)) {
+                            return (
+                                <AppLink
+                                    theme={AppLinkTheme.PRIMARY}
+                                    to={item.path}
+                                    className={itemLinkClassname}
+                                    key={item.path}
+                                >
+                                    <span>{item.name}</span>
+                                </AppLink>
+                            );
+                        }
 
-            if(isNavbarLinkFakeObject(item)){
-                return (
-                   <div className={itemFakeLinkClassname} key={item.reactKey}>{item.name}</div>
-                )
-            }
+                        if (isNavLogoObject(item)) {
+                            return (
+                                <img
+                                    key={item.src}
+                                    src={item.src}
+                                    alt={item.name}
+                                    className={itemLogoClassname}
+                                    // loading="lazy"
+                                />
+                            );
+                        }
 
-        });
-};
+                        if (isNavbarLinkFakeObject(item)) {
+                            return (
+                                <div
+                                    className={itemFakeLinkClassname}
+                                    key={item.reactKey}
+                                >
+                                    {item.name}
+                                </div>
+                            );
+                        }
+
+                        return null;
+                    })}
+            </>
+        );
+    }
+);
+
