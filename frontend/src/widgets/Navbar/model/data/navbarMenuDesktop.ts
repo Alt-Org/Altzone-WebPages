@@ -1,45 +1,40 @@
 import navLogo from "@/shared/assets/images/altLogo.png";
 import {NavbarMenu} from "../types/types";
 
-export const navbarMenuDesktop:  NavbarMenu = [
+export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     {
-        name : 'Foruumi',
-        // path: RoutePath.forum,
+        name: 'Foruumi',
         path: '/#forum',
-        isActive : false,
-        type : 'navLink',
+        isActive: false,
+        type: 'navLink',
         position: "left"
     },
     {
-        name : 'About',
-        // path: RoutePath.about,
+        name: 'About',
         path: '/#about',
-        isActive : false,
-        type : 'navLink',
+        isActive: false,
+        type: 'navLink',
         position: "left"
     },
-
-
     {
         name: 'Nav logo',
-        src : navLogo,
-        type : 'navLogo',
+        src: navLogo,
+        type: 'navLogo',
         position: "center"
     },
-
     {
-        name : 'Uutiset',
+        name: 'Uutiset',
         path: '/#news',
-        isActive : false,
-        type : 'navLink',
+        isActive: false,
+        type: 'navLink',
         position: "right"
     },
     {
-        name : 'Tekijat',
+        name: 'Tekijat',
         path: '/#workers',
         isActive: false,
         type: "navLink",
-        position : "right"
+        position: "right"
     },
 
     // {
@@ -56,5 +51,4 @@ export const navbarMenuDesktop:  NavbarMenu = [
     //     position : "right",
     //     reactKey: 'somekeyhere'
     // },
-
-]
+]);

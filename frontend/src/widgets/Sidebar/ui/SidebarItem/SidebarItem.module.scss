@@ -1,25 +1,28 @@
 .item {
+  font: var(--font-xxl);
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin-top: 10px;
   display: flex;
   align-items: center;
-  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 
-  &:hover{
+  &:hover {
     background: rgba(0, 0, 0, 0.60);
     color: var(--secondary-color);
   }
-
 }
 
 .link {
   opacity: 1;
   margin-left: 20px;
+  transition: opacity 0.4s ease-in-out, width 0.4s ease-in-out;
 }
 
 .collapsed {
   .link {
     opacity: 0;
-    transition: 0.2s opacity;
     width: 0;
+    transition: opacity 0.4s ease-out, width 0.4s ease-out;
   }
 }

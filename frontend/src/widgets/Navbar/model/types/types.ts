@@ -25,5 +25,14 @@ export interface NavLogoObject{
 
 export type PositionChecker = (position: Position) => boolean;
 
-export type NavbarMenu = (NavbarLinkObject | NavLogoObject | NavbarLinkFakeObject)[];
+export type NavbarMenu = ReadonlyArray<(NavbarLinkObject | NavLogoObject | NavbarLinkFakeObject)>;
 
+
+// touch
+
+export interface NavbarMenuTouchItem {
+    name: string;
+    path: string;
+}
+
+export interface NavbarMenuTouch extends ReadonlyArray<NavbarMenuTouchItem> {}
