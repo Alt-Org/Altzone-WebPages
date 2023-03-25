@@ -3,6 +3,7 @@ import cls from "./NavbarTouch.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import navLogo from "@/shared/assets/images/altLogo.png";
 import {Sidebar} from "@/widgets/Sidebar";
+import {RoutePath} from "@/app/providers/router/config/routeConfig";
 
 interface NavbarTouchProps {
     overlayed ?: boolean;
@@ -25,27 +26,13 @@ export default memo(( props : NavbarTouchProps) => {
         [cls.overlayed]: overlayed,
     } as Record<string, boolean>;
 
-
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const handleBurgerButtonClick = () => {
-        // if (onBurgerButtonClick) {
-        //     onBurgerButtonClick(isMenuOpen);
-        // }
-        setIsMenuOpen((prevState) => !prevState);
-    };
-
-    const currentButton = isMenuOpen ? 'Х' : '☰'
-
         return (
             <nav className={classNames(cls.Navbar, mods)} style={style}>
                 <div className={cls.NavbarTouch}>
-                    <div className={cls.NavbarTouch__left} onClick={handleBurgerButtonClick}>{currentButton}</div>
+                    <Sidebar className={cls.NavbarTouch__left} SidebarItemsList={[{path : RoutePath.main , text : 'Main'},{path : RoutePath.main , text : 'Main'}]}/>
                     <img src={navLogo} alt="nav logo" className={cls.navLogo + ' ' + cls.NavbarTouch__center}
-                         // loading='lazy'
                     />
                 </div>
-                <Sidebar isCollapsed={!isMenuOpen}/>
             </nav>
         )
 
