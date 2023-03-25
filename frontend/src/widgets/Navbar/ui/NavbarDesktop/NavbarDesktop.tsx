@@ -2,7 +2,7 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 import {CSSProperties, memo} from "react";
 import cls from "./NavbarDesktop.module.scss";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
-import {NavbarMenu, PositionChecker} from "../model/types/types";
+import {NavbarMenu, PositionChecker} from "../../model/types/types";
 import {
     isCenter,
     isLeftSide,
@@ -10,7 +10,7 @@ import {
     isNavbarLinkObject,
     isNavLogoObject,
     isRightSide
-} from "../model/types/type.guards";
+} from "../../model/types/type.guards";
 
 
 interface NavbarProps {

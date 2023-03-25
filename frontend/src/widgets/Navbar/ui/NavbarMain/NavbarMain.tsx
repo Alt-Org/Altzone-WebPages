@@ -1,10 +1,10 @@
 import {lazy, memo} from "react";
 import useIsMobile from "@/shared/lib/hooks/useIsMobile";
-import {navbarMenuDesktop} from "../model/data/navbarMenuDesktop";
+import {navbarMenuDesktop} from "../../model/data/navbarMenuDesktop";
 
-const NavbarDesktop = lazy(() => import('./NavbarDesktop'));
+const NavbarDesktop = lazy(() => import('../NavbarDesktop/NavbarDesktop'));
 
-const NavbarTouch = lazy(() => import('./NavbarTouch'));
+const NavbarTouch = lazy(() => import('../NavBarTouch/NavbarTouch'));
 
 
 interface NavbarMainProps {
