@@ -7,10 +7,10 @@ import {SidebarItem} from "@/widgets/Sidebar/ui/SidebarItem/SidebarItem";
 
 interface SidebarProps {
     className?: string;
-    SidebarItemsList: SidebarItemType[];
+    sidebarItemsList: SidebarItemType[];
 }
 
-export const Sidebar = ({ className = '',  SidebarItemsList}: SidebarProps) => {
+export const Sidebar = ({ className = '',  sidebarItemsList}: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -20,8 +20,18 @@ export const Sidebar = ({ className = '',  SidebarItemsList}: SidebarProps) => {
 
     const currentButton = isCollapsed ? '☰' : 'Х'
 
+    const mods = {
+        [cls.collapsed]: isCollapsed,
+        [cls.expanded]: !isCollapsed
+    }
 
-    const itemsList = useMemo(() => SidebarItemsList.map((item) => (
+    const buttonMods = {
+        [cls.collapsedButton]: isCollapsed,
+        [cls.expandedButton]: !isCollapsed
+    }
+
+
+    const itemsList = useMemo(() => sidebarItemsList.map((item) => (
         <SidebarItem
             item={item}
             collapsed={isCollapsed}
@@ -32,10 +42,10 @@ export const Sidebar = ({ className = '',  SidebarItemsList}: SidebarProps) => {
 
     return (
         <>
-            <div className={className} onClick={handleBurgerButtonClick}>{currentButton}</div>
+            <div className={classNames(cls.button,buttonMods, [className])} onClick={handleBurgerButtonClick}>{currentButton}</div>
         <div
             data-testid='sidebar'
-            className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed }, [
+            className={classNames(cls.Sidebar, mods, [
             ])}
         >
             <div className={cls.items}>
