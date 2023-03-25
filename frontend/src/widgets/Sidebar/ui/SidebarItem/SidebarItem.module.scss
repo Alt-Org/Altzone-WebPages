@@ -2,11 +2,18 @@
   margin-top: 10px;
   display: flex;
   align-items: center;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+
+  &:hover{
+    background: rgba(0, 0, 0, 0.60);
+    color: var(--secondary-color);
+  }
+
 }
 
 .link {
-  margin-left: 10px;
   opacity: 1;
+  margin-left: 20px;
 }
 
 .collapsed {
