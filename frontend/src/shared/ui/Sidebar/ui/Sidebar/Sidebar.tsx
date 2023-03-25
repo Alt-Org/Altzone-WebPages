@@ -6,12 +6,12 @@ import {SidebarItem} from "@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem";
 
 
 interface SidebarProps {
-    className?: string;
+    buttonClassName?: string;
     sidebarItemsList: SidebarItemType[];
     side? : 'left'| 'right'
 }
 
-export const Sidebar = ({ className = '',  sidebarItemsList , side = 'left'}: SidebarProps) => {
+export const Sidebar = ({ buttonClassName = '',  sidebarItemsList , side = 'left'}: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -24,8 +24,8 @@ export const Sidebar = ({ className = '',  sidebarItemsList , side = 'left'}: Si
     const mods = {
         [cls.collapsed]: isCollapsed,
         [cls.expanded]: !isCollapsed,
-        [cls.SidebarLeft] : side === 'left',
-        [cls.SidebarRight] : side === 'right',
+        [cls.left] : side === 'left',
+        [cls.right] : side === 'right',
     }
 
     const buttonMods = {
@@ -62,11 +62,11 @@ export const Sidebar = ({ className = '',  sidebarItemsList , side = 'left'}: Si
 
     return (
         <>
-            <div className={classNames(cls.button, buttonMods, [className])} onClick={handleBurgerButtonClick}>{currentButton}</div>
+            <div className={classNames(cls.button, buttonMods, [buttonClassName])} onClick={handleBurgerButtonClick}>{currentButton}</div>
         <div
             data-testid='sidebar'
             ref={sidebarRef}
-            className={classNames(cls.Sidebar, mods, [side])}
+            className={classNames(cls.Sidebar, mods, [])}
         >
             <div className={cls.items}>
             {itemsList}
