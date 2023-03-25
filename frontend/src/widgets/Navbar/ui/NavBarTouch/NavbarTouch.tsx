@@ -2,7 +2,7 @@ import {CSSProperties, memo, useMemo} from "react";
 import cls from "./NavbarTouch.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import navLogo from "@/shared/assets/images/altLogo.png";
-import {Sidebar, SidebarItemType} from "@/widgets/Sidebar";
+import {Sidebar, SidebarItemType} from "@/shared/ui/Sidebar";
 import {NavbarMenuTouch} from "../../model/types/types";
 
 interface NavbarTouchProps {
