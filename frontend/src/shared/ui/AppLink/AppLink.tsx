@@ -10,8 +10,10 @@ export enum AppLinkTheme {
 }
 
 interface AppLinkProps extends LinkProps {
+    to: LinkProps["to"] | string ;
     className?: string;
     theme?: AppLinkTheme;
+    external?: boolean;
 }
 
 export const AppLink: FC<AppLinkProps> = (props) => {
@@ -20,10 +22,24 @@ export const AppLink: FC<AppLinkProps> = (props) => {
         className = '',
         children,
         theme = AppLinkTheme.PRIMARY,
+        external,
         ...otherProps
     } = props;
+
+    if(external && typeof to === 'string'){
+        return (
+            <a
+                key={to}
+                className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+                href={to} target='_blank'>
+                {children}
+            </a>
+        )
+    }
+
     return (
         <Link
+            key={to as string}
             to={to}
             className={classNames(cls.AppLink, {}, [className, cls[theme]])}
             {...otherProps}
