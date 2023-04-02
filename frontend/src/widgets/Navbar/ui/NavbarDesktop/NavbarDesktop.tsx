@@ -13,7 +13,8 @@ import {
 } from "../../model/types/type.guards";
 
 
-interface NavbarProps {
+
+export interface NavbarProps {
     overlayed ?: boolean;
     marginTop?: number;
     navbarMenu:  NavbarMenu
@@ -42,6 +43,7 @@ export default memo(( props : NavbarProps) => {
 
     return (
         <nav className={classNames(cls.Navbar, mods)} style={style}>
+            {/*<Container>*/}
             <div className={cls.navMenu}>
                 <div className={cls.leftSide}>
                     <NavbarItems
@@ -71,6 +73,7 @@ export default memo(( props : NavbarProps) => {
                     />
                 </div>
             </div>
+            {/*</Container>*/}
         </nav>
     );
 
