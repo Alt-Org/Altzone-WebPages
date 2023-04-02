@@ -1,16 +1,19 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppRouter } from "./providers/router";
-import {Suspense, useEffect} from "react";
-import {Navbar} from "@/widgets/Navbar";
+import {Suspense} from "react";
+// import {Navbar} from "@/widgets/Navbar";
+import {ScrollTop} from "@/features/ScrollTop";
+import {Footer} from "@/widgets/Footer";
+
 
 const App = () => {
 
     return(
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                {/*<div className="content-page">*/}
                     <AppRouter />
-                {/*</div>*/}
+                    <ScrollTop/>
+                    <Footer/>
             </Suspense>
         </div>
     )};
