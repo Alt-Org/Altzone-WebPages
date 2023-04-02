@@ -46,7 +46,7 @@ export default memo(( props : NavbarTouchProps) => {
         return (
             <nav className={classNames(cls.Navbar, mods)} style={style}>
                 <div className={cls.NavbarTouch}>
-                    <Sidebar buttonClassName={classNames(cls.NavbarTouch__burger, sidebarMods)} sidebarItemsList={sidebarItemsList} side={side} />
+                    <Sidebar buttonClassName={classNames(cls.NavbarTouch__burger, sidebarMods)} sidebarItemsList={sidebarItemsList} side={side} closeOnClickOutside />
                     <img src={navLogo} alt="nav logo" className={cls.navLogo + ' ' + cls.NavbarTouch__center}
                     />
                 </div>
