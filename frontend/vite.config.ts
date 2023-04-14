@@ -4,6 +4,9 @@ import * as path from "path";
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
+
+
+
   plugins: [
       react(),
       svgr({
@@ -20,7 +23,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
-
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@import "@/app/styles/variables/global.scss";`
+            }
+        }
+    },
 
 
 
