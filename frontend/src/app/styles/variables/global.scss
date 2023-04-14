@@ -1,4 +1,6 @@
+@import "mixins";
 @import "../fonts.scss";
+
 :root {
   //--font-family-main: consolas, "Times New Roman", serif;
   --font-family-main: 'Bombing';
@@ -42,4 +44,15 @@
   //animations
   --animation-link-hover-scale: 1.1;
   --animation-link-active-scale: 0.95;
+
 }
+
+//@mixin link-animation($hover-scale: var(--animation-link-hover-scale), $active-scale: var(--animation-link-active-scale)) {
+//  &:hover {
+//    transform: scale($hover-scale);
+//  }
+//
+//  &:active {
+//    transform: scale($active-scale);
+//  }
+//}
