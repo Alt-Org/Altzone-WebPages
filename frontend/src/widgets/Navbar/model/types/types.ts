@@ -19,6 +19,7 @@ export interface NavbarLinkObject {
 export interface NavLogoObject{
     name: string;
     src: string;
+    path: string;
     type : 'navLogo'
     position: Position
 }
@@ -30,9 +31,15 @@ export type NavbarMenu = ReadonlyArray<(NavbarLinkObject | NavLogoObject | Navba
 
 // touch
 
-export interface NavbarMenuTouchItem {
+export interface NavLogoMobileObject {
+    name: string;
+    path: string;
+    src: string;
+}
+
+export interface NavbarMenuMobileItem {
     name: string;
     path: string;
 }
 
-export interface NavbarMenuTouch extends ReadonlyArray<NavbarMenuTouchItem> {}
+export interface NavbarMenuMobile extends ReadonlyArray<NavbarMenuMobileItem> {}
