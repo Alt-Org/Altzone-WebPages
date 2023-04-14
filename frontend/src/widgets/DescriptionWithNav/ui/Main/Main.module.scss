@@ -1,0 +1,22 @@
+.Main{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-family: Tahoma, serif;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+
+  h2{
+    margin-top: 2rem;
+  }
+
+  p{
+    margin-top: 2rem;
+    hyphens: auto;
+  }
+
+  .navElements{
+    margin-top: 2rem;
+  }
+
+}
