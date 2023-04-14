@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 
-const useIsMobile = (breakpoint = 992) => {
-  const checkForDevice = () => window.innerWidth < breakpoint;
+const useIsMobileSize = () => {
+  const checkForDevice = () => window.innerWidth < 768;
 
-  const [isMobile, setIsMobile] = useState(checkForDevice());
+  const [isMobileSize, setIsMobileSize] = useState(checkForDevice());
 
   useEffect(() => {
     const handlePageResized = () => {
-      setIsMobile(checkForDevice());
+      setIsMobileSize(checkForDevice());
     };
 
     if (typeof window !== 'undefined') {
@@ -28,8 +28,8 @@ const useIsMobile = (breakpoint = 992) => {
   }, []);
 
   return {
-    isMobile,
+    isMobileSize,
   };
 };
 
-export default useIsMobile;
+export default useIsMobileSize;
