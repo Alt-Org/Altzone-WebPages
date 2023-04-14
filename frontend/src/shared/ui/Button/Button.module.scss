@@ -87,27 +87,22 @@
   opacity: 0.5;
 }
 
+.withScalableLink{
+  @include link-scale-effect;
+}
+
 .graffiti{
-  //width: 100%;
-  //height: 100%;
   font-family: "Bombing", sans-serif;
   background-color: rgba(197, 4, 4, 0);
   background-color: #333;
-  //color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   outline: none;
-  text-shadow: 2px 2px 0px #000;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
-  transition: transform 0.1s ease;
-
-  &:hover {
-    transform: scale(1.1);
-  }
+  text-shadow: 2px 2px 0 #000;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
 
   &:active {
-    transform: scale(0.95);
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
   }
 
