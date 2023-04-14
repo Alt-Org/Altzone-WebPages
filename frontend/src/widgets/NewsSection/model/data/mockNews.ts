@@ -1,6 +1,6 @@
-import {INewsShortVersion} from "../types/types";
+import {INewsElement} from "../types/types";
 
-export const mockNews: INewsShortVersion[] = [
+export const mockNews: INewsElement[] = [
     {
         title: 'Update1',
         body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque blanditiis illo nam natus possimus quaerat repellendus, sapiente sit soluta tempora. Consequuntur dicta dolore ea exercitationem iusto necessitatibus, qui! Est, maxime.",
