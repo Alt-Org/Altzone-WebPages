@@ -8,14 +8,14 @@
   max-width: 1000px;
 }
 
-.NavbarTouch{
+.NavbarMobile{
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 2fr 1fr;
 }
 
 
-.NavbarTouch__burger {
+.NavbarMobile__burger {
   align-self: start;
   cursor: pointer;
   user-select: none;
@@ -32,13 +32,15 @@
 
 }
 
-.NavbarTouch__center{
+.NavbarMobile__center{
   justify-self: center;
   grid-column: 2;
 }
 
 .navLogo {
-  height: var(--navbar-logo-height);
+  img{
+    height: var(--navbar-logo-height);
+  }
 }
 
 .overlayed {

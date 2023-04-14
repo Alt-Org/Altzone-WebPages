@@ -118,13 +118,20 @@ const NavbarItems = memo(
 
                         if (isNavLogoObject(item)) {
                             return (
-                                <img
+                                <AppLink
+                                    theme={AppLinkTheme.PRIMARY}
+                                    to={item.path}
                                     key={item.src}
-                                    src={item.src}
-                                    alt={item.name}
-                                    className={itemLogoClassname}
-                                    // loading="lazy"
-                                />
+                                >
+                                    <img
+                                        src={item.src}
+                                        alt={item.name}
+                                        className={itemLogoClassname}
+                                        // loading="lazy"
+                                    />
+                                </AppLink>
+
+
                             );
                         }
 

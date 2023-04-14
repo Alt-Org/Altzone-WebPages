@@ -20,7 +20,8 @@ export const navbarMenuDesktopMock: NavbarMenu = Object.freeze([
         name: 'Nav logo',
         src: navLogo,
         type: 'navLogo',
-        position: "center"
+        position: "center",
+        path: '/#main'
     },
     {
         name: 'Uutiset',
