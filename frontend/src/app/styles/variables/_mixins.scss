@@ -1,0 +1,13 @@
+@mixin link-scale-effect() {
+
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(var(--animation-link-hover-scale));
+  }
+
+  &:active {
+    transform: scale(var(--animation-link-active-scale));
+  }
+
+}
