@@ -15,7 +15,7 @@ export const SocialSection = memo(({className='',socialLinks}: SocialSectionProp
             {socialLinks.map((socialLink) => (
                 <AppLink
                     key={socialLink.link}
-                    external
+                    isExternal
                     theme={AppLinkTheme.PRIMARY}
                     to={socialLink.link}
                     className={classNames(cls.item)}
