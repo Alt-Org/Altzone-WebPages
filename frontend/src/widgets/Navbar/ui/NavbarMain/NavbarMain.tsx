@@ -1,32 +1,44 @@
 import {lazy, memo, Suspense} from "react";
-import useIsMobile from "@/shared/lib/hooks/useIsMobile";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import {navbarMenuDesktop} from "../../model/data/navbarMenuDesktop";
-import {navbarMenuTouch} from "../../model/data/navbarMenuTouch";
-import {Loader} from "@/shared/ui/Loader";
-
-const NavbarDesktop = lazy(() => import('../NavbarDesktop/NavbarDesktop'));
-const NavbarTouch = lazy(() => import('../NavBarTouch/NavbarTouch'));
+import {navbarMenuMobile} from "../../model/data/navbarMenuMobile";
 
 interface NavbarMainProps {
     overlayed?: boolean;
     marginTop?: number;
 }
 
+/**
+ NavbarMain renders the appropriate navbar component based on the screen size.
+ For desktop, it loads NavbarDesktopMobile component that handles the logic
+ to avoid showing loaders when resizing the screen.
+ For touch devices, it loads NavbarMobile or NavbarDesktop based on the screen size.
+ @param {Object} props - The props object of the component.
+ @param {boolean} props.overlayed - Determines whether the navbar should have an overlay effect or not.
+ @param {number} props.marginTop - The margin top of the navbar.
+ @returns {JSX.Element} - The appropriate navbar component.
+ */
 export const NavbarMain = memo((props: NavbarMainProps) => {
+
     const {overlayed, marginTop} = props;
-    const {isMobile} = useIsMobile();
 
-    if (isMobile) {
-        return (
-            <Suspense fallback={<Loader/>}>
-                <NavbarTouch overlayed={overlayed} marginTop={marginTop} navBarItemsList={navbarMenuTouch}/>
+    const {isMobileSize} = useIsMobileSize();
+
+    const NavbarDesktop = lazy(() => import('../NavbarDesktop/NavbarDesktop'));
+    const NavbarMobile= lazy(() => import('../NavbarMobile/NavbarMobile'));
+
+        if(isMobileSize){
+            return (
+            <Suspense fallback=''>
+                <NavbarMobile overlayed={overlayed} marginTop={marginTop} navBarItemsList={navbarMenuMobile}/>
             </Suspense>
-        );
-    }
+        )
+        }
+        return (
+            <Suspense fallback=''>
+                <NavbarDesktop navbarMenu={navbarMenuDesktop} overlayed={overlayed} marginTop={marginTop}/>
+            </Suspense>
+        )
 
-    return (
-        <Suspense fallback={<Loader/>}>
-            <NavbarDesktop navbarMenu={navbarMenuDesktop} overlayed={overlayed} marginTop={marginTop}/>
-        </Suspense>
-    );
+
 });

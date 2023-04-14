@@ -37,15 +37,7 @@
 }
 
 .itemLink{
-
-  &:hover{
-    transform: scale(var(--animation-link-hover-scale));
-  }
-
-  &:active{
-    transform: scale(var(--animation-link-active-scale));
-  }
-
+  @include link-scale-effect;
 }
 
 .fakeItemLink{
@@ -54,6 +46,7 @@
 
 .navLogo {
   height: var(--navbar-logo-height);
+  @include link-scale-effect;
 }
 
 .overlayed {
