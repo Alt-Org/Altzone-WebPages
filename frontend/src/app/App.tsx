@@ -4,6 +4,7 @@ import {Suspense} from "react";
 // import {Navbar} from "@/widgets/Navbar";
 import {ScrollTop} from "@/features/ScrollTop";
 import {Footer} from "@/widgets/Footer";
+import {Navbar} from "@/widgets/Navbar";
 
 
 const App = () => {
@@ -11,9 +12,10 @@ const App = () => {
     return(
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
-                    <AppRouter />
-                    <ScrollTop/>
-                    <Footer/>
+                <AppRouter />
+                <Navbar overlayed marginTop={20} />
+                <ScrollTop/>
+                <Footer/>
             </Suspense>
         </div>
     )};
