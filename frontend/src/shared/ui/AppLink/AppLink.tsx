@@ -1,6 +1,6 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Link, LinkProps } from "react-router-dom";
-import { FC } from "react";
+import {FC, ReactNode} from "react";
 import cls from "./AppLink.module.scss";
 
 export enum AppLinkTheme {
@@ -9,11 +9,12 @@ export enum AppLinkTheme {
     RED = "red",
 }
 
-interface AppLinkProps extends LinkProps {
+interface AppLinkProps {
     to: LinkProps["to"] | string ;
     className?: string;
     theme?: AppLinkTheme;
-    external?: boolean;
+    isExternal?: boolean;
+    children: ReactNode;
 }
 
 export const AppLink: FC<AppLinkProps> = (props) => {
@@ -22,11 +23,10 @@ export const AppLink: FC<AppLinkProps> = (props) => {
         className = '',
         children,
         theme = AppLinkTheme.PRIMARY,
-        external,
-        ...otherProps
+        isExternal,
     } = props;
 
-    if(external && typeof to === 'string'){
+    if(isExternal && typeof to === 'string'){
         return (
             <a
                 key={to}
@@ -42,7 +42,6 @@ export const AppLink: FC<AppLinkProps> = (props) => {
             key={to as string}
             to={to}
             className={classNames(cls.AppLink, {}, [className, cls[theme]])}
-            {...otherProps}
         >
             {children}
         </Link>
