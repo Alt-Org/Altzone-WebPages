@@ -1,15 +1,16 @@
 import cls from './Title.module.scss'
 import {classNames} from "@/shared/lib/classNames/classNames";
+import {FooterTitle} from "../../model/data/text";
+import {memo} from "react";
 
 interface TitleProps{
     className?: string;
-    children: string;
 }
 
-export function Title ({className='',children}:TitleProps){
+export const Title = memo(({className=''}:TitleProps)=>{
     return (
         <p className={classNames(cls.Title,{},[className])}>
-            {children}
+            {FooterTitle}
         </p>
     )
-}
+})
