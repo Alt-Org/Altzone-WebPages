@@ -7,7 +7,6 @@ export default {
     component: Title,
     args: {
         className: '',
-        children: 'Be part of our Community',
     },
 } as ComponentMeta<typeof Title>;
 

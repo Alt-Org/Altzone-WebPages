@@ -8,13 +8,7 @@
 
   & > *{
     cursor: pointer;
-    &:hover{
-      transform: scale(var(--animation-link-hover-scale));
-    }
-
-    &:active{
-      transform: scale(var(--animation-link-active-scale));
-    }
+    @include link-scale-effect;
   }
   @media only screen and (min-width: 480px) and (max-width: 768px) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
