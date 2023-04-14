@@ -1,0 +1,11 @@
+.NavElement{
+  @include link-scale-effect;
+  hyphens: auto;
+
+  p, a{
+    padding: 0;
+    text-align: left;
+    margin: 0;
+  }
+
+}
