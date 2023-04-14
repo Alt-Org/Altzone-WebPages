@@ -1,6 +1,6 @@
 import {classNames} from "@/shared/lib/classNames/classNames";
 import cls from './Container.module.scss'
-import {memo, ReactNode} from "react";
+import {ReactNode} from "react";
 
 
 interface ContainerProps {
@@ -9,7 +9,7 @@ interface ContainerProps {
     children: ReactNode;
 }
 
-export const Container = memo(({className='', fluid = false ,children}: ContainerProps) => {
+export const Container = ({className='', fluid = false ,children}: ContainerProps) => {
 
     const mods: Record<string, boolean> = {
         [cls.fluid]: fluid,
@@ -20,4 +20,4 @@ export const Container = memo(({className='', fluid = false ,children}: Containe
             {children}
         </div>
     );
-});
+};
