@@ -10,7 +10,6 @@ export default {
     },
 } as ComponentMeta<typeof Button>;
 
-// eslint-disable-next-line react/jsx-props-no-spreading
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
@@ -90,4 +89,10 @@ Disabled.args = {
     children: "text",
     theme: ButtonTheme.OUTLINE,
     disabled: true,
+};
+
+export const WithScalableLink = Template.bind({});
+WithScalableLink.args = {
+    children: "text",
+    withScalableLink: true
 };

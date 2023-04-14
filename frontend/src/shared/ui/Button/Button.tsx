@@ -37,12 +37,14 @@ export enum ButtonSize {
  * @property {boolean} [square=false] - Whether or not the button should be styled with square corners.
  * @property {ButtonSize} [size=ButtonSize.M] - Size for the button.
  * @property {boolean} [disabled=false] - Whether or not the button should be disabled.
+ * @property {boolean} [withScalableLink=false] - Whether or not the button should be with link css.
  */
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     theme?: ButtonTheme;
-    square?: boolean;
     size?: ButtonSize;
+    square?: boolean;
+    withScalableLink? : boolean;
     disabled?: boolean;
 }
 
@@ -53,11 +55,13 @@ export const Button: FC<ButtonProps> = memo((props) => {
         theme = ButtonTheme.PRIMARY,
         square = false,
         disabled = false,
+        withScalableLink = false,
         size = ButtonSize.M,
         ...otherProps
     } = props;
 
     const mods: Record<string, boolean> = {
+        [cls.withScalableLink] : withScalableLink,
         [cls.square]: square,
         [cls.disabled]: disabled,
     } as Record<string, boolean>;
