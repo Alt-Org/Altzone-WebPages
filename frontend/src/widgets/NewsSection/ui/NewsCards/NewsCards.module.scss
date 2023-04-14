@@ -1,0 +1,47 @@
+.CardsWrapper{
+  padding: 0 10px;
+  display: flex;
+  gap: 5px;
+
+  .scrollLeft,.scrollRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #333333;
+    }
+
+
+    *{
+      align-self: center;
+    }
+
+  }
+
+}
+
+.Cards{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x:auto;
+  position: relative;
+}
+
+.Cards::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.Cards::-webkit-scrollbar-thumb {
+  background-color: #FFF;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+.Cards::-webkit-scrollbar-track {
+  background-color: #000;
+  border-radius: 10px;
+}
