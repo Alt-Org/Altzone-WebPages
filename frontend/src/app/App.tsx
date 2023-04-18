@@ -13,7 +13,6 @@ const App = () => {
         <div className={classNames("app", {}, [])}>
             <Suspense fallback="">
                 <AppRouter />
-                <Navbar overlayed marginTop={20} />
                 <ScrollTop/>
                 <Footer/>
             </Suspense>
