@@ -3,6 +3,7 @@ import { MainPage } from "@/pages/MainPage";
 import { AboutPage } from "@/pages/AboutPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import {RoutePaths,AppRoutesLinks} from "@/shared/appLinks/RoutePaths";
+import {WorkersPage} from "@/pages/WorkersPage";
 
 export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
     [AppRoutesLinks.MAIN]: {
@@ -12,6 +13,11 @@ export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
     [AppRoutesLinks.ABOUT]: {
         path: RoutePaths.ABOUT,
         element: <AboutPage />,
+    },
+
+    [AppRoutesLinks.WORKERS]: {
+        path: RoutePaths.WORKERS,
+        element: <WorkersPage />,
     },
 
     [AppRoutesLinks.FORUM]: {
