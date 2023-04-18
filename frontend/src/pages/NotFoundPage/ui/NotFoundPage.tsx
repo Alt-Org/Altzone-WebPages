@@ -1,5 +1,6 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./NotFoundPage.module.scss";
+import {Navbar} from "@/widgets/Navbar";
 
 interface NotFoundPageProps {
     className?: string;
@@ -8,6 +9,7 @@ interface NotFoundPageProps {
 export const NotFoundPage = ({ className= '' }: NotFoundPageProps) => {
     return (
         <div className={classNames(cls.NotFoundPage, {}, [className])}>
+            <Navbar className={cls.navbar}/>
             Page not found
         </div>
     );
