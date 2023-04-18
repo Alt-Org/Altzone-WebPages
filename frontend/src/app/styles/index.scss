@@ -8,6 +8,7 @@ body {
   //font: var(--font-m);
   font: 16px/24px 'Bombing';
   color: var(--primary-color);
+  @include custom-scrollbar;
 }
 
 .app {

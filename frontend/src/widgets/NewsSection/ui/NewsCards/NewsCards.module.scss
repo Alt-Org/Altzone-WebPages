@@ -28,20 +28,7 @@
   gap: 20px;
   overflow-x:auto;
   position: relative;
+  @include custom-scrollbar;
 }
 
-.Cards::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
 
-.Cards::-webkit-scrollbar-thumb {
-  background-color: #FFF;
-  border-radius: 10px;
-  border: 1px solid #000;
-}
-
-.Cards::-webkit-scrollbar-track {
-  background-color: #000;
-  border-radius: 10px;
-}
