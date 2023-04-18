@@ -14,17 +14,19 @@ interface NavbarTouchProps {
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navBarItemsList?: NavbarMenuMobile;
     // navLogo : NavLogoMobileObject;
-    side? : 'left'| 'right'
+    side? : 'left'| 'right';
+    className? : string;
 }
 
 export default memo(( props : NavbarTouchProps) => {
 
     const {
-        overlayed,
+        overlayed = false,
         marginTop,
         navBarItemsList,
         // navLogo,
-        side = 'left'
+        side = 'left',
+        className = ''
     } = props;
 
     const style = marginTop
@@ -49,7 +51,7 @@ export default memo(( props : NavbarTouchProps) => {
     );
 
         return (
-            <nav className={classNames(cls.Navbar, mods)} style={style}>
+            <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
                 <div className={cls.NavbarMobile}>
                     <Sidebar buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)} sidebarItemsList={sidebarItemsList} side={side} closeOnClickOutside />
                     <AppLink
