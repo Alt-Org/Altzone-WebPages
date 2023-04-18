@@ -22,7 +22,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     },
     {
         name : 'Tekijat',
-        path: '/#workers',
+        path:  RoutePaths.WORKERS,
     },
 ]);
 
