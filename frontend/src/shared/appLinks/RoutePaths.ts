@@ -2,6 +2,7 @@ export enum AppRoutesLinks {
     MAIN = "MAIN",
     ABOUT = "ABOUT",
     FORUM = "FORUM",
+    WORKERS = "WORKERS",
     NOT_FOUND = "NOT_FOUND",
     NOT_FOUND_CATCH = "NOT_FOUND_CATCH",
 }
@@ -14,6 +15,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.MAIN]: "/",
     [AppRoutesLinks.ABOUT]: "/about",
     [AppRoutesLinks.FORUM]: "/forum",
+    [AppRoutesLinks.WORKERS]: "/workers",
     [AppRoutesLinks.NOT_FOUND]: "/404",
     // last one
     [AppRoutesLinks.NOT_FOUND_CATCH]: "*",
