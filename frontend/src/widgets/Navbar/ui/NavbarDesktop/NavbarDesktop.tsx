@@ -17,15 +17,18 @@ import {
 export interface NavbarProps {
     overlayed ?: boolean;
     marginTop?: number;
+    className?: string;
     navbarMenu:  NavbarMenu
+
 }
 
 export default memo(( props : NavbarProps) => {
 
     const {
-        overlayed,
+        overlayed = false,
         marginTop,
-        navbarMenu
+        navbarMenu,
+        className=''
     } = props;
 
     const style = marginTop
@@ -42,7 +45,7 @@ export default memo(( props : NavbarProps) => {
 
 
     return (
-        <nav className={classNames(cls.Navbar, mods)} style={style}>
+        <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
             {/*<Container>*/}
             <div className={cls.navMenu}>
                 <div className={cls.leftSide}>
