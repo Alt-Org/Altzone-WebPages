@@ -10,9 +10,10 @@ import {
 import {scrollToBottom} from "../model/scrollToBottom";
 interface ScrollBottomButtonProps {
     speedInMs?: number;
+    className?: string;
 }
 
-export const ScrollBottomButton = memo(({ speedInMs = 50000 }: ScrollBottomButtonProps) => {
+export const ScrollBottomButton = memo(({ speedInMs = 50000 , className = ''}: ScrollBottomButtonProps) => {
 
     const ScrollButtonId = 'ScrollButton'
     const animationFrameIdRef = useRef<number>(0);
@@ -26,5 +27,5 @@ export const ScrollBottomButton = memo(({ speedInMs = 50000 }: ScrollBottomButto
 
     useBottomAnimationCancellation(animationFrameIdRef, ScrollButtonId);
 
-    return <Button id={ScrollButtonId} theme={ButtonTheme.Graffiti} size={ButtonSize.XL} onClick={handleWatchClick}>Watch</Button>;
+    return <Button className={className} id={ScrollButtonId} theme={ButtonTheme.Graffiti} size={ButtonSize.XL} onClick={handleWatchClick}>Watch</Button>;
 });

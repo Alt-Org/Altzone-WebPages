@@ -10,7 +10,7 @@ const WorkersPage = () => {
             {/*<div style={{marginTop: '200px'}}>*/}
 
             {/*</div>*/}
-           <WorkersSection/>
+           <WorkersSection  className={cls.workersSection}/>
         </div>
     );
 };
