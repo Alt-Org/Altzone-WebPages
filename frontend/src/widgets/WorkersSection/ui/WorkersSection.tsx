@@ -11,7 +11,7 @@ export const WorkersSection = () => {
             <ScrollBottomButton/>
             {
                 groupsWithWorkersLocally.map(group=>(
-                    <GroupWithWorkmanComponent groupWithWorkman={group}/>
+                    <GroupWithWorkmanComponent key={group.group} groupWithWorkman={group}/>
                 ))
             }
         </div>
