@@ -1,13 +1,12 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ScrollBottomButton } from './ScrollBottom';
+import { ScrollBottomButton } from './ScrollBottomButton';
 
 export default {
     title: 'features/ScrollBottom',
     component: ScrollBottomButton,
     args: {
         className: '',
-        children: 'Watch'
 
     },
 } as ComponentMeta<typeof ScrollBottomButton>;
