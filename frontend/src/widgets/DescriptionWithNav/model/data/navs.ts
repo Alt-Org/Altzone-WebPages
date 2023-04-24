@@ -5,8 +5,8 @@ export const Navs: NavItem[] = [
     {
         title: 'Tutustu projektiin',
         body: 'Lue lisää',
-        link: AppExternalLinks.stub,
-        isExternal: false
+        link: AppExternalLinks.readMore,
+        isExternal: true
     },
     {
         title: 'Katso avoimet paikat',
