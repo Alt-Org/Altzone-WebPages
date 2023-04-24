@@ -2,6 +2,7 @@
  * The values are used as externalLinks throughout the app,
  */
 export const AppExternalLinks = {
+    readMore: "https://drive.google.com/file/d/16KAaOAQudDQ_PvGfebXiB51mtR_M42UW/view?usp=sharing",
     webgl : "https://alt-org.github.io/builds/webgl",
     discord: "https://discord.gg/58QVb7kn",
     facebook : "https://www.facebook.com/GamingPsyche",
