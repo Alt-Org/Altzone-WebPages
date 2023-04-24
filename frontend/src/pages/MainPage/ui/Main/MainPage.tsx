@@ -6,20 +6,27 @@ import {Container} from "@/shared/ui/Container";
 import {DescriptionWithNav} from "@/widgets/DescriptionWithNav";
 import {NewsSection} from "@/widgets/NewsSection";
 import {Navbar} from "@/widgets/Navbar";
+import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
+import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
+
 
 const MainPage = () => {
+
+    const handleClick = () => {
+        openLinkInNewTab(AppExternalLinks.webgl);
+    }
+
     return (
         <>
+            <FeedbackSideButton/>
             <Navbar overlayed marginTop={20} />
             <HeroSection className={cls.heroSection} >
-                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} > <a href={AppExternalLinks.webgl} target="_blank">Pelaa netissa !</a></Button>
+                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} onClick={handleClick} > Pelaa netissa !</Button>
             </HeroSection>
 
             <Container>
                 <DescriptionWithNav/>
             </Container>
-
-
             <NewsSection/>
         </>
     );
