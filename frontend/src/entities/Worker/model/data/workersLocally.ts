@@ -1,6 +1,6 @@
 import {GroupType, GroupWithWorkman} from "../types/types";
 import keronen from "../img/keronen.png";
-import placeholder from "../img/placeholder.png";
+import imgPlaceholder from "../img/imgPlaceholder.png";
 import pusa from "../img/pusa.png";
 import valimaki from "../img/valimaki.png";
 import velichko from "../img/velichko.png";
@@ -55,7 +55,7 @@ export const groupsWithWorkersLocally: GroupWithWorkman[] = [
             {
                 id: 5,
                 name: 'Milja Sissonen',
-                imgSrc: placeholder
+                imgSrc: imgPlaceholder
             },
 
             {
@@ -67,13 +67,13 @@ export const groupsWithWorkersLocally: GroupWithWorkman[] = [
             {
                 id: 7787,
                 name: 'Katri Tempakka',
-                imgSrc: placeholder
+                imgSrc: imgPlaceholder
             },
 
             {
                 id: 7,
                 name: 'Anastasiia (Nasti) Skobkina',
-                imgSrc: placeholder
+                imgSrc: imgPlaceholder
             },
 
             {
@@ -85,7 +85,7 @@ export const groupsWithWorkersLocally: GroupWithWorkman[] = [
             {
                 id: 9,
                 name: 'Nova Kallio',
-                imgSrc: placeholder
+                imgSrc: imgPlaceholder
             },
 
             {
@@ -103,7 +103,7 @@ export const groupsWithWorkersLocally: GroupWithWorkman[] = [
             {
                 id: 44444234,
                 name: 'Markku Pyrrö',
-                imgSrc: placeholder
+                imgSrc: imgPlaceholder
 
             },
 
