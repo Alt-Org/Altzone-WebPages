@@ -8,13 +8,22 @@
 }
 
 .groupComponent{
-  margin-bottom: 40px;
   h2{
     font-size: 40px;
+    line-height: 1.5;
     margin-bottom: 20px;
   }
 }
 
 .workmanComponent{
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+ .githubLogo{
+   img{
+     cursor: pointer;
+     @include link-scale-effect;
+   }
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
 }
