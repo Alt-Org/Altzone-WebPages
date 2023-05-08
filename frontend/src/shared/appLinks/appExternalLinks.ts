@@ -9,6 +9,6 @@ export const AppExternalLinks = {
     instagram : "https://www.instagram.com/gamingpsyche",
     youtube : "https://www.youtube.com/channel/UCTgWpC9Hq7b-W1Lhmry97YA",
     duunitori: "https://duunitori.fi/tyopaikat?haku=Psyche%27s%20Royale%20Gaming",
-    googleFeedback: "https://docs.google.com/forms/d/1x7Iyt8leeKDNOoVBWfLPo-EXpSkcyc9kz8gYpG9YAZI/edit",
+    googleFeedback: "https://docs.google.com/forms/d/e/1FAIpQLScYGN0JlcgkqKpotNeE6hyWLG7oI1g19myAtrHf2mmHz7g7AA/viewform",
     stub: '#developerChangeThisLink'
 } as const
