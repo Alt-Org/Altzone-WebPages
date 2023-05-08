@@ -1,13 +1,16 @@
 export enum GroupType {
-    Management = 'Management',
-    Art = 'Art',
-    Code = 'Code',
-    Sound = 'Sound',
-    Prod = 'Prod',
-    Comics = 'Comics',
-    OthersGame = 'OthersGame',
-    OtherComics = 'OtherComics',
-    Others = 'Others',
+    GameDesign = 'Pelisuunnittelu',
+    LogoGraphic = 'Grafiikka, logo',
+    GameGraphic = 'Grafiikka, peli',
+    GameAnimation= 'Grafiikka, animaatio',
+    GameCode = 'Koodi, peli',
+    APICode = 'Koodi, API',
+    WebPagesCode = 'Koodi, nettisivut',
+    Sound = 'Äänisuunnittelu, sävellys',
+    Comics = 'Sarjakuva',
+    Prod = 'Tuotanto',
+    OthersGame = 'Pelinkehityksessä mukana',
+    Others = 'Erityiskiitokset',
 }
 
 export enum WorkerStatus{
@@ -24,6 +27,7 @@ export interface GroupWithWorkman {
 export interface Workman {
     id: number;
     name: string;
+    imgSrc?: string;
     role?: string;
     email?: string;
     phone?: string;
