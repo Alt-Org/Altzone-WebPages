@@ -2,14 +2,14 @@ import cls from "./NewsCards.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo, useRef} from "react";
 import {NewsCard} from "../NewsCard/NewsCard";
-import {mockNews} from "@/widgets/NewsSection/model/data/mockNews";
-
+import {INewsElement} from "@/entities/News";
 
 interface NewsCardProps{
     className?: string;
+    news: INewsElement[]
 }
 
-export const NewsCards = memo(({className=''}: NewsCardProps) => {
+export const NewsCards = memo(({className='', news}: NewsCardProps) => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const handleScrollRight = () => {
@@ -37,11 +37,10 @@ export const NewsCards = memo(({className=''}: NewsCardProps) => {
                 <i>{'←'}</i>
             </div>
 
-
         <div className={classNames(cls.Cards, {},[className])} ref={scrollRef}>
 
-            {mockNews.map(item=>(
-                <NewsCard  bodyLength={200} key={item.readMoreLink.path} title={item.title} body={item.body} date={item.date} readMoreLink={item.readMoreLink}/>
+            {news.map(item=>(
+                <NewsCard  bodyLength={200} key={item.id} title={item.title} body={item.body} date={item.date} id={item.id}/>
             ))}
         </div>
 

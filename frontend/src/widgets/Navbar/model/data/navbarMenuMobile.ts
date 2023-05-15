@@ -18,7 +18,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     },
     {
         name : 'Uutiset',
-        path: '/#news',
+        path: RoutePaths.NEWS,
     },
     {
         name : 'Tekijat',

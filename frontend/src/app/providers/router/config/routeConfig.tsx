@@ -4,6 +4,8 @@ import { AboutPage } from "@/pages/AboutPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import {RoutePaths,AppRoutesLinks} from "@/shared/appLinks/RoutePaths";
 import {WorkersPage} from "@/pages/WorkersPage";
+import {NewsPage} from "@/pages/NewsPage";
+import {NewsElementPage} from "@/pages/NewsElementPage";
 
 export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
     [AppRoutesLinks.MAIN]: {
@@ -20,9 +22,19 @@ export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
         element: <WorkersPage />,
     },
 
+    [AppRoutesLinks.NEWS]: {
+        path: RoutePaths.NEWS,
+        element: <NewsPage />,
+    },
+
+    [AppRoutesLinks.NEWSELEMENT]: {
+        path: RoutePaths.NEWSELEMENT,
+        element: <NewsElementPage />,
+    },
+
     [AppRoutesLinks.FORUM]: {
         path: RoutePaths.FORUM,
-        element: <AboutPage/>
+        element: <NotFoundPage/>
     },
 
     [AppRoutesLinks.NOT_FOUND]: {

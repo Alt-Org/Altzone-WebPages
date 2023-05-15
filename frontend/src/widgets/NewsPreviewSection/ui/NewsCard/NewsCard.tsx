@@ -2,8 +2,9 @@ import cls from "./NewsCard.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo, useMemo} from "react";
 import {Card} from "@/shared/ui/Card/Card";
-import {INewsElement} from "../../model/types/types";
 import {truncateText} from "@/shared/lib/truncateText/truncateText";
+import {INewsElement} from "@/entities/News";
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 
 interface NewsCardProps extends INewsElement{
@@ -17,7 +18,7 @@ export const NewsCard = memo((props: NewsCardProps) => {
         body,
         bodyLength,
         date,
-        readMoreLink,
+        id,
         className='',
     }= props;
 
@@ -42,8 +43,10 @@ export const NewsCard = memo((props: NewsCardProps) => {
                 </Card.Body>
             </div>
 
-            <Card.ReadMoreLink path={readMoreLink.path} className={cls.readMoreLink}  withScalableLink>
-                {readMoreLink.name}
+            <Card.ReadMoreLink
+                path={`${RoutePaths.NEWS}/${id}`}
+                className={cls.readMoreLink}  withScalableLink>
+                Lue lisää
             </Card.ReadMoreLink>
 
         </Card>

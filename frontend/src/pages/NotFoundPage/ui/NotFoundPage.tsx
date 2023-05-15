@@ -9,7 +9,7 @@ interface NotFoundPageProps {
 export const NotFoundPage = ({ className= '' }: NotFoundPageProps) => {
     return (
         <div className={classNames(cls.NotFoundPage, {}, [className])}>
-            <Navbar className={cls.navbar}/>
+            <Navbar className={cls.navbar} overlayed/>
             Page not found
         </div>
     );

@@ -5,7 +5,7 @@ import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     {
         name: 'Foruumi',
-        path: '/#forum',
+        path: '#forum',
         isActive: false,
         type: 'navLink',
         position: "left"
@@ -26,7 +26,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     },
     {
         name: 'Uutiset',
-        path: '/#news',
+        path: RoutePaths.NEWS,
         isActive: false,
         type: 'navLink',
         position: "right"
