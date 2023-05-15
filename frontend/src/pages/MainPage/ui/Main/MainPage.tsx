@@ -4,7 +4,7 @@ import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {Container} from "@/shared/ui/Container";
 import {DescriptionWithNav} from "@/widgets/DescriptionWithNav";
-import {NewsSection} from "@/widgets/NewsSection";
+import {NewsPreviewSection} from "@/widgets/NewsPreviewSection";
 import {Navbar} from "@/widgets/Navbar";
 import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
@@ -27,7 +27,7 @@ const MainPage = () => {
             <Container>
                 <DescriptionWithNav/>
             </Container>
-            <NewsSection/>
+            <NewsPreviewSection/>
         </>
     );
 };
