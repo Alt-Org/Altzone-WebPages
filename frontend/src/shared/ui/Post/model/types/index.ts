@@ -18,5 +18,5 @@ export interface IPostData {
     id: string;
     title: string;
     date: Date;
-    bodyElements: IPostBodyElement[];
+    bodyElements?: IPostBodyElement[];
 }

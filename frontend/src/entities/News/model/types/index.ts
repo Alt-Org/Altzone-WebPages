@@ -1,6 +1,5 @@
-export interface INewsElement{
-    title : string;
-    body: string;
-    date: Date;
-    id: string;
+import {IPostData} from "@/shared/ui/Post";
+
+export interface INewsElement extends IPostData{
+    bodyPreview?: string;
 }
