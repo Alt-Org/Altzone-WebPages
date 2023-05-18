@@ -1,11 +1,12 @@
-import {IPostData} from "@/shared/ui/Post";
+import {INewsElement} from "@/entities/News";
 
 
-export const newsDataLocally: IPostData[] = [
+export const newsDataLocally: INewsElement[] = [
     {
         id: '1',
         title: '1 Uutinen',
         date: new Date(2023, 0, 1),
+        bodyPreview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem beatae doloremque impedit minima, non quam quibusdam quis quisquam repellat,',
         bodyElements:
             [
                 { type: 'image', widthPx: 600, url: 'https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=1.00xw:0.753xh;0,0.153xh&resize=1200:*', alt: 'Image 1' },
@@ -27,6 +28,7 @@ export const newsDataLocally: IPostData[] = [
         id: '2',
         title: '2 Uutinen',
         date:  new Date(2023, 1, 15),
+        bodyPreview: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem beatae doloremque impedit minima, non quam quibusdam quis quisquam repellat,',
         bodyElements:
             [
                 { type: 'image', widthPx: 600, url: 'https://hips.hearstapps.com/hmg-prod/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=1.00xw:0.756xh;0,0.0756xh&resize=1200:*', alt: 'Image 1' },

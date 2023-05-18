@@ -15,7 +15,7 @@ interface NewsCardProps extends INewsElement{
 export const NewsCard = memo((props: NewsCardProps) => {
     const {
         title,
-        body,
+        bodyPreview,
         bodyLength,
         date,
         id,
@@ -24,8 +24,10 @@ export const NewsCard = memo((props: NewsCardProps) => {
 
     const truncatedBody = useMemo(() => {
         const truncate = truncateText(bodyLength);
-        return truncate(body);
-    }, [body, bodyLength]);
+        if(bodyPreview){
+            return truncate(bodyPreview);
+        }
+    }, [bodyPreview, bodyLength]);
 
     return(
         <Card className={classNames(cls.Card, {}, [className])}>

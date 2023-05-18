@@ -40,7 +40,7 @@ export const NewsCards = memo(({className='', news}: NewsCardProps) => {
         <div className={classNames(cls.Cards, {},[className])} ref={scrollRef}>
 
             {news.map(item=>(
-                <NewsCard  bodyLength={200} key={item.id} title={item.title} body={item.body} date={item.date} id={item.id}/>
+                <NewsCard  bodyLength={200} key={item.id} title={item.title} bodyPreview={item.bodyPreview} date={item.date} id={item.id}/>
             ))}
         </div>
 
