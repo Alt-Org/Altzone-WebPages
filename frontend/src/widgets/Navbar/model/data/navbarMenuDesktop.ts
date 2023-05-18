@@ -33,7 +33,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     },
     {
         name: 'Tekijat',
-        path:  RoutePaths.WORKERS,
+        path:  RoutePaths.MEMBERS,
         isActive: false,
         type: "navLink",
         position: "right"

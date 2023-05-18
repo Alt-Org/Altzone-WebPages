@@ -13,18 +13,18 @@ export enum GroupType {
     Others = 'Erityiskiitokset',
 }
 
-export enum WorkerStatus{
+export enum MemberStatus{
     voluntary = 'vapaaehtoinen',
     worker = 'työntekijä',
     intern = 'työharjoittelija'
 }
 
-export interface GroupWithWorkman {
+export interface GroupWithMember {
     group: GroupType,
-    workers: Workman[]
+    workers: Member[]
 }
 
-export interface Workman {
+export interface Member {
     id: number;
     name: string;
     imgSrc?: string;
@@ -34,6 +34,6 @@ export interface Workman {
     github?: string;
     discord?: string;
     trello?: string;
-    status?: WorkerStatus;
+    status?: MemberStatus;
     workPeriod?: string;
 }

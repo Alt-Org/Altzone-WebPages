@@ -3,9 +3,9 @@ import { MainPage } from "@/pages/MainPage";
 import { AboutPage } from "@/pages/AboutPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import {RoutePaths,AppRoutesLinks} from "@/shared/appLinks/RoutePaths";
-import {WorkersPage} from "@/pages/WorkersPage";
 import {NewsPage} from "@/pages/NewsPage";
 import {NewsElementPage} from "@/pages/NewsElementPage";
+import MembersPage from "@/pages/MembersPage/ui/MembersPage";
 
 export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
     [AppRoutesLinks.MAIN]: {
@@ -17,9 +17,9 @@ export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
         element: <AboutPage />,
     },
 
-    [AppRoutesLinks.WORKERS]: {
-        path: RoutePaths.WORKERS,
-        element: <WorkersPage />,
+    [AppRoutesLinks.MEMBERS]: {
+        path: RoutePaths.MEMBERS,
+        element: <MembersPage />,
     },
 
     [AppRoutesLinks.NEWS]: {
