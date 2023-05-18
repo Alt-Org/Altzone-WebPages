@@ -12,14 +12,14 @@ export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
         path: RoutePaths.MAIN,
         element: <MainPage />,
     },
-    [AppRoutesLinks.ABOUT]: {
-        path: RoutePaths.ABOUT,
-        element: <AboutPage />,
-    },
 
     [AppRoutesLinks.MEMBERS]: {
         path: RoutePaths.MEMBERS,
         element: <MembersPage />,
+    },
+    [AppRoutesLinks.ABOUT]: {
+        path: RoutePaths.ABOUT,
+        element: <AboutPage />,
     },
 
     [AppRoutesLinks.NEWS]: {
