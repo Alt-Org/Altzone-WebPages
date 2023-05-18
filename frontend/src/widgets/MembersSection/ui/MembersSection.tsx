@@ -10,6 +10,7 @@ interface WorkersSectionProps  {
     className?: string;
 }
 
+
 export const MembersSection = ({className = ''}: WorkersSectionProps) => {
 
     const memoizedGroupsWithWorkers = useMemo(() => groupsWithMembersLocally, []);
@@ -38,7 +39,7 @@ const GroupWithWorkmanComponent: FC<GroupWithWorkmanProps> = memo(({groupWithMem
             <ul>
                 {groupWithMember.workers.map((member) => (
                     <li key={member.id}>
-                        <WorkmanComponent member={member} />
+                        <MemberComponent member={member} />
                     </li>
                 ))}
             </ul>
@@ -52,7 +53,7 @@ interface WorkmanProps {
 }
 
 
-const WorkmanComponent: FC<WorkmanProps> = memo(({ member }) => {
+const MemberComponent: FC<WorkmanProps> = memo(({ member }) => {
     return (
         <div className={cls.workmanComponent}>
             {member.imgSrc && <img src={member.imgSrc} alt={member.name + ' logo' }/>}
@@ -70,5 +71,3 @@ const WorkmanComponent: FC<WorkmanProps> = memo(({ member }) => {
         </div>
     );
 });
-
-
