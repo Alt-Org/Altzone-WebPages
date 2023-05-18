@@ -7,14 +7,12 @@ import {NavGoBackButton} from "@/features/NavGoBack";
 import {getPostDataById, Post} from "@/shared/ui/Post";
 import {Container} from "@/shared/ui/Container";
 import {newsDataLocally} from "@/entities/News";
-import {useEffect} from "react";
+import {useScrollToTop} from "@/shared/lib/hooks/useScrollToTop";
 
 
 const NewsElementPage = () => {
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    useScrollToTop();
 
     const params = useParams();
     const pageID = params.id !== undefined ? params.id : "defaultValue";
