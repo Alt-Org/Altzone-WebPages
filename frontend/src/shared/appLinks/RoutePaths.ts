@@ -4,10 +4,11 @@ export enum AppRoutesLinks {
     FORUM = "FORUM",
     NEWS = "NEWS",
     NEWSELEMENT = "NEWSELEMENT",
-    WORKERS = "WORKERS",
+    MEMBERS = "MEMBERS",
     NOT_FOUND = "NOT_FOUND",
     NOT_FOUND_CATCH = "NOT_FOUND_CATCH",
 }
+
 
 
 const news = "/news";
@@ -23,7 +24,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.NEWS]: news,
     [AppRoutesLinks.NEWSELEMENT]: news + "/:id",
     [AppRoutesLinks.FORUM]: "/forum",
-    [AppRoutesLinks.WORKERS]: "/workers",
+    [AppRoutesLinks.MEMBERS]: "/members",
     [AppRoutesLinks.NOT_FOUND]: "/404",
     // last one
     [AppRoutesLinks.NOT_FOUND_CATCH]: "*",

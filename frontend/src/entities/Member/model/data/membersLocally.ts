@@ -1,4 +1,4 @@
-import {GroupType, GroupWithWorkman} from "../types/types";
+import {GroupType, GroupWithMember} from "../types/types";
 import keronen from "../img/keronen.png";
 import imgStub from "../img/imgStub.png";
 import pusa from "../img/pusa.png";
@@ -8,7 +8,7 @@ import lindstrom from "../img/lindstrom.png";
 import toikka from "../img/toikka.png";
 
 
-export const groupsWithWorkersLocally: GroupWithWorkman[] = [
+export const groupsWithMembersLocally: GroupWithMember[] = [
 
     {
         group: GroupType.GameDesign,
