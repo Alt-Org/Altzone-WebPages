@@ -7,11 +7,11 @@ import {Footer} from "@/widgets/Footer";
 const App = () => {
     return(
         <div className={classNames("app", {}, [])}>
-            <Suspense fallback="">
+            {/*<Suspense fallback="">*/}
                 <AppRouter />
                 <ScrollTop/>
                 <Footer/>
-            </Suspense>
+            {/*</Suspense>*/}
         </div>
     )};
 export default App;

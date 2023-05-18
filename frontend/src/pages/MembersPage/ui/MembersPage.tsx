@@ -11,16 +11,6 @@ const MembersPage = () => {
             <Navbar className={cls.navbar}/>
             <MembersSection  className={cls.workersSection}/>
         </div>
-
-        // <div>
-        //     <FeedbackSideButton/>
-        //     <Navbar  className={cls.navbar} />
-        //
-        //     {/*<div style={{marginTop: '200px'}}>*/}
-        //
-        //     {/*</div>*/}
-        //    {/*<MembersSection  className={cls.workersSection}/>*/}
-        // </div>
     );
 };
 

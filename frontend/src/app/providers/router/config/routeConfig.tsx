@@ -5,7 +5,7 @@ import { NotFoundPage } from "@/pages/NotFoundPage";
 import {RoutePaths,AppRoutesLinks} from "@/shared/appLinks/RoutePaths";
 import {NewsPage} from "@/pages/NewsPage";
 import {NewsElementPage} from "@/pages/NewsElementPage";
-import MembersPage from "@/pages/MembersPage/ui/MembersPage";
+import {MembersPage} from "@/pages/MembersPage";
 
 export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
     [AppRoutesLinks.MAIN]: {
@@ -17,6 +17,7 @@ export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
         path: RoutePaths.MEMBERS,
         element: <MembersPage />,
     },
+
     [AppRoutesLinks.ABOUT]: {
         path: RoutePaths.ABOUT,
         element: <AboutPage />,

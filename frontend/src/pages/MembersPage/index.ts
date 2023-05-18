@@ -1,2 +1,2 @@
-export { MembersPageAsync as WorkersPage } from "./ui/MembersPage.async";
+export { MembersPageAsync as MembersPage } from "./ui/MembersPage.async";
 
