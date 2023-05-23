@@ -13,7 +13,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
         path: RoutePaths.ABOUT,
     },
     {
-        name : 'Foruumi',
+        name : 'Foorumi',
         path: '/#forum',
     },
     {
