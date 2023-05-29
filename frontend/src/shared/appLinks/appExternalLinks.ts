@@ -4,6 +4,7 @@
 export const AppExternalLinks = {
     readMore: "https://drive.google.com/file/d/16KAaOAQudDQ_PvGfebXiB51mtR_M42UW/view?usp=sharing",
     webgl : "https://alt-org.github.io/builds/webgl",
+    reddit : "https://www.reddit.com/r/PRGaltzone/",
     discord: "https://discord.gg/k4YWG5Cf48",
     facebook : "https://www.facebook.com/GamingPsyche",
     instagram : "https://www.instagram.com/gamingpsyche",

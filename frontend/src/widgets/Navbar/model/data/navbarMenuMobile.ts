@@ -1,6 +1,7 @@
 import {NavbarMenuMobile, NavLogoMobileObject} from "../types/types";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import navLogo from "@/shared/assets/images/altLogo.png";
+import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     {
@@ -14,7 +15,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     },
     {
         name : 'Foorumi',
-        path: '/#forum',
+        path: AppExternalLinks.reddit,
     },
     {
         name : 'Uutiset',
