@@ -1,9 +1,14 @@
 export type Position = "left" | "right" | "center"
 
+export enum LinkType {
+    navLinkFake="navLinkFake",
+    navLink= "navLink",
+    navLogo= "navLogo"
+}
 
 export interface NavbarLinkFakeObject{
     name: string;
-    type: 'navLinkFake';
+    type: LinkType.navLinkFake;
     position: Position;
     reactKey: string;
 }
@@ -12,7 +17,7 @@ export interface NavbarLinkObject {
     name: string;
     path: string;
     isActive: boolean;
-    type : 'navLink';
+    type : LinkType.navLink;
     position: Position
 }
 
@@ -20,7 +25,7 @@ export interface NavLogoObject{
     name: string;
     src: string;
     path: string;
-    type : 'navLogo'
+    type : LinkType.navLogo;
     position: Position
 }
 
