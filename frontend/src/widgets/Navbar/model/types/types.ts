@@ -1,14 +1,18 @@
+import {DropDownElement} from "@/shared/ui/DropdownWrapper";
+
 export type Position = "left" | "right" | "center"
 
-export enum LinkType {
-    navLinkFake="navLinkFake",
-    navLink= "navLink",
-    navLogo= "navLogo"
+export enum ItemType {
+    navLinkFake = "navLinkFake",
+    navLink = "navLink",
+    navLogo = "navLogo",
+    navDropDown = "navDropDown"
 }
+
 
 export interface NavbarLinkFakeObject{
     name: string;
-    type: LinkType.navLinkFake;
+    type: ItemType.navLinkFake;
     position: Position;
     reactKey: string;
 }
@@ -17,7 +21,15 @@ export interface NavbarLinkObject {
     name: string;
     path: string;
     isActive: boolean;
-    type : LinkType.navLink;
+    type : ItemType.navLink;
+    position: Position
+}
+
+export interface NavbarDropDownObject{
+    name: string;
+    isActive: boolean;
+    elements: Array<DropDownElement>
+    type : ItemType.navDropDown;
     position: Position
 }
 
@@ -25,26 +37,38 @@ export interface NavLogoObject{
     name: string;
     src: string;
     path: string;
-    type : LinkType.navLogo;
+    type : ItemType.navLogo;
     position: Position
 }
 
 export type PositionChecker = (position: Position) => boolean;
 
-export type NavbarMenu = ReadonlyArray<(NavbarLinkObject | NavLogoObject | NavbarLinkFakeObject)>;
+export type NavbarMenu = ReadonlyArray<(NavbarLinkObject | NavLogoObject | NavbarLinkFakeObject |NavbarDropDownObject )>;
 
 
 // touch
 
-export interface NavLogoMobileObject {
+export type NavLogoMobileObject = {
     name: string;
     path: string;
     src: string;
 }
 
-export interface NavbarMenuMobileItem {
+export enum navbarItemType{
+    NavbarMenuMobileItem= "NavbarMenuMobileItem",
+    NavbarMenuMobileDropDownItem= "NavbarMenuMobileDropDownItem"
+}
+
+export type NavbarMenuMobileItem = {
+    type: navbarItemType.NavbarMenuMobileItem
     name: string;
     path: string;
 }
 
-export interface NavbarMenuMobile extends ReadonlyArray<NavbarMenuMobileItem> {}
+export type NavbarMenuMobileDropDownItem = {
+    type: navbarItemType.NavbarMenuMobileDropDownItem
+    name: string;
+    elements: Array<DropDownElement>
+}
+
+export type NavbarMenuMobile = ReadonlyArray<NavbarMenuMobileItem | NavbarMenuMobileDropDownItem>

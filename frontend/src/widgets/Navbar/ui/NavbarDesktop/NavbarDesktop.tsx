@@ -5,12 +5,13 @@ import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {NavbarMenu, PositionChecker} from "../../model/types/types";
 import {
     isCenter,
-    isLeftSide,
+    isLeftSide, isNavbarDropDownObject,
     isNavbarLinkFakeObject,
     isNavbarLinkObject,
     isNavLogoObject,
     isRightSide
 } from "../../model/types/type.guards";
+import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
 
 
 
@@ -42,6 +43,7 @@ export default memo(( props : NavbarProps) => {
     const itemLinkClassname = cls.item + ' ' + cls.itemLink;
     const itemLogoClassname = cls.item + ' ' + cls.navLogo;
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
+    const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
 
     return (
@@ -55,10 +57,12 @@ export default memo(( props : NavbarProps) => {
                         itemLinkClassname={itemLinkClassname}
                         itemLogoClassname={itemLogoClassname}
                         itemFakeLinkClassname={itemFakeLinkClassname}
+                        itemNavbarDropDownClassname={itemNavbarDropDownClassname}
                     />
                 </div>
                 <div className={cls.center}>
                     <NavbarItems
+                        itemNavbarDropDownClassname={itemNavbarDropDownClassname}
                         items={navbarMenu}
                         positionChecker={isCenter}
                         itemLinkClassname={itemLinkClassname}
@@ -68,6 +72,7 @@ export default memo(( props : NavbarProps) => {
                 </div>
                 <div className={cls.rightSide}>
                     <NavbarItems
+                        itemNavbarDropDownClassname={itemNavbarDropDownClassname}
                         items={navbarMenu}
                         positionChecker={isRightSide}
                         itemLinkClassname={itemLinkClassname}
@@ -91,6 +96,7 @@ interface NavbarItemsProps {
     itemLinkClassname: string;
     itemLogoClassname: string;
     itemFakeLinkClassname: string;
+    itemNavbarDropDownClassname: string
 }
 
 const NavbarItems = memo(
@@ -100,6 +106,7 @@ const NavbarItems = memo(
          itemLinkClassname,
          itemLogoClassname,
          itemFakeLinkClassname,
+         itemNavbarDropDownClassname,
      }: NavbarItemsProps) => {
         return (
             <>
@@ -116,6 +123,18 @@ const NavbarItems = memo(
                                 >
                                     <span>{item.name}</span>
                                 </AppLink>
+                            );
+                        }
+
+                        if (isNavbarDropDownObject(item)) {
+                            return (
+                                    <DropdownWrapper elements={item.elements} contentAbsolute={true}
+                                                     className={itemNavbarDropDownClassname}
+                                                     childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
+                                                     contentClassName={cls.itemNavbarDropDownContentClassName}
+                                    >
+                                        <div>{item.name}</div>
+                                    </DropdownWrapper>
                             );
                         }
 
@@ -148,6 +167,8 @@ const NavbarItems = memo(
                                 </div>
                             );
                         }
+
+
 
                         return null;
                     })}

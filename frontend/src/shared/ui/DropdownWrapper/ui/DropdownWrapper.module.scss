@@ -1,0 +1,21 @@
+.DropdownWrapper{
+  cursor: pointer;
+  user-select: none;
+}
+
+.DropdownWrapper.contentAbsolute{
+  position: relative;
+
+  .dropdownContent{
+    position: absolute;
+  }
+
+}
+.dropdownContent{
+  display: grid !important;
+}
+
+.childrenWrapper{
+  display: flex;
+  gap: 7px;
+}
