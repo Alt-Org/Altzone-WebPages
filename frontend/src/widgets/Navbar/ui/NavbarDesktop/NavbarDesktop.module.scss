@@ -38,6 +38,24 @@
   @include link-scale-effect;
 }
 
+//.itemNavbarDropDown{
+// div:first-child , span:first-child {
+//   @include link-scale-effect;
+// }
+//}
+
+.itemNavbarDropDownContentClassName{
+  //background-color: #0232c2;
+
+  *{
+    @include link-scale-effect;
+  }
+}
+
+.itemNavbarDropDownChildrenWrapper{
+  @include link-scale-effect;
+}
+
 .fakeItemLink{
   visibility: hidden;
 }

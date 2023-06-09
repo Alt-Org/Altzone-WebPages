@@ -4,14 +4,14 @@
 
 import {classNames} from "@/shared/lib/classNames/classNames";
 import cls from "./Sidebar.module.scss";
-import {SidebarItemType} from "@/shared/ui/Sidebar/model/items";
+import {ISidebarItem} from "@/shared/ui/Sidebar/model/items";
 import React, {useEffect, useMemo, useRef, useState} from "react";
 import {SidebarItem} from "@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem";
 
 
 interface SidebarProps {
     buttonClassName?: string;
-    sidebarItemsList: SidebarItemType[];
+    sidebarItemsList: ISidebarItem[];
     side? : 'left'| 'right'
     closeOnClickOutside?: boolean;
 }
@@ -96,7 +96,7 @@ export const Sidebar = ({ buttonClassName = '',  sidebarItemsList , side = 'left
         <SidebarItem
             item={item}
             collapsed={isCollapsed}
-            key={item.path}
+            key={item.name}
         />
     )), [isCollapsed]);
 

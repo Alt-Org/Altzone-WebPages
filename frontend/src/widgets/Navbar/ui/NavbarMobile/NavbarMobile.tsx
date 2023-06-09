@@ -1,10 +1,11 @@
 import {CSSProperties, memo, useMemo} from "react";
 import cls from "./NavbarMobile.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
-import {Sidebar, SidebarItemType} from "@/shared/ui/Sidebar";
-import {NavbarMenuMobile} from "../../model/types/types";
+import {Sidebar, ISidebarItem} from "@/shared/ui/Sidebar";
+import {navbarItemType, NavbarMenuMobile} from "../../model/types/types";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {navLogoMobile} from "@/widgets/Navbar/model/data/navbarMenuMobile";
+import {sidebarItemType} from "@/shared/ui/Sidebar/model/items";
 
 
 
@@ -29,6 +30,9 @@ export default memo(( props : NavbarTouchProps) => {
         className = ''
     } = props;
 
+
+
+
     const style = marginTop
         ? ({ "marginTop": `${marginTop}px` } as CSSProperties)
         : {};
@@ -42,15 +46,38 @@ export default memo(( props : NavbarTouchProps) => {
         [cls.right] : side === 'right',
     } as Record<string, boolean>;
 
-    const sidebarItemsList: SidebarItemType[] = useMemo(
-        () =>
-            navBarItemsList
-                ? navBarItemsList.map((item) => ({ path: item.path, name: item.name }))
-                : [],
-        [navBarItemsList]
-    );
 
-        return (
+    // const sidebarItemsList: ISidebarItem[] = useMemo(() => {
+    //     if (navBarItemsList) {
+    //         return navBarItemsList.map(item => {
+    //             if (item.type === navbarItemType.NavbarMenuMobileItem) {
+    //                 return { path: item.path, name: item.name, type: sidebarItemType.ISidebarItemBasic  };
+    //             }
+    //             if (item.type === navbarItemType.NavbarMenuMobileDropDownItem) {
+    //                 return { name: item.name, elements: item.elements, type: sidebarItemType.ISidebarItemDropDown };
+    //             }
+    //         });
+    //     }
+    //     return [];
+    // },[navBarItemsList]);
+
+    const sidebarItemsList: ISidebarItem[] = useMemo(() => {
+        return (navBarItemsList || [])
+            .map(item => {
+                if (item.type === navbarItemType.NavbarMenuMobileItem) {
+                    return { path: item.path, name: item.name, type: sidebarItemType.ISidebarItemBasic };
+                }
+                if (item.type === navbarItemType.NavbarMenuMobileDropDownItem) {
+                    return { name: item.name, elements: item.elements, type: sidebarItemType.ISidebarItemDropDown };
+                }
+                return null;
+            })
+            .filter(item => item !== null) as ISidebarItem[];
+    }, [navBarItemsList]);
+
+
+
+    return (
             <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
                 <div className={cls.NavbarMobile}>
                     <Sidebar buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)} sidebarItemsList={sidebarItemsList} side={side} closeOnClickOutside />

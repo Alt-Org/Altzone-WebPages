@@ -4,6 +4,7 @@
   background: rgba(0, 0, 0, 0.65);
   position: fixed;
   top: 0;
+  overflow-y: auto;
   transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
 
   &.left{
@@ -15,7 +16,7 @@
   }
 }
 
-.side
+//.side
 
 .button{
   width: 33px;

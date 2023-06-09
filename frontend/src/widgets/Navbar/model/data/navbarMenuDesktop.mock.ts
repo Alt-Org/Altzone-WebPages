@@ -1,25 +1,25 @@
 import navLogo from "@/shared/assets/images/altLogo.png";
-import {LinkType, NavbarMenu} from "../types/types";
+import {ItemType, NavbarMenu} from "../types/types";
 
 export const navbarMenuDesktopMock: NavbarMenu = Object.freeze([
     {
         name: 'Foruumi',
         path: '/#forum',
         isActive: false,
-        type: LinkType.navLink,
+        type: ItemType.navLink,
         position: "left"
     },
     {
         name: 'About',
         path: '/#about',
         isActive: false,
-        type: LinkType.navLink,
+        type: ItemType.navLink,
         position: "left"
     },
     {
         name: 'Nav logo',
         src: navLogo,
-        type: LinkType.navLogo,
+        type: ItemType.navLogo,
         position: "center",
         path: '/#WorkersSection'
     },
@@ -27,14 +27,14 @@ export const navbarMenuDesktopMock: NavbarMenu = Object.freeze([
         name: 'Uutiset',
         path: '/#news',
         isActive: false,
-        type: LinkType.navLink,
+        type: ItemType.navLink,
         position: "right"
     },
     {
         name: 'Tekijat',
         path: '/#workers',
         isActive: false,
-        type: LinkType.navLink,
+        type: ItemType.navLink,
         position: "right"
     },
 

@@ -1,4 +1,4 @@
-import {NavbarLinkObject, NavLogoObject,NavbarLinkFakeObject, Position,} from "./types";
+import {NavbarLinkObject, NavLogoObject, NavbarLinkFakeObject, Position, NavbarDropDownObject} from "./types";
 
 
 export function isNavbarLinkFakeObject(obj: any): obj is NavbarLinkFakeObject {
@@ -7,6 +7,10 @@ export function isNavbarLinkFakeObject(obj: any): obj is NavbarLinkFakeObject {
 
 export function isNavbarLinkObject(obj: any): obj is NavbarLinkObject {
     return obj.path !== undefined && obj.type === 'navLink';
+}
+
+export function isNavbarDropDownObject(obj: any): obj is NavbarDropDownObject {
+    return obj.elements !== undefined && obj.type === 'navDropDown';
 }
 
 export function isNavLogoObject(obj: any): obj is NavLogoObject {
