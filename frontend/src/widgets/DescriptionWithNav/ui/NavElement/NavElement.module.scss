@@ -1,10 +1,12 @@
 .NavElement{
   @include link-scale-effect;
+  border: solid   2px var(--btn-transparent-bg);
   hyphens: auto;
+  padding: 10px;
 
   p, a{
     padding: 0;
-    text-align: left;
+    text-align: center;
     margin: 0;
   }
 

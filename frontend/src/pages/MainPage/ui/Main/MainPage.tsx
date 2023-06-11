@@ -21,7 +21,7 @@ const MainPage = () => {
             <FeedbackSideButton/>
             <Navbar overlayed marginTop={20} />
             <HeroSection className={cls.heroSection} >
-                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} onClick={handleClick} > Pelaa netissa !</Button>
+                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick} > Pelaa netissa !</Button>
             </HeroSection>
 
             <Container>
