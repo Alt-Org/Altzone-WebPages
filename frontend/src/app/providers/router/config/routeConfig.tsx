@@ -1,4 +1,4 @@
-import { RouteProps, Navigate  } from "react-router-dom";
+import {RouteProps, Navigate} from "react-router-dom";
 import { MainPage } from "@/pages/MainPage";
 import { AboutPage } from "@/pages/AboutPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
@@ -6,11 +6,18 @@ import {RoutePaths,AppRoutesLinks} from "@/shared/appLinks/RoutePaths";
 import {NewsPage} from "@/pages/NewsPage";
 import {NewsElementPage} from "@/pages/NewsElementPage";
 import {MembersPage} from "@/pages/MembersPage";
+import {PictureGalleryPage} from "@/pages/PictureGalleryPage";
+
 
 export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
     [AppRoutesLinks.MAIN]: {
         path: RoutePaths.MAIN,
         element: <MainPage />,
+    },
+
+    [AppRoutesLinks.PICTURE_GALLERY]: {
+        path: RoutePaths.PICTURE_GALLERY,
+        element: <PictureGalleryPage />,
     },
 
     [AppRoutesLinks.MEMBERS]: {

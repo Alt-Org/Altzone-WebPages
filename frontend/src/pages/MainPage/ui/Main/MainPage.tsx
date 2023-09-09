@@ -8,6 +8,7 @@ import {NewsPreviewSection} from "@/widgets/NewsPreviewSection";
 import {Navbar} from "@/widgets/Navbar";
 import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
+import {Footer} from "@/widgets/Footer";
 
 
 const MainPage = () => {
@@ -28,6 +29,7 @@ const MainPage = () => {
                 <DescriptionWithNav/>
             </Container>
             <NewsPreviewSection/>
+            <Footer />
         </>
     );
 };

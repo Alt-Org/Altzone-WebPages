@@ -1,10 +1,14 @@
 .NotFoundPage {
-  color: var(--secondary-color);
   font: var(--font-xxxl);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+
+  & > span {
+    color: var(--secondary-color);
+  }
+
 }
 
 .navbar{

@@ -7,8 +7,8 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 const MembersPage = () => {
     return (
         <div className={classNames(cls.MembersPage)}>
-            <FeedbackSideButton/>
             <Navbar className={cls.navbar}/>
+            <FeedbackSideButton/>
             <MembersSection  className={cls.workersSection}/>
         </div>
     );

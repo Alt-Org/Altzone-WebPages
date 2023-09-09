@@ -1,8 +1,8 @@
-import cls from './SocialSection.module.scss'
+import {memo} from "react";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
+import cls from './SocialSection.module.scss'
 import {SocialLink} from "../../model/types/types";
-import {memo} from "react";
 
 interface SocialSectionProps{
     className?: string;
