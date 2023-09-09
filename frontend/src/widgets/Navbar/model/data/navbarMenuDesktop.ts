@@ -63,7 +63,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             {
                 elementText: "kuvagalleria",
                 link: {
-                    path: AppExternalLinks.stub,
+                    path: RoutePaths.PICTURE_GALLERY,
                     isExternal: false
                 }
             },
