@@ -2,6 +2,7 @@ export enum AppRoutesLinks {
     MAIN = "MAIN",
     ABOUT = "ABOUT",
     FORUM = "FORUM",
+    PICTURE_GALLERY = "PICTURE_GALLERY",
     NEWS = "NEWS",
     NEWSELEMENT = "NEWSELEMENT",
     MEMBERS = "MEMBERS",
@@ -10,10 +11,7 @@ export enum AppRoutesLinks {
 }
 
 
-
 const news = "/news";
-
-
 /**
  * The values are used as routesLinks throughout the app,
  * if do update , don't forget update also routeConfig at App layer
@@ -21,6 +19,7 @@ const news = "/news";
 export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.MAIN]: "/",
     [AppRoutesLinks.ABOUT]: "/about",
+    [AppRoutesLinks.PICTURE_GALLERY]: "/pictureGallery",
     [AppRoutesLinks.NEWS]: news,
     [AppRoutesLinks.NEWSELEMENT]: news + "/:id",
     [AppRoutesLinks.FORUM]: "/forum",
@@ -29,4 +28,6 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     // last one
     [AppRoutesLinks.NOT_FOUND_CATCH]: "*",
 };
+
+
 

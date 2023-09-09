@@ -1,0 +1,1 @@
+export {default as PictureGalleryPage} from "./ui/PictureGalleryPage"
