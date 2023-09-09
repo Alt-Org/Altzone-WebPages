@@ -74,7 +74,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
                 elementText: "kuvagalleria",
                 link: {
                     isExternal: false,
-                    path : AppExternalLinks.stub
+                    path: RoutePaths.PICTURE_GALLERY,
                 }
             },
         ]
