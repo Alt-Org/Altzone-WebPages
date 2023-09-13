@@ -32,9 +32,9 @@ const PictureGalleryPage = () => {
                    />
 
                    <GalleryCategoriesWithModalSlider
-                       key={"Cartoons"}
+                       key={"Sarjakuvat"}
                        sources={galleryCartoonsPaths}
-                       title={"Cartoons"}
+                       title={"Sarjakuvat"}
                    />
 
                    <GalleryCategoriesWithModalSlider
