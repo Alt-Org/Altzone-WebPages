@@ -6,9 +6,9 @@ const galleryCartoonsPaths = Object.values(import.meta.glob('@/shared/assets/ima
 
 
 export const categories = [
-    { key: "Cats", sources: galleryCatPaths, title: "Kissat" },
-    { key: "Dogs", sources: galleryDogsPaths, title: "Koirat" },
-    { key: "Zoo", sources: galleryZooPaths, title: "Zoo" },
-    { key: "Cartoons", sources: galleryCartoonsPaths, title: "Sarjakuvat" },
-    { key: "Dogs2", sources: galleryDogsPaths, title: "Koirat" },
+    { key: "Cats", sources: galleryCatPaths, title: "Kissat" , followLastImage: true},
+    { key: "Dogs", sources: galleryDogsPaths, title: "Koirat" ,followLastImage: true},
+    { key: "Zoo", sources: galleryZooPaths, title: "Zoo" ,followLastImage: true},
+    { key: "Cartoons", sources: galleryCartoonsPaths, title: "Sarjakuvat" ,followLastImage: true},
+    { key: "Dogs2", sources: galleryDogsPaths, title: "Koirat", followLastImage: false},
 ];

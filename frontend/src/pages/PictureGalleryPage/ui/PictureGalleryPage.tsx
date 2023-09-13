@@ -15,6 +15,7 @@ const PictureGalleryPage = () => {
                    {
                        categories.map((category) => (
                            <GalleryCategoriesWithModalSlider
+                               followLastImage={category.followLastImage}
                                key={category.key}
                                sources={category.sources}
                                title={category.title}
