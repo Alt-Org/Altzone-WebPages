@@ -1,31 +1,52 @@
-import FsLightbox from "fslightbox-react";
 import {Navbar} from "@/widgets/Navbar";
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Container} from "@/shared/ui/Container";
+import cls from "./PictureGalleryPage.module.scss";
+import {GalleryCategoriesWithModalSlider} from "@/shared/ui/GalleryCategoriesWithModalSlider";
+
+const galleryCatPaths = Object.values(import.meta.glob('@/shared/assets/images/gallery/cats/*', { eager: true, as: 'url' }));
+const galleryDogsPaths = Object.values(import.meta.glob('@/shared/assets/images/gallery/dogs/*', { eager: true, as: 'url' }));
+const galleryZooPaths = Object.values(import.meta.glob('@/shared/assets/images/gallery/zoo/*', { eager: true, as: 'url' }));
+const galleryCartoonsPaths = Object.values(import.meta.glob('@/shared/assets/images/gallery/cartoons/*', { eager: true, as: 'url' }));
 
 const PictureGalleryPage = () => {
+    return (
+       <div className={cls.Wrapper}>
+           <Navbar   className={cls.Navbar}/>
+           <Container fluid={true}>
+               <div style={{display: "flex ", gap: "30px", justifyContent: "center" , flexWrap: "wrap"}}>
+                   <GalleryCategoriesWithModalSlider
+                       key={"Cats"}
+                       sources={galleryCatPaths}
+                       title={"Kissat"}
+                   />
+                   <GalleryCategoriesWithModalSlider
+                       key={"Dogs"}
+                       sources={galleryDogsPaths}
+                       title={"Koirat"}
+                   />
 
-    const navigate = useNavigate();
+                   <GalleryCategoriesWithModalSlider
+                       key={"Zoo"}
+                       sources={galleryZooPaths}
+                       title={"Zoo"}
+                   />
 
-    const [toggler, setToggler] = useState(false);
-    useEffect(()=>{
-        setToggler(true)
-    },[])
+                   <GalleryCategoriesWithModalSlider
+                       key={"Cartoons"}
+                       sources={galleryCartoonsPaths}
+                       title={"Cartoons"}
+                   />
 
-   return (
-       <div style={{minHeight: "100vh"}}>
-           <Navbar overlayed marginTop={20} />
-           <FsLightbox
-               onClose={()=>navigate(-1)}
-               toggler={toggler}
-               sources={[
-                   'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8fA%3D%3D&w=1000&q=80',
-                   'https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*',
-                   'https://ichef.bbci.co.uk/news/1024/branded_news/16755/production/_126898919_catnewproject.jpg'
-               ]}
-           />
+                   <GalleryCategoriesWithModalSlider
+                       key={"Dogs3"}
+                       sources={galleryDogsPaths}
+                       title={"Koirat"}
+                   />
+
+               </div>
+           </Container>
+           <br/>
        </div>
-
    )
 }
 

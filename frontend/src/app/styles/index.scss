@@ -13,16 +13,14 @@ body {
 }
 
 
+// This code block fixes a slider library bug with scrollbar.
+// (* there were a problem that library gives some own styles for scrollbar, now we remove during slider mode the scrollbar at all);
+// For more details, refer to the GalleryCategoriesWithModalSlider component
+body.FsLightbox{
+  width: 100vw;
+}
+
 .app {
   min-height: 100vh;
   background: var(--bg-color);
 }
-
-//.content-page {
-//  display: flex;
-//}
-//
-//.page-wrapper {
-//  flex-grow: 1;
-//  //padding: 20px;
-//}

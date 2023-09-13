@@ -14,7 +14,6 @@ interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navBarItemsList?: NavbarMenuMobile;
-    // navLogo : NavLogoMobileObject;
     side? : 'left'| 'right';
     className? : string;
 }
