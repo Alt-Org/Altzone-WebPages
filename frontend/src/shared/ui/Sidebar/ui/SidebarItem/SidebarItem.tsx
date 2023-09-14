@@ -17,7 +17,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
             <AppLink
                 theme={AppLinkTheme.PRIMARY}
                 to={item.path}
-                className={classNames(cls.item, { [cls.collapsed]: collapsed })}
+                className={classNames(cls.item, { [cls.collapsed]: collapsed }, [cls.itemBasic])}
             >
                 <span className={cls.link}>{item.name}</span>
             </AppLink>
@@ -25,19 +25,14 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     }
 
     if (item.type === sidebarItemType.ISidebarItemDropDown) {
-        // return <div className={cls.item + " "+  cls.link}>hhsa</div>
-        // return <DropdownWrapper className={cls.link} contentClassName={classNames(cls.item, { [cls.collapsed]: collapsed })} elements={item.elements}> {item.name} </DropdownWrapper>;
-        return <DropdownWrapper className={cls.link} contentItemClassName={cls.item} contentClassName={classNames(cls.link, { [cls.collapsed]: collapsed })} elements={item.elements}> {item.name} </DropdownWrapper>;
-        // return (
-        //     <AppLink
-        //         theme={AppLinkTheme.PRIMARY}
-        //         to={item.elements[0].link.path}
-        //         className={classNames(cls.item, { [cls.collapsed]: collapsed })}
-        //     >
-        //         lol
-        //         {/*<span className={cls.link}>{item.name}</span>*/}
-        //     </AppLink>
-        // )
+        return (
+            <DropdownWrapper className={cls.itemDropDown}
+                             contentItemClassName={cls.item}
+                             contentClassName={classNames(cls.link, { [cls.collapsed]: collapsed })}
+                             elements={item.elements}>
+                {item.name}
+            </DropdownWrapper>
+        );
     }
     return null;
 });
