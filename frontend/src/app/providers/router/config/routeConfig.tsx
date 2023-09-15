@@ -1,15 +1,23 @@
-import {RouteProps, Navigate} from "react-router-dom";
-import { MainPage } from "@/pages/MainPage";
-import { AboutPage } from "@/pages/AboutPage";
-import { NotFoundPage } from "@/pages/NotFoundPage";
-import {RoutePaths,AppRoutesLinks} from "@/shared/appLinks/RoutePaths";
+import { ReactElement } from 'react';
+import {Navigate} from 'react-router-dom';
+import {MainPage} from "@/pages/MainPage";
+import {PictureGalleryPage} from "@/pages/PictureGalleryPage";
+import {MembersPage} from "@/pages/MembersPage";
+import {AboutPage} from "@/pages/AboutPage";
 import {NewsPage} from "@/pages/NewsPage";
 import {NewsElementPage} from "@/pages/NewsElementPage";
-import {MembersPage} from "@/pages/MembersPage";
-import {PictureGalleryPage} from "@/pages/PictureGalleryPage";
+import {NotFoundPage} from "@/pages/NotFoundPage";
+import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
+// import {RoutePaths,AppRoutesLinks} from "./RoutePaths";
 
+export interface RouteObject {
+    path: string;
+    element: ReactElement;
+    children?: RouteObject[];
+}
 
-export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
+export const routeConfig: RouteObject[] = Object.values({
+
     [AppRoutesLinks.MAIN]: {
         path: RoutePaths.MAIN,
         element: <MainPage />,
@@ -54,4 +62,10 @@ export const routeConfig: Record<AppRoutesLinks, RouteProps> = {
         path: RoutePaths.NOT_FOUND_CATCH,
         element: <Navigate to={RoutePaths.NOT_FOUND} />
     },
-};
+});
+
+
+
+
+
+

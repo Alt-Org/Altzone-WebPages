@@ -3,6 +3,7 @@ import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import navLogo from "@/shared/assets/images/altLogo.png";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
+
 export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     {
         name: 'Main',
