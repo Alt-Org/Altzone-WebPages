@@ -12,6 +12,7 @@
 
 
 .leftSide{
+  z-index: 5;
   margin-left: 10px;
   display: flex;
   justify-content: space-around;
@@ -23,6 +24,7 @@
 }
 
 .rightSide{
+  z-index: 5;
   display: flex;
   justify-content: space-around;
   margin-right: 10px;
@@ -38,22 +40,23 @@
   @include link-scale-effect;
 }
 
-//.itemNavbarDropDown{
-// div:first-child , span:first-child {
-//   @include link-scale-effect;
-// }
-//}
+
+.itemNavbarDropDownClassname{
+  background-color: #c50404;
+}
 
 .itemNavbarDropDownContentClassName{
-  //background-color: #0232c2;
-
   *{
     @include link-scale-effect;
   }
 }
 
-.itemNavbarDropDownChildrenWrapper{
-  @include link-scale-effect;
+.dropDownParent{
+  background-color: #c50404 !important;
+
+  & > div {
+    background-color: #c50404 !important;
+  }
 }
 
 .fakeItemLink{
