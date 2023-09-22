@@ -16,11 +16,19 @@ export const RegisterForm = () => {
     });
 
 
-    const [login, { data, isLoading, isError ,error}] = useRegisterMutation();
-
-
+    const [regist, { data, isLoading, isError ,error}] = useRegisterMutation();
     async function onFormSubmit (fieldValues : FieldValues) {
-        await login(fieldValues as IUserRegisterDto);
+        const ObjectToBeSent: IUserRegisterDto = {
+            username : fieldValues.username,
+            password: fieldValues.password,
+            repeatPassword: fieldValues.password,
+            Player: {
+                uniqueIdentifier: fieldValues.uniqueIdentifier,
+                backpackCapacity: fieldValues.backpackCapacity,
+                name: fieldValues.name
+            }
+        }
+        await regist(ObjectToBeSent);
     }
 
     return(
@@ -49,12 +57,43 @@ export const RegisterForm = () => {
                 }}
             />
 
+
             <CustomForm.InputField
                 key={"repeatPassword"}
                 error={errors?.repeatPassword?.message}
                 label={"Repeat password"}
                 inputProps={{...register('repeatPassword'),
                     type: "password",
+                    required: true
+                }}
+            />
+
+
+            <CustomForm.InputField
+                key={"name"}
+                error={errors?.name?.message}
+                label={"Name"}
+                inputProps={{...register('name'),
+                    required: true
+                }}
+            />
+
+
+            <CustomForm.InputField
+                key={"backpackCapacity"}
+                error={errors?.backpackCapacity?.message}
+                label={"Backpack Capacity"}
+                inputProps={{...register('backpackCapacity'),
+                    required: true,
+                    type: "number"
+                }}
+            />
+
+            <CustomForm.InputField
+                key={"uniqueIdentifier"}
+                error={errors?.uniqueIdentifier?.message}
+                label={"Unique Identifier"}
+                inputProps={{...register('uniqueIdentifier'),
                     required: true
                 }}
             />
