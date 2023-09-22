@@ -6,18 +6,20 @@ export enum ItemType {
     navLinkFake = "navLinkFake",
     navLink = "navLink",
     navLogo = "navLogo",
-    navDropDown = "navDropDown"
+    navDropDown = "navDropDown",
+    navAuthLogin = "navAuthLogin",
+    navAuthProfile = "navAuthProfile"
 }
 
 
-export interface NavbarLinkFakeObject{
+export type NavbarLinkFakeObject ={
     name: string;
     type: ItemType.navLinkFake;
     position: Position;
     reactKey: string;
 }
 
-export interface NavbarLinkObject {
+export type NavbarLinkObject = {
     name: string;
     path: string;
     isActive: boolean;
@@ -25,7 +27,7 @@ export interface NavbarLinkObject {
     position: Position
 }
 
-export interface NavbarDropDownObject{
+export type NavbarDropDownObject = {
     name: string;
     isActive: boolean;
     elements: Array<DropDownElement>
@@ -33,7 +35,7 @@ export interface NavbarDropDownObject{
     position: Position
 }
 
-export interface NavLogoObject{
+export type NavLogoObject ={
     name: string;
     src: string;
     path: string;
@@ -41,9 +43,24 @@ export interface NavLogoObject{
     position: Position
 }
 
+export type NavAuthLogin = {
+    name: string,
+    path: string,
+    type : ItemType.navAuthLogin;
+}
+
+export type NavAuthProfile = {
+    name: string,
+    src?: string
+    type : ItemType.navAuthProfile;
+    elements: Array<DropDownElement>
+}
+
+export type NavBarAuth = NavAuthLogin | NavAuthProfile;
+
 export type PositionChecker = (position: Position) => boolean;
 
-export type NavbarMenu = ReadonlyArray<(NavbarLinkObject | NavLogoObject | NavbarLinkFakeObject |NavbarDropDownObject )>;
+export type NavbarMenu = ReadonlyArray<(NavbarLinkObject | NavLogoObject | NavbarLinkFakeObject |NavbarDropDownObject | NavBarAuth)>;
 
 
 // touch

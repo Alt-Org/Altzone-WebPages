@@ -28,6 +28,34 @@
   display: flex;
   justify-content: space-around;
   margin-right: 10px;
+  position: relative;
+
+  .rightSideAuth{
+
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    outline: 2px solid var(--inverted-primary-color);
+    padding: 4px;
+    font-family: var(--font-family-texts) !important;
+    font: var(--font-m);
+    position: absolute;
+    right: 40px;
+    top: -40px;
+    @include link-scale-effect;
+    cursor: pointer;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+
+
+    &{
+      .rightSideAuthLink{
+        color: var(--secondary-color) !important;
+      }
+    }
+
+  }
 }
 
 .item{
