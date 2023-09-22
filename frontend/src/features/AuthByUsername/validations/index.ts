@@ -1,24 +1,36 @@
-export const Validations = {
-    username: {
-        required: 'Username is required',
-        minLength: {
-            value: 5,
-            message: 'Username should be at least 5 characters',
-        },
-        maxLength: {
-            value: 20,
-            message: 'Username should not exceed 20 characters',
-        }},
+import * as yup from "yup";
 
-    password: {
-        required: 'Password is required',
-        minLength: {
-            value: 8,
-            message: 'Password should be at least 8 characters',
-        },
-        pattern: {
-            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-            message: 'Password should include only letters and numbers, and at least have each of them',
-        },
-    }
-}
+export const ValidationLoginSchema = yup.object().shape({
+    // email: yup.string().required('Required').email('Invalid email'),
+    username: yup
+        .string()
+        .required("Required")
+        .min(3, "Username must be longer than or equal to 3 characters")
+        .max(15, "Username must be shorter than or equal to 15 characters")
+        .matches(/^[a-zA-Z0-9]*$/, "Username must contain only letters and numbers"),
+    password: yup
+        .string()
+        .min(6, "Password must be longer than or equal to 6 characters")
+        .max(30, "Password must be shorter than or equal to 30 characters")
+        .required("Enter your password"),
+});
+
+
+export const ValidationRegisterSchema = yup.object().shape({
+    username: yup
+        .string()
+        .required("Required")
+        .min(3, "Username must be longer than or equal to 3 characters")
+        .max(15, "Username must be shorter than or equal to 15 characters")
+        .matches(/^[a-zA-Z0-9]*$/, "Username must contain only letters and numbers"),
+    password: yup
+        .string()
+        .min(6, "Password must be longer than or equal to 6 characters")
+        .max(30, "Password must be shorter than or equal to 30 characters")
+        .required("Enter your password"),
+    repeatPassword: yup.string()
+        // @ts-ignore
+        .oneOf([yup.ref('password'), null], "Passwords must match")
+        .required("Confirm your password"),
+})
+

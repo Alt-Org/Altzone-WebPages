@@ -2,8 +2,8 @@ import {FieldValues, useForm} from "react-hook-form";
 import {CustomForm} from "@/shared/ui/CustomForm";
 import cls from "./LoginForm.module.scss"
 import {IUserLoginDto, useLoginMutation} from "@/entities/Auth";
-import {Validations} from "../../validations";
-
+import {ValidationLoginSchema} from "../../validations";
+import {yupResolver} from "@hookform/resolvers/yup";
 
 export const LoginForm = () => {
 
@@ -11,7 +11,9 @@ export const LoginForm = () => {
         register,
         handleSubmit,
         formState: { errors},
-    } = useForm();
+    } = useForm({
+        resolver: yupResolver(ValidationLoginSchema),
+    });
 
 
     const [login, { data, isLoading, isError ,error}] = useLoginMutation();
@@ -25,9 +27,6 @@ export const LoginForm = () => {
     return(
         <CustomForm  className={cls.Form} onSubmit={handleSubmit(onFormSubmit)}>
 
-            {JSON.stringify(isError)}
-            {JSON.stringify(data)}
-
             <CustomForm.Header>
                 Login
             </CustomForm.Header>
@@ -35,31 +34,27 @@ export const LoginForm = () => {
             <CustomForm.InputField
                 key={"username"}
                 error={errors?.username?.message}
+                // error={errors?.username}
                 label={"Username"}
-                inputProps={{...register('username',
-                        {
-                            ...Validations.username
-                        }
-                    ),
+                inputProps={{...register('username'),
                     required: true
                 }}
             />
 
             <CustomForm.InputField
                 key={"password"}
-                error={errors?.password && (errors?.password?.message || 'Please enter a valid password') }
+                error={errors?.password?.message || 'Please enter a valid password'}
                 label={"Password"}
-                inputProps={{...register('password',
-                        {
-                    ...Validations.password
-                    }),
+                inputProps={{...register('password'),
                     type: "password",
                     required: true
                 }}
             />
+
             <CustomForm.Button type="submit">
                 Submit
             </CustomForm.Button>
+
         </CustomForm>
     )
 

@@ -1,7 +1,7 @@
 .Form{
   -webkit-user-select: none;
   user-select: none;
-  width: 300px;
+  width: 420px;
   padding: 30px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.47);
@@ -9,6 +9,10 @@
   gap: 10px;
   color: var(--primary-color);
   font-family: var(--font-family-texts);
+
+  @media (max-width: 440px) {
+    width: 300px;
+  }
 
 
   h2{
