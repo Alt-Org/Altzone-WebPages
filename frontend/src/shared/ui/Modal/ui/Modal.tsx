@@ -11,6 +11,8 @@ type Props = {
 
 ReactModal.setAppElement('#root');
 
+
+
 export const Modal = (
     {
         isOpen,
@@ -19,31 +21,38 @@ export const Modal = (
         children
     }: Props) => {
 
-    const customStyles = {
-        content: {
-            backgroundColor: "rgba(245, 40, 145, 0)",
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            padding: 0,
-            border: "none",
-            transform: 'translate(-50%, -50%)',
-        },
-    };
+
 
     return (
         <ReactModal
             overlayClassName={cls.overlayClassName}
+            className={cls.contentClassname}
             isOpen={isOpen}
             shouldCloseOnEsc={shouldCloseOnExternal}
             shouldCloseOnOverlayClick={shouldCloseOnExternal}
             onRequestClose={onRequestClose}
-            style={customStyles}
+            // style={customStyles}
             contentLabel="Example Modal"
         >
             {children}
         </ReactModal>
     )
 }
+
+
+// const customStyles = {
+//     content: {
+//         display: "flex",
+//         // backgroundColor: "rgba(245, 40, 145, 0)",
+//         backgroundColor: "brown",
+//         top: '50%',
+//         left: '50%',
+//         right: 'auto',
+//         bottom: 'auto',
+//         marginRight: '-50%',
+//         padding: 0,
+//         border: "none",
+//         transform: 'translate(-50%, -50%)',
+//     },
+// };
+

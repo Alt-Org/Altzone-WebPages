@@ -32,5 +32,18 @@ export const ValidationRegisterSchema = yup.object().shape({
         // @ts-ignore
         .oneOf([yup.ref('password'), null], "Passwords must match")
         .required("Confirm your password"),
+
+    name: yup
+        .string()
+        .min(3, "name must be longer than or equal to 3 characters")
+        .max(20, "name must be shorter than or equal to 20 characters")
+        .matches(/[^a-zA-Z\s]+/, "Username must contain only letters"),
+
+    backpackCapacity: yup
+        .number(),
+
+
+    uniqueIdentifier: yup
+        .string(),
 })
 
