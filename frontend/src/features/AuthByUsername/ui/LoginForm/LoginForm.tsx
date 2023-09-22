@@ -43,7 +43,7 @@ export const LoginForm = () => {
 
             <CustomForm.InputField
                 key={"password"}
-                error={errors?.password?.message || 'Please enter a valid password'}
+                error={errors?.password?.message}
                 label={"Password"}
                 inputProps={{...register('password'),
                     type: "password",
