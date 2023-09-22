@@ -145,12 +145,12 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
 export const navbarMenuLoginProfile = {
     'login': {
-        name: "login",
+        name: "LOGIN",
         type: ItemType.navAuthLogin,
         path: RoutePaths.auth_login
     },
     'profile': {
-        name: "profile",
+        name: "PROFILE",
         type: ItemType.navAuthProfile,
         elements: [
             {
