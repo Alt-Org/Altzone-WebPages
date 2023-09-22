@@ -1,4 +1,4 @@
-import {RouteObject} from "./routeConfig";
+import {RouteObject} from "@/app/providers/router/config/routeConfig";
 
 /**
  * Recursively creates a route configuration array for use with react-router's useRoutes.
