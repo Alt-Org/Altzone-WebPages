@@ -7,7 +7,7 @@ import {ScrollTop} from "@/features/ScrollTop";
 
 const App = () => {
     return(
-        <div className={classNames("app", {}, [])}>
+        <div id="app" className={classNames("app", {}, [])}>
                 <AppRouter />
                 <ScrollTop/>
         </div>

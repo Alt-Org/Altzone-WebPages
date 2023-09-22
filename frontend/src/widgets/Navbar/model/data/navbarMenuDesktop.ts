@@ -1,9 +1,32 @@
 import navLogo from "@/shared/assets/images/altLogo.png";
-import {NavbarMenu,ItemType} from "../types/types";
+import {ItemType, NavbarMenu} from "../types/types";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
+
 export const navbarMenuDesktop: NavbarMenu = Object.freeze([
+
+    // {
+    //     name: "login",
+    //     type: ItemType.navAuthLogin,
+    //     path: RoutePaths.auth_login
+    // },
+    //
+    // {
+    //     name: "Profile",
+    //     src: "string",
+    //     type: ItemType.navAuthProfile,
+    //     elements: [
+    //         {
+    //             elementText: "Foorumi",
+    //             link: {
+    //                 path: AppExternalLinks.reddit,
+    //                 isExternal: true
+    //             }
+    //         },
+    //     ]
+    // },
+
     {
 
         name: 'yhteiso',
@@ -118,3 +141,25 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     //     reactKey: 'somekeyhere'
     // },
 ]);
+
+
+export const navbarMenuLoginProfile = {
+    'login': {
+        name: "login",
+        type: ItemType.navAuthLogin,
+        path: RoutePaths.auth_login
+    },
+    'profile': {
+        name: "profile",
+        type: ItemType.navAuthProfile,
+        elements: [
+            {
+                elementText: 'Foorumi',
+                link: {
+                    path: AppExternalLinks.reddit,
+                    isExternal: true
+                }
+            }
+        ]
+    }
+};

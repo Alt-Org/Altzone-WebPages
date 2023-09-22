@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import {Navigate} from 'react-router-dom';
+import {Navigate, Outlet} from 'react-router-dom';
 import {MainPage} from "@/pages/MainPage";
 import {PictureGalleryPage} from "@/pages/PictureGalleryPage";
 import {MembersPage} from "@/pages/MembersPage";
@@ -8,7 +8,7 @@ import {NewsPage} from "@/pages/NewsPage";
 import {NewsElementPage} from "@/pages/NewsElementPage";
 import {NotFoundPage} from "@/pages/NotFoundPage";
 import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
-// import {RoutePaths,AppRoutesLinks} from "./RoutePaths";
+import {AuthMainPage, AuthSubLoginPage, AuthSubRegisterPage} from "@/pages/AuthPages";
 
 export interface RouteObject {
     path: string;
@@ -16,7 +16,25 @@ export interface RouteObject {
     children?: RouteObject[];
 }
 
+
 export const routeConfig: RouteObject[] = Object.values({
+
+
+    [AppRoutesLinks.AUTH]: {
+        path: RoutePaths.auth,
+        element: <AuthMainPage HasOutletChildren={Outlet} />
+    },
+
+    [AppRoutesLinks.AUTH_LOGIN]: {
+        path: RoutePaths.auth_login,
+        element: <AuthSubLoginPage HasOutletChildren={Outlet}/>
+    },
+
+    [AppRoutesLinks.AUTH_REGISTER]: {
+        path: RoutePaths.auth_register,
+        element: <AuthSubRegisterPage/>
+    },
+
 
     [AppRoutesLinks.MAIN]: {
         path: RoutePaths.MAIN,

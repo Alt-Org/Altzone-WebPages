@@ -12,6 +12,7 @@ import {
     isRightSide
 } from "../../model/types/type.guards";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
+import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
 
 
 
@@ -46,9 +47,9 @@ export default memo(( props : NavbarProps) => {
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
 
+
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
-            {/*<Container>*/}
             <div className={cls.navMenu}>
                 <div className={cls.leftSide}>
                     <NavbarItems
@@ -71,6 +72,7 @@ export default memo(( props : NavbarProps) => {
                     />
                 </div>
                 <div className={cls.rightSide}>
+
                     <NavbarItems
                         itemNavbarDropDownClassname={itemNavbarDropDownClassname}
                         items={navbarMenu}
@@ -79,9 +81,21 @@ export default memo(( props : NavbarProps) => {
                         itemLogoClassname={itemLogoClassname}
                         itemFakeLinkClassname={itemFakeLinkClassname}
                     />
+
+
+                    <div className={cls.rightSideAuth}>
+                        <AppLink
+                            className={cls.rightSideAuthLink}
+                            theme={AppLinkTheme.PRIMARY}
+                            to={navbarMenuLoginProfile.login.path}
+                            key={navbarMenuLoginProfile.login.path}
+                        >
+                            <span>{navbarMenuLoginProfile.login.name}</span>
+                        </AppLink>
+                    </div>
                 </div>
+
             </div>
-            {/*</Container>*/}
         </nav>
     );
 
@@ -108,9 +122,11 @@ const NavbarItems = memo(
          itemFakeLinkClassname,
          itemNavbarDropDownClassname,
      }: NavbarItemsProps) => {
+
         return (
             <>
                 {items
+                    // @ts-ignore
                     .filter((item) => positionChecker(item.position))
                     .map((item) => {
                         if (isNavbarLinkObject(item)) {
@@ -128,13 +144,13 @@ const NavbarItems = memo(
 
                         if (isNavbarDropDownObject(item)) {
                             return (
-                                    <DropdownWrapper elements={item.elements} contentAbsolute={true}
-                                                     className={itemNavbarDropDownClassname}
-                                                     childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
-                                                     contentClassName={cls.itemNavbarDropDownContentClassName}
-                                    >
-                                        <div>{item.name}</div>
-                                    </DropdownWrapper>
+                                <DropdownWrapper elements={item.elements} contentAbsolute={true}
+                                                 className={itemNavbarDropDownClassname}
+                                                 childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
+                                                 contentClassName={cls.itemNavbarDropDownContentClassName}
+                                >
+                                    <div>{item.name}</div>
+                                </DropdownWrapper>
                             );
                         }
 
