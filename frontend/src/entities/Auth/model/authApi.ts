@@ -34,7 +34,7 @@ export const authApi = createApi({
 
         register: builder.mutation<Object, IUserRegisterDto>({
             query: (registerDto) => ({
-                url: 'auth/profile',
+                url: '/profile',
                 method: 'POST',
                 body: registerDto,
             }),

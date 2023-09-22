@@ -2,7 +2,8 @@ import {FieldValues, useForm} from "react-hook-form";
 import {CustomForm} from "@/shared/ui/CustomForm";
 import cls from "./RegisterForm.module.scss"
 import {IUserRegisterDto, useRegisterMutation} from "@/entities/Auth";
-import {Validations} from "../../validations";
+import {ValidationRegisterSchema} from "../../validations";
+import {yupResolver} from "@hookform/resolvers/yup";
 
 
 export const RegisterForm = () => {
@@ -10,7 +11,9 @@ export const RegisterForm = () => {
         register,
         handleSubmit,
         formState: { errors},
-    } = useForm();
+    } = useForm({
+        resolver: yupResolver(ValidationRegisterSchema),
+    });
 
 
     const [login, { data, isLoading, isError ,error}] = useRegisterMutation();
@@ -20,12 +23,8 @@ export const RegisterForm = () => {
         await login(fieldValues as IUserRegisterDto);
     }
 
-
     return(
         <CustomForm  className={cls.Form} onSubmit={handleSubmit(onFormSubmit)}>
-
-            {JSON.stringify(isError)}
-            {JSON.stringify(data)}
 
             <CustomForm.Header>
                 Register
@@ -35,23 +34,26 @@ export const RegisterForm = () => {
                 key={"username"}
                 error={errors?.username?.message}
                 label={"Username"}
-                inputProps={{...register('username',
-                        {
-                            ...Validations.username
-                        }
-                    ),
+                inputProps={{...register('username'),
                     required: true
                 }}
             />
 
             <CustomForm.InputField
                 key={"password"}
-                error={errors?.password && (errors?.password?.message || 'Please enter a valid password') }
+                error={errors?.password?.message}
                 label={"Password"}
-                inputProps={{...register('password',
-                        {
-                            ...Validations.password
-                        }),
+                inputProps={{...register('password'),
+                    type: "password",
+                    required: true
+                }}
+            />
+
+            <CustomForm.InputField
+                key={"repeatPassword"}
+                error={errors?.repeatPassword?.message}
+                label={"Repeat password"}
+                inputProps={{...register('repeatPassword'),
                     type: "password",
                     required: true
                 }}
