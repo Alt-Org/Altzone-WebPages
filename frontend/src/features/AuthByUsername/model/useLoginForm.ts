@@ -46,7 +46,8 @@ export const useLoginForm = ({onSuccessLogin}: Props) => {
                     }
                 ));
 
-
+            dispatch(
+                authUserActions.setIsSessionExpired(false));
             toast.success('Tervetuloa!');
             onSuccessLogin();
             return;
