@@ -14,6 +14,9 @@ import {
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
 import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
 
+import {useSelector} from "react-redux";
+import {selectProfile, useLogoutMutation} from "@/entities/Auth";
+
 
 
 export interface NavbarProps {
@@ -46,7 +49,9 @@ export default memo(( props : NavbarProps) => {
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
+    const profile = useSelector(selectProfile);
 
+    const [logout] = useLogoutMutation();
 
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
@@ -84,14 +89,24 @@ export default memo(( props : NavbarProps) => {
 
 
                     <div className={cls.rightSideAuth}>
-                        <AppLink
-                            className={cls.rightSideAuthLink}
-                            theme={AppLinkTheme.PRIMARY}
-                            to={navbarMenuLoginProfile.login.path}
-                            key={navbarMenuLoginProfile.login.path}
-                        >
-                            <span>{navbarMenuLoginProfile.login.name}</span>
-                        </AppLink>
+
+                        {
+                            !profile ? (
+                                <AppLink
+                                    className={cls.rightSideAuthLink}
+                                    theme={AppLinkTheme.PRIMARY}
+                                    to={navbarMenuLoginProfile.login.path}
+                                    key={navbarMenuLoginProfile.login.path}
+                                >
+                                    <span>{navbarMenuLoginProfile.login.name}</span>
+                                </AppLink>
+                            )
+                                : (
+                                    <div onClick={()=>logout()}>Logout</div>
+                                )
+                        }
+
+
                     </div>
                 </div>
 

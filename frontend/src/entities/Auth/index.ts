@@ -18,10 +18,11 @@ export {
 
 
 export {
-   authUserReducer,
+    authUserReducer,
     selectIsSessionExpired,
     selectAccessTokenInfo,
     selectAuthUserState,
+    selectProfile,
     authUserActions
 } from "./model/authUserSlice";
 
