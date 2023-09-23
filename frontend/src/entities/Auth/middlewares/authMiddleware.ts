@@ -18,7 +18,7 @@
 
         switch(action.type) {
             case authUserActions.setProfile.toString():
-                const updatedUserData = { ...storeAPI.getState().authUser, user: action.payload };
+                const updatedUserData = { ...storeAPI.getState().authUser, profile: action.payload };
                 localStorage.setItem(LS_KEYS.AUTH_USER, JSON.stringify(updatedUserData));
                 break;
 

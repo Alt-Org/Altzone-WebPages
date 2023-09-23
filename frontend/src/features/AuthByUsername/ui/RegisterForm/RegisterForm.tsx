@@ -1,10 +1,7 @@
-import {FieldValues, useForm} from "react-hook-form";
 import {CustomForm} from "@/shared/ui/CustomForm";
 import cls from "./RegisterForm.module.scss"
-import {IUserRegisterDto, useRegisterMutation} from "@/entities/Auth";
-import {ValidationRegisterSchema} from "../../validations";
-import {yupResolver} from "@hookform/resolvers/yup";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
+import {useRegisterForm} from "../../model/useRegisterForm";
 
 
 type Props = {
@@ -12,29 +9,13 @@ type Props = {
 }
 
 export const RegisterForm = ({toLoginPage}: Props) => {
+
     const {
         register,
         handleSubmit,
-        formState: { errors},
-    } = useForm({
-        resolver: yupResolver(ValidationRegisterSchema),
-    });
-
-
-    const [regist, { data, isLoading, isError ,error}] = useRegisterMutation();
-    async function onFormSubmit (fieldValues : FieldValues) {
-        const ObjectToBeSent: IUserRegisterDto = {
-            username : fieldValues.username,
-            password: fieldValues.password,
-            repeatPassword: fieldValues.password,
-            Player: {
-                uniqueIdentifier: fieldValues.uniqueIdentifier,
-                backpackCapacity: fieldValues.backpackCapacity,
-                name: fieldValues.name
-            }
-        }
-        await regist(ObjectToBeSent);
-    }
+        onFormSubmit,
+        errors
+    } = useRegisterForm(toLoginPage);
 
     return(
         <CustomForm  className={cls.Form} onSubmit={handleSubmit(onFormSubmit)}>
