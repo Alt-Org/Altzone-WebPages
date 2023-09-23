@@ -53,7 +53,7 @@ export const { reducer: authUserReducer } = authUserSlice;
 
 // Selector to get the whole authUser state
 export const selectAuthUserState = (state: StateSchema) => state.authUser;
-// Selector to get the user from the authUser state
+// Selector to get the profile from the authUser state
 export const selectProfile = (state: StateSchema) => state.authUser.profile;
 // Selector to get the access token info from the authUser state
 export const selectAccessTokenInfo = (state: StateSchema) => state.authUser.accessTokenInfo;
