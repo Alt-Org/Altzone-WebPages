@@ -89,7 +89,6 @@ export default memo(( props : NavbarProps) => {
 
 
                     <div className={cls.rightSideAuth}>
-
                         {
                             !profile ? (
                                 <AppLink
