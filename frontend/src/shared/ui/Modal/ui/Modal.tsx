@@ -4,7 +4,7 @@ import cls from "./Modal.module.scss"
 
 type Props = {
     isOpen : boolean,
-    onRequestClose : () => void;
+    onRequestClose? : () => void;
     shouldCloseOnExternal? : boolean,
     children : ReactNode;
 }

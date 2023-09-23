@@ -4,9 +4,14 @@ import cls from "./RegisterForm.module.scss"
 import {IUserRegisterDto, useRegisterMutation} from "@/entities/Auth";
 import {ValidationRegisterSchema} from "../../validations";
 import {yupResolver} from "@hookform/resolvers/yup";
+import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 
 
-export const RegisterForm = () => {
+type Props = {
+    toLoginPage: string;
+}
+
+export const RegisterForm = ({toLoginPage}: Props) => {
     const {
         register,
         handleSubmit,
@@ -102,6 +107,12 @@ export const RegisterForm = () => {
             <CustomForm.Button type="submit">
                 Submit
             </CustomForm.Button>
+
+
+            <AppLink theme={AppLinkTheme.PRIMARY} to={toLoginPage}  className={cls.loginLink}>
+                {"Already have account? Sign In"}
+            </AppLink>
+
         </CustomForm>
     )
 

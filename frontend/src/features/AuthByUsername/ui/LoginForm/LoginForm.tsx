@@ -4,9 +4,15 @@ import cls from "./LoginForm.module.scss"
 import {IUserLoginDto, useLoginMutation} from "@/entities/Auth";
 import {ValidationLoginSchema} from "../../validations";
 import {yupResolver} from "@hookform/resolvers/yup";
+import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 
-export const LoginForm = () => {
 
+type Props = {
+    toForgottenPwPage: string;
+    toRegisterPage: string;
+}
+
+export const LoginForm = ({toForgottenPwPage,toRegisterPage}: Props) => {
     const {
         register,
         handleSubmit,
@@ -54,6 +60,10 @@ export const LoginForm = () => {
             <CustomForm.Button type="submit">
                 Submit
             </CustomForm.Button>
+
+            <AppLink theme={AppLinkTheme.PRIMARY} to={toRegisterPage}  className={cls.registerLink}>
+                {"Don't have account yet? Sign Up"}
+            </AppLink>
 
         </CustomForm>
     )
