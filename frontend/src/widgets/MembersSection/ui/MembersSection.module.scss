@@ -6,6 +6,7 @@
 
 .scrollBottomButton{
   margin-bottom: 20px;
+  @include link-scale-effect
 }
 
 .groupComponent{
