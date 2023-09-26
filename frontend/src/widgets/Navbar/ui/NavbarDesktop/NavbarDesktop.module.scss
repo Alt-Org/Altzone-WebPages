@@ -70,22 +70,21 @@
 }
 
 
-.itemNavbarDropDownClassname{
-  background-color: #c50404;
-}
+//.itemNavbarDropDownClassname{
+//}
 
 .itemNavbarDropDownContentClassName{
+
+  border-radius: 20px;
+  background-color: var(--transparent-bg);
+  padding: 15px;
+
   *{
     @include link-scale-effect;
   }
 }
 
 .dropDownParent{
-  background-color: #c50404 !important;
-
-  & > div {
-    background-color: #c50404 !important;
-  }
 }
 
 .fakeItemLink{
