@@ -10,6 +10,9 @@ import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {Footer} from "@/widgets/Footer";
 
+import backgroundImage from '@/shared/assets/images/introBackground.avif';
+// import backgroundImg from "@/shared/assets/images/clanBg/Moon.jpg";
+
 
 const MainPage = () => {
 
@@ -18,7 +21,7 @@ const MainPage = () => {
     }
 
     return (
-        <>
+        <div className={cls.Wrapper} style={{ backgroundImage: `url(${backgroundImage})` }}>
             <FeedbackSideButton/>
             <Navbar overlayed marginTop={20} />
             <HeroSection className={cls.heroSection} >
@@ -26,11 +29,11 @@ const MainPage = () => {
             </HeroSection>
 
             <Container>
-                <DescriptionWithNav/>
+                <DescriptionWithNav className={cls.description}/>
             </Container>
             <NewsPreviewSection/>
             <Footer />
-        </>
+        </div>
     );
 };
 
