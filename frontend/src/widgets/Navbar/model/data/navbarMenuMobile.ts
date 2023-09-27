@@ -52,7 +52,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
                 elementText: "klaaniesittelyt",
                 link: {
                     isExternal: false,
-                    path : AppExternalLinks.stub
+                    path : RoutePaths.clan
                 }
             },
             {

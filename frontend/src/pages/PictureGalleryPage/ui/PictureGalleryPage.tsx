@@ -9,9 +9,9 @@ const PictureGalleryPage = () => {
 
     return (
        <div className={cls.Wrapper}>
-           <Navbar   className={cls.Navbar}/>
-           <Container fluid={true}>
-               <div style={{display: "flex ", gap: "30px", justifyContent: "center" , flexWrap: "wrap"}}>
+           <Navbar key={"navbarPictureGallery"} className={cls.Navbar}/>
+           <Container fluid={true} className={cls.Container}>
+               <div className={cls.galleries}>
                    {
                        categories.map((category) => (
                            <GalleryCategoriesWithModalSlider

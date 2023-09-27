@@ -61,7 +61,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             {
                 elementText: "klaaniesittelyt",
                 link: {
-                    path: AppExternalLinks.stub,
+                    path: RoutePaths.clan,
                     isExternal: false
 
                 }

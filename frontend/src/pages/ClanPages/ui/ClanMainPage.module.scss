@@ -1,0 +1,14 @@
+.Container{
+  font-family: var(--font-family-texts) !important;
+
+  min-height: 100vh;
+  //background-color: #c50404;
+}
+
+.navWrapper{
+  height: var(--navbar-height);
+}
+
+.Navbar{
+  padding-top: 20px;
+}

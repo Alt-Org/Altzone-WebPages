@@ -9,6 +9,7 @@ import {NewsElementPage} from "@/pages/NewsElementPage";
 import {NotFoundPage} from "@/pages/NotFoundPage";
 import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AuthMainPage, AuthSubLoginPage, AuthSubRegisterPage} from "@/pages/AuthPages";
+import {ClanMainPage} from "@/pages/ClanPages";
 
 export interface RouteObject {
     path: string;
@@ -33,6 +34,12 @@ export const routeConfig: RouteObject[] = Object.values({
     [AppRoutesLinks.AUTH_REGISTER]: {
         path: RoutePaths.auth_register,
         element: <AuthSubRegisterPage/>
+    },
+
+    [AppRoutesLinks.CLAN]: {
+        path: RoutePaths.clan,
+        element: <ClanMainPage HasOutletChildren={Outlet}/>
+
     },
 
 

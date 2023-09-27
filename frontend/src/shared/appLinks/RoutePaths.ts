@@ -7,6 +7,11 @@ export enum AppRoutesLinks {
     AUTH_LOGOUT = "auth_logout",
     AUTH_SESSION_EXP = "auth_session_exp",
 
+    CLAN = "clan",
+    CLAN_ONE = "clan_one",
+    CLAN_ADD_NEW = "clan_add_new",
+
+
 
     MAIN = "MAIN",
     ABOUT = "ABOUT",
@@ -33,6 +38,14 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.AUTH_LOGIN_FPW]: "/auth/login/forgottenPassword",
     [AppRoutesLinks.AUTH_LOGOUT]: "/auth/logout",
     [AppRoutesLinks.AUTH_SESSION_EXP]: "/auth/sessionExpired",
+
+
+    [AppRoutesLinks.CLAN]: "/clan",
+    [AppRoutesLinks.CLAN_ADD_NEW]: "/clan/addNew",
+    [AppRoutesLinks.CLAN_ONE]: "/clan/:id",
+
+
+
 
     [AppRoutesLinks.MAIN]: "/",
     [AppRoutesLinks.ABOUT]: "/about",
