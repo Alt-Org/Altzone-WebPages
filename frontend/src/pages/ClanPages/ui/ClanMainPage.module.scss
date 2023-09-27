@@ -1,14 +1,87 @@
-.Container{
-  font-family: var(--font-family-texts) !important;
-
+.Wrapper{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   min-height: 100vh;
-  //background-color: #c50404;
-}
-
-.navWrapper{
-  height: var(--navbar-height);
 }
 
 .Navbar{
   padding-top: 20px;
 }
+
+
+.ClansViewMain{
+  font-family: var(--font-family-texts) !important;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.53);
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.ClanCard {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  div {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .Container {
+    padding: 20px;
+  }
+
+}
+
+.ClanTable {
+  width: 100%;
+  border-collapse: collapse;
+
+
+  th, td {
+    padding: 0px 10px;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.11);
+  }
+
+
+  th {
+    background-color: rgb(100, 84, 66);
+    text-align: left;
+  }
+
+  tr:hover {
+    cursor: pointer;
+    &:hover{
+      //@include link-scale-effect;
+      background-color: rgba(203, 15, 15, 0.47) !important;
+    }
+  }
+
+  tr{
+   height: 40px;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
