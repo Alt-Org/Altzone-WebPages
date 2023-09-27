@@ -54,7 +54,11 @@ export default memo(( props : NavbarProps) => {
     const [logout] = useLogoutMutation();
 
     return (
+        // <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
+
+            <div className={cls.NestedContainer}>
+
             <div className={cls.navMenu}>
                 <div className={cls.leftSide}>
                     <NavbarItems
@@ -111,7 +115,7 @@ export default memo(( props : NavbarProps) => {
 
                     </div>
                 </div>
-
+            </div>
             </div>
         </nav>
     );
