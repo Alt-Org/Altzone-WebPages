@@ -40,9 +40,9 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.AUTH_SESSION_EXP]: "/auth/sessionExpired",
 
 
-    [AppRoutesLinks.CLAN]: "/clan",
-    [AppRoutesLinks.CLAN_ADD_NEW]: "/clan/addNew",
-    [AppRoutesLinks.CLAN_ONE]: "/clan/:id",
+    [AppRoutesLinks.CLAN]: "/clans",
+    [AppRoutesLinks.CLAN_ADD_NEW]: "/clans/addNew",
+    [AppRoutesLinks.CLAN_ONE]: "/clans/:id",
 
 
 
