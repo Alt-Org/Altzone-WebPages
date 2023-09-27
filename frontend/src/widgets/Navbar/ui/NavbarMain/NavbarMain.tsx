@@ -2,6 +2,8 @@ import {lazy, memo, Suspense} from "react";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import {navbarMenuDesktop} from "../../model/data/navbarMenuDesktop";
 import {navbarMenuMobile} from "../../model/data/navbarMenuMobile";
+import NavbarMobile from "../NavbarMobile/NavbarMobile";
+import NavbarDesktop from "../NavbarDesktop/NavbarDesktop";
 
 interface NavbarMainProps {
     overlayed?: boolean;
@@ -25,20 +27,20 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
     const {isMobileSize} = useIsMobileSize();
 
-    const NavbarDesktop = lazy(() => import('../NavbarDesktop/NavbarDesktop'));
-    const NavbarMobile= lazy(() => import('../NavbarMobile/NavbarMobile'));
+    // const NavbarDesktop = lazy(() => import('../NavbarDesktop/NavbarDesktop'));
+    // const NavbarMobile= lazy(() => import('../NavbarMobile/NavbarMobile'));
 
         if(isMobileSize){
             return (
-            <Suspense fallback=''>
+            // <Suspense fallback=''>
                 <NavbarMobile overlayed={overlayed} marginTop={marginTop} className={className} navBarItemsList={navbarMenuMobile}/>
-            </Suspense>
+            // </Suspense>
         )
         }
         return (
-            <Suspense fallback=''>
+            // <Suspense fallback=''>
                 <NavbarDesktop navbarMenu={navbarMenuDesktop} overlayed={overlayed } className={className} marginTop={marginTop}/>
-            </Suspense>
+            // </Suspense>
         )
 
 

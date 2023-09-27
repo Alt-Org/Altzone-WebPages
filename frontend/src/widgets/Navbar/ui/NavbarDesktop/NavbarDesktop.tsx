@@ -58,6 +58,7 @@ export default memo(( props : NavbarProps) => {
             <div className={cls.navMenu}>
                 <div className={cls.leftSide}>
                     <NavbarItems
+                        key={"isLeftSide"}
                         items={navbarMenu}
                         positionChecker={isLeftSide}
                         itemLinkClassname={itemLinkClassname}
@@ -68,6 +69,7 @@ export default memo(( props : NavbarProps) => {
                 </div>
                 <div className={cls.center}>
                     <NavbarItems
+                        key={"isCenter"}
                         itemNavbarDropDownClassname={itemNavbarDropDownClassname}
                         items={navbarMenu}
                         positionChecker={isCenter}
@@ -79,6 +81,7 @@ export default memo(( props : NavbarProps) => {
                 <div className={cls.rightSide}>
 
                     <NavbarItems
+                        key={"isRightSide"}
                         itemNavbarDropDownClassname={itemNavbarDropDownClassname}
                         items={navbarMenu}
                         positionChecker={isRightSide}
@@ -159,6 +162,7 @@ const NavbarItems = memo(
                         if (isNavbarDropDownObject(item)) {
                             return (
                                 <DropdownWrapper elements={item.elements} contentAbsolute={true}
+                                                 key={item.name}
                                                  className={itemNavbarDropDownClassname}
                                                  childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
                                                  contentClassName={cls.itemNavbarDropDownContentClassName}
