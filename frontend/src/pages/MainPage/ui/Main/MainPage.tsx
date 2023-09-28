@@ -11,7 +11,7 @@ import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {Footer} from "@/widgets/Footer";
 
 import backgroundImage from '@/shared/assets/images/introBackground.avif';
-// import backgroundImg from "@/shared/assets/images/clanBg/Moon.jpg";
+// import backgroundImage from "@/shared/assets/images/clanBg/Moon.jpg";
 
 
 const MainPage = () => {
