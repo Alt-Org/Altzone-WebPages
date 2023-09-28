@@ -10,6 +10,7 @@ import {NotFoundPage} from "@/pages/NotFoundPage";
 import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AuthMainPage, AuthSubLoginPage, AuthSubRegisterPage} from "@/pages/AuthPages";
 import {ClanMainPage} from "@/pages/ClanPages";
+import {AddClanView, AllClansView} from "@/pages/ClanPages/ui/ClanMainPage";
 
 export interface RouteObject {
     path: string;
@@ -38,8 +39,24 @@ export const routeConfig: RouteObject[] = Object.values({
 
     [AppRoutesLinks.CLAN]: {
         path: RoutePaths.clan,
-        element: <ClanMainPage HasOutletChildren={Outlet}/>
+        element: <ClanMainPage
+            HasOutletChildren={Outlet}
+            defaultPage={RoutePaths.clan_all}
+        />,
+        children: [
 
+            {
+                path: RoutePaths.clan_all,
+                element: <AllClansView/>
+            },
+
+            {
+                path: RoutePaths.clan_add_new,
+                element: <AddClanView/>
+            }
+
+
+        ]
     },
 
 
