@@ -41,9 +41,13 @@ export const routeConfig: RouteObject[] = Object.values({
         path: RoutePaths.clan,
         element: <ClanMainPage
             HasOutletChildren={Outlet}
-            defaultPage={RoutePaths.clan_all}
         />,
         children: [
+
+            {
+                path: "",
+                element: <Navigate to={RoutePaths.clan_all} replace />
+            },
 
             {
                 path: RoutePaths.clan_all,

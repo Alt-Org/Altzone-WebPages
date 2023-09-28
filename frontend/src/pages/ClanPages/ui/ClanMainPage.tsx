@@ -7,9 +7,6 @@ import cls from "./ClanMainPage.module.scss";
 import {Link, useNavigate} from "react-router-dom";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
-
-
-
 type Clan = {
     ranking: number,
     clanMaster: string,
@@ -43,17 +40,10 @@ const clans: Clan[] = [
 
 type Props = {
     HasOutletChildren: ComponentType;
-    defaultPage: string
+
 }
 
-const ClanMainPage = ({ HasOutletChildren, defaultPage}: Props) => {
-
-    const navigate = useNavigate();
-
-    useEffect(()=>{
-        navigate(defaultPage);
-    },[])
-
+const ClanMainPage = ({ HasOutletChildren}: Props) => {
 
     return (
         <div className={cls.Wrapper} style={{ backgroundImage: `url(${backgroundImg})` }}>
