@@ -2,7 +2,7 @@ import {ComponentType} from "react";
 import {Navbar} from "@/widgets/Navbar";
 import cls from "./ClanMainPage.module.scss";
 import {Container} from "@/shared/ui/Container";
-import backgroundImg from "@/shared/assets/images/clanBg/Moon.jpg"
+import backgroundImg from "@/shared/assets/images/clanBg/Optimized-Moon.jpg"
 
 type Props = {
     HasOutletChildren: ComponentType;
