@@ -8,6 +8,7 @@ export enum AppRoutesLinks {
     AUTH_SESSION_EXP = "auth_session_exp",
 
     CLAN = "clan",
+    CLAN_ALL = "clan_all",
     CLAN_ONE = "clan_one",
     CLAN_ADD_NEW = "clan_add_new",
 
@@ -41,6 +42,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
 
     [AppRoutesLinks.CLAN]: "/clans",
+    [AppRoutesLinks.CLAN_ALL]: "/clans/all",
     [AppRoutesLinks.CLAN_ADD_NEW]: "/clans/addNew",
     [AppRoutesLinks.CLAN_ONE]: "/clans/:id",
 

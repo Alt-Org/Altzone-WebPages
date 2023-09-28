@@ -11,12 +11,24 @@
 }
 
 
-.ClansViewMain{
+.Container{
   font-family: var(--font-family-texts) !important;
+}
+
+.ClansViewMain{
+  min-height: 57vh;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.53);
   border-radius: 8px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 768px) {
+    @include custom-scrollbar;
+    height: 70vh;
+    overflow-y: auto;
+  }
+
+
 }
 
 
@@ -42,6 +54,8 @@
 }
 
 .ClanTable {
+  overflow-y: auto;
+
   width: 100%;
   border-collapse: collapse;
 
