@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {StateSchema} from "@/app/providers/StoreProvider";
 import {envHelper} from "@/shared/const/env/envHelper";
-import {IClan, IClanCreateDto, IClanUpdateDto} from "@/entities/Clan/types/clan";
+import {IClan, IClanCreateDto, IClanUpdateDto} from "@/entities/Clan";
 
 
 const clanUrl = "clan";
@@ -24,7 +24,7 @@ export const clanApi = createApi({
         }),
     endpoints: (builder) => ({
 
-        getClans: builder.query<IClan, {}>({
+        getClans: builder.query<IClan[], {}>({
             query: (options) => {
                 // const paramsToBeSent= {
                 //     page: options.page,
