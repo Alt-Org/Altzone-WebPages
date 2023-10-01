@@ -1,4 +1,5 @@
 .Sidebar {
+  z-index: var(--sidebar-z-index);
   height: 100vh;
   width: var(--sidebar-width);
   background: rgba(0, 0, 0, 0.65);
@@ -20,6 +21,7 @@
 //.side
 
 .button{
+  z-index: calc(var(--sidebar-z-index) + 1 );
   width: 33px;
 }
 
