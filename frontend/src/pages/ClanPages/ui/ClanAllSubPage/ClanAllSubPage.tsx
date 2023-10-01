@@ -2,25 +2,39 @@ import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import cls from "./ClanAllSubPage.module.scss";
 import {IClan, useGetClansQuery} from "@/entities/Clan";
 import {Loader} from "@/shared/ui/Loader";
+import {useNavigate} from "react-router-dom";
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 
-export const ClanAllSubPage = () => {
+const ClanAllSubPage = () => {
+
+
     const { isMobileSize } = useIsMobileSize();
 
+    const navigate = useNavigate();
 
     const { data: clans, error, isLoading } = useGetClansQuery({});
 
     if (isLoading) return <Loader className={cls.Loader}/>
 
 
-    if (error) return <div>Error: {JSON.stringify(error)}</div>;
+        if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
+
+
+    const onClickToClan = (id: string) => {
+        navigate(RoutePaths.clan + `/${id}`);
+    }
 
     if(clans){
         return (
             <>
                 <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANIT</h1>
-                {isMobileSize ? <ClansViewMobile clans={clans} /> : <ClansViewDesktop clans={clans} />}
+                {isMobileSize
+                    ?
+                    <ClansViewMobile clans={clans} onClickToClan={onClickToClan}/>
+                    :
+                    <ClansViewDesktop clans={clans} onClickToClan={onClickToClan}/>}
             </>
         );
     }
@@ -32,12 +46,19 @@ export const ClanAllSubPage = () => {
 
 
 type MobileProps = {
-    clans : IClan[]
+    clans : IClan[];
+    onClickToClan? : (id: string) => void;
 }
 
 
 
-const ClansViewMobile = ({ clans }: MobileProps) => {
+const ClansViewMobile = ({ clans, onClickToClan }: MobileProps) => {
+
+    const onClick = (id: string) => {
+        if(onClickToClan) onClickToClan(id);
+    }
+
+
     return (
         <>
             {clans.map((clan, idx) => {
@@ -59,6 +80,7 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                 return (
                     <div key={idx} className={cls.ClanCard}
                          style={{ backgroundColor: bgColor }}
+                         onClick={()=>onClick(clan._id)}
                     >
                         <div><strong>Sijoitus:</strong> {idx + 1}</div>
                         <div><strong>Klaani:</strong> {clan.name}</div>
@@ -75,10 +97,17 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
 
 
 type DesktopProps = {
-    clans : IClan[]
+    clans : IClan[];
+    onClickToClan? : (id: string) => void;
 }
 
-const ClansViewDesktop = ({ clans }: DesktopProps) => {
+const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
+
+    const onClick = (id: string) => {
+        if(onClickToClan) onClickToClan(id);
+    }
+
+
     return (
         <table className={cls.ClanTable}>
             <thead>
@@ -110,12 +139,12 @@ const ClansViewDesktop = ({ clans }: DesktopProps) => {
                 }
 
                 return (
-                    <tr key={idx} style={{ backgroundColor: bgColor }}>
+                    <tr key={idx} style={{ backgroundColor: bgColor }} onClick={()=>onClick(clan._id)}>
                         <td>{idx + 1}</td>
                         <td>{clan.name}</td>
-                        <td>Joku Mestari {idx + 1}</td> {/* Assuming we don't have clan master data and using placeholder */}
+                        <td>Joku Mestari {idx + 1}</td>
                         <td>{clan.gameCoins}</td>
-                        <td>{50}</td>  {/* Assuming we don't have members data and using placeholder */}
+                        <td>{50}</td>
                         <td>{clan.tag}</td>
                     </tr>
                 );
@@ -124,3 +153,6 @@ const ClansViewDesktop = ({ clans }: DesktopProps) => {
         </table>
     )
 }
+
+
+export default ClanAllSubPage;
