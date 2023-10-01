@@ -2,7 +2,8 @@ export type IClan = {
     _id: string,
     name: string,
     gameCoins: number,
-    tag: string
+    tag: string,
+    admin_ids: string[],
 };
 
 export type IClanCreateDto = Pick<IClan, "name" | "tag" | "gameCoins">;

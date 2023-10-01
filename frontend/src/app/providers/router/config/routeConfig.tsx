@@ -9,7 +9,7 @@ import {NewsElementPage} from "@/pages/NewsElementPage";
 import {NotFoundPage} from "@/pages/NotFoundPage";
 import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AuthMainPage, AuthSubLoginPage, AuthSubRegisterPage} from "@/pages/AuthPages";
-import {ClanMainPage, ClanAllSubPage , ClanAddSubPage} from "@/pages/ClanPages";
+import {ClanMainPage, ClanAllSubPage, ClanAddSubPage, ClanRoomSubPage} from "@/pages/ClanPages";
 
 
 export interface RouteObject {
@@ -51,8 +51,12 @@ export const routeConfig: RouteObject[] = Object.values({
 
             {
                 path: RoutePaths.clan_all,
-                // element: <AllClansView/>
                 element: <ClanAllSubPage/>
+            },
+
+            {
+                path: RoutePaths.clan_one,
+                element: <ClanRoomSubPage/>
             },
 
             {
