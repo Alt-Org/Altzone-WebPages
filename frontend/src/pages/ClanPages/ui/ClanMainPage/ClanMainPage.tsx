@@ -22,7 +22,11 @@ const ClanMainPage = ({ HasOutletChildren}: Props) => {
     const [canShowUserClan, setShowUserClan] = useState(false);
 
     useEffect(() => {
-        if(!user) return;
+        if(!user) {
+            setShowUserClan(false);
+            setCanShowAddNew(false);
+            return;
+        }
 
         if(!user.Player.clan_id){
             setCanShowAddNew(true);
