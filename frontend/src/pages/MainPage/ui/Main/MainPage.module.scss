@@ -6,28 +6,6 @@
   min-height: 100vh;
 }
 
-@media only screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-  .Wrapper {
-    background-attachment: scroll;
-  }
-  .Wrapper::before {
-    content: "";
-    position: fixed; /* this is the magic */
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    -webkit-background-image: inherit;
-    background-image: inherit;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-}
-
-
-
 .heroSection{
   height: 100vh;
   width: 100%;

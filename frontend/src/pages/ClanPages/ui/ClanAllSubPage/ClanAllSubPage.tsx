@@ -1,6 +1,6 @@
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import cls from "./ClanAllSubPage.module.scss";
-import {IClan, useGetClansQuery} from "@/entities/Clan";
+import {GetClansResponse, useGetClansQuery} from "@/entities/Clan";
 import {Loader} from "@/shared/ui/Loader";
 import {useNavigate} from "react-router-dom";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
@@ -17,9 +17,7 @@ const ClanAllSubPage = () => {
 
     if (isLoading) return <Loader className={cls.Loader}/>
 
-
-        if (error) return <div>Error: {JSON.stringify(error)}</div>;
-
+    if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
 
     const onClickToClan = (id: string) => {
@@ -32,9 +30,9 @@ const ClanAllSubPage = () => {
                 <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANIT</h1>
                 {isMobileSize
                     ?
-                    <ClansViewMobile clans={clans} onClickToClan={onClickToClan}/>
+                    <ClansViewMobile clanServerResponse={clans} onClickToClan={onClickToClan}/>
                     :
-                    <ClansViewDesktop clans={clans} onClickToClan={onClickToClan}/>}
+                    <ClansViewDesktop clanServerResponse={clans} onClickToClan={onClickToClan}/>}
             </>
         );
     }
@@ -46,22 +44,21 @@ const ClanAllSubPage = () => {
 
 
 type MobileProps = {
-    clans : IClan[];
+    clanServerResponse : GetClansResponse;
     onClickToClan? : (id: string) => void;
 }
 
 
 
-const ClansViewMobile = ({ clans, onClickToClan }: MobileProps) => {
+const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => {
 
     const onClick = (id: string) => {
         if(onClickToClan) onClickToClan(id);
     }
 
-
     return (
         <>
-            {clans.map((clan, idx) => {
+            {clanServerResponse.data.Clan.map((clan, idx) => {
                 let bgColor;
                 switch (idx) {
                     case 0:
@@ -80,12 +77,12 @@ const ClansViewMobile = ({ clans, onClickToClan }: MobileProps) => {
                 return (
                     <div key={idx} className={cls.ClanCard}
                          style={{ backgroundColor: bgColor }}
-                         onClick={()=>onClick(clan._id)}
+                         onClick={()=>onClick(clan?._id)}
                     >
                         <div><strong>Sijoitus:</strong> {idx + 1}</div>
-                        <div><strong>Klaani:</strong> {clan.name}</div>
-                        <div><strong>Kolikot:</strong> {clan.gameCoins}</div>
-                        <div><strong>Tagi:</strong> {clan.tag}</div>
+                        <div><strong>Klaani:</strong> {clan?.name}</div>
+                        <div><strong>Kolikot:</strong> {clan?.gameCoins}</div>
+                        <div><strong>Tagi:</strong> {clan?.tag}</div>
                         <div><strong>Jäsenet:</strong> {50}</div>
                         <div><strong>Mestari:</strong> Joku Mestari {idx +1}</div>
                     </div>
@@ -97,16 +94,16 @@ const ClansViewMobile = ({ clans, onClickToClan }: MobileProps) => {
 
 
 type DesktopProps = {
-    clans : IClan[];
+    clanServerResponse : GetClansResponse;
     onClickToClan? : (id: string) => void;
 }
 
-const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
+const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) => {
+
 
     const onClick = (id: string) => {
         if(onClickToClan) onClickToClan(id);
     }
-
 
     return (
         <table className={cls.ClanTable}>
@@ -121,7 +118,7 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
             </tr>
             </thead>
             <tbody>
-            {clans.map((clan, idx) => {
+            {clanServerResponse.data.Clan.map((clan, idx) => {
                 let bgColor;
                 switch (idx) {
                     case 0:
@@ -139,13 +136,13 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                 }
 
                 return (
-                    <tr key={idx} style={{ backgroundColor: bgColor }} onClick={()=>onClick(clan._id)}>
+                    <tr key={idx} style={{ backgroundColor: bgColor }} onClick={()=>onClick(clan?._id)}>
                         <td>{idx + 1}</td>
-                        <td>{clan.name}</td>
-                        <td>Joku Mestari {idx + 1}</td>
-                        <td>{clan.gameCoins}</td>
-                        <td>{50}</td>
-                        <td>{clan.tag}</td>
+                        <td>{clan?.name}</td>
+                        <td>Joku Mestari </td>
+                        <td>{clan?.gameCoins}</td>
+                        <td>{clan?.playerCount}</td>
+                        <td>{clan?.tag}</td>
                     </tr>
                 );
             })}
