@@ -43,7 +43,6 @@ type ArrayData<K extends string, T> = {
 declare type ResponseShapeOne<K extends string, T> = {
     data: SingleData<K, T>
     metaData: MetaData;
-    paginationData: PaginationData;
 };
 
 declare type ResponseShapeArray<K extends string, T> = {
