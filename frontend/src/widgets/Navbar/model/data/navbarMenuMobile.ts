@@ -6,7 +6,7 @@ import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     {
-        name: 'Main',
+        name: 'Pääsivu',
         path: RoutePaths.MAIN,
         type: navbarItemType.NavbarMenuMobileItem
     },
@@ -24,7 +24,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     // },
 
     {
-        name : 'Yhteiso',
+        name : 'Yhteisö',
         type: navbarItemType.NavbarMenuMobileDropDownItem,
         elements: [
             {
@@ -45,18 +45,18 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     },
 
     {
-        name : 'peli',
+        name : 'Peli',
         type: navbarItemType.NavbarMenuMobileDropDownItem,
         elements: [
             {
-                elementText: "klaaniesittelyt",
+                elementText: "Klaaniesittelyt",
                 link: {
                     isExternal: false,
                     path : RoutePaths.clan
                 }
             },
             {
-                elementText: "leaderboard",
+                elementText: "Leaderboard",
                 link: {
                     isExternal: false,
                     path : AppExternalLinks.stub
@@ -64,7 +64,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
             },
 
             {
-                elementText: "hahmogalleria",
+                elementText: "Hahmogalleria",
                 link: {
                     isExternal: false,
                     path : AppExternalLinks.stub
@@ -72,7 +72,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
             },
 
             {
-                elementText: "kuvagalleria",
+                elementText: "Kuvagalleria",
                 link: {
                     isExternal: false,
                     path: RoutePaths.PICTURE_GALLERY,
@@ -89,7 +89,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
         type: navbarItemType.NavbarMenuMobileItem
     },
     {
-        name : 'Tekijat',
+        name : 'Tekijät',
         path:  RoutePaths.MEMBERS,
         type: navbarItemType.NavbarMenuMobileItem
     },
