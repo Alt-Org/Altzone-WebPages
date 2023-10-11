@@ -10,6 +10,7 @@ import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {Footer} from "@/widgets/Footer";
 import backgroundImage from '@/shared/assets/images/introBackground.avif';
+import {useAttachmentImageToElement} from "@/shared/lib/hooks/useAttachmentImageToElement";
 
 
 
@@ -19,22 +20,14 @@ const MainPage = () => {
         openLinkInNewTab(AppExternalLinks.webgl);
     }
 
-
-
-    const dynamicStyles = `
-        .${cls.Wrapper}::before {
-            background-image: url(${backgroundImage});
-        }
-    `;
-
+    const {imageBgWrapperRef} = useAttachmentImageToElement(backgroundImage);
 
     return (
-        <>
-        <style>{dynamicStyles}</style>
-        <div className={cls.Wrapper} data-bg-image={backgroundImage}>
-
+        <div className={cls.Wrapper} ref={imageBgWrapperRef}>
             <FeedbackSideButton/>
             <Navbar overlayed marginTop={20} />
+
+
             <HeroSection className={cls.heroSection}>
                 <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>Pelaa netissa!</Button>
             </HeroSection>
@@ -45,7 +38,6 @@ const MainPage = () => {
             <NewsPreviewSection/>
             <Footer />
         </div>
-        </>
     );
 
 };

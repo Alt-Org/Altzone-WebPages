@@ -3,10 +3,11 @@ import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {Navbar} from "@/widgets/Navbar";
 import {Container} from "@/shared/ui/Container";
-import backgroundImg from "@/shared/assets/images/clanBg/Optimized-Moon.jpg"
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {selectProfile} from "@/entities/Auth";
 import cls from "./ClanMainPage.module.scss";
+import {useAttachmentImageToElement} from "@/shared/lib/hooks/useAttachmentImageToElement";
+import backgroundImage from "@/shared/assets/images/clanBg/Optimized-Moon.jpg"
 
 
 type Props = {
@@ -15,6 +16,8 @@ type Props = {
 }
 
 const ClanMainPage = ({ HasOutletChildren}: Props) => {
+
+    const {imageBgWrapperRef} = useAttachmentImageToElement(backgroundImage);
 
     const user = useSelector(selectProfile);
 
@@ -40,7 +43,7 @@ const ClanMainPage = ({ HasOutletChildren}: Props) => {
     },[user]);
 
     return (
-        <div className={cls.Wrapper} style={{ backgroundImage: `url(${backgroundImg})` }}>
+        <div className={cls.Wrapper} ref={imageBgWrapperRef}>
             <Navbar className={cls.Navbar} />
             <Container className={cls.Container}>
                 <div style={{display: "flex" , gap: "10px"}}>
