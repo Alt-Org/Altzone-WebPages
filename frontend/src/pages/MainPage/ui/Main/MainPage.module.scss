@@ -1,12 +1,41 @@
-.Wrapper {
-  min-height: 100vh;
-}
+//.Wrapper {
+//  position: relative;
+//  z-index: 1;
+//}
+
+//.Background {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  width: 100%;
+//  height: 100vh;
+//  z-index: 1;
+//  background-repeat: no-repeat;
+//  background-position: center;
+//  background-size: cover;
+//  -webkit-background-size: cover;
+//  -moz-background-size: cover;
+//  -o-background-size: cover;
+//}
+//
+//.Content {
+//  @include custom-scrollbar;
+//  position: relative;
+//  z-index: 2;
+//  overflow-y: auto;
+//  height: 100vh;
+//  padding-top: 1px;
+//  padding-bottom: 1px;
+//}
+//
+
 
 
 .heroSection{
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
 }
+
 
 .BtnGame{
   background-color: var(--transparent-bg);
