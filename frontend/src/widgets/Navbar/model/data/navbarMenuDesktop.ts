@@ -29,7 +29,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
     {
 
-        name: 'yhteiso',
+        name: 'Yhteisö',
         elements: [
             {
                 elementText: "Foorumi",
@@ -56,10 +56,10 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
     {
 
-        name: 'peli',
+        name: 'Peli',
         elements: [
             {
-                elementText: "klaaniesittelyt",
+                elementText: "Klaaniesittelyt",
                 link: {
                     path: RoutePaths.clan,
                     isExternal: false
@@ -68,7 +68,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             },
 
             {
-                elementText: "leaderboard",
+                elementText: "Leaderboard",
                 link: {
                     path: AppExternalLinks.stub,
                     isExternal: false
@@ -76,7 +76,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             },
 
             {
-                elementText: "hahmogalleria",
+                elementText: "Hahmogalleria",
                 link: {
                     path: AppExternalLinks.stub,
                     isExternal: false
@@ -84,7 +84,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             },
 
             {
-                elementText: "kuvagalleria",
+                elementText: "Kuvagalleria",
                 link: {
                     path: RoutePaths.PICTURE_GALLERY,
                     isExternal: false
@@ -119,7 +119,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
         position: "right"
     },
     {
-        name: 'Tekijat',
+        name: 'Tekijät',
         path:  RoutePaths.MEMBERS,
         isActive: false,
         type: ItemType.navLink,
