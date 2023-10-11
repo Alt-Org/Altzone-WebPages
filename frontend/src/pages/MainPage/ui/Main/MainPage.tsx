@@ -1,49 +1,41 @@
 import {HeroSection} from "@/widgets/HeroSection";
-import cls from "./MainPage.module.scss";
-import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
-import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import {Container} from "@/shared/ui/Container";
 import {DescriptionWithNav} from "@/widgets/DescriptionWithNav";
 import {NewsPreviewSection} from "@/widgets/NewsPreviewSection";
 import {Navbar} from "@/widgets/Navbar";
+import {Footer} from "@/widgets/Footer";
 import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
-import {Footer} from "@/widgets/Footer";
+import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
+import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
+import {Container} from "@/shared/ui/Container";
 import backgroundImage from '@/shared/assets/images/introBackground.avif';
-import {useAttachmentImageToElement} from "@/shared/lib/hooks/useAttachmentImageToElement";
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import cls from "./MainPage.module.scss"
 
 
 
 const MainPage = () => {
-
     const handleClick = () => {
         openLinkInNewTab(AppExternalLinks.webgl);
     }
 
-    const {imageBgWrapperRef} = useAttachmentImageToElement(backgroundImage);
-
     return (
-        <div className={cls.Wrapper} ref={imageBgWrapperRef}>
-            <FeedbackSideButton/>
-            <Navbar overlayed marginTop={20} />
-
-
-            <HeroSection className={cls.heroSection}>
-                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>Pelaa netissa!</Button>
-            </HeroSection>
-
-            <Container>
-                <DescriptionWithNav className={cls.description}/>
-            </Container>
-            <NewsPreviewSection/>
-            <Footer />
+        <div className={cls.Wrapper}>
+                <FeedbackSideButton />
+                <Navbar overlayed marginTop={20} />
+                <HeroSection className={cls.heroSection}>
+                    <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>Pelaa netissa!</Button>
+                </HeroSection>
+                <Container>
+                    <DescriptionWithNav className={cls.description} />
+                </Container>
+                <NewsPreviewSection />
+                <Footer />
         </div>
     );
-
 };
 
 
-export default MainPage;
-
+export default withBackgroundImage(MainPage, backgroundImage);
 
 

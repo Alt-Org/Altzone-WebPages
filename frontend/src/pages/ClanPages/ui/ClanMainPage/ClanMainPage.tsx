@@ -6,8 +6,8 @@ import {Container} from "@/shared/ui/Container";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {selectProfile} from "@/entities/Auth";
 import cls from "./ClanMainPage.module.scss";
-import {useAttachmentImageToElement} from "@/shared/lib/hooks/useAttachmentImageToElement";
 import backgroundImage from "@/shared/assets/images/clanBg/Optimized-Moon.jpg"
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 
 
 type Props = {
@@ -16,8 +16,6 @@ type Props = {
 }
 
 const ClanMainPage = ({ HasOutletChildren}: Props) => {
-
-    const {imageBgWrapperRef} = useAttachmentImageToElement(backgroundImage);
 
     const user = useSelector(selectProfile);
 
@@ -43,7 +41,7 @@ const ClanMainPage = ({ HasOutletChildren}: Props) => {
     },[user]);
 
     return (
-        <div className={cls.Wrapper} ref={imageBgWrapperRef}>
+        <div className={cls.Wrapper}>
             <Navbar className={cls.Navbar} />
             <Container className={cls.Container}>
                 <div style={{display: "flex" , gap: "10px"}}>
@@ -64,4 +62,4 @@ const ClanMainPage = ({ HasOutletChildren}: Props) => {
 
 
 
-export default ClanMainPage;
+export default withBackgroundImage(ClanMainPage,backgroundImage);
