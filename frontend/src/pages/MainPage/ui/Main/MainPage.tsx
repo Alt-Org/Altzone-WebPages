@@ -20,23 +20,7 @@ const MainPage = () => {
     }
 
 
-    // return (
-    //     <div className={cls.Wrapper} style={{ backgroundImage: `url(${backgroundImage})` }}>
-    //         <FeedbackSideButton/>
-    //         <Navbar overlayed marginTop={20} />
-    //         <HeroSection className={cls.heroSection} >
-    //             <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick} > Pelaa netissa !</Button>
-    //         </HeroSection>
-    //
-    //         <Container>
-    //             <DescriptionWithNav className={cls.description}/>
-    //         </Container>
-    //         <NewsPreviewSection/>
-    //         <Footer />
-    //
-    //
-    //     </div>
-    // );
+
     const dynamicStyles = `
         .${cls.Wrapper}::before {
             background-image: url(${backgroundImage});
