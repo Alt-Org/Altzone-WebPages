@@ -1,8 +1,9 @@
 import {Component, ComponentType, createRef} from 'react';
 import cls from "./withBackgroundImage.module.scss";
 
-function withBackgroundImage(WrappedComponent: ComponentType<any>, imagePath: string) {
-    return class extends Component {
+// function withBackgroundImage(WrappedComponent: ComponentType<any>, imagePath: string) {
+function withBackgroundImage<P extends object>(WrappedComponent: ComponentType<P>, imagePath: string): ComponentType<P> {
+    return class extends Component<P> {
         private backgroundDiv = createRef<HTMLDivElement>();
 
         componentDidMount() {
