@@ -6,8 +6,12 @@
   //--font-family-main: 'Bombing';
   //--font-family-texts : "Tahoma", serif;
 
-  --font-family-main: "Impact", Charcoal, sans-serif;
-  --font-family-texts: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+  //--font-family-main: "Impact", Charcoal, sans-serif;
+  //--font-family-main: 'Grandstander', cursive;
+  //--font-family-main: 'Rubik';
+  //--font-family-texts: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+  --font-family-texts: "Rubik";
+  --font-family-main: 'Urbanist', sans-serif;
 
   --font-size-s: 14px;
   --font-line-s: 20px;
@@ -43,7 +47,7 @@
   //--navbar-logo-height: 17vh;
   --navbar-logo-height: 200px;
   --navbar-logo-width: 200px;
-  --sidebar-width: 320px;
+  --sidebar-width: 340px;
   --sidebar-width-collapsed: 0px;
 
   // indexes
@@ -60,7 +64,7 @@
 
 
   //animations
-  --animation-link-hover-scale: 1.1;
+  --animation-link-hover-scale: 1.05;
   --animation-link-active-scale: 0.95;
 
 }

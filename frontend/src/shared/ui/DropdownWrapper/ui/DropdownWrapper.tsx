@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import {FC, useEffect, useRef, useState} from 'react';
 import cls from './DropdownWrapper.module.scss';
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {DropdownWrapperProps} from "../types";
@@ -26,6 +26,7 @@ import {AppLink} from "@/shared/ui/AppLink/AppLink";
 export const DropdownWrapper: FC<DropdownWrapperProps> = (
     {
         contentAbsolute= false,
+        closeOnMouseLeave= false,
         className='',
         childrenWrapperClassName = '',
         contentClassName='',
@@ -43,6 +44,18 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
+
+    const handleMouseLeave = () => {
+
+        if(!closeOnMouseLeave) return;
+
+        setIsOpen(false);
+        if (onClose) {
+            onClose();
+        }
+    };
+
+
     /**
      * Toggles the dropdown open or close   d.
      *
@@ -59,6 +72,7 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
     };
 
 
+
     /**
      * Handles the click event for a dropdown element.
      *
@@ -70,16 +84,15 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
     };
 
 
-    const ContentArrow = () => {
-        return <span>⇩</span>
-    }
+
+
 
     return (
         // <div className={cls.DropdownWrapper}>
-        <div className={classNames(cls.DropdownWrapper,mods,[className])}>
+        <div className={classNames(cls.DropdownWrapper,mods,[className])} onMouseLeave={handleMouseLeave}>
             <div onClick={toggleDropdown} role="button" tabIndex={0} className={classNames(cls.childrenWrapper,{},[childrenWrapperClassName])}>
                 {children}
-                <ContentArrow/>
+                <span>⇩</span>
             </div>
 
             {isOpen && (
