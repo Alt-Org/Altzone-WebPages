@@ -26,7 +26,7 @@ import {AppLink} from "@/shared/ui/AppLink/AppLink";
 export const DropdownWrapper: FC<DropdownWrapperProps> = (
     {
         contentAbsolute= false,
-        closeOnMouseLeave= false,
+        mouseOverLeaveMode= false,
         className='',
         childrenWrapperClassName = '',
         contentClassName='',
@@ -37,18 +37,22 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
         onClose
     }) => {
 
-    const mods: Record<string, boolean> = {
-        [cls.contentAbsolute]: contentAbsolute,
-    } as Record<string, boolean>;
 
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
 
+
+    const handleMouseOver = () => {
+        if(!mouseOverLeaveMode) return;
+        setIsOpen(true);
+        if (onOpen) {
+            onOpen();
+        }
+    };
+
     const handleMouseLeave = () => {
-
-        if(!closeOnMouseLeave) return;
-
+        if(!mouseOverLeaveMode) return;
         setIsOpen(false);
         if (onClose) {
             onClose();
@@ -56,11 +60,6 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
     };
 
 
-    /**
-     * Toggles the dropdown open or close   d.
-     *
-     * @returns {void}
-     */
     const toggleDropdown = (): void => {
         setIsOpen(!isOpen);
         if(isOpen && onOpen){
@@ -84,20 +83,31 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
     };
 
 
+    const mods: Record<string, boolean> = {
+        [cls.contentAbsolute]: contentAbsolute,
+    } as Record<string, boolean>;
 
+    const dropdownContentMods: Record<string, boolean> = {
+        [cls.closed]: !isOpen,
+    } as Record<string, boolean>;
 
 
     return (
-        // <div className={cls.DropdownWrapper}>
-        <div className={classNames(cls.DropdownWrapper,mods,[className])} onMouseLeave={handleMouseLeave}>
-            <div onClick={toggleDropdown} role="button" tabIndex={0} className={classNames(cls.childrenWrapper,{},[childrenWrapperClassName])}>
+        <div className={
+            classNames(cls.DropdownWrapper,mods,[className])}
+             onMouseLeave={handleMouseLeave}
+        >
+            <div onClick={toggleDropdown}
+                 onMouseOver={handleMouseOver}
+                 role="button"
+                 tabIndex={0}
+                 className={classNames(cls.childrenWrapper, {},[childrenWrapperClassName])}
+            >
                 {children}
                 <span>⇩</span>
             </div>
 
-            {isOpen && (
-                // <div className={cls.dropdownContent}>
-                <div className={classNames(cls.dropdownContent,{},[contentClassName])}>
+                <div className={classNames(cls.dropdownContent,dropdownContentMods,[contentClassName])}>
                     {elements.map((element,index) => (
                         <div onClick={() => handleElementClick(element.onClickCallback)} key={index}>
                             {
@@ -115,7 +125,6 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
                         </div>
                     ))}
                 </div>
-            )}
         </div>
     );
 };
