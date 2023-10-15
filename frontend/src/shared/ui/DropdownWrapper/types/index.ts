@@ -13,7 +13,7 @@ export type DropDownElement = {
 }
 
 
-export interface DropdownWrapperProps {
+export type DropdownWrapperProps = {
     className?: string;
     contentClassName?: string;
     contentItemClassName?: string;
@@ -23,5 +23,6 @@ export interface DropdownWrapperProps {
     onOpen?: () => void;
     onClose?: () => void;
     children: ReactNode;
+    closeOnMouseLeave?: boolean;
 }
 

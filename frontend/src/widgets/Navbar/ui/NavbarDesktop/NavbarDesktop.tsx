@@ -166,6 +166,7 @@ const NavbarItems = memo(
                         if (isNavbarDropDownObject(item)) {
                             return (
                                 <DropdownWrapper elements={item.elements} contentAbsolute={true}
+                                                 closeOnMouseLeave={true}
                                                  key={item.name}
                                                  className={itemNavbarDropDownClassname}
                                                  childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
