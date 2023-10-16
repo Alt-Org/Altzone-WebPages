@@ -9,7 +9,7 @@ interface ScrollTopProps {
     children?: ReactNode
 }
 
-export const ScrollTop = memo(({ className = '', children = 'UP' }: ScrollTopProps) => {
+export const ScrollTop = memo(({ className = '', children = 'YLÖS' }: ScrollTopProps) => {
     const currentYPosition = useCurrentYPosition();
 
     const handleButtonClick = useCallback(() => {
