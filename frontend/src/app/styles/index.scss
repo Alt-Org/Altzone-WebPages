@@ -20,6 +20,18 @@ body.FsLightbox{
   width: 100vw;
 }
 
+// fix a blinking bug
+.fslightbox-fade-in-strong{
+  animation: none !important;
+  transition: visibility 0s 0.25s, opacity 0.25s ease !important;
+}
+.fslightbox-fade-out-strong {
+  animation: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transition: visibility 0s 0.25s, opacity 0.25s ease !important;
+}
+
 .app {
   min-height: 100vh;
   height: auto;

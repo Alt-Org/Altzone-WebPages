@@ -2,6 +2,12 @@ import {useEffect, useRef, useState} from "react";
 import cls from "./styles.module.scss";
 import {FsLightboxFixed} from "./FsLightboxFixed";
 
+
+// const pdftest = import.meta.glob('@/shared/assets/pdf/altzone.pdf', { eager: true, as: '' })
+// import pdfPath from "@/shared/assets/pdf/altzone.pdf";
+
+
+
 type Props = {
     title: string,
     followLastImage?: boolean;
@@ -33,6 +39,8 @@ export const GalleryCategoriesWithModalSlider = ({title, sources, followLastImag
         }
     }, [isOpen]);
 
+
+
     return (
         <div style={{cursor: "pointer"}}>
 
@@ -41,6 +49,8 @@ export const GalleryCategoriesWithModalSlider = ({title, sources, followLastImag
                 <img className={cls.categoryImg} src={sources[sourceIndex]} alt=""/>
             </div>
           <FsLightboxFixed
+
+                    disableSlideSwiping={true}
                     zoomIncrement={1}
                     onOpen={()=>setIsOpen(true)}
                     onClose={()=>{
@@ -52,11 +62,29 @@ export const GalleryCategoriesWithModalSlider = ({title, sources, followLastImag
                     }}
                     ref={ref}
                     sourceIndex={sourceIndex}
-                    loadOnlyCurrentSource={true}
+                    // loadOnlyCurrentSource={true}
                     toggler={toggler}
+                    // sources={sources}
                     sources={sources.map((s=>{
                         return (
-                            <img className={cls.sliderImg} src={s}/>
+                            <div className={cls.sliderContainer}>
+
+
+                                <div className={cls.sliderText}>
+                                Lorem ipsum dolor sit amet,
+                                consectetur adipisicing elit.
+                                At culpa debitis distinctio ducimus fugit nesciunt possimus,
+                                ratione saepe. Amet autem deserunt earum exercitationem
+                                fugiat hic illo maiores officiis tenetur voluptate.
+                                    <a href="https://google.com">google</a>
+                                </div>
+
+
+                                <img className={cls.sliderImg} src={s}/>
+
+
+                            </div>
+
                         )
                     }))}
                 />
