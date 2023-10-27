@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import {memo, useEffect, useRef, useState} from "react";
 import cls from "./styles.module.scss";
 import {FsLightboxFixed} from "./FsLightboxFixed";
 
@@ -14,7 +14,7 @@ type Props = {
     sources : string[]
 }
 
-export const GalleryCategoriesWithModalSlider = ({title, sources, followLastImage = false}: Props) => {
+export const GalleryCategoriesWithModalSlider = memo(({title, sources, followLastImage = false}: Props) => {
     const [toggler, setToggler] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef<any>();
@@ -24,20 +24,27 @@ export const GalleryCategoriesWithModalSlider = ({title, sources, followLastImag
 
     // This code block fixes a slider library bug with scrollbar.
     // For more details, refer to the styles in index.scss.
-    useEffect(() => {
-        function cleanup() {
-            window.document.body.classList.remove('FsLightbox');
-        }
-        if(isOpen){
-            window.document.body.classList.add('FsLightbox');
-        }
-       else{
-           cleanup()
-        }
-        return () =>{
-            cleanup()
-        }
-    }, [isOpen]);
+    // useEffect(() => {
+    //     function cleanup() {
+    //         window.document.body.classList.remove('FsLightbox');
+    //     }
+    //     if(isOpen){
+    //         window.document.body.classList.add('FsLightbox');
+    //     }
+    //    else{
+    //        cleanup()
+    //     }
+    //     return () =>{
+    //         cleanup()
+    //     }
+    // }, [isOpen]);
+
+
+    // useEffect(() => {
+    //     // if(isOpen){
+    //         ref?.current?.elements?.container?.current?.classList?.remove('fslightbox-fade-in-strong');
+    //     // }
+    // }, [isOpen])
 
 
 
@@ -48,20 +55,23 @@ export const GalleryCategoriesWithModalSlider = ({title, sources, followLastImag
                 <h2 className={cls.title}>{title}</h2>
                 <img className={cls.categoryImg} src={sources[sourceIndex]} alt=""/>
             </div>
-          <FsLightboxFixed
 
+          <FsLightboxFixed
+                    // UIFadeOutTime={1000}
                     disableSlideSwiping={true}
-                    zoomIncrement={1}
-                    onOpen={()=>setIsOpen(true)}
-                    onClose={()=>{
-                        if(ref && followLastImage){
-                            const currentIndex = getCurrentIndexByRef(ref);
-                            setSourceIndex(currentIndex);
-                        }
-                        setIsOpen(false)
-                    }}
+                    // zoomIncrement={1}
+                    // onOpen={()=>setIsOpen(true)}
+                    // onClose={()=>{
+                    //     if(ref && followLastImage){
+                    //         const currentIndex = getCurrentIndexByRef(ref);
+                    //         setSourceIndex(currentIndex);
+                    //     }
+                    //     setIsOpen(false)
+                    // }}
+
+
                     ref={ref}
-                    sourceIndex={sourceIndex}
+                    // sourceIndex={sourceIndex}
                     // loadOnlyCurrentSource={true}
                     toggler={toggler}
                     // sources={sources}
@@ -90,4 +100,4 @@ export const GalleryCategoriesWithModalSlider = ({title, sources, followLastImag
                 />
         </div>
     )
-}
+})
