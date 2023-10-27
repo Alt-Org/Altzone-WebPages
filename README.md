@@ -1,3 +1,3 @@
 # Altzone-WebPages
-webpage current version : https://main--jazzy-taiyaki-39e194.netlify.app/ <br/>
+webpage current version : https://altzone.netlify.app/ <br/>
 
