@@ -10,27 +10,54 @@ body {
   line-height: 1.5;
   color: var(--primary-color);
   @include custom-scrollbar;
+
+
 }
 
 
 // This code block fixes a slider library bug with scrollbar.
 // (* there were a problem that library gives some own styles for scrollbar, now we remove during slider mode the scrollbar at all);
 // For more details, refer to the GalleryCategoriesWithModalSlider component
-body.FsLightbox{
-  width: 100vw;
-}
+//body.FsLightbox{
+//  width: 100vw;
+//}
 
 // fix a blinking bug
-.fslightbox-fade-in-strong{
-  animation: none !important;
-  transition: visibility 0s 0.25s, opacity 0.25s ease !important;
-}
+//.fslightbox-fade-in-strong{
+//  animation: none !important;
+//  //visibility: hidden !important;
+//  transition: visibility 0s 0.25s, opacity 0.25s ease !important;
+//}
+//.fslightbox-fade-out-strong {
+//  animation: none !important;
+//  visibility: hidden !important;
+//  opacity: 0 !important;
+//  transition: visibility 0s 0.25s, opacity 0.25s ease !important;
+//  -webkit-transition: visibility 0s 0.25s, opacity 0.25s ease !important;;
+//}
+//
+//.fslightbox-fade-in-strong, .fslightbox-fade-out-strong {
+//
+//  will-change: transform, opacity;
+//
+//  -webkit-transform: translateZ(0) !important;
+//  transform: translateZ(0) !important;
+//
+//  -webkit-backface-visibility: hidden !important;
+//  backface-visibility: hidden !important;
+//
+//  -webkit-perspective: 1000 !important;
+//  perspective: 1000 !important;
+//}
+
+
 .fslightbox-fade-out-strong {
-  animation: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  transition: visibility 0s 0.25s, opacity 0.25s ease !important;
+  animation: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.25s, opacity 0.25s ease;
 }
+
 
 .app {
   min-height: 100vh;

@@ -8,7 +8,11 @@ import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {Container} from "@/shared/ui/Container";
-import backgroundImage from '@/shared/assets/images/introBackground.avif';
+// import backgroundImage from '@/shared/assets/images/introBackground.avif';
+import backgroundImage from '@/shared/assets/images/introBackground.png';
+// import backgroundImage from '@/shared/assets/images/clanBg/Moon.jpg';
+
+
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import cls from "./MainPage.module.scss"
 
@@ -23,9 +27,11 @@ const MainPage = () => {
         <div className={cls.Wrapper}>
                 <FeedbackSideButton />
                 <Navbar overlayed marginTop={20} />
+
                 <HeroSection className={cls.heroSection}>
                     <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>Pelaa netissä!</Button>
                 </HeroSection>
+
                 <Container>
                     <DescriptionWithNav className={cls.description} />
                 </Container>
