@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import {FC, ReactElement} from 'react';
 import {Navigate, Outlet} from 'react-router-dom';
 import {MainPage} from "@/pages/MainPage";
 import {PictureGalleryPage} from "@/pages/PictureGalleryPage";
@@ -10,7 +10,7 @@ import {NotFoundPage} from "@/pages/NotFoundPage";
 import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AuthMainPage, AuthSubLoginPage, AuthSubRegisterPage} from "@/pages/AuthPages";
 import {ClanMainPage, ClanAllSubPage, ClanAddSubPage, ClanRoomSubPage} from "@/pages/ClanPages";
-
+import {GuardedRoute} from "./GuardedRoute";
 
 export interface RouteObject {
     path: string;
@@ -39,9 +39,13 @@ export const routeConfig: RouteObject[] = Object.values({
 
     [AppRoutesLinks.CLAN]: {
         path: RoutePaths.clan,
-        element: <ClanMainPage
-            HasOutletChildren={Outlet}
-        />,
+        element: (
+            <GuardedRoute
+                component={<ClanMainPage  HasOutletChildren={Outlet}/>}
+                guard={"canISeeClans"}
+                redirectTo={RoutePaths.NOT_FOUND}
+            />
+        ),
         children: [
 
             {
@@ -61,7 +65,11 @@ export const routeConfig: RouteObject[] = Object.values({
 
             {
                 path: RoutePaths.clan_add_new,
-                element: <ClanAddSubPage/>
+                element:  <GuardedRoute
+                    component={<ClanAddSubPage/>}
+                    guard={"canICreateClan"}
+                    redirectTo={RoutePaths.NOT_FOUND}
+                />
             }
 
 
@@ -114,6 +122,7 @@ export const routeConfig: RouteObject[] = Object.values({
         element: <Navigate to={RoutePaths.NOT_FOUND} />
     },
 });
+
 
 
 

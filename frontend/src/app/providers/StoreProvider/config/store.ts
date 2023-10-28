@@ -3,6 +3,7 @@ import {envHelper} from "@/shared/const/env/envHelper";
 import {StateSchema} from "./StateSchema";
 import {authApi,authUserReducer, authMiddleware} from "@/entities/Auth";
 import {clanApi} from "@/entities/Clan";
+import {galleryApi} from "@/entities/Gallery";
 
 
 export function createReduxStore(initialState?: StateSchema) {
@@ -11,6 +12,7 @@ export function createReduxStore(initialState?: StateSchema) {
         authUser: authUserReducer,
         [authApi.reducerPath]: authApi.reducer,
         [clanApi.reducerPath]: clanApi.reducer,
+        [galleryApi.reducerPath]: galleryApi.reducer,
     };
 
 
@@ -22,6 +24,7 @@ export function createReduxStore(initialState?: StateSchema) {
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
             authApi.middleware,
             clanApi.middleware,
+            galleryApi.middleware,
             authMiddleware,
             // devicesApi.middleware,
             // usersApi.middleware,

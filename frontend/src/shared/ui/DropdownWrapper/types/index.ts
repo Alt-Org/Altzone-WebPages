@@ -10,6 +10,10 @@ export type DropDownElement = {
     elementText: string;
     link?: Link;
     onClickCallback?: () => void;
+    isDisabled?: {
+        status: boolean,
+        reason: string
+    }
 }
 
 

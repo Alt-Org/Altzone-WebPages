@@ -53,6 +53,10 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
                 link: {
                     isExternal: false,
                     path : RoutePaths.clan
+                },
+                isDisabled: {
+                    status: true,
+                    reason: "Kirjadu ensin!"
                 }
             },
             {

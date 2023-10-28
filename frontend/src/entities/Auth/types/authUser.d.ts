@@ -8,7 +8,7 @@ export type IUserRegisterDto = Pick<IProfile, 'username'> & {
     Player: IPlayerRegisterPartDto
 };
 
-export type IUserLoginDto = Pick<IUser, 'username'> & { password: string };
+export type IUserLoginDto = Pick<IProfile, 'username'> & { password: string };
 
 export type ILoginResponse =  & IProfile & {
     accessToken: string
