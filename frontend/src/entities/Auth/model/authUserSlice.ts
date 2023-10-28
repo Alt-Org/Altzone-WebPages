@@ -51,6 +51,12 @@ export const authUserSlice = createSlice({
 export const { actions: authUserActions } = authUserSlice;
 export const { reducer: authUserReducer } = authUserSlice;
 
+
+// Selector to check if the user is authenticated
+export const selectIsAuthenticated = (state: StateSchema) =>
+    !!state.authUser.profile || !!state.authUser.accessTokenInfo;
+
+
 // Selector to get the whole authUser state
 export const selectAuthUserState = (state: StateSchema) => state.authUser;
 // Selector to get the profile from the authUser state
@@ -60,3 +66,10 @@ export const selectAccessTokenInfo = (state: StateSchema) => state.authUser.acce
 
 // Selector to get the is Session Expired info from the authUser state
 export const selectIsSessionExpired = (state: StateSchema) => state.authUser.isSessionExpired;
+
+
+// Selector to check if the user has a clan
+export const selectHasClan = (state: StateSchema) => {
+    const profile = selectProfile(state);
+    return !!profile && !!profile.Player && !!profile.Player.clan_id;
+};

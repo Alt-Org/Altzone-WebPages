@@ -15,7 +15,7 @@ import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
 import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
 
 import {useSelector} from "react-redux";
-import {selectProfile, useLogoutMutation} from "@/entities/Auth";
+import {selectProfile, useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 
 
 
@@ -49,7 +49,9 @@ export default memo(( props : NavbarProps) => {
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
-    const profile = useSelector(selectProfile);
+    // const profile = useSelector(selectProfile);
+
+    const {canI} = useUserPermissions();
 
     const [logout] = useLogoutMutation();
 
@@ -97,22 +99,23 @@ export default memo(( props : NavbarProps) => {
 
                     <div className={cls.rightSideAuth}>
                         {
-                            !profile ? (
-                                <AppLink
-                                    className={cls.rightSideAuthLink}
-                                    theme={AppLinkTheme.PRIMARY}
-                                    to={navbarMenuLoginProfile.login.path}
-                                    key={navbarMenuLoginProfile.login.path}
-                                >
-                                    <span>{navbarMenuLoginProfile.login.name}</span>
-                                </AppLink>
-                            )
-                                : (
-                                    <div onClick={()=>logout()}>Logout</div>
+
+
+                            canI("canISeeLogin")
+                                ? (
+                                    <AppLink
+                                        className={cls.rightSideAuthLink}
+                                        theme={AppLinkTheme.PRIMARY}
+                                        to={navbarMenuLoginProfile.login.path}
+                                        key={navbarMenuLoginProfile.login.path}
+                                    >
+                                        <span>{navbarMenuLoginProfile.login.name}</span>
+                                    </AppLink>
                                 )
+                                : canI("canISeeLogout")
+                                    ? <div onClick={()=>logout()}>Logout</div>
+                                    : null
                         }
-
-
                     </div>
                 </div>
             </div>

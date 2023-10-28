@@ -36,8 +36,8 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
                 link: {
                     path: AppExternalLinks.reddit,
                     isExternal: true
-
                 }
+
             },
 
             {
@@ -63,7 +63,10 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
                 link: {
                     path: RoutePaths.clan,
                     isExternal: false
-
+                },
+                isDisabled: {
+                    status: false,
+                    reason: "Kirjadu ensin!"
                 }
             },
 

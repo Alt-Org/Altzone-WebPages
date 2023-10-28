@@ -72,6 +72,13 @@
   @include link-scale-effect;
 }
 
+//.itemLink.disabled {
+//  color: #c0c0c0;
+//  text-decoration: none;
+//  pointer-events: none;
+//  opacity: 0.5;
+//}
+
 
 //.itemNavbarDropDownClassname{
 //}
@@ -83,13 +90,13 @@
   background-color: var(--transparent-bg);
   padding: 15px;
 
-  *{
+  div{
     @include link-scale-effect;
   }
+
 }
 
-.dropDownParent{
-}
+
 
 .fakeItemLink{
   visibility: hidden;

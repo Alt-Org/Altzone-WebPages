@@ -30,3 +30,14 @@
   display: flex;
   gap: 7px;
 }
+
+
+.disabled {
+  color: #c0c0c0;
+  pointer-events: none;
+  opacity: 0.5;
+  text-decoration: none;
+  cursor: not-allowed !important;
+  transform: none !important;
+  transition: none !important;
+}

@@ -23,10 +23,13 @@ export {
     selectAccessTokenInfo,
     selectAuthUserState,
     selectProfile,
-    authUserActions
+    authUserActions,
+    selectIsAuthenticated
 } from "./model/authUserSlice";
 
-
+export {useUserPermissions} from "./model/useUserPermissions"
+export {userPermissions} from "./model/userPermissions";
+export type { UserPermissions } from "./model/userPermissions";
 
 export {
     authMiddleware
