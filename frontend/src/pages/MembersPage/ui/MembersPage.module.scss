@@ -1,27 +1,40 @@
-//.MembersPage{
-//  color: inherit;
-//  //background-image: url("./src/shared/assets/images/colored-portal-pictures-1.jpg");
-//  //background-color: rgba(39, 197, 4, 0.36);
-//}
+.MembersPage{
+
+  //width: 100%;
+  //color: inherit;
+  //background-image: url("./src/shared/assets/images/colored-portal-pictures-1.jpg");
+  //background-color: rgba(39, 197, 4, 0.36);
+}
 
 
 
 .backgroundOpacity{
-  position: fixed;
+  z-index: 1;
+  position: fixed !important;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  //background-color: rgba(0, 0, 0, 0.16);
   pointer-events: none;
 }
 
 .workersSection{
-  padding-top: 240px;
-  z-index: 1;
-  background: linear-gradient(to right, rgba(142, 197, 4, 0.53), rgba(164, 42, 204, 0.87), rgba(41, 210, 3, 0.44));
+  //margin-top: 240px;
+  z-index: 2;
+  //background: #c50404;
+  //background: linear-gradient(to right, rgba(25, 161, 4, 0.4), rgba(208, 95, 241, 0.8), rgba(67, 194, 42, 0.44));
+  background: linear-gradient(to right, rgba(72, 56, 51, 0.78), rgba(208, 95, 241, 0.34), rgba(72, 56, 51, 0.78));
 }
 
 .navbar{
   padding-top: 20px;
-  width: 100%!important;
-  z-index: 1;
+  ////width: 100%!important;
+  ////z-index: 1;
+}
+
+.navbarWrapper{
+  padding-bottom: 240px;
+  //background: linear-gradient(to right, rgba(25, 161, 4, 0.4), rgba(191, 62, 229, 0.34), rgba(67, 194, 42, 0.44));'
+  background: linear-gradient(to right, rgba(72, 56, 51, 0.78), rgba(208, 95, 241, 0.34), rgba(72, 56, 51, 0.78));
+
+  //background: linear-gradient(to right, rgba(72, 56, 51, 0.78), rgba(138, 64, 159, 0.63), rgba(72, 56, 51, 0.78));
 }

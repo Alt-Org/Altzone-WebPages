@@ -1,23 +1,54 @@
 .MembersSection{
   font-family: var(--font-family-texts);
-  min-height: 100% !important;
+  //min-height: 100% !important;
   text-align: center;
+  display: grid;
+  justify-items: center;
+
+
+
+  //height: 100%;
 }
 
+
 .scrollBottomButton{
-  margin-bottom: 20px;
+  //align-self: start;
+  margin-bottom: 10px;
+  width: 100px;
   @include link-scale-effect
 }
 
+.membersListContainer{
+  border-radius: 20px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.53);
+  width:  100%;
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+
+}
+
 .groupComponent{
-  h2{
-    font-size: 30px;
+  h1{
+    font-size: clamp(40px, 7vw, 50px);
+    font-family: var(--font-family-main);
     line-height: 1.5;
-    //margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
   }
 }
 
 .workmanComponent{
+
+  h3{
+    font-size: clamp(20px, 5vw, 25px);
+  }
+
   padding-bottom: 10px;
  .githubLogo{
    img{
