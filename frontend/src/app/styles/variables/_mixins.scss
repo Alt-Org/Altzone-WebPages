@@ -1,14 +1,28 @@
-@mixin link-scale-effect() {
+@mixin link-scale-effect($type: 'default') {
 
   transition: transform 0.2s ease;
 
-  &:hover {
-    transform: scale(var(--animation-link-hover-scale));
+
+  @if $type == 'icon' {
+    &:hover {
+      transform: scale(var(--animation-icon-hover-scale));
+    }
+
+    &:active {
+      transform: scale(var(--animation-icon-active-scale));
+    }
   }
 
-  &:active {
-    transform: scale(var(--animation-link-active-scale));
+  @else {
+    &:hover {
+      transform: scale(var(--animation-link-hover-scale));
+    }
+
+    &:active {
+      transform: scale(var(--animation-link-active-scale));
+    }
   }
+
 
 }
 

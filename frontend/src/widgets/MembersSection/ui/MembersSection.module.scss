@@ -35,6 +35,9 @@
     font-family: var(--font-family-main);
     line-height: 1.5;
     font-weight: bold;
+
+
+    color: #e89dff;
   }
 
   ul {
@@ -45,24 +48,29 @@
 
 .workmanComponent{
 
+
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
   h3{
     font-size: clamp(20px, 5vw, 25px);
   }
 
   padding-bottom: 10px;
- .githubLogo{
-   img{
-     cursor: pointer;
-     @include link-scale-effect;
-   }
-   display: flex;
-   justify-content: center;
-   align-items: center;
+
+
+  ul{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+ .clickableLogo{
+   color: var(--secondary-color);
+   cursor: pointer;
+   @include link-scale-effect('icon');
  }
 
-  //&:last-child{
-  //  margin-bottom: -1px;
-  //  padding: 0;
-  //}
 }
 

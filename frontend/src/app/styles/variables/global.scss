@@ -67,14 +67,7 @@
   --animation-link-hover-scale: 1.05;
   --animation-link-active-scale: 0.95;
 
-}
+  --animation-icon-hover-scale: 1.2;
+  --animation-icon-active-scale: 0.95;
 
-//@mixin link-animation($hover-scale: var(--animation-link-hover-scale), $active-scale: var(--animation-link-active-scale)) {
-//  &:hover {
-//    transform: scale($hover-scale);
-//  }
-//
-//  &:active {
-//    transform: scale($active-scale);
-//  }
-//}
+}

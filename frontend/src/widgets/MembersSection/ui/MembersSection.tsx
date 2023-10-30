@@ -3,8 +3,13 @@ import {groupsWithMembersLocally, GroupWithMember, Member} from "@/entities/Memb
 import {FC, memo, useMemo} from "react";
 import {ScrollBottomButton} from "@/features/ScrollBottom";
 import {classNames} from "@/shared/lib/classNames/classNames";
-import githubLogo from "@/shared/assets/images/githubLogo.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
+import {faGlobe} from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
+
 
 interface WorkersSectionProps  {
     className?: string;
@@ -63,7 +68,24 @@ const MemberComponent: FC<WorkmanProps> = memo(({ member }) => {
             <h3>{member.name} </h3>
             <ul>
                 {member.role &&  <li><strong>Rooli:</strong> {`${member.role}`}</li> }
-                {member.github &&  <li className={cls.githubLogo}> <img onClick={() => openLinkInNewTab(`https://github.com/${member.github}`)} src={githubLogo} alt="githubLogo"/></li> }
+
+                {member.site &&
+                <li className={cls.clickableLogo}>
+                    <FontAwesomeIcon icon={faGlobe} size={"xl"} onClick={() => openLinkInNewTab(member?.site)} />
+                </li>
+                }
+                {member.github &&
+                <li className={cls.clickableLogo}>
+                    <FontAwesomeIcon icon={faGithub}  size={"xl"} onClick={() => openLinkInNewTab(`https://github.com/${member.github}`)} />
+                </li>
+                }
+
+                {member.linkedin &&
+                <li className={cls.clickableLogo}>
+                    <FontAwesomeIcon icon={faLinkedin} size={"xl"} onClick={() => openLinkInNewTab(member?.linkedin)} />
+                </li>
+                }
+
                 {member.status &&  <li><strong>Status:</strong> {`${member.status}`}</li> }
                 {member.workPeriod &&  <li><strong>Työjakso:</strong> {`${member.workPeriod}`}</li> }
                 {member.email &&  <li><strong>Email:</strong> {`${member.email}`}</li> }

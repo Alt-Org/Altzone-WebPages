@@ -21,6 +21,7 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
             {
                 id: 2,
                 name: 'Helena Pavloff-Pelkonen',
+                github: 'psykkis'
             },
             {
                 id: 3,
@@ -32,94 +33,114 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
     //--------------------------------------------------------------------
 
     {
-      group: GroupType.LogoGraphic,
+      group: GroupType.Graphic,
       workers: [
           {
               id: 4,
               name: 'Emilio Mäkipää',
           },
+          {
+              id: 44444,
+              name: 'Milo Keronen',
+              site: 'https://mxmilo.wixsite.com/hiisikoloart'
+              // imgSrc: keronen
+          },
+
+          {
+              id: 5,
+              name: 'Milja Sissonen',
+              // imgSrc: imgStub
+          },
+
+          {
+              id: 6,
+              name: 'Emmi Pusa',
+              // imgSrc: pusa
+          },
+
+          {
+              id: 7787,
+              name: 'Katri Tempakka',
+              // imgSrc: imgStub
+          },
+
+          {
+              id: 7,
+              name: 'Anastasiia (Nasti) Skobkina',
+              // imgSrc: imgStub
+          },
+
+          {
+              id: 8,
+              name: 'Iida Välimäki',
+              // imgSrc: valimaki
+          },
+
+          {
+              id: 9,
+              name: 'Nova Kallio',
+              // imgSrc: imgStub
+          },
+
+          {
+              id: 12,
+              name: 'Valeria Velichko',
+              // imgSrc: velichko
+          },
+          {
+              id: 44444234,
+              name: 'Markku Pyrrö',
+              // imgSrc: imgStub
+
+          },
+
+          {
+              id: 5432424234,
+              name: 'Joanna Lindström',
+              // imgSrc: lindstrom
+          },
+
+          {
+              id: 4366435325,
+              name: 'Krister Pohjanlehto',
+              site: 'https://krizzerart.artstation.com/'
+          },
+
+          {
+              id: 543535345,
+              name: 'Juho Ollila',
+          },
+
+
+          {
+              id: 5435354545345,
+              name: 'Minna Niemi',
+          },
+
+
+          {
+              id: 42342359,
+              name: 'Anna Raevskaia',
+              site: 'https://www.artstation.com/annarae'
+          },
+
+          {
+              id: 423423553459,
+              name: 'Sonja Tähkänen',
+              site: 'https://www.artstation.com/annarae'
+          },
+
+          {
+              id: 65435435,
+              name: 'Rasmus Toikka',
+              // imgSrc: toikka
+          },
       ]
     },
 
 
-    //--------------------------------------------------------------------
-    {
-        group: GroupType.GameGraphic,
-        workers: [
-            {
-                id: 44444,
-                name: 'Milo Keronen',
-                imgSrc: keronen
-            },
 
-            {
-                id: 5,
-                name: 'Milja Sissonen',
-                imgSrc: imgStub
-            },
 
-            {
-                id: 6,
-                name: 'Emmi Pusa',
-                imgSrc: pusa
-            },
-
-            {
-                id: 7787,
-                name: 'Katri Tempakka',
-                imgSrc: imgStub
-            },
-
-            {
-                id: 7,
-                name: 'Anastasiia (Nasti) Skobkina',
-                imgSrc: imgStub
-            },
-
-            {
-                id: 8,
-                name: 'Iida Välimäki',
-                imgSrc: valimaki
-            },
-
-            {
-                id: 9,
-                name: 'Nova Kallio',
-                imgSrc: imgStub
-            },
-
-            {
-                id: 12,
-                name: 'Valeria Velichko',
-                imgSrc: velichko
-            },
-        ]
-    },
-
-    //--------------------------------------------------------------------
-    {
-        group: GroupType.GameAnimation,
-        workers: [
-            {
-                id: 44444234,
-                name: 'Markku Pyrrö',
-                imgSrc: imgStub
-
-            },
-
-            {
-                id: 5432424234,
-                name: 'Joanna Lindström',
-                imgSrc: lindstrom
-            },
-
-            {
-                id: 65435435,
-                name: 'Rasmus Toikka',
-                imgSrc: toikka
-            },
-        ]
-    },
 
 
     //--------------------------------------------------------------------
@@ -178,6 +199,7 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
                 id: 20,
                 name: 'Mikhail Deriabin',
                 github: 'MikhailDeriabin',
+                site: 'https://mikhail.hostaan.ac/'
             },
         ]
     },
@@ -191,6 +213,8 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
                 id: 21,
                 name: 'Leo Hannolainen',
                 github: 'leolab1337',
+                site: 'https://leo-hannolainen.netlify.app/',
+                linkedin: 'https://www.linkedin.com/in/leo-hannolainen-860859205/'
             },
         ]
     },
@@ -201,6 +225,10 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
             {
                 id: 22,
                 name: 'Otso Puhakka',
+            },
+            {
+                id: 2423523452,
+                name: 'Mikko Rainio',
             },
         ]
     },
@@ -227,6 +255,7 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
             {
                 id: 24346547,
                 name: 'Milo Keronen ',
+                site: 'https://mxmilo.wixsite.com/hiisikoloart'
             },
             {
                 id: 25654674645,
@@ -243,6 +272,17 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
     {
         group: GroupType.OthersGame,
         workers: [
+
+            {
+                id: 252431421,
+                name: 'Jari Petäys'
+            },
+
+            {
+                id: 252431421,
+                name: 'Markku Pyrrö'
+            },
+
             {
                 id: 25,
                 name: 'Esa Pavloff-Pelkonen'
@@ -413,6 +453,86 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
                 id: 67,
                 name: 'Jere Koivisto'
             },
+
+            {
+                id: 67435345,
+                name: 'Elmeri Jatala'
+            },
+
+            {
+                id: 67435345,
+                name: 'Lucas Järvelä'
+            },
+
+            {
+                id: 6743534545,
+                name: 'Lassi Salo'
+            },
+
+            {
+                id: 6743574545,
+                name: 'Pasi Ylärinne'
+            },
+
+            {
+                id: 6743514545,
+                name: 'Aino Ulvi'
+            },
+
+            {
+                id: 6743514541,
+                name: 'Albert Rantala'
+            },
+
+            {
+                id: 6742514541,
+                name: 'Otto Ikonen'
+            },
+
+            {
+                id: 6742514543,
+                name: 'Nova Kallio'
+            },
+
+            {
+                id: 67425145434,
+                name: 'Anastasiia (Nasti) Skobkina'
+            },
+
+            {
+                id: 67425141434,
+                name: 'Janne Pyöriä'
+            },
+
+            {
+                id: 67425141438,
+                name: 'Katri Tempakka'
+            },
+
+            {
+                id: 674255435,
+                name: 'Milja Sissonen'
+            },
+
+
+            {
+                id: 3124124,
+                name: 'Valeria Velichko'
+            },
+
+
+            {
+                id: 32432563,
+                name: 'Iida Välimäki (Mehukatti)'
+            },
+
+            {
+                id: 3545353,
+                name: 'Santtu Syväsalmi'
+            },
+
+
+
             {
                 id: 674535,
                 name: 'Ida (Rimppu)'
@@ -428,43 +548,66 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
 
     //--------------------------------------------------------------------
     {
+        group: GroupType.OthersComics,
+        workers: [
+            {
+                id: 43254023545,
+                name: 'Suvi Palviainen'
+            },
+            {
+                id: 424234,
+                name: 'Essi Tarvainen',
+            },
+
+            {
+                id: 42342413,
+                name: 'Milo Keronen',
+            },
+
+            {
+                id: 432425123,
+                name: 'Christian Lindholm',
+            },
+
+        ]
+    },
+
+
+    //--------------------------------------------------------------------
+    {
         group: GroupType.Others,
         workers: [
             {
                 id: 72,
-                name: 'Maria Laurila'
-            },
-            {
-                id: 73,
-                name: 'Ari Laurila'
-            },
-            {
-                id: 74,
                 name: 'Anssi Ahola'
             },
             {
+                id: 73,
+                name: 'Olli Raudus'
+            },
+            {
+                id: 74,
+                name: 'Vesa Raudasoja'
+            },
+            {
                 id: 75,
-                name: ' Olli Raudus'
+                name: 'Maria Kalliorinne'
             },
 
             {
                 id: 76,
-                name: 'Vesa Raudasoja'
-            },
-
-            {
-                id: 77,
-                name: 'Maria Kalliorinne'
-            },
-            {
-                id: 78,
                 name: 'Tuukka Lehkonen'
             },
 
             {
-                id: 79,
+                id: 77,
                 name: 'Susanna Viljanmaa'
             },
+            {
+                id: 78,
+                name: 'Milsa Malin'
+            },
+
             {
                 id: 80,
                 name: 'Milsa Malin'
