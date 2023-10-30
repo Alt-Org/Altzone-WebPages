@@ -1,15 +1,17 @@
 export enum GroupType {
     GameDesign = 'Pelisuunnittelu',
+    Graphic = "Grafiikka",
     LogoGraphic = 'Grafiikka, logo',
     GameGraphic = 'Grafiikka, peli',
     GameAnimation= 'Grafiikka, animaatio',
-    GameCode = 'Koodi, peli',
-    APICode = 'Koodi, API',
-    WebPagesCode = 'Koodi, nettisivut',
-    Sound = 'Äänisuunnittelu, sävellys',
+    GameCode = 'Koodi: peli',
+    APICode = 'Koodi: API',
+    WebPagesCode = 'Koodi: nettisivut',
+    Sound = 'Äänisuunnittelu',
     Comics = 'Sarjakuva',
     Prod = 'Tuotanto',
     OthersGame = 'Pelinkehityksessä mukana',
+    OthersComics = 'Sarjakuvassa  mukana',
     Others = 'Erityiskiitokset',
 }
 
@@ -36,4 +38,6 @@ export interface Member {
     trello?: string;
     status?: MemberStatus;
     workPeriod?: string;
+    site?: string;
+    linkedin?: string
 }

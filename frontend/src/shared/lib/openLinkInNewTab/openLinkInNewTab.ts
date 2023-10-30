@@ -1,3 +1,3 @@
-export function openLinkInNewTab(newTab: string) {
+export function openLinkInNewTab(newTab?: string) {
     window.open(newTab, '_blank');
 }
