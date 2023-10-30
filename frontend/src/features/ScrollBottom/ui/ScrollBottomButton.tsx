@@ -27,5 +27,5 @@ export const ScrollBottomButton = memo(({ speedInMs = 50000 , className = ''}: S
 
     useBottomAnimationCancellation(animationFrameIdRef, ScrollButtonId);
 
-    return <Button className={className} id={ScrollButtonId} theme={ButtonTheme.Graffiti} size={ButtonSize.XL} onClick={handleWatchClick}>Watch</Button>;
+    return <Button className={className} id={ScrollButtonId} theme={ButtonTheme.Graffiti} size={ButtonSize.XL} onClick={handleWatchClick}>Play</Button>;
 });

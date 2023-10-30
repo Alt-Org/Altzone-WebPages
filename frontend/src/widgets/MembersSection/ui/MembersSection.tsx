@@ -19,11 +19,14 @@ export const MembersSection = ({className = ''}: WorkersSectionProps) => {
         <div className={classNames(cls.MembersSection,{},[className])}>
 
             <ScrollBottomButton className={cls.scrollBottomButton}/>
-            {
-                memoizedGroupsWithWorkers.map(group=>(
-                    <GroupWithWorkmanComponent key={group.group} groupWithMember={group}/>
-                ))
-            }
+
+            <div className={cls.membersListContainer}>
+                {
+                    memoizedGroupsWithWorkers.map(group=>(
+                        <GroupWithWorkmanComponent key={group.group} groupWithMember={group}/>
+                    ))
+                }
+            </div>
         </div>
     );
 };
@@ -35,7 +38,7 @@ interface GroupWithWorkmanProps{
 const GroupWithWorkmanComponent: FC<GroupWithWorkmanProps> = memo(({groupWithMember}) => {
     return (
         <div className={cls.groupComponent}>
-            <h2>{groupWithMember.group}</h2>
+            <h1>{groupWithMember.group}</h1>
             <ul>
                 {groupWithMember.workers.map((member) => (
                     <li key={member.id}>
