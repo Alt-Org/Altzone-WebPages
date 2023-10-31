@@ -6,7 +6,7 @@ import {Container} from "@/shared/ui/Container";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {selectProfile} from "@/entities/Auth";
 import cls from "./ClanMainPage.module.scss";
-import backgroundImage from "@/shared/assets/images/clanBg/Optimized-Moon.jpg"
+import backgroundImage from "@/shared/assets/images/clanBg/Moon.webp"
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 
 

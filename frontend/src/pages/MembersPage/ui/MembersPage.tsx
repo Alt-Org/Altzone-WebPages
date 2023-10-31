@@ -4,7 +4,9 @@ import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
 import {MembersSection} from "@/widgets/MembersSection";
 import {classNames} from "@/shared/lib/classNames/classNames";
 // import backgroundImg from '@/shared/assets/images/colored-portal-pictures-1.jpg'
-import backgroundImg from '@/shared/assets/images/clanBg/space.jpg'
+// import backgroundImg from '@/shared/assets/images/clanBg/space.jpg'
+// import backgroundImg from '@/shared/assets/images/clanBg/space.webp'
+import backgroundImg from '@/shared/assets/images/clanBg/space.webp'
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 
 const MembersPage = () => {
