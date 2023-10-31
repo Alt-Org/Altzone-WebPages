@@ -39,7 +39,9 @@ const MainPage = () => {
     );
 };
 
-
-export default withBackgroundImage(MainPage, backgroundImage);
-
+export default withBackgroundImage({
+    WrappedComponent: MainPage,
+    alt: "Main-Page underground style background",
+    imagePath: backgroundImage,
+});
 

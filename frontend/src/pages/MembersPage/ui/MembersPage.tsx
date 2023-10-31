@@ -26,6 +26,11 @@ const MembersPage = () => {
 
 
 
-export default withBackgroundImage(MembersPage,backgroundImg, backgroundImgHolder);
+export default withBackgroundImage({
+    WrappedComponent: MembersPage,
+    alt: "Members-Page space background",
+    imagePath: backgroundImg,
+    placeHolderPath: backgroundImgHolder
+});
 
-// export default MembersPage;
+
