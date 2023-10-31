@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
 import '../src/app/styles/index.scss'
 
-
 createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
         <StoreProvider>
