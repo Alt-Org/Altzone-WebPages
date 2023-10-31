@@ -9,6 +9,7 @@ import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {Container} from "@/shared/ui/Container";
 import backgroundImage from '@/shared/assets/images/introBackground.png';
+// import backgroundImage from '@/shared/assets/images/introNew.png';
 
 
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
@@ -43,5 +44,6 @@ export default withBackgroundImage({
     WrappedComponent: MainPage,
     alt: "Main-Page underground style background",
     imagePath: backgroundImage,
+    // placeHolderPath: "/preloads/introBackground.png"
 });
 
