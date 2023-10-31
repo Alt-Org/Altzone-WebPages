@@ -61,5 +61,8 @@ const ClanMainPage = ({ HasOutletChildren}: Props) => {
 };
 
 
-
-export default withBackgroundImage(ClanMainPage,backgroundImage);
+export default withBackgroundImage({
+    WrappedComponent: ClanMainPage,
+    alt: "Clan-Page Japan sakura style background",
+    imagePath: backgroundImage,
+});
