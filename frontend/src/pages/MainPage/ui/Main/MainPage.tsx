@@ -8,9 +8,7 @@ import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {Container} from "@/shared/ui/Container";
-// import backgroundImage from '@/shared/assets/images/introBackground.avif';
 import backgroundImage from '@/shared/assets/images/introBackground.png';
-// import backgroundImage from '@/shared/assets/images/clanBg/Moon.jpg';
 
 
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
