@@ -10,7 +10,7 @@ body {
   color: var(--primary-color);
   @include custom-scrollbar;
 
-
+  background-color: var(--bg-color)
 }
 
 
@@ -61,5 +61,5 @@ body {
 .app {
   min-height: 100vh;
   height: auto;
-  background: var(--bg-color);
+
 }
