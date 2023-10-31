@@ -1,95 +1,32 @@
-// import {ComponentType, useRef, useEffect, useState } from 'react';
-//     import cls from "./withBackgroundImage.module.scss";
-//
-//     function withBackgroundImage<P extends object>(WrappedComponent: ComponentType<P>, imagePath: string): ComponentType<P> {
-//         return function WithBgImageComponent(props: P) {
-//             const [isImageLoaded, setImageLoaded] = useState(false);
-//             const backgroundDiv = useRef<HTMLDivElement>(null);
-//
-//             useEffect(() => {
-//                 if (!backgroundDiv.current) return;
-//
-//                 const observer = new IntersectionObserver((entries) => {
-//                     entries.forEach(entry => {
-//                         if (entry.isIntersecting && !isImageLoaded) {
-//                             setImageLoaded(true);
-//                         }
-//                     });
-//                 });
-//
-//                 observer.observe(backgroundDiv.current);
-//
-//                 return () => {
-//                     observer.disconnect();
-//                 };
-//             }, [isImageLoaded]);
-//
-//             return (
-//                 <>
-//                     <div
-//                         className={cls.Background}
-//                         ref={backgroundDiv}
-//                         style={isImageLoaded ? { backgroundImage: `url(${imagePath})` } : {}}
-//                     />
-//                     <div className={cls.Content}>
-//                         <WrappedComponent {...props} />
-//                     </div>
-//                 </>
-//             );
-//         }
-//     }
-//
-//     export default withBackgroundImage;
+import { Component, ComponentType } from 'react';
+    // @ts-ignore
+    import { LazyLoadImage } from 'react-lazy-load-image-component';
+    // import 'react-lazy-load-image-component/src/effects/blur.css';
+    import cls from "./withBackgroundImage.module.scss";
 
-import React, { ComponentType, useRef, useEffect, useState } from 'react';
-import cls from "./withBackgroundImage.module.scss";
-
-function withBackgroundImage<P extends object>(
-    WrappedComponent: ComponentType<P>,
-    imagePath: string,
-    placeholderPath?: string
-): ComponentType<P> {
-    return function WithBgImageComponent(props: P) {
-        const [isImageLoaded, setImageLoaded] = useState(false);
-        const backgroundDiv = useRef<HTMLDivElement>(null);
-
-        useEffect(() => {
-            if (!backgroundDiv.current) return;
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !isImageLoaded) {
-                        const img = new Image();
-                        img.src = imagePath;
-                        img.onload = () => setImageLoaded(true);
-                    }
-                });
-            });
-
-            observer.observe(backgroundDiv.current);
-
-            return () => {
-                observer.disconnect();
-            };
-        }, [isImageLoaded]);
-
-        return (
-            <>
-                <div
-                    className={cls.Background}
-                    ref={backgroundDiv}
-                    style={{
-                        backgroundImage: `url(${isImageLoaded || !placeholderPath ? imagePath : placeholderPath})`
-                    }}
-                />
-                <div className={cls.Content}>
-                    <WrappedComponent {...props} />
-                </div>
-            </>
-        );
+    function withBackgroundImage<P extends object>(WrappedComponent: ComponentType<P>, imagePath: string,placeHolderPath: string = ''): ComponentType<P> {
+        return class extends Component<P> {
+            render() {
+                return (
+                    <>
+                        <div className={cls.Background}>
+                            <LazyLoadImage
+                                src={imagePath}
+                                // effect="blur"
+                                placeholderSrc={placeHolderPath}
+                                wrapperClassName={cls.ImageWrapper}
+                            />
+                        </div>
+                        <div className={cls.Content}>
+                            <WrappedComponent {...this.props} />
+                        </div>
+                    </>
+                );
+            }
+        };
     }
-}
 
-export default withBackgroundImage;
+    export default withBackgroundImage;
+
 
 

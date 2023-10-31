@@ -3,9 +3,10 @@ import cls from './MembersPage.module.scss'
 import {FeedbackSideButton} from "@/features/FeedbackByExternalSource";
 import {MembersSection} from "@/widgets/MembersSection";
 import {classNames} from "@/shared/lib/classNames/classNames";
-
 import backgroundImg from '@/shared/assets/images/clanBg/space.webp'
-import backgroundImgHolder from '@/shared/assets/images/clanBg/spaceHolder.webp'
+const backgroundImgHolder = "/preloads/space.webp";
+
+
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 
 const MembersPage = () => {
@@ -25,6 +26,6 @@ const MembersPage = () => {
 
 
 
-export default withBackgroundImage(MembersPage,backgroundImg,backgroundImgHolder);
+export default withBackgroundImage(MembersPage,backgroundImg, backgroundImgHolder);
 
 // export default MembersPage;

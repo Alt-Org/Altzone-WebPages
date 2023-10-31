@@ -5,9 +5,9 @@ import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
 
+    // base : "http://localhost:3000/",
 
-
-  plugins: [
+    plugins: [
       react(),
       svgr({
           // Set it to `true` to export React component as default.
