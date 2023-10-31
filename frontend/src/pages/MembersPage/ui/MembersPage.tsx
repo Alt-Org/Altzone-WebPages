@@ -30,7 +30,8 @@ export default withBackgroundImage({
     WrappedComponent: MembersPage,
     alt: "Members-Page space background",
     imagePath: backgroundImg,
-    placeHolderPath: backgroundImgHolder
+    placeHolderPath: backgroundImgHolder,
+    shouldBeLazyLoaded: true
 });
 
 
