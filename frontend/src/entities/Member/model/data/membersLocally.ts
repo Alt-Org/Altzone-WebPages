@@ -609,10 +609,6 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
             },
 
             {
-                id: 80,
-                name: 'Milsa Malin'
-            },
-            {
                 id: 81,
                 name: 'Milla Pennanen'
             },
