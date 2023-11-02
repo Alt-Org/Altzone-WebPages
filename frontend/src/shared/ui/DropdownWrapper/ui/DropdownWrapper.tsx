@@ -1,8 +1,13 @@
-import {FC, useEffect, useRef, useState} from 'react';
+import {FC,useState} from 'react';
 import cls from './DropdownWrapper.module.scss';
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {DropdownWrapperProps} from "../types";
 import {AppLink} from "@/shared/ui/AppLink/AppLink";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
+
+
 
 /**
  * A wrapper component that provides dropdown functionality.
@@ -110,7 +115,20 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
                  className={classNames(cls.childrenWrapper, {},[childrenWrapperClassName, mainElementClass])}
             >
                 {children}
-                <span>⇩</span>
+                {/*<span>⇩</span>*/}
+                {/*<FontAwesomeIcon size={"2xs"} icon={isOpen ? faCaretUp : faCaretDown} />*/}
+
+                <FontAwesomeIcon
+                    size={"2xs"}
+                    icon={faCaretDown}
+                    style={{
+                        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.4s ease-in-out'
+                    }}
+                />
+
+
+
             </div>
 
                 <div className={classNames(cls.dropdownContent,dropdownContentMods,[contentClassName])}>

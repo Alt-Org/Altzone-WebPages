@@ -49,7 +49,11 @@ export const Sidebar = ({
 
     // const currentButton = isCollapsed ? '☰' : 'Х';
 
-    const currentButton = isCollapsed ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faTimes} />;
+    const currentButton = isCollapsed
+        ? <FontAwesomeIcon className={cls.faBars} icon={faBars} />
+        : <FontAwesomeIcon className={cls.faTimes} icon={faTimes} />;
+
+
 
 
     /**
@@ -132,8 +136,13 @@ export const Sidebar = ({
 
     return (
         <>
-            <div className={classNames(cls.button, buttonMods, [buttonClassName])} onClick={handleBurgerButtonClick}>{currentButton}</div>
-        <div
+            <div className={classNames(cls.button, buttonMods, [buttonClassName])} onClick={handleBurgerButtonClick}>
+                <FontAwesomeIcon className={`${cls.faBars}`} icon={faBars} />
+                <FontAwesomeIcon className={`${cls.faTimes}`} icon={faTimes} />
+            </div>
+
+
+            <div
             data-testid='sidebar'
             ref={sidebarRef}
             className={classNames(cls.Sidebar, mods, [])}
