@@ -70,9 +70,8 @@ export default memo(( props : NavbarTouchProps) => {
             <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
 
 
-
-
                 <div className={cls.NavbarMobile}>
+
                     <Sidebar
                         buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
                         sidebarItemsList={sidebarItemsList}
@@ -81,8 +80,6 @@ export default memo(( props : NavbarTouchProps) => {
 
                         bottomItems={
                             <div className={cls.authSection}>
-
-
                                 {
                                     canI("canISeeLogin") &&  <AppLink
                                         className={cls.authSectionLink}
