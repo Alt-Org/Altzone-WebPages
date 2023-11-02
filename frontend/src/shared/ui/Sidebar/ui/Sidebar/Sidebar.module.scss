@@ -31,6 +31,50 @@
   width: 33px;
 }
 
+
+.button {
+  position: relative;
+
+  .faBars, .faTimes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* By default, both icons are hidden. */
+    transform-origin: center; /* Set the rotation center to the center of the icon. */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add rotation animation. */
+  }
+
+  &.collapsedButton .faBars {
+    opacity: 1; /* Display the burger icon. */
+    transform: rotate(0deg); /* Set the initial rotation position. */
+  }
+
+  &.expandedButton .faBars {
+    opacity: 0; /* Hide the burger icon. */
+    transform: rotate(90deg); /* Rotate the icon by 90 degrees. */
+  }
+
+  &.collapsedButton .faTimes {
+    opacity: 0; /* Hide the cross icon. */
+    transform: rotate(-90deg); /* Set the initial rotation position. */
+  }
+
+  &.expandedButton .faTimes {
+    opacity: 1; /* Display the cross icon. */
+    transform: rotate(0deg); /* Reset the icon to its original position. */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 .items {
   margin-top: 70px;
   display: flex;
