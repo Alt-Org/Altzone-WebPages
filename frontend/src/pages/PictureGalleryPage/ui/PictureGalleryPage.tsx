@@ -10,7 +10,7 @@ const PictureGalleryPage = () => {
            <Navbar className={cls.Navbar}/>
            <Container  className={cls.Container}>
                <h1>Kuvagalleriat</h1>
-               <GalleriasSection parentDirectory={"comics"}/>
+               <GalleriasSection parentDirectory={"artGalleries"}/>
            </Container>
        </div>
    )
