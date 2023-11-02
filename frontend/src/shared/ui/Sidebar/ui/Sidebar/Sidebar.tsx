@@ -8,6 +8,9 @@ import {ISidebarItem} from "@/shared/ui/Sidebar/model/items";
 import React, {ReactNode, useEffect, useMemo, useRef, useState} from "react";
 import {SidebarItem} from "@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem";
 
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 interface SidebarProps {
     buttonClassName?: string;
@@ -44,7 +47,10 @@ export const Sidebar = ({
     };
 
 
-    const currentButton = isCollapsed ? '☰' : 'Х'
+    // const currentButton = isCollapsed ? '☰' : 'Х';
+
+    const currentButton = isCollapsed ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faTimes} />;
+
 
     /**
      * An object containing CSS classes to be applied to the Sidebar
@@ -84,8 +90,9 @@ export const Sidebar = ({
      * it will collapse the Sidebar if `closeOnClickOutside` prop is set to true.
      */
     const handleClickOutside = (event: MouseEvent) => {
-            const clickedButton = (event.target as HTMLElement).tagName === 'BUTTON' || (event.target as HTMLElement).classList.contains(cls.button);
-            if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && !clickedButton) {
+        const clickedButton = (event.target as HTMLElement).closest(`.${cls.button}`);
+
+        if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && !clickedButton) {
                 setIsCollapsed(true);
                 document.body.classList.remove('no-scroll');
             }
