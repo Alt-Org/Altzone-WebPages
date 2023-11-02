@@ -9,7 +9,7 @@ const useDeleteClan = () => {
 
    const handleDelete = async (clanId: string, onSuccess?: () => void) => {
 
-      if (confirm("Are you sure?")) {
+      if (confirm("Oletko varma?")) {
          const result = await deleteClan(clanId);
 
          // @ts-ignore
@@ -20,18 +20,16 @@ const useDeleteClan = () => {
             return;
          }
 
-
-         toast.success(`Clan was successfully deleted`);
+         toast.success(`Klaani poistettiin onnistuneesti`);
          if(onSuccess) onSuccess();
          setIsCancelled(false);
          return;
       }
 
-         toast.info('Deletion was cancelled', { autoClose: 1500 });
-         setIsCancelled(true);
-         return;
+      toast.info('Poisto peruutettiin', { autoClose: 1500 });
+      setIsCancelled(true);
+      return;
    };
-
 
    return { isCancelled, handleDelete };
 

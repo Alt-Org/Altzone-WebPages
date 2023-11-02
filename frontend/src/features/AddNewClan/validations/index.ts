@@ -1,30 +1,25 @@
 import * as yup from "yup";
 
-
 export const ValidationAddNewClan = yup.object().shape({
-
 
     name: yup
         .string()
-        .required("Required")
-        .min(3, "Clan name must be longer than or equal to 3 characters")
-        .max(15, "Clan name must be shorter than or equal to 15 characters")
-        .matches(/^[A-Za-z]+$/, "Clan name must contain only letters"),
+        .required("Vaadittu")
+        .min(3, "Klaanin nimen on oltava vähintään 3 merkkiä pitkä")
+        .max(15, "Klaanin nimen on oltava enintään 15 merkkiä pitkä")
+        .matches(/^[A-Za-z]+$/, "Klaanin nimi saa sisältää vain kirjaimia"),
 
     gameCoins: yup
         .number()
-        .required("Required")
-        .min(1, "Game coins must be greater than or equal to 1")
-        .max(5000, "Game coins must be less than or equal to 1500"),
-
+        .required("Vaadittu")
+        .min(1, "Pelikolikoiden on oltava vähintään 1")
+        .max(5000, "Pelikolikoiden on oltava enintään 1500"),
 
     tag: yup
         .string()
-        .required("Tag is required")
-        .min(3, "Tag must be longer than or equal to 3 characters")
-        .max(10, "Tag must be shorter than or equal to 10 characters")
-        .matches(/^[A-Za-z0-9_]+$/, "Tag can only contain letters, numbers, and underscores")
+        .required("Tagi on vaadittu")
+        .min(3, "Tagin on oltava vähintään 3 merkkiä pitkä")
+        .max(10, "Tagin on oltava enintään 10 merkkiä pitkä")
+        .matches(/^[A-Za-z0-9_]+$/, "Tagi voi sisältää vain kirjaimia, numeroita ja alaviivoja")
 
 });
-
-

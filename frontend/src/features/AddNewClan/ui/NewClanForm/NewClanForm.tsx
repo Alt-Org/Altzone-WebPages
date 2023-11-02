@@ -26,26 +26,26 @@ export const NewClanForm = ({onSuccess, className = ""}: Props) => {
             <CustomForm.InputField
                 key={"name"}
                 error={errors?.name?.message}
-                label={"Name"}
+                label={"Nimi"}
                 inputProps={{ ...register('name'), required: true }}
             />
 
             <CustomForm.InputField
                 key={"gameCoins"}
                 error={errors?.gameCoins?.message}
-                label={"Game coins"}
+                label={"Pelikolikot"}
                 inputProps={{ ...register('gameCoins'), required: true , type: "number"}}
             />
 
             <CustomForm.InputField
                 key={"tag"}
                 error={errors?.tag?.message}
-                label={"Tag"}
+                label={"Tagi"}
                 inputProps={{ ...register('tag'), required: true }}
             />
 
             <CustomForm.Button type="submit">
-                Submit
+                Vahvista
             </CustomForm.Button>
 
         </CustomForm>

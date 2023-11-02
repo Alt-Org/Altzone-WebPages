@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const LoginForm = ({ toForgottenPwPage, toRegisterPage, onSuccessLogin}: Props) => {
-    
+
     const {
         register,
         handleSubmit,
@@ -21,25 +21,25 @@ export const LoginForm = ({ toForgottenPwPage, toRegisterPage, onSuccessLogin}: 
     return (
         <CustomForm className={cls.Form} onSubmit={handleSubmit(onFormSubmit)}>
             <CustomForm.Header>
-                Login
+                Kirjaudu sisään
             </CustomForm.Header>
             <CustomForm.InputField
                 key={"username"}
                 error={errors?.username?.message}
-                label={"Username"}
+                label={"Käyttäjänimi"}
                 inputProps={{ ...register('username'), required: true }}
             />
             <CustomForm.InputField
                 key={"password"}
                 error={errors?.password?.message}
-                label={"Password"}
+                label={"Salasana"}
                 inputProps={{ ...register('password'), type: "password", required: true }}
             />
             <CustomForm.Button type="submit">
-                Submit
+                Lähetä
             </CustomForm.Button>
             <AppLink theme={AppLinkTheme.PRIMARY} to={toRegisterPage} className={cls.registerLink}>
-                {"Don't have account yet? Sign Up"}
+                {"Eikö sinulla ole tiliä? Rekisteröidy"}
             </AppLink>
         </CustomForm>
     );

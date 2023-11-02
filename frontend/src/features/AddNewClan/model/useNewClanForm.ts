@@ -29,7 +29,7 @@ export const useNewClanForm = ({onSuccess}: Props) => {
 
     useEffect(() => {
         if (data) {
-            toast.success('Clan created!');
+            toast.success('Klaani oli  luotu!');
             onSuccess();
             return;
         }
