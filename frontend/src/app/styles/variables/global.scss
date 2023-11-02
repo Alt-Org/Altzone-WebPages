@@ -72,3 +72,10 @@
   --animation-icon-active-scale: 0.95;
 
 }
+
+
+@media (max-width: 768px) {
+  :root {
+    --navbar-logo-height: 170px;
+  }
+}
