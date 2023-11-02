@@ -47,7 +47,7 @@ const ClanMainPage = ({ HasOutletChildren}: Props) => {
                 <div style={{display: "flex" , gap: "10px"}}>
                     <Link to={RoutePaths.clan_all}>Kaikki Klaanit</Link>
                     {canShowUserClan && <Link to={RoutePaths.clan + `/${user?.Player.clan_id}`}>Minun klaani</Link>}
-                    {canShowAddNew && <Link to={RoutePaths.clan_add_new}>Lisää Klaani</Link> }
+                    {canShowAddNew && <Link to={RoutePaths.clan_add_new}>Luo Klaani</Link> }
                 </div>
 
                 <div className={cls.ClansViewMain}>

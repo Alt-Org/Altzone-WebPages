@@ -1,49 +1,46 @@
 import * as yup from "yup";
 
 export const ValidationLoginSchema = yup.object().shape({
-    // email: yup.string().required('Required').email('Invalid email'),
+    // email: yup.string().required('Vaadittu').email('Virheellinen sähköpostiosoite'),
     username: yup
         .string()
-        .required("Required")
-        .min(3, "Username must be longer than or equal to 3 characters")
-        .max(15, "Username must be shorter than or equal to 15 characters")
-        .matches(/^[a-zA-Z0-9]*$/, "Username must contain only letters and numbers"),
+        .required("Vaadittu")
+        .min(3, "Käyttäjänimen on oltava vähintään 3 merkkiä pitkä")
+        .max(15, "Käyttäjänimen on oltava enintään 15 merkkiä pitkä")
+        .matches(/^[a-zA-Z0-9]*$/, "Käyttäjänimi saa sisältää vain kirjaimia ja numeroita"),
     password: yup
         .string()
-        .min(6, "Password must be longer than or equal to 6 characters")
-        .max(30, "Password must be shorter than or equal to 30 characters")
-        .required("Enter your password"),
+        .min(6, "Salasanan on oltava vähintään 6 merkkiä pitkä")
+        .max(30, "Salasanan on oltava enintään 30 merkkiä pitkä")
+        .required("Syötä salasanasi"),
 });
-
 
 export const ValidationRegisterSchema = yup.object().shape({
     username: yup
         .string()
-        .required("Required")
-        .min(3, "Username must be longer than or equal to 3 characters")
-        .max(15, "Username must be shorter than or equal to 15 characters")
-        .matches(/^[a-zA-Z0-9]*$/, "Username must contain only letters and numbers"),
+        .required("Vaadittu")
+        .min(3, "Käyttäjänimen on oltava vähintään 3 merkkiä pitkä")
+        .max(15, "Käyttäjänimen on oltava enintään 15 merkkiä pitkä")
+        .matches(/^[a-zA-Z0-9]*$/, "Käyttäjänimi saa sisältää vain kirjaimia ja numeroita"),
     password: yup
         .string()
-        .min(6, "Password must be longer than or equal to 6 characters")
-        .max(30, "Password must be shorter than or equal to 30 characters")
-        .required("Enter your password"),
+        .min(6, "Salasanan on oltava vähintään 6 merkkiä pitkä")
+        .max(30, "Salasanan on oltava enintään 30 merkkiä pitkä")
+        .required("Syötä salasanasi"),
     repeatPassword: yup.string()
         // @ts-ignore
-        .oneOf([yup.ref('password'), null], "Passwords must match")
-        .required("Confirm your password"),
+        .oneOf([yup.ref('password'), null], "Salasanojen on täsmättävä")
+        .required("Vahvista salasanasi"),
 
     name: yup
         .string()
-        .min(3, "name must be longer than or equal to 3 characters")
-        .max(20, "name must be shorter than or equal to 20 characters")
-        .matches(/[^a-zA-Z\s]+/, "Username must contain only letters"),
+        .min(3, "Nimen on oltava vähintään 3 merkkiä pitkä")
+        .max(20, "Nimen on oltava enintään 20 merkkiä pitkä")
+        .matches(/[^a-zA-Z\s]+/, "Nimi saa sisältää vain kirjaimia"),
 
     backpackCapacity: yup
         .number(),
 
-
     uniqueIdentifier: yup
         .string(),
 })
-
