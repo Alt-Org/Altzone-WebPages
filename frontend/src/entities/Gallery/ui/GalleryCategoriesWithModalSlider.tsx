@@ -37,9 +37,9 @@ export const GalleryCategoriesWithModalSlider = memo(({title, sources, followLas
 
 
     useEffect(() => {
-        // if(isOpen){
+        if(isOpen){
             ref?.current?.elements?.container?.current?.classList?.remove('fslightbox-fade-in-strong');
-        // }
+        }
     }, [isOpen])
 
 
