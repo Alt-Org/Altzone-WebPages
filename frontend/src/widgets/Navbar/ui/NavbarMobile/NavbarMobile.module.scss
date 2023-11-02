@@ -53,7 +53,7 @@
 .authSection{
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
-  outline: 2px solid var(--inverted-primary-color);
+  box-shadow: 0 0 0 2px var(--inverted-primary-color);
   padding: 5px;
   //width: 100px;
   text-align: center;
@@ -76,4 +76,6 @@
   }
 
 }
+
+
 
