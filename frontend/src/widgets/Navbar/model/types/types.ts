@@ -24,7 +24,8 @@ export type NavbarLinkObject = {
     path: string;
     isActive: boolean;
     type : ItemType.navLink;
-    position: Position
+    position: Position,
+    accessErrorMsg?: string;
 }
 
 export type NavbarDropDownObject = {
@@ -33,6 +34,7 @@ export type NavbarDropDownObject = {
     elements: Array<DropDownElement>
     type : ItemType.navDropDown;
     position: Position
+    accessErrorMsg?: string;
 }
 
 export type NavLogoObject ={
@@ -41,6 +43,7 @@ export type NavLogoObject ={
     path: string;
     type : ItemType.navLogo;
     position: Position
+    accessErrorMsg?: string;
 }
 
 export type NavAuthLogin = {
@@ -80,12 +83,14 @@ export type NavbarMenuMobileItem = {
     type: navbarItemType.NavbarMenuMobileItem
     name: string;
     path: string;
+    accessErrorMsg?: string;
 }
 
 export type NavbarMenuMobileDropDownItem = {
     type: navbarItemType.NavbarMenuMobileDropDownItem
     name: string;
     elements: Array<DropDownElement>
+    accessErrorMsg?: string;
 }
 
 export type NavbarMenuMobile = ReadonlyArray<NavbarMenuMobileItem | NavbarMenuMobileDropDownItem>

@@ -78,21 +78,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
                 }
             },
 
-            {
-                elementText: "Hahmogalleria",
-                link: {
-                    path: AppExternalLinks.stub,
-                    isExternal: false
-                }
-            },
 
-            {
-                elementText: "Kuvagalleria",
-                link: {
-                    path: RoutePaths.PICTURE_GALLERY,
-                    isExternal: false
-                }
-            },
 
         ],
         isActive: false,
@@ -114,13 +100,40 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
         type: ItemType.navLogo,
         position: "center"
     },
+    // {
+    //     name: 'Uutiset',
+    //     path: RoutePaths.NEWS,
+    //
+    //     isActive: false,
+    //     type:  ItemType.navLink,
+    //     position: "right"
+    // },
+
     {
-        name: 'Uutiset',
-        path: RoutePaths.NEWS,
+        name: 'Taide',
+        // path: RoutePaths.NEWS,
+        elements: [
+            {
+                elementText: "Hahmogalleria",
+                link: {
+                    path: AppExternalLinks.stub,
+                    isExternal: false
+                }
+            },
+
+            {
+                elementText: "Kuvagalleria",
+                link: {
+                    path: RoutePaths.PICTURE_GALLERY,
+                    isExternal: false
+                }
+            },
+        ],
         isActive: false,
-        type:  ItemType.navLink,
+        type:  ItemType.navDropDown,
         position: "right"
     },
+
     {
         name: 'Tekijät',
         path:  RoutePaths.MEMBERS,

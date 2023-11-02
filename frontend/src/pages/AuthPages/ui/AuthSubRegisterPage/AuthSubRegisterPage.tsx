@@ -1,17 +1,13 @@
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {RegisterForm} from "@/features/AuthByUsername";
-import {Modal} from "@/shared/ui/Modal";
-
 
 const AuthSubRegisterPage = () => {
     return (
-        <>
-            <Modal
-                isOpen={true}
-            >
-           <RegisterForm toLoginPage={RoutePaths.auth_login} />
-            </Modal>
-        </>
+    <>
+        <div style={{minHeight: "100vh", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <RegisterForm toLoginPage={RoutePaths.auth_login} />
+        </div>
+    </>
     );
 }
 

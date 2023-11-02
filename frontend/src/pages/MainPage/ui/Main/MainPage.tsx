@@ -14,6 +14,7 @@ import backgroundImage from '@/shared/assets/images/introBackground.png';
 
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import cls from "./MainPage.module.scss"
+import {ScrollTop} from "@/features/ScrollTop";
 
 
 
@@ -36,6 +37,7 @@ const MainPage = () => {
                 </Container>
                 <NewsPreviewSection />
                 <Footer />
+            <ScrollTop/>
         </div>
     );
 };

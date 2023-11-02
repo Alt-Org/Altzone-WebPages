@@ -1,14 +1,14 @@
-import {navbarItemType, NavbarMenuMobile, NavLogoMobileObject} from "../types/types";
+import {navbarItemType, NavbarMenuMobile, NavbarMenuMobileItem, NavLogoMobileObject} from "../types/types";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import navLogo from "@/shared/assets/images/altLogo.png";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 
-export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
+export const navbarMenuMobile: NavbarMenuMobile = [
     {
         name: 'Pääsivu',
         path: RoutePaths.MAIN,
-        type: navbarItemType.NavbarMenuMobileItem
+        type: navbarItemType.NavbarMenuMobileItem,
     },
 
     // {
@@ -47,6 +47,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
     {
         name : 'Peli',
         type: navbarItemType.NavbarMenuMobileDropDownItem,
+        accessErrorMsg: "Kirjaudu sisään nähdäksesi tämän osaston.",
         elements: [
             {
                 elementText: "Klaaniesittelyt",
@@ -55,7 +56,7 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
                     path : RoutePaths.clan
                 },
                 isDisabled: {
-                    status: true,
+                    status: false,
                     reason: "Kirjadu ensin!"
                 }
             },
@@ -66,7 +67,14 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
                     path : AppExternalLinks.stub
                 }
             },
+        ]
+    },
 
+
+    {
+        name : 'Taide',
+        type: navbarItemType.NavbarMenuMobileDropDownItem,
+        elements: [
             {
                 elementText: "Hahmogalleria",
                 link: {
@@ -85,19 +93,18 @@ export const navbarMenuMobile: NavbarMenuMobile = Object.freeze([
         ]
     },
 
-
-
-    {
-        name : 'Uutiset',
-        path: RoutePaths.NEWS,
-        type: navbarItemType.NavbarMenuMobileItem
-    },
+    //
+    // {
+    //     name : 'Uutiset',
+    //     path: RoutePaths.NEWS,
+    //     type: navbarItemType.NavbarMenuMobileItem
+    // },
     {
         name : 'Tekijät',
         path:  RoutePaths.MEMBERS,
         type: navbarItemType.NavbarMenuMobileItem
     },
-]);
+];
 
 
 export const navLogoMobile: NavLogoMobileObject = {

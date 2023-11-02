@@ -168,12 +168,15 @@ const NavbarItems = memo(
 
                         if (isNavbarDropDownObject(item)) {
                             return (
-                                <DropdownWrapper elements={item.elements} contentAbsolute={true}
-                                                 mouseOverLeaveMode={true}
-                                                 key={item.name}
-                                                 className={itemNavbarDropDownClassname}
-                                                 childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
-                                                 contentClassName={cls.itemNavbarDropDownContentClassName}
+                                <DropdownWrapper
+                                    // isDisabled={{status: true, reason: "Kirjaudu ensin"}}
+                                    elements={item.elements}
+                                    contentAbsolute={true}
+                                    mouseOverLeaveMode={true}
+                                    key={item.name}
+                                    className={itemNavbarDropDownClassname}
+                                    childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
+                                    contentClassName={cls.itemNavbarDropDownContentClassName}
                                 >
                                     <div>{item.name}</div>
                                 </DropdownWrapper>

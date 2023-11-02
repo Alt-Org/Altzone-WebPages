@@ -1,6 +1,6 @@
 .Sidebar {
   z-index: var(--sidebar-z-index);
-  height: 100vh;
+  height: 100%;
   width: var(--sidebar-width);
   background: rgba(0, 0, 0, 0.65);
   position: fixed;
@@ -16,6 +16,12 @@
   &.right{
     right: 0;
   }
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 
 //.side
@@ -44,6 +50,12 @@
   transition: width 0.4s ease-in, opacity 0.4s ease-in;
 }
 
+
+.bottomItems{
+  display: flex;
+  margin: 20px 0;
+  justify-content: center;
+}
 
 
 

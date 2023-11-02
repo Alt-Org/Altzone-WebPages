@@ -50,3 +50,30 @@
   right: 0;
 }
 
+.authSection{
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  outline: 2px solid var(--inverted-primary-color);
+  padding: 5px;
+  //width: 100px;
+  text-align: center;
+  font-family: var(--font-family-texts) !important;
+  font: var(--font-l);
+  @include link-scale-effect;
+  cursor: pointer;
+
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
+
+  color: var(--secondary-color) !important;
+
+
+  &{
+    .authSectionLink{
+      color: var(--secondary-color) !important;
+    }
+  }
+
+}
+

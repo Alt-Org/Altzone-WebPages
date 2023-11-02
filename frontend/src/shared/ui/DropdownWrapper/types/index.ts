@@ -14,6 +14,7 @@ export type DropDownElement = {
         status: boolean,
         reason: string
     }
+    accessErrorMsg?: string;
 }
 
 
@@ -28,5 +29,9 @@ export type DropdownWrapperProps = {
     onClose?: () => void;
     children: ReactNode;
     mouseOverLeaveMode?: boolean;
+    isDisabled?: {
+        status: boolean,
+        reason: string
+    }
 }
 
