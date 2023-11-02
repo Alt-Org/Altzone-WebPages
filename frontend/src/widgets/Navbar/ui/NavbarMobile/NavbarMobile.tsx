@@ -64,10 +64,14 @@ export default memo(( props : NavbarTouchProps) => {
     }, [navBarItemsList]);
 
     const {canI} = useUserPermissions();
-    const [logout] = useLogoutMutation()
+    const [logout] = useLogoutMutation();
 
     return (
             <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
+
+
+
+
                 <div className={cls.NavbarMobile}>
                     <Sidebar
                         buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
@@ -77,22 +81,24 @@ export default memo(( props : NavbarTouchProps) => {
 
                         bottomItems={
                             <div className={cls.authSection}>
+
+
                                 {
-                                    canI("canISeeLogin")
-                                        ? (
-                                            <AppLink
-                                                className={cls.authSectionLink}
-                                                theme={AppLinkTheme.PRIMARY}
-                                                to={navbarMenuLoginProfile.login.path}
-                                                key={navbarMenuLoginProfile.login.path}
-                                            >
-                                                <span>{navbarMenuLoginProfile.login.name}</span>
-                                            </AppLink>
-                                        )
-                                        : canI("canISeeLogout")
-                                            ? <div onClick={()=>logout()}>Logout</div>
-                                            : null
+                                    canI("canISeeLogin") &&  <AppLink
+                                        className={cls.authSectionLink}
+                                        theme={AppLinkTheme.PRIMARY}
+                                        to={navbarMenuLoginProfile.login.path}
+                                        key={navbarMenuLoginProfile.login.path}
+                                    >
+                                        <span>{navbarMenuLoginProfile.login.name}</span>
+                                    </AppLink>
                                 }
+
+                                {
+                                    canI("canISeeLogout") &&
+                                         <div onClick={()=>logout()}>Logout</div>
+                                }
+
                             </div>
                         }
                     />

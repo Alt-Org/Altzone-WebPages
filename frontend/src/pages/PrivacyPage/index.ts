@@ -1,0 +1,1 @@
+export {PrivacyPage} from "./ui/PrivacyPage.async";

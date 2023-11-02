@@ -26,7 +26,7 @@ export const HeroSection = memo((props : HeroSectionProps) => {
         <section className={classNames(cls.HeroSection, mods, [className])} style={{backgroundImage : `url(${backgroundImageUrl})`}}>
 
             <div className={classNames(cls.childrenWrapper)}>
-                <Container>
+                <Container fluid>
                 {children}
                 </Container>
             </div>

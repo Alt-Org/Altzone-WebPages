@@ -114,15 +114,15 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
         // path: RoutePaths.NEWS,
         elements: [
             {
-                elementText: "Hahmogalleria",
+                elementText: "Sarjakuvat",
                 link: {
-                    path: AppExternalLinks.stub,
+                    path: RoutePaths.COMICS_GALLERY,
                     isExternal: false
                 }
             },
 
             {
-                elementText: "Kuvagalleria",
+                elementText: "Kuvagalleriat",
                 link: {
                     path: RoutePaths.PICTURE_GALLERY,
                     isExternal: false

@@ -1,28 +1,91 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {envHelper} from "@/shared/const/env/envHelper";
+import {transformToGalleryPropsFormat} from "@/entities/Gallery";
 
 const url = "public/site";
 
+const constructFileURL = (parentDirectory: string, directoryName: string, fileName: string): string => {
+    return `${envHelper.apiLink}/${url}/${parentDirectory}/${directoryName}/${fileName}`;
+};
+
+type Directory = {
+    name: string;
+};
+
+type File = {
+    name: string;
+    type: string;
+    mtime: string;
+    size: number;
+};
+
+type ModifiedFile = File & {
+    url: string;
+};
+
+export type DirectoryWithPhotos = {
+    directoryName: string;
+    cover: ModifiedFile;
+    photos: ModifiedFile[];
+};
+
+export type ParentDirectory = "comics"
+
+type GetAllDirectoryPhotosQueryArgs = {
+    parentDirectory: ParentDirectory
+};
+
+
+
 export const galleryApi = createApi({
-    reducerPath: "comicApi",
+    reducerPath: "galleryApi",
     tagTypes: ['Gallery'],
-    baseQuery: fetchBaseQuery(
-        {
-            baseUrl: envHelper.apiLink,
-            credentials: "include",
-        }
-    ),
+    baseQuery: fetchBaseQuery({
+        baseUrl: envHelper.apiLink,
+    }),
     endpoints: (builder) => ({
+        getAllDirectoryPhotos: builder.query<DirectoryWithPhotos[], GetAllDirectoryPhotosQueryArgs>({
+            queryFn: async (args, _queryApi, _extraOptions, fetchWithBQ) => {
+                const parentDirectory = args.parentDirectory;
+                const directoriesResult = await fetchWithBQ(`${url}/${parentDirectory}`);
+                if (directoriesResult.error) throw directoriesResult.error;
+                const directories: Directory[] = directoriesResult.data as Directory[];
 
-        getDirectories: builder.query({
-            query: ({parentDirectory}) => `${url}/${parentDirectory}`,
-        }),
+                const photosPromises = directories.map(async (dir): Promise<DirectoryWithPhotos> => {
+                    const photosResult = await fetchWithBQ(`${url}/${parentDirectory}/${dir.name}`);
+                    if (photosResult.error) throw photosResult.error;
 
-        getPhotosInDirectory: builder.query({
-            query: ({ parentDirectory, directoryName }) => `${url}/${parentDirectory}/${directoryName}`,
-        }),
+                    const photos: File[] = photosResult.data as File[];
+
+                    const cover = photos[0];
+
+                    // Set URL for every file
+                    const photosWithUrls = photos.map(file => ({
+                        ...file,
+                        url: constructFileURL(parentDirectory, dir.name, file.name)
+                    })) as ModifiedFile[];
+
+                    return {
+                        directoryName: dir.name,
+                        cover: {
+                            ...cover,
+                            url: constructFileURL(parentDirectory, dir.name, cover.name)
+                        },
+                        photos: photosWithUrls
+                    };
+                });
+
+                const allDirectoriesWithPhotos = await Promise.all(photosPromises);
+
+
+
+                return { data: allDirectoriesWithPhotos };
+            }
+        })
+
 
     }),
 });
 
-export const { useGetDirectoriesQuery, useGetPhotosInDirectoryQuery } = galleryApi;
+
+export const { useGetAllDirectoryPhotosQuery} = galleryApi;
