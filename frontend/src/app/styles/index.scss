@@ -3,6 +3,12 @@
 @import "themes/light";
 @import "themes/dark";
 
+
+//html, body{
+//  height: 100%;
+//  width: 100%;
+//}
+
 body {
   //font: var(--font-m);
   font: 16px/24px 'Bombing';
@@ -10,8 +16,16 @@ body {
   color: var(--primary-color);
   @include custom-scrollbar;
 
+  //background-color: #06081b;
+  //background-color: #46304b
   background-color: var(--bg-color);
+  //background-image: url("https://images.unsplash.com/photo-1503431128871-cd250803fa41?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxhY2slMjBjYXR8ZW58MHx8MHx8fDA%3D");
 }
+
+//body.no-scroll {
+//  overflow: hidden;
+//  height: 100%;
+//}
 
 
 // This code block fixes a slider library bug with scrollbar.
@@ -59,7 +73,6 @@ body {
 
 
 .app {
-  min-height: 100vh;
+  //min-height: 100vh;
   height: auto;
-
 }

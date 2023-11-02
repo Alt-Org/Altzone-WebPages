@@ -32,6 +32,7 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
         contentClassName='',
         contentItemClassName='',
         elements,
+        isDisabled,
         children,
         onOpen,
         onClose
@@ -91,17 +92,22 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
         [cls.closed]: !isOpen,
     } as Record<string, boolean>;
 
+    const mainElementClass = isDisabled?.status ? cls.disabled : '';
 
     return (
         <div className={
             classNames(cls.DropdownWrapper,mods,[className])}
              onMouseLeave={handleMouseLeave}
         >
-            <div onClick={toggleDropdown}
-                 onMouseOver={handleMouseOver}
+            <div
+                 // onClick={toggleDropdown}
+                 // onMouseOver={handleMouseOver}
+                 onClick={!isDisabled?.status ? toggleDropdown : undefined}
+                 onMouseOver={!isDisabled?.status ? handleMouseOver : undefined}
                  role="button"
+                 title={isDisabled?.status ? isDisabled?.reason : ''}
                  tabIndex={0}
-                 className={classNames(cls.childrenWrapper, {},[childrenWrapperClassName])}
+                 className={classNames(cls.childrenWrapper, {},[childrenWrapperClassName, mainElementClass])}
             >
                 {children}
                 <span>⇩</span>

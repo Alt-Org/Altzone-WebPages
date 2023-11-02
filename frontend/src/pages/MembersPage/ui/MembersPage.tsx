@@ -7,6 +7,7 @@ const backgroundImgHolder = "/preloads/space.webp";
 
 
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import {ScrollTop} from "@/features/ScrollTop";
 
 const MembersPage = () => {
     return (
@@ -16,6 +17,7 @@ const MembersPage = () => {
             <Navbar overlayed={true} className={cls.navbar}/>
             </div>
             <MembersSection  className={cls.workersSection}/>
+            <ScrollTop/>
         </div>
     );
 };

@@ -5,7 +5,7 @@
 import {classNames} from "@/shared/lib/classNames/classNames";
 import cls from "./Sidebar.module.scss";
 import {ISidebarItem} from "@/shared/ui/Sidebar/model/items";
-import React, {useEffect, useMemo, useRef, useState} from "react";
+import React, {ReactNode, useEffect, useMemo, useRef, useState} from "react";
 import {SidebarItem} from "@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem";
 
 
@@ -14,15 +14,35 @@ interface SidebarProps {
     sidebarItemsList: ISidebarItem[];
     side? : 'left'| 'right'
     closeOnClickOutside?: boolean;
+    bottomItems?: ReactNode;
 }
 
-export const Sidebar = ({ buttonClassName = '',  sidebarItemsList , side = 'left' ,closeOnClickOutside = false}: SidebarProps) => {
+export const Sidebar = ({
+                            buttonClassName = '',
+                            sidebarItemsList ,
+                            side = 'left' ,
+                            closeOnClickOutside = false,
+                            bottomItems = "Login"
+}: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
 
-        const handleBurgerButtonClick = () => {
-        setIsCollapsed((prevState) => !prevState);
+    //     const handleBurgerButtonClick = () => {
+    //     setIsCollapsed((prevState) => !prevState);
+    // };
+
+
+    const handleBurgerButtonClick = () => {
+        setIsCollapsed((prevState) => {
+            if (prevState) {
+                document.body.classList.add('no-scroll');
+            } else {
+                document.body.classList.remove('no-scroll');
+            }
+            return !prevState;
+        });
     };
+
 
     const currentButton = isCollapsed ? '☰' : 'Х'
 
@@ -64,11 +84,12 @@ export const Sidebar = ({ buttonClassName = '',  sidebarItemsList , side = 'left
      * it will collapse the Sidebar if `closeOnClickOutside` prop is set to true.
      */
     const handleClickOutside = (event: MouseEvent) => {
-        const clickedButton = (event.target as HTMLElement).tagName === 'BUTTON' || (event.target as HTMLElement).classList.contains(cls.button);
-        if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && !clickedButton) {
-            setIsCollapsed(true);
-        }
-    };
+            const clickedButton = (event.target as HTMLElement).tagName === 'BUTTON' || (event.target as HTMLElement).classList.contains(cls.button);
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && !clickedButton) {
+                setIsCollapsed(true);
+                document.body.classList.remove('no-scroll');
+            }
+        };
 
     /**
      * useEffect hook for managing the click outside event listener.
@@ -112,6 +133,9 @@ export const Sidebar = ({ buttonClassName = '',  sidebarItemsList , side = 'left
         >
             <div className={cls.items}>
             {itemsList}
+            </div>
+            <div className={cls.bottomItems} >
+                {bottomItems}
             </div>
         </div>
         </>
