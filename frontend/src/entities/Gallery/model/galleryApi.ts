@@ -29,7 +29,7 @@ export type DirectoryWithPhotos = {
     photos: ModifiedFile[];
 };
 
-export type ParentDirectory = "comics"
+export type ParentDirectory = "comics" | "artGalleries"
 
 type GetAllDirectoryPhotosQueryArgs = {
     parentDirectory: ParentDirectory
