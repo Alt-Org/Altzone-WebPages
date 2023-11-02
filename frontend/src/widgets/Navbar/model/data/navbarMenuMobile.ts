@@ -76,15 +76,15 @@ export const navbarMenuMobile: NavbarMenuMobile = [
         type: navbarItemType.NavbarMenuMobileDropDownItem,
         elements: [
             {
-                elementText: "Hahmogalleria",
+                elementText: "Sarjakuvat",
                 link: {
                     isExternal: false,
-                    path : AppExternalLinks.stub
+                    path : RoutePaths.COMICS_GALLERY
                 }
             },
 
             {
-                elementText: "Kuvagalleria",
+                elementText: "Kuvagalleriat",
                 link: {
                     isExternal: false,
                     path: RoutePaths.PICTURE_GALLERY,

@@ -1,1 +1,0 @@
-export {GalleryCategoriesWithModalSlider} from "./ui/GalleryCategoriesWithModalSlider";

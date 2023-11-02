@@ -4,13 +4,13 @@
   height: 100vh;
 }
 
-
 .Navbar{
   padding-top: 20px;
 }
 
 
 .Container{
+  margin-top: 40px;
 
 
   flex-grow: 1;
@@ -28,9 +28,7 @@
     margin-bottom: 40px;
   }
 
-
 }
-
 
 
 .galleries{
@@ -39,4 +37,5 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
 

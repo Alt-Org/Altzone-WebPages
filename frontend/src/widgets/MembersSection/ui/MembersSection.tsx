@@ -8,6 +8,8 @@ import {faGithub} from "@fortawesome/free-brands-svg-icons";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {faGlobe} from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import {Container} from "@/shared/ui/Container";
+
 
 
 
@@ -25,13 +27,15 @@ export const MembersSection = ({className = ''}: WorkersSectionProps) => {
 
             <ScrollBottomButton className={cls.scrollBottomButton}/>
 
-            <div className={cls.membersListContainer}>
+
+            <Container className={cls.membersListContainer}>
                 {
                     memoizedGroupsWithWorkers.map(group=>(
                         <GroupWithWorkmanComponent key={group.group} groupWithMember={group}/>
                     ))
                 }
-            </div>
+            </Container>
+
         </div>
     );
 };

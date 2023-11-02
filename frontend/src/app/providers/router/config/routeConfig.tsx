@@ -11,6 +11,7 @@ import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AuthMainPage, AuthSubLoginPage, AuthSubRegisterPage} from "@/pages/AuthPages";
 import {ClanMainPage, ClanAllSubPage, ClanAddSubPage, ClanRoomSubPage} from "@/pages/ClanPages";
 import {GuardedRoute} from "./GuardedRoute";
+import {ComicsGalleriesPage} from "@/pages/ComicsGalleriesPage";
 
 export interface RouteObject {
     path: string;
@@ -86,6 +87,12 @@ export const routeConfig: RouteObject[] = Object.values({
         path: RoutePaths.PICTURE_GALLERY,
         element: <PictureGalleryPage />,
     },
+
+    [AppRoutesLinks.COMICS_GALLERY]: {
+        path: RoutePaths.COMICS_GALLERY,
+        element: <ComicsGalleriesPage />,
+    },
+
 
     [AppRoutesLinks.MEMBERS]: {
         path: RoutePaths.MEMBERS,
