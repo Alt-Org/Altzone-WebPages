@@ -92,11 +92,10 @@
 }
 
 .graffiti{
-  //font-family: "Bombing", sans-serif;
   background-color: rgba(197, 4, 4, 0);
   background-color: #333;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius-custom);
   cursor: pointer;
   outline: none;
   text-shadow: 2px 2px 0 #000;

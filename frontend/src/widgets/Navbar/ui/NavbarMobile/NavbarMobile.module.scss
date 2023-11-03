@@ -54,7 +54,7 @@
 
 .authSection{
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 20px;
+  border-radius: var(--border-radius-custom);
   box-shadow: 0 0 0 2px var(--inverted-primary-color);
   padding: 5px;
   //width: 100px;

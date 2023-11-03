@@ -13,8 +13,8 @@
 
 .Container{
   flex-grow: 1;
-  border-radius: 20px;
-  background-color: var(--bg-color-opacity-section);
+  border-radius: var(--border-radius-custom);
+  background-color: var(--transparent-bg-dark);
   margin-top: 40px;
 
   padding-bottom: 40px;
