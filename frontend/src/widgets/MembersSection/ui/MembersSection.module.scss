@@ -19,9 +19,10 @@
 }
 
 .membersListContainer{
-  border-radius: 20px;
+  border-radius: var(--border-radius-custom);
   z-index: 2;
-  background-color: var(--bg-color-opacity-section);
+  background-color: var(--transparent-bg-dark);
+
 }
 
 .groupComponent{

@@ -36,7 +36,7 @@
   .rightSideAuth{
 
     background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
+    border-radius: var(--border-radius-custom);
     outline: 2px solid var(--inverted-primary-color);
     padding: 5px;
     font-family: var(--font-family-texts) !important;
@@ -86,7 +86,7 @@
 .itemNavbarDropDownContentClassName{
 
   //text-align: center;
-  border-radius: 20px;
+  border-radius: var(--border-radius-custom);
   background-color: var(--transparent-bg);
   padding: 15px;
 

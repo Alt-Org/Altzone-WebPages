@@ -3,7 +3,7 @@
   user-select: none;
   width: 420px;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: var(--border-radius-custom);
   background-color: rgba(0, 0, 0, 0.47);
   display: grid;
   gap: 10px;
@@ -34,7 +34,7 @@
 
   input{
     height: 50px;
-    border-radius: 10px;
+    border-radius: var(--border-radius-custom);
     outline: none;
     border: none;
     padding: 10px;

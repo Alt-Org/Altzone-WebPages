@@ -1,7 +1,7 @@
 .Card {
   display: flex;
   flex-direction: column;
-  background-color: #333333;
+  background-color: var(--transparent-bg);
   height: 100%;
   min-width: 360px;
   padding: 50px 50px;

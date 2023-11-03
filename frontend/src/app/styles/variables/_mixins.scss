@@ -34,13 +34,13 @@
 
   &::-webkit-scrollbar-thumb {
     background-color: #FFF;
-    border-radius: 10px;
+    border-radius: var(--border-radius-custom);
     border: 1px solid #000;
   }
 
   &::-webkit-scrollbar-track {
     background-color: rgb(0, 0, 0);
-    border-radius: 10px;
+    border-radius: var(--border-radius-custom);
   }
 }
 

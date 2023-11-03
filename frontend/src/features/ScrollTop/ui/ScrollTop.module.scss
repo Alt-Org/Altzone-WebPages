@@ -1,5 +1,5 @@
 .ScrollTop {
-  border-radius: 15px;
+  border-radius: var(--border-radius-custom);
   z-index: var(--navbar-z-index);
   cursor: pointer;
   position: fixed;
