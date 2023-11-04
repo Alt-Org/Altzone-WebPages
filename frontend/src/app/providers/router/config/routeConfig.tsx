@@ -1,5 +1,8 @@
-import {FC, ReactElement} from 'react';
+import {ReactElement} from 'react';
 import {Navigate, Outlet} from 'react-router-dom';
+
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+
 import {MainPage} from "@/pages/MainPage";
 import {PictureGalleryPage} from "@/pages/PictureGalleryPages";
 import {MembersPage} from "@/pages/MembersPage";
@@ -80,7 +83,15 @@ export const routeConfig: RouteObject[] = Object.values({
 
     [AppRoutesLinks.MAIN]: {
         path: RoutePaths.MAIN,
-        element: <MainPage />,
+        element: (
+            <>
+                <Helmet>
+                    <title>AltZone</title>
+                </Helmet>
+                <MainPage />
+            </>
+        )
+
     },
 
     [AppRoutesLinks.PICTURE_GALLERY]: {
