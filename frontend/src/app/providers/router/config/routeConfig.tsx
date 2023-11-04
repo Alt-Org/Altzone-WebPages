@@ -1,7 +1,7 @@
 import {FC, ReactElement} from 'react';
 import {Navigate, Outlet} from 'react-router-dom';
 import {MainPage} from "@/pages/MainPage";
-import {PictureGalleryPage} from "@/pages/PictureGalleryPage";
+import {PictureGalleryPage} from "@/pages/PictureGalleryPages";
 import {MembersPage} from "@/pages/MembersPage";
 import {AboutPage} from "@/pages/AboutPage";
 import {NewsPage} from "@/pages/NewsPage";
@@ -11,7 +11,7 @@ import {AppRoutesLinks, RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AuthMainPage, AuthSubLoginPage, AuthSubRegisterPage} from "@/pages/AuthPages";
 import {ClanMainPage, ClanAllSubPage, ClanAddSubPage, ClanRoomSubPage} from "@/pages/ClanPages";
 import {GuardedRoute} from "./GuardedRoute";
-import {ComicsGalleriesPage} from "@/pages/ComicsGalleriesPage";
+import {ComicsGalleriesPage} from "@/pages/ComicsGalleriesPages";
 
 export interface RouteObject {
     path: string;
