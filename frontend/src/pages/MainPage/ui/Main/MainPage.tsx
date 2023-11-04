@@ -15,6 +15,10 @@ import backgroundImage from '@/shared/assets/images/introBackground.png';
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import cls from "./MainPage.module.scss"
 import {ScrollTop} from "@/features/ScrollTop";
+import {CustomSlider} from "@/shared/ui/CustomSlider/CustomSlider";
+import {envHelper} from "@/shared/const/env/envHelper";
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import {Helmet} from "react-helmet-async";
 
 
 
@@ -25,6 +29,18 @@ const MainPage = () => {
 
     return (
         <div className={cls.Wrapper}>
+            <Helmet>
+                <title>AltZone</title>
+                <meta name="description" content="Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />
+                <meta name="keywords" content="altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään" />
+                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />
+                <meta property="og:type" content="website" />
+                <meta property="og:title" content="AltZone - Aloita pelisi täältä" />
+                <meta property="og:description" content="AltZone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />
+                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />
+            </Helmet>
+
+
                 <FeedbackSideButton />
                 <Navbar overlayed marginTop={20} />
 
@@ -35,6 +51,67 @@ const MainPage = () => {
                 <Container>
                     <DescriptionWithNav className={cls.description} />
                 </Container>
+
+                {/*<Container>*/}
+
+                {/*    /!*<div className={cls.}>*!/*/}
+
+                {/*    /!*</div>*!/*/}
+                {/*</Container>*/}
+
+            <CustomSlider>
+                {/*    <div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*        loool*/}
+                {/*    </div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "blue"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "blue"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+                {/*<div style={{minWidth: "400px", backgroundColor: "blue"}}>*/}
+                {/*    loool*/}
+                {/*</div>*/}
+
+            </CustomSlider>
+
+
                 <NewsPreviewSection />
                 <Footer />
             <ScrollTop/>

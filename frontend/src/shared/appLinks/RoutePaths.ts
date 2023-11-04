@@ -17,11 +17,16 @@ export enum AppRoutesLinks {
 
     MAIN = "MAIN",
     ABOUT = "ABOUT",
+    PRIVACY = "PRIVACY",
     FORUM = "FORUM",
 
     NEWS = "NEWS",
     NEWSELEMENT = "NEWSELEMENT",
     MEMBERS = "MEMBERS",
+
+
+
+
     NOT_FOUND = "NOT_FOUND",
     NOT_FOUND_CATCH = "NOT_FOUND_CATCH",
 }
@@ -53,10 +58,14 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
     [AppRoutesLinks.MAIN]: "/",
     [AppRoutesLinks.ABOUT]: "/about",
+    [AppRoutesLinks.PRIVACY]: "/privacy",
+
+
+
     [AppRoutesLinks.NEWS]: news,
     [AppRoutesLinks.NEWSELEMENT]: news + "/:id",
     [AppRoutesLinks.FORUM]: "/forum",
-    [AppRoutesLinks.MEMBERS]: "/members",
+    [AppRoutesLinks.MEMBERS]: "/team",
     [AppRoutesLinks.NOT_FOUND]: "/404",
     // last one
     [AppRoutesLinks.NOT_FOUND_CATCH]: "*",
