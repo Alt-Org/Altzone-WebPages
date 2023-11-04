@@ -1,85 +1,54 @@
-import {memo, useEffect, useRef, useState} from "react";
-import cls from "./styles.module.scss";
-import {FsLightboxFixed} from "./FsLightboxFixed";
+import {memo, useCallback} from "react";
+import Fancybox from "@/shared/ui/Fancybox/Fancybox";
 
 
 export type GalleryCategoriesWithModalSliderProps = {
-    title: string,
+    title: string;
     followLastImage?: boolean;
-    sources : string[],
-    cover : { name : string, url: string}
-}
+    sources: string[];
+    cover: { name: string, url: string };
+};
 
-export const GalleryCategoriesWithModalSlider = memo(({title, sources, followLastImage = false, cover}: GalleryCategoriesWithModalSliderProps) => {
-    const [toggler, setToggler] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-    const ref = useRef<any>();
-    const getCurrentIndexByRef = (ref: any) => ref.current.stageIndexes.current as number;
-
-    const [sourceIndex, setSourceIndex] = useState(0);
-
-    // This code block fixes a slider library bug with scrollbar.
-    // For more details, refer to the styles in index.scss.
-    useEffect(() => {
-        function cleanup() {
-            window.document.body.classList.remove('FsLightbox');
-        }
-        if(isOpen){
-            window.document.body.classList.add('FsLightbox');
-        }
-       else{
-           cleanup()
-        }
-        return () =>{
-            cleanup()
-        }
-    }, [isOpen]);
+export const GalleryCategoriesWithModalSlider = memo(({
+                                                          title,
+                                                          sources,
+                                                          followLastImage = false,
+                                                          cover
+                                                      }: GalleryCategoriesWithModalSliderProps) => {
 
 
-    useEffect(() => {
-        if(isOpen){
-            ref?.current?.elements?.container?.current?.classList?.remove('fslightbox-fade-in-strong');
-        }
-    }, [isOpen])
 
 
+    const getSortedSources = useCallback((sources: string[]) => {
+        const result = [...sources].sort((a, b) => {
+            const numberA = parseInt(a.match(/\d+/)?.[0] || '', 10);
+            const numberB = parseInt(b.match(/\d+/)?.[0] || '', 10);
+            return numberA - numberB;
+        });
+        return result;
+    }, [sources]);
 
     return (
-        <div style={{cursor: "pointer"}}>
+        <div style={{ cursor: "pointer" }}>
+            <Fancybox >
+                <a data-fancybox={title} href={cover.url}>
+                    <img src={cover.url} width="200" height="150" alt={cover.name} />
+                    <h2>{title}</h2>
+                </a>
 
-            <div onClick={()=> setToggler(!toggler)} className={cls.cover}>
-                <h2 className={cls.title}>{title}</h2>
-                <img className={cls.categoryImg} src={cover.url} alt={cover.name}/>
-            </div>
+                <div style={{display:"none"}}>
+                    {getSortedSources(sources).map((source, index) => (
+                        index !== 0 ? (
+                            <a key={index} data-fancybox={title} href={source}>
+                                <div>loool</div>
+                                <img alt={source.split('/').pop()?.split('.')[0]} src={source} width="200" height="150" />
+                            </a>
+                        ) : null
+                    ))}
+                </div>
 
-          <FsLightboxFixed
-                    // UIFadeOutTime={1000}
-                    disableSlideSwiping={true}
-                    // zoomIncrement={1}
-                    // onOpen={()=>setIsOpen(true)}
-                    onClose={()=>{
-                        if(ref && followLastImage){
-                            const currentIndex = getCurrentIndexByRef(ref);
-                            setSourceIndex(currentIndex);
-                        }
-                        setIsOpen(false)
-                    }}
-                    ref={ref}
-                    // sourceIndex={sourceIndex}
-                    loadOnlyCurrentSource={true}
-                    toggler={toggler}
-                    // sources={sources}
-                    sources={sources.map((s=>{
-                        return (
-                            <div className={cls.sliderContainer}>
 
-                                <img className={cls.sliderImg} src={s}/>
-
-                            </div>
-
-                        )
-                    }))}
-                />
+            </Fancybox>
         </div>
-    )
-})
+    );
+});
