@@ -16,6 +16,7 @@ import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesk
 
 import {useSelector} from "react-redux";
 import {selectProfile, useLogoutMutation, useUserPermissions} from "@/entities/Auth";
+import {LangSwitcher} from "@/features/LangSwitcher";
 
 
 
@@ -99,8 +100,6 @@ export default memo(( props : NavbarProps) => {
 
                     <div className={cls.rightSideAuth}>
                         {
-
-
                             canI("canISeeLogin")
                                 ? (
                                     <AppLink
@@ -117,6 +116,7 @@ export default memo(( props : NavbarProps) => {
                                     : null
                         }
                     </div>
+
                 </div>
             </div>
             </div>
