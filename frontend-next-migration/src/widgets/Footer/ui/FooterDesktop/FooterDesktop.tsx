@@ -6,16 +6,18 @@ import {socialLinks} from "../../model/data/socialSectionMenu";
 import {Rights} from "../Rights/Rights";
 import {Title} from "../Title/Title";
 
-
-export default memo(( ) => {
-
+const FooterDesktopComponent = () => {
     return (
         <footer className={cls.Footer}>
             <Container>
                 <Title className={cls.title}/>
-            <SocialSection className={cls.socialSection} socialLinks={socialLinks} />
+                <SocialSection className={cls.socialSection} socialLinks={socialLinks} />
                 <Rights className={cls.rights}/>
             </Container>
         </footer>
-    )
-});
+    );
+};
+
+FooterDesktopComponent.displayName = 'FooterDesktop';
+
+export default memo(FooterDesktopComponent);

@@ -1,7 +1,8 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
 import {CSSProperties, memo} from "react";
-import cls from "./NavbarDesktop.module.scss";
+import Image from 'next/image'
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
+import {classNames} from "@/shared/lib/classNames/classNames";
+import cls from "./NavbarDesktop.module.scss";
 import {NavbarMenu, PositionChecker} from "../../model/types/types";
 import {
     isCenter,
@@ -17,6 +18,7 @@ import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesk
 import {useSelector} from "react-redux";
 import {selectProfile, useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 import {LangSwitcher} from "@/features/LangSwitcher";
+import {navLogoMobile} from "@/widgets/Navbar/model/data/navbarMenuMobile";
 
 
 
@@ -28,7 +30,7 @@ export interface NavbarProps {
 
 }
 
-export default memo(( props : NavbarProps) => {
+export const NavbarDesktop = ( props : NavbarProps) => {
 
     const {
         overlayed = false,
@@ -124,7 +126,11 @@ export default memo(( props : NavbarProps) => {
     );
 
 
-});
+};
+
+
+NavbarDesktop.displayName = 'NavbarDesktop';
+export default memo(NavbarDesktop);
 
 
 
@@ -137,7 +143,7 @@ interface NavbarItemsProps {
     itemNavbarDropDownClassname: string
 }
 
-const NavbarItems = memo(
+const NavbarItemsComponent  =
     ({
          items,
          positionChecker,
@@ -190,11 +196,11 @@ const NavbarItems = memo(
                                     to={item.path}
                                     key={item.src}
                                 >
-                                    <img
-                                        src={item.src}
-                                        alt={item.name}
+
+                                    <Image
+                                        src={navLogoMobile.src}
+                                        alt={navLogoMobile.name}
                                         className={itemLogoClassname}
-                                        // loading="lazy"
                                     />
                                 </AppLink>
 
@@ -219,6 +225,10 @@ const NavbarItems = memo(
                     })}
             </>
         );
-    }
-);
+    };
+
+NavbarItemsComponent.displayName = 'NavbarItems';
+
+const NavbarItems = memo(NavbarItemsComponent);
+
 

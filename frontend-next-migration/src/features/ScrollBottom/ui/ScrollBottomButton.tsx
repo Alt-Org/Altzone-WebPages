@@ -13,14 +13,10 @@ interface ScrollBottomButtonProps {
     className?: string;
 }
 
-export const ScrollBottomButton = memo(({ speedInMs = 50000 , className = ''}: ScrollBottomButtonProps) => {
-
+const ScrollBottomButtonComponent = ({ speedInMs = 50000 , className = ''}: ScrollBottomButtonProps) => {
     const ScrollButtonId = 'ScrollButton'
     const animationFrameIdRef = useRef<number>(0);
 
-    /**
-     * Handles the click event for the ScrollBottomButton component.
-     */
     const handleWatchClick = () =>{
         scrollToBottom(speedInMs, animationFrameIdRef);
     }
@@ -28,4 +24,8 @@ export const ScrollBottomButton = memo(({ speedInMs = 50000 , className = ''}: S
     useBottomAnimationCancellation(animationFrameIdRef, ScrollButtonId);
 
     return <Button className={className} id={ScrollButtonId} theme={ButtonTheme.Graffiti} size={ButtonSize.XL} onClick={handleWatchClick}>Play</Button>;
-});
+};
+
+ScrollBottomButtonComponent.displayName = 'ScrollBottomButton';
+
+export const ScrollBottomButton = memo(ScrollBottomButtonComponent);
