@@ -34,3 +34,5 @@ export const HeroSection = memo((props : HeroSectionProps) => {
         </section>
     );
 });
+
+HeroSection.displayName = "HeroSection";

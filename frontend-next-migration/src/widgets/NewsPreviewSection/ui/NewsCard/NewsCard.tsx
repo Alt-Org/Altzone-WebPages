@@ -12,7 +12,7 @@ interface NewsCardProps extends INewsElement{
     bodyLength: number;
 }
 
-export const NewsCard = memo((props: NewsCardProps) => {
+const NewsCard = (props: NewsCardProps) => {
     const {
         title,
         bodyPreview,
@@ -53,4 +53,8 @@ export const NewsCard = memo((props: NewsCardProps) => {
 
         </Card>
     )
-})
+}
+
+NewsCard.displayName = "NewsCard"
+
+export default memo(NewsCard)

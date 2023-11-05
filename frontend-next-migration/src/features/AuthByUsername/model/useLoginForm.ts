@@ -58,7 +58,7 @@ export const useLoginForm = ({onSuccessLogin}: Props) => {
             toast.error(error?.data?.message);
             return;
         }
-    }, [isLoading]);
+    }, [isLoading, error, dispatch, onSuccessLogin]);
 
     return {
         register,

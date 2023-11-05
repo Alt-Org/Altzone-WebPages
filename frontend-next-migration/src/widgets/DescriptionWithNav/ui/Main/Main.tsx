@@ -17,6 +17,9 @@ export const Main = memo(({className=''}: descriptionProps) => {
             </p>
             <NavElements navElems={Navs} className={cls.navElements} />
         </div>)
-})
+});
+
+
+Main.displayName = "DescriptionWithNav-main";
 
 

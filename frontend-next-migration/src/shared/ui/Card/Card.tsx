@@ -61,13 +61,19 @@ const CardTitle = memo(({ children, className= ''}: CardCompoundProps) => {
     return <h2 className={classNames(cls.Title, {}, [className])}>{children}</h2>;
 });
 
+CardTitle.displayName = "CardTitle";
+
 const CardBody = memo( ({ children, className= ''}: CardCompoundProps) => {
     return <p className={classNames(cls.Body, {}, [className])}>{children}</p>;
 });
 
+CardBody.displayName = "CardBody";
+
 const CardDate = memo( ({ children, className= ''}: CardCompoundProps) => {
     return <h2 className={classNames(cls.Date, {}, [className])}>{children}</h2>;
 });
+
+CardDate.displayName = "CardDate";
 
 const ReadMoreLink = memo( (props: ReadMoreLinkProps) => {
    const { children, className= '', path , isExternal = false , withScalableLink = false} = props;
@@ -80,6 +86,8 @@ const ReadMoreLink = memo( (props: ReadMoreLinkProps) => {
         </AppLink>
     )
 });
+
+ReadMoreLink.displayName = "card-ReadMoreLink";
 
 
 Card.Title = CardTitle;

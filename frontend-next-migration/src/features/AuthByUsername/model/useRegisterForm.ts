@@ -41,7 +41,7 @@ export const useRegisterForm = (toLoginPage: string) => {
             toast.error(error?.data?.message[0] ?? error?.data?.message);
             return;
         }
-    }, [isLoading]);
+    }, [isLoading, data , error]);
 
 
     return {

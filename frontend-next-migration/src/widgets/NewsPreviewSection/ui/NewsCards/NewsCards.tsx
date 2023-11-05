@@ -1,5 +1,5 @@
 import {memo} from "react";
-import {NewsCard} from "../NewsCard/NewsCard";
+import NewsCard from "../NewsCard/NewsCard";
 import {INewsElement} from "@/entities/News";
 import {CustomSlider} from "@/shared/ui/CustomSlider/CustomSlider";
 
@@ -17,3 +17,5 @@ export const NewsCards = memo(({className='', news}: NewsCardProps) => {
             </CustomSlider>
     )
 })
+
+NewsCards.displayName = 'NewsCards';

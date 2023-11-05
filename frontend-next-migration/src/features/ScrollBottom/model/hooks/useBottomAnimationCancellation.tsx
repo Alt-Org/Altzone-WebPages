@@ -34,6 +34,6 @@ export const useBottomAnimationCancellation = (animationFrameIdRef: MutableRefOb
             cancelAnimationFrame(animationFrameIdRef.current);
             animationFrameIdRef.current = 0;
         };
-    }, [animationFrameIdRef, ScrollStartButtonId]);
+    }, [animationFrameIdRef, ScrollStartButtonId, handleCancelling]);
 };
 

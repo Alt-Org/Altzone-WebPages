@@ -14,3 +14,5 @@ export const Title = memo(({className=''}:TitleProps)=>{
         </p>
     )
 })
+
+Title.displayName = "Footer-title";

@@ -50,3 +50,5 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         </Link>
     );
 });
+
+AppLink.displayName = "AppLink";

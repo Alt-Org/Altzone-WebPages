@@ -19,4 +19,6 @@ export const NavElement = memo(({navElem, className = ''}: NavElementProps)=>{
 
         </div>
     )
-})
+});
+
+NavElement.displayName = "DescriptionWithNav-NavElement";

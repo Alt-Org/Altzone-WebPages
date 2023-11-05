@@ -25,6 +25,7 @@ function withBackgroundImage<P extends object>(config: BackgroundImageConfig<P>)
 
     return class extends Component<P> {
 
+        displayName = "withBackgroundImage";
 
         render() {
             return (
@@ -62,6 +63,8 @@ function withBackgroundImage<P extends object>(config: BackgroundImageConfig<P>)
 
     };
 }
+
+
 
 export default withBackgroundImage;
 

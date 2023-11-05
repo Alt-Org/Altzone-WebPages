@@ -3,6 +3,7 @@ import cls from './Rights.module.scss'
 import {CurrentYear, CompanyName} from "../../model/data/text";
 import {memo} from "react";
 
+
 interface TitleProps{
     className?: string;
 }
@@ -14,3 +15,5 @@ export const Rights = memo(({className=''}:TitleProps)=>{
         </p>
     )
 })
+
+Rights.displayName = "Footer-Rights";
