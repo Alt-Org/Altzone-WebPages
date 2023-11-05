@@ -1,6 +1,6 @@
 import {memo, useCallback} from "react";
 import Fancybox from "@/shared/ui/Fancybox/Fancybox";
-
+import cls from "./styles.module.scss"
 
 export type GalleryCategoriesWithModalSliderProps = {
     title: string;
@@ -31,10 +31,12 @@ export const GalleryCategoriesWithModalSlider = memo(({
     return (
         <div style={{ cursor: "pointer" }}>
             <Fancybox >
-                <a data-fancybox={title} href={cover.url}>
-                    <img src={cover.url} width="200" height="150" alt={cover.name} />
+                <div className={cls.cover}>
+                <a data-fancybox={title} href={cover.url} >
+                    <img src={cover.url} alt={cover.name} />
                     <h2>{title}</h2>
                 </a>
+                </div>
 
                 <div style={{display:"none"}}>
                     {getSortedSources(sources).map((source, index) => (

@@ -1,88 +1,96 @@
-.wrapper{
-  width: 100vw;
-}
-
-
 .cover{
-  //background-color: white;
-  text-align: center;
-}
-
-.categoryImg{
-  display: block;
-  width: 200px;
-  height: 200px;
-  border-radius: var(--border-radius-custom);
-}
-
-.FsLightbox{
-  display: block;
-  background-color: #c50404;
+  padding: 10px;
+  width: 300px;
+  background-color: var(--transparent-bg);
+  border-radius: var(--border-radius-custom)
 }
 
 
-.sliderContainer{
-  width: 800px;
-  min-height: 80vh;
-  //height: 100%!important;
-  background-color: white;
-  color: #000000;
-  display: flex;
-
-  text-align: center;
-
-
-  flex-direction: column;
-  flex: 1;
-  position: relative;
-
-}
-
-
-
-.sliderText{
-
-  //z-index: 100000000000000;
-
-  cursor: text;
-  user-select: text;
-
-  color: #c50404;
-
-  a {
-    color: #c90046 !important;
-  }
-}
-
-
-.sliderImg{
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-
-.fadeOut {
-  animation: fadeOut ease 0.5s;
-  opacity: 0;
-  pointer-events: none;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-
-//.sliderIframe{
-//  flex-grow: 1;
-//  width: 100%;
-//  height: 100%;
+//.wrapper{
+//  width: 100vw;
+//}
 //
 //
+//.cover{
+//  //background-color: white;
+//  text-align: center;
+//}
+//
+//.categoryImg{
+//  display: block;
+//  width: 200px;
+//  height: 200px;
+//  border-radius: var(--border-radius-custom);
+//}
+//
+//.FsLightbox{
+//  display: block;
+//  background-color: #c50404;
+//}
+//
+//
+//.sliderContainer{
+//  width: 800px;
+//  min-height: 80vh;
+//  //height: 100%!important;
+//  background-color: white;
+//  color: #000000;
+//  display: flex;
+//
+//  text-align: center;
+//
+//
+//  flex-direction: column;
+//  flex: 1;
+//  position: relative;
 //
 //}
+//
+//
+//
+//.sliderText{
+//
+//  //z-index: 100000000000000;
+//
+//  cursor: text;
+//  user-select: text;
+//
+//  color: #c50404;
+//
+//  a {
+//    color: #c90046 !important;
+//  }
+//}
+//
+//
+//.sliderImg{
+//  display: block;
+//  width: 100%;
+//  height: 100%;
+//}
+//
+//
+//.fadeOut {
+//  animation: fadeOut ease 0.5s;
+//  opacity: 0;
+//  pointer-events: none;
+//}
+//
+//@keyframes fadeOut {
+//  from {
+//    opacity: 1;
+//  }
+//  to {
+//    opacity: 0;
+//  }
+//}
+//
+//
+////.sliderIframe{
+////  flex-grow: 1;
+////  width: 100%;
+////  height: 100%;
+////
+////
+////
+////}
