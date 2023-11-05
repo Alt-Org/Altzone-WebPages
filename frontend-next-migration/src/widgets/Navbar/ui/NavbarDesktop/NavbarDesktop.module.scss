@@ -1,0 +1,119 @@
+.Navbar {
+  font: var(--font-xxl);
+}
+
+.NestedContainer{
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.navMenu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+  align-items: center;
+}
+
+
+.leftSide{
+  z-index: 5;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.rightSide{
+  z-index: 5;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 10px;
+  position: relative;
+
+  .rightSideAuth{
+
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: var(--border-radius-custom);
+    outline: 2px solid var(--inverted-primary-color);
+    padding: 5px;
+    font-family: var(--font-family-texts) !important;
+    font: var(--font-m);
+    position: absolute;
+    right: 40px;
+    top: -40px;
+    @include link-scale-effect;
+    cursor: pointer;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+
+    color: var(--secondary-color) !important;
+
+    &{
+      .rightSideAuthLink{
+        color: var(--secondary-color) !important;
+      }
+    }
+
+  }
+}
+
+.item{
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
+}
+
+.itemLink{
+  @include link-scale-effect;
+}
+
+//.itemLink.disabled {
+//  color: #c0c0c0;
+//  text-decoration: none;
+//  pointer-events: none;
+//  opacity: 0.5;
+//}
+
+
+//.itemNavbarDropDownClassname{
+//}
+
+.itemNavbarDropDownContentClassName{
+
+  //text-align: center;
+  border-radius: var(--border-radius-custom);
+  background-color: var(--transparent-bg);
+  padding: 15px;
+
+  div{
+    @include link-scale-effect;
+  }
+
+}
+
+
+
+.fakeItemLink{
+  visibility: hidden;
+}
+
+.navLogo {
+  height: var(--navbar-logo-height);
+  @include link-scale-effect;
+}
+
+.overlayed {
+  background-color: rgba(4, 255, 4, 0);
+  z-index: var(--navbar-z-index);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
