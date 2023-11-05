@@ -62,7 +62,7 @@ const MainPage = () => {
                 {/*    /!*</div>*!/*/}
                 {/*</Container>*/}
 
-            <CustomSlider>
+            {/*<CustomSlider>*/}
                 {/*    <div style={{minWidth: "400px", backgroundColor: "red"}}>*/}
                 {/*        loool*/}
                 {/*    </div>*/}
@@ -112,7 +112,7 @@ const MainPage = () => {
                 {/*    loool*/}
                 {/*</div>*/}
 
-            </CustomSlider>
+            {/*</CustomSlider>*/}
 
 
                 <NewsPreviewSection />
