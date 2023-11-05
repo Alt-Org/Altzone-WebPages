@@ -21,3 +21,5 @@ export const NavGoBackButton = memo(({ className = ''}: NavGoBackButtonProps) =>
         </div>
     );
 });
+
+NavGoBackButton.displayName = "NavGoBackButton";

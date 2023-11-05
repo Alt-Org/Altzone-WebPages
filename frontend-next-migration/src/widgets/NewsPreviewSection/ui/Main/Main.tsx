@@ -11,7 +11,7 @@ interface descriptionProps{
 }
 
 export const Main = memo(({className=''}: descriptionProps) => {
-    const sortedNews = useMemo(() => sortPostsByDatesDesc(newsDataLocally), [newsDataLocally]);
+    const sortedNews = useMemo(() => sortPostsByDatesDesc(newsDataLocally), []);
     return(
         <div className={classNames(cls.Main, {},[className])}>
             <Container>
@@ -21,4 +21,5 @@ export const Main = memo(({className=''}: descriptionProps) => {
         </div>)
 })
 
+Main.displayName = "NewsPreviewSectionMain";
 

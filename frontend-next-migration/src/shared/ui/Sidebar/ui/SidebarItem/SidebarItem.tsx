@@ -36,3 +36,5 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     }
     return null;
 });
+
+SidebarItem.displayName = "SidebarItem";

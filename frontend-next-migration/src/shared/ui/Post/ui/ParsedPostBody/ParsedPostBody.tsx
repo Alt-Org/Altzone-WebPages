@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { IPostBodyElement } from "../../model/types";
+import Image from "next/image";
 
 interface ParsedPostBodyProps {
     jsonData: IPostBodyElement[];
@@ -11,7 +12,7 @@ export const ParsedPostBody: FC<ParsedPostBodyProps> = ({ jsonData }) => {
             switch (item.type) {
                 case 'image':
                     return (
-                        <img
+                        <Image
                             key={index}
                             src={item.url}
                             alt={item.alt}

@@ -77,3 +77,5 @@ export const Button: FC<ButtonProps> = memo((props) => {
         </button>
     );
 });
+
+Button.displayName = "Button";

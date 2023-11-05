@@ -38,3 +38,5 @@ export const ScrollTop = memo(({ className = '', children = 'YLÖS' }: ScrollTop
         </Button>
     );
 });
+
+ScrollTop.displayName = "ScrollTop";

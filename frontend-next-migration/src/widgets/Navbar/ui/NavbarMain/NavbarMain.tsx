@@ -45,3 +45,5 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
 
 });
+
+NavbarMain.displayName = "NavbarMain";

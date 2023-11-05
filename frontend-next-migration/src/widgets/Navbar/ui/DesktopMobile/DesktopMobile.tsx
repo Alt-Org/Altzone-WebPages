@@ -33,7 +33,11 @@ const NavbarDesktopMobile = memo(({overlayed, marginTop}: NavbarDesktopMobilePro
     );
 });
 
+NavbarDesktopMobile.displayName = "NavbarDesktopMobile";
+
 export default NavbarDesktopMobile;
+
+
 
 
 

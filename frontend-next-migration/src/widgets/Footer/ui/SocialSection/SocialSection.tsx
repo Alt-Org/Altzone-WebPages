@@ -4,6 +4,7 @@ import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import cls from './SocialSection.module.scss'
 import {SocialLink} from "../../model/types/types";
 
+
 interface SocialSectionProps{
     className?: string;
     socialLinks: SocialLink[];
@@ -26,3 +27,5 @@ export const SocialSection = memo(({className='',socialLinks}: SocialSectionProp
         </div>
     );
 });
+
+SocialSection.displayName = "Footer-SocialSection";

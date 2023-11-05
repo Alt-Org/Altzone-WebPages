@@ -1,4 +1,5 @@
 import cls from "./MembersSection.module.scss";
+import Image from 'next/image'
 import {groupsWithMembersLocally, GroupWithMember, Member} from "@/entities/Member";
 import {FC, memo, useMemo} from "react";
 import {ScrollBottomButton} from "@/features/ScrollBottom";
@@ -58,6 +59,7 @@ const GroupWithWorkmanComponent: FC<GroupWithWorkmanProps> = memo(({groupWithMem
         </div>
     );
 });
+GroupWithWorkmanComponent.displayName  = "GroupWithWorkmanComponent";
 
 
 interface WorkmanProps {
@@ -68,7 +70,7 @@ interface WorkmanProps {
 const MemberComponent: FC<WorkmanProps> = memo(({ member }) => {
     return (
         <div className={cls.workmanComponent}>
-            {member.imgSrc && <img src={member.imgSrc} alt={member.name + ' logo' }/>}
+            {member.imgSrc && <Image src={member.imgSrc} alt={member.name + ' logo' }/>}
             <h3>{member.name} </h3>
             <ul>
                 {member.role &&  <li><strong>Rooli:</strong> {`${member.role}`}</li> }
@@ -100,3 +102,5 @@ const MemberComponent: FC<WorkmanProps> = memo(({ member }) => {
         </div>
     );
 });
+
+MemberComponent.displayName = "MemberComponent";
