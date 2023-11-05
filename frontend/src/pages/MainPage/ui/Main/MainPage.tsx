@@ -9,16 +9,14 @@ import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {Container} from "@/shared/ui/Container";
 import backgroundImage from '@/shared/assets/images/introBackground.png';
-// import backgroundImage from '@/shared/assets/images/introNew.png';
-
-
+import {Helmet} from "react-helmet-async";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import cls from "./MainPage.module.scss"
 import {ScrollTop} from "@/features/ScrollTop";
 import {CustomSlider} from "@/shared/ui/CustomSlider/CustomSlider";
 import {envHelper} from "@/shared/const/env/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
-import {Helmet} from "react-helmet-async";
+
 
 
 
@@ -27,8 +25,11 @@ const MainPage = () => {
         openLinkInNewTab(AppExternalLinks.webgl);
     }
 
+
     return (
         <div className={cls.Wrapper}>
+
+            {/*Current Language: {language}*/}
             <Helmet>
                 <title>AltZone</title>
                 <meta name="description" content="Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />
@@ -39,6 +40,8 @@ const MainPage = () => {
                 <meta property="og:description" content="AltZone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />
                 <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />
             </Helmet>
+
+
 
 
                 <FeedbackSideButton />

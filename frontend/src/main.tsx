@@ -9,23 +9,26 @@ import {StoreProvider} from "@/app/providers/StoreProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
 import '../src/app/styles/index.scss'
+// import "./shared/i18n/lib/i18n";
+import  i18n from "./shared/i18n/lib/i18n";
+import { I18nextProvider } from 'react-i18next';
+
 
 createRoot(document.getElementById('root') as HTMLElement).render(
     <StrictMode>
         <StoreProvider>
-
             <BrowserRouter>
                 <ErrorBoundary>
                     <ThemeProvider>
                         <ToastContainer />
                         <HelmetProvider>
+                            <I18nextProvider i18n={i18n} defaultNS={'translation'}>
                         <App />
+                            </I18nextProvider>
                         </HelmetProvider>
                     </ThemeProvider>
                 </ErrorBoundary>
-
             </BrowserRouter>
-
         </StoreProvider>
     </StrictMode>
 );
