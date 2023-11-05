@@ -1,13 +1,15 @@
 import {CSSProperties, memo, useMemo} from "react";
+import Image from 'next/image'
+import {sidebarItemType} from "@/shared/ui/Sidebar/model/items";
+import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
+import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 import cls from "./NavbarMobile.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {Sidebar, ISidebarItem} from "@/shared/ui/Sidebar";
 import {navbarItemType, NavbarMenuMobile} from "../../model/types/types";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {navLogoMobile} from "../../model/data/navbarMenuMobile";
-import {sidebarItemType} from "@/shared/ui/Sidebar/model/items";
-import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
-import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
+
 
 
 
@@ -20,7 +22,7 @@ interface NavbarTouchProps {
     className? : string;
 }
 
-export default memo(( props : NavbarTouchProps) => {
+const NavbarTouchComponent = ( props : NavbarTouchProps) => {
 
     const {
         overlayed = false,
@@ -104,12 +106,18 @@ export default memo(( props : NavbarTouchProps) => {
                         theme={AppLinkTheme.PRIMARY}
                         to={navLogoMobile.path}
                     >
-                        <img src={navLogoMobile.src}
-                             alt={navLogoMobile.name}
+                        <Image
+                            src={navLogoMobile.src}
+                            alt={navLogoMobile.name}
                         />
+
                     </AppLink>
                 </div>
             </nav>
         )
 
-});
+};
+
+NavbarTouchComponent.displayName = 'NavbarTouch';
+
+export default memo(NavbarTouchComponent);

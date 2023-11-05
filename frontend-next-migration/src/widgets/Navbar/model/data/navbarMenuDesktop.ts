@@ -1,8 +1,8 @@
-import navLogo from "@/shared/assets/images/altLogo.png";
+// import navLogo from "@/shared/assets/images/altLogo.png";
 import {ItemType, NavbarMenu} from "../types/types";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-
+import img from "./img.png";
 
 export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
@@ -96,10 +96,13 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     {
         name: 'Nav logo',
         path: RoutePaths.MAIN,
-        src: navLogo,
+        src: img as unknown as string,
         type: ItemType.navLogo,
         position: "center"
     },
+
+
+
     // {
     //     name: 'Uutiset',
     //     path: RoutePaths.NEWS,

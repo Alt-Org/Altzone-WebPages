@@ -1,8 +1,8 @@
 import {navbarItemType, NavbarMenuMobile, NavbarMenuMobileItem, NavLogoMobileObject} from "../types/types";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
-import navLogo from "@/shared/assets/images/altLogo.png";
+// import navLogo from "@/shared/assets/images/altLogo.png";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-
+import img from "./img.png";
 
 export const navbarMenuMobile: NavbarMenuMobile = [
     {
@@ -107,8 +107,10 @@ export const navbarMenuMobile: NavbarMenuMobile = [
 ];
 
 
+
 export const navLogoMobile: NavLogoMobileObject = {
     name: 'Main',
     path: RoutePaths.MAIN,
-    src: navLogo
+    // src: navLogo  as unknown as string,
+    src: img as unknown as string,
 }

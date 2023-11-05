@@ -1,12 +1,8 @@
-"use client"
-
-
 import {Navbar} from "@/widgets/Navbar";
 import cls from './MembersPage.module.scss'
 import {MembersSection} from "@/widgets/MembersSection";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import backgroundImg from '@/shared/assets/images/clanBg/space.webp'
-const backgroundImgHolder = "/preloads/space.webp";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import {ScrollTop} from "@/features/ScrollTop";
 import {envHelper} from "@/shared/const/env/envHelper";
@@ -38,15 +34,11 @@ const MembersPage = () => {
     );
 };
 
-
-
 export default withBackgroundImage({
     WrappedComponent: MembersPage,
     alt: "Members-Page space background",
-    // @ts-ignore
-    // imagePath: backgroundImg,
-    imagePath: "https://t4.ftcdn.net/jpg/00/97/58/97/360_F_97589769_t45CqXyzjz0KXwoBZT9PRaWGHRk5hQqQ.jpg",
-    placeHolderPath: "https://t4.ftcdn.net/jpg/00/97/58/97/360_F_97589769_t45CqXyzjz0KXwoBZT9PRaWGHRk5hQqQ.jpg",
+
+    imagePath: backgroundImg as unknown as string,
     shouldBeLazyLoaded: true
 });
 
