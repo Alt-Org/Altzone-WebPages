@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../preparedApp/styles/index.scss';
-import Head from "next/head";
 import {Providers} from "@/preparedApp/providers/Providers";
 import '../preparedApp/styles/index.scss'
 
