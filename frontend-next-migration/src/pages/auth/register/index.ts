@@ -1,0 +1,1 @@
+export {AuthSubRegisterPage as default} from "@/preparedPages/AuthPages";

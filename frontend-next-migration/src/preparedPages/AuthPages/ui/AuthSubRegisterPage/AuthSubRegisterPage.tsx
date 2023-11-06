@@ -1,12 +1,12 @@
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {RegisterForm} from "@/features/AuthByUsername";
 import {envHelper} from "@/shared/const/env/envHelper";
-import {Helmet} from "react-helmet-async";
+import Head from 'next/head';
 
 const AuthSubRegisterPage = () => {
     return (
     <>
-        <Helmet>
+        <Head>
             <title>Rekisteröidy</title>
             <meta name="description" content="Rekisteröidy Altzone-tilille ja liity peliyhteisöömme." />
             <meta name="keywords" content="altzone, peli, peliyhteisö, rekisteröidy, register, jäsenyys" />
@@ -15,7 +15,7 @@ const AuthSubRegisterPage = () => {
             <meta property="og:title" content="Rekisteröidy" />
             <meta property="og:description" content="Rekisteröidy Altzone-tilille ja liity peliyhteisöömme." />
             <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.auth_register}`} />
-        </Helmet>
+        </Head>
         <div style={{minHeight: "100vh", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
             <RegisterForm toLoginPage={RoutePaths.auth_login} />
         </div>
