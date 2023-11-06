@@ -52,8 +52,8 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.CLAN_ADD_NEW]: "/clans/addNew",
     [AppRoutesLinks.CLAN_ONE]: "/clans/:id",
 
-    [AppRoutesLinks.PICTURE_GALLERY]: "/pictureGalleries",
-    [AppRoutesLinks.COMICS_GALLERY]: "/comicsGalleries",
+    [AppRoutesLinks.PICTURE_GALLERY]: "/picture-galleries",
+    [AppRoutesLinks.COMICS_GALLERY]: "/comics",
 
 
     [AppRoutesLinks.MAIN]: "/",

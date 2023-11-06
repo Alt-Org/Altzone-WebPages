@@ -1,5 +1,5 @@
 export interface SocialLink {
     name: string;
-    icon: JSX.Element;
+    icon: string;
     link: string;
 }

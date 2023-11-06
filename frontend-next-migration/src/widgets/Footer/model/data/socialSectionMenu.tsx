@@ -8,22 +8,22 @@ import {SocialLink} from "../types/types";
 export const socialLinks: SocialLink[] = [
     {
         name: 'Discord',
-        icon: <Discord />,
+        icon: Discord,
         link: AppExternalLinks.discord
     },
     {
         name: 'Instagram',
-        icon: <Instagram />,
+        icon: Instagram,
         link: AppExternalLinks.instagram
     },
     {
         name: 'Facebook',
-        icon: <Facebook />,
+        icon: Facebook,
         link: AppExternalLinks.facebook
     },
     {
         name: 'Youtube',
-        icon: <Youtube />,
+        icon: Youtube,
         link: AppExternalLinks.youtube
     },
 ];

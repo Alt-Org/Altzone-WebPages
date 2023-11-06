@@ -3,6 +3,7 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import cls from './SocialSection.module.scss'
 import {SocialLink} from "../../model/types/types";
+import Image from "next/image";
 
 
 interface SocialSectionProps{
@@ -21,7 +22,8 @@ export const SocialSection = memo(({className='',socialLinks}: SocialSectionProp
                     to={socialLink.link}
                     className={classNames(cls.item)}
                 >
-                    {socialLink.icon}
+                    {/*{socialLink.icon}*/}
+                    <Image src={socialLink.icon} alt={socialLink.name}/>
                 </AppLink>
             ))}
         </div>
@@ -29,3 +31,5 @@ export const SocialSection = memo(({className='',socialLinks}: SocialSectionProp
 });
 
 SocialSection.displayName = "Footer-SocialSection";
+
+
