@@ -1,11 +1,11 @@
 "use client"
 import {ReactNode} from "react";
 import { Provider as ReduxProvider } from 'react-redux';
-import { store,persistor} from '../providers/StoreProvider';
+import { store,persistor} from './StoreProvider';
 import { PersistGate } from 'redux-persist/integration/react'
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
-import { ThemeProvider } from "@/app/providers/ThemeProvider";
+import { ThemeProvider } from "@/preparedApp/providers/ThemeProvider";
 
 
 interface ProvidersProps {

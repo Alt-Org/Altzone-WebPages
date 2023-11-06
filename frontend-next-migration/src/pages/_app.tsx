@@ -1,5 +1,5 @@
-import '../app/styles/index.scss'
-import {Providers} from "@/app/providers/Providers";
+import '../preparedApp/styles/index.scss'
+import {Providers} from "@/preparedApp/providers/Providers";
 
 // @ts-ignore
 export default function MyApp({ Component, pageProps }) {

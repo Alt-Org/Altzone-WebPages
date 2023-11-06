@@ -1,4 +1,4 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
+import { StateSchema } from "@/preparedApp/providers/StoreProvider";
 import {selectHasClan, selectIsAuthenticated} from "../model/authUserSlice";
 
 
