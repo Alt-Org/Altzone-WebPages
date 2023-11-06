@@ -1,1 +1,2 @@
-export {default} from "./ui/PictureGalleryPage.async"
+export {default} from "@/preparedPages/PictureGalleryPages";
+

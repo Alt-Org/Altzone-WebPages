@@ -1,1 +1,2 @@
-export {default} from "./ui/About.async"
+export {default} from "@/preparedPages/AboutPage";
+

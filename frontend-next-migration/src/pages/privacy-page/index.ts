@@ -1,1 +1,2 @@
-export {default} from "./ui/PrivacyPage.async";
+export {default} from "@/preparedPages/PrivacyPage";
+
