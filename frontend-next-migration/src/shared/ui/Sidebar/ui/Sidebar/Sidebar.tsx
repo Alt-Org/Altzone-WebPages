@@ -49,9 +49,9 @@ export const Sidebar = ({
 
     // const currentButton = isCollapsed ? '☰' : 'Х';
 
-    const currentButton = isCollapsed
-        ? <FontAwesomeIcon className={cls.faBars} icon={faBars} />
-        : <FontAwesomeIcon className={cls.faTimes} icon={faTimes} />;
+    // const currentButton = isCollapsed
+    //     ? <FontAwesomeIcon className={cls.faBars} icon={faBars} />
+    //     : <FontAwesomeIcon className={cls.faTimes} icon={faTimes} />;
 
 
 

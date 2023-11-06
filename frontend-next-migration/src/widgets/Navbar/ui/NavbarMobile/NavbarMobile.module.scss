@@ -19,8 +19,6 @@
   align-self: start;
   cursor: pointer;
   user-select: none;
-  //z-index: var(--navbar-z-index) !important;
-  z-index: 1000;
 
   & .left{
     grid-column: 1;

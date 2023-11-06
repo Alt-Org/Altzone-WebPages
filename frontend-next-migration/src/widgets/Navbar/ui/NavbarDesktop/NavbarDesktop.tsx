@@ -201,6 +201,7 @@ const NavbarItemsComponent  =
                                         loading={"eager"}
                                         src={navLogoMobile.src}
                                         alt={navLogoMobile.name}
+                                        width={215}
                                         className={itemLogoClassname}
                                     />
                                 </AppLink>

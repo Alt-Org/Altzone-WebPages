@@ -1,16 +1,20 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
-const withImages = require('next-images');
+// const withImages = require('next-images');
 
 const nextConfig = {
     images: {
-        domains: [process.env.NEXT_PUBLIC_API_DOMAIN , "hips.hearstapps.com" , "www.thesprucepets.com", "images.unsplash.com"],
+        remotePatterns: [
+            { hostname: process.env.NEXT_PUBLIC_API_DOMAIN },
+            { hostname: "hips.hearstapps.com" },
+            { hostname: "www.thesprucepets.com" },
+            { hostname: "images.unsplash.com" },
+        ],
     },
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
         prependData: `@import "src/app/styles/variables/_mixins.scss";`,
     },
-    // pageExtensions: ['page.tsx', 'page.ts']
 }
 
 

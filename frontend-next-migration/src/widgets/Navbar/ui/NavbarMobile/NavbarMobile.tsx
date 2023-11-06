@@ -108,6 +108,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                     >
                         <Image
                             loading={"eager"}
+                            width={180}
                             src={navLogoMobile.src}
                             alt={navLogoMobile.name}
                         />
