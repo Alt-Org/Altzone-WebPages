@@ -4,7 +4,7 @@ const withImages = require('next-images');
 
 const nextConfig = {
     images: {
-        domains: [process.env.NEXT_PUBLIC_API_DOMAIN],
+        domains: [process.env.NEXT_PUBLIC_API_DOMAIN , "hips.hearstapps.com" , "www.thesprucepets.com", "images.unsplash.com"],
     },
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],

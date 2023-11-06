@@ -16,6 +16,8 @@ export const ParsedPostBody: FC<ParsedPostBodyProps> = ({ jsonData }) => {
                             key={index}
                             src={item.url}
                             alt={item.alt}
+                            width={"1000"}
+                            height={"1000"}
                             style={{
                                 display: 'block',
                                 width: item.widthPx ? item.widthPx : 'auto',
