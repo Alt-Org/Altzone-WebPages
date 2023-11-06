@@ -7,6 +7,7 @@ const nextConfig = {
         includePaths: [path.join(__dirname, 'styles')],
         prependData: `@import "src/app/styles/variables/_mixins.scss";`,
     },
+    // pageExtensions: ['page.tsx', 'page.ts']
 }
 
 

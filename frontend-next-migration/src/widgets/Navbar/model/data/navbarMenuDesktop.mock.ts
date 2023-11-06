@@ -8,6 +8,7 @@ export const navbarMenuDesktopMock: NavbarMenu = Object.freeze([
         isActive: false,
         type: ItemType.navLink,
         position: "left"
+
     },
     {
         name: 'About',
@@ -18,7 +19,7 @@ export const navbarMenuDesktopMock: NavbarMenu = Object.freeze([
     },
     {
         name: 'Nav logo',
-        src: navLogo,
+        src: navLogo as unknown as string,
         type: ItemType.navLogo,
         position: "center",
         path: '/#WorkersSection'

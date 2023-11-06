@@ -39,7 +39,7 @@ export const useNewClanForm = ({onSuccess}: Props) => {
             toast.error(error?.data?.message);
             return;
         }
-    }, [isLoading]);
+    }, [isLoading, data, error, onSuccess]);
 
     return {
         register,

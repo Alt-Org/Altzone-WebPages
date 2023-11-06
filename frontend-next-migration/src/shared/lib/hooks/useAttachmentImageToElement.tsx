@@ -8,7 +8,8 @@ export const useAttachmentImageToElement = (imagePath: string): AttachmentImageR
     const wrapperRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!wrapperRef.current) return;
+        const currentWrapperRef = wrapperRef.current;
+        if (!currentWrapperRef) return;
 
         const dynamicStyles = `
       .fixed-background-effect {
@@ -34,11 +35,11 @@ export const useAttachmentImageToElement = (imagePath: string): AttachmentImageR
         styleElement.innerHTML = dynamicStyles;
         document.head.appendChild(styleElement);
 
-        wrapperRef.current.classList.add('fixed-background-effect');
+        currentWrapperRef.classList.add('fixed-background-effect');
 
         return () => {
             document.head.removeChild(styleElement);
-            wrapperRef?.current?.classList.remove('fixed-background-effect');
+            currentWrapperRef.classList.remove('fixed-background-effect');
         };
     }, [imagePath]);
 

@@ -1,1 +1,1 @@
-export {Footer} from './ui/FooterMain/FooterMain'
+export {Footer} from './ui/FooterMain/FooterMain';
