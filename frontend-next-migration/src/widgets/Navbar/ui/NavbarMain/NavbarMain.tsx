@@ -1,4 +1,5 @@
-import {lazy, memo, Suspense} from "react";
+'use client'
+import {memo} from "react";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import {navbarMenuDesktop} from "../../model/data/navbarMenuDesktop";
 import {navbarMenuMobile} from "../../model/data/navbarMenuMobile";
@@ -26,9 +27,6 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
     const {overlayed, marginTop, className} = props;
 
     const {isMobileSize} = useIsMobileSize();
-
-    // const NavbarDesktop = lazy(() => import('../NavbarDesktop/NavbarDesktop'));
-    // const NavbarMobile= lazy(() => import('../NavbarMobile/NavbarMobile'));
 
         if(isMobileSize){
             return (

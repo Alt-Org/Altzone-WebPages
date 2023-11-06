@@ -1,4 +1,4 @@
-import {MutableRefObject, useEffect} from "react";
+import {MutableRefObject, useCallback, useEffect} from "react";
 import {addEventListeners,removeEventListeners} from "@/shared/lib/eventListeners";
 
 /**
@@ -8,7 +8,7 @@ import {addEventListeners,removeEventListeners} from "@/shared/lib/eventListener
  * @param {string} ScrollStartButtonId - The ID of the start button.
  */
 export const useBottomAnimationCancellation = (animationFrameIdRef: MutableRefObject<number>, ScrollStartButtonId: string) => {
-    const handleCancelling = (event: Event) => {
+    const handleCancelling = useCallback((event: Event) => {
         // Esc key
         if ("keyCode" in event && event.keyCode === 27) {
             cancelAnimationFrame(animationFrameIdRef.current);
@@ -21,7 +21,7 @@ export const useBottomAnimationCancellation = (animationFrameIdRef: MutableRefOb
             cancelAnimationFrame(animationFrameIdRef.current);
             animationFrameIdRef.current = 0;
         }
-    };
+    }, [ScrollStartButtonId, animationFrameIdRef, ]);
 
     useEffect(() => {
         const eventNames: Array<(keyof WindowEventMap)> = ['keydown', 'click'];
@@ -34,6 +34,6 @@ export const useBottomAnimationCancellation = (animationFrameIdRef: MutableRefOb
             cancelAnimationFrame(animationFrameIdRef.current);
             animationFrameIdRef.current = 0;
         };
-    }, [animationFrameIdRef, ScrollStartButtonId, handleCancelling]);
+    }, [handleCancelling, animationFrameIdRef, ScrollStartButtonId, ]);
 };
 

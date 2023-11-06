@@ -23,7 +23,6 @@ const MembersPage = () => {
                 <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MEMBERS}`} />
             </Head>
 
-
             {/*<div className={cls.backgroundOpacity}></div>*/}
             <div className={cls.navbarWrapper}>
             <Navbar overlayed={true} className={cls.navbar}/>
@@ -34,12 +33,18 @@ const MembersPage = () => {
     );
 };
 
-export default withBackgroundImage({
-    WrappedComponent: MembersPage,
-    alt: "Members-Page space background",
+// export default withBackgroundImage({
+//     // WrappedComponent: MembersPage,
+//     alt: "Members-Page space background",
+//
+//     imagePath: backgroundImg as unknown as string,
+//     shouldBeLazyLoaded: true
+// })({WrappedComponent: MembersPage});
 
-    imagePath: backgroundImg as unknown as string,
+export default  withBackgroundImage({
+    alt: "Members-Page space background",
+    imagePath: backgroundImg  as unknown as string,
     shouldBeLazyLoaded: true
-});
+})(MembersPage);
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { NewsCard } from './NewsCard';
+import  NewsCard  from './NewsCard';
 
 export default {
     title: 'widgets/newsSection/newsCard',

@@ -1,6 +1,6 @@
 import {memo, useCallback} from "react";
 import Fancybox from "@/shared/ui/Fancybox/Fancybox";
-
+import Image from "next/image";
 
 export type GalleryCategoriesWithModalSliderProps = {
     title: string;
@@ -26,13 +26,14 @@ export const GalleryCategoriesWithModalSlider = memo(({
             return numberA - numberB;
         });
         return result;
-    }, [sources]);
+    }, []);
+
 
     return (
         <div style={{ cursor: "pointer" }}>
             <Fancybox >
                 <a data-fancybox={title} href={cover.url}>
-                    <img src={cover.url} width="200" height="150" alt={cover.name} />
+                    <Image src={cover.url} width="200" height="150" alt={cover.name} />
                     <h2>{title}</h2>
                 </a>
 
@@ -41,7 +42,8 @@ export const GalleryCategoriesWithModalSlider = memo(({
                         index !== 0 ? (
                             <a key={index} data-fancybox={title} href={source}>
                                 <div>loool</div>
-                                <img alt={source.split('/').pop()?.split('.')[0]} src={source} width="200" height="150" />
+                                {/*// @ts-ignore*/}
+                                <Image alt={source.split('/').pop()?.split('.')[0]} src={source} width="200" height="150" />
                             </a>
                         ) : null
                     ))}
@@ -52,3 +54,5 @@ export const GalleryCategoriesWithModalSlider = memo(({
         </div>
     );
 });
+
+GalleryCategoriesWithModalSlider.displayName = "GalleryCategoriesWithModalSlider";

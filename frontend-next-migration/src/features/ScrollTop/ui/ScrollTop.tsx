@@ -1,3 +1,4 @@
+'use client'
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
 import cls from './ScrollTop.module.scss';
