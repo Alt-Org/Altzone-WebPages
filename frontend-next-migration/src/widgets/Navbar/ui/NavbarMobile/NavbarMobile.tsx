@@ -107,6 +107,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                         to={navLogoMobile.path}
                     >
                         <Image
+                            loading={"eager"}
                             src={navLogoMobile.src}
                             alt={navLogoMobile.name}
                         />

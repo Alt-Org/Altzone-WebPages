@@ -1,8 +1,8 @@
-import {FooterDesktopComponent} from "../FooterDesktop/FooterDesktop";
+import FooterDesktop from "../FooterDesktop/FooterDesktop";
 
 
 export const Footer = ()  => {
     return (
-        <FooterDesktopComponent/>
+        <FooterDesktop/>
     )
 }

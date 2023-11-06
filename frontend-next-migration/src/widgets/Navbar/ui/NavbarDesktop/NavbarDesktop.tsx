@@ -198,6 +198,7 @@ const NavbarItemsComponent  =
                                 >
 
                                     <Image
+                                        loading={"eager"}
                                         src={navLogoMobile.src}
                                         alt={navLogoMobile.name}
                                         className={itemLogoClassname}

@@ -3,6 +3,9 @@ const path = require('path');
 const withImages = require('next-images');
 
 const nextConfig = {
+    images: {
+        domains: [process.env.NEXT_PUBLIC_API_DOMAIN],
+    },
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
         prependData: `@import "src/app/styles/variables/_mixins.scss";`,

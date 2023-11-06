@@ -1,5 +1,5 @@
-import "./styles/variables/global.scss"
-import {Helmet} from "react-helmet-async";
+'use client'
+import "./styles/variables/global.scss";
 
 import {HeroSection} from "@/widgets/HeroSection";
 import {DescriptionWithNav} from "@/widgets/DescriptionWithNav";
@@ -20,6 +20,7 @@ import {ScrollTop} from "@/features/ScrollTop";
 // import {CustomSlider} from "@/shared/ui/CustomSlider/CustomSlider";
 import {envHelper} from "@/shared/const/env/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import Head from "next/head";
 
 
 
@@ -33,26 +34,24 @@ const MainPage = () => {
   return (
       <div className={cls.Wrapper}>
 
-        {/*<Helmet>*/}
-        {/*  <title>AltZone</title>*/}
-        {/*  <meta name="description" content="Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />*/}
-        {/*  <meta name="keywords" content="altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään" />*/}
-        {/*  <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />*/}
-        {/*  <meta property="og:type" content="website" />*/}
-        {/*  <meta property="og:title" content="AltZone - Aloita pelisi täältä" />*/}
-        {/*  <meta property="og:description" content="AltZone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />*/}
-        {/*  <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />*/}
-        {/*</Helmet>*/}
+        <Head>
+          <title>AltZone</title>
+          <meta name="description" content="Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />
+          <meta name="keywords" content="altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään" />
+          <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="AltZone - Aloita pelisi täältä" />
+          <meta property="og:description" content="AltZone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />
+          <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />
+        </Head>
 
-
-          <h1>hello</h1>
 
         <FeedbackSideButton />
         <Navbar overlayed marginTop={20} />
 
-        {/*<HeroSection className={cls.heroSection}>*/}
-        {/*  <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>Pelaa netissä!</Button>*/}
-        {/*</HeroSection>*/}
+        <HeroSection className={cls.heroSection}>
+          <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>Pelaa netissä!</Button>
+        </HeroSection>
 
         {/*<Container>*/}
         {/*  <DescriptionWithNav className={cls.description} />*/}
@@ -118,7 +117,7 @@ const MainPage = () => {
         {/*</CustomSlider>*/}
 
 
-        {/*<NewsPreviewSection />*/}
+        <NewsPreviewSection />
         <Footer />
         <ScrollTop/>
       </div>
