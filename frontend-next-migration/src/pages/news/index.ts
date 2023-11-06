@@ -1,1 +1,3 @@
-export { default } from "./ui/NewsPage.async";
+import {NewsPage} from "@/preparedPages/NewsPages";
+
+export default NewsPage;

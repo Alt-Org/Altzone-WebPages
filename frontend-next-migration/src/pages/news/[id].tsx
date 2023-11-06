@@ -1,1 +1,4 @@
-export {default} from "./ui/NewsElementPage"
+import {NewsElementPage} from "@/preparedPages/NewsPages";
+
+export default NewsElementPage;
+

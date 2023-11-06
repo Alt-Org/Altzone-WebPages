@@ -1,2 +1,2 @@
-export {default} from "./ui/MembersPage.async"
+export {default} from "@/preparedPages/MembersPage";
 

@@ -1,1 +1,1 @@
-export { default } from "./ui/ComicsGalleriesPage.async";
+export {default} from "@/preparedPages/ComicsGalleriesPages"
