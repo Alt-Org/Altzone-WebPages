@@ -1,8 +1,8 @@
-// import navLogo from "@/shared/assets/images/altLogo.png";
+import img from "@/shared/assets/images/altLogo.png";
 import {ItemType, NavbarMenu} from "../types/types";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import img from "./img.png";
+// import img from "./img.png";
 
 export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
