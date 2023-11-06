@@ -1,45 +1,39 @@
+'use client'
 import { useState, useEffect } from 'react';
-import { ComponentType } from 'react';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { useRouter } from 'next/router';
 import { LoginForm } from '@/features/AuthByUsername';
-import {useNavigate} from 'react-router-dom';
-import {Helmet} from "react-helmet-async";
+import Head from 'next/head';
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {envHelper} from "@/shared/const/env/envHelper";
 
-
-
-type Props = {
-    HasOutletChildren: ComponentType;
-}
-
-const AuthSubLoginPage = ({ HasOutletChildren }: Props) => {
-    const navigate = useNavigate();
+const AuthSubLoginPage = () => {
+    const router = useRouter();
 
     const [height, setHeight] = useState(window.innerHeight);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [height]);
-
-    useEffect(() => {
         const handleResize = () => {
-            if(window.innerHeight !== height){
+            if (window.innerHeight !== height) {
                 setHeight(window.innerHeight);
             }
         };
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('orientationchange', handleResize);
+
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('orientationchange', handleResize);
 
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('orientationchange', handleResize);
         };
-
     }, [height]);
+
+    const handleSuccessLogin = () => {
+        router.push(RoutePaths.MAIN);
+    };
 
     return (
         <>
-            <Helmet>
+            <Head>
                 <title>Kirjaudu sisään</title>
                 <meta name="description" content="Kirjaudu sisään Altzone-tilillesi ja liity peliyhteisöömme." />
                 <meta name="keywords" content="altzone, peli, peliyhteisö, kirjaudu sisään, login, jäsen" />
@@ -48,15 +42,14 @@ const AuthSubLoginPage = ({ HasOutletChildren }: Props) => {
                 <meta property="og:title" content="Kirjaudu sisään" />
                 <meta property="og:description" content="Kirjaudu sisään Altzone-tilillesi ja liity peliyhteisöömme." />
                 <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.auth_login}`} />
-            </Helmet>
+            </Head>
             <div style={{ minHeight: `${height}px`, display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <LoginForm
-                        toForgottenPwPage={""}
-                        toRegisterPage={RoutePaths.auth_register}
-                        onSuccessLogin={() => navigate(RoutePaths.MAIN)}
-                    />
+                <LoginForm
+                    toForgottenPwPage={""}
+                    toRegisterPage={RoutePaths.auth_register}
+                    onSuccessLogin={handleSuccessLogin}
+                />
             </div>
-            <HasOutletChildren />
         </>
     );
 }
