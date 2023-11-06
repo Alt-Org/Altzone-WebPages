@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { StateSchema } from "@/app/providers/StoreProvider";
+import { StateSchema } from "@/preparedApp/providers/StoreProvider";
 import {userPermissions,UserPermissions} from "./userPermissions";
 
 export const useUserPermissions = () => {

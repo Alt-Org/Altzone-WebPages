@@ -1,0 +1,1 @@
+export {ClanRoomSubPage as default} from "@/preparedPages/ClanPages";
