@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 import { dir } from 'i18next'
 
-import { languages } from '../../shared/i18n/settings'
+import { languages } from '../../shared/i18n/settings/settings'
 
 export async function generateStaticParams() {
     return languages.map((lng) => ({ lng }));
