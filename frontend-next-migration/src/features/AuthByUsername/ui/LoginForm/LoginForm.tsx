@@ -1,3 +1,4 @@
+'use client'
 import { CustomForm } from "@/shared/ui/CustomForm";
 import cls from "./LoginForm.module.scss";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";

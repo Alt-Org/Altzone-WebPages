@@ -1,4 +1,5 @@
-import { useRouter } from 'next/router';
+'use client'
+import {useParams} from 'next/navigation';
 import { getPostDataById, Post } from '@/shared/ui/Post';
 import { newsDataLocally } from '@/entities/News';
 import { Container } from '@/shared/ui/Container';
@@ -13,8 +14,8 @@ import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import {useScrollToTop} from "@/shared/lib/hooks/useScrollToTop";
 
 const NewsElementPage = () => {
-    const router = useRouter();
-    const { id } = router.query; // Получаем id из URL
+    // @ts-ignore
+    const { id } = useParams()
 
     useScrollToTop();
     const postData = getPostDataById(id as string, newsDataLocally);

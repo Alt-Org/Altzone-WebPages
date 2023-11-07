@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { LoginForm } from '@/features/AuthByUsername';
 import Head from 'next/head';
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";

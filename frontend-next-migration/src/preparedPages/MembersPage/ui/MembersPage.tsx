@@ -1,3 +1,4 @@
+'use client'
 import {Navbar} from "@/widgets/Navbar";
 import cls from './MembersPage.module.scss'
 import {MembersSection} from "@/widgets/MembersSection";
@@ -32,14 +33,6 @@ const MembersPage = () => {
         </div>
     );
 };
-
-// export default withBackgroundImage({
-//     // WrappedComponent: MembersPage,
-//     alt: "Members-Page space background",
-//
-//     imagePath: backgroundImg as unknown as string,
-//     shouldBeLazyLoaded: true
-// })({WrappedComponent: MembersPage});
 
 export default  withBackgroundImage({
     alt: "Members-Page space background",

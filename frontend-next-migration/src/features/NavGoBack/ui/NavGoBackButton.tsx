@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { memo } from 'react';
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./NavGoBackButton.module.scss";

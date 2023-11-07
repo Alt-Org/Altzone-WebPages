@@ -1,3 +1,4 @@
+'use client'
 /**
  A button component that scrolls the window to the bottom of the page.
  @param {number} [speedInMs=50000] - The speed of the scroll animation in milliseconds.

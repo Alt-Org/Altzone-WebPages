@@ -1,3 +1,4 @@
+'use client'
 import useGalleriasSection from "../model/useGalleriasSection";
 import {GalleryCategoriesWithModalSlider, ParentDirectory} from "@/entities/Gallery";
 import cls from "./GalleriasSection.module.scss";
