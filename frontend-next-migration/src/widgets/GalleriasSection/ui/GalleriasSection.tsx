@@ -9,17 +9,18 @@ type Props = {
 
 export const GalleriasSection = ({parentDirectory}: Props) => {
 
-    const {transformedGalleryCategories, isError} = useGalleriasSection(parentDirectory)
+    const {transformedGalleryCategories, isError} = useGalleriasSection(parentDirectory);
 
     if(isError){
         return (
             <div>Server Error</div>
         )
     }
+
     return (
         <div className={cls.galleries}>
             {
-                transformedGalleryCategories?.map((gallery: any) => (
+                transformedGalleryCategories.map((gallery: any) => (
                     <GalleryCategoriesWithModalSlider
                         cover={gallery.cover}
                         followLastImage={gallery.followLastImage}

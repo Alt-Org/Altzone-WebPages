@@ -23,7 +23,6 @@ const MainPage = () => {
         openLinkInNewTab(AppExternalLinks.webgl);
     }
 
-
     return (
         <div className={cls.Wrapper}>
             <Head>
