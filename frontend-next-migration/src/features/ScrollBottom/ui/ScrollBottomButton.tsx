@@ -12,9 +12,10 @@ import {scrollToBottom} from "../model/scrollToBottom";
 interface ScrollBottomButtonProps {
     speedInMs?: number;
     className?: string;
+    text?: string
 }
 
-const ScrollBottomButtonComponent = ({ speedInMs = 50000 , className = ''}: ScrollBottomButtonProps) => {
+const ScrollBottomButtonComponent = ({ speedInMs = 50000 , className = '', text = "play"}: ScrollBottomButtonProps) => {
     const ScrollButtonId = 'ScrollButton'
     const animationFrameIdRef = useRef<number>(0);
 
@@ -24,7 +25,7 @@ const ScrollBottomButtonComponent = ({ speedInMs = 50000 , className = ''}: Scro
 
     useBottomAnimationCancellation(animationFrameIdRef, ScrollButtonId);
 
-    return <Button className={className} id={ScrollButtonId} theme={ButtonTheme.Graffiti} size={ButtonSize.XL} onClick={handleWatchClick}>Play</Button>;
+    return <Button className={className} id={ScrollButtonId} theme={ButtonTheme.Graffiti} size={ButtonSize.XL} onClick={handleWatchClick}>{text}</Button>;
 };
 
 ScrollBottomButtonComponent.displayName = 'ScrollBottomButton';

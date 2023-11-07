@@ -10,7 +10,8 @@ import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {faGlobe} from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import {Container} from "@/shared/ui/Container";
-
+import {useClientTranslation} from "@/shared/i18n";
+import {useParams} from "next/navigation";
 
 
 
@@ -23,10 +24,16 @@ export const MembersSection = ({className = ''}: WorkersSectionProps) => {
 
     const memoizedGroupsWithWorkers = useMemo(() => groupsWithMembersLocally, []);
 
+    const params = useParams();
+    const lng = params.lng as string;
+
+
+    const {t} = useClientTranslation(lng, "team");
+
     return (
         <div className={classNames(cls.MembersSection,{},[className])}>
 
-            <ScrollBottomButton className={cls.scrollBottomButton}/>
+            <ScrollBottomButton className={cls.scrollBottomButton} text={t("playButton")}/>
 
 
             <Container className={cls.membersListContainer}>
