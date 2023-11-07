@@ -1,20 +1,18 @@
-// export {default} from "@/preparedPages/AboutPage";
-import {useParams} from "next/navigation";
 import {useServerTranslation} from "@/shared/i18n";
 
+type Props = {
+    params: { lng: string }
+}
 
-export async function generateMetadata({ params: { lng } }) {
-    const { t } = await useServerTranslation(lng, 'translation')
+export async function generateMetadata({ params } : Props) {
+    const { t } = await useServerTranslation(params.lng, 'translation')
     return { title: t('h1') }
 }
 
 
-export default async function About({ params: { lng } }) {
+export default async function About({ params }: Props) {
 
-
-    console.log(lng);
-
-    const { t } = await  useServerTranslation(lng, 'translation');
+    const { t } = await  useServerTranslation(params.lng, 'translation');
 
     return (
         <div>
