@@ -1,14 +1,13 @@
-"use client"
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-// import storage from 'redux-persist/lib/storage';
 import {envHelper} from "@/shared/const/env/envHelper";
 import {StateSchema} from "./StateSchema";
 import {authApi,authUserReducer, authMiddleware} from "@/entities/Auth";
 import {clanApi} from "@/entities/Clan";
 import {galleryApi} from "@/entities/Gallery";
 import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist";
+import {setupListeners} from "@reduxjs/toolkit/query";
 
 
 const createNoopStorage= () => {
@@ -52,7 +51,7 @@ export function createReduxStore(initialState?: StateSchema) {
 
 
     const store = configureStore({
-        // reducer: rootReducers,
+        // reducer: rootReducer,
         reducer: persistedReducer,
         //only in dev mode
         devTools: envHelper.isDevMode,
@@ -74,6 +73,8 @@ export function createReduxStore(initialState?: StateSchema) {
     });
 
     const persistor = persistStore(store);
+
+    setupListeners(store.dispatch);
 
     return { store, persistor };
 

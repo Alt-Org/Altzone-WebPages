@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
-// const withImages = require('next-images');
+const withPlugins = require('next-compose-plugins');
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === true,
+    // enabled: process.env.NODE_ENV === 'development',
+    openAnalyzer: false
+});
+
+
+const withNextIntl = require('next-intl/plugin')(
+    // This is the default (also the `src` folder is supported out of the box)
+    './i18n.ts'
+);
 
 const nextConfig = {
     images: {
@@ -9,6 +21,7 @@ const nextConfig = {
             { hostname: "hips.hearstapps.com" },
             { hostname: "www.thesprucepets.com" },
             { hostname: "images.unsplash.com" },
+            { hostname: "raw.githubusercontent.com" },
         ],
     },
     sassOptions: {
@@ -19,18 +32,13 @@ const nextConfig = {
 }
 
 
-module.exports = nextConfig;
+module.exports = withPlugins([
+    // withBundleAnalyzer,
+    withNextIntl
+], nextConfig);
 
-// module.exports = withImages(nextConfig);
 
-// module.exports = withImages({
-//
-//     // images: {
-//     //     disableStaticImages: true,
-//     // },
-//
-//     sassOptions: {
-//         includePaths: [path.join(__dirname, 'styles')],
-//         prependData: `@import "src/app/styles/variables/_mixins.scss";`,
-//     },
-// });
+// module.exports = nextConfig;
+
+
+

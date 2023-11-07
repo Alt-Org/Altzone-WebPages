@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {envHelper} from "@/shared/const/env/envHelper";
-import {transformToGalleryPropsFormat} from "@/entities/Gallery";
+import {HYDRATE} from "next-redux-wrapper";
+
 
 const url = "public/site";
 
@@ -43,6 +44,11 @@ export const galleryApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: envHelper.apiLink,
     }),
+    extractRehydrationInfo(action, { reducerPath }) {
+        if (action.type === HYDRATE) {
+            return action.payload[reducerPath]
+        }
+    },
     endpoints: (builder) => ({
         getAllDirectoryPhotos: builder.query<DirectoryWithPhotos[], GetAllDirectoryPhotosQueryArgs>({
             queryFn: async (args, _queryApi, _extraOptions, fetchWithBQ) => {
