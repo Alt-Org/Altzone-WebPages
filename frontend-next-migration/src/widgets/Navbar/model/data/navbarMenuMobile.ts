@@ -53,7 +53,7 @@ export const navbarMenuMobile: NavbarMenuMobile = [
                 elementText: "Klaaniesittelyt",
                 link: {
                     isExternal: false,
-                    path : RoutePaths.clan
+                    path : RoutePaths.clan_all
                 },
                 isDisabled: {
                     status: false,
