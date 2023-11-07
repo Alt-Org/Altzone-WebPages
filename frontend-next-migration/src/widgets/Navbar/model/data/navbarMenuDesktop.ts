@@ -61,7 +61,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             {
                 elementText: "Klaaniesittelyt",
                 link: {
-                    path: RoutePaths.clan,
+                    path: RoutePaths.clan_all,
                     isExternal: false
                 },
                 isDisabled: {

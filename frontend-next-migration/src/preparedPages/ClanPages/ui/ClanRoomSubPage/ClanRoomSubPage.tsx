@@ -1,6 +1,7 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import {useRouter} from "next/router";
+import {useRouter, useParams} from 'next/navigation';
 import { useSelector } from "react-redux";
 import { useGetClanByIdQuery } from "@/entities/Clan";
 import { Loader } from "@/shared/ui/Loader";
@@ -14,7 +15,9 @@ import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 const ClanRoomSubPage = () => {
     const router = useRouter();
-    const { id } = router.query;
+
+    // @ts-ignore
+    const {id} = useParams();
 
     // let { id } = useParams();
     const user = useSelector(selectProfile);

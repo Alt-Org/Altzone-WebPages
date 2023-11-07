@@ -1,3 +1,4 @@
+"use client"
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import cls from "./ClanAllSubPage.module.scss";
 import {GetClansResponse, useGetClansQuery} from "@/entities/Clan";
@@ -5,7 +6,9 @@ import {Loader} from "@/shared/ui/Loader";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {envHelper} from "@/shared/const/env/envHelper";
 import Head from "next/head";
-import {useRouter} from "next/router";
+
+
+import {useRouter} from 'next/navigation';
 
 
 const ClanAllSubPage = () => {
