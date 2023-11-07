@@ -1,5 +1,4 @@
 'use client'
-
 import i18next from 'i18next'
 import { useEffect, useState } from 'react'
 import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18next'
@@ -16,7 +15,8 @@ i18next
     .use(initReactI18next)
     .use(LanguageDetector)
     // @ts-ignore
-    .use(resourcesToBackend((language, namespace) => import(`./locales/${language}/${namespace}.json`)))
+    // .use(resourcesToBackend((language, namespace) => import(`./locales/${language}/${namespace}.json`)))
+    .use(resourcesToBackend((language, namespace) => import(`../locales/${language}/${namespace}.json`)))
     // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
     .init({
         ...getOptions(),
@@ -27,8 +27,8 @@ i18next
         preload: runsOnServerSide ? languages : []
     })
 
-// @ts-ignore
-export function useTranslation(lng, ns, options) {
+
+export function useTranslation(lng : string, ns: string, options? : any) {
     const [cookies, setCookie] = useCookies([cookieName])
     const ret = useTranslationOrg(ns, options)
     const { i18n } = ret

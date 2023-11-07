@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import acceptLanguage from 'accept-language'
-import { fallbackLng, languages, cookieName } from './shared/i18n/settings'
+import { fallbackLng, languages, cookieName } from './shared/i18n/settings/settings'
 
 acceptLanguage.languages(languages)
 
