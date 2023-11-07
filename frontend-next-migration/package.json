@@ -19,6 +19,7 @@
     "i18next": "^23.6.0",
     "next": "14.0.1",
     "next-images": "^1.8.5",
+    "next-redux-wrapper": "^8.1.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",

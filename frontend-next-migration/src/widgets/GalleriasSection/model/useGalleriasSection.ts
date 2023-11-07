@@ -4,7 +4,6 @@ import {
 } from "@/entities/Gallery";
 import {ParentDirectory, GalleryCategoriesWithModalSliderProps} from "@/entities/Gallery";
 
-
 const useGalleriasSection = (parentDirectory: ParentDirectory) => {
     const { data, isError} = useGetAllDirectoryPhotosQuery({ parentDirectory });
 

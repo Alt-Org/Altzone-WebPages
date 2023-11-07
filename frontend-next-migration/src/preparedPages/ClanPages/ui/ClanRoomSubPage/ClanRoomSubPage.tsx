@@ -14,8 +14,6 @@ import {envHelper} from "@/shared/const/env/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 const ClanRoomSubPage = () => {
-    const router = useRouter();
-
     // @ts-ignore
     const {id} = useParams();
 
@@ -32,7 +30,7 @@ const ClanRoomSubPage = () => {
         if (clan?.data.Clan.admin_ids.includes(playerId)) {
             setCanDelete(true);
         }
-    }, [isLoading]);
+    }, [isLoading,clan?.data.Clan.admin_ids, playerId]);
 
     const { handleDelete } = useDeleteClan();
 

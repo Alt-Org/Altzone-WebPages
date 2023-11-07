@@ -1,15 +1,18 @@
+'use client'
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, usePathname } from 'next/navigation';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 
 const AuthMainPage = () => {
     const router = useRouter();
+    const pathName = usePathname()
+
 
     useEffect(() => {
-        if (router.pathname === `${RoutePaths.auth}` || router.pathname === `${RoutePaths.auth}/`) {
-            router.push(`/${RoutePaths.auth_login}`);
+        if (pathName === `${RoutePaths.auth}` || pathName=== `${RoutePaths.auth}/`) {
+            router.push(`${RoutePaths.auth_login}`);
         }
-    }, [router]);
+    }, [router, pathName]);
 
     return (
      <></>
