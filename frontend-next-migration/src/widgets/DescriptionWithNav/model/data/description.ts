@@ -11,18 +11,15 @@ export const title = 'Projektin Kuvaus';
 //     ' unelmien tukemiseksi.' +
 //     ''
 
-export const text = 'ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli ' +
-    'jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. ' +
-    'Kuten kirjallisuuden opetus kouluissa alkaa sillä että luetaan yhteinen kirja ja analysoidaan sitä ja luodaan merkityskieltä kirjallisuuden ymmärtämiselle, ' +
-    'niin ALT Zone tarjoaa samanlaisen yhteisen pohjan peruskoulujen pelitaiteen opetukselle. ' +
-    'Kouluille menevä peli sisältää mahdollisuudet analysoida pelitaidetta edes pelaamatta peliä;' +
-    ' videoiden, kuvien ja kysymyssarjojen kautta. Omakohtainen kokemus pelaamisesta vielä syventää kokemusta,' +
-    ' vaikka se ei olekaan välttämätöntä opetukselle. Näin paketti on opettajalle mahdollisimman helppo. ' +
-    'Pelitaiteen opetus kun on hyvin haastavaa koska yhteistä pohjaa, sitä yhdessä koettua samaa näytelmää, ei ole mahdollista saada. ' +
-    'Siksi pelianalyysia, pelitaiteen ajattelua on mahdotonta kouluissa opettaa, kun yhteistä kieltä ei ole. ' +
-    'Toki voidaan analysoida eri pelejä, mutta oppiminen ei koskaan yllä siihen merkityskieleen ' +
-    'ja ymmärtämiseen mitä tarjoaa sellainen taiteen opetus jossa kokemus voidaan yhdessä jakaa.\n' +
-    '\n' +
-    'Lopuksi oppilaat jatkokehittävät peliä ja näiden pohjalta syntyy ALT Zone 2.0' +
-    ' - mobiilipeli jonka kuka tahansa voi ladata sovelluskaupasta. ' +
-    '2.0 pelin tuotto menee nuorten unelmien tukemiseen säätiön kautta.'
+export const text = ' ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli,\n' +
+    ' jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi.\n' +
+    'Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin,\n' +
+    'yhteistä kokemusta on lähes mahdotonta saavuttaa.\n' +
+    'ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle. \n' +
+    'Opetuspaketti on helppo toteuttaa;\n' +
+    'se sisältää mobiili- tai pc-laitteella testattavan demopelin, \n' +
+    'sekä pelitaiteen ajatteluun ohjaavia kysymyksiä.\n' +
+    'Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. \n' +
+    'Oppilailla on mahdollisuus jatkokehittää peliä sovelluskaupasta myöhemmin\n' +
+    'ladattavaksi ALT Zone 2.0 - mobiilipeliksi.\n' +
+    'ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen siihen perustettavan säätiön kautta.'
