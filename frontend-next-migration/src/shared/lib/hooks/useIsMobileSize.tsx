@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 
 const useIsMobileSize = () => {
-  const checkForDevice = () => (typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  const checkForDevice = () => (typeof window !== 'undefined' ? window.innerWidth <= 1150 : false);
+  // const checkForDevice = () => (typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
 
   const [isMobileSize, setIsMobileSize] = useState(checkForDevice());
 

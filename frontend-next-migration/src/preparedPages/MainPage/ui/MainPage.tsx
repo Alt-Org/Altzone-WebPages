@@ -39,7 +39,7 @@ const MainPage = () => {
             <FeedbackSideButton />
 
 
-            <Navbar overlayed marginTop={20} />
+            <Navbar overlaid marginTop={20} />
 
 
             <HeroSection className={cls.heroSection}>

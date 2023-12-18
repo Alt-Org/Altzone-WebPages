@@ -4,7 +4,7 @@
 
 .NestedContainer{
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1200px;
   position: relative;
 }
 
@@ -21,13 +21,18 @@
   justify-content: space-around;
 }
 
+
+//.leftSide{
+// margin-left: 10px;
+//}
+//
+//.rightSide{
+//  margin-right: 10px;
+//}
+
 .center{
   display: flex;
   justify-content: center;
-}
-
-.rightSide{
-  position: relative;
 }
 
 

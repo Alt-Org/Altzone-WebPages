@@ -53,9 +53,15 @@ interface GroupWithWorkmanProps{
 }
 
 const GroupWithWorkmanComponent: FC<GroupWithWorkmanProps> = memo(({groupWithMember}) => {
+
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "members");
+
     return (
         <div className={cls.groupComponent}>
-            <h1>{groupWithMember.group}</h1>
+            <h1>{t(`${groupWithMember.group}`)}</h1>
             <ul>
                 {groupWithMember.workers.map((member) => (
                     <li key={member.id}>

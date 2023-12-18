@@ -24,7 +24,7 @@ import {useClientTranslation} from "@/shared/i18n";
 
 
 export interface NavbarProps {
-    overlayed ?: boolean;
+    overlaid ?: boolean;
     marginTop?: number;
     className?: string;
     navbarMenu:  NavbarMenu
@@ -34,7 +34,7 @@ export interface NavbarProps {
 export const NavbarDesktop = ( props : NavbarProps) => {
 
     const {
-        overlayed = false,
+        overlaid = false,
         marginTop,
         navbarMenu,
         className=''
@@ -45,7 +45,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
         : {};
 
     const mods: Record<string, boolean> = {
-        [cls.overlayed]: overlayed,
+        [cls.overlayed]: overlaid,
     } as Record<string, boolean>;
 
     const itemLinkClassname = cls.item + ' ' + cls.itemLink;
@@ -63,8 +63,6 @@ export const NavbarDesktop = ( props : NavbarProps) => {
 
 
     const rightSideRef = useRef(null);
-
-
     const [distToRightBorder , setDistToRightBorder] = useState<number>();
 
 
@@ -72,11 +70,11 @@ export const NavbarDesktop = ( props : NavbarProps) => {
         const rightSideElement = rightSideRef.current;
 
         if (rightSideElement) {
+            // @ts-ignore
             const lastChild = rightSideElement.lastElementChild;
+            // @ts-ignore
             const distanceToRight = rightSideElement.getBoundingClientRect().right - lastChild.getBoundingClientRect().right;
             setDistToRightBorder(distanceToRight);
-
-            // console.log('distance: :', distanceToRight, 'px');
         }
     }, []);
 
@@ -126,7 +124,10 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                     </div>
 
 
-                    <div className={cls.rightSideAuth} style={{marginRight: distToRightBorder}}>
+                    <div
+                        className={cls.rightSideAuth}
+                        style={{marginRight: distToRightBorder}}
+                    >
                         {
                             canI("canISeeLogin")
                                 ? (
@@ -204,10 +205,16 @@ const NavbarItemsComponent =
                         }
 
                         if (isNavbarDropDownObject(item)) {
+
+                            const localizedElements = item.elements.map((element) => ({
+                                ...element,
+                                elementText: t(`${element.elementText}`),
+                            }));
+
                             return (
                                 <DropdownWrapper
                                     // isDisabled={{status: true, reason: "Kirjaudu ensin"}}
-                                    elements={item.elements}
+                                    elements={localizedElements}
                                     contentAbsolute={true}
                                     mouseOverLeaveMode={true}
                                     key={item.name}
