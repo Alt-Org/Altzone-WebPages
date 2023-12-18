@@ -9,12 +9,14 @@ import {Sidebar, ISidebarItem} from "@/shared/ui/Sidebar";
 import {navbarItemType, NavbarMenuMobile} from "../../model/types/types";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {navLogoMobile} from "../../model/data/navbarMenuMobile";
+import {useParams} from "next/navigation";
+import {useClientTranslation} from "@/shared/i18n";
 
 
 
 
 interface NavbarTouchProps {
-    overlayed ?: boolean;
+    overlaid ?: boolean;
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navBarItemsList?: NavbarMenuMobile;
@@ -25,7 +27,7 @@ interface NavbarTouchProps {
 const NavbarTouchComponent = ( props : NavbarTouchProps) => {
 
     const {
-        overlayed = false,
+        overlaid = false,
         marginTop,
         navBarItemsList,
         // navLogo,
@@ -41,7 +43,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
         : {};
 
     const mods: Record<string, boolean> = {
-        [cls.overlayed]: overlayed,
+        [cls.overlayed]: overlaid,
     } as Record<string, boolean>;
 
     const sidebarMods: Record<string, boolean> = {
@@ -49,16 +51,22 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
         [cls.right] : side === 'right',
     } as Record<string, boolean>;
 
-
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "navbar");
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navBarItemsList || [])
             .map(item => {
                 if (item.type === navbarItemType.NavbarMenuMobileItem) {
-                    return { path: item.path, name: item.name, type: sidebarItemType.ISidebarItemBasic };
+                    return { path: item.path, name: t(`${item.name}`), type: sidebarItemType.ISidebarItemBasic };
                 }
                 if (item.type === navbarItemType.NavbarMenuMobileDropDownItem) {
-                    return { name: item.name, elements: item.elements, type: sidebarItemType.ISidebarItemDropDown };
+                    const localizedElements = item.elements.map((element) => ({
+                        ...element,
+                        elementText: t(`${element.elementText}`),
+                    }));
+                    return { name:  t(`${item.name}`), elements: localizedElements, type: sidebarItemType.ISidebarItemDropDown };
                 }
                 return null;
             })
@@ -89,13 +97,13 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                                         to={navbarMenuLoginProfile.login.path}
                                         key={navbarMenuLoginProfile.login.path}
                                     >
-                                        <span>{navbarMenuLoginProfile.login.name}</span>
+                                        <span>{t(`${navbarMenuLoginProfile.login.name}`)}</span>
                                     </AppLink>
                                 }
 
                                 {
                                     canI("canISeeLogout") &&
-                                         <div onClick={()=>logout()}>Logout</div>
+                                         <div onClick={()=>logout()}>{t(`logout`)}</div>
                                 }
 
                             </div>

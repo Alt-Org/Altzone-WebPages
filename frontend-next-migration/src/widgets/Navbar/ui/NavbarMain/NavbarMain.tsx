@@ -7,7 +7,7 @@ import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import NavbarDesktop from "../NavbarDesktop/NavbarDesktop";
 
 interface NavbarMainProps {
-    overlayed?: boolean;
+    overlaid?: boolean;
     marginTop?: number;
     className?: string;
 }
@@ -24,20 +24,20 @@ interface NavbarMainProps {
  */
 export const NavbarMain = memo((props: NavbarMainProps) => {
 
-    const {overlayed, marginTop, className} = props;
+    const {overlaid, marginTop, className} = props;
 
     const {isMobileSize} = useIsMobileSize();
 
         if(isMobileSize){
             return (
             // <Suspense fallback=''>
-                <NavbarMobile overlayed={overlayed} marginTop={marginTop} className={className} navBarItemsList={navbarMenuMobile}/>
+                <NavbarMobile overlaid={overlaid} marginTop={marginTop} className={className} navBarItemsList={navbarMenuMobile}/>
             // </Suspense>
         )
         }
         return (
             // <Suspense fallback=''>
-                <NavbarDesktop navbarMenu={navbarMenuDesktop} overlayed={overlayed } className={className} marginTop={marginTop}/>
+                <NavbarDesktop navbarMenu={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>
             // </Suspense>
         )
 

@@ -6,7 +6,7 @@ import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 export const navbarMenuMobile: NavbarMenuMobile = [
     {
-        name: 'Pääsivu',
+        name: 'main',
         path: RoutePaths.MAIN,
         type: navbarItemType.NavbarMenuMobileItem,
     },
@@ -24,18 +24,18 @@ export const navbarMenuMobile: NavbarMenuMobile = [
     // },
 
     {
-        name : 'Yhteisö',
+        name : 'community',
         type: navbarItemType.NavbarMenuMobileDropDownItem,
         elements: [
             {
-                elementText: "Foorumi",
+                elementText: "forum",
                 link: {
                     isExternal: true,
                     path : AppExternalLinks.reddit
                 }
             },
             {
-                elementText: "Palaute",
+                elementText: "feedback",
                 link: {
                     isExternal: true,
                     path : AppExternalLinks.googleFeedback
@@ -45,23 +45,23 @@ export const navbarMenuMobile: NavbarMenuMobile = [
     },
 
     {
-        name : 'Peli',
+        name : 'game',
         type: navbarItemType.NavbarMenuMobileDropDownItem,
         accessErrorMsg: "Kirjaudu sisään nähdäksesi tämän osaston.",
         elements: [
             {
-                elementText: "Klaaniesittelyt",
+                elementText: "clans",
                 link: {
                     isExternal: false,
                     path : RoutePaths.clan_all
                 },
                 isDisabled: {
                     status: false,
-                    reason: "Kirjadu ensin!"
+                    reason: "SignUpFirst"
                 }
             },
             {
-                elementText: "Leaderboard",
+                elementText: "leaderboard",
                 link: {
                     isExternal: false,
                     path : AppExternalLinks.stub
@@ -72,11 +72,11 @@ export const navbarMenuMobile: NavbarMenuMobile = [
 
 
     {
-        name : 'Taide',
+        name : 'art',
         type: navbarItemType.NavbarMenuMobileDropDownItem,
         elements: [
             {
-                elementText: "Sarjakuvat",
+                elementText: "comics",
                 link: {
                     isExternal: false,
                     path : RoutePaths.COMICS_GALLERY
@@ -84,7 +84,7 @@ export const navbarMenuMobile: NavbarMenuMobile = [
             },
 
             {
-                elementText: "Kuvagalleriat",
+                elementText: "galleries",
                 link: {
                     isExternal: false,
                     path: RoutePaths.PICTURE_GALLERY,
@@ -100,7 +100,7 @@ export const navbarMenuMobile: NavbarMenuMobile = [
     //     type: navbarItemType.NavbarMenuMobileItem
     // },
     {
-        name : 'Tekijät',
+        name : 'team',
         path:  RoutePaths.MEMBERS,
         type: navbarItemType.NavbarMenuMobileItem
     },

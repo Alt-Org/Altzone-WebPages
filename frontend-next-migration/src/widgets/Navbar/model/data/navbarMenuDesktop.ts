@@ -29,11 +29,10 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
     {
 
-        name: 'Yhteisö',
+        name: 'community',
         elements: [
             {
-                // elementText: "Foorumi",
-                elementText: "Forum",
+                elementText: "forum",
                 link: {
                     path: AppExternalLinks.reddit,
                     isExternal: true
@@ -42,7 +41,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             },
 
             {
-                elementText: "Palaute",
+                elementText: "feedback",
                 link: {
                     path: AppExternalLinks.googleFeedback,
                     isExternal: true
@@ -57,22 +56,22 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
     {
 
-        name: 'Peli',
+        name: 'game',
         elements: [
             {
-                elementText: "Klaaniesittelyt",
+                elementText: "clans",
                 link: {
                     path: RoutePaths.clan_all,
                     isExternal: false
                 },
                 isDisabled: {
                     status: false,
-                    reason: "Kirjadu ensin!"
+                    reason: "Kirjaudu ensin!"
                 }
             },
 
             {
-                elementText: "Leaderboard",
+                elementText: "leaderboard",
                 link: {
                     path: AppExternalLinks.stub,
                     isExternal: false
@@ -118,7 +117,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
         // path: RoutePaths.NEWS,
         elements: [
             {
-                elementText: "Sarjakuvat",
+                elementText: "comics",
                 link: {
                     path: RoutePaths.COMICS_GALLERY,
                     isExternal: false
@@ -126,7 +125,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
             },
 
             {
-                elementText: "Kuvagalleriat",
+                elementText: "galleries",
                 link: {
                     path: RoutePaths.PICTURE_GALLERY,
                     isExternal: false
@@ -140,7 +139,6 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
     {
         name: 'team',
-        // name: 'Tekijät',
         path:  RoutePaths.MEMBERS,
         isActive: false,
         type: ItemType.navLink,
@@ -166,12 +164,12 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
 export const navbarMenuLoginProfile = {
     'login': {
-        name: "login",
+        name: "LOGIN",
         type: ItemType.navAuthLogin,
         path: RoutePaths.auth_login
     },
     'profile': {
-        name: "profile",
+        name: "PROFILE",
         type: ItemType.navAuthProfile,
         elements: [
             {

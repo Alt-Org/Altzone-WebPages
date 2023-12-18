@@ -1,0 +1,16 @@
+{
+  "GameDesign": "Game design",
+  "Graphic": "Graphic",
+  "LogoGraphic": "Graphic, logo",
+  "GameGraphic": "Graphic, game",
+  "GameAnimation": "Graphic, animation",
+  "GameCode": "Code: game",
+  "APICode": "Code: API",
+  "WebPagesCode": "Code: web pages",
+  "Sound": "Sound",
+  "Comics": "Comics",
+  "Prod": "Production",
+  "OthersGame": "Involved in game development",
+  "OthersComics": "Involved in comics",
+  "Others": "Special Thanks"
+}

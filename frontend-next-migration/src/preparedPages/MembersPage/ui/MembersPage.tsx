@@ -26,7 +26,7 @@ const MembersPage = () => {
 
             {/*<div className={cls.backgroundOpacity}></div>*/}
             <div className={cls.navbarWrapper}>
-            <Navbar overlayed={true} className={cls.navbar}/>
+            <Navbar overlaid={true} className={cls.navbar}/>
             </div>
             <MembersSection  className={cls.workersSection}/>
             <ScrollTop/>

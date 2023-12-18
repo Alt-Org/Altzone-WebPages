@@ -1,9 +1,17 @@
 {
+  "main" : "Main page",
   "forum" : "Forum",
   "team" : "Team",
   "art" : "Art",
   "login": "Log in",
-  "logout": "Log out"
-
+  "logout": "Log out",
+  "community": "Community",
+  "feedback" : "Feedback",
+  "game": "Game",
+  "clans" : "Clans",
+  "comics": "Comics",
+  "galleries": "Galleries",
+  "leaderboard": "Leaderboard",
+  "SignUpFirst!" : "Sign up first!"
 
 }

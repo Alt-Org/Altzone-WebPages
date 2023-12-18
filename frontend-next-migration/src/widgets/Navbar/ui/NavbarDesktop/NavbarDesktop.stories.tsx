@@ -14,28 +14,28 @@ const Template: ComponentStory<typeof NavbarDesktop> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  overlayed: false,
+  overlaid: false,
   marginTop: 0,
   navbarMenu: navbarMenuDesktopMock,
 };
 
 export const WithOverlay = Template.bind({});
 WithOverlay.args = {
-  overlayed: true,
+  overlaid: true,
   marginTop: 0,
   navbarMenu: navbarMenuDesktopMock,
 };
 
 export const WithMarginTop = Template.bind({});
 WithMarginTop.args = {
-  overlayed: false,
+  overlaid: false,
   marginTop: 25,
   navbarMenu: navbarMenuDesktopMock,
 };
 
 export const WithoutMenu = Template.bind({});
 WithoutMenu.args = {
-  overlayed: false,
+  overlaid: false,
   marginTop: 0,
   navbarMenu: [],
 };

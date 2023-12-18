@@ -1,7 +1,16 @@
 {
+  "main" : "Главная",
   "forum" : "Форум",
   "team" : "Команда",
   "art" : "Арт",
   "login": "Войти",
-  "logout": "Выйти"
+  "logout": "Выйти",
+  "community": "Сообщество",
+  "feedback" : "Фидбэк",
+  "game": "Игра",
+  "clans" : "Кланы",
+  "comics": "Комиксы",
+  "galleries": "Галерии",
+  "leaderboard": "Рейтинг",
+  "SignUpFirst!" : "Сперва зарегистрируйтесь!"
 }

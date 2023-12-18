@@ -6,7 +6,7 @@ import {navbarMenuMobile} from "@/widgets/Navbar/model/data/navbarMenuMobile";
 import {navbarMenuDesktop} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
 
 export interface NavbarDesktopMobileProps {
-    overlayed?: boolean;
+    overlaid?: boolean;
     marginTop?: number;
 }
 
@@ -19,17 +19,17 @@ export interface NavbarDesktopMobileProps {
  * @param {number} props.marginTop - The margin top value for the navbar.
  * @returns {JSX.Element} The rendered component.
  */
-const NavbarDesktopMobile = memo(({overlayed, marginTop}: NavbarDesktopMobileProps) => {
+const NavbarDesktopMobile = memo(({overlaid, marginTop}: NavbarDesktopMobileProps) => {
     const {isMobileSize} = useIsMobileSize();
 
     if (isMobileSize) {
         return (
-            <NavbarMobile overlayed={overlayed} marginTop={marginTop} navBarItemsList={navbarMenuMobile}/>
+            <NavbarMobile overlaid={overlaid} marginTop={marginTop} navBarItemsList={navbarMenuMobile}/>
         );
     }
 
     return (
-        <NavbarDesktop navbarMenu={navbarMenuDesktop} overlayed={overlayed} marginTop={marginTop}/>
+        <NavbarDesktop navbarMenu={navbarMenuDesktop} overlaid={overlaid} marginTop={marginTop}/>
     );
 });
 
