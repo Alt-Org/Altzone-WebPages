@@ -1,4 +1,4 @@
-import {CSSProperties, memo} from "react";
+import {CSSProperties, memo, useEffect, useLayoutEffect, useRef, useState} from "react";
 import Image from 'next/image'
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {classNames} from "@/shared/lib/classNames/classNames";
@@ -6,7 +6,8 @@ import cls from "./NavbarDesktop.module.scss";
 import {NavbarMenu, PositionChecker} from "../../model/types/types";
 import {
     isCenter,
-    isLeftSide, isNavbarDropDownObject,
+    isLeftSide,
+    isNavbarDropDownObject,
     isNavbarLinkFakeObject,
     isNavbarLinkObject,
     isNavLogoObject,
@@ -15,10 +16,10 @@ import {
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
 import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
 
-import {useSelector} from "react-redux";
-import {selectProfile, useLogoutMutation, useUserPermissions} from "@/entities/Auth";
-import {LangSwitcher} from "@/features/LangSwitcher";
+import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 import {navLogoMobile} from "@/widgets/Navbar/model/data/navbarMenuMobile";
+import {useParams} from "next/navigation";
+import {useClientTranslation} from "@/shared/i18n";
 
 
 
@@ -52,11 +53,34 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
-    // const profile = useSelector(selectProfile);
-
     const {canI} = useUserPermissions();
 
     const [logout] = useLogoutMutation();
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "navbar");
+
+
+    const rightSideRef = useRef(null);
+
+
+    const [distToRightBorder , setDistToRightBorder] = useState<number>();
+
+
+    useLayoutEffect(() => {
+        const rightSideElement = rightSideRef.current;
+
+        if (rightSideElement) {
+            const lastChild = rightSideElement.lastElementChild;
+            const distanceToRight = rightSideElement.getBoundingClientRect().right - lastChild.getBoundingClientRect().right;
+            setDistToRightBorder(distanceToRight);
+
+            // console.log('distance: :', distanceToRight, 'px');
+        }
+    }, []);
+
+
 
     return (
         // <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
@@ -64,63 +88,66 @@ export const NavbarDesktop = ( props : NavbarProps) => {
 
             <div className={cls.NestedContainer}>
 
-            <div className={cls.navMenu}>
-                <div className={cls.leftSide}>
-                    <NavbarItems
-                        key={"isLeftSide"}
-                        items={navbarMenu}
-                        positionChecker={isLeftSide}
-                        itemLinkClassname={itemLinkClassname}
-                        itemLogoClassname={itemLogoClassname}
-                        itemFakeLinkClassname={itemFakeLinkClassname}
-                        itemNavbarDropDownClassname={itemNavbarDropDownClassname}
-                    />
-                </div>
-                <div className={cls.center}>
-                    <NavbarItems
-                        key={"isCenter"}
-                        itemNavbarDropDownClassname={itemNavbarDropDownClassname}
-                        items={navbarMenu}
-                        positionChecker={isCenter}
-                        itemLinkClassname={itemLinkClassname}
-                        itemLogoClassname={itemLogoClassname}
-                        itemFakeLinkClassname={itemFakeLinkClassname}
-                    />
-                </div>
-                <div className={cls.rightSide}>
+                <div className={cls.navMenu}>
+                    <div className={cls.leftSide}>
+                        <NavbarItems
+                            key={"isLeftSide"}
+                            items={navbarMenu}
+                            positionChecker={isLeftSide}
+                            itemLinkClassname={itemLinkClassname}
+                            itemLogoClassname={itemLogoClassname}
+                            itemFakeLinkClassname={itemFakeLinkClassname}
+                            itemNavbarDropDownClassname={itemNavbarDropDownClassname}
+                        />
+                    </div>
+                    <div className={cls.center}>
+                        <NavbarItems
+                            key={"isCenter"}
+                            itemNavbarDropDownClassname={itemNavbarDropDownClassname}
+                            items={navbarMenu}
+                            positionChecker={isCenter}
+                            itemLinkClassname={itemLinkClassname}
+                            itemLogoClassname={itemLogoClassname}
+                            itemFakeLinkClassname={itemFakeLinkClassname}
+                        />
+                    </div>
+                    <div className={cls.rightSide} ref={rightSideRef}>
 
-                    <NavbarItems
-                        key={"isRightSide"}
-                        itemNavbarDropDownClassname={itemNavbarDropDownClassname}
-                        items={navbarMenu}
-                        positionChecker={isRightSide}
-                        itemLinkClassname={itemLinkClassname}
-                        itemLogoClassname={itemLogoClassname}
-                        itemFakeLinkClassname={itemFakeLinkClassname}
-                    />
+                        <NavbarItems
+                            key={"isRightSide"}
+                            itemNavbarDropDownClassname={itemNavbarDropDownClassname}
+                            items={navbarMenu}
+                            positionChecker={isRightSide}
+                            itemLinkClassname={itemLinkClassname}
+                            itemLogoClassname={itemLogoClassname}
+                            itemFakeLinkClassname={itemFakeLinkClassname}
+                        />
+
+                    </div>
 
 
-                    <div className={cls.rightSideAuth}>
+                    <div className={cls.rightSideAuth} style={{marginRight: distToRightBorder}}>
                         {
                             canI("canISeeLogin")
                                 ? (
                                     <AppLink
-                                        className={cls.rightSideAuthLink}
                                         theme={AppLinkTheme.PRIMARY}
                                         to={navbarMenuLoginProfile.login.path}
                                         key={navbarMenuLoginProfile.login.path}
                                     >
-                                        <span>{navbarMenuLoginProfile.login.name}</span>
+                                        <span>{t(`${navbarMenuLoginProfile.login.name}`)}</span>
                                     </AppLink>
                                 )
                                 : canI("canISeeLogout")
-                                    ? <div onClick={()=>logout()}>Logout</div>
+                                    ? <div onClick={() => logout()}>
+                                        {t(`logout`)}
+                                    </div>
                                     : null
                         }
                     </div>
 
+
                 </div>
-            </div>
             </div>
         </nav>
     );
@@ -133,7 +160,6 @@ NavbarDesktop.displayName = 'NavbarDesktop';
 export default memo(NavbarDesktop);
 
 
-
 interface NavbarItemsProps {
     items: NavbarMenu;
     positionChecker: PositionChecker;
@@ -143,7 +169,7 @@ interface NavbarItemsProps {
     itemNavbarDropDownClassname: string
 }
 
-const NavbarItemsComponent  =
+const NavbarItemsComponent =
     ({
          items,
          positionChecker,
@@ -152,6 +178,11 @@ const NavbarItemsComponent  =
          itemFakeLinkClassname,
          itemNavbarDropDownClassname,
      }: NavbarItemsProps) => {
+
+
+        const params = useParams();
+        const lng = params.lng as string;
+        const {t} = useClientTranslation(lng, "navbar");
 
         return (
             <>
@@ -167,7 +198,7 @@ const NavbarItemsComponent  =
                                     className={itemLinkClassname}
                                     key={item.path}
                                 >
-                                    <span>{item.name}</span>
+                                    <span>{t(`${item.name}`)}</span>
                                 </AppLink>
                             );
                         }
@@ -184,7 +215,7 @@ const NavbarItemsComponent  =
                                     childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
                                     contentClassName={cls.itemNavbarDropDownContentClassName}
                                 >
-                                    <div>{item.name}</div>
+                                    <div>{t(`${item.name}`)}</div>
                                 </DropdownWrapper>
                             );
                         }
@@ -216,7 +247,7 @@ const NavbarItemsComponent  =
                                     className={itemFakeLinkClassname}
                                     key={item.reactKey}
                                 >
-                                    {item.name}
+                                    {t(`${item.name}`)}
                                 </div>
                             );
                         }

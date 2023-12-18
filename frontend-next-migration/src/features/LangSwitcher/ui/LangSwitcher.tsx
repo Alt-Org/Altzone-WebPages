@@ -2,7 +2,7 @@ import {memo, useEffect, useState} from "react";
 import {Trans, Translation, useTranslation} from "react-i18next";
 // import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import {LS_KEYS} from "@/shared/const/env/LS_KEYS";
-import {Language} from "@/shared/i18n/settings";
+// import {Language} from "@/shared/i18n/settings";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {Button, ButtonTheme} from "@/shared/ui/Button/Button";
 
@@ -20,15 +20,15 @@ export const LangSwitcher = ({ className= '', short = true }: LangSwitcherProps)
     const [currentLanguage, setCurrentLanguage] = useState(language)
 
     const handleChangeLanguage = () => {
-        const newLanguage = currentLanguage === Language.ENGLISH ? Language.FINNISH : Language.ENGLISH;
-        setCurrentLanguage(newLanguage);
-        changeLanguage(newLanguage);
+        // const newLanguage = currentLanguage === Language.ENGLISH ? Language.FINNISH : Language.ENGLISH;
+        // setCurrentLanguage(newLanguage);
+        // changeLanguage(newLanguage);
     }
 
     return (
         <>
         <Button
-            className={classNames("", {}, [className])}
+            className={classNames("", {}, [className = ''])}
             theme={ButtonTheme.CLEAR}
             onClick={handleChangeLanguage}
         >

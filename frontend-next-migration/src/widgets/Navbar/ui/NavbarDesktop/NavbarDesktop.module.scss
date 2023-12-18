@@ -5,6 +5,7 @@
 .NestedContainer{
   margin: 0 auto;
   max-width: 1000px;
+  position: relative;
 }
 
 .navMenu {
@@ -14,9 +15,8 @@
 }
 
 
-.leftSide{
+.leftSide, .rightSide{
   z-index: 5;
-  margin-left: 10px;
   display: flex;
   justify-content: space-around;
 }
@@ -27,25 +27,39 @@
 }
 
 .rightSide{
-  z-index: 5;
-  display: flex;
-  justify-content: space-around;
-  margin-right: 10px;
   position: relative;
+}
 
-  .rightSideAuth{
 
+.rightSideAuth{
+  position: absolute;
+  //width: 100%;
+  top: 40px;
+  right: 0;
+
+
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  & > * {
+    color: var(--secondary-color) !important;
+  }
+
+  & > div, span{
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: var(--border-radius-custom);
     outline: 2px solid var(--inverted-primary-color);
     padding: 5px;
     font-family: var(--font-family-texts) !important;
     font: var(--font-m);
-    position: absolute;
-    right: 40px;
-    top: -40px;
     @include link-scale-effect;
     cursor: pointer;
+
+
+    display: flex;
+    align-self: flex-end;
+
 
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -53,13 +67,10 @@
 
     color: var(--secondary-color) !important;
 
-    &{
-      .rightSideAuthLink{
-        color: var(--secondary-color) !important;
-      }
-    }
+    width: fit-content;
 
   }
+
 }
 
 .item{
@@ -80,12 +91,10 @@
 //}
 
 
-//.itemNavbarDropDownClassname{
-//}
+
 
 .itemNavbarDropDownContentClassName{
 
-  //text-align: center;
   border-radius: var(--border-radius-custom);
   background-color: var(--transparent-bg);
   padding: 15px;

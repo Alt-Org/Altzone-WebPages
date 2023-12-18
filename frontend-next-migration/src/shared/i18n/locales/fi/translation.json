@@ -7,5 +7,9 @@
   "blog": {
     "text": "Lue vastaava <1>artikkeli</1>, joka kuvaa tätä esimerkkiä.",
     "link": "https://locize.com/blog/next-app-dir-i18n/"
-  }
+  },
+
+
+
+  "upButton" : "Ylös"
 }

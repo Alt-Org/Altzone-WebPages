@@ -4,13 +4,24 @@ import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
 import cls from './ScrollTop.module.scss';
 import {useCurrentYPosition} from "@/shared/lib/hooks/useCurrentYPosition";
 import {memo, ReactNode, useCallback, useEffect, useState} from "react";
+import {useClientTranslation} from "@/shared/i18n";
+import {useParams} from "next/navigation";
 
 interface ScrollTopProps {
     className?: string;
-    children?: ReactNode
+    innerText?: string
 }
 
-export const ScrollTop = memo(({ className = '', children = 'YLÖS' }: ScrollTopProps) => {
+export const ScrollTop = memo(({ className = '', innerText}: ScrollTopProps) => {
+
+    const params = useParams();
+    const lng = params.lng as string;
+
+    const {t} = useClientTranslation(lng, "translation");
+
+    const localInnerText = innerText  ? innerText : t("upButton")
+
+
     const currentYPosition = useCurrentYPosition();
 
     const handleButtonClick = useCallback(() => {
@@ -35,7 +46,7 @@ export const ScrollTop = memo(({ className = '', children = 'YLÖS' }: ScrollTop
             className={classNames(cls.ScrollTop, { [cls.show]: showButton }, [className])}
             onClick={handleButtonClick}
         >
-            {children}
+            {localInnerText}
         </Button>
     );
 });
