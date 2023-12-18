@@ -32,7 +32,8 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
         name: 'Yhteisö',
         elements: [
             {
-                elementText: "Foorumi",
+                // elementText: "Foorumi",
+                elementText: "Forum",
                 link: {
                     path: AppExternalLinks.reddit,
                     isExternal: true
@@ -113,7 +114,7 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     // },
 
     {
-        name: 'Taide',
+        name: 'art',
         // path: RoutePaths.NEWS,
         elements: [
             {
@@ -138,7 +139,8 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
     },
 
     {
-        name: 'Tekijät',
+        name: 'team',
+        // name: 'Tekijät',
         path:  RoutePaths.MEMBERS,
         isActive: false,
         type: ItemType.navLink,
@@ -164,12 +166,12 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
 export const navbarMenuLoginProfile = {
     'login': {
-        name: "LOGIN",
+        name: "login",
         type: ItemType.navAuthLogin,
         path: RoutePaths.auth_login
     },
     'profile': {
-        name: "PROFILE",
+        name: "profile",
         type: ItemType.navAuthProfile,
         elements: [
             {

@@ -17,6 +17,9 @@ function PrivacyPage() {
                 <meta property="og:description" content="Tutustu AltZonen yksityisyyskäytäntöön ja saa tietää, miten käsittelemme henkilötietojasi." />
                 <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.PRIVACY}`} />
             </Head>
+
+
+
         </div>
     );
 }

@@ -41,7 +41,7 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
         children,
         onOpen,
         onClose
-    }) => {
+    }: DropdownWrapperProps): JSX.Element => {
 
 
 
