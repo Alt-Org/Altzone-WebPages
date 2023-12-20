@@ -164,16 +164,16 @@ export const navbarMenuDesktop: NavbarMenu = Object.freeze([
 
 export const navbarMenuLoginProfile = {
     'login': {
-        name: "LOGIN",
+        name: "login",
         type: ItemType.navAuthLogin,
         path: RoutePaths.auth_login
     },
     'profile': {
-        name: "PROFILE",
+        name: "profile",
         type: ItemType.navAuthProfile,
         elements: [
             {
-                elementText: 'Foorumi',
+                elementText: 'forum',
                 link: {
                     path: AppExternalLinks.reddit,
                     isExternal: true

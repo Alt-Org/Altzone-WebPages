@@ -3,20 +3,20 @@ import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 export const Navs: NavItem[] = [
     {
-        title: 'Tutustu projektiin',
-        body: 'Lue lisää',
+        title: 'getToKnowTheProject',
+        body: 'readMore',
         link: AppExternalLinks.readMore,
         isExternal: true
     },
     {
-        title: 'Katso avoimet paikat',
-        body: 'Tule mukaan',
+        title: 'seeOpenPositions',
+        body: 'comeWith',
         link: AppExternalLinks.duunitori,
         isExternal: true
     },
     {
-        title: 'Tule testaajaksi',
-        body: 'Tee sovelluksesta parempi',
+        title: 'becomeATester',
+        body: 'makeTheAppBetter',
         link: AppExternalLinks.discord,
         isExternal: true
     },

@@ -17,11 +17,17 @@ import {ScrollTop} from "@/features/ScrollTop";
 import {envHelper} from "@/shared/const/env/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import Head from "next/head";
+import {useParams} from "next/navigation";
+import {useClientTranslation} from "@/shared/i18n";
 
 const MainPage = () => {
     const handleClick = () => {
         openLinkInNewTab(AppExternalLinks.webgl);
     }
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "main");
 
     return (
         <div className={cls.Wrapper}>
@@ -43,7 +49,10 @@ const MainPage = () => {
 
 
             <HeroSection className={cls.heroSection}>
-                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>Pelaa netissä!</Button>
+                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>
+
+                    {t('PlayOnline')}
+                </Button>
             </HeroSection>
 
 
@@ -51,7 +60,9 @@ const MainPage = () => {
                 <DescriptionWithNav className={cls.description} />
             </Container>
 
-            <NewsPreviewSection />
+            {/*<NewsPreviewSection />*/}
+
+            <div style={{marginTop: "300px"}} ></div>
             <Footer />
             <ScrollTop/>
         </div>

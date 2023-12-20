@@ -5,8 +5,18 @@ import {GalleriasSection} from "@/widgets/GalleriasSection";
 import Head from "next/head";
 import {envHelper} from "@/shared/const/env/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import {useServerTranslation} from "@/shared/i18n";
 
-const ComicsGalleriesPage = () => {
+const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
+
+
+    // const params = useParams();
+    // const lng = params.lng as string;
+
+    const {t} = await useServerTranslation(lng, "comics");
+
+
+
     return (
         <div className={cls.Wrapper}>
             <Head>
@@ -21,7 +31,7 @@ const ComicsGalleriesPage = () => {
             </Head>
             <Navbar key={"navbarPictureGallery"} className={cls.Navbar}/>
             <Container className={cls.Container}>
-                <h1>Sarjakuvat</h1>
+                <h1>{t('Comics')}</h1>
                 <GalleriasSection parentDirectory={"comics"}/>
             </Container>
         </div>

@@ -11,7 +11,7 @@ export const title = 'Projektin Kuvaus';
 //     ' unelmien tukemiseksi.' +
 //     ''
 
-export const text = ' ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli,\n' +
+export const text = 'ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli,\n' +
     ' jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi.\n' +
     'Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin,\n' +
     'yhteistä kokemusta on lähes mahdotonta saavuttaa.\n' +
