@@ -26,8 +26,6 @@ export const MembersSection = ({className = ''}: WorkersSectionProps) => {
 
     const params = useParams();
     const lng = params.lng as string;
-
-
     const {t} = useClientTranslation(lng, "team");
 
     return (

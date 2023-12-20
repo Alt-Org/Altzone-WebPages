@@ -2,13 +2,13 @@
   @include link-scale-effect;
   border: solid   2px var(--transparent-bg);
   border-radius: var(--border-radius-custom);
-  hyphens: auto;
-  padding: 10px;
+  //hyphens: auto;
+  padding: 20px;
 
   p, a{
     padding: 0;
     text-align: center;
-    margin: 0;
+    margin: 0 !important;
+    margin-top: 1rem !important;
   }
-
 }

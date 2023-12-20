@@ -5,9 +5,13 @@ import cls from "./PictureGalleryPage.module.scss";
 import {GalleriasSection} from "@/widgets/GalleriasSection";
 import {envHelper} from "@/shared/const/env/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import {useServerTranslation} from "@/shared/i18n";
 
 
-const PictureGalleryPage = () => {
+const PictureGalleryPage = async ({lng}: {lng: string}) => {
+
+    const {t} = await useServerTranslation(lng, "picture-galleries");
+
     return (
        <div className={cls.Wrapper}>
 
@@ -24,7 +28,7 @@ const PictureGalleryPage = () => {
 
            <Navbar className={cls.Navbar}/>
            <Container  className={cls.Container}>
-               <h1>Kuvagalleriat</h1>
+               <h1>{t("picture-galleries")}</h1>
                <GalleriasSection parentDirectory={"artGalleries"}/>
            </Container>
        </div>
