@@ -62,7 +62,7 @@ const MainPage = () => {
 
             {/*<NewsPreviewSection />*/}
 
-            <div style={{marginTop: "300px"}} ></div>
+            <div style={{marginTop: "200px"}} ></div>
             <Footer />
             <ScrollTop/>
         </div>
