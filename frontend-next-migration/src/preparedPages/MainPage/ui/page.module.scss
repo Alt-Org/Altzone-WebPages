@@ -1,21 +1,41 @@
-.heroSection{
-  //height: 800px;
-  min-height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
-}
+
 
 
 .BtnGame{
   background-color: var(--transparent-bg);
   padding: 20px;
+  border: solid   1px var(--primary-color);
 }
 
 .description{
 
+
+
   background-color:  var(--transparent-bg);
   border-radius: var(--border-radius-custom);
 
+  width: 95%;
+  //text-align: center;
+  margin: 0 auto;
+
+  margin-top: 20vh;
+
+}
+
+.heroSection{
+  //height: 800px;
+  //min-height: 50vh;
+
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.NewsPreviewSection{
+  //margin-top: 20vh;
 }
 
 
