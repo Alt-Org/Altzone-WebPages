@@ -45,8 +45,13 @@ const MainPage = () => {
             <FeedbackSideButton />
 
 
-            <Navbar overlaid marginTop={20} />
+            <Navbar marginTop={20} />
 
+
+
+            <Container>
+            <DescriptionWithNav className={cls.description} />
+            </Container>
 
             <HeroSection className={cls.heroSection}>
                 <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame} onClick={handleClick}>
@@ -56,14 +61,13 @@ const MainPage = () => {
             </HeroSection>
 
 
-            <Container>
-                <DescriptionWithNav className={cls.description} />
-            </Container>
 
-            {/*<NewsPreviewSection />*/}
+            {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
 
-            <div style={{marginTop: "200px"}} ></div>
-            <Footer />
+            {/*<div style={{marginTop: "200px"}} ></div>*/}
+            <Footer  />
+
+
             <ScrollTop/>
         </div>
     );
