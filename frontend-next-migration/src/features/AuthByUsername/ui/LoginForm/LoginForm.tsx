@@ -3,6 +3,8 @@ import { CustomForm } from "@/shared/ui/CustomForm";
 import cls from "./LoginForm.module.scss";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import {useLoginForm} from "../../model/useLoginForm";
+import {useParams} from "next/navigation";
+import {useClientTranslation} from "@/shared/i18n";
 
 type Props = {
     toForgottenPwPage: string;
@@ -11,6 +13,11 @@ type Props = {
 };
 
 export const LoginForm = ({ toForgottenPwPage, toRegisterPage, onSuccessLogin}: Props) => {
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "auth");
+
 
     const {
         register,
@@ -22,25 +29,25 @@ export const LoginForm = ({ toForgottenPwPage, toRegisterPage, onSuccessLogin}: 
     return (
         <CustomForm className={cls.Form} onSubmit={handleSubmit(onFormSubmit)}>
             <CustomForm.Header>
-                Kirjaudu sisään
+                {t('log_in')}
             </CustomForm.Header>
             <CustomForm.InputField
                 key={"username"}
-                error={errors?.username?.message}
-                label={"Käyttäjänimi"}
+                error={errors?.username?.message && t(`${errors?.username?.message}`)}
+                label={t('username')}
                 inputProps={{ ...register('username'), required: true }}
             />
             <CustomForm.InputField
                 key={"password"}
-                error={errors?.password?.message}
-                label={"Salasana"}
+                error={errors?.password?.message  && t(`${errors?.password?.message}`)}
+                label={t('password')}
                 inputProps={{ ...register('password'), type: "password", required: true }}
             />
             <CustomForm.Button type="submit">
-                Lähetä
+                {t('send')}
             </CustomForm.Button>
             <AppLink theme={AppLinkTheme.PRIMARY} to={toRegisterPage} className={cls.registerLink}>
-                {"Eikö sinulla ole tiliä? Rekisteröidy"}
+                {t("text_to_register")}
             </AppLink>
         </CustomForm>
     );
