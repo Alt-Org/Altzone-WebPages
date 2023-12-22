@@ -1,5 +1,9 @@
 export const fallbackLng = 'en'
-export const languages = [fallbackLng, 'ru', 'fi']
+
+declare global {
+    type AppLanguage = 'en' | 'ru' | 'fi';
+}
+export const languages: AppLanguage[] = [fallbackLng, 'ru', 'fi']
 export const defaultNS = 'translation'
 export const cookieName = 'i18next'
 

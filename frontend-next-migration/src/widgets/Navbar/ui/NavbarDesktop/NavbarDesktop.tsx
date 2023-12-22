@@ -20,6 +20,7 @@ import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 import {navLogoMobile} from "@/widgets/Navbar/model/data/navbarMenuMobile";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
+import {LangSwitcher} from "@/features/LangSwitcher";
 
 
 
@@ -59,7 +60,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
 
     const params = useParams();
     const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "navbar");
+    const {t, i18n} = useClientTranslation(lng, "navbar");
 
 
     const rightSideRef = useRef(null);
@@ -81,7 +82,6 @@ export const NavbarDesktop = ( props : NavbarProps) => {
 
 
     return (
-        // <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
 
             <div className={cls.NestedContainer}>
@@ -125,9 +125,13 @@ export const NavbarDesktop = ( props : NavbarProps) => {
 
 
                     <div
-                        className={cls.rightSideAuth}
+                        className={cls.rightSideUp}
                         style={{marginRight: distToRightBorder}}
                     >
+
+                    <LangSwitcher className={cls.langSwitcher}/>
+                    {/*<button onClick={()=> i18n.changeLanguage("fi") }>change language</button>*/}
+
                         {
                             canI("canISeeLogin")
                                 ? (
