@@ -1,3 +1,4 @@
+// https://locize.com/blog/next-app-dir-i18n/#step-4
 import { createInstance } from 'i18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import { initReactI18next } from 'react-i18next/initReactI18next'

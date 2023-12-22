@@ -11,5 +11,11 @@
 
 
   "feedback": "Palaute",
-  "upButton" : "Ylös"
+  "upButton" : "Ylös",
+
+
+  "finnish": "Suomi",
+  "english": "Englanti",
+  "russian": "Venäjä"
+
 }

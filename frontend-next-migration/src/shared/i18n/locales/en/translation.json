@@ -11,5 +11,11 @@
 
 
   "feedback": "Feedback",
-  "upButton" : "Up"
+  "upButton" : "Up",
+
+
+  "finnish": "Finnish",
+  "english": "English",
+  "russian": "Russian"
+
 }

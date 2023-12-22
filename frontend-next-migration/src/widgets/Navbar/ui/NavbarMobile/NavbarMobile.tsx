@@ -11,6 +11,7 @@ import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {navLogoMobile} from "../../model/data/navbarMenuMobile";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
+import {LangSwitcher} from "@/features/LangSwitcher";
 
 
 
@@ -87,9 +88,13 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                         sidebarItemsList={sidebarItemsList}
                         side={side}
                         closeOnClickOutside
-
                         bottomItems={
+                            <div className={cls.sidebarBottom}>
+                                <LangSwitcher className={cls.langSwitcher}/>
                             <div className={cls.authSection}>
+
+
+
                                 {
                                     canI("canISeeLogin") &&  <AppLink
                                         className={cls.authSectionLink}
@@ -106,6 +111,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                                          <div onClick={()=>logout()}>{t(`logout`)}</div>
                                 }
 
+                            </div>
                             </div>
                         }
                     />

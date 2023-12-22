@@ -1,4 +1,3 @@
-// import "../app/styles/index.scss";
 import {HeroSection} from "@/widgets/HeroSection";
 import {DescriptionWithNav} from "@/widgets/DescriptionWithNav";
 import {NewsPreviewSection} from "@/widgets/NewsPreviewSection";
@@ -42,6 +41,7 @@ const MainPage = () => {
                 <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />
             </Head>
 
+
             <FeedbackSideButton />
 
 
@@ -62,7 +62,8 @@ const MainPage = () => {
 
 
 
-            {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
+
+            <NewsPreviewSection  className={cls.NewsPreviewSection}/>
 
             {/*<div style={{marginTop: "200px"}} ></div>*/}
 
