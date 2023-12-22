@@ -9,6 +9,8 @@ import cls from "./ClanMainPage.module.scss";
 import backgroundImage from "@/shared/assets/images/clanBg/Moon.webp"
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import {useParams} from "next/navigation";
+import {useClientTranslation} from "@/shared/i18n";
 
 const ClanMainPage = ({children}: any) => {
 
@@ -20,12 +22,12 @@ const ClanMainPage = ({children}: any) => {
     useEffect(() => {
         if(!user) {
             setShowUserClan(false);
-            setCanShowAddNew(false);
+            // setCanShowAddNew(false);
             return;
         }
 
         if(!user.Player.clan_id){
-            setCanShowAddNew(true);
+            // setCanShowAddNew(true);
             setShowUserClan(false);
             return;
         }
@@ -35,15 +37,20 @@ const ClanMainPage = ({children}: any) => {
 
     },[user]);
 
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "clan");
+
     return (
         <div className={cls.Wrapper}>
             <Navbar className={cls.Navbar} />
 
             <Container className={cls.Container}>
                 <div style={{display: "flex" , gap: "10px"}}>
-                    <Link href={RoutePaths.clan_all}>Kaikki Klaanit</Link>
-                    {canShowUserClan && <Link href={`${RoutePaths.clan}/${user?.Player.clan_id}`}>Minun klaani</Link>}
-                    {canShowAddNew && <Link href={RoutePaths.clan_add_new}>Luo Klaani</Link>}
+                    <Link href={RoutePaths.clan_all}>{t('all_clans')}</Link>
+                    {canShowUserClan && <Link href={`${RoutePaths.clan}/${user?.Player.clan_id}`}>{t('my_clan')}</Link>}
+                    {/*{canShowAddNew && <Link href={RoutePaths.clan_add_new}>{t('create_clan')}</Link>}*/}
                 </div>
                 <div className={cls.ClansViewMain}>
                     {children}

@@ -4,40 +4,39 @@ export const ValidationLoginSchema = yup.object().shape({
     // email: yup.string().required('Vaadittu').email('Virheellinen sähköpostiosoite'),
     username: yup
         .string()
-        .required("Vaadittu")
-        .min(3, "Käyttäjänimen on oltava vähintään 3 merkkiä pitkä")
-        .max(15, "Käyttäjänimen on oltava enintään 15 merkkiä pitkä")
-        .matches(/^[a-zA-Z0-9]*$/, "Käyttäjänimi saa sisältää vain kirjaimia ja numeroita"),
+        .required("username_required_error")
+        .min(3, "username_min_error")
+        .max(15, "username_max_error")
+        .matches(/^[a-zA-Z0-9]*$/, "username_regex_error"),
     password: yup
         .string()
-        .min(6, "Salasanan on oltava vähintään 6 merkkiä pitkä")
-        .max(30, "Salasanan on oltava enintään 30 merkkiä pitkä")
+        .min(6, "password_min_error")
+        .max(30, "password_max_error")
         .required("Syötä salasanasi"),
 });
 
 export const ValidationRegisterSchema = yup.object().shape({
     username: yup
         .string()
-        .required("Vaadittu")
-        .min(3, "Käyttäjänimen on oltava vähintään 3 merkkiä pitkä")
-        .max(15, "Käyttäjänimen on oltava enintään 15 merkkiä pitkä")
-        .matches(/^[a-zA-Z0-9]*$/, "Käyttäjänimi saa sisältää vain kirjaimia ja numeroita"),
+        .required("username_required_error")
+        .min(3, "username_min_error")
+        .max(15, "username_max_error")
+        .matches(/^[a-zA-Z0-9]*$/, "username_regex_error"),
     password: yup
         .string()
-        .min(6, "Salasanan on oltava vähintään 6 merkkiä pitkä")
-        .max(30, "Salasanan on oltava enintään 30 merkkiä pitkä")
-        .required("Syötä salasanasi"),
+        .min(6, "password_min_error")
+        .max(30, "password_max_error")
+        .required("password_required_error"),
     repeatPassword: yup.string()
         // @ts-ignore
-        .oneOf([yup.ref('password'), null], "Salasanojen on täsmättävä")
-        .required("Vahvista salasanasi"),
+        .oneOf([yup.ref('password'), null], "password_again_is_not_same_error")
+        .required("password_again_required_error"),
 
     name: yup
         .string()
-        .min(3, "Nimen on oltava vähintään 3 merkkiä pitkä")
-        .max(20, "Nimen on oltava enintään 20 merkkiä pitkä")
-        .matches(/[^a-zA-Z\s]+/, "Nimi saa sisältää vain kirjaimia"),
-
+        .min(3, "name_min_error")
+        .max(20, "name_max_error")
+        .matches(/^[a-zA-Z\s]+$/, "name_regex_error"),
     backpackCapacity: yup
         .number(),
 

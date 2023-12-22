@@ -8,7 +8,8 @@ import {envHelper} from "@/shared/const/env/envHelper";
 import Head from "next/head";
 
 
-import {useRouter} from 'next/navigation';
+import {useParams, useRouter} from 'next/navigation';
+import {useClientTranslation} from "@/shared/i18n";
 
 
 const ClanAllSubPage = () => {
@@ -71,6 +72,10 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => 
         if(onClickToClan) onClickToClan(id);
     }
 
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "clan");
+
     return (
         <>
             {clanServerResponse.data.Clan.map((clan, idx) => {
@@ -94,12 +99,12 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => 
                          style={{ backgroundColor: bgColor }}
                          onClick={()=>onClick(clan?._id)}
                     >
-                        <div><strong>Sijoitus:</strong> {idx + 1}</div>
-                        <div><strong>Klaani:</strong> {clan?.name}</div>
-                        <div><strong>Kolikot:</strong> {clan?.gameCoins}</div>
-                        <div><strong>Tagi:</strong> {clan?.tag}</div>
-                        <div><strong>Jäsenet:</strong> {50}</div>
-                        <div><strong>Mestari:</strong> Joku Mestari {idx +1}</div>
+                        <div><strong>{t('rating')}:</strong> {idx + 1}</div>
+                        <div><strong>{t('clan')}:</strong> {clan?.name}</div>
+                        <div><strong>{t('coins')}:</strong> {clan?.gameCoins}</div>
+                        <div><strong>{t('tag')}:</strong> {clan?.tag}</div>
+                        <div><strong>{t('members')}:</strong> {50}</div>
+                        <div><strong>{t('clan_master')}:</strong> {t('some_master')} {idx +1}</div>
                     </div>
                 );
             })}
@@ -116,6 +121,10 @@ type DesktopProps = {
 const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) => {
 
 
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "clan");
+
     const onClick = (id: string) => {
         if(onClickToClan) onClickToClan(id);
     }
@@ -124,12 +133,12 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) =
         <table className={cls.ClanTable}>
             <thead>
             <tr>
-                <th>Sijoitus</th>
-                <th>Klaani</th>
-                <th>Mestari </th>
-                <th>Kolikot</th>
-                <th>Jäsenet</th>
-                <th>Tagi</th>
+                <th>{t('rating')}</th>
+                <th>{t('clan')}</th>
+                <th>{t('clan_master')}</th>
+                <th>{t('coins')}</th>
+                <th>{t('members')}</th>
+                <th>{t('tag')}</th>
             </tr>
             </thead>
             <tbody>

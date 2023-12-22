@@ -5,9 +5,7 @@ import {DropdownWrapperProps} from "../types";
 import {AppLink} from "@/shared/ui/AppLink/AppLink";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCaretDown} from '@fortawesome/free-solid-svg-icons';
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import {useParams} from "next/navigation";
-import {useClientTranslation} from "@/shared/i18n";
+
 
 
 
