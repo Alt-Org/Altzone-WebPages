@@ -12,7 +12,8 @@
 
 body {
   //font: var(--font-m);
-  font: 16px/24px 'Bombing';
+  font: 16px/24px;
+  //font: 16px/24px 'Bombing';
   line-height: 1.5;
   color: var(--primary-color);
   @include custom-scrollbar;
