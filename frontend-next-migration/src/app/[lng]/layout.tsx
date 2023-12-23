@@ -1,10 +1,30 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import {Inter, Ephesis, Open_Sans, Urbanist, Rubik} from 'next/font/google'
 import '../../preparedApp/styles/index.scss';
 import {Providers} from "@/preparedApp/providers/Providers";
 import '../../preparedApp/styles/index.scss'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
+const ephesis = Ephesis({weight: "400", subsets: ['latin'] })
+
+const openSans = Open_Sans({
+    subsets: ['latin'],
+    display: 'swap',
+})
+
+const urbanist = Urbanist(
+    {
+        variable: "--font-family-main",
+        subsets: ['latin'],
+        weight: "700"
+    }
+)
+
+const rubik = Rubik({
+    subsets: ["latin"],
+    weight: "400",
+    variable: "--font-family-texts",
+});
 
 export const metadata: Metadata = {
     title: 'AltZone',
@@ -25,15 +45,14 @@ export default function RootLayout({children,params: {lng}}: {
   children: React.ReactNode,
   params: any
 }) {
-  return (
-    <html lang={lng} dir={dir(lng)}>
-      <body className={inter.className}>
-      <Providers>
-      {children}
-      </Providers>
-      </body>
-
-    </html>
-  )
+    return (
+        <html lang={lng} dir={dir(lng)} className={`${urbanist.variable} ${rubik.variable}`}>
+        <body>
+        <Providers>
+            {children}
+        </Providers>
+        </body>
+        </html>
+    );
 }
 
