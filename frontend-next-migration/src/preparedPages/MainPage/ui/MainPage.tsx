@@ -64,7 +64,7 @@ const MainPage = () => {
 
 
 
-            <NewsPreviewSection  className={cls.NewsPreviewSection}/>
+            {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
 
             {/*<div style={{marginTop: "200px"}} ></div>*/}
 
