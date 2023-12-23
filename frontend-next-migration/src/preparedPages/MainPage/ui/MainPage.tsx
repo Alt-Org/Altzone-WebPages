@@ -29,7 +29,7 @@ const MainPage = () => {
     const {t} = useClientTranslation(lng, "main");
 
     return (
-        <div className={cls.Wrapper}>
+        <>
             <Head>
                 <title>AltZone</title>
                 <meta name="description" content="Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin." />
@@ -41,6 +41,7 @@ const MainPage = () => {
                 <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MAIN}`} />
             </Head>
 
+            <div className={cls.Wrapper}>
 
             <FeedbackSideButton />
 
@@ -73,6 +74,7 @@ const MainPage = () => {
 
             <ScrollTop/>
         </div>
+        </>
     );
 };
 

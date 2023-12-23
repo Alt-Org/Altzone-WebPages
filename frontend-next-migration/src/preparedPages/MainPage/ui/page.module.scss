@@ -1,5 +1,11 @@
 
-
+//.Wrapper{
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: center;
+//  align-items: center;
+//  align-content: center;
+//}
 
 .BtnGame{
   background-color: var(--transparent-bg);
@@ -9,7 +15,8 @@
 
 .description{
 
-
+  //display: flex !important;
+  //justify-content: center !important;
 
   background-color:  var(--transparent-bg);
   border-radius: var(--border-radius-custom);

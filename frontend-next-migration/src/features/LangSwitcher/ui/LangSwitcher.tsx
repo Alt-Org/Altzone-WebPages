@@ -14,14 +14,23 @@ export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
     // const { t, i18n: { changeLanguage, language: currentLocale } } = useClientTranslation();
     const { t, i18n: {language } } = useTranslation();
 
-    const handleChangeLanguage = async (newLanguage: AppLanguage) => {
-        router.push(currentPathname.replace(`/${language}`, `/${newLanguage}`));
-        router.refresh();
+    const handleChangeLanguage = (newLanguage: AppLanguage) => {
+        window.location.href = currentPathname.replace(`/${language}`, `/${newLanguage}`);
+
+        // router.push(currentPathname.replace(`/${language}`, `/${newLanguage}`));
+
+        // setTimeout(()=>{
+        //     window.location.reload();
+        // },400)
     };
 
-    const handleSelectChange = async (event: ChangeEvent<HTMLSelectElement>) => {
+    // router.refresh();
+    // window.location.reload();\
+
+    // window.reload();
+    const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const selectedLanguage = event.target.value as AppLanguage;
-        await handleChangeLanguage(selectedLanguage);
+        handleChangeLanguage(selectedLanguage);
     };
 
     return (
