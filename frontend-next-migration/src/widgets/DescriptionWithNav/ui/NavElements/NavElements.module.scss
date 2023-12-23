@@ -1,7 +1,11 @@
 .NavElements {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 15px;
+  display: grid;
+  //display: flex;
+  //justify-content: space-evenly;
+
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  //justify-content: center;
+  gap: 50px;
 
   @media (max-width: 600px) {
     flex-direction: column;
