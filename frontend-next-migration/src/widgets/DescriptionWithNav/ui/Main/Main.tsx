@@ -1,3 +1,4 @@
+'use client'
 import cls from "./Main.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo} from "react";
