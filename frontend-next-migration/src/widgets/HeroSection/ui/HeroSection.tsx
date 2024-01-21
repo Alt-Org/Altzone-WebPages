@@ -1,3 +1,4 @@
+'use client'
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo, ReactNode} from "react";
 import cls from "./HeroSection.module.scss";

@@ -4,10 +4,6 @@ import cls from "./ClanAllSubPage.module.scss";
 import {GetClansResponse, useGetClansQuery} from "@/entities/Clan";
 import {Loader} from "@/shared/ui/Loader";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
-import {envHelper} from "@/shared/const/env/envHelper";
-import Head from "next/head";
-
-
 import {useParams, useRouter} from 'next/navigation';
 import {useClientTranslation} from "@/shared/i18n";
 
@@ -33,16 +29,6 @@ const ClanAllSubPage = () => {
     if(clans){
         return (
             <>
-                <Head>
-                    <title>Klaanit</title>
-                    <meta name="description" content="Selaa kaikkia klaaneja tai käy omassa klaanissasi. Luo uusi klaani, jos sinulla ei ole yhtä." />
-                    <meta name="keywords" content="altzone, KLAANI, klaani, peli, klaani, peliyhteisö, luo klaani, liity klaaniin" />
-                    <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.clan_all}`} />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content="Klaanit" />
-                    <meta property="og:description" content="Selaa kaikkia klaaneja tai käy omassa klaanissasi. Luo uusi klaani, jos sinulla ei ole yhtä." />
-                    <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.clan_all}`} />
-                </Head>
                 <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANIT</h1>
                 {isMobileSize
                     ?
