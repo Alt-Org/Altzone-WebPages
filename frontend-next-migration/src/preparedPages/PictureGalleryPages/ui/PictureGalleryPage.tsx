@@ -56,15 +56,15 @@ const PictureGalleryPage = async ({lng}: {lng: string}) => {
         <div className={cls.Wrapper}>
             <Head>
                 <title>{t('head-title')}</title>
-                <meta name="description" content={t('head-description')} />
-                <meta name="keywords" content="altzone, kuvagalleriat, taide, projektit, kehittäjät, suunnittelijat" />
-                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.PICTURE_GALLERY}`} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={t('head-title')} />
-                <meta property="og:description" content={t('head-description')} />
-                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.PICTURE_GALLERY}`} />
+                <meta name="description" content={t('head-description')}/>
+                <meta name="keywords" content={t('head-keywords')}/>
+                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.PICTURE_GALLERY}`}/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content={t('head-title')}/>
+                <meta property="og:description" content={t('head-description')}/>
+                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.PICTURE_GALLERY}`}/>
             </Head>
-            <Navbar className={cls.Navbar} />
+            <Navbar className={cls.Navbar}/>
             <Container className={cls.Container}>
                 <h1>{t('picture-galleries')}</h1>
                 <GalleriasSection parentDirectory={"artGalleries"} />

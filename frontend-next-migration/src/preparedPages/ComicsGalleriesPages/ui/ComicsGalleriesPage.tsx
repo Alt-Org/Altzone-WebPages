@@ -8,11 +8,6 @@ import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {useServerTranslation} from "@/shared/i18n";
 
 const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
-
-
-    // const params = useParams();
-    // const lng = params.lng as string;
-
     const {t} = await useServerTranslation(lng, "comics");
 
 
@@ -22,11 +17,10 @@ const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
                 <title>{t('head-title')}</title>
                 <meta name="description"
                       content={t('head-description')}/>
-                <meta name="keywords"
-                      content="altzone, sarjakuvat, sarjakuvagalleriat, comics, galleriat, sarjakuva, taide"/>
+                <meta name="keywords" content={t('head-keywords')}/>
                 <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.COMICS_GALLERY}`}/>
                 <meta property="og:type" content="website"/>
-                <meta property="og:title" content="Sarjakuvagalleriat"/>
+                <meta property="og:title" content={t('head-title')}/>
                 <meta property="og:description"
                       content={t('head-description')}/>
                 <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.COMICS_GALLERY}`}/>
