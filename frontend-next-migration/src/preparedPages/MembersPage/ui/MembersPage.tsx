@@ -22,13 +22,14 @@ const MembersPage = () => {
         <div className={classNames(cls.MembersPage)}>
             <Head>
                 <title>{t('head-title')}</title>
-                <meta name="description" content={t('head-description')} />
-                <meta name="keywords" content="altzone, tiimi, kehittäjät, sarjakuvat, pelit, yhteisö" />
-                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.MEMBERS}`} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={t('head-title')} />
-                <meta property="og:description" content={t('head-description')} />
-                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MEMBERS}`} />
+                <meta name="description" content={t('head-description')}/>
+                {/*<meta name="keywords" content="altzone, tiimi, kehittäjät, sarjakuvat, pelit, yhteisö"/>*/}
+                <meta name="keywords" content={t('head-keywords')}/>
+                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.MEMBERS}`}/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content={t('head-title')}/>
+                <meta property="og:description" content={t('head-description')}/>
+                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.MEMBERS}`}/>
             </Head>
 
             {/*<div className={cls.backgroundOpacity}></div>*/}
