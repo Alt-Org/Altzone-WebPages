@@ -16,18 +16,20 @@ const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
     const {t} = await useServerTranslation(lng, "comics");
 
 
-
     return (
         <div className={cls.Wrapper}>
             <Head>
-                <title>Sarjakuvagalleriat</title>
-                <meta name="description" content="Selaa laajaa valikoimaa sarjakuvagallerioita ja löydä uusia suosikkejasi." />
-                <meta name="keywords" content="altzone, sarjakuvat, sarjakuvagalleriat, comics, galleriat, sarjakuva, taide" />
-                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.COMICS_GALLERY}`} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content="Sarjakuvagalleriat" />
-                <meta property="og:description" content="Selaa laajaa valikoimaa sarjakuvagallerioita ja löydä uusia suosikkejasi." />
-                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.COMICS_GALLERY}`} />
+                <title>{t('head-title')}</title>
+                <meta name="description"
+                      content={t('head-description')}/>
+                <meta name="keywords"
+                      content="altzone, sarjakuvat, sarjakuvagalleriat, comics, galleriat, sarjakuva, taide"/>
+                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.COMICS_GALLERY}`}/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:title" content="Sarjakuvagalleriat"/>
+                <meta property="og:description"
+                      content={t('head-description')}/>
+                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.COMICS_GALLERY}`}/>
             </Head>
             <Navbar key={"navbarPictureGallery"} className={cls.Navbar}/>
             <Container className={cls.Container}>
