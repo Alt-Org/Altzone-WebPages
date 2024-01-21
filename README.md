@@ -1,3 +1,3 @@
 # Altzone-WebPages
-webpage current version : https://altzone.netlify.app/ <br/>
+webpage current version : https://altzone.fi/ <br/>
 
