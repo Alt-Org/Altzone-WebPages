@@ -12,5 +12,9 @@
   "Prod" : "Tuotanto",
   "OthersGame" : "Pelinkehityksessä mukana",
   "OthersComics" : "Sarjakuvassa  mukana",
-  "Others" : "Erityiskiitokset"
+  "Others" : "Erityiskiitokset",
+
+
+  "head-title": "Tiimi - Altzone",
+  "head-description": "Tutustu Altzone-projektin tiimiin, joka on omistautunut luomaan mieleenpainuvia pelikokemuksia ja sarjakuvagallerioita."
 }
