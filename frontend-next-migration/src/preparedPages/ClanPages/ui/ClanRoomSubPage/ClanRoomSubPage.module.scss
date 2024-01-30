@@ -1,9 +1,0 @@
-.Loader{
-  @include position-absolute-center
-}
-
-.DeleteClanBtn{
-  background-color: var(--error-color);
-  @include link-scale-effect;
-  font-family: var(--font-family-texts)
-}
