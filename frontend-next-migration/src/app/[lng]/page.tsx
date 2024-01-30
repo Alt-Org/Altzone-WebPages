@@ -10,7 +10,6 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
     const { t } = await useServerTranslation(params.lng, 'main');
-
     return {
         title: t("head-title"),
         description: t("head-description"),
