@@ -1,7 +1,6 @@
 import {Helmet} from "react-helmet-async";
 import {envHelper} from "@/shared/const/env/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
-
 function PrivacyPage() {
     return (
         <div>
