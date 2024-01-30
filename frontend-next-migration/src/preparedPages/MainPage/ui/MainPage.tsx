@@ -27,7 +27,6 @@ const MainPage =  async ({ lng }: Props) => {
     return (
         <>
             <div className={cls.Wrapper}>
-
             <FeedbackSideButton disableMobile={true}/>
 
             <Navbar marginTop={20} />
