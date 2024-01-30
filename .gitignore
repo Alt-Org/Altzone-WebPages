@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 /frontend/.env
+/frontend/storybook-static/*
+
+/frontend-next-migration/analyze/nodejs.html
