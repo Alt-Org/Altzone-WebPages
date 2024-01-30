@@ -22,7 +22,6 @@ const MainPage =  async ({ lng }: Props) => {
     // const params = useParams();
     // const lng = params.lng as string;
     // const {t} = useClientTranslation(lng, "main");
-
     const { t } = await useServerTranslation(lng, 'main');
 
     return (
