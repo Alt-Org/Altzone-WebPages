@@ -1,1 +1,0 @@
-export { NewsElementPageAsync as NewsElementPage} from "./ui/NewsElementPage.async";
