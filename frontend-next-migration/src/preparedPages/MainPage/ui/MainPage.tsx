@@ -30,7 +30,6 @@ const MainPage =  async ({ lng }: Props) => {
 
             <FeedbackSideButton disableMobile={true}/>
 
-
             <Navbar marginTop={20} />
 
             <Container>
