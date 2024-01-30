@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import cls from "./Main.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo} from "react";
@@ -9,13 +9,16 @@ import {useParams} from "next/navigation";
 
 interface descriptionProps{
     className?: string;
+    // lng: string;
 }
 
-export const Main = memo(({className=''}: descriptionProps) => {
+export const Main = memo( ({className=''}: descriptionProps) => {
 
     const params = useParams();
     const lng = params.lng as string;
     const {t} =  useClientTranslation(lng, "description-with-nav");
+
+    // const {t} = await useServerTranslation(lng, "description-with-nav");
 
     return(
         <div className={classNames(cls.Main, {},[className])}>

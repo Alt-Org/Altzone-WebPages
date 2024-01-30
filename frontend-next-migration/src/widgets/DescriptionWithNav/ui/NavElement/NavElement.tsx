@@ -1,3 +1,4 @@
+'use client'
 import {memo} from "react";
 import {NavItem} from "../../model/types/types";
 import {classNames} from "@/shared/lib/classNames/classNames";

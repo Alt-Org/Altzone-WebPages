@@ -5,8 +5,10 @@ type Props = {
     params: { lng: string }
 }
 
+// eslint-disable-line react-hooks/rules-of-hooks
 export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
+    // eslint-disable-line react-hooks/rules-of-hooks
     const { t } = await useServerTranslation(params.lng, 'members');
 
     return {
