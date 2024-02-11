@@ -138,8 +138,11 @@ const NavItem = memo((props: NavItemProps)=> {
                     contentAbsolute={true}
                     mouseOverLeaveMode={true}
                     // className={cls.itemNavbarDropDownClassname}
+
                     // childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
-                    // contentClassName={cls.itemNavbarDropDownContentClassName}
+                    // childrenWrapperClassName={cls.itemNavbarDropDownContent}
+                    //     contentItemClassName={cls.itemNavbarDropDownContent}
+
                     contentClassName={cls.itemNavbarDropDownContent}
                 >
                     <div>{t(`${item.name}`)}</div>
