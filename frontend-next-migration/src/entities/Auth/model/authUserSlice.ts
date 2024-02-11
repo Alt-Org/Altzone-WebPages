@@ -1,11 +1,12 @@
 // "use client"
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction , createSelector} from "@reduxjs/toolkit";
 import {AccessTokenInfo, AuthUserSchema} from "../types/authUser";
 import {LS_KEYS} from "@/shared/const/env/LS_KEYS";
 import {IProfile} from "@/entities/User";
 import {StateSchema} from "@/preparedApp/providers/StoreProvider";
 import {useEffect} from "react";
 import {PURGE} from "redux-persist";
+
 
 // const storedAuthUser = localStorage.getItem(LS_KEYS.AUTH_USER);
 let storedAuthUser;
@@ -71,8 +72,15 @@ export const { reducer: authUserReducer } = authUserSlice;
 
 
 // Selector to check if the user is authenticated
-export const selectIsAuthenticated = (state: StateSchema) =>
-    !!state.authUser.profile || !!state.authUser.accessTokenInfo;
+// export const selectIsAuthenticated = (state: StateSchema) =>
+//     !!state.authUser.profile || !!state.authUser.accessTokenInfo;
+
+
+export const selectIsAuthenticated = createSelector(
+    (state: StateSchema) => state.authUser.profile,
+    (state: StateSchema) => state.authUser.accessTokenInfo,
+    (profile, accessTokenInfo) => !!profile || !!accessTokenInfo
+);
 
 
 // Selector to get the whole authUser state
@@ -87,7 +95,13 @@ export const selectIsSessionExpired = (state: StateSchema) => state.authUser.isS
 
 
 // Selector to check if the user has a clan
-export const selectHasClan = (state: StateSchema) => {
-    const profile = selectProfile(state);
-    return !!profile && !!profile.Player && !!profile.Player.clan_id;
-};
+// export const selectHasClan = (state: StateSchema) => {
+//     const profile = selectProfile(state);
+//     return !!profile && !!profile.Player && !!profile.Player.clan_id;
+// };
+
+export const selectHasClan = createSelector(
+    selectProfile,
+    (profile) => !!profile && !!profile.Player && !!profile.Player.clan_id
+);
+

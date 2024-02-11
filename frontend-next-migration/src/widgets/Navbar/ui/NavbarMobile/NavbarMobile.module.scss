@@ -16,6 +16,9 @@
 
 
 .NavbarMobile__burger {
+
+  position: fixed;
+
   align-self: start;
   cursor: pointer;
   user-select: none;

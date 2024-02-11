@@ -20,6 +20,8 @@ navbarBuilderV2.addDropDown('community', true, dropdowns.community);
 navbarBuilderV2.addDropDown('game', true, dropdowns.game);
 navbarBuilderV2.addDropDown('art', true, dropdowns.art);
 navbarBuilderV2.addLink('team', RoutePaths.MEMBERS, true);
+navbarBuilderV2.addAuthProfile('profile', dropdowns.profile);
+navbarBuilderV2.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarMenuDesktop2 = navbarBuilderV2.build();
 

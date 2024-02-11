@@ -11,6 +11,8 @@ navbarBuilder.addDropDown('game', false, dropdowns.game);
 navbarBuilder.addDropDown('art', false, dropdowns.art);
 navbarBuilder.addLink('team', RoutePaths.MEMBERS, false);
 navbarBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
+navbarBuilder.addAuthProfile('profile', dropdowns.profile);
+navbarBuilder.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarMenuMobile = navbarBuilder.build();
 
