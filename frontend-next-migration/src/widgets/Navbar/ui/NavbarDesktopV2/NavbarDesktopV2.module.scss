@@ -53,6 +53,9 @@
 }
 
 .itemNavbarDropDownContent{
+
+  outline: 2px solid var(--inverted-primary-color);
+
   text-align: left;
 
   border-radius: var(--border-radius-custom);
