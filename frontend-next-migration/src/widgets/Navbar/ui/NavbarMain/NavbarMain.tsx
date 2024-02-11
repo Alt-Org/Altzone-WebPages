@@ -1,10 +1,12 @@
 'use client'
 import {memo} from "react";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import {navbarMenuDesktop} from "../../model/data/navbarMenuDesktop";
-import {navbarMenuMobile} from "../../model/data/navbarMenuMobile";
+import {navbarMenuDesktop, navbarMenuDesktop2} from "../../model/data/navbarMenuDesktop";
+import { navbarMenuMobile} from "../../model/data/navbarMenuMobile";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import NavbarDesktop from "../NavbarDesktop/NavbarDesktop";
+import NavbarDesktopV2 from "../NavbarDesktopV2/NavbarDesktopV2";
+import {Container} from "@/shared/ui/Container";
 
 interface NavbarMainProps {
     overlaid?: boolean;
@@ -31,14 +33,20 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
         if(isMobileSize){
             return (
             // <Suspense fallback=''>
-                <NavbarMobile overlaid={overlaid} marginTop={marginTop} className={className} navBarItemsList={navbarMenuMobile}/>
+                <NavbarMobile overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarMenuMobile}/>
             // </Suspense>
         )
         }
         return (
-            // <Suspense fallback=''>
-                <NavbarDesktop navbarMenu={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>
-            // </Suspense>
+            <>
+            {/*// <Suspense fallback=''>*/}
+            {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
+
+
+
+            <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2}/>
+</>
+            // {/*// </Suspense>*/}
         )
 
 

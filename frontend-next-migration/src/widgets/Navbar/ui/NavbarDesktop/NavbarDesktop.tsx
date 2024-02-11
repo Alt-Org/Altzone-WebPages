@@ -1,9 +1,9 @@
-import {CSSProperties, memo, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {CSSProperties, memo, useLayoutEffect, useRef, useState} from "react";
 import Image from 'next/image'
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import cls from "./NavbarDesktop.module.scss";
-import {NavbarMenu, PositionChecker} from "../../model/types/types";
+import {NavbarBuild, NavbarMenu, PositionChecker} from "../../model/types/types";
 import {
     isCenter,
     isLeftSide,
@@ -14,21 +14,18 @@ import {
     isRightSide
 } from "../../model/types/type.guards";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
-
 import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
-import {navLogoMobile} from "@/widgets/Navbar/model/data/navbarMenuMobile";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
 
 
 
-export interface NavbarProps {
+interface NavbarProps {
     overlaid ?: boolean;
     marginTop?: number;
     className?: string;
-    navbarMenu:  NavbarMenu
+    navbarBuild:  NavbarBuild
 
 }
 
@@ -37,7 +34,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     const {
         overlaid = false,
         marginTop,
-        navbarMenu,
+        navbarBuild,
         className=''
     } = props;
 
@@ -89,8 +86,9 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                 <div className={cls.navMenu}>
                     <div className={cls.leftSide}>
                         <NavbarItems
+                            navbarBuild={navbarBuild}
                             key={"isLeftSide"}
-                            items={navbarMenu}
+                            items={navbarBuild.menu}
                             positionChecker={isLeftSide}
                             itemLinkClassname={itemLinkClassname}
                             itemLogoClassname={itemLogoClassname}
@@ -100,9 +98,10 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                     </div>
                     <div className={cls.center}>
                         <NavbarItems
+                            navbarBuild={navbarBuild}
                             key={"isCenter"}
                             itemNavbarDropDownClassname={itemNavbarDropDownClassname}
-                            items={navbarMenu}
+                            items={navbarBuild.menu}
                             positionChecker={isCenter}
                             itemLinkClassname={itemLinkClassname}
                             itemLogoClassname={itemLogoClassname}
@@ -112,9 +111,10 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                     <div className={cls.rightSide} ref={rightSideRef}>
 
                         <NavbarItems
+                            navbarBuild={navbarBuild}
                             key={"isRightSide"}
                             itemNavbarDropDownClassname={itemNavbarDropDownClassname}
-                            items={navbarMenu}
+                            items={navbarBuild.menu}
                             positionChecker={isRightSide}
                             itemLinkClassname={itemLinkClassname}
                             itemLogoClassname={itemLogoClassname}
@@ -137,10 +137,11 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                                 ? (
                                     <AppLink
                                         theme={AppLinkTheme.PRIMARY}
-                                        to={navbarMenuLoginProfile.login.path}
-                                        key={navbarMenuLoginProfile.login.path}
+                                        // to={navbarMenuLoginProfile?.login?.path || ''}
+                                        to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
+                                        // key={navbarMenuLoginProfile?.login?.path}
                                     >
-                                        <span>{t(`${navbarMenuLoginProfile.login.name}`)}</span>
+                                        <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>
                                     </AppLink>
                                 )
                                 : canI("canISeeLogout")
@@ -171,7 +172,8 @@ interface NavbarItemsProps {
     itemLinkClassname: string;
     itemLogoClassname: string;
     itemFakeLinkClassname: string;
-    itemNavbarDropDownClassname: string
+    itemNavbarDropDownClassname: string;
+    navbarBuild: NavbarBuild;
 }
 
 const NavbarItemsComponent =
@@ -182,6 +184,7 @@ const NavbarItemsComponent =
          itemLogoClassname,
          itemFakeLinkClassname,
          itemNavbarDropDownClassname,
+         navbarBuild
      }: NavbarItemsProps) => {
 
 
@@ -241,8 +244,9 @@ const NavbarItemsComponent =
 
                                     <Image
                                         loading={"eager"}
-                                        src={navLogoMobile.src}
-                                        alt={navLogoMobile.name}
+                                        // src={navLogoMobile.src}
+                                        src={navbarBuild?.namedMenu?.navLogo?.src || '' }
+                                        alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                                         width={215}
                                         className={itemLogoClassname}
                                     />
