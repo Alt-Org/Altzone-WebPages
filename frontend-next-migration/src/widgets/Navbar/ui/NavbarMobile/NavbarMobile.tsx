@@ -5,22 +5,21 @@ import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesk
 import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 import cls from "./NavbarMobile.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
-import {Sidebar, ISidebarItem} from "@/shared/ui/Sidebar";
-import {navbarItemType, NavbarMenuMobile} from "../../model/types/types";
+import {ISidebarItem, Sidebar} from "@/shared/ui/Sidebar";
+import {ItemType, NavbarBuild, NavbarMenu, NavLogoObject} from "../../model/types/types";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {navLogoMobile} from "../../model/data/navbarMenuMobile";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
-
-
+import {element} from "prop-types";
 
 
 interface NavbarTouchProps {
     overlaid ?: boolean;
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
-    navBarItemsList?: NavbarMenuMobile;
+    navbarBuild?: NavbarBuild;
     side? : 'left'| 'right';
     className? : string;
 }
@@ -30,13 +29,11 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
     const {
         overlaid = false,
         marginTop,
-        navBarItemsList,
+        navbarBuild,
         // navLogo,
         side = 'left',
         className = ''
     } = props;
-
-
 
 
     const style = marginTop
@@ -56,13 +53,14 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
     const lng = params.lng as string;
     const {t} = useClientTranslation(lng, "navbar");
 
+
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
-        return (navBarItemsList || [])
+        return (navbarBuild?.menu || [])
             .map(item => {
-                if (item.type === navbarItemType.NavbarMenuMobileItem) {
+                if (item.type === ItemType.navLink) {
                     return { path: item.path, name: t(`${item.name}`), type: sidebarItemType.ISidebarItemBasic };
                 }
-                if (item.type === navbarItemType.NavbarMenuMobileDropDownItem) {
+                if (item.type === ItemType.navDropDown) {
                     const localizedElements = item.elements.map((element) => ({
                         ...element,
                         elementText: t(`${element.elementText}`),
@@ -72,7 +70,14 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                 return null;
             })
             .filter(item => item !== null) as ISidebarItem[];
-    }, [navBarItemsList]);
+    }, [navbarBuild, lng]);
+
+    const navLogo = useMemo(() => {
+        return navbarBuild?.menu?.find((element) =>
+            element.type === ItemType.navLogo) as NavLogoObject;
+    }, [navbarBuild]);
+
+
 
     const {canI} = useUserPermissions();
     const [logout] = useLogoutMutation();
@@ -92,17 +97,14 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                             <div className={cls.sidebarBottom}>
                                 <LangSwitcher className={cls.langSwitcher}/>
                             <div className={cls.authSection}>
-
-
-
                                 {
                                     canI("canISeeLogin") &&  <AppLink
                                         className={cls.authSectionLink}
                                         theme={AppLinkTheme.PRIMARY}
-                                        to={navbarMenuLoginProfile.login.path}
-                                        key={navbarMenuLoginProfile.login.path}
+                                        to={navbarBuild?.namedMenu?.navAuthLogin?.path || ""}
+                                        key={navbarBuild?.namedMenu?.navAuthLogin?.path || ""}
                                     >
-                                        <span>{t(`${navbarMenuLoginProfile.login.name}`)}</span>
+                                        <span>{t(`${navbarBuild?.namedMenu?.navAuthLogin?.name}`)}</span>
                                     </AppLink>
                                 }
 
@@ -118,15 +120,14 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                     <AppLink
                         className={cls.navLogo + ' ' + cls.NavbarMobile__center}
                         theme={AppLinkTheme.PRIMARY}
-                        to={navLogoMobile.path}
+                        to={navbarBuild?.namedMenu?.navLogo?.path || ""}
                     >
                         <Image
                             loading={"eager"}
                             width={180}
-                            src={navLogoMobile.src}
-                            alt={navLogoMobile.name}
+                            src={navbarBuild?.namedMenu?.navLogo?.src || ''}
+                            alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                         />
-
                     </AppLink>
                 </div>
             </nav>
