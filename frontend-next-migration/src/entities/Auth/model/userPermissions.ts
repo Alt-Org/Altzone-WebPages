@@ -1,26 +1,33 @@
-import { StateSchema } from "@/preparedApp/providers/StoreProvider";
-import {selectHasClan, selectIsAuthenticated} from "../model/authUserSlice";
+import { selectHasClan, selectIsAuthenticated } from "../model/authUserSlice";
+import {createSelector} from "@reduxjs/toolkit";
 
+const canISeeClans = createSelector(
+    selectIsAuthenticated,
+    (isAuthenticated) => isAuthenticated
+);
 
-const canISeeClans = (state: StateSchema) => {
-    return selectIsAuthenticated(state);
-};
+const canISeeLogin = createSelector(
+    selectIsAuthenticated,
+    (isAuthenticated) => !isAuthenticated
+);
 
-const canISeeLogin = (state: StateSchema) => {
-    return !selectIsAuthenticated(state);
-}
+const canISeeLogout = createSelector(
+    selectIsAuthenticated,
+    (isAuthenticated) => isAuthenticated
+);
 
-const canISeeLogout = (state: StateSchema) => {
-    return selectIsAuthenticated(state);
-}
+const canICreateClan = createSelector(
+    selectIsAuthenticated,
+    selectHasClan,
+    (isAuthenticated, hasClan) => isAuthenticated && !hasClan
+);
 
-const canICreateClan = (state: StateSchema) => {
-    return selectIsAuthenticated(state) && !selectHasClan(state);
-};
+const canISeeOwnClan = createSelector(
+    selectIsAuthenticated,
+    selectHasClan,
+    (isAuthenticated, hasClan) => isAuthenticated && hasClan
+);
 
-const canISeeOwnClan = (state: StateSchema) => {
-    return selectIsAuthenticated(state) && selectHasClan(state);
-};
 
 
 export const userPermissions = {
@@ -29,6 +36,6 @@ export const userPermissions = {
     canICreateClan,
     canISeeClans,
     canISeeOwnClan
-}
+};
 
 export type UserPermissions = keyof typeof userPermissions;

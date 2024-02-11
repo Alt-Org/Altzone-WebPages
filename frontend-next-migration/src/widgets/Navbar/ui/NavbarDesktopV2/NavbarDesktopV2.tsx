@@ -8,6 +8,8 @@ import {useClientTranslation} from "@/shared/i18n";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
 import Image from "next/image";
 import { Container } from "@/shared/ui/Container";
+import {LangSwitcher} from "@/features/LangSwitcher";
+import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 
 
 
@@ -21,6 +23,14 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const {navbarBuild}= props;
 
 
+    const {canI} = useUserPermissions();
+
+    const [logout] = useLogoutMutation();
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t, i18n} = useClientTranslation(lng, "navbar");
+
     return (
         <nav  className={cls.siteNav}>
 
@@ -32,7 +42,39 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                             <NavItem item={n} navbarBuild={navbarBuild} />
                         ))
                     }
+
+
+                    <li className={cls.navItem} key={"switcher key"}>
+                        <LangSwitcher className={cls.langSwitcher}/>
+                    </li>
+
+
+                    {/*<li className={cls.navItem + ' ' + cls.authButton} key={"auth key"}>*/}
+                    {/*    {*/}
+                    {/*        canI("canISeeLogin")*/}
+                    {/*            ? (*/}
+                    {/*                <AppLink*/}
+                    {/*                    theme={AppLinkTheme.PRIMARY}*/}
+                    {/*                    // to={navbarMenuLoginProfile?.login?.path || ''}*/}
+                    {/*                    to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}*/}
+                    {/*                    // key={navbarMenuLoginProfile?.login?.path}*/}
+                    {/*                >*/}
+                    {/*                    <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>*/}
+                    {/*                </AppLink>*/}
+                    {/*            )*/}
+                    {/*            : canI("canISeeLogout")*/}
+                    {/*                ? <div onClick={() => logout()}>*/}
+                    {/*                    {t(`logout`)}*/}
+                    {/*                </div>*/}
+                    {/*                : null*/}
+                    {/*    }*/}
+                    {/*</li>*/}
+
+
+
                 </ul>
+
+
             </Container>
         </nav>
     );
@@ -61,6 +103,7 @@ const NavItem = memo((props: NavItemProps)=> {
     if(itemType === "navLink") {
         return (
             <li
+                key={item.path}
                 className=
                     {classNames(cls.navItem, {}, [className])} >
                 <AppLink
@@ -86,6 +129,7 @@ const NavItem = memo((props: NavItemProps)=> {
 
         return (
             <li
+                key={item.name}
                 className=
                     {classNames(cls.navItem, {}, [className])} >
 
@@ -93,7 +137,6 @@ const NavItem = memo((props: NavItemProps)=> {
                     elements={localizedElements}
                     contentAbsolute={true}
                     mouseOverLeaveMode={true}
-                    key={item.name}
                     // className={cls.itemNavbarDropDownClassname}
                     // childrenWrapperClassName={cls.itemNavbarDropDownChildrenWrapper}
                     // contentClassName={cls.itemNavbarDropDownContentClassName}
@@ -108,11 +151,12 @@ const NavItem = memo((props: NavItemProps)=> {
 
     if (itemType === "navLogo") {
         return (
-            <li>
+            <li
+                key={item.src}
+            >
             <AppLink
                 theme={AppLinkTheme.PRIMARY}
                 to={item.path}
-                key={item.src}
                 className={classNames(cls.appLink, {}, [cls.appLinkLogo])}
             >
 
