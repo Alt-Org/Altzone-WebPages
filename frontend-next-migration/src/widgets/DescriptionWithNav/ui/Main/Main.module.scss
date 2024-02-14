@@ -1,22 +1,60 @@
 .Main{
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+
+
+
   font-family: var(--font-family-texts);
+
+
   margin-bottom: 2rem;
-  padding: 1rem 1rem;
 
-  h2{
-    margin-top: 2rem;
-  }
-
-  p{
-    margin-top: 2rem;
-    hyphens: auto;
-  }
 
   .navElements{
     margin-top: 2rem;
   }
 
+
+
+
+  .TopBlock{
+
+    display: flex;
+    justify-content: space-between;
+    //gap: 200px;
+
+
+
+
+    .description{
+      padding: 1rem 1rem;
+      border: solid   1px var(--primary-color);
+      background-color: var(--inverted-bg-color);
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      p{
+        margin-top: 1rem;
+        //hyphens: auto;
+      }
+      border-radius: var(--border-radius-custom);
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+

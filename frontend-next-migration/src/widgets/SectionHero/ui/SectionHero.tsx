@@ -1,7 +1,7 @@
 'use client'
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo, ReactNode} from "react";
-import cls from "./HeroSection.module.scss";
+import cls from "./SectionHero.module.scss";
 // import backgroundImage from '@/shared/assets/images/introBackground.avif';
 import {Container} from "@/shared/ui/Container/ui/Container";
 
@@ -11,7 +11,7 @@ interface HeroSectionProps {
     backgroundImageUrl?: string;
 }
 
-export const HeroSection = memo((props : HeroSectionProps) => {
+export const SectionHero = memo((props : HeroSectionProps) => {
 
     const {
         className = '',
@@ -36,4 +36,4 @@ export const HeroSection = memo((props : HeroSectionProps) => {
     );
 });
 
-HeroSection.displayName = "HeroSection";
+SectionHero.displayName = "SectionHero";

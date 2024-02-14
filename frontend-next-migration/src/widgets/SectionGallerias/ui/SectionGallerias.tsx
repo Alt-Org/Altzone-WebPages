@@ -1,15 +1,15 @@
 'use client'
-import useGalleriasSection from "../model/useGalleriasSection";
+import useSectionGallerias from "../model/useSectionGallerias";
 import {GalleryCategoriesWithModalSlider, ParentDirectory} from "@/entities/Gallery";
-import cls from "./GalleriasSection.module.scss";
+import cls from "./SectionGallerias.module.scss";
 
 type Props = {
     parentDirectory: ParentDirectory
 }
 
-export const GalleriasSection = ({parentDirectory}: Props) => {
+export const SectionGallerias = ({parentDirectory}: Props) => {
 
-    const {transformedGalleryCategories, isError} = useGalleriasSection(parentDirectory);
+    const {transformedGalleryCategories, isError} = useSectionGallerias(parentDirectory);
 
     if(isError){
         return (
