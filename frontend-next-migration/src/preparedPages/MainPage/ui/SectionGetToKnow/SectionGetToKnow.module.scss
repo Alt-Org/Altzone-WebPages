@@ -1,0 +1,24 @@
+.GetToKnow{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  background-color: #6b46c1;
+
+}
+.centeredImage {
+  width: 33.33vw;
+  min-width: 350px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+
+.button {
+  background-color: var(--inverted-bg-color);
+  padding: 20px;
+  border: solid   1px var(--primary-color);
+}

@@ -1,32 +1,8 @@
-
-//.Wrapper{
-//  display: flex;
-//  flex-direction: column;
-//  justify-content: center;
-//  align-items: center;
-//  align-content: center;
-//}
-
-.BtnGame{
-  background-color: var(--transparent-bg);
-  padding: 20px;
-  border: solid   1px var(--primary-color);
-}
-
 .description{
-
-  //display: flex !important;
-  //justify-content: center !important;
-
   background-color:  var(--transparent-bg);
-  border-radius: var(--border-radius-custom);
-
   width: 95%;
-  //text-align: center;
   margin: 0 auto;
-
   margin-top: 20vh;
-
 }
 
 .heroSection{
@@ -39,16 +15,23 @@
   width: 100%;
   box-sizing: border-box;
 }
+.BtnGame{
+  background-color: var(--inverted-bg-color);
+  padding: 20px;
+  border: solid   1px var(--primary-color);
+}
+
+
+
+
+
+
+
+
 
 
 .NewsPreviewSection{
   //margin-top: 20vh;
-}
-
-
-.navbar{
-  padding-top: 20px;
-
 }
 
 .navbarWrapper{

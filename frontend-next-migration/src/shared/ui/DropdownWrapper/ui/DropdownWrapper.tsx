@@ -139,7 +139,7 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = (
                 <div className={classNames(cls.dropdownContent,dropdownContentMods,[contentClassName])}>
                     {elements.map((element,index) => (
                         <div
-                            onClick={element.isDisabled && element.isDisabled.status ? undefined : () => handleElementClick(element.onClickCallback)}
+                            // onClick={element.isDisabled && element.isDisabled.status ? undefined : () => handleElementClick(element.onClickCallback)}
                             key={index}
                             className={element.isDisabled && element.isDisabled.status ? cls.disabled : ''}
                             title={element.isDisabled?.status === true ? element?.isDisabled?.reason : ''}

@@ -1,4 +1,4 @@
-import {HeroSection} from "@/widgets/HeroSection";
+import {SectionHero} from "@/widgets/SectionHero";
 import {DescriptionWithNav} from "@/widgets/DescriptionWithNav";
 import {Navbar} from "@/widgets/Navbar";
 import {Footer} from "@/widgets/Footer";
@@ -12,6 +12,12 @@ import cls from "./page.module.scss"
 import {ScrollTop} from "@/features/ScrollTop";
 import {useServerTranslation} from "@/shared/i18n";
 import Link from "next/link";
+import {classNames} from "@/shared/lib/classNames/classNames";
+import Image from "next/image";
+
+
+import bookImg from "@/shared/assets/images/mainpage/book.webp";
+import SectionGetToKnow from "@/preparedPages/MainPage/ui/SectionGetToKnow/SectionGetToKnow";
 
 type Props = {
     lng: string
@@ -19,46 +25,43 @@ type Props = {
 
 const MainPage =  async ({ lng }: Props) => {
 
-    // const params = useParams();
-    // const lng = params.lng as string;
-    // const {t} = useClientTranslation(lng, "main");
     const { t } = await useServerTranslation(lng, 'main');
+
     return (
         <>
             <div className={cls.Wrapper}>
-            <FeedbackSideButton disableMobile={true}/>
+                <FeedbackSideButton disableMobile={true}/>
 
-            <Navbar marginTop={20} />
+                <Navbar marginTop={20}/>
 
-            <Container>
-            <DescriptionWithNav className={cls.description} />
-            </Container>
+                {/*<Container>*/}
+                {/*    <DescriptionWithNav className={cls.description}/>*/}
+                {/*</Container>*/}
 
-            <HeroSection className={cls.heroSection}>
-                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame}>
-                    <Link target={"_blank"} href={AppExternalLinks.webgl}>
-                        {t('PlayOnline')}
-                    </Link>
-                </Button>
-            </HeroSection>
+                <SectionHero className={cls.heroSection}>
+                    <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}
+                            className={cls.BtnGame}>
+                        <Link target={"_blank"} href={AppExternalLinks.webgl}>
+                            {t('PlayOnline')}
+                        </Link>
+                    </Button>
+                </SectionHero>
 
+          <SectionGetToKnow/>
 
+                {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
 
-
-            {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
-
-            {/*<div style={{marginTop: "200px"}} ></div>*/}
-
-
-            <Footer  />
+                {/*<div style={{marginTop: "200px"}} ></div>*/}
 
 
-            <ScrollTop/>
-        </div>
+                <Footer/>
+
+
+                <ScrollTop/>
+            </div>
         </>
     );
 };
-
 
 
 export default withBackgroundImage({

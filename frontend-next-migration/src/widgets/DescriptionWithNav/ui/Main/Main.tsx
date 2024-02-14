@@ -1,11 +1,14 @@
 'use client';
-import cls from "./Main.module.scss";
-import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo} from "react";
+import {useParams} from "next/navigation";
+import {classNames} from "@/shared/lib/classNames/classNames";
+import cls from "./Main.module.scss";
 import {Navs} from "../../model/data/navs";
 import {NavElements} from "../NavElements/NavElements";
 import {useClientTranslation} from "@/shared/i18n";
-import {useParams} from "next/navigation";
+import Image from "next/image";
+import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp"
+
 
 interface descriptionProps{
     className?: string;
@@ -18,13 +21,24 @@ export const Main = memo( ({className=''}: descriptionProps) => {
     const lng = params.lng as string;
     const {t} =  useClientTranslation(lng, "description-with-nav");
 
-    // const {t} = await useServerTranslation(lng, "description-with-nav");
-
     return(
-        <div className={classNames(cls.Main, {},[className])}>
-            <h2>{t("title")}</h2>
-            <p>{t("text")}</p>
-            <NavElements navElems={Navs} className={cls.navElements} />
+        <div className={classNames(cls.Main, {}, [className])}>
+
+
+            <div className={cls.TopBlock}>
+                <Image src={greenHaired} alt={"greenHaired hero"} className={cls.Image} width={300}/>
+
+
+                <div className={cls.description}>
+                    <h2>{t("title")}</h2>
+                    <p>{t("text")}</p>
+                </div>
+
+            </div>
+
+
+            <NavElements navElems={Navs} className={cls.navElements}/>
+
         </div>)
 });
 

@@ -1,4 +1,4 @@
-import cls from "./MembersSection.module.scss";
+import cls from "./SectionMembers.module.scss";
 import Image from 'next/image'
 import {groupsWithMembersLocally, GroupWithMember, Member} from "@/entities/Member";
 import {FC, memo, useMemo} from "react";
@@ -20,7 +20,7 @@ interface WorkersSectionProps  {
 }
 
 
-export const MembersSection = ({className = ''}: WorkersSectionProps) => {
+export const SectionMembers = ({className = ''}: WorkersSectionProps) => {
 
     const memoizedGroupsWithWorkers = useMemo(() => groupsWithMembersLocally, []);
 
