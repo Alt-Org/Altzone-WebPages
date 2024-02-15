@@ -1,0 +1,2 @@
+docker build -t account/projectname:v4 .
+docker push account/projectname:v4
