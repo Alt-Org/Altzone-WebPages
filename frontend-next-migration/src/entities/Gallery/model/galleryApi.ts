@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {envHelper} from "@/shared/const/env/envHelper";
+import {envHelper} from "@/shared/const/envHelper";
 import {HYDRATE} from "next-redux-wrapper";
 
 

@@ -1,7 +1,7 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import {envHelper} from "@/shared/const/env/envHelper";
+import {envHelper} from "@/shared/const/envHelper";
 import {StateSchema} from "./StateSchema";
 import {authApi,authUserReducer, authMiddleware} from "@/entities/Auth";
 import {clanApi} from "@/entities/Clan";

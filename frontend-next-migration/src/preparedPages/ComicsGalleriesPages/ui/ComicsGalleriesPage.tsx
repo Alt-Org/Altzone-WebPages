@@ -3,6 +3,7 @@ import {Navbar} from "@/widgets/Navbar";
 import {Container} from "@/shared/ui/Container";
 import {SectionGallerias} from "@/widgets/SectionGallerias";
 import {useServerTranslation} from "@/shared/i18n";
+import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 
 const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
     const {t} = await useServerTranslation(lng, "comics");
@@ -13,7 +14,7 @@ const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
             <Navbar key={"navbarPictureGallery"} className={cls.Navbar}/>
             <Container className={cls.Container}>
                 <h1>{t('Comics')}</h1>
-                <SectionGallerias parentDirectory={"comics"}/>
+                <SectionGallerias parentDirectory={SectionGalleriasPaths.comics}/>
             </Container>
         </div>
     )
