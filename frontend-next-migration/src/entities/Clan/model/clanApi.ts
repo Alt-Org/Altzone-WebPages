@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {StateSchema} from "@/preparedApp/providers/StoreProvider";
-import {envHelper} from "@/shared/const/env/envHelper";
+import {envHelper} from "@/shared/const/envHelper";
 import {GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto} from "@/entities/Clan";
 
 

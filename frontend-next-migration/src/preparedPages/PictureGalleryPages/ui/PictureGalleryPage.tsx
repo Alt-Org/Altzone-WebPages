@@ -3,6 +3,7 @@ import { Container } from "@/shared/ui/Container";
 import cls from "./PictureGalleryPage.module.scss";
 import { SectionGallerias } from "@/widgets/SectionGallerias";
 import {useServerTranslation} from "@/shared/i18n";
+import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 
 
 const PictureGalleryPage = async ({lng}: {lng: string}) => {
@@ -13,7 +14,7 @@ const PictureGalleryPage = async ({lng}: {lng: string}) => {
             <Navbar className={cls.Navbar}/>
             <Container className={cls.Container}>
                 <h1>{t('picture-galleries')}</h1>
-                <SectionGallerias parentDirectory={"artGalleries"} />
+                <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} />
             </Container>
         </div>
     );

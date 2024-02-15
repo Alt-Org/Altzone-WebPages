@@ -10,7 +10,7 @@ import { useDeleteClan } from "@/features/DeleteClan";
 import { selectProfile } from "@/entities/Auth";
 
 import cls from "./ClanRoomSubPage.module.scss";
-import {envHelper} from "@/shared/const/env/envHelper";
+import {envHelper} from "@/shared/const/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 const ClanRoomSubPage = () => {

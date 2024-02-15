@@ -1,6 +1,6 @@
 import {NewClanForm} from "@/features/AddNewClan";
 import cls from "./ClanAddSubPage.module.scss";
-import {envHelper} from "@/shared/const/env/envHelper";
+import {envHelper} from "@/shared/const/envHelper";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import Head from "next/head";
 

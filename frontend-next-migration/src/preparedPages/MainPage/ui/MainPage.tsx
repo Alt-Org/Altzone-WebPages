@@ -17,7 +17,8 @@ import Image from "next/image";
 
 
 import bookImg from "@/shared/assets/images/mainpage/book.webp";
-import SectionGetToKnow from "@/preparedPages/MainPage/ui/SectionGetToKnow/SectionGetToKnow";
+import SectionGetToKnow from "@/widgets/SectionGetToKnow/SectionGetToKnow";
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 type Props = {
     lng: string
@@ -47,7 +48,8 @@ const MainPage =  async ({ lng }: Props) => {
                     </Button>
                 </SectionHero>
 
-          <SectionGetToKnow/>
+
+                <SectionGetToKnow buttonParams={{innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY}}/>
 
                 {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
 
@@ -70,3 +72,4 @@ export default withBackgroundImage({
     // @ts-ignore
 })(MainPage);
 
+// export default MainPage;

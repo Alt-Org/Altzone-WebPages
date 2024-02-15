@@ -1,5 +1,5 @@
     import { Middleware } from '@reduxjs/toolkit';
-    import {LS_KEYS} from "@/shared/const/env/LS_KEYS";
+    import {LS_KEYS} from "@/shared/const/LS_KEYS";
     import {authUserActions} from "../model/authUserSlice";
     import {authEndpoints} from "../model/authApi";
 
