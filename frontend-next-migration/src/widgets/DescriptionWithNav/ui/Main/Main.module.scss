@@ -1,41 +1,50 @@
 .Main{
 
-
-
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  padding: 0 10px;
   font-family: var(--font-family-texts);
 
 
-  margin-bottom: 2rem;
-
-
-  .navElements{
-    margin-top: 2rem;
-  }
-
-
-
-
-  .TopBlock{
+  .container{
 
     display: flex;
-    justify-content: space-between;
-    //gap: 200px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
 
-
-
-    .description{
-      padding: 1rem 1rem;
-      border: solid   1px var(--primary-color);
-      background-color: var(--inverted-bg-color);
+    .TopBlock{
       display: flex;
-      flex-direction: column;
-      text-align: left;
-      p{
-        margin-top: 1rem;
-        //hyphens: auto;
+      justify-content: space-between;
+      //gap: 200px;
+      .description{
+        padding: 1rem 1rem;
+        border: solid   1px var(--primary-color);
+        background-color: var(--inverted-bg-color);
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        p{
+          margin-top: 1rem;
+          //hyphens: auto;
+        }
+        border-radius: var(--border-radius-custom);
       }
-      border-radius: var(--border-radius-custom);
+
+      @media screen and (max-width: 768px) {
+        .Image {
+          display: none;
+        }
+      }
+
+    }
+
+
+    .navElements{
+      margin-top: 2rem;
+      display: flex;
     }
 
 
@@ -47,6 +56,16 @@
 
 
 
+
+  .backgroundImageWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: brightness(65%);
+  }
 
 
 

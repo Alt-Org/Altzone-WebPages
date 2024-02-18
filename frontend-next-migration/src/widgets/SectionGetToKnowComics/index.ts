@@ -1,0 +1,1 @@
+export {default as SectionGetToKnowComics} from "./ui/SectionGetToKnowComics";

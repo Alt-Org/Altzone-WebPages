@@ -3,9 +3,11 @@
  */
 export const AppExternalLinks = {
     readMore: "https://drive.google.com/file/d/16KAaOAQudDQ_PvGfebXiB51mtR_M42UW/view?usp=sharing",
+    previewVideoYoutube: "https://www.youtube.com/watch?v=ht9JEOdvkHk&list=PLfAX25ZLrPGRXe73Nno0-S50Jb0satlmE",
     webgl : "https://altzone.fi/game/",
+    downloadAndroid : "https://play.google.com/store/apps/details?id=eu.altgame.altzone",
     reddit : "https://www.reddit.com/r/PRGaltzone/",
-    discord: "https://discord.gg/k4YWG5Cf48",
+    discord: "https://discord.gg/erFAcE4Qhb",
     facebook : "https://www.facebook.com/GamingPsyche",
     instagram : "https://www.instagram.com/gamingpsyche",
     youtube : "https://www.youtube.com/channel/UCTgWpC9Hq7b-W1Lhmry97YA",

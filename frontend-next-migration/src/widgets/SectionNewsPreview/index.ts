@@ -1,2 +1,2 @@
 'use client'
-export { Main as NewsPreviewSection  } from "./ui/Main/Main";
+export { Main as SectionNewsPreview  } from "./ui/Main/Main";

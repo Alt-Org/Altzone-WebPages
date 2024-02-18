@@ -2,7 +2,7 @@
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo, ReactNode} from "react";
 import cls from "./SectionHero.module.scss";
-// import backgroundImage from '@/shared/assets/images/introBackground.avif';
+// import backgroundImage from '@/shared/assets/heroes.ts/introBackground.avif';
 import {Container} from "@/shared/ui/Container/ui/Container";
 
 interface HeroSectionProps {

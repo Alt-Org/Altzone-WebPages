@@ -5,6 +5,10 @@ export {
     useGetAllDirectoryPhotosQuery
 } from "./model/galleryApi";
 
+export {
+    useGalleryCategories
+} from "./model/useGalleryCategories";
+
 
 export {
     transformToGalleryPropsFormat

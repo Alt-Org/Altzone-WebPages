@@ -1,11 +1,15 @@
 .cover{
   padding: 10px;
-  width: 300px;
+  //width: 300px;
+  //width: 250px;
   background-color: var(--transparent-bg);
-  border-radius: var(--border-radius-custom)
+  border-radius: var(--border-radius-custom);
 }
 
 .coverImage{
-  height: 350px;
-  width: 100%;
+  //height: 100%;
+  //width: 100%;
+  height: 250px;
+  width: 320px;
+  //height: 292px;
 }
