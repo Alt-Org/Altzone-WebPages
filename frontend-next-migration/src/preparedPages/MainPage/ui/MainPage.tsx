@@ -14,11 +14,14 @@ import {useServerTranslation} from "@/shared/i18n";
 import Link from "next/link";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import Image from "next/image";
-
-
 import bookImg from "@/shared/assets/images/mainpage/book.webp";
-import SectionGetToKnow from "@/widgets/SectionGetToKnow/SectionGetToKnow";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import VideoContentYoutube from "@/shared/ui/VideoContent/ui/VideoContentYoutube";
+import {SectionVideoAndGalleries} from "@/widgets/SectionVideoAndGalleries";
+import {SectionNewsPreview} from "@/widgets/SectionNewsPreview";
+import {SectionGetToKnowComics} from "@/widgets/SectionGetToKnowComics";
+import {SectionHeroes} from "@/widgets/SectionHeroes";
+import {SectionPlayWithUs} from "@/widgets/SectionPlayWithUs";
 
 type Props = {
     lng: string
@@ -30,46 +33,37 @@ const MainPage =  async ({ lng }: Props) => {
 
     return (
         <>
-            <div className={cls.Wrapper}>
+            {/*<div className={cls.Wrapper}>*/}
                 <FeedbackSideButton disableMobile={true}/>
 
-                <Navbar marginTop={20}/>
+                <Navbar marginTop={20} overlaid/>
 
-                {/*<Container>*/}
-                {/*    <DescriptionWithNav className={cls.description}/>*/}
-                {/*</Container>*/}
-
-                <SectionHero className={cls.heroSection}>
-                    <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}
-                            className={cls.BtnGame}>
-                        <Link target={"_blank"} href={AppExternalLinks.webgl}>
-                            {t('PlayOnline')}
-                        </Link>
-                    </Button>
-                </SectionHero>
+            <SectionPlayWithUs
+                webGlButtonText={t('PlayOnline')}
+            />
 
 
-                <SectionGetToKnow buttonParams={{innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY}}/>
+            <DescriptionWithNav className={cls.description}/>
 
-                {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
-
-                {/*<div style={{marginTop: "200px"}} ></div>*/}
-
+                <SectionGetToKnowComics buttonParams={{innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY}}/>
+                <SectionVideoAndGalleries/>
+                {/*<SectionNewsPreview/>*/}
+                <SectionHeroes/>
 
                 <Footer/>
 
 
                 <ScrollTop/>
-            </div>
+            {/*</div>*/}
         </>
     );
 };
 
 
-export default withBackgroundImage({
-    alt: "Main-Page underground style background",
-    imagePath: backgroundImage as unknown as string,
-    // @ts-ignore
-})(MainPage);
+// export default withBackgroundImage({
+//     alt: "Main-Page underground style background",
+//     imagePath: backgroundImage as unknown as string,
+//     // @ts-ignore
+// })(MainPage);
 
-// export default MainPage;
+export default MainPage;

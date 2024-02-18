@@ -1,0 +1,35 @@
+.myCustomCarousel-wrapper{
+  // default width
+  width: 90%;
+}
+
+
+.slick-dots{
+
+  li button:before{
+    color: white!important;
+  }
+}
+
+
+//todo make custom arrows, check official documentation for that
+//.myCustomCarousel .slick-arrow {
+//  //color: #070606 !important;
+//  border: none;
+//  outline: none;
+//  background: #242424 !important;
+//}
+//
+//.slick-prev {
+//  left: 3% !important;
+//  z-index: 1;
+//  background-color: black;
+//}
+//
+//.slick-next {
+//  right: 3% !important;
+//  z-index: 1;
+//  background-color: black;
+//}
+
+

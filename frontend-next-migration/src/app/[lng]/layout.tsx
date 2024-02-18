@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
-import {Ephesis, Open_Sans, Urbanist, Rubik} from 'next/font/google'
+import {Open_Sans, Urbanist, Rubik} from 'next/font/google'
 import '../../preparedApp/styles/index.scss';
 import {Providers} from "@/preparedApp/providers/Providers";
 import '../../preparedApp/styles/index.scss'
 
-// const inter = Inter({ subsets: ['latin'] })
-// const ephesis = Ephesis({weight: "400", subsets: ['latin'] })
+
+
+
+
+
 
 const openSans = Open_Sans({
     subsets: ['latin'],

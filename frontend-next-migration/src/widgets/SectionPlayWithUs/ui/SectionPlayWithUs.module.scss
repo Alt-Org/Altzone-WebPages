@@ -1,0 +1,34 @@
+.SectionPlayWithUs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  padding: 0 20px;
+
+
+}
+
+.Buttons{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.BtnGame{
+  background-color: var(--inverted-bg-color);
+  padding: 20px;
+  border: solid   1px var(--primary-color);
+}
+
+.backgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: brightness(85%);
+}

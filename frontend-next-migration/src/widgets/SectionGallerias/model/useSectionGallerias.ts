@@ -1,19 +1,16 @@
 'use client'
 import {
-    transformToGalleryPropsFormat,
-    useGetAllDirectoryPhotosQuery,
+    useGalleryCategories,
 } from "@/entities/Gallery";
-import {ParentDirectory, GalleryCategoriesWithModalSliderProps} from "@/entities/Gallery";
+import {ParentDirectory} from "@/entities/Gallery";
 
 const useSectionGallerias = (parentDirectory: ParentDirectory) => {
-    const { data, isError} = useGetAllDirectoryPhotosQuery({ parentDirectory });
 
-    let transformedGalleryCategories: GalleryCategoriesWithModalSliderProps[] = [];
-    if (data) {
-        transformedGalleryCategories = transformToGalleryPropsFormat(data);
-    }
+    const {
+        transformedGalleryCategories,
+        isError, isLoading} = useGalleryCategories(parentDirectory)
 
-    return {transformedGalleryCategories, isError};
+    return {transformedGalleryCategories, isError, isLoading};
 };
 
 export default useSectionGallerias;

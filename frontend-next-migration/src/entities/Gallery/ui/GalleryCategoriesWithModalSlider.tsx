@@ -43,7 +43,12 @@ export const GalleryCategoriesWithModalSlider = memo(({
 
                 <div className={cls.cover}>
                     <a data-fancybox={title} href={cover.url} >
-                        <Image loading={"eager"} src={cover.url} width="280" height="350" className={cls.coverImage} alt={cover.name} />
+                        <Image loading={"eager"} src={cover.url}
+                               width="250"
+                               height="292"
+                               className={cls.coverImage}
+                               alt={cover.name}
+                        />
                         <h2>{t(`${title}`)}</h2>
                     </a>
                 </div>

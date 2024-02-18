@@ -10,12 +10,12 @@
 //
 // /** @type {import('next').NextConfig} */
 // const nextConfig = {
-//     images: {
+//     heroes.ts: {
 //         remotePatterns: [
 //             { hostname: process.env.NEXT_PUBLIC_API_DOMAIN },
 //             { hostname: "hips.hearstapps.com" },
 //             { hostname: "www.thesprucepets.com" },
-//             { hostname: "images.unsplash.com" },
+//             { hostname: "heroes.ts.unsplash.com" },
 //             { hostname: "raw.githubusercontent.com" },
 //         ],
 //     },
@@ -52,7 +52,7 @@ const nextConfig = {
             { hostname: process.env.NEXT_PUBLIC_API_DOMAIN },
             { hostname: "hips.hearstapps.com" },
             { hostname: "www.thesprucepets.com" },
-            { hostname: "images.unsplash.com" },
+            { hostname: "heroes.ts.unsplash.com" },
             { hostname: "raw.githubusercontent.com" },
         ],
     },
