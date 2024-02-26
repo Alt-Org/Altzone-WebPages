@@ -26,39 +26,52 @@ const MainPage =  async ({ lng }: Props) => {
     return (
         <>
             <div className={cls.Wrapper}>
-            <FeedbackSideButton disableMobile={true}/>
+                <FeedbackSideButton disableMobile={true}/>
 
-            <Navbar marginTop={20} />
-
-            <Container>
-            <DescriptionWithNav className={cls.description} />
-            </Container>
-
-            <HeroSection className={cls.heroSection}>
-                <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL} className={cls.BtnGame}>
-                    <Link target={"_blank"} href={AppExternalLinks.webgl}>
-                        {t('PlayOnline')}
-                    </Link>
-                </Button>
-            </HeroSection>
+                <Navbar marginTop={20}/>
 
 
+                <div className={cls.heroSection}>
+                    <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}
+                            className={cls.BtnGame}>
+                        <Link target={"_blank"} href={AppExternalLinks.webgl}>
+                            {t('PlayOnline')}
+                        </Link>
+                    </Button>
+
+                    <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}
+                            className={cls.BtnGame}>
+                        <Link target={"_blank"} href={AppExternalLinks.downloadAndroid}>
+                            {t('DownloadAndroid')}
+                        </Link>
+                    </Button>
+                </div>
+
+                <Container>
+                    <DescriptionWithNav className={cls.description}/>
+                </Container>
 
 
-            {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
-
-            {/*<div style={{marginTop: "200px"}} ></div>*/}
-
-
-            <Footer  />
+                {/*<HeroSection className={cls.heroSection}>*/}
+                {/*   */}
 
 
-            <ScrollTop/>
-        </div>
+                {/*</HeroSection>*/}
+
+
+                {/*<NewsPreviewSection  className={cls.NewsPreviewSection}/>*/}
+
+                {/*<div style={{marginTop: "200px"}} ></div>*/}
+
+
+                <Footer/>
+
+
+                <ScrollTop/>
+            </div>
         </>
     );
 };
-
 
 
 export default withBackgroundImage({

@@ -32,12 +32,22 @@
 .heroSection{
   //height: 800px;
   //min-height: 50vh;
+  display: flex;
+  gap: 20px;
+  padding: 0 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  //pa
+
 
   margin-top: 20vh;
   margin-bottom: 20vh;
 
-  width: 100%;
-  box-sizing: border-box;
+  //width: 100%;
+
+
+
+
 }
 
 
