@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch ",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
