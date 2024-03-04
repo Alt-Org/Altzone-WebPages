@@ -2,10 +2,14 @@ import type { StorybookConfig } from "@storybook/nextjs";
 
 const config: StorybookConfig = {
   stories: [
-      "../src/**/*.mdx",
+      // "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-      "'!../node_modules/**',"
   ],
+
+  // stories: [
+  //   '../src/**/*.stories.@(js|jsx|ts|tsx)'
+  // ],
+
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -21,12 +25,9 @@ const config: StorybookConfig = {
     },
   },
 
-  webpackFinal: async (config) => {
-    // ...
-    config.module.rules[0]!.exclude = /node_modules/;
-    // ...
-    return config;
-  },
+  // features: {
+  //   storyStoreV7: false,
+  // },
 
   docs: {
     autodocs: "tag",
