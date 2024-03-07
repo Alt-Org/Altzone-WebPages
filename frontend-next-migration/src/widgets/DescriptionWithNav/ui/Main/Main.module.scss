@@ -1,5 +1,4 @@
-.Main{
-
+.Main {
   display: flex;
   min-height: 100vh;
   position: relative;
@@ -7,54 +6,63 @@
   font-family: var(--font-family-texts);
 
 
-  .container{
-
+  .container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
 
-    .TopBlock{
+    .TopBlock {
       display: flex;
       justify-content: space-between;
-      //gap: 200px;
-      .description{
-        padding: 1rem 1rem;
-        border: solid   1px var(--primary-color);
+      width: 90%;
+
+
+      .Image {
+        width: 30%;
+        height: auto;
+        object-fit: contain;
+      }
+
+
+
+      .description {
+        padding: 1rem;
+        //border: 1px solid var(--primary-color);
         background-color: var(--inverted-bg-color);
         display: flex;
         flex-direction: column;
         text-align: left;
-        p{
-          margin-top: 1rem;
-          //hyphens: auto;
+        width: 60%;
+        margin: 5%;
+
+
+
+        h2 {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+          font-weight: bold;
         }
+
+
+        p {
+          margin: 0.5rem 0;
+          font-size: 1.2rem;
+          text-align: justify;
+        }
+
         border-radius: var(--border-radius-custom);
+        transition: all 0.3s ease;
       }
-
-      @media screen and (max-width: 768px) {
-        .Image {
-          display: none;
-        }
-      }
-
     }
 
 
-    .navElements{
+    .navElements {
       margin-top: 2rem;
       display: flex;
     }
-
-
   }
-
-
-
-
-
-
 
 
   .backgroundImageWrapper {
@@ -66,14 +74,4 @@
     z-index: -1;
     filter: brightness(65%);
   }
-
-
-
-
-
-
-
-
 }
-
-
