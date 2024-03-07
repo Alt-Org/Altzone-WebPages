@@ -1,26 +1,32 @@
-.SectionPlayWithUs{
+.SectionPlayWithUs {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   position: relative;
   padding: 0 20px;
-
-
 }
 
-.Buttons{
+.Buttons {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
+  width: 60%;
+}
+
+.MediaLinks{
+  display: flex;
+  width: auto;
   gap: 20px;
 }
 
 
-.BtnGame{
+.BtnGame {
   background-color: var(--inverted-bg-color);
   padding: 20px;
-  border: solid   1px var(--primary-color);
+  //border: solid 1px var(--primary-color);
 }
 
 .backgroundImageWrapper {
@@ -31,4 +37,23 @@
   height: 100%;
   z-index: -1;
   filter: brightness(85%);
+}
+
+.BtnDownload {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.BtnDownload:hover {
+  transform: scale(1.05);
+}
+
+.Content{
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+.EinsteinImage {
+  width: 50%;
 }
