@@ -14,6 +14,7 @@
   justify-content: center;
   gap: 20px;
   width: 60%;
+  padding: 5%;
 }
 
 .MediaLinks{
@@ -21,7 +22,6 @@
   width: auto;
   gap: 20px;
 }
-
 
 .BtnGame {
   background-color: var(--inverted-bg-color);
@@ -51,9 +51,9 @@
 .Content{
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: 75%;
 }
 
 .EinsteinImage {
-  width: 50%;
+  width: 30%;
 }
