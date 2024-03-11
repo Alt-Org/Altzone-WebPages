@@ -34,7 +34,7 @@
   min-width: 350px;
   height: auto;
   object-fit: contain;
-  margin-top: 5%;
+  margin-top: 1%;
 }
 
 @media screen and (max-width: 480px) {
@@ -48,7 +48,7 @@
   z-index: 20;
   background-color: var(--inverted-bg-color);
   padding: 20px;
-  margin-top: 5%;
+  margin-top: 3%;
 
   @media screen and (max-width: 480px) {
     padding: 15px;

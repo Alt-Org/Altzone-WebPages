@@ -23,6 +23,7 @@ import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
 import { SectionHeroes } from "@/widgets/SectionHeroes";
 import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
 
+
 type Props = {
     lng: string
 }
