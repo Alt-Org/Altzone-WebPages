@@ -22,18 +22,16 @@
 
 /* Styling for the left arrow */
 .myCustomCarousel-wrapper .slick-prev {
-  left: 3%; /* Positioning the left arrow */
   transform: translateY(-50%); /* Centering vertically */
   border-width: 25px 35px 25px 0; /* Increasing arrow size */
-  border-color: transparent white transparent transparent; /* Border color */
+  border-color: transparent black transparent transparent; /* Border color */
 }
 
 /* Styling for the right arrow */
 .myCustomCarousel-wrapper .slick-next {
-  right: 3%; /* Positioning the right arrow */
   transform: translateY(-50%); /* Centering vertically */
   border-width: 25px 0 25px 35px; /* Increasing arrow size */
-  border-color: transparent transparent transparent white; /* Border color */
+  border-color: transparent transparent transparent black; /* Border color */
 }
 
 /* Hiding default arrow icons */

@@ -1,12 +1,13 @@
 import cls from "./SectionPlayWithUs.module.scss"
 import Image from "next/image";
-import bgPicture from "@/shared/assets/images/mainpage/PlayWithUs.webp";
+import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import googlePLay from "@/shared/assets/images/media/googleplay.png";
 import appStore from "@/shared/assets/images/media/appstore.png";
 import einstein from "@/shared/assets/images/heros/einstein/einstein.png";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
+import { HorizontalLines } from "@/widgets/HorizontalLines";
 
 type Props = {
     webGlButtonText: string;
@@ -66,8 +67,10 @@ const SectionPlayWithUs = (props: Props) => {
                 
                 <Image src={einstein} alt={"Einstein hero photo"} className={cls.EinsteinImage}></Image>
                 
-            </div>
 
+                
+            </div>
+            <HorizontalLines></HorizontalLines>
 
 
 
@@ -80,8 +83,8 @@ const SectionPlayWithUs = (props: Props) => {
             {/*    </Link>*/}
             {/*</Button>*/}
 
-
         </div>
+        
     );
 };
 

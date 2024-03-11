@@ -3,9 +3,10 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 import Image from "next/image";
 import bookImg from "@/shared/assets/images/mainpage/book.webp";
 import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
-import bgPicture from "@/shared/assets/images/mainpage/getToKnow12.webp"
+import bgPicture from "@/shared/assets/images/mainpage/background.webp"
 import Link from "next/link";
 import {memo} from "react";
+import { HorizontalLines } from "@/widgets/HorizontalLines";
 
 
 type ButtonParams = {
@@ -35,7 +36,7 @@ const  SectionGetToKnowComics = memo((props: Props) => {
                    {innerText}
                </Link>
             </Button>
-
+            <HorizontalLines />
         </div>
     );
 })
