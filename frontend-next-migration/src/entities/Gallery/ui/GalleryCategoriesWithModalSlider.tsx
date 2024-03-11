@@ -1,9 +1,9 @@
-import {memo, useCallback} from "react";
+import { memo, useCallback } from "react";
 import Fancybox from "@/shared/ui/Fancybox/Fancybox";
 import cls from "./styles.module.scss"
 import Image from "next/image";
-import {useParams} from "next/navigation";
-import {useClientTranslation} from "@/shared/i18n";
+import { useParams } from "next/navigation";
+import { useClientTranslation } from "@/shared/i18n";
 
 export type GalleryCategoriesWithModalSliderProps = {
     title: string;
@@ -13,11 +13,11 @@ export type GalleryCategoriesWithModalSliderProps = {
 };
 
 export const GalleryCategoriesWithModalSlider = memo(({
-                                                          title,
-                                                          sources,
-                                                          followLastImage = false,
-                                                          cover
-                                                      }: GalleryCategoriesWithModalSliderProps) => {
+    title,
+    sources,
+    followLastImage = false,
+    cover
+}: GalleryCategoriesWithModalSliderProps) => {
 
 
 
@@ -34,7 +34,7 @@ export const GalleryCategoriesWithModalSlider = memo(({
 
     const params = useParams();
     const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "picture-galleries");
+    const { t } = useClientTranslation(lng, "picture-galleries");
 
 
     return (
@@ -44,17 +44,17 @@ export const GalleryCategoriesWithModalSlider = memo(({
                 <div className={cls.cover}>
                     <a data-fancybox={title} href={cover.url} >
                         <Image loading={"eager"} src={cover.url}
-                               width="250"
-                               height="292"
-                               className={cls.coverImage}
-                               alt={cover.name}
+                            width="250"
+                            height="292"
+                            className={cls.coverImage}
+                            alt={cover.name}
                         />
-                        <h2>{t(`${title}`)}</h2>
+                        <h2 className={cls.title}>{t(`${title}`)}</h2>
                     </a>
                 </div>
 
 
-                <div style={{display:"none"}}>
+                <div style={{ display: "none" }}>
                     {getSortedSources(sources).map((source, index) => (
                         index !== 0 ? (
                             <a key={index} data-fancybox={title} href={source}>
