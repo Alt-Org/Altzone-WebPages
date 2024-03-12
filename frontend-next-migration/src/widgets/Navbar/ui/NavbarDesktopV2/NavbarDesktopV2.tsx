@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, {CSSProperties, memo} from "react";
 import cls from "./NavbarDesktopV2.module.scss";
 import {NavbarBuild, NavbarMenuItem} from "../../model/types/types";
 import {classNames} from "@/shared/lib/classNames/classNames";
@@ -14,13 +14,21 @@ import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 
 
 type NavbarProps = {
+    overlaid ?: boolean;
+    marginTop?: number;
+    className?: string;
     navbarBuild:  NavbarBuild
 
 }
 
 const NavbarDesktopV2 = (props: NavbarProps) => {
 
-    const {navbarBuild}= props;
+    const {
+        navbarBuild,
+        overlaid = false,
+        marginTop,
+        className=''
+    }= props;
 
 
     const {canI} = useUserPermissions();
@@ -31,8 +39,17 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const lng = params.lng as string;
     const {t, i18n} = useClientTranslation(lng, "navbar");
 
+
+    const style = marginTop
+        ? ({ "marginTop": `${marginTop}px` } as CSSProperties)
+        : {};
+
+    const mods: Record<string, boolean> = {
+        [cls.overlayed]: overlaid,
+    } as Record<string, boolean>;
+
     return (
-        <nav  className={cls.siteNav}>
+            <nav className={classNames(cls.siteNav, mods, [className])} style={style}>
 
             <Container>
                 <ul className={cls.siteNavContentList}>

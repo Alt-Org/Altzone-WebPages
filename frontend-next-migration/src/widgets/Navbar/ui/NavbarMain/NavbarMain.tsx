@@ -44,7 +44,7 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
 
 
-            <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2}/>
+            <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2} overlaid={overlaid} className={className} marginTop={marginTop}/>
 </>
             // {/*// </Suspense>*/}
         )

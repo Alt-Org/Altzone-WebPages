@@ -3,7 +3,7 @@
 }
 
 .Navbar{
-  padding-top: 20px;
+  //padding-top: 20px;
 }
 
 .Container{
@@ -35,11 +35,16 @@
 }
 
 @media (max-width: 768px) {
-
   .Container {
     padding: 20px;
   }
+}
 
+
+@media (min-width: 768px) {
+  .Container {
+    margin-top: 20vh;
+  }
 }
 
 
