@@ -20,15 +20,9 @@ const ClanMainPage = ({children}: any) => {
     const [canShowUserClan, setShowUserClan] = useState(false);
 
     useEffect(() => {
-        if(!user) {
+        if(!user || !user.Player.clan_id) {
             setShowUserClan(false);
             // setCanShowAddNew(false);
-            return;
-        }
-
-        if(!user.Player.clan_id){
-            // setCanShowAddNew(true);
-            setShowUserClan(false);
             return;
         }
 
@@ -44,7 +38,7 @@ const ClanMainPage = ({children}: any) => {
 
     return (
         <div className={cls.Wrapper}>
-            <Navbar className={cls.Navbar} />
+            <Navbar className={cls.Navbar} marginTop={20}/>
 
             <Container className={cls.Container}>
                 <div style={{display: "flex" , gap: "10px"}}>

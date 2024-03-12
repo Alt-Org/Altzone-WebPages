@@ -36,7 +36,7 @@ const MainPage =  async ({ lng }: Props) => {
             {/*<div className={cls.Wrapper}>*/}
                 <FeedbackSideButton disableMobile={true}/>
 
-                <Navbar marginTop={20} overlaid/>
+                <Navbar marginTop={20} overlaid />
 
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}

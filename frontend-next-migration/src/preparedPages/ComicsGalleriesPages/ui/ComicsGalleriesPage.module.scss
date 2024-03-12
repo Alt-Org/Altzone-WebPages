@@ -11,7 +11,7 @@
 
 
 .Container{
-  margin-top: 40px;
+  //margin-top: 150px;
   padding-bottom: 40px;
 
   flex-grow: 1;
@@ -38,4 +38,10 @@
   flex-wrap: wrap;
 }
 
+
+@media (min-width: 768px) {
+  .Container {
+    margin-top: 15vh;
+  }
+}
 
