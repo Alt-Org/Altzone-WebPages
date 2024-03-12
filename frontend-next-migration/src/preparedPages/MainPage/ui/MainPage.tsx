@@ -22,6 +22,7 @@ import { SectionNewsPreview } from "@/widgets/SectionNewsPreview";
 import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
 import { SectionHeroes } from "@/widgets/SectionHeroes";
 import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
+import { SectionRanking } from "@/widgets/SectionRanking";
 
 
 type Props = {
@@ -38,6 +39,7 @@ const MainPage = async ({ lng }: Props) => {
             <FeedbackSideButton disableMobile={true} />
 
             <Navbar marginTop={20} overlaid />
+            <SectionRanking/>
 
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}

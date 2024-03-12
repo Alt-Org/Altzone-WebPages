@@ -5,7 +5,6 @@ import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { HorizontalLines } from "@/widgets/HorizontalLines";
 
-// import Image from 'next/image'
 
 const SectionHeroes = () => {
     return (
