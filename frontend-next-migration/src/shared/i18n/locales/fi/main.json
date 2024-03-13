@@ -5,5 +5,8 @@
   "head-description": "Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin",
   "head-keywords": "altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään",
   "og-title": "AltZone - Aloita pelisi täältä",
-  "og-description": "Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin"
+  "og-description": "Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin",
+  "ranking-player": "pelaaja",
+  "ranking-score": "pisteet"
+
 }

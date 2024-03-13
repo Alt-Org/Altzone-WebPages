@@ -39,7 +39,6 @@ const MainPage = async ({ lng }: Props) => {
             <FeedbackSideButton disableMobile={true} />
 
             <Navbar marginTop={20} overlaid />
-            <SectionRanking/>
 
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
@@ -52,6 +51,11 @@ const MainPage = async ({ lng }: Props) => {
             <SectionVideoAndGalleries />
             {/*<SectionNewsPreview/>*/}
 
+            <SectionRanking
+                rankingPlayerText={t('ranking-player')}
+                rankingScoreText={t('ranking-score')}
+
+            />
 
             <Footer />
 
