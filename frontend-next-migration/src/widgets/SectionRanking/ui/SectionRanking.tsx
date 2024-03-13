@@ -5,13 +5,15 @@ import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
 import Players from "../model/players";
 
 type Props = {
-
+    rankingPlayerText: string;
+    rankingScoreText: string;
 }
 
 const SectionRanking = (props: Props) => {
 
     const {
-
+        rankingPlayerText,
+        rankingScoreText
     } = props;
 
 
@@ -25,8 +27,8 @@ const SectionRanking = (props: Props) => {
                     <table className={cls.Table}>
                         <tr className={cls.TableTitleRow}>
                             <td> # </td>
-                            <td> player </td>
-                            <td> score </td>
+                            <td> {rankingPlayerText} </td>
+                            <td> {rankingScoreText} </td>
                         </tr>
                         {Players.map((item) => (
                             <tr className={cls.TableContentRow} key={item.id}>
