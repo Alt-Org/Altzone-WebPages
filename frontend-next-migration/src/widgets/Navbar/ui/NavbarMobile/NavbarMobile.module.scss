@@ -1,46 +1,49 @@
 .Navbar {
   font: var(--font-xxl);
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
   //max-width: 1000px;
-
   width: 100%;
 }
 
-.NavbarMobile{
-  display: grid;
+.NavbarMobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
   align-items: center;
-  grid-template-columns: 1fr 2fr 1fr;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 10vh;
+  margin-top: 5%;
+  position: fixed;
+  
+
 }
 
 
 .NavbarMobile__burger {
 
-  position: fixed;
-
-  align-self: start;
+  
   cursor: pointer;
   user-select: none;
 
-  & .left{
-    grid-column: 1;
-  }
+//   & .left {
+//     grid-column: 1;
+//   }
 
-  & .right{
-    grid-column: 3;
-    justify-self: end;
-  }
+//   & .right {
+//     grid-column: 3;
+//     justify-self: end;
+//   }
 
 }
 
-.NavbarMobile__center{
-  justify-self: center;
-  grid-column: 2;
+.NavbarMobile__center {
+  margin-left: auto; 
+  margin-right: auto; 
 }
 
 .navLogo {
-  img{
+  img {
     height: var(--navbar-logo-height);
   }
 }
@@ -54,7 +57,7 @@
   right: 0;
 }
 
-.authSection{
+.authSection {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: var(--border-radius-custom);
   box-shadow: 0 0 0 2px var(--inverted-primary-color);
@@ -66,30 +69,32 @@
   @include link-scale-effect;
   cursor: pointer;
 
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
   user-select: none;
 
   color: var(--secondary-color) !important;
 
 
-  &{
-    .authSectionLink{
+  & {
+    .authSectionLink {
       color: var(--secondary-color) !important;
     }
   }
 
 }
-.sidebarBottom{
+
+.sidebarBottom {
   display: flex;
   gap: 10px
 }
 
-.langSwitcher{
+.langSwitcher {
   border-radius: var(--border-radius-custom);
   outline: 2px solid var(--inverted-primary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
 }
-
