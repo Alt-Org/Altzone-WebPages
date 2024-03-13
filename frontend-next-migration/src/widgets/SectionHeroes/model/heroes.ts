@@ -1,8 +1,7 @@
 const Heroes = [
   {
     id: 1,
-    src: "@/shared/assets/images/heros/green-haired/green-haired.webp",
-    // /home/zubiri/Escritorio/Altzone-WebPages/frontend-next-migration/src/widgets/SectionHeroes/ui/SectionHeroes.tsx
+    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
     alt: "Image 1",
     title: "Lamborghini Huracan Performante",
     description:
@@ -10,7 +9,7 @@ const Heroes = [
   },
   {
     id: 2,
-    src: "../../shared/assets/images/heros/green-haired/green-haired.webp",
+    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
     alt: "Image 2 ",
     title: "Porsche 911 Turbo S",
     description:
@@ -18,7 +17,7 @@ const Heroes = [
   },
   {
     id: 3,
-    src: "../../../shared/assets/images/heros/green-haired/green-haired.webp",
+    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
     alt: "Image 3",
     title: "Ford Mustang",
     description:

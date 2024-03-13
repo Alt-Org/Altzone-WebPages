@@ -1,30 +1,30 @@
-import {CSSProperties, memo, useMemo} from "react";
+import { CSSProperties, memo, useMemo } from "react";
 import Image from 'next/image'
-import {sidebarItemType} from "@/shared/ui/Sidebar/model/items";
+import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
 // import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
-import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
+import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import cls from "./NavbarMobile.module.scss";
-import {classNames} from "@/shared/lib/classNames/classNames";
-import {ISidebarItem, Sidebar} from "@/shared/ui/Sidebar";
-import {ItemType, NavbarBuild, NavbarMenu, NavLogoObject} from "../../model/types/types";
-import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
+import { ItemType, NavbarBuild, NavbarMenu, NavLogoObject } from "../../model/types/types";
+import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 // import {navLogoMobile} from "../../model/data/navbarMenuMobile";
-import {useParams} from "next/navigation";
-import {useClientTranslation} from "@/shared/i18n";
-import {LangSwitcher} from "@/features/LangSwitcher";
-import {element} from "prop-types";
+import { useParams } from "next/navigation";
+import { useClientTranslation } from "@/shared/i18n";
+import { LangSwitcher } from "@/features/LangSwitcher";
+import { element } from "prop-types";
 
 
 interface NavbarTouchProps {
-    overlaid ?: boolean;
+    overlaid?: boolean;
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
-    side? : 'left'| 'right';
-    className? : string;
+    side?: 'left' | 'right';
+    className?: string;
 }
 
-const NavbarTouchComponent = ( props : NavbarTouchProps) => {
+const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const {
         overlaid = false,
@@ -45,13 +45,13 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
     } as Record<string, boolean>;
 
     const sidebarMods: Record<string, boolean> = {
-        [cls.left] : side === 'left',
-        [cls.right] : side === 'right',
+        [cls.left]: side === 'left',
+        [cls.right]: side === 'right',
     } as Record<string, boolean>;
 
     const params = useParams();
     const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "navbar");
+    const { t } = useClientTranslation(lng, "navbar");
 
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
@@ -65,7 +65,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                         ...element,
                         elementText: t(`${element.elementText}`),
                     }));
-                    return { name:  t(`${item.name}`), elements: localizedElements, type: sidebarItemType.ISidebarItemDropDown };
+                    return { name: t(`${item.name}`), elements: localizedElements, type: sidebarItemType.ISidebarItemDropDown };
                 }
                 return null;
             })
@@ -73,26 +73,27 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
     }, [navbarBuild, lng]);
 
 
-    const {canI} = useUserPermissions();
+    const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();
 
     return (
-            <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
+        <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
 
 
-                <div className={cls.NavbarMobile}>
+            <div className={cls.NavbarMobile}>
 
-                    <Sidebar
-                        buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
-                        sidebarItemsList={sidebarItemsList}
-                        side={side}
-                        closeOnClickOutside
-                        bottomItems={
-                            <div className={cls.sidebarBottom}>
-                                <LangSwitcher className={cls.langSwitcher}/>
+
+                <Sidebar
+                    buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
+                    sidebarItemsList={sidebarItemsList}
+                    side={side}
+                    closeOnClickOutside
+                    bottomItems={
+                        <div className={cls.sidebarBottom}>
+                            <LangSwitcher className={cls.langSwitcher} />
                             <div className={cls.authSection}>
                                 {
-                                    canI("canISeeLogin") &&  <AppLink
+                                    canI("canISeeLogin") && <AppLink
                                         className={cls.authSectionLink}
                                         theme={AppLinkTheme.PRIMARY}
                                         to={navbarBuild?.namedMenu?.navAuthLogin?.path || ""}
@@ -104,29 +105,30 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
 
                                 {
                                     canI("canISeeLogout") &&
-                                         <div onClick={()=>logout()}>{t(`logout`)}</div>
+                                    <div onClick={() => logout()}>{t(`logout`)}</div>
                                 }
 
                             </div>
-                            </div>
-                        }
+                        </div>
+                    }
+                />
+                <AppLink
+                    className={cls.navLogo + ' ' + cls.NavbarMobile__center}
+                    theme={AppLinkTheme.PRIMARY}
+                    to={navbarBuild?.namedMenu?.navLogo?.path || ""}
+                >
+                    <Image
+                        loading={"eager"}
+                        width={180}
+                        src={navbarBuild?.namedMenu?.navLogo?.src || ''}
+                        alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                     />
+                </AppLink>
 
-                    <AppLink
-                        className={cls.navLogo + ' ' + cls.NavbarMobile__center}
-                        theme={AppLinkTheme.PRIMARY}
-                        to={navbarBuild?.namedMenu?.navLogo?.path || ""}
-                    >
-                        <Image
-                            loading={"eager"}
-                            width={180}
-                            src={navbarBuild?.namedMenu?.navLogo?.src || ''}
-                            alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
-                        />
-                    </AppLink>
-                </div>
-            </nav>
-        )
+
+            </div>
+        </nav>
+    )
 
 };
 
