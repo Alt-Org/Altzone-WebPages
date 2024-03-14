@@ -1,13 +1,15 @@
+'use client'
 import cls from "./SectionPlayWithUs.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import googlePLay from "@/shared/assets/images/media/googleplay.png";
-import appStore from "@/shared/assets/images/media/appstore.png";
 import einstein from "@/shared/assets/images/heros/einstein/einstein.png";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
 import { HorizontalLines } from "@/widgets/HorizontalLines";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+
 
 type Props = {
     webGlButtonText: string;
@@ -20,6 +22,9 @@ const SectionPlayWithUs = (props: Props) => {
         webGlButtonText,
         // googleButtonText
     } = props;
+
+    const {isMobileSize} = useIsMobileSize();
+
 
 
     return (
@@ -46,12 +51,6 @@ const SectionPlayWithUs = (props: Props) => {
                             />
                         </Link>
 
-                        <Link href={AppExternalLinks.downloadAndroid} target={"_blank"}>
-                            <Image src={appStore} alt={"app store button"}
-                                className={cls.BtnDownload}
-                            />
-                        </Link>
-
 
                     </div>
 
@@ -64,11 +63,12 @@ const SectionPlayWithUs = (props: Props) => {
 
 
                 </div>
-                
-                <Image src={einstein} alt={"Einstein hero photo"} className={cls.EinsteinImage}></Image>
-                
+                {!isMobileSize && (
+                    <Image src={einstein} alt={"Einstein hero photo"} className={cls.EinsteinImage} />
+                )}
 
-                
+
+
             </div>
             <HorizontalLines></HorizontalLines>
 
@@ -84,7 +84,7 @@ const SectionPlayWithUs = (props: Props) => {
             {/*</Button>*/}
 
         </div>
-        
+
     );
 };
 

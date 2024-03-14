@@ -11,6 +11,8 @@ import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { Container } from "@/shared/ui/Container";
 import { HorizontalLines } from "@/widgets/HorizontalLines";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+
 
 
 interface descriptionProps {
@@ -24,6 +26,7 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "description-with-nav");
 
+    const {isMobileSize} = useIsMobileSize();
 
 
 
@@ -37,7 +40,9 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
                 </div>
 
                 <div className={cls.TopBlock}>
-                    <Image src={greenHaired} alt={"greenHaired hero"} className={cls.Image} />
+                    {!isMobileSize && (
+                        <Image src={greenHaired} alt={"greenHaired hero"} className={cls.Image} />
+                    )}
                     <div className={cls.description}>
                         <h2>{t("title")}</h2>
                         <p>{t("text")}</p>

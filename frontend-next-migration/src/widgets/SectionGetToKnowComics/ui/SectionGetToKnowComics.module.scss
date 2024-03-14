@@ -29,7 +29,7 @@
 }
 
 .centeredImage {
-  z-index: 20;
+  //z-index: 20;
   width: 60vw;
   min-width: 350px;
   height: auto;
@@ -39,19 +39,26 @@
 
 @media screen and (max-width: 480px) {
   .centeredImage {
-    width: 80%;
+    width: 80% !important;
     min-width: unset;
   }
 }
 
 .button {
-  z-index: 20;
-  background-color: var(--inverted-bg-color);
+  //z-index: 20;
+  background-color: rgba(0, 0, 0, 0.7);   
   padding: 20px;
   margin-top: 3%;
 
   @media screen and (max-width: 480px) {
     padding: 15px;
     font-size: 14px;
+    margin-top: 5%;
   }
 }
+@media screen and (max-width: 480px){
+  .horizonalLines{
+    margin-top: 20%;
+  }
+}
+

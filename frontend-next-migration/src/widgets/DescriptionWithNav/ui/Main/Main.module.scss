@@ -30,13 +30,13 @@
       .description {
         padding: 1rem;
         //border: 1px solid var(--primary-color);
-        background-color: rgba(0, 0, 0, 0.7);  //   background-color: rgba(var(--inverted-bg-color), 0.8);   => does not work     
-      
+        background-color: rgba(0, 0, 0, 0.7); 
+        //   background-color: rgba(var(--inverted-bg-color), 0.8);   => does not work     
         display: flex;
         flex-direction: column;
         text-align: left;
         width: 60%;
-        margin: 5%;
+        margin: 2%;
 
 
 
@@ -77,4 +77,27 @@
     z-index: -1;
     filter: brightness(65%);
   }
+}
+
+@media (max-width: 1150px) {
+
+
+  .container {
+    width: 100% !important;
+
+    .TopBlock {
+      width: 100% !important;
+
+      .description {
+        width: 100% !important;
+      }
+
+    }
+
+    .navElements {
+      margin-top: 0px !important;
+      margin-bottom: 15%;
+    }
+  }
+
 }

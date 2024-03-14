@@ -66,3 +66,18 @@
   background-color: rgba(107, 99, 99, 0.7);
   border-radius: var(--border-radius-custom);
 }
+
+//Responsive
+@media (max-width: 1150px) {
+
+  .Content{
+    width: 100% !important;
+  }
+  
+  .Ranking {
+    width: 90% !important;
+    padding: unset;
+    margin: unset;
+  }
+  
+}
