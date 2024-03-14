@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.container{
+.container {
   padding: 0 40px;
   display: flex;
   justify-content: center;
@@ -16,7 +16,8 @@
     width: 300px;
     flex: 1;
   }
-  .videoWrapper > div{
+
+  .videoWrapper>div {
     height: 100% !important;
   }
 
@@ -27,7 +28,7 @@
     gap: 10px;
   }
 
-  .galleries > div {
+  .galleries>div {
     width: calc(50% - 5px);
   }
 
@@ -39,27 +40,30 @@
 
   @media screen and (max-width: 1150px) {
 
-    //.container{
-      padding: 40px 40px;
-      flex-direction: column;
+    .SectionVideoAndGalleries {
+      flex-direction: column !important;
+    }
+
+    .container {
+      padding: 0 40px;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center;
       align-items: center;
-
-      .galleries{
-        justify-content: center;
-      }
-
-
-      .galleries > div {
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .videoWrapper{
-        width: 100%;
-        max-width: 340px;
-      }
+      gap: 20px;
+      width: 90%; 
+    }
+  
+    .videoWrapper {
+      width: 100%; 
+    }
+    .galleries{
+      flex-direction: column;
+      width: 100%;
     }
   }
+
+}
 
 
 .backgroundImageWrapper {
@@ -71,4 +75,3 @@
   z-index: -1;
   filter: brightness(90%);
 }
-

@@ -18,7 +18,7 @@
   padding: 5%;
 }
 
-.MediaLinks{
+.MediaLinks {
   display: flex;
   width: auto;
   gap: 20px;
@@ -27,6 +27,10 @@
 .BtnGame {
   background-color: var(--inverted-bg-color);
   padding: 20px;
+  height: 20vh;
+  width: auto;
+  font-size: 5em !important;
+  white-space: nowrap;
   //border: solid 1px var(--primary-color);
 }
 
@@ -41,20 +45,59 @@
 }
 
 .BtnDownload {
-  border-radius: 20px;
+  border-radius: 10px;
   transition: all 0.3s ease;
+  margin-top: 20px;
+  height: 10vh;
+  width: auto;
 }
 
 .BtnDownload:hover {
   transform: scale(1.05);
 }
 
-.Content{
+.Content {
   display: flex;
   flex-direction: row;
-  width: 75%;
+  width: 80%;
 }
 
 .EinsteinImage {
   width: 30%;
+}
+
+@media (max-width: 1500px) {
+  .BtnGame {
+    font-size: 4em !important;
+    white-space: unset;
+  }
+
+}
+
+
+@media (max-width: 1150px) {
+  .Content {
+    width: 90%;
+    /* Ajusta el ancho de los botones para que se adapten mejor */
+  }
+
+  .Buttons {
+    width: 100%;
+    align-items: center;
+  }
+
+  .BtnGame {
+    font-size: 3em !important;
+    white-space: unset;
+
+    width: 100%;
+  }
+
+  .BtnDownload {
+    
+    height: 11vh;
+   
+  }
+
+
 }

@@ -22,3 +22,13 @@
     font-weight: bold;
   }
 }
+
+@media (max-width: 1150px) {
+  .NavElement {
+    
+    
+    width: 85% !important;
+  }
+  
+  //align-items: center;
+}
