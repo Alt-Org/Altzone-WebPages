@@ -14,7 +14,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  width: 60%;
+  width: 70%;
   padding: 5%;
 }
 
@@ -27,10 +27,11 @@
 .BtnGame {
   background-color: var(--inverted-bg-color);
   padding: 20px;
-  height: 20vh;
-  width: auto;
-  font-size: 5em !important;
+  height: auto;
+  width: 100%;
+  font-size: 4em ;
   white-space: nowrap;
+  padding: 10%;
   //border: solid 1px var(--primary-color);
 }
 
@@ -64,21 +65,27 @@
 
 .EinsteinImage {
   width: 30%;
+  height: auto;
 }
 
-@media (max-width: 1500px) {
+
+@media (max-width: 1600px) {
   .BtnGame {
-    font-size: 4em !important;
-    white-space: unset;
+    font-size: 3em ;
   }
-
 }
 
+
+
+@media (max-width: 600px) {
+  .BtnGame {
+    font-size: 1.5em !important;
+  }
+}
 
 @media (max-width: 1150px) {
   .Content {
     width: 90%;
-    /* Ajusta el ancho de los botones para que se adapten mejor */
   }
 
   .Buttons {
@@ -87,16 +94,15 @@
   }
 
   .BtnGame {
-    font-size: 3em !important;
+    font-size: 3em ;
     white-space: unset;
-
     width: 100%;
   }
 
   .BtnDownload {
-    
+
     height: 11vh;
-   
+
   }
 
 

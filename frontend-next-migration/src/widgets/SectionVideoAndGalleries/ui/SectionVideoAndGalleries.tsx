@@ -53,7 +53,10 @@ const SectionVideoAndGalleries = () => {
                     }
                 </div>
             </Container>
-            <HorizontalLines />     
+            <div className={cls.HorizontalLines}>
+                <HorizontalLines />
+            </div>
+                
         </section>
     );
 };
