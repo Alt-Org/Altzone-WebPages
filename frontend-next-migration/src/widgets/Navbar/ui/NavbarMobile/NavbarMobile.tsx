@@ -1,19 +1,15 @@
 import { CSSProperties, memo, useMemo } from "react";
 import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
-// import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
 import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import cls from "./NavbarMobile.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
-import { ItemType, NavbarBuild, NavbarMenu, NavLogoObject } from "../../model/types/types";
+import { ItemType, NavbarBuild } from "../../model/types/types";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-// import {navLogoMobile} from "../../model/data/navbarMenuMobile";
 import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { LangSwitcher } from "@/features/LangSwitcher";
-import { element } from "prop-types";
-
 
 interface NavbarTouchProps {
     overlaid?: boolean;
@@ -30,29 +26,26 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         overlaid = false,
         marginTop,
         navbarBuild,
-        // navLogo,
         side = 'left',
         className = ''
     } = props;
 
-
-    const style = marginTop
-        ? ({ "marginTop": `${marginTop}px` } as CSSProperties)
+    const style: CSSProperties = marginTop
+        ? { "marginTop": `${marginTop}px` }
         : {};
 
     const mods: Record<string, boolean> = {
         [cls.overlayed]: overlaid,
-    } as Record<string, boolean>;
+    };
 
     const sidebarMods: Record<string, boolean> = {
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
-    } as Record<string, boolean>;
+    };
 
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "navbar");
-
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
@@ -72,17 +65,18 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             .filter(item => item !== null) as ISidebarItem[];
     }, [navbarBuild, lng]);
 
-
     const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();
 
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
-
-
             <div className={cls.NavbarMobile}>
-
-
+                
+                <div
+                    className={classNames(cls.NavbarMobile__burger, sidebarMods)}
+                    onClick={() => props.onBurgerButtonClick && props.onBurgerButtonClick(true)}
+                >
+                </div>
                 <Sidebar
                     buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
                     sidebarItemsList={sidebarItemsList}
@@ -92,8 +86,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         <div className={cls.sidebarBottom}>
                             <LangSwitcher className={cls.langSwitcher} />
                             <div className={cls.authSection}>
-                                {
-                                    canI("canISeeLogin") && <AppLink
+                                {canI("canISeeLogin") && (
+                                    <AppLink
                                         className={cls.authSectionLink}
                                         theme={AppLinkTheme.PRIMARY}
                                         to={navbarBuild?.namedMenu?.navAuthLogin?.path || ""}
@@ -101,13 +95,10 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                     >
                                         <span>{t(`${navbarBuild?.namedMenu?.navAuthLogin?.name}`)}</span>
                                     </AppLink>
-                                }
-
-                                {
-                                    canI("canISeeLogout") &&
+                                )}
+                                {canI("canISeeLogout") && (
                                     <div onClick={() => logout()}>{t(`logout`)}</div>
-                                }
-
+                                )}
                             </div>
                         </div>
                     }
@@ -124,12 +115,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                     />
                 </AppLink>
-
-
             </div>
         </nav>
     )
-
 };
 
 NavbarTouchComponent.displayName = 'NavbarTouch';
