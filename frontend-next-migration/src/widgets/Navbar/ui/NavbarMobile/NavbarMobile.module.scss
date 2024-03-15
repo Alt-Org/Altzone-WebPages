@@ -1,45 +1,41 @@
 .Navbar {
   font: var(--font-xxl);
   margin: 0 auto;
-  //max-width: 1000px;
   width: 100%;
 }
 
 .NavbarMobile {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   height: 10vh;
   margin-top: 5%;
   position: fixed;
-  
-
 }
 
-
 .NavbarMobile__burger {
-
-  
   cursor: pointer;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 10px;
+  height: 80%; 
+  width: auto;
+  
+}
 
-//   & .left {
-//     grid-column: 1;
-//   }
-
-//   & .right {
-//     grid-column: 3;
-//     justify-self: end;
-//   }
-
+.NavbarMobile__burger svg {
+  width: auto;
+  height: 100%;
 }
 
 .NavbarMobile__center {
-  margin-left: auto; 
-  margin-right: auto; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .navLogo {
@@ -62,33 +58,19 @@
   border-radius: var(--border-radius-custom);
   box-shadow: 0 0 0 2px var(--inverted-primary-color);
   padding: 5px;
-  //width: 100px;
   text-align: center;
   font-family: var(--font-family-texts) !important;
   font: var(--font-l);
-  @include link-scale-effect;
   cursor: pointer;
-
   -webkit-user-select: none;
-  /* Safari */
   -ms-user-select: none;
-  /* IE 10 and IE 11 */
   user-select: none;
-
   color: var(--secondary-color) !important;
-
-
-  & {
-    .authSectionLink {
-      color: var(--secondary-color) !important;
-    }
-  }
-
 }
 
 .sidebarBottom {
   display: flex;
-  gap: 10px
+  gap: 10px;
 }
 
 .langSwitcher {
