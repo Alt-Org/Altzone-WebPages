@@ -23,6 +23,7 @@ import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
 import { SectionHeroes } from "@/widgets/SectionHeroes";
 import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
 import { SectionRanking } from "@/widgets/SectionRanking";
+import { SectionHeroes2 } from "@/widgets/SectionHeroes2";
 
 
 type Props = {
@@ -40,6 +41,8 @@ const MainPage = async ({ lng }: Props) => {
 
             <Navbar marginTop={20} overlaid />
 
+            {/* <SectionHeroes2/> */}
+            {/*  New Section for Heroes in development 15.3*/}
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
             />
