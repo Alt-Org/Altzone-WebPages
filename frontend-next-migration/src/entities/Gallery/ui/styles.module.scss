@@ -1,23 +1,37 @@
-.cover{
+.cover {
+  position: relative;
   margin: 10px;
-  //width: 300px;
-  //width: 250px;
-  background-color: var(--transparent-bg);
+  background-color: var(--transparent-bg) !important;
   border-radius: var(--border-radius-custom);
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
 }
 
-.coverImage{
-  //height: 100%;
-  //width: 100%;
-  height: 250px;
-  width: 320px;
-  border-radius: var(--border-radius-custom);
-  //height: 292px;
+.coverImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%; 
 }
 
-.title{
- margin-top: -12%;
- padding: 1%;
+.coverImageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-custom);
 }
+
+.title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 1%;
+  background-color: transparent;
+  color: white;
+  border-bottom-right-radius: var(--border-radius-custom);
+  font-size: 2em;
+}
+
