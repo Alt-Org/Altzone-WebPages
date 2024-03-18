@@ -4,6 +4,7 @@ import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import Heroes from "../model/heroes";
 import green from "@/shared/assets/images/heros/green-haired/green-haired.webp";
 import { HorizontalLines } from "@/widgets/HorizontalLines";
+import Link from "next/link";
 
 type Props = {
 
@@ -23,16 +24,17 @@ const SectionHeroes2 = (props: Props) => {
                 <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
             </div>
             <div className={cls.Content}>
-            {Heroes.map((item) => (
-                <div key={item.id} className={cls.HeroDiv}>
-                    <Image src={green} alt={item.alt} className={cls.HeroImg} />
-                    {/* <h2 className={cls.title}>{item.title}</h2>
-                    <p className={cls.description}>{item.description}</p> */}
-                </div>
-            ))}
+                {Heroes.map((item) => (
+                    <div className={cls.Border}>
+                        <Link href={"#"} key={item.id} className={cls.HeroDiv}>
+                            <Image src={green} alt={item.alt} className={cls.HeroImg} />
+                        </Link>
+                    </div>
+                        
+                ))}
 
             </div>
-            
+
             <div className={cls.horizonalLines}>
                 <HorizontalLines />
             </div>
