@@ -10,7 +10,7 @@ import Image from "next/image";
 import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp"
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { Container } from "@/shared/ui/Container";
-import { HorizontalLines } from "@/widgets/HorizontalLines";
+import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 
 

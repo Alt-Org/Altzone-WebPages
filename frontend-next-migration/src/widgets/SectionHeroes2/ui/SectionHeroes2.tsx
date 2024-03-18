@@ -3,7 +3,7 @@ import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import Heroes from "../model/heroes";
 import green from "@/shared/assets/images/heros/green-haired/green-haired.webp";
-import { HorizontalLines } from "@/widgets/HorizontalLines";
+import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import Link from "next/link";
 
 type Props = {

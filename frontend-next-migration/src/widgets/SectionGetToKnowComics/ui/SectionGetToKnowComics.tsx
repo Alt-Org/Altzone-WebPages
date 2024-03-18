@@ -6,7 +6,7 @@ import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp"
 import Link from "next/link";
 import { memo } from "react";
-import { HorizontalLines } from "@/widgets/HorizontalLines";
+import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 
 
 type ButtonParams = {
