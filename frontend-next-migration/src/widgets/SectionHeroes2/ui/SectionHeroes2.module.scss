@@ -26,14 +26,39 @@
   justify-content: space-around;
 }
 
-.HeroDiv {
-  border-radius: 10px;
-  border: 5px solid yellow;
-  width: 25%;
-  margin: 2%;
-  background-color: rgba(207, 109, 40, 0.7);
-}
 
 .horizonalLines {
   margin-top: 5%;
+}
+
+.HeroDiv {
+  border-radius: 5px;
+  border: 5px solid yellow;
+  width: 90%;
+  margin: 5%;
+  background-color: rgba(207, 109, 40, 0.7);
+  border: 5px solid yellow;
+  cursor: pointer;
+}
+
+
+.Border {
+  width: 25%;
+  margin: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.3s;
+}
+
+
+.Border:hover {
+  border: 10px solid yellow;
+}
+
+@media (max-width: 1150px) {
+  
+  .Border{
+    width: 40%;
+  }
 }
