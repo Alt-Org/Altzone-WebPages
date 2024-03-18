@@ -6,7 +6,7 @@ import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import {GalleryCategoriesWithModalSlider, useGalleryCategories} from "@/entities/Gallery";
 import {Container} from "@/shared/ui/Container";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import { HorizontalLines } from "@/widgets/HorizontalLines";
+import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 
 
 //todo handle IsError , isLoading cases

@@ -41,7 +41,7 @@ const MainPage = async ({ lng }: Props) => {
 
             <Navbar marginTop={20} overlaid />
 
-            {/* <SectionHeroes2/>  */}
+            <SectionHeroes2/> 
             {/*  New Section for Heroes in development 15.3*/}
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}

@@ -7,7 +7,7 @@ import einstein from "@/shared/assets/images/heros/einstein/einstein.png";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
-import { HorizontalLines } from "@/widgets/HorizontalLines";
+import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 
 
