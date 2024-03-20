@@ -1,0 +1,49 @@
+.Border {
+  width: 25%;
+  margin: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-image 0.3s;
+  position: relative;
+}
+
+.HeroBorder:hover {
+  opacity: 1;
+}
+
+//todo fix the size of the img and the position
+.HeroBorder {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 450px;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.3s; 
+}
+
+.HeroDiv {
+  border-radius: 5px;
+  border: 5px solid yellow;
+  width: 90%;
+  height: 400px;
+  margin: 0;
+  background-color: rgba(207, 109, 40, 0.7);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.HeroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1150px) {
+  .Border {
+    width: 40%;
+  }
+}

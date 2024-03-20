@@ -29,6 +29,7 @@
   padding: 20px;
   height: auto;
   width: 100%;
+  //line height: ;
   font-size: 4em ;
   white-space: nowrap;
   padding: 10%;
@@ -68,14 +69,11 @@
   height: auto;
 }
 
-
 @media (max-width: 1600px) {
   .BtnGame {
     font-size: 2.8em ;
   }
 }
-
-
 
 @media (max-width: 600px) {
   .BtnGame {
@@ -100,10 +98,6 @@
   }
 
   .BtnDownload {
-
     height: 11vh;
-
   }
-
-
 }

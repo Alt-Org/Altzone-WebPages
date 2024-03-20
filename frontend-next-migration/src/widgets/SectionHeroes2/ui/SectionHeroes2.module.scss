@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -2;
   filter: brightness(75%);
 }
 
@@ -31,34 +31,3 @@
   margin-top: 5%;
 }
 
-.HeroDiv {
-  border-radius: 5px;
-  border: 5px solid yellow;
-  width: 90%;
-  margin: 5%;
-  background-color: rgba(207, 109, 40, 0.7);
-  border: 5px solid yellow;
-  cursor: pointer;
-}
-
-
-.Border {
-  width: 25%;
-  margin: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border 0.3s;
-}
-
-
-.Border:hover {
-  border: 10px solid yellow;
-}
-
-@media (max-width: 1150px) {
-  
-  .Border{
-    width: 40%;
-  }
-}
