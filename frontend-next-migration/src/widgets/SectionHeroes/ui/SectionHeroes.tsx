@@ -3,7 +3,6 @@ import cls from "./SectionHeroes.module.scss";
 import Heroes from "../model/heroes";
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
-import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 
 
 const SectionHeroes = () => {
@@ -26,7 +25,6 @@ const SectionHeroes = () => {
             <div className={cls.backgroundImageWrapper}>
                 <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100}/>
             </div>
-           < HorizontalLines />
         </div>
     );
 };

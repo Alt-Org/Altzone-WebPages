@@ -2,7 +2,6 @@ import cls from "./SectionHeroes2.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import Heroes from "../model/heroes";
-import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import Link from "next/link";
 import { SectionHero2 } from "@/widgets/SectionHero2";
 
@@ -35,9 +34,7 @@ const SectionHeroes2 = (props: Props) => {
 
             </div>
 
-            <div className={cls.horizonalLines}>
-                <HorizontalLines />
-            </div>
+           
         </section>
 
     );
