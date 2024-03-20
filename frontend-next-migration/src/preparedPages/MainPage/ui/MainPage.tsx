@@ -36,13 +36,14 @@ const MainPage = async ({ lng }: Props) => {
 
     return (
         <>
+        {/* Abadi */}
             {/*<div className={cls.Wrapper}>*/}
             <FeedbackSideButton disableMobile={true} />
 
             <Navbar marginTop={20} overlaid />
 
             <SectionHeroes2/> 
-            {/*  New Section for Heroes in development 15.3*/}
+            
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
             />

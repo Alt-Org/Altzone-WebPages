@@ -1,7 +1,12 @@
+import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp";
+import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
+import purpleGirls from "@/shared/assets/images/heros/purple-girls/purple-girls.svg";
+import einstein from "@/shared/assets/images/heros/einstein/einstein.webp";
+
 const Heroes = [
   {
     id: 1,
-    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
+    src: greenHaired,
     alt: "Image 1",
     title: "Lamborghini Huracan Performante",
     description:
@@ -9,7 +14,7 @@ const Heroes = [
   },
   {
     id: 2,
-    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
+    src: pirate,
     alt: "Image 2 ",
     title: "Porsche 911 Turbo S",
     description:
@@ -17,7 +22,7 @@ const Heroes = [
   },
   {
     id: 3,
-    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
+    src: purpleGirls,
     alt: "Image 3",
     title: "Ford Mustang",
     description:
@@ -25,7 +30,7 @@ const Heroes = [
   },
   {
     id: 4,
-    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
+    src: einstein,
     alt: "Image 4",
     title: "Lamborghini Aventador SV",
     description:
@@ -33,7 +38,7 @@ const Heroes = [
   },
   {
     id: 5,
-    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
+    src: greenHaired,
     alt: "Image 5",
     title: "Ferrari 458 Speciale",
     description:
@@ -41,7 +46,7 @@ const Heroes = [
   },
   {
     id: 6,
-    src: "/shared/assets/images/heros/green-haired/green-haired.webp",
+    src: pirate,
     alt: "Image 6",
     title: "Porsche 911",
     description:

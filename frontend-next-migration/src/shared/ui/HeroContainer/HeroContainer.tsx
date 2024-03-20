@@ -7,7 +7,9 @@ type Props = {
     heroImg  : any, //imageType
     heroImgAlt: string,
     heroName: string,
-    heroDescription: string;
+    heroDescription: string,
+    onRightClick : any,
+    onLeftClick : any
 
 }
 
@@ -17,7 +19,9 @@ const HeroContainer = (props: Props) => {
         heroImg,
         heroImgAlt,
         heroName,
-        heroDescription
+        heroDescription,
+        onRightClick,
+        onLeftClick
     } = props;
 
     const { isMobileSize } = useIsMobileSize();
