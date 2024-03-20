@@ -10,7 +10,6 @@ import Image from "next/image";
 import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp"
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { Container } from "@/shared/ui/Container";
-import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 
 
@@ -53,7 +52,7 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
                 <NavElements navElems={Navs} className={cls.navElements} />
 
             </Container>
-            <HorizontalLines />
+           
 
         </div>)
 });

@@ -1,19 +1,27 @@
-.horizontalLineDiv{
-  background-color: transparent;
-  width: 100%;
+
+
+// .horizontalLine {
+
+//   width: 100%;
+//   height: 15px; /* Adjust thickness*/
+//   background-color: black;
+//   border: black;
+//   margin-top: 20px; 
+  
+  
+// }
+
+.horizontalLineDiv {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.horizontalLine {
-
   width: 100%;
-  height: 15px; /* Adjust thickness*/
-  background-color: black;
-  border: black;
-  margin-top: 20px; 
-  
-  
+  transform: translateY(-50%); /* Ajusta el contenedor verticalmente */
+  display: flex;
+  justify-content: end; /* Centra horizontalmente */
 }
+
+.DividerImg {
+  max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+  height: auto; /* Permite que la altura de la imagen se ajuste automáticamente */
+}
+
+

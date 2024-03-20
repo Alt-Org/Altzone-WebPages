@@ -24,7 +24,7 @@ import { SectionHeroes } from "@/widgets/SectionHeroes";
 import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
 import { SectionRanking } from "@/widgets/SectionRanking";
 import { SectionHeroes2 } from "@/widgets/SectionHeroes2";
-
+import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 
 type Props = {
     lng: string
@@ -36,23 +36,28 @@ const MainPage = async ({ lng }: Props) => {
 
     return (
         <>
-        {/* Abadi */}
+            {/* Abadi */}
             {/*<div className={cls.Wrapper}>*/}
             <FeedbackSideButton disableMobile={true} />
 
             <Navbar marginTop={20} overlaid />
 
-            <SectionHeroes2/> 
-            
+            <SectionHeroes2 />
+            <HorizontalLines />
+
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
             />
-
+            <HorizontalLines />
 
             <DescriptionWithNav className={cls.description} />
+            <HorizontalLines />
             <SectionHeroes />
+            <HorizontalLines />
             <SectionGetToKnowComics buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }} />
+            <HorizontalLines />
             <SectionVideoAndGalleries />
+            <HorizontalLines />
             {/*<SectionNewsPreview/>*/}
 
             <SectionRanking
@@ -60,7 +65,7 @@ const MainPage = async ({ lng }: Props) => {
                 rankingScoreText={t('ranking-score')}
 
             />
-
+            <HorizontalLines />
             <Footer />
 
 
