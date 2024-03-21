@@ -1,6 +1,5 @@
 .Border {
-  width: 25%;
-  margin: 2%;
+  width: 32%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,30 +7,39 @@
   position: relative;
 }
 
-.HeroBorder:hover {
-  opacity: 1;
-}
+
 
 //todo fix the size of the img and the position
 .HeroBorder {
+  @include custom-invisible-hover;
   position: absolute;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 450px;
+  // right: 0;
+  // left: 0;
+  // top: 0;
+  // bottom: 0;
+  width: 100%;
   height: 100%;
-  opacity: 1;
-  transition: opacity 0.3s; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .HeroDiv {
-  border-radius: 5px;
-  border: 5px solid yellow;
-  width: 90%;
-  height: 400px;
-  margin: 0;
-  background-color: rgba(207, 109, 40, 0.7);
+
+  border-radius: var(--border-radius-custom);
+  border: var(--border-thick-yellow);
+  // width: 60%;
+  // height: 70%;
+  width: 350px;
+  height: 350px;
+  margin-left: 10%;
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  
+  background-color: var(--transparent-bg-orange);
   cursor: pointer;
   overflow: hidden;
 }

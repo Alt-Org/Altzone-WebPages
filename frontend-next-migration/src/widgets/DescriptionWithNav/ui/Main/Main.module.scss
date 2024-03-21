@@ -30,8 +30,7 @@
       .description {
         padding: 1rem;
         //border: 1px solid var(--primary-color);
-        background-color: rgba(0, 0, 0, 0.7); 
-        //   background-color: rgba(var(--inverted-bg-color), 0.8);   => does not work     
+        background-color: var(--transparent-bg-darker);    
         display: flex;
         flex-direction: column;
         text-align: left;
@@ -87,6 +86,7 @@
 
     .TopBlock {
       width: 100% !important;
+      margin-top: 5%;
 
       .description {
         width: 100% !important;
