@@ -52,8 +52,9 @@ const MainPage = async ({ lng }: Props) => {
 
             <DescriptionWithNav className={cls.description} />
             <HorizontalLines />
-            <SectionHeroes />
-            <HorizontalLines />
+            
+            {/* <SectionHeroes /> */}
+           
             <SectionGetToKnowComics buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }} />
             <HorizontalLines />
             <SectionVideoAndGalleries />

@@ -47,16 +47,19 @@
 }
 
 .BtnDownload {
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  @include link-scale-effect; 
+
+  
+  --animation-link-hover-scale: 1.1;
+  --animation-link-active-scale: 0.9;
+
+  border-radius: var(--border-radius-custom);
   margin-top: 20px;
   height: 10vh;
   width: auto;
 }
 
-.BtnDownload:hover {
-  transform: scale(1.05);
-}
+
 
 .Content {
   display: flex;

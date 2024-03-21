@@ -5,7 +5,7 @@
   hyphens: auto;
   padding: 10px;
 
-  background-color: rgba(0, 0, 0, 0.7); //   background-color: rgba(var(--inverted-bg-color), 0.8);   => does not work 
+  background-color: var(--transparent-bg-darker); 
 
   p,
   a {

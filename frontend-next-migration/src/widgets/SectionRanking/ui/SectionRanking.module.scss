@@ -63,7 +63,7 @@
 }
 
 .TableContentRow td {
-  background-color: rgba(107, 99, 99, 0.7);
+  background-color: var(--transparent-bg-gray);
   border-radius: var(--border-radius-custom);
 }
 
