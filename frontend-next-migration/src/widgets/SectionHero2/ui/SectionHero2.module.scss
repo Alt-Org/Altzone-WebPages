@@ -34,11 +34,11 @@
   // height: 70%;
   width: 350px;
   height: 350px;
-  margin-left: 10%;
+  margin-left: 70px;
   margin-top: 50px;
   margin-right: 50px;
   margin-bottom: 50px;
-  
+
   background-color: var(--transparent-bg-orange);
   cursor: pointer;
   overflow: hidden;
@@ -50,8 +50,22 @@
   object-fit: cover;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1400px) {
+  .Border {
+    width: 90%;
+  }
+  .HeroDiv {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+@media (min-width: 1401px) and (max-width: 1600px) {
   .Border {
     width: 40%;
+  }
+  .HeroDiv {
+    width: 400px;
+    height: 400px;
   }
 }
