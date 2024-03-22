@@ -50,22 +50,61 @@
   object-fit: cover;
 }
 
-@media (max-width: 1400px) {
-  .Border {
-    width: 90%;
-  }
-  .HeroDiv {
-    width: 600px;
-    height: 600px;
-  }
-}
-
 @media (min-width: 1401px) and (max-width: 1600px) {
   .Border {
-    width: 40%;
+    width: 50%;
   }
   .HeroDiv {
     width: 400px;
     height: 400px;
   }
 }
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .Border {
+    width: 50%;
+  }
+  .HeroDiv {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (min-width: 1001px) and (max-width: 1200px) {
+  .Border {
+    width: 50%;
+  }
+  .HeroDiv {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1000px) {
+  .Border {
+    width: 50%;
+  }
+  .HeroDiv {
+    width: 250px;
+    height: 250px;
+  }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .Border {
+    width: 50%;
+  }
+  .HeroDiv {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (min-width: 401px) and (max-width: 600px) {
+  .Border {
+    width: 90%;
+  }
+  .HeroDiv {
+    width: 300px;
+    height: 300px;
+  }
+}
+
