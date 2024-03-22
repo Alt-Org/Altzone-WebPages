@@ -1,1 +1,0 @@
-// export {HeroPage as default} from "./page";
