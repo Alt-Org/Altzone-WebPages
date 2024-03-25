@@ -6,7 +6,7 @@ type Props = {
     };
 };
 
-export default async function HeroPage_async({ params }: Props) {
+export default async function HeroesPage({ params }: Props) {
 
     const { id } = params;
 
