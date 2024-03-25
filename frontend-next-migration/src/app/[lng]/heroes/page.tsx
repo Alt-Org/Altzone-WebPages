@@ -1,6 +1,6 @@
-import HeroPage from "@/preparedPages/HeroesPage/HeroesPage";
-import {Metadata} from "next";
-import {useServerTranslation} from "@/shared/i18n";
+import HeroPage from "@/preparedPages/HeroesPage/ui/HeroesPage";
+// import {Metadata} from "next";
+// import {useServerTranslation} from "@/shared/i18n";
 
 type Props = {
     params: { lng: string }
@@ -8,16 +8,16 @@ type Props = {
 }
 
 
-export async function generateMetadata({ params }: Props): Promise<Metadata>  {
-
-    const { t } = await useServerTranslation(params.lng, 'comics');
-
-    return {
-        title: t("head-title"),
-        description: t("head-description"),
-        keywords: t("head-keywords"),
-    }
-}
+// export async function generateMetadata({ params }: Props): Promise<Metadata>  {
+//
+//     const { t } = await useServerTranslation(params.lng, 'comics');
+//
+//     return {
+//         title: t("head-title"),
+//         description: t("head-description"),
+//         keywords: t("head-keywords"),
+//     }
+// }
 
 
 export default function HeroesPage(props: Props) {
@@ -27,6 +27,9 @@ export default function HeroesPage(props: Props) {
 
     return (
         <>
+
+            hello
+
             <HeroPage
                 selectedHero={selectedHero}
             />
