@@ -2,12 +2,7 @@ import {NavItem} from "../types/types";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 export const Navs: NavItem[] = [
-    {
-        title: 'getToKnowTheProject',
-        body: 'readMore',
-        link: AppExternalLinks.readMore,
-        isExternal: true
-    },
+    
     {
         title: 'seeOpenPositions',
         body: 'comeWith',
@@ -23,12 +18,7 @@ export const Navs: NavItem[] = [
 ]
 
 export const MockNavs: NavItem[] = [
-    {
-        title: 'Tutustu projektiin',
-        body: 'Lue lisää',
-        link: AppExternalLinks.stub,
-        isExternal: false
-    },
+    
     {
         title: 'Katso avoimet paikat',
         body: 'Tule mukaan',

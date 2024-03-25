@@ -3,8 +3,6 @@ import React, { memo } from "react";
 import { useParams } from "next/navigation";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./Main.module.scss";
-import { Navs } from "../../model/data/navs";
-import { NavElements } from "../NavElements/NavElements";
 import { useClientTranslation } from "@/shared/i18n";
 import Image from "next/image";
 import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp"
@@ -49,7 +47,6 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
                 </div>
 
 
-                <NavElements navElems={Navs} className={cls.navElements} />
 
             </Container>
            

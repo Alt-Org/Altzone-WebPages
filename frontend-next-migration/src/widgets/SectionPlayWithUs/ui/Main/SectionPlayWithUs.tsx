@@ -8,6 +8,9 @@ import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import { NavElements } from "../NavElements/NavElements";
+import { Navs } from "../../model/data/navs";
+
 
 
 type Props = {
@@ -22,7 +25,7 @@ const SectionPlayWithUs = (props: Props) => {
         // googleButtonText
     } = props;
 
-    const {isMobileSize} = useIsMobileSize();
+    const { isMobileSize } = useIsMobileSize();
 
 
 
@@ -35,33 +38,33 @@ const SectionPlayWithUs = (props: Props) => {
             </div>
 
             <div className={cls.Content}>
-                <div className={cls.Buttons}>
-                    <Button key={"webgl"} withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}
-                        className={cls.BtnGame}>
-                        <Link target={"_blank"} href={AppExternalLinks.webgl}>
-                            {webGlButtonText}
-                        </Link>
-                    </Button>
-                    <div className={cls.MediaLinks}>
-                        {/*todo improve de images quality*/}
+                <div className={cls.ContentWithNav}>
+                    <div className={cls.Buttons}>
+                        <Button key={"webgl"} withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}
+                            className={cls.BtnGame}>
+                            <Link target={"_blank"} href={AppExternalLinks.webgl}>
+                                {webGlButtonText}
+                            </Link>
+                        </Button>
+
                         <Link href={AppExternalLinks.downloadAndroid} target={"_blank"}>
                             <Image src={googlePLay} alt={"google play button"}
                                 className={cls.BtnDownload}
                             />
                         </Link>
 
+                        {/*<Button key={"feedback"} withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}*/}
+                        {/*        className={cls.BtnGame}>*/}
+                        {/*    <Link target={"_blank"} href={AppExternalLinks.webgl}>*/}
+                        {/*        {webGlButtonText}*/}
+                        {/*    </Link>*/}
+                        {/*</Button>*/}
+
 
                     </div>
-
-                    {/*<Button key={"feedback"} withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}*/}
-                    {/*        className={cls.BtnGame}>*/}
-                    {/*    <Link target={"_blank"} href={AppExternalLinks.webgl}>*/}
-                    {/*        {webGlButtonText}*/}
-                    {/*    </Link>*/}
-                    {/*</Button>*/}
-
-
+                    <NavElements navElems={Navs} className={cls.navElements} />
                 </div>
+
                 {!isMobileSize && (
                     <Image src={einstein} alt={"Einstein hero photo"} className={cls.EinsteinImage} />
                 )}
