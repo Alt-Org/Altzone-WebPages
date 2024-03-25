@@ -42,8 +42,7 @@ const MainPage = async ({ lng }: Props) => {
 
             <Navbar marginTop={20} overlaid />
 
-            <SectionHeroes2 />
-            <HorizontalLines />
+           
 
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
@@ -54,7 +53,9 @@ const MainPage = async ({ lng }: Props) => {
             <HorizontalLines />
             
             {/* <SectionHeroes /> */}
-           
+            <SectionHeroes2 />
+            <HorizontalLines />
+            
             <SectionGetToKnowComics buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }} />
             <HorizontalLines />
             <SectionVideoAndGalleries />

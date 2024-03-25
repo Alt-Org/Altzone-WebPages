@@ -1,6 +1,6 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./HorizontalLines.module.scss";
-import divider from "@/shared/assets/images/mainpage/divider.png";
+import divider from "@/shared/assets/images/mainpage/divider.webp";
 import Image from "next/image";
 
 const HorizontalLines = () => {

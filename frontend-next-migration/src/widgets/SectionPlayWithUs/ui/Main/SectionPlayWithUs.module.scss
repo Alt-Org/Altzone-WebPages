@@ -10,29 +10,23 @@
 
 .Buttons {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
   gap: 20px;
-  width: 70%;
-  padding: 5%;
+  width: 100%;
+  margin-top: 5%;
 }
 
-.MediaLinks {
-  display: flex;
-  width: auto;
-  gap: 20px;
-}
+
 
 .BtnGame {
   background-color: var(--inverted-bg-color);
-  padding: 20px;
-  height: auto;
-  width: 100%;
+  
+  height: 10vh;
+  width: 60%;
   //line height: ;
   font-size: 4em ;
   white-space: nowrap;
-  padding: 10%;
   //border: solid 1px var(--primary-color);
 }
 
@@ -54,17 +48,28 @@
   --animation-link-active-scale: 0.9;
 
   border-radius: var(--border-radius-custom);
-  margin-top: 20px;
   height: 10vh;
   width: auto;
 }
 
-
+.navElements {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
 .Content {
   display: flex;
-  flex-direction: row;
-  width: 80%;
+  width: 90%;
+}
+
+.ContentWithNav{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items:center;
 }
 
 .EinsteinImage {
@@ -92,12 +97,14 @@
   .Buttons {
     width: 100%;
     align-items: center;
+    flex-direction: column;
   }
 
   .BtnGame {
     font-size: 3em ;
     white-space: unset;
     width: 100%;
+    margin-top: 10%;
   }
 
   .BtnDownload {
