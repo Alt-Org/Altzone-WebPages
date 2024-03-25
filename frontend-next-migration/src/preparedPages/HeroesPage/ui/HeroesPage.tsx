@@ -1,5 +1,5 @@
 import HeroContainer from "@/shared/ui/HeroContainer/HeroContainer";
-import Heroes from "../../widgets/SectionHeroes2/model/heroes";
+import Heroes from "../../../widgets/SectionHeroes2/model/heroes";
 
 type Props = {
     selectedHero: number;
