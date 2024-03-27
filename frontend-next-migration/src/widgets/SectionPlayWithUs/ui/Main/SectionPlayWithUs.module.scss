@@ -77,15 +77,16 @@
   height: auto;
 }
 
-@media (max-width: 1600px) {
+@media (min-width: 1151px) and (max-width: 1600px) {
   .BtnGame {
-    font-size: 2.8em ;
+    font-size: 2.5em !important;
   }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 0px) and (max-width: 600px) {
   .BtnGame {
     font-size: 1.5em !important;
+    margin-top: 40% !important;
   }
 }
 
@@ -98,6 +99,7 @@
     width: 100%;
     align-items: center;
     flex-direction: column;
+   
   }
 
   .BtnGame {
@@ -109,5 +111,10 @@
 
   .BtnDownload {
     height: 11vh;
+  }
+
+  .navElements {
+    margin-bottom: 5rem;
+   
   }
 }

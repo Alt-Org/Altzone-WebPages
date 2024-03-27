@@ -28,7 +28,7 @@
 }
 
 .HeroDiv {
-
+  
   border-radius: var(--border-radius-custom);
   border: var(--border-thick-yellow);
   // width: 60%;
@@ -84,7 +84,7 @@
   }
 }
 
-@media (min-width: 801px) and (max-width: 1000px) {
+@media (min-width: 851px) and (max-width: 1000px) {
   .Border {
     width: 35%;
     margin: 5%;
@@ -94,13 +94,49 @@
     height: 250px;
   }
 }
-@media  (max-width: 800px) {
+@media (min-width: 601px) and (max-width: 850px) {
   .Border {
     width: 60%;
   }
   .HeroDiv {
     width: 300px;
     height: 300px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 600px) {
+  .Border {
+    width: 60%;
+  }
+  .HeroDiv {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 500px) {
+  .Border {
+    width: 60%;
+  }
+  .HeroDiv {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media  (max-width: 400px) {
+  .Border {
+    width: 60%;
+  }
+  .HeroDiv {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media  (max-width: 400px) {
+  .HeroBorder {
+    opacity: 0 !important;
   }
 }
 

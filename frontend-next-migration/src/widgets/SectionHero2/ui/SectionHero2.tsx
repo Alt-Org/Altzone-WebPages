@@ -15,11 +15,12 @@ export const SectionHero2 = (props: Props) => {
 
     return (
         <div className={cls.Border}>
-            <Image src={heroBorder} alt="heroBorder" className={cls.HeroBorder} />
+            <Link className={cls.HeroBorder} href={RoutePaths[AppRoutesLinks.HEROES].replace(":id", id.toString())}>
+                <Image src={heroBorder} alt="heroBorder"  />
+            </Link>
+
             <div className={cls.HeroDiv}>
-                <Link href={RoutePaths[AppRoutesLinks.HEROES].replace(":id", id.toString())}>
-                    <Image src={imageSrc} alt={imageAlt} className={cls.HeroImg} />
-                </Link>
+                <Image src={imageSrc} alt={imageAlt} className={cls.HeroImg} />
             </div>
         </div>
     );
