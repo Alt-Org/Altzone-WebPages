@@ -1,7 +1,7 @@
 import cls from "./SectionHeroes2.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
-import Heroes from "../model/heroes";
+import Heroes from "../../../features/HeroesInfo/model/heroes";
 import Link from "next/link";
 import { SectionHero2 } from "@/widgets/SectionHero2";
 
