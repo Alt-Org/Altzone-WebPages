@@ -10,6 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
