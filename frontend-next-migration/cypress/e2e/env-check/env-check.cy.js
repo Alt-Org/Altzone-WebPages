@@ -8,8 +8,8 @@ describe('Environment variable set in plugin', () => {
     it.only('can be accessed within test.', () => {
         cy.log(`LOCAL_HOST is ${localHost}`);
 
-        // expect(localHost).to.exist;
-        //
-        // expect(localHost).to.equal('http://localhost:5173/');
+        expect(localHost).to.exist;
+
+        expect(localHost).to.equal('http://localhost:5173');
     });
 });
