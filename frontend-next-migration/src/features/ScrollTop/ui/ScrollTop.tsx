@@ -41,6 +41,7 @@ export const ScrollTop = memo(({ className = '', innerText}: ScrollTopProps) => 
 
     return (
         <Button
+            data-testid="scroll-to-top-btn"
             size={ButtonSize.XXXL}
             theme={ButtonTheme.OUTLINE}
             className={classNames(cls.ScrollTop, { [cls.show]: showButton }, [className])}
