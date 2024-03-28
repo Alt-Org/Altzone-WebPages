@@ -84,6 +84,12 @@
 
 @media (max-width: 768px) {
   :root {
-    --navbar-logo-height: 170px;
+    --navbar-logo-height: 140px;
+  }
+}
+
+@media (max-width: 550px) {
+  :root {
+    --navbar-logo-height: 130px;
   }
 }

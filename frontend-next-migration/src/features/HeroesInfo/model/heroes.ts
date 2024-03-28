@@ -8,15 +8,15 @@ const Heroes = [
     id: 1,
     src: greenHaired,
     alt: "Image 1",
-    title: "Lamborghini Huracan Performante",
+    title: "Green haired",
     description:
       "The Huracán Performante has reworked the concept of super sports cars and taken the notion of performance to levels never seen before.",
   },
   {
     id: 2,
     src: pirate,
-    alt: "Image 2 ",
-    title: "Porsche 911 Turbo S",
+    alt: "Image 4",
+    title: "Pirate",
     description:
       "This Turbo S variant comes with an engine putting out 641 bhp @ 6750 rpm and 800 Nm @ 2500 rpm of max power and max torque respectively.",
   },
@@ -24,7 +24,7 @@ const Heroes = [
     id: 3,
     src: purpleGirls,
     alt: "Image 3",
-    title: "Ford Mustang",
+    title: "Purple twins",
     description:
       "For offroad lovers. Super fast, Super Comfortable.",
   },
@@ -32,7 +32,7 @@ const Heroes = [
     id: 4,
     src: einstein,
     alt: "Image 4",
-    title: "Lamborghini Aventador SV",
+    title: "Einstein",
     description:
       "Aventador SV provide thrills unlike anything that has ever been experienced before.",
   },
@@ -40,7 +40,7 @@ const Heroes = [
     id: 5,
     src: greenHaired,
     alt: "Image 5",
-    title: "Ferrari 458 Speciale",
+    title: "Green haired",
     description:
       "0 to 100 km/h (0 to 62 mph) takes 3.0 seconds and the Spider is capable of a top speed of 400 km/h (249 mph).",
   },
@@ -48,7 +48,7 @@ const Heroes = [
     id: 6,
     src: pirate,
     alt: "Image 6",
-    title: "Porsche 911",
+    title: "Pirate",
     description:
       "The Porsche 911 (pronounced Nine Eleven or in German: Neunelfer) is a two-door 2+2 high performance rear-engined sports car.",
   },

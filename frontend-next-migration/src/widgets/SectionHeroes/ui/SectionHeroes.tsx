@@ -13,7 +13,6 @@ const SectionHeroes = () => {
                 {/*todo required markup instead*/}
                 {Heroes.map((item) => (
                     <div key={item.id}>
-                        {/*todo -> Image not working it is printing the alt*/}
                         <Image src={item.src} alt={item.alt} className={cls.img} width={200} height={300} /> 
                         <h2 className={cls.title}>{item.title}</h2>
                         <p className={cls.description}>{item.description}</p>
