@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
+    "cypress:open": "cypress open",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -67,6 +68,8 @@
     "@types/react-modal": "^3.16.2",
     "@types/react-slick": "^0.23.13",
     "@types/redux-persist": "^4.3.1",
+    "cypress": "^13.7.1",
+    "dotenv": "^16.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "eslint-plugin-storybook": "^0.8.0",
