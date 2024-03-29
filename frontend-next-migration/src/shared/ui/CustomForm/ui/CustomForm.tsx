@@ -25,15 +25,15 @@ type InputFieldProps = {
 
 
 function InputField({ label, error, inputProps }: InputFieldProps) {
+    const inputId = inputProps?.id || `input-${label}`;
     return (
-        <div>
-            <span>{label}</span>
-            <input {...inputProps}/>
-            <p>{ error && error}</p>
+        <div className={cls.field}>
+            <label htmlFor={inputId}>{label}</label>
+            <input id={inputId} {...inputProps}/>
+            {error && <p role="alert" className={cls.error}>{error}</p>}
         </div>
     );
-};
-
+}
 
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
