@@ -9,7 +9,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
     // eslint-disable-line react-hooks/rules-of-hooks
-    const { t } = await useServerTranslation(params.lng, 'members');
+    const { t } = await useServerTranslation(params.lng, 'about');
 
     return {
         title: t("head-title"),
@@ -24,10 +24,12 @@ export default async function About({ params }: Props) {
     const { t } = await useServerTranslation(params.lng, 'about');
 
     return (
-        <div>
-            {
-                t("title")
-            }
-        </div>
+            <main>
+                <h1>
+                    {
+                        t("title")
+                    }
+                </h1>
+            </main>
     )
 }
