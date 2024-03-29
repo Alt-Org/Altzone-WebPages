@@ -30,15 +30,15 @@ const AuthSubLoginPage = () => {
     };
 
     return (
-        <>
-            <div style={{ minHeight: `${height}px`, display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <main role="main"
+                  style={{minHeight: `${height}px`, display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <LoginForm
                     toForgottenPwPage={""}
                     toRegisterPage={RoutePaths.auth_register}
                     onSuccessLogin={handleSuccessLogin}
                 />
-            </div>
-        </>
+        </main>
+
     );
 }
 
