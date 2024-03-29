@@ -36,6 +36,7 @@ export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
     return (
         <>
             <select
+                data-testid="language-switcher"
                 value={language}
                 onChange={handleSelectChange}
                 className={classNames("", {}, [className])}
