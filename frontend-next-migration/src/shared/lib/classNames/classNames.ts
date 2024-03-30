@@ -1,6 +1,4 @@
-// record: key is string and value is boolean or string
-// type Mods = Record<string, boolean | string>
-type Mods = Record<string, boolean>;
+export type Mods = Record<string, boolean | string | undefined>;;
 
 export function classNames(
     cls: string,
@@ -17,3 +15,5 @@ export function classNames(
         .join(" ")
         .trim();
 }
+
+

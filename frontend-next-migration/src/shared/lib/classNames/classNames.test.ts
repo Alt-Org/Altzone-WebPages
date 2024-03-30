@@ -1,6 +1,13 @@
 import { classNames } from "./classNames";
 
 describe("classNames", () => {
+
+    it("", ()=>{
+        const expected = "";
+
+        expect(expected).toBe("")
+    })
+
     it("should return a string of class names separated by a space", () => {
         expect(classNames("main-class")).toBe("main-class");
         expect(classNames("main-class", { active: true })).toBe(
@@ -14,13 +21,12 @@ describe("classNames", () => {
     it("should return an empty string if no class names are provided", () => {
         const expected = "";
         expect(classNames("")).toBe(expected);
-        // expect(classNames(null)).toBe(expected);
-        // expect(classNames(undefined)).toBe(expected);
+        expect(classNames("", undefined, undefined)).toBe(expected);
     });
 
     it("should support a class name being an empty string", () => {
         const expected = "active";
-        expect(classNames("", { active: true })).toMatch(expected);
+        expect(classNames("", { active: true })).toBe(expected);
     });
 
     it("should support multiple mods", () => {
@@ -33,9 +39,8 @@ describe("classNames", () => {
     it("should not include falsy mod values in the class names", () => {
         const expected = "main-class";
         expect(classNames("main-class", { active: false })).toBe(expected);
-        // expect(classNames('main-class', { active: '' })).toBe(expected);
-        // expect(classNames("main-class", { active: null })).toBe(expected);
-        // expect(classNames("main-class", { active: undefined })).toBe(expected);
+        expect(classNames('main-class', { active: '' })).toBe(expected);
+        expect(classNames("main-class", { active: undefined })).toBe(expected);
     });
 
     it("should support additional class names", () => {
