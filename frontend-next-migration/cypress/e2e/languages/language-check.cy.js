@@ -1,32 +1,34 @@
 import {RoutePaths} from "../../../src/shared/appLinks/RoutePaths";
 
 describe('Language Switcher Functionality', () => {
-    let localHost;
+    const localHost = Cypress.env('LOCAL_HOST');
+    const languages = Cypress.env('LANGUAGES');
 
-    before(() => {
-        localHost = Cypress.env('LOCAL_HOST');
-    });
+    const languageTexts = {
+        [languages.en]: 'Read more',
+        [languages.ru]: 'Подробнее',
+        [languages.fi]: 'Lue lisää'
+    };
 
     beforeEach(() => {
         cy.visit(`${localHost}${RoutePaths.MAIN}`);
         cy.get('[data-testid="language-switcher"]').as('langSelector');
     });
 
+    function checkLanguage(langCode, expectedText) {
+        cy.get('@langSelector').select(langCode, { force: true });
+        cy.contains(expectedText).should('be.visible');
+        cy.url().should('include', `/${langCode}`);
+    }
+
+
     it('should change the interface language', () => {
-        cy.contains('Read more').should('be.visible');
-        cy.url().should('include', '/en');
+        cy.contains(languageTexts[languages.en]).should('be.visible');
+        cy.url().should('include', `/${languages.en}`);
 
-        cy.get('@langSelector').select('ru', { force: true });
-        cy.contains('Подробнее').should('be.visible');
-        cy.url().should('include', '/ru');
-
-        cy.get('@langSelector').select('fi', { force: true });
-        cy.contains('Lue lisää').should('be.visible');
-        cy.url().should('include', '/fi');
-
-        cy.get('@langSelector').select('en', { force: true });
-        cy.contains('Read more').should('be.visible');
-        cy.url().should('include', '/en');
+        Object.entries(languageTexts).forEach(([langCode, expectedText]) => {
+            checkLanguage(langCode, expectedText);
+        });
     });
 });
 
