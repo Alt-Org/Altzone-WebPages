@@ -57,6 +57,9 @@
   // colors
   --transparent-bg: rgba(35, 35, 61, 0.76);
   --transparent-bg-dark: rgba(0, 0, 0, 0.55);
+  --transparent-bg-darker: rgba(0, 0, 0, 0.7);
+  --transparent-bg-gray: rgba(107, 99, 99, 0.7);
+  --transparent-bg-orange: rgba(207, 109, 40, 0.7);
   --overlay-color: rgba(0, 0, 0, 0.34);
   --red-light: #f80606;
   --red-dark: #c50404;
@@ -64,6 +67,9 @@
 
   // border-radius
   --border-radius-custom: 15px;
+
+  //borders
+  --border-thick-yellow: 5px solid yellow;
 
 
   //animations
@@ -78,6 +84,12 @@
 
 @media (max-width: 768px) {
   :root {
-    --navbar-logo-height: 170px;
+    --navbar-logo-height: 140px;
+  }
+}
+
+@media (max-width: 550px) {
+  :root {
+    --navbar-logo-height: 130px;
   }
 }

@@ -1,0 +1,83 @@
+.backgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: brightness(75%);
+}
+
+.SectionRanking {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.Content {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+.Ranking {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  padding: 5%;
+}
+
+.PirateImage {
+  width: 25%;
+  height: fit-content;
+}
+
+
+//Styles for the table
+
+.Table {
+  border-spacing: 10px;
+}
+
+.Table td {
+  padding: 2px;
+  padding-left: 10px;
+}
+
+.TableTitleRow {
+  color: black;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.TableContentRow {
+  color: black;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.TableContentRow td {
+  background-color: var(--transparent-bg-gray);
+  border-radius: var(--border-radius-custom);
+}
+
+//Responsive
+@media (max-width: 1150px) {
+
+  .Content{
+    width: 100% !important;
+  }
+  
+  .Ranking {
+    width: 90% !important;
+    padding: unset;
+    margin: unset;
+  }
+  
+}
