@@ -7,15 +7,13 @@
   position: relative;
   padding: 0;
 
-  //background: #01003c ;
+  /* background: #01003c; */
 
   @media screen and (max-width: 480px) {
     height: auto;
     padding: 20px;
   }
-
 }
-
 
 .backgroundImageWrapper {
   position: absolute;
@@ -25,31 +23,40 @@
   height: 100%;
   z-index: -1;
   filter: brightness(80%);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .centeredImage {
-  z-index: 20;
-  width: 40vw;
+  //z-index: 20;
+  width: 60vw;
   min-width: 350px;
   height: auto;
   object-fit: contain;
-  margin-bottom: 20px;
+  margin-top: 1%;
+}
 
-  @media screen and (max-width: 480px) {
-    width: 80%;
+@media screen and (max-width: 480px) {
+  .centeredImage {
+    width: 80% !important;
     min-width: unset;
   }
 }
 
 .button {
-  z-index: 20;
-  background-color: var(--inverted-bg-color);
+  @include link-scale-effect;
+
+  --animation-link-hover-scale: 1.1;
+  --animation-link-active-scale: 0.9;
+  //z-index: 20;
+  background-color: var(--transparent-bg-darker);
   padding: 20px;
-  border: solid 1px var(--primary-color);
+  margin-top: 3%;
 
   @media screen and (max-width: 480px) {
     padding: 15px;
     font-size: 14px;
+    margin-top: 5%;
   }
 }

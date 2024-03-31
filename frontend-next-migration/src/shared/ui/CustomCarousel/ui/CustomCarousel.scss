@@ -1,35 +1,53 @@
-.myCustomCarousel-wrapper{
-  // default width
-  width: 90%;
+/* Setting default width for the carousel wrapper */
+.myCustomCarousel-wrapper {
+  width: 90%; /* Default width */
 }
 
-
-.slick-dots{
-
-  li button:before{
-    color: white!important;
-  }
+/* Styling for the dots indicating slides */
+.slick-dots li button:before {
+  color: white !important; /* Changing dot color to white */
 }
 
+/* Custom styles for navigation arrows */
+.myCustomCarousel-wrapper .slick-prev,
+.myCustomCarousel-wrapper .slick-next {
+  position: absolute; /* Absolute positioning for arrows */
+  top: 50%; /* Aligning arrows vertically */
+  width: 0;
+  height: 0;
+  border-style: solid; /* Arrow border style */
+  background-color: transparent;
+  z-index: 1; /* Ensuring arrows appear above other elements */
+}
 
-//todo make custom arrows, check official documentation for that
-//.myCustomCarousel .slick-arrow {
-//  //color: #070606 !important;
-//  border: none;
-//  outline: none;
-//  background: #242424 !important;
-//}
-//
-//.slick-prev {
-//  left: 3% !important;
-//  z-index: 1;
-//  background-color: black;
-//}
-//
-//.slick-next {
-//  right: 3% !important;
-//  z-index: 1;
-//  background-color: black;
-//}
+/* Styling for the left arrow */
+.myCustomCarousel-wrapper .slick-prev {
+  transform: translateY(-50%); /* Centering vertically */
+  border-width: 25px 35px 25px 0; /* Increasing arrow size */
+  border-color: transparent black transparent transparent; /* Border color */
+}
 
+/* Styling for the right arrow */
+.myCustomCarousel-wrapper .slick-next {
+  transform: translateY(-50%); /* Centering vertically */
+  border-width: 25px 0 25px 35px; /* Increasing arrow size */
+  border-color: transparent transparent transparent black; /* Border color */
+}
 
+/* Hiding default arrow icons */
+.slick-prev:before,
+.slick-next:before {
+  display: none !important; /* Hiding default arrow icons */
+}
+
+// /* Hover styles for left arrow */ Not good enough
+// .myCustomCarousel-wrapper .slick-prev:hover {
+//   border-width: 30px 35px 30px 0px; /* Increasing arrow size on hover */
+//   left: 0; /* Adjusting left position on hover */
+// }
+
+// /* Hover styles for right arrow */
+// .myCustomCarousel-wrapper .slick-next:hover {
+//   border-width: 30px 0px 35px 35px; /* Increasing arrow size on hover */
+//   right: 0; /* Adjusting right position on hover */
+// }

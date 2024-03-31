@@ -51,3 +51,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@mixin custom-invisible-hover {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
