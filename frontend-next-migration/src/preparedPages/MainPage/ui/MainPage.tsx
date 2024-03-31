@@ -40,7 +40,7 @@ const MainPage = async ({ lng }: Props) => {
             {/*<div className={cls.Wrapper}>*/}
             <FeedbackSideButton disableMobile={true} />
 
-            <Navbar marginTop={20} overlaid />
+            <Navbar overlaid />
 
            
 
@@ -53,7 +53,7 @@ const MainPage = async ({ lng }: Props) => {
             <DescriptionWithNav className={cls.description} />
             <HorizontalLines />
             
-            {/* <SectionHeroes /> */}
+             {/*<SectionHeroes />*/}
             <SectionHeroes2 />
             <HorizontalLines />
             

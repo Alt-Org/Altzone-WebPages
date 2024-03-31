@@ -22,7 +22,6 @@ const SectionPlayWithUs = (props: Props) => {
 
     const {
         webGlButtonText,
-        // googleButtonText
     } = props;
 
     const { isMobileSize } = useIsMobileSize();
@@ -38,13 +37,14 @@ const SectionPlayWithUs = (props: Props) => {
             </div>
 
             <div className={cls.Content}>
+
                 <div className={cls.ContentWithNav}>
                     <div className={cls.Buttons}>
                         <Button
                             key={"webgl"}
                             withScalableLink
                             theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.XXXL}
+                            // size={ButtonSize.}
                             className={cls.BtnGame}
                         >
                             <Link target={"_blank"} href={AppExternalLinks.webgl}>
@@ -57,37 +57,13 @@ const SectionPlayWithUs = (props: Props) => {
                                 className={cls.BtnDownload}
                             />
                         </Link>
-
-                        {/*<Button key={"feedback"} withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}*/}
-                        {/*        className={cls.BtnGame}>*/}
-                        {/*    <Link target={"_blank"} href={AppExternalLinks.webgl}>*/}
-                        {/*        {webGlButtonText}*/}
-                        {/*    </Link>*/}
-                        {/*</Button>*/}
-
-
                     </div>
                     <NavElements navElems={Navs} className={cls.navElements} />
                 </div>
-
                 {!isMobileSize && (
                     <Image src={sideImg} alt={"Side image with hero"} className={cls.sideImg} />
                 )}
-
-
-
             </div>
-
-
-
-
-
-            {/*<Button key={"android"} withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}*/}
-            {/*        className={cls.BtnGame}>*/}
-            {/*    <Link target={"_blank"} href={AppExternalLinks.webgl}>*/}
-            {/*        {googleButtonText}*/}
-            {/*    </Link>*/}
-            {/*</Button>*/}
 
         </div>
 
