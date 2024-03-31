@@ -52,7 +52,12 @@
 
 .navLogo {
   img {
+    //height: 100px;
+    //padding-left: 30px;
+
     height: var(--navbar-logo-height);
+    //height: 200px!important;
+    //width: auto;
   }
 }
 
