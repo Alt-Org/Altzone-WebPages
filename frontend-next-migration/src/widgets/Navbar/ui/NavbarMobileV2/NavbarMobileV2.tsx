@@ -79,6 +79,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 </div>
                 <Sidebar
                     buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
+                    sidebarClassName={cls.sidebar}
                     sidebarItemsList={sidebarItemsList}
                     side={side}
                     closeOnClickOutside
