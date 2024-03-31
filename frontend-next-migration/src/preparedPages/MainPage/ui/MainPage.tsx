@@ -47,6 +47,7 @@ const MainPage = async ({ lng }: Props) => {
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
             />
+
             <HorizontalLines />
 
             <DescriptionWithNav className={cls.description} />
