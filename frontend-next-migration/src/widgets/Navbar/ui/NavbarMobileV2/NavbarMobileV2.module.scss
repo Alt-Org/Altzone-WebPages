@@ -18,7 +18,12 @@
   height: 10vh;
   margin-top: 5%;
   position: fixed;
+
+  z-index: var(--navbar-z-index);
+
 }
+
+
 
 .NavbarMobile__burger {
 
