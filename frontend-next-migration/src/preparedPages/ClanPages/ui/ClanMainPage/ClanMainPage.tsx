@@ -39,9 +39,8 @@ const ClanMainPage = ({children}: any) => {
     return (
         <div className={cls.Wrapper}>
             <Navbar className={cls.Navbar}/>
-
             <Container className={cls.Container}>
-                <div style={{display: "flex" , gap: "10px"}}>
+                <div>
                     <Link href={RoutePaths.clan_all}>{t('all_clans')}</Link>
                     {canShowUserClan && <Link href={`${RoutePaths.clan}/${user?.Player.clan_id}`}>{t('my_clan')}</Link>}
                     {/*{canShowAddNew && <Link href={RoutePaths.clan_add_new}>{t('create_clan')}</Link>}*/}
@@ -49,7 +48,6 @@ const ClanMainPage = ({children}: any) => {
                 <div className={cls.ClansViewMain}>
                     {children}
                 </div>
-
             </Container>
 
         </div>
