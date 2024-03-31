@@ -10,7 +10,7 @@ const HorizontalLines = () => {
         //     <hr className={classNames(cls.horizontalLine)} />
         // </div>
         <div className={classNames(cls.horizontalLineDiv)}>
-            <Image src={divider} alt ="divider" className={classNames(cls.DividerImg)}></Image>
+            <Image src={divider} alt ="divider" className={classNames(cls.DividerImg)}/>
         </div>
     );
 };

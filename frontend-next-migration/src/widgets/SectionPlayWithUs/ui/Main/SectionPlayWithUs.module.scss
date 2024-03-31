@@ -20,13 +20,14 @@
 
 
 .BtnGame {
-  background-color: var(--inverted-bg-color);
+  background-color: var(--inverted-bg-color) !important;
   
-  height: 10vh;
-  width: 60%;
+  height: 10vh !important;
+  width: 60% !important;
+
   //line height: ;
-  font-size: 4em ;
-  white-space: nowrap;
+  font-size: 4em !important;
+  white-space: nowrap !important;
   //border: solid 1px var(--primary-color);
 }
 
@@ -42,11 +43,6 @@
 
 .BtnDownload {
   @include link-scale-effect; 
-
-  
-  --animation-link-hover-scale: 1.1;
-  --animation-link-active-scale: 0.9;
-
   border-radius: var(--border-radius-custom);
   height: 10vh;
   width: auto;

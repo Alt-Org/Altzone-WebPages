@@ -40,8 +40,13 @@ const SectionPlayWithUs = (props: Props) => {
             <div className={cls.Content}>
                 <div className={cls.ContentWithNav}>
                     <div className={cls.Buttons}>
-                        <Button key={"webgl"} withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXXL}
-                            className={cls.BtnGame}>
+                        <Button
+                            key={"webgl"}
+                            withScalableLink
+                            theme={ButtonTheme.Graffiti}
+                            size={ButtonSize.XXXL}
+                            className={cls.BtnGame}
+                        >
                             <Link target={"_blank"} href={AppExternalLinks.webgl}>
                                 {webGlButtonText}
                             </Link>
