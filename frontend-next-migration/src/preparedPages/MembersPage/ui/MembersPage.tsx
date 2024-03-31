@@ -10,9 +10,7 @@ import {ScrollTop} from "@/features/ScrollTop";
 const MembersPage = () => {
     return (
         <div className={classNames(cls.MembersPage)}>
-            <div className={cls.navbarWrapper}>
             <Navbar overlaid={true} className={cls.navbar}/>
-            </div>
             <SectionMembers  className={cls.workersSection}/>
             <ScrollTop/>
         </div>
