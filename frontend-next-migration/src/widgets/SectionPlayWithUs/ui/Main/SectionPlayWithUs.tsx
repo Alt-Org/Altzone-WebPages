@@ -3,7 +3,7 @@ import cls from "./SectionPlayWithUs.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import googlePLay from "@/shared/assets/images/media/googleplay.png";
-import einstein from "@/shared/assets/images/heros/einstein/einstein.png";
+import sideImg from "@/shared/assets/images/heros/einstein/einstein.png";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
@@ -71,7 +71,7 @@ const SectionPlayWithUs = (props: Props) => {
                 </div>
 
                 {!isMobileSize && (
-                    <Image src={einstein} alt={"Einstein hero photo"} className={cls.EinsteinImage} />
+                    <Image src={sideImg} alt={"Side image with hero"} className={cls.sideImg} />
                 )}
 
 

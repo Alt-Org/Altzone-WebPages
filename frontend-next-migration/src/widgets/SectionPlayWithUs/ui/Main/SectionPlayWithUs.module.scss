@@ -43,11 +43,6 @@
 
 .BtnDownload {
   @include link-scale-effect;
-
-
-  --animation-link-hover-scale: 1.1;
-  --animation-link-active-scale: 0.9;
-
   border-radius: var(--border-radius-custom);
   height: 10vh;
   width: auto;
@@ -73,9 +68,8 @@
   align-items:center;
 }
 
-.EinsteinImage {
+.sideImg {
   width: 35%;
-  height: auto;
 }
 
 @media (min-width: 1151px) and (max-width: 1600px) {
@@ -100,7 +94,7 @@
     width: 100%;
     align-items: center;
     flex-direction: column;
-   
+
   }
 
   .BtnGame {
@@ -116,6 +110,6 @@
 
   .navElements {
     margin-bottom: 5rem;
-   
+
   }
 }
