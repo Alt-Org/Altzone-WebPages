@@ -14,24 +14,13 @@
 
 
   right: 10px;
-  background-color: var(--inverted-bg-color);
-  z-index: var(--sideButton-z-index);
-  font-family: var(--font-family-texts);
-  line-height: 1;
-  //font-family: "Tahoma ", serif;
+  background-color: var(--inverted-bg-color)!important;
+  z-index: var(--sideButton-z-index) !important;
+  font-family: var(--font-family-texts) !important;
+  line-height: 1 !important;
   transform: rotate(180deg);
-  padding: 12px;
+  padding: 12px !important;
 
-  //transition: transform 0.2s ease;
-
-  //@include link-scale-effect;
-  //&:hover{
-  //  transform: scale(var(--animation-link-hover-scale)) rotate(180deg);
-  //}
-  //
-  //&:active{
-  //  transform: scale(var(--animation-link-active-scale)) rotate(180deg);
-  //}
 
 }
 

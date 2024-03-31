@@ -1,4 +1,4 @@
-import '../../preparedApp/styles/index.scss'
+// import '../../preparedApp/styles/index.scss'
 import {MainPage as PreparedPage} from "@/preparedPages/MainPage";
 import {useServerTranslation} from "@/shared/i18n";
 import {Metadata} from "next";
