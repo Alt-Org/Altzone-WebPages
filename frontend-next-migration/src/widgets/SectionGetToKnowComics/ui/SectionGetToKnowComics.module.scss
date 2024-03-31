@@ -46,17 +46,14 @@
 
 .button {
   @include link-scale-effect;
-
-  --animation-link-hover-scale: 1.1;
-  --animation-link-active-scale: 0.9;
   //z-index: 20;
-  background-color: var(--transparent-bg-darker);
-  padding: 20px;
-  margin-top: 3%;
+  background-color: var(--transparent-bg-darker)!important;
+  padding: 20px!important;
+  margin-top: 3%!important;
 
   @media screen and (max-width: 480px) {
-    padding: 15px;
-    font-size: 14px;
-    margin-top: 5%;
+    padding: 15px!important;
+    font-size: 14px!important;
+    margin-top: 5%!important;
   }
 }

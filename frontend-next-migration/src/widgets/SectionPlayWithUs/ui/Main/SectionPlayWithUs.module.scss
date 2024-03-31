@@ -21,13 +21,13 @@
 
 .BtnGame {
   background-color: var(--inverted-bg-color) !important;
-  
-  height: 10vh !important;
-  width: 60% !important;
 
+  height: 10vh!important;
+  width: 60% !important;
   //line height: ;
   font-size: 4em !important;
-  white-space: nowrap !important;
+  white-space: nowrap;
+  min-width: fit-content;
   //border: solid 1px var(--primary-color);
 }
 
@@ -42,7 +42,12 @@
 }
 
 .BtnDownload {
-  @include link-scale-effect; 
+  @include link-scale-effect;
+
+
+  --animation-link-hover-scale: 1.1;
+  --animation-link-active-scale: 0.9;
+
   border-radius: var(--border-radius-custom);
   height: 10vh;
   width: auto;
@@ -81,7 +86,7 @@
 
 @media (min-width: 0px) and (max-width: 600px) {
   .BtnGame {
-    font-size: 1.5em !important;
+    font-size: 2.5em !important;
     margin-top: 40% !important;
   }
 }
