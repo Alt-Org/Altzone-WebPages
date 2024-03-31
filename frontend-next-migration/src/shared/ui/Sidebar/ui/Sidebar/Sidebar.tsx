@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface SidebarProps {
     buttonClassName?: string;
+    sidebarClassName?: string;
     sidebarItemsList: ISidebarItem[];
     side? : 'left'| 'right'
     closeOnClickOutside?: boolean;
@@ -22,6 +23,7 @@ interface SidebarProps {
 
 export const Sidebar = ({
                             buttonClassName = '',
+                            sidebarClassName = '',
                             sidebarItemsList ,
                             side = 'left' ,
                             closeOnClickOutside = false,
@@ -145,7 +147,7 @@ export const Sidebar = ({
             <div
             data-testid='sidebar'
             ref={sidebarRef}
-            className={classNames(cls.Sidebar, mods, [])}
+            className={classNames(cls.Sidebar, mods, [sidebarClassName])}
         >
             <div className={cls.items}>
             {itemsList}

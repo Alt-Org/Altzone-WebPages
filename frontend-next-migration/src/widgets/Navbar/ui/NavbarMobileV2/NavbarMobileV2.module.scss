@@ -1,3 +1,7 @@
+.sidebar{
+  padding-top: 12%;
+}
+
 .Navbar {
   font: var(--font-xxl);
   margin: 0 auto;
@@ -17,15 +21,23 @@
 }
 
 .NavbarMobile__burger {
+
+  display: flex;
+  width: auto;
+  justify-content: center;
+  height: 80%;
+  left: 20px;
   cursor: pointer;
   user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  padding: 10px;
-  height: 80%; 
-  width: auto;
-  
+
+
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+  //padding: 10px;
+  //height: 80%;
+  //width: auto;
+  //
 }
 
 .NavbarMobile__burger svg {
@@ -66,6 +78,13 @@
   -ms-user-select: none;
   user-select: none;
   color: var(--secondary-color) !important;
+
+  &{
+    .authSectionLink{
+      color: var(--secondary-color) !important;
+    }
+  }
+
 }
 
 .sidebarBottom {
