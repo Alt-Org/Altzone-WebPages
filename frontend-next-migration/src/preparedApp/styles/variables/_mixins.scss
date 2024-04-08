@@ -60,3 +60,10 @@
     opacity: 1;
   }
 }
+
+@mixin font-size-increase($amount: 1.2) {
+  &:hover {
+    font-size: $amount * 100%;
+  }
+}
+

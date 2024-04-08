@@ -1,4 +1,3 @@
-'use client'
 import cls from "./SectionPlayWithUs.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
@@ -7,7 +6,6 @@ import sideImg from "@/shared/assets/images/heros/einstein/einstein.png";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { NavElements } from "../NavElements/NavElements";
 import { Navs } from "../../model/data/navs";
 
@@ -24,7 +22,7 @@ const SectionPlayWithUs = (props: Props) => {
         webGlButtonText,
     } = props;
 
-    const { isMobileSize } = useIsMobileSize();
+
 
 
 
@@ -60,9 +58,9 @@ const SectionPlayWithUs = (props: Props) => {
                     </div>
                     <NavElements navElems={Navs} className={cls.navElements} />
                 </div>
-                {!isMobileSize && (
-                    <Image src={sideImg} alt={"Side image with hero"} className={cls.sideImg} />
-                )}
+
+                <Image src={sideImg} alt={"Side image with hero"} className={cls.sideImg} />
+
             </div>
 
         </div>

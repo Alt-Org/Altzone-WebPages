@@ -17,7 +17,8 @@ export default function HeroPage(props: Props){
             img: selectedHeroData.src,
             alt: selectedHeroData.alt,
             title: selectedHeroData.title,
-            description: selectedHeroData.description
+            description: selectedHeroData.description,
+            borderColor: selectedHeroData.borderColor
         } : null;
     }
 
@@ -45,6 +46,7 @@ export default function HeroPage(props: Props){
                     heroDescription={selectedHeroInfo.description}
                     onRightClick={nextIndex}
                     onLeftClick={previousIndex}
+                    borderColor= {selectedHeroInfo.borderColor}
                 />
             )}
         </>
