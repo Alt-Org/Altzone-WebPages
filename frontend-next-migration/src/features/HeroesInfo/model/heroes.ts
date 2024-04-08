@@ -9,6 +9,7 @@ const Heroes = [
     src: greenHaired,
     alt: "Image 1",
     title: "Green haired",
+    borderColor: "#41F50C",
     description:
       "The Huracán Performante has reworked the concept of super sports cars and taken the notion of performance to levels never seen before.",
   },
@@ -17,6 +18,7 @@ const Heroes = [
     src: pirate,
     alt: "Image 4",
     title: "Pirate",
+    borderColor: "#41F50C",
     description:
       "This Turbo S variant comes with an engine putting out 641 bhp @ 6750 rpm and 800 Nm @ 2500 rpm of max power and max torque respectively.",
   },
@@ -25,6 +27,7 @@ const Heroes = [
     src: purpleGirls,
     alt: "Image 3",
     title: "Purple twins",
+    borderColor: "#41F50C",
     description:
       "For offroad lovers. Super fast, Super Comfortable.",
   },
@@ -33,6 +36,7 @@ const Heroes = [
     src: einstein,
     alt: "Image 4",
     title: "Einstein",
+    borderColor: "#41F50C",
     description:
       "Aventador SV provide thrills unlike anything that has ever been experienced before.",
   },
@@ -41,6 +45,7 @@ const Heroes = [
     src: greenHaired,
     alt: "Image 5",
     title: "Green haired",
+    borderColor: "#41F50C",
     description:
       "0 to 100 km/h (0 to 62 mph) takes 3.0 seconds and the Spider is capable of a top speed of 400 km/h (249 mph).",
   },
@@ -49,6 +54,7 @@ const Heroes = [
     src: pirate,
     alt: "Image 6",
     title: "Pirate",
+    borderColor: "#41F50C",
     description:
       "The Porsche 911 (pronounced Nine Eleven or in German: Neunelfer) is a two-door 2+2 high performance rear-engined sports car.",
   },

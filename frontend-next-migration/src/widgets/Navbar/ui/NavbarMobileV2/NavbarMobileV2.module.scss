@@ -61,6 +61,7 @@
     //padding-left: 30px;
 
     height: var(--navbar-logo-height);
+    width: auto;
     //height: 200px!important;
     //width: auto;
   }
@@ -108,4 +109,10 @@
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
+}
+
+@media (max-width: 800px){
+  .NavbarMobile{
+    height: 7vh;
+  }
 }

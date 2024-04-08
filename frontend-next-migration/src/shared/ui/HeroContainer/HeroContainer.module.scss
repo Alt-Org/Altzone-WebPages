@@ -1,43 +1,148 @@
+
 .backgroundImageWrapper {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: -3;
     filter: brightness(75%);
-  }
-
-.Content{
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.LeftArrow, .RightArrow {
-    position: relative; 
-    background-color: red;
-    width: 10%;
-    height: 100%; 
-    cursor: pointer;
-    z-index: 2;
-}
-
-.HeroImg{
-    width: 30%;
-}
-
-.HeroInfoDiv{
-    width: 50%;
+.HeroContainer {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.HeroInfoHeader{
+.Content {
+    width: 80%;
     display: flex;
+    justify-content:space-around;
     align-items: center;
-    justify-content: space-around;
+    height: 100vh;
+    
+}
+
+.LeftArrow {  
+    width: 7%;
+    height: auto; 
+    cursor: pointer;
+    z-index: 2;
+    margin-top: 10%;
+}
+
+.RightArrow {
+
+    width: 7%;
+    height: auto; 
+    cursor: pointer;
+    z-index: 2;
+    margin-top: 10%;
+}
+
+.InfoBgImg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 45%;
+    bottom: 0;
+    max-height: 95vh; 
+    width: 43%; 
+    height: auto; 
+    z-index: -1;
+}
+
+
+.InfoImg{
+    width: 40%;
+    height: auto;
+}
+
+.HeroImg {
+    position: absolute;
+    top: 50%; 
+    left: 15%; 
+    transform: translateY(-50%); 
+    width: auto;
+    max-width: 35%;
+    height: 70vh;
+    z-index: -2; 
+    margin-top: 5%;
+
+}
+
+
+.HeroInfoDiv {
+    width: 86%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: start;
+    height: 100vh;
+}
+
+.HeroInfoMain{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 43%;
+    margin-top: 5%;
+    margin-right: 7%;
+
+    p{
+        padding: 5%;
+        margin-top: 2%;
+        text-align: justify;
+    }
+}
+
+.HeroInfoHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 45%;
+    margin-top: 14%;
+    margin-right: 7%;
+
+    h2{
+        font-size: x-large;
+        color: yellow;
+        width: 100%;
+        text-align: center;
+        padding: 1%;
+    }
+
+    hr{
+        width: 30%;
+        border: 2px solid yellow;
+    }
+}
+
+
+
+.XButton{
+    font-size: 1.5em;
+    text-align: end;
+    color: yellow;
+    width: 100%;
+    margin-top: 1.5%;
+    cursor:pointer;
+    //@include font-size-increase(1.5);         Does not work 
+    margin-right: 6%;
+
+}
+
+@media (max-width: 1700px){
+    .HeroInfoHeader {
+        margin-top: 18%;
+    }
+    .XButton{
+        margin-right: 3%;
+    }
 }

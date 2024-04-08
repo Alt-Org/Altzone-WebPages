@@ -68,7 +68,7 @@ const MainPage = async ({ lng }: Props) => {
                 rankingScoreText={t('ranking-score')}
 
             />
-            <HorizontalLines />
+           
             <Footer />
 
 
