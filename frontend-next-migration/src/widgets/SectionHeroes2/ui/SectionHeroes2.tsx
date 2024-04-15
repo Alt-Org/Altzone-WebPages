@@ -25,7 +25,7 @@ const SectionHeroes2 = (props: Props) => {
             <div className={cls.Content}>
                 {Heroes.map((item) => (
                     <SectionHero2
-                        id={item.id}
+                        id={item.title}
                         imageSrc={item.src}
                         imageAlt={item.alt}
                     />

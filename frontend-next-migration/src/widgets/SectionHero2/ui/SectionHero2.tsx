@@ -5,7 +5,7 @@ import heroBorder from "@/shared/assets/images/heros/hero-border/hero-border.web
 import { AppRoutesLinks, RoutePaths } from "@/shared/appLinks/RoutePaths";
 
 type Props = {
-    id: number,
+    id: string,
     imageSrc: any,
     imageAlt: string,
 };
