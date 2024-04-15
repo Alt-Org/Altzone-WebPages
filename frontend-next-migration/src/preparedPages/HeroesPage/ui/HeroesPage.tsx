@@ -2,7 +2,7 @@ import HeroContainer from "@/shared/ui/HeroContainer/HeroContainer";
 import Heroes from "../../../features/HeroesInfo/model/heroes";
 
 type Props = {
-    selectedHero: number;
+    selectedHero: string;
 }
 
 export default function HeroPage(props: Props){
@@ -12,29 +12,31 @@ export default function HeroPage(props: Props){
 
     
     function findSelectedHero() {
-        const selectedHeroData = Heroes.find(hero => hero.id === selectedHero);
+        const selectedHeroData = Heroes.find(hero => hero.title === selectedHero);
         return selectedHeroData ? {
+            id: selectedHeroData.id,
             img: selectedHeroData.src,
             alt: selectedHeroData.alt,
-            title: selectedHeroData.title,
             description: selectedHeroData.description,
             borderColor: selectedHeroData.borderColor
         } : null;
     }
 
    
-    function calculateNextIndex(currentIndex: number): number {
-        return currentIndex === Heroes.length ? 1 : currentIndex + 1;
+    function calculateNextIndex(currentIndex: number): string {
+        const nextIndex = currentIndex === Heroes.length - 1 ? 0 : currentIndex + 1;
+        return Heroes[nextIndex].title;
     }
 
     
-    function calculatePreviousIndex(currentIndex: number): number {
-        return currentIndex === 1 ? Heroes.length : currentIndex - 1;
+    function calculatePreviousIndex(currentIndex: number): string {
+        const previousIndex = currentIndex === 0 ? Heroes.length - 1 : currentIndex - 1;
+        return Heroes[previousIndex].title;
     }
 
     const selectedHeroInfo = findSelectedHero();
-    const nextIndex = calculateNextIndex(selectedHero);
-    const previousIndex = calculatePreviousIndex(selectedHero);
+    const nextIndex = calculateNextIndex(selectedHeroInfo?.id || 0); 
+    const previousIndex = calculatePreviousIndex(selectedHeroInfo?.id || 0); 
 
     return (
         <>
@@ -42,13 +44,16 @@ export default function HeroPage(props: Props){
                 <HeroContainer
                     heroImg={selectedHeroInfo.img}
                     heroImgAlt={selectedHeroInfo.alt}
-                    heroName={selectedHeroInfo.title}
+                    heroName={selectedHero}
                     heroDescription={selectedHeroInfo.description}
                     onRightClick={nextIndex}
                     onLeftClick={previousIndex}
-                    borderColor= {selectedHeroInfo.borderColor}
+                    borderColor={selectedHeroInfo.borderColor}
                 />
             )}
         </>
     );
 }
+
+
+

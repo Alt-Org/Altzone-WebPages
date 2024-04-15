@@ -146,3 +146,179 @@
         margin-right: 3%;
     }
 }
+
+@media (max-width:1250px){
+    .HeroImg { 
+        height: 50vh;
+    }
+    .InfoBgImg {    
+        top: 5%;
+    }
+    .HeroInfoHeader {
+        margin-top: 22%;
+    }
+}
+
+@media (max-width:1100px){
+    .InfoBgImg {    
+        top: 8%;
+    }
+    .HeroInfoHeader {
+        margin-top: 26%;
+    }
+}
+
+@media (max-width:1000px){
+    .HeroImg {   
+        height: 40vh;  
+    }
+}
+
+@media (max-width:950px){
+    .InfoBgImg {    
+        top: 10%;
+    }
+    .HeroInfoHeader {
+        margin-top: 30%;
+    }
+}
+
+
+@media (max-width:900px){
+    .HeroImg {
+        height: 35vh; 
+    }
+    .InfoBgImg {    
+        top: 13%;
+    }
+    .HeroInfoHeader {
+        margin-top: 35%;
+    }
+}
+
+@media (max-width: 825px){
+    .InfoBgImg {    
+        top: 15%;
+    }
+    .HeroInfoHeader {
+        margin-top: 40%;
+    }
+}
+@media (max-width: 768px){
+    .InfoBgImg {
+        top: 10%;
+        left: 21%;
+        width: 65%; 
+    }
+
+    .HeroInfoHeader {
+        width: 80%;
+        margin-top: 45%;
+        margin-right: 10%;
+    }
+
+    .XButton{
+        margin-top: 0%;
+        margin-right: 8%
+    }
+
+    .HeroInfoMain{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        margin-top: 5%;
+        margin-right: 9%;
+    
+        p{
+            padding: 5%;
+            margin-top: 2%;
+            text-align: justify;
+        }
+    }
+
+   
+}
+
+
+@media (max-width: 600px){
+    .InfoBgImg {    
+        top: 15%;
+    }
+    .HeroInfoHeader {
+        margin-top: 57%;
+    }
+}
+
+@media (max-width: 560px){
+    .InfoBgImg {    
+        top: 20%;
+    }
+    .HeroInfoHeader {
+        margin-top: 70%;
+        h2{
+            font-size:larger;
+        }
+    }
+}
+
+@media (max-width: 530px){
+    .InfoBgImg {    
+        top: 20%;
+    }
+    .HeroInfoHeader {
+        margin-top: 75%;
+        h2{
+            font-size:larger;
+        }
+    }
+}
+
+@media (max-width: 500px){
+    .InfoBgImg {    
+        top: 22%;
+    }
+    .HeroInfoHeader {
+        margin-top: 80%;
+        h2{
+            font-size:larger;
+        }
+    }
+}
+
+@media (max-width: 480px){
+    .InfoBgImg {    
+        top: 22%;
+    }
+    .HeroInfoHeader {
+        margin-top: 82%;
+        h2{
+            font-size:larger;
+        }
+    }
+}
+
+@media (max-width: 460px){
+    .InfoBgImg {    
+        top: 25%;
+    }
+    .HeroInfoHeader {
+        margin-top: 95%;
+        h2{
+            font-size:large;
+        }
+    }
+}
+@media (max-width: 430px){
+    .InfoBgImg {    
+        top: 25%;
+    }
+    .HeroInfoHeader {
+        margin-top: 97%;
+        h2{
+            font-size:large;
+        }
+    }
+}
+

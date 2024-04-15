@@ -9,13 +9,13 @@ type Props = {
 export default async function HeroesPage({ params }: Props) {
 
     const { id } = params;
-
+   
     return (
        
            
 
             <HeroPage
-                selectedHero={Number(id)}
+                selectedHero={id}
             />
 
         
