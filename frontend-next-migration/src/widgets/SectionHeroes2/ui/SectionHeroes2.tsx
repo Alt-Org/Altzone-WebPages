@@ -1,9 +1,7 @@
 import cls from "./SectionHeroes2.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
-import Heroes from "../../../features/HeroesInfo/model/heroes";
-import Link from "next/link";
-import { SectionHero2 } from "@/widgets/SectionHero2";
+import { HeroCard, heroes } from "@/entities/Hero";
 
 type Props = {
 
@@ -23,8 +21,8 @@ const SectionHeroes2 = (props: Props) => {
                 <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
             </div>
             <div className={cls.Content}>
-                {Heroes.map((item) => (
-                    <SectionHero2
+                {heroes.map((item) => (
+                    <HeroCard
                         id={item.title}
                         imageSrc={item.src}
                         imageAlt={item.alt}

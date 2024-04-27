@@ -1,4 +1,4 @@
-import cls from "./SectionHero2.module.scss";
+import cls from "./HeroCard.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import heroBorder from "@/shared/assets/images/heros/hero-border/hero-border.webp";
@@ -10,7 +10,7 @@ type Props = {
     imageAlt: string,
 };
 
-export const SectionHero2 = (props: Props) => {
+export const HeroCard = (props: Props) => {
     const { id, imageSrc, imageAlt } = props;
 
     return (
@@ -18,7 +18,6 @@ export const SectionHero2 = (props: Props) => {
             <Link className={cls.HeroBorder} href={RoutePaths[AppRoutesLinks.HEROES].replace(":id", id.toString())}>
                 <Image src={heroBorder} alt="heroBorder"  />
             </Link>
-
             <div className={cls.HeroDiv}>
                 <Image src={imageSrc} alt={imageAlt} className={cls.HeroImg} />
             </div>
@@ -26,4 +25,4 @@ export const SectionHero2 = (props: Props) => {
     );
 };
 
-SectionHero2.displayName = "SectionHero2";
+HeroCard.displayName = "HeroCard";
