@@ -1,4 +1,3 @@
-import { SectionHero } from "@/widgets/SectionHero";
 import { DescriptionWithNav } from "@/widgets/DescriptionWithNav";
 import { Navbar } from "@/widgets/Navbar";
 import { Footer } from "@/widgets/Footer";
