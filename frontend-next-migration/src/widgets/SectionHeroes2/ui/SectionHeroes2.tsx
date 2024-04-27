@@ -23,6 +23,7 @@ const SectionHeroes2 = (props: Props) => {
             <div className={cls.Content}>
                 {heroes.map((item) => (
                     <HeroCard
+                        key={item.title}
                         id={item.title}
                         imageSrc={item.src}
                         imageAlt={item.alt}

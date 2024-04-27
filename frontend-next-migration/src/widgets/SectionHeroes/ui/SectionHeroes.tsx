@@ -1,6 +1,6 @@
 import CustomCarousel from "@/shared/ui/CustomCarousel/ui/CustomCarousel";
 import cls from "./SectionHeroes.module.scss";
-import Heroes from "@/entities/Hero/model/heroes";
+import {heroes} from "@/entities/Hero";
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 
@@ -11,7 +11,7 @@ const SectionHeroes = () => {
             <CustomCarousel className={cls.carouselWrapper}>
 
                 {/*todo required markup instead*/}
-                {Heroes.map((item) => (
+                {heroes.map((item) => (
                     <div key={item.id}>
                         <Image src={item.src} alt={item.alt} className={cls.img} width={200} height={300} /> 
                         <h2 className={cls.title}>{item.title}</h2>
