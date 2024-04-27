@@ -1,6 +1,6 @@
 import CustomCarousel from "@/shared/ui/CustomCarousel/ui/CustomCarousel";
 import cls from "./SectionHeroes.module.scss";
-import Heroes from "../../../features/HeroesInfo/model/heroes";
+import Heroes from "@/entities/Hero/model/heroes";
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 

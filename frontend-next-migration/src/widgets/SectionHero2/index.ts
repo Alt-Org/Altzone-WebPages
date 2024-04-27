@@ -1,1 +1,0 @@
-export {SectionHero2} from "./ui/SectionHero2";
