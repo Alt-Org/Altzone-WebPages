@@ -1,4 +1,4 @@
-import cls from "./SectionHeroes2.module.scss"
+import cls from "./SectionHeroesBlocks.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { HeroCard, heroes } from "@/entities/Hero";
