@@ -1,142 +1,22 @@
-.Border {
-  width: 25%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-image 0.3s;
-  position: relative;
-  margin: 3.5%;
+.Wrapper{
+  z-index: 5;
 }
 
-
-
-//todo fix the size of the img and the position
-.HeroBorder {
-  @include custom-invisible-hover;
-  position: absolute;
-  // right: 0;
-  // left: 0;
-  // top: 0;
-  // bottom: 0;
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-}
 
 .HeroDiv {
-  
-  border-radius: var(--border-radius-custom);
-  border: var(--border-thick-yellow);
-  // width: 60%;
-  // height: 70%;
-  width: 350px;
-  height: 350px;
-  margin-left: 30px;
-  margin-top: 60px;
-  margin-right: 30px;
-  margin-bottom: 80px;
-
-  background-color: var(--transparent-bg-orange);
   cursor: pointer;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
+
 .HeroImg {
+
+  background-color: var(--transparent-bg-orange);
+  border-radius: var(--border-radius-custom);
+  border: var(--border-thick-yellow);
+
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-@media (min-width: 1401px) and (max-width: 1600px) {
-  .Border {
-    width: 35%;
-    margin: 5%;
-  }
-  .HeroDiv {
-    width: 400px;
-    height: 400px;
-  }
-}
-
-@media (min-width: 1201px) and (max-width: 1400px) {
-  .Border {
-    width: 35%;
-    margin: 5%;
-  }
-  .HeroDiv {
-    width: 350px;
-    height: 350px;
-  }
-}
-
-@media (min-width: 1001px) and (max-width: 1200px) {
-  .Border {
-    width: 35%;
-    margin: 5%;
-  }
-  .HeroDiv {
-    width: 300px;
-    height: 300px;
-  }
-}
-
-@media (min-width: 851px) and (max-width: 1000px) {
-  .Border {
-    width: 35%;
-    margin: 5%;
-  }
-  .HeroDiv {
-    width: 250px;
-    height: 250px;
-  }
-}
-@media (min-width: 601px) and (max-width: 850px) {
-  .Border {
-    width: 60%;
-  }
-  .HeroDiv {
-    width: 300px;
-    height: 300px;
-  }
-}
-
-@media (min-width: 501px) and (max-width: 600px) {
-  .Border {
-    width: 80%;
-  }
-  .HeroDiv {
-    width: 250px;
-    height: 250px;
-  }
-}
-
-@media (min-width: 401px) and (max-width: 500px) {
-  .Border {
-    width: 80%;
-  }
-  .HeroDiv {
-    width: 225px;
-    height: 225px;
-  }
-}
-
-@media  (max-width: 400px) {
-  .Border {
-    width: 80%;
-  }
-  .HeroDiv {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-@media  (max-width: 768px) {
-  .HeroBorder {
-    opacity: 0 !important;
-  }
-}
-
