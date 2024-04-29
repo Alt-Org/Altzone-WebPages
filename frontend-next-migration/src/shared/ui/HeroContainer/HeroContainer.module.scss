@@ -300,25 +300,100 @@
 }
 
 @media (max-width: 460px){
-    .InfoBgImg {    
-        top: 25%;
+    .Content{
+        flex-direction: column;
+        width: 100%;
     }
+    .LeftArrow{
+        transform: rotate(90deg);
+        margin-top: 15%;
+        margin-bottom: 0;
+        width: 20%;
+        height: auto;
+        
+       
+    }
+    .RightArrow{
+        transform: rotate(90deg);
+        margin-top: 0;
+        margin-bottom: 15%;
+        width: 20%;
+        height: auto;
+    }
+    .InfoBgImg {    
+        top: 15%;
+        width: 90%;
+        left: 10%;
+        right: 5%;
+    }
+    
     .HeroInfoHeader {
-        margin-top: 95%;
+        width: 100%;
+        margin-top: 22%;
+        margin-right: 2%;
+
+        h2{
+            font-size:larger;
+        }
+    }
+
+    .XButton{
+        margin-top: 0%;
+        margin-right: 2%;
+        
+    }
+
+    .HeroInfoMain{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        margin-top: 5%;
+        margin-right: 9%;
+    
+        p{
+            padding: 5%;
+            margin-top: 2%;
+            text-align: justify;
+        }
+    }
+}
+
+@media (max-width: 420px){
+   
+    .HeroInfoHeader {
+        margin-top: 24%;
+        
+    }
+}
+
+@media (max-width: 380px){
+   
+    .HeroInfoHeader {
+        margin-top: 26%;
+        
+    }
+}
+
+@media (max-width: 380px){
+   
+    .HeroInfoHeader {
+        margin-top: 30%;
         h2{
             font-size:large;
         }
     }
 }
-@media (max-width: 430px){
-    .InfoBgImg {    
-        top: 25%;
-    }
+
+@media (max-width: 330px){
+   
     .HeroInfoHeader {
-        margin-top: 97%;
+        margin-top: 33%;
         h2{
             font-size:large;
         }
     }
 }
+
 

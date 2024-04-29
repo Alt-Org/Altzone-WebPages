@@ -9,7 +9,6 @@ import { Container } from "@/shared/ui/Container";
 import backgroundImage from '@/shared/assets/images/introBackground-transformed2.png';
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import cls from "./page.module.scss"
-import { ScrollTop } from "@/features/ScrollTop";
 import { useServerTranslation } from "@/shared/i18n";
 import Link from "next/link";
 import { classNames } from "@/shared/lib/classNames/classNames";
@@ -72,7 +71,7 @@ const MainPage = async ({ lng }: Props) => {
             <Footer />
 
 
-            <ScrollTop />
+           
             {/*</div>*/}
         </>
     );

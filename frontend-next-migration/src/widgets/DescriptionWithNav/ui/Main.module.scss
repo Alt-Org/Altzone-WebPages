@@ -28,37 +28,12 @@
 
 
       .description {
-        padding: 1rem;
-        //border: 1px solid var(--primary-color);
-        background-color: var(--transparent-bg-darker);    
-        display: flex;
-        flex-direction: column;
-        text-align: left;
         width: 60%;
-        margin: 2%;
-
-
-
-        h2 {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-          font-weight: bold;
-        }
-
-
-        p {
-          margin: 0.5rem 0;
-          font-size: 1.2rem;
-          text-align: justify;
-        }
-
-        border-radius: var(--border-radius-custom);
-        transition: all 0.3s ease;
       }
     }
 
 
-    
+
   }
 
 
@@ -84,7 +59,8 @@
       margin-top: 5%;
 
       .description {
-        width: 100% !important;
+        width: 90% !important;
+        margin: 5%;
       }
 
     }

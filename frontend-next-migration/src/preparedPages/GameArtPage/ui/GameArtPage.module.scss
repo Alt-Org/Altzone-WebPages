@@ -1,0 +1,64 @@
+
+
+.MainGameArt {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-top: 10%;
+    margin-left: 10%;
+   
+
+    h1{
+        margin-left: 5%;
+        font-size: 3rem;
+    }
+}
+
+.backgroundImageWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    filter: brightness(75%);
+}
+
+.RowTextImg {
+    display: flex;
+    flex-direction: row ;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    
+}
+
+.RowText{
+    width: 65%;
+}
+.RowImg{
+    width: 30%;
+    margin-left: 5%;
+}
+
+@media (max-width: 1150px) {
+    .MainGameArt{
+        width: 90%;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
+    .RowTextImg{
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .RowText{
+        width: 100%;
+    }
+    .RowImg{
+        width: 60%;
+        margin-left: 0%;
+    }
+}
