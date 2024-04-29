@@ -1,0 +1,1 @@
+export {default as TeachingPackagePage} from "./ui/TeachingPackagePage"

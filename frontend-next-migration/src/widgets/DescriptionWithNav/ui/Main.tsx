@@ -9,6 +9,7 @@ import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { Container } from "@/shared/ui/Container";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import { Paragraph } from "@/shared/ui/Paragraph";
 
 
 
@@ -23,7 +24,7 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "description-with-nav");
 
-    const {isMobileSize} = useIsMobileSize();
+    const { isMobileSize } = useIsMobileSize();
 
 
 
@@ -41,15 +42,20 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
                         <Image src={greenHaired} alt={"greenHaired hero"} className={cls.Image} />
                     )}
                     <div className={cls.description}>
-                        <h2>{t("title")}</h2>
-                        <p>{t("text")}</p>
+                        <Paragraph
+                            title={t("title")}
+                            text={t("text")}
+                        />
                     </div>
                 </div>
 
 
 
+
+
+
             </Container>
-           
+
 
         </div>)
 });
