@@ -20,9 +20,11 @@ const SectionHeroes2 = (props: Props) => {
             <div className={cls.backgroundImageWrapper}>
                 <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
             </div>
+
             <div className={cls.Content}>
                 {heroes.map((item) => (
                     <HeroCard
+                        className={cls.HeroCard}
                         key={item.title}
                         id={item.title}
                         imageSrc={item.src}
@@ -30,8 +32,9 @@ const SectionHeroes2 = (props: Props) => {
                     />
 
                 ))}
-
             </div>
+
+
 
            
         </section>
