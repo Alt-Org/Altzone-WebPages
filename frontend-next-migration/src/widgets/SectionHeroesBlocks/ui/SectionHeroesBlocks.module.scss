@@ -1,0 +1,56 @@
+.SectionHeroes2 {
+  padding-top: 30px;
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.Content {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+.HeroCard{
+  width: 400px;
+  height: 400px;
+  padding: 30px 30px 60px;
+}
+
+@media screen and (max-width: 1024px) {
+  .Content {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Content {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+}
+
+.backgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  filter: brightness(75%);
+}
+
+
+
+
+

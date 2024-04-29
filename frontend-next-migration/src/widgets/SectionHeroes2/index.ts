@@ -1,1 +1,0 @@
-export {default as SectionHeroes2} from "./ui/SectionHeroes2";
