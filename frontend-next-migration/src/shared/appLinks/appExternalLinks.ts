@@ -3,7 +3,7 @@
  */
 export const AppExternalLinks = {
     readMore: "https://drive.google.com/file/d/16KAaOAQudDQ_PvGfebXiB51mtR_M42UW/view?usp=sharing",
-    previewVideoYoutube: "https://www.youtube.com/watch?v=ht9JEOdvkHk&list=PLfAX25ZLrPGRXe73Nno0-S50Jb0satlmE",
+    previewVideoYoutube: "https://youtu.be/a0Z6DSX3iqE",
     webgl : "https://altzone.fi/game/",
     downloadAndroid : "https://play.google.com/store/apps/details?id=eu.altgame.altzone",
     reddit : "https://www.reddit.com/r/PRGaltzone/",
