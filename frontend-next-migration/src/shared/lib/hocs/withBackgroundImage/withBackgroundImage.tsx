@@ -4,6 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import cls from "./withBackgroundImage.module.scss";
 import Image from "next/image";
+import {classNames} from "@/shared/lib/classNames/classNames";
 
 
 interface BackgroundImageConfig {
@@ -11,18 +12,26 @@ interface BackgroundImageConfig {
     placeHolderPath?: string;
     alt?: string;
     shouldBeLazyLoaded?: boolean;
+    className?: string;
 }
 
 function withBackgroundImage<P extends object>(
     config: BackgroundImageConfig
 ): (WrappedComponent: FunctionComponent<P>) => FC<P> {
-    const { imagePath, placeHolderPath = '', alt = '', shouldBeLazyLoaded = false } = config;
+    const {
+        imagePath,
+        placeHolderPath = '',
+        alt = '',
+        shouldBeLazyLoaded = false,
+        className= ""
+    } = config;
 
     return (WrappedComponent: FunctionComponent<P>) => {
         const WithBackgroundImage: FC<P> = (props) => {
             return (
                 <>
-                    <div className={cls.Background}>
+                    <div className={classNames(cls.Background, {}, [className])}>
+                    {/*<div className={cls.Background}>*/}
                         {shouldBeLazyLoaded ? (
                             <Image src={imagePath} alt={alt} loading="lazy" className={cls.ImageWrapper}  />
                         ) : (

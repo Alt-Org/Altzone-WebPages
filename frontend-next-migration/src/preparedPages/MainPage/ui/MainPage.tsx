@@ -23,6 +23,8 @@ const MainPage = async ({ lng }: Props) => {
 
     const { t } = await useServerTranslation(lng, 'main');
 
+    const sameBg = bgPicture.src
+
     return (
         <>
             {/* Abadi */}
@@ -35,28 +37,41 @@ const MainPage = async ({ lng }: Props) => {
 
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
+                backgroundImageSrc={sameBg}
             />
 
             <HorizontalLines />
 
-            <DescriptionWithNav className={cls.description} />
+            <DescriptionWithNav
+                className={cls.description}
+                backgroundImageSrc={sameBg}
+            />
+
             <HorizontalLines />
             
              {/*<SectionHeroes />*/}
-            <SectionHeroesBlocks />
+            <SectionHeroesBlocks
+                backgroundImageSrc={sameBg}
+            />
             <HorizontalLines />
             
-            <SectionGetToKnowComics buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }} />
+            <SectionGetToKnowComics
+                buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }}
+                backgroundImageSrc={sameBg}
+
+            />
             <HorizontalLines />
-            <SectionVideoAndGalleries />
+            <SectionVideoAndGalleries
+                backgroundImageSrc={sameBg}
+            />
             <HorizontalLines />
             {/*<SectionNewsPreview/>*/}
 
-            <SectionRanking
-                rankingPlayerText={t('ranking-player')}
-                rankingScoreText={t('ranking-score')}
+            {/*<SectionRanking*/}
+            {/*    rankingPlayerText={t('ranking-player')}*/}
+            {/*    rankingScoreText={t('ranking-score')}*/}
 
-            />
+            {/*/>*/}
            
             <Footer />
 
@@ -71,6 +86,7 @@ const MainPage = async ({ lng }: Props) => {
 // export default withBackgroundImage({
 //     alt: "Main-Page underground style background",
 //     imagePath: bgPicture as unknown as string,
+//     className: cls.wholePageBG
 //     // @ts-ignore
 // })(MainPage);
 

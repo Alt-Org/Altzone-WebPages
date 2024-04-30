@@ -14,20 +14,20 @@ type ButtonParams = {
 }
 
 type Props = {
-    buttonParams: ButtonParams
+    buttonParams: ButtonParams;
+    backgroundImageSrc? : string
 }
 
 const SectionGetToKnowComics = memo((props: Props) => {
 
-    const { buttonParams } = props;
+    const { buttonParams, backgroundImageSrc } = props;
     const { href, innerText } = buttonParams;
 
     return (
-        <div className={classNames(cls.GetToKnow)}>
-
-            <div className={cls.backgroundImageWrapper}>
-                <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
-            </div>
+        <section
+            className={classNames(cls.GetToKnow)}
+            style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
+        >
             <Image src={bookImg} alt={"section-get-to-know-book-image"} className={cls.centeredImage} />
 
             <Button withScalableLink theme={ButtonTheme.Graffiti} size={ButtonSize.XXL} className={cls.button}>
@@ -37,7 +37,7 @@ const SectionGetToKnowComics = memo((props: Props) => {
             </Button>
             
 
-        </div>
+        </section>
     );
 })
 
