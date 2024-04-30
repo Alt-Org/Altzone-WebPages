@@ -15,14 +15,19 @@ const SectionHeroes2 = (props: Props) => {
 
 
     return (
-        <section className={cls.SectionHeroes2}>
+        <section
+            className={cls.SectionHeroes2}
+            style={{ backgroundImage: `url(${bgPicture})`}}
+        >
 
             <div className={cls.backgroundImageWrapper}>
-                <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
+                <Image src={bgPicture}
+                       alt="Background" layout="fill"
+                       objectFit="cover"/>
             </div>
 
             <div className={cls.Content}>
-                {heroes.map((item) => (
+                {heroes.map((item, index) => (
                     <HeroCard
                         className={cls.HeroCard}
                         key={item.title}
@@ -30,15 +35,9 @@ const SectionHeroes2 = (props: Props) => {
                         imageSrc={item.src}
                         imageAlt={item.alt}
                     />
-
                 ))}
             </div>
-
-
-
-           
         </section>
-
     );
 };
 
