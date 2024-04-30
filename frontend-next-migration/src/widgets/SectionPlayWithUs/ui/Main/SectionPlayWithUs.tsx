@@ -13,26 +13,24 @@ import { Navs } from "../../model/data/navs";
 
 type Props = {
     webGlButtonText: string;
+    backgroundImageSrc? : string;
     // googleButtonText: string;
 }
+
+
 
 const SectionPlayWithUs = (props: Props) => {
 
     const {
         webGlButtonText,
+        backgroundImageSrc
     } = props;
 
-
-
-
-
     return (
-        <div className={cls.SectionPlayWithUs}>
-
-
-            <div className={cls.backgroundImageWrapper}>
-                <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
-            </div>
+        <section
+            className={cls.SectionPlayWithUs}
+            style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
+        >
 
             <div className={cls.Content}>
 
@@ -63,7 +61,7 @@ const SectionPlayWithUs = (props: Props) => {
 
             </div>
 
-        </div>
+        </section>
 
     );
 };

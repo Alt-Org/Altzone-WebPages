@@ -8,8 +8,14 @@ import {Container} from "@/shared/ui/Container";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 
+type Props = {
+    backgroundImageSrc? : string
+}
+
 //todo handle IsError , isLoading cases
-const SectionVideoAndGalleries = () => {
+const SectionVideoAndGalleries = (props: Props) => {
+
+    const {backgroundImageSrc} = props;
 
     const {
         transformedGalleryCategories,
@@ -20,13 +26,10 @@ const SectionVideoAndGalleries = () => {
 
 
     return (
-        <section className={cls.SectionVideoAndGalleries}>
-
-            <div className={cls.backgroundImageWrapper}>
-                <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100}/>
-            </div>
-
-
+        <section
+            className={cls.SectionVideoAndGalleries}
+            style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
+        >
             <Container className={cls.container}>
                 <div className={cls.videoWrapper}>
                     <VideoContentYoutube

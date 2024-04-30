@@ -6,7 +6,6 @@ import cls from "./Main.module.scss";
 import { useClientTranslation } from "@/shared/i18n";
 import Image from "next/image";
 import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp"
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { Container } from "@/shared/ui/Container";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { Paragraph } from "@/shared/ui/Paragraph";
@@ -16,9 +15,10 @@ import { Paragraph } from "@/shared/ui/Paragraph";
 interface descriptionProps {
     className?: string;
     // lng: string;
+    backgroundImageSrc? : string
 }
 
-export const Main = memo(({ className = '' }: descriptionProps) => {
+export const Main = ({ className = '' , backgroundImageSrc}: descriptionProps) => {
 
     const params = useParams();
     const lng = params.lng as string;
@@ -26,17 +26,13 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
 
     const { isMobileSize } = useIsMobileSize();
 
-
-
     return (
-        <div className={classNames(cls.Main, {}, [className])}>
+        <section
+            className= {classNames(cls.Main, {}, [className])}
+            style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
+        >
 
             <Container className={cls.container}>
-
-                <div className={cls.backgroundImageWrapper}>
-                    <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
-                </div>
-
                 <div className={cls.TopBlock}>
                     {!isMobileSize && (
                         <Image src={greenHaired} alt={"greenHaired hero"} className={cls.Image} />
@@ -48,17 +44,11 @@ export const Main = memo(({ className = '' }: descriptionProps) => {
                         />
                     </div>
                 </div>
-
-
-
-
-
-
             </Container>
 
 
-        </div>)
-});
+        </section>)
+};
 
 
 Main.displayName = "DescriptionWithNav-main";

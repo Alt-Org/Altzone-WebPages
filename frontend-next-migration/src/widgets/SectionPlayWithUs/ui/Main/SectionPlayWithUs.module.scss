@@ -6,6 +6,9 @@
   justify-content: center;
   min-height: 100vh;
   position: relative;
+
+  @include backGroundImageDefault;
+
 }
 
 .Buttons {
@@ -29,16 +32,6 @@
   white-space: nowrap;
   min-width: fit-content;
   //border: solid 1px var(--primary-color);
-}
-
-.backgroundImageWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  filter: brightness(85%);
 }
 
 .BtnDownload {
