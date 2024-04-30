@@ -12,6 +12,11 @@
   align-items: center;
   justify-content: center;
 
+
+  overflow-y: hidden;
+
+
+
 }
 
 .Content {
@@ -26,6 +31,9 @@
 .HeroCard {
   width: var(--cardWidth);
   height: var(--cardWidth);
+
+  opacity: 0;
+
 }
 
 
@@ -69,4 +77,20 @@
   min-height: 100vh;
   z-index: -2;
   filter: brightness(75%);
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Visible {
+  animation: fadeIn 3s ease forwards;
 }
