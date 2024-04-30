@@ -19,15 +19,19 @@ const ClickableBorder = forwardRef(
         setIsHovered(false);
         };
 
+        const borderImageStyle = isHovered
+            ? { borderImageSource: `url(${borderImageSource})` }
+            : { borderImageSource: "none" };
+
+       const mods = { [cls.hovered]:  isHovered };
+
         return (
             <div
                 ref={ref}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className={classNames(cls.content, {}, [className])}
-                style={{
-                    borderImageSource: isHovered ? `url(${borderImageSource})` : 'none',
-                }}
+                className={classNames(cls.content, mods, [className])}
+                style= {borderImageStyle}
             >
                 {children}
             </div>
