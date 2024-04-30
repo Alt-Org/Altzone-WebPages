@@ -12,6 +12,8 @@ import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
 import { SectionRanking } from "@/widgets/SectionRanking";
 import { SectionHeroesBlocks } from "@/widgets/SectionHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 
 type Props = {
     lng: string
@@ -68,7 +70,7 @@ const MainPage = async ({ lng }: Props) => {
 
 // export default withBackgroundImage({
 //     alt: "Main-Page underground style background",
-//     imagePath: backgroundImage as unknown as string,
+//     imagePath: bgPicture as unknown as string,
 //     // @ts-ignore
 // })(MainPage);
 
