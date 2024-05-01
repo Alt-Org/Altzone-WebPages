@@ -34,7 +34,7 @@ export const HeroCard = (props: Props) => {
         <ClickableBorder
             ref={elementRef}
             // #todo ask designer to think more about the border image proportions , because currents cause difficulties , see more in the css file
-            borderImageSource={"/images/hero-border.webp"}
+            borderImageSource={"/images/hero-border3.png"}
             className={classNames(cls.Wrapper, {}, [className])}
         >
         <div className={cls.HeroDiv}>
