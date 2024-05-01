@@ -23,7 +23,8 @@ const MainPage = async ({ lng }: Props) => {
 
     const { t } = await useServerTranslation(lng, 'main');
 
-    const sameBg = bgPicture.src
+    const sameBg = undefined;
+    // const sameBg = bgPicture.src;
 
     return (
         <>
@@ -83,11 +84,11 @@ const MainPage = async ({ lng }: Props) => {
 };
 
 
-// export default withBackgroundImage({
-//     alt: "Main-Page underground style background",
-//     imagePath: bgPicture as unknown as string,
-//     className: cls.wholePageBG
-//     // @ts-ignore
-// })(MainPage);
+export default withBackgroundImage({
+    alt: "Main-Page underground style background",
+    imagePath: bgPicture as unknown as string,
+    className: cls.wholePageBG
+    // @ts-ignore
+})(MainPage);
 
-export default MainPage;
+// export default MainPage;

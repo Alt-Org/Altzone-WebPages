@@ -1,5 +1,5 @@
 import HeroContainer from "@/shared/ui/HeroContainer/HeroContainer";
-import Heroes from "@/entities/Hero/model/heroes";
+import {heroes} from "@/entities/Hero";
 
 type Props = {
     selectedHero: string;
@@ -12,26 +12,27 @@ export default function HeroPage(props: Props){
 
     
     function findSelectedHero() {
-        const selectedHeroData = Heroes.find(hero => hero.title === selectedHero);
+        const selectedHeroData = heroes.find(hero => hero.title === selectedHero);
         return selectedHeroData ? {
             id: selectedHeroData.id,
-            img: selectedHeroData.src,
+            img: selectedHeroData.srcImg,
             alt: selectedHeroData.alt,
             description: selectedHeroData.description,
-            borderColor: selectedHeroData.borderColor
+            borderColor: selectedHeroData.borderColor,
+            imgGif: selectedHeroData?.srcGif || undefined
         } : null;
     }
 
    
     function calculateNextIndex(currentIndex: number): string {
-        const nextIndex = currentIndex === Heroes.length - 1 ? 0 : currentIndex + 1;
-        return Heroes[nextIndex].title;
+        const nextIndex = currentIndex === heroes.length - 1 ? 0 : currentIndex + 1;
+        return heroes[nextIndex].title;
     }
 
     
     function calculatePreviousIndex(currentIndex: number): string {
-        const previousIndex = currentIndex === 0 ? Heroes.length - 1 : currentIndex - 1;
-        return Heroes[previousIndex].title;
+        const previousIndex = currentIndex === 0 ? heroes.length - 1 : currentIndex - 1;
+        return heroes[previousIndex].title;
     }
 
     const selectedHeroInfo = findSelectedHero();
@@ -49,6 +50,7 @@ export default function HeroPage(props: Props){
                     onRightClick={nextIndex}
                     onLeftClick={previousIndex}
                     borderColor={selectedHeroInfo.borderColor}
+                    heroGif={selectedHeroInfo.imgGif}
                 />
             )}
         </>

@@ -8,11 +8,12 @@ import { AppRoutesLinks, RoutePaths } from "@/shared/appLinks/RoutePaths";
 import infoBg from "@/shared/assets/images/heros/hero-container/info-bg.svg";
 import rightArrow from "@/shared/assets/images/heros/hero-container/right-arrow.png";
 import leftArrow from "@/shared/assets/images/heros/hero-container/left-arrow.png";
-import image from "@/shared/assets/images/clanBg/cloud.png";
+
 
 
 type Props = {
     heroImg: any,
+    heroGif: any,
     heroImgAlt: string,
     heroName: string,
     borderColor: string,
@@ -30,6 +31,7 @@ const HeroContainer = (props: Props) => {
         heroDescription,
         onRightClick,
         onLeftClick,
+        heroGif
     } = props;
 
     const { isMobileSize } = useIsMobileSize();
@@ -52,7 +54,9 @@ const HeroContainer = (props: Props) => {
                     <Image src={heroImg} alt={heroImgAlt} className={cls.HeroImg} />
                 )}
                 <div className={cls.HeroInfoDiv}>
-                    <Image src={infoBg} alt="infoBg" className={cls.InfoBgImg}></Image>
+                    <Image src={infoBg} alt="infoBg" className={cls.InfoBgImg}/>
+
+
                     <div className={cls.HeroInfoHeader}>
                         <hr></hr>
                         <h2 >{heroName}</h2>
@@ -63,10 +67,10 @@ const HeroContainer = (props: Props) => {
                     </Link>
                     <div className={cls.HeroInfoMain}>
                         {!isMobileSize && (
-                            <Image src={image} alt="imagePlaceholder" className={cls.InfoImg}></Image>
+                            <Image src={heroGif} alt="imagePlaceholder" className={cls.InfoImg}/>
                         )}
                         {isMobileSize && (
-                            <Image src={heroImg} alt="imagePlaceholder" className={cls.InfoImg}></Image>
+                            <Image src={heroImg} alt="imagePlaceholder" className={cls.InfoImgMobile}/>
                         )}
                         <p>{heroDescription}</p>
                     </div>

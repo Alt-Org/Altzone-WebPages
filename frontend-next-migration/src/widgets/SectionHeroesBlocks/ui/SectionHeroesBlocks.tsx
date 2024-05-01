@@ -31,7 +31,7 @@ const SectionHeroes2 = (props: Props) => {
                         className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
                         key={item.title}
                         id={item.title}
-                        imageSrc={item.src}
+                        imageSrc={item.srcImg}
                         imageAlt={item.alt}
                     />
                 ))}
