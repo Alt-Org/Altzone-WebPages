@@ -1,12 +1,32 @@
 import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp";
-import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
-import purpleGirls from "@/shared/assets/images/heros/purple-girls/purple-girls.svg";
+import greenHairedGiF from "@/shared/assets/images/heros/green-haired/green-haired-walk.gif";
+// import greenHairedGiF from "@/shared/assets/images/heros/green-haired/green-haired-walk-2.gif";
+
 import einstein from "@/shared/assets/images/heros/einstein/einstein.webp";
+import einsteinGif from "@/shared/assets/images/heros/einstein/einstein-dab_dance.gif";
+
+
+import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
+import pirateGif from "@/shared/assets/images/heros/pirate/pirate-catwalk.gif";
+
+import purpleGirls from "@/shared/assets/images/heros/purple-girls/purple-girls.svg";
+import purpleGirlsGif from "@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif";
+
+import hannuHodari from "@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png";
+import hannuHodariGiF from "@/shared/assets/images/heros/hannu-hodari/hannu-hodari.gif";
+
+import graffittiGaya from "@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png";
+import graffittiGayaGif from "@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif";
+
+
+
+import defaultGif from "@/shared/assets/images/clanBg/cloud.png";
 
 const Heroes = [
   {
     id: 0,
-    src: greenHaired,
+    srcImg: greenHaired,
+    srcGif: greenHairedGiF,
     alt: "Image 1",
     title: "Green_haired",
     borderColor: "#41F50C",
@@ -15,16 +35,18 @@ const Heroes = [
   },
   {
     id: 1,
-    src: pirate,
-    alt: "Image 4",
-    title: "Pirate",
+    srcImg: hannuHodari,
+    srcGif: hannuHodariGiF,
+    alt: "Hannu_hodari image",
+    title: "Hannu_hodari",
     borderColor: "#41F50C",
     description:
       "This Turbo S variant comes with an engine putting out 641 bhp @ 6750 rpm and 800 Nm @ 2500 rpm of max power and max torque respectively.",
   },
   {
     id: 2,
-    src: purpleGirls,
+    srcImg: purpleGirls,
+    srcGif: purpleGirlsGif,
     alt: "Image 3",
     title: "Purple_twins",
     borderColor: "#41F50C",
@@ -33,7 +55,8 @@ const Heroes = [
   },
   {
     id: 3,
-    src: einstein,
+    srcImg: einstein,
+    srcGif: einsteinGif,
     alt: "Image 4",
     title: "Einstein",
     borderColor: "#41F50C",
@@ -42,16 +65,18 @@ const Heroes = [
   },
   {
     id: 4,
-    src: greenHaired,
-    alt: "Image 5",
-    title: "Green_haired2",
+    srcImg: graffittiGaya,
+    srcGif: graffittiGayaGif,
+    alt: "graffittiGaya",
+    title: "graffittiGaya",
     borderColor: "#41F50C",
     description:
       "0 to 100 km/h (0 to 62 mph) takes 3.0 seconds and the Spider is capable of a top speed of 400 km/h (249 mph).",
   },
   {
     id: 5,
-    src: pirate,
+    srcImg: pirate,
+    srcGif: pirateGif,
     alt: "Image 6",
     title: "Pirate2",
     borderColor: "#41F50C",
