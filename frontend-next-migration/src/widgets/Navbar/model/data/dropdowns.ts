@@ -16,6 +16,20 @@ export const dropdowns = {
                 path: AppExternalLinks.googleFeedback,
                 isExternal: true
             }
+        },
+        {
+            elementText: "Game art",
+            link: {
+                path: RoutePaths.GAME_ART,
+                isExternal: false
+            }
+        },
+        {
+            elementText: "Teaching package",
+            link: {
+                path: RoutePaths.TEACHING_PACKAGE,
+                isExternal: false
+            }
         }
     ],
     game: [

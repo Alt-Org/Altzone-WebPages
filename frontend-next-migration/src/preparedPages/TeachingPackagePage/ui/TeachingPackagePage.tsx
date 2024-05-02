@@ -5,7 +5,7 @@ import { Paragraph } from "@/shared/ui/Paragraph";
 import { useServerTranslation } from "@/shared/i18n";
 import cls from "./TeachingPackagePage.module.scss"
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
-import gamePicture from "@/shared/assets/images/gameArt/gameArt.png";
+import downloadPicture from "@/shared/assets/images/teachingPackage/download.png";
 import Image from "next/image";
 
 
@@ -42,7 +42,14 @@ const TeachingPackagePage = async ({ lng }: Props) => {
                             text={t("text3")}
                         ></Paragraph>
                     </div>
-                    <Image className={cls.RowImg} src={gamePicture} alt="Background"></Image>
+
+                    <a href="/documento.pdf" download className={cls.RowImg}>
+                        <Image  src={downloadPicture} alt="Background" />
+                        <h1>Download</h1>
+                    </a>
+
+
+
                 </div>
 
             </section>
@@ -50,11 +57,6 @@ const TeachingPackagePage = async ({ lng }: Props) => {
 
             <Footer />
         </main>
-
-
-
-
-
     );
 };
 
