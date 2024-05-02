@@ -1,8 +1,9 @@
 'use client'
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import { HeroCard, heroes } from "@/entities/Hero";
 import cls from "./SectionHeroesBlocks.module.scss";
 import {useInView} from "react-intersection-observer";
+import {useClientTranslation} from "@/shared/i18n";
+import {useParams} from "next/navigation";
 
 
 type Props = {
@@ -11,7 +12,6 @@ type Props = {
 
 
 const SectionHeroes2 = (props: Props) => {
-
     const {backgroundImageSrc} = props;
 
     const { ref, inView } = useInView({

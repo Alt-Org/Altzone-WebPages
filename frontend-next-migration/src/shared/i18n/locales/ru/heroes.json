@@ -1,0 +1,25 @@
+{
+  "green-haired" : "Зеленоволосый",
+  "greenHairedDescription": "Описание зеленоволосого",
+  "greenHairedImgAlt": "Изображение зеленоволосого героя",
+
+  "hannu-hodari" : "Ханну Ходари",
+  "hannuHodariDescription": "Описание Ханну Ходари",
+  "hannuHodariImgAlt": "Изображение Ханну Ходари",
+
+  "purple-girls" : "Фиолетовые Близняшки",
+  "purpleGirlsDescription": "Описание Фиолетовых Близняшек",
+  "purpleGirlsImgAlt": "Изображение Фиолетовых Близняшек",
+
+  "einstein" : "Эйнштейн",
+  "einsteinDescription": "Описание Эйнштейна",
+  "einsteinImgAlt": "Изображение Эйнштейна",
+
+  "graffitiGaya" : "Граффити Галя",
+  "graffitiGayaDescription": "Описание Граффити Гали",
+  "graffitiGayaAlt": "Изображение Граффити Гали",
+
+  "pirate" : "Пират",
+  "pirateDescription": "Описание пирата",
+  "pirateAlt": "Изображение пирата"
+}

@@ -1,5 +1,8 @@
+'use client'
 import HeroContainer from "@/shared/ui/HeroContainer/HeroContainer";
 import {heroes} from "@/entities/Hero";
+import {useParams} from "next/navigation";
+import {useClientTranslation} from "@/shared/i18n";
 
 type Props = {
     selectedHero: string;
@@ -10,14 +13,21 @@ export default function HeroPage(props: Props){
         selectedHero
     } = props;
 
+    const {lng} = useParams();
+    const { t } = useClientTranslation(lng as string, "heroes");
+
+
     
     function findSelectedHero() {
         const selectedHeroData = heroes.find(hero => hero.title === selectedHero);
         return selectedHeroData ? {
             id: selectedHeroData.id,
             img: selectedHeroData.srcImg,
-            alt: selectedHeroData.alt,
-            description: selectedHeroData.description,
+            title:  t(`${selectedHeroData.title}`),
+            alt: t(`${selectedHeroData.alt}`),
+            // alt: selectedHeroData.alt,
+            description: t(`${selectedHeroData.description}`),
+            // description: selectedHeroData.description,
             borderColor: selectedHeroData.borderColor,
             imgGif: selectedHeroData?.srcGif || undefined
         } : null;
@@ -45,7 +55,7 @@ export default function HeroPage(props: Props){
                 <HeroContainer
                     heroImg={selectedHeroInfo.img}
                     heroImgAlt={selectedHeroInfo.alt}
-                    heroName={selectedHero}
+                    heroName={selectedHeroInfo.title}
                     heroDescription={selectedHeroInfo.description}
                     onRightClick={nextIndex}
                     onLeftClick={previousIndex}
