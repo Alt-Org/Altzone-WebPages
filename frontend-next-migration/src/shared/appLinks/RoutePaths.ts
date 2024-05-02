@@ -19,6 +19,8 @@ export enum AppRoutesLinks {
     ABOUT = "ABOUT",
     PRIVACY = "PRIVACY",
     FORUM = "FORUM",
+    TEACHING_PACKAGE = "TEACHING_PACKAGE",
+    GAME_ART = "GAME_ART",
 
     NEWS = "NEWS",
     NEWSELEMENT = "NEWSELEMENT",
@@ -59,6 +61,9 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.MAIN]: "/",
     [AppRoutesLinks.ABOUT]: "/about",
     [AppRoutesLinks.PRIVACY]: "/privacy",
+    [AppRoutesLinks.TEACHING_PACKAGE]: "/teachingPackage",
+    [AppRoutesLinks.GAME_ART]: "/gameArt",
+
 
     [AppRoutesLinks.HEROES]: "/heroes/:id",
 

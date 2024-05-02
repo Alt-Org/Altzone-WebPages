@@ -3,6 +3,8 @@
   "forum" : "Форум",
   "team" : "Команда",
   "art" : "Арт",
+  "gameArt" : "Game art",
+  "teachingPackage" : "Teaching package",
   "login": "Войти",
   "profile": "Профиль",
   "logout": "Выйти",
