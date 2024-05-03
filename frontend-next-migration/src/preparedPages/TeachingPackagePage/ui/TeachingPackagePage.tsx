@@ -7,6 +7,8 @@ import cls from "./TeachingPackagePage.module.scss"
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import downloadPicture from "@/shared/assets/images/teachingPackage/download.png";
 import Image from "next/image";
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+// import documento from "./docemento.pdf"
 
 
 type Props = {
@@ -15,13 +17,14 @@ type Props = {
 
 const TeachingPackagePage = async ({ lng }: Props) => {
 
-    const { t } = await useServerTranslation(lng, 'teachingPackage');
+    const { t, i18n } = await useServerTranslation(lng, 'teachingPackage');
+    const {language} = i18n;
 
     return (
-        <main>
-            <div className={cls.backgroundImageWrapper}>
-                <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
-            </div>
+        <main className={cls.main}>
+            {/*<div className={cls.backgroundImageWrapper}>*/}
+            {/*    <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />*/}
+            {/*</div>*/}
             <FeedbackSideButton disableMobile={true} />
 
             <Navbar overlaid />
@@ -43,21 +46,25 @@ const TeachingPackagePage = async ({ lng }: Props) => {
                         ></Paragraph>
                     </div>
 
-                    <a href="/documento.pdf" download className={cls.RowImg}>
-                        <Image  src={downloadPicture} alt="Background" />
-                        <h1>Download</h1>
+                    <a href={`/documents/Teachingpackages/Teachingpackage_${language}24.pdf`} target={"_blank"} download className={cls.RowImg}>
+                        <Image  src={downloadPicture} alt="pdf download disket picture" />
+                        <h2 style={{fontSize: "3rem"}}>{t("download")}</h2>
                     </a>
-
-
 
                 </div>
 
             </section>
             {/*  */}
 
-            <Footer />
+            {/*<Footer />*/}
         </main>
     );
 };
 
-export default TeachingPackagePage;
+export default withBackgroundImage({
+    alt: "TeachingPackagePage underground style background",
+    imagePath: bgPicture as unknown as string,
+    className: cls.wholePageBG
+    // @ts-ignore
+})(TeachingPackagePage);
+// export default TeachingPackagePage;
