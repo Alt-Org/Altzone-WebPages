@@ -18,14 +18,14 @@ export const dropdowns = {
             }
         },
         {
-            elementText: "Game art",
+            elementText: "gameArt",
             link: {
                 path: RoutePaths.GAME_ART,
                 isExternal: false
             }
         },
         {
-            elementText: "Teaching package",
+            elementText: "teachingPackage",
             link: {
                 path: RoutePaths.TEACHING_PACKAGE,
                 isExternal: false

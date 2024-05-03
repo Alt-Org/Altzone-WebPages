@@ -1,4 +1,7 @@
-
+.main{
+    min-height: 100vh;
+    padding-top: 18vh;
+}
 
 .MainGameArt {
     width: 80%;
@@ -6,23 +9,17 @@
     flex-direction: column;
     align-items: start;
     justify-content: start;
-    margin-top: 10%;
-    margin-left: 10%;
-   
 
+    //margin-top: 10%;
+    margin-left: 10%;
+    position: relative;
     h1{
         font-size: 3rem;
     }
 }
 
-.backgroundImageWrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -3;
-    filter: brightness(75%);
+.wholePageBG{
+    filter: brightness(85%);
 }
 
 .RowTextImg {
@@ -58,7 +55,7 @@
 @media (max-width: 1150px) {
     .MainGameArt{
         width: 90%;
-        margin-top: 20%;
+        //margin-top: 20%;
         margin-left: 5%;
         
     }
@@ -75,9 +72,5 @@
         margin-left: 0%;
     }
 
-    .backgroundImageWrapper {
-       
-        height: 200%;
-       
-    }
+
 }

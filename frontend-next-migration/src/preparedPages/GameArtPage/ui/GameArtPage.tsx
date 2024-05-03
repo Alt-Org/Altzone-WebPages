@@ -7,6 +7,7 @@ import cls from "./GameArtPage.module.scss"
 import bgPicture from "@/shared/assets/images/mainpage/background.webp";
 import gamePicture from "@/shared/assets/images/gameArt/gameArt.png";
 import Image from "next/image";
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 
 
 type Props = {
@@ -18,10 +19,7 @@ const GameArtPage = async ({ lng }: Props) => {
     const { t } = await useServerTranslation(lng, 'gameArt');
 
     return (
-        <main>
-            <div className={cls.backgroundImageWrapper}>
-                <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
-            </div>
+        <main className={cls.main}>
             <FeedbackSideButton disableMobile={true} />
 
             <Navbar overlaid />
@@ -38,13 +36,10 @@ const GameArtPage = async ({ lng }: Props) => {
                             text={t("text2")}
                         ></Paragraph>
                     </div>
-                    <Image className={cls.RowImg} src={gamePicture} alt="Background"></Image>
+                    <Image className={cls.RowImg} src={gamePicture} alt="gamepad image"/>
                 </div>
 
             </section>
-            {/*  */}
-
-            <Footer />
         </main>
 
 
@@ -54,4 +49,11 @@ const GameArtPage = async ({ lng }: Props) => {
     );
 };
 
-export default GameArtPage;
+export default withBackgroundImage({
+    alt: "TeachingPackagePage underground style background",
+    imagePath: bgPicture as unknown as string,
+    className: cls.wholePageBG
+    // @ts-ignore
+})(GameArtPage);
+
+// export default GameArtPage;

@@ -1,12 +1,12 @@
 {
-    "head-title": "AltZone",
-    "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
-    "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
-    "og-title": "AltZone - Start Your Game Here",
-    "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
-    "section-title": "Teaching Package",
-    "text1":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis condimentum convallis mauris id hendrerit. Ut enim velit, efficitur in eros non, sagittis dictum justo. Morbi tempor, tellus non pretium fringilla, nisi ex feugiat urna, condimentum luctus libero mi sed sapien. Praesent ullamcorper semper odio, in varius magna sollicitudin eu. ",
-    "text2":"Duis id ornare mauris. Ut sodales massa at nisl commodo lacinia. Integer ut odio eu metus tempus ultricies. Cras ut libero non erat imperdiet sodales non luctus massa. Duis vel nisi eu magna auctor rhoncus. In varius, leo elementum tincidunt fringilla, lacus lorem congue nisi, id sollicitudin dolor nunc fringilla velit.",
-    "text3":"Duis id ornare mauris. Ut sodales massa at nisl commodo lacinia. Integer ut odio eu metus tempus ultricies. Cras ut libero non erat imperdiet sodales non luctus massa. Duis vel nisi eu magna auctor rhoncus. In varius, leo elementum tincidunt fringilla, lacus lorem congue nisi, id sollicitudin dolor nunc fringilla velit."
-  }
-  
+    "head-title": "Altzone",
+    "head-description": "Altzone предоставляет игрокам возможность присоединиться к сообществу, играть в игры и исследовать новые комиксы.",
+    "head-keywords": "Altzone, игра, сообщество, комиксы, галереи, играть, зарегистрироваться, войти",
+    "og-title": "Altzone - Начните игру здесь",
+    "og-description": "Altzone предоставляет игрокам возможность присоединиться к сообществу, играть в игры и исследовать новые комиксы.",
+    "section-title": "Обучающий пакет",
+    "download": "Загрузить",
+    "text1":"Altzone - это мобильная игра с художественным контентом, разрабатываемая в качестве учебного инструмента для художественного образования в начальных школах. Как и обучение литературе в школах начинается с чтения общей книги, ее анализа и создания смысла для стимулирования понимания литературы, Altzone предоставляет аналогичную общую платформу для обучения игровому искусству в начальных школах. В игре можно анализировать игровое искусство без игры в игру, с помощью видео, картинок и серии вопросов. Игра углубляет опыт, но для обучения это не обязательно. Это делает пакет максимально удобным для учителя.",
+    "text2":"Обучение игровому искусству представляет собой сложную задачу, поскольку невозможно достичь общей платформы, такой как совместный опыт одной и той же игры. Поэтому обучение анализу игр и мышлению об игровом искусстве в школах затруднено без общего языка. Хотя различные игры могут быть проанализированы, обучение никогда не достигнет создания смысла и понимания, предлагаемых художественным образованием, где опыты разделяются вместе.",
+    "text3":"Наконец, студенты дальше развивают игру, в результате чего появляется мобильная игра Altzone 2.0, которую может скачать каждый из магазина приложений. Доходы от игры 2.0 используются для поддержки мечтаний молодежи через фонд."
+}
