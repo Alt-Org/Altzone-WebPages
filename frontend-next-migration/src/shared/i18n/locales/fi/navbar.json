@@ -3,6 +3,8 @@
   "forum" : "Foorumi",
   "team" : "Tiimi",
   "art" : "Taide",
+  "gameArt" : "Game art",
+  "teachingPackage" : "Teaching package",
   "login": "Kirjaudu",
   "logout": "Kirjaudu ulos",
   "community": "Yhteisö",
