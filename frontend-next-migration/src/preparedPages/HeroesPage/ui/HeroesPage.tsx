@@ -3,6 +3,7 @@ import HeroContainer from "@/shared/ui/HeroContainer/HeroContainer";
 import {heroes} from "@/entities/Hero";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 type Props = {
     selectedHero: string;
@@ -46,8 +47,12 @@ export default function HeroPage(props: Props){
     }
 
     const selectedHeroInfo = findSelectedHero();
+    const previousIndex = calculatePreviousIndex(selectedHeroInfo?.id || 0);
     const nextIndex = calculateNextIndex(selectedHeroInfo?.id || 0); 
-    const previousIndex = calculatePreviousIndex(selectedHeroInfo?.id || 0); 
+
+
+    const leftArrowLink = `/${lng}/${RoutePaths.HEROES_ONE.replace(":id", previousIndex.toString())}`
+    const rightArrowLink = `/${lng}/${RoutePaths.HEROES_ONE.replace(":id", nextIndex.toString())}`
 
     return (
         <>
@@ -57,8 +62,8 @@ export default function HeroPage(props: Props){
                     heroImgAlt={selectedHeroInfo.alt}
                     heroName={selectedHeroInfo.title}
                     heroDescription={selectedHeroInfo.description}
-                    onRightClick={nextIndex}
-                    onLeftClick={previousIndex}
+                    leftArrowLink={leftArrowLink}
+                    rightArrowLink={rightArrowLink}
                     borderColor={selectedHeroInfo.borderColor}
                     heroGif={selectedHeroInfo.imgGif}
                 />

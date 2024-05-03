@@ -33,12 +33,13 @@ export const HeroCard = (props: Props) => {
     return (
         <ClickableBorder
             ref={elementRef}
-            // #todo ask designer to think more about the border image proportions , because currents cause difficulties , see more in the css file
+            // be careful with image proportions
             borderImageSource={"/images/hero-border3.png"}
             className={classNames(cls.Wrapper, {}, [className])}
         >
         <div className={cls.HeroDiv}>
-            <AppLink to={RoutePaths[AppRoutesLinks.HEROES].replace(":id", id.toString())}>
+            {/*<AppLink to={`${RoutePaths.HEROES}/${id}`}>*/}
+            <AppLink to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(":id", id.toString())}>
             <Image src={imageSrc} alt={imageAlt} className={cls.HeroImg} />
             </AppLink>
         </div>

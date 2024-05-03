@@ -27,6 +27,8 @@ export enum AppRoutesLinks {
     MEMBERS = "MEMBERS",
 
     HEROES ="HEROES",
+    HEROES_ONE ="HEROES_ONE",
+
 
 
     NOT_FOUND = "NOT_FOUND",
@@ -65,7 +67,8 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.GAME_ART]: "/gameArt",
 
 
-    [AppRoutesLinks.HEROES]: "/heroes/:id",
+    [AppRoutesLinks.HEROES]: "/heroes",
+    [AppRoutesLinks.HEROES_ONE]: "/heroes/:id",
 
     [AppRoutesLinks.NEWS]: news,
     [AppRoutesLinks.NEWSELEMENT]: news + "/:id",
