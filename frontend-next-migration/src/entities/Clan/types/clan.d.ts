@@ -1,4 +1,4 @@
-export type GetClansResponse = ResponseShapeArray<"Clan",IClan>;
+export type GetClansResponse = ResponseShapeArray<"Clan", IClan>;
 export type GetClanResponse = ResponseShapeOne<"Clan", IClan>;
 
 export type IClan = {
@@ -10,6 +10,7 @@ export type IClan = {
     raidRoomCount: number,
     tag: string,
     admin_ids: string[],
+    Player: Array[],
 };
 
 export type IClanCreateDto = Pick<IClan, "name" | "tag" | "gameCoins">;
