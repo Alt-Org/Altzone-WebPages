@@ -1,7 +1,7 @@
 'use client'
 import cls from "./SectionRanking.module.scss"
 import Image from "next/image";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
 import Players from "../model/players";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";

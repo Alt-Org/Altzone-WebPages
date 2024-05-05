@@ -3,7 +3,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import Image from "next/image";
 import bookImg from "@/shared/assets/images/mainpage/book.webp";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp"
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp"
 import Link from "next/link";
 import { memo } from "react";
 
