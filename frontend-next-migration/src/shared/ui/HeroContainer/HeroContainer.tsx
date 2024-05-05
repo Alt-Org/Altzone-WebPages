@@ -63,7 +63,7 @@ const HeroContainer = (props: Props) => {
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, [router, leftArrowLink, rightArrowLink]);
+    }, [router, leftArrowLink, rightArrowLink, xLink]);
 
     return (
         <section className={cls.HeroContainer}>

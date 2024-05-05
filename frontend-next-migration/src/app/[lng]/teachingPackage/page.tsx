@@ -18,12 +18,4 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
-
-export default async function TeachingPackage({ params }: Props) {
-
-    
-    return (
-        <TeachingPackagePage lng={params.lng}
-        />
-    )
-}
+export default TeachingPackagePage;

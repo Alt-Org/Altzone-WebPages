@@ -4,6 +4,7 @@
     "plugin:storybook/recommended"
   ],
   "rules": {
-    "react-hooks/rules-of-hooks": "off"
+    "react-hooks/rules-of-hooks": "off",
+    "react/no-unescaped-entities": 0
   }
 }

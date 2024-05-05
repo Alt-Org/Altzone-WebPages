@@ -19,11 +19,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 
-export default async function GameArt({ params }: Props) {
+// export default async function GameArt({ params }: Props) {
+//
+//
+//     return (
+//         <GameArtPage lng={params.lng}
+//         />
+//     )
+// }
 
-    
-    return (
-        <GameArtPage lng={params.lng}
-        />
-    )
-}
+export default GameArtPage;
