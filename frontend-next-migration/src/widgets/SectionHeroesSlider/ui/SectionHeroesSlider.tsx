@@ -2,7 +2,7 @@ import CustomCarousel from "@/shared/ui/CustomCarousel/ui/CustomCarousel";
 import cls from "./SectionHeroes.module.scss";
 import {heroes} from "@/entities/Hero";
 import Image from "next/image";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 
 const SectionHeroes = () => {

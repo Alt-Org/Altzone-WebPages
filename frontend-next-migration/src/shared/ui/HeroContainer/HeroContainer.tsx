@@ -3,7 +3,7 @@ import cls from "./HeroContainer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import { AppRoutesLinks, RoutePaths } from "@/shared/appLinks/RoutePaths";
 import infoBg from "@/shared/assets/images/heros/hero-container/info-bg.svg";
 import rightArrow from "@/shared/assets/images/heros/hero-container/right-arrow.png";

@@ -1,6 +1,6 @@
 import cls from "./SectionPlayWithUs.module.scss"
 import Image from "next/image";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import googlePLay from "@/shared/assets/images/media/googleplay.png";
 import sideImg from "@/shared/assets/images/heros/einstein/einstein.png";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";

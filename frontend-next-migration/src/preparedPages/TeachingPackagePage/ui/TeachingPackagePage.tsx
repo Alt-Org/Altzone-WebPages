@@ -4,7 +4,7 @@ import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
 import { Paragraph } from "@/shared/ui/Paragraph";
 import { useServerTranslation } from "@/shared/i18n";
 import cls from "./TeachingPackagePage.module.scss"
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import downloadPicture from "@/shared/assets/images/teachingPackage/download.png";
 import Image from "next/image";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";

@@ -2,7 +2,7 @@
 import VideoContentYoutube from "@/shared/ui/VideoContent/ui/VideoContentYoutube";
 import cls from "./SectionVideoAndGalleries.module.scss";
 import Image from "next/image";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import {GalleryCategoriesWithModalSlider, useGalleryCategories} from "@/entities/Gallery";
 import {Container} from "@/shared/ui/Container";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
