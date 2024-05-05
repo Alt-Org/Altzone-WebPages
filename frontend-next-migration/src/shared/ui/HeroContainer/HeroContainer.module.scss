@@ -142,6 +142,32 @@
 
 }
 
+.description{
+    @include custom-scrollbar;
+    height: 200px;
+    overflow-y: auto;
+
+
+
+    @media (max-width:1150px){
+        height: 120px;
+    }
+
+    @media (max-width:820px){
+        height: 100px;
+    }
+
+    @media (max-width:500px){
+        height: 180px;
+    }
+
+    @media (max-width:350px){
+        height: 100px;
+    }
+
+}
+
+
 @media (max-width: 1700px){
     .HeroInfoHeader {
         margin-top: 18%;

@@ -22,6 +22,7 @@ type Props = {
     rightArrowLink: any
 }
 
+//todo fix that component, may be even create new duplication with another approach
 const HeroContainer = (props: Props) => {
     const {
         heroImg,
@@ -72,7 +73,7 @@ const HeroContainer = (props: Props) => {
                         {isMobileSize && (
                             <Image src={heroImg} alt="imagePlaceholder" className={cls.InfoImgMobile}/>
                         )}
-                        <p>{heroDescription}</p>
+                        <p className={cls.description}>{heroDescription}</p>
                     </div>
                 </div>
                 <Link className={cls.RightArrow} href={rightArrowLink}>
