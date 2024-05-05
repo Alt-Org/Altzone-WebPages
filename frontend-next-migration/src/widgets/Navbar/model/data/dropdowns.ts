@@ -1,5 +1,5 @@
-import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
+import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 
 export const dropdowns = {
     community: [
@@ -36,7 +36,7 @@ export const dropdowns = {
         {
             elementText: "clans",
             link: {
-                path: RoutePaths.clan_all,
+                path: RoutePaths.clan,
                 isExternal: false
             },
             isDisabled: {
