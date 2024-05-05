@@ -63,7 +63,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 return null;
             })
             .filter(item => item !== null) as ISidebarItem[];
-    }, [navbarBuild, lng]);
+    }, [navbarBuild, t]);
 
     const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();

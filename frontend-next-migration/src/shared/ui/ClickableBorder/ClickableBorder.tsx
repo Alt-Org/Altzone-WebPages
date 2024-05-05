@@ -39,3 +39,6 @@ const ClickableBorder = forwardRef(
 });
 
 export default ClickableBorder;
+
+ClickableBorder.displayName = "ClickableBorder";
+

@@ -42,3 +42,5 @@ const SectionGetToKnowComics = memo((props: Props) => {
 })
 
 export default SectionGetToKnowComics;
+
+SectionGetToKnowComics.displayName = "SectionGetToKnowComics";

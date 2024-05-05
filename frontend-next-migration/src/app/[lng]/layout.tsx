@@ -40,7 +40,7 @@ export async function generateStaticParams() {
 
 export default function RootLayout({children,params: {lng}}: {
   children: React.ReactNode,
-  params: any
+  params: any,
 }) {
     return (
         <html lang={lng} dir={dir(lng)} className={`${urbanist.variable} ${rubik.variable}`}>
