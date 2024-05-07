@@ -1,5 +1,6 @@
 import {Metadata} from "next";
 import {useServerTranslation} from "@/shared/i18n";
+import { ClassifiedHeroesPage } from "@/preparedPages/ClassifiedHeroesPage";
 
 type Props = {
     params: { lng: string }
@@ -9,7 +10,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
-    const { t } = await useServerTranslation(params.lng, 'comics');
+    const { t } = await useServerTranslation(params.lng, 'heroes');
 
     return {
         title: t("head-title"),
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 export default function HeroesPage(props: Props) {
     return (
         <div>
-          Main heroes pages
+          <ClassifiedHeroesPage></ClassifiedHeroesPage>
         </div>
     )
 }
