@@ -40,9 +40,11 @@ const ClanMainPage = ({ children }: any) => {
         <div className={cls.Wrapper}>
             <Navbar className={cls.Navbar} />
             <Container className={cls.Container}>
-                <Link href={RoutePaths.clan_all}>{t('all_clans')}</Link>
-                {canShowUserClan ? (<Link href={`${RoutePaths.clan}/${user?.Player.clan_id}`}>{t('my_clan')}</Link>) : (<p>Et ole liittynyt klaaniin <Link href={RoutePaths.clan_add_new}>{t('Luo oma klaani tästä')}</Link> tai liity klaaniin tästä!</p>)}
-                {/*{canShowAddNew && <Link href={RoutePaths.clan_add_new}>{t('create_clan')}</Link>}*/}
+                <div>
+                    <Link href={RoutePaths.clan_all}>{t('all_clans')}</Link>
+                    {canShowUserClan ? (<Link href={`${RoutePaths.clan}/${user?.Player.clan_id}`}>{t('my_clan')}</Link>) : (<p>Et ole liittynyt klaaniin <Link href={RoutePaths.clan_add_new}>{t('Luo oma klaani tästä')}</Link> tai liity klaaniin tästä!</p>)}
+                    {/*{canShowAddNew && <Link href={RoutePaths.clan_add_new}>{t('create_clan')}</Link>}*/}
+                </div>
                 <div className={cls.ClansViewMain}>
                     {children}
                 </div>
