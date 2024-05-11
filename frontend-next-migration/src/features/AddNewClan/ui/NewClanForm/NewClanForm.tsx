@@ -1,21 +1,21 @@
 import { CustomForm } from "@/shared/ui/CustomForm";
 import cls from "./NewClanForm.module.scss";
-import {useNewClanForm} from "../../model/useNewClanForm";
-import {classNames} from "@/shared/lib/classNames/classNames";
+import { useNewClanForm } from "../../model/useNewClanForm";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 type Props = {
     onSuccess: () => void;
     className?: string;
 };
 
-export const NewClanForm = ({onSuccess, className = ""}: Props) => {
+export const NewClanForm = ({ onSuccess, className = "" }: Props) => {
 
     const {
         register,
         handleSubmit,
         onFormSubmit,
         errors
-    } = useNewClanForm({onSuccess});
+    } = useNewClanForm({ onSuccess });
 
     return (
         <CustomForm className={classNames(cls.Form, {}, [className])} onSubmit={handleSubmit(onFormSubmit)}>
@@ -31,18 +31,25 @@ export const NewClanForm = ({onSuccess, className = ""}: Props) => {
             />
 
             <CustomForm.InputField
-                key={"gameCoins"}
-                error={errors?.gameCoins?.message}
-                label={"Pelikolikot"}
-                inputProps={{ ...register('gameCoins'), required: true , type: "number"}}
-            />
-
-            <CustomForm.InputField
                 key={"tag"}
                 error={errors?.tag?.message}
                 label={"Tagi"}
                 inputProps={{ ...register('tag'), required: true }}
             />
+
+            <CustomForm.InputField
+                key={"gameCoins"}
+                error={errors?.gameCoins?.message}
+                label={"Pelikolikot"}
+                inputProps={{ ...register('gameCoins'), required: true, type: "number" }}
+            />
+
+            {<CustomForm.InputField
+                key={"isOpen"}
+                error={errors?.isOpen?.message}
+                label={"Yksityinen klaani"}
+                inputProps={{ ...register('isOpen'), required: false, type: "checkbox" }}
+            />}
 
             <CustomForm.Button type="submit">
                 Vahvista

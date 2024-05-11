@@ -20,6 +20,8 @@ export const ValidationAddNewClan = yup.object().shape({
         .required("Tagi on vaadittu")
         .min(3, "Tagin on oltava vähintään 3 merkkiä pitkä")
         .max(10, "Tagin on oltava enintään 10 merkkiä pitkä")
-        .matches(/^[A-Za-z0-9_]+$/, "Tagi voi sisältää vain kirjaimia, numeroita ja alaviivoja")
+        .matches(/^[A-Za-z0-9_]+$/, "Tagi voi sisältää vain kirjaimia, numeroita ja alaviivoja"),
 
+    isOpen: yup
+        .boolean()
 });
