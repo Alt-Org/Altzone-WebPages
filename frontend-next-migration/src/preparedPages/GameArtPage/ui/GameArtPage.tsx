@@ -3,7 +3,7 @@ import { Footer } from "@/widgets/Footer";
 import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
 import { Paragraph } from "@/shared/ui/Paragraph";
 import { useServerTranslation } from "@/shared/i18n";
-import cls from "./GameArtPage.module.scss"
+import cls from "./gameArtPage.module.scss"
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import gamePicture from "@/shared/assets/images/gameArt/gameArt.png";
 import Image from "next/image";
