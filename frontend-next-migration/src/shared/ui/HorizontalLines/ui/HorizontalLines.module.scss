@@ -13,14 +13,15 @@
 
 .horizontalLineDiv {
   position: absolute;
-  width: 100%;
+  min-width: 100%;
   transform: translateY(-50%); /* Ajusta el contenedor verticalmente */
   display: flex;
   justify-content: flex-end; /* Centra horizontalmente */
 }
 
 .DividerImg {
-  max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+  min-width: 100%;
+  //max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
   height: auto; /* Permite que la altura de la imagen se ajuste automáticamente */
 }
 
