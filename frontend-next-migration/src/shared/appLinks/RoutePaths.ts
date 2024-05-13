@@ -64,7 +64,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.ABOUT]: "/about",
     [AppRoutesLinks.PRIVACY]: "/privacy",
     [AppRoutesLinks.TEACHING_PACKAGE]: "/teachingPackage",
-    [AppRoutesLinks.GAME_ART]: "/gameArt",
+    [AppRoutesLinks.GAME_ART]: "/artGame",
 
 
     [AppRoutesLinks.HEROES]: "/heroes",
