@@ -10,9 +10,9 @@ import { SectionVideoAndGalleries } from "@/widgets/SectionVideoAndGalleries";
 import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
 import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
 import { SectionRanking } from "@/widgets/SectionRanking";
-import { SectionHeroesBlocks } from "@/widgets/SectionHeroesBlocks";
+import { SectionClassifiedHeroesBlocks } from "@/widgets/SectionClassifiedHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
-import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 type Props = {
@@ -34,7 +34,7 @@ const MainPage = async ({ lng }: Props) => {
 
             <Navbar overlaid />
 
-           
+
 
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
@@ -49,13 +49,33 @@ const MainPage = async ({ lng }: Props) => {
             />
 
             <HorizontalLines />
-            
-             {/*<SectionHeroes />*/}
-            <SectionHeroesBlocks
+
+            {/*<SectionHeroes />*/}
+            <SectionClassifiedHeroesBlocks
                 backgroundImageSrc={sameBg}
+                group="TORJUJAT // RETROFLEKTIO"
             />
+
+            <SectionClassifiedHeroesBlocks
+                backgroundImageSrc={sameBg}
+                group="SULAUTUJAT // KONFLUENSSI"
+            />
+
+            <SectionClassifiedHeroesBlocks
+                backgroundImageSrc={sameBg}
+                group="ÄLYLLISTÄJÄT // EGOTISMI"
+            />
+
+            <SectionClassifiedHeroesBlocks
+                backgroundImageSrc={sameBg}
+                group="PEILAAJAT // PROJEKTIO"
+            />
+
+
+
+
             <HorizontalLines />
-            
+
             <SectionGetToKnowComics
                 buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }}
                 backgroundImageSrc={sameBg}
@@ -74,7 +94,7 @@ const MainPage = async ({ lng }: Props) => {
 
             {/*/>*/}
 
-            <Footer  />
+            <Footer />
 
 
             <ScrollTop />
