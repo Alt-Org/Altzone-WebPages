@@ -28,7 +28,10 @@ const Heroes = [
     alt: "greenHairedImgAlt",
     title: "green-haired",
     borderColor: "#41F50C",
-    description: "greenHairedDescription"
+    description: "greenHairedDescription",
+    group: "TORJUJAT // RETROFLEKTIO",
+    color:"#e20505"
+
   },
   {
     id: 1,
@@ -37,7 +40,10 @@ const Heroes = [
     alt: "hannuHodariImgAlt",
     title: "hannu-hodari",
     borderColor: "#41F50C",
-    description: "hannuHodariDescription"
+    description: "hannuHodariDescription",
+    group: "TORJUJAT // RETROFLEKTIO",
+    color:"#e20505"
+
   },
   {
     id: 2,
@@ -46,7 +52,9 @@ const Heroes = [
     alt: "purpleGirlsImgAlt",
     title: "purple-girls",
     borderColor: "#41F50C",
-    description: "purpleGirlsDescription"
+    description: "purpleGirlsDescription",
+    group: "SULAUTUJAT // KONFLUENSSI",
+    color:"#910494"
   },
   {
     id: 3,
@@ -55,7 +63,9 @@ const Heroes = [
     alt: "einsteinImgAlt",
     title: "einstein",
     borderColor: "#41F50C",
-    description: "einsteinDescription"
+    description: "einsteinDescription",
+    group: "ÄLYLLISTÄJÄT // EGOTISMI",
+    color:"#330393"
   },
   {
     id: 4,
@@ -65,6 +75,8 @@ const Heroes = [
     title: "graffitiGaya",
     borderColor: "#41F50C",
     description: "graffitiGayaDescription",
+    group: "PEILAAJAT // PROJEKTIO",
+    color:"#feed01"
   },
   {
     id: 5,
@@ -74,6 +86,8 @@ const Heroes = [
     title: "pirate",
     borderColor: "#41F50C",
     description: "pirateDescription",
+    group: "TORJUJAT // RETROFLEKTIO",
+    color:"#e20505"
   }
 ] as const;
 
