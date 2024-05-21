@@ -31,5 +31,5 @@ When the task is done please make pull request to the "dev" branch
 
 ## Notes
 - Do not do multiple things in a single branch.
-- Run eslint before pushing changes to the branch.
+
 
