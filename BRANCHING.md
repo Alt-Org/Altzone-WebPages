@@ -40,9 +40,12 @@ Please use the Issues page on GitHub (see pictures below).
 
 
 ## Pull Request
-When the task is done please make pull request to the "dev" branch  (see picture below).
+When the task is done please make a pull request to the "dev" branch  (see picture below).
+
 
 ![Pull request Page](images/picture21.PNG)
+
+### Please also write the following text to the description: "Fixes #issue_number". So we can close the related issue automatically. 
 
 ## Notes
 - Do not do multiple things in a single branch.
