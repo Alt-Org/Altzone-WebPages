@@ -66,6 +66,7 @@ export default function HeroPage(props: Props){
                     rightArrowLink={rightArrowLink}
                     borderColor={selectedHeroInfo.borderColor}
                     heroGif={selectedHeroInfo.imgGif}
+                    xLink={RoutePaths.MAIN}
                 />
             )}
         </>

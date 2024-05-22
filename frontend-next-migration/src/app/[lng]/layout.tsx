@@ -40,10 +40,19 @@ export async function generateStaticParams() {
 
 export default function RootLayout({children,params: {lng}}: {
   children: React.ReactNode,
-  params: any
+  params: any,
 }) {
     return (
         <html lang={lng} dir={dir(lng)} className={`${urbanist.variable} ${rubik.variable}`}>
+        <head>
+            <link rel="icon" href="/icons/alt_logo.ico" sizes="72x72"/>
+            <link
+                rel="apple-touch-icon"
+                href="/icons/alt_logo.ico"
+                type="image"
+                sizes="72x72"
+            />
+        </head>
         <body>
         <Providers>
             {children}

@@ -56,7 +56,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 
                     {
                         navbarBuild.menu.map(n=>(
-                            <NavItem item={n} navbarBuild={navbarBuild} />
+                            <NavItem item={n} key={n.name} navbarBuild={navbarBuild} />
                         ))
                     }
 
@@ -98,6 +98,8 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 };
 
 export default NavbarDesktopV2;
+
+NavbarDesktopV2.displayName = "NavbarDesktopV2"
 
 
 
@@ -188,3 +190,5 @@ const NavItem = memo((props: NavItemProps)=> {
     }
 
 })
+
+NavItem.displayName = "NavItem"

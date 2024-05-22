@@ -85,7 +85,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: start;
+    justify-content: flex-start;
     height: 100vh;
 }
 
@@ -141,6 +141,36 @@
     margin-right: 6%;
 
 }
+
+.description{
+    @include custom-scrollbar;
+    height: 200px;
+    overflow-y: auto;
+
+
+
+    @media (max-width:1150px){
+        height: 120px;
+    }
+
+    @media (max-width:1100px){
+        height: 80px;
+    }
+
+    @media (max-width:800px){
+        height: 80px;
+    }
+
+    @media (max-width:500px){
+        height: 100px;
+    }
+
+    @media (max-width:350px){
+        height: 100px;
+    }
+
+}
+
 
 @media (max-width: 1700px){
     .HeroInfoHeader {

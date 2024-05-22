@@ -18,7 +18,7 @@ export const dropdowns = {
             }
         },
         {
-            elementText: "gameArt",
+            elementText: "artGame",
             link: {
                 path: RoutePaths.GAME_ART,
                 isExternal: false

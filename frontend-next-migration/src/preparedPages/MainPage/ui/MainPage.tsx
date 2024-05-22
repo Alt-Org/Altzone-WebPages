@@ -13,7 +13,7 @@ import { SectionRanking } from "@/widgets/SectionRanking";
 import { SectionHeroesBlocks } from "@/widgets/SectionHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 type Props = {
     lng: string

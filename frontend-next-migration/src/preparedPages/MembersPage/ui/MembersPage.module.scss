@@ -14,10 +14,14 @@
 
 .workersSection{
 
-  padding-top: 15vh;
+  padding-top: 20vh;
   //padding-top: 7%;
 
   z-index: 2;
-  background: linear-gradient(to right, rgba(72, 56, 51, 0.78), rgba(208, 95, 241, 0.34), rgba(72, 56, 51, 0.78));
+  //background: linear-gradient(to right, rgba(72, 56, 51, 0.78), rgba(208, 95, 241, 0.34), rgba(72, 56, 51, 0.78));
+}
+
+.wholePageBG{
+  filter: brightness(85%);
 }
 

@@ -11,6 +11,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const { t } = await useServerTranslation(params.lng, 'teachingPackage');
 
+    console.log()
+
     return {
         title: t("head-title"),
         description: t("head-description"),
@@ -18,12 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
-
-export default async function TeachingPackage({ params }: Props) {
-
-    
-    return (
-        <TeachingPackagePage lng={params.lng}
-        />
-    )
-}
+export default async function DefaultPage({ params }: Props){
+        return(
+                <TeachingPackagePage lng={params.lng}  />
+            )
+};

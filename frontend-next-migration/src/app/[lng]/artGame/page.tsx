@@ -9,7 +9,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
-    const { t } = await useServerTranslation(params.lng, 'gameArt');
+    const { t } = await useServerTranslation(params.lng, 'artGame');
 
     return {
         title: t("head-title"),
@@ -20,10 +20,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 export default async function GameArt({ params }: Props) {
-
-    
     return (
+        // @ts-ignore
         <GameArtPage lng={params.lng}
         />
     )
 }
+

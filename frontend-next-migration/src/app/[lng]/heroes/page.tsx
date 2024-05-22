@@ -3,7 +3,7 @@ import {useServerTranslation} from "@/shared/i18n";
 
 type Props = {
     params: { lng: string }
-    selectedHero: number;
+    // selectedHero: string;
 }
 
 
@@ -20,14 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
 
 export default function HeroesPage(props: Props) {
-    const {
-        selectedHero
-    } = props;
-
     return (
-        <>
-
+        <div>
           Main heroes pages
-        </>
+        </div>
     )
 }

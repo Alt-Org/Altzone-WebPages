@@ -1,7 +1,7 @@
 import navLogo from "@/shared/assets/images/altLogo.png";
 import {ItemType, NavbarMenu} from "../types/types";
 
-export const navbarMenuDesktopMock: NavbarMenu = Object.freeze([
+export const navbarMenuDesktopMock: NavbarMenu = ([
     {
         name: 'Foruumi',
         path: '/#forum',

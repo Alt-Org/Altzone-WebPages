@@ -3,11 +3,13 @@ import cls from "./HeroContainer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import bgPicture from "@/shared/assets/images/mainpage/background.webp";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import { AppRoutesLinks, RoutePaths } from "@/shared/appLinks/RoutePaths";
 import infoBg from "@/shared/assets/images/heros/hero-container/info-bg.svg";
 import rightArrow from "@/shared/assets/images/heros/hero-container/right-arrow.png";
 import leftArrow from "@/shared/assets/images/heros/hero-container/left-arrow.png";
+import {useEffect} from "react";
+import {useRouter} from "next/navigation";
 
 
 
@@ -20,8 +22,10 @@ type Props = {
     heroDescription: string,
     leftArrowLink: any,
     rightArrowLink: any
+    xLink: any
 }
 
+//todo fix that component, may be even create new duplication with another approach
 const HeroContainer = (props: Props) => {
     const {
         heroImg,
@@ -31,10 +35,35 @@ const HeroContainer = (props: Props) => {
         heroDescription,
         rightArrowLink,
         leftArrowLink,
+        xLink,
         heroGif
     } = props;
 
     const { isMobileSize } = useIsMobileSize();
+
+    const router = useRouter()
+
+    useEffect(() => {
+        const handleKeyDown = (event: any) => {
+            if (event.keyCode === 37) {
+                router.push(leftArrowLink);
+            }
+            else if (event.keyCode === 39) {
+                router.push(rightArrowLink);
+            }
+            else if (event.keyCode === 27) {
+                router.push(xLink);
+            }
+        };
+
+        // Add the event listener
+        document.addEventListener('keydown', handleKeyDown);
+
+        // Remove the event listener on component unmount
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [router, leftArrowLink, rightArrowLink, xLink]);
 
     return (
         <section className={cls.HeroContainer}>
@@ -62,7 +91,7 @@ const HeroContainer = (props: Props) => {
                         <h2 >{heroName}</h2>
                         <hr></hr>
                     </div>
-                    <Link href="/" className={cls.XButton}>
+                    <Link href={xLink} className={cls.XButton}>
                         <h1>X</h1>
                     </Link>
                     <div className={cls.HeroInfoMain}>
@@ -72,7 +101,7 @@ const HeroContainer = (props: Props) => {
                         {isMobileSize && (
                             <Image src={heroImg} alt="imagePlaceholder" className={cls.InfoImgMobile}/>
                         )}
-                        <p>{heroDescription}</p>
+                        <p className={cls.description}>{heroDescription}</p>
                     </div>
                 </div>
                 <Link className={cls.RightArrow} href={rightArrowLink}>
