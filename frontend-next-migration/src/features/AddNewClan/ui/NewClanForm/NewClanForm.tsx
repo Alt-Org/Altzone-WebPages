@@ -40,7 +40,7 @@ export const NewClanForm = ({ onSuccess, className = "" }: Props) => {
             {<CustomForm.InputField
                 key={"isOpen"}
                 error={errors?.isOpen?.message}
-                label={"Yksityinen klaani"}
+                label={"Avoin klaani"}
                 inputProps={{ ...register('isOpen'), required: false, type: "checkbox" }}
             />}
 
