@@ -37,13 +37,6 @@ export const NewClanForm = ({ onSuccess, className = "" }: Props) => {
                 inputProps={{ ...register('tag'), required: true }}
             />
 
-            <CustomForm.InputField
-                key={"gameCoins"}
-                error={errors?.gameCoins?.message}
-                label={"Pelikolikot"}
-                inputProps={{ ...register('gameCoins'), required: true, type: "number" }}
-            />
-
             {<CustomForm.InputField
                 key={"isOpen"}
                 error={errors?.isOpen?.message}
