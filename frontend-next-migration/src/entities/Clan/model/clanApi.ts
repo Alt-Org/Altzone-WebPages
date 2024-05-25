@@ -4,7 +4,8 @@ import { envHelper } from "@/shared/const/envHelper";
 import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto } from "@/entities/Clan";
 
 interface GetClansQueryParams {
-    page?: number;
+    page?: number,
+    search?: string,
 }
 const clanUrl = "clan";
 
@@ -27,6 +28,7 @@ export const clanApi = createApi({
     endpoints: (builder) => ({
 
         getClans: builder.query<GetClansResponse, GetClansQueryParams>({
+
             query: (params) => {
                 // const paramsToBeSent= {
                 //     page: options.page,
