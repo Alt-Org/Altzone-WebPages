@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { Navbar } from "@/widgets/Navbar";
+import { NavbarClan } from "@/widgets/Navbar";
 import { Container } from "@/shared/ui/Container";
 import { selectProfile } from "@/entities/Auth";
 import cls from "./ClanMainPage.module.scss";
@@ -31,17 +31,16 @@ const ClanMainPage = ({ children }: any) => {
 
     }, [user]);
 
-
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "clan");
 
     return (
         <div className={cls.Wrapper}>
-            <Navbar className={cls.Navbar} />
+            <NavbarClan className={cls.Navbar} />
             <Container className={cls.Container}>
                 <div>
-                    <Link href={RoutePaths.clan_all}>{t('all_clans')}</Link>
+                    <Link href={RoutePaths.CLAN_ALL}>{t('all_clans')}</Link>
                     {canShowUserClan ? (<Link href={`${RoutePaths.clan}/${user?.Player.clan_id}`}>{t('my_clan')}</Link>) : (<p>Et ole liittynyt klaaniin <Link href={RoutePaths.clan_add_new}>{t('Luo oma klaani tästä')}</Link> tai liity klaaniin tästä!</p>)}
                     {/*{canShowAddNew && <Link href={RoutePaths.clan_add_new}>{t('create_clan')}</Link>}*/}
                 </div>
