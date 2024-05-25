@@ -3,7 +3,9 @@ import { StateSchema } from "@/preparedApp/providers/StoreProvider";
 import { envHelper } from "@/shared/const/envHelper";
 import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto } from "@/entities/Clan";
 
-
+interface GetClansQueryParams {
+    page?: number;
+}
 const clanUrl = "clan";
 
 export const clanApi = createApi({
@@ -24,8 +26,8 @@ export const clanApi = createApi({
         }),
     endpoints: (builder) => ({
 
-        getClans: builder.query<GetClansResponse, {}>({
-            query: (options) => {
+        getClans: builder.query<GetClansResponse, GetClansQueryParams>({
+            query: (params) => {
                 // const paramsToBeSent= {
                 //     page: options.page,
                 //     limit: options.limit,
@@ -35,7 +37,7 @@ export const clanApi = createApi({
                 return {
                     url: clanUrl,
                     method: 'GET',
-                    // params: paramsToBeSent,
+                    params: params,
                 }
             },
             providesTags: ['Clan'],
