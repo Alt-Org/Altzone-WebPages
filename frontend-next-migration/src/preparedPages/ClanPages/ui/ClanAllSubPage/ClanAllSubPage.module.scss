@@ -5,7 +5,8 @@
   border-collapse: collapse;
 
 
-  th, td {
+  th,
+  td {
     padding: 0px 10px;
     border-bottom: 1px solid rgba(255, 0, 0, 0.11);
   }
@@ -18,13 +19,14 @@
 
   tr:hover {
     cursor: pointer;
-    &:hover{
+
+    &:hover {
       //@include link-scale-effect;
       background-color: rgba(203, 15, 15, 0.47) !important;
     }
   }
 
-  tr{
+  tr {
     height: 40px;
   }
 
@@ -45,6 +47,28 @@
 }
 
 
-.Loader{
+.Loader {
   @include position-absolute-center
+}
+
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 5%;
+}
+
+
+
+.BtnGame {
+  background-color: var(--inverted-bg-color) !important;
+
+
+  //line height: ;
+  font-size: 1em !important;
+  white-space: nowrap;
+  min-width: fit-content;
+  //border: solid 1px var(--primary-color);
 }

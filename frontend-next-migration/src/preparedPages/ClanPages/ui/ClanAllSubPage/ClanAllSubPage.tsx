@@ -7,6 +7,8 @@ import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { useParams, useRouter } from 'next/navigation';
 import { useClientTranslation } from "@/shared/i18n";
 import { useState } from "react";
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button"
+import Link from "next/link";
 
 
 const ClanAllSubPage = () => {
@@ -104,9 +106,14 @@ const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
         <>
             <form onSubmit={onClickSearch}>
                 <input name="search" placeholder={t("search_placeholder")} type="text" id="search"></input>
-                <button type="submit">
-                    search
-                </button>
+                <Button
+                    type="submit"
+                    theme={ButtonTheme.BACKGROUND}
+                    size={ButtonSize.M}
+                    className={cls.BtnGame}
+                    square={false}
+                >Find
+                </Button>
             </form>
         </>
     )
@@ -186,49 +193,50 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
     }
 
     return (
-        <table className={cls.ClanTable}>
-            <thead>
-                <tr>
-                    <th>{t('rating')}</th>
-                    <th>{t('clan')}</th>
-                    <th>{t('clan_master')}</th>
-                    <th>{t('coins')}</th>
-                    <th>{t('members')}</th>
-                    <th>{t('tag')}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {clanServerResponse.data.Clan.map((clan, idx) => {
-                    let bgColor;
-                    switch (idx) {
-                        case 0:
-                            bgColor = 'rgba(218,165,32,0.89)';
-                            break;
-                        case 1:
-                            bgColor = 'rgba(192,192,192,0.75)';
-                            break;
-                        case 2:
-                            bgColor = 'rgb(162,108,62)';
-                            break;
-                        default:
-                            bgColor = 'rgba(0,0,0,0.6)';
-                            break;
-                    }
+        <div>
+            <table className={cls.ClanTable}>
+                <thead>
+                    <tr>
+                        <th>{t('rating')}</th>
+                        <th>{t('clan')}</th>
+                        <th>{t('clan_master')}</th>
+                        <th>{t('coins')}</th>
+                        <th>{t('members')}</th>
+                        <th>{t('tag')}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {clanServerResponse.data.Clan.map((clan, idx) => {
+                        let bgColor;
+                        switch (idx) {
+                            case 0:
+                                bgColor = 'rgba(218,165,32,0.89)';
+                                break;
+                            case 1:
+                                bgColor = 'rgba(192,192,192,0.75)';
+                                break;
+                            case 2:
+                                bgColor = 'rgb(162,108,62)';
+                                break;
+                            default:
+                                bgColor = 'rgba(0,0,0,0.6)';
+                                break;
+                        }
 
-                    return (
-                        <tr key={idx} style={{ backgroundColor: bgColor }} onClick={() => onClick(clan?._id)}>
-                            <td>{idx + 1}</td>
-                            <td>{clan?.name}</td>
-                            <td>Joku Mestari </td>
-                            <td>{clan?.gameCoins}</td>
-                            <td>{clan?.playerCount}</td>
-                            <td>{clan?.tag}</td>
-                        </tr>
-                    );
-                })}
-            </tbody>
-            <tfoot>
-                <button
+                        return (
+                            <tr key={idx} style={{ backgroundColor: bgColor }} onClick={() => onClick(clan?._id)}>
+                                <td>{idx + 1}</td>
+                                <td>{clan?.name}</td>
+                                <td>Joku Mestari </td>
+                                <td>{clan?.gameCoins}</td>
+                                <td>{clan?.playerCount}</td>
+                                <td>{clan?.tag}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+                <tfoot>
+                    {/* <button
                     onClick={() => onClickPage(clanServerResponse.paginationData.currentPage - 1)}
                     disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
                 >
@@ -240,9 +248,32 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                     disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
                 >
                     Next
-                </button>
-            </tfoot>
-        </table>
+                </button> */}
+
+                </tfoot>
+            </table>
+            <div>
+                <Button
+                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage - 1)}
+                    theme={ButtonTheme.BACKGROUND}
+                    size={ButtonSize.M}
+                    className={cls.BtnGame}
+                    square={false}
+                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                >Back
+                </Button>
+                {clanServerResponse.paginationData.currentPage}
+                <Button
+                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage + 1)}
+                    theme={ButtonTheme.BACKGROUND}
+                    size={ButtonSize.M}
+                    className={cls.BtnGame}
+                    square={false}
+                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                >Next
+                </Button>
+            </div>
+        </div>
     )
 }
 
