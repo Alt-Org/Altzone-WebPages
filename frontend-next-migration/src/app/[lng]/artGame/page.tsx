@@ -1,4 +1,4 @@
-import { GameArtPage } from "@/preparedPages/GameArtPage";
+import GameArtPage from "@/preparedPages/GameArtPage/ui/GameArtPage";
 import { useServerTranslation } from "@/shared/i18n";
 import { Metadata } from "next";
 

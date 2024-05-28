@@ -1,0 +1,118 @@
+.SectionHeroes2 {
+  --cardWidth: 400px;
+  //--paddingMultiplier: 0.07;
+  //--padding: calc(var(--paddingMultiplier) * var(--cardWidth));
+  //padding-top: var(--padding);
+
+  min-height: 40vh;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+
+  @include backGroundImageDefault;
+
+}
+
+.TextBgImage{
+  position: absolute;
+  width: 25%;
+  z-index: -1;
+  
+}
+
+.Content {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+.Group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.HeroCard {
+  width: var(--cardWidth);
+  height: var(--cardWidth);
+  opacity: 0;
+}
+
+
+@media screen and (max-width: 1250px) {
+  .Content {
+    //grid-template-columns:   repeat( auto-fit, minmax(250px, 1fr) );
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  .SectionHeroes2 {
+    --cardWidth: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Content {
+    //grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .SectionHeroes2 {
+    --cardWidth: 240px;
+  }
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .Content {
+    //grid-template-columns: 1fr;
+    grid-gap: 5px;
+  }
+  .SectionHeroes2 {
+    --cardWidth: 210px;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .Content {
+    //grid-template-columns: 1fr;
+    grid-gap: 5px;
+  }
+  .SectionHeroes2 {
+    --cardWidth: 190px;
+  }
+}
+
+
+@media screen and (max-width: 360px) {
+  .Content {
+    //grid-template-columns: 1fr;
+    grid-gap: 5px;
+  }
+  .SectionHeroes2 {
+    --cardWidth: 156px;
+  }
+}
+
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Visible {
+  animation: fadeIn 3s ease forwards;
+}

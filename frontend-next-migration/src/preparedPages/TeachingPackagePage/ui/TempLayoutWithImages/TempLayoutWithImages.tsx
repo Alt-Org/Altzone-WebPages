@@ -27,7 +27,7 @@ export function TempLayoutWithImages () {
         <div>
             <Navbar/>
             {array.map((_, index)=>(
-                <ImageContainer key={index} imgSrc={`/images/TeachingPackageTempLayoutImages/${lng}/slide${++index}.png`} altText={`slide${++index}`} />
+                <ImageContainer key={index} imgSrc={`/images/TeachingPackageTempLayoutImages/${lng}/slide${++index}.webp`} altText={`slide${++index}`} />
             ))}
         </div>
     )
