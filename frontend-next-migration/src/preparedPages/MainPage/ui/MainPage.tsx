@@ -15,6 +15,14 @@ import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
+import red from "@/shared/assets/images/heros/textBgColors/red.webp";
+import green from "@/shared/assets/images/heros/textBgColors/green.webp";
+import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue.webp";
+import lightBlue from "@/shared/assets/images/heros/textBgColors/light-blue.webp";
+import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
+import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
+import purple from "@/shared/assets/images/heros/textBgColors/purple.webp";
+
 type Props = {
     lng: string
 }
@@ -54,21 +62,25 @@ const MainPage = async ({ lng }: Props) => {
             <SectionClassifiedHeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="TORJUJAT // RETROFLEKTIO"
+                textBgColor={red}
             />
 
             <SectionClassifiedHeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="SULAUTUJAT // KONFLUENSSI"
+                textBgColor={pink}
             />
 
             <SectionClassifiedHeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="ÄLYLLISTÄJÄT // EGOTISMI"
+                textBgColor={darkBlue}
             />
 
             <SectionClassifiedHeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="PEILAAJAT // PROJEKTIO"
+                textBgColor={orange}
             />
 
 

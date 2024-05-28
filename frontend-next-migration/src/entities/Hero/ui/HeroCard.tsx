@@ -14,7 +14,7 @@ type Props = {
     imageSrc: any,
     imageAlt: string,
     className?: string,
-    backgroundColor?: string 
+    backgroundColor?: string,
 };
 
 

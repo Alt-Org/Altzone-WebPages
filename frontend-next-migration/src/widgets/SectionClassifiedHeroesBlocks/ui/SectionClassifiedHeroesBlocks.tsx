@@ -1,17 +1,19 @@
-'use client'
+'use client';
 import { HeroCard, heroes } from "@/entities/Hero";
 import cls from "./SectionClassifiedHeroesBlocks.module.scss";
 import { useInView } from "react-intersection-observer";
 import { useClientTranslation } from "@/shared/i18n";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 
 type Props = {
     backgroundImageSrc?: string;
     group: string;
+    textBgColor?: string;
 };
 
 const SectionClassifiedHeroesBlocks = (props: Props) => {
-    const { backgroundImageSrc, group } = props;
+    const { backgroundImageSrc, group, textBgColor } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -24,9 +26,12 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
             style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
             ref={ref}
         >
-            <div className={cls.Content} ref={ref}>
+            <div className={cls.Content}>
                 <div className={cls.Group}>
-                    <h1> {group} </h1>
+                    <h1>{group}</h1>
+                    {textBgColor && (
+                        <Image src={textBgColor} alt="Background Text Color" className={cls.TextBgImage}/>
+                    )}
                     {/* <button>see more</button> */}
                 </div>
 
