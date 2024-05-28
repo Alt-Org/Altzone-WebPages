@@ -9,7 +9,7 @@ import Image from "next/image";
 type Props = {
     backgroundImageSrc?: string;
     group: string;
-    textBgColor?: string;
+    textBgColor?: any;
 };
 
 const SectionClassifiedHeroesBlocks = (props: Props) => {
