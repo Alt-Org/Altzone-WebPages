@@ -33,6 +33,14 @@ export const dropdowns = {
         }
     ],
     game: [
+
+        {
+            elementText: "heroes",
+            link: {
+                path: RoutePaths.HEROES,
+                isExternal: false
+            }
+        },
         {
             elementText: "clans",
             link: {
