@@ -1,5 +1,5 @@
 'use client'
-import HeroContainer from "@/shared/ui/HeroContainer/HeroContainer";
+import {HeroContainer} from "@/entities/Hero";
 import {heroes} from "@/entities/Hero";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
