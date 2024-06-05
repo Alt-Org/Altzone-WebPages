@@ -64,13 +64,7 @@ const HeroContainer = (props: Props) => {
   return (
     <section className={cls.HeroContainer}>
       <div className={cls.backgroundImageWrapper}>
-        <Image
-          src={bgPicture}
-          alt='Background'
-          layout='fill'
-          objectFit='cover'
-          quality={100}
-        />
+        <Image src={bgPicture} alt='Background' quality={100} />
       </div>
 
       <div className={cls.Content}>
@@ -78,10 +72,20 @@ const HeroContainer = (props: Props) => {
           <Image src={leftArrow} alt='leftArrow' />
         </Link>
         {!isMobileSize && (
-          <Image src={heroImg} alt={heroImgAlt} className={cls.HeroImg} />
+          <Image
+            src={heroImg}
+            alt={heroImgAlt}
+            className={cls.HeroImg}
+            priority={true}
+          />
         )}
         <div className={cls.HeroInfoDiv}>
-          <Image src={infoBg} alt='infoBg' className={cls.InfoBgImg} />
+          <Image
+            src={infoBg}
+            alt='infoBg'
+            className={cls.InfoBgImg}
+            priority={true}
+          />
 
           <div className={cls.HeroInfoHeader}>
             <hr></hr>
@@ -97,6 +101,7 @@ const HeroContainer = (props: Props) => {
                 src={heroGif}
                 alt='imagePlaceholder'
                 className={cls.InfoImg}
+                priority={true}
               />
             )}
             {isMobileSize && (
@@ -104,6 +109,7 @@ const HeroContainer = (props: Props) => {
                 src={heroImg}
                 alt='imagePlaceholder'
                 className={cls.InfoImgMobile}
+                priority={true}
               />
             )}
             <p className={cls.description}>{heroDescription}</p>
