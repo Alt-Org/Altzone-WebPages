@@ -69,7 +69,7 @@ const ClanAllSubPage = () => {
                 <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANIT</h1>
                 {isMobileSize
                     ?
-                    <ClansViewMobile clanServerResponse={clans} onClickToClan={onClickToClan} />
+                    <ClansSearchMobile onClickToSearch={onClickToSearch} />
                     :
                     <ClansSearchDesktop onClickToSearch={onClickToSearch} />}
                 {isMobileSize
@@ -90,6 +90,35 @@ type SearchProps = {
     onClickToSearch?: (search: string) => void;
 }
 const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
+    const params = useParams();
+    const lng = params.lng as string;
+    const { t } = useClientTranslation(lng, "clan");
+
+    const onClickSearch = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const searchField = document.querySelector<HTMLInputElement>("#search");
+        if (onClickToSearch && searchField) {
+            console.log("searchField.value: ", searchField.value);
+            onClickToSearch(searchField.value);
+        }
+    }
+    return (
+        <>
+            <form onSubmit={onClickSearch}>
+                <input name="search" placeholder={t("search_placeholder")} type="text" id="search"></input>
+                <Button
+                    type="submit"
+                    theme={ButtonTheme.BACKGROUND}
+                    size={ButtonSize.M}
+                    className={cls.BtnGame}
+                    square={false}
+                >Find
+                </Button>
+            </form>
+        </>
+    )
+}
+const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "clan");
