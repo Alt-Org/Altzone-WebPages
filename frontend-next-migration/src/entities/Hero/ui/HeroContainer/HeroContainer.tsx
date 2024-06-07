@@ -20,20 +20,14 @@ type Props = {
   heroGif: any;
   heroImgAlt: string;
   heroName: string;
-  borderColor: string;
   heroDescription: string;
   leftArrowLink: any;
   rightArrowLink: any;
   xLink: any;
   group: string;
-  id: string;
-  heroes?: string;
-  selectedHero?: string;
 };
 
 const HeroContainer = ({
-  id,
-  heroes,
   heroImg,
   heroGif,
   heroImgAlt,
@@ -46,21 +40,6 @@ const HeroContainer = ({
 }: Props) => {
   const { isMobileSize } = useIsMobileSize();
   const router = useRouter();
-
-  // Log all props to check where 'id' comes from
-  console.log('Props received:', {
-    id,
-    heroImg,
-    heroGif,
-    heroImgAlt,
-    heroName,
-    heroDescription,
-    leftArrowLink,
-    rightArrowLink,
-    xLink,
-    heroes,
-    group,
-  });
 
   const groupBackgrounds: { [key: string]: any } = {
     'ÄLYLLISTÄJÄT // EGOTISMI': bgAlyllistajat,
