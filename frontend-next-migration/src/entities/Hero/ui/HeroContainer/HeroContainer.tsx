@@ -158,7 +158,6 @@ const HeroContainer = ({
           <Image src={rightArrow} alt='rightArrow' />
         </Link>
       </div>
-      <div>HeroDetailPage</div>
     </section>
   );
 };
