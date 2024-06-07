@@ -3,11 +3,15 @@ import cls from './HeroContainer.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { AppRoutesLinks, RoutePaths } from '@/shared/appLinks/RoutePaths';
-import infoBg from '@/shared/assets/images/heros/hero-container/info-bg.svg';
+import infoBg from '@/shared/assets/images/heros/hero-container/info-bg.png';
 import rightArrow from '@/shared/assets/images/heros/hero-container/right-arrow.png';
 import leftArrow from '@/shared/assets/images/heros/hero-container/left-arrow.png';
+import bgAlyllistajat from '@/shared/assets/images/backgrounds/bgAlyllistajat.png';
+import bgHamaajat from '@/shared/assets/images/backgrounds/bgHamaajat.png';
+import bgPeilaajat from '@/shared/assets/images/backgrounds/bgPeilaajat.png';
+import bgSulautujat from '@/shared/assets/images/backgrounds/bgSulautujat.png';
+import bgTorjujat from '@/shared/assets/images/backgrounds/bgTorjujat.png';
+import bgTottelijat from '@/shared/assets/images/backgrounds/bgTottelijat.png';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -21,25 +25,57 @@ type Props = {
   leftArrowLink: any;
   rightArrowLink: any;
   xLink: any;
+  group: string;
+  id: string;
+  heroes?: string;
+  selectedHero?: string;
 };
 
-//todo fix that component, may be even create new duplication with another approach
-const HeroContainer = (props: Props) => {
-  const {
+const HeroContainer = ({
+  id,
+  heroes,
+  heroImg,
+  heroGif,
+  heroImgAlt,
+  heroName,
+  heroDescription,
+  leftArrowLink,
+  rightArrowLink,
+  xLink,
+  group,
+}: Props) => {
+  const { isMobileSize } = useIsMobileSize();
+  const router = useRouter();
+
+  // Log all props to check where 'id' comes from
+  console.log('Props received:', {
+    id,
     heroImg,
+    heroGif,
     heroImgAlt,
     heroName,
-    borderColor,
     heroDescription,
-    rightArrowLink,
     leftArrowLink,
+    rightArrowLink,
     xLink,
-    heroGif,
-  } = props;
+    heroes,
+    group,
+  });
 
-  const { isMobileSize } = useIsMobileSize();
+  const groupBackgrounds: { [key: string]: any } = {
+    'ÄLYLLISTÄJÄT // EGOTISMI': bgAlyllistajat,
+    'HÄMÄÄJÄT // DEFLEKTIO': bgHamaajat,
+    'PEILAAJAT // PROJEKTIO': bgPeilaajat,
+    'SULAUTUJAT // KONFLUENSSI': bgSulautujat,
+    'TORJUJAT // RETROFLEKTIO': bgTorjujat,
+    'TOTTELIJAT // INTROJEKTIO': bgTottelijat,
+  };
 
-  const router = useRouter();
+  const background = groupBackgrounds[group];
+
+  if (!background) {
+    console.error(`No background found for hero group: ${group}`);
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
@@ -52,10 +88,8 @@ const HeroContainer = (props: Props) => {
       }
     };
 
-    // Add the event listener
     document.addEventListener('keydown', handleKeyDown);
 
-    // Remove the event listener on component unmount
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -64,9 +98,15 @@ const HeroContainer = (props: Props) => {
   return (
     <section className={cls.HeroContainer}>
       <div className={cls.backgroundImageWrapper}>
-        <Image src={bgPicture} alt='Background' quality={100} />
+        {background ? (
+          <Image
+            src={background}
+            alt='groupBackground'
+            layout='fill'
+            objectFit='cover'
+          />
+        ) : null}
       </div>
-
       <div className={cls.Content}>
         <Link className={cls.LeftArrow} href={leftArrowLink}>
           <Image src={leftArrow} alt='leftArrow' />
@@ -86,11 +126,10 @@ const HeroContainer = (props: Props) => {
             className={cls.InfoBgImg}
             priority={true}
           />
-
           <div className={cls.HeroInfoHeader}>
-            <hr></hr>
+            <hr />
             <h2>{heroName}</h2>
-            <hr></hr>
+            <hr />
           </div>
           <Link href={xLink} className={cls.XButton}>
             <h1>X</h1>
@@ -119,6 +158,7 @@ const HeroContainer = (props: Props) => {
           <Image src={rightArrow} alt='rightArrow' />
         </Link>
       </div>
+      <div>HeroDetailPage</div>
     </section>
   );
 };
