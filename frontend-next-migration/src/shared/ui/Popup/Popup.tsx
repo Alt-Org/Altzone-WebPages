@@ -2,11 +2,16 @@ import React from 'react';
 import cls from './Popup.module.scss'; // Tarkista tämä polku
 
 type Props = {
+  isOpen: boolean; // Lisätty isOpen props
   onClose: () => void;
   children: React.ReactNode;
 };
 
-const Popup = ({ onClose, children }: Props) => {
+const Popup = ({ isOpen, onClose, children }: Props) => {
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div className={cls.popupOverlay}>
       <div className={cls.popupContent}>
