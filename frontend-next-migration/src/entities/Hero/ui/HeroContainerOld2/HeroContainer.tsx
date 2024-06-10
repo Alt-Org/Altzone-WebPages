@@ -78,6 +78,10 @@ const HeroContainer = (props: Props) => {
                         </div>
                         <div className={cls.heroDescription} style={{maxHeight: distanceToBottom}}>
                             <p>
+                                {/*todo delete after testing*/}
+                                {heroDescription}
+                                {heroDescription}
+                                {heroDescription}
                                 {heroDescription}
                                 {heroDescription}
                                 {heroDescription}

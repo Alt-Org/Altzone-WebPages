@@ -59,8 +59,7 @@
   padding: 0 1rem;
   margin-top: 9%;
   overflow-y: auto;
-  /*@include custom-scrollbar;*/
-
+  @include custom-scrollbar;
 }
 
 
