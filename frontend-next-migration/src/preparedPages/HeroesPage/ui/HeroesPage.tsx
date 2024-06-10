@@ -26,6 +26,7 @@ export default function HeroPage(props: Props){
             img: selectedHeroData.srcImg,
             title:  t(`${selectedHeroData.title}`),
             alt: t(`${selectedHeroData.alt}`),
+            color: selectedHeroData.color,
             // alt: selectedHeroData.alt,
             description: t(`${selectedHeroData.description}`),
             // description: selectedHeroData.description,
@@ -59,14 +60,15 @@ export default function HeroPage(props: Props){
             {selectedHeroInfo && (
                 <HeroContainer
                     heroImg={selectedHeroInfo.img}
-                    heroImgAlt={selectedHeroInfo.alt}
-                    heroName={selectedHeroInfo.title}
+                    // heroImgAlt={selectedHeroInfo.alt}
+                    // heroName={selectedHeroInfo.title}
+                    heroColor={selectedHeroInfo.color}
                     heroDescription={selectedHeroInfo.description}
-                    leftArrowLink={leftArrowLink}
-                    rightArrowLink={rightArrowLink}
-                    borderColor={selectedHeroInfo.borderColor}
-                    heroGif={selectedHeroInfo.imgGif}
-                    xLink={RoutePaths.MAIN}
+                    // leftArrowLink={leftArrowLink}
+                    // rightArrowLink={rightArrowLink}
+                    // borderColor={selectedHeroInfo.borderColor}
+                    // heroGif={selectedHeroInfo.imgGif}
+                    // xLink={RoutePaths.MAIN}
                 />
             )}
         </>
