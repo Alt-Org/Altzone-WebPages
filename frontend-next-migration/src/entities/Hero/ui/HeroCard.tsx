@@ -1,15 +1,13 @@
-'use client';
-import React, { useState, useCallback, useRef } from 'react'; // Lisätty useState
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import cls from './HeroCard.module.scss';
 import Image from 'next/image';
-import { AppRoutesLinks, RoutePaths } from '@/shared/appLinks/RoutePaths';
-import { ClickableBorder } from '@/shared/ui/ClickableBorder';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import useResizeObserver, {
   ResizeCallback,
 } from '@/shared/lib/hooks/useResizeObserver';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import Popup from '@/shared/ui/Popup/Popup';
+import HeroContainer from '@/entities/Hero/ui/HeroContainer/HeroContainer';
+import ClickableBorder from '@/shared/ui/ClickableBorder/ClickableBorder';
 
 type Props = {
   id: string;
@@ -17,23 +15,64 @@ type Props = {
   imageAlt: string;
   className?: string;
   backgroundColor?: string;
+  heroImg: any;
+  heroGif: any;
+  heroImgAlt: string;
+  heroName: string;
+  heroDescription: string;
+  group: string;
 };
 
 export const HeroCard = (props: Props) => {
-  const { id, imageSrc, imageAlt, className = '', backgroundColor } = props;
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // Lisätty tilamuuttuja
+  const {
+    id,
+    imageSrc,
+    imageAlt,
+    className = '',
+    backgroundColor,
+    heroImg,
+    heroGif,
+    heroImgAlt,
+    heroName,
+    heroDescription,
+    group,
+  } = props;
 
-  const elementRef = useRef(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const handleCardSizeUpdate: ResizeCallback<HTMLDivElement> = useCallback(
     (refCurrent) => {
-      const width = refCurrent.clientWidth;
-      refCurrent.style.setProperty('--cardWidthLocal', `${width}px`);
+      if (refCurrent) {
+        const width = refCurrent.clientWidth;
+        refCurrent.style.setProperty('--cardWidthLocal', `${width}px`);
+      }
     },
     [],
   );
 
   useResizeObserver({ elementRef, callback: handleCardSizeUpdate });
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isPopupOpen &&
+        elementRef.current &&
+        !elementRef.current.contains(event.target as Node)
+      ) {
+        setIsPopupOpen(false);
+      }
+    };
+
+    if (isPopupOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isPopupOpen]);
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -46,17 +85,32 @@ export const HeroCard = (props: Props) => {
   return (
     <>
       <div className={cls.HeroDiv} style={{ backgroundColor }}>
-        <button onClick={openPopup}>
-          <Image src={imageSrc} alt={imageAlt} className={cls.HeroImg} />
-        </button>
+        <ClickableBorder
+          ref={elementRef}
+          borderImageSource='/images/hero-border3.png'
+          className={classNames(cls.Wrapper, {}, [className])}
+          onClick={openPopup}
+          isPopupOpen={isPopupOpen} // Pass isPopupOpen to ClickableBorder
+        >
+          <button onClick={openPopup} className={cls.HeroButton}>
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              layout='fill'
+              objectFit='cover'
+            />
+          </button>
+        </ClickableBorder>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={closePopup}>
-        {' '}
-        {/* Lisätty isOpen ja onClose propsit */}
-        {/* Popup-sisältö tässä */}
-        <div>
-          <p>Tähän voit lisätä popup-ikkunan sisällön</p>
-        </div>
+      <Popup className={cls.popup} isOpen={isPopupOpen} onClose={closePopup}>
+        <HeroContainer
+          heroImg={heroImg}
+          heroGif={heroGif}
+          heroImgAlt={heroImgAlt}
+          heroName={heroName}
+          heroDescription={heroDescription}
+          group={group}
+        />
       </Popup>
     </>
   );

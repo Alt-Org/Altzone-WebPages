@@ -1,44 +1,72 @@
-import React, {ReactNode, useState, forwardRef, ForwardedRef, CSSProperties} from 'react';
-import cls from "./ClickableBorder.module.scss";
-import {classNames} from "@/shared/lib/classNames/classNames";
+import React, {
+  ReactNode,
+  useState,
+  forwardRef,
+  ForwardedRef,
+  CSSProperties,
+  HTMLAttributes,
+} from 'react';
+import cls from './ClickableBorder.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
-type Props = {
-    children: ReactNode;
-    borderImageSource: any;
-    className?: string;
+type Props = HTMLAttributes<HTMLDivElement> & {
+  children: ReactNode;
+  borderImageSource: any;
+  className?: string;
+  onClick?: () => void;
+  isPopupOpen?: boolean;
 };
 
 const ClickableBorder = forwardRef(
-    (props: Props, ref: ForwardedRef<HTMLDivElement>) => {
-        const {children, borderImageSource, className = "", } = props;
-        const [isHovered, setIsHovered] = useState(false);
-        const handleMouseEnter = () => {
-        setIsHovered(true);
-        };
-        const handleMouseLeave = () => {
-        setIsHovered(false);
-        };
+  (
+    {
+      children,
+      borderImageSource,
+      className = '',
+      onClick,
+      isPopupOpen,
+      ...rest
+    }: Props,
+    ref: ForwardedRef<HTMLDivElement>,
+  ) => {
+    const [isHovered, setIsHovered] = useState(false);
 
-        const borderImageStyle = isHovered
-            ? { borderImageSource: `url(${borderImageSource})` }
-            : { borderImageSource: "none" };
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
 
-       const mods = { [cls.hovered]:  isHovered };
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
 
-        return (
-            <div
-                ref={ref}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className={classNames(cls.content, mods, [className])}
-                style= {borderImageStyle}
-            >
-                {children}
-            </div>
-        );
-});
+    const handleClick = () => {
+      if (onClick) {
+        onClick();
+      }
+    };
+
+    const borderImageStyle: CSSProperties = isHovered
+      ? { borderImageSource: `url(${borderImageSource})` }
+      : { borderImageSource: 'none' };
+
+    const mods = { [cls.hovered]: isHovered };
+
+    return (
+      <div
+        ref={ref}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
+        className={classNames(cls.content, mods, [className])}
+        style={borderImageStyle}
+        {...rest} // Filter out isPopupOpen to avoid passing it to the DOM element
+      >
+        {children}
+      </div>
+    );
+  },
+);
 
 export default ClickableBorder;
 
-ClickableBorder.displayName = "ClickableBorder";
-
+ClickableBorder.displayName = 'ClickableBorder';
