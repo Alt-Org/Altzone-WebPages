@@ -3,6 +3,8 @@ import {RefObject, useEffect, useRef, useState} from 'react';
 import bgBox from "@/shared/assets/images/heros/hero-container/readyContainer.png";
 import Image from 'next/image';
 import cls from "./HeroContainer.module.scss";
+import Link from "next/link";
+import leftArrow from "@/shared/assets/images/heros/hero-container/left-arrow.png";
 
 type Props = {
     heroImg: string,
@@ -62,6 +64,9 @@ const HeroContainer = (props: Props) => {
     return (
         <div className={cls.wrapper}>
             <div className={cls.container} ref={containerRef}>
+                <Link className={cls.LeftArrow} href={"leftArrowLink"}>
+                    <Image src={leftArrow} alt="leftArrow"/>
+                </Link>
                 <Image className={cls.bgImg} src={bgBox} alt="hero" width={400} height={400} onLoad={handleImageLoad} />
                 <div className={cls.contentWrapper}>
                     <div className={cls.content}>
