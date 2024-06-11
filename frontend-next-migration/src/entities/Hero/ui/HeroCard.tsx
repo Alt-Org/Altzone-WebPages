@@ -8,6 +8,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import Popup from '@/shared/ui/Popup/Popup';
 import HeroContainer from '@/entities/Hero/ui/HeroContainer/HeroContainer';
 import ClickableBorder from '@/shared/ui/ClickableBorder/ClickableBorder';
+import Heroes from '../model/heroes';
+import img from '@/shared/assets/images/altLogo.png';
 
 type Props = {
   id: string;
@@ -15,7 +17,7 @@ type Props = {
   imageAlt: string;
   className?: string;
   backgroundColor?: string;
-  heroImg: any;
+  heroImg: string;
   heroGif: any;
   heroImgAlt: string;
   heroName: string;
@@ -30,9 +32,7 @@ export const HeroCard = (props: Props) => {
     imageAlt,
     className = '',
     backgroundColor,
-    heroImg,
     heroGif,
-    heroImgAlt,
     heroName,
     heroDescription,
     group,
@@ -93,20 +93,13 @@ export const HeroCard = (props: Props) => {
           isPopupOpen={isPopupOpen} // Pass isPopupOpen to ClickableBorder
         >
           <button onClick={openPopup} className={cls.HeroButton}>
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              layout='fill'
-              objectFit='cover'
-            />
+            <Image src={imageSrc} alt={'imageSrc'} />
           </button>
         </ClickableBorder>
       </div>
       <Popup className={cls.popup} isOpen={isPopupOpen} onClose={closePopup}>
         <HeroContainer
-          heroImg={heroImg}
           heroGif={heroGif}
-          heroImgAlt={heroImgAlt}
           heroName={heroName}
           heroDescription={heroDescription}
           group={group}
