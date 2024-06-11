@@ -19,7 +19,14 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 
 const ClickableBorder = forwardRef(
   (
-    { children, borderImageSource, className = '', onClick, ...rest }: Props,
+    {
+      children,
+      borderImageSource,
+      className = '',
+      onClick,
+      isPopupOpen,
+      ...rest
+    }: Props,
     ref: ForwardedRef<HTMLDivElement>,
   ) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -52,7 +59,7 @@ const ClickableBorder = forwardRef(
         onClick={handleClick}
         className={classNames(cls.content, mods, [className])}
         style={borderImageStyle}
-        {...rest} // Filter out isPopupOpen to avoid passing it to the DOM element
+        {...rest} // `rest` now does not include `isPopupOpen`
       >
         {children}
       </div>

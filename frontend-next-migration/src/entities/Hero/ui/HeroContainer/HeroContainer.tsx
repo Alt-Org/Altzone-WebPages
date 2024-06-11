@@ -62,9 +62,7 @@ const HeroContainer = ({
             priority={true}
           />
           <div className={cls.HeroInfoHeader}>
-            <hr />
             <h2>{heroName}</h2>
-            <hr />
           </div>
           <div className={cls.HeroInfoMain}>
             <Image

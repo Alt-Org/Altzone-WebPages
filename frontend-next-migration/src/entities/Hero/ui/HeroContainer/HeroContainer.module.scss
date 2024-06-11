@@ -1,11 +1,9 @@
 .HeroContainer {
   position: absolute;
-  border: 2px solid rgb(255, 255, 255);
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 5px;
   z-index: 300;
-  width: 200%; /* Venytä leveys koko sivulle */
-  height: 200%; /* Venytä korkeus koko sivulle */
+  width: 200%;
+  height: 200%;
 }
