@@ -59,7 +59,8 @@ export default function HeroPage(props: Props){
         <>
             {selectedHeroInfo && (
                 <HeroContainer
-                    heroImg={selectedHeroInfo.img}
+                    heroImg={selectedHeroInfo.img as unknown as string}
+                    heroGif={selectedHeroInfo.imgGif as unknown as string}
                     // heroImgAlt={selectedHeroInfo.alt}
                     // heroName={selectedHeroInfo.title}
                     heroColor={selectedHeroInfo.color}

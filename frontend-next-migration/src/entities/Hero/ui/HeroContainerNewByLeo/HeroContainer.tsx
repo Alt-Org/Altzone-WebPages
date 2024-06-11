@@ -1,5 +1,4 @@
 'use client'
-import {RefObject, useEffect, useRef, useState} from 'react';
 import bgBox from "@/shared/assets/images/heros/hero-container/readyContainer.png";
 import Image from 'next/image';
 import cls from "./HeroContainer.module.scss";
@@ -13,6 +12,7 @@ import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 
 type Props = {
     heroImg: string,
+    heroGif: string,
     heroDescription: string,
     heroColor: string,
     leftArrowLink: string,
@@ -23,6 +23,7 @@ type Props = {
 const HeroContainer = (props: Props) => {
     const {
         heroImg,
+        heroGif,
         heroDescription,
         heroColor,
         leftArrowLink,
@@ -71,8 +72,6 @@ const HeroContainer = (props: Props) => {
                         className={cls.heroImgSide}
                         src={heroImg}
                         alt="hero"
-                        // width={500}
-                        // height={500}
                         ref={imageRef}
                         onLoad={handleImageLoad}
                     />
@@ -102,7 +101,13 @@ const HeroContainer = (props: Props) => {
                                     <Image
                                         quality={100}
                                         className={classNames(cls.heroImg, mobileModCss)}
-                                        src={heroImg}
+                                        src={
+                                        isMobileSize
+                                            ?
+                                            heroImg
+                                            :
+                                            heroGif
+                                    }
                                         alt="hero"
                                         width={500}
                                         height={500}
@@ -115,7 +120,6 @@ const HeroContainer = (props: Props) => {
                                     </Link>
 
                                 </div>
-                                {/*todo distance dif on mobile and pc*/}
                                 <div className={cls.heroDescription} style={{maxHeight}}>
                                     <p>
                                         {/*todo delete after testing*/}
