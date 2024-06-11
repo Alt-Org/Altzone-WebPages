@@ -8,18 +8,25 @@ import leftArrow from "@/shared/assets/images/heros/hero-container/leftArrow.svg
 import rightArrow from "@/shared/assets/images/heros/hero-container/rightArrow.svg";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import useImageDistance from "./useImageDistance";
+import useKeyboardNavigation from "./useKeyboardNavigation";
 
 type Props = {
     heroImg: string,
     heroDescription: string,
     heroColor: string,
+    leftArrowLink: string,
+    rightArrowLink: string,
+    xLink: string,
 }
 
 const HeroContainer = (props: Props) => {
     const {
         heroImg,
         heroDescription,
-        heroColor
+        heroColor,
+        leftArrowLink,
+        rightArrowLink,
+        xLink,
     } = props;
 
     const {
@@ -29,24 +36,59 @@ const HeroContainer = (props: Props) => {
         handleImageLoad
     } = useImageDistance();
 
+    useKeyboardNavigation(
+        {
+            leftArrowLink,
+            rightArrowLink,
+            xLink
+        }
+    );
+
     return (
-        <div className={cls.wrapper}>
-            <div className={cls.arrowsContainerWrapper}>
+        <div className={cls.PageWrapper}>
+
+            <div className={cls.componentWrapper}>
+
+                <div className={cls.heroImgSideWrapper}>
+                    <Image
+                        className={cls.heroImgSide}
+                        src={heroImg}
+                        alt="hero"
+                        // width={500}
+                        // height={500}
+                        ref={imageRef}
+                        onLoad={handleImageLoad}
+                    />
+                </div>
 
 
-                <Link className={classNames(cls.leftArrow, {}, [cls.arrow])} href={"leftArrowLink"}>
-                    <Image src={leftArrow} alt="leftArrow"/>
-                </Link>
+
+            {/*<div className={cls.arrowsContainerWrapper}>*/}
+                {/*<Link className={classNames(cls.leftArrow, {}, [cls.arrow])} href={"leftArrowLink"}>*/}
+                {/*    <Image src={leftArrow} alt="leftArrow"/>*/}
+                {/*</Link>*/}
 
 
 
                 <div className={cls.container} ref={containerRef}>
-                    <Image className={cls.bgImg} src={bgBox} alt="hero" width={400} height={400}
+                    <Image
+                        className={cls.bgImg}
+                        src={bgBox}
+                        alt="hero"
+                        width={400}
+                        height={400}
                            onLoad={handleImageLoad}/>
                     <div className={cls.contentWrapper}>
                         <div className={cls.content}>
                             <div className={cls.heroImgWrapper} style={{backgroundColor: heroColor}}>
+
+                                <Link className={classNames(cls.innerLeftArrow, {}, [])} href={leftArrowLink}>
+                                    <Image src={leftArrow} alt="leftArrow"
+                                    />
+                                </Link>
+
                                 <Image
+                                    quality={100}
                                     className={cls.heroImg}
                                     src={heroImg}
                                     alt="hero"
@@ -55,8 +97,14 @@ const HeroContainer = (props: Props) => {
                                     ref={imageRef}
                                     onLoad={handleImageLoad}
                                 />
+
+                                <Link className={classNames(cls.innerRightArrow, {}, [])} href={rightArrowLink}>
+                                    <Image src={rightArrow} alt="rightArrow"/>
+                                </Link>
+
                             </div>
-                            <div className={cls.heroDescription} style={{maxHeight: distanceToBottom}}>
+                            {/*todo distance dif on mobile and pc*/}
+                            <div className={cls.heroDescription} style={{maxHeight: distanceToBottom - 50}}>
                                 <p>
                                     {/*todo delete after testing*/}
                                     {heroDescription}
@@ -72,10 +120,12 @@ const HeroContainer = (props: Props) => {
                 </div>
 
 
-                <Link className={classNames(cls.rightArrow, {}, [cls.arrow])} href={"rightArrowLink"}>
-                    <Image src={rightArrow} alt="rightArrow"/>
-                </Link>
+                {/*<Link className={classNames(cls.rightArrow, {}, [cls.arrow])} href={"rightArrowLink"}>*/}
+                {/*    <Image src={rightArrow} alt="rightArrow"/>*/}
+                {/*</Link>*/}
 
+
+            {/*</div>*/}
             </div>
         </div>
     )

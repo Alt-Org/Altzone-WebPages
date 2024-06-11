@@ -1,19 +1,21 @@
-import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp";
+import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.png";
 import greenHairedGiF from "@/shared/assets/images/heros/green-haired/green-haired-walk.gif";
 // import greenHairedGiF from "@/shared/assets/images/heros/green-haired/green-haired-walk-2.gif";
 
-import einstein from "@/shared/assets/images/heros/einstein/einstein.webp";
+import einstein from "@/shared/assets/images/heros/einstein/einstein.png";
 import einsteinGif from "@/shared/assets/images/heros/einstein/einstein-dab_dance.gif";
 
 
-import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
+import pirate from "@/shared/assets/images/heros/pirate/pirate.png";
+// import pirate from "@/shared/assets/images/heros/pirate/pirate-catwalk.gif";
 import pirateGif from "@/shared/assets/images/heros/pirate/pirate-catwalk.gif";
 
-import purpleGirls from "@/shared/assets/images/heros/purple-girls/purple-girls.svg";
+import purpleGirls from "@/shared/assets/images/heros/purple-girls/purple-girls.png";
 import purpleGirlsGif from "@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif";
 
 import hannuHodari from "@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png";
 import hannuHodariGiF from "@/shared/assets/images/heros/hannu-hodari/hannu-hodari.gif";
+
 
 import graffittiGaya from "@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png";
 import graffittiGayaGif from "@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif";
