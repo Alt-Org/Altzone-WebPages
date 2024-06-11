@@ -112,9 +112,12 @@
 .heroImg{
   width: 50%;
   height: auto;
-  //transform: scale(130%);
   user-select: none;
   pointer-events: none;
+}
+
+.heroImg.isMobile{
+  transform: scale(130%);
 }
 
 
@@ -122,7 +125,7 @@
   //max-height: 14dvh;
   //max-height: 29dvh;
   padding: 0 1rem;
-  margin-top: 5%;
+  margin-top: 7%;
   //padding-bottom: 20px;
   overflow-y: auto;
   @include custom-scrollbar;
