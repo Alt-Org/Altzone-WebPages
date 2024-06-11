@@ -44,13 +44,15 @@ const HeroContainer = (props: Props) => {
             xLink
         }
     );
-
-
     const {isMobileSize} = useIsMobileSize();
+
+    const maxHeight = isMobileSize
+        ?
+        distanceToBottom - 40
+        : distanceToBottom - 50;
 
     return (
         <div className={cls.PageWrapper}>
-
             <div className={cls.componentWrapper}>
 
                 <div className={classNames(cls.heroImgSideWrapper, {
@@ -68,68 +70,58 @@ const HeroContainer = (props: Props) => {
                 </div>
 
 
-                {/*<div className={cls.arrowsContainerWrapper}>*/}
-                {/*<Link className={classNames(cls.leftArrow, {}, [cls.arrow])} href={"leftArrowLink"}>*/}
-                {/*    <Image src={leftArrow} alt="leftArrow"/>*/}
-                {/*</Link>*/}
+                <div className={classNames(cls.containerWrapper, {
+                    [cls.isMobile]: isMobileSize
+                })}>
+                    <div className={cls.container} ref={containerRef}>
+                        <Image
+                            className={cls.bgImg}
+                            src={bgBox}
+                            alt="hero"
+                            width={400}
+                            height={400}
+                            onLoad={handleImageLoad}/>
+                        <div className={cls.contentWrapper}>
+                            <div className={cls.content}>
+                                <div className={cls.heroImgWrapper} style={{backgroundColor: heroColor}}>
 
+                                    <Link className={classNames(cls.innerLeftArrow, {}, [])} href={leftArrowLink}>
+                                        <Image src={leftArrow} alt="leftArrow"
+                                        />
+                                    </Link>
 
-                <div className={cls.container} ref={containerRef}>
-                    <Image
-                        className={cls.bgImg}
-                        src={bgBox}
-                        alt="hero"
-                        width={400}
-                        height={400}
-                        onLoad={handleImageLoad}/>
-                    <div className={cls.contentWrapper}>
-                        <div className={cls.content}>
-                            <div className={cls.heroImgWrapper} style={{backgroundColor: heroColor}}>
-
-                                <Link className={classNames(cls.innerLeftArrow, {}, [])} href={leftArrowLink}>
-                                    <Image src={leftArrow} alt="leftArrow"
+                                    <Image
+                                        quality={100}
+                                        className={cls.heroImg}
+                                        src={heroImg}
+                                        alt="hero"
+                                        width={500}
+                                        height={500}
+                                        ref={imageRef}
+                                        onLoad={handleImageLoad}
                                     />
-                                </Link>
 
-                                <Image
-                                    quality={100}
-                                    className={cls.heroImg}
-                                    src={heroImg}
-                                    alt="hero"
-                                    width={500}
-                                    height={500}
-                                    ref={imageRef}
-                                    onLoad={handleImageLoad}
-                                />
+                                    <Link className={classNames(cls.innerRightArrow, {}, [])} href={rightArrowLink}>
+                                        <Image src={rightArrow} alt="rightArrow"/>
+                                    </Link>
 
-                                <Link className={classNames(cls.innerRightArrow, {}, [])} href={rightArrowLink}>
-                                    <Image src={rightArrow} alt="rightArrow"/>
-                                </Link>
-
-                            </div>
-                            {/*todo distance dif on mobile and pc*/}
-                            <div className={cls.heroDescription} style={{maxHeight: distanceToBottom - 50}}>
-                                <p>
-                                    {/*todo delete after testing*/}
-                                    {heroDescription}
-                                    {heroDescription}
-                                    {heroDescription}
-                                    {heroDescription}
-                                    {heroDescription}
-                                    {heroDescription}
-                                </p>
+                                </div>
+                                {/*todo distance dif on mobile and pc*/}
+                                <div className={cls.heroDescription} style={{maxHeight: maxHeight}}>
+                                    <p>
+                                        {/*todo delete after testing*/}
+                                        {heroDescription}
+                                        {heroDescription}
+                                        {heroDescription}
+                                        {heroDescription}
+                                        {heroDescription}
+                                        {heroDescription}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                {/*<Link className={classNames(cls.rightArrow, {}, [cls.arrow])} href={"rightArrowLink"}>*/}
-                {/*    <Image src={rightArrow} alt="rightArrow"/>*/}
-                {/*</Link>*/}
-
-
-                {/*</div>*/}
             </div>
         </div>
     )

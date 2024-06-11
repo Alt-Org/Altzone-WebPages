@@ -38,8 +38,11 @@
 }
 
 
-
-
+.containerWrapper.isMobile{
+  //todo it is important because we have to have it centralised and this right blot causes problems
+  //todo may be calculate the padding from content distance to the end of this wrapper into the right side, e.g formula: p = (distance - (smallGapBetweenContentAndBorderWithoutBlot))
+  padding-left: 10%;
+}
 
 
 .container {
@@ -104,8 +107,11 @@
 
 
 .heroDescription{
+  //max-height: 14dvh;
+  //max-height: 29dvh;
   padding: 0 1rem;
   margin-top: 7%;
+  //padding-bottom: 20px;
   overflow-y: auto;
   @include custom-scrollbar;
 }
@@ -114,60 +120,8 @@
 
 
 
-.arrowsContainerWrapper{
-  //background-color: #1ea7fd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  //todo it is important because we have to have it centralised and this right blot causes problems
-  //todo may be calculate the padding from content distance to the end of this wrapper into the right side, e.g formula: p = (distance - (smallGapBetweenContentAndBorderWithoutBlot))
-  padding-left: 4%;
-
-  @media (max-width: 600px) {
-    padding-left: 7%;
-  }
-
-}
 
 
-//.arrow{
-//  width: 15%;
-//  //position: absolute;
-//  //width: 15%;
-//  //transform: translate(-50%, -50%);
-//}
-//
-//
-//.leftArrow {
-//  //position: absolute;
-//  //top: 50%;
-//  //left: -15%
-//
-//  //transition: left 0.3s ease; /* Smooth transition on resize */
-//}
-//
-//.rightArrow{
-//  //justify-self: flex-end;
-//  position: relative;
-//  justify-content: flex-end;
-//
-//  & img {
-//    position: absolute;
-//    transform: translate(-50%, -50%);
-//    right: 13%;
-//  }
-//
-//  @media (max-width: 600px) {
-//    justify-self: center;
-//
-//    & img {
-//      right: 70%;
-//    }
-//  }
-//
-//
-//}
 
 
 
