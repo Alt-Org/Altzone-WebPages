@@ -1,21 +1,9 @@
 .content {
-  border-image-slice: 1 fill;
-  position: relative;
-  align-content: center;
-  transform: scale(1.5);
-  z-index: 1;
+  border-image-slice: 0.01 fill;
+  border-image-repeat: stretch;
+  display: block;
+}
 
-  &:hover::after {
-    opacity: 1;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
+.hovered {
+  //background-color: #6b46c1;
 }

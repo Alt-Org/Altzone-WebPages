@@ -39,7 +39,7 @@ export const HeroCard = (props: Props) => {
   } = props;
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
+  const [isHovered, setIsHovered] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
   const handleCardSizeUpdate: ResizeCallback<HTMLDivElement> = useCallback(
@@ -82,6 +82,14 @@ export const HeroCard = (props: Props) => {
     setIsPopupOpen(false);
   };
 
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <>
       <div className={cls.HeroDiv} style={{ backgroundColor }}>
@@ -90,20 +98,24 @@ export const HeroCard = (props: Props) => {
           borderImageSource='/images/hero-border3.png'
           className={classNames(cls.Wrapper, {}, [className])}
           onClick={openPopup}
-          isPopupOpen={isPopupOpen} // Pass isPopupOpen to ClickableBorder
-        >
+          isPopupOpen={isPopupOpen}>
           <button onClick={openPopup} className={cls.HeroButton}>
             <Image src={imageSrc} alt={imageAlt} />
           </button>
         </ClickableBorder>
       </div>
       <Popup className={cls.popup} isOpen={isPopupOpen} onClose={closePopup}>
-        <HeroContainer
-          heroGif={heroGif}
-          heroName={heroName}
-          heroDescription={heroDescription}
-          group={group}
-        />
+        <div
+          className={`${cls.HeroInfoDiv} ${isHovered ? cls.hovered : ''}`}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}>
+          <HeroContainer
+            heroGif={heroGif}
+            heroName={heroName}
+            heroDescription={heroDescription}
+            group={group}
+          />
+        </div>
       </Popup>
     </>
   );
