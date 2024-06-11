@@ -75,9 +75,6 @@
   transform: translate(-12.5%, 50%);
 }
 
-
-
-
 .heroImgWrapper{
   border: solid 4px white;
   background: red;
@@ -102,8 +99,6 @@
 }
 
 .heroImg{
-  justify-self: center;
-  align-self: center;
   width: 50%;
   height: auto;
   //transform: scale(130%);
@@ -116,7 +111,7 @@
   //max-height: 14dvh;
   //max-height: 29dvh;
   padding: 0 1rem;
-  margin-top: 7%;
+  margin-top: 5%;
   //padding-bottom: 20px;
   overflow-y: auto;
   @include custom-scrollbar;
