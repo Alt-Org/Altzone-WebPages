@@ -25,10 +25,10 @@ const useImageDistance = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            // it is very important when we switch fullscreen we should wait
+            // it is very important when we switch fullscreen we should make that macrotask
             setTimeout(() => {
                 calculateDistance();
-            }, 100);
+            }, 0);
         };
 
         window.addEventListener('resize', handleResize);
