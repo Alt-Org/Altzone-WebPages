@@ -11,7 +11,6 @@ const useImageDistance = () => {
             const containerRect = containerRef.current.getBoundingClientRect();
             const imageRect = imageRef.current.getBoundingClientRect();
             const distance = containerRect.bottom - imageRect.bottom;
-            console.log(distance);
             setDistanceToBottom(distance);
         }
     };
