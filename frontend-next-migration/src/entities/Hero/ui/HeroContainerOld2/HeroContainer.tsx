@@ -60,6 +60,12 @@ const HeroContainer = (props: Props) => {
         <div className={cls.PageWrapper}>
             <div className={cls.componentWrapper}>
 
+                <Link className={classNames(cls.outerLeftArrow, mobileModCss, [cls.outerArrow])} href={leftArrowLink}>
+                    <Image src={leftArrow} alt="leftArrow"
+                    />
+                </Link>
+
+
                 <div className={classNames(cls.heroImgSideWrapper, mobileModCss)}>
                     <Image
                         className={cls.heroImgSide}
@@ -125,6 +131,12 @@ const HeroContainer = (props: Props) => {
                         </div>
                     </div>
                 </div>
+
+                <Link className={classNames(cls.outerRightArrow, mobileModCss, [cls.outerArrow])} href={rightArrowLink}>
+                    <Image src={rightArrow} alt="leftArrow"
+                    />
+                </Link>
+
             </div>
         </div>
     )

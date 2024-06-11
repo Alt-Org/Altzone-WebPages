@@ -13,6 +13,15 @@
   align-items: center;
 }
 
+.outerArrow{
+  max-width: 150px;
+}
+
+.outerArrow.isMobile{
+  display: none;
+}
+
+
 .heroImgSideWrapper{
   user-select: none;
   pointer-events: none;
