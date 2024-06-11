@@ -10,6 +10,7 @@ type Props = {
 
 const Popup = ({ isOpen, onClose, children }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [scrollY, setScrollY] = useState(window.scrollY);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -31,6 +32,20 @@ const Popup = ({ isOpen, onClose, children }: Props) => {
     };
   }, [isOpen, onClose]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    if (isOpen) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isOpen]);
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -48,7 +63,9 @@ const Popup = ({ isOpen, onClose, children }: Props) => {
       className={cls.popupOverlay}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
-      <div className={cls.popupContent}>
+      <div
+        className={cls.popupContent}
+        style={{ top: `${scrollY + window.innerHeight / 10}px` }}>
         <div className={`${cls.HeroInfoDiv} ${isHovered ? cls.hovered : ''}`}>
           {children}
         </div>

@@ -19,14 +19,7 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 
 const ClickableBorder = forwardRef(
   (
-    {
-      children,
-      borderImageSource,
-      className = '',
-      onClick,
-      isPopupOpen,
-      ...rest
-    }: Props,
+    { children, borderImageSource, className = '', onClick, ...rest }: Props,
     ref: ForwardedRef<HTMLDivElement>,
   ) => {
     const [isHovered, setIsHovered] = useState(false);

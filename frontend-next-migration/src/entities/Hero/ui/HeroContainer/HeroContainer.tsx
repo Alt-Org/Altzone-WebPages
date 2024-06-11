@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import cls from './HeroContainer.module.scss';
 import Image from 'next/image';
 import infoBg from '@/shared/assets/images/heros/hero-container/info-bg.png';
@@ -44,7 +45,13 @@ const HeroContainer = ({
   return (
     <section className={cls.HeroContainer}>
       <div className={cls.backgroundImageWrapper}>
-        {background ? <Image src={background} alt='groupBackground' /> : null}
+        {background ? (
+          <Image
+            src={background}
+            alt='groupBackground'
+            className={cls.backgroundImage}
+          />
+        ) : null}
       </div>
       <div className={cls.Content}>
         <div className={cls.HeroInfoDiv}>
@@ -62,7 +69,7 @@ const HeroContainer = ({
           <div className={cls.HeroInfoMain}>
             <Image
               src={heroGif}
-              alt='imagePlaceholder'
+              alt='heroGif'
               className={cls.InfoImg}
               priority={true}
             />
