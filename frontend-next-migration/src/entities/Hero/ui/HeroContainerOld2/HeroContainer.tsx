@@ -9,6 +9,7 @@ import rightArrow from "@/shared/assets/images/heros/hero-container/rightArrow.s
 import {classNames} from "@/shared/lib/classNames/classNames";
 import useImageDistance from "./useImageDistance";
 import useKeyboardNavigation from "./useKeyboardNavigation";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 
 type Props = {
     heroImg: string,
@@ -44,12 +45,17 @@ const HeroContainer = (props: Props) => {
         }
     );
 
+
+    const {isMobileSize} = useIsMobileSize();
+
     return (
         <div className={cls.PageWrapper}>
 
             <div className={cls.componentWrapper}>
 
-                <div className={cls.heroImgSideWrapper}>
+                <div className={classNames(cls.heroImgSideWrapper, {
+                    [cls.isMobile]: isMobileSize
+                })}>
                     <Image
                         className={cls.heroImgSide}
                         src={heroImg}
@@ -62,12 +68,10 @@ const HeroContainer = (props: Props) => {
                 </div>
 
 
-
-            {/*<div className={cls.arrowsContainerWrapper}>*/}
+                {/*<div className={cls.arrowsContainerWrapper}>*/}
                 {/*<Link className={classNames(cls.leftArrow, {}, [cls.arrow])} href={"leftArrowLink"}>*/}
                 {/*    <Image src={leftArrow} alt="leftArrow"/>*/}
                 {/*</Link>*/}
-
 
 
                 <div className={cls.container} ref={containerRef}>
@@ -77,7 +81,7 @@ const HeroContainer = (props: Props) => {
                         alt="hero"
                         width={400}
                         height={400}
-                           onLoad={handleImageLoad}/>
+                        onLoad={handleImageLoad}/>
                     <div className={cls.contentWrapper}>
                         <div className={cls.content}>
                             <div className={cls.heroImgWrapper} style={{backgroundColor: heroColor}}>
@@ -125,7 +129,7 @@ const HeroContainer = (props: Props) => {
                 {/*</Link>*/}
 
 
-            {/*</div>*/}
+                {/*</div>*/}
             </div>
         </div>
     )
