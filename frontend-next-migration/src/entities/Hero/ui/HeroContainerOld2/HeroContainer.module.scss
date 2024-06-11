@@ -9,6 +9,8 @@
 
 .container {
   position: relative;
+  //max-width: 240px;
+
   /*//todo play with it*/
   /*width: min(100%, 1400px);*/
   /*min-width: min(100%, 1400px);*/
@@ -19,6 +21,8 @@
 
 .bgImg{
   width: 100%;
+  user-select: none;
+  pointer-events: none;
 }
 
 
@@ -42,6 +46,7 @@
 .heroImgWrapper{
   display: flex;
   justify-content: center;
+  border: solid 4px white;
   background: red;
   width: 100%;
   /*overflow: hidden;*/
@@ -52,18 +57,34 @@
   width: 50%;
   height: auto;
   transform: scale(140%);
+  user-select: none;
+  pointer-events: none;
 }
 
 
 .heroDescription{
   padding: 0 1rem;
-  margin-top: 9%;
+  margin-top: 7%;
   overflow-y: auto;
   @include custom-scrollbar;
 }
 
 
 
+.LeftArrow {
+  position: absolute;
+  top: 50%;
+  left: -5vw; /* Use viewport width for responsive positioning */
+  transform: translate(-50%, -50%);
+  transition: left 0.3s ease; /* Smooth transition on resize */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .LeftArrow {
+    left: -10vw; /* Adjust left position for smaller screens */
+  }
+}
 
 
 
