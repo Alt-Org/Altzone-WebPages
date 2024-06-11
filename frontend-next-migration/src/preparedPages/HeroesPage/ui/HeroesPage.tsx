@@ -64,11 +64,11 @@ export default function HeroPage(props: Props){
                     // heroName={selectedHeroInfo.title}
                     heroColor={selectedHeroInfo.color}
                     heroDescription={selectedHeroInfo.description}
-                    // leftArrowLink={leftArrowLink}
-                    // rightArrowLink={rightArrowLink}
+                    leftArrowLink={leftArrowLink}
+                    rightArrowLink={rightArrowLink}
                     // borderColor={selectedHeroInfo.borderColor}
                     // heroGif={selectedHeroInfo.imgGif}
-                    // xLink={RoutePaths.MAIN}
+                    xLink={RoutePaths.HEROES}
                 />
             )}
         </>

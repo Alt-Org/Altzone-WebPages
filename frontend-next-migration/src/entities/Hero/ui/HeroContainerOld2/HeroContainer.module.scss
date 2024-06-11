@@ -1,21 +1,48 @@
-.wrapper{
+.PageWrapper{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
+
+.componentWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heroImgSideWrapper{
+  position: relative;
+  max-width: 60.875em;
+  width: 40.1666666667em;
+  height: 42.6666666667em;
+  z-index: -1;
+
+  //max-height: 400px;
+
+  .heroImgSide{
+    position: absolute;
+    top: -1.3333333333em;
+    left: 10%;
+    width: 40.1666666667em;
+    height: 43.2916666667em;
+    //height: auto;
+    //object-fit: cover;
+  }
+
+
+}
+
+
+
+
 
 
 .container {
   position: relative;
-  //max-width: 240px;
-
-  /*//todo play with it*/
-  /*width: min(100%, 1400px);*/
-  /*min-width: min(100%, 1400px);*/
-  /*min-width: min-content;*/
-  /*max-width: max-content;*/
+  max-width: 600px;
 }
 
 
@@ -44,19 +71,31 @@
 }
 
 .heroImgWrapper{
-  display: flex;
-  justify-content: center;
   border: solid 4px white;
   background: red;
   width: 100%;
-  /*overflow: hidden;*/
   aspect-ratio: 16 / 8;
+  display: flex;
+  justify-content: space-between;
 }
 
+.innerLeftArrow{
+  align-self: center;
+  width: 50px;
+}
+
+.innerRightArrow{
+  align-self: center;
+  width: 50px;
+}
+
+
+
 .heroImg{
+  justify-self: center;
   width: 50%;
   height: auto;
-  transform: scale(140%);
+  //transform: scale(130%);
   user-select: none;
   pointer-events: none;
 }
@@ -71,20 +110,62 @@
 
 
 
-.LeftArrow {
-  position: absolute;
-  top: 50%;
-  left: -5vw; /* Use viewport width for responsive positioning */
-  transform: translate(-50%, -50%);
-  transition: left 0.3s ease; /* Smooth transition on resize */
+
+
+.arrowsContainerWrapper{
+  //background-color: #1ea7fd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  //todo it is important because we have to have it centralised and this right blot causes problems
+  //todo may be calculate the padding from content distance to the end of this wrapper into the right side, e.g formula: p = (distance - (smallGapBetweenContentAndBorderWithoutBlot))
+  padding-left: 4%;
+
+  @media (max-width: 600px) {
+    padding-left: 7%;
+  }
+
 }
 
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-  .LeftArrow {
-    left: -10vw; /* Adjust left position for smaller screens */
-  }
-}
+
+//.arrow{
+//  width: 15%;
+//  //position: absolute;
+//  //width: 15%;
+//  //transform: translate(-50%, -50%);
+//}
+//
+//
+//.leftArrow {
+//  //position: absolute;
+//  //top: 50%;
+//  //left: -15%
+//
+//  //transition: left 0.3s ease; /* Smooth transition on resize */
+//}
+//
+//.rightArrow{
+//  //justify-self: flex-end;
+//  position: relative;
+//  justify-content: flex-end;
+//
+//  & img {
+//    position: absolute;
+//    transform: translate(-50%, -50%);
+//    right: 13%;
+//  }
+//
+//  @media (max-width: 600px) {
+//    justify-self: center;
+//
+//    & img {
+//      right: 70%;
+//    }
+//  }
+//
+//
+//}
 
 
 
