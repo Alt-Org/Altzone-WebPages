@@ -83,9 +83,15 @@ const HeroContainer = (props: Props) => {
                             onLoad={handleImageLoad}/>
                         <div className={cls.contentWrapper}>
                             <div className={cls.content}>
-                                <div className={cls.heroImgWrapper} style={{backgroundColor: heroColor}}>
+                                <div className={
+                                    classNames(cls.heroImgWrapper,{
+                                        [cls.isMobile]: isMobileSize
+                                    })
+                                } style={{backgroundColor: heroColor}}>
 
-                                    <Link className={classNames(cls.innerLeftArrow, {}, [])} href={leftArrowLink}>
+                                    <Link className={classNames(cls.innerLeftArrow, {
+                                        [cls.isMobile]: isMobileSize
+                                    }, [cls.innerArrow])} href={leftArrowLink}>
                                         <Image src={leftArrow} alt="leftArrow"
                                         />
                                     </Link>
@@ -101,7 +107,9 @@ const HeroContainer = (props: Props) => {
                                         onLoad={handleImageLoad}
                                     />
 
-                                    <Link className={classNames(cls.innerRightArrow, {}, [])} href={rightArrowLink}>
+                                    <Link className={classNames(cls.innerRightArrow, {
+                                        [cls.isMobile]: isMobileSize
+                                    }, [cls.innerArrow])} href={rightArrowLink}>
                                         <Image src={rightArrow} alt="rightArrow"/>
                                     </Link>
 

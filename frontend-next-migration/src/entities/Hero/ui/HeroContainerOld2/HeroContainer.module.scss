@@ -75,29 +75,35 @@
   transform: translate(-12.5%, 50%);
 }
 
+
+
+
 .heroImgWrapper{
   border: solid 4px white;
   background: red;
   width: 100%;
   aspect-ratio: 16 / 8;
   display: flex;
+  justify-content: center;
+}
+
+.heroImgWrapper.isMobile{
   justify-content: space-between;
 }
 
-.innerLeftArrow{
+.innerArrow{
   align-self: center;
   width: 50px;
+  display: none;
 }
 
-.innerRightArrow{
-  align-self: center;
-  width: 50px;
+.innerArrow.isMobile{
+  display: block;
 }
-
-
 
 .heroImg{
   justify-self: center;
+  align-self: center;
   width: 50%;
   height: auto;
   //transform: scale(130%);
