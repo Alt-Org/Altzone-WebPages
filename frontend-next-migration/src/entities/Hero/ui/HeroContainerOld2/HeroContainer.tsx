@@ -48,7 +48,7 @@ const HeroContainer = (props: Props) => {
 
     const maxHeight = isMobileSize
         ?
-        distanceToBottom - 40
+        distanceToBottom - 35
         : distanceToBottom - 50;
 
 
@@ -101,7 +101,7 @@ const HeroContainer = (props: Props) => {
 
                                     <Image
                                         quality={100}
-                                        className={cls.heroImg}
+                                        className={classNames(cls.heroImg, mobileModCss)}
                                         src={heroImg}
                                         alt="hero"
                                         width={500}
@@ -116,7 +116,7 @@ const HeroContainer = (props: Props) => {
 
                                 </div>
                                 {/*todo distance dif on mobile and pc*/}
-                                <div className={cls.heroDescription} style={{maxHeight: maxHeight}}>
+                                <div className={cls.heroDescription} style={{maxHeight}}>
                                     <p>
                                         {/*todo delete after testing*/}
                                         {heroDescription}
