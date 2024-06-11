@@ -96,7 +96,9 @@ export const HeroCard = (props: Props) => {
         <ClickableBorder
           ref={elementRef}
           borderImageSource='/images/hero-border3.png'
-          className={classNames(cls.Wrapper, {}, [className])}
+          className={classNames(cls.Wrapper, { [cls.active]: isPopupOpen }, [
+            className,
+          ])}
           onClick={openPopup}
           isPopupOpen={isPopupOpen}>
           <button onClick={openPopup} className={cls.HeroButton}>
