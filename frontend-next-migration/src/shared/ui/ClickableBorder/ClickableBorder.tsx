@@ -4,48 +4,28 @@ import React, {
   forwardRef,
   ForwardedRef,
   CSSProperties,
-  HTMLAttributes,
 } from 'react';
 import cls from './ClickableBorder.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-type Props = HTMLAttributes<HTMLDivElement> & {
+type Props = {
   children: ReactNode;
   borderImageSource: any;
   className?: string;
-  onClick?: () => void;
-  isPopupOpen?: boolean;
 };
 
 const ClickableBorder = forwardRef(
-  (
-    {
-      children,
-      borderImageSource,
-      className = '',
-      onClick,
-      isPopupOpen,
-      ...rest
-    }: Props,
-    ref: ForwardedRef<HTMLDivElement>,
-  ) => {
+  (props: Props, ref: ForwardedRef<HTMLDivElement>) => {
+    const { children, borderImageSource, className = '' } = props;
     const [isHovered, setIsHovered] = useState(false);
-
     const handleMouseEnter = () => {
       setIsHovered(true);
     };
-
     const handleMouseLeave = () => {
       setIsHovered(false);
     };
 
-    const handleClick = () => {
-      if (onClick) {
-        onClick();
-      }
-    };
-
-    const borderImageStyle: CSSProperties = isHovered
+    const borderImageStyle = isHovered
       ? { borderImageSource: `url(${borderImageSource})` }
       : { borderImageSource: 'none' };
 
@@ -56,11 +36,8 @@ const ClickableBorder = forwardRef(
         ref={ref}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={handleClick}
         className={classNames(cls.content, mods, [className])}
-        style={borderImageStyle}
-        {...rest} // `rest` now does not include `isPopupOpen`
-      >
+        style={borderImageStyle}>
         {children}
       </div>
     );
