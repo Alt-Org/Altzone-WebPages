@@ -51,13 +51,16 @@ const HeroContainer = (props: Props) => {
         distanceToBottom - 40
         : distanceToBottom - 50;
 
+
+    const mobileModCss = {
+        [cls.isMobile]: isMobileSize
+    }
+
     return (
         <div className={cls.PageWrapper}>
             <div className={cls.componentWrapper}>
 
-                <div className={classNames(cls.heroImgSideWrapper, {
-                    [cls.isMobile]: isMobileSize
-                })}>
+                <div className={classNames(cls.heroImgSideWrapper, mobileModCss)}>
                     <Image
                         className={cls.heroImgSide}
                         src={heroImg}
@@ -70,9 +73,7 @@ const HeroContainer = (props: Props) => {
                 </div>
 
 
-                <div className={classNames(cls.containerWrapper, {
-                    [cls.isMobile]: isMobileSize
-                })}>
+                <div className={classNames(cls.containerWrapper, mobileModCss)}>
                     <div className={cls.container} ref={containerRef}>
                         <Image
                             className={cls.bgImg}
@@ -84,14 +85,10 @@ const HeroContainer = (props: Props) => {
                         <div className={cls.contentWrapper}>
                             <div className={cls.content}>
                                 <div className={
-                                    classNames(cls.heroImgWrapper,{
-                                        [cls.isMobile]: isMobileSize
-                                    })
+                                    classNames(cls.heroImgWrapper,mobileModCss)
                                 } style={{backgroundColor: heroColor}}>
 
-                                    <Link className={classNames(cls.innerLeftArrow, {
-                                        [cls.isMobile]: isMobileSize
-                                    }, [cls.innerArrow])} href={leftArrowLink}>
+                                    <Link className={classNames(cls.innerLeftArrow, mobileModCss, [cls.innerArrow])} href={leftArrowLink}>
                                         <Image src={leftArrow} alt="leftArrow"
                                         />
                                     </Link>
@@ -107,9 +104,7 @@ const HeroContainer = (props: Props) => {
                                         onLoad={handleImageLoad}
                                     />
 
-                                    <Link className={classNames(cls.innerRightArrow, {
-                                        [cls.isMobile]: isMobileSize
-                                    }, [cls.innerArrow])} href={rightArrowLink}>
+                                    <Link className={classNames(cls.innerRightArrow, mobileModCss, [cls.innerArrow])} href={rightArrowLink}>
                                         <Image src={rightArrow} alt="rightArrow"/>
                                     </Link>
 
