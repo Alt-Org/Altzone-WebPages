@@ -10,7 +10,9 @@ const useImageDistance = () => {
         if (containerRef.current && imageRef.current) {
             const containerRect = containerRef.current.getBoundingClientRect();
             const imageRect = imageRef.current.getBoundingClientRect();
-            setDistanceToBottom(containerRect.bottom - imageRect.bottom);
+            const distance = containerRect.bottom - imageRect.bottom;
+            console.log(distance);
+            setDistanceToBottom(distance);
         }
     };
 
@@ -20,10 +22,20 @@ const useImageDistance = () => {
         }
     }, [imagesLoaded]);
 
+
     useEffect(() => {
-        const handleResize = () => calculateDistance();
+        const handleResize = () => {
+            // it is very important when we switch fullscreen we should wait
+            setTimeout(() => {
+                calculateDistance();
+            }, 100);
+        };
+
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     const handleImageLoad = () => setImagesLoaded(true);
