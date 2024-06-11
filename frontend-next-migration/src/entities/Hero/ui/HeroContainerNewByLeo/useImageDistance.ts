@@ -27,7 +27,7 @@ const useImageDistance = () => {
             // it is very important when we switch fullscreen we should make that macrotask
             setTimeout(() => {
                 calculateDistance();
-            }, 0);
+            }, 100);
         };
 
         window.addEventListener('resize', handleResize);
