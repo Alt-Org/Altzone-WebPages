@@ -93,7 +93,7 @@ export const HeroCard = (props: Props) => {
           isPopupOpen={isPopupOpen} // Pass isPopupOpen to ClickableBorder
         >
           <button onClick={openPopup} className={cls.HeroButton}>
-            <Image src={imageSrc} alt={'imageSrc'} />
+            <Image src={imageSrc} alt={imageAlt} />
           </button>
         </ClickableBorder>
       </div>

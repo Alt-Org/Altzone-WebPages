@@ -9,7 +9,9 @@
   &:hover,
   &:active {
     .HeroImg {
-      transform: scale(1.1);
+      .HeroImg {
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -21,8 +23,8 @@
 }
 
 .HeroImg {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   z-index: -1;
   transition: 0.21s transform ease-in-out;
   //transition: transform 0.2s ease;
