@@ -35,7 +35,8 @@ const HeroContainer = (props: Props) => {
         containerRef,
         imageRef,
         distanceToBottom,
-        handleImageLoad
+        handleImageLoad,
+        imagesLoaded
     } = useImageDistance();
 
     useKeyboardNavigation(
