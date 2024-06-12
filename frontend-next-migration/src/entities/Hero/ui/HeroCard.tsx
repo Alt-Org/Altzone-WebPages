@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import cls from './HeroCard.module.scss';
 import Image from 'next/image';
 import useResizeObserver, {
@@ -17,9 +18,8 @@ type Props = {
   backgroundColor?: string;
   heroGif: any;
   heroName: string;
-  Description: string;
+  heroDescription: string;
   group: string;
-  title: string;
 };
 
 export const HeroCard = (props: Props) => {
@@ -31,12 +31,12 @@ export const HeroCard = (props: Props) => {
     backgroundColor,
     heroGif,
     heroName,
-    Description,
+    heroDescription,
     group,
   } = props;
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [popupTop, setPopupTop] = useState(0); // New state for popup top position
+  const [popupTop, setPopupTop] = useState(0);
 
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -73,14 +73,28 @@ export const HeroCard = (props: Props) => {
   }, [isPopupOpen]);
 
   const openPopup = (event: React.MouseEvent) => {
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
-    setPopupTop(rect.top + window.scrollY); // Set popup top position based on click location
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    setPopupTop(rect.top + window.scrollY);
     setIsPopupOpen(true);
   };
 
   const closePopup = () => {
     setIsPopupOpen(false);
   };
+
+  const popup = isPopupOpen
+    ? ReactDOM.createPortal(
+        <Popup isOpen={isPopupOpen} onClose={closePopup} popupTop={popupTop}>
+          <HeroContainer
+            heroGif={heroGif}
+            heroName={heroName}
+            heroDescription={heroDescription}
+            group={group}
+          />
+        </Popup>,
+        document.body,
+      )
+    : null;
 
   return (
     <>
@@ -96,14 +110,7 @@ export const HeroCard = (props: Props) => {
           </button>
         </ClickableBorder>
       </div>
-      <Popup isOpen={isPopupOpen} onClose={closePopup} popupTop={popupTop}>
-        <HeroContainer
-          heroGif={heroGif}
-          heroName={heroName}
-          heroDescription={Description}
-          group={group}
-        />
-      </Popup>
+      {popup}
     </>
   );
 };

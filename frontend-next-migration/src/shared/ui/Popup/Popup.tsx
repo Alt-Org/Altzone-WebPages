@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import cls from './popup.module.scss';
 
 type Props = {
@@ -6,12 +7,9 @@ type Props = {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
-  popupTop: number;
 };
 
-const Popup = ({ isOpen, onClose, children, className, popupTop }: Props) => {
-  const [adjustedTop, setAdjustedTop] = useState(popupTop);
-
+const Popup = ({ isOpen, onClose, children, className }: Props) => {
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -32,31 +30,15 @@ const Popup = ({ isOpen, onClose, children, className, popupTop }: Props) => {
     };
   }, [isOpen, onClose]);
 
-  useEffect(() => {
-    if (isOpen) {
-      const windowHeight = window.innerHeight;
-      const contentHeight =
-        document.querySelector(`.${cls.popupContent}`)?.clientHeight || 0;
-
-      // Calculate adjusted top position
-      let newTop = popupTop;
-      if (newTop < 0) {
-        newTop = 0;
-      }
-      setAdjustedTop(newTop);
-    }
-  }, [isOpen, popupTop]);
-
   if (!isOpen) {
     return null;
   }
 
-  return (
+  return ReactDOM.createPortal(
     <div className={cls.popupOverlay}>
-      <div className={cls.popupContent} style={{ top: `${adjustedTop}px` }}>
-        {children}
-      </div>
-    </div>
+      <div className={`${cls.popupContent} ${className}`}>{children}</div>
+    </div>,
+    document.body,
   );
 };
 
