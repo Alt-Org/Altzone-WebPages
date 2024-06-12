@@ -138,7 +138,7 @@ const HeroContainer = (props: Props) => {
                 </div>
 
                 <Link className={classNames(cls.outerRightArrow, mobileModCss, [cls.outerArrow])} href={rightArrowLink}>
-                    <Image src={rightArrow} alt="leftArrow"
+                    <Image src={rightArrow} alt="rightArrow"
                     />
                 </Link>
 
