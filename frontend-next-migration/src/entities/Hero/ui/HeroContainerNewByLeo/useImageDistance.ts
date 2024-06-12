@@ -1,5 +1,6 @@
-import { useRef, useState, useEffect, RefObject } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
+// be very careful with refactoring
 const useImageDistance = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
@@ -17,17 +18,22 @@ const useImageDistance = () => {
 
     useEffect(() => {
         if (imagesLoaded) {
-            calculateDistance();
+            // be very careful with refactoring, first time for good internet second time for slow
+            // calculateDistance();
+            setTimeout(() => {
+                calculateDistance();
+            },0)
         }
     }, [imagesLoaded]);
 
 
     useEffect(() => {
         const handleResize = () => {
+            // calculateDistance();
             // it is very important when we switch fullscreen we should make that macrotask
             setTimeout(() => {
                 calculateDistance();
-            }, 100);
+            }, 0);
         };
 
         window.addEventListener('resize', handleResize);
@@ -39,7 +45,7 @@ const useImageDistance = () => {
 
     const handleImageLoad = () => setImagesLoaded(true);
 
-    return { containerRef, imageRef, distanceToBottom, handleImageLoad };
+    return { containerRef, imageRef, distanceToBottom, handleImageLoad, imagesLoaded };
 };
 
 export default useImageDistance;

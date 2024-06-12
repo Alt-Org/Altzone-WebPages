@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .componentWrapper{
@@ -129,6 +130,9 @@
   //padding-bottom: 20px;
   overflow-y: auto;
   @include custom-scrollbar;
+
+  max-height: 30px;
+
 }
 
 
