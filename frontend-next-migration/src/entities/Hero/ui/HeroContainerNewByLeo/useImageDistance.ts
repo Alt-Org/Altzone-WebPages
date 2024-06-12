@@ -19,21 +19,21 @@ const useImageDistance = () => {
     useEffect(() => {
         if (imagesLoaded) {
             // be very careful with refactoring, first time for good internet second time for slow
-            // calculateDistance();
+            calculateDistance();
             setTimeout(() => {
                 calculateDistance();
-            },0)
+            },100)
         }
     }, [imagesLoaded]);
 
 
     useEffect(() => {
         const handleResize = () => {
-            // calculateDistance();
+            calculateDistance();
             // it is very important when we switch fullscreen we should make that macrotask
             setTimeout(() => {
                 calculateDistance();
-            }, 0);
+            }, 100);
         };
 
         window.addEventListener('resize', handleResize);
