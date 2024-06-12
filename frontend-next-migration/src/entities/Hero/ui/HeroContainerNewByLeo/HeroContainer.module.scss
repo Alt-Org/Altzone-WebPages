@@ -16,6 +16,8 @@
 
 .outerArrow{
   max-width: 150px;
+  user-select: none;
+  pointer-events: none;
 }
 
 .outerArrow.isMobile{
@@ -104,6 +106,8 @@
   align-self: center;
   width: 50px;
   display: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 .innerArrow.isMobile{
