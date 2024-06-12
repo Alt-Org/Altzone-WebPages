@@ -8,8 +8,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import Popup from '@/shared/ui/Popup/Popup';
 import HeroContainer from '@/entities/Hero/ui/HeroContainer/HeroContainer';
 import ClickableBorder from '@/shared/ui/ClickableBorder/ClickableBorder';
-import Heroes from '../model/heroes';
-import img from '@/shared/assets/images/altLogo.png';
 
 type Props = {
   id: string;
@@ -17,12 +15,11 @@ type Props = {
   imageAlt: string;
   className?: string;
   backgroundColor?: string;
-  heroImg: string;
   heroGif: any;
-  heroImgAlt: string;
   heroName: string;
-  heroDescription: string;
+  Description: string;
   group: string;
+  title: string;
 };
 
 export const HeroCard = (props: Props) => {
@@ -34,12 +31,13 @@ export const HeroCard = (props: Props) => {
     backgroundColor,
     heroGif,
     heroName,
-    heroDescription,
+    Description,
     group,
   } = props;
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [popupTop, setPopupTop] = useState(0); // New state for popup top position
+
   const elementRef = useRef<HTMLDivElement>(null);
 
   const handleCardSizeUpdate: ResizeCallback<HTMLDivElement> = useCallback(
@@ -74,20 +72,14 @@ export const HeroCard = (props: Props) => {
     };
   }, [isPopupOpen]);
 
-  const openPopup = () => {
+  const openPopup = (event: React.MouseEvent) => {
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+    setPopupTop(rect.top + window.scrollY); // Set popup top position based on click location
     setIsPopupOpen(true);
   };
 
   const closePopup = () => {
     setIsPopupOpen(false);
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
   };
 
   return (
@@ -96,9 +88,7 @@ export const HeroCard = (props: Props) => {
         <ClickableBorder
           ref={elementRef}
           borderImageSource='/images/hero-border3.png'
-          className={classNames(cls.Wrapper, { [cls.active]: isPopupOpen }, [
-            className,
-          ])}
+          className={classNames(cls.Wrapper, {}, [className])}
           onClick={openPopup}
           isPopupOpen={isPopupOpen}>
           <button onClick={openPopup} className={cls.HeroButton}>
@@ -106,18 +96,13 @@ export const HeroCard = (props: Props) => {
           </button>
         </ClickableBorder>
       </div>
-      <Popup className={cls.popup} isOpen={isPopupOpen} onClose={closePopup}>
-        <div
-          className={`${cls.HeroInfoDiv} ${isHovered ? cls.hovered : ''}`}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}>
-          <HeroContainer
-            heroGif={heroGif}
-            heroName={heroName}
-            heroDescription={heroDescription}
-            group={group}
-          />
-        </div>
+      <Popup isOpen={isPopupOpen} onClose={closePopup} popupTop={popupTop}>
+        <HeroContainer
+          heroGif={heroGif}
+          heroName={heroName}
+          heroDescription={Description}
+          group={group}
+        />
       </Popup>
     </>
   );

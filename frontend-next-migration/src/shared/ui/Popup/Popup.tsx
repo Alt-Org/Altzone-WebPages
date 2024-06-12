@@ -6,11 +6,11 @@ type Props = {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
+  popupTop: number;
 };
 
-const Popup = ({ isOpen, onClose, children, className }: Props) => {
-  const [scrollY, setScrollY] = useState(window.scrollY);
-  const [popupTop, setPopupTop] = useState(0);
+const Popup = ({ isOpen, onClose, children, className, popupTop }: Props) => {
+  const [adjustedTop, setAdjustedTop] = useState(popupTop);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -33,29 +33,19 @@ const Popup = ({ isOpen, onClose, children, className }: Props) => {
   }, [isOpen, onClose]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
     if (isOpen) {
-      window.addEventListener('scroll', handleScroll);
+      const windowHeight = window.innerHeight;
+      const contentHeight =
+        document.querySelector(`.${cls.popupContent}`)?.clientHeight || 0;
+
+      // Calculate adjusted top position
+      let newTop = popupTop;
+      if (newTop < 0) {
+        newTop = 0;
+      }
+      setAdjustedTop(newTop);
     }
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    const windowHeight = window.innerHeight;
-    const contentHeight =
-      document.querySelector(`.${cls.popupContent}`)?.clientHeight || 0;
-    const newPopupTop = Math.max(
-      (windowHeight - contentHeight) / 2 + scrollY,
-      0,
-    );
-    setPopupTop(newPopupTop);
-  }, [isOpen, scrollY]);
+  }, [isOpen, popupTop]);
 
   if (!isOpen) {
     return null;
@@ -63,7 +53,7 @@ const Popup = ({ isOpen, onClose, children, className }: Props) => {
 
   return (
     <div className={cls.popupOverlay}>
-      <div className={cls.popupContent} style={{ top: `${popupTop}px` }}>
+      <div className={cls.popupContent} style={{ top: `${adjustedTop}px` }}>
         {children}
       </div>
     </div>

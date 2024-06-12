@@ -1,23 +1,22 @@
 .popupOverlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  z-index: 100;
+  overflow-y: auto;
 }
 
 .popupContent {
   position: absolute;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-}
-
-.HeroInfoDiv {
-  opacity: 0.8;
+  width: 90%;
+  max-height: 90%;
+  overflow-y: 5%;
+  padding: 20px;
+  border-radius: 8px;
+  opacity: 75%;
 }
