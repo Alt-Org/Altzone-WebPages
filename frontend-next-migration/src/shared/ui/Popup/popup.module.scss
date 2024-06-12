@@ -1,22 +1,22 @@
 .popupOverlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  z-index: 100;
-  overflow-y: auto;
+  align-items: center;
+  z-index: 1000; /* Ensure this is higher than other elements */
+  opacity: 85%;
+  border: 2px solid red;
 }
 
 .popupContent {
-  position: absolute;
-  width: 90%;
-  max-height: 90%;
-  overflow-y: 5%;
+  bottom: 20%;
+  position: relative;
+  width: 100%;
+  height: auto;
   padding: 20px;
-  border-radius: 8px;
-  opacity: 75%;
+  border: 2px solid red;
 }
