@@ -1,8 +1,8 @@
 export {HeroCard} from "./ui/HeroCard";
-// export {default as HeroContainer} from "./ui/HeroContainer/HeroContainer";
+export {default as HeroContainer} from "./ui/HeroContainer/HeroContainer";
 
 
-export {default as HeroContainer} from "./ui/HeroContainerNewByLeo/HeroContainer";
+// export {default as HeroContainer} from "./ui/HeroContainerNewByLeo/HeroContainer";
 
 
 
