@@ -1,0 +1,24 @@
+.NavElements {
+  display: grid;
+  //display: flex;
+  //justify-content: space-evenly;
+
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  //justify-content: center;
+  gap: 50px;
+
+
+}
+
+@media (max-width: 1150px) {
+  .NavElements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    gap: 20px;
+  }
+
+  //align-items: center;
+}

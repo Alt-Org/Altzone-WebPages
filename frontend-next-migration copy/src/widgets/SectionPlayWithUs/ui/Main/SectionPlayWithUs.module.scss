@@ -1,0 +1,117 @@
+.SectionPlayWithUs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+
+  @include backGroundImageDefault;
+
+}
+
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 5%;
+}
+
+
+
+.BtnGame {
+  background-color: var(--inverted-bg-color) !important;
+
+  height: 10vh!important;
+  width: 60% !important;
+  //line height: ;
+  font-size: 4em !important;
+  white-space: nowrap;
+  min-width: fit-content;
+  //border: solid 1px var(--primary-color);
+}
+
+.BtnDownload {
+  @include link-scale-effect;
+  border-radius: var(--border-radius-custom);
+  height: 10vh;
+  width: auto;
+}
+
+.navElements {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.Content {
+  display: flex;
+  width: 90%;
+}
+
+.ContentWithNav{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items:center;
+}
+
+.sideImg {
+  width: 35%;
+}
+
+@media (min-width: 1151px) and (max-width: 1600px) {
+  .BtnGame {
+    font-size: 2.5em !important;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+  .BtnGame {
+    font-size: 2em !important;
+    margin-top: 40% !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1150px) {
+  .BtnGame {
+    font-size: 2.5em !important;
+  }
+}
+
+@media (max-width: 1150px) {
+  .Content {
+    width: 90%;
+  }
+
+  .Buttons {
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .BtnGame {
+    white-space: unset;
+    width: 100%;
+    margin-top: 10%;
+  }
+
+  .BtnDownload {
+    height: 11vh;
+  }
+
+  .navElements {
+    margin-bottom: 5rem;
+    margin-top: 1rem;
+  }
+  
+  .sideImg {
+    display: none;
+}
+}

@@ -1,0 +1,20 @@
+{
+  "main" : "Main page",
+  "forum" : "Forum",
+  "heroes": "Heroes",
+  "team" : "Team",
+  "art" : "Art",
+  "artGame" : "Game art",
+  "teachingPackage" : "Teaching package",
+  "login": "Log in",
+  "profile": "Profile",
+  "logout": "Log out",
+  "community": "Community",
+  "feedback" : "Feedback",
+  "game": "Game",
+  "clans" : "Clans",
+  "comics": "Comics",
+  "galleries": "Galleries",
+  "leaderboard": "Leaderboard",
+  "SignUpFirst!" : "Sign up first!"
+}

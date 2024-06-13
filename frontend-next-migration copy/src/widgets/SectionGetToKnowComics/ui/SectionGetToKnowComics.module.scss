@@ -1,0 +1,46 @@
+.GetToKnow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  padding: 0;
+
+  @include backGroundImageDefault;
+
+  @media screen and (max-width: 480px) {
+    height: auto;
+    padding: 20px;
+  }
+}
+
+.centeredImage {
+  //z-index: 20;
+  width: 60vw;
+  min-width: 350px;
+  height: auto;
+  object-fit: contain;
+  margin-top: 1%;
+}
+
+@media screen and (max-width: 480px) {
+  .centeredImage {
+    width: 80% !important;
+    min-width: unset;
+  }
+}
+
+.button {
+  @include link-scale-effect;
+  //z-index: 20;
+  background-color: var(--transparent-bg-darker)!important;
+  padding: 20px!important;
+  margin-top: 3%!important;
+
+  @media screen and (max-width: 480px) {
+    padding: 15px!important;
+    font-size: 14px!important;
+    margin-top: 5%!important;
+  }
+}

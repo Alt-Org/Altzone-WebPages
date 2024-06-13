@@ -1,0 +1,118 @@
+.sidebar{
+  padding-top: 12%;
+}
+
+.Navbar {
+  font: var(--font-xxl);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.NavbarMobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 10vh;
+  margin-top: 5%;
+  position: fixed;
+
+  z-index: var(--navbar-z-index);
+
+}
+
+
+
+.NavbarMobile__burger {
+
+  display: flex;
+  width: auto;
+  justify-content: center;
+  height: 80%;
+  left: 20px;
+  cursor: pointer;
+  user-select: none;
+
+
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+  //padding: 10px;
+  //height: 80%;
+  //width: auto;
+  //
+}
+
+.NavbarMobile__burger svg {
+  width: auto;
+  height: 100%;
+}
+
+.NavbarMobile__center {
+  margin-left: auto!important;
+  margin-right: auto!important;
+}
+
+.navLogo {
+  img {
+    //height: 100px;
+    //padding-left: 30px;
+
+    height: var(--navbar-logo-height);
+    width: auto;
+    //height: 200px!important;
+    //width: auto;
+  }
+}
+
+.overlayed {
+  background-color: rgba(4, 255, 4, 0);
+  z-index: var(--navbar-z-index);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.authSection {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0 0 0 2px var(--inverted-primary-color);
+  padding: 5px;
+  text-align: center;
+  font-family: var(--font-family-texts) !important;
+  font: var(--font-l);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--secondary-color) !important;
+
+  &{
+    .authSectionLink{
+      color: var(--secondary-color) !important;
+    }
+  }
+
+}
+
+.sidebarBottom {
+  display: flex;
+  gap: 10px;
+}
+
+.langSwitcher {
+  border-radius: var(--border-radius-custom);
+  outline: 2px solid var(--inverted-primary-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--secondary-color) !important;
+  font-size: var(--font-size-m) !important;
+}
+
+@media (max-width: 800px){
+  .NavbarMobile{
+    height: 7vh;
+  }
+}

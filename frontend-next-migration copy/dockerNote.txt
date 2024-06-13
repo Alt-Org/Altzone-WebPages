@@ -1,0 +1,5 @@
+docker build -t account/projectname:v4 .
+docker push account/projectname:v4
+
+
+docker push leolab1337/altzone_web_pages:v6
