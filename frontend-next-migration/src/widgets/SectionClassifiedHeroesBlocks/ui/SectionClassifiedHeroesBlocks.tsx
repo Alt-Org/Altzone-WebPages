@@ -10,6 +10,14 @@ type Props = {
   backgroundImageSrc?: string;
   group: string;
   textBgColor?: any;
+  id: number;
+  srcImg: string;
+  srcGif: string;
+  alt: string;
+  title: string;
+  borderColor: string;
+  description: string;
+  color: string;
 };
 
 const SectionClassifiedHeroesBlocks = (props: Props) => {
@@ -53,9 +61,7 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
               imageSrc={item.srcImg}
               imageAlt={item.alt}
               backgroundColor={item.color}
-              title={item.title}
               group={item.group}
-              Description={item.description}
             />
           ))}
       </div>
