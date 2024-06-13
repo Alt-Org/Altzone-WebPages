@@ -13,6 +13,7 @@ import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 type Props = {
     heroImg: string,
     heroGif: string,
+    heroName: string,
     heroDescription: string,
     heroColor: string,
     leftArrowLink: string,
