@@ -7,6 +7,7 @@ type Props = {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
+  popupTop?: number;
 };
 
 const Popup = ({ isOpen, onClose, children, className }: Props) => {
