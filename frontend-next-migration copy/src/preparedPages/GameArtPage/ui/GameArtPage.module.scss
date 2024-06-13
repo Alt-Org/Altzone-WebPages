@@ -1,0 +1,63 @@
+.main{
+    min-height: 100vh;
+    padding-top: 18vh;
+}
+
+.MainGameArt {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 10%;
+   
+
+    h1{
+        margin-left: 5%;
+        font-size: 3rem;
+    }
+}
+
+.wholePageBG{
+    filter: brightness(85%);
+}
+
+.RowTextImg {
+    display: flex;
+    flex-direction: row ;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+}
+
+.RowText{
+    width: 65%;
+}
+.RowImg{
+    width: 30%;
+    margin-left: 5%;
+}
+
+@media (max-width: 1150px) {
+    .MainGameArt{
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+    .RowTextImg{
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .RowText{
+        width: 100%;
+    }
+    .RowImg{
+        width: 60%;
+        margin-left: 0%;
+    }
+}

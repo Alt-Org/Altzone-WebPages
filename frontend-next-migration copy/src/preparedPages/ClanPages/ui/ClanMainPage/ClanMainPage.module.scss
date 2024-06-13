@@ -1,0 +1,61 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-bottom: 40px;
+}
+
+.Container{
+  margin-top: 30%;
+  //padding-bottom: 40px;
+  flex-grow: 1 !important;
+
+  //background-color: red;
+}
+
+.ClansViewMain{
+
+  overflow: hidden!important;
+
+  position: relative;
+
+  height: 100%;
+
+  //min-height: 57vh;
+  //min-height: 57vh;
+  //height: 100%;
+  padding: 20px;
+  //background-color: var(--transparent-bg-dark);
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+
+
+}
+
+//@media (max-width: 768px) {
+//  .Container {
+//    padding: 20px;
+//  }
+//}
+
+
+@media (min-width: 768px) {
+  .Container {
+    margin-top: 15vh;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

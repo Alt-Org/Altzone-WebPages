@@ -1,0 +1,20 @@
+{
+  "main" : "Pääsivu",
+  "forum" : "Foorumi",
+  "heroes": "Sankarit",
+  "team" : "Tiimi",
+  "art" : "Taide",
+  "artGame" : "Pelitaide",
+  "teachingPackage" : "Opetuspaketti",
+  "login": "Kirjaudu",
+  "profile": "Profiili",
+  "logout": "Kirjaudu ulos",
+  "community": "Yhteisö",
+  "feedback" : "Palaute",
+  "game": "Peli",
+  "clans" : "Klaanit",
+  "comics": "Sarjakuvat",
+  "galleries": "Kuvagalleriat",
+  "leaderboard": "Tulostaulu",
+  "SignUpFirst!" : "Kirjadu ensin!"
+}

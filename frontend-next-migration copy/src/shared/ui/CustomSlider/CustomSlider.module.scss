@@ -1,0 +1,62 @@
+.CustomSlider{
+
+  padding: 0 10px;
+  display: flex;
+  gap: 5px;
+
+  .scrollLeft,.scrollRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover{
+      background-color: #333333;
+    }
+
+
+    *{
+      align-self: center;
+    }
+
+  }
+
+}
+
+.Cards{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x:auto;
+  position: relative;
+  //@include custom-scrollbar;
+  max-width: 100%;
+
+}
+
+.Cards::-webkit-scrollbar {
+  display: none;
+}
+
+.Cards {
+  scrollbar-width: none;
+}
+
+.Cards > *{
+  //width: 1000px!important;
+  background-color: #6b46c1;
+}
+
+
+.CardContainer {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}
+
+.CardContainer > * {
+  flex: 0 0 auto;
+  width: 100%;
+  background-color: #6b46c1;
+}
