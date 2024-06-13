@@ -1,30 +1,139 @@
-.HeroContainer {
-  position: fixed;
-  top: 20%;
-  left: 0;
+//todo should be moved to the own page , because it is just a component
+.PageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.componentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.outerArrow {
+  max-width: 150px;
+  user-select: none;
+}
+
+.outerArrow.isMobile {
+  display: none;
+}
+
+.heroImgSideWrapper {
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+  max-width: 60.875em;
+  width: 40.1666666667em;
+  height: 42.6666666667em;
+  z-index: -1;
+
+  //max-height: 400px;
+
+  .heroImgSide {
+    position: absolute;
+    top: -1.3333333333em;
+    left: 10%;
+    width: 40.1666666667em;
+    height: 43.2916666667em;
+    //height: auto;
+    //object-fit: cover;
+  }
+}
+
+.heroImgSideWrapper.isMobile {
+  display: none;
+}
+
+.containerWrapper.isMobile {
+  //todo it is important because we have to have it centralised and this right blot causes problems
+  //todo may be calculate the padding from content distance to the end of this wrapper into the right side, e.g formula: p = (distance - (smallGapBetweenContentAndBorderWithoutBlot))
+  padding-left: 10%;
+}
+
+.container {
+  position: relative;
+  max-width: 600px;
+}
+
+.bgImg {
   width: 100%;
-  height: 70%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.contentWrapper {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+
+.content {
+  position: relative;
+  top: 50%;
+  left: 5%;
+  transform: translate(-12.5%, 50%);
+}
+
+.heroImgWrapper {
+  border: solid 4px white;
+  background: red;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  display: flex;
+  justify-content: center;
+}
+
+.heroImgWrapper.isMobile {
+  justify-content: space-between;
+}
+
+.innerArrow {
+  align-self: center;
+  width: 50px;
+  display: none;
+  user-select: none;
+}
+
+.innerArrow.isMobile {
+  display: block;
+}
+
+.heroImg {
+  width: 50%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+.heroImg.isMobile {
+  transform: scale(130%);
+}
+
+.heroDescription {
+  //max-height: 14dvh;
+  //max-height: 29dvh;
+  padding: 0 1rem;
+  margin-top: 7%;
+  //padding-bottom: 20px;
   overflow-y: auto;
-  z-index: 300;
-  opacity: 0.85;
-  border: 2px solid blueviolet;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-}
+  @include custom-scrollbar;
 
-.HeroInfoDiv {
-  position: relative; /* Ensure this is set to relative for absolute positioning inside */
-  border: 2px solid rgb(48, 224, 20);
-}
-
-.HeroInfoDiv img {
-  border: 2px solid red;
-  max-width: 100%;
-  max-height: auto;
-}
-
-.HeroContainer::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  background: transparent;
+  max-height: 60px;
 }

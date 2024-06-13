@@ -1,103 +1,148 @@
 'use client';
-import React from 'react';
-import cls from './HeroContainer.module.scss';
+import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.png';
 import Image from 'next/image';
-import infoBg from '@/shared/assets/images/heros/hero-container/info-bg.png';
-import bgAlyllistajat from '@/shared/assets/images/backgrounds/bgAlyllistajat.png';
-import bgHamaajat from '@/shared/assets/images/backgrounds/bgHamaajat.png';
-import bgPeilaajat from '@/shared/assets/images/backgrounds/bgPeilaajat.png';
-import bgSulautujat from '@/shared/assets/images/backgrounds/bgSulautujat.png';
-import bgTorjujat from '@/shared/assets/images/backgrounds/bgTorjujat.png';
-import bgTottelijat from '@/shared/assets/images/backgrounds/bgTottelijat.png';
-import { useRouter } from 'next/navigation';
+import cls from './HeroContainer.module.scss';
+import Link from 'next/link';
+import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
+import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import useImageDistance from './useImageDistance';
+import useKeyboardNavigation from './useKeyboardNavigation';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 
 type Props = {
-  id: number;
-  srcImg: string;
-  srcGif: string;
-  alt: string;
-  title: string;
-  borderColor: string;
-  description: string;
-  group: string;
-  color: string;
+  heroImg: string;
+  heroGif: string;
+  heroName: string;
+  heroDescription: string;
+  heroColor: string;
+  leftArrowLink: string;
+  rightArrowLink: string;
+  xLink: string;
 };
 
-const HeroContainer = ({
-  id,
-  srcImg,
-  srcGif,
-  alt,
-  title,
-  borderColor,
-  description,
-  group,
-  color,
-}: Props) => {
-  const router = useRouter();
+const HeroContainer = (props: Props) => {
+  const {
+    heroImg,
+    heroGif,
+    heroDescription,
+    heroColor,
+    leftArrowLink,
+    rightArrowLink,
+    xLink,
+  } = props;
 
-  // Log props received by HeroContainer
-  console.log('HeroContainer props:', {
-    id,
-    srcImg,
-    srcGif,
-    alt,
-    title,
-    borderColor,
-    description,
-    group,
-    color,
+  const {
+    containerRef,
+    imageRef,
+    distanceToBottom,
+    handleImageLoad,
+    imagesLoaded,
+  } = useImageDistance();
+
+  useKeyboardNavigation({
+    leftArrowLink,
+    rightArrowLink,
+    xLink,
   });
+  const { isMobileSize } = useIsMobileSize();
 
-  const groupBackgrounds: { [key: string]: any } = {
-    'ÄLYLLISTÄJÄT // EGOTISMI': bgAlyllistajat,
-    'HÄMÄÄJÄT // DEFLEKTIO': bgHamaajat,
-    'PEILAAJAT // PROJEKTIO': bgPeilaajat,
-    'SULAUTUJAT // KONFLUENSSI': bgSulautujat,
-    'TORJUJAT // RETROFLEKTIO': bgTorjujat,
-    'TOTTELIJAT // INTROJEKTIO': bgTottelijat,
+  const maxHeight = isMobileSize
+    ? distanceToBottom - 35
+    : distanceToBottom - 50;
+
+  const mobileModCss = {
+    [cls.isMobile]: isMobileSize,
   };
 
-  const background = groupBackgrounds[group];
-
-  if (!background) {
-    console.error(`No background found for hero group: ${group}`);
-  }
-
   return (
-    <section className={cls.HeroContainer}>
-      <div className={cls.backgroundImageWrapper}>
-        {background ? (
+    <div className={cls.PageWrapper}>
+      <div className={cls.componentWrapper}>
+        <Link
+          className={classNames(cls.outerLeftArrow, mobileModCss, [
+            cls.outerArrow,
+          ])}
+          href={leftArrowLink}>
+          <Image src={leftArrow} alt='leftArrow' />
+        </Link>
+
+        <div className={classNames(cls.heroImgSideWrapper, mobileModCss)}>
           <Image
-            src={background}
-            alt='groupBackground'
-            className={cls.backgroundImage}
+            className={cls.heroImgSide}
+            src={heroImg}
+            alt='hero'
+            ref={imageRef}
+            onLoad={handleImageLoad}
           />
-        ) : null}
-      </div>
-      <div className={cls.Content}>
-        <div className={cls.HeroInfoDiv}>
-          <Image
-            src={infoBg}
-            alt='infoBg'
-            className={cls.InfoBgImg}
-            priority={true}
-          />
-          <div className={cls.HeroInfoHeader}>
-            <h2>{title}</h2>
-          </div>
-          <div className={cls.HeroInfoMain}>
+        </div>
+
+        <div className={classNames(cls.containerWrapper, mobileModCss)}>
+          <div className={cls.container} ref={containerRef}>
             <Image
-              src={srcGif}
-              alt='heroGif'
-              className={cls.InfoImg}
-              priority={true}
+              className={cls.bgImg}
+              src={bgBox}
+              alt='hero'
+              width={400}
+              height={400}
+              onLoad={handleImageLoad}
             />
-            <p className={cls.description}>{description}</p>
+            <div className={cls.contentWrapper}>
+              <div className={cls.content}>
+                <div
+                  className={classNames(cls.heroImgWrapper, mobileModCss)}
+                  style={{ backgroundColor: heroColor }}>
+                  <Link
+                    className={classNames(cls.innerLeftArrow, mobileModCss, [
+                      cls.innerArrow,
+                    ])}
+                    href={leftArrowLink}>
+                    <Image src={leftArrow} alt='leftArrow' />
+                  </Link>
+
+                  <Image
+                    quality={100}
+                    className={classNames(cls.heroImg, mobileModCss)}
+                    src={isMobileSize ? heroImg : heroGif}
+                    alt='hero'
+                    width={500}
+                    height={500}
+                    ref={imageRef}
+                    onLoad={handleImageLoad}
+                  />
+
+                  <Link
+                    className={classNames(cls.innerRightArrow, mobileModCss, [
+                      cls.innerArrow,
+                    ])}
+                    href={rightArrowLink}>
+                    <Image src={rightArrow} alt='rightArrow' />
+                  </Link>
+                </div>
+                <div className={cls.heroDescription} style={{ maxHeight }}>
+                  <p>
+                    {/*todo delete after testing*/}
+                    {heroDescription}
+                    {heroDescription}
+                    {heroDescription}
+                    {heroDescription}
+                    {heroDescription}
+                    {heroDescription}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <Link
+          className={classNames(cls.outerRightArrow, mobileModCss, [
+            cls.outerArrow,
+          ])}
+          href={rightArrowLink}>
+          <Image src={rightArrow} alt='rightArrow' />
+        </Link>
       </div>
-    </section>
+    </div>
   );
 };
 
