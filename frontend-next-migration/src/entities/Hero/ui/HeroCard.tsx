@@ -1,14 +1,14 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+'use client';
 import cls from './HeroCard.module.scss';
 import Image from 'next/image';
+import { AppRoutesLinks, RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { ClickableBorder } from '@/shared/ui/ClickableBorder';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useCallback, useRef } from 'react';
 import useResizeObserver, {
   ResizeCallback,
 } from '@/shared/lib/hooks/useResizeObserver';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import Popup from '@/shared/ui/Popup/Popup';
-import HeroContainer from '@/entities/Hero/ui/HeroContainer/HeroContainer';
-import ClickableBorder from '@/shared/ui/ClickableBorder/ClickableBorder';
 
 type Props = {
   id: string;
@@ -16,105 +16,38 @@ type Props = {
   imageAlt: string;
   className?: string;
   backgroundColor?: string;
-  heroGif: any;
-  heroName: string;
-  heroDescription: string;
-  group: string;
 };
 
 export const HeroCard = (props: Props) => {
-  const {
-    id,
-    imageSrc,
-    imageAlt,
-    className = '',
-    backgroundColor,
-    heroGif,
-    heroName,
-    heroDescription,
-    group,
-  } = props;
+  const { id, imageSrc, imageAlt, className = '', backgroundColor } = props;
 
-  // Log props received by HeroCard
-  console.log('HeroCard props:', props);
-
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [popupTop, setPopupTop] = useState(0);
-
-  const elementRef = useRef<HTMLDivElement>(null);
+  const elementRef = useRef(null);
 
   const handleCardSizeUpdate: ResizeCallback<HTMLDivElement> = useCallback(
     (refCurrent) => {
-      if (refCurrent) {
-        const width = refCurrent.clientWidth;
-        refCurrent.style.setProperty('--cardWidthLocal', `${width}px`);
-      }
+      const width = refCurrent.clientWidth;
+      refCurrent.style.setProperty('--cardWidthLocal', `${width}px`);
     },
     [],
   );
 
   useResizeObserver({ elementRef, callback: handleCardSizeUpdate });
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        isPopupOpen &&
-        elementRef.current &&
-        !elementRef.current.contains(event.target as Node)
-      ) {
-        setIsPopupOpen(false);
-      }
-    };
-
-    if (isPopupOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isPopupOpen]);
-
-  const openPopup = (event: React.MouseEvent) => {
-    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
-    setPopupTop(rect.top + window.scrollY);
-    setIsPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setIsPopupOpen(false);
-  };
-
-  const popup = isPopupOpen
-    ? ReactDOM.createPortal(
-        <Popup isOpen={isPopupOpen} onClose={closePopup} popupTop={popupTop}>
-          <HeroContainer
-            heroGif={heroGif}
-            heroName={heroName}
-            heroDescription={heroDescription}
-            group={group}
-          />
-        </Popup>,
-        document.body,
-      )
-    : null;
-
   return (
-    <>
-      <div className={cls.HeroDiv}>
-        <ClickableBorder
-          ref={elementRef}
-          borderImageSource='/images/hero-border3.png'
-          className={classNames(cls.Wrapper, {}, [className])}
-          onClick={openPopup}
-          isPopupOpen={isPopupOpen}>
-          <button onClick={openPopup} className={cls.HeroButton}>
-            <Image src={imageSrc} alt={imageAlt} />
-          </button>
-        </ClickableBorder>
+    <ClickableBorder
+      ref={elementRef}
+      borderImageSource={'/images/hero-border3.png'}
+      className={classNames(cls.Wrapper, {}, [className])}>
+      <div className={cls.HeroDiv} style={{ backgroundColor }}>
+        <AppLink
+          to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(
+            ':id',
+            id.toString(),
+          )}>
+          <Image src={imageSrc} alt={imageAlt} className={cls.HeroImg} />
+        </AppLink>
       </div>
-      {popup}
-    </>
+    </ClickableBorder>
   );
 };
 
