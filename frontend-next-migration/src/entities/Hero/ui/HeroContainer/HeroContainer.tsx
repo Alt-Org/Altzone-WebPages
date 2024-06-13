@@ -12,20 +12,42 @@ import bgTottelijat from '@/shared/assets/images/backgrounds/bgTottelijat.png';
 import { useRouter } from 'next/navigation';
 
 type Props = {
-  heroGif: any;
-  heroName: string;
-  heroDescription: string;
+  id: number;
+  srcImg: string;
+  srcGif: string;
+  alt: string;
+  title: string;
+  borderColor: string;
+  description: string;
   group: string;
-  className?: string;
+  color: string;
 };
 
 const HeroContainer = ({
-  heroGif,
-  heroName,
-  heroDescription,
+  id,
+  srcImg,
+  srcGif,
+  alt,
+  title,
+  borderColor,
+  description,
   group,
+  color,
 }: Props) => {
   const router = useRouter();
+
+  // Log props received by HeroContainer
+  console.log('HeroContainer props:', {
+    id,
+    srcImg,
+    srcGif,
+    alt,
+    title,
+    borderColor,
+    description,
+    group,
+    color,
+  });
 
   const groupBackgrounds: { [key: string]: any } = {
     'ÄLYLLISTÄJÄT // EGOTISMI': bgAlyllistajat,
@@ -62,16 +84,16 @@ const HeroContainer = ({
             priority={true}
           />
           <div className={cls.HeroInfoHeader}>
-            <h2>{heroName}</h2>
+            <h2>{title}</h2>
           </div>
           <div className={cls.HeroInfoMain}>
             <Image
-              src={heroGif}
+              src={srcGif}
               alt='heroGif'
               className={cls.InfoImg}
               priority={true}
             />
-            <p className={cls.description}>{heroDescription}</p>
+            <p className={cls.description}>{description}</p>
           </div>
         </div>
       </div>

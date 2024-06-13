@@ -35,6 +35,9 @@ export const HeroCard = (props: Props) => {
     group,
   } = props;
 
+  // Log props received by HeroCard
+  console.log('HeroCard props:', props);
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupTop, setPopupTop] = useState(0);
 
@@ -98,7 +101,7 @@ export const HeroCard = (props: Props) => {
 
   return (
     <>
-      <div className={cls.HeroDiv} style={{ backgroundColor }}>
+      <div className={cls.HeroDiv}>
         <ClickableBorder
           ref={elementRef}
           borderImageSource='/images/hero-border3.png'
