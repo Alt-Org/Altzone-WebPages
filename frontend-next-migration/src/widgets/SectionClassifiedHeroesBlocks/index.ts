@@ -1,1 +1,0 @@
-export {default as SectionClassifiedHeroesBlocks} from "./ui/SectionClassifiedHeroesBlocks";
