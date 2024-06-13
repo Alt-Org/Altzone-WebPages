@@ -14,15 +14,17 @@
 
 .HeroInfoDiv {
   position: relative; /* Ensure this is set to relative for absolute positioning inside */
-  height: 150%;
-  width: 100%;
-  align-self: center;
-
   border: 2px solid rgb(48, 224, 20);
 }
 
 .HeroInfoDiv img {
   border: 2px solid red;
   max-width: 100%;
-  max-height: 100%;
+  max-height: auto;
+}
+
+.HeroContainer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
 }
