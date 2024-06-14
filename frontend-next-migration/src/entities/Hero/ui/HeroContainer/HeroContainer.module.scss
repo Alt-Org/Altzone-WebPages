@@ -6,7 +6,6 @@
   justify-content: center;
   overflow: hidden;
   position: relative;
-  animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -43,6 +42,7 @@
   align-items: center;
   position: relative;
   z-index: 1;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .outerArrow {
