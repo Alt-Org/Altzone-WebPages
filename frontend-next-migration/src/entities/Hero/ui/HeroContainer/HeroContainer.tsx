@@ -31,6 +31,7 @@ const HeroContainer = (props: Props) => {
     leftArrowLink,
     rightArrowLink,
     xLink,
+    heroName,
   } = props;
 
   const {
@@ -100,6 +101,14 @@ const HeroContainer = (props: Props) => {
             />
             <div className={cls.contentWrapper}>
               <div className={cls.content}>
+                <div className={classNames(cls.heroName, mobileModCss)}>
+                  <h2>{heroName}</h2>
+                </div>
+                <div className={classNames(cls.xLinkButton, mobileModCss)}>
+                  <Link href={xLink}>
+                    <h1>X</h1>
+                  </Link>
+                </div>
                 <div
                   className={classNames(cls.heroImgWrapper, mobileModCss)}
                   style={{ backgroundColor: heroColor }}>
@@ -120,6 +129,7 @@ const HeroContainer = (props: Props) => {
                     height={500}
                     ref={imageRef}
                     onLoad={handleImageLoad}
+                    priority={true}
                   />
 
                   <Link

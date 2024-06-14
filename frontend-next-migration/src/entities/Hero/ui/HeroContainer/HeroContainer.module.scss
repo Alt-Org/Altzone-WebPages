@@ -150,3 +150,30 @@
   @include custom-scrollbar;
   max-height: 60px;
 }
+.heroName {
+  top: -21%;
+  left: 25%;
+  text-align: center;
+  border-bottom: 5px solid white;
+  border-top: 5px solid white;
+  position: absolute;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+}
+
+.heroName.isMobile {
+  transform: scale(80%);
+  top: -22%;
+  left: 20%;
+}
+.xLinkButton {
+  position: absolute;
+  top: -15%;
+  right: -8%;
+  cursor: pointer;
+  font-size: large;
+}
+.xLinkButton.isMobile {
+  transform: scale(90%);
+  top: -15%;
+  right: -9%;
+}
