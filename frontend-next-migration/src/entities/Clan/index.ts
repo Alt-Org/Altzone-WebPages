@@ -8,4 +8,4 @@ export {
     clanEndpoints
 } from "./model/clanApi";
 
-export type {IClan,IClanCreateDto,IClanUpdateDto, GetClansResponse,GetClanResponse} from "./types/clan";
+export type { IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, GetClansResponse, GetClanResponse } from "./types/clan";

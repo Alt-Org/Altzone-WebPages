@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { StateSchema } from "@/preparedApp/providers/StoreProvider";
 import { envHelper } from "@/shared/const/envHelper";
-import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto } from "@/entities/Clan";
+import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse } from "@/entities/Clan";
 
 interface GetClansQueryParams {
     page?: number,
@@ -55,7 +55,7 @@ export const clanApi = createApi({
             providesTags: ['Clan']
         }),
 
-        createClan: builder.mutation<IClan, IClanCreateDto>({
+        createClan: builder.mutation<ICreateClanResponse, IClanCreateDto>({
             query: (clan) => ({
                 url: clanUrl,
                 method: 'POST',

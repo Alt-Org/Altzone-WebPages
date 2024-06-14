@@ -14,6 +14,18 @@ export type IClan = {
     isOpen: boolean,
 };
 
+export type ICreateClanResponse = {
+    data: {
+        Clan: IClan;
+    };
+    metaData: {
+        dataKey: string;
+        modelName: string;
+        dataType: string;
+        dataCount: number;
+    };
+}
+
 export type IClanCreateDto = Pick<IClan, "name" | "tag" | "gameCoins" | "isOpen">;
 
 export type IClanUpdateDto = Pick<IClan, "_id" | "name" | "tag" | "gameCoins" | "isOpen">;
