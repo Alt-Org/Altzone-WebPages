@@ -74,7 +74,7 @@ const ClanAllSubPage = () => {
                     <ClansSearchDesktop onClickToSearch={onClickToSearch} />}
                 {isMobileSize
                     ?
-                    <ClansViewMobile clanServerResponse={clans} onClickToClan={onClickToClan} />
+                    <ClansViewMobile clanServerResponse={clans} onClickToClan={onClickToClan} onClickToPage={onClickToPage} />
                     :
                     <ClansViewDesktop clanServerResponse={clans} onClickToClan={onClickToClan} onClickToPage={onClickToPage} />}
             </>
@@ -151,11 +151,12 @@ const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
 type MobileProps = {
     clanServerResponse: GetClansResponse;
     onClickToClan?: (id: string) => void;
+    onClickToPage?: (page: number) => void;
 }
 
 
 
-const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => {
+const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: MobileProps) => {
 
     const onClick = (id: string) => {
         if (onClickToClan) onClickToClan(id);
@@ -164,21 +165,45 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => 
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "clan");
+    const onClickPage = (page: number) => {
+        if (onClickToPage) onClickToPage(page);
+    }
 
     return (
         <>
+            <div>
+                <Button
+                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage - 1)}
+                    theme={ButtonTheme.BACKGROUND}
+                    size={ButtonSize.M}
+                    className={cls.BtnGame}
+                    square={false}
+                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                >Back
+                </Button>
+                {clanServerResponse.paginationData.currentPage}
+                <Button
+                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage + 1)}
+                    theme={ButtonTheme.BACKGROUND}
+                    size={ButtonSize.M}
+                    className={cls.BtnGame}
+                    square={false}
+                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                >Next
+                </Button>
+            </div>
             {clanServerResponse.data.Clan.map((clan, idx) => {
                 let bgColor;
                 switch (idx) {
-                    case 0:
-                        bgColor = 'rgba(218,165,32,0.89)';
-                        break;
-                    case 1:
-                        bgColor = 'rgba(192,192,192,0.75)';
-                        break;
-                    case 2:
-                        bgColor = 'rgb(162,108,62)';
-                        break;
+                    //     case 0:
+                    //         bgColor = 'rgba(218,165,32,0.89)';
+                    //         break;
+                    //     case 1:
+                    //         bgColor = 'rgba(192,192,192,0.75)';
+                    //         break;
+                    //     case 2:
+                    //         bgColor = 'rgb(162,108,62)';
+                    //         break;
                     default:
                         bgColor = 'rgba(0,0,0,0.6)';
                         break;
@@ -223,64 +248,6 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
 
     return (
         <div>
-            <table className={cls.ClanTable}>
-                <thead>
-                    <tr>
-                        <th>{t('rating')}</th>
-                        <th>{t('clan')}</th>
-                        <th>{t('clan_master')}</th>
-                        <th>{t('coins')}</th>
-                        <th>{t('members')}</th>
-                        <th>{t('tag')}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {clanServerResponse.data.Clan.map((clan, idx) => {
-                        let bgColor;
-                        switch (idx) {
-                            case 0:
-                                bgColor = 'rgba(218,165,32,0.89)';
-                                break;
-                            case 1:
-                                bgColor = 'rgba(192,192,192,0.75)';
-                                break;
-                            case 2:
-                                bgColor = 'rgb(162,108,62)';
-                                break;
-                            default:
-                                bgColor = 'rgba(0,0,0,0.6)';
-                                break;
-                        }
-
-                        return (
-                            <tr key={idx} style={{ backgroundColor: bgColor }} onClick={() => onClick(clan?._id)}>
-                                <td>{idx + 1}</td>
-                                <td>{clan?.name}</td>
-                                <td>Joku Mestari </td>
-                                <td>{clan?.gameCoins}</td>
-                                <td>{clan?.playerCount}</td>
-                                <td>{clan?.tag}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-                <tfoot>
-                    {/* <button
-                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage - 1)}
-                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
-                >
-                    Back
-                </button>
-                {clanServerResponse.paginationData.currentPage}
-                <button
-                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage + 1)}
-                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
-                >
-                    Next
-                </button> */}
-
-                </tfoot>
-            </table>
             <div>
                 <Button
                     onClick={() => onClickPage(clanServerResponse.paginationData.currentPage - 1)}
@@ -302,6 +269,48 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                 >Next
                 </Button>
             </div>
+            <table className={cls.ClanTable}>
+                <thead>
+                    <tr>
+                        <th>{t('rating')}</th>
+                        <th>{t('clan')}</th>
+                        <th>{t('clan_master')}</th>
+                        <th>{t('coins')}</th>
+                        <th>{t('members')}</th>
+                        <th>{t('tag')}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {clanServerResponse.data.Clan.map((clan, idx) => {
+                        let bgColor;
+                        switch (idx) {
+                            //     case 0:
+                            //         bgColor = 'rgba(218,165,32,0.89)';
+                            //         break;
+                            //     case 1:
+                            //         bgColor = 'rgba(192,192,192,0.75)';
+                            //         break;
+                            //     case 2:
+                            //         bgColor = 'rgb(162,108,62)';
+                            //         break;
+                            default:
+                                bgColor = 'rgba(0,0,0,0.6)';
+                                break;
+                        }
+
+                        return (
+                            <tr key={idx} style={{ backgroundColor: bgColor }} onClick={() => onClick(clan?._id)}>
+                                <td>{idx + 1}</td>
+                                <td>{clan?.name}</td>
+                                <td>Joku Mestari </td>
+                                <td>{clan?.gameCoins}</td>
+                                <td>{clan?.playerCount}</td>
+                                <td>{clan?.tag}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
         </div>
     )
 }
