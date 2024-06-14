@@ -29,7 +29,7 @@
 //  right: 0;
 //}
 
-.siteNavContentList{
+.siteNavContentList {
   padding-left: 50px;
   background-color: black;
   border-radius: var(--border-radius-custom);
@@ -42,13 +42,13 @@
   z-index: 2;
 }
 
-.appLinkLogo{
+.appLinkLogo {
   display: block;
   position: relative;
   width: 120px;
 
 
-  .itemLogoImg{
+  .itemLogoImg {
     position: absolute;
     top: -2.5416666667000003em;
     left: 0;
@@ -60,9 +60,23 @@
     width: auto;
   }
 
+  .itemClanLogoImg {
+    position: absolute;
+    top: -4.5em;
+    left: 0;
+    z-index: 100;
+
+    height: auto;
+
+    //width: 200px;
+    width: 150%;
+    max-width: 150%;
+  }
+
+
 }
 
-.itemNavbarDropDownContent{
+.itemNavbarDropDownContent {
 
   outline: 2px solid var(--inverted-primary-color);
 
@@ -72,14 +86,14 @@
   background-color: var(--transparent-bg-dark);
   padding: 10px;
 
-  div{
+  div {
     @include link-scale-effect;
   }
 
 }
 
 
-.navItem{
+.navItem {
   display: flex;
   height: max-content;
   line-height: initial;
@@ -88,7 +102,7 @@
   //height: max-content;
 }
 
-.langSwitcher{
+.langSwitcher {
   border-radius: var(--border-radius-custom);
   outline: 2px solid var(--inverted-primary-color);
   background-color: rgba(0, 0, 0, 0.8);
@@ -96,7 +110,7 @@
   font-size: var(--font-size-m) !important;
 }
 
-.authButton{
+.authButton {
   border-radius: var(--border-radius-custom);
   outline: 2px solid var(--inverted-primary-color);
   background-color: rgba(0, 0, 0, 0.8);
@@ -106,7 +120,7 @@
 
   padding: 4px;
 
-  & > * {
+  &>* {
     color: var(--secondary-color) !important;
   }
 
