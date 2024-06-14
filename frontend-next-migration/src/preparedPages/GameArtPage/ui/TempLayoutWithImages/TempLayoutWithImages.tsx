@@ -34,7 +34,7 @@ export function TempLayoutWithImages (props: Props) {
         <div>
             <Navbar/>
             {array.map((_, index)=>(
-                <ImageContainer key={index} imgSrc={`/images/GameArtTempLayoutImages/${lng}/slide${++index}.png`} altText={`slide${++index}`} />
+                <ImageContainer key={index} imgSrc={`/images/GameArtTempLayoutImages/${lng}/slide${++index}.webp`} altText={`slide${++index}`} />
             ))}
         </div>
     )

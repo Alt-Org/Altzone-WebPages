@@ -5,7 +5,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./Main.module.scss";
 import { useClientTranslation } from "@/shared/i18n";
 import Image from "next/image";
-import greenHaired from "@/shared/assets/images/heros/green-haired/green-haired.webp"
+import greenHaired from "@/shared/assets/images/heros/hannu-hodari/ahmatti.webp"
 import { Container } from "@/shared/ui/Container";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { Paragraph } from "@/shared/ui/Paragraph";

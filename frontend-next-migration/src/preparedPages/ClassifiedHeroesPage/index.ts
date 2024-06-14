@@ -1,0 +1,1 @@
+export {default as ClassifiedHeroesPage} from "./ui/ClassifiedHeroesPage"
