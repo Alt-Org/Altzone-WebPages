@@ -18,13 +18,6 @@ import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hoda
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 
-import bgTorjujat from '@/shared/assets/images/backgrounds/bgTorjujat.png';
-import bgSulautujat from '@/shared/assets/images/backgrounds/bgSulautujat.png';
-import bgAlyllistajat from '@/shared/assets/images/backgrounds/bgAlyllistajat.png';
-import bgPeilaajat from '@/shared/assets/images/backgrounds/bgPeilaajat.png';
-import bgTottelijat from '@/shared/assets/images/backgrounds/bgTottelijat.png';
-import bgHamaajat from '@/shared/assets/images/backgrounds/bgHamaajat.png';
-
 const Heroes = [
   {
     id: 0,
@@ -36,7 +29,6 @@ const Heroes = [
     description: 'greenHairedDescription',
     group: 'TORJUJAT // RETROFLEKTIO',
     color: '#e20505',
-    groupBg: bgTorjujat,
   },
   {
     id: 1,
@@ -48,7 +40,6 @@ const Heroes = [
     description: 'hannuHodariDescription',
     group: 'TORJUJAT // RETROFLEKTIO',
     color: '#e20505',
-    groupBg: bgTorjujat,
   },
   {
     id: 2,
@@ -59,7 +50,6 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'purpleGirlsDescription',
     group: 'SULAUTUJAT // KONFLUENSSI',
-    groupBg: bgSulautujat,
     color: '#910494',
   },
   {
@@ -71,7 +61,6 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'einsteinDescription',
     group: 'ÄLYLLISTÄJÄT // EGOTISMI',
-    groupBg: bgAlyllistajat,
     color: '#330393',
   },
   {
@@ -83,7 +72,6 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'graffitiGayaDescription',
     group: 'PEILAAJAT // PROJEKTIO',
-    groupBg: bgPeilaajat,
     color: '#feed01',
   },
   {
@@ -95,7 +83,6 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'pirateDescription',
     group: 'TORJUJAT // RETROFLEKTIO',
-    groupBg: bgTorjujat,
     color: '#e20505',
   },
 ] as const;
