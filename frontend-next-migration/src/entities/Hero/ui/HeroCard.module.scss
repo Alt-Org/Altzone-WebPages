@@ -9,35 +9,27 @@
   &:hover,
   &:active {
     .HeroImg {
-      .HeroImg {
-        transform: scale(1.1);
-      }
+      transform: scale(1.1);
     }
   }
 }
 
 .HeroDiv {
+  cursor: pointer;
   width: 100%;
   height: 100%;
+  border-radius: var(--border-radius-custom);
+  border: var(--border-thick-black);
+
   overflow: hidden;
 }
 
 .HeroImg {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: -1;
   transition: 0.21s transform ease-in-out;
   //transition: transform 0.2s ease;
   //transform: scale(0.92);
-}
-
-.HeroButton {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
 }
