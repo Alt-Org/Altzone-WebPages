@@ -44,7 +44,12 @@ export const HeroCard = (props: Props) => {
             ':id',
             id.toString(),
           )}>
-          <Image src={imageSrc} alt={imageAlt} className={cls.HeroImg} />
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            className={cls.HeroImg}
+            priority={true}
+          />
         </AppLink>
       </div>
     </ClickableBorder>
