@@ -1,4 +1,3 @@
-//todo should be moved to the own page , because it is just a component
 .PageWrapper {
   min-height: 100vh;
   display: flex;
@@ -6,6 +5,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -18,10 +18,31 @@
   }
 }
 
+.backgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .componentWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .outerArrow {
@@ -40,9 +61,7 @@
   max-width: 60.875em;
   width: 40.1666666667em;
   height: 42.6666666667em;
-  z-index: -1;
-
-  //max-height: 400px;
+  z-index: 1;
 
   .heroImgSide {
     position: absolute;
@@ -50,8 +69,7 @@
     left: 10%;
     width: 40.1666666667em;
     height: 43.2916666667em;
-    //height: auto;
-    //object-fit: cover;
+    z-index: 2;
   }
 }
 
@@ -60,14 +78,13 @@
 }
 
 .containerWrapper.isMobile {
-  //todo it is important because we have to have it centralised and this right blot causes problems
-  //todo may be calculate the padding from content distance to the end of this wrapper into the right side, e.g formula: p = (distance - (smallGapBetweenContentAndBorderWithoutBlot))
   padding-left: 10%;
 }
 
 .container {
   position: relative;
   max-width: 600px;
+  z-index: 1;
 }
 
 .bgImg {
@@ -127,13 +144,9 @@
 }
 
 .heroDescription {
-  //max-height: 14dvh;
-  //max-height: 29dvh;
   padding: 0 1rem;
   margin-top: 7%;
-  //padding-bottom: 20px;
   overflow-y: auto;
   @include custom-scrollbar;
-
   max-height: 60px;
 }

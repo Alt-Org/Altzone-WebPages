@@ -1,6 +1,7 @@
 'use client';
-import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.png';
 import Image from 'next/image';
+import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.png';
+import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
 import cls from './HeroContainer.module.scss';
 import Link from 'next/link';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
@@ -57,6 +58,17 @@ const HeroContainer = (props: Props) => {
 
   return (
     <div className={cls.PageWrapper}>
+      <div className={cls.backgroundImageWrapper}>
+        <Image
+          src={groupBg}
+          alt='Background Image'
+          layout='fill'
+          objectFit='cover'
+          quality={100}
+          className={cls.backgroundImage}
+          style={{ backgroundColor: heroColor }}
+        />
+      </div>
       <div className={cls.componentWrapper}>
         <Link
           className={classNames(cls.outerLeftArrow, mobileModCss, [
