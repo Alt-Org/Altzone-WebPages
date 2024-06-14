@@ -63,11 +63,10 @@ const HeroContainer = (props: Props) => {
         <Image
           src={groupBg}
           alt='Background Image'
-          layout='fill'
-          objectFit='cover'
           quality={100}
           className={cls.backgroundImage}
           style={{ backgroundColor: heroColor }}
+          priority={true}
         />
       </div>
       <div className={cls.componentWrapper}>
@@ -86,6 +85,7 @@ const HeroContainer = (props: Props) => {
             alt='hero'
             ref={imageRef}
             onLoad={handleImageLoad}
+            priority={true}
           />
         </div>
 
@@ -98,6 +98,7 @@ const HeroContainer = (props: Props) => {
               width={400}
               height={400}
               onLoad={handleImageLoad}
+              priority={true}
             />
             <div className={cls.contentWrapper}>
               <div className={cls.content}>
