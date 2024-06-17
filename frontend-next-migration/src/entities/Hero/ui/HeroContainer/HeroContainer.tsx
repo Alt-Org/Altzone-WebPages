@@ -6,10 +6,11 @@ import cls from './HeroContainer.module.scss';
 import Link from 'next/link';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useImageDistance from './useImageDistance';
 import useKeyboardNavigation from './useKeyboardNavigation';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import useIsTabletSize from '@/shared/lib/hooks/useIsTabletSize';
 
 type Props = {
   heroImg: string;
@@ -48,13 +49,18 @@ const HeroContainer = (props: Props) => {
     xLink,
   });
   const { isMobileSize } = useIsMobileSize();
+  const { isTabletSize } = useIsTabletSize();
 
   const maxHeight = isMobileSize
     ? distanceToBottom - 35
     : distanceToBottom - 50;
 
-  const mobileModCss = {
+  const mobileModCss: Mods = {
     [cls.isMobile]: isMobileSize,
+  };
+
+  const tabletModCss: Mods = {
+    [cls.isTablet]: isTabletSize,
   };
 
   return (
@@ -78,7 +84,12 @@ const HeroContainer = (props: Props) => {
           <Image src={leftArrow} alt='leftArrow' />
         </Link>
 
-        <div className={classNames(cls.heroImgSideWrapper, mobileModCss)}>
+        <div
+          className={classNames(
+            cls.heroImgSideWrapper,
+            mobileModCss,
+            tabletModCss,
+          )}>
           <Image
             className={cls.heroImgSide}
             src={heroImg}
@@ -89,7 +100,12 @@ const HeroContainer = (props: Props) => {
           />
         </div>
 
-        <div className={classNames(cls.containerWrapper, mobileModCss)}>
+        <div
+          className={classNames(
+            cls.containerWrapper,
+            mobileModCss,
+            tabletModCss,
+          )}>
           <div className={cls.container} ref={containerRef}>
             <Image
               className={cls.bgImg}
@@ -102,16 +118,30 @@ const HeroContainer = (props: Props) => {
             />
             <div className={cls.contentWrapper}>
               <div className={cls.content}>
-                <div className={classNames(cls.heroName, mobileModCss)}>
+                <div
+                  className={classNames(
+                    cls.heroName,
+                    mobileModCss,
+                    tabletModCss,
+                  )}>
                   <h2>{heroName}</h2>
                 </div>
-                <div className={classNames(cls.xLinkButton, mobileModCss)}>
+                <div
+                  className={classNames(
+                    cls.xLinkButton,
+                    mobileModCss,
+                    tabletModCss,
+                  )}>
                   <Link href={xLink}>
                     <h1>X</h1>
                   </Link>
                 </div>
                 <div
-                  className={classNames(cls.heroImgWrapper, mobileModCss)}
+                  className={classNames(
+                    cls.heroImgWrapper,
+                    mobileModCss,
+                    tabletModCss,
+                  )}
                   style={{ backgroundColor: heroColor }}>
                   <Link
                     className={classNames(cls.innerLeftArrow, mobileModCss, [
@@ -123,7 +153,11 @@ const HeroContainer = (props: Props) => {
 
                   <Image
                     quality={100}
-                    className={classNames(cls.heroImg, mobileModCss)}
+                    className={classNames(
+                      cls.heroImg,
+                      mobileModCss,
+                      tabletModCss,
+                    )}
                     src={isMobileSize ? heroImg : heroGif}
                     alt='hero'
                     width={500}
