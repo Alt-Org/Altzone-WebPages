@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const useIsTabletSize = () => {
   const checkForDevice = () =>
-    window.innerWidth >= 769 && window.innerWidth < 1024;
+    window.innerWidth >= 768 && window.innerWidth < 1024;
 
   const [isTabletSize, setIsTabletSize] = useState(false);
 
