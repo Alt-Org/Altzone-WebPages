@@ -151,20 +151,40 @@
   max-height: 60px;
 }
 .heroName {
-  top: -21%;
+  top: -25%;
   left: 25%;
   text-align: center;
   border-bottom: 5px solid white;
   border-top: 5px solid white;
   position: absolute;
-  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
 }
+//mobile = window.innerWidth <= 768
+//tablet = window.innerWidth > 768 && window.innerWidth < 1024
+//desktop = window.innerWidth >= 1024
+//widescreen = window.innerWidth >= 1440
 
 .heroName.isMobile {
-  transform: scale(80%);
-  top: -22%;
+  transform: scale(90%);
+  top: -23%;
+  left: 25%;
+}
+.heroName.isTablet {
+  transform: scale(70%);
+  top: -25%;
+  left: 15%;
+  padding: 0;
+}
+.heroName.isDesktop {
+  transform: scale(90%);
+  top: -24%;
   left: 20%;
 }
+.heroName.isWidescreen {
+  transform: scale(110%);
+  top: -19%;
+  left: 25%;
+}
+
 .xLinkButton {
   position: absolute;
   top: -15%;
@@ -173,7 +193,21 @@
   font-size: large;
 }
 .xLinkButton.isMobile {
-  transform: scale(90%);
   top: -15%;
   right: -9%;
+}
+.xLinkButton.isTablet {
+  transform: scale(70%);
+  top: -19%;
+  right: -10%;
+}
+.xLinkButton.isDesktop {
+  transform: scale(100%);
+  top: -17%;
+  right: -8%;
+}
+.xLinkButton.isWidescreen {
+  transform: scale(110%);
+  top: -12%;
+  right: -7%;
 }
