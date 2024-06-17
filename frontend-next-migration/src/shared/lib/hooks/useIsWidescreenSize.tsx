@@ -2,17 +2,15 @@
 
 import { useEffect, useState } from 'react';
 
-const useIsDesktopSize = () => {
+const useIsWidescreenSize = () => {
   const checkForDevice = () =>
-    typeof window !== 'undefined'
-      ? window.innerWidth >= 1024 && window.innerWidth < 1440
-      : false;
+    typeof window !== 'undefined' ? window.innerWidth >= 1440 : false;
 
-  const [isDesktopSize, setIsDesktopSize] = useState(checkForDevice());
+  const [isWidescreenSize, setIsWidescreenSize] = useState(checkForDevice());
 
   useEffect(() => {
     const handlePageResized = () => {
-      setIsDesktopSize(checkForDevice());
+      setIsWidescreenSize(checkForDevice());
     };
 
     if (typeof window !== 'undefined') {
@@ -33,8 +31,8 @@ const useIsDesktopSize = () => {
   }, []);
 
   return {
-    isDesktopSize,
+    isWidescreenSize,
   };
 };
 
-export default useIsDesktopSize;
+export default useIsWidescreenSize;
