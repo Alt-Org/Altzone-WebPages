@@ -84,12 +84,7 @@ const HeroContainer = (props: Props) => {
           <Image src={leftArrow} alt='leftArrow' />
         </Link>
 
-        <div
-          className={classNames(
-            cls.heroImgSideWrapper,
-            mobileModCss,
-            tabletModCss,
-          )}>
+        <div className={classNames(cls.heroImgSideWrapper, mobileModCss)}>
           <Image
             className={cls.heroImgSide}
             src={heroImg}
@@ -100,12 +95,7 @@ const HeroContainer = (props: Props) => {
           />
         </div>
 
-        <div
-          className={classNames(
-            cls.containerWrapper,
-            mobileModCss,
-            tabletModCss,
-          )}>
+        <div className={classNames(cls.containerWrapper, mobileModCss)}>
           <div className={cls.container} ref={containerRef}>
             <Image
               className={cls.bgImg}
@@ -118,30 +108,16 @@ const HeroContainer = (props: Props) => {
             />
             <div className={cls.contentWrapper}>
               <div className={cls.content}>
-                <div
-                  className={classNames(
-                    cls.heroName,
-                    mobileModCss,
-                    tabletModCss,
-                  )}>
+                <div className={classNames(cls.heroName, mobileModCss)}>
                   <h2>{heroName}</h2>
                 </div>
-                <div
-                  className={classNames(
-                    cls.xLinkButton,
-                    mobileModCss,
-                    tabletModCss,
-                  )}>
+                <div className={classNames(cls.xLinkButton, mobileModCss)}>
                   <Link href={xLink}>
                     <h1>X</h1>
                   </Link>
                 </div>
                 <div
-                  className={classNames(
-                    cls.heroImgWrapper,
-                    mobileModCss,
-                    tabletModCss,
-                  )}
+                  className={classNames(cls.heroImgWrapper, mobileModCss)}
                   style={{ backgroundColor: heroColor }}>
                   <Link
                     className={classNames(cls.innerLeftArrow, mobileModCss, [
@@ -153,11 +129,7 @@ const HeroContainer = (props: Props) => {
 
                   <Image
                     quality={100}
-                    className={classNames(
-                      cls.heroImg,
-                      mobileModCss,
-                      tabletModCss,
-                    )}
+                    className={classNames(cls.heroImg, mobileModCss)}
                     src={isMobileSize ? heroImg : heroGif}
                     alt='hero'
                     width={500}
