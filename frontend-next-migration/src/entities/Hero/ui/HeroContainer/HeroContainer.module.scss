@@ -160,24 +160,24 @@
 }
 //mobile = window.innerWidth <= 768
 //tablet = window.innerWidth > 768 && window.innerWidth < 1024
-//desktop = window.innerWidth >= 1024
+//desktop = window.innerWidth >= 1024 && window.innerWidth < 1440
 //widescreen = window.innerWidth >= 1440
 
 .heroName.isMobile {
-  transform: scale(90%);
+  transform: scale(80%);
   top: -23%;
-  left: 25%;
+  left: 20%;
 }
 .heroName.isTablet {
-  transform: scale(70%);
+  transform: scale(75%);
   top: -25%;
   left: 15%;
   padding: 0;
 }
 .heroName.isDesktop {
-  transform: scale(90%);
-  top: -24%;
-  left: 20%;
+  transform: scale(80%);
+  top: -25%;
+  left: 19%;
 }
 .heroName.isWidescreen {
   transform: scale(110%);
@@ -193,18 +193,19 @@
   font-size: large;
 }
 .xLinkButton.isMobile {
-  top: -15%;
-  right: -9%;
+  transform: scale(80%);
+  top: -17%;
+  right: -10%;
 }
 .xLinkButton.isTablet {
-  transform: scale(70%);
-  top: -19%;
+  transform: scale(80%);
+  top: -20%;
   right: -10%;
 }
 .xLinkButton.isDesktop {
-  transform: scale(100%);
+  transform: scale(90%);
   top: -17%;
-  right: -8%;
+  right: -10%;
 }
 .xLinkButton.isWidescreen {
   transform: scale(110%);
