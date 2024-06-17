@@ -1,5 +1,3 @@
-// useSizes.tsx
-import { useEffect, useState } from 'react';
 import useIsDesktopSize from './useIsDesktopSize';
 import useIsMobileSize from './useIsMobileSize';
 import useIsTabletSize from './useIsTabletSize';
