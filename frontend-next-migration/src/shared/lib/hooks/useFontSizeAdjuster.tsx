@@ -1,17 +1,21 @@
 import { useRef, useEffect } from 'react';
 
 const useFontSizeAdjuster = (
-  elementRef: React.RefObject<HTMLElement>,
+  elementRefs: React.RefObject<HTMLElement>[],
   containerRef: React.RefObject<HTMLElement>,
   adjustFontSize: (element: HTMLElement, container: HTMLElement) => void,
 ) => {
   useEffect(() => {
-    const element = elementRef.current;
     const container = containerRef.current;
-    if (element && container) {
+    if (container) {
       const handleResize = () => {
         console.log('Adjusting font size');
-        adjustFontSize(element, container);
+        elementRefs.forEach((ref) => {
+          const element = ref.current;
+          if (element) {
+            adjustFontSize(element, container);
+          }
+        });
       };
       handleResize();
       window.addEventListener('resize', handleResize);
@@ -19,10 +23,10 @@ const useFontSizeAdjuster = (
         window.removeEventListener('resize', handleResize);
       };
     }
-  }, [elementRef, containerRef, adjustFontSize]);
+  }, [elementRefs, containerRef, adjustFontSize]);
 
   return {
-    elementRef,
+    elementRefs,
   };
 };
 
