@@ -164,9 +164,9 @@
 //widescreen = window.innerWidth >= 1440
 
 .heroName.isMobile {
-  transform: scale(80%);
+  transform: scale(90%);
   top: -23%;
-  left: 20%;
+  left: 23%;
 }
 .heroName.isTablet {
   transform: scale(75%);
@@ -175,9 +175,9 @@
   padding: 0;
 }
 .heroName.isDesktop {
-  transform: scale(80%);
-  top: -25%;
-  left: 19%;
+  transform: scale(90%);
+  top: -22%;
+  left: 22%;
 }
 .heroName.isWidescreen {
   transform: scale(110%);
@@ -204,11 +204,11 @@
 }
 .xLinkButton.isDesktop {
   transform: scale(90%);
-  top: -17%;
-  right: -10%;
+  top: -15%;
+  right: -8%;
 }
 .xLinkButton.isWidescreen {
   transform: scale(110%);
-  top: -12%;
-  right: -7%;
+  top: -15%;
+  right: -9%;
 }

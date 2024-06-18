@@ -1,30 +1,46 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import useIsDesktopSize from './useIsDesktopSize';
-import useIsMobileSize from './useIsMobileSize';
-import useIsTabletSize from './useIsTabletSize';
-import useIsWidescreenSize from './useIsWidescreenSize';
-
 const useSizes = () => {
-  const { isDesktopSize } = useIsDesktopSize();
-  const { isMobileSize } = useIsMobileSize();
-  const { isTabletSize } = useIsTabletSize();
-  const { isWidescreenSize } = useIsWidescreenSize();
+  const checkSizes = () => {
+    const width = window.innerWidth;
+    return {
+      isMobileSize: width <= 768,
+      isTabletSize: width >= 768 && width < 1024,
+      isDesktopSize: width >= 1024 && width < 1440,
+      isWidescreenSize: width >= 1440,
+    };
+  };
+
+  const [sizes, setSizes] = useState(checkSizes());
 
   useEffect(() => {
-    console.log('isMobileSize', isMobileSize);
-    console.log('isTabletSize', isTabletSize);
-    console.log('isDesktopSize', isDesktopSize);
-    console.log('isWidescreenSize', isWidescreenSize);
-  });
+    const handleResize = () => {
+      setSizes(checkSizes());
+    };
 
-  return {
-    isDesktopSize,
-    isMobileSize,
-    isTabletSize,
-    isWidescreenSize,
-  };
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+      window.addEventListener('orientationchange', handleResize);
+      handleResize();
+    }
+
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('orientationchange', handleResize);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log('isMobileSize', sizes.isMobileSize);
+    console.log('isTabletSize', sizes.isTabletSize);
+    console.log('isDesktopSize', sizes.isDesktopSize);
+    console.log('isWidescreenSize', sizes.isWidescreenSize);
+  }, [sizes]);
+
+  return sizes;
 };
 
 export default useSizes;
