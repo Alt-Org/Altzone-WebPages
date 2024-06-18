@@ -52,9 +52,33 @@ const HeroContainer = (props: Props) => {
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
 
-  const maxHeight = isMobileSize
-    ? distanceToBottom - 35
-    : distanceToBottom - 50;
+  const getAdjustedMaxHeight = (
+    distanceToBottom: number,
+    isMobileSize: boolean,
+    isTabletSize: boolean,
+    isDesktopSize: boolean,
+    isWidescreenSize: boolean,
+  ) => {
+    if (isMobileSize) {
+      return distanceToBottom - 35;
+    } else if (isTabletSize) {
+      return distanceToBottom - 40; // Adjust as needed for tablet
+    } else if (isDesktopSize) {
+      return distanceToBottom - 45; // Adjust as needed for desktop
+    } else if (isWidescreenSize) {
+      return distanceToBottom - 50; // Adjust as needed for widescreen
+    } else {
+      return distanceToBottom - 50; // Default adjustment
+    }
+  };
+
+  const maxHeight = getAdjustedMaxHeight(
+    distanceToBottom,
+    isMobileSize,
+    isTabletSize,
+    isDesktopSize,
+    isWidescreenSize,
+  );
 
   const combinedModCss: Mods = {
     [cls.isMobile]: isMobileSize,
