@@ -60,15 +60,15 @@ const HeroContainer = (props: Props) => {
     isWidescreenSize: boolean,
   ) => {
     if (isMobileSize) {
-      return distanceToBottom - 35;
+      return distanceToBottom - 15;
     } else if (isTabletSize) {
-      return distanceToBottom - 40; // Adjust as needed for tablet
+      return distanceToBottom - 20; // Adjust as needed for tablet
     } else if (isDesktopSize) {
-      return distanceToBottom - 45; // Adjust as needed for desktop
+      return distanceToBottom - 25; // Adjust as needed for desktop
     } else if (isWidescreenSize) {
-      return distanceToBottom - 50; // Adjust as needed for widescreen
+      return distanceToBottom - 30; // Adjust as needed for widescreen
     } else {
-      return distanceToBottom - 50; // Default adjustment
+      return distanceToBottom - 35; // Default adjustment
     }
   };
 
