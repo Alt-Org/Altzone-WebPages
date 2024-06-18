@@ -151,8 +151,7 @@
   max-height: 60px;
 }
 .heroName {
-  top: -25%;
-  left: 25%;
+  top: -20%;
   text-align: center;
   border-bottom: 5px solid white;
   border-top: 5px solid white;
@@ -165,50 +164,41 @@
 
 .heroName.isMobile {
   transform: scale(90%);
-  top: -23%;
   left: 23%;
 }
 .heroName.isTablet {
   transform: scale(75%);
-  top: -25%;
   left: 15%;
   padding: 0;
 }
 .heroName.isDesktop {
   transform: scale(90%);
-  top: -22%;
   left: 22%;
 }
 .heroName.isWidescreen {
   transform: scale(110%);
-  top: -19%;
   left: 25%;
 }
 
 .xLinkButton {
   position: absolute;
   top: -15%;
-  right: -8%;
   cursor: pointer;
   font-size: large;
 }
 .xLinkButton.isMobile {
   transform: scale(80%);
-  top: -17%;
   right: -10%;
 }
 .xLinkButton.isTablet {
   transform: scale(80%);
-  top: -20%;
   right: -10%;
 }
 .xLinkButton.isDesktop {
   transform: scale(90%);
-  top: -15%;
   right: -8%;
 }
 .xLinkButton.isWidescreen {
   transform: scale(110%);
-  top: -15%;
   right: -9%;
 }
