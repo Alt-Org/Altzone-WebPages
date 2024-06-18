@@ -46,7 +46,7 @@ const HeroContainer = (props: Props) => {
   } = useImageDistance();
 
   const heroNameRef = useRef<HTMLDivElement>(null);
-  const xLingRef = useRef<HTMLDivElement>(null);
+  const xLinkAdjustmentRef = useRef<HTMLDivElement>(null); // New reference for font size adjustment
 
   const adjustHeroNameFontSize = (
     element: HTMLElement,
@@ -59,7 +59,7 @@ const HeroContainer = (props: Props) => {
   };
 
   useFontSizeAdjuster(
-    [heroNameRef, xLingRef],
+    [heroNameRef, xLinkAdjustmentRef],
     imageDistanceContainerRef,
     adjustHeroNameFontSize,
   );
@@ -149,7 +149,9 @@ const HeroContainer = (props: Props) => {
             </div>
             <div
               className={classNames(cls.xLinkButton, combinedModCss)}
-              ref={xLingRef}>
+              ref={xLinkAdjustmentRef}>
+              {' '}
+              {/* Use the new adjustment reference */}
               <Link href={xLink}>
                 <h1>X</h1>
               </Link>
