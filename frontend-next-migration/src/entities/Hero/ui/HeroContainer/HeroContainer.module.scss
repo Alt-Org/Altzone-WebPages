@@ -150,55 +150,17 @@
   @include custom-scrollbar;
   max-height: 60px;
 }
+
+.xLinkButton {
+  right: 10%;
+  top: 24%;
+  position: absolute;
+  cursor: pointer;
+}
 .heroName {
-  top: -20%;
-  text-align: center;
+  top: 20%;
+  left: 27%;
   border-bottom: 5px solid white;
   border-top: 5px solid white;
   position: absolute;
-}
-//mobile = window.innerWidth <= 768
-//tablet = window.innerWidth > 768 && window.innerWidth < 1024
-//desktop = window.innerWidth >= 1024 && window.innerWidth < 1440
-//widescreen = window.innerWidth >= 1440
-
-.heroName.isMobile {
-  transform: scale(90%);
-  left: 23%;
-}
-.heroName.isTablet {
-  transform: scale(75%);
-  left: 17%;
-  padding: 0;
-}
-.heroName.isDesktop {
-  transform: scale(85%);
-  left: 22%;
-}
-.heroName.isWidescreen {
-  transform: scale(110%);
-  left: 25%;
-}
-
-.xLinkButton {
-  position: absolute;
-  top: -15%;
-  cursor: pointer;
-  font-size: large;
-}
-.xLinkButton.isMobile {
-  transform: scale(80%);
-  right: -10%;
-}
-.xLinkButton.isTablet {
-  transform: scale(80%);
-  right: -10%;
-}
-.xLinkButton.isDesktop {
-  transform: scale(85%);
-  right: -8%;
-}
-.xLinkButton.isWidescreen {
-  transform: scale(110%);
-  right: -9%;
 }

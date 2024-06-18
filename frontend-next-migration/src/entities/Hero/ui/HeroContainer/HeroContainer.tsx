@@ -10,6 +10,8 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useImageDistance from './useImageDistance';
 import useKeyboardNavigation from './useKeyboardNavigation';
 import useSizes from '@/shared/lib/hooks/useSizes';
+import useFontSizeAdjuster from '@/shared/lib/hooks/useFontSizeAdjuster';
+import { useRef } from 'react';
 
 type Props = {
   heroImg: string;
@@ -35,13 +37,32 @@ const HeroContainer = (props: Props) => {
   } = props;
 
   const {
-    containerRef,
+    containerRef: imageDistanceContainerRef,
     imageRef,
     otherElementRef,
     distanceToBottom,
     handleImageLoad,
     imagesLoaded,
   } = useImageDistance();
+
+  const heroNameRef = useRef<HTMLDivElement>(null);
+  const xLingRef = useRef<HTMLDivElement>(null);
+
+  const adjustHeroNameFontSize = (
+    element: HTMLElement,
+    container: HTMLElement,
+  ) => {
+    const containerWidth = container.clientWidth;
+    const maxFontSize = containerWidth * 0.04;
+    const minFontSize = 7;
+    element.style.fontSize = `${Math.max(minFontSize, maxFontSize)}px`;
+  };
+
+  useFontSizeAdjuster(
+    [heroNameRef, xLingRef],
+    imageDistanceContainerRef,
+    adjustHeroNameFontSize,
+  );
 
   useKeyboardNavigation({
     leftArrowLink,
@@ -62,13 +83,13 @@ const HeroContainer = (props: Props) => {
     if (isMobileSize) {
       return distanceToBottom - 15;
     } else if (isTabletSize) {
-      return distanceToBottom - 20; // Adjust as needed for tablet
+      return distanceToBottom - 20;
     } else if (isDesktopSize) {
-      return distanceToBottom - 25; // Adjust as needed for desktop
+      return distanceToBottom - 25;
     } else if (isWidescreenSize) {
-      return distanceToBottom - 30; // Adjust as needed for widescreen
+      return distanceToBottom - 30;
     } else {
-      return distanceToBottom - 35; // Default adjustment
+      return distanceToBottom - 20;
     }
   };
 
@@ -120,7 +141,19 @@ const HeroContainer = (props: Props) => {
         </div>
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
-          <div className={cls.container} ref={containerRef}>
+          <div className={cls.container} ref={imageDistanceContainerRef}>
+            <div
+              className={classNames(cls.heroName, combinedModCss)}
+              ref={heroNameRef}>
+              <h2>{heroName}</h2>
+            </div>
+            <div
+              className={classNames(cls.xLinkButton, combinedModCss)}
+              ref={xLingRef}>
+              <Link href={xLink}>
+                <h1>X</h1>
+              </Link>
+            </div>
             <Image
               className={cls.bgImg}
               src={bgBox}
@@ -133,18 +166,6 @@ const HeroContainer = (props: Props) => {
             <div className={cls.contentWrapper}>
               <div className={cls.content}>
                 <div
-                  className={classNames(cls.heroName, combinedModCss)}
-                  ref={otherElementRef}>
-                  <h2>{heroName}</h2>
-                </div>
-                <div
-                  className={classNames(cls.xLinkButton, combinedModCss)}
-                  ref={otherElementRef}>
-                  <Link href={xLink}>
-                    <h1>X</h1>
-                  </Link>
-                </div>
-                <div
                   className={classNames(cls.heroImgWrapper, combinedModCss)}
                   style={{ backgroundColor: heroColor }}>
                   <Link
@@ -154,7 +175,6 @@ const HeroContainer = (props: Props) => {
                     href={leftArrowLink}>
                     <Image src={leftArrow} alt='leftArrow' />
                   </Link>
-
                   <Image
                     quality={100}
                     className={classNames(cls.heroImg, combinedModCss)}
