@@ -37,6 +37,7 @@ const HeroContainer = (props: Props) => {
   const {
     containerRef,
     imageRef,
+    otherElementRef,
     distanceToBottom,
     handleImageLoad,
     imagesLoaded,
@@ -107,10 +108,14 @@ const HeroContainer = (props: Props) => {
             />
             <div className={cls.contentWrapper}>
               <div className={cls.content}>
-                <div className={classNames(cls.heroName, combinedModCss)}>
+                <div
+                  className={classNames(cls.heroName, combinedModCss)}
+                  ref={otherElementRef}>
                   <h2>{heroName}</h2>
                 </div>
-                <div className={classNames(cls.xLinkButton, combinedModCss)}>
+                <div
+                  className={classNames(cls.xLinkButton, combinedModCss)}
+                  ref={otherElementRef}>
                   <Link href={xLink}>
                     <h1>X</h1>
                   </Link>
