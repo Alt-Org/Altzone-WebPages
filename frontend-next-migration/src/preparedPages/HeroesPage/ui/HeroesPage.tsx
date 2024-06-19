@@ -6,6 +6,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
+import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 
 type Props = {
   selectedHero: string | number;
@@ -80,6 +81,7 @@ export default function HeroPage(props: Props) {
           xLink={RoutePaths.HEROES}
         />
       )}
+      <HorizontalLines></HorizontalLines>
       <Footer />
     </>
   );
