@@ -150,7 +150,6 @@ const HeroContainer = (props: Props) => {
               className={classNames(cls.xLinkButton, combinedModCss)}
               ref={xLinkAdjustmentRef}>
               {' '}
-              {/* Use the new adjustment reference */}
               <Link href={xLink}>
                 <h1>X</h1>
               </Link>
