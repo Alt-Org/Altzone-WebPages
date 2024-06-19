@@ -39,7 +39,6 @@ const HeroContainer = (props: Props) => {
   const {
     containerRef: imageDistanceContainerRef,
     imageRef,
-    otherElementRef,
     distanceToBottom,
     handleImageLoad,
     imagesLoaded,
@@ -81,13 +80,13 @@ const HeroContainer = (props: Props) => {
     isWidescreenSize: boolean,
   ) => {
     if (isMobileSize) {
-      return distanceToBottom - 15;
-    } else if (isTabletSize) {
-      return distanceToBottom - 20;
-    } else if (isDesktopSize) {
-      return distanceToBottom - 25;
-    } else if (isWidescreenSize) {
       return distanceToBottom - 30;
+    } else if (isTabletSize) {
+      return distanceToBottom - 40;
+    } else if (isDesktopSize) {
+      return distanceToBottom - 50;
+    } else if (isWidescreenSize) {
+      return distanceToBottom - 60;
     } else {
       return distanceToBottom - 20;
     }
