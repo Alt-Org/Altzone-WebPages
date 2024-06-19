@@ -33,12 +33,7 @@ const useSizes = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log('isMobileSize', sizes.isMobileSize);
-    console.log('isTabletSize', sizes.isTabletSize);
-    console.log('isDesktopSize', sizes.isDesktopSize);
-    console.log('isWidescreenSize', sizes.isWidescreenSize);
-  }, [sizes]);
+  useEffect(() => {}, [sizes]);
 
   return sizes;
 };

@@ -9,7 +9,6 @@ const useFontSizeAdjuster = (
     const container = containerRef.current;
     if (container) {
       const handleResize = () => {
-        console.log('Adjusting font size');
         elementRefs.forEach((ref) => {
           const element = ref.current;
           if (element) {
