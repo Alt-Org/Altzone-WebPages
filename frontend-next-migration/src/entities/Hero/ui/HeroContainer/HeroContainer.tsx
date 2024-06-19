@@ -197,15 +197,7 @@ const HeroContainer = (props: Props) => {
                   </Link>
                 </div>
                 <div className={cls.heroDescription} style={{ maxHeight }}>
-                  <p>
-                    {/*todo delete after testing*/}
-                    {heroDescription}
-                    {heroDescription}
-                    {heroDescription}
-                    {heroDescription}
-                    {heroDescription}
-                    {heroDescription}
-                  </p>
+                  <p>{heroDescription}</p>
                 </div>
               </div>
             </div>
