@@ -68,14 +68,16 @@
 
 @mixin ScrollbarWithArrowButtons {
   &::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
     background: #ffffff;
     border-radius: 5px;
     cursor: pointer;
+    width: 8px;
+    height: 15px;
   }
 
   &::-webkit-scrollbar-track {
@@ -86,18 +88,17 @@
     background-color: transparent;
     display: block;
     cursor: pointer;
-    border: none;
   }
 
   &::-webkit-scrollbar-button:single-button:vertical:decrement {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid #ffffff;
+    border-bottom: 15px solid #ffffff;
   }
 
   &::-webkit-scrollbar-button:single-button:vertical:increment {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 10px solid #ffffff;
+    border-top: 15px solid #ffffff;
   }
 }
