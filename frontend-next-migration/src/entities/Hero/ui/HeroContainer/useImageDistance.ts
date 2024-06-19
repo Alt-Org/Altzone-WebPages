@@ -1,26 +1,24 @@
 import { useRef, useState, useEffect } from 'react';
 
+// be very careful with refactoring
 const useImageDistance = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const otherElementRef = useRef<HTMLDivElement>(null);
   const [distanceToBottom, setDistanceToBottom] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const calculateDistance = () => {
-    if (containerRef.current && imageRef.current && otherElementRef.current) {
+    if (containerRef.current && imageRef.current) {
       const containerRect = containerRef.current.getBoundingClientRect();
       const imageRect = imageRef.current.getBoundingClientRect();
-      const otherElementRect = otherElementRef.current.getBoundingClientRect();
-      const distance =
-        containerRect.bottom -
-        Math.max(imageRect.bottom, otherElementRect.bottom);
+      const distance = containerRect.bottom - imageRect.bottom;
       setDistanceToBottom(distance);
     }
   };
 
   useEffect(() => {
     if (imagesLoaded) {
+      // be very careful with refactoring, first time for good internet second time for slow
       calculateDistance();
       setTimeout(() => {
         calculateDistance();
@@ -31,6 +29,7 @@ const useImageDistance = () => {
   useEffect(() => {
     const handleResize = () => {
       calculateDistance();
+      // it is very important when we switch fullscreen we should make that macrotask
       setTimeout(() => {
         calculateDistance();
       }, 100);
@@ -48,7 +47,6 @@ const useImageDistance = () => {
   return {
     containerRef,
     imageRef,
-    otherElementRef,
     distanceToBottom,
     handleImageLoad,
     imagesLoaded,
