@@ -159,8 +159,12 @@
 }
 .heroName {
   top: 20%;
-  left: 27%;
-  border-bottom: 5px solid white;
-  border-top: 5px solid white;
+  left: 26%;
   position: absolute;
+  border-bottom: 4px solid white;
+  border-top: 4px solid white;
+  margin-left: -6px;
+  margin-right: -6px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
