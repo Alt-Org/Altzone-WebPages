@@ -1,7 +1,5 @@
 @mixin link-scale-effect($type: 'default') {
-
   transition: transform 0.2s ease;
-
 
   @if $type == 'icon' {
     &:hover {
@@ -11,9 +9,7 @@
     &:active {
       transform: scale(var(--animation-icon-active-scale));
     }
-  }
-
-  @else {
+  } @else {
     &:hover {
       transform: scale(var(--animation-link-hover-scale));
     }
@@ -22,8 +18,6 @@
       transform: scale(var(--animation-link-active-scale));
     }
   }
-
-
 }
 
 @mixin custom-scrollbar {
@@ -33,7 +27,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: var(--border-radius-custom);
     border: 1px solid #000;
   }
@@ -43,7 +37,6 @@
     border-radius: var(--border-radius-custom);
   }
 }
-
 
 @mixin position-absolute-center {
   position: absolute;
@@ -73,3 +66,38 @@
   background-size: cover;
 }
 
+@mixin ScrollbarWithArrowButtons {
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-button:single-button {
+    background-color: transparent;
+    display: block;
+    cursor: pointer;
+    border: none;
+  }
+
+  &::-webkit-scrollbar-button:single-button:vertical:decrement {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #ffffff;
+  }
+
+  &::-webkit-scrollbar-button:single-button:vertical:increment {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #ffffff;
+  }
+}
