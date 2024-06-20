@@ -178,7 +178,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                     size={ButtonSize.M}
                     className={cls.BtnGame}
                     square={false}
-                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                    disabled={clanServerResponse.paginationData.currentPage === 1}
                 >Back
                 </Button>
                 {clanServerResponse.paginationData.currentPage}
@@ -188,7 +188,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                     size={ButtonSize.M}
                     className={cls.BtnGame}
                     square={false}
-                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                    disabled={clanServerResponse.paginationData.pageCount === undefined}
                 >Next
                 </Button>
             </div>
@@ -234,7 +234,6 @@ type DesktopProps = {
 
 const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: DesktopProps) => {
 
-
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "clan");
@@ -255,7 +254,7 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                     size={ButtonSize.M}
                     className={cls.BtnGame}
                     square={false}
-                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                    disabled={clanServerResponse.paginationData.currentPage === 1}
                 >Back
                 </Button>
                 {clanServerResponse.paginationData.currentPage}
@@ -265,7 +264,7 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                     size={ButtonSize.M}
                     className={cls.BtnGame}
                     square={false}
-                    disabled={clanServerResponse.paginationData.currentPage === clanServerResponse.paginationData.pageCount}
+                    disabled={clanServerResponse.paginationData.pageCount === undefined}
                 >Next
                 </Button>
             </div>
