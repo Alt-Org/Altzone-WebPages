@@ -28,78 +28,100 @@
 //}
 
 .siteNavContentList {
-  padding-left: 50px;
-  background-color: black;
-  border-radius: var(--border-radius-custom);
-  border: var(--inverted-secondary-color) 2px solid;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1em;
-  list-style: none;
-  z-index: 2;
-}
-
-.appLinkLogo {
-  display: block;
-  position: relative;
-  width: 120px;
-
-  .itemLogoImg {
-    position: absolute;
-    top: -2.5416666667000003em;
-    left: 0;
-    z-index: 100;
-
-    height: auto;
-
-    //width: 200px;
-    width: auto;
+  .siteNavContentList {
+    padding-left: 50px;
+    background-color: black;
+    border-radius: var(--border-radius-custom);
+    border: var(--inverted-secondary-color) 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+    list-style: none;
+    z-index: 2;
   }
-}
 
-.itemNavbarDropDownContent {
-  outline: 2px solid var(--inverted-primary-color);
+  .appLinkLogo {
+    .appLinkLogo {
+      display: block;
+      position: relative;
+      width: 120px;
 
-  text-align: left;
 
-  border-radius: var(--border-radius-custom);
-  background-color: var(--transparent-bg-dark);
-  padding: 10px;
+      .itemLogoImg {
+        position: absolute;
+        top: -2.5416666667000003em;
+        left: 0;
+        z-index: 100;
 
-  div {
-    @include link-scale-effect;
-  }
-}
+        height: auto;
 
-.navItem {
-  display: flex;
-  height: max-content;
-  line-height: initial;
-  padding: 10px 0;
-  //justify-content: center;
-  //height: max-content;
-}
+        //width: 200px;
+        width: auto;
+      }
 
-.langSwitcher {
-  border-radius: var(--border-radius-custom);
-  outline: 2px solid var(--inverted-primary-color);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: var(--secondary-color) !important;
-  font-size: var(--font-size-m) !important;
-}
+      .itemClanLogoImg {
+        position: absolute;
+        top: -4.5em;
+        left: 0;
+        z-index: 100;
 
-.authButton {
-  border-radius: var(--border-radius-custom);
-  outline: 2px solid var(--inverted-primary-color);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: var(--secondary-color) !important;
-  font-size: var(--font-size-m) !important;
-  text-align: center;
+        height: auto;
 
-  padding: 4px;
+        //width: 200px;
+        width: 150%;
+        max-width: 150%;
+      }
 
-  & > * {
-    color: var(--secondary-color) !important;
-  }
-}
+
+    }
+
+    .itemNavbarDropDownContent {
+
+      outline: 2px solid var(--inverted-primary-color);
+
+      text-align: left;
+
+      border-radius: var(--border-radius-custom);
+      background-color: var(--transparent-bg-dark);
+      padding: 10px;
+
+      div {
+        @include link-scale-effect;
+      }
+    }
+
+
+    .navItem {
+      display: flex;
+      height: max-content;
+      line-height: initial;
+      padding: 10px 0;
+      //justify-content: center;
+      //height: max-content;
+    }
+
+    .langSwitcher {
+      .langSwitcher {
+        border-radius: var(--border-radius-custom);
+        outline: 2px solid var(--inverted-primary-color);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: var(--secondary-color) !important;
+        font-size: var(--font-size-m) !important;
+      }
+
+      .authButton {
+        .authButton {
+          border-radius: var(--border-radius-custom);
+          outline: 2px solid var(--inverted-primary-color);
+          background-color: rgba(0, 0, 0, 0.8);
+          color: var(--secondary-color) !important;
+          font-size: var(--font-size-m) !important;
+          text-align: center;
+
+          padding: 4px;
+
+          &>* {
+            color: var(--secondary-color) !important;
+          }
+        }

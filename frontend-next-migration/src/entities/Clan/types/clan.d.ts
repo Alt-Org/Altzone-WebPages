@@ -1,4 +1,4 @@
-export type GetClansResponse = ResponseShapeArray<"Clan",IClan>;
+export type GetClansResponse = ResponseShapeArray<"Clan", IClan>;
 export type GetClanResponse = ResponseShapeOne<"Clan", IClan>;
 
 export type IClan = {
@@ -6,12 +6,26 @@ export type IClan = {
     name: string,
     gameCoins: number,
     playerCount: number,
-    furnitureCount: number,
-    raidRoomCount: number,
+    stockCount: number,
+    itemCount: number,
     tag: string,
     admin_ids: string[],
+    Player: Array[],
+    isOpen: boolean,
 };
 
-export type IClanCreateDto = Pick<IClan, "name" | "tag" | "gameCoins">;
+export type ICreateClanResponse = {
+    data: {
+        Clan: IClan;
+    };
+    metaData: {
+        dataKey: string;
+        modelName: string;
+        dataType: string;
+        dataCount: number;
+    };
+}
 
-export type IClanUpdateDto = Pick<IClan, "_id" | "name" | "tag" | "gameCoins">;
+export type IClanCreateDto = Pick<IClan, "name" | "tag" | "gameCoins" | "isOpen">;
+
+export type IClanUpdateDto = Pick<IClan, "_id" | "name" | "tag" | "gameCoins" | "isOpen">;

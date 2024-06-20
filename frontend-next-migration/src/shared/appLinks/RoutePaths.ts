@@ -8,9 +8,10 @@ export enum AppRoutesLinks {
     AUTH_SESSION_EXP = "auth_session_exp",
 
     CLAN = "clan",
-    CLAN_ALL = "clan_all",
+    CLAN_ALL = "CLAN_ALL",
     CLAN_ONE = "clan_one",
     CLAN_ADD_NEW = "clan_add_new",
+    CLAN_LEADERBOARD = "CLAN_LEADERBOARD",
 
     PICTURE_GALLERY = "PICTURE_GALLERY",
     COMICS_GALLERY = "COMICS_GALLERY",
@@ -26,8 +27,8 @@ export enum AppRoutesLinks {
     NEWSELEMENT = "NEWSELEMENT",
     MEMBERS = "MEMBERS",
 
-    HEROES ="HEROES",
-    HEROES_ONE ="HEROES_ONE",
+    HEROES = "HEROES",
+    HEROES_ONE = "HEROES_ONE",
 
 
 
@@ -55,6 +56,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.CLAN_ALL]: "/clans/all",
     [AppRoutesLinks.CLAN_ADD_NEW]: "/clans/addNew",
     [AppRoutesLinks.CLAN_ONE]: "/clans/:id",
+    [AppRoutesLinks.CLAN_LEADERBOARD]: "/clans/leaderboard",
 
     [AppRoutesLinks.PICTURE_GALLERY]: "/picture-galleries",
     [AppRoutesLinks.COMICS_GALLERY]: "/comics",

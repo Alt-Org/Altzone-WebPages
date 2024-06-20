@@ -1,9 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {StateSchema} from "@/preparedApp/providers/StoreProvider";
-import {envHelper} from "@/shared/const/envHelper";
-import {GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto} from "@/entities/Clan";
+import { StateSchema } from "@/preparedApp/providers/StoreProvider";
+import { envHelper } from "@/shared/const/envHelper";
+import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse } from "@/entities/Clan";
 
-
+interface GetClansQueryParams {
+    page?: number,
+    search?: string,
+}
 const clanUrl = "clan";
 
 export const clanApi = createApi({
@@ -13,10 +16,10 @@ export const clanApi = createApi({
         {
             baseUrl: envHelper.apiLink,
             credentials: "include",
-            prepareHeaders :(headers,{getState, endpoint})=>{
+            prepareHeaders: (headers, { getState, endpoint }) => {
                 const accessTokenInfo = (getState() as StateSchema).authUser.accessTokenInfo;
                 const excludedEndpoints = ['login', 'refresh', 'register'];
-                if(accessTokenInfo && !excludedEndpoints.includes(endpoint)) {
+                if (accessTokenInfo && !excludedEndpoints.includes(endpoint)) {
                     headers.set('Authorization', `Bearer ${accessTokenInfo?.accessToken}`);
                 }
             },
@@ -24,8 +27,9 @@ export const clanApi = createApi({
         }),
     endpoints: (builder) => ({
 
-        getClans: builder.query<GetClansResponse, {}>({
-            query: (options) => {
+        getClans: builder.query<GetClansResponse, GetClansQueryParams>({
+
+            query: (params) => {
                 // const paramsToBeSent= {
                 //     page: options.page,
                 //     limit: options.limit,
@@ -35,7 +39,7 @@ export const clanApi = createApi({
                 return {
                     url: clanUrl,
                     method: 'GET',
-                    // params: paramsToBeSent,
+                    params: params,
                 }
             },
             providesTags: ['Clan'],
@@ -46,7 +50,12 @@ export const clanApi = createApi({
             providesTags: ['Clan']
         }),
 
-        createClan: builder.mutation<IClan, IClanCreateDto>({
+        getClanByIdWithPlayers: builder.query<GetClanResponse, string>({
+            query: (clanId) => `${clanUrl}/${clanId}?with=Player`,
+            providesTags: ['Clan']
+        }),
+
+        createClan: builder.mutation<ICreateClanResponse, IClanCreateDto>({
             query: (clan) => ({
                 url: clanUrl,
                 method: 'POST',
@@ -79,6 +88,7 @@ export const {
     util,
     useGetClansQuery,
     useGetClanByIdQuery,
+    useGetClanByIdWithPlayersQuery,
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
