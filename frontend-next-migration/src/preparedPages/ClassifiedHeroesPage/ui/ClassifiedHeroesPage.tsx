@@ -23,15 +23,14 @@ const ClassifiedHeroesPage = async ({ lng }: Props) => {
 
             <Navbar overlaid />
 
-            {/* Content here */}
             <SectionHeroesBlocks
                 backgroundImageSrc={sameBg}
             />
-            <HorizontalLines></HorizontalLines>
+            <HorizontalLines/>
             <SectionHeroesBlocks
                 backgroundImageSrc={sameBg}
             />
-            <HorizontalLines></HorizontalLines>
+            <HorizontalLines/>
         </main>
 
 
