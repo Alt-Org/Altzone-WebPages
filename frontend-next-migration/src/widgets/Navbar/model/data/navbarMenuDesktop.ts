@@ -1,7 +1,10 @@
 import img from "@/shared/assets/images/altLogo.png";
-import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import img2 from "@/shared/assets/images/altLogoClan.png"
+import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { NavbarBuilder } from "./NavbarBuilder";
 import { dropdowns } from "./dropdowns";
+import { useSSR } from "react-i18next";
+import { LoggedIn } from "@/stories/Header.stories";
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addDropDown('community', false, dropdowns.community, "left");
@@ -25,3 +28,10 @@ navbarBuilderV2.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarMenuDesktop2 = navbarBuilderV2.build();
 
+const navbarClanBuilder = new NavbarBuilder();
+navbarClanBuilder.addLogo('Nav logo', img2 as unknown as string, RoutePaths.MAIN);
+navbarClanBuilder.addLink('leaderboard', RoutePaths.CLAN_LEADERBOARD, true);
+navbarClanBuilder.addLink('all_clans', RoutePaths.CLAN_ALL, true);
+navbarClanBuilder.addLink('my_clan', RoutePaths.MEMBERS, true);
+
+export const navbarClanDesktop = navbarClanBuilder.build();

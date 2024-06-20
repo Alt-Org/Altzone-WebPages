@@ -46,10 +46,15 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "navbar");
+    const { canI } = useUserPermissions();
+    const [logout] = useLogoutMutation();
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map(item => {
+                if (item.name == "my_clan" && !canI("canISeeOwnClan")) {
+                    return null;
+                }
                 if (item.type === ItemType.navLink) {
                     return { path: item.path, name: t(`${item.name}`), type: sidebarItemType.ISidebarItemBasic };
                 }
@@ -65,13 +70,12 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             .filter(item => item !== null) as ISidebarItem[];
     }, [navbarBuild, t]);
 
-    const { canI } = useUserPermissions();
-    const [logout] = useLogoutMutation();
+
 
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
             <div className={cls.NavbarMobile}>
-                
+
                 <div
                     className={classNames(cls.NavbarMobile__burger, sidebarMods)}
                     onClick={() => props.onBurgerButtonClick && props.onBurgerButtonClick(true)}

@@ -1,23 +1,23 @@
-import React, {CSSProperties, memo} from "react";
+import React, { CSSProperties, memo } from "react";
 import cls from "./NavbarDesktopV2.module.scss";
-import {NavbarBuild, NavbarMenuItem} from "../../model/types/types";
-import {classNames} from "@/shared/lib/classNames/classNames";
-import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
-import {useParams} from "next/navigation";
-import {useClientTranslation} from "@/shared/i18n";
-import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
+import { NavbarBuild, NavbarMenuItem } from "../../model/types/types";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
+import { useParams } from "next/navigation";
+import { useClientTranslation } from "@/shared/i18n";
+import { DropdownWrapper } from "@/shared/ui/DropdownWrapper";
 import Image from "next/image";
 import { Container } from "@/shared/ui/Container";
-import {LangSwitcher} from "@/features/LangSwitcher";
-import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
+import { LangSwitcher } from "@/features/LangSwitcher";
+import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 
 
 
 type NavbarProps = {
-    overlaid ?: boolean;
+    overlaid?: boolean;
     marginTop?: number;
     className?: string;
-    navbarBuild:  NavbarBuild
+    navbarBuild: NavbarBuild
 
 }
 
@@ -27,17 +27,17 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         navbarBuild,
         overlaid = false,
         marginTop,
-        className=''
-    }= props;
+        className = ''
+    } = props;
 
 
-    const {canI} = useUserPermissions();
+    const { canI } = useUserPermissions();
 
     const [logout] = useLogoutMutation();
 
     const params = useParams();
     const lng = params.lng as string;
-    const {t, i18n} = useClientTranslation(lng, "navbar");
+    const { t, i18n } = useClientTranslation(lng, "navbar");
 
 
     const style = marginTop
@@ -49,20 +49,23 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     } as Record<string, boolean>;
 
     return (
-            <nav className={classNames(cls.siteNav, mods, [className])} style={style}>
+        <nav className={classNames(cls.siteNav, mods, [className])} style={style}>
 
             <Container>
                 <ul className={cls.siteNavContentList}>
 
                     {
-                        navbarBuild.menu.map(n=>(
-                            <NavItem item={n} key={n.name} navbarBuild={navbarBuild} />
-                        ))
+                        navbarBuild.menu.map(n => {
+                            if (n.name === "my_clan" && !canI("canISeeOwnClan")) {
+                                return null;
+                            }
+                            return <NavItem item={n} key={n.name} navbarBuild={navbarBuild} />;
+                        })
                     }
 
 
                     <li className={cls.navItem} key={"switcher key"}>
-                        <LangSwitcher className={cls.langSwitcher}/>
+                        <LangSwitcher className={cls.langSwitcher} />
                     </li>
 
 
@@ -107,24 +110,24 @@ NavbarDesktopV2.displayName = "NavbarDesktopV2"
 type NavItemProps = {
     item: NavbarMenuItem;
     className?: string;
-    navbarBuild:  NavbarBuild
+    navbarBuild: NavbarBuild
 }
 
-const NavItem = memo((props: NavItemProps)=> {
-    const {item, className= '', navbarBuild} = props;
-    const {type: itemType} = item
+const NavItem = memo((props: NavItemProps) => {
+    const { item, className = '', navbarBuild } = props;
+    const { type: itemType } = item
 
     const params = useParams();
     const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "navbar");
+    const { t } = useClientTranslation(lng, "navbar");
 
 
-    if(itemType === "navLink") {
+    if (itemType === "navLink") {
         return (
             <li
                 key={item.path}
                 className=
-                    {classNames(cls.navItem, {}, [className])} >
+                {classNames(cls.navItem, {}, [className])} >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     to={item.path}
@@ -138,9 +141,9 @@ const NavItem = memo((props: NavItemProps)=> {
     }
 
 
-    if(itemType === "navDropDown") {
+    if (itemType === "navDropDown") {
 
-        const localizedElements =  item.elements.map((element) => ({
+        const localizedElements = item.elements.map((element) => ({
             ...element,
             elementText: t(`${element.elementText}`),
         }));
@@ -150,7 +153,7 @@ const NavItem = memo((props: NavItemProps)=> {
             <li
                 key={item.name}
                 className=
-                    {classNames(cls.navItem, {}, [className])} >
+                {classNames(cls.navItem, {}, [className])} >
 
                 <DropdownWrapper
                     elements={localizedElements}
@@ -170,20 +173,20 @@ const NavItem = memo((props: NavItemProps)=> {
             <li
                 key={item.src}
             >
-            <AppLink
-                theme={AppLinkTheme.PRIMARY}
-                to={item.path}
-                className={classNames(cls.appLink, {}, [cls.appLinkLogo])}
-            >
+                <AppLink
+                    theme={AppLinkTheme.PRIMARY}
+                    to={item.path}
+                    className={classNames(cls.appLink, {}, [cls.appLinkLogo])}
+                >
 
-                <Image
-                    loading={"eager"}
-                    alt={  navbarBuild?.namedMenu?.navLogo?.name || ''}
-                    src={  navbarBuild?.namedMenu?.navLogo?.src || ''}
-                    width={120}
-                    className={cls.itemLogoImg}
-                />
-            </AppLink>
+                    <Image
+                        loading={"eager"}
+                        alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
+                        src={navbarBuild?.namedMenu?.navLogo?.src || ''}
+                        width={120}
+                        className={cls.itemLogoImg}
+                    />
+                </AppLink>
             </li>
 
         );
