@@ -1,14 +1,18 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
-const useIsTabletSize = () => {
+const useIsDesktopSize = () => {
   const checkForDevice = () =>
-    window.innerWidth >= 768 && window.innerWidth < 1024;
+    typeof window !== 'undefined'
+      ? window.innerWidth >= 1024 && window.innerWidth < 1440
+      : false;
 
-  const [isTabletSize, setIsTabletSize] = useState(false);
+  const [isDesktopSize, setIsDesktopSize] = useState(checkForDevice());
 
   useEffect(() => {
     const handlePageResized = () => {
-      setIsTabletSize(checkForDevice());
+      setIsDesktopSize(checkForDevice());
     };
 
     if (typeof window !== 'undefined') {
@@ -29,8 +33,8 @@ const useIsTabletSize = () => {
   }, []);
 
   return {
-    isTabletSize,
+    isDesktopSize,
   };
 };
 
-export default useIsTabletSize;
+export default useIsDesktopSize;

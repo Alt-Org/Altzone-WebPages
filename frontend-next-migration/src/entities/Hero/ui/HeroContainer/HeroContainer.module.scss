@@ -1,433 +1,173 @@
+.PageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .backgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.75;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.componentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.outerArrow {
+  max-width: 150px;
+  user-select: none;
+}
+
+.outerArrow.isMobile {
+  display: none;
+}
+
+.heroImgSideWrapper {
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+  max-width: 60.875em;
+  width: 40.1666666667em;
+  height: 42.6666666667em;
+  z-index: 1;
+
+  .heroImgSide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -3;
-    filter: brightness(75%);
-}
-
-.HeroContainer {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.Content {
-    width: 80%;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    height: 100vh;
-    
-}
-
-.LeftArrow {  
-    width: 7%;
-    height: auto; 
-    cursor: pointer;
+    top: -1.3333333333em;
+    left: 10%;
+    width: 40.1666666667em;
+    height: 43.2916666667em;
     z-index: 2;
-    margin-top: 10%;
+  }
 }
 
-.RightArrow {
-
-    width: 7%;
-    height: auto; 
-    cursor: pointer;
-    z-index: 2;
-    margin-top: 10%;
+.heroImgSideWrapper.isMobile {
+  display: none;
 }
 
-.InfoBgImg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 45%;
-    bottom: 0;
-    max-height: 95vh; 
-    width: 43%; 
-    height: auto; 
-    z-index: -1;
+.containerWrapper.isMobile {
+  padding-left: 10%;
 }
 
-
-.InfoImg{
-    //height: auto;
-    height: 180px;
+.container {
+  position: relative;
+  max-width: 600px;
+  z-index: 1;
 }
 
-.InfoImgMobile{
-    width: 40%;
+.bgImg {
+  width: 100%;
+  user-select: none;
+  pointer-events: none;
 }
 
-.HeroImg {
-    position: absolute;
-    top: 50%; 
-    left: 15%; 
-    transform: translateY(-50%); 
-    width: auto;
-    max-width: 35%;
-    height: 70vh;
-    z-index: -2; 
-    margin-top: 5%;
-
+.contentWrapper {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
 }
 
-
-.HeroInfoDiv {
-    width: 86%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    height: 100vh;
+.content {
+  position: relative;
+  top: 50%;
+  left: 5%;
+  transform: translate(-12.5%, 50%);
 }
 
-.HeroInfoMain{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 43%;
-    margin-top: 5%;
-    margin-right: 7%;
-
-    p{
-        padding: 5%;
-        margin-top: 2%;
-        text-align: justify;
-    }
+.heroImgWrapper {
+  border: solid 4px white;
+  background: red;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  display: flex;
+  justify-content: center;
 }
 
-.HeroInfoHeader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:center;
-    width: 45%;
-    margin-top: 14%;
-    margin-right: 7%;
-
-    h2{
-        font-size: x-large;
-        color: yellow;
-        width: 100%;
-        text-align: center;
-        padding: 1%;
-    }
-
-    hr{
-        width: 30%;
-        border: 2px solid yellow;
-    }
+.heroImgWrapper.isMobile {
+  justify-content: space-between;
 }
 
-
-
-.XButton{
-    font-size: 1.5em;
-    text-align: end;
-    color: yellow;
-    width: 100%;
-    margin-top: 1.5%;
-    cursor:pointer;
-    //@include font-size-increase(1.5);         Does not work 
-    margin-right: 6%;
-
+.innerArrow {
+  align-self: center;
+  width: 50px;
+  display: none;
+  user-select: none;
 }
 
-.description{
-    @include custom-scrollbar;
-    height: 200px;
-    overflow-y: auto;
-
-
-
-    @media (max-width:1150px){
-        height: 120px;
-    }
-
-    @media (max-width:1100px){
-        height: 80px;
-    }
-
-    @media (max-width:800px){
-        height: 80px;
-    }
-
-    @media (max-width:500px){
-        height: 100px;
-    }
-
-    @media (max-width:350px){
-        height: 100px;
-    }
-
+.innerArrow.isMobile {
+  display: block;
 }
 
-
-@media (max-width: 1700px){
-    .HeroInfoHeader {
-        margin-top: 18%;
-    }
-    .XButton{
-        margin-right: 3%;
-    }
+.heroImg {
+  width: 50%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
 }
 
-@media (max-width:1250px){
-    .HeroImg { 
-        height: 50vh;
-    }
-    .InfoBgImg {    
-        top: 5%;
-    }
-    .HeroInfoHeader {
-        margin-top: 22%;
-    }
+.heroImg.isMobile {
+  transform: scale(130%);
 }
 
-@media (max-width:1100px){
-    .InfoBgImg {    
-        top: 8%;
-    }
-    .HeroInfoHeader {
-        margin-top: 26%;
-    }
+.heroDescription {
+  padding: 0 1rem;
+  margin-top: 7%;
+  overflow-y: auto;
+  @include ScrollbarWithArrowButtons;
+  font-size: 1.3rem;
 }
 
-@media (max-width:1000px){
-    .HeroImg {   
-        height: 40vh;  
-    }
+.xLinkButton {
+  right: 10%;
+  top: 24%;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-@media (max-width:950px){
-    .InfoBgImg {    
-        top: 10%;
-    }
-    .HeroInfoHeader {
-        margin-top: 30%;
-    }
+.heroName {
+  top: 20%;
+  left: 26%;
+  position: absolute;
+  border-bottom: 5px solid white;
+  border-top: 5px solid white;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-
-@media (max-width:900px){
-    .HeroImg {
-        height: 35vh; 
-    }
-    .InfoBgImg {    
-        top: 13%;
-    }
-    .HeroInfoHeader {
-        margin-top: 35%;
-    }
-}
-
-@media (max-width: 825px){
-    .InfoBgImg {    
-        top: 15%;
-    }
-    .HeroInfoHeader {
-        margin-top: 40%;
-    }
-}
-@media (max-width: 768px){
-    .InfoBgImg {
-        top: 10%;
-        left: 21%;
-        width: 65%; 
-    }
-
-    .HeroInfoHeader {
-        width: 80%;
-        margin-top: 45%;
-        margin-right: 10%;
-    }
-
-    .XButton{
-        margin-top: 0%;
-        margin-right: 8%
-    }
-
-    .HeroInfoMain{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        margin-top: 5%;
-        margin-right: 9%;
-    
-        p{
-            padding: 5%;
-            margin-top: 2%;
-            text-align: justify;
-        }
-    }
-
-   
-}
-
-
-@media (max-width: 600px){
-    .InfoBgImg {    
-        top: 15%;
-    }
-    .HeroInfoHeader {
-        margin-top: 57%;
-    }
-}
-
-@media (max-width: 560px){
-    .InfoBgImg {    
-        top: 20%;
-    }
-    .HeroInfoHeader {
-        margin-top: 70%;
-        h2{
-            font-size:larger;
-        }
-    }
-}
-
-@media (max-width: 530px){
-    .InfoBgImg {    
-        top: 20%;
-    }
-    .HeroInfoHeader {
-        margin-top: 75%;
-        h2{
-            font-size:larger;
-        }
-    }
-}
-
-@media (max-width: 500px){
-    .InfoBgImg {    
-        top: 22%;
-    }
-    .HeroInfoHeader {
-        margin-top: 80%;
-        h2{
-            font-size:larger;
-        }
-    }
-}
-
-@media (max-width: 480px){
-    .InfoBgImg {    
-        top: 22%;
-    }
-    .HeroInfoHeader {
-        margin-top: 82%;
-        h2{
-            font-size:larger;
-        }
-    }
-}
-
-@media (max-width: 460px){
-    .Content{
-        flex-direction: column;
-        width: 100%;
-    }
-    .LeftArrow{
-        transform: rotate(90deg);
-        margin-top: 15%;
-        margin-bottom: 0;
-        width: 20%;
-        height: auto;
-        
-       
-    }
-    .RightArrow{
-        transform: rotate(90deg);
-        margin-top: 0;
-        margin-bottom: 15%;
-        width: 20%;
-        height: auto;
-    }
-    .InfoBgImg {    
-        top: 15%;
-        width: 90%;
-        left: 10%;
-        right: 5%;
-    }
-    
-    .HeroInfoHeader {
-        width: 100%;
-        margin-top: 22%;
-        margin-right: 2%;
-
-        h2{
-            font-size:larger;
-        }
-    }
-
-    .XButton{
-        margin-top: 0%;
-        margin-right: 2%;
-        
-    }
-
-    .HeroInfoMain{
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        margin-top: 5%;
-        margin-right: 9%;
-    
-        p{
-            padding: 5%;
-            margin-top: 2%;
-            text-align: justify;
-        }
-    }
-}
-
-@media (max-width: 420px){
-   
-    .HeroInfoHeader {
-        margin-top: 24%;
-        
-    }
-}
-
-@media (max-width: 380px){
-   
-    .HeroInfoHeader {
-        margin-top: 26%;
-        
-    }
-}
-
-@media (max-width: 380px){
-   
-    .HeroInfoHeader {
-        margin-top: 30%;
-        h2{
-            font-size:large;
-        }
-    }
-}
-
-@media (max-width: 330px){
-   
-    .HeroInfoHeader {
-        margin-top: 33%;
-        h2{
-            font-size:large;
-        }
-    }
-}
-
-

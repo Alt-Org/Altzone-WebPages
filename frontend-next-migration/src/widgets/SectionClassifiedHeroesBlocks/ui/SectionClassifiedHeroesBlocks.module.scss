@@ -13,14 +13,12 @@
   overflow-y: hidden;
 
   @include backGroundImageDefault;
-
 }
 
-.TextBgImage{
+.TextBgImage {
   position: absolute;
   width: 25%;
   z-index: -1;
-  
 }
 
 .Content {
@@ -32,7 +30,7 @@
   justify-items: center;
 }
 
-.Group{
+.Group {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +41,6 @@
   height: var(--cardWidth);
   opacity: 0;
 }
-
 
 @media screen and (max-width: 1250px) {
   .Content {
@@ -66,8 +63,6 @@
   }
 }
 
-
-
 @media screen and (max-width: 500px) {
   .Content {
     //grid-template-columns: 1fr;
@@ -77,7 +72,6 @@
     --cardWidth: 210px;
   }
 }
-
 
 @media screen and (max-width: 400px) {
   .Content {
@@ -89,7 +83,6 @@
   }
 }
 
-
 @media screen and (max-width: 360px) {
   .Content {
     //grid-template-columns: 1fr;
@@ -99,8 +92,6 @@
     --cardWidth: 156px;
   }
 }
-
-
 
 @keyframes fadeIn {
   0% {
