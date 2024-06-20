@@ -2,7 +2,7 @@
 import { memo } from "react";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { navbarMenuDesktop, navbarMenuDesktop2, navbarClanDesktop } from "../../model/data/navbarMenuDesktop";
-import { navbarMenuMobile } from "../../model/data/navbarMenuMobile";
+import { navbarMenuMobile, navbarClanMobile } from "../../model/data/navbarMenuMobile";
 import NavbarMobile from "../NavbarMobile/NavbarMobile";
 import NavbarDesktop from "../NavbarDesktop/NavbarDesktop";
 import NavbarDesktopV2 from "../NavbarDesktopV2/NavbarDesktopV2";
@@ -62,7 +62,7 @@ export const NavbarClanMain = memo((props: NavbarMainProps) => {
     if (isMobileSize) {
         return (
             // <Suspense fallback=''>
-            <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarMenuMobile} />
+            <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarClanMobile} />
             // </Suspense>
         )
     }
