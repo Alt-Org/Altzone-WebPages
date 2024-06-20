@@ -1,10 +1,11 @@
-"use client"
+'use client';
 
 import { useEffect, useState } from 'react';
 
 const useIsMobileSize = () => {
   // const checkForDevice = () => (typeof window !== 'undefined' ? window.innerWidth <= 1023 : false);
-  const checkForDevice = () => (typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  const checkForDevice = () =>
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false;
 
   const [isMobileSize, setIsMobileSize] = useState(checkForDevice());
 

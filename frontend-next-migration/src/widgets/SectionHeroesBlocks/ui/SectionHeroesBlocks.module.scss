@@ -13,7 +13,6 @@
   overflow-y: hidden;
 
   @include backGroundImageDefault;
-
 }
 
 .Content {
@@ -30,7 +29,6 @@
   height: var(--cardWidth);
   opacity: 0;
 }
-
 
 @media screen and (max-width: 1250px) {
   .Content {
@@ -53,8 +51,6 @@
   }
 }
 
-
-
 @media screen and (max-width: 500px) {
   .Content {
     //grid-template-columns: 1fr;
@@ -64,7 +60,6 @@
     --cardWidth: 210px;
   }
 }
-
 
 @media screen and (max-width: 400px) {
   .Content {
@@ -76,7 +71,6 @@
   }
 }
 
-
 @media screen and (max-width: 360px) {
   .Content {
     //grid-template-columns: 1fr;
@@ -86,8 +80,6 @@
     --cardWidth: 156px;
   }
 }
-
-
 
 @keyframes fadeIn {
   0% {
