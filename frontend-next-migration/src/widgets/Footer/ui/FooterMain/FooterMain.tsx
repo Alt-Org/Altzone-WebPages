@@ -7,8 +7,6 @@ export const Footer = ()  => {
     const {isMobileSize} = useIsMobileSize()
 
     return (
-        <div style={ !isMobileSize ? {paddingTop: "20px"} : {}}>
             <FooterDesktop/>
-        </div>
     )
 }
