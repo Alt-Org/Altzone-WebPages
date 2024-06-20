@@ -52,10 +52,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map(item => {
-                if (item.type === ItemType.navLink && item.name == "my_clan") {
-                    if (canI("canISeeOwnClan")) {
-                        return { path: item.path, name: t(`${item.name}`), type: sidebarItemType.ISidebarItemBasic };
-                    }
+                if (item.name == "my_clan" && !canI("canISeeOwnClan")) {
                     return null;
                 }
                 if (item.type === ItemType.navLink) {
