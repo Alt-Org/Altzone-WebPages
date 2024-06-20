@@ -1,5 +1,4 @@
 .siteNav {
-
   font: var(--font-xxl);
 
   //font-family: var(--font-family-texts);
@@ -7,7 +6,7 @@
   padding-top: 50px;
 
   z-index: 30;
-  position: fixed;
+  position: absolute;
   color: #fbf7dc;
   width: 100%;
   text-align: center;
@@ -19,7 +18,6 @@
   font-size: max(calc(24 * calc(min(750px, 100vw) / 750)), 12px);
 }
 
-
 //.overlayed {
 //  background-color: rgba(4, 255, 4, 0);
 //  z-index: var(--navbar-z-index);
@@ -30,98 +28,100 @@
 //}
 
 .siteNavContentList {
-  padding-left: 50px;
-  background-color: black;
-  border-radius: var(--border-radius-custom);
-  border: var(--inverted-secondary-color) 2px solid;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1em;
-  list-style: none;
-  z-index: 2;
-}
-
-.appLinkLogo {
-  display: block;
-  position: relative;
-  width: 120px;
-
-
-  .itemLogoImg {
-    position: absolute;
-    top: -2.5416666667000003em;
-    left: 0;
-    z-index: 100;
-
-    height: auto;
-
-    //width: 200px;
-    width: auto;
+  .siteNavContentList {
+    padding-left: 50px;
+    background-color: black;
+    border-radius: var(--border-radius-custom);
+    border: var(--inverted-secondary-color) 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+    list-style: none;
+    z-index: 2;
   }
 
-  .itemClanLogoImg {
-    position: absolute;
-    top: -4.5em;
-    left: 0;
-    z-index: 100;
-
-    height: auto;
-
-    //width: 200px;
-    width: 150%;
-    max-width: 150%;
-  }
+  .appLinkLogo {
+    .appLinkLogo {
+      display: block;
+      position: relative;
+      width: 120px;
 
 
-}
+      .itemLogoImg {
+        position: absolute;
+        top: -2.5416666667000003em;
+        left: 0;
+        z-index: 100;
 
-.itemNavbarDropDownContent {
+        height: auto;
 
-  outline: 2px solid var(--inverted-primary-color);
+        //width: 200px;
+        width: auto;
+      }
 
-  text-align: left;
+      .itemClanLogoImg {
+        position: absolute;
+        top: -4.5em;
+        left: 0;
+        z-index: 100;
 
-  border-radius: var(--border-radius-custom);
-  background-color: var(--transparent-bg-dark);
-  padding: 10px;
+        height: auto;
 
-  div {
-    @include link-scale-effect;
-  }
-
-}
+        //width: 200px;
+        width: 150%;
+        max-width: 150%;
+      }
 
 
-.navItem {
-  display: flex;
-  height: max-content;
-  line-height: initial;
-  padding: 10px 0;
-  //justify-content: center;
-  //height: max-content;
-}
+    }
 
-.langSwitcher {
-  border-radius: var(--border-radius-custom);
-  outline: 2px solid var(--inverted-primary-color);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: var(--secondary-color) !important;
-  font-size: var(--font-size-m) !important;
-}
+    .itemNavbarDropDownContent {
 
-.authButton {
-  border-radius: var(--border-radius-custom);
-  outline: 2px solid var(--inverted-primary-color);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: var(--secondary-color) !important;
-  font-size: var(--font-size-m) !important;
-  text-align: center;
+      outline: 2px solid var(--inverted-primary-color);
 
-  padding: 4px;
+      text-align: left;
 
-  &>* {
-    color: var(--secondary-color) !important;
-  }
+      border-radius: var(--border-radius-custom);
+      background-color: var(--transparent-bg-dark);
+      padding: 10px;
 
-}
+      div {
+        @include link-scale-effect;
+      }
+    }
+
+
+    .navItem {
+      display: flex;
+      height: max-content;
+      line-height: initial;
+      padding: 10px 0;
+      //justify-content: center;
+      //height: max-content;
+    }
+
+    .langSwitcher {
+      .langSwitcher {
+        border-radius: var(--border-radius-custom);
+        outline: 2px solid var(--inverted-primary-color);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: var(--secondary-color) !important;
+        font-size: var(--font-size-m) !important;
+      }
+
+      .authButton {
+        .authButton {
+          border-radius: var(--border-radius-custom);
+          outline: 2px solid var(--inverted-primary-color);
+          background-color: rgba(0, 0, 0, 0.8);
+          color: var(--secondary-color) !important;
+          font-size: var(--font-size-m) !important;
+          text-align: center;
+
+          padding: 4px;
+
+          &>* {
+            color: var(--secondary-color) !important;
+          }
+        }
