@@ -9,6 +9,7 @@ import { Container } from "@/shared/ui/Container";
 import { LangSwitcher } from "@/features/LangSwitcher";
 import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import NavItem from "./NavItem";
+import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
 
 
 
@@ -50,6 +51,8 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const toggleOverlaid = useCallback(() => {
         setIsOverlaid((prev) => !prev);
     }, [overlaid]);
+
+    const hasScrollbar = useIsPageScrollbar();
 
 
     return (
@@ -93,11 +96,13 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                         }
                     </li>
 
-                    <li className={cls.toggleOverlaid} >
+                    {hasScrollbar && (
+                        <li className={cls.toggleOverlaid}>
                             <button onClick={toggleOverlaid}>
                                 {isOverlaid ? '📌' : '📍'}
                             </button>
-                    </li>
+                        </li>
+                    )}
 
                 </ul>
 
