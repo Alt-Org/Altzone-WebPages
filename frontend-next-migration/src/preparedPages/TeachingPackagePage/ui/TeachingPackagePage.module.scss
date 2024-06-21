@@ -1,76 +1,38 @@
-.main{
-    min-height: 100vh;
-    padding-top: 18vh;
+.pageContainer {
+  padding-top: 15%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.MainGameArt {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    //margin-top: 10%;
-    margin-left: 10%;
-    position: relative;
-    h1{
-        font-size: 3rem;
-    }
+.mainContent {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  border: 2px solid rgb(255, 255, 255);
 }
 
-.wholePageBG{
-    filter: brightness(85%);
+.navbarSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid red;
+  width: 20%;
+  height: 100vh;
+  cursor: pointer;
 }
 
-.RowTextImg {
-    display: flex;
-    flex-direction: row ;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-start;
-    
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-height: fit-content;
+  height: 100vh;
+  padding: 20px;
+  border: 2px solid rgb(26, 255, 0);
 }
 
-.RowText{
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.RowImg{
-    width: 30%;
-    margin-left: 5%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    h1{
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 1150px) {
-    .MainGameArt{
-        width: 90%;
-        //margin-top: 20%;
-        margin-left: 5%;
-        
-    }
-    .RowTextImg{
-        flex-direction: column !important;
-        align-items: center;
-        justify-content: center;
-    }
-    .RowText{
-        width: 100%;
-    }
-    .RowImg{
-        width: 60%;
-        margin-left: 0%;
-    }
-
-
+.contentSection > div {
+  margin-bottom: 20px;
 }
