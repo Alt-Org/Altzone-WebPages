@@ -18,14 +18,14 @@
   font-size: max(calc(24 * calc(min(750px, 100vw) / 750)), 12px);
 }
 
-//.overlayed {
-//  background-color: rgba(4, 255, 4, 0);
-//  z-index: var(--navbar-z-index);
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  right: 0;
-//}
+.overlayed {
+  background-color: rgba(4, 255, 4, 0);
+  z-index: var(--navbar-z-index);
+  position: sticky;
+  //top: 0;
+  //left: 0;
+  //right: 0;
+}
 
 .siteNavContentList {
   padding-left: 50px;
