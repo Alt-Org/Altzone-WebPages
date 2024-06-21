@@ -1,7 +1,11 @@
 .sideNavbarContainer {
   display: flex;
 }
-
+.mainContent {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+}
 .sideNavbar {
   width: 100%;
   height: 100vh;
@@ -14,4 +18,9 @@
   cursor: pointer;
   flex: 1;
   padding: 10px;
+  overflow-y: auto;
+}
+.content.h2 {
+  color: red;
+  overflow-y: auto;
 }
