@@ -23,9 +23,9 @@ type Props = {
 
 const TeachingPackagePage = async ({ lng }: Props) => {
   const sections: Section[] = [
-    { id: 'section1', label: 'Introduction' },
-    { id: 'section2', label: 'Objectives' },
-    { id: 'section3', label: 'Materials Needed' },
+    { id: 'section1', label: 'Esittely' },
+    { id: 'section2', label: 'Toteutus' },
+    { id: 'section3', label: 'Mitä Pelitaide on?' },
     { id: 'section4', label: 'Lesson Plan 1' },
     { id: 'section5', label: 'Lesson Plan 2' },
     { id: 'section6', label: 'Lesson Plan 3' },
@@ -53,10 +53,12 @@ const TeachingPackagePage = async ({ lng }: Props) => {
             <div id={section.id} key={section.id} className={cls.section}>
               <h2>{section.label}</h2>
               <p>
-                {section.id === 'section1' && 'Introduction content goes here.'}
-                {section.id === 'section2' && 'Objectives content goes here.'}
+                {section.id === 'section1' &&
+                  'ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa. ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle.'}
+                {section.id === 'section2' &&
+                  'Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. Oppilailla on mahdollisuus jatkokehittää peliä sovelluskaupasta myöhemmin ladattavaksi ALT Zone 2.0 - mobiilipeliksi. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen siihen perustettavan säätiön kautta.'}
                 {section.id === 'section3' &&
-                  'Materials needed content goes here.'}
+                  'Pelitaide on pelien taiteellista ilmaisua, joka ylittää viihteen rajat, kutsuen pelaajat syvemmälle kokemukseen tarjoten ainutlaatuisia esteettisiä elämyksiä ja herättäen tunteita. Se ilmenee monin eri tavoin, kuten visuaalisesti upeana grafiikkana, tunnelmallisena äänimaisemana ja monimutkaisena tarinankerrontana. Pelitaide kertoo tarinoita ja käsittelee monimutkaisia teemoja, syventäen pelaajien kokemusta ja herättäen syvempiä tunteita. Lisäksi se on interaktiivista, antaen pelaajille mahdollisuuden vaikuttaa tarinaan ja luoda henkilökohtaisia kokemuksia. Pelitaide voi myös toimia voimakkaana välineenä sosiaaliseen ja poliittiseen kommentointiin, herättäen keskustelua ja haastaen näkemyksiä. Kaiken kaikkiaan pelitaide on moniulotteinen taiteen muoto, joka tarjoaa ainutlaatuisen tilaisuuden ilmaista itseään ja kokea maailmaa uudella ja jännittävällä tavalla sekä taiteilijoille että pelaajille.'}
                 {section.id === 'section4' &&
                   'Lesson Plan 1 content goes here.'}
                 {section.id === 'section5' &&
