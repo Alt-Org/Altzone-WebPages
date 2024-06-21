@@ -5,6 +5,7 @@ import { navbarMenuDesktop2, navbarClanDesktop } from "../../model/data/navbarMe
 import { navbarMenuMobile, navbarClanMobile } from "../../model/data/navbarMenuMobile";
 import NavbarDesktopV2 from "../NavbarDesktopV2/NavbarDesktopV2";
 import NavbarMobileV2 from "../NavbarMobileV2/NavbarMobileV2";
+import {FixedProvider} from "@/widgets/Navbar/model/FixedProvider";
 
 interface NavbarMainProps {
     overlaid?: boolean;
@@ -30,21 +31,17 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
     if (isMobileSize) {
         return (
-            // <Suspense fallback=''>
+            <FixedProvider>
             <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarMenuMobile} />
-            // </Suspense>
+            </FixedProvider>
         )
     }
     return (
         <>
-            {/*// <Suspense fallback=''>*/}
-            {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
-
-
-
+            <FixedProvider>
             <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2} overlaid={overlaid} className={className} marginTop={marginTop} />
+            </FixedProvider>
         </>
-        // {/*// </Suspense>*/}
     )
 
 
@@ -58,27 +55,20 @@ export const NavbarClanMain = memo((props: NavbarMainProps) => {
 
     if (isMobileSize) {
         return (
-            // <Suspense fallback=''>
             <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarClanMobile} />
-            // </Suspense>
         )
     }
     return (
         <>
-            {/*// <Suspense fallback=''>*/}
-            {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
-
-
-
+            <FixedProvider>
             <NavbarDesktopV2
                 navbarBuild={navbarClanDesktop}
                 overlaid={overlaid}
-                // defaultOverlaid={overlaid}
                 className={className}
                 marginTop={marginTop}
             />
+            </FixedProvider>
         </>
-        // {/*// </Suspense>*/}
     )
 
 

@@ -10,6 +10,8 @@ import { LangSwitcher } from "@/features/LangSwitcher";
 import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
+import {FixedButton} from "@/widgets/Navbar/ui/FixedButton/FixedButton";
+import { useFixed } from "../../model/FixedProvider";
 
 
 
@@ -30,8 +32,10 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         className = ''
     } = props;
 
+    // @ts-ignore
+    const { isFixed } = useFixed();
 
-    const [isFixed, setIsFixed] = useState(false);
+
     const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();
     const params = useParams();
@@ -47,10 +51,6 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         [cls.overlayed]: overlaid && !isFixed,
         [cls.fixed]: isFixed,
     } as Record<string, boolean>;
-
-    const toggleFixed = useCallback(() => {
-        setIsFixed((prev) => !prev);
-    }, [overlaid]);
 
     const hasScrollbar = useIsPageScrollbar();
 
@@ -98,9 +98,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 
                     {hasScrollbar && (
                         <li className={cls.toggleOverlaid}>
-                            <button onClick={toggleFixed}>
-                                {isFixed ? '📌' : '📍'}
-                            </button>
+                            <FixedButton/>
                         </li>
                     )}
 
