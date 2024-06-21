@@ -69,26 +69,26 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                     </li>
 
 
-                    {/*<li className={cls.navItem + ' ' + cls.authButton} key={"auth key"}>*/}
-                    {/*    {*/}
-                    {/*        canI("canISeeLogin")*/}
-                    {/*            ? (*/}
-                    {/*                <AppLink*/}
-                    {/*                    theme={AppLinkTheme.PRIMARY}*/}
-                    {/*                    // to={navbarMenuLoginProfile?.login?.path || ''}*/}
-                    {/*                    to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}*/}
-                    {/*                    // key={navbarMenuLoginProfile?.login?.path}*/}
-                    {/*                >*/}
-                    {/*                    <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>*/}
-                    {/*                </AppLink>*/}
-                    {/*            )*/}
-                    {/*            : canI("canISeeLogout")*/}
-                    {/*                ? <div onClick={() => logout()}>*/}
-                    {/*                    {t(`logout`)}*/}
-                    {/*                </div>*/}
-                    {/*                : null*/}
-                    {/*    }*/}
-                    {/*</li>*/}
+                    <li className={cls.navItem + ' ' + cls.authButton} key={"auth key"}>
+                        {
+                            canI("canISeeLogin")
+                                ? (
+                                    <AppLink
+                                        theme={AppLinkTheme.PRIMARY}
+                                        // to={navbarMenuLoginProfile?.login?.path || ''}
+                                        to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
+                                        // key={navbarMenuLoginProfile?.login?.path}
+                                    >
+                                        <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>
+                                    </AppLink>
+                                )
+                                : canI("canISeeLogout")
+                                    ? <div onClick={() => logout()}>
+                                        {t(`logout`)}
+                                    </div>
+                                    : null
+                        }
+                    </li>
 
 
 

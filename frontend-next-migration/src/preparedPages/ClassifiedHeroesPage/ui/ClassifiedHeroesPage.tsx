@@ -22,13 +22,16 @@ const ClassifiedHeroesPage = async ({ lng }: Props) => {
     const sameBg = undefined;
 
     return (
+        <>
+        <Navbar overlaid />
         <main className={cls.main}>
+            {/*<Navbar overlaid />*/}
             <FeedbackSideButton disableMobile={true} />
 
-            <Navbar overlaid />
+
 
             <SectionHeroesBlocks
-                backgroundImageSrc={"https://images3.alphacoders.com/135/1350069.jpeg"}
+                backgroundImageSrc={sameBg}
             />
             <HorizontalLines/>
             <SectionHeroesBlocks
@@ -36,6 +39,7 @@ const ClassifiedHeroesPage = async ({ lng }: Props) => {
             />
             <HorizontalLines/>
         </main>
+        </>
     );
 };
 
