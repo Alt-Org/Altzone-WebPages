@@ -18,7 +18,7 @@ type NavbarProps = {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild
-    // defaultOverlaid?: boolean;
+    isFixed?: boolean;
 }
 
 const NavbarDesktopV2 = (props: NavbarProps) => {
@@ -26,13 +26,12 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const {
         navbarBuild,
         overlaid= false,
-        // defaultOverlaid = true,
         marginTop,
         className = ''
     } = props;
 
 
-    const [isOverlaid, setIsOverlaid] = useState(overlaid);
+    const [isFixed, setIsFixed] = useState(false);
     const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();
     const params = useParams();
@@ -45,11 +44,12 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         : {};
 
     const mods: Record<string, boolean> = {
-        [cls.overlayed]: isOverlaid,
+        [cls.overlayed]: overlaid && !isFixed,
+        [cls.fixed]: isFixed,
     } as Record<string, boolean>;
 
-    const toggleOverlaid = useCallback(() => {
-        setIsOverlaid((prev) => !prev);
+    const toggleFixed = useCallback(() => {
+        setIsFixed((prev) => !prev);
     }, [overlaid]);
 
     const hasScrollbar = useIsPageScrollbar();
@@ -98,8 +98,8 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 
                     {hasScrollbar && (
                         <li className={cls.toggleOverlaid}>
-                            <button onClick={toggleOverlaid}>
-                                {isOverlaid ? '📌' : '📍'}
+                            <button onClick={toggleFixed}>
+                                {isFixed ? '📌' : '📍'}
                             </button>
                         </li>
                     )}
