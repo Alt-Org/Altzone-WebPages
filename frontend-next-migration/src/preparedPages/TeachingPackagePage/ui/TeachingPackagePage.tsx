@@ -10,6 +10,7 @@ import downloadPicture from '@/shared/assets/images/teachingPackage/download.png
 import Image from 'next/image';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import NavbarSide from '@/widgets/NavbarSide/ui/NavbarSide';
+import backgroundImage from "@/shared/assets/images/clanBg/Moon.webp";
 
 interface Section {
   id: string;
@@ -88,4 +89,15 @@ const TeachingPackagePage = async ({ lng }: Props) => {
   );
 };
 
-export default TeachingPackagePage;
+// export default withBackgroundImage(
+//     {}
+// )(TeachingPackagePage);
+// // export default TeachingPackagePage;
+
+
+export default withBackgroundImage({
+  alt: "Teaching Package bg image",
+  imagePath: bgPicture as unknown as string,
+
+// @ts-ignore
+})(TeachingPackagePage);
