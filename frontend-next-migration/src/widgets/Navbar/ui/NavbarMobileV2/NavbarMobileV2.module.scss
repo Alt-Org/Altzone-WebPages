@@ -4,29 +4,20 @@
 
 .Navbar {
   font: var(--font-xxl);
-  margin: 0 auto;
-  width: 100%;
-}
-
-.NavbarMobile {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.7);
   height: 10vh;
-  margin-top: 5%;
+  margin: 6% auto 0;
   position: fixed;
-
   z-index: var(--navbar-z-index);
-
 }
+
 
 
 
 .NavbarMobile__burger {
-
   display: flex;
   width: auto;
   justify-content: center;
@@ -34,15 +25,7 @@
   left: 20px;
   cursor: pointer;
   user-select: none;
-
-
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
-  //padding: 10px;
-  //height: 80%;
-  //width: auto;
-  //
+  transform: scale(80%);
 }
 
 .NavbarMobile__burger svg {
@@ -57,19 +40,12 @@
 
 .navLogo {
   img {
-    //height: 100px;
-    //padding-left: 30px;
-
     height: var(--navbar-logo-height);
     width: auto;
-    //height: 200px!important;
-    //width: auto;
   }
 }
 
 .overlayed {
-  background-color: rgba(4, 255, 4, 0);
-  z-index: var(--navbar-z-index);
   position: absolute;
   top: 0;
   left: 0;
@@ -82,7 +58,7 @@
   box-shadow: 0 0 0 2px var(--inverted-primary-color);
   padding: 5px;
   text-align: center;
-  font-family: var(--font-family-texts) !important;
+  font-family: var(--font-family-texts), serif !important;
   font: var(--font-l);
   cursor: pointer;
   -webkit-user-select: none;
