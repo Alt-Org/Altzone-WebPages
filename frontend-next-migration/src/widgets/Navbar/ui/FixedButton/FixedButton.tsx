@@ -14,7 +14,7 @@ export function FixedButton () {
             <button
                 onClick={toggleFixed}
             >
-                {isFixed ? '📌' : '📍'}
+                {isFixed ? '📍' : '📌'}
             </button>
         </div>
     );
