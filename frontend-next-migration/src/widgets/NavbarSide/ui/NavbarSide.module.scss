@@ -1,0 +1,17 @@
+.sideNavbarContainer {
+  display: flex;
+}
+
+.sideNavbar {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  cursor: pointer;
+  flex: 1;
+  padding: 10px;
+}
