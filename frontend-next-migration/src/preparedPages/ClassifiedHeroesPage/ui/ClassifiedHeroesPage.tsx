@@ -41,7 +41,7 @@ const ClassifiedHeroesPage = async ({ lng }: Props) => {
 };
 
 export default withBackgroundImage({
-    alt: "TeachingPackagePage underground style background",
+    alt: "ClassifiedHeroesPage underground style background",
     imagePath: bgPicture as unknown as string,
     className: cls.wholePageBG
     // @ts-ignore
