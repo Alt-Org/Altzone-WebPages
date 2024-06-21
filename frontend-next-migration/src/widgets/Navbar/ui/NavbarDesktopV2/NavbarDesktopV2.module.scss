@@ -1,16 +1,14 @@
 .siteNav {
   font: var(--font-xxl);
-
   //font-family: var(--font-family-texts);
   //position: fixed;
   padding-top: 50px;
-
-  z-index: 30;
+  //z-index: 30;
   color: #fbf7dc;
   position: absolute;
   width: 100%;
   text-align: center;
-  //background-color: #d20000;
+  z-index: var(--navbar-z-index);
   font-weight: 500;
   //height: 200px;
   //top: auto;
@@ -19,12 +17,11 @@
 }
 
 .overlayed {
-  background-color: rgba(4, 255, 4, 0);
-  z-index: var(--navbar-z-index);
+  position: absolute;
+}
+
+.fixed {
   position: fixed;
-  //top: 0;
-  //left: 0;
-  //right: 0;
 }
 
 .siteNavContentList {
