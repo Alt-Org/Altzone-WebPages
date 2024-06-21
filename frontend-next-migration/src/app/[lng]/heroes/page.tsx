@@ -22,8 +22,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
 export default function HeroesPage(props: Props) {
     return (
-        <div>
-          <ClassifiedHeroesPage></ClassifiedHeroesPage>
-        </div>
+          <ClassifiedHeroesPage/>
     )
 }
