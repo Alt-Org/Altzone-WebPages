@@ -10,6 +10,7 @@ import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { LangSwitcher } from "@/features/LangSwitcher";
+import {FixedButton} from "../FixedButton/FixedButton";
 
 interface NavbarTouchProps {
     overlaid?: boolean;
@@ -118,6 +119,11 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                     />
                 </AppLink>
+            <div className={cls.FixedButton}>
+                <FixedButton />
+            </div>
+
+
         </nav>
     )
 };
