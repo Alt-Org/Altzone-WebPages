@@ -87,3 +87,11 @@
     height: 7vh;
   }
 }
+
+.FixedButton{
+  text-align: center;
+  position: absolute;
+  right: 20px;
+  transform: scale(95%);
+  min-width: 60px;
+}
