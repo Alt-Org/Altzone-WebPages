@@ -63,7 +63,7 @@ export default function HeroPage(props: Props) {
 
   return (
     <>
-      <Navbar />
+      <Navbar overlaid={true}/>
       {selectedHeroInfo && (
         <HeroContainer
           heroColor={selectedHeroInfo.heroColor}
