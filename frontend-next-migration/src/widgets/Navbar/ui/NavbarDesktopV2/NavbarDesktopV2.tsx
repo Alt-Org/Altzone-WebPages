@@ -33,7 +33,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     } = props;
 
     const { isFixed } = useFixed();
-
+    const hasScrollbar = useIsPageScrollbar();
 
     const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();
@@ -51,7 +51,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         [cls.fixed]: isFixed,
     } as Record<string, boolean>;
 
-    const hasScrollbar = useIsPageScrollbar();
+
 
 
     return (

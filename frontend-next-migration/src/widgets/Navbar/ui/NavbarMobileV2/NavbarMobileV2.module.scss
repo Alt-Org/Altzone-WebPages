@@ -10,8 +10,12 @@
   background-color: rgba(0, 0, 0, 0.7);
   height: 10vh;
   margin: 6% auto 0;
-  position: fixed;
+  position: absolute;
   z-index: var(--navbar-z-index);
+
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .NavbarMobile__burger {
@@ -41,11 +45,13 @@
 }
 
 .overlayed {
-  //position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: absolute;
 }
+
+.fixed {
+  position: fixed;
+}
+
 
 .authSection {
   background-color: rgba(0, 0, 0, 0.8);
@@ -92,6 +98,5 @@
   text-align: center;
   position: absolute;
   right: 20px;
-  transform: scale(95%);
   min-width: 60px;
 }

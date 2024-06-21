@@ -1,16 +1,21 @@
 import cls from "./FixedButton.module.scss";
 import { useFixed } from "../../model/FixedProvider";
+import {classNames} from "@/shared/lib/classNames/classNames";
 
+type Props = {
+    className?: string;
+}
 
+export function FixedButton (props: Props) {
 
-export function FixedButton () {
+    const {
+        className = ''
+    } = props;
 
-    // @ts-ignore
     const { isFixed, toggleFixed } = useFixed();
 
-
     return (
-        <div className={cls.fixedButton}>
+        <div className={classNames(cls.fixedButton, {}, [className])}>
             <button
                 onClick={toggleFixed}
             >

@@ -1,17 +1,12 @@
 .siteNav {
   font: var(--font-xxl);
-  //font-family: var(--font-family-texts);
-  //position: fixed;
   padding-top: 50px;
-  //z-index: 30;
   color: #fbf7dc;
-  position: absolute;
   width: 100%;
+  min-width: 100%;
   text-align: center;
   z-index: var(--navbar-z-index);
   font-weight: 500;
-  //height: 200px;
-  //top: auto;
   top: 0;
   font-size: max(calc(24 * calc(min(750px, 100vw) / 750)), 12px);
 }
