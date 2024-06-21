@@ -1,4 +1,4 @@
-import React, {CSSProperties, memo, useCallback, useState} from "react";
+import React, {CSSProperties} from "react";
 import cls from "./NavbarDesktopV2.module.scss";
 import { NavbarBuild } from "../../model/types/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
@@ -10,7 +10,7 @@ import { LangSwitcher } from "@/features/LangSwitcher";
 import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
-import {FixedButton} from "@/widgets/Navbar/ui/FixedButton/FixedButton";
+import {FixedButton} from "../FixedButton/FixedButton";
 import { useFixed } from "../../model/FixedProvider";
 
 
@@ -32,7 +32,6 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         className = ''
     } = props;
 
-    // @ts-ignore
     const { isFixed } = useFixed();
 
 
