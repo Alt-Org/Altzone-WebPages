@@ -6,7 +6,7 @@ import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 import cls from "./NavbarMobile.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {ISidebarItem, Sidebar} from "@/shared/ui/Sidebar";
-import {ItemType, NavbarBuild, NavbarMenu, NavLogoObject} from "../../model/types/types";
+import {ItemType, NavbarBuild, NavbarMenu, NavLogoObject} from "../../../model/types/types";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 // import {navLogoMobile} from "../../model/data/navbarMenuMobile";
 import {useParams} from "next/navigation";

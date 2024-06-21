@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import NavbarDesktop from './NavbarDesktop';
-import { navbarMenuDesktopMock } from '../../model/data/navbarMenuDesktop.mock';
+import { navbarMenuDesktopMock } from '../../../model/data/navbarMenuDesktop.mock';
 
 export default {
   title: 'widgets/Navbar/Desktop',

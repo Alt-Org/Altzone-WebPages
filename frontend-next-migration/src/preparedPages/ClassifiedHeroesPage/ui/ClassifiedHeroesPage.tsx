@@ -12,6 +12,10 @@ type Props = {
     lng: string
 }
 
+
+
+
+
 const ClassifiedHeroesPage = async ({ lng }: Props) => {
 
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -24,7 +28,7 @@ const ClassifiedHeroesPage = async ({ lng }: Props) => {
             <Navbar overlaid />
 
             <SectionHeroesBlocks
-                backgroundImageSrc={sameBg}
+                backgroundImageSrc={"https://images3.alphacoders.com/135/1350069.jpeg"}
             />
             <HorizontalLines/>
             <SectionHeroesBlocks
@@ -32,11 +36,6 @@ const ClassifiedHeroesPage = async ({ lng }: Props) => {
             />
             <HorizontalLines/>
         </main>
-
-
-
-
-
     );
 };
 
