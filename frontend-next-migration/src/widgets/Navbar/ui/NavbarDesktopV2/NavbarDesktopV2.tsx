@@ -1,4 +1,4 @@
-import React, { CSSProperties, memo } from "react";
+import React, {CSSProperties, memo, useCallback, useState} from "react";
 import cls from "./NavbarDesktopV2.module.scss";
 import { NavbarBuild } from "../../model/types/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
@@ -17,23 +17,23 @@ type NavbarProps = {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild
-
+    // defaultOverlaid?: boolean;
 }
 
 const NavbarDesktopV2 = (props: NavbarProps) => {
 
     const {
         navbarBuild,
-        overlaid = false,
+        overlaid= false,
+        // defaultOverlaid = true,
         marginTop,
         className = ''
     } = props;
 
 
+    const [isOverlaid, setIsOverlaid] = useState(overlaid);
     const { canI } = useUserPermissions();
-
     const [logout] = useLogoutMutation();
-
     const params = useParams();
     const lng = params.lng as string;
     const { t, i18n } = useClientTranslation(lng, "navbar");
@@ -44,27 +44,31 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         : {};
 
     const mods: Record<string, boolean> = {
-        [cls.overlayed]: overlaid,
+        [cls.overlayed]: isOverlaid,
     } as Record<string, boolean>;
+
+    const toggleOverlaid = useCallback(() => {
+        setIsOverlaid((prev) => !prev);
+    }, [overlaid]);
+
 
     return (
         <nav className={classNames(cls.siteNav, mods, [className])} style={style}>
 
             <Container>
                 <ul className={cls.siteNavContentList}>
-
                     {
                         navbarBuild.menu.map(n => {
                             if (n.name === "my_clan" && !canI("canISeeOwnClan")) {
                                 return null;
                             }
-                            return <NavItem item={n} key={n.name} navbarBuild={navbarBuild} />;
+                            return <NavItem item={n} key={n.name} navbarBuild={navbarBuild}/>;
                         })
                     }
 
 
                     <li className={cls.navItem} key={"switcher key"}>
-                        <LangSwitcher className={cls.langSwitcher} />
+                        <LangSwitcher className={cls.langSwitcher}/>
                     </li>
 
 
@@ -78,7 +82,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                                         to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
                                         // key={navbarMenuLoginProfile?.login?.path}
                                     >
-                                        <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>
+                                        <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
                                     </AppLink>
                                 )
                                 : canI("canISeeLogout")
@@ -89,7 +93,11 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                         }
                     </li>
 
-
+                    <li className={cls.toggleOverlaid} >
+                            <button onClick={toggleOverlaid}>
+                                {isOverlaid ? '📌' : '📍'}
+                            </button>
+                    </li>
 
                 </ul>
 

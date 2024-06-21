@@ -70,7 +70,13 @@ export const NavbarClanMain = memo((props: NavbarMainProps) => {
 
 
 
-            <NavbarDesktopV2 navbarBuild={navbarClanDesktop} overlaid={overlaid} className={className} marginTop={marginTop} />
+            <NavbarDesktopV2
+                navbarBuild={navbarClanDesktop}
+                overlaid={overlaid}
+                // defaultOverlaid={overlaid}
+                className={className}
+                marginTop={marginTop}
+            />
         </>
         // {/*// </Suspense>*/}
     )
