@@ -74,8 +74,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
-            <div className={cls.NavbarMobile}>
-
                 <div
                     className={classNames(cls.NavbarMobile__burger, sidebarMods)}
                     onClick={() => props.onBurgerButtonClick && props.onBurgerButtonClick(true)}
@@ -120,7 +118,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                     />
                 </AppLink>
-            </div>
         </nav>
     )
 };
