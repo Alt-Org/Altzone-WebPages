@@ -1,3 +1,4 @@
+'use client';
 import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
@@ -11,7 +12,7 @@ import Image from 'next/image';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import NavbarSide from '@/widgets/NavbarSide/ui/NavbarSide';
 import backgroundImage from '@/shared/assets/images/clanBg/Moon.webp';
-import pelillistamisen from '@/shared/assets/images/teachingPackage/pelillistamisen.png';
+import pageLogo from '@/shared/assets/images/teachingPackage/pageLogo.png';
 
 interface Section {
   id: string;
@@ -30,7 +31,7 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
     { id: 'section4', label: 'Visuaalinen vaikuttuvuus' },
     { id: 'section5', label: 'Toiminnallinen vaikuttavuus' },
     { id: 'section6', label: 'Yhteydet pelin ulkopuolelle' },
-    { id: 'section7', label: 'ALT Zone -verkkomobiilipeli' },
+    { id: 'section7', label: 'ALT Zone -verkkopeli' },
     { id: 'section8', label: 'Erilaisten pelaajien yhteinen liittouma' },
     { id: 'section9', label: 'Pelihahmot & niiden kehittäminen' },
     { id: 'section10', label: 'Pelimekaniikka' },
@@ -43,14 +44,16 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
     <div className={cls.pageContainer}>
       <Navbar overlaid={true} />
       <div className={cls.mainContent}>
-        <div className={cls.navbarSide}>
+        <div className={cls.pageLogo}>
           <Image
-            src={pelillistamisen}
+            src={pageLogo}
             className={cls.backgroundImage}
-            alt='Pelillistamisen'
-            height={200}
-            width={200}
+            alt='pageLogo'
+            height={600}
+            width={600}
           />
+        </div>
+        <div className={cls.navbarSide}>
           <NavbarSide sections={sections} containerId='content' />
         </div>
         <div className={cls.content} id='content'>
@@ -59,7 +62,7 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
               <h2>{section.label}</h2>
               <p>
                 {section.id === 'section1' && (
-                  <>
+                  <p>
                     ALT Zone on taiteellisella sisällöllä varustettu
                     mobiilipeli, jota kehitetään peruskoulujen taideopetuksen
                     opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa,
@@ -67,7 +70,7 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
                     analysointiin, yhteistä kokemusta on lähes mahdotonta
                     saavuttaa. ALT Zone tarjoaa yhteisen pohjan pelitaiteen
                     opetukselle.
-                  </>
+                  </p>
                 )}
                 {section.id === 'section2' && (
                   <>
@@ -226,18 +229,24 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
                 {section.id === 'section11' && (
                   <>
                     Nuorisotyö & pelitaiteen opetus kouluissa Kehitämme peliä
-                    jatkuvasti PRG:n nuorten kanssa. Testaajaksi ja kehittäjiksi
-                    pääsee liittymällä discord serverille:
-                    https://discord.gg/ZXaeztUb Demon tullessa valmiiksi
-                    (arviolta keväällä 2024) lähdemme kiertämään sen kanssa
-                    maamme peruskouluja ja lukioita. Demotestaus toteutetaan
-                    pelitaiteen opetuspaketissa, jossa kouluille tarjotaan
-                    samalla välineet pelien tutkimiseen ja analysoimiseen.
-                    Pyrkimyksemme on saada pelitaiteen käsittely koulujen
-                    opetussuunnitelmaan samoin, kuin siellä käsitellään jo
-                    teatteria, elokuvaa, kirjallisuutta, kuvataidetta ja
+                    jatkuvasti PRG nuorten kanssa. Testaajaksi ja kehittäjiksi
+                    pääsee liittymällä{' '}
+                    <a
+                      href='https://discord.gg/YGzep8aK'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      style={{ color: 'blue', textDecoration: 'underline' }}>
+                      Discord serverille.
+                    </a>{' '}
+                    Demon tullessa valmiiksi (arviolta keväällä 2024) lähdemme
+                    kiertämään sen kanssa maamme peruskouluja ja lukioita.
+                    Demotestaus toteutetaan pelitaiteen opetuspaketissa, jossa
+                    kouluille tarjotaan samalla välineet pelien tutkimiseen ja
+                    analysoimiseen. Pyrkimyksemme on saada pelitaiteen käsittely
+                    koulujen opetussuunnitelmaan samoin kuin siellä käsitellään
+                    jo teatteria, elokuvaa, kirjallisuutta, kuvataidetta ja
                     musiikkia. Tutustu peliin ja yhteisten testailujen
-                    aikatuluun skannaamalla QR-koodi ja hyppäämällä
+                    aikatauluun skannaamalla QR-koodi ja hyppäämällä
                     Discord-peliyhteisöömme!
                   </>
                 )}
