@@ -22,7 +22,7 @@ type Props = {
   lng: string;
 };
 
-const TeachingPackagePage = async ({ lng }: Props) => {
+const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
   const sections: Section[] = [
     { id: 'section1', label: 'Esittely' },
     { id: 'section2', label: 'Toteutus' },
@@ -41,9 +41,7 @@ const TeachingPackagePage = async ({ lng }: Props) => {
 
   return (
     <div className={cls.pageContainer}>
-      <FeedbackSideButton />
       <Navbar overlaid={true} />
-
       <div className={cls.mainContent}>
         <div className={cls.navbarSide}>
           <Image
@@ -53,9 +51,9 @@ const TeachingPackagePage = async ({ lng }: Props) => {
             height={200}
             width={200}
           />
-          <NavbarSide sections={sections} />
+          <NavbarSide sections={sections} containerId='content' />
         </div>
-        <div className={cls.content}>
+        <div className={cls.content} id='content'>
           {sections.map((section) => (
             <div id={section.id} key={section.id} className={cls.section}>
               <h2>{section.label}</h2>
@@ -225,12 +223,11 @@ const TeachingPackagePage = async ({ lng }: Props) => {
                     planeetalta voittajille.
                   </>
                 )}
-
                 {section.id === 'section11' && (
                   <>
                     Nuorisotyö & pelitaiteen opetus kouluissa Kehitämme peliä
                     jatkuvasti PRG:n nuorten kanssa. Testaajaksi ja kehittäjiksi
-                    pääsee liittymällä discordserverille:
+                    pääsee liittymällä discord serverille:
                     https://discord.gg/ZXaeztUb Demon tullessa valmiiksi
                     (arviolta keväällä 2024) lähdemme kiertämään sen kanssa
                     maamme peruskouluja ja lukioita. Demotestaus toteutetaan
@@ -263,22 +260,19 @@ const TeachingPackagePage = async ({ lng }: Props) => {
                     p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com
                   </>
                 )}
-                {section.id === 'section14' &&
-                  'Homework assignments content goes here.'}
-                {section.id === 'section15' && 'Conclusion content goes here.'}
               </p>
             </div>
           ))}
         </div>
       </div>
+      <div>
+        <FeedbackSideButton />
+        <HorizontalLines />
+        <Footer />
+      </div>
     </div>
   );
 };
-
-// export default withBackgroundImage(
-//     {}
-// )(TeachingPackagePage);
-// // export default TeachingPackagePage;
 
 export default withBackgroundImage({
   alt: 'Teaching Package bg image',

@@ -14,26 +14,31 @@
 }
 
 .navbarSide {
-  position: absolute;
-
+  margin-top: 2%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   border: 2px solid red;
   width: 20%;
-  max-height: 80vh;
+  max-height: 78vh;
   padding: 1%;
-  height: 80%;
-  position: fixed;
+  height: 80vh;
   left: 0;
   overflow-y: auto;
-  cursor: pointer;
-  scrollbar-color: transparent transparent;
+  font-size: 1.4em;
+  @include custom-scrollbar;
   ul {
     margin: 10%;
+    list-style: none;
+    :hover {
+      color: rgb(0, 255, 38);
+      border-left: 4px solid rgb(4, 255, 4);
+    }
   }
   li {
     margin-top: 2%;
+    cursor: pointer;
   }
 }
 
@@ -41,7 +46,6 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin-left: 20%;
   max-height: 80vh;
   align-items: center;
   overflow-y: auto;
@@ -50,6 +54,7 @@
   padding-left: 10%;
   padding-right: 10%;
   @include custom-scrollbar;
+  font-size: 1.4em;
 }
 
 .section {
