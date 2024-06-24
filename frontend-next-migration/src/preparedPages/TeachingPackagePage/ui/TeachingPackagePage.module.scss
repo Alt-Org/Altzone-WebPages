@@ -42,7 +42,9 @@
   left: 0;
   overflow-y: auto;
   font-size: 1.6em;
-  @include custom-scrollbar;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   ul {
     list-style: none;

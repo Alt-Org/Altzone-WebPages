@@ -3,26 +3,27 @@
   flex: 1;
   overflow-y: auto;
 }
-.sideNavbar {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 .navbarSide {
   ul {
     li {
+      transition: color 0.5s, border-left 0.2s;
       &:hover {
-        color: orange; // Example: Yellow color for hover
+        color: orange;
       }
 
       &.active {
-        color: orange; // Example: Yellow color for active item
-        border-left: 4px solid yellow; // Example: Left border for active item
+        color: orange;
+        border-left: 4px solid yellow;
       }
+      &:focus {
+        outline: none;
+      }
+      &:active {
+        outline: none;
+      }
+
+      user-select: none;
     }
   }
 }
