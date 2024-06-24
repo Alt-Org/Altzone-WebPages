@@ -1,8 +1,10 @@
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-import img from "@/shared/assets/images/altLogo.png";
-import img2 from "@/shared/assets/images/altLogoClan.png"
-import { NavbarBuilder } from "@/widgets/Navbar/model/data/NavbarBuilder";
-import { dropdowns } from "@/widgets/Navbar/model/data/dropdowns";
+import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import img from '@/shared/assets/images/altLogo.png';
+import img2 from '@/shared/assets/images/altLogoClan.png';
+import { NavbarBuilder } from '@/widgets/Navbar/model/data/NavbarBuilder';
+import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
+import MainPage from '../../../../app/[lng]/page';
+import { sections } from './TeachingSections';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
@@ -17,7 +19,11 @@ navbarBuilder.addAuthLogin('login', RoutePaths.auth_login);
 export const navbarMenuMobile = navbarBuilder.build();
 
 const navbarClanBuilder = new NavbarBuilder();
-navbarClanBuilder.addLogo('Nav logo', img2 as unknown as string, RoutePaths.MAIN);
+navbarClanBuilder.addLogo(
+  'Nav logo',
+  img2 as unknown as string,
+  RoutePaths.MAIN,
+);
 navbarClanBuilder.addLink('leaderboard', RoutePaths.CLAN_LEADERBOARD, true);
 navbarClanBuilder.addLink('all_clans', RoutePaths.CLAN_ALL, true);
 navbarClanBuilder.addLink('my_clan', RoutePaths.MEMBERS, true);
@@ -25,3 +31,15 @@ navbarClanBuilder.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarClanMobile = navbarClanBuilder.build();
 
+const navbarTeachingBuilder = new NavbarBuilder();
+navbarTeachingBuilder.addLogo(
+  'main',
+  img as unknown as string,
+  RoutePaths.MAIN,
+);
+navbarTeachingBuilder.addLink('main', RoutePaths.MAIN, false);
+sections.forEach((section) => {
+  navbarTeachingBuilder.addLink(section.label, `#${section.id}`, false);
+});
+
+export const navbarTeachingMobile = navbarTeachingBuilder.build();
