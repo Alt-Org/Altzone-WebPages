@@ -11,12 +11,13 @@
   display: flex;
   align-content: center;
   flex-direction: row;
+  top: 1rem;
   width: 90%;
   height: 90vh;
   border: 1px solid rgb(0, 255, 21);
   border-radius: 10px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
   margin-bottom: 5%;
 }
 
@@ -65,8 +66,9 @@
   align-items: center;
   overflow-y: auto;
   padding: 20px;
-  padding-left: 10%;
-  padding-right: 10%;
+
+  padding-left: 5%;
+  padding-right: 5%;
   @include custom-scrollbar;
   font-size: 1.4em;
   margin: 3px;
@@ -88,4 +90,22 @@
     background-color: rgb(13, 174, 13);
     margin-bottom: 5%;
   }
+}
+
+.content.isMobile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  font-size: 1.4em;
+  margin: 3px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.mainContent.isMobile {
+  top: 4rem;
 }
