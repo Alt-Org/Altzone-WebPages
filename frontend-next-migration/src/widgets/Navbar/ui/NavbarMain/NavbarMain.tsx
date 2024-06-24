@@ -1,18 +1,27 @@
-'use client'
-import { memo } from "react";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import { navbarMenuDesktop, navbarMenuDesktop2, navbarClanDesktop } from "../../model/data/navbarMenuDesktop";
-import { navbarMenuMobile, navbarClanMobile } from "../../model/data/navbarMenuMobile";
-import NavbarMobile from "../NavbarMobile/NavbarMobile";
-import NavbarDesktop from "../NavbarDesktop/NavbarDesktop";
-import NavbarDesktopV2 from "../NavbarDesktopV2/NavbarDesktopV2";
-import { Container } from "@/shared/ui/Container";
-import NavbarMobileV2 from "../NavbarMobileV2/NavbarMobileV2";
+'use client';
+import { memo } from 'react';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import {
+  navbarMenuDesktop,
+  navbarMenuDesktop2,
+  navbarClanDesktop,
+  navbarTeachingDesktop,
+} from '../../model/data/navbarMenuDesktop';
+import {
+  navbarMenuMobile,
+  navbarClanMobile,
+  navbarTeachingMobile,
+} from '../../model/data/navbarMenuMobile';
+import NavbarMobile from '../NavbarMobile/NavbarMobile';
+import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
+import NavbarDesktopV2 from '../NavbarDesktopV2/NavbarDesktopV2';
+import { Container } from '@/shared/ui/Container';
+import NavbarMobileV2 from '../NavbarMobileV2/NavbarMobileV2';
 
 interface NavbarMainProps {
-    overlaid?: boolean;
-    marginTop?: number;
-    className?: string;
+  overlaid?: boolean;
+  marginTop?: number;
+  className?: string;
 }
 
 /**
@@ -26,60 +35,106 @@ interface NavbarMainProps {
  @returns {JSX.Element} - The appropriate navbar component.
  */
 export const NavbarMain = memo((props: NavbarMainProps) => {
+  const { overlaid, marginTop, className } = props;
 
-    const { overlaid, marginTop, className } = props;
+  const { isMobileSize } = useIsMobileSize();
 
-    const { isMobileSize } = useIsMobileSize();
-
-    if (isMobileSize) {
-        return (
-            // <Suspense fallback=''>
-            <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarMenuMobile} />
-            // </Suspense>
-        )
-    }
+  if (isMobileSize) {
     return (
-        <>
-            {/*// <Suspense fallback=''>*/}
-            {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
+      // <Suspense fallback=''>
+      <NavbarMobileV2
+        overlaid={overlaid}
+        marginTop={marginTop}
+        className={className}
+        navbarBuild={navbarMenuMobile}
+      />
+      // </Suspense>
+    );
+  }
+  return (
+    <>
+      {/*// <Suspense fallback=''>*/}
+      {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
 
-
-
-            <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2} overlaid={overlaid} className={className} marginTop={marginTop} />
-        </>
-        // {/*// </Suspense>*/}
-    )
-
-
+      <NavbarDesktopV2
+        navbarBuild={navbarMenuDesktop2}
+        overlaid={overlaid}
+        className={className}
+        marginTop={marginTop}
+      />
+    </>
+    // {/*// </Suspense>*/}
+  );
 });
-
+//---------------------------------------------------------------------------//
 export const NavbarClanMain = memo((props: NavbarMainProps) => {
+  const { overlaid, marginTop, className } = props;
 
-    const { overlaid, marginTop, className } = props;
+  const { isMobileSize } = useIsMobileSize();
 
-    const { isMobileSize } = useIsMobileSize();
-
-    if (isMobileSize) {
-        return (
-            // <Suspense fallback=''>
-            <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarClanMobile} />
-            // </Suspense>
-        )
-    }
+  if (isMobileSize) {
     return (
-        <>
-            {/*// <Suspense fallback=''>*/}
-            {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
+      // <Suspense fallback=''>
+      <NavbarMobileV2
+        overlaid={overlaid}
+        marginTop={marginTop}
+        className={className}
+        navbarBuild={navbarClanMobile}
+      />
+      // </Suspense>
+    );
+  }
+  return (
+    <>
+      {/*// <Suspense fallback=''>*/}
+      {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
 
+      <NavbarDesktopV2
+        navbarBuild={navbarClanDesktop}
+        overlaid={overlaid}
+        className={className}
+        marginTop={marginTop}
+      />
+    </>
+    // {/*// </Suspense>*/}
+  );
+});
+NavbarMain.displayName = 'NavbarMain';
+NavbarClanMain.displayName = 'NavbarClanMain';
 
+//---------------------------------------------------------------------------//
+export const NavbarTeachingMain = memo((props: NavbarMainProps) => {
+  const { overlaid, marginTop, className } = props;
 
-            <NavbarDesktopV2 navbarBuild={navbarClanDesktop} overlaid={overlaid} className={className} marginTop={marginTop} />
-        </>
-        // {/*// </Suspense>*/}
-    )
+  const { isMobileSize } = useIsMobileSize();
 
+  if (isMobileSize) {
+    return (
+      // <Suspense fallback=''>
+      <NavbarMobileV2
+        overlaid={overlaid}
+        marginTop={marginTop}
+        className={className}
+        navbarBuild={navbarTeachingMobile}
+      />
+      // </Suspense>
+    );
+  }
+  return (
+    <>
+      {/*// <Suspense fallback=''>*/}
+      {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
 
+      <NavbarDesktopV2
+        navbarBuild={navbarTeachingDesktop}
+        overlaid={overlaid}
+        className={className}
+        marginTop={marginTop}
+      />
+    </>
+    // {/*// </Suspense>*/}
+  );
 });
 
-NavbarMain.displayName = "NavbarMain";
-NavbarClanMain.displayName = "NavbarClanMain";
+NavbarMain.displayName = 'NavbarMain';
+NavbarTeachingMain.displayName = 'NavbarTeachingMain';
