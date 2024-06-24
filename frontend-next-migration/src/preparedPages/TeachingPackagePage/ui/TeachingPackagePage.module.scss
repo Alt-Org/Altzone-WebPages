@@ -70,7 +70,7 @@
   padding-left: 5%;
   padding-right: 5%;
   @include custom-scrollbar;
-  font-size: 1.4em;
+  font-size: 1.5em;
   margin: 3px;
 }
 
@@ -79,6 +79,7 @@
   padding: 5%;
   background-color: orange;
   border-radius: 10px;
+  color: black;
 
   h2 {
     text-align: center;

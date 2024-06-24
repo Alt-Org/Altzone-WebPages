@@ -268,9 +268,9 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
                     9789524954839
                     <br /> Tuukka Hämäläinen ja Aleksandr Manzos, Pelien
                     äärettömät maailmat: Elämän suuret kysymykset digitaalisissa
-                    peleissä 2020 ISBN: 9789523456068 Jaakko Kemppainen,
-                    <br />
-                    Pelisuunnittelijan peruskirja 2019 ISBN: 9789527347096
+                    peleissä 2020 ISBN: 9789523456068
+                    <br /> Jaakko Kemppainen, Pelisuunnittelijan peruskirja 2019
+                    ISBN: 9789527347096
                     <br />
                     Jaakko Kemppainen, Pelit tekevät hyvää 2024 ISBN:
                     9789523812420
