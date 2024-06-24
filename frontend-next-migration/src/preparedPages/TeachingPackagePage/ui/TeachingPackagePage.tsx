@@ -62,7 +62,7 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
               <h2>{section.label}</h2>
               <p>
                 {section.id === 'section1' && (
-                  <p>
+                  <>
                     ALT Zone on taiteellisella sisällöllä varustettu
                     mobiilipeli, jota kehitetään peruskoulujen taideopetuksen
                     opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa,
@@ -70,7 +70,7 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
                     analysointiin, yhteistä kokemusta on lähes mahdotonta
                     saavuttaa. ALT Zone tarjoaa yhteisen pohjan pelitaiteen
                     opetukselle.
-                  </p>
+                  </>
                 )}
                 {section.id === 'section2' && (
                   <>
