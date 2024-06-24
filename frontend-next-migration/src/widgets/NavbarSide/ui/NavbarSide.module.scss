@@ -1,6 +1,3 @@
-.sideNavbarContainer {
-  display: flex;
-}
 .mainContent {
   display: flex;
   flex: 1;
@@ -14,10 +11,18 @@
   align-items: center;
   justify-content: center;
 }
-.content {
-  padding: 10px;
-}
-.content ul li {
-  cursor: pointer;
-  color: aqua;
+
+.navbarSide {
+  ul {
+    li {
+      &:hover {
+        color: orange; // Example: Yellow color for hover
+      }
+
+      &.active {
+        color: orange; // Example: Yellow color for active item
+        border-left: 4px solid yellow; // Example: Left border for active item
+      }
+    }
+  }
 }

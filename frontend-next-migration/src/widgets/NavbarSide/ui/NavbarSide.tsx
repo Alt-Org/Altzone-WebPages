@@ -17,17 +17,19 @@ const NavbarSide: React.FC<NavbarSideProps> = ({ sections, containerId }) => {
   const containerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    containerRef.current = document.getElementById(containerId) as HTMLElement;
+    const container = document.getElementById(containerId) as HTMLElement;
+    containerRef.current = container;
 
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (!container) return;
 
       const sectionOffsets = sections.map((section) => {
         const element = document.getElementById(section.id);
         return { id: section.id, offsetTop: element ? element.offsetTop : 0 };
       });
 
-      const currentScrollPosition = containerRef.current.scrollTop + 100;
+      const currentScrollPosition =
+        container.scrollTop + container.clientHeight / 2;
 
       const currentSection = sectionOffsets.find((section, index) => {
         const nextSection = sectionOffsets[index + 1];
@@ -37,28 +39,31 @@ const NavbarSide: React.FC<NavbarSideProps> = ({ sections, containerId }) => {
         );
       });
 
-      if (currentSection) {
+      if (currentSection && currentSection.id !== activeSection) {
+        console.log(`Active section updated: ${currentSection.id}`);
         setActiveSection(currentSection.id);
       }
     };
 
-    containerRef.current?.addEventListener('scroll', handleScroll);
+    container.addEventListener('scroll', handleScroll);
 
     // Initial check to set the active section when the component mounts
     handleScroll();
 
-    return () =>
-      containerRef.current?.removeEventListener('scroll', handleScroll);
-  }, [sections, containerId]);
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+    };
+  }, [sections, containerId, activeSection]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element && containerRef.current) {
-      const offsetPosition = element.offsetTop - 100; // offset up
+      const offsetPosition = element.offsetTop - 50; // offset up
       containerRef.current.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
       });
+      setActiveSection(id); // Update the active section
     }
   };
 
