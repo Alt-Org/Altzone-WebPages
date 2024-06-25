@@ -1,4 +1,4 @@
-import { PresentationSection} from "../../types";
+import { createSection } from "../createSection";
 
 /** use them in shared i18n json files **/
 const i18nKeyPrefixes = [
@@ -8,10 +8,4 @@ const i18nKeyPrefixes = [
 export const TeachingSections = i18nKeyPrefixes.map(createSection);
 
 
-function createSection(prefix: string, index: number): PresentationSection {
-    return {
-        id: `section${index + 1}`,
-        label: `${prefix}-title`,
-        description: `${prefix}-description`
-    };
-}
+
