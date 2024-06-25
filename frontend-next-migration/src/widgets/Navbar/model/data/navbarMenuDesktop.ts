@@ -3,10 +3,7 @@ import img2 from '@/shared/assets/images/altLogoClan.png';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { NavbarBuilder } from './NavbarBuilder';
 import { dropdowns } from './dropdowns';
-import { useSSR } from 'react-i18next';
-import { LoggedIn } from '@/stories/Header.stories';
-import { NavbarTeachingMain } from '../../ui/NavbarMain/NavbarMain';
-import { NavbarGameArtMain } from '../../ui/NavbarMain/NavbarMain';
+
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addDropDown('community', false, dropdowns.community, 'left');
