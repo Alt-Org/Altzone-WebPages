@@ -13,8 +13,8 @@ import {
     navbarTeachingMobile,
     navbarGameArtMobile
 } from "../../model/data/navbarMenuMobile";
-import NavbarDesktopV2 from "../NavbarDesktopV2/NavbarDesktopV2";
-import NavbarMobileV2 from "../NavbarMobileV2/NavbarMobileV2";
+import NavbarDesktopV2 from "../../ui/NavbarDesktopV2/NavbarDesktopV2";
+import NavbarMobileV2 from "../../ui/NavbarMobileV2/NavbarMobileV2";
 import {FixedProvider} from "@/widgets/Navbar/model/FixedProvider";
 
 
