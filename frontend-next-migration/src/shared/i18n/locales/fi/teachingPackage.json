@@ -5,9 +5,11 @@
     "og-title": "AltZone - Start Your Game Here",
     "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
     "section-title": "Opetuspaketti",
-    "download": "Lataa",
-    "text1":"ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Samoin kuin kirjallisuuden opetus kouluissa alkaa yhteisen kirjan lukemisella, sen analysoinnilla ja merkityksen luomisella kirjallisuuden ymmärtämisen edistämiseksi, ALT Zone tarjoaa samanlaisen yhteisen pohjan peruskoulujen pelitaiteen opetukselle. Pelissä on mahdollisuus analysoida pelitaidetta ilman pelin pelaamista, videoiden, kuvien ja kysymyssarjojen avulla. Vaikka pelin pelaaminen syventääkin kokemusta, se ei ole välttämätöntä opetuksen kannalta. Tämä tekee paketista opettajalle mahdollisimman helpon.",
-    "text2":"Pelitaiteen opetus on haastavaa, koska yhteistä pohjaa, kuten yhteistä kokemusta samasta näytelmästä, ei ole mahdollista saavuttaa. Siksi pelianalyysin ja pelitaiteen ajattelun opettaminen kouluissa on vaikeaa ilman yhteistä kieltä. Vaikka eri pelejä voidaan analysoida, oppiminen ei koskaan yllä siihen merkityksen luomiseen ja ymmärtämiseen, mitä tarjoaa taidekasvatus, jossa kokemukset jaetaan yhdessä.",
-    "text3":"Lopuksi oppilaat jatkokehittävät peliä, minkä tuloksena syntyy ALT Zone 2.0 -mobiilipeli, jota kuka tahansa voi ladata sovelluskaupasta. 2.0-pelin tuotot käytetään nuorten unelmien tukemiseen säätiön kautta."
-  }
+
+    "demo-title":  "Esittely",
+    "demo-description": "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa. ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle.",
+
+    "implementation-title":  "Toteutus",
+    "implementation-description": "Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. Oppilailla on mahdollisuus jatkokehittää peliä sovelluskaupasta myöhemmin ladattavaksi ALT Zone 2.0 - mobiilipeliksi. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen siihen perustettavan säätiön kautta."
+}
   
