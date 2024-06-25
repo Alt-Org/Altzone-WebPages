@@ -21,7 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function DefaultPage({ params }: Props){
-        return(
+
+    return(
+                // @ts-ignore
                 <TeachingPackagePage lng={params.lng}  />
             )
 };

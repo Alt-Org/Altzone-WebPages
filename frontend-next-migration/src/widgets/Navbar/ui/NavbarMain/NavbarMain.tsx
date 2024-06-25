@@ -1,8 +1,18 @@
 'use client'
 import { memo } from "react";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import { navbarMenuDesktop2, navbarClanDesktop } from "../../model/data/navbarMenuDesktop";
-import { navbarMenuMobile, navbarClanMobile } from "../../model/data/navbarMenuMobile";
+import {
+    navbarMenuDesktop2,
+    navbarClanDesktop,
+    navbarTeachingDesktop,
+    navbarGameArtDesktop
+} from "../../model/data/navbarMenuDesktop";
+import {
+    navbarMenuMobile,
+    navbarClanMobile,
+    navbarTeachingMobile,
+    navbarGameArtMobile
+} from "../../model/data/navbarMenuMobile";
 import NavbarDesktopV2 from "../NavbarDesktopV2/NavbarDesktopV2";
 import NavbarMobileV2 from "../NavbarMobileV2/NavbarMobileV2";
 import {FixedProvider} from "@/widgets/Navbar/model/FixedProvider";
@@ -31,21 +41,17 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
     if (isMobileSize) {
         return (
-            // <Suspense fallback=''>
-            <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarMenuMobile} />
-            // </Suspense>
+            <FixedProvider>
+                <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarMenuMobile} />
+            </FixedProvider>
         )
     }
     return (
         <>
-            {/*// <Suspense fallback=''>*/}
-            {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
-
-
-
-            <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2} overlaid={overlaid} className={className} marginTop={marginTop} />
+            <FixedProvider>
+                <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2} overlaid={overlaid} className={className} marginTop={marginTop} />
+            </FixedProvider>
         </>
-        // {/*// </Suspense>*/}
     )
 
 
@@ -65,17 +71,88 @@ export const NavbarClanMain = memo((props: NavbarMainProps) => {
     return (
         <>
             <FixedProvider>
-            <NavbarDesktopV2
-                navbarBuild={navbarClanDesktop}
-                overlaid={overlaid}
-                className={className}
-                marginTop={marginTop}
-            />
+                <NavbarDesktopV2
+                    navbarBuild={navbarClanDesktop}
+                    overlaid={overlaid}
+                    className={className}
+                    marginTop={marginTop}
+                />
             </FixedProvider>
         </>
     )
 
 
+});
+
+
+
+export const NavbarTeachingMain = memo((props: NavbarMainProps) => {
+    const { overlaid, marginTop, className } = props;
+
+    const { isMobileSize } = useIsMobileSize();
+
+    if (isMobileSize) {
+        return (
+            <>
+                <FixedProvider>
+                    <NavbarMobileV2
+                        overlaid={overlaid}
+                        marginTop={marginTop}
+                        className={className}
+                        navbarBuild={navbarTeachingMobile}
+                    />
+                </FixedProvider>
+            </>
+        );
+    }
+    return (
+        <>
+            <FixedProvider>
+                <NavbarDesktopV2
+                    navbarBuild={navbarTeachingDesktop}
+                    overlaid={overlaid}
+                    className={className}
+                    marginTop={marginTop}
+                />
+            </FixedProvider>
+        </>
+    );
+});
+
+NavbarMain.displayName = 'NavbarMain';
+NavbarTeachingMain.displayName = 'NavbarTeachingMain';
+//---------------------------------------------------------------------------//
+export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
+    const { overlaid, marginTop, className } = props;
+
+    const { isMobileSize } = useIsMobileSize();
+
+    if (isMobileSize) {
+        return (
+            <>
+                <FixedProvider>
+                    <NavbarMobileV2
+                        overlaid={overlaid}
+                        marginTop={marginTop}
+                        className={className}
+                        navbarBuild={navbarGameArtMobile}
+                    />
+                </FixedProvider>
+            </>
+        );
+    }
+    return (
+        <>
+            <FixedProvider>
+                <NavbarDesktopV2
+                    navbarBuild={navbarGameArtDesktop}
+                    overlaid={overlaid}
+                    className={className}
+                    marginTop={marginTop}
+                />
+            </FixedProvider>
+        </>
+    );
 });
 
 NavbarMain.displayName = "NavbarMain";

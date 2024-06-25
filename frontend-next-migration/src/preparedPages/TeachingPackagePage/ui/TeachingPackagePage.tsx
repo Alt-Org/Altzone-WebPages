@@ -12,7 +12,8 @@ import NavbarSide from '@/widgets/NavbarSide/ui/NavbarSide';
 import pageLogo from '@/shared/assets/images/teachingPackage/pageLogo.png';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { Mods } from '@/shared/lib/classNames/classNames';
-import { classNames } from '../../../shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import {FC} from "react";
 
 interface Section {
   id: string;
@@ -23,7 +24,10 @@ type Props = {
   lng: string;
 };
 
-const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
+const TeachingPackagePage = async ({ lng }: Props) => {
+
+  const { t } = await useServerTranslation(lng, 'teachingPackage');
+
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
   const combinedModCss: Mods = {
