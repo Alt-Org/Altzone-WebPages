@@ -91,6 +91,13 @@
     background-color: rgb(13, 174, 13);
     margin-bottom: 5%;
   }
+  a {
+    color: rgb(81, 255, 0);
+  }
+
+  a:hover {
+    color: rgb(255, 255, 255);
+  }
 }
 
 .content.isMobile {
