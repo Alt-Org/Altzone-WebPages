@@ -30,9 +30,9 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
     return (
         <FixedProvider>
             {isMobileSize ? (
-                <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarBuild} />
+                <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarBuild}  navBarType={navBarType}/>
             ) : (
-                <NavbarDesktopV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarBuild} />
+                <NavbarDesktopV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarBuild} navBarType={navBarType} />
             )}
         </FixedProvider>
     );

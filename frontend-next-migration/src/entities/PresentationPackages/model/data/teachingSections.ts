@@ -5,7 +5,8 @@ const i18nKeyPrefixes = [
     "demo", "implementation"
 ]
 
-export const TeachingSections = i18nKeyPrefixes.map(createSection);
+export const TeachingSections = i18nKeyPrefixes.map((key, index) => createSection(key, index));
+
 
 
 
