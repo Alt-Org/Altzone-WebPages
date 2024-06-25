@@ -234,7 +234,7 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
                     ominaisuuksista ja loput 50% pelaaja pystyy käyttää itse,
                     pelikentää keräämillää timanteilla. RYÖSTÖ - 2v2 pelin
                     voittajatiimi suorittaa aikarajoitetun ryöstön vastustajan
-                    varastoon. Voittona saatu rysteen saalis siirtyy ≠viäjän
+                    varastoon. Voittona saatu ryöstö saalis siirtyy häviäjien
                     planeetalta voittajille.
                   </>
                 )}
