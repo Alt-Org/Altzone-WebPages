@@ -157,21 +157,51 @@ const GameArtPackagePage: React.FC<Props> = ({ lng }) => {
                 )}
                 {section.id === 'section8' && (
                   <>
-                    http://www.checkpointhelsinki.net/suomalainen-pelitaide/
+                    <a
+                      href='http://www.checkpointhelsinki.net/suomalainen-pelitaide/'
+                      target='_blank'>
+                      http://www.checkpointhelsinki.net/suomalainen-pelitaide/
+                    </a>
                     <br />
-                    https://igdafi.squarespace.com/
+                    <a href='https://igdafi.squarespace.com/' target='_blank'>
+                      https://igdafi.squarespace.com/
+                    </a>
                     <br />
-                    https:/taidetutka.fi/2022/moniulotteinen-pelitaide/
+                    <a
+                      href='https:/taidetutka.fi/2022/moniulotteinen-pelitaide/'
+                      target='_blank'>
+                      https:/taidetutka.fi/2022/moniulotteinen-pelitaide/
+                    </a>
                     <br />
-                    https://www.capitalgameart.fi/2021/11/28/mita-pelitaide-on/
+                    <a
+                      href='https://www.capitalgameart.fi/2021/11/28/mita-pelitaide-on/'
+                      target='_blank'>
+                      https://www.capitalgameart.fi/2021/11/28/mita-pelitaide-on/
+                    </a>
                     <br />
-                    https://www.youtube.com/watch?v=tVEmYtO8YR8
+                    <a
+                      href='https://www.youtube.com/watch?v=tVEmYtO8YR8'
+                      target='_blank'>
+                      https://www.youtube.com/watch?v=tVEmYtO8YR8
+                    </a>
                     <br />
                   </>
                 )}
                 {section.id === 'section9' && (
                   <>
-                    p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com
+                    p. 0442407396 / Helena Pavloff-Pelkonen, <br />{' '}
+                    psykkis@hotmail.com <br />
+                    <a
+                      href='https://www.facebook.com/GamingPsyche/'
+                      target='_blank'>
+                      Facebook
+                    </a>
+                    <br />
+                    <a
+                      href='https://www.instagram.com/gamingpsyche/'
+                      target='_blank'>
+                      Instagram
+                    </a>
                   </>
                 )}
               </p>
