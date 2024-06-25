@@ -12,6 +12,7 @@ import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
 import {FixedButton} from "../FixedButton/FixedButton";
 import { useFixed } from "../../model/FixedProvider";
+import { defineNs } from "../../model/defineNs";
 
 
 
@@ -41,7 +42,11 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const [logout] = useLogoutMutation();
     const params = useParams();
     const lng = params.lng as string;
-    const { t, i18n } = useClientTranslation(lng, "navbar");
+
+
+    const ns = defineNs(navBarType)
+
+    const { t, i18n } = useClientTranslation(lng, ns);
 
 
     const style = marginTop

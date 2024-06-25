@@ -5,7 +5,7 @@ import NavbarDesktopV2 from "../NavbarDesktopV2/NavbarDesktopV2";
 import NavbarMobileV2 from "../NavbarMobileV2/NavbarMobileV2";
 import { FixedProvider } from "@/widgets/Navbar/model/FixedProvider";
 import { NavBarType } from "../../model/types";
-import { getNavbarData } from "../../model/getNavbarData";
+import { getNavbarBuildByTypeAndSize } from "../../model/getNavbarBuildByTypeAndSize";
 
 
 
@@ -25,7 +25,7 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
         className,
         navBarType = "Default" } = props;
     const { isMobileSize } = useIsMobileSize();
-    const navbarBuild = getNavbarData(navBarType, isMobileSize);
+    const navbarBuild = getNavbarBuildByTypeAndSize(navBarType, isMobileSize);
 
     return (
         <FixedProvider>
