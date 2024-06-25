@@ -1,5 +1,5 @@
 import {PresentationSection} from "@/entities/PresentationPackages/types";
-import {TeachingSections} from "./data/teachingPackage";
+import {TeachingSections} from "./data/teachingSections";
 
 const makeSectionsWithI18n = (sections: PresentationSection[]): ((t: (key: string) => string) => PresentationSection[]) => {
     return (t: (key: string) => string): PresentationSection[] => {
