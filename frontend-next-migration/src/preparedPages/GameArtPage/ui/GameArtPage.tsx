@@ -1,5 +1,5 @@
 'use client';
-import { Navbar } from '@/widgets/Navbar';
+import { NavbarGameArt } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
@@ -50,7 +50,7 @@ const GameArtPackagePage: React.FC<Props> = ({ lng }) => {
 
   return (
     <div className={classNames(cls.pageContainer, combinedModCss)}>
-      <Navbar overlaid={true} />
+      <NavbarGameArt overlaid={true} />
       <div className={classNames(cls.mainContent, combinedModCss)}>
         {!isMobileSize && (
           <div className={cls.pageLogo}>

@@ -6,6 +6,7 @@ import { dropdowns } from './dropdowns';
 import { useSSR } from 'react-i18next';
 import { LoggedIn } from '@/stories/Header.stories';
 import { NavbarTeachingMain } from '../../ui/NavbarMain/NavbarMain';
+import { NavbarGameArtMain } from '../../ui/NavbarMain/NavbarMain';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addDropDown('community', false, dropdowns.community, 'left');
@@ -48,3 +49,7 @@ export const navbarClanDesktop = navbarClanBuilder.build();
 const navbarTeachingBuilder = new NavbarBuilder();
 
 export const navbarTeachingDesktop = navbarBuilderV2.build();
+
+const navbarGameArtBuilder = new NavbarBuilder();
+
+export const navbarGameArtDesktop = navbarBuilderV2.build();
