@@ -1,4 +1,4 @@
-import React, {CSSProperties} from "react";
+import {CSSProperties} from "react";
 import cls from "./NavbarDesktopV2.module.scss";
 import { NavbarBuild } from "../../model/types/types";
 import { classNames } from "@/shared/lib/classNames/classNames";

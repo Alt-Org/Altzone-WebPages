@@ -4,8 +4,9 @@ import img2 from '@/shared/assets/images/altLogoClan.png';
 import { NavbarBuilder } from '@/widgets/Navbar/model/data/NavbarBuilder';
 import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
 import MainPage from '../../../../app/[lng]/page';
-import { TeachingSections } from './teachingSections';
+// import { TeachingSections } from './teachingSections';
 import { ArtSections } from './gameArtSections';
+import {TeachingSections} from "./TeachingSections";
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
