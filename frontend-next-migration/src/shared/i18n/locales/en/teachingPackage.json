@@ -7,10 +7,10 @@
     "section-title": "Teaching Package",
 
     "main" : "Main page",
-    "demo-title":  "Demonstration",
+    "demo-label":  "Demonstration",
     "demo-description": "Add here correct description",
 
-    "implementation-title":  "Implementation",
+    "implementation-label":  "Implementation",
     "implementation-description": "Add here correct description"
 
   }

@@ -10,7 +10,7 @@ import {PresentationSection} from "../types";
 export function createSection(prefix: string, index: number): PresentationSection {
     return {
         id: `section${index + 1}`,
-        label: `${prefix}-title`,
+        label: `${prefix}-label`,
         description: `${prefix}-description`
     };
 }
