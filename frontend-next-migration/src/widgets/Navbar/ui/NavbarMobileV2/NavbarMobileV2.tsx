@@ -14,6 +14,7 @@ import {FixedButton} from "../FixedButton/FixedButton";
 
 import {useFixed} from "../../model/FixedProvider";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
+import {defineNs} from "../../model/defineNs";
 
 interface NavbarTouchProps {
     overlaid?: boolean;
@@ -39,7 +40,11 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const params = useParams();
     const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "navbar");
+
+    const ns = defineNs(navBarType)
+
+    const { t, i18n } = useClientTranslation(lng, ns);
+
     const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();
 

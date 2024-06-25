@@ -11,7 +11,7 @@ import {
     navbarTeachingDesktop
 } from "./data/navbarMenuDesktop";
 
-export const getNavbarData = (type: NavBarType, isMobileSize: boolean) => {
+export const getNavbarBuildByTypeAndSize = (type: NavBarType, isMobileSize: boolean) => {
     if (isMobileSize) {
         switch (type) {
             case "Default":
