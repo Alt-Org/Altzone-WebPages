@@ -278,7 +278,19 @@ const TeachingPackagePage: React.FC<Props> = ({ lng }) => {
                 )}
                 {section.id === 'section13' && (
                   <>
-                    p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com
+                    p. 0442407396 / Helena Pavloff-Pelkonen, <br />{' '}
+                    psykkis@hotmail.com <br />
+                    <a
+                      href='https://www.facebook.com/GamingPsyche/'
+                      target='_blank'>
+                      Facebook
+                    </a>
+                    <br />
+                    <a
+                      href='https://www.instagram.com/gamingpsyche/'
+                      target='_blank'>
+                      Instagram
+                    </a>
                   </>
                 )}
               </p>
