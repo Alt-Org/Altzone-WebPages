@@ -1,4 +1,4 @@
-import {NavbarLinkObject, NavLogoObject, NavbarLinkFakeObject, Position, NavbarDropDownObject} from "./types";
+import {NavbarLinkObject, NavLogoObject, NavbarLinkFakeObject, Position, NavbarDropDownObject} from "./index";
 
 
 export function isNavbarLinkFakeObject(obj: any): obj is NavbarLinkFakeObject {
