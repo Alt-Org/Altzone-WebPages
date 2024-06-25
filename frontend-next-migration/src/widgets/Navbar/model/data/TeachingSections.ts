@@ -3,7 +3,7 @@ export interface sections {
   label: string;
 }
 
-export const sections: sections[] = [
+export const TeachingSections: sections[] = [
   { id: 'section1', label: 'Esittely' },
   { id: 'section2', label: 'Toteutus' },
   { id: 'section3', label: 'Mitä Pelitaide on?' },

@@ -6,11 +6,13 @@ import {
   navbarMenuDesktop2,
   navbarClanDesktop,
   navbarTeachingDesktop,
+  navbarGameArtDesktop,
 } from '../../model/data/navbarMenuDesktop';
 import {
   navbarMenuMobile,
   navbarClanMobile,
   navbarTeachingMobile,
+  navbarGameArtMobile,
 } from '../../model/data/navbarMenuMobile';
 import NavbarMobile from '../NavbarMobile/NavbarMobile';
 import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
@@ -138,3 +140,39 @@ export const NavbarTeachingMain = memo((props: NavbarMainProps) => {
 
 NavbarMain.displayName = 'NavbarMain';
 NavbarTeachingMain.displayName = 'NavbarTeachingMain';
+//---------------------------------------------------------------------------//
+export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
+  const { overlaid, marginTop, className } = props;
+
+  const { isMobileSize } = useIsMobileSize();
+
+  if (isMobileSize) {
+    return (
+      // <Suspense fallback=''>
+      <NavbarMobileV2
+        overlaid={overlaid}
+        marginTop={marginTop}
+        className={className}
+        navbarBuild={navbarGameArtMobile}
+      />
+      // </Suspense>
+    );
+  }
+  return (
+    <>
+      {/*// <Suspense fallback=''>*/}
+      {/*    <NavbarDesktop navbarBuild={navbarMenuDesktop} overlaid={overlaid } className={className} marginTop={marginTop}/>*/}
+
+      <NavbarDesktopV2
+        navbarBuild={navbarGameArtDesktop}
+        overlaid={overlaid}
+        className={className}
+        marginTop={marginTop}
+      />
+    </>
+    // {/*// </Suspense>*/}
+  );
+});
+
+NavbarMain.displayName = 'NavbarMain';
+NavbarGameArtMain.displayName = 'NavbarGameArtMain';
