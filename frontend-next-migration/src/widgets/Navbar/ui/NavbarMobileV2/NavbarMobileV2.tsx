@@ -72,6 +72,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             .filter(item => item !== null) as ISidebarItem[];
     }, [navbarBuild, t]);
 
+    console.log(sidebarItemsList);
+
 
     const style: CSSProperties = marginTop
         ? { "marginTop": `${marginTop}px` }

@@ -3,10 +3,10 @@ import img from '@/shared/assets/images/altLogo.png';
 import img2 from '@/shared/assets/images/altLogoClan.png';
 import { NavbarBuilder } from '@/widgets/Navbar/model/data/NavbarBuilder';
 import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
-import MainPage from '../../../../app/[lng]/page';
-// import { TeachingSections } from './teachingSections';
 import { ArtSections } from './gameArtSections';
-import {TeachingSections} from "./TeachingSections";
+
+
+import {TeachingSectionsPrepared} from "./TeachingSections";
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
@@ -40,7 +40,7 @@ navbarTeachingBuilder.addLogo(
   RoutePaths.MAIN,
 );
 navbarTeachingBuilder.addLink('main', RoutePaths.MAIN, false);
-TeachingSections.forEach((section) => {
+TeachingSectionsPrepared.forEach((section) => {
   navbarTeachingBuilder.addLink(section.label, `#${section.id}`, false);
 });
 
