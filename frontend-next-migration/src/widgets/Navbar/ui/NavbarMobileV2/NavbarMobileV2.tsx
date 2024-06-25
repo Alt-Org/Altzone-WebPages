@@ -5,7 +5,7 @@ import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import cls from "./NavbarMobileV2.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
-import { ItemType, NavbarBuild } from "../../model/types";
+import {ItemType, NavbarBuild, NavBarType} from "../../model/types";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
@@ -22,6 +22,7 @@ interface NavbarTouchProps {
     navbarBuild?: NavbarBuild;
     side?: 'left' | 'right';
     className?: string;
+    navBarType?: NavBarType;
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
