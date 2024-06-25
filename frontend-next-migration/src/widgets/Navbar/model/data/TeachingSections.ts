@@ -1,9 +1,9 @@
-export interface sections {
+export interface Sections {
   id: string;
   label: string;
 }
 
-export const TeachingSections: sections[] = [
+export const TeachingSections: Sections[] = [
   { id: 'section1', label: 'Esittely' },
   { id: 'section2', label: 'Toteutus' },
   { id: 'section3', label: 'Mitä Pelitaide on?' },

@@ -1,12 +1,4 @@
-
-export interface SectionData {
-    title: string;
-    description: string;
-}
-
-export type SectionMap = Record<string, SectionData>
-
-export interface Section {
+export interface PresentationSection {
     id: string;
     label: string;
     description: string;
