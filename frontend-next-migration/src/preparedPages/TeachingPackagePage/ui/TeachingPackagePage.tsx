@@ -1,5 +1,5 @@
 'use client';
-import { NavbarTeaching } from '@/widgets/Navbar';
+import {Navbar, NavbarTeaching} from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
@@ -45,7 +45,7 @@ const TeachingPackagePage = ( props: Props) => {
 
   return (
     <div className={classNames(cls.pageContainer, combinedModCss)}>
-      <NavbarTeaching overlaid={true} />
+      <Navbar overlaid={true} navBarType={"TeachingPackage"}/>
       <div className={classNames(cls.mainContent, combinedModCss)}>
         {!isMobileSize && (
           <div className={cls.pageLogo}>
