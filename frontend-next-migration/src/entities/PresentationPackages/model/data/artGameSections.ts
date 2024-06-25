@@ -1,6 +1,6 @@
 import {  } from "../../types";
 
 
-export const ArtGamePackage = {
+export const ArtGameSections = {
 
 }
