@@ -32,7 +32,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         marginTop,
         navbarBuild,
         side = 'left',
-        className = ''
+        className = '',
+        navBarType = "Default"
     } = props;
 
 

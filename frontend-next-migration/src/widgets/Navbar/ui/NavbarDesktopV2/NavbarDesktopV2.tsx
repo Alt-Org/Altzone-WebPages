@@ -30,7 +30,8 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         navbarBuild,
         overlaid= false,
         marginTop,
-        className = ''
+        className = '',
+        navBarType = "Default"
     } = props;
 
     const { isFixed } = useFixed();
