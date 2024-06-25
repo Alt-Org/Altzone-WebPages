@@ -1,4 +1,4 @@
-import { NavbarBuild, NavbarMenuItem } from "../../model/types/types";
+import { NavbarBuild, NavbarMenuItem } from "../../model/types";
 import  {memo} from "react";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";

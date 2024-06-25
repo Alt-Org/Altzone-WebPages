@@ -1,6 +1,6 @@
 import {CSSProperties} from "react";
 import cls from "./NavbarDesktopV2.module.scss";
-import { NavbarBuild } from "../../model/types/types";
+import { NavbarBuild } from "../../model/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useParams } from "next/navigation";
