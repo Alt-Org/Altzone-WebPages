@@ -12,16 +12,23 @@ type Props = {
     lng: string
 }
 
+
+
+
+
 const ClassifiedHeroesPage = async ({ lng }: Props) => {
 
     const { t } = await useServerTranslation(lng, 'heroes');
     const sameBg = undefined;
 
     return (
+        <>
+        <Navbar overlaid />
         <main className={cls.main}>
+            {/*<Navbar overlaid />*/}
             <FeedbackSideButton disableMobile={true} />
 
-            <Navbar overlaid />
+
 
             <SectionHeroesBlocks
                 backgroundImageSrc={sameBg}
@@ -32,16 +39,12 @@ const ClassifiedHeroesPage = async ({ lng }: Props) => {
             />
             <HorizontalLines/>
         </main>
-
-
-
-
-
+        </>
     );
 };
 
 export default withBackgroundImage({
-    alt: "TeachingPackagePage underground style background",
+    alt: "ClassifiedHeroesPage underground style background",
     imagePath: bgPicture as unknown as string,
     className: cls.wholePageBG
     // @ts-ignore
