@@ -1,17 +1,42 @@
 {
-    "head-title": "AltZone",
-    "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
-    "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
-    "og-title": "AltZone - Start Your Game Here",
-    "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
-    "section-title": "Teaching Package",
+  "head-title": "AltZone",
+  "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
+  "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
+  "og-title": "AltZone - Start Your Game Here",
+  "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
+  "section-title": "Teaching Package",
+  "main": "Main page",
 
-    "main" : "Main page",
-    "demo-label":  "Demonstration",
-    "demo-description": "Add here correct description",
+  "intro-label": "Introduction",
+  "intro-description": "ALT Zone is a mobile game with artistic content, developed as a teaching tool for art education in primary schools. Teaching game art is challenging as it heavily relies on personal experience and analysis, making it nearly impossible to achieve a common experience. ALT Zone provides a shared foundation for teaching game art.",
 
-    "implementation-label":  "Implementation",
-    "implementation-description": "Add here correct description"
+  "implementation-label": "Implementation",
+  "implementation-description": "The teaching package is easy to implement; it includes a demo game that can be tested on mobile or PC devices, along with questions guiding the thinking about game art. The game can also be analyzed solely through videos and images. Students have the opportunity to further develop the game to be downloadable later from the app store as ALT Zone 2.0 - a mobile game. The proceeds from ALT Zone 2.0 will support the dreams of young people through a foundation established for this purpose.",
 
-  }
-  
+  "visual-label": "Visual Impact",
+  "visual-description": "● The theme/message conveyed by the game characters.\n● The roles represented by the character classes; recognizability of representation.\n● The graphic style of the characters; what kind of atmosphere and mood it conveys.\n● Graphic symbolism in the interface; recognizability of the message.\n● What does the symbolism in the interface tell us about our era now in 2024?\n● The graphic style of the interface; what does it convey about the nature and mood of the game.\n● What kind of symbolism do you find in the furniture of the soul home; what do you think the artist wanted to say with these objects?",
+
+  "fuctional-label": "Functional Impact",
+  "fuctional-description": "● The impact of different character classes on gameplay and strategy.\n● The interrelationships of different character classes; how they complement each other.\n● How do different interface elements invite user action and participation.\n● The connection between the functional nature and graphic symbolism of icons; is it justified? (could it be further developed?)\n● If the battle were a representation of life, what would it tell?\n● The audiovisual narration of the battle and robbery; what message does it convey and what kind of atmosphere does it build?\n● How does the game reflect the consequences of actions and the responsibility of acting as a member of the community?\n● Building identity through profile information and avatar customization. What if you can't become visible (chat)?\n● How do the choices made by the player affect the development and reputation of their game character in the clan?\n● What ways does the player have to make their voice heard? How can the player's own ideology become visible?\n● What is the significance of considering accessibility from a value perspective?",
+
+  "connections-label": "Connections",
+  "connections-description": "● Cultural stereotypes and gender norms reflected/challenged in the characters.\n● Cultural norms and societal perceptions reflected/challenged in the interface graphics.\n● Psychological or social reasons behind the popularity of different character classes.\n● Social practices built around the core of the game (forms of cooperative play, public discussions, etc.)\n● How does the voting mechanism implemented in the game reflect real-world democratic processes?\n● What social skills does the game develop as part of clan activities and communal decision-making?\n● How can the game mechanics serve as tools to teach cooperation, negotiation, and the values of community?",
+
+  "online-label": "Alt Zone Online Game",
+  "online-description": "ALT Zone is a cooperative game designed for mobile devices, where each member of the alliance has an important task. ALT Zone brings together different players to the essence of our humanity and makes them important to each other, with the strengths that each player possesses.",
+
+  "alliance-label": "Alliance of Deverse Players",
+  "alliance-description": "Players form a team of 30 members, where each player type has an important role; collectors, builders, competitors, designers, etc. The team lives on a planet, which is decorated with game winnings, as well as furniture and other modifications purchased from the game shop. Everything is shared. The chat supports the 'it takes a village to raise a child' principle, as players represent their alliance and country (depending on where they are discussing).",
+
+  "characters-label": "Game Characters & Their Development",
+  "characters-description": "The game characters' shields are based on real-life defense mechanisms. Each game character belongs to one of seven defense classes: \"numb\", \"sliders\", \"rule-bound\", \"reflectors\", \"self-flagellators\", \"over-thinkers\", \"symbiotic\" (working titles). The inspiration for the defense classes comes from Gestalt theory. The class determines half of the game character's attributes, and the remaining 50% can be adjusted by the player (buff/debuff) with diamonds collected from the game field.",
+
+  "mechanics-label": "Game Mechanics",
+  "mechanics-description": "Ping Pong Game Mode - The game characters' shields are based on real-life defense mechanisms. Each game character belongs to one of seven defense classes: \"numb\", \"sliders\", \"rule-bound\", \"reflectors\", \"self-flagellators\", \"over-thinkers\", \"symbiotic\" (working titles). The inspiration for the defense classes comes from Gestalt theory. The class determines half of the game character's attributes, and the remaining 50% can be adjusted by the player with diamonds collected from the game field. ROBBERY - In the 2v2 game, the winning team performs a time-limited robbery on the opponent's warehouse. The loot from the robbery is transferred from the losers' planet to the winners.",
+
+  "youthwork-label": "Youth Work & Game Art Education in Schools",
+  "youthwork-description": "Youth Work & Game Art Education in Schools We continuously develop the game with PRG youth. You can become a tester and developer by joining our Discord server</a>. When the demo is ready (estimated in spring 2024), we will tour primary and secondary schools across the country with it. Demo testing will be carried out as part of the game art education package, which also provides schools with tools to explore and analyze games. Our aim is to include the treatment of game art in the school curriculum, just as theater, film, literature, visual arts, and music are already covered. Discover the game and the schedule for joint testing by scanning the QR code and jumping into our Discord gaming community!",
+
+  "prg-label": "PRG - Psyche’s Royale Gaming Association",
+  "prg-description": "p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com"
+}
