@@ -24,7 +24,7 @@ export type Props = {
 };
 
 const TeachingPackagePage = (props: Props) => {
-  const { sections } = props;
+  const { sections = [] } = props;
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
 
