@@ -1,11 +1,32 @@
 {
-    "head-title": "AltZone",
-    "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
-    "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
-    "og-title": "AltZone - Start Your Game Here",
-    "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
-    "section-title": "Pelitaide",
-    "text1":"Pelitaide on pelien taiteellista ilmaisua, joka ylittää viihteen rajat, kutsuen pelaajat syvemmälle kokemukseen tarjoten ainutlaatuisia esteettisiä elämyksiä ja herättäen tunteita. Se ilmenee monin eri tavoin, kuten visuaalisesti upeana grafiikkana, tunnelmallisena äänimaisemana ja monimutkaisena tarinankerrontana. Pelitaide kertoo tarinoita ja käsittelee monimutkaisia teemoja, syventäen pelaajien kokemusta ja herättäen syvempiä tunteita. Lisäksi se on interaktiivista, antaen pelaajille mahdollisuuden vaikuttaa tarinaan ja luoda henkilökohtaisia kokemuksia. ",
-    "text2":"Pelitaide voi myös toimia voimakkaana välineenä sosiaaliseen ja poliittiseen kommentointiin, herättäen keskustelua ja haastaen näkemyksiä. Kaiken kaikkiaan pelitaide on moniulotteinen taiteen muoto, joka tarjoaa ainutlaatuisen tilaisuuden ilmaista itseään ja kokea maailmaa uudella ja jännittävällä tavalla sekä taiteilijoille että pelaajille."
-  }
-  
+  "head-title": "AltZone",
+  "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
+  "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
+  "og-title": "AltZone - Start Your Game Here",
+  "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
+  "section-title": "Pelitaide",
+  "main": "Etusivu",
+
+  "info-label": "Mitä on pelitaide?",
+  "info-description": "“Parhaimmillaan pelitaide antaa kokijalleen suuren vapauden tutkia ja kokeilla erilaisia historioita ja tulevaisuuksia, joiden suuntaa eivät edes pelin tekijät ole täsmällisesti määritelleet. Pelitaide tarjoaa aistillisia nautintoja. Lisäksi se voi toimia keskustelun herättäjänä ja välineenä, viisauden kasvattajana ja tunne-elämän vahvistajana.”Jaakko kemppainen, Pelisuunnittelijan peruskirja (2019) ja 100 peli-ideaa (2022). https://taidetutka.fi/2022/moniulotteinen-pelitaide/",
+
+  "artistic-label": "artistic",
+  "artistic-description": "artistic",
+
+  "storytelling-label": "storytelling",
+  "storytelling-description": "storytelling",
+
+  "creation-label": "creation",
+  "creation-description": "creation",
+
+  "culture-label": "culture",
+  "culture-description": "culture",
+
+  "literature": "literature",
+
+  "sources-label": "sources",
+  "sources-description": "sources",
+
+  "prg-label": "PRG - Psyche’s Royale Gaming ry",
+  "prg-description": "p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com"
+}
