@@ -3,10 +3,9 @@ import img from '@/shared/assets/images/altLogo.png';
 import img2 from '@/shared/assets/images/altLogoClan.png';
 import { NavbarBuilder } from '@/widgets/Navbar/model/data/NavbarBuilder';
 import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
-import { ArtSections } from './gameArtSections';
+import { ArtGameSectionsPrepared } from './gameArtSections';
 
-
-import {TeachingSectionsPrepared} from "./TeachingSections";
+import { TeachingSectionsPrepared } from './TeachingSections';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
@@ -49,7 +48,7 @@ export const navbarTeachingMobile = navbarTeachingBuilder.build();
 const navbarGameArtBuilder = new NavbarBuilder();
 navbarGameArtBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
 navbarGameArtBuilder.addLink('main', RoutePaths.MAIN, false);
-ArtSections.forEach((section) => {
+ArtGameSectionsPrepared.forEach((section) => {
   navbarGameArtBuilder.addLink(section.label, `#${section.id}`, false);
 });
 
