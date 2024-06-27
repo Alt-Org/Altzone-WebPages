@@ -1,14 +1,33 @@
 {
-    "head-title": "AltZone",
-    "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
-    "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
-    "og-title": "AltZone - Start Your Game Here",
-    "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
+  "head-title": "AltZone",
+  "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
+  "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
+  "og-title": "AltZone - Start Your Game Here",
+  "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
+  "section-title": "Game Art",
+  "main": "Home",
 
+  "info-label": "What is Game Art?",
+  "info-description": "“At its best, game art gives its experiencer great freedom to explore and experiment with different histories and futures, the direction of which even the game's creators have not precisely defined. Game art offers sensory pleasures. Additionally, it can act as a conversation starter and a tool for growing wisdom and strengthening emotional life.” Jaakko Kemppainen, Game Designer's Basic Book (2019) and 100 Game Ideas (2022). https://taidetutka.fi/2022/moniulotteinen-pelitaide/",
 
-    "section-title": "Game Art",
-    "text1":"Game art is the artistic expression of games that transcends the boundaries of entertainment, inviting players deeper into the experience, offering unique aesthetic experiences and evoking emotions. It manifests itself in many different ways, such as visually stunning graphics, an atmospheric soundscape, and complex storytelling. Game art tells stories and deals with complex themes, deepening the players' experience and evoking deeper emotions. In addition, it is interactive, allowing players to influence the story and create personal experiences.",
-    "text2":"Game art can also serve as a powerful tool for social and political commentary, sparking debate and challenging views. All in all, game art is a multidimensional art form that offers a unique opportunity to express oneself and experience the world in a new and exciting way for both artists and players."
+  "artistic-label": "Artistic Expression",
+  "artistic-description": "Game art represents the artistic expression of games, transcending the boundaries of traditional entertainment. It invites players deeper into the experience, offering unique artistic and aesthetic delights. Game art not only entertains but challenges, evokes emotions, and provides an opportunity to reflect on various themes. Game art can manifest in many ways; it may be visually stunning graphics, atmospheric soundscapes, or complex storytelling. Art games can also utilize game mechanics and interaction between the player and the game to create unique experiences. One of the most important features of game art is its ability to tell stories.",
 
-  }
-  
+  "storytelling-label": "Storytelling",
+  "storytelling-description": "One of the central features of game art is its ability to tell stories. Digital games offer immense potential for creating complex and touching stories. Through games, a wide range of themes can be addressed, such as love, loss, survival, identity, social injustices, and much more. Games can provide players with the opportunity to experience and understand these topics deeply, making game art a powerful tool for storytelling and creating meaning.",
+
+  "creation-label": "Creation",
+  "creation-description": "Game art manifests in many different ways, from the visual design and soundscapes of games to storytelling, game mechanics, and playability. Graphic design, sound effects, music, dialogue, character development, and creating environments are just a few examples of the key elements of game art that together form the richness and depth of the gaming experience.",
+
+  "culture-label": "Culture & Art",
+  "culture-description": "Game art is also part of a broader cultural and artistic landscape that influences and inspires many other art forms. Game art can serve as an inspiration for films, literature, visual arts, and music, as well as provide a platform for experimental and boundary-crossing art forms. Additionally, it can act as a powerful tool for social and political commentary and offer a platform for creating communities and building connections between players.",
+
+  "literature-label": "Literature",
+  "literature-description": "Juho Kuorikoski, Game Art Manifesto 2018 ISBN: 9789524954839 Tuukka Hämäläinen and Aleksandr Manzos, The Infinite Worlds of Games: The Great Questions of Life in Digital Games 2020 ISBN: 9789523456068 Jaakko Kemppainen, Game Designer's Basic Book 2019 ISBN: 9789527347096 Jaakko Kemppainen, Games Do Good 2024 ISBN: 9789523812420",
+
+  "sources-label": "Sources",
+  "sources-description": "http://www.checkpointhelsinki.net/suomalainen-pelitaide/<br />https://igdafi.squarespace.com/<br />https://taidetutka.fi/2022/moniulotteinen-pelitaide/<br />https://www.capitalgameart.fi/2021/11/28/mita-pelitaide-on/<br />https://www.youtube.com/watch?v=tVEmYtO8YR8<br />",
+
+  "prg-label": "PRG - Psyche’s Royale Gaming Association",
+  "prg-description": "p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com"
+}
