@@ -3,9 +3,8 @@ import img from '@/shared/assets/images/altLogo.png';
 import img2 from '@/shared/assets/images/altLogoClan.png';
 import { NavbarBuilder } from '@/widgets/Navbar/model/data/NavbarBuilder';
 import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
-import { ArtGameSectionsPrepared } from './gameArtSections';
-
-import { TeachingSectionsPrepared } from './TeachingSections';
+import { ArtGameSections } from '@/entities/PresentationPackages/model/data/artGameSections';
+import { TeachingSections } from '@/entities/PresentationPackages/model/data/teachingSections';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
@@ -39,7 +38,8 @@ navbarTeachingBuilder.addLogo(
   RoutePaths.MAIN,
 );
 navbarTeachingBuilder.addLink('main', RoutePaths.MAIN, false);
-TeachingSectionsPrepared.forEach((section) => {
+
+TeachingSections.forEach((section) => {
   navbarTeachingBuilder.addLink(section.label, `#${section.id}`, false);
 });
 
@@ -48,7 +48,7 @@ export const navbarTeachingMobile = navbarTeachingBuilder.build();
 const navbarGameArtBuilder = new NavbarBuilder();
 navbarGameArtBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
 navbarGameArtBuilder.addLink('main', RoutePaths.MAIN, false);
-ArtGameSectionsPrepared.forEach((section) => {
+ArtGameSections.forEach((section) => {
   navbarGameArtBuilder.addLink(section.label, `#${section.id}`, false);
 });
 
