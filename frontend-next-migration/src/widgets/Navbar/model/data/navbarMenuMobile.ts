@@ -6,6 +6,9 @@ import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
 import { ArtGameSections } from '@/entities/PresentationPackages/model/data/artGameSections';
 import { TeachingSections } from '@/entities/PresentationPackages/model/data/teachingSections';
 
+console.log('TeachingSections:', TeachingSections); // Debug log
+console.log('ArtGameSections:', ArtGameSections); // Debug log
+
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
 navbarBuilder.addDropDown('community', false, dropdowns.community);
