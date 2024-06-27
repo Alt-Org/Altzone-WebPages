@@ -20,7 +20,7 @@ interface Section {
 }
 
 export type Props = {
-  sections?: Section[];
+  sections: Section[];
 };
 
 const GameArtPackagePage = (props: Props) => {
@@ -48,7 +48,6 @@ const GameArtPackagePage = (props: Props) => {
               alt='pageLogo'
               height={600}
               width={600}
-              priority={true}
             />
           </div>
         )}
@@ -82,4 +81,6 @@ const GameArtPackagePage = (props: Props) => {
 export default withBackgroundImage({
   alt: 'Teaching Package bg image',
   imagePath: bgPicture as unknown as string,
+
+  // @ts-ignore
 })(GameArtPackagePage);
