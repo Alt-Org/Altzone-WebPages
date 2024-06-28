@@ -1,26 +1,16 @@
 'use client';
 import { HeroCard, heroes } from '@/entities/Hero';
-import cls from './SectionClassifiedHeroesBlocks.module.scss';
+import cls from './heroesBlocks.module.scss';
 import { useInView } from 'react-intersection-observer';
-import { useClientTranslation } from '@/shared/i18n';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
 
 type Props = {
   backgroundImageSrc?: string;
   group: string;
   textBgColor?: any;
-  // id: number;
-  // srcImg: string;
-  // srcGif: string;
-  // alt: string;
-  // title: string;
-  // borderColor: string;
-  // description: string;
-  // color: string;
 };
 
-const SectionClassifiedHeroesBlocks = (props: Props) => {
+const HeroesBlocks = (props: Props) => {
   const { backgroundImageSrc, group, textBgColor } = props;
 
   const { ref, inView } = useInView({
@@ -29,7 +19,7 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
   });
 
   return (
-    <section
+    <div
       className={cls.SectionHeroes2}
       style={{
         backgroundImage: backgroundImageSrc
@@ -38,20 +28,34 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
       }}
       ref={ref}>
       <div className={cls.Content}>
-        <div className={cls.Group}>
-          <h1>{group}</h1>
-          {textBgColor && (
-            <Image
-              src={textBgColor}
-              alt='Background Text Color'
-              className={cls.TextBgImage}
-            />
-          )}
-          {/* <button>see more</button> */}
+
+
+        <div className={cls.Group}
+        >
+          {/*<Image*/}
+          {/*  src={textBgColor}*/}
+          {/*  alt='Background Text Color'*/}
+          {/*  className={cls.TextBgImage}*/}
+          {/*/>*/}
+            <h1
+                className={cls.Title}
+                style={{backgroundImage: `url(${textBgColor.src})`}}
+            >
+              <span>
+                  {/*PEILAAJAT*/}
+                  {/*<wbr/> // <wbr/>*/}
+                  {/*PROJEKTIO*/}
+
+                  {group}
+
+              </span>
+
+            </h1>
+
         </div>
 
-        {heroes
-          .filter((hero) => hero.group === group)
+          {heroes
+              .filter((hero) => hero.group === group)
           .slice(0, 2)
           .map((item, index) => (
             <HeroCard
@@ -65,8 +69,8 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
             />
           ))}
       </div>
-    </section>
+    </div>
   );
 };
 
-export default SectionClassifiedHeroesBlocks;
+export default HeroesBlocks;
