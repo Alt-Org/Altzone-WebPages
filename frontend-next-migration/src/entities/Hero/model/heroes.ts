@@ -53,17 +53,6 @@ const Heroes = [
     color: '#910494',
   },
   {
-    id: 22,
-    srcImg: purpleGirls,
-    srcGif: purpleGirlsGif,
-    alt: 'purpleGirlsImgAlt',
-    title: 'purple-girls',
-    borderColor: '#41F50C',
-    description: 'purpleGirlsDescription',
-    group: 'SULAUTUJAT // KONFLUENSSI',
-    color: '#910494',
-  },
-  {
     id: 3,
     srcImg: einstein,
     srcGif: einsteinGif,
