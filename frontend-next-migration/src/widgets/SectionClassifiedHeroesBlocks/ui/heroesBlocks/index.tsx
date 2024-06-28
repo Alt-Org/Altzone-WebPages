@@ -1,6 +1,6 @@
 'use client';
 import { HeroCard, heroes } from '@/entities/Hero';
-import cls from './SectionClassifiedHeroesBlocks.module.scss';
+import cls from './heroesBlocks.module.scss';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 
@@ -19,7 +19,7 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
   });
 
   return (
-    <section
+    <div
       className={cls.SectionHeroes2}
       style={{
         backgroundImage: backgroundImageSrc
@@ -55,7 +55,7 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
             />
           ))}
       </div>
-    </section>
+    </div>
   );
 };
 

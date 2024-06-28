@@ -8,7 +8,7 @@ import lightBlue from "@/shared/assets/images/heros/textBgColors/light-blue.webp
 import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
 import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
 import purple from "@/shared/assets/images/heros/textBgColors/purple.webp";
-import SectionClassifiedHeroesBlocks from '../SectionClassifiedHeroesBlocks';
+import HeroesBlocks from '../heroesBlocks';
 // import {SectionClassifiedHeroesBlocks} from "@/widgets/SectionClassifiedHeroesBlocks";
 
 
@@ -17,31 +17,31 @@ const sameBg = undefined;
 
 function Main ()  {
     return (
-        <>
-            <SectionClassifiedHeroesBlocks
+        <section className={cls.Section}>
+            <HeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="TORJUJAT // RETROFLEKTIO"
                 textBgColor={red}
             />
 
-            <SectionClassifiedHeroesBlocks
+            <HeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="SULAUTUJAT // KONFLUENSSI"
                 textBgColor={pink}
             />
 
-            <SectionClassifiedHeroesBlocks
+            <HeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="ÄLYLLISTÄJÄT // EGOTISMI"
                 textBgColor={darkBlue}
             />
 
-            <SectionClassifiedHeroesBlocks
+            <HeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="PEILAAJAT // PROJEKTIO"
                 textBgColor={orange}
             />
-        </>
+        </section>
     );
 }
 
