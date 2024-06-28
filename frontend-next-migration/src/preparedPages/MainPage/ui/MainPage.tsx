@@ -58,7 +58,6 @@ const MainPage = async ({ lng }: Props) => {
 
             <HorizontalLines />
 
-            {/*<SectionHeroes />*/}
             <SectionClassifiedHeroesBlocks
                 backgroundImageSrc={sameBg}
                 group="TORJUJAT // RETROFLEKTIO"
