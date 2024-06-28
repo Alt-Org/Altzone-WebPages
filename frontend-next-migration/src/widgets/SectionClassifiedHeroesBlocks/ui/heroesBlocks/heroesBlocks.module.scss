@@ -1,20 +1,16 @@
 .SectionHeroes2 {
   --cardWidth: 400px;
-
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
-.TextBgImage {
-  position: absolute;
-  width: 25%;
-  transform: scale(50%);
-  z-index: -1;
-}
+//.TextBgImage {
+//  position: absolute;
+//  width: 25%;
+//  z-index: -1;
+//}
 
 .Content {
   width: 100%;
@@ -29,7 +25,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
+
+.Title {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  padding: 4vw;
+  //padding: 60px;
+  text-shadow: 1px 1px 2px black;
+
+  & span {
+    font-size: calc(12px + 0.8vw);
+    display: inline-block;
+    transform: translateX(calc(12px + 0.2vw));
+    hyphens: manual;
+  }
+
+}
+
 
 .HeroCard {
   width: var(--cardWidth);

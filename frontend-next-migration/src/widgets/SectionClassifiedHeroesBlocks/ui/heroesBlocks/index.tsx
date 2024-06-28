@@ -28,20 +28,34 @@ const HeroesBlocks = (props: Props) => {
       }}
       ref={ref}>
       <div className={cls.Content}>
-        <div className={cls.Group}>
-          <h1>{group}</h1>
-          {textBgColor && (
-            <Image
-              src={textBgColor}
-              alt='Background Text Color'
-              className={cls.TextBgImage}
-            />
-          )}
-          {/* <button>see more</button> */}
+
+
+        <div className={cls.Group}
+        >
+          {/*<Image*/}
+          {/*  src={textBgColor}*/}
+          {/*  alt='Background Text Color'*/}
+          {/*  className={cls.TextBgImage}*/}
+          {/*/>*/}
+            <h1
+                className={cls.Title}
+                style={{backgroundImage: `url(${textBgColor.src})`}}
+            >
+              <span>
+                  {/*PEILAAJAT*/}
+                  {/*<wbr/> // <wbr/>*/}
+                  {/*PROJEKTIO*/}
+
+                  {group}
+
+              </span>
+
+            </h1>
+
         </div>
 
-        {heroes
-          .filter((hero) => hero.group === group)
+          {heroes
+              .filter((hero) => hero.group === group)
           .slice(0, 2)
           .map((item, index) => (
             <HeroCard
