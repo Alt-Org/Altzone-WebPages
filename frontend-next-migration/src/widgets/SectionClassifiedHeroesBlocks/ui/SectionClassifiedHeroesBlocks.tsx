@@ -2,8 +2,6 @@
 import { HeroCard, heroes } from '@/entities/Hero';
 import cls from './SectionClassifiedHeroesBlocks.module.scss';
 import { useInView } from 'react-intersection-observer';
-import { useClientTranslation } from '@/shared/i18n';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
 
 type Props = {

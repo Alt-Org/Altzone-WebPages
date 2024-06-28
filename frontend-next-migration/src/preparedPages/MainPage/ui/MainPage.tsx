@@ -58,29 +58,7 @@ const MainPage = async ({ lng }: Props) => {
 
             <HorizontalLines />
 
-            <SectionClassifiedHeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="TORJUJAT // RETROFLEKTIO"
-                textBgColor={red}
-            />
-
-            <SectionClassifiedHeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="SULAUTUJAT // KONFLUENSSI"
-                textBgColor={pink}
-            />
-
-            <SectionClassifiedHeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="ÄLYLLISTÄJÄT // EGOTISMI"
-                textBgColor={darkBlue}
-            />
-
-            <SectionClassifiedHeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="PEILAAJAT // PROJEKTIO"
-                textBgColor={orange}
-            />
+            <SectionClassifiedHeroesBlocks/>
 
 
 
