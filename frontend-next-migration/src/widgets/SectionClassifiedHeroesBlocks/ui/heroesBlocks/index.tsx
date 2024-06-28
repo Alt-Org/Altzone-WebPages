@@ -10,7 +10,7 @@ type Props = {
   textBgColor?: any;
 };
 
-const SectionClassifiedHeroesBlocks = (props: Props) => {
+const HeroesBlocks = (props: Props) => {
   const { backgroundImageSrc, group, textBgColor } = props;
 
   const { ref, inView } = useInView({
@@ -59,4 +59,4 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
   );
 };
 
-export default SectionClassifiedHeroesBlocks;
+export default HeroesBlocks;
