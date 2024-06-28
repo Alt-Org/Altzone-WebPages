@@ -19,7 +19,9 @@ type Props = {
   // description: string;
   // color: string;
 };
-
+/**
+ * @deprecated
+ **/
 const SectionClassifiedHeroesBlocks = (props: Props) => {
   const { backgroundImageSrc, group, textBgColor } = props;
 

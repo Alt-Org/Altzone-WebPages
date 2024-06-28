@@ -1,1 +1,1 @@
-export {default as SectionClassifiedHeroesBlocks} from "./ui/SectionClassifiedHeroesBlocks";
+export {default as SectionClassifiedHeroesBlocks} from "@/widgets/SectionClassifiedHeroesBlocks/~deprecated/ui/SectionClassifiedHeroesBlocks";
