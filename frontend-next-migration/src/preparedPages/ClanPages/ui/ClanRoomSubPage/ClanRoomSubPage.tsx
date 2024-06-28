@@ -63,8 +63,8 @@ const ClanRoomSubPage = () => {
                     <div><strong>Kolikot:</strong> {clan?.data?.Clan?.gameCoins}</div>
                     <div><strong>Tagi:</strong> {clan?.data?.Clan?.tag}</div>
                     <div><strong>Jäsenet:</strong> {clan?.data?.Clan?.playerCount}</div>
-                    <div><strong>Huonekalut:</strong> {clan?.data?.Clan?.furnitureCount}</div>
-                    <div><strong>RaidHuoneet:</strong> {clan?.data?.Clan?.raidRoomCount}</div>
+                    {/*<div><strong>Huonekalut:</strong> {clan?.data?.Clan?.furnitureCount}</div>*/}
+                    {/*<div><strong>RaidHuoneet:</strong> {clan?.data?.Clan?.raidRoomCount}</div>*/}
                     <div><strong>Mestari:</strong> Joku Mestari</div>
                     {
                         canDelete &&
