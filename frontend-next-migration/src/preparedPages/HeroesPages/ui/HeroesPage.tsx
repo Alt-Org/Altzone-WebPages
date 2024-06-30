@@ -1,25 +1,19 @@
-import { Navbar } from "@/widgets/Navbar";
 import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
-import { useServerTranslation } from "@/shared/i18n";
 import cls from "./HeroPage.module.scss"
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import { SectionHeroesBlocks } from "@/widgets/SectionHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 
-type Props = {
-    lng: string
-}
 
-const HeroesPage = async ({ lng }: Props) => {
 
-    const { t } = await useServerTranslation(lng, 'heroes');
+const HeroesPage = () => {
+
     const sameBg = undefined;
 
     return (
         <>
-        <Navbar overlaid />
-        <main className={cls.main}>
+        <div className={cls.main}>
             <FeedbackSideButton disableMobile={true} />
             <SectionHeroesBlocks
                 backgroundImageSrc={sameBg}
@@ -29,7 +23,7 @@ const HeroesPage = async ({ lng }: Props) => {
                 backgroundImageSrc={sameBg}
             />
             <HorizontalLines/>
-        </main>
+        </div>
         </>
     );
 };
