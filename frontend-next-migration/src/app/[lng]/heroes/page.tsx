@@ -4,7 +4,6 @@ import { HeroesPage } from "@/preparedPages/HeroesPages";
 
 type Props = {
     params: { lng: string }
-    // selectedHero: string;
 }
 
 
