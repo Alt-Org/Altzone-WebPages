@@ -27,5 +27,9 @@
 
   "pirate" : "Pullo-Piraatti",
   "pirateDescription": "Pullo-Piraatti fights emotions by concentrating on drinking. He is constantly on guard, never letting go of his shield, \nbut is in a constant state of flux.",
-  "pirateAlt": "Pirate's image"
+  "pirateAlt": "Pirate's image",
+
+  "not-found-title": "Could not find requested hero",
+  "not-found-check-heroes": "Check Available Heroes"
+
 }
