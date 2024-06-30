@@ -1,6 +1,6 @@
 import {Metadata} from "next";
 import {useServerTranslation} from "@/shared/i18n";
-import { ClassifiedHeroesPage } from "@/preparedPages/ClassifiedHeroesPage";
+import { HeroesPage } from "@/preparedPages/HeroesPages";
 
 type Props = {
     params: { lng: string }
@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 }
 
 
-export default function HeroesPage(props: Props) {
+export default function (props: Props) {
     return (
-          <ClassifiedHeroesPage/>
+          <HeroesPage/>
     )
 }

@@ -1,1 +1,0 @@
-export {default as HeroesPage} from "./ui/HeroesPage"
