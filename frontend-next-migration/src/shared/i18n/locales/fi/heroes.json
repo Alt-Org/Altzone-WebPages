@@ -27,5 +27,12 @@
 
   "pirate" : "Pullo-Piraatti",
   "pirateDescription": "Pullo-Piraatti torjuu tunteita keskittymällä juomiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa.",
-  "pirateAlt": "Merirosvon kuva"
+  "pirateAlt": "Merirosvon kuva",
+
+
+  "not-found-title": "Etsittyä sankaria ei löytynyt",
+  "not-found-check-heroes": "Tarkista saatavilla olevat sankarit"
+
+
+
 }
