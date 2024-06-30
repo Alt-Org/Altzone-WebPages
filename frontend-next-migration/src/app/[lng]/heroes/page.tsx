@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 }
 
 
-export default function (props: Props) {
+export default async function ({ params }: Props) {
     return (
           <HeroesPage/>
     )
