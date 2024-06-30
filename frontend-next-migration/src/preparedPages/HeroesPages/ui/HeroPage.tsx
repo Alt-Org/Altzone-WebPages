@@ -9,7 +9,7 @@ import { Footer } from '@/widgets/Footer';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 
 type Props = {
-  selectedHero: string | number;
+  selectedHero: string;
 };
 
 export default function HeroPage(props: Props) {
