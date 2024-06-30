@@ -27,9 +27,7 @@ export default function HeroPage(props: Props) {
           title: t(`${selectedHeroData.title}`),
           alt: t(`${selectedHeroData.alt}`),
           heroColor: selectedHeroData.color,
-          // alt: selectedHeroData.alt,
           description: t(`${selectedHeroData.description}`),
-          // description: selectedHeroData.description,
           borderColor: selectedHeroData.borderColor,
           imgGif: selectedHeroData?.srcGif || undefined,
           group: selectedHeroData?.group || undefined,
@@ -52,11 +50,11 @@ export default function HeroPage(props: Props) {
   const previousIndex = calculatePreviousIndex(selectedHeroInfo?.id || 0);
   const nextIndex = calculateNextIndex(selectedHeroInfo?.id || 0);
 
-  const leftArrowLink = `/${lng}/${RoutePaths.HEROES_ONE.replace(
+  const leftArrowLink = `${RoutePaths.HEROES_ONE.replace(
     ':id',
     previousIndex.toString(),
   )}`;
-  const rightArrowLink = `/${lng}/${RoutePaths.HEROES_ONE.replace(
+  const rightArrowLink = `${RoutePaths.HEROES_ONE.replace(
     ':id',
     nextIndex.toString(),
   )}`;
