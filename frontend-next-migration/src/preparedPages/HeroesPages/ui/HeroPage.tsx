@@ -32,7 +32,6 @@ export default function HeroPage(props: Props) {
 
     return (
         <>
-            <Navbar overlaid={true} />
             <HeroContainer
                 heroColor={selectedHero.heroColor}
                 heroImg={selectedHero.img}
@@ -44,7 +43,6 @@ export default function HeroPage(props: Props) {
                 xLink={RoutePaths.HEROES}
             />
             <HorizontalLines />
-            <Footer />
         </>
     );
 }
