@@ -2,6 +2,7 @@ import {HeroPage} from "@/preparedPages/HeroesPages";
 import {useServerTranslation} from "@/shared/i18n";
 import {heroes} from "@/entities/Hero";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import { notFound } from 'next/navigation';
 
 
 type Props = {
@@ -22,11 +23,12 @@ export default async function({ params }: Props) {
     const prevHeroLink = generateHeroLink(prevHeroTitle);
     const nextHeroLink = generateHeroLink(nextHeroTitle);
 
-    const notFound = !selectedHero || !nextHeroTitle || !prevHeroTitle;
+    const notFoundBoolean = !selectedHero || !nextHeroTitle || !prevHeroTitle;
 
-    if (notFound) {
-        return <div>Error: Hero not found</div>;
+    if (notFoundBoolean) {
+        notFound()
     }
+
     return (
         <HeroPage
             selectedHero={selectedHero}
@@ -56,13 +58,13 @@ function getHeroData(heroTitle: string, t: (key: string) => string ) {
 
 function findNextTitle(currentIndex: number): string {
     const nextIndex = currentIndex === heroes.length - 1 ? 0 : currentIndex + 1;
-    return heroes[nextIndex].title;
+    return heroes[nextIndex]?.title;
 }
 
 function findPrevTitle(currentIndex: number): string {
     const previousIndex =
         currentIndex === 0 ? heroes.length - 1 : currentIndex - 1;
-    return heroes[previousIndex].title;
+    return heroes[previousIndex]?.title;
 }
 
 function generateHeroLink(heroTitle: string): string {
