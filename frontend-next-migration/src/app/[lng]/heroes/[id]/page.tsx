@@ -1,4 +1,4 @@
-import {HeroesPage as HeroPage} from "@/preparedPages/HeroesPage";
+import {HeroPage} from "@/preparedPages/HeroesPages";
 
 type Props = {
     params: {
@@ -6,18 +6,13 @@ type Props = {
     };
 };
 
-export default async function HeroesPage({ params }: Props) {
+export default async function({ params }: Props) {
 
     const { id } = params;
    
     return (
-       
-           
-
             <HeroPage
                 selectedHero={id}
             />
-
-        
     );
 }
