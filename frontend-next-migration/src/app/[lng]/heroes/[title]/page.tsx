@@ -17,8 +17,8 @@ export default async function({ params }: Props) {
 
     const {t} = await useServerTranslation(lng, 'heroes');
     const currentIndex = heroes.findIndex(hero => hero.title === title);
-    const prevHeroTitle = findPrevTitle(currentIndex)
-    const nextHeroTitle = findNextTitle(currentIndex)
+    const prevHeroTitle = findPrevTitle(currentIndex);
+    const nextHeroTitle = findNextTitle(currentIndex);
     const selectedHero = getHeroData(title, t);
     const prevHeroLink = generateHeroLink(prevHeroTitle);
     const nextHeroLink = generateHeroLink(nextHeroTitle);
@@ -26,7 +26,7 @@ export default async function({ params }: Props) {
     const notFoundBoolean = !selectedHero || !nextHeroTitle || !prevHeroTitle;
 
     if (notFoundBoolean) {
-        notFound()
+        notFound();
     }
 
     return (
