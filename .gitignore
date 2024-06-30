@@ -26,3 +26,4 @@ dist-ssr
 /frontend/storybook-static/*
 
 /frontend-next-migration/analyze/nodejs.html
+/strapi-cms/.env
