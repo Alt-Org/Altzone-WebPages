@@ -1,4 +1,4 @@
-import GameArtPage from '@/preparedPages/GameArtPage/ui/GameArtPage';
+import { GameArtPage } from '@/preparedPages/GameArtPage';
 import { useServerTranslation } from '@/shared/i18n';
 import { Metadata } from 'next';
 import { makeArtGameSectionsWithI18n } from '@/entities/PresentationPackages';
