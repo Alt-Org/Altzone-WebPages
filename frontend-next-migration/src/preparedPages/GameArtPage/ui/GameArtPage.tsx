@@ -38,7 +38,7 @@ const GameArtPackagePage = (props: Props) => {
 
   return (
     <div className={classNames(cls.pageContainer, combinedModCss)}>
-      <Navbar overlaid={true} navBarType={'TeachingPackage'} />
+      <Navbar overlaid={true} navBarType={'GameArt'} />
       <div className={classNames(cls.mainContent, combinedModCss)}>
         {!isMobileSize && (
           <div className={cls.pageLogo}>
