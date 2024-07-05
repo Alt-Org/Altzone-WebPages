@@ -6,20 +6,28 @@
   "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
   "section-title": "Game Art",
   "main": "Home",
+
   "info-label": "What is Game Art?",
-  "info-description": "“At its best, game art gives its experiencer great freedom to explore and experiment with different histories and futures, the direction of which even the game's creators have not precisely defined. Game art offers sensory pleasures. Additionally, it can act as a conversation starter and a tool for growing wisdom and strengthening emotional life.” Jaakko Kemppainen, Game Designer's Basic Book (2019) and 100 Game Ideas (2022). https://taidetutka.fi/2022/moniulotteinen-pelitaide/",
+  "info-description": "“At its best, game art gives the experiencer great freedom to explore and experiment with different histories and futures, the direction of which even the game creators have not precisely defined. Game art offers sensory pleasures. In addition, it can serve as a conversation starter and a tool for wisdom growth and emotional strengthening.” Jaakko Kemppainen, Game Designer's Handbook (2019) and 100 Game Ideas (2022). <br> https://taidetutka.fi/2022/multidimensional-game-art/",
+
   "artistic-label": "Artistic Expression",
-  "artistic-description": "Game art represents the artistic expression of games, transcending the boundaries of traditional entertainment. It invites players deeper into the experience, offering unique artistic and aesthetic delights. Game art not only entertains but challenges, evokes emotions, and provides an opportunity to reflect on various themes. Game art can manifest in many ways; it may be visually stunning graphics, atmospheric soundscapes, or complex storytelling. Art games can also utilize game mechanics and interaction between the player and the game to create unique experiences. One of the most important features of game art is its ability to tell stories.",
+  "artistic-description": "Game art represents the artistic expression of games, surpassing traditional entertainment boundaries. It invites players into a deeper experience, offering unique artistic and aesthetic sensations. Game art not only entertains but also challenges, evokes emotions, and provides an opportunity to reflect on various themes. Game art can manifest in many forms; it might be visually stunning graphics, atmospheric soundscapes, or complex storytelling. Art games can also leverage game mechanics and interaction between the player and the game to create unique experiences. One of the most important features of game art is its ability to tell stories.",
+
   "storytelling-label": "Storytelling",
-  "storytelling-description": "One of the central features of game art is its ability to tell stories. Digital games offer immense potential for creating complex and touching stories. Through games, a wide range of themes can be addressed, such as love, loss, survival, identity, social injustices, and much more. Games can provide players with the opportunity to experience and understand these topics deeply, making game art a powerful tool for storytelling and creating meaning.",
+  "storytelling-description": "One of the core features of game art is its ability to tell stories. Digital games offer tremendous potential for creating complex and touching narratives. Games can address various themes, such as love, loss, survival, identity, social issues, and much more. Games can offer players the chance to experience and understand these topics deeply, making game art a powerful tool for storytelling and meaning-making.",
+
   "creation-label": "Creation",
-  "creation-description": "Game art manifests in many different ways, from the visual design and soundscapes of games to storytelling, game mechanics, and playability. Graphic design, sound effects, music, dialogue, character development, and creating environments are just a few examples of the key elements of game art that together form the richness and depth of the gaming experience.",
+  "creation-description": "Game art manifests in many ways, from visual design and soundscapes to storytelling, game mechanics, and gameplay. Graphic design, sound effects, music, dialogue, character development, and environment creation are just a few examples of the core elements of game art that together form the richness and depth of the gaming experience.",
+
   "culture-label": "Culture & Art",
-  "culture-description": "Game art is also part of a broader cultural and artistic landscape that influences and inspires many other art forms. Game art can serve as an inspiration for films, literature, visual arts, and music, as well as provide a platform for experimental and boundary-crossing art forms. Additionally, it can act as a powerful tool for social and political commentary and offer a platform for creating communities and building connections between players.",
+  "culture-description": "Game art is also part of a broader cultural and artistic landscape that influences and inspires many other forms of art. Game art can inspire movies, literature, visual arts, and music, providing a platform for experimental and boundary-crossing art forms. Additionally, it can serve as a powerful tool for social and political commentary and offer a platform for creating communities and connections between players.",
+
   "literature-label": "Literature",
-  "literature-description": "Juho Kuorikoski, Game Art Manifesto 2018 ISBN: 9789524954839\nTuukka Hämäläinen and Aleksandr Manzos, The Infinite Worlds of Games: The Great Questions of Life in Digital Games 2020 ISBN: 9789523456068\nJaakko Kemppainen, Game Designer's Basic Book 2019 ISBN: 9789527347096\nJaakko Kemppainen, Games Do Good 2024 ISBN: 9789523812420",
+  "literature-description": "Juho Kuorikoski, The Game Art Manifesto 2018 ISBN: 9789524954839<br>Tuukka Hämäläinen and Aleksandr Manzos, Infinite Worlds of Games: The Big Questions of Life in Digital Games 2020 ISBN: 9789523456068<br>Jaakko Kemppainen, Game Designer's Handbook 2019 ISBN: 9789527347096<br>Jaakko Kemppainen, Games Do Good 2024 ISBN: 9789523812420",
+
   "sources-label": "Sources",
-  "sources-description": "http://www.checkpointhelsinki.net/suomalainen-pelitaide/\nhttps://igdafi.squarespace.com/\nhttps://taidetutka.fi/2022/moniulotteinen-pelitaide/\nhttps://www.capitalgameart.fi/2021/11/28/mita-pelitaide-on/\nhttps://www.youtube.com/watch?v=tVEmYtO8YR8\n",
-  "prg-label": "PRG - Psyche’s Royale Gaming Association",
+  "sources-description": "http://www.checkpointhelsinki.net/finnish-game-art/<br>https://igdafi.squarespace.com/<br>https://taidetutka.fi/2022/multidimensional-game-art/<br>https://www.capitalgameart.fi/2021/11/28/what-is-game-art/<br>https://www.youtube.com/watch?v=tVEmYtO8YR8<br>",
+
+  "prg-label": "PRG - Psyche’s Royale Gaming ry",
   "prg-description": "p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com"
 }
