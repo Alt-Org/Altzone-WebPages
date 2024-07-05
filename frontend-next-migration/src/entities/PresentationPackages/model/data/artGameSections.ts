@@ -21,7 +21,6 @@ const imageSrcs = [
   '/images/gameArt/sources.png',
   '/images/gameArt/prg.png',
 ];
-console.log('imageSrcs', imageSrcs);
 
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
   createSection(key, index, imageSrcs[index], `${key}-image`),

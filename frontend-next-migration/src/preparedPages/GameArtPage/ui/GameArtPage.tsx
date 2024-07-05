@@ -67,10 +67,10 @@ const GameArtPackagePage = (props: Props) => {
                 <div className='contentImage'>
                   <Image
                     src={section.image}
-                    className={cls.backgroundImage}
+                    className={cls.sectionImage}
                     alt={section.imageAlt}
-                    height={600}
-                    width={600}
+                    height={300}
+                    width={300}
                   />
                 </div>
               </div>
