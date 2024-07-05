@@ -6,12 +6,12 @@
 }
 
 .mainContent {
+  top: 1.7rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-content: center;
   flex-direction: row;
-  top: 1rem;
   width: 90%;
   height: 90vh;
   border: 1px solid rgb(0, 255, 21);
@@ -23,13 +23,12 @@
 
 .pageLogo {
   margin-top: 60px;
-  margin-left: 100px;
   width: 20%;
   height: 10%;
   position: absolute;
   display: flex;
   align-items: center;
-  justify-content: center;
+  left: 5%;
 }
 
 .navbarSide {
@@ -61,63 +60,80 @@
 .content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 70%;
   max-height: 100vh;
-  align-items: center;
   overflow-y: auto;
-  padding: 20px;
-
   padding-left: 5%;
   padding-right: 5%;
   font-size: 1.5em;
   margin: 3px;
-
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
 .section {
+  width: 100%;
+  height: fit-content;
   margin: 5%;
-  padding: 5%;
+  padding: 7%;
   background-color: orange;
   border-radius: 10px;
   color: black;
+  border: 2px solid rgb(13, 174, 13);
 
   h2 {
     text-align: center;
-    color: rgb(255, 255, 255);
-    font-size: 2em;
+    color: rgb(233, 225, 225);
+    font-size: 1.7em;
     font-weight: bold;
     border-radius: 10px;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.5em;
     background-color: rgb(13, 174, 13);
-    margin-bottom: 5%;
+  }
+  a {
+    color: rgb(81, 255, 0);
+  }
+
+  a:hover {
+    color: rgb(255, 255, 255);
   }
 }
 
+.sectionImage {
+  margin-top: 10%;
+  border: solid 1px rgb(255, 255, 255);
+  border-radius: 10px;
+  height: auto;
+  width: 100%;
+}
 .content.isMobile {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: auto;
   height: 80vh;
   overflow-y: auto;
   padding: 20px;
-  font-size: 1.4em;
-  margin: 3px;
+
+  font-size: 1.2em;
+  margin: 20px;
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
 .mainContent.isMobile {
-  margin-top: 10%;
+  margin-top: 15%;
   height: 100vh;
 }
+.mainContent.isTablet {
+  top: 2rem;
+}
 
-.sectionImage {
-  width: 100%;
-  height: 50%;
-  margin-top: 5%;
-  padding: 5%;
+.mainContent.isDesktop {
+  top: 0.5rem;
+}
+.mainContent.isWidescreen {
+  top: -1rem;
 }
