@@ -13,7 +13,7 @@ const i18nKeyPrefixes = [
   'youthwork',
   'prg',
 ];
-
+// next takes path : \public\images\teachingPackage
 const imageSrcs = [
   '/images/teachingPackage/intro.png',
   '/images/teachingPackage/implementation.png',
