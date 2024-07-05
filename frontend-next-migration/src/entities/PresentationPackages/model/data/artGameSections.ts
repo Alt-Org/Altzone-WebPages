@@ -10,6 +10,19 @@ const i18nKeyPrefixes = [
   'sources',
   'prg',
 ];
+
+const imageSrcs = [
+  '/images/gameArt/info.png',
+  '/images/gameArt/artistic.png',
+  '/images/gameArt/storytelling.png',
+  '/images/gameArt/creation.png',
+  '/images/gameArt/culture.png',
+  '/images/gameArt/literature.png',
+  '/images/gameArt/sources.png',
+  '/images/gameArt/prg.png',
+];
+console.log('imageSrcs', imageSrcs);
+
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
-  createSection(key, index),
+  createSection(key, index, imageSrcs[index], `${key}-image`),
 );

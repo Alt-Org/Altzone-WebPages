@@ -18,6 +18,8 @@ const makeSectionsWithI18n = (
       ...section,
       label: t(section.label),
       description: t(section.description),
+      image: section.image,
+      imageAlt: t(section.imageAlt),
     }));
   };
 };
