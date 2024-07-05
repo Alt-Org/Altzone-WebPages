@@ -64,13 +64,13 @@ const TeachingPackagePage = (props: Props) => {
                 <h2>{section.label}</h2>
                 <p
                   dangerouslySetInnerHTML={{ __html: section.description }}></p>
-                <div className='contentImage'>
+                <div className={classNames(cls.contentImage, combinedModCss)}>
                   <Image
                     src={section.image}
                     className={cls.sectionImage}
                     alt={section.imageAlt}
                     height={300}
-                    width={300}
+                    width={600}
                   />
                 </div>
               </div>
