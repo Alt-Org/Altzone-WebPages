@@ -63,7 +63,8 @@ const GameArtPackagePage = (props: Props) => {
             sections.map((section) => (
               <div id={section.id} key={section.id} className={cls.section}>
                 <h2>{section.label}</h2>
-                <p>{section.description}</p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: section.description }}></p>
                 <div className='contentImage'>
                   <Image
                     src={section.image}
