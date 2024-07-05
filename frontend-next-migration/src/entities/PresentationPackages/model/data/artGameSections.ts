@@ -10,7 +10,7 @@ const i18nKeyPrefixes = [
   'sources',
   'prg',
 ];
-
+// next takes path : \public\images\gameArt
 const imageSrcs = [
   '/images/gameArt/info.png',
   '/images/gameArt/artistic.png',
