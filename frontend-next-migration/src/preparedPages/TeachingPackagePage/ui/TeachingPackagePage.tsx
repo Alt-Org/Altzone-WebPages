@@ -17,6 +17,8 @@ interface Section {
   id: string;
   label: string;
   description: string;
+  image: string;
+  imageAlt: string;
 }
 
 export type Props = {
@@ -61,6 +63,15 @@ const TeachingPackagePage = (props: Props) => {
               <div id={section.id} key={section.id} className={cls.section}>
                 <h2>{section.label}</h2>
                 <p>{section.description}</p>
+                <div className='contentImage'>
+                  <Image
+                    src={section.image}
+                    className={cls.sectionImage}
+                    alt={section.imageAlt}
+                    height={600}
+                    width={600}
+                  />
+                </div>
               </div>
             ))
           ) : (
