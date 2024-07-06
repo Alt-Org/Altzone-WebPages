@@ -30,9 +30,7 @@ const MainPage = async ({ lng }: Props) => {
         <>
             {/* Abadi */}
             {/*<div className={cls.Wrapper}>*/}
-            <FeedbackSideButton disableMobile={true} />
-
-            <Navbar overlaid />
+            {/*<FeedbackSideButton disableMobile={true} />*/}
 
 
 
@@ -75,10 +73,10 @@ const MainPage = async ({ lng }: Props) => {
 
             {/*/>*/}
 
-            <Footer />
 
 
-            <ScrollTop />
+
+
             {/*</div>*/}
         </>
     );
