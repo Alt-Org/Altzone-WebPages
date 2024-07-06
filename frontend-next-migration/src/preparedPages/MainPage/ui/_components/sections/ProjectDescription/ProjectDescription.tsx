@@ -6,6 +6,7 @@ import greenHaired from "@/shared/assets/images/heros/hannu-hodari/ahmatti.webp"
 import { Container } from "@/shared/ui/Container";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { Paragraph } from "@/shared/ui/Paragraph";
+import {useInView} from "react-intersection-observer";
 
 interface descriptionProps {
     className?: string;
@@ -21,17 +22,30 @@ export const ProjectDescription = (props: descriptionProps) => {
         title
     } = props;
 
+    const { ref, inView } = useInView({
+        rootMargin: '-150px 0px',
+        triggerOnce: true,
+    });
+
+    const mods = {
+        [cls.inView]: inView
+    }
+
     const { isMobileSize } = useIsMobileSize();
 
     return (
         <section
-            className= {classNames(cls.Section, {}, [className])}
+            ref={ref}
+            className= {classNames(cls.Section, mods, [className])}
         >
-            <Container className={cls.Container}>
+            <Container className={classNames(cls.Container, mods)}>
             <h2 className={cls.titleQuestion}>{title}</h2>
-                <div className={cls.imageTextBlock}>
+                <div className={classNames(cls.imageTextBlock, mods)}>
                     {!isMobileSize && (
-                        <Image src={greenHaired} alt={"description hero"} className={cls.Image} />
+                        <Image
+                            src={greenHaired}
+                            alt={"description hero"}
+                            className={classNames(cls.Image,mods)} />
                     )}
                         <Paragraph
                             className={cls.description}
