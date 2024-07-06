@@ -24,7 +24,6 @@ function MainPage ({ t }: Props)  {
                 className={cls.description}
                 title={t('project-description-title')}
                 description={t('project-description-text')}
-                titleQuestion={t('project-description-title-question')}
             />
 
             <HorizontalLines />
