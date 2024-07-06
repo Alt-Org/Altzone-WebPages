@@ -22,7 +22,7 @@
   align-items: center;
   gap: 30px;
   min-height: 100%;
-  animation: slideIn 1.5s ease-in-out;
+  animation: slideIn 1.8s ease-in-out;
 }
 
 @keyframes slideIn {
@@ -41,7 +41,7 @@
   align-items: center;
   max-width: 90%;
   margin-top: 20px;
-  animation: zoomIn 0.8s ease-in-out;
+  animation: zoomIn 1.8s ease-in-out;
 }
 
 @keyframes zoomIn {
