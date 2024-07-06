@@ -1,8 +1,7 @@
 'use client';
-import React, { memo } from "react";
 import { useParams } from "next/navigation";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./Main.module.scss";
+import cls from "./ProjectDescription.module.scss";
 import { useClientTranslation } from "@/shared/i18n";
 import Image from "next/image";
 import greenHaired from "@/shared/assets/images/heros/hannu-hodari/ahmatti.webp"
@@ -10,15 +9,13 @@ import { Container } from "@/shared/ui/Container";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { Paragraph } from "@/shared/ui/Paragraph";
 
-
-
 interface descriptionProps {
     className?: string;
     // lng: string;
     backgroundImageSrc? : string
 }
 
-export const Main = ({ className = '' , backgroundImageSrc}: descriptionProps) => {
+export const ProjectDescription = ({ className = '' , backgroundImageSrc}: descriptionProps) => {
 
     const params = useParams();
     const lng = params.lng as string;
@@ -49,8 +46,5 @@ export const Main = ({ className = '' , backgroundImageSrc}: descriptionProps) =
 
         </section>)
 };
-
-
-Main.displayName = "DescriptionWithNav-main";
 
 

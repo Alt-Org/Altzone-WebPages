@@ -1,5 +1,5 @@
 import cls from "./page.module.scss"
-import { DescriptionWithNav } from "@/widgets/DescriptionWithNav";
+import { ProjectDescription } from "./_components/sections/ProjectDescription";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { SectionVideoAndGalleries } from "@/widgets/SectionVideoAndGalleries";
 import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
@@ -23,15 +23,15 @@ function MainPage ({ t }: Props)  {
     return (
         <>
 
-            <SectionPlayWithUs
-                webGlButtonText={t('PlayOnline')}
+            <ProjectDescription
+                className={cls.description}
                 backgroundImageSrc={sameBg}
             />
 
             <HorizontalLines />
 
-            <DescriptionWithNav
-                className={cls.description}
+            <SectionPlayWithUs
+                webGlButtonText={t('PlayOnline')}
                 backgroundImageSrc={sameBg}
             />
 
