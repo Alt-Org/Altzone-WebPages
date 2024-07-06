@@ -9,7 +9,6 @@ import { Paragraph } from "@/shared/ui/Paragraph";
 
 interface descriptionProps {
     className?: string;
-    titleQuestion: string;
     title: string;
     description: string;
 }
@@ -18,7 +17,6 @@ export const ProjectDescription = (props: descriptionProps) => {
 
     const {
         className= '',
-        titleQuestion,
         description,
         title
     } = props;
@@ -30,14 +28,13 @@ export const ProjectDescription = (props: descriptionProps) => {
             className= {classNames(cls.Section, {}, [className])}
         >
             <Container className={cls.Container}>
-            <h2 className={cls.titleQuestion}>{titleQuestion}</h2>
+            <h2 className={cls.titleQuestion}>{title}</h2>
                 <div className={cls.imageTextBlock}>
                     {!isMobileSize && (
                         <Image src={greenHaired} alt={"description hero"} className={cls.Image} />
                     )}
                         <Paragraph
                             className={cls.description}
-                            // title={title}
                             text={description}
                         />
                 </div>
