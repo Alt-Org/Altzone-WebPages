@@ -1,7 +1,12 @@
 .Section {
   display: flex;
   min-height: 100vh;
-  animation: fadeIn 1s ease-in-out;
+  opacity: 0;
+  &.inView{
+    animation: fadeIn 1s ease-in-out;
+    opacity: 1;
+  }
+
 }
 
 @keyframes fadeIn {
@@ -22,7 +27,15 @@
   align-items: center;
   gap: 30px;
   min-height: 100%;
-  animation: slideIn 1.8s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+
+  &.inView{
+    animation: slideIn 1.8s ease-in-out;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
 }
 
 @keyframes slideIn {
@@ -41,7 +54,15 @@
   align-items: center;
   max-width: 90%;
   margin-top: 20px;
-  animation: zoomIn 1.8s ease-in-out;
+  transform: scale(0.8);
+  opacity: 0;
+
+  &.inView{
+    animation: zoomIn 1.8s ease-in-out;
+    opacity: 1;
+    transform: scale(1);
+  }
+
 }
 
 @keyframes zoomIn {
@@ -58,7 +79,11 @@
 .Image {
   max-width: 30%;
   height: auto;
-  animation: rotate 1.5s alternate;
+
+  &.inView{
+    animation: rotate 1.5s alternate;
+  }
+
 }
 
 @keyframes rotate {
