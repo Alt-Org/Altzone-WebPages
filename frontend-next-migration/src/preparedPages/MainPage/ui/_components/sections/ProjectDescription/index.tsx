@@ -1,8 +1,6 @@
-'use client';
-import { useParams } from "next/navigation";
+'use client'
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./ProjectDescription.module.scss";
-import { useClientTranslation } from "@/shared/i18n";
 import Image from "next/image";
 import greenHaired from "@/shared/assets/images/heros/hannu-hodari/ahmatti.webp"
 import { Container } from "@/shared/ui/Container";
@@ -11,40 +9,40 @@ import { Paragraph } from "@/shared/ui/Paragraph";
 
 interface descriptionProps {
     className?: string;
-    // lng: string;
-    backgroundImageSrc? : string
+    titleQuestion: string;
+    title: string;
+    description: string;
 }
 
-export const ProjectDescription = ({ className = '' , backgroundImageSrc}: descriptionProps) => {
+export const ProjectDescription = (props: descriptionProps) => {
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "description-with-nav");
+    const {
+        className= '',
+        titleQuestion,
+        description,
+        title
+    } = props;
 
     const { isMobileSize } = useIsMobileSize();
 
     return (
         <section
-            className= {classNames(cls.Main, {}, [className])}
-            style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
+            className= {classNames(cls.Section, {}, [className])}
         >
-
-            <Container className={cls.container}>
-                <div className={cls.TopBlock}>
+            <Container className={cls.Container}>
+            <h2 className={cls.titleQuestion}>{titleQuestion}</h2>
+                <div className={cls.imageTextBlock}>
                     {!isMobileSize && (
-                        <Image src={greenHaired} alt={"greenHaired hero"} className={cls.Image} />
+                        <Image src={greenHaired} alt={"description hero"} className={cls.Image} />
                     )}
-                    <div className={cls.description}>
                         <Paragraph
-                            title={t("title")}
-                            text={t("text")}
+                            className={cls.description}
+                            // title={title}
+                            text={description}
                         />
-                    </div>
                 </div>
             </Container>
-
-
-        </section>)
-};
+        </section>
+    )};
 
 

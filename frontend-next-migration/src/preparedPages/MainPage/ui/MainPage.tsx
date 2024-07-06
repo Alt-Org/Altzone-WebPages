@@ -15,17 +15,16 @@ export type Props = {
 }
 
 function MainPage ({ t }: Props)  {
-
-
-
     const sameBg = undefined;
 
     return (
-        <>
+        <div className={cls.MainPage}>
 
             <ProjectDescription
                 className={cls.description}
-                backgroundImageSrc={sameBg}
+                title={t('project-description-title')}
+                description={t('project-description-text')}
+                titleQuestion={t('project-description-title-question')}
             />
 
             <HorizontalLines />
@@ -60,7 +59,7 @@ function MainPage ({ t }: Props)  {
 
             {/*/>*/}
             {/*</div>*/}
-        </>
+        </div>
     );
 };
 
