@@ -1,66 +1,30 @@
-.Main {
-
-  @include backGroundImageDefault;
-
+.Section {
   display: flex;
   min-height: 100vh;
-  position: relative;
-  padding: 0 10px;
-  font-family: var(--font-family-texts);
+}
 
+.Container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  min-height: 100%;
+}
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.imageTextBlock {
+  display: flex;
+  align-items: center;
+  max-width: 90%;
+  margin-top: 20px;
 
-
-    .TopBlock {
-      display: flex;
-      justify-content: space-between;
-      width: 90%;
-
-
-      .Image {
-        width: 30%;
-        height: auto;
-        object-fit: contain;
-      }
-
-
-
-      .description {
-        width: 60%;
-      }
-    }
-
-
-
+  .Image {
+    max-width: 30%;
+    height: auto;
   }
 }
 
-@media (max-width: 1150px) {
-
-
-  .container {
-    width: 100% !important;
-
-    .TopBlock {
-      width: 100% !important;
-      margin-top: 5%;
-
-      .description {
-        width: 90% !important;
-        margin: 5%;
-      }
-
-    }
-
-    .navElements {
-      margin-top: 0px !important;
-      margin-bottom: 15%;
-    }
-  }
+.titleQuestion {
+  font-size: xxx-large;
 
 }
