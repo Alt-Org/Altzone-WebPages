@@ -5,7 +5,7 @@ import { store,persistor} from './StoreProvider';
 import { PersistGate } from 'redux-persist/integration/react'
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
-import { ThemeProvider } from "@/preparedApp/providers/ThemeProvider";
+import { ThemeProvider } from "./ThemeProvider";
 import {createInstance} from "i18next";
 
 

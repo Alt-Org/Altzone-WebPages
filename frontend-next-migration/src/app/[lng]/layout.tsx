@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import {Open_Sans, Urbanist, Rubik} from 'next/font/google'
-import '../../preparedApp/styles/index.scss';
-import {Providers} from "@/preparedApp/providers/Providers";
+import '../_styles/index.scss';
+import {Providers} from "../_providers";
 
 
 const openSans = Open_Sans({
