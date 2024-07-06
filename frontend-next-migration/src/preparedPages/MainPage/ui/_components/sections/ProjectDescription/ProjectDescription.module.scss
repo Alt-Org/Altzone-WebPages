@@ -32,5 +32,11 @@
      font-size: var(--font-line-xxl);
    }
  }
+
+  @media screen and (max-width: 400px) {
+    & {
+      font-size: var(--font-line-l);
+    }
+  }
   
 }
