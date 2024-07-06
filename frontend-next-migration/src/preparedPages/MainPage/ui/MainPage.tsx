@@ -1,6 +1,5 @@
 import cls from "./page.module.scss"
 import { DescriptionWithNav } from "@/widgets/DescriptionWithNav";
-import { useServerTranslation } from "@/shared/i18n";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { SectionVideoAndGalleries } from "@/widgets/SectionVideoAndGalleries";
 import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
@@ -11,24 +10,18 @@ import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 
-type Props = {
-    lng: string
+export type Props = {
+    t: (key: string) => string;
 }
 
-const MainPage = async ({ lng }: Props) => {
+function MainPage ({ t }: Props)  {
 
-    const { t } = await useServerTranslation(lng, 'main');
+
 
     const sameBg = undefined;
-    // const sameBg = bgPicture.src;
 
     return (
         <>
-            {/* Abadi */}
-            {/*<div className={cls.Wrapper}>*/}
-            {/*<FeedbackSideButton disableMobile={true} />*/}
-
-
 
             <SectionPlayWithUs
                 webGlButtonText={t('PlayOnline')}
@@ -45,8 +38,6 @@ const MainPage = async ({ lng }: Props) => {
             <HorizontalLines />
 
             <SectionClassifiedHeroesBlocks/>
-
-
 
 
             <HorizontalLines />
@@ -74,11 +65,9 @@ const MainPage = async ({ lng }: Props) => {
 };
 
 
-export default withBackgroundImage({
+export default withBackgroundImage<Props>({
     alt: "Main-Page underground style background",
     imagePath: bgPicture as unknown as string,
     className: cls.wholePageBG
-    // @ts-ignore
 })(MainPage);
 
-// export default MainPage;

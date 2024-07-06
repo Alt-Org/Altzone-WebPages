@@ -17,12 +17,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
     }
 }
 
-export default function MainPage({ params }: Props){
+export default async function MainPage({ params }: Props){
+
+
+    const { t } = await useServerTranslation(params.lng, 'main');
 
     return (
         <>
-            {/*// @ts-ignore*/}
-            <PreparedPage lng={params.lng} />
+            <PreparedPage t={t}  />
         </>
     )
 }
