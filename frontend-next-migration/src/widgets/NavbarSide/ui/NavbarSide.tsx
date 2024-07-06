@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import cls from './NavbarSide.module.scss';
 
 interface Section {
@@ -9,27 +9,19 @@ interface Section {
 
 interface NavbarSideProps {
   sections: Section[];
-  containerId: string;
 }
 
-const NavbarSide: React.FC<NavbarSideProps> = ({ sections, containerId }) => {
+const NavbarSide: React.FC<NavbarSideProps> = ({ sections }) => {
   const [activeSection, setActiveSection] = useState<string>('');
-  const containerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const container = document.getElementById(containerId) as HTMLElement;
-    containerRef.current = container;
-
     const handleScroll = () => {
-      if (!container) return;
-
       const sectionOffsets = sections.map((section) => {
         const element = document.getElementById(section.id);
         return { id: section.id, offsetTop: element ? element.offsetTop : 0 };
       });
 
-      const currentScrollPosition =
-        container.scrollTop + container.clientHeight / 2;
+      const currentScrollPosition = window.scrollY + window.innerHeight / 2;
 
       const currentSection = sectionOffsets.find((section, index) => {
         const nextSection = sectionOffsets[index + 1];
@@ -45,21 +37,21 @@ const NavbarSide: React.FC<NavbarSideProps> = ({ sections, containerId }) => {
       }
     };
 
-    container.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     // Initial check to set the active section when the component mounts
     handleScroll();
 
     return () => {
-      container.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [sections, containerId, activeSection]);
+  }, [sections, activeSection]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    if (element && containerRef.current) {
+    if (element) {
       const offsetPosition = element.offsetTop - 50; // offset up
-      containerRef.current.scrollTo({
+      window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
       });

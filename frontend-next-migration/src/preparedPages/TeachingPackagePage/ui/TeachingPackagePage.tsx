@@ -42,19 +42,17 @@ const TeachingPackagePage = (props: Props) => {
       <Navbar overlaid={true} navBarType={'TeachingPackage'} />
       <div className={classNames(cls.mainContent, combinedModCss)}>
         {!isMobileSize && (
-          <div className={cls.pageLogo}>
-            <Image
-              src={pageLogo}
-              className={cls.backgroundImage}
-              alt='pageLogo'
-              height={600}
-              width={600}
-            />
-          </div>
-        )}
-        {!isMobileSize && (
           <div className={classNames(cls.navbarSide, combinedModCss)}>
-            <NavbarSide sections={sections} containerId='content' />
+            <div className={cls.pageLogo}>
+              <Image
+                src={pageLogo}
+                className={cls.backgroundImage}
+                alt='pageLogo'
+                height={600}
+                width={600}
+              />
+            </div>
+            <NavbarSide sections={sections} />
           </div>
         )}
         <div className={classNames(cls.content, combinedModCss)} id='content'>
