@@ -33,9 +33,9 @@ function withBackgroundImage<P extends object>(
                     <div className={classNames(cls.Background, {}, [className])}>
                     {/*<div className={cls.Background}>*/}
                         {shouldBeLazyLoaded ? (
-                            <Image src={imagePath} alt={alt} loading="lazy" className={cls.ImageWrapper}  />
+                            <Image src={imagePath} alt={alt} loading="lazy" className={cls.ImageWrapper} width={1000} height={1000} />
                         ) : (
-                            <Image src={imagePath} alt={alt} className={cls.ImageWrapper} />
+                            <Image src={imagePath} alt={alt} className={cls.ImageWrapper} width={1000} height={1000} />
                         )}
                     </div>
                     <div className={cls.Content}>
