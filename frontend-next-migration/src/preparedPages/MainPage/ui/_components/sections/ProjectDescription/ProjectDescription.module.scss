@@ -1,6 +1,18 @@
 .Section {
   display: flex;
   min-height: 100vh;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .Container {
@@ -10,6 +22,18 @@
   align-items: center;
   gap: 30px;
   min-height: 100%;
+  animation: slideIn 1.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .imageTextBlock {
@@ -17,10 +41,29 @@
   align-items: center;
   max-width: 90%;
   margin-top: 20px;
+  animation: zoomIn 0.8s ease-in-out;
+}
 
-  .Image {
-    max-width: 30%;
-    height: auto;
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.Image {
+  max-width: 30%;
+  height: auto;
+  animation: rotate 1.5s alternate;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -38,5 +81,5 @@
       font-size: var(--font-line-l);
     }
   }
-  
+
 }
