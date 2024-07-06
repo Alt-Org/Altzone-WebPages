@@ -1,13 +1,16 @@
 import cls from "./page.module.scss"
-import { ProjectDescription } from "./_components/sections/ProjectDescription";
+
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { SectionVideoAndGalleries } from "@/widgets/SectionVideoAndGalleries";
-import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
+
 import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
 import { SectionClassifiedHeroesBlocks } from "@/widgets/SectionClassifiedHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+
+import { ProjectDescription } from "./_components/sections/ProjectDescription";
+import { GetToKnowComics } from "./_components/sections/GetToKnowComics";
 
 
 export type Props = {
@@ -40,11 +43,12 @@ function MainPage ({ t }: Props)  {
 
             <HorizontalLines />
 
-            <SectionGetToKnowComics
+            <GetToKnowComics
                 buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }}
                 backgroundImageSrc={sameBg}
-
             />
+
+
             <HorizontalLines />
             <SectionVideoAndGalleries
                 backgroundImageSrc={sameBg}
