@@ -1,4 +1,5 @@
 'use client';
+import React, { useState } from 'react';
 import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
@@ -59,22 +60,32 @@ const GameArtPackagePage = (props: Props) => {
         )}
         <div className={classNames(cls.content, combinedModCss)} id='content'>
           {sections.length > 0 ? (
-            sections.map((section) => (
-              <div id={section.id} key={section.id} className={cls.section}>
-                <h2>{section.label}</h2>
-                <p
-                  dangerouslySetInnerHTML={{ __html: section.description }}></p>
-                <div className={classNames(cls.contentImage, combinedModCss)}>
-                  <Image
-                    src={section.image}
-                    className={cls.sectionImage}
-                    alt={section.imageAlt}
-                    height={300}
-                    width={600}
-                  />
+            sections.map((section) => {
+              const [imageError, setImageError] = useState(false);
+
+              return (
+                <div id={section.id} key={section.id} className={cls.section}>
+                  <h2>{section.label}</h2>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: section.description,
+                    }}></p>
+                  {section.image && !imageError && (
+                    <div
+                      className={classNames(cls.contentImage, combinedModCss)}>
+                      <Image
+                        src={section.image}
+                        className={cls.sectionImage}
+                        alt={section.imageAlt}
+                        height={300}
+                        width={600}
+                        onError={() => setImageError(true)}
+                      />
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <p>No sections available.</p>
           )}

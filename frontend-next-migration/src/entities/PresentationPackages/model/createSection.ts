@@ -20,6 +20,6 @@ export function createSection(
     label: `${prefix}-label`,
     description: `${prefix}-description`,
     image: imageSrc,
-    imageAlt: imageAlt || '',
+    imageAlt: imageAlt,
   };
 }

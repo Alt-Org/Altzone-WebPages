@@ -14,20 +14,13 @@ const makeSectionsWithI18n = (
   sections: PresentationSection[],
 ): ((t: (key: string) => string) => PresentationSection[]) => {
   return (t: (key: string) => string): PresentationSection[] => {
-    return sections.map((section) => {
-      const localizedSection = {
-        ...section,
-        label: t(section.label),
-        description: t(section.description),
-        image: section.image,
-      };
-
-      if (section.imageAlt) {
-        localizedSection.imageAlt = t(section.imageAlt);
-      }
-
-      return localizedSection;
-    });
+    return sections.map((section) => ({
+      ...section,
+      label: t(section.label),
+      description: t(section.description),
+      image: section.image,
+      imageAlt: t(section.imageAlt),
+    }));
   };
 };
 
