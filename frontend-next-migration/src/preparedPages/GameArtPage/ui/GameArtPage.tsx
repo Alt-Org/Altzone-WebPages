@@ -12,6 +12,7 @@ import pageLogo from '@/shared/assets/images/teachingPackage/pageLogo.png';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ScrollTop } from '@/features/ScrollTop';
 
 interface Section {
   id: string;
@@ -82,7 +83,7 @@ const GameArtPackagePage = (props: Props) => {
       <div>
         <FeedbackSideButton />
         <HorizontalLines />
-        <Footer />
+        {isMobileSize && <ScrollTop />} <Footer />
       </div>
     </div>
   );
