@@ -6,8 +6,14 @@
   min-height: 100vh;
   position: relative;
   padding: 0;
-
   gap: 15px;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+
+  &.inView {
+    opacity: 1;
+    animation: fadeIn 2s ease-in-out forwards;
+  }
 
   @include backGroundImageDefault;
 
@@ -18,32 +24,48 @@
   }
 }
 
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 
-.title{
-  //todo fix to fontXXXL
+.title {
   font-size: var(--font-line-xxxl);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
 
-  @media screen and (max-width: 600px){
+  &.inView {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media screen and (max-width: 600px) {
     font-size: var(--font-line-xxl);
   }
 
-  @media screen and (max-width: 450px){
+  @media screen and (max-width: 450px) {
     font-size: var(--font-line-xl);
   }
-
 }
 
 .centeredImage {
-  //z-index: 20;
   max-width: 35vw;
   min-width: 450px;
   height: auto;
   object-fit: contain;
   margin-top: 1%;
-}
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
 
-@media screen and (max-width: 480px) {
-  .centeredImage {
+  &.inView {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media screen and (max-width: 480px) {
     width: 80% !important;
     max-width: 45vw;
     min-width: 300px;
@@ -52,15 +74,49 @@
 
 .button {
   @include link-scale-effect;
-  //z-index: 20;
-  background-color: var(--transparent-bg-darker)!important;
-  padding: 20px!important;
-  margin-top: 3%!important;
+  background-color: var(--transparent-bg-darker) !important;
+  padding: 20px !important;
+  margin-top: 3% !important;
+  opacity: 0;
+  transform: scale(0.5) rotate(-5deg);
+  transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+  animation: fadeInAndRotate 2s ease-in-out forwards, pulse 1s 2.5s infinite;
 
   @media screen and (max-width: 480px) {
-    padding: 15px!important;
-    font-size: 14px!important;
-    margin-top: 5%!important;
+    padding: 15px !important;
+    font-size: 14px !important;
+    margin-top: 5% !important;
+  }
+
+  &:hover {
+    animation-play-state: paused;
   }
 }
+
+@keyframes fadeInAndRotate {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-5deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.8) rotate(2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.01);
+  }
+}
+
+
 
