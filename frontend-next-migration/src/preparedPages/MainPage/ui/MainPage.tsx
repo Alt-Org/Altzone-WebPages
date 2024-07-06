@@ -1,9 +1,5 @@
 import cls from "./page.module.scss"
 import { DescriptionWithNav } from "@/widgets/DescriptionWithNav";
-import { Navbar } from "@/widgets/Navbar";
-import { Footer } from "@/widgets/Footer";
-import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
-import { ScrollTop } from "@/features/ScrollTop";
 import { useServerTranslation } from "@/shared/i18n";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { SectionVideoAndGalleries } from "@/widgets/SectionVideoAndGalleries";
@@ -72,11 +68,6 @@ const MainPage = async ({ lng }: Props) => {
             {/*    rankingScoreText={t('ranking-score')}*/}
 
             {/*/>*/}
-
-
-
-
-
             {/*</div>*/}
         </>
     );
