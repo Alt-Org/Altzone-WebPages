@@ -44,6 +44,7 @@ function MainPage ({ t }: Props)  {
             <HorizontalLines />
 
             <GetToKnowComics
+                title={"Pelikeksijän tarina"}
                 buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }}
                 backgroundImageSrc={sameBg}
             />

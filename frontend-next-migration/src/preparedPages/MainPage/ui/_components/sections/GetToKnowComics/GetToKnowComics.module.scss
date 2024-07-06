@@ -3,22 +3,40 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   padding: 0;
 
+  gap: 15px;
+
   @include backGroundImageDefault;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 600px) {
     height: auto;
+    min-height: 70vh;
     padding: 20px;
   }
 }
 
+
+.title{
+  //todo fix to fontXXXL
+  font-size: var(--font-line-xxxl);
+
+  @media screen and (max-width: 600px){
+    font-size: var(--font-line-xxl);
+  }
+
+  @media screen and (max-width: 450px){
+    font-size: var(--font-line-xl);
+  }
+
+}
+
 .centeredImage {
   //z-index: 20;
-  width: 60vw;
-  min-width: 350px;
+  max-width: 35vw;
+  min-width: 450px;
   height: auto;
   object-fit: contain;
   margin-top: 1%;
@@ -27,7 +45,8 @@
 @media screen and (max-width: 480px) {
   .centeredImage {
     width: 80% !important;
-    min-width: unset;
+    max-width: 45vw;
+    min-width: 300px;
   }
 }
 
@@ -44,3 +63,4 @@
     margin-top: 5%!important;
   }
 }
+
