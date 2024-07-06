@@ -2,24 +2,22 @@ import { createSection } from '../createSection';
 
 const i18nKeyPrefixes = [
   'info',
-  'artistic',
-  'storytelling',
-  'creation',
-  'culture',
+  'intro',
+  'implementation',
+  'message',
+  'content',
+  'joinus',
   'literature',
-  'sources',
-  'prg',
 ];
 // next takes path : \public\images\gameArt
 const imageSrcs = [
-  '/images/gameArt/info.png',
-  '/images/gameArt/artistic.png',
-  '/images/gameArt/storytelling.png',
-  '/images/gameArt/creation.png',
-  '/images/gameArt/culture.png',
-  '/images/gameArt/literature.png',
-  '/images/gameArt/sources.png',
-  '/images/gameArt/prg.png',
+  '/images/gameArt/info.webp',
+  '/images/gameArt/intro.webp',
+  '/images/gameArt/implementation.webp',
+  '/images/gameArt/message.webp',
+  '/images/gameArt/content.webp',
+  '/images/gameArt/joinus.webp',
+  '/images/gameArt/literature.webp',
 ];
 
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
