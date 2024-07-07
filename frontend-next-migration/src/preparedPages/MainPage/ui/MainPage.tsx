@@ -52,7 +52,7 @@ function MainPage ({ t }: Props)  {
 
             <HorizontalLines />
             <VideoAndGalleries
-                title={"Our Art"}
+                title={t("videoAndGalleries-title")}
                 backgroundImageSrc={sameBg}
             />
             <HorizontalLines />
