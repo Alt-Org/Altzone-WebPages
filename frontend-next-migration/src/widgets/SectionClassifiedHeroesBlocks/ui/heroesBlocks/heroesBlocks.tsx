@@ -2,7 +2,6 @@
 import { HeroCard, heroes } from '@/entities/Hero';
 import cls from './heroesBlocks.module.scss';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
 import {useMemo} from "react";
 
 type Props = {
