@@ -2,7 +2,7 @@ import cls from "./page.module.scss"
 
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 
-import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
+
 import { SectionClassifiedHeroesBlocks } from "@/widgets/SectionClassifiedHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
@@ -11,6 +11,7 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import { ProjectDescription } from "./_components/sections/ProjectDescription";
 import { GetToKnowComics } from "./_components/sections/GetToKnowComics";
 import {VideoAndGalleries} from "./_components/sections/VideoAndGalleries";
+import {PlayWithUs} from "./_components/sections/PlayWithUs";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 
@@ -32,7 +33,7 @@ function MainPage ({ t }: Props)  {
 
             <HorizontalLines />
 
-            <SectionPlayWithUs
+            <PlayWithUs
                 title={t("playWithUs-title")}
                 webGl={{
                     title: t('PlayOnline'),

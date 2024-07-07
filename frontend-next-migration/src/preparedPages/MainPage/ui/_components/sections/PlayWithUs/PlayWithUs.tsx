@@ -1,4 +1,4 @@
-import cls from "./SectionPlayWithUs.module.scss"
+import cls from "./PlayWithUs.module.scss"
 import Image from "next/image";
 import googlePLay from "@/shared/assets/images/media/googleplay.png";
 import sideImg from "@/shared/assets/images/heros/einstein/professori.webp";
@@ -20,7 +20,7 @@ type Props = {
     belowNavs: NavItem[]
 }
 
-const SectionPlayWithUs = (props: Props) => {
+const PlayWithUs = (props: Props) => {
 
     const {
         title,
@@ -35,8 +35,6 @@ const SectionPlayWithUs = (props: Props) => {
             <h3 className={cls.title}>
                 {title}
             </h3>
-
-
             <div className={cls.Content}>
                 <div className={cls.ContentWithNav}>
                     <div className={cls.Buttons}>
@@ -77,4 +75,4 @@ const SectionPlayWithUs = (props: Props) => {
     );
 };
 
-export default SectionPlayWithUs;
+export default PlayWithUs;
