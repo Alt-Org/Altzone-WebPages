@@ -21,14 +21,17 @@
     margin-bottom: 1rem;
     font-weight: bold;
   }
+
+  min-width: 200px;
+
 }
 
 @media (max-width: 1150px) {
   .NavElement {
-    
-    
-    width: 55% !important;
+    min-width: 320px;
+
+    //width: 55% !important;
   }
-  
+
   //align-items: center;
 }
