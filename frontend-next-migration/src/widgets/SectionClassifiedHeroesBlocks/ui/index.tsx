@@ -9,40 +9,35 @@ import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
 import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
 import purple from "@/shared/assets/images/heros/textBgColors/purple.webp";
 import HeroesBlocks from './heroesBlocks/heroesBlocks';
+import {heroes} from "@/entities/Hero";
 
 
 const sameBg = undefined;
 
 
-function Main ()  {
+function Main() {
+    const heroGroups = [
+        { group: "TORJUJAT // RETROFLEKTIO", textBgColor: red },
+        { group: "SULAUTUJAT // KONFLUENSSI", textBgColor: pink },
+        { group: "ÄLYLLISTÄJÄT // EGOTISMI", textBgColor: darkBlue },
+        { group: "PEILAAJAT // PROJEKTIO", textBgColor: orange }
+    ];
+
     return (
         <section className={cls.Section}>
-            <HeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="TORJUJAT // RETROFLEKTIO"
-                textBgColor={red}
-            />
-
-            <HeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="SULAUTUJAT // KONFLUENSSI"
-                textBgColor={pink}
-            />
-
-            <HeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="ÄLYLLISTÄJÄT // EGOTISMI"
-                textBgColor={darkBlue}
-            />
-
-            <HeroesBlocks
-                backgroundImageSrc={sameBg}
-                group="PEILAAJAT // PROJEKTIO"
-                textBgColor={orange}
-            />
+            {heroGroups.map((group, index) => (
+                <HeroesBlocks
+                    key={index}
+                    heroes={heroes}
+                    backgroundImageSrc={sameBg}
+                    group={group.group}
+                    textBgColor={group.textBgColor}
+                />
+            ))}
         </section>
     );
 }
+
 
 
 export default Main;
