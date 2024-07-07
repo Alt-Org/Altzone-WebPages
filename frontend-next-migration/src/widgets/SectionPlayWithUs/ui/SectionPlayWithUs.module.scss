@@ -12,6 +12,30 @@
 
 }
 
+.NavElements {
+  gap: 50px;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+
+}
+
+@media (max-width: 1150px) {
+  .NavElements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    gap: 20px;
+  }
+
+}
+
+
+
 .Buttons {
   display: flex;
   flex-direction: row;
@@ -42,12 +66,7 @@
   width: auto;
 }
 
-.navElements {
-  margin-top: 5rem;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
+
 
 .Content {
   display: flex;
@@ -66,6 +85,10 @@
 .sideImg {
   width: 35%;
 }
+
+
+
+
 
 @media (min-width: 1151px) and (max-width: 1600px) {
   .BtnGame {
@@ -108,7 +131,7 @@
     height: 11vh;
   }
 
-  .navElements {
+  .NavElements {
     margin-bottom: 5rem;
     margin-top: 1rem;
   }

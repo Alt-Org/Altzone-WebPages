@@ -1,1 +1,1 @@
-export {default as SectionPlayWithUs} from "./ui/Main/SectionPlayWithUs"
+export {default as SectionPlayWithUs} from "./ui/SectionPlayWithUs"
