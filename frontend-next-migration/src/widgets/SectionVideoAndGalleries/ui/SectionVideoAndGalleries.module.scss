@@ -1,10 +1,12 @@
 .SectionVideoAndGalleries {
+  margin: 40px auto;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   position: relative;
   @include backGroundImageDefault;
+  margin-top: 20px;
 }
 
 .container {
@@ -12,7 +14,6 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-
 }
 
 .videoWrapper {
@@ -28,11 +29,13 @@
   flex: 1;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
 }
 
 .galleries>div {
   width: calc(50% - 5px);
+  max-width: 300px;
 }
 
 .galleries img {
@@ -40,7 +43,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 900px) {
   .SectionVideoAndGalleries {
     flex-direction: column;
   }
