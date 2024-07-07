@@ -6,6 +6,7 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import {GalleryCategoriesWithModalSlider, useGalleryCategories} from "@/entities/Gallery";
 import {Container} from "@/shared/ui/Container";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 
 
 type Props = {
@@ -24,13 +25,15 @@ const SectionVideoAndGalleries = (props: Props) => {
     }
         = useGalleryCategories("artGalleries");
 
+    const {isMobileSize} = useIsMobileSize();
+
 
     return (
         <section
             className={cls.SectionVideoAndGalleries}
             style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
         >
-            <Container className={cls.container}>
+            <Container className={cls.container} fluid={isMobileSize}>
                 <div className={cls.videoWrapper}>
                     <VideoContentYoutube
                         src={AppExternalLinks.previewVideoYoutube}
