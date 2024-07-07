@@ -7,16 +7,21 @@ import {GalleryCategoriesWithModalSlider, useGalleryCategories} from "@/entities
 import {Container} from "@/shared/ui/Container";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import useSizes from "@/shared/lib/hooks/useSizes";
 
 
 type Props = {
-    backgroundImageSrc? : string
+    backgroundImageSrc? : string;
+    title: string;
 }
 
 //todo handle IsError , isLoading cases
 const SectionVideoAndGalleries = (props: Props) => {
 
-    const {backgroundImageSrc} = props;
+    const {
+        backgroundImageSrc,
+        title
+    } = props;
 
     const {
         transformedGalleryCategories,
@@ -25,15 +30,19 @@ const SectionVideoAndGalleries = (props: Props) => {
     }
         = useGalleryCategories("artGalleries");
 
-    const {isMobileSize} = useIsMobileSize();
-
+    const {isMobileSize, isTabletSize} = useSizes();
 
     return (
         <section
             className={cls.SectionVideoAndGalleries}
-            style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
+            style={{backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none'}}
         >
-            <Container className={cls.container} fluid={isMobileSize}>
+
+            <h3 className={cls.title}>
+                {title}
+            </h3>
+
+            <Container className={cls.container} fluid={isMobileSize || isTabletSize}>
                 <div className={cls.videoWrapper}>
                     <VideoContentYoutube
                         src={AppExternalLinks.previewVideoYoutube}
@@ -58,8 +67,8 @@ const SectionVideoAndGalleries = (props: Props) => {
                     }
                 </div>
             </Container>
-         
-                
+
+
         </section>
     );
 };
