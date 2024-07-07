@@ -16,7 +16,7 @@
     opacity: 1;
   }
 }
-.backgroundContent {
+.contentBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -26,6 +26,7 @@
   border: 2px solid rgb(47, 171, 1);
   border-radius: 10px;
   z-index: -1;
+  opacity: 0.95;
 }
 .backgroundImageWrapper {
   position: absolute;
@@ -70,7 +71,7 @@
   user-select: none;
   pointer-events: none;
   position: relative;
-  max-width: 60.875em;
+  max-width: 50.875em;
   width: 40.1666666667em;
   height: 42.6666666667em;
   z-index: 1;
@@ -93,7 +94,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  max-width: 600px;
+  max-width: 30rem;
+  height: 100%;
   z-index: 1;
 }
 
@@ -105,27 +107,21 @@
   z-index: 1;
   aspect-ratio: 13 / 16;
 }
+
 .containerWrapper.isMobile {
   padding-left: 2rem;
   padding-right: 2rem;
   margin-top: 10rem;
 }
-.containerWrapper.isWidescreen {
-  padding-left: 5rem;
-  padding-right: 5rem;
-  margin-top: 5rem;
-}
 
 .content {
   position: relative;
-  width: 100%;
-  height: 100%;
   padding: 2em;
 }
 
 .heroImgWrapper {
   width: 100%;
-  aspect-ratio: 16 / 7;
+  min-height: 40%;
   display: flex;
   justify-content: center;
   border-radius: 10px;
@@ -151,7 +147,6 @@
 
 .heroImg {
   width: 50%;
-  height: auto;
   user-select: none;
   pointer-events: none;
 }
@@ -166,28 +161,12 @@
   @include ScrollbarWithArrowButtons;
   font-size: 1.3rem;
   border-radius: 10px;
-  height: 100%;
-  width: 100%;
 }
 
-.xLinkButton {
-  border: 2px solid rgb(47, 171, 1);
-  background-color: rgb(0, 0, 0);
-  padding: 0.5rem;
-  position: absolute;
-  right: 0rem;
-  top: -6rem;
-  border-radius: 10px;
-  cursor: pointer;
-  z-index: 3;
-  h2:hover {
-    color: orange;
-  }
-}
 .heroName {
   border: 2px solid rgb(47, 171, 1);
   text-align: center;
   border-radius: 10px;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
 }
