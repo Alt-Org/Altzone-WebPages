@@ -1,20 +1,18 @@
 import cls from "./SectionPlayWithUs.module.scss"
 import Image from "next/image";
-import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import googlePLay from "@/shared/assets/images/media/googleplay.png";
 import sideImg from "@/shared/assets/images/heros/einstein/professori.webp";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
-import { NavElements } from "../NavElements/NavElements";
-import { Navs } from "../../model/data/navs";
+import { Navs } from "../model/data/navs";
+import {classNames} from "@/shared/lib/classNames/classNames";
+import {NavElement} from "@/widgets/SectionPlayWithUs/ui/NavElement/NavElement";
 
 
 
 type Props = {
     webGlButtonText: string;
-    backgroundImageSrc? : string;
-    // googleButtonText: string;
 }
 
 
@@ -23,13 +21,11 @@ const SectionPlayWithUs = (props: Props) => {
 
     const {
         webGlButtonText,
-        backgroundImageSrc
     } = props;
 
     return (
         <section
             className={cls.SectionPlayWithUs}
-            style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
         >
 
             <div className={cls.Content}>
@@ -50,14 +46,22 @@ const SectionPlayWithUs = (props: Props) => {
 
                         <Link href={AppExternalLinks.downloadAndroid} target={"_blank"}>
                             <Image src={googlePLay} alt={"google play button"}
-                                className={cls.BtnDownload}
+                                   className={cls.BtnDownload}
                             />
                         </Link>
                     </div>
-                    <NavElements navElems={Navs} className={cls.navElements} />
+
+
+                    <div className={classNames(cls.NavElements, {}, [cls.navElements])}>
+                        {Navs.map((item) => (
+                            <NavElement navElem={item} key={item.title}/>
+                        ))}
+                    </div>
+
+
                 </div>
 
-                <Image src={sideImg} alt={"Side image with hero"} className={cls.sideImg} />
+                <Image src={sideImg} alt={"Side image with hero"} className={cls.sideImg}/>
 
             </div>
 
