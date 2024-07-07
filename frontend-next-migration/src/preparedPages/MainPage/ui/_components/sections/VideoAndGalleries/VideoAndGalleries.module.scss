@@ -9,7 +9,7 @@
   @include backGroundImageDefault;
   margin-top: 20px;
 
-  gap: 3rem
+  gap: 3rem;
 }
 
 .title {
@@ -67,7 +67,7 @@
 @media screen and (max-width: 900px) {
   .SectionVideoAndGalleries {
     flex-direction: column;
-    gap: 1vh;
+    gap: 0;
     margin-top: 40px;
 
   }
