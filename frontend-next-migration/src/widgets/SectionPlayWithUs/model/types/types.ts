@@ -1,6 +1,6 @@
 export type NavItem = {
-    title: string;
-    body: string;
+    title?: string;
+    body?: string;
     link: string;
     isExternal: boolean;
 };

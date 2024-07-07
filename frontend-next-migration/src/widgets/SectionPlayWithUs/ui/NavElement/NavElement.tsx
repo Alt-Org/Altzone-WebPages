@@ -21,8 +21,14 @@ export const NavElement = memo(({navElem, className = ''}: NavElementProps)=>{
         <div className={classNames(cls.NavElement, {}, [className])}>
 
             <AppLink to={navElem.link} isExternal={navElem.isExternal}>
-                <h3>{t(`${navElem.title}`)}</h3>
-                <p>{t(`${navElem.body}`)}</p>
+                {
+                    navElem?.title &&  <h3>{t(`${navElem.title}`)}</h3>
+                }
+
+                {
+                    navElem?.body &&  <p>{t(`${navElem.body}`)}</p>
+                }
+
             </AppLink>
 
         </div>
