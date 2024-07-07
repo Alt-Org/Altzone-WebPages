@@ -1,4 +1,4 @@
-export {HeroCard} from "./ui/HeroCard";
+export {HeroCard} from "./ui/HeroCard/HeroCard";
 export {default as HeroContainer} from "./ui/HeroContainer/HeroContainer";
 
 
