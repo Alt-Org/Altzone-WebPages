@@ -14,12 +14,20 @@ type Props = {
   id: string;
   imageSrc: any;
   imageAlt: string;
+  title: string;
   className?: string;
   backgroundColor?: string;
 };
 
 export const HeroCard = (props: Props) => {
-  const { id, imageSrc, imageAlt, className = '', backgroundColor } = props;
+  const {
+      id,
+      title,
+      imageSrc,
+      imageAlt,
+      className = '',
+      backgroundColor
+  } = props;
 
   const elementRef = useRef(null);
 
@@ -34,25 +42,33 @@ export const HeroCard = (props: Props) => {
   useResizeObserver({ elementRef, callback: handleCardSizeUpdate });
 
   return (
-    <ClickableBorder
-      ref={elementRef}
-      borderImageSource={'/images/hero-border3.png'}
-      className={classNames(cls.Wrapper, {}, [className])}>
-      <div className={cls.HeroDiv} style={{ backgroundColor }}>
-        <AppLink
-          to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(
-            ':id',
-            id.toString(),
-          )}>
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            className={cls.HeroImg}
-            priority={true}
-          />
-        </AppLink>
+      <div  className={classNames(cls.Wrapper, {}, [className])}>
+        <ClickableBorder
+            ref={elementRef}
+            borderImageSource={'/images/hero-border3.png'}
+            className={classNames(cls.ClickableBorder, {}, [])}>
+          <div className={cls.HeroDiv} style={{ backgroundColor }}>
+            <AppLink
+                to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(
+                    ':id',
+                    id.toString(),
+                )}>
+              <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  className={cls.HeroImg}
+                  priority={true}
+              />
+            </AppLink>
+          </div>
+        </ClickableBorder>
+
+
+        <h3 className={cls.heroName}>
+            {title}
+        </h3>
+
       </div>
-    </ClickableBorder>
   );
 };
 
