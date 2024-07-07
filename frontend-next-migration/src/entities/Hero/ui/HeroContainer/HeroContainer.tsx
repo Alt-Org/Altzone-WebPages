@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.png';
 import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
 import cls from './HeroContainer.module.scss';
 import Link from 'next/link';
@@ -12,6 +11,7 @@ import useKeyboardNavigation from './useKeyboardNavigation';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import useFontSizeAdjuster from '@/shared/lib/hooks/useFontSizeAdjuster';
 import { useRef } from 'react';
+import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 
 type Props = {
   heroImg: string;
@@ -45,20 +45,19 @@ const HeroContainer = (props: Props) => {
   } = useImageDistance();
 
   const heroNameRef = useRef<HTMLDivElement>(null);
-  const xLinkAdjustmentRef = useRef<HTMLDivElement>(null); // New reference for font size adjustment
 
   const adjustHeroNameFontSize = (
     element: HTMLElement,
     container: HTMLElement,
   ) => {
     const containerWidth = container.clientWidth;
-    const maxFontSize = containerWidth * 0.04;
-    const minFontSize = 7;
+    const maxFontSize = containerWidth * 0.05;
+    const minFontSize = 10;
     element.style.fontSize = `${Math.max(minFontSize, maxFontSize)}px`;
   };
 
   useFontSizeAdjuster(
-    [heroNameRef, xLinkAdjustmentRef],
+    [heroNameRef],
     imageDistanceContainerRef,
     adjustHeroNameFontSize,
   );
@@ -141,30 +140,28 @@ const HeroContainer = (props: Props) => {
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
           <div className={cls.container} ref={imageDistanceContainerRef}>
-            <div
-              className={classNames(cls.heroName, combinedModCss)}
-              ref={heroNameRef}>
-              <h2>{heroName}</h2>
-            </div>
-            <div
-              className={classNames(cls.xLinkButton, combinedModCss)}
-              ref={xLinkAdjustmentRef}>
-              {' '}
-              <Link href={xLink}>
-                <h1>X</h1>
-              </Link>
-            </div>
-            <Image
-              className={cls.bgImg}
-              src={bgBox}
-              alt='hero'
-              width={400}
-              height={400}
-              onLoad={handleImageLoad}
-              priority={true}
-            />
             <div className={cls.contentWrapper}>
+              <Image
+                src={bgPicture}
+                alt='Background Image'
+                quality={100}
+                className={cls.backgroundContent}
+                style={{ backgroundColor: heroColor }}
+                priority={true}
+              />
               <div className={cls.content}>
+                <div className={classNames(cls.xLinkButton, combinedModCss)}>
+                  {' '}
+                  <Link href={xLink}>
+                    <h2>Back</h2>
+                  </Link>
+                </div>
+                <div
+                  className={classNames(cls.heroName, combinedModCss)}
+                  ref={heroNameRef}
+                  style={{ backgroundColor: heroColor, color: 'black' }}>
+                  <h2>{heroName}</h2>
+                </div>
                 <div
                   className={classNames(cls.heroImgWrapper, combinedModCss)}
                   style={{ backgroundColor: heroColor }}>
