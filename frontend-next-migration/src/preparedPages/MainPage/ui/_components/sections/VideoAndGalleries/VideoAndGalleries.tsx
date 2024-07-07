@@ -1,12 +1,11 @@
 'use client'
 import VideoContentYoutube from "@/shared/ui/VideoContent/ui/VideoContentYoutube";
-import cls from "./SectionVideoAndGalleries.module.scss";
+import cls from "./VideoAndGalleries.module.scss";
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import {GalleryCategoriesWithModalSlider, useGalleryCategories} from "@/entities/Gallery";
 import {Container} from "@/shared/ui/Container";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import useSizes from "@/shared/lib/hooks/useSizes";
 
 
@@ -16,7 +15,7 @@ type Props = {
 }
 
 //todo handle IsError , isLoading cases
-const SectionVideoAndGalleries = (props: Props) => {
+const VideoAndGalleries = (props: Props) => {
 
     const {
         backgroundImageSrc,
@@ -73,4 +72,4 @@ const SectionVideoAndGalleries = (props: Props) => {
     );
 };
 
-export default SectionVideoAndGalleries;
+export default VideoAndGalleries;
