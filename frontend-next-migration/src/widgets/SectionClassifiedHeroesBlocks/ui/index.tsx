@@ -8,7 +8,7 @@ import lightBlue from "@/shared/assets/images/heros/textBgColors/light-blue.webp
 import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
 import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
 import purple from "@/shared/assets/images/heros/textBgColors/purple.webp";
-import HeroesBlocks from './heroesBlocks';
+import HeroesBlocks from './heroesBlocks/heroesBlocks';
 
 
 const sameBg = undefined;
