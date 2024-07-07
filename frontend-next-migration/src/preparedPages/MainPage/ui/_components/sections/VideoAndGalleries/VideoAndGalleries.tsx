@@ -14,6 +14,7 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 type Props = {
     backgroundImageSrc? : string;
     title: string;
+    videoLink?: string;
 }
 
 //todo handle IsError , isLoading cases
@@ -21,7 +22,8 @@ const VideoAndGalleries = (props: Props) => {
 
     const {
         backgroundImageSrc,
-        title
+        title,
+        videoLink = AppExternalLinks.previewVideoYoutube
     } = props;
 
     const {
@@ -58,11 +60,7 @@ const VideoAndGalleries = (props: Props) => {
             <Container className={cls.container} fluid={isMobileSize || isTabletSize}>
                 <div className={cls.videoWrapper}>
                     <VideoContentYoutube
-                        src={AppExternalLinks.previewVideoYoutube}
-                        params={{
-                            // autoPlay: true,
-                            title: "video"
-                        }}
+                        src={videoLink}
                     />
                 </div>
 
