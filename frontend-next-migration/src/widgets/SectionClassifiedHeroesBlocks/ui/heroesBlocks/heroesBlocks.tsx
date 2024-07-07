@@ -3,6 +3,8 @@ import { HeroCard} from '@/entities/Hero';
 import cls from './heroesBlocks.module.scss';
 import { useInView } from 'react-intersection-observer';
 import {useMemo} from "react";
+import {useParams} from "next/navigation";
+import {useClientTranslation} from "@/shared/i18n";
 
 type Props = {
   backgroundImageSrc?: string;
@@ -23,6 +25,11 @@ const HeroesBlocks = (props: Props) => {
     rootMargin: '-150px 0px',
     triggerOnce: true,
   });
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "heroes");
+
 
   const filteredHeroes = useMemo(() => heroes
           .filter((hero: { group: string; }) => hero.group === group)
@@ -62,7 +69,9 @@ const HeroesBlocks = (props: Props) => {
               className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
               key={item.title}
               id={item.title}
-              title={item.title}
+
+              title={t(item.title)}
+
               imageSrc={item.srcImg}
               imageAlt={item.alt}
               backgroundColor={item.color}
