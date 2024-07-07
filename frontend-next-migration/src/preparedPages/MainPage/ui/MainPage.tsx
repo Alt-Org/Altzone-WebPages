@@ -11,6 +11,7 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import { ProjectDescription } from "./_components/sections/ProjectDescription";
 import { GetToKnowComics } from "./_components/sections/GetToKnowComics";
 import {VideoAndGalleries} from "./_components/sections/VideoAndGalleries";
+import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 
 export type Props = {
@@ -52,6 +53,7 @@ function MainPage ({ t }: Props)  {
 
             <HorizontalLines />
             <VideoAndGalleries
+                videoLink={AppExternalLinks.previewVideoYoutube}
                 title={t("videoAndGalleries-title")}
                 backgroundImageSrc={sameBg}
             />
