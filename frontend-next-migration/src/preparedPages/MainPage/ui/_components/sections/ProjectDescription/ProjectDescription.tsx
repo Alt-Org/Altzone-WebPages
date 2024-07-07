@@ -37,6 +37,7 @@ export const ProjectDescription = (props: descriptionProps) => {
         <section
             ref={ref}
             className= {classNames(cls.Section, mods, [className])}
+            id="description"
         >
             <Container className={classNames(cls.Container, mods)}>
             <h2 className={cls.titleQuestion}>{title}</h2>
