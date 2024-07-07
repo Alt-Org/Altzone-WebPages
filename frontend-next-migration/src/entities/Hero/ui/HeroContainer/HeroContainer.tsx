@@ -140,22 +140,16 @@ const HeroContainer = (props: Props) => {
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
           <div className={cls.container} ref={imageDistanceContainerRef}>
-            <div className={cls.contentWrapper}>
+            <div className={classNames(cls.contentWrapper, combinedModCss)}>
               <Image
                 src={bgPicture}
                 alt='Background Image'
                 quality={100}
-                className={cls.backgroundContent}
+                className={cls.contentBackground}
                 style={{ backgroundColor: heroColor }}
                 priority={true}
               />
               <div className={cls.content}>
-                <div className={classNames(cls.xLinkButton, combinedModCss)}>
-                  {' '}
-                  <Link href={xLink}>
-                    <h2>Back</h2>
-                  </Link>
-                </div>
                 <div
                   className={classNames(cls.heroName, combinedModCss)}
                   ref={heroNameRef}
@@ -193,7 +187,7 @@ const HeroContainer = (props: Props) => {
                   </Link>
                 </div>
                 <div className={cls.heroDescription} style={{ maxHeight }}>
-                  <p>{heroDescription}</p>
+                  <h3>{heroDescription}</h3>
                 </div>
               </div>
             </div>
