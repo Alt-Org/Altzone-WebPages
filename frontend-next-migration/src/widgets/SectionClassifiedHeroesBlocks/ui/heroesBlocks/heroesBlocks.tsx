@@ -1,5 +1,5 @@
 'use client';
-import { HeroCard, heroes } from '@/entities/Hero';
+import { HeroCard} from '@/entities/Hero';
 import cls from './heroesBlocks.module.scss';
 import { useInView } from 'react-intersection-observer';
 import {useMemo} from "react";
@@ -8,23 +8,29 @@ type Props = {
   backgroundImageSrc?: string;
   group: string;
   textBgColor?: any;
+  heroes: any;
 };
 
 const HeroesBlocks = (props: Props) => {
-  const { backgroundImageSrc, group, textBgColor } = props;
+  const {
+      heroes,
+      backgroundImageSrc,
+      group,
+      textBgColor
+  } = props;
 
   const { ref, inView } = useInView({
     rootMargin: '-150px 0px',
     triggerOnce: true,
   });
 
-    const filteredHeroes = useMemo(() => heroes
-            .filter((hero) => hero.group === group)
-            .slice(0, 2)
-        , [group]);
+  const filteredHeroes = useMemo(() => heroes
+          .filter((hero: { group: string; }) => hero.group === group)
+          .slice(0, 2)
+      , [group, heroes]);
 
 
-  return (
+    return (
     <div
       className={cls.SectionHeroes2}
       style={{
@@ -50,11 +56,13 @@ const HeroesBlocks = (props: Props) => {
         </div>
 
           {filteredHeroes
-          .map((item, index) => (
+              // @ts-ignore
+          .map((item) => (
             <HeroCard
               className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
               key={item.title}
               id={item.title}
+              title={item.title}
               imageSrc={item.srcImg}
               imageAlt={item.alt}
               backgroundColor={item.color}
