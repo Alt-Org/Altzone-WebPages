@@ -10,9 +10,14 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 import {NavElement} from "@/widgets/SectionPlayWithUs/ui/NavElement/NavElement";
 
 
+type WebGl = {
+    title: string;
+    link: string;
+}
+
 
 type Props = {
-    webGlButtonText: string;
+    webGl: WebGl;
 }
 
 
@@ -20,16 +25,18 @@ type Props = {
 const SectionPlayWithUs = (props: Props) => {
 
     const {
-        webGlButtonText,
+        webGl
     } = props;
 
     return (
-        <section
-            className={cls.SectionPlayWithUs}
-        >
+        <section className={cls.SectionPlayWithUs}>
+
+            <h3 className={cls.title}>
+                {"title"}
+            </h3>
+
 
             <div className={cls.Content}>
-
                 <div className={cls.ContentWithNav}>
                     <div className={cls.Buttons}>
                         <Button
@@ -39,8 +46,10 @@ const SectionPlayWithUs = (props: Props) => {
                             // size={ButtonSize.}
                             className={cls.BtnGame}
                         >
-                            <Link target={"_blank"} href={AppExternalLinks.webgl}>
-                                {webGlButtonText}
+                            {/*<Link target={"_blank"} href={AppExternalLinks.webgl}>*/}
+                            <Link target={"_blank"} href={webGl.link}>
+                                {webGl.title}
+                                {/*{webGlButtonText}*/}
                             </Link>
                         </Button>
 

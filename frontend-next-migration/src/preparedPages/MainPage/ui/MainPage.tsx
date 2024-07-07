@@ -33,8 +33,10 @@ function MainPage ({ t }: Props)  {
             <HorizontalLines />
 
             <SectionPlayWithUs
-                webGlButtonText={t('PlayOnline')}
-                backgroundImageSrc={sameBg}
+                webGl={{
+                    title: t('PlayOnline'),
+                    link: AppExternalLinks.webgl
+                }}
             />
 
             <HorizontalLines />
