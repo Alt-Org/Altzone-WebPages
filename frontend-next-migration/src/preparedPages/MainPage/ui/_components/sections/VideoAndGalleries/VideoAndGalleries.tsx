@@ -7,6 +7,8 @@ import {GalleryCategoriesWithModalSlider, useGalleryCategories} from "@/entities
 import {Container} from "@/shared/ui/Container";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import useSizes from "@/shared/lib/hooks/useSizes";
+import {useInView} from "react-intersection-observer";
+import {classNames} from "@/shared/lib/classNames/classNames";
 
 
 type Props = {
@@ -29,11 +31,23 @@ const VideoAndGalleries = (props: Props) => {
     }
         = useGalleryCategories("artGalleries");
 
+
+    const { ref, inView } = useInView({
+        rootMargin: '-150px 0px',
+        triggerOnce: true,
+    });
+
+    const mods = {
+        [cls.inView]: inView
+    }
+
+
     const {isMobileSize, isTabletSize} = useSizes();
 
     return (
         <section
-            className={cls.SectionVideoAndGalleries}
+            ref={ref}
+            className={classNames(cls.SectionVideoAndGalleries, mods)}
             style={{backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none'}}
         >
 

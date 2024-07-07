@@ -1,3 +1,14 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .SectionVideoAndGalleries {
   margin: 40px auto;
   display: flex;
@@ -10,6 +21,14 @@
   margin-top: 20px;
 
   gap: 3rem;
+
+  opacity: 0;
+
+
+  &.inView{
+    animation: fadeIn 2s ease-out;
+    opacity: 1;
+  }
 }
 
 .title {
