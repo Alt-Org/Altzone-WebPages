@@ -15,6 +15,14 @@
   "getToKnowComics": "Tutustu sarjakuvaan",
   "getToKnowComics-title": "Pelikeksijän tarina",
 
-  "videoAndGalleries-title": "Meidän taide:"
+  "videoAndGalleries-title": "Meidän taide:",
+
+
+  "playWithUs-title": "Meidän linkit:",
+  "playWithUs-OpenPositions-title": "Katso avoimet paikat",
+  "playWithUs-OpenPositions-body" : "Tule mukaan",
+  "playWithUs-BecomeATester-title" : "Tule testaajaksi",
+  "playWithUs-BecomeATester-body" : "Tee sovelluksesta parempi"
+
 
 }

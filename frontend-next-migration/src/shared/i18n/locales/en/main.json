@@ -15,6 +15,15 @@
   "getToKnowComics": "Explore comics",
   "getToKnowComics-title": "The game inventor's story",
 
- " videoAndGalleries-title": "Our art:"
+ " videoAndGalleries-title": "Our art:",
+
+
+  "playWithUs-title": "Our links:",
+  "playWithUs-OpenPositions-title": "See open positions",
+  "playWithUs-OpenPositions-body" : "Come with us",
+  "playWithUs-BecomeATester-title" : "Become a tester",
+  "playWithUs-BecomeATester-body" : "Make the app better"
+
+
 
 }

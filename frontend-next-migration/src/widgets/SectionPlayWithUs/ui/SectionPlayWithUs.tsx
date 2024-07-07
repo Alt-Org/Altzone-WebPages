@@ -12,39 +12,28 @@ type WebGl = {
     title: string;
     link: string;
 }
- const Navs: NavItem[] = [
-    {
-        title: 'seeOpenPositions',
-        body: 'comeWith',
-        link: AppExternalLinks.duunitori,
-        isExternal: true
-    },
-    {
-        title: 'becomeATester',
-        body: 'makeTheAppBetter',
-        link: AppExternalLinks.discord,
-        isExternal: true
-    },
-]
-
 
 type Props = {
+    title: string;
     webGl: WebGl;
     googlePLayLink: string;
+    belowNavs: NavItem[]
 }
 
 const SectionPlayWithUs = (props: Props) => {
 
     const {
+        title,
         webGl,
-        googlePLayLink= AppExternalLinks.downloadAndroid
+        googlePLayLink= AppExternalLinks.downloadAndroid,
+        belowNavs
     } = props;
 
     return (
         <section className={cls.SectionPlayWithUs}>
 
             <h3 className={cls.title}>
-                {"title"}
+                {title}
             </h3>
 
 
@@ -71,7 +60,7 @@ const SectionPlayWithUs = (props: Props) => {
 
 
                     <div className={classNames(cls.NavElements, {}, [cls.navElements])}>
-                        {Navs.map((item) => (
+                        {belowNavs.map((item) => (
                             <NavElement navElem={item} key={item.title}/>
                         ))}
                     </div>

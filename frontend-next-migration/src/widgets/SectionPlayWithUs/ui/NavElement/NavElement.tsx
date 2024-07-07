@@ -20,20 +20,17 @@ interface NavElementProps{
 }
 
 export const NavElement = memo(({navElem, className = ''}: NavElementProps)=>{
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t} =  useClientTranslation(lng, "description-with-nav");
 
     return (
         <div className={classNames(cls.NavElement, {}, [className])}>
 
             <AppLink to={navElem.link} isExternal={navElem.isExternal}>
                 {
-                    navElem?.title &&  <h3>{t(`${navElem.title}`)}</h3>
+                    navElem?.title &&  <h3>{navElem.title}</h3>
                 }
 
                 {
-                    navElem?.body &&  <p>{t(`${navElem.body}`)}</p>
+                    navElem?.body &&  <p>{navElem.body}</p>
                 }
 
             </AppLink>
