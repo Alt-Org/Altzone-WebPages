@@ -3,6 +3,7 @@ import { HeroCard, heroes } from '@/entities/Hero';
 import cls from './heroesBlocks.module.scss';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
+import {useMemo} from "react";
 
 type Props = {
   backgroundImageSrc?: string;
@@ -18,6 +19,12 @@ const HeroesBlocks = (props: Props) => {
     triggerOnce: true,
   });
 
+    const filteredHeroes = useMemo(() => heroes
+            .filter((hero) => hero.group === group)
+            .slice(0, 2)
+        , [group]);
+
+
   return (
     <div
       className={cls.SectionHeroes2}
@@ -32,31 +39,18 @@ const HeroesBlocks = (props: Props) => {
 
         <div className={cls.Group}
         >
-          {/*<Image*/}
-          {/*  src={textBgColor}*/}
-          {/*  alt='Background Text Color'*/}
-          {/*  className={cls.TextBgImage}*/}
-          {/*/>*/}
-            <h1
+            <h3
                 className={cls.Title}
                 style={{backgroundImage: `url(${textBgColor.src})`}}
             >
               <span>
-                  {/*PEILAAJAT*/}
-                  {/*<wbr/> // <wbr/>*/}
-                  {/*PROJEKTIO*/}
-
                   {group}
-
               </span>
-
-            </h1>
+            </h3>
 
         </div>
 
-          {heroes
-              .filter((hero) => hero.group === group)
-          .slice(0, 2)
+          {filteredHeroes
           .map((item, index) => (
             <HeroCard
               className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
