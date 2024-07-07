@@ -1,7 +1,6 @@
 import cls from "./page.module.scss"
 
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-import { SectionVideoAndGalleries } from "@/widgets/SectionVideoAndGalleries";
 
 import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
 import { SectionClassifiedHeroesBlocks } from "@/widgets/SectionClassifiedHeroesBlocks";
@@ -11,6 +10,7 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 import { ProjectDescription } from "./_components/sections/ProjectDescription";
 import { GetToKnowComics } from "./_components/sections/GetToKnowComics";
+import {VideoAndGalleries} from "./_components/sections/VideoAndGalleries";
 
 
 export type Props = {
@@ -51,7 +51,8 @@ function MainPage ({ t }: Props)  {
 
 
             <HorizontalLines />
-            <SectionVideoAndGalleries
+            <VideoAndGalleries
+                title={"Our Art"}
                 backgroundImageSrc={sameBg}
             />
             <HorizontalLines />
