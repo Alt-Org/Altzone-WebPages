@@ -37,6 +37,7 @@ function MainPage ({ t }: Props)  {
                     title: t('PlayOnline'),
                     link: AppExternalLinks.webgl
                 }}
+                googlePLayLink={AppExternalLinks.downloadAndroid}
             />
 
             <HorizontalLines />
