@@ -44,17 +44,6 @@ const HeroContainer = (props: Props) => {
   } = useImageDistance();
 
   const heroNameRef = useRef<HTMLDivElement>(null);
-  const xLinkAdjustmentRef = useRef<HTMLDivElement>(null); // New reference for font size adjustment
-
-  const adjustHeroNameFontSize = (
-    element: HTMLElement,
-    container: HTMLElement,
-  ) => {
-    const containerWidth = container.clientWidth;
-    const maxFontSize = containerWidth * 0.05;
-    const minFontSize = 10;
-    element.style.fontSize = `${Math.max(minFontSize, maxFontSize)}px`;
-  };
 
   useKeyboardNavigation({
     leftArrowLink,
@@ -144,9 +133,7 @@ const HeroContainer = (props: Props) => {
                 priority={true}
               />
               <div className={cls.content}>
-                <div
-                  className={classNames(cls.xLinkButton, combinedModCss)}
-                  ref={xLinkAdjustmentRef}>
+                <div className={classNames(cls.xLinkButton, combinedModCss)}>
                   {' '}
                   <Link href={xLink}>
                     <h1>X</h1>
