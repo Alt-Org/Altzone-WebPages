@@ -23,7 +23,7 @@
   width: 100%;
   min-height: 100%;
   object-fit: cover;
-  border: 2px solid rgb(47, 171, 1);
+  border: 2px solid rgb(255, 255, 255);
   border-radius: 10px;
   z-index: -1;
   opacity: 0.95;
@@ -99,6 +99,12 @@
   z-index: 1;
 }
 
+.containerWrapper.isMobile {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-top: 8rem;
+}
+
 .contentWrapper {
   display: flex;
   border-radius: 10px;
@@ -106,12 +112,6 @@
   height: 100%;
   z-index: 1;
   aspect-ratio: 13 / 16;
-}
-
-.containerWrapper.isMobile {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  margin-top: 10rem;
 }
 
 .content {
@@ -126,7 +126,7 @@
   justify-content: center;
   border-radius: 10px;
   margin-bottom: 1rem;
-  border: 2px solid rgb(47, 171, 1);
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .heroImgWrapper.isMobile {
@@ -143,6 +143,17 @@
 
 .innerArrow.isMobile {
   display: block;
+}
+
+.xLinkButton {
+  position: absolute;
+  top: -4rem;
+  right: -1rem;
+  z-index: 2;
+  cursor: pointer;
+  user-select: none;
+  font-size: large;
+  font-weight: bolder;
 }
 
 .heroImg {
@@ -164,9 +175,8 @@
 }
 
 .heroName {
-  border: 2px solid rgb(47, 171, 1);
   text-align: center;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+  margin-bottom: 2rem;
+  border-top: 6px solid rgb(255, 255, 255);
+  border-bottom: 6px solid rgb(255, 255, 255);
 }

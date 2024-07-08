@@ -9,7 +9,6 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useImageDistance from './useImageDistance';
 import useKeyboardNavigation from './useKeyboardNavigation';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import useFontSizeAdjuster from '@/shared/lib/hooks/useFontSizeAdjuster';
 import { useRef } from 'react';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 
@@ -45,6 +44,7 @@ const HeroContainer = (props: Props) => {
   } = useImageDistance();
 
   const heroNameRef = useRef<HTMLDivElement>(null);
+  const xLinkAdjustmentRef = useRef<HTMLDivElement>(null); // New reference for font size adjustment
 
   const adjustHeroNameFontSize = (
     element: HTMLElement,
@@ -55,12 +55,6 @@ const HeroContainer = (props: Props) => {
     const minFontSize = 10;
     element.style.fontSize = `${Math.max(minFontSize, maxFontSize)}px`;
   };
-
-  useFontSizeAdjuster(
-    [heroNameRef],
-    imageDistanceContainerRef,
-    adjustHeroNameFontSize,
-  );
 
   useKeyboardNavigation({
     leftArrowLink,
@@ -151,10 +145,17 @@ const HeroContainer = (props: Props) => {
               />
               <div className={cls.content}>
                 <div
+                  className={classNames(cls.xLinkButton, combinedModCss)}
+                  ref={xLinkAdjustmentRef}>
+                  {' '}
+                  <Link href={xLink}>
+                    <h1>X</h1>
+                  </Link>
+                </div>
+                <div
                   className={classNames(cls.heroName, combinedModCss)}
-                  ref={heroNameRef}
-                  style={{ backgroundColor: heroColor, color: 'black' }}>
-                  <h2>{heroName}</h2>
+                  ref={heroNameRef}>
+                  <h1>{heroName}</h1>
                 </div>
                 <div
                   className={classNames(cls.heroImgWrapper, combinedModCss)}
