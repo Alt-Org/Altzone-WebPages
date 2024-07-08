@@ -6,6 +6,30 @@
   justify-content: center;
   min-height: 100vh;
   position: relative;
+  gap:20px;
+}
+
+.title {
+  text-align: center;
+  font-size: var(--font-line-xxxl);
+
+  //todo add animation as well
+  //opacity: 0;
+  //transform: translateX(-100%);
+  //transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+
+  //&.inView {
+  //  opacity: 1;
+  //  transform: translateX(0);
+  //}
+
+  @media screen and (max-width: 600px) {
+    font-size: var(--font-line-xxl);
+  }
+
+  @media screen and (max-width: 450px) {
+    font-size: var(--font-line-xl);
+  }
 }
 
 .NavElements {
@@ -15,6 +39,9 @@
   justify-content: center;
 
 }
+
+
+
 
 @media (max-width: 1150px) {
   .NavElements {
