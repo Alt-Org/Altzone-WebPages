@@ -145,7 +145,7 @@
 
 .innerArrow {
   align-self: center;
-  width: 50px;
+  width: 40px;
   display: none;
   user-select: none;
 }
@@ -174,10 +174,12 @@
   width: 50%;
   user-select: none;
   pointer-events: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .heroImg.isMobile {
-  transform: scale(110%);
+  transform: scale(120%);
 }
 
 .heroDescription {
