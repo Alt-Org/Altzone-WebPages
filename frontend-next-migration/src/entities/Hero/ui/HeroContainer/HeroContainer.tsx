@@ -101,7 +101,7 @@ const HeroContainer = (props: Props) => {
           priority={true}
         />
       </div>
-      <div className={cls.componentWrapper}>
+      <div className={classNames(cls.componentWrapper, combinedModCss)}>
         <Link
           className={classNames(cls.outerLeftArrow, combinedModCss, [
             cls.outerArrow,
