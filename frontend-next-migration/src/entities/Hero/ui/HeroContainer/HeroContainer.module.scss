@@ -48,19 +48,27 @@
 }
 
 .componentWrapper {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 20%;
+  margin-bottom: 5%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
 }
+.componentWrapper.isTablet {
+  margin-top: 30%;
+  margin-bottom: 20%;
+}
 
 .outerArrow {
-  max-width: 150px;
   user-select: none;
+}
+.outerLeftArrow {
+  transform: translateX(5rem); /* Move the left arrow 5rem to the right */
+}
+.outerRightArrow {
+  padding-right: 5rem;
+  padding-left: 1rem;
 }
 
 .outerArrow.isMobile {
@@ -71,17 +79,17 @@
   user-select: none;
   pointer-events: none;
   position: relative;
-  max-width: 50.875em;
-  width: 40.1666666667em;
-  height: 42.6666666667em;
+  max-width: 35em;
+  width: 35em;
+  height: 30em;
   z-index: 1;
+  transform: translateX(5rem);
 
   .heroImgSide {
     position: absolute;
-    top: -1.3333333333em;
-    left: 10%;
-    width: 40.1666666667em;
-    height: 43.2916666667em;
+    top: -12em;
+    width: 40em;
+    height: 50em;
     z-index: 2;
   }
 }
