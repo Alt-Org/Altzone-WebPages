@@ -131,7 +131,8 @@
 
 .heroImgWrapper.isMobile {
   justify-content: space-between;
-  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .innerArrow {
@@ -157,13 +158,18 @@
 }
 
 .heroImg {
+  width: 95%;
+  user-select: none;
+  pointer-events: none;
+}
+.heroImg.isMobile {
   width: 50%;
   user-select: none;
   pointer-events: none;
 }
 
 .heroImg.isMobile {
-  transform: scale(130%);
+  transform: scale(110%);
 }
 
 .heroDescription {
