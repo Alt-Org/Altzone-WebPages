@@ -108,9 +108,7 @@
 }
 
 .containerWrapper.isMobile {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  margin-top: 8rem;
+  margin-top: 5rem;
 }
 
 .contentWrapper {
@@ -156,13 +154,18 @@
 
 .xLinkButton {
   position: absolute;
-  top: -4rem;
+  top: -3rem;
   right: -1rem;
   z-index: 2;
   cursor: pointer;
   user-select: none;
   font-size: large;
   font-weight: bolder;
+}
+
+.xLinkButton.isMobile {
+  top: -2.5rem;
+  right: 1rem;
 }
 
 .heroImg {
