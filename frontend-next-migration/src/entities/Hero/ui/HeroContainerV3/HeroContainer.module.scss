@@ -152,27 +152,6 @@
   display: block;
 }
 
-.xLinkButton {
-  position: absolute;
-  top: -3rem;
-  right: -1rem;
-  z-index: 2;
-  cursor: pointer;
-  user-select: none;
-  font-size: large;
-  font-weight: bolder;
-}
-
-.xLinkButton.isMobile {
-  top: -2.5rem;
-  right: 1rem;
-}
-
-.xLinkButton.isWidescreen {
-  top: -5rem;
-  right: -3rem;
-}
-
 .heroImg {
   width: 95%;
   user-select: none;
@@ -217,4 +196,29 @@
 }
 .isDesktop {
   font-size: 0.9rem;
+}
+
+.xLinkButton {
+  position: absolute;
+  top: -3rem;
+  right: -1rem;
+  z-index: 2;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+}
+
+.xLinkButton.isMobile {
+  top: -5rem;
+  right: 1rem;
+}
+
+.xLinkButton.isTablet {
+  top: -4rem;
+  right: -2rem;
+}
+
+.xLinkButton.isWidescreen {
+  top: -5rem;
+  right: -3rem;
 }
