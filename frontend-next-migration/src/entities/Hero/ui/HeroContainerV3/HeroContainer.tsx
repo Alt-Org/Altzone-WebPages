@@ -6,7 +6,6 @@ import Link from 'next/link';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import useImageDistance from './useImageDistance';
 import useKeyboardNavigation from './useKeyboardNavigation';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useRef } from 'react';
@@ -35,14 +34,6 @@ const HeroContainer = (props: Props) => {
     heroName,
   } = props;
 
-  const {
-    containerRef: imageDistanceContainerRef,
-    imageRef,
-    distanceToBottom,
-    handleImageLoad,
-    imagesLoaded,
-  } = useImageDistance();
-
   const heroNameRef = useRef<HTMLDivElement>(null);
 
   useKeyboardNavigation({
@@ -53,34 +44,6 @@ const HeroContainer = (props: Props) => {
 
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
-
-  const getAdjustedMaxHeight = (
-    distanceToBottom: number,
-    isMobileSize: boolean,
-    isTabletSize: boolean,
-    isDesktopSize: boolean,
-    isWidescreenSize: boolean,
-  ) => {
-    if (isMobileSize) {
-      return distanceToBottom - 30;
-    } else if (isTabletSize) {
-      return distanceToBottom - 40;
-    } else if (isDesktopSize) {
-      return distanceToBottom - 50;
-    } else if (isWidescreenSize) {
-      return distanceToBottom - 60;
-    } else {
-      return distanceToBottom - 20;
-    }
-  };
-
-  const maxHeight = getAdjustedMaxHeight(
-    distanceToBottom,
-    isMobileSize,
-    isTabletSize,
-    isDesktopSize,
-    isWidescreenSize,
-  );
 
   const combinedModCss: Mods = {
     [cls.isMobile]: isMobileSize,
@@ -115,14 +78,12 @@ const HeroContainer = (props: Props) => {
             className={cls.heroImgSide}
             src={heroImg}
             alt='hero'
-            ref={imageRef}
-            onLoad={handleImageLoad}
             priority={true}
           />
         </div>
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
-          <div className={cls.container} ref={imageDistanceContainerRef}>
+          <div className={cls.container}>
             <div className={classNames(cls.contentWrapper, combinedModCss)}>
               <Image
                 src={bgPicture}
@@ -161,8 +122,6 @@ const HeroContainer = (props: Props) => {
                     alt='hero'
                     width={500}
                     height={500}
-                    ref={imageRef}
-                    onLoad={handleImageLoad}
                     priority={true}
                   />
 
@@ -174,7 +133,7 @@ const HeroContainer = (props: Props) => {
                     <Image src={rightArrow} alt='rightArrow' />
                   </Link>
                 </div>
-                <div className={cls.heroDescription} style={{ maxHeight }}>
+                <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
               </div>

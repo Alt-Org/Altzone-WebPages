@@ -170,11 +170,12 @@
 }
 
 .heroDescription {
+  @include ScrollbarWithArrowButtons;
   padding: 1rem;
   overflow-y: auto;
-  @include ScrollbarWithArrowButtons;
   font-size: 1.3rem;
   border-radius: 10px;
+  max-height: 35%;
 }
 
 .heroName {
@@ -199,6 +200,7 @@
 }
 
 .xLinkButton {
+  @include link-scale-effect;
   position: absolute;
   top: -3rem;
   right: -1rem;
@@ -206,6 +208,10 @@
   cursor: pointer;
   user-select: none;
   font-size: 1rem;
+
+  &:hover h1 {
+    color: orange;
+  }
 }
 
 .xLinkButton.isMobile {
