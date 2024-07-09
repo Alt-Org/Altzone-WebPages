@@ -1,5 +1,5 @@
 import navLogo from "@/shared/assets/images/altLogo.png";
-import {ItemType, NavbarMenu} from "../types/types";
+import {ItemType, NavbarMenu} from "../types";
 
 export const navbarMenuDesktopMock: NavbarMenu = ([
     {
