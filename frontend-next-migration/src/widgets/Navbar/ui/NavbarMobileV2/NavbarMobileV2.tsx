@@ -5,7 +5,7 @@ import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import cls from "./NavbarMobileV2.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
-import { ItemType, NavbarBuild } from "../../model/types/types";
+import {ItemType, NavbarBuild, NavBarType} from "../../model/types";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
@@ -14,6 +14,7 @@ import {FixedButton} from "../FixedButton/FixedButton";
 
 import {useFixed} from "../../model/FixedProvider";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
+import {defineNs} from "../../model/defineNs";
 
 interface NavbarTouchProps {
     overlaid?: boolean;
@@ -22,6 +23,7 @@ interface NavbarTouchProps {
     navbarBuild?: NavbarBuild;
     side?: 'left' | 'right';
     className?: string;
+    navBarType?: NavBarType;
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
@@ -31,13 +33,18 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         marginTop,
         navbarBuild,
         side = 'left',
-        className = ''
+        className = '',
+        navBarType = "Default"
     } = props;
 
 
     const params = useParams();
     const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "navbar");
+
+    const ns = defineNs(navBarType)
+
+    const { t, i18n } = useClientTranslation(lng, ns);
+
     const { canI } = useUserPermissions();
     const [logout] = useLogoutMutation();
 
@@ -64,6 +71,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             })
             .filter(item => item !== null) as ISidebarItem[];
     }, [navbarBuild, t]);
+
+    console.log(sidebarItemsList);
 
 
     const style: CSSProperties = marginTop

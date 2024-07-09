@@ -77,3 +77,5 @@ export type NavbarBuild = {
     menu: NavbarMenu;
     namedMenu: NamedMenu
 }
+
+export type NavBarType = "Default" | "Clan" | "TeachingPackage" | "GameArt";
