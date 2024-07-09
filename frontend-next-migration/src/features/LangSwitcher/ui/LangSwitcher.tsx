@@ -43,7 +43,7 @@ export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
             >
                 <option value="fi"> {t('finnish')}</option>
                 <option value="en">{t('english')}</option>
-                <option value="ru">{t('russian')}</option>
+                {/*<option value="ru">{t('russian')}</option>*/}
             </select>
         </>
     );

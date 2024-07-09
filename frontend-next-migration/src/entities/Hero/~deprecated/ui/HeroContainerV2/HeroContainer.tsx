@@ -1,6 +1,9 @@
 'use client';
+import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import Image from 'next/image';
-import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.svg';
+import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.png';
+import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
+
 import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
 import cls from './HeroContainer.module.scss';
 import Link from 'next/link';
@@ -23,9 +26,7 @@ type Props = {
   rightArrowLink: string;
   xLink: string;
 };
-/**
- * @deprecated
- **/
+
 const HeroContainer = (props: Props) => {
   const {
     heroImg,
@@ -111,23 +112,23 @@ const HeroContainer = (props: Props) => {
 
   return (
     <div className={cls.PageWrapper}>
-      <div className={cls.backgroundImageWrapper}>
-        <Image
-          src={groupBg}
-          alt='Background Image'
-          quality={100}
-          className={cls.backgroundImage}
-          style={{ backgroundColor: heroColor }}
-          priority={true}
-        />
-      </div>
       <div className={cls.componentWrapper}>
+        <div className={cls.backgroundImageWrapper}>
+          <Image
+            src={groupBg}
+            alt='Background Image'
+            quality={100}
+            className={cls.backgroundImage}
+            style={{ backgroundColor: heroColor }}
+            priority={true}
+          />
+        </div>
         <Link
           className={classNames(cls.outerLeftArrow, combinedModCss, [
             cls.outerArrow,
           ])}
           href={leftArrowLink}>
-          <Image src={leftArrow} alt='leftArrow' />
+          <Image src={leftArrow} alt='leftArrow' priority={true} />
         </Link>
 
         <div className={classNames(cls.heroImgSideWrapper, combinedModCss)}>
@@ -217,4 +218,9 @@ const HeroContainer = (props: Props) => {
   );
 };
 
-export default HeroContainer;
+export default withBackgroundImage({
+  alt: 'Teaching Package bg image',
+  imagePath: bgPicture as unknown as string,
+
+  // @ts-ignore
+})(HeroContainer);
