@@ -28,6 +28,15 @@ const imageSrcs = [
   '/images/teachingPackage/prg.png',
 ];
 
+const logoSrc = '/images/teachingPackage/teachingPackageLogo.png';
+
 export const TeachingSections = i18nKeyPrefixes.map((key, index) =>
-  createSection(key, index, imageSrcs[index], `${key}-image`),
+  createSection(
+    key,
+    index,
+    imageSrcs[index],
+    `${key}-image`,
+    logoSrc,
+    `${key}-logo`,
+  ),
 );

@@ -21,7 +21,6 @@ const imageSrcs = [
 ];
 
 const logoSrc = '/images/gameArt/gameArtLogo.webp';
-console.log('sidebarLogo:', logoSrc);
 
 // Create ArtGameSections
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
