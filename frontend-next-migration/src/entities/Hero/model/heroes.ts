@@ -18,6 +18,15 @@ import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hoda
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 
+import darkblue from '@/shared/assets/images/heros/textBgColors/darkBlue.webp';
+import green from '@/shared/assets/images/heros/textBgColors/green.webp';
+import lightblue from '@/shared/assets/images/heros/textBgColors/lightBlue.webp';
+import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
+import pink from '@/shared/assets/images/heros/textBgColors/pink.webp';
+import purple from '@/shared/assets/images/heros/textBgColors/purple.webp';
+import red from '@/shared/assets/images/heros/textBgColors/red.webp';
+import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
+
 const Heroes = [
   {
     id: 0,
@@ -27,7 +36,8 @@ const Heroes = [
     title: 'green-haired',
     borderColor: '#41F50C',
     description: 'greenHairedDescription',
-    group: 'TORJUJAT // RETROFLEKTIO',
+    group: 'TORJUJAT',
+    groupTextBg: red,
     color: '#e20505',
   },
   {
@@ -38,7 +48,8 @@ const Heroes = [
     title: 'hannu-hodari',
     borderColor: '#41F50C',
     description: 'hannuHodariDescription',
-    group: 'TORJUJAT // RETROFLEKTIO',
+    group: 'TORJUJAT',
+    groupTextBg: red,
     color: '#e20505',
   },
   {
@@ -49,7 +60,8 @@ const Heroes = [
     title: 'purple-girls',
     borderColor: '#41F50C',
     description: 'purpleGirlsDescription',
-    group: 'SULAUTUJAT // KONFLUENSSI',
+    group: 'SULAUTUJAT',
+    groupTextBg: purple,
     color: '#910494',
   },
   {
@@ -60,7 +72,9 @@ const Heroes = [
     title: 'einstein',
     borderColor: '#41F50C',
     description: 'einsteinDescription',
-    group: 'ÄLYLLISTÄJÄT // EGOTISMI',
+    group: 'ÄLYLLISTÄJÄT',
+    groupTextBg: darkblue,
+
     color: '#330393',
   },
   {
@@ -71,7 +85,8 @@ const Heroes = [
     title: 'graffitiGaya',
     borderColor: '#41F50C',
     description: 'graffitiGayaDescription',
-    group: 'PEILAAJAT // PROJEKTIO',
+    group: 'PEILAAJAT',
+    groupTextBg: yellow,
     color: '#feed01',
   },
   {
@@ -82,7 +97,8 @@ const Heroes = [
     title: 'pirate',
     borderColor: '#41F50C',
     description: 'pirateDescription',
-    group: 'TORJUJAT // RETROFLEKTIO',
+    group: 'TORJUJAT',
+    groupTextBg: red,
     color: '#e20505',
   },
 ] as const;
