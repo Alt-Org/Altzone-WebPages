@@ -1,0 +1,82 @@
+'use client';
+import React, { useState } from 'react';
+import cls from './WikiContentWithSideBar.module.scss';
+import Image from 'next/image';
+import NavbarSide from '@/widgets/NavbarSide/ui/NavbarSide';
+import useSizes from '@/shared/lib/hooks/useSizes';
+import { Mods } from '@/shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ScrollTop } from '@/features/ScrollTop';
+
+interface Section {
+  id: string;
+  label: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+}
+
+export type Props = {
+  sections: Section[];
+};
+
+const WikiContentWithSideBar = (props: Props) => {
+  const { sections = [] } = props;
+  const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
+    useSizes();
+  console.log(sections);
+
+  const combinedModCss: Mods = {
+    [cls.isMobile]: isMobileSize,
+    [cls.isTablet]: isTabletSize,
+    [cls.isDesktop]: isDesktopSize,
+    [cls.isWidescreen]: isWidescreenSize,
+  };
+
+  return (
+    <div className={classNames(cls.pageContainer, combinedModCss)}>
+      <div className={classNames(cls.mainContent, combinedModCss)}>
+        {!isMobileSize && (
+          <div className={classNames(cls.navbarSide, combinedModCss)}>
+            <NavbarSide sections={sections} />
+          </div>
+        )}
+        <div className={classNames(cls.content, combinedModCss)} id='content'>
+          {sections.length > 0 ? (
+            sections.map((section) => {
+              const [imageError, setImageError] = useState(false);
+
+              return (
+                <div id={section.id} key={section.id} className={cls.section}>
+                  <h2>{section.label}</h2>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: section.description,
+                    }}></p>
+                  {section.image && !imageError && (
+                    <div
+                      className={classNames(cls.contentImage, combinedModCss)}>
+                      <Image
+                        src={section.image}
+                        className={cls.sectionImage}
+                        alt={section.imageAlt}
+                        height={600}
+                        width={1200}
+                        onError={() => setImageError(true)}
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <p>No sections available.</p>
+          )}
+        </div>
+      </div>
+      <div>{isMobileSize && <ScrollTop />}</div>
+    </div>
+  );
+};
+
+export default WikiContentWithSideBar;
