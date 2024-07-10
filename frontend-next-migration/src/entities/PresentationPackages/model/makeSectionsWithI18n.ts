@@ -20,6 +20,8 @@ const makeSectionsWithI18n = (
       description: t(section.description),
       image: section.image,
       imageAlt: t(section.imageAlt),
+      sidebarLogo: section.sidebarLogo,
+      sidebarLogoAlt: t(section.sidebarLogoAlt),
     }));
   };
 };
