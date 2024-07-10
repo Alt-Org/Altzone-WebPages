@@ -1,7 +1,7 @@
 'use client';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import Image from 'next/image';
-import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.png';
+import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.svg';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 
 import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
@@ -55,7 +55,7 @@ const HeroContainer = (props: Props) => {
     container: HTMLElement,
   ) => {
     const containerWidth = container.clientWidth;
-    const maxFontSize = containerWidth * 0.04;
+    const maxFontSize = containerWidth * 0.026;
     const minFontSize = 7;
     element.style.fontSize = `${Math.max(minFontSize, maxFontSize)}px`;
   };
@@ -119,7 +119,6 @@ const HeroContainer = (props: Props) => {
             alt='Background Image'
             quality={100}
             className={cls.backgroundImage}
-            style={{ backgroundColor: heroColor }}
             priority={true}
           />
         </div>
