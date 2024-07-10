@@ -18,13 +18,14 @@ interface Section {
 
 export type Props = {
   sections: Section[];
+  sidebarLogo: string; // Lisää tämä rivi
 };
 
 const WikiContentWithSideBar = (props: Props) => {
-  const { sections = [] } = props;
+  const { sections = [], sidebarLogo } = props;
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
-  console.log(sections);
+  const [sidebarLogoError, setSidebarLogoError] = useState(false);
 
   const combinedModCss: Mods = {
     [cls.isMobile]: isMobileSize,
@@ -38,6 +39,17 @@ const WikiContentWithSideBar = (props: Props) => {
       <div className={classNames(cls.mainContent, combinedModCss)}>
         {!isMobileSize && (
           <div className={classNames(cls.navbarSide, combinedModCss)}>
+            {sidebarLogo && !sidebarLogoError && (
+              <div className={classNames(cls.sidebarLogo, combinedModCss)}>
+                <Image
+                  src={sidebarLogo}
+                  alt='Sidebar Logo'
+                  height={100}
+                  width={100}
+                  onError={() => setSidebarLogoError(true)}
+                />
+              </div>
+            )}
             <NavbarSide sections={sections} />
           </div>
         )}
@@ -60,8 +72,8 @@ const WikiContentWithSideBar = (props: Props) => {
                         src={section.image}
                         className={cls.sectionImage}
                         alt={section.imageAlt}
-                        height={600}
-                        width={1200}
+                        height={300}
+                        width={600}
                         onError={() => setImageError(true)}
                       />
                     </div>
@@ -74,7 +86,7 @@ const WikiContentWithSideBar = (props: Props) => {
           )}
         </div>
       </div>
-      <div>{isMobileSize && <ScrollTop />}</div>
+      {(isMobileSize || isTabletSize) && <ScrollTop />}
     </div>
   );
 };
