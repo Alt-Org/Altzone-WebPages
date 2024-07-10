@@ -20,6 +20,7 @@ interface Section {
   image: string;
   imageAlt: string;
   sidebarLogo: string;
+  sidebarLogoAlt: string;
 }
 
 export type Props = {
@@ -41,7 +42,7 @@ const GameArtPackagePage = (props: Props) => {
   return (
     <div className={classNames(cls.pageContainer, combinedModCss)}>
       <Navbar overlaid={true} navBarType={'GameArt'} />
-      <WikiContentWithSidebar sections={sections} sidebarLogo={''} />
+      <WikiContentWithSidebar sections={sections} />
       <div>
         <FeedbackSideButton />
         <HorizontalLines />
@@ -52,7 +53,7 @@ const GameArtPackagePage = (props: Props) => {
 };
 
 export default withBackgroundImage({
-  alt: 'Teaching Package bg image',
+  alt: 'Tile bg image',
   imagePath: bgPicture as unknown as string,
 
   // @ts-ignore
