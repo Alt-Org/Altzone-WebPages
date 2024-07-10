@@ -14,18 +14,22 @@ interface Section {
   description: string;
   image: string;
   imageAlt: string;
+  sidebarLogo: string;
+  sidebarLogoAlt: string;
 }
 
 export type Props = {
   sections: Section[];
-  sidebarLogo: string; // Lisää tämä rivi
 };
 
 const WikiContentWithSideBar = (props: Props) => {
-  const { sections = [], sidebarLogo } = props;
+  const { sections = [] } = props;
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
   const [sidebarLogoError, setSidebarLogoError] = useState(false);
+  const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>(
+    {},
+  );
 
   const combinedModCss: Mods = {
     [cls.isMobile]: isMobileSize,
@@ -34,53 +38,56 @@ const WikiContentWithSideBar = (props: Props) => {
     [cls.isWidescreen]: isWidescreenSize,
   };
 
+  const handleImageError = (id: string) => {
+    setImageErrors((prevErrors) => ({ ...prevErrors, [id]: true }));
+  };
+
+  const sidebarLogo = sections.length > 0 ? sections[0].sidebarLogo : '';
+  const sidebarLogoAlt = sections.length > 0 ? sections[0].sidebarLogoAlt : '';
+
   return (
     <div className={classNames(cls.pageContainer, combinedModCss)}>
       <div className={classNames(cls.mainContent, combinedModCss)}>
         {!isMobileSize && (
           <div className={classNames(cls.navbarSide, combinedModCss)}>
-            {sidebarLogo && !sidebarLogoError && (
-              <div className={classNames(cls.sidebarLogo, combinedModCss)}>
+            <div className={classNames(cls.sidebarLogo, combinedModCss)}>
+              {!sidebarLogoError ? (
                 <Image
                   src={sidebarLogo}
-                  alt='Sidebar Logo'
+                  className={cls.sectionLogo}
+                  alt={sidebarLogoAlt}
                   height={100}
                   width={100}
                   onError={() => setSidebarLogoError(true)}
                 />
-              </div>
-            )}
+              ) : (
+                <p>Logo not available</p>
+              )}
+            </div>
             <NavbarSide sections={sections} />
           </div>
         )}
         <div className={classNames(cls.content, combinedModCss)} id='content'>
           {sections.length > 0 ? (
-            sections.map((section) => {
-              const [imageError, setImageError] = useState(false);
-
-              return (
-                <div id={section.id} key={section.id} className={cls.section}>
-                  <h2>{section.label}</h2>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: section.description,
-                    }}></p>
-                  {section.image && !imageError && (
-                    <div
-                      className={classNames(cls.contentImage, combinedModCss)}>
-                      <Image
-                        src={section.image}
-                        className={cls.sectionImage}
-                        alt={section.imageAlt}
-                        height={300}
-                        width={600}
-                        onError={() => setImageError(true)}
-                      />
-                    </div>
-                  )}
-                </div>
-              );
-            })
+            sections.map((section) => (
+              <div id={section.id} key={section.id} className={cls.section}>
+                <h2>{section.label}</h2>
+                <p
+                  dangerouslySetInnerHTML={{ __html: section.description }}></p>
+                {section.image && !imageErrors[section.id] && (
+                  <div className={classNames(cls.contentImage, combinedModCss)}>
+                    <Image
+                      src={section.image}
+                      className={cls.sectionImage}
+                      alt={section.imageAlt}
+                      height={600}
+                      width={600}
+                      onError={() => handleImageError(section.id)}
+                    />
+                  </div>
+                )}
+              </div>
+            ))
           ) : (
             <p>No sections available.</p>
           )}

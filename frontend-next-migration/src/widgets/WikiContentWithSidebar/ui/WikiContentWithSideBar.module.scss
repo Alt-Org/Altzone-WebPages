@@ -32,6 +32,19 @@
     display: none;
   }
 
+  .sidebarLogo {
+    position: inherit;
+    display: flex;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   ul {
     list-style: none;
   }
