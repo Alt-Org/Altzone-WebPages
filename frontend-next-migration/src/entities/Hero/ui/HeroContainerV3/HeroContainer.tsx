@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
 import cls from './HeroContainer.module.scss';
 import Link from 'next/link';
@@ -20,6 +21,8 @@ type Props = {
   leftArrowLink: string;
   rightArrowLink: string;
   xLink: string;
+  group: string;
+  groupTextBg: string;
 };
 
 const HeroContainer = (props: Props) => {
@@ -32,9 +35,11 @@ const HeroContainer = (props: Props) => {
     rightArrowLink,
     xLink,
     heroName,
+    group,
+    groupTextBg,
   } = props;
 
-  const heroNameRef = useRef<HTMLDivElement>(null);
+  const groupRef = useRef<HTMLDivElement>(null);
 
   useKeyboardNavigation({
     leftArrowLink,
@@ -60,7 +65,6 @@ const HeroContainer = (props: Props) => {
           alt='Background Image'
           quality={100}
           className={cls.backgroundImage}
-          style={{ backgroundColor: heroColor }}
           priority={true}
         />
       </div>
@@ -84,16 +88,29 @@ const HeroContainer = (props: Props) => {
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
           <div className={cls.container}>
+            <div className={classNames(cls.groupText, combinedModCss)}>
+              <div
+                className={classNames(cls.groupName, combinedModCss)}
+                style={{ color: heroColor }}>
+                <h1>{group}</h1>
+                <Image
+                  src={groupTextBg}
+                  alt='groupTextBg'
+                  quality={100}
+                  className={cls.groupTextBg}
+                  priority={true}
+                />
+              </div>
+            </div>
             <div className={classNames(cls.contentWrapper, combinedModCss)}>
-              <Image
-                src={bgPicture}
-                alt='Background Image'
-                quality={100}
-                className={cls.contentBackground}
-                style={{ backgroundColor: heroColor }}
-                priority={true}
-              />
               <div className={cls.content}>
+                <Image
+                  src={bgPicture}
+                  alt='Background Image'
+                  quality={100}
+                  className={cls.contentBackground}
+                  priority={true}
+                />
                 <div className={classNames(cls.xLinkButton, combinedModCss)}>
                   {' '}
                   <Link href={xLink}>
@@ -102,7 +119,7 @@ const HeroContainer = (props: Props) => {
                 </div>
                 <div
                   className={classNames(cls.heroName, combinedModCss)}
-                  ref={heroNameRef}>
+                  style={{ color: heroColor }}>
                   <h1>{heroName}</h1>
                 </div>
                 <div
@@ -153,4 +170,9 @@ const HeroContainer = (props: Props) => {
   );
 };
 
-export default HeroContainer;
+export default withBackgroundImage({
+  alt: 'Teaching Package bg image',
+  imagePath: bgPicture as unknown as string,
+
+  // @ts-ignore
+})(HeroContainer);

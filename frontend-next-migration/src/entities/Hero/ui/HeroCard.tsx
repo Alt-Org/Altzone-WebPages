@@ -16,6 +16,13 @@ type Props = {
   imageAlt: string;
   className?: string;
   backgroundColor?: string;
+  heroImg: string;
+  heroGif: string;
+  heroName: string;
+  heroDescription: string;
+  heroColor: string;
+  group: string;
+  groupTextBg: string;
 };
 
 export const HeroCard = (props: Props) => {
