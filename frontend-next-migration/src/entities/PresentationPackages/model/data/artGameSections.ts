@@ -20,6 +20,17 @@ const imageSrcs = [
   '/images/gameArt/literature.webp',
 ];
 
+const logoSrc = '/images/gameArt/gameArtLogo.webp';
+console.log('sidebarLogo:', logoSrc);
+
+// Create ArtGameSections
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
-  createSection(key, index, imageSrcs[index], `${key}-image`),
+  createSection(
+    key,
+    index,
+    imageSrcs[index],
+    `${key}-image`,
+    logoSrc,
+    `${key}-logo`,
+  ),
 );

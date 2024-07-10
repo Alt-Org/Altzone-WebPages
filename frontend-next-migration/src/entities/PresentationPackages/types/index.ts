@@ -4,4 +4,6 @@ export interface PresentationSection {
   description: string;
   image: string;
   imageAlt: string;
+  sidebarLogo: string;
+  sidebarLogoAlt: string;
 }
