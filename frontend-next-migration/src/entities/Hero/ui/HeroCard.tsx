@@ -22,7 +22,6 @@ type Props = {
   heroDescription: string;
   heroColor: string;
   group: string;
-  groupTextBg: string;
 };
 
 export const HeroCard = (props: Props) => {
