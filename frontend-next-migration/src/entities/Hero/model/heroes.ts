@@ -18,14 +18,14 @@ import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hoda
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 
-import darkblue from '@/shared/assets/images/heros/textBgColors/darkBlue.webp';
-import green from '@/shared/assets/images/heros/textBgColors/green.webp';
-import lightblue from '@/shared/assets/images/heros/textBgColors/lightBlue.webp';
-import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
-import pink from '@/shared/assets/images/heros/textBgColors/pink.webp';
-import purple from '@/shared/assets/images/heros/textBgColors/purple.webp';
-import red from '@/shared/assets/images/heros/textBgColors/red.webp';
-import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
+import darkblueBg from '@/shared/assets/images/heros/textBgColors/dark-blue.webp';
+import greenBg from '@/shared/assets/images/heros/textBgColors/green.webp';
+import lightblueBg from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
+import orangeBg from '@/shared/assets/images/heros/textBgColors/orange.webp';
+import pinkBg from '@/shared/assets/images/heros/textBgColors/pink.webp';
+import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
+import redBg from '@/shared/assets/images/heros/textBgColors/red.webp';
+import yellowBg from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 
 const Heroes = [
   {
@@ -37,7 +37,7 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'greenHairedDescription',
     group: 'TORJUJAT',
-    groupTextBg: red,
+    groupTextBg: redBg,
     color: '#e20505',
   },
   {
@@ -49,7 +49,7 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'hannuHodariDescription',
     group: 'TORJUJAT',
-    groupTextBg: red,
+    groupTextBg: redBg,
     color: '#e20505',
   },
   {
@@ -61,7 +61,7 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'purpleGirlsDescription',
     group: 'SULAUTUJAT',
-    groupTextBg: purple,
+    groupTextBg: purpleBg,
     color: '#910494',
   },
   {
@@ -73,7 +73,7 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'einsteinDescription',
     group: 'ÄLYLLISTÄJÄT',
-    groupTextBg: darkblue,
+    groupTextBg: darkblueBg,
 
     color: '#330393',
   },
@@ -86,7 +86,7 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'graffitiGayaDescription',
     group: 'PEILAAJAT',
-    groupTextBg: yellow,
+    groupTextBg: yellowBg,
     color: '#feed01',
   },
   {
@@ -98,7 +98,7 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'pirateDescription',
     group: 'TORJUJAT',
-    groupTextBg: red,
+    groupTextBg: redBg,
     color: '#e20505',
   },
 ] as const;

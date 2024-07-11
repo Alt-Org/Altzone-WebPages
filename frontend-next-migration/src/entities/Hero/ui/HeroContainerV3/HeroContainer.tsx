@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
 import cls from './HeroContainer.module.scss';
 import Link from 'next/link';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
@@ -11,6 +10,7 @@ import useKeyboardNavigation from './useKeyboardNavigation';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useRef } from 'react';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 type Props = {
   heroImg: string;
@@ -59,15 +59,7 @@ const HeroContainer = (props: Props) => {
 
   return (
     <div className={cls.PageWrapper}>
-      <div className={cls.backgroundImageWrapper}>
-        <Image
-          src={groupBg}
-          alt='Background Image'
-          quality={100}
-          className={cls.backgroundImage}
-          priority={true}
-        />
-      </div>
+      <div className={cls.backgroundImageWrapper}></div>
       <div className={classNames(cls.componentWrapper, combinedModCss)}>
         <Link
           className={classNames(cls.outerLeftArrow, combinedModCss, [
@@ -88,43 +80,24 @@ const HeroContainer = (props: Props) => {
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
           <div className={cls.container}>
-            <div className={classNames(cls.groupText, combinedModCss)}>
-              <div
-                className={classNames(cls.groupName, combinedModCss)}
-                style={{ color: heroColor }}>
-                <h1>{group}</h1>
-                <Image
-                  src={groupTextBg}
-                  alt='groupTextBg'
-                  quality={100}
-                  className={cls.groupTextBg}
-                  priority={true}
-                />
-              </div>
-            </div>
             <div className={classNames(cls.contentWrapper, combinedModCss)}>
-              <div className={cls.content}>
-                <Image
-                  src={bgPicture}
-                  alt='Background Image'
-                  quality={100}
-                  className={cls.contentBackground}
-                  priority={true}
-                />
+              <div
+                className={cls.content}
+                style={{
+                  backgroundColor: heroColor,
+                }}>
                 <div className={classNames(cls.xLinkButton, combinedModCss)}>
                   {' '}
                   <Link href={xLink}>
-                    <h1>X</h1>
+                    <Button theme={ButtonTheme.Graffiti}>
+                      <h3>X</h3>
+                    </Button>
                   </Link>
                 </div>
-                <div
-                  className={classNames(cls.heroName, combinedModCss)}
-                  style={{ color: heroColor }}>
+                <div className={classNames(cls.heroName, combinedModCss)}>
                   <h1>{heroName}</h1>
                 </div>
-                <div
-                  className={classNames(cls.heroImgWrapper, combinedModCss)}
-                  style={{ backgroundColor: heroColor }}>
+                <div className={classNames(cls.heroImgWrapper, combinedModCss)}>
                   <Link
                     className={classNames(cls.innerLeftArrow, combinedModCss, [
                       cls.innerArrow,
@@ -150,11 +123,13 @@ const HeroContainer = (props: Props) => {
                     <Image src={rightArrow} alt='rightArrow' />
                   </Link>
                 </div>
-                <div className={cls.heroDescription}>
+                <div
+                  className={classNames(cls.heroDescription, combinedModCss)}>
                   <h3>{heroDescription}</h3>
                 </div>
               </div>
             </div>
+            <div className={classNames(cls.groupName, combinedModCss)}></div>
           </div>
         </div>
 

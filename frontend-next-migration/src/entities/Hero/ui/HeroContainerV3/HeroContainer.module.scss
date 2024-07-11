@@ -16,17 +16,7 @@
     opacity: 1;
   }
 }
-.contentBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  border: 2px solid rgb(255, 255, 255);
-  border-radius: 10px;
-  z-index: -1;
-}
+
 .backgroundImageWrapper {
   position: absolute;
   top: 0;
@@ -53,20 +43,30 @@
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
 }
-.componentWrapper.isTablet {
+.componentWrapper.ismobile {
   margin-top: 30%;
   margin-bottom: 20%;
+  margin: 0;
+}
+.componentWrapper.isTablet {
+  transform: translateX(-2rem);
+}
+.componentWrapper.isDesktop {
+  transform: translateX(-2rem);
+}
+.componentWrapper.isWidescreen {
+  transform: translateX(-2rem);
 }
 
 .outerArrow {
   user-select: none;
+  max-width: 100px;
 }
 .outerLeftArrow {
-  transform: translateX(4rem);
+  transform: translateX(3.5rem);
 }
 .outerRightArrow {
-  padding-right: 4rem;
-  padding-left: 1rem;
+  margin-left: 2rem;
 }
 
 .outerArrow.isMobile {
@@ -82,6 +82,7 @@
   height: 30em;
   z-index: 1;
   transform: translateX(5rem);
+  filter: drop-shadow(0 0 1rem rgb(0, 0, 0));
 
   .heroImgSide {
     position: absolute;
@@ -95,6 +96,10 @@
 .heroImgSideWrapper.isMobile {
   display: none;
 }
+.containerWrapper {
+  filter: drop-shadow(0 0 1rem rgb(0, 0, 0));
+  z-index: 1;
+}
 
 .container {
   align-items: center;
@@ -103,6 +108,8 @@
   max-width: 30rem;
   height: 100%;
   z-index: 1;
+  filter: saturate(0.8);
+  filter: brightness(0.9);
 }
 
 .containerWrapper.isMobile {
@@ -113,6 +120,7 @@
   text-align: center;
   margin-bottom: 2rem;
   z-index: 1;
+  filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
 }
 .groupTextBg {
   position: absolute;
@@ -121,20 +129,22 @@
   text-align: center;
   margin-bottom: 2rem;
   z-index: 0;
+  filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
 }
 
 .contentWrapper {
   display: flex;
+  border: 4px solid rgb(255, 255, 255);
   border-radius: 10px;
   width: 100%;
   height: 100%;
   z-index: 1;
   aspect-ratio: 12 / 16;
 }
-
 .content {
   position: relative;
   padding: 2em;
+  border-radius: 6px;
 }
 
 .heroImgWrapper {
@@ -145,12 +155,7 @@
   border-radius: 10px;
   margin-bottom: 1rem;
   border: 2px solid rgb(255, 255, 255);
-}
-
-.heroImgWrapper.isMobile {
-  justify-content: space-between;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0));
 }
 
 .innerArrow {
@@ -158,16 +163,25 @@
   width: 40px;
   display: none;
   user-select: none;
+  filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
 }
 
 .innerArrow.isMobile {
   display: block;
 }
 
+.heroImgWrapper.isMobile {
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0));
+  background-color: rgb(255, 255, 255);
+}
 .heroImg {
   width: 95%;
   user-select: none;
   pointer-events: none;
+  filter: drop-shadow(0 0 1rem rgb(0, 0, 0));
 }
 .heroImg.isMobile {
   width: 50%;
@@ -185,54 +199,36 @@
   @include ScrollbarWithArrowButtons;
   padding-top: 0.5rem;
   padding-right: 0.5rem;
-  overflow-y: auto;
-  font-size: 1.4rem;
+  overflow-y: scroll;
   border-radius: 10px;
-  max-height: 38%;
+  max-height: 42%;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 0.1rem rgb(0, 0, 0));
+}
+.heroDescription.isTablet {
+  font-size: 1.1rem;
+  max-height: 35%;
 }
 
 .heroName {
   text-align: center;
   margin-bottom: 2rem;
+  filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
 
   h1 {
     display: inline-block;
     padding: 0.1rem;
-    border-top: 6px solid rgb(255, 255, 255);
-    border-bottom: 6px solid rgb(255, 255, 255);
   }
-}
-.isMobile {
-  font-size: 0.8rem;
-}
-.isTablet {
-  font-size: 0.7rem;
-}
-.isDesktop {
-  font-size: 0.9rem;
 }
 
 .xLinkButton {
   @include link-scale-effect;
   position: absolute;
-  top: -5rem;
-  right: -3rem;
-  z-index: 2;
-  cursor: pointer;
-  user-select: none;
-  font-size: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
+  filter: drop-shadow(0 0 0.2rem rgb(0, 0, 0));
 
-  &:hover h1 {
+  &:hover h3 {
     color: orange;
   }
-}
-
-.xLinkButton.isMobile {
-  top: -3rem;
-  right: 1rem;
-}
-
-.xLinkButton.isTablet {
-  top: -4rem;
-  right: -2rem;
 }
