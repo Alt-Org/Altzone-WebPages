@@ -90,7 +90,7 @@ const HeroContainer = (props: Props) => {
                   {' '}
                   <Link href={xLink}>
                     <Button theme={ButtonTheme.Graffiti}>
-                      <h3>X</h3>
+                      <h5>X</h5>
                     </Button>
                   </Link>
                 </div>

@@ -26,6 +26,9 @@ type Props = {
   rightArrowLink: string;
   xLink: string;
 };
+/**
+ * @deprecated
+ **/
 
 const HeroContainer = (props: Props) => {
   const {
