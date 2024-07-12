@@ -1,22 +1,18 @@
 import { createSection } from '../createSection';
 
 const i18nKeyPrefixes = [
-  'intro',
-  'implementation',
-  'visual',
-  'functional',
-  'connections',
-  'online',
-  'alliance',
-  'characters',
-  'mechanics',
-  'youthwork',
-  'prg',
+  'privacy',
+  'interpretation',
+  'collecting',
+  'children',
+  'websites',
+  'changes',
+  'contact',
 ];
 // next takes path : \public\images\
 const imageSrcs = [''];
 
-const logoSrc = '/images/privacy/privacyLogo.webp';
+const logoSrc = '';
 
 export const PrivacySections = i18nKeyPrefixes.map((key, index) =>
   createSection(
