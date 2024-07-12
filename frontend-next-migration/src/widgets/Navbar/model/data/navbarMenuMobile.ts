@@ -6,10 +6,7 @@ import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
 import { ArtGameSections } from '@/entities/PresentationPackages/model/data/artGameSections';
 import { TeachingSections } from '@/entities/PresentationPackages/model/data/teachingSections';
 import { CookiesSections } from '@/entities/PresentationPackages/model/data/cookiesSections';
-<<<<<<< HEAD
 import { PrivacySections } from '@/entities/PresentationPackages/model/data/privacySections';
-=======
->>>>>>> e87127dbb1045e9d3e6cc55c2ac238fdeecbdd6a
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
@@ -60,7 +57,6 @@ ArtGameSections.forEach((section) => {
 export const navbarGameArtMobile = navbarGameArtBuilder.build();
 
 const navbarCookiesBuilder = new NavbarBuilder();
-<<<<<<< HEAD
 navbarCookiesBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
 navbarCookiesBuilder.addLink('main', RoutePaths.MAIN, false);
 CookiesSections.forEach((section) => {
@@ -77,12 +73,3 @@ PrivacySections.forEach((section) => {
 });
 
 export const navbarPrivacyMobile = navbarPrivacyBuilder.build();
-=======
-navbarGameArtBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
-navbarGameArtBuilder.addLink('main', RoutePaths.MAIN, false);
-ArtGameSections.forEach((section) => {
-  navbarGameArtBuilder.addLink(section.label, `#${section.id}`, false);
-});
-
-export const navbarCookiesMobile = navbarGameArtBuilder.build();
->>>>>>> e87127dbb1045e9d3e6cc55c2ac238fdeecbdd6a
