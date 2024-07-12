@@ -32,7 +32,6 @@ const NavbarSide: React.FC<NavbarSideProps> = ({ sections }) => {
       });
 
       if (currentSection && currentSection.id !== activeSection) {
-        console.log(`Active section updated: ${currentSection.id}`);
         setActiveSection(currentSection.id);
       }
     };
