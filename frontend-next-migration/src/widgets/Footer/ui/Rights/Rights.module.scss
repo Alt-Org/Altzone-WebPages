@@ -1,4 +1,11 @@
-.Rights{
+.Rights {
   font: var(--font-m);
   font-family: var(--font-family-texts);
+
+  a {
+    margin-left: 1rem;
+  }
+  a:last-of-type {
+    margin-right: 0;
+  }
 }
