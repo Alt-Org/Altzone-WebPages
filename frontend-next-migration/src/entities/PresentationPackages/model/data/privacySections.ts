@@ -16,7 +16,7 @@ const i18nKeyPrefixes = [
 // next takes path : \public\images\
 const imageSrcs = [''];
 
-const logoSrc = '/images/privacy/privacyLogo.png';
+const logoSrc = '/images/privacy/privacyLogo.webp';
 
 export const PrivacySections = i18nKeyPrefixes.map((key, index) =>
   createSection(
