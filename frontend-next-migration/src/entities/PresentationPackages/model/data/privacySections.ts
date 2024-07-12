@@ -1,6 +1,7 @@
 import { createSection } from '../createSection';
 
 const i18nKeyPrefixes = [
+  'policies',
   'privacy',
   'interpretation',
   'collecting',
@@ -8,6 +9,7 @@ const i18nKeyPrefixes = [
   'websites',
   'changes',
   'contact',
+  'generate',
 ];
 // next takes path : \public\images\
 const imageSrcs = [''];
