@@ -16,7 +16,7 @@ const i18nKeyPrefixes = [
 // next takes path : \public\images\
 const imageSrcs = [''];
 
-const logoSrc = '/images/cookies/cookies.webp';
+const logoSrc = '';
 
 export const CookiesSections = i18nKeyPrefixes.map((key, index) =>
   createSection(
