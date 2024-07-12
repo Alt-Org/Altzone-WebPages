@@ -60,9 +60,7 @@ const WikiContentWithSideBar = (props: Props) => {
                   width={100}
                   onError={() => setSidebarLogoError(true)}
                 />
-              ) : (
-                <p>Logo not available</p>
-              )}
+              ) : null}
             </div>
             <NavbarSide sections={sections} />
           </div>
