@@ -13,7 +13,11 @@ const i18nKeyPrefixes = [
   'youthwork',
   'prg',
 ];
+<<<<<<< HEAD
 // next takes path : \public\images\
+=======
+// next takes path : \public\images\teachingPackage
+>>>>>>> e87127dbb1045e9d3e6cc55c2ac238fdeecbdd6a
 const imageSrcs = [''];
 
 const logoSrc = '/images/cookies/cookiesLogo.png';

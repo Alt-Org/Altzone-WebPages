@@ -35,7 +35,7 @@ const makeSectionsWithI18n = (
  * @returns {Array} - The array of teaching sections with internationalization support.
  */
 export const makeTeachingSectionsWithI18n =
-  makeSectionsWithI18n(TeachingSections);
+  makeSectionsWithI18n(CookiesSections);
 
 /**
  * Creates art game sections with internationalization support.
@@ -53,6 +53,7 @@ export const makeArtGameSectionsWithI18n =
  */
 export const makeCookiesSectionsWithI18n =
   makeSectionsWithI18n(CookiesSections);
+<<<<<<< HEAD
 
 /**
  * Creates privacy sections with internationalization support.
@@ -62,3 +63,5 @@ export const makeCookiesSectionsWithI18n =
  */
 export const makePrivacySectionsWithI18n =
   makeSectionsWithI18n(PrivacySections);
+=======
+>>>>>>> e87127dbb1045e9d3e6cc55c2ac238fdeecbdd6a
