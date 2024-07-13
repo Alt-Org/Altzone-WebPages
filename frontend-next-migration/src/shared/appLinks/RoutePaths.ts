@@ -17,8 +17,8 @@ export enum AppRoutesLinks {
 
   MAIN = 'MAIN',
   ABOUT = 'ABOUT',
-  PRIVACY = 'PRIVACY',
-  COOKIES = 'COOKIES',
+  PRIVACY = 'privacy',
+  COOKIES = 'cookies',
   FORUM = 'FORUM',
   TEACHING_PACKAGE = 'TEACHING_PACKAGE',
   GAME_ART = 'GAME_ART',

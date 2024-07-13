@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Rights.module.scss';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import { AppRoutesLinks } from '@/shared/appLinks/RoutePaths';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import {
   CurrentYear,
   CompanyName,
@@ -17,12 +18,8 @@ export const Rights = memo(({ className = '' }: RightsProps) => {
   return (
     <p className={classNames(cls.Rights, {}, [className])}>
       <span className={cls.copySymbol}>&copy;</span> {CurrentYear} {CompanyName}{' '}
-      <a href={AppExternalLinks.cookies} className={cls.link}>
-        {Cookies}
-      </a>{' '}
-      <a href={AppExternalLinks.privacy} className={cls.link}>
-        {Privacy}
-      </a>
+      <AppLink to={AppRoutesLinks.COOKIES}>{Cookies}</AppLink>{' '}
+      <AppLink to={AppRoutesLinks.PRIVACY}>{Privacy}</AppLink>
     </p>
   );
 });

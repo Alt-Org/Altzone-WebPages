@@ -17,6 +17,4 @@ export const AppExternalLinks = {
   googleFeedback:
     'https://docs.google.com/forms/d/e/1FAIpQLScYGN0JlcgkqKpotNeE6hyWLG7oI1g19myAtrHf2mmHz7g7AA/viewform',
   stub: '#developerChangeThisLink',
-  cookies: 'https://altzone.fi/cookies',
-  privacy: 'https://altzone.fi/privacy',
 } as const;
