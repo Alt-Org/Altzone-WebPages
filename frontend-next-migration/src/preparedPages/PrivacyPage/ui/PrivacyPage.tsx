@@ -29,7 +29,8 @@ const PrivacyPage = (props: Props) => {
 
   return (
     <div className={classNames(cls.pageContainer)}>
-      <Navbar />
+      <Navbar overlaid={true} navBarType={'Privacy'} />
+
       <WikiContentWithSidebar sections={sections} />
       <div>
         <FeedbackSideButton />

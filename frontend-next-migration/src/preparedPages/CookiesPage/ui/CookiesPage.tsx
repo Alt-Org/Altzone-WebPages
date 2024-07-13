@@ -29,7 +29,8 @@ const CookiesPage = (props: Props) => {
 
   return (
     <div className={classNames(cls.pageContainer)}>
-      <Navbar />
+      <Navbar overlaid={true} navBarType={'Cookies'} />
+
       <WikiContentWithSidebar sections={sections} />
       <div>
         <FeedbackSideButton />
