@@ -80,12 +80,12 @@ const HeroContainer = (props: Props) => {
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
           <div className={cls.container}>
-            <div className={classNames(cls.contentWrapper, combinedModCss)}>
-              <div
-                className={cls.content}
-                style={{
-                  backgroundColor: heroColor,
-                }}>
+            <div
+              className={classNames(cls.contentWrapper, combinedModCss)}
+              style={{
+                backgroundColor: heroColor,
+              }}>
+              <div className={cls.content}>
                 <div className={classNames(cls.xLinkButton, combinedModCss)}>
                   {' '}
                   <Link href={xLink}>
