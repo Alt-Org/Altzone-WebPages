@@ -2,8 +2,9 @@
 import cls from './CookieConsent.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import CookieConsent from 'react-cookie-consent';
-import { AppRoutesLinks, RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { AppRoutesLinks } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { toast } from 'react-toastify';
 
 export const CookieConsentComponent = () => (
   <CookieConsent
@@ -14,9 +15,21 @@ export const CookieConsentComponent = () => (
     declineButtonText='Decline'
     enableDeclineButton
     onDecline={() => {
-      alert(
-        'You have declined the use of cookies and local storage. For better experience, please enable them in your browser settings.',
+      toast.error(
+        'You have declined cookies, some features on this website may be limited.',
+        {
+          position: 'bottom-center',
+          autoClose: 10000,
+          theme: 'light',
+        },
       );
+    }}
+    onAccept={() => {
+      toast.success('cookies accepted', {
+        position: 'bottom-center',
+        autoClose: 3000,
+        theme: 'light',
+      });
     }}
     style={{ background: '#2B373B' }}
     buttonStyle={{
@@ -24,19 +37,20 @@ export const CookieConsentComponent = () => (
       color: '#4e503b',
       fontSize: '15px',
     }}
-    expires={150}>
+    expires={365}>
     <p style={{ fontSize: '1.2rem' }}>
-      This website uses cookies and a local storage to enhance the user
-      experience.
+      This website uses cookies and local storage to enhance the user
+      experience.You can still continue using the website, but certain functions
+      may be limited.
     </p>{' '}
     <span style={{ fontSize: '0.8rem' }}>
-      For more information see our{' '}
+      By using our website, you agree to our use of{' '}
       <AppLink to={AppRoutesLinks.PRIVACY} className={cls.applink}>
         Privacy
       </AppLink>{' '}
       &{' '}
       <AppLink to={AppRoutesLinks.COOKIES} className={cls.applink}>
-        Cookies Policy
+        Cookies policies
       </AppLink>{' '}
     </span>
   </CookieConsent>
