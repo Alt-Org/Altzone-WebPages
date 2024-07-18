@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
 }
+.pageContainer.isWidescreen {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
 
 .mainContent {
   top: 1.7rem;
@@ -23,11 +27,11 @@
 .navbarSide {
   position: sticky;
   top: 10rem; // Adjust as needed
-  margin-left: 2rem;
+  margin-left: 1rem;
   height: calc(100vh - 10rem); // Adjust as needed
-  width: 25%;
+  width: 30%;
   overflow-y: auto;
-  font-size: 1.6em;
+  font-size: 1.5em;
   &::-webkit-scrollbar {
     display: none;
   }
