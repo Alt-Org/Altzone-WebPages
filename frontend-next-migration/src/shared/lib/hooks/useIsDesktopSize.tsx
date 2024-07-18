@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const useIsDesktopSize = () => {
   const checkForDevice = () =>
     typeof window !== 'undefined'
-      ? window.innerWidth >= 1024 && window.innerWidth < 1440
+      ? window.innerWidth >= 1024 && window.innerWidth < 1920
       : false;
 
   const [isDesktopSize, setIsDesktopSize] = useState(checkForDevice());
