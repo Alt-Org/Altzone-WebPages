@@ -1,5 +1,5 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
-import {ButtonHTMLAttributes, FC, memo} from "react";
+import {ButtonHTMLAttributes, FC, LegacyRef, memo} from "react";
 import cls from "./Button.module.scss";
 
 
@@ -46,6 +46,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean;
     withScalableLink? : boolean;
     disabled?: boolean;
+    ref?:  LegacyRef<HTMLButtonElement>;
 }
 
 export const Button: FC<ButtonProps> = memo((props) => {
@@ -57,6 +58,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
         disabled = false,
         withScalableLink = false,
         size = ButtonSize.M,
+        ref,
         ...otherProps
     } = props;
 
@@ -68,6 +70,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
 
     return (
         <button
+            ref={ref}
             type="button"
             className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
             disabled={disabled}

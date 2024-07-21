@@ -1,3 +1,4 @@
+'use client'
 import cls from './main.module.scss';
 
 
@@ -9,6 +10,9 @@ import HeroesBlocks from './heroesBlocks/heroesBlocks';
 import {heroes} from "@/entities/Hero";
 import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button";
 import Link from "next/link";
+import {useInView} from "react-intersection-observer";
+import clsx from "clsx";
+import {classNames} from "@/shared/lib/classNames/classNames";
 
 
 const sameBg = undefined;
@@ -36,8 +40,18 @@ function Main(props: Props) {
         { group: "PEILAAJAT // PROJEKTIO", textBgColor: orange }
     ];
 
+
+    const { ref, inView } = useInView({
+        rootMargin: '-150px 0px',
+        triggerOnce: true,
+    });
+
+    const mods = {
+        [cls.inView]: inView
+    }
+    // @ts-ignore
     return (
-        <section className={cls.Section}>
+        <section className={cls.Section} >
             <h2 className={cls.Header}>
                 {title}
             </h2>
@@ -50,12 +64,14 @@ function Main(props: Props) {
                     textBgColor={group.textBgColor}
                 />
             ))}
+            <div ref={ref} className={cls.buttonContainer}>
+                <Button withScalableLink={true} theme={ButtonTheme.Graffiti} className={classNames(cls.SeeMore, mods)} size={ButtonSize.XL} ref={ref} >
+                    <Link href={seeMoreLink.href}>
+                        {seeMoreLink.text}
+                    </Link>
+                </Button>
+            </div>
 
-            <Button withScalableLink={true} theme={ButtonTheme.Graffiti} className={cls.SeeMore} size={ButtonSize.XL}>
-                <Link href={seeMoreLink.href}>
-                    {seeMoreLink.text}
-                </Link>
-            </Button>
 
         </section>
     );
