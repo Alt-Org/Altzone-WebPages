@@ -42,6 +42,8 @@
     width: 100%;
     height: auto;
     object-fit: cover;
+    max-width: 250px;
+    margin-top: 1rem;
 
     img {
       width: 100%;
@@ -116,9 +118,12 @@
 }
 
 .sectionImage {
+  display: block;
+  margin: 0 auto;
   margin-top: 10%;
   border-radius: 10px;
-  max-height: 20rem;
+  max-height: 300px;
+  max-width: 600px;
   width: 100%;
 }
 
