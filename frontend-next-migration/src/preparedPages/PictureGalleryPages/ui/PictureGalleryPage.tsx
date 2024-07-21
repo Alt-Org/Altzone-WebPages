@@ -4,6 +4,8 @@ import cls from "./PictureGalleryPage.module.scss";
 import { SectionGallerias } from "@/widgets/SectionGallerias";
 import {useServerTranslation} from "@/shared/i18n";
 import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 
 const PictureGalleryPage = async ({lng}: {lng: string}) => {
@@ -20,5 +22,10 @@ const PictureGalleryPage = async ({lng}: {lng: string}) => {
     );
 };
 
-export default PictureGalleryPage;
+export default withBackgroundImage({
+    alt: "Picture Gallery Page underground style background",
+    imagePath: bgPicture as unknown as string,
+    className: cls.wholePageBG
+    // @ts-ignore
+})(PictureGalleryPage);
 
