@@ -1,6 +1,5 @@
 'use client';
 import cls from './CookieConsent.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import CookieConsent from 'react-cookie-consent';
 import { AppRoutesLinks } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
