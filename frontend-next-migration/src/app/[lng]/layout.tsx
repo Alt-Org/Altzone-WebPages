@@ -1,15 +1,8 @@
 import type { Metadata } from 'next';
 import { Open_Sans, Urbanist, Rubik } from 'next/font/google';
-import '../../preparedApp/styles/index.scss';
-import { Providers } from '@/preparedApp/providers/Providers';
-import { CookieConsentComponent } from '@/features/CookieConsent';
-        
-<!-- import type { Metadata } from 'next'
-import {Open_Sans, Urbanist, Rubik} from 'next/font/google'
 import '../_styles/index.scss';
 import {Providers} from "../_providers";
- -->
-
+import { CookieConsentComponent } from '@/features/CookieConsent';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -38,7 +31,8 @@ export const metadata: Metadata = {
 
 import { dir } from 'i18next';
 
-import { languages } from '../../shared/i18n/settings/settings';
+import { languages } from '@/shared/i18n/settings/settings';
+import {ReactNode} from "react";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -48,7 +42,7 @@ export default function RootLayout({
   children,
   params: { lng },
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: any;
 }) {
   return (
