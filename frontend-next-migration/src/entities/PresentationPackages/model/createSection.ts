@@ -7,6 +7,8 @@ import { PresentationSection } from '../types';
  * @param {number} index - The index of the section.
  * @param {string} imageSrc - The source URL of the image.
  * @param {string} imageAlt - The alternative text for the image.
+ * @param {string} logoSrc - The source URL of the sidebar logo.
+ * @param {string} logoAlt - The source URL of the sidebar logo.
  * @return {PresentationSection} - The newly created section.
  */
 export function createSection(
@@ -14,6 +16,8 @@ export function createSection(
   index: number,
   imageSrc: string,
   imageAlt: string,
+  logoSrc: string,
+  logoAlt: string,
 ): PresentationSection {
   return {
     id: `section${index + 1}`,
@@ -21,5 +25,7 @@ export function createSection(
     description: `${prefix}-description`,
     image: imageSrc,
     imageAlt: imageAlt,
+    sidebarLogo: logoSrc,
+    sidebarLogoAlt: logoAlt,
   };
 }

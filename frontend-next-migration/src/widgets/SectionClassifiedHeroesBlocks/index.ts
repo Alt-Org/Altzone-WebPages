@@ -1,2 +1,2 @@
 // export {default as SectionClassifiedHeroesBlocks} from "./~deprecated/ui/SectionClassifiedHeroesBlocks";
-export {default as SectionClassifiedHeroesBlocks} from "./ui/main";
+export {default as SectionClassifiedHeroesBlocks} from "./ui";

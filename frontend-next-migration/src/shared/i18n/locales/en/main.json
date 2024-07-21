@@ -1,11 +1,29 @@
 {
   "PlayOnline" : "PLAY IN BROWSER!",
-  "getToKnowComics": "Explore comics",
+
   "head-title": "AltZone",
   "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
   "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
   "og-title": "AltZone - Start Your Game Here",
   "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
   "ranking-player": "player",
-  "ranking-score": "score"
+  "ranking-score": "score",
+
+  "project-description-title": "What is Alt Zone?",
+  "project-description-text": "ALT Zone is a mobile game with artistic content developed for use in elementary school art education. Teaching game art is inherently challenging; it heavily relies on personal experience and analysis, and achieving a common experience is nearly impossible. ALT Zone provides a common foundation for game art education. The teaching package is easy to implement; it includes a mobile or PC-tested demo game, as well as questions guiding thinking in the field of game art. The game can also be analyzed solely through videos and images. Students have the opportunity to further develop the game and later download it from the app store as ALT Zone 2.0 - a mobile game. The proceeds from ALT Zone 2.0 will go towards supporting the dreams of youth through the foundation established for this purpose.",
+
+  "getToKnowComics": "Explore comics",
+  "getToKnowComics-title": "The game inventor's story",
+
+  "videoAndGalleries-title": "Our art:",
+
+
+  "playWithUs-title": "Our links:",
+  "playWithUs-OpenPositions-title": "See open positions",
+  "playWithUs-OpenPositions-body" : "Come with us",
+  "playWithUs-BecomeATester-title" : "Become a tester",
+  "playWithUs-BecomeATester-body" : "Make the app better"
+
+
+
 }
