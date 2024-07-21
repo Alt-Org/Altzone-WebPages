@@ -1,0 +1,225 @@
+.PageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.backgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  z-index: 0;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.componentWrapper {
+  margin-top: 20%;
+  margin-bottom: 5%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.componentWrapper.isTablet {
+  transform: translateX(-2rem);
+}
+.componentWrapper.isDesktop {
+  transform: translateX(-2rem);
+}
+.componentWrapper.isWidescreen {
+  transform: translateX(-2rem);
+}
+
+.outerArrow {
+  user-select: none;
+  max-width: 75px;
+}
+.outerLeftArrow {
+  transform: translateX(3.5rem);
+}
+.outerRightArrow {
+  margin-left: 2rem;
+}
+
+.outerArrow.isMobile {
+  display: none;
+}
+
+.heroImgSideWrapper {
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+  max-width: 30em;
+  width: 25em;
+  height: 30em;
+  z-index: 1;
+  transform: translateX(5rem);
+  scale: 0.9;
+
+  .heroImgSide {
+    position: absolute;
+    top: -12em;
+    width: 40em;
+    height: 50em;
+    z-index: 2;
+  }
+}
+
+.heroImgSideWrapper.isMobile {
+  display: none;
+}
+.containerWrapper {
+  z-index: 1;
+  scale: 0.9;
+}
+
+.containerWrapper.isMobile {
+  margin-top: 3rem;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.container {
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contentWrapper {
+  display: flex;
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  z-index: 1;
+  filter: brightness(0.85);
+}
+.content {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 6px;
+  max-width: 400px;
+  max-height: 800px;
+}
+
+.innerArrow {
+  align-self: center;
+  width: 40px;
+  display: none;
+  user-select: none;
+  filter: drop-shadow(0 0 5px rgb(0, 0, 0));
+}
+
+.innerArrow.isMobile {
+  display: block;
+}
+
+.heroImgWrapper {
+  width: 100%;
+  display: flex;
+  max-height: 200px;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  border: 3px solid rgb(255, 255, 255);
+}
+
+.heroImgWrapper.isMobile {
+  justify-content: space-between;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: rgb(246, 246, 246);
+}
+.heroImg {
+  max-height: 200px;
+  width: 100%;
+  user-select: none;
+  pointer-events: none;
+  border-radius: 9px;
+}
+.heroImg.isMobile {
+  width: 50%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  transform: scale(120%);
+}
+
+.heroImg.isMobile {
+}
+
+.heroDescription {
+  @include ScrollbarWithArrowButtons;
+  margin-top: 2rem;
+  padding-right: 0.5rem;
+  overflow-y: scroll;
+  font-size: 1.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.heroDescription.isTablet {
+  @include ScrollbarWithArrowButtons;
+  margin-top: 2rem;
+  overflow-y: scroll;
+  font-size: 0.9rem;
+}
+.heroDescription.isMobile {
+  @include ScrollbarWithArrowButtons;
+  margin-top: 2rem;
+  overflow-y: scroll;
+  font-size: 1rem;
+}
+
+.heroName {
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.heroName.isMobile {
+  padding-top: 1rem;
+  font-size: 0.8rem;
+}
+.heroName.isTablet {
+  font-size: 0.9rem;
+}
+
+.xLinkButton {
+  @include link-scale-effect;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  padding: 5px;
+
+  &:hover h3 {
+    color: orange;
+  }
+}
+
+.xLinkButton.isMobile {
+  margin: -0.5rem;
+}
+.xLinkButton.isTablet {
+  font-size: 0.5rem;
+  margin: -0.5rem;
+}
