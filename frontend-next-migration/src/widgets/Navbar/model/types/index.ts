@@ -85,7 +85,6 @@ export type NavbarBuild = {
 export type NavBarType =
   | 'Default'
   | 'Clan'
-  | 'TeachingPackage'
   | 'GameArt'
   | 'Cookies'
   | 'Privacy';
