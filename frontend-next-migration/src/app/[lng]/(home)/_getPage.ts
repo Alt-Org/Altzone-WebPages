@@ -12,7 +12,6 @@ export async function _getPage (lng: string){
         keywords: t("head-keywords"),
     }
 
-
     const playWithUs = {
         title: t("playWithUs-title"),
         webGl: {
@@ -50,12 +49,19 @@ export async function _getPage (lng: string){
         title: t("videoAndGalleries-title")
     }
 
+
+    const classifiedHeroesBlocks = {
+        title: t("classifiedHeroesBlocks-title")
+    }
+
     const page = {
         playWithUs,
         projectDescription,
         getToKnowComics,
         videoAndGalleries,
+        classifiedHeroesBlocks
     }
+
 
     return {
         page,

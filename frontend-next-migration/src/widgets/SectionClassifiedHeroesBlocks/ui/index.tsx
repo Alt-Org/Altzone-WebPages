@@ -15,7 +15,14 @@ import {heroes} from "@/entities/Hero";
 const sameBg = undefined;
 
 
-function Main() {
+export type Props = {
+    title: string;
+}
+
+function Main(props: Props) {
+
+    const {title} = props;
+
     const heroGroups = [
         { group: "TORJUJAT // RETROFLEKTIO", textBgColor: red },
         { group: "SULAUTUJAT // KONFLUENSSI", textBgColor: pink },
@@ -25,6 +32,9 @@ function Main() {
 
     return (
         <section className={cls.Section}>
+            <h2 className={cls.Header}>
+                {title}
+            </h2>
             {heroGroups.map((group, index) => (
                 <HeroesBlocks
                     key={index}
