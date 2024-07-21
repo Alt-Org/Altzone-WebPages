@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import cls from './WikiContentWithSideBar.module.scss';
 import Image from 'next/image';
-import NavbarSide from '@/widgets/NavbarSide/ui/NavbarSide';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ScrollTop } from '@/features/ScrollTop';
+import NavbarSide from "@/shared/ui/NavbarSide/ui/NavbarSide";
 
 interface Section {
   id: string;
