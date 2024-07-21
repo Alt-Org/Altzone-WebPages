@@ -57,7 +57,8 @@ const nextConfig = {
     sassOptions: {
         includePaths: [path.join(__dirname, 'styles')],
         // prependData: `@import "src/app/styles/variables/_mixins.scss";`,
-        prependData: `@import "src/preparedApp/styles/variables/_mixins.scss";`,
+        prependData: `@import "src/app/_styles/variables/_mixins.scss";`,
+        // prependData: `@import "src/preparedApp/styles/variables/_mixins.scss";`,
     },
     output: 'standalone',
     // experimental: {
