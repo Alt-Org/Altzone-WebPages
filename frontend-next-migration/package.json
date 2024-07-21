@@ -36,6 +36,7 @@
     "quill": "^2.0.2",
     "react": "^18",
     "react-cookie": "^6.1.1",
+    "react-cookie-consent": "^9.0.0",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
     "react-i18next": "^13.3.1",

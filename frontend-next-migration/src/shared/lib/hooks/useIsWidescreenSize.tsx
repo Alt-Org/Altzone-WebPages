@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const useIsWidescreenSize = () => {
   const checkForDevice = () =>
-    typeof window !== 'undefined' ? window.innerWidth >= 1440 : false;
+    typeof window !== 'undefined' ? window.innerWidth >= 1920 : false;
 
   const [isWidescreenSize, setIsWidescreenSize] = useState(checkForDevice());
 
