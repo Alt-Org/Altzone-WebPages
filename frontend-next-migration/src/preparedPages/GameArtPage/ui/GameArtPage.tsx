@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
@@ -11,7 +10,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { Mods } from '@/shared/lib/classNames/classNames';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ScrollTop } from '@/features/ScrollTop';
-import { WikiContentWithSidebar } from '@/widgets/WikiContentWithSidebar';
+import {WikiContentWithSidebar} from "@/shared/ui/WikiContentWithSidebar";
 
 interface Section {
   id: string;
@@ -46,7 +45,8 @@ const GameArtPackagePage = (props: Props) => {
       <div>
         <FeedbackSideButton />
         <HorizontalLines />
-        {isMobileSize && <ScrollTop />} <Footer />
+        {isMobileSize && <ScrollTop />}
+        <Footer />
       </div>
     </div>
   );
