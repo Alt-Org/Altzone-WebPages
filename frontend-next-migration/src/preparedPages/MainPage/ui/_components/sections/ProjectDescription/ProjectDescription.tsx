@@ -8,13 +8,11 @@ import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { Paragraph } from "@/shared/ui/Paragraph";
 import {useInView} from "react-intersection-observer";
 
-interface Props {
+export interface Props {
     className?: string;
     title: string;
     description: string;
 }
-
-export type ProjectDescriptionProps = Omit<Props, 'className'>;
 
 export const ProjectDescription = (props: Props) => {
 

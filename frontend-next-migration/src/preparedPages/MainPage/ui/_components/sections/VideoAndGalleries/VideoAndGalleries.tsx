@@ -11,7 +11,7 @@ import {useInView} from "react-intersection-observer";
 import {classNames} from "@/shared/lib/classNames/classNames";
 
 
-type Props = {
+export type Props = {
     backgroundImageSrc? : string;
     title: string;
     videoLink?: string;

@@ -55,7 +55,11 @@ export default async function MainPage({params}: Props) {
                     buttonParams: { innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }
                 }}
 
-                t={t}
+                videoAndGalleries={{
+                    videoLink: AppExternalLinks.previewVideoYoutube,
+                    title: t("videoAndGalleries-title")
+                }}
+
             />
         </>
     );
