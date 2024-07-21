@@ -4,7 +4,6 @@ import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { NavbarBuilder } from './NavbarBuilder';
 import { dropdowns } from './dropdowns';
 
-
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addDropDown('community', false, dropdowns.community, 'left');
 navbarBuilder.addDropDown('game', false, dropdowns.game, 'left');
@@ -44,9 +43,13 @@ navbarClanBuilder.addLink('my_clan', RoutePaths.MEMBERS, true);
 export const navbarClanDesktop = navbarClanBuilder.build();
 
 const navbarTeachingBuilder = new NavbarBuilder();
-
 export const navbarTeachingDesktop = navbarBuilderV2.build();
 
 const navbarGameArtBuilder = new NavbarBuilder();
-
 export const navbarGameArtDesktop = navbarBuilderV2.build();
+
+const navbarCookiesBuilder = new NavbarBuilder();
+export const navbarCookiesDesktop = navbarBuilderV2.build();
+
+const navbarPrivacyBuilder = new NavbarBuilder();
+export const navbarPrivacyDesktop = navbarBuilderV2.build();

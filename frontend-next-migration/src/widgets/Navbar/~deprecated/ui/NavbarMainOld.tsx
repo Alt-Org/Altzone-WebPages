@@ -1,30 +1,29 @@
-'use client'
-import { memo } from "react";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+'use client';
+import { memo } from 'react';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import {
-    navbarMenuDesktop2,
-    navbarClanDesktop,
-    navbarTeachingDesktop,
-    navbarGameArtDesktop
-} from "../../model/data/navbarMenuDesktop";
+  navbarMenuDesktop2,
+  navbarClanDesktop,
+  navbarTeachingDesktop,
+  navbarGameArtDesktop,
+} from '../../model/data/navbarMenuDesktop';
 import {
-    navbarMenuMobile,
-    navbarClanMobile,
-    navbarTeachingMobile,
-    navbarGameArtMobile
-} from "../../model/data/navbarMenuMobile";
-import NavbarDesktopV2 from "../../ui/NavbarDesktopV2/NavbarDesktopV2";
-import NavbarMobileV2 from "../../ui/NavbarMobileV2/NavbarMobileV2";
-import {FixedProvider} from "@/widgets/Navbar/model/FixedProvider";
+  navbarMenuMobile,
+  navbarClanMobile,
+  navbarTeachingMobile,
+  navbarGameArtMobile,
+} from '../../model/data/navbarMenuMobile';
+import NavbarDesktopV2 from '../../ui/NavbarDesktopV2/NavbarDesktopV2';
+import NavbarMobileV2 from '../../ui/NavbarMobileV2/NavbarMobileV2';
+import { FixedProvider } from '@/widgets/Navbar/model/FixedProvider';
 
-
-type NavBarType = "Default" | "Clan" | 'TeachingPackage' | ''
+type NavBarType = 'Default' | 'Clan' | 'TeachingPackage' | '';
 
 interface NavbarMainProps {
-    overlaid?: boolean;
-    marginTop?: number;
-    className?: string;
-    navBarType?: NavBarType;
+  overlaid?: boolean;
+  marginTop?: number;
+  className?: string;
+  navBarType?: NavBarType;
 }
 
 /**
@@ -39,131 +38,134 @@ interface NavbarMainProps {
  @returns {JSX.Element} - The appropriate navbar component.
  */
 export const NavbarMainOld = memo((props: NavbarMainProps) => {
+  const { overlaid, marginTop, className } = props;
 
-    const {
-        overlaid,
-        marginTop,
-        className
-    } = props;
+  const { isMobileSize } = useIsMobileSize();
 
-    const { isMobileSize } = useIsMobileSize();
-
-    if (isMobileSize) {
-        return (
-            <FixedProvider>
-                <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarMenuMobile} />
-            </FixedProvider>
-        )
-    }
+  if (isMobileSize) {
     return (
-        <>
-            <FixedProvider>
-                <NavbarDesktopV2 navbarBuild={navbarMenuDesktop2} overlaid={overlaid} className={className} marginTop={marginTop} />
-            </FixedProvider>
-        </>
-    )
-
-
+      <FixedProvider>
+        <NavbarMobileV2
+          overlaid={overlaid}
+          marginTop={marginTop}
+          className={className}
+          navbarBuild={navbarMenuMobile}
+        />
+      </FixedProvider>
+    );
+  }
+  return (
+    <>
+      <FixedProvider>
+        <NavbarDesktopV2
+          navbarBuild={navbarMenuDesktop2}
+          overlaid={overlaid}
+          className={className}
+          marginTop={marginTop}
+        />
+      </FixedProvider>
+    </>
+  );
 });
 
 /** @deprecated**/
 export const NavbarClanMain = memo((props: NavbarMainProps) => {
+  const { overlaid, marginTop, className } = props;
 
-    const { overlaid, marginTop, className } = props;
+  const { isMobileSize } = useIsMobileSize();
 
-    const { isMobileSize } = useIsMobileSize();
-
-    if (isMobileSize) {
-        return (
-            <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarClanMobile} />
-        )
-    }
+  if (isMobileSize) {
     return (
-        <>
-            <FixedProvider>
-                <NavbarDesktopV2
-                    navbarBuild={navbarClanDesktop}
-                    overlaid={overlaid}
-                    className={className}
-                    marginTop={marginTop}
-                />
-            </FixedProvider>
-        </>
-    )
-
-
+      <NavbarMobileV2
+        overlaid={overlaid}
+        marginTop={marginTop}
+        className={className}
+        navbarBuild={navbarClanMobile}
+      />
+    );
+  }
+  return (
+    <>
+      <FixedProvider>
+        <NavbarDesktopV2
+          navbarBuild={navbarClanDesktop}
+          overlaid={overlaid}
+          className={className}
+          marginTop={marginTop}
+        />
+      </FixedProvider>
+    </>
+  );
 });
-
 
 /** @deprecated**/
 export const NavbarTeachingMain = memo((props: NavbarMainProps) => {
-    const { overlaid, marginTop, className } = props;
+  const { overlaid, marginTop, className } = props;
 
-    const { isMobileSize } = useIsMobileSize();
+  const { isMobileSize } = useIsMobileSize();
 
-    if (isMobileSize) {
-        return (
-            <>
-                <FixedProvider>
-                    <NavbarMobileV2
-                        overlaid={overlaid}
-                        marginTop={marginTop}
-                        className={className}
-                        navbarBuild={navbarTeachingMobile}
-                    />
-                </FixedProvider>
-            </>
-        );
-    }
+  if (isMobileSize) {
     return (
-        <>
-            <FixedProvider>
-                <NavbarDesktopV2
-                    navbarBuild={navbarTeachingDesktop}
-                    overlaid={overlaid}
-                    className={className}
-                    marginTop={marginTop}
-                />
-            </FixedProvider>
-        </>
+      <>
+        <FixedProvider>
+          <NavbarMobileV2
+            overlaid={overlaid}
+            marginTop={marginTop}
+            className={className}
+            navbarBuild={navbarTeachingMobile}
+          />
+        </FixedProvider>
+      </>
     );
+  }
+  return (
+    <>
+      <FixedProvider>
+        <NavbarDesktopV2
+          navbarBuild={navbarTeachingDesktop}
+          overlaid={overlaid}
+          className={className}
+          marginTop={marginTop}
+        />
+      </FixedProvider>
+    </>
+  );
 });
-
 
 //---------------------------------------------------------------------------//
 /** @deprecated**/
 export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
-    const { overlaid, marginTop, className } = props;
+  const { overlaid, marginTop, className } = props;
 
-    const { isMobileSize } = useIsMobileSize();
+  const { isMobileSize } = useIsMobileSize();
 
-    if (isMobileSize) {
-        return (
-            <>
-                <FixedProvider>
-                    <NavbarMobileV2
-                        overlaid={overlaid}
-                        marginTop={marginTop}
-                        className={className}
-                        navbarBuild={navbarGameArtMobile}
-                    />
-                </FixedProvider>
-            </>
-        );
-    }
+  if (isMobileSize) {
     return (
-        <>
-            <FixedProvider>
-                <NavbarDesktopV2
-                    navbarBuild={navbarGameArtDesktop}
-                    overlaid={overlaid}
-                    className={className}
-                    marginTop={marginTop}
-                />
-            </FixedProvider>
-        </>
+      <>
+        <FixedProvider>
+          <NavbarMobileV2
+            overlaid={overlaid}
+            marginTop={marginTop}
+            className={className}
+            navbarBuild={navbarGameArtMobile}
+          />
+        </FixedProvider>
+      </>
     );
+  }
+  return (
+    <>
+      <FixedProvider>
+        <NavbarDesktopV2
+          navbarBuild={navbarGameArtDesktop}
+          overlaid={overlaid}
+          className={className}
+          marginTop={marginTop}
+        />
+      </FixedProvider>
+    </>
+  );
 });
 
-NavbarMainOld.displayName = "NavbarMain";
-NavbarClanMain.displayName = "NavbarClanMain";
+NavbarMainOld.displayName = 'NavbarMain';
+NavbarClanMain.displayName = 'NavbarClanMain';
