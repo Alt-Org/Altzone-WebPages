@@ -1,6 +1,6 @@
 import cls from "./page.module.scss"
 
-import { SectionClassifiedHeroesBlocks } from "@/widgets/SectionClassifiedHeroesBlocks";
+import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from "@/widgets/SectionClassifiedHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
@@ -17,6 +17,7 @@ type Props = {
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
+    classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
 }
 
 function MainPage (props: Props)  {
@@ -25,7 +26,8 @@ function MainPage (props: Props)  {
         projectDescription,
         playWithUs,
         getToKnowComics,
-        videoAndGalleries
+        videoAndGalleries,
+        classifiedHeroesBlocks
     } = props;
 
     const sameBg = undefined;
@@ -46,7 +48,9 @@ function MainPage (props: Props)  {
 
             <HorizontalLines />
 
-            <SectionClassifiedHeroesBlocks/>
+            <SectionClassifiedHeroesBlocks
+                {...classifiedHeroesBlocks}
+            />
 
 
             <HorizontalLines />
