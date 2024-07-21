@@ -4,13 +4,11 @@ import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import {
   navbarMenuDesktop2,
   navbarClanDesktop,
-  navbarTeachingDesktop,
   navbarGameArtDesktop,
 } from '../../model/data/navbarMenuDesktop';
 import {
   navbarMenuMobile,
   navbarClanMobile,
-  navbarTeachingMobile,
   navbarGameArtMobile,
 } from '../../model/data/navbarMenuMobile';
 import NavbarDesktopV2 from '../../ui/NavbarDesktopV2/NavbarDesktopV2';
@@ -98,39 +96,6 @@ export const NavbarClanMain = memo((props: NavbarMainProps) => {
   );
 });
 
-/** @deprecated**/
-export const NavbarTeachingMain = memo((props: NavbarMainProps) => {
-  const { overlaid, marginTop, className } = props;
-
-  const { isMobileSize } = useIsMobileSize();
-
-  if (isMobileSize) {
-    return (
-      <>
-        <FixedProvider>
-          <NavbarMobileV2
-            overlaid={overlaid}
-            marginTop={marginTop}
-            className={className}
-            navbarBuild={navbarTeachingMobile}
-          />
-        </FixedProvider>
-      </>
-    );
-  }
-  return (
-    <>
-      <FixedProvider>
-        <NavbarDesktopV2
-          navbarBuild={navbarTeachingDesktop}
-          overlaid={overlaid}
-          className={className}
-          marginTop={marginTop}
-        />
-      </FixedProvider>
-    </>
-  );
-});
 
 //---------------------------------------------------------------------------//
 /** @deprecated**/
