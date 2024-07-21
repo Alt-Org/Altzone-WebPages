@@ -1,0 +1,148 @@
+.pageContainer {
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  top: 1.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  width: 90%;
+  border: 1px solid rgb(0, 255, 21);
+  border-radius: 10px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 10%;
+  overflow: visible; // Ensure this is set
+}
+
+.navbarSide {
+  position: sticky;
+  top: 10rem; // Adjust as needed
+  margin-left: 2rem;
+  height: calc(100vh - 10rem); // Adjust as needed
+  width: 25%;
+  overflow-y: auto;
+  font-size: 1.6em;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebarLogo {
+    position: inherit;
+    display: flex;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+
+    transition: color 0.5s, border-left 0.2s;
+    &:hover {
+      color: orange;
+    }
+
+    &.active {
+      color: orange;
+      border-left: 4px solid yellow;
+    }
+
+    &:active {
+      outline: none;
+    }
+
+    user-select: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 1.5em;
+  margin: 3px;
+}
+
+.section {
+  width: 100%;
+  height: fit-content;
+  margin: 5%;
+  padding: 7%;
+  background-color: orange;
+  border-radius: 10px;
+  color: black;
+  border: 2px solid rgb(13, 174, 13);
+
+  h2 {
+    text-align: center;
+    color: rgb(233, 225, 225);
+    font-size: 1.7em;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+    background-color: rgb(13, 174, 13);
+  }
+  a {
+    color: rgb(81, 255, 0);
+  }
+
+  a:hover {
+    color: rgb(255, 255, 255);
+  }
+}
+
+.sectionImage {
+  margin-top: 10%;
+  border-radius: 10px;
+  max-height: 20rem;
+  width: 100%;
+}
+
+.content.isMobile {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  padding: 0;
+  font-size: 1.2em;
+  margin: 15px;
+}
+
+.mainContent.isMobile {
+  margin-top: 15%;
+}
+
+.mainContent.isTablet {
+  top: 2rem;
+}
+
+.mainContent.isDesktop {
+  top: 0.5rem;
+}
+
+.mainContent.isWidescreen {
+  top: -1rem;
+}
+
+.navbarSide.isWidescreen {
+  top: 4rem;
+}
