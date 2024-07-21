@@ -4,6 +4,9 @@ import {Container} from "@/shared/ui/Container";
 import {SectionGallerias} from "@/widgets/SectionGallerias";
 import {useServerTranslation} from "@/shared/i18n";
 import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+
 
 const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
     const {t} = await useServerTranslation(lng, "comics");
@@ -20,4 +23,9 @@ const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
     )
 }
 
-export default ComicsGalleriesPage;
+export default withBackgroundImage({
+    alt: "Comics Galleries Page underground style background",
+    imagePath: bgPicture as unknown as string,
+    className: cls.wholePageBG
+    // @ts-ignore
+})(ComicsGalleriesPage);

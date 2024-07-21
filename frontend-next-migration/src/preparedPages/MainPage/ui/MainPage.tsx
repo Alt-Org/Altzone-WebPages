@@ -15,7 +15,7 @@ import {PlayWithUs} from "./_components/sections/PlayWithUs";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 
-export type Props = {
+type Props = {
     t: (key: string) => string;
 }
 
