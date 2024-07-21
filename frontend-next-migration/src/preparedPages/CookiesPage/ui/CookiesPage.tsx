@@ -2,7 +2,7 @@
 import React from 'react';
 import { Navbar } from '@/widgets/Navbar';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
-import cls from './Privacy.module.scss';
+import cls from './CookiesPage.module.scss';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import { Mods } from '@/shared/lib/classNames/classNames';
@@ -24,12 +24,12 @@ export type Props = {
   sections: Section[];
 };
 
-const PrivacyPage = (props: Props) => {
+const CookiesPage = (props: Props) => {
   const { sections = [] } = props;
 
   return (
     <div className={classNames(cls.pageContainer)}>
-      <Navbar overlaid={true} navBarType={'Privacy'} />
+      <Navbar overlaid={true} navBarType={'Cookies'} />
 
       <WikiContentWithSidebar sections={sections} />
       <div>
@@ -45,4 +45,4 @@ export default withBackgroundImage({
   imagePath: bgPicture as unknown as string,
 
   // @ts-ignore
-})(PrivacyPage);
+})(CookiesPage);
