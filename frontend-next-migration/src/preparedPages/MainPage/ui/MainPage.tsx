@@ -1,8 +1,5 @@
 import cls from "./page.module.scss"
 
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-
-
 import { SectionClassifiedHeroesBlocks } from "@/widgets/SectionClassifiedHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
@@ -10,26 +7,25 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 import { ProjectDescription,ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
 import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
-import {VideoAndGalleries} from "./_components/sections/VideoAndGalleries";
+import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
 import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
-import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 
 
 type Props = {
-    t: (key: string) => string;
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
+    videoAndGalleries: VideoAndGalleriesProps;
 }
 
 function MainPage (props: Props)  {
 
     const {
-        t ,
         projectDescription,
         playWithUs,
-        getToKnowComics
+        getToKnowComics,
+        videoAndGalleries
     } = props;
 
     const sameBg = undefined;
@@ -56,14 +52,14 @@ function MainPage (props: Props)  {
             <HorizontalLines />
 
             <GetToKnowComics
+                backgroundImageSrc={sameBg}
                 {...getToKnowComics}
             />
 
             <HorizontalLines />
             <VideoAndGalleries
-                videoLink={AppExternalLinks.previewVideoYoutube}
-                title={t("videoAndGalleries-title")}
                 backgroundImageSrc={sameBg}
+                {...videoAndGalleries}
             />
             <HorizontalLines />
             {/*<SectionNewsPreview/>*/}
