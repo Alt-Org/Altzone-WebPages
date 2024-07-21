@@ -1,6 +1,5 @@
 import {useServerTranslation} from "@/shared/i18n";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import playWithUs from "@/preparedPages/MainPage/ui/_components/sections/PlayWithUs/PlayWithUs";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 export async function _getPage (lng: string){
