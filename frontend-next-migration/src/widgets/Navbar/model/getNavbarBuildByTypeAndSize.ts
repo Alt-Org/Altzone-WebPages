@@ -3,7 +3,6 @@ import {
   navbarClanMobile,
   navbarGameArtMobile,
   navbarMenuMobile,
-  navbarTeachingMobile,
   navbarCookiesMobile,
   navbarPrivacyMobile,
 } from './data/navbarMenuMobile';
@@ -11,7 +10,6 @@ import {
   navbarClanDesktop,
   navbarGameArtDesktop,
   navbarMenuDesktop2,
-  navbarTeachingDesktop,
   navbarCookiesDesktop,
   navbarPrivacyDesktop,
 } from './data/navbarMenuDesktop';
@@ -26,8 +24,6 @@ export const getNavbarBuildByTypeAndSize = (
         return navbarMenuMobile;
       case 'Clan':
         return navbarClanMobile;
-      case 'TeachingPackage':
-        return navbarTeachingMobile;
       case 'GameArt':
         return navbarGameArtMobile;
       case 'Cookies':
@@ -43,8 +39,6 @@ export const getNavbarBuildByTypeAndSize = (
         return navbarMenuDesktop2;
       case 'Clan':
         return navbarClanDesktop;
-      case 'TeachingPackage':
-        return navbarTeachingDesktop;
       case 'GameArt':
         return navbarGameArtDesktop;
       case 'Cookies':
