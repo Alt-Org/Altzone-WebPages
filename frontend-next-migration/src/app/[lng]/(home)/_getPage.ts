@@ -51,7 +51,11 @@ export async function _getPage (lng: string){
 
 
     const classifiedHeroesBlocks = {
-        title: t("classifiedHeroesBlocks-title")
+        title: t("classifiedHeroesBlocks-title"),
+        seeMoreLink: {
+            text: t("classifiedHeroesBlocks-seeMore"),
+            href: RoutePaths.HEROES
+        }
     }
 
     const page = {

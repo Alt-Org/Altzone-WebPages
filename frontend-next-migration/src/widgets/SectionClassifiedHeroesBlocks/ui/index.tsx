@@ -2,14 +2,13 @@ import cls from './main.module.scss';
 
 
 import red from "@/shared/assets/images/heros/textBgColors/red.webp";
-import green from "@/shared/assets/images/heros/textBgColors/green.webp";
 import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue.webp";
-import lightBlue from "@/shared/assets/images/heros/textBgColors/light-blue.webp";
 import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
 import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
-import purple from "@/shared/assets/images/heros/textBgColors/purple.webp";
 import HeroesBlocks from './heroesBlocks/heroesBlocks';
 import {heroes} from "@/entities/Hero";
+import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button";
+import Link from "next/link";
 
 
 const sameBg = undefined;
@@ -17,11 +16,18 @@ const sameBg = undefined;
 
 export type Props = {
     title: string;
+    seeMoreLink: {
+        href: string,
+        text: string,
+    }
 }
 
 function Main(props: Props) {
 
-    const {title} = props;
+    const {
+        title,
+        seeMoreLink
+    } = props;
 
     const heroGroups = [
         { group: "TORJUJAT // RETROFLEKTIO", textBgColor: red },
@@ -44,6 +50,13 @@ function Main(props: Props) {
                     textBgColor={group.textBgColor}
                 />
             ))}
+
+            <Button withScalableLink={true} theme={ButtonTheme.Graffiti} className={cls.SeeMore} size={ButtonSize.XL}>
+                <Link href={seeMoreLink.href}>
+                    {seeMoreLink.text}
+                </Link>
+            </Button>
+
         </section>
     );
 }
