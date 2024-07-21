@@ -1,6 +1,7 @@
 import { TeachingPackagePage } from "@/preparedPages/TeachingPackagePage";
 import { useServerTranslation } from "@/shared/i18n";
 import { Metadata } from "next";
+import {makeTeachingSectionsWithI18n} from "@/entities/PresentationPackages";
 
 type Props = {
     params: { lng: string }
@@ -11,8 +12,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const { t } = await useServerTranslation(params.lng, 'teachingPackage');
 
-    console.log()
-
     return {
         title: t("head-title"),
         description: t("head-description"),
@@ -21,7 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function DefaultPage({ params }: Props){
-        return(
-                <TeachingPackagePage lng={params.lng}  />
+
+    const { t } = await useServerTranslation(params.lng, 'teachingPackage');
+
+    const sections = makeTeachingSectionsWithI18n(t);
+
+    return(
+                <TeachingPackagePage
+                    sections = {sections}
+                />
             )
 };

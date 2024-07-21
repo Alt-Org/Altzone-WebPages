@@ -1,6 +1,6 @@
-import React, {CSSProperties} from "react";
+import {CSSProperties} from "react";
 import cls from "./NavbarDesktopV2.module.scss";
-import { NavbarBuild } from "../../model/types/types";
+import {NavbarBuild, NavBarType} from "../../model/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useParams } from "next/navigation";
@@ -12,6 +12,7 @@ import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
 import {FixedButton} from "../FixedButton/FixedButton";
 import { useFixed } from "../../model/FixedProvider";
+import { defineNs } from "../../model/defineNs";
 
 
 
@@ -21,6 +22,7 @@ type NavbarProps = {
     className?: string;
     navbarBuild: NavbarBuild
     isFixed?: boolean;
+    navBarType?: NavBarType;
 }
 
 const NavbarDesktopV2 = (props: NavbarProps) => {
@@ -29,7 +31,8 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         navbarBuild,
         overlaid= false,
         marginTop,
-        className = ''
+        className = '',
+        navBarType = "Default"
     } = props;
 
     const { isFixed } = useFixed();
@@ -39,7 +42,11 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const [logout] = useLogoutMutation();
     const params = useParams();
     const lng = params.lng as string;
-    const { t, i18n } = useClientTranslation(lng, "navbar");
+
+
+    const ns = defineNs(navBarType)
+
+    const { t, i18n } = useClientTranslation(lng, ns);
 
 
     const style = marginTop

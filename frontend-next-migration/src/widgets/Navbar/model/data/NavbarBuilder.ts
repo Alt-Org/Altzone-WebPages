@@ -6,7 +6,7 @@ import {
     NavbarMenuItem,
     NavLogoObject,
     Position
-} from "../types/types";
+} from "../types";
 import {DropDownElement} from "@/shared/ui/DropdownWrapper";
 
 

@@ -1,76 +1,136 @@
-.main{
-    min-height: 100vh;
-    padding-top: 18vh;
+.pageContainer {
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
 }
 
-.MainGameArt {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    //margin-top: 10%;
-    margin-left: 10%;
-    position: relative;
-    h1{
-        font-size: 3rem;
-    }
+.mainContent {
+  top: 1.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-content: center;
+  flex-direction: row;
+  width: 90%;
+  border: 1px solid rgb(0, 255, 21);
+  border-radius: 10px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 10%;
+  overflow: visible; // Ensure this is set
 }
 
-.wholePageBG{
-    filter: brightness(85%);
+.navbarSide {
+  position: sticky;
+  top: 10rem; // Adjust as needed
+  margin-left: 2rem;
+  height: calc(100vh - 10rem); // Adjust as needed
+  width: 25%;
+  overflow-y: auto;
+  font-size: 1.6em;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+
+    transition: color 0.5s, border-left 0.2s;
+    &:hover {
+      color: orange;
+    }
+
+    &.active {
+      color: orange;
+      border-left: 4px solid yellow;
+    }
+
+    &:active {
+      outline: none;
+    }
+
+    user-select: none;
+  }
 }
 
-.RowTextImg {
-    display: flex;
-    flex-direction: row ;
-    width: 100%;
-    align-items: center;
-    justify-content: flex-start;
-    
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 1.5em;
+  margin: 3px;
 }
 
-.RowText{
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+.section {
+  width: 100%;
+  height: fit-content;
+  margin: 5%;
+  padding: 7%;
+  background-color: orange;
+  border-radius: 10px;
+  color: black;
+  border: 2px solid rgb(13, 174, 13);
+
+  h2 {
+    text-align: center;
+    color: rgb(233, 225, 225);
+    font-size: 1.7em;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 0.5em;
+    background-color: rgb(13, 174, 13);
+  }
+  a {
+    color: rgb(81, 255, 0);
+  }
+
+  a:hover {
+    color: rgb(255, 255, 255);
+  }
 }
 
-.RowImg{
-    width: 30%;
-    margin-left: 5%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    h1{
-        font-size: 3rem;
-    }
+.sectionImage {
+  margin-top: 10%;
+  border: solid 1px rgb(255, 255, 255);
+  border-radius: 10px;
+  height: auto;
+  width: 100%;
 }
 
-@media (max-width: 1150px) {
-    .MainGameArt{
-        width: 90%;
-        //margin-top: 20%;
-        margin-left: 5%;
-        
-    }
-    .RowTextImg{
-        flex-direction: column !important;
-        align-items: center;
-        justify-content: center;
-    }
-    .RowText{
-        width: 100%;
-    }
-    .RowImg{
-        width: 60%;
-        margin-left: 0%;
-    }
+.content.isMobile {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  padding: 20px;
+  font-size: 1.2em;
+  margin: 20px;
+}
 
+.mainContent.isMobile {
+  margin-top: 15%;
+}
 
+.mainContent.isTablet {
+  top: 2rem;
+}
+
+.mainContent.isDesktop {
+  top: 0.5rem;
+}
+
+.mainContent.isWidescreen {
+  top: -1rem;
+}
+
+.navbarSide.isWidescreen {
+  top: 4rem;
 }
