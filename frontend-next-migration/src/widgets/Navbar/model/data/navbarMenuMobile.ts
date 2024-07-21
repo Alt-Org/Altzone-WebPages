@@ -33,20 +33,6 @@ navbarClanBuilder.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarClanMobile = navbarClanBuilder.build();
 
-const navbarTeachingBuilder = new NavbarBuilder();
-navbarTeachingBuilder.addLogo(
-  'main',
-  img as unknown as string,
-  RoutePaths.MAIN,
-);
-navbarTeachingBuilder.addLink('main', RoutePaths.MAIN, false);
-
-TeachingSections.forEach((section) => {
-  navbarTeachingBuilder.addLink(section.label, `#${section.id}`, false);
-});
-
-export const navbarTeachingMobile = navbarTeachingBuilder.build();
-
 const navbarGameArtBuilder = new NavbarBuilder();
 navbarGameArtBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
 navbarGameArtBuilder.addLink('main', RoutePaths.MAIN, false);

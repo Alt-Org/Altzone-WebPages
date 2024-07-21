@@ -42,9 +42,6 @@ navbarClanBuilder.addLink('my_clan', RoutePaths.MEMBERS, true);
 
 export const navbarClanDesktop = navbarClanBuilder.build();
 
-const navbarTeachingBuilder = new NavbarBuilder();
-export const navbarTeachingDesktop = navbarBuilderV2.build();
-
 const navbarGameArtBuilder = new NavbarBuilder();
 export const navbarGameArtDesktop = navbarBuilderV2.build();
 
