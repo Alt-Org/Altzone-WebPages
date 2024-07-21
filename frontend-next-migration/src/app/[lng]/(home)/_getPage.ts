@@ -5,6 +5,14 @@ import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 export async function _getPage (lng: string){
     const {t} = await useServerTranslation(lng, 'main');
 
+
+    const seo = {
+        title: t("head-title"),
+        description: t("head-description"),
+        keywords: t("head-keywords"),
+    }
+
+
     const playWithUs = {
         title: t("playWithUs-title"),
         webGl: {
@@ -42,13 +50,18 @@ export async function _getPage (lng: string){
         title: t("videoAndGalleries-title")
     }
 
-
-    return {
+    const page = {
         playWithUs,
         projectDescription,
         getToKnowComics,
         videoAndGalleries,
     }
 
+
+
+    return {
+        page,
+        seo
+    }
 
 }
