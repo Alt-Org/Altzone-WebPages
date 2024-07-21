@@ -3,6 +3,9 @@ import { Open_Sans, Urbanist, Rubik } from 'next/font/google';
 import '../_styles/index.scss';
 import {Providers} from "../_providers";
 import { CookieConsentComponent } from '@/features/CookieConsent';
+import { dir } from 'i18next';
+import { languages } from '@/shared/i18n/settings/settings';
+import {ReactNode} from "react";
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -29,10 +32,7 @@ export const metadata: Metadata = {
     'altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään',
 };
 
-import { dir } from 'i18next';
 
-import { languages } from '@/shared/i18n/settings/settings';
-import {ReactNode} from "react";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
