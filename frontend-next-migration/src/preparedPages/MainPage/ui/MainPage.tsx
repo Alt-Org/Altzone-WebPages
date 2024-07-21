@@ -14,12 +14,23 @@ import {VideoAndGalleries} from "./_components/sections/VideoAndGalleries";
 import {PlayWithUs} from "./_components/sections/PlayWithUs";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
+import {
+    ProjectDescriptionProps
+} from "./_components/sections/ProjectDescription";
+
 
 type Props = {
     t: (key: string) => string;
+    projectDescription: ProjectDescriptionProps;
 }
 
-function MainPage ({ t }: Props)  {
+function MainPage (props: Props)  {
+
+    const {
+        t ,
+        projectDescription
+    } = props;
+
     const sameBg = undefined;
 
     return (
@@ -27,8 +38,7 @@ function MainPage ({ t }: Props)  {
 
             <ProjectDescription
                 className={cls.description}
-                title={t('project-description-title')}
-                description={t('project-description-text')}
+                {...projectDescription}
             />
 
             <HorizontalLines />
