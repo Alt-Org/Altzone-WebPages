@@ -1,8 +1,6 @@
 import {MainPage as PreparedPage} from "@/preparedPages/MainPage";
 import {useServerTranslation} from "@/shared/i18n";
 import {Metadata} from "next";
-import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {_getPage} from "./_getPage";
 
 type Props = {
