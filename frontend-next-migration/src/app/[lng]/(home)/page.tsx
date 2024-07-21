@@ -15,11 +15,9 @@ export default async function MainPage({params}: Props) {
     const {page} = await  _getPage(params.lng);
 
     return (
-        <>
             <PreparedPage
                 {...page}
             />
-        </>
     );
 
 }
