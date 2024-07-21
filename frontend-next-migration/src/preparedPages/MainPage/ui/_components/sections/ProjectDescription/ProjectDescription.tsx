@@ -8,7 +8,7 @@ import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { Paragraph } from "@/shared/ui/Paragraph";
 import {useInView} from "react-intersection-observer";
 
-export interface Props {
+interface Props {
     className?: string;
     title: string;
     description: string;

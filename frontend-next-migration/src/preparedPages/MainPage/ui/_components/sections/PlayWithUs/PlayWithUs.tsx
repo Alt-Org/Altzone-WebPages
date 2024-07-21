@@ -13,7 +13,7 @@ type WebGl = {
     link: string;
 }
 
-type Props = {
+export type Props = {
     title: string;
     webGl: WebGl;
     googlePLayLink: string;

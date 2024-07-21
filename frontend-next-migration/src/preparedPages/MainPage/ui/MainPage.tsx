@@ -11,7 +11,7 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import { ProjectDescription,ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
 import { GetToKnowComics } from "./_components/sections/GetToKnowComics";
 import {VideoAndGalleries} from "./_components/sections/VideoAndGalleries";
-import {PlayWithUs} from "./_components/sections/PlayWithUs";
+import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 
 
@@ -19,13 +19,15 @@ import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 type Props = {
     t: (key: string) => string;
     projectDescription: ProjectDescriptionProps;
+    playWithUs: PlayWithUsProps;
 }
 
 function MainPage (props: Props)  {
 
     const {
         t ,
-        projectDescription
+        projectDescription,
+        playWithUs
     } = props;
 
     const sameBg = undefined;
@@ -41,24 +43,7 @@ function MainPage (props: Props)  {
             <HorizontalLines />
 
             <PlayWithUs
-                title={t("playWithUs-title")}
-                webGl={{
-                    title: t('PlayOnline'),
-                    link: AppExternalLinks.webgl
-                }}
-                googlePLayLink={AppExternalLinks.downloadAndroid}
-                belowNavs={ [{
-                    title: t("playWithUs-OpenPositions-title"),
-                    body: t("playWithUs-OpenPositions-body"),
-                    link: AppExternalLinks.duunitori,
-                    isExternal: true
-                },
-                {
-                    title: t("playWithUs-BecomeATester-title"),
-                    body: t("playWithUs-BecomeATester-body"),
-                    link: AppExternalLinks.discord,
-                    isExternal: true
-                }]}
+                {...playWithUs}
             />
 
             <HorizontalLines />
