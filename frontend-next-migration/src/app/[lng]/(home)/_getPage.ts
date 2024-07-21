@@ -57,8 +57,6 @@ export async function _getPage (lng: string){
         videoAndGalleries,
     }
 
-
-
     return {
         page,
         seo
