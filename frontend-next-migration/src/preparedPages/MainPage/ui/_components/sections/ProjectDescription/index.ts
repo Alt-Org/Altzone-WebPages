@@ -1,1 +1,3 @@
-export {ProjectDescription} from "./ProjectDescription"
+export {ProjectDescription} from "./ProjectDescription";
+export type { ProjectDescriptionProps } from "./ProjectDescription";
+

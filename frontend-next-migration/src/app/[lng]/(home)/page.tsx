@@ -24,7 +24,13 @@ export default async function MainPage({ params }: Props){
 
     return (
         <>
-            <PreparedPage t={t}  />
+            <PreparedPage
+                projectDescription={{
+                    title: t('project-description-title'),
+                    description: t('project-description-text')
+            }}
+                t={t}
+            />
         </>
     )
 }
