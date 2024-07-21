@@ -24,13 +24,6 @@ export const dropdowns = {
                 isExternal: false
             }
         },
-        {
-            elementText: "teachingPackage",
-            link: {
-                path: RoutePaths.TEACHING_PACKAGE,
-                isExternal: false
-            }
-        }
     ],
     game: [
 
