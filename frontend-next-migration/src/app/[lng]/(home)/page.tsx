@@ -1,8 +1,8 @@
-// import '../../preparedApp/styles/index.scss'
 import {MainPage as PreparedPage} from "@/preparedPages/MainPage";
 import {useServerTranslation} from "@/shared/i18n";
 import {Metadata} from "next";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 type Props = {
     params: { lng: string }
@@ -49,6 +49,12 @@ export default async function MainPage({params}: Props) {
                     title: t('project-description-title'),
                     description: t('project-description-text')
                 }}
+
+                getToKnowComics={{
+                    title: t("getToKnowComics-title"),
+                    buttonParams: { innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }
+                }}
+
                 t={t}
             />
         </>

@@ -9,7 +9,7 @@ import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 import { ProjectDescription,ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
-import { GetToKnowComics } from "./_components/sections/GetToKnowComics";
+import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
 import {VideoAndGalleries} from "./_components/sections/VideoAndGalleries";
 import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
@@ -20,6 +20,7 @@ type Props = {
     t: (key: string) => string;
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
+    getToKnowComics: GetToKnowComicsProps;
 }
 
 function MainPage (props: Props)  {
@@ -27,7 +28,8 @@ function MainPage (props: Props)  {
     const {
         t ,
         projectDescription,
-        playWithUs
+        playWithUs,
+        getToKnowComics
     } = props;
 
     const sameBg = undefined;
@@ -54,11 +56,8 @@ function MainPage (props: Props)  {
             <HorizontalLines />
 
             <GetToKnowComics
-                title={t("getToKnowComics-title")}
-                buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }}
-                backgroundImageSrc={sameBg}
+                {...getToKnowComics}
             />
-
 
             <HorizontalLines />
             <VideoAndGalleries
