@@ -3,6 +3,7 @@ import {useServerTranslation} from "@/shared/i18n";
 import {Metadata} from "next";
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import {_getPage} from "./_getPage";
 
 type Props = {
     params: { lng: string }
@@ -19,47 +20,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 }
 
 export default async function MainPage({params}: Props) {
-
-    const {t} = await useServerTranslation(params.lng, 'main');
+    const page = await  _getPage(params.lng);
 
     return (
         <>
             <PreparedPage
-                playWithUs={{
-                    title: t("playWithUs-title"),
-                    webGl: {
-                        title: t('PlayOnline'),
-                        link: AppExternalLinks.webgl
-                    },
-                    googlePLayLink: AppExternalLinks.downloadAndroid,
-                    belowNavs: [{
-                        title: t("playWithUs-OpenPositions-title"),
-                        body: t("playWithUs-OpenPositions-body"),
-                        link: AppExternalLinks.duunitori,
-                        isExternal: true
-                    },
-                        {
-                            title: t("playWithUs-BecomeATester-title"),
-                            body: t("playWithUs-BecomeATester-body"),
-                            link: AppExternalLinks.discord,
-                            isExternal: true
-                        }]
-                }}
-                projectDescription={{
-                    title: t('project-description-title'),
-                    description: t('project-description-text')
-                }}
-
-                getToKnowComics={{
-                    title: t("getToKnowComics-title"),
-                    buttonParams: { innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }
-                }}
-
-                videoAndGalleries={{
-                    videoLink: AppExternalLinks.previewVideoYoutube,
-                    title: t("videoAndGalleries-title")
-                }}
-
+                {...page}
             />
         </>
     );
