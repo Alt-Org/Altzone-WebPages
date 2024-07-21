@@ -1,14 +1,12 @@
 'use client';
-import React from 'react';
 import { Navbar } from '@/widgets/Navbar';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import cls from './Privacy.module.scss';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import { Mods } from '@/shared/lib/classNames/classNames';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ScrollTop } from '@/features/ScrollTop';
-import { WikiContentWithSidebar } from '@/widgets/WikiContentWithSidebar';
+import {WikiContentWithSidebar} from "@/shared/ui/WikiContentWithSidebar";
 
 interface Section {
   id: string;
