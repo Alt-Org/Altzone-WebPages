@@ -7,8 +7,7 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata>  {
-    const {seo} = await  _getPage(params.lng);
-    return seo;
+    return await _getPage(params.lng).then(r => r.seo);
 }
 
 export default async function MainPage({params}: Props) {
