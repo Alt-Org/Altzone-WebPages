@@ -13,7 +13,7 @@ type ButtonParams = {
     innerText: string;
 }
 
-type Props = {
+export type Props = {
     buttonParams: ButtonParams;
     backgroundImageSrc?: string;
     title: string;
