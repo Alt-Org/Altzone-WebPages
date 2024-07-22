@@ -30,6 +30,7 @@ const HeroPage: React.FC<Props> = ({
   return (
     <>
       <HeroContainer
+          // @ts-ignore
         group={selectedHero.group}
         groupTextBg={selectedHero.groupTextBg}
         heroColor={selectedHero.heroColor}
