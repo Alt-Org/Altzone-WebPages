@@ -7,8 +7,14 @@ import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
+export interface Props {
+    lng: string
+}
 
-const ComicsGalleriesPage = async ({lng}: {lng: string}) => {
+const ComicsGalleriesPage = async (props: Props) => {
+
+    const {lng} = props;
+
     const {t} = await useServerTranslation(lng, "comics");
 
 
