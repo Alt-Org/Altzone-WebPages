@@ -59,7 +59,7 @@ const GroupWithWorkmanComponent: FC<GroupWithWorkmanProps> = memo(({groupWithMem
 
     return (
         <div className={cls.groupComponent}>
-            <h1>{t(`${groupWithMember.group}`)}</h1>
+            <h2>{t(`${groupWithMember.group}`)}</h2>
             <ul>
                 {groupWithMember.workers.map((member) => (
                     <li key={member.id}>
