@@ -51,6 +51,12 @@
     font-size: clamp(20px, 5vw, 25px);
   }
 
+  @media only screen and (min-width: 1921px) {
+    h3 {
+      font-size: inherit;
+    }
+  }
+
   padding-bottom: 10px;
 
 
@@ -65,6 +71,7 @@
    cursor: pointer;
    @include link-scale-effect('icon');
  }
+
 
 }
 
