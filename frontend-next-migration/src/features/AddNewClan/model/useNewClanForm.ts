@@ -7,7 +7,7 @@ import { ValidationAddNewClan } from '../validations';
 import { IClanCreateDto, useCreateClanMutation } from "@/entities/Clan";
 import { authUserActions, selectProfile } from '@/entities/Auth';
 import { useDispatch, useSelector } from "react-redux";
-import { StateSchema } from "@/preparedApp/providers/StoreProvider";
+import {StateSchema} from "@/app/_providers/StoreProvider";
 
 type Props = {
     onSuccess: () => void;
