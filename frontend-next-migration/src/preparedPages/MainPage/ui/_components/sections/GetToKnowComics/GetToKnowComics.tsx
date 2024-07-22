@@ -55,4 +55,7 @@ const GetToKnowComics = memo((props: Props) => {
     );
 })
 
+GetToKnowComics.displayName = "GetToKnowComics";
+
 export default GetToKnowComics;
+
