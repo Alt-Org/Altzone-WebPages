@@ -26,6 +26,14 @@
 }
 
 .groupComponent{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+
+
   h2{
     font-size: clamp(40px, 7vw, 50px);
     font-family: var(--font-family-main);
@@ -49,6 +57,7 @@
 
   h3{
     font-size: clamp(20px, 5vw, 25px);
+    line-height: var(--font-family-main);
   }
 
   @media only screen and (min-width: 1921px) {
