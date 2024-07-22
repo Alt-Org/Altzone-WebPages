@@ -132,5 +132,6 @@ export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
   );
 });
 
-NavbarMainOld.displayName = 'NavbarMain';
+NavbarMainOld.displayName = 'NavbarMainOld';
 NavbarClanMain.displayName = 'NavbarClanMain';
+NavbarGameArtMain.displayName = 'NavbarGameArtMain';
