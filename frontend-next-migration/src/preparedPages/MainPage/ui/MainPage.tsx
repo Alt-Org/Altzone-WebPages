@@ -12,7 +12,7 @@ import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
 
 
 
-type Props = {
+export type Props = {
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
