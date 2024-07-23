@@ -24,6 +24,9 @@ const WikiContentWithSideBar = (props: Props) => {
   const { sections = [] } = props;
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
+  const [activeSection, setActiveSection] = useState<string>(
+    sections[0]?.id || '',
+  );
   const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>(
     {},
   );
@@ -38,12 +41,17 @@ const WikiContentWithSideBar = (props: Props) => {
   const handleImageError = (id: string) => {
     setImageErrors((prevErrors) => ({ ...prevErrors, [id]: true }));
   };
+
   return (
     <div className={classNames(cls.pageContainer, combinedModCss)}>
       <div className={classNames(cls.mainContent, combinedModCss)}>
         {!isMobileSize && (
           <div className={classNames(cls.navbarSide, combinedModCss)}>
-            <NavbarSide sections={sections} />
+            <NavbarSide
+              sections={sections}
+              activeSection={activeSection}
+              setActiveSection={setActiveSection}
+            />
           </div>
         )}
         <div className={classNames(cls.content, combinedModCss)} id='content'>
