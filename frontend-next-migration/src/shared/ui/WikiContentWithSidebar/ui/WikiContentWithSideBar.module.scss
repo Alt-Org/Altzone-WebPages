@@ -31,11 +31,8 @@
   margin-left: 2rem;
   margin-top: 2rem;
   height: calc(100vh - 5rem); // Adjust as needed
-  background-color: rgba(0, 0, 0, 0.5);
   width: 20%;
-  border: 2px solid rgb(13, 174, 13);
-  border-radius: 10px;
-  overflow-y: auto;
+
   font-size: 1em;
   &::-webkit-scrollbar {
     display: none;
