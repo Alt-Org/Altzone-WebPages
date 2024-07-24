@@ -16,7 +16,7 @@
   align-content: center;
   flex-direction: row;
   width: 90%;
-  border: 1px solid rgb(0, 255, 21);
+  border: 2px solid rgb(13, 174, 13);
   border-radius: 10px;
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
@@ -26,24 +26,25 @@
 
 .navbarSide {
   position: sticky;
-  top: 10rem; // Adjust as needed
-  margin-left: 1rem;
-  height: calc(100vh - 10rem); // Adjust as needed
-  width: 30%;
-  overflow-y: auto;
-  font-size: 1.5em;
+  top: 9.5rem; // Adjust as needed
+  max-height: 600px;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  height: calc(100vh - 5rem); // Adjust as needed
+  width: 20%;
+
+  font-size: 1em;
   &::-webkit-scrollbar {
     display: none;
   }
 
   .sidebarLogo {
-    position: inherit;
     display: flex;
-    width: 100%;
+    width: 60%;
     height: auto;
-    object-fit: cover;
     max-width: 250px;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    margin-left: 15%;
 
     img {
       width: 100%;
