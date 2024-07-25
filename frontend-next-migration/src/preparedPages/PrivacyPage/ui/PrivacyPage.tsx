@@ -6,7 +6,8 @@ import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ScrollTop } from '@/features/ScrollTop';
-import {WikiContentWithSidebar} from "@/shared/ui/WikiContentWithSidebar";
+import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
+import { Footer } from '@/widgets/Footer';
 
 interface Section {
   id: string;
@@ -33,6 +34,7 @@ const PrivacyPage = (props: Props) => {
       <div>
         <FeedbackSideButton />
       </div>
+      <Footer />
       <ScrollTop />
     </div>
   );
