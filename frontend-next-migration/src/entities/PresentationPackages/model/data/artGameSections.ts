@@ -15,9 +15,7 @@ const imageSrcs = [
   '/images/gameArt/intro.webp',
   '/images/gameArt/implementation.webp',
   '/images/gameArt/message.webp',
-  '/images/gameArt/content.webp',
   '/images/gameArt/joinus.webp',
-  '/images/gameArt/literature.webp',
 ];
 
 const logoSrc = '/images/gameArt/gameArtLogo.webp';
