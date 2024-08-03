@@ -1,9 +1,166 @@
-.Loader{
+.Loader {
   @include position-absolute-center
 }
 
-.DeleteClanBtn{
+.DeleteClanBtn {
   background-color: var(--error-color);
   @include link-scale-effect;
   font-family: var(--font-family-texts)
+}
+
+.EditClanBtn {
+  background-color: rgba(0, 0, 0, 0.7);
+  @include link-scale-effect;
+  font-family: var(--font-family-texts)
+}
+
+.JoinClanBtn {
+  background-color: rgba(0, 0, 0, 0.7);
+  @include link-scale-effect;
+  font-family: var(--font-family-texts)
+}
+
+.clanLogo {
+  max-width: 100px;
+  height: auto;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 20% repeat(4, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+}
+
+.div1 {
+  display: grid;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-width: 50%;
+}
+
+.div2 {
+  display: flex;
+  padding: 10px;
+  font-size: var(--font-line-xl);
+  grid-area: 1 / 2 / 2 / 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.clanName {}
+
+.number {}
+
+.number:hover {
+  color: yellow;
+  transition: 2s;
+}
+
+.div3 {
+  grid-area: 2 / 1 / 5 / 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: var(--font-line-m);
+}
+
+.div4 {
+  grid-area: 2 / 2 / 5 / 3;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.div5 {
+  display: flex;
+  grid-area: 1 / 5 / 2 / 7;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+}
+
+.div6 {
+  display: grid;
+  grid-area: 2 / 5 / 5 / 7;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: var(--font-line-m);
+  text-align: center;
+}
+
+.membersList {
+  max-height: 400px;
+  min-height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  font-size: var(--font-line-m);
+  align-items: top;
+  text-align: left;
+}
+
+.memberItem {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Optional: Add some styles for scrollbar */
+.membersList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.membersList::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.membersList::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.div7 {
+  grid-area: 2 / 3 / 3 / 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: var(--font-line-s);
+}
+
+.mottoText {
+  font-size: var(--font-line-s);
+  text-align: center;
+  font-style: italic;
+}
+
+.div8 {
+  grid-area: 3 / 3 / 5 / 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: var(--font-line-m);
+}
+
+.clanInfo {}
+
+.infoItem {
+  font-size: var(--font-line-s);
+  text-align: left;
 }
