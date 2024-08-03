@@ -4,6 +4,7 @@ export {
     useUpdateClanMutation,
     clanApi,
     useGetClanByIdQuery,
+    useGetClanByIdWithPlayersQuery,
     useGetClansQuery,
     clanEndpoints
 } from "./model/clanApi";
