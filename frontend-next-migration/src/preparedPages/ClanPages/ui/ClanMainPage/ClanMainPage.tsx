@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { NavbarClan } from "@/widgets/Navbar";
+import { Navbar } from "@/widgets/Navbar";
 import { Container } from "@/shared/ui/Container";
 import { selectProfile } from "@/entities/Auth";
 import cls from "./ClanMainPage.module.scss";
@@ -37,7 +37,7 @@ const ClanMainPage = ({ children }: any) => {
 
     return (
         <div className={cls.Wrapper}>
-            <NavbarClan className={cls.Navbar} />
+            <Navbar className={cls.Navbar} />
             <Container className={cls.Container}>
                 <div>
                     {/*<Link href={RoutePaths.CLAN_ALL}>{t('all_clans')}</Link>*/}
