@@ -16,6 +16,8 @@ import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { toast } from "react-toastify";
 import { useClientTranslation } from "@/shared/i18n";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import { GetClansResponse, useGetClansQuery } from "@/entities/Clan";
+import { ClansViewAndSearch } from "../_components/clanoverview/clanViewAndSearch";
 
 const ClanRoomSubPage = () => {
     // @ts-ignore
@@ -30,11 +32,33 @@ const ClanRoomSubPage = () => {
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isInClan, setIsInClan] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [currentSearch, setSearch] = useState('');
 
+    const { data: clans } = useGetClansQuery({ page: 1, search: currentSearch });
     const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(id as string);
-
+    const router = useRouter();
+    const onClickToClan = (id: string) => {
+        router.push(`${RoutePaths.clan}/${id}`);
+    }
     const adminIds = clan?.data?.Clan?.admin_ids || [];
     const players = clan?.data.Clan.Player || [];
+
+
+    const onClickToSearch = (search: string) => {
+        setSearch(convertToQuerySearch(search))
+    }
+
+
+
+    // Temporary way to convert search query value to case-insensitive in front
+    const convertToQuerySearch = (search: string): string => {
+        // Converts value "testi" to: 'name=".*[tT][eE][sS][tT][iI].*"'
+        const cleanValue = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const convertedValue = cleanValue.split('').map(char => `[${char.toLowerCase()}${char.toUpperCase()}]`).join('');
+        const querySearch = `name=".*${convertedValue}.*"`;
+        console.log("querySearch: ", querySearch);
+        return querySearch;
+    };
 
     useEffect(() => {
         if (clan?.data.Clan.isOpen) {
@@ -75,17 +99,22 @@ const ClanRoomSubPage = () => {
 
 
             <div className={cls.parent}>
-                <div className={cls.div1}>
+                {/* <div className={cls.div1}>
                     <Image
                         src={clanLogo}
                         alt={"clan logo"}
                         className={cls.clanLogo} />
-                </div>
+                </div> */}
                 <div className={cls.div2}>
+                    <Image
+                        src={clanLogo}
+                        alt={"clan logo"}
+                        className={cls.clanLogo} />
                     <span className={cls.clanName}>{clan?.data?.Clan?.name}</span>
                     <a className={cls.number} href="/leaderboardjne">♛12</a>
                 </div>
-                <div className={cls.div3}>{t("clan_list")}
+                <div className={cls.div3}>
+                    {<ClansViewAndSearch />}
                 </div>
                 <div className={cls.div4}>
                     <Image
