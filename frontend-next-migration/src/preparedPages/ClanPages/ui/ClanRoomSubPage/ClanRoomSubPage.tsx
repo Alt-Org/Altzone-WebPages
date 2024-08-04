@@ -1,37 +1,34 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter, useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useSelector } from "react-redux";
 import { useGetClanByIdWithPlayersQuery } from "@/entities/Clan";
 import { Loader } from "@/shared/ui/Loader";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
-import { useDeleteClan } from "@/features/DeleteClan";
+import { useJoinClan } from "@/features/JoinClan";
+import { useLeaveClan } from "@/features/LeaveClan";
 import { selectProfile } from "@/entities/Auth";
 import clanLogo from "@/shared/assets/images/clanLogos/temp-clanlogo.png";
 import clanHome from "@/shared/assets/images/clanLogos/temp-clanHome.png";
 import cls from "./ClanRoomSubPage.module.scss";
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { toast } from "react-toastify";
 import { useClientTranslation } from "@/shared/i18n";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import { useGetClansQuery } from "@/entities/Clan";
 import { ClansViewAndSearch } from "../_components/clanoverview/clanViewAndSearch";
 
 const ClanRoomSubPage = () => {
-    // @ts-ignore
     const { id, lng } = useParams();
     const user = useSelector(selectProfile);
     const lng2 = lng as string;
     const { t } = useClientTranslation(lng2, "clan");
     const { isMobileSize } = useIsMobileSize();
 
-    const playerId = user?.Player._id;
+    const playerId: string | undefined = user?.Player?._id;
     const [isAdmin, setIsAdmin] = useState(false);
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isInClan, setIsInClan] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [currentSearch, setSearch] = useState('');
 
     const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(id as string);
     const adminIds = clan?.data?.Clan?.admin_ids || [];
@@ -57,7 +54,8 @@ const ClanRoomSubPage = () => {
         }
     }, [isLoading, clan?.data?.Clan?.admin_ids, playerId, clan?.data.Clan.Player, clan?.data.Clan.isOpen]);
 
-    const { handleDelete } = useDeleteClan();
+    const { handleJoin } = useJoinClan();
+    const { handleLeave } = useLeaveClan();
 
     if (isLoading) return <Loader className={cls.Loader} />
 
@@ -113,7 +111,7 @@ const ClanRoomSubPage = () => {
                             className={cls.JoinClanBtn}
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
-                            onClick={() => toast.success(t("toast_join_success"))} >
+                            onClick={() => handleJoin(clan?.data?.Clan?._id, playerId ?? "", "join")} >
                             {t("join_clan_btn")}
                         </Button>
                     ) : isLoggedIn && !isInClan && !isOpen ? (
@@ -129,7 +127,7 @@ const ClanRoomSubPage = () => {
                             className={cls.DeleteClanBtn}
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
-                            onClick={() => toast.success('You left the Clan')} >
+                            onClick={() => handleLeave()} >
                             {t("leave_clan_btn")}
                         </Button>
                     )
