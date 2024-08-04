@@ -11,6 +11,7 @@ import { useLeaveClan } from "@/features/LeaveClan";
 import { selectProfile } from "@/entities/Auth";
 import clanLogo from "@/shared/assets/images/clanLogos/temp-clanlogo.png";
 import clanHome from "@/shared/assets/images/clanLogos/temp-clanHome.png";
+import lock from "@/shared/assets/images/clanLogos/lock.png";
 import cls from "./ClanRoomSubPage.module.scss";
 import { toast } from "react-toastify";
 import { useClientTranslation } from "@/shared/i18n";
@@ -106,20 +107,24 @@ const ClanRoomSubPage = () => {
                             onClick={() => toast.error(t("toast_notloggedin"))} >
                             {t("join_clan_btn")}
                         </Button>
+                    ) : isLoggedIn && !isOpen ? (<>
+                        <Button
+                            className={cls.JoinClanBtn}
+                            theme={ButtonTheme.Graffiti}
+                            size={ButtonSize.L}
+                            onClick={() => toast.error('Clan is not open')} >
+                            {t("join_clan_btn")}
+                        </Button>
+                        <Image
+                            src={lock}
+                            alt={"clan logo"}
+                            className={cls.lock} /></>
                     ) : isLoggedIn && !isInClan ? (
                         <Button
                             className={cls.JoinClanBtn}
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
                             onClick={() => handleJoin(clan?.data?.Clan?._id, playerId ?? "", "join")} >
-                            {t("join_clan_btn")}
-                        </Button>
-                    ) : isLoggedIn && !isInClan && !isOpen ? (
-                        <Button
-                            className={cls.JoinClanBtn}
-                            theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.L}
-                            onClick={() => toast.error('Clan is not open')} >
                             {t("join_clan_btn")}
                         </Button>
                     ) : (

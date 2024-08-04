@@ -20,6 +20,12 @@
   font-family: var(--font-family-texts)
 }
 
+.lock {
+  display: flex;
+  max-width: 40px;
+  height: auto;
+}
+
 .clanLogo {
   max-width: 100px;
   height: auto;
