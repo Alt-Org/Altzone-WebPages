@@ -11,12 +11,11 @@ import { selectProfile } from "@/entities/Auth";
 import clanLogo from "@/shared/assets/images/clanLogos/temp-clanlogo.png";
 import clanHome from "@/shared/assets/images/clanLogos/temp-clanHome.png";
 import cls from "./ClanRoomSubPage.module.scss";
-import { envHelper } from "@/shared/const/envHelper";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { toast } from "react-toastify";
 import { useClientTranslation } from "@/shared/i18n";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import { GetClansResponse, useGetClansQuery } from "@/entities/Clan";
+import { useGetClansQuery } from "@/entities/Clan";
 import { ClansViewAndSearch } from "../_components/clanoverview/clanViewAndSearch";
 
 const ClanRoomSubPage = () => {
