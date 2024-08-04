@@ -120,6 +120,12 @@
   border-bottom: 1px solid #ddd;
 }
 
+.adminItem {
+  padding: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #ff0000;
+}
+
 /* Optional: Add some styles for scrollbar */
 .membersList::-webkit-scrollbar {
   width: 8px;
