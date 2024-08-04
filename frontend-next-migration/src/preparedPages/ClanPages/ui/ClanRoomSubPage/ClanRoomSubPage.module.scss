@@ -25,6 +25,12 @@
   height: auto;
 }
 
+.clanHome {
+  border-radius: var(--border-radius-custom);
+  max-width: 100%;
+  height: auto;
+}
+
 .parent {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
