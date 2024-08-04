@@ -6,7 +6,9 @@ export {
     useGetClanByIdQuery,
     useGetClanByIdWithPlayersQuery,
     useGetClansQuery,
+    useLeaveClanMutation,
+    useJoinClanMutation,
     clanEndpoints
 } from "./model/clanApi";
 
-export type { IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, GetClansResponse, GetClanResponse } from "./types/clan";
+export type { IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, GetClansResponse, GetClanResponse, IJoin, IJoinDto } from "./types/clan";
