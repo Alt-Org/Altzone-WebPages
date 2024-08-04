@@ -33,31 +33,9 @@ const ClanRoomSubPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [currentSearch, setSearch] = useState('');
 
-    const { data: clans } = useGetClansQuery({ page: 1, search: currentSearch });
     const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(id as string);
-    const router = useRouter();
-    const onClickToClan = (id: string) => {
-        router.push(`${RoutePaths.clan}/${id}`);
-    }
     const adminIds = clan?.data?.Clan?.admin_ids || [];
     const players = clan?.data.Clan.Player || [];
-
-
-    const onClickToSearch = (search: string) => {
-        setSearch(convertToQuerySearch(search))
-    }
-
-
-
-    // Temporary way to convert search query value to case-insensitive in front
-    const convertToQuerySearch = (search: string): string => {
-        // Converts value "testi" to: 'name=".*[tT][eE][sS][tT][iI].*"'
-        const cleanValue = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const convertedValue = cleanValue.split('').map(char => `[${char.toLowerCase()}${char.toUpperCase()}]`).join('');
-        const querySearch = `name=".*${convertedValue}.*"`;
-        console.log("querySearch: ", querySearch);
-        return querySearch;
-    };
 
     useEffect(() => {
         if (clan?.data.Clan.isOpen) {
@@ -117,10 +95,9 @@ const ClanRoomSubPage = () => {
                 </div>
                 <div className={cls.div4}>
                     <Image
-                        src={clanLogo}
-                        alt={"clan logo"}
-                        className={cls.clanLogo} />
-                    (sielunkoti kuva)
+                        src={clanHome}
+                        alt={"clan home"}
+                        className={cls.clanHome} />
                 </div>
                 <div className={cls.div5}>
                     {!isLoggedIn ? (
