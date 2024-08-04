@@ -1,0 +1,39 @@
+.Loader {
+    @include position-absolute-center
+}
+
+.EditClanBtn {
+    background-color: rgba(0, 0, 0, 0.7);
+    @include link-scale-effect;
+    font-family: var(--font-family-texts)
+}
+
+.searchField {
+    display: flex;
+}
+
+.clanList {
+    padding: 1px;
+    border-radius: var(--border-radius-custom);
+    font-size: var(--font-line-m);
+    align-items: top;
+    text-align: left;
+}
+
+.tableContainer {
+    border-radius: var(--border-radius-custom);
+    max-height: 400px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.clanList {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.clanList th,
+.clanList td {
+    padding: 1px;
+    border-bottom: 1px solid #ccc;
+}
