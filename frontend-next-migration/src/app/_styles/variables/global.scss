@@ -87,6 +87,10 @@
   :root {
     --navbar-logo-height: 140px;
   }
+
+  body.body-scroll-disabled {
+    overflow: hidden;
+  }
 }
 
 @media (max-width: 550px) {
