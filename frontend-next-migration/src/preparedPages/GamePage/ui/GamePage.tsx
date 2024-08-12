@@ -10,6 +10,7 @@ export default function GamePage () {
                 width="100%"
                 height="100%"
                 src={AppExternalLinks.webgl}
+                // allowFullScreen
             />
         </>
     )
