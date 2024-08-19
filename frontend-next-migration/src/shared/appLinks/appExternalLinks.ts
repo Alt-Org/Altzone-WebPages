@@ -4,7 +4,7 @@
 export const AppExternalLinks = {
   readMore:
     'https://drive.google.com/file/d/16KAaOAQudDQ_PvGfebXiB51mtR_M42UW/view?usp=sharing',
-  previewVideoYoutube: 'https://www.youtube.com/embed/a0Z6DSX3iqE?si=eeif6PonxBAT2NgF&rel=0',
+  previewVideoYoutube: 'https://youtu.be/a0Z6DSX3iqE',
   webgl: 'https://altzone.fi/game/',
   downloadAndroid:
     'https://play.google.com/store/apps/details?id=eu.altgame.altzone',
@@ -18,5 +18,3 @@ export const AppExternalLinks = {
     'https://docs.google.com/forms/d/e/1FAIpQLScYGN0JlcgkqKpotNeE6hyWLG7oI1g19myAtrHf2mmHz7g7AA/viewform',
   stub: '#developerChangeThisLink',
 } as const;
-
-

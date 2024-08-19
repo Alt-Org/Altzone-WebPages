@@ -147,14 +147,17 @@ export default class VideoContentYoutube extends Component<VideoContentProps, Vi
 
         return (
                 <div className={this.state.className+ " " + "__iframeVideo"} style={{position: "relative",width:"100%",height:"0",paddingBottom:"56.25%"}}>
-                    <iframe allowFullScreen={true} className={this.state.className+"__iframe"} style={{maxWidth: "100%", width:"100%", position:"absolute", left:"0"}}
-                            key={"vc_"+this.state.videoId+"__iframe"}
-                            title={this.state.title}
-                            loading="lazy"
-                            // alt={this.state.title}
-                            src={this.state.autoPlay
-                        ? "https://www.youtube.com/embed/"+this.state.videoId+"?rel=false&showinfo=false&autoplay=true"
-                                : "https://www.youtube.com/embed/"+this.state.videoId} allow='autoplay; encrypted-media' width="100%"
+                    <iframe
+                        allowFullScreen={true}
+                        className={this.state.className+"__iframe"}
+                        style={{maxWidth: "100%", width:"100%", position:"absolute", left:"0"}}
+                        key={"vc_"+this.state.videoId+"__iframe"}
+                        title={this.state.title}
+                        loading="lazy"
+                        // alt={this.state.title}
+                        src={this.state.autoPlay
+                        ? "https://www.youtube.com/embed/"+this.state.videoId+"?rel=0&showinfo=false&autoplay=true"
+                                : "https://www.youtube.com/embed/"+this.state.videoId+"?rel=0&showinfo=false&autoplay=true"} allow='autoplay; encrypted-media' width="100%"
                             height="100%" frameBorder={0} />
                 </div>
             );
