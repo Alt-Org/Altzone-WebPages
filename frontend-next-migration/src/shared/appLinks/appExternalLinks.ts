@@ -4,7 +4,7 @@
 export const AppExternalLinks = {
   readMore:
     'https://drive.google.com/file/d/16KAaOAQudDQ_PvGfebXiB51mtR_M42UW/view?usp=sharing',
-  previewVideoYoutube: 'https://youtu.be/a0Z6DSX3iqE',
+  previewVideoYoutube: 'https://youtu.be/a0Z6DSX3iqE?autoplay=1&rel=0',
   webgl: 'https://altzone.fi/game/',
   downloadAndroid:
     'https://play.google.com/store/apps/details?id=eu.altgame.altzone',
