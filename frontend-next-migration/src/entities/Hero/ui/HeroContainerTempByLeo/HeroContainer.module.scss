@@ -130,9 +130,7 @@
   min-height: 40%;
   display: flex;
   justify-content: center;
-  border-radius: 10px;
   margin-bottom: 1rem;
-  border: 2px solid rgb(255, 255, 255);
 }
 
 .heroImgWrapper.isMobile {
@@ -156,6 +154,9 @@
   width: 100%;
   user-select: none;
   pointer-events: none;
+
+  border-radius: var(--border-radius-custom);
+
 }
 .heroImg.isMobile {
   width: 50%;
