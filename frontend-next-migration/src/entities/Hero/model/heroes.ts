@@ -40,7 +40,7 @@ const Heroes = [
     // group: 'TORJUJAT',
     groupTextBg: redBg,
     // color: '#e20505',
-    color: 'rgba(226, 5, 5, 0.8)',
+    color: 'rgba(226, 5, 5, 0.5)',
   },
   {
     id: 1,
@@ -54,7 +54,7 @@ const Heroes = [
     // group: 'TORJUJAT',
     groupTextBg: redBg,
     // color: '#e20505',
-    color: 'rgba(226, 5, 5, 0.8)',
+    color: 'rgba(226, 5, 5, 0.5)',
   },
   {
     id: 2,
@@ -68,7 +68,7 @@ const Heroes = [
     // group: 'SULAUTUJAT',
     groupTextBg: purpleBg,
     // color: '#910494',
-    color: 'rgba(145, 4, 148, 0.8)',
+    color: 'rgba(145, 4, 148, 0.5)',
   },
   {
     id: 3,
@@ -82,7 +82,7 @@ const Heroes = [
     // group: 'ÄLYLLISTÄJÄT',
     groupTextBg: darkblueBg,
     // color: '#330393',
-    color: 'rgba(51, 3, 147, 0.8)',
+    color: 'rgba(51, 3, 147, 0.5)',
   },
   {
     id: 4,
@@ -96,7 +96,7 @@ const Heroes = [
     // group: 'PEILAAJAT',
     groupTextBg: yellowBg,
     // color: '#feed01',
-    color: 'rgba(254, 237, 1, 0.8)',
+    color: 'rgba(254, 237, 1, 0.5)',
   },
   {
     id: 5,
@@ -110,7 +110,7 @@ const Heroes = [
     // group: 'TORJUJAT',
     groupTextBg: redBg,
     // color: '#e20505',
-    color: 'rgba(226, 5, 5, 0.8)',
+    color: 'rgba(226, 5, 5, 0.5)',
   },
 ] as const;
 
