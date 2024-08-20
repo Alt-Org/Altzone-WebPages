@@ -91,7 +91,7 @@ const HeroContainer = (props: Props) => {
                 </div>
                 <div
                   className={classNames(cls.heroImgWrapper, combinedModCss)}
-                  style={{ backgroundColor: heroColor }}>
+                >
                   <Link
                     className={classNames(cls.innerLeftArrow, combinedModCss, [
                       cls.innerArrow,
