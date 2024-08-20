@@ -48,7 +48,6 @@ const HeroPage: FC<Props> = ({
         heroGif={selectedHero.imgGif}
         xLink={RoutePaths.HEROES}
       />
-      <HorizontalLines />
     </main>
   );
 };

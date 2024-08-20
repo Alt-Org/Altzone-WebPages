@@ -18,16 +18,16 @@
 }
 
 .componentWrapper {
-  margin-top: 20%;
-  margin-bottom: 5%;
+  //margin-top: 20%;
+  //margin-bottom: 5%;
   display: flex;
   align-items: center;
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
 }
 .componentWrapper.isTablet {
-  margin-top: 30%;
-  margin-bottom: 20%;
+  //margin-top: 30%;
+  //margin-bottom: 20%;
 }
 
 .outerArrow {
