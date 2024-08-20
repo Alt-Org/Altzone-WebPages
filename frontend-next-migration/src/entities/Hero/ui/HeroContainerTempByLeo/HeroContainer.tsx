@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
+// import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
@@ -57,16 +57,6 @@ const HeroContainer = (props: Props) => {
 
   return (
     <div className={cls.PageWrapper}>
-      <div className={cls.backgroundImageWrapper}>
-        <Image
-          src={groupBg}
-          alt='Background Image'
-          quality={100}
-          className={cls.backgroundImage}
-          style={{ backgroundColor: heroColor }}
-          priority={true}
-        />
-      </div>
       <div className={classNames(cls.componentWrapper, combinedModCss)}>
         <Link
           className={classNames(cls.outerLeftArrow, combinedModCss, [
