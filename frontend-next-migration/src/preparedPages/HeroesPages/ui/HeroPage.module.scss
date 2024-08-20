@@ -1,5 +1,8 @@
 .main{
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -8,8 +11,3 @@
     filter: brightness(85%);
 }
 
-
-
-@media (max-width: 1150px) {
-   
-}
