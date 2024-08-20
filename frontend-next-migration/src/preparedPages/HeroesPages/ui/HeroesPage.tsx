@@ -28,4 +28,3 @@ export default withBackgroundImage({
   // @ts-ignore
 })(HeroesPage);
 
-// export default GameArtPage;
