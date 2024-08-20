@@ -72,7 +72,7 @@ const HeroContainer = (props: Props) => {
         </div>
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
-          <div className={cls.container}>
+          <div className={classNames(cls.container, combinedModCss)} >
             <div className={classNames(cls.contentWrapper, combinedModCss)}   style={{
               backgroundColor: heroColor,
             }}>
