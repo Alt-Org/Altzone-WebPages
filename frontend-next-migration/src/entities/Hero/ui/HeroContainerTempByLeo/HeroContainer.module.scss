@@ -203,8 +203,8 @@
 .xLinkButton {
   @include link-scale-effect;
   position: absolute;
-  top: -5rem;
-  right: -3rem;
+  top: 0.5rem;
+  right: 0.8rem;
   z-index: 2;
   cursor: pointer;
   user-select: none;
