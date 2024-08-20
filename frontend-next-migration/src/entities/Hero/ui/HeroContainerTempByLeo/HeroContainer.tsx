@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-// import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
+
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
@@ -22,9 +22,6 @@ type Props = {
   rightArrowLink: string;
   xLink: string;
 };
-/**
- * @deprecated
- **/
 const HeroContainer = (props: Props) => {
   const {
     heroImg,
