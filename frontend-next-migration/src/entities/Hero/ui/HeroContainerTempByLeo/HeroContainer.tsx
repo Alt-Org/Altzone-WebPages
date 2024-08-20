@@ -53,7 +53,6 @@ const HeroContainer = (props: Props) => {
   };
 
   return (
-    <div className={cls.PageWrapper}>
       <div className={classNames(cls.componentWrapper, combinedModCss)}>
         <Link
           className={classNames(cls.outerLeftArrow, combinedModCss, [
@@ -133,7 +132,6 @@ const HeroContainer = (props: Props) => {
           <Image src={rightArrow} alt='rightArrow' />
         </Link>
       </div>
-    </div>
   );
 };
 

@@ -1,13 +1,3 @@
-.PageWrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -18,17 +8,12 @@
 }
 
 .componentWrapper {
-  //margin-top: 20%;
-  //margin-bottom: 5%;
   display: flex;
   align-items: center;
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
 }
-.componentWrapper.isTablet {
-  //margin-top: 30%;
-  //margin-bottom: 20%;
-}
+
 
 .outerArrow {
   user-select: none;
