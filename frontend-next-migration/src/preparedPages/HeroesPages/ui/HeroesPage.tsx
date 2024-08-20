@@ -9,7 +9,6 @@ const HeroesPage = () => {
   const sameBg = undefined;
 
   return (
-    <>
       <div className={cls.main}>
         <FeedbackSideButton disableMobile={true} />
         <SectionHeroesBlocks backgroundImageSrc={sameBg} />
@@ -17,7 +16,6 @@ const HeroesPage = () => {
         <SectionHeroesBlocks backgroundImageSrc={sameBg} />
         <HorizontalLines />
       </div>
-    </>
   );
 };
 
