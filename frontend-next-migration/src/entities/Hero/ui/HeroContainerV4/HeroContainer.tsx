@@ -145,9 +145,4 @@ const HeroContainer = (props: Props) => {
   );
 };
 
-export default withBackgroundImage({
-  alt: 'Teaching Package bg image',
-  imagePath: bgPicture as unknown as string,
-
-  // @ts-ignore
-})(HeroContainer);
+export default HeroContainer;
