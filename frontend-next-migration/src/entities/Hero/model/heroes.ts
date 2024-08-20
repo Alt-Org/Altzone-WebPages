@@ -29,20 +29,6 @@ import yellowBg from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 
 const Heroes = [
   {
-    id: 0,
-    srcImg: greenHaired,
-    srcGif: greenHairedGiF,
-    alt: 'greenHairedImgAlt',
-    title: 'green-haired',
-    borderColor: '#41F50C',
-    description: 'greenHairedDescription',
-    group: 'TORJUJAT // RETROFLEKTIO',
-    // group: 'TORJUJAT',
-    groupTextBg: redBg,
-    // color: '#e20505',
-    color: 'rgba(226, 5, 5, 0.5)',
-  },
-  {
     id: 1,
     srcImg: hannuHodari,
     srcGif: hannuHodariGiF,
