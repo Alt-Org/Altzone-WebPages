@@ -75,12 +75,15 @@
   width: 40% !important;
 
   & * {
-    font-size: 3rem !important;
+    font-size: 2.5rem !important;
   }
 
 
   white-space: nowrap;
   min-width: fit-content;
+
+  //max-width: fit-content;
+
 }
 
 .BtnDownload {
