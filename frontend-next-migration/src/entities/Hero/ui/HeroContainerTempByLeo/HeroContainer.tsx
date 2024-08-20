@@ -1,14 +1,15 @@
 'use client';
 import Image from 'next/image';
-import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
-import cls from './HeroContainer.module.scss';
 import Link from 'next/link';
+
+import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import useKeyboardNavigation from './useKeyboardNavigation';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { useRef } from 'react';
+
+import cls from './HeroContainer.module.scss';
+import useKeyboardNavigation from './useKeyboardNavigation';
 
 
 type Props = {
