@@ -2,6 +2,7 @@ export {
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
+    useDeleteProfileMutation,
     clanApi,
     useGetClanByIdQuery,
     useGetClansQuery,
