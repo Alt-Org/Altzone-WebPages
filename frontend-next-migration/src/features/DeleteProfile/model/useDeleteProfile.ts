@@ -5,13 +5,10 @@ import { toast } from "react-toastify";
 const useDeleteProfile = () => {
    const [deleteClan] = useDeleteProfileMutation();
    const [isCancelled, setIsCancelled] = useState(false);
-   console.log("asdf")
    const handleDelete = async (onSuccess?: () => void) => {
       if (confirm("Oletko varma?")) {
          try {
-            console.log("asdf2")
             await deleteClan().unwrap(); // Call the mutation without arguments
-            console.log("asdf3")
             toast.success('Profiili poistettiin onnistuneesti');
             if (onSuccess) onSuccess();
             setIsCancelled(false);
