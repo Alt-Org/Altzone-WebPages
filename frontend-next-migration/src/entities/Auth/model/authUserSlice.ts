@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
 import { AccessTokenInfo, AuthUserSchema } from "../types/authUser";
 import { LS_KEYS } from "@/shared/const/LS_KEYS";
-import { IProfile } from "@/entities/User";
+import { IProfile } from "@/entities/Profile";
 import {StateSchema} from "@/app/_providers/StoreProvider";
 import { useEffect } from "react";
 import { PURGE } from "redux-persist";

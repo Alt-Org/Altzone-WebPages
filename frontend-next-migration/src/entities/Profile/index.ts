@@ -1,0 +1,1 @@
+export type {IProfile} from "./types/profile"
