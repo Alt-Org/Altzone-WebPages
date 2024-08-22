@@ -1,1 +1,5 @@
-export type {IProfile} from "./types/profile"
+export {
+    profileEndpoints,
+    profileApi
+} from "./model/profileApi"
+export type {IProfile} from "./types/profile";
