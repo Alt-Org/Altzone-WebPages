@@ -4,9 +4,27 @@ import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
 import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
 import cls from './HeroGroupLabel.module.scss';
 
+
 type HeroGroupLabelProps = Readonly<{
+  /**
+   * Group to which the Hero belongs to
+   */
   group: string
 }>;
+/**
+ * Displays label containing a hero group to which the hero belongs to.
+ * 
+ * Outlook of the label will be defined based on the group value, which should be one of these:
+ * - TORJUJAT // RETROFLEKTIO
+ * - SULAUTUJAT // KONFLUENSSI
+ * - ÄLYLLISTÄJÄT // EGOTISMI
+ * - PEILAAJAT // PROJEKTIO
+ * 
+ * If the group has some other value an error text will be displayed instead of the label
+ * 
+ * @param Props
+ * @returns 
+ */
 export default function HeroGroupLabel({ group }: HeroGroupLabelProps) {
   const heroType = convertHeroGroupToHeroType(group);
 
@@ -28,6 +46,9 @@ export default function HeroGroupLabel({ group }: HeroGroupLabelProps) {
   );
 }
 
+/**
+ * Type of the hero
+ */
 enum HeroType {
   FIGHTER = 'FIGHTER',
   MERGER = 'MERGER',
@@ -35,6 +56,12 @@ enum HeroType {
   MIRROR_LOOKER = 'MIRROR_LOOKER'
 }
 
+/**
+ * Determines text for the provided hero type
+ * 
+ * @param heroType type of the hero
+ * @returns text for the corresponding hero type or empty string if the hero type is unknown
+ */
 function defineHeroGroupLabelText(heroType: HeroType) {
   switch (heroType) {
     case 'FIGHTER':
@@ -49,6 +76,12 @@ function defineHeroGroupLabelText(heroType: HeroType) {
       return '';
   }
 }
+/**
+ * Determines the background image corresponding to the hero type
+ * 
+ * @param heroType type of the hero
+ * @returns background image if it exists for the type or null if not
+ */
 function defineHeroGroupLabelBg(heroType: HeroType) {
   switch (heroType) {
     case 'FIGHTER':
@@ -64,6 +97,18 @@ function defineHeroGroupLabelBg(heroType: HeroType) {
   }
 }
 
+/**
+ * Convert hero group to hero type.
+ * 
+ * Notice that the group should be one of the following:
+ * - TORJUJAT // RETROFLEKTIO
+ * - SULAUTUJAT // KONFLUENSSI
+ * - ÄLYLLISTÄJÄT // EGOTISMI
+ * - PEILAAJAT // PROJEKTIO
+ * 
+ * @param group hero group to convert
+ * @returns corresponding hero type or null if the group is unknown
+ */
 function convertHeroGroupToHeroType(group: string) {
   switch (group) {
     case 'TORJUJAT // RETROFLEKTIO':
