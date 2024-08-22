@@ -34,5 +34,6 @@ export const profileApi = createApi({
 
 export const {
     util,
+    useDeleteProfileMutation,
     endpoints: profileEndpoints
 } = profileApi;
