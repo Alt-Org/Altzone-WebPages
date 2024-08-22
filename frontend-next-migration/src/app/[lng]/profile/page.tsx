@@ -9,7 +9,7 @@ export default async function DefaultPage({ params }: Props) {
     const { t } = await useServerTranslation(params.lng, 'profile');
     return (
         <ProfilePage
-            title="Profile Deletion"
+            title={t('profile-deletion-title')}
             profileDeletionText={t('profile-deletion')}
             profileDeletionInfoText={t('profile-deletion-info')}
         />
