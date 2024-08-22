@@ -1,18 +1,17 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-
-
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
 import useSizes from '@/shared/lib/hooks/useSizes';
-
 import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
-
+import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
 
 type Props = {
+  group: string;
+  groupTextBg: string;
   heroImg: string;
   heroGif: string;
   heroName: string;
@@ -32,9 +31,8 @@ const HeroContainer = (props: Props) => {
     rightArrowLink,
     xLink,
     heroName,
+    group
   } = props;
-
-
 
   useKeyboardNavigation({
     leftArrowLink,
@@ -119,6 +117,7 @@ const HeroContainer = (props: Props) => {
                 <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
+                <HeroGroupLabel group={group} />
               </div>
             </div>
           </div>
