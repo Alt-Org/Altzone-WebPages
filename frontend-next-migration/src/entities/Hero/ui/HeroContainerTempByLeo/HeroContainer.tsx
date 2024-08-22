@@ -56,6 +56,24 @@ function defineHeroGroupLabelText(heroType: HeroType) {
   }
 }
 
+type HeroGroupLabelProps = Readonly<{
+  heroType: HeroType,
+  textBgColor: StaticImageData
+}>;
+function HeroGroupLabel({heroType, textBgColor}: HeroGroupLabelProps) {
+  const labelText = defineHeroGroupLabelText(heroType);
+
+  return(
+    <div className={`${cls.heroGroupLabel}`}>
+      <h3
+          className={cls.heroGroupLabelTitle}
+          style={{backgroundImage: `url(${textBgColor.src})`}}
+      >
+        <span>{labelText}</span>
+      </h3>
+  </div>
+  );
+}
 
 const heroGroups = [
   { group: "TORJUJAT // RETROFLEKTIO", textBgColor: red },
@@ -148,6 +166,7 @@ const heroGroups = [
                 <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
+                <HeroGroupLabel heroType={HeroType.FIGHTER} textBgColor={red} />
               </div>
             </div>
           </div>
