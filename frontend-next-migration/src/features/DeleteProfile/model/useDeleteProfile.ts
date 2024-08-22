@@ -1,4 +1,4 @@
-import { useDeleteProfileMutation } from "@/entities/Clan";
+import { useDeleteProfileMutation } from "@/entities/Profile";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
