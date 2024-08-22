@@ -1,9 +1,7 @@
 {
-
   "all_clans": "Kaikki Klaanit",
   "my_clan": "Minun klaani",
   "create_clan": "Luo Klaani",
-
   "rating": "Rating",
   "clan": "Klaani",
   "coins": "Kolikot",
@@ -11,11 +9,9 @@
   "members": "Jäsenet",
   "clan_master": "Mestari",
   "some_master": "Joku Mestari",
-
-
   "head-title": "Klaanit",
   "head-description": "Selaa kaikkia klaaneja tai käy omassa klaanissasi. Luo uusi klaani, jos sinulla ei ole yhtä.",
-  "head-keywords": "altzone, KLAANI, klaani, peli, klaani, peliyhteisö, luo klaani, liity klaaniin"
-
-
+  "head-keywords": "altzone, KLAANI, klaani, peli, klaani, peliyhteisö, luo klaani, liity klaaniin",
+  "profile-deletion": "Mikäli haluat tilisi poistamista, poistu klaanista ja laita tietojesi poistopyyntö vapaamuotoisesti sähköpostiin: proyaleg@gmail.com. Muista laittaa mukaan käyttäjätunnuksesi ja salasanasi. Poistamme tiedot manuaalisesti. ",
+  "profile-deletion-info": "Säilytämme käyttäjästä seuraavat tiedot: käyttäjätunnus ja salasana, klaani, pelihahmot ja niiden kehitys, avatar ja sen muokkaus, Tiedot säilytetään kunnes pelaaja pyytää niiden poistamista."
 }

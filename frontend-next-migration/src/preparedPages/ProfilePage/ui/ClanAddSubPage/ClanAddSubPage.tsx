@@ -3,10 +3,15 @@ import cls from "./ClanAddSubPage.module.scss";
 import { useDeleteProfile } from "@/features/DeleteProfile";
 import Head from "next/head";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
+import { useClientTranslation } from "@/shared/i18n";
+import { useParams } from "next/navigation";
+
 
 const ClanAddSubPage = () => {
     const { handleDelete } = useDeleteProfile();
-
+    const params = useParams();
+    const lng = params.lng as string;
+    const { t } = useClientTranslation(lng, "clan");
     return (
         <div className={cls.ClanAddSubPage}>
             <Head>
@@ -19,15 +24,17 @@ const ClanAddSubPage = () => {
                 <meta property="og:description" content="" />
                 <meta property="og:url" content={""} />
             </Head>
-            <h1>Profile Deletion</h1>
-            <Button
-                onClick={() => { handleDelete() }}
-                theme={ButtonTheme.Graffiti}
-                size={ButtonSize.M}
-                className={cls.BtnGame}
-                square={false}
-            >Delete Profile
-            </Button>
+            <div className={cls.container}>
+                <div className={cls.div1}>
+                    <h1>Profile Deletion</h1>
+                </div>
+                <div className={cls.div2}>
+                    <p>{t('profile-deletion')}</p>
+                </div>
+                <div className={cls.div3}>
+                    <p>{t('profile-deletion-info')}</p>
+                </div>
+            </div>
         </div>
     );
 };
