@@ -55,33 +55,39 @@ function defineHeroGroupLabelText(heroType: HeroType) {
       return '';
   }
 }
+function defineHeroGroupLabelBg(heroType: HeroType) {
+  switch (heroType) {
+    case 'FIGHTER':
+      return red;
+    case 'MERGER':
+      return pink;
+    case 'INTELLECTUAL':
+      return darkBlue;
+    case 'MIRROR_LOOKER':
+      return orange;
+    default:
+      return null;
+  }
+}
 
 type HeroGroupLabelProps = Readonly<{
-  heroType: HeroType,
-  textBgColor: StaticImageData
+  heroType: HeroType
 }>;
-function HeroGroupLabel({heroType, textBgColor}: HeroGroupLabelProps) {
+function HeroGroupLabel({heroType}: HeroGroupLabelProps) {
   const labelText = defineHeroGroupLabelText(heroType);
+  const labelBg = defineHeroGroupLabelBg(heroType);
 
   return(
     <div className={`${cls.heroGroupLabel}`}>
       <h3
           className={cls.heroGroupLabelTitle}
-          style={{backgroundImage: `url(${textBgColor.src})`}}
+          style={labelBg ? {backgroundImage: `url(${labelBg.src})`} : undefined} 
       >
         <span>{labelText}</span>
       </h3>
   </div>
   );
 }
-
-const heroGroups = [
-  { group: "TORJUJAT // RETROFLEKTIO", textBgColor: red },
-  { group: "SULAUTUJAT // KONFLUENSSI", textBgColor: pink },
-  { group: "ÄLYLLISTÄJÄT // EGOTISMI", textBgColor: darkBlue },
-  { group: "PEILAAJAT // PROJEKTIO", textBgColor: orange }
-];
-
 
   useKeyboardNavigation({
     leftArrowLink,
@@ -166,7 +172,7 @@ const heroGroups = [
                 <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
-                <HeroGroupLabel heroType={HeroType.FIGHTER} textBgColor={red} />
+                <HeroGroupLabel heroType={HeroType.FIGHTER} />
               </div>
             </div>
           </div>
