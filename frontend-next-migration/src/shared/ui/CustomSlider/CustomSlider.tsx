@@ -36,9 +36,6 @@ export const CustomSlider = ({className='', children}: Props) => {
             <div className={cls.scrollLeft} onClick={handleScrollLeft}>
                 <i>{'←'}</i>
             </div>
-            {/*<div className={classNames(cls.Cards, {}, [])} ref={scrollRef}>*/}
-            {/*    {children}*/}
-            {/*</div>*/}
 
             <div className={classNames(cls.Cards, {}, [])} ref={scrollRef}>
                 <div className={cls.CardContainer}>{children}</div>
