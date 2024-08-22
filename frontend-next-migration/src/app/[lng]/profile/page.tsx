@@ -1,2 +1,1 @@
-"use client"
-export { ClanAddSubPage as default } from "@/preparedPages/ProfilePage";
+export { ProfilePage as default } from "@/preparedPages/ProfilePage";
