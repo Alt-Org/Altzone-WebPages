@@ -1,13 +1,14 @@
 'use client';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-
-
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
 import useSizes from '@/shared/lib/hooks/useSizes';
-
+import red from "@/shared/assets/images/heros/textBgColors/red.webp";
+import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue.webp";
+import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
+import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
 import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
 
@@ -34,6 +35,20 @@ const HeroContainer = (props: Props) => {
     heroName,
   } = props;
 
+enum HeroType {
+  FIGHTER = 'FIGHTER',
+  MERGER = 'MERGER',
+  INTELLECTUAL = 'INTELLECTUAL',
+  MIRROR_LOOKER = 'MIRROR_LOOKER'
+}
+
+
+const heroGroups = [
+  { group: "TORJUJAT // RETROFLEKTIO", textBgColor: red },
+  { group: "SULAUTUJAT // KONFLUENSSI", textBgColor: pink },
+  { group: "ÄLYLLISTÄJÄT // EGOTISMI", textBgColor: darkBlue },
+  { group: "PEILAAJAT // PROJEKTIO", textBgColor: orange }
+];
 
 
   useKeyboardNavigation({
