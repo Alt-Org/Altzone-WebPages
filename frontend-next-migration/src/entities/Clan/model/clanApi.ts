@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {StateSchema} from "@/app/_providers/StoreProvider";
+import { StateSchema } from "@/app/_providers/StoreProvider";
 import { envHelper } from "@/shared/const/envHelper";
 import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse } from "@/entities/Clan";
 
@@ -9,7 +9,7 @@ interface GetClansQueryParams {
 }
 const clanUrl = "clan";
 //needs to be moved to something else
-const profileUrl = "profile";
+//const profileUrl = "profile";
 
 export const clanApi = createApi({
     reducerPath: 'clanApi',
@@ -82,12 +82,12 @@ export const clanApi = createApi({
             }),
             invalidatesTags: ['Clan'],
         }),
-        deleteProfile: builder.mutation<void, void>({
-            query: () => ({
-                url: `${profileUrl}`,
-                method: 'DELETE',
-            }),
-        }),
+        // deleteProfile: builder.mutation<void, void>({
+        //     query: () => ({
+        //         url: `${profileUrl}`,
+        //         method: 'DELETE',
+        //     }),
+        // }),
 
     }),
 })
@@ -100,6 +100,6 @@ export const {
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
-    useDeleteProfileMutation,
+    //useDeleteProfileMutation,
     endpoints: clanEndpoints
 } = clanApi;
