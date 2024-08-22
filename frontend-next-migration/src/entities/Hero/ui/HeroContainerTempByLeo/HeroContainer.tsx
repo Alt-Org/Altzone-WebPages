@@ -65,6 +65,8 @@ const HeroContainer = (props: Props) => {
     [cls.isWidescreen]: isWidescreenSize,
   };
 
+  const heroType = convertHeroGroupToHeroType(group);
+
   return (
       <div className={classNames(cls.componentWrapper, combinedModCss)}>
         <Link
@@ -132,7 +134,7 @@ const HeroContainer = (props: Props) => {
                 <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
-                <HeroGroupLabel heroType={HeroType.FIGHTER} />
+                {heroType && <HeroGroupLabel heroType={heroType} />}
               </div>
             </div>
           </div>
