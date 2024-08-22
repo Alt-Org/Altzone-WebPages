@@ -3,7 +3,7 @@ import Image from 'next/image'
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import cls from "./NavbarDesktop.module.scss";
-import {NavbarBuild, NavbarMenu, PositionChecker} from "../../../model/types/types";
+import {NavbarBuild, NavbarMenu, PositionChecker} from "../../../model/types";
 import {
     isCenter,
     isLeftSide,

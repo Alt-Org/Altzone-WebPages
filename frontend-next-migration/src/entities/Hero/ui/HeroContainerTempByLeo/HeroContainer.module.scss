@@ -1,0 +1,180 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.componentWrapper {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+.outerArrow {
+  user-select: none;
+}
+.outerLeftArrow {
+  transform: translateX(4rem);
+}
+.outerRightArrow {
+  padding-right: 4rem;
+  padding-left: 1rem;
+}
+
+.outerArrow.isMobile {
+  display: none;
+}
+
+.heroImgSideWrapper {
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+  max-width: 35em;
+  width: 35em;
+  height: 30em;
+  z-index: 1;
+  transform: translateX(5rem);
+
+  .heroImgSide {
+    position: absolute;
+    top: -12em;
+    width: 40em;
+    height: 50em;
+    z-index: 2;
+  }
+}
+
+.heroImgSideWrapper.isMobile {
+  display: none;
+}
+
+.container {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 30rem;
+  height: 100%;
+  z-index: 1;
+}
+
+.container.isMobile {
+  max-width: 35rem;
+  padding: 0 1.2rem;
+}
+
+.containerWrapper.isMobile {
+  margin-top: 5rem;
+}
+
+.contentWrapper {
+  display: flex;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  aspect-ratio: 12 / 16;
+}
+
+.content {
+  position: relative;
+  padding: 2em;
+}
+
+.heroImgWrapper {
+  width: 100%;
+  min-height: 40%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.heroImgWrapper.isMobile {
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.innerArrow {
+  align-self: center;
+  width: 40px;
+  display: none;
+  user-select: none;
+}
+
+.innerArrow.isMobile {
+  display: block;
+}
+
+.heroImg {
+  width: 100%;
+  user-select: none;
+  pointer-events: none;
+
+  border-radius: var(--border-radius-custom);
+
+}
+.heroImg.isMobile {
+  width: 50%;
+  user-select: none;
+  pointer-events: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.heroImg.isMobile {
+  transform: scale(120%);
+}
+
+.heroDescription {
+  @include ScrollbarWithArrowButtons;
+
+  margin-top: 2rem;
+
+  //padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  overflow-y: auto;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  max-height: 38%;
+}
+
+.heroName {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    display: inline-block;
+    padding: 0.1rem;
+    border-top: 6px solid rgb(255, 255, 255);
+    border-bottom: 6px solid rgb(255, 255, 255);
+  }
+}
+.isMobile {
+  font-size: 0.8rem;
+}
+.isTablet {
+  font-size: 0.7rem;
+}
+.isDesktop {
+  font-size: 0.9rem;
+}
+
+.xLinkButton {
+  @include link-scale-effect;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.8rem;
+  z-index: 2;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+
+  &:hover h1 {
+    color: orange;
+  }
+}

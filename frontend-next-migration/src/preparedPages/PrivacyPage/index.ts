@@ -1,1 +1,3 @@
-export {default} from "./ui/PrivacyPage.async";
+// export {default as PrivacyPage} from "./ui/PrivacyPage";
+
+export { PrivacyPageAsync as PrivacyPage } from './ui/PrivacyPage.async';

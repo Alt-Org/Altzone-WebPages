@@ -1,0 +1,35 @@
+.navbarSide {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgb(13, 174, 13);
+  border-radius: 10px;
+  overflow-y: auto;
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+
+    transition: color 0.5s, border-left 0.2s;
+    &:hover {
+      color: orange;
+    }
+
+    &.active {
+      color: orange;
+      border-left: 4px solid yellow;
+      margin-left: 0.3rem;
+    }
+
+    &:active {
+      outline: none;
+    }
+
+    user-select: none;
+  }
+}

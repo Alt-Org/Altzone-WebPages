@@ -335,7 +335,7 @@ export const groupsWithMembersLocally: GroupWithMember[] = [
       {
         id: 21,
         name: 'Leo Hannolainen',
-        github: 'leolab1337',
+        github: 'leolabdev',
         site: 'https://leo-hannolainen.netlify.app/',
         linkedin: 'https://www.linkedin.com/in/leo-hannolainen-860859205/',
       },

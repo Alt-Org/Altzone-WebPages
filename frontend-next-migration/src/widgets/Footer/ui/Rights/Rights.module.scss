@@ -1,4 +1,33 @@
-.Rights{
+.Rights {
   font: var(--font-m);
   font-family: var(--font-family-texts);
+}
+
+.Rights a {
+  margin-left: 1rem;
+}
+
+.Rights a:last-of-type {
+  margin-right: 1rem;
+}
+
+.Rights p {
+  margin-left: 1rem;
+}
+
+.resetCookies {
+  cursor: pointer;
+}
+
+.resetCookies:hover {
+  text-decoration: underline;
+  color: orange;
+}
+.cookies:hover {
+  text-decoration: underline;
+  color: orange;
+}
+.privacy:hover {
+  text-decoration: underline;
+  color: orange;
 }

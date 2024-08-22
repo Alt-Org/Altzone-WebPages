@@ -1,4 +1,4 @@
-import {HeroPage} from "@/preparedPages/HeroesPages";
+import {HeroPage as PreparedHeroPage} from "@/preparedPages/HeroesPages";
 import {useServerTranslation} from "@/shared/i18n";
 import {heroes} from "@/entities/Hero";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
@@ -12,7 +12,7 @@ type Props = {
     };
 };
 
-export default async function({ params }: Props) {
+export default async function HeroPage({ params }: Props) {
     const { title, lng } = params;
 
     const {t} = await useServerTranslation(lng, 'heroes');
@@ -29,8 +29,10 @@ export default async function({ params }: Props) {
         notFound();
     }
 
+
     return (
-        <HeroPage
+        <PreparedHeroPage
+            // @ts-ignore todo fix
             selectedHero={selectedHero}
             prevHeroLink={prevHeroLink}
             nextHeroLink={nextHeroLink}

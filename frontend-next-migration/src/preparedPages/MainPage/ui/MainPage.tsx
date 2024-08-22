@@ -1,70 +1,69 @@
 import cls from "./page.module.scss"
-import { DescriptionWithNav } from "@/widgets/DescriptionWithNav";
-import { Navbar } from "@/widgets/Navbar";
-import { Footer } from "@/widgets/Footer";
-import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
-import { ScrollTop } from "@/features/ScrollTop";
-import { useServerTranslation } from "@/shared/i18n";
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-import { SectionVideoAndGalleries } from "@/widgets/SectionVideoAndGalleries";
-import { SectionGetToKnowComics } from "@/widgets/SectionGetToKnowComics";
-import { SectionPlayWithUs } from "@/widgets/SectionPlayWithUs";
-import { SectionClassifiedHeroesBlocks } from "@/widgets/SectionClassifiedHeroesBlocks";
+
+import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from "@/widgets/SectionClassifiedHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
+import { ProjectDescription,ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
+import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
+import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
+import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
 
-type Props = {
-    lng: string
+
+
+export type Props = {
+    projectDescription: ProjectDescriptionProps;
+    playWithUs: PlayWithUsProps;
+    getToKnowComics: GetToKnowComicsProps;
+    videoAndGalleries: VideoAndGalleriesProps;
+    classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
 }
 
-const MainPage = async ({ lng }: Props) => {
+function MainPage (props: Props)  {
 
-    const { t } = await useServerTranslation(lng, 'main');
+    const {
+        projectDescription,
+        playWithUs,
+        getToKnowComics,
+        videoAndGalleries,
+        classifiedHeroesBlocks
+    } = props;
 
     const sameBg = undefined;
-    // const sameBg = bgPicture.src;
 
     return (
-        <>
-            {/* Abadi */}
-            {/*<div className={cls.Wrapper}>*/}
-            <FeedbackSideButton disableMobile={true} />
+        <div className={cls.MainPage}>
 
-            <Navbar overlaid />
-
-
-
-            <SectionPlayWithUs
-                webGlButtonText={t('PlayOnline')}
-                backgroundImageSrc={sameBg}
-            />
-
-            <HorizontalLines />
-
-            <DescriptionWithNav
+            <ProjectDescription
                 className={cls.description}
-                backgroundImageSrc={sameBg}
+                {...projectDescription}
             />
 
             <HorizontalLines />
 
-            <SectionClassifiedHeroesBlocks/>
-
-
-
-
-            <HorizontalLines />
-
-            <SectionGetToKnowComics
-                buttonParams={{ innerText: t("getToKnowComics"), href: RoutePaths.COMICS_GALLERY }}
-                backgroundImageSrc={sameBg}
-
+            <PlayWithUs
+                {...playWithUs}
             />
+
             <HorizontalLines />
-            <SectionVideoAndGalleries
+
+            <SectionClassifiedHeroesBlocks
+                {...classifiedHeroesBlocks}
+            />
+
+
+            <HorizontalLines />
+
+            <GetToKnowComics
                 backgroundImageSrc={sameBg}
+                {...getToKnowComics}
+            />
+
+            <HorizontalLines />
+            <VideoAndGalleries
+                backgroundImageSrc={sameBg}
+                {...videoAndGalleries}
             />
             <HorizontalLines />
             {/*<SectionNewsPreview/>*/}
@@ -74,22 +73,15 @@ const MainPage = async ({ lng }: Props) => {
             {/*    rankingScoreText={t('ranking-score')}*/}
 
             {/*/>*/}
-
-            <Footer />
-
-
-            <ScrollTop />
             {/*</div>*/}
-        </>
+        </div>
     );
 };
 
 
-export default withBackgroundImage({
+export default withBackgroundImage<Props>({
     alt: "Main-Page underground style background",
     imagePath: bgPicture as unknown as string,
     className: cls.wholePageBG
-    // @ts-ignore
 })(MainPage);
 
-// export default MainPage;

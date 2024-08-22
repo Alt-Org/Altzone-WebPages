@@ -1,4 +1,5 @@
-import {IPlayer,IProfile} from "@/entities/User";
+import {IPlayer} from "@/entities/User";
+import {IProfile} from "@/entities/Profile";
 
 export type IPlayerRegisterPartDto = Pick<IPlayer, "name" | "backpackCapacity" | "uniqueIdentifier">
 
