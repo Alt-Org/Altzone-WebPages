@@ -11,8 +11,6 @@ type Props = {
 
 ReactModal.setAppElement('#root');
 
-
-
 export const Modal = (
     {
         isOpen,
@@ -20,8 +18,6 @@ export const Modal = (
         shouldCloseOnExternal = true,
         children
     }: Props) => {
-
-
 
     return (
         <ReactModal
@@ -38,21 +34,3 @@ export const Modal = (
         </ReactModal>
     )
 }
-
-
-// const customStyles = {
-//     content: {
-//         display: "flex",
-//         // backgroundColor: "rgba(245, 40, 145, 0)",
-//         backgroundColor: "brown",
-//         top: '50%',
-//         left: '50%',
-//         right: 'auto',
-//         bottom: 'auto',
-//         marginRight: '-50%',
-//         padding: 0,
-//         border: "none",
-//         transform: 'translate(-50%, -50%)',
-//     },
-// };
-
