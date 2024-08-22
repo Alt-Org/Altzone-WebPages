@@ -5,12 +5,9 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import red from "@/shared/assets/images/heros/textBgColors/red.webp";
-import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue.webp";
-import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
-import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
 import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
+import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
 
 /**
  * group={selectedHero.group}
@@ -64,8 +61,6 @@ const HeroContainer = (props: Props) => {
     [cls.isDesktop]: isDesktopSize,
     [cls.isWidescreen]: isWidescreenSize,
   };
-
-  const heroType = convertHeroGroupToHeroType(group);
 
   return (
       <div className={classNames(cls.componentWrapper, combinedModCss)}>
@@ -134,7 +129,7 @@ const HeroContainer = (props: Props) => {
                 <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
-                {heroType && <HeroGroupLabel heroType={heroType} />}
+                <HeroGroupLabel group={group} />
               </div>
             </div>
           </div>
@@ -150,75 +145,5 @@ const HeroContainer = (props: Props) => {
       </div>
   );
 };
-
-function convertHeroGroupToHeroType(group: string) {
-  switch (group) {
-    case 'TORJUJAT // RETROFLEKTIO':
-      return HeroType.FIGHTER;
-    case 'SULAUTUJAT // KONFLUENSSI':
-      return HeroType.MERGER;
-    case 'ÄLYLLISTÄJÄT // EGOTISMI':
-      return HeroType.INTELLECTUAL;
-    case 'PEILAAJAT // PROJEKTIO':
-      return HeroType.MIRROR_LOOKER;
-    default:
-      return null;
-  }
-}
-
-
-enum HeroType {
-  FIGHTER = 'FIGHTER',
-  MERGER = 'MERGER',
-  INTELLECTUAL = 'INTELLECTUAL',
-  MIRROR_LOOKER = 'MIRROR_LOOKER'
-}
-function defineHeroGroupLabelText(heroType: HeroType) {
-  switch (heroType) {
-    case 'FIGHTER':
-      return 'TORJUJAT // RETROFLEKTIO';
-    case 'MERGER':
-      return 'SULAUTUJAT // KONFLUENSSI';
-    case 'INTELLECTUAL':
-      return 'ÄLYLLISTÄJÄT // EGOTISMI';
-    case 'MIRROR_LOOKER':
-      return 'PEILAAJAT // PROJEKTIO';
-    default:
-      return '';
-  }
-}
-function defineHeroGroupLabelBg(heroType: HeroType) {
-  switch (heroType) {
-    case 'FIGHTER':
-      return red;
-    case 'MERGER':
-      return pink;
-    case 'INTELLECTUAL':
-      return darkBlue;
-    case 'MIRROR_LOOKER':
-      return orange;
-    default:
-      return null;
-  }
-}
-
-type HeroGroupLabelProps = Readonly<{
-  heroType: HeroType
-}>;
-function HeroGroupLabel({heroType}: HeroGroupLabelProps) {
-  const labelText = defineHeroGroupLabelText(heroType);
-  const labelBg = defineHeroGroupLabelBg(heroType);
-
-  return(
-    <div className={`${cls.heroGroupLabel}`}>
-      <h3
-          className={cls.heroGroupLabelTitle}
-          style={labelBg ? {backgroundImage: `url(${labelBg.src})`} : undefined} 
-      >
-        <span>{labelText}</span>
-      </h3>
-  </div>
-  );
-}
 
 export default HeroContainer;
