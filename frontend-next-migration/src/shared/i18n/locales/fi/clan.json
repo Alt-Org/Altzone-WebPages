@@ -1,9 +1,7 @@
 {
-
   "all_clans": "Kaikki Klaanit",
   "my_clan": "Minun klaani",
   "create_clan": "Luo Klaani",
-
   "rating": "Rating",
   "clan": "Klaani",
   "coins": "Kolikot",
@@ -11,11 +9,7 @@
   "members": "Jäsenet",
   "clan_master": "Mestari",
   "some_master": "Joku Mestari",
-
-
   "head-title": "Klaanit",
   "head-description": "Selaa kaikkia klaaneja tai käy omassa klaanissasi. Luo uusi klaani, jos sinulla ei ole yhtä.",
   "head-keywords": "altzone, KLAANI, klaani, peli, klaani, peliyhteisö, luo klaani, liity klaaniin"
-
-
 }

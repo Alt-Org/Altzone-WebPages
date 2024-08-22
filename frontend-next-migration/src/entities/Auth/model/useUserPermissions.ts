@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { StateSchema } from "@/preparedApp/providers/StoreProvider";
+// import {StateSchema} from "@/app/_providers/StoreProvider";
 import {userPermissions,UserPermissions} from "./userPermissions";
 
 // export const useUserPermissions = () => {
@@ -19,7 +19,7 @@ import {userPermissions,UserPermissions} from "./userPermissions";
 
 // useUserPermissions.ts
 // import { useSelector } from 'react-redux';
-// import { StateSchema } from "@/preparedApp/providers/StoreProvider";
+// import {StateSchema} from "@/app/_providers/StoreProvider";
 // import { userPermissions, UserPermissions } from "./userPermissions";
 import {selectHasClan, selectIsAuthenticated} from "@/entities/Auth/model/authUserSlice";
 

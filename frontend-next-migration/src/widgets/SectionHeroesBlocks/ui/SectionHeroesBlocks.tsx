@@ -28,6 +28,7 @@ const SectionHeroes2 = (props: Props) => {
             <div className={cls.Content} ref={ref}>
                 {heroes.map((item, index) => (
                     <HeroCard
+                        title={""}
                         className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
                         key={item.title}
                         id={item.title}

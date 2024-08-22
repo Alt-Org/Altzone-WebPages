@@ -1,0 +1,37 @@
+.NavElement {
+  @include link-scale-effect;
+  //border: solid 1px var(--primary-color);
+  border-radius: var(--border-radius-custom);
+  hyphens: auto;
+  padding: 10px;
+
+  background-color: var(--transparent-bg-darker); 
+
+  p,
+  a {
+    padding: 0;
+    text-align: center;
+    margin: 0 !important;
+    margin-top: 1rem !important;
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  min-width: 200px;
+
+}
+
+@media (max-width: 1150px) {
+  .NavElement {
+    min-width: 320px;
+
+    //width: 55% !important;
+  }
+
+  //align-items: center;
+}

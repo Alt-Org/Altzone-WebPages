@@ -1,19 +1,15 @@
 import {CSSProperties, memo, useMemo} from "react";
 import Image from 'next/image'
 import {sidebarItemType} from "@/shared/ui/Sidebar/model/items";
-// import {navbarMenuLoginProfile} from "@/widgets/Navbar/model/data/navbarMenuDesktop";
 import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
 import cls from "./NavbarMobile.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {ISidebarItem, Sidebar} from "@/shared/ui/Sidebar";
-import {ItemType, NavbarBuild, NavbarMenu, NavLogoObject} from "../../../model/types/types";
+import {ItemType, NavbarBuild,} from "../../../model/types";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
-// import {navLogoMobile} from "../../model/data/navbarMenuMobile";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
-import {element} from "prop-types";
-
 
 interface NavbarTouchProps {
     overlaid ?: boolean;

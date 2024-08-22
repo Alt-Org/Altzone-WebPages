@@ -57,6 +57,7 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
           .slice(0, 2)
           .map((item, index) => (
             <HeroCard
+                title={""}
               className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
               key={item.title}
               id={item.title}

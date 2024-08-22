@@ -18,18 +18,16 @@ import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hoda
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 
+import darkblueBg from '@/shared/assets/images/heros/textBgColors/dark-blue.webp';
+import greenBg from '@/shared/assets/images/heros/textBgColors/green.webp';
+import lightblueBg from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
+import orangeBg from '@/shared/assets/images/heros/textBgColors/orange.webp';
+import pinkBg from '@/shared/assets/images/heros/textBgColors/pink.webp';
+import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
+import redBg from '@/shared/assets/images/heros/textBgColors/red.webp';
+import yellowBg from '@/shared/assets/images/heros/textBgColors/yellow.webp';
+
 const Heroes = [
-  {
-    id: 0,
-    srcImg: greenHaired,
-    srcGif: greenHairedGiF,
-    alt: 'greenHairedImgAlt',
-    title: 'green-haired',
-    borderColor: '#41F50C',
-    description: 'greenHairedDescription',
-    group: 'TORJUJAT // RETROFLEKTIO',
-    color: '#e20505',
-  },
   {
     id: 1,
     srcImg: hannuHodari,
@@ -39,7 +37,10 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'hannuHodariDescription',
     group: 'TORJUJAT // RETROFLEKTIO',
-    color: '#e20505',
+    // group: 'TORJUJAT',
+    groupTextBg: redBg,
+    // color: '#e20505',
+    color: 'rgba(226, 5, 5, 0.5)',
   },
   {
     id: 2,
@@ -50,7 +51,10 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'purpleGirlsDescription',
     group: 'SULAUTUJAT // KONFLUENSSI',
-    color: '#910494',
+    // group: 'SULAUTUJAT',
+    groupTextBg: purpleBg,
+    // color: '#910494',
+    color: 'rgba(145, 4, 148, 0.5)',
   },
   {
     id: 3,
@@ -61,7 +65,10 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'einsteinDescription',
     group: 'ÄLYLLISTÄJÄT // EGOTISMI',
-    color: '#330393',
+    // group: 'ÄLYLLISTÄJÄT',
+    groupTextBg: darkblueBg,
+    // color: '#330393',
+    color: 'rgba(51, 3, 147, 0.5)',
   },
   {
     id: 4,
@@ -72,7 +79,10 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'graffitiGayaDescription',
     group: 'PEILAAJAT // PROJEKTIO',
-    color: '#feed01',
+    // group: 'PEILAAJAT',
+    groupTextBg: yellowBg,
+    // color: '#feed01',
+    color: 'rgba(254, 237, 1, 0.5)',
   },
   {
     id: 5,
@@ -83,7 +93,10 @@ const Heroes = [
     borderColor: '#41F50C',
     description: 'pirateDescription',
     group: 'TORJUJAT // RETROFLEKTIO',
-    color: '#e20505',
+    // group: 'TORJUJAT',
+    groupTextBg: redBg,
+    // color: '#e20505',
+    color: 'rgba(226, 5, 5, 0.5)',
   },
 ] as const;
 
