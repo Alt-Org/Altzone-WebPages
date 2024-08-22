@@ -41,6 +41,20 @@ enum HeroType {
   INTELLECTUAL = 'INTELLECTUAL',
   MIRROR_LOOKER = 'MIRROR_LOOKER'
 }
+function defineHeroGroupLabelText(heroType: HeroType) {
+  switch (heroType) {
+    case 'FIGHTER':
+      return 'TORJUJAT // RETROFLEKTIO';
+    case 'MERGER':
+      return 'SULAUTUJAT // KONFLUENSSI';
+    case 'INTELLECTUAL':
+      return 'ÄLYLLISTÄJÄT // EGOTISMI';
+    case 'MIRROR_LOOKER':
+      return 'PEILAAJAT // PROJEKTIO';
+    default:
+      return '';
+  }
+}
 
 
 const heroGroups = [
