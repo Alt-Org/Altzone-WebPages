@@ -8,8 +8,6 @@ interface GetClansQueryParams {
     search?: string,
 }
 const clanUrl = "clan";
-//needs to be moved to something else
-//const profileUrl = "profile";
 
 export const clanApi = createApi({
     reducerPath: 'clanApi',
@@ -82,13 +80,6 @@ export const clanApi = createApi({
             }),
             invalidatesTags: ['Clan'],
         }),
-        // deleteProfile: builder.mutation<void, void>({
-        //     query: () => ({
-        //         url: `${profileUrl}`,
-        //         method: 'DELETE',
-        //     }),
-        // }),
-
     }),
 })
 
@@ -100,6 +91,5 @@ export const {
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
-    //useDeleteProfileMutation,
     endpoints: clanEndpoints
 } = clanApi;
