@@ -9,6 +9,21 @@ interface ContainerProps {
     children: ReactNode;
 }
 
+/**
+ * `Container` is a flexible wrapper component that conditionally applies classes based on its props.
+ * @param {string} className - Additional classes to apply to the container.
+ * @param fluid
+ * @param children
+ * @example ```
+ <Container className="custom-class" fluid>
+ This is a fluid container with a custom class.
+ </Container>
+
+ <Container>
+ This is a default container.
+ </Container>
+ ```
+ */
 export const Container = ({className='', fluid = false ,children}: ContainerProps) => {
 
     const mods: Record<string, boolean> = {
