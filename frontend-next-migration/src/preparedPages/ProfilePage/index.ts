@@ -1,3 +1,3 @@
 
-export { default as ClanAddSubPage } from "./ui/ClanAddSubPage/ClanAddSubPage";
+export { default as ClanAddSubPage } from "./ui/ProfileOverview/ProfileOverviewPage";
 
