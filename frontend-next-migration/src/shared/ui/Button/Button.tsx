@@ -31,7 +31,7 @@ export enum ButtonSize {
 
 /**
  * Props for the Button component.
- * @typedef {Object} ButtonProps
+ * {Object} ButtonProps
  * @property {string} [className=""] - Additional class name(s) for the button.
  * @property {ButtonTheme} [theme=ButtonTheme.PRIMARY] - Theme for the button.
  * @property {boolean} [square=false] - Whether or not the button should be styled with square corners.
@@ -49,6 +49,33 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     ref?:  LegacyRef<HTMLButtonElement>;
 }
 
+/**
+ * Button component that can be customized with themes, sizes, square styling, and more.
+ *
+ * @component
+ * @example
+ * // Basic usage
+ * <Button>Click me</Button>
+ *
+ * @example
+ * // With custom theme and size
+ * <Button theme={ButtonTheme.CLEAR} size={ButtonSize.XL}>Clear Button</Button>
+ *
+ * @example
+ * // Disabled button
+ * <Button disabled>Disabled Button</Button>
+ *
+ * @param {Object} props - Properties of the Button component.
+ * @param {string} [props.className=""] - Additional class name(s) for the button.
+ * @param {ButtonTheme} [props.theme=ButtonTheme.PRIMARY] - Theme for the button.
+ * @param {boolean} [props.square=false] - Whether the button should be styled with square corners.
+ * @param {ButtonSize} [props.size=ButtonSize.M] - Size for the button.
+ * @param {boolean} [props.disabled=false] - Whether the button should be disabled.
+ * @param {boolean} [props.withScalableLink=false] - Whether the button should have scalable link styling.
+ * @param {React.LegacyRef<HTMLButtonElement>} [props.ref] - Reference to the button element.
+ * @param {React.ReactNode} [props.children] - Child nodes of the button.
+ * @returns {JSX.Element} The rendered Button component.
+ */
 export const Button: FC<ButtonProps> = memo((props) => {
     const {
         className = "",
@@ -63,7 +90,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
     } = props;
 
     const mods: Record<string, boolean> = {
-        [cls.withScalableLink] : withScalableLink,
+        [cls.withScalableLink]: withScalableLink,
         [cls.square]: square,
         [cls.disabled]: disabled,
     } as Record<string, boolean>;
