@@ -12,8 +12,21 @@ import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
 import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
 
-
+/**
+ * group={selectedHero.group}
+        groupTextBg={selectedHero.groupTextBg}
+        heroColor={selectedHero.heroColor}
+        heroImg={selectedHero.img}
+        heroName={selectedHero.title}
+        heroDescription={selectedHero.description}
+        leftArrowLink={prevHeroLink}
+        rightArrowLink={nextHeroLink}
+        heroGif={selectedHero.imgGif}
+        xLink={RoutePaths.HEROES}
+ */
 type Props = {
+  group: string;
+  groupTextBg: string;
   heroImg: string;
   heroGif: string;
   heroName: string;
@@ -33,6 +46,7 @@ const HeroContainer = (props: Props) => {
     rightArrowLink,
     xLink,
     heroName,
+    group
   } = props;
 
   useKeyboardNavigation({
@@ -134,6 +148,7 @@ const HeroContainer = (props: Props) => {
       </div>
   );
 };
+
 
 enum HeroType {
   FIGHTER = 'FIGHTER',
