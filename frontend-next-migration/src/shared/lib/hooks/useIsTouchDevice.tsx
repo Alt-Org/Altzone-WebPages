@@ -1,6 +1,16 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
-const useIsTouchDevice = () =>{
+/**
+ * Custom hook to detect if the device is a touch device.
+ *
+ * @returns {Object} An object containing a boolean `isTouchDevice` which
+ * indicates if the current device is a touch device.
+ *
+ * @example
+ * const { isTouchDevice } = useIsTouchDevice();
+ * console.log(isTouchDevice); // true or false
+ */
+const useIsTouchDevice = () => {
     const [isTouchDevice, setIsTouchDevice] = useState(false);
 
     useEffect(() => {
