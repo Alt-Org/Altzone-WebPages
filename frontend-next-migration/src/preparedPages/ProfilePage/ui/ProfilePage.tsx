@@ -1,4 +1,3 @@
-'use client'
 import cls from "./ProfilePage.module.scss";
 // //import { useDeleteProfile } from "@/features/DeleteProfile";
 // import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
@@ -6,7 +5,20 @@ import { useClientTranslation } from "@/shared/i18n";
 import { useParams } from "next/navigation";
 
 
-const ProfilePage = () => {
+type Props = {
+    title: string;
+    profileDeletionText: string;
+    profileDeletionInfoText: string;
+}
+
+const ProfilePage = (props: Props) => {
+
+    const {
+        title,
+        profileDeletionInfoText,
+        profileDeletionText
+    } = props;
+
     //const { handleDelete } = useDeleteProfile();
     const params = useParams();
     const lng = params.lng as string;
@@ -15,13 +27,19 @@ const ProfilePage = () => {
         <div className={cls.main}>
             <div className={cls.container}>
                 <div className={cls.div1}>
-                    <h1>Profile Deletion</h1>
+                    <h1>
+                        {title}
+                    </h1>
                 </div>
                 <div className={cls.div2}>
-                    <p>{t('profile-deletion')}</p>
+                    <p>
+                        {profileDeletionText}
+                    </p>
                 </div>
                 <div className={cls.div3}>
-                    <p>{t('profile-deletion-info')}</p>
+                    <p>
+                        {profileDeletionInfoText}
+                    </p>
                 </div>
             </div>
         </div>
