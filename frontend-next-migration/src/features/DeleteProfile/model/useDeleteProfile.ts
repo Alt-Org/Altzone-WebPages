@@ -6,6 +6,7 @@ const useDeleteProfile = () => {
    const [deleteClan] = useDeleteProfileMutation();
    const [isCancelled, setIsCancelled] = useState(false);
    const handleDelete = async (onSuccess?: () => void) => {
+      //todo add i18n
       if (confirm("Oletko varma?")) {
          try {
             await deleteClan().unwrap(); // Call the mutation without arguments
