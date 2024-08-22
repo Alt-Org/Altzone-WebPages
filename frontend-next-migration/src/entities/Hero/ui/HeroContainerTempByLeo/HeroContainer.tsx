@@ -35,60 +35,6 @@ const HeroContainer = (props: Props) => {
     heroName,
   } = props;
 
-enum HeroType {
-  FIGHTER = 'FIGHTER',
-  MERGER = 'MERGER',
-  INTELLECTUAL = 'INTELLECTUAL',
-  MIRROR_LOOKER = 'MIRROR_LOOKER'
-}
-function defineHeroGroupLabelText(heroType: HeroType) {
-  switch (heroType) {
-    case 'FIGHTER':
-      return 'TORJUJAT // RETROFLEKTIO';
-    case 'MERGER':
-      return 'SULAUTUJAT // KONFLUENSSI';
-    case 'INTELLECTUAL':
-      return 'ÄLYLLISTÄJÄT // EGOTISMI';
-    case 'MIRROR_LOOKER':
-      return 'PEILAAJAT // PROJEKTIO';
-    default:
-      return '';
-  }
-}
-function defineHeroGroupLabelBg(heroType: HeroType) {
-  switch (heroType) {
-    case 'FIGHTER':
-      return red;
-    case 'MERGER':
-      return pink;
-    case 'INTELLECTUAL':
-      return darkBlue;
-    case 'MIRROR_LOOKER':
-      return orange;
-    default:
-      return null;
-  }
-}
-
-type HeroGroupLabelProps = Readonly<{
-  heroType: HeroType
-}>;
-function HeroGroupLabel({heroType}: HeroGroupLabelProps) {
-  const labelText = defineHeroGroupLabelText(heroType);
-  const labelBg = defineHeroGroupLabelBg(heroType);
-
-  return(
-    <div className={`${cls.heroGroupLabel}`}>
-      <h3
-          className={cls.heroGroupLabelTitle}
-          style={labelBg ? {backgroundImage: `url(${labelBg.src})`} : undefined} 
-      >
-        <span>{labelText}</span>
-      </h3>
-  </div>
-  );
-}
-
   useKeyboardNavigation({
     leftArrowLink,
     rightArrowLink,
@@ -188,5 +134,59 @@ function HeroGroupLabel({heroType}: HeroGroupLabelProps) {
       </div>
   );
 };
+
+enum HeroType {
+  FIGHTER = 'FIGHTER',
+  MERGER = 'MERGER',
+  INTELLECTUAL = 'INTELLECTUAL',
+  MIRROR_LOOKER = 'MIRROR_LOOKER'
+}
+function defineHeroGroupLabelText(heroType: HeroType) {
+  switch (heroType) {
+    case 'FIGHTER':
+      return 'TORJUJAT // RETROFLEKTIO';
+    case 'MERGER':
+      return 'SULAUTUJAT // KONFLUENSSI';
+    case 'INTELLECTUAL':
+      return 'ÄLYLLISTÄJÄT // EGOTISMI';
+    case 'MIRROR_LOOKER':
+      return 'PEILAAJAT // PROJEKTIO';
+    default:
+      return '';
+  }
+}
+function defineHeroGroupLabelBg(heroType: HeroType) {
+  switch (heroType) {
+    case 'FIGHTER':
+      return red;
+    case 'MERGER':
+      return pink;
+    case 'INTELLECTUAL':
+      return darkBlue;
+    case 'MIRROR_LOOKER':
+      return orange;
+    default:
+      return null;
+  }
+}
+
+type HeroGroupLabelProps = Readonly<{
+  heroType: HeroType
+}>;
+function HeroGroupLabel({heroType}: HeroGroupLabelProps) {
+  const labelText = defineHeroGroupLabelText(heroType);
+  const labelBg = defineHeroGroupLabelBg(heroType);
+
+  return(
+    <div className={`${cls.heroGroupLabel}`}>
+      <h3
+          className={cls.heroGroupLabelTitle}
+          style={labelBg ? {backgroundImage: `url(${labelBg.src})`} : undefined} 
+      >
+        <span>{labelText}</span>
+      </h3>
+  </div>
+  );
+}
 
 export default HeroContainer;
