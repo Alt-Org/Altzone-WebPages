@@ -3,44 +3,36 @@ import { StateSchema } from "@/app/_providers/StoreProvider";
 import { envHelper } from "@/shared/const/envHelper";
 import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse } from "@/entities/Clan";
 
-interface GetClansQueryParams {
-    page?: number,
-    search?: string,
-}
-const clanUrl = "clan";
+const profileUrl = "profile";
 //needs to be moved to something else
 //const profileUrl = "profile";
 
-export const clanApi = createApi({
-    reducerPath: 'clanApi',
-    tagTypes: ['Clan'],
+export const profileApi = createApi({
+    reducerPath: 'profileApi',
+    tagTypes: ['Profile'],
     baseQuery: fetchBaseQuery(
         {
             baseUrl: envHelper.apiLink,
             credentials: "include",
             prepareHeaders: (headers, { getState, endpoint }) => {
                 const accessTokenInfo = (getState() as StateSchema).authUser.accessTokenInfo;
-                const excludedEndpoints = ['login', 'refresh', 'register'];
-                if (accessTokenInfo && !excludedEndpoints.includes(endpoint)) {
+                if (accessTokenInfo) {
                     headers.set('Authorization', `Bearer ${accessTokenInfo?.accessToken}`);
                 }
             },
 
         }),
     endpoints: (builder) => ({
-
-
-        // deleteProfile: builder.mutation<void, void>({
-        //     query: () => ({
-        //         url: `${profileUrl}`,
-        //         method: 'DELETE',
-        //     }),
-        // }),
-
+        deleteProfile: builder.mutation<void, void>({
+            query: () => ({
+                url: `${profileUrl}`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 })
 
 export const {
     util,
     endpoints: profileEndpoints
-} = clanApi;
+} = profileApi;
