@@ -149,6 +149,21 @@ const HeroContainer = (props: Props) => {
   );
 };
 
+function convertHeroGroupToHeroType(group: string) {
+  switch (group) {
+    case 'TORJUJAT // RETROFLEKTIO':
+      return HeroType.FIGHTER;
+    case 'SULAUTUJAT // KONFLUENSSI':
+      return HeroType.MERGER;
+    case 'ÄLYLLISTÄJÄT // EGOTISMI':
+      return HeroType.INTELLECTUAL;
+    case 'PEILAAJAT // PROJEKTIO':
+      return HeroType.MIRROR_LOOKER;
+    default:
+      return null;
+  }
+}
+
 
 enum HeroType {
   FIGHTER = 'FIGHTER',
