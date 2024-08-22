@@ -1,5 +1,5 @@
 'use client';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
@@ -9,18 +9,6 @@ import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
 import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
 
-/**
- * group={selectedHero.group}
-        groupTextBg={selectedHero.groupTextBg}
-        heroColor={selectedHero.heroColor}
-        heroImg={selectedHero.img}
-        heroName={selectedHero.title}
-        heroDescription={selectedHero.description}
-        leftArrowLink={prevHeroLink}
-        rightArrowLink={nextHeroLink}
-        heroGif={selectedHero.imgGif}
-        xLink={RoutePaths.HEROES}
- */
 type Props = {
   group: string;
   groupTextBg: string;
