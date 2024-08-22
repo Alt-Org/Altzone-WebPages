@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {StateSchema} from "@/app/_providers/StoreProvider";
+import { StateSchema } from "@/app/_providers/StoreProvider";
 import { envHelper } from "@/shared/const/envHelper";
 import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse } from "@/entities/Clan";
 
@@ -80,7 +80,6 @@ export const clanApi = createApi({
             }),
             invalidatesTags: ['Clan'],
         }),
-
     }),
 })
 
