@@ -13,7 +13,6 @@ type Props = {
     className?: string
 }
 
-
 const defaultSettings = {
     dots: true,
     infinite: true,
@@ -48,24 +47,34 @@ const defaultSettings = {
             }
         }
     ]
-
 };
 
-
+/**
+ * CustomCarousel component renders a carousel/slider with configurable settings.
+ *
+ * @example
+ * const settings = {
+ *   autoplay: true,
+ *   speed: 2000
+ * };
+ *
+ * <CustomCarousel className="my-carousel" settings={settings}>
+ *    <div>Slide 1</div>
+ *    <div>Slide 2</div>
+ *    <div>Slide 3</div>
+ * </CustomCarousel>
+ */
 const CustomCarousel = (props: Props) => {
-    const {settings, children, className=''} = props;
+    const {settings, children, className = ''} = props;
     const mergedSettings = {...defaultSettings, ...settings};
 
     return (
         <div className={classNames("myCustomCarousel-wrapper", {}, [className])}>
-                    <Slider {...mergedSettings}>
-                        {children}
-                    </Slider>
+            <Slider {...mergedSettings}>
+                {children}
+            </Slider>
         </div>
     );
 };
 
 export default CustomCarousel;
-
-
-// @ts-ignore
