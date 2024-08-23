@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'v20.12.2'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: Altzone-WebPages/frontend-next-migration
+
+#      - name: Lint
+#        run: npm run lint
+#        working-directory: pages/frontend
+
+      - name: Build
+        run: npm run build
+        working-directory: Altzone-WebPages/frontend-next-migration
+
+      - name: Run tests
+        run: npm test
+        working-directory: Altzone-WebPages/frontend-next-migration
+
+#      - name: Run Cypress tests
+#        run: npm run cypress:run
+#        env:
+#          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+#        working-directory: Altzone-WebPages/frontend-next-migration
+#
+#      - name: Build Storybook
+#        run: npm run build-storybook
+#        working-directory: Altzone-WebPages/frontend-next-migration
