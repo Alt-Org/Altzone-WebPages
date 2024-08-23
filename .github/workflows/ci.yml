@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: Altzone-WebPages/frontend-next-migration
+        working-directory: ./frontend-next-migration
 
 #      - name: Lint
 #        run: npm run lint
@@ -31,18 +31,18 @@ jobs:
 
       - name: Build
         run: npm run build
-        working-directory: Altzone-WebPages/frontend-next-migration
+        working-directory: ./frontend-next-migration
 
       - name: Run tests
         run: npm test
-        working-directory: Altzone-WebPages/frontend-next-migration
+        working-directory: ./frontend-next-migration
 
 #      - name: Run Cypress tests
 #        run: npm run cypress:run
 #        env:
 #          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-#        working-directory: Altzone-WebPages/frontend-next-migration
+#        working-directory: ./frontend-next-migration
 #
 #      - name: Build Storybook
 #        run: npm run build-storybook
-#        working-directory: Altzone-WebPages/frontend-next-migration
+#        working-directory: ./frontend-next-migration
