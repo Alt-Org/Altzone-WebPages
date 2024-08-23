@@ -117,10 +117,10 @@ const HeroContainer = (props: Props) => {
                 <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
-                <HeroGroupLabel group={group} />
               </div>
             </div>
           </div>
+          <HeroGroupLabel group={group} />
         </div>
 
         <Link
