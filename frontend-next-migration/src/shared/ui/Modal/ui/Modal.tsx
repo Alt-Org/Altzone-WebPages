@@ -3,16 +3,28 @@ import {ReactNode} from "react";
 import cls from "./Modal.module.scss"
 
 type Props = {
-    isOpen : boolean,
-    onRequestClose? : () => void;
-    shouldCloseOnExternal? : boolean,
-    children : ReactNode;
+    isOpen: boolean,
+    onRequestClose?: () => void;
+    shouldCloseOnExternal?: boolean,
+    children: ReactNode;
 }
 
 ReactModal.setAppElement('#root');
 
-
-
+/**
+ * Modal component that uses ReactModal under the hood.
+ *
+ * @param {Object} props - The properties object.
+ * @param {boolean} props.isOpen - Determines if the modal is open or closed.
+ * @param {() => void} [props.onRequestClose] - Function to be called when the modal requests to be closed.
+ * @param {boolean} [props.shouldCloseOnExternal=true] - Determines if the modal should close when clicking outside of it or pressing the ESC key.
+ * @param {ReactNode} props.children - Content to be rendered inside the modal.
+ *
+ * @example
+ * <Modal isOpen={true} onRequestClose={() => console.log('Closed')} shouldCloseOnExternal={true}>
+ *   <div>Your content here</div>
+ * </Modal>
+ */
 export const Modal = (
     {
         isOpen,
@@ -20,8 +32,6 @@ export const Modal = (
         shouldCloseOnExternal = true,
         children
     }: Props) => {
-
-
 
     return (
         <ReactModal
@@ -38,21 +48,3 @@ export const Modal = (
         </ReactModal>
     )
 }
-
-
-// const customStyles = {
-//     content: {
-//         display: "flex",
-//         // backgroundColor: "rgba(245, 40, 145, 0)",
-//         backgroundColor: "brown",
-//         top: '50%',
-//         left: '50%',
-//         right: 'auto',
-//         bottom: 'auto',
-//         marginRight: '-50%',
-//         padding: 0,
-//         border: "none",
-//         transform: 'translate(-50%, -50%)',
-//     },
-// };
-

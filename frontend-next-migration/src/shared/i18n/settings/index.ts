@@ -17,6 +17,10 @@ const initI18next = async (lng: string, ns: string) => {
 }
 
 
+
+/**
+ * Hook for using i18n with server-side components
+ */
 export async function useTranslation(lng: string, ns: string, options: { keyPrefix?: string } = {}) {
     const i18nextInstance = await initI18next(lng, ns)
     return {

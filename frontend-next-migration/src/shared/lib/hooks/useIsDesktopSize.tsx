@@ -1,12 +1,34 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
+/**
+ * Custom hook to detect if the window size is within desktop range.
+ *
+ * @returns  An object containing a boolean `isDesktopSize`.
+ *
+ * @example
+ * import useIsDesktopSize from './useIsDesktopSize';
+ *
+ * const MyComponent = () => {
+ *   const { isDesktopSize } = useIsDesktopSize();
+ *
+ *   return (
+ *     <div>
+ *       {isDesktopSize ? (
+ *         <p>Desktop View</p>
+ *       ) : (
+ *         <p>Non-Desktop View</p>
+ *       )}
+ *     </div>
+ *   );
+ * };
+ */
 const useIsDesktopSize = () => {
   const checkForDevice = () =>
-    typeof window !== 'undefined'
-      ? window.innerWidth >= 1024 && window.innerWidth < 1920
-      : false;
+      typeof window !== 'undefined'
+          ? window.innerWidth >= 1024 && window.innerWidth < 1920
+          : false;
 
   const [isDesktopSize, setIsDesktopSize] = useState(checkForDevice());
 
