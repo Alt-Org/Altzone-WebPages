@@ -32,6 +32,10 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./frontend-next-migration
+        env:
+          NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
+          NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
+          NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
 
       - name: Run tests
         run: npm test
