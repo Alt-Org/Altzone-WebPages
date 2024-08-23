@@ -17,6 +17,27 @@ interface AppLinkProps {
     children: ReactNode;
 }
 
+/**
+ * `AppLink` is a reusable component that renders a link. It can handle both internal and external URLs.
+ *
+ * @param props - The properties for the `AppLink` component.
+ *
+ * @example
+ * ```tsx
+ * import { AppLink, AppLinkTheme } from "./AppLink";
+ *
+ * const MyComponent = () => (
+ *   <div>
+ *     <AppLink to="https://external.com" isExternal theme={AppLinkTheme.PRIMARY}>
+ *       External Link
+ *     </AppLink>
+ *     <AppLink to="/internal-page" theme={AppLinkTheme.SECONDARY}>
+ *       Internal Link
+ *     </AppLink>
+ *   </div>
+ * );
+ * ```
+ */
 export const AppLink: FC<AppLinkProps> = memo((props) => {
     const {
         to,
@@ -26,7 +47,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         isExternal,
     } = props;
 
-    if(isExternal && typeof to === 'string'){
+    if (isExternal && typeof to === 'string') {
         return (
             <a
                 key={to}
