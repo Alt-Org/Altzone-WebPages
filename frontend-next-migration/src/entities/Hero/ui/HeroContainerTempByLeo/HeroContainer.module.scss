@@ -14,22 +14,6 @@
   animation: fadeIn 1s ease-in-out;
 }
 
-
-.outerArrow {
-  user-select: none;
-}
-.outerLeftArrow {
-  transform: translateX(4rem);
-}
-.outerRightArrow {
-  padding-right: 4rem;
-  padding-left: 1rem;
-}
-
-.outerArrow.isMobile {
-  display: none;
-}
-
 .heroImgSideWrapper {
   user-select: none;
   pointer-events: none;
@@ -97,17 +81,6 @@
   justify-content: space-between;
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.innerArrow {
-  align-self: center;
-  width: 40px;
-  display: none;
-  user-select: none;
-}
-
-.innerArrow.isMobile {
-  display: block;
 }
 
 .heroImg {
