@@ -42,4 +42,10 @@ export const ValidationRegisterSchema = yup.object().shape({
 
     uniqueIdentifier: yup
         .string(),
+
+    ageConsent: yup
+        .boolean()
+        // todo add i18n
+        .oneOf([true], "age_consent_required_error")
+        .required("age_consent_required_error"),
 })
