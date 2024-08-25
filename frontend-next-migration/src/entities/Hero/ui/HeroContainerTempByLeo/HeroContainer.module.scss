@@ -136,18 +136,3 @@
 .isDesktop {
   font-size: 0.9rem;
 }
-
-.xLinkButton {
-  @include link-scale-effect;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.8rem;
-  z-index: 2;
-  cursor: pointer;
-  user-select: none;
-  font-size: 1rem;
-
-  &:hover h1 {
-    color: orange;
-  }
-}
