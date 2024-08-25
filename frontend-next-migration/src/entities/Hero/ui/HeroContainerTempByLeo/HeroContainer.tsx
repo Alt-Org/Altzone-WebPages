@@ -7,6 +7,7 @@ import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
 import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
 import ArrowButton from './components/ArrowButton';
+import CloseButton from './components/CloseButton';
 
 type Props = {
   group: string;
@@ -68,12 +69,7 @@ const HeroContainer = (props: Props) => {
               backgroundColor: heroColor,
             }}>
               <div className={cls.content}>
-                <div className={classNames(cls.xLinkButton, combinedModCss)}>
-                  {' '}
-                  <Link href={xLink}>
-                    <h1>X</h1>
-                  </Link>
-                </div>
+                <CloseButton combinedModCss={combinedModCss} href={xLink}/>
                 <div
                   className={classNames(cls.heroName, combinedModCss)}
                 >
