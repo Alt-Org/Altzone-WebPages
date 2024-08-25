@@ -8,6 +8,7 @@ import useKeyboardNavigation from './useKeyboardNavigation';
 import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
 import ArrowButton from './components/ArrowButton';
 import CloseButton from './components/CloseButton';
+import { HeroCardTitle } from './components/HeroCardTitle';
 
 type Props = {
   group: string;
@@ -64,17 +65,14 @@ const HeroContainer = (props: Props) => {
         </div>
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
+
           <div className={classNames(cls.container, combinedModCss)} >
             <div className={classNames(cls.contentWrapper, combinedModCss)}   style={{
               backgroundColor: heroColor,
             }}>
               <div className={cls.content}>
                 <CloseButton combinedModCss={combinedModCss} href={xLink}/>
-                <div
-                  className={classNames(cls.heroName, combinedModCss)}
-                >
-                  <h1>{heroName}</h1>
-                </div>
+                <HeroCardTitle combinedModCss={combinedModCss} title={heroName} />
                 <div
                   className={classNames(cls.heroImgWrapper, combinedModCss)}
                 >
@@ -98,7 +96,9 @@ const HeroContainer = (props: Props) => {
               </div>
             </div>
           </div>
+
           <HeroGroupLabel group={group} />
+
         </div>
 
         <ArrowButton direction='right' type='outer' href={rightArrowLink} />
