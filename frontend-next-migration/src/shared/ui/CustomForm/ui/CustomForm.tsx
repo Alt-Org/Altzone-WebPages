@@ -50,6 +50,39 @@ function InputField({label, error, inputProps}: InputFieldProps) {
     );
 }
 
+
+
+
+type CheckboxProps = {
+    label: string,
+    error?: any,
+    inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+}
+
+/**
+ * Checkbox component for rendering a labeled checkbox with error handling.
+ *
+ * @param {CheckboxProps} props - The properties for the checkbox.
+ * @returns {JSX.Element} - The rendered checkbox component.
+ *
+ * @example
+ * <Form.Checkbox label="I agree" error="You must agree" inputProps={{ required: true }} />
+ */
+function Checkbox({label, error, inputProps}: CheckboxProps) {
+    const inputId = inputProps?.id || `checkbox-${label}`;
+    return (
+        <div className={cls.field}>
+            <label htmlFor={inputId}>
+                <input id={inputId} type="checkbox" {...inputProps} />
+                {label}
+            </label>
+            {error && <p role="alert" className={cls.error}>{error}</p>}
+        </div>
+    );
+}
+
+
+
 /**
  * Button component for rendering a button with the graffiti theme.
  *
@@ -75,6 +108,7 @@ interface MemoizedFormCompose {
     Button: typeof Button;
     Header: typeof Header;
     InputField: typeof InputField;
+    Checkbox: typeof Checkbox;
 }
 
 /**
@@ -101,5 +135,6 @@ const MemoizedForm = memo(BaseForm) as NamedExoticComponent<IFormProps> & Memoiz
 MemoizedForm.Button = Button;
 MemoizedForm.Header = Header;
 MemoizedForm.InputField = InputField;
+MemoizedForm.Checkbox = Checkbox;
 
 export default MemoizedForm;
