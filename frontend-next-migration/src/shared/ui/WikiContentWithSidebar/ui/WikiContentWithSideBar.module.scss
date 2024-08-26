@@ -26,13 +26,11 @@
 
 .navbarSide {
   position: sticky;
-  top: 9.5rem; // Adjust as needed
-  max-height: 600px;
+  top: 9.5rem;
+  max-height: 55vh;
   margin-left: 2rem;
   margin-top: 2rem;
-  height: calc(100vh - 5rem); // Adjust as needed
   width: 20%;
-
   font-size: 1em;
   &::-webkit-scrollbar {
     display: none;
@@ -54,27 +52,28 @@
 
   ul {
     list-style: none;
+    overflow-y: auto;
+    max-height: 50vh;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   li {
     margin-top: 10px;
     cursor: pointer;
     padding: 10px;
-
     transition: color 0.5s, border-left 0.2s;
     &:hover {
       color: orange;
     }
-
     &.active {
       color: orange;
       border-left: 4px solid yellow;
     }
-
     &:active {
       outline: none;
     }
-
     user-select: none;
   }
 }
@@ -151,8 +150,4 @@
 
 .mainContent.isWidescreen {
   top: -1rem;
-}
-
-.navbarSide.isWidescreen {
-  top: 4rem;
 }
