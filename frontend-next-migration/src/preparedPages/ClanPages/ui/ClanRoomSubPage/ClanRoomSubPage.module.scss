@@ -1,3 +1,13 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .Loader {
   @include position-absolute-center
 }
@@ -45,19 +55,7 @@
   grid-row-gap: 2px;
 }
 
-.div1 {
-  display: grid;
-  grid-area: 1 / 1 / 2 / 2;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: var(--border-radius-custom);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  min-width: 50%;
-}
-
-.div2 {
+.clanMainInfo {
   display: flex;
   padding: 5px;
   font-size: var(--font-line-xl);
@@ -69,8 +67,7 @@
   justify-content: space-between;
 }
 
-.clanName {}
-
+//when leaderboards work .number (clan leaderboard placement number) for styling
 .number {}
 
 .number:hover {
@@ -78,23 +75,25 @@
   transition: 2s;
 }
 
-.div3 {
+.clanList {
   grid-area: 2 / 1 / 5 / 2;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-size: var(--font-line-m);
+  max-height: 400px;
+  height: 400px;
 }
 
-.div4 {
+.clanSoulHome {
   grid-area: 2 / 2 / 5 / 3;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.div5 {
+.buttonField {
   display: flex;
   grid-area: 1 / 5 / 2 / 7;
   background-color: rgba(0, 0, 0, 0.5);
@@ -104,7 +103,7 @@
   justify-content: center;
 }
 
-.div6 {
+.memberList {
   display: grid;
   grid-area: 2 / 5 / 5 / 7;
   background-color: rgba(0, 0, 0, 0.5);
@@ -115,7 +114,7 @@
 }
 
 .membersList {
-  max-height: 400px;
+  max-height: 100%;
   min-height: 400px;
   overflow-y: auto;
   border: 1px solid #ccc;
@@ -151,7 +150,7 @@
   background-color: #555;
 }
 
-.div7 {
+.clanMotto {
   grid-area: 2 / 3 / 3 / 5;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
@@ -166,7 +165,7 @@
   font-style: italic;
 }
 
-.div8 {
+.clanInformation {
   grid-area: 3 / 3 / 5 / 5;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
@@ -183,4 +182,60 @@
 .infoItem {
   font-size: var(--font-line-s);
   text-align: left;
+}
+
+@media (max-width: 768px) {
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 20% 20% 80% 50% repeat(2, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+  }
+
+  .div1 {
+    display: none;
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .clanMainInfo {
+    grid-area: 2 / 1 / 3 / 3;
+  }
+
+  .clanMainInfo span {
+    max-width: 60%;
+    overflow: hidden;
+    /* Hide overflowing text */
+    text-overflow: ellipsis;
+  }
+
+  .clanList {
+    display: none;
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .clanSoulHome {
+    grid-area: 6 / 1 / 7 / 3;
+  }
+
+  .buttonField {
+    max-height: 100%;
+    grid-area: 1 / 1 / 2 / 3;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-radius: var(--border-radius-custom);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .memberList {
+    grid-area: 4 / 1 / 6 / 3;
+  }
+
+  .clanMotto {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  .clanInformation {
+    grid-area: 3 / 2 / 4 / 3;
+  }
 }

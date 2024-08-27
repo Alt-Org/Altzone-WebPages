@@ -14,21 +14,48 @@ import clanHome from "@/shared/assets/images/clanLogos/temp-clanHome.png";
 import lock from "@/shared/assets/images/clanLogos/lock.png";
 import cls from "./ClanRoomSubPage.module.scss";
 import { toast } from "react-toastify";
-import { useClientTranslation } from "@/shared/i18n";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { ClansViewAndSearchDesktop, ClansViewAndSearchMobile } from "../_components/clanoverview/clanViewAndSearch";
+import { ClanInfo } from "../_components/clanoverview/clanInfo";
 
 type Props = {
-    title: string;
-    profileDeletionText: string;
-    profileDeletionInfoText: string;
+    toastError: string;
+    toastNotLoggedIn: string;
+    toastClanNotOpen: string;
+    toastEditMode: string;
+    joinClanBtn: string;
+    leaveClanBtn: string;
+    editClanBtn: string;
+    memberListTitle: string;
+    mottoText: string;
+    infoText: string;
+    assetsText: string;
+    memberCountText: string;
+    languageText: string;
+    goalText: string;
+    ageLimitText: string;
+    winsText: string;
+    lossesText: string;
 }
 
-const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }: Props) => {
+const ClanRoomSubPage = (props: Props) => {
+    const {
+        toastError,
+        toastNotLoggedIn,
+        toastClanNotOpen,
+        joinClanBtn,
+        leaveClanBtn,
+        editClanBtn,
+        toastEditMode,
+        memberListTitle,
+        mottoText,
+        infoText,
+        ...rest
+    } = props;
+
 
     const { id, lng } = useParams();
     const user = useSelector(selectProfile);
-    const { t } = useClientTranslation(lng as string, "clan");
     const { isMobileSize } = useIsMobileSize();
 
     const playerId: string | undefined = user?.Player?._id;
@@ -69,7 +96,7 @@ const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }
     if (error) {
         return (
             <>
-                {toast.error(t('toast_error'))}
+                {toast.error(toastError)}
             </>
         );
     }
@@ -78,7 +105,7 @@ const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }
         return (<>
             {isMobileSize && <ClansViewAndSearchMobile />}
             <div className={cls.parent}>
-                <div className={cls.div2}>
+                <div className={cls.clanMainInfo}>
                     <Image
                         src={clanLogo}
                         alt={"clan logo"}
@@ -86,31 +113,31 @@ const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }
                     <span className={cls.clanName}>{clan?.data?.Clan?.name}</span>
                     <a className={cls.number} href="/leaderboardjne">♛12</a>
                 </div>
-                <div className={cls.div3}>
+                <div className={cls.clanList}>
                     {!isMobileSize && <ClansViewAndSearchDesktop />}
                 </div>
-                <div className={cls.div4}>
+                <div className={cls.clanSoulHome}>
                     <Image
                         src={clanHome}
                         alt={"clan home"}
                         className={cls.clanHome} />
                 </div>
-                <div className={cls.div5}>
+                <div className={cls.buttonField}>
                     {!isLoggedIn ? (
                         <Button
                             className={cls.JoinClanBtn}
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
-                            onClick={() => toast.error(t("toast_notloggedin"))} >
-                            {t("join_clan_btn")}
+                            onClick={() => toast.error(toastNotLoggedIn)} >
+                            {joinClanBtn}
                         </Button>
                     ) : isLoggedIn && !isOpen ? (<>
                         <Button
                             className={cls.JoinClanBtn}
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
-                            onClick={() => toast.error('Clan is not open')} >
-                            {t("join_clan_btn")}
+                            onClick={() => toast.error(toastClanNotOpen)} >
+                            {joinClanBtn}
                         </Button>
                         <Image
                             src={lock}
@@ -122,7 +149,7 @@ const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
                             onClick={() => handleJoin(clan?.data?.Clan?._id, playerId ?? "", "join")} >
-                            {t("join_clan_btn")}
+                            {joinClanBtn}
                         </Button>
                     ) : (
                         <Button
@@ -130,7 +157,7 @@ const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
                             onClick={() => handleLeave()} >
-                            {t("leave_clan_btn")}
+                            {leaveClanBtn}
                         </Button>
                     )
                     }
@@ -139,13 +166,13 @@ const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }
                             className={cls.EditClanBtn}
                             theme={ButtonTheme.Graffiti}
                             size={ButtonSize.L}
-                            onClick={() => toast.success('Editing mode')} >
-                            {t("edit_clan_btn")}
+                            onClick={() => toast.success(toastEditMode)} >
+                            {editClanBtn}
                         </Button>
                     )
                     }
                 </div>
-                <div className={cls.div6}>{t("member_list")}
+                <div className={cls.memberList}>{memberListTitle}
                     <div className={cls.membersList}>
                         {players.map(player => (
                             <div key={player._id} className={adminIds.includes(player._id) ? cls.adminItem : cls.memberItem}>
@@ -154,20 +181,21 @@ const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }
                         ))}
                     </div>
                 </div>
-                <div className={cls.div7}>
-                    {t("motto")}
+                <div className={cls.clanMotto}>
+                    {mottoText}
                     <p className={cls.mottoText}>Unite, Conquer, Prevail!</p>
                 </div>
-                <div className={cls.div8}>{t("info")}
-                    < div className={cls.clanInfo} >
-                        <p className={cls.infoItem}>{t("assets")}: {clan?.data?.Clan?.gameCoins}</p>
-                        <p className={cls.infoItem}>{t("members_count")}: {players.length}/10</p>
-                        <p className={cls.infoItem}>{t("language")}: {clan?.data?.Clan?.name}</p>
-                        <p className={cls.infoItem}>{t("goal")}: {clan?.data?.Clan?.name}</p>
-                        <p className={cls.infoItem}>{t("age_limit")}: {clan?.data?.Clan?.name}</p>
-                        <p className={cls.infoItem}>{t("wins")}: {clan?.data?.Clan?.name}</p>
-                        <p className={cls.infoItem}>{t("losses")}: {clan?.data?.Clan?.name}</p>
-                    </div>
+                <div className={cls.clanInformation}>{infoText}
+                    <ClanInfo
+                        clanGameCoins={clan?.data?.Clan?.gameCoins}
+                        playersInClan={players.length}
+                        clanLanguage={clan?.data?.Clan?.name}
+                        clanGoal={clan?.data?.Clan?.name}
+                        clanAgeLimit={clan?.data?.Clan?.name}
+                        clanWins={clan?.data?.Clan?.name}
+                        clanLosses={clan?.data?.Clan?.name}
+                        {...rest}
+                    />
                 </div>
             </div>
         </>
