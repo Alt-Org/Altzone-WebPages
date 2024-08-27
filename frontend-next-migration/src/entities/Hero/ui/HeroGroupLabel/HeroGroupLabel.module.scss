@@ -1,23 +1,36 @@
-.heroGroupLabel{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.title{
+  position: relative;
+  min-height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-shadow: 1px 1px 2px black;
+
+  & span {
+    max-width: 85%;
+    position: relative;
+    z-index: 2;
+
     text-align: center;
-    flex-direction: row;
-  
-    &Title{
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-attachment: scroll;
-      background-size: cover;
-      padding: 4vw;
-      text-shadow: 1px 1px 2px black;
-  
-      & span {
-        font-size: calc(12px + 0.8vw);
-        display: inline-block;
-        transform: translateX(calc(12px + 0.2vw));
-        hyphens: manual;
-      }
-    }
+    font-size: calc(12px + 0.6vw);
+    hyphens: manual;
   }
+  &bg-image{
+    z-index: 1;
+    position: absolute;
+  }
+}
+
+.title.isTablet{
+  & span {
+    font-size: calc(12px + 0.7vw);
+  }
+}
+
+.title.isMobile{
+  & span {
+    font-size: calc(12px + 0.8vw);
+  }
+}
