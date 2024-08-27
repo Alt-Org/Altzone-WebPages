@@ -116,6 +116,14 @@
   max-height: 38%;
 }
 
+.heroGroup{
+  display: flex;
+  justify-content: center;
+  &Label{
+    max-width: 80%;
+  }
+}
+
 .isMobile {
   font-size: 0.8rem;
 }

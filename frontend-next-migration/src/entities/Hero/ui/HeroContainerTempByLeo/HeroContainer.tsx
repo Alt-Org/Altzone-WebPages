@@ -65,9 +65,8 @@ const HeroContainer = (props: Props) => {
         </div>
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
-
           <div className={classNames(cls.container, combinedModCss)} >
-            <div className={classNames(cls.contentWrapper, combinedModCss)}   style={{
+            <div className={classNames(cls.contentWrapper, combinedModCss)} style={{
               backgroundColor: heroColor,
             }}>
               <div className={cls.content}>
@@ -95,10 +94,13 @@ const HeroContainer = (props: Props) => {
                 </div>
               </div>
             </div>
-          </div>
-
-          <HeroGroupLabel group={group} />
-
+          </div> 
+          <div className={cls.heroGroup}>
+            <HeroGroupLabel
+              className={cls.heroGroupLabel}
+              group={group} 
+            />
+          </div>     
         </div>
 
         <ArrowButton direction='right' type='outer' href={rightArrowLink} />
