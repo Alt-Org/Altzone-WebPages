@@ -16,13 +16,19 @@ import cls from "./ClanRoomSubPage.module.scss";
 import { toast } from "react-toastify";
 import { useClientTranslation } from "@/shared/i18n";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import { ClansViewAndSearch } from "../_components/clanoverview/clanViewAndSearch";
+import { ClansViewAndSearchDesktop, ClansViewAndSearchMobile } from "../_components/clanoverview/clanViewAndSearch";
 
-const ClanRoomSubPage = () => {
+type Props = {
+    title: string;
+    profileDeletionText: string;
+    profileDeletionInfoText: string;
+}
+
+const ClanRoomSubPage = ({ title, profileDeletionText, profileDeletionInfoText }: Props) => {
+
     const { id, lng } = useParams();
     const user = useSelector(selectProfile);
-    const lng2 = lng as string;
-    const { t } = useClientTranslation(lng2, "clan");
+    const { t } = useClientTranslation(lng as string, "clan");
     const { isMobileSize } = useIsMobileSize();
 
     const playerId: string | undefined = user?.Player?._id;
@@ -63,24 +69,15 @@ const ClanRoomSubPage = () => {
     if (error) {
         return (
             <>
-                <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANIT</h1>
-                {isMobileSize}
-                <h2 style={{ textAlign: "left", marginBottom: "20px" }}>No results</h2>
+                {toast.error(t('toast_error'))}
             </>
         );
     }
 
     if (clan) {
         return (<>
-
-
+            {isMobileSize && <ClansViewAndSearchMobile />}
             <div className={cls.parent}>
-                {/* <div className={cls.div1}>
-                    <Image
-                        src={clanLogo}
-                        alt={"clan logo"}
-                        className={cls.clanLogo} />
-                </div> */}
                 <div className={cls.div2}>
                     <Image
                         src={clanLogo}
@@ -90,7 +87,7 @@ const ClanRoomSubPage = () => {
                     <a className={cls.number} href="/leaderboardjne">♛12</a>
                 </div>
                 <div className={cls.div3}>
-                    {<ClansViewAndSearch />}
+                    {!isMobileSize && <ClansViewAndSearchDesktop />}
                 </div>
                 <div className={cls.div4}>
                     <Image
