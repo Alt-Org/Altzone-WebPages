@@ -1,3 +1,13 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .Loader {
     @include position-absolute-center
 }
@@ -10,6 +20,7 @@
 
 .searchField {
     display: flex;
+    animation: fadeIn 1s ease-in;
 }
 
 .clanList {
@@ -37,4 +48,102 @@
     padding: 1px;
     padding-left: 3%;
     border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 768px) {
+    .tableContainer {
+        animation: fadeIn 1s ease-in;
+        height: 80vh;
+        max-height: 80vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mobileToggleClanList.collapsed {
+        position: fixed;
+        margin-bottom: 20vh;
+        margin-top: 40vh;
+        z-index: 50000;
+        opacity: 90%;
+        left: -2vh;
+        transition: width 0.3s ease, position 0.5s ease, height 0.5s ease, margin-bottom 0.5s ease, margin-top 0.5s ease, background-color 0.5s ease;
+        height: 15vh;
+        width: 5vh;
+        text-shadow: none;
+    }
+
+    .mobileToggleClanList.expanded {
+        position: fixed;
+        padding: 0;
+        height: 90vh;
+        margin-bottom: 0%;
+        margin-top: 0%;
+        left: 0;
+        z-index: 50000;
+        opacity: 90%;
+        transition: width 0.3s ease, position 0.5s ease, height 0.5s ease, margin-bottom 0.5s ease, margin-top 0.5s ease, background-color 0.5s ease;
+        border-radius: 0px;
+        background-color: rgb(255, 73, 73);
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        letter-spacing: 2vh;
+        width: 5vh;
+    }
+
+    .parent.expanded {
+        display: grid;
+        grid-template-columns: 10% 90%;
+        grid-template-rows: 1fr;
+        grid-column-gap: 1px;
+        grid-row-gap: 1px;
+        min-height: 400px;
+        height: 100%;
+        width: 100%;
+        padding-top: 16vh;
+        left: 0;
+        z-index: 28;
+        top: 0;
+        background-color: rgba(0, 0, 0, 1);
+        position: fixed;
+        opacity: 100%;
+        transition: width 0.4s ease-in-out;
+
+    }
+
+    .parent.collapsed {
+        display: grid;
+        grid-template-columns: 10% 90%;
+        grid-template-rows: 1fr;
+        grid-column-gap: 1px;
+        grid-row-gap: 1px;
+        min-height: 400px;
+        height: 100%;
+        width: 0%;
+        padding-top: 16vh;
+        left: 0;
+        z-index: 28;
+        top: 0;
+        background-color: rgba(0, 0, 0, 1);
+        position: fixed;
+        transition: width 0.4s ease-in-out;
+    }
+
+    .clanListMobile.collapsed {
+        display: none;
+        grid-area: 1 / 2 / 2 / 3;
+        transition: width 0.4s ease-in-out;
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: var(--font-line-m);
+    }
+
+    .clanListMobile.expanded {
+        grid-area: 1 / 2 / 2 / 3;
+        transition: width 0.4s ease-in-out;
+        background-color: rgba(0, 0, 0, 1);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: var(--font-line-m);
+    }
 }
