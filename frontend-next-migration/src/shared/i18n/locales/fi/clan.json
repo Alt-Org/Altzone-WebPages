@@ -20,6 +20,7 @@
   "leave_clan_btn": "Poistu klaanista",
   "join_clan_btn": "Liity klaaniin",
   "edit_clan_btn": "Muokkaa klaania",
+  "close_btn": "SULJE",
   "toast_notloggedin": "Sinun täytyy olla kirjautuneena liittyäksesi klaaniin",
   "toast_clan_not_open": "Klaaniin ei voi liittyä",
   "toast_notadmin": "Sinun täytyy olla ylläpitäjä muokataksesi klaania",

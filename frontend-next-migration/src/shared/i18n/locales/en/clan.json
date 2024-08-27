@@ -20,6 +20,7 @@
   "leave_clan_btn": "Leave Clan",
   "join_clan_btn": "Join Clan",
   "edit_clan_btn": "Edit Clan",
+  "close_btn": "CLOSE",
   "toast_notloggedin": "You need to be logged in to join a clan",
   "toast_clan_not_open": "The clan is not open to join",
   "toast_notadmin": "You need to be an admin to edit clan",
