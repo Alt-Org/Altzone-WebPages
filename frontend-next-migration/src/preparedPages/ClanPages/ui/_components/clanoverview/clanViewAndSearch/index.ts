@@ -1,1 +1,2 @@
-export { default as ClansViewAndSearch } from "./ClanViewAndSearch";
+export { default as ClansViewAndSearchDesktop } from "./ClanViewAndSearch";
+export { ClansSearchAndViewMobile as ClansViewAndSearchMobile } from "./ClanViewAndSearch";
