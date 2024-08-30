@@ -10,8 +10,6 @@ import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/Ge
 import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
 import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
 
-
-
 export type Props = {
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
