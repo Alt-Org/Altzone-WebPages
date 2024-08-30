@@ -12,7 +12,7 @@ export async function _getPage (lng: string){
     }
 
     const page = {
-        pageTitle: t('Comics')
+        title: t('Comics')
     }
 
     return {
