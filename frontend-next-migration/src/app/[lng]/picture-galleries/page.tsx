@@ -22,9 +22,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
 export default async function PictureGalleries({ params }: Props) {
 
+    const { t } = await useServerTranslation(params.lng, 'picture-galleries');
+
     return (
         <>
-            <PictureGalleriesPage lng={params.lng}/>
+            <PictureGalleriesPage
+                title={t('picture-galleries')}
+            />
         </>
 )
 }
