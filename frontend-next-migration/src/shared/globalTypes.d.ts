@@ -31,3 +31,13 @@ declare type ResponseShapeArray<K extends string, T> = {
     metaData: MetaData;
     paginationData: PaginationData;
 };
+
+
+declare interface DefaultAppRouterProps {
+    params: { lng: string }
+}
+
+declare interface DefaultSeo {
+    title: string,
+    description: string
+}
