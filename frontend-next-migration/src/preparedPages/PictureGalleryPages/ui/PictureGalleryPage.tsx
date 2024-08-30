@@ -1,10 +1,11 @@
-import { Container } from "@/shared/ui/Container";
-import cls from "./PictureGalleryPage.module.scss";
 import { SectionGallerias } from "@/widgets/SectionGallerias";
+import { Container } from "@/shared/ui/Container";
 import {useServerTranslation} from "@/shared/i18n";
 import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+
+import cls from "./PictureGalleryPage.module.scss";
 
 export interface Props {
     lng: string
