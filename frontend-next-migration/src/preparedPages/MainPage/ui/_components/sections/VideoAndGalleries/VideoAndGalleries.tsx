@@ -60,6 +60,9 @@ const VideoAndGalleries = (props: Props) => {
             <Container className={cls.container} fluid={isMobileSize || isTabletSize}>
                 <div className={cls.videoWrapper}>
                     <VideoContentYoutube
+                        params={{
+                            className: cls.VideoContentYoutube
+                        }}
                         src={videoLink}
                     />
                 </div>
