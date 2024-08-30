@@ -19,7 +19,7 @@ const ComicsGalleriesPage = async (props: Props) => {
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
                 <h1>
-                    title
+                    {title}
                 </h1>
                 <SectionGallerias parentDirectory={SectionGalleriasPaths.comics}/>
             </Container>
