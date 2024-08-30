@@ -15,7 +15,6 @@ export async function _getPage (lng: string){
         pageTitle: t('Comics')
     }
 
-
     return {
         page,
         seo
