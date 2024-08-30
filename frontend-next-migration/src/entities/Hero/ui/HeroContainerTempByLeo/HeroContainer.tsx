@@ -90,7 +90,7 @@ const HeroContainer = (props: Props) => {
                   <ArrowButton direction='right' type='inner' href={rightArrowLink} />
                 </div>
                 <div className={cls.heroDescription}>
-                  <h3>{heroDescription}</h3>
+                 {heroDescription}
                 </div>
               </div>
             </div>
