@@ -89,7 +89,7 @@ const HeroContainer = (props: Props) => {
 
                   <ArrowButton direction='right' type='inner' href={rightArrowLink} />
                 </div>
-                <div className={cls.heroDescription}>
+                <div className={classNames(cls.heroDescription, combinedModCss)}>
                  {heroDescription}
                 </div>
               </div>
