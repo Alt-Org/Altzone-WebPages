@@ -1,6 +1,5 @@
 import { SectionGallerias } from "@/widgets/SectionGallerias";
 import { Container } from "@/shared/ui/Container";
-import {useServerTranslation} from "@/shared/i18n";
 import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
@@ -8,19 +7,21 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import cls from "./PictureGalleryPage.module.scss";
 
 export interface Props {
-    lng: string
+    title: string;
 }
 
 const PictureGalleryPage = async (props: Props) => {
 
-    const {lng} = props;
-
-    const {t} = await useServerTranslation(lng, "picture-galleries");
+    const {
+        title
+    } = props;
 
     return (
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
-                <h1>{t('picture-galleries')}</h1>
+                <h1>
+                    {title}
+                </h1>
                 <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} />
             </Container>
         </div>
