@@ -21,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
 export default async function Comics({ params }: Props) {
 
+
+
+
     return (
         <>
             <ComicsGalleriesPage lng={params.lng}/>
