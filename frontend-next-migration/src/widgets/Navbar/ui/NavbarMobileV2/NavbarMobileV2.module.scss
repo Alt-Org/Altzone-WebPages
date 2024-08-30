@@ -9,7 +9,10 @@
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.7);
   height: 50px;
-  margin: 6% auto 0;
+  //margin: 6% auto 0;
+
+  margin-top: 60px;
+
   position: absolute;
   z-index: var(--navbar-z-index);
 
@@ -39,8 +42,10 @@
 
 .navLogo {
   img {
-    height: var(--navbar-logo-height);
-    width: auto;
+    //height: var(--navbar-logo-height);
+    width: 25vw;
+    max-width: 150px;
+    //width: auto;
   }
 }
 
@@ -88,11 +93,11 @@
   font-size: var(--font-size-m) !important;
 }
 
-@media (max-width: 800px){
-  .NavbarMobile{
-    height: 7vh;
-  }
-}
+//@media (max-width: 800px){
+//  .NavbarMobile{
+//    height: 7vh;
+//  }
+//}
 
 .FixedButton{
   text-align: center;
