@@ -106,7 +106,7 @@
 .heroDescription {
   @include ScrollbarWithArrowButtons;
 
-  margin-top: 2rem;
+
 
   //padding-top: 0.5rem;
   padding-right: 0.5rem;
@@ -114,6 +114,11 @@
   font-size: 1.4rem;
   border-radius: 10px;
   max-height: 38%;
+
+  &.isMobile{
+    margin-top: 2rem;
+  }
+
 }
 
 .heroGroup{
@@ -124,12 +129,12 @@
   }
 }
 
-.isMobile {
-  font-size: 0.8rem;
-}
-.isTablet {
-  font-size: 0.7rem;
-}
-.isDesktop {
-  font-size: 0.9rem;
-}
+//.isMobile {
+//  font-size: 0.8rem;
+//}
+//.isTablet {
+//  font-size: 0.7rem;
+//}
+//.isDesktop {
+//  font-size: 0.9rem;
+//}
