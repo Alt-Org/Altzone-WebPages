@@ -3,7 +3,7 @@ import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 export async function _getPage (lng: string){
-    const {t} = await useServerTranslation(lng, 'main');
+    const {t} = await useServerTranslation(lng, 'comics');
 
     const seo = {
         title: t("head-title"),
