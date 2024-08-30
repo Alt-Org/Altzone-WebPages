@@ -1,13 +1,14 @@
-import {useServerTranslation} from "@/shared/i18n";
+export type Props = {
+    title: string;
+}
 
-export default async function About({lng} : {lng: string}) {
-
-    const { t } = await  useServerTranslation(lng, 'translation');
+export default function About(props: Props) {
+    const {title} = props;
 
     return (
         <div>
             {
-                t("title")
+                title
             }
         </div>
     )
