@@ -1,27 +1,10 @@
-import {AuthSubLoginPage as PreparedPage} from "@/preparedPages/AuthPages";
-import {Metadata} from "next";
-import {useServerTranslation} from "@/shared/i18n";
+import {AuthSubLoginPage} from "@/preparedPages/AuthPages";
+import {createMetadataGenerator} from "@/shared/lib/createMetadataGenerator";
+import {withPageData} from "@/shared/lib/hocs/withPageData";
 
-type Props = {
-    params: { lng: string }
-}
+import {_getPage} from "./_getPage";
 
-export async function generateMetadata({ params }: Props): Promise<Metadata>  {
+export const generateMetadata = createMetadataGenerator(_getPage);
+export default withPageData(AuthSubLoginPage, _getPage);
 
-    const { t } = await useServerTranslation(params.lng, 'auth');
-
-    return {
-        title: t("auth-login-head-title"),
-        description: t("auth-login-head-description"),
-        keywords: t("auth-login-head-keywords"),
-    }
-}
-
-export default async function AuthSubLoginPage() {
-    return (
-        <>
-            <PreparedPage/>
-        </>
-    )
-}
 
