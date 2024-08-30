@@ -1,7 +1,6 @@
 import { createSection } from '../createSection';
 
 const i18nKeyPrefixes = [
-  'policies',
   'privacy',
   'interpretation',
   'collecting',
