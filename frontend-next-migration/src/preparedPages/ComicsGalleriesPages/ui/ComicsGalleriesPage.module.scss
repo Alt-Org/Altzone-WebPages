@@ -1,13 +1,13 @@
 .Wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  //padding-bottom: 20px;
+  height: 100vh;
+  padding-bottom: 20px;
 }
 
 
 .Container{
-  //margin-top: 30%;
+  margin-top: 30%;
   padding-bottom: 40px;
 
   flex-grow: 1;
@@ -35,9 +35,9 @@
 }
 
 
-//@media (min-width: 768px) {
-//  .Container {
-//    margin-top: 15vh;
-//  }
-//}
+@media (min-width: 768px) {
+  .Container {
+    margin-top: 15vh;
+  }
+}
 
