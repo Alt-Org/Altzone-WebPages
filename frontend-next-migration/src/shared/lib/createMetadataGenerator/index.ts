@@ -14,6 +14,7 @@ async function extractSEO(lng: string, getPage: (lng: string) => Promise<{ seo: 
     throw new Error('Invalid SEO data');
 }
 
+//todo add documentation
 export function createMetadataGenerator(getPage: (lng: string) => Promise<{ seo: DefaultSeo }>) {
     return async function generateMetadata({ params }: DefaultAppRouterProps): Promise<Metadata> {
         return await extractSEO(params.lng, getPage);
