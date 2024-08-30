@@ -28,10 +28,9 @@ const PictureGalleryPage = async (props: Props) => {
     );
 };
 
-export default withBackgroundImage({
+export default withBackgroundImage<Props>({
     alt: "Picture Gallery Page underground style background",
     imagePath: bgPicture as unknown as string,
     className: cls.wholePageBG
-    // @ts-ignore
 })(PictureGalleryPage);
 
