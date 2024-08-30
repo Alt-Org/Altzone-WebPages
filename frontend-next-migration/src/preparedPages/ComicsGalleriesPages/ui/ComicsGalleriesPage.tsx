@@ -1,9 +1,10 @@
-import cls from "./ComicsGalleriesPage.module.scss";
-import {Container} from "@/shared/ui/Container";
 import {SectionGallerias} from "@/widgets/SectionGallerias";
+import {Container} from "@/shared/ui/Container";
 import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+
+import cls from "./ComicsGalleriesPage.module.scss";
 
 export interface Props {
     title: string;
