@@ -1,5 +1,4 @@
 import cls from "./ComicsGalleriesPage.module.scss";
-import {Navbar} from "@/widgets/Navbar";
 import {Container} from "@/shared/ui/Container";
 import {SectionGallerias} from "@/widgets/SectionGallerias";
 import {useServerTranslation} from "@/shared/i18n";
@@ -20,7 +19,6 @@ const ComicsGalleriesPage = async (props: Props) => {
 
     return (
         <div className={cls.Wrapper}>
-            <Navbar key={"navbarPictureGallery"} className={cls.Navbar}/>
             <Container className={cls.Container}>
                 <h1>{t('Comics')}</h1>
                 <SectionGallerias parentDirectory={SectionGalleriasPaths.comics}/>
