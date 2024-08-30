@@ -6,6 +6,7 @@ import NavbarMobileV2 from "../NavbarMobileV2/NavbarMobileV2";
 import { FixedProvider } from "@/widgets/Navbar/model/FixedProvider";
 import { NavBarType } from "../../model/types";
 import { getNavbarBuildByTypeAndSize } from "../../model/getNavbarBuildByTypeAndSize";
+import useSizes from "@/shared/lib/hooks/useSizes";
 
 
 
@@ -24,12 +25,13 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
         marginTop,
         className,
         navBarType = "Default" } = props;
-    const { isMobileSize } = useIsMobileSize();
+    // const { isMobileSize } = useIsMobileSize();
+    const { isMobileSize, isTabletSize} = useSizes();
     const navbarBuild = getNavbarBuildByTypeAndSize(navBarType, isMobileSize);
 
     return (
         <FixedProvider>
-            {isMobileSize ? (
+            {isMobileSize || isTabletSize ? (
                 <NavbarMobileV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarBuild}  navBarType={navBarType}/>
             ) : (
                 <NavbarDesktopV2 overlaid={overlaid} marginTop={marginTop} className={className} navbarBuild={navbarBuild} navBarType={navBarType} />
