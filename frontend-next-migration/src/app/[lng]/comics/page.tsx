@@ -20,13 +20,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata>  {
 
 
 export default async function Comics({ params }: Props) {
-
-
-
+    const {t} = await useServerTranslation(params.lng, "comics");
 
     return (
         <>
-            <ComicsGalleriesPage lng={params.lng}/>
+            <ComicsGalleriesPage
+                title={t('Comics')}
+            />
         </>
     )
 }
