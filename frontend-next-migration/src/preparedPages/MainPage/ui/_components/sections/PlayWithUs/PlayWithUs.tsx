@@ -32,9 +32,9 @@ const PlayWithUs = (props: Props) => {
     return (
         <section className={cls.SectionPlayWithUs}>
 
-            <h3 className={cls.title}>
+            <h2 className={cls.title}>
                 {title}
-            </h3>
+            </h2>
             <div className={cls.Content}>
                 <div className={cls.ContentWithNav}>
                     <div className={cls.Buttons}>
