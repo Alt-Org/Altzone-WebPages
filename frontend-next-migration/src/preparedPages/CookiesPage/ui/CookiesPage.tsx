@@ -40,9 +40,7 @@ const CookiesPage = (props: Props) => {
   );
 };
 
-export default withBackgroundImage({
+export default withBackgroundImage<Props>({
   alt: 'Tile bg image',
   imagePath: bgPicture as unknown as string,
-
-  // @ts-ignore
 })(CookiesPage);
