@@ -2,12 +2,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
-import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
 import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
+import ArrowButton from './components/ArrowButton';
+import CloseButton from './components/CloseButton';
+import { HeroCardTitle } from './components/HeroCardTitle';
 
 type Props = {
   group: string;
@@ -52,13 +53,7 @@ const HeroContainer = (props: Props) => {
 
   return (
       <div className={classNames(cls.componentWrapper, combinedModCss)}>
-        <Link
-          className={classNames(cls.outerLeftArrow, combinedModCss, [
-            cls.outerArrow,
-          ])}
-          href={leftArrowLink}>
-          <Image src={leftArrow} alt='leftArrow' />
-        </Link>
+        <ArrowButton direction='left' type='outer' href={leftArrowLink} />
 
         <div className={classNames(cls.heroImgSideWrapper, combinedModCss)}>
           <Image
@@ -71,31 +66,17 @@ const HeroContainer = (props: Props) => {
 
         <div className={classNames(cls.containerWrapper, combinedModCss)}>
           <div className={classNames(cls.container, combinedModCss)} >
-            <div className={classNames(cls.contentWrapper, combinedModCss)}   style={{
+            <div className={classNames(cls.contentWrapper, combinedModCss)} style={{
               backgroundColor: heroColor,
             }}>
               <div className={cls.content}>
-                <div className={classNames(cls.xLinkButton, combinedModCss)}>
-                  {' '}
-                  <Link href={xLink}>
-                    <h1>X</h1>
-                  </Link>
-                </div>
-                <div
-                  className={classNames(cls.heroName, combinedModCss)}
-                >
-                  <h1>{heroName}</h1>
-                </div>
+                <CloseButton combinedModCss={combinedModCss} href={xLink}/>
+                <HeroCardTitle combinedModCss={combinedModCss} title={heroName} />
                 <div
                   className={classNames(cls.heroImgWrapper, combinedModCss)}
                 >
-                  <Link
-                    className={classNames(cls.innerLeftArrow, combinedModCss, [
-                      cls.innerArrow,
-                    ])}
-                    href={leftArrowLink}>
-                    <Image src={leftArrow} alt='leftArrow' />
-                  </Link>
+                  <ArrowButton direction='left' type='inner' href={leftArrowLink} />
+
                   <Image
                     quality={100}
                     className={classNames(cls.heroImg, combinedModCss)}
@@ -106,30 +87,23 @@ const HeroContainer = (props: Props) => {
                     priority={true}
                   />
 
-                  <Link
-                    className={classNames(cls.innerRightArrow, combinedModCss, [
-                      cls.innerArrow,
-                    ])}
-                    href={rightArrowLink}>
-                    <Image src={rightArrow} alt='rightArrow' />
-                  </Link>
+                  <ArrowButton direction='right' type='inner' href={rightArrowLink} />
                 </div>
                 <div className={cls.heroDescription}>
                   <h3>{heroDescription}</h3>
                 </div>
               </div>
             </div>
-          </div>
-          <HeroGroupLabel group={group} />
+          </div> 
+          <div className={cls.heroGroup}>
+            <HeroGroupLabel
+              className={cls.heroGroupLabel}
+              group={group} 
+            />
+          </div>     
         </div>
 
-        <Link
-          className={classNames(cls.outerRightArrow, combinedModCss, [
-            cls.outerArrow,
-          ])}
-          href={rightArrowLink}>
-          <Image src={rightArrow} alt='rightArrow' />
-        </Link>
+        <ArrowButton direction='right' type='outer' href={rightArrowLink} />
       </div>
   );
 };
