@@ -1,33 +1,23 @@
-import {default as PictureGalleriesPage } from "@/preparedPages/PictureGalleryPages";
 import {Metadata} from "next";
-import {useServerTranslation} from "@/shared/i18n";
-
-
+import {default as PictureGalleriesPage } from "@/preparedPages/PictureGalleryPages";
+import {_getPage} from "./_getPage";
 
 type Props = {
     params: { lng: string }
 }
 
-
 export async function generateMetadata({ params }: Props): Promise<Metadata>  {
-
-    const { t } = await useServerTranslation(params.lng, 'picture-galleries');
-
-    return {
-        title: t("head-title"),
-        description: t("head-description"),
-        keywords: t("head-keywords"),
-    }
+    return await _getPage(params.lng).then(r => r.seo);
 }
 
 export default async function PictureGalleries({ params }: Props) {
 
-    const { t } = await useServerTranslation(params.lng, 'picture-galleries');
+    const {page} = await _getPage(params.lng);
 
     return (
         <>
             <PictureGalleriesPage
-                title={t('picture-galleries')}
+                {...page}
             />
         </>
 )
