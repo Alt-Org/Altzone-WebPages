@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 800px;
   position: relative;
   gap:20px;
 }
@@ -55,15 +55,14 @@
 }
 
 
-
 .Buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 20px;
+
 }
-
-
 
 .webGl {
 
@@ -92,12 +91,19 @@
 
 }
 
+.BtnDownloadWrapper{
+  height: 95px;
+  width: auto;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
 .BtnDownload {
   @include link-scale-effect;
   border-radius: var(--border-radius-custom);
-  height: 10vh;
-  width: auto;
-  min-width: 100px;
+  width: inherit;
+  height: inherit;
 }
 
 
@@ -127,7 +133,7 @@
   }
 
   .Buttons {
-    width: 100%;
+    //width: 100%;
     align-items: center;
     flex-direction: column;
 
