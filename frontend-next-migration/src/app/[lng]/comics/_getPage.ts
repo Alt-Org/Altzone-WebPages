@@ -1,6 +1,4 @@
 import {useServerTranslation} from "@/shared/i18n";
-import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 export async function _getPage (lng: string){
     const {t} = await useServerTranslation(lng, 'comics');
