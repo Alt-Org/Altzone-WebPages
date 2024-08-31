@@ -1,6 +1,5 @@
 import {PictureGalleryPage } from "@/preparedPages/PictureGalleryPages";
-import {createMetadataGenerator} from "@/shared/lib/createMetadataGenerator";
-import {withPageData} from "@/shared/lib/hocs/withPageData";
+import {withPageData,createMetadataGenerator} from "src/app/_helpers";
 import {_getPage} from "./_getPage";
 
 export const generateMetadata = createMetadataGenerator(_getPage);

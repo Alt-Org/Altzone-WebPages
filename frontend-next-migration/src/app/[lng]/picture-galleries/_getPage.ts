@@ -1,4 +1,4 @@
-import {createPage} from "@/app/_helpers/_createPage";
+import {createPage} from "@/app/_helpers";
 import {PictureGalleryPageProps} from "@/preparedPages/PictureGalleryPages";
 import {useServerTranslation} from "@/shared/i18n";
 
