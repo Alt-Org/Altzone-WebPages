@@ -11,5 +11,4 @@ export async function _getPage (lng: string){
             keywords: t("auth-login-head-keywords"),
         })
     });
-
 }
