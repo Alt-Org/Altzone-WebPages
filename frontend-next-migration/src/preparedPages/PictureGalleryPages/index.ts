@@ -1,1 +1,1 @@
-export {default} from "./ui/PictureGalleryPage.async"
+export {default as PictureGalleryPage} from "./ui/PictureGalleryPage.async"
