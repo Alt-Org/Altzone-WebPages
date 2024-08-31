@@ -1,21 +1,17 @@
 import {useServerTranslation} from "@/shared/i18n";
+import {createPage} from "@/app/_helpers/_createPage";
+import {AboutPageProps} from "@/preparedPages/AboutPage";
 
 export async function _getPage (lng: string){
     const {t} = await useServerTranslation(lng, 'about');
-
-    const seo = {
-        title: t("head-title"),
-        description: t("head-description"),
-        keywords: t("head-keywords"),
-    }
-
-    const page = {
-        title: t("title")
-    }
-
-    return {
-        page,
-        seo
-    }
-
+    return createPage<AboutPageProps>({
+        buildPage: () => ({
+            title: t("title")
+        }),
+        buildSeo: () => ({
+            title: t("head-title"),
+            description: t("head-description"),
+            keywords: t("head-keywords"),
+        })
+    })
 }
