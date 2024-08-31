@@ -1,28 +1,6 @@
-import {NewsPage as PreparedPage} from "@/preparedPages/NewsPages";
-import {Metadata} from "next";
-import {useServerTranslation} from "@/shared/i18n";
+import {NewsPage} from "@/preparedPages/NewsPages";
+import {withPageData,createMetadataGenerator} from "src/app/_helpers";
+import {_getPage} from "./_getPage";
 
-type Props = {
-    params: { lng: string }
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata>  {
-
-    const { t } = await useServerTranslation(params.lng, 'news');
-
-    return {
-        title: t("head-title"),
-        description: t("head-description"),
-        keywords: t("head-keywords"),
-    }
-}
-
-
-export default function NewsPage(){
-
-    return (
-        <>
-            <PreparedPage/>
-        </>
-    )
-}
+export const generateMetadata = createMetadataGenerator(_getPage);
+export default withPageData(NewsPage, _getPage);

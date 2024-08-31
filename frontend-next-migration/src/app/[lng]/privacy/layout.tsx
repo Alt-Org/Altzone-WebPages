@@ -6,10 +6,10 @@ type Props = {
     children: ReactNode;
 }
 
-export default function Layout({children}: Props) {
+export default function PictureGalleriasLayout({children}: Props) {
     return (
         <>
-            <Navbar overlaid />
+            <Navbar overlaid navBarType={'Privacy'} />
             {children}
             <Footer />
         </>

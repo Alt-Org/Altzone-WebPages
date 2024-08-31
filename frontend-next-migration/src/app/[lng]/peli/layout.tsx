@@ -6,12 +6,13 @@ type Props = {
     children: ReactNode;
 }
 
-export default function Layout({children}: Props) {
+export default function GameLayout({children}: Props) {
     return (
         <>
-            <Navbar overlaid />
+            <Navbar overlaid/>
+            <div style={{paddingTop: "20px"}}></div>
             {children}
-            <Footer />
+            <Footer/>
         </>
     )
 }

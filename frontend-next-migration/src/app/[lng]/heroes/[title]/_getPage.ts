@@ -1,28 +1,17 @@
-import {HeroPage as PreparedHeroPage} from "@/preparedPages/HeroesPages";
+import {createPage} from "@/app/_helpers";
 import {useServerTranslation} from "@/shared/i18n";
 import {heroes} from "@/entities/Hero";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
-import { notFound } from 'next/navigation';
-// import {withPageData ,createMetadataGenerator} from "src/app/_helpers";
-// import {_getPage} from "./_getPage";
+import {notFound} from "next/navigation";
 
+export async function _getPage (lng: string, title: string){
 
-interface Props extends DefaultAppRouterProps {
-    params: DefaultAppRouterProps['params'] & {
-        title: string;
-    };
-}
-
-// @ts-ignore todo figure out why it doesnt work properly and refactor after it and add createMetadataGenerator
-// export default withPageData(PreparedHeroPage, _getPage);
-
-export default async function HeroPage({ params }: Props) {
-    const { title, lng } = params;
-
-    const {t} = await useServerTranslation(lng, 'heroes');
+    const { t } = await useServerTranslation(lng, 'heroes');
     const currentIndex = heroes.findIndex(hero => hero.title === title);
+
     const prevHeroTitle = findPrevTitle(currentIndex);
     const nextHeroTitle = findNextTitle(currentIndex);
+
     const selectedHero = getHeroData(title, t);
     const prevHeroLink = generateHeroLink(prevHeroTitle);
     const nextHeroLink = generateHeroLink(nextHeroTitle);
@@ -33,15 +22,18 @@ export default async function HeroPage({ params }: Props) {
         notFound();
     }
 
-
-    return (
-        <PreparedHeroPage
-            // @ts-ignore todo fix
-            selectedHero={selectedHero}
-            prevHeroLink={prevHeroLink}
-            nextHeroLink={nextHeroLink}
-        />
-    );
+    return createPage({
+        buildPage: () => ({
+            selectedHero:{selectedHero},
+            prevHeroLink:{prevHeroLink},
+            nextHeroLink:{nextHeroLink}
+        }),
+        buildSeo: () => ({
+            title: t('head-title'),
+            description: t('head-description'),
+            keywords: t('head-keywords'),
+        })
+    });
 }
 
 
