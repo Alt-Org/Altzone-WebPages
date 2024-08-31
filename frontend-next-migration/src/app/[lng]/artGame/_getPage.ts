@@ -16,5 +16,4 @@ export async function _getPage (lng: string){
             keywords: t("head-keywords")
         })
     });
-
 }
