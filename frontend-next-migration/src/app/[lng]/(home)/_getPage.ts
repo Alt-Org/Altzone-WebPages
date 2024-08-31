@@ -4,7 +4,6 @@ import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {createPage} from "../../_helpers/_createPage";
 
-
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, "main");
 
