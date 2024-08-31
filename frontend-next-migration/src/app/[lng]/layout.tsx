@@ -24,6 +24,7 @@ const rubik = Rubik({
   variable: '--font-family-texts',
 });
 
+// todo add i18n if it possible
 export const metadata: Metadata = {
   title: 'AltZone',
   description:
