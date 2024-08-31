@@ -1,7 +1,7 @@
 import cls from "./DataPolicyPage.module.scss";
 import {ReactNode} from "react";
 
-type Props = {
+export type Props = {
     title: string;
     text: ReactNode;
 }
