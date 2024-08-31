@@ -26,14 +26,33 @@ import {ComponentType} from "react";
  *
  * // Now MyPageWithData can be used within a routing context
  */
+// export function withPageData<PageProps>(
+//     PageComponent: ComponentType<PageProps>,
+//     getPage: (lng: string) => Promise<{ page: PageProps }>
+// ): ComponentType<DefaultAppRouterProps> {
+//     return async function PageWithHOC(props: DefaultAppRouterProps) {
+//         const {params} = props;
+//         const data = await getPage(params.lng);
+//
+//         return <PageComponent {...data.page} {...props} />;
+//     };
+// }
+
+
+
 export function withPageData<PageProps>(
     PageComponent: ComponentType<PageProps>,
-    getPage: (lng: string) => Promise<{ page: PageProps }>
+    getPage: (lng: string, ...args: any) => Promise<{ page: PageProps }>
 ): ComponentType<DefaultAppRouterProps> {
     return async function PageWithHOC(props: DefaultAppRouterProps) {
-        const {params} = props;
-        const data = await getPage(params.lng);
+        const { params, ...restProps } = props;
+        // @ts-ignore
+        const data = await getPage(params.lng, restProps);
+
+        console.log('getPage args:', params.lng, restProps);
 
         return <PageComponent {...data.page} {...props} />;
     };
 }
+
+

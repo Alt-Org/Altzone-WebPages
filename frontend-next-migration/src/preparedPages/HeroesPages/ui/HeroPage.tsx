@@ -33,6 +33,9 @@ const HeroPage: FC<Props> = ({
   prevHeroLink,
   nextHeroLink,
 }) => {
+
+
+
   return (
     <main className={cls.main}>
       <HeroContainer
