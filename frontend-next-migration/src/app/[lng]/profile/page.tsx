@@ -1,17 +1,8 @@
-import {useServerTranslation} from "@/shared/i18n";
 import {ProfilePage} from "@/preparedPages/ProfilePage";
+import {createMetadataGenerator} from "@/shared/lib/createMetadataGenerator";
+import {_getPage} from "./_getPage";
+import {withPageData} from "@/shared/lib/hocs/withPageData";
 
-type Props = {
-    params: { lng: string };
-};
-
-export default async function DefaultPage({ params }: Props) {
-    const { t } = await useServerTranslation(params.lng, 'profile');
-    return (
-        <ProfilePage
-            title={t('profile-deletion-title')}
-            profileDeletionText={t('profile-deletion')}
-            profileDeletionInfoText={t('profile-deletion-info')}
-        />
-    );
-}
+// enable after it will added to the i18n locales;
+// export const generateMetadata = createMetadataGenerator(_getPage);
+export default withPageData(ProfilePage, _getPage);
