@@ -1,30 +1,36 @@
 import {ComponentType} from "react";
 
 /**
- * Higher-order component to fetch page data based on language parameter and pass it to the wrapped component.
+ * Higher-Order Component (HOC) to fetch and provide page data based on language.
  *
- * @template PageProps - Props used by the wrapped component
- * @param PageComponent - The React component to wrap and provide data to
- * @param getPage - Function that fetches the page data given a language string
- *
- * @returns A component that fetches data and renders the wrapped component with both fetched data and original props
+ * @template PageProps - The type of props the page component expects.
+ * @param {ComponentType<PageProps>} PageComponent - The component to wrap.
+ * @param {(lng: string) => Promise<{ page: PageProps }>} getPage - The function to fetch page data based on language.
+ * @returns {ComponentType<DefaultAppRouterProps>} - The wrapped component with fetched data.
  *
  * @example
+ * // Define a page component
+ * const MyPage: React.FC<{ content: string }> = ({ content }) => (
+ *   <div>{content}</div>
+ * );
  *
- *  // Assume MyPageComponent is a React component and fetchPageData is a function that returns a promise
- *  // resolving to page data
+ * // Define a function to fetch page data
+ * const fetchPage = async (lng: string) => {
+ *   const response = await fetch(`/api/page?lang=${lng}`);
+ *   const data = await response.json();
+ *   return { page: data };
+ * };
  *
- *  const MyPageWithData = withPageData(MyPageComponent, fetchPageData);
+ * // Wrap the page component with the HOC
+ * const MyPageWithData = withPageData(MyPage, fetchPage);
  *
- *  // Usage in a React application
- *  <MyPageWithData params={{ lng: 'en' }} someOtherProp="value" />
- *
+ * // Now MyPageWithData can be used within a routing context
  */
 export function withPageData<PageProps>(
     PageComponent: ComponentType<PageProps>,
     getPage: (lng: string) => Promise<{ page: PageProps }>
-) {
-    return async function PageWithHOC(props: DefaultAppRouterProps & PageProps) {
+): ComponentType<DefaultAppRouterProps> {
+    return async function PageWithHOC(props: DefaultAppRouterProps) {
         const {params} = props;
         const data = await getPage(params.lng);
 
