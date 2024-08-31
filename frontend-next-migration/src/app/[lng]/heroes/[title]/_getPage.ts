@@ -1,4 +1,4 @@
-import {createPage} from "@/app/_helpers/_createPage";
+import {createPage} from "@/app/_helpers";
 import {useServerTranslation} from "@/shared/i18n";
 import {heroes} from "@/entities/Hero";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";

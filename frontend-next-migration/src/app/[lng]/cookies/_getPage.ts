@@ -1,4 +1,4 @@
-import {createPage} from "@/app/_helpers/_createPage";
+import {createPage} from "@/app/_helpers";
 import {CookiesPageProps} from "@/preparedPages/CookiesPage";
 import {makeCookiesSectionsWithI18n} from "@/entities/PresentationPackages";
 import {useServerTranslation} from "@/shared/i18n";

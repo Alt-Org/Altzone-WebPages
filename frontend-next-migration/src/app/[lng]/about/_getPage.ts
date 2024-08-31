@@ -1,5 +1,5 @@
 import {useServerTranslation} from "@/shared/i18n";
-import {createPage} from "@/app/_helpers/_createPage";
+import {createPage} from "@/app/_helpers";
 import {AboutPageProps} from "@/preparedPages/AboutPage";
 
 export async function _getPage (lng: string){

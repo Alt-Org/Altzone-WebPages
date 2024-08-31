@@ -1,7 +1,6 @@
 //todo why this one , when we are in the clans' main page
 import {ClanAllSubPage} from "@/preparedPages/ClanPages";
-import {createMetadataGenerator} from "@/shared/lib/createMetadataGenerator";
-import {withPageData} from "@/shared/lib/hocs/withPageData";
+import {withPageData,createMetadataGenerator} from "src/app/_helpers";
 import {_getPage} from "./_getPage";
 
 export const generateMetadata = createMetadataGenerator(_getPage);
