@@ -1,24 +1,20 @@
-import {useServerTranslation} from "@/shared/i18n";
+import {createPage} from "@/app/_helpers/_createPage";
+import {GameArtPageProps} from "@/preparedPages/GameArtPage";
 import {makeArtGameSectionsWithI18n} from "@/entities/PresentationPackages";
+import {useServerTranslation} from "@/shared/i18n";
 
 export async function _getPage (lng: string){
     const {t} = await useServerTranslation(lng, 'artGame');
 
-    const seo = {
-        title: t("head-title"),
-        description: t("head-description"),
-        keywords: t("head-keywords"),
-    }
-
-    const sections = makeArtGameSectionsWithI18n(t);
-
-    const page = {
-        sections
-    }
-
-    return {
-        page,
-        seo
-    }
+    return createPage<GameArtPageProps>({
+        buildPage: () => ({
+            sections: makeArtGameSectionsWithI18n(t)
+        }),
+        buildSeo: () => ({
+            title: t("head-title"),
+            description: t("head-description"),
+            keywords: t("head-keywords")
+        })
+    })
 
 }
