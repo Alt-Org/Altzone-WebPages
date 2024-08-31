@@ -6,3 +6,5 @@ import {_getPage} from "./_getPage";
 // todo add after it will be ready
 // export const generateMetadata = createMetadataGenerator(_getPage);
 export default withPageData(GamePage, _getPage);
+
+
