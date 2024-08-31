@@ -40,19 +40,41 @@ import {ComponentType} from "react";
 
 
 
+// export function withPageData<PageProps>(
+//     PageComponent: ComponentType<PageProps>,
+//     getPage: (lng: string, ...args: any) => Promise<{ page: PageProps }>
+// ): ComponentType<DefaultAppRouterProps> {
+//     return async function PageWithHOC(props: DefaultAppRouterProps) {
+//         const {params} = props;
+//
+//         // @ts-ignore
+//         console.log('getPage args:', params.lng, params.title);
+//
+//         // @ts-ignore
+//         const data = await getPage(params.lng, ...params);
+//
+//         // console.log('getPage args:', params.lng, restProps);
+//
+//         return <PageComponent {...data.page} {...props} />;
+//     };
+// }
+
 export function withPageData<PageProps>(
     PageComponent: ComponentType<PageProps>,
     getPage: (lng: string, ...args: any) => Promise<{ page: PageProps }>
 ): ComponentType<DefaultAppRouterProps> {
     return async function PageWithHOC(props: DefaultAppRouterProps) {
-        const { params, ...restProps } = props;
-        // @ts-ignore
-        const data = await getPage(params.lng, restProps);
+        const { params } = props;
 
-        console.log('getPage args:', params.lng, restProps);
+        // Assuming params is an object with lng and other properties
+        const { lng, ...restParams } = params;
+
+        // If getPage expects the remaining params as individual arguments
+        const data = await getPage(lng, ...Object.values(restParams));
 
         return <PageComponent {...data.page} {...props} />;
     };
 }
+
 
 
