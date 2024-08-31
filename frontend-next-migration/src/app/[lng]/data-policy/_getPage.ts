@@ -3,7 +3,8 @@ import {DataPolicyPageProps} from "@/preparedPages/DataPolicyPage";
 import {useServerTranslation} from "@/shared/i18n";
 
 export async function _getPage (lng: string){
-    const { t } = await useServerTranslation(lng, 'cookies');
+    // todo add it
+    const { t } = await useServerTranslation(lng, 'data-policy');
     return createPage<DataPolicyPageProps>({
         //todo add translations!
         buildPage: () => ({
