@@ -5,10 +5,13 @@ import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import {notFound} from "next/navigation";
 
 export async function _getPage (lng: string, title: string){
+
     const { t } = await useServerTranslation(lng, 'heroes');
     const currentIndex = heroes.findIndex(hero => hero.title === title);
+
     const prevHeroTitle = findPrevTitle(currentIndex);
     const nextHeroTitle = findNextTitle(currentIndex);
+
     const selectedHero = getHeroData(title, t);
     const prevHeroLink = generateHeroLink(prevHeroTitle);
     const nextHeroLink = generateHeroLink(nextHeroTitle);
