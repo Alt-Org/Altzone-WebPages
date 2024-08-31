@@ -2,7 +2,7 @@
 // // import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
 import cls from "./ProfilePage.module.scss";
 
-type Props = {
+export type Props = {
     title: string;
     profileDeletionText: string;
     profileDeletionInfoText: string;
