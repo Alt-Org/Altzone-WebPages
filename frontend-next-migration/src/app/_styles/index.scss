@@ -17,7 +17,7 @@ body {
   color: var(--primary-color);
   @include custom-scrollbar;
 
-  padding: 0 calc(20px - (100vw - 100%)) 0 0;
+  //padding: 0 calc(20px - (100vw - 100%)) 0 0;
 
   //background-color: #06081b;
   //background-color: #46304b
@@ -28,6 +28,9 @@ body {
 .app {
   //min-height: 100vh;
   height: auto;
+  // to avoid jumps when scrollbars appear
+  padding: 0 calc(20px - (100vw - 100%)) 0 0;
+
 }
 
 
