@@ -17,6 +17,8 @@ body {
   color: var(--primary-color);
   @include custom-scrollbar;
 
+  padding: 0 calc(20px - (100vw - 100%)) 0 0;
+
   //background-color: #06081b;
   //background-color: #46304b
   background-color: var(--bg-color);
