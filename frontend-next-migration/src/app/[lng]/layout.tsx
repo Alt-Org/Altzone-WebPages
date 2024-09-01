@@ -67,7 +67,9 @@ export default function RootLayout({
           sizes='72x72'
       />
     </head>
-    <body>
+    <body style={{
+      backgroundImage: `url("/images/background.webp")`
+    }}>
     <Providers>
       {children}
       <CookieConsentComponent/>
