@@ -3,6 +3,10 @@
 @import "themes/light";
 @import "themes/dark";
 
+* {
+  scrollbar-color: #fff #000;
+  scrollbar-width: thin;
+}
 
 //html, body{
 //  height: 100%;
