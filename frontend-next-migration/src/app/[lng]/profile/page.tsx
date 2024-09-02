@@ -1,7 +1,7 @@
 import {ProfilePage} from "@/preparedPages/ProfilePage";
 import {withPageData ,
     // createMetadataGenerator
-} from "src/app/_helpers";
+} from "@/app/_helpers";
 import {_getPage} from "./_getPage";
 // todo to enable it once it is added to i18n locales.
 // export const generateMetadata = createMetadataGenerator(_getPage);
