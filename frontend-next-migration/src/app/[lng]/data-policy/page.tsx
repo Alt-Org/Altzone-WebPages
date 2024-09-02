@@ -1,7 +1,7 @@
 import {DataPolicyPage} from "@/preparedPages/DataPolicyPage";
 import {withPageData ,
     // createMetadataGenerator
-} from "src/app/_helpers";
+} from "@/app/_helpers";
 import {_getPage} from "./_getPage"
 
 // todo add after adding i18n

@@ -1,7 +1,7 @@
 import {GamePage} from "@/preparedPages/GamePage";
 import {withPageData ,
     // createMetadataGenerator
-} from "src/app/_helpers";
+} from "@/app/_helpers";
 import {_getPage} from "./_getPage";
 
 // todo add after it will be ready

@@ -3,7 +3,7 @@ import {useServerTranslation} from "@/shared/i18n";
 import {heroes} from "@/entities/Hero";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import { notFound } from 'next/navigation';
-// import {withPageData ,createMetadataGenerator} from "src/app/_helpers";
+// import {withPageData ,createMetadataGenerator} from "@/app/_helpers";
 // import {_getPage} from "./_getPage";
 
 
