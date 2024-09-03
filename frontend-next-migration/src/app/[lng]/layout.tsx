@@ -1,4 +1,3 @@
-'use client'
 import { dir } from "i18next";
 import type { Metadata, Viewport } from "next";
 import { Open_Sans, Urbanist, Rubik } from "next/font/google";
@@ -33,7 +32,6 @@ export const metadata: Metadata = {
   keywords:
     'altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään',
 };
-
 
 export const viewport: Viewport = {
   width: 'device-width',
