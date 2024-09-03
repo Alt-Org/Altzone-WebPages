@@ -1,11 +1,12 @@
-import type {Metadata, Viewport} from 'next';
-import { Open_Sans, Urbanist, Rubik } from 'next/font/google';
-import '../_styles/index.scss';
-import {Providers} from "../_providers";
-import { CookieConsentComponent } from '@/features/CookieConsent';
-import { dir } from 'i18next';
-import { languages } from '@/shared/i18n/settings/settings';
-import {ReactNode} from "react";
+'use client'
+import { dir } from "i18next";
+import type { Metadata, Viewport } from "next";
+import { Open_Sans, Urbanist, Rubik } from "next/font/google";
+import { ReactNode } from "react";
+import { CookieConsentComponent } from "@/features/CookieConsent";
+import { languages } from "@/shared/i18n/settings/settings";
+import { Providers } from "../_providers";
+import "../_styles/index.scss";
 
 const openSans = Open_Sans({
   subsets: ['latin'],
