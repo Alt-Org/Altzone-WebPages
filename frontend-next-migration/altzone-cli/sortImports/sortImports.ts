@@ -1,26 +1,35 @@
-import { ImportDeclaration, Project, SourceFile } from 'ts-morph';
-
-// List of layers for sorting
-const layers = [
-    '@/app',
-    '@/preparedPages',
-    '@/widgets',
-    '@/features',
-    '@/entities',
-    '@/shared',
-];
+import { ImportDeclaration, Project, SourceFile} from 'ts-morph';
+import {appLayers} from "../const";
 
 // Asynchronous function to process a file
-async function processFile(sourceFile: SourceFile) {
+async function processFile(sourceFile: SourceFile, layers: string[]) {
     try {
-        const importDeclarations = sourceFile.getImportDeclarations();
+        // Create a regular expression to filter lines checking for client directives in Next.js
+        const pattern = /^['"]use client['"];?$/;
+        // Get the file text and split it into lines
+        const lines = sourceFile.getFullText().split('\n');
+        // Filter lines and simultaneously check for the pattern
+        let hasUseClientDirective = false;
+        const updatedLines = lines.filter(line => {
+            const trimmedLine = line.trim();
+            if (pattern.test(trimmedLine)) {
+                hasUseClientDirective = true;
+                return false; // Exclude lines matching the pattern
+            }
+            return true; // Keep other lines
+        });
 
+        if (hasUseClientDirective) {
+            sourceFile.replaceWithText(updatedLines.join('\n'));
+        }
+
+        const importDeclarations = sourceFile.getImportDeclarations();
         // Group imports into categories
         const libraryImports: ImportDeclaration[] = [];
         const layerImports: ImportDeclaration[] = [];
         const relativeImports: ImportDeclaration[] = [];
 
-        importDeclarations.forEach((importDecl) => {
+        importDeclarations.forEach(importDecl => {
             const moduleSpecifier = importDecl.getModuleSpecifierValue();
 
             // Determine the category for the import
@@ -57,17 +66,21 @@ async function processFile(sourceFile: SourceFile) {
         });
 
         // Combine sorted imports
-        const sortedImportsStructures = [
+        const sortedImportStructures = [
             ...libraryImports,
             ...layerImports,
             ...relativeImports
         ].map(importDecl => importDecl.getStructure());
 
-        // Remove existing imports
-        importDeclarations.forEach(importDecl => importDecl.remove());
+        // Remove existing imports and add sorted imports
+        sourceFile.getImportDeclarations().forEach(importDecl => importDecl.remove());
+        sortedImportStructures.forEach(importStructure => sourceFile.addImportDeclaration(importStructure));
 
-        // Add sorted imports to the file
-        sortedImportsStructures.forEach(importStructure => sourceFile.addImportDeclaration(importStructure));
+        // Add 'use client' directive at the beginning
+        if (hasUseClientDirective) {
+            sourceFile.insertText(0, "'use client'\n");
+            console.log(`'use client' directive added at the beginning of ${sourceFile.getFilePath()}.`);
+        }
 
         // Save changes
         await sourceFile.save();  // Asynchronous file save
@@ -92,7 +105,7 @@ async function processFiles(paths: string[]) {
 
     // Process each file
     for (const sourceFile of sourceFiles) {
-        await processFile(sourceFile);
+        await processFile(sourceFile, appLayers);
     }
 
     console.log('All files processed.');
