@@ -17,8 +17,9 @@ import {
 export const getNavbarBuildByTypeAndSize = (
   type: NavBarType,
   isMobileSize: boolean,
+  isTabletSize: boolean,
 ) => {
-  if (isMobileSize) {
+  if (isMobileSize || isTabletSize) {
     switch (type) {
       case 'Default':
         return navbarMenuMobile;
