@@ -183,6 +183,7 @@ const ClanRoomSubPage = (props: Props) => {
                 </div>
                 <div className={cls.clanMotto}>
                     {mottoText}
+                    {/* Clan Motto and most of ClanInfo yet to be implemented, using placeholders instead*/}
                     <p className={cls.mottoText}>Unite, Conquer, Prevail!</p>
                 </div>
                 <div className={cls.clanInformation}>{infoText}
