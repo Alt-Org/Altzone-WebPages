@@ -31,6 +31,8 @@ export enum AppRoutesLinks {
 
   NOT_FOUND = 'NOT_FOUND',
   NOT_FOUND_CATCH = 'NOT_FOUND_CATCH',
+
+  COMING = 'COMING',
 }
 
 const news = '/news';
@@ -69,6 +71,8 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
   [AppRoutesLinks.FORUM]: '/forum',
   [AppRoutesLinks.MEMBERS]: '/team',
   [AppRoutesLinks.NOT_FOUND]: '/404',
+  [AppRoutesLinks.COMING]: '/Coming',
+
   // last one
   [AppRoutesLinks.NOT_FOUND_CATCH]: '*',
 };
