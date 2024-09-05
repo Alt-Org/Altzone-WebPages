@@ -3,7 +3,7 @@ import { createPage } from '@/app/_helpers';
 import { ComingPageProps } from '@/preparedPages/ComingPage';
 
 export async function _getPage(lng: string) {
-  const { t } = await useServerTranslation(lng, 'about');
+  const { t } = await useServerTranslation(lng, 'coming');
   return createPage<ComingPageProps>({
     buildPage: () => ({
       title: t('title'),

@@ -1,5 +1,5 @@
 'use client';
-import cls from './CookiesPage.module.scss';
+import cls from './ComingPage.module.scss';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import { ReactNode } from 'react';
