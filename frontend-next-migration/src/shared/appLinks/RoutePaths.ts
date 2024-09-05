@@ -71,7 +71,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
   [AppRoutesLinks.FORUM]: '/forum',
   [AppRoutesLinks.MEMBERS]: '/team',
   [AppRoutesLinks.NOT_FOUND]: '/404',
-  [AppRoutesLinks.COMING]: '/Coming',
+  [AppRoutesLinks.COMING]: '/coming',
 
   // last one
   [AppRoutesLinks.NOT_FOUND_CATCH]: '*',

@@ -17,4 +17,9 @@ export const AppExternalLinks = {
   googleFeedback:
     'https://docs.google.com/forms/d/e/1FAIpQLScYGN0JlcgkqKpotNeE6hyWLG7oI1g19myAtrHf2mmHz7g7AA/viewform',
   stub: '#developerChangeThisLink',
+  join: 'https://discord.gg/erFAcE4Qhb',
+  dlpackage:
+    'https://docs.google.com/document/d/1QJy7PWREJaJpob6HbL26OEVtHrpDsbiHx_ZJIVdC8UI/edit',
+  development:
+    'https://docs.google.com/spreadsheets/d/1jZlsFm2OWSKYXreRRw3ko9IiBBtzwyPQk4HcduuNU-M/edit?gid=0#gid=0',
 } as const;
