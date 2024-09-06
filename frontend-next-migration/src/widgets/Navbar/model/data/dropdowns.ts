@@ -94,14 +94,14 @@ export const dropdowns = {
       elementText: 'dlPackage',
       link: {
         path: AppExternalLinks.dlpackage,
-        isExternal: false,
+        isExternal: true,
       },
     },
     {
       elementText: 'pastversions',
       link: {
-        path: RoutePaths.COMING,
-        isExternal: false,
+        path: AppExternalLinks.pastversions,
+        isExternal: true,
       },
     },
   ],
