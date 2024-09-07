@@ -19,40 +19,51 @@ import { ClansViewAndSearchDesktop, ClansViewAndSearchMobile } from "../_compone
 import { ClanInfo } from "../_components/clanoverview/clanInfo";
 
 type Props = {
-    toastError: string;
-    toastNotLoggedIn: string;
-    toastClanNotOpen: string;
-    toastEditMode: string;
-    joinClanBtn: string;
-    leaveClanBtn: string;
-    editClanBtn: string;
-    memberListTitle: string;
-    mottoText: string;
-    infoText: string;
-    assetsText: string;
-    memberCountText: string;
-    languageText: string;
-    goalText: string;
-    ageLimitText: string;
-    winsText: string;
-    lossesText: string;
-}
+    toastMessages: {
+        error: string;
+        notLoggedIn: string;
+        clanNotOpen: string;
+        editMode: string;
+    };
+    buttons: {
+        joinClan: string;
+        leaveClan: string;
+        editClan: string;
+    };
+    clanInfo: {
+        memberListTitle: string;
+        mottoText: string;
+        infoText: string;
+        assetsText: string;
+        memberCountText: string;
+        languageText: string;
+        goalText: string;
+        ageLimitText: string;
+        winsText: string;
+        lossesText: string;
+    };
+};
 
 const ClanRoomSubPage = (props: Props) => {
     const {
-        toastError,
-        toastNotLoggedIn,
-        toastClanNotOpen,
-        joinClanBtn,
-        leaveClanBtn,
-        editClanBtn,
-        toastEditMode,
-        memberListTitle,
-        mottoText,
-        infoText,
-        ...rest
+        toastMessages: {
+            error: toastError,
+            notLoggedIn: toastNotLoggedIn,
+            clanNotOpen: toastClanNotOpen,
+            editMode: toastEditMode,
+        },
+        buttons: {
+            joinClan: joinClanBtn,
+            leaveClan: leaveClanBtn,
+            editClan: editClanBtn,
+        },
+        clanInfo: {
+            memberListTitle,
+            mottoText,
+            infoText,
+            ...rest
+        }
     } = props;
-
 
     const { id, lng } = useParams();
     const user = useSelector(selectProfile);
