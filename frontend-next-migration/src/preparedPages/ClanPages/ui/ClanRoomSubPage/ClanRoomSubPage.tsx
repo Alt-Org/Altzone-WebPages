@@ -199,13 +199,7 @@ const ClanRoomSubPage = (props: Props) => {
                 </div>
                 <div className={cls.clanInformation}>{infoText}
                     <ClanInfo
-                        clanGameCoins={clan?.data?.Clan?.gameCoins}
-                        playersInClan={players.length}
-                        clanLanguage={clan?.data?.Clan?.name}
-                        clanGoal={clan?.data?.Clan?.name}
-                        clanAgeLimit={clan?.data?.Clan?.name}
-                        clanWins={clan?.data?.Clan?.name}
-                        clanLosses={clan?.data?.Clan?.name}
+                        clanData={clan?.data?.Clan}
                         {...rest}
                     />
                 </div>
