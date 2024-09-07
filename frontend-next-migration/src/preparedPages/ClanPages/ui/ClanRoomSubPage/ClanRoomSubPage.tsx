@@ -65,7 +65,7 @@ const ClanRoomSubPage = (props: Props) => {
         }
     } = props;
 
-    const { id, lng } = useParams();
+    const { id } = useParams();
     const user = useSelector(selectProfile);
     const { isMobileSize } = useIsMobileSize();
 
