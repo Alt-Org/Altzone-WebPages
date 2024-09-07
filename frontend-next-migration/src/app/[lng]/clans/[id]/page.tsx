@@ -22,24 +22,29 @@ export default async function ClanRoomSubPage({ params }: Props) {
 
     return (
         <PreparedPage
-            toastError={t('toast_error')}
-            toastNotLoggedIn={t('toast_notloggedin')}
-            toastClanNotOpen={t('toast_clan_not_open')}
-            toastEditMode={t('toast_edit_mode')}
-            joinClanBtn={t('join_clan_btn')}
-            leaveClanBtn={t("leave_clan_btn")}
-            editClanBtn={t("edit_clan_btn")}
-            memberListTitle={t("member_list")}
-            mottoText={t("motto")}
-            infoText={t("info")}
-            assetsText={t("assets")}
-            memberCountText={t("members_count")}
-            languageText={t("language")}
-            goalText={t("goal")}
-            ageLimitText={t("age_limit")}
-            winsText={t("wins")}
-            lossesText={t("losses")}
-
+            toastMessages={{
+                error: t('toast_error'),
+                notLoggedIn: t('toast_notloggedin'),
+                clanNotOpen: t('toast_clan_not_open'),
+                editMode: t('toast_edit_mode')
+            }}
+            buttons={{
+                joinClan: t('join_clan_btn'),
+                leaveClan: t("leave_clan_btn"),
+                editClan: t("edit_clan_btn")
+            }}
+            clanInfo={{
+                memberListTitle: t("member_list"),
+                mottoText: t("motto"),
+                infoText: t("info"),
+                assetsText: t("assets"),
+                memberCountText: t("members_count"),
+                languageText: t("language"),
+                goalText: t("goal"),
+                ageLimitText: t("age_limit"),
+                winsText: t("wins"),
+                lossesText: t("losses")
+            }}
         />
     );
 
