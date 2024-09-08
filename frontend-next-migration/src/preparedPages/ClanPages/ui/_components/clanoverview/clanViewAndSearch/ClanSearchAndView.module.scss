@@ -33,7 +33,8 @@
 
 .tableContainer {
     border-radius: var(--border-radius-custom);
-    max-height: 400px;
+    min-height: 400px;
+    max-height: 40vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
