@@ -58,6 +58,7 @@ const ClanRoomSubPage = (props: Props) => {
 
     if (isLoading) return <Loader className={cls.Loader} />
 
+    //proper error handling page yet to be implemented
     if (error) {
         return (
             <>
