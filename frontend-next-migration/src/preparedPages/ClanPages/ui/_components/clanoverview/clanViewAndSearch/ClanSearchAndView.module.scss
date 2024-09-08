@@ -51,6 +51,11 @@
     border-bottom: 1px solid #ccc;
 }
 
+.clanList tr:hover {
+    transition: color 0.3s ease;
+    color: rgb(168, 168, 168);
+}
+
 @media (max-width: 768px) {
     .tableContainer {
         animation: fadeIn 1s ease-in;
