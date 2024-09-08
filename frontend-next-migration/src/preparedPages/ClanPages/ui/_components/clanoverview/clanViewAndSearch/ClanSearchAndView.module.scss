@@ -52,6 +52,7 @@
 }
 
 .clanList tr:hover {
+    cursor: pointer;
     transition: color 0.3s ease;
     color: rgb(168, 168, 168);
 }
