@@ -1,22 +1,16 @@
 "use client"
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useParams } from 'next/navigation';
-import { useSelector } from "react-redux";
 import { useGetClanByIdWithPlayersQuery } from "@/entities/Clan";
 import { Loader } from "@/shared/ui/Loader";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
-import { useJoinClan } from "@/features/JoinClan";
-import { useLeaveClan } from "@/features/LeaveClan";
-import { selectProfile } from "@/entities/Auth";
 import clanLogo from "@/shared/assets/images/clanLogos/temp-clanlogo.png";
 import clanHome from "@/shared/assets/images/clanLogos/temp-clanHome.png";
-import lock from "@/shared/assets/images/clanLogos/lock.png";
 import cls from "./ClanRoomSubPage.module.scss";
 import { toast } from "react-toastify";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { ClansViewAndSearchDesktop, ClansViewAndSearchMobile } from "../_components/clanoverview/clanViewAndSearch";
 import { ClanInfo } from "../_components/clanoverview/clanInfo";
+import { ButtonField } from "../_components/clanoverview/buttonField";
 
 type Props = {
     toastMessages: {
@@ -46,17 +40,8 @@ type Props = {
 
 const ClanRoomSubPage = (props: Props) => {
     const {
-        toastMessages: {
-            error: toastError,
-            notLoggedIn: toastNotLoggedIn,
-            clanNotOpen: toastClanNotOpen,
-            editMode: toastEditMode,
-        },
-        buttons: {
-            joinClan: joinClanBtn,
-            leaveClan: leaveClanBtn,
-            editClan: editClanBtn,
-        },
+        toastMessages,
+        buttons,
         clanInfo: {
             memberListTitle,
             mottoText,
@@ -66,48 +51,17 @@ const ClanRoomSubPage = (props: Props) => {
     } = props;
 
     const { id } = useParams();
-    const user = useSelector(selectProfile);
     const { isMobileSize } = useIsMobileSize();
-
-    const playerId: string | undefined = user?.Player?._id;
-    const [isAdmin, setIsAdmin] = useState(false);
-    const [isLoggedIn, setLoggedIn] = useState(false);
-    const [isInClan, setIsInClan] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-
     const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(id as string);
     const adminIds = clan?.data?.Clan?.admin_ids || [];
     const players = clan?.data.Clan.Player || [];
-
-    useEffect(() => {
-        if (clan?.data.Clan.isOpen) {
-            setIsOpen(true)
-        }
-        if (playerId) {
-            setLoggedIn(true);
-
-            if (clan?.data?.Clan?.admin_ids.includes(playerId)) {
-                setIsAdmin(true);
-            }
-
-            if (clan?.data.Clan.Player.some(player => player._id === playerId)) {
-                setIsInClan(true);
-            }
-        } else {
-            setLoggedIn(false);
-            setIsInClan(false);
-        }
-    }, [isLoading, clan?.data?.Clan?.admin_ids, playerId, clan?.data.Clan.Player, clan?.data.Clan.isOpen]);
-
-    const { handleJoin } = useJoinClan();
-    const { handleLeave } = useLeaveClan();
 
     if (isLoading) return <Loader className={cls.Loader} />
 
     if (error) {
         return (
             <>
-                {toast.error(toastError)}
+                {toast.error("error placeholder")}
             </>
         );
     }
@@ -134,54 +88,11 @@ const ClanRoomSubPage = (props: Props) => {
                         className={cls.clanHome} />
                 </div>
                 <div className={cls.buttonField}>
-                    {!isLoggedIn ? (
-                        <Button
-                            className={cls.JoinClanBtn}
-                            theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.L}
-                            onClick={() => toast.error(toastNotLoggedIn)} >
-                            {joinClanBtn}
-                        </Button>
-                    ) : isLoggedIn && !isOpen ? (<>
-                        <Button
-                            className={cls.JoinClanBtn}
-                            theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.L}
-                            onClick={() => toast.error(toastClanNotOpen)} >
-                            {joinClanBtn}
-                        </Button>
-                        <Image
-                            src={lock}
-                            alt={"clan logo"}
-                            className={cls.lock} /></>
-                    ) : isLoggedIn && !isInClan ? (
-                        <Button
-                            className={cls.JoinClanBtn}
-                            theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.L}
-                            onClick={() => handleJoin(clan?.data?.Clan?._id, playerId ?? "", "join")} >
-                            {joinClanBtn}
-                        </Button>
-                    ) : (
-                        <Button
-                            className={cls.DeleteClanBtn}
-                            theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.L}
-                            onClick={() => handleLeave()} >
-                            {leaveClanBtn}
-                        </Button>
-                    )
-                    }
-                    {isAdmin && (
-                        <Button
-                            className={cls.EditClanBtn}
-                            theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.L}
-                            onClick={() => toast.success(toastEditMode)} >
-                            {editClanBtn}
-                        </Button>
-                    )
-                    }
+                    <ButtonField
+                        clanData={clan?.data?.Clan}
+                        {...toastMessages}
+                        {...buttons}
+                    />
                 </div>
                 <div className={cls.memberList}>{memberListTitle}
                     <div className={cls.membersList}>
