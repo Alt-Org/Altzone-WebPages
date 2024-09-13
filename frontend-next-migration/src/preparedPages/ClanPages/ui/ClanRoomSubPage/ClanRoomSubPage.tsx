@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import { useParams } from 'next/navigation';
-import { useGetClanByIdWithPlayersQuery } from "@/entities/Clan";
 import { Loader } from "@/shared/ui/Loader";
 import clanLogo from "@/shared/assets/images/clanLogos/temp-clanlogo.png";
 import clanHome from "@/shared/assets/images/clanLogos/temp-clanHome.png";
@@ -11,6 +10,7 @@ import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { ClansViewAndSearchDesktop, ClansViewAndSearchMobile } from "../_components/clanoverview/clanViewAndSearch";
 import { ClanInfo } from "../_components/clanoverview/clanInfo";
 import { ButtonField } from "../_components/clanoverview/buttonField";
+import { useClanData } from "@/shared/lib/hooks/useClanData";
 
 type Props = {
     toastMessages: {
@@ -52,13 +52,11 @@ const ClanRoomSubPage = (props: Props) => {
 
     const { id } = useParams();
     const { isMobileSize } = useIsMobileSize();
-    const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(id as string);
-    const adminIds = clan?.data?.Clan?.admin_ids || [];
-    const players = clan?.data.Clan.Player || [];
+    const { clan, error, isLoading, adminIds, players, clanName } = useClanData(id as string);
 
     if (isLoading) return <Loader className={cls.Loader} />
 
-    //proper error handling page yet to be implemented
+    //proper error handling page should be implemented
     if (error) {
         return (
             <>
@@ -76,7 +74,7 @@ const ClanRoomSubPage = (props: Props) => {
                         src={clanLogo}
                         alt={"clan logo"}
                         className={cls.clanLogo} />
-                    <span className={cls.clanName}>{clan?.data?.Clan?.name}</span>
+                    <span className={cls.clanName}>{clanName}</span>
                     <a className={cls.number} href="/leaderboardjne">♛12</a>
                 </div>
                 <div className={cls.clanList}>
@@ -96,6 +94,7 @@ const ClanRoomSubPage = (props: Props) => {
                     />
                 </div>
                 <div className={cls.memberList}>{memberListTitle}
+                    {/* this could be its own component */}
                     <div className={cls.membersList}>
                         {players.map(player => (
                             <div key={player._id} className={adminIds.includes(player._id) ? cls.adminItem : cls.memberItem}>
