@@ -1,117 +1,117 @@
-import cls from "./SectionMembers.module.scss";
-import Image from 'next/image'
-import {groupsWithMembersLocally, GroupWithMember, Member} from "@/entities/Member";
-import {FC, memo, useMemo} from "react";
-import {ScrollBottomButton} from "@/features/ScrollBottom";
-import {classNames} from "@/shared/lib/classNames/classNames";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faGithub} from "@fortawesome/free-brands-svg-icons";
-import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
-import {faGlobe} from "@fortawesome/free-solid-svg-icons";
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import {Container} from "@/shared/ui/Container";
-import {useClientTranslation} from "@/shared/i18n";
-import {useParams} from "next/navigation";
+import cls from './SectionMembers.module.scss';
+import { ScrollBottomButton } from '@/features/ScrollBottom';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { Container } from '@/shared/ui/Container';
+import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab'; // Utility to open links
+import { useClientTranslation } from '@/shared/i18n';
+import { useParams } from 'next/navigation';
+import { FC, memo, useEffect, useState } from 'react';
+import { TeamMember, fetchTeamMembers } from '../model/membersApi';
 
-
-
-interface WorkersSectionProps  {
-    className?: string;
+interface WorkersSectionProps {
+  className?: string;
 }
 
+export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const params = useParams();
+  const lng = params.lng as string;
+  const { t } = useClientTranslation(lng, 'team');
 
-export const SectionMembers = ({className = ''}: WorkersSectionProps) => {
+  useEffect(() => {
+    const fetchMembers = async () => {
+      try {
+        const data = await fetchTeamMembers();
+        setTeamMembers(data);
+      } catch (error) {
+        console.error('Failed to fetch team members:', error);
+      }
+    };
+    fetchMembers();
+  }, []);
 
-    const memoizedGroupsWithWorkers = useMemo(() => groupsWithMembersLocally, []);
+  const groupedMembers = groupByRole(teamMembers);
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "team");
-
-    return (
-        <div className={classNames(cls.MembersSection,{},[className])}>
-
-            <ScrollBottomButton className={cls.scrollBottomButton} text={t("playButton")}/>
-
-
-            <Container className={cls.membersListContainer}>
-                {
-                    memoizedGroupsWithWorkers.map(group=>(
-                        <GroupWithWorkmanComponent key={group.group} groupWithMember={group}/>
-                    ))
-                }
-            </Container>
-
-        </div>
-    );
+  return (
+    <div className={classNames(cls.MembersSection, {}, [className])}>
+      <ScrollBottomButton
+        className={cls.scrollBottomButton}
+        text={t('playButton')}
+      />
+      <Container className={cls.membersListContainer}>
+        {Object.keys(groupedMembers).map((role) => (
+          <div key={role}>
+            <h2>{t(role)}</h2>
+            {groupedMembers[role].map((member) => (
+              <GroupWithMemberComponent key={member.id} member={member} />
+            ))}
+          </div>
+        ))}
+      </Container>
+    </div>
+  );
 };
 
-interface GroupWithWorkmanProps{
-    groupWithMember: GroupWithMember;
+const groupByRole = (members: TeamMember[]): Record<string, TeamMember[]> => {
+  return members.reduce((acc, member) => {
+    if (!acc[member.Role]) {
+      acc[member.Role] = [];
+    }
+    acc[member.Role].push(member);
+    return acc;
+  }, {} as Record<string, TeamMember[]>);
+};
+
+interface GroupWithMemberProps {
+  member: TeamMember;
 }
 
-const GroupWithWorkmanComponent: FC<GroupWithWorkmanProps> = memo(({groupWithMember}) => {
-
-
+const GroupWithMemberComponent: FC<GroupWithMemberProps> = memo(
+  ({ member }) => {
     const params = useParams();
     const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "members");
+    const { t } = useClientTranslation(lng, 'members');
 
     return (
-        <div className={cls.groupComponent}>
-            <h2>{t(`${groupWithMember.group}`)}</h2>
-            <ul>
-                {groupWithMember.workers.map((member) => (
-                    <li key={member.id}>
-                        <MemberComponent member={member} />
-                    </li>
-                ))}
-            </ul>
-        </div>
+      <div className={cls.groupComponent}>
+        <MemberComponent member={member} />
+      </div>
     );
-});
-GroupWithWorkmanComponent.displayName  = "GroupWithWorkmanComponent";
+  },
+);
 
+GroupWithMemberComponent.displayName = 'GroupWithMemberComponent';
 
-interface WorkmanProps {
-    member: Member;
+interface MemberProps {
+  member: TeamMember;
 }
 
-
-const MemberComponent: FC<WorkmanProps> = memo(({ member }) => {
-    return (
-        <div className={cls.workmanComponent}>
-            {member.imgSrc && <Image src={member.imgSrc} alt={member.name + ' logo' }/>}
-            <h3>{member.name} </h3>
-            <ul>
-                {member.role &&  <li><strong>Rooli:</strong> {`${member.role}`}</li> }
-
-                {member.site &&
-                <li className={cls.clickableLogo}>
-                    <FontAwesomeIcon icon={faGlobe} size={"xl"} onClick={() => openLinkInNewTab(member?.site)} />
-                </li>
-                }
-                {member.github &&
-                <li className={cls.clickableLogo}>
-                    <FontAwesomeIcon icon={faGithub}  size={"xl"} onClick={() => openLinkInNewTab(`https://github.com/${member.github}`)} />
-                </li>
-                }
-
-                {member.linkedin &&
-                <li className={cls.clickableLogo}>
-                    <FontAwesomeIcon icon={faLinkedin} size={"xl"} onClick={() => openLinkInNewTab(member?.linkedin)} />
-                </li>
-                }
-
-                {member.status &&  <li><strong>Status:</strong> {`${member.status}`}</li> }
-                {member.workPeriod &&  <li><strong>Työjakso:</strong> {`${member.workPeriod}`}</li> }
-                {member.email &&  <li><strong>Email:</strong> {`${member.email}`}</li> }
-                {member.phone &&  <li><strong>Puhelinnumero:</strong> {`${member.phone}`}</li> }
-                {member.trello &&  <li><strong>Trello:</strong> {`${member.trello}`}</li> }
-                {member.discord &&  <li><strong>Discord:</strong> {`${member.discord}`}</li> }
-            </ul>
-        </div>
-    );
+const MemberComponent: FC<MemberProps> = memo(({ member }) => {
+  return (
+    <div className={cls.workmanComponent}>
+      <h3>{member.Name}</h3>
+      <ul>
+        {member.website && (
+          <li className={cls.clickableLogo}>
+            <FontAwesomeIcon
+              icon={faGlobe}
+              size='xl'
+              onClick={() => openLinkInNewTab(member.website)}
+            />
+            <a
+              href={member.website}
+              target='_blank'
+              rel='noopener noreferrer'></a>
+          </li>
+        )}
+        <li>
+          <FontAwesomeIcon icon={faEnvelope} size='lg' /> {member.Email}
+        </li>
+      </ul>
+    </div>
+  );
 });
 
-MemberComponent.displayName = "MemberComponent";
+MemberComponent.displayName = 'MemberComponent';
