@@ -90,7 +90,7 @@ export const clanApi = createApi({
         }),
         leaveClan: builder.mutation<void, void>({
             query: () => ({
-                url: `${clanUrl}/join/leave`,
+                url: `${clanUrl}/leave`,
                 method: 'POST',
             }),
         }),
