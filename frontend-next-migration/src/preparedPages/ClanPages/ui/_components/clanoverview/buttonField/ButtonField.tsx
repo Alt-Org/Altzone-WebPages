@@ -3,11 +3,10 @@ import cls from "./ButtonField.module.scss";
 import { toast } from "react-toastify";
 import { useJoinClan } from "@/features/JoinClan";
 import { useLeaveClan } from "@/features/LeaveClan";
-import { useEffect, useState } from "react";
 import lock from "@/shared/assets/images/clanLogos/lock.png";
-import { selectProfile } from "@/entities/Auth";
-import { useSelector } from "react-redux";
 import Image from "next/image";
+import { useClanRoles } from "@/shared/lib/hooks/useClanRoles";
+import { useUserPermissions } from '@/entities/Auth/';
 
 type Props = {
     clanData: any;
@@ -32,39 +31,14 @@ const ClanInfo = (props: Props) => {
         editClan: editClanBtn,
     } = props;
 
-    const user = useSelector(selectProfile);
-
-    const playerId: string | undefined = user?.Player?._id;
-
-    useEffect(() => {
-        if (clanData.isOpen) {
-            setIsOpen(true)
-        }
-        if (playerId) {
-            setLoggedIn(true);
-
-            if (clanData.admin_ids.includes(playerId)) {
-                setIsAdmin(true);
-            }
-
-            if (clanData.Player.some((player: { _id: string; }) => player._id === playerId)) {
-                setIsInClan(true);
-            }
-        } else {
-            setLoggedIn(false);
-            setIsInClan(false);
-        }
-    }, [playerId, clanData.Player, clanData.isOpen]);
-
+    const { isAdmin, isInClan, playerId } = useClanRoles(clanData.admin_ids, clanData.Player);
     const { handleJoin } = useJoinClan();
     const { handleLeave } = useLeaveClan();
-    const [isAdmin, setIsAdmin] = useState(false);
-    const [isLoggedIn, setLoggedIn] = useState(false);
-    const [isInClan, setIsInClan] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+    const { canI } = useUserPermissions();
+
     return (
         <>
-            {!isLoggedIn ? (
+            {!canI('canISeeLogout') ? (
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
@@ -72,7 +46,7 @@ const ClanInfo = (props: Props) => {
                     onClick={() => toast.error(toastNotLoggedIn)} >
                     {joinClanBtn}
                 </Button>
-            ) : isLoggedIn && !isOpen ? (<>
+            ) : canI('canISeeLogout') && !clanData.isOpen ? (<>
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
@@ -84,7 +58,7 @@ const ClanInfo = (props: Props) => {
                     src={lock}
                     alt={"clan logo"}
                     className={cls.lock} /></>
-            ) : isLoggedIn && !isInClan ? (
+            ) : canI('canISeeLogout') && !isInClan ? (
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
