@@ -1,17 +1,18 @@
 import {Navbar} from "@/widgets/Navbar";
 import { Footer } from '@/widgets/Footer';
 import {ReactNode} from "react";
+import {HorizontalLines} from "@/shared/ui/HorizontalLines";
 
 interface Props {
     children?: ReactNode;
 }
 
-
 export default function Layout({ children}: Props) {
     return (
         <>
             <Navbar overlaid={true} />
-            <main>{children}</main>
+            {children}
+            <HorizontalLines />
             <Footer />
         </>
     )

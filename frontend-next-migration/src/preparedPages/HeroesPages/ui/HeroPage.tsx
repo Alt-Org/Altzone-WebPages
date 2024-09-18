@@ -1,7 +1,13 @@
-import React from 'react';
+import {FC} from "react";
+
 import { HeroContainer } from '@/entities/Hero';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
+import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+
+import cls from "./HeroPage.module.scss";
+
 
 type HeroData = {
   id: number;
@@ -22,13 +28,13 @@ interface Props {
   nextHeroLink: string;
 }
 
-const HeroPage: React.FC<Props> = ({
+const HeroPage: FC<Props> = ({
   selectedHero,
   prevHeroLink,
   nextHeroLink,
 }) => {
   return (
-    <>
+    <main className={cls.main}>
       <HeroContainer
           // @ts-ignore
         group={selectedHero.group}
@@ -42,9 +48,12 @@ const HeroPage: React.FC<Props> = ({
         heroGif={selectedHero.imgGif}
         xLink={RoutePaths.HEROES}
       />
-      <HorizontalLines />
-    </>
+    </main>
   );
 };
 
-export default HeroPage;
+export default withBackgroundImage<Props>({
+  alt: "Hero underground style background",
+  imagePath: bgPicture as unknown as string,
+  className: cls.wholePageBG
+})(HeroPage);

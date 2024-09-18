@@ -1,0 +1,17 @@
+.xLinkButton {
+    @include link-scale-effect;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+
+    & a{
+        font-size: 1rem;
+    }
+
+    &:hover h1 {
+        color: orange;
+    }
+}

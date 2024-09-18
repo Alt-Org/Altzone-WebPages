@@ -54,5 +54,12 @@
     font: var(--font-xl);
   }
 
+  .field input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
 }
 

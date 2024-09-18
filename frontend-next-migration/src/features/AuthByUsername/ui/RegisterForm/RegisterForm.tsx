@@ -72,6 +72,15 @@ export const RegisterForm = ({ toLoginPage }: Props) => {
                 inputProps={{ ...register('uniqueIdentifier'), required: true }}
             />
 
+            <CustomForm.Checkbox
+                key={"ageConsent"}
+                error={errors?.ageConsent?.message && t(`${errors?.ageConsent?.message}`)}
+                // todo add i18n
+                label={t("I confirm that I am at least 13 years old and I agree to the collection of necessary data.")}
+                inputProps={{ ...register('ageConsent', { required: true }) }}
+            />
+
+
             <CustomForm.Button type="submit">
                 {t('send')}
             </CustomForm.Button>

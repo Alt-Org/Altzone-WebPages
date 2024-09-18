@@ -13,25 +13,6 @@ declare type PaginationData = {
     pageCount: number;
 };
 
-// type SingleData<T> = {
-//     [key: string]: T
-// }
-//
-// type ArrayData<T> = {
-//     [key: string]: T[];
-// }
-//
-// declare type ResponseShapeOne<T> = {
-//     data: SingleData<T>
-//     metaData: MetaData;
-//     paginationData: PaginationData;
-// };
-//
-// declare type ResponseShapeArray<T> = {
-//     data: ArrayData<T>
-//     metaData: MetaData;
-//     paginationData: PaginationData;
-// };
 type SingleData<K extends string, T> = {
     [key in K]: T
 }
@@ -50,3 +31,13 @@ declare type ResponseShapeArray<K extends string, T> = {
     metaData: MetaData;
     paginationData: PaginationData;
 };
+
+
+declare interface DefaultAppRouterProps {
+    params: { lng: string }
+}
+
+declare interface DefaultSeo {
+    title: string,
+    description: string
+}

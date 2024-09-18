@@ -28,6 +28,10 @@ export const i18n = i18next
     })
 
 
+
+/**
+ * Hook for using i18n with client client-side components
+ */
 export function useTranslation(lng : string, ns: string, options? : any) {
     const [cookies, setCookie] = useCookies([cookieName])
     const ret = useTranslationOrg(ns, options)

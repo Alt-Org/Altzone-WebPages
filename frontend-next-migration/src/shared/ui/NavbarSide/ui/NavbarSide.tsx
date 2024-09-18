@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import cls from './NavbarSide.module.scss';
 
 interface Section {
@@ -13,16 +13,39 @@ interface NavbarSideProps {
   setActiveSection: (id: string) => void;
 }
 
+/**
+ * NavbarSide component that displays a navigation sidebar with clickable section labels.
+ * Automatically highlights the active section based on scroll position.
+ *
+ * @param  props - The component props.
+ * @param {Section[]} props.sections - Array of section objects with `id` and `label`.
+ * @param {string} props.activeSection - The currently active section id.
+ * @param {function} props.setActiveSection - Function to update the active section.
+ *
+ * @example
+ * const sections = [
+ *   { id: 'section1', label: 'Section 1' },
+ *   { id: 'section2', label: 'Section 2' },
+ *   { id: 'section3', label: 'Section 3' },
+ * ];
+ * const [activeSection, setActiveSection] = useState('section1');
+ *
+ * <NavbarSide
+ *   sections={sections}
+ *   activeSection={activeSection}
+ *   setActiveSection={setActiveSection}
+ * />
+ */
 const NavbarSide: React.FC<NavbarSideProps> = ({
-  sections,
-  activeSection,
-  setActiveSection,
-}) => {
+                                                 sections,
+                                                 activeSection,
+                                                 setActiveSection,
+                                               }) => {
   useEffect(() => {
     const handleScroll = () => {
       const sectionOffsets = sections.map((section) => {
         const element = document.getElementById(section.id);
-        return { id: section.id, offsetTop: element ? element.offsetTop : 0 };
+        return {id: section.id, offsetTop: element ? element.offsetTop : 0};
       });
 
       const currentScrollPosition = window.scrollY + window.innerHeight / 2; // Center of the viewport
@@ -31,22 +54,22 @@ const NavbarSide: React.FC<NavbarSideProps> = ({
       const currentSection = sectionOffsets.find((section, index) => {
         const nextSection = sectionOffsets[index + 1];
         if (
-          index === 0 &&
-          currentScrollPosition < (sectionOffsets[1]?.offsetTop || Infinity)
+            index === 0 &&
+            currentScrollPosition < (sectionOffsets[1]?.offsetTop || Infinity)
         ) {
           // Special case for the first section
           return currentScrollPosition >= section.offsetTop;
         }
         return (
-          currentScrollPosition >= section.offsetTop &&
-          (!nextSection || currentScrollPosition < nextSection.offsetTop)
+            currentScrollPosition >= section.offsetTop &&
+            (!nextSection || currentScrollPosition < nextSection.offsetTop)
         );
       });
 
       const firstSection = sectionOffsets[0];
       if (
-        currentScrollPosition <
-        firstSection.offsetTop + window.innerHeight / 2
+          currentScrollPosition <
+          firstSection.offsetTop + window.innerHeight / 2
       ) {
         if (firstSection.id !== activeSection) {
           setActiveSection(firstSection.id);
@@ -77,20 +100,20 @@ const NavbarSide: React.FC<NavbarSideProps> = ({
   };
 
   return (
-    <div className={cls.navbarSideContainer}>
-      <div className={cls.navbarSide}>
-        <ul>
-          {sections.map((section) => (
-            <li
-              key={section.id}
-              className={activeSection === section.id ? cls.active : ''}
-              onClick={() => scrollToSection(section.id)}>
-              {section.label}
-            </li>
-          ))}
-        </ul>
+      <div className={cls.navbarSideContainer}>
+        <div className={cls.navbarSide}>
+          <ul>
+            {sections.map((section) => (
+                <li
+                    key={section.id}
+                    className={activeSection === section.id ? cls.active : ''}
+                    onClick={() => scrollToSection(section.id)}>
+                  {section.label}
+                </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
   );
 };
 

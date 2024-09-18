@@ -8,6 +8,7 @@ import {clanApi} from "@/entities/Clan";
 import {galleryApi} from "@/entities/Gallery";
 import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist";
 import {setupListeners} from "@reduxjs/toolkit/query";
+import {profileApi} from "@/entities/Profile";
 
 
 const createNoopStorage= () => {
@@ -36,6 +37,7 @@ export function createReduxStore(initialState?: StateSchema) {
     const rootReducer = combineReducers({
         authUser: authUserReducer,
         [authApi.reducerPath]: authApi.reducer,
+        [profileApi.reducerPath]: profileApi.reducer,
         [clanApi.reducerPath]: clanApi.reducer,
         [galleryApi.reducerPath]: galleryApi.reducer,
     });

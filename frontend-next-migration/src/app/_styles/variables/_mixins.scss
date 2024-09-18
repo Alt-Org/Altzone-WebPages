@@ -21,6 +21,11 @@
 }
 
 @mixin custom-scrollbar {
+
+  @-moz-document url-prefix() {
+      scrollbar-color: #fff #000;
+      scrollbar-width: thin;
+  }
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;

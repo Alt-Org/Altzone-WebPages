@@ -3,14 +3,18 @@ import {useServerTranslation} from "@/shared/i18n";
 import {heroes} from "@/entities/Hero";
 import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 import { notFound } from 'next/navigation';
+// import {withPageData ,createMetadataGenerator} from "@/app/_helpers";
+// import {_getPage} from "./_getPage";
 
 
-type Props = {
-    params: {
+interface Props extends DefaultAppRouterProps {
+    params: DefaultAppRouterProps['params'] & {
         title: string;
-        lng: string;
     };
-};
+}
+
+// @ts-ignore todo figure out why it doesnt work properly and refactor after it and add createMetadataGenerator
+// export default withPageData(PreparedHeroPage, _getPage);
 
 export default async function HeroPage({ params }: Props) {
     const { title, lng } = params;
