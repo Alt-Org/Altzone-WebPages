@@ -41,12 +41,14 @@
   line-height: 1.5;
   font-weight: bold;
   color: #e89dff;
+  user-select: none;
 }
 
 .workmanComponent {
   display: flex;
   justify-content: center;
   gap: 10px;
+  user-select: none;
 
   h3 {
     font-size: clamp(20px, 5vw, 25px);
