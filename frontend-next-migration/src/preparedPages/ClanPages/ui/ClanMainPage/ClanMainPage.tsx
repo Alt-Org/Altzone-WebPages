@@ -6,7 +6,7 @@ import { Navbar } from "@/widgets/Navbar";
 import { Container } from "@/shared/ui/Container";
 import { selectProfile } from "@/entities/Auth";
 import cls from "./ClanMainPage.module.scss";
-import backgroundImage from "@/shared/assets/images/clanBg/Moon.webp"
+import backgroundImage from "@/shared/assets/images/backgrounds/background.webp"
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { useParams } from "next/navigation";
