@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type {Metadata, Viewport} from 'next';
 import { Open_Sans, Urbanist, Rubik } from 'next/font/google';
 import '../_styles/index.scss';
 import {Providers} from "../_providers";
@@ -24,6 +24,7 @@ const rubik = Rubik({
   variable: '--font-family-texts',
 });
 
+// todo add i18n if it possible
 export const metadata: Metadata = {
   title: 'AltZone',
   description:
@@ -32,6 +33,13 @@ export const metadata: Metadata = {
     'altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään',
 };
 
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
 
 
 export async function generateStaticParams() {
@@ -50,20 +58,22 @@ export default function RootLayout({
       lang={lng}
       dir={dir(lng)}
       className={`${urbanist.variable} ${rubik.variable}`}>
-      <head>
-        <link rel='icon' href='/icons/alt_logo.ico' sizes='72x72' />
-        <link
+    <head>
+      <link rel='icon' href='/icons/alt_logo.ico' sizes='72x72'/>
+      <link
           rel='apple-touch-icon'
           href='/icons/alt_logo.ico'
           type='image'
           sizes='72x72'
-        />
-      </head>
-      <body>
-        <Providers>
-          {children}
-          <CookieConsentComponent />
-        </Providers>
+      />
+    </head>
+    <body style={{
+      backgroundImage: `url("/images/background.webp")`
+    }}>
+    <Providers>
+      {children}
+      <CookieConsentComponent/>
+    </Providers>
       </body>
     </html>
   );

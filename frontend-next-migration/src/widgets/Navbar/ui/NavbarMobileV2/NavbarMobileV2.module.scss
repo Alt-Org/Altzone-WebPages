@@ -8,14 +8,20 @@
   align-items: center;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.7);
-  height: 10vh;
-  margin: 6% auto 0;
+  height: 50px;
+
+  margin-top: 35px;
   position: absolute;
   z-index: var(--navbar-z-index);
 
   top: 0;
   left: 0;
   right: 0;
+
+  @media (min-width: 550px){
+    margin-top: 50px;
+  }
+
 }
 
 .NavbarMobile__burger {
@@ -39,8 +45,10 @@
 
 .navLogo {
   img {
-    height: var(--navbar-logo-height);
-    width: auto;
+    //height: var(--navbar-logo-height);
+    width: 25vw;
+    max-width: 150px;
+    //width: auto;
   }
 }
 
@@ -88,11 +96,11 @@
   font-size: var(--font-size-m) !important;
 }
 
-@media (max-width: 800px){
-  .NavbarMobile{
-    height: 7vh;
-  }
-}
+//@media (max-width: 800px){
+//  .NavbarMobile{
+//    height: 7vh;
+//  }
+//}
 
 .FixedButton{
   text-align: center;

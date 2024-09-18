@@ -80,6 +80,7 @@ export const clanApi = createApi({
             }),
             invalidatesTags: ['Clan'],
         }),
+      
         joinClan: builder.mutation<void, IJoin>({
             query: (join) => ({
                 url: `${clanUrl}/join`,
@@ -94,7 +95,6 @@ export const clanApi = createApi({
                 method: 'POST',
             }),
         }),
-
     }),
 })
 

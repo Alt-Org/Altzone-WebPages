@@ -1,0 +1,154 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.componentWrapper {
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  animation: fadeIn 1s ease-in-out;
+  max-width: 99vw;
+
+  &.isTablet{
+    min-height: 1200px;
+  }
+}
+
+.heroImgSideWrapper {
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+  max-width: 35em;
+  width: 35em;
+  height: 30em;
+  z-index: 1;
+  transform: translateX(5rem);
+
+  .heroImgSide {
+    position: absolute;
+    top: -12em;
+    width: 40em;
+    height: 50em;
+    z-index: 2;
+  }
+
+  &.isTablet {
+    .heroImgSide {
+      top: -8em;
+      width: 40em;
+      height: 40em;
+      z-index: 2;
+    }
+  }
+
+}
+
+.heroImgSideWrapper.isMobile {
+  display: none;
+}
+
+.container {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 30rem;
+  height: 100%;
+  z-index: 1;
+}
+
+.container.isMobile {
+  max-width: 35rem;
+  padding: 0 1.2rem;
+}
+
+.container.isTablet {
+  max-width: 40rem;
+}
+
+
+.containerWrapper.isMobile {
+  margin-top: 5rem;
+}
+
+.contentWrapper {
+  display: flex;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  aspect-ratio: 12 / 16;
+}
+
+.content {
+  position: relative;
+  padding: 2em;
+}
+
+.heroImgWrapper {
+  width: 100%;
+  min-height: 40%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.heroImgWrapper.isMobile {
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.heroImg {
+  width: 100%;
+  user-select: none;
+  pointer-events: none;
+
+  border-radius: var(--border-radius-custom);
+
+}
+.heroImg.isMobile {
+  width: 50%;
+  user-select: none;
+  pointer-events: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.heroImg.isMobile {
+  transform: scale(120%);
+}
+
+.heroDescription {
+  @include ScrollbarWithArrowButtons;
+
+
+
+  //padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  overflow-y: auto;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  max-height: 38%;
+
+  &.isMobile{
+    margin-top: 2rem;
+  }
+
+}
+
+.heroGroup{
+  display: flex;
+  justify-content: center;
+  &Label{
+    max-width: 80%;
+  }
+}
+
+.heroGroupLabel{
+  z-index: 10;
+}

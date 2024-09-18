@@ -28,8 +28,6 @@ const PrivacyPage = (props: Props) => {
 
   return (
     <div className={classNames(cls.pageContainer)}>
-      <Navbar overlaid={true} navBarType={'Privacy'} />
-
       <WikiContentWithSidebar sections={sections} />
       <div>
         <FeedbackSideButton />
@@ -40,9 +38,7 @@ const PrivacyPage = (props: Props) => {
   );
 };
 
-export default withBackgroundImage({
+export default withBackgroundImage<Props>({
   alt: 'Tile bg image',
   imagePath: bgPicture as unknown as string,
-
-  // @ts-ignore
 })(PrivacyPage);

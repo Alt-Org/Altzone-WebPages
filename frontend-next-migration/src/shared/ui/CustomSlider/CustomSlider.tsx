@@ -4,10 +4,34 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 
 type Props = {
     className?: string;
-    children: ReactNode
+    children: ReactNode;
 }
 
-export const CustomSlider = ({className='', children}: Props) => {
+/**
+ * CustomSlider component to create a horizontally scrollable container.
+ *
+ * @param {Props} props - The properties of the component.
+ * @returns The rendered CustomSlider component.
+ *
+ * @example
+ * ```tsx
+ * const news = [{ id: 1, title: 'News 1', bodyPreview: 'Body 1', date: '2024-01-01' }, ...];
+ *
+ * <CustomSlider className="additional-class">
+ *   {news.map(item => (
+ *     <NewsCard 
+ *       bodyLength={200}
+ *       key={item.id}
+ *       title={item.title}
+ *       bodyPreview={item.bodyPreview}
+ *       date={item.date}
+ *       id={item.id}
+ *     />
+ *   ))}
+ * </CustomSlider>
+ * ```
+ */
+export const CustomSlider = ({className = '', children}: Props) => {
 
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -36,9 +60,6 @@ export const CustomSlider = ({className='', children}: Props) => {
             <div className={cls.scrollLeft} onClick={handleScrollLeft}>
                 <i>{'←'}</i>
             </div>
-            {/*<div className={classNames(cls.Cards, {}, [])} ref={scrollRef}>*/}
-            {/*    {children}*/}
-            {/*</div>*/}
 
             <div className={classNames(cls.Cards, {}, [])} ref={scrollRef}>
                 <div className={cls.CardContainer}>{children}</div>

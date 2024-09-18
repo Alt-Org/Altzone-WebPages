@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { useTheme, Theme } from '@/preparedApp/providers/ThemeProvider';
 import {ThemeSwitcher} from "./ThemeSwitcher";
+import {useTheme,Theme} from "@/app/_providers/ThemeProvider";
 
-jest.mock('@/preparedApp/providers/ThemeProvider', () => ({
+jest.mock('@/app/_providers/ThemeProvider', () => ({
     useTheme: jest.fn(),
     Theme: {
         LIGHT: 'light',

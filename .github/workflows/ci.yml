@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'v20.12.2'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend-next-migration
+
+#      - name: Lint
+#        run: npm run lint
+#        working-directory: pages/frontend
+
+      - name: Build
+        run: npm run build
+        working-directory: ./frontend-next-migration
+        env:
+          NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
+          NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
+          NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
+
+      - name: Run tests
+        run: npm test
+        working-directory: ./frontend-next-migration
+        env:
+          NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
+          NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
+          NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
+
+#      - name: Run Cypress tests
+#        run: npm run cypress:run
+#        env:
+#          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+#        working-directory: ./frontend-next-migration
+#
+#      - name: Build Storybook
+#        run: npm run build-storybook
+#        working-directory: ./frontend-next-migration

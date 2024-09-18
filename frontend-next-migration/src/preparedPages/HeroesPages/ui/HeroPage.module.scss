@@ -1,5 +1,9 @@
 .main{
-    min-height: 100vh;
+    margin-top: 130px;
+    min-height: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -9,7 +13,8 @@
 }
 
 
-
-@media (max-width: 1150px) {
-   
+@media (max-width: 1000px) {
+    .main {
+        margin-top: 30px;
+    }
 }
