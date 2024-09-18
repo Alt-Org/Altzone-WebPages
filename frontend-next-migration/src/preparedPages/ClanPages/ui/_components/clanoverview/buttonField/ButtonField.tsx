@@ -76,7 +76,7 @@ const ClanInfo = (props: Props) => {
                 </Button>
             )
             }
-            {isAdmin && (
+            {/* {isAdmin && (
                 <Button
                     className={cls.EditClanBtn}
                     theme={ButtonTheme.Graffiti}
@@ -85,7 +85,7 @@ const ClanInfo = (props: Props) => {
                     {editClanBtn}
                 </Button>
             )
-            }
+            } */}
         </>
     );
 };
