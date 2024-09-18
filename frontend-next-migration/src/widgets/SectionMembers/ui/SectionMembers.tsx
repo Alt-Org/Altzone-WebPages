@@ -96,52 +96,56 @@ const MemberComponent: FC<MemberProps> = memo(({ member }) => {
       <h3>{member.Name}</h3>
       <ul>
         {member.Website && (
-          <>
-            <li className={cls.clickableLogo}>
-              <FontAwesomeIcon
-                icon={faGlobe}
-                size='xl'
-                onClick={() => openLinkInNewTab(member.Website)}
-              />
-              <a
-                href={member.Website}
-                target='_blank'
-                rel='noopener noreferrer'></a>
-            </li>
-            <li className={cls.clickableLogo}>
-              <FontAwesomeIcon
-                icon={faGithub}
-                size='xl'
-                onClick={() => openLinkInNewTab(member.Github)}
-              />
-              <a
-                href={member.Github}
-                target='_blank'
-                rel='noopener noreferrer'></a>
-            </li>
-            <li className={cls.clickableLogo}>
-              <FontAwesomeIcon
-                icon={faLinkedin}
-                size='xl'
-                onClick={() => openLinkInNewTab(member.Linkedin)}
-              />
-              <a
-                href={member.Linkedin}
-                target='_blank'
-                rel='noopener noreferrer'></a>
-            </li>
-            <li className={cls.clickableLogo}>
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                size='xl'
-                onClick={() => openLinkInNewTab(`mailto:${member.Email}`)}
-              />
-              <a
-                href={`mailto:${member.Email}`}
-                target='_blank'
-                rel='noopener noreferrer'></a>
-            </li>
-          </>
+          <li className={cls.clickableLogo}>
+            <FontAwesomeIcon
+              icon={faGlobe}
+              size='xl'
+              onClick={() => openLinkInNewTab(member.Website)}
+            />
+            <a
+              href={member.Website}
+              target='_blank'
+              rel='noopener noreferrer'></a>
+          </li>
+        )}
+        {member.Github && (
+          <li className={cls.clickableLogo}>
+            <FontAwesomeIcon
+              icon={faGithub}
+              size='xl'
+              onClick={() => openLinkInNewTab(member.Github)}
+            />
+            <a
+              href={member.Github}
+              target='_blank'
+              rel='noopener noreferrer'></a>
+          </li>
+        )}
+        {member.Linkedin && (
+          <li className={cls.clickableLogo}>
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              size='xl'
+              onClick={() => openLinkInNewTab(member.Linkedin)}
+            />
+            <a
+              href={member.Linkedin}
+              target='_blank'
+              rel='noopener noreferrer'></a>
+          </li>
+        )}
+        {member.Email && (
+          <li className={cls.clickableLogo}>
+            <FontAwesomeIcon
+              icon={faEnvelope}
+              size='xl'
+              onClick={() => openLinkInNewTab(`mailto:${member.Email}`)}
+            />
+            <a
+              href={`mailto:${member.Email}`}
+              target='_blank'
+              rel='noopener noreferrer'></a>
+          </li>
         )}
       </ul>
     </div>
