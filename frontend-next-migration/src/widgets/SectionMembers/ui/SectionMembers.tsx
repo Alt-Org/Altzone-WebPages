@@ -1,4 +1,5 @@
 import cls from './SectionMembers.module.scss';
+import Image from 'next/image';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +10,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { useParams } from 'next/navigation';
 import { FC, memo, useEffect, useState } from 'react';
 import { TeamMember, fetchTeamMembers } from '../model/membersApi';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 interface WorkersSectionProps {
   className?: string;
@@ -93,22 +95,54 @@ const MemberComponent: FC<MemberProps> = memo(({ member }) => {
     <div className={cls.workmanComponent}>
       <h3>{member.Name}</h3>
       <ul>
-        {member.website && (
-          <li className={cls.clickableLogo}>
-            <FontAwesomeIcon
-              icon={faGlobe}
-              size='xl'
-              onClick={() => openLinkInNewTab(member.website)}
-            />
-            <a
-              href={member.website}
-              target='_blank'
-              rel='noopener noreferrer'></a>
-          </li>
+        {member.Website && (
+          <>
+            <li className={cls.clickableLogo}>
+              <FontAwesomeIcon
+                icon={faGlobe}
+                size='xl'
+                onClick={() => openLinkInNewTab(member.Website)}
+              />
+              <a
+                href={member.Website}
+                target='_blank'
+                rel='noopener noreferrer'></a>
+            </li>
+            <li className={cls.clickableLogo}>
+              <FontAwesomeIcon
+                icon={faGithub}
+                size='xl'
+                onClick={() => openLinkInNewTab(member.Github)}
+              />
+              <a
+                href={member.Github}
+                target='_blank'
+                rel='noopener noreferrer'></a>
+            </li>
+            <li className={cls.clickableLogo}>
+              <FontAwesomeIcon
+                icon={faLinkedin}
+                size='xl'
+                onClick={() => openLinkInNewTab(member.Linkedin)}
+              />
+              <a
+                href={member.Linkedin}
+                target='_blank'
+                rel='noopener noreferrer'></a>
+            </li>
+            <li className={cls.clickableLogo}>
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                size='xl'
+                onClick={() => openLinkInNewTab(`mailto:${member.Email}`)}
+              />
+              <a
+                href={`mailto:${member.Email}`}
+                target='_blank'
+                rel='noopener noreferrer'></a>
+            </li>
+          </>
         )}
-        <li>
-          <FontAwesomeIcon icon={faEnvelope} size='lg' /> {member.Email}
-        </li>
       </ul>
     </div>
   );

@@ -6,8 +6,9 @@ export interface TeamMember {
   Name: string;
   Email: string;
   Logo?: string;
-  website?: string;
-  github?: string;
+  Website?: string;
+  Github?: string;
+  Linkedin?: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
