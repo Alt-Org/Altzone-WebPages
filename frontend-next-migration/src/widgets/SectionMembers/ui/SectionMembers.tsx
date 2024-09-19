@@ -1,3 +1,5 @@
+/* This code snippet is a TypeScript React component that displays a list of team members grouped by
+their roles. Here's a breakdown of what the code is doing: */
 import cls from './SectionMembers.module.scss';
 import Image from 'next/image';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
@@ -5,7 +7,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Container } from '@/shared/ui/Container';
-import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab'; // Utility to open links
+import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
 import { useClientTranslation } from '@/shared/i18n';
 import { useParams } from 'next/navigation';
 import { FC, memo, useEffect, useState } from 'react';
@@ -16,6 +18,10 @@ interface WorkersSectionProps {
   className?: string;
 }
 
+/* This code snippet defines a React functional component named `SectionMembers` that takes in a prop
+`className` of type string. Inside the component function, it initializes state using the `useState`
+hook to store an array of `TeamMember` objects as `teamMembers`. It then retrieves parameters using
+the `useParams` hook and extracts the language (`lng`) from the parameters. */
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const params = useParams();
@@ -56,6 +62,14 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   );
 };
 
+/**
+ * The `groupByRole` function takes an array of `TeamMember` objects and groups them by their `Role`
+ * property into a Record where the keys are roles and the values are arrays of team members with that
+ * role.
+ * @param {TeamMember[]} members - An array of TeamMember objects.
+ * @returns The `groupByRole` function returns an object where each key represents a role and the
+ * corresponding value is an array of `TeamMember` objects with that role.
+ */
 const groupByRole = (members: TeamMember[]): Record<string, TeamMember[]> => {
   return members.reduce((acc, member) => {
     if (!acc[member.Role]) {
@@ -70,6 +84,11 @@ interface GroupWithMemberProps {
   member: TeamMember;
 }
 
+/* The `GroupWithMemberComponent` constant is defining a React functional component that takes in a
+prop `member` of type `GroupWithMemberProps`. Inside the component function, it first retrieves
+parameters using the `useParams` hook and extracts the language (`lng`) from the parameters. Then,
+it uses the `useClientTranslation` hook to get the translation function `t` for the 'members'
+namespace. */
 const GroupWithMemberComponent: FC<GroupWithMemberProps> = memo(
   ({ member }) => {
     const params = useParams();
@@ -90,6 +109,10 @@ interface MemberProps {
   member: TeamMember;
 }
 
+/* The `MemberComponent` constant is defining a React functional component that takes in a prop
+`member` of type `MemberProps`. Inside the component function, it renders a `<div>` element with a
+class name of `cls.workmanComponent`. Within this `<div>`, it displays the member's name
+(`member.Name`) as an `<h3>` element. */
 const MemberComponent: FC<MemberProps> = memo(({ member }) => {
   return (
     <div className={cls.workmanComponent}>
