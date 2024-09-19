@@ -46,8 +46,8 @@
 
 .workmanComponent {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
   user-select: none;
 
   h3 {
@@ -55,23 +55,25 @@
     line-height: var(--font-family-main);
   }
 
+  .iconContainer {
+    display: flex; /* Align icons in a row */
+    align-items: center; /* Center icons vertically */
+    gap: 10px; /* Space between icons */
+  }
+
+  .taskText {
+    display: flex;
+    text-align: start;
+  }
+
   @media only screen and (min-width: 1921px) {
     h3 {
       font-size: inherit;
     }
   }
-
-  padding-bottom: 10px;
-
-  ul {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .clickableLogo {
-    color: var(--secondary-color);
-    cursor: pointer;
-    @include link-scale-effect('icon');
-  }
+}
+.clickableLogo {
+  color: var(--secondary-color);
+  cursor: pointer;
+  @include link-scale-effect('icon');
 }
