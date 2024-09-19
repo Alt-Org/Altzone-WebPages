@@ -56,14 +56,14 @@
   }
 
   .iconContainer {
-    display: flex; /* Align icons in a row */
-    align-items: center; /* Center icons vertically */
-    gap: 10px; /* Space between icons */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--secondary-color);
   }
 
   .taskText {
-    display: flex;
-    text-align: start;
+    display: block;
   }
 
   @media only screen and (min-width: 1921px) {
