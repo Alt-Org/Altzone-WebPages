@@ -110,67 +110,53 @@ interface MemberProps {
 }
 
 /* The `MemberComponent` constant is defining a React functional component that takes in a prop
-`member` of type `MemberProps`. Inside the component function, it renders a `<div>` element with a
-class name of `cls.workmanComponent`. Within this `<div>`, it displays the member's name
-(`member.Name`) as an `<h3>` element. */
+`member` of type `MemberProps`. Inside the component function, it renders a section displaying
+information about a team member. Here's a breakdown of what it's doing: */
 const MemberComponent: FC<MemberProps> = memo(({ member }) => {
   return (
     <div className={cls.workmanComponent}>
-      <h3>{member.Name}</h3>
-      <ul>
+      <div className={cls.iconContainer}>
+        <h3>{member.Name}</h3>
         {member.Website && (
-          <li className={cls.clickableLogo}>
+          <span className={cls.clickableLogo}>
             <FontAwesomeIcon
               icon={faGlobe}
               size='xl'
               onClick={() => openLinkInNewTab(member.Website)}
             />
-            <a
-              href={member.Website}
-              target='_blank'
-              rel='noopener noreferrer'></a>
-          </li>
+          </span>
         )}
         {member.Github && (
-          <li className={cls.clickableLogo}>
+          <span className={cls.clickableLogo}>
             <FontAwesomeIcon
               icon={faGithub}
               size='xl'
               onClick={() => openLinkInNewTab(member.Github)}
             />
-            <a
-              href={member.Github}
-              target='_blank'
-              rel='noopener noreferrer'></a>
-          </li>
+          </span>
         )}
         {member.Linkedin && (
-          <li className={cls.clickableLogo}>
+          <span className={cls.clickableLogo}>
             <FontAwesomeIcon
               icon={faLinkedin}
               size='xl'
               onClick={() => openLinkInNewTab(member.Linkedin)}
             />
-            <a
-              href={member.Linkedin}
-              target='_blank'
-              rel='noopener noreferrer'></a>
-          </li>
+          </span>
         )}
         {member.Email && (
-          <li className={cls.clickableLogo}>
+          <span className={cls.clickableLogo}>
             <FontAwesomeIcon
               icon={faEnvelope}
               size='xl'
               onClick={() => openLinkInNewTab(`mailto:${member.Email}`)}
             />
-            <a
-              href={`mailto:${member.Email}`}
-              target='_blank'
-              rel='noopener noreferrer'></a>
-          </li>
+          </span>
         )}
-      </ul>
+      </div>
+      <div className={cls.taskText}>
+        <p>{member.Task}</p>
+      </div>
     </div>
   );
 });

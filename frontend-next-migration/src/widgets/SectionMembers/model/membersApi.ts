@@ -3,8 +3,9 @@ const BASE_URL = 'http://localhost:1337/api';
 export interface TeamMember {
   id: number;
   Role: string;
+  Task?: string;
   Name: string;
-  Email: string;
+  Email?: string;
   Logo?: string;
   Website?: string;
   Github?: string;
