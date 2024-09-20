@@ -22,26 +22,23 @@ export const useRegisterForm = (toLoginPage: string) => {
             password: fieldValues.password,
             repeatPassword: fieldValues.password,
             Player: {
-                uniqueIdentifier: fieldValues.uniqueIdentifier,
-                backpackCapacity: fieldValues.backpackCapacity,
-                name: fieldValues.name,
+                uniqueIdentifier: fieldValues.username,
+                backpackCapacity: 100,
+                name: fieldValues.username,
                 above13: fieldValues.ageConsent,
             },
         };
-        console.log(ObjectToBeSent);
         await regist(ObjectToBeSent);
     }
 
     useEffect(() => {
         if (data) {
             toast.success('Tili on luotu!');
-            console.log(data);
             return;
         }
 
         if (error) {
             // @ts-ignore
-            console.log(error);
             toast.error(error?.data?.message[0] ?? error?.data?.message);
             return;
         }
