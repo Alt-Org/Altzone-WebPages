@@ -14,6 +14,8 @@
 }
 
 .membersListContainer{
+  max-width: 100vw;
+  padding: 0 20px;
   border-radius: var(--border-radius-custom);
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.55)
@@ -33,6 +35,9 @@
     line-height: 1.5;
     font-weight: bold;
     color: #e89dff;
+    overflow-wrap: break-word;
+    //word-break: break-all;
+    hyphens: auto;
   }
 
   ul {
