@@ -1,26 +1,21 @@
 .MembersSection{
-  font-family: var(--font-family-texts);
-  //min-height: 100% !important;
+  font-family: var(--font-family-texts), serif;
+  min-height: 1000px;
   text-align: center;
   display: grid;
   justify-items: center;
-  //color: var(--red-dark);
 
-  //height: 100%;
 }
 
 
 .scrollBottomButton{
-  //align-self: start;
   margin-bottom: 10px;
-
   @include link-scale-effect
 }
 
 .membersListContainer{
   border-radius: var(--border-radius-custom);
   z-index: 2;
-  //background-color: var(--transparent-bg-dark);
   background-color: rgba(0, 0, 0, 0.55)
 
 }
@@ -31,8 +26,6 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
-
 
   h2{
     font-size: clamp(40px, 7vw, 50px);
@@ -49,8 +42,6 @@
 }
 
 .workmanComponent{
-
-
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -80,7 +71,5 @@
    cursor: pointer;
    @include link-scale-effect('icon');
  }
-
-
 }
 
