@@ -26,7 +26,14 @@ const useIsPageScrollbar = () => {
 
         checkScrollbar();
         window.addEventListener('resize', checkScrollbar);
-        return () => window.removeEventListener('resize', checkScrollbar);
+
+        const observer = new MutationObserver(checkScrollbar);
+        observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+
+        return () => {
+            window.removeEventListener('resize', checkScrollbar);
+            observer.disconnect();
+        };
     }, []);
 
     return hasScrollbar;
