@@ -70,10 +70,9 @@
   flex-direction: column;
   gap: 10px;
 
-  .item {
+  & * {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
     transition: opacity 0.4s ease, visibility 0.4s ease;
   }
 
