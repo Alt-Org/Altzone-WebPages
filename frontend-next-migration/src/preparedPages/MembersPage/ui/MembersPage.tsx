@@ -1,12 +1,9 @@
 'use client'
-import {Navbar} from "@/widgets/Navbar";
 import cls from './MembersPage.module.scss'
 import {SectionMembers} from "@/widgets/SectionMembers";
 import {classNames} from "@/shared/lib/classNames/classNames";
-// import backgroundImg from '@/shared/assets/images/clanBg/space.webp'
 import backgroundImg from "@/shared/assets/images/backgrounds/background.webp";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
-import {ScrollTop} from "@/features/ScrollTop";
 
 const MembersPage = () => {
     return (
