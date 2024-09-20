@@ -45,10 +45,8 @@
 
 .navLogo {
   img {
-    //height: var(--navbar-logo-height);
     width: 25vw;
     max-width: 150px;
-    //width: auto;
   }
 }
 
@@ -90,17 +88,11 @@
 
 .langSwitcher {
   border-radius: var(--border-radius-custom);
-  outline: 2px solid var(--inverted-primary-color);
+  box-shadow: 0 0 0 2px var(--inverted-primary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
 }
-
-//@media (max-width: 800px){
-//  .NavbarMobile{
-//    height: 7vh;
-//  }
-//}
 
 .FixedButton{
   text-align: center;
