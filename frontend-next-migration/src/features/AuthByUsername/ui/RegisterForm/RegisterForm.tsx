@@ -53,7 +53,6 @@ export const RegisterForm = ({ toLoginPage }: Props) => {
             <CustomForm.Checkbox
                 key={"ageConsent"}
                 error={errors?.ageConsent?.message && t(`${errors?.ageConsent?.message}`)}
-                // todo add i18n
                 label={t("age_Consent")}
                 inputProps={{ ...register('ageConsent', { required: true }) }}
             />
