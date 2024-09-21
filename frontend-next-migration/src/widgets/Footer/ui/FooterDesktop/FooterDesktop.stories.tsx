@@ -10,7 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof FooterDesktop> = () => (
     <FooterDesktop
-        socialLinks={socialIconLinks}
+        socialIconLinks={socialIconLinks}
         title={"Be part of our community 😊"}
         texts={
             {
@@ -24,9 +24,3 @@ const Template: ComponentStory<typeof FooterDesktop> = () => (
 );
 
 export const Default = Template.bind({});
-
-
-// export const CurrentYear = new Date().getFullYear();
-// export const CompanyName = "Psyche's Royale Gaming ry";
-// export const Cookies = 'Cookies';
-// export const Privacy = 'Privacy';
