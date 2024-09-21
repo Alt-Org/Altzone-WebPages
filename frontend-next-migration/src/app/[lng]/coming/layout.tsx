@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode;
 };
 
-export default function AboutLayout({ children }: Props) {
+export default function ComingLayout({ children }: Props) {
   return (
     <>
       <Navbar overlaid />
