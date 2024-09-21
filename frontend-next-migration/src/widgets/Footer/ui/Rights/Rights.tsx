@@ -1,28 +1,16 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './Rights.module.scss';
 import { AppRoutesLinks } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { useResetCookies } from '@/shared/lib/hooks/useResetCookies';
-import {
-  CurrentYear,
-  CompanyName,
-  Cookies,
-  Privacy,
-} from '../../model/data/text';
+import { Texts } from '../../model/types/types';
+import cls from './Rights.module.scss';
 
 
 interface RightsProps {
   className?: string;
-  texts: {
-      cookies: string;
-      privacy: string;
-      consent: string;
-      currentYear: number;
-  }
+  texts: Texts;
 }
-
-
 
 export const Rights = memo((props : RightsProps) => {
 
@@ -31,13 +19,19 @@ export const Rights = memo((props : RightsProps) => {
       texts
   } = props;
 
-  const { cookies, consent, currentYear, privacy } = texts;
+  const {
+      cookies,
+      consent,
+      currentYear,
+      privacy,
+      companyName
+  } = texts;
 
   const handleResetCookies = useResetCookies();
 
   return (
     <p className={classNames(cls.Rights, {}, [className])}>
-      <span className={cls.copySymbol}>&copy;</span> {currentYear} {CompanyName}{' '}
+      <span className={cls.copySymbol}>&copy;</span> {currentYear} {companyName}{' '}
       <AppLink className={cls.cookies} to={AppRoutesLinks.COOKIES}>
         {cookies}
       </AppLink>{' '}
