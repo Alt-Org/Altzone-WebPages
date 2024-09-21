@@ -1,6 +1,6 @@
-import cls from './Title.module.scss'
-import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo} from "react";
+import {classNames} from "@/shared/lib/classNames/classNames";
+import cls from './Title.module.scss'
 
 interface Props {
     className?: string;
@@ -8,17 +8,13 @@ interface Props {
 }
 
 export const Title = memo(( props: Props)=>{
-
     const {
         title,
         className = ""
     } = props;
 
-
-
     return (
         <p className={classNames(cls.Title,{},[className])}>
-            {/*{t("FooterTitle")}*/}
             {title}
         </p>
     )
