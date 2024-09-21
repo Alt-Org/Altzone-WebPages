@@ -8,5 +8,6 @@ export interface Texts {
     cookies: string;
     privacy: string;
     consent: string;
+    companyName: string;
     currentYear: number;
 }
