@@ -64,16 +64,13 @@
 .container.isMobile {
   max-width: 35rem;
   padding: 0 1.2rem;
+  margin-top: 5rem;
 }
 
 .container.isTablet {
   max-width: 40rem;
 }
 
-
-.containerWrapper.isMobile {
-  margin-top: 5rem;
-}
 
 .contentWrapper {
   display: flex;
