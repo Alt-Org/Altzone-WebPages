@@ -3,9 +3,9 @@ import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import Instagram from "@/shared/assets/images/instagram.svg";
 import Facebook from "@/shared/assets/images/facebook.svg";
 import Youtube from "@/shared/assets/images/youtube.svg";
-import {SocialLink} from "../types/types";
+import {SocialIconLink} from "../types/types";
 
-export const socialLinks: SocialLink[] = [
+export const socialIconLinks: SocialIconLink[] = [
     {
         name: 'Discord',
         icon: Discord,

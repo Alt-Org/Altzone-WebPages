@@ -11,24 +11,41 @@ import {
   Privacy,
 } from '../../model/data/text';
 
+
 interface RightsProps {
   className?: string;
+  texts: {
+      cookies: string;
+      privacy: string;
+      consent: string;
+      currentYear: number;
+  }
 }
 
-export const Rights = memo(({ className = '' }: RightsProps) => {
+
+
+export const Rights = memo((props : RightsProps) => {
+
+  const {
+      className = '',
+      texts
+  } = props;
+
+  const { cookies, consent, currentYear, privacy } = texts;
+
   const handleResetCookies = useResetCookies();
 
   return (
     <p className={classNames(cls.Rights, {}, [className])}>
-      <span className={cls.copySymbol}>&copy;</span> {CurrentYear} {CompanyName}{' '}
+      <span className={cls.copySymbol}>&copy;</span> {currentYear} {CompanyName}{' '}
       <AppLink className={cls.cookies} to={AppRoutesLinks.COOKIES}>
-        {Cookies}
+        {cookies}
       </AppLink>{' '}
       <AppLink className={cls.privacy} to={AppRoutesLinks.PRIVACY}>
-        {Privacy}
+        {privacy}
       </AppLink>
       <span onClick={handleResetCookies} className={cls.resetCookies}>
-        Consent
+        {consent}
       </span>
     </p>
   );

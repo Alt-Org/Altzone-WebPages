@@ -1,12 +1,26 @@
+import {useParams} from "next/navigation";
 import FooterDesktop from "../FooterDesktop/FooterDesktop";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import {socialIconLinks} from "../../model/data/socialSectionMenu";
+import {useClientTranslation} from "@/shared/i18n";
 
 
 export const Footer = ()  => {
 
-    const {isMobileSize} = useIsMobileSize()
+    const params = useParams();
+    const lng = params.lng as string;
+    const {t} = useClientTranslation(lng, "footer");
 
     return (
-            <FooterDesktop/>
+            <FooterDesktop
+                title={
+                    t("FooterTitle")
+                }
+                texts={
+                    {
+
+                    }
+                }
+                socialIconLinks={socialIconLinks}
+            />
     )
 }
