@@ -10,7 +10,7 @@ import { PrivacySections } from '@/entities/PresentationPackages/model/data/priv
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
-navbarBuilder.addLink('news', RoutePaths.COMING, true);
+navbarBuilder.addLink('news', RoutePaths.NEWS, true);
 navbarBuilder.addDropDown('game', false, dropdowns.game);
 navbarBuilder.addDropDown('gallery', false, dropdowns.gallery);
 navbarBuilder.addDropDown('gameart', false, dropdowns.gameart);
