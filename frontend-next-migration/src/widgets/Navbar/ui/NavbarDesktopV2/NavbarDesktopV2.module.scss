@@ -7,7 +7,7 @@
   z-index: var(--navbar-z-index);
   font-weight: 500;
   top: 0;
-  font-size: max(calc(24 * calc(min(750px, 100vw) / 750)), 12px);
+  font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
 }
 
 .overlayed {
@@ -36,7 +36,6 @@
   position: relative;
   width: 120px;
 
-
   .itemLogoImg {
     position: absolute;
     top: -2.5416666667000003em;
@@ -61,12 +60,9 @@
     width: 150%;
     max-width: 150%;
   }
-
-
 }
 
 .itemNavbarDropDownContent {
-
   outline: 2px solid var(--inverted-primary-color);
 
   text-align: left;
@@ -79,7 +75,6 @@
     @include link-scale-effect;
   }
 }
-
 
 .navItem {
   display: flex;
@@ -98,7 +93,6 @@
   font-size: var(--font-size-m) !important;
 }
 
-
 .authButton {
   border-radius: var(--border-radius-custom);
   outline: 2px solid var(--inverted-primary-color);
@@ -114,6 +108,6 @@
   }
 }
 
-.toggleOverlaid{
+.toggleOverlaid {
   margin-left: auto;
 }
