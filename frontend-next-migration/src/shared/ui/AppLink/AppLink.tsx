@@ -1,8 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import Link from 'next/link';
 import { FC, memo, ReactNode } from 'react';
-import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
@@ -55,14 +53,8 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         key={to}
         className={classNames(cls.AppLink, {}, [className, cls[theme]])}
         href={to}
-        target='_blank'
-        rel='noopener noreferrer'>
-        {children}{' '}
-        <FontAwesomeIcon
-          icon={faExternalLink}
-          size='sm'
-          color='var(--secondary-color)'
-        />
+        target='_blank'>
+        {children}
       </a>
     );
   }
