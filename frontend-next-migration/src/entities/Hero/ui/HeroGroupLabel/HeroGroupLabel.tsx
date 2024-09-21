@@ -18,19 +18,22 @@ type HeroGroupLabelProps = Readonly<{
 }>;
 /**
  * Displays label containing a hero group to which the hero belongs to.
- * 
+ *
  * Outlook of the label will be defined based on the group value, which should be one of these:
  * - TORJUJAT // RETROFLEKTIO
  * - SULAUTUJAT // KONFLUENSSI
  * - ÄLYLLISTÄJÄT // EGOTISMI
  * - PEILAAJAT // PROJEKTIO
- * 
+ *
  * If the group has some other value an error text will be displayed instead of the label
- * 
- * @param Props
- * @returns 
+ *
+ * @returns
+ * @param props
  */
-export default function HeroGroupLabel({ group, className, style }: HeroGroupLabelProps) {
+export default function HeroGroupLabel(props: HeroGroupLabelProps) {
+
+  const { className, style, group} = props;
+
   const heroType = convertHeroGroupToHeroType(group);
 
   if(!heroType)
