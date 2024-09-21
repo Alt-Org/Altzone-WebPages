@@ -72,6 +72,10 @@
 }
 
 
+.containerWrapper {
+  position: relative;
+}
+
 .contentWrapper {
   display: flex;
   border-radius: 10px;
@@ -122,10 +126,6 @@
 
 .heroDescription {
   @include ScrollbarWithArrowButtons;
-
-
-
-  //padding-top: 0.5rem;
   padding-right: 0.5rem;
   overflow-y: auto;
   font-size: 1.4rem;
@@ -139,11 +139,13 @@
 }
 
 .heroGroup{
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  z-index: 1;
   display: flex;
   justify-content: center;
-  &Label{
-    max-width: 80%;
-  }
 }
 
 .heroGroupLabel{
