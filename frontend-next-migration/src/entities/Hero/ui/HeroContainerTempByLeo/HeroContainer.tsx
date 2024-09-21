@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './HeroContainer.module.scss';
@@ -63,6 +64,7 @@ const HeroContainer = (props: Props) => {
           />
         </div>
 
+        <div className={classNames(cls.containerWrapper, combinedModCss)}>
           <div className={classNames(cls.container, combinedModCss)} >
             <div className={classNames(cls.contentWrapper, combinedModCss)} style={{
               backgroundColor: heroColor,
@@ -92,16 +94,14 @@ const HeroContainer = (props: Props) => {
                 </div>
               </div>
             </div>
-
-            <div className={cls.heroGroup}>
-                <HeroGroupLabel
-                  className={cls.heroGroupLabel}
-                  group={group}
-                />
-            </div>
-
           </div> 
-
+          <div className={cls.heroGroup}>
+            <HeroGroupLabel
+              className={cls.heroGroupLabel}
+              group={group}
+            />
+          </div>
+        </div>
 
         <ArrowButton direction='right' type='outer' href={rightArrowLink} />
       </div>
