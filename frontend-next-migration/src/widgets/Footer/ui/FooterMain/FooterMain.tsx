@@ -15,9 +15,13 @@ export const Footer = ()  => {
                 title={
                     t("FooterTitle")
                 }
+                // todo probably it should be internalized as well
                 texts={
                     {
-
+                        currentYear: new Date().getFullYear(),
+                        privacy: "Privacy",
+                        cookies: "Cookies",
+                        consent: "Consent",
                     }
                 }
                 socialIconLinks={socialIconLinks}
