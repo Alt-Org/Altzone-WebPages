@@ -2,6 +2,7 @@ import {useParams} from "next/navigation";
 import FooterDesktop from "../FooterDesktop/FooterDesktop";
 import {socialIconLinks} from "../../model/data/socialSectionMenu";
 import {useClientTranslation} from "@/shared/i18n";
+import {envHelper} from "@/shared/const/envHelper";
 
 export const Footer = ()  => {
     const params = useParams();
@@ -20,6 +21,7 @@ export const Footer = ()  => {
                         privacy: "Privacy",
                         cookies: "Cookies",
                         consent: "Consent",
+                        companyName: envHelper.companyName
                     }
                 }
                 socialIconLinks={socialIconLinks}

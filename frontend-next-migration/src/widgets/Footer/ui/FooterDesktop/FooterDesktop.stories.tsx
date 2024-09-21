@@ -18,6 +18,7 @@ const Template: ComponentStory<typeof FooterDesktop> = () => (
                 cookies: "Cookies",
                 privacy: "Privacy",
                 currentYear: new Date().getFullYear(),
+                companyName: "Psyche's Royale Gaming ry"
             }
         }
     />
