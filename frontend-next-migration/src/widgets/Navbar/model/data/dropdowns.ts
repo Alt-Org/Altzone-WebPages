@@ -43,8 +43,8 @@ export const dropdowns = {
     {
       elementText: 'development',
       link: {
-        path: AppExternalLinks.development,
-        isExternal: true,
+        path: RoutePaths.HERO_DEVELOPMENT,
+        isExternal: false,
       },
     },
     {
