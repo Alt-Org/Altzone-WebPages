@@ -22,7 +22,7 @@ export const navbarMenuDesktop = navbarBuilder.build();
 
 const navbarBuilderV2 = new NavbarBuilder();
 navbarBuilderV2.addLogo('Nav logo', img as unknown as string, RoutePaths.MAIN);
-navbarBuilderV2.addLink('news', RoutePaths.COMING, true);
+navbarBuilderV2.addLink('news', RoutePaths.NEWS, true);
 navbarBuilderV2.addDropDown('game', true, dropdowns.game);
 navbarBuilderV2.addDropDown('gallery', true, dropdowns.gallery);
 navbarBuilderV2.addDropDown('gameart', true, dropdowns.gameart);
