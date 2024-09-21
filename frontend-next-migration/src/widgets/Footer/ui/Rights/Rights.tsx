@@ -30,18 +30,22 @@ export const Rights = memo((props : RightsProps) => {
   const handleResetCookies = useResetCookies();
 
   return (
-    <p className={classNames(cls.Rights, {}, [className])}>
-      <span className={cls.copySymbol}>&copy;</span> {currentYear} {companyName}{' '}
-      <AppLink className={cls.cookies} to={AppRoutesLinks.COOKIES}>
-        {cookies}
-      </AppLink>{' '}
-      <AppLink className={cls.privacy} to={AppRoutesLinks.PRIVACY}>
-        {privacy}
-      </AppLink>
-      <span onClick={handleResetCookies} className={cls.resetCookies}>
-        {consent}
-      </span>
-    </p>
+      <div className={classNames(cls.Rights, {}, [className])}>
+          <p>
+              <AppLink className={cls.cookies} to={AppRoutesLinks.COOKIES}>
+                  {cookies}
+              </AppLink>{' '}
+              <AppLink className={cls.privacy} to={AppRoutesLinks.PRIVACY}>
+                  {privacy}
+              </AppLink>
+              <span onClick={handleResetCookies} className={cls.resetCookies}>
+              {consent}
+          </span>
+          </p>
+          <p>
+              <span className={cls.copySymbol}>&copy;</span> {currentYear} {companyName}{' '}
+          </p>
+      </div>
   );
 });
 
