@@ -14,7 +14,6 @@ type HeroGroupLabelProps = Readonly<{
    */
   group: string,
   className?: string,
-  style?: CSSProperties
 }>;
 /**
  * Displays label containing a hero group to which the hero belongs to.
@@ -32,7 +31,7 @@ type HeroGroupLabelProps = Readonly<{
  */
 export default function HeroGroupLabel(props: HeroGroupLabelProps) {
 
-  const { className, style, group} = props;
+  const { className, group} = props;
 
   const heroType = convertHeroGroupToHeroType(group);
 
@@ -52,7 +51,7 @@ export default function HeroGroupLabel(props: HeroGroupLabelProps) {
   };
 
   return(
-    <div className={className} style={style}>
+    <div className={className}>
       <h3 className={classNames(cls.title, combinedModCss)}>
         {labelBg && <Image 
           className={cls['bg-image']} 
