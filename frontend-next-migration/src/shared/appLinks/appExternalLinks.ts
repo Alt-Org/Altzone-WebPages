@@ -20,8 +20,6 @@ export const AppExternalLinks = {
   join: 'https://discord.gg/mgjQkCR2Fg',
   dlpackage:
     'https://docs.google.com/document/d/1QJy7PWREJaJpob6HbL26OEVtHrpDsbiHx_ZJIVdC8UI/edit',
-  development:
-    'https://docs.google.com/spreadsheets/d/1jZlsFm2OWSKYXreRRw3ko9IiBBtzwyPQk4HcduuNU-M/edit?gid=0#gid=0',
   pastversions:
     'https://drive.google.com/drive/folders/1n5GVJVXFF2F1sF5-C07uYkFNd9Bsdxzu',
 } as const;

@@ -29,6 +29,8 @@ export enum AppRoutesLinks {
   HEROES = 'HEROES',
   HEROES_ONE = 'HEROES_ONE',
 
+  HERO_DEVELOPMENT = 'HERO_DEVELOPMENT',
+
   NOT_FOUND = 'NOT_FOUND',
   NOT_FOUND_CATCH = 'NOT_FOUND_CATCH',
 
@@ -65,6 +67,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
   [AppRoutesLinks.HEROES]: '/heroes',
   [AppRoutesLinks.HEROES_ONE]: '/heroes/:id',
+  [AppRoutesLinks.HERO_DEVELOPMENT]: '/hero-development',
 
   [AppRoutesLinks.NEWS]: news,
   [AppRoutesLinks.NEWSELEMENT]: news + '/:id',
