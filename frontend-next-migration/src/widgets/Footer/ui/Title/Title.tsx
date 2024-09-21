@@ -1,22 +1,25 @@
 import cls from './Title.module.scss'
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {memo} from "react";
-import {useParams} from "next/navigation";
-import {useClientTranslation} from "@/shared/i18n";
 
-interface TitleProps{
+interface Props {
     className?: string;
+    title: string;
 }
 
-export const Title = memo(({className=''}:TitleProps)=>{
+export const Title = memo(( props: Props)=>{
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "footer");
+    const {
+        title,
+        className = ""
+    } = props;
+
+
 
     return (
         <p className={classNames(cls.Title,{},[className])}>
-            {t("FooterTitle")}
+            {/*{t("FooterTitle")}*/}
+            {title}
         </p>
     )
 })
