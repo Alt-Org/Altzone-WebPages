@@ -6,7 +6,7 @@ export const dropdowns = {
     {
       elementText: 'clanpage',
       link: {
-        path: RoutePaths.COMING,
+        path: RoutePaths.clan_one,
         isExternal: false,
       },
     },
@@ -61,7 +61,7 @@ export const dropdowns = {
     {
       elementText: 'leaderboard',
       link: {
-        path: RoutePaths.COMING,
+        path: RoutePaths.CLAN_LEADERBOARD,
         isExternal: false,
       },
     },
