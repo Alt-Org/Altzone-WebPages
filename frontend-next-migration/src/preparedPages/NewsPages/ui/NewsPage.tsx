@@ -35,9 +35,7 @@ const NewsPage = () => {
           content={`${envHelper.appDomain}/${RoutePaths.NEWS}`}
         />
       </Head>
-      <FeedbackSideButton />
-      <Navbar className={cls.navbar} />
-      <ComingSoon lng={''} />{' '}
+      <ComingSoon lng={''} />
       {/* TODO: Remember to Remove ComingSoon component.*/}
     </div>
   );
