@@ -40,7 +40,7 @@
   font-family: var(--font-family-main);
   line-height: 1.5;
   font-weight: bold;
-  color: #e89dff;
+  color: var(--secondary-color);
   user-select: none;
 }
 
@@ -59,10 +59,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--inverted-primary-color);
   }
 
   .taskText {
+    padding-bottom: 15px;
     display: block;
   }
 
