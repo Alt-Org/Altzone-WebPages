@@ -4,17 +4,17 @@ import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 export const dropdowns = {
   community: [
     {
-      elementText: 'join',
-      link: {
-        path: AppExternalLinks.join,
-        isExternal: true,
-      },
-    },
-    {
       elementText: 'clanpage',
       link: {
         path: RoutePaths.COMING,
         isExternal: false,
+      },
+    },
+    {
+      elementText: 'join',
+      link: {
+        path: AppExternalLinks.join,
+        isExternal: true,
       },
     },
     {
@@ -68,16 +68,16 @@ export const dropdowns = {
   ],
   gallery: [
     {
-      elementText: 'comics',
+      elementText: 'pictures',
       link: {
-        path: RoutePaths.COMICS_GALLERY,
+        path: RoutePaths.PICTURE_GALLERY,
         isExternal: false,
       },
     },
     {
-      elementText: 'galleries',
+      elementText: 'comics',
       link: {
-        path: RoutePaths.PICTURE_GALLERY,
+        path: RoutePaths.COMICS_GALLERY,
         isExternal: false,
       },
     },
