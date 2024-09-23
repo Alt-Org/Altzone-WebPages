@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:1337/api';
+import { envHelper } from '@/shared/const/envHelper';
 
 export interface TeamMember {
   id: number;
@@ -16,18 +16,30 @@ export interface TeamMember {
   locale: string;
 }
 
-export const fetchTeamMembers = async (): Promise<TeamMember[]> => {
+/**
+ * Fetch team members from Strapi based on the locale (language).
+ * @param locale - Language code ('en' or 'fi')
+ */
+export const fetchTeamMembers = async (
+  locale: string = 'en',
+): Promise<TeamMember[]> => {
   try {
-    const response = await fetch(`${BASE_URL}/teams`);
+    // Convert short locale code to full Strapi locale code
+    const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
+
+    // Fetch data from Strapi based on the detected locale using the environment variable for BASE_URL
+    const response = await fetch(
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}`,
+    );
+
     if (!response.ok) {
       throw new Error(`Error fetching data: ${response.statusText}`);
     }
 
     const data = await response.json();
 
-    const members = Array.isArray(data.data) ? data.data : [data.data];
-
-    return members.map((item: any) => ({
+    // Map the response data to your TeamMember interface
+    return data.data.map((item: any) => ({
       id: item.id,
       ...item.attributes,
     })) as TeamMember[];
