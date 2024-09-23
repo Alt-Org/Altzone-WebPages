@@ -1,44 +1,37 @@
-/* This code snippet is a TypeScript React component that displays a list of team members grouped by
-their roles. Here's a breakdown of what the code is doing: */
 import cls from './SectionMembers.module.scss';
-import Image from 'next/image';
+import { FC, memo, useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { fetchTeamMembers, TeamMember } from '../model/membersApi';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { Container } from '@/shared/ui/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { Container } from '@/shared/ui/Container';
-import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
-import { useClientTranslation } from '@/shared/i18n';
-import { useParams } from 'next/navigation';
-import { FC, memo, useEffect, useState } from 'react';
-import { TeamMember, fetchTeamMembers } from '../model/membersApi';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
+import { useClientTranslation } from '@/shared/i18n'; // Import translation hook
 
 interface WorkersSectionProps {
   className?: string;
 }
 
-/* This code snippet defines a React functional component named `SectionMembers` that takes in a prop
-`className` of type string. Inside the component function, it initializes state using the `useState`
-hook to store an array of `TeamMember` objects as `teamMembers`. It then retrieves parameters using
-the `useParams` hook and extracts the language (`lng`) from the parameters. */
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const params = useParams();
   const lng = params.lng as string;
-  const { t } = useClientTranslation(lng, 'team');
+  const { t } = useClientTranslation(lng, 'team'); // Use translation hook for locale 'team'
 
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const data = await fetchTeamMembers();
+        const data = await fetchTeamMembers(lng);
         setTeamMembers(data);
       } catch (error) {
         console.error('Failed to fetch team members:', error);
       }
     };
     fetchMembers();
-  }, []);
+  }, [lng]);
 
   const groupedMembers = groupByRole(teamMembers);
 
@@ -51,7 +44,8 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
       <Container className={cls.membersListContainer}>
         {Object.keys(groupedMembers).map((role) => (
           <div key={role}>
-            <h2>{t(role)}</h2>
+            <h2>{role}</h2>{' '}
+            {/* No need to translate, role names are managed in Strapi */}
             {groupedMembers[role].map((member) => (
               <GroupWithMemberComponent key={member.id} member={member} />
             ))}
@@ -63,12 +57,11 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 };
 
 /**
- * The `groupByRole` function takes an array of `TeamMember` objects and groups them by their `Role`
- * property into a Record where the keys are roles and the values are arrays of team members with that
- * role.
+ * The groupByRole function takes an array of TeamMember objects and groups them by their Role
+ * property into a Record where the keys are roles and the values are arrays of team members with that role.
  * @param {TeamMember[]} members - An array of TeamMember objects.
- * @returns The `groupByRole` function returns an object where each key represents a role and the
- * corresponding value is an array of `TeamMember` objects with that role.
+ * @returns The groupByRole function returns an object where each key represents a role and the
+ * corresponding value is an array of TeamMember objects with that role.
  */
 const groupByRole = (members: TeamMember[]): Record<string, TeamMember[]> => {
   return members.reduce((acc, member) => {
@@ -84,17 +77,11 @@ interface GroupWithMemberProps {
   member: TeamMember;
 }
 
-/* The `GroupWithMemberComponent` constant is defining a React functional component that takes in a
-prop `member` of type `GroupWithMemberProps`. Inside the component function, it first retrieves
-parameters using the `useParams` hook and extracts the language (`lng`) from the parameters. Then,
-it uses the `useClientTranslation` hook to get the translation function `t` for the 'members'
-namespace. */
+/* The GroupWithMemberComponent constant is defining a React functional component that takes in a
+prop member of type GroupWithMemberProps. Inside the component function, it simply renders the
+information passed in by the member prop. No local translation is needed as this is already handled by Strapi. */
 const GroupWithMemberComponent: FC<GroupWithMemberProps> = memo(
   ({ member }) => {
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, 'members');
-
     return (
       <div className={cls.groupComponent}>
         <MemberComponent member={member} />
@@ -109,9 +96,9 @@ interface MemberProps {
   member: TeamMember;
 }
 
-/* The `MemberComponent` constant is defining a React functional component that takes in a prop
-`member` of type `MemberProps`. Inside the component function, it renders a section displaying
-information about a team member. Here's a breakdown of what it's doing: */
+/* The MemberComponent constant is defining a React functional component that takes in a prop
+member of type MemberProps. Inside the component function, it renders a section displaying
+information about a team member, including their website, GitHub, LinkedIn, and email. */
 const MemberComponent: FC<MemberProps> = memo(({ member }) => {
   return (
     <div className={cls.workmanComponent}>
@@ -149,7 +136,7 @@ const MemberComponent: FC<MemberProps> = memo(({ member }) => {
             <FontAwesomeIcon
               icon={faEnvelope}
               size='xl'
-              onClick={() => openLinkInNewTab(`mailto:${member.Email}`)}
+              onClick={() => openLinkInNewTab(member.Email)}
             />
           </span>
         )}
