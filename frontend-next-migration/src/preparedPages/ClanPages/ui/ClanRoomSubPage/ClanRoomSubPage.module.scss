@@ -189,7 +189,10 @@
   .parent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 20% 20% 80% 50% repeat(2, 1fr);
+    grid-template-rows: 5% auto auto auto auto;
+    /*Had issues with grids extending beyond page limits, using "auto" instead of fixed percentage should fix this.
+    Placeholder soulhome picture may still overflow by 2px~ since it lacks actual proper styling.
+    */
     grid-column-gap: 1px;
     grid-row-gap: 1px;
   }
