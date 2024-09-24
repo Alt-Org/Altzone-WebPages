@@ -1,4 +1,4 @@
-import { useGetClanByIdWithPlayersQuery } from "@/entities/Clan";
+import { useGetClanByIdWithPlayersQuery } from "../";
 
 export const useClanData = (clanId: string) => {
     const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(clanId);

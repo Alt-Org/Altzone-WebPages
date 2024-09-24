@@ -10,7 +10,7 @@ import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { ClansViewAndSearchDesktop, ClansViewAndSearchMobile } from "../_components/clanoverview/clanViewAndSearch";
 import { ClanInfo } from "../_components/clanoverview/clanInfo";
 import { ButtonField } from "../_components/clanoverview/buttonField";
-import { useClanData } from "@/shared/lib/hooks/useClanData";
+import { useClanData } from "@/entities/Clan";
 
 type Props = {
     toastMessages: {
