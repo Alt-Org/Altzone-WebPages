@@ -112,19 +112,18 @@ const MemberComponent: FC<MemberProps> = memo(({ member }) => {
   return (
     <div className={cls.workmanComponent}>
       <div className={cls.iconContainer}>
+        <h3>{member.Name}</h3>
         {member.Logo ? (
           <Image
             src={member.Logo}
             alt={`logo`}
-            width={50}
-            height={50}
+            width={25}
+            height={25}
             className={cls.memberLogo}
-            d
           />
         ) : (
           <></>
         )}
-        <h3>{member.Name}</h3>
         {member.Website && (
           <span className={cls.clickableLogo}>
             <FontAwesomeIcon
