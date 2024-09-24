@@ -52,7 +52,7 @@ const ClansSearchAndViewDesktop = () => {
                     className={cls.EditClanBtn}
                     square={false}
                 >
-                    {t('find')}
+                    {t('search_btn_text')}
                 </Button>
             </form>
 
@@ -164,7 +164,7 @@ const ClansSearchAndViewMobile = () => {
                         className={cls.EditClanBtn}
                         square={false}
                     >
-                        {t('find')}
+                        {t('search_btn_text')}
                     </Button>
                 </form>
 
