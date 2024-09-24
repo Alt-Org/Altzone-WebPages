@@ -1,5 +1,5 @@
-import {IPlayer} from "@/entities/User";
-import {IProfile} from "@/entities/Profile";
+import { IPlayer } from "../../User";
+import { IProfile } from "../../Profile";
 
 export type IPlayerRegisterPartDto = Pick<IPlayer, "name" | "backpackCapacity" | "uniqueIdentifier">
 
@@ -11,7 +11,7 @@ export type IUserRegisterDto = Pick<IProfile, 'username'> & {
 
 export type IUserLoginDto = Pick<IProfile, 'username'> & { password: string };
 
-export type ILoginResponse =  & IProfile & {
+export type ILoginResponse = & IProfile & {
     accessToken: string
 }
 
@@ -28,5 +28,5 @@ type AccessTokenInfo = {
 export type AuthUserSchema = {
     profile?: IProfile,
     accessTokenInfo?: AccessTokenInfo
-    isSessionExpired : boolean
+    isSessionExpired: boolean
 }
