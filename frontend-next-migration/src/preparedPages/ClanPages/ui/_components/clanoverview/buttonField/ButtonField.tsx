@@ -5,7 +5,8 @@ import { useJoinClan } from "@/features/JoinClan";
 import { useLeaveClan } from "@/features/LeaveClan";
 import lock from "@/shared/assets/images/clanLogos/lock.png";
 import Image from "next/image";
-import { useClanRoles } from "@/shared/lib/hooks/useClanRoles";
+import { selectProfile } from "@/entities/Auth";
+import { useSelector } from "react-redux";
 import { useUserPermissions } from '@/entities/Auth/';
 
 type Props = {
@@ -31,14 +32,17 @@ const ClanInfo = (props: Props) => {
         editClan: editClanBtn,
     } = props;
 
-    const { isAdmin, isInClan, playerId } = useClanRoles(clanData.admin_ids, clanData.Player);
     const { handleJoin } = useJoinClan();
     const { handleLeave } = useLeaveClan();
     const { canI } = useUserPermissions();
 
+    const user = useSelector(selectProfile);
+    const playerId: string | undefined = user?.Player?._id;
+    const isInClan = playerId ? clanData.Player.some((player: { _id: string; }) => player._id === playerId) : false;
+
     return (
         <>
-            {!canI('canISeeLogout') ? (
+            {!canI('canISeeClans') ? (
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
@@ -46,7 +50,7 @@ const ClanInfo = (props: Props) => {
                     onClick={() => toast.error(toastNotLoggedIn)} >
                     {joinClanBtn}
                 </Button>
-            ) : canI('canISeeLogout') && !clanData.isOpen ? (<>
+            ) : canI('canISeeClans') && !clanData.isOpen ? (<>
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
@@ -58,7 +62,7 @@ const ClanInfo = (props: Props) => {
                     src={lock}
                     alt={"clan logo"}
                     className={cls.lock} /></>
-            ) : canI('canISeeLogout') && !isInClan ? (
+            ) : canI('canISeeClans') && !isInClan ? (
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
