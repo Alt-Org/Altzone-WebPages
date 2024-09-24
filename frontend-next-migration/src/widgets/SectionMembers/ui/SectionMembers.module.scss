@@ -40,8 +40,10 @@
   font-family: var(--font-family-main);
   line-height: 1.5;
   font-weight: bold;
-  color: var(--secondary-color);
   user-select: none;
+  color: var(--secondary-color);
+  -webkit-text-stroke: 2px black;
+  text-shadow: 2px 2px 2px var(--inverted-primary-color);
 }
 
 .workmanComponent {
@@ -77,4 +79,8 @@
   color: var(--secondary-color);
   cursor: pointer;
   @include link-scale-effect('icon');
+}
+.memberLogo {
+  @include link-scale-effect('icon');
+  size: inherit;
 }
