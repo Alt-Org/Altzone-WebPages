@@ -29,9 +29,6 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const fetchMembers = async () => {
       try {
         const data = await fetchTeamMembers(lng);
-        const sortedMembers = data.sort((a: TeamMember, b: TeamMember) =>
-          a.Name.localeCompare(b.Name),
-        );
         setTeamMembers(data);
       } catch (error) {
         console.error('Failed to fetch team members:', error);
@@ -40,7 +37,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     fetchMembers();
   }, [lng]);
 
-  const groupedMembers = groupByRole(teamMembers);
+  const groupedMembers = groupByPartAndRole(teamMembers);
 
   return (
     <div className={classNames(cls.MembersSection, {}, [className])}>
@@ -49,22 +46,32 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
         text={t('playButton')}
       />
       <Container className={cls.membersListContainer}>
-        {Object.keys(groupedMembers)
-          .reverse()
-          .map((role) => (
-            <div key={role}>
-              <h2>{role}</h2>{' '}
-              {/* No need to translate, translation are managed in Strapi */}
-              {groupedMembers[role].map((member) => (
-                <GroupWithMemberComponent key={member.id} member={member} />
+        {Object.keys(groupedMembers).map((part) => (
+          <div key={part}>
+            <h1>{part}</h1>{' '}
+            {Object.keys(groupedMembers[part])
+              .filter(
+                (role) => role !== null && role !== undefined && role !== '',
+              )
+              .map((role) => (
+                <div key={role}>
+                  <h2>{role}</h2>
+                  {groupedMembers[part][role]
+                    .sort((a, b) => a.Name.localeCompare(b.Name))
+                    .map((member) => (
+                      <GroupWithMemberComponent
+                        key={member.id}
+                        member={member}
+                      />
+                    ))}
+                </div>
               ))}
-            </div>
-          ))}
+          </div>
+        ))}
       </Container>
     </div>
   );
 };
-
 /**
  * The groupByRole function takes an array of TeamMember objects and groups them by their Role
  * property into a Record where the keys are roles and the values are arrays of team members with that role.
@@ -72,14 +79,19 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
  * @returns The groupByRole function returns an object where each key represents a role and the
  * corresponding value is an array of TeamMember objects with that role.
  */
-const groupByRole = (members: TeamMember[]): Record<string, TeamMember[]> => {
+const groupByPartAndRole = (
+  members: TeamMember[],
+): Record<string, Record<string, TeamMember[]>> => {
   return members.reduce((acc, member) => {
-    if (!acc[member.Role]) {
-      acc[member.Role] = [];
+    if (!acc[member.Part]) {
+      acc[member.Part] = {};
     }
-    acc[member.Role].push(member);
+    if (!acc[member.Part][member.Role]) {
+      acc[member.Part][member.Role] = [];
+    }
+    acc[member.Part][member.Role].push(member);
     return acc;
-  }, {} as Record<string, TeamMember[]>);
+  }, {} as Record<string, Record<string, TeamMember[]>>);
 };
 
 interface GroupWithMemberProps {
