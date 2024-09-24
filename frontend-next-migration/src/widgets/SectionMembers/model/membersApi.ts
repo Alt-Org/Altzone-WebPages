@@ -17,6 +17,7 @@ export interface TeamMember {
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  Part: string;
 }
 
 /**
@@ -65,6 +66,7 @@ export const fetchTeamMembers = async (
         updatedAt: attributes.updatedAt,
         publishedAt: attributes.publishedAt,
         locale: attributes.locale,
+        Part: attributes.Part || '',
       };
     }) as TeamMember[];
   } catch (error) {
