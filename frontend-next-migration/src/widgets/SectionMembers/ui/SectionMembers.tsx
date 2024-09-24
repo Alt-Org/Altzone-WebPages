@@ -1,3 +1,6 @@
+/* The above code snippet is a TypeScript React component that displays a list of team members with
+their information such as name, role, website, GitHub, LinkedIn, and email. Here is a breakdown of
+what the code is doing: */
 import cls from './SectionMembers.module.scss';
 import { FC, memo, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -9,7 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
-import { useClientTranslation } from '@/shared/i18n'; // Import translation hook
+import { useClientTranslation } from '@/shared/i18n';
+import Image from 'next/image';
 
 interface WorkersSectionProps {
   className?: string;
@@ -19,7 +23,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const params = useParams();
   const lng = params.lng as string;
-  const { t } = useClientTranslation(lng, 'team'); // Use translation hook for locale 'team'
+  const { t } = useClientTranslation(lng, 'team');
 
   useEffect(() => {
     const fetchMembers = async () => {
@@ -108,6 +112,18 @@ const MemberComponent: FC<MemberProps> = memo(({ member }) => {
   return (
     <div className={cls.workmanComponent}>
       <div className={cls.iconContainer}>
+        {member.Logo ? (
+          <Image
+            src={member.Logo}
+            alt={`logo`}
+            width={50}
+            height={50}
+            className={cls.memberLogo}
+            d
+          />
+        ) : (
+          <></>
+        )}
         <h3>{member.Name}</h3>
         {member.Website && (
           <span className={cls.clickableLogo}>
@@ -115,6 +131,7 @@ const MemberComponent: FC<MemberProps> = memo(({ member }) => {
               icon={faGlobe}
               size='xl'
               onClick={() => openLinkInNewTab(member.Website)}
+              className={cls.Logo}
             />
           </span>
         )}
