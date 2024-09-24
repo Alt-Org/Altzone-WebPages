@@ -4,6 +4,8 @@
   text-align: center;
   display: grid;
   justify-items: center;
+  user-select: none;
+
   //color: var(--red-dark);
 
   //height: 100%;
@@ -36,21 +38,21 @@
 }
 
 .membersListContainer h2 {
-  font-size: clamp(40px, 7vw, 50px);
+  font-size: clamp(20px, 3vw, 50px);
   font-family: var(--font-family-main);
   line-height: 1.5;
-  font-weight: bold;
-  user-select: none;
-  color: var(--secondary-color);
-  -webkit-text-stroke: 2px black;
-  text-shadow: 2px 2px 2px var(--inverted-primary-color);
+  color: blue;
+}
+.membersListContainer h1 {
+  font-size: clamp(40px, 7vw, 50px);
+  font-family: var(--font-family-main);
+  color: red;
 }
 
 .workmanComponent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  user-select: none;
 
   h3 {
     font-size: clamp(20px, 5vw, 25px);
@@ -61,7 +63,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid var(--inverted-primary-color);
   }
 
   .taskText {
