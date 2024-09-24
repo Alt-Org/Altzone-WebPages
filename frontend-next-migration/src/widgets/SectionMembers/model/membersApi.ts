@@ -1,3 +1,6 @@
+/* This TypeScript code defines an interface `TeamMember` representing the structure of a team member
+object. It includes properties like id, Role, Task, Name, Email, Logo, Website, Github, Linkedin,
+createdAt, updatedAt, publishedAt, and locale. */
 import { envHelper } from '@/shared/const/envHelper';
 
 export interface TeamMember {
@@ -24,12 +27,10 @@ export const fetchTeamMembers = async (
   locale: string = 'en',
 ): Promise<TeamMember[]> => {
   try {
-    // Convert short locale code to full Strapi locale code
     const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
 
-    // Fetch data from Strapi based on the detected locale using the environment variable for BASE_URL
     const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}`,
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=*`,
     );
 
     if (!response.ok) {
@@ -38,11 +39,34 @@ export const fetchTeamMembers = async (
 
     const data = await response.json();
 
-    // Map the response data to your TeamMember interface
-    return data.data.map((item: any) => ({
-      id: item.id,
-      ...item.attributes,
-    })) as TeamMember[];
+    /* This part of the code is mapping over the array of team members fetched from the Strapi API and
+    transforming each item into a new object with specific properties. Here's a breakdown of what
+    it's doing: */
+    return data.data.map((item: any) => {
+      const attributes = item.attributes;
+      const logoData = attributes.Logo?.data;
+      const logoUrl = logoData
+        ? `${envHelper.strapiHost.replace(/\/$/, '')}${
+            logoData.attributes.formats?.thumbnail?.url
+          }`
+        : null;
+
+      return {
+        id: item.id,
+        Role: attributes.Role,
+        Task: attributes.Task,
+        Name: attributes.Name,
+        Email: attributes.Email,
+        Logo: logoUrl,
+        Website: attributes.Website,
+        Github: attributes.Github,
+        Linkedin: attributes.Linkedin,
+        createdAt: attributes.createdAt,
+        updatedAt: attributes.updatedAt,
+        publishedAt: attributes.publishedAt,
+        locale: attributes.locale,
+      };
+    }) as TeamMember[];
   } catch (error) {
     throw new Error('Error fetching team members data');
   }
