@@ -1,4 +1,4 @@
-import { useGetClanByIdWithPlayersQuery } from "../";
+import { useGetClanByIdWithPlayersQuery } from "../../Clan";
 
 export const useClanData = (clanId: string) => {
     const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(clanId);
