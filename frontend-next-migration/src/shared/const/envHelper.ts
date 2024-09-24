@@ -11,4 +11,5 @@ export const envHelper = {
   apiLink: process.env.NEXT_PUBLIC_API_LINK || '',
   appDomain: process.env.NEXT_PUBLIC_APP_DOMAIN || '',
   strapiApiUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL || '',
+  strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
 } as const;
