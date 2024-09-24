@@ -25,6 +25,9 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const fetchMembers = async () => {
       try {
         const data = await fetchTeamMembers(lng);
+        const sortedMembers = data.sort((a: TeamMember, b: TeamMember) =>
+          a.Name.localeCompare(b.Name),
+        );
         setTeamMembers(data);
       } catch (error) {
         console.error('Failed to fetch team members:', error);
@@ -42,15 +45,17 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
         text={t('playButton')}
       />
       <Container className={cls.membersListContainer}>
-        {Object.keys(groupedMembers).map((role) => (
-          <div key={role}>
-            <h2>{role}</h2>{' '}
-            {/* No need to translate, role names are managed in Strapi */}
-            {groupedMembers[role].map((member) => (
-              <GroupWithMemberComponent key={member.id} member={member} />
-            ))}
-          </div>
-        ))}
+        {Object.keys(groupedMembers)
+          .reverse()
+          .map((role) => (
+            <div key={role}>
+              <h2>{role}</h2>{' '}
+              {/* No need to translate, translation are managed in Strapi */}
+              {groupedMembers[role].map((member) => (
+                <GroupWithMemberComponent key={member.id} member={member} />
+              ))}
+            </div>
+          ))}
       </Container>
     </div>
   );
