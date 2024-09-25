@@ -6,8 +6,7 @@ import { useParams } from "next/navigation";
 const useJoinClan = () => {
 
    const { lng } = useParams();
-   const lng2 = lng as string;
-   const { t } = useClientTranslation(lng2, "clan");
+   const { t } = useClientTranslation(lng as string, "clan");
    const [joinClan] = useJoinClanMutation();
 
 
