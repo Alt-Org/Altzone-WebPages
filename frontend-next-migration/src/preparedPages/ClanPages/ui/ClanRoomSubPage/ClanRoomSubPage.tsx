@@ -93,9 +93,10 @@ const ClanRoomSubPage = (props: Props) => {
                         {...buttons}
                     />
                 </div>
-                <div className={cls.memberList}>{memberListTitle}
+                <div className={cls.memberList}>
                     {/* this could be its own component */}
                     <div className={cls.membersList}>
+                        <p className={cls.memberListTitle}>{memberListTitle}</p>
                         {players.map(player => (
                             <div key={player._id} className={adminIds.includes(player._id) ? cls.adminItem : cls.memberItem}>
                                 {player.name}
