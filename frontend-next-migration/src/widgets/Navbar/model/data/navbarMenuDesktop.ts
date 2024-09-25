@@ -1,5 +1,4 @@
 import img from '@/shared/assets/images/altLogo.png';
-import img2 from '@/shared/assets/images/altLogoClan.png';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { NavbarBuilder } from './NavbarBuilder';
 import { dropdowns } from './dropdowns';
