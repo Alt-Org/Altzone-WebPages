@@ -1,6 +1,6 @@
-import {CSSProperties} from "react";
+import { CSSProperties } from "react";
 import cls from "./NavbarDesktopV2.module.scss";
-import {NavbarBuild, NavBarType} from "../../model/types";
+import { NavbarBuild, NavBarType } from "../../model/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useParams } from "next/navigation";
@@ -10,7 +10,7 @@ import { LangSwitcher } from "@/features/LangSwitcher";
 import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
 import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
-import {FixedButton} from "../FixedButton/FixedButton";
+import { FixedButton } from "../FixedButton/FixedButton";
 import { useFixed } from "../../model/FixedProvider";
 import { defineNs } from "../../model/defineNs";
 
@@ -29,7 +29,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 
     const {
         navbarBuild,
-        overlaid= false,
+        overlaid = false,
         marginTop,
         className = '',
         navBarType = "Default"
@@ -68,16 +68,13 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                 <ul className={cls.siteNavContentList}>
                     {
                         navbarBuild.menu.map(n => {
-                            if (n.name === "my_clan" && !canI("canISeeOwnClan")) {
-                                return null;
-                            }
-                            return <NavItem item={n} key={n.name} navbarBuild={navbarBuild}/>;
+                            return <NavItem item={n} key={n.name} navbarBuild={navbarBuild} />;
                         })
                     }
 
 
                     <li className={cls.navItem} key={"switcher key"}>
-                        <LangSwitcher className={cls.langSwitcher}/>
+                        <LangSwitcher className={cls.langSwitcher} />
                     </li>
 
 
@@ -89,7 +86,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                                         theme={AppLinkTheme.PRIMARY}
                                         // to={navbarMenuLoginProfile?.login?.path || ''}
                                         to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
-                                        // key={navbarMenuLoginProfile?.login?.path}
+                                    // key={navbarMenuLoginProfile?.login?.path}
                                     >
                                         <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
                                     </AppLink>
@@ -104,7 +101,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 
                     {hasScrollbar && (
                         <li className={cls.toggleOverlaid}>
-                            <FixedButton/>
+                            <FixedButton />
                         </li>
                     )}
 
