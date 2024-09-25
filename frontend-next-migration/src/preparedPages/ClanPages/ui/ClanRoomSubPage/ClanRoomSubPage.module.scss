@@ -1,9 +1,252 @@
-.Loader{
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.Loader {
   @include position-absolute-center
 }
 
-.DeleteClanBtn{
+.DeleteClanBtn {
   background-color: var(--error-color);
   @include link-scale-effect;
   font-family: var(--font-family-texts)
+}
+
+.EditClanBtn {
+  background-color: rgba(0, 0, 0, 0.7);
+  @include link-scale-effect;
+  font-family: var(--font-family-texts)
+}
+
+.JoinClanBtn {
+  background-color: rgba(0, 0, 0, 0.7);
+  @include link-scale-effect;
+  font-family: var(--font-family-texts)
+}
+
+.lock {
+  display: flex;
+  max-width: 40px;
+  height: auto;
+}
+
+.clanLogo {
+  max-width: 100px;
+  height: auto;
+}
+
+.clanHome {
+  border-radius: var(--border-radius-custom);
+  max-width: 100%;
+  height: auto;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto repeat(3, 1fr);
+  grid-column-gap: 6px;
+  grid-row-gap: 6px;
+  height: 75vh;
+}
+
+.clanMainInfo {
+  display: flex;
+  padding: 5px;
+  font-size: var(--font-line-xl);
+  grid-area: 1 / 1 / 2 / 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: space-between;
+}
+
+//when leaderboards work .number (clan leaderboard placement number) for styling
+.number {}
+
+.number:hover {
+  color: yellow;
+  transition: 2s;
+}
+
+.clanList {
+  grid-area: 2 / 1 / 5 / 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: var(--font-line-m);
+  min-height: 400px;
+  min-width: 300px;
+  overflow-y: auto;
+  @include custom-scrollbar;
+  // max-height: 40vh;
+}
+
+.clanSoulHome {
+  grid-area: 2 / 2 / 5 / 3;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buttonField {
+  display: flex;
+  grid-area: 1 / 5 / 2 / 7;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+}
+
+.memberList {
+  display: grid;
+  grid-area: 2 / 5 / 5 / 7;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: var(--font-line-m);
+  height: auto;
+}
+
+.memberListTitle {
+  text-align: center;
+}
+
+.membersList {
+  min-height: 400px;
+  // max-height: auto;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  font-size: var(--font-line-m);
+  text-align: left;
+}
+
+.memberItem {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.adminItem {
+  padding: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #ff0000;
+}
+
+.membersList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.membersList::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.membersList::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.clanMotto {
+  grid-area: 2 / 3 / 3 / 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: var(--font-line-s);
+}
+
+.mottoText {
+  font-size: var(--font-line-s);
+  text-align: center;
+  font-style: italic;
+}
+
+.clanInformation {
+  grid-area: 3 / 3 / 5 / 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: var(--font-line-m);
+
+}
+
+.clanInfo {
+  padding: 5%;
+}
+
+.infoItem {
+  font-size: var(--font-line-s);
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 5% auto auto auto auto;
+    /*Had issues with grids extending beyond page limits, using "auto" instead of fixed percentage should fix this.
+    Placeholder soulhome picture may still overflow by 2px~ since it lacks actual proper styling.
+    */
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    height: auto;
+  }
+
+  .div1 {
+    display: none;
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .clanMainInfo {
+    grid-area: 2 / 1 / 3 / 3;
+  }
+
+  .clanMainInfo span {
+    max-width: 60%;
+    overflow: hidden;
+    /* Hide overflowing text */
+    text-overflow: ellipsis;
+  }
+
+  .clanList {
+    display: none;
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  .clanSoulHome {
+    grid-area: 6 / 1 / 7 / 3;
+  }
+
+  .buttonField {
+    max-height: 100%;
+    grid-area: 1 / 1 / 2 / 3;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-radius: var(--border-radius-custom);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .memberList {
+    grid-area: 4 / 1 / 6 / 3;
+  }
+
+  .clanMotto {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  .clanInformation {
+    grid-area: 3 / 2 / 4 / 3;
+  }
 }
