@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './HeroContainer.module.scss';
@@ -54,7 +53,6 @@ const HeroContainer = (props: Props) => {
   return (
       <div className={classNames(cls.componentWrapper, combinedModCss)}>
         <ArrowButton direction='left' type='outer' href={leftArrowLink} />
-
         <div className={classNames(cls.heroImgSideWrapper, combinedModCss)}>
           <Image
             className={cls.heroImgSide}
@@ -76,7 +74,6 @@ const HeroContainer = (props: Props) => {
                   className={classNames(cls.heroImgWrapper, combinedModCss)}
                 >
                   <ArrowButton direction='left' type='inner' href={leftArrowLink} />
-
                   <Image
                     quality={100}
                     className={classNames(cls.heroImg, combinedModCss)}
@@ -86,7 +83,6 @@ const HeroContainer = (props: Props) => {
                     height={500}
                     priority={true}
                   />
-
                   <ArrowButton direction='right' type='inner' href={rightArrowLink} />
                 </div>
                 <div className={classNames(cls.heroDescription, combinedModCss)}>
@@ -94,13 +90,17 @@ const HeroContainer = (props: Props) => {
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
+
+
           <div className={cls.heroGroup}>
             <HeroGroupLabel
               className={cls.heroGroupLabel}
-              group={group} 
+              group={group}
             />
-          </div>     
+          </div>
+
+
         </div>
 
         <ArrowButton direction='right' type='outer' href={rightArrowLink} />
