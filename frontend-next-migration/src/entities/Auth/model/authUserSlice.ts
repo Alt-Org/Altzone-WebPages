@@ -3,7 +3,7 @@ import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
 import { AccessTokenInfo, AuthUserSchema } from "../types/authUser";
 import { LS_KEYS } from "@/shared/const/LS_KEYS";
 import { IProfile } from "@/entities/Profile";
-import {StateSchema} from "@/app/_providers/StoreProvider";
+import { StateSchema } from "@/app/_providers/StoreProvider";
 import { useEffect } from "react";
 import { PURGE } from "redux-persist";
 
@@ -93,13 +93,7 @@ export const selectClanId = (state: StateSchema) => state.authUser.profile?.Play
 // Selector to get the is Session Expired info from the authUser state
 export const selectIsSessionExpired = (state: StateSchema) => state.authUser.isSessionExpired;
 
-
 // Selector to check if the user has a clan
-// export const selectHasClan = (state: StateSchema) => {
-//     const profile = selectProfile(state);
-//     return !!profile && !!profile.Player && !!profile.Player.clan_id;
-// };
-
 export const selectHasClan = createSelector(
     selectProfile,
     (profile) => !!profile && !!profile.Player && !!profile.Player.clan_id
