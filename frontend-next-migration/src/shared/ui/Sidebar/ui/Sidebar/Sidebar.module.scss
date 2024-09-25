@@ -1,6 +1,8 @@
 .Sidebar {
   z-index: var(--sidebar-z-index) !important;
   height: 100%;
+  width: clamp(var(--sidebar-width), 100%, 550px);
+
   background: rgba(0, 0, 0, 0.85);
   position: fixed;
   top: 0;
@@ -22,7 +24,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
 
 .button {
   z-index: calc(var(--sidebar-z-index) + 1);
@@ -80,7 +81,7 @@
 }
 
 .expanded {
-  width: clamp(200px, 100%, 550px);
+  width: clamp(var(--sidebar-width), 100%, 550px);
   opacity: 1;
   transition: width 0.4s ease-in, opacity 0.4s ease-in;
 }
