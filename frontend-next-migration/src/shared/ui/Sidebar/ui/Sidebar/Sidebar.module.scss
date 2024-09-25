@@ -1,19 +1,20 @@
 .Sidebar {
   z-index: var(--sidebar-z-index) !important;
   height: 100%;
-  width: var(--sidebar-width);
-  background: rgba(0, 0, 0, 0.65);
+  width: clamp(var(--sidebar-width), 100%, 550px);
+
+  background: rgba(0, 0, 0, 0.85);
   position: fixed;
   top: 0;
   overflow-y: auto;
   transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
   @include custom-scrollbar;
 
-  &.left{
+  &.left {
     left: 0;
   }
 
-  &.right{
+  &.right {
     right: 0;
   }
 
@@ -22,19 +23,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 
-.button{
-  z-index: calc(var(--sidebar-z-index) + 1 );
+.button {
+  z-index: calc(var(--sidebar-z-index) + 1);
   width: 33px;
 }
-
 
 .button {
   position: relative;
 
-  .faBars, .faTimes {
+  .faBars,
+  .faTimes {
     position: absolute;
     top: 0;
     left: 0;
@@ -69,35 +69,24 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  & * {
-    white-space: nowrap;
-    overflow: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-  }
-
-  &.collapsed .item {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  &.expanded .item {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
+.items a {
+  display: block;
+}
 .collapsed {
   width: var(--sidebar-width-collapsed);
+  opacity: 0;
   transition: width 0.4s ease-out, opacity 0.4s ease-out;
 }
 
 .expanded {
-  width: var(--sidebar-width);
+  width: clamp(var(--sidebar-width), 100%, 550px);
+  opacity: 1;
   transition: width 0.4s ease-in, opacity 0.4s ease-in;
 }
 
-.bottomItems{
+.bottomItems {
   display: flex;
   margin: 20px 0;
   justify-content: center;
