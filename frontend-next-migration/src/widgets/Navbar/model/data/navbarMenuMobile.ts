@@ -22,19 +22,6 @@ navbarBuilder.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarMenuMobile = navbarBuilder.build();
 
-const navbarClanBuilder = new NavbarBuilder();
-navbarClanBuilder.addLogo(
-  'Nav logo',
-  img2 as unknown as string,
-  RoutePaths.MAIN,
-);
-navbarClanBuilder.addLink('leaderboard', RoutePaths.CLAN_LEADERBOARD, true);
-navbarClanBuilder.addLink('all_clans', RoutePaths.CLAN_ALL, true);
-navbarClanBuilder.addLink('my_clan', RoutePaths.MEMBERS, true);
-navbarClanBuilder.addAuthLogin('login', RoutePaths.auth_login);
-
-export const navbarClanMobile = navbarClanBuilder.build();
-
 const navbarGameArtBuilder = new NavbarBuilder();
 navbarGameArtBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
 navbarGameArtBuilder.addLink('main', RoutePaths.MAIN, false);
