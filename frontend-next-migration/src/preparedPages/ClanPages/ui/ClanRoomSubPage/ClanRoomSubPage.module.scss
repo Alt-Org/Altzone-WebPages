@@ -86,6 +86,7 @@
   min-height: 400px;
   min-width: 300px;
   overflow-y: auto;
+  @include custom-scrollbar;
   // max-height: 40vh;
 }
 
