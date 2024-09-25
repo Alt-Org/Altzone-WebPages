@@ -6,7 +6,7 @@ export const dropdowns = {
     {
       elementText: 'clanpage',
       link: {
-        path: RoutePaths.clan_one,
+        path: RoutePaths.my_clan,
         isExternal: false,
       },
     },
