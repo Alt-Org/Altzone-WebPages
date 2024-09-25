@@ -56,7 +56,7 @@ const ClansSearchAndViewDesktop = () => {
                 </Button>
             </form>
 
-            <div>
+            <div className={cls.testContainer}>
                 {isLoading ? (
                     <p>{t('loading')}</p>
                 ) : (
