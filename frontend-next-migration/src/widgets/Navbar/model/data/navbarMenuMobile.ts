@@ -10,9 +10,11 @@ import { PrivacySections } from '@/entities/PresentationPackages/model/data/priv
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);
-navbarBuilder.addDropDown('community', false, dropdowns.community);
+navbarBuilder.addLink('news', RoutePaths.NEWS, true);
 navbarBuilder.addDropDown('game', false, dropdowns.game);
-navbarBuilder.addDropDown('art', false, dropdowns.art);
+navbarBuilder.addDropDown('gallery', false, dropdowns.gallery);
+navbarBuilder.addDropDown('gameart', false, dropdowns.gameart);
+navbarBuilder.addDropDown('community', false, dropdowns.community);
 navbarBuilder.addLink('team', RoutePaths.MEMBERS, false);
 navbarBuilder.addLogo('main', img as unknown as string, RoutePaths.MAIN);
 navbarBuilder.addAuthProfile('profile', dropdowns.profile);
