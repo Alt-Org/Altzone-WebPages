@@ -1,5 +1,5 @@
-import { IPlayer } from "../../User";
-import { IProfile } from "../../Profile";
+import { IPlayer } from "@/User";
+import { IProfile } from "@/Profile";
 
 export type IPlayerRegisterPartDto = Pick<IPlayer, "name" | "backpackCapacity" | "uniqueIdentifier">
 
