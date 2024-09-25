@@ -6,7 +6,7 @@
 }
 
 .Container {
-  margin-top: 30%;
+  margin-top: 15vh;
   flex-grow: 1 !important;
 }
 
@@ -26,5 +26,12 @@
 @media (min-width: 768px) {
   .Container {
     margin-top: 15vh;
+  }
+}
+
+//navbar slightly changes "3 times" so this is here to prevent overlaying
+@media (min-width: 1025px) {
+  .Container {
+    margin-top: 5vh;
   }
 }
