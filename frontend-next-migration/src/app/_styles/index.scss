@@ -15,8 +15,8 @@ body {
   line-height: 1.5;
   color: var(--primary-color);
   // need to be here because of other browsers
-  background-color: var(--bg-color);
   @include custom-scrollbar;
+  background-color: var(--bg-color);
 }
 
 .app {
