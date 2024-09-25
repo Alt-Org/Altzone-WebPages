@@ -21,6 +21,13 @@
 .searchField {
     display: flex;
     animation: fadeIn 1s ease-in;
+    width: 100%;
+}
+
+.searchField input {
+    display: flex;
+    animation: fadeIn 1s ease-in;
+    width: 100%;
 }
 
 .clanList {
@@ -33,16 +40,19 @@
 
 .tableContainer {
     border-radius: var(--border-radius-custom);
-    min-height: 400px;
-    max-height: 40vh;
+
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     @include custom-scrollbar;
 }
 
+.testContainer {}
+
 .clanList {
     width: 100%;
     border-collapse: collapse;
+    min-height: 400px;
+    // max-height: 40vh;
 }
 
 .clanList th,
