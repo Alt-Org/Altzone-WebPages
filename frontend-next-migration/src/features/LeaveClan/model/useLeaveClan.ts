@@ -6,8 +6,7 @@ import { useParams } from "next/navigation";
 
 const useLeaveClan = () => {
    const { lng } = useParams();
-   const language = lng as string;
-   const { t } = useClientTranslation(language, "clan");
+   const { t } = useClientTranslation(lng as string, "clan");
    const [leaveClan] = useLeaveClanMutation();
    const [isCancelled, setIsCancelled] = useState(false);
 
