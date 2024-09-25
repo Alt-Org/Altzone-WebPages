@@ -1,7 +1,7 @@
-import { IPlayer } from "@/User";
-import { IProfile } from "@/Profile";
+import { IPlayer } from "@/entities/User";
+import { IProfile } from "@/entities/Profile";
 
-export type IPlayerRegisterPartDto = Pick<IPlayer, "name" | "backpackCapacity" | "uniqueIdentifier">
+export type IPlayerRegisterPartDto = Pick<IPlayer, "name" | "backpackCapacity" | "uniqueIdentifier" | "above13">
 
 export type IUserRegisterDto = Pick<IProfile, 'username'> & {
     password: string,
