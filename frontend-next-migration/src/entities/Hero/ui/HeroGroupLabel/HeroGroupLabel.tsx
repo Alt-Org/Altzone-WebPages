@@ -1,31 +1,38 @@
-import red from "@/shared/assets/images/heros/textBgColors/red.webp";
-import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue.webp";
-import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
-import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
+import red from "@/shared/assets/images/heros/textBgColors/red_cropped.webp";
+import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp";
+import orange from "@/shared/assets/images/heros/textBgColors/orange_cropped.webp";
+import pink from "@/shared/assets/images/heros/textBgColors/pink_cropped.webp";
 import cls from './HeroGroupLabel.module.scss';
-
+import Image from "next/image";
+import useSizes from "@/shared/lib/hooks/useSizes";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import { CSSProperties } from "react";
 
 type HeroGroupLabelProps = Readonly<{
   /**
    * Group to which the Hero belongs to
    */
-  group: string
+  group: string,
+  className?: string,
 }>;
 /**
  * Displays label containing a hero group to which the hero belongs to.
- * 
+ *
  * Outlook of the label will be defined based on the group value, which should be one of these:
  * - TORJUJAT // RETROFLEKTIO
  * - SULAUTUJAT // KONFLUENSSI
  * - ÄLYLLISTÄJÄT // EGOTISMI
  * - PEILAAJAT // PROJEKTIO
- * 
+ *
  * If the group has some other value an error text will be displayed instead of the label
- * 
- * @param Props
- * @returns 
+ *
+ * @returns
+ * @param props
  */
-export default function HeroGroupLabel({ group }: HeroGroupLabelProps) {
+export default function HeroGroupLabel(props: HeroGroupLabelProps) {
+
+  const { className, group} = props;
+
   const heroType = convertHeroGroupToHeroType(group);
 
   if(!heroType)
@@ -34,15 +41,28 @@ export default function HeroGroupLabel({ group }: HeroGroupLabelProps) {
   const labelText = defineHeroGroupLabelText(heroType);
   const labelBg = defineHeroGroupLabelBg(heroType);
 
+  const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =useSizes();
+
+  const combinedModCss: Mods = {
+    [cls.isMobile]: isMobileSize,
+    [cls.isTablet]: isTabletSize,
+    [cls.isDesktop]: isDesktopSize,
+    [cls.isWidescreen]: isWidescreenSize,
+  };
+
   return(
-    <div className={cls.heroGroupLabel}>
-      <h3
-          className={cls.heroGroupLabelTitle}
-          style={labelBg ? {backgroundImage: `url(${labelBg.src})`} : undefined} 
-      >
+    <div className={className}>
+      <h3 className={classNames(cls.title, combinedModCss)}>
+        {labelBg && <Image 
+          className={cls['bg-image']} 
+          alt="hero label bg" src={labelBg} 
+          priority
+          fill
+        />}
         <span>{labelText}</span>
       </h3>
     </div>
+    
   );
 }
 

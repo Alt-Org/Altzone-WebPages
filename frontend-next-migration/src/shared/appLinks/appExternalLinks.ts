@@ -9,7 +9,7 @@ export const AppExternalLinks = {
   downloadAndroid:
     'https://play.google.com/store/apps/details?id=eu.altgame.altzone',
   reddit: 'https://www.reddit.com/r/PRGaltzone/',
-  discord: 'https://discord.gg/erFAcE4Qhb',
+  discord: 'https://discord.gg/mgjQkCR2Fg',
   facebook: 'https://www.facebook.com/GamingPsyche',
   instagram: 'https://www.instagram.com/gamingpsyche',
   youtube: 'https://www.youtube.com/channel/UCTgWpC9Hq7b-W1Lhmry97YA',
@@ -17,4 +17,9 @@ export const AppExternalLinks = {
   googleFeedback:
     'https://docs.google.com/forms/d/e/1FAIpQLScYGN0JlcgkqKpotNeE6hyWLG7oI1g19myAtrHf2mmHz7g7AA/viewform',
   stub: '#developerChangeThisLink',
+  join: 'https://discord.gg/mgjQkCR2Fg',
+  dlpackage:
+    'https://docs.google.com/document/d/1QJy7PWREJaJpob6HbL26OEVtHrpDsbiHx_ZJIVdC8UI/edit',
+  pastversions:
+    'https://drive.google.com/drive/folders/1n5GVJVXFF2F1sF5-C07uYkFNd9Bsdxzu',
 } as const;

@@ -1,26 +1,7 @@
 import { GameArtPage } from '@/preparedPages/GameArtPage';
-import { useServerTranslation } from '@/shared/i18n';
-import { Metadata } from 'next';
-import { makeArtGameSectionsWithI18n } from '@/entities/PresentationPackages';
+import {withPageData,createMetadataGenerator} from "@/app/_helpers";
+import {_getPage} from "./_getPage";
 
-type Props = {
-  params: { lng: string };
-};
+export const generateMetadata = createMetadataGenerator(_getPage);
+export default withPageData(GameArtPage, _getPage);
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { t } = await useServerTranslation(params.lng, 'artGame');
-
-  return {
-    title: t('head-title'),
-    description: t('head-description'),
-    keywords: t('head-keywords'),
-  };
-}
-
-export default async function DefaultPage({ params }: Props) {
-  const { t } = await useServerTranslation(params.lng, 'artGame');
-
-  const sections = makeArtGameSectionsWithI18n(t);
-
-  return <GameArtPage sections={sections} />;
-}

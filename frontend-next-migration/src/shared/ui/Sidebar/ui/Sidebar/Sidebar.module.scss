@@ -1,19 +1,20 @@
 .Sidebar {
   z-index: var(--sidebar-z-index) !important;
   height: 100%;
-  width: var(--sidebar-width);
-  background: rgba(0, 0, 0, 0.65);
+  width: clamp(var(--sidebar-width), 100%, 550px);
+
+  background: rgba(0, 0, 0, 0.85);
   position: fixed;
   top: 0;
   overflow-y: auto;
   transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
   @include custom-scrollbar;
 
-  &.left{
+  &.left {
     left: 0;
   }
 
-  &.right{
+  &.right {
     right: 0;
   }
 
@@ -22,21 +23,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 }
 
-//.side
-
-.button{
-  z-index: calc(var(--sidebar-z-index) + 1 );
+.button {
+  z-index: calc(var(--sidebar-z-index) + 1);
   width: 33px;
 }
-
 
 .button {
   position: relative;
 
-  .faBars, .faTimes {
+  .faBars,
+  .faTimes {
     position: absolute;
     top: 0;
     left: 0;
@@ -66,16 +64,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
 .items {
   margin-top: 70px;
   display: flex;
@@ -83,6 +71,9 @@
   gap: 10px;
 }
 
+.items a {
+  display: block;
+}
 .collapsed {
   width: var(--sidebar-width-collapsed);
   opacity: 0;
@@ -90,28 +81,13 @@
 }
 
 .expanded {
-  width: var(--sidebar-width);
+  width: clamp(var(--sidebar-width), 100%, 550px);
   opacity: 1;
   transition: width 0.4s ease-in, opacity 0.4s ease-in;
 }
 
-
-.bottomItems{
+.bottomItems {
   display: flex;
   margin: 20px 0;
   justify-content: center;
 }
-
-
-
-// todo animation for button when collapsing
-//.button{
-//  transition: transform 0.2s ease-in-out;
-//}
-//.collapsedButton{
-//  transform: rotate(0deg);
-//}
-//
-//.expandedButton{
-//  transform: rotate(180deg);
-//}
