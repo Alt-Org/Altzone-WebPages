@@ -3,12 +3,10 @@ import { memo } from 'react';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import {
   navbarMenuDesktop2,
-  navbarClanDesktop,
   navbarGameArtDesktop,
 } from '../../model/data/navbarMenuDesktop';
 import {
   navbarMenuMobile,
-  navbarClanMobile,
   navbarGameArtMobile,
 } from '../../model/data/navbarMenuMobile';
 import NavbarDesktopV2 from '../../ui/NavbarDesktopV2/NavbarDesktopV2';
@@ -66,35 +64,6 @@ export const NavbarMainOld = memo((props: NavbarMainProps) => {
   );
 });
 
-/** @deprecated**/
-export const NavbarClanMain = memo((props: NavbarMainProps) => {
-  const { overlaid, marginTop, className } = props;
-
-  const { isMobileSize } = useIsMobileSize();
-
-  if (isMobileSize) {
-    return (
-      <NavbarMobileV2
-        overlaid={overlaid}
-        marginTop={marginTop}
-        className={className}
-        navbarBuild={navbarClanMobile}
-      />
-    );
-  }
-  return (
-    <>
-      <FixedProvider>
-        <NavbarDesktopV2
-          navbarBuild={navbarClanDesktop}
-          overlaid={overlaid}
-          className={className}
-          marginTop={marginTop}
-        />
-      </FixedProvider>
-    </>
-  );
-});
 
 
 //---------------------------------------------------------------------------//
@@ -133,5 +102,4 @@ export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
 });
 
 NavbarMainOld.displayName = 'NavbarMainOld';
-NavbarClanMain.displayName = 'NavbarClanMain';
 NavbarGameArtMain.displayName = 'NavbarGameArtMain';
