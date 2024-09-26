@@ -24,6 +24,7 @@ const rubik = Rubik({
   variable: '--font-family-texts',
 });
 
+// todo add i18n if it possible
 export const metadata: Metadata = {
   title: 'AltZone',
   description:
@@ -66,7 +67,9 @@ export default function RootLayout({
           sizes='72x72'
       />
     </head>
-    <body>
+    <body style={{
+      backgroundImage: `url("/images/background.webp")`
+    }}>
     <Providers>
       {children}
       <CookieConsentComponent/>

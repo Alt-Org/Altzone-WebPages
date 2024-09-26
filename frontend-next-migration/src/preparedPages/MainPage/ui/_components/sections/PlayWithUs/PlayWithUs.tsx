@@ -32,9 +32,9 @@ const PlayWithUs = (props: Props) => {
     return (
         <section className={cls.SectionPlayWithUs}>
 
-            <h3 className={cls.title}>
+            <h2 className={cls.title}>
                 {title}
-            </h3>
+            </h2>
             <div className={cls.Content}>
                 <div className={cls.ContentWithNav}>
                     <div className={cls.Buttons}>
@@ -47,7 +47,7 @@ const PlayWithUs = (props: Props) => {
                             link: webGl.link,
                         }} key={webGl.title}/>
 
-                        <Link href={googlePLayLink} target={"_blank"}>
+                        <Link href={googlePLayLink} target={"_blank"} className={cls.BtnDownloadWrapper}>
                             <Image src={googlePLay} alt={"google play button"}
                                    className={cls.BtnDownload}
                             />
@@ -57,7 +57,7 @@ const PlayWithUs = (props: Props) => {
                     </div>
 
 
-                    <div className={classNames(cls.NavElements, {}, [cls.navElements])}>
+                    <div className={classNames(cls.NavElements, {}, [])}>
                         {belowNavs.map((item) => (
                             <NavElement navElem={item} key={item.title}/>
                         ))}

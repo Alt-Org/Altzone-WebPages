@@ -1,7 +1,4 @@
 {
-  "policies-label": "Tietosuojaseloste",
-  "policies-description": "Päivitetty: 23.8.2024",
-
   "privacy-label": "Tietosuojaseloste",
   "privacy-description": "Tämä tietosuojaseloste selventää, miten mobiilipeli ALT Zone 1.0 käsittelee ja säilyttää käyttäjän henkilötietoja. Pidämme tärkeänä käyttäjiemme yksityisyyttä ja sitoudumme suojaamaan heidän henkilötietojaan sovellettavan lainsäädännön, mukaan lukien EU:n yleisen tietosuoja-asetuksen (GDPR), mukaisesti.",
 
@@ -30,5 +27,5 @@
   "changes-description": "Pidätämme oikeuden päivittää tätä tietosuojaselostetta tarvittaessa esimerkiksi lainsäädännön muuttuessa tai palvelun kehittyessä. Suosittelemme tarkistamaan tietosuojaselosteen säännöllisesti.",
 
   "contact-label": "Yhteystiedot",
-  "contact-description": "Jos sinulla on kysymyksiä tai huolenaiheita liittyen tähän tietosuojaselosteeseen tai henkilötietojesi käsittelyyn, voit ottaa meihin yhteyttä sähköpostitse osoitteessa proyaleg@gmail.com."
+  "contact-description": "Jos sinulla on kysymyksiä tai huolenaiheita liittyen tähän tietosuojaselosteeseen tai henkilötietojesi käsittelyyn, voit ottaa meihin yhteyttä sähköpostitse osoitteessa proyaleg@gmail.com. <br> <br> Päivitetty: 23.8.2024"
 }

@@ -2,16 +2,6 @@
 
 }
 
-
-
-.backgroundOpacity{
-  z-index: 1;
-  position: fixed !important;
-  width: 100%;
-  //height: 100%;
-  pointer-events: none;
-}
-
 .workersSection{
   padding-top: 200px;
   z-index: 2;
@@ -20,9 +10,6 @@
     * {
       font-size: xxx-large!important;
     }
-    //h1{
-    //  font-size: xxx-large!important;
-    //}
   }
 
 }

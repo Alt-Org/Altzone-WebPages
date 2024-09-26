@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { StateSchema } from "@/app/_providers/StoreProvider";
 import { envHelper } from "@/shared/const/envHelper";
-import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse } from "@/entities/Clan";
+import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, IJoin } from "../../Clan";
 
 interface GetClansQueryParams {
     page?: number,
@@ -80,6 +80,21 @@ export const clanApi = createApi({
             }),
             invalidatesTags: ['Clan'],
         }),
+
+        joinClan: builder.mutation<void, IJoin>({
+            query: (join) => ({
+                url: `${clanUrl}/join`,
+                method: 'POST',
+                body: join,
+            }),
+            invalidatesTags: ['Clan'],
+        }),
+        leaveClan: builder.mutation<void, void>({
+            query: () => ({
+                url: `${clanUrl}/leave`,
+                method: 'POST',
+            }),
+        }),
     }),
 })
 
@@ -91,5 +106,7 @@ export const {
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
+    useJoinClanMutation,
+    useLeaveClanMutation,
     endpoints: clanEndpoints
 } = clanApi;

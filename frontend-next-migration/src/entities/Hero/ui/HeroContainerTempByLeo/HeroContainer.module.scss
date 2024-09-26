@@ -12,22 +12,11 @@
   align-items: center;
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
-}
+  max-width: 99vw;
 
-
-.outerArrow {
-  user-select: none;
-}
-.outerLeftArrow {
-  transform: translateX(4rem);
-}
-.outerRightArrow {
-  padding-right: 4rem;
-  padding-left: 1rem;
-}
-
-.outerArrow.isMobile {
-  display: none;
+  &.isTablet{
+    min-height: 1200px;
+  }
 }
 
 .heroImgSideWrapper {
@@ -47,6 +36,16 @@
     height: 50em;
     z-index: 2;
   }
+
+  &.isTablet {
+    .heroImgSide {
+      top: -8em;
+      width: 40em;
+      height: 40em;
+      z-index: 2;
+    }
+  }
+
 }
 
 .heroImgSideWrapper.isMobile {
@@ -65,10 +64,16 @@
 .container.isMobile {
   max-width: 35rem;
   padding: 0 1.2rem;
+  margin-top: 5rem;
 }
 
-.containerWrapper.isMobile {
-  margin-top: 5rem;
+.container.isTablet {
+  max-width: 40rem;
+}
+
+
+.containerWrapper {
+  position: relative;
 }
 
 .contentWrapper {
@@ -99,17 +104,6 @@
   padding-right: 1rem;
 }
 
-.innerArrow {
-  align-self: center;
-  width: 40px;
-  display: none;
-  user-select: none;
-}
-
-.innerArrow.isMobile {
-  display: block;
-}
-
 .heroImg {
   width: 100%;
   user-select: none;
@@ -132,49 +126,28 @@
 
 .heroDescription {
   @include ScrollbarWithArrowButtons;
-
-  margin-top: 2rem;
-
-  //padding-top: 0.5rem;
   padding-right: 0.5rem;
   overflow-y: auto;
   font-size: 1.4rem;
   border-radius: 10px;
   max-height: 38%;
-}
 
-.heroName {
-  text-align: center;
-  margin-bottom: 2rem;
-
-  h1 {
-    display: inline-block;
-    padding: 0.1rem;
-    border-top: 6px solid rgb(255, 255, 255);
-    border-bottom: 6px solid rgb(255, 255, 255);
+  &.isMobile{
+    margin-top: 2rem;
   }
-}
-.isMobile {
-  font-size: 0.8rem;
-}
-.isTablet {
-  font-size: 0.7rem;
-}
-.isDesktop {
-  font-size: 0.9rem;
+
 }
 
-.xLinkButton {
-  @include link-scale-effect;
+.heroGroup{
   position: absolute;
-  top: 0.5rem;
-  right: 0.8rem;
-  z-index: 2;
-  cursor: pointer;
-  user-select: none;
-  font-size: 1rem;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
 
-  &:hover h1 {
-    color: orange;
-  }
+.heroGroupLabel{
+  z-index: 10;
 }
