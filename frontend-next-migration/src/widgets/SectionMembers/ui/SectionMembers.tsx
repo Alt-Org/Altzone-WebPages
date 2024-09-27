@@ -17,7 +17,6 @@ import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab
 import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
 
-// MemberItem Component to Render a Single Member
 const MemberItem: FC<{ member: Member }> = ({ member }) => (
   <li key={member.id} className={cls.workmanComponent}>
     <div className={cls.memberRow}>
@@ -111,37 +110,43 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
         text={t('playButton')}
       />
       <Container className={cls.membersListContainer}>
-        {teams.map((team) => (
-          <div key={team.id} className={cls.memberCard}>
-            <h1 className={cls.membersListContainer}>{team.name}</h1>
+        {teams.map((team) => {
+          // Käydään läpi tiimin jäsenet ja osastot
+          return (
+            <div key={team.id} className={cls.memberCard}>
+              <h1 className={cls.membersListContainer}>{team.name}</h1>
 
-            {/* Tarkista, onko osastoja */}
-            {team.departments.length > 0 ? (
-              <div className={cls.departmentsSection}>
-                {team.departments.map((department) => (
-                  <div key={department.id} className={cls.departmentCard}>
-                    <h2>{department.name}</h2> {/* Lokalisoitu osaston nimi */}
-                    {department.members.length > 0 && (
-                      <ul className={cls.departmentMembersList}>
-                        {department.members.map((member) => (
-                          <MemberItem key={member.id} member={member} />
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              // Jos ei osastoja, renderöi tiimin jäsenet suoraan
-              <ul className={cls.membersList}>
-                {team.members.length > 0 &&
-                  team.members.map((member: Member) => (
+              {/* Tarkistetaan, onko osastoja */}
+              {team.departments.length > 0 && (
+                <div className={cls.departmentsSection}>
+                  {team.departments.map((department) => (
+                    <div key={department.id} className={cls.departmentCard}>
+                      <h2>{department.name}</h2>{' '}
+                      {/* Lokalisoitu osaston nimi */}
+                      {/* Renderöidään osaston jäsenet */}
+                      {department.members.length > 0 && (
+                        <ul className={cls.departmentMembersList}>
+                          {department.members.map((member: Member) => (
+                            <MemberItem key={member.id} member={member} />
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Renderöidään tiimin jäsenet, jotka eivät kuulu osastoihin */}
+              {team.members.length > 0 && (
+                <ul className={cls.membersList}>
+                  {team.members.map((member: Member) => (
                     <MemberItem key={member.id} member={member} />
                   ))}
-              </ul>
-            )}
-          </div>
-        ))}
+                </ul>
+              )}
+            </div>
+          );
+        })}
       </Container>
     </div>
   );
