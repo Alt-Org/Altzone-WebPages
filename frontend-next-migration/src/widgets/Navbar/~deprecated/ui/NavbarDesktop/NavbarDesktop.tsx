@@ -14,7 +14,7 @@ import {
     isRightSide
 } from "../../../model/types/type.guards";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
+import {useLogoutMutation, useUserPermissions, useUserPermissionsV2} from "@/entities/Auth";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
@@ -52,7 +52,9 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
     const {canI} = useUserPermissions();
+    const {getPermissionFor} = useUserPermissionsV2();
 
+    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
     const params = useParams();
