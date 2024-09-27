@@ -40,11 +40,10 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const {checkPermissionFor} = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor("login");
     const permissionToLogout = checkPermissionFor("logout");
-
+    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
     const params = useParams();
     const lng = params.lng as string;
-
 
     const ns = defineNs(navBarType)
 
@@ -59,8 +58,6 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         [cls.overlayed]: overlaid && !isFixed,
         [cls.fixed]: isFixed,
     } as Record<string, boolean>;
-
-
 
 
     return (
