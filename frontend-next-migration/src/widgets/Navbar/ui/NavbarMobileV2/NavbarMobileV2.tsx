@@ -1,7 +1,7 @@
 import { CSSProperties, memo, useMemo } from "react";
 import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
-import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
+import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
 import cls from "./NavbarMobileV2.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
@@ -45,7 +45,12 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const { t } = useClientTranslation(lng, ns);
 
-    const { canI } = useUserPermissions();
+    const {checkPermissionFor} = useUserPermissionsV2();
+    const permissionToLogin = checkPermissionFor("login");
+    const permissionToLogout = checkPermissionFor("logout");
+
+    const permissionToSeeOwnClan = checkPermissionFor("clan:seeOwn");
+
 
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
@@ -63,7 +68,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     // Localize the elements within the dropdown, but skip if elementText equals "clanpage"
                     const localizedElements = item.elements
                         .map((element) => {
-                            if (element.elementText == 'clanpage' && !canI("canISeeOwnClan")) {
+                            if (element.elementText == 'clanpage' && !permissionToSeeOwnClan.isGranted) {
                                 return null; // Return null if elementText is "clanpage"
                             }
                             return {
@@ -86,16 +91,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             .filter(item => item !== null) as ISidebarItem[];
     }, [navbarBuild, t]);
 
-    //console.log(sidebarItemsList);
-
-
     const style: CSSProperties = marginTop
         ? { "marginTop": `${marginTop}px` }
         : {};
-
-    // const mods: Record<string, boolean> = {
-    //     [cls.overlayed]: overlaid,
-    // };
 
     const mods: Record<string, boolean> = {
         [cls.overlayed]: overlaid && !isFixed,
@@ -109,8 +107,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
     };
-
-
 
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
@@ -129,7 +125,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     <div className={cls.sidebarBottom}>
                         <LangSwitcher className={cls.langSwitcher} />
                         <div className={cls.authSection}>
-                            {canI("canISeeLogin") && (
+                            {permissionToLogin.isGranted && (
                                 <AppLink
                                     className={cls.authSectionLink}
                                     theme={AppLinkTheme.PRIMARY}
@@ -139,7 +135,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                     <span>{t(`${navbarBuild?.namedMenu?.navAuthLogin?.name}`)}</span>
                                 </AppLink>
                             )}
-                            {canI("canISeeLogout") && (
+                            {permissionToLogout.isGranted && (
                                 <div onClick={() => logout()}>{t(`logout`)}</div>
                             )}
                         </div>
