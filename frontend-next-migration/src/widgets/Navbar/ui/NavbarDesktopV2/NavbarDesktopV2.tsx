@@ -7,13 +7,12 @@ import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { Container } from "@/shared/ui/Container";
 import { LangSwitcher } from "@/features/LangSwitcher";
-import {useLogoutMutation, useUserPermissions, useUserPermissionsV2} from "@/entities/Auth";
+import {useLogoutMutation,useUserPermissionsV2} from "@/entities/Auth";
 import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
 import { FixedButton } from "../FixedButton/FixedButton";
 import { useFixed } from "../../model/FixedProvider";
 import { defineNs } from "../../model/defineNs";
-
 
 
 type NavbarProps = {
