@@ -31,6 +31,9 @@ export const useUserPermissions = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
 
+    /**
+     * @deprecated: Use `useUserPermissionsV2` instead.
+     */
     const canI = (permission: UserPermissions) => {
         // const check = userPermissions[permission];
         switch (permission) {
