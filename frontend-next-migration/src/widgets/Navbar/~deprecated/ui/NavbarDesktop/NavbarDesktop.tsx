@@ -51,8 +51,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
-    const {canI} = useUserPermissions();
-    const {getPermissionFor} = useUserPermissionsV2();
+    const {userActionWith} = useUserPermissionsV2();
 
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
@@ -77,8 +76,6 @@ export const NavbarDesktop = ( props : NavbarProps) => {
             setDistToRightBorder(distanceToRight);
         }
     }, []);
-
-
 
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
@@ -135,7 +132,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                     {/*<button onClick={()=> i18n.changeLanguage("fi") }>change language</button>*/}
 
                         {
-                            canI("canISeeLogin")
+                            userActionWith("login").isGranted
                                 ? (
                                     <AppLink
                                         theme={AppLinkTheme.PRIMARY}
@@ -146,7 +143,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                                         <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>
                                     </AppLink>
                                 )
-                                : canI("canISeeLogout")
+                                :  userActionWith("logout").isGranted
                                     ? <div onClick={() => logout()}>
                                         {t(`logout`)}
                                     </div>
