@@ -1,13 +1,9 @@
-/* This TypeScript code defines an interface `TeamMember` representing the structure of a team member
-object. It includes properties like id, Role, Task, Name, Email, Logo, Website, Github, Linkedin,
-createdAt, updatedAt, publishedAt, and locale. */
 import { envHelper } from '@/shared/const/envHelper';
 
-export interface TeamMember {
+export interface Member {
   id: number;
-  Role: string;
-  Task?: string;
   Name: string;
+  Task?: string;
   Email?: string;
   Logo?: string;
   Website?: string;
@@ -17,59 +13,106 @@ export interface TeamMember {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  Part: string;
+}
+
+export interface Department {
+  id: number;
+  Name: string;
+  members: Member[]; // Lisää jäsenet
+}
+
+export interface Team {
+  members: any;
+  id: number;
+  Name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  departments: Department[]; // Lisää osastot
 }
 
 /**
- * Fetch team members from Strapi based on the locale (language).
+ * Fetch teams from Strapi based on the locale (language).
  * @param locale - Language code ('en' or 'fi')
  */
-export const fetchTeamMembers = async (
-  locale: string = 'en',
-): Promise<TeamMember[]> => {
+export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
   try {
     const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
 
     const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=*`,
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments,members`, // Populate members directly from the team
     );
 
     if (!response.ok) {
       throw new Error(`Error fetching data: ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const teamData = await response.json();
 
-    /* This part of the code is mapping over the array of team members fetched from the Strapi API and
-    transforming each item into a new object with specific properties. Here's a breakdown of what
-    it's doing: */
-    return data.data.map((item: any) => {
-      const attributes = item.attributes;
-      const logoData = attributes.Logo?.data;
-      const logoUrl = logoData
-        ? `${envHelper.strapiHost.replace(/\/$/, '')}${
-            logoData.attributes.formats?.thumbnail?.url
-          }`
-        : null;
+    // Map teams
+    const teams: Team[] = teamData.data.map((item: any) => {
+      // Get members directly from the team object
+      const members =
+        item.attributes.members?.data.map((member: any) => {
+          return {
+            id: member.id,
+            Name: member.attributes.Name,
+            Task: member.attributes.Task,
+            Email: member.attributes.Email,
+            Linkedin: member.attributes.Linkedin,
+            Website: member.attributes.Website,
+            Github: member.attributes.Github,
+            Facebook: member.attributes.Facebook,
+            Instagram: member.attributes.Instagram,
+            createdAt: member.attributes.createdAt,
+            updatedAt: member.attributes.updatedAt,
+            locale: member.attributes.locale,
+          };
+        }) || [];
 
       return {
         id: item.id,
-        Role: attributes.Role,
-        Task: attributes.Task,
-        Name: attributes.Name,
-        Email: attributes.Email,
-        Logo: logoUrl,
-        Website: attributes.Website,
-        Github: attributes.Github,
-        Linkedin: attributes.Linkedin,
-        createdAt: attributes.createdAt,
-        updatedAt: attributes.updatedAt,
-        publishedAt: attributes.publishedAt,
-        locale: attributes.locale,
-        Part: attributes.Part || '',
+        Name: item.attributes.Team,
+        createdAt: item.attributes.createdAt,
+        updatedAt: item.attributes.updatedAt,
+        publishedAt: item.attributes.publishedAt,
+        locale: item.attributes.locale,
+        members,
+        departments:
+          item.attributes.departments?.data.map((dept: any) => ({
+            id: dept.id,
+            Name: dept.attributes.Department,
+            members:
+              members.filter(
+                (member: { department: { data: { id: any } } }) =>
+                  member.department?.data?.id === dept.id,
+              ) || [],
+          })) || [],
       };
-    }) as TeamMember[];
+    });
+
+    const order = [
+      'Game Design',
+      'Mentoring',
+      'Sounds',
+      'Programming',
+      'Graphics',
+      'Comic book',
+      'Production',
+      'Analysis',
+      'Art',
+      'Game Art Education Package',
+      'Other Participants',
+      'Special Thanks',
+    ];
+
+    return teams.sort((a: Team, b: Team) => {
+      const indexA = order.indexOf(a.Name);
+      const indexB = order.indexOf(b.Name);
+      return indexA - indexB;
+    });
   } catch (error) {
-    throw new Error('Error fetching team members data');
+    throw new Error('Error fetching teams data');
   }
 };
