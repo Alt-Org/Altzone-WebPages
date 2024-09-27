@@ -8,6 +8,7 @@ import { Container } from '@/shared/ui/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
 import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
@@ -39,6 +40,20 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => (
               onClick={() => openLinkInNewTab(member.Linkedin)}
               className={cls.clickableLogo}>
               <FontAwesomeIcon icon={faLinkedin} />
+            </span>
+          )}
+          {member.Facebook && (
+            <span
+              onClick={() => openLinkInNewTab(member.Facebook)}
+              className={cls.clickableLogo}>
+              <FontAwesomeIcon icon={faFacebook} />
+            </span>
+          )}
+          {member.Instagram && (
+            <span
+              onClick={() => openLinkInNewTab(member.Instagram)}
+              className={cls.clickableLogo}>
+              <FontAwesomeIcon icon={faInstagram} />
             </span>
           )}
           {member.Email && (
@@ -90,9 +105,8 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
           <div key={team.id} className={cls.memberCard}>
             <h1 className={cls.membersListContainer}>{team.Name}</h1>
 
-            {/* Check if team has departments */}
+            {/* Check if the team has departments */}
             {team.departments.length > 0 ? (
-              // Render departments and their members
               <div className={cls.departmentsSection}>
                 {team.departments.map((department) => (
                   <div key={department.id} className={cls.departmentCard}>
