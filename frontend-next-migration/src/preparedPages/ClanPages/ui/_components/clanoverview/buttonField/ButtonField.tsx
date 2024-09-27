@@ -5,7 +5,7 @@ import { useJoinClan } from "@/features/JoinClan";
 import { useLeaveClan } from "@/features/LeaveClan";
 import lock from "@/shared/assets/images/clanLogos/lock.png";
 import Image from "next/image";
-import { selectProfile } from "@/entities/Auth";
+import {selectProfile, useUserPermissionsV2} from "@/entities/Auth";
 import { useSelector } from "react-redux";
 import { useUserPermissions } from '@/entities/Auth/';
 
@@ -34,7 +34,13 @@ const ClanInfo = (props: Props) => {
 
     const { handleJoin } = useJoinClan();
     const { handleLeave } = useLeaveClan();
-    const { canI } = useUserPermissions();
+
+
+    // const { canI } = useUserPermissions();
+
+    const {checkPermissionFor} = useUserPermissionsV2();
+    // todo Sakari please improve the logic,to use error enums
+    const permissionToSeeClans = checkPermissionFor("clan:seeAll");
 
     const user = useSelector(selectProfile);
     const playerId: string | undefined = user?.Player?._id;
@@ -42,15 +48,16 @@ const ClanInfo = (props: Props) => {
 
     return (
         <>
-            {!canI('canISeeClans') ? (
+            {!permissionToSeeClans.isGranted? (
+            // {!canI('canISeeClans') ? (
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
                     size={ButtonSize.L}
                     onClick={() => toast.error(toastNotLoggedIn)} >
-                    {joinClanBtn}
                 </Button>
-            ) : canI('canISeeClans') && !clanData.isOpen ? (<>
+            ) : permissionToSeeClans.isGranted && !clanData.isOpen ? (<>
+            {/*) : canI('canISeeClans') && !clanData.isOpen ? (<>*/}
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
@@ -62,7 +69,8 @@ const ClanInfo = (props: Props) => {
                     src={lock}
                     alt={"clan logo"}
                     className={cls.lock} /></>
-            ) : canI('canISeeClans') && !isInClan ? (
+            ) : permissionToSeeClans.isGranted && !isInClan ? (
+            // ) : canI('canISeeClans') && !isInClan ? (
                 <Button
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
