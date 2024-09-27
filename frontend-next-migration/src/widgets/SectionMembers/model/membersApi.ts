@@ -55,28 +55,28 @@ const mapMembers = (membersData: any[]): Member[] => {
 };
 
 // Function to map departments
-// Function to map departments
 const mapDepartments = (
   departmentsData: any[],
   locale: string,
 ): Department[] => {
   return (
     departmentsData.map((dept: any) => {
-      // Etsi lokalisoitu nimi 'Department'-kentästä
+      // Haetaan lokalisoitu osaston nimi 'localizations'-kentästä
       const localizedDept = dept.attributes.localizations?.data.find(
-        (loc: any) => loc.attributes.locale === locale,
+        (loc: any) => loc.attributes.locale === locale, // Tarkistetaan locale
       );
 
-      // Käytä lokalisoitua nimeä, jos saatavilla, muuten oletus 'Department'
+      // Käytetään lokalisoitua nimeä, jos saatavilla, muuten oletus 'Department'
       const localizedDeptName = localizedDept
-        ? localizedDept.attributes.Department // Tämä on lokalisoitu kenttä
-        : dept.attributes.Department;
+        ? localizedDept.attributes.Name // Lokalisoidun nimen kenttä, tarkista että tämä kenttä on oikein
+        : dept.attributes.Name; // Oletuskenttä, jos ei lokalisaatiota
 
+      // Haetaan osaston jäsenet
       const members = mapMembers(dept.attributes.members?.data || []);
 
       return {
         id: dept.id,
-        name: localizedDeptName,
+        name: localizedDeptName, // Käytetään lokalisoitua nimeä
         members,
       };
     }) || []
@@ -88,6 +88,7 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
   try {
     const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
 
+    // Hakee kaikki lokalisoidut tiedot osastoille ja jäsenille
     const response = await fetch(
       `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.localizations,members`,
     );
@@ -98,16 +99,17 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
 
     const teamData = await response.json();
 
+    // Kartoitus tiimit ja niiden osastot
     const teams: Team[] = teamData.data.map((item: any) => {
       const members = mapMembers(item.attributes.members?.data || []);
       const departments = mapDepartments(
         item.attributes.departments?.data || [],
-        strapiLocale,
+        strapiLocale, // Passataan locale tässä
       );
 
       return {
         id: item.id,
-        name: item.attributes.Team || item.attributes.Name,
+        name: item.attributes.Team || item.attributes.Name, // Tarkistetaan tiimin nimi
         createdAt: item.attributes.createdAt,
         updatedAt: item.attributes.updatedAt,
         locale: item.attributes.locale,
@@ -116,6 +118,7 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
       };
     });
 
+    // Järjestys osastoille englanniksi ja suomeksi
     const orderEn = [
       'Game Design',
       'Mentoring',
@@ -147,6 +150,7 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
 
     const order = locale === 'fi' ? orderFi : orderEn;
 
+    // Järjestetään tiimit ennalta määrätyssä järjestyksessä
     return teams.sort(
       (a: Team, b: Team) => order.indexOf(a.name) - order.indexOf(b.name),
     );
