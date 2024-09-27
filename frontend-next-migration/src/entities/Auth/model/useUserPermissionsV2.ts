@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import {selectHasClan, selectIsAuthenticated} from "./authUserSlice";
+import { selectHasClan, selectIsAuthenticated } from "./authUserSlice";
 
 export enum PermissionError {
     NotAuthenticated = 'NotAuthenticated',
@@ -10,18 +10,31 @@ export enum PermissionError {
     UnknownPermission = 'UnknownPermission',
 }
 
-interface GrantedPermissionResult {
+
+interface GrantedPermissionResult<T> {
     isGranted: true;
+    result?: T;
+    ifYes(callback: () => T): GrantedPermissionResult<T>;
+    ifNo(callback: (error: PermissionError) => void): GrantedPermissionResult<T>;
+    and(condition: boolean): GrantedPermissionResult<T>;
 }
 
-interface NotGrantedPermissionResult {
+interface NotGrantedPermissionResult<T> {
     isGranted: false;
     error: PermissionError;
+    result?: T;
+    ifYes(callback: () => void): NotGrantedPermissionResult<T>;
+    ifNo(callback: (error: PermissionError) => T): NotGrantedPermissionResult<T>;
+    and(condition: boolean): NotGrantedPermissionResult<T>;
 }
 
-export type PermissionResult = GrantedPermissionResult | NotGrantedPermissionResult;
+export type PermissionResult<T> = GrantedPermissionResult<T> | NotGrantedPermissionResult<T>;
 
-// todo remove v2 after everything will be moved to this hook
+
+
+
+// export type PermissionResult = GrantedPermissionResult | NotGrantedPermissionResult;
+
 export type UserPermissionsV2 =
     | 'login'
     | 'logout'
@@ -30,66 +43,107 @@ export type UserPermissionsV2 =
     | 'clan:seeOwn'
     | 'clan:join';
 
+const createGrantedResult = <T>(): GrantedPermissionResult<T> => {
+    let conditionMet = true;
+    let result: T | undefined;
 
-// todo remove v2 after everything will be moved to this hook
+    return {
+        isGranted: true,
+        result,
+        ifYes(callback: () => T): GrantedPermissionResult<T> {
+            if (conditionMet) {
+                result = callback();
+                this.result = result;
+            }
+            return this;
+        },
+        ifNo(_: (error: PermissionError) => void): GrantedPermissionResult<T> {
+            return this;
+        },
+        and(condition: boolean): GrantedPermissionResult<T> {
+            conditionMet = conditionMet && condition;
+            return this;
+        },
+    };
+};
+
+const createNotGrantedResult = <T>(error: PermissionError): NotGrantedPermissionResult<T> => {
+    let result: T | undefined;
+
+    return {
+        isGranted: false,
+        error,
+        result,
+        ifYes(_: () => void): NotGrantedPermissionResult<T> {
+            return this;
+        },
+        ifNo(callback: (error: PermissionError) => T): NotGrantedPermissionResult<T> {
+            result = callback(error);
+            this.result = result;
+            return this;
+        },
+        and(_: boolean): NotGrantedPermissionResult<T> {
+            return this;
+        },
+    };
+};
+
+
+
 export const useUserPermissionsV2 = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
 
-    // todo figure out can we get this limit if not we should make an issue to our server github
-    // const clanLimitExceeded = useSelector(selectClanLimitExceeded);
-
-    const getPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
+    const userActionWith = <T>(permission: UserPermissionsV2): PermissionResult<T> => {
         switch (permission) {
             case 'login':
                 return !isAuthenticated
-                    ? { isGranted: true }
-                    : { isGranted: false, error: PermissionError.AlreadyAuthenticated };
+                    ? createGrantedResult<T>()
+                    : createNotGrantedResult<T>(PermissionError.AlreadyAuthenticated);
 
             case 'logout':
                 return isAuthenticated
-                    ? { isGranted: true }
-                    : { isGranted: false, error: PermissionError.NotAuthenticated };
+                    ? createGrantedResult<T>()
+                    : createNotGrantedResult<T>(PermissionError.NotAuthenticated);
 
             case 'clan:create':
                 if (!isAuthenticated) {
-                    return { isGranted: false, error: PermissionError.NotAuthenticated };
+                    return createNotGrantedResult<T>(PermissionError.NotAuthenticated);
                 }
                 if (hasClan) {
-                    return { isGranted: false, error: PermissionError.AlreadyInClan };
+                    return createNotGrantedResult<T>(PermissionError.AlreadyInClan);
                 }
-                return { isGranted: true };
+                return createGrantedResult();
 
             case 'clan:see':
                 return isAuthenticated
-                    ? { isGranted: true }
-                    : { isGranted: false, error: PermissionError.NotAuthenticated };
+                    ? createGrantedResult<T>()
+                    : createNotGrantedResult<T>(PermissionError.NotAuthenticated);
 
             case 'clan:seeOwn':
                 if (!isAuthenticated) {
-                    return { isGranted: false, error: PermissionError.NotAuthenticated };
+                    return createNotGrantedResult<T>(PermissionError.NotAuthenticated);
                 }
                 if (!hasClan) {
-                    return { isGranted: false, error: PermissionError.NotInClan };
+                    return createNotGrantedResult<T>(PermissionError.NotInClan);
                 }
-                return { isGranted: true };
+                return createGrantedResult();
 
             case 'clan:join':
                 if (!isAuthenticated) {
-                    return { isGranted: false, error: PermissionError.NotAuthenticated };
+                    return createNotGrantedResult<T>(PermissionError.NotAuthenticated);
                 }
                 if (hasClan) {
-                    return { isGranted: false, error: PermissionError.AlreadyInClan };
+                    return createNotGrantedResult<T>(PermissionError.AlreadyInClan);
                 }
-                // if (clanLimitExceeded) {
-                //     return { granted: false, error: PermissionError.ClanLimitExceeded };
-                // }
-                return { isGranted: true };
+                return createGrantedResult();
 
             default:
-                return { isGranted: false, error: PermissionError.UnknownPermission };
+                return createNotGrantedResult<T>(PermissionError.UnknownPermission);
         }
     };
 
-    return { getPermissionFor };
+    return { userActionWith };
 };
+
+
