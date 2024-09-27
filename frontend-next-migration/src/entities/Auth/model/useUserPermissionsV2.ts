@@ -69,16 +69,16 @@ export const useUserPermissionsV2 = () => {
                     return { answer: true };
                 }
 
-            // case 'canIJoinClan':
-            //     if (!isAuthenticated) {
-            //         return { answer: false, error: PermissionError.NotAuthenticated };
-            //     } else if (hasClan) {
-            //         return { answer: false, error: PermissionError.AlreadyInClan };
-            //     } else if (clanLimitExceeded) {
-            //         return { answer: false, error: PermissionError.ClanLimitExceeded };
-            //     } else {
-            //         return { answer: true };
-            //     }
+            case 'canIJoinClan':
+                if (!isAuthenticated) {
+                    return { answer: false, error: PermissionError.NotAuthenticated };
+                } else if (hasClan) {
+                    return { answer: false, error: PermissionError.AlreadyInClan };
+                // } else if (clanLimitExceeded) {
+                //     return { answer: false, error: PermissionError.ClanLimitExceeded };
+                } else {
+                    return { answer: true };
+                }
 
             default:
                 return { answer: false, error: PermissionError.UnknownPermission };
