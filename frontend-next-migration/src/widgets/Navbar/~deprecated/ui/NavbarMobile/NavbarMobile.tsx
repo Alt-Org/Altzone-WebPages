@@ -1,7 +1,7 @@
 import {CSSProperties, memo, useMemo} from "react";
 import Image from 'next/image'
 import {sidebarItemType} from "@/shared/ui/Sidebar/model/items";
-import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
+import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
 import cls from "./NavbarMobile.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {ISidebarItem, Sidebar} from "@/shared/ui/Sidebar";
@@ -69,7 +69,10 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
     }, [navbarBuild, t]);
 
 
-    const {canI} = useUserPermissions();
+    const {checkPermissionFor} = useUserPermissionsV2();
+    const permissionToLogin = checkPermissionFor("login");
+    const permissionToLogout = checkPermissionFor("logout");
+
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
@@ -89,7 +92,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                             <LangSwitcher className={cls.langSwitcher}/>
                             <div className={cls.authSection}>
                                 {
-                                    canI("canISeeLogin") &&  <AppLink
+                                    permissionToLogin.isGranted &&  <AppLink
                                         className={cls.authSectionLink}
                                         theme={AppLinkTheme.PRIMARY}
                                         to={navbarBuild?.namedMenu?.navAuthLogin?.path || ""}
@@ -100,7 +103,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
                                 }
 
                                 {
-                                    canI("canISeeLogout") &&
+                                    permissionToLogout.isGranted &&
                                     <div onClick={()=>logout()}>{t(`logout`)}</div>
                                 }
 
