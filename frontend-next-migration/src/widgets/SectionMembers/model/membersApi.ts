@@ -1,117 +1,116 @@
 import { envHelper } from '@/shared/const/envHelper';
 
+// Interfaces
 export interface Member {
   id: number;
-  Name: string;
-  Task?: string;
-  Email?: string;
-  Logo?: string;
-  Website?: string;
-  Github?: string;
-  Linkedin?: string;
-  Facebook?: string;
-  Instagram?: string;
+  name: string;
+  task?: string;
+  email?: string;
+  logo?: string;
+  website?: string;
+  github?: string;
+  linkedin?: string;
+  facebook?: string;
+  instagram?: string;
   createdAt: string;
   updatedAt: string;
-  publishedAt: string;
   locale: string;
 }
 
 export interface Department {
   id: number;
-  Name: string;
-  members: Member[]; // Lisää jäsenet
+  name: string;
+  members: Member[];
 }
 
 export interface Team {
-  members: any;
   id: number;
-  Name: string;
+  name: string;
   createdAt: string;
   updatedAt: string;
-  publishedAt: string;
   locale: string;
-  departments: Department[]; // Lisää osastot
+  members: Member[];
+  departments: Department[];
 }
 
-/**
- * Fetch teams from Strapi based on the locale (language).
- * @param locale - Language code ('en' or 'fi')
- */
+// Function to map members
+const mapMembers = (membersData: any[]): Member[] => {
+  return (
+    membersData.map((member: any) => ({
+      id: member.id,
+      name: member.attributes.Name,
+      task: member.attributes.Task,
+      email: member.attributes.Email,
+      linkedin: member.attributes.Linkedin,
+      website: member.attributes.Website,
+      github: member.attributes.Github,
+      logo: member.attributes.Logo,
+      facebook: member.attributes.Facebook,
+      instagram: member.attributes.Instagram,
+      createdAt: member.attributes.createdAt,
+      updatedAt: member.attributes.updatedAt,
+      locale: member.attributes.locale,
+    })) || []
+  );
+};
+
+// Function to map departments
+const mapDepartments = (
+  departmentsData: any[],
+  locale: string,
+): Department[] => {
+  return (
+    departmentsData.map((dept: any) => {
+      // Look for localized department name
+      const localizedDeptName =
+        dept.attributes.localizations?.data.find(
+          (loc: any) => loc.attributes.locale === locale,
+        )?.attributes.Department || dept.attributes.Department;
+
+      const members = mapMembers(dept.attributes.members?.data || []);
+
+      return {
+        id: dept.id,
+        name: localizedDeptName,
+        members,
+      };
+    }) || []
+  );
+};
+
+// Fetch Teams
 export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
   try {
     const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
 
     const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.members,members`, // Populate members directly from both team and departments
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.members,members`,
     );
 
     if (!response.ok) {
-      throw new Error(`Error fetching data: ${response.statusText}`);
+      throw new Error(`Error fetching teams: ${response.statusText}`);
     }
 
     const teamData = await response.json();
 
-    // Map teams
     const teams: Team[] = teamData.data.map((item: any) => {
-      // Get members directly from the team object
-      const members =
-        item.attributes.members?.data.map((member: any) => ({
-          id: member.id,
-          Name: member.attributes.Name,
-          Task: member.attributes.Task,
-          Email: member.attributes.Email,
-          Linkedin: member.attributes.Linkedin,
-          Website: member.attributes.Website,
-          Github: member.attributes.Github,
-          Logo: member.attributes.Logo,
-          Facebook: member.attributes.Facebook,
-          Instagram: member.attributes.Instagram,
-          createdAt: member.attributes.createdAt,
-          updatedAt: member.attributes.updatedAt,
-          locale: member.attributes.locale,
-        })) || [];
-
-      // Map departments and assign members to their respective departments
-      const departments =
-        item.attributes.departments?.data.map((dept: any) => {
-          const departmentMembers =
-            dept.attributes.members?.data.map((member: any) => ({
-              id: member.id,
-              Name: member.attributes.Name,
-              Task: member.attributes.Task,
-              Email: member.attributes.Email,
-              Linkedin: member.attributes.Linkedin,
-              Website: member.attributes.Website,
-              Github: member.attributes.Github,
-              Logo: member.attributes.Logo,
-              Facebook: member.attributes.Facebook,
-              Instagram: member.attributes.Instagram,
-              createdAt: member.attributes.createdAt,
-              updatedAt: member.attributes.updatedAt,
-              locale: member.attributes.locale,
-            })) || []; // Extract members for each department
-
-          return {
-            id: dept.id,
-            Name: dept.attributes.Department,
-            members: departmentMembers, // Assign members to department
-          };
-        }) || [];
+      const members = mapMembers(item.attributes.members?.data || []);
+      const departments = mapDepartments(
+        item.attributes.departments?.data || [],
+        strapiLocale,
+      );
 
       return {
         id: item.id,
-        Name: item.attributes.Team,
+        name: item.attributes.Team || item.attributes.Name,
         createdAt: item.attributes.createdAt,
         updatedAt: item.attributes.updatedAt,
-        publishedAt: item.attributes.publishedAt,
         locale: item.attributes.locale,
-        members, // Team members (if no departments)
-        departments, // Departments and their members
+        members,
+        departments,
       };
     });
 
-    // Define custom ordering for both English and Finnish locales
     const orderEn = [
       'Game Design',
       'Mentoring',
@@ -141,15 +140,37 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
       'Erityiskiitokset',
     ];
 
-    // Select the correct order based on locale
     const order = locale === 'fi' ? orderFi : orderEn;
 
-    return teams.sort((a: Team, b: Team) => {
-      const indexA = order.indexOf(a.Name);
-      const indexB = order.indexOf(b.Name);
-      return indexA - indexB;
-    });
+    return teams.sort(
+      (a: Team, b: Team) => order.indexOf(a.name) - order.indexOf(b.name),
+    );
   } catch (error) {
-    throw new Error('Error fetching teams data');
+    console.error('Error fetching teams data:', error);
+    return [];
+  }
+};
+
+// Fetch Departments independently if needed
+export const fetchDepartments = async (
+  locale: string = 'en',
+): Promise<Department[]> => {
+  try {
+    const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
+
+    const response = await fetch(
+      `${envHelper.strapiApiUrl}/departments?locale=${strapiLocale}&populate=*`,
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error fetching departments: ${response.statusText}`);
+    }
+
+    const departmentData = await response.json();
+
+    return mapDepartments(departmentData.data || [], strapiLocale);
+  } catch (error) {
+    console.error('Error fetching departments data:', error);
+    return [];
   }
 };
