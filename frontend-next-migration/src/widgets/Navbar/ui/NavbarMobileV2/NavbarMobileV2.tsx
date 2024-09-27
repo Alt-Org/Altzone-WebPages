@@ -43,9 +43,11 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const ns = defineNs(navBarType)
 
-    const { t, i18n } = useClientTranslation(lng, ns);
+    const { t } = useClientTranslation(lng, ns);
 
     const { canI } = useUserPermissions();
+
+    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
     const { isFixed } = useFixed();
