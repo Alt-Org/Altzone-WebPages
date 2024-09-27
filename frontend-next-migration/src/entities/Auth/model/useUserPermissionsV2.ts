@@ -23,7 +23,7 @@ interface PermissionResult {
     error?: PermissionError;
 }
 
-export const useUserPermissions = () => {
+export const useUserPermissionsV2 = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
     // const clanLimitExceeded = useSelector(selectClanLimitExceeded);
