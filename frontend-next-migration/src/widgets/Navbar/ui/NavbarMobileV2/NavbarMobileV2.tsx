@@ -66,6 +66,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 }
                 if (item.type === ItemType.navDropDown) {
                     // Localize the elements within the dropdown, but skip if elementText equals "clanpage"
+                    //todo looks like that this logic should not be here in ui component
                     const localizedElements = item.elements
                         .map((element) => {
                             if (element.elementText == 'clanpage' && !permissionToSeeOwnClan.isGranted) {
