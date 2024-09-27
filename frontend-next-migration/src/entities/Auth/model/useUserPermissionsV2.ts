@@ -10,16 +10,6 @@ export enum PermissionError {
     UnknownPermission = 'UnknownPermission',
 }
 
-// todo remove v2 after everything will be moved to this hook
-// export type UserPermissionsV2 =
-//     | 'canISeeLogin'
-//     | 'canISeeLogout'
-//     | 'canICreateClan'
-//     | 'canISeeClans'
-//     | 'canISeeOwnClan'
-//     | 'canIJoinClan';
-
-
 interface GrantedPermissionResult {
     isGranted: true;
 }
@@ -31,6 +21,7 @@ interface NotGrantedPermissionResult {
 
 export type PermissionResult = GrantedPermissionResult | NotGrantedPermissionResult;
 
+// todo remove v2 after everything will be moved to this hook
 export type UserPermissionsV2 =
     | 'login:see'
     | 'logout:see'
