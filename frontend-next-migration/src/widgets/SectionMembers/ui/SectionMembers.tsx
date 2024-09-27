@@ -67,7 +67,13 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => (
       </div>
     </div>
     {member.Logo && (
-      <Image src={member.Logo} alt={member.Name} className={cls.memberLogo} />
+      <Image
+        src={member.Logo}
+        alt={member.Name}
+        className={cls.memberLogo}
+        width={50}
+        height={50}
+      />
     )}
   </li>
 );
@@ -111,14 +117,12 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                 {team.departments.map((department) => (
                   <div key={department.id} className={cls.departmentCard}>
                     <h2>{department.Name}</h2>
-                    {department.members.length > 0 ? (
+                    {department.members.length > 0 && (
                       <ul className={cls.departmentMembersList}>
                         {department.members.map((member) => (
                           <MemberItem key={member.id} member={member} />
                         ))}
                       </ul>
-                    ) : (
-                      <p>{t('noMembers')}</p>
                     )}
                   </div>
                 ))}
@@ -126,13 +130,10 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
             ) : (
               // If no departments, render team members directly
               <ul className={cls.membersList}>
-                {team.members.length > 0 ? (
-                  team.members.map((member) => (
+                {team.members.length > 0 &&
+                  team.members.map((member: Member) => (
                     <MemberItem key={member.id} member={member} />
-                  ))
-                ) : (
-                  <p>{t('noMembers')}</p>
-                )}
+                  ))}
               </ul>
             )}
           </div>
