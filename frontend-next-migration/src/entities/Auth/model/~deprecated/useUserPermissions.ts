@@ -21,7 +21,8 @@ import { userPermissions, UserPermissions } from "./userPermissions";
 // import { useSelector } from 'react-redux';
 // import {StateSchema} from "@/app/_providers/StoreProvider";
 // import { userPermissions, UserPermissions } from "./userPermissions";
-import {selectHasClan, selectIsAuthenticated} from "@/entities/Auth/model/authUserSlice";
+import {selectHasClan, selectIsAuthenticated} from "../../model/authUserSlice";
+// import {selectHasClan, selectIsAuthenticated} from "@/entities/Auth/model/authUserSlice";
 
 /**
  * @deprecated: Use `useUserPermissionsV2` instead.
