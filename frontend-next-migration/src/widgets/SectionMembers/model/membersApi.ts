@@ -9,6 +9,8 @@ export interface Member {
   Website?: string;
   Github?: string;
   Linkedin?: string;
+  Facebook?: string;
+  Instagram?: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -41,7 +43,7 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
     const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
 
     const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments,members`, // Populate members directly from the team
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.members,members`, // Populate members directly from both team and departments
     );
 
     if (!response.ok) {
@@ -54,20 +56,46 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
     const teams: Team[] = teamData.data.map((item: any) => {
       // Get members directly from the team object
       const members =
-        item.attributes.members?.data.map((member: any) => {
+        item.attributes.members?.data.map((member: any) => ({
+          id: member.id,
+          Name: member.attributes.Name,
+          Task: member.attributes.Task,
+          Email: member.attributes.Email,
+          Linkedin: member.attributes.Linkedin,
+          Website: member.attributes.Website,
+          Github: member.attributes.Github,
+          Logo: member.attributes.Logo,
+          Facebook: member.attributes.Facebook,
+          Instagram: member.attributes.Instagram,
+          createdAt: member.attributes.createdAt,
+          updatedAt: member.attributes.updatedAt,
+          locale: member.attributes.locale,
+        })) || [];
+
+      // Map departments and assign members to their respective departments
+      const departments =
+        item.attributes.departments?.data.map((dept: any) => {
+          const departmentMembers =
+            dept.attributes.members?.data.map((member: any) => ({
+              id: member.id,
+              Name: member.attributes.Name,
+              Task: member.attributes.Task,
+              Email: member.attributes.Email,
+              Linkedin: member.attributes.Linkedin,
+              Website: member.attributes.Website,
+              Github: member.attributes.Github,
+              Logo: member.attributes.Logo,
+              Facebook: member.attributes.Facebook,
+              Instagram: member.attributes.Instagram,
+              createdAt: member.attributes.createdAt,
+              updatedAt: member.attributes.updatedAt,
+              locale: member.attributes.locale,
+            })) || []; // Extract members for each department
+
           return {
-            id: member.id,
-            Name: member.attributes.Name,
-            Task: member.attributes.Task,
-            Email: member.attributes.Email,
-            Linkedin: member.attributes.Linkedin,
-            Website: member.attributes.Website,
-            Github: member.attributes.Github,
-            Facebook: member.attributes.Facebook,
-            Instagram: member.attributes.Instagram,
-            createdAt: member.attributes.createdAt,
-            updatedAt: member.attributes.updatedAt,
-            locale: member.attributes.locale,
+            id: dept.id,
+            Name: dept.attributes.Department,
+            members: departmentMembers, // Assign members to department
           };
         }) || [];
 
@@ -78,20 +106,12 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
         updatedAt: item.attributes.updatedAt,
         publishedAt: item.attributes.publishedAt,
         locale: item.attributes.locale,
-        members,
-        departments:
-          item.attributes.departments?.data.map((dept: any) => ({
-            id: dept.id,
-            Name: dept.attributes.Department,
-            members:
-              members.filter(
-                (member: { department: { data: { id: any } } }) =>
-                  member.department?.data?.id === dept.id,
-              ) || [],
-          })) || [],
+        members, // Team members (if no departments)
+        departments, // Departments and their members
       };
     });
 
+    // Custom ordering of teams
     const order = [
       'Game Design',
       'Mentoring',
