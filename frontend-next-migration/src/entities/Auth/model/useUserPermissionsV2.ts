@@ -23,8 +23,8 @@ export type PermissionResult = GrantedPermissionResult | NotGrantedPermissionRes
 
 // todo remove v2 after everything will be moved to this hook
 export type UserPermissionsV2 =
-    | 'login:see'
-    | 'logout:see'
+    | 'login'
+    | 'logout'
     | 'clan:create'
     | 'clan:see'
     | 'clan:seeOwn'
@@ -41,12 +41,12 @@ export const useUserPermissionsV2 = () => {
 
     const getPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
         switch (permission) {
-            case 'login:see':
+            case 'login':
                 return !isAuthenticated
                     ? { isGranted: true }
                     : { isGranted: false, error: PermissionError.AlreadyAuthenticated };
 
-            case 'logout:see':
+            case 'logout':
                 return isAuthenticated
                     ? { isGranted: true }
                     : { isGranted: false, error: PermissionError.NotAuthenticated };
