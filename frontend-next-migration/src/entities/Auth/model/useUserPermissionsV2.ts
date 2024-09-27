@@ -20,7 +20,7 @@ export type UserPermissionsV2 =
     | 'canIJoinClan';
 
 interface PermissionResult {
-    answer: boolean;
+    isGranted: boolean;
     error?: PermissionError;
 }
 
@@ -34,56 +34,56 @@ export const useUserPermissionsV2 = () => {
         switch (permission) {
             case 'canISeeLogin':
                 if (!isAuthenticated) {
-                    return { answer: true };
+                    return { isGranted: true };
                 } else {
-                    return { answer: false, error: PermissionError.AlreadyAuthenticated };
+                    return { isGranted: false, error: PermissionError.AlreadyAuthenticated };
                 }
 
             case 'canISeeLogout':
                 if (isAuthenticated) {
-                    return { answer: true };
+                    return { isGranted: true };
                 } else {
-                    return { answer: false, error: PermissionError.NotAuthenticated };
+                    return { isGranted: false, error: PermissionError.NotAuthenticated };
                 }
 
             case 'canICreateClan':
                 if (!isAuthenticated) {
-                    return { answer: false, error: PermissionError.NotAuthenticated };
+                    return { isGranted: false, error: PermissionError.NotAuthenticated };
                 } else if (hasClan) {
-                    return { answer: false, error: PermissionError.AlreadyInClan };
+                    return { isGranted: false, error: PermissionError.AlreadyInClan };
                 } else {
-                    return { answer: true };
+                    return { isGranted: true };
                 }
 
             case 'canISeeClans':
                 if (isAuthenticated) {
-                    return { answer: true };
+                    return { isGranted: true };
                 } else {
-                    return { answer: false, error: PermissionError.NotAuthenticated };
+                    return { isGranted: false, error: PermissionError.NotAuthenticated };
                 }
 
             case 'canISeeOwnClan':
                 if (!isAuthenticated) {
-                    return { answer: false, error: PermissionError.NotAuthenticated };
+                    return { isGranted: false, error: PermissionError.NotAuthenticated };
                 } else if (!hasClan) {
-                    return { answer: false, error: PermissionError.NotInClan };
+                    return { isGranted: false, error: PermissionError.NotInClan };
                 } else {
-                    return { answer: true };
+                    return { isGranted: true };
                 }
 
             case 'canIJoinClan':
                 if (!isAuthenticated) {
-                    return { answer: false, error: PermissionError.NotAuthenticated };
+                    return { isGranted: false, error: PermissionError.NotAuthenticated };
                 } else if (hasClan) {
-                    return { answer: false, error: PermissionError.AlreadyInClan };
+                    return { isGranted: false, error: PermissionError.AlreadyInClan };
                 // } else if (clanLimitExceeded) {
                 //     return { answer: false, error: PermissionError.ClanLimitExceeded };
                 } else {
-                    return { answer: true };
+                    return { isGranted: true };
                 }
 
             default:
-                return { answer: false, error: PermissionError.UnknownPermission };
+                return { isGranted: false, error: PermissionError.UnknownPermission };
         }
     };
 
