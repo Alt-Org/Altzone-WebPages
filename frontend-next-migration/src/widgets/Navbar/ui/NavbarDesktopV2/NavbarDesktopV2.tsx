@@ -45,7 +45,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const params = useParams();
     const lng = params.lng as string;
 
-    const ns = defineNs(navBarType)
+    const ns = defineNs(navBarType);
 
     const { t } = useClientTranslation(lng, ns);
 
