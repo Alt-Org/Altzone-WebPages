@@ -45,6 +45,7 @@ export const useUserPermissionsV2 = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
 
+    // todo possibly we could here useMemo hook
     const checkPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
         switch (permission) {
             case 'login':
@@ -90,6 +91,7 @@ export const useUserPermissionsV2 = () => {
                 return createGrantedResult();
 
             default:
+                console.warn(`Unhandled permission type: ${permission}`);
                 return createNotGrantedResult(PermissionError.UnknownPermission);
         }
     };
