@@ -70,6 +70,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
 
 
     const {canI} = useUserPermissions();
+    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
     return (
