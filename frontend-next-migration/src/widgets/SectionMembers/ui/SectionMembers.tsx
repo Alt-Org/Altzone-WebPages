@@ -1,10 +1,7 @@
-/* The above code snippet is a TypeScript React component that displays a list of team members with
-their information such as name, role, website, GitHub, LinkedIn, and email. Here is a breakdown of
-what the code is doing: */
 import cls from './SectionMembers.module.scss';
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchTeamMembers, TeamMember } from '../model/membersApi';
+import { fetchTeams, Team, Member } from '../model/membersApi';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
@@ -15,29 +12,72 @@ import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab
 import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
 
+// MemberItem Component to Render a Single Member
+const MemberItem: FC<{ member: Member }> = ({ member }) => (
+  <li key={member.id} className={cls.workmanComponent}>
+    <div className={cls.memberRow}>
+      <div className={cls.centerContainer}>
+        <span className={cls.memberName}>{member.Name}</span>
+        <span className={cls.taskText}>{member.Task}</span>
+        <div className={cls.iconContainer}>
+          {member.Website && (
+            <span
+              onClick={() => openLinkInNewTab(member.Website)}
+              className={cls.clickableLogo}>
+              <FontAwesomeIcon icon={faGlobe} />
+            </span>
+          )}
+          {member.Github && (
+            <span
+              onClick={() => openLinkInNewTab(member.Github)}
+              className={cls.clickableLogo}>
+              <FontAwesomeIcon icon={faGithub} />
+            </span>
+          )}
+          {member.Linkedin && (
+            <span
+              onClick={() => openLinkInNewTab(member.Linkedin)}
+              className={cls.clickableLogo}>
+              <FontAwesomeIcon icon={faLinkedin} />
+            </span>
+          )}
+          {member.Email && (
+            <span
+              onClick={() => openLinkInNewTab(`mailto:${member.Email}`)}
+              className={cls.clickableLogo}>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+    {member.Logo && (
+      <Image src={member.Logo} alt={member.Name} className={cls.memberLogo} />
+    )}
+  </li>
+);
+
 interface WorkersSectionProps {
   className?: string;
 }
 
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [teams, setTeams] = useState<Team[]>([]);
   const params = useParams();
   const lng = params.lng as string;
   const { t } = useClientTranslation(lng, 'team');
 
   useEffect(() => {
-    const fetchMembers = async () => {
+    const fetchTeamsData = async () => {
       try {
-        const data = await fetchTeamMembers(lng);
-        setTeamMembers(data);
+        const data = await fetchTeams(lng);
+        setTeams(data);
       } catch (error) {
-        console.error('Failed to fetch team members:', error);
+        console.error('Failed to fetch teams:', error);
       }
     };
-    fetchMembers();
+    fetchTeamsData();
   }, [lng]);
-
-  const groupedMembers = groupByPartAndRole(teamMembers);
 
   return (
     <div className={classNames(cls.MembersSection, {}, [className])}>
@@ -46,139 +86,44 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
         text={t('playButton')}
       />
       <Container className={cls.membersListContainer}>
-        {Object.keys(groupedMembers).map((part) => (
-          <div key={part}>
-            <h1>{part}</h1>{' '}
-            {Object.keys(groupedMembers[part])
-              .filter(
-                (role) => role !== null && role !== undefined && role !== '',
-              )
-              .map((role) => (
-                <div key={role}>
-                  <h2>{role}</h2>
-                  {groupedMembers[part][role]
-                    .sort((a, b) => a.Name.localeCompare(b.Name))
-                    .map((member) => (
-                      <GroupWithMemberComponent
-                        key={member.id}
-                        member={member}
-                      />
-                    ))}
-                </div>
-              ))}
+        {teams.map((team) => (
+          <div key={team.id} className={cls.memberCard}>
+            <h1 className={cls.membersListContainer}>{team.Name}</h1>
+
+            {/* Check if team has departments */}
+            {team.departments.length > 0 ? (
+              // Render departments and their members
+              <div className={cls.departmentsSection}>
+                {team.departments.map((department) => (
+                  <div key={department.id} className={cls.departmentCard}>
+                    <h2>{department.Name}</h2>
+                    {department.members.length > 0 ? (
+                      <ul className={cls.departmentMembersList}>
+                        {department.members.map((member) => (
+                          <MemberItem key={member.id} member={member} />
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>{t('noMembers')}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              // If no departments, render team members directly
+              <ul className={cls.membersList}>
+                {team.members.length > 0 ? (
+                  team.members.map((member) => (
+                    <MemberItem key={member.id} member={member} />
+                  ))
+                ) : (
+                  <p>{t('noMembers')}</p>
+                )}
+              </ul>
+            )}
           </div>
         ))}
       </Container>
     </div>
   );
 };
-/**
- * The groupByRole function takes an array of TeamMember objects and groups them by their Role
- * property into a Record where the keys are roles and the values are arrays of team members with that role.
- * @param {TeamMember[]} members - An array of TeamMember objects.
- * @returns The groupByRole function returns an object where each key represents a role and the
- * corresponding value is an array of TeamMember objects with that role.
- */
-const groupByPartAndRole = (
-  members: TeamMember[],
-): Record<string, Record<string, TeamMember[]>> => {
-  return members.reduce((acc, member) => {
-    if (!acc[member.Part]) {
-      acc[member.Part] = {};
-    }
-    if (!acc[member.Part][member.Role]) {
-      acc[member.Part][member.Role] = [];
-    }
-    acc[member.Part][member.Role].push(member);
-    return acc;
-  }, {} as Record<string, Record<string, TeamMember[]>>);
-};
-
-interface GroupWithMemberProps {
-  member: TeamMember;
-}
-
-/* The GroupWithMemberComponent constant is defining a React functional component that takes in a
-prop member of type GroupWithMemberProps. Inside the component function, it simply renders the
-information passed in by the member prop. No local translation is needed as this is already handled by Strapi. */
-const GroupWithMemberComponent: FC<GroupWithMemberProps> = memo(
-  ({ member }) => {
-    return (
-      <div className={cls.groupComponent}>
-        <MemberComponent member={member} />
-      </div>
-    );
-  },
-);
-
-GroupWithMemberComponent.displayName = 'GroupWithMemberComponent';
-
-interface MemberProps {
-  member: TeamMember;
-}
-
-/* The MemberComponent constant is defining a React functional component that takes in a prop
-member of type MemberProps. Inside the component function, it renders a section displaying
-information about a team member, including their website, GitHub, LinkedIn, and email. */
-const MemberComponent: FC<MemberProps> = memo(({ member }) => {
-  return (
-    <div className={cls.workmanComponent}>
-      <div className={cls.iconContainer}>
-        <h3>{member.Name}</h3>
-        {member.Logo ? (
-          <Image
-            src={member.Logo}
-            alt={`logo`}
-            width={25}
-            height={25}
-            className={cls.memberLogo}
-          />
-        ) : (
-          <></>
-        )}
-        {member.Website && (
-          <span className={cls.clickableLogo}>
-            <FontAwesomeIcon
-              icon={faGlobe}
-              size='xl'
-              onClick={() => openLinkInNewTab(member.Website)}
-              className={cls.Logo}
-            />
-          </span>
-        )}
-        {member.Github && (
-          <span className={cls.clickableLogo}>
-            <FontAwesomeIcon
-              icon={faGithub}
-              size='xl'
-              onClick={() => openLinkInNewTab(member.Github)}
-            />
-          </span>
-        )}
-        {member.Linkedin && (
-          <span className={cls.clickableLogo}>
-            <FontAwesomeIcon
-              icon={faLinkedin}
-              size='xl'
-              onClick={() => openLinkInNewTab(member.Linkedin)}
-            />
-          </span>
-        )}
-        {member.Email && (
-          <span className={cls.clickableLogo}>
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              size='xl'
-              onClick={() => openLinkInNewTab(member.Email)}
-            />
-          </span>
-        )}
-      </div>
-      <div className={cls.taskText}>
-        <p>{member.Task}</p>
-      </div>
-    </div>
-  );
-});
-
-MemberComponent.displayName = 'MemberComponent';

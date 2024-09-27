@@ -1,40 +1,19 @@
 .MembersSection {
   font-family: var(--font-family-texts);
-  //min-height: 100% !important;
-  text-align: center;
   display: grid;
   justify-items: center;
   user-select: none;
-
-  //color: var(--red-dark);
-
-  //height: 100%;
 }
 
 .scrollBottomButton {
-  //align-self: start;
   margin-bottom: 10px;
-
   @include link-scale-effect;
 }
 
 .membersListContainer {
   border-radius: var(--border-radius-custom);
   z-index: 2;
-  //background-color: var(--transparent-bg-dark);
   background-color: rgba(0, 0, 0, 0.55);
-}
-
-.groupComponent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
 }
 
 .membersListContainer h2 {
@@ -42,46 +21,78 @@
   font-family: var(--font-family-main);
   line-height: 1.5;
   color: blue;
+  text-align: center;
 }
+
 .membersListContainer h1 {
-  font-size: clamp(40px, 7vw, 50px);
+  font-size: clamp(20px, 3vw, 30px);
   font-family: var(--font-family-main);
   color: red;
+  text-align: start;
 }
 
 .workmanComponent {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  padding-left: 20%;
+  padding-right: 20%;
 
-  h3 {
-    font-size: clamp(20px, 5vw, 25px);
-    line-height: var(--font-family-main);
+  .memberRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .teamName {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1rem;
+    flex: 1;
+  }
+
+  .centerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex: 2;
+    text-align: center;
+  }
+
+  .memberName {
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .taskText {
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    flex: 1;
   }
 
   .iconContainer {
     display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
     align-items: center;
-    gap: 10px;
   }
 
-  .taskText {
-    padding-bottom: 15px;
-    display: block;
+  .clickableLogo {
+    color: var(--secondary-color);
+    cursor: pointer;
+    @include link-scale-effect('icon');
   }
 
-  @media only screen and (min-width: 1921px) {
-    h3 {
-      font-size: inherit;
-    }
+  .memberLogo {
+    @include link-scale-effect('icon');
+    size: inherit;
+    margin-top: 10px;
   }
-}
-.clickableLogo {
-  color: var(--secondary-color);
-  cursor: pointer;
-  @include link-scale-effect('icon');
-}
-.memberLogo {
-  @include link-scale-effect('icon');
-  size: inherit;
 }
