@@ -45,7 +45,7 @@ export const useUserPermissionsV2 = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
 
-    const userActionWith = (permission: UserPermissionsV2): PermissionResult => {
+    const checkPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
         switch (permission) {
             case 'login':
                 return !isAuthenticated
@@ -94,5 +94,5 @@ export const useUserPermissionsV2 = () => {
         }
     };
 
-    return { userActionWith };
+    return { checkPermissionFor };
 };

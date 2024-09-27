@@ -22,7 +22,7 @@ const NavItem = memo((props: NavItemProps) => {
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "navbar");
-    const { userActionWith } = useUserPermissionsV2();
+    const { checkPermissionFor } = useUserPermissionsV2();
 
     if (itemType === "navLink") {
         return (
@@ -42,8 +42,7 @@ const NavItem = memo((props: NavItemProps) => {
         )
     }
     if (itemType === "navDropDown") {
-        const { userActionWith } = useUserPermissionsV2();
-        const canUserSeeOwnClan = userActionWith("clan:seeOwn").isGranted;
+        const canUserSeeOwnClan = checkPermissionFor("clan:seeOwn").isGranted;
         const localizedElements = item.elements
             .map((element) => {
                 if(element.elementText == "clanpage" && !canUserSeeOwnClan) {
