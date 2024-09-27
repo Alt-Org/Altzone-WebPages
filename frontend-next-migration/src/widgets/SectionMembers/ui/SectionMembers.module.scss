@@ -11,24 +11,31 @@
 }
 
 .membersListContainer {
-  border-radius: var(--border-radius-custom);
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.55);
-}
-
-.membersListContainer h2 {
-  font-size: clamp(20px, 3vw, 50px);
-  font-family: var(--font-family-main);
-  line-height: 1.5;
-  color: blue;
-  text-align: center;
-}
-
-.membersListContainer h1 {
+  padding: 1rem 2rem;
   font-size: clamp(20px, 3vw, 30px);
   font-family: var(--font-family-main);
-  color: red;
   text-align: start;
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: var(--border-radius-custom);
+
+  h1 {
+    text-transform: uppercase;
+    font-size: clamp(
+      20px,
+      3vw,
+      30px
+    ); /* Yhdistetty kahden h1 tyylin fonttikoko */
+    color: var(--secondary-color);
+    text-align: start;
+    background-color: transparent; /* Tausta poistettu */
+  }
+
+  h2 {
+    font-size: clamp(20px, 3vw, 50px);
+    line-height: 1.5;
+    color: var(--secondary-color);
+    text-align: center;
+  }
 }
 
 .workmanComponent {
@@ -48,26 +55,18 @@
     padding: 10px 0;
   }
 
-  .teamName {
-    text-align: left;
-    font-weight: bold;
-    font-size: 1.1rem;
-    flex: 1;
-  }
-
   .centerContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 1rem;
     flex: 2;
-    text-align: center;
   }
 
   .memberName {
     font-weight: bold;
     font-size: 1rem;
-    text-align: center;
+    text-align: right; /* Aseta teksti oikealle */
+    direction: rtl; /* Aseta teksti virtaamaan oikealta vasemmalle */
   }
 
   .taskText {
@@ -95,4 +94,21 @@
     size: inherit;
     margin-top: 10px;
   }
+}
+
+.memberCard {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius-custom);
+}
+
+.departmentsSection {
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.departmentCard {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius-custom);
 }
