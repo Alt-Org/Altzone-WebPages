@@ -38,7 +38,6 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const { isFixed } = useFixed();
     const hasScrollbar = useIsPageScrollbar();
 
-
     const {checkPermissionFor} = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor("login");
     const permissionToLogout = checkPermissionFor("logout");
