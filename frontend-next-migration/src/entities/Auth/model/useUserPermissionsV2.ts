@@ -35,6 +35,8 @@ export type UserPermissionsV2 =
 export const useUserPermissionsV2 = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
+
+    // todo figure out can we get this limit if not we should make an issue to our server github
     // const clanLimitExceeded = useSelector(selectClanLimitExceeded);
 
     const getPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
