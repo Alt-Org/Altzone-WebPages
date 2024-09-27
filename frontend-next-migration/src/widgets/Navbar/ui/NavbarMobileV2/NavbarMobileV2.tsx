@@ -78,7 +78,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                             };
                         })
                         .filter(element => element !== null); // Filter out any null elements
-
                     // If there are no valid elements left, return null to skip this item
                     if (localizedElements.length === 0) {
                         return null;
