@@ -10,7 +10,8 @@ export enum PermissionError {
     UnknownPermission = 'UnknownPermission',
 }
 
-export type UserPermissions =
+// todo remove v2 after everything will be moved to this hook
+export type UserPermissionsV2 =
     | 'canISeeLogin'
     | 'canISeeLogout'
     | 'canICreateClan'
@@ -23,12 +24,13 @@ interface PermissionResult {
     error?: PermissionError;
 }
 
+// todo remove v2 after everything will be moved to this hook
 export const useUserPermissionsV2 = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
     // const clanLimitExceeded = useSelector(selectClanLimitExceeded);
 
-    const canI = (permission: UserPermissions): PermissionResult => {
+    const canI = (permission: UserPermissionsV2): PermissionResult => {
         switch (permission) {
             case 'canISeeLogin':
                 if (!isAuthenticated) {
