@@ -27,7 +27,7 @@ export type UserPermissionsV2 =
     | 'login'
     | 'logout'
     | 'clan:create'
-    | 'clan:see'
+    | 'clan:seeAll'
     | 'clan:seeOwn'
     | 'clan:join';
 
@@ -66,7 +66,7 @@ export const useUserPermissionsV2 = () => {
                 }
                 return createGrantedResult();
 
-            case 'clan:see':
+            case 'clan:seeAll':
                 return isAuthenticated
                     ? createGrantedResult()
                     : createNotGrantedResult(PermissionError.NotAuthenticated);
