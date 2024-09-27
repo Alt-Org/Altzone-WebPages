@@ -7,8 +7,12 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+  faFacebook,
+} from '@fortawesome/free-brands-svg-icons';
 import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
 import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
@@ -18,47 +22,47 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => (
   <li key={member.id} className={cls.workmanComponent}>
     <div className={cls.memberRow}>
       <div className={cls.centerContainer}>
-        <span className={cls.memberName}>{member.Name}</span>
-        <span className={cls.taskText}>{member.Task}</span>
+        <span className={cls.memberName}>{member.name}</span>
+        <span className={cls.taskText}>{member.task}</span>
         <div className={cls.iconContainer}>
-          {member.Website && (
+          {member.website && (
             <span
-              onClick={() => openLinkInNewTab(member.Website)}
+              onClick={() => openLinkInNewTab(member.website)}
               className={cls.clickableLogo}>
               <FontAwesomeIcon icon={faGlobe} />
             </span>
           )}
-          {member.Github && (
+          {member.github && (
             <span
-              onClick={() => openLinkInNewTab(member.Github)}
+              onClick={() => openLinkInNewTab(member.github)}
               className={cls.clickableLogo}>
               <FontAwesomeIcon icon={faGithub} />
             </span>
           )}
-          {member.Linkedin && (
+          {member.linkedin && (
             <span
-              onClick={() => openLinkInNewTab(member.Linkedin)}
+              onClick={() => openLinkInNewTab(member.linkedin)}
               className={cls.clickableLogo}>
               <FontAwesomeIcon icon={faLinkedin} />
             </span>
           )}
-          {member.Facebook && (
+          {member.facebook && (
             <span
-              onClick={() => openLinkInNewTab(member.Facebook)}
+              onClick={() => openLinkInNewTab(member.facebook)}
               className={cls.clickableLogo}>
               <FontAwesomeIcon icon={faFacebook} />
             </span>
           )}
-          {member.Instagram && (
+          {member.instagram && (
             <span
-              onClick={() => openLinkInNewTab(member.Instagram)}
+              onClick={() => openLinkInNewTab(member.instagram)}
               className={cls.clickableLogo}>
               <FontAwesomeIcon icon={faInstagram} />
             </span>
           )}
-          {member.Email && (
+          {member.email && (
             <span
-              onClick={() => openLinkInNewTab(`mailto:${member.Email}`)}
+              onClick={() => openLinkInNewTab(`mailto:${member.email}`)}
               className={cls.clickableLogo}>
               <FontAwesomeIcon icon={faEnvelope} />
             </span>
@@ -66,10 +70,10 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => (
         </div>
       </div>
     </div>
-    {member.Logo && (
+    {member.logo && (
       <Image
-        src={member.Logo}
-        alt={member.Name}
+        src={member.logo}
+        alt={member.name}
         className={cls.memberLogo}
         width={50}
         height={50}
@@ -85,20 +89,20 @@ interface WorkersSectionProps {
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const [teams, setTeams] = useState<Team[]>([]);
   const params = useParams();
-  const lng = params.lng as string;
+  const lng = params.lng as string; // tämä on nyt lokaali, esim. 'fi-FI'
   const { t } = useClientTranslation(lng, 'team');
 
   useEffect(() => {
     const fetchTeamsData = async () => {
       try {
-        const data = await fetchTeams(lng);
+        const data = await fetchTeams(lng); // Välitetään oikea lokaali
         setTeams(data);
       } catch (error) {
         console.error('Failed to fetch teams:', error);
       }
     };
     fetchTeamsData();
-  }, [lng]);
+  }, [lng]); // Locale varmistetaan, että päivitetään oikea lokaali
 
   return (
     <div className={classNames(cls.MembersSection, {}, [className])}>
@@ -109,14 +113,14 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
       <Container className={cls.membersListContainer}>
         {teams.map((team) => (
           <div key={team.id} className={cls.memberCard}>
-            <h1 className={cls.membersListContainer}>{team.Name}</h1>
+            <h1 className={cls.membersListContainer}>{team.name}</h1>
 
-            {/* Check if the team has departments */}
+            {/* Tarkista, onko osastoja */}
             {team.departments.length > 0 ? (
               <div className={cls.departmentsSection}>
                 {team.departments.map((department) => (
                   <div key={department.id} className={cls.departmentCard}>
-                    <h2>{department.Name}</h2>
+                    <h2>{department.name}</h2> {/* Lokalisoitu osaston nimi */}
                     {department.members.length > 0 && (
                       <ul className={cls.departmentMembersList}>
                         {department.members.map((member) => (
@@ -128,7 +132,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                 ))}
               </div>
             ) : (
-              // If no departments, render team members directly
+              // Jos ei osastoja, renderöi tiimin jäsenet suoraan
               <ul className={cls.membersList}>
                 {team.members.length > 0 &&
                   team.members.map((member: Member) => (
