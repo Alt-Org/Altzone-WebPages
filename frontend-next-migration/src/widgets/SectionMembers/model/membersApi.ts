@@ -111,8 +111,8 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
       };
     });
 
-    // Custom ordering of teams
-    const order = [
+    // Define custom ordering for both English and Finnish locales
+    const orderEn = [
       'Game Design',
       'Mentoring',
       'Sounds',
@@ -126,6 +126,23 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
       'Other Participants',
       'Special Thanks',
     ];
+
+    const orderFi = [
+      'Pelisuunnittelu',
+      'Mentorointi',
+      'Ohjelmointi',
+      'Grafiikka',
+      'Äänet',
+      'Sarjakuva',
+      'Tuotanto',
+      'Analyysi',
+      'Pelitaiteen opetuspaketti',
+      'Muut mukana olleet',
+      'Erityiskiitokset',
+    ];
+
+    // Select the correct order based on locale
+    const order = locale === 'fi' ? orderFi : orderEn;
 
     return teams.sort((a: Team, b: Team) => {
       const indexA = order.indexOf(a.Name);
