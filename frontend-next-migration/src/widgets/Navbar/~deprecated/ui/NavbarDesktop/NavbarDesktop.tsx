@@ -14,7 +14,7 @@ import {
     isRightSide
 } from "../../../model/types/type.guards";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import {useLogoutMutation, useUserPermissions, useUserPermissionsV2} from "@/entities/Auth";
+import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
