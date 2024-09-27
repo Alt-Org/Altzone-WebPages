@@ -27,9 +27,9 @@ export {
     selectIsAuthenticated
 } from "./model/authUserSlice";
 
-export {useUserPermissions} from "./model/useUserPermissions"
-export {userPermissions} from "./model/userPermissions";
-export type { UserPermissions } from "./model/userPermissions";
+export {useUserPermissions} from "./model/~deprecated/useUserPermissions"
+export {userPermissions} from "./model/~deprecated/userPermissions";
+export type { UserPermissions } from "./model/~deprecated/userPermissions";
 
 export {
     authMiddleware
