@@ -7,7 +7,7 @@ import cls from "./NavbarDesktopV2.module.scss";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { DropdownWrapper } from "@/shared/ui/DropdownWrapper";
 import Image from "next/image";
-import { useUserPermissions } from "@/entities/Auth";
+import { useUserPermissions, useUserPermissionsV2 } from "@/entities/Auth";
 
 type NavItemProps = {
     item: NavbarMenuItem;
@@ -22,7 +22,8 @@ const NavItem = memo((props: NavItemProps) => {
     const params = useParams();
     const lng = params.lng as string;
     const { t } = useClientTranslation(lng, "navbar");
-    const { canI } = useUserPermissions();
+    const { canI } = useUserPermissionsV2();
+    // const { canI } = useUserPermissions();
 
     if (itemType === "navLink") {
         return (
@@ -44,10 +45,9 @@ const NavItem = memo((props: NavItemProps) => {
 
 
     if (itemType === "navDropDown") {
-
         const localizedElements = item.elements
             .map((element) => {
-                if (element.elementText == "clanpage" && !canI("canISeeOwnClan")) {
+                if (element.elementText == "clanpage" && !canI("canISeeOwnClan").granted) {
                     return null; // Skip this element if elementText is "clanpage"
                 }
                 return {
