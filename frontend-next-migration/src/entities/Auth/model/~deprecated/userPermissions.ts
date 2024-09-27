@@ -1,4 +1,4 @@
-import { selectHasClan, selectIsAuthenticated } from "../model/authUserSlice";
+import { selectHasClan, selectIsAuthenticated } from "../authUserSlice";
 import {createSelector} from "@reduxjs/toolkit";
 
 const canISeeClans = createSelector(
@@ -29,7 +29,9 @@ const canISeeOwnClan = createSelector(
 );
 
 
-
+/**
+ * @deprecated
+ */
 export const userPermissions = {
     canISeeLogin,
     canISeeLogout,
@@ -38,4 +40,7 @@ export const userPermissions = {
     canISeeOwnClan
 };
 
+/**
+ * @deprecated
+ */
 export type UserPermissions = keyof typeof userPermissions;
