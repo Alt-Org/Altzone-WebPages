@@ -55,17 +55,22 @@ const mapMembers = (membersData: any[]): Member[] => {
 };
 
 // Function to map departments
+// Function to map departments
 const mapDepartments = (
   departmentsData: any[],
   locale: string,
 ): Department[] => {
   return (
     departmentsData.map((dept: any) => {
-      // Look for localized department name
-      const localizedDeptName =
-        dept.attributes.localizations?.data.find(
-          (loc: any) => loc.attributes.locale === locale,
-        )?.attributes.Department || dept.attributes.Department;
+      // Etsi lokalisoitu nimi 'Department'-kentästä
+      const localizedDept = dept.attributes.localizations?.data.find(
+        (loc: any) => loc.attributes.locale === locale,
+      );
+
+      // Käytä lokalisoitua nimeä, jos saatavilla, muuten oletus 'Department'
+      const localizedDeptName = localizedDept
+        ? localizedDept.attributes.Department // Tämä on lokalisoitu kenttä
+        : dept.attributes.Department;
 
       const members = mapMembers(dept.attributes.members?.data || []);
 
@@ -84,7 +89,7 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
     const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
 
     const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.members,members`,
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.localizations,members`,
     );
 
     if (!response.ok) {
@@ -147,30 +152,6 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
     );
   } catch (error) {
     console.error('Error fetching teams data:', error);
-    return [];
-  }
-};
-
-// Fetch Departments independently if needed
-export const fetchDepartments = async (
-  locale: string = 'en',
-): Promise<Department[]> => {
-  try {
-    const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
-
-    const response = await fetch(
-      `${envHelper.strapiApiUrl}/departments?locale=${strapiLocale}&populate=*`,
-    );
-
-    if (!response.ok) {
-      throw new Error(`Error fetching departments: ${response.statusText}`);
-    }
-
-    const departmentData = await response.json();
-
-    return mapDepartments(departmentData.data || [], strapiLocale);
-  } catch (error) {
-    console.error('Error fetching departments data:', error);
     return [];
   }
 };
