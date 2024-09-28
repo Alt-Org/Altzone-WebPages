@@ -54,30 +54,29 @@ const mapMembers = (membersData: any[]): Member[] => {
   );
 };
 
-// Function to map departments
+// Function to map departments and ensure the correct members are assigned
 const mapDepartments = (
   departmentsData: any[],
   locale: string,
 ): Department[] => {
   return (
     departmentsData.map((dept: any) => {
-      // Haetaan lokalisoitu osaston nimi 'localizations'-kentästä
+      // Find the localized name if available
       const localizedDept = dept.attributes.localizations?.data.find(
-        (loc: any) => loc.attributes.locale === locale, // Tarkistetaan locale
+        (loc: any) => loc.attributes.locale === locale,
       );
 
-      // Käytetään lokalisoitua nimeä, jos saatavilla, muuten oletus 'Department'
       const localizedDeptName = localizedDept
-        ? localizedDept.attributes.Name // Lokalisoidun nimen kenttä, tarkista että tämä kenttä on oikein
-        : dept.attributes.Name; // Oletuskenttä, jos ei lokalisaatiota
+        ? localizedDept.attributes.Name
+        : dept.attributes.Name;
 
-      // Haetaan osaston jäsenet
+      // Map the members that are explicitly part of this department
       const members = mapMembers(dept.attributes.members?.data || []);
 
       return {
         id: dept.id,
-        name: localizedDeptName, // Käytetään lokalisoitua nimeä
-        members,
+        name: localizedDeptName,
+        members, // Explicitly assign members that belong to this department
       };
     }) || []
   );
@@ -88,9 +87,9 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
   try {
     const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
 
-    // Hakee kaikki lokalisoidut tiedot osastoille ja jäsenille
+    // Fetch data including localized departments and members
     const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.localizations,members`,
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.localizations,members,departments.members`,
     );
 
     if (!response.ok) {
@@ -99,17 +98,30 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
 
     const teamData = await response.json();
 
-    // Kartoitus tiimit ja niiden osastot
+    // Map teams and assign their respective members and departments
     const teams: Team[] = teamData.data.map((item: any) => {
-      const members = mapMembers(item.attributes.members?.data || []);
+      // Map team-level members (members who are not part of any specific department)
+      let members = mapMembers(item.attributes.members?.data || []);
+
+      // Map departments related to the team
       const departments = mapDepartments(
         item.attributes.departments?.data || [],
-        strapiLocale, // Passataan locale tässä
+        strapiLocale,
+      );
+
+      // Collect all member IDs that are assigned to departments
+      const departmentMemberIds = departments.flatMap((dept) =>
+        dept.members.map((member) => member.id),
+      );
+
+      // Filter out members from team-level members that are already in a department
+      members = members.filter(
+        (member) => !departmentMemberIds.includes(member.id),
       );
 
       return {
         id: item.id,
-        name: item.attributes.Team || item.attributes.Name, // Tarkistetaan tiimin nimi
+        name: item.attributes.Team || item.attributes.Name,
         createdAt: item.attributes.createdAt,
         updatedAt: item.attributes.updatedAt,
         locale: item.attributes.locale,
@@ -118,13 +130,13 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
       };
     });
 
-    // Järjestys osastoille englanniksi ja suomeksi
+    // Order teams by predefined lists
     const orderEn = [
       'Game Design',
       'Mentoring',
-      'Sounds',
       'Programming',
       'Graphics',
+      'Sounds',
       'Comic book',
       'Production',
       'Analysis',
@@ -150,7 +162,7 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
 
     const order = locale === 'fi' ? orderFi : orderEn;
 
-    // Järjestetään tiimit ennalta määrätyssä järjestyksessä
+    // Sort teams based on the order
     return teams.sort(
       (a: Team, b: Team) => order.indexOf(a.name) - order.indexOf(b.name),
     );
