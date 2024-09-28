@@ -12,6 +12,10 @@ import {
 import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
 import Image from 'next/image';
 
+/**
+ * MemberItem component displays information about a specific member.
+ * It includes member's name, task, logo, and relevant links like website, GitHub, LinkedIn, etc.
+ */
 const MemberItem: FC<{ member: Member }> = ({ member }) => {
   return (
     <li key={member.id} className={cls.workmanComponent}>
@@ -20,7 +24,7 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
           <span className={cls.memberName}>{member.name}</span>
           <span className={cls.taskText}>{member.task}</span>
           <div className={cls.iconContainer}>
-            {member.logo ? (
+            {member.logo && (
               <Image
                 src={member.logo}
                 alt={member.name}
@@ -28,9 +32,6 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
                 width={35}
                 height={35}
               />
-            ) : (
-              // Renderoi paikkakuva, jos logoa ei ole
-              <div className={cls.placeholderLogo}>No Image</div>
             )}
             {member.website && (
               <span

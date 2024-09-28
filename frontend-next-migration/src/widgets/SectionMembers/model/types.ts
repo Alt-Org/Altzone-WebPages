@@ -1,3 +1,10 @@
+// types.ts
+
+/**
+ * This file contains TypeScript interfaces that represent the structure of various entities
+ * used throughout the application, such as Member, Department, Team, and Logo.
+ */
+
 export interface Logo {
   data: {
     attributes: {
@@ -5,6 +12,7 @@ export interface Logo {
     };
   } | null;
 }
+
 export interface Member {
   id: number;
   name: string;
