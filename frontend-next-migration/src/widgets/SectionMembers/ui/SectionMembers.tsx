@@ -1,7 +1,8 @@
 import cls from './SectionMembers.module.scss';
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchTeams, Team, Member } from '../model/membersApi';
+import { fetchTeams } from '../model/membersApi';
+import { Team, Member } from '../model/types';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
@@ -16,6 +17,8 @@ import {
 import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
 import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
+
+// Rest of the component code remains the same
 
 const MemberItem: FC<{ member: Member }> = ({ member }) => (
   <li key={member.id} className={cls.workmanComponent}>

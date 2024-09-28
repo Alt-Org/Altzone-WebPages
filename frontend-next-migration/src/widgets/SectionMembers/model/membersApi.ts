@@ -1,37 +1,5 @@
 import { envHelper } from '@/shared/const/envHelper';
-
-// Interfaces
-export interface Member {
-  id: number;
-  name: string;
-  task?: string;
-  email?: string;
-  logo?: string;
-  website?: string;
-  github?: string;
-  linkedin?: string;
-  facebook?: string;
-  instagram?: string;
-  createdAt: string;
-  updatedAt: string;
-  locale: string;
-}
-
-export interface Department {
-  id: number;
-  name: string;
-  members: Member[];
-}
-
-export interface Team {
-  id: number;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  locale: string;
-  members: Member[];
-  departments: Department[];
-}
+import { Member, Department, Team } from '../model/types';
 
 // Function to map members
 const mapMembers = (membersData: any[]): Member[] => {
@@ -76,7 +44,7 @@ const mapDepartments = (
       return {
         id: dept.id,
         name: localizedDeptName,
-        members, // Explicitly assign members that belong to this department
+        members,
       };
     }) || []
   );
