@@ -1,11 +1,16 @@
-// types.ts
-
+export interface Logo {
+  data: {
+    attributes: {
+      url: string;
+    };
+  } | null;
+}
 export interface Member {
   id: number;
   name: string;
   task?: string;
   email?: string;
-  logo?: string;
+  logo?: string | null;
   website?: string;
   github?: string;
   linkedin?: string;

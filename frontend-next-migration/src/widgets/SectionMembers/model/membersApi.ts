@@ -11,7 +11,7 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
 
     // Fetch data including localized departments and members
     const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.localizations,members,departments.members`,
+      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.localizations,members.Logo,departments.members.Logo`,
     );
 
     if (!response.ok) {

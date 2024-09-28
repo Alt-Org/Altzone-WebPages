@@ -1,25 +1,28 @@
-// mappers.ts
-
 import { Member, Department } from './types';
 
-// Function to map members
 export const mapMembers = (membersData: any[]): Member[] => {
   return (
-    membersData.map((member: any) => ({
-      id: member.id,
-      name: member.attributes.Name,
-      task: member.attributes.Task,
-      email: member.attributes.Email,
-      linkedin: member.attributes.Linkedin,
-      website: member.attributes.Website,
-      github: member.attributes.Github,
-      logo: member.attributes.Logo,
-      facebook: member.attributes.Facebook,
-      instagram: member.attributes.Instagram,
-      createdAt: member.attributes.createdAt,
-      updatedAt: member.attributes.updatedAt,
-      locale: member.attributes.locale,
-    })) || []
+    membersData.map((member: any) => {
+      const logoUrl = member.attributes.Logo?.data?.attributes?.url
+        ? `${process.env.NEXT_PUBLIC_STRAPI_HOST}${member.attributes.Logo.data.attributes.url}`
+        : null;
+
+      return {
+        id: member.id,
+        name: member.attributes.Name,
+        task: member.attributes.Task,
+        email: member.attributes.Email,
+        linkedin: member.attributes.Linkedin,
+        website: member.attributes.Website,
+        github: member.attributes.Github,
+        logo: logoUrl,
+        facebook: member.attributes.Facebook,
+        instagram: member.attributes.Instagram,
+        createdAt: member.attributes.createdAt,
+        updatedAt: member.attributes.updatedAt,
+        locale: member.attributes.locale,
+      };
+    }) || []
   );
 };
 
@@ -39,7 +42,7 @@ export const mapDepartments = (
         ? localizedDept.attributes.Name
         : dept.attributes.Name;
 
-      // Map the members that are explicitly part of this department
+      // Map the members that are explicitly part of this department, including logo information
       const members = mapMembers(dept.attributes.members?.data || []);
 
       return {
