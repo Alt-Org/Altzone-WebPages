@@ -11,8 +11,7 @@
 }
 
 .membersListContainer {
-  padding: 1rem 2rem;
-  font-size: clamp(20px, 3vw, 30px);
+  font-size: clamp(10px, 3vw, 40px);
   font-family: var(--font-family-main);
   text-align: start;
   background-color: rgba(0, 0, 0, 0.55);
@@ -20,18 +19,14 @@
 
   h1 {
     text-transform: uppercase;
-    font-size: clamp(
-      20px,
-      3vw,
-      30px
-    ); /* Yhdistetty kahden h1 tyylin fonttikoko */
+    font-size: clamp(20px, 3vw, 30px); /* Muuntuva fonttikoko */
     color: var(--secondary-color);
     text-align: start;
     background-color: transparent; /* Tausta poistettu */
   }
 
   h2 {
-    font-size: clamp(20px, 3vw, 50px);
+    font-size: clamp(20px, 3vw, 30px); /* Muuntuva fonttikoko */
     line-height: 1.5;
     color: var(--secondary-color);
     text-align: center;
@@ -41,74 +36,104 @@
 .workmanComponent {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin-bottom: 15px;
-  padding-left: 20%;
-  padding-right: 20%;
+  margin: 5px;
 
   .memberRow {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
     width: 100%;
     padding: 10px 0;
+    gap: 10px;
+
+    .memberName {
+      font-weight: bold;
+      font-size: clamp(0.8rem, 2.5vw, 3rem); /* Muuntuva fonttikoko */
+      text-align: left;
+      flex-grow: 3; /* Yhdenmukainen arvo taskText:in kanssa */
+      min-width: 0; /* Sallii kutistumisen */
+    }
+
+    .taskText {
+      font-size: clamp(0.8rem, 2.5vw, 2rem); /* Muuntuva fonttikoko */
+      text-align: left;
+      flex-grow: 2;
+      padding: 0 5px; /* Pienennä täytettä pienten näyttöjen osalta */
+      min-width: 0; /* Sallii kutistumisen */
+      justify-self: start;
+    }
+
+    .iconContainer {
+      display: flex;
+      gap: 1rem; /* Pienennä gap-pienillä näytöillä */
+      align-items: center;
+      flex-grow: 1;
+      min-width: 0; /* Sallii kutistumisen */
+    }
   }
 
   .centerContainer {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
     flex: 2;
-  }
-
-  .memberName {
-    font-weight: bold;
-    font-size: 1rem;
-    text-align: right; /* Aseta teksti oikealle */
-    direction: rtl; /* Aseta teksti virtaamaan oikealta vasemmalle */
-  }
-
-  .taskText {
-    font-size: 1rem;
-    color: white;
-    text-align: center;
-    flex: 1;
-  }
-
-  .iconContainer {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-    align-items: center;
+    align-items: start;
   }
 
   .clickableLogo {
     color: var(--secondary-color);
     cursor: pointer;
+    font-size: clamp(1rem, 3vw, 5rem); /* Muuntuva fonttikoko */
     @include link-scale-effect('icon');
   }
 
-  .memberLogo {
+  .LogoWrapper {
+    width: clamp(
+      50px,
+      5vw,
+      40px
+    ); /* Leveys on vähintään 20px, enintään 50px, ja 5vw välillä */
+    height: auto;
+    cursor: pointer;
     @include link-scale-effect('icon');
-    size: inherit;
-    margin-top: 10px;
+
+    .placeholderLogo {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(200, 200, 200, 0.3); /* Placeholder väri */
+      border-radius: 50%; /* Sama muoto kuin logo */
+    }
   }
 }
 
 .memberCard {
-  padding: 1rem;
+  padding: 3rem;
   margin-bottom: 1rem;
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Muuntuva fonttikoko */
   border-radius: var(--border-radius-custom);
 }
 
 .departmentsSection {
   margin-top: 1rem;
-  padding-left: 1rem;
+  font-size: clamp(1rem, 2vw, 1.5rem); /* Muuntuva fonttikoko */
 }
 
 .departmentCard {
   padding: 0.5rem;
   margin-bottom: 1rem;
+  font-size: clamp(0.8rem, 2vw, 1.2rem); /* Muuntuva fonttikoko */
   border-radius: var(--border-radius-custom);
+}
+
+@media screen and (min-width: 1024px) {
+  .MembersSection {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .membersListContainer {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .workmanComponent {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }

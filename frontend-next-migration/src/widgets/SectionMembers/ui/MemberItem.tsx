@@ -24,15 +24,20 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
           <span className={cls.memberName}>{member.name}</span>
           <span className={cls.taskText}>{member.task}</span>
           <div className={cls.iconContainer}>
-            {member.logo && (
-              <Image
-                src={member.logo}
-                alt={member.name}
-                className={cls.Logo}
-                width={35}
-                height={35}
-              />
-            )}
+            {/* Render logo if available, otherwise render an empty placeholder */}
+            <div className={cls.logoWrapper}>
+              {member.logo ? (
+                <Image
+                  src={member.logo}
+                  alt={member.name}
+                  className={cls.Logo}
+                  width={30}
+                  height={30}
+                />
+              ) : (
+                <div className={cls.placeholderLogo} />
+              )}
+            </div>
             {member.website && (
               <span
                 onClick={() => openLinkInNewTab(member.website)}
