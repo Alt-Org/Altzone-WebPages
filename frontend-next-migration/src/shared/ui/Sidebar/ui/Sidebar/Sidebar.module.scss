@@ -73,6 +73,8 @@
 
 .items a {
   display: block;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .collapsed {
   width: var(--sidebar-width-collapsed);
