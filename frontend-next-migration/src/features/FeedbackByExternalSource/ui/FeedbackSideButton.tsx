@@ -4,7 +4,6 @@ import cls from "./FeedbackSideButton.module.scss"
 import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
 import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
 import {useClientTranslation} from "@/shared/i18n";
-import {useParams} from "next/navigation";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 
 
@@ -16,9 +15,7 @@ export const FeedbackSideButton = (props: Props) => {
 
     const {disableMobile= true} = props;
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "translation");
+    const {t} = useClientTranslation("translation");
 
     const {isMobileSize} = useIsMobileSize();
 

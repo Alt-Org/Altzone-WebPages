@@ -42,12 +42,9 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const permissionToLogout = checkPermissionFor("logout");
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
-    const params = useParams();
-    const lng = params.lng as string;
 
     const ns = defineNs(navBarType);
-
-    const { t } = useClientTranslation(lng, ns);
+    const { t } = useClientTranslation(ns);
 
 
     const style = marginTop

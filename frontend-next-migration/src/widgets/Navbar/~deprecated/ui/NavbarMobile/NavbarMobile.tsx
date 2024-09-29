@@ -7,7 +7,6 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 import {ISidebarItem, Sidebar} from "@/shared/ui/Sidebar";
 import {ItemType, NavbarBuild,} from "../../../model/types";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
-import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
 
@@ -45,10 +44,7 @@ const NavbarTouchComponent = ( props : NavbarTouchProps) => {
         [cls.right] : side === 'right',
     } as Record<string, boolean>;
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "navbar");
-
+    const {t} = useClientTranslation("navbar");
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
