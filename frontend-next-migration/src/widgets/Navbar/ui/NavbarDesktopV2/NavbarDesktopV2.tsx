@@ -7,13 +7,12 @@ import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { Container } from "@/shared/ui/Container";
 import { LangSwitcher } from "@/features/LangSwitcher";
-import { useLogoutMutation, useUserPermissions } from "@/entities/Auth";
+import {useLogoutMutation,useUserPermissionsV2} from "@/entities/Auth";
 import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
 import { FixedButton } from "../FixedButton/FixedButton";
 import { useFixed } from "../../model/FixedProvider";
 import { defineNs } from "../../model/defineNs";
-
 
 
 type NavbarProps = {
@@ -38,15 +37,17 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
     const { isFixed } = useFixed();
     const hasScrollbar = useIsPageScrollbar();
 
-    const { canI } = useUserPermissions();
+    const {checkPermissionFor} = useUserPermissionsV2();
+    const permissionToLogin = checkPermissionFor("login");
+    const permissionToLogout = checkPermissionFor("logout");
+    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
     const params = useParams();
     const lng = params.lng as string;
 
+    const ns = defineNs(navBarType);
 
-    const ns = defineNs(navBarType)
-
-    const { t, i18n } = useClientTranslation(lng, ns);
+    const { t } = useClientTranslation(lng, ns);
 
 
     const style = marginTop
@@ -57,8 +58,6 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         [cls.overlayed]: overlaid && !isFixed,
         [cls.fixed]: isFixed,
     } as Record<string, boolean>;
-
-
 
 
     return (
@@ -80,7 +79,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 
                     <li className={cls.navItem + ' ' + cls.authButton} key={"auth key"}>
                         {
-                            canI("canISeeLogin")
+                            permissionToLogin.isGranted
                                 ? (
                                     <AppLink
                                         theme={AppLinkTheme.PRIMARY}
@@ -91,7 +90,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                                         <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
                                     </AppLink>
                                 )
-                                : canI("canISeeLogout")
+                                :  permissionToLogout.isGranted
                                     ? <div onClick={() => logout()}>
                                         {t(`logout`)}
                                     </div>
