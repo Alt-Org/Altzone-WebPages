@@ -6,7 +6,6 @@ const NewsPage = () => {
   return (
     <main className={classNames(cls.NewsPage)}>
       <ComingSoon />
-      {/* TODO: Remember to Remove ComingSoon component.*/}
     </main>
   );
 };

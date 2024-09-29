@@ -15,6 +15,7 @@ export const ComingSoon = memo(() => {
   const handleGoBack = () => router.back();
 
   return (
+        <div className={cls.main}>
         <div className={cls.container}>
           <h1>{t('title')}</h1>
           <div className={cls.text}>
@@ -23,6 +24,7 @@ export const ComingSoon = memo(() => {
               <p>{t('backText')}</p>
             </div>
           </div>
+        </div>
         </div>
   );
 });
