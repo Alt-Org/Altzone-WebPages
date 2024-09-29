@@ -14,7 +14,6 @@
   background-color: rgba(0, 0, 0, 0.8);
   padding: 30px;
   border-radius: 10px;
-  opacity: 0;
   animation: fadeIn 3s forwards;
 }
 
@@ -24,14 +23,11 @@
   }
 }
 
-.title {
-  white-space: pre-line;
-}
-
 .NavGoBackButton {
   padding-top: 2rem;
   cursor: pointer;
   color: var(--secondary-color);
+  transition: opacity 0.3s;
 
   &:hover {
     opacity: 0.8;
