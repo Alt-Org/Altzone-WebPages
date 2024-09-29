@@ -59,8 +59,13 @@ export const Sidebar = ({
                         }: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
+    const [isOpening, setIsOpening] = useState(false);
 
     const handleBurgerButtonClick = () => {
+
+        setIsOpening(true);
+        setTimeout(() => setIsOpening(false), 300);
+
         setIsCollapsed((prevState) => {
             if (prevState) {
                 document.body.classList.add('no-scroll');
@@ -83,6 +88,7 @@ export const Sidebar = ({
         [cls.expanded]: !isCollapsed,
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
+        [cls.opening]: isOpening,
     }
 
     const buttonMods = {
