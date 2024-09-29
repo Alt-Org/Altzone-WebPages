@@ -112,7 +112,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
             <div
                 className={classNames(cls.NavbarMobile__burger, sidebarMods)}
-                onClick={() => props.onBurgerButtonClick && props.onBurgerButtonClick(true)}
+                onClick={() => props.onBurgerButtonClick?.(true)}
             >
             </div>
             <Sidebar
