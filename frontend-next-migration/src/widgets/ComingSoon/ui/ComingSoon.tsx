@@ -22,7 +22,7 @@ export const ComingSoon = memo(() => {
   };
 
   return (
-      <main className={cls.main}>
+      <div className={cls.main}>
         <div className={cls.container}>
           <h1>{t('title')}</h1>
           <div className={cls.text}>
@@ -34,7 +34,7 @@ export const ComingSoon = memo(() => {
             </div>
           </div>
         </div>
-      </main>
+      </div>
   );
 });
 
