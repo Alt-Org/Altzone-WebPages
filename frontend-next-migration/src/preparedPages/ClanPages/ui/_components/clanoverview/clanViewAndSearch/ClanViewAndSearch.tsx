@@ -1,17 +1,15 @@
 import cls from "./ClanSearchAndView.module.scss";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import { useGetClansQuery } from "@/entities/Clan";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { useEffect, useState } from "react";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
 const ClansSearchAndViewDesktop = () => {
-    const params = useParams();
     const router = useRouter();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "clan");
+    const { t } = useClientTranslation("clan");
 
     const [currentSearch, setSearch] = useState('');
     const { data: clans, isLoading } = useGetClansQuery({ page: 1, search: currentSearch });
@@ -96,10 +94,8 @@ const ClansSearchAndViewDesktop = () => {
 export default ClansSearchAndViewDesktop;
 
 const ClansSearchAndViewMobile = () => {
-    const params = useParams();
     const router = useRouter();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "clan");
+    const { t } = useClientTranslation("clan");
 
     const [currentSearch, setSearch] = useState('');
     const [showClanList, setShowClanList] = useState(false);

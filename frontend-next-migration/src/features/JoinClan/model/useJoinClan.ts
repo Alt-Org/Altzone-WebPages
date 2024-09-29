@@ -1,12 +1,10 @@
 import { useJoinClanMutation } from "@/entities/Clan";
 import { toast } from "react-toastify";
 import { useClientTranslation } from "@/shared/i18n";
-import { useParams } from "next/navigation";
 
 const useJoinClan = () => {
 
-   const { lng } = useParams();
-   const { t } = useClientTranslation(lng as string, "clan");
+   const { t } = useClientTranslation("clan");
    const [joinClan] = useJoinClanMutation();
 
 
