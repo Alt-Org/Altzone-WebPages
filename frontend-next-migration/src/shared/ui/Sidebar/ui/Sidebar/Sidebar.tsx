@@ -16,6 +16,7 @@ interface SidebarProps {
     side?: 'left' | 'right'
     closeOnClickOutside?: boolean;
     bottomItems?: ReactNode;
+    onClose?: () => void;
 }
 
 /**
@@ -55,7 +56,8 @@ export const Sidebar = ({
                             sidebarItemsList,
                             side = 'left',
                             closeOnClickOutside = false,
-                            bottomItems = "Login"
+                            bottomItems = "Login",
+                            onClose
                         }: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
@@ -71,6 +73,7 @@ export const Sidebar = ({
                 document.body.classList.add('no-scroll');
             } else {
                 document.body.classList.remove('no-scroll');
+                onClose?.();
             }
             return !prevState;
         });
