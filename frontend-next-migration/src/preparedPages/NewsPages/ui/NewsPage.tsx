@@ -4,10 +4,10 @@ import { ComingSoon } from '@/widgets/ComingSoon';
 
 const NewsPage = () => {
   return (
-    <div className={classNames(cls.NewsPage)}>
+    <main className={classNames(cls.NewsPage)}>
       <ComingSoon />
       {/* TODO: Remember to Remove ComingSoon component.*/}
-    </div>
+    </main>
   );
 };
 
