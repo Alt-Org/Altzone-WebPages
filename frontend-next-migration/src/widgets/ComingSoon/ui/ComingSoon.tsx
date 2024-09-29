@@ -28,7 +28,7 @@ export const ComingSoon = memo(() => {
           <div className={cls.text}>
             <h3>{t('text')}</h3>
             <div
-                className={classNames(cls.NavGoBackButton, {}, [])}
+                className={classNames(cls.NavGoBackButton)}
                 onClick={handleGoBack}>
               <p>{t('backText')}</p>
             </div>
