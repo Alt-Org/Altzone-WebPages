@@ -71,7 +71,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setIsSidebarOpen(false);
         props.onBurgerButtonClick?.(false);
         // we should give some time for animation
-        setTimeout(() => setKey(currentKey => currentKey+1), 300);
+        setTimeout(() => setKey(currentKey => currentKey+1), 500);
     };
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
