@@ -13,7 +13,6 @@ export default function NewsLayout({ children }: Props) {
     <>
       <Navbar overlaid />
       {children}
-      <FeedbackSideButton />
       <HorizontalLines />
       <Footer />
     </>
