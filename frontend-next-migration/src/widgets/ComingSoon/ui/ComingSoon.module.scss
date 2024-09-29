@@ -1,3 +1,10 @@
+.main{
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   padding: 30px;
   width: clamp(300px, 600px, 90%);
