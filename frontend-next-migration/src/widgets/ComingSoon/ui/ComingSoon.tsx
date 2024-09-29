@@ -15,17 +15,15 @@ export const ComingSoon = memo(() => {
   const handleGoBack = () => router.back();
 
   return (
-      <div className={cls.main}>
         <div className={cls.container}>
           <h1>{t('title')}</h1>
           <div className={cls.text}>
             <h3>{t('text')}</h3>
-            <div className={classNames(cls.NavGoBackButton)} onClick={handleGoBack}>
+            <div  role="button" className={classNames(cls.NavGoBackButton)} onClick={handleGoBack}>
               <p>{t('backText')}</p>
             </div>
           </div>
         </div>
-      </div>
   );
 });
 

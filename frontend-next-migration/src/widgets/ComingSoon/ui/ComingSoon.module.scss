@@ -1,19 +1,9 @@
-.main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 10px;
-}
-
 .container {
-  display: grid;
-  place-content: center;
-  text-align: center;
-  width: clamp(200px, 600px, 90%);
-  background-color: rgba(0, 0, 0, 0.8);
   padding: 30px;
-  border-radius: 10px;
+  width: clamp(300px, 600px, 90%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: var(--border-radius-custom);
   animation: fadeIn 3s forwards;
 }
 
