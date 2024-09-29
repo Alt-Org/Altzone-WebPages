@@ -1,4 +1,4 @@
-import { CSSProperties, memo, useMemo } from "react";
+import {CSSProperties, memo, useMemo, useState} from "react";
 import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
 import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
@@ -58,6 +58,22 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const { isFixed } = useFixed();
     const hasScrollbar = useIsPageScrollbar();
 
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+
+    // A crutch to reset dropdowns when closing the navbar
+    const [key, setKey] = useState(0);
+    const handleBurgerClick = () => {
+        setIsSidebarOpen(true);
+        props.onBurgerButtonClick?.(true);
+    };
+    const handleSidebarClose = () => {
+        setIsSidebarOpen(false);
+        props.onBurgerButtonClick?.(false);
+        // we should give some time for animation
+        setTimeout(() => setKey(currentKey => currentKey+1), 300);
+    };
+
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map(item => {
@@ -89,7 +105,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 return null;
             })
             .filter(item => item !== null) as ISidebarItem[];
-    }, [navbarBuild, t]);
+    }, [navbarBuild, t, isSidebarOpen]);
 
     const style: CSSProperties = marginTop
         ? { "marginTop": `${marginTop}px` }
@@ -109,18 +125,20 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     };
 
     return (
-        <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
+        <nav className={classNames(cls.Navbar, mods, [className])} style={style} >
             <div
                 className={classNames(cls.NavbarMobile__burger, sidebarMods)}
-                onClick={() => props.onBurgerButtonClick?.(true)}
+                onClick={handleBurgerClick}
             >
             </div>
             <Sidebar
+                key={key}
                 buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
                 sidebarClassName={cls.sidebar}
                 sidebarItemsList={sidebarItemsList}
                 side={side}
                 closeOnClickOutside
+                onClose={handleSidebarClose}
                 bottomItems={
                     <div className={cls.sidebarBottom}>
                         <LangSwitcher className={cls.langSwitcher} />
