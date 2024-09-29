@@ -3,13 +3,14 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
 .container {
   display: grid;
   place-content: center;
   text-align: center;
-  width: 30%;
+  width: clamp(200px, 600px, 80%);
   background-color: rgba(0, 0, 0, 0.8);
   padding: 30px;
   border-radius: 10px;
