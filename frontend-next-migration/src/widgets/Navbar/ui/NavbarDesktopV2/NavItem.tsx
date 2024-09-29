@@ -1,6 +1,5 @@
 import { NavbarBuild, NavbarMenuItem } from "../../model/types";
 import { memo } from "react";
-import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./NavbarDesktopV2.module.scss";
@@ -19,9 +18,7 @@ const NavItem = memo((props: NavItemProps) => {
     const { item, className = '', navbarBuild } = props;
     const { type: itemType } = item
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "navbar");
+    const { t } = useClientTranslation("navbar");
     const { checkPermissionFor } = useUserPermissionsV2();
 
     if (itemType === "navLink") {

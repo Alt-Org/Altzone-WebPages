@@ -2,11 +2,9 @@ import { useLeaveClanMutation } from "@/entities/Clan";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useClientTranslation } from "@/shared/i18n";
-import { useParams } from "next/navigation";
 
 const useLeaveClan = () => {
-   const { lng } = useParams();
-   const { t } = useClientTranslation(lng as string, "clan");
+   const { t } = useClientTranslation("clan");
    const [leaveClan] = useLeaveClanMutation();
    const [isCancelled, setIsCancelled] = useState(false);
 

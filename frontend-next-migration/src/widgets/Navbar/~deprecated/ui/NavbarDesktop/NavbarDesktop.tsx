@@ -15,10 +15,8 @@ import {
 } from "../../../model/types/type.guards";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
 import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
-import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
-
 
 
 interface NavbarProps {
@@ -59,10 +57,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t, i18n} = useClientTranslation(lng, "navbar");
-
+    const {t} = useClientTranslation("navbar");
 
     const rightSideRef = useRef(null);
     const [distToRightBorder , setDistToRightBorder] = useState<number>();
@@ -192,9 +187,7 @@ const NavbarItemsComponent =
      }: NavbarItemsProps) => {
 
 
-        const params = useParams();
-        const lng = params.lng as string;
-        const {t} = useClientTranslation(lng, "navbar");
+        const {t} = useClientTranslation( "navbar");
 
         return (
             <>
