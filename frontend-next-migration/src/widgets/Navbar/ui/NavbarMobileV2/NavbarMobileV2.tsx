@@ -60,9 +60,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-
     // A crutch to reset dropdowns when closing the navbar
-    const [key, setKey] = useState(0);
+    const [sidebarItemsListResetKey, setSidebarItemsListResetKey] = useState(0);
     const handleBurgerClick = () => {
         setIsSidebarOpen(true);
         props.onBurgerButtonClick?.(true);
@@ -71,7 +70,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setIsSidebarOpen(false);
         props.onBurgerButtonClick?.(false);
         // we should give some time for animation
-        setTimeout(() => setKey(currentKey => currentKey+1), 500);
+        setTimeout(() => setSidebarItemsListResetKey(currentKey => currentKey+1), 500);
     };
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
@@ -132,7 +131,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             >
             </div>
             <Sidebar
-                key={key}
+                sidebarItemsListResetKey={sidebarItemsListResetKey}
                 buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
                 sidebarClassName={cls.sidebar}
                 sidebarItemsList={sidebarItemsList}

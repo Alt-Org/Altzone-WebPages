@@ -17,6 +17,8 @@ interface SidebarProps {
     closeOnClickOutside?: boolean;
     bottomItems?: ReactNode;
     onClose?: () => void;
+    sidebarItemsListResetKey?: number;
+
 }
 
 /**
@@ -57,7 +59,8 @@ export const Sidebar = ({
                             side = 'left',
                             closeOnClickOutside = false,
                             bottomItems = "Login",
-                            onClose
+                            onClose,
+                            sidebarItemsListResetKey
                         }: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
@@ -165,7 +168,7 @@ export const Sidebar = ({
                 ref={sidebarRef}
                 className={classNames(cls.Sidebar, mods, [sidebarClassName])}
             >
-                <div className={cls.items}>
+                <div className={cls.items} key={sidebarItemsListResetKey}>
                     {itemsList}
                 </div>
                 <div className={cls.bottomItems}>
