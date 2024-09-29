@@ -14,7 +14,7 @@ import {
     isRightSide
 } from "../../../model/types/type.guards";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
+import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
 import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
@@ -51,8 +51,12 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
-    const {canI} = useUserPermissions();
+    const {checkPermissionFor} = useUserPermissionsV2();
+    const permissionToLogin = checkPermissionFor("login");
+    const permissionToLogout = checkPermissionFor("logout");
 
+
+    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
     const params = useParams();
@@ -133,7 +137,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                     {/*<button onClick={()=> i18n.changeLanguage("fi") }>change language</button>*/}
 
                         {
-                            canI("canISeeLogin")
+                            permissionToLogin.isGranted
                                 ? (
                                     <AppLink
                                         theme={AppLinkTheme.PRIMARY}
@@ -144,7 +148,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                                         <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>
                                     </AppLink>
                                 )
-                                : canI("canISeeLogout")
+                                : permissionToLogout.isGranted
                                     ? <div onClick={() => logout()}>
                                         {t(`logout`)}
                                     </div>

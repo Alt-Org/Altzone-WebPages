@@ -46,6 +46,7 @@ export const authUserSlice = createSlice({
     },
 
     reducers: {
+        //todo profile should have its own state in the profile entity !!!!!!!
         setProfile: (state, action: PayloadAction<IProfile>) => {
             state.profile = action.payload;
         },
@@ -84,15 +85,20 @@ export const selectIsAuthenticated = createSelector(
 
 // Selector to get the whole authUser state
 export const selectAuthUserState = (state: StateSchema) => state.authUser;
+
+//todo profile should have its own selector in the profile entity !!!!!!!
 // Selector to get the profile from the authUser state
 export const selectProfile = (state: StateSchema) => state.authUser.profile;
 // Selector to get the access token info from the authUser state
+
 export const selectAccessTokenInfo = (state: StateSchema) => state.authUser.accessTokenInfo;
+//todo profile should have its own state in the profile entity !!!!!!!
 // Selector to get clan id
 export const selectClanId = (state: StateSchema) => state.authUser.profile?.Player.clan_id;
 // Selector to get the is Session Expired info from the authUser state
 export const selectIsSessionExpired = (state: StateSchema) => state.authUser.isSessionExpired;
 
+//todo profile should have its own state in the profile entity !!!!!!!
 // Selector to check if the user has a clan
 export const selectHasClan = createSelector(
     selectProfile,
