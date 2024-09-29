@@ -66,7 +66,7 @@ export const Sidebar = ({
     const handleBurgerButtonClick = () => {
 
         setIsOpening(true);
-        setTimeout(() => setIsOpening(false), 300);
+        setTimeout(() => setIsOpening(false), 500);
 
         setIsCollapsed((prevState) => {
             if (prevState) {
