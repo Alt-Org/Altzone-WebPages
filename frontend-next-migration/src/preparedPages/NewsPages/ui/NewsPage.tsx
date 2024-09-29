@@ -35,7 +35,7 @@ const NewsPage = () => {
           content={`${envHelper.appDomain}/${RoutePaths.NEWS}`}
         />
       </Head>
-      <ComingSoon lng={''} />
+      <ComingSoon />
       {/* TODO: Remember to Remove ComingSoon component.*/}
     </div>
   );
