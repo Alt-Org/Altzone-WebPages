@@ -1,4 +1,5 @@
 # Altzone-WebPages
 webpage current version : https://altzone.fi/ <br/>
 
-## come and see!
+## You can see our wiki pages to get to know about the project
+https://github.com/Alt-Org/Altzone-WebPages/wiki
