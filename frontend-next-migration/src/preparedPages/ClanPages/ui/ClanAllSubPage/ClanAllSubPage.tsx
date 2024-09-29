@@ -4,12 +4,10 @@ import cls from "./ClanAllSubPage.module.scss";
 import { GetClansResponse, useGetClansQuery } from "@/entities/Clan";
 import { Loader } from "@/shared/ui/Loader";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-import { useParams, useRouter } from 'next/navigation';
+import {useRouter } from 'next/navigation';
 import { useClientTranslation } from "@/shared/i18n";
 import { useState } from "react";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button"
-import Link from "next/link";
-
 
 const ClanAllSubPage = () => {
 
@@ -90,9 +88,7 @@ type SearchProps = {
     onClickToSearch?: (search: string) => void;
 }
 const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "clan");
+    const { t } = useClientTranslation("clan");
 
     const onClickSearch = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -119,9 +115,7 @@ const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
     )
 }
 const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "clan");
+    const { t } = useClientTranslation("clan");
 
     const onClickSearch = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -161,10 +155,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
     const onClick = (id: string) => {
         if (onClickToClan) onClickToClan(id);
     }
-
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "clan");
+    const { t } = useClientTranslation("clan");
     const onClickPage = (page: number) => {
         if (onClickToPage) onClickToPage(page);
     }
@@ -234,9 +225,7 @@ type DesktopProps = {
 
 const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: DesktopProps) => {
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "clan");
+    const { t } = useClientTranslation("clan");
 
     const onClick = (id: string) => {
         if (onClickToClan) onClickToClan(id);

@@ -2,7 +2,6 @@ import { memo, useCallback } from "react";
 import Fancybox from "@/shared/ui/Fancybox/Fancybox";
 import cls from "./styles.module.scss"
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 
 export type GalleryCategoriesWithModalSliderProps = {
@@ -32,10 +31,7 @@ export const GalleryCategoriesWithModalSlider = memo(({
     }, []);
 
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "picture-galleries");
-
+    const { t } = useClientTranslation("picture-galleries");
 
     return (
         <div style={{ cursor: "pointer" }}>

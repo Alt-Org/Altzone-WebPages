@@ -7,7 +7,6 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
 import { ItemType, NavbarBuild, NavBarType } from "../../model/types";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { LangSwitcher } from "@/features/LangSwitcher";
 import { FixedButton } from "../FixedButton/FixedButton";
@@ -37,13 +36,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         navBarType = "Default"
     } = props;
 
-
-    const params = useParams();
-    const lng = params.lng as string;
-
     const ns = defineNs(navBarType)
 
-    const { t } = useClientTranslation(lng, ns);
+    const { t } = useClientTranslation(ns);
 
     const {checkPermissionFor} = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor("login");

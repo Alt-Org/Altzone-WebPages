@@ -7,6 +7,7 @@ import resourcesToBackend from 'i18next-resources-to-backend'
 // import LocizeBackend from 'i18next-locize-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { getOptions, languages, cookieName } from './settings'
+import {useParams} from "next/navigation";
 
 const runsOnServerSide = typeof window === 'undefined'
 
@@ -32,7 +33,10 @@ export const i18n = i18next
 /**
  * Hook for using i18n with client client-side components
  */
-export function useTranslation(lng : string, ns: string, options? : any) {
+export function useTranslation(ns: string, options? : any) {
+
+    const params = useParams();
+    const lng = params.lng as string;
     const [cookies, setCookie] = useCookies([cookieName])
     const ret = useTranslationOrg(ns, options)
     const { i18n } = ret
