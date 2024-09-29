@@ -73,13 +73,15 @@
 
 .items a {
   display: block;
-  white-space: nowrap;
-  overflow: hidden;
 }
 .collapsed {
   width: var(--sidebar-width-collapsed);
   opacity: 0;
   transition: width 0.4s ease-out, opacity 0.4s ease-out;
+
+  white-space: nowrap;
+  overflow: hidden;
+
 }
 
 .expanded {
