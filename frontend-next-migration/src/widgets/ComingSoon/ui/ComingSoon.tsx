@@ -2,15 +2,14 @@
 import cls from './ComingSoon.module.scss';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 
 
 export const ComingSoon = memo(() => {
-  const { lng } = useParams() as { lng: string };
-  const { t } = useClientTranslation(lng, 'coming');
+  const { t } = useClientTranslation('coming');
   const router = useRouter();
 
   const handleGoBack = () => router.back();
