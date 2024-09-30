@@ -4,6 +4,9 @@
   justify-items: center;
   user-select: none;
 }
+.MembersSection li {
+  list-style-type: none;
+}
 
 .scrollBottomButton {
   margin-bottom: 10px;
@@ -11,129 +14,110 @@
 }
 
 .membersListContainer {
-  font-size: clamp(10px, 3vw, 40px);
+  font-size: clamp(0.5rem, 3vw, 1.7rem);
   font-family: var(--font-family-main);
-  text-align: start;
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: var(--border-radius-custom);
+  padding: 0.7rem;
 
   h1 {
     text-transform: uppercase;
-    font-size: clamp(20px, 3vw, 30px); /* Muuntuva fonttikoko */
     color: var(--secondary-color);
     text-align: start;
-    background-color: transparent; /* Tausta poistettu */
+    padding-left: 3rem;
+    padding-bottom: 1rem;
+    background-color: transparent;
   }
 
   h2 {
-    font-size: clamp(20px, 3vw, 30px); /* Muuntuva fonttikoko */
-    line-height: 1.5;
     color: var(--secondary-color);
     text-align: center;
+    font-size: clamp(0.5rem, 3vw, 2rem);
+    padding-bottom: 0.8rem;
+    padding-right: 6rem;
   }
 }
 
-.workmanComponent {
+.memberRow {
   display: flex;
-  flex-direction: column;
-  margin: 5px;
+  width: 100%;
+  justify-content: space-between;
 
-  .memberRow {
+  .memberName {
+    font-weight: bold;
+    text-align: right; // Kohdistetaan nimi oikealle reunaan
+    flex: 2; // Antaa nimelle enemmän tilaa
+    min-width: 0;
+    padding-right: 2rem; // Poistettu ylimääräinen padding-top
+    align-self: center; // Keskitetään nimi pystysuunnassa
     display: flex;
-    width: 100%;
-    padding: 10px 0;
-    gap: 10px;
+    justify-content: flex-end; // Kohdistaa sisällön oikeaan reunaan
+  }
 
-    .memberName {
-      font-weight: bold;
-      font-size: clamp(0.8rem, 2.5vw, 3rem); /* Muuntuva fonttikoko */
-      text-align: left;
-      flex-grow: 3; /* Yhdenmukainen arvo taskText:in kanssa */
-      min-width: 0; /* Sallii kutistumisen */
-    }
+  .taskText {
+    text-align: left;
+    flex: 2; // Jättää tehtävälle vähemmän tilaa kuin nimelle
+    min-width: 0;
+  }
 
-    .taskText {
-      font-size: clamp(0.8rem, 2.5vw, 2rem); /* Muuntuva fonttikoko */
-      text-align: left;
-      flex-grow: 2;
-      padding: 0 5px; /* Pienennä täytettä pienten näyttöjen osalta */
-      min-width: 0; /* Sallii kutistumisen */
-      justify-self: start;
-    }
-
-    .iconContainer {
-      display: flex;
-      gap: 1rem; /* Pienennä gap-pienillä näytöillä */
-      align-items: center;
-      flex-grow: 1;
-      min-width: 0; /* Sallii kutistumisen */
-    }
+  .iconContainer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center; // Kohdistaa ikonit keskelle pystysuunnassa
+    justify-content: center;
+    flex: 1; // Sama tila kuin taskText
+    min-width: 0;
+    align-self: center; // Keskitetään ikonit pystysuunnassa
   }
 
   .centerContainer {
     display: flex;
     flex: 2;
-    align-items: start;
   }
 
   .clickableLogo {
     color: var(--secondary-color);
     cursor: pointer;
-    font-size: clamp(1rem, 3vw, 5rem); /* Muuntuva fonttikoko */
     @include link-scale-effect('icon');
   }
 
-  .LogoWrapper {
-    width: clamp(
-      50px,
-      5vw,
-      40px
-    ); /* Leveys on vähintään 20px, enintään 50px, ja 5vw välillä */
-    height: auto;
+  .memberLogo {
+    width: clamp(0.5rem, 3vw, 2rem); // Kasvatetaan logon kokoa
+    height: clamp(0.5rem, 3vw, 2rem);
+    border-radius: 50%; // Varmistetaan pyöreys
+    overflow: hidden; // Varmistaa, että logo pysyy pyöreänä myös piilotettuna
+    @include link-scale-effect('icon');
+  }
+
+  .Logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Täyttää säiliön sekä korkeuden että leveyden osalta
+    border-radius: 50%; // Pitää logon pyöreänä
     cursor: pointer;
     @include link-scale-effect('icon');
+    background-color: var(--secondary-color);
+  }
 
-    .placeholderLogo {
-      width: 100%;
-      height: 100%;
-      background-color: rgba(200, 200, 200, 0.3); /* Placeholder väri */
-      border-radius: 50%; /* Sama muoto kuin logo */
-    }
+  .placeholderLogo {
+    width: 100%;
+    height: 100%;
+    opacity: 0; // Täysin läpinäkyvä
+    border-radius: 50%;
+    @include link-scale-effect('icon');
   }
 }
 
 .memberCard {
-  padding: 3rem;
-  margin-bottom: 1rem;
-  font-size: clamp(1rem, 2vw, 1.5rem); /* Muuntuva fonttikoko */
+  padding-bottom: 2rem;
   border-radius: var(--border-radius-custom);
 }
 
 .departmentsSection {
   margin-top: 1rem;
-  font-size: clamp(1rem, 2vw, 1.5rem); /* Muuntuva fonttikoko */
 }
 
 .departmentCard {
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: clamp(0.8rem, 2vw, 1.2rem); /* Muuntuva fonttikoko */
+  padding-bottom: 2rem;
   border-radius: var(--border-radius-custom);
-}
-
-@media screen and (min-width: 1024px) {
-  .MembersSection {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  .membersListContainer {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
-
-  .workmanComponent {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
 }
