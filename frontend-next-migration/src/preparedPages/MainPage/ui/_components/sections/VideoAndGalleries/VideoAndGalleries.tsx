@@ -68,6 +68,8 @@ const VideoAndGalleries = (props: Props) => {
                     />
                 </div>
 
+                {/*//todo Joni add here the desired instas ?*/}
+
                 {/*//todo  may we should have now 2 dif components: with and without galleries*/}
                 {/*<div className={cls.galleries}>*/}
                 {/*    {*/}
