@@ -6,7 +6,9 @@ export async function _getPage (lng: string){
     const {t} = await useServerTranslation(lng, 'picture-galleries');
     return createPage<PictureGalleryPageProps>({
         buildPage: () => ({
-            title: t("picture-galleries")
+            title: t("picture-galleries"),
+            info: t("info"),
+            socials: t("socials"),
         }),
         buildSeo: () => ({
             title: t("head-title"),

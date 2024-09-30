@@ -1,0 +1,16 @@
+.Wrapper {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.Container {
+    padding: 20px;
+}
+
+.Iframe {
+    border-radius: var(--border-radius-custom);
+}

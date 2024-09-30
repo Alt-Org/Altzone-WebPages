@@ -23,6 +23,20 @@
     margin-bottom: 40px;
   }
 
+  .InfoText {
+    font-size: 1.2em;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .SocialsText {
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 1.3em;
+    text-align: center;
+  }
 }
 
 
@@ -37,6 +51,15 @@
 @media (min-width: 768px) {
   .Container {
     margin-top: 15vh;
+
+    .InfoText {
+      font-size: 1.5em;
+      width: 70%;
+    }
+
+    .SocialsText {
+      font-size: 1.5em;
+    }
   }
 }
 

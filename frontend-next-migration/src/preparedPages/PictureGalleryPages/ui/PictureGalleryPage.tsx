@@ -1,4 +1,5 @@
 import { SectionGallerias } from "@/widgets/SectionGallerias";
+import { SectionEmbedLink } from "@/widgets/SectionEmbedLink";
 import { Container } from "@/shared/ui/Container";
 import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
@@ -8,12 +9,16 @@ import cls from "./PictureGalleryPage.module.scss";
 
 export interface Props {
     title: string;
+    info: string;
+    socials: string,
 }
 
 const PictureGalleryPage = async (props: Props) => {
 
     const {
-        title
+        title,
+        info,
+        socials,
     } = props;
 
     return (
@@ -22,6 +27,9 @@ const PictureGalleryPage = async (props: Props) => {
                 <h1>
                     {title}
                 </h1>
+                <div className={cls.InfoText}>{info}</div>
+                <div className={cls.SocialsText}>{socials}</div>
+                <SectionEmbedLink />
                 <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} />
             </Container>
         </div>
