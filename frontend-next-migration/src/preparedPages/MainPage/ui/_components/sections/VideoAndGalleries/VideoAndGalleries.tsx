@@ -68,6 +68,7 @@ const VideoAndGalleries = (props: Props) => {
                     />
                 </div>
 
+                {/*//todo  may we should have now 2 dif components: with and without galleries*/}
                 {/*<div className={cls.galleries}>*/}
                 {/*    {*/}
                 {/*        transformedGalleryCategories.map((gallery: any) => (*/}
