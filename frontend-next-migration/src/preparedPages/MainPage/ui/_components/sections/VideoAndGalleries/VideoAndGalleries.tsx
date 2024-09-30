@@ -58,6 +58,7 @@ const VideoAndGalleries = (props: Props) => {
             </h3>
 
             <Container className={cls.container} fluid={isMobileSize || isTabletSize}>
+
                 <div className={cls.videoWrapper}>
                     <VideoContentYoutube
                         params={{
@@ -67,19 +68,19 @@ const VideoAndGalleries = (props: Props) => {
                     />
                 </div>
 
-                <div className={cls.galleries}>
-                    {
-                        transformedGalleryCategories.map((gallery: any) => (
-                            <GalleryCategoriesWithModalSlider
-                                cover={gallery.cover}
-                                followLastImage={gallery.followLastImage}
-                                key={gallery.title}
-                                sources={gallery.sources}
-                                title={gallery.title}
-                            />
-                        ))
-                    }
-                </div>
+                {/*<div className={cls.galleries}>*/}
+                {/*    {*/}
+                {/*        transformedGalleryCategories.map((gallery: any) => (*/}
+                {/*            <GalleryCategoriesWithModalSlider*/}
+                {/*                cover={gallery.cover}*/}
+                {/*                followLastImage={gallery.followLastImage}*/}
+                {/*                key={gallery.title}*/}
+                {/*                sources={gallery.sources}*/}
+                {/*                title={gallery.title}*/}
+                {/*            />*/}
+                {/*        ))*/}
+                {/*    }*/}
+                {/*</div>*/}
             </Container>
 
 
