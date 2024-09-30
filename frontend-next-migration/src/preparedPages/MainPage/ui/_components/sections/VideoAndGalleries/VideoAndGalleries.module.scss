@@ -10,15 +10,14 @@
 }
 
 .SectionVideoAndGalleries {
-  margin: 40px auto;
+  margin: clamp(20px, 10vh, 300px) auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 80vh;
   position: relative;
   @include backGroundImageDefault;
-  margin-top: 20px;
+  margin-top: clamp(10px, 10vh, 300px);
 
   gap: 3rem;
 
@@ -87,7 +86,7 @@
   .SectionVideoAndGalleries {
     flex-direction: column;
     gap: 0;
-    margin-top: 40px;
+    //margin-top: 40px;
 
   }
 
@@ -111,10 +110,7 @@
   .galleries>div {
     width: 100%;
   }
-  .HorizontalLines {
-    margin-top: 10%;
-  }
-  
+
 }
 
 
