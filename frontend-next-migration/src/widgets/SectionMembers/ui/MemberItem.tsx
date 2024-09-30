@@ -11,6 +11,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
 import Image from 'next/image';
+import { ClickableBorder } from '@/shared/ui/ClickableBorder';
+import { classNames } from '../../../shared/lib/classNames/classNames';
 
 /**
  * MemberItem component displays information about a specific member.
@@ -25,14 +27,14 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
           <span className={cls.taskText}>{member.task}</span>
           <div className={cls.iconContainer}>
             {/* Render logo if available, otherwise render an empty placeholder */}
-            <div className={cls.logoWrapper}>
+            <div className={cls.memberLogo}>
               {member.logo ? (
                 <Image
                   src={member.logo}
                   alt={member.name}
                   className={cls.Logo}
-                  width={30}
-                  height={30}
+                  width={500}
+                  height={500}
                 />
               ) : (
                 <div className={cls.placeholderLogo} />
