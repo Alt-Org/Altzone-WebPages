@@ -9,7 +9,7 @@ type Props = {
 export default function GameLayout({children}: Props) {
     return (
         <>
-            <Navbar overlaid/>
+            <Navbar/>
             <div style={{paddingTop: "20px"}}></div>
             {children}
             <Footer/>

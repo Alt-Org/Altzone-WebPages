@@ -10,7 +10,7 @@ type Props = {
 export default function ComicsLayout({children}: Props) {
     return (
         <>
-            <Navbar overlaid />
+            <Navbar />
             {children}
             <Footer />
         </>
