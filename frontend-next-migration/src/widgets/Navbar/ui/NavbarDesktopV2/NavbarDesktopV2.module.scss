@@ -9,14 +9,10 @@
   top: 0;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
-}
-
-.overlayed {
-  position: absolute;
+  position: relative;
 }
 
 .fixed {
-  //position: fixed;
   position: sticky;
 }
 
