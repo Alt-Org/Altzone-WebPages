@@ -1,0 +1,22 @@
+.introContainer {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('') no-repeat center center;
+  background-size: cover;
+  z-index: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.introContent {
+  text-align: center;
+  color: #fff;
+  transition: opacity 0.5s ease;
+}
+
+.scrolled {
+  opacity: 0;
+  visibility: hidden;
+}
