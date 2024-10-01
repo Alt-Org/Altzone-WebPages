@@ -44,16 +44,16 @@ export const mapMembers = (membersData: any[]): Member[] => {
 
 /**
  * Maps raw department data from the API response to the Department type used in the application.
- * Ensures that departments are sorted alphabetically by their localized or default names.
+ * Sorts departments based on a predefined order depending on the locale.
  * @param departmentsData An array of raw department data from the API.
  * @param locale The language locale used to find the localized department name.
  * @returns An array of departments mapped to the Department type.
  */
+
 export const mapDepartments = (
   departmentsData: any[],
   locale: string,
 ): Department[] => {
-  // Määritä järjestys osastoille
   const orderEn = [
     'Lead Developers',
     'Game Developer',
