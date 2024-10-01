@@ -12,7 +12,7 @@ type Props = {
 
 export default function HomeLayout({ children }: Props) {
     const introRef = useRef<HTMLDivElement>(null);
-    const [hideScrollbar, setHideScrollbar] = useState(true);
+    const [isScrollbarHidden, setIsScrollbarHidden] = useState(true);
 
     const scrollToContent = () => {
         if (introRef.current) {
@@ -24,7 +24,7 @@ export default function HomeLayout({ children }: Props) {
     };
     const updateScrollbarVisibility = () => {
         const isBelowIntro = window.scrollY > (introRef.current?.clientHeight || window.innerHeight);
-        setHideScrollbar(!isBelowIntro);
+        setIsScrollbarHidden(!isBelowIntro);
     };
     const scrollToIntro = (lastScrollY: { value: number }) => {
         const currentScrollY = window.scrollY;
@@ -61,48 +61,21 @@ export default function HomeLayout({ children }: Props) {
             </div>
 
             <div className={classNames("main-content")}>
-                {/*<div className={"navbar"}>*/}
-                    <Navbar/>
-                    {/*<Navbar overlaid />*/}
-                {/*</div>*/}
+                <Navbar/>
                 {children}
                 <Footer />
                 <ScrollTop />
             </div>
 
-            <style jsx>{`
-                .intro-wrapper {
-                    height: 100vh;
-                    width: 100%;
-                    //position: relative;
-                    z-index: 1000;
-                    //background-color: #111;
-                }
-                .main-content {
-                    position: relative;
-                    //z-index: 1;
-                    //top: 0;
-                }
-                
-                .hide-scrollbar{
-                    //position: relative;
-                }
-                
-                //.navbar{
-                //    position: fixed;
-                //}
-                
-            `}</style>
-
             <style jsx global>{`
                 html {
-                    scrollbar-width: ${hideScrollbar ? 'none' : 'auto'};
+                    scrollbar-width: ${isScrollbarHidden ? 'none' : 'auto'};
                 }
                 body {
-                    -ms-overflow-style: ${hideScrollbar ? 'none' : 'auto'};
+                    -ms-overflow-style: ${isScrollbarHidden ? 'none' : 'auto'};
                 }
                 body::-webkit-scrollbar {
-                    display: ${hideScrollbar ? 'none' : 'block'};
+                    display: ${isScrollbarHidden ? 'none' : 'block'};
                 }
             `}</style>
         </>
