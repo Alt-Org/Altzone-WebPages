@@ -53,6 +53,31 @@ export const mapDepartments = (
   departmentsData: any[],
   locale: string,
 ): Department[] => {
+  // Määritä järjestys osastoille
+  const orderEn = [
+    'Lead Developers',
+    'Game Developer',
+    'Website Developer',
+    'Developers',
+    'Graphics',
+    'Graphical Game Development',
+    'Sound Design & Composition',
+    'Sound Design-Oriented Game Development',
+  ];
+
+  const orderFi = [
+    'Vastaava Ohjelmistokehittäjä',
+    'Pelikehittäjä',
+    'Verkkosivukehittäjä',
+    'Ohjelmistokehittäjät',
+    'Grafiikka',
+    'Graafinen pelikehitys',
+    'Äänisuunnittelu ja Sävellys',
+    'Äänisuunnittelullinen Pelikehitys',
+  ];
+
+  const order = locale === 'fi' ? orderFi : orderEn;
+
   return (
     departmentsData
       .map((dept: any) => {
@@ -72,6 +97,6 @@ export const mapDepartments = (
           members,
         };
       })
-      .sort((a, b) => a.name.localeCompare(b.name)) || []
+      .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name)) || []
   );
 };
