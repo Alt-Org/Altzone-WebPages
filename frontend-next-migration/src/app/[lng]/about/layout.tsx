@@ -9,7 +9,7 @@ type Props = {
 export default function AboutLayout({children}: Props) {
     return (
         <>
-            <Navbar overlaid />
+            <Navbar/>
             {children}
             <Footer />
         </>

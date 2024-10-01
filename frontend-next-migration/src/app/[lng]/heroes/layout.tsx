@@ -10,7 +10,7 @@ interface Props {
 export default function Layout({ children}: Props) {
     return (
         <>
-            <Navbar overlaid={true} />
+            <Navbar/>
             {children}
             <HorizontalLines />
             <Footer />
