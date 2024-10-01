@@ -1,4 +1,4 @@
-import {CSSProperties, memo, useMemo, useState} from "react";
+import {CSSProperties, memo, useEffect, useMemo, useState} from "react";
 import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
 import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
@@ -16,7 +16,6 @@ import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
 import { defineNs } from "../../model/defineNs";
 
 interface NavbarTouchProps {
-    overlaid?: boolean;
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
@@ -28,7 +27,6 @@ interface NavbarTouchProps {
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const {
-        overlaid = false,
         marginTop,
         navbarBuild,
         side = 'left',
@@ -106,12 +104,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         : {};
 
     const mods: Record<string, boolean> = {
-        [cls.overlayed]: overlaid && !isFixed,
-        // [cls.overlayed]: overlaid,
         [cls.fixed]: isFixed,
     } as Record<string, boolean>;
-
-
 
     const sidebarMods: Record<string, boolean> = {
         [cls.left]: side === 'left',
