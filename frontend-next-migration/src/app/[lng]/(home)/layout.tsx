@@ -27,24 +27,27 @@ export default function HomeLayout({ children }: Props) {
         setHideScrollbar(!isBelowIntro);
     };
 
+    const scrollToIntro = (lastScrollY: { value: number }) => {
+        const currentScrollY = window.scrollY;
+        const scrollDirection = currentScrollY > lastScrollY.value ? 'down' : 'up';
+        lastScrollY.value = currentScrollY;
+        if (introRef.current) {
+            const introBottom = introRef.current.clientHeight;
+            if (scrollDirection === 'up' && window.scrollY <= introBottom) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            }
+        }
+    };
+
+
     useEffect(() => {
-        let lastScrollY = 0;
+        let lastScrollY = {value : 0};
         const handleScroll = () => {
             updateScrollbarVisibility();
-            const currentScrollY = window.scrollY;
-            const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-            lastScrollY = currentScrollY;
-
-            if (introRef.current) {
-                const introBottom = introRef.current.clientHeight;
-
-                if (scrollDirection === 'up' && window.scrollY <= introBottom) {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth',
-                    });
-                }
-            }
+            scrollToIntro(lastScrollY);
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => {
