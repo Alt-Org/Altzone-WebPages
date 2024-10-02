@@ -1,20 +1,16 @@
-import {FC, FunctionComponent} from 'react';
-// @ts-ignore
-import {LazyLoadImage} from 'react-lazy-load-image-component';
+import { FC, FunctionComponent } from 'react';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import cls from "./withBackgroundImage.module.scss";
-import Image from "next/image";
-import {classNames} from "@/shared/lib/classNames/classNames";
-
+import cls from './withBackgroundImage.module.scss';
+import Image from 'next/image';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface BackgroundImageConfig {
-    imagePath: string;
-    placeHolderPath?: string;
-    alt?: string;
-    shouldBeLazyLoaded?: boolean;
-    className?: string;
+  imagePath: string;
+  placeHolderPath?: string;
+  alt?: string;
+  shouldBeLazyLoaded?: boolean;
+  className?: string;
 }
-
 /**
  * Enhances a function component with a background image.
  *
@@ -42,43 +38,57 @@ interface BackgroundImageConfig {
  * const MyComponent: FC<MyComponentProps> = ({ title }) => <h1>{title}</h1>;
  * const EnhancedComponent = withBackgroundImage<MyComponentProps>(config)(MyComponent);
  */
+
 function withBackgroundImage<P extends object>(
-    config: BackgroundImageConfig
+  config: BackgroundImageConfig,
 ): (WrappedComponent: FunctionComponent<P>) => FC<P> {
-    const {
-        imagePath,
-        placeHolderPath = '',
-        alt = '',
-        shouldBeLazyLoaded = false,
-        className = ""
-    } = config;
+  const {
+    imagePath,
+    alt = '',
+    shouldBeLazyLoaded = false,
+    className = '',
+  } = config;
 
-    return (WrappedComponent: FunctionComponent<P>) => {
-        const WithBackgroundImage: FC<P> = (props) => {
-            return (
-                <>
-                    <div className={classNames(cls.Background, {}, [className])}>
-                        {/*<div className={cls.Background}>*/}
-                        {shouldBeLazyLoaded ? (
-                            <Image src={imagePath} alt={alt} loading="lazy" className={cls.ImageWrapper} width={1000}
-                                   height={1000}/>
-                        ) : (
-                            <Image src={imagePath} alt={alt} className={cls.ImageWrapper} width={1000} height={1000}/>
-                        )}
-                    </div>
-                    <div className={cls.Content}>
-                        <WrappedComponent {...props} />
-                    </div>
-                </>
-            );
-        };
-
-        WithBackgroundImage.displayName = `WithBackgroundImage(${WrappedComponent.displayName || WrappedComponent.name})`;
-
-        return WithBackgroundImage;
+  return (WrappedComponent: FunctionComponent<P>) => {
+    const WithBackgroundImage: FC<P> = (props) => {
+      return (
+        <>
+          {/* Wrapper added here to prevent auto-scroll interference */}
+          <div className='bg-wrapper'>
+            <div className={classNames(cls.Background, {}, [className])}>
+              {shouldBeLazyLoaded ? (
+                <Image
+                  src={imagePath}
+                  alt={alt}
+                  loading='lazy'
+                  className={cls.ImageWrapper}
+                  width={1000}
+                  height={1000}
+                />
+              ) : (
+                <Image
+                  src={imagePath}
+                  alt={alt}
+                  className={cls.ImageWrapper}
+                  width={1000}
+                  height={1000}
+                />
+              )}
+            </div>
+          </div>
+          <div className={cls.Content}>
+            <WrappedComponent {...props} />
+          </div>
+        </>
+      );
     };
+
+    WithBackgroundImage.displayName = `WithBackgroundImage(${
+      WrappedComponent.displayName || WrappedComponent.name
+    })`;
+
+    return WithBackgroundImage;
+  };
 }
 
 export default withBackgroundImage;
-
-
