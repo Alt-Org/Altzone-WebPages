@@ -1,0 +1,1 @@
+export { SectionImageWall} from "./ui/SectionImageWall"

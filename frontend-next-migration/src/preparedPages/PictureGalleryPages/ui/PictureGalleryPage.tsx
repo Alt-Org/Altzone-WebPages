@@ -1,5 +1,6 @@
 import { SectionGallerias } from "@/widgets/SectionGallerias";
 import { SectionEmbedLink } from "@/widgets/SectionEmbedLink";
+import { SectionImageWall } from "@/widgets/SectionImageWall";
 import { Container } from "@/shared/ui/Container";
 import {SectionGalleriasPaths} from "@/shared/const/SectionGalleriasPaths";
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
@@ -30,7 +31,8 @@ const PictureGalleryPage = async (props: Props) => {
                 <div className={cls.InfoText}>{info}</div>
                 <div className={cls.SocialsText}>{socials}</div>
                 <SectionEmbedLink />
-                <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} />
+                {/* <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} /> */}
+                <SectionImageWall />
             </Container>
         </div>
     );
