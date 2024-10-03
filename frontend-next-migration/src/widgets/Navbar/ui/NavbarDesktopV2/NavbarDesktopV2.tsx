@@ -91,7 +91,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
                                     </AppLink>
                                 )
                                 :  permissionToLogout.isGranted
-                                    ? <div onClick={() => logout()}>
+                                    ? <div className={cls.logoutButton} onClick={() => logout()}>
                                         {t(`logout`)}
                                     </div>
                                     : null
