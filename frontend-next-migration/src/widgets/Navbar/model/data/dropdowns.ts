@@ -29,8 +29,8 @@ export const dropdowns = {
     {
       elementText: 'play',
       link: {
-        path: AppExternalLinks.webgl,
-        isExternal: true,
+        path: RoutePaths.GAME,
+        isExternal: false,
       },
     },
     {

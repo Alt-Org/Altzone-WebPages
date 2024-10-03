@@ -22,6 +22,7 @@ export enum AppRoutesLinks {
   COOKIES = 'cookies',
   FORUM = 'FORUM',
   GAME_ART = 'GAME_ART',
+  GAME = 'GAME',
 
   NEWS = 'NEWS',
   NEWSELEMENT = 'NEWSELEMENT',
@@ -66,6 +67,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
   [AppRoutesLinks.PRIVACY]: '/privacy',
   [AppRoutesLinks.COOKIES]: '/cookies',
   [AppRoutesLinks.GAME_ART]: '/artGame',
+  [AppRoutesLinks.GAME]: '/game',
 
   [AppRoutesLinks.HEROES]: '/heroes',
   [AppRoutesLinks.HEROES_ONE]: '/heroes/:id',

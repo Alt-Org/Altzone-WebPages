@@ -1,17 +1,18 @@
-import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import cls from "./GamePage.module.scss"
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import cls from './GamePage.module.scss';
+import Iframe from 'react-iframe';
 
-export default function GamePage () {
-    return (
-        <>
-            <iframe
-                scrolling={"no"}
-                className={cls.Iframe}
-                width="100%"
-                height="100%"
-                src={AppExternalLinks.webgl}
-                // allowFullScreen
-            />
-        </>
-    )
+export default function GamePage() {
+  return (
+    <div className={cls.GamePage}>
+      <div className={cls.IframeContainer}>
+        <Iframe
+          url={AppExternalLinks.webgl}
+          className={cls.Iframe}
+          allowFullScreen
+          scrolling='no'
+        />
+      </div>
+    </div>
+  );
 }
