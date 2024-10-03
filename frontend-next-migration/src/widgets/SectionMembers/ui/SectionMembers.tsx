@@ -2,7 +2,7 @@ import cls from './SectionMembers.module.scss';
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { fetchTeams } from '../model/membersApi';
-import { Team } from '../model/types';
+import { Team } from '@/entities/Member/model/types/types';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
