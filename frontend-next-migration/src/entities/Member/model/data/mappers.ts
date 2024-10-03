@@ -1,12 +1,25 @@
-// mappers.ts
-
 /**
  * This file contains mapping functions used to transform data from the API response
  * into a format that matches the application's data models.
- * It includes functions for mapping members and departments.
+ * It includes functions for mapping members, departments, and icons.
  */
+import { Member, Department } from '@/entities/Member/model/types/types';
+import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+  faFacebook,
+} from '@fortawesome/free-brands-svg-icons';
 
-import { Member, Department } from './types';
+export const getLinksMap = () => ({
+  website: faGlobe,
+  github: faGithub,
+  linkedin: faLinkedin,
+  facebook: faFacebook,
+  instagram: faInstagram,
+  email: faEnvelope,
+});
 
 /**
  * Maps raw member data from the API response to the Member type used in the application.
@@ -49,7 +62,6 @@ export const mapMembers = (membersData: any[]): Member[] => {
  * @param locale The language locale used to find the localized department name.
  * @returns An array of departments mapped to the Department type.
  */
-
 export const mapDepartments = (
   departmentsData: any[],
   locale: string,
