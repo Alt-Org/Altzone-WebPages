@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Member } from '../model/types';
+import { Member } from '@/entities/Member/model/types/types';
 import cls from './SectionMembers.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
