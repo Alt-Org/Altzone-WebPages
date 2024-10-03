@@ -1,35 +1,25 @@
 import cls from './SectionMembers.module.scss';
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchTeams } from '../model/membersApi';
+import { fetchTeams } from '../../../entities/Member/api/membersApi';
 import { Team } from '@/entities/Member/model/types/types';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
-import DepartmentItem from './DepartmentItem';
+import DepartmentItem from '../../../entities/Member/ui/DepartmentItem';
 import { useClientTranslation } from '@/shared/i18n';
-import MemberItem from './MemberItem';
+import MemberItem from '@/entities/Member/ui/MemberItem';
 
-/**
- * Props for the SectionMembers component.
- */
 interface WorkersSectionProps {
   className?: string;
 }
 
-/**
- * SectionMembers component displays a list of teams, including their departments and members.
- * It fetches data from an API and renders the content dynamically based on the response.
- */
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const [teams, setTeams] = useState<Team[]>([]);
   const params = useParams();
   const lng = params.lng as string;
   const { t } = useClientTranslation(lng, 'team');
 
-  {
-    /*Fetch team data when the language changes*/
-  }
   useEffect(() => {
     const fetchTeamsData = async () => {
       try {
