@@ -34,18 +34,14 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
   return (
     <div className={classNames(cls.MembersSection, {}, [className])}>
-      {/* Scroll button to go to the bottom of the page */}
       <ScrollBottomButton
         className={cls.scrollBottomButton}
         text={t('playButton')}
       />
-      {/* Container to hold the list of teams */}
       <Container className={cls.membersListContainer}>
         {teams.map((team) => (
           <div key={team.id} className={cls.memberCard}>
-            {/* Render team name */}
             <h1 className={cls.membersListContainer}>{team.name}</h1>
-            {/* Render departments within the team */}
             {team.departments.length > 0 && (
               <div className={cls.departmentsSection}>
                 {team.departments.map((department) => (
