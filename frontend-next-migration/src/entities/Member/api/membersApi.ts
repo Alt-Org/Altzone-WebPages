@@ -7,10 +7,7 @@
 
 import { envHelper } from '@/shared/const/envHelper';
 import { Team } from '@/entities/Member/model/types/types';
-import {
-  mapMembers,
-  mapDepartments,
-} from '../../../entities/Member/model/data/mappers';
+import { mapMembers, mapDepartments } from './mappers';
 
 /**
  * Fetches a list of teams, including their members and departments, from the Strapi API.

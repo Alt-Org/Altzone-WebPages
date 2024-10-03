@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Department, Member } from '../model/types';
-import cls from './SectionMembers.module.scss';
+import { Department, Member } from '@/entities/Member/model/types/types';
+import cls from '@/widgets/SectionMembers/ui/SectionMembers.module.scss';
 import MemberItem from './MemberItem';
 
 /**
