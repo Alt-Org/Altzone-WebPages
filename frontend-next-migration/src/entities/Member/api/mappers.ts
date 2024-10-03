@@ -12,7 +12,7 @@ import {
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
 
-export const getLinksMap = () => ({
+export const LinksMap = () => ({
   website: faGlobe,
   github: faGithub,
   linkedin: faLinkedin,
