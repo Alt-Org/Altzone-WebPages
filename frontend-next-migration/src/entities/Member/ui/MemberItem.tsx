@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { Member } from '@/entities/Member/model/types/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import cls from '@/widgets/SectionMembers/ui/SectionMembers.module.scss';
+import cls from './MemberItem.module.scss';
 import Image from 'next/image';
 import { LinksMap } from '@/entities/Member/api/mappers';
 
