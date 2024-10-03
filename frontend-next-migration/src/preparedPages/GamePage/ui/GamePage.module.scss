@@ -1,8 +1,31 @@
-.Iframe{
-  display: block;
-  background: #000;
-  border: none;
+.GamePage {
+  display: flex;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
+}
+
+.IframeContainer {
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+  overflow: hidden; // Estetään ulkopuolisen sisällön näkymä
+  padding-top: 100px;
+}
+
+.Iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  transform: scale(1); // Alustetaan skaalaukseen 1
+  transform-origin: bottom top; // Määritellään skaalauksen lähtöpisteeksi vasen yläkulma
+
+  // Responsiivinen korkeus ja leveys
+  @media (min-width: 750px) {
+    transform: scale(0.6); // Skaalataan iframe, jos näkymä on liian pieni
+    height: calc(100% / 0.6); // Korjataan korkeus skaalausta varten
+  }
 }
