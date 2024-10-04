@@ -4,7 +4,6 @@ import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { ScrollTop } from '@/features/ScrollTop';
 import Intro from './_intro/Intro';
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { _useScrollHandler } from './_useScrollHandler';
 
 
@@ -18,17 +17,13 @@ export default function HomeLayout({ children }: Props) {
 
     return (
         <>
-            <div ref={introRef} className="intro-wrapper">
-                <Intro scrollToContent={scrollToContent} />
-            </div>
-
-            <div className={classNames("main-content")}>
+            <Intro scrollToContent={scrollToContent} ref={introRef}/>
+            <>
                 <Navbar />
                 {children}
                 <Footer />
                 <ScrollTop />
-            </div>
-
+            </>
             <style jsx global>{`
                 html {
                     scrollbar-width: ${isScrollbarHidden ? 'none' : 'auto'};
