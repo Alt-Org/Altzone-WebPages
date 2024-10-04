@@ -4,13 +4,13 @@ import { Member } from '@/entities/Member/model/types/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import cls from './MemberItem.module.scss';
 import Image from 'next/image';
-import { LinksMap } from '@/entities/Member/api/mappers';
+import { getLinksMap } from '@/entities/Member/api/mappers';
 
 const MemberItem: FC<{ member: Member }> = ({ member }) => {
-  const linksMap = LinksMap();
+  const linksMap = getLinksMap();
 
   return (
-    <li key={member.id} className={cls.workmanComponent}>
+    <li className={cls.workmanComponent}>
       <div className={cls.memberRow}>
         <div className={cls.centerContainer}>
           <span className={cls.memberName}>{member.name}</span>
