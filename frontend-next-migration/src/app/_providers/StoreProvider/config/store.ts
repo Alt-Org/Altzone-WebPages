@@ -3,12 +3,10 @@ import { persistStore, persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import {envHelper} from "@/shared/const/envHelper";
 import {StateSchema} from "./StateSchema";
-import {authApi,authUserReducer, authMiddleware} from "@/entities/Auth";
-import {clanApi} from "@/entities/Clan";
-import {galleryApi} from "@/entities/Gallery";
+import {authUserReducer, authMiddleware} from "@/entities/Auth";
 import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist";
 import {setupListeners} from "@reduxjs/toolkit/query";
-import {profileApi} from "@/entities/Profile";
+import {gameApi} from "@/shared/api";
 
 
 const createNoopStorage= () => {
@@ -36,16 +34,15 @@ export function createReduxStore(initialState?: StateSchema) {
 
     const rootReducer = combineReducers({
         authUser: authUserReducer,
-        [authApi.reducerPath]: authApi.reducer,
-        [profileApi.reducerPath]: profileApi.reducer,
-        [clanApi.reducerPath]: clanApi.reducer,
-        [galleryApi.reducerPath]: galleryApi.reducer,
+        [gameApi.reducerPath]: gameApi.reducer,
+        // todo add here strapiApi
     });
 
     const persistConfig = {
         key: 'root',
         storage,
-        blacklist: [authApi.reducerPath, clanApi.reducerPath, galleryApi.reducerPath]
+        // todo add here strapiApi
+        blacklist: [gameApi.reducerPath]
     };
 
 
@@ -66,9 +63,7 @@ export function createReduxStore(initialState?: StateSchema) {
                     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
                 },
             }).concat(
-                authApi.middleware,
-                clanApi.middleware,
-                galleryApi.middleware,
+                gameApi.middleware,
                 authMiddleware,
             ),
 

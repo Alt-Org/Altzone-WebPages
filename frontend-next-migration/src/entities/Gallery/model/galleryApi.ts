@@ -1,7 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {envHelper} from "@/shared/const/envHelper";
-import {HYDRATE} from "next-redux-wrapper";
-
+import {gameApi} from "@/shared/api";
 
 const url = "public/site";
 
@@ -36,20 +34,8 @@ type GetAllDirectoryPhotosQueryArgs = {
     parentDirectory: ParentDirectory
 };
 
-
-
-export const galleryApi = createApi({
-    reducerPath: "galleryApi",
-    tagTypes: ['Gallery'],
-    baseQuery: fetchBaseQuery({
-        baseUrl: envHelper.apiLink,
-    }),
-    extractRehydrationInfo(action, { reducerPath }) {
-        if (action.type === HYDRATE) {
-            return action.payload[reducerPath]
-        }
-    },
-    endpoints: (builder) => ({
+const galleryApi = gameApi.injectEndpoints({
+        endpoints: (builder) => ({
         getAllDirectoryPhotos: builder.query<DirectoryWithPhotos[], GetAllDirectoryPhotosQueryArgs>({
             queryFn: async (args, _queryApi, _extraOptions, fetchWithBQ) => {
                 const parentDirectory = args.parentDirectory;
@@ -82,16 +68,10 @@ export const galleryApi = createApi({
                 });
 
                 const allDirectoriesWithPhotos = await Promise.all(photosPromises);
-
-
-
                 return { data: allDirectoriesWithPhotos };
             }
         })
-
-
     }),
+    overrideExisting: false
 });
-
-
-export const { useGetAllDirectoryPhotosQuery} = galleryApi;
+export const { useGetAllDirectoryPhotosQuery } = galleryApi;
