@@ -10,7 +10,6 @@
   background-color: rgba(0, 0, 0, 0.7);
   height: 50px;
   margin-top: 35px;
-  position: absolute;
   z-index: var(--navbar-z-index);
   top: 0;
   left: 0;
@@ -46,12 +45,16 @@
   }
 }
 
-.overlayed {
-  position: absolute;
-}
-
 .fixed {
-  position: fixed;
+  position: sticky;
+  top: 34px;
+
+  @media (min-width: 550px){
+    margin-top: 50px;
+  }
+
+  //position: fixed;
+  //padding-top: 50px;
 }
 
 

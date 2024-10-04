@@ -11,7 +11,7 @@ type Props = {
 export default function ComingLayout({ children }: Props) {
   return (
     <>
-      <Navbar overlaid />
+      <Navbar/>
       {children}
       <FeedbackSideButton />
       <HorizontalLines />

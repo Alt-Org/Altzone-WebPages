@@ -9,7 +9,7 @@ type Props = {
 export default function PrivacyLayout({ children }: Props) {
   return (
     <>
-      <Navbar overlaid navBarType={'Privacy'} />
+      <Navbar navBarType={'Privacy'} />
       {children}
       <Footer />
     </>

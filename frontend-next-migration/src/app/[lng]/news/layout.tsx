@@ -11,7 +11,7 @@ type Props = {
 export default function NewsLayout({ children }: Props) {
   return (
     <>
-      <Navbar overlaid />
+      <Navbar/>
       {children}
       <HorizontalLines />
       <Footer />

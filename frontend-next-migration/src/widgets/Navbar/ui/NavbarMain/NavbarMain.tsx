@@ -11,14 +11,13 @@ import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAnd
 import useSizes from '@/shared/lib/hooks/useSizes';
 
 interface NavbarMainProps {
-  overlaid?: boolean;
   marginTop?: number;
   className?: string;
   navBarType?: NavBarType;
 }
 
 export const NavbarMain = memo((props: NavbarMainProps) => {
-  const { overlaid, marginTop, className, navBarType = 'Default' } = props;
+  const {marginTop, className, navBarType = 'Default' } = props;
   const { isMobileSize, isTabletSize } = useSizes();
   /* The line `const size = isMobileSize || isTabletSize ? 'mobile' : 'desktop';` is determining the
   size of the navbar based on the screen size. */
@@ -29,7 +28,6 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
     <FixedProvider>
       {isMobileSize || isTabletSize ? (
         <NavbarMobileV2
-          overlaid={overlaid}
           marginTop={marginTop}
           className={className}
           navbarBuild={navbarBuild}
@@ -37,7 +35,6 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
         />
       ) : (
         <NavbarDesktopV2
-          overlaid={overlaid}
           marginTop={marginTop}
           className={className}
           navbarBuild={navbarBuild}
