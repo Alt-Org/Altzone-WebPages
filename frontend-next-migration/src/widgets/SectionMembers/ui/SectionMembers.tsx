@@ -1,14 +1,12 @@
 import cls from './SectionMembers.module.scss';
 import { FC, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchTeams } from '../../../entities/Member/api/membersApi';
+import { fetchTeams, MemberItem, DepartmentItem } from '@/entities/Member';
 import { Team } from '@/entities/Member/model/types/types';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
-import DepartmentItem from '../../../entities/Member/ui/DepartmentItem';
 import { useClientTranslation } from '@/shared/i18n';
-import MemberItem from '@/entities/Member/ui/MemberItem';
 
 interface WorkersSectionProps {
   className?: string;
