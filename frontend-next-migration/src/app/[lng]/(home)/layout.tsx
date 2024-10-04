@@ -3,7 +3,7 @@ import { ReactNode, useRef } from 'react';
 import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { ScrollTop } from '@/features/ScrollTop';
-import Intro from './Intro';
+import Intro from './_intro/Intro';
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useScrollHandler } from './useScrollHandler';
 
