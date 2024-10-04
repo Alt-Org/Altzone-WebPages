@@ -1,79 +1,76 @@
-import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from 'redux-persist'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import {envHelper} from "@/shared/const/envHelper";
-import {StateSchema} from "./StateSchema";
-import {authUserReducer, authMiddleware} from "@/entities/Auth";
-import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist";
-import {setupListeners} from "@reduxjs/toolkit/query";
-import {gameApi} from "@/shared/api";
+import { envHelper } from '@/shared/const/envHelper';
+import { StateSchema } from './StateSchema';
+import { authUserReducer, authMiddleware } from '@/entities/Auth';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { gameApi } from '@/shared/api';
+import { teamApi } from '@/entities/Member/api/membersApi';
 
-
-const createNoopStorage= () => {
-    return {
-        getItem(_key: any){
-            return Promise.resolve(null)
-        },
-        setItem(_key: any, value: any){
-            return Promise.resolve(value)
-        },
-        removeItem(_key: any){
-            return Promise.resolve()
-        }
-
-    }
-}
+const createNoopStorage = () => {
+  return {
+    getItem(_key: any) {
+      return Promise.resolve(null);
+    },
+    setItem(_key: any, value: any) {
+      return Promise.resolve(value);
+    },
+    removeItem(_key: any) {
+      return Promise.resolve();
+    },
+  };
+};
 
 const storage =
-    typeof window !== "undefined"
-        ? createWebStorage("local")
-        : createNoopStorage();
-
+  typeof window !== 'undefined'
+    ? createWebStorage('local')
+    : createNoopStorage();
 
 export function createReduxStore(initialState?: StateSchema) {
+  const rootReducer = combineReducers({
+    authUser: authUserReducer,
+    [gameApi.reducerPath]: gameApi.reducer,
+    [teamApi.reducerPath]: teamApi.reducer, // Lisää teamApi.reducer
+  });
 
-    const rootReducer = combineReducers({
-        authUser: authUserReducer,
-        [gameApi.reducerPath]: gameApi.reducer,
-        // todo add here strapiApi
-    });
+  const persistConfig = {
+    key: 'root',
+    storage,
+    blacklist: [gameApi.reducerPath, teamApi.reducerPath], // Lisää teamApi.reducerPath mustalle listalle
+  };
 
-    const persistConfig = {
-        key: 'root',
-        storage,
-        // todo add here strapiApi
-        blacklist: [gameApi.reducerPath]
-    };
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+  const store = configureStore({
+    // reducer: rootReducer,
+    reducer: persistedReducer,
+    //only in dev mode
+    devTools: envHelper.isDevMode,
+    preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).concat(
+        gameApi.middleware,
+        teamApi.middleware, // Lisää teamApi.middleware
+        authMiddleware,
+      ),
+  });
 
-    const persistedReducer = persistReducer(persistConfig, rootReducer);
+  const persistor = persistStore(store);
 
+  setupListeners(store.dispatch);
 
-    const store = configureStore({
-        // reducer: rootReducer,
-        reducer: persistedReducer,
-        //only in dev mode
-        devTools: envHelper.isDevMode,
-
-        preloadedState: initialState,
-
-        middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware({
-                serializableCheck: {
-                    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-                },
-            }).concat(
-                gameApi.middleware,
-                authMiddleware,
-            ),
-
-    });
-
-    const persistor = persistStore(store);
-
-    setupListeners(store.dispatch);
-
-    return { store, persistor };
-
+  return { store, persistor };
 }
-
