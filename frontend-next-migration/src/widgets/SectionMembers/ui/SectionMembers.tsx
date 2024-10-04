@@ -18,7 +18,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const [teams, setTeams] = useState<Team[]>([]);
   const params = useParams();
   const lng = params.lng as string;
-  const { t } = useClientTranslation(lng, 'team');
+  const { t } = useClientTranslation('team');
 
   useEffect(() => {
     const fetchTeamsData = async () => {
