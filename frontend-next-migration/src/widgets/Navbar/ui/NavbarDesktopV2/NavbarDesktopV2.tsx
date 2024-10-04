@@ -16,7 +16,6 @@ import { defineNs } from "../../model/defineNs";
 
 
 type NavbarProps = {
-    overlaid?: boolean;
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild
@@ -28,7 +27,6 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
 
     const {
         navbarBuild,
-        overlaid = false,
         marginTop,
         className = '',
         navBarType = "Default"
@@ -52,7 +50,6 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
         : {};
 
     const mods: Record<string, boolean> = {
-        [cls.overlayed]: overlaid && !isFixed,
         [cls.fixed]: isFixed,
     } as Record<string, boolean>;
 

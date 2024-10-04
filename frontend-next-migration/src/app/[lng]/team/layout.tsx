@@ -10,7 +10,7 @@ type Props = {
 export default function TeamLayout({children}: Props) {
     return (
         <>
-            <Navbar overlaid />
+            <Navbar />
             {children}
             <ScrollTop />
         </>

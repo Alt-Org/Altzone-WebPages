@@ -8,14 +8,12 @@
   font-weight: 500;
   top: 0;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
-}
-
-.overlayed {
-  position: absolute;
+  margin-top: 5px;
+  position: relative;
 }
 
 .fixed {
-  position: fixed;
+  position: sticky;
 }
 
 .siteNavContentList {
