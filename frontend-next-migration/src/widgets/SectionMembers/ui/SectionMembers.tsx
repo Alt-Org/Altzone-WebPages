@@ -1,34 +1,28 @@
 import cls from './SectionMembers.module.scss';
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { useParams } from 'next/navigation';
-import { fetchTeams, MemberItem, DepartmentItem } from '@/entities/Member';
-import { Team } from '@/entities/Member/model/types/types';
+import { useFetchTeamsQuery } from '@/entities/Member/api/membersApi';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
+import MemberItem from '@/entities/Member/ui/MemberItem';
+import DepartmentItem from '@/entities/Member/ui/DepartmentItem';
 
 interface WorkersSectionProps {
   className?: string;
 }
 
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
-  const [teams, setTeams] = useState<Team[]>([]);
   const params = useParams();
   const lng = params.lng as string;
   const { t } = useClientTranslation('team');
 
-  useEffect(() => {
-    const fetchTeamsData = async () => {
-      try {
-        const data = await fetchTeams(lng);
-        setTeams(data);
-      } catch (error) {
-        console.error('Failed to fetch teams:', error);
-      }
-    };
-    fetchTeamsData();
-  }, [lng]);
+  const { data: teams = [], isError } = useFetchTeamsQuery(lng);
+
+  if (isError) {
+    return <p>Error fetching teams data</p>;
+  }
 
   return (
     <div className={classNames(cls.MembersSection, {}, [className])}>

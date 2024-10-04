@@ -1,93 +1,83 @@
-/**
- * This file provides API functions related to fetching team data, including teams, members, logos, and departments.
- * It handles fetching data from Strapi, mapping the data to the correct types, and sorting teams accordingly.
- */
-
-import { envHelper } from '@/shared/const/envHelper';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Team } from '@/entities/Member/model/types/types';
 import { getMappedMembers, getMappedDepartments } from './mappers';
+import { envHelper } from '@/shared/const/envHelper';
 
-/**
- * Fetches a list of teams, including their members and departments, from the Strapi API.
- * @param locale The language locale to be used for fetching data. Defaults to 'en'.
- * @returns A Promise that resolves to an array of teams.
- */
-export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
-  try {
-    const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
-    const response = await fetch(
-      `${envHelper.strapiApiUrl}/teams?locale=${strapiLocale}&populate=departments.localizations,members.Logo,departments.members.Logo`,
-    );
+// Määritä API slice
+export const teamApi = createApi({
+  reducerPath: 'teamApi',
+  baseQuery: fetchBaseQuery({ baseUrl: envHelper.strapiApiUrl }),
+  endpoints: (builder) => ({
+    fetchTeams: builder.query<Team[], string>({
+      query: (locale = 'en') => {
+        const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
+        return `/teams?locale=${strapiLocale}&populate=departments.localizations,members.Logo,departments.members.Logo`;
+      },
+      transformResponse: (response: any, meta, arg) => {
+        const strapiLocale = arg === 'fi' ? 'fi-FI' : 'en';
 
-    if (!response.ok) {
-      throw new Error(`Error fetching teams: ${response.statusText}`);
-    }
+        const teams: Team[] = response.data.map((item: any) => {
+          let members = getMappedMembers(item.attributes.members?.data || []);
+          const departments = getMappedDepartments(
+            item.attributes.departments?.data || [],
+            strapiLocale,
+          );
 
-    const teamData = await response.json();
+          const departmentMemberIds = departments.flatMap((dept) =>
+            dept.members.map((member) => member.id),
+          );
+          members = members.filter(
+            (member) => !departmentMemberIds.includes(member.id),
+          );
 
-    const teams: Team[] = teamData.data.map((item: any) => {
-      let members = getMappedMembers(item.attributes.members?.data || []);
-      const departments = getMappedDepartments(
-        item.attributes.departments?.data || [],
-        strapiLocale,
-      );
+          return {
+            id: item.id,
+            name: item.attributes.Team || item.attributes.Name,
+            createdAt: item.attributes.createdAt,
+            updatedAt: item.attributes.updatedAt,
+            locale: item.attributes.locale,
+            members,
+            departments,
+          };
+        });
 
-      const departmentMemberIds = departments.flatMap((dept) =>
-        dept.members.map((member) => member.id),
-      );
-      members = members.filter(
-        (member) => !departmentMemberIds.includes(member.id),
-      );
+        const orderEn = [
+          'Game Design',
+          'Mentoring',
+          'Programming',
+          'Graphics',
+          'Sounds',
+          'Comic book',
+          'Production',
+          'Analysis',
+          'Art',
+          'Game Art Education Package',
+          'Other Participants',
+          'Special Thanks',
+        ];
 
-      return {
-        id: item.id,
-        name: item.attributes.Team || item.attributes.Name,
-        createdAt: item.attributes.createdAt,
-        updatedAt: item.attributes.updatedAt,
-        locale: item.attributes.locale,
-        members,
-        departments,
-      };
-    });
+        const orderFi = [
+          'Pelisuunnittelu',
+          'Mentorointi',
+          'Ohjelmointi',
+          'Grafiikka',
+          'Äänet',
+          'Sarjakuva',
+          'Tuotanto',
+          'Analyysi',
+          'Pelitaiteen opetuspaketti',
+          'Muut mukana olleet',
+          'Erityiskiitokset',
+        ];
 
-    const orderEn = [
-      'Game Design',
-      'Mentoring',
-      'Programming',
-      'Graphics',
-      'Sounds',
-      'Comic book',
-      'Production',
-      'Analysis',
-      'Art',
-      'Game Art Education Package',
-      'Other Participants',
-      'Special Thanks',
-    ];
+        const order = arg === 'fi' ? orderFi : orderEn;
 
-    const orderFi = [
-      'Pelisuunnittelu',
-      'Mentorointi',
-      'Ohjelmointi',
-      'Grafiikka',
-      'Äänet',
-      'Sarjakuva',
-      'Tuotanto',
-      'Analyysi',
-      'Pelitaiteen opetuspaketti',
-      'Muut mukana olleet',
-      'Erityiskiitokset',
-    ];
+        return teams.sort(
+          (a, b) => order.indexOf(a.name) - order.indexOf(b.name),
+        );
+      },
+    }),
+  }),
+});
 
-    const order = locale === 'fi' ? orderFi : orderEn;
-
-    return teams.sort(
-      (a: Team, b: Team) => order.indexOf(a.name) - order.indexOf(b.name),
-    );
-  } catch (error) {
-    console.error('Error fetching teams data:', error);
-    return [];
-  }
-};
-
-export default fetchTeams;
+export const { useFetchTeamsQuery } = teamApi;
