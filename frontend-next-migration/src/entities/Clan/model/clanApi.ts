@@ -1,7 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { StateSchema } from "@/app/_providers/StoreProvider";
-import { envHelper } from "@/shared/const/envHelper";
-import { GetClanResponse, GetClansResponse, IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, IJoin } from "../../Clan";
+import {gameApi, GameApiCacheTags} from "@/shared/api";
+import { GetClanResponse, GetClansResponse, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, IJoin } from "../../Clan";
 
 interface GetClansQueryParams {
     page?: number,
@@ -9,85 +7,54 @@ interface GetClansQueryParams {
 }
 const clanUrl = "clan";
 
-export const clanApi = createApi({
-    reducerPath: 'clanApi',
-    tagTypes: ['Clan'],
-    baseQuery: fetchBaseQuery(
-        {
-            baseUrl: envHelper.apiLink,
-            credentials: "include",
-            prepareHeaders: (headers, { getState, endpoint }) => {
-                const accessTokenInfo = (getState() as StateSchema).authUser.accessTokenInfo;
-                const excludedEndpoints = ['login', 'refresh', 'register'];
-                if (accessTokenInfo && !excludedEndpoints.includes(endpoint)) {
-                    headers.set('Authorization', `Bearer ${accessTokenInfo?.accessToken}`);
-                }
-            },
-
-        }),
+const clanApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
-
         getClans: builder.query<GetClansResponse, GetClansQueryParams>({
-
-            query: (params) => {
-                // const paramsToBeSent= {
-                //     page: options.page,
-                //     limit: options.limit,
-                //     sortBy: options?.sort?.sortBy,
-                //     sortOrder: options?.sort?.sortOrder
-                // }
-                return {
-                    url: clanUrl,
-                    method: 'GET',
-                    params: params,
-                }
-            },
-            providesTags: ['Clan'],
+            query: (params) => ({
+                url: clanUrl,
+                method: 'GET',
+                params,
+            }),
+            providesTags: [GameApiCacheTags.CLAN],
         }),
-
         getClanById: builder.query<GetClanResponse, string>({
             query: (clanId) => `${clanUrl}/${clanId}`,
-            providesTags: ['Clan']
+            providesTags: [GameApiCacheTags.CLAN],
         }),
-
         getClanByIdWithPlayers: builder.query<GetClanResponse, string>({
             query: (clanId) => `${clanUrl}/${clanId}?with=Player`,
-            providesTags: ['Clan']
+            providesTags: [GameApiCacheTags.CLAN],
         }),
-
         createClan: builder.mutation<ICreateClanResponse, IClanCreateDto>({
             query: (clan) => ({
                 url: clanUrl,
                 method: 'POST',
                 body: clan,
             }),
-            invalidatesTags: ['Clan'],
+            invalidatesTags: [GameApiCacheTags.CLAN],
         }),
-
         deleteClan: builder.mutation<void, string>({
             query: (clanId) => ({
                 url: `${clanUrl}/${clanId}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: ['Clan'],
+            invalidatesTags: [GameApiCacheTags.CLAN],
         }),
-
         updateClan: builder.mutation<void, IClanUpdateDto>({
             query: (clan) => ({
                 url: clanUrl,
                 method: 'PUT',
                 body: clan,
             }),
-            invalidatesTags: ['Clan'],
+            invalidatesTags: [GameApiCacheTags.CLAN],
         }),
-
         joinClan: builder.mutation<void, IJoin>({
             query: (join) => ({
                 url: `${clanUrl}/join`,
                 method: 'POST',
                 body: join,
             }),
-            invalidatesTags: ['Clan'],
+            invalidatesTags: [GameApiCacheTags.CLAN],
         }),
         leaveClan: builder.mutation<void, void>({
             query: () => ({
@@ -96,10 +63,10 @@ export const clanApi = createApi({
             }),
         }),
     }),
-})
+    overrideExisting: false,
+});
 
 export const {
-    util,
     useGetClansQuery,
     useGetClanByIdQuery,
     useGetClanByIdWithPlayersQuery,
@@ -108,5 +75,4 @@ export const {
     useUpdateClanMutation,
     useJoinClanMutation,
     useLeaveClanMutation,
-    endpoints: clanEndpoints
 } = clanApi;

@@ -2,13 +2,11 @@ export {
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
-    clanApi,
     useGetClanByIdQuery,
     useGetClanByIdWithPlayersQuery,
     useGetClansQuery,
     useLeaveClanMutation,
     useJoinClanMutation,
-    clanEndpoints
 } from "./model/clanApi";
 
 export { useClanData } from "./model/useClanData";
