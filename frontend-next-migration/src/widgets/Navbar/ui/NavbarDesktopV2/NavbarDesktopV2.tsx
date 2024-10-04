@@ -16,7 +16,6 @@ import { defineNs } from "../../model/defineNs";
 
 
 type NavbarProps = {
-    overlaid?: boolean;
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild
