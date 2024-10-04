@@ -1,36 +1,51 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './Rights.module.scss';
 import { AppRoutesLinks } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { useResetCookies } from '@/shared/lib/hooks/useResetCookies';
-import {
-  CurrentYear,
-  CompanyName,
-  Cookies,
-  Privacy,
-} from '../../model/data/text';
+import { Texts } from '../../model/types/types';
+import cls from './Rights.module.scss';
+
 
 interface RightsProps {
   className?: string;
+  texts: Texts;
 }
 
-export const Rights = memo(({ className = '' }: RightsProps) => {
+export const Rights = memo((props : RightsProps) => {
+
+  const {
+      className = '',
+      texts
+  } = props;
+
+  const {
+      cookies,
+      consent,
+      currentYear,
+      privacy,
+      companyName
+  } = texts;
+
   const handleResetCookies = useResetCookies();
 
   return (
-    <p className={classNames(cls.Rights, {}, [className])}>
-      <span className={cls.copySymbol}>&copy;</span> {CurrentYear} {CompanyName}{' '}
-      <AppLink className={cls.cookies} to={AppRoutesLinks.COOKIES}>
-        {Cookies}
-      </AppLink>{' '}
-      <AppLink className={cls.privacy} to={AppRoutesLinks.PRIVACY}>
-        {Privacy}
-      </AppLink>
-      <span onClick={handleResetCookies} className={cls.resetCookies}>
-        Consent
-      </span>
-    </p>
+      <div className={classNames(cls.Rights, {}, [className])}>
+          <p>
+              <AppLink className={cls.cookies} to={AppRoutesLinks.COOKIES}>
+                  {cookies}
+              </AppLink>{' '}
+              <AppLink className={cls.privacy} to={AppRoutesLinks.PRIVACY}>
+                  {privacy}
+              </AppLink>
+              <span onClick={handleResetCookies} className={cls.resetCookies}>
+              {consent}
+          </span>
+          </p>
+          <p>
+              <span className={cls.copySymbol}>&copy;</span> {currentYear} {companyName}{' '}
+          </p>
+      </div>
   );
 });
 

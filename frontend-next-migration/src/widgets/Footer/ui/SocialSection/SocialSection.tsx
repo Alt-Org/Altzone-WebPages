@@ -2,19 +2,19 @@ import {memo} from "react";
 import {classNames} from "@/shared/lib/classNames/classNames";
 import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
 import cls from './SocialSection.module.scss'
-import {SocialLink} from "../../model/types/types";
+import {SocialIconLink} from "../../model/types/types";
 import Image from "next/image";
 
 
 interface SocialSectionProps{
     className?: string;
-    socialLinks: SocialLink[];
+    socialIconLinks: SocialIconLink[];
 }
 
-export const SocialSection = memo(({className='',socialLinks}: SocialSectionProps) => {
+export const SocialSection = memo(({className='',socialIconLinks}: SocialSectionProps) => {
     return (
         <div className={classNames(cls.SocialSection, {}, [className])}>
-            {socialLinks.map((socialLink) => (
+            {socialIconLinks.map((socialLink) => (
                 <AppLink
                     key={socialLink.link}
                     isExternal
@@ -22,7 +22,6 @@ export const SocialSection = memo(({className='',socialLinks}: SocialSectionProp
                     to={socialLink.link}
                     className={classNames(cls.item)}
                 >
-                    {/*{socialLink.icon}*/}
                     <Image src={socialLink.icon} alt={socialLink.name}/>
                 </AppLink>
             ))}

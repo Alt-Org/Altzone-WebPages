@@ -1,0 +1,32 @@
+.main{
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 30px;
+  width: clamp(300px, 600px, 90%);
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: var(--border-radius-custom);
+  animation: fadeIn 3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.NavGoBackButton {
+  padding-top: 2rem;
+  cursor: pointer;
+  color: var(--secondary-color);
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

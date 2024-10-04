@@ -1,12 +1,12 @@
 import { NavbarBuild, NavbarMenuItem } from "../../model/types";
-import  {memo} from "react";
-import {useParams} from "next/navigation";
-import {useClientTranslation} from "@/shared/i18n";
-import {classNames} from "@/shared/lib/classNames/classNames";
+import { memo } from "react";
+import { useClientTranslation } from "@/shared/i18n";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./NavbarDesktopV2.module.scss";
-import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
-import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
+import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
+import {DropDownElement, DropdownWrapper} from "@/shared/ui/DropdownWrapper";
 import Image from "next/image";
+import { useUserPermissionsV2 } from "@/entities/Auth";
 
 type NavItemProps = {
     item: NavbarMenuItem;
@@ -18,17 +18,15 @@ const NavItem = memo((props: NavItemProps) => {
     const { item, className = '', navbarBuild } = props;
     const { type: itemType } = item
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const { t } = useClientTranslation(lng, "navbar");
-
+    const { t } = useClientTranslation("navbar");
+    const { checkPermissionFor } = useUserPermissionsV2();
 
     if (itemType === "navLink") {
         return (
             <li
                 key={item.path}
                 className=
-                    {classNames(cls.navItem, {}, [className])} >
+                {classNames(cls.navItem, {}, [className])} >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     to={item.path}
@@ -40,22 +38,21 @@ const NavItem = memo((props: NavItemProps) => {
             </li>
         )
     }
-
-
     if (itemType === "navDropDown") {
-
-        const localizedElements = item.elements.map((element) => ({
-            ...element,
-            elementText: t(`${element.elementText}`),
-        }));
-
-
+        const canUserSeeOwnClan = checkPermissionFor("clan:seeOwn").isGranted;
+        const localizedElements = item.elements
+            .map((element) => {
+                if(element.elementText == "clanpage" && !canUserSeeOwnClan) {
+                    return null;
+                }
+                return {
+                    ...element,
+                    elementText: t(`${element.elementText}`),
+                };
+            })
+            .filter(element => element !== null);
         return (
-            <li
-                key={item.name}
-                className=
-                    {classNames(cls.navItem, {}, [className])} >
-
+            <li key={item.name} className={classNames(cls.navItem, {}, [className])}>
                 <DropdownWrapper
                     elements={localizedElements}
                     contentAbsolute={true}
@@ -65,8 +62,11 @@ const NavItem = memo((props: NavItemProps) => {
                     <div>{t(`${item.name}`)}</div>
                 </DropdownWrapper>
             </li>
-        )
+        );
     }
+
+
+
 
 
     if (itemType === "navLogo") {

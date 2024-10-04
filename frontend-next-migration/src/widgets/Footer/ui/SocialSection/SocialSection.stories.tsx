@@ -1,13 +1,13 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { SocialSection } from './SocialSection';
-import {socialLinks} from "../../model/data/socialSectionMenu";
+import {socialIconLinks} from "../../model/data/socialSectionMenu";
 
 export default {
     title: 'widgets/Footer/SocialSection',
     args: {
         className: '',
-        socialLinks: socialLinks,
+        socialLinks: socialIconLinks,
     },
 } as ComponentMeta<typeof SocialSection>;
 

@@ -1,41 +1,39 @@
-.DropdownWrapper{
+.DropdownWrapper {
   cursor: pointer;
   user-select: none;
+  @media screen and (min-width: 1024px) {
+    white-space: nowrap;
+  }
 }
 
-.DropdownWrapper.contentAbsolute{
+.DropdownWrapper.contentAbsolute {
   position: relative;
 
-  .dropdownContent{
+  .dropdownContent {
     position: absolute;
   }
-
 }
-.dropdownContent{
+.dropdownContent {
   display: grid !important;
 }
 
-
-.dropdownContent.closed{
-
+.dropdownContent.closed {
   outline: 0;
   border: 0;
 
   overflow: hidden;
   & > * {
     display: none;
-
   }
 
   padding: 0 !important;
 }
 
-.childrenWrapper{
+.childrenWrapper {
   display: flex;
   align-items: center;
   gap: 7px;
 }
-
 
 .disabled {
   color: #c0c0c0;
