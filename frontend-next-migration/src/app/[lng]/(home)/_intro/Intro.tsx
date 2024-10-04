@@ -1,6 +1,9 @@
-'use client';
+type Props = {
+    scrollToContent: () => void;
+};
 
-const Intro = ({ scrollToContent }: { scrollToContent: () => void }) => {
+const Intro =  (props: Props) => {
+    const { scrollToContent } = props;
     return (
         <div className="intro-section">
             <h1>Welcome to our website!</h1>
@@ -31,5 +34,7 @@ const Intro = ({ scrollToContent }: { scrollToContent: () => void }) => {
         </div>
     );
 };
+
+Intro.displayName = "IntroComponent";
 
 export default Intro;
