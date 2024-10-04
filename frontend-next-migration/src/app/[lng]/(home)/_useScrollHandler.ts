@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useScrollHandler = (introRef: React.RefObject<HTMLDivElement>) => {
+export const _useScrollHandler = (introRef: React.RefObject<HTMLDivElement>) => {
     const [isScrollbarHidden, setIsScrollbarHidden] = useState(true);
 
     const updateScrollbarVisibility = () => {
