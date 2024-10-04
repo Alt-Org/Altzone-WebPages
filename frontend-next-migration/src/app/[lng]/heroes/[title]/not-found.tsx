@@ -2,13 +2,10 @@
 import Link from 'next/link';
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import {useClientTranslation} from "@/shared/i18n";
-import {useParams} from "next/navigation";
 
 export default function NotFound() {
 
-    const {lng} = useParams();
-
-    const {t} =  useClientTranslation(lng as string, 'heroes');
+    const {t} =  useClientTranslation('heroes');
 
     return (
         <div style={{

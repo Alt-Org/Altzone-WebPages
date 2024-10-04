@@ -1,14 +1,9 @@
-import {authApi, AuthUserSchema} from "@/entities/Auth";
-import {clanApi} from "@/entities/Clan";
-import {galleryApi} from "@/entities/Gallery";
-import {profileApi} from "@/entities/Profile";
-
+import {AuthUserSchema} from "@/entities/Auth";
+import {gameApi} from "@/shared/api";
 
 export interface StateSchema {
     authUser: AuthUserSchema;
-    [authApi.reducerPath]: ReturnType<typeof authApi.reducer>;
-    [profileApi.reducerPath]: ReturnType<typeof profileApi.reducer>;
-    [clanApi.reducerPath]: ReturnType<typeof clanApi.reducer>;
-    [galleryApi.reducerPath]: ReturnType<typeof galleryApi.reducer>;
+    [gameApi.reducerPath]: ReturnType<typeof gameApi.reducer>;
+    // todo add here strapiApi
 }
 

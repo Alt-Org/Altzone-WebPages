@@ -14,11 +14,9 @@ import {
     isRightSide
 } from "../../../model/types/type.guards";
 import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import {useLogoutMutation, useUserPermissions} from "@/entities/Auth";
-import {useParams} from "next/navigation";
+import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
 import {useClientTranslation} from "@/shared/i18n";
 import {LangSwitcher} from "@/features/LangSwitcher";
-
 
 
 interface NavbarProps {
@@ -51,14 +49,15 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     const itemFakeLinkClassname = cls.item + ' ' + cls.fakeItemLink;
     const itemNavbarDropDownClassname = cls.item + ' ' + cls.itemNavbarDropDown;
 
-    const {canI} = useUserPermissions();
+    const {checkPermissionFor} = useUserPermissionsV2();
+    const permissionToLogin = checkPermissionFor("login");
+    const permissionToLogout = checkPermissionFor("logout");
 
+
+    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t, i18n} = useClientTranslation(lng, "navbar");
-
+    const {t} = useClientTranslation("navbar");
 
     const rightSideRef = useRef(null);
     const [distToRightBorder , setDistToRightBorder] = useState<number>();
@@ -133,7 +132,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                     {/*<button onClick={()=> i18n.changeLanguage("fi") }>change language</button>*/}
 
                         {
-                            canI("canISeeLogin")
+                            permissionToLogin.isGranted
                                 ? (
                                     <AppLink
                                         theme={AppLinkTheme.PRIMARY}
@@ -144,7 +143,7 @@ export const NavbarDesktop = ( props : NavbarProps) => {
                                         <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name }`)}</span>
                                     </AppLink>
                                 )
-                                : canI("canISeeLogout")
+                                : permissionToLogout.isGranted
                                     ? <div onClick={() => logout()}>
                                         {t(`logout`)}
                                     </div>
@@ -188,9 +187,7 @@ const NavbarItemsComponent =
      }: NavbarItemsProps) => {
 
 
-        const params = useParams();
-        const lng = params.lng as string;
-        const {t} = useClientTranslation(lng, "navbar");
+        const {t} = useClientTranslation( "navbar");
 
         return (
             <>

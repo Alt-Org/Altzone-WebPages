@@ -3,7 +3,6 @@ import { CustomForm } from "@/shared/ui/CustomForm";
 import cls from "./LoginForm.module.scss";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import {useLoginForm} from "../../model/useLoginForm";
-import {useParams} from "next/navigation";
 import {useClientTranslation} from "@/shared/i18n";
 
 type Props = {
@@ -14,10 +13,7 @@ type Props = {
 
 export const LoginForm = ({ toForgottenPwPage, toRegisterPage, onSuccessLogin}: Props) => {
 
-    const params = useParams();
-    const lng = params.lng as string;
-    const {t} = useClientTranslation(lng, "auth");
-
+    const {t} = useClientTranslation("auth");
 
     const {
         register,

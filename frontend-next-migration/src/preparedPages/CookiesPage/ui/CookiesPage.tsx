@@ -28,7 +28,8 @@ const CookiesPage = (props: Props) => {
 
   return (
     <div className={classNames(cls.pageContainer)}>
-      <Navbar overlaid={true} navBarType={'Cookies'} />
+        {/*//todo mow to layout*/}
+      <Navbar navBarType={'Cookies'} />
 
       <WikiContentWithSidebar sections={sections} />
       <div>

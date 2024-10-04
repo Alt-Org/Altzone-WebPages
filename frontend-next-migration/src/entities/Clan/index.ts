@@ -2,10 +2,13 @@ export {
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
-    clanApi,
     useGetClanByIdQuery,
+    useGetClanByIdWithPlayersQuery,
     useGetClansQuery,
-    clanEndpoints
+    useLeaveClanMutation,
+    useJoinClanMutation,
 } from "./model/clanApi";
 
-export type { IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, GetClansResponse, GetClanResponse } from "./types/clan";
+export { useClanData } from "./model/useClanData";
+
+export type { IClan, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, GetClansResponse, GetClanResponse, IJoin, IJoinDto } from "./types/clan";
