@@ -1,8 +1,3 @@
-/**
- * This file contains mapping functions used to transform data from the API response
- * into a format that matches the application's data models.
- * It includes functions for mapping members, departments, and icons.
- */
 import { Member, Department } from '@/entities/Member/model/types/types';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -12,7 +7,10 @@ import {
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
 
-export const LinksMap = () => ({
+/**
+ * LinksMap provides a mapping of link types to FontAwesome icons.
+ */
+export const getLinksMap = () => ({
   website: faGlobe,
   github: faGithub,
   linkedin: faLinkedin,
@@ -27,7 +25,7 @@ export const LinksMap = () => ({
  * @param membersData An array of raw member data from the API.
  * @returns An array of members mapped to the Member type.
  */
-export const mapMembers = (membersData: any[]): Member[] => {
+export const getMappedMembers = (membersData: any[]): Member[] => {
   return (
     membersData
       .map((member: any) => {
@@ -62,7 +60,7 @@ export const mapMembers = (membersData: any[]): Member[] => {
  * @param locale The language locale used to find the localized department name.
  * @returns An array of departments mapped to the Department type.
  */
-export const mapDepartments = (
+export const getMappedDepartments = (
   departmentsData: any[],
   locale: string,
 ): Department[] => {
@@ -101,7 +99,7 @@ export const mapDepartments = (
           ? localizedDept.attributes.Name
           : dept.attributes.Name;
 
-        const members = mapMembers(dept.attributes.members?.data || []);
+        const members = getMappedMembers(dept.attributes.members?.data || []);
 
         return {
           id: dept.id,

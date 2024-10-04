@@ -1,11 +1,11 @@
 /**
- * This file provides API functions related to fetching team data, including teams,members, logos and departments.
+ * This file provides API functions related to fetching team data, including teams, members, logos, and departments.
  * It handles fetching data from Strapi, mapping the data to the correct types, and sorting teams accordingly.
  */
 
 import { envHelper } from '@/shared/const/envHelper';
 import { Team } from '@/entities/Member/model/types/types';
-import { mapMembers, mapDepartments } from './mappers';
+import { getMappedMembers, getMappedDepartments } from './mappers';
 
 /**
  * Fetches a list of teams, including their members and departments, from the Strapi API.
@@ -26,8 +26,8 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
     const teamData = await response.json();
 
     const teams: Team[] = teamData.data.map((item: any) => {
-      let members = mapMembers(item.attributes.members?.data || []);
-      const departments = mapDepartments(
+      let members = getMappedMembers(item.attributes.members?.data || []);
+      const departments = getMappedDepartments(
         item.attributes.departments?.data || [],
         strapiLocale,
       );
@@ -89,3 +89,5 @@ export const fetchTeams = async (locale: string = 'en'): Promise<Team[]> => {
     return [];
   }
 };
+
+export default fetchTeams;
