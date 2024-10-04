@@ -1,5 +1,5 @@
-import {DirectoryWithPhotos} from "@/entities/Gallery";
 import {GalleryCategoriesWithModalSliderProps} from "../ui/GalleryCategoriesWithModalSlider";
+import { DirectoryWithPhotos } from "./galleryApi";
 
 export const transformToGalleryPropsFormat = (data: DirectoryWithPhotos[]): GalleryCategoriesWithModalSliderProps[] => {
     return data?.map(category => ({

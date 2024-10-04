@@ -11,8 +11,6 @@ export const SectionGallerias = ({parentDirectory}: Props) => {
 
     const {transformedGalleryCategories, isError} = useSectionGallerias(parentDirectory);
 
-
-
     if(isError){
         return (
             <div>Server Error</div>

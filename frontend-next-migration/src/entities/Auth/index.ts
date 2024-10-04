@@ -10,7 +10,6 @@ export type {
 
 
 export {
-    authApi,
     useLoginMutation,
     useRegisterMutation,
     useLogoutMutation,
