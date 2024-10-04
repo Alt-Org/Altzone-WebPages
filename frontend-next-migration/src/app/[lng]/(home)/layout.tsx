@@ -5,7 +5,7 @@ import { Footer } from '@/widgets/Footer';
 import { ScrollTop } from '@/features/ScrollTop';
 import Intro from './_intro/Intro';
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { useScrollHandler } from './useScrollHandler';
+import { _useScrollHandler } from './_useScrollHandler';
 
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 
 export default function HomeLayout({ children }: Props) {
     const introRef = useRef<HTMLDivElement>(null);
-    const { isScrollbarHidden, scrollToContent} = useScrollHandler(introRef);
+    const { isScrollbarHidden, scrollToContent} = _useScrollHandler(introRef);
 
     return (
         <>
