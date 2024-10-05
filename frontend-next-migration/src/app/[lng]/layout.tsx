@@ -24,15 +24,6 @@ const rubik = Rubik({
   variable: '--font-family-texts',
 });
 
-// todo add i18n if it possible
-export const metadata: Metadata = {
-  title: 'AltZone',
-  description:
-    'Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin.',
-  keywords:
-    'altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään',
-};
-
 
 export const viewport: Viewport = {
   width: 'device-width',
