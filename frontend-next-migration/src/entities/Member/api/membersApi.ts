@@ -3,7 +3,6 @@ import { Team } from '@/entities/Member/model/types/types';
 import { getMappedMembers, getMappedDepartments } from './mappers';
 import { envHelper } from '@/shared/const/envHelper';
 
-// Määritä API slice
 export const teamApi = createApi({
   reducerPath: 'teamApi',
   baseQuery: fetchBaseQuery({ baseUrl: envHelper.strapiApiUrl }),
@@ -80,4 +79,4 @@ export const teamApi = createApi({
   }),
 });
 
-export const { useFetchTeamsQuery } = teamApi;
+export const { useFetchTeamsQuery: useGetTeamsQuery } = teamApi;

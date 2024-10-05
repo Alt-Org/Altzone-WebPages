@@ -1,7 +1,7 @@
 import cls from './SectionMembers.module.scss';
 import { FC } from 'react';
 import { useParams } from 'next/navigation';
-import { useFetchTeamsQuery } from '@/entities/Member/api/membersApi';
+import { useGetTeamsQuery } from '@/entities/Member/api';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
@@ -18,7 +18,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const lng = params.lng as string;
   const { t } = useClientTranslation('team');
 
-  const { data: teams = [], isError } = useFetchTeamsQuery(lng);
+  const { data: teams = [], isError } = useGetTeamsQuery(lng);
 
   if (isError) {
     return <p>Error fetching teams data</p>;
