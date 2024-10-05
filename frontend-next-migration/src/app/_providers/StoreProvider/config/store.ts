@@ -39,13 +39,13 @@ export function createReduxStore(initialState?: StateSchema) {
   const rootReducer = combineReducers({
     authUser: authUserReducer,
     [gameApi.reducerPath]: gameApi.reducer,
-    [teamApi.reducerPath]: teamApi.reducer, // Lisää teamApi.reducer
+    [teamApi.reducerPath]: teamApi.reducer,
   });
 
   const persistConfig = {
     key: 'root',
     storage,
-    blacklist: [gameApi.reducerPath, teamApi.reducerPath], // Lisää teamApi.reducerPath mustalle listalle
+    blacklist: [gameApi.reducerPath, teamApi.reducerPath],
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -61,11 +61,7 @@ export function createReduxStore(initialState?: StateSchema) {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }).concat(
-        gameApi.middleware,
-        teamApi.middleware, // Lisää teamApi.middleware
-        authMiddleware,
-      ),
+      }).concat(gameApi.middleware, teamApi.middleware, authMiddleware),
   });
 
   const persistor = persistStore(store);
