@@ -10,7 +10,7 @@ import {
 /**
  * LinksMap provides a mapping of link types to FontAwesome icons.
  */
-export const getLinksMap = () => ({
+export const getLinks = () => ({
   website: faGlobe,
   github: faGithub,
   linkedin: faLinkedin,
@@ -25,7 +25,7 @@ export const getLinksMap = () => ({
  * @param membersData An array of raw member data from the API.
  * @returns An array of members mapped to the Member type.
  */
-export const getMappedMembers = (membersData: any[]): Member[] => {
+export const getMembers = (membersData: any[]): Member[] => {
   return (
     membersData
       .map((member: any) => {
@@ -60,7 +60,7 @@ export const getMappedMembers = (membersData: any[]): Member[] => {
  * @param locale The language locale used to find the localized department name.
  * @returns An array of departments mapped to the Department type.
  */
-export const getMappedDepartments = (
+export const getDepartments = (
   departmentsData: any[],
   locale: string,
 ): Department[] => {
@@ -99,7 +99,7 @@ export const getMappedDepartments = (
           ? localizedDept.attributes.Name
           : dept.attributes.Name;
 
-        const members = getMappedMembers(dept.attributes.members?.data || []);
+        const members = getMembers(dept.attributes.members?.data || []);
 
         return {
           id: dept.id,

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Team } from '@/entities/Member/model/types/types';
-import { getMappedMembers, getMappedDepartments } from './mappers';
+import { getMembers, getDepartments } from './mappers';
 import { envHelper } from '@/shared/const/envHelper';
 
 export const teamApi = createApi({
@@ -16,8 +16,8 @@ export const teamApi = createApi({
         const strapiLocale = arg === 'fi' ? 'fi-FI' : 'en';
 
         const teams: Team[] = response.data.map((item: any) => {
-          let members = getMappedMembers(item.attributes.members?.data || []);
-          const departments = getMappedDepartments(
+          let members = getMembers(item.attributes.members?.data || []);
+          const departments = getDepartments(
             item.attributes.departments?.data || [],
             strapiLocale,
           );
