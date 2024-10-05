@@ -1,5 +1,6 @@
 import { Member, Department } from '@/entities/Member/model/types/types';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { envHelper } from '@/shared/const/envHelper';
 import {
   faGithub,
   faLinkedin,
@@ -30,7 +31,7 @@ export const getMembers = (membersData: any[]): Member[] => {
     membersData
       .map((member: any) => {
         const logoUrl = member.attributes.Logo?.data?.attributes?.url
-          ? `${process.env.NEXT_PUBLIC_STRAPI_HOST}${member.attributes.Logo.data.attributes.url}`
+          ? `${envHelper.strapiHost}${member.attributes.Logo.data.attributes.url}`
           : null;
 
         return {
