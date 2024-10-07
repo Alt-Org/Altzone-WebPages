@@ -13,8 +13,7 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { gameApi } from '@/shared/api';
-import { teamApi } from '@/entities/Member/api/membersApi';
+import {gameApi, strapiApi} from '@/shared/api';
 
 const createNoopStorage = () => {
   return {
@@ -39,13 +38,16 @@ export function createReduxStore(initialState?: StateSchema) {
   const rootReducer = combineReducers({
     authUser: authUserReducer,
     [gameApi.reducerPath]: gameApi.reducer,
-    [teamApi.reducerPath]: teamApi.reducer,
+    [strapiApi.reducerPath]: strapiApi.reducer,
   });
 
   const persistConfig = {
     key: 'root',
     storage,
-    blacklist: [gameApi.reducerPath, teamApi.reducerPath],
+    blacklist: [
+        gameApi.reducerPath,
+      strapiApi.reducerPath
+    ],
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -61,7 +63,11 @@ export function createReduxStore(initialState?: StateSchema) {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }).concat(gameApi.middleware, teamApi.middleware, authMiddleware),
+      }).concat(
+          gameApi.middleware,
+          strapiApi.middleware,
+          authMiddleware
+      ),
   });
 
   const persistor = persistStore(store);
