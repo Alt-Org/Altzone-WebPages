@@ -39,7 +39,6 @@ jobs:
           NEXT_PUBLIC_STRAPI_API_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
           NEXT_PUBLIC_STRAPI_HOST: ${{ secrets.NEXT_PUBLIC_STRAPI_HOST }}
 
-
       - name: Run tests
         run: npm test
         working-directory: ./frontend-next-migration
