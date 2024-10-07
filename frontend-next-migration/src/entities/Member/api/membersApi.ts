@@ -1,11 +1,8 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { envHelper } from '@/shared/const/envHelper';
+import { strapiApi } from '@/shared/api/strapiApi';
 import { Team } from '../model/types/types';
 import { getMembers, getDepartments } from './mappers';
 
-export const teamApi = createApi({
-  reducerPath: 'teamApi',
-  baseQuery: fetchBaseQuery({ baseUrl: envHelper.strapiApiUrl }),
+const teamApi = strapiApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchTeams: builder.query<Team[], string>({
       query: (locale = 'en') => {
@@ -18,15 +15,15 @@ export const teamApi = createApi({
         const teams: Team[] = response.data.map((item: any) => {
           let members = getMembers(item.attributes.members?.data || []);
           const departments = getDepartments(
-            item.attributes.departments?.data || [],
-            strapiLocale,
+              item.attributes.departments?.data || [],
+              strapiLocale,
           );
 
           const departmentMemberIds = departments.flatMap((dept) =>
-            dept.members.map((member) => member.id),
+              dept.members.map((member) => member.id),
           );
           members = members.filter(
-            (member) => !departmentMemberIds.includes(member.id),
+              (member) => !departmentMemberIds.includes(member.id),
           );
 
           return {
@@ -72,7 +69,7 @@ export const teamApi = createApi({
         const order = arg === 'fi' ? orderFi : orderEn;
 
         return teams.sort(
-          (a, b) => order.indexOf(a.name) - order.indexOf(b.name),
+            (a, b) => order.indexOf(a.name) - order.indexOf(b.name),
         );
       },
     }),
