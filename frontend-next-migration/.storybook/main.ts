@@ -29,22 +29,23 @@ const config: StorybookConfig = {
   //   storyStoreV7: false,
   // },
 
-  webpackFinal: async (config) => {
-
-    const fileLoaderRule = config.module.rules.find((rule) =>
-        // @ts-ignore
-        rule.test?.test?.('.svg')
-    );
-    // @ts-ignore
-    fileLoaderRule.exclude = /\.svg$/;
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
-    });
-
-    return config;
-  },
+  //todo if we enable this to work with svgs we will break other image types for some reason..., figure our why
+  // webpackFinal: async (config) => {
+  //
+  //   const fileLoaderRule = config.module.rules.find((rule) =>
+  //       // @ts-ignore
+  //       rule.test?.test?.('.svg')
+  //   );
+  //   // @ts-ignore
+  //   fileLoaderRule.exclude = /\.svg$/;
+  //
+  //   config.module.rules.push({
+  //     test: /\.svg$/,
+  //     use: ['@svgr/webpack'],
+  //   });
+  //
+  //   return config;
+  // },
 
 
   docs: {
