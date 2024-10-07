@@ -13,7 +13,7 @@ const MyClanPage = () => {
 
     useEffect(() => {
         if (clanId) {
-            console.log(clanId);
+            // console.log(clanId);
             router.push('/clans/' + clanId);
         } else {
             router.push('/clans/all');

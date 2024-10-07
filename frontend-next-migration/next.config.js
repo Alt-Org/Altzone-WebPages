@@ -9,6 +9,7 @@ const nextConfig = {
       { hostname: 'heroes.ts.unsplash.com' },
       { hostname: 'raw.githubusercontent.com' },
       { hostname: 'raw.githubusercontent.com' },
+      { hostname: "localhost" },
       { hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_API_URL).hostname} ,
     ],
   },
