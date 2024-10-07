@@ -4,7 +4,7 @@ import cls from "./ClanAllSubPage.module.scss";
 import { GetClansResponse, useGetClansQuery } from "@/entities/Clan";
 import { Loader } from "@/shared/ui/Loader";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-import {useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useClientTranslation } from "@/shared/i18n";
 import { useState } from "react";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button"
@@ -16,7 +16,7 @@ const ClanAllSubPage = () => {
     const { isMobileSize } = useIsMobileSize();
 
     const router = useRouter();
-
+    const { t } = useClientTranslation("clan");
     const { data: clans, error, isLoading } = useGetClansQuery({ page: currentPage, search: currentSearch });
 
     if (isLoading) return <Loader className={cls.Loader} />
@@ -43,20 +43,19 @@ const ClanAllSubPage = () => {
         const cleanValue = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const convertedValue = cleanValue.split('').map(char => `[${char.toLowerCase()}${char.toUpperCase()}]`).join('');
         const querySearch = `name=".*${convertedValue}.*"`;
-        console.log("querySearch: ", querySearch);
         return querySearch;
     };
 
     if (error) {
         return (
             <>
-                <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANIT</h1>
+                <h1 style={{ textAlign: "center", marginBottom: "20px" }}>{t("clans_title")}</h1>
                 {isMobileSize
                     ?
                     <ClansSearchMobile onClickToSearch={onClickToSearch} />
                     :
                     <ClansSearchDesktop onClickToSearch={onClickToSearch} />}
-                <h2 style={{ textAlign: "left", marginBottom: "20px" }}>No results</h2>
+                <h2 style={{ textAlign: "left", marginBottom: "20px" }}>{t("no_result")}</h2>
             </>
         );
     }
@@ -64,7 +63,7 @@ const ClanAllSubPage = () => {
     if (clans) {
         return (
             <>
-                <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANIT</h1>
+                <h1 style={{ textAlign: "center", marginBottom: "20px" }}>{t("clans_title")}</h1>
                 {isMobileSize
                     ?
                     <ClansSearchMobile onClickToSearch={onClickToSearch} />
