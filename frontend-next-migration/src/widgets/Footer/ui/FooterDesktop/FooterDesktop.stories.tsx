@@ -1,27 +1,38 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import FooterDesktop from './FooterDesktop';
-import {socialIconLinks} from "../../model/data/socialSectionMenu";
+import { socialIconLinks } from '../../model/data/socialSectionMenu';
 
-export default {
-  title: 'widgets/Footer/Desktop',
-  component: FooterDesktop,
-} as ComponentMeta<typeof FooterDesktop>;
+const meta: Meta<typeof FooterDesktop> = {
+    title: 'widgets/Footer/Desktop',
+    component: FooterDesktop,
+    args: {
+        title: 'Be part of our community 😊',
+        socialIconLinks: socialIconLinks,
+        texts: {
+            consent: 'Consent',
+            cookies: 'Cookies',
+            privacy: 'Privacy',
+            currentYear: new Date().getFullYear(),
+            companyName: "Psyche's Royale Gaming ry",
+        },
+    },
+};
 
-const Template: ComponentStory<typeof FooterDesktop> = () => (
-    <FooterDesktop
-        socialIconLinks={socialIconLinks}
-        title={"Be part of our community 😊"}
-        texts={
-            {
-                consent: "Consent",
-                cookies: "Cookies",
-                privacy: "Privacy",
-                currentYear: new Date().getFullYear(),
-                companyName: "Psyche's Royale Gaming ry"
-            }
-        }
-    />
-);
+export default meta;
 
-export const Default = Template.bind({});
+type Story = StoryObj<typeof FooterDesktop>;
+
+export const Default: Story = {
+    args: {
+        title: 'Be part of our community 😊',
+        socialIconLinks: socialIconLinks,
+        texts: {
+            consent: 'Consent',
+            cookies: 'Cookies',
+            privacy: 'Privacy',
+            currentYear: new Date().getFullYear(),
+            companyName: "Psyche's Royale Gaming ry",
+        },
+    },
+};
