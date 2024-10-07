@@ -21,7 +21,7 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
             <div className={cls.memberLogo}>
               {member.logo ? (
                 <Image
-                  src={"/" + member.logo}
+                  src={member.logo}
                   alt={member.name}
                   className={cls.Logo}
                   width={500}
