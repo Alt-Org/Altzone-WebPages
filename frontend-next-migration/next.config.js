@@ -50,11 +50,14 @@ const nextConfig = {
       { hostname: 'heroes.ts.unsplash.com' },
       { hostname: 'raw.githubusercontent.com' },
       { hostname: 'raw.githubusercontent.com' },
+      { hostname: "strapi.altzone.fi"}
+
+
       // { hostname: process.env.NEXT_PUBLIC_STRAPI_HOST },
       // { hostname: "strapi.altzone.fi"},
       // { hostname: 'strapi.altzone.fi' },
       // { hostname: "strapi.altzone.fi"} ,
-      { hostname: process.env.NEXT_PUBLIC_STRAPI_HOST},
+      // { hostname: process.env.NEXT_PUBLIC_STRAPI_HOST},
       // { hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_API_URL).hostname || "strapi.altzone.fi"} ,
     ],
   },
