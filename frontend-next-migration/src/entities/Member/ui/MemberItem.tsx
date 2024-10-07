@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import Link from 'next/link';
-import { Member } from '@/entities/Member/model/types/types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import cls from './MemberItem.module.scss';
 import Image from 'next/image';
-import { getLinks } from '@/entities/Member/api/mappers';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Member } from '../model/types/types';
+import cls from './MemberItem.module.scss';
+import { getLinks } from '../api/mappers';
 
 const MemberItem: FC<{ member: Member }> = ({ member }) => {
   const linksMap = getLinks();
