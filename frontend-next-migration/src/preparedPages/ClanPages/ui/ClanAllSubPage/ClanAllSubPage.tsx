@@ -43,7 +43,6 @@ const ClanAllSubPage = () => {
         const cleanValue = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const convertedValue = cleanValue.split('').map(char => `[${char.toLowerCase()}${char.toUpperCase()}]`).join('');
         const querySearch = `name=".*${convertedValue}.*"`;
-        console.log("querySearch: ", querySearch);
         return querySearch;
     };
 
