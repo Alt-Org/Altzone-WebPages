@@ -1,20 +1,28 @@
-.MembersPage{
-
+.MembersPage {
 }
 
-.workersSection{
+.backgroundOpacity {
+  z-index: 1;
+  position: fixed !important;
+  width: 100%;
+  //height: 100%;
+  pointer-events: none;
+}
+
+.workersSection {
   padding-top: 200px;
   z-index: 2;
 
   @media only screen and (min-width: 1921px) {
     * {
-      font-size: xxx-large!important;
+      font-size: xxx-large !important;
     }
+    //h1{
+    //  font-size: xxx-large!important;
+    //}
   }
-
 }
 
-.wholePageBG{
+.wholePageBG {
   filter: brightness(85%);
 }
-
