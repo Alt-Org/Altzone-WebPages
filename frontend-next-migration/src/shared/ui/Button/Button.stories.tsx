@@ -1,98 +1,166 @@
-import React from "react";
-import { Button, ButtonSize, ButtonTheme } from "./Button";
-import {ComponentMeta, ComponentStory} from "@storybook/react";
+import { Meta, StoryObj } from '@storybook/react';
+import { Button, ButtonSize, ButtonTheme } from './Button';
 
-export default {
-    title: "shared/Button",
+const meta = {
+    title: 'shared/Button',
     component: Button,
     argTypes: {
-        backgroundColor: { control: "color" },
+        children: {
+            control: 'text',
+            description: 'Content inside the button.',
+            defaultValue: 'Button',
+        },
+        theme: {
+            control: 'select',
+            options: Object.values(ButtonTheme),
+            description: 'Sets the theme of the button.',
+            defaultValue: ButtonTheme.PRIMARY,
+            table: {
+                defaultValue: { summary: ButtonTheme.PRIMARY },
+            },
+        },
+        size: {
+            control: 'select',
+            options: Object.values(ButtonSize),
+            description: 'Specifies the size of the button.',
+            defaultValue: ButtonSize.M,
+            table: {
+                defaultValue: { summary: ButtonSize.M },
+            },
+
+        },
+        square: {
+            control: 'boolean',
+            description: 'If true, makes the button square-shaped.',
+            defaultValue: false,
+        },
+        disabled: {
+            control: 'boolean',
+            description: 'Disables the button if true.',
+            defaultValue: false,
+        },
+        withScalableLink: {
+            control: 'boolean',
+            description: 'If true, applies scalable link behavior to the button.',
+            defaultValue: false,
+        },
     },
-} as ComponentMeta<typeof Button>;
+    args: {
+        children: 'Button',
+        theme: ButtonTheme.PRIMARY,
+        size: ButtonSize.M,
+        square: false,
+        disabled: false,
+        withScalableLink: false,
+    },
+    tags: ['autodocs'],
+    parameters: {
+        layout: 'centered',
+        docs: {
+            description: {
+                component: 'The `Button` component is a reusable UI element for triggering actions or navigating within the app. It supports different themes, sizes, and states.',
+            },
+        },
+    },
+} satisfies Meta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Primary = Template.bind({});
-Primary.args = {
-    children: "Text",
+export const Primary: Story = {
+    args: {
+        children: 'Button',
+    },
 };
 
-export const Clear = Template.bind({});
-Clear.args = {
-    children: "Text",
-    theme: ButtonTheme.CLEAR,
+export const Clear: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.CLEAR,
+    },
 };
 
-export const ClearInverted = Template.bind({});
-ClearInverted.args = {
-    children: "Text",
-    theme: ButtonTheme.CLEAR_INVERTED,
+export const ClearInverted: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.CLEAR_INVERTED,
+    },
 };
 
-export const Outline = Template.bind({});
-Outline.args = {
-    children: "Text",
-    theme: ButtonTheme.OUTLINE,
+export const Outline: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.OUTLINE,
+    },
 };
 
-export const OutlineSizeL = Template.bind({});
-OutlineSizeL.args = {
-    children: "Text",
-    theme: ButtonTheme.OUTLINE,
-    size: ButtonSize.L,
+export const OutlineSizeL: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.OUTLINE,
+        size: ButtonSize.L,
+    },
 };
 
-export const OutlineSizeXl = Template.bind({});
-OutlineSizeXl.args = {
-    children: "Text",
-    theme: ButtonTheme.OUTLINE,
-    size: ButtonSize.XL,
+export const OutlineSizeXl: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.OUTLINE,
+        size: ButtonSize.XL,
+    },
 };
 
-export const BackgroundTheme = Template.bind({});
-BackgroundTheme.args = {
-    children: "Text",
-    theme: ButtonTheme.BACKGROUND,
+export const BackgroundTheme: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.BACKGROUND,
+    },
 };
 
-export const BackgroundInverted = Template.bind({});
-BackgroundInverted.args = {
-    children: "Text",
-    theme: ButtonTheme.BACKGROUND_INVERTED,
+export const BackgroundInverted: Story = {
+    args: {
+        children: 'Text',
+        theme: ButtonTheme.BACKGROUND_INVERTED,
+    },
 };
 
-export const Square = Template.bind({});
-Square.args = {
-    children: ">",
-    theme: ButtonTheme.BACKGROUND_INVERTED,
-    square: true,
+export const Square: Story = {
+    args: {
+        children: '>',
+        theme: ButtonTheme.BACKGROUND_INVERTED,
+        square: true,
+    },
 };
 
-export const SquareSizeL = Template.bind({});
-SquareSizeL.args = {
-    children: ">",
-    theme: ButtonTheme.BACKGROUND_INVERTED,
-    square: true,
-    size: ButtonSize.L,
+export const SquareSizeL: Story = {
+    args: {
+        children: '>',
+        theme: ButtonTheme.BACKGROUND_INVERTED,
+        square: true,
+        size: ButtonSize.L,
+    },
 };
 
-export const SquareSizeXl = Template.bind({});
-SquareSizeXl.args = {
-    children: ">",
-    theme: ButtonTheme.BACKGROUND_INVERTED,
-    square: true,
-    size: ButtonSize.XL,
+export const SquareSizeXl: Story = {
+    args: {
+        children: '>',
+        theme: ButtonTheme.BACKGROUND_INVERTED,
+        square: true,
+        size: ButtonSize.XL,
+    },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-    children: "text",
-    theme: ButtonTheme.OUTLINE,
-    disabled: true,
+export const Disabled: Story = {
+    args: {
+        children: 'text',
+        theme: ButtonTheme.OUTLINE,
+        disabled: true,
+    },
 };
 
-export const WithScalableLink = Template.bind({});
-WithScalableLink.args = {
-    children: "text",
-    withScalableLink: true
+export const WithScalableLink: Story = {
+    args: {
+        children: 'text',
+        withScalableLink: true,
+    },
 };
