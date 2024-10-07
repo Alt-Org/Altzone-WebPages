@@ -30,7 +30,7 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
               )}
             </div>
             {Object.entries(linksMap).map(([key, icon]) => {
-              const link = member[key as keyof Member];
+              const link = member[key as keyof Omit<Member, "id">];
               if (link) {
                 const href = key === 'email' ? `mailto:${link}` : link;
                 const target = key === 'email' ? '_self' : '_blank';
