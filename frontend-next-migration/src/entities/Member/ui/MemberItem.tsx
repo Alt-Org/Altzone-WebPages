@@ -9,8 +9,6 @@ import { getLinks } from '../api/mappers';
 const MemberItem: FC<{ member: Member }> = ({ member }) => {
   const linksMap = getLinks();
 
-  console.log(member.logo)
-
   return (
     <li className={cls.workmanComponent}>
       <div className={cls.memberRow}>
