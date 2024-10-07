@@ -1,79 +1,47 @@
-.MembersSection{
-  font-family: var(--font-family-texts), serif;
-  min-height: 1000px;
-  text-align: center;
-  display: grid;
-  justify-items: center;
-
+.MembersSection li {
+  list-style-type: none;
 }
 
-
-.scrollBottomButton{
-  margin-bottom: 10px;
-  @include link-scale-effect
-}
-
-.membersListContainer{
-  max-width: 100vw;
-  padding: 0 20px;
-  border-radius: var(--border-radius-custom);
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.55)
-
-}
-
-.groupComponent{
-
+.MembersSection {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  text-align: center;
-
-  h2{
-    font-size: clamp(40px, 7vw, 50px);
-    font-family: var(--font-family-main), serif;
-    line-height: 1.5;
-    font-weight: bold;
-    color: #e89dff;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
 }
 
-.workmanComponent{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-
-  h3{
-    font-size: clamp(20px, 5vw, 25px);
-    line-height: var(--font-family-main);
-  }
-
-  @media only screen and (min-width: 1921px) {
-    h3 {
-      font-size: inherit;
-    }
-  }
-
-  padding-bottom: 10px;
-
-
-  ul{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
- .clickableLogo{
-   color: var(--secondary-color);
-   cursor: pointer;
-   @include link-scale-effect('icon');
- }
+.scrollBottomButton {
+  margin-bottom: 10px;
+  @include link-scale-effect;
 }
 
+.membersListContainer {
+  font-size: clamp(0.5rem, 3vw, 1.7rem);
+  font-family: var(--font-family-main);
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: var(--border-radius-custom);
+  padding: 0.7rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  align-items: start;
+
+  h1 {
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    text-align: start;
+    padding-left: 3rem;
+    padding-bottom: 1rem;
+    background-color: transparent;
+  }
+
+  h2 {
+    color: var(--secondary-color);
+    text-align: center;
+    font-size: clamp(0.5rem, 3vw, 2rem);
+    padding-bottom: 0.8rem;
+    padding-right: 6rem;
+  }
+}
+.memberCard {
+  padding-bottom: 3rem;
+  border-radius: var(--border-radius-custom);
+}
