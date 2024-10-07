@@ -50,8 +50,11 @@ const nextConfig = {
       { hostname: 'www.thesprucepets.com' },
       { hostname: 'heroes.ts.unsplash.com' },
       { hostname: 'raw.githubusercontent.com' },
-      { hostname: 'localhost' }, // Add localhost for development
-      { hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_HOST).hostname },
+      { hostname: 'raw.githubusercontent.com' },
+      // { hostname: process.env.NEXT_PUBLIC_STRAPI_HOST },
+      // { hostname: "strapi.altzone.fi"},
+      // { hostname: 'strapi.altzone.fi' },
+      { hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_API_URL).hostname || "strapi.altzone.fi"} ,
     ],
   },
   sassOptions: {
