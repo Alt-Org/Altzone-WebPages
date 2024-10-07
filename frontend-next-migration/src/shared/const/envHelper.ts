@@ -14,3 +14,4 @@ export const envHelper = {
     strapiApiUrl: process.env.NEXT_PUBLIC_STRAPI_API_URL || '',
     strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
 } as const;
+// todo update jsdocs
