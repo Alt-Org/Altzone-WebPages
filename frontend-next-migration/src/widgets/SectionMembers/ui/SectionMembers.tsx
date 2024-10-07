@@ -1,13 +1,15 @@
 import cls from './SectionMembers.module.scss';
 import { FC } from 'react';
 import { useParams } from 'next/navigation';
-import { useGetTeamsQuery } from '@/entities/Member/api';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
-import MemberItem from '@/entities/Member/ui/MemberItem';
-import DepartmentItem from '@/entities/Member/ui/DepartmentItem';
+import {
+    DepartmentItem,
+    MemberItem,
+    useGetTeamsQuery
+} from '@/entities/Member';
 
 interface WorkersSectionProps {
   className?: string;
