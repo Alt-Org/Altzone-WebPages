@@ -1,9 +1,8 @@
 import { AuthUserSchema } from '@/entities/Auth';
-import { gameApi } from '@/shared/api';
-import { teamApi } from '@/entities/Member/api/membersApi';
+import {gameApi, strapiApi} from '@/shared/api';
 
 export interface StateSchema {
   authUser: AuthUserSchema;
   [gameApi.reducerPath]: ReturnType<typeof gameApi.reducer>;
-  [teamApi.reducerPath]: ReturnType<typeof teamApi.reducer>;
+  [strapiApi.reducerPath]: ReturnType<typeof strapiApi.reducer>;
 }
