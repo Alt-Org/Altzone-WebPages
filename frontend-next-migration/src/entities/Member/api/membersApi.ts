@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Team } from '@/entities/Member/model/types/types';
-import { getMembers, getDepartments } from './mappers';
 import { envHelper } from '@/shared/const/envHelper';
+import { Team } from '../model/types/types';
+import { getMembers, getDepartments } from './mappers';
 
 export const teamApi = createApi({
   reducerPath: 'teamApi',
