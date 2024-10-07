@@ -3,7 +3,7 @@ const path = require('path');
 const nextConfig = {
   images: {
     remotePatterns: [
-      { hostname: new URL(process.env.NEXT_PUBLIC_API_DOMAIN).hostname },
+      { hostname: new URL(process.env.NEXT_PUBLIC_API_LINK).hostname },
       { hostname: 'hips.hearstapps.com' },
       { hostname: 'www.thesprucepets.com' },
       { hostname: 'heroes.ts.unsplash.com' },
