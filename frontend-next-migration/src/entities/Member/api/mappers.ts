@@ -1,4 +1,4 @@
-import { Member, Department } from '@/entities/Member/model/types/types';
+import { Member, Department } from '../model/types/types';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { envHelper } from '@/shared/const/envHelper';
 import {
