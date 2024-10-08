@@ -3,6 +3,7 @@ import cls from './HeroDevelopmentPage.module.scss';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import { ReactNode } from 'react';
+import { ComingSoon } from '@/widgets/ComingSoon';
 
 export type Props = {
   title: string;
@@ -13,12 +14,10 @@ const HeroDevelopmentPage = (props: Props) => {
   const { title, text } = props;
 
   return (
-    <main className={cls.main}>
-      <div className={cls.container}>
-        <h1>{title}</h1>
-        <div className={cls.text}>{text}</div>
-      </div>
-    </main>
+    <div className={cls.pageWrapper}>
+      <ComingSoon />
+      {/* TODO: Remember to Remove ComingSoon component.*/}
+    </div>
   );
 };
 
