@@ -7,8 +7,8 @@ export async function _getPage (lng: string){
     return createPage<PictureGalleryPageProps>({
         buildPage: () => ({
             title: t("picture-galleries"),
-            info: t("info"),
-            socials: t("socials"),
+            infoText: t("info-text"),
+            socialsText: t("socials-text"),
         }),
         buildSeo: () => ({
             title: t("head-title"),

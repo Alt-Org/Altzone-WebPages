@@ -55,6 +55,15 @@ export async function _getPage(lng: string) {
                     href: RoutePaths.HEROES,
                 },
             },
-        }),
+            gallery: {
+                title: t("gallery-title"),
+                infoText: t("gallery-info-text"),
+                socialsText: t("gallery-socials-text"),
+                seeMoreLink: {
+                    text: t("gallery-seeMore"),
+                    href: RoutePaths.PICTURE_GALLERY,
+                },
+            }
+        }), 
     });
 }

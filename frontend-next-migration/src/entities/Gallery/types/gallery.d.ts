@@ -7,3 +7,5 @@ export type IGalleryDirectory = {
 export type IGalleryPicture = {
     name : string
 }
+
+export type Version = "full" | "preview"

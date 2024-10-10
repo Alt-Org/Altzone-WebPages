@@ -7,15 +7,17 @@ import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 import { ProjectDescription,ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
 import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
-import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
+// import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
 import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
+import { Gallery, GalleryProps } from "./_components/sections/Gallery";
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
-    videoAndGalleries: VideoAndGalleriesProps;
+    // videoAndGalleries: VideoAndGalleriesProps;
     classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
+    gallery: GalleryProps;
 }
 
 function MainPage (props: Props)  {
@@ -24,8 +26,9 @@ function MainPage (props: Props)  {
         projectDescription,
         playWithUs,
         getToKnowComics,
-        videoAndGalleries,
-        classifiedHeroesBlocks
+        // videoAndGalleries,
+        classifiedHeroesBlocks,
+        gallery
     } = props;
 
     const sameBg = undefined;
@@ -59,9 +62,14 @@ function MainPage (props: Props)  {
             />
 
             <HorizontalLines />
-            <VideoAndGalleries
+
+            {/*<VideoAndGalleries
                 backgroundImageSrc={sameBg}
                 {...videoAndGalleries}
+            />*/}
+
+            <Gallery 
+                {...gallery}
             />
             <HorizontalLines />
             {/*<SectionNewsPreview/>*/}
