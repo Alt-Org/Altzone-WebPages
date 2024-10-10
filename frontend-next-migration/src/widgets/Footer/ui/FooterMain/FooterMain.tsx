@@ -15,9 +15,9 @@ export const Footer = ()  => {
                 texts={
                     {
                         currentYear: new Date().getFullYear(),
-                        privacy: "Privacy",
-                        cookies: "Cookies",
-                        consent: "Consent",
+                        privacy: t("FooterPrivacy"),
+                        cookies: t("FooterCookies"),
+                        consent: t("FooterConsent"),
                         companyName: envHelper.companyName
                     }
                 }
