@@ -6,12 +6,15 @@ import { ValidationLoginSchema } from '../validations';
 import {authUserActions, IUserLoginDto, useLoginMutation} from '@/entities/Auth';
 import {useDispatch} from "react-redux";
 import {getJwtExpTimeStamp} from "@/shared/lib/getJwtExpTimeStamp";
+import { useClientTranslation } from '@/shared/i18n';
 
 type Props = {
     onSuccessLogin: () => void;
 }
 
 export const useLoginForm = ({onSuccessLogin}: Props) => {
+
+    const {t} = useClientTranslation("auth");
 
     const {
         register,
@@ -29,7 +32,7 @@ export const useLoginForm = ({onSuccessLogin}: Props) => {
     async function onFormSubmit(fieldValues: FieldValues) {
         await login(fieldValues as IUserLoginDto);
     }
-
+    
     useEffect(() => {
         if (data) {
             dispatch(authUserActions.setAccessTokenInfo({
@@ -48,7 +51,7 @@ export const useLoginForm = ({onSuccessLogin}: Props) => {
 
             dispatch(
                 authUserActions.setIsSessionExpired(false));
-            toast.success('Tervetuloa!');
+            toast.success(t('welcome'));
             onSuccessLogin();
             return;
         }
@@ -58,7 +61,7 @@ export const useLoginForm = ({onSuccessLogin}: Props) => {
             toast.error(error?.data?.message);
             return;
         }
-    }, [data, isLoading, error, dispatch, onSuccessLogin]);
+    }, [data, isLoading, error, dispatch, onSuccessLogin, t]);
 
     return {
         register,
