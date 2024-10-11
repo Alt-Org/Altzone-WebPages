@@ -1,22 +1,3 @@
-#name: Auto-Assign Veterans for Initial Review
-#
-#on:
-#  pull_request:
-#    types: [opened]
-#
-#jobs:
-#  assignVeterans:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v4
-#
-#      - name: Request Initial Review from Veterans(web)
-#        run: gh pr edit ${{ github.event.pull_request.number }} --add-reviewer "Veterans(web)"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.PAT }}
-
-
 name: Auto-Assign Veterans for Initial Review
 
 on:
