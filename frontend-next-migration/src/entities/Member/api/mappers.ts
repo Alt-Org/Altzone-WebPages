@@ -31,7 +31,7 @@ export const getMembers = (membersData: any[]): Member[] => {
     membersData
       .map((member: any) => {
         const logoUrl = member.attributes.Logo?.data?.attributes?.url
-          ? `${envHelper.strapiHost}${member.attributes.Logo.data.attributes.url}`
+          ? `${envHelper.strapiHost}/${member.attributes.Logo.data.attributes.url}`
           : null;
 
         return {
