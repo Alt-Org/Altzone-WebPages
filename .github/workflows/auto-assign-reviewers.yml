@@ -14,4 +14,4 @@ jobs:
       - name: Request Initial Review from Veterans(web)
         run: gh pr edit ${{ github.event.pull_request.number }} --add-reviewer "Veterans(web)"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
