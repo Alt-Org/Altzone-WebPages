@@ -69,6 +69,11 @@ const PlayWithUs = (props: Props) => {
           alt={'Side image with hero'}
           className={cls.sideImg}
         />
+
+        <div className={cls.WebGLNotice}>
+          <span className={cls.WarningIcon}>▲</span>
+          Due to known WebGL compatibility issues, our WebGL game might not work correctly on iPhones or Macs.
+        </div>
       </div>
     </section>
   );
