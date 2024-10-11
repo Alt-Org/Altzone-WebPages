@@ -10,7 +10,7 @@ const nextConfig = {
       { hostname: 'raw.githubusercontent.com' },
       { hostname: 'raw.githubusercontent.com' },
       { hostname: "localhost" },
-      { hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_API_URL).hostname} ,
+      { hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_HOST).hostname} ,
     ],
   },
   sassOptions: {
