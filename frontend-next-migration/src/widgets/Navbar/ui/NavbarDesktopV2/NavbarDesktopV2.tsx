@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import {CSSProperties, memo} from "react";
 import cls from "./NavbarDesktopV2.module.scss";
 import { NavbarBuild, NavBarType } from "../../model/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
@@ -23,8 +23,7 @@ type NavbarProps = {
     navBarType?: NavBarType;
 }
 
-const NavbarDesktopV2 = (props: NavbarProps) => {
-
+const NavbarDesktopV2 = memo((props: NavbarProps) => {
     const {
         navbarBuild,
         marginTop,
@@ -104,7 +103,7 @@ const NavbarDesktopV2 = (props: NavbarProps) => {
             </Container>
         </nav>
     );
-};
+});
 
 export default NavbarDesktopV2;
 
