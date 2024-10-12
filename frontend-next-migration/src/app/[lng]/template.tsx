@@ -34,6 +34,7 @@ function useNavbarConfig() {
         [RoutePaths.MAIN]: 'None', // main should use its own navbar because of the intro component logic
         [RoutePaths.GAME_ART]: 'GameArt',
         [RoutePaths.cookies]: 'Cookies',
+        [RoutePaths.privacy]: 'Privacy', // todo check why NavBarTypeWithNone check doesnt work
         [RoutePaths.auth]: 'None',
     };
 
