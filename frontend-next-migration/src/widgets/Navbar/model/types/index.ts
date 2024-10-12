@@ -86,4 +86,5 @@ export type NavBarType =
   | 'Default'
   | 'GameArt'
   | 'Cookies'
-  | 'Privacy';
+  | 'Privacy'
+  | 'None'
