@@ -12,3 +12,4 @@ export const defineNs = (navBarType: NavBarType) => {
       return 'navbar';
   }
 };
+
