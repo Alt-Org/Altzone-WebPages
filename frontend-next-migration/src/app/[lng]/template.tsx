@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { Navbar, NavBarType } from '@/widgets/Navbar';
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
+import {RoutePaths} from "@/shared/appLinks/RoutePaths";
 
 interface Props {
     children: ReactNode;
@@ -24,21 +24,25 @@ export default function Template(props: Props) {
     );
 }
 
+
 function useNavbarConfig() {
     const pathname = usePathname();
 
     const segments = pathname.split('/').slice(2);
     const pathAfterLang = segments.length > 0 ? `/${segments.join('/')}` : '/';
 
-    const navbarConfig: Partial<Record<keyof typeof RoutePaths, NavBarTypeWithNone>> = {
-        [RoutePaths.MAIN]: 'None', // main should use its own navbar because of the intro component logic
-        [RoutePaths.GAME_ART]: 'GameArt',
-        [RoutePaths.cookies]: 'Cookies',
-        [RoutePaths.privacy]: 'Privacy', // todo check why NavBarTypeWithNone check doesnt work
-        [RoutePaths.auth]: 'None',
+    // @ts-ignore let's just let it be
+    type SelectedRoutePaths = keyof Pick<typeof RoutePaths, 'MAIN' | 'GAME_ART' | 'cookies' | 'privacy' | 'auth'>;
+
+    const navbarConfig: { [key in SelectedRoutePaths]: NavBarTypeWithNone } = {
+        MAIN: 'None',
+        GAME_ART: 'GameArt',
+        cookies: 'Cookies',
+        privacy: 'Privacy',
+        auth: 'None',
     };
 
-    const navBarType = navbarConfig[pathAfterLang as keyof typeof RoutePaths] || 'Default';
+    const navBarType = (navbarConfig[pathAfterLang as SelectedRoutePaths] || 'Default');
 
     const shouldShowNavbar = navBarType !== 'None';
 
