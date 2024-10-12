@@ -3,7 +3,6 @@ import cls from "./NavbarDesktopV2.module.scss";
 import { NavbarBuild, NavBarType } from "../../model/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import { useParams } from "next/navigation";
 import { useClientTranslation } from "@/shared/i18n";
 import { Container } from "@/shared/ui/Container";
 import { LangSwitcher } from "@/features/LangSwitcher";
