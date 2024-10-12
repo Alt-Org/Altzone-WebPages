@@ -31,7 +31,7 @@ function useNavbarConfig() {
     const pathAfterLang = segments.length > 0 ? `/${segments.join('/')}` : '/';
 
     const navbarConfig: Partial<Record<keyof typeof RoutePaths, NavBarTypeWithNone>> = {
-        [RoutePaths.MAIN]: 'Default',
+        [RoutePaths.MAIN]: 'None', // main should use its own navbar because of the intro component logic
         [RoutePaths.clan]: 'Clan',
         [RoutePaths.GAME_ART]: 'GameArt',
         [RoutePaths.cookies]: 'Cookies',
