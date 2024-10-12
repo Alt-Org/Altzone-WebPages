@@ -16,6 +16,8 @@ export default function Template(props: Props) {
 
     const { navBarType, shouldShowNavbar } = useNavbarConfig();
 
+    console.log(navBarType);
+
     return (
         <>
             {shouldShowNavbar && <Navbar navBarType={navBarType as NavBarType} />}
@@ -30,19 +32,16 @@ function useNavbarConfig() {
 
     const segments = pathname.split('/').slice(2);
     const pathAfterLang = segments.length > 0 ? `/${segments.join('/')}` : '/';
+    type RoutePathKeys = keyof typeof RoutePaths;
 
-    // @ts-ignore let's just let it be
-    type SelectedRoutePaths = keyof Pick<typeof RoutePaths, 'MAIN' | 'GAME_ART' | 'cookies' | 'privacy' | 'auth'>;
-
-    const navbarConfig: { [key in SelectedRoutePaths]: NavBarTypeWithNone } = {
-        MAIN: 'None',
-        GAME_ART: 'GameArt',
-        cookies: 'Cookies',
-        privacy: 'Privacy',
-        auth: 'None',
+    const navbarConfig: { [key in RoutePathKeys]?: NavBarTypeWithNone } = {
+        [RoutePaths.MAIN]: 'None',
+        [RoutePaths.GAME_ART]: 'GameArt',
+        [RoutePaths.cookies]: 'Cookies',
+        [RoutePaths.privacy]: 'Privacy',
     };
 
-    const navBarType = (navbarConfig[pathAfterLang as SelectedRoutePaths] || 'Default');
+    const navBarType = (navbarConfig[pathAfterLang as RoutePathKeys] || 'Default');
 
     const shouldShowNavbar = navBarType !== 'None';
 
