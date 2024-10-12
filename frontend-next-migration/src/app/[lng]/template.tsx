@@ -32,7 +32,6 @@ function useNavbarConfig() {
 
     const navbarConfig: Partial<Record<keyof typeof RoutePaths, NavBarTypeWithNone>> = {
         [RoutePaths.MAIN]: 'None', // main should use its own navbar because of the intro component logic
-        [RoutePaths.clan]: 'Clan',
         [RoutePaths.GAME_ART]: 'GameArt',
         [RoutePaths.cookies]: 'Cookies',
         [RoutePaths.auth]: 'None',
