@@ -6,13 +6,11 @@ type Props = {
     children: ReactNode;
 }
 
-export default function GameLayout({children}: Props) {
+export default function PictureGalleriasLayout({children}: Props) {
     return (
         <>
-            <Navbar/>
-            <div style={{paddingTop: "20px"}}></div>
             {children}
-            <Footer/>
+            <Footer />
         </>
     )
 }

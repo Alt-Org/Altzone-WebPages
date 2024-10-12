@@ -8,12 +8,10 @@ type Props = {
   children: ReactNode;
 };
 
-export default function ComingLayout({ children }: Props) {
+export default function NewsLayout({ children }: Props) {
   return (
     <>
-      <Navbar/>
       {children}
-      <FeedbackSideButton />
       <HorizontalLines />
       <Footer />
     </>

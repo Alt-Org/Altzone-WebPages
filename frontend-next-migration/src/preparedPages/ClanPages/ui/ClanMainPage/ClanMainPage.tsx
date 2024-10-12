@@ -9,7 +9,6 @@ const ClanMainPage = ({ children }: any) => {
 
     return (
         <div className={cls.Wrapper}>
-            <Navbar className={cls.Navbar} />
             <Container className={cls.Container}>
                 <div className={cls.ClansViewMain}>
                     {children}
