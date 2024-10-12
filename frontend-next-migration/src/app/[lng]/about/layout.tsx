@@ -9,7 +9,6 @@ type Props = {
 export default function AboutLayout({children}: Props) {
     return (
         <>
-            <Navbar/>
             {children}
             <Footer />
         </>
