@@ -1,4 +1,4 @@
-import type {Metadata, Viewport} from 'next';
+import type {Viewport} from 'next';
 import { Open_Sans, Urbanist, Rubik } from 'next/font/google';
 import '../_styles/index.scss';
 import {Providers} from "../_providers";
@@ -6,6 +6,7 @@ import { CookieConsentComponent } from '@/features/CookieConsent';
 import { dir } from 'i18next';
 import { languages } from '@/shared/i18n/settings/settings';
 import {ReactNode} from "react";
+import { NavbarForAppRouter } from './NavbarForAppRouter';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -67,10 +68,13 @@ export default function RootLayout(props: Props) {
         backgroundImage: `url("/images/background.webp")`
       }}>
       <Providers>
-        {children}
-        <CookieConsentComponent/>
+          {/*<NavbarForAppRouter/>*/}
+          {children}
+          <CookieConsentComponent/>
       </Providers>
       </body>
       </html>
   );
 }
+
+

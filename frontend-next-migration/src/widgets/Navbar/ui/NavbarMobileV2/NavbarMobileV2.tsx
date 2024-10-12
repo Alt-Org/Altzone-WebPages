@@ -1,4 +1,4 @@
-import {CSSProperties, memo, useEffect, useMemo, useState} from "react";
+import {CSSProperties, memo, useMemo, useState} from "react";
 import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
 import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
@@ -35,7 +35,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     } = props;
 
     const ns = defineNs(navBarType)
-
     const { t } = useClientTranslation(ns);
 
     const {checkPermissionFor} = useUserPermissionsV2();
