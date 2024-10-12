@@ -6,7 +6,6 @@ import { CookieConsentComponent } from '@/features/CookieConsent';
 import { dir } from 'i18next';
 import { languages } from '@/shared/i18n/settings/settings';
 import {ReactNode} from "react";
-import { NavbarForAppRouter } from './NavbarForAppRouter';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -68,7 +67,6 @@ export default function RootLayout(props: Props) {
         backgroundImage: `url("/images/background.webp")`
       }}>
       <Providers>
-          {/*<NavbarForAppRouter/>*/}
           {children}
           <CookieConsentComponent/>
       </Providers>
