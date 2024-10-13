@@ -6,82 +6,81 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+}
 
 
+.skeletonHeaderContainer {
+    display: flex;
+    width: 100%;
+}
 
-    .skeletonHeaderContainer {
-        display: flex;
-        width: 100%;
+.skeleton {
+    display: flex;
+    background-color: #DDDBDD;
+    position: relative;
+    overflow: hidden;
+    width: 50%;
+    height: 20px;
+    border-radius: 4px;
+    margin: 1vh;
+    opacity: 0.2;
+
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: linear-gradient(90deg,
+                rgba(#FFA100, 0) 0,
+                rgba(#FFA100, 0.2) 20%,
+                rgba(#FFA100, 0.5) 60%,
+                rgba(white, 0));
+        animation: shimmer 2.5s infinite;
+        content: '';
     }
 
-    .skeleton {
-        display: flex;
-        background-color: #DDDBDD;
-        position: relative;
-        overflow: hidden;
-        width: 50%;
-        height: 20px;
-        border-radius: 4px;
-        margin: 1vh;
-        opacity: 0.5;
-
-
-        &::after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            transform: translateX(-100%);
-            background-image: linear-gradient(90deg,
-                    rgba(#FFA100, 0) 0,
-                    rgba(#FFA100, 0.2) 20%,
-                    rgba(#FFA100, 0.5) 60%,
-                    rgba(white, 0));
-            animation: shimmer 2.5s infinite;
-            content: '';
-        }
-
-        @keyframes shimmer {
-            100% {
-                transform: translateX(100%);
-            }
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
         }
     }
+}
 
-    .skeletonHeader {
-        display: flex;
-        background-color: #FFA100;
-        position: relative;
-        overflow: hidden;
-        border-radius: 4px;
-        width: 30%;
-        height: 25px;
-        margin: 20px;
-        opacity: 0.5;
+.skeletonHeader {
+    display: flex;
+    background-color: #FFA100;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    width: 30%;
+    height: 25px;
+    margin: 20px;
+    opacity: 0.2;
 
 
 
-        &::after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            transform: translateX(-100%);
-            background-image: linear-gradient(90deg,
-                    rgba(white, 0) 0,
-                    rgba(black, 0.2) 20%,
-                    rgba(white, 0.5) 60%,
-                    rgba(white, 0));
-            animation: shimmer 2.5s infinite;
-            content: '';
-        }
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: linear-gradient(90deg,
+                rgba(white, 0) 0,
+                rgba(black, 0.2) 20%,
+                rgba(white, 0.5) 60%,
+                rgba(white, 0));
+        animation: shimmer 2.5s infinite;
+        content: '';
+    }
 
-        @keyframes shimmer {
-            100% {
-                transform: translateX(100%);
-            }
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
         }
     }
 }

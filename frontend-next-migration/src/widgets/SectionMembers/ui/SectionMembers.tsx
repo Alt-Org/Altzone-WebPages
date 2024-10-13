@@ -23,15 +23,13 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const { t } = useClientTranslation('team');
 
   const { data: teams = [], isError, isLoading } = useGetTeamsQuery(lng);
-  //const isLoading = true;    ///Testing purpose
-
+  //const isLoading = true;    //Testing purpose
 
   if (isError) {
     return <p>Error fetching teams data</p>;
   }
 
   return (
-
     <div className={classNames(cls.MembersSection, {}, [className])}>
       <ScrollBottomButton
         className={cls.scrollBottomButton}
