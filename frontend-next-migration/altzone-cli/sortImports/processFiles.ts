@@ -26,10 +26,5 @@ async function processFiles(paths: string[]) {
 const args = process.argv.slice(2);
 const paths = args.length ? args : [`src/**/*.ts{,x}`];
 
-if (paths.length === 0) {
-    console.error('Please specify at least one path or pattern.');
-    process.exit(1);
-}
-
 // Call the asynchronous function to process files at the specified paths
 processFiles(paths);
