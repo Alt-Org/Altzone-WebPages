@@ -24,7 +24,7 @@ async function processFiles(paths: string[]) {
 
 // Get command-line arguments
 const args = process.argv.slice(2);
-const paths = args.length ? args : ['src/**/*.ts', 'src/**/*.tsx'];
+const paths = args.length ? args : [`src/**/*.ts{,x}`];
 
 if (paths.length === 0) {
     console.error('Please specify at least one path or pattern.');
