@@ -1,3 +1,7 @@
+import { useFixed } from "../../model/FixedProvider";
+import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
+import { defineNs } from "../../model/defineNs";
+
 import {CSSProperties, memo, useMemo, useState} from "react";
 import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
@@ -11,9 +15,6 @@ import { useClientTranslation } from "@/shared/i18n";
 import { LangSwitcher } from "@/features/LangSwitcher";
 import { FixedButton } from "../FixedButton/FixedButton";
 
-import { useFixed } from "../../model/FixedProvider";
-import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
-import { defineNs } from "../../model/defineNs";
 
 interface NavbarTouchProps {
     marginTop?: number;
