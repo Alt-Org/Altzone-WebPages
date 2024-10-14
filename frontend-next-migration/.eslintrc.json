@@ -3,11 +3,20 @@
     "next/core-web-vitals",
     "plugin:storybook/recommended"
   ],
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "react-hooks/rules-of-hooks": "off",
-    "react/no-unescaped-entities": 0
+    "react/no-unescaped-entities": 0,
 
-//    "no-unused-vars": "warn"
+//    "react/no-array-index-key": "error",
+    "react/jsx-key": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/no-unknown-property": "error"
+
+
+    //    "no-unused-vars": "warn"
 
   }
 }
