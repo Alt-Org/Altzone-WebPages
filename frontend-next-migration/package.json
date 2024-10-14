@@ -22,7 +22,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx,scss,css,md}": [
-      "next lint"
+      "next lint --no-stash"
     ]
   },
   "dependencies": {
