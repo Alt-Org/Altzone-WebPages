@@ -24,7 +24,7 @@ export default function HomeLayout({ children }: Props) {
                 <Footer />
                 <ScrollTop />
             </>
-            <style>{`
+            <style jsx global>{`
                 html {
                     scrollbar-width: ${isScrollbarHidden ? 'none' : 'auto'};
                 }
