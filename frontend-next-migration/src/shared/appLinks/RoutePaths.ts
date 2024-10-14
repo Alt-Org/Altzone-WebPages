@@ -11,6 +11,7 @@ export enum AppRoutesLinks {
   CLAN_ONE = 'clan_one',
   CLAN_ADD_NEW = 'clan_add_new',
   CLAN_LEADERBOARD = 'CLAN_LEADERBOARD',
+  CLAN_MY_CLAN = 'my_clan',
 
   PICTURE_GALLERY = 'PICTURE_GALLERY',
   COMICS_GALLERY = 'COMICS_GALLERY',
@@ -29,8 +30,12 @@ export enum AppRoutesLinks {
   HEROES = 'HEROES',
   HEROES_ONE = 'HEROES_ONE',
 
+  HERO_DEVELOPMENT = 'HERO_DEVELOPMENT',
+
   NOT_FOUND = 'NOT_FOUND',
   NOT_FOUND_CATCH = 'NOT_FOUND_CATCH',
+
+  COMING = 'COMING',
 }
 
 const news = '/news';
@@ -50,6 +55,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
   [AppRoutesLinks.CLAN_ALL]: '/clans/all',
   [AppRoutesLinks.CLAN_ADD_NEW]: '/clans/addNew',
   [AppRoutesLinks.CLAN_ONE]: '/clans/:id',
+  [AppRoutesLinks.CLAN_MY_CLAN]: '/clans/myclan',
   [AppRoutesLinks.CLAN_LEADERBOARD]: '/clans/leaderboard',
 
   [AppRoutesLinks.PICTURE_GALLERY]: '/picture-galleries',
@@ -63,12 +69,15 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
   [AppRoutesLinks.HEROES]: '/heroes',
   [AppRoutesLinks.HEROES_ONE]: '/heroes/:id',
+  [AppRoutesLinks.HERO_DEVELOPMENT]: '/hero-development',
 
   [AppRoutesLinks.NEWS]: news,
   [AppRoutesLinks.NEWSELEMENT]: news + '/:id',
   [AppRoutesLinks.FORUM]: '/forum',
   [AppRoutesLinks.MEMBERS]: '/team',
   [AppRoutesLinks.NOT_FOUND]: '/404',
+  [AppRoutesLinks.COMING]: '/coming',
+
   // last one
   [AppRoutesLinks.NOT_FOUND_CATCH]: '*',
 };

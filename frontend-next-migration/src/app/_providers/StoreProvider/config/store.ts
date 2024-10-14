@@ -1,84 +1,78 @@
-import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from 'redux-persist'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import {envHelper} from "@/shared/const/envHelper";
-import {StateSchema} from "./StateSchema";
-import {authApi,authUserReducer, authMiddleware} from "@/entities/Auth";
-import {clanApi} from "@/entities/Clan";
-import {galleryApi} from "@/entities/Gallery";
-import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from "redux-persist";
-import {setupListeners} from "@reduxjs/toolkit/query";
-import {profileApi} from "@/entities/Profile";
+import { envHelper } from '@/shared/const/envHelper';
+import { StateSchema } from './StateSchema';
+import { authUserReducer, authMiddleware } from '@/entities/Auth';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import {gameApi, strapiApi} from '@/shared/api';
 
-
-const createNoopStorage= () => {
-    return {
-        getItem(_key: any){
-            return Promise.resolve(null)
-        },
-        setItem(_key: any, value: any){
-            return Promise.resolve(value)
-        },
-        removeItem(_key: any){
-            return Promise.resolve()
-        }
-
-    }
-}
+const createNoopStorage = () => {
+  return {
+    getItem(_key: any) {
+      return Promise.resolve(null);
+    },
+    setItem(_key: any, value: any) {
+      return Promise.resolve(value);
+    },
+    removeItem(_key: any) {
+      return Promise.resolve();
+    },
+  };
+};
 
 const storage =
-    typeof window !== "undefined"
-        ? createWebStorage("local")
-        : createNoopStorage();
-
+  typeof window !== 'undefined'
+    ? createWebStorage('local')
+    : createNoopStorage();
 
 export function createReduxStore(initialState?: StateSchema) {
+  const rootReducer = combineReducers({
+    authUser: authUserReducer,
+    [gameApi.reducerPath]: gameApi.reducer,
+    [strapiApi.reducerPath]: strapiApi.reducer,
+  });
 
-    const rootReducer = combineReducers({
-        authUser: authUserReducer,
-        [authApi.reducerPath]: authApi.reducer,
-        [profileApi.reducerPath]: profileApi.reducer,
-        [clanApi.reducerPath]: clanApi.reducer,
-        [galleryApi.reducerPath]: galleryApi.reducer,
-    });
+  const persistConfig = {
+    key: 'root',
+    storage,
+    blacklist: [
+        gameApi.reducerPath,
+      strapiApi.reducerPath
+    ],
+  };
 
-    const persistConfig = {
-        key: 'root',
-        storage,
-        blacklist: [authApi.reducerPath, clanApi.reducerPath, galleryApi.reducerPath]
-    };
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+  const store = configureStore({
+    // reducer: rootReducer,
+    reducer: persistedReducer,
+    //only in dev mode
+    devTools: envHelper.isDevMode,
+    preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).concat(
+          gameApi.middleware,
+          strapiApi.middleware,
+          authMiddleware
+      ),
+  });
 
-    const persistedReducer = persistReducer(persistConfig, rootReducer);
+  const persistor = persistStore(store);
 
+  setupListeners(store.dispatch);
 
-    const store = configureStore({
-        // reducer: rootReducer,
-        reducer: persistedReducer,
-        //only in dev mode
-        devTools: envHelper.isDevMode,
-
-        preloadedState: initialState,
-
-        middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware({
-                serializableCheck: {
-                    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-                },
-            }).concat(
-                authApi.middleware,
-                clanApi.middleware,
-                galleryApi.middleware,
-                authMiddleware,
-            ),
-
-    });
-
-    const persistor = persistStore(store);
-
-    setupListeners(store.dispatch);
-
-    return { store, persistor };
-
+  return { store, persistor };
 }
-

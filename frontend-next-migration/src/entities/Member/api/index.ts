@@ -1,0 +1,1 @@
+export { useGetTeamsQuery } from './membersApi';

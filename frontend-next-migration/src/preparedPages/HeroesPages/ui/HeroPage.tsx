@@ -2,7 +2,6 @@ import {FC} from "react";
 
 import { HeroContainer } from '@/entities/Hero';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
-import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 

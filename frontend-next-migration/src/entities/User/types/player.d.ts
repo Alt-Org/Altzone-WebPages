@@ -5,4 +5,5 @@ export type IPlayer = {
         uniqueIdentifier: string,
         profile_id: string,
         clan_id: string
+        above13: boolean,
 }

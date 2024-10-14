@@ -4,8 +4,6 @@ export const defineNs = (navBarType: NavBarType) => {
   switch (navBarType) {
     case 'GameArt':
       return 'artGame';
-    case 'Clan':
-      return 'clan';
     case 'Cookies':
       return 'cookies';
     case 'Privacy':
@@ -14,3 +12,4 @@ export const defineNs = (navBarType: NavBarType) => {
       return 'navbar';
   }
 };
+

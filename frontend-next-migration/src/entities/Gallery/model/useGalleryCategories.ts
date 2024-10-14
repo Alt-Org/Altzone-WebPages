@@ -1,9 +1,7 @@
 'use client'
-import {
-    transformToGalleryPropsFormat,
-    useGetAllDirectoryPhotosQuery,
-} from "@/entities/Gallery";
-import {ParentDirectory, GalleryCategoriesWithModalSliderProps} from "@/entities/Gallery";
+import { GalleryCategoriesWithModalSliderProps } from "../ui/GalleryCategoriesWithModalSlider";
+import {ParentDirectory, useGetAllDirectoryPhotosQuery } from "./galleryApi";
+import { transformToGalleryPropsFormat } from "./transformToGalleryPropsFormat";
 
 export const useGalleryCategories = (parentDirectory: ParentDirectory) => {
     const { data, isError, isLoading} = useGetAllDirectoryPhotosQuery({ parentDirectory });

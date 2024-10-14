@@ -1,85 +1,124 @@
 "use client"
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import {useRouter, useParams} from 'next/navigation';
-import { useSelector } from "react-redux";
-import { useGetClanByIdQuery } from "@/entities/Clan";
+import Image from "next/image";
+import { useParams } from 'next/navigation';
 import { Loader } from "@/shared/ui/Loader";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
-import { useDeleteClan } from "@/features/DeleteClan";
-import { selectProfile } from "@/entities/Auth";
-
+import clanLogo from "@/shared/assets/images/clanLogos/temp-clanlogo.png";
+import clanHome from "@/shared/assets/images/clanLogos/temp-clanHome.png";
 import cls from "./ClanRoomSubPage.module.scss";
-import {envHelper} from "@/shared/const/envHelper";
-import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import { toast } from "react-toastify";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import { ClansViewAndSearchDesktop, ClansViewAndSearchMobile } from "../_components/clanoverview/clanViewAndSearch";
+import { ClanInfo } from "../_components/clanoverview/clanInfo";
+import { ButtonField } from "../_components/clanoverview/buttonField";
+import { useClanData } from "@/entities/Clan";
 
-const ClanRoomSubPage = () => {
-    // @ts-ignore
-    const {id} = useParams();
+type Props = {
+    toastMessages: {
+        error: string;
+        notLoggedIn: string;
+        clanNotOpen: string;
+        editMode: string;
+    };
+    buttons: {
+        joinClan: string;
+        leaveClan: string;
+        editClan: string;
+    };
+    clanInfo: {
+        memberListTitle: string;
+        mottoText: string;
+        infoText: string;
+        assetsText: string;
+        memberCountText: string;
+        languageText: string;
+        goalText: string;
+        ageLimitText: string;
+        winsText: string;
+        lossesText: string;
+    };
+};
 
-    // let { id } = useParams();
-    const user = useSelector(selectProfile);
-    const playerId = user?.Player._id;
-    const [canDelete, setCanDelete] = useState(false);
-
-    const { data: clan, error, isLoading } = useGetClanByIdQuery(id as string);
-
-    useEffect(() => {
-        if (!playerId) return;
-
-        if (clan?.data.Clan.admin_ids.includes(playerId)) {
-            setCanDelete(true);
+const ClanRoomSubPage = (props: Props) => {
+    const {
+        toastMessages,
+        buttons,
+        clanInfo: {
+            memberListTitle,
+            mottoText,
+            infoText,
+            ...rest
         }
-    }, [isLoading,clan?.data.Clan.admin_ids, playerId]);
+    } = props;
 
-    const { handleDelete } = useDeleteClan();
+    const { id } = useParams();
+    const { isMobileSize } = useIsMobileSize();
+    const { clan, error, isLoading, adminIds, players, clanName } = useClanData(id as string);
 
-    return (
-        <>
-            <Head>
-                <title>{`Klaani: ${clan?.data?.Clan?.name}`}</title>
-                <meta name="description" content={`Tietoja klaanista ${clan?.data?.Clan?.name}`} />
-                <meta name="keywords" content="altzone , Klaani, klaan, game, clan, gaming community" />
-                <link rel="canonical" href={`${envHelper.appDomain}/${RoutePaths.clan}/${id}`} />
-                <meta property="og:type" content="website" />
-                <meta property="og:title" content={`Klaani: ${clan?.data?.Clan?.name}`} />
-                <meta property="og:description" content={`Tietoja klaanista ${clan?.data?.Clan?.name}`} />
-                <meta property="og:url" content={`${envHelper.appDomain}/${RoutePaths.clan}/${id}`} />
-            </Head>
-            {
-                isLoading ? (
-                <Loader className={cls.Loader} />
-            )
-                    :
-                    error
-                        ?
-                        (
-                            <div>Error: {JSON.stringify(error)}</div>
-                        )
-                        :
-                        (
-                <>
-                    <h1 style={{ textAlign: "center", marginBottom: "20px" }}>KLAANI: {clan?.data?.Clan?.name}</h1>
-                    <div><strong>Kolikot:</strong> {clan?.data?.Clan?.gameCoins}</div>
-                    <div><strong>Tagi:</strong> {clan?.data?.Clan?.tag}</div>
-                    <div><strong>Jäsenet:</strong> {clan?.data?.Clan?.playerCount}</div>
-                    {/*<div><strong>Huonekalut:</strong> {clan?.data?.Clan?.furnitureCount}</div>*/}
-                    {/*<div><strong>RaidHuoneet:</strong> {clan?.data?.Clan?.raidRoomCount}</div>*/}
-                    <div><strong>Mestari:</strong> Joku Mestari</div>
-                    {
-                        canDelete &&
-                        <Button
-                            className={cls.DeleteClanBtn}
-                            theme={ButtonTheme.Graffiti}
-                            size={ButtonSize.M}
-                            onClick={() => handleDelete(id as string)} >
-                            Delete clan
-                        </Button>
-                    }
-                </>
-            )}
+    if (isLoading) return <Loader className={cls.Loader} />
+
+    //proper error handling page should be implemented
+    if (error) {
+        return (
+            <>
+                {toast.error("error placeholder")}
+            </>
+        );
+    }
+
+    if (clan) {
+        return (<>
+            {isMobileSize && <ClansViewAndSearchMobile />}
+            <div className={cls.parent}>
+                <div className={cls.clanMainInfo}>
+                    <Image
+                        src={clanLogo}
+                        alt={"clan logo"}
+                        className={cls.clanLogo} />
+                    <span className={cls.clanName}>{clanName}</span>
+                    <a className={cls.number} href="/leaderboardjne">♛12</a>
+                </div>
+                <div className={cls.clanList}>
+                    {!isMobileSize && <ClansViewAndSearchDesktop />}
+                </div>
+                <div className={cls.clanSoulHome}>
+                    <Image
+                        src={clanHome}
+                        alt={"clan home"}
+                        className={cls.clanHome} />
+                </div>
+                <div className={cls.buttonField}>
+                    <ButtonField
+                        clanData={clan?.data?.Clan}
+                        {...toastMessages}
+                        {...buttons}
+                    />
+                </div>
+                <div className={cls.memberList}>
+                    {/* this could be its own component */}
+                    <div className={cls.membersList}>
+                        <p className={cls.memberListTitle}>{memberListTitle}</p>
+                        {players.map(player => (
+                            <div key={player._id} className={adminIds.includes(player._id) ? cls.adminItem : cls.memberItem}>
+                                {player.name}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className={cls.clanMotto}>
+                    {mottoText}
+                    {/* Clan Motto and most of ClanInfo yet to be implemented, using placeholders instead*/}
+                    <p className={cls.mottoText}>Unite, Conquer, Prevail!</p>
+                </div>
+                <div className={cls.clanInformation}>{infoText}
+                    <ClanInfo
+                        clanData={clan?.data?.Clan}
+                        {...rest}
+                    />
+                </div>
+            </div>
         </>
-    )
+        )
+    }
 }
 
 export default ClanRoomSubPage;

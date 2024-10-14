@@ -64,6 +64,7 @@
 .container.isMobile {
   max-width: 35rem;
   padding: 0 1.2rem;
+  margin-top: 5rem;
 }
 
 .container.isTablet {
@@ -71,8 +72,8 @@
 }
 
 
-.containerWrapper.isMobile {
-  margin-top: 5rem;
+.containerWrapper {
+  position: relative;
 }
 
 .contentWrapper {
@@ -125,10 +126,6 @@
 
 .heroDescription {
   @include ScrollbarWithArrowButtons;
-
-
-
-  //padding-top: 0.5rem;
   padding-right: 0.5rem;
   overflow-y: auto;
   font-size: 1.4rem;
@@ -142,11 +139,13 @@
 }
 
 .heroGroup{
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  z-index: 1;
   display: flex;
   justify-content: center;
-  &Label{
-    max-width: 80%;
-  }
 }
 
 .heroGroupLabel{
