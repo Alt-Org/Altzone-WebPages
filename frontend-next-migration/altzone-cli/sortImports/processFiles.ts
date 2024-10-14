@@ -1,6 +1,8 @@
 import { Project } from 'ts-morph';
 import { processFile } from './processFile';
 import { appLayers } from '../const';
+import { execSync } from 'child_process';
+import path from 'path';
 
 // Asynchronous function to process multiple files
 async function processFiles(paths: string[]) {
@@ -24,7 +26,39 @@ async function processFiles(paths: string[]) {
 
 // Get command-line arguments
 const args = process.argv.slice(2);
-const paths = args.length ? args : [`src/**/*.ts{,x}`];
+let paths = args.length ? args : [`src/**/*.ts{,x}`];
 
-// Call the asynchronous function to process files at the specified paths
+const filesIndex = args.indexOf('--files');
+if (filesIndex !== -1 && args.length > filesIndex + 1) {
+    paths = args.slice(filesIndex + 1); // Take all the values after --files
+}
+
+const gitChangesIndex = args.indexOf('--git-changes');
+if (gitChangesIndex !== -1) {
+    try {
+        // Get the list of modified files in Git
+        const gitDiffOutput = execSync('git diff --name-only', { encoding: 'utf-8' });
+        const gitChangedFiles = gitDiffOutput.split('\n').filter(Boolean); // Remove empty lines
+
+        // Filter only files from the 'src' folder and remove the 'frontend-next-migration/' prefix
+        const filteredFiles = gitChangedFiles
+            .filter(file => file.startsWith('frontend-next-migration/src/'))
+            .map(file => file.replace('frontend-next-migration/', '')); // Remove project folder prefix
+
+        if (filteredFiles.length > 0) {
+            paths = filteredFiles;
+        } else {
+            console.log('No changes detected in the "src" folder.');
+            process.exit(0);
+        }
+    } catch (error) {
+        console.error('Failed to get changed files from Git:', error);
+        process.exit(1);
+    }
+}
+
+// todo dont remove it helps to remember format of paths. We should probably add this example to documentation
+// const testPaths = ['src/app/[lng]/layout.tsx'];
+
+console.log(paths)
 processFiles(paths);
