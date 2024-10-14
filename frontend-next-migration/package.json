@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:staged": "lint-staged",
     "test": "jest",
     "test:watch": "jest --watch",
     "cypress:open": "cypress open",
