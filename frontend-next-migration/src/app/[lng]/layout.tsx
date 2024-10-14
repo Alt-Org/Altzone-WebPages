@@ -32,7 +32,6 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
