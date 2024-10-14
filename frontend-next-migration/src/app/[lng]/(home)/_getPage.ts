@@ -35,6 +35,7 @@ export async function _getPage(lng: string) {
                         isExternal: true,
                     },
                 ],
+                webGlNotice: t('playWithUs-WebGLNotice'),
             },
             projectDescription: {
                 title: t("project-description-title"),
