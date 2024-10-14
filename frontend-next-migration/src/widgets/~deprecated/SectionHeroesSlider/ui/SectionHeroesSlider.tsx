@@ -9,7 +9,6 @@ const SectionHeroes = () => {
     return (
         <div className={cls.SectionHeroes}>
             <CustomCarousel className={cls.carouselWrapper}>
-
                 {/*todo required markup instead*/}
                 {heroes.map((item) => (
                     <div key={item.id}>
