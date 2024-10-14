@@ -1,84 +1,119 @@
-import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
-    community: [
-        {
-            elementText: "forum",
-            link: {
-                path: AppExternalLinks.reddit,
-                isExternal: true
-            }
-        },
-        {
-            elementText: "feedback",
-            link: {
-                path: AppExternalLinks.googleFeedback,
-                isExternal: true
-            }
-        },
-        {
-            elementText: "artGame",
-            link: {
-                path: RoutePaths.GAME_ART,
-                isExternal: false
-            }
-        },
-    ],
-    game: [
+  community: [
+    {
+      elementText: 'clanpage',
+      link: {
+        path: RoutePaths.my_clan,
+        isExternal: false,
+      },
+    },
+    {
+      elementText: 'join',
+      link: {
+        path: AppExternalLinks.join,
+        isExternal: true,
+      },
+    },
+    {
+      elementText: 'forum',
+      link: {
+        path: AppExternalLinks.reddit,
+        isExternal: true,
+      },
+    },
+  ],
+  game: [
+    {
+      elementText: 'play',
+      link: {
+        path: AppExternalLinks.webgl,
+        isExternal: true,
+      },
+    },
+    {
+      elementText: 'heroes',
+      link: {
+        path: RoutePaths.HEROES,
+        isExternal: false,
+      },
+    },
+    {
+      elementText: 'development',
+      link: {
+        path: RoutePaths.HERO_DEVELOPMENT,
+        isExternal: false,
+      },
+    },
+    {
+      elementText: 'clans',
+      link: {
+        path: RoutePaths.clan,
+        isExternal: false,
+      },
+      isDisabled: {
+        status: false,
+        reason: 'Kirjaudu ensin!',
+      },
+    },
+    {
+      elementText: 'leaderboard',
+      link: {
+        path: RoutePaths.CLAN_LEADERBOARD,
+        isExternal: false,
+      },
+    },
+  ],
+  gallery: [
+    {
+      elementText: 'pictures',
+      link: {
+        path: RoutePaths.PICTURE_GALLERY,
+        isExternal: false,
+      },
+    },
+    {
+      elementText: 'comics',
+      link: {
+        path: RoutePaths.COMICS_GALLERY,
+        isExternal: false,
+      },
+    },
+  ],
+  gameart: [
+    {
+      elementText: 'gameart',
+      link: {
+        path: RoutePaths.GAME_ART,
+        isExternal: false,
+      },
+    },
+    {
+      elementText: 'dlPackage',
+      link: {
+        path: AppExternalLinks.dlpackage,
+        isExternal: true,
+      },
+    },
+    {
+      elementText: 'pastversions',
+      link: {
+        path: AppExternalLinks.pastversions,
+        isExternal: true,
+      },
+    },
+  ],
 
-        {
-            elementText: "heroes",
-            link: {
-                path: RoutePaths.HEROES,
-                isExternal: false
-            }
-        },
-        {
-            elementText: "clans",
-            link: {
-                path: RoutePaths.clan,
-                isExternal: false
-            },
-            isDisabled: {
-                status: false,
-                reason: "Kirjaudu ensin!"
-            }
-        },
-        {
-            elementText: "leaderboard",
-            link: {
-                path: AppExternalLinks.stub,
-                isExternal: false
-            }
-        }
-    ],
-    art: [
-        {
-            elementText: "comics",
-            link: {
-                path: RoutePaths.COMICS_GALLERY,
-                isExternal: false
-            }
-        },
-        {
-            elementText: "galleries",
-            link: {
-                path: RoutePaths.PICTURE_GALLERY,
-                isExternal: false
-            }
-        }
-    ],
-
-    profile: [
-        //     {
-        //         elementText: 'forum',
-        //         link: {
-        //             path: AppExternalLinks.reddit,
-        //             isExternal: true
-        //         }
-        //     }
-        // ]
-    ]
-
+  profile: [
+    //     {
+    //         elementText: 'forum',
+    //         link: {
+    //             path: AppExternalLinks.reddit,
+    //             isExternal: true
+    //         }
+    //     }
+    // ]
+  ],
 };

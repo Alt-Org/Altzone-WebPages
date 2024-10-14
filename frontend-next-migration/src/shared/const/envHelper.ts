@@ -9,5 +9,8 @@
 export const envHelper = {
     isDevMode: process.env.NODE_ENV === 'development',
     apiLink : process.env.NEXT_PUBLIC_API_LINK || '',
-    appDomain : process.env.NEXT_PUBLIC_APP_DOMAIN || ''
+    appDomain : process.env.NEXT_PUBLIC_APP_DOMAIN || '',
+    companyName: process.env.COMPANY_NAME || "Psyche's Royale Gaming ry",
+    strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
 } as const;
+// todo update jsdocs

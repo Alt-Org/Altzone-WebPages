@@ -1,11 +1,15 @@
-import {FieldValues, useForm} from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ValidationRegisterSchema } from '../validations';
 import { IUserRegisterDto, useRegisterMutation } from '@/entities/Auth';
-import {useEffect} from "react";
-import {toast} from "react-toastify";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { useClientTranslation } from '@/shared/i18n';
 
 export const useRegisterForm = (toLoginPage: string) => {
+
+    const {t} = useClientTranslation("auth");
+
     const {
         register,
         handleSubmit,
@@ -22,9 +26,10 @@ export const useRegisterForm = (toLoginPage: string) => {
             password: fieldValues.password,
             repeatPassword: fieldValues.password,
             Player: {
-                uniqueIdentifier: fieldValues.uniqueIdentifier,
-                backpackCapacity: fieldValues.backpackCapacity,
-                name: fieldValues.name,
+                uniqueIdentifier: fieldValues.username,
+                backpackCapacity: 100,
+                name: fieldValues.username,
+                above13: fieldValues.ageConsent,
             },
         };
         await regist(ObjectToBeSent);
@@ -32,7 +37,7 @@ export const useRegisterForm = (toLoginPage: string) => {
 
     useEffect(() => {
         if (data) {
-            toast.success('Tili on luotu!');
+            toast.success(t('account-created'));
             return;
         }
 
@@ -41,7 +46,7 @@ export const useRegisterForm = (toLoginPage: string) => {
             toast.error(error?.data?.message[0] ?? error?.data?.message);
             return;
         }
-    }, [isLoading, data , error]);
+    }, [isLoading, data, error, t]);
 
 
     return {

@@ -1,23 +1,26 @@
 import { createContext, useState, useContext, ReactNode } from 'react';
-import {LS_KEYS} from "@/shared/const/LS_KEYS";
+import { LS_KEYS } from '@/shared/const/LS_KEYS';
 
+const getInitialFixedState = (): boolean => {
+    if (typeof window !== 'undefined') {
+        const storedValue = localStorage.getItem(LS_KEYS.IsNavBarFixed);
+        return storedValue === 'true';
+    }
+    return false;
+};
 
 interface FixedContextType {
     isFixed: boolean;
     toggleFixed: () => void;
 }
 
-const defaultVal: FixedContextType = {
-    isFixed: localStorage.getItem(LS_KEYS.IsNavBarFixed) === 'true',
+const FixedContext = createContext<FixedContextType>({
+    isFixed: getInitialFixedState(),
     toggleFixed: () => {},
-};
-
-const FixedContext = createContext<FixedContextType>(defaultVal);
+});
 
 export const FixedProvider = ({ children }: { children: ReactNode }) => {
-
-
-    const [isFixed, setIsFixed] = useState(defaultVal.isFixed);
+    const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState);
 
     const toggleFixed = () => {
         const newValue = !isFixed;

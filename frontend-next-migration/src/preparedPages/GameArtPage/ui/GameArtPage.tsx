@@ -40,7 +40,7 @@ const GameArtPackagePage = (props: Props) => {
 
   return (
     <div className={classNames(cls.pageContainer, combinedModCss)}>
-      <Navbar overlaid={true} navBarType={'GameArt'} />
+      {/*//todo mow to layout*/}
       <WikiContentWithSidebar sections={sections} />
       <div>
         <FeedbackSideButton />

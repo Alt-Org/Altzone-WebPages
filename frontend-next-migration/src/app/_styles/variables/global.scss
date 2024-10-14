@@ -45,6 +45,7 @@
   //--navbar-logo-height: 17vh;
   --navbar-logo-height: 200px;
   --navbar-logo-width: 200px;
+  //--sidebar-width: 1000px;
   --sidebar-width: 340px;
   --sidebar-width-collapsed: 0px;
 
@@ -86,6 +87,10 @@
 @media (max-width: 768px) {
   :root {
     --navbar-logo-height: 140px;
+  }
+
+  body.body-scroll-disabled {
+    overflow: hidden;
   }
 }
 

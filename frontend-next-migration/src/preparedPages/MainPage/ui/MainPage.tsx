@@ -39,9 +39,15 @@ function MainPage (props: Props)  {
             />
 
             <HorizontalLines />
-
             <PlayWithUs
                 {...playWithUs}
+            />
+
+            <HorizontalLines />
+
+            <VideoAndGalleries
+                backgroundImageSrc={sameBg}
+                {...videoAndGalleries}
             />
 
             <HorizontalLines />
@@ -50,20 +56,22 @@ function MainPage (props: Props)  {
                 {...classifiedHeroesBlocks}
             />
 
+            {/*<HorizontalLines />*/}
+
 
             <HorizontalLines />
 
-            <GetToKnowComics
-                backgroundImageSrc={sameBg}
-                {...getToKnowComics}
-            />
+            {/*<GetToKnowComics*/}
+            {/*    backgroundImageSrc={sameBg}*/}
+            {/*    {...getToKnowComics}*/}
+            {/*/>*/}
 
-            <HorizontalLines />
-            <VideoAndGalleries
-                backgroundImageSrc={sameBg}
-                {...videoAndGalleries}
-            />
-            <HorizontalLines />
+            {/*<HorizontalLines />*/}
+            {/*<VideoAndGalleries*/}
+            {/*    backgroundImageSrc={sameBg}*/}
+            {/*    {...videoAndGalleries}*/}
+            {/*/>*/}
+            {/*<HorizontalLines />*/}
             {/*<SectionNewsPreview/>*/}
 
             {/*<SectionRanking*/}

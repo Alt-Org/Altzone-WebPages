@@ -16,6 +16,9 @@ interface SidebarProps {
     side?: 'left' | 'right'
     closeOnClickOutside?: boolean;
     bottomItems?: ReactNode;
+    onClose?: () => void;
+    sidebarItemsListResetKey?: number;
+
 }
 
 /**
@@ -55,17 +58,25 @@ export const Sidebar = ({
                             sidebarItemsList,
                             side = 'left',
                             closeOnClickOutside = false,
-                            bottomItems = "Login"
+                            bottomItems = "Login",
+                            onClose,
+                            sidebarItemsListResetKey
                         }: SidebarProps) => {
 
     const [isCollapsed, setIsCollapsed] = useState(true);
+    const [isOpening, setIsOpening] = useState(false);
 
     const handleBurgerButtonClick = () => {
+
+        setIsOpening(true);
+        setTimeout(() => setIsOpening(false), 500);
+
         setIsCollapsed((prevState) => {
             if (prevState) {
                 document.body.classList.add('no-scroll');
             } else {
                 document.body.classList.remove('no-scroll');
+                onClose?.();
             }
             return !prevState;
         });
@@ -83,6 +94,7 @@ export const Sidebar = ({
         [cls.expanded]: !isCollapsed,
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
+        [cls.opening]: isOpening,
     }
 
     const buttonMods = {
@@ -156,7 +168,7 @@ export const Sidebar = ({
                 ref={sidebarRef}
                 className={classNames(cls.Sidebar, mods, [sidebarClassName])}
             >
-                <div className={cls.items}>
+                <div className={cls.items} key={sidebarItemsListResetKey}>
                     {itemsList}
                 </div>
                 <div className={cls.bottomItems}>
