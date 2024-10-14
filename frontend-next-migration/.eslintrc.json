@@ -5,8 +5,17 @@
   ],
   "rules": {
     "react-hooks/rules-of-hooks": "off",
-    "react/no-unescaped-entities": 0
+    "react/no-unescaped-entities": 0,
 
 //    "no-unused-vars": "warn"
+
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "CallExpression[callee.property.name='map']",
+        "message": "Using Array.prototype.map is prohibited."
+      }
+    ]
+
   }
 }

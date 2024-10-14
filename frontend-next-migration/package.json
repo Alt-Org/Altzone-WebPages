@@ -16,7 +16,13 @@
     "cypress:run": "cypress run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "sort-imports": "ts-node altzone-cli/sortImports/processFiles.ts"
+    "sort-imports": "ts-node altzone-cli/sortImports/processFiles.ts",
+    "prepare": "cd .. && npx husky frontend-next-migration/.husky"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "next lint"
+    ]
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.25",
@@ -82,8 +88,10 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.1",
     "eslint-plugin-storybook": "^0.8.0",
+    "husky": "^9.1.6",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.2.10",
     "storybook": "^7.6.17",
     "ts-morph": "^23.0.0",
     "ts-node": "^10.9.2",
