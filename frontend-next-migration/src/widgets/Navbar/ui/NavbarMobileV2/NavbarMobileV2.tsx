@@ -17,6 +17,7 @@ import { LangSwitcher } from "@/features/LangSwitcher";
 import { FixedButton } from "../FixedButton/FixedButton";
 
 
+
 interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
