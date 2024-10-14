@@ -10,6 +10,7 @@ interface DepartmentItemProps {
   department: Department;
 }
 
+
 /**
  * DepartmentItem component displays information about a specific department.
  * It includes the department's name and a list of members in that department.
