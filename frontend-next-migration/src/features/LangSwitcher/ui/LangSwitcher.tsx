@@ -34,7 +34,6 @@ export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
     };
 
     return (
-        <>
             <select
                 data-testid="language-switcher"
                 value={language}
@@ -45,7 +44,6 @@ export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
                 <option value="en">{t('english')}</option>
                 {/*<option value="ru">{t('russian')}</option>*/}
             </select>
-        </>
     );
 };
 
