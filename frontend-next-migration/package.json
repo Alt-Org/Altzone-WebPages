@@ -16,8 +16,7 @@
     "cypress:run": "cypress run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-
-    "cli": ""
+    "sort-imports": "ts-node altzone-cli/sortImports/processFiles.ts"
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.25",
