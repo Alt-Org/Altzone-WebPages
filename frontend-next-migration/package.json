@@ -17,7 +17,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "sort-imports": "ts-node altzone-cli/sortImports/processFiles.ts",
-    "prepare": "cd .. && npx husky frontend-next-migration/.husky"
+    "prepare": "cd .. && husky ./frontend-next-migration/.husky"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
