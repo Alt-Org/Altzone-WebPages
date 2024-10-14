@@ -9,15 +9,11 @@
   "rules": {
     "react-hooks/rules-of-hooks": "off",
     "react/no-unescaped-entities": 0,
-
-//    "react/no-array-index-key": "error",
     "react/jsx-key": "error",
     "react/jsx-no-duplicate-props": "error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
-    "react/jsx-no-useless-fragment": "error"
-
-
-    //    "no-unused-vars": "warn"
+    "react/jsx-no-useless-fragment": "error",
+    "no-unused-vars": "warn"
 
   }
 }
