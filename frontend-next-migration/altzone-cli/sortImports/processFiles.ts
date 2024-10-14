@@ -1,8 +1,11 @@
 import { Project } from 'ts-morph';
 import { processFile } from './processFile';
 import { appLayers } from '../const';
-import { execSync } from 'child_process';
+import {exec} from 'child_process';
 import path from 'path';
+import { promisify } from 'util';
+
+
 
 // Asynchronous function to process multiple files
 async function processFiles(paths: string[]) {
@@ -24,41 +27,50 @@ async function processFiles(paths: string[]) {
     console.log('All files processed.');
 }
 
-// Get command-line arguments
-const args = process.argv.slice(2);
-let paths = args.length ? args : [`src/**/*.ts{,x}`];
 
-const filesIndex = args.indexOf('--files');
-if (filesIndex !== -1 && args.length > filesIndex + 1) {
-    paths = args.slice(filesIndex + 1); // Take all the values after --files
-}
+// Convert exec to async function
+const execAsync = promisify(exec);
 
-const gitChangesIndex = args.indexOf('--git-changes');
-if (gitChangesIndex !== -1) {
-    try {
-        // Get the list of modified files in Git
-        const gitDiffOutput = execSync('git diff --name-only', { encoding: 'utf-8' });
-        const gitChangedFiles = gitDiffOutput.split('\n').filter(Boolean); // Remove empty lines
+// Wrapping the code in an immediately invoked async function
+(async function() {
+    // Get command-line arguments
+    const args = process.argv.slice(2);
+    let paths = args.length ? args : [`src/**/*.ts{,x}`];
 
-        // Filter only files from the 'src' folder and remove the 'frontend-next-migration/' prefix
-        const filteredFiles = gitChangedFiles
-            .filter(file => file.startsWith('frontend-next-migration/src/'))
-            .map(file => file.replace('frontend-next-migration/', '')); // Remove project folder prefix
-
-        if (filteredFiles.length > 0) {
-            paths = filteredFiles;
-        } else {
-            console.log('No changes detected in the "src" folder.');
-            process.exit(0);
-        }
-    } catch (error) {
-        console.error('Failed to get changed files from Git:', error);
-        process.exit(1);
+    // Check if the --files flag is present
+    const filesIndex = args.indexOf('--files');
+    if (filesIndex !== -1 && args.length > filesIndex + 1) {
+        paths = args.slice(filesIndex + 1); // Take all the values after --files
     }
-}
 
-// todo dont remove it helps to remember format of paths. We should probably add this example to documentation
-// const testPaths = ['src/app/[lng]/layout.tsx'];
+    // Check if the --git-changes flag is present
+    const gitChangesIndex = args.indexOf('--git-changes');
+    if (gitChangesIndex !== -1) {
+        try {
+            // Use async version of exec to call Git
+            const { stdout: gitDiffOutput } = await execAsync('git diff --name-only');
+            const gitChangedFiles = gitDiffOutput.split('\n').filter(Boolean); // Remove empty lines
 
-console.log(paths)
-processFiles(paths);
+            // Filter only files from the 'src' folder and remove the 'frontend-next-migration/' prefix
+            const filteredFiles = gitChangedFiles
+                .filter(file => file.startsWith('frontend-next-migration/src/'))
+                .map(file => path.resolve(file.replace('frontend-next-migration/', ''))); // Convert to absolute path
+
+            if (filteredFiles.length > 0) {
+                paths = filteredFiles;
+            } else {
+                console.log('No changes detected in the "src" folder.');
+                process.exit(0);
+            }
+        } catch (error) {
+            console.error('Failed to get changed files from Git:', error);
+            process.exit(1);
+        }
+    }
+
+    // todo don't remove this; it helps to remember the format of paths. We should probably add this example to the documentation
+    // const testPaths = ['src/app/[lng]/layout.tsx'];
+
+    // Call the asynchronous function to process files at the specified paths
+    await processFiles(paths);
+})();
