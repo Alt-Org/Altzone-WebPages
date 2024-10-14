@@ -5,8 +5,6 @@ import {exec} from 'child_process';
 import path from 'path';
 import { promisify } from 'util';
 
-
-
 // Asynchronous function to process multiple files
 async function processFiles(paths: string[]) {
     const project = new Project({});
@@ -26,7 +24,6 @@ async function processFiles(paths: string[]) {
 
     console.log('All files processed.');
 }
-
 
 // Convert exec to async function
 const execAsync = promisify(exec);
