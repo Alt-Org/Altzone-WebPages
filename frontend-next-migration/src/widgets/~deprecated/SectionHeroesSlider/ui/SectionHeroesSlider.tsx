@@ -5,6 +5,7 @@ import Image from "next/image";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 
 
+
 const SectionHeroes = () => {
     return (
         <div className={cls.SectionHeroes}>
