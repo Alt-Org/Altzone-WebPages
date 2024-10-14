@@ -34,13 +34,13 @@ const execAsync = promisify(exec);
     const args = process.argv.slice(2);
     let paths = args.length ? args : [`src/**/*.ts{,x}`];
 
-    // Check if the --files flag is present
+    // Check if the --files flag is present npm run sort-imports --  --files
     const filesIndex = args.indexOf('--files');
     if (filesIndex !== -1 && args.length > filesIndex + 1) {
         paths = args.slice(filesIndex + 1); // Take all the values after --files
     }
 
-    // Check if the --git-changes flag is present
+    // Check if the --git-changes flag is present example call npm run sort-imports --  --git-changes
     const gitChangesIndex = args.indexOf('--git-changes');
     if (gitChangesIndex !== -1) {
         try {
