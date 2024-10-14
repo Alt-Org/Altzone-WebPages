@@ -135,11 +135,12 @@
 
 .WebGLNotice {
   margin-top: auto;
+  margin-bottom: 20px;
   align-self: center;
   background-color: var(--transparent-bg-darker);
   color: white;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 15px;
   font-size: 0.9rem;
   max-width: 30%;
   text-align: center;
@@ -157,7 +158,7 @@
 
 @media (max-width: 768px) {
   .WebGLNotice {
-   max-width: 50%;
+   max-width: 38vh;
    }
   }
   .WarningIcon {
