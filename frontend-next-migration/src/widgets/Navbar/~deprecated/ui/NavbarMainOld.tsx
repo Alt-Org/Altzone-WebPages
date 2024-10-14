@@ -49,7 +49,6 @@ export const NavbarMainOld = memo((props: NavbarMainProps) => {
     );
   }
   return (
-    <>
       <FixedProvider>
         <NavbarDesktopV2
           navbarBuild={navbarMenuDesktop2}
@@ -57,7 +56,6 @@ export const NavbarMainOld = memo((props: NavbarMainProps) => {
           marginTop={marginTop}
         />
       </FixedProvider>
-    </>
   );
 });
 
@@ -72,7 +70,6 @@ export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
 
   if (isMobileSize) {
     return (
-      <>
         <FixedProvider>
           <NavbarMobileV2
             marginTop={marginTop}
@@ -80,11 +77,9 @@ export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
             navbarBuild={navbarGameArtMobile}
           />
         </FixedProvider>
-      </>
     );
   }
   return (
-    <>
       <FixedProvider>
         <NavbarDesktopV2
           navbarBuild={navbarGameArtDesktop}
@@ -92,7 +87,6 @@ export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
           marginTop={marginTop}
         />
       </FixedProvider>
-    </>
   );
 });
 

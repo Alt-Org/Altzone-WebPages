@@ -14,9 +14,7 @@ const AuthMainPage = () => {
         }
     }, [router, pathName]);
 
-    return (
-     <></>
-    );
+    return null;
 }
 
 export default AuthMainPage;

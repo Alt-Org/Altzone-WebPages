@@ -3,7 +3,6 @@ import cls from "./GamePage.module.scss"
 
 export default function GamePage () {
     return (
-        <>
             <iframe
                 scrolling={"no"}
                 className={cls.Iframe}
@@ -12,6 +11,5 @@ export default function GamePage () {
                 src={AppExternalLinks.webgl}
                 // allowFullScreen
             />
-        </>
     )
 }

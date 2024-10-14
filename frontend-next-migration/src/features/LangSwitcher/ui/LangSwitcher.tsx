@@ -1,6 +1,6 @@
-import {ChangeEvent} from "react";
-import { useTranslation } from "react-i18next";
 import { usePathname, useRouter } from "next/navigation";
+import { ChangeEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
 type LangSwitcherProps = {

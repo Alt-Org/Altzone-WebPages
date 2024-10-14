@@ -98,7 +98,6 @@ const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
         }
     }
     return (
-        <>
             <form onSubmit={onClickSearch}>
                 <input name="search" placeholder={t("search_placeholder")} type="text" id="search"></input>
                 <Button
@@ -110,7 +109,6 @@ const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
                 >Find
                 </Button>
             </form>
-        </>
     )
 }
 const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
@@ -125,7 +123,6 @@ const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
         }
     }
     return (
-        <>
             <form onSubmit={onClickSearch}>
                 <input name="search" placeholder={t("search_placeholder")} type="text" id="search"></input>
                 <Button
@@ -137,7 +134,6 @@ const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
                 >Find
                 </Button>
             </form>
-        </>
     )
 }
 

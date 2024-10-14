@@ -13,9 +13,7 @@ export default {
 
 const Template: ComponentStory<typeof NavGoBackButton> = (args) => {
     return (
-        <>
             <NavGoBackButton {...args} />
-        </>
     );
 };
 

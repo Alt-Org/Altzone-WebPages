@@ -13,7 +13,8 @@
 //    "react/no-array-index-key": "error",
     "react/jsx-key": "error",
     "react/jsx-no-duplicate-props": "error",
-    "react/no-unknown-property": "error"
+    "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
+    "react/jsx-no-useless-fragment": "error"
 
 
     //    "no-unused-vars": "warn"
