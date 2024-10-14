@@ -23,6 +23,7 @@
   "playWithUs-OpenPositions-body" : "Come with us",
   "playWithUs-BecomeATester-title" : "Become a tester",
   "playWithUs-BecomeATester-body" : "Make the app better",
+  "playWithUs-WebGLNotice": "Due to known WebGL compatibility issues, our WebGL game might not work correctly on iPhones or Macs.",
 
 
   "classifiedHeroesBlocks-title": "Heroes",

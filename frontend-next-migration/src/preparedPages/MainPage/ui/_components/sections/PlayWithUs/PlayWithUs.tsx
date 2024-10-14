@@ -17,6 +17,7 @@ export type Props = {
   webGl: WebGl;
   googlePLayLink: string;
   belowNavs: NavItem[];
+  webGlNotice: string;
 };
 
 const PlayWithUs = (props: Props) => {
@@ -25,6 +26,7 @@ const PlayWithUs = (props: Props) => {
     webGl,
     googlePLayLink = AppExternalLinks.downloadAndroid,
     belowNavs,
+    webGlNotice,
   } = props;
 
   return (
@@ -69,6 +71,11 @@ const PlayWithUs = (props: Props) => {
           alt={'Side image with hero'}
           className={cls.sideImg}
         />
+        
+      </div>
+      <div className={cls.WebGLNotice}>
+        <span className={cls.WarningIcon}>▲</span>
+          {webGlNotice}
       </div>
     </section>
   );

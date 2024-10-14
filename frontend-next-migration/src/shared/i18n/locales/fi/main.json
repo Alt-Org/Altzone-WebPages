@@ -23,6 +23,7 @@
   "playWithUs-OpenPositions-body" : "Tule mukaan",
   "playWithUs-BecomeATester-title" : "Tule testaajaksi",
   "playWithUs-BecomeATester-body" : "Tee sovelluksesta parempi",
+  "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
 
   "classifiedHeroesBlocks-title": "Hahmot",
   "classifiedHeroesBlocks-seeMore": "Katso lisää"
