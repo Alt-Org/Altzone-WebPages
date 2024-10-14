@@ -44,13 +44,8 @@ const execAsync = promisify(exec);
     const gitChangesIndex = args.indexOf('--git-changes');
     if (gitChangesIndex !== -1) {
         try {
-            // Use async version of exec to call Git
-            // const { stdout: gitDiffOutput } = await execAsync('git diff --name-only');
-
             const { stdout: gitDiffOutput } = await execAsync('git diff --cached --name-only');
-
             const gitChangedFiles = gitDiffOutput.split('\n').filter(Boolean); // Remove empty lines
-
             // Filter only files from the 'src' folder and remove the 'frontend-next-migration/' prefix
             const filteredFiles = gitChangedFiles
                 .filter(file => file.startsWith('frontend-next-migration/src/'))
