@@ -5,7 +5,7 @@
 cd frontend-next-migration
 
 # Run the sort-imports script with the --git-changes flag
-npx ts-node altzone-cli/sortImports/processFiles.ts -- --git-changes
+npx ts-node altzone-cli/sortImports/processFiles.ts --git-changes
 
 # Run lint-staged to check only modified files
 npx lint-staged
