@@ -2,6 +2,7 @@ import { useFixed } from "../../model/FixedProvider";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
 import { defineNs } from "../../model/defineNs";
 
+
 import {CSSProperties, memo, useMemo, useState} from "react";
 import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
