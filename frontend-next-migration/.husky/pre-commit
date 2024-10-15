@@ -1,8 +1,13 @@
 # Navigate to the project directory
 cd frontend-next-migration
 
+# Run the sort-imports script with the --git-changes flag
+npx ts-node altzone-cli/sortImports/processFiles.ts -- --git-changes
+
+changed_files=$(git diff --name-only)
+
+git add $changed_files
+
 # Run lint-staged to check only modified files
 npx lint-staged
 
-# Run the sort-imports script with the --git-changes flag
-npx ts-node altzone-cli/sortImports/processFiles.ts -- --git-changes
