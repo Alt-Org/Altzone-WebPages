@@ -1,5 +1,6 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./SkeletonLoader.module.scss";
+import React from "react";
 
 interface SkeletonLoaderProps {
     numberOfRows?: number;
@@ -51,7 +52,7 @@ export const SkeletonLoaderWithHeader = ({
     return (
         <div className={classNames(cls.skeletonContainer, {}, [className])}>
             {skeletonSections.map((_, sectionIndex) => (
-                <>
+                <React.Fragment key={sectionIndex}>
                     <div className={classNames(cls.skeletonHeaderContainer, {})}>
                         <div
                             key={sectionIndex}
@@ -61,7 +62,7 @@ export const SkeletonLoaderWithHeader = ({
                     <div className={classNames(cls.skeleton)} />
                     <div className={classNames(cls.skeleton)} />
                     <div className={classNames(cls.skeleton)} />
-                </>
+                </React.Fragment>
             ))}
         </div>
     );
