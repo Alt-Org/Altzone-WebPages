@@ -17,13 +17,21 @@
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
     "react/self-closing-comp": "error",
+    "react/jsx-props-no-spreading": ["warn", {
+      "html": "ignore",
+      "custom": "enforce"
+    }],
+
 //    "no-unused-vars": "warn",
     "eqeqeq": ["error", "always"],
     "complexity": ["warn", { "max": 10 }],
 //    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": ["off"], // until best times
     "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
 //    "@typescript-eslint/no-implicit-any": "error" todo google later or add to ts config
+    "@typescript-eslint/no-empty-object-type": "off"
+
   },
   "overrides": [
     {

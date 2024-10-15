@@ -1,22 +1,5 @@
-"use client"
-/**
- * VideoContentYT component renders a YouTube video player or thumbnail.
- *
- * Taken from https://octanium91.github.io/p/optimization-video/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855/VideoContentYT.js
- *
- * @component
- * @example
- * <VideoContentYT src="LXb3EKWsInQ" params={{autoPlay: true}} />
- *
- * @param {string} src - Source of content. Can be: YouTube video hash/code (example: LXb3EKWsInQ) or YouTube video URL (example: https://www.youtube.com/watch?v=LXb3EKWsInQ or https://youtu.be/LXb3EKWsInQ or https://www.youtube.com/embed/LXb3EKWsInQ)
- * @param {object} [params] - Object with parameters.
- * @param {boolean} [params.autoPlay] - Set 'true' for autoplay video after pressing the play button.
- * @param {string} [params.thumbnailQuality] - YouTube video preview quality. Can be: default, hq, mq, sd, maxres.
- * @param {string} [params.title] - Image title.
- * @param {string} [params.className] - Custom class name.
- */
-import { Component } from 'react';
-
+'use client'
+import { Component } from "react";
 
 type ThumbnailQuality = "default" | "hq" | "mq" | "sd" | "maxres"
 
@@ -60,7 +43,7 @@ export default class VideoContentYoutube extends Component<VideoContentProps, Vi
 
         if (!this.state.firstLoad) {
 
-            let localState = this.state;
+            const localState = this.state;
 
             const thumbnailQuality = {default: "default", hq: "hqdefault", mq: "mqdefault", sd: "sddefault", maxres: "maxresdefault"};
             let findInUrl = false;
