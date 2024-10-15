@@ -1,7 +1,8 @@
 'use client'
-import { useInView } from "react-intersection-observer";
 import { HeroCard, heroes } from "@/entities/Hero";
 import cls from "./SectionHeroesBlocks.module.scss";
+import {useInView} from "react-intersection-observer";
+
 
 type Props = {
     backgroundImageSrc? : string
