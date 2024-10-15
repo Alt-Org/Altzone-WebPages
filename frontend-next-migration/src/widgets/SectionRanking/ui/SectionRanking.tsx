@@ -1,10 +1,10 @@
 'use client'
-import cls from "./SectionRanking.module.scss"
 import Image from "next/image";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
 import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
-import Players from "../model/players";
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import Players from "../model/players";
+import cls from "./SectionRanking.module.scss";
 
 type Props = {
     rankingPlayerText: string;
@@ -47,7 +47,7 @@ const SectionRanking = (props: Props) => {
                 </div>
                 
                 {!isMobileSize && (
-                    <Image src={pirate} alt={"Pirate hero photo"} className={cls.PirateImage}></Image>
+                    <Image src={pirate} alt={"Pirate hero photo"} className={cls.PirateImage}/>
                 )}
 
             </div>
