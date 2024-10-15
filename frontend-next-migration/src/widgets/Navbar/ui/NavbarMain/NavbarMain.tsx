@@ -1,8 +1,9 @@
+'use client';
 /* This code snippet is defining a React functional component called `NavbarMain`. It imports necessary
 dependencies such as `memo` from React, and components like `NavbarDesktopV2` and `NavbarMobileV2`.
 It also imports some types and functions related to the navbar. */
-'use client';
-import { memo } from 'react';
+
+import {memo, useEffect, useMemo} from 'react';
 import NavbarDesktopV2 from '../NavbarDesktopV2/NavbarDesktopV2';
 import NavbarMobileV2 from '../NavbarMobileV2/NavbarMobileV2';
 import { FixedProvider } from '@/widgets/Navbar/model/FixedProvider';
@@ -17,32 +18,39 @@ interface NavbarMainProps {
 }
 
 export const NavbarMain = memo((props: NavbarMainProps) => {
-  const {marginTop, className, navBarType = 'Default' } = props;
+
+  const {
+    marginTop,
+    className,
+    navBarType = 'Default'
+  } = props;
+
   const { isMobileSize, isTabletSize } = useSizes();
-  /* The line `const size = isMobileSize || isTabletSize ? 'mobile' : 'desktop';` is determining the
-  size of the navbar based on the screen size. */
-  const size = isMobileSize || isTabletSize ? 'mobile' : 'desktop';
-  const navbarBuild = getNavbarBuildByTypeAndSize(navBarType, size);
+  const size = useMemo(() => (isMobileSize || isTabletSize ? 'mobile' : 'desktop'), [isMobileSize, isTabletSize]);
+  const navbarBuild = useMemo(() => getNavbarBuildByTypeAndSize(navBarType, size), [navBarType, size]);
+  if(!navBarType) return null;
 
   return (
-    <FixedProvider>
-      {isMobileSize || isTabletSize ? (
-        <NavbarMobileV2
-          marginTop={marginTop}
-          className={className}
-          navbarBuild={navbarBuild}
-          navBarType={navBarType}
-        />
-      ) : (
-        <NavbarDesktopV2
-          marginTop={marginTop}
-          className={className}
-          navbarBuild={navbarBuild}
-          navBarType={navBarType}
-        />
-      )}
-    </FixedProvider>
+      <FixedProvider>
+        {isMobileSize || isTabletSize ? (
+          <NavbarMobileV2
+            marginTop={marginTop}
+            className={className}
+            navbarBuild={navbarBuild}
+            navBarType={navBarType}
+          />
+        ) : (
+          <NavbarDesktopV2
+            marginTop={marginTop}
+            className={className}
+            navbarBuild={navbarBuild}
+            navBarType={navBarType}
+          />
+        )}
+      </FixedProvider>
   );
 });
 
 NavbarMain.displayName = 'NavbarMain';
+
+

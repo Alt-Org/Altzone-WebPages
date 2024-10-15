@@ -1,0 +1,25 @@
+name: Auto-Assign Veterans for Initial Review
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assignVeterans:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get team members and assign as reviewers
+        run: |
+          TEAM_MEMBERS=$(curl -s -H "Authorization: token ${{ secrets.PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/orgs/Alt-Org/teams/veterans-web/members | jq -r '.[].login')
+          for MEMBER in $TEAM_MEMBERS; do
+            echo "Adding $MEMBER as reviewer"
+            gh pr edit ${{ github.event.pull_request.number }} --add-reviewer "$MEMBER"
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+

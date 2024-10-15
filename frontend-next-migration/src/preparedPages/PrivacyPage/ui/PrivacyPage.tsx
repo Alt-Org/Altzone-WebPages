@@ -32,7 +32,7 @@ const PrivacyPage = (props: Props) => {
       <div>
         <FeedbackSideButton />
       </div>
-      <Footer />
+        {/*//todo move from here to app router*/}
       <ScrollTop />
     </div>
   );

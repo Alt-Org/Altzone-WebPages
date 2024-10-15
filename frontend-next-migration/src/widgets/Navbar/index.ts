@@ -1,5 +1,2 @@
-// export { NavbarMainOld as Navbar } from './ui/NavbarMain/NavbarMainOld';
-// export { NavbarMainAsync as Navbar} from "./ui/NavbarMain/NavbarMain.async";
-
-
+export type {NavBarType} from "./model/types"
 export { NavbarMain as Navbar } from './ui/NavbarMain/NavbarMain';

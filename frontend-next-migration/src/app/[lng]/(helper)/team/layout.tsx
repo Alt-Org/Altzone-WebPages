@@ -7,12 +7,11 @@ type Props = {
     children: ReactNode;
 }
 
-export default function ComicsLayout({children}: Props) {
+export default function TeamLayout({children}: Props) {
     return (
         <>
-            <Navbar />
             {children}
-            <Footer />
+            <ScrollTop />
         </>
     )
 }
