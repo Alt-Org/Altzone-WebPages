@@ -36,6 +36,7 @@ jobs:
           NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
           NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
           NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
+          NEXT_PUBLIC_STRAPI_HOST: ${{ secrets.NEXT_PUBLIC_STRAPI_HOST }}
 
       - name: Run tests
         run: npm test
@@ -44,6 +45,7 @@ jobs:
           NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
           NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
           NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
+          NEXT_PUBLIC_STRAPI_HOST: ${{ secrets.NEXT_PUBLIC_STRAPI_HOST }}
 
 #      - name: Run Cypress tests
 #        run: npm run cypress:run
