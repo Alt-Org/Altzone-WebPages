@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useClientTranslation } from "@/shared/i18n";
 import { useState } from "react";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button"
+import { SkeletonLoader } from "@/shared/ui/SkeletonLoader";
 
 const ClanAllSubPage = () => {
 
@@ -19,8 +20,7 @@ const ClanAllSubPage = () => {
     const { t } = useClientTranslation("clan");
     const { data: clans, error, isLoading } = useGetClansQuery({ page: currentPage, search: currentSearch });
 
-    if (isLoading) return <Loader className={cls.Loader} />
-
+    if(isLoading) return <SkeletonLoader numberOfRows={30} className={cls.skeletonLoader} />
     //if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
     const onClickToClan = (id: string) => {
@@ -34,7 +34,6 @@ const ClanAllSubPage = () => {
     const onClickToSearch = (search: string) => {
         setSearch(convertToQuerySearch(search))
     }
-
 
 
     // Temporary way to convert search query value to case-insensitive in front
