@@ -18,7 +18,10 @@
 //    "no-unused-vars": "warn",
     "eqeqeq": ["error", "always"],
     "complexity": ["warn", { "max": 10 }],
-    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+//    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-implicit-any": "error"
   },
   "overrides": [
     {
