@@ -9,10 +9,13 @@ interface SkeletonLoaderProps {
 }
 
 /**
- * SkeletonLoader component displays an animated skeleton loader indicator with default of 4 skeleton rows.
+ * SkeletonLoader component displays an animated skeleton loading indicator with a configurable number of rows,
+ * used to visually represent loading content.
  *
- * @param {SkeletonLoaderProps} props - Properties for the SkeletonLoader component.
- * @returns JSX element representing the SkeletonLoader.
+ * @param {Object} props - Properties for the SkeletonLoader component.
+ * @param {number} [props.numberOfRows=4] - The number of skeleton rows to render. Defaults to 4 rows.
+ * @param {string} [props.className=''] - Additional CSS class names to apply to the root container for custom styling.
+ * @returns {JSX.Element} A JSX element representing the skeleton loader with the specified number of rows.
  */
 
 export const SkeletonLoader = ({
@@ -35,10 +38,13 @@ export const SkeletonLoader = ({
 };
 
 /**
- * SkeletonLoaderWithHeader component displays an animated skeleton loader indicator with default of 1 section of skeleton loaders with 1 header and 3 rows.
+ * SkeletonLoaderWithHeader component displays a skeleton loading animation with a configurable number of sections,
+ * each containing a header and three rows. Used as a placeholder to indicate loading state.
  *
- * @param {SkeletonLoaderProps} props - Properties for the SkeletonLoader component.
- * @returns JSX element representing the SkeletonLoader.
+ * @param {Object} props - Properties for the SkeletonLoader component.
+ * @param {number} [props.sections=1] - The number of sections (each containing one header and three rows) to render.
+ * @param {string} [props.className=''] - Additional CSS class names to apply to the root container for custom styling.
+ * @returns {JSX.Element} A JSX element representing the skeleton loader with a header and rows.
  */
 
 
