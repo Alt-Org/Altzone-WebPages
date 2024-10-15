@@ -14,7 +14,8 @@
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
 //    "no-unused-vars": "warn",
-    "eqeqeq": ["error", "always"]
+    "eqeqeq": ["error", "always"],
+    "complexity": ["warn", { "max": 10 }]
   },
   "overrides": [
     {

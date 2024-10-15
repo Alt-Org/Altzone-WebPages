@@ -1,5 +1,106 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { selectHasClan, selectIsAuthenticated } from "./authUserSlice";
+
+// import { useSelector } from 'react-redux';
+// import { selectHasClan, selectIsAuthenticated } from "./authUserSlice";
+//
+// export enum PermissionError {
+//     NotAuthenticated = 'NotAuthenticated',
+//     AlreadyAuthenticated = 'AlreadyAuthenticated',
+//     AlreadyInClan = 'AlreadyInClan',
+//     NotInClan = 'NotInClan',
+//     ClanLimitExceeded = 'ClanLimitExceeded',
+//     UnknownPermission = 'UnknownPermission',
+// }
+//
+//
+// interface GrantedPermissionResult {
+//     isGranted: true;
+// }
+//
+// interface NotGrantedPermissionResult {
+//     isGranted: false;
+//     error: PermissionError;
+// }
+//
+// export type PermissionResult = GrantedPermissionResult | NotGrantedPermissionResult;
+//
+//
+// export type UserPermissionsV2 =
+//     | 'login'
+//     | 'logout'
+//     | 'clan:create'
+//     | 'clan:seeAll'
+//     | 'clan:seeOwn'
+//     | 'clan:join';
+//
+// const createGrantedResult = (): GrantedPermissionResult => ({
+//     isGranted: true,
+// });
+//
+// const createNotGrantedResult = (error: PermissionError): NotGrantedPermissionResult => ({
+//     isGranted: false,
+//     error,
+// });
+//
+//
+// export const useUserPermissionsV2 = () => {
+//     const isAuthenticated = useSelector(selectIsAuthenticated);
+//     const hasClan = useSelector(selectHasClan);
+//
+//     // todo possibly we could here useMemo hook
+//     const checkPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
+//         switch (permission) {
+//             case 'login':
+//                 return !isAuthenticated
+//                     ? createGrantedResult()
+//                     : createNotGrantedResult(PermissionError.AlreadyAuthenticated);
+//
+//             case 'logout':
+//                 return isAuthenticated
+//                     ? createGrantedResult()
+//                     : createNotGrantedResult(PermissionError.NotAuthenticated);
+//
+//             case 'clan:create':
+//                 if (!isAuthenticated) {
+//                     return createNotGrantedResult(PermissionError.NotAuthenticated);
+//                 }
+//                 if (hasClan) {
+//                     return createNotGrantedResult(PermissionError.AlreadyInClan);
+//                 }
+//                 return createGrantedResult();
+//
+//             case 'clan:seeAll':
+//                 return isAuthenticated
+//                     ? createGrantedResult()
+//                     : createNotGrantedResult(PermissionError.NotAuthenticated);
+//
+//             case 'clan:seeOwn':
+//                 if (!isAuthenticated) {
+//                     return createNotGrantedResult(PermissionError.NotAuthenticated);
+//                 }
+//                 if (!hasClan) {
+//                     return createNotGrantedResult(PermissionError.NotInClan);
+//                 }
+//                 return createGrantedResult();
+//
+//             case 'clan:join':
+//                 if (!isAuthenticated) {
+//                     return createNotGrantedResult(PermissionError.NotAuthenticated);
+//                 }
+//                 if (hasClan) {
+//                     return createNotGrantedResult(PermissionError.AlreadyInClan);
+//                 }
+//                 return createGrantedResult();
+//
+//             default:
+//                 console.warn(`Unhandled permission type: ${permission}`);
+//                 return createNotGrantedResult(PermissionError.UnknownPermission);
+//         }
+//     };
+//
+//     return { checkPermissionFor };
+// };
 
 export enum PermissionError {
     NotAuthenticated = 'NotAuthenticated',
@@ -9,7 +110,6 @@ export enum PermissionError {
     ClanLimitExceeded = 'ClanLimitExceeded',
     UnknownPermission = 'UnknownPermission',
 }
-
 
 interface GrantedPermissionResult {
     isGranted: true;
@@ -21,7 +121,6 @@ interface NotGrantedPermissionResult {
 }
 
 export type PermissionResult = GrantedPermissionResult | NotGrantedPermissionResult;
-
 
 export type UserPermissionsV2 =
     | 'login'
@@ -40,61 +139,51 @@ const createNotGrantedResult = (error: PermissionError): NotGrantedPermissionRes
     error,
 });
 
-
 export const useUserPermissionsV2 = () => {
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const hasClan = useSelector(selectHasClan);
 
-    // todo possibly we could here useMemo hook
-    const checkPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
-        switch (permission) {
-            case 'login':
-                return !isAuthenticated
-                    ? createGrantedResult()
-                    : createNotGrantedResult(PermissionError.AlreadyAuthenticated);
+    const permissionHandlers: Record<UserPermissionsV2, () => PermissionResult> = {
+        login: () => !isAuthenticated
+            ? createGrantedResult()
+            : createNotGrantedResult(PermissionError.AlreadyAuthenticated),
 
-            case 'logout':
-                return isAuthenticated
-                    ? createGrantedResult()
-                    : createNotGrantedResult(PermissionError.NotAuthenticated);
+        logout: () => isAuthenticated
+            ? createGrantedResult()
+            : createNotGrantedResult(PermissionError.NotAuthenticated),
 
-            case 'clan:create':
-                if (!isAuthenticated) {
-                    return createNotGrantedResult(PermissionError.NotAuthenticated);
-                }
-                if (hasClan) {
-                    return createNotGrantedResult(PermissionError.AlreadyInClan);
-                }
-                return createGrantedResult();
+        'clan:create': () => {
+            if (!isAuthenticated) return createNotGrantedResult(PermissionError.NotAuthenticated);
+            if (hasClan) return createNotGrantedResult(PermissionError.AlreadyInClan);
+            return createGrantedResult();
+        },
 
-            case 'clan:seeAll':
-                return isAuthenticated
-                    ? createGrantedResult()
-                    : createNotGrantedResult(PermissionError.NotAuthenticated);
+        'clan:seeAll': () => isAuthenticated
+            ? createGrantedResult()
+            : createNotGrantedResult(PermissionError.NotAuthenticated),
 
-            case 'clan:seeOwn':
-                if (!isAuthenticated) {
-                    return createNotGrantedResult(PermissionError.NotAuthenticated);
-                }
-                if (!hasClan) {
-                    return createNotGrantedResult(PermissionError.NotInClan);
-                }
-                return createGrantedResult();
+        'clan:seeOwn': () => {
+            if (!isAuthenticated) return createNotGrantedResult(PermissionError.NotAuthenticated);
+            if (!hasClan) return createNotGrantedResult(PermissionError.NotInClan);
+            return createGrantedResult();
+        },
 
-            case 'clan:join':
-                if (!isAuthenticated) {
-                    return createNotGrantedResult(PermissionError.NotAuthenticated);
-                }
-                if (hasClan) {
-                    return createNotGrantedResult(PermissionError.AlreadyInClan);
-                }
-                return createGrantedResult();
-
-            default:
-                console.warn(`Unhandled permission type: ${permission}`);
-                return createNotGrantedResult(PermissionError.UnknownPermission);
+        'clan:join': () => {
+            if (!isAuthenticated) return createNotGrantedResult(PermissionError.NotAuthenticated);
+            if (hasClan) return createNotGrantedResult(PermissionError.AlreadyInClan);
+            return createGrantedResult();
         }
+    };
+
+    const checkPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
+        const handler = permissionHandlers[permission];
+        if (handler) {
+            return handler();
+        }
+        console.warn(`Unhandled permission type: ${permission}`);
+        return createNotGrantedResult(PermissionError.UnknownPermission);
     };
 
     return { checkPermissionFor };
 };
+
