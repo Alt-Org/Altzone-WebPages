@@ -7,7 +7,6 @@ type Props = {
     backgroundImageSrc? : string
 }
 
-
 const SectionHeroes2 = (props: Props) => {
     const {backgroundImageSrc} = props;
 
