@@ -1,12 +1,12 @@
-import { NavbarBuild, NavbarMenuItem } from "../../model/types";
+import Image from "next/image";
 import { memo } from "react";
+import { useUserPermissionsV2 } from "@/entities/Auth";
 import { useClientTranslation } from "@/shared/i18n";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./NavbarDesktopV2.module.scss";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import {DropDownElement, DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import Image from "next/image";
-import { useUserPermissionsV2 } from "@/entities/Auth";
+import { DropDownElement, DropdownWrapper } from "@/shared/ui/DropdownWrapper";
+import { NavbarBuild, NavbarMenuItem } from "../../model/types";
+import cls from "./NavbarDesktopV2.module.scss";
 
 type NavItemProps = {
     item: NavbarMenuItem;
@@ -42,7 +42,7 @@ const NavItem = memo((props: NavItemProps) => {
         const canUserSeeOwnClan = checkPermissionFor("clan:seeOwn").isGranted;
         const localizedElements = item.elements
             .map((element) => {
-                if(element.elementText == "clanpage" && !canUserSeeOwnClan) {
+                if(element.elementText === "clanpage" && !canUserSeeOwnClan) {
                     return null;
                 }
                 return {

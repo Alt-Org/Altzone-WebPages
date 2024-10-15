@@ -1,22 +1,18 @@
-import { useFixed } from "../../model/FixedProvider";
+import Image from "next/image";
+import { CSSProperties, memo, useMemo, useState } from "react";
+import { LangSwitcher } from "@/features/LangSwitcher";
+import { useLogoutMutation, useUserPermissionsV2 } from "@/entities/Auth";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
-import { defineNs } from "../../model/defineNs";
-
-
-import {CSSProperties, memo, useMemo, useState} from "react";
-import Image from 'next/image'
 import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
-import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
-import cls from "./NavbarMobileV2.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
-import { ItemType, NavbarBuild, NavBarType } from "../../model/types";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useClientTranslation } from "@/shared/i18n";
-import { LangSwitcher } from "@/features/LangSwitcher";
+import { defineNs } from "../../model/defineNs";
+import { useFixed } from "../../model/FixedProvider";
+import { ItemType, NavbarBuild, NavBarType } from "../../model/types";
 import { FixedButton } from "../FixedButton/FixedButton";
-
-
+import cls from "./NavbarMobileV2.module.scss";
 
 interface NavbarTouchProps {
     marginTop?: number;
@@ -79,7 +75,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     //todo looks like that this logic should not be here in ui component
                     const localizedElements = item.elements
                         .map((element) => {
-                            if (element.elementText == 'clanpage' && !permissionToSeeOwnClan.isGranted) {
+                            if (element.elementText === 'clanpage' && !permissionToSeeOwnClan.isGranted) {
                                 return null; // Return null if elementText is "clanpage"
                             }
                             return {

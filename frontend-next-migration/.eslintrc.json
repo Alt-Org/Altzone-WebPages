@@ -13,7 +13,8 @@
     "react/jsx-no-duplicate-props": "error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
-    "no-unused-vars": "warn"
+//    "no-unused-vars": "warn",
+    "eqeqeq": ["error", "always"]
   },
   "overrides": [
     {
