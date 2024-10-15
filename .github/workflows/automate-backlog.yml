@@ -1,0 +1,42 @@
+name: Automate Backlog
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  move_to_backlog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Move Issue to Backlog in @test project
+        run: |
+          ISSUE_NODE_ID="${{ github.event.issue.node_id }}"
+          PROJECT_ID="PVT_kwDOBWfOK84Aj5Fq"  # Project ID for @test
+          STATUS_FIELD_ID="PVTSSF_lADOBWfOK84Aj5FqzgcLwB4"  # Field ID for Status
+          BACKLOG_STATUS_OPTION_ID="f75ad846"  # Option ID for "Backlog"
+
+          # Step 1: Add issue to the project @test
+          ADD_PROJECT_RESPONSE=$(curl -s -X POST \
+            -H "Authorization: Bearer ${{ secrets.PAT }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"query\": \"mutation { addProjectV2ItemById(input: {projectId: \\\"${PROJECT_ID}\\\", contentId: \\\"${ISSUE_NODE_ID}\\\"}) { item { id }}}\"}" \
+            https://api.github.com/graphql)
+
+          ITEM_ID=$(echo $ADD_PROJECT_RESPONSE | jq -r '.data.addProjectV2ItemById.item.id')
+
+          if [ "$ITEM_ID" == "null" ] || [ -z "$ITEM_ID" ]; then
+            echo "Error: Could not retrieve ITEM_ID. Exiting..."
+            exit 1
+          fi
+
+          # Step 2: Update issue's status to Backlog
+          curl -s -X POST \
+            -H "Authorization: Bearer ${{ secrets.PAT }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"query\": \"mutation { updateProjectV2ItemFieldValue(input: {projectId: \\\"${PROJECT_ID}\\\", itemId: \\\"${ITEM_ID}\\\", fieldId: \\\"${STATUS_FIELD_ID}\\\", value: { singleSelectOptionId: \\\"${BACKLOG_STATUS_OPTION_ID}\\\" }}) { projectV2Item { id }}}\"}" \
+            https://api.github.com/graphql
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
