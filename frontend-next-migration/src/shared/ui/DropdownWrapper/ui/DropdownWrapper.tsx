@@ -1,10 +1,10 @@
-import { FC, useState } from 'react';
-import cls from './DropdownWrapper.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { DropdownWrapperProps } from '../types';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown, faExternalLink } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faExternalLink } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FC, useState } from "react";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
+import { DropdownWrapperProps } from "../types";
+import cls from "./DropdownWrapper.module.scss";
 
 /**
  * A wrapper component that provides dropdown functionality.
@@ -72,9 +72,9 @@ export const DropdownWrapper: FC<DropdownWrapperProps> = ({
    * @param {Function} onClick - The onClick callback function for the element.
    * @returns {void}
    */
-  const handleElementClick = (onClick?: () => void): void => {
-    onClick && onClick();
-  };
+  // const handleElementClick = (onClick?: () => void): void => {
+  //   onClick && onClick();
+  // };
 
   const mods: Record<string, boolean> = {
     [cls.contentAbsolute]: contentAbsolute,

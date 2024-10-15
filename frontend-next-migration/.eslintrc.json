@@ -12,16 +12,18 @@
     "react-hooks/rules-of-hooks": "off",
     "react/no-unescaped-entities": 0,
     "react/jsx-key": "error",
+    "react/prop-types": "off",
     "react/jsx-no-duplicate-props": "error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
+    "react/self-closing-comp": "error",
 //    "no-unused-vars": "warn",
     "eqeqeq": ["error", "always"],
     "complexity": ["warn", { "max": 10 }],
 //    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-implicit-any": "error"
+    "@typescript-eslint/no-explicit-any": "off"
+//    "@typescript-eslint/no-implicit-any": "error" todo google later or add to ts config
   },
   "overrides": [
     {
