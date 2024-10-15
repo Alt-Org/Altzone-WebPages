@@ -20,10 +20,6 @@ const ClanAllSubPage = () => {
     const { t } = useClientTranslation("clan");
     const { data: clans, error, isLoading } = useGetClansQuery({ page: currentPage, search: currentSearch });
 
-    //const isLoading=true; // Testing purpose.
-
-    //if (isLoading) return <Loader className={cls.Loader} />
-
     if(isLoading) return <SkeletonLoader numberOfRows={30} className={cls.skeletonLoader} />
     //if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
@@ -38,7 +34,6 @@ const ClanAllSubPage = () => {
     const onClickToSearch = (search: string) => {
         setSearch(convertToQuerySearch(search))
     }
-
 
 
     // Temporary way to convert search query value to case-insensitive in front

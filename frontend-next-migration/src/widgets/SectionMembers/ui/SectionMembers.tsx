@@ -10,7 +10,7 @@ import {
   MemberItem,
   useGetTeamsQuery
 } from '@/entities/Member';
-import { SkeletonLoader, SkeletonLoaderWithHeader } from '@/shared/ui/SkeletonLoader';
+import { SkeletonLoaderWithHeader } from '@/shared/ui/SkeletonLoader';
 
 
 interface WorkersSectionProps {
@@ -23,7 +23,6 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
   const { t } = useClientTranslation('team');
 
   const { data: teams = [], isError, isLoading } = useGetTeamsQuery(lng);
-  //const isLoading = true;    //Testing purpose
 
   if (isError) {
     return <p>Error fetching teams data</p>;
