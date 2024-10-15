@@ -2,14 +2,10 @@
 import { HeroCard, heroes } from "@/entities/Hero";
 import cls from "./SectionHeroesBlocks.module.scss";
 import {useInView} from "react-intersection-observer";
-import {useClientTranslation} from "@/shared/i18n";
-import {useParams} from "next/navigation";
-
 
 type Props = {
     backgroundImageSrc? : string
 }
-
 
 const SectionHeroes2 = (props: Props) => {
     const {backgroundImageSrc} = props;
@@ -26,7 +22,7 @@ const SectionHeroes2 = (props: Props) => {
             ref={ref}
         >
             <div className={cls.Content} ref={ref}>
-                {heroes.map((item, index) => (
+                {heroes.map((item) => (
                     <HeroCard
                         title={""}
                         className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
