@@ -23,6 +23,18 @@ async function processFiles(paths: string[]) {
     }
 
     console.log('All files processed.');
+
+
+
+    try {
+        await execAsync(`git add ${paths.join(' ')}`);
+        console.log('Modified files added to Git index.');
+    } catch (error) {
+        console.error('Failed to add files to Git index:', error);
+        process.exit(1);
+    }
+
+
 }
 
 // Convert exec to async function
