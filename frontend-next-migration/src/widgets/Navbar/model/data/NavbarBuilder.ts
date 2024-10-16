@@ -1,6 +1,7 @@
-/* eslint-disable max-params*/
 import { DropDownElement } from "@/shared/ui/DropdownWrapper";
 import { ItemType, NamedMenu, NavAuthLogin, NavAuthProfile, NavbarBuild, NavbarMenu, NavbarMenuItem, NavLogoObject, Position } from "../types";
+
+// /* eslint-disable max-params*/
 
 export class NavbarBuilder
 {

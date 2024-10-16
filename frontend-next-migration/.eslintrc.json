@@ -51,6 +51,12 @@
         "no-unused-vars": 0,
         "@typescript-eslint/no-unused-vars": 0
       }
+    },
+    {
+      "files": ["src/widgets/Navbar/**/NavbarBuilder.{ts,tsx}"], // todo fix this
+      "rules": {
+        "max-params": ["warn", 4]
+      }
     }
   ]
 }
