@@ -31,10 +31,15 @@
 //      "custom": "enforce"
 //    }],
 
-//    "no-unused-vars": "warn",
+
+// js online
     "eqeqeq": ["error", "always"],
     "complexity": ["warn", { "max": 10 }],
     "max-params": ["error", 4],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+
+
+
 //    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "@typescript-eslint/no-unused-vars": ["off"], // until best times
     "@typescript-eslint/ban-ts-comment": ["off"],

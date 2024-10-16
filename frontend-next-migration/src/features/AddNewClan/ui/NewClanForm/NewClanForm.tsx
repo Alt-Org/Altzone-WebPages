@@ -1,10 +1,10 @@
 import { CustomForm } from "@/shared/ui/CustomForm";
-import cls from "./NewClanForm.module.scss";
-import { useNewClanForm } from "../../model/useNewClanForm";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { useNewClanForm } from "../../model/useNewClanForm";
+import cls from "./NewClanForm.module.scss";
 
 type Props = {
-    onSuccess: () => void;
+    onSuccess?: () => void;
     className?: string;
 };
 

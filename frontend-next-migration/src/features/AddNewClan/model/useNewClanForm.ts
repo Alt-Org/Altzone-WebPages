@@ -1,16 +1,16 @@
-"use client"
-import { useEffect } from 'react';
-import { FieldValues, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify';
-import { ValidationAddNewClan } from '../validations';
-import { IClanCreateDto, useCreateClanMutation } from "@/entities/Clan";
-import { authUserActions, selectProfile } from '@/entities/Auth';
+'use client'
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
+import { FieldValues, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import {StateSchema} from "@/app/_providers/StoreProvider";
+import { toast } from "react-toastify";
+import { StateSchema } from "@/app/_providers/StoreProvider";
+import { IClanCreateDto, useCreateClanMutation } from "@/entities/Clan";
+import { authUserActions, selectProfile } from "@/entities/Auth";
+import { ValidationAddNewClan } from "../validations";
 
 type Props = {
-    onSuccess: () => void;
+    onSuccess?: () => void;
 }
 
 export const useNewClanForm = ({ onSuccess }: Props) => {
@@ -67,7 +67,7 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
             handleUpdateClanId(clanId);
             //updateClanId(clanId);
             toast.success('Klaani oli  luotu!');
-            onSuccess();
+            onSuccess?.();
             return;
         }
 
