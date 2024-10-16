@@ -36,7 +36,8 @@
     "complexity": ["warn", { "max": 10 }],
 //    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "@typescript-eslint/no-unused-vars": ["off"], // until best times
-    "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
+    "@typescript-eslint/ban-ts-comment": ["off"],
+//    "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
     "@typescript-eslint/no-explicit-any": "off",
 //    "@typescript-eslint/no-implicit-any": "error" todo google later or add to ts config
     "@typescript-eslint/no-empty-object-type": "off"
@@ -48,6 +49,12 @@
       "rules": {
         "no-unused-vars": 0,
         "@typescript-eslint/no-unused-vars": 0
+      }
+    },
+    {
+      "files": ["**/*.stories.{ts,tsx}"],
+      "rules": {
+        "react/jsx-props-no-spreading": "off"
       }
     }
   ]
