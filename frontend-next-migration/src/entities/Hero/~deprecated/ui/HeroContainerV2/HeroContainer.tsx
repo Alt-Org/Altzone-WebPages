@@ -1,20 +1,19 @@
-'use client';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import Image from 'next/image';
-import bgBox from '@/shared/assets/images/heros/hero-container/readyContainer.svg';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-
-import groupBg from '@/shared/assets/images/backgrounds/groupBg.png';
-import cls from './HeroContainer.module.scss';
-import Link from 'next/link';
-import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
-import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import useImageDistance from './useImageDistance';
-import useKeyboardNavigation from './useKeyboardNavigation';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import useFontSizeAdjuster from '@/shared/lib/hooks/useFontSizeAdjuster';
-import { useRef } from 'react';
+'use client'
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
+import bgBox from "@/shared/assets/images/heros/hero-container/readyContainer.svg";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+import groupBg from "@/shared/assets/images/backgrounds/groupBg.png";
+import leftArrow from "@/shared/assets/images/heros/hero-container/leftArrow.svg";
+import rightArrow from "@/shared/assets/images/heros/hero-container/rightArrow.svg";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import useSizes from "@/shared/lib/hooks/useSizes";
+import useFontSizeAdjuster from "@/shared/lib/hooks/useFontSizeAdjuster";
+import cls from "./HeroContainer.module.scss";
+import useImageDistance from "./useImageDistance";
+import useKeyboardNavigation from "./useKeyboardNavigation";
 
 type Props = {
   heroImg: string;
@@ -78,6 +77,7 @@ const HeroContainer = (props: Props) => {
   const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =
     useSizes();
 
+  /* eslint-disable max-params*/
   const getAdjustedMaxHeight = (
     distanceToBottom: number,
     isMobileSize: boolean,

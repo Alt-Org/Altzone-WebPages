@@ -1,17 +1,6 @@
-import {
-    ItemType, NamedMenu,
-    NavAuthLogin,
-    NavAuthProfile, NavbarBuild,
-    NavbarMenu,
-    NavbarMenuItem,
-    NavLogoObject,
-    Position
-} from "../types";
-import {DropDownElement} from "@/shared/ui/DropdownWrapper";
-
-
-
-
+/* eslint-disable max-params*/
+import { DropDownElement } from "@/shared/ui/DropdownWrapper";
+import { ItemType, NamedMenu, NavAuthLogin, NavAuthProfile, NavbarBuild, NavbarMenu, NavbarMenuItem, NavLogoObject, Position } from "../types";
 
 export class NavbarBuilder
 {
