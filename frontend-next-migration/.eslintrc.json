@@ -26,11 +26,6 @@
     "react/jsx-no-duplicate-props": "error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
-//    "react/self-closing-comp": "error",
-//    "react/jsx-props-no-spreading": ["warn", {
-//      "html": "ignore",
-//      "custom": "enforce"
-//    }],
 
 
 // js online
