@@ -1,5 +1,5 @@
-import {gameApi, GameApiCacheTags} from "@/shared/api";
-import { GetClanResponse, GetClansResponse, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, IJoin } from "../../Clan";
+import { gameApi, GameApiCacheTags } from "@/shared/api";
+import { GetClanResponse, GetClansResponse, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, IJoin } from "../types/clan";
 
 interface GetClansQueryParams {
     page?: number,

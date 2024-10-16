@@ -46,7 +46,8 @@
 
 
 
-    "import/no-duplicates": "error"
+    "import/no-duplicates": "error",
+    "import/no-cycle": ["error", { "maxDepth": 1 }]
 
 
 
