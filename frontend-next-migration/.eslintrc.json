@@ -20,6 +20,7 @@
 //    "react-hooks/rules-of-hooks": "off",
 //    "self-closing-html-only": "error",     "./eslint/rules/self-closing-html-only.js" todo
     "react/no-unescaped-entities": 0,
+    "react-hooks/exhaustive-deps": "off", // todo activate after testes otherwise it can be dangerous
     "react/jsx-key": "error",
     "react/prop-types": "off",
     "react/jsx-no-duplicate-props": "error",
