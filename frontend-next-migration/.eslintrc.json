@@ -17,7 +17,7 @@
 //    }
 //  },
   "rules": {
-    "react-hooks/rules-of-hooks": "off",
+//    "react-hooks/rules-of-hooks": "off",
 //    "self-closing-html-only": "error",     "./eslint/rules/self-closing-html-only.js" todo
     "react/no-unescaped-entities": 0,
     "react/jsx-key": "error",

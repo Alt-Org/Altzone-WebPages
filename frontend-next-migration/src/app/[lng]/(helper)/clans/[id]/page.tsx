@@ -8,6 +8,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { t } = await useServerTranslation(params.lng, 'clan');
 
     return {
