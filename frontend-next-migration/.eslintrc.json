@@ -8,15 +8,24 @@
   "plugins": [
     "react"
   ],
+//  "settings": {
+//    "import/resolver": {
+//      "node": {
+//        "paths": ["src"],
+//        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+//      }
+//    }
+//  },
   "rules": {
     "react-hooks/rules-of-hooks": "off",
+//    "self-closing-html-only": "error",     "./eslint/rules/self-closing-html-only.js" todo
     "react/no-unescaped-entities": 0,
     "react/jsx-key": "error",
     "react/prop-types": "off",
     "react/jsx-no-duplicate-props": "error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
-    "react/self-closing-comp": "error",
+//    "react/self-closing-comp": "error",
     "react/jsx-props-no-spreading": ["warn", {
       "html": "ignore",
       "custom": "enforce"
