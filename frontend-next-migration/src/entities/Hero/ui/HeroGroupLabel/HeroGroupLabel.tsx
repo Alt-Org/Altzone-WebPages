@@ -1,12 +1,12 @@
+import Image from "next/image";
+import { CSSProperties } from "react";
 import red from "@/shared/assets/images/heros/textBgColors/red_cropped.webp";
 import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp";
 import orange from "@/shared/assets/images/heros/textBgColors/orange_cropped.webp";
 import pink from "@/shared/assets/images/heros/textBgColors/pink_cropped.webp";
-import cls from './HeroGroupLabel.module.scss';
-import Image from "next/image";
 import useSizes from "@/shared/lib/hooks/useSizes";
 import { classNames, Mods } from "@/shared/lib/classNames/classNames";
-import { CSSProperties } from "react";
+import cls from "./HeroGroupLabel.module.scss";
 
 type HeroGroupLabelProps = Readonly<{
   /**
@@ -33,6 +33,8 @@ export default function HeroGroupLabel(props: HeroGroupLabelProps) {
 
   const { className, group} = props;
 
+  const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
+
   const heroType = convertHeroGroupToHeroType(group);
 
   if(!heroType)
@@ -40,8 +42,6 @@ export default function HeroGroupLabel(props: HeroGroupLabelProps) {
 
   const labelText = defineHeroGroupLabelText(heroType);
   const labelBg = defineHeroGroupLabelBg(heroType);
-
-  const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } =useSizes();
 
   const combinedModCss: Mods = {
     [cls.isMobile]: isMobileSize,
