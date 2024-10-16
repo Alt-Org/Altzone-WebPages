@@ -26,10 +26,10 @@
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
 //    "react/self-closing-comp": "error",
-    "react/jsx-props-no-spreading": ["warn", {
-      "html": "ignore",
-      "custom": "enforce"
-    }],
+//    "react/jsx-props-no-spreading": ["warn", {
+//      "html": "ignore",
+//      "custom": "enforce"
+//    }],
 
 //    "no-unused-vars": "warn",
     "eqeqeq": ["error", "always"],
@@ -49,12 +49,6 @@
       "rules": {
         "no-unused-vars": 0,
         "@typescript-eslint/no-unused-vars": 0
-      }
-    },
-    {
-      "files": ["**/*.stories.{ts,tsx}"],
-      "rules": {
-        "react/jsx-props-no-spreading": "off"
       }
     }
   ]

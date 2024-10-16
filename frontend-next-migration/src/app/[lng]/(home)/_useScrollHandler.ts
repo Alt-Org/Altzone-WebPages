@@ -62,7 +62,7 @@ export const _useScrollHandler = (introRef: React.RefObject<HTMLDivElement>) => 
             behavior: 'smooth',
         });
 
-        let lastScrollY = { value: 0 };
+        const lastScrollY = { value: 0 };
         const handleScroll = () => {
             updateScrollbarVisibility();
             scrollToIntroOrContent(lastScrollY);
