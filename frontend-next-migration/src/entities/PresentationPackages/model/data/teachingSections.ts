@@ -1,4 +1,4 @@
-import { createSection } from '../createSection';
+import { createSection } from "../createSection";
 
 const i18nKeyPrefixes = [
   'intro',
@@ -13,7 +13,7 @@ const i18nKeyPrefixes = [
   'youthwork',
   'prg',
 ];
-// next takes path : \public\images\teachingPackage
+
 const imageSrcs = [
   '/images/teachingPackage/intro.png',
   '/images/teachingPackage/implementation.png',
@@ -31,12 +31,16 @@ const imageSrcs = [
 const logoSrc = '/images/teachingPackage/teachingPackageLogo.png';
 
 export const TeachingSections = i18nKeyPrefixes.map((key, index) =>
-  createSection(
-    key,
-    index,
-    imageSrcs[index],
-    `${key}-image`,
-    logoSrc,
-    `${key}-logo`,
-  ),
+    createSection({
+      prefix: key,
+      index: index,
+      image: {
+        src: imageSrcs[index],
+        alt: `${key}-image`,
+      },
+      logo: {
+        src: logoSrc,
+        alt: `${key}-logo`
+      },
+    })
 );
