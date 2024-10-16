@@ -46,7 +46,13 @@
 //    "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
     "@typescript-eslint/no-explicit-any": "off",
 //    "@typescript-eslint/no-implicit-any": "error" todo google later or add to ts config
-    "@typescript-eslint/no-empty-object-type": "off"
+    "@typescript-eslint/no-empty-object-type": "off",
+
+
+
+    "import/no-duplicates": "error"
+
+
 
   },
   "overrides": [

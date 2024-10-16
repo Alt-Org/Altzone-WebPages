@@ -1,19 +1,11 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import { envHelper } from '@/shared/const/envHelper';
-import { StateSchema } from './StateSchema';
-import { authUserReducer, authMiddleware } from '@/entities/Auth';
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from 'redux-persist';
-import { setupListeners } from '@reduxjs/toolkit/query';
-import {gameApi, strapiApi} from '@/shared/api';
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistStore, persistReducer } from "redux-persist";
+import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+import { authUserReducer, authMiddleware } from "@/entities/Auth";
+import { envHelper } from "@/shared/const/envHelper";
+import { gameApi, strapiApi } from "@/shared/api";
+import { StateSchema } from "./StateSchema";
 
 const createNoopStorage = () => {
   return {

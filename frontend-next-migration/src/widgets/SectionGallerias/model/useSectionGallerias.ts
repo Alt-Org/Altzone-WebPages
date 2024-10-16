@@ -1,8 +1,5 @@
 'use client'
-import {
-    useGalleryCategories,
-} from "@/entities/Gallery";
-import {ParentDirectory} from "@/entities/Gallery";
+import { useGalleryCategories, ParentDirectory } from "@/entities/Gallery";
 
 const useSectionGallerias = (parentDirectory: ParentDirectory) => {
 

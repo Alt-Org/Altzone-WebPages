@@ -1,16 +1,14 @@
-'use client';
-import { Navbar } from '@/widgets/Navbar';
-import { Footer } from '@/widgets/Footer';
-import { HorizontalLines } from '@/shared/ui/HorizontalLines';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
-import cls from './GameArtPage.module.scss';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import { Mods } from '@/shared/lib/classNames/classNames';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { ScrollTop } from '@/features/ScrollTop';
-import {WikiContentWithSidebar} from "@/shared/ui/WikiContentWithSidebar";
+'use client'
+import { Footer } from "@/widgets/Footer";
+import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
+import { ScrollTop } from "@/features/ScrollTop";
+import { HorizontalLines } from "@/shared/ui/HorizontalLines";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
+import useSizes from "@/shared/lib/hooks/useSizes";
+import { Mods, classNames } from "@/shared/lib/classNames/classNames";
+import { WikiContentWithSidebar } from "@/shared/ui/WikiContentWithSidebar";
+import cls from "./GameArtPage.module.scss";
 
 interface Section {
   id: string;

@@ -1,12 +1,11 @@
-'use client';
-import React, {useState} from 'react';
-import cls from './WikiContentWithSideBar.module.scss';
-import Image from 'next/image';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import {Mods} from '@/shared/lib/classNames/classNames';
-import {classNames} from '@/shared/lib/classNames/classNames';
-import {ScrollTop} from '@/features/ScrollTop';
-import NavbarSide from '@/shared/ui/NavbarSide/ui/NavbarSide';
+'use client'
+import Image from "next/image";
+import React, { useState } from "react";
+import { ScrollTop } from "@/features/ScrollTop";
+import useSizes from "@/shared/lib/hooks/useSizes";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import NavbarSide from "@/shared/ui/NavbarSide/ui/NavbarSide";
+import cls from "./WikiContentWithSideBar.module.scss";
 
 /**
  * Represents a section in the sidebar.
