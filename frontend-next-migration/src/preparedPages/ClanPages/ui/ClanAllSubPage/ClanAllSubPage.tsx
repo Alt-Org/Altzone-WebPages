@@ -1,13 +1,13 @@
-"use client"
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import cls from "./ClanAllSubPage.module.scss";
+'use client'
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { GetClansResponse, useGetClansQuery } from "@/entities/Clan";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import { Loader } from "@/shared/ui/Loader";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-import { useRouter } from 'next/navigation';
 import { useClientTranslation } from "@/shared/i18n";
-import { useState } from "react";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button"
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
+import cls from "./ClanAllSubPage.module.scss";
 
 const ClanAllSubPage = () => {
 
@@ -93,7 +93,6 @@ const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
         event.preventDefault();
         const searchField = document.querySelector<HTMLInputElement>("#search");
         if (onClickToSearch && searchField) {
-            console.log("searchField.value: ", searchField.value);
             onClickToSearch(searchField.value);
         }
     }
@@ -118,7 +117,6 @@ const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
         event.preventDefault();
         const searchField = document.querySelector<HTMLInputElement>("#search");
         if (onClickToSearch && searchField) {
-            console.log("searchField.value: ", searchField.value);
             onClickToSearch(searchField.value);
         }
     }
