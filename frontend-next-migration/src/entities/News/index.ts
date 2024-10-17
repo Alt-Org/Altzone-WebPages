@@ -1,6 +1,4 @@
-import {INewsElement} from "./model/types";
-import {mockNews} from "./model/data/mockNews";
-import {newsDataLocally} from './model/data/newsLocally';
+export {mockNews} from "./model/data/mockNews";
+export {newsDataLocally} from "./model/data/newsLocally";
 
-export {mockNews,newsDataLocally};
-export type { INewsElement };
+export type { INewsElement } from "./model/types";

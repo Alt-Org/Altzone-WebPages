@@ -1,5 +1,4 @@
-import {INewsElement} from "@/entities/News";
-
+import { INewsElement } from "../types/index";
 
 export const mockNews: INewsElement[] = [
     {
