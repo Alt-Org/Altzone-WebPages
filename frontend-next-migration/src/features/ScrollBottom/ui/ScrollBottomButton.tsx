@@ -1,21 +1,20 @@
 'use client'
-/**
- A button component that scrolls the window to the bottom of the page.
- @param {number} [speedInMs=50000] - The speed of the scroll animation in milliseconds.
- */
-import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button/Button";
-import {memo, useRef} from "react";
-import {
-    useBottomAnimationCancellation,
-} from "../model/hooks/useBottomAnimationCancellation";
-import {scrollToBottom} from "../model/scrollToBottom";
-interface ScrollBottomButtonProps {
+import { memo, useRef } from "react";
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
+import { useBottomAnimationCancellation } from "../model/hooks/useBottomAnimationCancellation";
+import { scrollToBottom } from "../model/scrollToBottom";
+
+interface Props {
     speedInMs?: number;
     className?: string;
     text?: string
 }
 
-const ScrollBottomButtonComponent = ({ speedInMs = 50000 , className = '', text = "play"}: ScrollBottomButtonProps) => {
+const ScrollBottomButtonComponent = (props: Props) => {
+
+    const { speedInMs = 50000 , className = '', text = "play"} = props
+
+
     const ScrollButtonId = 'ScrollButton'
     const animationFrameIdRef = useRef<number>(0);
 

@@ -60,7 +60,8 @@ function Main(props: Props) {
                 />
             ))}
             <div ref={ref} className={cls.buttonContainer}>
-                <Button withScalableLink={true} theme={ButtonTheme.Graffiti} className={classNames(cls.SeeMore, mods)} size={ButtonSize.XL} ref={ref} >
+                <Button
+                    withScalableLink={true} theme={ButtonTheme.Graffiti} className={classNames(cls.SeeMore, mods)} size={ButtonSize.XL} ref={ref} >
                     <Link href={seeMoreLink.href}>
                         {seeMoreLink.text}
                     </Link>

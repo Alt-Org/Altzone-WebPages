@@ -1,5 +1,5 @@
-import {MutableRefObject, useCallback, useEffect} from "react";
-import {addEventListeners,removeEventListeners} from "@/shared/lib/eventListeners";
+import { MutableRefObject, useCallback, useEffect } from "react";
+import { addEventListeners, removeEventListeners } from "@/shared/lib/eventListeners";
 
 /**
  * Cancels the scroll animation when the user presses the escape key or clicks outside the start button.
@@ -7,7 +7,10 @@ import {addEventListeners,removeEventListeners} from "@/shared/lib/eventListener
  * @param {MutableRefObject<number>} animationFrameIdRef - The reference to the animation frame ID.
  * @param {string} ScrollStartButtonId - The ID of the start button.
  */
-export const useBottomAnimationCancellation = (animationFrameIdRef: MutableRefObject<number>, ScrollStartButtonId: string) => {
+export const useBottomAnimationCancellation = (
+    animationFrameIdRef: MutableRefObject<number>,
+    ScrollStartButtonId: string
+) => {
     const handleCancelling = useCallback((event: Event) => {
         // Esc key
         if ("keyCode" in event && event.keyCode === 27) {

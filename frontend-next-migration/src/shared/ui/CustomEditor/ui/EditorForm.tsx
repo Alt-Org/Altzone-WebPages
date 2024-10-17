@@ -1,7 +1,7 @@
-import {ChangeEvent, FormEvent, useMemo} from "react";
-import cls from "./CustomEditor.module.scss";
-import 'react-quill/dist/quill.snow.css';
+import { ChangeEvent, FormEvent, useMemo } from "react";
 import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import cls from "./CustomEditor.module.scss";
 
 type Props = {
     entityName: string;
@@ -92,7 +92,7 @@ export function EditorForm({
                         {entityName} Slug
                     </label>
                     <input
-                        onChange={(e) => handleSlugChange(e.target.value)}
+                        onChange={(event) => handleSlugChange(event.target.value)}
                         type="text"
                         value={slug}
                         name="slug"
