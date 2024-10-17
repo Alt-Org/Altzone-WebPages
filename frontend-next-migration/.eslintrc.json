@@ -8,16 +8,10 @@
   "plugins": [
     "react"
   ],
-//  "settings": {
-//    "import/resolver": {
-//      "node": {
-//        "paths": ["src"],
-//        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-//      }
-//    }
-//  },
   "rules": {
-//    "react-hooks/rules-of-hooks": "off",
+    "jsx-a11y/anchor-is-valid": "error",
+
+    "react-hooks/rules-of-hooks": "error",
 //    "self-closing-html-only": "error",     "./eslint/rules/self-closing-html-only.js" todo
     "react/no-unescaped-entities": 0,
     "react-hooks/exhaustive-deps": "off", // todo activate after testes otherwise it can be dangerous
@@ -33,12 +27,12 @@
     "complexity": ["warn", { "max": 10 }],
     "max-params": ["error", 4],
     "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-var": "error",
+    "prefer-const": "error",
 
 
 
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" , "varsIgnorePattern": "^_" }],
-//    "@typescript-eslint/no-unused-vars": ["off"], // until best times
-//    "@typescript-eslint/ban-ts-comment": ["off"],
     "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
     "@typescript-eslint/no-explicit-any": "off",
 //    "@typescript-eslint/no-implicit-any": "error" todo google later or add to ts config

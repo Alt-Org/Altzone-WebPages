@@ -1,7 +1,7 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
-import Link from 'next/link';
-import { FC, memo, ReactNode } from 'react';
-import cls from './AppLink.module.scss';
+import Link from "next/link";
+import { FC, memo, ReactNode } from "react";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import cls from "./AppLink.module.scss";
 
 export enum AppLinkTheme {
   PRIMARY = 'primary',
@@ -47,24 +47,23 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
     isExternal,
   } = props;
 
-  if (isExternal && typeof to === 'string') {
+  if (isExternal) {
     return (
-      <a
-        key={to}
-        className={classNames(cls.AppLink, {}, [className, cls[theme]])}
-        href={to}
-        target='_blank'>
-        {children}{' '}
-      </a>
+          <a
+              href={to}
+              className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+              target="_blank"
+              rel="noopener noreferrer"
+          >
+            {children}
+          </a>
     );
   }
 
   return (
-    <Link legacyBehavior key={to as string} href={to} passHref>
-      <a className={classNames(cls.AppLink, {}, [className, cls[theme]])}>
+      <Link href={to} className={classNames(cls.AppLink, {}, [className, cls[theme]])}>
         {children}
-      </a>
-    </Link>
+      </Link>
   );
 });
 
