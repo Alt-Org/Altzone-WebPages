@@ -1,1 +1,1 @@
-export { SkeletonLoader, SkeletonLoaderWithHeader } from "./ui/SkeletonLoader";
+export { SkeletonLoaderForClansDesktop,SkeletonLoaderForClansMobile, SkeletonLoaderWithHeader } from "./ui/SkeletonLoader";
