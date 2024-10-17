@@ -23,7 +23,8 @@ export {
     selectAuthUserState,
     selectProfile,
     authUserActions,
-    selectIsAuthenticated
+    selectIsAuthenticated,
+    selectClanId
 } from "./model/authUserSlice";
 
 export {useUserPermissions} from "./model/~deprecated/useUserPermissions"
