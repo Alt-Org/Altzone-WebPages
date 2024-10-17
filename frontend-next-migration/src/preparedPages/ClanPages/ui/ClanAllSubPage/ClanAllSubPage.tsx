@@ -2,12 +2,12 @@
 import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
 import cls from "./ClanAllSubPage.module.scss";
 import { GetClansResponse, useGetClansQuery } from "@/entities/Clan";
-import { Loader } from "@/shared/ui/Loader";
 import { RoutePaths } from "@/shared/appLinks/RoutePaths";
 import { useRouter } from 'next/navigation';
 import { useClientTranslation } from "@/shared/i18n";
 import { useState } from "react";
 import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button"
+import { SkeletonLoaderForClansDesktop, SkeletonLoaderForClansMobile } from "@/shared/ui/SkeletonLoader/index.";
 
 const ClanAllSubPage = () => {
 
@@ -19,7 +19,31 @@ const ClanAllSubPage = () => {
     const { t } = useClientTranslation("clan");
     const { data: clans, error, isLoading } = useGetClansQuery({ page: currentPage, search: currentSearch });
 
-    if (isLoading) return <Loader className={cls.Loader} />
+    if (isLoading) return (
+        <>
+            {isMobileSize
+                ? <SkeletonLoaderForClansMobile className={cls.skeletonLoader}
+                    rating={t("rating")}
+                    clan={t("clan")}
+                    clanMaster={t("clan_master")}
+                    coins={t("coins")}
+                    members={t("members")}
+                    tag={t("tag")}
+                    clansTitle={t("clans_title")} />
+                :
+                <SkeletonLoaderForClansDesktop className={cls.skeletonLoader}
+                    rating={t("rating")}
+                    clan={t("clan")}
+                    clanMaster={t("clan_master")}
+                    coins={t("coins")}
+                    members={t("members")}
+                    tag={t("tag")}
+                    clansTitle={t("clans_title")}
+                 />
+            }
+        </>
+    )
+
 
     //if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
@@ -34,7 +58,6 @@ const ClanAllSubPage = () => {
     const onClickToSearch = (search: string) => {
         setSearch(convertToQuerySearch(search))
     }
-
 
 
     // Temporary way to convert search query value to case-insensitive in front
