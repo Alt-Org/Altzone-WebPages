@@ -28,11 +28,14 @@
     "complexity": ["warn", { "max": 10 }],
     "max-params": ["error", 4],
     "max-depth": ["error", { "max": 3 }],
+    "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
+//    "max-lines-per-function": ["warn", { "max": 100, "skipBlankLines": true, "skipComments": true }],
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-var": "error",
     "no-multiple-empty-lines": ["error", { "max": 2}],
     "prefer-const": "error",
     "array-callback-return": "error",
+    "id-length": ["warn", { "min": 2, "exceptions": ["i", "j", "x", "y", "z", "t", "a", "b", "e", "_"] }],
 
 
 

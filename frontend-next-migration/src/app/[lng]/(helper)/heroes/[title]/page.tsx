@@ -46,7 +46,7 @@ export default async function HeroPage({ params }: Props) {
 
 
 function getHeroData(heroTitle: string, t: (key: string) => string ) {
-    const hero = heroes.find(h => h.title === heroTitle);
+    const hero = heroes.find(hr => hr.title === heroTitle);
     return hero
         ? {
             id: hero.id,

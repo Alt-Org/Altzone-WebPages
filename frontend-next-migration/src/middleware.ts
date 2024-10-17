@@ -26,7 +26,7 @@ export function middleware(req) {
 
     if (req.headers.has('referer')) {
         const refererUrl = new URL(req.headers.get('referer'))
-        const lngInReferer = languages.find((l) => refererUrl.pathname.startsWith(`/${l}`))
+        const lngInReferer = languages.find((language) => refererUrl.pathname.startsWith(`/${language}`))
         const response = NextResponse.next()
         if (lngInReferer) response.cookies.set(cookieName, lngInReferer)
         return response

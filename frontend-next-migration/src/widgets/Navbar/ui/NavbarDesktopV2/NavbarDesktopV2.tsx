@@ -1,18 +1,17 @@
-import {CSSProperties, memo} from "react";
-import cls from "./NavbarDesktopV2.module.scss";
-import { NavbarBuild, NavBarType } from "../../model/types";
+import { CSSProperties, memo } from "react";
+import { LangSwitcher } from "@/features/LangSwitcher";
+import { useLogoutMutation, useUserPermissionsV2 } from "@/entities/Auth";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useClientTranslation } from "@/shared/i18n";
 import { Container } from "@/shared/ui/Container";
-import { LangSwitcher } from "@/features/LangSwitcher";
-import {useLogoutMutation,useUserPermissionsV2} from "@/entities/Auth";
-import NavItem from "./NavItem";
 import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
-import { FixedButton } from "../FixedButton/FixedButton";
-import { useFixed } from "../../model/FixedProvider";
 import { defineNs } from "../../model/defineNs";
-
+import { useFixed } from "../../model/FixedProvider";
+import { NavbarBuild, NavBarType } from "../../model/types";
+import { FixedButton } from "../FixedButton/FixedButton";
+import cls from "./NavbarDesktopV2.module.scss";
+import NavItem from "./NavItem";
 
 type NavbarProps = {
     marginTop?: number;
@@ -58,8 +57,8 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
             <Container>
                 <ul className={cls.siteNavContentList}>
                     {
-                        navbarBuild.menu.map(n => {
-                            return <NavItem item={n} key={n.name} navbarBuild={navbarBuild} />;
+                        navbarBuild.menu.map(item => {
+                            return <NavItem item={item} key={item.name} navbarBuild={navbarBuild} />;
                         })
                     }
 
