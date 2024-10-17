@@ -21,7 +21,6 @@ const parsedAuthUser: AuthUserSchema = storedAuthUser
     };
 
 
-
 const initialState: AuthUserSchema = {
     accessTokenInfo: parsedAuthUser.accessTokenInfo,
     profile: parsedAuthUser.profile,

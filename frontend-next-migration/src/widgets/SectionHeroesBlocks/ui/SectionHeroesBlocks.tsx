@@ -40,4 +40,3 @@ const SectionHeroes2 = (props: Props) => {
 export default SectionHeroes2;
 
 
-

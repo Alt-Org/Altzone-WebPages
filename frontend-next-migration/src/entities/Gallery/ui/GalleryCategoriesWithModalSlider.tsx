@@ -19,8 +19,6 @@ export const GalleryCategoriesWithModalSlider = memo(({
 }: GalleryCategoriesWithModalSliderProps) => {
 
 
-
-
     const getSortedSources = useCallback((sources: string[]) => {
         const result = [...sources].sort((a, b) => {
             const numberA = parseInt(a.match(/\d+/)?.[0] || '', 10);

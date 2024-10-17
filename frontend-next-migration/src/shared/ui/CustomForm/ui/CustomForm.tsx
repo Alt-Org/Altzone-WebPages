@@ -1,11 +1,7 @@
-import React, {
-    ReactNode,
-    HTMLAttributes,
-    ButtonHTMLAttributes, FC, NamedExoticComponent, memo, DetailedHTMLProps, InputHTMLAttributes,
-} from 'react';
+import React, { ReactNode, HTMLAttributes, ButtonHTMLAttributes, FC, NamedExoticComponent, memo, DetailedHTMLProps, InputHTMLAttributes } from "react";
+import { Button as CustomButton, ButtonTheme } from "@/shared/ui/Button/Button";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./CustomForm.module.scss";
-import {Button as CustomButton, ButtonTheme} from "@/shared/ui/Button/Button";
-import {classNames} from "@/shared/lib/classNames/classNames";
 
 /**
  * Header component for displaying a heading inside the form.
@@ -51,8 +47,6 @@ function InputField({label, error, inputProps}: InputFieldProps) {
 }
 
 
-
-
 type CheckboxProps = {
     label: string,
     error?: any,
@@ -80,7 +74,6 @@ function Checkbox({label, error, inputProps}: CheckboxProps) {
         </div>
     );
 }
-
 
 
 /**

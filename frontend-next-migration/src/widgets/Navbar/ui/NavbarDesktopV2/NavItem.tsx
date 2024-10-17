@@ -66,9 +66,6 @@ const NavItem = memo((props: NavItemProps) => {
     }
 
 
-
-
-
     if (itemType === "navLogo") {
         return (
             <li

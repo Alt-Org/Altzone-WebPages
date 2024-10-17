@@ -73,5 +73,4 @@ function Main(props: Props) {
 }
 
 
-
 export default Main;

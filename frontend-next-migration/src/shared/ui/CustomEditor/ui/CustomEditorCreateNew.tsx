@@ -1,10 +1,9 @@
 'use client'
-import cls from "./CustomEditor.module.scss"
-import {generateSlug} from "../lib/generateSlug";
-import {ChangeEvent, FormEvent, useState} from "react";
-import {EditorForm} from "./EditorForm"
-import {EditorPreview} from "./EditorPreview";
-
+import { ChangeEvent, FormEvent, useState } from "react";
+import { generateSlug } from "../lib/generateSlug";
+import cls from "./CustomEditor.module.scss";
+import { EditorForm } from "./EditorForm";
+import { EditorPreview } from "./EditorPreview";
 
 type Props = {
     /**
@@ -132,6 +131,5 @@ export const CustomEditorCreateNew = ({createNew, entityName = 'Blog'}: Props) =
         </div>
     );
 }
-
 
 

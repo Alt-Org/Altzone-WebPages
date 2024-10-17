@@ -20,23 +20,28 @@
     "react/jsx-no-duplicate-props": "error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
+    "react/jsx-no-target-blank": "error",
 
 
 // js online
     "eqeqeq": ["error", "always"],
     "complexity": ["warn", { "max": 10 }],
     "max-params": ["error", 4],
+    "max-depth": ["error", { "max": 3 }],
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-var": "error",
+    "no-multiple-empty-lines": ["error", { "max": 2}],
     "prefer-const": "error",
+    "array-callback-return": "error",
 
 
 
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" , "varsIgnorePattern": "^_" }],
     "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
     "@typescript-eslint/no-explicit-any": "off",
-//    "@typescript-eslint/no-implicit-any": "error" todo google later or add to ts config
+//    "@typescript-eslint/no-implicit-any": "error" todo google later or add to typescript config
     "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-non-null-assertion": "warn",
     "import/no-duplicates": "error"
 //    "import/no-cycle": "error"
 //    "import/no-cycle": ["error", { "maxDepth": 3 }] todo use for fixing current cicrular dependencies

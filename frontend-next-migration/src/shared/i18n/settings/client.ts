@@ -28,7 +28,6 @@ export const i18n = i18next
     })
 
 
-
 /**
  * Hook for using i18n with client client-side components
  */

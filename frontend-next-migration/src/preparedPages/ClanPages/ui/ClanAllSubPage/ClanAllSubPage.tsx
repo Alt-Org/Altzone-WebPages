@@ -36,7 +36,6 @@ const ClanAllSubPage = () => {
     }
 
 
-
     // Temporary way to convert search query value to case-insensitive in front
     const convertToQuerySearch = (search: string): string => {
         // Converts value "testi" to: 'name=".*[tT][eE][sS][tT][iI].*"'
@@ -140,7 +139,6 @@ type MobileProps = {
     onClickToClan?: (id: string) => void;
     onClickToPage?: (page: number) => void;
 }
-
 
 
 const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: MobileProps) => {

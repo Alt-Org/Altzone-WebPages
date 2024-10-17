@@ -67,7 +67,6 @@ export const NavbarDesktop = ( props : NavbarProps) => {
     }, []);
 
 
-
     return (
         <nav className={classNames(cls.Navbar, mods, [className])} style={style}>
 
@@ -254,7 +253,6 @@ const NavbarItemsComponent =
                                 </div>
                             );
                         }
-
 
 
                         return null;

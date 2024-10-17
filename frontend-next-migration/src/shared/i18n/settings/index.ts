@@ -1,11 +1,9 @@
+import { createInstance } from "i18next";
+import resourcesToBackend from "i18next-resources-to-backend";
+import { initReactI18next } from "react-i18next/initReactI18next";
+import { getOptions } from "./settings";
+
 // https://locize.com/blog/next-app-dir-i18n/#step-4
-import { createInstance } from 'i18next'
-import resourcesToBackend from 'i18next-resources-to-backend'
-import { initReactI18next } from 'react-i18next/initReactI18next'
-import { getOptions } from './settings'
-
-
-
 const initI18next = async (lng: string, ns: string) => {
     // on server side we create a new instance for each render, because during compilation everything seems to be executed in parallel
     const i18nInstance = createInstance();
@@ -15,7 +13,6 @@ const initI18next = async (lng: string, ns: string) => {
         .init(getOptions(lng, ns))
     return i18nInstance
 }
-
 
 
 /**

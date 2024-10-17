@@ -1,4 +1,4 @@
-import {ComponentType} from "react";
+import { ComponentType } from "react";
 
 /**
  * Higher-Order Component (HOC) to fetch and provide page data based on language.
@@ -39,7 +39,6 @@ import {ComponentType} from "react";
 // }
 
 
-
 // export function withPageData<PageProps>(
 //     PageComponent: ComponentType<PageProps>,
 //     getPage: (lng: string, ...args: any) => Promise<{ page: PageProps }>
@@ -75,6 +74,3 @@ export function withPageData<PageProps>(
         return <PageComponent {...data.page} {...props} />;
     };
 }
-
-
-
