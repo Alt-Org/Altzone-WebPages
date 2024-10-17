@@ -1,10 +1,10 @@
-import { FieldValues, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ValidationRegisterSchema } from '../validations';
-import { IUserRegisterDto, useRegisterMutation } from '@/entities/Auth';
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
+import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useClientTranslation } from '@/shared/i18n';
+import { IUserRegisterDto, useRegisterMutation } from "@/entities/Auth";
+import { useClientTranslation } from "@/shared/i18n";
+import { ValidationRegisterSchema } from "../validations";
 
 export const useRegisterForm = (toLoginPage: string) => {
 
@@ -18,7 +18,11 @@ export const useRegisterForm = (toLoginPage: string) => {
         resolver: yupResolver(ValidationRegisterSchema),
     });
 
-    const [regist, { data, isLoading, isError, error }] = useRegisterMutation();
+    const [regist, {
+        data,
+        isLoading,
+        // isError,
+        error }] = useRegisterMutation();
 
     async function onFormSubmit(fieldValues: FieldValues) {
         const ObjectToBeSent: IUserRegisterDto = {

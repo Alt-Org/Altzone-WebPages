@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { CSSProperties } from "react";
 import red from "@/shared/assets/images/heros/textBgColors/red_cropped.webp";
 import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp";
 import orange from "@/shared/assets/images/heros/textBgColors/orange_cropped.webp";

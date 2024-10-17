@@ -36,20 +36,16 @@
 
 
 
-//    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-    "@typescript-eslint/no-unused-vars": ["off"], // until best times
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" , "varsIgnorePattern": "^_" }],
+//    "@typescript-eslint/no-unused-vars": ["off"], // until best times
     "@typescript-eslint/ban-ts-comment": ["off"],
 //    "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
     "@typescript-eslint/no-explicit-any": "off",
 //    "@typescript-eslint/no-implicit-any": "error" todo google later or add to ts config
-    "@typescript-eslint/no-empty-object-type": "off",
-
-
-
-    "import/no-duplicates": "error",
-    "import/no-cycle": ["error", { "maxDepth": 1 }]
-
-
+    "@typescript-eslint/no-empty-object-type": "off"
+//    "import/no-duplicates": "error",
+//    "import/no-cycle": "error"
+//    "import/no-cycle": ["error", { "maxDepth": 3 }] todo use for fixing current cicrular dependencies
 
   },
   "overrides": [

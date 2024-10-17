@@ -1,5 +1,4 @@
 import {createPage} from "@/app/_helpers/_createPage";
-import {ProfilePageProps} from "@/preparedPages/ProfilePage";
 import {useServerTranslation} from "@/shared/i18n";
 
 export async function _getPage(lng: string){

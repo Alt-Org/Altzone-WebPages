@@ -1,4 +1,3 @@
-import {Navbar} from "@/widgets/Navbar";
 import { Footer } from '@/widgets/Footer';
 import {ReactNode} from "react";
 import {HorizontalLines} from "@/shared/ui/HorizontalLines";

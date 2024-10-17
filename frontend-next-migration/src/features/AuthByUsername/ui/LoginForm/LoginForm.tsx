@@ -1,9 +1,9 @@
 'use client'
 import { CustomForm } from "@/shared/ui/CustomForm";
-import cls from "./LoginForm.module.scss";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import {useLoginForm} from "../../model/useLoginForm";
-import {useClientTranslation} from "@/shared/i18n";
+import { useClientTranslation } from "@/shared/i18n";
+import { useLoginForm } from "../../model/useLoginForm";
+import cls from "./LoginForm.module.scss";
 
 type Props = {
     toForgottenPwPage: string;
@@ -11,7 +11,7 @@ type Props = {
     onSuccessLogin: () => void;
 };
 
-export const LoginForm = ({ toForgottenPwPage, toRegisterPage, onSuccessLogin}: Props) => {
+export const LoginForm = ({toRegisterPage, onSuccessLogin}: Props) => {
 
     const {t} = useClientTranslation("auth");
 

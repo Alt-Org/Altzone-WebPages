@@ -1,16 +1,13 @@
-'use client';
-import Image from 'next/image';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import cls from './HeroContainer.module.scss';
-import Link from 'next/link';
-import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg';
-import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import useKeyboardNavigation from './useKeyboardNavigation';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import { useRef } from 'react';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+'use client'
+import Image from "next/image";
+import Link from "next/link";
+import leftArrow from "@/shared/assets/images/heros/hero-container/leftArrow.svg";
+import rightArrow from "@/shared/assets/images/heros/hero-container/rightArrow.svg";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import useSizes from "@/shared/lib/hooks/useSizes";
+import { Button, ButtonTheme } from "@/shared/ui/Button";
+import cls from "./HeroContainer.module.scss";
+import useKeyboardNavigation from "./useKeyboardNavigation";
 
 type Props = {
   heroImg: string;
@@ -35,11 +32,11 @@ const HeroContainer = (props: Props) => {
     rightArrowLink,
     xLink,
     heroName,
-    group,
-    groupTextBg,
+    // group,
+    // groupTextBg,
   } = props;
 
-  const groupRef = useRef<HTMLDivElement>(null);
+  // const groupRef = useRef<HTMLDivElement>(null);
 
   useKeyboardNavigation({
     leftArrowLink,

@@ -1,32 +1,26 @@
-import greenHaired from '@/shared/assets/images/heros/green-haired/green-haired.png';
-import greenHairedGiF from '@/shared/assets/images/heros/green-haired/green-haired-walk.gif';
+import einstein from "@/shared/assets/images/heros/einstein/einstein.png";
+import einsteinGif from "@/shared/assets/images/heros/einstein/einstein-dab_dance.gif";
+import pirate from "@/shared/assets/images/heros/pirate/pirate.png";
+import pirateGif from "@/shared/assets/images/heros/pirate/pirate-catwalk.gif";
+import purpleGirls from "@/shared/assets/images/heros/purple-girls/purple-girls.png";
+import purpleGirlsGif from "@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif";
+import hannuHodari from "@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png";
+import hannuHodariGiF from "@/shared/assets/images/heros/hannu-hodari/hannu-hodari.gif";
+import graffittiGaya from "@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png";
+import graffittiGayaGif from "@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif";
+import darkblueBg from "@/shared/assets/images/heros/textBgColors/dark-blue.webp";
+import purpleBg from "@/shared/assets/images/heros/textBgColors/purple.webp";
+import redBg from "@/shared/assets/images/heros/textBgColors/red.webp";
+import yellowBg from "@/shared/assets/images/heros/textBgColors/yellow.webp";
+
+// import greenHaired from '@/shared/assets/images/heros/green-haired/green-haired.png';
+// import greenHairedGiF from '@/shared/assets/images/heros/green-haired/green-haired-walk.gif';
 // import greenHairedGiF from "@/shared/assets/images/heros/green-haired/green-haired-walk-2.gif";
-
-import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
-import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
-
-import pirate from '@/shared/assets/images/heros/pirate/pirate.png';
 // import pirate from "@/shared/assets/images/heros/pirate/pirate-catwalk.gif";
-import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
-
-import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.png';
-import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif';
-
-import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.gif';
-
-import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
-import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
-
-import darkblueBg from '@/shared/assets/images/heros/textBgColors/dark-blue.webp';
-import greenBg from '@/shared/assets/images/heros/textBgColors/green.webp';
-import lightblueBg from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
-import orangeBg from '@/shared/assets/images/heros/textBgColors/orange.webp';
-import pinkBg from '@/shared/assets/images/heros/textBgColors/pink.webp';
-import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
-import redBg from '@/shared/assets/images/heros/textBgColors/red.webp';
-import yellowBg from '@/shared/assets/images/heros/textBgColors/yellow.webp';
-
+// import greenBg from '@/shared/assets/images/heros/textBgColors/green.webp';
+// import lightblueBg from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
+// import orangeBg from '@/shared/assets/images/heros/textBgColors/orange.webp';
+// import pinkBg from '@/shared/assets/images/heros/textBgColors/pink.webp';
 const Heroes = [
   {
     id: 1,

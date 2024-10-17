@@ -1,11 +1,11 @@
-import cls from './PlayWithUs.module.scss';
-import Image from 'next/image';
-import googlePLay from '@/shared/assets/images/media/googleplay.png';
-import sideImg from '@/shared/assets/images/heros/einstein/professori.webp';
-import Link from 'next/link';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { NavElement, NavItem } from './NavElement/NavElement';
+import Image from "next/image";
+import Link from "next/link";
+import googlePLay from "@/shared/assets/images/media/googleplay.png";
+import sideImg from "@/shared/assets/images/heros/einstein/professori.webp";
+import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { NavElement, NavItem } from "./NavElement/NavElement";
+import cls from "./PlayWithUs.module.scss";
 
 type WebGl = {
   title: string;
@@ -22,7 +22,6 @@ export type Props = {
 
 const PlayWithUs = (props: Props) => {
   const {
-    title,
     webGl,
     googlePLayLink = AppExternalLinks.downloadAndroid,
     belowNavs,

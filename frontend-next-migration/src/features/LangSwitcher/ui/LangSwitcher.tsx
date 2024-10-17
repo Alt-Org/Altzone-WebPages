@@ -1,4 +1,4 @@
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { classNames } from "@/shared/lib/classNames/classNames";
@@ -8,7 +8,6 @@ type LangSwitcherProps = {
 }
 
 export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
-    const router = useRouter();
     const currentPathname = usePathname();
 
     // const { t, i18n: { changeLanguage, language: currentLocale } } = useClientTranslation();

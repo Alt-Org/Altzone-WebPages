@@ -1,9 +1,8 @@
-"use client"
-import { Navbar } from "@/widgets/Navbar";
+'use client'
 import { Container } from "@/shared/ui/Container";
-import cls from "./ClanMainPage.module.scss";
-import backgroundImage from "@/shared/assets/images/backgrounds/background.webp"
+import backgroundImage from "@/shared/assets/images/backgrounds/background.webp";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
+import cls from "./ClanMainPage.module.scss";
 
 const ClanMainPage = ({ children }: any) => {
 

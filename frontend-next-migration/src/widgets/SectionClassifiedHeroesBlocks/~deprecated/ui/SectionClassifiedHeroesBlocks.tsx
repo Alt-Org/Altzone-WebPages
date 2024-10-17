@@ -1,10 +1,8 @@
-'use client';
-import { HeroCard, heroes } from '@/entities/Hero';
-import cls from './SectionClassifiedHeroesBlocks.module.scss';
-import { useInView } from 'react-intersection-observer';
-import { useClientTranslation } from '@/shared/i18n';
-import { useParams } from 'next/navigation';
-import Image from 'next/image';
+'use client'
+import Image from "next/image";
+import { useInView } from "react-intersection-observer";
+import { HeroCard, heroes } from "@/entities/Hero";
+import cls from "./SectionClassifiedHeroesBlocks.module.scss";
 
 type Props = {
   backgroundImageSrc?: string;
@@ -55,7 +53,7 @@ const SectionClassifiedHeroesBlocks = (props: Props) => {
         {heroes
           .filter((hero) => hero.group === group)
           .slice(0, 2)
-          .map((item, index) => (
+          .map((item) => (
             <HeroCard
                 title={""}
               className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}

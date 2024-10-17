@@ -1,6 +1,6 @@
-import { useLeaveClanMutation } from "@/entities/Clan";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useLeaveClanMutation } from "@/entities/Clan";
 import { useClientTranslation } from "@/shared/i18n";
 
 const useLeaveClan = () => {
@@ -13,7 +13,7 @@ const useLeaveClan = () => {
 
       if (isConfirmed) {
          try {
-            const result = await leaveClan().unwrap();
+            const _ = await leaveClan().unwrap();
 
             toast.success(t("toast_left_clan"));
             if (onSuccess) onSuccess();

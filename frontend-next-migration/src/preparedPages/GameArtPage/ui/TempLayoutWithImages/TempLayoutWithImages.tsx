@@ -1,11 +1,9 @@
+import Image from "next/image";
+import { Navbar } from "@/widgets/Navbar";
+
 // 'use client'
 // import {Navbar} from "@/widgets/Navbar";
-import {useParams} from "next/navigation";
-import Image from "next/image";
 // @ts-ignore
-import {Navbar} from "@/widgets/Navbar";
-
-
 type ImageContainerProps = {
   imgSrc: string;
   altText: string;

@@ -1,8 +1,7 @@
 'use client'
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import { selectClanId } from "@/entities/Auth";
 
 const MyClanPage = () => {

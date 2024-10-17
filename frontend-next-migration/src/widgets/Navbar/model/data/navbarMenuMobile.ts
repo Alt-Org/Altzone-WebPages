@@ -1,12 +1,10 @@
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
-import img from '@/shared/assets/images/altLogo.png';
-import img2 from '@/shared/assets/images/altLogoClan.png';
-import { NavbarBuilder } from '@/widgets/Navbar/model/data/NavbarBuilder';
-import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
-import { ArtGameSections } from '@/entities/PresentationPackages/model/data/artGameSections';
-import { TeachingSections } from '@/entities/PresentationPackages/model/data/teachingSections';
-import { CookiesSections } from '@/entities/PresentationPackages/model/data/cookiesSections';
-import { PrivacySections } from '@/entities/PresentationPackages/model/data/privacySections';
+import { NavbarBuilder } from "@/widgets/Navbar/model/data/NavbarBuilder";
+import { dropdowns } from "@/widgets/Navbar/model/data/dropdowns";
+import { ArtGameSections } from "@/entities/PresentationPackages/model/data/artGameSections";
+import { CookiesSections } from "@/entities/PresentationPackages/model/data/cookiesSections";
+import { PrivacySections } from "@/entities/PresentationPackages/model/data/privacySections";
+import { RoutePaths } from "@/shared/appLinks/RoutePaths";
+import img from "@/shared/assets/images/altLogo.png";
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', RoutePaths.MAIN, false);

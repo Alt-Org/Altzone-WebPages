@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { memo, useCallback } from "react";
 import Fancybox from "@/shared/ui/Fancybox/Fancybox";
-import cls from "./styles.module.scss"
-import Image from "next/image";
 import { useClientTranslation } from "@/shared/i18n";
+import cls from "./styles.module.scss";
 
 export type GalleryCategoriesWithModalSliderProps = {
     title: string;
@@ -14,7 +14,7 @@ export type GalleryCategoriesWithModalSliderProps = {
 export const GalleryCategoriesWithModalSlider = memo(({
     title,
     sources,
-    followLastImage = false,
+    // followLastImage = false,
     cover
 }: GalleryCategoriesWithModalSliderProps) => {
 

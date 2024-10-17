@@ -1,17 +1,11 @@
-'use client';
-import VideoContentYoutube from '@/shared/ui/VideoContent/ui/VideoContentYoutube';
-import cls from './VideoAndGalleries.module.scss';
-import Image from 'next/image';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import {
-  GalleryCategoriesWithModalSlider,
-  useGalleryCategories,
-} from '@/entities/Gallery';
-import { Container } from '@/shared/ui/Container';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import { useInView } from 'react-intersection-observer';
-import { classNames } from '@/shared/lib/classNames/classNames';
+'use client'
+import { useInView } from "react-intersection-observer";
+import VideoContentYoutube from "@/shared/ui/VideoContent/ui/VideoContentYoutube";
+import { Container } from "@/shared/ui/Container";
+import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
+import useSizes from "@/shared/lib/hooks/useSizes";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import cls from "./VideoAndGalleries.module.scss";
 
 export type Props = {
   backgroundImageSrc?: string;
@@ -27,8 +21,8 @@ const VideoAndGalleries = (props: Props) => {
     videoLink = AppExternalLinks.previewVideoYoutube,
   } = props;
 
-  const { transformedGalleryCategories, isError, isLoading } =
-    useGalleryCategories('artGalleries');
+  // const { transformedGalleryCategories, isError, isLoading } =
+  //   useGalleryCategories('artGalleries');
 
   const { ref, inView } = useInView({
     rootMargin: '-150px 0px',

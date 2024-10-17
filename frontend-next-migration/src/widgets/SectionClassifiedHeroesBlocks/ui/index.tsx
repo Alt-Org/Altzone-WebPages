@@ -1,19 +1,15 @@
 'use client'
-import cls from './main.module.scss';
-
-
+import Link from "next/link";
+import { useInView } from "react-intersection-observer";
+import { heroes } from "@/entities/Hero";
 import red from "@/shared/assets/images/heros/textBgColors/red.webp";
 import darkBlue from "@/shared/assets/images/heros/textBgColors/dark-blue.webp";
 import orange from "@/shared/assets/images/heros/textBgColors/orange.webp";
 import pink from "@/shared/assets/images/heros/textBgColors/pink.webp";
-import HeroesBlocks from './heroesBlocks/heroesBlocks';
-import {heroes} from "@/entities/Hero";
-import {Button, ButtonSize, ButtonTheme} from "@/shared/ui/Button";
-import Link from "next/link";
-import {useInView} from "react-intersection-observer";
-import clsx from "clsx";
-import {classNames} from "@/shared/lib/classNames/classNames";
-
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import HeroesBlocks from "./heroesBlocks/heroesBlocks";
+import cls from "./main.module.scss";
 
 const sameBg = undefined;
 

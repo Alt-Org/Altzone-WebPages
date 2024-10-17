@@ -1,13 +1,12 @@
-'use client';
-import { Navbar } from '@/widgets/Navbar';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
-import cls from './CookiesPage.module.scss';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { ScrollTop } from '@/features/ScrollTop';
-import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
-import { Footer } from '@/widgets/Footer';
+'use client'
+import { Footer } from "@/widgets/Footer";
+import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
+import { ScrollTop } from "@/features/ScrollTop";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { WikiContentWithSidebar } from "@/shared/ui/WikiContentWithSidebar";
+import cls from "./CookiesPage.module.scss";
 
 interface Section {
   id: string;

@@ -9,12 +9,16 @@ import { StateSchema } from "./StateSchema";
 
 const createNoopStorage = () => {
   return {
+    // todo check if can delete the params
+    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
     getItem(_key: any) {
       return Promise.resolve(null);
     },
+    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
     setItem(_key: any, value: any) {
       return Promise.resolve(value);
     },
+    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
     removeItem(_key: any) {
       return Promise.resolve();
     },

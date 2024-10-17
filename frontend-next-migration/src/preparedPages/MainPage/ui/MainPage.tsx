@@ -1,14 +1,12 @@
-import cls from "./page.module.scss"
-
 import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from "@/widgets/SectionClassifiedHeroesBlocks";
 import { HorizontalLines } from "@/shared/ui/HorizontalLines";
 import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
-
-import { ProjectDescription,ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
-import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
-import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
-import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
+import { GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
+import { PlayWithUs, PlayWithUsProps } from "./_components/sections/PlayWithUs";
+import { ProjectDescription, ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
+import { VideoAndGalleries, VideoAndGalleriesProps } from "./_components/sections/VideoAndGalleries";
+import cls from "./page.module.scss";
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -23,7 +21,6 @@ function MainPage (props: Props)  {
     const {
         projectDescription,
         playWithUs,
-        getToKnowComics,
         videoAndGalleries,
         classifiedHeroesBlocks
     } = props;

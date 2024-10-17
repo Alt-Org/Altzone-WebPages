@@ -4,7 +4,7 @@ import { useUserPermissionsV2 } from "@/entities/Auth";
 import { useClientTranslation } from "@/shared/i18n";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import { DropDownElement, DropdownWrapper } from "@/shared/ui/DropdownWrapper";
+import { DropdownWrapper } from "@/shared/ui/DropdownWrapper";
 import { NavbarBuild, NavbarMenuItem } from "../../model/types";
 import cls from "./NavbarDesktopV2.module.scss";
 

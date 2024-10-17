@@ -1,8 +1,7 @@
-import { PresentationSection } from '@/entities/PresentationPackages/types';
-import { CookiesSections } from './data/cookiesSections';
-import { ArtGameSections } from './data/artGameSections';
-import { PrivacySections } from './data/privacySections';
-import { TeachingSections } from './data/teachingSections';
+import { PresentationSection } from "@/entities/PresentationPackages/types";
+import { ArtGameSections } from "./data/artGameSections";
+import { CookiesSections } from "./data/cookiesSections";
+import { PrivacySections } from "./data/privacySections";
 
 /**
  * Takes an array of PresentationSections and returns a higher-order function that takes a translation function

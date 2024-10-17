@@ -1,3 +1,13 @@
+import Image from "next/image";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useJoinClan } from "@/features/JoinClan";
+import { useLeaveClan } from "@/features/LeaveClan";
+import { selectProfile, useUserPermissionsV2, PermissionError } from "@/entities/Auth";
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
+import lock from "@/shared/assets/images/clanLogos/lock.png";
+import cls from "./ButtonField.module.scss";
+
 // import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
 // import cls from "./ButtonField.module.scss";
 // import { toast } from "react-toastify";
@@ -103,18 +113,6 @@
 // };
 //
 // export default ClanInfo;
-
-
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
-import cls from "./ButtonField.module.scss";
-import { toast } from "react-toastify";
-import { useJoinClan } from "@/features/JoinClan";
-import { useLeaveClan } from "@/features/LeaveClan";
-import lock from "@/shared/assets/images/clanLogos/lock.png";
-import Image from "next/image";
-import { selectProfile, useUserPermissionsV2, PermissionError } from "@/entities/Auth";
-import { useSelector } from "react-redux";
-
 type Props = {
     clanData: any;
     error: string;
@@ -130,13 +128,13 @@ type Props = {
 const ClanInfo = (props: Props) => {
     const {
         clanData,
-        error: toastError,
+        // error: toastError,
         notLoggedIn: toastNotLoggedIn,
-        clanNotOpen: toastClanNotOpen,
-        editMode: toastEditMode,
+        // clanNotOpen: toastClanNotOpen,
+        // editMode: toastEditMode,
         joinClan: joinClanBtn,
         leaveClan: leaveClanBtn,
-        editClan: editClanBtn,
+        // editClan: editClanBtn,
     } = props;
 
     const { handleJoin } = useJoinClan();

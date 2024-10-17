@@ -1,10 +1,8 @@
 'use client'
-import {memo} from "react";
-import {classNames} from "@/shared/lib/classNames/classNames";
-import cls from './NavElement.module.scss'
-import {AppLink} from "@/shared/ui/AppLink/AppLink";
-import {useParams} from "next/navigation";
-import {useClientTranslation} from "@/shared/i18n";
+import { memo } from "react";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
+import cls from "./NavElement.module.scss";
 
 export type NavItem = {
     title?: string;

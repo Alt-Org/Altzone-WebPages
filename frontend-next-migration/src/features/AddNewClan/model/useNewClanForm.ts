@@ -23,7 +23,12 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
         resolver: yupResolver(ValidationAddNewClan),
     });
 
-    const [create, { data, isLoading, isError, error }] = useCreateClanMutation();
+    const [create, {
+        data,
+        isLoading,
+        // isError,
+        error
+    }] = useCreateClanMutation();
 
     const profile = useSelector((state: StateSchema) => selectProfile(state));
     const dispatch = useDispatch();

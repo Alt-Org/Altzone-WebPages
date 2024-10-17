@@ -1,15 +1,14 @@
-'use client';
-import cls from './HeroContainer.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
-import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { AppRoutesLinks, RoutePaths } from '@/shared/appLinks/RoutePaths';
-import infoBg from '@/shared/assets/images/heros/hero-container/info-bg.svg';
-import rightArrow from '@/shared/assets/images/heros/hero-container/right-arrow.png';
-import leftArrow from '@/shared/assets/images/heros/hero-container/left-arrow.png';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+'use client'
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
+import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+import infoBg from "@/shared/assets/images/heros/hero-container/info-bg.svg";
+import rightArrow from "@/shared/assets/images/heros/hero-container/right-arrow.png";
+import leftArrow from "@/shared/assets/images/heros/hero-container/left-arrow.png";
+import cls from "./HeroContainer.module.scss";
 
 type Props = {
   heroImg: any;
@@ -31,7 +30,7 @@ const HeroContainer = (props: Props) => {
     heroImg,
     heroImgAlt,
     heroName,
-    borderColor,
+    // borderColor,
     heroDescription,
     rightArrowLink,
     leftArrowLink,

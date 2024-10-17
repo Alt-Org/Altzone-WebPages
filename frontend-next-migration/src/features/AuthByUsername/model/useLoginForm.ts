@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { FieldValues, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { toast } from 'react-toastify';
-import { ValidationLoginSchema } from '../validations';
-import {authUserActions, IUserLoginDto, useLoginMutation} from '@/entities/Auth';
-import {useDispatch} from "react-redux";
-import {getJwtExpTimeStamp} from "@/shared/lib/getJwtExpTimeStamp";
-import { useClientTranslation } from '@/shared/i18n';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
+import { FieldValues, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { authUserActions, IUserLoginDto, useLoginMutation } from "@/entities/Auth";
+import { getJwtExpTimeStamp } from "@/shared/lib/getJwtExpTimeStamp";
+import { useClientTranslation } from "@/shared/i18n";
+import { ValidationLoginSchema } from "../validations";
 
 type Props = {
     onSuccessLogin: () => void;
@@ -27,7 +27,10 @@ export const useLoginForm = ({onSuccessLogin}: Props) => {
     const dispatch = useDispatch();
 
 
-    const [login, { data, isLoading, isError, error }] = useLoginMutation();
+    const [login, {
+        data,
+        isLoading,
+        error }] = useLoginMutation();
 
     async function onFormSubmit(fieldValues: FieldValues) {
         await login(fieldValues as IUserLoginDto);

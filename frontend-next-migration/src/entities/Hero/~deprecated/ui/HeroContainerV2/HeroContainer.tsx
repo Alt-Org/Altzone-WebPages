@@ -46,7 +46,6 @@ const HeroContainer = (props: Props) => {
     imageRef,
     distanceToBottom,
     handleImageLoad,
-    imagesLoaded,
   } = useImageDistance();
 
   const heroNameRef = useRef<HTMLDivElement>(null);
