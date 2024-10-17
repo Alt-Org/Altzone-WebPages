@@ -1,16 +1,15 @@
+import { render, screen } from "@testing-library/react";
+import React from "react";
+import withBackgroundImage from "./withBackgroundImage";
+
 // Mocking the next/image for Jest tests
 
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLImageElement> & React.ImgHTMLAttributes<HTMLImageElement>) => {
-    return <img {...props} />;
+    return <img alt={"mock image"} {...props} />;
   },
 }));
-
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import withBackgroundImage from './withBackgroundImage';
-
 describe('withBackgroundImage', () => {
   const WrappedComponent: React.FC = () => <div>Test</div>;
   const config = {
