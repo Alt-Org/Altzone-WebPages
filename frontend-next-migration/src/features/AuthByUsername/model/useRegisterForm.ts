@@ -46,7 +46,7 @@ export const useRegisterForm = (toLoginPage: string) => {
         }
 
         if (error) {
-            // @ts-ignore
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             toast.error(error?.data?.message[0] ?? error?.data?.message);
             return;
         }

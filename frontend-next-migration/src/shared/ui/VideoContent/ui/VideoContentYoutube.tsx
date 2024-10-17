@@ -1,6 +1,9 @@
 'use client'
+
+/* eslint-disable */
 import { Component } from "react";
 
+// todo figure our how to fix ts-ignores
 type ThumbnailQuality = "default" | "hq" | "mq" | "sd" | "maxres"
 
 interface VideoContentProps {
@@ -24,6 +27,7 @@ interface VideoContentState {
     thumbnailQuality: ThumbnailQuality;
     showContent: boolean;
 }
+
 
 // Define the class component
 export default class VideoContentYoutube extends Component<VideoContentProps, VideoContentState> {

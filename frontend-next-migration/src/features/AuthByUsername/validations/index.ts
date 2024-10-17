@@ -28,8 +28,7 @@ export const ValidationRegisterSchema = yup.object().shape({
         .max(30, "password_max_error")
         .required("password_required_error"),
     repeatPassword: yup.string()
-        // @ts-ignore
-        .oneOf([yup.ref('password'), null], "password_again_is_not_same_error")
+        .oneOf([yup.ref('password')], "password_again_is_not_same_error")
         .required("password_again_required_error"),
 
     name: yup

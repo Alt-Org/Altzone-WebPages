@@ -54,7 +54,6 @@ export const GalleryCategoriesWithModalSlider = memo(({
                     {getSortedSources(sources).map((source, index) => (
                         index !== 0 ? (
                             <a key={index} data-fancybox={title} href={source}>
-                                {/*// @ts-ignore*/}
                                 {/*<Image loading={"lazy"} alt={source.split('/').pop()?.split('.')[0]} src={source} width="200" height="150" />*/}
                             </a>
                         ) : null

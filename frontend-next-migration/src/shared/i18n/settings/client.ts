@@ -1,22 +1,21 @@
 'use client'
-import i18next from 'i18next'
-import { useEffect, useState } from 'react'
-import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18next'
-import { useCookies } from 'react-cookie'
-import resourcesToBackend from 'i18next-resources-to-backend'
-// import LocizeBackend from 'i18next-locize-backend'
-import LanguageDetector from 'i18next-browser-languagedetector'
-import { getOptions, languages, cookieName } from './settings'
-import {useParams} from "next/navigation";
+import i18next from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import resourcesToBackend from "i18next-resources-to-backend";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { initReactI18next, useTranslation as useTranslationOrg } from "react-i18next";
+import { getOptions, languages, cookieName } from "./settings";
 
+// import LocizeBackend from 'i18next-locize-backend'
 const runsOnServerSide = typeof window === 'undefined'
 
 // on client side the normal singleton is ok
 export const i18n = i18next
     .use(initReactI18next)
     .use(LanguageDetector)
-    // @ts-ignore
-    // .use(resourcesToBackend((language, namespace) => import(`./locales/${language}/${namespace}.json`)))
+    // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
     .use(resourcesToBackend((language, namespace) => import(`../locales/${language}/${namespace}.json`)))
     // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
     .init({

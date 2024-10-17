@@ -45,7 +45,6 @@ function Main(props: Props) {
     const mods = {
         [cls.inView]: inView
     }
-    // @ts-ignore
     return (
         <section className={cls.Section} >
             <h2 className={cls.Header}>

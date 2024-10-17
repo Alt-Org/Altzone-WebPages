@@ -1,9 +1,9 @@
-'use client';
-import { HeroCard} from '@/entities/Hero';
-import cls from './heroesBlocks.module.scss';
-import { useInView } from 'react-intersection-observer';
-import {useMemo} from "react";
-import {useClientTranslation} from "@/shared/i18n";
+'use client'
+import { useMemo } from "react";
+import { useInView } from "react-intersection-observer";
+import { HeroCard } from "@/entities/Hero";
+import { useClientTranslation } from "@/shared/i18n";
+import cls from "./heroesBlocks.module.scss";
 
 type Props = {
   backgroundImageSrc?: string;
@@ -59,7 +59,7 @@ const HeroesBlocks = (props: Props) => {
         </div>
 
           {filteredHeroes
-              // @ts-ignore
+              // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
           .map((item) => (
             <HeroCard
               className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}

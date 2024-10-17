@@ -1,9 +1,6 @@
 import Image from "next/image";
 import { Navbar } from "@/widgets/Navbar";
 
-// 'use client'
-// import {Navbar} from "@/widgets/Navbar";
-// @ts-ignore
 type ImageContainerProps = {
   imgSrc: string;
   altText: string;

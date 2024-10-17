@@ -1,23 +1,14 @@
-import {CSSProperties, memo, useLayoutEffect, useRef, useState} from "react";
-import Image from 'next/image'
-import {AppLink, AppLinkTheme} from "@/shared/ui/AppLink/AppLink";
-import {classNames} from "@/shared/lib/classNames/classNames";
+import Image from "next/image";
+import { CSSProperties, memo, useLayoutEffect, useRef, useState } from "react";
+import { LangSwitcher } from "@/features/LangSwitcher";
+import { useLogoutMutation, useUserPermissionsV2 } from "@/entities/Auth";
+import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { DropdownWrapper } from "@/shared/ui/DropdownWrapper";
+import { useClientTranslation } from "@/shared/i18n";
+import { NavbarBuild, NavbarMenu, PositionChecker } from "../../../model/types";
+import { isCenter, isLeftSide, isNavbarDropDownObject, isNavbarLinkFakeObject, isNavbarLinkObject, isNavLogoObject, isRightSide } from "../../../model/types/type.guards";
 import cls from "./NavbarDesktop.module.scss";
-import {NavbarBuild, NavbarMenu, PositionChecker} from "../../../model/types";
-import {
-    isCenter,
-    isLeftSide,
-    isNavbarDropDownObject,
-    isNavbarLinkFakeObject,
-    isNavbarLinkObject,
-    isNavLogoObject,
-    isRightSide
-} from "../../../model/types/type.guards";
-import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import {useLogoutMutation, useUserPermissionsV2} from "@/entities/Auth";
-import {useClientTranslation} from "@/shared/i18n";
-import {LangSwitcher} from "@/features/LangSwitcher";
-
 
 interface NavbarProps {
     overlaid ?: boolean;
@@ -67,9 +58,9 @@ export const NavbarDesktop = ( props : NavbarProps) => {
         const rightSideElement = rightSideRef.current;
 
         if (rightSideElement) {
-            // @ts-ignore
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             const lastChild = rightSideElement.lastElementChild;
-            // @ts-ignore
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             const distanceToRight = rightSideElement.getBoundingClientRect().right - lastChild.getBoundingClientRect().right;
             setDistToRightBorder(distanceToRight);
         }
@@ -192,7 +183,7 @@ const NavbarItemsComponent =
         return (
             <>
                 {items
-                    // @ts-ignore
+                    // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why
                     .filter((item) => positionChecker(item.position))
                     .map((item) => {
                         if (isNavbarLinkObject(item)) {

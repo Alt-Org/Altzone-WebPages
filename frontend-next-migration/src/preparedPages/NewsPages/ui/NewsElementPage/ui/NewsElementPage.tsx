@@ -1,17 +1,16 @@
 'use client'
-import {useParams} from 'next/navigation';
-import { getPostDataById, Post } from '@/shared/ui/Post';
-import { newsDataLocally } from '@/entities/News';
-import { Container } from '@/shared/ui/Container';
-import { Navbar } from '@/widgets/Navbar';
-import { NavGoBackButton } from '@/features/NavGoBack';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
-import cls from './NewsElementPage.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import {useScrollToTop} from "@/shared/lib/hooks/useScrollToTop";
+import { useParams } from "next/navigation";
+import { Navbar } from "@/widgets/Navbar";
+import { NavGoBackButton } from "@/features/NavGoBack";
+import { FeedbackSideButton } from "@/features/FeedbackByExternalSource";
+import { newsDataLocally } from "@/entities/News";
+import { getPostDataById, Post } from "@/shared/ui/Post";
+import { Container } from "@/shared/ui/Container";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useScrollToTop } from "@/shared/lib/hooks/useScrollToTop";
+import cls from "./NewsElementPage.module.scss";
 
 const NewsElementPage = () => {
-    // @ts-ignore
     const { id } = useParams()
 
     useScrollToTop();

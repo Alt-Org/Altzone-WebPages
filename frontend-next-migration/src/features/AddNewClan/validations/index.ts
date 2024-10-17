@@ -1,5 +1,6 @@
 import * as yup from "yup";
 
+//todo add i18n
 export const ValidationAddNewClan = yup.object().shape({
 
     name: yup

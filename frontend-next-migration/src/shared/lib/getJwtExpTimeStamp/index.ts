@@ -1,4 +1,4 @@
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 /**
  * Returns the expiration timestamp of a JWT token.
@@ -13,6 +13,5 @@ import {jwtDecode} from "jwt-decode";
  */
 export function getJwtExpTimeStamp(token: string) {
     const decoded = jwtDecode(token);
-    // @ts-ignore
     return decoded?.exp as number;
 }

@@ -60,7 +60,7 @@ export const useLoginForm = ({onSuccessLogin}: Props) => {
         }
 
         if (error) {
-            // @ts-ignore
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             toast.error(error?.data?.message);
             return;
         }

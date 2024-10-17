@@ -1,16 +1,14 @@
-import { NextResponse } from 'next/server'
-import acceptLanguage from 'accept-language'
-import { fallbackLng, languages, cookieName } from './shared/i18n/settings/settings'
+import acceptLanguage from "accept-language";
+import { NextResponse } from "next/server";
+import { fallbackLng, languages, cookieName } from "./shared/i18n/settings/settings";
 
 acceptLanguage.languages(languages)
 
 export const config = {
-    // matcher: '/:lng*'
-    // matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)']
     matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|images|icons|documents|robots).*)']
 }
 
-// @ts-ignore
+// @ts-ignore  todo it works but ts for some reason doesnt recognise the type, figure our why and fix
 export function middleware(req) {
     if (req.nextUrl.pathname.indexOf('icon') > -1 || req.nextUrl.pathname.indexOf('chrome') > -1) return NextResponse.next()
     let lng
@@ -20,7 +18,6 @@ export function middleware(req) {
 
     // Redirect if lng in path is not supported
     if (
-        // @ts-ignore
         !languages.some(loc => req.nextUrl.pathname.startsWith(`/${loc}`)) &&
         !req.nextUrl.pathname.startsWith('/_next')
     ) {
@@ -29,7 +26,6 @@ export function middleware(req) {
 
     if (req.headers.has('referer')) {
         const refererUrl = new URL(req.headers.get('referer'))
-        // @ts-ignore
         const lngInReferer = languages.find((l) => refererUrl.pathname.startsWith(`/${l}`))
         const response = NextResponse.next()
         if (lngInReferer) response.cookies.set(cookieName, lngInReferer)

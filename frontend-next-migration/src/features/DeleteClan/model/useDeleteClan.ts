@@ -1,6 +1,6 @@
-import {useDeleteClanMutation} from "@/entities/Clan";
-import {useState} from "react";
-import {toast} from "react-toastify";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { useDeleteClanMutation } from "@/entities/Clan";
 
 const useDeleteClan = () => {
 
@@ -9,12 +9,13 @@ const useDeleteClan = () => {
 
    const handleDelete = async (clanId: string, onSuccess?: () => void) => {
 
+      // todo where is i18n
       if (confirm("Oletko varma?")) {
          const result = await deleteClan(clanId);
 
-         // @ts-ignore
+         // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
          if (result?.error) {
-            // @ts-ignore
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             toast.error(`${JSON.stringify(result.error)}`);
             setIsCancelled(true);
             return;

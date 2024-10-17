@@ -1,11 +1,8 @@
-import {FC, FunctionComponent} from 'react';
-// @ts-ignore
-import {LazyLoadImage} from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import cls from "./withBackgroundImage.module.scss";
 import Image from "next/image";
-import {classNames} from "@/shared/lib/classNames/classNames";
-
+import { FC, FunctionComponent } from "react";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import cls from "./withBackgroundImage.module.scss";
 
 interface BackgroundImageConfig {
     imagePath: string;

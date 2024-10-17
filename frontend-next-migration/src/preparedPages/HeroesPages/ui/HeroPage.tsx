@@ -1,12 +1,9 @@
-import {FC} from "react";
-
-import { HeroContainer } from '@/entities/Hero';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
-import {withBackgroundImage} from "@/shared/lib/hocs/withBackgroundImage";
+import { FC } from "react";
+import { HeroContainer } from "@/entities/Hero";
+import { RoutePaths } from "@/shared/appLinks/RoutePaths";
+import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
 import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
-
 import cls from "./HeroPage.module.scss";
-
 
 type HeroData = {
   id: number;
@@ -35,7 +32,6 @@ const HeroPage: FC<Props> = ({
   return (
     <main className={cls.main}>
       <HeroContainer
-          // @ts-ignore
         group={selectedHero.group}
         groupTextBg={selectedHero.groupTextBg}
         heroColor={selectedHero.heroColor}
