@@ -3,15 +3,15 @@ import { IProfile } from "@/entities/Profile";
 
 export type IPlayerRegisterPartDto = Pick<IPlayer, "name" | "backpackCapacity" | "uniqueIdentifier" | "above13">
 
-export type IUserRegisterDto = Pick<IProfile, 'username'> & {
+export type IUserRegisterDto = Pick<IProfile<IPlayer>, 'username'> & {
     password: string,
     repeatPassword: string,
     Player: IPlayerRegisterPartDto
 };
 
-export type IUserLoginDto = Pick<IProfile, 'username'> & { password: string };
+export type IUserLoginDto = Pick<IProfile<IPlayer>, 'username'> & { password: string };
 
-export type ILoginResponse = & IProfile & {
+export type ILoginResponse = & IProfile<IPlayer> & {
     accessToken: string
 }
 
@@ -26,7 +26,7 @@ type AccessTokenInfo = {
 }
 
 export type AuthUserSchema = {
-    profile?: IProfile,
+    profile?: IProfile<IPlayer>,
     accessTokenInfo?: AccessTokenInfo
     isSessionExpired: boolean
 }
