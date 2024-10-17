@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 type Props = {
   leftArrowLink: string;
@@ -12,16 +12,21 @@ const useKeyboardNavigation = (props: Props) => {
 
   const router = useRouter();
 
+  const leftArrowKey = 37;
+  const rightArrowKey = 39;
+  const escapeKey = 27;
+
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       switch (event.keyCode) {
-        case 37: // Left Arrow Key
+        case leftArrowKey: // Left Arrow Key
           router.push(leftArrowLink);
           break;
-        case 39: // Right Arrow Key
+        case rightArrowKey: // Right Arrow Key
           router.push(rightArrowLink);
           break;
-        case 27: // Escape Key
+        case escapeKey: // Escape Key
           router.push(xLink);
           break;
         default:

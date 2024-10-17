@@ -33,6 +33,8 @@
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-var": "error",
     "no-multiple-empty-lines": ["error", { "max": 2}],
+    "no-duplicate-case": "error",
+//    "no-magic-numbers": ["warn", { "ignore": [0, 1], "ignoreArrayIndexes": true }], // yes, but not everytime
     "prefer-const": "error",
     "array-callback-return": "error",
     "id-length": ["warn", { "min": 2, "exceptions": ["i", "j", "x", "y", "z", "t", "a", "b", "e", "_"] }],
