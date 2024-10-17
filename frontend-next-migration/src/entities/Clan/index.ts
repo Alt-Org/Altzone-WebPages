@@ -2,7 +2,6 @@ export {
     useCreateClanMutation,
     useDeleteClanMutation,
     useUpdateClanMutation,
-    useGetClanByIdQuery,
     useGetClanByIdWithPlayersQuery,
     useGetClansQuery,
     useLeaveClanMutation,
