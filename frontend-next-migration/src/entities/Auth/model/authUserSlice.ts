@@ -1,13 +1,13 @@
-// "use client"
 import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
-import { AccessTokenInfo, AuthUserSchema } from "../types/authUser";
-import { LS_KEYS } from "@/shared/const/LS_KEYS";
-import { IProfile } from "@/entities/Profile";
-import { StateSchema } from "@/app/_providers/StoreProvider";
 import { useEffect } from "react";
 import { PURGE } from "redux-persist";
+import { StateSchema } from "@/app/_providers/StoreProvider";
+import { IProfile } from "@/entities/Profile";
+import { IPlayer } from "@/entities/User";
+import { LS_KEYS } from "@/shared/const/LS_KEYS";
+import { AccessTokenInfo, AuthUserSchema } from "../types/authUser";
 
-
+// "use client"
 // const storedAuthUser = localStorage.getItem(LS_KEYS.AUTH_USER);
 let storedAuthUser;
 
@@ -47,7 +47,7 @@ export const authUserSlice = createSlice({
 
     reducers: {
         //todo profile should have its own state in the profile entity !!!!!!!
-        setProfile: (state, action: PayloadAction<IProfile>) => {
+        setProfile: (state, action: PayloadAction<IProfile<IPlayer>>) => {
             state.profile = action.payload;
         },
         setAccessTokenInfo: (state, action: PayloadAction<AccessTokenInfo>) => {
