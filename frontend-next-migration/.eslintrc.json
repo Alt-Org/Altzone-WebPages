@@ -2,19 +2,24 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:storybook/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "rules": {
+    "prettier/prettier": "error",
+
+
     "jsx-a11y/anchor-is-valid": "error",
 
     "react-hooks/rules-of-hooks": "error",
 //    "self-closing-html-only": "error",     "./eslint/rules/self-closing-html-only.js" todo
     "react/no-unescaped-entities": 0,
-    "react-hooks/exhaustive-deps": "off", // todo activate after testes otherwise it can be dangerous
+//    "react-hooks/exhaustive-deps": "off", // todo activate after testes otherwise it can be dangerous
     "react/jsx-key": "error",
     "react/prop-types": "off",
     "react/jsx-no-duplicate-props": "error",
@@ -29,15 +34,15 @@
     "max-params": ["error", 4],
     "max-depth": ["error", { "max": 3 }],
     "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
-    "max-len": ["warn", {
-      "code": 100,
-      "ignoreComments": true,
-      "ignoreTrailingComments": true,
-      "ignoreUrls": true,
-      "ignoreStrings": true,
-      "ignoreTemplateLiterals": true,
-      "ignoreRegExpLiterals": true
-    }],
+//    "max-len": ["warn", {
+//      "code": 100,
+//      "ignoreComments": true,
+//      "ignoreTrailingComments": true,
+//      "ignoreUrls": true,
+//      "ignoreStrings": true,
+//      "ignoreTemplateLiterals": true,
+//      "ignoreRegExpLiterals": true
+//    }],
 
 //    "max-lines-per-function": ["warn", { "max": 100, "skipBlankLines": true, "skipComments": true }],
     "no-console": ["error", { "allow": ["warn", "error"] }],
