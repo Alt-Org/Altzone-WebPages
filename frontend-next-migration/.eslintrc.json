@@ -8,35 +8,31 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "react",
-   "@stylistic",
-    "./eslint/rules"
+   "@stylistic"
 //    "prettier"
   ],
   "rules": {
 
-    "padded-blocks-for-top-level-functions": "error",
+//    "prettier/prettier" : "error",
 
-    //    "prettier/prettier" : "error",
 
     "@stylistic/padding-line-between-statements": ["error",
       { "blankLine": "always", "prev": ["*"], "next": "*" },
       { "blankLine": "never", "prev": ["cjs-import", "directive" , "import"], "next": "*" },
       { "blankLine": "always", "prev": "*", "next": ["type", "interface"] },
-      { "blankLine": "always", "prev": ["type", "interface"], "next": "*" },
-
-      { "blankLine": "always", "prev": "*", "next": "block-like" },
-      { "blankLine": "always", "prev": "block-like", "next": "*" }
-
+      { "blankLine": "always", "prev": ["type", "interface"], "next": "*" }
     ],
 
+    "@stylistic/padded-blocks": ["error", { "blocks": "always" , "switches": "never"}], //todo custom rule padded-blocks-top-level-functions
+
     "@stylistic/jsx-first-prop-new-line": ["error", "multiprop"],
-    "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1}],
-    "@stylistic/jsx-self-closing-comp": ["error", {"component": true}],
-    "@stylistic/jsx-closing-bracket-location": ["error", {
-      "selfClosing": "props-aligned",
-      "nonEmpty": "props-aligned"
-    }],
-    "@stylistic/object-property-newline": "error",
+//    "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1}],
+//    "@stylistic/jsx-self-closing-comp": ["error", {"component": true}],
+//    "@stylistic/jsx-closing-bracket-location": ["error", {
+//      "selfClosing": "props-aligned",
+//      "nonEmpty": "props-aligned"
+//    }],
+//    "@stylistic/object-property-newline": "error",
 
 
 

@@ -1,0 +1,114 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
+	"files": { "ignoreUnknown": false, "ignore": [] },
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": false,
+		"ignore": [],
+		"lineEnding": "lf",
+		"attributePosition": "auto",
+		"indentStyle": "space",
+		"indentWidth": 4,
+		"lineWidth": 80
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "preserve",
+			"trailingCommas": "all",
+			"semicolons": "always",
+			"arrowParentheses": "always",
+			"bracketSameLine": false,
+			"quoteStyle": "double",
+			"attributePosition": "auto",
+			"bracketSpacing": true
+		}
+	},
+	"organizeImports": { "enabled": true },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": { "noBlankTarget": "error", "useValidAnchor": "warn" },
+			"complexity": {
+				"noUselessFragments": "error",
+				"noUselessThisAlias": "error",
+				"noUselessTypeConstraint": "error"
+			},
+			"correctness": {
+				"noUnusedVariables": "off",
+				"useArrayLiterals": "off",
+				"useHookAtTopLevel": "warn",
+				"useJsxKeyInIterable": "error"
+			},
+			"style": {
+				"noNamespace": "error",
+				"noNonNullAssertion": "warn",
+				"noVar": "error",
+				"noYodaExpression": "error",
+				"useAsConstAssertion": "error",
+				"useConst": "error"
+			},
+			"suspicious": {
+				"noConsole": {
+					"level": "error",
+					"options": { "allow": ["warn", "error"] }
+				},
+				"noDoubleEquals": "error",
+				"noDuplicateCase": "error",
+				"noDuplicateJsxProps": "error",
+				"noExplicitAny": "off",
+				"noExtraNonNullAssertion": "error",
+				"noMisleadingInstantiator": "error",
+				"noSelfCompare": "error",
+				"noUnsafeDeclarationMerging": "error",
+				"useAwait": "error",
+				"useNamespaceKeyword": "error"
+			}
+		}
+	},
+
+	"overrides": [
+		{
+			"include": ["src/shared/**/*.{ts,tsx}"],
+			"linter": { "rules": { "correctness": { "noUnusedVariables": "off" } } }
+		},
+		{
+			"include": ["src/widgets/Navbar/**/NavbarBuilder.{ts,tsx}"],
+			"linter": { "rules": {} }
+		},
+		{ "include": ["**/*.stories.{ts,tsx}"], "linter": { "rules": {} } },
+		{
+			"include": [
+				"*.stories.@(ts|tsx|js|jsx|mjs|cjs)",
+				"*.story.@(ts|tsx|js|jsx|mjs|cjs)"
+			],
+			"linter": { "rules": { "correctness": { "useHookAtTopLevel": "off" } } }
+		},
+		{
+			"include": [".storybook/main.@(js|cjs|mjs|ts)"],
+			"linter": { "rules": {} }
+		},
+		{
+			"include": ["src/shared/**/*.{ts,tsx}"],
+			"linter": { "rules": { "correctness": { "noUnusedVariables": "off" } } }
+		},
+		{
+			"include": ["src/widgets/Navbar/**/NavbarBuilder.{ts,tsx}"],
+			"linter": { "rules": {} }
+		},
+		{ "include": ["**/*.stories.{ts,tsx}"], "linter": { "rules": {} } },
+		{
+			"include": [
+				"*.stories.@(ts|tsx|js|jsx|mjs|cjs)",
+				"*.story.@(ts|tsx|js|jsx|mjs|cjs)"
+			],
+			"linter": { "rules": { "correctness": { "useHookAtTopLevel": "off" } } }
+		},
+		{
+			"include": [".storybook/main.@(js|cjs|mjs|ts)"],
+			"linter": { "rules": {} }
+		}
+	]
+}
