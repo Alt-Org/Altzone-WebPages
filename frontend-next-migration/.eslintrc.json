@@ -26,15 +26,9 @@
     "@stylistic/padded-blocks": ["error", { "blocks": "always" , "switches": "never"}], //todo custom rule padded-blocks-top-level-functions
 
     "@stylistic/jsx-first-prop-new-line": ["error", "multiprop"],
-//    "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1}],
-//    "@stylistic/jsx-self-closing-comp": ["error", {"component": true}],
-//    "@stylistic/jsx-closing-bracket-location": ["error", {
-//      "selfClosing": "props-aligned",
-//      "nonEmpty": "props-aligned"
-//    }],
-//    "@stylistic/object-property-newline": "error",
-
-
+    "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1}],
+    "@stylistic/jsx-self-closing-comp": ["error", {"component": true}],
+    "@stylistic/object-property-newline": "error",
 
     "jsx-a11y/anchor-is-valid": "warn",
 
