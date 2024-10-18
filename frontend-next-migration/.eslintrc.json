@@ -15,6 +15,12 @@
 
 //    "prettier/prettier" : "error",
 
+//    "object-curly-newline": ["error", "always"],
+
+
+//    "react/jsx-indent": ["error", 4],
+//    "react/jsx-indent-props": ["error", 4],
+
 
     "@stylistic/padding-line-between-statements": ["error",
       { "blankLine": "always", "prev": ["*"], "next": "*" },
@@ -25,10 +31,10 @@
 
     "@stylistic/padded-blocks": ["error", { "blocks": "always" , "switches": "never"}], //todo custom rule padded-blocks-top-level-functions
 
-    "@stylistic/jsx-first-prop-new-line": ["error", "multiprop"],
-    "@stylistic/jsx-max-props-per-line": ["error", { "maximum": 1}],
     "@stylistic/jsx-self-closing-comp": ["error", {"component": true}],
     "@stylistic/object-property-newline": "error",
+
+
 
     "jsx-a11y/anchor-is-valid": "warn",
 
