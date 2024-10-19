@@ -1,4 +1,4 @@
-import {useEffect, useRef, MutableRefObject, RefObject} from 'react';
+import { useEffect, useRef, MutableRefObject, RefObject } from 'react';
 
 // Type definition for the callback function used in the hook
 export type ResizeCallback<T> = (refCurrent: MutableRefObject<T>['current']) => void;
@@ -28,7 +28,13 @@ export type ResizeCallback<T> = (refCurrent: MutableRefObject<T>['current']) => 
  *   return <div ref={elementRef}>Resizable Content</div>;
  * };
  */
-const useResizeObserver = <T>({elementRef, callback}: { elementRef: RefObject<T>; callback: ResizeCallback<T> }) => {
+const useResizeObserver = <T>({
+    elementRef,
+    callback,
+}: {
+    elementRef: RefObject<T>;
+    callback: ResizeCallback<T>;
+}) => {
     useEffect(() => {
         const updateElementSize = () => {
             if (elementRef.current) {

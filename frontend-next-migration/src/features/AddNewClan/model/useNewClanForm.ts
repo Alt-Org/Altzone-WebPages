@@ -1,20 +1,19 @@
-'use client'
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect } from "react";
-import { FieldValues, useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { StateSchema } from "@/app/_providers/StoreProvider";
-import { IClanCreateDto, useCreateClanMutation } from "@/entities/Clan";
-import { authUserActions, selectProfile } from "@/entities/Auth";
-import { ValidationAddNewClan } from "../validations";
+'use client';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { StateSchema } from '@/app/_providers/StoreProvider';
+import { IClanCreateDto, useCreateClanMutation } from '@/entities/Clan';
+import { authUserActions, selectProfile } from '@/entities/Auth';
+import { ValidationAddNewClan } from '../validations';
 
 type Props = {
     onSuccess?: () => void;
-}
+};
 
 export const useNewClanForm = ({ onSuccess }: Props) => {
-
     const {
         register,
         handleSubmit,
@@ -23,12 +22,15 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
         resolver: yupResolver(ValidationAddNewClan),
     });
 
-    const [create, {
-        data,
-        isLoading,
-        // isError,
-        error
-    }] = useCreateClanMutation();
+    const [
+        create,
+        {
+            data,
+            isLoading,
+            // isError,
+            error,
+        },
+    ] = useCreateClanMutation();
 
     const profile = useSelector((state: StateSchema) => selectProfile(state));
     const dispatch = useDispatch();
@@ -47,7 +49,6 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
 
     //update store profile after creating new clan. (apparently updates localstorage too)
     const handleUpdateClanId = (newClanId: string) => {
-
         if (profile) {
             const updatedProfile = {
                 ...profile,

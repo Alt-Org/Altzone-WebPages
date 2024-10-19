@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { selectHasClan, selectIsAuthenticated } from "./authUserSlice";
+import { useSelector } from 'react-redux';
+import { selectHasClan, selectIsAuthenticated } from './authUserSlice';
 
 // import { useSelector } from 'react-redux';
 // import { selectHasClan, selectIsAuthenticated } from "./authUserSlice";
@@ -144,13 +144,15 @@ export const useUserPermissionsV2 = () => {
     const hasClan = useSelector(selectHasClan);
 
     const permissionHandlers: Record<UserPermissionsV2, () => PermissionResult> = {
-        login: () => !isAuthenticated
-            ? createGrantedResult()
-            : createNotGrantedResult(PermissionError.AlreadyAuthenticated),
+        login: () =>
+            !isAuthenticated
+                ? createGrantedResult()
+                : createNotGrantedResult(PermissionError.AlreadyAuthenticated),
 
-        logout: () => isAuthenticated
-            ? createGrantedResult()
-            : createNotGrantedResult(PermissionError.NotAuthenticated),
+        logout: () =>
+            isAuthenticated
+                ? createGrantedResult()
+                : createNotGrantedResult(PermissionError.NotAuthenticated),
 
         'clan:create': () => {
             if (!isAuthenticated) return createNotGrantedResult(PermissionError.NotAuthenticated);
@@ -158,9 +160,10 @@ export const useUserPermissionsV2 = () => {
             return createGrantedResult();
         },
 
-        'clan:seeAll': () => isAuthenticated
-            ? createGrantedResult()
-            : createNotGrantedResult(PermissionError.NotAuthenticated),
+        'clan:seeAll': () =>
+            isAuthenticated
+                ? createGrantedResult()
+                : createNotGrantedResult(PermissionError.NotAuthenticated),
 
         'clan:seeOwn': () => {
             if (!isAuthenticated) return createNotGrantedResult(PermissionError.NotAuthenticated);
@@ -172,7 +175,7 @@ export const useUserPermissionsV2 = () => {
             if (!isAuthenticated) return createNotGrantedResult(PermissionError.NotAuthenticated);
             if (hasClan) return createNotGrantedResult(PermissionError.AlreadyInClan);
             return createGrantedResult();
-        }
+        },
     };
 
     const checkPermissionFor = (permission: UserPermissionsV2): PermissionResult => {
@@ -186,4 +189,3 @@ export const useUserPermissionsV2 = () => {
 
     return { checkPermissionFor };
 };
-

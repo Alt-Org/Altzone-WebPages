@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { FC, FunctionComponent } from "react";
-import "react-lazy-load-image-component/src/effects/blur.css";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./withBackgroundImage.module.scss";
+import Image from 'next/image';
+import { FC, FunctionComponent } from 'react';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './withBackgroundImage.module.scss';
 
 interface BackgroundImageConfig {
     imagePath: string;
@@ -40,14 +40,14 @@ interface BackgroundImageConfig {
  * const EnhancedComponent = withBackgroundImage<MyComponentProps>(config)(MyComponent);
  */
 function withBackgroundImage<P extends object>(
-    config: BackgroundImageConfig
+    config: BackgroundImageConfig,
 ): (WrappedComponent: FunctionComponent<P>) => FC<P> {
     const {
         imagePath,
         placeHolderPath = '',
         alt = '',
         shouldBeLazyLoaded = false,
-        className = ""
+        className = '',
     } = config;
 
     return (WrappedComponent: FunctionComponent<P>) => {
@@ -57,10 +57,22 @@ function withBackgroundImage<P extends object>(
                     <div className={classNames(cls.Background, {}, [className])}>
                         {/*<div className={cls.Background}>*/}
                         {shouldBeLazyLoaded ? (
-                            <Image src={imagePath} alt={alt} loading="lazy" className={cls.ImageWrapper} width={1000}
-                                   height={1000}/>
+                            <Image
+                                src={imagePath}
+                                alt={alt}
+                                loading="lazy"
+                                className={cls.ImageWrapper}
+                                width={1000}
+                                height={1000}
+                            />
                         ) : (
-                            <Image src={imagePath} alt={alt} className={cls.ImageWrapper} width={1000} height={1000}/>
+                            <Image
+                                src={imagePath}
+                                alt={alt}
+                                className={cls.ImageWrapper}
+                                width={1000}
+                                height={1000}
+                            />
                         )}
                     </div>
                     <div className={cls.Content}>
@@ -77,5 +89,3 @@ function withBackgroundImage<P extends object>(
 }
 
 export default withBackgroundImage;
-
-
