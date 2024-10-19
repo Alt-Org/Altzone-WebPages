@@ -3,15 +3,15 @@ import { Footer } from '@/widgets/Footer';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 
 type Props = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
 export default function NewsLayout({ children }: Props) {
-  return (
-    <>
-      {children}
-      <HorizontalLines />
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            {children}
+            <HorizontalLines />
+            <Footer />
+        </>
+    );
 }

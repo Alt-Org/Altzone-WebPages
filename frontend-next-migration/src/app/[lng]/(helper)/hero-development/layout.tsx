@@ -4,16 +4,16 @@ import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 
 type Props = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
 export default function HeroDevelopmentLayout({ children }: Props) {
-  return (
-    <>
-      {children}
-      <FeedbackSideButton />
-      <HorizontalLines />
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            {children}
+            <FeedbackSideButton />
+            <HorizontalLines />
+            <Footer />
+        </>
+    );
 }

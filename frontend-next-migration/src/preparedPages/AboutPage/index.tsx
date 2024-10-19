@@ -1,3 +1,3 @@
-export {default as AboutPage} from "./ui/About.async";
+export { default as AboutPage } from './ui/About.async';
 
-export type {Props as AboutPageProps} from "./ui/About";
+export type { Props as AboutPageProps } from './ui/About';

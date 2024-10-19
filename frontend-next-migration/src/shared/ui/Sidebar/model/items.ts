@@ -1,21 +1,20 @@
-import {DropDownElement} from "@/shared/ui/DropdownWrapper";
+import { DropDownElement } from '@/shared/ui/DropdownWrapper';
 
-
-export enum sidebarItemType  {
-    ISidebarItemBasic = "ISidebarItemBasic",
-    ISidebarItemDropDown = "ISidebarItemDropDown"
+export enum sidebarItemType {
+    ISidebarItemBasic = 'ISidebarItemBasic',
+    ISidebarItemDropDown = 'ISidebarItemDropDown',
 }
 
 export type ISidebarItemBasic = {
-    type : sidebarItemType.ISidebarItemBasic
+    type: sidebarItemType.ISidebarItemBasic;
     path: string;
     name: string;
-}
+};
 
 export type ISidebarItemDropDown = {
-    type: sidebarItemType.ISidebarItemDropDown
+    type: sidebarItemType.ISidebarItemDropDown;
     name: string;
-    elements: Array<DropDownElement>
-}
+    elements: Array<DropDownElement>;
+};
 
-export type ISidebarItem = ISidebarItemBasic | ISidebarItemDropDown
+export type ISidebarItem = ISidebarItemBasic | ISidebarItemDropDown;
