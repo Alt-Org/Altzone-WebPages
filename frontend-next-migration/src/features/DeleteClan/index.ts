@@ -1,1 +1,1 @@
-export {default as useDeleteClan} from "./model/useDeleteClan";
+export { default as useDeleteClan } from './model/useDeleteClan';
