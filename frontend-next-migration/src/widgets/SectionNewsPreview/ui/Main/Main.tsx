@@ -1,25 +1,25 @@
-import cls from "./Main.module.scss";
-import {classNames} from "@/shared/lib/classNames/classNames";
-import {memo, useMemo} from "react";
-import {NewsCards} from "../NewsCards/NewsCards";
-import {Container} from "@/shared/ui/Container";
-import {newsDataLocally} from "@/entities/News";
-import {sortPostsByDatesDesc} from "@/shared/ui/Post";
+import { memo, useMemo } from 'react';
+import { newsDataLocally } from '@/entities/News';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Container } from '@/shared/ui/Container';
+import { sortPostsByDatesDesc } from '@/shared/ui/Post';
+import { NewsCards } from '../NewsCards/NewsCards';
+import cls from './Main.module.scss';
 
-interface descriptionProps{
+interface descriptionProps {
     className?: string;
 }
 
-export const Main = memo(({className=''}: descriptionProps) => {
+export const Main = memo(({ className = '' }: descriptionProps) => {
     const sortedNews = useMemo(() => sortPostsByDatesDesc(newsDataLocally), []);
-    return(
-        <div className={classNames(cls.Main, {},[className])}>
+    return (
+        <div className={classNames(cls.Main, {}, [className])}>
             <Container>
                 <h2 className={cls.title}>Tuoreimmat uutiset</h2>
-                <NewsCards news={sortedNews}/>
+                <NewsCards news={sortedNews} />
             </Container>
-        </div>)
-})
+        </div>
+    );
+});
 
-Main.displayName = "NewsPreviewSectionMain";
-
+Main.displayName = 'NewsPreviewSectionMain';

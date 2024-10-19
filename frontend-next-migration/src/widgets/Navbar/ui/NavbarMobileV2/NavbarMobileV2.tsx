@@ -1,18 +1,18 @@
-import Image from "next/image";
-import { CSSProperties, memo, useMemo, useState } from "react";
-import { LangSwitcher } from "@/features/LangSwitcher";
-import { useLogoutMutation, useUserPermissionsV2 } from "@/entities/Auth";
-import useIsPageScrollbar from "@/shared/lib/hooks/useIsPageScrollbar";
-import { sidebarItemType } from "@/shared/ui/Sidebar/model/items";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { ISidebarItem, Sidebar } from "@/shared/ui/Sidebar";
-import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import { useClientTranslation } from "@/shared/i18n";
-import { defineNs } from "../../model/defineNs";
-import { useFixed } from "../../model/FixedProvider";
-import { ItemType, NavbarBuild, NavBarType } from "../../model/types";
-import { FixedButton } from "../FixedButton/FixedButton";
-import cls from "./NavbarMobileV2.module.scss";
+import Image from 'next/image';
+import { CSSProperties, memo, useMemo, useState } from 'react';
+import { LangSwitcher } from '@/features/LangSwitcher';
+import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
+import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
+import { sidebarItemType } from '@/shared/ui/Sidebar/model/items';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { useClientTranslation } from '@/shared/i18n';
+import { defineNs } from '../../model/defineNs';
+import { useFixed } from '../../model/FixedProvider';
+import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
+import { FixedButton } from '../FixedButton/FixedButton';
+import cls from './NavbarMobileV2.module.scss';
 
 interface NavbarTouchProps {
     marginTop?: number;
@@ -24,24 +24,16 @@ interface NavbarTouchProps {
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
+    const { marginTop, navbarBuild, side = 'left', className = '', navBarType = 'Default' } = props;
 
-    const {
-        marginTop,
-        navbarBuild,
-        side = 'left',
-        className = '',
-        navBarType = "Default"
-    } = props;
-
-    const ns = defineNs(navBarType)
+    const ns = defineNs(navBarType);
     const { t } = useClientTranslation(ns);
 
-    const {checkPermissionFor} = useUserPermissionsV2();
-    const permissionToLogin = checkPermissionFor("login");
-    const permissionToLogout = checkPermissionFor("logout");
+    const { checkPermissionFor } = useUserPermissionsV2();
+    const permissionToLogin = checkPermissionFor('login');
+    const permissionToLogout = checkPermissionFor('logout');
 
-    const permissionToSeeOwnClan = checkPermissionFor("clan:seeOwn");
-
+    const permissionToSeeOwnClan = checkPermissionFor('clan:seeOwn');
 
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
@@ -61,21 +53,28 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setIsSidebarOpen(false);
         props.onBurgerButtonClick?.(false);
         // we should give some time for animation
-        setTimeout(() => setSidebarItemsListResetKey(currentKey => currentKey+1), 500);
+        setTimeout(() => setSidebarItemsListResetKey((currentKey) => currentKey + 1), 500);
     };
 
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
-            .map(item => {
+            .map((item) => {
                 if (item.type === ItemType.navLink) {
-                    return { path: item.path, name: t(`${item.name}`), type: sidebarItemType.ISidebarItemBasic };
+                    return {
+                        path: item.path,
+                        name: t(`${item.name}`),
+                        type: sidebarItemType.ISidebarItemBasic,
+                    };
                 }
                 if (item.type === ItemType.navDropDown) {
                     // Localize the elements within the dropdown, but skip if elementText equals "clanpage"
                     //todo looks like that this logic should not be here in ui component
                     const localizedElements = item.elements
                         .map((element) => {
-                            if (element.elementText === 'clanpage' && !permissionToSeeOwnClan.isGranted) {
+                            if (
+                                element.elementText === 'clanpage' &&
+                                !permissionToSeeOwnClan.isGranted
+                            ) {
                                 return null; // Return null if elementText is "clanpage"
                             }
                             return {
@@ -83,23 +82,25 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                 elementText: t(`${element.elementText}`), // Localize elementText
                             };
                         })
-                        .filter(element => element !== null); // Filter out any null elements
+                        .filter((element) => element !== null); // Filter out any null elements
                     // If there are no valid elements left, return null to skip this item
                     if (localizedElements.length === 0) {
                         return null;
                     }
 
-                    return { name: t(`${item.name}`), elements: localizedElements, type: sidebarItemType.ISidebarItemDropDown };
+                    return {
+                        name: t(`${item.name}`),
+                        elements: localizedElements,
+                        type: sidebarItemType.ISidebarItemDropDown,
+                    };
                 }
 
                 return null;
             })
-            .filter(item => item !== null) as ISidebarItem[];
+            .filter((item) => item !== null) as ISidebarItem[];
     }, [navbarBuild, t, isSidebarOpen]);
 
-    const style: CSSProperties = marginTop
-        ? { "marginTop": `${marginTop}px` }
-        : {};
+    const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
@@ -111,12 +112,14 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     };
 
     return (
-        <nav className={classNames(cls.Navbar, mods, [className])} style={style} >
+        <nav
+            className={classNames(cls.Navbar, mods, [className])}
+            style={style}
+        >
             <div
                 className={classNames(cls.NavbarMobile__burger, sidebarMods)}
                 onClick={handleBurgerClick}
-            >
-            </div>
+            />
             <Sidebar
                 sidebarItemsListResetKey={sidebarItemsListResetKey}
                 buttonClassName={classNames(cls.NavbarMobile__burger, sidebarMods)}
@@ -133,10 +136,12 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                 <AppLink
                                     className={cls.authSectionLink}
                                     theme={AppLinkTheme.PRIMARY}
-                                    to={navbarBuild?.namedMenu?.navAuthLogin?.path || ""}
-                                    key={navbarBuild?.namedMenu?.navAuthLogin?.path || ""}
+                                    to={navbarBuild?.namedMenu?.navAuthLogin?.path || ''}
+                                    key={navbarBuild?.namedMenu?.navAuthLogin?.path || ''}
                                 >
-                                    <span>{t(`${navbarBuild?.namedMenu?.navAuthLogin?.name}`)}</span>
+                                    <span>
+                                        {t(`${navbarBuild?.namedMenu?.navAuthLogin?.name}`)}
+                                    </span>
                                 </AppLink>
                             )}
                             {permissionToLogout.isGranted && (
@@ -149,24 +154,19 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <AppLink
                 className={cls.navLogo + ' ' + cls.NavbarMobile__center}
                 theme={AppLinkTheme.PRIMARY}
-                to={navbarBuild?.namedMenu?.navLogo?.path || ""}
+                to={navbarBuild?.namedMenu?.navLogo?.path || ''}
             >
                 <Image
-                    loading={"eager"}
+                    loading={'eager'}
                     width={180}
                     src={navbarBuild?.namedMenu?.navLogo?.src || ''}
                     alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                 />
             </AppLink>
 
-
-            {hasScrollbar && (
-                <FixedButton
-                    className={cls.FixedButton}
-                />
-            )}
+            {hasScrollbar && <FixedButton className={cls.FixedButton} />}
         </nav>
-    )
+    );
 };
 
 NavbarTouchComponent.displayName = 'NavbarTouch';

@@ -1,8 +1,8 @@
-'use client'
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectClanId } from "@/entities/Auth";
+'use client';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectClanId } from '@/entities/Auth';
 
 const MyClanPage = () => {
     const router = useRouter();

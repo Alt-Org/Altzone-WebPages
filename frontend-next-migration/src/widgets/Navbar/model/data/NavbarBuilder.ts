@@ -1,15 +1,28 @@
-import { DropDownElement } from "@/shared/ui/DropdownWrapper";
-import { ItemType, NamedMenu, NavAuthLogin, NavAuthProfile, NavbarBuild, NavbarMenuItem, NavLogoObject, Position } from "../types";
+import { DropDownElement } from '@/shared/ui/DropdownWrapper';
+import {
+    ItemType,
+    NamedMenu,
+    NavAuthLogin,
+    NavAuthProfile,
+    NavbarBuild,
+    NavbarMenuItem,
+    NavLogoObject,
+    Position,
+} from '../types';
 
 // /* eslint-disable max-params*/
 
-export class NavbarBuilder
-{
+export class NavbarBuilder {
     private menu: NavbarMenuItem[] = [];
-    private namedMenu: NamedMenu = {}
+    private namedMenu: NamedMenu = {};
 
-
-    addLink(name: string, path: string, isActive: boolean, position?: Position, accessErrorMsg?: string): void {
+    addLink(
+        name: string,
+        path: string,
+        isActive: boolean,
+        position?: Position,
+        accessErrorMsg?: string,
+    ): void {
         this.menu.push({ name, path, isActive, type: ItemType.navLink, position, accessErrorMsg });
     }
 
@@ -17,12 +30,38 @@ export class NavbarBuilder
         this.menu.push({ name, type: ItemType.navLinkFake, position, reactKey });
     }
 
-    addDropDown(name: string, isActive: boolean, elements: DropDownElement[], position?: Position, accessErrorMsg?: string): void {
-        this.menu.push({ name, isActive, elements, type: ItemType.navDropDown, position, accessErrorMsg });
+    addDropDown(
+        name: string,
+        isActive: boolean,
+        elements: DropDownElement[],
+        position?: Position,
+        accessErrorMsg?: string,
+    ): void {
+        this.menu.push({
+            name,
+            isActive,
+            elements,
+            type: ItemType.navDropDown,
+            position,
+            accessErrorMsg,
+        });
     }
 
-    addLogo(name: string, src: string, path: string, position?: Position, accessErrorMsg?: string): void {
-        const logoObject = { name, src, path, type: ItemType.navLogo, position, accessErrorMsg } as NavLogoObject;
+    addLogo(
+        name: string,
+        src: string,
+        path: string,
+        position?: Position,
+        accessErrorMsg?: string,
+    ): void {
+        const logoObject = {
+            name,
+            src,
+            path,
+            type: ItemType.navLogo,
+            position,
+            accessErrorMsg,
+        } as NavLogoObject;
         this.namedMenu[ItemType.navLogo] = logoObject;
         this.menu.push(logoObject);
     }
@@ -34,13 +73,16 @@ export class NavbarBuilder
     }
 
     addAuthProfile(name: string, elements: DropDownElement[]): void {
-        const authProfileObject = { name, elements, type: ItemType.navAuthProfile } as NavAuthProfile
+        const authProfileObject = {
+            name,
+            elements,
+            type: ItemType.navAuthProfile,
+        } as NavAuthProfile;
         this.namedMenu[ItemType.navAuthProfile] = authProfileObject;
-        this.menu.push({...authProfileObject});
+        this.menu.push({ ...authProfileObject });
     }
 
     build(): NavbarBuild {
         return { menu: this.menu, namedMenu: this.namedMenu };
     }
-
 }

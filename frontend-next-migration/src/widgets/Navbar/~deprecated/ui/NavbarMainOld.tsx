@@ -1,18 +1,18 @@
-'use client'
-import { memo } from "react";
-import { FixedProvider } from "@/widgets/Navbar/model/FixedProvider";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import { navbarMenuDesktop2, navbarGameArtDesktop } from "../../model/data/navbarMenuDesktop";
-import { navbarMenuMobile, navbarGameArtMobile } from "../../model/data/navbarMenuMobile";
-import NavbarDesktopV2 from "../../ui/NavbarDesktopV2/NavbarDesktopV2";
-import NavbarMobileV2 from "../../ui/NavbarMobileV2/NavbarMobileV2";
+'use client';
+import { memo } from 'react';
+import { FixedProvider } from '@/widgets/Navbar/model/FixedProvider';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import { navbarMenuDesktop2, navbarGameArtDesktop } from '../../model/data/navbarMenuDesktop';
+import { navbarMenuMobile, navbarGameArtMobile } from '../../model/data/navbarMenuMobile';
+import NavbarDesktopV2 from '../../ui/NavbarDesktopV2/NavbarDesktopV2';
+import NavbarMobileV2 from '../../ui/NavbarMobileV2/NavbarMobileV2';
 
 type NavBarType = 'Default' | 'Clan' | 'TeachingPackage' | '';
 
 interface NavbarMainProps {
-  marginTop?: number;
-  className?: string;
-  navBarType?: NavBarType;
+    marginTop?: number;
+    className?: string;
+    navBarType?: NavBarType;
 }
 
 /**
@@ -27,60 +27,59 @@ interface NavbarMainProps {
  @returns {JSX.Element} - The appropriate navbar component.
  */
 export const NavbarMainOld = memo((props: NavbarMainProps) => {
-  const {marginTop, className } = props;
+    const { marginTop, className } = props;
 
-  const { isMobileSize } = useIsMobileSize();
+    const { isMobileSize } = useIsMobileSize();
 
-  if (isMobileSize) {
+    if (isMobileSize) {
+        return (
+            <FixedProvider>
+                <NavbarMobileV2
+                    marginTop={marginTop}
+                    className={className}
+                    navbarBuild={navbarMenuMobile}
+                />
+            </FixedProvider>
+        );
+    }
     return (
-      <FixedProvider>
-        <NavbarMobileV2
-          marginTop={marginTop}
-          className={className}
-          navbarBuild={navbarMenuMobile}
-        />
-      </FixedProvider>
+        <FixedProvider>
+            <NavbarDesktopV2
+                navbarBuild={navbarMenuDesktop2}
+                className={className}
+                marginTop={marginTop}
+            />
+        </FixedProvider>
     );
-  }
-  return (
-      <FixedProvider>
-        <NavbarDesktopV2
-          navbarBuild={navbarMenuDesktop2}
-          className={className}
-          marginTop={marginTop}
-        />
-      </FixedProvider>
-  );
 });
-
 
 //---------------------------------------------------------------------------//
 /** @deprecated**/
 export const NavbarGameArtMain = memo((props: NavbarMainProps) => {
-  const {marginTop, className } = props;
+    const { marginTop, className } = props;
 
-  const { isMobileSize } = useIsMobileSize();
+    const { isMobileSize } = useIsMobileSize();
 
-  if (isMobileSize) {
+    if (isMobileSize) {
+        return (
+            <FixedProvider>
+                <NavbarMobileV2
+                    marginTop={marginTop}
+                    className={className}
+                    navbarBuild={navbarGameArtMobile}
+                />
+            </FixedProvider>
+        );
+    }
     return (
         <FixedProvider>
-          <NavbarMobileV2
-            marginTop={marginTop}
-            className={className}
-            navbarBuild={navbarGameArtMobile}
-          />
+            <NavbarDesktopV2
+                navbarBuild={navbarGameArtDesktop}
+                className={className}
+                marginTop={marginTop}
+            />
         </FixedProvider>
     );
-  }
-  return (
-      <FixedProvider>
-        <NavbarDesktopV2
-          navbarBuild={navbarGameArtDesktop}
-          className={className}
-          marginTop={marginTop}
-        />
-      </FixedProvider>
-  );
 });
 
 NavbarMainOld.displayName = 'NavbarMainOld';
