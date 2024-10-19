@@ -1,7 +1,7 @@
-import { ChangeEvent, FormEvent, useMemo } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import cls from "./CustomEditor.module.scss";
+import { ChangeEvent, FormEvent, useMemo } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import cls from './CustomEditor.module.scss';
 
 type Props = {
     entityName: string;
@@ -15,27 +15,28 @@ type Props = {
     handleContentChange: (value: string) => void;
     handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 };
+
 export function EditorForm({
-                               title,
-                               slug,
-                               description,
-                               content,
-                               handleTitleChange,
-                               handleSlugChange,
-                               handleDescriptionChange,
-                               handleContentChange,
-                               handleSubmit,
-                               entityName
-                           }: Props) {
+    title,
+    slug,
+    description,
+    content,
+    handleTitleChange,
+    handleSlugChange,
+    handleDescriptionChange,
+    handleContentChange,
+    handleSubmit,
+    entityName,
+}: Props) {
     const modules = useMemo(
         () => ({
             toolbar: {
                 container: [
-                    [{ header: [1, 2, 3, 4 ,5, false] }],
-                    ["bold", "italic", "underline", "strike", "blockquote", "code", "link"],
+                    [{ header: [1, 2, 3, 4, 5, false] }],
+                    ['bold', 'italic', 'underline', 'strike', 'blockquote', 'code', 'link'],
                     [{ color: [] }, { background: [] }],
                     [{ align: [] }],
-                    [{ list: "ordered" }, { list: "bullet" }],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
                     [
                         // "image", "video"
                     ],
@@ -45,35 +46,41 @@ export function EditorForm({
                 matchVisual: false,
             },
         }),
-        []
+        [],
     );
 
     const formats = [
-        "header",
-        "bold",
-        "italic",
-        "underline",
-        "strike",
-        "blockquote",
-        "list",
-        "bullet",
-        "link",
-        "image",
-        "video",
-        "code-block",
-        "color",
-        "background",
-        "font",
-        "code",
-        "align",
+        'header',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'list',
+        'bullet',
+        'link',
+        'image',
+        'video',
+        'code-block',
+        'color',
+        'background',
+        'font',
+        'code',
+        'align',
     ];
 
     return (
         <div className={cls.blogEditor}>
             <h2 className={cls.editorTitle}> {entityName} Editor</h2>
-            <form onSubmit={handleSubmit} className={cls.form}>
+            <form
+                onSubmit={handleSubmit}
+                className={cls.form}
+            >
                 <div className={cls.inputContainer}>
-                    <label htmlFor="title" className={cls.label}>
+                    <label
+                        htmlFor="title"
+                        className={cls.label}
+                    >
                         {entityName} Title
                     </label>
                     <input
@@ -88,7 +95,10 @@ export function EditorForm({
                     />
                 </div>
                 <div className={cls.inputContainer}>
-                    <label htmlFor="slug" className={cls.label}>
+                    <label
+                        htmlFor="slug"
+                        className={cls.label}
+                    >
                         {entityName} Slug
                     </label>
                     <input
@@ -103,7 +113,10 @@ export function EditorForm({
                     />
                 </div>
                 <div className={cls.inputContainer}>
-                    <label htmlFor="description" className={cls.label}>
+                    <label
+                        htmlFor="description"
+                        className={cls.label}
+                    >
                         {entityName} Description
                     </label>
                     <textarea
@@ -116,7 +129,10 @@ export function EditorForm({
                     />
                 </div>
                 <div className={cls.inputContainer}>
-                    <label htmlFor="content" className={cls.label}>
+                    <label
+                        htmlFor="content"
+                        className={cls.label}
+                    >
                         {entityName} Content
                     </label>
                     <ReactQuill
@@ -128,7 +144,10 @@ export function EditorForm({
                         className={cls.reactQuill}
                     />
                 </div>
-                <button type="submit" className={cls.submitButton}>
+                <button
+                    type="submit"
+                    className={cls.submitButton}
+                >
                     <span>Submit</span>
                 </button>
             </form>

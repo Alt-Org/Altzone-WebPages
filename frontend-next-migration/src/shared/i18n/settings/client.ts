@@ -1,22 +1,26 @@
-'use client'
-import i18next from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import resourcesToBackend from "i18next-resources-to-backend";
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
-import { initReactI18next, useTranslation as useTranslationOrg } from "react-i18next";
-import { getOptions, languages, cookieName } from "./settings";
+'use client';
+import i18next from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
+import { initReactI18next, useTranslation as useTranslationOrg } from 'react-i18next';
+import { getOptions, languages, cookieName } from './settings';
 
 // import LocizeBackend from 'i18next-locize-backend'
-const runsOnServerSide = typeof window === 'undefined'
+const runsOnServerSide = typeof window === 'undefined';
 
 // on client side the normal singleton is ok
 export const i18n = i18next
     .use(initReactI18next)
     .use(LanguageDetector)
     // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
-    .use(resourcesToBackend((language, namespace) => import(`../locales/${language}/${namespace}.json`)))
+    .use(
+        resourcesToBackend(
+            (language, namespace) => import(`../locales/${language}/${namespace}.json`),
+        ),
+    )
     // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
     .init({
         ...getOptions(),
@@ -24,40 +28,38 @@ export const i18n = i18next
         detection: {
             order: ['path', 'htmlTag', 'cookie', 'navigator'],
         },
-        preload: runsOnServerSide ? languages : []
-    })
-
+        preload: runsOnServerSide ? languages : [],
+    });
 
 /**
  * Hook for using i18n with client client-side components
  */
-export function useTranslation(ns: string, options? : any) {
-
+export function useTranslation(ns: string, options?: any) {
     const params = useParams();
     const lng = params.lng as string;
-    const [cookies, setCookie] = useCookies([cookieName])
-    const ret = useTranslationOrg(ns, options)
-    const { i18n } = ret
+    const [cookies, setCookie] = useCookies([cookieName]);
+    const ret = useTranslationOrg(ns, options);
+    const { i18n } = ret;
     if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
-        i18n.changeLanguage(lng)
+        i18n.changeLanguage(lng);
     } else {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage)
+        const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
-            if (activeLng === i18n.resolvedLanguage) return
-            setActiveLng(i18n.resolvedLanguage)
-        }, [activeLng, i18n.resolvedLanguage])
+            if (activeLng === i18n.resolvedLanguage) return;
+            setActiveLng(i18n.resolvedLanguage);
+        }, [activeLng, i18n.resolvedLanguage]);
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
-            if (!lng || i18n.resolvedLanguage === lng) return
-            i18n.changeLanguage(lng)
-        }, [lng, i18n])
+            if (!lng || i18n.resolvedLanguage === lng) return;
+            i18n.changeLanguage(lng);
+        }, [lng, i18n]);
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
-            if (cookies.i18next === lng) return
-            setCookie(cookieName, lng, { path: '/' })
-        }, [lng, cookies.i18next, setCookie])
+            if (cookies.i18next === lng) return;
+            setCookie(cookieName, lng, { path: '/' });
+        }, [lng, cookies.i18next, setCookie]);
     }
-    return ret
+    return ret;
 }

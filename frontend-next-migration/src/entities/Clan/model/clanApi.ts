@@ -1,11 +1,19 @@
-import { gameApi, GameApiCacheTags } from "@/shared/api";
-import { GetClanResponse, GetClansResponse, IClanCreateDto, IClanUpdateDto, ICreateClanResponse, IJoin } from "../types/clan";
+import { gameApi, GameApiCacheTags } from '@/shared/api';
+import {
+    GetClanResponse,
+    GetClansResponse,
+    IClanCreateDto,
+    IClanUpdateDto,
+    ICreateClanResponse,
+    IJoin,
+} from '../types/clan';
 
 interface GetClansQueryParams {
-    page?: number,
-    search?: string,
+    page?: number;
+    search?: string;
 }
-const clanUrl = "clan";
+
+const clanUrl = 'clan';
 
 const clanApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
