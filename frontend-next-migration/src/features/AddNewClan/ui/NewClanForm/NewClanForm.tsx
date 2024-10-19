@@ -1,15 +1,14 @@
-import { CustomForm } from "@/shared/ui/CustomForm";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useNewClanForm } from "../../model/useNewClanForm";
-import cls from "./NewClanForm.module.scss";
+import { CustomForm } from '@/shared/ui/CustomForm';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useNewClanForm } from '../../model/useNewClanForm';
+import cls from './NewClanForm.module.scss';
 
 type Props = {
     onSuccess?: () => void;
     className?: string;
 };
 
-export const NewClanForm = ({ onSuccess, className = "" }: Props) => {
-
+export const NewClanForm = ({ onSuccess, className = '' }: Props) => {
     const { register, handleSubmit, onFormSubmit, errors } = useNewClanForm({
         onSuccess,
     });
@@ -22,34 +21,34 @@ export const NewClanForm = ({ onSuccess, className = "" }: Props) => {
             <CustomForm.Header>Luo Klaani</CustomForm.Header>
 
             <CustomForm.InputField
-                key={"name"}
+                key={'name'}
                 error={errors?.name?.message}
-                label={"Nimi"}
+                label={'Nimi'}
                 inputProps={{
-                    ...register("name"),
+                    ...register('name'),
                     required: true,
                 }}
             />
 
             <CustomForm.InputField
-                key={"tag"}
+                key={'tag'}
                 error={errors?.tag?.message}
-                label={"Tagi"}
+                label={'Tagi'}
                 inputProps={{
-                    ...register("tag"),
+                    ...register('tag'),
                     required: true,
                 }}
             />
 
             {
                 <CustomForm.InputField
-                    key={"isOpen"}
+                    key={'isOpen'}
                     error={errors?.isOpen?.message}
-                    label={"Avoin klaani"}
+                    label={'Avoin klaani'}
                     inputProps={{
-                        ...register("isOpen"),
+                        ...register('isOpen'),
                         required: false,
-                        type: "checkbox",
+                        type: 'checkbox',
                     }}
                 />
             }
@@ -57,5 +56,4 @@ export const NewClanForm = ({ onSuccess, className = "" }: Props) => {
             <CustomForm.Button type="submit">Vahvista</CustomForm.Button>
         </CustomForm>
     );
-
 };

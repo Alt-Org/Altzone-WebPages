@@ -1,5 +1,5 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
 import { NavGoBackButton } from './NavGoBackButton';
 
 export default {
@@ -7,15 +7,11 @@ export default {
     component: NavGoBackButton,
     args: {
         className: '',
-
     },
 } as ComponentMeta<typeof NavGoBackButton>;
 
 const Template: ComponentStory<typeof NavGoBackButton> = (args) => {
-    return (
-            <NavGoBackButton {...args} />
-    );
+    return <NavGoBackButton {...args} />;
 };
 
 export const Default = Template.bind({});
-
