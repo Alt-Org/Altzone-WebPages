@@ -15,7 +15,9 @@
     "prettier/prettier" : "error",
     "@stylistic/padding-line-between-statements": ["warn",
 //      { "blankLine": "always", "prev": ["*"], "next": "*" },
-      { "blankLine": "never", "prev": ["cjs-import", "directive" , "import"], "next": "*" },
+      { "blankLine": "never", "prev": ["cjs-import", "directive" , "import"], "next": ["import", "cjs-import"] },
+
+//      { "blankLine": "never", "prev": ["cjs-import", "directive" , "import"], "next": "*" },
       { "blankLine": "always", "prev": ["cjs-import", "import"], "next": ["export"]},
       { "blankLine": "always", "prev": "*", "next": ["type", "interface"] },
       { "blankLine": "always", "prev": ["type", "interface"], "next": "*" }
