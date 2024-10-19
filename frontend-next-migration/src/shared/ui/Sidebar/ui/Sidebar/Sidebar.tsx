@@ -1,24 +1,20 @@
-
-import {classNames} from "@/shared/lib/classNames/classNames";
-import cls from "./Sidebar.module.scss";
-import {ISidebarItem} from "@/shared/ui/Sidebar/model/items";
-import React, {ReactNode, useEffect, useMemo, useRef, useState} from "react";
-import {SidebarItem} from "@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem";
-
-import {faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ISidebarItem } from '@/shared/ui/Sidebar/model/items';
+import { SidebarItem } from '@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem';
+import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
     buttonClassName?: string;
     sidebarClassName?: string;
     sidebarItemsList: ISidebarItem[];
-    side?: 'left' | 'right'
+    side?: 'left' | 'right';
     closeOnClickOutside?: boolean;
     bottomItems?: ReactNode;
     onClose?: () => void;
     sidebarItemsListResetKey?: number;
-
 }
 
 /**
@@ -53,21 +49,19 @@ interface SidebarProps {
  */
 
 export const Sidebar = ({
-                            buttonClassName = '',
-                            sidebarClassName = '',
-                            sidebarItemsList,
-                            side = 'left',
-                            closeOnClickOutside = false,
-                            bottomItems = "Login",
-                            onClose,
-                            sidebarItemsListResetKey
-                        }: SidebarProps) => {
-
+    buttonClassName = '',
+    sidebarClassName = '',
+    sidebarItemsList,
+    side = 'left',
+    closeOnClickOutside = false,
+    bottomItems = 'Login',
+    onClose,
+    sidebarItemsListResetKey,
+}: SidebarProps) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [isOpening, setIsOpening] = useState(false);
 
     const handleBurgerButtonClick = () => {
-
         setIsOpening(true);
         setTimeout(() => setIsOpening(false), 500);
 
@@ -95,12 +89,12 @@ export const Sidebar = ({
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
         [cls.opening]: isOpening,
-    }
+    };
 
     const buttonMods = {
         [cls.collapsedButton]: isCollapsed,
-        [cls.expandedButton]: !isCollapsed
-    }
+        [cls.expandedButton]: !isCollapsed,
+    };
 
     /**
      * A ref for the Sidebar component's root HTMLDivElement.
@@ -121,7 +115,11 @@ export const Sidebar = ({
     const handleClickOutside = (event: MouseEvent) => {
         const clickedButton = (event.target as HTMLElement).closest(`.${cls.button}`);
 
-        if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node) && !clickedButton) {
+        if (
+            sidebarRef.current &&
+            !sidebarRef.current.contains(event.target as Node) &&
+            !clickedButton
+        ) {
             setIsCollapsed(true);
             document.body.classList.remove('no-scroll');
         }
@@ -136,9 +134,9 @@ export const Sidebar = ({
      */
     useEffect(() => {
         if (closeOnClickOutside) {
-            document.addEventListener("mousedown", handleClickOutside);
+            document.addEventListener('mousedown', handleClickOutside);
             return () => {
-                document.removeEventListener("mousedown", handleClickOutside);
+                document.removeEventListener('mousedown', handleClickOutside);
             };
         }
     }, [closeOnClickOutside]);
@@ -148,32 +146,46 @@ export const Sidebar = ({
      * The memoization ensures that the list is only recomputed when the `isCollapsed` state changes.
      *
      */
-    const itemsList = useMemo(() => sidebarItemsList.map((item) => (
-        <SidebarItem
-            item={item}
-            collapsed={isCollapsed}
-            key={item.name}
-        />
-    )), [isCollapsed, sidebarItemsList]);
+    const itemsList = useMemo(
+        () =>
+            sidebarItemsList.map((item) => (
+                <SidebarItem
+                    item={item}
+                    collapsed={isCollapsed}
+                    key={item.name}
+                />
+            )),
+        [isCollapsed, sidebarItemsList],
+    );
 
     return (
         <>
-            <div className={classNames(cls.button, buttonMods, [buttonClassName])} onClick={handleBurgerButtonClick}>
-                <FontAwesomeIcon className={`${cls.faBars}`} icon={faBars}/>
-                <FontAwesomeIcon className={`${cls.faTimes}`} icon={faTimes}/>
+            <div
+                className={classNames(cls.button, buttonMods, [buttonClassName])}
+                onClick={handleBurgerButtonClick}
+            >
+                <FontAwesomeIcon
+                    className={`${cls.faBars}`}
+                    icon={faBars}
+                />
+                <FontAwesomeIcon
+                    className={`${cls.faTimes}`}
+                    icon={faTimes}
+                />
             </div>
 
             <div
-                data-testid='sidebar'
+                data-testid="sidebar"
                 ref={sidebarRef}
                 className={classNames(cls.Sidebar, mods, [sidebarClassName])}
             >
-                <div className={cls.items} key={sidebarItemsListResetKey}>
+                <div
+                    className={cls.items}
+                    key={sidebarItemsListResetKey}
+                >
                     {itemsList}
                 </div>
-                <div className={cls.bottomItems}>
-                    {bottomItems}
-                </div>
+                <div className={cls.bottomItems}>{bottomItems}</div>
             </div>
         </>
     );

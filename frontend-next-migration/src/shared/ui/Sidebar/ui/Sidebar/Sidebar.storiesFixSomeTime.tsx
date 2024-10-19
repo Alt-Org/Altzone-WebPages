@@ -34,4 +34,4 @@
 //     closeOnClickOutside: false,
 // };
 
-export {}
+export {};

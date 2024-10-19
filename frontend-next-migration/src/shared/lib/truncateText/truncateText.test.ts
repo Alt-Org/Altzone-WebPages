@@ -23,7 +23,7 @@ describe('truncateText', () => {
         const maxLength = 20;
         const truncate = truncateText(maxLength);
         const text = 'This is a long string.';
-        const expected = "This is a long st..."
+        const expected = 'This is a long st...';
 
         const actual = truncate(text);
         expect(actual).toBe(expected);

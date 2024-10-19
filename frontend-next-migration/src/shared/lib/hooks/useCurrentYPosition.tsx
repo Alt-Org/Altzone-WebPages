@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * Custom hook that tracks the current vertical scroll position of the window.
