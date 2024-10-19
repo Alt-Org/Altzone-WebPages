@@ -1,5 +1,4 @@
-'use client'
-
+'use client';
 /* eslint-disable */
 import { Component } from "react";
 
