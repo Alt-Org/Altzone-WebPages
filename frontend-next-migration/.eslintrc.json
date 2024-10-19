@@ -2,39 +2,24 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:storybook/recommended",
-    "plugin:@typescript-eslint/recommended"
-//    "plugin:prettier/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "react",
-   "@stylistic"
-//    "prettier"
+   "@stylistic",
+    "prettier"
   ],
   "rules": {
-
-//    "prettier/prettier" : "error",
-
-//    "object-curly-newline": ["error", "always"],
-
-
-//    "react/jsx-indent": ["error", 4],
-//    "react/jsx-indent-props": ["error", 4],
-
-
+    "prettier/prettier" : "error",
     "@stylistic/padding-line-between-statements": ["error",
       { "blankLine": "always", "prev": ["*"], "next": "*" },
       { "blankLine": "never", "prev": ["cjs-import", "directive" , "import"], "next": "*" },
       { "blankLine": "always", "prev": "*", "next": ["type", "interface"] },
       { "blankLine": "always", "prev": ["type", "interface"], "next": "*" }
     ],
-
-    "@stylistic/padded-blocks": ["error", { "blocks": "always" , "switches": "never"}], //todo custom rule padded-blocks-top-level-functions
-
     "@stylistic/jsx-self-closing-comp": ["error", {"component": true}],
-    "@stylistic/object-property-newline": "error",
-
-
 
     "jsx-a11y/anchor-is-valid": "warn",
 
