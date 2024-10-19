@@ -1,12 +1,17 @@
-import {Metadata} from "next";
+import { Metadata } from 'next';
 
 function isValidSEO(data: any): data is DefaultSeo {
-    return typeof data === 'object' &&
+    return (
+        typeof data === 'object' &&
         typeof data.title === 'string' &&
-        typeof data.description === 'string';
+        typeof data.description === 'string'
+    );
 }
 
-async function extractSEO(lng: string, getPage: (lng: string) => Promise<{ seo: any }>): Promise<DefaultSeo> {
+async function extractSEO(
+    lng: string,
+    getPage: (lng: string) => Promise<{ seo: any }>,
+): Promise<DefaultSeo> {
     const { seo } = await getPage(lng);
     if (isValidSEO(seo)) {
         return seo;
