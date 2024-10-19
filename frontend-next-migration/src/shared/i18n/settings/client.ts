@@ -15,9 +15,9 @@ const runsOnServerSide = typeof window === 'undefined';
 export const i18n = i18next
     .use(initReactI18next)
     .use(LanguageDetector)
-    // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
     .use(
         resourcesToBackend(
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             (language, namespace) => import(`../locales/${language}/${namespace}.json`),
         ),
     )

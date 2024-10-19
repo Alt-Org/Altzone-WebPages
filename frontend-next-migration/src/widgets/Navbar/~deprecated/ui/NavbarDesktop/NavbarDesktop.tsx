@@ -57,8 +57,9 @@ export const NavbarDesktop = (props: NavbarProps) => {
         if (rightSideElement) {
             // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             const lastChild = rightSideElement.lastElementChild;
-            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
+
             const distanceToRight =
+                // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
                 rightSideElement.getBoundingClientRect().right -
                 lastChild.getBoundingClientRect().right;
             setDistToRightBorder(distanceToRight);
