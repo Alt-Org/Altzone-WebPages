@@ -1,30 +1,31 @@
-'use client'
-import Image from "next/image";
-import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
-import pirate from "@/shared/assets/images/heros/pirate/pirate.webp";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import Players from "../model/players";
-import cls from "./SectionRanking.module.scss";
+'use client';
+import Image from 'next/image';
+import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
+import pirate from '@/shared/assets/images/heros/pirate/pirate.webp';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import Players from '../model/players';
+import cls from './SectionRanking.module.scss';
 
 type Props = {
     rankingPlayerText: string;
     rankingScoreText: string;
-}
+};
 
 const SectionRanking = (props: Props) => {
-
-    const {
-        rankingPlayerText,
-        rankingScoreText
-    } = props;
+    const { rankingPlayerText, rankingScoreText } = props;
 
     const { isMobileSize } = useIsMobileSize();
 
     return (
         <section className={cls.SectionRanking}>
-
             <div className={cls.backgroundImageWrapper}>
-                <Image src={bgPicture} alt="Background" layout="fill" objectFit="cover" quality={100} />
+                <Image
+                    src={bgPicture}
+                    alt="Background"
+                    layout="fill"
+                    objectFit="cover"
+                    quality={100}
+                />
             </div>
 
             <div className={cls.Content}>
@@ -36,25 +37,27 @@ const SectionRanking = (props: Props) => {
                             <td> {rankingScoreText} </td>
                         </tr>
                         {Players.map((item) => (
-                            <tr className={cls.TableContentRow} key={item.id}>
+                            <tr
+                                className={cls.TableContentRow}
+                                key={item.id}
+                            >
                                 <td>{item.id}</td>
                                 <td>{item.player}</td>
                                 <td>{item.score}</td>
                             </tr>
                         ))}
                     </table>
-
                 </div>
-                
+
                 {!isMobileSize && (
-                    <Image src={pirate} alt={"Pirate hero photo"} className={cls.PirateImage}/>
+                    <Image
+                        src={pirate}
+                        alt={'Pirate hero photo'}
+                        className={cls.PirateImage}
+                    />
                 )}
-
             </div>
-
-
         </section>
-
     );
 };
 
