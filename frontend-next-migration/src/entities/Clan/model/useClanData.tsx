@@ -1,7 +1,7 @@
-import { useGetClanByIdWithPlayersQuery } from './clanApi';
+import { useGetClanByIdWithPlayersQuery } from './clanApi'
 
 export const useClanData = (clanId: string) => {
-    const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(clanId);
+    const { data: clan, error, isLoading } = useGetClanByIdWithPlayersQuery(clanId)
 
     return {
         clan,
@@ -10,5 +10,5 @@ export const useClanData = (clanId: string) => {
         adminIds: clan?.data?.Clan?.admin_ids || [],
         players: clan?.data?.Clan?.Player || [],
         clanName: clan?.data?.Clan?.name,
-    };
-};
+    }
+}
