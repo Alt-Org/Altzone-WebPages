@@ -1,33 +1,29 @@
-import { classNames } from "@/shared/lib/classNames/classNames";
-import {ButtonHTMLAttributes, FC, LegacyRef, memo} from "react";
-import cls from "./Button.module.scss";
-
+import { ButtonHTMLAttributes, FC, LegacyRef, memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './Button.module.scss';
 
 /**
  * Module containing a React Button component with customizable themes, sizes, and square styling.
  * @module Button
  */
 
-
 export enum ButtonTheme {
-    PRIMARY = "",
-    CLEAR = "clear",
-    CLEAR_INVERTED = "clearInverted",
-    OUTLINE = "outline",
-    BACKGROUND = "background",
-    BACKGROUND_INVERTED = "backgroundInverted",
-    Graffiti = "graffiti",
-
+    PRIMARY = '',
+    CLEAR = 'clear',
+    CLEAR_INVERTED = 'clearInverted',
+    OUTLINE = 'outline',
+    BACKGROUND = 'background',
+    BACKGROUND_INVERTED = 'backgroundInverted',
+    Graffiti = 'graffiti',
 }
 
 export enum ButtonSize {
-    M = "sizeM",
-    L = "sizeL",
-    XL = "sizeXL",
-    XXL = "sizeXXL",
-    XXXL = "sizeXXXL",
+    M = 'sizeM',
+    L = 'sizeL',
+    XL = 'sizeXL',
+    XXL = 'sizeXXL',
+    XXXL = 'sizeXXXL',
 }
-
 
 /**
  * Props for the Button component.
@@ -44,9 +40,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: ButtonTheme;
     size?: ButtonSize;
     square?: boolean;
-    withScalableLink? : boolean;
+    withScalableLink?: boolean;
     disabled?: boolean;
-    ref?:  LegacyRef<HTMLButtonElement>;
+    ref?: LegacyRef<HTMLButtonElement>;
 }
 
 /**
@@ -78,7 +74,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  */
 export const Button: FC<ButtonProps> = memo((props) => {
     const {
-        className = "",
+        className = '',
         children,
         theme = ButtonTheme.PRIMARY,
         square = false,
@@ -108,4 +104,4 @@ export const Button: FC<ButtonProps> = memo((props) => {
     );
 });
 
-Button.displayName = "Button";
+Button.displayName = 'Button';

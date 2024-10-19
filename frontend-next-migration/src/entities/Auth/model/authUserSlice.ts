@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
-import { PURGE } from "redux-persist";
-import { IProfile } from "@/entities/Profile";
-import { IPlayer } from "@/entities/User";
-import { LS_KEYS } from "@/shared/const/LS_KEYS";
-import { AccessTokenInfo, AuthUserSchema } from "../types/authUser";
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
+import { PURGE } from 'redux-persist';
+import { IProfile } from '@/entities/Profile';
+import { IPlayer } from '@/entities/User';
+import { LS_KEYS } from '@/shared/const/LS_KEYS';
+import { AccessTokenInfo, AuthUserSchema } from '../types/authUser';
 
 // "use client"
 // const storedAuthUser = localStorage.getItem(LS_KEYS.AUTH_USER);
@@ -13,18 +13,16 @@ if (typeof localStorage !== 'undefined') {
     storedAuthUser = localStorage.getItem(LS_KEYS.AUTH_USER);
 }
 
-
 const parsedAuthUser: AuthUserSchema = storedAuthUser
-    ? JSON.parse(storedAuthUser) as AuthUserSchema
+    ? (JSON.parse(storedAuthUser) as AuthUserSchema)
     : {
-        isSessionExpired: false
-    };
-
+          isSessionExpired: false,
+      };
 
 const initialState: AuthUserSchema = {
     accessTokenInfo: parsedAuthUser.accessTokenInfo,
     profile: parsedAuthUser.profile,
-    isSessionExpired: parsedAuthUser.isSessionExpired || false
+    isSessionExpired: parsedAuthUser.isSessionExpired || false,
 };
 
 // we should use this helper type instead full Schema(from app/**/StateSchema) to avoid circular dependencies
@@ -33,7 +31,7 @@ type AuthState = {
 };
 
 export const authUserSlice = createSlice({
-    name: "authUser",
+    name: 'authUser',
     initialState: initialState,
 
     extraReducers: (builder) => {
@@ -63,27 +61,23 @@ export const authUserSlice = createSlice({
         logout: (state) => {
             state.profile = undefined;
             state.accessTokenInfo = undefined;
-            state.isSessionExpired = true
+            state.isSessionExpired = true;
         },
-
-    }
+    },
 });
 
 export const { actions: authUserActions } = authUserSlice;
 export const { reducer: authUserReducer } = authUserSlice;
 
-
 // Selector to check if the user is authenticated
 // export const selectIsAuthenticated = (state: StateSchema) =>
 //     !!state.authUser.profile || !!state.authUser.accessTokenInfo;
 
-
 export const selectIsAuthenticated = createSelector(
     (state: AuthState) => state.authUser.profile,
     (state: AuthState) => state.authUser.accessTokenInfo,
-    (profile, accessTokenInfo) => !!profile || !!accessTokenInfo
+    (profile, accessTokenInfo) => !!profile || !!accessTokenInfo,
 );
-
 
 // Selector to get the whole authUser state
 export const selectAuthUserState = (state: AuthState) => state.authUser;
@@ -104,6 +98,5 @@ export const selectIsSessionExpired = (state: AuthState) => state.authUser.isSes
 // Selector to check if the user has a clan
 export const selectHasClan = createSelector(
     selectProfile,
-    (profile) => !!profile && !!profile.Player && !!profile.Player.clan_id
+    (profile) => !!profile && !!profile.Player && !!profile.Player.clan_id,
 );
-

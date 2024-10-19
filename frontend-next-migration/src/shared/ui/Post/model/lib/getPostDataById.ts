@@ -1,4 +1,4 @@
-import {IPostData} from "../types";
+import { IPostData } from '../types';
 
 /**
  * Retrieves a post data object by its ID from a list of post data.
@@ -17,5 +17,5 @@ import {IPostData} from "../types";
  * console.log(post);  // { id: '1', title: 'Post 1', date: new Date(), bodyElements: [] }
  */
 export function getPostDataById(id: string, data: IPostData[]): IPostData | undefined {
-    return data.find(postData => postData.id === id);
+    return data.find((postData) => postData.id === id);
 }

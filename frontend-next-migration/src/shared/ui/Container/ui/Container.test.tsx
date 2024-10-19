@@ -1,20 +1,20 @@
-import { render, screen } from "@testing-library/react";
-import { Container } from "./Container";
+import { render, screen } from '@testing-library/react';
+import { Container } from './Container';
 
-describe("Container", () => {
-    it("renders children", () => {
+describe('Container', () => {
+    it('renders children', () => {
         render(<Container>test</Container>);
-        expect(screen.getByText("test")).toBeInTheDocument();
+        expect(screen.getByText('test')).toBeInTheDocument();
     });
 
-    it("applies additional className", () => {
+    it('applies additional className', () => {
         render(<Container className="custom">test</Container>);
-        expect(screen.getByText("test")).toHaveClass("custom");
+        expect(screen.getByText('test')).toHaveClass('custom');
     });
 
-    it("renders as fluid", () => {
+    it('renders as fluid', () => {
         render(<Container fluid>test</Container>);
-        expect(screen.getByText("test")).toHaveClass("fluid");
+        expect(screen.getByText('test')).toHaveClass('fluid');
     });
 
     // todo - fix this test

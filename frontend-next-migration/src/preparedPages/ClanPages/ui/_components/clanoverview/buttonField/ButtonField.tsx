@@ -1,12 +1,12 @@
-import Image from "next/image";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { useJoinClan } from "@/features/JoinClan";
-import { useLeaveClan } from "@/features/LeaveClan";
-import { selectProfile, useUserPermissionsV2, PermissionError } from "@/entities/Auth";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
-import lock from "@/shared/assets/images/clanLogos/lock.png";
-import cls from "./ButtonField.module.scss";
+import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useJoinClan } from '@/features/JoinClan';
+import { useLeaveClan } from '@/features/LeaveClan';
+import { selectProfile, useUserPermissionsV2, PermissionError } from '@/entities/Auth';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import lock from '@/shared/assets/images/clanLogos/lock.png';
+import cls from './ButtonField.module.scss';
 
 // import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
 // import cls from "./ButtonField.module.scss";
@@ -122,7 +122,7 @@ type Props = {
     joinClan: string;
     leaveClan: string;
     editClan: string;
-}
+};
 
 //todo Sakari please refactor it to use our new permission hook, and probably we should use clan:join permission instead clan:all
 const ClanInfo = (props: Props) => {
@@ -141,11 +141,13 @@ const ClanInfo = (props: Props) => {
     const { handleLeave } = useLeaveClan();
 
     const { checkPermissionFor } = useUserPermissionsV2();
-    const permissionToSeeClans = checkPermissionFor("clan:seeAll");
+    const permissionToSeeClans = checkPermissionFor('clan:seeAll');
 
     const user = useSelector(selectProfile);
     const playerId: string | undefined = user?.Player?._id;
-    const isInClan = playerId ? clanData.Player.some((player: { _id: string }) => player._id === playerId) : false;
+    const isInClan = playerId
+        ? clanData.Player.some((player: { _id: string }) => player._id === playerId)
+        : false;
 
     /**
      * Handles permission errors by displaying appropriate toast messages.
@@ -158,17 +160,17 @@ const ClanInfo = (props: Props) => {
                 toast.error(toastNotLoggedIn);
                 break;
             case PermissionError.AlreadyInClan:
-                toast.error("You are already a member of a clan.");
+                toast.error('You are already a member of a clan.');
                 break;
             case PermissionError.NotInClan:
-                toast.error("You are not a member of any clan.");
+                toast.error('You are not a member of any clan.');
                 break;
             case PermissionError.ClanLimitExceeded:
-                toast.error("Clan limit has been reached.");
+                toast.error('Clan limit has been reached.');
                 break;
             case PermissionError.UnknownPermission:
             default:
-                toast.error("Unknown access error.");
+                toast.error('Unknown access error.');
                 break;
         }
     };
@@ -181,7 +183,8 @@ const ClanInfo = (props: Props) => {
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
                     size={ButtonSize.L}
-                    onClick={() => handlePermissionError(permissionToSeeClans.error)} >
+                    onClick={() => handlePermissionError(permissionToSeeClans.error)}
+                >
                     {joinClanBtn}
                 </Button>
             ) : !clanData.isOpen ? (
@@ -191,13 +194,15 @@ const ClanInfo = (props: Props) => {
                         className={cls.JoinClanBtn}
                         theme={ButtonTheme.Graffiti}
                         size={ButtonSize.L}
-                        onClick={() => handlePermissionError(PermissionError.ClanLimitExceeded)} >
+                        onClick={() => handlePermissionError(PermissionError.ClanLimitExceeded)}
+                    >
                         {joinClanBtn}
                     </Button>
                     <Image
                         src={lock}
                         alt="Clan Logo"
-                        className={cls.lock} />
+                        className={cls.lock}
+                    />
                 </>
             ) : !isInClan ? (
                 // User is not a member of the clan
@@ -205,7 +210,8 @@ const ClanInfo = (props: Props) => {
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
                     size={ButtonSize.L}
-                    onClick={() => handleJoin(clanData._id, playerId ?? "", "join")} >
+                    onClick={() => handleJoin(clanData._id, playerId ?? '', 'join')}
+                >
                     {joinClanBtn}
                 </Button>
             ) : (
@@ -214,7 +220,8 @@ const ClanInfo = (props: Props) => {
                     className={cls.DeleteClanBtn}
                     theme={ButtonTheme.Graffiti}
                     size={ButtonSize.L}
-                    onClick={() => handleLeave()} >
+                    onClick={() => handleLeave()}
+                >
                     {leaveClanBtn}
                 </Button>
             )}

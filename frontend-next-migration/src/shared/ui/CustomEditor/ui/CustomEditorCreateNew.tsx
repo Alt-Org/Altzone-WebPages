@@ -1,23 +1,21 @@
-'use client'
-import { ChangeEvent, FormEvent, useState } from "react";
-import { generateSlug } from "../lib/generateSlug";
-import cls from "./CustomEditor.module.scss";
-import { EditorForm } from "./EditorForm";
-import { EditorPreview } from "./EditorPreview";
+'use client';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { generateSlug } from '../lib/generateSlug';
+import cls from './CustomEditor.module.scss';
+import { EditorForm } from './EditorForm';
+import { EditorPreview } from './EditorPreview';
 
 type Props = {
     /**
      * A callback function to create a new entity.
      * @param data - The data object containing title, slug, description, and content of the new entity.
      */
-    createNew?: (
-        data: {
-            title: string,
-            slug: string,
-            description: string,
-            content: string,
-        },
-    ) => Promise<void>;
+    createNew?: (data: {
+        title: string;
+        slug: string;
+        description: string;
+        content: string;
+    }) => Promise<void>;
 
     /**
      * The name of the entity to be created.
@@ -40,12 +38,11 @@ type Props = {
  * <CustomEditorCreateNew createNew={createNewBlog} entityName="Blog" />
  * ```
  */
-export const CustomEditorCreateNew = ({createNew, entityName = 'Blog'}: Props) => {
-
-    const [title, setTitle] = useState("");
-    const [slug, setSlug] = useState("");
-    const [description, setDescription] = useState("");
-    const [content, setContent] = useState("");
+export const CustomEditorCreateNew = ({ createNew, entityName = 'Blog' }: Props) => {
+    const [title, setTitle] = useState('');
+    const [slug, setSlug] = useState('');
+    const [description, setDescription] = useState('');
+    const [content, setContent] = useState('');
 
     /**
      * Handles the change event for the title input field.
@@ -130,6 +127,4 @@ export const CustomEditorCreateNew = ({createNew, entityName = 'Blog'}: Props) =
             </div>
         </div>
     );
-}
-
-
+};
