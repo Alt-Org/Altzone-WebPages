@@ -1,1 +1,1 @@
-export {default as Paragraph} from "./ui/Paragraph";
+export { default as Paragraph } from './ui/Paragraph';

@@ -1,2 +1,1 @@
-export {default as MembersPage} from "./ui/MembersPage.async";
-
+export { default as MembersPage } from './ui/MembersPage.async';

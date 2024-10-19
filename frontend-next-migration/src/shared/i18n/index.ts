@@ -1,4 +1,3 @@
-export {useTranslation as useServerTranslation} from "./settings/index";
+export { useTranslation as useServerTranslation } from './settings/index';
 
-
-export {useTranslation as useClientTranslation} from "./settings/client";
+export { useTranslation as useClientTranslation } from './settings/client';
