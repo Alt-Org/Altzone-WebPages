@@ -29,7 +29,7 @@
     "react-hooks/exhaustive-deps": "off", // todo activate after testes otherwise it can be dangerous
     "react/jsx-key": "error",
     "react/prop-types": "off",
-    "react/jsx-no-duplicate-props": "`error",
+    "react/jsx-no-duplicate-props": "error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
     "react/jsx-no-target-blank": "error",
