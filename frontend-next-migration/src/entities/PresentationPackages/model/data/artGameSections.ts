@@ -1,4 +1,4 @@
-import { createSection } from "../createSection";
+import { createSection } from '../createSection';
 
 /**
  * This TypeScript code snippet is responsible for creating an array of sections for an art game.
@@ -8,21 +8,21 @@ import { createSection } from "../createSection";
  */
 
 const i18nKeyPrefixes = [
-  'info',
-  'intro',
-  'implementation',
-  'message',
-  'content',
-  'joinus',
-  'literature',
+    'info',
+    'intro',
+    'implementation',
+    'message',
+    'content',
+    'joinus',
+    'literature',
 ];
 
 const imageSrcs = [
-  '/images/gameArt/info.webp',
-  '/images/gameArt/intro.webp',
-  '/images/gameArt/implementation.webp',
-  '/images/gameArt/message.webp',
-  '/images/gameArt/joinus.webp',
+    '/images/gameArt/info.webp',
+    '/images/gameArt/intro.webp',
+    '/images/gameArt/implementation.webp',
+    '/images/gameArt/message.webp',
+    '/images/gameArt/joinus.webp',
 ];
 
 const logoSrc = '/images/gameArt/gameArtLogo.webp';
@@ -33,15 +33,15 @@ const logoSrc = '/images/gameArt/gameArtLogo.webp';
  */
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
     createSection({
-      prefix: key,
-      index: index,
-      image: {
-        src: imageSrcs[index],
-        alt: `${key}-image`,
-      },
-      logo: {
-        src: logoSrc,
-        alt: `${key}-logo`,
-      },
-    })
+        prefix: key,
+        index: index,
+        image: {
+            src: imageSrcs[index],
+            alt: `${key}-image`,
+        },
+        logo: {
+            src: logoSrc,
+            alt: `${key}-logo`,
+        },
+    }),
 );

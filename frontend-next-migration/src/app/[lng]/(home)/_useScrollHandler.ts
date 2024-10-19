@@ -4,7 +4,8 @@ export const _useScrollHandler = (introRef: React.RefObject<HTMLDivElement>) => 
     const [isScrollbarHidden, setIsScrollbarHidden] = useState(true);
 
     const updateScrollbarVisibility = () => {
-        const isBelowIntro = window.scrollY > (introRef.current?.clientHeight || window.innerHeight);
+        const isBelowIntro =
+            window.scrollY > (introRef.current?.clientHeight || window.innerHeight);
         setIsScrollbarHidden(!isBelowIntro);
     };
 

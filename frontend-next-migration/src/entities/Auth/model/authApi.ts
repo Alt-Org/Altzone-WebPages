@@ -1,5 +1,5 @@
-import { gameApi } from "@/shared/api";
-import { IUserRegisterDto, IUserLoginDto, ILoginResponse } from "../types/authUser";
+import { gameApi } from '@/shared/api';
+import { IUserRegisterDto, IUserLoginDto, ILoginResponse } from '../types/authUser';
 
 const authApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -31,5 +31,5 @@ export const {
     useLoginMutation,
     useRegisterMutation,
     useLogoutMutation,
-    endpoints: authEndpoints
+    endpoints: authEndpoints,
 } = authApi;
