@@ -1,27 +1,33 @@
 # Branching Strategy
 
-This document outlines the branching strategy and naming conventions to be followed in this project.
-
-## Branch Prefixes
-
-- `feature`: For new features
-- `bug`: For bug fixes
-- `hotfix`: For urgent, critical fixes
-- `enhancement`: For improvements to existing features
-- `refactor`: For code refactoring
-- `docs`: For documentation updates
-- `test`: For adding or updating tests
-- `chore`: For non-functional tasks (e.g., dependency updates)
-- `perf`: For performance improvements
-- `style`: For code style changes (formatting, whitespace, etc.)
+This document outlines the branching strategy and naming conventions to maintain consistency and clarity in our development process.
 
 ---
 
-## Naming Convention
+## 📂 Branch Prefixes
 
-Branch names should be prefixed by your username, followed by the type of task you're working on. They should also reference the issue number or provide a short description of the task.
+Use the following prefixes to categorize your branches:
 
-### Example:
+- **`feature`**: New features
+- **`bug`**: Bug fixes
+- **`hotfix`**: Urgent, critical fixes
+- **`enhancement`**: Improvements to existing features
+- **`refactor`**: Code refactoring
+- **`docs`**: Documentation updates
+- **`test`**: Adding or updating tests
+- **`chore`**: Non-functional tasks (e.g., dependency updates)
+- **`perf`**: Performance improvements
+- **`style`**: Code style changes (e.g., formatting, whitespace)
+
+---
+
+## 📝 Naming Convention
+
+Branch names should follow this structure for better traceability:
+
+**`<username>/<prefix>/<issue-number or short-description>`**
+
+### Examples:
 
 - `joni/feature/1-add-authentication`
 - `peter/bug/12-fix-login-issue`
@@ -29,63 +35,34 @@ Branch names should be prefixed by your username, followed by the type of task y
 
 ---
 
-## Creating a Branch
+## 🚀 Creating a Branch
 
-⚠️ All branches must be created from the **dev** branch to ensure your work is based on the latest development code.
+⚠️ **All branches must be created from the `dev` branch** to ensure they are based on the latest development code.
 
-### Follow these steps when creating a branch:
+### Follow these steps to create a branch:
 
-1. Go to the **Issues** page in GitHub.
-2. **Assign the issue to yourself** to avoid conflicts where others may work on the same issue simultaneously.
+1. **Go to the Issues page in GitHub** and locate the issue you're working on.
+2. **Assign the issue to yourself** to prevent overlapping work.
 
-   ![Assign issue to yourself](https://github.com/user-attachments/assets/14faf6c9-6102-49af-ab51-69a01404cc87)
+   <img width="802" alt="Assign issue" src="https://github.com/user-attachments/assets/fc332e6e-66c1-49e4-9701-a33127954ba6">
 
-3. Use the **branch naming convention** as outlined above.
-4. Make sure to change the source branch to **dev** (see the images below).
+3. **Create the branch** using the button on the right. Follow the naming convention and ensure you set the branch source to `dev`.
 
-| ![Change source branch](https://github.com/user-attachments/assets/c7bcd00b-8e0c-4cfb-a939-82c07b89fb7a) | ![Create new branch](https://github.com/user-attachments/assets/5598fd93-4bf0-42c5-b0b8-707d94ed10d2) |
-| :------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: |
+   | <img width="949" alt="Set branch source" src="https://github.com/user-attachments/assets/d1dc81c5-3a40-42e6-91ca-db6f79f462a0"> | <img width="866" alt="Branch naming" src="https://github.com/user-attachments/assets/e1022125-4a7e-41e5-bc3b-ce0ba5e9f35c"> |
+   | :-----------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------: |
 
----
+4. After creating the branch, **add it to the project board** under the "In Progress" column to keep your tasks organized.
 
-5. After successfully creating the branch, **add it to the project board** under "In Progress" to track your work.
+   <img width="342" alt="Add to project board" src="https://github.com/user-attachments/assets/175304e0-ead5-47e1-b809-fffc9f6597f3">
 
-   ![Add to project board](https://github.com/user-attachments/assets/71279c4e-744d-47e0-9280-cbc16ea67caf)
+5. Verify that your new branch is visible in **VS Code** under Source Control. Alternatively, you can pull the branch using other GitHub tools like GitHub Desktop.
 
-6. If everything is done correctly, you should see your new branch in **VS Code** under Source Control, where it will be linked to the project. Alternatively, you can **pull the branch** using other GitHub options, such as GitHub Desktop or pulling via URL.
-
-   | ![Branch in VS Code](https://github.com/user-attachments/assets/ba9b3273-4a84-4a2b-911f-307cf813c256) | ![Pull options](https://github.com/user-attachments/assets/a787a525-2d4b-4f30-a1cc-181b028bfc95) |
-   | :---------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------: |
+   | <img width="412" alt="VS Code branch" src="https://github.com/user-attachments/assets/d0ad8aaa-8f1b-4b2a-bc61-760466b599b4"> | <img width="283" alt="Pull branch" src="https://github.com/user-attachments/assets/8fb1d871-8b72-4f8a-9b78-56fc33f68e5a"> |
+   | :--------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
 
 ---
 
-## Pull Request
+## 🧠 Best Practices
 
-Once your task is complete, you can create a pull request from the main GitHub window or the **Pull Requests** tab.
-
-<img width="931" alt="image" src="https://github.com/user-attachments/assets/0715ab6e-a8f9-482f-abf3-1c82bd587c2d">
-
-- Alternatively, you can create a pull request directly from **VS Code** using the **Pull Requests** extension.
-
-<img width="300" alt="image" src="https://github.com/user-attachments/assets/e04a9172-ed09-40ff-8750-ae8fd8f320c1">
-
-### Pull Request Title and Description
-
-- **Title:** The pull request title should follow the branch naming format and briefly describe the purpose of the changes.
-
-  **Example:** `joni/feature/123-add-authentication`
-
-- **Description:**
-
-  - Start the description with **`Fixes #issue_number`** to automatically close the related issue when the pull request is merged.
-  - Provide a clear and concise explanation of what the pull request does, including any important details that reviewers should be aware of.
-
-  ![Pull request description example](https://github.com/user-attachments/assets/d21b1de3-c95f-46d5-b8d8-f1a1a0e25386)
-
-- After submitting your pull request, you can move on to the next task. However, make sure you have allocated time to address any feedback or additional fixes that might come up in the review process, so you can ensure your changes are completed and merged.
-
----
-
-## Notes
-
-- Avoid doing multiple unrelated tasks in a single branch.
+- **Keep it focused**: Avoid including multiple unrelated tasks in a single branch to maintain a clean and organized codebase.
+- **Be descriptive**: Use clear and concise descriptions in your branch names to make them easily identifiable.
