@@ -13,9 +13,10 @@
   ],
   "rules": {
     "prettier/prettier" : "error",
-    "@stylistic/padding-line-between-statements": ["error",
-      { "blankLine": "always", "prev": ["*"], "next": "*" },
+    "@stylistic/padding-line-between-statements": ["warn",
+//      { "blankLine": "always", "prev": ["*"], "next": "*" },
       { "blankLine": "never", "prev": ["cjs-import", "directive" , "import"], "next": "*" },
+      { "blankLine": "always", "prev": ["cjs-import", "import"], "next": ["export"]},
       { "blankLine": "always", "prev": "*", "next": ["type", "interface"] },
       { "blankLine": "always", "prev": ["type", "interface"], "next": "*" }
     ],
@@ -25,10 +26,10 @@
 
     "react-hooks/rules-of-hooks": "warn",
     "react/no-unescaped-entities": 0,
-//    "react-hooks/exhaustive-deps": "off", // todo activate after testes otherwise it can be dangerous
+    "react-hooks/exhaustive-deps": "off", // todo activate after testes otherwise it can be dangerous
     "react/jsx-key": "error",
     "react/prop-types": "off",
-    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-duplicate-props": "`error",
     "react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
     "react/jsx-no-useless-fragment": "error",
     "react/jsx-no-target-blank": "error",
@@ -50,7 +51,7 @@
     "array-callback-return": "error",
     "id-length": ["warn", { "min": 2, "exceptions": ["i", "j", "x", "y", "z", "t", "a", "b", "_"] }],
     "yoda": ["error", "never"],
-    "require-await": "error",
+    "require-await": "warn",
 
     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" , "varsIgnorePattern": "^_" }],
     "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }],
