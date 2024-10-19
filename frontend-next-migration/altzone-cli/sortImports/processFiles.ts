@@ -1,16 +1,20 @@
-import { Project } from 'ts-morph';
-import { processFile } from './processFile';
-import { appLayers } from '../const';
-import { exec } from 'child_process';
-import path from 'path';
-import { promisify } from 'util';
+import { Project, QuoteKind } from "ts-morph";
+import { processFile } from "./processFile";
+import { appLayers } from "../const";
+import { exec } from "child_process";
+import path from "path";
+import { promisify } from "util";
 
 // Convert exec to async function
 const execAsync = promisify(exec);
 
 // Asynchronous function to process multiple files
 async function processFiles(paths: string[]) {
-    const project = new Project({});
+    const project = new Project({
+        manipulationSettings: {
+            quoteKind: QuoteKind.Single
+        }
+    });
 
     // Add files from specified paths/patterns
     const sourceFiles = project.addSourceFilesAtPaths(paths);
