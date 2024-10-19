@@ -1,1 +1,1 @@
-export {default as ClickableBorder} from "./ClickableBorder"
+export { default as ClickableBorder } from './ClickableBorder';

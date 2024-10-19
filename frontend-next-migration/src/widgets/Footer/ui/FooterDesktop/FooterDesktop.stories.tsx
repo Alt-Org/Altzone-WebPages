@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FooterDesktop from './FooterDesktop';
 import { socialIconLinks } from '../../model/data/socialSectionMenu';
+import FooterDesktop from './FooterDesktop';
 
 const meta = {
     title: 'widgets/Footer/Desktop',
@@ -9,7 +9,8 @@ const meta = {
         layout: 'centered',
         docs: {
             description: {
-                component: 'The `FooterDesktop` component is used to display the footer section for desktop screens, including social media links, company details, and consent information.',
+                component:
+                    'The `FooterDesktop` component is used to display the footer section for desktop screens, including social media links, company details, and consent information.',
             },
         },
     },
@@ -25,12 +26,14 @@ const meta = {
         },
         texts: {
             control: 'object',
-            description: 'An object containing text strings like consent message, cookies policy, privacy details, the current year, and the company name.',
+            description:
+                'An object containing text strings like consent message, cookies policy, privacy details, the current year, and the company name.',
         },
     },
 } satisfies Meta<typeof FooterDesktop>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {

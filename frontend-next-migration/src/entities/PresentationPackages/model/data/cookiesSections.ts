@@ -1,26 +1,29 @@
 import { createSection } from '../createSection';
 
 const i18nKeyPrefixes = [
-  'policies',
-  'cookies',
-  'intrepretation',
-  'type',
-  'choices',
-  'moreinfo',
-  'contact',
+    'policies',
+    'cookies',
+    'interpretation',
+    'type',
+    'choices',
+    'moreinfo',
+    'contact',
 ];
-// next takes path : \public\images\
-const imageSrcs = [''];
 
+const imageSrcs = [''];
 const logoSrc = '';
 
 export const CookiesSections = i18nKeyPrefixes.map((key, index) =>
-  createSection(
-    key,
-    index,
-    imageSrcs[index],
-    `${key}-image`,
-    logoSrc,
-    `${key}-logo`,
-  ),
+    createSection({
+        prefix: key,
+        index: index,
+        image: {
+            src: imageSrcs[index] || '',
+            alt: `${key}-image`,
+        },
+        logo: {
+            src: logoSrc,
+            alt: `${key}-logo`,
+        },
+    }),
 );

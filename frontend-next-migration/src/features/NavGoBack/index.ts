@@ -1,3 +1,3 @@
-import {NavGoBackButton} from "./ui/NavGoBackButton";
+import { NavGoBackButton } from './ui/NavGoBackButton';
 
-export {NavGoBackButton};
+export { NavGoBackButton };

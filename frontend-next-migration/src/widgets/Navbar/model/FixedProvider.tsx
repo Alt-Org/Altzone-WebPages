@@ -29,9 +29,7 @@ export const FixedProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <FixedContext.Provider value={{ isFixed, toggleFixed }}>
-            {children}
-        </FixedContext.Provider>
+        <FixedContext.Provider value={{ isFixed, toggleFixed }}>{children}</FixedContext.Provider>
     );
 };
 

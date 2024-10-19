@@ -1,20 +1,19 @@
-"use client"
+'use client';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { ValidationAddNewClan } from '../validations';
-import { IClanCreateDto, useCreateClanMutation } from "@/entities/Clan";
+import { StateSchema } from '@/app/_providers/StoreProvider';
+import { IClanCreateDto, useCreateClanMutation } from '@/entities/Clan';
 import { authUserActions, selectProfile } from '@/entities/Auth';
-import { useDispatch, useSelector } from "react-redux";
-import {StateSchema} from "@/app/_providers/StoreProvider";
+import { ValidationAddNewClan } from '../validations';
 
 type Props = {
-    onSuccess: () => void;
-}
+    onSuccess?: () => void;
+};
 
 export const useNewClanForm = ({ onSuccess }: Props) => {
-
     const {
         register,
         handleSubmit,
@@ -23,7 +22,15 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
         resolver: yupResolver(ValidationAddNewClan),
     });
 
-    const [create, { data, isLoading, isError, error }] = useCreateClanMutation();
+    const [
+        create,
+        {
+            data,
+            isLoading,
+            // isError,
+            error,
+        },
+    ] = useCreateClanMutation();
 
     const profile = useSelector((state: StateSchema) => selectProfile(state));
     const dispatch = useDispatch();
@@ -42,7 +49,6 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
 
     //update store profile after creating new clan. (apparently updates localstorage too)
     const handleUpdateClanId = (newClanId: string) => {
-
         if (profile) {
             const updatedProfile = {
                 ...profile,
@@ -67,12 +73,12 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
             handleUpdateClanId(clanId);
             //updateClanId(clanId);
             toast.success('Klaani oli  luotu!');
-            onSuccess();
+            onSuccess?.();
             return;
         }
 
         if (error) {
-            // @ts-ignore
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why fix
             toast.error(error?.data?.message);
             return;
         }

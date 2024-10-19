@@ -1,1 +1,1 @@
-export {default as CustomForm} from "./ui/CustomForm"
+export { default as CustomForm } from './ui/CustomForm';

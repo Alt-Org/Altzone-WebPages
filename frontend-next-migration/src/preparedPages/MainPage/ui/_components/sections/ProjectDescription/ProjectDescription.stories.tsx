@@ -1,5 +1,5 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import { ProjectDescription } from './index';
 
 export default {
@@ -7,7 +7,9 @@ export default {
     component: ProjectDescription,
 } as ComponentMeta<typeof ProjectDescription>;
 
-const Template: ComponentStory<typeof ProjectDescription> = (args) => <ProjectDescription {...args} />;
+const Template: ComponentStory<typeof ProjectDescription> = (args) => (
+    <ProjectDescription {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {};

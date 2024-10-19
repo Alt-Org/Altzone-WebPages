@@ -1,18 +1,20 @@
-import {ChangeEvent} from "react";
-import { useTranslation } from "react-i18next";
-import { usePathname, useRouter } from "next/navigation";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { usePathname } from 'next/navigation';
+import { ChangeEvent } from 'react';
+import { useTranslation } from 'react-i18next';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 type LangSwitcherProps = {
     className?: string;
-}
+};
 
-export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
-    const router = useRouter();
+export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     const currentPathname = usePathname();
 
     // const { t, i18n: { changeLanguage, language: currentLocale } } = useClientTranslation();
-    const { t, i18n: {language } } = useTranslation();
+    const {
+        t,
+        i18n: { language },
+    } = useTranslation();
 
     const handleChangeLanguage = (newLanguage: AppLanguage) => {
         window.location.href = currentPathname.replace(`/${language}`, `/${newLanguage}`);
@@ -34,18 +36,15 @@ export const LangSwitcher = ({ className = "" }: LangSwitcherProps) => {
     };
 
     return (
-        <>
-            <select
-                data-testid="language-switcher"
-                value={language}
-                onChange={handleSelectChange}
-                className={classNames("", {}, [className])}
-            >
-                <option value="fi"> {t('finnish')}</option>
-                <option value="en">{t('english')}</option>
-                {/*<option value="ru">{t('russian')}</option>*/}
-            </select>
-        </>
+        <select
+            data-testid="language-switcher"
+            value={language}
+            onChange={handleSelectChange}
+            className={classNames('', {}, [className])}
+        >
+            <option value="fi"> {t('finnish')}</option>
+            <option value="en">{t('english')}</option>
+            {/*<option value="ru">{t('russian')}</option>*/}
+        </select>
     );
 };
-

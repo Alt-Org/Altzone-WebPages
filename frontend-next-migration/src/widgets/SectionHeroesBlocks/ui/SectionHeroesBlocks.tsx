@@ -1,22 +1,18 @@
-'use client'
-import { HeroCard, heroes } from "@/entities/Hero";
-import cls from "./SectionHeroesBlocks.module.scss";
-import {useInView} from "react-intersection-observer";
-import {useClientTranslation} from "@/shared/i18n";
-import {useParams} from "next/navigation";
-
+'use client';
+import { useInView } from 'react-intersection-observer';
+import { HeroCard, heroes } from '@/entities/Hero';
+import cls from './SectionHeroesBlocks.module.scss';
 
 type Props = {
-    backgroundImageSrc? : string
-}
-
+    backgroundImageSrc?: string;
+};
 
 const SectionHeroes2 = (props: Props) => {
-    const {backgroundImageSrc} = props;
+    const { backgroundImageSrc } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
-        triggerOnce: true
+        triggerOnce: true,
     });
 
     return (
@@ -25,10 +21,13 @@ const SectionHeroes2 = (props: Props) => {
             style={{ backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none' }}
             ref={ref}
         >
-            <div className={cls.Content} ref={ref}>
-                {heroes.map((item, index) => (
+            <div
+                className={cls.Content}
+                ref={ref}
+            >
+                {heroes.map((item) => (
                     <HeroCard
-                        title={""}
+                        title={''}
                         className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
                         key={item.title}
                         id={item.title}
@@ -42,6 +41,3 @@ const SectionHeroes2 = (props: Props) => {
 };
 
 export default SectionHeroes2;
-
-
-

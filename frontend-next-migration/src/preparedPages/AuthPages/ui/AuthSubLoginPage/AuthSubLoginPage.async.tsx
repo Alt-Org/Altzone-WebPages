@@ -1,3 +1,3 @@
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic';
 
-export const AuthSubLoginPageAsync = dynamic(()=> import('./AuthSubLoginPage'));
+export const AuthSubLoginPageAsync = dynamic(() => import('./AuthSubLoginPage'));

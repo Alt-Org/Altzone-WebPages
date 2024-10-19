@@ -1,32 +1,35 @@
-import { IPlayer } from "@/entities/User";
-import { IProfile } from "@/entities/Profile";
+import { IPlayer } from '@/entities/User';
+import { IProfile } from '@/entities/Profile';
 
-export type IPlayerRegisterPartDto = Pick<IPlayer, "name" | "backpackCapacity" | "uniqueIdentifier" | "above13">
+export type IPlayerRegisterPartDto = Pick<
+    IPlayer,
+    'name' | 'backpackCapacity' | 'uniqueIdentifier' | 'above13'
+>;
 
-export type IUserRegisterDto = Pick<IProfile, 'username'> & {
-    password: string,
-    repeatPassword: string,
-    Player: IPlayerRegisterPartDto
+export type IUserRegisterDto = Pick<IProfile<IPlayer>, 'username'> & {
+    password: string;
+    repeatPassword: string;
+    Player: IPlayerRegisterPartDto;
 };
 
-export type IUserLoginDto = Pick<IProfile, 'username'> & { password: string };
+export type IUserLoginDto = Pick<IProfile<IPlayer>, 'username'> & { password: string };
 
-export type ILoginResponse = & IProfile & {
-    accessToken: string
-}
+export type ILoginResponse = IProfile<IPlayer> & {
+    accessToken: string;
+};
 
 export type AccessTokenInfoResponse = {
-    accessToken: string,
-    accessTokenExpiresInSecIn: number
-}
+    accessToken: string;
+    accessTokenExpiresInSecIn: number;
+};
 
 type AccessTokenInfo = {
-    accessToken: string,
-    accessTokenExpiresAt: number
-}
+    accessToken: string;
+    accessTokenExpiresAt: number;
+};
 
 export type AuthUserSchema = {
-    profile?: IProfile,
-    accessTokenInfo?: AccessTokenInfo
-    isSessionExpired: boolean
-}
+    profile?: IProfile<IPlayer>;
+    accessTokenInfo?: AccessTokenInfo;
+    isSessionExpired: boolean;
+};

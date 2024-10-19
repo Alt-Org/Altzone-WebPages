@@ -1,3 +1,3 @@
-export {default as PlayWithUs} from "./PlayWithUs";
+export { default as PlayWithUs } from './PlayWithUs';
 
-export type {Props as PlayWithUsProps} from "./PlayWithUs"
+export type { Props as PlayWithUsProps } from './PlayWithUs';

@@ -1,5 +1,5 @@
-'use client'
-import {useEffect} from 'react';
+'use client';
+import { useEffect } from 'react';
 
 /**
  * Custom hook that scrolls the window to the top each time the component that uses it is mounted.

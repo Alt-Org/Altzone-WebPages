@@ -1,11 +1,8 @@
-'use client'
-import { selectClanId } from "@/entities/Auth/model/authUserSlice";
-import { useEffect } from "react";
-import { useRouter, usePathname } from 'next/navigation';
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-
-
+'use client';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectClanId } from '@/entities/Auth';
 
 const MyClanPage = () => {
     const router = useRouter();

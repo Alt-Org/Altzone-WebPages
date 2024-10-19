@@ -1,7 +1,6 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
-import cls from './Container.module.scss'
-import {ReactNode} from "react";
-
+import { ReactNode } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './Container.module.scss';
 
 interface ContainerProps {
     className?: string;
@@ -24,15 +23,10 @@ interface ContainerProps {
  </Container>
  ```
  */
-export const Container = ({className='', fluid = false ,children}: ContainerProps) => {
-
+export const Container = ({ className = '', fluid = false, children }: ContainerProps) => {
     const mods: Record<string, boolean> = {
         [cls.fluid]: fluid,
     } as Record<string, boolean>;
 
-    return (
-        <div className={classNames(cls.Container,mods,[className])}>
-            {children}
-        </div>
-    );
+    return <div className={classNames(cls.Container, mods, [className])}>{children}</div>;
 };
