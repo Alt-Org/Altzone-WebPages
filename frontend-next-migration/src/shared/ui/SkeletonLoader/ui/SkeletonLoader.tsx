@@ -1,6 +1,6 @@
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./SkeletonLoader.module.scss";
-import React from "react";
+import React from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './SkeletonLoader.module.scss';
 
 interface SkeletonLoaderProps {
     numberOfRows?: number;
@@ -46,25 +46,40 @@ export const SkeletonLoaderForClansDesktop = ({
     const skeletonRows = Array(numberOfRows).fill(0);
     return (
         <React.Fragment>
-            <h1 style={{ textAlign: "center", marginBottom: "20px" }}>{clansTitle}</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>{clansTitle}</h1>
             <div className={classNames(cls.containerForClansDesktop, {}, [className])}>
-                <div className={classNames(cls.topRowForClans)} >
-                    <div className={cls.topRowHeader}><strong>{rating}</strong></div>
-                    <div className={cls.topRowHeader}><strong>{clan}</strong></div>
-                    <div className={cls.topRowHeader}><strong>{clanMaster}</strong></div>
-                    <div className={cls.topRowHeader}><strong>{coins}</strong></div>
-                    <div className={cls.topRowHeader}><strong>{members}</strong></div>
-                    <div className={cls.topRowHeader}><strong>{tag}</strong></div>
+                <div className={classNames(cls.topRowForClans)}>
+                    <div className={cls.topRowHeader}>
+                        <strong>{rating}</strong>
+                    </div>
+                    <div className={cls.topRowHeader}>
+                        <strong>{clan}</strong>
+                    </div>
+                    <div className={cls.topRowHeader}>
+                        <strong>{clanMaster}</strong>
+                    </div>
+                    <div className={cls.topRowHeader}>
+                        <strong>{coins}</strong>
+                    </div>
+                    <div className={cls.topRowHeader}>
+                        <strong>{members}</strong>
+                    </div>
+                    <div className={cls.topRowHeader}>
+                        <strong>{tag}</strong>
+                    </div>
                 </div>
 
                 {skeletonRows.map((_, rowIndex) => (
-                    <div key={rowIndex} className={classNames(cls.skeletonContainerForClans)}>
-                        <div className={classNames(cls.smallSkeletonForClans)}></div>
-                        <div className={classNames(cls.skeletonForClans)}></div>
-                        <div className={classNames(cls.skeletonForClans)}></div>
-                        <div className={classNames(cls.smallSkeletonForClans)}></div>
-                        <div className={classNames(cls.smallSkeletonForClans)}></div>
-                        <div className={classNames(cls.skeletonForClans)}></div>
+                    <div
+                        key={rowIndex}
+                        className={classNames(cls.skeletonContainerForClans)}
+                    >
+                        <div className={classNames(cls.smallSkeletonForClans)} />
+                        <div className={classNames(cls.skeletonForClans)} />
+                        <div className={classNames(cls.skeletonForClans)} />
+                        <div className={classNames(cls.smallSkeletonForClans)} />
+                        <div className={classNames(cls.smallSkeletonForClans)} />
+                        <div className={classNames(cls.skeletonForClans)} />
                     </div>
                 ))}
             </div>
@@ -102,16 +117,37 @@ export const SkeletonLoaderForClansMobile = ({
     const cards = Array(numberOfCards).fill(0);
     return (
         <React.Fragment>
-            <h1 style={{ textAlign: "center", marginBottom: "20px" }}>{clansTitle}</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>{clansTitle}</h1>
             <div className={classNames(cls.containerForClansMobile, {}, [className])}>
                 {cards.map((_, rowIndex) => (
-                    <div key={rowIndex} className={classNames(cls.skeletonCard)}>
-                        <div className={cls.cardRow}><strong>{rating}:</strong> <div className={classNames(cls.skeletonForClans)}></div></div>
-                        <div className={cls.cardRow}><strong>{clan}:</strong><div className={classNames(cls.skeletonForClans)}></div></div>
-                        <div className={cls.cardRow}><strong>{coins}:</strong><div className={classNames(cls.skeletonForClans)}></div></div>
-                        <div className={cls.cardRow}><strong>{tag}:</strong><div className={classNames(cls.skeletonForClans)}></div></div>
-                        <div className={cls.cardRow}><strong>{members}:</strong><div className={classNames(cls.skeletonForClans)}></div></div>
-                        <div className={cls.cardRow}><strong>{clanMaster}:</strong><div className={classNames(cls.skeletonForClans)}></div></div>
+                    <div
+                        key={rowIndex}
+                        className={classNames(cls.skeletonCard)}
+                    >
+                        <div className={cls.cardRow}>
+                            <strong>{rating}:</strong>{' '}
+                            <div className={classNames(cls.skeletonForClans)} />
+                        </div>
+                        <div className={cls.cardRow}>
+                            <strong>{clan}:</strong>
+                            <div className={classNames(cls.skeletonForClans)} />
+                        </div>
+                        <div className={cls.cardRow}>
+                            <strong>{coins}:</strong>
+                            <div className={classNames(cls.skeletonForClans)} />
+                        </div>
+                        <div className={cls.cardRow}>
+                            <strong>{tag}:</strong>
+                            <div className={classNames(cls.skeletonForClans)} />
+                        </div>
+                        <div className={cls.cardRow}>
+                            <strong>{members}:</strong>
+                            <div className={classNames(cls.skeletonForClans)} />
+                        </div>
+                        <div className={cls.cardRow}>
+                            <strong>{clanMaster}:</strong>
+                            <div className={classNames(cls.skeletonForClans)} />
+                        </div>
                     </div>
                 ))}
             </div>
@@ -128,10 +164,7 @@ export const SkeletonLoaderForClansMobile = ({
  * @param {string} [props.className=''] - Additional CSS class names to apply to the root container for custom styling.
  * @returns {JSX.Element} A JSX element representing the skeleton loader with headers and rows for each section.
  */
-export const SkeletonLoaderWithHeader = ({
-    sections = 1, 
-    className = ''
-}: SkeletonLoaderProps) => {
+export const SkeletonLoaderWithHeader = ({ sections = 1, className = '' }: SkeletonLoaderProps) => {
     const skeletonSections = Array(sections).fill(0);
     return (
         <div className={classNames(cls.skeletonContainer, {}, [className])}>
