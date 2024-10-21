@@ -80,6 +80,7 @@ const NavItem = memo((props: NavItemProps) => {
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                         src={navbarBuild?.namedMenu?.navLogo?.src || ''}
                         width={120}
+                        height={0}
                         className={cls.itemLogoImg}
                     />
                 </AppLink>
