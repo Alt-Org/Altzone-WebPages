@@ -1,2 +1,2 @@
-"use client"
-export { MyClanPage as default } from "@/preparedPages/ClanPages";
+'use client';
+export { MyClanPage as default } from '@/preparedPages/ClanPages';

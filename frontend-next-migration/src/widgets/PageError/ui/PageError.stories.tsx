@@ -1,5 +1,5 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
 import { PageError } from './PageError';
 
 export default {
@@ -14,4 +14,3 @@ const Template: ComponentStory<typeof PageError> = (args) => <PageError {...args
 
 export const Primary = Template.bind({});
 Primary.args = {};
-

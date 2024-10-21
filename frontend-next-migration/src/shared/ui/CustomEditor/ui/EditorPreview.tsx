@@ -1,12 +1,12 @@
-import cls from "./CustomEditor.module.scss";
-import parse from "html-react-parser";
+import parse from 'html-react-parser';
+import cls from './CustomEditor.module.scss';
 
 type Props = {
     title: string;
     slug: string;
     description: string;
     content: string;
-    entityName: string
+    entityName: string;
 };
 
 /**
@@ -26,7 +26,7 @@ type Props = {
  * />
  * ```
  */
-export function EditorPreview({title, slug, description, content, entityName}: Props) {
+export function EditorPreview({ title, slug, description, content, entityName }: Props) {
     return (
         <div className={cls.editorPreview}>
             <h2 className={cls.previewTitle}>{entityName} View</h2>

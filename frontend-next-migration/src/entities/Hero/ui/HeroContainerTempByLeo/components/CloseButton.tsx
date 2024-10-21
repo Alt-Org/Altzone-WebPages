@@ -1,16 +1,19 @@
-import Link from "next/link";
-import cls from './CloseButton.module.scss';
+import Link from 'next/link';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import cls from './CloseButton.module.scss';
 
 type Props = Readonly<{
     href: string;
-    combinedModCss: Mods
-}>
+    combinedModCss: Mods;
+}>;
+
 export default function CloseButton({ href, combinedModCss }: Props) {
-    return(
+    return (
         <div className={classNames(cls.xLinkButton, combinedModCss)}>
             {' '}
-            <Link href={href}><h1>X</h1></Link>
+            <Link href={href}>
+                <h1>X</h1>
+            </Link>
         </div>
     );
 }

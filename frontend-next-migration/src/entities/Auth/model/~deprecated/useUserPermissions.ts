@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
-// import {StateSchema} from "@/app/_providers/StoreProvider";
-import { userPermissions, UserPermissions } from "./userPermissions";
+import { selectHasClan, selectIsAuthenticated } from '../../model/authUserSlice';
+import { UserPermissions } from './userPermissions';
 
+// import {StateSchema} from "@/app/_providers/StoreProvider";
 // export const useUserPermissions = () => {
 //
 //
@@ -15,13 +16,10 @@ import { userPermissions, UserPermissions } from "./userPermissions";
 //     return {canI};
 // }
 
-
-
 // useUserPermissions.ts
 // import { useSelector } from 'react-redux';
 // import {StateSchema} from "@/app/_providers/StoreProvider";
 // import { userPermissions, UserPermissions } from "./userPermissions";
-import {selectHasClan, selectIsAuthenticated} from "../../model/authUserSlice";
 // import {selectHasClan, selectIsAuthenticated} from "@/entities/Auth/model/authUserSlice";
 
 /**
@@ -52,5 +50,5 @@ export const useUserPermissions = () => {
         }
     };
 
-    return {canI};
-}
+    return { canI };
+};

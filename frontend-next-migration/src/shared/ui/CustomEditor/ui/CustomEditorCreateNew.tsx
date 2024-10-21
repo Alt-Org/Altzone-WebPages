@@ -1,24 +1,21 @@
-'use client'
-import cls from "./CustomEditor.module.scss"
-import {generateSlug} from "../lib/generateSlug";
-import {ChangeEvent, FormEvent, useState} from "react";
-import {EditorForm} from "./EditorForm"
-import {EditorPreview} from "./EditorPreview";
-
+'use client';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { generateSlug } from '../lib/generateSlug';
+import cls from './CustomEditor.module.scss';
+import { EditorForm } from './EditorForm';
+import { EditorPreview } from './EditorPreview';
 
 type Props = {
     /**
      * A callback function to create a new entity.
      * @param data - The data object containing title, slug, description, and content of the new entity.
      */
-    createNew?: (
-        data: {
-            title: string,
-            slug: string,
-            description: string,
-            content: string,
-        },
-    ) => Promise<void>;
+    createNew?: (data: {
+        title: string;
+        slug: string;
+        description: string;
+        content: string;
+    }) => Promise<void>;
 
     /**
      * The name of the entity to be created.
@@ -41,21 +38,20 @@ type Props = {
  * <CustomEditorCreateNew createNew={createNewBlog} entityName="Blog" />
  * ```
  */
-export const CustomEditorCreateNew = ({createNew, entityName = 'Blog'}: Props) => {
-
-    const [title, setTitle] = useState("");
-    const [slug, setSlug] = useState("");
-    const [description, setDescription] = useState("");
-    const [content, setContent] = useState("");
+export const CustomEditorCreateNew = ({ createNew, entityName = 'Blog' }: Props) => {
+    const [title, setTitle] = useState('');
+    const [slug, setSlug] = useState('');
+    const [description, setDescription] = useState('');
+    const [content, setContent] = useState('');
 
     /**
      * Handles the change event for the title input field.
      * Updates the title state and generates a slug.
      *
-     * @param e - The change event.
+     * @param event - The change event.
      */
-    function handleTitleChange(e: ChangeEvent<HTMLInputElement>) {
-        const newTitle = e.target.value;
+    function handleTitleChange(event: ChangeEvent<HTMLInputElement>) {
+        const newTitle = event.target.value;
         setTitle(newTitle);
         const autoSlug = generateSlug(newTitle);
         setSlug(autoSlug);
@@ -73,10 +69,10 @@ export const CustomEditorCreateNew = ({createNew, entityName = 'Blog'}: Props) =
     /**
      * Handles the change event for the description textarea field.
      *
-     * @param e - The change event.
+     * @param event - The change event.
      */
-    function handleDescriptionChange(e: ChangeEvent<HTMLTextAreaElement>) {
-        setDescription(e.target.value);
+    function handleDescriptionChange(event: ChangeEvent<HTMLTextAreaElement>) {
+        setDescription(event.target.value);
     }
 
     /**
@@ -92,10 +88,10 @@ export const CustomEditorCreateNew = ({createNew, entityName = 'Blog'}: Props) =
      * Handles the form submission event.
      * Creates a new entity with the provided data.
      *
-     * @param e - The form submission event.
+     * @param event - The form submission event.
      */
-    async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault();
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
         const newBlog = {
             title,
             slug,
@@ -131,7 +127,4 @@ export const CustomEditorCreateNew = ({createNew, entityName = 'Blog'}: Props) =
             </div>
         </div>
     );
-}
-
-
-
+};

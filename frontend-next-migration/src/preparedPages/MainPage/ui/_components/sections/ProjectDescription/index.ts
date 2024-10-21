@@ -1,5 +1,4 @@
-export {ProjectDescription} from "./ProjectDescription";
-import { Props } from "./ProjectDescription";
+import { Props } from './ProjectDescription';
 
+export { ProjectDescription } from './ProjectDescription';
 export type ProjectDescriptionProps = Omit<Props, 'className'>;
-

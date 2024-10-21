@@ -11,7 +11,6 @@ interface TextData {
     content: string;
 }
 
-
 export type IPostBodyElement = ImageData | TextData;
 
 export interface IPostData {

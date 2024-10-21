@@ -1,17 +1,12 @@
 import img from '@/shared/assets/images/altLogo.png';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
-import { NavbarBuilder } from './NavbarBuilder';
 import { dropdowns } from './dropdowns';
+import { NavbarBuilder } from './NavbarBuilder';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addDropDown('community', false, dropdowns.community, 'left');
 navbarBuilder.addDropDown('game', false, dropdowns.game, 'left');
-navbarBuilder.addLogo(
-  'Nav logo',
-  img as unknown as string,
-  RoutePaths.MAIN,
-  'center',
-);
+navbarBuilder.addLogo('Nav logo', img as unknown as string, RoutePaths.MAIN, 'center');
 navbarBuilder.addDropDown('gameart', false, dropdowns.gameart, 'right');
 navbarBuilder.addDropDown('gallery', false, dropdowns.gallery, 'right');
 navbarBuilder.addLink('team', RoutePaths.MEMBERS, false, 'right');
@@ -32,11 +27,11 @@ navbarBuilderV2.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarMenuDesktop2 = navbarBuilderV2.build();
 
-const navbarGameArtBuilder = new NavbarBuilder();
+// const navbarGameArtBuilder = new NavbarBuilder();
 export const navbarGameArtDesktop = navbarBuilderV2.build();
 
-const navbarCookiesBuilder = new NavbarBuilder();
+// const navbarCookiesBuilder = new NavbarBuilder();
 export const navbarCookiesDesktop = navbarBuilderV2.build();
 
-const navbarPrivacyBuilder = new NavbarBuilder();
+// const navbarPrivacyBuilder = new NavbarBuilder();
 export const navbarPrivacyDesktop = navbarBuilderV2.build();

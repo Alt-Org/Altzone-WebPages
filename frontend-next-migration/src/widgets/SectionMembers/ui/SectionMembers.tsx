@@ -1,7 +1,7 @@
-import cls from './SectionMembers.module.scss';
-import { FC } from 'react';
 import { useParams } from 'next/navigation';
+import { FC } from 'react';
 import { ScrollBottomButton } from '@/features/ScrollBottom';
+import { DepartmentItem, MemberItem, useGetTeamsQuery } from '@/entities/Member';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
@@ -10,23 +10,25 @@ import {
   MemberItem,
   useGetTeamsQuery
 } from '@/entities/Member';
-import { SkeletonLoaderWithHeader } from '@/shared/ui/SkeletonLoader/index.';
+import { SkeletonLoaderWithHeader } from '@/shared/ui/SkeletonLoader';
+import cls from './SectionMembers.module.scss';
 
 
 interface WorkersSectionProps {
-  className?: string;
+    className?: string;
 }
 
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
-  const params = useParams();
-  const lng = params.lng as string;
-  const { t } = useClientTranslation('team');
+    const params = useParams();
+    const lng = params.lng as string;
+    const { t } = useClientTranslation('team');
 
   const { data: teams = [], isError, isLoading } = useGetTeamsQuery(lng);
 
-  if (isError) {
-    return <p>Error fetching teams data</p>;
-  }
+
+    if (isError) {
+        return <p>Error fetching teams data</p>;
+    }
 
   return (
     <div className={classNames(cls.MembersSection, {}, [className])}>
@@ -65,3 +67,4 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     </div>
   );
 };
+

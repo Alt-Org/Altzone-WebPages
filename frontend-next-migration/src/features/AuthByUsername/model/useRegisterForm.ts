@@ -1,14 +1,13 @@
-import { FieldValues, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ValidationRegisterSchema } from '../validations';
+import { useEffect } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { IUserRegisterDto, useRegisterMutation } from '@/entities/Auth';
-import { useEffect } from "react";
-import { toast } from "react-toastify";
 import { useClientTranslation } from '@/shared/i18n';
+import { ValidationRegisterSchema } from '../validations';
 
 export const useRegisterForm = (toLoginPage: string) => {
-
-    const {t} = useClientTranslation("auth");
+    const { t } = useClientTranslation('auth');
 
     const {
         register,
@@ -18,7 +17,15 @@ export const useRegisterForm = (toLoginPage: string) => {
         resolver: yupResolver(ValidationRegisterSchema),
     });
 
-    const [regist, { data, isLoading, isError, error }] = useRegisterMutation();
+    const [
+        regist,
+        {
+            data,
+            isLoading,
+            // isError,
+            error,
+        },
+    ] = useRegisterMutation();
 
     async function onFormSubmit(fieldValues: FieldValues) {
         const ObjectToBeSent: IUserRegisterDto = {
@@ -42,12 +49,11 @@ export const useRegisterForm = (toLoginPage: string) => {
         }
 
         if (error) {
-            // @ts-ignore
+            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             toast.error(error?.data?.message[0] ?? error?.data?.message);
             return;
         }
     }, [isLoading, data, error, t]);
-
 
     return {
         register,

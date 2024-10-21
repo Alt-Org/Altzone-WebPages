@@ -1,14 +1,14 @@
-import {createPage} from "@/app/_helpers";
-import {useServerTranslation} from "@/shared/i18n";
+import { createPage } from '@/app/_helpers';
+import { useServerTranslation } from '@/shared/i18n';
 
-export async function _getPage (lng: string){
+export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
     return createPage({
         buildPage: () => ({}),
         buildSeo: () => ({
-            title: t("head-title"),
-            description: t("head-description"),
-            keywords: t("head-keywords"),
-        })
+            title: t('head-title'),
+            description: t('head-description'),
+            keywords: t('head-keywords'),
+        }),
     });
 }

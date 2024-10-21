@@ -20,7 +20,7 @@ export const Default: Story = {
             consent: 'Click here to reset cookies',
             currentYear: 2024,
             privacy: 'Read our Privacy Policy',
-            companyName: 'Psyche\'s Royale Gaming ry',
+            companyName: "Psyche's Royale Gaming ry",
         },
     },
 };

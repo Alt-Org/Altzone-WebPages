@@ -1,3 +1,3 @@
-import type {IPlayer} from "./types/player";
+import type { IPlayer } from './types/player';
 
-export {IPlayer}
+export { IPlayer };

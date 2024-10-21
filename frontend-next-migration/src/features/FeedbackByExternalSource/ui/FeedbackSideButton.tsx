@@ -1,27 +1,25 @@
-'use client'
-import {Button, ButtonTheme} from "@/shared/ui/Button/Button";
-import cls from "./FeedbackSideButton.module.scss"
-import {AppExternalLinks} from "@/shared/appLinks/appExternalLinks";
-import {openLinkInNewTab} from "@/shared/lib/openLinkInNewTab/openLinkInNewTab";
-import {useClientTranslation} from "@/shared/i18n";
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-
+'use client';
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
+import { useClientTranslation } from '@/shared/i18n';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import cls from './FeedbackSideButton.module.scss';
 
 type Props = {
     disableMobile?: boolean;
-}
+};
 
 export const FeedbackSideButton = (props: Props) => {
+    const { disableMobile = true } = props;
 
-    const {disableMobile= true} = props;
+    const { t } = useClientTranslation('translation');
 
-    const {t} = useClientTranslation("translation");
-
-    const {isMobileSize} = useIsMobileSize();
+    const { isMobileSize } = useIsMobileSize();
 
     const handleClick = () => {
         openLinkInNewTab(AppExternalLinks.googleFeedback);
-    }
+    };
 
     return (
         (!isMobileSize || !disableMobile) && (
@@ -32,8 +30,8 @@ export const FeedbackSideButton = (props: Props) => {
                 onClick={handleClick}
                 disabled={isMobileSize && disableMobile}
             >
-                {t("feedback")}
+                {t('feedback')}
             </Button>
         )
     );
-}
+};

@@ -1,13 +1,13 @@
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./NavGoBackButton.module.scss";
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './NavGoBackButton.module.scss';
 
 interface NavGoBackButtonProps {
     className?: string;
 }
 
-export const NavGoBackButton = memo(({ className = ''}: NavGoBackButtonProps) => {
+export const NavGoBackButton = memo(({ className = '' }: NavGoBackButtonProps) => {
     const router = useRouter();
 
     const handleGoingBack = () => router.back();
@@ -22,4 +22,4 @@ export const NavGoBackButton = memo(({ className = ''}: NavGoBackButtonProps) =>
     );
 });
 
-NavGoBackButton.displayName = "NavGoBackButton";
+NavGoBackButton.displayName = 'NavGoBackButton';

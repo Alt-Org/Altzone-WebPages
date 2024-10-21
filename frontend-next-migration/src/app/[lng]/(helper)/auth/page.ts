@@ -1,1 +1,1 @@
-export {AuthMainPage as default} from "@/preparedPages/AuthPages";
+export { AuthMainPage as default } from '@/preparedPages/AuthPages';

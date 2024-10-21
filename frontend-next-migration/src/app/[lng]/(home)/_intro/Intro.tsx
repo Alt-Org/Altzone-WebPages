@@ -1,6 +1,6 @@
-import {forwardRef} from "react";
-import {Button, ButtonTheme} from "@/shared/ui/Button";
-import cls from "./Intro.module.scss";
+import { forwardRef } from 'react';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import cls from './Intro.module.scss';
 
 type Props = {
     scrollToContent: () => void;
@@ -9,13 +9,12 @@ type Props = {
 const Intro = forwardRef<HTMLDivElement, Props>((props, ref) => {
     const { scrollToContent } = props;
     return (
-        <div ref={ref} className={cls.intro}>
-            <h1>
-                Welcome to our website!
-            </h1>
-            <p>
-                Scroll down to see more
-            </p>
+        <div
+            ref={ref}
+            className={cls.intro}
+        >
+            <h1>Welcome to our website!</h1>
+            <p>Scroll down to see more</p>
             <Button
                 onClick={scrollToContent}
                 theme={ButtonTheme.Graffiti}
@@ -27,6 +26,6 @@ const Intro = forwardRef<HTMLDivElement, Props>((props, ref) => {
     );
 });
 
-Intro.displayName = "IntroComponent";
+Intro.displayName = 'IntroComponent';
 
 export default Intro;

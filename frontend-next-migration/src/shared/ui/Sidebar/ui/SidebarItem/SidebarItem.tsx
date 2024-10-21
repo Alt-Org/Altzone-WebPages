@@ -1,10 +1,9 @@
-import {AppLink, AppLinkTheme} from '@/shared/ui/AppLink/AppLink';
-import {memo} from 'react';
-import {classNames} from '@/shared/lib/classNames/classNames';
+import { memo } from 'react';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
+import { ISidebarItem, sidebarItemType } from '../../model/items';
 import cls from './SidebarItem.module.scss';
-import {ISidebarItem, sidebarItemType} from '../../model/items';
-import {DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-
 
 interface SidebarItemProps {
     item: ISidebarItem;
@@ -36,14 +35,13 @@ interface SidebarItemProps {
  *    collapsed={true}
  * />
  */
-export const SidebarItem = memo(({item, collapsed}: SidebarItemProps) => {
-
+export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     if (item.type === sidebarItemType.ISidebarItemBasic) {
         return (
             <AppLink
                 theme={AppLinkTheme.PRIMARY}
                 to={item.path}
-                className={classNames(cls.item, {[cls.collapsed]: collapsed}, [cls.itemBasic])}
+                className={classNames(cls.item, { [cls.collapsed]: collapsed }, [cls.itemBasic])}
             >
                 <span className={cls.link}>{item.name}</span>
             </AppLink>
@@ -52,10 +50,12 @@ export const SidebarItem = memo(({item, collapsed}: SidebarItemProps) => {
 
     if (item.type === sidebarItemType.ISidebarItemDropDown) {
         return (
-            <DropdownWrapper className={cls.itemDropDown}
-                             contentItemClassName={cls.item}
-                             contentClassName={classNames(cls.link, {[cls.collapsed]: collapsed})}
-                             elements={item.elements}>
+            <DropdownWrapper
+                className={cls.itemDropDown}
+                contentItemClassName={cls.item}
+                contentClassName={classNames(cls.link, { [cls.collapsed]: collapsed })}
+                elements={item.elements}
+            >
                 {item.name}
             </DropdownWrapper>
         );
@@ -63,4 +63,4 @@ export const SidebarItem = memo(({item, collapsed}: SidebarItemProps) => {
     return null;
 });
 
-SidebarItem.displayName = "SidebarItem";
+SidebarItem.displayName = 'SidebarItem';

@@ -1,13 +1,12 @@
-import {createPage} from "@/app/_helpers";
-import {useServerTranslation} from "@/shared/i18n";
-import {heroes} from "@/entities/Hero";
-import {RoutePaths} from "@/shared/appLinks/RoutePaths";
-import {notFound} from "next/navigation";
+import { createPage } from '@/app/_helpers';
+import { useServerTranslation } from '@/shared/i18n';
+import { heroes } from '@/entities/Hero';
+import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { notFound } from 'next/navigation';
 
-export async function _getPage (lng: string, title: string){
-
+export async function _getPage(lng: string, title: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
-    const currentIndex = heroes.findIndex(hero => hero.title === title);
+    const currentIndex = heroes.findIndex((hero) => hero.title === title);
 
     const prevHeroTitle = findPrevTitle(currentIndex);
     const nextHeroTitle = findNextTitle(currentIndex);
@@ -24,33 +23,32 @@ export async function _getPage (lng: string, title: string){
 
     return createPage({
         buildPage: () => ({
-            selectedHero:{selectedHero},
-            prevHeroLink:{prevHeroLink},
-            nextHeroLink:{nextHeroLink}
+            selectedHero: { selectedHero },
+            prevHeroLink: { prevHeroLink },
+            nextHeroLink: { nextHeroLink },
         }),
         buildSeo: () => ({
             title: t('head-title'),
             description: t('head-description'),
             keywords: t('head-keywords'),
-        })
+        }),
     });
 }
 
-
-function getHeroData(heroTitle: string, t: (key: string) => string ) {
-    const hero = heroes.find(h => h.title === heroTitle);
+function getHeroData(heroTitle: string, t: (key: string) => string) {
+    const hero = heroes.find((hr) => hr.title === heroTitle);
     return hero
         ? {
-            id: hero.id,
-            img: hero.srcImg as unknown as string,
-            title: t(`${hero.title}`),
-            alt: t(`${hero.alt}`),
-            heroColor: hero.color,
-            description: t(`${hero.description}`),
-            borderColor: hero.borderColor,
-            imgGif: hero?.srcGif as unknown as string,
-            group: hero?.group
-        }
+              id: hero.id,
+              img: hero.srcImg as unknown as string,
+              title: t(`${hero.title}`),
+              alt: t(`${hero.alt}`),
+              heroColor: hero.color,
+              description: t(`${hero.description}`),
+              borderColor: hero.borderColor,
+              imgGif: hero?.srcGif as unknown as string,
+              group: hero?.group,
+          }
         : null;
 }
 
@@ -60,8 +58,7 @@ function findNextTitle(currentIndex: number): string {
 }
 
 function findPrevTitle(currentIndex: number): string {
-    const previousIndex =
-        currentIndex === 0 ? heroes.length - 1 : currentIndex - 1;
+    const previousIndex = currentIndex === 0 ? heroes.length - 1 : currentIndex - 1;
     return heroes[previousIndex]?.title;
 }
 

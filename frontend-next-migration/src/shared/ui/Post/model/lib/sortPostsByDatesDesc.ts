@@ -1,4 +1,4 @@
-import {IPostData} from "../types";
+import { IPostData } from '../types';
 
 /**
  * Compares two IPostData objects by their date in descending order.

@@ -1,1 +1,1 @@
-export {default as SectionRanking} from "./ui/SectionRanking";
+export { default as SectionRanking } from './ui/SectionRanking';

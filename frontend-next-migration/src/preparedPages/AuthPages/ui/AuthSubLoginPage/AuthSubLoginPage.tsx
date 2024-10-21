@@ -1,8 +1,8 @@
-'use client'
-import { useState, useEffect } from 'react';
+'use client';
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { LoginForm } from '@/features/AuthByUsername';
-import {RoutePaths} from "@/shared/appLinks/RoutePaths";
+import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 
 const AuthSubLoginPage = () => {
     const router = useRouter();
@@ -30,16 +30,22 @@ const AuthSubLoginPage = () => {
     };
 
     return (
-        <main role="main"
-                  style={{minHeight: `${height}px`, display: "flex", justifyContent: "center", alignItems: "center"}}>
-                <LoginForm
-                    toForgottenPwPage={""}
-                    toRegisterPage={RoutePaths.auth_register}
-                    onSuccessLogin={handleSuccessLogin}
-                />
+        <main
+            role="main"
+            style={{
+                minHeight: `${height}px`,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+        >
+            <LoginForm
+                toForgottenPwPage={''}
+                toRegisterPage={RoutePaths.auth_register}
+                onSuccessLogin={handleSuccessLogin}
+            />
         </main>
-
     );
-}
+};
 
 export default AuthSubLoginPage;

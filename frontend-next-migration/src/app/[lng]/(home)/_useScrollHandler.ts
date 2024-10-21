@@ -4,7 +4,8 @@ export const _useScrollHandler = (introRef: React.RefObject<HTMLDivElement>) => 
     const [isScrollbarHidden, setIsScrollbarHidden] = useState(true);
 
     const updateScrollbarVisibility = () => {
-        const isBelowIntro = window.scrollY > (introRef.current?.clientHeight || window.innerHeight);
+        const isBelowIntro =
+            window.scrollY > (introRef.current?.clientHeight || window.innerHeight);
         setIsScrollbarHidden(!isBelowIntro);
     };
 
@@ -62,7 +63,7 @@ export const _useScrollHandler = (introRef: React.RefObject<HTMLDivElement>) => 
             behavior: 'smooth',
         });
 
-        let lastScrollY = { value: 0 };
+        const lastScrollY = { value: 0 };
         const handleScroll = () => {
             updateScrollbarVisibility();
             scrollToIntroOrContent(lastScrollY);
