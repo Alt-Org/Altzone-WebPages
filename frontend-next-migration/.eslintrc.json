@@ -90,6 +90,13 @@
         "@typescript-eslint/ban-ts-comment": "off",
         "react/display-name": "off"
       }
+    },
+    {
+      "files": ["jest.setup.tsx"],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
+        "react/display-name": "off"
+      }
     }
   ]
 }
