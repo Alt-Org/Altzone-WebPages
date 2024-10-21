@@ -12,7 +12,10 @@ interface SocialSectionProps {
 
 export const SocialSection = memo(({ className = '', socialIconLinks }: SocialSectionProps) => {
     return (
-        <div className={classNames(cls.SocialSection, {}, [className])}>
+        <div
+            className={classNames(cls.SocialSection, {}, [className])}
+            data-testid="social-section"
+        >
             {socialIconLinks.map((socialLink) => (
                 <AppLink
                     key={socialLink.link}
