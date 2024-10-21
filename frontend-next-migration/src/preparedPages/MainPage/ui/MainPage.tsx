@@ -9,6 +9,7 @@ import { ProjectDescription,ProjectDescriptionProps } from "./_components/sectio
 import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
 import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
 import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
+import {Gallery, GalleryProps} from "./_components/sections/Gallery"
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -16,6 +17,7 @@ export type Props = {
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
     classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
+    gallery: GalleryProps;
 }
 
 function MainPage (props: Props)  {
@@ -25,7 +27,8 @@ function MainPage (props: Props)  {
         playWithUs,
         getToKnowComics,
         videoAndGalleries,
-        classifiedHeroesBlocks
+        classifiedHeroesBlocks,
+        gallery
     } = props;
 
     const sameBg = undefined;
@@ -60,6 +63,10 @@ function MainPage (props: Props)  {
 
 
             <HorizontalLines />
+
+            <Gallery 
+                {...gallery}
+            />
 
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}

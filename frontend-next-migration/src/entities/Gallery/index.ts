@@ -10,3 +10,7 @@ export type {
 } from "./ui/GalleryCategoriesWithModalSlider";
 
 export {GalleryCategoriesWithModalSlider} from "./ui/GalleryCategoriesWithModalSlider";
+
+export {ImageWall} from "./ui/ImageWall/ImageWall"
+
+export {Border} from "./ui/Border/Border"

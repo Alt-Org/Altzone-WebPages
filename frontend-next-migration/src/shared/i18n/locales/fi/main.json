@@ -26,7 +26,11 @@
   "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
 
   "classifiedHeroesBlocks-title": "Hahmot",
-  "classifiedHeroesBlocks-seeMore": "Katso lisää"
+  "classifiedHeroesBlocks-seeMore": "Katso lisää",
 
+  "gallery-title": "Kuvagalleriat",
+  "gallery-seeMore": "Katso lisää",
+  "gallery-info-text": "Astu kulissien taakse pelisuunnittelun maailmaan taiteen avulla. Tämä galleria esittelee luonnoksia, ideoita ja valmiita taideteoksia jotka olivat avainasemassa pelimme mukaansatempaavan maailman rakentamisessa.",
+  "gallery-socials-text": "Löydä lisää meidän someista!"
 
 }

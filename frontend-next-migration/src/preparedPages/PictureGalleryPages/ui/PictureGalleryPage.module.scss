@@ -9,8 +9,8 @@
 .Container{
   flex-grow: 1;
   border-radius: var(--border-radius-custom);
-  background-color: var(--transparent-bg-dark);
-  margin-top: 30%;
+  // background-color: var(--transparent-bg-dark);
+  margin-top: 10%;
 
   padding-bottom: 40px;
 
@@ -23,6 +23,19 @@
     margin-bottom: 40px;
   }
 
+  .InfoText {
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  .SocialsText {
+    width: 85%;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2em;
+  }
 }
 
 
@@ -36,7 +49,17 @@
 
 @media (min-width: 768px) {
   .Container {
-    margin-top: 15vh;
+    margin-top: 10vh;
+
+    .InfoText {
+      width: 75%;
+      font-size: 1.5em;
+    }
+  
+    .SocialsText {
+      width: 75%;
+      font-size: 1.5em;
+    }
   }
 }
 

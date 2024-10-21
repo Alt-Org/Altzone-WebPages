@@ -7,3 +7,12 @@ export type IGalleryDirectory = {
 export type IGalleryPicture = {
     name : string
 }
+
+export type Version = "full" | "preview"
+
+export type ImageData = {
+    src: string;
+    width: number;
+    height: number;
+    blurDataURL?: string;
+};

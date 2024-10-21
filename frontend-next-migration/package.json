@@ -75,6 +75,7 @@
     "@types/react-modal": "^3.16.2",
     "@types/react-slick": "^0.23.13",
     "@types/redux-persist": "^4.3.1",
+    "@types/webpack-env": "^1.18.5",
     "axe-core": "^4.9.0",
     "cypress": "^13.7.1",
     "cypress-axe": "^1.5.0",
