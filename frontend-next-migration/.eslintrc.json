@@ -87,7 +87,8 @@
     {
       "files": ["**/*.test.{ts,tsx}"],
       "rules": {
-        "@typescript-eslint/ban-ts-comment": "off"
+        "@typescript-eslint/ban-ts-comment": "off",
+        "react/display-name": "off"
       }
     }
   ]
