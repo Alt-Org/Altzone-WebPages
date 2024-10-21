@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.25",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -31,6 +32,7 @@
     "i18next": "^23.6.0",
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-resources-to-backend": "^1.1.4",
+    "jquery": "^3.7.1",
     "jwt-decode": "^4.0.0",
     "next": "14.0.1",
     "next-compose-plugins": "^2.2.1",
@@ -69,6 +71,7 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",
+    "@types/jquery": "^3.5.31",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
