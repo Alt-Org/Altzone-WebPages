@@ -83,6 +83,12 @@
       "rules": {
         "@typescript-eslint/ban-ts-comment": "off"
       }
+    },
+    {
+      "files": ["**/*.test.{ts,tsx}"],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
     }
   ]
 }
