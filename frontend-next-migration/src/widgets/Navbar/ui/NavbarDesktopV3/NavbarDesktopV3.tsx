@@ -36,6 +36,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
     
     const { isFixed, isCollapsed } = useFixedAndCollapsed();
     const [showItem, setShowItem] = useState(!isCollapsed)
+    
    
     const hasScrollbar = useIsPageScrollbar();
 
@@ -57,7 +58,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
         if(window.innerWidth > 1400) return 1400
         else return window.innerWidth
     }
-     if($('#nav')){    
+    if($('#nav')){    
         if(!isCollapsed)
             $('#nav').css('width', checkNavbarWidth()+'px')
      }
