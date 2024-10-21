@@ -1,16 +1,16 @@
-
-"use client"
-import useIsMobileSize from "@/shared/lib/hooks/useIsMobileSize";
-import cls from "./ClanAllSubPage.module.scss";
-import { GetClansResponse, useGetClansQuery } from "@/entities/Clan";
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
+'use client';
 import { useRouter } from 'next/navigation';
-import { useClientTranslation } from "@/shared/i18n";
-import { useState } from "react";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button"
-import { SkeletonLoaderForClansDesktop, SkeletonLoaderForClansMobile } from "@/shared/ui/SkeletonLoader/index.";
-
-
+import { useState } from 'react';
+import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { useClientTranslation } from '@/shared/i18n';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import {
+    SkeletonLoaderForClansDesktop,
+    SkeletonLoaderForClansMobile,
+} from '@/shared/ui/SkeletonLoader';
+import cls from './ClanAllSubPage.module.scss';
 
 const ClanAllSubPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -25,31 +25,30 @@ const ClanAllSubPage = () => {
         isLoading,
     } = useGetClansQuery({ page: currentPage, search: currentSearch });
 
-    if (isLoading) return (
-        <>
-            {isMobileSize
-                ? <SkeletonLoaderForClansMobile className={cls.skeletonLoader}
-                    rating={t("rating")}
-                    clan={t("clan")}
-                    clanMaster={t("clan_master")}
-                    coins={t("coins")}
-                    members={t("members")}
-                    tag={t("tag")}
-                    clansTitle={t("clans_title")} />
-                :
-                <SkeletonLoaderForClansDesktop className={cls.skeletonLoader}
-                    rating={t("rating")}
-                    clan={t("clan")}
-                    clanMaster={t("clan_master")}
-                    coins={t("coins")}
-                    members={t("members")}
-                    tag={t("tag")}
-                    clansTitle={t("clans_title")}
-                 />
-            }
-        </>
-    )
-
+    if (isLoading)
+        return isMobileSize ? (
+            <SkeletonLoaderForClansMobile
+                className={cls.skeletonLoader}
+                rating={t('rating')}
+                clan={t('clan')}
+                clanMaster={t('clan_master')}
+                coins={t('coins')}
+                members={t('members')}
+                tag={t('tag')}
+                clansTitle={t('clans_title')}
+            />
+        ) : (
+            <SkeletonLoaderForClansDesktop
+                className={cls.skeletonLoader}
+                rating={t('rating')}
+                clan={t('clan')}
+                clanMaster={t('clan_master')}
+                coins={t('coins')}
+                members={t('members')}
+                tag={t('tag')}
+                clansTitle={t('clans_title')}
+            />
+        );
 
     //if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
@@ -62,9 +61,8 @@ const ClanAllSubPage = () => {
     };
 
     const onClickToSearch = (search: string) => {
-        setSearch(convertToQuerySearch(search))
-    }
-
+        setSearch(convertToQuerySearch(search));
+    };
 
     // Temporary way to convert search query value to case-insensitive in front
     const convertToQuerySearch = (search: string): string => {
