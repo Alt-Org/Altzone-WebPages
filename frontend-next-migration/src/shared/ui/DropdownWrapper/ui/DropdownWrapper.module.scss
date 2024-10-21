@@ -16,8 +16,6 @@
 
 .dropdownContent {
   display: grid !important;
-  opacity: 0;
-
   transform-origin: top;
   transform: scaleY(0);
   transition: opacity 0.2s ease-in, transform 0.2s ease-in;
@@ -29,7 +27,19 @@
 }
 
 .dropdownContent.closed {
+  
   transform: scaleY(0);
+  @media screen and (max-width: 1024px) {
+    outline: 0;
+    border: 0;
+
+    overflow: hidden;
+    & > * {
+      display: none;
+    }
+
+    padding: 0 !important;
+  }
 }
 
 .childrenWrapper {
