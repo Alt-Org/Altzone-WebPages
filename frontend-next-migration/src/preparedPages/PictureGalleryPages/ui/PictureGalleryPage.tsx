@@ -40,15 +40,15 @@ const PictureGalleryPage = async (props: Props) => {
                 {/* <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} /> */}
 
                 {/* Version 1: */}
-                {/* <SectionGallery
+                <SectionGallery
                     socialMediaLinks={socialMediaLinks}
                     videoLink={videoLink}
-                /> */}
+                />
 
                 {/* Version 2: */}
-                {version === "full" &&
+                {/* {version === "full" &&
                     <SectionGallery version={version} socialMediaLinks={socialMediaLinks} />
-                }
+                } */}
             </Container>
         </div>
     );

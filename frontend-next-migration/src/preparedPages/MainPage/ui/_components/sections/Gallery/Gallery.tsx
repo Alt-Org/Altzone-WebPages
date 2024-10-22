@@ -53,20 +53,20 @@ const Gallery = (props: Props) => {
 
             <Container className={cls.Container}>
                 {/* Version 1: */}
-                {/* <SectionGallery 
+                <SectionGallery 
                     socialMediaLinks={socialMediaLinks}
                     videoLink={videoLink} 
                     seeMoreLink={seeMoreLink} 
-                /> */}
+                />
 
                 {/* Version 2: */}
-                {version === "preview" &&
+                {/* {version === "preview" &&
                     <SectionGallery
                         version={version}
                         socialMediaLinks={socialMediaLinks}
                         seeMoreLink={seeMoreLink}
                     />
-                }
+                } */}
 
             </Container>
         </section>
