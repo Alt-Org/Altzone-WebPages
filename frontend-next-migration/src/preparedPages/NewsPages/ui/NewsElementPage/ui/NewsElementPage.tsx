@@ -7,7 +7,7 @@ import { newsDataLocally } from '@/entities/News';
 import { getPostDataById, Post } from '@/shared/ui/Post';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useScrollToTop } from '@/shared/lib/hooks/useScrollToTop';
+import { useScrollToTop } from '@/shared/lib/hooks';
 import cls from './NewsElementPage.module.scss';
 
 const NewsElementPage = () => {
