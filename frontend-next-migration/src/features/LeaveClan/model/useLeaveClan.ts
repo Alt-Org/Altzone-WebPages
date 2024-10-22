@@ -10,22 +10,25 @@ const useLeaveClan = () => {
 
     const handleLeave = async (onSuccess?: () => void) => {
         const isConfirmed = window.confirm(t('toast_confirm'));
-
         if (isConfirmed) {
-            try {
-                const _ = await leaveClan().unwrap();
-
-                toast.success(t('toast_left_clan'));
-                if (onSuccess) onSuccess();
-                setIsCancelled(false);
-            } catch (error) {
-                toast.error(`${t('toast_error')}: ${error}`);
+            const result = await leaveClan();
+            // @ts-ignore
+            if (result.error) {
+                // @ts-ignore
+                toast.error(`${t('toast_error')}: ${result.error}`);
                 setIsCancelled(true);
+                return;
             }
-        } else {
-            toast.info(t('toast_action_canceled'), { autoClose: 1500 });
-            setIsCancelled(true);
+
+            toast.success(t('toast_left_clan'));
+            if (onSuccess) onSuccess();
+            setIsCancelled(false);
+            return;
         }
+
+        toast.info(t('toast_action_canceled'), { autoClose: 1500 });
+        setIsCancelled(true);
+        return;
     };
 
     return { isCancelled, handleLeave };
