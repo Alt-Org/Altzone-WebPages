@@ -12,7 +12,7 @@ const ClansSearchAndViewDesktop = () => {
     const { t } = useClientTranslation('clan');
 
     const [currentSearch, setSearch] = useState('');
-    const { data: clans, isLoading } = useGetClansQuery({ page: 1, search: currentSearch });
+    const { data: clans, error, isLoading } = useGetClansQuery({ page: 1, search: currentSearch });
 
     const onClickToClan = (id: string) => {
         router.push(`${RoutePaths.clan}/${id}`);
@@ -65,43 +65,47 @@ const ClansSearchAndViewDesktop = () => {
                 </Button>
             </form>
 
-            <div className={cls.testContainer}>
-                {isLoading ? (
-                    <p>{t('loading')}</p>
-                ) : (
-                    <div className={cls.tableContainer}>
-                        <table className={cls.clanList}>
-                            <thead>
-                                <tr>
-                                    <th>{t('clan')}</th>
-                                    <th>{t('members')}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {clans?.data.Clan.map((clan, idx) => {
-                                    let bgColor;
-                                    switch (idx) {
-                                        default:
-                                            bgColor = 'rgba(0,0,0,0.6)';
-                                            break;
-                                    }
+            {!error ? (
+                <div className={cls.testContainer}>
+                    {isLoading ? (
+                        <p>{t('loading')}</p>
+                    ) : (
+                        <div className={cls.tableContainer}>
+                            <table className={cls.clanList}>
+                                <thead>
+                                    <tr>
+                                        <th>{t('clan')}</th>
+                                        <th>{t('members')}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {clans?.data.Clan.map((clan, idx) => {
+                                        let bgColor;
+                                        switch (idx) {
+                                            default:
+                                                bgColor = 'rgba(0,0,0,0.6)';
+                                                break;
+                                        }
 
-                                    return (
-                                        <tr
-                                            key={idx}
-                                            style={{ backgroundColor: bgColor }}
-                                            onClick={() => onClickToClan(clan?._id)}
-                                        >
-                                            <td>{clan?.name}</td>
-                                            <td>{clan?.playerCount}</td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
-            </div>
+                                        return (
+                                            <tr
+                                                key={idx}
+                                                style={{ backgroundColor: bgColor }}
+                                                onClick={() => onClickToClan(clan?._id)}
+                                            >
+                                                <td>{clan?.name}</td>
+                                                <td>{clan?.playerCount}</td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                </div>
+            ) : (
+                <h2 style={{ textAlign: 'left', marginBottom: '20px' }}>{t('no_result')}</h2>
+            )}
         </div>
     );
 };
@@ -114,7 +118,7 @@ const ClansSearchAndViewMobile = () => {
 
     const [currentSearch, setSearch] = useState('');
     const [showClanList, setShowClanList] = useState(false);
-    const { data: clans, isLoading } = useGetClansQuery({ page: 1, search: currentSearch });
+    const { data: clans, error, isLoading } = useGetClansQuery({ page: 1, search: currentSearch });
 
     const onClickToClan = (id: string) => {
         router.push(`${RoutePaths.clan}/${id}`);
@@ -189,43 +193,47 @@ const ClansSearchAndViewMobile = () => {
                     </Button>
                 </form>
 
-                <div>
-                    {isLoading ? (
-                        <p>{t('loading')}</p>
-                    ) : (
-                        <div className={cls.tableContainer}>
-                            <table className={cls.clanList}>
-                                <thead>
-                                    <tr>
-                                        <th>{t('clan')}</th>
-                                        <th>{t('members')}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {clans?.data.Clan.map((clan, idx) => {
-                                        let bgColor;
-                                        switch (idx) {
-                                            default:
-                                                bgColor = 'rgba(0,0,0,0.6)';
-                                                break;
-                                        }
+                {!error ? (
+                    <div>
+                        {isLoading ? (
+                            <p>{t('loading')}</p>
+                        ) : (
+                            <div className={cls.tableContainer}>
+                                <table className={cls.clanList}>
+                                    <thead>
+                                        <tr>
+                                            <th>{t('clan')}</th>
+                                            <th>{t('members')}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {clans?.data.Clan.map((clan, idx) => {
+                                            let bgColor;
+                                            switch (idx) {
+                                                default:
+                                                    bgColor = 'rgba(0,0,0,0.6)';
+                                                    break;
+                                            }
 
-                                        return (
-                                            <tr
-                                                key={idx}
-                                                style={{ backgroundColor: bgColor }}
-                                                onClick={() => onClickToClan(clan?._id)}
-                                            >
-                                                <td>{clan?.name}</td>
-                                                <td>{clan?.playerCount}</td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
-                </div>
+                                            return (
+                                                <tr
+                                                    key={idx}
+                                                    style={{ backgroundColor: bgColor }}
+                                                    onClick={() => onClickToClan(clan?._id)}
+                                                >
+                                                    <td>{clan?.name}</td>
+                                                    <td>{clan?.playerCount}</td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <h2 style={{ textAlign: 'left', marginBottom: '20px' }}>{t('no_result')}</h2>
+                )}
             </div>
         </div>
     );
