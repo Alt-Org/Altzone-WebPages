@@ -37,9 +37,7 @@
   position: sticky;
   top:0;
 
-  @media (min-width: 550px){
-    margin-top: 50px;
-  }
+
 
   //position: fixed;
   //padding-top: 50px;
@@ -89,8 +87,6 @@
   transition:all 1s;
 }
 .NavbarMobile__center.collapsed {
-  margin-right: auto;
-  margin-left: 0;
   transform: scale(60%);
 }
 .navLogo {
