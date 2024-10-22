@@ -1,24 +1,30 @@
-import { jest } from '@jest/globals';
 import { openLinkInNewTab } from './openLinkInNewTab';
 
-// Mocking the window.open function
-global.window = Object.create(window);
-const url = 'http://dummy.com';
-Object.defineProperty(window, 'open', { writable: true, configurable: true, value: jest.fn() });
-
-/*
- * Test suite for openLinkInNewTab function.
- */
 describe('openLinkInNewTab', () => {
-    // Single use case: When a link is passed, function opens it in a new tab
-    it('should open a new tab with the URL passed', () => {
-        openLinkInNewTab(url);
-        expect(window.open).toBeCalledWith(url, '_blank');
+    beforeEach(() => {
+        window.open = jest.fn();
     });
 
-    // Single use case: Handle when no link is passed
-    it('should open a new blank tab when no URL passed', () => {
+    it('should open the provided valid URL in a new tab', () => {
+        const validUrl = 'https://example.com';
+        openLinkInNewTab(validUrl);
+        expect(window.open).toHaveBeenCalledWith(validUrl, '_blank');
+    });
+
+    it('should open a blank tab if the URL is invalid', () => {
+        const invalidUrl = 'invalid-url';
+        openLinkInNewTab(invalidUrl);
+        expect(window.open).toHaveBeenCalledWith('about:blank', '_blank');
+    });
+
+    it('should open a blank tab if no URL is provided', () => {
         openLinkInNewTab();
-        expect(window.open).toBeCalledWith('about:blank', '_blank');
+        expect(window.open).toHaveBeenCalledWith('about:blank', '_blank');
+    });
+
+    it('should open a valid URL with special characters', () => {
+        const specialCharUrl = 'https://example.com/?query=testing&value=123';
+        openLinkInNewTab(specialCharUrl);
+        expect(window.open).toHaveBeenCalledWith(specialCharUrl, '_blank');
     });
 });
