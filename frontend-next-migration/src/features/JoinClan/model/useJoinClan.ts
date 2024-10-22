@@ -13,13 +13,16 @@ const useJoinClan = () => {
         join_message: string,
         onSuccess?: () => void,
     ) => {
-        try {
-            const _ = await joinClan({ clan_id, player_id, join_message }).unwrap();
-            toast.success(t('toast_join_success'));
-            if (onSuccess) onSuccess();
-        } catch (error) {
-            toast.error(`${JSON.stringify(error)}`);
+        const result = await joinClan({ clan_id, player_id, join_message });
+        // @ts-ignore todo figure out ts
+        if (result?.error) {
+            // @ts-ignore todo figure out ts
+            toast.error(`${JSON.stringify(result?.error)}`);
+            return;
         }
+        toast.success(t('toast_join_success'));
+        if (onSuccess) onSuccess();
+        return;
     };
 
     return { handleJoin };
