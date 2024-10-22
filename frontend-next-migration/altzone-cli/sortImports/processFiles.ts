@@ -59,7 +59,12 @@ async function processFiles(paths: string[]) {
                 .filter(file => file.startsWith('frontend-next-migration/src/'))
                 .map(file => path.resolve(file.replace('frontend-next-migration/', ''))); // Convert to absolute path
 
-            if (filteredFiles.length > 0) {
+            // Remove files that have been deleted from the filtered list
+            const existingFiles = filteredFiles.filter(file => {
+                return require('fs').existsSync(file); // Check if the file exists
+            });
+
+            if (existingFiles.length > 0) {
                 paths = filteredFiles;
             } else {
                 console.log('No changes detected in the "src" folder.');
