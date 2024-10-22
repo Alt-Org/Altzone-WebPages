@@ -1,2 +1,2 @@
-export { HeroDevelopmentPageAsync as HeroDevelopmentPage } from './ui/HeroDevelopmentPage.async';
+export { default as HeroDevelopmentPage } from './ui/HeroDevelopmentPage.async';
 export type { Props as HeroDevelopmentPageProps } from './ui/HeroDevelopmentPage';
