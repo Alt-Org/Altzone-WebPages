@@ -9,7 +9,7 @@ export interface Props {
     title: string;
 }
 
-const ComicsGalleriesPage = async (props: Props) => {
+const ComicsGalleriesPage = (props: Props) => {
     const { title } = props;
 
     return (

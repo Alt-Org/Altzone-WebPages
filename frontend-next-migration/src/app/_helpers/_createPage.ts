@@ -3,7 +3,7 @@ type PageFactoryParams<TPageData = any, TSeoData = DefaultSeo> = {
     buildPage: () => TPageData;
 };
 
-export async function createPage<TPageData = any, TSeoData = DefaultSeo>({
+export function createPage<TPageData = any, TSeoData = DefaultSeo>({
     buildSeo,
     buildPage,
 }: PageFactoryParams<TPageData, TSeoData>) {

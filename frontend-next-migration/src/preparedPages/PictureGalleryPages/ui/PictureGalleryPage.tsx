@@ -9,7 +9,7 @@ export interface Props {
     title: string;
 }
 
-const PictureGalleryPage = async (props: Props) => {
+const PictureGalleryPage = (props: Props) => {
     const { title } = props;
 
     return (
