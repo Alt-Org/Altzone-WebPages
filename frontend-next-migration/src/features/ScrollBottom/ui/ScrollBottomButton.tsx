@@ -1,8 +1,8 @@
 'use client';
 import { memo, useRef } from 'react';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
-import { useBottomAnimationCancellation } from '../model/hooks/useBottomAnimationCancellation';
-import { scrollToBottom } from '../model/scrollToBottom';
+import { scrollToBottom } from '../model/scrollToBottom/scrollToBottom';
+import { useBottomAnimationCancellation } from '../model/useBottomAnimationCancellation/useBottomAnimationCancellation';
 
 interface Props {
     speedInMs?: number;

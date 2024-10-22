@@ -14,7 +14,7 @@ const linear = (
     currentPosition: number,
     distance: number,
     speedInMs: number,
-) => {
+): number => {
     return (distance * elapsedTime) / speedInMs + currentPosition;
 };
 
