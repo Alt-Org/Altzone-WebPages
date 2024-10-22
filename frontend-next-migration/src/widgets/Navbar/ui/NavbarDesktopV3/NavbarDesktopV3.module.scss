@@ -24,6 +24,7 @@
 }
 
 .siteNavContentList.collapsed {
+  width:45px;
   padding-left:0px;
   margin-left: auto;
 }
@@ -38,6 +39,7 @@
 
 .siteNavContentList {
   
+  width: 100%;
   padding-left: 180px;
   background-color: black;
   border-radius: var(--border-radius-custom);
@@ -50,10 +52,12 @@
   z-index: 2;
   margin-left: auto;
   margin-right: 0;
-  transition: padding-left 1s, width 0s;
+  transition: padding-left 1s, width 1s;
   
 
 }
+
+
 
 .appLinkLogo {
   display: block;
@@ -121,12 +125,21 @@
 }
 
 .navItem {
+  
+  opacity: 1;
   display: flex;
   height: max-content;
   line-height: initial;
   padding: 10px 0;
+  transition:opacity .3s;
+  
+
   //justify-content: center;
   //height: max-content;
+ 
+}
+.hidden {
+  opacity:0 !important;
 }
 
 .langSwitcher {
@@ -144,7 +157,7 @@
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
   text-align: center;
-
+  white-space:nowrap;
   padding: 4px;
 
   & > * {

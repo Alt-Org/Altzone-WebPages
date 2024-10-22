@@ -2,7 +2,7 @@ import {CSSProperties, memo, useEffect, useState} from "react";
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import cls from "./NavbarDesktopV3.module.scss";
 import navLogo from "@/shared/assets/images/altLogo.png";
-import { NavbarBuild, NavBarType, ItemType } from "../../model/types";
+import { NavbarBuild, NavBarType } from "../../model/types";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useClientTranslation } from "@/shared/i18n";
 import { Container } from "@/shared/ui/Container";
@@ -15,7 +15,7 @@ import { useFixedAndCollapsed } from "../../model/FixedAndCollapsedProvider";
 import { defineNs } from "../../model/defineNs";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import Image from "next/image";
-import $ from 'jquery'
+
 
 
 type NavbarProps = {
@@ -35,7 +35,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
     } = props;
     
     const { isFixed, isCollapsed } = useFixedAndCollapsed();
-    const [showItem, setShowItem] = useState(!isCollapsed)
+    const [hidden, setHidden] = useState('')
     
    
     const hasScrollbar = useIsPageScrollbar();
@@ -53,37 +53,14 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
     const style = marginTop
         ? ({ "marginTop": `${marginTop}px` } as CSSProperties)
         : {};
-
-    const checkNavbarWidth = () => {
-        if(window.innerWidth > 1400) return 1400
-        else return window.innerWidth
-    }
-    if($('#nav')){    
-        if(!isCollapsed)
-            $('#nav').css('width', checkNavbarWidth()+'px')
-     }
-
-     useEffect(() => {
-        if(!(!isCollapsed && showItem)){ 
-            setShowItem(false)
-            $('#nav').css('transition','padding-left 1s,width 1s')
-        }
-
-        if(isCollapsed) {
-            $('#nav').css('width',(Number($('#item').outerWidth())+5)+'px')
-        } else {    
-            $('#nav').css('width',checkNavbarWidth()+'px')
-        }
-        
-        setTimeout(() => {
-            $('#nav').css('transition','width 0s')
-            if(!isCollapsed) {
-                setShowItem(true)
-            }
-          }, 1000);
-          
-     }, [isCollapsed])
      
+     useEffect(() => {
+
+        if(isCollapsed) setHidden(cls.hidden)
+        else setTimeout(() => { setHidden('') }, 700)
+    
+     }, [isCollapsed])
+
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
         [cls.collapsed]: isCollapsed
@@ -108,50 +85,46 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                     />
                 </AppLink>
                 
-                <ul id='nav' className={classNames(cls.siteNavContentList, mods)}>
-                   
-                    {showItem &&
-                        navbarBuild.menu.map(n => {
-                            return <NavItem item={n} key={n.name} navbarBuild={navbarBuild} />;
-                        })
-                    }
+                <ul className={classNames(cls.siteNavContentList, mods)}>
                     
-                    {showItem &&
-                    <li className={cls.navItem} key={"switcher key"}>
+                    {navbarBuild.menu.map(n => {
+                        return <NavItem className={hidden} item={n} key={n.name} navbarBuild={navbarBuild} />;
+                    })}  
+                    
+                    <li className={cls.navItem+' '+hidden} key={"switcher key"}>
                         <LangSwitcher className={cls.langSwitcher} />
                     </li>
-                    }
-                     {showItem &&
-                    <li className={cls.navItem + ' ' + cls.authButton} key={"auth key"}>
-                        {
-                            permissionToLogin.isGranted
-                                ? (
-                                    <AppLink
-                                        theme={AppLinkTheme.PRIMARY}
-                                        // to={navbarMenuLoginProfile?.login?.path || ''}
-                                        to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
+                     
+                    <li className={cls.navItem + ' ' + cls.authButton+' '+hidden} key={"auth key"}>
+                        {permissionToLogin.isGranted
+                            ? (
+                                <AppLink
+                                    theme={AppLinkTheme.PRIMARY}
+                                    // to={navbarMenuLoginProfile?.login?.path || ''}
+                                    to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
                                     // key={navbarMenuLoginProfile?.login?.path}
                                     >
-                                        <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
-                                    </AppLink>
+                                    <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
+                                </AppLink>
                                 )
-                                :  permissionToLogout.isGranted
-                                    ? <div className={cls.logoutButton} onClick={() => logout()}>
-                                        {t(`logout`)}
-                                    </div>
-                                    : null
+                            :  
+                                permissionToLogout.isGranted ? 
+                                <div className={cls.logoutButton} onClick={() => logout()}>
+                                    {t(`logout`)}
+                                </div>
+                                : null
                         }
                     </li>
-                    }
-                    {hasScrollbar && !isCollapsed && showItem && (
-                        <li className={cls.toggleOverlaid}>
+                    
+                    {hasScrollbar && !isCollapsed && (
+                        <li className={cls.toggleOverlaid+' '+hidden}>
                             <FixedButton/>
                         </li>
                     )}
                 
                     {isFixed && (
                         isCollapsed ?
-                        <li id='item' className={cls.collapseButtonCollapsed}>
+                        <li className={cls.collapseButtonCollapsed}>
                             <CollapsedButton />
                         </li>
                         :

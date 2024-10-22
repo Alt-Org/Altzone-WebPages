@@ -32,7 +32,6 @@
     "i18next": "^23.6.0",
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-resources-to-backend": "^1.1.4",
-    "jquery": "^3.7.1",
     "jwt-decode": "^4.0.0",
     "next": "14.0.1",
     "next-compose-plugins": "^2.2.1",
