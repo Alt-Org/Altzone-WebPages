@@ -1,9 +1,9 @@
 'use client';
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { useCurrentYPosition } from '@/shared/lib/hooks';
 import { ScrollTop } from './ScrollTop';
-import { useCurrentYPosition } from '@/shared/lib/hooks/useCurrentYPosition';
 
 jest.mock('next/navigation', () => ({
     useParams: jest.fn().mockReturnValue({ lng: 'en' }),

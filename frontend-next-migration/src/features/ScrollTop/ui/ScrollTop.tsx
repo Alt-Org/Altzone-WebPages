@@ -2,7 +2,7 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
-import { useCurrentYPosition } from '@/shared/lib/hooks/useCurrentYPosition';
+import { useCurrentYPosition } from '@/shared/lib/hooks';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './ScrollTop.module.scss';
 

@@ -10,7 +10,7 @@ import leftArrow from '@/shared/assets/images/heros/hero-container/leftArrow.svg
 import rightArrow from '@/shared/assets/images/heros/hero-container/rightArrow.svg';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import useFontSizeAdjuster from '@/shared/lib/hooks/useFontSizeAdjuster';
+import { useFontSizeAdjuster } from '@/shared/lib/hooks';
 import cls from './HeroContainer.module.scss';
 import useImageDistance from './useImageDistance';
 import useKeyboardNavigation from './useKeyboardNavigation';
