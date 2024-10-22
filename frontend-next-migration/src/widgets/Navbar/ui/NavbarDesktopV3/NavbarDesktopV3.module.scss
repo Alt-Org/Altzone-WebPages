@@ -126,7 +126,6 @@
 
 .navItem {
   
-  opacity: 1;
   display: flex;
   height: max-content;
   line-height: initial;
@@ -138,8 +137,14 @@
   //height: max-content;
  
 }
+.visible {
+  opacity:1 !important;
+}
 .hidden {
   opacity:0 !important;
+}
+.disabled {
+  display:none;
 }
 
 .langSwitcher {

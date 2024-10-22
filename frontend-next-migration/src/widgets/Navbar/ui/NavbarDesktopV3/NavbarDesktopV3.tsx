@@ -35,8 +35,8 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
     } = props;
     
     const { isFixed, isCollapsed } = useFixedAndCollapsed();
-    const [hidden, setHidden] = useState('')
-    
+    const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible)
+    const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '')
    
     const hasScrollbar = useIsPageScrollbar();
 
@@ -55,10 +55,15 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
         : {};
      
      useEffect(() => {
-
-        if(isCollapsed) setHidden(cls.hidden)
-        else setTimeout(() => { setHidden('') }, 700)
-    
+        
+        if(isCollapsed) {
+            setHidden(cls.hidden)
+            setTimeout(() => { setDisabled(cls.disabled) }, 300)
+        }
+        else {
+            setDisabled('')
+            setTimeout(() => { setHidden(cls.visible) }, 700)
+        }
      }, [isCollapsed])
 
     const mods: Record<string, boolean> = {
@@ -88,14 +93,14 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                 <ul className={classNames(cls.siteNavContentList, mods)}>
                     
                     {navbarBuild.menu.map(n => {
-                        return <NavItem className={hidden} item={n} key={n.name} navbarBuild={navbarBuild} />;
+                        return <NavItem className={hidden+' '+disabled} item={n} key={n.name} navbarBuild={navbarBuild} />;
                     })}  
                     
-                    <li className={cls.navItem+' '+hidden} key={"switcher key"}>
+                    <li className={cls.navItem+' '+hidden+' '+disabled} key={"switcher key"}>
                         <LangSwitcher className={cls.langSwitcher} />
                     </li>
                      
-                    <li className={cls.navItem + ' ' + cls.authButton+' '+hidden} key={"auth key"}>
+                    <li className={cls.navItem + ' ' + cls.authButton+' '+hidden+' '+disabled} key={"auth key"}>
                         {permissionToLogin.isGranted
                             ? (
                                 <AppLink
@@ -117,7 +122,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                     </li>
                     
                     {hasScrollbar && !isCollapsed && (
-                        <li className={cls.toggleOverlaid+' '+hidden}>
+                        <li className={cls.toggleOverlaid+' '+hidden+' '+disabled}>
                             <FixedButton/>
                         </li>
                     )}

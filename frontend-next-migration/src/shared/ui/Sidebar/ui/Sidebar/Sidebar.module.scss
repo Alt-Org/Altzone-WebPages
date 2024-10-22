@@ -24,8 +24,17 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
+.visible {
+  opacity:1 !important;
+}
+.hidden {
+  opacity:0 !important;
+}
+.disabled {
+  display:none;
+}
 .button {
+  display:block;
   z-index: calc(var(--sidebar-z-index) + 1);
   width: 33px;
 }

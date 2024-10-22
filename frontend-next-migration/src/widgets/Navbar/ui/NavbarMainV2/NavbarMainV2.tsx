@@ -5,7 +5,7 @@ It also imports some types and functions related to the navbar. */
 
 import {memo, useEffect, useMemo} from 'react';
 import NavbarDesktopV3 from '../NavbarDesktopV3/NavbarDesktopV3';
-import NavbarMobileV2 from '../NavbarMobileV2/NavbarMobileV2';
+import NavbarMobileV3 from '../NavbarMobileV3/NavbarMobileV3';
 import { FixedAndCollapsedProvider } from '@/widgets/Navbar/model/FixedAndCollapsedProvider';
 import { NavBarType } from '../../model/types';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
@@ -33,7 +33,7 @@ export const NavbarMainV2 = memo((props: NavbarMainProps) => {
   return (
       <FixedAndCollapsedProvider>
         {isMobileSize || isTabletSize ? (
-          <NavbarMobileV2
+          <NavbarMobileV3
             marginTop={marginTop}
             className={className}
             navbarBuild={navbarBuild}
