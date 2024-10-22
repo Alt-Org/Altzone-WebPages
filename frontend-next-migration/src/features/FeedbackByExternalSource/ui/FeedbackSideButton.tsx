@@ -7,6 +7,7 @@ import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import cls from './FeedbackSideButton.module.scss';
 
 type Props = {
+    // The button does not display on mobile devices
     disableMobile?: boolean;
 };
 
@@ -28,7 +29,6 @@ export const FeedbackSideButton = (props: Props) => {
                 className={cls.SideButton}
                 type="button"
                 onClick={handleClick}
-                disabled={isMobileSize && disableMobile}
             >
                 {t('feedback')}
             </Button>
