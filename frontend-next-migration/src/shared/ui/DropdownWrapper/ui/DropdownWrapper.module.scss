@@ -16,9 +16,12 @@
 
 .dropdownContent {
   display: grid !important;
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+
+  @media screen and (min-width: 1024px) {
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+  }
 }
 
 .DropdownWrapper:hover .dropdownContent {
@@ -27,14 +30,16 @@
 }
 
 .dropdownContent.closed {
-  
+
   transform: scaleY(0);
+
   @media screen and (max-width: 1024px) {
     outline: 0;
     border: 0;
 
     overflow: hidden;
-    & > * {
+
+    &>* {
       display: none;
     }
 
