@@ -6,7 +6,7 @@
 }
 
 .Container {
-  margin-top: 15vh;
+  margin-top: clamp(20px, 15vh, 30px);
   flex-grow: 1 !important;
 }
 
@@ -25,7 +25,7 @@
 
 @media (min-width: 768px) {
   .Container {
-    margin-top: 15vh;
+    margin-top: clamp(30px, 15vh, 70px);
   }
 }
 
