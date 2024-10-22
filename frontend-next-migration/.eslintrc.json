@@ -88,7 +88,10 @@
       "files": ["**/*.test.{ts,tsx}"],
       "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
-        "react/display-name": "off"
+        "react/display-name": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "require-await": "off",
+        "@next/next/no-img-element": "off"
       }
     },
     {
