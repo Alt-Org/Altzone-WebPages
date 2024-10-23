@@ -1,7 +1,7 @@
 import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
-import { HeroManager } from '@/entities/Hero/model/heroesv2';
-import { HeroGroup } from '@/entities/Hero/types/hero';
+// import { HeroManager } from '@/entities/Hero/model/heroesv2';
+// import { HeroGroup } from '@/entities/Hero/types/hero';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
