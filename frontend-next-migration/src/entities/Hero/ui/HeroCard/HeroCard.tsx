@@ -13,12 +13,13 @@ type Props = {
     imageSrc: any;
     imageAlt: string;
     title: string;
+    slug: string;
     className?: string;
     backgroundColor?: string;
 };
 
 export const HeroCard = (props: Props) => {
-    const { id, title, imageSrc, imageAlt, className = '', backgroundColor } = props;
+    const { id, title, imageSrc, imageAlt, className = '', backgroundColor, slug } = props;
 
     const elementRef = useRef(null);
 
@@ -41,7 +42,7 @@ export const HeroCard = (props: Props) => {
                     style={{ backgroundColor }}
                 >
                     <AppLink
-                        to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(':id', id.toString())}
+                        to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(':id', slug?.toString())}
                     >
                         <Image
                             src={imageSrc}

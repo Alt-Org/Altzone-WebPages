@@ -5,6 +5,7 @@ interface HeroWithGroup extends Hero {
     groupEnum: HeroGroup;
     groupName: string;
     groupDescription: string;
+    groupBgColour: string;
 }
 
 export class HeroManager {
@@ -18,12 +19,17 @@ export class HeroManager {
 
     public getAllHeroes(): HeroWithGroup[] {
         return Object.entries(this.heroGroups).flatMap(([group, groupInfo]) => {
-            const { name: groupName, description: groupDescription } = groupInfo;
+            const {
+                name: groupName,
+                description: groupDescription,
+                bgColour: groupBgColour,
+            } = groupInfo;
             return groupInfo.heroes.map((hero) => ({
                 ...hero,
                 groupEnum: group as HeroGroup,
                 groupName,
                 groupDescription,
+                groupBgColour,
             }));
         });
     }
@@ -40,13 +46,18 @@ export class HeroManager {
         const groupInfo = this.heroGroups[group];
         if (!groupInfo) return undefined;
 
-        const { name: groupName, description: groupDescription } = groupInfo;
+        const {
+            name: groupName,
+            description: groupDescription,
+            bgColour: groupBgColour,
+        } = groupInfo;
 
         return groupInfo.heroes.map((hero) => ({
             ...hero,
             groupEnum: group,
             groupName,
             groupDescription,
+            groupBgColour,
         })) as HeroWithGroup[];
     }
 }

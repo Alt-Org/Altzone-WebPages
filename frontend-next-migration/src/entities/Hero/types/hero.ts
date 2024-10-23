@@ -11,6 +11,9 @@ export enum HeroGroup {
     // INTELLECTUALIZER = "INTELLECTUALIZER",
     // CONFLUENT = "CONFLUENT"
 }
+
+export enum HeroSlug {}
+
 export interface Hero {
     id: number;
     srcImg: StaticImageData;
@@ -19,13 +22,14 @@ export interface Hero {
     title: string;
     borderColor: string;
     description: string;
-    groupTextBg: string;
-    color: string;
+    slug: string;
+    // groupTextBg: string;
+    // color: string;
 }
 
 export interface GroupInfo {
     name: string;
     description: string;
-    groupColor: string;
+    bgColour: string;
     heroes: Hero[];
 }
