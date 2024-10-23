@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectHasClan, selectIsAuthenticated } from '../authUserSlice';
+import { selectHasClan, selectIsAuthenticated } from '../authUserSlice/authUserSlice';
 
 export enum PermissionError {
     NotAuthenticated = 'NotAuthenticated',

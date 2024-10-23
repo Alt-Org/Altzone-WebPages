@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectHasClan, selectIsAuthenticated } from '../../model/authUserSlice';
+import { selectHasClan, selectIsAuthenticated } from '../authUserSlice/authUserSlice';
 import { UserPermissions } from './userPermissions';
 
 // import {StateSchema} from "@/app/_providers/StoreProvider";

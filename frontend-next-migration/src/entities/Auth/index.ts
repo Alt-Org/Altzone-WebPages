@@ -24,7 +24,7 @@ export {
     authUserActions,
     selectIsAuthenticated,
     selectClanId,
-} from './model/authUserSlice';
+} from './model/authUserSlice/authUserSlice';
 
 export { useUserPermissions } from './model/~deprecated/useUserPermissions';
 export { userPermissions } from './model/~deprecated/userPermissions';

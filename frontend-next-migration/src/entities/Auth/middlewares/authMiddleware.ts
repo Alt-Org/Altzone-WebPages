@@ -1,7 +1,7 @@
 import { Middleware } from '@reduxjs/toolkit';
 import { LS_KEYS } from '@/shared/const/LS_KEYS';
 import { authEndpoints } from '../model/authApi';
-import { authUserActions } from '../model/authUserSlice';
+import { authUserActions } from '../model/authUserSlice/authUserSlice';
 
 export const authMiddleware: Middleware = (storeAPI) => (next) => (action) => {
     // Let the action pass to the next middleware or reducer

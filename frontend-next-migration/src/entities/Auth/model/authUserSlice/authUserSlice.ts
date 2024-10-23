@@ -3,7 +3,7 @@ import { PURGE } from 'redux-persist';
 import { IProfile } from '@/entities/Profile';
 import { IPlayer } from '@/entities/User';
 import { LS_KEYS } from '@/shared/const/LS_KEYS';
-import { AccessTokenInfo, AuthUserSchema } from '../types/authUser';
+import { AccessTokenInfo, AuthUserSchema } from '../../types/authUser';
 
 // "use client"
 // const storedAuthUser = localStorage.getItem(LS_KEYS.AUTH_USER);
