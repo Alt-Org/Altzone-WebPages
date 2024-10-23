@@ -1,7 +1,6 @@
 'use client'
 import { EmbedSocialMediaPosts } from "@/shared/ui/SocialMediaEmbed";
 import { ImageWall } from "@/entities/Gallery"
-import cls from "./SectionGallery.module.scss"
 import { useGetStrapiGalleryImages } from "@/entities/Gallery/api/useGetStrapiGalleryImages";
 import { useState, useEffect } from "react";
 import { ImageData } from "@/entities/Gallery/types/gallery";
