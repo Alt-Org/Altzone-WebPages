@@ -23,7 +23,15 @@ interface NavbarTouchProps {
     className?: string;
     navBarType?: NavBarType;
 }
-
+/**
+ * Version 3 introduces the collapse/expand functionality.
+ * The collapse state is passed through the context-provider `Provider` component in the same manner 
+ * as the fixed state in the pin/unpin feature.`useState` hooks manage CSS transitions in the new functionality.
+ * A new feature has been added to the Alt-logo link, which expands the nav menu if it is collapsed.
+ *
+ * @param {NavbarTouchProps} props - Defines the component's purpose and layout properties.
+ * @returns 
+ */
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const {

@@ -17,6 +17,11 @@ interface NavbarMainProps {
   navBarType?: NavBarType;
 }
 
+/**
+ * Version 2 uses new versions of the navbar components.
+ * The `Provider` component has been updated to manage the collapse state.
+ */
+
 export const NavbarMainV2 = memo((props: NavbarMainProps) => {
 
   const {

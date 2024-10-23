@@ -22,7 +22,12 @@ const FixedAndCollapsedContext = createContext<FixedAndCollapsedContextType>({
     isCollapsed: false,
     toggleCollapsed: () => {}
 });
-
+/** 
+ * `FixedAndCollapsedProvider` is an extended version of the `FixedProvider` component.
+ * In addition to managing the fixed state, this component also handles the collapsed state.
+ * 
+ * @returns a wrapper for fixed and collapsed context state
+ */
 export const FixedAndCollapsedProvider = ({ children }: { children: ReactNode }) => {
     const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState);
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false);

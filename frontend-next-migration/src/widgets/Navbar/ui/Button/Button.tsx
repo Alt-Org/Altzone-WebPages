@@ -6,7 +6,13 @@ type Props = {
     className?: string;
 }
 
-
+/**
+ * A button component for the collapse/expand functionality.
+ *
+ * @export
+ * @param {Props} props - CSS classes applied based on the usage scenario.
+ * @returns 
+ */
 export function CollapsedButton (props: Props) {
 
     const {
