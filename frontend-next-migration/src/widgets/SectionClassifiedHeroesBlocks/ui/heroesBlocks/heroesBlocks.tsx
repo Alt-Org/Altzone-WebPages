@@ -51,7 +51,7 @@ const HeroesBlocks = (props: Props) => {
                         <HeroCard
                             className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
                             key={item.title}
-                            slug={item.slug}
+                            slug={item.title}
                             id={item.title}
                             title={t(item.title)}
                             imageSrc={item.srcImg}
