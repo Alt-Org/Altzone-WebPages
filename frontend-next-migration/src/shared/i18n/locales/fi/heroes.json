@@ -31,8 +31,19 @@
 
 
   "not-found-title": "Etsittyä sankaria ei löytynyt",
-  "not-found-check-heroes": "Tarkista saatavilla olevat sankarit"
+  "not-found-check-heroes": "Tarkista saatavilla olevat sankarit",
 
 
+
+
+
+  "RETROFLECTOR": {
+    "name": "RETROFLECTOR fin",
+    "heroes": {
+      "hannuHodari": {
+        "title": "Hannu Hodari fin"
+      }
+    }
+  }
 
 }

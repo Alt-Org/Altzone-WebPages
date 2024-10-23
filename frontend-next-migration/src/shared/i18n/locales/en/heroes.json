@@ -30,6 +30,15 @@
   "pirateAlt": "Pirate's image",
 
   "not-found-title": "Could not find requested hero",
-  "not-found-check-heroes": "Check Available Heroes"
+  "not-found-check-heroes": "Check Available Heroes",
+
+  "RETROFLECTOR": {
+    "name": "RETROFLECTOR",
+    "heroes": {
+      "hannuHodari": {
+        "title": "Hannu Hodari"
+      }
+    }
+  }
 
 }
