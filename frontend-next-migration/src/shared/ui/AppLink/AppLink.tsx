@@ -15,6 +15,7 @@ interface AppLinkProps {
   theme?: AppLinkTheme;
   isExternal?: boolean;
   children: ReactNode;
+  onClick?: () => boolean;
 }
 
 /**
@@ -45,6 +46,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
     children,
     theme = AppLinkTheme.PRIMARY,
     isExternal,
+    onClick = () => true,
   } = props;
 
   if (isExternal && typeof to === 'string') {
@@ -53,7 +55,8 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         key={to}
         className={classNames(cls.AppLink, {}, [className, cls[theme]])}
         href={to}
-        target='_blank'>
+        target='_blank'
+        onClick={onClick}>
         {children}{' '}
       </a>
     );

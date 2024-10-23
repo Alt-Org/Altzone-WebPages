@@ -47,7 +47,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { isFixed, isCollapsed } = useFixedAndCollapsed();
+    const { isFixed, isCollapsed, toggleCollapsed } = useFixedAndCollapsed();
     const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible)
     const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '')
     const hasScrollbar = useIsPageScrollbar();
@@ -125,7 +125,12 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
     };
-    
+
+    const onClick = () => {
+        if(isCollapsed) toggleCollapsed()
+        return true
+     }
+
     return (
         <div className={classNames(cls.navbarContainer,mods,[])}>
            <div className={classNames(cls.LogoContainer,mods,[])}>
@@ -133,6 +138,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 className={classNames(cls.navLogo + ' ' + cls.NavbarMobile__center,mods,[])}
                 theme={AppLinkTheme.PRIMARY}
                 to={navbarBuild?.namedMenu?.navLogo?.path || ""}
+                onClick={onClick}
             >
                 <Image
                     loading={"eager"}

@@ -13,14 +13,10 @@
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
   position: relative;
-  
- 
 }
 
 .fixed {
   position: sticky;
- 
- 
 }
 
 .siteNavContentList.collapsed {
@@ -54,7 +50,6 @@
   margin-right: 0;
   transition: padding-left 1s, width 1s;
   
-
 }
 
 
@@ -69,7 +64,6 @@
     top: -2.5416666667000003em;
     left: 0;
     z-index: 100;
-
     height: auto;
 
     //width: 200px;
@@ -83,7 +77,6 @@
     top: -4.5em;
     left: 0;
     z-index: 100;
-
     height: auto;
 
     //width: 200px;
@@ -98,18 +91,22 @@
   left:52px;
   width: 120px;
   z-index: 200;
+  transition: left .7s;
 
   .itemLogoImgStatic {
    
     z-index: 200;
-
     height: auto;
-
     //width: 200px;
     width: auto;
   }
 
 }
+
+.appLinkLogoStatic.collapsed {
+  left: 25px;
+}
+
 .itemNavbarDropDownContent {
   outline: 2px solid var(--inverted-primary-color);
 

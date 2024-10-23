@@ -34,7 +34,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
         navBarType = "Default"
     } = props;
     
-    const { isFixed, isCollapsed } = useFixedAndCollapsed();
+    const { isFixed, isCollapsed, toggleCollapsed } = useFixedAndCollapsed();
     const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible)
     const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '')
    
@@ -66,6 +66,11 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
         }
      }, [isCollapsed])
 
+     const onClick = () => {
+        if(isCollapsed) toggleCollapsed()
+        return true
+     }
+
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
         [cls.collapsed]: isCollapsed
@@ -79,7 +84,8 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     to={RoutePaths.MAIN}
-                    className={classNames(cls.appLinkLogoStatic, {}, [])}
+                    className={classNames(cls.appLinkLogoStatic, mods, [])}
+                    onClick={onClick}
                 >
                     <Image
                         loading={"eager"}
