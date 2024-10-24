@@ -38,7 +38,9 @@
     "heroes": {
       "hannuHodari": {
         "title": "Hannu Hodari",
-        "description": "Hannu Hodari is.."
+        "alt": "Hodari image",
+        "altGif": "",
+        "description": "Hannu Hodari's fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux.",
       }
     }
   },
@@ -50,6 +52,7 @@
       "GraffitiArtist": {
         "title": "Grafitiartist ",
         "alt": "I am Grafitiartist",
+        "altGif": "",
         "description": "Grafiti artist is..."
       }
     }
@@ -62,6 +65,7 @@
       "Researcher": {
         "title": "Researcher ",
         "alt": "I am a Researcher",
+        "altGif": "",
         "description": "Researcher is..."
       }
     }

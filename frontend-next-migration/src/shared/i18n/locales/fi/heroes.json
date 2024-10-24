@@ -44,6 +44,7 @@
       "hannuHodari": {
         "title": "Hannu Hodari",
         "alt": "Olen Hannu Hodari",
+        "altGif": "",
         "description": "Hannur Hodari on paras"
       }
     }
@@ -56,6 +57,7 @@
       "GraffitiArtist": {
         "title": "GRAFFITITAITEILIJA ",
         "alt": "Olen GRAFFITI TAITEILIJA",
+        "altGif": "",
         "description": "GRAFFITI TAITEILIJA on..."
       }
     }
@@ -68,6 +70,7 @@
       "Researcher": {
         "title": "TUTKIJA ",
         "alt": "Olen TUTKIJA ",
+        "altGif": "",
         "description": "TUTKIJA  on..."
       }
     }

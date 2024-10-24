@@ -23,6 +23,7 @@ export interface Hero {
     srcImg: StaticImageData | string;
     srcGif: StaticImageData | string;
     alt: string;
+    altGif: string;
     title: string;
     description: string;
     slug: HeroSlug;
