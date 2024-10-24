@@ -12,7 +12,11 @@ export enum HeroGroup {
     // CONFLUENT = "CONFLUENT"
 }
 
-export enum HeroSlug {}
+export enum HeroSlug {
+    HANNU_HODARI = 'hannu-hodari',
+    GRAFFITI_ARTIST = 'graffiti-artist',
+    RESEARCHER = 'researcher',
+}
 
 export interface Hero {
     id: number;
@@ -21,7 +25,7 @@ export interface Hero {
     alt: string;
     title: string;
     description: string;
-    slug: string;
+    slug: HeroSlug;
     // groupTextBg: string;
     // color: string;
 }
