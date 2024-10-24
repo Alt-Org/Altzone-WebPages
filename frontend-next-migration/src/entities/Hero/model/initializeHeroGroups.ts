@@ -9,7 +9,6 @@ import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
-// import { HeroGroup, GroupInfo, Hero } from '../types/hero';
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
     return {
         [HeroGroup.RETROFLECTOR]: {
@@ -51,7 +50,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.INTELLECTUALIZER]: {
             name: t('INTELLECTUALIZER.name'),
             description: t('INTELLECTUALIZER.description'),
-            bgColour: 'rgba(254, 237, 1, 0.5)',
+            bgColour: 'rgba(51, 3, 147, 0.5)',
             label: darkBlue,
             heroes: [
                 {
