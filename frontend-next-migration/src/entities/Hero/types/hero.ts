@@ -20,8 +20,8 @@ export enum HeroSlug {
 
 export interface Hero {
     id: number;
-    srcImg: StaticImageData;
-    srcGif: StaticImageData;
+    srcImg: StaticImageData | string;
+    srcGif: StaticImageData | string;
     alt: string;
     title: string;
     description: string;
@@ -32,7 +32,7 @@ export interface GroupInfo {
     name: string;
     description: string;
     bgColour: string;
-    label: StaticImageData;
+    label: StaticImageData | string;
     heroes: Hero[];
 }
 
@@ -41,5 +41,5 @@ export interface HeroWithGroup extends Hero {
     groupName: string;
     groupDescription: string;
     groupBgColour: string;
-    groupLabel: StaticImageData;
+    groupLabel: StaticImageData | string;
 }

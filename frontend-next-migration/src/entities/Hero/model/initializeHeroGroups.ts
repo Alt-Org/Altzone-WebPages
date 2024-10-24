@@ -13,6 +13,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('RETROFLECTOR.name'),
             description: t('RETROFLECTOR.description'),
             bgColour: 'rgba(226, 5, 5, 0.5)',
+            label: '',
             heroes: [
                 {
                     id: 1,
@@ -30,6 +31,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('PROJECTOR.name'),
             description: t('PROJECTOR.description'),
             bgColour: 'rgba(254, 237, 1, 0.5)',
+            label: '/',
             heroes: [
                 {
                     id: 4,
@@ -47,6 +49,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('INTELLECTUALIZER.name'),
             description: t('INTELLECTUALIZER.description'),
             bgColour: 'rgba(254, 237, 1, 0.5)',
+            label: '/',
             heroes: [
                 {
                     id: 5,
