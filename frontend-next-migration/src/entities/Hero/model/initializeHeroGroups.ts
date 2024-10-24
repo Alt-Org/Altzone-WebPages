@@ -4,6 +4,9 @@ import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.
 import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.gif';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
+import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
+import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
+import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 // import { HeroGroup, GroupInfo, Hero } from '../types/hero';
@@ -13,7 +16,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('RETROFLECTOR.name'),
             description: t('RETROFLECTOR.description'),
             bgColour: 'rgba(226, 5, 5, 0.5)',
-            label: '',
+            label: red,
             heroes: [
                 {
                     id: 1,
@@ -31,7 +34,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('PROJECTOR.name'),
             description: t('PROJECTOR.description'),
             bgColour: 'rgba(254, 237, 1, 0.5)',
-            label: '/',
+            label: yellow,
             heroes: [
                 {
                     id: 4,
@@ -49,7 +52,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('INTELLECTUALIZER.name'),
             description: t('INTELLECTUALIZER.description'),
             bgColour: 'rgba(254, 237, 1, 0.5)',
-            label: '/',
+            label: darkBlue,
             heroes: [
                 {
                     id: 5,
