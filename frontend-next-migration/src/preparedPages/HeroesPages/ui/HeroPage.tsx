@@ -7,13 +7,13 @@ import cls from './HeroPage.module.scss';
 
 type HeroData = {
     id: number;
-    img: StaticImageData;
+    img: StaticImageData | string;
     title: string;
     alt: string;
     heroColor: string;
     description: string;
     borderColor: string;
-    imgGif: StaticImageData;
+    imgGif: StaticImageData | string;
     group: string;
     groupTextBg: string;
 };

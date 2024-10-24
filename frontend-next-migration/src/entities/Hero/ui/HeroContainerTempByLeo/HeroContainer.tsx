@@ -12,8 +12,8 @@ import useKeyboardNavigation from './useKeyboardNavigation';
 type Props = {
     group: string;
     groupTextBg: string;
-    heroImg: StaticImageData;
-    heroGif: StaticImageData;
+    heroImg: StaticImageData | string;
+    heroGif: StaticImageData | string;
     heroName: string;
     heroDescription: string;
     heroColor: string;
