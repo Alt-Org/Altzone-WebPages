@@ -23,7 +23,7 @@ export default function HeroGroupLabel(props: HeroGroupLabelProps) {
 
     return (
         <div className={className}>
-            <h3 className={classNames(cls.title, combinedModCss)}>
+            <div className={classNames(cls.title, combinedModCss)}>
                 <Image
                     className={cls['bg-image']}
                     alt="hero label bg"
@@ -31,8 +31,8 @@ export default function HeroGroupLabel(props: HeroGroupLabelProps) {
                     priority
                     fill
                 />
-                <span>{labelText}</span>
-            </h3>
+                <h3>{labelText}</h3>
+            </div>
         </div>
     );
 }
