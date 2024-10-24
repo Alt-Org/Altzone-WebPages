@@ -43,6 +43,7 @@ const news = '/news';
  * The values are used as routesLinks throughout the app,
  * if do update , don't forget update also routeConfig at App layer
  */
+//todo change to getters system
 export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.AUTH]: '/auth',
     [AppRoutesLinks.AUTH_REGISTER]: '/auth/register',
@@ -68,7 +69,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.GAME_ART]: '/artGame',
 
     [AppRoutesLinks.HEROES]: '/heroes',
-    [AppRoutesLinks.HEROES_ONE]: '/heroes/:id',
+    [AppRoutesLinks.HEROES_ONE]: '/heroes/:slug',
     [AppRoutesLinks.HERO_DEVELOPMENT]: '/hero-development',
 
     [AppRoutesLinks.NEWS]: news,
