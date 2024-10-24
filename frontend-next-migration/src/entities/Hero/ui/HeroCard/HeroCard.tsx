@@ -42,7 +42,10 @@ export const HeroCard = (props: Props) => {
                     style={{ backgroundColor }}
                 >
                     <AppLink
-                        to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(':id', slug?.toString())}
+                        to={RoutePaths[AppRoutesLinks.HEROES_ONE].replace(
+                            ':slug',
+                            slug?.toString(),
+                        )}
                     >
                         <Image
                             src={imageSrc}

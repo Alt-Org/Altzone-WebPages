@@ -1,12 +1,5 @@
-import { GroupInfo, Hero, HeroGroup, HeroSlug } from '../types/hero';
+import { GroupInfo, HeroWithGroup, HeroGroup, HeroSlug } from '../types/hero';
 import { initializeHeroGroups } from './initializeHeroGroups';
-
-interface HeroWithGroup extends Hero {
-    groupEnum: HeroGroup;
-    groupName: string;
-    groupDescription: string;
-    groupBgColour: string;
-}
 
 export class HeroManager {
     private readonly t: (key: string) => string;
@@ -63,5 +56,19 @@ export class HeroManager {
             groupDescription,
             groupBgColour,
         })) as HeroWithGroup[];
+    }
+
+    public getHeroAfterSpecificHero(heroId: number): HeroWithGroup | undefined {
+        const allHeroes = this.getAllHeroes();
+        const currentHeroIndex = allHeroes.findIndex((hero) => hero.id === heroId);
+        return currentHeroIndex !== -1 && currentHeroIndex < allHeroes.length - 1
+            ? allHeroes[currentHeroIndex + 1]
+            : undefined;
+    }
+
+    public getHeroBeforeSpecificHero(heroId: number): HeroWithGroup | undefined {
+        const allHeroes = this.getAllHeroes();
+        const currentHeroIndex = allHeroes.findIndex((hero) => hero.id === heroId);
+        return currentHeroIndex > 0 ? allHeroes[currentHeroIndex - 1] : undefined;
     }
 }

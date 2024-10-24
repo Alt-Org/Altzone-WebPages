@@ -5,5 +5,5 @@ export { default as HeroContainer } from './ui/HeroContainerTempByLeo/HeroContai
 export { default as heroes } from './model/heroes';
 
 export { HeroGroup, HeroSlug } from './types/hero';
-export type { Hero, GroupInfo } from './types/hero';
+export type { GroupInfo, HeroWithGroup } from './types/hero';
 export { HeroManager } from './model/heroesv2';

@@ -1,3 +1,4 @@
+import { StaticImageData } from 'next/image';
 import { HeroContainer } from '@/entities/Hero';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
@@ -6,13 +7,13 @@ import cls from './HeroPage.module.scss';
 
 type HeroData = {
     id: number;
-    img: string;
+    img: StaticImageData;
     title: string;
     alt: string;
     heroColor: string;
     description: string;
     borderColor: string;
-    imgGif: string;
+    imgGif: StaticImageData;
     group: string;
     groupTextBg: string;
 };

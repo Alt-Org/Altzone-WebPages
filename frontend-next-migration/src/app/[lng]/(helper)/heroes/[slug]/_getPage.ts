@@ -63,5 +63,5 @@ function findPrevTitle(currentIndex: number): string {
 }
 
 function generateHeroLink(heroTitle: string): string {
-    return RoutePaths.HEROES_ONE.replace(':id', heroTitle);
+    return RoutePaths.HEROES_ONE.replace(':slug', heroTitle);
 }

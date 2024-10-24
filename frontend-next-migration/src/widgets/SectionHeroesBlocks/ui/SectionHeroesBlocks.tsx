@@ -1,6 +1,6 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
-import { HeroCard, heroes, HeroGroup, HeroManager } from '@/entities/Hero';
+import { HeroCard, heroes, HeroManager } from '@/entities/Hero';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './SectionHeroesBlocks.module.scss';
 
@@ -12,7 +12,8 @@ const SectionHeroes2 = (props: Props) => {
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
 
-    const tempHeroes = heroManager.getHeroesBySpecificGroup(HeroGroup.RETROFLECTOR);
+    const tempHeroes = heroManager.getAllHeroes();
+    // const tempHeroes = heroManager.getHeroesBySpecificGroup(HeroGroup.RETROFLECTOR);
 
     const { backgroundImageSrc } = props;
 

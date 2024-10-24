@@ -49,9 +49,9 @@
     }
   },
 
-    "PROJECTOR": {
-      "name": "PEILAAJAT",
-      "description": "PEILAAJAT on ...",
+  "PROJECTOR": {
+    "name": "PEILAAJAT",
+    "description": "PEILAAJAT on ...",
     "heroes": {
       "GraffitiArtist": {
         "title": "GRAFFITITAITEILIJA ",

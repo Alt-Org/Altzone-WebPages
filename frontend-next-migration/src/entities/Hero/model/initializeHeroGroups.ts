@@ -12,7 +12,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.RETROFLECTOR]: {
             name: t('RETROFLECTOR.name'),
             description: t('RETROFLECTOR.description'),
-            bgColour: 'FF0000',
+            bgColour: 'rgba(226, 5, 5, 0.5)',
             heroes: [
                 {
                     id: 1,
@@ -38,7 +38,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     alt: 'PROJECTOR.heroes.GraffitiArtist.alt',
                     slug: HeroSlug.GRAFFITI_ARTIST,
                     title: t('PROJECTOR.heroes.GraffitiArtist.title'),
-                    description: 'PROJECTOR.heroes.GraffitiArtist.description',
+                    description: t('PROJECTOR.heroes.GraffitiArtist.description'),
                 },
             ],
         },
@@ -55,7 +55,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     alt: 'INTELLECTUALIZER.heroes.Researcher.alt',
                     slug: HeroSlug.RESEARCHER,
                     title: t('INTELLECTUALIZER.heroes.Researcher.title'),
-                    description: 'INTELLECTUALIZER.heroes.Researcher.description',
+                    description: t('INTELLECTUALIZER.heroes.Researcher.description'),
                 },
             ],
         },

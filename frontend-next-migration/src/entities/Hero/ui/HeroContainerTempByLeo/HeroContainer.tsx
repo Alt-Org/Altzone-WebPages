@@ -1,5 +1,5 @@
 'use client';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
@@ -12,8 +12,8 @@ import useKeyboardNavigation from './useKeyboardNavigation';
 type Props = {
     group: string;
     groupTextBg: string;
-    heroImg: string;
-    heroGif: string;
+    heroImg: StaticImageData;
+    heroGif: StaticImageData;
     heroName: string;
     heroDescription: string;
     heroColor: string;
@@ -111,12 +111,13 @@ const HeroContainer = (props: Props) => {
                     </div>
                 </div>
 
-                <div className={cls.heroGroup}>
-                    <HeroGroupLabel
-                        className={cls.heroGroupLabel}
-                        group={group}
-                    />
-                </div>
+                {/*//todo fix*/}
+                {/*<div className={cls.heroGroup}>*/}
+                {/*    <HeroGroupLabel*/}
+                {/*        className={cls.heroGroupLabel}*/}
+                {/*        group={group}*/}
+                {/*    />*/}
+                {/*</div>*/}
             </div>
 
             <ArrowButton

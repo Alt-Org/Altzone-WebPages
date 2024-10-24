@@ -36,3 +36,10 @@ export interface GroupInfo {
     bgColour: string;
     heroes: Hero[];
 }
+
+export interface HeroWithGroup extends Hero {
+    groupEnum: HeroGroup;
+    groupName: string;
+    groupDescription: string;
+    groupBgColour: string;
+}
