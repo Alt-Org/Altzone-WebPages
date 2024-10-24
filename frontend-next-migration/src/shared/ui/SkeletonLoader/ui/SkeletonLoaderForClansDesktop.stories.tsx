@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { SkeletonLoaderForClansDesktop } from './SkeletonLoader';
 
 const meta = {
-    title: 'shared/SkeletonLoaderForClansDesktop',
+    title: 'shared/ui/SKeletonLoader/SkeletonLoaderForClansDesktop',
     component: SkeletonLoaderForClansDesktop,
     argTypes: {
         numberOfRows: {

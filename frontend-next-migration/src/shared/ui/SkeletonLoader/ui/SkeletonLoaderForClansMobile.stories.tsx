@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { SkeletonLoaderForClansMobile } from './SkeletonLoader';
 
 const meta = {
-    title: 'shared/SkeletonLoaderForClansMobile',
+    title: 'shared/ui/SkeletonLoader/SkeletonLoaderForClansMobile',
     component: SkeletonLoaderForClansMobile,
     argTypes: {
         numberOfCards: {

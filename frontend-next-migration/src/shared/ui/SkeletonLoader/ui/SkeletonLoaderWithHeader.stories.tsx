@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { SkeletonLoaderWithHeader } from './SkeletonLoader';
 
 const meta = {
-    title: 'shared/SkeletonLoaderWithHeader',
+    title: 'shared/ui/SkeletonLoader/SkeletonLoaderWithHeader',
     component: SkeletonLoaderWithHeader,
     argTypes: {
         sections: {

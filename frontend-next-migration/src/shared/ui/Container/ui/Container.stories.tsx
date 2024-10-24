@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Container } from './Container';
 
 export default {
-    title: 'shared/Container',
+    title: 'shared/ui/Container',
     component: Container,
     args: {
         className: '',

@@ -3,7 +3,7 @@ import React from 'react';
 import { Loader } from './Loader';
 
 export default {
-    title: 'shared/Loader',
+    title: 'shared/ui/Loader',
     component: Loader,
     argTypes: {
         backgroundColor: { control: 'color' },
