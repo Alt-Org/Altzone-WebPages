@@ -6,12 +6,6 @@
   justify-content: center;
 }
 
-//.TextBgImage {
-//  position: absolute;
-//  width: 25%;
-//  z-index: -1;
-//}
-
 .Content {
   width: 100%;
   height: 100%;
@@ -25,27 +19,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-}
 
-.Title {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: scroll;
-  background-size: cover;
-  padding: 4vw;
-  //padding: 60px;
-  text-shadow: 1px 1px 2px black;
 
-  & span {
-    font-size: calc(12px + 0.8vw);
-    display: inline-block;
-    transform: translateX(calc(12px + 0.2vw));
-    hyphens: manual;
-  }
+
+  //& > div{
+  //  padding: 20px;
+  //}
+
 
 }
-
 
 .HeroCard {
   width: var(--cardWidth);
@@ -55,7 +37,6 @@
 
 @media screen and (max-width: 1250px) {
   .Content {
-    //grid-template-columns:   repeat( auto-fit, minmax(250px, 1fr) );
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 60px;
   }

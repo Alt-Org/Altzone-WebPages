@@ -7,3 +7,5 @@ export { default as heroes } from './model/heroes';
 export { HeroGroup, HeroSlug } from './types/hero';
 export type { GroupInfo, HeroWithGroup } from './types/hero';
 export { HeroManager } from './model/HeroManager';
+
+export { default as HeroGroupLabel } from './ui/HeroGroupLabel/HeroGroupLabel';

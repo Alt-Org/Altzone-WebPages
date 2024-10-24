@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from 'next/image';
-import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './HeroGroupLabel.module.scss';
 
@@ -12,18 +11,9 @@ type HeroGroupLabelProps = Readonly<{
 export default function HeroGroupLabel(props: HeroGroupLabelProps) {
     const { className, label, labelText } = props;
 
-    const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
-
-    const combinedModCss: Mods = {
-        [cls.isMobile]: isMobileSize,
-        [cls.isTablet]: isTabletSize,
-        [cls.isDesktop]: isDesktopSize,
-        [cls.isWidescreen]: isWidescreenSize,
-    };
-
     return (
         <div className={className}>
-            <div className={classNames(cls.title, combinedModCss)}>
+            <div className={classNames(cls.label)}>
                 <Image
                     className={cls['bg-image']}
                     alt="hero label bg"
@@ -31,7 +21,7 @@ export default function HeroGroupLabel(props: HeroGroupLabelProps) {
                     priority
                     fill
                 />
-                <h3>{labelText}</h3>
+                <h3 className={cls.labelText}>{labelText}</h3>
             </div>
         </div>
     );
