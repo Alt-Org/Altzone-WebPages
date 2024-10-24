@@ -30,6 +30,58 @@
   "pirateAlt": "Pirate's image",
 
   "not-found-title": "Could not find requested hero",
-  "not-found-check-heroes": "Check Available Heroes"
+  "not-found-check-heroes": "Check Available Heroes",
+
+  "section-title": "Heroes",
+
+  "RETROFLECTOR": {
+    "name": "RETROFLECTOR",
+    "description": "RETROFLECTOR is ...",
+    "heroes": {
+      "hannuHodari": {
+        "title": "Hannu Hodari",
+        "alt": "Hodari image",
+        "altGif": "",
+        "description": "Hannu Hodari's fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
+      },
+
+      "pirate": {
+        "title": "Bottle-Pirate",
+        "alt": "Bottle-pirate image",
+        "altGif": "",
+        "description": "Bottle-pirate  fights emotions by concentrating on drinking. He is constantly on guard, never letting go of his shield, \nbut is in a constant state of flux."
+      }
+
+    }
+  },
+
+  "PROJECTOR": {
+    "name": "PROJECTOR",
+    "description": "PROJECTOR on ...",
+    "heroes": {
+      "GraffitiArtist": {
+        "title": "Grafitiartist ",
+        "alt": "I am Grafitiartist",
+        "altGif": "",
+        "description": "Graffiti Gaya skilfully projects emotions outside herself - onto other characters as well as into art. \nGaya protects herself by spraying a cloud of spray paint that directs emotions to a teammate. Gaya bears no responsibility."
+      }
+    }
+  },
+
+  "INTELLECTUALIZER": {
+    "name": "INTELLECTUALIZER",
+    "description": "INTELLECTUALIZER  is ...",
+    "heroes": {
+      "Researcher": {
+        "title": "Researcher ",
+        "alt": "I am a Researcher",
+        "altGif": "",
+        "description": "Albert Älypää protects himself from emotions with a non-fiction book that creates diagrams of the emotional trajectory on the playing field. \nBut Albert's constant graphs can sometimes annoy his teammates."
+      }
+    }
+  }
 
 }
+
+
+

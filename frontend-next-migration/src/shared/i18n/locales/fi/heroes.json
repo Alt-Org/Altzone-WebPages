@@ -31,8 +31,55 @@
 
 
   "not-found-title": "Etsittyä sankaria ei löytynyt",
-  "not-found-check-heroes": "Tarkista saatavilla olevat sankarit"
+  "not-found-check-heroes": "Tarkista saatavilla olevat sankarit",
 
+  "section-title": "Hahmot",
+
+  "RETROFLECTOR": {
+    "name": "TORJUJAT",
+    "description": "TORJUJAT on ...",
+    "heroes": {
+      "hannuHodari": {
+        "title": "Hannu Hodari",
+        "alt": "Olen Hannu Hodari",
+        "altGif": "",
+        "description": "Hannu Hodari torjuu tunteita keskittymällä syömiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa. "
+      },
+      "pirate": {
+        "title": "Pullo-Piraatti",
+        "alt": "Pullo-Piraatti kuva",
+        "altGif": "Pullo-Piraatti gifkuva",
+        "description": "Pullo-Piraatti torjuu tunteita keskittymällä juomiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa."
+      }
+
+    }
+  },
+
+  "PROJECTOR": {
+    "name": "PEILAAJAT",
+    "description": "PEILAAJAT on ...",
+    "heroes": {
+      "GraffitiArtist": {
+        "title": "Grafittitaiteilija",
+        "alt": "Olen GRAFFITI TAITEILIJA",
+        "altGif": "",
+        "description": "Graffiti-Gaya projisoi taitavasti tunteet itsensä ulkopuolelle - niin toisiin hahmoihin, kuin taiteeseen. \nGaya suojautuu suihkuttamalla spraymaalipilven, joka ohjaa tunteet joukkuetoverin hoidettavaksi. Gaya ei vastuuta kanna."
+      }
+    }
+  },
+
+  "INTELLECTUALIZER": {
+    "name": "ÄLYLLISTÄJÄT",
+    "description": "ÄLYLLISTÄJÄT   on ...",
+    "heroes": {
+      "Researcher": {
+        "title": "Tutkija ",
+        "alt": "Olen Tutkija ",
+        "altGif": "",
+        "description": "Albert Älypää suojautuu tunteilta tietokirjalla, joka muodostaa pelikentälle tunteiden kulkurataa kuvaavia kaavioita. \nAlbertin jatkuvat kaaviot saattavat kuitenkin toisinaan ärsyttää hänen joukkuetovereitaan. "
+      }
+    }
+  }
 
 
 }

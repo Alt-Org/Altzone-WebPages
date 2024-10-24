@@ -55,9 +55,11 @@ async function processFiles(paths: string[]) {
             const { stdout: gitDiffOutput } = await execAsync('git diff --cached --name-only');
             const gitChangedFiles = gitDiffOutput.split('\n').filter(Boolean); // Remove empty lines
             // Filter only files from the 'src' folder and remove the 'frontend-next-migration/' prefix
+
             const filteredFiles = gitChangedFiles
-                .filter(file => file.startsWith('frontend-next-migration/src/'))
+                .filter(file => file.startsWith('frontend-next-migration/src/') && (file.endsWith('.ts') || file.endsWith('.tsx')))
                 .map(file => path.resolve(file.replace('frontend-next-migration/', ''))); // Convert to absolute path
+
 
             // Remove files that have been deleted from the filtered list
             const existingFiles = filteredFiles.filter(file => {

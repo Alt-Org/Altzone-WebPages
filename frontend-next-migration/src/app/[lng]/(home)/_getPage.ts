@@ -49,7 +49,7 @@ export async function _getPage(lng: string) {
                 videoLink: AppExternalLinks.previewVideoYoutube,
                 title: t('videoAndGalleries-title'),
             },
-            classifiedHeroesBlocks: {
+            heroesBlocks: {
                 title: t('classifiedHeroesBlocks-title'),
                 seeMoreLink: {
                     text: t('classifiedHeroesBlocks-seeMore'),

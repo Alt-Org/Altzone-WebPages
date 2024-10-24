@@ -1,42 +1,30 @@
-import { FC } from 'react';
-import { HeroContainer } from '@/entities/Hero';
+import { HeroContainer, HeroWithGroup } from '@/entities/Hero';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import cls from './HeroPage.module.scss';
 
-type HeroData = {
-    id: number;
-    img: string;
-    title: string;
-    alt: string;
-    heroColor: string;
-    description: string;
-    borderColor: string;
-    imgGif: string;
-    group: string;
-    groupTextBg: string;
-};
-
 interface Props {
-    selectedHero: HeroData;
+    newSelectedHero: HeroWithGroup;
     prevHeroLink: string;
     nextHeroLink: string;
 }
 
-const HeroPage: FC<Props> = ({ selectedHero, prevHeroLink, nextHeroLink }) => {
+const HeroPage = (props: Props) => {
+    const { prevHeroLink, nextHeroLink, newSelectedHero } = props;
+
     return (
         <main className={cls.main}>
             <HeroContainer
-                group={selectedHero.group}
-                groupTextBg={selectedHero.groupTextBg}
-                heroColor={selectedHero.heroColor}
-                heroImg={selectedHero.img}
-                heroName={selectedHero.title}
-                heroDescription={selectedHero.description}
+                groupLabel={newSelectedHero.groupLabel}
+                groupName={newSelectedHero.groupName}
+                heroBgColor={newSelectedHero.groupBgColour}
+                heroDescription={newSelectedHero.description}
+                heroGif={newSelectedHero.srcGif}
+                heroImg={newSelectedHero.srcImg}
+                heroTitle={newSelectedHero.title}
                 leftArrowLink={prevHeroLink}
                 rightArrowLink={nextHeroLink}
-                heroGif={selectedHero.imgGif}
                 xLink={RoutePaths.HEROES}
             />
         </main>

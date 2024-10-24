@@ -16,10 +16,10 @@ export default function HomeLayout({ children }: Props) {
 
     return (
         <>
-            <Intro
-                scrollToContent={scrollToContent}
-                ref={introRef}
-            />
+            {/*<Intro*/}
+            {/*    scrollToContent={scrollToContent}*/}
+            {/*    ref={introRef}*/}
+            {/*/>*/}
             <>
                 <Navbar />
                 {children}

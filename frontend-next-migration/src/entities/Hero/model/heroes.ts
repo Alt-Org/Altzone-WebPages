@@ -13,14 +13,7 @@ import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import redBg from '@/shared/assets/images/heros/textBgColors/red.webp';
 import yellowBg from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 
-// import greenHaired from '@/shared/assets/images/heros/green-haired/green-haired.png';
-// import greenHairedGiF from '@/shared/assets/images/heros/green-haired/green-haired-walk.gif';
-// import greenHairedGiF from "@/shared/assets/images/heros/green-haired/green-haired-walk-2.gif";
-// import pirate from "@/shared/assets/images/heros/pirate/pirate-catwalk.gif";
-// import greenBg from '@/shared/assets/images/heros/textBgColors/green.webp';
-// import lightblueBg from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
-// import orangeBg from '@/shared/assets/images/heros/textBgColors/orange.webp';
-// import pinkBg from '@/shared/assets/images/heros/textBgColors/pink.webp';
+/** @deprecated please use HeroManager instead**/
 const Heroes = [
     {
         id: 1,
