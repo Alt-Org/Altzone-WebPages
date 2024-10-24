@@ -16,11 +16,13 @@ export class HeroManager {
                 name: groupName,
                 description: groupDescription,
                 bgColour: groupBgColour,
+                label: groupLabel,
             } = groupInfo;
             return groupInfo.heroes.map((hero) => ({
                 ...hero,
                 groupEnum: group as HeroGroup,
                 groupName,
+                groupLabel,
                 groupDescription,
                 groupBgColour,
             }));
@@ -46,6 +48,7 @@ export class HeroManager {
         const {
             name: groupName,
             description: groupDescription,
+            label: groupLabel,
             bgColour: groupBgColour,
         } = groupInfo;
 
@@ -54,6 +57,7 @@ export class HeroManager {
             groupEnum: group,
             groupName,
             groupDescription,
+            groupLabel,
             groupBgColour,
         })) as HeroWithGroup[];
     }
