@@ -22,12 +22,20 @@
 
 
 
-  & > div{
-    padding: 20px;
+  & > div {
+
+
   }
 
+}
+
+.labelTextClassName{
+  //font-size: var(--font-line-l)!important;
+
+  padding: 40px 30px;
 
 }
+
 
 .HeroCard {
   width: var(--cardWidth);

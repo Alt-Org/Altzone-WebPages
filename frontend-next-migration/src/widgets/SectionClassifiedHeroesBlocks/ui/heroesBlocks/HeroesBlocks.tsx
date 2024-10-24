@@ -53,6 +53,7 @@ const HeroesBlocks = (props: Props) => {
                     labelText={labelText}
                     label={label}
                     className={cls.Group}
+                    labelTextClassName={cls.labelTextClassName}
                 />
 
                 {heroes

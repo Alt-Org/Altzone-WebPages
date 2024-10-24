@@ -8,6 +8,7 @@ import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
+import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 

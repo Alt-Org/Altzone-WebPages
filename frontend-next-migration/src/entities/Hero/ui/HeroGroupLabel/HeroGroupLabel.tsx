@@ -6,10 +6,11 @@ type HeroGroupLabelProps = Readonly<{
     labelText: string;
     label: StaticImageData | string;
     className?: string;
+    labelTextClassName?: string;
 }>;
 
 export default function HeroGroupLabel(props: HeroGroupLabelProps) {
-    const { className, label, labelText } = props;
+    const { className, label, labelText, labelTextClassName } = props;
 
     return (
         <div className={className}>
@@ -21,7 +22,9 @@ export default function HeroGroupLabel(props: HeroGroupLabelProps) {
                     priority
                     fill
                 />
-                <h3 className={cls.labelText}>{labelText}</h3>
+                <h3 className={classNames(cls.labelText, {}, [labelTextClassName as string])}>
+                    {labelText}
+                </h3>
             </div>
         </div>
     );
