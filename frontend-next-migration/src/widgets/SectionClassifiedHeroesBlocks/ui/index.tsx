@@ -12,7 +12,7 @@ const sameBg = undefined;
 
 export type Props = {
     title: string;
-    seeMoreLink: {
+    seeMoreLink?: {
         href: string;
         text: string;
     };
@@ -49,21 +49,22 @@ function Main(props: Props) {
                     groupBgColor={group.bgColour}
                 />
             ))}
-
-            <div
-                ref={ref}
-                className={cls.buttonContainer}
-            >
-                <Button
-                    withScalableLink={true}
-                    theme={ButtonTheme.Graffiti}
-                    className={classNames(cls.SeeMore, mods)}
-                    size={ButtonSize.XL}
+            {seeMoreLink && (
+                <div
                     ref={ref}
+                    className={cls.buttonContainer}
                 >
-                    <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
-                </Button>
-            </div>
+                    <Button
+                        withScalableLink={true}
+                        theme={ButtonTheme.Graffiti}
+                        className={classNames(cls.SeeMore, mods)}
+                        size={ButtonSize.XL}
+                        ref={ref}
+                    >
+                        <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
+                    </Button>
+                </div>
+            )}
         </section>
     );
 }

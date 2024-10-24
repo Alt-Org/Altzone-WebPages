@@ -49,7 +49,10 @@ function MainPage(props: Props) {
 
             <HorizontalLines />
 
-            <SectionClassifiedHeroesBlocks {...classifiedHeroesBlocks} />
+            <SectionClassifiedHeroesBlocks
+                {...classifiedHeroesBlocks}
+                maxHeroesPerGroup={2}
+            />
 
             {/*<HorizontalLines />*/}
 
