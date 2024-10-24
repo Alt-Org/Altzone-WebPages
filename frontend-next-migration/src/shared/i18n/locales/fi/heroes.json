@@ -66,9 +66,9 @@
     "description": "ÄLYLLISTÄJÄT   on ...",
     "heroes": {
       "Researcher": {
-        "title": "Researcher artist ",
-        "alt": "I am Researcher",
-        "description": "Researcher is..."
+        "title": "TUTKIJA ",
+        "alt": "Olen TUTKIJA ",
+        "description": "TUTKIJA  on..."
       }
     }
   }
