@@ -1,4 +1,4 @@
-import { GroupInfo, Hero, HeroGroup } from '../types/hero';
+import { GroupInfo, Hero, HeroGroup, HeroSlug } from '../types/hero';
 import { initializeHeroGroups } from './initializeHeroGroups';
 
 interface HeroWithGroup extends Hero {
@@ -40,6 +40,10 @@ export class HeroManager {
 
     public getHeroById(heroId: number): HeroWithGroup | undefined {
         return this.getAllHeroes().find((hero) => hero.id === heroId);
+    }
+
+    public getHeroBySlug(slug: HeroSlug): HeroWithGroup | undefined {
+        return this.getAllHeroes().find((hero) => hero.slug === slug);
     }
 
     public getHeroesBySpecificGroup(group: HeroGroup): HeroWithGroup[] | undefined {
