@@ -34,11 +34,28 @@
 
   "RETROFLECTOR": {
     "name": "RETROFLECTOR",
+    "description": "RETROFLECTOR is ...",
     "heroes": {
       "hannuHodari": {
-        "title": "Hannu Hodari"
+        "title": "Hannu Hodari",
+        "description": "Hannu Hodari is.."
       }
+    }
+  },
+
+  "PROJECTOR": {
+    "name": "PEILAAJAT",
+    "description": "PEILAAJAT on ..."
+  },
+  "heroes": {
+    "GraffitiArtist": {
+      "title": "Grafitiartist ",
+      "alt": "I am Grafitiartist",
+      "description": "Grafiti artist is..."
     }
   }
 
 }
+
+
+

@@ -38,10 +38,24 @@
 
 
   "RETROFLECTOR": {
-    "name": "RETROFLECTOR fin",
+    "name": "TORJUJAT",
+    "description": "TORJUJAT on ...",
     "heroes": {
       "hannuHodari": {
-        "title": "Hannu Hodari fin"
+        "title": "Hannu Hodari",
+        "alt": "Olen Hannu Hodari",
+        "description": "Hannur Hodari on paras"
+      }
+    },
+    "PROJECTOR": {
+      "name": "PEILAAJAT",
+      "description": "PEILAAJAT on ..."
+    },
+    "heroes": {
+      "GraffitiArtist": {
+        "title": "GRAFFITITAITEILIJA ",
+        "alt": "Olen GRAFFITI TAITEILIJA",
+        "description": "GRAFFITI TAITEILIJA on..."
       }
     }
   }

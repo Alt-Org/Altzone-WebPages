@@ -21,7 +21,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.RETROFLECTOR]: {
             name: t('RETROFLECTOR.name'),
             description: t('RETROFLECTOR.description'),
-            groupColor: '#FF0000',
+            bgColour: 'FF0000',
             heroes: [
                 {
                     id: 1,
@@ -32,8 +32,24 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: 'hannu-hodari',
                     borderColor: '#41F50C',
                     description: t('RETROFLECTOR.heroes.hannuHodari.description'),
-                    // groupTextBg: 'redBg',
-                    // color: 'rgba(226, 5, 5, 0.5)',
+                },
+            ],
+        },
+
+        [HeroGroup.PROJECTOR]: {
+            name: t('PROJECTOR.name'),
+            description: t('PROJECTOR.description'),
+            bgColour: 'rgba(254, 237, 1, 0.5)',
+            heroes: [
+                {
+                    id: 4,
+                    srcImg: graffittiGaya,
+                    srcGif: graffittiGayaGif,
+                    alt: 'PROJECTOR.heroes.GraffitiArtist.alt',
+                    slug: 'graffiti-artist',
+                    title: t('PROJECTOR.heroes.GraffitiArtist.title'),
+                    borderColor: '#41F50C',
+                    description: 'PROJECTOR.heroes.GraffitiArtist.description',
                 },
             ],
         },
