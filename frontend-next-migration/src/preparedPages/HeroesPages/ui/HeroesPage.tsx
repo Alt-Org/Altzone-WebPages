@@ -4,7 +4,7 @@ import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import cls from './HeroesPage.module.scss';
 
-interface Props {
+export interface Props {
     SectionHeroesBlocksTitle: string;
 }
 
