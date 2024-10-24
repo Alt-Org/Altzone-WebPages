@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { HeroContainer } from '@/entities/Hero';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
@@ -24,7 +23,9 @@ interface Props {
     nextHeroLink: string;
 }
 
-const HeroPage: FC<Props> = ({ selectedHero, prevHeroLink, nextHeroLink }) => {
+const HeroPage = (props: Props) => {
+    const { selectedHero, prevHeroLink, nextHeroLink } = props;
+
     return (
         <main className={cls.main}>
             <HeroContainer
