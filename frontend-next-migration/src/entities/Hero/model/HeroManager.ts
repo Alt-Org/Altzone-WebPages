@@ -33,6 +33,12 @@ export class HeroManager {
         return this.heroGroups;
     }
 
+    public getHeroesByGroupsAsArray(): GroupInfo[] {
+        return Object.values(this.getHeroesByGroups()).map((value) => ({
+            ...value,
+        }));
+    }
+
     public getHeroById(heroId: number): HeroWithGroup | undefined {
         return this.getAllHeroes().find((hero) => hero.id === heroId);
     }
