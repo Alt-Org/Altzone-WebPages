@@ -20,7 +20,6 @@ export interface Hero {
     srcGif: StaticImageData;
     alt: string;
     title: string;
-    borderColor: string;
     description: string;
     slug: string;
     // groupTextBg: string;
