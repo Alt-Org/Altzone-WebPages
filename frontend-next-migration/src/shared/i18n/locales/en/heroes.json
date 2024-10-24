@@ -41,7 +41,15 @@
         "alt": "Hodari image",
         "altGif": "",
         "description": "Hannu Hodari's fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
+      },
+
+      "pirate": {
+        "title": "Bottle-Pirate",
+        "alt": "Bottle-pirate image",
+        "altGif": "",
+        "description": "Bottle-pirate  fights emotions by concentrating on drinking. He is constantly on guard, never letting go of his shield, \nbut is in a constant state of flux."
       }
+
     }
   },
 
@@ -53,7 +61,7 @@
         "title": "Grafitiartist ",
         "alt": "I am Grafitiartist",
         "altGif": "",
-        "description": "Grafiti artist is..."
+        "description": "Graffiti Gaya skilfully projects emotions outside herself - onto other characters as well as into art. \nGaya protects herself by spraying a cloud of spray paint that directs emotions to a teammate. Gaya bears no responsibility."
       }
     }
   },
@@ -66,7 +74,7 @@
         "title": "Researcher ",
         "alt": "I am a Researcher",
         "altGif": "",
-        "description": "Researcher is..."
+        "description": "Albert Älypää protects himself from emotions with a non-fiction book that creates diagrams of the emotional trajectory on the playing field. \nBut Albert's constant graphs can sometimes annoy his teammates."
       }
     }
   }

@@ -46,7 +46,14 @@
         "alt": "Olen Hannu Hodari",
         "altGif": "",
         "description": "Hannur Hodari on paras"
+      },
+      "pirate": {
+        "title": "Pullo-Piraatti",
+        "alt": "Pullo-Piraatti kuva",
+        "altGif": "Pullo-Piraatti gifkuva",
+        "description": "Pullo-Piraatti torjuu tunteita keskittymällä juomiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa."
       }
+
     }
   },
 
@@ -58,7 +65,7 @@
         "title": "GRAFFITITAITEILIJA ",
         "alt": "Olen GRAFFITI TAITEILIJA",
         "altGif": "",
-        "description": "GRAFFITI TAITEILIJA on..."
+        "description": "Graffiti-Gaya projisoi taitavasti tunteet itsensä ulkopuolelle - niin toisiin hahmoihin, kuin taiteeseen. \nGaya suojautuu suihkuttamalla spraymaalipilven, joka ohjaa tunteet joukkuetoverin hoidettavaksi. Gaya ei vastuuta kanna."
       }
     }
   },
@@ -71,7 +78,7 @@
         "title": "TUTKIJA ",
         "alt": "Olen TUTKIJA ",
         "altGif": "",
-        "description": "TUTKIJA  on..."
+        "description": "Albert Älypää suojautuu tunteilta tietokirjalla, joka muodostaa pelikentälle tunteiden kulkurataa kuvaavia kaavioita. \nAlbertin jatkuvat kaaviot saattavat kuitenkin toisinaan ärsyttää hänen joukkuetovereitaan. "
       }
     }
   }

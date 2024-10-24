@@ -16,6 +16,7 @@ export enum HeroSlug {
     HANNU_HODARI = 'hannu-hodari',
     GRAFFITI_ARTIST = 'graffiti-artist',
     RESEARCHER = 'researcher',
+    PIRATE = 'pirate',
 }
 
 export interface Hero {

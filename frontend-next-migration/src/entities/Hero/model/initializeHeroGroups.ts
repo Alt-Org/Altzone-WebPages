@@ -2,6 +2,8 @@ import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
 import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
 import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.gif';
+import pirate from '@/shared/assets/images/heros/pirate/pirate.png';
+import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
@@ -26,6 +28,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('RETROFLECTOR.heroes.hannuHodari.title'),
                     slug: HeroSlug.HANNU_HODARI,
                     description: t('RETROFLECTOR.heroes.hannuHodari.description'),
+                },
+
+                {
+                    id: 12,
+                    srcImg: pirate,
+                    srcGif: pirateGif,
+                    alt: t('RETROFLECTOR.heroes.pirate.alt'),
+                    altGif: t('RETROFLECTOR.heroes.pirate.altGif'),
+                    title: t('RETROFLECTOR.heroes.pirate.title'),
+                    slug: HeroSlug.PIRATE,
+                    description: t('RETROFLECTOR.heroes.pirate.description'),
                 },
             ],
         },
