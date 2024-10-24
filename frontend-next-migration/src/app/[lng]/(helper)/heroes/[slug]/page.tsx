@@ -30,7 +30,6 @@ export default async function HeroPage({ params }: Props) {
 
     return (
         <div>
-            {/*{JSON.stringify(currentHero)}*/}
             <PreparedHeroPage
                 selectedHero={{
                     id: currentHero.id,
@@ -43,8 +42,6 @@ export default async function HeroPage({ params }: Props) {
                     borderColor: '',
                     description: currentHero.description,
                     groupTextBg: currentHero.groupBgColour,
-
-                    // group:
                 }}
                 prevHeroLink={prevHeroLink}
                 nextHeroLink={nextHeroLink}
@@ -56,49 +53,3 @@ export default async function HeroPage({ params }: Props) {
 function generateHeroLink(heroSlug: string): string {
     return RoutePaths.HEROES_ONE.replace(':slug', heroSlug);
 }
-
-// @ts-ignore todo figure out why it doesnt work properly and refactor after it and add createMetadataGenerator
-// export default withPageData(PreparedHeroPage, _getPage);
-
-// const currentIndex = heroes.findIndex((hero) => hero.title === title);
-// const prevHeroTitle = findPrevTitle(currentIndex);
-// const nextHeroTitle = findNextTitle(currentIndex);
-// const selectedHero = getHeroData(title, t);
-//
-//
-//
-// const prevHeroLink = generateHeroLink(prevHeroTitle);
-// const nextHeroLink = generateHeroLink(nextHeroTitle);
-
-// const notFoundBoolean = !selectedHero || !nextHeroTitle || !prevHeroTitle;
-//
-// if (notFoundBoolean) {
-//     notFound();
-// }
-
-// function getHeroData(heroTitle: string, t: (key: string) => string) {
-//     const hero = heroes.find((hr) => hr.title === heroTitle);
-//     return hero
-//         ? {
-//               id: hero.id,
-//               img: hero.srcImg as unknown as string,
-//               title: t(`${hero.title}`),
-//               alt: t(`${hero.alt}`),
-//               heroColor: hero.color,
-//               description: t(`${hero.description}`),
-//               borderColor: hero.borderColor,
-//               imgGif: hero?.srcGif as unknown as string,
-//               group: hero?.group,
-//           }
-//         : null;
-// }
-//
-// function findNextTitle(currentIndex: number): string {
-//     const nextIndex = currentIndex === heroes.length - 1 ? 0 : currentIndex + 1;
-//     return heroes[nextIndex]?.title;
-// }
-//
-// function findPrevTitle(currentIndex: number): string {
-//     const previousIndex = currentIndex === 0 ? heroes.length - 1 : currentIndex - 1;
-//     return heroes[previousIndex]?.title;
-// }
