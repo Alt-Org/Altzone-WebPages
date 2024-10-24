@@ -26,14 +26,13 @@ export interface Hero {
     title: string;
     description: string;
     slug: HeroSlug;
-    // groupTextBg: string;
-    // color: string;
 }
 
 export interface GroupInfo {
     name: string;
     description: string;
     bgColour: string;
+    label: StaticImageData;
     heroes: Hero[];
 }
 
@@ -42,4 +41,5 @@ export interface HeroWithGroup extends Hero {
     groupName: string;
     groupDescription: string;
     groupBgColour: string;
+    groupLabel: StaticImageData;
 }
