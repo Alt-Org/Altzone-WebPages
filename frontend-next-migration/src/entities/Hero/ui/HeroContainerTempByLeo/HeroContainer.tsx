@@ -1,6 +1,5 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
-import { HeroWithGroup } from '@/entities/Hero';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import HeroGroupLabel from '../HeroGroupLabel/HeroGroupLabel';
@@ -11,17 +10,16 @@ import cls from './HeroContainer.module.scss';
 import useKeyboardNavigation from './useKeyboardNavigation';
 
 type Props = {
-    group: string;
-    groupTextBg: string;
     heroImg: StaticImageData | string;
     heroGif: StaticImageData | string;
-    heroName: string;
+    heroTitle: string;
     heroDescription: string;
-    heroColor: string;
+    heroBgColor: string;
     leftArrowLink: string;
     rightArrowLink: string;
     xLink: string;
-    hero: HeroWithGroup;
+    groupLabel: StaticImageData | string;
+    groupName: string;
 };
 
 const HeroContainer = (props: Props) => {
@@ -29,16 +27,14 @@ const HeroContainer = (props: Props) => {
         heroImg,
         heroGif,
         heroDescription,
-        heroColor,
+        heroBgColor,
         leftArrowLink,
         rightArrowLink,
         xLink,
-        heroName,
-        group,
-        hero,
+        heroTitle,
+        groupLabel,
+        groupName,
     } = props;
-
-    const { groupLabel, groupName } = hero;
 
     useKeyboardNavigation({
         leftArrowLink,
@@ -76,7 +72,7 @@ const HeroContainer = (props: Props) => {
                     <div
                         className={classNames(cls.contentWrapper, combinedModCss)}
                         style={{
-                            backgroundColor: heroColor,
+                            backgroundColor: heroBgColor,
                         }}
                     >
                         <div className={cls.content}>
@@ -86,7 +82,7 @@ const HeroContainer = (props: Props) => {
                             />
                             <HeroCardTitle
                                 combinedModCss={combinedModCss}
-                                title={heroName}
+                                title={heroTitle}
                             />
                             <div className={classNames(cls.heroImgWrapper, combinedModCss)}>
                                 <ArrowButton

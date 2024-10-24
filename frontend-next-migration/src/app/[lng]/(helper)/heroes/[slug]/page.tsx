@@ -31,18 +31,7 @@ export default async function HeroPage({ params }: Props) {
     return (
         <div>
             <PreparedHeroPage
-                selectedHero={{
-                    id: currentHero.id,
-                    img: currentHero.srcImg,
-                    imgGif: currentHero.srcGif,
-                    group: currentHero.groupEnum,
-                    alt: currentHero.alt,
-                    heroColor: currentHero.groupBgColour,
-                    title: currentHero.title,
-                    borderColor: '',
-                    description: currentHero.description,
-                    groupTextBg: currentHero.groupBgColour,
-                }}
+                newSelectedHero={currentHero}
                 prevHeroLink={prevHeroLink}
                 nextHeroLink={nextHeroLink}
             />
