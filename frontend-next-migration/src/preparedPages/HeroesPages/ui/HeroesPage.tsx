@@ -1,4 +1,4 @@
-import { SectionClassifiedHeroesBlocks } from '@/widgets/SectionClassifiedHeroesBlocks';
+import { SectionClassifiedHeroesBlocks } from '@/widgets/SectionHeroesBlocks';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';

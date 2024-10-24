@@ -1,7 +1,7 @@
 import {
     SectionClassifiedHeroesBlocks,
     ClassifiedHeroesBlocksProps,
-} from '@/widgets/SectionClassifiedHeroesBlocks';
+} from '@/widgets/SectionHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
