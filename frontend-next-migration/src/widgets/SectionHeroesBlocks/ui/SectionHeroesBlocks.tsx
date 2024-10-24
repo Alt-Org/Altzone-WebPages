@@ -1,6 +1,6 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
-import { HeroCard, heroes, HeroManager } from '@/entities/Hero';
+import { HeroCard, HeroManager } from '@/entities/Hero';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './SectionHeroesBlocks.module.scss';
 
@@ -13,7 +13,6 @@ const SectionHeroes2 = (props: Props) => {
     const heroManager = new HeroManager(t);
 
     const tempHeroes = heroManager.getAllHeroes();
-    // const tempHeroes = heroManager.getHeroesBySpecificGroup(HeroGroup.RETROFLECTOR);
 
     const { backgroundImageSrc } = props;
 
@@ -38,18 +37,6 @@ const SectionHeroes2 = (props: Props) => {
                         className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
                         key={item.title}
                         slug={item.slug}
-                        id={item.title}
-                        imageSrc={item.srcImg}
-                        imageAlt={item.alt}
-                    />
-                ))}
-
-                {heroes.map((item) => (
-                    <HeroCard
-                        title={''}
-                        className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
-                        key={item.title}
-                        slug={item.title}
                         id={item.title}
                         imageSrc={item.srcImg}
                         imageAlt={item.alt}
