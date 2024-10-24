@@ -42,6 +42,7 @@ const meta = {
     },
     tags: ['autodocs'],
     parameters: {
+        layout: 'centered',
         docs: {
             description: {
                 component:
