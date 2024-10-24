@@ -6,15 +6,14 @@ export enum HeroGroup {
     // TRICKSTER = "TRICKSTER",
     // OBEDIENT = "OBEDIENT",
     PROJECTOR = 'PROJECTOR',
-    //
     // // PROFLECTOR = "PROFLECTOR",
     INTELLECTUALIZER = 'INTELLECTUALIZER',
     // CONFLUENT = "CONFLUENT"
 }
 
 export enum HeroSlug {
-    HANNU_HODARI = 'hannuhodari',
-    GRAFFITI_ARTIST = 'graffitiartist',
+    HANNU_HODARI = 'hannu-hodari',
+    GRAFFITI_ARTIST = 'graffiti-artist',
     RESEARCHER = 'researcher',
     PIRATE = 'pirate',
 }

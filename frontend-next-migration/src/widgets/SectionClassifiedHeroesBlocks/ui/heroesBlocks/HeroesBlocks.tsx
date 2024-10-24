@@ -1,19 +1,22 @@
 'use client';
 import { StaticImageData } from 'next/image';
 import { useInView } from 'react-intersection-observer';
-import { HeroCard, HeroWithGroup, HeroGroupLabel } from '@/entities/Hero';
+import { HeroCard, Hero, HeroGroupLabel } from '@/entities/Hero';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './HeroesBlocks.module.scss';
+
+// import { Hero } from "@/entities/Hero/types/hero";
 
 type Props = {
     backgroundImageSrc?: string;
     labelText: string;
     label: StaticImageData | string;
-    heroes: any;
+    heroes: Hero[];
+    groupBgColor: string;
 };
 
 const HeroesBlocks = (props: Props) => {
-    const { heroes, backgroundImageSrc, labelText, label } = props;
+    const { heroes, backgroundImageSrc, labelText, label, groupBgColor } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -21,13 +24,6 @@ const HeroesBlocks = (props: Props) => {
     });
 
     const { t } = useClientTranslation('heroes');
-
-    // // const filteredHeroes = useMemo(
-    // //     () => heroes.filter((hero: { group: string }) => hero.group === group).slice(0, 2),
-    // //     [group, heroes],
-    // // );
-    //
-    // const filteredHeroes = heroes.slice(0, 2);
 
     return (
         <div
@@ -38,17 +34,6 @@ const HeroesBlocks = (props: Props) => {
             ref={ref}
         >
             <div className={cls.Content}>
-                {/*<div className={cls.Group}>*/}
-                {/*    <h3*/}
-                {/*        className={cls.Title}*/}
-                {/*        // @ts-ignore*/}
-                {/*        style={{ backgroundImage: label}}*/}
-                {/*        // style={{ backgroundImage: `url(${label.src})` }}*/}
-                {/*    >*/}
-                {/*        <span>{labelText}</span>*/}
-                {/*    </h3>*/}
-                {/*</div>*/}
-
                 <HeroGroupLabel
                     labelText={labelText}
                     label={label}
@@ -56,21 +41,18 @@ const HeroesBlocks = (props: Props) => {
                     labelTextClassName={cls.labelTextClassName}
                 />
 
-                {heroes
-                    // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
-                    .map((item) => (
-                        <HeroCard
-                            className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
-                            key={item.title}
-                            slug={item.slug}
-                            id={item.title}
-                            title={t(item.title)}
-                            imageSrc={item.srcImg}
-                            imageAlt={item.alt}
-                            backgroundColor={item.color}
-                            // group={item.group}
-                        />
-                    ))}
+                {heroes.map((item) => (
+                    <HeroCard
+                        className={`${cls.HeroCard} ${inView ? cls.Visible : ''}`}
+                        key={item.title}
+                        slug={item.slug}
+                        id={item.title}
+                        title={t(item.title)}
+                        imageSrc={item.srcImg}
+                        imageAlt={item.alt}
+                        backgroundColor={groupBgColor}
+                    />
+                ))}
             </div>
         </div>
     );

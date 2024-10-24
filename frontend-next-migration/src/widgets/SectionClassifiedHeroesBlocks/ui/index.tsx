@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
-import { heroes, HeroManager } from '@/entities/Hero';
+import { HeroManager } from '@/entities/Hero';
 import red from '@/shared/assets/images/heros/textBgColors/red.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue.webp';
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
@@ -34,12 +34,13 @@ function Main(props: Props) {
         [cls.inView]: inView,
     };
 
-    const heroGroups = [
-        { group: 'TORJUJAT // RETROFLEKTIO', textBgColor: red },
-        { group: 'SULAUTUJAT // KONFLUENSSI', textBgColor: pink },
-        { group: 'ÄLYLLISTÄJÄT // EGOTISMI', textBgColor: darkBlue },
-        { group: 'PEILAAJAT // PROJEKTIO', textBgColor: orange },
-    ];
+    // // const filteredHeroes = useMemo(
+    // //     () => heroes.filter((hero: { group: string }) => hero.group === group).slice(0, 2),
+    // //     [group, heroes],
+    // // );
+    //
+    // const filteredHeroes = heroes.slice(0, 2);
+
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
     const heroesGroups2 = heroManager.getHeroesByGroupsAsArray();
@@ -55,20 +56,9 @@ function Main(props: Props) {
                     backgroundImageSrc={sameBg}
                     label={group.label}
                     labelText={group.name}
-                    // group={group.}
-                    // textBgColor={group.textBgColor}
+                    groupBgColor={group.bgColour}
                 />
             ))}
-
-            {/*{heroGroups.map((group, index) => (*/}
-            {/*    <HeroesBlocks*/}
-            {/*        key={index}*/}
-            {/*        heroes={heroes}*/}
-            {/*        backgroundImageSrc={sameBg}*/}
-            {/*        group={group.group}*/}
-            {/*        textBgColor={group.textBgColor}*/}
-            {/*    />*/}
-            {/*))}*/}
 
             <div
                 ref={ref}
