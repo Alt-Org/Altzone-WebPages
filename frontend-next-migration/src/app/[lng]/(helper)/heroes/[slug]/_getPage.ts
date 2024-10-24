@@ -1,32 +1,34 @@
 import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
-import { heroes } from '@/entities/Hero';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { notFound } from 'next/navigation';
+import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
+import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 
-export async function _getPage(lng: string, title: string) {
+export async function _getPage(lng: string, slug: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
-    const currentIndex = heroes.findIndex((hero) => hero.title === title);
+    const heroManager = new HeroManager(t);
 
-    const prevHeroTitle = findPrevTitle(currentIndex);
-    const nextHeroTitle = findNextTitle(currentIndex);
-
-    const selectedHero = getHeroData(title, t);
-    const prevHeroLink = generateHeroLink(prevHeroTitle);
-    const nextHeroLink = generateHeroLink(nextHeroTitle);
-
-    const notFoundBoolean = !selectedHero || !nextHeroTitle || !prevHeroTitle;
-
-    if (notFoundBoolean) {
+    const currentHero = heroManager.getHeroBySlug(slug as HeroSlug);
+    if (!currentHero) {
         notFound();
     }
 
+    const heroes = heroManager.getAllHeroes();
+    const prevHero =
+        heroManager.getHeroBeforeSpecificHero(currentHero.id) || (heroes.at(-1) as HeroWithGroup);
+    const nextHero =
+        heroManager.getHeroAfterSpecificHero(currentHero.id) || (heroes.at(0) as HeroWithGroup);
+
+    const prevHeroLink = generateHeroLink(prevHero.slug);
+    const nextHeroLink = generateHeroLink(nextHero.slug);
+
     return createPage({
         buildPage: () => ({
-            selectedHero: { selectedHero },
-            prevHeroLink: { prevHeroLink },
-            nextHeroLink: { nextHeroLink },
+            selectedHero: currentHero,
+            prevHeroLink: prevHeroLink,
+            nextHeroLink: nextHeroLink,
         }),
+        // todo it should be kinda dynamic
         buildSeo: () => ({
             title: t('head-title'),
             description: t('head-description'),
@@ -35,33 +37,6 @@ export async function _getPage(lng: string, title: string) {
     });
 }
 
-function getHeroData(heroTitle: string, t: (key: string) => string) {
-    const hero = heroes.find((hr) => hr.title === heroTitle);
-    return hero
-        ? {
-              id: hero.id,
-              img: hero.srcImg as unknown as string,
-              title: t(`${hero.title}`),
-              alt: t(`${hero.alt}`),
-              heroColor: hero.color,
-              description: t(`${hero.description}`),
-              borderColor: hero.borderColor,
-              imgGif: hero?.srcGif as unknown as string,
-              group: hero?.group,
-          }
-        : null;
-}
-
-function findNextTitle(currentIndex: number): string {
-    const nextIndex = currentIndex === heroes.length - 1 ? 0 : currentIndex + 1;
-    return heroes[nextIndex]?.title;
-}
-
-function findPrevTitle(currentIndex: number): string {
-    const previousIndex = currentIndex === 0 ? heroes.length - 1 : currentIndex - 1;
-    return heroes[previousIndex]?.title;
-}
-
-function generateHeroLink(heroTitle: string): string {
-    return RoutePaths.HEROES_ONE.replace(':slug', heroTitle);
+function generateHeroLink(heroSlug: string): string {
+    return RoutePaths.HEROES_ONE.replace(':slug', heroSlug);
 }
