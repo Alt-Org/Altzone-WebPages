@@ -5,7 +5,7 @@ import cls from './HeroGroupLabel.module.scss';
 
 type HeroGroupLabelProps = Readonly<{
     labelText: string;
-    label: StaticImageData;
+    label: StaticImageData | string;
     className?: string;
 }>;
 
