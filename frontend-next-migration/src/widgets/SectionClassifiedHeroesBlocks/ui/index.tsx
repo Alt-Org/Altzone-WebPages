@@ -16,10 +16,11 @@ export type Props = {
         href: string;
         text: string;
     };
+    maxHeroesPerGroup?: number;
 };
 
 function Main(props: Props) {
-    const { title, seeMoreLink } = props;
+    const { title, seeMoreLink, maxHeroesPerGroup = 100 } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -29,13 +30,6 @@ function Main(props: Props) {
     const mods = {
         [cls.inView]: inView,
     };
-
-    // // const filteredHeroes = useMemo(
-    // //     () => heroes.filter((hero: { group: string }) => hero.group === group).slice(0, 2),
-    // //     [group, heroes],
-    // // );
-    //
-    // const filteredHeroes = heroes.slice(0, 2);
 
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
@@ -48,7 +42,7 @@ function Main(props: Props) {
             {heroesGroups2.map((group) => (
                 <HeroesBlocks
                     key={group.name}
-                    heroes={group.heroes}
+                    heroes={group.heroes.slice(0, maxHeroesPerGroup)}
                     backgroundImageSrc={sameBg}
                     label={group.label}
                     labelText={group.name}
