@@ -32,6 +32,8 @@
   "not-found-title": "Could not find requested hero",
   "not-found-check-heroes": "Check Available Heroes",
 
+  "section-title": "Heroes",
+
   "RETROFLECTOR": {
     "name": "RETROFLECTOR",
     "description": "RETROFLECTOR is ...",
