@@ -2,10 +2,6 @@
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { HeroManager } from '@/entities/Hero';
-import red from '@/shared/assets/images/heros/textBgColors/red.webp';
-import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue.webp';
-import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
-import pink from '@/shared/assets/images/heros/textBgColors/pink.webp';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';

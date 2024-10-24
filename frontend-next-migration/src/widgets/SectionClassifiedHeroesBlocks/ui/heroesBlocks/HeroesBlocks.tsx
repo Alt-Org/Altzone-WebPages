@@ -5,8 +5,6 @@ import { HeroCard, Hero, HeroGroupLabel } from '@/entities/Hero';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './HeroesBlocks.module.scss';
 
-// import { Hero } from "@/entities/Hero/types/hero";
-
 type Props = {
     backgroundImageSrc?: string;
     labelText: string;
