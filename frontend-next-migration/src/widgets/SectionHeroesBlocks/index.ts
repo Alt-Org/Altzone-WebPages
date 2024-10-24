@@ -1,4 +1,4 @@
 // export {default as SectionClassifiedHeroesBlocks} from "./~deprecated/ui/SectionClassifiedHeroesBlocks";
-export { default as SectionClassifiedHeroesBlocks } from './ui';
+export { default as SectionHeroesBlocks } from './ui';
 
-export type { Props as ClassifiedHeroesBlocksProps } from './ui';
+export type { Props as HeroesBlocksProps } from './ui';

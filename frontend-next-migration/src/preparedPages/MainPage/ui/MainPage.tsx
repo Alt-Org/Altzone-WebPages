@@ -1,7 +1,4 @@
-import {
-    SectionClassifiedHeroesBlocks,
-    ClassifiedHeroesBlocksProps,
-} from '@/widgets/SectionHeroesBlocks';
+import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
@@ -22,11 +19,11 @@ export type Props = {
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
-    classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
+    heroesBlocks: HeroesBlocksProps;
 };
 
 function MainPage(props: Props) {
-    const { projectDescription, playWithUs, videoAndGalleries, classifiedHeroesBlocks } = props;
+    const { projectDescription, playWithUs, videoAndGalleries, heroesBlocks } = props;
 
     const sameBg = undefined;
 
@@ -49,8 +46,8 @@ function MainPage(props: Props) {
 
             <HorizontalLines />
 
-            <SectionClassifiedHeroesBlocks
-                {...classifiedHeroesBlocks}
+            <SectionHeroesBlocks
+                {...heroesBlocks}
                 maxHeroesPerGroup={2}
             />
 

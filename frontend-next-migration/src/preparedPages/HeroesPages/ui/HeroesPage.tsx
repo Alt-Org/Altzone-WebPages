@@ -1,4 +1,4 @@
-import { SectionClassifiedHeroesBlocks } from '@/widgets/SectionHeroesBlocks';
+import { SectionHeroesBlocks } from '@/widgets/SectionHeroesBlocks';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
@@ -10,7 +10,7 @@ const HeroesPage = () => {
     return (
         <main className={cls.main}>
             <FeedbackSideButton disableMobile={true} />
-            <SectionClassifiedHeroesBlocks title={'Heroes'} />
+            <SectionHeroesBlocks title={'Heroes'} />
         </main>
     );
 };
