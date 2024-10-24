@@ -51,5 +51,22 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                 },
             ],
         },
+
+        [HeroGroup.INTELLECTUALIZER]: {
+            name: t('INTELLECTUALIZER.name'),
+            description: t('INTELLECTUALIZER.description'),
+            bgColour: 'rgba(254, 237, 1, 0.5)',
+            heroes: [
+                {
+                    id: 5,
+                    srcImg: einstein,
+                    srcGif: einsteinGif,
+                    alt: 'INTELLECTUALIZER.heroes.Researcher.alt',
+                    slug: 'researcher',
+                    title: t('INTELLECTUALIZER.heroes.Researcher.title'),
+                    description: 'INTELLECTUALIZER.heroes.Researcher.description',
+                },
+            ],
+        },
     };
 };

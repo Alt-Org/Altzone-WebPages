@@ -44,14 +44,26 @@
   },
 
   "PROJECTOR": {
-    "name": "PEILAAJAT",
-    "description": "PEILAAJAT on ..."
+    "name": "PROJECTOR",
+    "description": "PROJECTOR on ...",
+    "heroes": {
+      "GraffitiArtist": {
+        "title": "Grafitiartist ",
+        "alt": "I am Grafitiartist",
+        "description": "Grafiti artist is..."
+      }
+    }
   },
-  "heroes": {
-    "GraffitiArtist": {
-      "title": "Grafitiartist ",
-      "alt": "I am Grafitiartist",
-      "description": "Grafiti artist is..."
+
+  "INTELLECTUALIZER": {
+    "name": "INTELLECTUALIZER",
+    "description": "INTELLECTUALIZER  is ...",
+    "heroes": {
+      "Researcher": {
+        "title": "Researcher ",
+        "alt": "I am a Researcher",
+        "description": "Researcher is..."
+      }
     }
   }
 

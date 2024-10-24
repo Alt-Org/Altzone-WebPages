@@ -46,11 +46,12 @@
         "alt": "Olen Hannu Hodari",
         "description": "Hannur Hodari on paras"
       }
-    },
+    }
+  },
+
     "PROJECTOR": {
       "name": "PEILAAJAT",
-      "description": "PEILAAJAT on ..."
-    },
+      "description": "PEILAAJAT on ...",
     "heroes": {
       "GraffitiArtist": {
         "title": "GRAFFITITAITEILIJA ",
@@ -58,6 +59,19 @@
         "description": "GRAFFITI TAITEILIJA on..."
       }
     }
+  },
+
+  "INTELLECTUALIZER": {
+    "name": "ÄLYLLISTÄJÄT",
+    "description": "ÄLYLLISTÄJÄT   on ...",
+    "heroes": {
+      "Researcher": {
+        "title": "Researcher artist ",
+        "alt": "I am Researcher",
+        "description": "Researcher is..."
+      }
+    }
   }
+
 
 }
