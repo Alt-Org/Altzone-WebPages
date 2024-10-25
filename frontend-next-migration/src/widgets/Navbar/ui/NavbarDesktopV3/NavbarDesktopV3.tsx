@@ -122,9 +122,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                         {permissionToLogin.isGranted ? (
                             <AppLink
                                 theme={AppLinkTheme.PRIMARY}
-                                // to={navbarMenuLoginProfile?.login?.path || ''}
                                 to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
-                                // key={navbarMenuLoginProfile?.login?.path}
                             >
                                 <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
                             </AppLink>

@@ -146,24 +146,24 @@
   opacity:0 !important;
 }
 .disabled {
-    display:none;
+    display:none!important;
 }
 
 .FixedButton{
   text-align: center;
   margin-left: auto;
-  
+  display:block;
   min-width: 60px;
   font-size: 1em;
+  opacity:0;
+  transition:opacity 1s;
 }
 
 .FixedButton.fixed{
-  display:block;
   text-align: center;
   margin-left: auto;
   margin-right: 0;
   min-height: 50px;
   width:40px;
   font-size: 1em;
-  transition:opacity .3s;
 }

@@ -37,11 +37,8 @@ navbarBuilderV3.addAuthLogin('login', RoutePaths.auth_login);
 
 export const navbarMenuDesktop3 = navbarBuilderV3.build();
 
-//const navbarGameArtBuilder = new NavbarBuilder();
 export const navbarGameArtDesktop = navbarBuilderV3.build();
 
-//const navbarCookiesBuilder = new NavbarBuilder();
 export const navbarCookiesDesktop = navbarBuilderV3.build();
 
-//const navbarPrivacyBuilder = new NavbarBuilder();
 export const navbarPrivacyDesktop = navbarBuilderV3.build();
