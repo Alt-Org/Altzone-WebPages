@@ -1,42 +1,42 @@
 {
-  "head-title": "AltZone",
-  "head-description": "Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin.",
-  "head-keywords": "altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään",
-  "og-title": "AltZone - Aloita pelisi täällä",
-  "og-description": "AltZone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin.",
-  "section-title": "Opetuspaketti",
-  "main": "Etusivu",
+    "head-title": "AltZone",
+    "head-description": "",
+    "head-keywords": "altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään",
+    "og-title": "AltZone - Aloita pelisi täällä",
+    "og-description": "",
+    "section-title": "Opetuspaketti",
+    "main": "Etusivu",
 
-  "intro-label": "Esittely",
-  "intro-description": "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, sillä se perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, mikä tekee yhteisen kokemuksen saavuttamisesta lähes mahdotonta. ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle.",
+    "intro-label": "Esittely",
+    "intro-description": "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, sillä se perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, mikä tekee yhteisen kokemuksen saavuttamisesta lähes mahdotonta. ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle.",
 
-  "implementation-label": "Toteutus",
-  "implementation-description": "Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai PC-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. Oppilailla on mahdollisuus jatkokehittää peliä myöhemmin ladattavaksi ALT Zone 2.0 -mobiilipeliksi sovelluskaupasta. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen perustettavan säätiön kautta.",
+    "implementation-label": "Toteutus",
+    "implementation-description": "Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai PC-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. Oppilailla on mahdollisuus jatkokehittää peliä myöhemmin ladattavaksi ALT Zone 2.0 -mobiilipeliksi sovelluskaupasta. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen perustettavan säätiön kautta.",
 
-  "visual-label": "Visuaalinen vaikuttavuus",
-  "visual-description": "● Pelihahmoista välittyvä teema/sanoma.<br>● Hahmoluokkien edustamat roolit; representaation tunnistettavuus.<br>● Hahmojen graafinen tyyli; minkälaista ilmapiiriä ja tunnelmaa se välittää.<br>● Graafinen symboliikka käyttöliittymässä; viestin tunnistettavuus.<br>● Mitä käyttöliittymän symboliikka kertoo meidän aikakaudestamme nyt vuonna 2024?<br>● Käyttöliittymän graafinen tyylilaji; mitä se viestii pelin luonteesta ja tunnelmasta.<br>● Millaisia symboleja löydät sielunkodin huonekaluista; mitä taiteilija on halunnut sanoa näillä esineillä?",
+    "visual-label": "Visuaalinen vaikuttavuus",
+    "visual-description": "● Pelihahmoista välittyvä teema/sanoma.<br>● Hahmoluokkien edustamat roolit; representaation tunnistettavuus.<br>● Hahmojen graafinen tyyli; minkälaista ilmapiiriä ja tunnelmaa se välittää.<br>● Graafinen symboliikka käyttöliittymässä; viestin tunnistettavuus.<br>● Mitä käyttöliittymän symboliikka kertoo meidän aikakaudestamme nyt vuonna 2024?<br>● Käyttöliittymän graafinen tyylilaji; mitä se viestii pelin luonteesta ja tunnelmasta.<br>● Millaisia symboleja löydät sielunkodin huonekaluista; mitä taiteilija on halunnut sanoa näillä esineillä?",
 
-  "functional-label": "Toiminnallinen vaikuttavuus",
-  "functional-description": "● Eri hahmoluokkien vaikutus pelattavuuteen ja strategiaan.<br>● Eri hahmoluokkien keskinäiset suhteet; miten ne täydentävät toisiaan.<br>● Miten eri käyttöliittymäelementit kutsuvat käyttäjän toimintaan ja osallistumiseen.<br>● Kuvakkeiden toiminnallisen luonteen ja graafisen symboliikan yhteys; onko se perusteltua? (voisiko sitä kehittää edelleen?)<br>● Jos taistelu olisi elämän representaatio, mitä se kertoisi?<br>● Taistelun ja ryöstön audiovisuaalinen kerronta; mitä sanomaa se välittää ja minkälaista tunnelmaa se rakentaa?<br>● Miten peli kuvastaa tekojen seurauksia ja vastuullisuutta yhteisön jäsenenä toimimisesta?<br>● Identiteetin rakentaminen profiilitietojen ja avatarin muokkaamisen kautta. Entä jos ei voikaan tulla näkyväksi (chat)?<br>● Miten pelaajan tekemät valinnat vaikuttavat hänen pelihahmonsa kehitykseen ja maineeseen klaanissa?<br>● Millaisia tapoja pelaajalla on saada äänensä kuuluviin? Miten pelaajan oma aatemaailma voi tulla näkyväksi?<br>● Mikä merkitys on esteettömyyden huomioimisella arvojen näkökulmasta?",
+    "functional-label": "Toiminnallinen vaikuttavuus",
+    "functional-description": "● Eri hahmoluokkien vaikutus pelattavuuteen ja strategiaan.<br>● Eri hahmoluokkien keskinäiset suhteet; miten ne täydentävät toisiaan.<br>● Miten eri käyttöliittymäelementit kutsuvat käyttäjän toimintaan ja osallistumiseen.<br>● Kuvakkeiden toiminnallisen luonteen ja graafisen symboliikan yhteys; onko se perusteltua? (voisiko sitä kehittää edelleen?)<br>● Jos taistelu olisi elämän representaatio, mitä se kertoisi?<br>● Taistelun ja ryöstön audiovisuaalinen kerronta; mitä sanomaa se välittää ja minkälaista tunnelmaa se rakentaa?<br>● Miten peli kuvastaa tekojen seurauksia ja vastuullisuutta yhteisön jäsenenä toimimisesta?<br>● Identiteetin rakentaminen profiilitietojen ja avatarin muokkaamisen kautta. Entä jos ei voikaan tulla näkyväksi (chat)?<br>● Miten pelaajan tekemät valinnat vaikuttavat hänen pelihahmonsa kehitykseen ja maineeseen klaanissa?<br>● Millaisia tapoja pelaajalla on saada äänensä kuuluviin? Miten pelaajan oma aatemaailma voi tulla näkyväksi?<br>● Mikä merkitys on esteettömyyden huomioimisella arvojen näkökulmasta?",
 
-  "connections-label": "Yhteydet pelin ulkopuolelle",
-  "connections-description": "● Hahmoissa heijastuvat/haastetut kulttuuriset stereotypiat ja sukupuolinormit.<br>● Käyttöliittymän grafiikassa heijastuvat/haastetut kulttuuriset normit ja yhteiskunnalliset käsitykset.<br>● Psykologiset tai sosiaaliset syyt eri hahmoluokkien suosion taustalla.<br>● Pelin ytimen ympärille rakentuvat sosiaaliset käytännöt (yhteispelaamisen muodot, julkiset keskustelut jne.)<br>● Miten pelissä toteutettu äänestysmekaniikka kuvastaa reaalimaailman demokraattisia prosesseja?<br>● Mitä sosiaalisia taitoja peli kehittää osana klaanitoimintaa ja yhteisöllistä päätöksentekoa?<br>● Kuinka pelin mekaniikat voivat toimia työkaluina opettaa yhteistyötä, neuvottelua ja yhteisöllisyyden arvoja?",
+    "connections-label": "Yhteydet pelin ulkopuolelle",
+    "connections-description": "● Hahmoissa heijastuvat/haastetut kulttuuriset stereotypiat ja sukupuolinormit.<br>● Käyttöliittymän grafiikassa heijastuvat/haastetut kulttuuriset normit ja yhteiskunnalliset käsitykset.<br>● Psykologiset tai sosiaaliset syyt eri hahmoluokkien suosion taustalla.<br>● Pelin ytimen ympärille rakentuvat sosiaaliset käytännöt (yhteispelaamisen muodot, julkiset keskustelut jne.)<br>● Miten pelissä toteutettu äänestysmekaniikka kuvastaa reaalimaailman demokraattisia prosesseja?<br>● Mitä sosiaalisia taitoja peli kehittää osana klaanitoimintaa ja yhteisöllistä päätöksentekoa?<br>● Kuinka pelin mekaniikat voivat toimia työkaluina opettaa yhteistyötä, neuvottelua ja yhteisöllisyyden arvoja?",
 
-  "online-label": "ALT Zone -verkkopeli",
-  "online-description": "ALT Zone on mobiililaitteille suunniteltu yhteistoiminnallinen peli, jossa jokaisella liittouman jäsenellä on oma tärkeä tehtävänsä. ALT Zone yhdistää erilaiset pelaajat ihmisyytemme äärelle ja tekee heistä tärkeitä toisilleen, niiden vahvuuksien kanssa, joita kullakin pelaajalla on.",
+    "online-label": "ALT Zone -verkkopeli",
+    "online-description": "ALT Zone on mobiililaitteille suunniteltu yhteistoiminnallinen peli, jossa jokaisella liittouman jäsenellä on oma tärkeä tehtävänsä. ALT Zone yhdistää erilaiset pelaajat ihmisyytemme äärelle ja tekee heistä tärkeitä toisilleen, niiden vahvuuksien kanssa, joita kullakin pelaajalla on.",
 
-  "alliance-label": "Erilaisten pelaajien yhteinen liittouma",
-  "alliance-description": "Pelaajat muodostavat 30 jäsenen tiimin, jossa jokaiselle pelaajatyypille on oma tärkeä paikkansa; keräilijät, rakentajat, kilpailijat, suunnittelijat, jne. Tiimi asuu planeetalla, jota sisustetaan pelin voitoilla, sekä pelikaupasta ostettavilla huonekaluilla ja muilla modauksilla. Kaikki on yhteistä. Chatti tukee \"kylä kasvattaa\" -periaatetta, kun pelaajat edustavat liittoumaansa ja maataan (riippuen siitä missä keskustelevat).",
+    "alliance-label": "Erilaisten pelaajien yhteinen liittouma",
+    "alliance-description": "Pelaajat muodostavat 30 jäsenen tiimin, jossa jokaiselle pelaajatyypille on oma tärkeä paikkansa; keräilijät, rakentajat, kilpailijat, suunnittelijat, jne. Tiimi asuu planeetalla, jota sisustetaan pelin voitoilla, sekä pelikaupasta ostettavilla huonekaluilla ja muilla modauksilla. Kaikki on yhteistä. Chatti tukee \"kylä kasvattaa\" -periaatetta, kun pelaajat edustavat liittoumaansa ja maataan (riippuen siitä missä keskustelevat).",
 
-  "characters-label": "Pelihahmot & niiden kehittäminen",
-  "characters-description": "Pelihahmojen suojakilpinä toimivat elävästä elämästä tutut suojautumismekanismit. Kukin pelihahmo kuuluu yhteen seitsemästä defenssiluokasta: \"tunnottomat\", \"luistajat\", \"sääntöorjat\", \"heijastajat\", \"itsensäruoskijat\", \"yliajattelijat\", \"symbioottiset\" (työnimiä). Hahmoluokkien pohjainspiraationa on käytetty Gestalt-teoriaa. Hahmoluokka määrää puolet pelihahmon ominaisuuksista ja loput 50% pelaaja pystyy säätämään (buff/debuff) itse, pelikentältä keräämillään timanteilla.",
+    "characters-label": "Pelihahmot & niiden kehittäminen",
+    "characters-description": "Pelihahmojen suojakilpinä toimivat elävästä elämästä tutut suojautumismekanismit. Kukin pelihahmo kuuluu yhteen seitsemästä defenssiluokasta: \"tunnottomat\", \"luistajat\", \"sääntöorjat\", \"heijastajat\", \"itsensäruoskijat\", \"yliajattelijat\", \"symbioottiset\" (työnimiä). Hahmoluokkien pohjainspiraationa on käytetty Gestalt-teoriaa. Hahmoluokka määrää puolet pelihahmon ominaisuuksista ja loput 50% pelaaja pystyy säätämään (buff/debuff) itse, pelikentältä keräämillään timanteilla.",
 
-  "mechanics-label": "Pelimekaniikka",
-  "mechanics-description": "Ping Pong Pelimoodi - Pelihahmojen suojakilpinä toimivat elävästä elämästä tutut suojautumismekanismit. Kukin pelihahmo kuuluu yhteen seitsemästä defenssiluokasta: \"tunnottomat\", \"luistajat\", \"sääntöorjat\", \"heijastajat\", \"itsensäruoskijat\", \"yliajattelijat\", \"symbioottiset\" (työnimiä). Hahmoluokkien pohjainspiraationa on käytetty Gestalt-teoriaa. Hahmoluokka määrää puolet pelihahmon ominaisuuksista ja loput 50% pelaaja pystyy säätämään itse, pelikentältä keräämillään timanteilla. RYÖSTÖ - 2v2-pelin voittajatiimi suorittaa aikarajoitetun ryöstön vastustajan varastoon. Voittona saatu ryöstösaalis siirtyy häviäjien planeetalta voittajille.",
+    "mechanics-label": "Pelimekaniikka",
+    "mechanics-description": "Ping Pong Pelimoodi - Pelihahmojen suojakilpinä toimivat elävästä elämästä tutut suojautumismekanismit. Kukin pelihahmo kuuluu yhteen seitsemästä defenssiluokasta: \"tunnottomat\", \"luistajat\", \"sääntöorjat\", \"heijastajat\", \"itsensäruoskijat\", \"yliajattelijat\", \"symbioottiset\" (työnimiä). Hahmoluokkien pohjainspiraationa on käytetty Gestalt-teoriaa. Hahmoluokka määrää puolet pelihahmon ominaisuuksista ja loput 50% pelaaja pystyy säätämään itse, pelikentältä keräämillään timanteilla. RYÖSTÖ - 2v2-pelin voittajatiimi suorittaa aikarajoitetun ryöstön vastustajan varastoon. Voittona saatu ryöstösaalis siirtyy häviäjien planeetalta voittajille.",
 
-  "youthwork-label": "Nuorisotyö & pelitaiteen opetus kouluissa",
-  "youthwork-description": "Nuorisotyö & pelitaiteen opetus kouluissa Kehitämme peliä jatkuvasti PRG nuorten kanssa. Testaajaksi ja kehittäjiksi pääsee liittymällä Discord serverille. Kun demo on valmis (arviolta keväällä 2024), lähdemme kiertämään peruskouluja ja lukioita ympäri maata. Demotestaus toteutetaan osana pelitaiteen opetuspakettia, joka tarjoaa kouluille välineet pelien tutkimiseen ja analysoimiseen. Pyrkimyksenä on saada pelitaiteen käsittely mukaan koulujen opetussuunnitelmaan samalla tavalla kuin teatteri, elokuva, kirjallisuus, kuvataide ja musiikki. Tutustu peliin ja yhteisten testien aikatauluun skannaamalla QR-koodi ja liittymällä Discord-peliyhteisöömme!",
+    "youthwork-label": "Nuorisotyö & pelitaiteen opetus kouluissa",
+    "youthwork-description": "Nuorisotyö & pelitaiteen opetus kouluissa Kehitämme peliä jatkuvasti PRG nuorten kanssa. Testaajaksi ja kehittäjiksi pääsee liittymällä Discord serverille. Kun demo on valmis (arviolta keväällä 2024), lähdemme kiertämään peruskouluja ja lukioita ympäri maata. Demotestaus toteutetaan osana pelitaiteen opetuspakettia, joka tarjoaa kouluille välineet pelien tutkimiseen ja analysoimiseen. Pyrkimyksenä on saada pelitaiteen käsittely mukaan koulujen opetussuunnitelmaan samalla tavalla kuin teatteri, elokuva, kirjallisuus, kuvataide ja musiikki. Tutustu peliin ja yhteisten testien aikatauluun skannaamalla QR-koodi ja liittymällä Discord-peliyhteisöömme!",
 
-  "prg-label": "PRG - Psyche’s Royale Gaming ry",
-  "prg-description": "p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com"
+    "prg-label": "PRG - Psyche’s Royale Gaming ry",
+    "prg-description": "p. 0442407396 / Helena Pavloff-Pelkonen, psykkis@hotmail.com"
 }
