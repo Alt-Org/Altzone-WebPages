@@ -1,0 +1,177 @@
+.siteNav {
+  font: var(--font-xxl);
+  padding-top: 50px;
+  color: #fbf7dc;
+  width: 100%;
+  max-width:1400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: var(--navbar-z-index);
+  font-weight: 500;
+  top: 0;
+  font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
+  margin-top: 5px;
+  position: relative;
+}
+
+.fixed {
+  position: sticky;
+}
+
+.siteNavContentList.collapsed {
+  width:54px;
+  padding-left:0px;
+  margin-left: auto;
+}
+
+.collapseButtonExpanded {
+  margin-left: -1em;
+}
+
+.collapseButtonCollapsed {
+  margin-left: auto;
+}
+
+.visibilityButton {
+  height:48px;
+}
+
+.siteNavContentList {
+  
+  width: 100%;
+  padding-left: 180px;
+  background-color: black;
+  border-radius: var(--border-radius-custom);
+  border: var(--inverted-secondary-color) 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1em;
+  list-style: none;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: 0;
+  transition: padding-left 1s, width 1s;
+  
+}
+
+
+
+.appLinkLogo {
+  display: block;
+  position: relative;
+  width: 120px;
+
+  .itemLogoImg {
+    position: absolute;
+    top: -2.5416666667000003em;
+    left: 0;
+    z-index: 100;
+    height: auto;
+
+    //width: 200px;
+    width: auto;
+  }
+
+  
+
+  .itemClanLogoImg {
+    position: absolute;
+    top: -4.5em;
+    left: 0;
+    z-index: 100;
+    height: auto;
+
+    //width: 200px;
+    width: 150%;
+    max-width: 150%;
+  }
+}
+.appLinkLogoStatic {
+  display: inline-block;
+  position: absolute;
+
+  top:25px;
+  left:52px;
+  width: 120px;
+  z-index: 200;
+  transition: opacity 1s;
+
+  .itemLogoImgStatic {
+   
+    z-index: 200;
+    height: auto;
+    //width: 200px;
+    width: auto;
+  }
+
+}
+
+.itemNavbarDropDownContent {
+  outline: 2px solid var(--inverted-primary-color);
+
+  text-align: left;
+
+  border-radius: var(--border-radius-custom);
+  background-color: var(--transparent-bg-dark);
+  padding: 10px;
+
+  div {
+    @include link-scale-effect;
+  }
+}
+
+.navItem {
+  
+  display: flex;
+  height: max-content;
+  line-height: initial;
+  padding: 10px 0;
+  transition:opacity .3s;
+  
+
+  //justify-content: center;
+  //height: max-content;
+ 
+}
+.visible {
+  opacity:1 !important;
+}
+.hidden {
+  opacity:0 !important;
+}
+.disabled {
+  display:none;
+}
+
+.langSwitcher {
+  border-radius: var(--border-radius-custom);
+  outline: 2px solid var(--inverted-primary-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--secondary-color) !important;
+  font-size: var(--font-size-m) !important;
+}
+
+.authButton {
+  border-radius: var(--border-radius-custom);
+  outline: 2px solid var(--inverted-primary-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--secondary-color) !important;
+  font-size: var(--font-size-m) !important;
+  text-align: center;
+  white-space:nowrap;
+  padding: 4px;
+
+  & > * {
+    color: var(--secondary-color) !important;
+  }
+}
+
+.toggleOverlaid {
+  margin-left: auto;
+}
+
+.logoutButton {
+  cursor: pointer;
+}
