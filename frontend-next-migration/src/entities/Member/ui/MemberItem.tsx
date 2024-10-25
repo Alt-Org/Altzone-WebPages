@@ -1,13 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { getLinks } from '../api/mappers';
 import { Member } from '../model/types/types';
 import cls from './MemberItem.module.scss';
 
 const MemberItem: FC<{ member: Member }> = ({ member }) => {
     const linksMap = getLinks();
+    const [isEnlarged, setIsEnlarged] = useState(false);
+    // Image Click Handling Function
+    const handleClick = () => {
+        setIsEnlarged(!isEnlarged);
+        console.log(isEnlarged);
+    }
 
     return (
         <li className={cls.workmanComponent}>
@@ -16,12 +22,14 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
                     <span className={cls.memberName}>{member.name}</span>
                     <span className={cls.taskText}>{member.task}</span>
                     <div className={cls.iconContainer}>
-                        <div className={cls.memberLogo}>
+                        {/** Change Div Size And Placement For Bigger Image */}
+                        <div className={`${cls.memberLogo} ${isEnlarged ? cls.memberLogoEnlarged : ''}`}>
                             {member.logo ? (
                                 <Image
                                     src={member.logo}
                                     alt={member.name}
                                     className={cls.Logo}
+                                    onClick={handleClick}
                                     width={500}
                                     height={500}
                                 />
