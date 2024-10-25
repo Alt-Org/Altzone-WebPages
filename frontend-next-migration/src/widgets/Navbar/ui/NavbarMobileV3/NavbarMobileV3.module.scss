@@ -19,7 +19,7 @@
   
 }
 .Navbar.collapsed {
-  width:80px;
+  width:70px;
   padding-left:0px;
   margin-left: auto;
 }
@@ -40,26 +40,18 @@
 .LogoContainer {
   position: absolute;
   top:0;
-  width:calc(100% - 125px);
-  margin-left: 50px;
-  margin-right: 75px;
+  width:100%;
+  margin-left: 0px;
+  margin-right: 0px;
   height: 50px;
   margin-top: 35px;
   display: flex;
   align-items: center;
-  transition: all 1s;
   @media (min-width: 550px){
     margin-top: 50px;
   }
 }
-.LogoContainer.fixed {
-  width:calc(100% - 175px);
-  margin-right: 125px;
-}
-.LogoContainer.collapsed {
-  width:0;
-  margin-left:0;
-}
+
 .NavbarMobile__burger {
   width: auto;
   height: 80%;
@@ -67,6 +59,8 @@
   cursor: pointer;
   user-select: none;
   transform: scale(80%);
+  transition:opacity 1s;
+  opacity: 0;
 }
 
 .NavbarMobile__burger svg {
@@ -78,10 +72,12 @@
 .NavbarMobile__center {
   margin-left: auto!important;
   margin-right: auto!important;
-  transition:all 1s;
+  transition:opacity 1s;
+  opacity: 0;
 }
 .NavbarMobile__center.collapsed {
-  transform: scale(60%);
+  opacity: 0;
+ 
 }
 .navLogo {
   display:inline-block;
@@ -89,6 +85,7 @@
   img {
     width: 25vw;
     max-width: 150px;
+    min-width: 120px;
   }
 }
 
@@ -120,6 +117,7 @@
 }
 
 .langSwitcher {
+  
   border-radius: var(--border-radius-custom);
   border: 2px solid var(--inverted-primary-color);
   &:focus {
@@ -134,10 +132,11 @@
 .collapsedButton {
   text-align: center;
   margin-left: auto;
-  
-  min-width: 60px;
+  height: 50px;
+  width:50px;
+
   font-size: 1em;
-  margin-left: -.2em;
+  margin-left: -.1em;
 }
 .visible {
   opacity:1 !important;
@@ -149,6 +148,7 @@
 .disabled {
     display:none;
 }
+
 .FixedButton{
   text-align: center;
   margin-left: auto;
@@ -156,12 +156,14 @@
   min-width: 60px;
   font-size: 1em;
 }
+
 .FixedButton.fixed{
   display:block;
   text-align: center;
   margin-left: auto;
   margin-right: 0;
-  min-width: 60px;
+  min-height: 50px;
+  width:40px;
   font-size: 1em;
   transition:opacity .3s;
 }

@@ -31,7 +31,6 @@ type NavbarProps = {
  * Version 3 introduces the collapse/expand functionality.
  * The collapse state is passed through the context-provider `Provider` component in the same manner 
  * as the fixed state in the pin/unpin feature.`useState` hooks manage CSS transitions in the new functionality.
- * A new feature has been added to the Alt-logo link, which expands the nav menu if it is collapsed.
  */
 
 const NavbarDesktopV3 = memo((props: NavbarProps) => {
@@ -42,9 +41,10 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
         navBarType = "Default"
     } = props;
     
-    const { isFixed, isCollapsed, toggleCollapsed } = useFixedAndCollapsed();
+    const { isFixed, isCollapsed } = useFixedAndCollapsed();
     const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible)
     const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '')
+    const [appLinkLogo, setAppLinkLogo] = useState(isCollapsed ? cls.hidden : cls.visible)
    
     const hasScrollbar = useIsPageScrollbar();
 
@@ -66,18 +66,15 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
         
         if(isCollapsed) {
             setHidden(cls.hidden)
-            setTimeout(() => { setDisabled(cls.disabled) }, 300)
+            setAppLinkLogo(cls.hidden)
+            setTimeout(() => { setDisabled(cls.disabled) }, 1000)
         }
         else {
             setDisabled('')
+            setTimeout(() => { setAppLinkLogo(cls.visible) }, 1)
             setTimeout(() => { setHidden(cls.visible) }, 700)
         }
      }, [isCollapsed])
-
-     const onClick = () => {
-        if(isCollapsed) toggleCollapsed()
-        return true
-     }
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
@@ -85,15 +82,14 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
     } as Record<string, boolean>;
 
     return (
-        <nav className={classNames(cls.siteNav, mods, [className])} style={style}>
+        <nav className={classNames(cls.siteNav, mods, [])} style={style}>
 
             <Container>
            
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     to={RoutePaths.MAIN}
-                    className={classNames(cls.appLinkLogoStatic, mods, [])}
-                    onClick={onClick}
+                    className={classNames(cls.appLinkLogoStatic, {}, [appLinkLogo,disabled])}
                 >
                     <Image
                         loading={"eager"}
@@ -110,7 +106,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                         return <NavItem className={hidden+' '+disabled} item={n} key={n.name} navbarBuild={navbarBuild} />;
                     })}  
                     
-                    <li className={cls.navItem+' '+hidden+' '+disabled} key={"switcher key"}>
+                    <li className={hidden+' '+disabled} key={"switcher key"}>
                         <LangSwitcher className={cls.langSwitcher} />
                     </li>
                      
@@ -144,11 +140,11 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                     {isFixed && (
                         isCollapsed ?
                         <li className={cls.collapseButtonCollapsed}>
-                            <CollapsedButton />
+                            <CollapsedButton className={cls.visibilityButton}/>
                         </li>
                         :
                         <li className={cls.collapseButtonExpanded}>
-                            <CollapsedButton />
+                            <CollapsedButton className={cls.visibilityButton}/>
                         </li>
                     )}
                 </ul>

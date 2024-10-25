@@ -20,7 +20,7 @@
 }
 
 .siteNavContentList.collapsed {
-  width:45px;
+  width:54px;
   padding-left:0px;
   margin-left: auto;
 }
@@ -31,6 +31,10 @@
 
 .collapseButtonCollapsed {
   margin-left: auto;
+}
+
+.visibilityButton {
+  height:48px;
 }
 
 .siteNavContentList {
@@ -87,11 +91,12 @@
 .appLinkLogoStatic {
   display: inline-block;
   position: absolute;
+
   top:25px;
   left:52px;
   width: 120px;
   z-index: 200;
-  transition: left .7s;
+  transition: opacity 1s;
 
   .itemLogoImgStatic {
    
@@ -101,10 +106,6 @@
     width: auto;
   }
 
-}
-
-.appLinkLogoStatic.collapsed {
-  left: 25px;
 }
 
 .itemNavbarDropDownContent {
@@ -145,6 +146,7 @@
 }
 
 .langSwitcher {
+ 
   border-radius: var(--border-radius-custom);
   outline: 2px solid var(--inverted-primary-color);
   background-color: rgba(0, 0, 0, 0.8);

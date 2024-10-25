@@ -1,6 +1,9 @@
 import cls from "./Button.module.scss";
 import { useFixedAndCollapsed } from "../../model/FixedAndCollapsedProvider";
+import visible from "@/shared/assets/images/visible.png";
+import unvisible from "@/shared/assets/images/unvisible.png";
 import {classNames} from "@/shared/lib/classNames/classNames";
+import Image from "next/image";
 
 type Props = {
     className?: string;
@@ -22,11 +25,17 @@ export function CollapsedButton (props: Props) {
     const { isCollapsed, toggleCollapsed } = useFixedAndCollapsed();
 
     return (
-        <div className={classNames(cls.fixedButton, {}, [className])}>
+        <div className={classNames(cls.collapsedButton, {}, [className])}>
             <button
                 onClick={toggleCollapsed}
             >
-                {isCollapsed ? '<' : '>'}
+                    <Image
+                        loading={"eager"}
+                        alt='visibility'
+                        src={isCollapsed ? unvisible: visible}
+                        width={42}
+                        className={cls.buttonImage}
+                    />
             </button>
         </div>
     );

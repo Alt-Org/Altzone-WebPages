@@ -27,7 +27,6 @@ interface NavbarTouchProps {
  * Version 3 introduces the collapse/expand functionality.
  * The collapse state is passed through the context-provider `Provider` component in the same manner 
  * as the fixed state in the pin/unpin feature.`useState` hooks manage CSS transitions in the new functionality.
- * A new feature has been added to the Alt-logo link, which expands the nav menu if it is collapsed.
  *
  * @param {NavbarTouchProps} props - Defines the component's purpose and layout properties.
  * @returns 
@@ -55,7 +54,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { isFixed, isCollapsed, toggleCollapsed } = useFixedAndCollapsed();
+    const { isFixed, isCollapsed } = useFixedAndCollapsed();
     const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible)
     const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '')
     const hasScrollbar = useIsPageScrollbar();
@@ -112,11 +111,11 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         
         if(isCollapsed) {
             setHidden(cls.hidden)
-            setTimeout(() => { setDisabled(cls.disabled) }, 300)
+            setTimeout(() => { setDisabled(cls.disabled) }, 1000)
         }
         else {
             setDisabled('')
-            setTimeout(() => { setHidden(cls.visible) }, 700)
+            setTimeout(() => { setHidden(cls.visible) },1)
         }
      }, [isCollapsed])
 
@@ -134,19 +133,13 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         [cls.right]: side === 'right',
     };
 
-    const onClick = () => {
-        if(isCollapsed) toggleCollapsed()
-        return true
-     }
-
     return (
         <div className={classNames(cls.navbarContainer,mods,[])}>
            <div className={classNames(cls.LogoContainer,mods,[])}>
             <AppLink
-                className={classNames(cls.navLogo + ' ' + cls.NavbarMobile__center,mods,[])}
+                className={classNames(cls.navLogo + ' ' + cls.NavbarMobile__center,mods,[hidden,disabled])}
                 theme={AppLinkTheme.PRIMARY}
                 to={navbarBuild?.namedMenu?.navLogo?.path || ""}
-                onClick={onClick}
             >
                 <Image
                     loading={"eager"}
