@@ -9,7 +9,8 @@
   top: 0;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
-  position: relative;
+  // a crutch fro dropdowns... todo try to fix if you can. When we remove it we cannot hover anymore on dropdowncontent
+  //position: relative;
 }
 
 .fixed {
