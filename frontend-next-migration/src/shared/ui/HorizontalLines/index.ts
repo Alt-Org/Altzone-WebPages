@@ -1,1 +1,1 @@
-export {default as HorizontalLines} from "./ui/HorizontalLines";
+export { default as HorizontalLines } from './ui/HorizontalLines';

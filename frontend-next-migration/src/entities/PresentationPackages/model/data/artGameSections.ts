@@ -8,21 +8,21 @@ import { createSection } from '../createSection';
  */
 
 const i18nKeyPrefixes = [
-  'info',
-  'intro',
-  'implementation',
-  'message',
-  'content',
-  'joinus',
-  'literature',
+    'info',
+    'intro',
+    'implementation',
+    'message',
+    'content',
+    'joinus',
+    'literature',
 ];
 
 const imageSrcs = [
-  '/images/gameArt/info.webp',
-  '/images/gameArt/intro.webp',
-  '/images/gameArt/implementation.webp',
-  '/images/gameArt/message.webp',
-  '/images/gameArt/joinus.webp',
+    '/images/gameArt/info.webp',
+    '/images/gameArt/intro.webp',
+    '/images/gameArt/implementation.webp',
+    '/images/gameArt/message.webp',
+    '/images/gameArt/joinus.webp',
 ];
 
 const logoSrc = '/images/gameArt/gameArtLogo.webp';
@@ -30,24 +30,18 @@ const logoSrc = '/images/gameArt/gameArtLogo.webp';
 /**
  * The `ArtGameSections` array is created by mapping over `i18nKeyPrefixes`.
  * For each key in `i18nKeyPrefixes`, the corresponding index is used to create a section using `createSection`.
- *
- * Each section is created with the following parameters:
- * - `key`: The key prefix used for i18n purposes.
- * - `index`: The index representing the order of the section.
- * - `imageSrcs[index]`: The image source path corresponding to the current index.
- * - `${key}-image`: A unique identifier for the image element of the section.
- * - `logoSrc`: A common logo source for all sections.
- * - `${key}-logo`: A unique identifier for the logo element of the section.
- *
- * Note: `imageSrcs` has fewer elements than `i18nKeyPrefixes`. Be mindful of possible `undefined` values.
  */
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
-  createSection(
-    key,
-    index,
-    imageSrcs[index],
-    `${key}-image`,
-    logoSrc,
-    `${key}-logo`,
-  ),
+    createSection({
+        prefix: key,
+        index: index,
+        image: {
+            src: imageSrcs[index],
+            alt: `${key}-image`,
+        },
+        logo: {
+            src: logoSrc,
+            alt: `${key}-logo`,
+        },
+    }),
 );

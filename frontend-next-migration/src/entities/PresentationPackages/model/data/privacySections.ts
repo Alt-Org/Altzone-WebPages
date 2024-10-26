@@ -1,29 +1,32 @@
 import { createSection } from '../createSection';
 
 const i18nKeyPrefixes = [
-  'privacy',
-  'interpretation',
-  'collecting',
-  'analytics',
-  'legal-basis',
-  'data-retention',
-  'rights',
-  'security',
-  'changes',
-  'contact',
+    'privacy',
+    'interpretation',
+    'collecting',
+    'analytics',
+    'legal-basis',
+    'data-retention',
+    'rights',
+    'security',
+    'changes',
+    'contact',
 ];
-// next takes path : \public\images\
-const imageSrcs = [''];
 
+const imageSrcs = [''];
 const logoSrc = '';
 
 export const PrivacySections = i18nKeyPrefixes.map((key, index) =>
-  createSection(
-    key,
-    index,
-    imageSrcs[index],
-    `${key}-image`,
-    logoSrc,
-    `${key}-logo`,
-  ),
+    createSection({
+        prefix: key,
+        index: index,
+        image: {
+            src: imageSrcs[index],
+            alt: `${key}-image`,
+        },
+        logo: {
+            src: logoSrc,
+            alt: `${key}-logo`,
+        },
+    }),
 );

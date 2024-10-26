@@ -1,20 +1,20 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import Link from 'next/link';
 import { FC, memo, ReactNode } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
 export enum AppLinkTheme {
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  RED = 'red',
+    PRIMARY = 'primary',
+    SECONDARY = 'secondary',
+    RED = 'red',
 }
 
 interface AppLinkProps {
-  to: string;
-  className?: string;
-  theme?: AppLinkTheme;
-  isExternal?: boolean;
-  children: ReactNode;
+    to: string;
+    className?: string;
+    theme?: AppLinkTheme;
+    isExternal?: boolean;
+    children: ReactNode;
 }
 
 /**
@@ -39,33 +39,29 @@ interface AppLinkProps {
  * ```
  */
 export const AppLink: FC<AppLinkProps> = memo((props) => {
-  const {
-    to,
-    className = '',
-    children,
-    theme = AppLinkTheme.PRIMARY,
-    isExternal,
-  } = props;
+    const { to, className = '', children, theme = AppLinkTheme.PRIMARY, isExternal } = props;
 
-  if (isExternal && typeof to === 'string') {
+    if (isExternal) {
+        return (
+            <a
+                href={to}
+                className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {children}
+            </a>
+        );
+    }
+
     return (
-      <a
-        key={to}
-        className={classNames(cls.AppLink, {}, [className, cls[theme]])}
-        href={to}
-        target='_blank'>
-        {children}{' '}
-      </a>
+        <Link
+            href={to}
+            className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+        >
+            {children}
+        </Link>
     );
-  }
-
-  return (
-    <Link legacyBehavior key={to as string} href={to} passHref>
-      <a className={classNames(cls.AppLink, {}, [className, cls[theme]])}>
-        {children}
-      </a>
-    </Link>
-  );
 });
 
 AppLink.displayName = 'AppLink';

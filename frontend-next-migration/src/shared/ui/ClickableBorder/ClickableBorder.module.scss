@@ -2,6 +2,7 @@
   border-image-slice: 40 fill;
   border-image-repeat: stretch;
   display: block;
+  pointer-events:none;  
 }
 
 .hovered {

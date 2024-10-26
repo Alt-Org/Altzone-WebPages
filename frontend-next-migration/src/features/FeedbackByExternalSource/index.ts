@@ -1,3 +1,3 @@
-import {FeedbackSideButton} from "./ui/FeedbackSideButton";
+import { FeedbackSideButton } from './ui/FeedbackSideButton';
 
-export {FeedbackSideButton};
+export { FeedbackSideButton };

@@ -1,15 +1,9 @@
 export type Props = {
     title: string;
-}
+};
 
 export default function About(props: Props) {
-    const {title} = props;
+    const { title } = props;
 
-    return (
-        <div>
-            {
-                title
-            }
-        </div>
-    )
+    return <div>{title}</div>;
 }

@@ -3,14 +3,22 @@ const path = require('path');
 const nextConfig = {
   images: {
     remotePatterns: [
-      { hostname: new URL(process.env.NEXT_PUBLIC_API_LINK).hostname },
+      {
+        hostname: process.env.NEXT_PUBLIC_API_LINK
+            ? new URL(process.env.NEXT_PUBLIC_API_LINK).hostname
+            : ""
+      },
       { hostname: 'hips.hearstapps.com' },
       { hostname: 'www.thesprucepets.com' },
       { hostname: 'heroes.ts.unsplash.com' },
       { hostname: 'raw.githubusercontent.com' },
       { hostname: 'raw.githubusercontent.com' },
       { hostname: "localhost" },
-      { hostname: new URL(process.env.NEXT_PUBLIC_STRAPI_HOST).hostname} ,
+      {
+        hostname: process.env.NEXT_PUBLIC_STRAPI_HOST
+            ? new URL(process.env.NEXT_PUBLIC_STRAPI_HOST).hostname
+            : ""
+      },
     ],
   },
   sassOptions: {

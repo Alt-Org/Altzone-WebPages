@@ -1,7 +1,7 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
-import cls from './Post.module.scss'
-import {ParsedPostBody} from "../ParsedPostBody/ParsedPostBody";
-import {IPostBodyElement, IPostData} from "../../model/types";
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { IPostBodyElement, IPostData } from '../../model/types';
+import { ParsedPostBody } from '../ParsedPostBody/ParsedPostBody';
+import cls from './Post.module.scss';
 
 interface PostProps {
     className?: string;
@@ -25,8 +25,7 @@ interface PostProps {
  *
  * <Post className="custom-class" postData={postData} />
  */
-export const Post = ({className = '', postData}: PostProps) => {
-
+export const Post = ({ className = '', postData }: PostProps) => {
     const defaultJsonData: IPostBodyElement[] = [];
 
     return (
@@ -34,8 +33,8 @@ export const Post = ({className = '', postData}: PostProps) => {
             <h1>{postData.title} </h1>
             {postData.date.toLocaleDateString()}
 
-            <div style={{marginTop: '10px'}}>
-                <ParsedPostBody jsonData={postData.bodyElements || defaultJsonData}/>
+            <div style={{ marginTop: '10px' }}>
+                <ParsedPostBody jsonData={postData.bodyElements || defaultJsonData} />
             </div>
         </div>
     );

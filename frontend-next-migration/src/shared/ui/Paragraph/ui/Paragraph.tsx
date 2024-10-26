@@ -1,13 +1,12 @@
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./Paragraph.module.scss";
-
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './Paragraph.module.scss';
 
 type Props = {
     className?: string;
-    title?: string,
-    text?: string,
+    title?: string;
+    text?: string;
     footer?: string;
-}
+};
 
 /**
  * Paragraph component that renders a title, text, and footer if provided.
@@ -27,12 +26,7 @@ type Props = {
  * />
  */
 const Paragraph = (props: Props) => {
-    const {
-        className="",
-        title, 
-        text ,
-        footer
-    } = props;
+    const { className = '', title, text, footer } = props;
 
     return (
         <div className={classNames(cls.Paragraph, {}, [className])}>

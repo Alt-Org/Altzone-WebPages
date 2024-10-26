@@ -1,15 +1,15 @@
-import cls from "./page.module.scss"
+import cls from './page.module.scss';
 
-import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from "@/widgets/SectionClassifiedHeroesBlocks";
-import { HorizontalLines } from "@/shared/ui/HorizontalLines";
-import { withBackgroundImage } from "@/shared/lib/hocs/withBackgroundImage";
-import bgPicture from "@/shared/assets/images/backgrounds/background.webp";
+import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from '@/widgets/SectionClassifiedHeroesBlocks';
+import { HorizontalLines } from '@/shared/ui/HorizontalLines';
+import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
+import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 
-import { ProjectDescription,ProjectDescriptionProps } from "./_components/sections/ProjectDescription";
-import { GetToKnowComics, GetToKnowComicsProps } from "./_components/sections/GetToKnowComics";
-import {VideoAndGalleries, VideoAndGalleriesProps} from "./_components/sections/VideoAndGalleries";
-import {PlayWithUs, PlayWithUsProps} from "./_components/sections/PlayWithUs";
-import {Gallery, GalleryProps} from "./_components/sections/Gallery"
+import { ProjectDescription, ProjectDescriptionProps } from './_components/sections/ProjectDescription';
+import { GetToKnowComics, GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
+import { VideoAndGalleries, VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries';
+import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
+import { Gallery, GalleryProps } from './_components/sections/Gallery';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -18,33 +18,29 @@ export type Props = {
     videoAndGalleries: VideoAndGalleriesProps;
     classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
     gallery: GalleryProps;
-}
+};
 
-function MainPage (props: Props)  {
-
+function MainPage(props: Props) {
     const {
         projectDescription,
         playWithUs,
         getToKnowComics,
         videoAndGalleries,
         classifiedHeroesBlocks,
-        gallery
+        gallery,
     } = props;
 
     const sameBg = undefined;
 
     return (
         <div className={cls.MainPage}>
-
             <ProjectDescription
                 className={cls.description}
                 {...projectDescription}
             />
 
             <HorizontalLines />
-            <PlayWithUs
-                {...playWithUs}
-            />
+            <PlayWithUs {...playWithUs} />
 
             <HorizontalLines />
 
@@ -57,10 +53,10 @@ function MainPage (props: Props)  {
 
             <SectionClassifiedHeroesBlocks
                 {...classifiedHeroesBlocks}
+                maxHeroesPerGroup={2}
             />
 
             {/*<HorizontalLines />*/}
-
 
             <HorizontalLines />
 
@@ -89,12 +85,10 @@ function MainPage (props: Props)  {
             {/*</div>*/}
         </div>
     );
-};
-
+}
 
 export default withBackgroundImage<Props>({
-    alt: "Main-Page underground style background",
+    alt: 'Main-Page underground style background',
     imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG
+    className: cls.wholePageBG,
 })(MainPage);
-

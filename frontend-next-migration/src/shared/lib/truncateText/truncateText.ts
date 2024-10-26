@@ -22,6 +22,6 @@ export function truncateText(maxLength: number) {
             return text;
         }
         const ellipsis = '...';
-        return  text.slice(0, maxLength - ellipsis.length) + ellipsis;
+        return text.slice(0, maxLength - ellipsis.length) + ellipsis;
     };
 }

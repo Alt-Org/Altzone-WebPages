@@ -1,12 +1,12 @@
+import cls from './ProfilePage.module.scss';
+
 // // //import { useDeleteProfile } from "@/features/DeleteProfile";
 // // import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
-import cls from "./ProfilePage.module.scss";
-
 export type Props = {
     title: string;
     profileDeletionText: string;
     profileDeletionInfoText: string;
-}
+};
 
 const ProfilePage = ({ title, profileDeletionText, profileDeletionInfoText }: Props) => {
     // const { handleDelete } = useDeleteProfile();
@@ -19,7 +19,7 @@ const ProfilePage = ({ title, profileDeletionText, profileDeletionInfoText }: Pr
                 <p>{profileDeletionInfoText}</p>
             </div>
         </main>
-    )
-}
+    );
+};
 
 export default ProfilePage;

@@ -1,17 +1,15 @@
-import {ReactNode} from "react";
-import {Navbar} from "@/widgets/Navbar";
-import {Footer} from "@/widgets/Footer";
-import {ScrollTop} from "@/features/ScrollTop";
+import { ReactNode } from 'react';
+import { ScrollTop } from '@/features/ScrollTop';
 
 type Props = {
     children: ReactNode;
-}
+};
 
-export default function TeamLayout({children}: Props) {
+export default function TeamLayout({ children }: Props) {
     return (
         <>
             {children}
             <ScrollTop />
         </>
-    )
+    );
 }

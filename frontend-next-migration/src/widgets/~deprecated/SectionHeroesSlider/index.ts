@@ -1,4 +1,4 @@
 /**
  * @deprecated
  * **/
-export {default as SectionHeroesSlider} from "./ui/SectionHeroesSlider";
+export { default as SectionHeroesSlider } from './ui/SectionHeroesSlider';

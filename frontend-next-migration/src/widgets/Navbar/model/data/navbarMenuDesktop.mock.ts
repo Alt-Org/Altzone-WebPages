@@ -1,42 +1,41 @@
-import navLogo from "@/shared/assets/images/altLogo.png";
-import {ItemType, NavbarMenu} from "../types";
+import navLogo from '@/shared/assets/images/altLogo.png';
+import { ItemType, NavbarMenu } from '../types';
 
-export const navbarMenuDesktopMock: NavbarMenu = ([
+export const navbarMenuDesktopMock: NavbarMenu = [
     {
         name: 'Foruumi',
         path: '/#forum',
         isActive: false,
         type: ItemType.navLink,
-        position: "left"
-
+        position: 'left',
     },
     {
         name: 'About',
         path: '/#about',
         isActive: false,
         type: ItemType.navLink,
-        position: "left"
+        position: 'left',
     },
     {
         name: 'Nav logo',
         src: navLogo as unknown as string,
         type: ItemType.navLogo,
-        position: "center",
-        path: '/#WorkersSection'
+        position: 'center',
+        path: '/#WorkersSection',
     },
     {
         name: 'Uutiset',
         path: '/#news',
         isActive: false,
         type: ItemType.navLink,
-        position: "right"
+        position: 'right',
     },
     {
         name: 'Tekijat',
         path: '/#workers',
         isActive: false,
         type: ItemType.navLink,
-        position: "right"
+        position: 'right',
     },
 
     // {
@@ -53,4 +52,4 @@ export const navbarMenuDesktopMock: NavbarMenu = ([
     //     position : "right",
     //     reactKey: 'somekeyhere'
     // },
-]);
+];

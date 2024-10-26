@@ -1,1 +1,1 @@
-export {ClanMainPage as default} from "@/preparedPages/ClanPages";
+export { ClanMainPage as default } from '@/preparedPages/ClanPages';

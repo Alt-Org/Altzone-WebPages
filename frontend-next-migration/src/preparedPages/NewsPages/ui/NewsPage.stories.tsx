@@ -1,5 +1,5 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import NewsPage from './NewsPage';
 
 export default {
@@ -12,4 +12,3 @@ const Template: ComponentStory<typeof NewsPage> = (args) => <NewsPage {...args} 
 
 export const Primary = Template.bind({});
 Primary.args = {};
-

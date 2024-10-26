@@ -1,32 +1,32 @@
-import { NavbarBuild, NavbarMenuItem } from "../../model/types";
-import { memo } from "react";
-import { useClientTranslation } from "@/shared/i18n";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./NavbarDesktopV2.module.scss";
-import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
-import {DropDownElement, DropdownWrapper} from "@/shared/ui/DropdownWrapper";
-import Image from "next/image";
-import { useUserPermissionsV2 } from "@/entities/Auth";
+import Image from 'next/image';
+import { memo } from 'react';
+import { useUserPermissionsV2 } from '@/entities/Auth';
+import { useClientTranslation } from '@/shared/i18n';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
+import { NavbarBuild, NavbarMenuItem } from '../../model/types';
+import cls from './NavbarDesktopV2.module.scss';
 
 type NavItemProps = {
     item: NavbarMenuItem;
     className?: string;
-    navbarBuild: NavbarBuild
-}
+    navbarBuild: NavbarBuild;
+};
 
 const NavItem = memo((props: NavItemProps) => {
     const { item, className = '', navbarBuild } = props;
-    const { type: itemType } = item
+    const { type: itemType } = item;
 
-    const { t } = useClientTranslation("navbar");
+    const { t } = useClientTranslation('navbar');
     const { checkPermissionFor } = useUserPermissionsV2();
 
-    if (itemType === "navLink") {
+    if (itemType === 'navLink') {
         return (
             <li
                 key={item.path}
-                className=
-                {classNames(cls.navItem, {}, [className])} >
+                className={classNames(cls.navItem, {}, [className])}
+            >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     to={item.path}
@@ -34,15 +34,14 @@ const NavItem = memo((props: NavItemProps) => {
                 >
                     <span>{t(`${item.name}`)}</span>
                 </AppLink>
-
             </li>
-        )
+        );
     }
-    if (itemType === "navDropDown") {
-        const canUserSeeOwnClan = checkPermissionFor("clan:seeOwn").isGranted;
+    if (itemType === 'navDropDown') {
+        const canUserSeeOwnClan = checkPermissionFor('clan:seeOwn').isGranted;
         const localizedElements = item.elements
             .map((element) => {
-                if(element.elementText == "clanpage" && !canUserSeeOwnClan) {
+                if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
                 return {
@@ -50,9 +49,12 @@ const NavItem = memo((props: NavItemProps) => {
                     elementText: t(`${element.elementText}`),
                 };
             })
-            .filter(element => element !== null);
+            .filter((element) => element !== null);
         return (
-            <li key={item.name} className={classNames(cls.navItem, {}, [className])}>
+            <li
+                key={item.name}
+                className={classNames(cls.navItem, {}, [className])}
+            >
                 <DropdownWrapper
                     elements={localizedElements}
                     contentAbsolute={true}
@@ -65,36 +67,28 @@ const NavItem = memo((props: NavItemProps) => {
         );
     }
 
-
-
-
-
-    if (itemType === "navLogo") {
+    if (itemType === 'navLogo') {
         return (
-            <li
-                key={item.src}
-            >
+            <li key={item.src}>
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     to={item.path}
                     className={classNames(cls.appLink, {}, [cls.appLinkLogo])}
                 >
-
                     <Image
-                        loading={"eager"}
+                        loading={'eager'}
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                         src={navbarBuild?.namedMenu?.navLogo?.src || ''}
                         width={120}
+                        height={0}
                         className={cls.itemLogoImg}
                     />
                 </AppLink>
             </li>
-
         );
     }
+});
 
-})
-
-NavItem.displayName = "NavItem";
+NavItem.displayName = 'NavItem';
 
 export default NavItem;

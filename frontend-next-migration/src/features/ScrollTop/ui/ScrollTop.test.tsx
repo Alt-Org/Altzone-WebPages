@@ -1,72 +1,90 @@
-'use client';
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import * as hooks from '@/shared/lib/hooks';
+import * as i18n from '@/shared/i18n';
 import { ScrollTop } from './ScrollTop';
-import { useCurrentYPosition } from '@/shared/lib/hooks/useCurrentYPosition';
 
-jest.mock('next/navigation', () => ({
-    useParams: jest.fn().mockReturnValue({ lng: 'en' }),
-}));
-
-jest.mock('@/shared/lib/hooks/useCurrentYPosition', () => ({
-    useCurrentYPosition: jest.fn(),
+// Mocking the hooks used in the ScrollTop component
+jest.mock('@/shared/lib/hooks', () => ({
+    useCurrentYPosition: jest.fn(), // Mock the useCurrentYPosition hook
 }));
 
 jest.mock('@/shared/i18n', () => ({
-    useClientTranslation: jest.fn().mockReturnValue({
-        t: (key: string) => key,
-    }),
+    useClientTranslation: jest.fn(), // Mock the useClientTranslation hook
 }));
 
 describe('ScrollTop', () => {
-    it('should render the button with default text', () => {
-        (useCurrentYPosition as jest.Mock).mockReturnValue(0);
+    const mockScrollTo = jest.fn(); // Mock function to simulate scrolling
+    let originalScrollTo: typeof window.scrollTo; // Store original window.scrollTo function
 
-        render(<ScrollTop />);
+    beforeAll(() => {
+        // Before all tests, replace window.scrollTo with the mock function
+        originalScrollTo = window.scrollTo;
+        window.scrollTo = mockScrollTo;
+    });
 
+    afterAll(() => {
+        // Restore original window.scrollTo function after all tests
+        window.scrollTo = originalScrollTo;
+    });
+
+    beforeEach(() => {
+        // Clear all mocks before each test to ensure clean state
+        jest.clearAllMocks();
+        // Mock translation function to return the key as the translation
+        (i18n.useClientTranslation as jest.Mock).mockReturnValue({ t: (key: string) => key });
+    });
+
+    it('renders correctly with default props', () => {
+        // Mock the hook to simulate being at the top of the page
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(0);
+
+        render(<ScrollTop />); // Render the ScrollTop component
+
+        // Check if the button is in the document and has the correct text and class
         const button = screen.getByTestId('scroll-to-top-btn');
         expect(button).toBeInTheDocument();
         expect(button).toHaveTextContent('upButton');
+        expect(button).toHaveClass('ScrollTop');
     });
 
-    it('should render the button with custom text', () => {
-        (useCurrentYPosition as jest.Mock).mockReturnValue(0);
+    it('renders correctly with custom innerText', () => {
+        // Mock the hook to simulate being at the top of the page
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(0);
 
-        render(<ScrollTop innerText="Scroll to Top" />);
+        render(<ScrollTop innerText="Scroll to top" />); // Render with custom inner text
 
+        // Check if the button displays the custom inner text
         const button = screen.getByTestId('scroll-to-top-btn');
-        expect(button).toBeInTheDocument();
-        expect(button).toHaveTextContent('Scroll to Top');
+        expect(button).toHaveTextContent('Scroll to top');
     });
 
-    it('should show the button when scrolled down', () => {
-        (useCurrentYPosition as jest.Mock).mockReturnValue(window.innerHeight / 5);
+    it('shows button when scrolled down', () => {
+        // Mock the hook to simulate scrolling down the page
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(window.innerHeight / 4);
+        render(<ScrollTop />); // Render the component
 
-        render(<ScrollTop />);
-
-        const button = screen.getByTestId('scroll-to-top-btn');
-        expect(button).toHaveClass('show');
+        // Verify that the button is visible
+        expect(screen.getByTestId('scroll-to-top-btn')).toHaveClass('show');
     });
 
-    it('should hide the button when scrolled up', () => {
-        (useCurrentYPosition as jest.Mock).mockReturnValue(0);
+    it('hides button when scrolled up', () => {
+        // Mock the hook to simulate being at the top of the page
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(0);
+        render(<ScrollTop />); // Render the component
 
-        render(<ScrollTop />);
-
-        const button = screen.getByTestId('scroll-to-top-btn');
-        expect(button).not.toHaveClass('show');
+        // Verify that the button is hidden
+        expect(screen.getByTestId('scroll-to-top-btn')).not.toHaveClass('show');
     });
 
-    it('should scroll to top when button is clicked', () => {
-        window.scrollTo = jest.fn();
-        (useCurrentYPosition as jest.Mock).mockReturnValue(window.innerHeight / 5);
+    it('scrolls to top when button is clicked', () => {
+        // Mock the hook to simulate scrolling down the page
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(window.innerHeight / 4);
+        render(<ScrollTop />); // Render the component
 
-        render(<ScrollTop />);
+        const button = screen.getByTestId('scroll-to-top-btn'); // Get the button element
+        fireEvent.click(button); // Simulate a click on the button
 
-        const button = screen.getByTestId('scroll-to-top-btn');
-        fireEvent.click(button);
-
-        expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
+        // Check if the mock scrollTo function was called with correct parameters
+        expect(mockScrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
     });
 });

@@ -1,1 +1,1 @@
-export {NewClanForm} from "./ui/NewClanForm/NewClanForm";
+export { NewClanForm } from './ui/NewClanForm/NewClanForm';

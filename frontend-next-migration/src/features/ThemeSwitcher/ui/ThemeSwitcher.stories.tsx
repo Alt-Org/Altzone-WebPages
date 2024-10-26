@@ -1,5 +1,5 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default {
@@ -14,5 +14,3 @@ const Template: ComponentStory<typeof ThemeSwitcher> = (args) => <ThemeSwitcher 
 
 export const Primary = Template.bind({});
 Primary.args = {};
-
-
