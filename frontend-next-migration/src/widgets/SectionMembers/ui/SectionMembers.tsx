@@ -17,7 +17,13 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const lng = params.lng as string;
     const { t } = useClientTranslation('team');
 
-    const { data: teams = [], isError, isLoading } = useGetTeamsQuery(lng);
+    const {
+        data: teams = [],
+        isError,
+        isLoading,
+    } = useGetTeamsQuery(lng, {
+        refetchOnMountOrArgChange: false,
+    });
 
     if (isError) {
         return <p>Error fetching teams data</p>;

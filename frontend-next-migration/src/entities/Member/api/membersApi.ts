@@ -5,10 +5,12 @@ import { getMembers, getDepartments } from './mappers';
 const teamApi = strapiApi.injectEndpoints({
     endpoints: (builder) => ({
         fetchTeams: builder.query<Team[], string>({
+            keepUnusedDataFor: 10000,
             query: (locale = 'en') => {
                 const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
                 return `/teams?locale=${strapiLocale}&populate=departments.localizations,members.Logo,departments.members.Logo`;
             },
+
             transformResponse: (response: any, meta, arg) => {
                 const strapiLocale = arg === 'fi' ? 'fi-FI' : 'en';
 
