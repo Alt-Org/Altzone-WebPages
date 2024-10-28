@@ -32,7 +32,7 @@ const meta = {
         docs: {
             description: {
                 component:
-                    'Fancybox component using @fancyapps/ui library. Component is used to create a lightbox gallery.',
+                    '`Fancybox` component using @fancyapps/ui library. Component is used to create a lightbox gallery.',
             },
         },
     },
