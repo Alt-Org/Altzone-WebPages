@@ -2,7 +2,7 @@ import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
 import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 
 export async function _getPage(lng: string, slug: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -19,8 +19,8 @@ export async function _getPage(lng: string, slug: string) {
     const nextHero =
         heroManager.getHeroAfterSpecificHero(currentHero.id) || (heroes.at(0) as HeroWithGroup);
 
-    const prevHeroLink = generateHeroLink(prevHero.slug);
-    const nextHeroLink = generateHeroLink(nextHero.slug);
+    const prevHeroLink = getRouteOneHeroPage(prevHero.slug);
+    const nextHeroLink = getRouteOneHeroPage(nextHero.slug);
 
     return createPage({
         buildPage: () => ({
@@ -35,8 +35,4 @@ export async function _getPage(lng: string, slug: string) {
             keywords: t('head-keywords'),
         }),
     });
-}
-
-function generateHeroLink(heroSlug: string): string {
-    return RoutePaths.HEROES_ONE.replace(':slug', heroSlug);
 }

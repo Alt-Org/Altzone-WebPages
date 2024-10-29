@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
@@ -53,7 +53,7 @@ const ClanAllSubPage = () => {
     //if (error) return <div>Error: {JSON.stringify(error)}</div>;
 
     const onClickToClan = (id: string) => {
-        router.push(`${RoutePaths.clan}/${id}`);
+        router.push(getRouteOneClanPage(id));
     };
 
     const onClickToPage = (page: number) => {
