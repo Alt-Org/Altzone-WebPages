@@ -1,0 +1,13 @@
+.topDropDown{
+  border-radius: var(--border-radius-custom);
+  width: 100%;
+  background-color: black;
+
+  .topDropDownChildren{
+    //justify-self: center;
+    justify-content: center;
+  }
+
+}
+
+
