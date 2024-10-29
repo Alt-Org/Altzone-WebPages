@@ -25,13 +25,12 @@ const Page = () => {
     return (
         <div
             style={{
-                color: 'black',
                 display: 'flex',
                 justifyContent: 'center',
                 marginTop: '200px',
             }}
         >
-            {/*better to use className for such, inline styled used only for testing*/}
+            {/*better to use className for that, inline styled used only for testing*/}
             <div style={{ width: '100%', maxWidth: '950px' }}>
                 <NavMenuWithDropdowns
                     dropdownItems={dropdownItems}
