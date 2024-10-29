@@ -5,18 +5,6 @@ type Link = {
     path: string;
 };
 
-// export type DropDownElement = {
-//     id?: string;
-//     elementText: string;
-//     link?: Link;
-//     onClickCallback?: () => void;
-//     isDisabled?: {
-//         status: boolean;
-//         reason: string;
-//     };
-//     accessErrorMsg?: string;
-// };
-
 export type DropDownElementASTextOrLink = {
     id?: string;
     elementText: string;
