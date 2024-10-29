@@ -1,13 +1,34 @@
 .topDropDown{
+  color: red;
   border-radius: var(--border-radius-custom);
   width: 100%;
   background-color: black;
 
   .topDropDownChildren{
-    //justify-self: center;
     justify-content: center;
   }
 
+  .topDropDownContent{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
 }
 
+.subDropDown{
+  color: greenyellow;
+  font-size: 24px;
+  justify-self: flex-start;
+  width: 100%;
+
+  .subDropDownChildren{
+    justify-content: space-between;
+  }
+
+  .subDropDownContent{
+    padding-left: 15px;
+  }
+
+}
 

@@ -13,7 +13,7 @@ const Page = () => {
         >
             {/*<CustomEditor.CreateNewMode entityName={'News_Blog'} />*/}
 
-            <div style={{ marginTop: '400px' }} />
+            <div style={{ marginTop: '700px' }} />
 
             <NavMenuWithDropdowns />
             {/*<NavigationDropdown menuItems={menuData}/>*/}
