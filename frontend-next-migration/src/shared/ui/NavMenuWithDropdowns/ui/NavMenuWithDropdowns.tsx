@@ -1,39 +1,40 @@
-import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
+import { DropDownElement, DropdownWrapper } from '@/shared/ui/DropdownWrapper';
+import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper/types';
+import { ReactNode } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
 
-function Heroes() {
+interface NestedDropDownProps {
+    openByDefault?: boolean;
+    elements: DropDownElement[];
+    children: ReactNode;
+}
+
+function NestedDropDown(props: NestedDropDownProps) {
+    const { openByDefault, elements, children } = props;
+
     return (
         <DropdownWrapper
+            openByDefault={openByDefault}
             className={cls.subDropDown}
             contentClassName={cls.subDropDownContent}
             childrenWrapperClassName={cls.subDropDownChildren}
-            elements={[<div key={'sdasd'}>Hero 1</div>, <div key={'sadads'}>Hero 2</div>]}
-            openByDefault={true}
+            elements={elements}
         >
-            Heroes
+            {children}
         </DropdownWrapper>
     );
 }
 
-function News() {
-    return (
-        <DropdownWrapper
-            openByDefault={true}
-            className={cls.subDropDown}
-            contentClassName={cls.subDropDownContent}
-            childrenWrapperClassName={cls.subDropDownChildren}
-            elements={[
-                <div key={'sdasdasdd'}>Piece of news 1</div>,
-                <div key={'dasddasda'}>Piece of news 2</div>,
-                <div key={'dasddasda'}>Piece of news 3</div>,
-            ]}
-        >
-            News
-        </DropdownWrapper>
-    );
+interface NavMenuWithDropdownsProps {
+    dropdownItems: {
+        title: string;
+        elements: DropDownElementASTextOrLink[];
+        openByDefault?: boolean;
+    }[];
+    children: ReactNode;
 }
 
-export function NavMenuWithDropdowns() {
+export function NavMenuWithDropdowns({ dropdownItems, children }: NavMenuWithDropdownsProps) {
     return (
         <div
             style={{
@@ -44,12 +45,20 @@ export function NavMenuWithDropdowns() {
         >
             <DropdownWrapper
                 openByDefault={true}
-                elements={[<Heroes key={'some'} />, <News key={'asdasdads'} />]}
+                elements={dropdownItems.map((item, index) => (
+                    <NestedDropDown
+                        key={index}
+                        openByDefault={item.openByDefault}
+                        elements={item.elements}
+                    >
+                        {item.title}
+                    </NestedDropDown>
+                ))}
                 className={cls.topDropDown}
                 childrenWrapperClassName={cls.topDropDownChildren}
                 contentClassName={cls.topDropDownContent}
             >
-                Forums
+                {children}
             </DropdownWrapper>
         </div>
     );
