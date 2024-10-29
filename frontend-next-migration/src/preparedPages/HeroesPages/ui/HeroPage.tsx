@@ -1,5 +1,5 @@
 import { HeroContainer, HeroWithGroup } from '@/entities/Hero';
-import { getAllHeroesPageRoute } from '@/shared/appLinks/RoutePaths';
+import { getRouteAllHeroesPage } from '@/shared/appLinks/RoutePaths';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import cls from './HeroPage.module.scss';
@@ -25,7 +25,7 @@ const HeroPage = (props: Props) => {
                 heroTitle={newSelectedHero.title}
                 leftArrowLink={prevHeroLink}
                 rightArrowLink={nextHeroLink}
-                xLink={getAllHeroesPageRoute()}
+                xLink={getRouteAllHeroesPage()}
             />
         </main>
     );

@@ -3,7 +3,7 @@ import { INewsElement } from '@/entities/News';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card/Card';
 import { truncateText } from '@/shared/lib/truncateText/truncateText';
-import { getOneNewsPageRoute } from '@/shared/appLinks/RoutePaths';
+import { getRouteOneNewsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './NewsCard.module.scss';
 
 interface NewsCardProps extends INewsElement {
@@ -32,7 +32,7 @@ const NewsCard = (props: NewsCardProps) => {
             </div>
 
             <Card.ReadMoreLink
-                path={getOneNewsPageRoute(id)}
+                path={getRouteOneNewsPage(id)}
                 className={cls.readMoreLink}
                 withScalableLink
             >

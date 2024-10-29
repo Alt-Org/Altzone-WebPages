@@ -84,38 +84,38 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.NOT_FOUND_CATCH]: '*',
 };
 
-export const getMainPageRoute = () => '/';
-export const getTeamPageRoute = () => '/team';
+export const getRouteMainPage = () => '/';
+export const getRouteTeamPage = () => '/team';
 
-export const getAuthPageRoute = () => '/auth';
-export const getLogoutPathRoute = () => '/auth/logout';
-export const getLoginPageRoute = () => '/auth/login';
-export const getRegisterPageRoute = () => '/auth/register';
-export const getFPWPathRoute = () => '/auth/forgottenPassword';
-export const getSessionExpiredPathRoute = () => '/auth/sessionExpired';
+export const getRouteAuthPage = () => '/auth';
+export const getRouteLogoutPage = () => '/auth/logout';
+export const getRouteLoginPage = () => '/auth/login';
+export const getRouteRegisterPage = () => '/auth/register';
+export const getRouteFPWPage = () => '/auth/forgottenPassword';
+export const getRouteSessionExpiredPage = () => '/auth/sessionExpired';
 
-export const getAllNewsPageRoute = () => '/news';
-export const getOneNewsPageRoute = (id: string) => `/news/${id}`;
+export const getRouteAllNewsPage = () => '/news';
+export const getRouteOneNewsPage = (id: string) => `/news/${id}`;
 
-export const getAllHeroesPageRoute = () => '/heroes';
-export const getOneHeroPageRoute = (slug: string) => `/heroes/${slug}`;
-export const getHeroDevPageRoute = () => '/hero-development';
+export const getRouteAllHeroesPage = () => '/heroes';
+export const getRouteOneHeroPage = (slug: string) => `/heroes/${slug}`;
+export const getRouteHeroDevPage = () => '/hero-development';
 
-export const getComicsPageRoute = () => '/comics';
-export const getGalleryPageRoute = () => '/picture-galleries';
-export const getGameArtPageRoute = () => '/artGame';
+export const getRouteComicsPage = () => '/comics';
+export const getRouteGalleryPage = () => '/picture-galleries';
+export const getRouteGameArtPage = () => '/artGame';
 
-export const getMyClanPageRoute = () => '/clans/myclan';
-export const getClanLeaderboardPageRoute = () => '/clans/leaderboard';
+export const getRouteMyClanPage = () => '/clans/myclan';
+export const getRouteClanLeadeboardPage = () => '/clans/leaderboard';
 
-export const getAllClanPageRoute = () => '/clans';
-export const getOneClanPageRoute = (id: string) => `/clans/${id}`;
-export const getEveryClansPageRoute = () => '/clans/all';
-export const getNewClanPageRoute = () => '/clans/addNew';
+export const getRouteAllClanSearchPage = () => '/clans';
+export const getRouteOneClanPage = (id: string) => `/clans/${id}`;
+export const getRouteEveryClansPage = () => '/clans/all';
+export const getRouteAddNewClanPage = () => '/clans/addNew';
 
-export const getPrivacyPageRoute = () => '/privacy';
-export const getCookiesPageRoute = () => '/cookies';
-export const getAboutPageRoute = () => '/about';
-export const getComingPageRoute = () => '/coming';
-export const getForumPageRoute = () => '/forum';
-export const get404PageRoute = () => '/404';
+export const getRoutePrivacyPage = () => '/privacy';
+export const getRouteCookiesPage = () => '/cookies';
+export const getRouteAboutPage = () => '/about';
+export const getRouteComingSoonPage = () => '/coming';
+export const getRouteForumPage = () => '/forum';
+export const getRoute404Page = () => '/404';

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useGetClansQuery } from '@/entities/Clan';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useClientTranslation } from '@/shared/i18n';
-import { getOneClanPageRoute } from '@/shared/appLinks/RoutePaths';
+import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ClanSearchAndView.module.scss';
 
@@ -15,7 +15,7 @@ const ClansSearchAndViewDesktop = () => {
     const { data: clans, isLoading } = useGetClansQuery({ page: 1, search: currentSearch });
 
     const onClickToClan = (id: string) => {
-        router.push(getOneClanPageRoute(id));
+        router.push(getRouteOneClanPage(id));
     };
 
     const onClickToSearch = (search: string) => {
@@ -117,7 +117,7 @@ const ClansSearchAndViewMobile = () => {
     const { data: clans, isLoading } = useGetClansQuery({ page: 1, search: currentSearch });
 
     const onClickToClan = (id: string) => {
-        router.push(getOneClanPageRoute(id));
+        router.push(getRouteOneClanPage(id));
     };
 
     const onClickToSearch = (search: string) => {

@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useCallback, useRef } from 'react';
-import { getOneHeroPageRoute } from '@/shared/appLinks/RoutePaths';
+import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 import { ClickableBorder } from '@/shared/ui/ClickableBorder';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -41,7 +41,7 @@ export const HeroCard = (props: Props) => {
                     className={cls.HeroDiv}
                     style={{ backgroundColor }}
                 >
-                    <AppLink to={getOneHeroPageRoute(slug)}>
+                    <AppLink to={getRouteOneHeroPage(slug)}>
                         <Image
                             src={imageSrc}
                             alt={imageAlt}

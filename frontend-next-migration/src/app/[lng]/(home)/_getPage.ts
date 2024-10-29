@@ -1,7 +1,7 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { getAllHeroesPageRoute, getComicsPageRoute } from '@/shared/appLinks/RoutePaths';
+import { getRouteAllHeroesPage, getRouteComicsPage } from '@/shared/appLinks/RoutePaths';
 import { createPage } from '@/app/_helpers';
 
 export async function _getPage(lng: string) {
@@ -43,7 +43,7 @@ export async function _getPage(lng: string) {
             },
             getToKnowComics: {
                 title: t('getToKnowComics-title'),
-                buttonParams: { innerText: t('getToKnowComics'), href: getComicsPageRoute() },
+                buttonParams: { innerText: t('getToKnowComics'), href: getRouteComicsPage() },
             },
             videoAndGalleries: {
                 videoLink: AppExternalLinks.previewVideoYoutube,
@@ -53,7 +53,7 @@ export async function _getPage(lng: string) {
                 title: t('classifiedHeroesBlocks-title'),
                 seeMoreLink: {
                     text: t('classifiedHeroesBlocks-seeMore'),
-                    href: getAllHeroesPageRoute(),
+                    href: getRouteAllHeroesPage(),
                 },
             },
         }),

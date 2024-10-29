@@ -1,5 +1,5 @@
 import { RegisterForm } from '@/features/AuthByUsername';
-import { getLoginPageRoute } from '@/shared/appLinks/RoutePaths';
+import { getRouteLoginPage } from '@/shared/appLinks/RoutePaths';
 
 const AuthSubRegisterPage = () => {
     return (
@@ -12,7 +12,7 @@ const AuthSubRegisterPage = () => {
                 alignItems: 'center',
             }}
         >
-            <RegisterForm toLoginPage={getLoginPageRoute()} />
+            <RegisterForm toLoginPage={getRouteLoginPage()} />
         </div>
     );
 };
