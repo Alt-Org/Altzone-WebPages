@@ -5,7 +5,7 @@ import { CookiesSections } from '@/entities/PresentationPackages/model/data/cook
 import { PrivacySections } from '@/entities/PresentationPackages/model/data/privacySections';
 import {
     getMainPageRoute,
-    getNewsPageRoute,
+    getAllNewsPageRoute,
     getTeamPageRoute,
     getLoginPageRoute,
 } from '@/shared/appLinks/RoutePaths';
@@ -13,7 +13,7 @@ import img from '@/shared/assets/images/altLogo.png';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('main', getMainPageRoute(), false);
-navbarBuilder.addLink('news', getNewsPageRoute(), true);
+navbarBuilder.addLink('news', getAllNewsPageRoute(), true);
 navbarBuilder.addDropDown('game', false, dropdowns.game);
 navbarBuilder.addDropDown('gallery', false, dropdowns.gallery);
 navbarBuilder.addDropDown('gameart', false, dropdowns.gameart);

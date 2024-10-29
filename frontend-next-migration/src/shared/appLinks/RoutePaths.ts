@@ -94,16 +94,11 @@ export const getRegisterPageRoute = () => '/auth/register';
 export const getFPWPathRoute = () => '/auth/forgottenPassword';
 export const getSessionExpiredPathRoute = () => '/auth/sessionExpired';
 
-/**
- * returns the news page
- * @param {string?} id include for the news_one page
- */
-export const getNewsPageRoute = (id?: string) => (id ? `/news/${id}` : '/news');
-/**
- * returns the hero page
- * @param {string?} slug include for the hero_one page
- */
-export const getHeroPageRoute = (slug?: string) => (slug ? `/heroes/${slug}` : '/heroes');
+export const getAllNewsPageRoute = () => '/news';
+export const getOneNewsPageRoute = (id: string) => `/news/${id}`;
+
+export const getAllHeroesPageRoute = () => '/heroes';
+export const getOneHeroPageRoute = (slug: string) => `/heroes/${slug}`;
 export const getHeroDevPageRoute = () => '/hero-development';
 
 export const getComicsPageRoute = () => '/comics';
@@ -113,12 +108,9 @@ export const getGameArtPageRoute = () => '/artGame';
 export const getMyClanPageRoute = () => '/clans/myclan';
 export const getClanLeaderboardPageRoute = () => '/clans/leaderboard';
 
-/**
- * returns the clans page
- * @param {string?} id include for the clan_one page
- */
-export const getClansPageRoute = (id?: string) => (id ? `/clans/${id}` : '/clans');
-export const getAllClansPageRoute = () => '/clans/all';
+export const getAllClanPageRoute = () => '/clans';
+export const getOneClanPageRoute = (id: string) => `/clans/${id}`;
+export const getEveryClansPageRoute = () => '/clans/all';
 export const getNewClanPageRoute = () => '/clans/addNew';
 
 export const getPrivacyPageRoute = () => '/privacy';

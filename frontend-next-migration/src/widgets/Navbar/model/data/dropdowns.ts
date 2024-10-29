@@ -1,13 +1,13 @@
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import {
     getHeroDevPageRoute,
-    getHeroPageRoute,
     getMyClanPageRoute,
     getClanLeaderboardPageRoute,
-    getClansPageRoute,
     getComicsPageRoute,
     getGalleryPageRoute,
     getGameArtPageRoute,
+    getAllHeroesPageRoute,
+    getAllClanPageRoute,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -45,7 +45,7 @@ export const dropdowns = {
         {
             elementText: 'heroes',
             link: {
-                path: getHeroPageRoute(),
+                path: getAllHeroesPageRoute(),
                 isExternal: false,
             },
         },
@@ -59,7 +59,7 @@ export const dropdowns = {
         {
             elementText: 'clans',
             link: {
-                path: getClansPageRoute(),
+                path: getAllClanPageRoute(),
                 isExternal: false,
             },
             isDisabled: {

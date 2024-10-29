@@ -1,7 +1,7 @@
 import img from '@/shared/assets/images/altLogo.png';
 import {
     getMainPageRoute,
-    getNewsPageRoute,
+    getAllNewsPageRoute,
     getTeamPageRoute,
     getLoginPageRoute,
 } from '@/shared/appLinks/RoutePaths';
@@ -21,7 +21,7 @@ export const navbarMenuDesktop = navbarBuilder.build();
 
 const navbarBuilderV2 = new NavbarBuilder();
 navbarBuilderV2.addLogo('Nav logo', img as unknown as string, getMainPageRoute());
-navbarBuilderV2.addLink('news', getNewsPageRoute(), true);
+navbarBuilderV2.addLink('news', getAllNewsPageRoute(), true);
 navbarBuilderV2.addDropDown('game', true, dropdowns.game);
 navbarBuilderV2.addDropDown('gallery', true, dropdowns.gallery);
 navbarBuilderV2.addDropDown('gameart', true, dropdowns.gameart);

@@ -1,7 +1,7 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { getHeroPageRoute, getComicsPageRoute } from '@/shared/appLinks/RoutePaths';
+import { getAllHeroesPageRoute, getComicsPageRoute } from '@/shared/appLinks/RoutePaths';
 import { createPage } from '@/app/_helpers';
 
 export async function _getPage(lng: string) {
@@ -53,7 +53,7 @@ export async function _getPage(lng: string) {
                 title: t('classifiedHeroesBlocks-title'),
                 seeMoreLink: {
                     text: t('classifiedHeroesBlocks-seeMore'),
-                    href: getHeroPageRoute(),
+                    href: getAllHeroesPageRoute(),
                 },
             },
         }),
