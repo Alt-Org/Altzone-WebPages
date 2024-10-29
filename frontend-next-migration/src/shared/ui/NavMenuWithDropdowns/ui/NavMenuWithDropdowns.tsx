@@ -14,7 +14,54 @@ export interface NavMenuWithDropdownsProps {
     className?: string;
 }
 
-export function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps) {
+/**
+ * Navigation menu component with nested dropdowns.
+ *
+ * @param {NavMenuWithDropdownsProps} props - Props for the component.
+ * @returns {JSX.Element} The rendered navigation menu with dropdowns.
+ *
+ * @example
+ * ```tsx
+ * import React from 'react';
+ * import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from './NavMenuWithDropdowns';
+ *
+ * const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
+ *     title: 'Forum',
+ *     openByDefault: true,
+ *     dropdownItems: [
+ *         {
+ *             title: 'Heroes',
+ *             openByDefault: false,
+ *             elements: [
+ *                 { elementText: 'Hero 1', id: 'hero1', link: "hero/1" },
+ *                 { elementText: 'Hero 2', id: 'hero2', link: "hero/2"  },
+ *             ],
+ *         },
+ *         {
+ *             title: 'News',
+ *             openByDefault: false,
+ *             elements: [
+ *                 { elementText: 'Piece of news 1', id: 'news1', link: "news/1"},
+ *                 { elementText: 'Piece of news 2', id: 'news2', link: "news/2"},
+ *                 { elementText: 'Piece of news 3', id: 'news3', link: "news/3" },
+ *             ],
+ *         },
+ *     ],
+ * };
+ *
+ * function App() {
+ *     return (
+ *         <NavMenuWithDropdowns
+ *             {...navMenuWithDropdownsProps}
+ *             className="custom-nav-menu"
+ *         />
+ *     );
+ * }
+ *
+ * export default App;
+ * ```
+ */
+export function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
     const { dropdownItems, className, title, openByDefault = false } = props;
 
     return (
