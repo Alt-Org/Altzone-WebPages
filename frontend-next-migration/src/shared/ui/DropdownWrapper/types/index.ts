@@ -34,4 +34,5 @@ export type DropdownWrapperProps = {
         status: boolean;
         reason: string;
     };
+    openByDefault?: boolean;
 };

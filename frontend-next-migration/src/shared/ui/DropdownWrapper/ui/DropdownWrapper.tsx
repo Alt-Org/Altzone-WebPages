@@ -20,9 +20,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         children,
         onOpen,
         onClose,
+        openByDefault = false,
     } = props;
 
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(openByDefault);
     const [shouldRender, setShouldRender] = useState<boolean>(false);
     const [animationState, setAnimationState] = useState<'opening' | 'closing' | ''>('');
 
