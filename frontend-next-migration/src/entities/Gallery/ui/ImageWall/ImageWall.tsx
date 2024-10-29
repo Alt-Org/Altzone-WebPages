@@ -42,7 +42,6 @@ export const ImageWall = (props: ImageWallProps) => {
                         <Border 
                             key={key}
                             borderImageSrc={borderImageSrc} 
-                            className={cls.ClickableBorder}
                         >
                             <div className={cls.Item}>
                                 <a 
@@ -76,7 +75,6 @@ export const ImageWall = (props: ImageWallProps) => {
                                 <Border
                                     key={key}
                                     borderImageSrc={borderImageSrc} 
-                                    className={cls.ClickableBorder}
                                 >
                                     <div className={cls.Item}>
                                         <a 

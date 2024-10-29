@@ -2,15 +2,15 @@ import { ClickableBorder } from "@/shared/ui/ClickableBorder"
 import { useRef, useCallback } from "react"
 import { ResizeCallback } from "@/shared/lib/hooks/useResizeObserver"
 import useResizeObserver from "@/shared/lib/hooks/useResizeObserver"
+import cls from "./Border.module.scss"
 
 export interface BorderProps {
     borderImageSrc: string
     children: React.ReactNode
-    className: string
 }
 
 export const Border = (props: BorderProps) => {
-    const { borderImageSrc, children, className } = props
+    const { borderImageSrc, children } = props
 
     const elementRef = useRef<HTMLDivElement>(null);
 
@@ -44,7 +44,7 @@ export const Border = (props: BorderProps) => {
         <ClickableBorder
             ref={elementRef}
             borderImageSource={borderImageSrc} 
-            className={className}
+            className={cls.ClickableBorder}
         >
             {children}
         </ClickableBorder>
