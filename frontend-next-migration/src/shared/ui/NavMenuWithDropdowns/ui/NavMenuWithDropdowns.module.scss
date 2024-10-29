@@ -1,7 +1,6 @@
 .topDropDown{
   padding: 10px 0;
-
-  color: red;
+  color: var(--primary-color);
   font-size: 40px;
   border-radius: var(--border-radius-custom);
   width: 100%;
@@ -19,7 +18,7 @@
 }
 
 .subDropDown{
-  color: greenyellow;
+  color: var(--inverted-primary-color);
   font-size: 24px;
   justify-self: flex-start;
   width: 100%;
@@ -30,6 +29,12 @@
 
   .subDropDownContent{
     padding-left: 15px;
+    color: var(--primary-color);
+
+    & > div:hover{
+      color: var(--secondary-color);
+    }
+
   }
 
 }

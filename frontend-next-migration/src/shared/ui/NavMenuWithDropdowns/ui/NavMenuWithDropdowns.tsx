@@ -8,6 +8,7 @@ function Heroes() {
             contentClassName={cls.subDropDownContent}
             childrenWrapperClassName={cls.subDropDownChildren}
             elements={[<div key={'sdasd'}>Hero 1</div>, <div key={'sadads'}>Hero 2</div>]}
+            openByDefault={true}
         >
             Heroes
         </DropdownWrapper>
@@ -17,6 +18,7 @@ function Heroes() {
 function News() {
     return (
         <DropdownWrapper
+            openByDefault={true}
             className={cls.subDropDown}
             contentClassName={cls.subDropDownContent}
             childrenWrapperClassName={cls.subDropDownChildren}
@@ -38,11 +40,10 @@ export function NavMenuWithDropdowns() {
                 minHeight: '500px',
                 width: '100%',
                 maxWidth: '950px',
-                display: 'flex',
-                alignItems: 'flex-start',
             }}
         >
             <DropdownWrapper
+                openByDefault={true}
                 elements={[<Heroes key={'some'} />, <News key={'asdasdads'} />]}
                 className={cls.topDropDown}
                 childrenWrapperClassName={cls.topDropDownChildren}
