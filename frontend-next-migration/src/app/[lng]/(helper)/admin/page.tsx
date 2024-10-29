@@ -48,7 +48,7 @@ const Page = () => {
             }}
         >
             {/*better to use className for that, inline styled used only for testing*/}
-            <div style={{ width: '100%', maxWidth: '950px' }}>
+            <div style={{ width: '100%', maxWidth: '600px' }}>
                 <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
             </div>
 
