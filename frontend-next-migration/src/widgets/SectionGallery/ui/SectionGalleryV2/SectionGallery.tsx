@@ -20,22 +20,24 @@ interface FullProps {
 
 type GalleryProps = (PreviewProps | FullProps) & {
     socialMediaLinks: string[]
+    mockImages?: { [key: string]: ImageData } // for Storybook
 }
 
 export const SectionGallery = (props: GalleryProps) => {
     const [images, setImages] = useState<{ [key: string]: ImageData }>({})
-    const { version, seeMoreLink, socialMediaLinks } = props
+    const { version, seeMoreLink, socialMediaLinks, mockImages } = props
 
     useEffect(() => {
-        const filteredImages = useGetStrapiGalleryImages(
-            require.context(
-                '/public/images/gallery', false, /\.(png|jpe?g|svg)$/
-            ),
-            "public/images/gallery"
-        )
-
-        setImages(filteredImages)
-    },[])
+        if (mockImages) {
+            setImages(mockImages); // Use mock images if provided (Storybook)
+        } else {
+            const filteredImages = useGetStrapiGalleryImages(
+                require.context('/public/images/gallery', false, /\.(png|jpe?g|svg)$/),
+                'public/images/gallery'
+            );
+            setImages(filteredImages);
+        }
+    },[mockImages])
 
     return (
         <div>
