@@ -37,8 +37,7 @@ export function NavMenuWithDropdowns() {
             style={{
                 minHeight: '500px',
                 width: '100%',
-                maxWidth: '500px',
-                fontSize: '40px',
+                maxWidth: '950px',
                 display: 'flex',
                 alignItems: 'flex-start',
             }}
