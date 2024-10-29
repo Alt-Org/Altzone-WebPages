@@ -184,7 +184,9 @@ const NavbarItemsComponent = ({
 
                     if (isNavbarDropDownObject(item)) {
                         const localizedElements = item.elements.map((element) => ({
+                            // @ts-ignore todo add guard
                             ...element,
+                            // @ts-ignore todo add guard
                             elementText: t(`${element.elementText}`),
                         }));
 

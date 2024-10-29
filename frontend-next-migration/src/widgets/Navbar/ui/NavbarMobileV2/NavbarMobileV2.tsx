@@ -72,13 +72,16 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     const localizedElements = item.elements
                         .map((element) => {
                             if (
+                                // @ts-ignore todo add guard
                                 element.elementText === 'clanpage' &&
                                 !permissionToSeeOwnClan.isGranted
                             ) {
                                 return null; // Return null if elementText is "clanpage"
                             }
                             return {
+                                // @ts-ignore todo add guard
                                 ...element,
+                                // @ts-ignore todo add guard
                                 elementText: t(`${element.elementText}`), // Localize elementText
                             };
                         })
