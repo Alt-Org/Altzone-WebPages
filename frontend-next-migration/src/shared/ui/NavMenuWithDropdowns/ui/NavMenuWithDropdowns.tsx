@@ -3,29 +3,7 @@ import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper/types';
 import { ReactNode } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
 
-interface NestedDropDownProps {
-    openByDefault?: boolean;
-    elements: DropDownElement[];
-    children: ReactNode;
-}
-
-function NestedDropDown(props: NestedDropDownProps) {
-    const { openByDefault, elements, children } = props;
-
-    return (
-        <DropdownWrapper
-            openByDefault={openByDefault}
-            className={cls.subDropDown}
-            contentClassName={cls.subDropDownContent}
-            childrenWrapperClassName={cls.subDropDownChildren}
-            elements={elements}
-        >
-            {children}
-        </DropdownWrapper>
-    );
-}
-
-interface NavMenuWithDropdownsProps {
+export interface NavMenuWithDropdownsProps {
     dropdownItems: {
         title: string;
         elements: DropDownElementASTextOrLink[];
@@ -59,5 +37,27 @@ export function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps) {
                 {title}
             </DropdownWrapper>
         </div>
+    );
+}
+
+interface NestedDropDownProps {
+    openByDefault?: boolean;
+    elements: DropDownElement[];
+    children: ReactNode;
+}
+
+function NestedDropDown(props: NestedDropDownProps) {
+    const { openByDefault, elements, children } = props;
+
+    return (
+        <DropdownWrapper
+            openByDefault={openByDefault}
+            className={cls.subDropDown}
+            contentClassName={cls.subDropDownContent}
+            childrenWrapperClassName={cls.subDropDownChildren}
+            elements={elements}
+        >
+            {children}
+        </DropdownWrapper>
     );
 }
