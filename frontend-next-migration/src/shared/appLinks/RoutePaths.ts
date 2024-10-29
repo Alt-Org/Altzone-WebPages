@@ -42,8 +42,9 @@ const news = '/news';
 /**
  * The values are used as routesLinks throughout the app,
  * if do update , don't forget update also routeConfig at App layer
+ * @deprecated use getters instead
+ * add new getter functions if new pages are added
  */
-//todo change to getters system
 export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.AUTH]: '/auth',
     [AppRoutesLinks.AUTH_REGISTER]: '/auth/register',
@@ -82,3 +83,47 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     // last one
     [AppRoutesLinks.NOT_FOUND_CATCH]: '*',
 };
+
+export const getMainPageRoute = () => '/';
+export const getTeamPageRoute = () => '/team';
+
+export const getAuthPageRoute = () => '/auth';
+export const getLogoutPathRoute = () => '/auth/logout';
+export const getLoginPageRoute = () => '/auth/login';
+export const getRegisterPageRoute = () => '/auth/register';
+export const getFPWPathRoute = () => '/auth/forgottenPassword';
+export const getSessionExpiredPathRoute = () => '/auth/sessionExpired';
+
+/**
+ * returns the news page
+ * @param {string?} id include for the news_one page
+ */
+export const getNewsPageRoute = (id?: string) => (id ? `/news/${id}` : '/news');
+/**
+ * returns the hero page
+ * @param {string?} slug include for the hero_one page
+ */
+export const getHeroPageRoute = (slug?: string) => (slug ? `/heroes/${slug}` : '/heroes');
+export const getHeroDevPageRoute = () => '/hero-development';
+
+export const getComicsPageRoute = () => '/comics';
+export const getGalleryPageRoute = () => '/picture-galleries';
+export const getGameArtPageRoute = () => '/artGame';
+
+export const getMyClanPageRoute = () => '/clans/myclan';
+export const getClanLeaderboardPageRoute = () => '/clans/leaderboard';
+
+/**
+ * returns the clans page
+ * @param {string?} id include for the clan_one page
+ */
+export const getClansPageRoute = (id?: string) => (id ? `/clans/${id}` : '/clans');
+export const getAllClansPageRoute = () => '/clans/all';
+export const getNewClanPageRoute = () => '/clans/addNew';
+
+export const getPrivacyPageRoute = () => '/privacy';
+export const getCookiesPageRoute = () => '/cookies';
+export const getAboutPageRoute = () => '/about';
+export const getComingPageRoute = () => '/coming';
+export const getForumPageRoute = () => '/forum';
+export const get404PageRoute = () => '/404';

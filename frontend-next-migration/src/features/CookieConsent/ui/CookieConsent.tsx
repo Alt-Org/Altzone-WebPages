@@ -1,7 +1,7 @@
 'use client';
 import CookieConsent from 'react-cookie-consent';
 import { toast } from 'react-toastify';
-import { AppRoutesLinks } from '@/shared/appLinks/RoutePaths';
+import { getPrivacyPageRoute, getCookiesPageRoute } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './CookieConsent.module.scss';
 
@@ -45,14 +45,14 @@ export const CookieConsentComponent = () => (
         <span style={{ fontSize: '0.8rem' }}>
             By using our website, you agree to our use of{' '}
             <AppLink
-                to={AppRoutesLinks.PRIVACY}
+                to={getPrivacyPageRoute()}
                 className={cls.applink}
             >
                 Privacy
             </AppLink>{' '}
             &{' '}
             <AppLink
-                to={AppRoutesLinks.COOKIES}
+                to={getCookiesPageRoute()}
                 className={cls.applink}
             >
                 Cookies policies

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NewClanForm } from '@/features/AddNewClan';
 import { envHelper } from '@/shared/const/envHelper';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { getNewClanPageRoute } from '@/shared/appLinks/RoutePaths';
 import cls from './ClanAddSubPage.module.scss';
 
 const ClanAddSubPage = () => (
@@ -18,7 +18,7 @@ const ClanAddSubPage = () => (
             />
             <link
                 rel="canonical"
-                href={`${envHelper.appDomain}/${RoutePaths.clan_add_new}`}
+                href={`${envHelper.appDomain}/${getNewClanPageRoute()}`}
             />
             <meta
                 property="og:type"
@@ -34,7 +34,7 @@ const ClanAddSubPage = () => (
             />
             <meta
                 property="og:url"
-                content={`${envHelper.appDomain}/${RoutePaths.clan_add_new}`}
+                content={`${envHelper.appDomain}/${getNewClanPageRoute()}`}
             />
         </Head>
         <NewClanForm className={cls.NewClanForm} />
