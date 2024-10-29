@@ -33,17 +33,17 @@ export interface NavMenuWithDropdownsProps {
  *             title: 'Heroes',
  *             openByDefault: false,
  *             elements: [
- *                 { elementText: 'Hero 1', id: 'hero1', link: "hero/1" },
- *                 { elementText: 'Hero 2', id: 'hero2', link: "hero/2"  },
+ *                 { elementText: 'Hero 1', id: 'hero1', link: { path:"hero/1", isExternal: false}},
+ *                 { elementText: 'Hero 2', id: 'hero2', link: { path:"hero/2", isExternal: false}},
  *             ],
  *         },
  *         {
  *             title: 'News',
  *             openByDefault: false,
  *             elements: [
- *                 { elementText: 'Piece of news 1', id: 'news1', link: "news/1"},
- *                 { elementText: 'Piece of news 2', id: 'news2', link: "news/2"},
- *                 { elementText: 'Piece of news 3', id: 'news3', link: "news/3" },
+ *                 { elementText: 'Piece of news 1', id: 'news1', link: { path:"news/1", isExternal: true}},
+ *                 { elementText: 'Piece of news 2', id: 'news2',  link: { path:"news/2", isExternal: true}},
+ *                 { elementText: 'Piece of news 3', id: 'news3',  link: { path:"news/3", isExternal: true}},
  *             ],
  *         },
  *     ],

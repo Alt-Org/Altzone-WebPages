@@ -31,9 +31,14 @@
     padding-left: 15px;
     color: var(--primary-color);
 
-    & > div:hover{
+    & > *:hover{
       color: var(--secondary-color);
     }
+
+    &  a:hover{
+      color: var(--secondary-color);
+    }
+
 
   }
 
