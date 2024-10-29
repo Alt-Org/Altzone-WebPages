@@ -31,23 +31,21 @@ interface NavMenuWithDropdownsProps {
         elements: DropDownElementASTextOrLink[];
         openByDefault?: boolean;
     }[];
-    children: ReactNode;
+    openByDefault?: boolean;
+    title: string;
+    className?: string;
 }
 
-export function NavMenuWithDropdowns({ dropdownItems, children }: NavMenuWithDropdownsProps) {
+export function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps) {
+    const { dropdownItems, className, title, openByDefault = false } = props;
+
     return (
-        <div
-            style={{
-                minHeight: '500px',
-                width: '100%',
-                maxWidth: '950px',
-            }}
-        >
+        <div className={className}>
             <DropdownWrapper
-                openByDefault={true}
-                elements={dropdownItems.map((item, index) => (
+                openByDefault={openByDefault}
+                elements={dropdownItems.map((item) => (
                     <NestedDropDown
-                        key={index}
+                        key={item.title}
                         openByDefault={item.openByDefault}
                         elements={item.elements}
                     >
@@ -58,7 +56,7 @@ export function NavMenuWithDropdowns({ dropdownItems, children }: NavMenuWithDro
                 childrenWrapperClassName={cls.topDropDownChildren}
                 contentClassName={cls.topDropDownContent}
             >
-                {children}
+                {title}
             </DropdownWrapper>
         </div>
     );

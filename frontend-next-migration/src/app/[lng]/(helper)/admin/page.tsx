@@ -27,13 +27,17 @@ const Page = () => {
             style={{
                 color: 'black',
                 display: 'flex',
-                alignItems: 'center',
                 justifyContent: 'center',
+                marginTop: '200px',
             }}
         >
-            <div style={{ marginTop: '700px' }} />
-
-            <NavMenuWithDropdowns dropdownItems={dropdownItems}>Forums</NavMenuWithDropdowns>
+            {/*better to use className for such, inline styled used only for testing*/}
+            <div style={{ width: '100%', maxWidth: '950px' }}>
+                <NavMenuWithDropdowns
+                    dropdownItems={dropdownItems}
+                    title={'Forums'}
+                />
+            </div>
 
             {/*<NavigationDropdown menuItems={menuData}/>*/}
         </div>
