@@ -12,9 +12,7 @@ export default function Layout({ children }: Props) {
         <div className={cls.layout}>
             <div className={cls.content}>{children}</div>
             <HorizontalLines />
-            <div className={cls.footer}>
-                <Footer />
-            </div>
+            <Footer className={cls.footer} />
         </div>
     );
 }
