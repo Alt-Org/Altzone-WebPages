@@ -1,6 +1,8 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { LayoutWithSidebars } from '@/shared/ui/Layouts';
+import { Footer } from '@/widgets/Footer';
 
 const Page = () => {
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
@@ -40,20 +42,137 @@ const Page = () => {
     };
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                marginTop: '200px',
-            }}
-        >
-            {/*better to use className for that, inline styled used only for testing*/}
-            <div style={{ width: '100%', maxWidth: '600px' }}>
-                <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-            </div>
+        <>
+            <LayoutWithSidebars
+                // rightSidebar={di}
+                // leftSidebar={<div></div>}
+                leftTopSidebar={
+                    <div style={{ width: '100%', maxWidth: '600px' }}>
+                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+                    </div>
+                }
+                rightBottomSidebar={
+                    <div style={{ width: '100%', maxWidth: '600px' }}>
+                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+                    </div>
+                }
+            >
+                <h1>Main Page Content</h1>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
 
-            {/*<NavigationDropdown menuItems={menuData}/>*/}
-        </div>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+            </LayoutWithSidebars>
+            <Footer />
+        </>
+
+        // <div
+        //     style={{
+        //         display: 'flex',
+        //         justifyContent: 'center',
+        //         marginTop: '200px',
+        //     }}
+        // >
+        //     {/*better to use className for that, inline styled used only for testing*/}
+        //     <div style={{ width: '100%', maxWidth: '600px' }}>
+        //         <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+        //     </div>
+        //
+        //     {/*<NavigationDropdown menuItems={menuData}/>*/}
+        // </div>
     );
 };
 

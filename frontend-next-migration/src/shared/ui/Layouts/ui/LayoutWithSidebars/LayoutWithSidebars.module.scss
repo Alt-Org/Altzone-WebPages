@@ -1,0 +1,32 @@
+$navbar-height: 150px;
+
+.container {
+  //margin: 0 20px;
+  margin-top: $navbar-height;
+  display: flex;
+  gap: 20px;
+
+  //max-width: 1600px!important;
+}
+
+.sidebar {
+  position: sticky;
+  top: $navbar-height;
+  height: calc(100vh - #{$navbar-height});
+  flex-shrink: 0;
+  //width: 344px;
+  flex-basis: 250px;
+  //flex-basis: 344px;
+  overflow-y: auto;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #982a2a;
+}
+
