@@ -1,12 +1,14 @@
 $navbar-height: 150px;
+$touchSize: 1023px;
 
 .container {
-  //margin: 0 20px;
   margin-top: $navbar-height;
   display: flex;
   gap: 20px;
 
-  //max-width: 1600px!important;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
 }
 
 .sidebar {
@@ -14,13 +16,29 @@ $navbar-height: 150px;
   top: $navbar-height;
   height: calc(100vh - #{$navbar-height});
   flex-shrink: 0;
-  //width: 344px;
-  flex-basis: 250px;
-  //flex-basis: 344px;
+  min-width: 220px;
+  flex-basis: 20%;
   overflow-y: auto;
 
-  @media (max-width: 1023px) {
-    display: none;
+  @media (max-width: $touchSize) {
+    display: flex;
+    justify-content: center;
+    position: static;
+    height: auto;
+    min-width: unset;
+    flex-basis: unset;
+  }
+
+  &.leftTopSidebar {
+    @media (max-width: $touchSize) {
+      order: 1;
+    }
+  }
+
+  &.rightBottomSidebar {
+    @media (max-width: $touchSize) {
+      order: 2;
+    }
   }
 }
 
@@ -28,5 +46,14 @@ $navbar-height: 150px;
   flex: 1;
   padding: 20px;
   background-color: #982a2a;
+
+  @media (max-width: $touchSize) {
+    order: 3;
+  }
 }
 
+.hideOnMobile {
+  @media (max-width: $touchSize) {
+    display: none;
+  }
+}

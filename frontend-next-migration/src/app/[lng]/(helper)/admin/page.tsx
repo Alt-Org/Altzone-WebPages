@@ -22,6 +22,21 @@ const Page = () => {
                     { elementText: 'Hero 2', id: 'hero2' },
                 ],
             },
+
+            {
+                title: 'Heroes',
+                openByDefault: true,
+                elements: [
+                    // links can be used as well, just add the "link" to object
+                    {
+                        elementText: 'Hero 1',
+                        id: 'hero1',
+                        link: { path: RoutePaths.HEROES, isExternal: false },
+                    },
+                    { elementText: 'Hero 2', id: 'hero2' },
+                ],
+            },
+
             {
                 title: 'News',
                 openByDefault: false,
@@ -46,16 +61,21 @@ const Page = () => {
             <LayoutWithSidebars
                 // rightSidebar={di}
                 // leftSidebar={<div></div>}
-                leftTopSidebar={
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-                    </div>
-                }
-                rightBottomSidebar={
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-                    </div>
-                }
+                leftTopSidebar={{
+                    component: (
+                        <div style={{ width: '100%', maxWidth: '600px' }}>
+                            <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+                        </div>
+                    ),
+                }}
+                rightBottomSidebar={{
+                    hideOnMobile: true,
+                    component: (
+                        <div style={{ width: '100%', maxWidth: '600px' }}>
+                            <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+                        </div>
+                    ),
+                }}
             >
                 <h1>Main Page Content</h1>
                 <p>
