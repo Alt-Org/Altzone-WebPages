@@ -24,6 +24,7 @@ navbarBuilderV2.addDropDown('community', true, dropdowns.community);
 navbarBuilderV2.addLink('team', RoutePaths.MEMBERS, true);
 navbarBuilderV2.addAuthProfile('profile', dropdowns.profile);
 navbarBuilderV2.addAuthLogin('login', RoutePaths.auth_login);
+export const navbarMenuDesktop2 = navbarBuilderV2.build();
 
 const navbarBuilderV3 = new NavbarBuilder();
 navbarBuilderV3.addLink('news', RoutePaths.NEWS, true);
