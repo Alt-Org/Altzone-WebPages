@@ -13,7 +13,7 @@ export interface NavMenuWithDropdownsProps {
     className?: string;
 }
 
-export function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
+function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
     const { dropdownItems, className, title, openByDefault = false } = props;
 
     return (
@@ -108,3 +108,5 @@ function NestedDropDown(props: NestedDropDownProps) {
  * export default App;
  * ```
  */
+
+export default NavMenuWithDropdowns;
