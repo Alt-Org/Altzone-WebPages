@@ -2,15 +2,21 @@ import { DropDownElement, DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import { ReactNode } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
 
+interface DropdownItem {
+    title: string;
+    elements: DropDownElement[];
+    openByDefault?: boolean;
+}
+
 export interface NavMenuWithDropdownsProps {
-    dropdownItems: {
-        title: string;
-        elements: DropDownElement[];
-        openByDefault?: boolean;
-    }[];
+    dropdownItems: (DropdownItem | ReactNode)[];
     openByDefault?: boolean;
     title: string;
     className?: string;
+}
+
+function isDropdownItem(item: DropdownItem | ReactNode): item is DropdownItem {
+    return typeof item === 'object' && item !== null && 'title' in item && 'elements' in item;
 }
 
 function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
@@ -20,15 +26,19 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
         <div className={className}>
             <DropdownWrapper
                 openByDefault={openByDefault}
-                elements={dropdownItems.map((item) => (
-                    <NestedDropDown
-                        key={item.title}
-                        openByDefault={item.openByDefault}
-                        elements={item.elements}
-                    >
-                        {item.title}
-                    </NestedDropDown>
-                ))}
+                elements={dropdownItems.map((item, index) =>
+                    isDropdownItem(item) ? (
+                        <NestedDropDown
+                            key={item.title}
+                            openByDefault={item.openByDefault}
+                            elements={item.elements}
+                        >
+                            {item.title}
+                        </NestedDropDown>
+                    ) : (
+                        <div key={index}>{item}</div>
+                    ),
+                )}
                 className={cls.topDropDown}
                 childrenWrapperClassName={cls.topDropDownChildren}
                 contentClassName={cls.topDropDownContent}
