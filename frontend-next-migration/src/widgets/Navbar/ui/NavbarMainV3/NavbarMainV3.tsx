@@ -21,7 +21,7 @@ interface NavbarMainProps {
  * The `Provider` component has been updated to manage the collapse state.
  */
 
-export const NavbarMainV2 = memo((props: NavbarMainProps) => {
+export const NavbarMainV3 = memo((props: NavbarMainProps) => {
     const { marginTop, className, navBarType = 'Default' } = props;
 
     const { isMobileSize, isTabletSize } = useSizes();
@@ -56,4 +56,4 @@ export const NavbarMainV2 = memo((props: NavbarMainProps) => {
     );
 });
 
-NavbarMainV2.displayName = 'NavbarMainV2';
+NavbarMainV3.displayName = 'NavbarMainV3';
