@@ -11,6 +11,7 @@ interface SidebarConfig {
 
 interface DesktopLeftSidebarLayoutPropsBase {
     children: ReactNode;
+    className?: string;
 }
 
 type RequireAtLeastOneSidebar<T> =
@@ -23,7 +24,7 @@ type RequireAtLeastOneSidebar<T> =
 type DesktopLeftSidebarLayoutProps = RequireAtLeastOneSidebar<DesktopLeftSidebarLayoutPropsBase>;
 
 const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
-    const { leftTopSidebar, rightBottomSidebar, children } = props;
+    const { leftTopSidebar, rightBottomSidebar, children, className = '' } = props;
 
     const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
     const bothSidebarsVisibleOnDesktop =
@@ -43,7 +44,7 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
 
     return (
         <Container
-            className={cls.container}
+            className={classNames(cls.container, {}, [className])}
             fluid={shouldBeFluid}
         >
             {leftTopSidebar && (

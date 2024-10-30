@@ -45,7 +45,7 @@ $touchSize: 1023px;
 .content {
   flex: 1;
   padding: 20px;
-  background-color: #982a2a;
+  //background-color: #982a2a;
 
   @media (max-width: $touchSize) {
     order: 3;
