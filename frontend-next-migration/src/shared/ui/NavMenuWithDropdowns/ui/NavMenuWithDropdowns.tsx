@@ -2,7 +2,7 @@ import { DropDownElement, DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import { ReactNode } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
 
-interface DropdownItem {
+export interface DropdownItem {
     title: string;
     elements: DropDownElement[];
     openByDefault?: boolean;
