@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
 import cls from './LayoutWithSidebars.module.scss';
 import { Container } from '@/shared/ui/Container';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface SidebarConfig {
     component: ReactNode;
     hideOnMobile?: boolean;
+    hideOnDesktop?: boolean;
 }
 
 interface DesktopLeftSidebarLayoutPropsBase {
@@ -22,7 +24,22 @@ type DesktopLeftSidebarLayoutProps = RequireAtLeastOneSidebar<DesktopLeftSidebar
 
 const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const { leftTopSidebar, rightBottomSidebar, children } = props;
-    const shouldBeFluid = !!leftTopSidebar && !!rightBottomSidebar;
+
+    const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
+    const bothSidebarsVisibleOnDesktop =
+        !leftTopSidebar?.hideOnDesktop && !rightBottomSidebar?.hideOnDesktop;
+
+    const shouldBeFluid = hasBothSidebars && bothSidebarsVisibleOnDesktop;
+
+    const leftTopSidebarMods = {
+        [cls.hideOnMobile]: leftTopSidebar?.hideOnMobile,
+        [cls.hideOnDesktop]: leftTopSidebar?.hideOnDesktop,
+    };
+
+    const rightBottomSidebarMods = {
+        [cls.hideOnMobile]: rightBottomSidebar?.hideOnMobile,
+        [cls.hideOnDesktop]: rightBottomSidebar?.hideOnDesktop,
+    };
 
     return (
         <Container
@@ -31,9 +48,7 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
         >
             {leftTopSidebar && (
                 <aside
-                    className={`${cls.sidebar} ${cls.leftTopSidebar} ${
-                        leftTopSidebar.hideOnMobile ? cls.hideOnMobile : ''
-                    }`}
+                    className={classNames(cls.sidebar, leftTopSidebarMods, [cls.leftTopSidebar])}
                 >
                     {leftTopSidebar.component}
                 </aside>
@@ -48,9 +63,9 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
 
             {rightBottomSidebar && (
                 <aside
-                    className={`${cls.sidebar} ${cls.rightBottomSidebar} ${
-                        rightBottomSidebar.hideOnMobile ? cls.hideOnMobile : ''
-                    }`}
+                    className={classNames(cls.sidebar, rightBottomSidebarMods, [
+                        cls.rightBottomSidebar,
+                    ])}
                 >
                     {rightBottomSidebar.component}
                 </aside>

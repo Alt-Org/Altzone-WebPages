@@ -69,7 +69,8 @@ const Page = () => {
                     ),
                 }}
                 rightBottomSidebar={{
-                    hideOnMobile: true,
+                    // hideOnMobile: true,
+                    // hideOnDesktop: true,
                     component: (
                         <div style={{ width: '100%', maxWidth: '600px' }}>
                             <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
