@@ -20,9 +20,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         children,
         onOpen,
         onClose,
+        openByDefault = false,
     } = props;
 
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(openByDefault);
     const [shouldRender, setShouldRender] = useState<boolean>(false);
     const [animationState, setAnimationState] = useState<'opening' | 'closing' | ''>('');
 
@@ -109,44 +110,52 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                     className={classNames(cls.dropdownContent, modsContent, [contentClassName])}
                     onAnimationEnd={handleAnimationEnd}
                 >
-                    {elements.map((element, index) => (
-                        <div
-                            key={index}
-                            className={
-                                element.isDisabled && element.isDisabled.status ? cls.disabled : ''
-                            }
-                            title={
-                                element.isDisabled?.status === true
-                                    ? element?.isDisabled?.reason
-                                    : ''
-                            }
-                        >
-                            {element.link ? (
-                                <AppLink
-                                    to={element.link.path}
-                                    isExternal={element.link.isExternal}
-                                    className={contentItemClassName}
+                    {elements.map((element, index) => {
+                        if (element && typeof element === 'object' && 'elementText' in element) {
+                            return (
+                                <div
+                                    key={index}
+                                    className={
+                                        element.isDisabled && element.isDisabled.status
+                                            ? cls.disabled
+                                            : ''
+                                    }
+                                    title={
+                                        element.isDisabled?.status ? element.isDisabled.reason : ''
+                                    }
                                 >
-                                    {element.elementText}
-                                    {element.link.isExternal && (
-                                        <FontAwesomeIcon
-                                            className={cls.externalLinkIcon}
-                                            size={'2xs'}
-                                            icon={faExternalLink}
-                                            style={{
-                                                display: 'inline',
-                                                verticalAlign: 'middle',
-                                                marginLeft: '5px',
-                                                color: 'var(--inverted-primary-color)',
-                                            }}
-                                        />
+                                    {element.link ? (
+                                        <AppLink
+                                            to={element.link.path}
+                                            isExternal={element.link.isExternal}
+                                            className={contentItemClassName}
+                                        >
+                                            {element.elementText}
+                                            {element.link.isExternal && (
+                                                <FontAwesomeIcon
+                                                    className={cls.externalLinkIcon}
+                                                    size={'2xs'}
+                                                    icon={faExternalLink}
+                                                    style={{
+                                                        display: 'inline',
+                                                        verticalAlign: 'middle',
+                                                        marginLeft: '5px',
+                                                        color: 'var(--inverted-primary-color)',
+                                                    }}
+                                                />
+                                            )}
+                                        </AppLink>
+                                    ) : (
+                                        <span className={contentItemClassName}>
+                                            {element.elementText}
+                                        </span>
                                     )}
-                                </AppLink>
-                            ) : (
-                                <span className={contentItemClassName}>{element.elementText}</span>
-                            )}
-                        </div>
-                    ))}
+                                </div>
+                            );
+                        } else {
+                            return <div key={index}>{element}</div>;
+                        }
+                    })}
                 </div>
             )}
         </div>

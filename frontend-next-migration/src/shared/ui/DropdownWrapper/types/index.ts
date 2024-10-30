@@ -5,7 +5,7 @@ type Link = {
     path: string;
 };
 
-export type DropDownElement = {
+export type DropDownElementASTextOrLink = {
     id?: string;
     elementText: string;
     link?: Link;
@@ -16,6 +16,8 @@ export type DropDownElement = {
     };
     accessErrorMsg?: string;
 };
+
+export type DropDownElement = DropDownElementASTextOrLink | ReactNode;
 
 export type DropdownWrapperProps = {
     className?: string;
@@ -32,4 +34,5 @@ export type DropdownWrapperProps = {
         status: boolean;
         reason: string;
     };
+    openByDefault?: boolean;
 };

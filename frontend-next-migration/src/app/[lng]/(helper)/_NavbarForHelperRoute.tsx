@@ -17,6 +17,7 @@ function useNavbarConfig() {
 
     type RoutePathKeys = keyof typeof RoutePaths;
 
+    // todo add login/register pages
     const navbarConfig: { [key in RoutePathKeys]?: NavBarType } = {
         [RoutePaths.MAIN]: 'None',
         [RoutePaths.GAME_ART]: 'GameArt',
