@@ -59,7 +59,7 @@
 .clanList td {
     padding: 1px;
     padding-left: 3%;
-    border-bottom: 0.25vh solid #ccc;
+    border-bottom: clamp(1px, 0.25vh, 3px) solid #ccc;
 }
 
 .clanList tr:hover {
