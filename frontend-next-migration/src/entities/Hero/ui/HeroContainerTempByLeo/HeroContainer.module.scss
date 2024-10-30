@@ -13,10 +13,6 @@
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
   max-width: 99vw;
-
-  &.isTablet{
-    min-height: 1200px;
-  }
 }
 
 .heroImgSideWrapper {
@@ -64,7 +60,6 @@
 .container.isMobile {
   max-width: 35rem;
   padding: 0 1.2rem;
-  margin-top: 5rem;
 }
 
 .container.isTablet {
