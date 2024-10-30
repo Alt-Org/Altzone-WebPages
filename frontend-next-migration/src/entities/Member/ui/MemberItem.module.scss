@@ -14,9 +14,13 @@
   }
 
   .taskText {
+    font-weight: lighter;
+    font-size: 80%;
     text-align: left;
     flex: 2;
     min-width: 0;
+    display: flex;
+    align-items: center;
   }
 
   .iconContainer {
