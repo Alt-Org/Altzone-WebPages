@@ -25,12 +25,6 @@
     transition: filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
-.Container {
-    column-count: 2;
-    margin: auto;
-    width: 95%;
-}
-
 .Item {
     cursor: pointer;
     width: 100%;
@@ -49,31 +43,5 @@
     &:hover,
     &:active {
         transform: scale(1.1);
-    }
-}
-
-@media screen and (min-width: 500px) {
-    .Container {
-        column-count: 2;
-    }
-}
-
-@media screen and (min-width: 700px) {
-    .Container {
-        column-count: 3;
-    }
-}
-
-@media screen and (min-width: 1000px) {
-    .Container {
-        column-count: 4;
-        width: 85%;
-    }
-}
-
-@media screen and (min-width: 1700px) {
-    .Container {
-        column-count: 5;
-        width: 80%;
     }
 }
