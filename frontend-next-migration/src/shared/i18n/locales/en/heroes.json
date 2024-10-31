@@ -39,10 +39,10 @@
     "description": "RETROFLECTOR is ...",
     "heroes": {
       "hannuHodari": {
-        "title": "Ahmat",
-        "alt": "Ahmat image",
-        "altGif": "Ahmat gif",
-        "description": "Ahmat's fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
+        "title": "Glutton",
+        "alt": "Glutton image",
+        "altGif": "Glutton gif",
+        "description": "Glutton fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
       },
 
       "pirate": {
