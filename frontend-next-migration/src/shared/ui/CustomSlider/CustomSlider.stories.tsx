@@ -39,32 +39,42 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         children: [
-            <NewsCard
-                bodyLength={3000}
+            <div
+                style={{ width: '280%' }}
                 key={1}
-                title={'News 1'}
-                bodyPreview={'Body 1'}
-                date={new Date('2024-01-01')}
-                id={'1'}
-            />,
-
-            <NewsCard
-                bodyLength={3000}
+            >
+                <NewsCard
+                    bodyLength={3000}
+                    title={'News 1'}
+                    bodyPreview={'Body 1'}
+                    date={new Date('2024-01-01')}
+                    id={'1'}
+                />
+            </div>,
+            <div
+                style={{ width: '280%' }}
                 key={2}
-                title={'News 2'}
-                bodyPreview={'Body 2'}
-                date={new Date('2024-01-02')}
-                id={'2'}
-            />,
-
-            <NewsCard
-                bodyLength={3000}
+            >
+                <NewsCard
+                    bodyLength={3000}
+                    title={'News 2'}
+                    bodyPreview={'Body 2'}
+                    date={new Date('2024-01-02')}
+                    id={'2'}
+                />
+            </div>,
+            <div
+                style={{ width: '' }}
                 key={3}
-                title={'News 3'}
-                bodyPreview={'Body 3'}
-                date={new Date('2024-01-03')}
-                id={'3'}
-            />,
+            >
+                <NewsCard
+                    bodyLength={3000}
+                    title={'News 3'}
+                    bodyPreview={'Body 3'}
+                    date={new Date('2024-01-03')}
+                    id={'3'}
+                />
+            </div>,
         ],
     },
 };

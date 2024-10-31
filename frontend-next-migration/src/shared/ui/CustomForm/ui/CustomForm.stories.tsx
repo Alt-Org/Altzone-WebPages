@@ -41,7 +41,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Example: Story = {
     args: {
         children: (
             <>
@@ -61,9 +61,30 @@ export const Default: Story = {
         ),
     },
 };
-
+export const FormHeader: Story = {
+    args: {
+        children: <Header>Form Title</Header>,
+    },
+};
 export const FormButton: Story = {
     args: {
         children: <Button>Submit</Button>,
+    },
+};
+
+export const FormInputField: Story = {
+    args: {
+        children: (
+            <InputField
+                label="Email"
+                inputProps={{ type: 'email', placeholder: 'Enter your email' }}
+            />
+        ),
+    },
+};
+
+export const FormCheckbox: Story = {
+    args: {
+        children: <Checkbox label="I agree to the terms" />,
     },
 };

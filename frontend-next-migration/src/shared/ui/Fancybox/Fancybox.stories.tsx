@@ -32,7 +32,7 @@ const meta = {
         docs: {
             description: {
                 component:
-                    '`Fancybox` component using @fancyapps/ui library. Component is used to create a lightbox gallery.',
+                    '`Fancybox` component using @fancyapps/ui library. Component is used to create a lightbox gallery. Component gets children as an array of elements that will be displayed in the gallery.',
             },
         },
     },
@@ -47,7 +47,7 @@ export const Default: Story = {
             <a
                 key={1}
                 data-fancybox="gallery"
-                href="image1.jpg"
+                href="https://altzone.fi/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhannu-hodari.755680ec.png&w=1920&q=75"
             >
                 <img
                     src="thumbnail1.jpg"
@@ -57,7 +57,7 @@ export const Default: Story = {
             <a
                 key={2}
                 data-fancybox="gallery"
-                href="image2.jpg"
+                href="https://altzone.fi/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgraffitti-gaya.0b1229e0.png&w=1080&q=100"
             >
                 <img
                     src="thumbnail2.jpg"

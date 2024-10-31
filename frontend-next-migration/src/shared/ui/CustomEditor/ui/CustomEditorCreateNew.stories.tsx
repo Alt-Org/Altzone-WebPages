@@ -37,15 +37,3 @@ type Story = StoryObj<typeof meta>;
 
 // Default Story
 export const Default: Story = {};
-
-// Story with a mock createNew function for demonstration
-export const WithMockCreateNew: Story = {
-    args: {
-        createNew: (data) => {
-            // Simulating a creation action without actually creating anything
-            //console.log('Mock creation of new entity:', data);
-            alert(`New entity (mocked):\nTitle: ${data.title}\nSlug: ${data.slug}`);
-            return Promise.resolve();
-        },
-    },
-};

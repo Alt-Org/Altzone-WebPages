@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Modal } from './Modal';
-import { useState } from 'react';
 
 const meta = {
     title: 'shared/ui/Modal',
@@ -39,7 +38,8 @@ const meta = {
         layout: 'centered',
         docs: {
             description: {
-                component: 'Modal component that uses ReactModal under the hood.',
+                component:
+                    '`Modal` component that uses ReactModal under the hood. In the documentation, "esc" button does not work. After clicking `isOpen` you need to reload the page to get out of modal.',
             },
         },
     },

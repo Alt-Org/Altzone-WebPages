@@ -46,7 +46,7 @@ const Template = (args: any) => {
 
     return (
         <>
-            <div style={{ display: 'flex', height: '100vh' }}>
+            <div style={{ display: 'flex', height: '50vh' }}>
                 <NavbarSide
                     {...args}
                     activeSection={activeSection}
@@ -57,25 +57,25 @@ const Template = (args: any) => {
             {/* Mock sections to scroll through */}
             <div
                 id="section1"
-                style={{ height: '100vh', border: '1px solid black', padding: '1rem' }}
+                style={{ height: '30vh', border: '1px solid black', padding: '1rem' }}
             >
                 Section 1 Content
             </div>
             <div
                 id="section2"
-                style={{ height: '100vh', border: '1px solid black', padding: '1rem' }}
+                style={{ height: '30vh', border: '1px solid black', padding: '1rem' }}
             >
                 Section 2 Content
             </div>
             <div
                 id="section3"
-                style={{ height: '100vh', border: '1px solid black', padding: '1rem' }}
+                style={{ height: '30vh', border: '1px solid black', padding: '1rem' }}
             >
                 Section 3 Content
             </div>
             <div
                 id="section4"
-                style={{ height: '100vh', border: '1px solid black', padding: '1rem' }}
+                style={{ height: '30vh', border: '1px solid black', padding: '1rem' }}
             >
                 Section 4 Content
             </div>
