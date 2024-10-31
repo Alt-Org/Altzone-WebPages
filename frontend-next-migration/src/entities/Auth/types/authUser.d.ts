@@ -29,7 +29,6 @@ type AccessTokenInfo = {
 };
 
 export type AuthUserSchema = {
-    profile?: IProfile<IPlayer>;
     accessTokenInfo?: AccessTokenInfo;
     isSessionExpired: boolean;
 };
