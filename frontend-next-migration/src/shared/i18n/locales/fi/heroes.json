@@ -70,7 +70,7 @@
 
   "INTELLECTUALIZER": {
     "name": "ÄLYLLISTÄJÄT",
-    "description": "ÄLYLLISTÄJÄT   on ...",
+    "description": "ÄLYLLISTÄJÄT  on ...",
     "heroes": {
       "Researcher": {
         "title": "Tutkija ",
@@ -79,7 +79,21 @@
         "description": "Albert Älypää suojautuu tunteilta tietokirjalla, joka muodostaa pelikentälle tunteiden kulkurataa kuvaavia kaavioita. \nAlbertin jatkuvat kaaviot saattavat kuitenkin toisinaan ärsyttää hänen joukkuetovereitaan. "
       }
     }
+  },
+
+  "CONFLUENT": {
+    "name": "SULAUTUJAT",
+    "description": "SULAUTUJAT on ...",
+    "heroes": {
+      "SoulSisters": {
+        "title": "Sielunsiskot",
+        "alt": "Sielunsiskot kuva",
+        "altGif": "Sielunsiskot animation gif",
+        "description": "Tiimityössä kahdesta tulee yksi, voittamaton tiimi. Tunteiden lähestyessä he puhaltavat suuren purkkapallon suojakseen ja\n hidastavat tapahtumien kulkua imulla, josta on vaikea päästä irti."
+      }
+    }
   }
+
 
 
 }

@@ -79,7 +79,22 @@
         "description": "Albert Älypää protects himself from emotions with a non-fiction book that creates diagrams of the emotional trajectory on the playing field. \nBut Albert's constant graphs can sometimes annoy his teammates."
       }
     }
+  },
+
+  "CONFLUENT": {
+    "name": "CONFLUENT",
+    "description": "CONFLUENT  is ...",
+    "heroes": {
+      "SoulSisters": {
+        "title": "Soul-sisters",
+        "alt": "Soul-sisters main image",
+        "altGif": "Soul-sisters animation gif",
+        "description": "In Girl team, the two become one, an invincible team. As emotions approach, they blow up a large bubblegum bubble to protect themselves and\n slowing down the course of events with a suction that is hard to release. "
+      }
+    }
   }
+
+
 
 }
 

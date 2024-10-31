@@ -6,10 +6,13 @@ import pirate from '@/shared/assets/images/heros/pirate/pirate.png';
 import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
+import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.png';
+import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
+import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
@@ -134,16 +137,24 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('INTELLECTUALIZER.heroes.Researcher.title'),
                     description: t('INTELLECTUALIZER.heroes.Researcher.description'),
                 },
+            ],
+        },
 
+        [HeroGroup.CONFLUENT]: {
+            name: t('CONFLUENT.name'),
+            description: t('CONFLUENT.description'),
+            bgColour: 'rgba(145, 4, 148, 0.5)',
+            label: purpleBg,
+            heroes: [
                 {
-                    id: 31231235,
-                    srcImg: einstein,
-                    srcGif: einsteinGif,
-                    alt: t('INTELLECTUALIZER.heroes.Researcher.alt'),
-                    altGif: t('INTELLECTUALIZER.heroes.Researcher.altGif'),
-                    slug: HeroSlug.RESEARCHER,
-                    title: t('INTELLECTUALIZER.heroes.Researcher.title'),
-                    description: t('INTELLECTUALIZER.heroes.Researcher.description'),
+                    id: 52231232,
+                    srcImg: purpleGirls,
+                    srcGif: purpleGirlsGif,
+                    alt: t('CONFLUENT.heroes.SoulSisters.alt'),
+                    altGif: t('CONFLUENT.heroes.SoulSisters.altGif'),
+                    slug: HeroSlug.SOUL_SISTERS,
+                    title: t('CONFLUENT.heroes.SoulSisters.title'),
+                    description: t('CONFLUENT.heroes.SoulSisters.description'),
                 },
             ],
         },

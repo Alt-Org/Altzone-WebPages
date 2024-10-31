@@ -8,7 +8,7 @@ export enum HeroGroup {
     PROJECTOR = 'PROJECTOR',
     // // PROFLECTOR = "PROFLECTOR",
     INTELLECTUALIZER = 'INTELLECTUALIZER',
-    // CONFLUENT = "CONFLUENT"
+    CONFLUENT = 'CONFLUENT',
 }
 
 export enum HeroSlug {
@@ -16,6 +16,7 @@ export enum HeroSlug {
     GRAFFITI_ARTIST = 'graffiti-artist',
     RESEARCHER = 'researcher',
     PIRATE = 'pirate',
+    SOUL_SISTERS = 'soul-sisters',
 }
 
 export interface Hero {
