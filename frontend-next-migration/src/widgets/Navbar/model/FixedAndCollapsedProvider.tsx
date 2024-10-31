@@ -8,6 +8,13 @@ const getInitialFixedState = (): boolean => {
     }
     return false;
 };
+const getInitialCollapsedState = (): boolean => {
+    if (typeof window !== 'undefined') {
+        const storedValue = localStorage.getItem(LS_KEYS.IsNavBarCollapsed);
+        return storedValue === 'true';
+    }
+    return false;
+};
 
 interface FixedAndCollapsedContextType {
     isFixed: boolean;
@@ -19,7 +26,7 @@ interface FixedAndCollapsedContextType {
 const FixedAndCollapsedContext = createContext<FixedAndCollapsedContextType>({
     isFixed: getInitialFixedState(),
     toggleFixed: () => {},
-    isCollapsed: false,
+    isCollapsed: getInitialCollapsedState(),
     toggleCollapsed: () => {},
 });
 /**
@@ -30,7 +37,7 @@ const FixedAndCollapsedContext = createContext<FixedAndCollapsedContextType>({
  */
 export const FixedAndCollapsedProvider = ({ children }: { children: ReactNode }) => {
     const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState);
-    const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+    const [isCollapsed, setIsCollapsed] = useState<boolean>(getInitialCollapsedState);
 
     const toggleFixed = () => {
         const newValue = !isFixed;
@@ -41,6 +48,7 @@ export const FixedAndCollapsedProvider = ({ children }: { children: ReactNode })
     const toggleCollapsed = () => {
         const newValue = !isCollapsed;
         setIsCollapsed(newValue);
+        localStorage.setItem(LS_KEYS.IsNavBarCollapsed, newValue.toString());
     };
 
     return (
