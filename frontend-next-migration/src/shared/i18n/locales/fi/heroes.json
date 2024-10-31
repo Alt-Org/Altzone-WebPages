@@ -40,10 +40,10 @@
     "description": "TORJUJAT on ...",
     "heroes": {
       "hannuHodari": {
-        "title": "Hannu Hodari",
-        "alt": "Olen Hannu Hodari",
+        "title": "Ahmatti",
+        "alt": "Olen Ahmatti",
         "altGif": "",
-        "description": "Hannu Hodari torjuu tunteita keskittymällä syömiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa. "
+        "description": "Ahmatti torjuu tunteita keskittymällä syömiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa. "
       },
       "pirate": {
         "title": "Pullo-Piraatti",

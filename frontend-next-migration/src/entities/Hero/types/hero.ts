@@ -12,7 +12,7 @@ export enum HeroGroup {
 }
 
 export enum HeroSlug {
-    HANNU_HODARI = 'hannu-hodari',
+    HANNU_HODARI = 'ahmat',
     GRAFFITI_ARTIST = 'graffiti-artist',
     RESEARCHER = 'researcher',
     PIRATE = 'pirate',
