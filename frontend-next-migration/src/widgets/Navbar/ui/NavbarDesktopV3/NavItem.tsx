@@ -40,22 +40,19 @@ const NavItem = memo((props: NavItemProps) => {
     if (itemType === 'navDropDown') {
         const canUserSeeOwnClan = checkPermissionFor('clan:seeOwn').isGranted;
         const localizedElements = item.elements
-            .filter(
-                (element) =>
-                    element !== null &&
-                    element !== undefined &&
-                    typeof element === 'object' &&
-                    'elementText' in element,
-            )
             .map((element) => {
+                // @ts-ignore todo add guard
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
                 return {
+                    // @ts-ignore todo add guard
                     ...element,
+                    // @ts-ignore todo add guard
                     elementText: t(`${element.elementText}`),
                 };
-            });
+            })
+            .filter((element) => element !== null);
         return (
             <li
                 key={item.name}
