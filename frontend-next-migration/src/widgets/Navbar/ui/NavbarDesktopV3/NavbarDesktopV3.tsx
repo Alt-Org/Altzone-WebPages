@@ -106,11 +106,10 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
                         );
                     })}
 
-                    <li
-                        className={hidden + ' ' + disabled}
-                        key={'switcher key'}
-                    >
-                        <LangSwitcher className={cls.langSwitcher} />
+                    <li key={'switcher key'}>
+                        <LangSwitcher
+                            className={cls.langSwitcher + ' ' + hidden + ' ' + disabled}
+                        />
                     </li>
 
                     <li

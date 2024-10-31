@@ -152,6 +152,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
+  transition: opacity .3s;
 }
 
 .authButton {
@@ -162,6 +163,7 @@
   font-size: var(--font-size-m) !important;
   text-align: center;
   white-space:nowrap;
+  transition: opacity .3s;
   padding: 4px;
 
   & > * {
