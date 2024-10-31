@@ -7,6 +7,7 @@ import { authUserActions, IUserLoginDto, useLoginMutation } from '@/entities/Aut
 import { getJwtExpTimeStamp } from '@/shared/lib/getJwtExpTimeStamp';
 import { useClientTranslation } from '@/shared/i18n';
 import { ValidationLoginSchema } from '../validations';
+import { profileActions } from '@/entities/Profile/model/profileSlice/profileSlice';
 
 type Props = {
     onSuccessLogin: () => void;
@@ -40,7 +41,7 @@ export const useLoginForm = ({ onSuccessLogin }: Props) => {
                 }),
             );
             dispatch(
-                authUserActions.setProfile({
+                profileActions.setProfile({
                     username: data.username,
                     Player: data.Player,
                     _id: data._id,
