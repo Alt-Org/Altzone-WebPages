@@ -45,19 +45,18 @@ export const Default: Story = {
     args: {
         className: 'customClass',
         theme: CardTheme.PRIMARY,
-        children: (
-            <>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Body>Card Body</Card.Body>
-                <Card.Date>2023-10-01</Card.Date>
-                <Card.ReadMoreLink
-                    path="/details"
-                    withScalableLink
-                >
-                    Read More
-                </Card.ReadMoreLink>
-            </>
-        ),
+        children: [
+            <Card.Title key={1}>Card Title</Card.Title>,
+            <Card.Body key={2}>Card Body</Card.Body>,
+            <Card.Date key={3}>2023-10-01</Card.Date>,
+            <Card.ReadMoreLink
+                key={4}
+                path="/details"
+                withScalableLink
+            >
+                Read More
+            </Card.ReadMoreLink>,
+        ],
     },
 };
 
