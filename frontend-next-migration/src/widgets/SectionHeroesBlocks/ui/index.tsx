@@ -33,7 +33,7 @@ function Main(props: Props) {
 
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
-    const heroesGroups2 = heroManager.getHeroesByGroupsAsArray();
+    const heroesGroups2 = heroManager.getGroupsWithHeroesAsArray();
 
     return (
         <section className={cls.Section}>

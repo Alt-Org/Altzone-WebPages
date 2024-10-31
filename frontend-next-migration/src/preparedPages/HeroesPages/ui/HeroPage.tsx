@@ -34,8 +34,8 @@ const HeroPage = (props: Props) => {
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
 
-    const allHeroes = heroManager.getHeroesByGroupsAsArray();
-    const dropdownItems: DropdownItem[] = allHeroes.map((group) => ({
+    const allHeroGroups = heroManager.getGroupsWithHeroesAsArray();
+    const dropdownItems: DropdownItem[] = allHeroGroups.map((group) => ({
         title: group.name,
         openByDefault: false,
         elements: group.heroes.map((hero) => ({
@@ -46,8 +46,8 @@ const HeroPage = (props: Props) => {
     }));
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
-        title: 'Heroes',
-        openByDefault: true,
+        title: t('section-title'),
+        openByDefault: false,
         dropdownItems: dropdownItems,
     };
 
