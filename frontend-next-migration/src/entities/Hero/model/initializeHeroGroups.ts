@@ -47,28 +47,6 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.PIRATE,
                     description: t('RETROFLECTOR.heroes.pirate.description'),
                 },
-
-                {
-                    id: 1222,
-                    srcImg: pirate,
-                    srcGif: pirateGif,
-                    alt: t('RETROFLECTOR.heroes.pirate.alt'),
-                    altGif: t('RETROFLECTOR.heroes.pirate.altGif'),
-                    title: t('RETROFLECTOR.heroes.pirate.title'),
-                    slug: HeroSlug.PIRATE,
-                    description: t('RETROFLECTOR.heroes.pirate.description'),
-                },
-
-                {
-                    id: 12222,
-                    srcImg: pirate,
-                    srcGif: pirateGif,
-                    alt: t('RETROFLECTOR.heroes.pirate.alt'),
-                    altGif: t('RETROFLECTOR.heroes.pirate.altGif'),
-                    title: t('RETROFLECTOR.heroes.pirate.title'),
-                    slug: HeroSlug.PIRATE,
-                    description: t('RETROFLECTOR.heroes.pirate.description'),
-                },
             ],
         },
 
@@ -80,28 +58,6 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 4,
-                    srcImg: graffittiGaya,
-                    srcGif: graffittiGayaGif,
-                    alt: t('PROJECTOR.heroes.GraffitiArtist.alt'),
-                    altGif: t('PROJECTOR.heroes.GraffitiArtist.altGif'),
-                    slug: HeroSlug.GRAFFITI_ARTIST,
-                    title: t('PROJECTOR.heroes.GraffitiArtist.title'),
-                    description: t('PROJECTOR.heroes.GraffitiArtist.description'),
-                },
-
-                {
-                    id: 4222,
-                    srcImg: graffittiGaya,
-                    srcGif: graffittiGayaGif,
-                    alt: t('PROJECTOR.heroes.GraffitiArtist.alt'),
-                    altGif: t('PROJECTOR.heroes.GraffitiArtist.altGif'),
-                    slug: HeroSlug.GRAFFITI_ARTIST,
-                    title: t('PROJECTOR.heroes.GraffitiArtist.title'),
-                    description: t('PROJECTOR.heroes.GraffitiArtist.description'),
-                },
-
-                {
-                    id: 42222,
                     srcImg: graffittiGaya,
                     srcGif: graffittiGayaGif,
                     alt: t('PROJECTOR.heroes.GraffitiArtist.alt'),
