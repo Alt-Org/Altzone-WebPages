@@ -2,7 +2,10 @@ import { ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Container.module.scss';
 
+type BlockElements = 'div' | 'section' | 'article' | 'header' | 'footer' | 'aside' | 'main' | 'nav';
+
 interface ContainerProps {
+    as?: BlockElements;
     className?: string;
     fluid?: boolean;
     children: ReactNode;
@@ -10,23 +13,24 @@ interface ContainerProps {
 
 /**
  * `Container` is a flexible wrapper component that conditionally applies classes based on its props.
- * @param {string} className - Additional classes to apply to the container.
- * @param fluid
- * @param children
- * @example ```
- <Container className="custom-class" fluid>
- This is a fluid container with a custom class.
- </Container>
-
- <Container>
- This is a default container.
- </Container>
- ```
+ * @example
+ * ```tsx
+ * <Container className="custom-class" fluid>
+ *   This is a fluid container with a custom class.
+ * </Container>
+ *
+ * <Container as="section">
+ *   This is a container rendered as a <section> tag.
+ * </Container>
+ * ```
+ * @param props
  */
-export const Container = ({ className = '', fluid = false, children }: ContainerProps) => {
+export const Container = (props: ContainerProps) => {
+    const { className = '', fluid = false, children, as: Component = 'div' } = props;
     const mods: Record<string, boolean> = {
         [cls.fluid]: fluid,
     } as Record<string, boolean>;
-
-    return <div className={classNames(cls.Container, mods, [className])}>{children}</div>;
+    return (
+        <Component className={classNames(cls.Container, mods, [className])}>{children}</Component>
+    );
 };
