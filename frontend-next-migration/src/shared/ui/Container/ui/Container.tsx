@@ -13,6 +13,18 @@ interface ContainerProps {
 
 /**
  * `Container` is a flexible wrapper component that conditionally applies classes based on its props.
+
+ * @param props
+ */
+
+/**
+ * A functional component that renders a container element with customizable properties.
+ *
+ * @param {ContainerProps} props - The properties passed to the component.
+ * @param {string} [props.className] - An optional additional class name to apply to the container.
+ * @param {boolean} [props.fluid] - A flag indicating if the container should be fluid (full-width).
+ * @param {React.ReactNode} props.children - The content to render inside the container.
+ * @param {BlockElements} [props.as='div'] - The HTML tag or React component to render as the container element.
  * @example
  * ```tsx
  * <Container className="custom-class" fluid>
@@ -23,7 +35,7 @@ interface ContainerProps {
  *   This is a container rendered as a <section> tag.
  * </Container>
  * ```
- * @param props
+
  */
 export const Container = (props: ContainerProps) => {
     const { className = '', fluid = false, children, as: Component = 'div' } = props;
