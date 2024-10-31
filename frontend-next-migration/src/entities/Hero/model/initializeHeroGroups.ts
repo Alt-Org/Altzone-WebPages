@@ -6,7 +6,7 @@ import pirate from '@/shared/assets/images/heros/pirate/pirate.png';
 import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
-import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.png';
+import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
 import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
