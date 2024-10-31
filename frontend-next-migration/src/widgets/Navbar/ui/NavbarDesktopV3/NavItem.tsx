@@ -55,8 +55,7 @@ const NavItem = memo((props: NavItemProps) => {
                     ...element,
                     elementText: t(`${element.elementText}`),
                 };
-            })
-            .filter((element) => element !== null);
+            });
         return (
             <li
                 key={item.name}
