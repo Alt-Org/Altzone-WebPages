@@ -20,10 +20,8 @@ export {
     selectIsSessionExpired,
     selectAccessTokenInfo,
     selectAuthUserState,
-    selectProfile,
     authUserActions,
     selectIsAuthenticated,
-    selectClanId,
 } from './model/authUserSlice/authUserSlice';
 
 export { useUserPermissions } from './model/~deprecated/useUserPermissions';
