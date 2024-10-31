@@ -7,6 +7,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
 import HeroesBlocks from './heroesBlocks/HeroesBlocks';
 import cls from './main.module.scss';
+import { Container } from '@/shared/ui/Container';
 
 const sameBg = undefined;
 
@@ -36,36 +37,38 @@ function Main(props: Props) {
     const heroesGroups2 = heroManager.getGroupsWithHeroesAsArray();
 
     return (
-        <section className={cls.Section}>
-            <h2 className={cls.Header}>{title}</h2>
+        <Container fluid={true}>
+            <section className={cls.Section}>
+                <h2 className={cls.Header}>{title}</h2>
 
-            {heroesGroups2.map((group) => (
-                <HeroesBlocks
-                    key={group.name}
-                    heroes={group.heroes.slice(0, maxHeroesPerGroup)}
-                    backgroundImageSrc={sameBg}
-                    label={group.label}
-                    labelText={group.name}
-                    groupBgColor={group.bgColour}
-                />
-            ))}
-            {seeMoreLink && (
-                <div
-                    ref={ref}
-                    className={cls.buttonContainer}
-                >
-                    <Button
-                        withScalableLink={true}
-                        theme={ButtonTheme.Graffiti}
-                        className={classNames(cls.SeeMore, mods)}
-                        size={ButtonSize.XL}
+                {heroesGroups2.map((group) => (
+                    <HeroesBlocks
+                        key={group.name}
+                        heroes={group.heroes.slice(0, maxHeroesPerGroup)}
+                        backgroundImageSrc={sameBg}
+                        label={group.label}
+                        labelText={group.name}
+                        groupBgColor={group.bgColour}
+                    />
+                ))}
+                {seeMoreLink && (
+                    <div
                         ref={ref}
+                        className={cls.buttonContainer}
                     >
-                        <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
-                    </Button>
-                </div>
-            )}
-        </section>
+                        <Button
+                            withScalableLink={true}
+                            theme={ButtonTheme.Graffiti}
+                            className={classNames(cls.SeeMore, mods)}
+                            size={ButtonSize.XL}
+                            ref={ref}
+                        >
+                            <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
+                        </Button>
+                    </div>
+                )}
+            </section>
+        </Container>
     );
 }
 
