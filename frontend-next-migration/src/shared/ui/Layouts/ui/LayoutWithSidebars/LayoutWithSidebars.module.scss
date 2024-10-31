@@ -1,0 +1,65 @@
+$navbar-height: 150px;
+$touchSize: 1023px;
+
+.container {
+  margin-top: $navbar-height;
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  position: sticky;
+  top: $navbar-height;
+  height: calc(100vh - #{$navbar-height});
+  flex-shrink: 0;
+  min-width: 220px;
+  flex-basis: 20%;
+  overflow-y: auto;
+
+  @media (max-width: $touchSize) {
+    display: flex;
+    justify-content: center;
+    position: static;
+    height: auto;
+    min-width: unset;
+    flex-basis: unset;
+  }
+
+  &.leftTopSidebar {
+    @media (max-width: $touchSize) {
+      order: 1;
+    }
+  }
+
+  &.rightBottomSidebar {
+    @media (max-width: $touchSize) {
+      order: 2;
+    }
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  //background-color: #982a2a;
+
+  @media (max-width: $touchSize) {
+    order: 3;
+  }
+}
+
+.hideOnMobile {
+  @media (max-width: $touchSize) {
+    display: none;
+  }
+}
+
+.hideOnDesktop {
+  @media (min-width: calc($touchSize + 1px)) {
+    display: none;
+  }
+}

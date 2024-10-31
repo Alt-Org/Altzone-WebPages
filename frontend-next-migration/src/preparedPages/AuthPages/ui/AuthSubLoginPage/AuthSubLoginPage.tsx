@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { LoginForm } from '@/features/AuthByUsername';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { getRouteMainPage, getRouteRegisterPage } from '@/shared/appLinks/RoutePaths';
 
 const AuthSubLoginPage = () => {
     const router = useRouter();
@@ -26,7 +26,7 @@ const AuthSubLoginPage = () => {
     }, [height]);
 
     const handleSuccessLogin = () => {
-        router.push(RoutePaths.MAIN);
+        router.push(getRouteMainPage());
     };
 
     return (
@@ -41,7 +41,7 @@ const AuthSubLoginPage = () => {
         >
             <LoginForm
                 toForgottenPwPage={''}
-                toRegisterPage={RoutePaths.auth_register}
+                toRegisterPage={getRouteRegisterPage()}
                 onSuccessLogin={handleSuccessLogin}
             />
         </main>

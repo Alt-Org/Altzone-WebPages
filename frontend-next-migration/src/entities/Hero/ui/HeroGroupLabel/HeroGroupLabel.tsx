@@ -1,5 +1,5 @@
-import Image, { StaticImageData } from 'next/image';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { StaticImageData } from 'next/image';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './HeroGroupLabel.module.scss';
 
 type HeroGroupLabelProps = Readonly<{
@@ -10,22 +10,17 @@ type HeroGroupLabelProps = Readonly<{
 }>;
 
 export default function HeroGroupLabel(props: HeroGroupLabelProps) {
-    const { className, label, labelText, labelTextClassName } = props;
-
+    const { className = '', label, labelText, labelTextClassName = '' } = props;
+    const backgroundImage =
+        label && typeof label === 'object' && label.src
+            ? `url(${label.src})`
+            : 'url(/path/to/default/image.png)';
     return (
-        <div className={className}>
-            <div className={classNames(cls.label)}>
-                <Image
-                    className={cls['bg-image']}
-                    alt="hero label bg"
-                    src={label}
-                    priority
-                    fill
-                />
-                <h3 className={classNames(cls.labelText, {}, [labelTextClassName as string])}>
-                    {labelText}
-                </h3>
-            </div>
+        <div
+            style={{ backgroundImage }}
+            className={classNames(cls.container, {}, [className])}
+        >
+            <h3 className={classNames(cls.labelText, {}, [labelTextClassName])}>{labelText}</h3>
         </div>
     );
 }

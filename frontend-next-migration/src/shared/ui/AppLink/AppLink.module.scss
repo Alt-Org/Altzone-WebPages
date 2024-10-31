@@ -4,6 +4,11 @@
   margin: 0;
 
   text-decoration: none;
+
+  &:hover{
+    color: var(--secondary-color)
+  }
+
 }
 
 .primary {

@@ -13,10 +13,6 @@
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
   max-width: 99vw;
-
-  &.isTablet{
-    min-height: 1200px;
-  }
 }
 
 .heroImgSideWrapper {
@@ -64,7 +60,6 @@
 .container.isMobile {
   max-width: 35rem;
   padding: 0 1.2rem;
-  margin-top: 5rem;
 }
 
 .container.isTablet {
@@ -140,14 +135,37 @@
 
 .heroGroup{
   position: absolute;
-  bottom: -50px;
+  bottom: -110px;
   left: 0;
   right: 0;
+  //top: 20px;
+
+  //bottom: 0px;
+  //top: -90px;
+  //left: 0px;
+  //right: 0;
+
   z-index: 1;
   display: flex;
   justify-content: center;
 }
 
 .heroGroupLabel{
+  position: relative;
   z-index: 10;
+  //width: 70%!important;
+
+  width: 300px;
+
+  //@media(max-width: 700px){
+  //  width: 60% !important;
+  //}
+
+}
+
+.heroGroupLabelText{
+  font-size: 20px!important;
+  @media(min-width: 700px){
+    font-size: 1.5rem
+  }
 }

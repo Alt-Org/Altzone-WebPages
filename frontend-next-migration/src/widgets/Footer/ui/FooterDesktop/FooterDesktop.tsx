@@ -5,18 +5,20 @@ import { Rights } from '../Rights/Rights';
 import { SocialSection } from '../SocialSection/SocialSection';
 import { Title } from '../Title/Title';
 import cls from './FooterDesktop.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface Props {
     title: string;
     socialIconLinks: SocialIconLink[];
     texts: Texts;
+    className?: string;
 }
 
 const FooterDesktopComponent = memo((props: Props) => {
-    const { title, socialIconLinks, texts } = props;
+    const { title, socialIconLinks, texts, className = '' } = props;
 
     return (
-        <footer className={cls.Footer}>
+        <footer className={classNames(cls.Footer, {}, [className])}>
             <Container>
                 <Title
                     className={cls.title}

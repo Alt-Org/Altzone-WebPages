@@ -1,32 +1,29 @@
 {
-  "PlayOnline" : "PELAA NYT!",
+    "PlayOnline": "PELAA NYT!",
 
-  "head-title": "AltZone",
-  "head-description": "Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin",
-  "head-keywords": "altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään",
-  "og-title": "AltZone - Aloita pelisi täältä",
-  "og-description": "Altzone tarjoaa pelaajille mahdollisuuden liittyä yhteisöön, pelata pelejä ja tutustua uusiin sarjakuviin",
-  "ranking-player": "pelaaja",
-  "ranking-score": "pisteet",
+    "head-title": "AltZone",
+    "head-description": "ALT Zone on verkkomoninpeli mobiilialustalle, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi.",
+    "head-keywords": "altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään",
+    "og-title": "AltZone - Aloita pelisi täältä",
+    "og-description": "ALT Zone on verkkomoninpeli mobiilialustalle, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi.",
+    "ranking-player": "pelaaja",
+    "ranking-score": "pisteet",
 
-  "project-description-title": "Mitä on Alt Zone?",
-  "project-description-text": "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa. ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle. Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. Oppilailla on mahdollisuus jatkokehittää peliä sovelluskaupasta myöhemmin ladattavaksi ALT Zone 2.0 - mobiilipeliksi. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen siihen perustettavan säätiön kautta.",
+    "project-description-title": "Mitä on Alt Zone?",
+    "project-description-text": "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa. ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle. Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. Oppilailla on mahdollisuus jatkokehittää peliä sovelluskaupasta myöhemmin ladattavaksi ALT Zone 2.0 - mobiilipeliksi. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen siihen perustettavan säätiön kautta.",
 
-  "getToKnowComics": "Tutustu sarjakuvaan",
-  "getToKnowComics-title": "Pelikeksijän tarina",
+    "getToKnowComics": "Tutustu sarjakuvaan",
+    "getToKnowComics-title": "Pelikeksijän tarina",
 
-  "videoAndGalleries-title": "Meidän taide:",
+    "videoAndGalleries-title": "Meidän taide:",
 
+    "playWithUs-title": "Meidän linkit:",
+    "playWithUs-OpenPositions-title": "Katso avoimet paikat",
+    "playWithUs-OpenPositions-body": "Tule mukaan",
+    "playWithUs-BecomeATester-title": "Tule testaajaksi",
+    "playWithUs-BecomeATester-body": "Tee sovelluksesta parempi",
+    "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
 
-  "playWithUs-title": "Meidän linkit:",
-  "playWithUs-OpenPositions-title": "Katso avoimet paikat",
-  "playWithUs-OpenPositions-body" : "Tule mukaan",
-  "playWithUs-BecomeATester-title" : "Tule testaajaksi",
-  "playWithUs-BecomeATester-body" : "Tee sovelluksesta parempi",
-  "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
-
-  "classifiedHeroesBlocks-title": "Hahmot",
-  "classifiedHeroesBlocks-seeMore": "Katso lisää"
-
-
+    "classifiedHeroesBlocks-title": "Hahmot",
+    "classifiedHeroesBlocks-seeMore": "Katso lisää"
 }
