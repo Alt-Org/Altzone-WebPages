@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { StateSchema } from '@/app/_providers/StoreProvider';
 import { IClanCreateDto, useCreateClanMutation } from '@/entities/Clan';
-import { authUserActions, selectProfile } from '@/entities/Auth';
+import { profileActions, selectProfile } from '@/entities/Profile/model/profileSlice/profileSlice';
 import { ValidationAddNewClan } from '../validations';
 
 type Props = {
@@ -57,7 +57,7 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
                     clan_id: newClanId,
                 },
             };
-            dispatch(authUserActions.setProfile(updatedProfile));
+            dispatch(profileActions.setProfile(updatedProfile));
         } else {
             console.error('No Profile found in store');
         }
