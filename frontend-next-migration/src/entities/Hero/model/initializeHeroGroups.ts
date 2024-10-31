@@ -29,7 +29,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             label: red,
             heroes: [
                 {
-                    id: 1,
+                    id: 4341,
                     srcImg: hannuHodari,
                     srcGif: hannuHodariGiF,
                     alt: t('RETROFLECTOR.heroes.hannuHodari.alt'),
@@ -40,7 +40,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                 },
 
                 {
-                    id: 12,
+                    id: 14342,
                     srcImg: pirate,
                     srcGif: pirateGif,
                     alt: t('RETROFLECTOR.heroes.pirate.alt'),
@@ -59,7 +59,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             label: purpleBg,
             heroes: [
                 {
-                    id: 52231232,
+                    id: 313213,
                     srcImg: purpleGirls,
                     srcGif: purpleGirlsGif,
                     alt: t('CONFLUENT.heroes.SoulSisters.alt'),
@@ -70,7 +70,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                 },
 
                 {
-                    id: 3123,
+                    id: 34123,
                     srcImg: sleeper,
                     srcGif: comingSoon,
                     alt: t('CONFLUENT.heroes.Sleeper.alt'),
@@ -89,7 +89,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             label: yellow,
             heroes: [
                 {
-                    id: 4,
+                    id: 312314,
                     srcImg: graffittiGaya,
                     srcGif: graffittiGayaGif,
                     alt: t('PROJECTOR.heroes.GraffitiArtist.alt'),
@@ -108,7 +108,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             label: darkBlue,
             heroes: [
                 {
-                    id: 5223123,
+                    id: 52231233123,
                     srcImg: einstein,
                     srcGif: einsteinGif,
                     alt: t('INTELLECTUALIZER.heroes.Researcher.alt'),
@@ -146,7 +146,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             label: orange,
             heroes: [
                 {
-                    id: 522313,
+                    id: 524234,
                     srcImg: fatePriest,
                     srcGif: comingSoon,
                     alt: t('OBEDIENT.heroes.FatePriest.alt'),
