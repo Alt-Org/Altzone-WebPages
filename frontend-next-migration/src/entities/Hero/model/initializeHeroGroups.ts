@@ -10,6 +10,7 @@ import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.
 import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif';
 import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
+import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
@@ -134,6 +135,25 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.CONMAN,
                     title: t('TRICKSTER.heroes.Conman.title'),
                     description: t('TRICKSTER.heroes.Conman.description'),
+                },
+            ],
+        },
+
+        [HeroGroup.OBEDIENT]: {
+            name: t('OBEDIENT.name'),
+            description: t('OBEDIENT.description'),
+            bgColour: 'rgba(240,153,0,0.7)',
+            label: orange,
+            heroes: [
+                {
+                    id: 522313,
+                    srcImg: fatePriest,
+                    srcGif: comingSoon,
+                    alt: t('OBEDIENT.heroes.FatePriest.alt'),
+                    altGif: t('OBEDIENT.heroes.FatePriest.altGif'),
+                    slug: HeroSlug.FATE_PRIEST,
+                    title: t('OBEDIENT.heroes.FatePriest.title'),
+                    description: t('OBEDIENT.heroes.FatePriest.description'),
                 },
             ],
         },

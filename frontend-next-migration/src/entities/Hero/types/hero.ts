@@ -4,7 +4,7 @@ export enum HeroGroup {
     RETROFLECTOR = 'RETROFLECTOR',
     // DESENSITIZER = "DESENSITIZER",
     TRICKSTER = 'TRICKSTER',
-    // OBEDIENT = "OBEDIENT",
+    OBEDIENT = 'OBEDIENT',
     PROJECTOR = 'PROJECTOR',
     // // PROFLECTOR = "PROFLECTOR",
     INTELLECTUALIZER = 'INTELLECTUALIZER',
@@ -19,6 +19,7 @@ export enum HeroSlug {
     SOUL_SISTERS = 'soul-sisters',
     CONMAN = 'conman',
     SLEEPER = 'sleeper',
+    FATE_PRIEST = 'fate-priest',
 }
 
 export interface Hero {

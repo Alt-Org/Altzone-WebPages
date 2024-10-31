@@ -111,6 +111,19 @@
         "description": "Conman skillfully uses deception and trickery to manipulate emotions and distract opponents. His main ability is creating illusions that deceive those around him, making them see what isn’t really there. \\nHe can also produce distracting sounds and visuals to redirect the focus of emotions onto other targets or to hide within the chaos he creates. However, sometimes his cunning backfires on him."
       }
     }
+  },
+
+  "OBEDIENT": {
+    "name": "OBEDIENT",
+    "description": "OBEDIENT  is ...",
+    "heroes": {
+      "FatePriest": {
+        "title": "Fate-Priest",
+        "alt": "FatePriest main image",
+        "altGif": "FatePriest animation gif",
+        "description": "Fate-Priest has an unwavering faith in the power of chance and destiny. When he encounters strong emotions, he flips a coin or rolls dice to decide his next move, fully trusting in the random outcome. This belief in fate can lead to surprising and sometimes chaotic results, giving him a unique advantage in unpredictable situations. However, his reliance on destiny means leaving outcomes purely to luck, which doesn’t always align with his team’s goals."
+      }
+    }
   }
 
 
