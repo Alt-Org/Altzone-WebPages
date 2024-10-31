@@ -92,7 +92,21 @@
         "description": "Tiimityössä kahdesta tulee yksi, voittamaton tiimi. Tunteiden lähestyessä he puhaltavat suuren purkkapallon suojakseen ja\n hidastavat tapahtumien kulkua imulla, josta on vaikea päästä irti."
       }
     }
+  },
+
+  "TRICKSTER": {
+    "name": "HÄMÄÄJÄT",
+    "description": "Hämääjät on ...",
+    "heroes": {
+      "Conman": {
+        "title": "Conman",
+        "alt": "Conman kuva",
+        "altGif": "Conman animation kuva",
+        "description": "Conman käyttää taitavasti petosta ja viekkautta manipuloidakseen tunteita ja harhauttaakseen vastustajia. Hänen pääkykynsä on luoda illuusioita, jotka saavat ympäröivät näkemään jotain, mitä ei oikeasti ole olemassa. \\nLisäksi hän pystyy tuottamaan häiritseviä ääniä ja visuaalisia tehosteita ohjatakseen tunteiden keskittymisen muille kohteille tai piiloutuakseen itse luomaansa kaaokseen. Joskus hänen oveluutensa kuitenkin kääntyy häntä itseään vastaan."
+      }
+    }
   }
+
 
 
 

@@ -92,7 +92,21 @@
         "description": "In Girl team, the two become one, an invincible team. As emotions approach, they blow up a large bubblegum bubble to protect themselves and\n slowing down the course of events with a suction that is hard to release. "
       }
     }
+  },
+
+  "TRICKSTER": {
+    "name": "TRICKSTER",
+    "description": "Trickster  is ...",
+    "heroes": {
+      "Conman": {
+        "title": "Conman",
+        "alt": "Conman main image",
+        "altGif": "Conman animation gif",
+        "description": "Conman skillfully uses deception and trickery to manipulate emotions and distract opponents. His main ability is creating illusions that deceive those around him, making them see what isn’t really there. \\nHe can also produce distracting sounds and visuals to redirect the focus of emotions onto other targets or to hide within the chaos he creates. However, sometimes his cunning backfires on him."
+      }
+    }
   }
+
 
 
 
