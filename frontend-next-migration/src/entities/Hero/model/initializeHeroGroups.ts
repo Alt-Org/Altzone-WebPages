@@ -8,6 +8,7 @@ import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
 import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif';
+import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
@@ -50,6 +51,36 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             ],
         },
 
+        [HeroGroup.CONFLUENT]: {
+            name: t('CONFLUENT.name'),
+            description: t('CONFLUENT.description'),
+            bgColour: 'rgba(145, 4, 148, 0.5)',
+            label: purpleBg,
+            heroes: [
+                {
+                    id: 52231232,
+                    srcImg: purpleGirls,
+                    srcGif: purpleGirlsGif,
+                    alt: t('CONFLUENT.heroes.SoulSisters.alt'),
+                    altGif: t('CONFLUENT.heroes.SoulSisters.altGif'),
+                    slug: HeroSlug.SOUL_SISTERS,
+                    title: t('CONFLUENT.heroes.SoulSisters.title'),
+                    description: t('CONFLUENT.heroes.SoulSisters.description'),
+                },
+
+                {
+                    id: 3123,
+                    srcImg: sleeper,
+                    srcGif: comingSoon,
+                    alt: t('CONFLUENT.heroes.Sleeper.alt'),
+                    altGif: t('CONFLUENT.heroes.Sleeper.altGif'),
+                    slug: HeroSlug.SLEEPER,
+                    title: t('CONFLUENT.heroes.Sleeper.title'),
+                    description: t('CONFLUENT.heroes.Sleeper.description'),
+                },
+            ],
+        },
+
         [HeroGroup.PROJECTOR]: {
             name: t('PROJECTOR.name'),
             description: t('PROJECTOR.description'),
@@ -84,25 +115,6 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.RESEARCHER,
                     title: t('INTELLECTUALIZER.heroes.Researcher.title'),
                     description: t('INTELLECTUALIZER.heroes.Researcher.description'),
-                },
-            ],
-        },
-
-        [HeroGroup.CONFLUENT]: {
-            name: t('CONFLUENT.name'),
-            description: t('CONFLUENT.description'),
-            bgColour: 'rgba(145, 4, 148, 0.5)',
-            label: purpleBg,
-            heroes: [
-                {
-                    id: 52231232,
-                    srcImg: purpleGirls,
-                    srcGif: purpleGirlsGif,
-                    alt: t('CONFLUENT.heroes.SoulSisters.alt'),
-                    altGif: t('CONFLUENT.heroes.SoulSisters.altGif'),
-                    slug: HeroSlug.SOUL_SISTERS,
-                    title: t('CONFLUENT.heroes.SoulSisters.title'),
-                    description: t('CONFLUENT.heroes.SoulSisters.description'),
                 },
             ],
         },

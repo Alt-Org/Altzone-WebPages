@@ -18,6 +18,7 @@ export enum HeroSlug {
     PIRATE = 'pirate',
     SOUL_SISTERS = 'soul-sisters',
     CONMAN = 'conman',
+    SLEEPER = 'sleeper',
 }
 
 export interface Hero {

@@ -90,6 +90,13 @@
         "alt": "Sielunsiskot kuva",
         "altGif": "Sielunsiskot animation gif",
         "description": "Tiimityössä kahdesta tulee yksi, voittamaton tiimi. Tunteiden lähestyessä he puhaltavat suuren purkkapallon suojakseen ja\n hidastavat tapahtumien kulkua imulla, josta on vaikea päästä irti."
+      },
+
+      "Sleeper": {
+        "title": "Unikeko",
+        "alt": "Unikeko  pääkuva",
+        "altGif": "Unikeko  animaatiogif",
+        "description": "Unikeko , rauhallinen ja salaperäinen, omaa ainutlaatuisen kyvyn vaivuttaa ympärillään olevat tunteet rauhalliseen tilaan, lieventäen niiden intensiteettiä ja hidastaen reaktiivisia impulsseja. Hänen läsnäolonsa voi saada jopa voimakkaimmat tunteet tuntumaan uneliailta, luoden turvallisen tilan itselleen ja liittolaisilleen. Kuitenkin, mitä enemmän hän käyttää voimaansa, sitä suurempi riski hänellä on ajautua omaan unimaailmaansa, toisinaan irtaantuen liikaa todellisuudesta."
       }
     }
   },
