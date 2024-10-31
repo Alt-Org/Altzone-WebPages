@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useEffect, MutableRefObject } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AttributesPie.module.scss';
 
@@ -13,10 +13,56 @@ import cls from './AttributesPie.module.scss';
 type Props = {
     characterDefault: PieSlice;
     characterUpgrade: PieSlice;
-    radius: number;
     borderwidth: number;
     bordercolor: string;
+    radius: number;
 };
+
+class Pie {
+    constructor(props: Props) {
+        this.characterDefault = props.characterDefault;
+        this.characterUpgrade = props.characterUpgrade;
+        this.borderwidth = Math.abs(props.borderwidth);
+        this.bordercolor = props.bordercolor;
+        this.radius = Math.abs(props.radius);
+    }
+
+    public canvas?: HTMLElement | null;
+
+    public characterDefault: PieSlice;
+    public characterUpgrade: PieSlice;
+    public borderwidth: number;
+    public bordercolor: string;
+    public radius: number;
+
+    public render() {
+        if (!this.canvas || !(this.canvas instanceof HTMLCanvasElement)) {
+            return;
+        }
+
+        const ctx: CanvasRenderingContext2D | null = this.canvas.getContext('2d');
+        if (!ctx) {
+            return;
+        }
+
+        if (this.borderwidth >= this.radius) {
+            return;
+        }
+
+        this.renderBackground(ctx);
+
+        this.characterDefault.renderSlice(ctx, this, Math.PI / 2);
+        this.characterUpgrade.renderSlice(ctx, this, Math.PI / 2 + Math.PI);
+    }
+    public renderBackground(context: CanvasRenderingContext2D) {
+        context.fillStyle = this.bordercolor;
+        context.clearRect(0, 0, this.radius * 2, this.radius * 2);
+
+        context.beginPath();
+        context.arc(this.radius, this.radius, this.radius, 0, Math.PI * 2);
+        context.fill();
+    }
+}
 
 /**
  *
@@ -26,47 +72,26 @@ type Props = {
  * @param props
  */
 export const AttributesPie = (props: Props) => {
-    const canvasRef: MutableRefObject<HTMLCanvasElement | null> = useRef(null);
+    const ref = useRef(null);
 
-    const { radius, characterDefault, characterUpgrade } = props;
+    const { radius } = props;
 
-    useEffect(() => {
-        const canvas: HTMLCanvasElement | null = canvasRef.current;
-        if (!canvas) {
-            return;
-        }
+    const obj = new Pie(props);
 
-        const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
-        if (!ctx) {
-            return;
-        }
-
-        renderBackground(ctx, props);
-
-        characterDefault.renderSlice(ctx, props, Math.PI / 2);
-        characterUpgrade.renderSlice(ctx, props, Math.PI / 2 + Math.PI);
-    }, []);
+    useLayoutEffect(() => {
+        obj.canvas = ref.current;
+        obj.render();
+    });
 
     return (
         <div className={classNames(cls.Container)}>
             <canvas
-                ref={canvasRef}
+                ref={ref}
                 width={radius * 2}
                 height={radius * 2}
             />
         </div>
     );
-};
-
-const renderBackground = (context: CanvasRenderingContext2D, props: Props) => {
-    const { bordercolor, radius } = props;
-
-    context.fillStyle = bordercolor;
-    context.clearRect(0, 0, radius * 2, radius * 2);
-
-    context.beginPath();
-    context.arc(radius, radius, radius, 0, Math.PI * 2);
-    context.fill();
 };
 
 /**
@@ -147,7 +172,7 @@ export class PieSlice {
     public max: number;
     public sections: Array<PieSection>;
 
-    public renderSlice(context: CanvasRenderingContext2D, props: Props, angle: number) {
+    public renderSlice(context: CanvasRenderingContext2D, props: Pie, angle: number) {
         const { bordercolor, radius, borderwidth } = props;
 
         context.strokeStyle = bordercolor;
