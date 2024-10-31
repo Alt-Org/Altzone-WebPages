@@ -1,5 +1,5 @@
 import { CSSProperties, memo, useEffect, useState } from 'react';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { getRouteMainPage } from '@/shared/appLinks/RoutePaths';
 import cls from './NavbarDesktopV3.module.scss';
 import navLogo from '@/shared/assets/images/altLogo.png';
 import { NavbarBuild, NavBarType } from '../../model/types';
@@ -82,7 +82,7 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
             <Container>
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
-                    to={RoutePaths.MAIN}
+                    to={getRouteMainPage()}
                     className={classNames(cls.appLinkLogoStatic, {}, [appLinkLogo, disabled])}
                 >
                     <Image

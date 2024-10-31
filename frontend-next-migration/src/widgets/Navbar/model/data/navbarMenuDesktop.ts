@@ -33,14 +33,14 @@ navbarBuilderV2.addAuthLogin('login', getRouteLoginPage());
 export const navbarMenuDesktop2 = navbarBuilderV2.build();
 
 const navbarBuilderV3 = new NavbarBuilder();
-navbarBuilderV3.addLink('news', RoutePaths.NEWS, true);
+navbarBuilderV3.addLink('news', getRouteAllNewsPage(), true);
 navbarBuilderV3.addDropDown('game', true, dropdowns.game);
 navbarBuilderV3.addDropDown('gallery', true, dropdowns.gallery);
 navbarBuilderV3.addDropDown('gameart', true, dropdowns.gameart);
 navbarBuilderV3.addDropDown('community', true, dropdowns.community);
-navbarBuilderV3.addLink('team', RoutePaths.MEMBERS, true);
+navbarBuilderV3.addLink('team', getRouteTeamPage(), true);
 navbarBuilderV3.addAuthProfile('profile', dropdowns.profile);
-navbarBuilderV3.addAuthLogin('login', RoutePaths.auth_login);
+navbarBuilderV3.addAuthLogin('login', getRouteLoginPage());
 
 export const navbarMenuDesktop3 = navbarBuilderV3.build();
 
