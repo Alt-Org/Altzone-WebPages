@@ -49,6 +49,7 @@ function MainPage(props: Props) {
             <SectionHeroesBlocks
                 {...heroesBlocks}
                 maxHeroesPerGroup={2}
+                maxGroupsPerPage={3}
             />
 
             {/*<HorizontalLines />*/}

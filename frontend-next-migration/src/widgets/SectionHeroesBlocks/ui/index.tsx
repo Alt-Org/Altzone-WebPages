@@ -18,10 +18,11 @@ export type Props = {
         text: string;
     };
     maxHeroesPerGroup?: number;
+    maxGroupsPerPage?: number;
 };
 
 function Main(props: Props) {
-    const { title, seeMoreLink, maxHeroesPerGroup = 100 } = props;
+    const { title, seeMoreLink, maxHeroesPerGroup = 100, maxGroupsPerPage = 100 } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -36,12 +37,16 @@ function Main(props: Props) {
     const heroManager = new HeroManager(t);
     const heroesGroups2 = heroManager.getGroupsWithHeroesAsArray();
 
+    const displayedGroups = maxGroupsPerPage
+        ? heroesGroups2.slice(0, maxGroupsPerPage)
+        : heroesGroups2;
+
     return (
         <Container fluid={true}>
             <section className={cls.Section}>
                 <h2 className={cls.Header}>{title}</h2>
 
-                {heroesGroups2.map((group) => (
+                {displayedGroups.map((group) => (
                     <HeroesBlocks
                         key={group.name}
                         heroes={group.heroes.slice(0, maxHeroesPerGroup)}
