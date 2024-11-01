@@ -2,7 +2,7 @@ import { StoryObj, Meta } from '@storybook/react';
 import { AttributesPie } from './AttributesPie';
 
 const main = {
-    title: 'Entities/AttributesPie',
+    title: 'Entities/Hero/AttributesPie',
     component: AttributesPie,
     args: {
         characterDefault: {
