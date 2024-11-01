@@ -48,20 +48,16 @@
     height: clamp(0.5rem, 3vw, 2rem);
     border-radius: 50%;
     overflow: hidden;
-    @include link-scale-effect('icon');
+    //@include link-scale-effect('icon');
   }
 
   .memberLogoEnlarged {
-    position: absolute;
-    left: 75%;
-    width: clamp(0.5rem, 10vw, 10rem);
-    height: clamp(0.5rem, 10vw, 10rem);
-  }
-
-  @media (min-width: 1024px) {
-    .memberLogo {
-      left: 80%;
-    }
+    position: fixed;
+    top: 25vh;
+    left: 50%;
+    transform: translate(-50%);
+    width: clamp(0.5rem, 35vw, 35rem);
+    height: clamp(0.5rem, 35vw, 35rem);
   }
   
   .Logo {

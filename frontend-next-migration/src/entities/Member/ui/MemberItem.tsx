@@ -8,11 +8,18 @@ import cls from './MemberItem.module.scss';
 
 const MemberItem: FC<{ member: Member }> = ({ member }) => {
     const linksMap = getLinks();
+    /**
+     * Manage the enlarged mode of the image.
+     * @description When the boolean value is true, image is enlarged
+     * @type {boolean}
+     * @default false
+     */
     const [isEnlarged, setIsEnlarged] = useState(false);
-    // Image Click Handling Function
+    /**
+     * Handles image clicking. Changes the state of the image.
+     */
     const handleClick = () => {
         setIsEnlarged(!isEnlarged);
-        console.log(isEnlarged);
     }
 
     return (
@@ -22,7 +29,7 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
                     <span className={cls.memberName}>{member.name}</span>
                     <span className={cls.taskText}>{member.task}</span>
                     <div className={cls.iconContainer}>
-                        {/** Change Div Size And Placement For Bigger Image */}
+                        {/** Change Div Size For Enlarged Image */}
                         <div className={`${cls.memberLogo} ${isEnlarged ? cls.memberLogoEnlarged : ''}`}>
                             {member.logo ? (
                                 <Image
