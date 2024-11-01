@@ -4,28 +4,59 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AttributesPie.module.scss';
 
 /**
- * @param characterDefault the left side of the pie, for character-specific attributes
- * @param characterUpgrade the right side of the pie, for upgradable attributes
- * @param radius sets the total radius of the pie
- * @param borderwidth sets the width of the area between the slices and the border
- * @param bordercolor sets the border color
+ * Interface representing properties for pie chart slices.
+ *
+ * @interface Props
+ *
+ * @property {PieSliceProps} characterDefault - The properties for the default state of the pie slice.
+ * @property {PieSliceProps} characterUpgrade - The properties for the upgraded state of the pie slice.
+ * @property {number} borderwidth - The width of the border for the pie slice.
+ * @property {string} bordercolor - The color of the border for the pie slice.
+ * @property {number} radius - The radius of the pie slice.
  */
-type Props = {
+interface Props {
     characterDefault: PieSliceProps;
     characterUpgrade: PieSliceProps;
     borderwidth: number;
     bordercolor: string;
     radius: number;
-};
+}
 
 /**
+ * A React functional component that renders a pie chart with customizable attributes.
  *
- * draws an attributes pie using Canvas
- * from two PieSliceProps
+ * @param {Props} props - The properties passed to the component.
  *
- * @param props
+ * @returns {JSX.Element} A JSX element representing the pie chart wrapped in a div container.
+ *
+ * @example
+ * ```typescript jsx
+ * const defaultSlice = {
+ *   max: 100,
+ *   sections: [
+ *     { value: 50, color: '#ff0000' },
+ *     { value: 50, color: '#00ff00' }
+ *   ]
+ * };
+ *
+ * const upgradeSlice = {
+ *   max: 200,
+ *   sections: [
+ *     { value: 100, color: '#0000ff' },
+ *     { value: 100, color: '#ffff00' }
+ *   ]
+ * };
+ *
+ * <AttributesPie
+ *   characterDefault={defaultSlice}
+ *   characterUpgrade={upgradeSlice}
+ *   borderwidth={5}
+ *   bordercolor="#000000"
+ *   radius={100}
+ * />
+ * ```
  */
-export const AttributesPie = (props: Props) => {
+export const AttributesPie = (props: Props): JSX.Element => {
     const ref = useRef(null);
 
     const { radius, borderwidth, bordercolor, characterDefault, characterUpgrade } = props;
@@ -125,35 +156,26 @@ export const AttributesPie = (props: Props) => {
 };
 
 /**
- * @param color
- * sets the color of the pie
+ * Interface representing the properties for a section of a pie chart.
  *
- * @param value
- * sets the value of the pie (eg. how much space it will take from the max)
+ * @interface PieSectionProps
  *
- * for example: value of 20 with a max of 40 will take half of the space (90 degrees)
+ * @property {number} value - The numerical value that the pie section represents.
+ * @property {string} color - The color associated with the pie section in hexadecimal, RGB, or named color formats.
  */
-type PieSectionProps = {
+interface PieSectionProps {
     value: number;
     color: string;
-};
+}
 
 /**
- * attribute pie slice.
- * consists of PieSectionProps
+ * Interface representing the properties for a pie slice.
  *
- * each PieSliceProps is 180 degrees
- *
- * @param max
- * maximum value of pie
- *
- * maximum value should be greater or equal
- * to the sum of PieSectionProps.Values
- *
- * @param sections
- * an array of PieSectionProps
+ * @interface PieSliceProps
+ * @property {number} max - The maximum value of the pie slice.
+ * @property {Array<PieSectionProps>} sections - An array of section properties for the pie slice.
  */
-type PieSliceProps = {
+interface PieSliceProps {
     max: number;
     sections: Array<PieSectionProps>;
-};
+}
