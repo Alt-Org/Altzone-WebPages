@@ -10,4 +10,4 @@ export { HeroManager } from './model/HeroManager';
 
 export { default as HeroGroupLabel } from './ui/HeroGroupLabel/HeroGroupLabel';
 
-export { AttributesPie, PieSection, PieSlice } from './ui/AttributesPie/AttributesPie';
+export { AttributesPie } from './ui/AttributesPie/AttributesPie';
