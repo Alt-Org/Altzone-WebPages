@@ -1,6 +1,7 @@
 import { CustomForm } from '@/shared/ui/CustomForm';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useNewClanForm } from '../../model/useNewClanForm';
+import { ClanLabel } from '@/entities/Clan/enum/clanLabel.enum';
 import cls from './NewClanForm.module.scss';
 
 type Props = {
@@ -40,6 +41,30 @@ export const NewClanForm = ({ onSuccess, className = '' }: Props) => {
                 }}
             />
 
+            <CustomForm.InputField
+                key={'phrase'}
+                error={errors?.tag?.message}
+                label={'Phrase'}
+                inputProps={{
+                    ...register('phrase'),
+                    required: true,
+                }}
+            />
+            {
+                // Labels needs its own CustomForm input field that can have multiple selections. (MultiSelectionDropdown)
+                <CustomForm.InputField
+                    key={'labels'}
+                    error={errors?.isOpen?.message}
+                    label={'Label placeholder'}
+                    inputProps={{
+                        ...register('labels', {
+                            value: [ClanLabel.ITSENÄISET],
+                        }),
+                        required: false,
+                        type: 'checkbox',
+                    }}
+                />
+            }
             {
                 <CustomForm.InputField
                     key={'isOpen'}
