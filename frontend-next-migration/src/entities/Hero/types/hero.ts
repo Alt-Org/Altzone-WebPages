@@ -3,19 +3,23 @@ import { StaticImageData } from 'next/image';
 export enum HeroGroup {
     RETROFLECTOR = 'RETROFLECTOR',
     // DESENSITIZER = "DESENSITIZER",
-    // TRICKSTER = "TRICKSTER",
-    // OBEDIENT = "OBEDIENT",
+    TRICKSTER = 'TRICKSTER',
+    OBEDIENT = 'OBEDIENT',
     PROJECTOR = 'PROJECTOR',
     // // PROFLECTOR = "PROFLECTOR",
     INTELLECTUALIZER = 'INTELLECTUALIZER',
-    // CONFLUENT = "CONFLUENT"
+    CONFLUENT = 'CONFLUENT',
 }
 
 export enum HeroSlug {
-    HANNU_HODARI = 'hannu-hodari',
+    HANNU_HODARI = 'ahmat',
     GRAFFITI_ARTIST = 'graffiti-artist',
     RESEARCHER = 'researcher',
     PIRATE = 'pirate',
+    SOUL_SISTERS = 'soul-sisters',
+    CONMAN = 'conman',
+    SLEEPER = 'sleeper',
+    FATE_PRIEST = 'fate-priest',
 }
 
 export interface Hero {
