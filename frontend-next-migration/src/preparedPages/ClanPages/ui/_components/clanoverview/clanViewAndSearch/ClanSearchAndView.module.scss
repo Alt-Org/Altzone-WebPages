@@ -9,13 +9,13 @@
 }
 
 .Loader {
-    @include position-absolute-center
+    @include position-absolute-center;
 }
 
 .EditClanBtn {
     background-color: rgba(0, 0, 0, 0.7);
     @include link-scale-effect;
-    font-family: var(--font-family-texts)
+    font-family: var(--font-family-texts);
 }
 
 .searchField {
@@ -46,8 +46,6 @@
     @include custom-scrollbar;
 }
 
-.testContainer {}
-
 .clanList {
     width: 100%;
     border-collapse: collapse;
@@ -59,7 +57,7 @@
 .clanList td {
     padding: 1px;
     padding-left: 3%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: clamp(1px, 0.25vh, 3px) solid #ccc;
 }
 
 .clanList tr:hover {
@@ -85,14 +83,20 @@
         z-index: 50000;
         opacity: 90%;
         left: -2vh;
-        transition: width 0.3s ease, position 0.5s ease, height 0.5s ease, margin-bottom 0.5s ease, margin-top 0.5s ease, background-color 0.5s ease;
+        transition:
+            width 0.3s ease,
+            position 0.5s ease,
+            height 0.5s ease,
+            margin-bottom 0.5s ease,
+            margin-top 0.5s ease,
+            background-color 0.5s ease;
         height: 15vh;
         width: 5vh;
         text-shadow: none;
     }
 
     .mobileToggleClanList.expanded {
-        position: fixed;
+        position: relative;
         padding: 0;
         height: 90vh;
         margin-bottom: 0%;
@@ -100,7 +104,13 @@
         left: 0;
         z-index: 50000;
         opacity: 90%;
-        transition: width 0.3s ease, position 0.5s ease, height 0.5s ease, margin-bottom 0.5s ease, margin-top 0.5s ease, background-color 0.5s ease;
+        transition:
+            width 0.3s ease,
+            position 0.5s ease,
+            height 0.5s ease,
+            margin-bottom 0.5s ease,
+            margin-top 0.5s ease,
+            background-color 0.5s ease;
         border-radius: 0px;
         background-color: rgb(255, 73, 73);
         writing-mode: vertical-rl;
@@ -126,7 +136,6 @@
         position: fixed;
         opacity: 100%;
         transition: width 0.4s ease-in-out;
-
     }
 
     .parent.collapsed {

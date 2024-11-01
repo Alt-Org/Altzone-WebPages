@@ -7,6 +7,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
 import HeroesBlocks from './heroesBlocks/HeroesBlocks';
 import cls from './main.module.scss';
+import { Container } from '@/shared/ui/Container';
 
 const sameBg = undefined;
 
@@ -17,10 +18,11 @@ export type Props = {
         text: string;
     };
     maxHeroesPerGroup?: number;
+    maxGroupsPerPage?: number;
 };
 
 function Main(props: Props) {
-    const { title, seeMoreLink, maxHeroesPerGroup = 100 } = props;
+    const { title, seeMoreLink, maxHeroesPerGroup = 100, maxGroupsPerPage = 100 } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -33,39 +35,45 @@ function Main(props: Props) {
 
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
-    const heroesGroups2 = heroManager.getHeroesByGroupsAsArray();
+    const heroesGroups2 = heroManager.getGroupsWithHeroesAsArray();
+
+    const displayedGroups = maxGroupsPerPage
+        ? heroesGroups2.slice(0, maxGroupsPerPage)
+        : heroesGroups2;
 
     return (
-        <section className={cls.Section}>
-            <h2 className={cls.Header}>{title}</h2>
+        <Container fluid={true}>
+            <section className={cls.Section}>
+                <h2 className={cls.Header}>{title}</h2>
 
-            {heroesGroups2.map((group) => (
-                <HeroesBlocks
-                    key={group.name}
-                    heroes={group.heroes.slice(0, maxHeroesPerGroup)}
-                    backgroundImageSrc={sameBg}
-                    label={group.label}
-                    labelText={group.name}
-                    groupBgColor={group.bgColour}
-                />
-            ))}
-            {seeMoreLink && (
-                <div
-                    ref={ref}
-                    className={cls.buttonContainer}
-                >
-                    <Button
-                        withScalableLink={true}
-                        theme={ButtonTheme.Graffiti}
-                        className={classNames(cls.SeeMore, mods)}
-                        size={ButtonSize.XL}
+                {displayedGroups.map((group) => (
+                    <HeroesBlocks
+                        key={group.name}
+                        heroes={group.heroes.slice(0, maxHeroesPerGroup)}
+                        backgroundImageSrc={sameBg}
+                        label={group.label}
+                        labelText={group.name}
+                        groupBgColor={group.bgColour}
+                    />
+                ))}
+                {seeMoreLink && (
+                    <div
                         ref={ref}
+                        className={cls.buttonContainer}
                     >
-                        <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
-                    </Button>
-                </div>
-            )}
-        </section>
+                        <Button
+                            withScalableLink={true}
+                            theme={ButtonTheme.Graffiti}
+                            className={classNames(cls.SeeMore, mods)}
+                            size={ButtonSize.XL}
+                            ref={ref}
+                        >
+                            <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
+                        </Button>
+                    </div>
+                )}
+            </section>
+        </Container>
     );
 }
 

@@ -29,12 +29,12 @@ export class HeroManager {
         });
     }
 
-    public getHeroesByGroups(): Record<HeroGroup, GroupInfo> {
+    public getGroupsWithHeroes(): Record<HeroGroup, GroupInfo> {
         return this.heroGroups;
     }
 
-    public getHeroesByGroupsAsArray(): GroupInfo[] {
-        return Object.values(this.getHeroesByGroups()).map((value) => ({
+    public getGroupsWithHeroesAsArray(): GroupInfo[] {
+        return Object.values(this.getGroupsWithHeroes()).map((value) => ({
             ...value,
         }));
     }

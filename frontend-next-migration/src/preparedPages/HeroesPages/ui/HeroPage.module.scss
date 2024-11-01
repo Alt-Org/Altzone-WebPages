@@ -1,20 +1,58 @@
+//todo fix a mess with media queries
 .main{
-    margin-top: 130px;
-    min-height: 1000px;
+    min-height: 100%;
+
+    //margin: 150px 0;
+    @media (min-width: 1000px) {
+        // todo it is ideal size for full hd , but we really cannot use it like this, so just hero container could be refactored instead
+        transform: scale(0.8);
+        margin-top: 160px;
+        margin-bottom: 150px;
+    }
+
+    @media (max-width: 350px) {
+        //margin-top: 150px;
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+    @media ((min-width: 351px) and (max-width: 700px)) {
+        //margin-top: 150px;
+        margin-top: 120px;
+        margin-bottom: 150px;
+    }
+
+    @media (min-width: 700px) and (max-width: 1100px) {
+        min-height: 70vh;
+        //margin: 0;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    @media (min-width: 819px) and (max-width: 1100px) {
+        margin-bottom: 20px;
+    }
+
+
+    @media (min-width: 1000px) and (max-width: 1100px) {
+        margin: 0;
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+
+
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 30px;
 }
 
+.dropDown{
+    width: 300px;
+}
 
 
 .wholePageBG{
     filter: brightness(85%);
-}
-
-
-@media (max-width: 1000px) {
-    .main {
-        margin-top: 30px;
-    }
 }
