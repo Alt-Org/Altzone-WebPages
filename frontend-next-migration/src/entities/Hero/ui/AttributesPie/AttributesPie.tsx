@@ -8,15 +8,15 @@ import cls from './AttributesPie.module.scss';
  *
  * @interface Props
  *
- * @property {PieSliceProps} characterDefault - The properties for the default state of the pie slice.
- * @property {PieSliceProps} characterUpgrade - The properties for the upgraded state of the pie slice.
+ * @property {SliceState} characterDefault - The properties for the default state of the pie slice.
+ * @property {SliceState} characterUpgrade - The properties for the upgraded state of the pie slice.
  * @property {number} borderwidth - The width of the border for the pie slice.
  * @property {string} bordercolor - The color of the border for the pie slice.
  * @property {number} radius - The radius of the pie slice.
  */
 interface Props {
-    characterDefault: PieSliceProps;
-    characterUpgrade: PieSliceProps;
+    characterDefault: SliceState;
+    characterUpgrade: SliceState;
     borderwidth: number;
     bordercolor: string;
     radius: number;
@@ -83,18 +83,10 @@ export const AttributesPie = (props: Props): JSX.Element => {
         renderSlice(ctx, characterUpgrade, Math.PI / 2 + Math.PI);
     });
 
-    const renderSlice = (
-        context: CanvasRenderingContext2D,
-        slice: PieSliceProps,
-        angle: number,
-    ) => {
+    const renderSlice = (context: CanvasRenderingContext2D, slice: SliceState, angle: number) => {
         const { max, sections } = slice;
 
-        const render = (
-            context: CanvasRenderingContext2D,
-            angle: number,
-            section: PieSectionProps,
-        ) => {
+        const render = (context: CanvasRenderingContext2D, angle: number, section: PieSection) => {
             const { value, color } = section;
             const x = radius,
                 y = radius;
@@ -158,12 +150,12 @@ export const AttributesPie = (props: Props): JSX.Element => {
 /**
  * Interface representing the properties for a section of a pie chart.
  *
- * @interface PieSectionProps
+ * @interface PieSection
  *
  * @property {number} value - The numerical value that the pie section represents.
  * @property {string} color - The color associated with the pie section in hexadecimal, RGB, or named color formats.
  */
-interface PieSectionProps {
+interface PieSection {
     value: number;
     color: string;
 }
@@ -171,11 +163,11 @@ interface PieSectionProps {
 /**
  * Interface representing the properties for a pie slice.
  *
- * @interface PieSliceProps
+ * @interface SliceState
  * @property {number} max - The maximum value of the pie slice.
- * @property {Array<PieSectionProps>} sections - An array of section properties for the pie slice.
+ * @property {Array<PieSection>} sections - An array of section properties for the pie slice.
  */
-interface PieSliceProps {
+interface SliceState {
     max: number;
-    sections: Array<PieSectionProps>;
+    sections: Array<PieSection>;
 }
