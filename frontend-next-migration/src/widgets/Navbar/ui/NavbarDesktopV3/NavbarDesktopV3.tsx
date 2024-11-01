@@ -11,17 +11,17 @@ import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import NavItem from './NavItem';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { FixedButton, CollapsedButton } from '../Button/Button';
-import { useFixedAndCollapsed } from '@/widgets/Navbar/model/FixedAndCollapsedProvider';
 import { defineNs } from '../../model/defineNs';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import Image from 'next/image';
+import { FixedAndCollapsedType } from '../NavbarMainV3/NavbarMainV3';
 
 type NavbarProps = {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild;
-    isFixed?: boolean;
     navBarType?: NavBarType;
+    fixedAndCollapsed: FixedAndCollapsedType;
 };
 
 /**
@@ -31,9 +31,9 @@ type NavbarProps = {
  */
 
 const NavbarDesktopV3 = memo((props: NavbarProps) => {
-    const { navbarBuild, marginTop, navBarType = 'Default' } = props;
+    const { navbarBuild, marginTop, navBarType = 'Default', fixedAndCollapsed } = props;
+    const { isFixed, toggleFixed, isCollapsed, toggleCollapsed } = fixedAndCollapsed;
 
-    const { isFixed, isCollapsed } = useFixedAndCollapsed();
     const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible);
     const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '');
     const [appLinkLogo, setAppLinkLogo] = useState(isCollapsed ? cls.hidden : cls.visible);
@@ -137,18 +137,29 @@ const NavbarDesktopV3 = memo((props: NavbarProps) => {
 
                     {hasScrollbar && !isCollapsed && (
                         <li className={cls.toggleOverlaid + ' ' + hidden + ' ' + disabled}>
-                            <FixedButton />
+                            <FixedButton
+                                isFixed={isFixed}
+                                toggleFixed={toggleFixed}
+                            />
                         </li>
                     )}
 
                     {isFixed &&
                         (isCollapsed ? (
                             <li className={cls.collapseButtonCollapsed}>
-                                <CollapsedButton className={cls.visibilityButton} />
+                                <CollapsedButton
+                                    className={cls.visibilityButton}
+                                    isCollapsed={isCollapsed}
+                                    toggleCollapsed={toggleCollapsed}
+                                />
                             </li>
                         ) : (
                             <li className={cls.collapseButtonExpanded}>
-                                <CollapsedButton className={cls.visibilityButton} />
+                                <CollapsedButton
+                                    className={cls.visibilityButton}
+                                    isCollapsed={isCollapsed}
+                                    toggleCollapsed={toggleCollapsed}
+                                />
                             </li>
                         ))}
                 </ul>

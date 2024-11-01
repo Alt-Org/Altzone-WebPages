@@ -10,9 +10,9 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { FixedButton, CollapsedButton } from '../Button/Button';
-import { useFixedAndCollapsed } from '@/widgets/Navbar/model/FixedAndCollapsedProvider';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { defineNs } from '../../model/defineNs';
+import { FixedAndCollapsedType } from '../NavbarMainV3/NavbarMainV3';
 
 interface NavbarTouchProps {
     marginTop?: number;
@@ -21,6 +21,7 @@ interface NavbarTouchProps {
     side?: 'left' | 'right';
     className?: string;
     navBarType?: NavBarType;
+    fixedAndCollapsed: FixedAndCollapsedType;
 }
 
 /**
@@ -32,7 +33,15 @@ interface NavbarTouchProps {
  * @returns
  */
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, side = 'left', className = '', navBarType = 'Default' } = props;
+    const {
+        marginTop,
+        navbarBuild,
+        side = 'left',
+        className = '',
+        navBarType = 'Default',
+        fixedAndCollapsed,
+    } = props;
+    const { isFixed, toggleFixed, isCollapsed, toggleCollapsed } = fixedAndCollapsed;
 
     const ns = defineNs(navBarType);
     const { t } = useClientTranslation(ns);
@@ -46,7 +55,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { isFixed, isCollapsed } = useFixedAndCollapsed();
     const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible);
     const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '');
     const hasScrollbar = useIsPageScrollbar();
@@ -208,9 +216,17 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 {hasScrollbar && (
                     <FixedButton
                         className={classNames(cls.FixedButton, mods, [hidden, disabled])}
+                        isFixed={isFixed}
+                        toggleFixed={toggleFixed}
                     />
                 )}
-                {isFixed && <CollapsedButton className={cls.collapsedButton} />}
+                {isFixed && (
+                    <CollapsedButton
+                        className={cls.collapsedButton}
+                        isCollapsed={isCollapsed}
+                        toggleCollapsed={toggleCollapsed}
+                    />
+                )}
             </nav>
         </div>
     );

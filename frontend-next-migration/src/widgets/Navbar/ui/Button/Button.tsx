@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import cls from './Button.module.scss';
-import { useFixedAndCollapsed } from '@/widgets/Navbar/model/FixedAndCollapsedProvider';
 import visible from '@/shared/assets/images/visible.png';
 import unvisible from '@/shared/assets/images/unvisible.png';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import Image from 'next/image';
 
-type Props = {
+type CollapsedProps = {
     className?: string;
+    toggleCollapsed: () => void;
+    isCollapsed: boolean;
+};
+
+type FixedProps = {
+    className?: string;
+    toggleFixed: () => void;
+    isFixed: boolean;
 };
 
 /**
@@ -17,11 +24,9 @@ type Props = {
  * @param {Props} props - CSS classes applied based on the usage scenario.
  * @returns
  */
-export function CollapsedButton(props: Props) {
+export function CollapsedButton(props: CollapsedProps) {
     const [enabled, setEnabled] = useState(true);
-    const { className = '' } = props;
-
-    const { isCollapsed, toggleCollapsed } = useFixedAndCollapsed();
+    const { className = '', isCollapsed, toggleCollapsed } = props;
 
     const onClick = () => {
         // changing the state too quickly breaks the animation states in Navbar
@@ -48,10 +53,8 @@ export function CollapsedButton(props: Props) {
     );
 }
 
-export function FixedButton(props: Props) {
-    const { className = '' } = props;
-
-    const { isFixed, toggleFixed } = useFixedAndCollapsed();
+export function FixedButton(props: FixedProps) {
+    const { className = '', isFixed, toggleFixed } = props;
 
     return (
         <div className={classNames(cls.fixedButton, {}, [className])}>
