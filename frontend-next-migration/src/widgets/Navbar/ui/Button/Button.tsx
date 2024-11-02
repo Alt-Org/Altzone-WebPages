@@ -53,6 +53,23 @@ export function CollapsedButton(props: CollapsedProps) {
     );
 }
 
+export function CollapsedButtonV2(props: CollapsedProps) {
+    const { isCollapsed, toggleCollapsed, className = '' } = props;
+    return (
+        <div className={classNames(cls.collapsedButton, {}, [className])}>
+            <button onClick={toggleCollapsed}>
+                <Image
+                    loading="eager"
+                    alt="visibility"
+                    src={isCollapsed ? unvisible : visible}
+                    width={42}
+                    className={cls.buttonImage}
+                />
+            </button>
+        </div>
+    );
+}
+
 export function FixedButton(props: FixedProps) {
     const { className = '', isFixed, toggleFixed } = props;
 
