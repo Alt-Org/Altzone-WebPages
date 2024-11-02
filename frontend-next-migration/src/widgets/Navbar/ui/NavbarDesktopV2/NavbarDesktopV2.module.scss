@@ -10,8 +10,18 @@
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
   position: relative;
-  overflow: hidden;
   height: var(--navbar-height);
+  user-select: none;
+
+  &.collapsing{
+    overflow-x: hidden;
+  }
+
+  &.collapsed{
+    overflow-x: hidden;
+  }
+
+
 }
 
 .fixed {
