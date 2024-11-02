@@ -44,7 +44,7 @@
   opacity: 1;
   transform: translateX(0) scaleX(1);
   transform-origin: right;
-  transition: transform 0.4s ease-out 0.1s, opacity 0.3s ease-out 0.2s;
+  transition: transform 0.4s ease-out 0.1s, opacity 0.3s ease-out 0.3s;
   visibility: visible;
 
   display: flex;
@@ -56,7 +56,7 @@
     transform: translateX(-100px) scaleX(0.7);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.3s ease-in, opacity 0.3s ease-in 0.1s;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
     overflow-x: hidden;
   }
 
@@ -143,9 +143,24 @@
   position: absolute;
   right: 12px;
   top: 8px;
-
+  cursor: pointer;
   opacity: 1!important;
   .CollapseButton{
     cursor: pointer;
   }
+
+  &.collapsing{
+
+    pointer-events: none;
+
+    .CollapseButton{
+      //cursor: pointer;
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: help;
+    }
+
+  }
+
+
 }

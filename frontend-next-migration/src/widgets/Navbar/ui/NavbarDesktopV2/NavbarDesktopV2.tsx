@@ -1,4 +1,4 @@
-import { CSSProperties, memo } from 'react';
+import { CSSProperties, memo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -51,6 +51,16 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
         [cls.collapsed]: isCollapsed,
     } as Record<string, boolean>;
 
+    const [isAnimating, setIsAnimating] = useState(false);
+    const handleCollapseClick = () => {
+        if (!isAnimating) {
+            setIsAnimating(true);
+        }
+    };
+    const handleTransitionEnd = () => {
+        setIsAnimating(false);
+    };
+
     return (
         <nav
             className={classNames(cls.siteNav, mods, [className])}
@@ -98,13 +108,19 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
 
                     {hasScrollbar && (
                         <li
+                            onTransitionEnd={handleTransitionEnd}
                             className={classNames(cls.FixButtonWrapper, ModsUlAndLi, [cls.navItem])}
                         >
                             <ToggleFixButton className={cls.FixButton} />
                         </li>
                     )}
                     {isFixed && (
-                        <li className={cls.CollapseButtonWrapper}>
+                        <li
+                            className={classNames(cls.CollapseButtonWrapper, {
+                                [cls.collapsing]: isAnimating,
+                            })}
+                            onClick={handleCollapseClick}
+                        >
                             <ToggleCollapseButton className={cls.CollapseButton} />
                         </li>
                     )}
