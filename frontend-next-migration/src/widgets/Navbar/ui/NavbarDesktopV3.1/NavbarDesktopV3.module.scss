@@ -3,53 +3,60 @@
   padding-top: 50px;
   color: #fbf7dc;
   width: 100%;
+  max-width:1400px;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   z-index: var(--navbar-z-index);
   font-weight: 500;
   top: 0;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
   position: relative;
-
 }
 
 .fixed {
   position: sticky;
 }
 
+.siteNavContentList.collapsed {
+  width:54px;
+  padding-left:0px;
+  margin-left: auto;
+}
+
+.collapseButtonExpanded {
+  margin-left: -1em;
+}
+
+.collapseButtonCollapsed {
+  margin-left: auto;
+}
+
+.visibilityButton {
+  height:48px;
+}
+
 .siteNavContentList {
-  min-height: 50px;
-  padding: 0 10px 0 50px;
+  
+  width: 100%;
+  padding-left: 180px;
   background-color: black;
   border-radius: var(--border-radius-custom);
   border: var(--inverted-secondary-color) 2px solid;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 1em;
   list-style: none;
   z-index: 2;
-  position: relative;
-  //transition: width 0.3s ease, margin-left 0.3s ease;
-
-  transition: max-width 3s ease, opacity 1s ease, transform 3s ease;
-  opacity: 1;
-  //transform: translateX(0);
-
-  &.collapsed {
-    max-width: 50px !important;
-    //opacity: 0;
-    //transform: translateX(100%);
-  }
-
-
-  &.collapsed {
-    //max-width: 50px!important;
-    margin-left: auto;
-  }
-
-
+  margin-left: auto;
+  margin-right: 0;
+  transition: padding-left 1s, width 1s;
+  
 }
+
+
 
 .appLinkLogo {
   display: block;
@@ -62,9 +69,12 @@
     left: 0;
     z-index: 100;
     height: auto;
-    max-width: none;
+
+    //width: 200px;
     width: auto;
   }
+
+  
 
   .itemClanLogoImg {
     position: absolute;
@@ -72,14 +82,37 @@
     left: 0;
     z-index: 100;
     height: auto;
+
+    //width: 200px;
     width: 150%;
     max-width: 150%;
   }
 }
+.appLinkLogoStatic {
+  display: inline-block;
+  position: absolute;
+
+  top:25px;
+  left:52px;
+  width: 120px;
+  z-index: 200;
+  transition: opacity 1s;
+
+  .itemLogoImgStatic {
+   
+    z-index: 200;
+    height: auto;
+    //width: 200px;
+    width: auto;
+  }
+
+}
 
 .itemNavbarDropDownContent {
   outline: 2px solid var(--inverted-primary-color);
+
   text-align: left;
+
   border-radius: var(--border-radius-custom);
   background-color: var(--transparent-bg-dark);
   padding: 10px;
@@ -90,10 +123,27 @@
 }
 
 .navItem {
+  
   display: flex;
   height: max-content;
   line-height: initial;
   padding: 10px 0;
+  transition:opacity .3s;
+  white-space:nowrap;
+  
+
+  //justify-content: center;
+  //height: max-content;
+ 
+}
+.visible {
+  opacity:1 !important;
+}
+.hidden {
+  opacity:0 !important;
+}
+.disabled {
+  display:none;
 }
 
 .langSwitcher {
@@ -102,6 +152,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
+  transition: opacity .3s;
 }
 
 .authButton {
@@ -111,32 +162,19 @@
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
   text-align: center;
-
+  white-space:nowrap;
+  transition: opacity .3s;
   padding: 4px;
 
-  &>* {
+  & > * {
     color: var(--secondary-color) !important;
   }
+}
+
+.toggleOverlaid {
+  margin-left: auto;
 }
 
 .logoutButton {
   cursor: pointer;
 }
-
-
-.FixButtonWrapper {
-  margin-left: auto;
-  margin-right: 50px;
-  .FixButton{
-  }
-}
-
-.CollapseButtonWrapper {
-  position: absolute;
-  right: 12px;
-  .CollapseButton{
-  }
-}
-
-
-////////////////
