@@ -151,11 +151,7 @@
   }
 
   &.collapsing{
-
-    //pointer-events: none;
-
     .CollapseButton{
-      //cursor: pointer;
       pointer-events: none;
       opacity: 0.5;
     }
