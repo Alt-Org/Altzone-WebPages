@@ -112,7 +112,11 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                     {hasScrollbar && (
                         <li
                             onTransitionEnd={handleTransitionEnd}
-                            className={classNames(cls.FixButtonWrapper, ModsUlAndLi, [cls.navItem])}
+                            className={classNames(
+                                cls.FixButtonWrapper,
+                                { ...ModsUlAndLi, [cls.fixed]: !isFixed },
+                                [cls.navItem],
+                            )}
                         >
                             <ToggleFixButton className={cls.FixButton} />
                         </li>

@@ -138,6 +138,9 @@
   margin-right: 50px;
   .FixButton{
   }
+  &.fixed{
+    margin-right: unset;
+  }
 }
 
 .CollapseButtonWrapper {
@@ -149,14 +152,10 @@
   .CollapseButton{
     cursor: pointer;
   }
-
   &.collapsing{
     .CollapseButton{
       pointer-events: none;
       opacity: 0.5;
     }
-
   }
-
-
 }
