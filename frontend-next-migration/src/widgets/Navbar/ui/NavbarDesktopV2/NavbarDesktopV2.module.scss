@@ -45,7 +45,7 @@
   opacity: 1;
   transform: translateX(0) scaleX(1);
   transform-origin: right;
-  transition: transform 0.5s ease-out 0.1s, opacity 0.5s ease-out 0.3s;
+  transition: transform 0.3s ease-out 0.5s, opacity 0.3s ease-out 0.5s;
   visibility: visible;
 
   display: flex;
@@ -57,7 +57,7 @@
     transform: translateX(-100px) scaleX(0.7);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
     overflow-x: hidden;
   }
 
