@@ -53,12 +53,6 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
         [cls.collapsed]: isCollapsed,
     } as Record<string, boolean>;
 
-    // const handleCollapseClick = () => {
-    //     if (!isAnimating) {
-    //         setIsAnimating(true);
-    //     }
-    // };
-
     const handleCollapseClick = () => {
         if (!isAnimating && !isCollapsed) {
             setIsAnimating(true);
