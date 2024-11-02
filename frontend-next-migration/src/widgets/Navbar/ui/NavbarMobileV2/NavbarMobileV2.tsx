@@ -38,7 +38,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { isFixed } = useFixed();
+    const { isFixed, toggleFixed } = useFixed();
     const hasScrollbar = useIsPageScrollbar();
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -167,7 +167,13 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 />
             </AppLink>
 
-            {hasScrollbar && <ToggleFixButton className={cls.FixedButton} />}
+            {hasScrollbar && (
+                <ToggleFixButton
+                    isFixed={isFixed}
+                    onClick={toggleFixed}
+                    className={cls.FixedButton}
+                />
+            )}
         </nav>
     );
 };
