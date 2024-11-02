@@ -17,56 +17,10 @@
   position: sticky;
 }
 
-//.siteNavContentList {
-//  min-height: 50px;
-//  padding: 0 10px 0 50px;
-//  background-color: black;
-//  border-radius: var(--border-radius-custom);
-//  border: var(--inverted-secondary-color) 2px solid;
-//  //display: flex;
-//  //align-items: center;
-//  //justify-content: flex-start;
-//  gap: 1em;
-//  list-style: none;
-//  z-index: 2;
-//  position: relative;
-//
-//  //max-width: 100%;
-//
-//  width: 100%;
-//  transition: width 0.4s ease-out, opacity 0.4s ease-out;
-//  &.collapsed {
-//    width: 50px;
-//    margin-left: auto;
-//  }
-//
-//}
-//
-//.siteNavContentListCollapsingPart{
-//  min-height: 50px;
-//  display: flex;
-//  align-items: center;
-//  justify-content: flex-start;
-//  gap: 1em;
-//
-//
-//  //width: 100%;
-//  //transition: opacity 0.4s ease-out;
-//
-//  &.collapsed {
-//    transform: translateX(calc(100% - 50px));
-//    //max-width: 50px !important;
-//    //width: 50px;
-//    margin-left: auto;
-//    opacity: 0;
-//  }
-//
-//}
+
 
 .siteNavContentList {
-  //min-height: 50px;
   height: 52px;
-
   padding: 0 10px 0 50px;
   background-color: black;
   border-radius: var(--border-radius-custom);
@@ -81,32 +35,30 @@
 }
 
 .siteNavContentList.collapsed {
-  //padding-right: 90%;
-
-  width: 50px; /* Уменьшение ширины при сворачивании */
-  padding-right: 10px;
+  width: 50px;
   opacity: 0.8;
-
 }
 
 .siteNavContentListCollapsingPart {
-  //min-height: 50px;
   height: 52px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1em;
-  transition: opacity 0.4s ease-out;
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+  transform-origin: right;
+  transition: transform 0.4s ease-out 0.1s, opacity 0.3s ease-out 0.2s;
+  visibility: visible;
 }
 
 .siteNavContentListCollapsingPart.collapsed {
-  //padding-right: 90%;
+  transform: translateX(-100px) scaleX(0.7);
   opacity: 0;
   visibility: hidden;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in 0.1s;
+  overflow-x: hidden;
 }
-
-
-
 
 
 .appLinkLogo {
@@ -192,7 +144,7 @@
 .CollapseButtonWrapper {
   position: absolute;
   right: 12px;
-  top: 8.5px;
+  top: 10px;
 
   opacity: 1!important;
   .CollapseButton{

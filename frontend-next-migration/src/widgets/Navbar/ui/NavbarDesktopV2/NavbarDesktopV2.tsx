@@ -51,63 +51,59 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
         <nav
             className={classNames(cls.siteNav, mods, [className])}
             style={style}
+            aria-label="Nav menu"
         >
             <Container>
                 <ul
                     className={classNames(cls.siteNavContentList, { [cls.collapsed]: isCollapsed })}
                 >
-                    {
-                        // !isCollapsed &&
-                        <div
-                            className={classNames(cls.siteNavContentListCollapsingPart, {
-                                [cls.collapsed]: isCollapsed,
-                            })}
+                    <div
+                        className={classNames(cls.siteNavContentListCollapsingPart, {
+                            [cls.collapsed]: isCollapsed,
+                        })}
+                    >
+                        {navbarBuild.menu.map((item) => (
+                            <NavItem
+                                item={item}
+                                key={item.name}
+                                navbarBuild={navbarBuild}
+                            />
+                        ))}
+
+                        <li
+                            className={cls.navItem}
+                            key={'switcher key'}
                         >
-                            {navbarBuild.menu.map((item) => (
-                                <NavItem
-                                    item={item}
-                                    key={item.name}
-                                    navbarBuild={navbarBuild}
-                                />
-                            ))}
+                            <LangSwitcher className={cls.langSwitcher} />
+                        </li>
 
-                            <li
-                                className={cls.navItem}
-                                key={'switcher key'}
-                            >
-                                <LangSwitcher className={cls.langSwitcher} />
+                        <li
+                            className={cls.navItem + ' ' + cls.authButton}
+                            key={'auth key'}
+                        >
+                            {permissionToLogin.isGranted ? (
+                                <AppLink
+                                    theme={AppLinkTheme.PRIMARY}
+                                    to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
+                                >
+                                    <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
+                                </AppLink>
+                            ) : permissionToLogout.isGranted ? (
+                                <div
+                                    className={cls.logoutButton}
+                                    onClick={() => logout()}
+                                >
+                                    {t(`logout`)}
+                                </div>
+                            ) : null}
+                        </li>
+
+                        {hasScrollbar && (
+                            <li className={cls.FixButtonWrapper}>
+                                <ToggleFixButton className={cls.FixButton} />
                             </li>
-
-                            <li
-                                className={cls.navItem + ' ' + cls.authButton}
-                                key={'auth key'}
-                            >
-                                {permissionToLogin.isGranted ? (
-                                    <AppLink
-                                        theme={AppLinkTheme.PRIMARY}
-                                        to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
-                                    >
-                                        <span>
-                                            {t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}
-                                        </span>
-                                    </AppLink>
-                                ) : permissionToLogout.isGranted ? (
-                                    <div
-                                        className={cls.logoutButton}
-                                        onClick={() => logout()}
-                                    >
-                                        {t(`logout`)}
-                                    </div>
-                                ) : null}
-                            </li>
-
-                            {hasScrollbar && (
-                                <li className={cls.FixButtonWrapper}>
-                                    <ToggleFixButton className={cls.FixButton} />
-                                </li>
-                            )}
-                        </div>
-                    }
+                        )}
+                    </div>
 
                     {isFixed && (
                         <li className={cls.CollapseButtonWrapper}>
