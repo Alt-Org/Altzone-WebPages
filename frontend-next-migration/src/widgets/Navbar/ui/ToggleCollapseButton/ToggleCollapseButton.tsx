@@ -9,14 +9,13 @@ type Props = {
     className?: string;
 };
 
-// todo remove v2 when ready
 export function ToggleCollapseButton(props: Props) {
     const { className = '' } = props;
 
     const { isCollapsed, toggleCollapsed } = useCollapsed();
 
     return (
-        <div className={classNames(cls.collapsedButton, {}, [className])}>
+        <div className={classNames(cls.ToggleCollapseButton, {}, [className])}>
             <button onClick={toggleCollapsed}>
                 <Image
                     loading="eager"
