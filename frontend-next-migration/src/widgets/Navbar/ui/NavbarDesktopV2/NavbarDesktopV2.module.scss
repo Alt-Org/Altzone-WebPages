@@ -12,16 +12,12 @@
   position: relative;
   height: var(--navbar-height);
   user-select: none;
-
   &.collapsing{
-    overflow-x: hidden;
+    overflow: hidden;
   }
-
   &.collapsed{
-    overflow-x: hidden;
+    overflow: hidden;
   }
-
-
 }
 
 .fixed {
