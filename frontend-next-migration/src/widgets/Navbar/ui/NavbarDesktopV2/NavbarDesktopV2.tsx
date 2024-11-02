@@ -27,7 +27,7 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', navBarType = 'Default' } = props;
 
     const { isFixed } = useFixed();
-    const { isCollapsed } = useCollapsed();
+    const { isCollapsed, toggleCollapsed } = useCollapsed();
 
     const hasScrollbar = useIsPageScrollbar();
 
@@ -54,8 +54,9 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
     } as Record<string, boolean>;
 
     const handleCollapseClick = () => {
-        if (!isAnimating && !isCollapsed) {
+        if (!isAnimating) {
             setIsAnimating(true);
+            toggleCollapsed();
         }
     };
 
@@ -88,6 +89,7 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                     </li>
 
                     <li
+                        onTransitionEnd={handleTransitionEnd}
                         className={classNames(cls.navItem, ModsUlAndLi, [cls.authButton])}
                         key={'auth key'}
                     >
@@ -121,9 +123,11 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                             className={classNames(cls.CollapseButtonWrapper, {
                                 [cls.collapsing]: isAnimating,
                             })}
-                            onClick={handleCollapseClick}
+                            // onClick={handleCollapseClick}
                         >
                             <ToggleCollapseButton
+                                onClick={handleCollapseClick}
+                                isCollapsed={isCollapsed}
                                 className={cls.CollapseButton}
                                 disabled={isAnimating}
                             />
