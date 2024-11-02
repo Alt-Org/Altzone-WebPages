@@ -25,7 +25,8 @@ export const CollapsedProvider = ({ children }: { children: ReactNode }) => {
     const toggleCollapsed = () => {
         const newValue = !isCollapsed;
         setIsCollapsed(newValue);
-        localStorage.setItem(LS_KEYS.IsNavBarCollapsed, newValue.toString());
+        // todo uncomment when ready
+        // localStorage.setItem(LS_KEYS.IsNavBarCollapsed, newValue.toString());
     };
 
     return (

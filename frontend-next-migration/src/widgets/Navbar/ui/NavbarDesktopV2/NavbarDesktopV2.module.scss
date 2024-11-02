@@ -10,6 +10,7 @@
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
   position: relative;
+
 }
 
 .fixed {
@@ -17,7 +18,8 @@
 }
 
 .siteNavContentList {
-  padding-left: 50px;
+  min-height: 50px;
+  padding: 0 10px 0 50px;
   background-color: black;
   border-radius: var(--border-radius-custom);
   border: var(--inverted-secondary-color) 2px solid;
@@ -117,20 +119,11 @@
 .FixButtonWrapper {
   margin-left: auto;
   .FixButton{
-    //padding: 10px 0;
-    //height: 30px;
-
-
-
   }
 }
 
 .CollapseButtonWrapper{
   margin-left: auto;
   .CollapseButton{
-    //height: 30px;
-    //width: 40px;
-    //
-    //padding: 10px 0;
   }
 }
