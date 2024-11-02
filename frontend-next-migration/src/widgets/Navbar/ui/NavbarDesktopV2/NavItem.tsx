@@ -56,7 +56,7 @@ const NavItem = memo((props: NavItemProps) => {
         return (
             <li
                 key={item.name}
-                className={classNames(cls.navItem, {}, [className])}
+                className={classNames('', {}, [className])}
             >
                 <DropdownWrapper
                     elements={localizedElements}
@@ -72,7 +72,10 @@ const NavItem = memo((props: NavItemProps) => {
 
     if (itemType === 'navLogo') {
         return (
-            <li key={item.src}>
+            <li
+                key={item.src}
+                className={className}
+            >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     to={item.path}
