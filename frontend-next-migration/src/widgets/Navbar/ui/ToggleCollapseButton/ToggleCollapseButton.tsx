@@ -7,16 +7,18 @@ import { useCollapsed } from '../../model/CollapsedProvider';
 
 type Props = {
     className?: string;
+    disabled?: boolean;
 };
 
 export function ToggleCollapseButton(props: Props) {
-    const { className = '' } = props;
+    const { className = '', disabled = false } = props;
 
     const { isCollapsed, toggleCollapsed } = useCollapsed();
 
     return (
         <button
             onClick={toggleCollapsed}
+            disabled={disabled}
             className={classNames(cls.ToggleCollapseButton, {}, [className])}
         >
             <Image
