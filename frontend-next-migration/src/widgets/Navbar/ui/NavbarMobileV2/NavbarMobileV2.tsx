@@ -11,7 +11,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { defineNs } from '../../model/defineNs';
 import { useFixed } from '../../model/FixedProvider';
 import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
-import { FixedButton } from '../FixedButton/FixedButton';
+import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobileV2.module.scss';
 
 interface NavbarTouchProps {
@@ -167,7 +167,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 />
             </AppLink>
 
-            {hasScrollbar && <FixedButton className={cls.FixedButton} />}
+            {hasScrollbar && <ToggleFixButton className={cls.FixedButton} />}
         </nav>
     );
 };

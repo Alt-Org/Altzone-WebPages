@@ -9,9 +9,11 @@ import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { defineNs } from '../../model/defineNs';
 import { useFixed } from '../../model/FixedProvider';
 import { NavbarBuild, NavBarType } from '../../model/types';
-import { FixedButton } from '../FixedButton/FixedButton';
+import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import cls from './NavbarDesktopV2.module.scss';
 import NavItem from './NavItem';
+import { useCollapsed } from '../../model/CollapsedProvider';
+import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
 
 type NavbarProps = {
     marginTop?: number;
@@ -25,6 +27,8 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', navBarType = 'Default' } = props;
 
     const { isFixed } = useFixed();
+    const { isCollapsed } = useCollapsed();
+
     const hasScrollbar = useIsPageScrollbar();
 
     const { checkPermissionFor } = useUserPermissionsV2();
@@ -73,9 +77,7 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                         {permissionToLogin.isGranted ? (
                             <AppLink
                                 theme={AppLinkTheme.PRIMARY}
-                                // to={navbarMenuLoginProfile?.login?.path || ''}
                                 to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
-                                // key={navbarMenuLoginProfile?.login?.path}
                             >
                                 <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
                             </AppLink>
@@ -89,11 +91,33 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                         ) : null}
                     </li>
 
-                    {hasScrollbar && (
+                    {hasScrollbar && !isCollapsed && (
+                        // <li className={cls.toggleOverlaid + " " + hidden + " " + disabled}>
                         <li className={cls.toggleOverlaid}>
-                            <FixedButton />
+                            <ToggleFixButton />
                         </li>
                     )}
+
+                    {
+                        isFixed && (
+                            <li className={cls.collapse}>
+                                <ToggleCollapseButton className={cls.visibilityButton} />
+                            </li>
+                        )
+                        // (isCollapsed ? (
+                        //     <li className={cls.collapseButtonCollapsed}>
+                        //         <CollapsedButtonV2
+                        //             className={cls.visibilityButton}
+                        //         />
+                        //     </li>
+                        // ) : (
+                        //     <li className={cls.collapseButtonExpanded}>
+                        //         <CollapsedButtonV2
+                        //             className={cls.visibilityButton}
+                        //         />
+                        //     </li>
+                        // ))
+                    }
                 </ul>
             </Container>
         </nav>

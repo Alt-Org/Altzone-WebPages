@@ -1,5 +1,5 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from '@/widgets/Navbar/ui/Button/Button.module.scss';
+import cls from './ToggleCollapseButton.module.scss';
 import Image from 'next/image';
 import visible from '@/shared/assets/images/visible.png';
 import invisible from '@/shared/assets/images/unvisible.png';
@@ -10,7 +10,7 @@ type Props = {
 };
 
 // todo remove v2 when ready
-export function CollapsedButtonV2(props: Props) {
+export function ToggleCollapseButton(props: Props) {
     const { className = '' } = props;
 
     const { isCollapsed, toggleCollapsed } = useCollapsed();
