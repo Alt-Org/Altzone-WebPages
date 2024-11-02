@@ -87,12 +87,12 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                                 <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
                             </AppLink>
                         ) : permissionToLogout.isGranted ? (
-                            <div
+                            <p
                                 className={cls.logoutButton}
                                 onClick={() => logout()}
                             >
                                 {t(`logout`)}
-                            </div>
+                            </p>
                         ) : null}
                     </li>
 
