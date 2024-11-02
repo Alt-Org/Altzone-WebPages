@@ -89,7 +89,6 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                     </li>
 
                     <li
-                        onTransitionEnd={handleTransitionEnd}
                         className={classNames(cls.navItem, ModsUlAndLi, [cls.authButton])}
                         key={'auth key'}
                     >
