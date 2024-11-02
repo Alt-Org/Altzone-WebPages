@@ -1,0 +1,31 @@
+.buttonImage {
+  display: block;
+  width:100%;
+  margin-left: auto!important;
+  margin-right: auto!important;
+
+
+}
+.collapsedButton{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 0 4px var(--inverted-primary-color);
+  transform: scale(70%);
+  min-width: 50px;
+
+
+  border-radius: var(--border-radius-custom);
+  margin-left: auto;
+  background-color: var(--secondary-color);
+  font-weight: 900;
+  & button{
+    color: black;
+    border: none;
+    margin: auto;
+    font: inherit;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+}
