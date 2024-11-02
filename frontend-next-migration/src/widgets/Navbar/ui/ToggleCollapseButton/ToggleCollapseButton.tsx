@@ -15,16 +15,17 @@ export function ToggleCollapseButton(props: Props) {
     const { isCollapsed, toggleCollapsed } = useCollapsed();
 
     return (
-        <div className={classNames(cls.ToggleCollapseButton, {}, [className])}>
-            <button onClick={toggleCollapsed}>
-                <Image
-                    loading="eager"
-                    alt="visibility"
-                    src={isCollapsed ? invisible : visible}
-                    width={42}
-                    className={cls.buttonImage}
-                />
-            </button>
-        </div>
+        <button
+            onClick={toggleCollapsed}
+            className={classNames(cls.ToggleCollapseButton, {}, [className])}
+        >
+            <Image
+                loading="eager"
+                alt="visibility"
+                src={isCollapsed ? invisible : visible}
+                width={42}
+                className={cls.buttonImage}
+            />
+        </button>
     );
 }

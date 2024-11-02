@@ -8,12 +8,13 @@ type Props = {
 
 export function ToggleFixButton(props: Props) {
     const { className = '' } = props;
-
     const { isFixed, toggleFixed } = useFixed();
-
     return (
-        <div className={classNames(cls.ToggleFixButton, {}, [className])}>
-            <button onClick={toggleFixed}>{isFixed ? '📍' : '📌'}</button>
-        </div>
+        <button
+            onClick={toggleFixed}
+            className={classNames(cls.ToggleFixButton, {}, [className])}
+        >
+            {isFixed ? '📍' : '📌'}
+        </button>
     );
 }

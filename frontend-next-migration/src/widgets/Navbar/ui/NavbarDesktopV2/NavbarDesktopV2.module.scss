@@ -109,10 +109,15 @@
   }
 }
 
-.toggleOverlaid {
+.logoutButton {
+  cursor: pointer;
+}
+
+
+.FixButtonWrapper {
   margin-left: auto;
 }
 
-.logoutButton {
-  cursor: pointer;
+.CollapseButtonWrapper{
+  margin-left: auto;
 }

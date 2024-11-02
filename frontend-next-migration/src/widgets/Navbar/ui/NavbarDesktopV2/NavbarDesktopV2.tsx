@@ -93,14 +93,14 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
 
                     {hasScrollbar && !isCollapsed && (
                         // <li className={cls.toggleOverlaid + " " + hidden + " " + disabled}>
-                        <li className={cls.toggleOverlaid}>
+                        <li className={cls.FixButtonWrapper}>
                             <ToggleFixButton />
                         </li>
                     )}
 
                     {
                         isFixed && (
-                            <li className={cls.collapse}>
+                            <li className={cls.CollapseButtonWrapper}>
                                 <ToggleCollapseButton className={cls.visibilityButton} />
                             </li>
                         )

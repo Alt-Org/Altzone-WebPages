@@ -1,18 +1,9 @@
-.ToggleFixButton{
+.ToggleFixButton {
   box-shadow: 0 0 0 4px var(--inverted-primary-color);
-  transform: scale(70%);
   min-width: 40px;
   border-radius: var(--border-radius-custom);
-  margin-left: auto;
   background-color: var(--secondary-color);
-
-  & button{
-     color: inherit;
-     border: none;
-     padding: 0;
-     font: inherit;
-     cursor: pointer;
-     background-color: rgba(0, 0, 0, 0.05);
-  }
-
+  color: inherit;
+  border: none;
+  cursor: pointer;
 }
