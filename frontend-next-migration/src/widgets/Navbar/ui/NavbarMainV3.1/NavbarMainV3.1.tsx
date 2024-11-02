@@ -3,7 +3,7 @@
 dependencies such as `memo` from React, and components like `NavbarDesktopV2` and `NavbarMobileV2`.
 It also imports some types and functions related to the navbar. */
 import { memo, useMemo, useState } from 'react';
-import NavbarDesktopV3 from '../NavbarDesktopV3/NavbarDesktopV3';
+// import NavbarDesktopV31 from '../NavbarDesktopV31/NavbarDesktopV31';
 import NavbarMobileV3 from '../NavbarMobileV3/NavbarMobileV3';
 import { NavBarType } from '../../model/types';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSizeV3';
@@ -11,6 +11,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { LS_KEYS } from '@/shared/const/LS_KEYS';
 import { FixedProvider } from '../../model/FixedProvider';
 import { CollapsedProvider } from '../../model/CollapsedProvider';
+import NavbarDesktopV31 from '../NavbarDesktopV3.1/NavbarDesktopV3.1';
 
 interface NavbarMainProps {
     marginTop?: number;
@@ -43,7 +44,7 @@ const getInitialCollapsedState = (): boolean => {
  * The `Provider` component has been updated to manage the collapse state.
  */
 
-export const NavbarMainV3 = memo((props: NavbarMainProps) => {
+export const NavbarMainV31 = memo((props: NavbarMainProps) => {
     const { marginTop, className, navBarType = 'Default' } = props;
 
     const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState);
@@ -84,12 +85,11 @@ export const NavbarMainV3 = memo((props: NavbarMainProps) => {
                         fixedAndCollapsed={{ isFixed, toggleFixed, isCollapsed, toggleCollapsed }}
                     />
                 ) : (
-                    <NavbarDesktopV3
+                    <NavbarDesktopV31
                         marginTop={marginTop}
                         className={className}
                         navbarBuild={navbarBuild}
                         navBarType={navBarType}
-                        fixedAndCollapsed={{ isFixed, toggleFixed, isCollapsed, toggleCollapsed }}
                     />
                 )}
             </CollapsedProvider>
@@ -97,4 +97,4 @@ export const NavbarMainV3 = memo((props: NavbarMainProps) => {
     );
 });
 
-NavbarMainV3.displayName = 'NavbarMainV3';
+NavbarMainV31.displayName = 'NavbarMainV31';

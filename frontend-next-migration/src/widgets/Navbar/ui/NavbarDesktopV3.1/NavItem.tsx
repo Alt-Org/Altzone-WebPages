@@ -2,7 +2,7 @@ import { NavbarBuild, NavbarMenuItem } from '../../model/types';
 import { memo } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './NavbarDesktopV3.module.scss';
+import cls from './NavbarDesktopV3.1.module.scss';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import Image from 'next/image';

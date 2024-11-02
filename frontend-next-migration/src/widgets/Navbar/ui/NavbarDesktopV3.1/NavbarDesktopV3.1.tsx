@@ -1,6 +1,6 @@
 import { CSSProperties, memo, useEffect, useState } from 'react';
 import { getRouteMainPage } from '@/shared/appLinks/RoutePaths';
-import cls from './NavbarDesktopV3.module.scss';
+import cls from './NavbarDesktopV3.1.module.scss';
 import navLogo from '@/shared/assets/images/altLogo.png';
 import { NavbarBuild, NavBarType } from '../../model/types';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -10,16 +10,15 @@ import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import NavItem from './NavItem';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
+import { FixedButton, CollapsedButton } from '../Button/Button';
 import { defineNs } from '../../model/defineNs';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import Image from 'next/image';
-import { FixedAndCollapsedType } from '../NavbarMainV3/NavbarMainV3';
-import { useFixed } from '@/widgets/Navbar/model/FixedProvider';
-import { useCollapsed } from '@/widgets/Navbar/model/CollapsedProvider';
-import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
-import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+import { useFixed } from '../../model/FixedProvider';
+import { useCollapsed } from '../../model/CollapsedProvider';
+import { ToggleCollapseButton } from '@/widgets/Navbar/ui/ToggleCollapseButton/ToggleCollapseButton';
 
-type Props = {
+type NavbarProps = {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild;
@@ -32,11 +31,11 @@ type Props = {
  * as the fixed state in the pin/unpin feature.`useState` hooks manage CSS transitions in the new functionality.
  */
 
-const NavbarDesktopV3 = memo((props: Props) => {
+const NavbarDesktopV3 = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, navBarType = 'Default' } = props;
 
-    const { isFixed } = useFixed();
-    const { isCollapsed } = useCollapsed();
+    const { isFixed, toggleFixed } = useFixed();
+    const { isCollapsed, toggleCollapsed } = useCollapsed();
 
     const [hidden, setHidden] = useState(isCollapsed ? cls.hidden : cls.visible);
     const [disabled, setDisabled] = useState(isCollapsed ? cls.disabled : '');
@@ -141,18 +140,34 @@ const NavbarDesktopV3 = memo((props: Props) => {
 
                     {hasScrollbar && !isCollapsed && (
                         <li className={cls.toggleOverlaid + ' ' + hidden + ' ' + disabled}>
-                            <ToggleFixButton />
+                            <FixedButton
+                                isFixed={isFixed}
+                                toggleFixed={toggleFixed}
+                            />
                         </li>
                     )}
 
                     {isFixed &&
                         (isCollapsed ? (
                             <li className={cls.collapseButtonCollapsed}>
-                                <ToggleCollapseButton className={cls.visibilityButton} />
+                                <ToggleCollapseButton
+                                    className={cls.visibilityButton}
+                                    // isCollapsed={isCollapsed}
+                                    // toggleCollapsed={toggleCollapsed}
+                                />
+                                {/*<CollapsedButton*/}
+                                {/*    className={cls.visibilityButton}*/}
+                                {/*    isCollapsed={isCollapsed}*/}
+                                {/*    toggleCollapsed={toggleCollapsed}*/}
+                                {/*/>*/}
                             </li>
                         ) : (
                             <li className={cls.collapseButtonExpanded}>
-                                <ToggleCollapseButton className={cls.visibilityButton} />
+                                <ToggleCollapseButton
+                                    className={cls.visibilityButton}
+                                    // isCollapsed={isCollapsed}
+                                    // toggleCollapsed={toggleCollapsed}
+                                />
                             </li>
                         ))}
                 </ul>
