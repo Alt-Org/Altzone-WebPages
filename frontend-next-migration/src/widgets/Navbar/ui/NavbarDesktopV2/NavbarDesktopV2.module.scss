@@ -10,7 +10,7 @@
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
   position: relative;
-
+  overflow: hidden;
 }
 
 .fixed {
@@ -151,13 +151,12 @@
 
   &.collapsing{
 
-    pointer-events: none;
+    //pointer-events: none;
 
     .CollapseButton{
       //cursor: pointer;
       pointer-events: none;
       opacity: 0.5;
-      cursor: help;
     }
 
   }

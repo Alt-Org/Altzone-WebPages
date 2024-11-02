@@ -39,24 +39,32 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
 
     const ns = defineNs(navBarType);
     const { t } = useClientTranslation(ns);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
         [cls.collapsed]: isCollapsed,
+        [cls.collapsing]: isAnimating,
     } as Record<string, boolean>;
 
     const ModsUlAndLi: Record<string, boolean> = {
         [cls.collapsed]: isCollapsed,
     } as Record<string, boolean>;
 
-    const [isAnimating, setIsAnimating] = useState(false);
+    // const handleCollapseClick = () => {
+    //     if (!isAnimating) {
+    //         setIsAnimating(true);
+    //     }
+    // };
+
     const handleCollapseClick = () => {
-        if (!isAnimating) {
+        if (!isAnimating && !isCollapsed) {
             setIsAnimating(true);
         }
     };
+
     const handleTransitionEnd = () => {
         setIsAnimating(false);
     };
