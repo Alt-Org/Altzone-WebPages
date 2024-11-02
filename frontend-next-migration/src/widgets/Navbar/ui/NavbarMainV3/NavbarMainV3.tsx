@@ -6,7 +6,7 @@ import { memo, useMemo, useState } from 'react';
 import NavbarDesktopV3 from '../NavbarDesktopV3/NavbarDesktopV3';
 import NavbarMobileV3 from '../NavbarMobileV3/NavbarMobileV3';
 import { NavBarType } from '../../model/types';
-import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
+import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSizeV3';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { LS_KEYS } from '@/shared/const/LS_KEYS';
 
