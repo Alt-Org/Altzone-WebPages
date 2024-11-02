@@ -17,39 +17,97 @@
   position: sticky;
 }
 
+//.siteNavContentList {
+//  min-height: 50px;
+//  padding: 0 10px 0 50px;
+//  background-color: black;
+//  border-radius: var(--border-radius-custom);
+//  border: var(--inverted-secondary-color) 2px solid;
+//  //display: flex;
+//  //align-items: center;
+//  //justify-content: flex-start;
+//  gap: 1em;
+//  list-style: none;
+//  z-index: 2;
+//  position: relative;
+//
+//  //max-width: 100%;
+//
+//  width: 100%;
+//  transition: width 0.4s ease-out, opacity 0.4s ease-out;
+//  &.collapsed {
+//    width: 50px;
+//    margin-left: auto;
+//  }
+//
+//}
+//
+//.siteNavContentListCollapsingPart{
+//  min-height: 50px;
+//  display: flex;
+//  align-items: center;
+//  justify-content: flex-start;
+//  gap: 1em;
+//
+//
+//  //width: 100%;
+//  //transition: opacity 0.4s ease-out;
+//
+//  &.collapsed {
+//    transform: translateX(calc(100% - 50px));
+//    //max-width: 50px !important;
+//    //width: 50px;
+//    margin-left: auto;
+//    opacity: 0;
+//  }
+//
+//}
+
 .siteNavContentList {
-  min-height: 50px;
+  //min-height: 50px;
+  height: 52px;
+
   padding: 0 10px 0 50px;
   background-color: black;
   border-radius: var(--border-radius-custom);
   border: var(--inverted-secondary-color) 2px solid;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   gap: 1em;
   list-style: none;
   z-index: 2;
   position: relative;
-  //transition: width 0.3s ease, margin-left 0.3s ease;
+  width: 100%;
+  transition: width 0.4s ease-out, padding-right 0.4s ease-out, opacity 0.4s ease-out;
+  margin-left: auto;
+}
 
-  transition: max-width 3s ease, opacity 1s ease, transform 3s ease;
-  opacity: 1;
-  //transform: translateX(0);
+.siteNavContentList.collapsed {
+  //padding-right: 90%;
 
-  &.collapsed {
-    max-width: 50px !important;
-    //opacity: 0;
-    //transform: translateX(100%);
-  }
-
-
-  &.collapsed {
-    //max-width: 50px!important;
-    margin-left: auto;
-  }
-
+  width: 50px; /* Уменьшение ширины при сворачивании */
+  padding-right: 10px;
+  opacity: 0.8;
 
 }
+
+.siteNavContentListCollapsingPart {
+  //min-height: 50px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  transition: opacity 0.4s ease-out;
+}
+
+.siteNavContentListCollapsingPart.collapsed {
+  //padding-right: 90%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+
+
 
 .appLinkLogo {
   display: block;
@@ -134,9 +192,10 @@
 .CollapseButtonWrapper {
   position: absolute;
   right: 12px;
+  top: 8.5px;
+
+  opacity: 1!important;
   .CollapseButton{
+    cursor: pointer;
   }
 }
-
-
-////////////////

@@ -56,8 +56,13 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                 <ul
                     className={classNames(cls.siteNavContentList, { [cls.collapsed]: isCollapsed })}
                 >
-                    {!isCollapsed && (
-                        <>
+                    {
+                        // !isCollapsed &&
+                        <div
+                            className={classNames(cls.siteNavContentListCollapsingPart, {
+                                [cls.collapsed]: isCollapsed,
+                            })}
+                        >
                             {navbarBuild.menu.map((item) => (
                                 <NavItem
                                     item={item}
@@ -101,8 +106,8 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                                     <ToggleFixButton className={cls.FixButton} />
                                 </li>
                             )}
-                        </>
-                    )}
+                        </div>
+                    }
 
                     {isFixed && (
                         <li className={cls.CollapseButtonWrapper}>
