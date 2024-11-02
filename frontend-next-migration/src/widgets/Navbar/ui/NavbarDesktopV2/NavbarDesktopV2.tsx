@@ -123,7 +123,10 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                             })}
                             onClick={handleCollapseClick}
                         >
-                            <ToggleCollapseButton className={cls.CollapseButton} />
+                            <ToggleCollapseButton
+                                className={cls.CollapseButton}
+                                disabled={isAnimating}
+                            />
                         </li>
                     )}
                 </ul>
