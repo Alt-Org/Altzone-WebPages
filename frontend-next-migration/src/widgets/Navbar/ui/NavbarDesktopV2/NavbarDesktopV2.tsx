@@ -26,7 +26,7 @@ type NavbarProps = {
 const NavbarDesktopV2 = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', navBarType = 'Default' } = props;
 
-    const { isFixed } = useFixed();
+    const { isFixed, toggleFixed } = useFixed();
     const { isCollapsed, toggleCollapsed } = useCollapsed();
 
     const hasScrollbar = useIsPageScrollbar();
@@ -118,7 +118,11 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
                                 [cls.navItem],
                             )}
                         >
-                            <ToggleFixButton className={cls.FixButton} />
+                            <ToggleFixButton
+                                onClick={toggleFixed}
+                                isFixed={isFixed}
+                                className={cls.FixButton}
+                            />
                         </li>
                     )}
                     {isFixed && (

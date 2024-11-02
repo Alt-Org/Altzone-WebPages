@@ -3,7 +3,6 @@ import cls from './ToggleCollapseButton.module.scss';
 import Image from 'next/image';
 import visible from '@/shared/assets/images/visible.png';
 import invisible from '@/shared/assets/images/unvisible.png';
-// import { useCollapsed } from '../../model/CollapsedProvider';
 
 type Props = {
     className?: string;
