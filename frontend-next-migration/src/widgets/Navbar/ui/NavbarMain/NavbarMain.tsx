@@ -9,6 +9,7 @@ import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAnd
 import { NavBarType } from '../../model/types';
 import NavbarDesktopV2 from '../NavbarDesktopV2/NavbarDesktopV2';
 import NavbarMobileV2 from '../NavbarMobileV2/NavbarMobileV2';
+import { CollapsedProvider } from '../../model/CollapsedProvider';
 
 interface NavbarMainProps {
     marginTop?: number;
@@ -32,21 +33,23 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
     return (
         <FixedProvider>
-            {isMobileSize || isTabletSize ? (
-                <NavbarMobileV2
-                    marginTop={marginTop}
-                    className={className}
-                    navbarBuild={navbarBuild}
-                    navBarType={navBarType}
-                />
-            ) : (
-                <NavbarDesktopV2
-                    marginTop={marginTop}
-                    className={className}
-                    navbarBuild={navbarBuild}
-                    navBarType={navBarType}
-                />
-            )}
+            <CollapsedProvider>
+                {isMobileSize || isTabletSize ? (
+                    <NavbarMobileV2
+                        marginTop={marginTop}
+                        className={className}
+                        navbarBuild={navbarBuild}
+                        navBarType={navBarType}
+                    />
+                ) : (
+                    <NavbarDesktopV2
+                        marginTop={marginTop}
+                        className={className}
+                        navbarBuild={navbarBuild}
+                        navBarType={navBarType}
+                    />
+                )}
+            </CollapsedProvider>
         </FixedProvider>
     );
 });
