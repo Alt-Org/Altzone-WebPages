@@ -1,4 +1,3 @@
-import { Footer } from '@/widgets/Footer';
 import { ReactNode } from 'react';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 
@@ -11,7 +10,6 @@ export default function Layout({ children }: Props) {
         <>
             {children}
             <HorizontalLines />
-            <Footer />
         </>
     );
 }

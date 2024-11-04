@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { Footer } from '@/widgets/Footer';
 import { ScrollTop } from '@/features/ScrollTop';
 
 type Props = {
@@ -10,7 +9,6 @@ export default function Layout({ children }: Props) {
     return (
         <>
             {children}
-            <Footer />
             <ScrollTop />
         </>
     );
