@@ -1,63 +1,68 @@
 'use client';
-import { CustomForm } from '@/shared/ui/CustomForm';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
 import { useRegisterForm } from '../../model/useRegisterForm';
-import cls from './RegisterForm.module.scss';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { BaseAuthForm } from '@/entities/Auth';
 
 type Props = {
     toLoginPage: string;
 };
 
-export const RegisterForm = ({ toLoginPage }: Props) => {
-    const { t } = useClientTranslation('auth');
+export const RegisterForm = (props: Props) => {
+    const { toLoginPage } = props;
 
+    const { t } = useClientTranslation('auth');
     const { register, handleSubmit, onFormSubmit, errors } = useRegisterForm(toLoginPage);
 
     return (
-        <CustomForm
-            className={cls.Form}
+        <BaseAuthForm
+            header={t('register')}
+            fields={
+                <>
+                    <BaseAuthForm.InputField
+                        key={'username'}
+                        error={errors?.username?.message && t(`${errors.username.message}`)}
+                        label={t('username')}
+                        inputProps={{ ...register('username'), required: true }}
+                    />
+                    <BaseAuthForm.InputField
+                        key={'password'}
+                        error={errors?.password?.message && t(`${errors.password.message}`)}
+                        label={t('password')}
+                        inputProps={{ ...register('password'), type: 'password', required: true }}
+                    />
+                    <BaseAuthForm.InputField
+                        key={'repeatPassword'}
+                        error={
+                            errors?.repeatPassword?.message && t(`${errors.repeatPassword.message}`)
+                        }
+                        label={t('password_again')}
+                        inputProps={{
+                            ...register('repeatPassword'),
+                            type: 'password',
+                            required: true,
+                        }}
+                    />
+                    <BaseAuthForm.Checkbox
+                        key={'ageConsent'}
+                        error={errors?.ageConsent?.message && t(`${errors.ageConsent.message}`)}
+                        label={t('age_Consent')}
+                        inputProps={{ ...register('ageConsent', { required: true }) }}
+                    />
+                </>
+            }
+            actions={
+                <>
+                    <BaseAuthForm.SubmitButton>{t('send')}</BaseAuthForm.SubmitButton>
+                    <AppLink
+                        theme={AppLinkTheme.PRIMARY}
+                        to={toLoginPage}
+                    >
+                        {t('text_to_login')}
+                    </AppLink>
+                </>
+            }
             onSubmit={handleSubmit(onFormSubmit)}
-        >
-            <CustomForm.Header>{t('register')}</CustomForm.Header>
-
-            <CustomForm.InputField
-                key={'username'}
-                error={errors?.username?.message && t(`${errors?.username?.message}`)}
-                label={t('username')}
-                inputProps={{ ...register('username'), required: true }}
-            />
-
-            <CustomForm.InputField
-                key={'password'}
-                error={errors?.password?.message && t(`${errors?.password?.message}`)}
-                label={t('password')}
-                inputProps={{ ...register('password'), type: 'password', required: true }}
-            />
-
-            <CustomForm.InputField
-                key={'repeatPassword'}
-                error={errors?.repeatPassword?.message && t(`${errors?.repeatPassword?.message}`)}
-                label={t('password_again')}
-                inputProps={{ ...register('repeatPassword'), type: 'password', required: true }}
-            />
-
-            <CustomForm.Checkbox
-                key={'ageConsent'}
-                error={errors?.ageConsent?.message && t(`${errors?.ageConsent?.message}`)}
-                label={t('age_Consent')}
-                inputProps={{ ...register('ageConsent', { required: true }) }}
-            />
-
-            <CustomForm.Button type="submit">{t('send')}</CustomForm.Button>
-
-            <AppLink
-                theme={AppLinkTheme.PRIMARY}
-                to={toLoginPage}
-                className={cls.loginLink}
-            >
-                {t('text_to_login')}
-            </AppLink>
-        </CustomForm>
+        />
     );
 };

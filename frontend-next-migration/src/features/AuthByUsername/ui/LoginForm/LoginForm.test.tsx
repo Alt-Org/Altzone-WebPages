@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import { useLoginForm } from '../../model/useLoginForm';
 import { LoginForm } from './LoginForm';
@@ -83,6 +83,5 @@ describe('LoginForm', () => {
         const registerLink = screen.getByRole('link', { name: 'text_to_register' });
         expect(registerLink).toBeInTheDocument();
         expect(registerLink).toHaveAttribute('href', '/register');
-        expect(registerLink).toHaveClass('registerLink');
     });
 });
