@@ -39,7 +39,16 @@ const meta = {
         content: '<p>This is the sample content.</p>',
         entityName: 'SampleEntity',
     },
+    tags: ['autodocs'],
     parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
         docs: {
             description: {
                 component:
@@ -47,7 +56,6 @@ const meta = {
             },
         },
     },
-    tags: ['autodocs'],
 } satisfies Meta<typeof EditorPreview>;
 
 export default meta;

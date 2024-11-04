@@ -20,7 +20,16 @@ const meta: Meta<typeof CustomEditorCreateNew> = {
     args: {
         entityName: 'Blog',
     },
+    tags: ['autodocs'],
     parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
         docs: {
             description: {
                 component:
@@ -28,7 +37,6 @@ const meta: Meta<typeof CustomEditorCreateNew> = {
             },
         },
     },
-    tags: ['autodocs'],
 };
 
 export default meta;
