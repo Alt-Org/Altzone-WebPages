@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { _NavbarForHelperRoute } from '@/app/[lng]/(helper)/_NavbarForHelperRoute';
+import { _NavbarForHelperRoute } from './_NavbarForHelperRoute';
 
 type Props = {
     children: ReactNode;
