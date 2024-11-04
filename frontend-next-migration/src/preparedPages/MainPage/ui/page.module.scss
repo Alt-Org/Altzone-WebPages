@@ -4,8 +4,12 @@
   //margin: 0 auto;
   margin-top: 133px;
   margin-bottom: 133px;
+  @media (min-width: 800px) {
+    min-height: 100vh !important;
+    margin-top: unset;
+    margin-bottom: unset;
+  }
 
-  //min-height: 800px !important;
 }
 
 .heroSection{
