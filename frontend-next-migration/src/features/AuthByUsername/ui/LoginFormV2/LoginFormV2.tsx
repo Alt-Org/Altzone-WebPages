@@ -1,0 +1,52 @@
+'use client';
+import { useClientTranslation } from '@/shared/i18n';
+import { useLoginForm } from '../../model/useLoginForm';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { BaseAuthForm } from '@/entities/Auth';
+
+type Props = {
+    toForgottenPwPage?: string;
+    toRegisterPage: string;
+    onSuccessLogin: () => void;
+};
+
+export const LoginForm = (props: Props) => {
+    const { toRegisterPage, onSuccessLogin } = props;
+
+    const { t } = useClientTranslation('auth');
+    const { register, handleSubmit, onFormSubmit, errors } = useLoginForm({ onSuccessLogin });
+
+    return (
+        <BaseAuthForm
+            header={t('log_in')}
+            fields={
+                <>
+                    <BaseAuthForm.InputField
+                        key={'username'}
+                        error={errors?.username?.message && t(`${errors.username.message}`)}
+                        label={t('username')}
+                        inputProps={{ ...register('username'), required: true }}
+                    />
+                    <BaseAuthForm.InputField
+                        key={'password'}
+                        error={errors?.password?.message && t(`${errors.password.message}`)}
+                        label={t('password')}
+                        inputProps={{ ...register('password'), type: 'password', required: true }}
+                    />
+                </>
+            }
+            actions={
+                <>
+                    <BaseAuthForm.SubmitButton>{t('send')}</BaseAuthForm.SubmitButton>
+                    <AppLink
+                        theme={AppLinkTheme.PRIMARY}
+                        to={toRegisterPage}
+                    >
+                        {t('text_to_register')}
+                    </AppLink>
+                </>
+            }
+            onSubmit={handleSubmit(onFormSubmit)}
+        />
+    );
+};

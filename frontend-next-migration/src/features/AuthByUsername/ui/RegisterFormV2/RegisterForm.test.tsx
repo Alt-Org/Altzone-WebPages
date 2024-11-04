@@ -1,26 +1,25 @@
 import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
-import { useLoginForm } from '../../model/useLoginForm';
-import { LoginForm } from './LoginForm';
+import { useRegisterForm } from '../../model/useRegisterForm';
+import { RegisterForm } from './RegisterFormV2';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
 }));
 
-jest.mock('../../model/useLoginForm', () => ({
-    useLoginForm: jest.fn(),
+jest.mock('../../model/useRegisterForm', () => ({
+    useRegisterForm: jest.fn(),
 }));
 
-describe('LoginForm', () => {
+describe('RegisterForm2', () => {
     const mockT = jest.fn((key) => key);
     const mockHandleSubmit = jest.fn((fn) => fn);
     const mockOnFormSubmit = jest.fn();
-    const mockOnSuccessLogin = jest.fn();
     const mockErrors = {};
 
     beforeEach(() => {
         (useClientTranslation as jest.Mock).mockReturnValue({ t: mockT });
-        (useLoginForm as jest.Mock).mockReturnValue({
+        (useRegisterForm as jest.Mock).mockReturnValue({
             register: jest.fn(),
             handleSubmit: jest.fn((callback) => () => callback()),
             onFormSubmit: mockOnFormSubmit,
@@ -30,32 +29,32 @@ describe('LoginForm', () => {
     });
 
     const defaultProps = {
-        toRegisterPage: '/register',
-        onSuccessLogin: mockOnSuccessLogin,
-        toForgottenPwPage: '/forgot-password',
+        toLoginPage: '/login',
     };
 
-    it('should render form with username and password fields', () => {
-        render(<LoginForm {...defaultProps} />);
+    it('should render form with username, password, repeatPassword fields and age consent checkbox', () => {
+        render(<RegisterForm {...defaultProps} />);
 
-        expect(screen.getByText('log_in')).toBeInTheDocument();
+        expect(screen.getByText('register')).toBeInTheDocument();
         expect(screen.getByLabelText('username')).toBeInTheDocument();
         expect(screen.getByLabelText('password')).toBeInTheDocument();
+        expect(screen.getByLabelText('password_again')).toBeInTheDocument();
+        expect(screen.getByLabelText('age_Consent')).toBeInTheDocument();
         expect(screen.getByRole('button', { name: 'send' })).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: 'text_to_register' })).toHaveAttribute(
+        expect(screen.getByRole('link', { name: 'text_to_login' })).toHaveAttribute(
             'href',
-            '/register',
+            '/login',
         );
     });
 
     // todo
     // it('should call handleSubmit and onFormSubmit on form submit', () => {
-    //     render(<LoginForm {...defaultProps} />);
+    //     render(<RegisterForm {...defaultProps} />);
     //
-    //     const submitButton = screen.getByRole('button', { name: 'send' });
+    //     const submitButton = screen.getByTestId('submit-button');
     //     fireEvent.click(submitButton);
     //
-    //     expect(mockHandleSubmit).toHaveBeenCalledWith(mockOnFormSubmit);
+    //     // expect(mockHandleSubmit).toHaveBeenCalledWith(mockOnFormSubmit);
     //     expect(mockOnFormSubmit).toHaveBeenCalled();
     // });
 
@@ -63,26 +62,29 @@ describe('LoginForm', () => {
         const mockErrorsWithMessages = {
             username: { message: 'username_required' },
             password: { message: 'password_required' },
+            repeatPassword: { message: 'repeat_password_required' },
+            ageConsent: { message: 'age_consent_required' },
         };
-        (useLoginForm as jest.Mock).mockReturnValue({
+        (useRegisterForm as jest.Mock).mockReturnValue({
             register: jest.fn(),
             handleSubmit: mockHandleSubmit,
             onFormSubmit: mockOnFormSubmit,
             errors: mockErrorsWithMessages,
         });
 
-        render(<LoginForm {...defaultProps} />);
+        render(<RegisterForm {...defaultProps} />);
 
         expect(screen.getByText('username_required')).toBeInTheDocument();
         expect(screen.getByText('password_required')).toBeInTheDocument();
+        expect(screen.getByText('repeat_password_required')).toBeInTheDocument();
+        expect(screen.getByText('age_consent_required')).toBeInTheDocument();
     });
 
     it('should render the AppLink component with correct props', () => {
-        render(<LoginForm {...defaultProps} />);
+        render(<RegisterForm {...defaultProps} />);
 
-        const registerLink = screen.getByRole('link', { name: 'text_to_register' });
-        expect(registerLink).toBeInTheDocument();
-        expect(registerLink).toHaveAttribute('href', '/register');
-        expect(registerLink).toHaveClass('registerLink');
+        const loginLink = screen.getByRole('link', { name: 'text_to_login' });
+        expect(loginLink).toBeInTheDocument();
+        expect(loginLink).toHaveAttribute('href', '/login');
     });
 });
