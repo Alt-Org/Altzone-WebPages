@@ -1,5 +1,4 @@
 'use client';
-import { Footer } from '@/widgets/Footer';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { ScrollTop } from '@/features/ScrollTop';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
@@ -31,7 +30,6 @@ const CookiesPage = (props: Props) => {
             <div>
                 <FeedbackSideButton />
             </div>
-            <Footer />
             <ScrollTop />
         </div>
     );

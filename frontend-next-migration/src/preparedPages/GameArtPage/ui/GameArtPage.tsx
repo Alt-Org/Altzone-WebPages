@@ -1,5 +1,4 @@
 'use client';
-import { Footer } from '@/widgets/Footer';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { ScrollTop } from '@/features/ScrollTop';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
@@ -43,7 +42,6 @@ const GameArtPackagePage = (props: Props) => {
                 <FeedbackSideButton />
                 <HorizontalLines />
                 {isMobileSize && <ScrollTop />}
-                <Footer />
             </div>
         </div>
     );
