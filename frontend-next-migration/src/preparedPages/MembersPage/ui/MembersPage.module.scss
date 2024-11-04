@@ -1,4 +1,5 @@
 .MembersPage {
+  margin-top: 150px;
 }
 
 .backgroundOpacity {
@@ -10,16 +11,12 @@
 }
 
 .workersSection {
-  padding-top: 200px;
   z-index: 2;
 
   @media only screen and (min-width: 1921px) {
     * {
       font-size: xxx-large !important;
     }
-    //h1{
-    //  font-size: xxx-large!important;
-    //}
   }
 }
 
