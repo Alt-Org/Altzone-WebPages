@@ -8,12 +8,17 @@ import { ReactNode } from 'react';
 type Props = {
     toForgottenPwPage?: string;
     toRegisterPage: string;
-    onSuccessLogin: () => void;
+    onSuccessLogin?: () => void;
     extraContent?: ReactNode;
 };
 
 export const LoginForm = (props: Props) => {
-    const { toRegisterPage, onSuccessLogin, toForgottenPwPage = '', extraContent } = props;
+    const {
+        toRegisterPage,
+        onSuccessLogin = function () {},
+        toForgottenPwPage = '',
+        extraContent,
+    } = props;
 
     const { t } = useClientTranslation('auth');
     const { register, handleSubmit, onFormSubmit, errors } = useLoginForm({ onSuccessLogin });
