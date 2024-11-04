@@ -3,13 +3,15 @@ import { useClientTranslation } from '@/shared/i18n';
 import { useRegisterForm } from '../../model/useRegisterForm';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { BaseAuthForm } from '@/entities/Auth';
+import { ReactNode } from 'react';
 
 type Props = {
     toLoginPage: string;
+    extraContent?: ReactNode;
 };
 
 export const RegisterForm = (props: Props) => {
-    const { toLoginPage } = props;
+    const { toLoginPage, extraContent } = props;
 
     const { t } = useClientTranslation('auth');
     const { register, handleSubmit, onFormSubmit, errors } = useRegisterForm(toLoginPage);
@@ -54,6 +56,7 @@ export const RegisterForm = (props: Props) => {
             actions={
                 <>
                     <BaseAuthForm.SubmitButton>{t('send')}</BaseAuthForm.SubmitButton>
+                    {extraContent && <div>{extraContent}</div>}
                     <AppLink
                         theme={AppLinkTheme.PRIMARY}
                         to={toLoginPage}
