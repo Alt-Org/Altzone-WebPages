@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import { useRegisterForm } from '../../model/useRegisterForm';
-import { RegisterForm } from './RegisterForm';
+import RegisterForm from './RegisterForm';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),

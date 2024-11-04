@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import { useLoginForm } from '../../model/useLoginForm';
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
