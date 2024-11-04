@@ -41,13 +41,14 @@ function Header({ children, ...props }: HeaderProps) {
 type InputFieldProps = {
     label: string;
     error?: any;
+    className?: string;
     inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 };
 
-function InputField({ label, error, inputProps }: InputFieldProps) {
+function InputField({ label, error, inputProps, className = '' }: InputFieldProps) {
     const inputId = inputProps?.id || `input-${label}`;
     return (
-        <div className={cls.field}>
+        <div className={classNames(cls.field, {}, [className])}>
             <label htmlFor={inputId}>{label}</label>
             <input
                 id={inputId}
@@ -69,6 +70,7 @@ type CheckboxProps = {
     label: string;
     error?: any;
     inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    className?: string;
 };
 
 /**
@@ -80,10 +82,10 @@ type CheckboxProps = {
  * @example
  * <Form.Checkbox label="I agree" error="You must agree" inputProps={{ required: true }} />
  */
-function Checkbox({ label, error, inputProps }: CheckboxProps) {
+function Checkbox({ label, error, inputProps, className = '' }: CheckboxProps) {
     const inputId = inputProps?.id || `checkbox-${label}`;
     return (
-        <div className={cls.field}>
+        <div className={classNames(cls.field, {}, [className])}>
             <label htmlFor={inputId}>
                 <input
                     id={inputId}
@@ -115,13 +117,14 @@ function Checkbox({ label, error, inputProps }: CheckboxProps) {
  */
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
+    className?: string;
 }
 
-function Button({ children, ...props }: ButtonProps) {
+function Button({ children, className = '', ...props }: ButtonProps) {
     return (
         <CustomButton
             theme={ButtonTheme.Graffiti}
-            className={cls.submit}
+            className={classNames(cls.submit, {}, [className])}
             {...props}
         >
             {children}
