@@ -1,4 +1,4 @@
-export { AuthSubRegisterPageAsync as AuthSubRegisterPage } from './ui/AuthSubRegisterPage/AuthSubRegisterPage.async';
-export { AuthSubLoginPageAsync as AuthSubLoginPage } from './ui/AuthSubLoginPage/AuthSubLoginPage.async';
+export { AuthRegisterPageAsync as AuthRegisterPage } from './ui/AuthRegisterPage/AuthRegisterPage.async';
+export { AuthLoginPageAsync as AuthLoginPage } from './ui/AuthLoginPage/AuthLoginPage.async';
 
 export { default as AuthLayout } from './ui/AuthLayout/AuthLayout';

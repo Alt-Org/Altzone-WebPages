@@ -1,6 +1,6 @@
 import { AuthWidget } from '@/widgets/AuthWidget';
 
-function AuthSubRegisterPage() {
+function AuthRegisterPage() {
     return <AuthWidget formType="register" />;
 }
-export default AuthSubRegisterPage;
+export default AuthRegisterPage;
