@@ -4,32 +4,6 @@ import { AttributesPie } from './AttributesPie';
 const main = {
     title: 'Entities/Hero/AttributesPie',
     component: AttributesPie,
-    args: {
-        characterDefault: {
-            max: 60,
-            sections: [
-                {
-                    color: '#ff0000',
-                    value: 20,
-                },
-                {
-                    color: '#00ff00',
-                    value: 20,
-                },
-                {
-                    color: '#0000ff',
-                    value: 20,
-                },
-            ],
-        },
-        characterUpgrade: {
-            max: 60,
-            sections: [],
-        },
-        bordercolor: '#000000',
-        borderwidth: 2,
-        radius: 100,
-    },
     argTypes: {
         characterDefault: {
             control: 'object',
@@ -57,7 +31,20 @@ const main = {
             description: 'Right side of the pie intended for the upgradable statistics',
             defaultValue: {
                 max: 60,
-                sections: [],
+                sections: [
+                    {
+                        color: '#ff0000',
+                        value: 15,
+                    },
+                    {
+                        color: '#00ff00',
+                        value: 12,
+                    },
+                    {
+                        color: '#0000ff',
+                        value: 9,
+                    },
+                ],
             },
         },
         bordercolor: {
@@ -110,7 +97,78 @@ export const Default: StoryObj<typeof main> = {
         },
         characterUpgrade: {
             max: 60,
-            sections: [],
+            sections: [
+                {
+                    color: '#ff0000',
+                    value: 15,
+                },
+                {
+                    color: '#00ff00',
+                    value: 12,
+                },
+                {
+                    color: '#0000ff',
+                    value: 9,
+                },
+            ],
+        },
+        radius: 100,
+        bordercolor: '#000000',
+        borderwidth: 2,
+    },
+};
+
+export const Example: StoryObj<typeof main> = {
+    args: {
+        characterDefault: {
+            max: 14,
+            sections: [
+                {
+                    color: '#B4A7D6',
+                    value: 4,
+                },
+                {
+                    color: '#F9CB9C',
+                    value: 3,
+                },
+                {
+                    color: '#FFE599',
+                    value: 2,
+                },
+                {
+                    color: '#FFE599',
+                    value: 2,
+                },
+                {
+                    color: '#B6D7A8',
+                    value: 3,
+                },
+            ],
+        },
+        characterUpgrade: {
+            max: 14,
+            sections: [
+                {
+                    color: '#B4A7D6',
+                    value: 3,
+                },
+                {
+                    color: '#F9CB9C',
+                    value: 3,
+                },
+                {
+                    color: '#FFE599',
+                    value: 2,
+                },
+                {
+                    color: '#FFE599',
+                    value: 0,
+                },
+                {
+                    color: '#B6D7A8',
+                    value: 0,
+                },
+            ],
         },
         radius: 100,
         bordercolor: '#000000',
