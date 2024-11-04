@@ -5,14 +5,14 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
 
-type Props = {
+export interface LoginFormProps {
     toForgottenPwPage?: string;
     toRegisterPage: string;
     onSuccessLogin?: () => void;
     extraContent?: ReactNode;
-};
+}
 
-export const LoginForm = (props: Props) => {
+const LoginForm = (props: LoginFormProps) => {
     const {
         toRegisterPage,
         onSuccessLogin = function () {},
@@ -58,3 +58,5 @@ export const LoginForm = (props: Props) => {
         />
     );
 };
+
+export default LoginForm;

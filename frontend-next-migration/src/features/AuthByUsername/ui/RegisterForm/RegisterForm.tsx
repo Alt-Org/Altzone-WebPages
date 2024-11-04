@@ -5,12 +5,12 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
 
-type Props = {
+export interface RegisterFormProps {
     toLoginPage: string;
     extraContent?: ReactNode;
-};
+}
 
-export const RegisterForm = (props: Props) => {
+const RegisterForm = (props: RegisterFormProps) => {
     const { toLoginPage, extraContent } = props;
 
     const { t } = useClientTranslation('auth');
@@ -69,3 +69,5 @@ export const RegisterForm = (props: Props) => {
         />
     );
 };
+
+export default RegisterForm;

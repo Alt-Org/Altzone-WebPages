@@ -1,10 +1,22 @@
 import { redirect } from 'next/navigation';
-import { LoginForm, RegisterForm } from '@/features/AuthByUsername';
+import dynamic from 'next/dynamic';
 import {
     getRouteLoginPage,
     getRouteMainPage,
     getRouteRegisterPage,
 } from '@/shared/appLinks/RoutePaths';
+
+// @ts-ignore
+const DynamicLoginForm = dynamic(() => import('@/features/AuthByUsername/ui/LoginForm/LoginForm'), {
+    loading: () => <p>Loading login form...</p>,
+});
+// @ts-ignore
+const DynamicRegisterForm = dynamic(
+    () => import('@/features/AuthByUsername/ui/RegisterForm/RegisterForm'),
+    {
+        loading: () => <p>Loading register form...</p>,
+    },
+);
 
 type AuthWidgetProps = {
     formType: 'login' | 'register';
@@ -12,9 +24,11 @@ type AuthWidgetProps = {
     redirectToOnSuccessLogin?: string;
 };
 
-const AuthWidget = (props: AuthWidgetProps) => {
-    const { formType, toOtherPage, redirectToOnSuccessLogin = getRouteMainPage() } = props;
-
+const AuthWidget = ({
+    formType,
+    toOtherPage,
+    redirectToOnSuccessLogin = getRouteMainPage(),
+}: AuthWidgetProps) => {
     const handleSuccessLogin = () => {
         redirect(redirectToOnSuccessLogin);
     };
@@ -22,23 +36,15 @@ const AuthWidget = (props: AuthWidgetProps) => {
     const toOtherPageLocal =
         toOtherPage || (formType === 'register' ? getRouteLoginPage() : getRouteRegisterPage());
 
-    const FormComponent =
-        formType === 'login'
-            ? () => (
-                  <LoginForm
-                      toRegisterPage={toOtherPageLocal}
-                      onSuccessLogin={handleSuccessLogin}
-                  />
-              )
-            : () => (
-                  <RegisterForm
-                      toLoginPage={toOtherPageLocal}
-                      // just sample how it could work in future, in this case we could create another feature e.g. authByGoogle
-                      // extraContent={<button onClick={handleRegisterLogin}>Register with Google</button>}
-                  />
-              );
+    const FormComponent = formType === 'login' ? DynamicLoginForm : DynamicRegisterForm;
 
-    return <FormComponent />;
+    return (
+        <FormComponent
+        // toLoginPage={toOtherPageLocal}
+        // toRegisterPage={toOtherPageLocal}
+        // onSuccessLogin={handleSuccessLogin}
+        />
+    );
 };
 
 export default AuthWidget;
