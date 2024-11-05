@@ -6,88 +6,69 @@
   font: var(--font-xxl);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.7);
   height: 50px;
-  margin-top: 0;
-  margin-left: auto;
-  z-index: var(--navbar-z-index);
-  padding-left: 20px;
-  padding-right: 20px;
-  width:100%;
-  transition: width 1s;
-  
-}
-.Navbar.collapsed {
-  width:70px;
-  padding-left:0px;
-  margin-left: auto;
-}
-
-.navbarContainer {
-  position:relative;
-  width:100%;
-  z-index: var(--navbar-z-index);
-  padding-top: 35px;
-  @media (min-width: 550px){
-    padding-top: 50px;
-  }
-}
-.navbarContainer.fixed {
-  position: sticky;
-  top:0;
-}
-.LogoContainer {
-  position: absolute;
-  top:0;
-  width:100%;
-  margin-left: 0px;
-  margin-right: 0px;
-  height: 50px;
   margin-top: 35px;
-  display: flex;
-  align-items: center;
+  margin-left: auto;
+  z-index: var(--navbar-z-index);
+  top: 0;
+  left: 0;
+  right: 0;
+  width:100%;
+  transition: width 0.4s ease-out, padding-right 0.4s ease-out, opacity 0.4s ease-out;
+  &.collapsing{
+    overflow: hidden;
+  }
+  &.collapsed{
+    overflow: hidden;
+  }
   @media (min-width: 550px){
     margin-top: 50px;
   }
 }
-
+.Navbar.collapsed {
+  width: 65px;
+  opacity: 0.8;
+}
 .NavbarMobile__burger {
   width: auto;
   height: 80%;
-  display:block;
+  left: 20px;
   cursor: pointer;
   user-select: none;
   transform: scale(80%);
-  transition:opacity 1s;
-  opacity: 0;
 }
 
 .NavbarMobile__burger svg {
   width: auto;
   height: 100%;
-  
 }
 
 .NavbarMobile__center {
   margin-left: auto!important;
   margin-right: auto!important;
-  transition:opacity 1s;
-  opacity: 0;
 }
-.NavbarMobile__center.collapsed {
-  opacity: 0;
- 
-}
+
 .navLogo {
-  display:inline-block;
-  z-index: 25;
   img {
     width: 25vw;
     max-width: 150px;
-    min-width: 120px;
   }
 }
+
+.fixed {
+  position: sticky;
+  top: 34px;
+
+  @media (min-width: 550px){
+    margin-top: 50px;
+  }
+
+  //position: fixed;
+  //padding-top: 50px;
+}
+
 
 .authSection {
   background-color: rgba(0, 0, 0, 0.8);
@@ -117,7 +98,6 @@
 }
 
 .langSwitcher {
-  
   border-radius: var(--border-radius-custom);
   border: 2px solid var(--inverted-primary-color);
   &:focus {
@@ -129,41 +109,65 @@
   font-size: var(--font-size-m) !important;
 }
 
-.collapsedButton {
-  text-align: center;
+
+
+.CollapseButtonWrapper {
+  
+  cursor: pointer;
+  opacity: 1!important;
+  .CollapseButton{
+    cursor: pointer;
+  }
+  &.collapsing{
+    .CollapseButton{
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+}
+.FixButtonWrapper {
+
   margin-left: auto;
-  height: 50px;
-  width:50px;
-
-  font-size: 1em;
-  margin-left: -.1em;
+  margin-right: 50px;
+  width:fit-content;
+  &.fixed{
+    margin-right: unset;
+  }
 }
-.visible {
-  opacity:1 !important;
+.navItem {
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+  transform-origin: right;
+  transition: transform 0.3s ease-out 0.2s, opacity 0.3s ease-out 0.5s;
+  visibility: visible;
+/*
+  display: flex;
+  height: max-content;
+  line-height: initial;
+  padding: 10px 0;
+*/
+  &.collapsed{
+    transform: translateX(-100px) scaleX(0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    overflow-x: hidden;
+  }
 }
-
-.hidden {
-  opacity:0 !important;
-}
-.disabled {
-    display:none!important;
-}
-
-.FixedButton{
+.buttonContainer {
+ // Button margin-right + buttonContainer margin-right == 20px
+  display:flex;
+  margin-right: 8px;
   text-align: center;
-  margin-left: auto;
-  display:block;
-  min-width: 60px;
-  font-size: 1em;
-  opacity:0;
-  transition:opacity 1s;
+  position: absolute;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  right: 0px;
+  width:fit-content;
 }
 
-.FixedButton.fixed{
+.Button{
   text-align: center;
-  margin-left: auto;
-  margin-right: 0;
-  min-height: 50px;
-  width:40px;
-  font-size: 1em;
+  margin-right: 12px;
 }

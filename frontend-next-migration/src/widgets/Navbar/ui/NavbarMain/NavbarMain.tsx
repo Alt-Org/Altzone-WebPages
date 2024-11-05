@@ -8,7 +8,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
 import { NavBarType } from '../../model/types';
 import NavbarDesktopV2 from '../NavbarDesktopV2/NavbarDesktopV2';
-import NavbarMobileV2 from '../NavbarMobileV2/NavbarMobileV2';
+import NavbarMobileV3 from '../NavbarMobileV3/NavbarMobileV3';
 import { CollapsedProvider } from '../../model/CollapsedProvider';
 
 interface NavbarMainProps {
@@ -35,7 +35,7 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
         <FixedProvider>
             <CollapsedProvider>
                 {isMobileSize || isTabletSize ? (
-                    <NavbarMobileV2
+                    <NavbarMobileV3
                         marginTop={marginTop}
                         className={className}
                         navbarBuild={navbarBuild}
