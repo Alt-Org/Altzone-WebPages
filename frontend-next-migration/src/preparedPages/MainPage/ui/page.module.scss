@@ -1,17 +1,15 @@
 .description{
-  //background-color:  var(--transparent-bg);
-  //width: 95%;
-  //margin: 0 auto;
   margin-top: 133px;
   margin-bottom: 133px;
   @media (min-width: 800px) {
-    min-height: 100vh !important;
+    min-height: 100vh;
     margin-top: unset;
     margin-bottom: unset;
   }
 
   @media (min-width: 1200px) {
-    min-height: 85vh !important;
+    min-height: unset;
+    height: clamp(400px, 85vh, 850px);
     margin-top: unset;
     margin-bottom: unset;
   }
