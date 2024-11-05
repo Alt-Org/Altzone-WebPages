@@ -12,8 +12,9 @@
 
 @media screen and (min-width: 960px) {
   html {
-    margin-left: calc(100vw - 100%);
-    margin-right: 0;
+    width:100vw;
+    // todo may be there is a better solution, it is done to avoid navbar jumping
+    overflow-x:hidden;
   }
 }
 
