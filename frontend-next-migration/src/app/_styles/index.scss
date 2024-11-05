@@ -17,6 +17,9 @@ body {
   // need to be here because of other browsers
   @include custom-scrollbar;
   background-color: var(--bg-color);
+
+
+
 }
 
 .app {
@@ -25,10 +28,8 @@ body {
   // to avoid jumps when scrollbars appear
   //todo to think how to make min-width clever, and remove additional div
   @media (min-width: 1000px) {
-    padding: 0 calc(20px - (100vw - 100%)) 0 0;
+    padding-left: calc(100vw - 100%);
   }
-
-  //transform: scale(1.5);
 }
 
 
