@@ -21,6 +21,12 @@
 }
 
 .Container {
+
+  @media (min-width: 1200px) {
+    margin-top: 140px;
+    justify-content: flex-start;
+  }
+
   display: flex;
   justify-content: center;
   flex-direction: column;
