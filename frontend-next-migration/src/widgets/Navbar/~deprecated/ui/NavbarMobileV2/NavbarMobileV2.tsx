@@ -8,9 +8,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
-import { defineNs } from '../../model/defineNs';
-import { useFixed } from '../../model/FixedProvider';
-import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
+import { defineNs } from '../../../model/defineNs';
+import { useFixed } from '../../../model/FixedProvider';
+import { ItemType, NavbarBuild, NavBarType } from '../../../model/types';
 import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobileV2.module.scss';
 
@@ -23,6 +23,7 @@ interface NavbarTouchProps {
     navBarType?: NavBarType;
 }
 
+/** @deprecated **/
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const { marginTop, navbarBuild, side = 'left', className = '', navBarType = 'Default' } = props;
 
