@@ -6,6 +6,7 @@ import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { NavElement, NavItem } from './NavElement/NavElement';
 import cls from './PlayWithUs.module.scss';
+import { Container } from '@/shared/ui/Container';
 
 type WebGl = {
     title: string;
@@ -29,7 +30,11 @@ const PlayWithUs = (props: Props) => {
     } = props;
 
     return (
-        <section className={cls.SectionPlayWithUs}>
+        <Container
+            as={'section'}
+            className={cls.SectionPlayWithUs}
+            fluid={true}
+        >
             {/* <h2 className={cls.title}>
                 {title}
             </h2> */}
@@ -79,7 +84,7 @@ const PlayWithUs = (props: Props) => {
                 <span className={cls.WarningIcon}>▲</span>
                 {webGlNotice}
             </div>
-        </section>
+        </Container>
     );
 };
 
