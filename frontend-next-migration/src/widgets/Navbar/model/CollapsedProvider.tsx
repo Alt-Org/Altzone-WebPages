@@ -7,7 +7,6 @@ const getInitialCollapsedState = (): boolean => {
     }
     return false;
 };
-const isCollapsedLS = getInitialCollapsedState();
 
 interface CollapsedContextType {
     isCollapsed: boolean;
@@ -20,7 +19,7 @@ const CollapsedContext = createContext<CollapsedContextType>({
 });
 
 export const CollapsedProvider = ({ children }: { children: ReactNode }) => {
-    const [isCollapsed, setIsCollapsed] = useState(isCollapsedLS);
+    const [isCollapsed, setIsCollapsed] = useState(getInitialCollapsedState());
 
     const toggleCollapsed = useCallback(() => {
         setIsCollapsed((prevState) => {

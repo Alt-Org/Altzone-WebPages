@@ -9,8 +9,6 @@ const getInitialFixedState = (): boolean => {
     return false;
 };
 
-const isFixedLS = getInitialFixedState();
-
 interface FixedContextType {
     isFixed: boolean;
     toggleFixed: () => void;
@@ -22,7 +20,7 @@ const FixedContext = createContext<FixedContextType>({
 });
 
 export const FixedProvider = ({ children }: { children: ReactNode }) => {
-    const [isFixed, setIsFixed] = useState<boolean>(isFixedLS);
+    const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState());
 
     const toggleFixed = () => {
         const newValue = !isFixed;
