@@ -71,12 +71,10 @@ export default function RootLayout(props: Props) {
                     backgroundImage: `url("/images/background.webp")`,
                 }}
             >
-                <div className="app">
-                    <Providers>
-                        {children}
-                        <CookieConsentComponent />
-                    </Providers>
-                </div>
+                <Providers>
+                    {children}
+                    <CookieConsentComponent />
+                </Providers>
             </body>
         </html>
     );
