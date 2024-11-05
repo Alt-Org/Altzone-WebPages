@@ -8,10 +8,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
-import { defineNs } from '../../model/defineNs';
-import { useFixed } from '../../model/FixedProvider';
-import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
-import { FixedButton } from '../FixedButton/FixedButton';
+import { defineNs } from '../../../model/defineNs';
+import { useFixed } from '../../../model/FixedProvider';
+import { ItemType, NavbarBuild, NavBarType } from '../../../model/types';
+import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobileV2.module.scss';
 
 interface NavbarTouchProps {
@@ -23,6 +23,7 @@ interface NavbarTouchProps {
     navBarType?: NavBarType;
 }
 
+/** @deprecated **/
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const { marginTop, navbarBuild, side = 'left', className = '', navBarType = 'Default' } = props;
 
@@ -38,7 +39,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { isFixed } = useFixed();
+    const { isFixed, toggleFixed } = useFixed();
     const hasScrollbar = useIsPageScrollbar();
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -167,7 +168,13 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 />
             </AppLink>
 
-            {hasScrollbar && <FixedButton className={cls.FixedButton} />}
+            {hasScrollbar && (
+                <ToggleFixButton
+                    isFixed={isFixed}
+                    onClick={toggleFixed}
+                    className={cls.FixedButton}
+                />
+            )}
         </nav>
     );
 };

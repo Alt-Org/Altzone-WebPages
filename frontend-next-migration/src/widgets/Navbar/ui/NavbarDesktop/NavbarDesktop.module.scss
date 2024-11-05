@@ -10,6 +10,14 @@
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
   position: relative;
+  height: var(--navbar-height);
+  user-select: none;
+  &.collapsing{
+    overflow: hidden;
+  }
+  &.collapsed{
+    overflow: hidden;
+  }
 }
 
 .fixed {
@@ -17,17 +25,51 @@
 }
 
 .siteNavContentList {
-  padding-left: 50px;
+  height: 52px;
+  padding: 0 10px 0 50px;
   background-color: black;
   border-radius: var(--border-radius-custom);
   border: var(--inverted-secondary-color) 2px solid;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   gap: 1em;
   list-style: none;
   z-index: 2;
+  position: relative;
+  width: 100%;
+  transition: width 0.4s ease-out, padding-right 0.4s ease-out, opacity 0.4s ease-out;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
+
+.siteNavContentList.collapsed {
+  width: 50px;
+  opacity: 0.8;
+}
+
+.navItem {
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+  transform-origin: right;
+  transition: transform 0.3s ease-out 0.2s, opacity 0.3s ease-out 0.5s;
+  visibility: visible;
+
+  display: flex;
+  height: max-content;
+  line-height: initial;
+  padding: 10px 0;
+
+  &.collapsed{
+    transform: translateX(-100px) scaleX(0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    overflow-x: hidden;
+  }
+
+}
+
+
 
 .appLinkLogo {
   display: block;
@@ -39,13 +81,8 @@
     top: -2.5416666667000003em;
     left: 0;
     z-index: 100;
-
     height: auto;
-
     max-width: none;
-
-    // comment this block if logo size is changed
-
     width: auto;
   }
 
@@ -54,10 +91,7 @@
     top: -4.5em;
     left: 0;
     z-index: 100;
-
     height: auto;
-
-    //width: 200px;
     width: 150%;
     max-width: 150%;
   }
@@ -65,9 +99,7 @@
 
 .itemNavbarDropDownContent {
   outline: 2px solid var(--inverted-primary-color);
-
   text-align: left;
-
   border-radius: var(--border-radius-custom);
   background-color: var(--transparent-bg-dark);
   padding: 10px;
@@ -77,14 +109,7 @@
   }
 }
 
-.navItem {
-  display: flex;
-  height: max-content;
-  line-height: initial;
-  padding: 10px 0;
-  //justify-content: center;
-  //height: max-content;
-}
+
 
 .langSwitcher {
   border-radius: var(--border-radius-custom);
@@ -109,10 +134,32 @@
   }
 }
 
-.toggleOverlaid {
-  margin-left: auto;
-}
-
 .logoutButton {
   cursor: pointer;
+}
+
+
+.FixButtonWrapper {
+  margin-left: auto;
+  margin-right: 50px;
+  &.fixed{
+    margin-right: unset;
+  }
+}
+
+.CollapseButtonWrapper {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  cursor: pointer;
+  opacity: 1!important;
+  .CollapseButton{
+    cursor: pointer;
+  }
+  &.collapsing{
+    .CollapseButton{
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
 }

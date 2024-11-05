@@ -1,0 +1,14 @@
+.ToggleFixButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 4px var(--inverted-primary-color);
+  border-radius: var(--border-radius-custom);
+  background-color: var(--secondary-color);
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  width: 35px;
+  font-size: 20px;
+}

@@ -1,6 +1,6 @@
 import {
     navbarGameArtDesktop,
-    navbarMenuDesktop2,
+    navbarMenuDesktop,
     navbarCookiesDesktop,
     navbarPrivacyDesktop,
 } from './data/navbarMenuDesktop';
@@ -19,7 +19,7 @@ export const getNavbarBuildByTypeAndSize = (
     if (size === 'desktop') {
         switch (type) {
             case 'Default':
-                return navbarMenuDesktop2;
+                return navbarMenuDesktop;
             case 'GameArt':
                 return navbarGameArtDesktop;
             case 'Cookies':
@@ -27,7 +27,7 @@ export const getNavbarBuildByTypeAndSize = (
             case 'Privacy':
                 return navbarPrivacyDesktop;
             default:
-                return navbarMenuDesktop2;
+                return navbarMenuDesktop;
         }
     } else {
         switch (type) {
