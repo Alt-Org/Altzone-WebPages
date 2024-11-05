@@ -1,4 +1,5 @@
 import { CSSProperties, memo, useState } from 'react';
+import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -6,14 +7,13 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
+import { useCollapsed } from '../../model/CollapsedProvider';
 import { defineNs } from '../../model/defineNs';
 import { useFixed } from '../../model/FixedProvider';
 import { NavbarBuild, NavBarType } from '../../model/types';
-import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
-import cls from './NavbarDesktopV2.module.scss';
-import NavItem from './NavItem';
-import { useCollapsed } from '../../model/CollapsedProvider';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+import cls from './NavbarDesktop.module.scss';
+import NavItem from './NavItem';
 
 type NavbarProps = {
     marginTop?: number;
@@ -23,7 +23,7 @@ type NavbarProps = {
     navBarType?: NavBarType;
 };
 
-const NavbarDesktopV2 = memo((props: NavbarProps) => {
+const NavbarDesktop = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', navBarType = 'Default' } = props;
 
     const { isFixed, toggleFixed } = useFixed();
@@ -145,6 +145,6 @@ const NavbarDesktopV2 = memo((props: NavbarProps) => {
     );
 });
 
-export default NavbarDesktopV2;
+export default NavbarDesktop;
 
-NavbarDesktopV2.displayName = 'NavbarDesktopV2';
+NavbarDesktop.displayName = 'NavbarDesktop';

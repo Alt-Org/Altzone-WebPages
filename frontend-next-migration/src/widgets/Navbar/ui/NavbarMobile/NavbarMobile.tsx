@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { CSSProperties, memo, useMemo, useState } from 'react';
+import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
@@ -8,13 +9,12 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
+import { useCollapsed } from '../../model/CollapsedProvider';
 import { defineNs } from '../../model/defineNs';
 import { useFixed } from '../../model/FixedProvider';
 import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
-import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
-import cls from './NavbarMobileV3.module.scss';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
-import { useCollapsed } from '../../model/CollapsedProvider';
+import cls from './NavbarMobile.module.scss';
 
 interface NavbarTouchProps {
     marginTop?: number;
