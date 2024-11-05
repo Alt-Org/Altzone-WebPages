@@ -10,6 +10,13 @@
     margin-bottom: unset;
   }
 
+  @media (min-width: 1200px) {
+    min-height: 85vh !important;
+    margin-top: unset;
+    margin-bottom: unset;
+  }
+
+
 }
 
 .heroSection{
