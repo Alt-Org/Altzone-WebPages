@@ -19,9 +19,9 @@ function useNavbarConfig() {
 
     const navbarConfig: { [key in RoutePathKeys]?: NavBarType } = {
         [RoutePaths.MAIN]: 'None',
-        [RoutePaths.GAME_ART]: 'GameArt',
-        [RoutePaths.cookies]: 'Cookies',
-        [RoutePaths.privacy]: 'Privacy',
+        [RoutePaths.GAME_ART]: 'Default',
+        [RoutePaths.cookies]: 'Default',
+        [RoutePaths.privacy]: 'Default',
     };
     const navBarType = navbarConfig[pathAfterLang as RoutePathKeys] || 'Default';
     const shouldShowNavbar = navBarType !== 'None';
