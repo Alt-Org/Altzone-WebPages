@@ -16,30 +16,45 @@ export const SocialSection = memo(({ className = '', socialIconLinks }: SocialSe
             className={classNames(cls.SocialSection, {}, [className])}
             data-testid="social-section"
         >
-            {socialIconLinks.map((socialLink) => {
-                const Icon = socialLink.icon;
+            {socialIconLinks.map((socialLink) => (
+                <AppLink
+                    key={socialLink.link}
+                    isExternal
+                    theme={AppLinkTheme.PRIMARY}
+                    to={socialLink.link}
+                    className={classNames(cls.item)}
+                >
+                    <Image
+                        src={socialLink.icon}
+                        alt={socialLink.name}
+                    />
+                </AppLink>
+            ))}
 
-                return (
-                    <AppLink
-                        key={socialLink.link}
-                        isExternal
-                        theme={AppLinkTheme.PRIMARY}
-                        to={socialLink.link}
-                        className={classNames(cls.item)}
-                    >
-                        {typeof Icon === 'string' ? (
-                            <Image
-                                src={Icon}
-                                alt={socialLink.name}
-                                width={24}
-                                height={24}
-                            />
-                        ) : (
-                            <Icon aria-label={socialLink.name} />
-                        )}
-                    </AppLink>
-                );
-            })}
+            {/*{socialIconLinks.map((socialLink) => {*/}
+            {/*    const Icon = socialLink.icon;*/}
+
+            {/*    return (*/}
+            {/*        <AppLink*/}
+            {/*            key={socialLink.link}*/}
+            {/*            isExternal*/}
+            {/*            theme={AppLinkTheme.PRIMARY}*/}
+            {/*            to={socialLink.link}*/}
+            {/*            className={classNames(cls.item)}*/}
+            {/*        >*/}
+            {/*            {typeof Icon === 'string' ? (*/}
+            {/*                <Image*/}
+            {/*                    src={Icon}*/}
+            {/*                    alt={socialLink.name}*/}
+            {/*                    width={24}*/}
+            {/*                    height={24}*/}
+            {/*                />*/}
+            {/*            ) : (*/}
+            {/*                <Icon aria-label={socialLink.name} />*/}
+            {/*            )}*/}
+            {/*        </AppLink>*/}
+            {/*    );*/}
+            {/*})}*/}
         </div>
     );
 });

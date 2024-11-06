@@ -1,8 +1,8 @@
-import React from 'react';
+// import React from 'react';
 
 export interface SocialIconLink {
     name: string;
-    icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | string;
+    icon: string;
     link: string;
 }
 
