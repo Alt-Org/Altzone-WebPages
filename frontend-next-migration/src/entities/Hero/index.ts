@@ -9,3 +9,5 @@ export type { GroupInfo, HeroWithGroup, Hero } from './types/hero';
 export { HeroManager } from './model/HeroManager';
 
 export { default as HeroGroupLabel } from './ui/HeroGroupLabel/HeroGroupLabel';
+
+export { AttributesPie } from './ui/AttributesPie/AttributesPie';
