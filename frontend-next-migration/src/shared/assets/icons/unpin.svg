@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1080 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="unpinned">
+        <g transform="matrix(0.67869,-0.692275,0.704323,0.690501,21.4408,591.264)">
+            <path d="M686.134,173.388L681.559,522.517L415.085,499.638L421.051,161.007L686.134,173.388Z" style="fill:rgb(199,54,0);"/>
+        </g>
+        <g transform="matrix(0.67869,-0.692275,0.704323,0.690501,124.806,491.644)">
+            <path d="M686.081,124.52L686.081,561.762L530.025,519.189L535.849,154.607L686.081,124.52Z" style="fill:rgb(255,54,0);"/>
+        </g>
+        <g transform="matrix(0.67869,-0.692275,0.704323,0.690501,-202.891,794.998)">
+            <path d="M736.477,138.436L729.622,578.296L527.807,603.745L528.155,104.859L736.477,138.436Z" style="fill:rgb(255,54,0);"/>
+        </g>
+        <g transform="matrix(0.67869,-0.692275,0.704323,0.690501,-202.891,794.998)">
+            <path d="M532.379,314.578L532.473,398.1L119.679,387.655L98.302,309.566L532.379,314.578Z" style="fill:rgb(239,239,239);"/>
+        </g>
+        <path d="M672.896,95.839L983.039,407.445L672.896,95.839Z" style="fill:none;stroke:black;stroke-width:60px;"/>
+        <path d="M94.622,982.238L94.852,910.558L353.686,653.221L205.873,498.712C300.449,404.755 376.237,337.841 450.055,402.837L592.435,262.614C547.46,218.36 603.972,163.723 672.896,95.839" style="fill:none;stroke:black;stroke-width:60px;"/>
+        <g transform="matrix(-6.12323e-17,-1,-1,6.12323e-17,1078.6,1080.44)">
+            <path d="M94.622,982.238L94.852,910.558L353.686,653.221L205.873,498.712C300.449,404.755 376.237,337.841 450.055,402.837L592.435,262.614C547.46,218.36 603.972,163.723 672.896,95.839" style="fill:none;stroke:black;stroke-width:60px;"/>
+        </g>
+    </g>
+</svg>
