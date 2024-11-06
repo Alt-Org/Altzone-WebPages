@@ -1,15 +1,6 @@
 'use client';
-import {
-    Hero,
-    HeroContainer,
-    HeroGroup,
-    HeroManager,
-    HeroSlug,
-    HeroWithGroup,
-} from '@/entities/Hero';
+import { HeroContainer, HeroManager, HeroWithGroup } from '@/entities/Hero';
 import { getRouteAllHeroesPage, getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import cls from './HeroPage.module.scss';
 import {
     NavMenuWithDropdowns,
@@ -75,8 +66,4 @@ const HeroPage = (props: Props) => {
     );
 };
 
-export default withBackgroundImage<Props>({
-    alt: 'Hero underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-})(HeroPage);
+export default HeroPage;

@@ -23,11 +23,4 @@ const MembersPage: FC = () => {
     );
 };
 
-/* The code `export default withBackgroundImage({ ... })(MembersPage);` is applying a higher-order
-component (HOC) called `withBackgroundImage` to the `MembersPage` component before exporting it. */
-export default withBackgroundImage({
-    alt: 'Members-Page space background',
-    imagePath: backgroundImg as unknown as string,
-    shouldBeLazyLoaded: true,
-    className: cls.wholePageBG,
-})(MembersPage);
+export default MembersPage;

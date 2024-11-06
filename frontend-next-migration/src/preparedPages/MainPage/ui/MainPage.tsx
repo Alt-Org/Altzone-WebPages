@@ -79,8 +79,4 @@ function MainPage(props: Props) {
     );
 }
 
-export default withBackgroundImage<Props>({
-    alt: 'Main-Page underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-})(MainPage);
+export default MainPage;

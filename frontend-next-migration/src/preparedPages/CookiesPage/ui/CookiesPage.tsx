@@ -1,8 +1,6 @@
 'use client';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { ScrollTop } from '@/features/ScrollTop';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
 import cls from './CookiesPage.module.scss';
@@ -35,7 +33,4 @@ const CookiesPage = (props: Props) => {
     );
 };
 
-export default withBackgroundImage<Props>({
-    alt: 'Tile bg image',
-    imagePath: bgPicture as unknown as string,
-})(CookiesPage);
+export default CookiesPage;
