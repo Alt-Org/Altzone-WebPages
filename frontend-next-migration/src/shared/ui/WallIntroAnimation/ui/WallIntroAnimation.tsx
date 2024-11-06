@@ -11,8 +11,8 @@ export default function WallIntroAnimation({ children }: WallLoaderProps) {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoaded(true), 1500);
-        const hideTimer = setTimeout(() => setIsVisible(false), 2000);
+        const timer = setTimeout(() => setIsLoaded(true), 500);
+        const hideTimer = setTimeout(() => setIsVisible(false), 1000);
         return () => {
             clearTimeout(timer);
             clearTimeout(hideTimer);
