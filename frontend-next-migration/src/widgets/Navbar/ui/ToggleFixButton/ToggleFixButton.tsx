@@ -1,5 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ToggleFixButton.module.scss';
+import pinned from '@/shared/assets/icons/pinned.svg';
+import unpin from '@/shared/assets/icons/unpin.svg';
+import Image from 'next/image';
 
 type Props = {
     className?: string;
@@ -14,7 +17,14 @@ export function ToggleFixButton(props: Props) {
             onClick={onClick}
             className={classNames(cls.ToggleFixButton, {}, [className])}
         >
-            {isFixed ? '📍' : '📌'}
+            {
+                <Image
+                    loading="eager"
+                    alt="fixed"
+                    src={isFixed ? pinned : unpin}
+                    className={cls.buttonImage}
+                />
+            }
         </button>
     );
 }
