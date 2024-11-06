@@ -30,31 +30,6 @@ export const SocialSection = memo(({ className = '', socialIconLinks }: SocialSe
                     />
                 </AppLink>
             ))}
-
-            {/*{socialIconLinks.map((socialLink) => {*/}
-            {/*    const Icon = socialLink.icon;*/}
-
-            {/*    return (*/}
-            {/*        <AppLink*/}
-            {/*            key={socialLink.link}*/}
-            {/*            isExternal*/}
-            {/*            theme={AppLinkTheme.PRIMARY}*/}
-            {/*            to={socialLink.link}*/}
-            {/*            className={classNames(cls.item)}*/}
-            {/*        >*/}
-            {/*            {typeof Icon === 'string' ? (*/}
-            {/*                <Image*/}
-            {/*                    src={Icon}*/}
-            {/*                    alt={socialLink.name}*/}
-            {/*                    width={24}*/}
-            {/*                    height={24}*/}
-            {/*                />*/}
-            {/*            ) : (*/}
-            {/*                <Icon aria-label={socialLink.name} />*/}
-            {/*            )}*/}
-            {/*        </AppLink>*/}
-            {/*    );*/}
-            {/*})}*/}
         </div>
     );
 });

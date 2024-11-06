@@ -1,5 +1,3 @@
-// import React from 'react';
-
 export interface SocialIconLink {
     name: string;
     icon: string;
