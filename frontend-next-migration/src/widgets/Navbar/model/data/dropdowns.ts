@@ -67,13 +67,13 @@ export const dropdowns = {
                 reason: 'Kirjaudu ensin!',
             },
         },
-        {
-            elementText: 'leaderboard',
-            link: {
-                path: getRouteClanLeadeboardPage(),
-                isExternal: false,
-            },
-        },
+        // {
+        //     elementText: 'leaderboard',
+        //     link: {
+        //         path: getRouteClanLeadeboardPage(),
+        //         isExternal: false,
+        //     },
+        // },
     ],
     gallery: [
         {
