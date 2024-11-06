@@ -21,11 +21,11 @@ export const getNavbarBuildByTypeAndSize = (
             case 'Default':
                 return navbarMenuDesktop;
             case 'GameArt':
-                return navbarGameArtDesktop;
+                return navbarMenuDesktop;
             case 'Cookies':
-                return navbarCookiesDesktop;
+                return navbarMenuDesktop;
             case 'Privacy':
-                return navbarPrivacyDesktop;
+                return navbarMenuDesktop;
             default:
                 return navbarMenuDesktop;
         }
