@@ -20,7 +20,7 @@ export function ToggleFixButton(props: Props) {
             {
                 <Image
                     loading="eager"
-                    alt="fixed"
+                    alt={isFixed ? 'Unpin' : 'Pin'}
                     src={isFixed ? pinned : unpin}
                     className={cls.buttonImage}
                 />

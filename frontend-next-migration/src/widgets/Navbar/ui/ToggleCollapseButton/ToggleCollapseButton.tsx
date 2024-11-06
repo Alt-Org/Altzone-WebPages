@@ -22,7 +22,7 @@ export function ToggleCollapseButton(props: Props) {
         >
             <Image
                 loading="eager"
-                alt="visibility"
+                alt={isCollapsed ? 'Show' : 'Hide'}
                 src={isCollapsed ? invisible : visible}
                 className={cls.buttonImage}
             />
