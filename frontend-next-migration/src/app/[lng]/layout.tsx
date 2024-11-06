@@ -49,6 +49,7 @@ const ContentWithBackground = withBackgroundImage({
     alt: 'Main-Page underground style background',
     imagePath: bgPicture as unknown as string,
     className: cls.wholePageBG,
+    shouldBeLazyLoaded: true,
 })(({ children }: any) => children);
 
 export default function RootLayout(props: Props) {
@@ -81,6 +82,7 @@ export default function RootLayout(props: Props) {
                     backgroundImage: `url("${bgPicture.src}")`,
                 }}
             >
+                {/*//todo potentialy we can remove even this ContentWithBackground, but we have to be sure that it work in samy way in backgroundImage*/}
                 <ContentWithBackground>
                     <Providers>
                         {children}
