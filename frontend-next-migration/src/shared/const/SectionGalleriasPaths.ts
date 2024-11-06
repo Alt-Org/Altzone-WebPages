@@ -5,6 +5,6 @@
  * @property {string} comics - The path for the comics section.
  */
 export const SectionGalleriasPaths = {
-    artGalleries: 'artGalleries',
+    artGalleries: 'galleries',
     comics: 'comics',
 } as const;
