@@ -26,27 +26,23 @@ const useIsWidescreenSize = () => {
     const [isWidescreenSize, setIsWidescreenSize] = useState(checkForDevice());
 
     useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         const handlePageResized = () => {
             setIsWidescreenSize(checkForDevice());
         };
 
         if (typeof window !== 'undefined') {
-            window.addEventListener('resize', handlePageResized);
-            window.addEventListener('orientationchange', handlePageResized);
-            window.addEventListener('load', handlePageResized);
-            window.addEventListener('reload', handlePageResized);
+            window.addEventListener('resize', handlePageResized, { signal });
+            window.addEventListener('orientationchange', handlePageResized, { signal });
+            window.addEventListener('load', handlePageResized, { signal });
         }
 
         return () => {
-            if (typeof window !== 'undefined') {
-                window.removeEventListener('resize', handlePageResized);
-                window.removeEventListener('orientationchange', handlePageResized);
-                window.removeEventListener('load', handlePageResized);
-                window.removeEventListener('reload', handlePageResized);
-            }
+            controller.abort();
         };
     }, []);
-
     return {
         isWidescreenSize,
     };
