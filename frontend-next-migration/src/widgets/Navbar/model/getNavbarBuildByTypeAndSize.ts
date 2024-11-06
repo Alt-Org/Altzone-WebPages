@@ -1,9 +1,4 @@
-import {
-    navbarGameArtDesktop,
-    navbarMenuDesktop,
-    navbarCookiesDesktop,
-    navbarPrivacyDesktop,
-} from './data/navbarMenuDesktop';
+import { navbarMenuDesktop } from './data/navbarMenuDesktop';
 import {
     navbarGameArtMobile,
     navbarMenuMobile,
