@@ -20,13 +20,13 @@ export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
         >
             {theme === Theme.DARK ? (
                 <Image
-                    data-testid="dark-icon"
+                    role="button"
                     src={DarkIcon}
                     alt="dark icon"
                 />
             ) : (
                 <Image
-                    data-testid="light-icon"
+                    role="button"
                     src={LightIcon}
                     alt="light icon"
                 />
