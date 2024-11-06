@@ -8,6 +8,7 @@ import { Providers } from '../_providers';
 import '../_styles/index.scss';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
+import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
 import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 
 // const openSans = Open_Sans({
@@ -79,7 +80,7 @@ export default function RootLayout(props: Props) {
             <body
                 style={{
                     // backgroundImage: `url("/images/background.webp")`,
-                    backgroundImage: `url("${bgPicture.src}")`,
+                    backgroundImage: `url("${bgPictureCompressed.src}")`,
                 }}
             >
                 {/*//todo potentialy we can remove even this ContentWithBackground, but we have to be sure that it work in samy way in backgroundImage*/}
