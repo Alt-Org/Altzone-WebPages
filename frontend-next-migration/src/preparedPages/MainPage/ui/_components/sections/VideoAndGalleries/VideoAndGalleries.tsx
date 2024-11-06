@@ -1,11 +1,11 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
-import VideoContentYoutube from '@/shared/ui/VideoContent/ui/VideoContentYoutube';
 import { Container } from '@/shared/ui/Container';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './VideoAndGalleries.module.scss';
+import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
 
 export type Props = {
     backgroundImageSrc?: string;
@@ -50,12 +50,7 @@ const VideoAndGalleries = (props: Props) => {
                 fluid={isMobileSize || isTabletSize}
             >
                 <div className={cls.videoWrapper}>
-                    <VideoContentYoutube
-                        params={{
-                            className: cls.VideoContentYoutube,
-                        }}
-                        src={videoLink}
-                    />
+                    <YouTubeFacade previewVideoYoutube={videoLink} />
                 </div>
 
                 {/*//todo Joni add here the desired instas ?*/}

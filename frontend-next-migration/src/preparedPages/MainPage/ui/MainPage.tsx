@@ -1,3 +1,4 @@
+'use client';
 import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
