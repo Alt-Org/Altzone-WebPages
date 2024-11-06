@@ -82,6 +82,7 @@ const NavItem = memo((props: NavItemProps) => {
                     className={classNames(cls.appLink, {}, [cls.appLinkLogo])}
                 >
                     <Image
+                        priority={true}
                         loading={'eager'}
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                         src={navbarBuild?.namedMenu?.navLogo?.src || ''}
