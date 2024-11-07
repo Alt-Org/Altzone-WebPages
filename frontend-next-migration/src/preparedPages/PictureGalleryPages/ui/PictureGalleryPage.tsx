@@ -14,7 +14,7 @@ const PictureGalleryPage = (props: Props) => {
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
                 <h1>{title}</h1>
-                <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} />
+                <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />
             </Container>
         </div>
     );
