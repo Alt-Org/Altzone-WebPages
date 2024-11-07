@@ -1,4 +1,4 @@
-import { HeroStats, LevelRange, StatsStrategy, StatUpgradeInfo } from '../../types/HeroStats';
+import { HeroStats, StatLevelRange, StatsStrategy, StatUpgradeInfo } from '../../types/HeroStats';
 import { HeroSlug } from '../../types/hero';
 
 export class DefaultStatsStrategy implements StatsStrategy {
@@ -15,7 +15,7 @@ export class DefaultStatsStrategy implements StatsStrategy {
     public getStatUpgradeInfo(
         slug: HeroSlug,
         statName: 'attack' | 'defense' | 'speed',
-        levels: LevelRange,
+        levels: StatLevelRange,
     ): StatUpgradeInfo {
         const [fromLevel, toLevel] = levels;
         const heroStats = this.getStatsForHero(slug, fromLevel);
