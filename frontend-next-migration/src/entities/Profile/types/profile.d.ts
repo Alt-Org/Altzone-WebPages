@@ -7,3 +7,8 @@ export type IProfile<Player> = {
 export type ProfileSchema = {
     profile?: IProfile<IPlayer>;
 };
+
+export type IUpdateProfileDto = {
+    username: string;
+    password: string;
+};

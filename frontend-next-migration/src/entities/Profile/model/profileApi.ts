@@ -1,4 +1,5 @@
 import { gameApi } from '@/shared/api';
+import { IUpdateProfileDto } from '../types/profile';
 
 const profileUrl = 'profile';
 const profileApi = gameApi.injectEndpoints({
@@ -7,6 +8,14 @@ const profileApi = gameApi.injectEndpoints({
             query: () => ({
                 url: `${profileUrl}`,
                 method: 'DELETE',
+            }),
+        }),
+
+        updateProfile: builder.mutation<void, IUpdateProfileDto>({
+            query: (updateDto) => ({
+                url: `${profileUrl}`,
+                method: 'PUT',
+                body: updateDto,
             }),
         }),
     }),
