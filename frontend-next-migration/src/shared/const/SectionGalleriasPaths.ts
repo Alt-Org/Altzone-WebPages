@@ -4,7 +4,7 @@
  * @property {string} artGalleries - The path for the art galleries section.
  * @property {string} comics - The path for the comics section.
  */
-export const SectionGalleriasPaths = {
-    artGalleries: 'galleries',
-    comics: 'comics',
-} as const;
+export enum SectionGalleriasPaths {
+    artGalleries = 'galleries',
+    comics = 'comics',
+}

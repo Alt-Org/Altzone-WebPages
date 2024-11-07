@@ -1,5 +1,6 @@
 import { envHelper } from '@/shared/const/envHelper';
 import { gameApi } from '@/shared/api';
+import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
 
 const url = 'public/site';
 
@@ -32,10 +33,8 @@ export type DirectoryWithPhotos = {
     photos: ModifiedFile[];
 };
 
-export type ParentDirectory = 'comics' | 'artGalleries';
-
 type GetAllDirectoryPhotosQueryArgs = {
-    parentDirectory: ParentDirectory;
+    parentDirectory: SectionGalleriasPaths;
 };
 
 const galleryApi = gameApi.injectEndpoints({
