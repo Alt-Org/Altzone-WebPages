@@ -11,7 +11,7 @@ type Range<
 export type HeroLevel = Range<1, 5>;
 
 export interface StatsStrategy {
-    getStatsForHero(slug: HeroSlug, level: HeroLevel): HeroStats | undefined;
+    getStatsForHero(slug: HeroSlug, level: HeroLevel): HeroStats;
 }
 
 export interface HeroStats {
