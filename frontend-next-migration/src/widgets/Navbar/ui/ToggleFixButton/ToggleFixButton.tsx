@@ -11,6 +11,7 @@ export function ToggleFixButton(props: Props) {
     const { className = '', onClick, isFixed } = props;
     return (
         <button
+            role="toggleFixButton"
             onClick={onClick}
             className={classNames(cls.ToggleFixButton, {}, [className])}
         >
