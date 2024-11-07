@@ -1,11 +1,4 @@
-import {
-    StatsStrategy,
-    HeroStats,
-    HeroLevel,
-    StatUpgradeInfo,
-    StatLevelRange,
-    StatName,
-} from '../../types/HeroStats';
+import { StatsStrategy, HeroStats, HeroLevel } from '../../types/HeroStats';
 import { HeroSlug } from '../../types/hero';
 import { statsData } from './statsData';
 import { DefaultStatsStrategy } from './DefaultStatsStrategy';
@@ -23,11 +16,11 @@ export class HeroStatsManager {
         return this.strategy.getStatsForHero(slug, level);
     }
 
-    public getStatUpgradeInfo(
-        slug: HeroSlug,
-        statName: StatName,
-        levels: StatLevelRange,
-    ): StatUpgradeInfo {
-        return this.strategy.getStatUpgradeInfo(slug, statName, levels);
-    }
+    // public getStatUpgradeInfo(
+    //     slug: HeroSlug,
+    //     statName: StatName,
+    //     levels: StatLevelRange,
+    // ): StatUpgradeInfo {
+    //     return this.strategy.getStatUpgradeInfo(slug, statName, levels);
+    // }
 }
