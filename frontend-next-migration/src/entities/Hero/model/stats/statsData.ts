@@ -1,7 +1,7 @@
 import { HeroSlug } from '../../types/hero';
-import { HeroStats } from '../../types/HeroStats';
+import { HeroStats, HeroLevel } from '../../types/HeroStats';
 
-export const statsData: Record<HeroSlug, Record<number, HeroStats>> = {
+export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     [HeroSlug.HANNU_HODARI]: {
         1: { attack: 10, defense: 5, speed: 7 },
         2: { attack: 12, defense: 6, speed: 8 },

@@ -1,14 +1,19 @@
 import type { HeroSlug } from './hero';
 
-type Range<
-    Start extends number,
-    End extends number,
-    Result extends number[] = [],
-> = Result['length'] extends End
-    ? [...Result, Result['length']][number]
-    : Range<Start, End, [...Result, Result['length']]>;
+type CreateArrayWithLengthX<
+    LENGTH extends number,
+    ACC extends unknown[] = [],
+> = ACC['length'] extends LENGTH ? ACC : CreateArrayWithLengthX<LENGTH, [...ACC, 1]>;
 
-export type HeroLevel = Range<1, 5>;
+type NumericRange<
+    START_ARR extends number[],
+    END extends number,
+    ACC extends number = never,
+> = START_ARR['length'] extends END
+    ? ACC | END
+    : NumericRange<[...START_ARR, 1], END, ACC | START_ARR['length']>;
+
+export type HeroLevel = NumericRange<CreateArrayWithLengthX<1>, 2>;
 
 export interface StatsStrategy {
     getStatsForHero(slug: HeroSlug, level: HeroLevel): HeroStats;
