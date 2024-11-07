@@ -35,7 +35,7 @@ export interface HeroStats {
     speed: StatUpgradeLevel[];
 }
 
-export type StatName = keyof HeroStats;
+// export type StatName = keyof HeroStats;
 
 export interface StatsStrategy {
     getStatsForHero(slug: HeroSlug, level: HeroLevel): HeroStats;
