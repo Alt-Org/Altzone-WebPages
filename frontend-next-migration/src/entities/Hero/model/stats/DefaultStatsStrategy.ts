@@ -1,4 +1,4 @@
-import { HeroStats, StatsStrategy } from '../../types/HeroStats';
+import { HeroStats, StatsStrategy, StatUpgradeInfo } from '../../types/HeroStats';
 import { HeroSlug } from '../../types/hero';
 
 export class DefaultStatsStrategy implements StatsStrategy {
@@ -10,5 +10,30 @@ export class DefaultStatsStrategy implements StatsStrategy {
 
     public getStatsForHero(slug: HeroSlug, level: number): HeroStats {
         return this.statsData[slug]?.[level];
+    }
+
+    public getStatUpgradeInfo(
+        slug: HeroSlug,
+        statName: 'attack' | 'defense' | 'speed',
+        fromLevel: number,
+        toLevel: number,
+    ): StatUpgradeInfo {
+        const heroStats = this.statsData[slug]?.[fromLevel];
+        if (!heroStats) {
+            throw new Error(`Stats for hero ${slug} at level ${fromLevel} not found`);
+        }
+
+        const statLevels = heroStats[statName];
+        const from = statLevels.find((level) => level.level === fromLevel);
+        const to = statLevels.find((level) => level.level === toLevel);
+
+        if (!from || !to) {
+            throw new Error(
+                `Stat levels for ${statName} from level ${fromLevel} to ${toLevel} not found`,
+            );
+        }
+
+        const price = to.cost - from.cost;
+        return { price, nextValue: to.value, upgradePotential: to.upgradePotential };
     }
 }

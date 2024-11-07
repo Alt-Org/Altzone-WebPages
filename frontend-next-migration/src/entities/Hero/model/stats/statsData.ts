@@ -3,41 +3,243 @@ import { HeroStats, HeroLevel } from '../../types/HeroStats';
 
 export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     [HeroSlug.HANNU_HODARI]: {
-        1: { attack: 10, defense: 5, speed: 7 },
-        2: { attack: 12, defense: 6, speed: 8 },
+        1: {
+            attack: [
+                { level: 1, value: 10, cost: 50, upgradePotential: 3 },
+                { level: 2, value: 12, cost: 75, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 5, cost: 40, upgradePotential: 3 },
+                { level: 2, value: 6, cost: 60, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 7, cost: 45, upgradePotential: 3 },
+                { level: 2, value: 8, cost: 70, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 12, cost: 75, upgradePotential: 5 },
+                { level: 2, value: 14, cost: 100, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 6, cost: 60, upgradePotential: 5 },
+                { level: 2, value: 7, cost: 90, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 8, cost: 70, upgradePotential: 5 },
+                { level: 2, value: 9, cost: 95, upgradePotential: 5 },
+            ],
+        },
+    },
+    [HeroSlug.GRAFFITI_ARTIST]: {
+        1: {
+            attack: [
+                { level: 1, value: 8, cost: 40, upgradePotential: 3 },
+                { level: 2, value: 10, cost: 60, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 6, cost: 30, upgradePotential: 3 },
+                { level: 2, value: 7, cost: 50, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 9, cost: 35, upgradePotential: 3 },
+                { level: 2, value: 11, cost: 55, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 10, cost: 60, upgradePotential: 5 },
+                { level: 2, value: 12, cost: 85, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 7, cost: 50, upgradePotential: 5 },
+                { level: 2, value: 8, cost: 75, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 11, cost: 55, upgradePotential: 5 },
+                { level: 2, value: 13, cost: 80, upgradePotential: 5 },
+            ],
+        },
+    },
+    [HeroSlug.RESEARCHER]: {
+        1: {
+            attack: [
+                { level: 1, value: 6, cost: 30, upgradePotential: 3 },
+                { level: 2, value: 8, cost: 50, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 4, cost: 25, upgradePotential: 3 },
+                { level: 2, value: 5, cost: 40, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 5, cost: 35, upgradePotential: 3 },
+                { level: 2, value: 7, cost: 50, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 8, cost: 50, upgradePotential: 5 },
+                { level: 2, value: 10, cost: 75, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 5, cost: 40, upgradePotential: 5 },
+                { level: 2, value: 7, cost: 60, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 7, cost: 50, upgradePotential: 5 },
+                { level: 2, value: 9, cost: 70, upgradePotential: 5 },
+            ],
+        },
+    },
+    [HeroSlug.CONMAN]: {
+        1: {
+            attack: [
+                { level: 1, value: 12, cost: 50, upgradePotential: 3 },
+                { level: 2, value: 14, cost: 75, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 6, cost: 40, upgradePotential: 3 },
+                { level: 2, value: 8, cost: 60, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 7, cost: 45, upgradePotential: 3 },
+                { level: 2, value: 9, cost: 70, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 14, cost: 75, upgradePotential: 5 },
+                { level: 2, value: 16, cost: 100, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 8, cost: 60, upgradePotential: 5 },
+                { level: 2, value: 10, cost: 90, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 9, cost: 70, upgradePotential: 5 },
+                { level: 2, value: 11, cost: 95, upgradePotential: 5 },
+            ],
+        },
+    },
+    [HeroSlug.SLEEPER]: {
+        1: {
+            attack: [
+                { level: 1, value: 7, cost: 35, upgradePotential: 3 },
+                { level: 2, value: 9, cost: 55, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 5, cost: 30, upgradePotential: 3 },
+                { level: 2, value: 6, cost: 45, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 8, cost: 40, upgradePotential: 3 },
+                { level: 2, value: 10, cost: 60, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 9, cost: 55, upgradePotential: 5 },
+                { level: 2, value: 11, cost: 75, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 6, cost: 45, upgradePotential: 5 },
+                { level: 2, value: 8, cost: 70, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 10, cost: 60, upgradePotential: 5 },
+                { level: 2, value: 12, cost: 85, upgradePotential: 5 },
+            ],
+        },
+    },
+    [HeroSlug.FATE_PRIEST]: {
+        1: {
+            attack: [
+                { level: 1, value: 9, cost: 45, upgradePotential: 3 },
+                { level: 2, value: 11, cost: 70, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 6, cost: 35, upgradePotential: 3 },
+                { level: 2, value: 7, cost: 55, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 10, cost: 50, upgradePotential: 3 },
+                { level: 2, value: 12, cost: 75, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 11, cost: 70, upgradePotential: 5 },
+                { level: 2, value: 13, cost: 95, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 7, cost: 55, upgradePotential: 5 },
+                { level: 2, value: 9, cost: 80, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 12, cost: 75, upgradePotential: 5 },
+                { level: 2, value: 14, cost: 100, upgradePotential: 5 },
+            ],
+        },
+    },
+    [HeroSlug.SOUL_SISTERS]: {
+        1: {
+            attack: [
+                { level: 1, value: 11, cost: 55, upgradePotential: 3 },
+                { level: 2, value: 13, cost: 80, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 7, cost: 45, upgradePotential: 3 },
+                { level: 2, value: 8, cost: 65, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 9, cost: 50, upgradePotential: 3 },
+                { level: 2, value: 11, cost: 70, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 13, cost: 80, upgradePotential: 5 },
+                { level: 2, value: 15, cost: 105, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 8, cost: 65, upgradePotential: 5 },
+                { level: 2, value: 10, cost: 90, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 11, cost: 70, upgradePotential: 5 },
+                { level: 2, value: 13, cost: 95, upgradePotential: 5 },
+            ],
+        },
     },
     [HeroSlug.PIRATE]: {
-        1: { attack: 15, defense: 7, speed: 6 },
-        2: { attack: 17, defense: 8, speed: 7 },
-    },
-
-    [HeroSlug.GRAFFITI_ARTIST]: {
-        1: { attack: 8, defense: 3, speed: 10 },
-        2: { attack: 10, defense: 4, speed: 12 },
-    },
-
-    [HeroSlug.CONMAN]: {
-        1: { attack: 7, defense: 4, speed: 9 },
-        2: { attack: 9, defense: 5, speed: 11 },
-    },
-
-    [HeroSlug.RESEARCHER]: {
-        1: { attack: 5, defense: 6, speed: 5 },
-        2: { attack: 6, defense: 7, speed: 6 },
-    },
-
-    [HeroSlug.SOUL_SISTERS]: {
-        1: { attack: 9, defense: 8, speed: 7 },
-        2: { attack: 11, defense: 9, speed: 8 },
-    },
-
-    [HeroSlug.SLEEPER]: {
-        1: { attack: 4, defense: 9, speed: 2 },
-        2: { attack: 5, defense: 10, speed: 3 },
-    },
-
-    [HeroSlug.FATE_PRIEST]: {
-        1: { attack: 6, defense: 7, speed: 4 },
-        2: { attack: 8, defense: 8, speed: 5 },
+        1: {
+            attack: [
+                { level: 1, value: 13, cost: 65, upgradePotential: 3 },
+                { level: 2, value: 15, cost: 90, upgradePotential: 3 },
+            ],
+            defense: [
+                { level: 1, value: 8, cost: 55, upgradePotential: 3 },
+                { level: 2, value: 10, cost: 80, upgradePotential: 3 },
+            ],
+            speed: [
+                { level: 1, value: 10, cost: 60, upgradePotential: 3 },
+                { level: 2, value: 12, cost: 85, upgradePotential: 3 },
+            ],
+        },
+        2: {
+            attack: [
+                { level: 1, value: 15, cost: 90, upgradePotential: 5 },
+                { level: 2, value: 17, cost: 120, upgradePotential: 5 },
+            ],
+            defense: [
+                { level: 1, value: 10, cost: 80, upgradePotential: 5 },
+                { level: 2, value: 12, cost: 110, upgradePotential: 5 },
+            ],
+            speed: [
+                { level: 1, value: 12, cost: 85, upgradePotential: 5 },
+                { level: 2, value: 14, cost: 115, upgradePotential: 5 },
+            ],
+        },
     },
 };
