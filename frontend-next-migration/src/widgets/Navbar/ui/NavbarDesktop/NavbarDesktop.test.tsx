@@ -36,7 +36,7 @@ describe('Navbar', () => {
     });
 
     test('render components', async () => {
-        const { container } = render(
+        render(
             <FixedProvider>
                 <CollapsedProvider>
                     <NavbarDesktop
