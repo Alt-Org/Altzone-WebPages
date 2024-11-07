@@ -22,4 +22,8 @@ const profileApi = gameApi.injectEndpoints({
     overrideExisting: false,
 });
 
-export const { useDeleteProfileMutation, endpoints: profileEndpoints } = profileApi;
+export const {
+    useDeleteProfileMutation,
+    useUpdateProfileMutation,
+    endpoints: profileEndpoints,
+} = profileApi;
