@@ -20,11 +20,6 @@ jest.mock('@/entities/Auth', () => ({
             return { isGranted: false };
         },
     }),
-    authUserActions: {
-        setAccessTokenInfo: jest.fn(),
-        setProfile: jest.fn(),
-        setIsSessionExpired: jest.fn(),
-    },
 }));
 
 jest.mock('@/shared/lib/hooks/useIsPageScrollbar');
