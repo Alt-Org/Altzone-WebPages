@@ -48,16 +48,20 @@
     height: clamp(0.5rem, 3vw, 2rem);
     border-radius: 50%;
     overflow: hidden;
+    transition: transform 0.3s ease-in-out;
     //@include link-scale-effect('icon');
+
+    &:hover {
+     @media (min-width: 1025px) {
+      transform: scale(3);
+      transition: transform 0.3s ease-in-out;
+      }
+    }
   }
 
   .memberLogoEnlarged {
-    position: fixed;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%);
-    width: clamp(0.5rem, 35vw, 35rem);
-    height: clamp(0.5rem, 35vw, 35rem);
+    transform: scale(3);
+    transition: transform 0.3s ease-in-out;
   }
   
   .Logo {

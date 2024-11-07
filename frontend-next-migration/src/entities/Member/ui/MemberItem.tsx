@@ -10,7 +10,7 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
     const linksMap = getLinks();
     /**
      * Manage the enlarged mode of the image.
-     * @description When the boolean value is true, image is enlarged
+     * @description When the boolean value is true, image is enlarged.
      * @type {boolean}
      * @default false
      */
