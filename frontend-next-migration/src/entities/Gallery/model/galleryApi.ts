@@ -33,8 +33,10 @@ export type DirectoryWithPhotos = {
     photos: ModifiedFile[];
 };
 
+export type ParentDirectory = SectionGalleriasPaths;
+
 type GetAllDirectoryPhotosQueryArgs = {
-    parentDirectory: SectionGalleriasPaths;
+    parentDirectory: ParentDirectory;
 };
 
 const galleryApi = gameApi.injectEndpoints({
