@@ -1,4 +1,4 @@
-import { StatsStrategy, HeroStats, HeroLevel } from '../../types/HeroStats';
+import { HeroLevel, HeroStats, StatsStrategy } from '../../types/HeroStats';
 import { HeroSlug } from '../../types/hero';
 import { statsData } from './statsData';
 import { DefaultStatsStrategy } from './DefaultStatsStrategy';
