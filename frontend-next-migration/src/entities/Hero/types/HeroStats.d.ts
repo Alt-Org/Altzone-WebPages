@@ -15,14 +15,7 @@ type NumericRange<
 
 export type HeroLevel = NumericRange<CreateArrayWithLengthX<1>, 2>;
 
-export type StatUpgradeInfo = {
-    price: number;
-    nextValue: number;
-    upgradePotential: number;
-    level: number;
-};
-
-interface StatUpgradeLevel {
+interface StatUpgradeInfo {
     level: number;
     value: number;
     cost: number;
@@ -30,9 +23,9 @@ interface StatUpgradeLevel {
 }
 
 export interface HeroStats {
-    attack: StatUpgradeLevel[];
-    defense: StatUpgradeLevel[];
-    speed: StatUpgradeLevel[];
+    attack: StatUpgradeInfo[];
+    defense: StatUpgradeInfo[];
+    speed: StatUpgradeInfo[];
 }
 
 // export type StatName = keyof HeroStats;

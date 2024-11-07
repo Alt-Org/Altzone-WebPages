@@ -11,4 +11,22 @@ export class DefaultStatsStrategy implements StatsStrategy {
     public getStatsForHero(slug: HeroSlug, level: number): HeroStats {
         return this.statsData[slug]?.[level];
     }
+
+    //todo check may be it could be useful
+    // getStatUpgradeInfo(
+    //     heroStats: HeroStats,
+    //     statName: 'attack' | 'defense' | 'speed',
+    //     fromLevel: number,
+    //     toLevel: number
+    // ): { price: number; nextValue: number; upgradePotential: number } | undefined {
+    //     const statLevels = heroStats[statName];
+    //     const from = statLevels.find(level => level.level === fromLevel);
+    //     const to = statLevels.find(level => level.level === toLevel);
+    //
+    //     if (from && to) {
+    //         const price = to.cost - from.cost;
+    //         return { price, nextValue: to.value, upgradePotential: to.upgradePotential };
+    //     }
+    //     return undefined;
+    // }
 }
