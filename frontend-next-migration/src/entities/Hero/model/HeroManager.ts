@@ -1,7 +1,7 @@
 import { GroupInfo, HeroWithGroup, HeroGroup, HeroSlug } from '../types/hero';
 import { HeroLevel, HeroStats } from '../types/HeroStats';
 import { initializeHeroGroups } from './initializeHeroGroups';
-import { defaultStatsStrategy, HeroStatsManager } from './stats';
+import { HeroStatsManager } from './stats';
 
 export class HeroManager {
     private readonly t: (key: string) => string;
@@ -11,7 +11,7 @@ export class HeroManager {
     constructor(t: (key: string) => string) {
         this.t = t;
         this.heroGroups = initializeHeroGroups(this.t);
-        this.heroStatsManager = new HeroStatsManager(defaultStatsStrategy);
+        this.heroStatsManager = new HeroStatsManager();
     }
 
     public getHeroStatsBySlugAndLevel(slug: HeroSlug, level: HeroLevel): HeroStats {
