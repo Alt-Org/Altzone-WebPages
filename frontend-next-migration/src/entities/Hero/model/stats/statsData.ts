@@ -19,7 +19,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
         },
         2: {
             attack: [
-                { level: 1, value: 12, cost: 75, upgradePotential: 5 },
+                { level: 1, value: 12, cost: 75, upgradePotential: 22 },
                 { level: 2, value: 14, cost: 100, upgradePotential: 5 },
             ],
             defense: [
