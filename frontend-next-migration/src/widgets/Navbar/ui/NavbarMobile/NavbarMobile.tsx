@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { CSSProperties, memo, useMemo, useState } from 'react';
-import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
@@ -14,6 +13,7 @@ import { defineNs } from '../../model/defineNs';
 import { useFixed } from '../../model/FixedProvider';
 import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
 interface NavbarTouchProps {

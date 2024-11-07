@@ -1,8 +1,8 @@
 'use client';
 import { memo, useMemo } from 'react';
-import { FixedProvider } from '@/widgets/Navbar/model/FixedProvider';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { CollapsedProvider } from '../../model/CollapsedProvider';
+import { FixedProvider } from '../../model/FixedProvider';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
 import { NavBarType } from '../../model/types';
 import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';

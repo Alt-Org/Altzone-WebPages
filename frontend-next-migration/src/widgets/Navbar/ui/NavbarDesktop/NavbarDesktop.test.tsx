@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import NavbarDesktop from './NavbarDesktop';
-import { FixedProvider } from '@/widgets/Navbar/model/FixedProvider';
-import { CollapsedProvider } from '../../model/CollapsedProvider';
-import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
+import { CollapsedProvider } from '../../model/CollapsedProvider';
+import { FixedProvider } from '../../model/FixedProvider';
+import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
+import NavbarDesktop from './NavbarDesktop';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
