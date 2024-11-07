@@ -20,8 +20,8 @@ export class DefaultStatsStrategy implements StatsStrategy {
     //     toLevel: number
     // ): { price: number; nextValue: number; upgradePotential: number } | undefined {
     //     const statLevels = heroStats[statName];
-    //     const from = statLevels.find(level => level.level === fromLevel);
-    //     const to = statLevels.find(level => level.level === toLevel);
+    //     const from = statLevels.find(statLevel => statLevel.statLevel === fromLevel);
+    //     const to = statLevels.find(statLevel => statLevel.statLevel === toLevel);
     //
     //     if (from && to) {
     //         const price = to.cost - from.cost;

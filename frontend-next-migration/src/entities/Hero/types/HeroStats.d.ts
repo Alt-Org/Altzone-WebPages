@@ -16,7 +16,7 @@ type NumericRange<
 export type HeroLevel = NumericRange<CreateArrayWithLengthX<1>, 2>;
 
 interface StatUpgradeInfo {
-    level: number;
+    statLevel: number;
     value: number;
     cost: number;
     upgradePotential: number;

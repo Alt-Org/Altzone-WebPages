@@ -14,8 +14,8 @@ export class HeroManager {
         // this.heroStatsManager = new HeroStatsManager();
     }
 
-    // public getHeroStatsBySlugAndLevel(slug: HeroSlug, level: HeroLevel): HeroStats {
-    //     return this.heroStatsManager.getStatsForHero(slug, level);
+    // public getHeroStatsBySlugAndLevel(slug: HeroSlug, statLevel: HeroLevel): HeroStats {
+    //     return this.heroStatsManager.getStatsForHero(slug, statLevel);
     // }
 
     public getAllHeroes(): HeroWithGroup[] {
