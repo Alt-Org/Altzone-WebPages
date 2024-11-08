@@ -24,6 +24,14 @@ jest.mock('@/entities/Auth', () => ({
 
 jest.mock('@/shared/lib/hooks/useIsPageScrollbar');
 
+// // I think we cannot mock useClientTranslation only, because its NavItem also uses it... Definitely should be figured out
+jest.mock('react-i18next', () => ({
+    useTranslation: jest.fn().mockReturnValue({
+        t: jest.fn((key) => key),
+        i18n: { language: 'en', changeLanguage: jest.fn() },
+    }),
+}));
+
 describe('Navbar', () => {
     beforeEach(() => {
         (useClientTranslation as jest.Mock).mockReturnValue({ t: jest.fn((key) => key) });
@@ -39,19 +47,19 @@ describe('Navbar', () => {
             </FixedProvider>,
         );
 
-        expect(screen.getByRole('toggleFixButton')).toBeVisible();
+        expect(screen.getByTestId('toggleFixButton')).toBeVisible();
 
-        const toggleFix = screen.getByRole('toggleFixButton');
+        const toggleFix = screen.getByTestId('toggleFixButton');
         await user.click(toggleFix);
 
-        expect(screen.getByRole('collapseExpand')).toBeVisible();
-        const toggleCollapse = screen.getByRole('collapseExpand');
+        expect(screen.getByTestId('collapseExpand')).toBeVisible();
+        const toggleCollapse = screen.getByTestId('collapseExpand');
         user.click(toggleCollapse);
 
         //wait for transitions
         waitFor(
             () => {
-                expect(screen.getByRole('toggleFixButton')).not.toBeVisible();
+                expect(screen.getByTestId('toggleFixButton')).not.toBeVisible();
             },
             { timeout: 500 },
         );
@@ -60,7 +68,7 @@ describe('Navbar', () => {
 
         waitFor(
             () => {
-                expect(screen.getByRole('toggleFixButton')).toBeVisible();
+                expect(screen.getByTestId('toggleFixButton')).toBeVisible();
             },
             { timeout: 500 },
         );

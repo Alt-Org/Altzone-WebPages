@@ -16,7 +16,8 @@ export function ToggleCollapseButton(props: Props) {
 
     return (
         <button
-            role="collapseExpand"
+            role="menuitem"
+            data-testid="collapseExpand"
             onClick={onClick}
             disabled={disabled}
             className={classNames(cls.ToggleCollapseButton, {}, [className])}
