@@ -32,7 +32,7 @@ jest.mock('react-i18next', () => ({
     }),
 }));
 
-describe('Navbar', () => {
+describe('Navbar mobile', () => {
     beforeEach(() => {
         (useClientTranslation as jest.Mock).mockReturnValue({ t: jest.fn((key) => key) });
         (useIsPageScrollbar as jest.Mock).mockReturnValue(true);
@@ -47,30 +47,13 @@ describe('Navbar', () => {
             </FixedProvider>,
         );
 
+        const toggleFixButton = screen.getByTestId('toggleFixButton');
         expect(screen.getByTestId('toggleFixButton')).toBeVisible();
-
-        const toggleFix = screen.getByTestId('toggleFixButton');
-        await user.click(toggleFix);
-
+        await user.click(toggleFixButton);
         expect(screen.getByTestId('collapseExpand')).toBeVisible();
-        const toggleCollapse = screen.getByTestId('collapseExpand');
-        user.click(toggleCollapse);
-
-        //wait for transitions
-        waitFor(
-            () => {
-                expect(screen.getByTestId('toggleFixButton')).not.toBeVisible();
-            },
-            { timeout: 500 },
-        );
-
-        user.click(toggleCollapse);
-
-        waitFor(
-            () => {
-                expect(screen.getByTestId('toggleFixButton')).toBeVisible();
-            },
-            { timeout: 500 },
-        );
+        const collapseExpand = screen.getByTestId('collapseExpand');
+        expect(toggleFixButton.parentElement).not.toHaveClass('collapsed');
+        await user.click(collapseExpand);
+        expect(toggleFixButton.parentElement).toHaveClass('collapsed');
     });
 });
