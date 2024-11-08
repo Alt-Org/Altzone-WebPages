@@ -1,5 +1,4 @@
 import { CSSProperties, memo, useState } from 'react';
-import { ToggleFixButton } from '@/widgets/Navbar/ui/ToggleFixButton/ToggleFixButton';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -12,6 +11,7 @@ import { defineNs } from '../../model/defineNs';
 import { useFixed } from '../../model/FixedProvider';
 import { NavbarBuild, NavBarType } from '../../model/types';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
 
