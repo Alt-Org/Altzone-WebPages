@@ -42,7 +42,7 @@ type NavbarProps = {
  * This component must be used as a child of `FixedProvider` and `CollapsedProvider`.
  *
  * - When in `Fixed` mode, the navbar remains visible as the page scrolls.
- * - In `collapse` mode, the menu is hidden.
+ * - In `collapse` mode, the navbar is hidden.
  *
  * @param {NavbarProps} props Properties for NavnarDesctop component
  * @returns Memorized navbar component
