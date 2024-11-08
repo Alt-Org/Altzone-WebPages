@@ -104,7 +104,7 @@ const ClansSearchAndViewDesktop = () => {
                     )}
                 </div>
             ) : (
-                <h2 style={{ textAlign: 'left', marginBottom: '20px' }}>{t('no_result')}</h2>
+                <h2 className={cls.noResults}>{t('no_result')}</h2>
             )}
         </div>
     );
@@ -232,7 +232,7 @@ const ClansSearchAndViewMobile = () => {
                         )}
                     </div>
                 ) : (
-                    <h2 style={{ textAlign: 'left', marginBottom: '20px' }}>{t('no_result')}</h2>
+                    <h2 className={cls.noResults}>{t('no_result')}</h2>
                 )}
             </div>
         </div>

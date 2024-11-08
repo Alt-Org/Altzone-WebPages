@@ -79,13 +79,13 @@ const ClanAllSubPage = () => {
     if (error) {
         return (
             <>
-                <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>{t('clans_title')}</h1>
+                <h1 className={cls.titleText}>{t('clans_title')}</h1>
                 {isMobileSize ? (
                     <ClansSearchMobile onClickToSearch={onClickToSearch} />
                 ) : (
                     <ClansSearchDesktop onClickToSearch={onClickToSearch} />
                 )}
-                <h2 style={{ textAlign: 'left', marginBottom: '20px' }}>{t('no_result')}</h2>
+                <h2 className={cls.noResults}>{t('no_result')}</h2>
             </>
         );
     }
@@ -93,7 +93,7 @@ const ClanAllSubPage = () => {
     if (clans) {
         return (
             <>
-                <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>{t('clans_title')}</h1>
+                <h1 className={cls.titleText}>{t('clans_title')}</h1>
                 {isMobileSize ? (
                     <ClansSearchMobile onClickToSearch={onClickToSearch} />
                 ) : (
