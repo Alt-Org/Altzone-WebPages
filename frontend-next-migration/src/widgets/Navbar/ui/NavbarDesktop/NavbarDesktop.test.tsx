@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
@@ -6,6 +6,7 @@ import { CollapsedProvider } from '../../model/CollapsedProvider';
 import { FixedProvider } from '../../model/FixedProvider';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
 import NavbarDesktop from './NavbarDesktop';
+import { queryByTestId } from '@storybook/test';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
@@ -50,29 +51,12 @@ describe('Navbar', () => {
         );
 
         expect(screen.getByTestId('toggleFixButton')).toBeVisible();
-
         const toggleFix = screen.getByTestId('toggleFixButton');
+        const toggleFixButtonWrapper = screen.getByTestId('toggleFixButtonWrapper');
         await user.click(toggleFix);
-
-        expect(screen.getByTestId('collapseExpand')).toBeVisible();
-        const toggleCollapse = screen.getByTestId('collapseExpand');
-        user.click(toggleCollapse);
-
-        //wait for transitions
-        waitFor(
-            () => {
-                expect(screen.getByTestId('toggleFixButton')).not.toBeVisible();
-            },
-            { timeout: 500 },
-        );
-
-        user.click(toggleCollapse);
-
-        waitFor(
-            () => {
-                expect(screen.getByTestId('toggleFixButton')).toBeVisible();
-            },
-            { timeout: 500 },
-        );
+        const collapseExpand = screen.getByTestId('collapseExpand');
+        expect(toggleFixButtonWrapper).not.toHaveClass('collapsed');
+        await user.click(collapseExpand);
+        expect(toggleFixButtonWrapper).toHaveClass('collapsed');
     });
 });

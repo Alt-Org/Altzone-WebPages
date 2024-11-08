@@ -111,6 +111,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
 
                     {hasScrollbar && (
                         <li
+                            data-testid="toggleFixButtonWrapper"
                             onTransitionEnd={handleTransitionEnd}
                             className={classNames(
                                 cls.FixButtonWrapper,
@@ -127,6 +128,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                     )}
                     {isFixed && (
                         <li
+                            data-testid="collapseExpandWrapper"
                             className={classNames(cls.CollapseButtonWrapper, {
                                 [cls.collapsing]: isAnimating,
                             })}
