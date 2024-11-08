@@ -8,6 +8,7 @@ import {
     getRouteGameArtPage,
     getRouteAllHeroesPage,
     getRouteAllClanSearchPage,
+    getRouteAllFurnitureSetsPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -60,6 +61,17 @@ export const dropdowns = {
             elementText: 'clans',
             link: {
                 path: getRouteAllClanSearchPage(),
+                isExternal: false,
+            },
+            isDisabled: {
+                status: false,
+                reason: 'Kirjaudu ensin!',
+            },
+        },
+        {
+            elementText: 'furnituresets',
+            link: {
+                path: getRouteAllFurnitureSetsPage(),
                 isExternal: false,
             },
             isDisabled: {

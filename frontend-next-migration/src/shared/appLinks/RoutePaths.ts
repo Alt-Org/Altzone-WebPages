@@ -119,3 +119,7 @@ export const getRouteAboutPage = () => '/about';
 export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';
 export const getRoute404Page = () => '/404';
+
+export const getRouteAllFurnitureSetsPage = () => '/furniture';
+export const getRouteOneFurnitureSetPage = (id: string) => `/furniture/${id}`;
+//export const getRoute
