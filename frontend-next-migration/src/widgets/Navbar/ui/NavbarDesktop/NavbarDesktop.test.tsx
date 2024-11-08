@@ -1,4 +1,4 @@
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
@@ -6,7 +6,6 @@ import { CollapsedProvider } from '../../model/CollapsedProvider';
 import { FixedProvider } from '../../model/FixedProvider';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
 import NavbarDesktop from './NavbarDesktop';
-import { queryByTestId } from '@storybook/test';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
