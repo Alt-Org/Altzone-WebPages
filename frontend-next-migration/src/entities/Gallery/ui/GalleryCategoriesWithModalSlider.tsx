@@ -3,6 +3,7 @@ import { memo, useCallback } from 'react';
 import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './styles.module.scss';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 export type GalleryCategoriesWithModalSliderProps = {
     title: string;
@@ -33,9 +34,9 @@ export const GalleryCategoriesWithModalSlider = memo(
             <div style={{ cursor: 'pointer' }}>
                 <Fancybox>
                     <div className={cls.cover}>
-                        <a
+                        <AppLink
                             data-fancybox={title}
-                            href={cover.url}
+                            to={cover.url}
                         >
                             <Image
                                 loading={'eager'}
@@ -46,19 +47,19 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 alt={cover.name}
                             />
                             <h2 className={cls.title}>{t(`${title}`)}</h2>
-                        </a>
+                        </AppLink>
                     </div>
 
                     <div style={{ display: 'none' }}>
                         {getSortedSources(sources).map((source, index) =>
                             index !== 0 ? (
-                                <a
+                                <AppLink
                                     key={index}
                                     data-fancybox={title}
-                                    href={source}
+                                    to={source}
                                 >
-                                    {/*<Image loading={"lazy"} alt={source.split('/').pop()?.split('.')[0]} src={source} width="200" height="150" />*/}
-                                </a>
+                                    ''
+                                </AppLink>
                             ) : null,
                         )}
                     </div>
