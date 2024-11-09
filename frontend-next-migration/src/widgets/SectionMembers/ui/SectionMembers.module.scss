@@ -12,6 +12,11 @@
 .scrollBottomButton {
   margin-bottom: 10px;
   @include link-scale-effect;
+
+  &.disabled{
+    cursor: not-allowed;
+  }
+
 }
 
 .membersListContainer {

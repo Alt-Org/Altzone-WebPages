@@ -25,18 +25,17 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
         refetchOnMountOrArgChange: false,
     });
 
-    if (isError) {
-        return <p>Error fetching teams data</p>;
-    }
-
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
             <ScrollBottomButton
-                className={cls.scrollBottomButton}
+                isDisabled={isError || isLoading}
+                className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}
                 text={t('playButton')}
             />
             <Container className={cls.membersListContainer}>
-                {isLoading ? (
+                {isError && <p>Error fetching teams data</p>}
+
+                {isLoading || isError ? (
                     <SkeletonLoaderWithHeader sections={5} />
                 ) : (
                     teams.map((team) => (
