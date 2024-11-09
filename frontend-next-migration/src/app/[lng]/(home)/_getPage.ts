@@ -1,7 +1,11 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { getRouteAllHeroesPage, getRouteComicsPage } from '@/shared/appLinks/RoutePaths';
+import {
+    getRouteAllHeroesPage,
+    getRouteComicsPage,
+    getRouteGalleryPage,
+} from '@/shared/appLinks/RoutePaths';
 import { createPage } from '@/app/_helpers';
 
 export async function _getPage(lng: string) {
@@ -62,7 +66,7 @@ export async function _getPage(lng: string) {
                 socialsText: t('gallery-socials-text'),
                 seeMoreLink: {
                     text: t('gallery-seeMore'),
-                    href: RoutePaths.PICTURE_GALLERY,
+                    href: getRouteGalleryPage(),
                 },
                 socialMediaLinks: [
                     AppExternalLinks.igPost1,
