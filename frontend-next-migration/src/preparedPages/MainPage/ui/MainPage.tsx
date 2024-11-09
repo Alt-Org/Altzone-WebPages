@@ -34,8 +34,6 @@ function MainPage(props: Props) {
         gallery,
     } = props;
 
-    const sameBg = undefined;
-
     return (
         <div className={cls.MainPage}>
             <ProjectDescription
