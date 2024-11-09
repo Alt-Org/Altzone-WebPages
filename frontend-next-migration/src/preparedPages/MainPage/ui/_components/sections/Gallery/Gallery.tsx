@@ -1,10 +1,9 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
-import { Container } from '@/shared/ui/Container';
 import { SectionGalleryV2, SectionGalleryV1 } from '@/widgets/SectionGallery';
-import cls from './Gallery.module.scss';
+import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Version } from '@/entities/Gallery/types/gallery';
+import cls from './Gallery.module.scss';
 
 export type Props = {
     title: string;
@@ -16,12 +15,10 @@ export type Props = {
     };
     socialMediaLinks: string[];
     videoLink: string;
-    version: Version;
 };
 
 const Gallery = (props: Props) => {
-    const { title, infoText, socialsText, seeMoreLink, socialMediaLinks, videoLink, version } =
-        props;
+    const { title, infoText, socialsText, seeMoreLink, socialMediaLinks, videoLink } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -43,15 +40,10 @@ const Gallery = (props: Props) => {
             <p className={cls.SocialsText}>{socialsText}</p>
 
             <Container className={cls.Container}>
-                {/* Version 1: */}
-                {/*<SectionGalleryV1*/}
-                {/*    // version={"preview"}*/}
-                {/*    socialMediaLinks={socialMediaLinks}*/}
-                {/*    videoLink={videoLink} */}
-                {/*    seeMoreLink={seeMoreLink} */}
-                {/*/>*/}
-
-                {/* Version 2: */}
+                <SectionGalleryV1
+                    socialMediaLinks={socialMediaLinks}
+                    videoLink={videoLink}
+                />
 
                 <SectionGalleryV2
                     version={'preview'}

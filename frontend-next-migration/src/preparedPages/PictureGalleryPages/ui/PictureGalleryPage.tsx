@@ -1,11 +1,9 @@
-import { SectionGallerias } from '@/widgets/SectionGallerias';
-import { Container } from '@/shared/ui/Container';
-import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { Version } from '@/entities/Gallery/types/gallery';
 import { SectionGalleryV2, SectionGalleryV1 } from '@/widgets/SectionGallery';
+import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
+
+// import { SectionGallerias } from '@/widgets/SectionGallerias';
+// import { SectionGalleriasPaths } from "@/shared/const/SectionGalleriasPaths";
 
 export interface Props {
     title: string;
@@ -27,11 +25,14 @@ const PictureGalleryPage = (props: Props) => {
 
                 {/* <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} /> */}
 
-                {/* version1 */}
-                {/*<SectionGallery*/}
-                {/*    socialMediaLinks={socialMediaLinks}*/}
-                {/*    videoLink={videoLink}*/}
-                {/*/>*/}
+                {/*version1*/}
+                <SectionGalleryV1
+                    socialMediaLinks={socialMediaLinks}
+                    videoLink={videoLink}
+                />
+
+                {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} />*/}
+                {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />*/}
 
                 {/* version2 */}
                 <SectionGalleryV2
@@ -43,8 +44,4 @@ const PictureGalleryPage = (props: Props) => {
     );
 };
 
-export default withBackgroundImage<Props>({
-    alt: 'Picture Gallery Page underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-})(PictureGalleryPage);
+export default PictureGalleryPage;

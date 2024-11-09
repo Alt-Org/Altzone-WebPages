@@ -1,10 +1,8 @@
 'use client';
-import { EmbedSocialMediaPosts } from '@/shared/ui/SocialMediaEmbed';
+import { useState, useEffect } from 'react';
 import { ImageWall } from '@/entities/Gallery';
 import { useGetStrapiGalleryImages } from '@/entities/Gallery/api/useGetStrapiGalleryImages';
-import { useState, useEffect } from 'react';
 import { ImageData } from '@/entities/Gallery/types/gallery';
-import { string } from 'yup';
 
 interface PreviewProps {
     version: 'preview';
