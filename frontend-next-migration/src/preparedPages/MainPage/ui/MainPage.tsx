@@ -6,7 +6,7 @@ import {
     ProjectDescription,
     ProjectDescriptionProps,
 } from './_components/sections/ProjectDescription';
-import { GetToKnowComics, GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
+import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import {
     VideoAndGalleries,
     VideoAndGalleriesProps,
@@ -19,7 +19,6 @@ export type Props = {
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
-    // classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
     gallery: GalleryProps;
     heroesBlocks: HeroesBlocksProps;
 };
@@ -45,14 +44,13 @@ function MainPage(props: Props) {
             />
 
             <HorizontalLines />
-            <PlayWithUs {...playWithUs} />
 
-            <HorizontalLines />
+            <Gallery {...gallery} />
 
-            <VideoAndGalleries
-                backgroundImageSrc={sameBg}
-                {...videoAndGalleries}
-            />
+            {/*<VideoAndGalleries*/}
+            {/*    backgroundImageSrc={sameBg}*/}
+            {/*    {...videoAndGalleries}*/}
+            {/*/>*/}
 
             <HorizontalLines />
 
@@ -64,7 +62,9 @@ function MainPage(props: Props) {
 
             <HorizontalLines />
 
-            <Gallery {...gallery} />
+            <PlayWithUs {...playWithUs} />
+
+            <HorizontalLines />
 
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}

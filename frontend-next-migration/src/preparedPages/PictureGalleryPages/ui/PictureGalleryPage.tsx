@@ -1,6 +1,7 @@
 import { SectionGalleryV2, SectionGalleryV1 } from '@/widgets/SectionGallery';
 import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
+import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
 
 // import { SectionGallerias } from '@/widgets/SectionGallerias';
 // import { SectionGalleriasPaths } from "@/shared/const/SectionGalleriasPaths";
@@ -30,6 +31,10 @@ const PictureGalleryPage = (props: Props) => {
                     socialMediaLinks={socialMediaLinks}
                     videoLink={videoLink}
                 />
+
+                <div className={cls.videoWrapper}>
+                    <YouTubeFacade previewVideoYoutube={videoLink} />
+                </div>
 
                 {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/}
                 {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />*/}

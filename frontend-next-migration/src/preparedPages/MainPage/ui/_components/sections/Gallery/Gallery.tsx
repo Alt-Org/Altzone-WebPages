@@ -4,6 +4,7 @@ import { SectionGalleryV2, SectionGalleryV1 } from '@/widgets/SectionGallery';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Gallery.module.scss';
+import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
 
 export type Props = {
     title: string;
@@ -37,13 +38,17 @@ const Gallery = (props: Props) => {
             <h2 className={classNames(cls.title, mods)}>{title}</h2>
 
             <p className={cls.InfoText}>{infoText}</p>
-            <p className={cls.SocialsText}>{socialsText}</p>
+            {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
 
             <Container className={cls.Container}>
                 <SectionGalleryV1
                     socialMediaLinks={socialMediaLinks}
                     videoLink={videoLink}
                 />
+
+                <div className={cls.videoWrapper}>
+                    <YouTubeFacade previewVideoYoutube={videoLink} />
+                </div>
 
                 <SectionGalleryV2
                     version={'preview'}
