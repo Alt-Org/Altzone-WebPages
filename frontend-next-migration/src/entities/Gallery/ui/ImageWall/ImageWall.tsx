@@ -23,15 +23,6 @@ export type ImageWallProps = {
 export const ImageWall = (props: ImageWallProps) => {
     const { version, images, seeMoreLink } = props;
 
-    const { ref, inView } = useInView({
-        rootMargin: '-150px 0px',
-        triggerOnce: true,
-    });
-
-    const mods = {
-        [cls.inView]: inView,
-    };
-
     if (version === 'full') {
         return (
             <Fancybox>
