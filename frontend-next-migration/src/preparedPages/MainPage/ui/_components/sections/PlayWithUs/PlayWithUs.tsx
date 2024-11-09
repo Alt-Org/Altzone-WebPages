@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import googlePLay from '@/shared/assets/images/media/googleplay.png';
-import sideImg from '@/shared/assets/images/heros/einstein/professori.webp';
+import sideImg from '@/shared/assets/images/heros/einstein/professori_60.webp';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { NavElement, NavItem } from './NavElement/NavElement';

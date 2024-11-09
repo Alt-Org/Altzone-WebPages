@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import greenHaired from '@/shared/assets/images/heros/hannu-hodari/ahmatti.webp';
+import greenHaired from '@/shared/assets/images/heros/hannu-hodari/ahmatti_2_60.webp';
 import { Container } from '@/shared/ui/Container';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { Paragraph } from '@/shared/ui/Paragraph';
