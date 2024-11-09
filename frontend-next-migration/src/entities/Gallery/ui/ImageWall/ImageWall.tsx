@@ -65,53 +65,52 @@ export const ImageWall = (props: ImageWallProps) => {
                 </MasonryWrapper>
             </Fancybox>
         );
+    } else if (version === 'preview' && seeMoreLink) {
+        return (
+            <div>
+                <Fancybox>
+                    <MasonryWrapper>
+                        {Object.keys(images)
+                            .slice(0, 8)
+                            .map((key: string) => (
+                                <Border
+                                    key={key}
+                                    borderImageSrc={borderImageSrc}
+                                >
+                                    <div className={cls.Item}>
+                                        <a
+                                            data-fancybox="gallery"
+                                            href={images[key].src}
+                                        >
+                                            <Image
+                                                className={cls.Image}
+                                                src={images[key].src}
+                                                alt={`Image ${key}`}
+                                                width={images[key].width}
+                                                height={images[key].height}
+                                            />
+                                        </a>
+                                    </div>
+                                </Border>
+                            ))}
+                    </MasonryWrapper>
+                </Fancybox>
+
+                <div
+                    ref={ref}
+                    className={cls.buttonContainer}
+                >
+                    <Button
+                        withScalableLink={true}
+                        theme={ButtonTheme.Graffiti}
+                        className={classNames(cls.SeeMore, mods)}
+                        size={ButtonSize.XL}
+                        ref={ref}
+                    >
+                        <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
+                    </Button>
+                </div>
+            </div>
+        );
     }
-    // else if (version === 'preview' && seeMoreLink) {
-    //     return (
-    //         <div>
-    //             <Fancybox>
-    //                 <MasonryWrapper>
-    //                     {Object.keys(images)
-    //                         .slice(0, 8)
-    //                         .map((key: string) => (
-    //                             <Border
-    //                                 key={key}
-    //                                 borderImageSrc={borderImageSrc}
-    //                             >
-    //                                 <div className={cls.Item}>
-    //                                     <a
-    //                                         data-fancybox="gallery"
-    //                                         href={images[key].src}
-    //                                     >
-    //                                         <Image
-    //                                             className={cls.Image}
-    //                                             src={images[key].src}
-    //                                             alt={`Image ${key}`}
-    //                                             width={images[key].width}
-    //                                             height={images[key].height}
-    //                                         />
-    //                                     </a>
-    //                                 </div>
-    //                             </Border>
-    //                         ))}
-    //                 </MasonryWrapper>
-    //             </Fancybox>
-    //
-    //             <div
-    //                 ref={ref}
-    //                 className={cls.buttonContainer}
-    //             >
-    //                 <Button
-    //                     withScalableLink={true}
-    //                     theme={ButtonTheme.Graffiti}
-    //                     className={classNames(cls.SeeMore, mods)}
-    //                     size={ButtonSize.XL}
-    //                     ref={ref}
-    //                 >
-    //                     <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
-    //                 </Button>
-    //             </div>
-    //         </div>
-    //     );
-    // }
 };
