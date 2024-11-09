@@ -1,11 +1,7 @@
 'use client';
 import cls from './page.module.scss';
-// import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from '@/widgets/SectionClassifiedHeroesBlocks';
+import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
-import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
@@ -25,6 +21,7 @@ export type Props = {
     videoAndGalleries: VideoAndGalleriesProps;
     // classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
     gallery: GalleryProps;
+    heroesBlocks: HeroesBlocksProps;
 };
 
 function MainPage(props: Props) {
@@ -32,6 +29,7 @@ function MainPage(props: Props) {
         projectDescription,
         playWithUs,
         getToKnowComics,
+        heroesBlocks,
         videoAndGalleries,
         // classifiedHeroesBlocks,
         gallery,
@@ -64,14 +62,9 @@ function MainPage(props: Props) {
                 maxGroupsPerPage={3}
             />
 
-            {/*<HorizontalLines />*/}
+            <HorizontalLines />
 
-            {/*<HorizontalLines />*/}
-
-            <Gallery
-                {...gallery}
-                version={'preview'}
-            />
+            <Gallery {...gallery} />
 
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}
