@@ -1,1 +1,1 @@
-export { EmbedSocialMediaPosts } from "./ui/EmbedSocialMediaPosts"
+export { EmbedSocialMediaPosts } from './ui/EmbedSocialMediaPosts';

@@ -1,13 +1,13 @@
-import { StoryObj } from "@storybook/react";
-import { SectionGallery } from "./SectionGallery";
-import { RoutePaths } from "@/shared/appLinks/RoutePaths";
-import { AppExternalLinks } from "@/shared/appLinks/appExternalLinks";
+import { StoryObj } from '@storybook/react';
+import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import { SectionGallery } from './SectionGallery';
 
 const meta = {
     title: 'widgets/Gallery/Version1/SectionGallery',
     component: SectionGallery,
-}
-export default meta
+};
+export default meta;
 
 type Story = StoryObj<typeof meta>;
 
@@ -19,8 +19,8 @@ export const Full: Story = {
             AppExternalLinks.fbPost1,
         ],
         videoLink: AppExternalLinks.previewVideoYoutube,
-    }
-}
+    },
+};
 
 export const Preview: Story = {
     args: {
@@ -31,8 +31,8 @@ export const Preview: Story = {
         ],
         videoLink: AppExternalLinks.previewVideoYoutube,
         seeMoreLink: {
-            text: "See more",
-            href: RoutePaths.PICTURE_GALLERY
-        }
-    }
-}
+            text: 'See more',
+            href: RoutePaths.PICTURE_GALLERY,
+        },
+    },
+};
