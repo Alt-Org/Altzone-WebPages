@@ -32,17 +32,12 @@ export const ImageWall = (props: ImageWallProps) => {
         [cls.inView]: inView,
     };
 
-    const borderImageSrc = '/images/hero-border3.png';
-
     if (version === 'full') {
         return (
             <Fancybox>
                 <MasonryWrapper>
                     {Object.keys(images).map((key: string) => (
-                        <Border
-                            key={key}
-                            borderImageSrc={borderImageSrc}
-                        >
+                        <Border key={key}>
                             <div className={cls.Item}>
                                 <AppLink
                                     to={images[key].src}
@@ -72,10 +67,7 @@ export const ImageWall = (props: ImageWallProps) => {
                         {Object.keys(images)
                             .slice(0, 8)
                             .map((key: string) => (
-                                <Border
-                                    key={key}
-                                    borderImageSrc={borderImageSrc}
-                                >
+                                <Border key={key}>
                                     <div className={cls.Item}>
                                         <AppLink
                                             data-fancybox="gallery"

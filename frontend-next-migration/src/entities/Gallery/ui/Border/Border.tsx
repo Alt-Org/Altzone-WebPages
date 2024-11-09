@@ -1,15 +1,15 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, ReactNode } from 'react';
 import { ClickableBorder } from '@/shared/ui/ClickableBorder';
 import useResizeObserver, { ResizeCallback } from '@/shared/lib/hooks/useResizeObserver';
 import cls from './Border.module.scss';
 
 export interface BorderProps {
-    borderImageSrc: string;
-    children: React.ReactNode;
+    borderImageSrc?: string;
+    children: ReactNode;
 }
 
 export const Border = (props: BorderProps) => {
-    const { borderImageSrc, children } = props;
+    const { borderImageSrc = '/images/hero-border3.png', children } = props;
 
     const elementRef = useRef<HTMLDivElement>(null);
 
