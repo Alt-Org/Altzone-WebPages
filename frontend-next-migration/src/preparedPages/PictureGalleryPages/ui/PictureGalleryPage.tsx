@@ -5,7 +5,6 @@ import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { Version } from '@/entities/Gallery/types/gallery';
 import { SectionGallery } from '@/widgets/SectionGallery';
-
 import cls from './PictureGalleryPage.module.scss';
 
 export interface Props {
@@ -14,18 +13,10 @@ export interface Props {
     socialsText: string;
     socialMediaLinks: string[];
     videoLink: string;
-    version: Version;
 }
 
 const PictureGalleryPage = (props: Props) => {
-    const {
-        title,
-        infoText,
-        socialsText,
-        socialMediaLinks,
-        videoLink,
-        version,
-    } = props;
+    const { title, infoText, socialsText, socialMediaLinks, videoLink } = props;
 
     return (
         <div className={cls.Wrapper}>
@@ -36,20 +27,17 @@ const PictureGalleryPage = (props: Props) => {
 
                 {/* <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} /> */}
 
-              1
                 {/* version1 */}
-                <SectionGallery
-                    socialMediaLinks={socialMediaLinks}
-                    videoLink={videoLink}
-                />
+                {/*<SectionGallery*/}
+                {/*    socialMediaLinks={socialMediaLinks}*/}
+                {/*    videoLink={videoLink}*/}
+                {/*/>*/}
 
                 {/* version2 */}
-                {/* {version === 'full' && (
-                    <SectionGallery
-                        version={version}
-                        socialMediaLinks={socialMediaLinks}
-                    />
-                )} */}
+                <SectionGallery
+                    version={'full'}
+                    socialMediaLinks={socialMediaLinks}
+                />
             </Container>
         </div>
     );
