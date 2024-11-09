@@ -15,6 +15,7 @@ interface AppLinkProps {
     theme?: AppLinkTheme;
     isExternal?: boolean;
     children: ReactNode;
+    'data-fancybox'?: string;
 }
 
 /**
@@ -39,7 +40,14 @@ interface AppLinkProps {
  * ```
  */
 export const AppLink: FC<AppLinkProps> = memo((props) => {
-    const { to, className = '', children, theme = AppLinkTheme.PRIMARY, isExternal } = props;
+    const {
+        to,
+        className = '',
+        children,
+        theme = AppLinkTheme.PRIMARY,
+        isExternal,
+        'data-fancybox': dataFancybox,
+    } = props;
 
     if (isExternal) {
         return (
@@ -48,6 +56,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
                 className={classNames(cls.AppLink, {}, [className, cls[theme]])}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-fancybox={dataFancybox}
             >
                 {children}
             </a>
@@ -58,6 +67,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         <Link
             href={to}
             className={classNames(cls.AppLink, {}, [className, cls[theme]])}
+            data-fancybox={dataFancybox}
         >
             {children}
         </Link>
