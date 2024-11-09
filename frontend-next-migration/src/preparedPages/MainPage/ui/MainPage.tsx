@@ -8,7 +8,7 @@ import {
 } from './_components/sections/ProjectDescription';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import {
-    VideoAndGalleries,
+    // VideoAndGalleries,
     VideoAndGalleriesProps,
 } from './_components/sections/VideoAndGalleries';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
@@ -27,9 +27,9 @@ function MainPage(props: Props) {
     const {
         projectDescription,
         playWithUs,
-        getToKnowComics,
+        // getToKnowComics,
         heroesBlocks,
-        videoAndGalleries,
+        // videoAndGalleries,
         // classifiedHeroesBlocks,
         gallery,
     } = props;
@@ -42,15 +42,13 @@ function MainPage(props: Props) {
                 className={cls.description}
                 {...projectDescription}
             />
+            <HorizontalLines />
+
+            <PlayWithUs {...playWithUs} />
 
             <HorizontalLines />
 
             <Gallery {...gallery} />
-
-            {/*<VideoAndGalleries*/}
-            {/*    backgroundImageSrc={sameBg}*/}
-            {/*    {...videoAndGalleries}*/}
-            {/*/>*/}
 
             <HorizontalLines />
 
@@ -62,10 +60,10 @@ function MainPage(props: Props) {
 
             <HorizontalLines />
 
-            <PlayWithUs {...playWithUs} />
-
-            <HorizontalLines />
-
+            {/*<VideoAndGalleries*/}
+            {/*    backgroundImageSrc={sameBg}*/}
+            {/*    {...videoAndGalleries}*/}
+            {/*/>*/}
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}
             {/*    {...getToKnowComics}*/}
