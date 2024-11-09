@@ -1,0 +1,47 @@
+.buttonContainer {
+    text-align: center;
+}
+
+.SeeMore {
+    margin-top: 3rem;
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(0.9) rotate(-5deg);
+    background-color: rgba(0, 0, 0, 0);
+    transition: opacity .5s ease-out, filter .5s ease-out, transform .5s ease-out, background-color 1.5s ease-out;
+}
+  
+.SeeMore.inView {
+    opacity: 1;
+    filter: blur(0);
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1) rotate(0deg);
+}
+
+.SeeMore:hover {
+    filter: blur(0);
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05) rotate(0deg);
+    transition: filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.Item {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-radius: var(--border-radius-custom);
+    background-color: var(--transparent-bg-dark);
+    overflow: hidden;
+    pointer-events: all;
+}
+
+.Image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    &:hover,
+    &:active {
+        transform: scale(1.1);
+    }
+}

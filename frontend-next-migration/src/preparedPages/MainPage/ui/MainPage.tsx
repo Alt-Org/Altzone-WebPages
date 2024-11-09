@@ -1,28 +1,41 @@
 'use client';
-import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
+import cls from './page.module.scss';
+// import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from '@/widgets/SectionClassifiedHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
+import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
+import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
 } from './_components/sections/ProjectDescription';
+import { GetToKnowComics, GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import {
     VideoAndGalleries,
     VideoAndGalleriesProps,
 } from './_components/sections/VideoAndGalleries';
-import cls from './page.module.scss';
+import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
+import { Gallery, GalleryProps } from './_components/sections/Gallery';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
-    heroesBlocks: HeroesBlocksProps;
+    // classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
+    gallery: GalleryProps;
 };
 
 function MainPage(props: Props) {
-    const { projectDescription, playWithUs, videoAndGalleries, heroesBlocks } = props;
+    const {
+        projectDescription,
+        playWithUs,
+        getToKnowComics,
+        videoAndGalleries,
+        // classifiedHeroesBlocks,
+        gallery,
+    } = props;
 
     const sameBg = undefined;
 
@@ -53,7 +66,12 @@ function MainPage(props: Props) {
 
             {/*<HorizontalLines />*/}
 
-            <HorizontalLines />
+            {/*<HorizontalLines />*/}
+
+            <Gallery
+                {...gallery}
+                version={'preview'}
+            />
 
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}

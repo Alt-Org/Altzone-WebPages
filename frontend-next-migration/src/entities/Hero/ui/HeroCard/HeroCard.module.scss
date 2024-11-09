@@ -8,11 +8,13 @@
   transform: translateY(-70%);
   font-size: var(--font-line-xl);
   text-align: center;
+  margin-top: 15px;
 
 
   @media (max-width: 1200px) {
     font-size: var(--font-line-l);
     transform: translateY(-50%);
+    margin-top: 5px;
   }
 
   @media (max-width: 500px) {
@@ -30,7 +32,7 @@
 
 
   //--paddingMultiplier: 0.07;
-  --paddingMultiplier: 0.1;
+  --paddingMultiplier: 0.07;
   --padding: calc(var(--paddingMultiplier) * var(--cardWidthLocal));
   padding: var(--padding) var(--padding) var(--padding); // works fine with border 3
   //padding: var(--padding) var(--padding) calc(var(--padding) * 2); // works fine with border-border2 images

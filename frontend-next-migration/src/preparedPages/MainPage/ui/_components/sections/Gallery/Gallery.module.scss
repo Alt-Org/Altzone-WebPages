@@ -1,0 +1,78 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.SectionGallery {
+    margin: 40px auto;
+    opacity: 0;
+    &.inView{
+        animation: fadeIn 2s ease-out;
+        opacity: 1;
+    }
+}
+
+.Container {
+    margin-top: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: var(--font-line-xxxl);
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+    margin-bottom: 40px;
+  
+    &.inView {
+        opacity: 1;
+        transform: translateX(0);
+    }
+  
+    @media screen and (max-width: 600px) {
+        font-size: var(--font-line-xxl);
+        margin-bottom: 20px;
+    }
+  
+    @media screen and (max-width: 450px) {
+        font-size: var(--font-line-xl);
+    }
+}
+
+
+.InfoText {
+    font-size: 1.2em;
+    width: 85%;
+    margin: auto;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+        font-size: 1.5em;
+        width: 70%;
+    }
+}
+
+.SocialsText {
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 1.3em;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+        font-size: 1.5em;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .SectionGallery {
+        margin-top: 40px;
+    }
+}
