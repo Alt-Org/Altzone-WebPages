@@ -42,8 +42,9 @@ const news = '/news';
 /**
  * The values are used as routesLinks throughout the app,
  * if do update , don't forget update also routeConfig at App layer
+ * @deprecated use getters instead
+ * add new getter functions if new pages are added
  */
-//todo change to getters system
 export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.AUTH]: '/auth',
     [AppRoutesLinks.AUTH_REGISTER]: '/auth/register',
@@ -82,3 +83,39 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     // last one
     [AppRoutesLinks.NOT_FOUND_CATCH]: '*',
 };
+
+export const getRouteMainPage = () => '/';
+export const getRouteTeamPage = () => '/team';
+
+export const getRouteAuthPage = () => '/auth';
+export const getRouteLogoutPage = () => '/auth/logout';
+export const getRouteLoginPage = () => '/auth/login';
+export const getRouteRegisterPage = () => '/auth/register';
+export const getRouteFPWPage = () => '/auth/forgottenPassword';
+export const getRouteSessionExpiredPage = () => '/auth/sessionExpired';
+
+export const getRouteAllNewsPage = () => '/news';
+export const getRouteOneNewsPage = (id: string) => `/news/${id}`;
+
+export const getRouteAllHeroesPage = () => '/heroes';
+export const getRouteOneHeroPage = (slug: string) => `/heroes/${slug}`;
+export const getRouteHeroDevPage = () => '/hero-development';
+
+export const getRouteComicsPage = () => '/comics';
+export const getRouteGalleryPage = () => '/picture-galleries';
+export const getRouteGameArtPage = () => '/artGame';
+
+export const getRouteMyClanPage = () => '/clans/myclan';
+export const getRouteClanLeadeboardPage = () => '/clans/leaderboard';
+
+export const getRouteAllClanSearchPage = () => '/clans';
+export const getRouteOneClanPage = (id: string) => `/clans/${id}`;
+export const getRouteEveryClansPage = () => '/clans/all';
+export const getRouteAddNewClanPage = () => '/clans/addNew';
+
+export const getRoutePrivacyPage = () => '/privacy';
+export const getRouteCookiesPage = () => '/cookies';
+export const getRouteAboutPage = () => '/about';
+export const getRouteComingSoonPage = () => '/coming';
+export const getRouteForumPage = () => '/forum';
+export const getRoute404Page = () => '/404';

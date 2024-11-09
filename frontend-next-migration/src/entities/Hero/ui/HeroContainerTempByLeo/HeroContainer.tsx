@@ -115,6 +115,7 @@ const HeroContainer = (props: Props) => {
                 <div className={cls.heroGroup}>
                     <HeroGroupLabel
                         className={cls.heroGroupLabel}
+                        labelTextClassName={cls.heroGroupLabelText}
                         label={groupLabel}
                         labelText={groupName}
                     />

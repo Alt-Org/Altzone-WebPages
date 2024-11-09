@@ -9,10 +9,12 @@ import { useClientTranslation } from '@/shared/i18n';
 import { ValidationLoginSchema } from '../validations';
 
 type Props = {
-    onSuccessLogin: () => void;
+    onSuccessLogin?: () => void;
 };
 
-export const useLoginForm = ({ onSuccessLogin }: Props) => {
+export const useLoginForm = (props: Props) => {
+    const { onSuccessLogin } = props;
+
     const { t } = useClientTranslation('auth');
 
     const {
@@ -49,7 +51,7 @@ export const useLoginForm = ({ onSuccessLogin }: Props) => {
 
             dispatch(authUserActions.setIsSessionExpired(false));
             toast.success(t('welcome'));
-            onSuccessLogin();
+            onSuccessLogin?.();
             return;
         }
 

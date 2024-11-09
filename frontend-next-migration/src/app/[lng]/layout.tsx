@@ -6,6 +6,10 @@ import { CookieConsentComponent } from '@/features/CookieConsent';
 import { languages } from '@/shared/i18n/settings/settings';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
+import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
+import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
+import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
+import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
@@ -42,6 +46,13 @@ interface Props {
     };
 }
 
+const ContentWithBackground = withBackgroundImage({
+    alt: 'Main-Page underground style background',
+    imagePath: bgPicture as unknown as string,
+    className: cls.wholePageBG,
+    shouldBeLazyLoaded: true,
+})(({ children }: any) => children);
+
 export default function RootLayout(props: Props) {
     const { children, params } = props;
 
@@ -68,13 +79,17 @@ export default function RootLayout(props: Props) {
             </head>
             <body
                 style={{
-                    backgroundImage: `url("/images/background.webp")`,
+                    // backgroundImage: `url("/images/background.webp")`,
+                    backgroundImage: `url("${bgPictureCompressed.src}")`,
                 }}
             >
-                <Providers>
-                    {children}
-                    <CookieConsentComponent />
-                </Providers>
+                {/*//todo potentialy we can remove even this ContentWithBackground, but we have to be sure that it work in samy way in backgroundImage*/}
+                <ContentWithBackground>
+                    <Providers>
+                        {children}
+                        <CookieConsentComponent />
+                    </Providers>
+                </ContentWithBackground>
             </body>
         </html>
     );

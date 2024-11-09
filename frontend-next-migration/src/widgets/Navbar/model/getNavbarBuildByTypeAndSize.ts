@@ -1,9 +1,4 @@
-import {
-    navbarGameArtDesktop,
-    navbarMenuDesktop2,
-    navbarCookiesDesktop,
-    navbarPrivacyDesktop,
-} from './data/navbarMenuDesktop';
+import { navbarMenuDesktop } from './data/navbarMenuDesktop';
 import {
     navbarGameArtMobile,
     navbarMenuMobile,
@@ -19,15 +14,15 @@ export const getNavbarBuildByTypeAndSize = (
     if (size === 'desktop') {
         switch (type) {
             case 'Default':
-                return navbarMenuDesktop2;
+                return navbarMenuDesktop;
             case 'GameArt':
-                return navbarGameArtDesktop;
+                return navbarMenuDesktop;
             case 'Cookies':
-                return navbarCookiesDesktop;
+                return navbarMenuDesktop;
             case 'Privacy':
-                return navbarPrivacyDesktop;
+                return navbarMenuDesktop;
             default:
-                return navbarMenuDesktop2;
+                return navbarMenuDesktop;
         }
     } else {
         switch (type) {

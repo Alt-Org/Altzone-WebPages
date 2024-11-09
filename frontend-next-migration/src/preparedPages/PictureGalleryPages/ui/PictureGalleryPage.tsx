@@ -31,7 +31,7 @@ const PictureGalleryPage = (props: Props) => {
                     videoLink={videoLink}
                 />
 
-                {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} />*/}
+                {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/}
                 {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />*/}
 
                 {/* version2 */}

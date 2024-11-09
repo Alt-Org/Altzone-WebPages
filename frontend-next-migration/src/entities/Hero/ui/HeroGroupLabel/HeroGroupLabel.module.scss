@@ -1,23 +1,21 @@
-.label{
+.container {
   position: relative;
-  min-height: 80px;
-  min-width: 270px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 1px 1px 2px black;
-  &bg-image{
-    z-index: 1;
-    position: absolute;
-  }
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  padding-top: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-
-.labelText{
-  max-width: 85%;
-  position: relative;
-  z-index: 2;
+.labelText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: clamp(1rem, 4vw, 2rem);
+  font-weight: bold;
   text-align: center;
-  font-size: calc(12px + 0.6vw);
-  hyphens: manual;
 }

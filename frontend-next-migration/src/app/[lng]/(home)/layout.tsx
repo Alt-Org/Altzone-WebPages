@@ -12,7 +12,7 @@ type Props = {
 
 export default function HomeLayout({ children }: Props) {
     const introRef = useRef<HTMLDivElement>(null);
-    const { isScrollbarHidden, scrollToContent } = _useScrollHandler(introRef);
+    // const { isScrollbarHidden, scrollToContent } = _useScrollHandler(introRef);
 
     return (
         <>
@@ -26,20 +26,20 @@ export default function HomeLayout({ children }: Props) {
                 <Footer />
                 <ScrollTop />
             </>
-            <style
-                jsx
-                global
-            >{`
-                html {
-                    scrollbar-width: ${isScrollbarHidden ? 'none' : 'auto'};
-                }
-                body {
-                    -ms-overflow-style: ${isScrollbarHidden ? 'none' : 'auto'};
-                }
-                body::-webkit-scrollbar {
-                    display: ${isScrollbarHidden ? 'none' : 'block'};
-                }
-            `}</style>
+            {/*<style*/}
+            {/*    jsx*/}
+            {/*    global*/}
+            {/*>{`*/}
+            {/*    html {*/}
+            {/*        scrollbar-width: ${isScrollbarHidden ? 'none' : 'auto'};*/}
+            {/*    }*/}
+            {/*    body {*/}
+            {/*        -ms-overflow-style: ${isScrollbarHidden ? 'none' : 'auto'};*/}
+            {/*    }*/}
+            {/*    body::-webkit-scrollbar {*/}
+            {/*        display: ${isScrollbarHidden ? 'none' : 'block'};*/}
+            {/*    }*/}
+            {/*`}</style>*/}
         </>
     );
 }

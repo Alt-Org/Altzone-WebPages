@@ -1,7 +1,5 @@
 'use client';
 import { Container } from '@/shared/ui/Container';
-import backgroundImage from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import cls from './ClanMainPage.module.scss';
 
 const ClanMainPage = ({ children }: any) => {
@@ -14,7 +12,4 @@ const ClanMainPage = ({ children }: any) => {
     );
 };
 
-export default withBackgroundImage({
-    alt: 'Clan-Page Brick style background',
-    imagePath: backgroundImage as unknown as string,
-})(ClanMainPage);
+export default ClanMainPage;

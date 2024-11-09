@@ -1,8 +1,6 @@
 'use client';
 import { ReactNode } from 'react';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import cls from './HeroDevelopmentPage.module.scss';
+import { ComingSoon } from '@/widgets/ComingSoon';
 
 export type Props = {
     title: string;
@@ -10,19 +8,11 @@ export type Props = {
 };
 
 const HeroDevelopmentPage = (props: Props) => {
-    const { title, text } = props;
-
     return (
-        <main className={cls.main}>
-            <div className={cls.container}>
-                <h1>{title}</h1>
-                <div className={cls.text}>{text}</div>
-            </div>
+        <main>
+            <ComingSoon />
         </main>
     );
 };
 
-export default withBackgroundImage<Props>({
-    alt: 'Tile bg image',
-    imagePath: bgPicture as unknown as string,
-})(HeroDevelopmentPage);
+export default HeroDevelopmentPage;

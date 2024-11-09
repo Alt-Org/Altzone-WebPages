@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppRoutesLinks } from '@/shared/appLinks/RoutePaths';
+import { getRouteCookiesPage, getRoutePrivacyPage } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { useResetCookies } from '@/shared/lib/hooks/useResetCookies';
 import { Texts } from '../../model/types/types';
@@ -23,13 +23,13 @@ export const Rights = memo((props: RightsProps) => {
             <p>
                 <AppLink
                     className={cls.cookies}
-                    to={AppRoutesLinks.COOKIES}
+                    to={getRouteCookiesPage()}
                 >
                     {cookies}
                 </AppLink>{' '}
                 <AppLink
                     className={cls.privacy}
-                    to={AppRoutesLinks.PRIVACY}
+                    to={getRoutePrivacyPage()}
                 >
                     {privacy}
                 </AppLink>

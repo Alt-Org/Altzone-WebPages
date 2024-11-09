@@ -1,8 +1,6 @@
 import { SectionGallerias } from '@/widgets/SectionGallerias';
 import { Container } from '@/shared/ui/Container';
 import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import cls from './ComicsGalleriesPage.module.scss';
 
 export interface Props {
@@ -22,8 +20,4 @@ const ComicsGalleriesPage = (props: Props) => {
     );
 };
 
-export default withBackgroundImage<Props>({
-    alt: 'Comics Galleries Page underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-})(ComicsGalleriesPage);
+export default ComicsGalleriesPage;

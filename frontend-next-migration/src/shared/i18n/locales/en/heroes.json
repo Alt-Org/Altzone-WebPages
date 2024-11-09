@@ -39,10 +39,10 @@
     "description": "RETROFLECTOR is ...",
     "heroes": {
       "hannuHodari": {
-        "title": "Hannu Hodari",
-        "alt": "Hodari image",
-        "altGif": "",
-        "description": "Hannu Hodari's fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
+        "title": "Glutton",
+        "alt": "Glutton image",
+        "altGif": "Glutton gif",
+        "description": "Glutton fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
       },
 
       "pirate": {
@@ -60,8 +60,8 @@
     "description": "PROJECTOR on ...",
     "heroes": {
       "GraffitiArtist": {
-        "title": "Grafitiartist ",
-        "alt": "I am Grafitiartist",
+        "title": "Grafitti artist ",
+        "alt": "I am Grafitti artist",
         "altGif": "",
         "description": "Graffiti Gaya skilfully projects emotions outside herself - onto other characters as well as into art. \nGaya protects herself by spraying a cloud of spray paint that directs emotions to a teammate. Gaya bears no responsibility."
       }
@@ -79,7 +79,55 @@
         "description": "Albert Älypää protects himself from emotions with a non-fiction book that creates diagrams of the emotional trajectory on the playing field. \nBut Albert's constant graphs can sometimes annoy his teammates."
       }
     }
+  },
+
+  "CONFLUENT": {
+    "name": "CONFLUENT",
+    "description": "CONFLUENT  is ...",
+    "heroes": {
+      "SoulSisters": {
+        "title": "Soul Sisters",
+        "alt": "Soul-sisters main image",
+        "altGif": "Soul-sisters animation gif",
+        "description": "In Girl team, the two become one, an invincible team. As emotions approach, they blow up a large bubblegum bubble to protect themselves and\n slowing down the course of events with a suction that is hard to release. "
+      },
+      "Sleeper": {
+        "title": "Sleeper",
+        "alt": "Sleeper main image",
+        "altGif": "Sleeper animation gif",
+        "description": "Sleeper, calm and mysterious, has the unique ability to lull emotions around her into a tranquil state, dampening their intensity and slowing down any reactive impulses. Her presence can make even the most volatile emotions feel drowsy, creating a safe space for her and her allies. However, the more she uses her power, the more she risks drifting into her own dreamscape, occasionally becoming too disconnected from reality."
+      }
+    }
+  },
+
+  "TRICKSTER": {
+    "name": "TRICKSTER",
+    "description": "Trickster  is ...",
+    "heroes": {
+      "Conman": {
+        "title": "Conman",
+        "alt": "Conman main image",
+        "altGif": "Conman animation gif",
+        "description": "Conman skillfully uses deception and trickery to manipulate emotions and distract opponents. His main ability is creating illusions that deceive those around him, making them see what isn’t really there. \\nHe can also produce distracting sounds and visuals to redirect the focus of emotions onto other targets or to hide within the chaos he creates. However, sometimes his cunning backfires on him."
+      }
+    }
+  },
+
+  "OBEDIENT": {
+    "name": "OBEDIENT",
+    "description": "OBEDIENT  is ...",
+    "heroes": {
+      "FatePriest": {
+        "title": "Fate-Priest",
+        "alt": "FatePriest main image",
+        "altGif": "FatePriest animation gif",
+        "description": "Fate-Priest has an unwavering faith in the power of chance and destiny. When he encounters strong emotions, he flips a coin or rolls dice to decide his next move, fully trusting in the random outcome. This belief in fate can lead to surprising and sometimes chaotic results, giving him a unique advantage in unpredictable situations. However, his reliance on destiny means leaving outcomes purely to luck, which doesn’t always align with his team’s goals."
+      }
+    }
   }
+
+
+
 
 }
 

@@ -13,4 +13,5 @@ export enum LS_KEYS {
     LOCAL_STORAGE_LANGUAGE_KEY = 'language',
 
     IsNavBarFixed = 'NavbarFixed',
+    IsNavBarCollapsed = 'NavbarCollapsed',
 }

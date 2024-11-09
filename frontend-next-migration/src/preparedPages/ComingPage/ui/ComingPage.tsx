@@ -1,7 +1,5 @@
 'use client';
 import { ReactNode } from 'react';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import cls from './ComingPage.module.scss';
 
 export type Props = {
@@ -22,7 +20,4 @@ const ComingPage = (props: Props) => {
     );
 };
 
-export default withBackgroundImage<Props>({
-    alt: 'Tile bg image',
-    imagePath: bgPicture as unknown as string,
-})(ComingPage);
+export default ComingPage;

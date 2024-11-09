@@ -20,7 +20,7 @@ const FixedContext = createContext<FixedContextType>({
 });
 
 export const FixedProvider = ({ children }: { children: ReactNode }) => {
-    const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState);
+    const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState());
 
     const toggleFixed = () => {
         const newValue = !isFixed;

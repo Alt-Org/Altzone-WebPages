@@ -69,6 +69,7 @@ function withBackgroundImage<P extends object>(
                             <Image
                                 src={imagePath}
                                 alt={alt}
+                                loading="eager"
                                 className={cls.ImageWrapper}
                                 width={1000}
                                 height={1000}

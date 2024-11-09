@@ -1,8 +1,11 @@
+'use client';
 import cls from './page.module.scss';
 // import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from '@/widgets/SectionClassifiedHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
+import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
+import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
@@ -55,10 +58,11 @@ function MainPage(props: Props) {
 
             <HorizontalLines />
 
-            {/*<SectionClassifiedHeroesBlocks*/}
-            {/*    {...classifiedHeroesBlocks}*/}
-            {/*    maxHeroesPerGroup={2}*/}
-            {/*/>*/}
+            <SectionHeroesBlocks
+                {...heroesBlocks}
+                maxHeroesPerGroup={2}
+                maxGroupsPerPage={3}
+            />
 
             {/*<HorizontalLines />*/}
 
@@ -92,8 +96,4 @@ function MainPage(props: Props) {
     );
 }
 
-export default withBackgroundImage<Props>({
-    alt: 'Main-Page underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-})(MainPage);
+export default MainPage;

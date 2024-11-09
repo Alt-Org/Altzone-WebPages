@@ -1,8 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './ComingSoon.module.scss';
@@ -34,7 +32,4 @@ export const ComingSoon = memo(() => {
 
 ComingSoon.displayName = 'ComingSoon';
 
-export default withBackgroundImage({
-    alt: 'Tile bg image',
-    imagePath: bgPicture as unknown as string,
-})(ComingSoon);
+export default ComingSoon;

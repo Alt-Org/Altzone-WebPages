@@ -16,7 +16,7 @@ export const AppExternalLinks = {
   igPost2: 'https://www.instagram.com/p/DAlPkY2oP7z',
   igPost3: 'https://www.instagram.com/p/DAlPkY2oP7z',
   fbPost1: 'https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FGamingPsyche%2Fposts%2Fpfbid02wHRj7vETz7YmQftBD6gBtzi932ahKy8iPHjT1q9EdhTLww7aypuur5oLxtNByedUl&show_text=true&width=350',
-  youtube: 'https://www.youtube.com/channel/UCTgWpC9Hq7b-W1Lhmry97YA',
+  youtube: 'https://www.youtube.com/@altzonefi',
   duunitori: 'https://duunitori.fi/tyopaikat?haku=Psyche%27s%20Royale%20Gaming',
   googleFeedback:
     'https://docs.google.com/forms/d/e/1FAIpQLScYGN0JlcgkqKpotNeE6hyWLG7oI1g19myAtrHf2mmHz7g7AA/viewform',

@@ -1,10 +1,7 @@
 'use client';
-import { Footer } from '@/widgets/Footer';
 import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { ScrollTop } from '@/features/ScrollTop';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
@@ -43,13 +40,9 @@ const GameArtPackagePage = (props: Props) => {
                 <FeedbackSideButton />
                 <HorizontalLines />
                 {isMobileSize && <ScrollTop />}
-                <Footer />
             </div>
         </div>
     );
 };
 
-export default withBackgroundImage<Props>({
-    alt: 'Tile bg image',
-    imagePath: bgPicture as unknown as string,
-})(GameArtPackagePage);
+export default GameArtPackagePage;

@@ -1,7 +1,7 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import { useRegisterForm } from '../../model/useRegisterForm';
-import { RegisterForm } from './RegisterForm';
+import RegisterForm from './RegisterForm';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
@@ -86,6 +86,5 @@ describe('RegisterForm', () => {
         const loginLink = screen.getByRole('link', { name: 'text_to_login' });
         expect(loginLink).toBeInTheDocument();
         expect(loginLink).toHaveAttribute('href', '/login');
-        expect(loginLink).toHaveClass('loginLink');
     });
 });

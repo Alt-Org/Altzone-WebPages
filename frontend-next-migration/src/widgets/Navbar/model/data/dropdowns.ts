@@ -1,12 +1,21 @@
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
+import {
+    getRouteHeroDevPage,
+    getRouteMyClanPage,
+    getRouteClanLeadeboardPage,
+    getRouteComicsPage,
+    getRouteGalleryPage,
+    getRouteGameArtPage,
+    getRouteAllHeroesPage,
+    getRouteAllClanSearchPage,
+} from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
     community: [
         {
             elementText: 'clanpage',
             link: {
-                path: RoutePaths.my_clan,
+                path: getRouteMyClanPage(),
                 isExternal: false,
             },
         },
@@ -36,21 +45,21 @@ export const dropdowns = {
         {
             elementText: 'heroes',
             link: {
-                path: RoutePaths.HEROES,
+                path: getRouteAllHeroesPage(),
                 isExternal: false,
             },
         },
         {
             elementText: 'development',
             link: {
-                path: RoutePaths.HERO_DEVELOPMENT,
+                path: getRouteHeroDevPage(),
                 isExternal: false,
             },
         },
         {
             elementText: 'clans',
             link: {
-                path: RoutePaths.clan,
+                path: getRouteAllClanSearchPage(),
                 isExternal: false,
             },
             isDisabled: {
@@ -58,26 +67,26 @@ export const dropdowns = {
                 reason: 'Kirjaudu ensin!',
             },
         },
-        {
-            elementText: 'leaderboard',
-            link: {
-                path: RoutePaths.CLAN_LEADERBOARD,
-                isExternal: false,
-            },
-        },
+        // {
+        //     elementText: 'leaderboard',
+        //     link: {
+        //         path: getRouteClanLeadeboardPage(),
+        //         isExternal: false,
+        //     },
+        // },
     ],
     gallery: [
         {
             elementText: 'pictures',
             link: {
-                path: RoutePaths.PICTURE_GALLERY,
+                path: getRouteGalleryPage(),
                 isExternal: false,
             },
         },
         {
             elementText: 'comics',
             link: {
-                path: RoutePaths.COMICS_GALLERY,
+                path: getRouteComicsPage(),
                 isExternal: false,
             },
         },
@@ -86,7 +95,7 @@ export const dropdowns = {
         {
             elementText: 'gameart',
             link: {
-                path: RoutePaths.GAME_ART,
+                path: getRouteGameArtPage(),
                 isExternal: false,
             },
         },

@@ -1,0 +1,17 @@
+.ToggleFixButton {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 0 4px var(--inverted-primary-color);
+  border-radius: var(--border-radius-custom);
+  background-color: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  width: 35px;
+  padding: 5px;
+}
+
+.buttonImage {
+  display: block;
+  width: 100%;
+}

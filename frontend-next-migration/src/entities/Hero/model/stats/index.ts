@@ -1,0 +1,1 @@
+export { HeroStatsManager } from './HeroStatsManager';

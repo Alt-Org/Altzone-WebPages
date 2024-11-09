@@ -34,25 +34,23 @@ const useSizes = () => {
     const [sizes, setSizes] = useState(checkSizes());
 
     useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         const handleResize = () => {
             setSizes(checkSizes());
         };
 
         if (typeof window !== 'undefined') {
-            window.addEventListener('resize', handleResize);
-            window.addEventListener('orientationchange', handleResize);
-            handleResize();
+            window.addEventListener('resize', handleResize, { signal });
+            window.addEventListener('orientationchange', handleResize, { signal });
+            window.addEventListener('load', handleResize, { signal });
         }
 
         return () => {
-            if (typeof window !== 'undefined') {
-                window.removeEventListener('resize', handleResize);
-                window.removeEventListener('orientationchange', handleResize);
-            }
+            controller.abort();
         };
     }, []);
-
-    useEffect(() => {}, [sizes]);
 
     return sizes;
 };

@@ -37,3 +37,5 @@ export {
 export type { UserPermissionsV2 } from './model/useUserPermissionsV2/useUserPermissionsV2';
 
 export { authMiddleware } from './middlewares/authMiddleware';
+
+export { default as BaseAuthForm } from './ui/BaseAuthForm/BaseAuthForm';

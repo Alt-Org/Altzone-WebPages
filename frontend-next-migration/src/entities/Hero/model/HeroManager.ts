@@ -1,14 +1,22 @@
 import { GroupInfo, HeroWithGroup, HeroGroup, HeroSlug } from '../types/hero';
+// import { HeroLevel, HeroStats } from '../types/HeroStats';
 import { initializeHeroGroups } from './initializeHeroGroups';
+// import { HeroStatsManager } from './stats';
 
 export class HeroManager {
     private readonly t: (key: string) => string;
     private readonly heroGroups: Record<HeroGroup, GroupInfo>;
+    // private heroStatsManager: HeroStatsManager;
 
     constructor(t: (key: string) => string) {
         this.t = t;
         this.heroGroups = initializeHeroGroups(this.t);
+        // this.heroStatsManager = new HeroStatsManager();
     }
+
+    // public getHeroStatsBySlugAndLevel(slug: HeroSlug, statLevel: HeroLevel): HeroStats {
+    //     return this.heroStatsManager.getStatsForHero(slug, statLevel);
+    // }
 
     public getAllHeroes(): HeroWithGroup[] {
         return Object.entries(this.heroGroups).flatMap(([group, groupInfo]) => {
@@ -29,12 +37,12 @@ export class HeroManager {
         });
     }
 
-    public getHeroesByGroups(): Record<HeroGroup, GroupInfo> {
+    public getGroupsWithHeroes(): Record<HeroGroup, GroupInfo> {
         return this.heroGroups;
     }
 
-    public getHeroesByGroupsAsArray(): GroupInfo[] {
-        return Object.values(this.getHeroesByGroups()).map((value) => ({
+    public getGroupsWithHeroesAsArray(): GroupInfo[] {
+        return Object.values(this.getGroupsWithHeroes()).map((value) => ({
             ...value,
         }));
     }
