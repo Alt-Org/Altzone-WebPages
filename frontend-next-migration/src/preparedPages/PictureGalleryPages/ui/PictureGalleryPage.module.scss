@@ -1,8 +1,14 @@
 .Wrapper {
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 20px;
+
+  @media (max-width: 1200px) {
+    margin-top: 50px;
+  }
+
 }
 
 

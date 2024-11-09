@@ -11,6 +11,8 @@ import { createPage } from '@/app/_helpers';
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'main');
 
+    const { t: tPG } = await useServerTranslation(lng, 'picture-galleries');
+
     return createPage<MainPageProps>({
         buildSeo: () => ({
             title: t('head-title'),
@@ -61,9 +63,9 @@ export async function _getPage(lng: string) {
                 },
             },
             gallery: {
-                title: t('gallery-title'),
-                infoText: t('gallery-info-text'),
-                socialsText: t('gallery-socials-text'),
+                title: tPG('picture-galleries'),
+                infoText: tPG('info-text'),
+                socialsText: tPG('socials-text'),
                 seeMoreLink: {
                     text: t('gallery-seeMore'),
                     href: getRouteGalleryPage(),
