@@ -1,12 +1,12 @@
-.MembersSection li {
-  list-style-type: none;
-}
-
 .MembersSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.MembersSection li {
+  list-style-type: none;
 }
 
 .scrollBottomButton {
