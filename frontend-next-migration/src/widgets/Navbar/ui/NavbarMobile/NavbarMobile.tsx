@@ -203,20 +203,20 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         />
                     </div>
                 )}
-                {isFixed && (
-                    <div
-                        className={classNames(cls.CollapseButtonWrapper, {
-                            [cls.collapsing]: isAnimating,
-                        })}
-                    >
-                        <ToggleCollapseButton
-                            onClick={handleCollapseClick}
-                            isCollapsed={isCollapsed}
-                            className={cls.Button}
-                            disabled={isAnimating}
-                        />
-                    </div>
-                )}
+                {/*{isFixed && (*/}
+                {/*    <div*/}
+                {/*        className={classNames(cls.CollapseButtonWrapper, {*/}
+                {/*            [cls.collapsing]: isAnimating,*/}
+                {/*        })}*/}
+                {/*    >*/}
+                {/*        <ToggleCollapseButton*/}
+                {/*            onClick={handleCollapseClick}*/}
+                {/*            isCollapsed={isCollapsed}*/}
+                {/*            className={cls.Button}*/}
+                {/*            disabled={isAnimating}*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*)}*/}
             </div>
         </nav>
     );
