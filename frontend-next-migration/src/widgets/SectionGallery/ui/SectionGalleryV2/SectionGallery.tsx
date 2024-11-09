@@ -28,7 +28,7 @@ type GalleryProps = (PreviewProps | FullProps) & {
 
 export const SectionGallery = (props: GalleryProps) => {
     const [images, setImages] = useState<{ [key: string]: ImageData }>({});
-    const { version, seeMoreLink, socialMediaLinks, mockImages } = props;
+    const { version, seeMoreLink, mockImages } = props;
 
     useEffect(() => {
         if (mockImages) {
@@ -41,6 +41,10 @@ export const SectionGallery = (props: GalleryProps) => {
             setImages(filteredImages);
         }
     }, [mockImages]);
+
+    const imagesArray = Object.values(images);
+    const previewCount = 8;
+    const previewImages = imagesArray.slice(0, previewCount);
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -56,15 +60,14 @@ export const SectionGallery = (props: GalleryProps) => {
             {/*<EmbedSocialMediaPosts posts={socialMediaLinks} />*/}
             {version === 'full' ? (
                 <ImageWall
-                    version={version}
-                    images={images}
+                    // version={version}
+                    images={imagesArray}
                 />
             ) : (
                 <>
                     <ImageWall
-                        version={version}
-                        images={images}
-                        seeMoreLink={seeMoreLink}
+                        // version={version}
+                        images={previewImages}
                     />
                     <div
                         ref={ref}
