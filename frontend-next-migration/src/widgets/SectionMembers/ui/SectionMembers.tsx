@@ -30,7 +30,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
             <ScrollBottomButton
                 isDisabled={isError || isLoading}
                 className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}
-                text={t('playButton')}
+                text={isError ? `${t('playButton')} 🚫` : t('playButton')}
             />
             <Container className={cls.membersListContainer}>
                 {isError && <p>Error fetching teams data</p>}
