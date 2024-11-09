@@ -4,7 +4,7 @@ import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import { Version } from '@/entities/Gallery/types/gallery';
-import { SectionGallery } from '@/widgets/SectionGallery';
+import { SectionGalleryV2, SectionGalleryV1 } from '@/widgets/SectionGallery';
 import cls from './PictureGalleryPage.module.scss';
 
 export interface Props {
@@ -34,7 +34,7 @@ const PictureGalleryPage = (props: Props) => {
                 {/*/>*/}
 
                 {/* version2 */}
-                <SectionGallery
+                <SectionGalleryV2
                     version={'full'}
                     socialMediaLinks={socialMediaLinks}
                 />

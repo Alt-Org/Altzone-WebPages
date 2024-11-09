@@ -1,13 +1,17 @@
 import cls from './page.module.scss';
-
-import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from '@/widgets/SectionClassifiedHeroesBlocks';
+// import { SectionClassifiedHeroesBlocks, ClassifiedHeroesBlocksProps } from '@/widgets/SectionClassifiedHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-
-import { ProjectDescription, ProjectDescriptionProps } from './_components/sections/ProjectDescription';
+import {
+    ProjectDescription,
+    ProjectDescriptionProps,
+} from './_components/sections/ProjectDescription';
 import { GetToKnowComics, GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
-import { VideoAndGalleries, VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries';
+import {
+    VideoAndGalleries,
+    VideoAndGalleriesProps,
+} from './_components/sections/VideoAndGalleries';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import { Gallery, GalleryProps } from './_components/sections/Gallery';
 
@@ -16,7 +20,7 @@ export type Props = {
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
-    classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
+    // classifiedHeroesBlocks: ClassifiedHeroesBlocksProps;
     gallery: GalleryProps;
 };
 
@@ -26,7 +30,7 @@ function MainPage(props: Props) {
         playWithUs,
         getToKnowComics,
         videoAndGalleries,
-        classifiedHeroesBlocks,
+        // classifiedHeroesBlocks,
         gallery,
     } = props;
 
@@ -51,17 +55,18 @@ function MainPage(props: Props) {
 
             <HorizontalLines />
 
-            <SectionClassifiedHeroesBlocks
-                {...classifiedHeroesBlocks}
-                maxHeroesPerGroup={2}
-            />
+            {/*<SectionClassifiedHeroesBlocks*/}
+            {/*    {...classifiedHeroesBlocks}*/}
+            {/*    maxHeroesPerGroup={2}*/}
+            {/*/>*/}
 
             {/*<HorizontalLines />*/}
 
-            <HorizontalLines />
+            {/*<HorizontalLines />*/}
 
-            <Gallery 
+            <Gallery
                 {...gallery}
+                version={'preview'}
             />
 
             {/*<GetToKnowComics*/}
