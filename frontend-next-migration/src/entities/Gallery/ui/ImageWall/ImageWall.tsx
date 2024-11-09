@@ -86,21 +86,6 @@ export const ImageWall = (props: ImageWallProps) => {
                             ))}
                     </MasonryWrapper>
                 </Fancybox>
-
-                <div
-                    ref={ref}
-                    className={cls.buttonContainer}
-                >
-                    <Button
-                        withScalableLink={true}
-                        theme={ButtonTheme.Graffiti}
-                        className={classNames(cls.SeeMore, mods)}
-                        size={ButtonSize.XL}
-                        ref={ref}
-                    >
-                        <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
-                    </Button>
-                </div>
             </div>
         );
     }

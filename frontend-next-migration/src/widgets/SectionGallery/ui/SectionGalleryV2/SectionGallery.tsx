@@ -1,8 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { ImageWall } from '@/entities/Gallery';
-import { useGetStrapiGalleryImages } from '@/entities/Gallery/api/useGetStrapiGalleryImages';
-import { ImageData } from '@/entities/Gallery/types/gallery';
+import { useInView } from 'react-intersection-observer';
+import { ImageWall, ImageData, useGetStrapiGalleryImages } from '@/entities/Gallery';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import cls from './SectionGallery2.module.scss';
 
 interface PreviewProps {
     version: 'preview';
@@ -39,6 +42,15 @@ export const SectionGallery = (props: GalleryProps) => {
         }
     }, [mockImages]);
 
+    const { ref, inView } = useInView({
+        rootMargin: '-150px 0px',
+        triggerOnce: true,
+    });
+
+    const mods = {
+        [cls.inView]: inView,
+    };
+
     return (
         <div>
             {/*<EmbedSocialMediaPosts posts={socialMediaLinks} />*/}
@@ -48,11 +60,27 @@ export const SectionGallery = (props: GalleryProps) => {
                     images={images}
                 />
             ) : (
-                <ImageWall
-                    version={version}
-                    images={images}
-                    seeMoreLink={seeMoreLink}
-                />
+                <>
+                    <ImageWall
+                        version={version}
+                        images={images}
+                        seeMoreLink={seeMoreLink}
+                    />
+                    <div
+                        ref={ref}
+                        className={cls.buttonContainer}
+                    >
+                        <Button
+                            withScalableLink={true}
+                            theme={ButtonTheme.Graffiti}
+                            className={classNames(cls.SeeMore, mods)}
+                            size={ButtonSize.XL}
+                            ref={ref}
+                        >
+                            <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
+                        </Button>
+                    </div>
+                </>
             )}
         </div>
     );
