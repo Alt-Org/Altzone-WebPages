@@ -35,7 +35,7 @@ export const SectionGallery = (props: GalleryProps) => {
             setImages(mockImages); // Use mock images if provided (Storybook)
         } else {
             const filteredImages = useGetStrapiGalleryImages(
-                require.context('/public/images/gallery', false, /\.(png|jpe?g|svg)$/),
+                require.context('/public/images/gallery', false, /\.(png|jpe?g|svg|webp)$/),
                 'public/images/gallery',
             );
             setImages(filteredImages);
