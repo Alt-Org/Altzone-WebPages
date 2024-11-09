@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { useInView } from 'react-intersection-observer';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import Link from 'next/link';
 import { ImageData } from '../../types/gallery';
 import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import React from 'react';
@@ -13,7 +12,7 @@ import { MasonryWrapper } from '@/shared/ui/MasonryWrapper';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 export type ImageWallProps = {
-    version: string;
+    version: 'full' | 'preview';
     images: { [key: string]: ImageData };
     seeMoreLink?: {
         href: string;
@@ -78,9 +77,9 @@ export const ImageWall = (props: ImageWallProps) => {
                                     borderImageSrc={borderImageSrc}
                                 >
                                     <div className={cls.Item}>
-                                        <a
+                                        <AppLink
                                             data-fancybox="gallery"
-                                            href={images[key].src}
+                                            to={images[key].src}
                                         >
                                             <Image
                                                 className={cls.Image}
@@ -89,7 +88,7 @@ export const ImageWall = (props: ImageWallProps) => {
                                                 width={images[key].width}
                                                 height={images[key].height}
                                             />
-                                        </a>
+                                        </AppLink>
                                     </div>
                                 </Border>
                             ))}
