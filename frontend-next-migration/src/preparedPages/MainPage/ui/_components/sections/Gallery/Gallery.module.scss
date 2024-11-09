@@ -32,7 +32,6 @@
     opacity: 0;
     transform: translateX(-100%);
     transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-    margin-bottom: 40px;
   
     &.inView {
         opacity: 1;

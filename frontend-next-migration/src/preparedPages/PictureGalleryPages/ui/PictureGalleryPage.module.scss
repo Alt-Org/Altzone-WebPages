@@ -20,7 +20,6 @@
     line-height: 1.5;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 40px;
   }
 
   .InfoText {
@@ -36,6 +35,12 @@
     text-align: center;
     font-size: 1.2em;
   }
+
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
 }
 
 
@@ -61,6 +66,11 @@
       font-size: 1.5em;
     }
   }
+}
+
+.videoWrapper{
+  padding: 0 40px;
+  margin-bottom: 20px;
 }
 
 .videoWrapper>div {

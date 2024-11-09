@@ -35,12 +35,13 @@ const Gallery = (props: Props) => {
             ref={ref}
             className={classNames(cls.SectionGallery, mods)}
         >
-            <h2 className={classNames(cls.title, mods)}>{title}</h2>
-
-            <p className={cls.InfoText}>{infoText}</p>
             {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
 
             <Container className={cls.Container}>
+                <h2 className={classNames(cls.title, mods)}>{title}</h2>
+
+                <p className={cls.InfoText}>{infoText}</p>
+
                 <SectionGalleryV1
                     socialMediaLinks={socialMediaLinks}
                     videoLink={videoLink}

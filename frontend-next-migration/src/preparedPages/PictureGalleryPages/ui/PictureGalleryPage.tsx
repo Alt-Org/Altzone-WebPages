@@ -22,7 +22,7 @@ const PictureGalleryPage = (props: Props) => {
             <Container className={cls.Container}>
                 <h1>{title}</h1>
                 <p className={cls.InfoText}>{infoText}</p>
-                <p className={cls.SocialsText}>{socialsText}</p>
+                {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
 
                 {/* <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} /> */}
 
