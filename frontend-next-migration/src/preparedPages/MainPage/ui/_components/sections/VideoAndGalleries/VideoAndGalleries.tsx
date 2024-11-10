@@ -39,9 +39,9 @@ const VideoAndGalleries = (props: Props) => {
         <section
             ref={ref}
             className={classNames(cls.SectionVideoAndGalleries, mods)}
-            style={{
-                backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none',
-            }}
+            // style={{
+            //     backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none',
+            // }}
         >
             <h3 className={cls.title}>{/* {title} */}</h3>
 

@@ -40,26 +40,32 @@ const Gallery = (props: Props) => {
             <Container className={cls.Container}>
                 <h2 className={classNames(cls.title, mods)}>{title}</h2>
                 <p className={cls.InfoText}>{infoText}</p>
-                <div className={cls.SectionGalleriasWrapper}>
-                    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />
-                </div>
+
+                {/*<SectionGalleryV1*/}
+                {/*    socialMediaLinks={socialMediaLinks}*/}
+                {/*    videoLink={videoLink}*/}
+                {/*/>*/}
+
+                {/*<div className={cls.SectionGalleriasWrapper}>*/}
+                {/*    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/}
+                {/*</div>*/}
 
                 <div className={cls.videoWrapper}>
                     <YouTubeFacade previewVideoYoutube={videoLink} />
                 </div>
 
-                <p className={cls.SocialsText}>{socialsText}</p>
+                {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
 
-                <SectionGalleryV1
-                    socialMediaLinks={socialMediaLinks}
-                    videoLink={videoLink}
-                />
-
-                {/*<SectionGalleryV2*/}
-                {/*    version={'preview'}*/}
+                {/*<SectionGalleryV1*/}
                 {/*    socialMediaLinks={socialMediaLinks}*/}
-                {/*    seeMoreLink={seeMoreLink}*/}
+                {/*    videoLink={videoLink}*/}
                 {/*/>*/}
+
+                <SectionGalleryV2
+                    version={'preview'}
+                    socialMediaLinks={socialMediaLinks}
+                    seeMoreLink={seeMoreLink}
+                />
             </Container>
         </section>
     );

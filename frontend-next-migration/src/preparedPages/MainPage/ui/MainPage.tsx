@@ -8,6 +8,7 @@ import {
 } from './_components/sections/ProjectDescription';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import {
+    VideoAndGalleries,
     // VideoAndGalleries,
     VideoAndGalleriesProps,
 } from './_components/sections/VideoAndGalleries';
@@ -29,7 +30,7 @@ function MainPage(props: Props) {
         playWithUs,
         // getToKnowComics,
         heroesBlocks,
-        // videoAndGalleries,
+        videoAndGalleries,
         // classifiedHeroesBlocks,
         gallery,
     } = props;
@@ -44,6 +45,12 @@ function MainPage(props: Props) {
 
             <PlayWithUs {...playWithUs} />
 
+            {/*<HorizontalLines />*/}
+
+            {/*<VideoAndGalleries*/}
+            {/*    {...videoAndGalleries}*/}
+            {/*/>*/}
+
             <HorizontalLines />
 
             <Gallery {...gallery} />
@@ -56,12 +63,6 @@ function MainPage(props: Props) {
                 maxGroupsPerPage={3}
             />
 
-            <HorizontalLines />
-
-            {/*<VideoAndGalleries*/}
-            {/*    backgroundImageSrc={sameBg}*/}
-            {/*    {...videoAndGalleries}*/}
-            {/*/>*/}
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}
             {/*    {...getToKnowComics}*/}
