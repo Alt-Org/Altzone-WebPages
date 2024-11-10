@@ -1,6 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { useSelector } from 'react-redux';
-import { selectHasClan, selectIsAuthenticated } from '../authUserSlice/authUserSlice';
+import { selectIsAuthenticated } from '../authUserSlice/authUserSlice';
+import { selectHasClan } from '@/entities/Profile';
 import { useUserPermissionsV2, PermissionError } from './useUserPermissionsV2';
 
 jest.mock('react-redux', () => ({
