@@ -1,1 +1,1 @@
-export {default as withBackgroundImage} from "./withBackgroundImage"
+export { default as withBackgroundImage } from './withBackgroundImage';

@@ -1,33 +1,29 @@
-import { classNames } from "@/shared/lib/classNames/classNames";
-import {ButtonHTMLAttributes, FC, LegacyRef, memo} from "react";
-import cls from "./Button.module.scss";
-
+import { ButtonHTMLAttributes, forwardRef, LegacyRef, memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './Button.module.scss';
 
 /**
  * Module containing a React Button component with customizable themes, sizes, and square styling.
  * @module Button
  */
 
-
 export enum ButtonTheme {
-    PRIMARY = "",
-    CLEAR = "clear",
-    CLEAR_INVERTED = "clearInverted",
-    OUTLINE = "outline",
-    BACKGROUND = "background",
-    BACKGROUND_INVERTED = "backgroundInverted",
-    Graffiti = "graffiti",
-
+    PRIMARY = '',
+    CLEAR = 'clear',
+    CLEAR_INVERTED = 'clearInverted',
+    OUTLINE = 'outline',
+    BACKGROUND = 'background',
+    BACKGROUND_INVERTED = 'backgroundInverted',
+    Graffiti = 'graffiti',
 }
 
 export enum ButtonSize {
-    M = "sizeM",
-    L = "sizeL",
-    XL = "sizeXL",
-    XXL = "sizeXXL",
-    XXXL = "sizeXXXL",
+    M = 'sizeM',
+    L = 'sizeL',
+    XL = 'sizeXL',
+    XXL = 'sizeXXL',
+    XXXL = 'sizeXXXL',
 }
-
 
 /**
  * Props for the Button component.
@@ -44,9 +40,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: ButtonTheme;
     size?: ButtonSize;
     square?: boolean;
-    withScalableLink? : boolean;
+    withScalableLink?: boolean;
     disabled?: boolean;
-    ref?:  LegacyRef<HTMLButtonElement>;
+    ref?: LegacyRef<HTMLButtonElement>;
 }
 
 /**
@@ -76,36 +72,37 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * @param {React.ReactNode} [props.children] - Child nodes of the button.
  * @returns {JSX.Element} The rendered Button component.
  */
-export const Button: FC<ButtonProps> = memo((props) => {
-    const {
-        className = "",
-        children,
-        theme = ButtonTheme.PRIMARY,
-        square = false,
-        disabled = false,
-        withScalableLink = false,
-        size = ButtonSize.M,
-        ref,
-        ...otherProps
-    } = props;
+export const Button = memo(
+    forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+        const {
+            className = '',
+            children,
+            theme = ButtonTheme.PRIMARY,
+            square = false,
+            disabled = false,
+            withScalableLink = false,
+            size = ButtonSize.M,
+            ...otherProps
+        } = props;
 
-    const mods: Record<string, boolean> = {
-        [cls.withScalableLink]: withScalableLink,
-        [cls.square]: square,
-        [cls.disabled]: disabled,
-    } as Record<string, boolean>;
+        const mods: Record<string, boolean> = {
+            [cls.withScalableLink]: withScalableLink,
+            [cls.square]: square,
+            [cls.disabled]: disabled,
+        };
 
-    return (
-        <button
-            ref={ref}
-            type="button"
-            className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
-            disabled={disabled}
-            {...otherProps}
-        >
-            {children}
-        </button>
-    );
-});
+        return (
+            <button
+                ref={ref}
+                type="button"
+                className={classNames(cls.Button, mods, [className, cls[theme], cls[size]])}
+                disabled={disabled}
+                {...otherProps}
+            >
+                {children}
+            </button>
+        );
+    }),
+);
 
-Button.displayName = "Button";
+Button.displayName = 'Button';

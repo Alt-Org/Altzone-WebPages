@@ -5,8 +5,11 @@
  * @param {EventListenerOrEventListenerObject} handler - The event handler function or object.
  * @return {void}
  */
-export const addEventListeners = (eventNames: Array<keyof WindowEventMap>, handler: EventListenerOrEventListenerObject) => {
-    eventNames.forEach(eventName => {
+export const addEventListeners = (
+    eventNames: Array<keyof WindowEventMap>,
+    handler: EventListenerOrEventListenerObject,
+) => {
+    eventNames.forEach((eventName) => {
         window.addEventListener(eventName, handler);
     });
 };

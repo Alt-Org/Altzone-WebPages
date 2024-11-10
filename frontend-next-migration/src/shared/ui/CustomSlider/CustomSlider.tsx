@@ -1,11 +1,11 @@
-import cls from "./CustomSlider.module.scss";
-import {ReactNode, useRef} from "react";
-import {classNames} from "@/shared/lib/classNames/classNames";
+import { ReactNode, useRef } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './CustomSlider.module.scss';
 
 type Props = {
     className?: string;
     children: ReactNode;
-}
+};
 
 /**
  * CustomSlider component to create a horizontally scrollable container.
@@ -19,7 +19,7 @@ type Props = {
  *
  * <CustomSlider className="additional-class">
  *   {news.map(item => (
- *     <NewsCard 
+ *     <NewsCard
  *       bodyLength={200}
  *       key={item.id}
  *       title={item.title}
@@ -31,15 +31,14 @@ type Props = {
  * </CustomSlider>
  * ```
  */
-export const CustomSlider = ({className = '', children}: Props) => {
-
+export const CustomSlider = ({ className = '', children }: Props) => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const handleScrollRight = () => {
         if (scrollRef.current) {
             scrollRef.current.scrollBy({
                 left: 3000,
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
         }
     };
@@ -48,29 +47,33 @@ export const CustomSlider = ({className = '', children}: Props) => {
         if (scrollRef.current) {
             scrollRef.current.scrollBy({
                 left: -3000,
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
         }
     };
 
     return (
         <div className={classNames(cls.CustomSlider, {}, [className])}>
-
-
-            <div className={cls.scrollLeft} onClick={handleScrollLeft}>
+            <div
+                className={cls.scrollLeft}
+                onClick={handleScrollLeft}
+            >
                 <i>{'←'}</i>
             </div>
 
-            <div className={classNames(cls.Cards, {}, [])} ref={scrollRef}>
+            <div
+                className={classNames(cls.Cards, {}, [])}
+                ref={scrollRef}
+            >
                 <div className={cls.CardContainer}>{children}</div>
             </div>
 
-
-            <div className={cls.scrollRight} onClick={handleScrollRight}>
+            <div
+                className={cls.scrollRight}
+                onClick={handleScrollRight}
+            >
                 <i>{'→'}</i>
             </div>
-
         </div>
-    )
-
-}
+    );
+};

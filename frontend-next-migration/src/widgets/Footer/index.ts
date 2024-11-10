@@ -1,2 +1,2 @@
-'use client'
-export {Footer} from './ui/FooterMain/FooterMain';
+'use client';
+export { Footer } from './ui/FooterMain/FooterMain';

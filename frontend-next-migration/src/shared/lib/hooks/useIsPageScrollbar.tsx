@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * Custom hook to detect if the page has a vertical scrollbar.

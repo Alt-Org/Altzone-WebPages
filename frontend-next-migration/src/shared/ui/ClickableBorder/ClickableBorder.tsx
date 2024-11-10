@@ -1,12 +1,6 @@
-import React, {
-    ReactNode,
-    useState,
-    forwardRef,
-    ForwardedRef,
-    CSSProperties,
-} from 'react';
+import React, { ReactNode, useState, forwardRef, ForwardedRef, CSSProperties } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ClickableBorder.module.scss';
-import {classNames} from '@/shared/lib/classNames/classNames';
 
 /**
  * Props for ClickableBorder component.
@@ -31,37 +25,36 @@ type Props = {
  *   </ClickableBorder>
  * );
  */
-const ClickableBorder = forwardRef(
-    (props: Props, ref: ForwardedRef<HTMLDivElement>) => {
-        const {children, borderImageSource, className = ''} = props;
-        const [isHovered, setIsHovered] = useState(false);
+const ClickableBorder = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
+    const { children, borderImageSource, className = '' } = props;
+    const [isHovered, setIsHovered] = useState(false);
 
-        const handleMouseEnter = () => {
-            setIsHovered(true);
-        };
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
 
-        const handleMouseLeave = () => {
-            setIsHovered(false);
-        };
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
 
-        const borderImageStyle = isHovered
-            ? {borderImageSource: `url(${borderImageSource})`}
-            : {borderImageSource: 'none'};
+    const borderImageStyle = isHovered
+        ? { borderImageSource: `url(${borderImageSource})` }
+        : { borderImageSource: 'none' };
 
-        const mods = {[cls.hovered]: isHovered};
+    const mods = { [cls.hovered]: isHovered };
 
-        return (
-            <div
-                ref={ref}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className={classNames(cls.content, mods, [className])}
-                style={borderImageStyle}>
-                {children}
-            </div>
-        );
-    },
-);
+    return (
+        <div
+            ref={ref}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className={classNames(cls.content, mods, [className])}
+            style={borderImageStyle}
+        >
+            {children}
+        </div>
+    );
+});
 
 export default ClickableBorder;
 

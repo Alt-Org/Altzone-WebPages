@@ -1,6 +1,6 @@
-import {FC, ReactNode} from 'react';
-import {IPostBodyElement} from "../../model/types";
-import Image from "next/image";
+import Image from 'next/image';
+import { FC, ReactNode } from 'react';
+import { IPostBodyElement } from '../../model/types';
 
 interface ParsedPostBodyProps {
     jsonData: IPostBodyElement[];
@@ -20,7 +20,7 @@ interface ParsedPostBodyProps {
  *
  * <ParsedPostBody jsonData={jsonData} />
  */
-export const ParsedPostBody: FC<ParsedPostBodyProps> = ({jsonData}) => {
+export const ParsedPostBody: FC<ParsedPostBodyProps> = ({ jsonData }) => {
     const parseJSON = (json: IPostBodyElement[]): ReactNode[] => {
         return json.map((item, index) => {
             switch (item.type) {
@@ -30,8 +30,8 @@ export const ParsedPostBody: FC<ParsedPostBodyProps> = ({jsonData}) => {
                             key={index}
                             src={item.url}
                             alt={item.alt}
-                            width={"1000"}
-                            height={"1000"}
+                            width={'1000'}
+                            height={'1000'}
                             style={{
                                 display: 'block',
                                 width: item.widthPx ? item.widthPx : 'auto',
@@ -40,15 +40,21 @@ export const ParsedPostBody: FC<ParsedPostBodyProps> = ({jsonData}) => {
                         />
                     );
                 case 'text':
-
                     let content = item.content;
 
                     const linkRegex = /(?:https?|ftp):\/\/[\n\S]+/g;
-                    content = content.replace(linkRegex, (match) => (
-                        `<a href="${match}" target="_blank" rel="noopener noreferrer"><b>${match}</b></a>`
-                    ));
+                    content = content.replace(
+                        linkRegex,
+                        (match) =>
+                            `<a href="${match}" target="_blank" rel="noopener noreferrer"><b>${match}</b></a>`,
+                    );
 
-                    return <div key={index} dangerouslySetInnerHTML={{__html: content}}/>;
+                    return (
+                        <div
+                            key={index}
+                            dangerouslySetInnerHTML={{ __html: content }}
+                        />
+                    );
                 default:
                     return null;
             }

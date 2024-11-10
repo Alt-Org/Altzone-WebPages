@@ -10,6 +10,15 @@
   }
 }
 
+@media screen and (min-width: 960px) {
+  html {
+    width:100vw;
+    // todo may be there is a better solution, it is done to avoid navbar jumping
+    overflow-x:hidden;
+  }
+}
+
+
 body {
   font: 16px/24px;
   line-height: 1.5;
@@ -17,13 +26,8 @@ body {
   // need to be here because of other browsers
   @include custom-scrollbar;
   background-color: var(--bg-color);
-}
 
-.app {
-  //min-height: 100vh;
-  height: auto;
-  // to avoid jumps when scrollbars appear
-  padding: 0 calc(20px - (100vw - 100%)) 0 0;
+
 
 }
 

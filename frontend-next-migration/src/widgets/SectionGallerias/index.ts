@@ -1,1 +1,1 @@
-export {SectionGallerias} from "./ui/SectionGallerias";
+export { SectionGallerias } from './ui/SectionGallerias';

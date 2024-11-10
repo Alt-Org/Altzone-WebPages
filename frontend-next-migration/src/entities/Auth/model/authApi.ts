@@ -1,8 +1,5 @@
-import {gameApi} from "@/shared/api";
-import {
-    IUserRegisterDto,
-    IUserLoginDto, ILoginResponse,
-} from "../types/authUser";
+import { gameApi } from '@/shared/api';
+import { IUserRegisterDto, IUserLoginDto, ILoginResponse } from '../types/authUser';
 
 const authApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -13,7 +10,7 @@ const authApi = gameApi.injectEndpoints({
                 body: loginDTO,
             }),
         }),
-        register: builder.mutation<Object, IUserRegisterDto>({
+        register: builder.mutation<object, IUserRegisterDto>({
             query: (registerDto) => ({
                 url: '/profile',
                 method: 'POST',
@@ -34,5 +31,5 @@ export const {
     useLoginMutation,
     useRegisterMutation,
     useLogoutMutation,
-    endpoints: authEndpoints
+    endpoints: authEndpoints,
 } = authApi;

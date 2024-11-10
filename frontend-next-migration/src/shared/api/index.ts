@@ -1,9 +1,3 @@
-export {
-    gameApi,
-    GameApiCacheTags
-} from "./gameApi";
+export { gameApi, GameApiCacheTags } from './gameApi';
 
-
-export {
-   strapiApi
-} from "./strapiApi";
+export { strapiApi } from './strapiApi';

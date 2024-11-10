@@ -9,8 +9,11 @@
  * addEventListeners(['click', 'keydown'], handler);
  * removeEventListeners(['click', 'keydown'], handler);
  */
-export const removeEventListeners = (eventNames: Array<keyof WindowEventMap>, handler: EventListenerOrEventListenerObject) => {
-    eventNames.forEach(eventName => {
+export const removeEventListeners = (
+    eventNames: Array<keyof WindowEventMap>,
+    handler: EventListenerOrEventListenerObject,
+) => {
+    eventNames.forEach((eventName) => {
         window.removeEventListener(eventName, handler);
     });
 };

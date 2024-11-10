@@ -1,5 +1,5 @@
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./HorizontalLines.module.scss";
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './HorizontalLines.module.scss';
 
 /**
  * Represents a component that renders horizontal lines.
@@ -9,10 +9,9 @@ import cls from "./HorizontalLines.module.scss";
 const HorizontalLines = (): JSX.Element => {
     return (
         <div className={cls.horizontalLineDiv}>
-            <hr className={classNames(cls.firstLine, {}, [cls.horizontalLine])}/>
-            <hr className={classNames(cls.secondLine, {}, [cls.horizontalLine])}/>
+            <hr className={classNames(cls.firstLine, {}, [cls.horizontalLine])} />
+            <hr className={classNames(cls.secondLine, {}, [cls.horizontalLine])} />
         </div>
-
     );
 };
 

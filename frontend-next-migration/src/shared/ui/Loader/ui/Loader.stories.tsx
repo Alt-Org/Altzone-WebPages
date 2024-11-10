@@ -1,5 +1,5 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import { Loader } from './Loader';
 
 export default {
@@ -17,4 +17,3 @@ const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
-

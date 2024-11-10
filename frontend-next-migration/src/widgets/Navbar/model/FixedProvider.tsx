@@ -20,7 +20,7 @@ const FixedContext = createContext<FixedContextType>({
 });
 
 export const FixedProvider = ({ children }: { children: ReactNode }) => {
-    const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState);
+    const [isFixed, setIsFixed] = useState<boolean>(getInitialFixedState());
 
     const toggleFixed = () => {
         const newValue = !isFixed;
@@ -29,9 +29,7 @@ export const FixedProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <FixedContext.Provider value={{ isFixed, toggleFixed }}>
-            {children}
-        </FixedContext.Provider>
+        <FixedContext.Provider value={{ isFixed, toggleFixed }}>{children}</FixedContext.Provider>
     );
 };
 

@@ -2,4 +2,4 @@
 
 export { PrivacyPageAsync as PrivacyPage } from './ui/PrivacyPage.async';
 
-export type {Props as PrivacyPageProps} from "./ui/PrivacyPage";
+export type { Props as PrivacyPageProps } from './ui/PrivacyPage';

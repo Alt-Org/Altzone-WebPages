@@ -1,13 +1,13 @@
+import { ReactNode } from 'react';
 import ReactModal from 'react-modal';
-import {ReactNode} from "react";
-import cls from "./Modal.module.scss"
+import cls from './Modal.module.scss';
 
 type Props = {
-    isOpen: boolean,
+    isOpen: boolean;
     onRequestClose?: () => void;
-    shouldCloseOnExternal?: boolean,
+    shouldCloseOnExternal?: boolean;
     children: ReactNode;
-}
+};
 
 ReactModal.setAppElement('#root');
 
@@ -25,14 +25,12 @@ ReactModal.setAppElement('#root');
  *   <div>Your content here</div>
  * </Modal>
  */
-export const Modal = (
-    {
-        isOpen,
-        onRequestClose,
-        shouldCloseOnExternal = true,
-        children
-    }: Props) => {
-
+export const Modal = ({
+    isOpen,
+    onRequestClose,
+    shouldCloseOnExternal = true,
+    children,
+}: Props) => {
     return (
         <ReactModal
             overlayClassName={cls.overlayClassName}
@@ -46,5 +44,5 @@ export const Modal = (
         >
             {children}
         </ReactModal>
-    )
-}
+    );
+};

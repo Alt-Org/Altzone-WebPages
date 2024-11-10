@@ -1,12 +1,10 @@
-export type {IGalleryDirectory,IGalleryPicture} from "./types/gallery";
-export type {ParentDirectory} from "./model/galleryApi";
+export type { IGalleryDirectory, IGalleryPicture } from './types/gallery';
+export type { ParentDirectory } from './model/galleryApi';
+export { useGalleryCategories } from './model/useGalleryCategories';
+export type { GalleryCategoriesWithModalSliderProps } from './ui/GalleryCategoriesWithModalSlider';
+export { GalleryCategoriesWithModalSlider } from './ui/GalleryCategoriesWithModalSlider';
+export { ImageWall } from './ui/ImageWall/ImageWall';
 
-export {
-    useGalleryCategories
-} from "./model/useGalleryCategories";
+export type { ImageData } from './types/gallery';
 
-export type {
-    GalleryCategoriesWithModalSliderProps,
-} from "./ui/GalleryCategoriesWithModalSlider";
-
-export {GalleryCategoriesWithModalSlider} from "./ui/GalleryCategoriesWithModalSlider";
+export { useGetStrapiGalleryImages } from './api/useGetStrapiGalleryImages';

@@ -1,13 +1,16 @@
-import cls from './NewsPage.module.scss';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { ComingSoon } from '@/widgets/ComingSoon';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './NewsPage.module.scss';
+import { WallIntroAnimation } from '@/shared/ui/WallIntroAnimation';
 
 const NewsPage = () => {
-  return (
-    <main className={classNames(cls.NewsPage)}>
-      <ComingSoon />
-    </main>
-  );
+    return (
+        <WallIntroAnimation>
+            <main className={classNames(cls.NewsPage)}>
+                <ComingSoon />
+            </main>
+        </WallIntroAnimation>
+    );
 };
 
 export default NewsPage;

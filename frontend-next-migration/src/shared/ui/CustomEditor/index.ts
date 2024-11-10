@@ -1,7 +1,5 @@
-import {CustomEditorCreateNew} from "./ui/CustomEditorCreateNew";
+import { CustomEditorCreateNew } from './ui/CustomEditorCreateNew';
 
 export const CustomEditor = {
-    CreateNewMode : CustomEditorCreateNew
+    CreateNewMode: CustomEditorCreateNew,
 };
-
-

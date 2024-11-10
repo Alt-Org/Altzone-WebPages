@@ -1,2 +1,2 @@
-export {default as GetToKnowComics} from "./GetToKnowComics";
-export type {Props as GetToKnowComicsProps } from "./GetToKnowComics";
+export { default as GetToKnowComics } from './GetToKnowComics';
+export type { Props as GetToKnowComicsProps } from './GetToKnowComics';

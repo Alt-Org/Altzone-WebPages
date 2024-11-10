@@ -2,6 +2,9 @@
   "all_clans": "Все кланы",
   "my_clan": "Мой клан",
   "create_clan": "Создать клан",
+  "confirm_delete_clan": "Вы уверены?",
+  "clan_deleted": "Клан успешно удален",
+  "clan_delete_cancelled": "Удаление было отменено",
 
   "rating": "Рейтинг",
   "clan": "Клан",

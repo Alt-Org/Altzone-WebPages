@@ -1,6 +1,5 @@
 .Section {
   display: flex;
-  min-height: 100vh;
   opacity: 0;
   &.inView{
     animation: fadeIn 1s ease-in-out;
@@ -26,7 +25,6 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  min-height: 100%;
   opacity: 0;
   transform: translateY(20px);
 

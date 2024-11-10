@@ -1,1 +1,1 @@
-export { default as useJoinClan } from "./model/useJoinClan";
+export { default as useJoinClan } from './model/useJoinClan';

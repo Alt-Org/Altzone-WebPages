@@ -27,7 +27,6 @@ const meta = {
             table: {
                 defaultValue: { summary: ButtonSize.M },
             },
-
         },
         square: {
             control: 'boolean',
@@ -58,13 +57,15 @@ const meta = {
         layout: 'centered',
         docs: {
             description: {
-                component: 'The `Button` component is a reusable UI element for triggering actions or navigating within the app. It supports different themes, sizes, and states.',
+                component:
+                    'The `Button` component is a reusable UI element for triggering actions or navigating within the app. It supports different themes, sizes, and states.',
             },
         },
     },
 } satisfies Meta<typeof Button>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {

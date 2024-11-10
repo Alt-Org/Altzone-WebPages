@@ -1,5 +1,5 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
-import cls from "./Loader.module.scss";
+import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './Loader.module.scss';
 
 interface LoaderProps {
     /**
@@ -40,13 +40,13 @@ interface LoaderProps {
  * };
  * ```
  */
-export const Loader = ({className = ''}: LoaderProps) => (
+export const Loader = ({ className = '' }: LoaderProps) => (
     <div className={classNames(cls.Loader, {}, [className])}>
         {/* <div className={cls.ldsRing}> */}
-        <div/>
-        <div/>
-        <div/>
-        <div/>
+        <div />
+        <div />
+        <div />
+        <div />
         {/* </div> */}
     </div>
 );

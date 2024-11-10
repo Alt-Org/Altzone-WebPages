@@ -31,7 +31,102 @@
 
 
   "not-found-title": "Etsittyä sankaria ei löytynyt",
-  "not-found-check-heroes": "Tarkista saatavilla olevat sankarit"
+  "not-found-check-heroes": "Tarkista saatavilla olevat sankarit",
+
+  "section-title": "Hahmot",
+
+  "RETROFLECTOR": {
+    "name": "TORJUJAT",
+    "description": "TORJUJAT on ...",
+    "heroes": {
+      "hannuHodari": {
+        "title": "Ahmatti",
+        "alt": "Olen Ahmatti",
+        "altGif": "",
+        "description": "Ahmatti torjuu tunteita keskittymällä syömiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa. "
+      },
+      "pirate": {
+        "title": "Pullo-Piraatti",
+        "alt": "Pullo-Piraatti kuva",
+        "altGif": "Pullo-Piraatti gifkuva",
+        "description": "Pullo-Piraatti torjuu tunteita keskittymällä juomiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa."
+      }
+
+    }
+  },
+
+  "PROJECTOR": {
+    "name": "PEILAAJAT",
+    "description": "PEILAAJAT on ...",
+    "heroes": {
+      "GraffitiArtist": {
+        "title": "Grafittitaiteilija",
+        "alt": "Olen GRAFFITI TAITEILIJA",
+        "altGif": "",
+        "description": "Graffiti-Gaya projisoi taitavasti tunteet itsensä ulkopuolelle - niin toisiin hahmoihin, kuin taiteeseen. \nGaya suojautuu suihkuttamalla spraymaalipilven, joka ohjaa tunteet joukkuetoverin hoidettavaksi. Gaya ei vastuuta kanna."
+      }
+    }
+  },
+
+  "INTELLECTUALIZER": {
+    "name": "ÄLYLLISTÄJÄT",
+    "description": "ÄLYLLISTÄJÄT  on ...",
+    "heroes": {
+      "Researcher": {
+        "title": "Tutkija ",
+        "alt": "Olen Tutkija ",
+        "altGif": "",
+        "description": "Albert Älypää suojautuu tunteilta tietokirjalla, joka muodostaa pelikentälle tunteiden kulkurataa kuvaavia kaavioita. \nAlbertin jatkuvat kaaviot saattavat kuitenkin toisinaan ärsyttää hänen joukkuetovereitaan. "
+      }
+    }
+  },
+
+  "CONFLUENT": {
+    "name": "SULAUTUJAT",
+    "description": "SULAUTUJAT on ...",
+    "heroes": {
+      "SoulSisters": {
+        "title": "Sielunsiskot",
+        "alt": "Sielunsiskot kuva",
+        "altGif": "Sielunsiskot animation gif",
+        "description": "Tiimityössä kahdesta tulee yksi, voittamaton tiimi. Tunteiden lähestyessä he puhaltavat suuren purkkapallon suojakseen ja\n hidastavat tapahtumien kulkua imulla, josta on vaikea päästä irti."
+      },
+
+      "Sleeper": {
+        "title": "Unikeko",
+        "alt": "Unikeko  pääkuva",
+        "altGif": "Unikeko  animaatiogif",
+        "description": "Unikeko , rauhallinen ja salaperäinen, omaa ainutlaatuisen kyvyn vaivuttaa ympärillään olevat tunteet rauhalliseen tilaan, lieventäen niiden intensiteettiä ja hidastaen reaktiivisia impulsseja. Hänen läsnäolonsa voi saada jopa voimakkaimmat tunteet tuntumaan uneliailta, luoden turvallisen tilan itselleen ja liittolaisilleen. Kuitenkin, mitä enemmän hän käyttää voimaansa, sitä suurempi riski hänellä on ajautua omaan unimaailmaansa, toisinaan irtaantuen liikaa todellisuudesta."
+      }
+    }
+  },
+
+  "TRICKSTER": {
+    "name": "HÄMÄÄJÄT",
+    "description": "Hämääjät on ...",
+    "heroes": {
+      "Conman": {
+        "title": "Hujari",
+        "alt": "Hujari kuva",
+        "altGif": "Hujari animation kuva",
+        "description": "Hujari  käyttää taitavasti petosta ja viekkautta manipuloidakseen tunteita ja harhauttaakseen vastustajia. Hänen pääkykynsä on luoda illuusioita, jotka saavat ympäröivät näkemään jotain, mitä ei oikeasti ole olemassa. \\nLisäksi hän pystyy tuottamaan häiritseviä ääniä ja visuaalisia tehosteita ohjatakseen tunteiden keskittymisen muille kohteille tai piiloutuakseen itse luomaansa kaaokseen. Joskus hänen oveluutensa kuitenkin kääntyy häntä itseään vastaan."
+      }
+    }
+  },
+
+  "OBEDIENT": {
+    "name": "TOTTELIJAT ",
+    "description": "TOTTELIJAT on ...",
+    "heroes": {
+      "FatePriest": {
+        "title": "Tapauskovainen",
+        "alt": "Tapauskovaisen kuva",
+        "altGif": "Tapauskovainen animaatiogif",
+        "description": "Tapauskovainen luottaa horjumattomasti sattuman ja kohtalon voimaan. Kohtaessaan voimakkaita tunteita hän heittää kolikkoa tai noppaakin, päättäen seuraavat liikkeensä täysin sattuman sanelemana. Tämä usko kohtaloon voi johtaa yllättäviin ja joskus kaoottisiin tuloksiin, antaen hänelle ainutlaatuisen edun arvaamattomissa tilanteissa. Hänen riippuvuutensa kohtalosta tarkoittaa kuitenkin, että lopputulos jää usein puhtaan onnen varaan, mikä ei aina palvele tiimin etua."
+      }
+    }
+  }
+
 
 
 

@@ -1,86 +1,77 @@
 'use client';
-import VideoContentYoutube from '@/shared/ui/VideoContent/ui/VideoContentYoutube';
-import cls from './VideoAndGalleries.module.scss';
-import Image from 'next/image';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import {
-  GalleryCategoriesWithModalSlider,
-  useGalleryCategories,
-} from '@/entities/Gallery';
+import { useInView } from 'react-intersection-observer';
 import { Container } from '@/shared/ui/Container';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { useInView } from 'react-intersection-observer';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './VideoAndGalleries.module.scss';
+import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
 
 export type Props = {
-  backgroundImageSrc?: string;
-  title: string;
-  videoLink?: string;
+    backgroundImageSrc?: string;
+    title: string;
+    videoLink?: string;
 };
 
 //todo handle IsError , isLoading cases
 const VideoAndGalleries = (props: Props) => {
-  const {
-    backgroundImageSrc,
-    /*title,*/
-    videoLink = AppExternalLinks.previewVideoYoutube,
-  } = props;
+    const {
+        backgroundImageSrc,
+        /*title,*/
+        videoLink = AppExternalLinks.previewVideoYoutube,
+    } = props;
 
-  const { transformedGalleryCategories, isError, isLoading } =
-    useGalleryCategories('artGalleries');
+    // const { transformedGalleryCategories, isError, isLoading } =
+    //   useGalleryCategories('artGalleries');
 
-  const { ref, inView } = useInView({
-    rootMargin: '-150px 0px',
-    triggerOnce: true,
-  });
+    const { ref, inView } = useInView({
+        rootMargin: '-150px 0px',
+        triggerOnce: true,
+    });
 
-  const mods = {
-    [cls.inView]: inView,
-  };
+    const mods = {
+        [cls.inView]: inView,
+    };
 
-  const { isMobileSize, isTabletSize } = useSizes();
+    const { isMobileSize, isTabletSize } = useSizes();
 
-  return (
-    <section
-      ref={ref}
-      className={classNames(cls.SectionVideoAndGalleries, mods)}
-      style={{
-        backgroundImage: backgroundImageSrc
-          ? `url(${backgroundImageSrc})`
-          : 'none',
-      }}>
-      <h3 className={cls.title}>{/* {title} */}</h3>
-
-      <Container className={cls.container} fluid={isMobileSize || isTabletSize}>
-        <div className={cls.videoWrapper}>
-          <VideoContentYoutube
-            params={{
-              className: cls.VideoContentYoutube,
+    return (
+        <section
+            ref={ref}
+            className={classNames(cls.SectionVideoAndGalleries, mods)}
+            style={{
+                backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none',
             }}
-            src={videoLink}
-          />
-        </div>
+        >
+            <h3 className={cls.title}>{/* {title} */}</h3>
 
-        {/*//todo Joni add here the desired instas ?*/}
+            <Container
+                className={cls.container}
+                fluid={isMobileSize || isTabletSize}
+            >
+                <div className={cls.videoWrapper}>
+                    <YouTubeFacade previewVideoYoutube={videoLink} />
+                </div>
 
-        {/*//todo  may we should have now 2 dif components: with and without galleries*/}
-        {/*<div className={cls.galleries}>*/}
-        {/*    {*/}
-        {/*        transformedGalleryCategories.map((gallery: any) => (*/}
-        {/*            <GalleryCategoriesWithModalSlider*/}
-        {/*                cover={gallery.cover}*/}
-        {/*                followLastImage={gallery.followLastImage}*/}
-        {/*                key={gallery.title}*/}
-        {/*                sources={gallery.sources}*/}
-        {/*                title={gallery.title}*/}
-        {/*            />*/}
-        {/*        ))*/}
-        {/*    }*/}
-        {/*</div>*/}
-      </Container>
-    </section>
-  );
+                {/*//todo Joni add here the desired instas ?*/}
+
+                {/*//todo  may we should have now 2 dif components: with and without galleries*/}
+                {/*<div className={cls.galleries}>*/}
+                {/*    {*/}
+                {/*        transformedGalleryCategories.map((gallery: any) => (*/}
+                {/*            <GalleryCategoriesWithModalSlider*/}
+                {/*                cover={gallery.cover}*/}
+                {/*                followLastImage={gallery.followLastImage}*/}
+                {/*                key={gallery.title}*/}
+                {/*                sources={gallery.sources}*/}
+                {/*                title={gallery.title}*/}
+                {/*            />*/}
+                {/*        ))*/}
+                {/*    }*/}
+                {/*</div>*/}
+            </Container>
+        </section>
+    );
 };
 
 export default VideoAndGalleries;

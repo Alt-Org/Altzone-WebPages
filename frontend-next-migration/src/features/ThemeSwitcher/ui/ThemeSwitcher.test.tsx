@@ -1,8 +1,8 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {ThemeSwitcher} from "./ThemeSwitcher";
-import {useTheme,Theme} from "@/app/_providers/ThemeProvider";
+import { render, screen, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { useTheme, Theme } from '@/app/_providers/ThemeProvider';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 jest.mock('@/app/_providers/ThemeProvider', () => ({
     useTheme: jest.fn(),
@@ -23,7 +23,7 @@ describe('ThemeSwitcher', () => {
 
         const button = screen.getByRole('button');
         expect(button).toBeInTheDocument();
-        expect(screen.getByTestId('light-icon')).toBeInTheDocument();
+        expect(screen.getByAltText('light icon')).toBeInTheDocument();
     });
 
     it('should render the button with DarkIcon when theme is dark', () => {
@@ -36,7 +36,7 @@ describe('ThemeSwitcher', () => {
 
         const button = screen.getByRole('button');
         expect(button).toBeInTheDocument();
-        expect(screen.getByTestId('dark-icon')).toBeInTheDocument();
+        expect(screen.getByAltText('dark icon')).toBeInTheDocument();
     });
 
     it('should toggle theme when button is clicked', () => {

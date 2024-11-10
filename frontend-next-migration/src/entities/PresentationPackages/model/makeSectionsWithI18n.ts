@@ -1,8 +1,7 @@
 import { PresentationSection } from '@/entities/PresentationPackages/types';
-import { CookiesSections } from './data/cookiesSections';
 import { ArtGameSections } from './data/artGameSections';
+import { CookiesSections } from './data/cookiesSections';
 import { PrivacySections } from './data/privacySections';
-import { TeachingSections } from './data/teachingSections';
 
 /**
  * Takes an array of PresentationSections and returns a higher-order function that takes a translation function
@@ -13,19 +12,19 @@ import { TeachingSections } from './data/teachingSections';
  * @return {PresentationSection[]} An array of localized PresentationSections.
  */
 const makeSectionsWithI18n = (
-  sections: PresentationSection[],
+    sections: PresentationSection[],
 ): ((t: (key: string) => string) => PresentationSection[]) => {
-  return (t: (key: string) => string): PresentationSection[] => {
-    return sections.map((section) => ({
-      ...section,
-      label: t(section.label),
-      description: t(section.description),
-      image: section.image,
-      imageAlt: t(section.imageAlt),
-      sidebarLogo: section.sidebarLogo,
-      sidebarLogoAlt: t(section.sidebarLogoAlt),
-    }));
-  };
+    return (t: (key: string) => string): PresentationSection[] => {
+        return sections.map((section) => ({
+            ...section,
+            label: t(section.label),
+            description: t(section.description),
+            image: section.image,
+            imageAlt: t(section.imageAlt),
+            sidebarLogo: section.sidebarLogo,
+            sidebarLogoAlt: t(section.sidebarLogoAlt),
+        }));
+    };
 };
 
 /**
@@ -34,8 +33,7 @@ const makeSectionsWithI18n = (
  * @param {Array} TeachingSections - The array of teaching sections.
  * @returns {Array} - The array of teaching sections with internationalization support.
  */
-export const makeTeachingSectionsWithI18n =
-  makeSectionsWithI18n(CookiesSections);
+export const makeTeachingSectionsWithI18n = makeSectionsWithI18n(CookiesSections);
 
 /**
  * Creates art game sections with internationalization support.
@@ -43,16 +41,14 @@ export const makeTeachingSectionsWithI18n =
  * @param {Array} ArtGameSections - The array of art game sections.
  * @returns {Array} - The array of art game sections with internationalization support.
  */
-export const makeArtGameSectionsWithI18n =
-  makeSectionsWithI18n(ArtGameSections);
+export const makeArtGameSectionsWithI18n = makeSectionsWithI18n(ArtGameSections);
 /**
  * Creates cookies sections with internationalization support.
  *
  * @param {Array} CookiesSections - The array of art game sections.
  * @returns {Array} - The array of art game sections with internationalization support.
  */
-export const makeCookiesSectionsWithI18n =
-  makeSectionsWithI18n(CookiesSections);
+export const makeCookiesSectionsWithI18n = makeSectionsWithI18n(CookiesSections);
 
 /**
  * Creates privacy sections with internationalization support.
@@ -60,5 +56,4 @@ export const makeCookiesSectionsWithI18n =
  * @param {Array} PrivacySections - The array of art game sections.
  * @returns {Array} - The array of art game sections with internationalization support.
  */
-export const makePrivacySectionsWithI18n =
-  makeSectionsWithI18n(PrivacySections);
+export const makePrivacySectionsWithI18n = makeSectionsWithI18n(PrivacySections);

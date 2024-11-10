@@ -1,0 +1,46 @@
+.topDropDown{
+  padding: 10px 0;
+  color: var(--primary-color);
+  font-size: 40px;
+  border-radius: var(--border-radius-custom);
+  width: 100%;
+  background-color: black;
+
+  .topDropDownChildren{
+    justify-content: center;
+  }
+
+  .topDropDownContent{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+.subDropDown{
+  color: var(--inverted-primary-color);
+  font-size: 24px;
+  justify-self: flex-start;
+  width: 100%;
+
+  .subDropDownChildren{
+    justify-content: space-between;
+  }
+
+  .subDropDownContent{
+    padding-left: 15px;
+    color: var(--primary-color);
+
+    & > *:hover{
+      color: var(--secondary-color);
+    }
+
+    &  a:hover{
+      color: var(--secondary-color);
+    }
+
+
+  }
+
+}
+

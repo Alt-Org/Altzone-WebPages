@@ -1,2 +1,1 @@
-export {NewsElementPage as default} from "@/preparedPages/NewsPages";
-
+export { NewsElementPage as default } from '@/preparedPages/NewsPages';

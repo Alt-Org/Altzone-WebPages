@@ -1,1 +1,1 @@
-export { default as ClanInfo } from "./ClanInfo";
+export { default as ClanInfo } from './ClanInfo';

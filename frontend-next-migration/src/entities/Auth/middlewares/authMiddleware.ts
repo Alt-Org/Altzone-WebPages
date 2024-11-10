@@ -1,41 +1,45 @@
-    import { Middleware } from '@reduxjs/toolkit';
-    import {LS_KEYS} from "@/shared/const/LS_KEYS";
-    import {authUserActions} from "../model/authUserSlice";
-    import {authEndpoints} from "../model/authApi";
+import { Middleware } from '@reduxjs/toolkit';
+import { LS_KEYS } from '@/shared/const/LS_KEYS';
+import { authEndpoints } from '../model/authApi';
+import { authUserActions } from '../model/authUserSlice/authUserSlice';
 
-    export const authMiddleware: Middleware = storeAPI => next => action => {
+export const authMiddleware: Middleware = (storeAPI) => (next) => (action) => {
+    // Let the action pass to the next middleware or reducer
+    const result = next(action);
 
-        // Let the action pass to the next middleware or reducer
-        const result = next(action);
+    const isLogoutPending = authEndpoints.logout.matchPending(action);
+    if (isLogoutPending) {
+        storeAPI.dispatch(authUserActions.setIsSessionExpired(true));
+        storeAPI.dispatch(authUserActions.logout());
+        localStorage.removeItem(LS_KEYS.AUTH_USER);
+        // navigatorHelper.navigate?.(RoutePath.auth_session_exp);
+    }
 
-        const isLogoutPending = authEndpoints.logout.matchPending(action);
-        if(isLogoutPending){
-            storeAPI.dispatch(authUserActions.setIsSessionExpired(true));
-            storeAPI.dispatch(authUserActions.logout());
-            localStorage.removeItem(LS_KEYS.AUTH_USER);
-            // navigatorHelper.navigate?.(RoutePath.auth_session_exp);
-        }
+    switch (action.type) {
+        case authUserActions.setProfile.toString():
+            const updatedUserData = { ...storeAPI.getState().authUser, profile: action.payload };
+            localStorage.setItem(LS_KEYS.AUTH_USER, JSON.stringify(updatedUserData));
+            break;
 
-        switch(action.type) {
-            case authUserActions.setProfile.toString():
-                const updatedUserData = { ...storeAPI.getState().authUser, profile: action.payload };
-                localStorage.setItem(LS_KEYS.AUTH_USER, JSON.stringify(updatedUserData));
-                break;
+        case authUserActions.setAccessTokenInfo.toString():
+            const updatedTokenData = {
+                ...storeAPI.getState().authUser,
+                accessTokenInfo: action.payload,
+            };
+            localStorage.setItem(LS_KEYS.AUTH_USER, JSON.stringify(updatedTokenData));
+            break;
 
-            case authUserActions.setAccessTokenInfo.toString():
-                const updatedTokenData = { ...storeAPI.getState().authUser, accessTokenInfo: action.payload };
-                localStorage.setItem(LS_KEYS.AUTH_USER, JSON.stringify(updatedTokenData));
-                break;
+        case authUserActions.setIsSessionExpired.toString():
+            const IsSessionExpiredData = {
+                ...storeAPI.getState().authUser,
+                isSessionExpired: action.payload,
+            };
+            localStorage.setItem(LS_KEYS.AUTH_USER, JSON.stringify(IsSessionExpiredData));
+            break;
 
-            case authUserActions.setIsSessionExpired.toString():
-                const IsSessionExpiredData = { ...storeAPI.getState().authUser, isSessionExpired: action.payload };
-                localStorage.setItem(LS_KEYS.AUTH_USER, JSON.stringify(IsSessionExpiredData));
-                break;
+        default:
+            break;
+    }
 
-            default:
-                break;
-        }
-
-        return result;
-    };
-
+    return result;
+};

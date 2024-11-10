@@ -1,5 +1,5 @@
 'use client';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * Custom hook to check and monitor window size changes.
@@ -21,41 +21,38 @@ import {useEffect, useState} from 'react';
  * }
  */
 const useSizes = () => {
-  const checkSizes = () => {
-    const width = window.innerWidth;
-    return {
-      isMobileSize: width <= 768,
-      isTabletSize: width >= 768 && width < 1024,
-      isDesktopSize: width >= 1024 && width < 1440,
-      isWidescreenSize: width >= 1440,
-    };
-  };
-
-  const [sizes, setSizes] = useState(checkSizes());
-
-  useEffect(() => {
-    const handleResize = () => {
-      setSizes(checkSizes());
+    const checkSizes = () => {
+        const width = window.innerWidth;
+        return {
+            isMobileSize: width <= 768,
+            isTabletSize: width >= 768 && width < 1024,
+            isDesktopSize: width >= 1024 && width < 1440,
+            isWidescreenSize: width >= 1440,
+        };
     };
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', handleResize);
-      window.addEventListener('orientationchange', handleResize);
-      handleResize();
-    }
+    const [sizes, setSizes] = useState(checkSizes());
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', handleResize);
-        window.removeEventListener('orientationchange', handleResize);
-      }
-    };
-  }, []);
+    useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
 
-  useEffect(() => {
-  }, [sizes]);
+        const handleResize = () => {
+            setSizes(checkSizes());
+        };
 
-  return sizes;
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize, { signal });
+            window.addEventListener('orientationchange', handleResize, { signal });
+            window.addEventListener('load', handleResize, { signal });
+        }
+
+        return () => {
+            controller.abort();
+        };
+    }, []);
+
+    return sizes;
 };
 
 export default useSizes;

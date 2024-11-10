@@ -1,6 +1,6 @@
-import {gameApi} from "@/shared/api";
+import { gameApi } from '@/shared/api';
 
-const profileUrl = "profile";
+const profileUrl = 'profile';
 const profileApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
         deleteProfile: builder.mutation<void, void>({
@@ -10,11 +10,7 @@ const profileApi = gameApi.injectEndpoints({
             }),
         }),
     }),
-    overrideExisting: false
-})
+    overrideExisting: false,
+});
 
-export const {
-    useDeleteProfileMutation,
-    endpoints: profileEndpoints
-} = profileApi;
-
+export const { useDeleteProfileMutation, endpoints: profileEndpoints } = profileApi;

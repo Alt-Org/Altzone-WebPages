@@ -1,14 +1,14 @@
-import {classNames} from "@/shared/lib/classNames/classNames";
-import {FC, memo, ReactNode} from "react";
-import cls from "./Card.module.scss";
-import {AppLink} from "@/shared/ui/AppLink/AppLink";
+import { FC, memo, ReactNode } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import cls from './Card.module.scss';
 
 /**
  * Module containing a React CardTheme component with customizable themes, sizes, and square styling.
  * @module Card
  */
 export enum CardTheme {
-    PRIMARY = "",
+    PRIMARY = '',
 }
 
 /**
@@ -67,18 +67,8 @@ interface CardComponent extends FC<CardProps> {
 }
 
 const Card: CardComponent = (props: CardProps) => {
-    const {
-        className = "",
-        theme = CardTheme.PRIMARY,
-        children
-    } = props;
-    return (
-        <div
-            className={classNames(cls.Card, {}, [className, cls[theme]])}
-        >
-            {children}
-        </div>
-    );
+    const { className = '', theme = CardTheme.PRIMARY, children } = props;
+    return <div className={classNames(cls.Card, {}, [className, cls[theme]])}>{children}</div>;
 };
 
 /**
@@ -89,11 +79,11 @@ const Card: CardComponent = (props: CardProps) => {
  * @example
  * <Card.Title className="customTitleClass">Card Title</Card.Title>
  */
-const CardTitle = memo(({children, className = ''}: CardCompoundProps) => {
+const CardTitle = memo(({ children, className = '' }: CardCompoundProps) => {
     return <h2 className={classNames(cls.Title, {}, [className])}>{children}</h2>;
 });
 
-CardTitle.displayName = "CardTitle";
+CardTitle.displayName = 'CardTitle';
 
 /**
  * Card.Body component for the Card.
@@ -103,11 +93,11 @@ CardTitle.displayName = "CardTitle";
  * @example
  * <Card.Body className="customBodyClass">Card Body</Card.Body>
  */
-const CardBody = memo(({children, className = ''}: CardCompoundProps) => {
+const CardBody = memo(({ children, className = '' }: CardCompoundProps) => {
     return <p className={classNames(cls.Body, {}, [className])}>{children}</p>;
 });
 
-CardBody.displayName = "CardBody";
+CardBody.displayName = 'CardBody';
 
 /**
  * Card.Date component for the Card.
@@ -117,11 +107,11 @@ CardBody.displayName = "CardBody";
  * @example
  * <Card.Date className="customDateClass">2023-10-01</Card.Date>
  */
-const CardDate = memo(({children, className = ''}: CardCompoundProps) => {
+const CardDate = memo(({ children, className = '' }: CardCompoundProps) => {
     return <h2 className={classNames(cls.Date, {}, [className])}>{children}</h2>;
 });
 
-CardDate.displayName = "CardDate";
+CardDate.displayName = 'CardDate';
 
 /**
  * Card.ReadMoreLink component for the Card.
@@ -134,22 +124,25 @@ CardDate.displayName = "CardDate";
  * </Card.ReadMoreLink>
  */
 const ReadMoreLink = memo((props: ReadMoreLinkProps) => {
-    const {children, className = '', path, isExternal = false, withScalableLink = false} = props;
+    const { children, className = '', path, isExternal = false, withScalableLink = false } = props;
     const mods: Record<string, boolean> = {
         [cls.withScalableLink]: withScalableLink,
     } as Record<string, boolean>;
     return (
-        <AppLink to={path} isExternal={isExternal}>
+        <AppLink
+            to={path}
+            isExternal={isExternal}
+        >
             <h2 className={classNames(cls.ReadMoreLink, mods, [className])}>{children}</h2>
         </AppLink>
-    )
+    );
 });
 
-ReadMoreLink.displayName = "card-ReadMoreLink";
+ReadMoreLink.displayName = 'card-ReadMoreLink';
 
 Card.Title = CardTitle;
 Card.Body = CardBody;
 Card.Date = CardDate;
 Card.ReadMoreLink = ReadMoreLink;
 
-export {Card};
+export { Card };

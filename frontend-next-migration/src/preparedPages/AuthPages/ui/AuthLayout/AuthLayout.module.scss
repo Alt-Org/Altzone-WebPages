@@ -1,0 +1,12 @@
+.authLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80svh;
+}
+
+@media (hover: none) {
+  .authLayout {
+    min-height: 100lvh;
+  }
+}

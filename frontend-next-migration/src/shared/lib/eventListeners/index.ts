@@ -1,4 +1,4 @@
-import {addEventListeners} from './addEventListeners';
-import {removeEventListeners} from './removeEventListeners';
+import { addEventListeners } from './addEventListeners';
+import { removeEventListeners } from './removeEventListeners';
 
-export {addEventListeners,removeEventListeners};
+export { addEventListeners, removeEventListeners };

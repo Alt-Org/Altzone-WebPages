@@ -1,22 +1,23 @@
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 
 type Link = {
-    isExternal : boolean;
-    path: string
-}
+    isExternal: boolean;
+    path: string;
+};
 
-export type DropDownElement = {
+export type DropDownElementASTextOrLink = {
     id?: string;
     elementText: string;
     link?: Link;
     onClickCallback?: () => void;
     isDisabled?: {
-        status: boolean,
-        reason: string
-    }
+        status: boolean;
+        reason: string;
+    };
     accessErrorMsg?: string;
-}
+};
 
+export type DropDownElement = DropDownElementASTextOrLink | ReactNode;
 
 export type DropdownWrapperProps = {
     className?: string;
@@ -30,8 +31,8 @@ export type DropdownWrapperProps = {
     children: ReactNode;
     mouseOverLeaveMode?: boolean;
     isDisabled?: {
-        status: boolean,
-        reason: string
-    }
-}
-
+        status: boolean;
+        reason: string;
+    };
+    openByDefault?: boolean;
+};
