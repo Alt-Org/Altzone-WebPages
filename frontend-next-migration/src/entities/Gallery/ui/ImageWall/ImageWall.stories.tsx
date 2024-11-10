@@ -75,6 +75,7 @@ const mockImages = {
 export const Full: Story = {
     args: {
         version: 'full',
+        // @ts-ignore
         images: mockImages,
     },
 };
@@ -82,6 +83,7 @@ export const Full: Story = {
 export const Preview: Story = {
     args: {
         version: 'preview',
+        // @ts-ignore
         images: mockImages,
         seeMoreLink: {
             href: '/picture-galleries',
