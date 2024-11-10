@@ -5,6 +5,8 @@ import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Gallery.module.scss';
 import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
+import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
+import { SectionGallerias } from '@/widgets/SectionGallerias';
 
 export type Props = {
     title: string;
@@ -35,27 +37,29 @@ const Gallery = (props: Props) => {
             ref={ref}
             className={classNames(cls.SectionGallery, mods)}
         >
-            {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
-
             <Container className={cls.Container}>
                 <h2 className={classNames(cls.title, mods)}>{title}</h2>
-
                 <p className={cls.InfoText}>{infoText}</p>
+                <div className={cls.SectionGalleriasWrapper}>
+                    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />
+                </div>
+
+                <div className={cls.videoWrapper}>
+                    <YouTubeFacade previewVideoYoutube={videoLink} />
+                </div>
+
+                <p className={cls.SocialsText}>{socialsText}</p>
 
                 <SectionGalleryV1
                     socialMediaLinks={socialMediaLinks}
                     videoLink={videoLink}
                 />
 
-                <div className={cls.videoWrapper}>
-                    <YouTubeFacade previewVideoYoutube={videoLink} />
-                </div>
-
-                <SectionGalleryV2
-                    version={'preview'}
-                    socialMediaLinks={socialMediaLinks}
-                    seeMoreLink={seeMoreLink}
-                />
+                {/*<SectionGalleryV2*/}
+                {/*    version={'preview'}*/}
+                {/*    socialMediaLinks={socialMediaLinks}*/}
+                {/*    seeMoreLink={seeMoreLink}*/}
+                {/*/>*/}
             </Container>
         </section>
     );
