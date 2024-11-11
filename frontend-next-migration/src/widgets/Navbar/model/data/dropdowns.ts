@@ -68,17 +68,6 @@ export const dropdowns = {
                 reason: 'Kirjaudu ensin!',
             },
         },
-        {
-            elementText: 'furnituresets',
-            link: {
-                path: getRouteAllFurnitureSetsPage(),
-                isExternal: false,
-            },
-            isDisabled: {
-                status: false,
-                reason: 'Kirjaudu ensin!',
-            },
-        },
         // {
         //     elementText: 'leaderboard',
         //     link: {
@@ -100,6 +89,17 @@ export const dropdowns = {
             link: {
                 path: getRouteComicsPage(),
                 isExternal: false,
+            },
+        },
+        {
+            elementText: 'furnituresets',
+            link: {
+                path: getRouteAllFurnitureSetsPage(),
+                isExternal: false,
+            },
+            isDisabled: {
+                status: false,
+                reason: 'Kirjaudu ensin!',
             },
         },
     ],

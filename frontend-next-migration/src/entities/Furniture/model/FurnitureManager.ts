@@ -1,0 +1,18 @@
+import { FurnitureSet, SetInfo, Piece } from '../types/set';
+import { initializeFurnitureSets } from './initializeFurniture';
+
+export class FurnitureManager {
+    private readonly t: (key: string) => string;
+    private readonly furnitureSets: Record<FurnitureSet, SetInfo>;
+
+    constructor(t: (key: string) => string) {
+        this.t = t;
+        this.furnitureSets = initializeFurnitureSets(t);
+    }
+
+    public getAllFurnitureSets() {
+        return Object.entries(this.furnitureSets).map((set) => {
+            return set[1];
+        });
+    }
+}
