@@ -135,14 +135,14 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
-        [cls.collapsed]: isCollapsed,
+        // [cls.collapsed]: isCollapsed,
         [cls.collapsing]: isAnimating,
     } as Record<string, boolean>;
 
     const sidebarMods: Record<string, boolean> = {
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
-        [cls.collapsed]: isCollapsed,
+        // [cls.collapsed]: isCollapsed,
     };
 
     const handleCollapseClick = () => {
@@ -201,7 +201,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <AppLink
                 className={classNames(
                     cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
-                    { [cls.collapsed]: isCollapsed },
+                    // { [cls.collapsed]: isCollapsed },
+                    {},
                     [],
                 )}
                 theme={AppLinkTheme.PRIMARY}
@@ -217,7 +218,10 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <div className={cls.buttonContainer}>
                 {hasScrollbar && (
                     <div
-                        className={classNames(cls.navItem, { [cls.collapsed]: isCollapsed })}
+                        className={classNames(
+                            cls.navItem,
+                            // { [cls.collapsed]: isCollapsed }
+                        )}
                         onTransitionEnd={handleTransitionEnd}
                     >
                         <ToggleFixButton
