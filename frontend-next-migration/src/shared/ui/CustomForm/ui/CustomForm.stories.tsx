@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import MemoizedForm, { Header, InputField, Checkbox, Button } from './CustomForm';
+import MemoizedForm from './CustomForm';
 const meta = {
     title: 'shared/ui/CustomForm',
     component: MemoizedForm,
@@ -71,19 +71,19 @@ export const Example: Story = {
 };
 export const FormHeader: Story = {
     args: {
-        children: <Header>Form Title</Header>,
+        children: <MemoizedForm.Header>Form Title</MemoizedForm.Header>,
     },
 };
 export const FormButton: Story = {
     args: {
-        children: <Button>Submit</Button>,
+        children: <MemoizedForm.Button>Submit</MemoizedForm.Button>,
     },
 };
 
 export const FormInputField: Story = {
     args: {
         children: (
-            <InputField
+            <MemoizedForm.InputField
                 label="Email"
                 inputProps={{ type: 'email', placeholder: 'Enter your email' }}
             />
@@ -93,6 +93,6 @@ export const FormInputField: Story = {
 
 export const FormCheckbox: Story = {
     args: {
-        children: <Checkbox label="I agree to the terms" />,
+        children: <MemoizedForm.Checkbox label="I agree to the terms" />,
     },
 };

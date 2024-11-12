@@ -25,7 +25,7 @@ interface HeaderProps {
     children: ReactNode;
 }
 
-export function Header({ children, ...props }: HeaderProps) {
+function Header({ children, ...props }: HeaderProps) {
     return <h1 {...props}>{children}</h1>;
 }
 
@@ -44,7 +44,7 @@ type InputFieldProps = {
     inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 };
 
-export function InputField({ label, error, inputProps }: InputFieldProps) {
+function InputField({ label, error, inputProps }: InputFieldProps) {
     const inputId = inputProps?.id || `input-${label}`;
     return (
         <div className={cls.field}>
@@ -80,7 +80,7 @@ type CheckboxProps = {
  * @example
  * <Form.Checkbox label="I agree" error="You must agree" inputProps={{ required: true }} />
  */
-export function Checkbox({ label, error, inputProps }: CheckboxProps) {
+function Checkbox({ label, error, inputProps }: CheckboxProps) {
     const inputId = inputProps?.id || `checkbox-${label}`;
     return (
         <div className={cls.field}>
@@ -117,7 +117,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode;
 }
 
-export function Button({ children, ...props }: ButtonProps) {
+function Button({ children, ...props }: ButtonProps) {
     return (
         <CustomButton
             theme={ButtonTheme.Graffiti}
