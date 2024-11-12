@@ -136,7 +136,7 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                     className={cls.descriptionBlock}
                     style={{
                         marginLeft: width / 8,
-                        columnCount: `${width < 200 ? 1 : width < 550 ? 2 : 3}`,
+                        columnCount: width < 200 ? 1 : width < 700 ? 2 : 3,
                     }}
                 >
                     {Object.keys(stats).map((stat, key) => (
