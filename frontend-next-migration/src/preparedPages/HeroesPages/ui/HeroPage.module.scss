@@ -1,7 +1,7 @@
 //todo fix a mess with media queries
 .main{
-    min-height: 100vh;
-    //height: max-content;
+
+
 
     display: flex;
     align-items: center;
@@ -12,6 +12,7 @@
     @media (hover: none) {
         margin-top: 120px;
         margin-bottom: 150px;
+        min-height: unset;
     }
 
 
@@ -29,14 +30,14 @@
         margin-bottom: 100px;
     }
 
-    @media ((min-width: 351px) and (max-width: 700px)) {
+    @media ((min-width: 351px) and (max-width: 768px)) {
         //margin-top: 150px;
         margin-top: 120px;
         margin-bottom: 150px;
     }
 
-    @media (min-width: 701px) and (max-width: 1100px) {
-        //min-height: 70vh;
+    @media (min-width: 769px) and (max-width: 1100px) {
+        min-height: 100svh;
         //margin: 0;
         margin-top: 100px;
         margin-bottom: 100px;
