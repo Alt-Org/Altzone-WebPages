@@ -1,6 +1,12 @@
 .Container {
     padding: 20px;
     margin: auto 0;
+    text-align: center;
+    height: 100%;
+    place-content: center;
+    border-radius: var(--border-radius-custom);
+    background-color: var(--transparent-bg-dark);
+    border: 2px solid rgb(13, 174, 13);
 
     h2 {
         padding: 0;

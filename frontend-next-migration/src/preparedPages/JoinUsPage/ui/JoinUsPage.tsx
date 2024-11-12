@@ -2,8 +2,6 @@ import cls from './JoinUsPage.module.scss';
 import { Container } from '@/shared/ui/Container';
 import { SectionJoinUs } from '@/widgets/SectionJoinUs';
 import { BlockSection } from '../types';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 
 export interface Props {
     title: string;
@@ -44,9 +42,3 @@ export const JoinUsPage = (props: Props) => {
         </div>
     );
 };
-
-export default withBackgroundImage<Props>({
-    alt: 'Join Us-Page underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-})(JoinUsPage);

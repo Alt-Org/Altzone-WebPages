@@ -11,12 +11,10 @@ export const SectionJoinUs = (props: Props) => {
     return (
         <div className={cls.Container}>
             {blocks.map((block, index) => (
-                <div
+                <Block
                     key={index}
-                    className={cls.Item}
-                >
-                    <Block block={block} />
-                </div>
+                    block={block}
+                />
             ))}
         </div>
     );

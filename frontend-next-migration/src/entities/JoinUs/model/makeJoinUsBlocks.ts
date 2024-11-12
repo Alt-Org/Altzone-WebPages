@@ -1,7 +1,21 @@
 import { BlockSection } from '../types';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+/**
+ * Creates a function to generate a `BlockSection` object, using
+ * internationalized labels, descriptions, and link text.
+ *
+ * @param {string} section - The section identifier used to retrieve the appropriate i18n strings.
+ * @param {string} link - The URL associated with this block, to be used in the generated `BlockSection`.
+ * @returns {function} - A function that takes a translation function `t` and returns a `BlockSection`
+ * populated with i18n strings.
+ *
+ * @callback t
+ * @param {string} key - The i18n key to retrieve the translated string.
+ * @returns {BlockSection} - An object adhering to the `BlockSection` interface, containing label,
+ * description, link, and linkText fields.
+ */
 
-const makeBlocksWithI18n = (
+export const makeBlocksWithI18n = (
     section: string,
     link: string,
 ): ((t: (key: string) => string) => BlockSection) => {

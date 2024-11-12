@@ -5,22 +5,11 @@
     width: 85%;
 }
 
-.Item {
-    text-align: center;
-    place-content: center;
-    overflow: hidden;
-    border-radius: var(--border-radius-custom);
-    background-color: var(--transparent-bg-dark);
-    border: 2px solid rgb(13, 174, 13);
-}
-
-
 @media screen and (min-width: 700px) {
     .Container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
     }
-
 }
 
 @media screen and (min-width: 1100px) {
