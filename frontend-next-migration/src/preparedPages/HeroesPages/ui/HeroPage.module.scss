@@ -1,6 +1,19 @@
 //todo fix a mess with media queries
 .main{
-    min-height: 100%;
+    min-height: 100vh;
+    //height: max-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 30px;
+
+    @media (hover: none) {
+        margin-top: 120px;
+        margin-bottom: 150px;
+    }
+
 
     //margin: 150px 0;
     @media (min-width: 1000px) {
@@ -22,11 +35,14 @@
         margin-bottom: 150px;
     }
 
-    @media (min-width: 700px) and (max-width: 1100px) {
-        min-height: 70vh;
+    @media (min-width: 701px) and (max-width: 1100px) {
+        //min-height: 70vh;
         //margin: 0;
         margin-top: 100px;
         margin-bottom: 100px;
+        justify-content: center;
+
+
     }
 
     @media (min-width: 819px) and (max-width: 1100px) {
@@ -41,11 +57,7 @@
     }
 
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 30px;
+
 }
 
 .dropDown{
