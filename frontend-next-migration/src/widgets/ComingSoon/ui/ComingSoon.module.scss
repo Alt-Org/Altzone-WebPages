@@ -1,7 +1,7 @@
 .main{
 
   //367px allows us to avoid unwanted scrollbar...
-  min-height: calc(100dvh - 367px);
+  height: clamp(400px, calc(100dvh - 367px), 100vh);
   display: flex;
   align-items: center;
   justify-content: center;
