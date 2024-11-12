@@ -27,14 +27,14 @@ const PictureGalleryPage = (props: Props) => {
                 {/* <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} /> */}
 
                 {/*version1*/}
-                <SectionGalleryV1
-                    socialMediaLinks={socialMediaLinks}
-                    videoLink={videoLink}
-                />
+                {/*<SectionGalleryV1*/}
+                {/*    socialMediaLinks={socialMediaLinks}*/}
+                {/*    videoLink={videoLink}*/}
+                {/*/>*/}
 
-                <div className={cls.videoWrapper}>
-                    <YouTubeFacade previewVideoYoutube={videoLink} />
-                </div>
+                {/*<div className={cls.videoWrapper}>*/}
+                {/*    <YouTubeFacade previewVideoYoutube={videoLink} />*/}
+                {/*</div>*/}
 
                 {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/}
                 {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />*/}
