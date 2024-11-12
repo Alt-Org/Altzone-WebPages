@@ -39,6 +39,7 @@
     background-color: transparent;
    
 }
+
 .barChartContainer {
     display:flex;
     justify-content: flex-end;
@@ -47,17 +48,14 @@
     
 }
 .background {
-    padding: 1.2em 1em .8em .7em;
     width:fit-content;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0,0,0,.5);
 }
 .yAxis {
-    display:absolute;
-    top:0;
+    width: .5em;
     justify-content: flex-end;
     position:relative;
     flex-direction: column;
- 
 }
 .numberContainer {
     line-height:1em;
@@ -83,15 +81,15 @@
 }
 .line {
     margin-left: 0;
-    border-right: solid lightgreen;
+    border-right: .1em solid lightgreen;
 }
 .stick {
     font-size: 1em;
     line-height: 1em;
-    
+    min-width: .2em;
     text-align: right;
     align-items: end;
-    border-top: solid lightgreen;
+    border-top: .1em solid lightgreen;
     margin-left: .1em;
 }
 .bar {

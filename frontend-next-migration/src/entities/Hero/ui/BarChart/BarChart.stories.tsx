@@ -3,7 +3,7 @@ import React from 'react';
 import { BarChart, BarChartProps } from './BarChart';
 
 const meta: Meta<typeof BarChart> = {
-    title: '@/entities/Hero/ui/BarChart/BarChart',
+    title: 'Entities/Hero/BarChart',
     component: BarChart,
     argTypes: {
         width: {
@@ -18,11 +18,11 @@ const meta: Meta<typeof BarChart> = {
     },
     args: {
         width: 400,
-        height: 230,
+        height: 200,
         stats: {
             resistance: 3,
             hp: 4,
-            size: 7,
+            size: 2,
             impactForce: 5,
             speed: 3,
         },
