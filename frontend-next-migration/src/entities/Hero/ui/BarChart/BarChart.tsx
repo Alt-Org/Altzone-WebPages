@@ -64,7 +64,7 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                         >
                             {
                                 //This prevents displaying too many y-values and sets a test ID for testing purposes.
-                                maxValue < 30 ? (
+                                maxValue < 20 ? (
                                     value === maxValue ? (
                                         <div
                                             data-testid="yMaxValue"
@@ -120,7 +120,6 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                             data-testid={stat}
                             className={cls[stat] + ' ' + cls.bar}
                             style={{
-                                //Remove extra space to make the padding of the background element appear even. The y-axis elements need to be taken into account here.
                                 fontSize: `calc(${width / Object.keys(stats).length}px - ${(maxValue < 10 ? 1 : 1.5) / Object.keys(stats).length}em)`,
                                 height: (height * stats[stat]) / maxValue,
                             }}
