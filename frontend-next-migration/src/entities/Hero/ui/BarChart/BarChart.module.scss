@@ -49,14 +49,17 @@
 }
 .background {
     width:fit-content;
+    height: fit-content;
+
     background-color: rgba(0,0,0,.5);
 }
 .yAxis {
-    width: .5em;
+    width: 1em;
     justify-content: flex-end;
     position:relative;
     flex-direction: column;
 }
+
 .numberContainer {
     line-height:1em;
     width:100%;
@@ -68,7 +71,7 @@
     margin-left: auto;
 }
 .number{
-    font-size:max(.7em,10px);
+    font-size:min(max(.7em,10px),24px);
     font-weight: 700;
     line-height:.7em;
     height:.7em;
@@ -81,15 +84,15 @@
 }
 .line {
     margin-left: 0;
-    border-right: .1em solid lightgreen;
+    border-right: .2em solid lightgreen;
 }
 .stick {
     font-size: 1em;
     line-height: 1em;
-    min-width: .2em;
+    min-width: .4em;
     text-align: right;
     align-items: end;
-    border-top: .1em solid lightgreen;
+    border-top: .2em solid lightgreen;
     margin-left: .1em;
 }
 .bar {

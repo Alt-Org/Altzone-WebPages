@@ -31,13 +31,16 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
 
     const yValues = [];
     for (let i = maxValue; i > 0; --i) yValues.push(i);
+    const fontSize = Math.min(Math.max((0.7 * height) / maxValue, 10), 24);
 
     return (
         <div
             className={cls.background}
             style={{
-                fontSize: height / maxValue,
-                padding: width / 10,
+                fontSize: fontSize,
+                padding: width / 8,
+                // .number has margin-top -.27em
+                paddingTop: width / 8 + 0.27 * fontSize,
                 borderRadius: width / 15,
             }}
         >
@@ -50,7 +53,6 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                 <div
                     className={cls.yAxis}
                     style={{
-                        width: (1.5 * width) / Object.keys(stats).length / maxValue,
                         height: height,
                     }}
                 >
@@ -58,30 +60,34 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                         <div
                             key={key}
                             className={cls.numberContainer}
+                            style={{ fontSize: height / maxValue }}
                         >
-                            {maxValue < 30 ? (
-                                value === maxValue ? (
+                            {
+                                //This prevents displaying too many y-values and sets a test ID for testing purposes.
+                                maxValue < 30 ? (
+                                    value === maxValue ? (
+                                        <div
+                                            data-testid="yMaxValue"
+                                            className={cls.number}
+                                        >
+                                            {value}
+                                        </div>
+                                    ) : (
+                                        <div className={cls.number}>{value}</div>
+                                    )
+                                ) : value === maxValue ? (
                                     <div
                                         data-testid="yMaxValue"
                                         className={cls.number}
                                     >
                                         {value}
                                     </div>
-                                ) : (
+                                ) : value === Math.floor(maxValue / 2) || value === 1 ? (
                                     <div className={cls.number}>{value}</div>
+                                ) : (
+                                    <div />
                                 )
-                            ) : value === maxValue ? (
-                                <div
-                                    data-testid="yMaxValue"
-                                    className={cls.number}
-                                >
-                                    {value}
-                                </div>
-                            ) : value === Math.floor(maxValue / 2) || value === 1 ? (
-                                <div className={cls.number}>{value}</div>
-                            ) : (
-                                <div />
-                            )}
+                            }
                         </div>
                     ))}
                 </div>
@@ -89,6 +95,7 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                     className={cls.yAxis + ' ' + cls.line}
                     style={{
                         height: height,
+                        width: '.5em',
                     }}
                 >
                     {yValues.map((_value, key) => (
@@ -105,7 +112,6 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                     className={cls.barChartContainer}
                     style={{
                         alignItems: 'baseline',
-                        width: width * (1 - 1.5 / Object.keys(stats).length / maxValue),
                     }}
                 >
                     {Object.keys(stats).map((stat, key) => (
@@ -114,7 +120,8 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                             data-testid={stat}
                             className={cls[stat] + ' ' + cls.bar}
                             style={{
-                                fontSize: width / (Object.keys(stats).length + 1.5 / maxValue),
+                                //Remove extra space to make the padding of the background element appear even. The y-axis elements need to be taken into account here.
+                                fontSize: `calc(${width / Object.keys(stats).length}px - ${(maxValue < 10 ? 1.2 : 1.6) / Object.keys(stats).length}em)`,
                                 height: (height * stats[stat]) / maxValue,
                             }}
                         >
