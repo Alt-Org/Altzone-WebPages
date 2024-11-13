@@ -42,7 +42,7 @@
 
 .barChartContainer {
     display:flex;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: row;
     height:fit-content;
     
@@ -65,7 +65,7 @@
     width:100%;
     display:flex;
     flex-direction: row;
-    justify-content:center;
+    justify-content:flex-end;
     height:1em;
     margin-right: 0;
     margin-left: auto;
