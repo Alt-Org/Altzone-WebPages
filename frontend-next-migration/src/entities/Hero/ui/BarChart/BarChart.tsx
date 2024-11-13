@@ -95,7 +95,7 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                     className={cls.yAxis + ' ' + cls.line}
                     style={{
                         height: height,
-                        width: '.5em',
+                        width: '100%',
                     }}
                 >
                     {yValues.map((_value, key) => (
