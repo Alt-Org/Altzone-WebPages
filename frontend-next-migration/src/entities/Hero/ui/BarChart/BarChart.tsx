@@ -121,7 +121,7 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                             className={cls[stat] + ' ' + cls.bar}
                             style={{
                                 //Remove extra space to make the padding of the background element appear even. The y-axis elements need to be taken into account here.
-                                fontSize: `calc(${width / Object.keys(stats).length}px - ${(maxValue < 10 ? 1.2 : 1.6) / Object.keys(stats).length}em)`,
+                                fontSize: `calc(${width / Object.keys(stats).length}px - ${(maxValue < 10 ? 1 : 1.5) / Object.keys(stats).length}em)`,
                                 height: (height * stats[stat]) / maxValue,
                             }}
                         >
