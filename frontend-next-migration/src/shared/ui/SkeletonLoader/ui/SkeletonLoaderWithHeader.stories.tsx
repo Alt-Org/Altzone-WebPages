@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { SkeletonLoaderWithHeader } from './SkeletonLoader';
 
 const meta = {
-    title: 'shared/SkeletonLoaderWithHeader',
+    title: 'shared/ui/SkeletonLoader/SkeletonLoaderWithHeader',
     component: SkeletonLoaderWithHeader,
     argTypes: {
         sections: {
@@ -23,6 +23,14 @@ const meta = {
     },
     tags: ['autodocs'],
     parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
         docs: {
             description: {
                 component:

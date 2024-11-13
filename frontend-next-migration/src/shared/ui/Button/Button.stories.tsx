@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { Button, ButtonSize, ButtonTheme } from './Button';
 
 const meta = {
-    title: 'shared/Button',
+    title: 'shared/ui/Button',
     component: Button,
     argTypes: {
         children: {
@@ -54,6 +54,14 @@ const meta = {
     },
     tags: ['autodocs'],
     parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
         layout: 'centered',
         docs: {
             description: {
