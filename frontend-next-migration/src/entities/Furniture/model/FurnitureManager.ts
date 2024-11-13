@@ -1,6 +1,10 @@
 import { FurnitureSet, SetInfo, Piece } from '../types/set';
 import { initializeFurnitureSets } from './initializeFurniture';
 
+const enums: Record<string, FurnitureSet> = {
+    neuro: FurnitureSet.NEURO,
+};
+
 export class FurnitureManager {
     private readonly t: (key: string) => string;
     private readonly furnitureSets: Record<FurnitureSet, SetInfo>;
@@ -14,5 +18,15 @@ export class FurnitureManager {
         return Object.entries(this.furnitureSets).map((set) => {
             return set[1];
         });
+    }
+    public getFurnitureSet(id: string) {
+        const set = this.furnitureSets[enums[id]];
+        set.items = set.items.map((item: Piece) => {
+            return {
+                ...item,
+                set: set,
+            };
+        });
+        return set;
     }
 }

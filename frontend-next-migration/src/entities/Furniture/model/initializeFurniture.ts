@@ -6,13 +6,15 @@ import {
     SetInfo,
     PieceRarity,
     Rarities,
+    Types,
     FurnitureSetCoverPosition,
+    PieceType,
 } from '../types/set';
 
 const rarityList: Record<Rarities, PieceRarity> = {
     [Rarities.COMMON]: {
         name: 'COMMON',
-        color: '#ffffff',
+        color: '#8c8c8c',
     },
     [Rarities.RARE]: {
         name: 'RARE',
@@ -26,6 +28,19 @@ const rarityList: Record<Rarities, PieceRarity> = {
         name: 'ANTIQUE',
         color: '#efbc37',
     },
+};
+const types: Record<Types, PieceType> = {
+    [Types.CHAIRS]: {},
+    [Types.CABINETS]: {},
+    [Types.COUCHES]: {},
+    [Types.LIGHTS]: {},
+    [Types.PLANTS]: {},
+    [Types.TABLES]: {},
+    [Types.RUGS]: {},
+    [Types.WALL]: {},
+    [Types.MIRRORS]: {},
+    [Types.TOILETS]: {},
+    [Types.SINKS]: {},
 };
 
 export const initializeFurnitureSets = (
@@ -42,9 +57,42 @@ export const initializeFurnitureSets = (
                 {
                     name: t('NEUROSET.PIECES.CLOCK.name'),
                     description: t('NEUROSET.PIECES.CLOCK.desc'),
+                    serial: t('NEUROSET.PIECES.CLOCK.serial'),
+                    num: 'F30',
+                    type: types.WALL,
                     weight: 1,
                     cost: 40,
                     rarity: rarityList.COMMON,
+                },
+                {
+                    name: t('NEUROSET.PIECES.CHAIR.name'),
+                    description: t('NEUROSET.PIECES.CHAIR.desc'),
+                    serial: t('NEUROSET.PIECES.CHAIR.serial'),
+                    num: 'R44.1',
+                    type: types.CHAIRS,
+                    weight: 10,
+                    cost: 170,
+                    rarity: rarityList.EPIC,
+                },
+                {
+                    name: t('NEUROSET.PIECES.STOOL.name'),
+                    description: t('NEUROSET.PIECES.STOOL.desc'),
+                    serial: t('NEUROSET.PIECES.STOOL.serial'),
+                    num: 'R41',
+                    type: types.CHAIRS,
+                    weight: 4,
+                    cost: 40,
+                    rarity: rarityList.COMMON,
+                },
+                {
+                    name: t('NEUROSET.PIECES.DRAWER.name'),
+                    description: t('NEUROSET.PIECES.DRAWER.desc'),
+                    serial: t('NEUROSET.PIECES.DRAWER.serial'),
+                    num: 'F41.1',
+                    type: types.CABINETS,
+                    weight: 24,
+                    cost: 100,
+                    rarity: rarityList.RARE,
                 },
             ],
         },

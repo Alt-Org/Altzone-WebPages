@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { getRouteOneFurnitureSetPage, getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
+import { getRouteOneFurnitureSetPage } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './SetContainer.module.scss';

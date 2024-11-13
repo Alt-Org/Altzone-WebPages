@@ -4,7 +4,15 @@
 .Card {
     padding: 8px;
 
+    background-color: white;
+    border: 2px solid black;
+    margin: 4px;
+
     transition: 100ms ease-in-out;
+
+    img {
+        border: 2px solid black;
+    }
 }
 .Card:hover {
     padding: 2px;

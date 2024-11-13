@@ -12,18 +12,36 @@ export enum Rarities {
     EPIC = 'EPIC',
     ANTIQUE = 'ANTIQUE',
 }
+export enum Types {
+    COUCHES = 'COUCHES',
+    CHAIRS = 'CHAIRS',
+    LIGHTS = 'LIGHTS',
+    PLANTS = 'PLANTS',
+    TABLES = 'TABLES',
+    RUGS = 'RUGS',
+    WALL = 'WALL',
+    MIRRORS = 'MIRRORS',
+    TOILETS = 'TOILETS',
+    SINKS = 'SINKS',
+    CABINETS = 'CABINETS',
+}
+
 export interface PieceRarity {
     name: string;
     color: string;
 }
+export interface PieceType {}
 
 export interface Piece {
-    id?: number;
+    set?: SetInfo;
     name: string;
     description: string;
     weight: number;
     cost: number;
     rarity: PieceRarity;
+    serial: string;
+    type: PieceType;
+    num: string;
 }
 export interface SetInfo {
     id: string;
