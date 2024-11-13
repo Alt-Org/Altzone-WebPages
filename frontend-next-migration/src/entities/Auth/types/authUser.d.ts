@@ -3,7 +3,7 @@ import { IProfile } from '@/entities/Profile';
 
 export type IPlayerRegisterPartDto = Pick<
     IPlayer,
-    'name' | 'backpackCapacity' | 'uniqueIdentifier' | 'above13'
+    'name' | 'backpackCapacity' | 'uniqueIdentifier' | 'above13' | 'parentalAuth'
 >;
 
 export type IUserRegisterDto = Pick<IProfile<IPlayer>, 'username'> & {

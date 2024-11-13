@@ -83,6 +83,7 @@ describe('useRegisterForm', () => {
                 backpackCapacity: 100,
                 name: 'testuser',
                 above13: true,
+                parentalAuth: false,
             },
         };
 
