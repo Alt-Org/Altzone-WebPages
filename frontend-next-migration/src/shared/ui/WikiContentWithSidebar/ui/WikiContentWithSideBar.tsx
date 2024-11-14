@@ -61,7 +61,7 @@ export type Props = {
 const WikiContentWithSideBar = (props: Props) => {
     const { sections = [] } = props;
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
-    const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
+
     const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>({});
 
     const combinedModCss: Mods = {
@@ -80,11 +80,7 @@ const WikiContentWithSideBar = (props: Props) => {
             <div className={classNames(cls.mainContent, combinedModCss)}>
                 {!isMobileSize && (
                     <div className={classNames(cls.navbarSide, combinedModCss)}>
-                        <NavbarSide
-                            sections={sections}
-                            activeSection={activeSection}
-                            setActiveSection={setActiveSection}
-                        />
+                        <NavbarSide sections={sections} />
                     </div>
                 )}
                 <div

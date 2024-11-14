@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import cls from './NavbarSide.module.scss';
 
 interface Section {
@@ -9,8 +9,6 @@ interface Section {
 
 interface NavbarSideProps {
     sections: Section[];
-    activeSection: string;
-    setActiveSection: (id: string) => void;
 }
 
 /**
@@ -19,8 +17,6 @@ interface NavbarSideProps {
  *
  * @param  props - The component props.
  * @param {Section[]} props.sections - Array of section objects with `id` and `label`.
- * @param {string} props.activeSection - The currently active section id.
- * @param {function} props.setActiveSection - Function to update the active section.
  *
  * @example
  * const sections = [
@@ -36,7 +32,9 @@ interface NavbarSideProps {
  *   setActiveSection={setActiveSection}
  * />
  */
-const NavbarSide: React.FC<NavbarSideProps> = ({ sections, activeSection, setActiveSection }) => {
+const NavbarSide: React.FC<NavbarSideProps> = ({ sections }) => {
+    const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
+
     useEffect(() => {
         const handleScroll = () => {
             const sectionOffsets = sections.map((section) => {
