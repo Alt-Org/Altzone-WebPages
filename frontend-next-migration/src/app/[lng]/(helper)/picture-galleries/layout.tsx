@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { LayoutWithSidebars } from '@/shared/ui/Layouts';
-import { HeroNavMenu } from '@/features/HeroNavMenu';
-// import { HeroNavMenu } from '@/widgets/HeroNavMenu';
+import { HeroNavMenu } from '@/features/NavigateHeroes';
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
     return (
