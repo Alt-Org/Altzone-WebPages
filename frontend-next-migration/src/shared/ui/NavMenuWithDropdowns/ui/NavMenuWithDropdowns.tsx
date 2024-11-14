@@ -1,6 +1,7 @@
 import { DropDownElement, DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import { ReactNode } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface DropdownItem {
     title: string;
@@ -20,10 +21,10 @@ function isDropdownItem(item: DropdownItem | ReactNode): item is DropdownItem {
 }
 
 function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
-    const { dropdownItems, className, title, openByDefault = false } = props;
+    const { dropdownItems, className = '', title, openByDefault = false } = props;
 
     return (
-        <div className={className}>
+        <div className={classNames(cls.NavMenuWithDropdowns, {}, [className])}>
             <DropdownWrapper
                 openByDefault={openByDefault}
                 elements={dropdownItems.map((item, index) =>

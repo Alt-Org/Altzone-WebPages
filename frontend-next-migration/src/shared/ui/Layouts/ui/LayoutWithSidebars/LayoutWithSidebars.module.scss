@@ -27,6 +27,18 @@ $touchSize: 1023px;
     height: auto;
     min-width: unset;
     flex-basis: unset;
+
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px;
+
+    //> * {
+    //  width: 80%;
+    //  max-width: 500px;
+    //  //max-width: 80%;
+    //  //max-width: 600px;
+    //}
+
   }
 
   &.leftTopSidebar {

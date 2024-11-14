@@ -5,9 +5,9 @@
   min-height: 100vh;
   padding-bottom: 20px;
 
-  @media (max-width: 1200px) {
-    margin-top: 50px;
-  }
+  //@media (max-width: 1200px) {
+  //  margin-top: 50px;
+  //}
 
 }
 
@@ -16,7 +16,7 @@
   flex-grow: 1;
   border-radius: var(--border-radius-custom);
   // background-color: var(--transparent-bg-dark);
-  margin-top: 10%;
+  //margin-top: 10%;
 
   padding-bottom: 40px;
 
@@ -60,7 +60,7 @@
 
 @media (min-width: 768px) {
   .Container {
-    margin-top: 10vh;
+    //margin-top: 10vh;
 
     .InfoText {
       width: 75%;
