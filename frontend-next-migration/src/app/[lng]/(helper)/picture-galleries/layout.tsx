@@ -8,6 +8,9 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
             leftTopSidebar={{
                 component: <HeroNavMenu />,
             }}
+            // rightBottomSidebar={
+            // { component: <HeroNavMenu />,}
+            // }
         >
             {children}
         </LayoutWithSidebars>

@@ -17,7 +17,7 @@
   flex-direction: row;
   width: 90%;
   border: 2px solid var(--inverted-secondary-color);
-  border-radius: 10px;
+  border-radius: var(--border-radius-custom);
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
   margin-bottom: 10%;
