@@ -23,13 +23,18 @@ $touchSize: 1023px;
 
 .sidebar {
   position: sticky;
-  top: $navbar-height;
+  top: 0;
   height: calc(100vh - #{$navbar-height});
   flex-shrink: 0;
   min-width: 220px;
   flex-basis: 20%;
   overflow-y: auto;
   padding-left: 20px;
+
+  &.topIndent{
+    top: $navbar-height;
+  }
+
 
   @media (max-width: $touchSize) {
     padding-left: unset;
@@ -43,14 +48,6 @@ $touchSize: 1023px;
     margin: 0 auto;
     width: 80%;
     max-width: 600px;
-
-
-    //> * {
-    //  width: 80%;
-    //  max-width: 500px;
-    //  //max-width: 80%;
-    //  //max-width: 600px;
-    //}
 
   }
 

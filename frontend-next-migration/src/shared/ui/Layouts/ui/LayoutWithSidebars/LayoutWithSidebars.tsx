@@ -12,6 +12,7 @@ interface SidebarConfig {
 interface DesktopLeftSidebarLayoutPropsBase {
     children: ReactNode;
     className?: string;
+    topIndent?: boolean;
 }
 
 type RequireAtLeastOneSidebar<T> =
@@ -24,7 +25,13 @@ type RequireAtLeastOneSidebar<T> =
 type DesktopLeftSidebarLayoutProps = RequireAtLeastOneSidebar<DesktopLeftSidebarLayoutPropsBase>;
 
 const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
-    const { leftTopSidebar, rightBottomSidebar, children, className = '' } = props;
+    const {
+        leftTopSidebar,
+        rightBottomSidebar,
+        children,
+        className = '',
+        topIndent = true,
+    } = props;
 
     const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
     const bothSidebarsVisibleOnDesktop =
@@ -35,11 +42,13 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const leftTopSidebarMods = {
         [cls.hideOnMobile]: leftTopSidebar?.hideOnMobile,
         [cls.hideOnDesktop]: leftTopSidebar?.hideOnDesktop,
+        [cls.topIndent]: topIndent,
     };
 
     const rightBottomSidebarMods = {
         [cls.hideOnMobile]: rightBottomSidebar?.hideOnMobile,
         [cls.hideOnDesktop]: rightBottomSidebar?.hideOnDesktop,
+        [cls.topIndent]: topIndent,
     };
 
     return (
