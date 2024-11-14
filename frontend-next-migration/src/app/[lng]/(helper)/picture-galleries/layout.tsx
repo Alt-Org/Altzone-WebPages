@@ -1,3 +1,4 @@
+'use client';
 import { ReactNode } from 'react';
 import { LayoutWithSidebars } from '@/shared/ui/Layouts';
 // import { HeroNavMenu } from '@/features/NavigateHeroes';
@@ -8,7 +9,9 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
         <LayoutWithSidebars
             leftTopSidebar={{
                 component: <GalleryNavMenu />,
+                hideOnMobile: true,
             }}
+            // topIndent={getInitialFixedState()}
             // rightBottomSidebar={{ component: <HeroNavMenu /> }}
         >
             {children}

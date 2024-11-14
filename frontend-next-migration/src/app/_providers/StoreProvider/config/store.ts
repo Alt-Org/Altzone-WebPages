@@ -15,6 +15,7 @@ import { authUserReducer, authMiddleware } from '@/entities/Auth';
 import { envHelper } from '@/shared/const/envHelper';
 import { gameApi, strapiApi } from '@/shared/api';
 import { StateSchema } from './StateSchema';
+import { navBarReducer } from '@/widgets/Navbar/model/navbarSlice/navBarSlice';
 
 const createNoopStorage = () => {
     return {
@@ -39,6 +40,7 @@ const storage = typeof window !== 'undefined' ? createWebStorage('local') : crea
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducer = combineReducers({
         authUser: authUserReducer,
+        navbar: navBarReducer,
         [gameApi.reducerPath]: gameApi.reducer,
         [strapiApi.reducerPath]: strapiApi.reducer,
     });

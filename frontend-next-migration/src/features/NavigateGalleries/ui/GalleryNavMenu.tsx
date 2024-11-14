@@ -2,13 +2,13 @@
 import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
 import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 
-interface GalleryNavMenuProps {
-    className?: string;
-}
+// interface GalleryNavMenuProps {
+//     className?: string;
+// }
 
 const categories: string[] = ['All', 'Nature', 'City', 'People', 'Technology'];
 
-const GalleryNavMenu = (props: GalleryNavMenuProps) => {
+const GalleryNavMenu = () => {
     const dropdownItems = categories.map((category) => ({
         link: {
             isExternal: false,
