@@ -1,14 +1,9 @@
 'use client';
-import { HeroContainer, HeroManager, HeroWithGroup } from '@/entities/Hero';
-import { getRouteAllHeroesPage, getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
-import cls from './HeroPage.module.scss';
-import {
-    NavMenuWithDropdowns,
-    NavMenuWithDropdownsProps,
-    DropdownItem,
-} from '@/shared/ui/NavMenuWithDropdowns';
+import { HeroNavMenu } from '@/widgets/HeroNavMenu';
+import { HeroContainer, HeroWithGroup } from '@/entities/Hero';
+import { getRouteAllHeroesPage } from '@/shared/appLinks/RoutePaths';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { useClientTranslation } from '@/shared/i18n';
+import cls from './HeroPage.module.scss';
 
 interface Props {
     newSelectedHero: HeroWithGroup;
@@ -22,34 +17,11 @@ const HeroPage = (props: Props) => {
     const { isMobileSize } = useSizes();
 
     const navbarOnMobile = isMobileSize;
-    const { t } = useClientTranslation('heroes');
-    const heroManager = new HeroManager(t);
-
-    const allHeroGroups = heroManager.getGroupsWithHeroesAsArray();
-    const dropdownItems: DropdownItem[] = allHeroGroups.map((group) => ({
-        title: group.name,
-        openByDefault: false,
-        elements: group.heroes.map((hero) => ({
-            elementText: hero.title,
-            id: hero.id.toString(),
-            link: { path: getRouteOneHeroPage(hero.slug), isExternal: false },
-        })),
-    }));
-
-    const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
-        title: t('section-title'),
-        openByDefault: false,
-        dropdownItems: dropdownItems,
-    };
 
     return (
         <main className={cls.main}>
-            {navbarOnMobile && (
-                <NavMenuWithDropdowns
-                    className={cls.dropDown}
-                    {...navMenuWithDropdownsProps}
-                />
-            )}
+            {navbarOnMobile && <HeroNavMenu className={cls.dropDown} />}
+
             <HeroContainer
                 groupLabel={newSelectedHero.groupLabel}
                 groupName={newSelectedHero.groupName}
