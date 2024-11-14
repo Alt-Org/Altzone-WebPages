@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 import { LayoutWithSidebars } from '@/shared/ui/Layouts';
-import { HeroNavMenu } from '@/features/NavigateHeroes';
+// import { HeroNavMenu } from '@/features/NavigateHeroes';
+import { GalleryNavMenu } from '@/features/NavigateGalleries';
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
-                component: <HeroNavMenu />,
+                component: <GalleryNavMenu />,
             }}
             // rightBottomSidebar={{ component: <HeroNavMenu /> }}
         >
