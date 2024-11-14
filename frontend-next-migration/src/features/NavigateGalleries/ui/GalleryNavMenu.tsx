@@ -6,7 +6,7 @@ interface GalleryNavMenuProps {
     className?: string;
 }
 
-const categories: string[] = ['Nature', 'City', 'People', 'Technology'];
+const categories: string[] = ['All', 'Nature', 'City', 'People', 'Technology'];
 
 const GalleryNavMenu = (props: GalleryNavMenuProps) => {
     const dropdownItems = categories.map((category) => ({
@@ -23,12 +23,7 @@ const GalleryNavMenu = (props: GalleryNavMenuProps) => {
         dropdownItems: dropdownItems,
     };
 
-    return (
-        <NavMenuWithDropdowns
-            // className={className}
-            {...navMenuWithDropdownsProps}
-        />
-    );
+    return <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />;
 };
 
 export default GalleryNavMenu;
