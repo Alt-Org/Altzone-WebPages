@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { LayoutWithSidebars } from '@/shared/ui/Layouts';
-import { HeroNavMenu } from '@/widgets/HeroNavMenu';
+import { HeroNavMenu } from '@/features/HeroNavMenu';
+// import { HeroNavMenu } from '@/widgets/HeroNavMenu';
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
     return (
@@ -8,7 +9,7 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
             leftTopSidebar={{
                 component: <HeroNavMenu />,
             }}
-            rightBottomSidebar={{ component: <HeroNavMenu /> }}
+            // rightBottomSidebar={{ component: <HeroNavMenu /> }}
         >
             {children}
         </LayoutWithSidebars>

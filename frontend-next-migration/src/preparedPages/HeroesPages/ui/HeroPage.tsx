@@ -1,5 +1,5 @@
 'use client';
-import { HeroNavMenu } from '@/widgets/HeroNavMenu';
+import { HeroNavMenu } from '@/features/HeroNavMenu';
 import { HeroContainer, HeroWithGroup } from '@/entities/Hero';
 import { getRouteAllHeroesPage } from '@/shared/appLinks/RoutePaths';
 import useSizes from '@/shared/lib/hooks/useSizes';
