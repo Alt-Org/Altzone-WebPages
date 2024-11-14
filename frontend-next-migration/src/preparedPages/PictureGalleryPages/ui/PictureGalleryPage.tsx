@@ -1,6 +1,9 @@
+'use client';
 import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
+import useSizes from '@/shared/lib/hooks/useSizes';
+import { GalleryNavMenu } from '@/features/NavigateGalleries';
 
 export interface Props {
     title: string;
@@ -12,12 +15,17 @@ export interface Props {
 
 const PictureGalleryPage = (props: Props) => {
     const { title, infoText, socialMediaLinks } = props;
+    const { isMobileSize, isTabletSize } = useSizes();
+
+    const isTouchDevice = isTabletSize || isMobileSize;
 
     return (
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
                 <h1>{title}</h1>
                 <p className={cls.InfoText}>{infoText}</p>
+
+                {isTouchDevice && <GalleryNavMenu />}
 
                 <SectionGalleryV2
                     version={'full'}

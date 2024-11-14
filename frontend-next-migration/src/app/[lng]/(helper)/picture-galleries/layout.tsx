@@ -6,7 +6,7 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
-                component: <GalleryNavMenu />,
+                component: <GalleryNavMenu openByDefault={true} />,
                 hideOnMobile: true,
             }}
         >
