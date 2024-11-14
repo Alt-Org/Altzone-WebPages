@@ -1,17 +1,17 @@
 import { ReactNode } from 'react';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import { GalleryNavMenu } from '@/features/NavigateGalleries';
+import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
-                component: <GalleryNavMenu openByDefault={true} />,
+                component: <GalleryNavMenuAsDropdown openByDefault={true} />,
                 hideOnMobile: true,
             }}
             // rightBottomSidebar={
             // {
-            //     component: <GalleryNavMenu openByDefault={true} />,
+            //     component: <GalleryNavMenuAsDropdown openByDefault={true} />,
             //     hideOnMobile: true,
             // }
             // }

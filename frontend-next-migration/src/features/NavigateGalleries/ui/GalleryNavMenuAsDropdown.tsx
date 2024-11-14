@@ -9,7 +9,7 @@ interface GalleryNavMenuProps {
 
 const categories: string[] = ['All', 'Nature', 'City', 'People', 'Technology'];
 
-const GalleryNavMenu = (props: GalleryNavMenuProps) => {
+const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     const { openByDefault = false } = props;
 
     const dropdownItems = categories.map((category) => ({
@@ -29,4 +29,4 @@ const GalleryNavMenu = (props: GalleryNavMenuProps) => {
     return <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />;
 };
 
-export default GalleryNavMenu;
+export default GalleryNavMenuAsDropdown;

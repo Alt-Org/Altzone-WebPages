@@ -1,1 +1,1 @@
-export { default as HeroNavMenu } from './ui/HeroNavMenu';
+export { default as HeroNavMenuAsDropdown } from './ui/HeroNavMenuAsDropdown';

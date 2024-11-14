@@ -1,1 +1,1 @@
-export { default as GalleryNavMenu } from './ui/GalleryNavMenu';
+export { default as GalleryNavMenuAsDropdown } from './ui/GalleryNavMenuAsDropdown';

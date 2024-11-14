@@ -1,5 +1,5 @@
 'use client';
-import { HeroNavMenu } from '@/features/NavigateHeroes';
+import { HeroNavMenuAsDropdown } from '@/features/NavigateHeroes';
 import { HeroContainer, HeroWithGroup } from '@/entities/Hero';
 import { getRouteAllHeroesPage } from '@/shared/appLinks/RoutePaths';
 import useSizes from '@/shared/lib/hooks/useSizes';
@@ -20,7 +20,7 @@ const HeroPage = (props: Props) => {
 
     return (
         <main className={cls.main}>
-            {navbarOnMobile && <HeroNavMenu className={cls.dropDown} />}
+            {navbarOnMobile && <HeroNavMenuAsDropdown className={cls.dropDown} />}
 
             <HeroContainer
                 groupLabel={newSelectedHero.groupLabel}

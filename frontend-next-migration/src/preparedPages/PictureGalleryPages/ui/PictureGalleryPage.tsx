@@ -3,7 +3,7 @@ import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { GalleryNavMenu } from '@/features/NavigateGalleries';
+import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
 
 export interface Props {
     title: string;
@@ -25,7 +25,7 @@ const PictureGalleryPage = (props: Props) => {
                 <h1>{title}</h1>
                 <p className={cls.InfoText}>{infoText}</p>
 
-                {isTouchDevice && <GalleryNavMenu />}
+                {isTouchDevice && <GalleryNavMenuAsDropdown />}
 
                 <SectionGalleryV2
                     version={'full'}

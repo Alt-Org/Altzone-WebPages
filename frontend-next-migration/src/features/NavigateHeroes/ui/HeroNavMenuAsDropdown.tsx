@@ -13,7 +13,7 @@ interface HeroNavMenuProps {
     className?: string;
 }
 
-const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
+const HeroNavMenuAsDropdown: React.FC<HeroNavMenuProps> = ({ className }) => {
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
 
@@ -43,4 +43,4 @@ const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
     );
 };
 
-export default HeroNavMenu;
+export default HeroNavMenuAsDropdown;
