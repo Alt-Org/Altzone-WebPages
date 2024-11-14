@@ -22,8 +22,12 @@
     text-align: center;
 }
 
+.Back {
+    text-align: left;
+    margin-left: 8px;
+}
 .Cover {
-    margin: 8px;
+    padding: 8px;
     width: 100%;
 
     img {
@@ -36,8 +40,11 @@
 .CardsContainer {
     display: grid;
     padding: 8px;
-    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
 
+    @media (max-width: 1190px) {
+        grid-template-columns: 33.333% 33.333%;
+    }
     @media (max-width: 1000px) {
         grid-template-columns: 50% 50%;
     }

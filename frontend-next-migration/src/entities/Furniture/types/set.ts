@@ -39,7 +39,6 @@ export interface Piece {
     weight: number;
     cost: number;
     rarity: PieceRarity;
-    serial: string;
     type: PieceType;
     num: string;
 }

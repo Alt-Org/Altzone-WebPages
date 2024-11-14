@@ -1,0 +1,18 @@
+.Background {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000088;
+    display: none;
+}
+
+.Container {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    translate: -50% -50%;
+    width: min(400px, 100vw);
+}

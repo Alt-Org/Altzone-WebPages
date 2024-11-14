@@ -1,4 +1,9 @@
 {
     "NEUROSET.name": "Neuro",
-    "NEUROSET.PIECES.CLOCK.name": "Neuro kello"
+    "NEUROSET.PIECES.CLOCK.name": "Neuro kello",
+    "NEUROSET.PIECES.CHAIR.name": "Neuro tuoli",
+    "NEUROSET.PIECES.STOOL.name": "Neuro jakkara",
+    "NEUROSET.PIECES.DRAWER.name": "Neuro lipasto",
+
+    "price": "Hinta"
 }

@@ -57,7 +57,6 @@ export const initializeFurnitureSets = (
                 {
                     name: t('NEUROSET.PIECES.CLOCK.name'),
                     description: t('NEUROSET.PIECES.CLOCK.desc'),
-                    serial: t('NEUROSET.PIECES.CLOCK.serial'),
                     num: 'F30',
                     type: types.WALL,
                     weight: 1,
@@ -67,7 +66,6 @@ export const initializeFurnitureSets = (
                 {
                     name: t('NEUROSET.PIECES.CHAIR.name'),
                     description: t('NEUROSET.PIECES.CHAIR.desc'),
-                    serial: t('NEUROSET.PIECES.CHAIR.serial'),
                     num: 'R44.1',
                     type: types.CHAIRS,
                     weight: 10,
@@ -77,7 +75,6 @@ export const initializeFurnitureSets = (
                 {
                     name: t('NEUROSET.PIECES.STOOL.name'),
                     description: t('NEUROSET.PIECES.STOOL.desc'),
-                    serial: t('NEUROSET.PIECES.STOOL.serial'),
                     num: 'R41',
                     type: types.CHAIRS,
                     weight: 4,
@@ -87,7 +84,6 @@ export const initializeFurnitureSets = (
                 {
                     name: t('NEUROSET.PIECES.DRAWER.name'),
                     description: t('NEUROSET.PIECES.DRAWER.desc'),
-                    serial: t('NEUROSET.PIECES.DRAWER.serial'),
                     num: 'F41.1',
                     type: types.CABINETS,
                     weight: 24,

@@ -2,6 +2,7 @@
 import { TFunction } from 'i18next';
 import { Piece } from '../../types/set';
 import cls from './PieceContainer.module.scss';
+import { createRef, LegacyRef } from 'react';
 
 type Props = {
     item: any;
@@ -11,27 +12,46 @@ type Props = {
 export const PieceCard = (props: Props) => {
     const { name, num, description, cost, weight, rarity, set } = props.item;
 
+    const ref: LegacyRef<HTMLDivElement> = createRef();
+    const click = () => {
+        const div: HTMLDivElement | null = ref.current;
+        if (!div) {
+            return;
+        }
+
+        div.style.display = 'block';
+    };
+
     const { t } = props;
     return (
-        <div
-            className={cls.Card}
-            style={{ backgroundColor: rarity.color }}
-        >
-            <p className={cls.info} />
-            <div className={cls.Fade} />
+        <div>
             <div
-                className={cls.Banner}
-                style={{ color: rarity.color }}
+                className={cls.Card}
+                style={{ backgroundColor: rarity.color }}
             >
-                {t(rarity.name)}
+                <button
+                    className={cls.Container}
+                    onClick={click}
+                >
+                    <p className={cls.info} />
+                    <div className={cls.Fade} />
+                    <div
+                        className={cls.Banner}
+                        style={{ color: rarity.color }}
+                    >
+                        {t(rarity.name)}
+                    </div>
+                    <ul className={cls.Stats}>
+                        <li>{name}</li>
+                        <li>
+                            {set.name} {num}
+                        </li>
+                        <li>
+                            {t('price')}: {cost}
+                        </li>
+                    </ul>
+                </button>
             </div>
-            <ul className={cls.Stats}>
-                <li>{name}</li>
-                <li>
-                    {set.name} {num}
-                </li>
-                <li>Hinta: {cost}</li>
-            </ul>
         </div>
     );
 };

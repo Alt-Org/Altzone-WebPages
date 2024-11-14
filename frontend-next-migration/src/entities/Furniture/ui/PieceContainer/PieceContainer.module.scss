@@ -36,5 +36,15 @@
 
 .Card:hover {
     margin: 0px;
-    
+}
+
+.Container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #00000000;
+    border: none;
+}
+.Container:hover {
+    cursor: pointer;
 }

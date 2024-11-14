@@ -3,6 +3,8 @@ import { initializeFurnitureSets } from './initializeFurniture';
 
 const enums: Record<string, FurnitureSet> = {
     neuro: FurnitureSet.NEURO,
+    taakka: FurnitureSet.TAAKKA,
+    rakkaus: FurnitureSet.RAKKAUS,
 };
 
 export class FurnitureManager {

@@ -6,6 +6,8 @@ import cls from './FurnitureSetPage.module.scss';
 import { Container } from '@/shared/ui/Container';
 import Image from 'next/image';
 import { Piece } from '@/entities/Furniture/types/set';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 
 type Props = {
     params: { id: string };
@@ -30,6 +32,9 @@ const OneSetPage = (props: Props) => {
                         src={cover}
                         alt={'cover'}
                     />
+                </div>
+                <div className={cls.Back}>
+                    <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- Takaisin</AppLink>
                 </div>
                 <h1>{t(name)}</h1>
                 <h3>{author}</h3>
