@@ -6,6 +6,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import NavbarSide from '@/shared/ui/NavbarSide/ui/NavbarSide';
 import cls from './WikiContentWithSideBar.module.scss';
+import { TableOfContents } from '@/shared/ui/TableOfContents';
 
 /**
  * Represents a section in the sidebar.
@@ -80,7 +81,7 @@ const WikiContentWithSideBar = (props: Props) => {
             <div className={classNames(cls.mainContent, combinedModCss)}>
                 {!isMobileSize && (
                     <div className={classNames(cls.navbarSide, combinedModCss)}>
-                        <NavbarSide sections={sections} />
+                        <TableOfContents sections={sections} />
                     </div>
                 )}
                 <div
