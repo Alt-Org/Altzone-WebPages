@@ -1,31 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react';
-import NavbarSide from './NavbarSide';
+import TableOfContents from './TableOfContents';
 import { useState } from 'react';
 
 const meta = {
-    title: 'shared/ui/NavbarSide',
-    component: NavbarSide,
+    title: 'shared/ui/TableOfContents',
+    component: TableOfContents,
     argTypes: {
         sections: {
             control: 'array',
             description: 'Array of section objects with `id` and `label`.',
             defaultValue: [],
         },
-        activeSection: {
-            control: 'text',
-            description: 'The currently active section id.',
-            defaultValue: '',
-        },
-        setActiveSection: {
-            control: 'function',
-            description: 'Function to update the active section.',
-            defaultValue: () => {},
-        },
     },
     args: {
         sections: [],
-        activeSection: '',
-        setActiveSection: () => {},
     },
     tags: ['autodocs'],
     parameters: {
@@ -44,7 +32,7 @@ const meta = {
             },
         },
     },
-} satisfies Meta<typeof NavbarSide>;
+} satisfies Meta<typeof TableOfContents>;
 export default meta;
 
 type Story = StoryObj<typeof meta>;
@@ -55,7 +43,7 @@ const Template = (args: any) => {
     return (
         <>
             <div style={{ display: 'flex', height: '50vh' }}>
-                <NavbarSide
+                <TableOfContents
                     {...args}
                     activeSection={activeSection}
                     setActiveSection={setActiveSection}
@@ -101,6 +89,5 @@ export const Example: Story = {
             { id: 'section3', label: 'Section 3' },
             { id: 'section4', label: 'Section 4' },
         ],
-        activeSection: 'section1',
     },
 };

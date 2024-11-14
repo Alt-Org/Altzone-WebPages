@@ -1,18 +1,18 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import cls from './NavbarSide.module.scss';
+import cls from './TableOfContents.module.scss';
 
 interface Section {
     id: string;
     label: string;
 }
 
-interface NavbarSideProps {
+interface TableOfContentsProps {
     sections: Section[];
 }
 
 /**
- * NavbarSide component that displays a navigation sidebar with clickable section labels.
+ * TableOfContents component that displays a navigation sidebar with clickable section labels.
  * Automatically highlights the active section based on scroll position.
  *
  * @param  props - The component props.
@@ -26,13 +26,13 @@ interface NavbarSideProps {
  * ];
  * const [activeSection, setActiveSection] = useState('section1');
  *
- * <NavbarSide
+ * <TableOfContents
  *   sections={sections}
  *   activeSection={activeSection}
  *   setActiveSection={setActiveSection}
  * />
  */
-const NavbarSide: React.FC<NavbarSideProps> = ({ sections }) => {
+const TableOfContents: React.FC<TableOfContentsProps> = ({ sections }) => {
     const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
 
     useEffect(() => {
@@ -109,4 +109,4 @@ const NavbarSide: React.FC<NavbarSideProps> = ({ sections }) => {
     );
 };
 
-export default NavbarSide;
+export default TableOfContents;

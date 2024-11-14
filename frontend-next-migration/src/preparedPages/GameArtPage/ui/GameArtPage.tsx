@@ -4,8 +4,8 @@ import { ScrollTop } from '@/features/ScrollTop';
 import { HorizontalLines } from '@/shared/ui/HorizontalLines';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
-import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
 import cls from './GameArtPage.module.scss';
+import { TableOfContents } from '@/shared/ui/TableOfContents';
 
 interface Section {
     id: string;
@@ -35,7 +35,7 @@ const GameArtPackagePage = (props: Props) => {
     return (
         <div className={classNames(cls.pageContainer, combinedModCss)}>
             {/*//todo mow to layout*/}
-            <WikiContentWithSidebar sections={sections} />
+            <TableOfContents sections={sections} />
             <div>
                 <FeedbackSideButton />
                 <HorizontalLines />
