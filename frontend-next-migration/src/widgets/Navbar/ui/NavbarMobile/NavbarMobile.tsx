@@ -8,24 +8,22 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
-import { useCollapsed } from '../../model/CollapsedProvider';
 import { defineNs } from '../../model/defineNs';
-import { useFixed } from '../../model/FixedProvider';
 import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
-import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+// import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
-/**
- * Properties for NavbarTouchComponent component
- *
- * @property {number} marginTop Margin at the top
- * @property {(isMenuOpen: boolean) => void} onBurgerButtonClick The function is informed in the button event whether the sidebar is open.
- * @property {string} className Additional CSS classes
- * @property {string} side On which side does the sidebar appear?
- * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
- * @property {NavBarType} navNarType Navbar type
- */
+// /**
+//  * Properties for NavbarTouchComponent component
+//  *
+//  * @property {number} marginTop Margin at the top
+//  * @property {(isMenuOpen: boolean) => void} onBurgerButtonClick The function is informed in the button event whether the sidebar is open.
+//  * @property {string} className Additional CSS classes
+//  * @property {string} side On which side does the sidebar appear?
+//  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
+//  * @property {NavBarType} navNarType Navbar type
+//  */
 interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
@@ -33,24 +31,22 @@ interface NavbarTouchProps {
     side?: 'left' | 'right';
     className?: string;
     navBarType?: NavBarType;
+    isFixed: boolean;
+    isCollapsed: boolean;
+    toggleCollapsed: () => void;
+    toggleFixed: () => void;
 }
 
-/**
- * NavbarTouchComponent includes a button that opens a menu-style sidebar for navigation.
- * The Sidebar also includes language switcher and login/logout functionality.
- * NavbarTouchComponent contains an Alt logo that links to the homepage. On the right side of
- * NavbarTouchComponent, there are buttons for the fixed and collapse functionalities.
- *
- * This component must be used as a child of `FixedProvider` and `CollapsedProvider`.
- *
- * - When in `Fixed` mode, the navbar remains visible as the page scrolls.
- * - In `collapse` mode, the navbar is hidden.
- *
- * @param {NavbarTouchProps} props Properties for NavbarTouchComponent component
- * @returns NavbarTouchComponent
- */
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, side = 'left', className = '', navBarType = 'Default' } = props;
+    const {
+        marginTop,
+        navbarBuild,
+        side = 'left',
+        className = '',
+        navBarType = 'Default',
+        toggleFixed,
+        isFixed,
+    } = props;
 
     const ns = defineNs(navBarType);
     const { t } = useClientTranslation(ns);
@@ -64,8 +60,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { isFixed, toggleFixed } = useFixed();
-    const { isCollapsed, toggleCollapsed } = useCollapsed();
+    // const { isFixed, toggleFixed } = useFixed();
+    // const { isCollapsed, toggleCollapsed } = useCollapsed();
     const hasScrollbar = useIsPageScrollbar();
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -145,12 +141,12 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         // [cls.collapsed]: isCollapsed,
     };
 
-    const handleCollapseClick = () => {
-        if (!isAnimating) {
-            setIsAnimating(true);
-            toggleCollapsed();
-        }
-    };
+    // const handleCollapseClick = () => {
+    //     if (!isAnimating) {
+    //         setIsAnimating(true);
+    //         toggleCollapsed();
+    //     }
+    // };
 
     const handleTransitionEnd = () => {
         setIsAnimating(false);

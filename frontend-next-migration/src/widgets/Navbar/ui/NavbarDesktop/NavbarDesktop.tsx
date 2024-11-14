@@ -6,14 +6,18 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
-import { useCollapsed } from '../../model/CollapsedProvider';
 import { defineNs } from '../../model/defineNs';
-import { useFixed } from '../../model/FixedProvider';
 import { NavbarBuild, NavBarType } from '../../model/types';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    navBarActions,
+    selectIsCollapsed,
+    selectIsFixed,
+} from '../../model/navbarSlice/navBarSlice';
 
 /**
  * Properties for NavnarDesctop component
@@ -24,34 +28,28 @@ import NavItem from './NavItem';
  * @property {boolean} isFixed This is deprecated. Fixed type is get from context
  * @property {NavBarType} navNarType Navbar type
  */
-type NavbarProps = {
+interface NavbarProps {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild;
-    isFixed?: boolean;
+    isFixed: boolean;
+    isCollapsed: boolean;
+    toggleCollapsed: () => void;
+    toggleFixed: () => void;
     navBarType?: NavBarType;
-};
+}
 
-/**
- * NavbarDesktop component provides the main navigation for a website,
- * organized into dropdown menus and separate links. Links and dropdowns are
- * NavItem components. The NavbarDesktop component manages login and authentication functionalities.
- * The NavbarDesktop component includes functionality to switch languages.
- * On the left side of the navigation bar is the Alt logo that links to the home page.
- *
- * This component must be used as a child of `FixedProvider` and `CollapsedProvider`.
- *
- * - When in `Fixed` mode, the navbar remains visible as the page scrolls.
- * - In `collapse` mode, the navbar is hidden.
- *
- * @param {NavbarProps} props Properties for NavnarDesctop component
- * @returns Memorized navbar component
- */
 const NavbarDesktop = memo((props: NavbarProps) => {
-    const { navbarBuild, marginTop, className = '', navBarType = 'Default' } = props;
-
-    const { isFixed, toggleFixed } = useFixed();
-    const { isCollapsed, toggleCollapsed } = useCollapsed();
+    const {
+        navbarBuild,
+        marginTop,
+        className = '',
+        navBarType = 'Default',
+        toggleCollapsed,
+        toggleFixed,
+        isCollapsed,
+        isFixed,
+    } = props;
 
     const hasScrollbar = useIsPageScrollbar();
 
@@ -80,8 +78,14 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const handleCollapseClick = () => {
         if (!isAnimating) {
             setIsAnimating(true);
-            toggleCollapsed();
+            toggleCollapsed?.();
+            // dispatch(navBarActions.toggleCollapsed());
         }
+    };
+
+    const handleToggleFixed = () => {
+        // dispatch(navBarActions.toggleFixed());
+        toggleFixed?.();
     };
 
     const handleTransitionEnd = () => {
@@ -144,7 +148,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             )}
                         >
                             <ToggleFixButton
-                                onClick={toggleFixed}
+                                onClick={handleToggleFixed}
                                 isFixed={isFixed}
                                 className={cls.FixButton}
                             />
