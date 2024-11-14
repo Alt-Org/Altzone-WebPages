@@ -9,6 +9,12 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
                 component: <GalleryNavMenu openByDefault={true} />,
                 hideOnMobile: true,
             }}
+            // rightBottomSidebar={
+            // {
+            //     component: <GalleryNavMenu openByDefault={true} />,
+            //     hideOnMobile: true,
+            // }
+            // }
         >
             {children}
         </LayoutWithSidebars>
