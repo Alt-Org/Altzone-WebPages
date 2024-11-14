@@ -22,9 +22,8 @@ $touchSize: 1023px;
 }
 
 .sidebar {
-  z-index: 1000;
   position: sticky;
-  top: 0;
+  top: $navbar-height;
   height: calc(100vh - #{$navbar-height});
   flex-shrink: 0;
   min-width: 220px;
@@ -32,9 +31,9 @@ $touchSize: 1023px;
   overflow-y: auto;
   padding-left: 20px;
 
-  &.topIndent{
-    top: $navbar-height;
-  }
+  //&.topIndent{
+  //  top: $navbar-height;
+  //}
 
 
   @media (max-width: $touchSize) {

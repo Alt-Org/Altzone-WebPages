@@ -1,7 +1,10 @@
+'use client';
 import { ReactNode } from 'react';
 import cls from './LayoutWithSidebars.module.scss';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { useSelector } from 'react-redux';
+import { selectIsCollapsed, selectIsFixed } from '@/widgets/Navbar';
 
 interface SidebarConfig {
     component: ReactNode;
@@ -12,7 +15,6 @@ interface SidebarConfig {
 interface DesktopLeftSidebarLayoutPropsBase {
     children: ReactNode;
     className?: string;
-    topIndent?: boolean;
 }
 
 type RequireAtLeastOneSidebar<T> =
@@ -25,13 +27,11 @@ type RequireAtLeastOneSidebar<T> =
 type DesktopLeftSidebarLayoutProps = RequireAtLeastOneSidebar<DesktopLeftSidebarLayoutPropsBase>;
 
 const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
-    const {
-        leftTopSidebar,
-        rightBottomSidebar,
-        children,
-        className = '',
-        topIndent = true,
-    } = props;
+    const { leftTopSidebar, rightBottomSidebar, children, className = '' } = props;
+
+    const isFixed = useSelector(selectIsFixed);
+    const isCollapsed = useSelector(selectIsCollapsed);
+    const isTopIndentCustom = isFixed && !isCollapsed;
 
     const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
     const bothSidebarsVisibleOnDesktop =
@@ -42,13 +42,13 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const leftTopSidebarMods = {
         [cls.hideOnMobile]: leftTopSidebar?.hideOnMobile,
         [cls.hideOnDesktop]: leftTopSidebar?.hideOnDesktop,
-        [cls.topIndent]: topIndent,
+        // [cls.topIndent]: topIndent,
     };
 
     const rightBottomSidebarMods = {
         [cls.hideOnMobile]: rightBottomSidebar?.hideOnMobile,
         [cls.hideOnDesktop]: rightBottomSidebar?.hideOnDesktop,
-        [cls.topIndent]: topIndent,
+        // [cls.topIndent]: topIndent,
     };
 
     return (
@@ -58,6 +58,7 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
         >
             {leftTopSidebar && (
                 <aside
+                    style={{ top: !isTopIndentCustom ? '50px' : undefined }}
                     className={classNames(cls.sidebar, leftTopSidebarMods, [cls.leftTopSidebar])}
                 >
                     {leftTopSidebar.component}
@@ -73,6 +74,7 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
 
             {rightBottomSidebar && (
                 <aside
+                    style={{ top: !isTopIndentCustom ? '50px' : undefined }}
                     className={classNames(cls.sidebar, rightBottomSidebarMods, [
                         cls.rightBottomSidebar,
                     ])}
