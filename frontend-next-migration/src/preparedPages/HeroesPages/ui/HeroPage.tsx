@@ -34,9 +34,6 @@ const HeroPage = (props: Props) => {
                 rightArrowLink={nextHeroLink}
                 xLink={getRouteAllHeroesPage()}
             />
-
-            {/*<br/>*/}
-            {/*<br/>*/}
         </main>
     );
 };
