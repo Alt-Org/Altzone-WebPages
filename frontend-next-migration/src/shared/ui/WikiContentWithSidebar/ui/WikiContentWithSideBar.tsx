@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { ScrollTop } from '@/features/ScrollTop';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import NavbarSide from '@/shared/ui/NavbarSide/ui/NavbarSide';
 import cls from './WikiContentWithSideBar.module.scss';
 import { TableOfContents } from '@/shared/ui/TableOfContents';
 
