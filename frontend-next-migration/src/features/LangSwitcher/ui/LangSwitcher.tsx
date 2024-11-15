@@ -19,7 +19,6 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    // const { t, i18n: { changeLanguage, language: currentLocale } } = useClientTranslation();
     const {
         t,
         i18n: { language },
@@ -33,22 +32,13 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
 
     const handleChangeLanguage = (newLanguage: AppLanguage) => {
         window.location.href = currentPathname.replace(`/${language}`, `/${newLanguage}`);
-
-        // router.push(currentPathname.replace(`/${language}`, `/${newLanguage}`));
-
-        // setTimeout(()=>{
-        //     window.location.reload();
-        // },400)
     };
 
-    // router.refresh();
-    // window.location.reload();\
-
-    // window.reload();
     const handleOptionClick = (option: Option) => {
         const selectedLanguage = option.value as AppLanguage;
         handleChangeLanguage(selectedLanguage);
         setIsOpen(false);
+        setSelected(option.label);
     };
 
     const toggleDropdown = () => setIsOpen(!isOpen);
@@ -72,6 +62,11 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         }
     };
 
+    // Get the label of the current language
+    const [selected, setSelected] = useState<string>(
+        options.find((option) => option.value === language)?.label || '',
+    );
+
     // Close the menu if clicking outside of it
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -87,6 +82,7 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
 
     return (
         <div
+            data-testid="language-switcher"
             ref={dropdownRef}
             className={classNames('', {}, [className])}
         >
@@ -96,7 +92,7 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
                 aria-expanded={isOpen}
             >
                 {/*Add more languages here*/}
-                {language === 'fi' ? t('finnish') : language === 'en' && t('english')}
+                {selected}
                 <FontAwesomeIcon icon={faChevronDown} />
             </button>
             {isOpen && (
