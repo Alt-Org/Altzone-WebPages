@@ -6,11 +6,13 @@ import { createRef, LegacyRef } from 'react';
 
 type Props = {
     item: any;
+    setpath: string;
     t: TFunction<string, undefined>;
 };
 
 export const PieceCard = (props: Props) => {
-    const { name, num, description, cost, weight, rarity, set } = props.item;
+    const { path, num, description, cost, weight, rarity, set } = props.item;
+    const { setpath } = props;
 
     const ref: LegacyRef<HTMLDivElement> = createRef();
     const click = () => {
@@ -42,9 +44,9 @@ export const PieceCard = (props: Props) => {
                         {t(rarity.name)}
                     </div>
                     <ul className={cls.Stats}>
-                        <li>{name}</li>
+                        <li>{t(`${setpath}.ITEMS.${path}.name`)}</li>
                         <li>
-                            {set.name} {num}
+                            {t(`${setpath}.name`)} {num}
                         </li>
                         <li>
                             {t('price')}: {cost}

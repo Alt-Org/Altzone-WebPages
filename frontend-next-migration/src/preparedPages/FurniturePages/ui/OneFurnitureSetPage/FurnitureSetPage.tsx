@@ -16,13 +16,13 @@ type Props = {
 const OneSetPage = (props: Props) => {
     const { id } = props.params;
 
-    const { t } = useClientTranslation('furnitureset');
+    const { t } = useClientTranslation('furnitureinfo');
 
-    const manager = new FurnitureManager(t);
+    const manager = new FurnitureManager();
 
     const set = manager.getFurnitureSet(id);
 
-    const { name, cover, author, items } = set;
+    const { path, cover, author, items } = set;
 
     return (
         <div className={classNames(cls.SetPage)}>
@@ -36,15 +36,16 @@ const OneSetPage = (props: Props) => {
                 <div className={cls.Back}>
                     <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- Takaisin</AppLink>
                 </div>
-                <h1>{t(name)}</h1>
+                <h1>{t(`${path}.name`)}</h1>
                 <h3>{author}</h3>
                 <div className={cls.CardsContainer}>
                     {items.map((item: Piece) => {
                         return (
                             <PieceCard
                                 item={item}
+                                setpath={path}
                                 t={t}
-                                key={item.name}
+                                key={item.path}
                             />
                         );
                     })}

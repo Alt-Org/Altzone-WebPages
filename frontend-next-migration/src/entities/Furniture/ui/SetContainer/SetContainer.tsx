@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const SetCard = (props: Props) => {
-    const { id, name, author, cover, coverposition, items } = props.set;
+    const { id, author, cover, coverposition, items } = props.set;
 
     return (
         <div className={cls.Card}>

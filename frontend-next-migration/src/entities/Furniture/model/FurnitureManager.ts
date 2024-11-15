@@ -5,15 +5,14 @@ const enums: Record<string, FurnitureSet> = {
     neuro: FurnitureSet.NEURO,
     taakka: FurnitureSet.TAAKKA,
     rakkaus: FurnitureSet.RAKKAUS,
+    scrodinger: FurnitureSet.SCRODINGER,
 };
 
 export class FurnitureManager {
-    private readonly t: (key: string) => string;
     private readonly furnitureSets: Record<FurnitureSet, SetInfo>;
 
-    constructor(t: (key: string) => string) {
-        this.t = t;
-        this.furnitureSets = initializeFurnitureSets(t);
+    constructor() {
+        this.furnitureSets = initializeFurnitureSets();
     }
 
     public getAllFurnitureSets() {

@@ -4,6 +4,7 @@ export enum FurnitureSet {
     TAAKKA = 'TAAKKA',
     NEURO = 'NEURO',
     RAKKAUS = 'RAKKAUS',
+    SCRODINGER = 'SCRODINGER',
 }
 
 export enum Rarities {
@@ -11,7 +12,13 @@ export enum Rarities {
     RARE = 'RARE',
     EPIC = 'EPIC',
     ANTIQUE = 'ANTIQUE',
+    NONE = 'NONE',
 }
+export interface PieceRarity {
+    name: string;
+    color: string;
+}
+
 export enum Types {
     COUCHES = 'COUCHES',
     CHAIRS = 'CHAIRS',
@@ -24,27 +31,53 @@ export enum Types {
     TOILETS = 'TOILETS',
     SINKS = 'SINKS',
     CABINETS = 'CABINETS',
-}
-
-export interface PieceRarity {
-    name: string;
-    color: string;
+    BEDS = 'BEDS',
 }
 export interface PieceType {}
 
+export enum Materials {
+    WOOD = 'WOOD',
+    POLYESTER = 'POLYESTER',
+    ALUMINIUM = 'ALUMINIUM',
+    LEATHER = 'LEATHER',
+    GLASS = 'GLASS',
+    MELAMINE = 'MELAMINE',
+    BOARD = 'BOARD',
+    FABRIC = 'FABRIC',
+    METAL = 'METAL',
+    ELECTRONICS = 'ELECTRONICS',
+    PORCELAIN = 'PORCELAIN',
+    MGLASS = 'MGLASS',
+    STEEL = 'STEEL',
+}
+export interface MaterialType {}
+export enum Recycles {
+    GENERAL = 'GENERAL',
+    ELECTRONICS = 'ELECTRONICS',
+    GLASS = 'GLASS',
+    WOOD = 'WOOD',
+    METAL = 'METAL',
+    PLASTIC = 'PLASTIC',
+    DUMP = 'DUMP',
+}
+export interface RecycleType {
+    name: string;
+}
+
 export interface Piece {
     set?: SetInfo;
-    name: string;
-    description: string;
+    path: string;
     weight: number;
     cost: number;
     rarity: PieceRarity;
     type: PieceType;
     num: string;
+    materials: Array<MaterialType>;
+    recycling: Array<RecycleType>;
 }
 export interface SetInfo {
     id: string;
-    name: string;
+    path: string;
     author: string;
     coverposition: FurnitureSetCoverPosition;
     cover: StaticImageData | string;
