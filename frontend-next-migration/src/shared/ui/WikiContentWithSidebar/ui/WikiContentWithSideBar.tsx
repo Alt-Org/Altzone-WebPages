@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './WikiContentWithSideBar.module.scss';
@@ -77,11 +77,11 @@ const WikiContentWithSideBar = (props: Props) => {
     return (
         <div className={classNames(cls.pageContainer, combinedModCss)}>
             <div className={classNames(cls.mainContent, combinedModCss)}>
-                {/*{!isMobileSize && (*/}
-                {/*    <div className={classNames(cls.navbarSide, combinedModCss)}>*/}
-                {/*        <TableOfContents sections={sections} />*/}
-                {/*    </div>*/}
-                {/*)}*/}
+                {!isMobileSize && (
+                    <div className={classNames(cls.navbarSide, combinedModCss)}>
+                        <TableOfContents sections={sections} />
+                    </div>
+                )}
                 <div
                     className={classNames(cls.content, combinedModCss)}
                     id="content"
