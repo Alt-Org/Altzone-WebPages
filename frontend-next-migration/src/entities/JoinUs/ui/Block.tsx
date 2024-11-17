@@ -16,7 +16,12 @@ export const Block = (props: Props) => {
         >
             <h2>{block.label}</h2>
             <p>{block.description}</p>
-            <AppLink to={block.link}>{block.linkText}</AppLink>
+            <AppLink
+                isExternal={true}
+                to={block.link}
+            >
+                {block.linkText}
+            </AppLink>
         </div>
     );
 };
