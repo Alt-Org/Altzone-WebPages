@@ -38,7 +38,6 @@ const WikiContent = (props: Props) => {
     };
 
     return (
-        // <div className={classNames(cls.pageContainer, combinedModCss)}>
         <div className={classNames(cls.mainContent, combinedModCss)}>
             <div
                 className={classNames(cls.content, combinedModCss)}
@@ -72,7 +71,6 @@ const WikiContent = (props: Props) => {
                 )}
             </div>
         </div>
-        // </div>
     );
 };
 

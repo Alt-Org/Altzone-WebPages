@@ -35,9 +35,9 @@ const GameArtPackagePage = (props: Props) => {
 
     return (
         <LayoutWithSidebars
-            leftTopSidebar={{
-                component: <GalleryNavMenuAsDropdown />,
-            }}
+            // leftTopSidebar={{
+            //     component: <GalleryNavMenuAsDropdown />,
+            // }}
             rightBottomSidebar={{
                 component: <TableOfContents sections={sections} />,
                 hideOnMobile: true,
