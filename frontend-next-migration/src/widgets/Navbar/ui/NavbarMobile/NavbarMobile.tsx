@@ -8,9 +8,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
-import { defineNs } from '../../model/defineNs';
-import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
-// import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 

@@ -19,7 +19,6 @@ import NavItem from './NavItem';
  * @property {string} className Additional CSS classes
  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
  * @property {boolean} isFixed This is deprecated. Fixed type is get from context
- * @property {NavBarType} navNarType Navbar type
  */
 export interface NavbarProps {
     marginTop?: number;

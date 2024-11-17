@@ -1,7 +1,7 @@
 'use client';
 import { memo, useMemo } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { getNavbarBuildBySize } from '../../model/getNavbarBuildByTypeAndSize';
+import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
 import NavbarMobile from '../NavbarMobile/NavbarMobile';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
-import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
+import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 const meta: Meta<typeof NavbarDesktop> = {
     title: '@/widgets/Navbar/ui/NavbarDesktop/NavbarDesktop',
     component: NavbarDesktop,
@@ -17,9 +17,6 @@ const meta: Meta<typeof NavbarDesktop> = {
         isFixed: {
             description: 'This is deprecated. Fixed type is get from context',
         },
-        navBarType: {
-            description: 'Navbar type',
-        },
     },
     args: {
         marginTop: 0,
@@ -28,8 +25,7 @@ const meta: Meta<typeof NavbarDesktop> = {
         toggleFixed: () => undefined,
         toggleCollapsed: () => undefined,
         className: '',
-        navBarType: 'Default',
-        navbarBuild: getNavbarBuildByTypeAndSize('Default', 'desktop'),
+        navbarBuild: getNavbarBuildBySize('desktop'),
     },
     tags: ['autodocs'],
 };
