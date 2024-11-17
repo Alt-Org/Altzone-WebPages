@@ -6,6 +6,10 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
 import cls from './GameArtPage.module.scss';
+import { LayoutWithSidebars } from '@/preparedPages/Layouts';
+import { TableOfContents } from '@/shared/ui/TableOfContents';
+import React from 'react';
+import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
 
 interface Section {
     id: string;
@@ -33,15 +37,28 @@ const GameArtPackagePage = (props: Props) => {
     };
 
     return (
-        <div className={classNames(cls.pageContainer, combinedModCss)}>
-            {/*//todo mow to layout*/}
-            <WikiContentWithSidebar sections={sections} />
-            <div>
-                <FeedbackSideButton />
-                <HorizontalLines />
-                {isMobileSize && <ScrollTop />}
-            </div>
-        </div>
+        <>
+            <LayoutWithSidebars
+                leftTopSidebar={{
+                    component: <GalleryNavMenuAsDropdown />,
+                }}
+                rightBottomSidebar={{
+                    component: <TableOfContents sections={sections} />,
+                    hideOnMobile: true,
+                }}
+            >
+                <WikiContentWithSidebar sections={sections} />
+            </LayoutWithSidebars>
+
+            {/*<div className={classNames(cls.pageContainer, combinedModCss)}>*/}
+            {/*    <WikiContentWithSidebar sections={sections} />*/}
+            {/*    <div>*/}
+            {/*        <FeedbackSideButton />*/}
+            {/*        <HorizontalLines />*/}
+            {/*        {isMobileSize && <ScrollTop />}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+        </>
     );
 };
 

@@ -1,10 +1,9 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import cls from './WikiContentWithSideBar.module.scss';
-import { TableOfContents } from '@/shared/ui/TableOfContents';
+import cls from './WikiContent.module.scss';
 
 /**
  * Represents a section in the sidebar.
@@ -57,7 +56,7 @@ export type Props = {
  * export default App;
  * ```
  */
-const WikiContentWithSideBar = (props: Props) => {
+const WikiContent = (props: Props) => {
     const { sections = [] } = props;
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
 
@@ -118,4 +117,4 @@ const WikiContentWithSideBar = (props: Props) => {
     );
 };
 
-export default WikiContentWithSideBar;
+export default WikiContent;
