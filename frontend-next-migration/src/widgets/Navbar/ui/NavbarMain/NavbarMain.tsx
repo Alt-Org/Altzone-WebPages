@@ -1,13 +1,10 @@
 'use client';
 import { memo, useMemo } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { CollapsedProvider } from '../../model/CollapsedProvider';
-import { FixedProvider } from '../../model/FixedProvider';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
 import { NavBarType } from '../../model/types';
 import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
 import NavbarMobile from '../NavbarMobile/NavbarMobile';
-import NavbarMobileV2 from '../../~deprecated/ui/NavbarMobileV2/NavbarMobileV2';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     navBarActions,
