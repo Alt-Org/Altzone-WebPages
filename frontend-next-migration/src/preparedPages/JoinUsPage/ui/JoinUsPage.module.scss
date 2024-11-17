@@ -1,0 +1,9 @@
+.Container {
+    h1 {
+        font-size: clamp(40px, 7vw, 50px);
+        line-height: 1.5;
+        font-weight: bold;
+        text-align: center;
+        margin: 40px auto;
+    }
+}
