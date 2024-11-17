@@ -24,14 +24,6 @@ export type Props = {
 
 const GameArtPackagePage = (props: Props) => {
     const { sections = [] } = props;
-    const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
-
-    const combinedModCss: Mods = {
-        [cls.isMobile]: isMobileSize,
-        [cls.isTablet]: isTabletSize,
-        [cls.isDesktop]: isDesktopSize,
-        [cls.isWidescreen]: isWidescreenSize,
-    };
 
     return (
         <LayoutWithSidebars
