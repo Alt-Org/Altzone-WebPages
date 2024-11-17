@@ -30,7 +30,6 @@ export interface NavbarTouchProps {
     navbarBuild?: NavbarBuild;
     side?: 'left' | 'right';
     className?: string;
-    navBarType?: NavBarType;
     isFixed: boolean;
     isCollapsed: boolean;
     toggleCollapsed: () => void;
@@ -38,18 +37,9 @@ export interface NavbarTouchProps {
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const {
-        marginTop,
-        navbarBuild,
-        side = 'left',
-        className = '',
-        navBarType = 'Default',
-        toggleFixed,
-        isFixed,
-    } = props;
+    const { marginTop, navbarBuild, side = 'left', className = '', toggleFixed, isFixed } = props;
 
-    const ns = defineNs(navBarType);
-    const { t } = useClientTranslation(ns);
+    const { t } = useClientTranslation('navbar');
 
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');

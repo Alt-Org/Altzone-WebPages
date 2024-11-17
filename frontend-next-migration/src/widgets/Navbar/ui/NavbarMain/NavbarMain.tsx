@@ -1,8 +1,7 @@
 'use client';
 import { memo, useMemo } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
-import { NavBarType } from '../../model/types';
+import { getNavbarBuildBySize } from '../../model/getNavbarBuildByTypeAndSize';
 import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
 import NavbarMobile from '../NavbarMobile/NavbarMobile';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,11 +14,10 @@ import {
 interface NavbarMainProps {
     marginTop?: number;
     className?: string;
-    navBarType?: NavBarType;
 }
 
 export const NavbarMain = memo((props: NavbarMainProps) => {
-    const { marginTop, className, navBarType = 'Default' } = props;
+    const { marginTop, className } = props;
 
     const isFixed = useSelector(selectIsFixed);
     const isCollapsed = useSelector(selectIsCollapsed);
@@ -38,18 +36,14 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
     const isTouchSize = isMobileSize || isTabletSize;
 
     const size = useMemo(() => (isTouchSize ? 'mobile' : 'desktop'), [isTouchSize]);
-    const navbarBuild = useMemo(
-        () => getNavbarBuildByTypeAndSize(navBarType, size),
-        [navBarType, size],
-    );
-    if (!navBarType) return null;
+
+    const navbarBuild = useMemo(() => getNavbarBuildBySize(size), [size]);
 
     return isTouchSize ? (
         <NavbarMobile
             marginTop={marginTop}
             className={className}
             navbarBuild={navbarBuild}
-            navBarType={navBarType}
             isFixed={isFixed}
             isCollapsed={isCollapsed}
             toggleCollapsed={handleToggleFixed}
@@ -60,7 +54,6 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
             marginTop={marginTop}
             className={className}
             navbarBuild={navbarBuild}
-            navBarType={navBarType}
             isFixed={isFixed}
             isCollapsed={isCollapsed}
             toggleCollapsed={handleToggleCollapsed}
