@@ -1,11 +1,7 @@
 'use client';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import { Mods } from '@/shared/lib/classNames/classNames';
 import cls from './GameArtPage.module.scss';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { TableOfContents } from '@/shared/ui/TableOfContents';
-import React from 'react';
-import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
 import WikiContent from '@/shared/ui/WikiContent/ui/WikiContent';
 
 interface Section {
@@ -28,9 +24,6 @@ const GameArtPackagePage = (props: Props) => {
     return (
         <LayoutWithSidebars
             className={cls.GameArtPackagePage}
-            leftTopSidebar={{
-                component: <GalleryNavMenuAsDropdown openByDefault={true} />,
-            }}
             rightBottomSidebar={{
                 component: <TableOfContents sections={sections} />,
                 hideOnMobile: true,

@@ -28,7 +28,7 @@ import {
  * @property {boolean} isFixed This is deprecated. Fixed type is get from context
  * @property {NavBarType} navNarType Navbar type
  */
-interface NavbarProps {
+export interface NavbarProps {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild;

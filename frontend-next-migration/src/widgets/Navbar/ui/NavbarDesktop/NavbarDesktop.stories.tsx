@@ -1,17 +1,6 @@
 import { Meta } from '@storybook/react';
-import React from 'react';
-import NavbarDesktop from './NavbarDesktop';
+import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
-import { NavbarBuild, NavBarType } from '../../model/types';
-
-type NavbarProps = {
-    marginTop?: number;
-    className?: string;
-    navbarBuild: NavbarBuild;
-    isFixed?: boolean;
-    navBarType?: NavBarType;
-};
-
 const meta: Meta<typeof NavbarDesktop> = {
     title: '@/widgets/Navbar/ui/NavbarDesktop/NavbarDesktop',
     component: NavbarDesktop,
@@ -35,6 +24,9 @@ const meta: Meta<typeof NavbarDesktop> = {
     args: {
         marginTop: 0,
         isFixed: false,
+        isCollapsed: false,
+        toggleFixed: () => undefined,
+        toggleCollapsed: () => undefined,
         className: '',
         navBarType: 'Default',
         navbarBuild: getNavbarBuildByTypeAndSize('Default', 'desktop'),
@@ -44,5 +36,4 @@ const meta: Meta<typeof NavbarDesktop> = {
 
 export default meta;
 
-// Without a scrollbar, the collapse mode is buggy
 export const Navbar = (args: NavbarProps) => <NavbarDesktop {...args} />;

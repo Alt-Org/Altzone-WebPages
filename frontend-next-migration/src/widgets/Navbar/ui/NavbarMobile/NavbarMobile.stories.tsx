@@ -1,17 +1,7 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
-import NavbarMobile from './NavbarMobile';
+import NavbarMobile, { NavbarTouchProps } from './NavbarMobile';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
-import { NavbarBuild, NavBarType } from '../../model/types';
-
-interface NavbarTouchProps {
-    marginTop?: number;
-    onBurgerButtonClick?: (isMenuOpen: boolean) => void;
-    navbarBuild?: NavbarBuild;
-    side?: 'left' | 'right';
-    className?: string;
-    navBarType?: NavBarType;
-}
 
 const meta: Meta<typeof NavbarMobile> = {
     title: '@/widgets/Navbar/ui/NavbarMobile/NavbarMobile',

@@ -24,7 +24,7 @@ import cls from './NavbarMobile.module.scss';
 //  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
 //  * @property {NavBarType} navNarType Navbar type
 //  */
-interface NavbarTouchProps {
+export interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
