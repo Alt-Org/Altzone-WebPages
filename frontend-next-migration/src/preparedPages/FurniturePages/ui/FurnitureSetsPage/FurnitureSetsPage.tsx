@@ -9,7 +9,7 @@ import { SetInfo } from '@/entities/Furniture/types/set';
 const FurnitureSetsPage = () => {
     const { t } = useClientTranslation('furniture');
 
-    const manager = new FurnitureManager(t);
+    const manager = new FurnitureManager();
 
     return (
         <div className={classNames(cls.SetsPage)}>

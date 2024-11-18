@@ -34,7 +34,7 @@ const OneSetPage = (props: Props) => {
                     />
                 </div>
                 <div className={cls.Back}>
-                    <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- Takaisin</AppLink>
+                    <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
                 </div>
                 <h1>{t(`${path}.name`)}</h1>
                 <h3>{author}</h3>
