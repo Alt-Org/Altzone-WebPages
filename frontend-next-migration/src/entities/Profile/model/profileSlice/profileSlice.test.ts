@@ -3,24 +3,6 @@ import { ProfileSchema } from '../../types/profile';
 import { profileReducer, profileActions, selectHasClan, selectClanId } from './profileSlice';
 
 describe('profileSlice', () => {
-    //initialState if defaultProfile is used
-    // const initialState: ProfileSchema = {
-    //     profile: {
-    //         _id: null,
-    //         username: null,
-    //         Player: {
-    //             _id: null,
-    //             name: null,
-    //             backpackCapacity: null,
-    //             uniqueIdentifier: null,
-    //             profile_id: null,
-    //             clan_id: null,
-    //             above13: null,
-    //         },
-    //     },
-    // };
-
-    //initialState if defualtProfile not used
     const initialState: ProfileSchema = {
         profile: undefined,
     };
@@ -45,8 +27,7 @@ describe('profileSlice', () => {
         };
 
         const action = profileActions.setProfile(profile);
-        const expectedState = {
-            ...initialState,
+        const expectedState: ProfileSchema = {
             profile,
         };
 
@@ -54,7 +35,7 @@ describe('profileSlice', () => {
     });
 
     it('should handle PURGE action', () => {
-        const stateWithProfile = {
+        const stateWithProfile: ProfileSchema = {
             profile: {
                 _id: '650d422567e23912f940abe0',
                 username: 'John',
@@ -70,7 +51,7 @@ describe('profileSlice', () => {
             },
         };
         const action = { type: PURGE };
-        const expectedState = {
+        const expectedState: ProfileSchema = {
             profile: undefined,
         };
         expect(profileReducer(stateWithProfile, action)).toEqual(expectedState);
@@ -78,7 +59,7 @@ describe('profileSlice', () => {
 
     it('selectHasClan should return TRUE since user has a clan', () => {
         const clan_id = '12345';
-        const state = {
+        const state: ProfileSchema = {
             profile: {
                 _id: '650d422567e23912f940abe0',
                 username: 'John',
@@ -93,37 +74,45 @@ describe('profileSlice', () => {
                 },
             },
         };
-        // @ts-ignore
         expect(selectHasClan(state)).toBe(true);
     });
 
     it('selectClanId should return the set clan_id since user has a clan', () => {
         const clan_id = '12345';
-        const state = {
+        const state: ProfileSchema = {
             profile: {
-                profile: {
-                    Player: {
-                        clan_id: clan_id,
-                    },
+                _id: '650d422567e23912f940abe0',
+                username: 'John',
+                Player: {
+                    _id: 'string',
+                    name: 'string',
+                    backpackCapacity: 200,
+                    uniqueIdentifier: '200',
+                    profile_id: 'string',
+                    clan_id: clan_id,
+                    above13: true,
                 },
             },
         };
-        // @ts-ignore
         expect(selectClanId(state)).toBe(clan_id);
     });
 
     it('selectHasClan should return FALSE since user does not have a clan', () => {
-        const clan_id = undefined;
-        const state = {
+        const state: ProfileSchema = {
             profile: {
-                profile: {
-                    Player: {
-                        clan_id: clan_id,
-                    },
+                _id: '650d422567e23912f940abe0',
+                username: 'John',
+                Player: {
+                    _id: 'string',
+                    name: 'string',
+                    backpackCapacity: 200,
+                    uniqueIdentifier: '200',
+                    profile_id: 'string',
+                    clan_id: undefined,
+                    above13: true,
                 },
             },
         };
-        // @ts-ignore
         expect(selectHasClan(state)).toBe(false);
     });
 });
