@@ -31,12 +31,19 @@ describe('profileSlice', () => {
 
     it('should handle setProfile', () => {
         const profile = {
+            _id: '650d422567e23912f940abe0',
             username: 'John',
             Player: {
-                name: 'John Doe',
+                _id: 'string',
+                name: 'string',
+                backpackCapacity: 200,
+                uniqueIdentifier: '200',
+                profile_id: 'string',
+                clan_id: 'string',
+                above13: true,
             },
         };
-        // @ts-ignore
+
         const action = profileActions.setProfile(profile);
         const expectedState = {
             ...initialState,
