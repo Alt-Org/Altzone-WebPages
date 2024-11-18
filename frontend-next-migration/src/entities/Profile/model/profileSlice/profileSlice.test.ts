@@ -56,9 +56,16 @@ describe('profileSlice', () => {
     it('should handle PURGE action', () => {
         const stateWithProfile = {
             profile: {
+                _id: '650d422567e23912f940abe0',
                 username: 'John',
                 Player: {
-                    name: 'John Doe',
+                    _id: 'string',
+                    name: 'string',
+                    backpackCapacity: 200,
+                    uniqueIdentifier: '200',
+                    profile_id: 'string',
+                    clan_id: 'string',
+                    above13: true,
                 },
             },
         };
@@ -66,7 +73,6 @@ describe('profileSlice', () => {
         const expectedState = {
             profile: undefined,
         };
-        // @ts-ignore
         expect(profileReducer(stateWithProfile, action)).toEqual(expectedState);
     });
 
@@ -74,10 +80,16 @@ describe('profileSlice', () => {
         const clan_id = '12345';
         const state = {
             profile: {
-                profile: {
-                    Player: {
-                        clan_id: clan_id,
-                    },
+                _id: '650d422567e23912f940abe0',
+                username: 'John',
+                Player: {
+                    _id: 'string',
+                    name: 'string',
+                    backpackCapacity: 200,
+                    uniqueIdentifier: '200',
+                    profile_id: 'string',
+                    clan_id: clan_id,
+                    above13: true,
                 },
             },
         };
