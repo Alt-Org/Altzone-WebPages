@@ -5,7 +5,6 @@ export type {
     AuthUserSchema,
     ILoginResponse,
     AccessTokenInfoResponse,
-    AccessTokenInfo,
 } from './types/authUser';
 
 export {
