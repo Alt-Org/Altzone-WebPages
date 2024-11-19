@@ -66,6 +66,7 @@ export interface RecycleType {
 
 export interface Piece {
     set?: SetInfo;
+    cover?: StaticImageData | string;
     path: string;
     weight: number;
     cost: number;
@@ -82,6 +83,7 @@ export interface SetInfo {
     coverposition: FurnitureSetCoverPosition;
     cover: StaticImageData | string;
     items: Piece[];
+    disabled?: boolean;
 }
 
 export enum FurnitureSetCoverPosition {

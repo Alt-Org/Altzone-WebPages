@@ -3,6 +3,7 @@ import { TFunction } from 'i18next';
 import { Piece } from '../../types/set';
 import cls from './PieceContainer.module.scss';
 import { createRef, LegacyRef } from 'react';
+import Image from 'next/image';
 
 type Props = {
     item: any;
@@ -11,7 +12,7 @@ type Props = {
 };
 
 export const PieceCard = (props: Props) => {
-    const { path, num, description, cost, weight, rarity, set } = props.item;
+    const { path, num, description, cost, weight, rarity, set, cover } = props.item;
     const { setpath } = props;
 
     const ref: LegacyRef<HTMLDivElement> = createRef();
@@ -35,6 +36,11 @@ export const PieceCard = (props: Props) => {
                     className={cls.Container}
                     onClick={click}
                 >
+                    <Image
+                        className={cls.Cover}
+                        src={cover}
+                        alt={'cover'}
+                    />
                     <p className={cls.info} />
                     <div className={cls.Fade} />
                     <div

@@ -1,6 +1,26 @@
 import neuroCover from '@/shared/assets/images/furniture/neuro/NEURO_WEB.webp';
 import taakkaCover from '@/shared/assets/images/furniture/taakka/TAAKKA_WEB.webp';
 import rakkausCover from '@/shared/assets/images/furniture/rakkaus/RAKKAUS_WEB.png';
+import rakkauscloset from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterKaappi.png';
+import rakkausctable from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterKahvipöytä.png';
+import rakkauslamp from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterLamppu.png';
+import rakkauscarpet from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterMatto.png';
+import rakkausarmchair from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterNojatuoli.png';
+import rakkausmirror from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterPeili.png';
+import rakkaustable from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterPöytä.png';
+import rakkausbed from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterSänky.png';
+import rakkaussofa from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterSohva.png';
+import neuroclock from '@/shared/assets/images/furniture/neuro/posters/ShopPosterClockNeuro.png';
+import neurochair from '@/shared/assets/images/furniture/neuro/posters/ShopPosterChairNeuro.png';
+import neurostool from '@/shared/assets/images/furniture/neuro/posters/ShopPosterStoolNeuro.png';
+import neurodrawer from '@/shared/assets/images/furniture/neuro/posters/ShopPosterDresserNeuro.png';
+import taakkaarmchair from '@/shared/assets/images/furniture/taakka/posters/ShopPosterArmchairTaakka.png';
+import taakkacloset from '@/shared/assets/images/furniture/taakka/posters/ShopPosterClosetTaakka.png';
+import taakkamirror from '@/shared/assets/images/furniture/taakka/posters/ShopPosterMirrorTaakka.png';
+import taakkalamp from '@/shared/assets/images/furniture/taakka/posters/ShopPosterFloorlampTaakka.png';
+import taakkacouch from '@/shared/assets/images/furniture/taakka/posters/ShopPosterSofaTaakka.png';
+import taakkastable from '@/shared/assets/images/furniture/taakka/posters/ShopPosterSidetableTaakka.png';
+import taakkatable from '@/shared/assets/images/furniture/taakka/posters/ShopPosterCoffeetableTaakka.png';
 import {
     FurnitureSet,
     SetInfo,
@@ -158,6 +178,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.ELECTRONICS, materials.ALUMINIUM],
                     recycling: [recycles.ELECTRONICS],
+                    cover: neuroclock,
                 },
                 {
                     path: 'CHAIR',
@@ -168,6 +189,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.EPIC,
                     materials: [materials.ALUMINIUM, materials.LEATHER],
                     recycling: [recycles.GENERAL, recycles.ELECTRONICS],
+                    cover: neurochair,
                 },
                 {
                     path: 'STOOL',
@@ -178,6 +200,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.ALUMINIUM, materials.LEATHER],
                     recycling: [recycles.GENERAL, recycles.ELECTRONICS],
+                    cover: neurostool,
                 },
                 {
                     path: 'DRAWER',
@@ -188,6 +211,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.RARE,
                     materials: [materials.BOARD, materials.ALUMINIUM],
                     recycling: [recycles.ELECTRONICS, recycles.WOOD],
+                    cover: neurodrawer,
                 },
             ],
         },
@@ -207,6 +231,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.RARE,
                     materials: [materials.POLYESTER],
                     recycling: [recycles.GENERAL],
+                    cover: taakkacouch,
                 },
                 {
                     num: 'R45.0',
@@ -217,6 +242,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.RARE,
                     materials: [materials.POLYESTER, materials.WOOD],
                     recycling: [recycles.GENERAL],
+                    cover: taakkaarmchair,
                 },
                 {
                     num: 'R45.0',
@@ -227,6 +253,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.EPIC,
                     materials: [materials.ALUMINIUM],
                     recycling: [recycles.ELECTRONICS],
+                    cover: taakkalamp,
                 },
                 {
                     num: 'R45.0',
@@ -237,6 +264,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.MELAMINE, materials.BOARD],
                     recycling: [recycles.WOOD],
+                    cover: taakkatable,
                 },
                 {
                     num: 'R45.0',
@@ -247,6 +275,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.MELAMINE, materials.BOARD],
                     recycling: [recycles.WOOD],
+                    cover: taakkastable,
                 },
                 {
                     num: 'R45.0',
@@ -257,6 +286,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.MGLASS, materials.WOOD],
                     recycling: [recycles.GENERAL],
+                    cover: taakkamirror,
                 },
                 {
                     num: 'R45.0',
@@ -267,6 +297,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.RARE,
                     materials: [materials.WOOD],
                     recycling: [recycles.WOOD],
+                    cover: taakkacloset,
                 },
             ],
         },
@@ -286,6 +317,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.WOOD, materials.POLYESTER],
                     recycling: [recycles.GENERAL],
+                    cover: rakkaussofa,
                 },
                 {
                     num: 'F41.8',
@@ -296,6 +328,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.POLYESTER, materials.WOOD],
                     recycling: [recycles.GENERAL],
+                    cover: rakkausarmchair,
                 },
                 {
                     num: '',
@@ -306,6 +339,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.EPIC,
                     materials: [materials.GLASS],
                     recycling: [recycles.GLASS],
+                    cover: rakkauslamp,
                 },
                 {
                     num: '',
@@ -316,6 +350,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.RARE,
                     materials: [materials.WOOD],
                     recycling: [recycles.WOOD],
+                    cover: rakkaustable,
                 },
                 {
                     num: '',
@@ -326,6 +361,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.WOOD],
                     recycling: [recycles.WOOD],
+                    cover: rakkausctable,
                 },
                 {
                     num: '',
@@ -336,6 +372,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.RARE,
                     materials: [materials.WOOD, materials.POLYESTER],
                     recycling: [recycles.GENERAL],
+                    cover: rakkausbed,
                 },
                 {
                     num: 'F41.2',
@@ -346,6 +383,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.FABRIC],
                     recycling: [recycles.GENERAL],
+                    cover: rakkauscarpet,
                 },
                 {
                     num: 'F40.8',
@@ -356,6 +394,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.MGLASS, materials.METAL],
                     recycling: [recycles.GLASS],
+                    cover: rakkausmirror,
                 },
                 {
                     num: 'F41.8',
@@ -366,6 +405,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     rarity: rarityList.COMMON,
                     materials: [materials.WOOD],
                     recycling: [recycles.WOOD],
+                    cover: rakkauscloset,
                 },
             ],
         },
@@ -374,6 +414,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'SCRODINGERSET',
             author: 'SMKT',
             cover: '',
+            disabled: true,
             coverposition: FurnitureSetCoverPosition.BOTTOM,
             items: [
                 {

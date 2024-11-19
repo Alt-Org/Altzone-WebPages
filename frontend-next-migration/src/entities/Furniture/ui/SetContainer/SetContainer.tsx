@@ -11,7 +11,11 @@ type Props = {
 };
 
 export const SetCard = (props: Props) => {
-    const { id, author, cover, coverposition, items } = props.set;
+    const { id, author, cover, coverposition, items, disabled } = props.set;
+
+    if (disabled) {
+        return;
+    }
 
     return (
         <div className={cls.Card}>
