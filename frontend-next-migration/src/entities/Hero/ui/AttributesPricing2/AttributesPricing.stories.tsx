@@ -10,7 +10,7 @@ const meta: Meta<typeof AttributesPricing> = {
 
     args: {
         initialHeroLevel: 1,
-        heroSlug: HeroSlug.CONMAN
+        heroSlug: HeroSlug.CONMAN,
     },
 };
 

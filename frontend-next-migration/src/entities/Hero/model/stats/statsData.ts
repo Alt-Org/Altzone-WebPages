@@ -4,15 +4,9 @@ import { HeroStats, HeroLevel } from '../../types/HeroStats';
 export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     [HeroSlug.HANNU_HODARI]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -35,7 +29,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -69,15 +63,9 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
 
     [HeroSlug.GRAFFITI_ARTIST]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -100,7 +88,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -133,15 +121,9 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     },
     [HeroSlug.RESEARCHER]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -164,7 +146,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -197,15 +179,9 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     },
     [HeroSlug.CONMAN]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -228,7 +204,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -261,15 +237,9 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     },
     [HeroSlug.SLEEPER]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -292,7 +262,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -325,15 +295,9 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     },
     [HeroSlug.FATE_PRIEST]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -356,7 +320,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -389,15 +353,9 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     },
     [HeroSlug.SOUL_SISTERS]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -420,7 +378,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -453,15 +411,9 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
     },
     [HeroSlug.PIRATE]: {
         1: {
-            attack: [
-                { statLevel: 1, value: 10, cost: 50, upgradePotential: 2 },
-            ],
-            defense: [
-                { statLevel: 1, value: 5, cost: 40, upgradePotential: 2 },
-            ],
-            speed: [
-                { statLevel: 1, value: 7, cost: 45, upgradePotential: 2 },
-            ],
+            attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
+            defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
+            speed: [{ statLevel: 1, value: 7, cost: 45, upgradePotential: 2 }],
         },
         2: {
             attack: [
@@ -484,7 +436,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
             defense: [
-                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3},
+                { statLevel: 1, value: 7, cost: 80, upgradePotential: 3 },
                 { statLevel: 2, value: 8, cost: 110, upgradePotential: 3 },
                 { statLevel: 3, value: 16, cost: 225, upgradePotential: 3 },
             ],
@@ -514,4 +466,5 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
                 { statLevel: 4, value: 11, cost: 150, upgradePotential: 4 },
             ],
         },
-}};
+    },
+};

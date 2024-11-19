@@ -37,7 +37,7 @@ export interface StatsStrategy {
         level: HeroLevel,
         statName: keyof HeroStats,
         fromStatLevel: number,
-        toStatLevel: number
+        toStatLevel: number,
     ): { price: number; nextValue: number; upgradePotential: number } | undefined;
 }
 

@@ -12,10 +12,9 @@ const meta: Meta<typeof AttributesPricingTable> = {
     tags: ['autodocs'],
 
     args: {
-
         // heroLevel: 1,
         initialHeroSlug: HeroSlug.CONMAN,
-        initialLevel: 1
+        initialLevel: 1,
     },
 };
 

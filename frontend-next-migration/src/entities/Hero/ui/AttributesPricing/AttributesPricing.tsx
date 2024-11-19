@@ -145,8 +145,6 @@ export type AttributesPricingProps = {
 //     );
 // };
 
-
-
 // export type Stat = {
 //     name: string;
 //     value: number;
@@ -158,7 +156,6 @@ export type AttributesPricingProps = {
 //     stats: Stat[];
 // };
 
-
 export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Element => {
     const [selectedStat, setSelectedStat] = useState(stats[0]);
     const [fromLevel, setFromLevel] = useState(stats[0].value);
@@ -167,8 +164,9 @@ export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Elemen
     const { t } = useClientTranslation('heroes-stats');
 
     const getLevelRange = useCallback(
-        (currentLevel: number) => Array.from({ length: maxLevel - currentLevel + 1 }, (_, i) => i + currentLevel),
-        []
+        (currentLevel: number) =>
+            Array.from({ length: maxLevel - currentLevel + 1 }, (_, i) => i + currentLevel),
+        [],
     );
 
     const handleStatChange = useCallback(
@@ -179,7 +177,7 @@ export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Elemen
             setFromLevel(newStat.value);
             setToLevel(newStat.value);
         },
-        [stats, selectedStat]
+        [stats, selectedStat],
     );
 
     const handleFromLevelChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -190,13 +188,18 @@ export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Elemen
         setToLevel(Number(event.target.value));
     }, []);
 
-    const levelRange = useMemo(() => getLevelRange(selectedStat.value), [selectedStat.value, getLevelRange]);
+    const levelRange = useMemo(
+        () => getLevelRange(selectedStat.value),
+        [selectedStat.value, getLevelRange],
+    );
 
     const sum = useMemo(() => {
         if (fromLevel >= toLevel) return 0;
         let total = 0;
         for (let i = fromLevel; i < toLevel; i++) {
-            total += statsPricingData[selectedStat.rarityClass][i - 1] * statsPricingData.stepsPerLevel[i - 1];
+            total +=
+                statsPricingData[selectedStat.rarityClass][i - 1] *
+                statsPricingData.stepsPerLevel[i - 1];
         }
         return total;
     }, [fromLevel, toLevel, selectedStat.rarityClass]);
@@ -216,7 +219,11 @@ export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Elemen
                     onChange={handleStatChange}
                 >
                     {stats.map((stat) => (
-                        <option key={stat.name} value={stat.name} style={{ color: stat.color, fontWeight: 'bolder' }}>
+                        <option
+                            key={stat.name}
+                            value={stat.name}
+                            style={{ color: stat.color, fontWeight: 'bolder' }}
+                        >
                             {t(stat.name)}
                         </option>
                     ))}
@@ -231,7 +238,10 @@ export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Elemen
                     onChange={handleFromLevelChange}
                 >
                     {levelRange.map((value) => (
-                        <option key={value} value={value}>
+                        <option
+                            key={value}
+                            value={value}
+                        >
                             {value}
                         </option>
                     ))}
@@ -246,7 +256,10 @@ export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Elemen
                     onChange={handleToLevelChange}
                 >
                     {levelRange.map((value) => (
-                        <option key={value} value={value}>
+                        <option
+                            key={value}
+                            value={value}
+                        >
                             {value}
                         </option>
                     ))}
@@ -254,15 +267,13 @@ export const AttributesPricing = ({ stats }: AttributesPricingProps): JSX.Elemen
             </div>
             <div className={cls.InlineBlock}>
                 <div className={cls.Price}>{t('cost')}</div>
-                <span data-testid="price" className={cls.Sum}>
-          {sum}
-        </span>
+                <span
+                    data-testid="price"
+                    className={cls.Sum}
+                >
+                    {sum}
+                </span>
             </div>
         </div>
     );
 };
-
-
-
-
-

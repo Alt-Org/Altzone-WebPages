@@ -15,11 +15,9 @@ const meta: Meta<typeof AttributesPricing> = {
     tags: ['autodocs'],
 
     args: {
-
         // heroLevel: 1,
         // initialHeroLevel: 1,
         // heroSlug: HeroSlug.CONMAN
-
 
         stats: [
             {

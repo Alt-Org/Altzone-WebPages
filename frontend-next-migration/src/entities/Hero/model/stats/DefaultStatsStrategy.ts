@@ -12,20 +12,19 @@ export class DefaultStatsStrategy implements StatsStrategy {
         return this.statsData[slug]?.[level];
     }
 
-
     public getStatUpgradeInfo(
         slug: HeroSlug,
         level: number,
         statName: keyof HeroStats,
         fromStatLevel: number,
-        toStatLevel: number
+        toStatLevel: number,
     ): { price: number; nextValue: number; upgradePotential: number } | undefined {
         const heroStats = this.getStatsForHero(slug, level);
         if (!heroStats) return undefined;
 
         const statLevels = heroStats[statName];
-        const from = statLevels.find(statLevel => statLevel.statLevel === fromStatLevel);
-        const to = statLevels.find(statLevel => statLevel.statLevel === toStatLevel);
+        const from = statLevels.find((statLevel) => statLevel.statLevel === fromStatLevel);
+        const to = statLevels.find((statLevel) => statLevel.statLevel === toStatLevel);
 
         if (from && to) {
             const price = to.cost - from.cost;
@@ -33,7 +32,6 @@ export class DefaultStatsStrategy implements StatsStrategy {
         }
         return undefined;
     }
-
 
     //todo check may be it could be useful
     // getStatUpgradeInfo(

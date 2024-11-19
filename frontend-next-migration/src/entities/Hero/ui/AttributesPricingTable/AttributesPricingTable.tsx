@@ -9,7 +9,10 @@ interface AttributesPricing2Props {
     initialLevel?: number;
 }
 
-export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({ initialHeroSlug, initialLevel = 1 }) => {
+export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({
+    initialHeroSlug,
+    initialLevel = 1,
+}) => {
     const [heroSlug, setHeroSlug] = useState<HeroSlug>(initialHeroSlug);
     const [level, setLevel] = useState<number>(initialLevel);
 
@@ -39,7 +42,14 @@ export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({ init
     };
 
     return (
-        <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', backgroundColor: '#333', color: 'white' }}>
+        <div
+            style={{
+                padding: '20px',
+                fontFamily: 'Arial, sans-serif',
+                backgroundColor: '#333',
+                color: 'white',
+            }}
+        >
             <h2 style={{ textTransform: 'capitalize', color: '#fff' }}>{heroSlug}</h2>
 
             <label style={{ display: 'block', marginBottom: '20px' }}>
@@ -47,10 +57,20 @@ export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({ init
                 <select
                     value={heroSlug}
                     onChange={handleHeroChange}
-                    style={{ padding: '5px', fontSize: '16px', backgroundColor: '#555', color: 'white', border: '1px solid #777' }}
+                    style={{
+                        padding: '5px',
+                        fontSize: '16px',
+                        backgroundColor: '#555',
+                        color: 'white',
+                        border: '1px solid #777',
+                    }}
                 >
                     {heroSlugs.map((slug) => (
-                        <option key={slug} value={slug} style={{ backgroundColor: '#555', color: 'white' }}>
+                        <option
+                            key={slug}
+                            value={slug}
+                            style={{ backgroundColor: '#555', color: 'white' }}
+                        >
                             {slug}
                         </option>
                     ))}
@@ -62,10 +82,20 @@ export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({ init
                 <select
                     value={level}
                     onChange={handleLevelChange}
-                    style={{ padding: '5px', fontSize: '16px', backgroundColor: '#555', color: 'white', border: '1px solid #777' }}
+                    style={{
+                        padding: '5px',
+                        fontSize: '16px',
+                        backgroundColor: '#555',
+                        color: 'white',
+                        border: '1px solid #777',
+                    }}
                 >
                     {availableLevels.map((lvl) => (
-                        <option key={lvl} value={lvl} style={{ backgroundColor: '#555', color: 'white' }}>
+                        <option
+                            key={lvl}
+                            value={lvl}
+                            style={{ backgroundColor: '#555', color: 'white' }}
+                        >
                             {lvl}
                         </option>
                     ))}
@@ -75,48 +105,79 @@ export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({ init
             {(['attack', 'defense', 'speed'] as Array<keyof HeroStats>).map((statName) => {
                 const statLevels = heroStats[statName];
                 return (
-                    <div key={statName} style={{ marginBottom: '30px' }}>
+                    <div
+                        key={statName}
+                        style={{ marginBottom: '30px' }}
+                    >
                         <h3 style={{ textTransform: 'capitalize', color: '#ccc' }}>{statName}</h3>
                         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                             <thead>
-                            <tr>
-                                <th style={{ border: '1px solid #555', padding: '8px', backgroundColor: '#444', color: 'white' }}>
-                                    Stat Level
-                                </th>
-                                <th style={{ border: '1px solid #555', padding: '8px', backgroundColor: '#444', color: 'white' }}>
-                                    Value
-                                </th>
-                                <th style={{ border: '1px solid #555', padding: '8px', backgroundColor: '#444', color: 'white' }}>
-                                    Cost
-                                </th>
-                                <th style={{ border: '1px solid #555', padding: '8px', backgroundColor: '#444', color: 'white' }}>
-                                    Upgrade Potential
-                                </th>
-                            </tr>
+                                <tr>
+                                    <th
+                                        style={{
+                                            border: '1px solid #555',
+                                            padding: '8px',
+                                            backgroundColor: '#444',
+                                            color: 'white',
+                                        }}
+                                    >
+                                        Stat Level
+                                    </th>
+                                    <th
+                                        style={{
+                                            border: '1px solid #555',
+                                            padding: '8px',
+                                            backgroundColor: '#444',
+                                            color: 'white',
+                                        }}
+                                    >
+                                        Value
+                                    </th>
+                                    <th
+                                        style={{
+                                            border: '1px solid #555',
+                                            padding: '8px',
+                                            backgroundColor: '#444',
+                                            color: 'white',
+                                        }}
+                                    >
+                                        Cost
+                                    </th>
+                                    <th
+                                        style={{
+                                            border: '1px solid #555',
+                                            padding: '8px',
+                                            backgroundColor: '#444',
+                                            color: 'white',
+                                        }}
+                                    >
+                                        Upgrade Potential
+                                    </th>
+                                </tr>
                             </thead>
                             <tbody>
-                            {statLevels.map((statLevel, index) => (
-                                <tr
-                                    key={statLevel.statLevel}
-                                    style={{
-                                        backgroundColor: index % 2 === 0 ? '#555' : '#666',
-                                        color: 'white',
-                                    }}
-                                >
-                                    <td style={{ border: '1px solid #555', padding: '8px' }}>
-                                        {statLevel.statLevel}
-                                    </td>
-                                    <td style={{ border: '1px solid #555', padding: '8px' }}>
-                                        {statLevel.value}
-                                    </td>
-                                    <td style={{ border: '1px solid #555', padding: '8px' }}>
-                                        {statLevel.cost}
-                                    </td>
-                                    <td style={{ border: '1px solid #555', padding: '8px' }}>
-                                        {statLevel.upgradePotential}
-                                    </td>
-                                </tr>
-                            ))}
+                                {statLevels.map((statLevel, index) => (
+                                    <tr
+                                        key={statLevel.statLevel}
+                                        style={{
+                                            backgroundColor: index % 2 === 0 ? '#555' : '#666',
+                                            color: 'white',
+                                        }}
+                                    >
+                                        <td style={{ border: '1px solid #555', padding: '8px' }}>
+                                            {statLevel.statLevel}
+                                        </td>
+                                        <td style={{ border: '1px solid #555', padding: '8px' }}>
+                                            {statLevel.value}
+                                        </td>
+                                        <td style={{ border: '1px solid #555', padding: '8px' }}>
+                                            {statLevel.cost}
+                                        </td>
+                                        <td style={{ border: '1px solid #555', padding: '8px' }}>
+                                            {statLevel.upgradePotential}
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>

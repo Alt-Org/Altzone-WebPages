@@ -150,8 +150,6 @@ import { HeroLevel, HeroStats } from '../../types/HeroStats';
 //     );
 // };
 
-
-
 // export type Stat = {
 //     name: string;
 //     value: number;
@@ -267,7 +265,6 @@ import { HeroLevel, HeroStats } from '../../types/HeroStats';
 //     );
 // };
 
-
 // components/AttributesPricing.tsx
 
 // import React, { useState, useEffect } from 'react';
@@ -382,7 +379,6 @@ import { HeroLevel, HeroStats } from '../../types/HeroStats';
 //     );
 // };
 
-
 // components/AttributesPricing.tsx
 
 interface AttributesPricingProps {
@@ -390,7 +386,10 @@ interface AttributesPricingProps {
     initialHeroLevel?: HeroLevel;
 }
 
-export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, initialHeroLevel = 1 }) => {
+export const AttributesPricing: React.FC<AttributesPricingProps> = ({
+    heroSlug,
+    initialHeroLevel = 1,
+}) => {
     const statsStrategy = useMemo(() => new DefaultStatsStrategy(statsData), []);
 
     const [heroLevel, setHeroLevel] = useState<HeroLevel>(initialHeroLevel);
@@ -434,7 +433,7 @@ export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, 
             heroLevel,
             selectedStatName,
             fromStatLevel,
-            toStatLevel
+            toStatLevel,
         );
     }, [statsStrategy, heroSlug, heroLevel, selectedStatName, fromStatLevel, toStatLevel]);
 
@@ -449,9 +448,15 @@ export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, 
             {/* Выбор уровня героя */}
             <div className="InlineBlock">
                 <div className="Header">Hero Level</div>
-                <select value={heroLevel} onChange={handleHeroLevelChange}>
+                <select
+                    value={heroLevel}
+                    onChange={handleHeroLevelChange}
+                >
                     {availableHeroLevels.map((level) => (
-                        <option key={level} value={level}>
+                        <option
+                            key={level}
+                            value={level}
+                        >
                             {level}
                         </option>
                     ))}
@@ -467,7 +472,10 @@ export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, 
                     value={selectedStatName}
                 >
                     {(['attack', 'defense', 'speed'] as (keyof HeroStats)[]).map((statName) => (
-                        <option key={statName} value={statName}>
+                        <option
+                            key={statName}
+                            value={statName}
+                        >
                             {statName}
                         </option>
                     ))}
@@ -483,7 +491,10 @@ export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, 
                     onChange={handleFromStatLevelChange}
                 >
                     {statLevels.map((stat) => (
-                        <option key={stat.statLevel} value={stat.statLevel}>
+                        <option
+                            key={stat.statLevel}
+                            value={stat.statLevel}
+                        >
                             {stat.statLevel}
                         </option>
                     ))}
@@ -499,7 +510,10 @@ export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, 
                     onChange={handleToStatLevelChange}
                 >
                     {statLevels.map((stat) => (
-                        <option key={stat.statLevel} value={stat.statLevel}>
+                        <option
+                            key={stat.statLevel}
+                            value={stat.statLevel}
+                        >
                             {stat.statLevel}
                         </option>
                     ))}
@@ -508,7 +522,10 @@ export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, 
 
             <div className="InlineBlock">
                 <div className="Price">Cost</div>
-                <span data-testid="price" className="Sum">
+                <span
+                    data-testid="price"
+                    className="Sum"
+                >
                     {totalCost}
                 </span>
             </div>
@@ -517,4 +534,3 @@ export const AttributesPricing: React.FC<AttributesPricingProps> = ({ heroSlug, 
         <h2>Stat data is unavailable</h2>
     );
 };
-
