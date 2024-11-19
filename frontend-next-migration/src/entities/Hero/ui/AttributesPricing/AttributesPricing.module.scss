@@ -1,0 +1,40 @@
+.AttributePricing{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+   
+}
+.InlineBlock {
+    margin-right: auto;
+    margin-left: 1em;
+    display: inline-block;
+}
+.Header {
+    color:var(--inverted-primary-color);
+    font-weight: bold;
+    white-space: nowrap;
+}
+.Stats {
+    border-radius: .5em;
+    background-color: rgba(0,0,0,.7);
+    outline: 2px solid var(--inverted-primary-color);
+    font-weight: bolder;
+    border-width: 1px;
+}
+.Dropdown {
+    outline: 2px solid var(--inverted-primary-color);
+    background-color: rgba(0,0,0,.7);
+    color:white;
+    border-radius: .5em;
+}
+.Price {
+    font-weight: bold;
+}
+.Sum {
+    color:var(--inverted-primary-color);
+    font-weight: bold;
+    font-size: 2em;
+    line-height: .5em;
+    margin-top: -.5em;
+    height:fit-content;
+}
