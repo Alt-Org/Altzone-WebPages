@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { DefaultStatsStrategy } from '../../model/stats/DefaultStatsStrategy';
 import { statsData } from '../../model/stats/statsData';
 import { HeroSlug } from '../../types/hero';
-import { HeroStats } from '../../types/HeroStats';
+import { HeroLevel, HeroStats } from '../../types/HeroStats';
+import { HeroStatsManager } from '@/entities/Hero';
 
 interface AttributesPricing2Props {
     initialHeroSlug: HeroSlug;
-    initialLevel?: number;
+    initialLevel?: HeroLevel;
 }
 
 export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({
@@ -14,9 +14,9 @@ export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({
     initialLevel = 1,
 }) => {
     const [heroSlug, setHeroSlug] = useState<HeroSlug>(initialHeroSlug);
-    const [level, setLevel] = useState<number>(initialLevel);
+    const [level, setLevel] = useState<HeroLevel>(initialLevel);
 
-    const statsStrategy = new DefaultStatsStrategy(statsData);
+    const statsStrategy = new HeroStatsManager();
 
     const heroStats = statsStrategy.getStatsForHero(heroSlug, level);
 
@@ -38,7 +38,7 @@ export const AttributesPricingTable: React.FC<AttributesPricing2Props> = ({
     };
 
     const handleLevelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setLevel(Number(event.target.value));
+        setLevel(Number(event.target.value) as HeroLevel);
     };
 
     return (
