@@ -1,19 +1,26 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
-import { AttributesPricing, AttributesPricingProps } from './AttributesPricing';
+import { HeroSlug } from '@/entities/Hero';
+import { AttributesPricing } from './AttributesPricing';
 
 const meta: Meta<typeof AttributesPricing> = {
     title: 'Entities/Hero/AttributesPricing',
     component: AttributesPricing,
 
-    argTypes: {
-        stats: {
-            description: 'contains name, value, rarity class and color information',
-        },
-    },
+    // argTypes: {
+    //     stats: {
+    //         description: 'contains name, value, rarity class and color information',
+    //     },
+    // },
     tags: ['autodocs'],
 
     args: {
+
+        // heroLevel: 1,
+        // initialHeroLevel: 1,
+        // heroSlug: HeroSlug.CONMAN
+
+
         stats: [
             {
                 name: 'resistance',
@@ -31,4 +38,4 @@ const meta: Meta<typeof AttributesPricing> = {
 
 export default meta;
 
-export const Chart = (args: AttributesPricingProps) => <AttributesPricing {...args} />;
+export const Chart = (args: any) => <AttributesPricing {...args} />;

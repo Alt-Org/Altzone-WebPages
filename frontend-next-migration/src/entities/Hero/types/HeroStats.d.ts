@@ -13,7 +13,7 @@ type NumericRange<
     ? ACC | END
     : NumericRange<[...START_ARR, 1], END, ACC | START_ARR['length']>;
 
-export type HeroLevel = NumericRange<CreateArrayWithLengthX<1>, 2>;
+export type HeroLevel = NumericRange<CreateArrayWithLengthX<1>, 4>;
 
 interface StatUpgradeInfo {
     statLevel: number;
@@ -32,6 +32,13 @@ export interface HeroStats {
 
 export interface StatsStrategy {
     getStatsForHero(slug: HeroSlug, level: HeroLevel): HeroStats;
+    getStatUpgradeInfo(
+        slug: HeroSlug,
+        level: HeroLevel,
+        statName: keyof HeroStats,
+        fromStatLevel: number,
+        toStatLevel: number
+    ): { price: number; nextValue: number; upgradePotential: number } | undefined;
 }
 
 // export type StatLevelFromTo = [fromLevel: number, toLevel: number];

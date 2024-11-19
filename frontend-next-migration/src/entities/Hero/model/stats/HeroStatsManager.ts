@@ -1,7 +1,7 @@
-import { HeroLevel, HeroStats, StatsStrategy } from '../../types/HeroStats';
 import { HeroSlug } from '../../types/hero';
-import { statsData } from './statsData';
+import { HeroLevel, HeroStats, StatsStrategy } from '../../types/HeroStats';
 import { DefaultStatsStrategy } from './DefaultStatsStrategy';
+import { statsData } from './statsData';
 
 export class HeroStatsManager {
     private strategy: StatsStrategy;
@@ -14,6 +14,16 @@ export class HeroStatsManager {
     // }
     public getStatsForHero(slug: HeroSlug, level: HeroLevel): HeroStats {
         return this.strategy.getStatsForHero(slug, level);
+    }
+
+    public getStatUpgradeInfo(
+        slug: HeroSlug,
+        level: HeroLevel,
+        statName: keyof HeroStats,
+        fromStatLevel: number,
+        toStatLevel: number
+    ): { price: number; nextValue: number; upgradePotential: number } | undefined {
+        return this.strategy.getStatUpgradeInfo(slug, level, statName, fromStatLevel, toStatLevel);
     }
 
     // public getStatUpgradeInfo(
