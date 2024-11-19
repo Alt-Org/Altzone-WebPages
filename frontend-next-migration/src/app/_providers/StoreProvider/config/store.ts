@@ -13,7 +13,7 @@ import {
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import { authUserReducer, authMiddleware } from '@/entities/Auth';
 import { envHelper } from '@/shared/const/envHelper';
-import { gameApi, strapiApi } from '@/shared/api';
+import { gameApi, strapiApi, directusApi } from '@/shared/api';
 import { StateSchema } from './StateSchema';
 
 const createNoopStorage = () => {
@@ -41,12 +41,13 @@ export function createReduxStore(initialState?: StateSchema) {
         authUser: authUserReducer,
         [gameApi.reducerPath]: gameApi.reducer,
         [strapiApi.reducerPath]: strapiApi.reducer,
+        [directusApi.reducerPath]: directusApi.reducer,
     });
 
     const persistConfig = {
         key: 'root',
         storage,
-        blacklist: [gameApi.reducerPath, strapiApi.reducerPath],
+        blacklist: [gameApi.reducerPath, strapiApi.reducerPath, directusApi.reducerPath],
     };
 
     const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -62,7 +63,12 @@ export function createReduxStore(initialState?: StateSchema) {
                 serializableCheck: {
                     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
                 },
-            }).concat(gameApi.middleware, strapiApi.middleware, authMiddleware),
+            }).concat(
+                gameApi.middleware,
+                strapiApi.middleware,
+                directusApi.middleware,
+                authMiddleware,
+            ),
     });
 
     const persistor = persistStore(store);
