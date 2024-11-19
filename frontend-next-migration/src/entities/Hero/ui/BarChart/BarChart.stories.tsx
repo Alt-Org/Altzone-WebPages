@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
-import { BarChart, BarChartProps, Stat } from './BarChart';
+import { BarChart, BarChartProps } from './BarChart';
 
 const meta: Meta<typeof BarChart> = {
     title: 'Entities/Hero/BarChart',
