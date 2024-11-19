@@ -83,7 +83,6 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-size: var(--font-line-m);
-  min-height: 400px;
   min-width: 300px;
   overflow-y: auto;
   @include custom-scrollbar;
@@ -115,7 +114,6 @@
 }
 
 .membersList {
-  min-height: 400px;
   // max-height: auto;
   overflow-y: auto;
   border: 1px solid #ccc;
