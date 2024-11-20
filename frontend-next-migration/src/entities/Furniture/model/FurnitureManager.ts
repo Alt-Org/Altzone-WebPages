@@ -22,12 +22,23 @@ export class FurnitureManager {
     }
     public getFurnitureSet(id: string) {
         const set = this.furnitureSets[enums[id]];
-        set.items = set.items.map((item: Piece) => {
-            return {
-                ...item,
-                set: set,
-            };
+
+        const ordered: Array<Array<Piece>> = [[], [], [], [], []];
+
+        set.items.map((item: Piece) => {
+            ordered[item.rarity.index].push(item);
+            return true;
         });
+
+        set.items = [];
+        ordered.map((order: Array<Piece>) => {
+            order.map((item: Piece) => {
+                set.items.push(item);
+                return true;
+            });
+            return true;
+        });
+
         return set;
     }
 }

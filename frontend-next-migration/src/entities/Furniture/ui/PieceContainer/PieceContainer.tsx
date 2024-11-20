@@ -4,6 +4,7 @@ import { Piece } from '../../types/set';
 import cls from './PieceContainer.module.scss';
 import { createRef, LegacyRef } from 'react';
 import Image from 'next/image';
+import coin from '@/shared/assets/images/furniture/512Kolikko.png';
 
 type Props = {
     item: any;
@@ -15,6 +16,8 @@ export const PieceCard = (props: Props) => {
     const { path, num, description, cost, weight, rarity, set, cover } = props.item;
     const { setpath } = props;
 
+    const { color, lightcolor, darkcolor } = rarity;
+
     const ref: LegacyRef<HTMLDivElement> = createRef();
     const click = () => {
         const div: HTMLDivElement | null = ref.current;
@@ -22,15 +25,22 @@ export const PieceCard = (props: Props) => {
             return;
         }
 
-        div.style.display = 'block';
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
+        }
+
+        //div.appendChild()
     };
 
     const { t } = props;
     return (
         <div>
+            <div ref={ref} />
             <div
                 className={cls.Card}
-                style={{ backgroundColor: rarity.color }}
+                style={{
+                    background: `linear-gradient(180deg, ${lightcolor} 0%, ${color} 10%, ${color} 40%, ${darkcolor} 50%, ${darkcolor} 100%)`,
+                }}
             >
                 <button
                     className={cls.Container}
@@ -41,23 +51,15 @@ export const PieceCard = (props: Props) => {
                         src={cover}
                         alt={'cover'}
                     />
-                    <p className={cls.info} />
-                    <div className={cls.Fade} />
-                    <div
-                        className={cls.Banner}
-                        style={{ color: rarity.color }}
-                    >
-                        {t(rarity.name)}
+                    <p className={cls.Title}>{t(`${setpath}.ITEMS.${path}.name`)}</p>
+                    <div className={cls.Price}>
+                        {t(`price`)}:{cost}
+                        <Image
+                            className={cls.Coin}
+                            alt={'money-icon'}
+                            src={coin}
+                        />
                     </div>
-                    <ul className={cls.Stats}>
-                        <li>{t(`${setpath}.ITEMS.${path}.name`)}</li>
-                        <li>
-                            {t(`${setpath}.name`)} {num}
-                        </li>
-                        <li>
-                            {t('price')}: {cost}
-                        </li>
-                    </ul>
                 </button>
             </div>
         </div>

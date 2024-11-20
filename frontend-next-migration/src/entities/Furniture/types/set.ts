@@ -17,6 +17,9 @@ export enum Rarities {
 export interface PieceRarity {
     name: string;
     color: string;
+    lightcolor: string;
+    darkcolor: string;
+    index: number;
 }
 
 export enum Types {

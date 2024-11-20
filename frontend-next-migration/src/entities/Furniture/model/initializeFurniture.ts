@@ -35,26 +35,41 @@ import {
     RecycleType,
 } from '../types/set';
 
-const rarityList: Record<Rarities, PieceRarity> = {
+export const rarityList: Record<Rarities, PieceRarity> = {
     [Rarities.COMMON]: {
         name: 'COMMON',
-        color: '#8c8c8c',
+        color: '#FFB3AA',
+        lightcolor: '#FFEAE8',
+        darkcolor: '#FF8479',
+        index: 0,
     },
     [Rarities.RARE]: {
         name: 'RARE',
-        color: '#fd4f3f',
+        color: '#D5D5D5',
+        lightcolor: '#F3F3F3',
+        darkcolor: '#BDBDBD',
+        index: 1,
     },
     [Rarities.EPIC]: {
         name: 'EPIC',
-        color: '#8b61c5',
+        color: '#FFEBA7',
+        lightcolor: '#FFF9E7',
+        darkcolor: '#FFDE73',
+        index: 2,
     },
     [Rarities.ANTIQUE]: {
         name: 'ANTIQUE',
-        color: '#efbc37',
+        color: '#B1DFEA',
+        lightcolor: '#EAF6F9',
+        darkcolor: '#EAF6F9',
+        index: 3,
     },
     [Rarities.NONE]: {
         name: 'UNKNOWN',
         color: '#000000',
+        lightcolor: '#000000',
+        darkcolor: '#000000',
+        index: 4,
     },
 };
 const types: Record<Types, PieceType> = {
@@ -247,6 +262,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 {
                     num: 'R45.0',
                     type: types.LIGHTS,
+                    // eslint-disable-next-line max-lines
                     path: 'FLOORLAMP',
                     weight: 2.8,
                     cost: 240,

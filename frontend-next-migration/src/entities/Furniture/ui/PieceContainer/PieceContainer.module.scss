@@ -2,42 +2,43 @@
     height: auto;
     aspect-ratio: 1 / 1.5;
     margin: 8px;
-    border: 2px solid black;
     position: relative;
     transition: 100ms ease-in-out;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    border-radius: 32px;
 
-    .Fade {
+    .Title {
         position: absolute;
-        z-index: -1;
-        bottom: 0px;
+        top: 16px;
         width: 100%;
-        height: 70%;
-
-        background: linear-gradient(0deg, #ffffff88 0%, #ffffff00 100%);
+        color: white;
+        text-shadow: 2px 2px black;
+        z-index: 3;
+        font-size: 2em;
     }
 
-    .Banner {
+    .Price {
         position: absolute;
-        background-color: white;
-        transform: rotate(45deg);
+        bottom: 16px;
         width: 100%;
-        top: 30px;
-        right: 30px;
-        translate: 50% -50%;
+        color: white;
+        text-shadow: 2px 2px black;
+        text-align: center;
+        z-index: 3;
+        font-size: 1.7em;
+
+        img {
+            width: 50px;
+            display: inline;
+        }
     }
 
-    .Stats {
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-        color: black;
-        list-style-type: disc;
+    .Background {
+        background: linear-gradient(90deg, 0% red, 100% blue);
     }
 
     .Cover {
         position: absolute;
-        z-index: -2;
+        z-index: 2;
         top: 50%;
         left: 50%;
         width: 100%;
