@@ -7,10 +7,13 @@ import React, {
     memo,
     DetailedHTMLProps,
     InputHTMLAttributes,
+    useState,
+    useEffect,
 } from 'react';
 import { Button as CustomButton, ButtonTheme } from '@/shared/ui/Button/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CustomForm.module.scss';
+import { MultiSelect } from 'react-multi-select-component';
 
 /**
  * Header component for displaying a heading inside the form.
@@ -132,6 +135,78 @@ function Button({ children, className = '', ...props }: ButtonProps) {
     );
 }
 
+/**
+ * MultiSelectionDropdown component for rendering a multi-selection dropdown.
+ *
+ * @param {MultiSelectionFieldProps} props - The properties for the MultiSelectionDropdown.
+ * @returns {JSX.Element} - The rendered multiselection component.
+ *
+ * @example
+ *  <Form.MultiSelectionDropdown key={'tag'} maxSelections={3} label={'Tagi'} options={clans} value={selected} onSelectChange={(newSelection) => setSelected(selection)} />
+ */
+
+type MultiSelectionFieldProps<T> = {
+    label: string;
+    className?: string;
+    inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    options: { label: any; value: T }[];
+    onSelectChange: (selected: { label: any; value: T }[]) => void;
+    error?: any;
+    maxSelections?: number;
+    defaultSelected?: { label: any; value: T }[];
+    value: { label: any; value: T }[];
+};
+
+function MultiSelectionDropdown<T>({
+    label,
+    error,
+    maxSelections,
+    inputProps,
+    className = '',
+    value,
+    defaultSelected,
+    options,
+    onSelectChange,
+}: MultiSelectionFieldProps<T>) {
+    const inputId = inputProps?.id || `multiselect-${label}`;
+    const [selectionError, setSelectionError] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (defaultSelected && value.length === 0) {
+            onSelectChange(defaultSelected);
+        }
+    }, [defaultSelected, onSelectChange]);
+
+    const selectionLogic = (newSelection: { label: any; value: T }[]) => {
+        if (maxSelections && newSelection.length > maxSelections) {
+            setSelectionError(`Maximum of ${maxSelections} selections!`);
+        } else {
+            setSelectionError(null);
+            onSelectChange(newSelection);
+        }
+    };
+
+    return (
+        <div className={classNames(cls.field, {}, [className])}>
+            <label htmlFor={inputId}>{label}</label>
+            {(error || selectionError) && (
+                <p
+                    role="alert"
+                    className={cls.error}
+                >
+                    {error || selectionError}
+                </p>
+            )}
+            <MultiSelect
+                options={options}
+                value={value}
+                onChange={selectionLogic}
+                labelledBy={label}
+            />
+        </div>
+    );
+}
+
 interface IFormProps extends HTMLAttributes<HTMLFormElement> {}
 
 interface MemoizedFormCompose {
@@ -139,6 +214,7 @@ interface MemoizedFormCompose {
     Header: typeof Header;
     InputField: typeof InputField;
     Checkbox: typeof Checkbox;
+    MultiSelectionDropdown: typeof MultiSelectionDropdown;
 }
 
 /**
@@ -173,5 +249,6 @@ MemoizedForm.Button = Button;
 MemoizedForm.Header = Header;
 MemoizedForm.InputField = InputField;
 MemoizedForm.Checkbox = Checkbox;
+MemoizedForm.MultiSelectionDropdown = MultiSelectionDropdown;
 
 export default MemoizedForm;
