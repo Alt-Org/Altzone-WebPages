@@ -7,12 +7,6 @@ const meta: Meta<typeof BarChart> = {
     component: BarChart,
 
     argTypes: {
-        width: {
-            description: 'width of bar chart',
-        },
-        height: {
-            description: 'height of bar chart',
-        },
         stats: {
             description: 'stats',
             control: 'object',
