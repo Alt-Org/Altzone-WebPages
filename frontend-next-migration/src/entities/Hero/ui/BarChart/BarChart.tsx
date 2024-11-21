@@ -43,6 +43,7 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                 <div className={cls.Bars}>
                     {stats.map((stat, index) => (
                         <div
+                            data-testid={stat.name}
                             key={index}
                             className={cls.BarContainer}
                             style={{

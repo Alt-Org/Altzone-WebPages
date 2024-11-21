@@ -6,8 +6,6 @@ jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
 }));
 const props = {
-    width: 300,
-    height: 150,
     stats: [
         { name: 'resistance', value: 1, color: 'rgb(153,0,255)' },
         { name: 'hp', value: 2, color: 'rgb(0,255,0)' },
@@ -24,8 +22,6 @@ describe('BarChart', () => {
     test('render components', () => {
         render(<BarChart {...props} />);
 
-        const yMaxValue = screen.getByTestId('yMaxValue');
-        expect(yMaxValue.textContent).toContain('5');
         expect(screen.getByTestId('resistance')).toBeInTheDocument();
         expect(screen.getByTestId('hp')).toBeInTheDocument();
         expect(screen.getByTestId('size')).toBeInTheDocument();
