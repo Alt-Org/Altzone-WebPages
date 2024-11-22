@@ -116,14 +116,16 @@ describe('LangSwitcher', () => {
 
         render(<LangSwitcher />);
 
-        // Find the button that shows the current language
-        const button = screen.getByRole('button', { name: /finnish|english/i });
+        const button = screen.getByRole('button');
+
+        // Assert that the button does not show 'es' as the current language
+        expect(button).not.toHaveTextContent('spanish');
 
         // Assert that the fallback language is displayed
         expect(button).toHaveTextContent('finnish');
 
-        // Assert that the unavailable language is not displayed
-        expect(button).not.toHaveTextContent('es');
+        // Check that the default language is Finnish
+        expect(window.location.href).toContain('/fi/');
     });
 
     it('contains all available language options', () => {

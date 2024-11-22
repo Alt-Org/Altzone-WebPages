@@ -4,13 +4,16 @@ import NavbarDesktop from './NavbarDesktop';
 import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
 import { NavbarBuild, NavBarType } from '../../model/types';
 
-type NavbarProps = {
+interface NavbarProps {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild;
-    isFixed?: boolean;
+    isFixed: boolean;
+    isCollapsed: boolean;
+    toggleCollapsed: () => void;
+    toggleFixed: () => void;
     navBarType?: NavBarType;
-};
+}
 
 const meta: Meta<typeof NavbarDesktop> = {
     title: '@/widgets/Navbar/ui/NavbarDesktop/NavbarDesktop',

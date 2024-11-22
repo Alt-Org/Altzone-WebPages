@@ -30,6 +30,11 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         // Add more languages here
     ];
 
+    // Get the label of the current language
+    const [selected, setSelected] = useState<string>(
+        options.find((option) => option.value === language)?.label || options[0]?.label || '',
+    );
+
     const handleChangeLanguage = (newLanguage: AppLanguage) => {
         window.location.href = currentPathname.replace(`/${language}`, `/${newLanguage}`);
     };
@@ -62,11 +67,6 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         }
     };
 
-    // Get the label of the current language
-    const [selected, setSelected] = useState<string>(
-        options.find((option) => option.value === language)?.label || '',
-    );
-
     // Close the menu if clicking outside of it
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -91,7 +91,6 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
-                {/*Add more languages here*/}
                 {selected}
                 <FontAwesomeIcon icon={faChevronDown} />
             </button>
