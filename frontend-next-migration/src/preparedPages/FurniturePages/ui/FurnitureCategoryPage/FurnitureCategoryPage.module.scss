@@ -1,0 +1,58 @@
+.Page {
+    margin-top: 150px;
+}
+
+.CardsContainer {
+    padding: 8px;
+    display: grid;
+
+    grid-template-columns: 25% 25% 25% 25%;
+
+
+    @media (max-width: 1190px) {
+        grid-template-columns: 33.333% 33.333% 33.333%;
+    }
+
+    @media (max-width: 1000px) {
+        grid-template-columns: 50% 50%;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 100%;
+    }
+}
+
+.Container {
+    background-color: var(--transparent-bg-dark);
+    border-radius: var(--border-radius-custom);
+
+    h1 {
+        font-size: clamp(40px, 7vw, 50px);
+        line-height: 1.5;
+        font-weight: 600;
+    }
+
+    h3 {
+        font-size: clamp(20px, 5vw, 30px);
+        line-height: 1.25;
+        font-weight: 400;
+    }
+
+    font-family: var(--font-family-main);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.Enabled,
+.Disabled {
+    border-radius: 4px;
+    background-color: black;
+}
+
+.Enabled {
+    border: 2px solid white;
+}
+
+.Disabled {
+    border: 2px solid black;
+}

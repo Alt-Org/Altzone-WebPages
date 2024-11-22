@@ -1,41 +1,46 @@
 'use client';
 import { TFunction } from 'i18next';
-import { Piece } from '../../types/set';
+import { Piece, SetInfo } from '../../types/set';
 import cls from './PieceContainer.module.scss';
 import { createRef, LegacyRef } from 'react';
 import Image from 'next/image';
 import coin from '@/shared/assets/images/furniture/512Kolikko.png';
+import PieceView from '../PieceView/PieceView';
 
 type Props = {
     item: any;
-    setpath: string;
     t: TFunction<string, undefined>;
 };
 
 export const PieceCard = (props: Props) => {
-    const { path, num, description, cost, weight, rarity, set, cover } = props.item;
-    const { setpath } = props;
+    const { path, cost, rarity, cover, set } = props.item;
+
+    const setpath = set.path;
 
     const { color, lightcolor, darkcolor } = rarity;
 
     const ref: LegacyRef<HTMLDivElement> = createRef();
     const click = () => {
-        const div: HTMLDivElement | null = ref.current;
+        const div = ref.current;
         if (!div) {
             return;
         }
 
-        while (div.firstChild) {
-            div.removeChild(div.firstChild);
-        }
-
-        //div.appendChild()
+        div.style.display = 'block';
     };
 
     const { t } = props;
     return (
         <div>
-            <div ref={ref} />
+            <div
+                className={cls.ViewContainer}
+                ref={ref}
+            >
+                <PieceView
+                    piece={props.item}
+                    set={set}
+                />
+            </div>
             <div
                 className={cls.Card}
                 style={{

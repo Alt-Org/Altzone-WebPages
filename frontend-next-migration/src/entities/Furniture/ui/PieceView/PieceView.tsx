@@ -8,16 +8,14 @@ type Props = {
     set?: SetInfo;
 };
 
-const PieceView = forwardRef((props: Props, ref: LegacyRef<HTMLDivElement>) => {
+const PieceView = (props: Props) => {
     return (
-        <div
-            ref={ref}
-            className={cls.Background}
-        >
+        <div className={cls.Background}>
             <div className={cls.Container} />
+            AAAA
         </div>
     );
-});
+};
 
 PieceView.displayName = 'PieceView';
 

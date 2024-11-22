@@ -122,4 +122,5 @@ export const getRoute404Page = () => '/404';
 
 export const getRouteAllFurnitureSetsPage = () => '/furniture';
 export const getRouteOneFurnitureSetPage = (id: string) => `/furniture/set/${id}`;
-//export const getRoute
+export const getRouteFurnitureSearchPage = () => '/furniture/search';
+export const getRouteFurnitureCategoryPage = () => '/furniture/category';

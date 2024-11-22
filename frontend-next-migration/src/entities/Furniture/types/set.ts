@@ -36,7 +36,9 @@ export enum Types {
     CABINETS = 'CABINETS',
     BEDS = 'BEDS',
 }
-export interface PieceType {}
+export interface PieceType {
+    name: string;
+}
 
 export enum Materials {
     WOOD = 'WOOD',

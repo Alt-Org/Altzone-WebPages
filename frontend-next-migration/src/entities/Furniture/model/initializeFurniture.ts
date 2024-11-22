@@ -72,7 +72,7 @@ export const rarityList: Record<Rarities, PieceRarity> = {
         index: 4,
     },
 };
-const types: Record<Types, PieceType> = {
+export const types: Record<Types, PieceType> = {
     [Types.CHAIRS]: {
         name: 'TYPES.CHAIRS.name',
     },
@@ -110,7 +110,7 @@ const types: Record<Types, PieceType> = {
         name: 'TYPES.BEDS.name',
     },
 };
-const materials: Record<Materials, MaterialType> = {
+export const materials: Record<Materials, MaterialType> = {
     [Materials.WOOD]: {
         name: 'MATERIALS.WOOD.name',
     },
@@ -151,7 +151,7 @@ const materials: Record<Materials, MaterialType> = {
         name: 'MATERIALS.STEEL.name',
     },
 };
-const recycles: Record<Recycles, RecycleType> = {
+export const recycles: Record<Recycles, RecycleType> = {
     [Recycles.GENERAL]: {
         name: 'RECYCLES.GENERAL.name',
     },

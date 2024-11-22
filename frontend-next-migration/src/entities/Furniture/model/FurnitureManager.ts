@@ -1,4 +1,4 @@
-import { FurnitureSet, SetInfo, Piece } from '../types/set';
+import { FurnitureSet, SetInfo, Piece, PieceType } from '../types/set';
 import { initializeFurnitureSets } from './initializeFurniture';
 
 const enums: Record<string, FurnitureSet> = {
@@ -33,12 +33,32 @@ export class FurnitureManager {
         set.items = [];
         ordered.map((order: Array<Piece>) => {
             order.map((item: Piece) => {
-                set.items.push(item);
+                set.items.push({
+                    ...item,
+                    set: set,
+                });
                 return true;
             });
             return true;
         });
 
         return set;
+    }
+    public getPiecesByCategory(cat: PieceType) {
+        const ret: Array<Piece> = [];
+
+        this.getAllFurnitureSets().map((set: SetInfo) => {
+            return set.items.map((piece: Piece) => {
+                if (piece.type === cat) {
+                    ret.push({
+                        ...piece,
+                        set: set,
+                    });
+                }
+                return true;
+            });
+        });
+
+        return ret;
     }
 }
