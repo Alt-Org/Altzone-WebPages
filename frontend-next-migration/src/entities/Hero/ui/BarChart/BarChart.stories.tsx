@@ -1,6 +1,11 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { BarChart, BarChartProps } from './BarChart';
+
+type StoryBookProps = BarChartProps & {
+    width: string;
+    height: number;
+};
 
 const meta: Meta<typeof BarChart> = {
     title: 'Entities/Hero/BarChart',
@@ -32,4 +37,13 @@ const meta: Meta<typeof BarChart> = {
 
 export default meta;
 
-export const Chart = (args: BarChartProps) => <BarChart {...args} />;
+export const Chart = (args: BarChartProps) => (
+    <div
+        style={{
+            width: '50%',
+            height: '300px',
+        }}
+    >
+        <BarChart {...args} />
+    </div>
+);
