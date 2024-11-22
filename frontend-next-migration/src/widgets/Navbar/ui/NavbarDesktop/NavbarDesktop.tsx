@@ -6,18 +6,11 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
-import { defineNs } from '../../model/defineNs';
-import { NavbarBuild, NavBarType } from '../../model/types';
+import { NavbarBuild } from '../../model/types';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-    navBarActions,
-    selectIsCollapsed,
-    selectIsFixed,
-} from '../../model/navbarSlice/navBarSlice';
 
 /**
  * Properties for NavnarDesctop component
@@ -26,9 +19,8 @@ import {
  * @property {string} className Additional CSS classes
  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
  * @property {boolean} isFixed This is deprecated. Fixed type is get from context
- * @property {NavBarType} navNarType Navbar type
  */
-interface NavbarProps {
+export interface NavbarProps {
     marginTop?: number;
     className?: string;
     navbarBuild: NavbarBuild;
@@ -36,7 +28,6 @@ interface NavbarProps {
     isCollapsed: boolean;
     toggleCollapsed: () => void;
     toggleFixed: () => void;
-    navBarType?: NavBarType;
 }
 
 const NavbarDesktop = memo((props: NavbarProps) => {
@@ -44,7 +35,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         navbarBuild,
         marginTop,
         className = '',
-        navBarType = 'Default',
         toggleCollapsed,
         toggleFixed,
         isCollapsed,
@@ -59,8 +49,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const ns = defineNs(navBarType);
-    const { t } = useClientTranslation(ns);
+    const { t } = useClientTranslation('navbar');
     const [isAnimating, setIsAnimating] = useState(false);
 
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};

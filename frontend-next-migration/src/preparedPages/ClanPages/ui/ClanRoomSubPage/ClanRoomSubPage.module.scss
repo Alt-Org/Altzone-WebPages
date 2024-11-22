@@ -49,7 +49,7 @@
 
 .parent {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto repeat(3, 1fr);
   grid-column-gap: 6px;
   grid-row-gap: 6px;
@@ -60,7 +60,7 @@
   display: flex;
   padding: 5px;
   font-size: var(--font-line-xl);
-  grid-area: 1 / 1 / 2 / 5;
+  grid-area: 1 / 1 / 2 / 4;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -83,23 +83,15 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-size: var(--font-line-m);
-  min-height: 400px;
   min-width: 300px;
   overflow-y: auto;
   @include custom-scrollbar;
   // max-height: 40vh;
 }
 
-.clanSoulHome {
-  grid-area: 2 / 2 / 5 / 3;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: var(--border-radius-custom);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-}
-
 .buttonField {
   display: flex;
-  grid-area: 1 / 5 / 2 / 7;
+  grid-area: 1 / 4 / 2 / 5;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -109,7 +101,7 @@
 
 .memberList {
   display: grid;
-  grid-area: 2 / 5 / 5 / 7;
+  grid-area: 2 / 4 / 5 / 5;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -122,7 +114,6 @@
 }
 
 .membersList {
-  min-height: 400px;
   // max-height: auto;
   overflow-y: auto;
   border: 1px solid #ccc;
@@ -158,7 +149,7 @@
 }
 
 .clanMotto {
-  grid-area: 2 / 3 / 3 / 5;
+  grid-area: 2 / 2 / 3 / 4;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -173,7 +164,7 @@
 }
 
 .clanInformation {
-  grid-area: 3 / 3 / 5 / 5;
+  grid-area: 3 / 2 / 5 / 4;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius-custom);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -224,10 +215,6 @@
   .clanList {
     display: none;
     grid-area: 2 / 1 / 3 / 2;
-  }
-
-  .clanSoulHome {
-    grid-area: 6 / 1 / 7 / 3;
   }
 
   .buttonField {

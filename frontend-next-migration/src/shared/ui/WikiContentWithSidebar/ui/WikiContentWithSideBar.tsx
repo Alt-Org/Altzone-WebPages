@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
-import { ScrollTop } from '@/features/ScrollTop';
+import { useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './WikiContentWithSideBar.module.scss';
@@ -115,7 +114,6 @@ const WikiContentWithSideBar = (props: Props) => {
                     )}
                 </div>
             </div>
-            {(isMobileSize || isTabletSize) && <ScrollTop />}
         </div>
     );
 };

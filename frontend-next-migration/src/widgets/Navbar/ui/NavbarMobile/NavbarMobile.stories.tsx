@@ -1,17 +1,7 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
-import NavbarMobile from './NavbarMobile';
-import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
-import { NavbarBuild, NavBarType } from '../../model/types';
-
-interface NavbarTouchProps {
-    marginTop?: number;
-    onBurgerButtonClick?: (isMenuOpen: boolean) => void;
-    navbarBuild?: NavbarBuild;
-    side?: 'left' | 'right';
-    className?: string;
-    navBarType?: NavBarType;
-}
+import NavbarMobile, { NavbarTouchProps } from './NavbarMobile';
+import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 
 const meta: Meta<typeof NavbarMobile> = {
     title: '@/widgets/Navbar/ui/NavbarMobile/NavbarMobile',
@@ -33,16 +23,12 @@ const meta: Meta<typeof NavbarMobile> = {
         navbarBuild: {
             description: 'Navigation bar components according to usage type and view size',
         },
-        navBarType: {
-            description: 'Navbar type',
-        },
     },
     args: {
         marginTop: 0,
         side: 'left',
         className: '',
-        navBarType: 'Default',
-        navbarBuild: getNavbarBuildByTypeAndSize('Default', 'mobile'),
+        navbarBuild: getNavbarBuildBySize('mobile'),
     },
     tags: ['autodocs'],
 };

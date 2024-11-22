@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 // import user from '@testing-library/user-event';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
-import { getNavbarBuildByTypeAndSize } from '../../model/getNavbarBuildByTypeAndSize';
+import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 import NavbarMobile from './NavbarMobile';
 
 jest.mock('@/shared/i18n', () => ({
@@ -43,7 +43,7 @@ describe('Navbar mobile', () => {
                 isCollapsed={true}
                 isFixed={true}
                 toggleFixed={jest.fn}
-                navbarBuild={getNavbarBuildByTypeAndSize('Default', 'mobile')}
+                navbarBuild={getNavbarBuildBySize('mobile')}
             />,
         );
 

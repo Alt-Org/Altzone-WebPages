@@ -8,6 +8,7 @@ import {
     getRouteGameArtPage,
     getRouteAllHeroesPage,
     getRouteAllClanSearchPage,
+    getRouteJoinUsPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -22,8 +23,8 @@ export const dropdowns = {
         {
             elementText: 'join',
             link: {
-                path: AppExternalLinks.join,
-                isExternal: true,
+                path: getRouteJoinUsPage(),
+                isExternal: false,
             },
         },
         {

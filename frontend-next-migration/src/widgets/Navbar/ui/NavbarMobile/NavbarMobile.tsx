@@ -8,9 +8,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
-import { defineNs } from '../../model/defineNs';
-import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
-// import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
@@ -24,13 +22,12 @@ import cls from './NavbarMobile.module.scss';
 //  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
 //  * @property {NavBarType} navNarType Navbar type
 //  */
-interface NavbarTouchProps {
+export interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
     side?: 'left' | 'right';
     className?: string;
-    navBarType?: NavBarType;
     isFixed: boolean;
     isCollapsed: boolean;
     toggleCollapsed: () => void;
@@ -38,18 +35,9 @@ interface NavbarTouchProps {
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const {
-        marginTop,
-        navbarBuild,
-        side = 'left',
-        className = '',
-        navBarType = 'Default',
-        toggleFixed,
-        isFixed,
-    } = props;
+    const { marginTop, navbarBuild, side = 'left', className = '', toggleFixed, isFixed } = props;
 
-    const ns = defineNs(navBarType);
-    const { t } = useClientTranslation(ns);
+    const { t } = useClientTranslation('navbar');
 
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');

@@ -81,13 +81,6 @@ const ClanRoomSubPage = (props: Props) => {
                     <div className={cls.clanList}>
                         {!isMobileSize && <ClansViewAndSearchDesktop />}
                     </div>
-                    <div className={cls.clanSoulHome}>
-                        <Image
-                            src={clanHome}
-                            alt={'clan home'}
-                            className={cls.clanHome}
-                        />
-                    </div>
                     <div className={cls.buttonField}>
                         <ButtonField
                             clanData={clan?.data?.Clan}
