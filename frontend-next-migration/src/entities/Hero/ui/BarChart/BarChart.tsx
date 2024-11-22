@@ -28,7 +28,10 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
     );
 
     return (
-        <div style={{ height: '100%' }}>
+        <div
+            className={cls.Container}
+            style={{ height: '100%' }}
+        >
             <div className={cls.Barchart}>
                 <div className={cls.yAxis}>
                     {tickValues.map((value, index) => (
@@ -71,13 +74,10 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                 </div>
             </div>
             <div className={cls.Explanations}>
-                <ul
-                    style={{
-                        columnCount: '2',
-                    }}
-                >
+                <ul className={cls.List}>
                     {stats.map((stat, key) => (
                         <li
+                            className={cls.ListItem}
                             key={key}
                             style={{ color: stat.color }}
                         >
