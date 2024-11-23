@@ -76,19 +76,13 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
         [stats, selectedStat],
     );
 
-    const handleFromLevelChange = useCallback(
-        (event: React.ChangeEvent<HTMLSelectElement>) => {
-            setFromLevel(Number(event.target.value));
-        },
-        [fromLevel],
-    );
+    const handleFromLevelChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+        setFromLevel(Number(event.target.value));
+    }, []);
 
-    const handleToLevelChange = useCallback(
-        (event: React.ChangeEvent<HTMLSelectElement>) => {
-            setToLevel(Number(event.target.value));
-        },
-        [toLevel],
-    );
+    const handleToLevelChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+        setToLevel(Number(event.target.value));
+    }, []);
 
     const levelRange = useMemo(() => getLevelRange(), [getLevelRange, totalUpgraded, currentLevel]);
 
@@ -102,13 +96,7 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
                 statsPricingData[selectedStat.rarityClass][i] * statsPricingData.stepsPerLevel[i];
         }
         return total;
-    }, [
-        fromLevel,
-        toLevel,
-        selectedStat.rarityClass,
-        selectedStat.developmentLevel,
-        selectedStat.defaultLevel,
-    ]);
+    }, [fromLevel, toLevel, selectedStat.rarityClass, selectedStat.defaultLevel]);
 
     if (!statsPricingData) {
         return <h2>{t('Stat pricing data is unavailable')}</h2>;
