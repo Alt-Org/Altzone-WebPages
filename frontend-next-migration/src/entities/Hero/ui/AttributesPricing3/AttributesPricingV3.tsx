@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { statsPricingData } from '../../model/stats/statsPricingData';
 import cls from './AttributesPricing.module.scss';
@@ -45,16 +45,24 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
     );
     const totalUpgraded = useMemo(
         () => stats.reduce((sum, current) => sum + (current.developmentLevel || 0), 0),
-        [stats],
+        [stats, selectedStat.developmentLevel],
     );
+
+    //This fixes dropdown updates and out-of-range calculations in Storybook when editing Stats data.
+    const currentLevel = useMemo(() => {
+        const current = stats.find((stat) => stat.name === selectedStat.name) || selectedStat;
+        const updatedLevel = current.defaultLevel + (current.developmentLevel || 0);
+        setSelectedStat(current);
+        setFromLevel(updatedLevel);
+        setToLevel(updatedLevel);
+        return updatedLevel;
+    }, [stats, selectedStat]);
 
     const { t } = useClientTranslation('heroes-stats');
 
     const getLevelRange = useCallback(
-        (currentLevel: number) => {
-            return Array.from({ length: 11 - totalUpgraded }, (_, i) => i + currentLevel);
-        },
-        [totalUpgraded],
+        () => Array.from({ length: 11 - totalUpgraded }, (_, i) => i + currentLevel),
+        [totalUpgraded, currentLevel],
     );
 
     const handleStatChange = useCallback(
@@ -68,30 +76,39 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
         [stats, selectedStat],
     );
 
-    const handleFromLevelChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        setFromLevel(Number(event.target.value));
-    }, []);
-
-    const handleToLevelChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        setToLevel(Number(event.target.value));
-    }, []);
-
-    const levelRange = useMemo(
-        () => getLevelRange(selectedStat.defaultLevel + (selectedStat.developmentLevel || 0)),
-        [selectedStat.defaultLevel, selectedStat.developmentLevel, getLevelRange, totalUpgraded],
+    const handleFromLevelChange = useCallback(
+        (event: React.ChangeEvent<HTMLSelectElement>) => {
+            setFromLevel(Number(event.target.value));
+        },
+        [fromLevel],
     );
+
+    const handleToLevelChange = useCallback(
+        (event: React.ChangeEvent<HTMLSelectElement>) => {
+            setToLevel(Number(event.target.value));
+        },
+        [toLevel],
+    );
+
+    const levelRange = useMemo(() => getLevelRange(), [getLevelRange, totalUpgraded, currentLevel]);
 
     const sum = useMemo(() => {
         if (fromLevel >= toLevel) return 0;
         let total = 0;
-        const from = 0 + (selectedStat.developmentLevel || 0);
+        const from = fromLevel - selectedStat.defaultLevel;
         const to = toLevel - selectedStat.defaultLevel;
         for (let i = from; i < to; i++) {
             total +=
                 statsPricingData[selectedStat.rarityClass][i] * statsPricingData.stepsPerLevel[i];
         }
         return total;
-    }, [fromLevel, toLevel, selectedStat.rarityClass]);
+    }, [
+        fromLevel,
+        toLevel,
+        selectedStat.rarityClass,
+        selectedStat.developmentLevel,
+        selectedStat.defaultLevel,
+    ]);
 
     if (!statsPricingData) {
         return <h2>{t('Stat pricing data is unavailable')}</h2>;

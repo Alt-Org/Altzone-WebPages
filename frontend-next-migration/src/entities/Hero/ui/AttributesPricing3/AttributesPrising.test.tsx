@@ -1,4 +1,4 @@
-import { render, screen, getByTestId } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useClientTranslation } from '@/shared/i18n';
 import { AttributesPricing3 } from './AttributesPricingV3';

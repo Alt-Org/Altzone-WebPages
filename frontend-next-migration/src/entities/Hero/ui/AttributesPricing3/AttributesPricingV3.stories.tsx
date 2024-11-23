@@ -1,24 +1,14 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
-import { HeroSlug } from '@/entities/Hero';
 import { AttributesPricing3 } from './AttributesPricingV3';
 
 const meta: Meta<typeof AttributesPricing3> = {
     title: 'Entities/Hero/AttributesPricingV3',
     component: AttributesPricing3,
 
-    // argTypes: {
-    //     stats: {
-    //         description: 'contains name, value, rarity class and color information',
-    //     },
-    // },
     tags: ['autodocs'],
 
     args: {
-        // heroLevel: 1,
-        // initialHeroLevel: 1,
-        // heroSlug: HeroSlug.CONMAN
-
         stats: [
             {
                 name: 'resistance',
