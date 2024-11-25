@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { HeroManager } from '@/entities/Hero';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
