@@ -37,8 +37,11 @@
 
 
 .SeeMore:hover {
-  filter: blur(0);
-  background-color: rgba(0, 0, 0, 0.9);
-  transform: scale(1.05) rotate(0deg);
-  transition: filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  @include link-scale-effect;
+  color: var(--secondary-color)!important;
+
+  //filter: blur(0);
+  ////background-color: rgba(0, 0, 0, 0.9);
+  //transform: scale(1.05) rotate(0deg);
+  //transition: filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
