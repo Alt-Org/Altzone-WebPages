@@ -54,7 +54,7 @@
    
 }
 .yAxis {
-    width: 1em;
+    width: fit-content;
     font-size: 1em;
     display: flex;
     flex-direction: column-reverse;
@@ -68,6 +68,7 @@
     
     font-weight:bold;
     color: lightgreen;
+
 }
 .Bars {
     flex: 1;
