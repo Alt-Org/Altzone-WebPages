@@ -43,9 +43,12 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
     const [toLevel, setToLevel] = useState(
         stats[0].defaultLevel + (stats[0].developmentLevel || 0),
     );
+
+    const { t } = useClientTranslation('heroes-stats');
+
     const totalUpgraded = useMemo(
         () => stats.reduce((sum, current) => sum + (current.developmentLevel || 0), 0),
-        [stats, selectedStat.developmentLevel],
+        [stats],
     );
 
     //This fixes dropdown updates and out-of-range calculations in Storybook when editing Stats data.
@@ -57,8 +60,6 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
         setToLevel(updatedLevel);
         return updatedLevel;
     }, [stats, selectedStat]);
-
-    const { t } = useClientTranslation('heroes-stats');
 
     const getLevelRange = useCallback(
         () => Array.from({ length: 11 - totalUpgraded }, (_, i) => i + currentLevel),
