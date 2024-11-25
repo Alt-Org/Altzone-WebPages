@@ -51,15 +51,20 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
         [stats],
     );
 
+    const setDropdowns = useCallback(
+        (statName: string) => {
+            const current = stats.find((stat) => stat.name === statName) || selectedStat;
+            const updatedLevel = current.defaultLevel + (current.developmentLevel || 0);
+            setSelectedStat(current);
+            setFromLevel(updatedLevel);
+            setToLevel(updatedLevel);
+            return updatedLevel;
+        },
+        [stats, selectedStat],
+    );
+
     //This fixes dropdown updates and out-of-range calculations in Storybook when editing Stats data.
-    const currentLevel = useMemo(() => {
-        const current = stats.find((stat) => stat.name === selectedStat.name) || selectedStat;
-        const updatedLevel = current.defaultLevel + (current.developmentLevel || 0);
-        setSelectedStat(current);
-        setFromLevel(updatedLevel);
-        setToLevel(updatedLevel);
-        return updatedLevel;
-    }, [stats, selectedStat]);
+    const currentLevel = useMemo(() => setDropdowns(selectedStat.name), [stats, selectedStat]);
 
     const getLevelRange = useCallback(
         () => Array.from({ length: 11 - totalUpgraded }, (_, i) => i + currentLevel),
@@ -69,10 +74,7 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
     const handleStatChange = useCallback(
         (event: React.ChangeEvent<HTMLSelectElement>) => {
             const statName = event.target.value;
-            const newStat = stats.find((stat) => stat.name === statName) || selectedStat;
-            setSelectedStat(newStat);
-            setFromLevel(newStat.defaultLevel + (newStat.developmentLevel || 0));
-            setToLevel(newStat.defaultLevel + (newStat.developmentLevel || 0));
+            setDropdowns(statName);
         },
         [stats, selectedStat],
     );
