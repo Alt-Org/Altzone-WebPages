@@ -6,4 +6,6 @@ export type IPlayer = {
     profile_id: string;
     clan_id: string;
     above13: boolean;
+    parentalAuth: boolean;
+    points: number;
 };

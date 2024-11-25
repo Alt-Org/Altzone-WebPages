@@ -5,7 +5,6 @@ export type {
     AuthUserSchema,
     ILoginResponse,
     AccessTokenInfoResponse,
-    AccessTokenInfo,
 } from './types/authUser';
 
 export {
@@ -20,10 +19,8 @@ export {
     selectIsSessionExpired,
     selectAccessTokenInfo,
     selectAuthUserState,
-    selectProfile,
     authUserActions,
     selectIsAuthenticated,
-    selectClanId,
 } from './model/authUserSlice/authUserSlice';
 
 export { useUserPermissions } from './model/~deprecated/useUserPermissions';
