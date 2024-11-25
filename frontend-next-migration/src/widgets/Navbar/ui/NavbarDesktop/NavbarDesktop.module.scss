@@ -113,11 +113,13 @@
 
 .langSwitcher {
   border-radius: var(--border-radius-custom);
-  outline: 2px solid var(--inverted-primary-color);
+  border: 2px solid var(--inverted-primary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
-}
+  text-align: center;
+  padding: 4px;
+ }
 
 .authButton {
   border-radius: var(--border-radius-custom);
