@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "@directus/sdk": "^18.0.0",
     "@fancyapps/ui": "^5.0.25",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
