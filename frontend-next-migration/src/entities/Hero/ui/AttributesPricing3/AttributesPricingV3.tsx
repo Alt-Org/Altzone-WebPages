@@ -44,7 +44,7 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
         stats[0].defaultLevel + (stats[0].developmentLevel || 0),
     );
 
-    const { t } = useClientTranslation('heroes-stats');
+    const { t } = useClientTranslation('heroes-stats-pricing');
 
     const totalUpgraded = useMemo(
         () => stats.reduce((sum, current) => sum + (current.developmentLevel || 0), 0),
