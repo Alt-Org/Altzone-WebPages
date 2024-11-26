@@ -2,7 +2,6 @@ import { Meta, StoryObj } from '@storybook/react';
 import MemoizedForm from './CustomForm';
 import { useState } from 'react';
 import { ClanLabel } from '@/entities/Clan/enum/clanLabel.enum';
-import { Value } from 'sass';
 
 const meta = {
     title: 'shared/ui/CustomForm',
