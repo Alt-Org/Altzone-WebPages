@@ -138,22 +138,34 @@ function Button({ children, className = '', ...props }: ButtonProps) {
 /**
  * MultiSelectionDropdown component for rendering a multi-selection dropdown.
  *
+ * 
  * @param {MultiSelectionFieldProps} props - The properties for the MultiSelectionDropdown.
+ * options accepts Record<string, string> as a prop type and function convert it to { label: any; value: T }[] -form for MultiSelectionDropdown
+ * 
  * @returns {JSX.Element} - The rendered multiselection component.
  *
  * @example
- *  <Form.MultiSelectionDropdown key={'tag'} maxSelections={3} label={'Tagi'} options={clans} value={selected} onSelectChange={(newSelection) => setSelected(selection)} />
+ * const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
+ * 
+ *  <MemoizedForm.MultiSelectionDropdown
+        label='Clan labels'
+        options={ClanLabel}
+        defaultSelected={{ ITSENÄISET : ClanLabel.ITSENÄISET }}
+        maxSelections={5}
+        value={selected}
+        onSelectChange={(newSelection) => setSelected(newSelection)}
+    />
  */
 
 type MultiSelectionFieldProps<T> = {
     label: string;
     className?: string;
     inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-    options: { label: any; value: T }[];
+    options: Record<any, any>;
     onSelectChange: (selected: { label: any; value: T }[]) => void;
     error?: any;
     maxSelections?: number;
-    defaultSelected?: { label: any; value: T }[];
+    defaultSelected?: Record<any, any>;
     value: { label: any; value: T }[];
 };
 
@@ -171,9 +183,18 @@ function MultiSelectionDropdown<T>({
     const inputId = inputProps?.id || `multiselect-${label}`;
     const [selectionError, setSelectionError] = useState<string | null>(null);
 
+    const formattedOptions = Object.entries(options).map(([key, value]) => ({
+        label: value,
+        value: key,
+    }));
+
     useEffect(() => {
         if (defaultSelected && value.length === 0) {
-            onSelectChange(defaultSelected);
+            const refactoredDefaults = Object.entries(defaultSelected).map(([key, value]) => ({
+                label: value,
+                value: key as T,
+            }));
+            onSelectChange(refactoredDefaults);
         }
     }, [defaultSelected, onSelectChange]);
 
@@ -198,7 +219,7 @@ function MultiSelectionDropdown<T>({
                 </p>
             )}
             <MultiSelect
-                options={options}
+                options={formattedOptions}
                 value={value}
                 onChange={selectionLogic}
                 labelledBy={label}

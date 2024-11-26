@@ -1,5 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 import MemoizedForm from './CustomForm';
+import { useState } from 'react';
+import { ClanLabel } from '@/entities/Clan/enum/clanLabel.enum';
+import { Value } from 'sass';
+
 const meta = {
     title: 'shared/ui/CustomForm',
     component: MemoizedForm,
@@ -94,5 +98,22 @@ export const FormInputField: Story = {
 export const FormCheckbox: Story = {
     args: {
         children: <MemoizedForm.Checkbox label="I agree to the terms" />,
+    },
+};
+
+export const MultiSelectionDropdown: Story = {
+    render: () => {
+        const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
+
+        return (
+            <MemoizedForm.MultiSelectionDropdown
+                label="Labels"
+                options={ClanLabel}
+                defaultSelected={{ ITSENÄISET: ClanLabel.ITSENÄISET }}
+                maxSelections={5}
+                value={selected}
+                onSelectChange={(newSelection) => setSelected(newSelection)}
+            />
+        );
     },
 };
