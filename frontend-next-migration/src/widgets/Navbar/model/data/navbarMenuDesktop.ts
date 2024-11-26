@@ -20,6 +20,3 @@ navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());
 
 export const navbarMenuDesktop = navbarBuilder.build();
-export const navbarGameArtDesktop = navbarBuilder.build();
-export const navbarCookiesDesktop = navbarBuilder.build();
-export const navbarPrivacyDesktop = navbarBuilder.build();
