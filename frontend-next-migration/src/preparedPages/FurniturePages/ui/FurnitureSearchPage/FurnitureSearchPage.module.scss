@@ -11,9 +11,11 @@
     @media (max-width: 1190px) {
         grid-template-columns: 33.333% 33.333% 33.333%;
     }
+
     @media (max-width: 1000px) {
         grid-template-columns: 50% 50%;
     }
+
     @media (max-width: 768px) {
         grid-template-columns: 100%;
     }
@@ -36,4 +38,9 @@
     font-family: var(--font-family-main);
     padding-bottom: 10px;
     text-align: center;
+}
+
+.Back {
+    text-align: left;
+    margin-left: 8px;
 }

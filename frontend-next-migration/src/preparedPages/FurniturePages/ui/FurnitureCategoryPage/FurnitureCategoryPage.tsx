@@ -29,7 +29,8 @@ const FurnitureCategoryPage = () => {
     return (
         <div className={classNames(cls.Page)}>
             <Container className={cls.Container}>
-                <div>
+                <h1>{t('results')}</h1>
+                <div className={cls.Buttons}>
                     {Object.entries(types).map((value) => {
                         const id = value[0];
                         const val = value[1];
@@ -61,7 +62,6 @@ const FurnitureCategoryPage = () => {
                 <div className={cls.Back}>
                     <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
                 </div>
-                <h1>{t('results')}</h1>
                 {list.length === 0 ? (
                     <h3>{t('no-results')}</h3>
                 ) : (

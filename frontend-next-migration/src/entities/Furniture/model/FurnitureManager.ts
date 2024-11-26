@@ -1,3 +1,4 @@
+import { useClientTranslation } from '@/shared/i18n';
 import { FurnitureSet, SetInfo, Piece, PieceType } from '../types/set';
 import { initializeFurnitureSets } from './initializeFurniture';
 
@@ -55,6 +56,30 @@ export class FurnitureManager {
                         set: set,
                     });
                 }
+                return true;
+            });
+        });
+
+        return ret;
+    }
+    public getPiecesByKeyword(search: string) {
+        const ret: Array<Piece> = [];
+
+        const { t } = useClientTranslation('furnitureinfo');
+
+        search = search.toLowerCase();
+        this.getAllFurnitureSets().map((set: SetInfo) => {
+            return set.items.map((piece: Piece) => {
+                const name =
+                    `${t(`${set.path}.name`)} ${t(`${set.path}.ITEMS.${piece.path}.name`)}`.toLowerCase();
+                const match = name.search(search);
+                if (match >= 0) {
+                    ret.push({
+                        ...piece,
+                        set: set,
+                    });
+                }
+
                 return true;
             });
         });
