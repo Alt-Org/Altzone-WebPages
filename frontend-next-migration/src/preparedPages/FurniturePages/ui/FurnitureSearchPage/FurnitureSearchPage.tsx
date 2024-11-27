@@ -11,7 +11,6 @@ import { Piece } from '@/entities/Furniture/types/set';
 
 const FurnitureSearchPage = () => {
     const { t } = useClientTranslation('furnituresearch');
-    const t2 = useClientTranslation('furnitureinfo').t;
 
     const manager = new FurnitureManager();
 
@@ -49,7 +48,6 @@ const FurnitureSearchPage = () => {
                         return (
                             <PieceCard
                                 item={item}
-                                t={t2}
                                 key={i}
                             />
                         );

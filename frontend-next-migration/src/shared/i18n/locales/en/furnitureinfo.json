@@ -53,5 +53,14 @@
     "RAKKAUSSET.ITEMS.CLOSET.name": "Closet",
     "RAKKAUSSET.ITEMS.CLOSET.desc": "Love yourself just the way you are.",
     "NEUROSET.ITEMS.DRAWER.name": "Drawer",
-    "NEUROSET.ITEMS.DRAWER.desc": "The drawer looks afraid or anxious while holding its head as if it was in pain."
+    "NEUROSET.ITEMS.DRAWER.desc": "The drawer looks afraid or anxious while holding its head as if it was in pain.",
+    "MATERIALS.POLYESTER.name": "Polyester",
+    "MATERIALS.WOOD.name": "Wood",
+    "MATERIALS.ALUMINIUM.name": "Aluminium",
+    "MATERIALS.LEATHER.name": "Leather",
+    "label-author": "Artist",
+    "label-price": "Price",
+    "label-weight": "Weight",
+    "label-materials": "Materials",
+    "close-view": "Close"
 }

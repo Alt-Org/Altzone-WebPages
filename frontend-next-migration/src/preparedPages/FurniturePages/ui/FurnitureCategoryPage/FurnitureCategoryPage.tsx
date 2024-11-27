@@ -18,7 +18,6 @@ import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 
 const FurnitureCategoryPage = () => {
     const { t } = useClientTranslation('furniturecategory');
-    const t2 = useClientTranslation('furnitureinfo').t;
 
     const manager = new FurnitureManager();
 
@@ -71,7 +70,6 @@ const FurnitureCategoryPage = () => {
                             return (
                                 <PieceCard
                                     item={item}
-                                    t={t2}
                                     key={i}
                                 />
                             );

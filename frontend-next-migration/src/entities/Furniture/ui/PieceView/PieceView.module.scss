@@ -6,6 +6,12 @@
     width: 100vw;
     height: 100vh;
     background-color: #00000088;
+    display: none;
+}
+.Catch {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
 }
 
 .Container {
@@ -13,5 +19,29 @@
     left: 50%;
     position: absolute;
     translate: -50% -50%;
-    width: min(400px, 100vw);
+    width: min(832px, 100vw);
+    padding: 8px;
+    overflow-y: auto;
+}
+.Content {
+    display: block;
+    position: relative;
+    background-color: #00000088;
+    border-radius: 32px;
+    border: 2px solid white;
+    > * {
+        width: 400px;
+        display: inline-block;
+    }
+    @media (max-width: 800px) {
+        > * {
+            width: 300px;
+        }
+    }
+    .Close {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 200px;
+    }
 }

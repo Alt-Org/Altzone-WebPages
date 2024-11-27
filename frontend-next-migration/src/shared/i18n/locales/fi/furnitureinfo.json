@@ -53,5 +53,14 @@
     "RAKKAUSSET.ITEMS.CLOSET.name": "Kaappi",
     "RAKKAUSSET.ITEMS.CLOSET.desc": "Rakasta itseäsi sellaisena kuin olet.",
     "NEUROSET.ITEMS.DRAWER.name": "Lipasto",
-    "NEUROSET.ITEMS.DRAWER.desc": "Lipasto näyttää pelokkaalta tai ahdistuneelta ja pitelee päätään, ihan kuin kädet hakeutuisivat kipualueelle."
+    "NEUROSET.ITEMS.DRAWER.desc": "Lipasto näyttää pelokkaalta tai ahdistuneelta ja pitelee päätään, ihan kuin kädet hakeutuisivat kipualueelle.",
+    "MATERIALS.POLYESTER.name": "Polyesteri",
+    "MATERIALS.WOOD.name": "Puu",
+    "MATERIALS.ALUMINIUM.name": "Alumiini",
+    "MATERIALS.LEATHER.name": "Nahka",
+    "label-author": "Taiteilija",
+    "label-price": "Hinta",
+    "label-weight": "Paino",
+    "label-materials": "Materiaalit",
+    "close-view": "Sulje"
 }

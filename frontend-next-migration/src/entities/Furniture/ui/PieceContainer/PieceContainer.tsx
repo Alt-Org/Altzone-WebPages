@@ -1,26 +1,29 @@
 'use client';
-import { TFunction } from 'i18next';
-import { Piece, SetInfo } from '../../types/set';
 import cls from './PieceContainer.module.scss';
-import { createRef, LegacyRef } from 'react';
+import { RefObject, useRef } from 'react';
 import Image from 'next/image';
-import coin from '@/shared/assets/images/furniture/512Kolikko.png';
 import PieceView from '../PieceView/PieceView';
+import { useClientTranslation } from '@/shared/i18n';
 
 type Props = {
+    noView?: boolean;
     item: any;
-    t: TFunction<string, undefined>;
 };
 
 export const PieceCard = (props: Props) => {
-    const { path, cost, rarity, cover, set } = props.item;
+    const { noView, item } = props;
+    const { path, rarity, cover, set } = item;
 
     const setpath = set.path;
 
     const { color, lightcolor, darkcolor } = rarity;
 
-    const ref: LegacyRef<HTMLDivElement> = createRef();
+    const ref: RefObject<HTMLDivElement> = useRef(null);
     const click = () => {
+        if (noView) {
+            return;
+        }
+
         const div = ref.current;
         if (!div) {
             return;
@@ -29,20 +32,27 @@ export const PieceCard = (props: Props) => {
         div.style.display = 'block';
     };
 
-    const { t } = props;
+    let card = cls.Card;
+    if (noView) {
+        card = cls.StaticCard;
+    }
+
+    const { t } = useClientTranslation('furnitureinfo');
     return (
         <div>
+            {noView ? (
+                <div />
+            ) : (
+                <div className={cls.ViewContainer}>
+                    <PieceView
+                        piece={item}
+                        set={set}
+                        ref={ref}
+                    />
+                </div>
+            )}
             <div
-                className={cls.ViewContainer}
-                ref={ref}
-            >
-                <PieceView
-                    piece={props.item}
-                    set={set}
-                />
-            </div>
-            <div
-                className={cls.Card}
+                className={card}
                 style={{
                     background: `linear-gradient(180deg, ${lightcolor} 0%, ${color} 10%, ${color} 40%, ${darkcolor} 50%, ${darkcolor} 100%)`,
                 }}
@@ -57,14 +67,6 @@ export const PieceCard = (props: Props) => {
                         alt={'cover'}
                     />
                     <p className={cls.Title}>{t(`${setpath}.ITEMS.${path}.name`)}</p>
-                    <div className={cls.Price}>
-                        {t(`price`)}:{cost}
-                        <Image
-                            className={cls.Coin}
-                            alt={'money-icon'}
-                            src={coin}
-                        />
-                    </div>
                 </button>
             </div>
         </div>

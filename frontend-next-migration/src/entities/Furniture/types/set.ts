@@ -55,7 +55,9 @@ export enum Materials {
     MGLASS = 'MGLASS',
     STEEL = 'STEEL',
 }
-export interface MaterialType {}
+export interface MaterialType {
+    name: string;
+}
 export enum Recycles {
     GENERAL = 'GENERAL',
     ELECTRONICS = 'ELECTRONICS',

@@ -43,7 +43,6 @@ const OneSetPage = (props: Props) => {
                         return (
                             <PieceCard
                                 item={item}
-                                t={t}
                                 key={item.path}
                             />
                         );
