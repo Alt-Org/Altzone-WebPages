@@ -35,7 +35,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                 <Fancybox>
                     <div className={cls.cover}>
                         <AppLink
-                            data-fancybox={title}
+                            data-fancybox={cover.name}
                             to={cover.url}
                         >
                             <Image
@@ -55,7 +55,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                             index !== 0 ? (
                                 <AppLink
                                     key={index}
-                                    data-fancybox={title}
+                                    data-fancybox={cover.name}
                                     to={source}
                                 >
                                     ''
