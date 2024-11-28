@@ -13,7 +13,7 @@ const ComicsGalleriesPage = (props: Props) => {
     return (
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
-                <h1>{title}</h1>
+                <h2>{title}</h2>
                 <SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />
             </Container>
         </div>
