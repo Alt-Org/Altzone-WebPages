@@ -24,6 +24,7 @@ export default async function ComicsLayout({ children, params }: Props) {
             overlayColor={'rgba(7, 27, 30, 0.5'}
             bgImage={introBg.src}
             description={t('page-description')}
+            blurLineClass={cls.blurLine}
             bottomAdditional={
                 <Button
                     className={cls.diveButton}
