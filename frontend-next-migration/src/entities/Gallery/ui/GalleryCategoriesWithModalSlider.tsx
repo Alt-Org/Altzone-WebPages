@@ -4,6 +4,8 @@ import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './styles.module.scss';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button } from '@/shared/ui/Button';
+import Link from 'next/link';
 
 export type GalleryCategoriesWithModalSliderProps = {
     title?: string;
@@ -63,6 +65,16 @@ export const GalleryCategoriesWithModalSlider = memo(
                             ) : null,
                         )}
                     </div>
+
+                    <Button style={{ color: 'white' }}>
+                        {/*// @ts-ignore*/}
+                        <Link
+                            data-fancybox={cover.name}
+                            href={getSortedSources(sources).at(1)}
+                        >
+                            Explore
+                        </Link>
+                    </Button>
                 </Fancybox>
             </div>
         );
