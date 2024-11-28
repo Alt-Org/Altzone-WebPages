@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { LayoutWithIntro } from '@/preparedPages/Layouts';
 import { useServerTranslation } from '@/shared/i18n';
+import { BlurLine } from '@/shared/ui/PageDividers';
+import cls from './Layout.module.scss';
 
 type Props = {
     children: ReactNode;
@@ -22,6 +24,7 @@ export default async function ComicsLayout({ children, params }: Props) {
             }
             description={t('page-description')}
         >
+            <BlurLine className={cls.blurLine} />
             {children}
         </LayoutWithIntro>
     );
