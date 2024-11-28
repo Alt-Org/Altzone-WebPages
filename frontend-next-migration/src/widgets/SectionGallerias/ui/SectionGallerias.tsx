@@ -16,7 +16,7 @@ export const SectionGallerias = ({ parentDirectory }: Props) => {
 
     return (
         <div className={cls.galleries}>
-            {transformedGalleryCategories.map((gallery: any) => (
+            {transformedGalleryCategories.map((gallery) => (
                 <GalleryCategoriesWithModalSlider
                     cover={gallery.cover}
                     followLastImage={gallery.followLastImage}
