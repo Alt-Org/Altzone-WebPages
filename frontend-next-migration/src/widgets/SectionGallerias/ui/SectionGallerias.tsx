@@ -2,7 +2,6 @@
 import { GalleryCategoriesWithModalSlider, ParentDirectory } from '@/entities/Gallery';
 import useSectionGallerias from '../model/useSectionGallerias';
 import cls from './SectionGallerias.module.scss';
-import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
 
 type Props = {
     parentDirectory: ParentDirectory;
@@ -15,22 +14,8 @@ export const SectionGallerias = ({ parentDirectory }: Props) => {
         return <div>Server Error</div>;
     }
 
-    const defineId = (pd: typeof parentDirectory) => {
-        switch (pd) {
-            case SectionGalleriasPaths.comics:
-                return 'comics';
-            case SectionGalleriasPaths.galleries:
-                return 'galleries';
-            default:
-                throw new Error('Unexpected parent directory');
-        }
-    };
-
     return (
-        <div
-            className={cls.galleries}
-            id={defineId(parentDirectory)}
-        >
+        <div className={cls.galleries}>
             {transformedGalleryCategories.map((gallery) => (
                 <GalleryCategoriesWithModalSlider
                     cover={gallery.cover}

@@ -3,8 +3,8 @@ import { LayoutWithIntro } from '@/preparedPages/Layouts';
 import { useServerTranslation } from '@/shared/i18n';
 import cls from './Layout.module.scss';
 import introBg from '@/shared/assets/images/comics/comics5.webp';
-import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
-import { ScrollToSectionButton } from '@/app/[lng]/(intro)/comics/_components/ScrollToSectionButton';
+import { ScrollToSectionButton } from './_components/ScrollToSectionButton';
+import { comicsSectionId } from '@/preparedPages/ComicsGalleriesPages';
 
 type Props = {
     children: ReactNode;
@@ -29,7 +29,7 @@ export default async function ComicsLayout({ children, params }: Props) {
             bottomAdditional={
                 <ScrollToSectionButton
                     className={cls.diveButton}
-                    scrollToId={SectionGalleriasPaths.comics}
+                    scrollToId={comicsSectionId}
                 >
                     <b>{t('page-dive')}</b>
                 </ScrollToSectionButton>
