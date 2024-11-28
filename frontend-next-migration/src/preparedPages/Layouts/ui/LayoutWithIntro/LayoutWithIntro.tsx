@@ -5,6 +5,7 @@ interface LayoutWithIntroProps {
     bgImage: string;
     title: string;
     description: string;
+    bottomAdditional?: ReactNode;
     introHeight?: string;
     overlayColor?: string;
     children: ReactNode;
@@ -15,6 +16,7 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
         bgImage,
         title,
         description,
+        bottomAdditional,
         introHeight = '50vh',
         overlayColor = 'rgba(0, 0, 0, 0.5)',
         children,
@@ -35,6 +37,7 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
                 <div className={cls.introText}>
                     <h1>{title}</h1>
                     <p>{description}</p>
+                    {bottomAdditional}
                 </div>
             </div>
             <div className={cls.content}>{children}</div>
