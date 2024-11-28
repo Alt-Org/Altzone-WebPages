@@ -5,7 +5,7 @@ type Props = {
     children: ReactNode;
 };
 
-export default function ComingLayout({ children }: Props) {
+export default function ComicsLayout({ children }: Props) {
     return (
         <LayoutWithIntro
             introHeight={'70vh'}
