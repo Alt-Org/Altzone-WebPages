@@ -1,9 +1,11 @@
 .blurLine {
   position: absolute;
   bottom: 50%;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 120vw;
   height: 124px;
-  transform: translateY(-50%);
+  filter: blur(30px);
+  background: #080a0b;
   pointer-events: none;
 }
