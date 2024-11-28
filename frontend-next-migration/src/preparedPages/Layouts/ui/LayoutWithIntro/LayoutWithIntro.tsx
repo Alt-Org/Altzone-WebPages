@@ -6,7 +6,7 @@ interface LayoutWithIntroProps {
     title: string;
     description: string;
     introHeight?: string;
-    overlayOpacity?: number;
+    overlayColor?: string;
     children: ReactNode;
 }
 
@@ -16,7 +16,7 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
         title,
         description,
         introHeight = '50vh',
-        overlayOpacity = 0.15,
+        overlayColor = 'rgba(0, 0, 0, 0.5)',
         children,
     } = props;
 
@@ -28,7 +28,7 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
                     {
                         backgroundImage: `url(${bgImage})`,
                         height: introHeight,
-                        '--overlay-opacity': overlayOpacity,
+                        '--overlay-color': overlayColor,
                     } as CSSProperties
                 }
             >

@@ -3,7 +3,7 @@ import { LayoutWithIntro } from '@/preparedPages/Layouts';
 import { useServerTranslation } from '@/shared/i18n';
 import { BlurLine } from '@/shared/ui/PageDividers';
 import cls from './Layout.module.scss';
-import introBg from '@/shared/assets/images/comics/comics-bg-intro.webp';
+import introBg from '@/shared/assets/images/comics/comics5.webp';
 
 type Props = {
     children: ReactNode;
@@ -20,7 +20,7 @@ export default async function ComicsLayout({ children, params }: Props) {
         <LayoutWithIntro
             introHeight={'86vh'}
             title={t('page-title')}
-            overlayOpacity={0.5}
+            overlayColor={'rgba(7, 27, 30, 0.5'}
             bgImage={introBg.src}
             description={t('page-description')}
         >
