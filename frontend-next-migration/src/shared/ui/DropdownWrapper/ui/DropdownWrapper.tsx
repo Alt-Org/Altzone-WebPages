@@ -146,7 +146,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             )}
                                         </AppLink>
                                     ) : (
-                                        <span className={contentItemClassName}>
+                                        <span
+                                            className={contentItemClassName}
+                                            onClick={element.onClickCallback}
+                                        >
                                             {element.elementText}
                                         </span>
                                     )}

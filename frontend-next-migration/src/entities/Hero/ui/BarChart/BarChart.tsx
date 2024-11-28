@@ -3,8 +3,8 @@ import { useClientTranslation } from '@/shared/i18n';
 
 export type Stat = {
     name: string;
-    value: number;
-    color: string;
+    defaultLevel: number;
+    color?: string | undefined;
 };
 
 export type BarChartProps = {
@@ -21,7 +21,7 @@ export type BarChartProps = {
 export const BarChart = (props: BarChartProps): JSX.Element => {
     const { stats = [] } = props;
     const { t } = useClientTranslation('heroes-stats');
-    const maxValue = Math.max(...stats.map((d) => d.value));
+    const maxValue = Math.max(...stats.map((d) => d.defaultLevel));
     const yTicks = 4;
     const tickValues = Array.from({ length: yTicks + 1 }, (_, i) =>
         Math.round((maxValue / yTicks) * i),
@@ -50,7 +50,7 @@ export const BarChart = (props: BarChartProps): JSX.Element => {
                             key={index}
                             className={cls.BarContainer}
                             style={{
-                                height: `${(stat.value / maxValue) * 100}%`,
+                                height: `${(stat.defaultLevel / maxValue) * 100}%`,
                             }}
                         >
                             <div

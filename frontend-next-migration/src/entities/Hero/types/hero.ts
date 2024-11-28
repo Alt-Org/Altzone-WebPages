@@ -31,7 +31,18 @@ export interface Hero {
     title: string;
     description: string;
     slug: HeroSlug;
+    stats: Stat[];
 }
+
+type StatName = 'resistance' | 'hp' | 'size' | 'impactForce' | 'speed';
+
+type Stat = {
+    name: StatName;
+    rarityClass: number;
+    defaultLevel: number;
+    developmentLevel?: number;
+    color?: string;
+};
 
 export interface GroupInfo {
     name: string;
