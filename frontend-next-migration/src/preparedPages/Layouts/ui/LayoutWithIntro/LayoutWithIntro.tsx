@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import cls from './LayoutWithIntro.module.scss';
-import { Navbar } from '@/widgets/Navbar';
+// import { Navbar } from '@/widgets/Navbar';
 
 interface LayoutWithIntroProps {
     bgImage: string;
