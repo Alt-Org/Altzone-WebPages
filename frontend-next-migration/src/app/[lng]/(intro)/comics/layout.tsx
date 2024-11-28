@@ -29,8 +29,7 @@ export default async function ComicsLayout({ children, params }: Props) {
                     className={cls.diveButton}
                     withScalableLink={true}
                     size={ButtonSize.L}
-                    theme={ButtonTheme.CLEAR}
-                    style={{ marginTop: '20px', padding: '15px 20px', borderRadius: '20px' }}
+                    theme={ButtonTheme.BACKGROUND}
                 >
                     <b>Dive</b>
                 </Button>
