@@ -1,7 +1,7 @@
 'use client';
 import cls from './page.module.scss';
 import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
-import { HorizontalLines } from '@/shared/ui/HorizontalLines';
+import { HorizontalLines } from '@/shared/ui/PageDividers';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
