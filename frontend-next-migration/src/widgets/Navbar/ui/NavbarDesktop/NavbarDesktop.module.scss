@@ -1,4 +1,5 @@
 .siteNav {
+  position: absolute;
   font: var(--font-xxl);
   padding-top: 50px;
   color: #fbf7dc;
@@ -9,7 +10,7 @@
   top: 0;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
-  position: relative;
+  //position: relative;
   height: var(--navbar-height);
   user-select: none;
   &.collapsing{
@@ -20,8 +21,9 @@
   }
 }
 
-.fixed {
-  position: sticky;
+.siteNav.fixed {
+  position: fixed;
+  //position: sticky;
 }
 
 .siteNavContentList {
