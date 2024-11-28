@@ -1,6 +1,6 @@
 .blurLine {
   position: absolute;
-  bottom: 50%;
+  bottom: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -9,6 +9,6 @@
   //background: linear-gradient(rgba(227, 166, 7, 0.35), rgba(61, 189, 12, 0.2), rgba(227, 166, 7, 0.2))!important;
   //background: rgba(50, 89, 27, 0.35) !important;
 
-  background: linear-gradient(rgba(19, 179, 194, 0.35), rgba(61, 56, 49, 0.2), rgba(2, 76, 80, 0.2))!important;
+  background: linear-gradient(rgba(19, 179, 194, 0.29), rgba(35, 48, 51, 0.47), rgba(2, 76, 80, 0.4))!important;
   pointer-events: none;
 }
