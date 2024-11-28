@@ -35,7 +35,7 @@ export default async function ComicsLayout({ children, params }: Props) {
                 </Button>
             }
         >
-            <BlurLine className={cls.blurLine} />
+            {/*<BlurLine className={cls.blurLine} />*/}
             {children}
         </LayoutWithIntro>
     );

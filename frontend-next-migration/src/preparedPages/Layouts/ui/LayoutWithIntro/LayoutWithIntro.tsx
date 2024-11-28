@@ -1,5 +1,6 @@
 import { ReactNode, CSSProperties } from 'react';
 import cls from './LayoutWithIntro.module.scss';
+import { BlurLine } from '@/shared/ui/PageDividers';
 
 interface LayoutWithIntroProps {
     bgImage: string;
@@ -39,7 +40,9 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
                     <p>{description}</p>
                     {bottomAdditional}
                 </div>
+                <BlurLine className={cls.blurLine} />
             </div>
+
             <div className={cls.content}>{children}</div>
         </div>
     );
