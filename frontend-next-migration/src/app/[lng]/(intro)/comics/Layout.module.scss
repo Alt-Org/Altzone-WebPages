@@ -1,11 +1,14 @@
 .blurLine {
   position: absolute;
-  bottom: 60%;
+  bottom: 50%;
   left: 50%;
-  transform: translate(-50%, 40%);
+  transform: translate(-50%, -50%);
   width: 120vw;
   height: 124px;
-  filter: blur(30px);
-  background: #080a0b;
+  filter: blur(25px)!important;
+  //background: linear-gradient(rgba(227, 166, 7, 0.35), rgba(61, 189, 12, 0.2), rgba(227, 166, 7, 0.2))!important;
+  //background: rgba(50, 89, 27, 0.35) !important;
+
+  background: linear-gradient(rgba(194, 19, 33, 0.35), rgba(88, 129, 71, 0.2), rgba(166, 12, 22, 0.2))!important;
   pointer-events: none;
 }

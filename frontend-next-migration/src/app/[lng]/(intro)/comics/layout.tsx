@@ -3,6 +3,7 @@ import { LayoutWithIntro } from '@/preparedPages/Layouts';
 import { useServerTranslation } from '@/shared/i18n';
 import { BlurLine } from '@/shared/ui/PageDividers';
 import cls from './Layout.module.scss';
+import introBg from '@/shared/assets/images/comics/comics-bg-intro.webp';
 
 type Props = {
     children: ReactNode;
@@ -17,11 +18,10 @@ export default async function ComicsLayout({ children, params }: Props) {
     const { t } = await useServerTranslation(lng, 'comics');
     return (
         <LayoutWithIntro
-            introHeight={'70vh'}
+            introHeight={'80vh'}
             title={t('page-title')}
-            bgImage={
-                'https://unknownworlds.com/_next/image?url=https%3A%2F%2Fd17c72h1ypygg7.cloudfront.net%2Fnews_hero_72ff4c6996.png&w=1440&q=75'
-            }
+            overlayOpacity={0.5}
+            bgImage={introBg.src}
             description={t('page-description')}
         >
             <BlurLine className={cls.blurLine} />
