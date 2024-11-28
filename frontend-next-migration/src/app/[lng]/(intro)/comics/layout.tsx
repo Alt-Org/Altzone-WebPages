@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import { LayoutWithIntro } from '@/preparedPages/Layouts';
 import { useServerTranslation } from '@/shared/i18n';
-import { BlurLine } from '@/shared/ui/PageDividers';
 import cls from './Layout.module.scss';
 import introBg from '@/shared/assets/images/comics/comics5.webp';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
+import { ScrollToSectionButton } from '@/app/[lng]/(intro)/comics/_components/ScrollToSectionButton';
 
 type Props = {
     children: ReactNode;
@@ -17,6 +17,7 @@ export default async function ComicsLayout({ children, params }: Props) {
     const { lng } = params;
 
     const { t } = await useServerTranslation(lng, 'comics');
+
     return (
         <LayoutWithIntro
             introHeight={'86vh'}
@@ -26,17 +27,14 @@ export default async function ComicsLayout({ children, params }: Props) {
             description={t('page-description')}
             blurLineClass={cls.blurLine}
             bottomAdditional={
-                <Button
+                <ScrollToSectionButton
                     className={cls.diveButton}
-                    withScalableLink={true}
-                    size={ButtonSize.L}
-                    theme={ButtonTheme.BACKGROUND}
+                    scrollToId={SectionGalleriasPaths.comics}
                 >
                     <b>{t('page-dive')}</b>
-                </Button>
+                </ScrollToSectionButton>
             }
         >
-            {/*<BlurLine className={cls.blurLine} />*/}
             {children}
         </LayoutWithIntro>
     );
