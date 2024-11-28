@@ -31,7 +31,7 @@ export default async function ComicsLayout({ children, params }: Props) {
                     size={ButtonSize.L}
                     theme={ButtonTheme.BACKGROUND}
                 >
-                    <b>Dive</b>
+                    <b>{t('page-dive')}</b>
                 </Button>
             }
         >
