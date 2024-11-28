@@ -29,7 +29,7 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
                 style={
                     {
                         backgroundImage: `url(${bgImage})`,
-                        height: introHeight,
+                        minHeight: introHeight,
                         '--overlay-color': overlayColor,
                     } as CSSProperties
                 }

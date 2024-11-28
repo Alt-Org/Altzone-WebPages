@@ -4,7 +4,7 @@ import { useServerTranslation } from '@/shared/i18n';
 import { BlurLine } from '@/shared/ui/PageDividers';
 import cls from './Layout.module.scss';
 import introBg from '@/shared/assets/images/comics/comics5.webp';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 
 type Props = {
     children: ReactNode;
@@ -25,7 +25,15 @@ export default async function ComicsLayout({ children, params }: Props) {
             bgImage={introBg.src}
             description={t('page-description')}
             bottomAdditional={
-                <Button style={{ marginTop: '20px', color: 'black' }}>Dive Deeper</Button>
+                <Button
+                    className={cls.diveButton}
+                    withScalableLink={true}
+                    size={ButtonSize.L}
+                    theme={ButtonTheme.CLEAR}
+                    style={{ marginTop: '20px', padding: '15px 20px', borderRadius: '20px' }}
+                >
+                    <b>Dive</b>
+                </Button>
             }
         >
             <BlurLine className={cls.blurLine} />
