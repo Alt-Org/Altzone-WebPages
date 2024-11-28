@@ -6,7 +6,7 @@ import cls from './styles.module.scss';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 export type GalleryCategoriesWithModalSliderProps = {
-    title: string;
+    title?: string;
     followLastImage?: boolean;
     sources: string[];
     cover: { name: string; url: string };
@@ -46,7 +46,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 className={cls.coverImage}
                                 alt={cover.name}
                             />
-                            <h2 className={cls.title}>{t(`${title}`)}</h2>
+                            {title && <h3 className={cls.title}>{t(`${title}`)}</h3>}
                         </AppLink>
                     </div>
 

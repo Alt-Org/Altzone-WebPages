@@ -22,7 +22,7 @@ export const SectionGallerias = ({ parentDirectory }: Props) => {
                     followLastImage={gallery.followLastImage}
                     key={gallery.title}
                     sources={gallery.sources}
-                    title={gallery.title}
+                    // title={gallery.title}
                 />
             ))}
         </div>
