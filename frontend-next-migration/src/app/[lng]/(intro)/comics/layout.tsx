@@ -18,7 +18,7 @@ export default async function ComicsLayout({ children, params }: Props) {
     const { t } = await useServerTranslation(lng, 'comics');
     return (
         <LayoutWithIntro
-            introHeight={'80vh'}
+            introHeight={'85vh'}
             title={t('page-title')}
             overlayOpacity={0.5}
             bgImage={introBg.src}
