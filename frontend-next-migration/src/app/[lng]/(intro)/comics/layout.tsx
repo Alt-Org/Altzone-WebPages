@@ -1,25 +1,28 @@
 import { ReactNode } from 'react';
 import { LayoutWithIntro } from '@/preparedPages/Layouts';
+import { useServerTranslation } from '@/shared/i18n';
 
 type Props = {
     children: ReactNode;
+    params: {
+        lng: string;
+    };
 };
 
-export default function ComicsLayout({ children }: Props) {
+export default async function ComicsLayout({ children, params }: Props) {
+    const { lng } = params;
+
+    const { t } = await useServerTranslation(lng, 'comics');
     return (
         <LayoutWithIntro
             introHeight={'70vh'}
-            title={'Comics'}
+            title={t('page-title')}
             bgImage={
                 'https://unknownworlds.com/_next/image?url=https%3A%2F%2Fd17c72h1ypygg7.cloudfront.net%2Fnews_hero_72ff4c6996.png&w=1440&q=75'
             }
-            description={
-                'lollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololollollolllololol'
-            }
+            description={t('page-description')}
         >
             {children}
-            {/*<FeedbackSideButton />*/}
-            {/*<HorizontalLines />*/}
         </LayoutWithIntro>
     );
 }
