@@ -1,6 +1,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { statsPricingData } from '../../model/stats/statsPricingData';
+import { AttributePricingHelper } from '../../model/stats/AttributesPricingHelper';
 import cls from './AttributesPricing.module.scss';
 
 /**
@@ -46,19 +47,19 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
 
     const { t } = useClientTranslation('heroes-stats-pricing');
 
-    const totalUpgraded = useMemo(
-        () => stats.reduce((sum, current) => sum + (current.developmentLevel || 0), 0),
-        [stats],
-    );
+    const totalUpgraded = useMemo(() => AttributePricingHelper.getTotalUpgraded(stats), [stats]);
 
     const setDropdowns = useCallback(
         (statName: string) => {
-            const current = stats.find((stat) => stat.name === statName) || selectedStat;
-            const updatedLevel = current.defaultLevel + (current.developmentLevel || 0);
-            setSelectedStat(current);
-            setFromLevel(updatedLevel);
-            setToLevel(updatedLevel);
-            return updatedLevel;
+            const [stat, level] = AttributePricingHelper.getStatAndLevel(
+                statName,
+                stats,
+                selectedStat,
+            );
+            setSelectedStat(stat);
+            setFromLevel(level);
+            setToLevel(level);
+            return level;
         },
         [stats, selectedStat],
     );
@@ -67,7 +68,7 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
     const currentLevel = useMemo(() => setDropdowns(selectedStat.name), [stats, selectedStat]);
 
     const getLevelRange = useCallback(
-        () => Array.from({ length: 11 - totalUpgraded }, (_, i) => i + currentLevel),
+        () => AttributePricingHelper.getLevelRange(totalUpgraded, currentLevel),
         [totalUpgraded, currentLevel],
     );
 
@@ -89,17 +90,16 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
 
     const levelRange = useMemo(() => getLevelRange(), [getLevelRange, totalUpgraded, currentLevel]);
 
-    const sum = useMemo(() => {
-        if (fromLevel >= toLevel) return 0;
-        let total = 0;
-        const from = fromLevel - selectedStat.defaultLevel;
-        const to = toLevel - selectedStat.defaultLevel;
-        for (let i = from; i < to; i++) {
-            total +=
-                statsPricingData[selectedStat.rarityClass][i] * statsPricingData.stepsPerLevel[i];
-        }
-        return total;
-    }, [fromLevel, toLevel, selectedStat.rarityClass, selectedStat.defaultLevel]);
+    const sum = useMemo(
+        () =>
+            AttributePricingHelper.calculatePrice(
+                fromLevel,
+                toLevel,
+                selectedStat.rarityClass,
+                selectedStat.defaultLevel,
+            ),
+        [fromLevel, toLevel, selectedStat.rarityClass, selectedStat.defaultLevel],
+    );
 
     if (!statsPricingData) {
         return <h2>{t('Stat pricing data is unavailable')}</h2>;
