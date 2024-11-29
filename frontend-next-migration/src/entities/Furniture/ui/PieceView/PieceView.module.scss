@@ -24,18 +24,21 @@
     overflow-y: auto;
 }
 .Content {
-    display: block;
+    display: flex;
     position: relative;
-    background-color: #000000bb;
+    background-color: #000000;
     border-radius: 32px;
     border: 2px solid white;
+    text-align: left;
     > * {
         width: 400px;
+        max-width: 400px;
         display: inline-block;
     }
     @media (max-width: 800px) {
         > * {
             width: 300px;
+            max-width: 300px;
         }
     }
     .Close {
@@ -47,4 +50,29 @@
         font-size: 32;
         text-align: center;
     }
+    .Info {
+        padding-left: 16px;
+        padding-top: 15%;
+    }
+
+    .Title,.Table {
+        margin-bottom: 8px;
+    }
+
+    .Table {
+        > * {
+            display: block;
+            > * {
+                display: inline-block;
+            }
+        }
+        label {
+            font-weight: bold;
+            margin-right: 4px;
+        }
+    }
+}
+.Coin {
+    width: 1em;
+    height: 1em;
 }

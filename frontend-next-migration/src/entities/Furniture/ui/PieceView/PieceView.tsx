@@ -6,6 +6,8 @@ import { PieceCard } from '../PieceContainer/PieceContainer';
 import { useClientTranslation } from '@/shared/i18n';
 import { TFunction } from 'i18next';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
+import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
+import Image from 'next/image';
 
 type Props = {
     piece: Piece;
@@ -66,32 +68,51 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
                         noView={true}
                         item={piece}
                     />
-                    <div>
-                        <h2 style={{ color: `${lightcolor}` }}>
+                    <div className={cls.Info}>
+                        <h2
+                            //style={{ color: `${lightcolor}` }}
+                            className={cls.Title}
+                        >
                             {t(`${set.path}.ITEMS.${piece.path}.name`)}
                         </h2>
 
-                        <table style={{ color: `${color}` }}>
-                            <tbody>
-                                <tr>
-                                    <th>{t('label-weight')}:</th>
-                                    <td>{piece.weight} kg</td>
-                                </tr>
-                                <tr>
-                                    <th>{t('label-price')}:</th>
-                                    <td>{piece.cost}</td>
-                                </tr>
-                                <tr>
-                                    <th>{t('label-author')}:</th>
-                                    <td>{set.author}</td>
-                                </tr>
-                                <tr>
-                                    <th>{t('label-materials')}:</th>
-                                    <td>{materialsToString(piece.materials, t)}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p style={{ color: `${darkcolor}` }}>
+                        <div
+                            className={cls.Table}
+                            style={
+                                {
+                                    //color: `${color}`
+                                }
+                            }
+                        >
+                            <div>
+                                <label>{t('label-weight')}:</label>
+                                <p>{piece.weight} kg</p>
+                            </div>
+                            <div>
+                                <label>{t('label-price')}:</label>
+                                <p>{piece.cost}</p>
+                                <Image
+                                    className={cls.Coin}
+                                    src={coinIcon}
+                                    alt={'coin-icon'}
+                                />
+                            </div>
+                            <div>
+                                <label>{t('label-author')}:</label>
+                                <p>{set.author}</p>
+                            </div>
+                            <div>
+                                <label>{t('label-materials')}:</label>
+                                <p>{materialsToString(piece.materials, t)}</p>
+                            </div>
+                        </div>
+                        <p
+                            style={
+                                {
+                                    //color: `${darkcolor}`
+                                }
+                            }
+                        >
                             {t(`${set.path}.ITEMS.${piece.path}.desc`)}
                         </p>
                     </div>
