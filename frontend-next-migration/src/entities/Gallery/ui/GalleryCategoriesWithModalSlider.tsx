@@ -50,7 +50,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                             />
                             {title && <h3 className={cls.title}>{t(`${title}`)}</h3>}
 
-                            <Button theme={ButtonTheme.OUTLINE}>Explore</Button>
+                            <Button theme={ButtonTheme.OUTLINE}>{t('explore')}</Button>
                         </AppLink>
                     </div>
 
