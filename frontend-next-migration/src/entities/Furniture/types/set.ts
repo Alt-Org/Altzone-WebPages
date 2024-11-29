@@ -4,7 +4,6 @@ export enum FurnitureSet {
     TAAKKA = 'TAAKKA',
     NEURO = 'NEURO',
     RAKKAUS = 'RAKKAUS',
-    SCRODINGER = 'SCRODINGER',
 }
 
 export enum Rarities {

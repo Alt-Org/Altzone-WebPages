@@ -12,7 +12,7 @@ type Props = {
 
 export const PieceCard = (props: Props) => {
     const { noView, item } = props;
-    const { path, rarity, cover, set } = item;
+    const { path, rarity, cover, set, num } = item;
 
     const setpath = set.path;
 
@@ -67,6 +67,7 @@ export const PieceCard = (props: Props) => {
                         alt={'cover'}
                     />
                     <p className={cls.Title}>{t(`${setpath}.ITEMS.${path}.name`)}</p>
+                    <p className={cls.Id}>{num}</p>
                 </button>
             </div>
         </div>

@@ -16,20 +16,13 @@
         font-size: 2em;
     }
 
-    .Price {
+    .Id {
         position: absolute;
-        bottom: 16px;
-        width: 100%;
+        bottom: 6px;
+        right: 24px;
+        text-align: left;
         color: white;
-        text-shadow: 2px 2px black;
-        text-align: center;
-        z-index: 3;
-        font-size: 1.7em;
-
-        img {
-            width: 50px;
-            display: inline;
-        }
+        text-shadow: 2px 2px 0px black;
     }
 
     .Background {

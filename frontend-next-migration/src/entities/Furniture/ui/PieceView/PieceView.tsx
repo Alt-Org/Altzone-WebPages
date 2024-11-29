@@ -48,6 +48,8 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
         div.style.display = 'none';
     };
 
+    const { color, lightcolor, darkcolor } = piece.rarity;
+
     piece.set = set;
     return (
         <div
@@ -65,9 +67,11 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
                         item={piece}
                     />
                     <div>
-                        <h2>{t(`${set.path}.ITEMS.${piece.path}.name`)}</h2>
+                        <h2 style={{ color: `${lightcolor}` }}>
+                            {t(`${set.path}.ITEMS.${piece.path}.name`)}
+                        </h2>
 
-                        <table>
+                        <table style={{ color: `${color}` }}>
                             <tbody>
                                 <tr>
                                     <th>{t('label-weight')}:</th>
@@ -87,14 +91,16 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
                                 </tr>
                             </tbody>
                         </table>
-                        <p>{t(`${set.path}.ITEMS.${piece.path}.desc`)}</p>
+                        <p style={{ color: `${darkcolor}` }}>
+                            {t(`${set.path}.ITEMS.${piece.path}.desc`)}
+                        </p>
                     </div>
                     <Button
                         onClick={onClose}
                         className={cls.Close}
                         theme={ButtonTheme.Graffiti}
                     >
-                        {t('close-view')}
+                        X
                     </Button>
                 </div>
             </div>

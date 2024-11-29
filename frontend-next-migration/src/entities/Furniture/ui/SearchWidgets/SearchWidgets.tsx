@@ -6,28 +6,27 @@ import {
     getRouteFurnitureCategoryPage,
     getRouteFurnitureSearchPage,
 } from '@/shared/appLinks/RoutePaths';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 type Props = {};
-
-// TODO: Add search widgets
 
 export const FurnitureFilters = (props: Props) => {
     const { t } = useClientTranslation('widgets');
 
     return (
         <div className={cls.Container}>
-            <AppLink
-                to={getRouteFurnitureSearchPage()}
+            <Button
                 className={cls.Button}
+                theme={ButtonTheme.Graffiti}
             >
-                {t('search')}
-            </AppLink>
-            <AppLink
-                to={getRouteFurnitureCategoryPage()}
+                <AppLink to={getRouteFurnitureSearchPage()}>{t('search')}</AppLink>
+            </Button>
+            <Button
                 className={cls.Button}
+                theme={ButtonTheme.Graffiti}
             >
-                {t('categories')}
-            </AppLink>
+                <AppLink to={getRouteFurnitureCategoryPage()}>{t('categories')}</AppLink>
+            </Button>
         </div>
     );
 };
