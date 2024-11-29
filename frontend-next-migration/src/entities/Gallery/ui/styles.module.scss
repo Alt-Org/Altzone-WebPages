@@ -1,16 +1,40 @@
 .cover {
   position: relative;
   margin: 10px;
-  background-color: var(--transparent-bg) !important;
+  //background-color: var(--transparent-bg) !important;
   border-radius: var(--border-radius-custom);
-  overflow: hidden;
 }
+
+.link{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: var(--border-radius-custom);
+
+  button{
+    border-radius: var(--border-radius-custom);
+  }
+
+ button:hover{
+    color: var(--secondary-color);
+ }
+
+  img{
+    border-radius: var(--border-radius-custom);
+  }
+
+}
+
 
 .coverImageWrapper {
   position: relative;
   width: 100%;
   height: 0;
-  padding-top: 100%; 
+  padding-top: 100%;
+  border-radius: var(--border-radius-custom);
 }
 
 .coverImageWrapper img {

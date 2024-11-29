@@ -38,6 +38,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                         <AppLink
                             data-fancybox={cover.name}
                             to={cover.url}
+                            className={cls.link}
                         >
                             <Image
                                 loading={'eager'}
@@ -48,6 +49,8 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 alt={cover.name}
                             />
                             {title && <h3 className={cls.title}>{t(`${title}`)}</h3>}
+
+                            <Button theme={ButtonTheme.OUTLINE}>Explore</Button>
                         </AppLink>
                     </div>
 
@@ -64,22 +67,6 @@ export const GalleryCategoriesWithModalSlider = memo(
                             ) : null,
                         )}
                     </div>
-
-                    <br />
-                    <br />
-                    <br />
-
-                    <Button
-                        style={{ color: 'white' }}
-                        theme={ButtonTheme.OUTLINE}
-                    >
-                        <AppLink
-                            data-fancybox={cover.name}
-                            to={sources[0] as string}
-                        >
-                            Explore
-                        </AppLink>
-                    </Button>
                 </Fancybox>
             </div>
         );
