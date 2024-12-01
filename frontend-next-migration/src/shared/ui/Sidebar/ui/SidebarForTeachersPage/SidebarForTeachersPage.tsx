@@ -23,18 +23,19 @@ export const SidebarForTeachersPage = ({ sidebarClassName = '' }: SidebarForTeac
                 <a
                     key={1}
                     href="/"
+                    style={{ fontSize: '1.2rem', paddingLeft: '1.2rem' }} // Font size needs to be placed here instead in scss.
                 >
                     - {t('teaching-material')}
                 </a>,
                 <a
                     key={2}
                     href="/"
+                    style={{ fontSize: '1.2rem', paddingLeft: '1.2rem' }} // Font size needs to be placed here instead in scss.
                 >
                     - {t('game-analysis')}
                 </a>,
             ],
         },
-        { name: t('feedback-and-development'), type: sidebarItemType.ISidebarItemBasic, path: '/' },
     ];
 
     return (
@@ -48,7 +49,12 @@ export const SidebarForTeachersPage = ({ sidebarClassName = '' }: SidebarForTeac
                     />
                 ))}
             </div>
-            <div className={cls.bottomItems} />
+            <a
+                href="/"
+                className={cls.bottomItems}
+            >
+                {t('feedback-and-development')}
+            </a>
         </div>
     );
 };
