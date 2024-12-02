@@ -33,6 +33,13 @@ export interface Hero {
     slug: HeroSlug;
 }
 
+export type Stat = {
+    name: string;
+    defaultLevel: number;
+    developmentLevel?: number;
+    rarityClass: number;
+    color: string;
+};
 export interface GroupInfo {
     name: string;
     description: string;
