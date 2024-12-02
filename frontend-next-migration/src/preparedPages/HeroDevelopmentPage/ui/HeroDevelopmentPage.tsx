@@ -4,14 +4,12 @@ import Image from 'next/image';
 import cls from './HeroDevelopmentPage.module.scss';
 import { HeroManager } from '@/entities/Hero';
 import { HeroWithGroup, HeroSlug } from '@/entities/Hero/types/hero';
-import {
-    NavMenuWithDropdowns,
-    NavMenuWithDropdownsProps,
-    DropdownItem,
-} from '@/shared/ui/NavMenuWithDropdowns';
 import { BarChart } from '@/entities/Hero/ui/BarChart/BarChart';
 import { color } from '@/entities/Hero/model/stats/statsDataV2';
 import { useClientTranslation } from '@/shared/i18n';
+import useSizes from '@/shared/lib/hooks/useSizes';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import HeroMenuAsDropdown from '@/features/NavigateHeroes/ui/HeroMenuAsDropdown';
 
 const HeroDevelopmentPage = () => {
     const [hero, setHero] = useState<HeroWithGroup | undefined>(undefined);
@@ -25,35 +23,29 @@ const HeroDevelopmentPage = () => {
             hero.stats.forEach((stat) => {
                 stat.color = color[stat.name];
             });
-        setHero(hero);
         setKey(Math.random());
+        setHero(hero);
     }, []);
-    const allHeroGroups = heroManager.getGroupsWithHeroesAsArray();
 
-    const dropdownItems: DropdownItem[] = allHeroGroups.map((group) => ({
-        title: group.name,
-        openByDefault: false,
-        elements: group.heroes.map((hero) => ({
-            elementText: hero.title,
-            id: hero.id.toString(),
-            onClickCallback: () => onClickHero(hero.slug),
-        })),
-    }));
-    const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
-        title: t('section-title'),
-        openByDefault: false,
-        dropdownItems: dropdownItems,
+    const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
+    const combinedModCss: Mods = {
+        [cls.isMobile]: isMobileSize,
+        [cls.isTablet]: isTabletSize,
+        [cls.isDesktop]: isDesktopSize,
+        [cls.isWidescreen]: isWidescreenSize,
     };
+
     return (
-        <main className={cls.main}>
-            <div className={cls.Hero}>
+        <main className={classNames(cls.main, combinedModCss)}>
+            <div className={classNames(cls.Hero, combinedModCss)}>
                 <div className={cls.dropdown}>
-                    <NavMenuWithDropdowns
+                    <HeroMenuAsDropdown
                         key={key}
-                        {...navMenuWithDropdownsProps}
+                        onClickCallback={onClickHero}
                     />
                     {hero && (
                         <Image
+                            className={classNames(cls.Image, combinedModCss)}
                             src={hero?.srcImg}
                             alt="kuva"
                         />
@@ -62,7 +54,11 @@ const HeroDevelopmentPage = () => {
                 {hero && <h1 className={cls.Title}>{hero.title}</h1>}
             </div>
 
-            <div className={cls.BarChartBlock}>{hero && <BarChart stats={hero?.stats} />}</div>
+            {hero && (
+                <div className={classNames(cls.BarChartBlock, combinedModCss)}>
+                    <BarChart stats={hero?.stats} />
+                </div>
+            )}
         </main>
     );
 };
