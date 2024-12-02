@@ -35,39 +35,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
             <Container className={cls.membersListContainer}>
                 {isError && <p>Error fetching teams data</p>}
 
-                {isLoading || isError ? (
-                    <SkeletonLoaderWithHeader sections={5} />
-                ) : (
-                    teams.map((team) => (
-                        <div
-                            key={team.id}
-                            className={cls.memberCard}
-                        >
-                            <h1 className={cls.membersListContainer}>{team.name}</h1>
-                            {team.departments.length > 0 && (
-                                <div className={cls.departmentsSection}>
-                                    {team.departments.map((department) => (
-                                        <DepartmentItem
-                                            key={department.id}
-                                            department={department}
-                                        />
-                                    ))}
-                                </div>
-                            )}
-                            {/* Render members that do not belong to any department */}
-                            {team.members.length > 0 && (
-                                <ul className={cls.membersList}>
-                                    {team.members.map((member) => (
-                                        <MemberItem
-                                            key={member.id}
-                                            member={member}
-                                        />
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                    ))
-                )}
+                {isLoading || isError ? <SkeletonLoaderWithHeader sections={5} /> : null}
             </Container>
         </div>
     );
