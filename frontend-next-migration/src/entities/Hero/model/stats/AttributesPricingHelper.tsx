@@ -1,6 +1,6 @@
 import { statsPricingData } from './statsPricingData';
 import { SetStateAction } from 'react';
-import { Stat } from '../../ui/AttributesPricing3/AttributesPricingV3';
+import { Stat } from '../../types/hero';
 
 export class AttributePricingHelper {
     static calculatePrice = (

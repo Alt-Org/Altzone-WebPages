@@ -1,25 +1,9 @@
 import { useState, useCallback, useMemo } from 'react';
+import { Stat } from '../../types/hero';
 import { useClientTranslation } from '@/shared/i18n';
 import { statsPricingData } from '../../model/stats/statsPricingData';
 import { AttributePricingHelper } from '../../model/stats/AttributesPricingHelper';
 import cls from './AttributesPricing.module.scss';
-
-/**
- * Properties for AttributesPricing component
- *
- * @property {string} name Name of the stat.
- * @property {number} defaultLevel The initial value of the stat.
- * @property {number} developmentLevel The value indicating how much a stat has been developed.
- * @property {number} rarityClass Rarity class of the stat. The rarity class can be one of the following numeric values: 1, 3, 5-8, 10.
- * @property {string} color The stat's unique color.
- */
-export type Stat = {
-    name: string;
-    defaultLevel: number;
-    developmentLevel?: number;
-    rarityClass: number;
-    color: string;
-};
 
 export type AttributesPricingProps = {
     stats: Stat[];
