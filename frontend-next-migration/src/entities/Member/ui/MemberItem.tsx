@@ -16,19 +16,6 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
                     <span className={cls.memberName}>{member.name}</span>
                     <span className={cls.taskText}>{member.task}</span>
                     <div className={cls.iconContainer}>
-                        <div className={cls.memberLogo}>
-                            {member.logo ? (
-                                <Image
-                                    src={member.logo}
-                                    alt={member.name}
-                                    className={cls.Logo}
-                                    width={500}
-                                    height={500}
-                                />
-                            ) : (
-                                <div className={cls.placeholderLogo} />
-                            )}
-                        </div>
                         {Object.entries(linksMap).map(([key, icon]) => {
                             const link = member[key as keyof Omit<Member, 'id'>];
                             if (link) {
