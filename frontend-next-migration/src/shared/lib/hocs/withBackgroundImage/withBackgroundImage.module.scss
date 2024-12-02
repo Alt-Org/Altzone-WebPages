@@ -33,11 +33,7 @@
 
 .Content {
   @include custom-scrollbar;
-  position: relative;
   z-index: 2;
-  //height: 100vh;
-  //padding-top: 1px;
-  //padding-bottom: 1px;
 }
 
 .ImageWrapper {

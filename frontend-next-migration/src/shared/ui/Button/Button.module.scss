@@ -1,6 +1,7 @@
 .Button {
   cursor: pointer;
   color: var(--primary-color);
+  background: var(--secondary-color);
   padding: 6px 15px;
 }
 
@@ -10,10 +11,20 @@
   border: none;
   background: none;
   outline: none;
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+
 }
 
 .clearInverted {
   color: var(--inverted-primary-color);
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+
 }
 
 .outline {
@@ -26,12 +37,22 @@
   background: var(--bg-color);
   color: var(--primary-color);
   border: none;
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+
 }
 
 .backgroundInverted {
   background: var(--inverted-bg-color);
   color: var(--inverted-primary-color);
   border: none;
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+
 }
 
 .square {

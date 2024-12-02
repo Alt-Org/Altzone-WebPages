@@ -39,6 +39,17 @@
   --font-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl) var(--font-family-main);
   //--font-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl);
 
+
+  --font-size-4xl: 56px;
+  --font-line-4xl: 64px;
+  --font-4xl: var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-main);
+  //--font-4xl: var(--font-size-4xl) / var(--font-line-4xl);
+
+  --font-size-5xl: 64px;
+  --font-line-5xl: 72px;
+  --font-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-main);
+  //--font-5xl: var(--font-size-5xl) / var(--font-line-5xl);
+
   // sizes
   --navbar-height: 150px;
   //--navbar-height: 20vh;
