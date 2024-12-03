@@ -1,59 +1,6 @@
-// export enum GroupType {
-//   APICode = 'APICode',
-//   ArtisticDirector = 'ArtisticDirector',
-//   Comics = 'Comics',
-//   Concept = 'Concept',
-//   EducationalDesigner = 'EducationalDesigner',
-//   GameAnimation = 'GameAnimation',
-//   GameCode = 'GameCode',
-//   GameDesign = 'GameDesign',
-//   GameGraphic = 'GameGraphic',
-//   Graphic = 'Graphic',
-//   LogoGraphic = 'LogoGraphic',
-//   Others = 'Others',
-//   OthersComics = 'OthersComics',
-//   OthersGame = 'OthersGame',
-//   Production = 'Production',
-//   ProductionConsultant = 'ProductionConsultant',
-//   SocialMedia = 'SocialMedia',
-//   Sound = 'Sound',
-//   TechnicalConsultant = 'TechnicalConsultant',
-//   UserInterface = 'UserInterface',
-//   WebPagesCode = 'WebPagesCode',
-// }
-
-// export enum MemberStatus {
-//   voluntary = 'vapaaehtoinen',
-//   worker = 'työntekijä',
-//   intern = 'työharjoittelija',
-// }
-
-// export interface GroupWithMember {
-//   group: GroupType;
-//   workers: Member[];
-// }
-
-// export interface Member {
-//   id: number;
-//   name: string;
-//   imgSrc?: string;
-//   role?: string;
-//   email?: string;
-//   phone?: string;
-//   github?: string;
-//   discord?: string;
-//   trello?: string;
-//   status?: MemberStatus;
-//   workPeriod?: string;
-//   site?: string;
-//   linkedin?: string;
-// }
-
-// types.ts
-
 /**
- * This file contains TypeScript interfaces that represent the structure of various entities
- * used throughout the application, such as Member, Department, Team, and Logo.
+ * This file contains TypeScript interfaces and types that represent the structure of various entities
+ * used throughout the application, such as Member, Department, Team, Logo, and error handling structures.
  */
 
 export interface Logo {
@@ -65,19 +12,19 @@ export interface Logo {
 }
 
 export interface Member {
+    departments?: Department[];
+    email?: string;
+    facebook?: string;
+    github?: string;
     id: number;
+    instagram?: string;
+    linkedin?: string;
+    locale: string;
+    logo?: string | { id: string } | null;
     name: string;
     task?: string;
-    email?: string;
-    logo?: string | null;
+    teams?: Team[];
     website?: string;
-    github?: string;
-    linkedin?: string;
-    facebook?: string;
-    instagram?: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
 }
 
 export interface Department {
@@ -95,3 +42,24 @@ export interface Team {
     members: Member[];
     departments: Department[];
 }
+
+export interface Error {
+    message: string;
+    error: string;
+}
+
+// Types for handling query responses
+export type QueryFnResponse = SuccessResponse | ErrorResponse;
+
+export type SuccessResponse = {
+    data: Member[]; // Using the defined Member interface
+};
+
+export type ErrorResponse = {
+    error: {
+        status: number;
+        data: {
+            message: string;
+        };
+    };
+};

@@ -18,31 +18,12 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const { t } = useClientTranslation('team');
 
     const {
-        data: members = [], // This is where the members' data is stored
+        data: members = [], // This should now be typed as an array of Member
         isError,
         isLoading,
     } = useGetMembersQuery(lng, {
         refetchOnMountOrArgChange: false,
     });
-
-    // Helper function to render the team and department information
-    const renderTeamsAndDepartments = (member: any) => {
-        return (
-            <div className={cls.memberDetails}>
-                {/* Assuming `teams` and `departments` are populated */}
-                {member.teams ? (
-                    <p>
-                        <strong>Team:</strong> {member.teams.name}
-                    </p>
-                ) : null}
-                {member.departments ? (
-                    <p>
-                        <strong>Department:</strong> {member.departments.name}
-                    </p>
-                ) : null}
-            </div>
-        );
-    };
 
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
@@ -56,7 +37,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
                 {isLoading || isError ? <SkeletonLoaderWithHeader sections={5} /> : null}
 
-                {/* Render members data once it's successfully fetched */}
+                {/* Render members data */}
                 {!isLoading && !isError && members.length > 0 ? (
                     <div className={cls.membersList}>
                         {members.map((member) => (
@@ -65,8 +46,6 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                 className={cls.memberCard}
                             >
                                 <MemberItem member={member} />
-                                {renderTeamsAndDepartments(member)}{' '}
-                                {/* Add the team and department info */}
                             </div>
                         ))}
                     </div>

@@ -25,8 +25,8 @@ export const getMembers = (membersData: any[]): Member[] => {
     return (
         membersData
             .map((member: any) => {
-                const logoUrl = member.attributes.Logo?.data?.attributes?.url
-                    ? `${envHelper.strapiHost}${member.attributes.Logo.data.attributes.url}`
+                const logo = member.attributes.Logo?.data?.attributes?.url
+                    ? { id: member.attributes.Logo.data.id } // If logo exists, map it to an object with id
                     : null;
 
                 return {
@@ -37,7 +37,7 @@ export const getMembers = (membersData: any[]): Member[] => {
                     linkedin: member.attributes.Linkedin,
                     website: member.attributes.Website,
                     github: member.attributes.Github,
-                    logo: logoUrl,
+                    logo: logo, // Assign the logo as an object or null
                     facebook: member.attributes.Facebook,
                     instagram: member.attributes.Instagram,
                     createdAt: member.attributes.createdAt,
