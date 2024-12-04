@@ -22,7 +22,7 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
 
     const fullLanguageCode = language === 'en' ? 'en-US' : language === 'fi' ? 'fi-FI' : 'default';
     const translation = member.translations?.find((t) => t.languages_code === fullLanguageCode);
-    const task = translation?.task || 'No Task Assigned';
+    const task = translation?.task;
 
     return (
         <li className={cls.workmanComponent}>
