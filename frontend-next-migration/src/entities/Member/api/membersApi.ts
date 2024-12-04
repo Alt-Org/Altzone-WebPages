@@ -1,5 +1,5 @@
 import { directusApi } from '@/shared/api';
-import { Member, QueryFnResponse } from '../model/types/types';
+import { Member } from '../model/types/types';
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems } from '@directus/sdk';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
@@ -12,33 +12,13 @@ const membersApi = directusApi.injectEndpoints({
         getMembers: builder.query<Member[], void>({
             queryFn: async (): Promise<{ data: Member[] } | { error: FetchBaseQueryError }> => {
                 try {
-                    const rawMembers: Record<string, any>[] = await client.request(
+                    const Members = await client.request<Record<string, any>[]>(
                         readItems('members', {
-                            fields: ['*', 'translations.*', 'departments.*', 'teams.*', 'logo.*'],
-                            populate: {
-                                translations: true,
-                                departments: true,
-                                teams: true,
-                                logo: true,
-                            },
+                            fields: ['*', 'translations.*', 'logo.*'],
                         }),
                     );
-
-                    const members = rawMembers.map((raw) => ({
-                        id: raw.id,
-                        name: raw.name,
-                        locale: raw.locale,
-                        email: raw.email,
-                        github: raw.github,
-                        linkedin: raw.linkedin,
-                        logo: raw.logo,
-                        departments: raw.departments,
-                        teams: raw.teams,
-                    })) as Member[];
-
-                    return { data: members };
+                    return { data: Members as Member[] };
                 } catch (error: any) {
-                    // Map error to FetchBaseQueryError if needed
                     return {
                         error: {
                             status: error.status || 500,
