@@ -24,21 +24,30 @@ export interface Member {
     name: string;
     task?: string;
     teams?: Team[];
+    translations?: Translation[];
     website?: string;
 }
 
 export interface Translation {
+    translation: string;
     id: number;
     departments_id: number;
     languages_code: string;
     department: string;
+    task: string;
+    website: string;
+    facebook: string;
+    linkedin: string;
+    instagram: string;
+    github: string;
+    find: string;
 }
 
 export interface Department {
     id: number;
-    name?: string; // Name may not always be present if relying on translations
+    name?: string;
     translations: Translation[];
-    members?: Member[]; // Members can be loaded as needed
+    members?: Member[];
 }
 
 export interface Team {
