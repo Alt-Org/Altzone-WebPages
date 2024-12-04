@@ -5,9 +5,14 @@ import { FC } from 'react';
 import { getLinks } from '../api/mappers';
 import { Member } from '../model/types/types';
 import cls from './MemberItem.module.scss';
-import { envHelper } from '@/shared/const/envHelper'; // Varmista, että envHelper on importattu
+import { envHelper } from '@/shared/const/envHelper';
 
-const MemberItem: FC<{ member: Member }> = ({ member }) => {
+interface MemberItemProps {
+    member: Member;
+    language: string; // Adds the selected language to props
+}
+
+const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
     const linksMap = getLinks();
 
     const logoUrl =
@@ -15,12 +20,16 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
             ? `${envHelper.strapiHost}/assets/${member.logo.id}`
             : null;
 
+    const fullLanguageCode = language === 'en' ? 'en-US' : language === 'fi' ? 'fi-FI' : 'default';
+    const translation = member.translations?.find((t) => t.languages_code === fullLanguageCode);
+    const task = translation?.task || 'No Task Assigned';
+
     return (
         <li className={cls.workmanComponent}>
             <div className={cls.memberRow}>
                 <div className={cls.centerContainer}>
                     <span className={cls.memberName}>{member.name}</span>
-                    <span className={cls.taskText}>{member.task || 'No Task Assigned'}</span>
+                    <span className={cls.taskText}>{task}</span>
                     <div className={cls.iconContainer}>
                         <div className={cls.memberLogo}>
                             {logoUrl ? (
@@ -36,7 +45,7 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
                             )}
                         </div>
                         {Object.entries(linksMap).map(([key, icon]) => {
-                            const link = member[key as keyof Omit<Member, 'id'>];
+                            const link = member[key as keyof Member];
                             if (typeof link === 'string') {
                                 const href = key === 'email' ? `mailto:${link}` : link;
                                 const target = key === 'email' ? '_self' : '_blank';
@@ -60,5 +69,4 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
         </li>
     );
 };
-
 export default MemberItem;
