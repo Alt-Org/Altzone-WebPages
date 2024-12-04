@@ -1,5 +1,5 @@
 /**
- * This file contains TypeScript interfaces and types that represent the structure of various entities
+ * This file contains TypeScript interfaces and types representing the structure of various entities
  * used throughout the application, such as Member, Department, Team, Logo, and error handling structures.
  */
 
@@ -19,7 +19,7 @@ export interface Member {
     id: number;
     instagram?: string;
     linkedin?: string;
-    locale: string;
+    language: string;
     logo?: string | { id: string } | null;
     name: string;
     task?: string;
@@ -27,10 +27,18 @@ export interface Member {
     website?: string;
 }
 
+export interface Translation {
+    id: number;
+    departments_id: number;
+    languages_code: string;
+    department: string;
+}
+
 export interface Department {
     id: number;
-    name: string;
-    members: Member[];
+    name?: string; // Name may not always be present if relying on translations
+    translations: Translation[];
+    members?: Member[]; // Members can be loaded as needed
 }
 
 export interface Team {
@@ -39,8 +47,8 @@ export interface Team {
     createdAt: string;
     updatedAt: string;
     locale: string;
-    members: Member[];
-    departments: Department[];
+    members?: Member[]; // Members may be an optional field
+    departments?: Department[]; // Departments might be optional and separately loaded
 }
 
 export interface Error {
@@ -52,7 +60,7 @@ export interface Error {
 export type QueryFnResponse = SuccessResponse | ErrorResponse;
 
 export type SuccessResponse = {
-    data: Member[]; // Using the defined Member interface
+    data: Member[] | Department[]; // Generalize to allow department data
 };
 
 export type ErrorResponse = {
