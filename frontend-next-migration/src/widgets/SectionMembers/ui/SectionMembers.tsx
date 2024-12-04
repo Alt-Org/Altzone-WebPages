@@ -7,6 +7,7 @@ import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
 import { SkeletonLoaderWithHeader } from '@/shared/ui/SkeletonLoader';
 import cls from './SectionMembers.module.scss';
+import { Member } from '@/entities/Member/model/types/types';
 
 interface WorkersSectionProps {
     className?: string;
@@ -18,7 +19,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const { t } = useClientTranslation('team');
 
     const {
-        data: members = [], // This should now be typed as an array of Member
+        data: members = [],
         isError,
         isLoading,
     } = useGetMembersQuery(lng, {
@@ -37,19 +38,21 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
                 {isLoading || isError ? <SkeletonLoaderWithHeader sections={5} /> : null}
 
-                {/* Render members data */}
-                {!isLoading && !isError && members.length > 0 ? (
+                {!isLoading && !isError && members.length > 0 && (
                     <div className={cls.membersList}>
                         {members.map((member) => (
                             <div
                                 key={member.id}
                                 className={cls.memberCard}
                             >
-                                <MemberItem member={member} />
+                                <MemberItem
+                                    member={member}
+                                    language={lng}
+                                />
                             </div>
                         ))}
                     </div>
-                ) : null}
+                )}
             </Container>
         </div>
     );
