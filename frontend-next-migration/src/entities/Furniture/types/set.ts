@@ -90,6 +90,7 @@ export interface SetInfo {
     cover: StaticImageData | string;
     items: Piece[];
     disabled?: boolean;
+    key?: string;
 }
 
 export enum FurnitureSetCoverPosition {

@@ -27,7 +27,7 @@ const FurnitureSearchPage = () => {
     };
 
     let i = 0;
-    const list = manager.getPiecesByKeyword(input);
+    const list = manager.getPiecesByKeyword(input, useClientTranslation('furnitureinfo').t);
     return (
         <div className={classNames(cls.Page)}>
             <Container className={cls.Container}>

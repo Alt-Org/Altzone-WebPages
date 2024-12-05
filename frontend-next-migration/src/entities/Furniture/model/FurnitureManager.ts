@@ -1,12 +1,12 @@
 import { useClientTranslation } from '@/shared/i18n';
 import { FurnitureSet, SetInfo, Piece, PieceType } from '../types/set';
 import { initializeFurnitureSets } from './initializeFurniture';
+import { TFunction } from 'i18next';
 
 const enums: Record<string, FurnitureSet> = {
     neuro: FurnitureSet.NEURO,
     taakka: FurnitureSet.TAAKKA,
     rakkaus: FurnitureSet.RAKKAUS,
-    scrodinger: FurnitureSet.SCRODINGER,
 };
 
 export class FurnitureManager {
@@ -18,11 +18,19 @@ export class FurnitureManager {
 
     public getAllFurnitureSets() {
         return Object.entries(this.furnitureSets).map((set) => {
-            return set[1];
+            return {
+                ...this.getFurnitureSet(set[1].id),
+            };
         });
     }
     public getFurnitureSet(id: string) {
+        if (!enums[id]) {
+            throw new Error('no set exists for id ' + String(id));
+        }
         const set = this.furnitureSets[enums[id]];
+        if (!set) {
+            throw new Error('no set exists for id ' + String(id));
+        }
 
         const ordered: Array<Array<Piece>> = [[], [], [], [], []];
 
@@ -62,10 +70,8 @@ export class FurnitureManager {
 
         return ret;
     }
-    public getPiecesByKeyword(search: string) {
+    public getPiecesByKeyword(search: string, t: TFunction<any, string>) {
         const ret: Array<Piece> = [];
-
-        const { t } = useClientTranslation('furnitureinfo');
 
         search = search.toLowerCase();
         this.getAllFurnitureSets().map((set: SetInfo) => {
