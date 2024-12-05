@@ -16,21 +16,28 @@ export class FurnitureManager {
         this.furnitureSets = initializeFurnitureSets();
     }
 
-    public getAllFurnitureSets() {
+    /**
+     *
+     * @returns {Array<SetInfo>} Returns an array of all sets
+     */
+    public getAllFurnitureSets(): Array<SetInfo> {
         return Object.entries(this.furnitureSets).map((set) => {
             return {
                 ...this.getFurnitureSet(set[1].id),
             };
         });
     }
-    public getFurnitureSet(id: string) {
+    /**
+     *
+     * @param {string} id The id of the furniture set
+     * @throws {Error} Throws an error if the set does not exist
+     * @returns {SetInfo} Returns a single set
+     */
+    public getFurnitureSet(id: string): SetInfo {
         if (!enums[id]) {
             throw new Error('no set exists for id ' + String(id));
         }
         const set = this.furnitureSets[enums[id]];
-        if (!set) {
-            throw new Error('no set exists for id ' + String(id));
-        }
 
         const ordered: Array<Array<Piece>> = [[], [], [], [], []];
 
@@ -53,7 +60,12 @@ export class FurnitureManager {
 
         return set;
     }
-    public getPiecesByCategory(cat: PieceType) {
+    /**
+     *
+     * @param {PieceType} cat Short for category id
+     * @returns {Array<Piece>} Returns an array of Pieces with the same category
+     */
+    public getPiecesByCategory(cat: PieceType): Array<Piece> {
         const ret: Array<Piece> = [];
 
         this.getAllFurnitureSets().map((set: SetInfo) => {
@@ -70,7 +82,13 @@ export class FurnitureManager {
 
         return ret;
     }
-    public getPiecesByKeyword(search: string, t: TFunction<any, string>) {
+    /**
+     *
+     * @param {string} search keyword to search with
+     * @param {TFunction} t translator object, must be set to 'furnitureinfo'
+     * @returns {Array<Piece>} Returns an array of Pieces matching the search
+     */
+    public getPiecesByKeyword(search: string, t: TFunction<any, string>): Array<Piece> {
         const ret: Array<Piece> = [];
 
         search = search.toLowerCase();
