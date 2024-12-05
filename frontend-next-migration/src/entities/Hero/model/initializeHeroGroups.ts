@@ -20,6 +20,7 @@ import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
+import { statData } from '@/entities/Hero/model/stats/statsDataV2';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
     return {
@@ -38,33 +39,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('RETROFLECTOR.heroes.hannuHodari.title'),
                     slug: HeroSlug.HANNU_HODARI,
                     description: t('RETROFLECTOR.heroes.hannuHodari.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 5,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 2,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 12,
-                            rarityClass: 1,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 8,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 8,
-                            rarityClass: 3,
-                        },
-                    ],
+                    stats: statData.HANNU_HODARI,
                 },
 
                 {
@@ -76,33 +51,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('RETROFLECTOR.heroes.pirate.title'),
                     slug: HeroSlug.PIRATE,
                     description: t('RETROFLECTOR.heroes.pirate.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 8,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 1,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 10,
-                            rarityClass: 1,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 9,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 8,
-                            rarityClass: 3,
-                        },
-                    ],
+                    stats: statData.PIRATE,
                 },
             ],
         },
@@ -122,33 +71,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.SOUL_SISTERS,
                     title: t('CONFLUENT.heroes.SoulSisters.title'),
                     description: t('CONFLUENT.heroes.SoulSisters.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 11,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 2,
-                            rarityClass: 8,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 12,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 2,
-                            rarityClass: 10,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 2,
-                            rarityClass: 10,
-                        },
-                    ],
+                    stats: statData.SOUL_SISTERS,
                 },
 
                 {
@@ -160,33 +83,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.SLEEPER,
                     title: t('CONFLUENT.heroes.Sleeper.title'),
                     description: t('CONFLUENT.heroes.Sleeper.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 12,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 3,
-                            rarityClass: 8,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 10,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 1,
-                            rarityClass: 10,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 4,
-                            rarityClass: 10,
-                        },
-                    ],
+                    stats: statData.SLEEPER,
                 },
             ],
         },
@@ -206,33 +103,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.GRAFFITI_ARTIST,
                     title: t('PROJECTOR.heroes.GraffitiArtist.title'),
                     description: t('PROJECTOR.heroes.GraffitiArtist.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 10,
-                            rarityClass: 5,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 3,
-                            rarityClass: 7,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 8,
-                            rarityClass: 7,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 7,
-                            rarityClass: 7,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 4,
-                            rarityClass: 5,
-                        },
-                    ],
+                    stats: statData.GRAFFITI_ARTIST,
                 },
             ],
         },
@@ -252,33 +123,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.RESEARCHER,
                     title: t('INTELLECTUALIZER.heroes.Researcher.title'),
                     description: t('INTELLECTUALIZER.heroes.Researcher.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 3,
-                            rarityClass: 7,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 8,
-                            rarityClass: 5,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 8,
-                            rarityClass: 8,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 10,
-                            rarityClass: 10,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 6,
-                            rarityClass: 7,
-                        },
-                    ],
+                    stats: statData.RESEARCHER,
                 },
             ],
         },
@@ -298,33 +143,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.CONMAN,
                     title: t('TRICKSTER.heroes.Conman.title'),
                     description: t('TRICKSTER.heroes.Conman.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 5,
-                            rarityClass: 8,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 2,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 6,
-                            rarityClass: 4,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 7,
-                            rarityClass: 7,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 10,
-                            rarityClass: 8,
-                        },
-                    ],
+                    stats: statData.CONMAN,
                 },
             ],
         },
@@ -344,33 +163,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.FATE_PRIEST,
                     title: t('OBEDIENT.heroes.FatePriest.title'),
                     description: t('OBEDIENT.heroes.FatePriest.description'),
-                    stats: [
-                        {
-                            name: 'resistance',
-                            defaultLevel: 10,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'hp',
-                            defaultLevel: 10,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'size',
-                            defaultLevel: 10,
-                            rarityClass: 1,
-                        },
-                        {
-                            name: 'impactForce',
-                            defaultLevel: 10,
-                            rarityClass: 3,
-                        },
-                        {
-                            name: 'speed',
-                            defaultLevel: 10,
-                            rarityClass: 3,
-                        },
-                    ],
+                    stats: statData.FATE_PRIEST,
                 },
             ],
         },

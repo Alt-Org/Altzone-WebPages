@@ -34,9 +34,9 @@ export interface Hero {
     stats: Stat[];
 }
 
-type StatName = 'resistance' | 'hp' | 'size' | 'impactForce' | 'speed';
+export type StatName = 'resistance' | 'hp' | 'size' | 'impactForce' | 'speed';
 
-type Stat = {
+export type Stat = {
     name: StatName;
     rarityClass: number;
     defaultLevel: number;
