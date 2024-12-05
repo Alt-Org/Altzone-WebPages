@@ -21,7 +21,16 @@ describe('FurnitureManager', () => {
         });
     });
 
-    it('should return correct error messages with invalid values', () => {});
+    it('should return correct error messages with invalid values', () => {
+        let err;
+        try {
+            manager.getFurnitureSet('anonexistentsetthatdoesnotexist');
+        } catch (error) {
+            err = error;
+        }
+
+        expect(err).toBeTruthy();
+    });
 
     it('should return pieces in only same category', () => {
         Object.entries(types).map((info) => {
