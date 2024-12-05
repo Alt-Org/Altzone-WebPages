@@ -1,3 +1,4 @@
+'use client';
 import React, {
     ReactNode,
     HTMLAttributes,
@@ -7,10 +8,13 @@ import React, {
     memo,
     DetailedHTMLProps,
     InputHTMLAttributes,
+    useState,
+    useEffect,
 } from 'react';
 import { Button as CustomButton, ButtonTheme } from '@/shared/ui/Button/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CustomForm.module.scss';
+import { MultiSelect } from 'react-multi-select-component';
 
 /**
  * Header component for displaying a heading inside the form.
@@ -132,6 +136,99 @@ function Button({ children, className = '', ...props }: ButtonProps) {
     );
 }
 
+/**
+ * MultiSelectionDropdown component for rendering a multi-selection dropdown.
+ *
+ * 
+ * @param {MultiSelectionFieldProps} props - The properties for the MultiSelectionDropdown.
+ * options accepts Record<string, string> as a prop type and function convert it to { label: any; value: T }[] -form for MultiSelectionDropdown
+ * 
+ * @returns {JSX.Element} - The rendered multiselection component.
+ *
+ * @example
+ * const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
+ * 
+ *  <MemoizedForm.MultiSelectionDropdown
+        label='Clan labels'
+        options={ClanLabel}
+        defaultSelected={{ ITSENÄISET : ClanLabel.ITSENÄISET }}
+        maxSelections={5}
+        value={selected}
+        onSelectChange={(newSelection) => setSelected(newSelection)}
+    />
+ */
+
+type MultiSelectionFieldProps<T> = {
+    label: string;
+    className?: string;
+    inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    options: Record<any, any>;
+    onSelectChange: (selected: { label: any; value: T }[]) => void;
+    error?: any;
+    maxSelections?: number;
+    defaultSelected?: Record<any, any>;
+    value: { label: any; value: T }[];
+};
+
+function MultiSelectionDropdown<T>({
+    label,
+    error,
+    maxSelections,
+    inputProps,
+    className = '',
+    value,
+    defaultSelected,
+    options,
+    onSelectChange,
+}: MultiSelectionFieldProps<T>) {
+    const inputId = inputProps?.id || `multiselect-${label}`;
+    const [selectionError, setSelectionError] = useState<string | null>(null);
+
+    const formattedOptions = Object.entries(options).map(([key, value]) => ({
+        label: value,
+        value: key,
+    }));
+
+    useEffect(() => {
+        if (defaultSelected && value.length === 0) {
+            const refactoredDefaults = Object.entries(defaultSelected).map(([key, value]) => ({
+                label: value,
+                value: key as T,
+            }));
+            onSelectChange(refactoredDefaults);
+        }
+    }, [defaultSelected, onSelectChange]);
+
+    const selectionLogic = (newSelection: { label: any; value: T }[]) => {
+        if (maxSelections && newSelection.length > maxSelections) {
+            setSelectionError(`Maximum of ${maxSelections} selections!`);
+        } else {
+            setSelectionError(null);
+            onSelectChange(newSelection);
+        }
+    };
+
+    return (
+        <div className={classNames(cls.field, {}, [className])}>
+            <label htmlFor={inputId}>{label}</label>
+            {(error || selectionError) && (
+                <p
+                    role="alert"
+                    className={cls.error}
+                >
+                    {error || selectionError}
+                </p>
+            )}
+            <MultiSelect
+                options={formattedOptions}
+                value={value}
+                onChange={selectionLogic}
+                labelledBy={label}
+            />
+        </div>
+    );
+}
+
 interface IFormProps extends HTMLAttributes<HTMLFormElement> {}
 
 interface MemoizedFormCompose {
@@ -139,6 +236,7 @@ interface MemoizedFormCompose {
     Header: typeof Header;
     InputField: typeof InputField;
     Checkbox: typeof Checkbox;
+    MultiSelectionDropdown: typeof MultiSelectionDropdown;
 }
 
 /**
@@ -173,5 +271,6 @@ MemoizedForm.Button = Button;
 MemoizedForm.Header = Header;
 MemoizedForm.InputField = InputField;
 MemoizedForm.Checkbox = Checkbox;
+MemoizedForm.MultiSelectionDropdown = MultiSelectionDropdown;
 
 export default MemoizedForm;
