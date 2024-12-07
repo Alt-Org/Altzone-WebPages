@@ -1,11 +1,7 @@
 import { faGithub, faLinkedin, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { envHelper } from '@/shared/const/envHelper';
-import { Member, Department } from '../model/types/types';
+import { Member, Team, Department } from '@/entities/Member/model/types/types';
 
-/**
- * LinksMap provides a mapping of link types to FontAwesome icons.
- */
 export const getLinks = () => ({
     website: faGlobe,
     github: faGithub,
@@ -15,91 +11,47 @@ export const getLinks = () => ({
     email: faEnvelope,
 });
 
-/**
- * Maps raw member data from the API response to the Member type used in the application.
- * Sorts members alphabetically by name.
- * @param membersData An array of raw member data from the API.
- * @returns An array of members mapped to the Member type.
- */
-export const getMembers = (membersData: any[]): Member[] => {
-    return (
-        membersData
-            .map((member: any) => {
-                const logo = member.attributes.Logo?.data?.attributes?.url
-                    ? { id: member.attributes.Logo.data.id } // If logo exists, map it to an object with id
-                    : null;
+export interface OrganizedData {
+    teamsMap: Map<number, Team>;
+    unmatchedDepartments: Department[];
+}
 
-                return {
-                    id: member.id,
-                    name: member.attributes.Name,
-                    task: member.attributes.Task,
-                    email: member.attributes.Email,
-                    linkedin: member.attributes.Linkedin,
-                    website: member.attributes.Website,
-                    github: member.attributes.Github,
-                    logo: logo, // Assign the logo as an object or null
-                    facebook: member.attributes.Facebook,
-                    instagram: member.attributes.Instagram,
-                    createdAt: member.attributes.createdAt,
-                    updatedAt: member.attributes.updatedAt,
-                    locale: member.attributes.locale,
-                };
-            })
-            .sort((a, b) => a.name.localeCompare(b.name)) || []
-    );
-};
+export const organizeMembers = (members: Member[], lng: string) => {
+    const teamsMap = new Map<number, Team>();
+    const unmatchedDepartments: Department[] = [];
 
-/**
- * Maps raw department data from the API response to the Department type used in the application.
- * Sorts departments based on a predefined order depending on the locale.
- * @param departmentsData An array of raw department data from the API.
- * @param locale The language locale used to find the localized department name.
- * @returns An array of departments mapped to the Department type.
- */
-export const getDepartments = (departmentsData: any[], locale: string): Department[] => {
-    const orderEn = [
-        'Lead Developers',
-        'Game Developer',
-        'Website Developer',
-        'Developers',
-        'Graphics',
-        'Graphical Game Development',
-        'Sound Design & Composition',
-        'Sound Design-Oriented Game Development',
-    ];
+    members.forEach((member: Member) => {
+        const memberTeam = member.team;
+        const memberDepartment = member.department;
 
-    const orderFi = [
-        'Vastaava Ohjelmistokehittäjä',
-        'Pelikehittäjä',
-        'Verkkosivukehittäjä',
-        'Ohjelmistokehittäjät',
-        'Grafiikka',
-        'Graafinen pelikehitys',
-        'Äänisuunnittelu ja Sävellys',
-        'Äänisuunnittelullinen Pelikehitys',
-    ];
-
-    const order = locale === 'fi' ? orderFi : orderEn;
-
-    return (
-        departmentsData
-            .map((dept: any) => {
-                const localizedDept = dept.attributes.localizations?.data.find(
-                    (loc: any) => loc.attributes.locale === locale,
+        if (memberTeam) {
+            let team = teamsMap.get(memberTeam.id);
+            if (!team) {
+                const teamNameTranslation = memberTeam.translations.find(
+                    (t) => t.languages_code === lng,
                 );
 
-                const localizedDeptName = localizedDept
-                    ? localizedDept.attributes.Name
-                    : dept.attributes.Name;
+                const teamName = teamNameTranslation
+                    ? teamNameTranslation.team
+                    : memberTeam.translations[0]?.team || 'Unnamed';
 
-                const members = getMembers(dept.attributes.members?.data || []);
+                team = { ...memberTeam, name: teamName, members: [], departments: [] };
+                teamsMap.set(memberTeam.id, team);
+            }
+            if (memberDepartment) {
+                let department = team.departments.find((d) => d.id === memberDepartment.id);
+                if (!department) {
+                    department = { ...memberDepartment, members: [] };
+                    team.departments.push(department);
+                }
+                // Add the member to the department only
+                department.members.push(member);
+            } else {
+                // Add member to the team-level member list if no department
+                team.members.push(member);
+            }
+        }
+    });
 
-                return {
-                    id: dept.id,
-                    name: localizedDeptName,
-                    members,
-                };
-            })
-            .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name)) || []
-    );
+    return { teamsMap, unmatchedDepartments };
 };
