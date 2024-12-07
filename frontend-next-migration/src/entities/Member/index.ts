@@ -1,2 +1,2 @@
-export { MemberItem, DepartmentItem } from './ui';
+export { MemberItem } from './ui';
 export { useGetMembersQuery } from './api/membersApi';
