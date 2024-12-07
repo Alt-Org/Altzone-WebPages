@@ -38,16 +38,18 @@ export const organizeMembers = (members: Member[], lng: string) => {
                 team = { ...memberTeam, name: teamName, members: [], departments: [] };
                 teamsMap.set(memberTeam.id, team);
             }
+
             if (memberDepartment) {
-                let department = team.departments.find((d) => d.id === memberDepartment.id);
+                let department = team.departments.find(
+                    (departmentItem) => departmentItem.id === memberDepartment.id,
+                );
                 if (!department) {
                     department = { ...memberDepartment, members: [] };
                     team.departments.push(department);
                 }
-                // Add the member to the department only
+
                 department.members.push(member);
             } else {
-                // Add member to the team-level member list if no department
                 team.members.push(member);
             }
         }
