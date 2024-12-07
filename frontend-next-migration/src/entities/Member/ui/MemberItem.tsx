@@ -9,14 +9,14 @@ import { envHelper } from '@/shared/const/envHelper';
 
 interface MemberItemProps {
     member: Member;
-    language: string; // Adds the selected language to props
+    language: string;
 }
 
 const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
     const linksMap = getLinks();
 
     const logoUrl =
-        member.logo && typeof member.logo !== 'string' && member.logo.id
+        member.logo && typeof member.logo === 'object' && 'id' in member.logo
             ? `${envHelper.strapiHost}/assets/${member.logo.id}`
             : null;
 
