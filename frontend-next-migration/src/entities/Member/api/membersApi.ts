@@ -12,12 +12,20 @@ const membersApi = directusApi.injectEndpoints({
         getMembers: builder.query<Member[], void>({
             queryFn: async (): Promise<{ data: Member[] } | { error: FetchBaseQueryError }> => {
                 try {
-                    const Members = await client.request<Record<string, any>[]>(
+                    const members = await client.request<Record<string, any>[]>(
                         readItems('members', {
-                            fields: ['*', 'translations.*', 'logo.*'],
+                            fields: [
+                                '*', // All member fields
+                                'department.*', // Include department details
+                                'department.translations.*', // Include department translations
+                                'team.*', // Include team details
+                                'team.translations.*', // Correctly include team translations
+                                'translations.*', // Include all member translations
+                                'logo.*', // Include logo details
+                            ],
                         }),
                     );
-                    return { data: Members as Member[] };
+                    return { data: members as Member[] };
                 } catch (error: any) {
                     return {
                         error: {
