@@ -13,7 +13,7 @@ interface Props {
 }
 
 const ScrollBottomButtonComponent = (props: Props) => {
-    const { speedInMs = 50000, className = '', text = 'play', isDisabled = false } = props;
+    const { speedInMs = 30000, className = '', text = 'play', isDisabled = false } = props;
 
     const ScrollButtonId = 'ScrollButton';
     const animationFrameIdRef = useRef<number>(0);
