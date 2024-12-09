@@ -3,13 +3,13 @@ import React, { ReactNode } from 'react';
 import { ScrollBottomButton as ScrollBottomButtonExternal } from '@/features/ScrollBottom';
 
 interface ScrollToSectionButtonProps {
-    children: ReactNode;
+    text: string;
     className: string;
     IdToScrollBeforePlay: string;
 }
 
 export const ScrollBottomButton = (props: ScrollToSectionButtonProps) => {
-    const { children, IdToScrollBeforePlay, className } = props;
+    const { text, IdToScrollBeforePlay, className } = props;
 
     const scrollToSection = () => {
         const element = document.getElementById(IdToScrollBeforePlay);
@@ -20,9 +20,10 @@ export const ScrollBottomButton = (props: ScrollToSectionButtonProps) => {
 
     return (
         <ScrollBottomButtonExternal
+            key={'somekey'}
             onBeforePlay={scrollToSection}
             className={className}
-            text={children}
+            text={text}
         />
     );
 };

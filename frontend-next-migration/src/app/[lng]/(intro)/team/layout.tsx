@@ -31,9 +31,8 @@ export default async function TeamLayout({ children, params }: Props) {
                     <ScrollBottomButton
                         IdToScrollBeforePlay={'members'}
                         className={cls.diveButton}
-                    >
-                        <b>{t('meet-button')}</b>
-                    </ScrollBottomButton>
+                        text={`${t('meet-button')}`}
+                    />
                 }
             >
                 {children}
@@ -42,10 +41,3 @@ export default async function TeamLayout({ children, params }: Props) {
         </>
     );
 }
-
-// <ScrollToSectionButton
-//     className={cls.diveButton}
-//     scrollToId={'members'}
-// >
-//     <b>{t('meet-button')}</b>
-// </ScrollToSectionButton>
