@@ -9,7 +9,7 @@ interface Props {
     className?: string;
     text?: string;
     isDisabled?: boolean;
-    onBeforeClick?: () => void;
+    onBeforePlay?: () => void;
 }
 
 const ScrollBottomButtonComponent = (props: Props) => {
@@ -18,15 +18,15 @@ const ScrollBottomButtonComponent = (props: Props) => {
         className = '',
         text = 'play',
         isDisabled = false,
-        onBeforeClick,
+        onBeforePlay,
     } = props;
 
     const ScrollButtonId = 'ScrollButton';
     const animationFrameIdRef = useRef<number>(0);
 
     const handleWatchClick = () => {
-        if (onBeforeClick) {
-            onBeforeClick();
+        if (onBeforePlay) {
+            onBeforePlay();
         }
 
         scrollToBottom(speedInMs, animationFrameIdRef);
