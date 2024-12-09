@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { getLinks } from '../api/mappers';
 import { Member } from '../model/types/types';
 import cls from './MemberItem.module.scss';
@@ -14,6 +14,20 @@ interface MemberItemProps {
 }
 
 const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
+    /**
+     * Manage the enlarged mode of the image.
+     * @description When the boolean value is true, image is enlarged.
+     * @type {boolean}
+     * @default false
+     */
+    const [isEnlarged, setIsEnlarged] = useState(false);
+    /**
+     * Handles image clicking. Changes the state of the image.
+     */
+    const handleClick = () => {
+        setIsEnlarged(!isEnlarged);
+    };
+
     const linksMap = getLinks();
 
     const logoUrl =
@@ -31,12 +45,15 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
                     <span className={cls.memberName}>{member.name}</span>
                     <span className={cls.taskText}>{task}</span>
                     <div className={cls.iconContainer}>
-                        <div className={cls.memberLogo}>
+                        <div
+                            className={`${cls.memberLogo} ${isEnlarged ? cls.memberLogoEnlarged : ''}`}
+                        >
                             {logoUrl ? (
                                 <Image
                                     src={logoUrl}
                                     alt={member.name}
                                     className={cls.Logo}
+                                    onClick={handleClick}
                                     width={500}
                                     height={500}
                                 />
