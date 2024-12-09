@@ -124,14 +124,50 @@
 
 
 .langSwitcher {
+  position: relative;
   border-radius: var(--border-radius-custom);
   border: 2px solid var(--inverted-primary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
-  //text-align: center;
   padding: 2px;
- }
+
+  button {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: var(--font-size-m) !important;
+    color: var(--secondary-color) !important;
+    border-radius: var(--border-radius-custom);
+    border: 2px solid transparent;
+    cursor: pointer;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  ul {
+    position: absolute;
+    margin-top: 5px;
+    left: 0;
+    right: 0;
+    height: max-content;
+    width: max-content;
+    border-radius: var(--border-radius-custom);
+    outline: 2px solid var(--inverted-primary-color);
+    list-style-type: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: var(--transparent-bg-dark);
+  }
+
+  li {
+    cursor: pointer;
+  }
+
+}
 
 .authButton {
   border-radius: var(--border-radius-custom);
