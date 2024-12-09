@@ -39,7 +39,7 @@ export default async function TeamLayout({ children, params }: Props) {
                     <ScrollBottomButton
                         // isDisabled={isError || isLoading}
                         className={classNames(cls.diveButton)}
-                        text={`${t('Play')} ▶`}
+                        text={`${t('page-play')} ▶`}
                     />
                 }
             >
