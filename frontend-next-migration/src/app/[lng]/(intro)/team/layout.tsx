@@ -34,11 +34,6 @@ export default async function TeamLayout({ children, params }: Props) {
                     >
                         <b>{t('meet-button')}</b>
                     </ScrollToSectionButton>
-                    // <ScrollBottomButton
-                    //     // isDisabled={isError || isLoading}
-                    //     className={classNames(cls.diveButton)}
-                    //     text={`${t('meet-button')} ▶`}
-                    // />
                 }
             >
                 {children}
