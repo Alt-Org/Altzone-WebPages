@@ -7,7 +7,7 @@ import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
 import { SkeletonLoaderWithHeader } from '@/shared/ui/SkeletonLoader';
 import cls from './SectionMembers.module.scss';
-import { organizeMembers } from '@/entities/Member/api/mappers';
+import { organizeMembers } from '@/entities/Member/api/mappers'; // Ensure correct import path
 
 interface WorkersSectionProps {
     className?: string;
@@ -25,7 +25,8 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     } = useGetMembersQuery(undefined, {
         refetchOnMountOrArgChange: false,
     });
-    const { teamsMap, unmatchedDepartments } = organizeMembers(members, lng);
+
+    const { teamsMap } = organizeMembers(members, lng);
 
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
@@ -59,11 +60,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                         key={department.id}
                                         className={cls.departmentCard}
                                     >
-                                        <h2>
-                                            {department.translations.find(
-                                                (t) => t.languages_code === lng,
-                                            )?.department ?? department.translations[0].department}
-                                        </h2>
+                                        <h2>{department.name}</h2>
                                         <ul className={cls.departmentMembersList}>
                                             {department.members.map((member) => (
                                                 <MemberItem
@@ -75,26 +72,6 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                         </ul>
                                     </div>
                                 ))}
-                            </div>
-                        ))}
-                        {unmatchedDepartments.map((department) => (
-                            <div
-                                key={department.id}
-                                className={cls.departmentCard}
-                            >
-                                <h2>
-                                    {department.translations.find((t) => t.languages_code === lng)
-                                        ?.department ?? department.translations[0].department}
-                                </h2>
-                                <ul className={cls.departmentMembersList}>
-                                    {department.members.map((member) => (
-                                        <MemberItem
-                                            key={member.id}
-                                            member={member}
-                                            language={lng}
-                                        />
-                                    ))}
-                                </ul>
                             </div>
                         ))}
                     </>
