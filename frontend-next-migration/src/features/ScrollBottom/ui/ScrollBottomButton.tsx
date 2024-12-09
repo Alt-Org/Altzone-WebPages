@@ -26,10 +26,14 @@ const ScrollBottomButtonComponent = (props: Props) => {
     const handleWatchClick = () => {
         if (onBeforePlay) {
             onBeforePlay();
+
+            setTimeout(() => {
+                scrollToBottom(speedInMs, animationFrameIdRef);
+            }, 500);
+
+            return;
         }
-        setTimeout(() => {
-            scrollToBottom(speedInMs, animationFrameIdRef);
-        }, 300);
+        scrollToBottom(speedInMs, animationFrameIdRef);
     };
 
     useBottomAnimationCancellation(animationFrameIdRef, ScrollButtonId);
