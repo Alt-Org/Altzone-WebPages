@@ -13,7 +13,11 @@ import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import { AttributesPricing3 } from '@/entities/Hero/ui/AttributesPricing3/AttributesPricingV3';
 import HeroMenuAsDropdown from '@/features/NavigateHeroes/ui/HeroMenuAsDropdown';
 
-const HeroDevelopmentPage = () => {
+export interface Props {
+    className?: string;
+}
+
+const HeroDevelopmentPage: React.FC<Props> = ({ className }) => {
     const [hero, setHero] = useState<HeroWithGroup>();
     const [key, setKey] = useState(Math.random());
     const [stat, setStat] = useState<Stat>({ name: 'hp', defaultLevel: 1, rarityClass: 1 });
@@ -153,7 +157,7 @@ const HeroDevelopmentPage = () => {
         return <h2>{t('Stat pricing data is unavailable')}</h2>;
     }
     return (
-        <main className={classNames(cls.main, combinedModCss)}>
+        <main className={classNames(cls.main, combinedModCss, [className ? className : ''])}>
             <div className={classNames(cls.HeroAndChart, combinedModCss)}>
                 <div className={classNames(cls.Hero, combinedModCss)}>
                     <div className={cls.dropdown}>
