@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { ScrollTop } from '@/features/ScrollTop';
 import { LayoutWithIntro } from '@/preparedPages/Layouts';
-import introBg from '@/shared/assets/images/comics/comics5.webp';
+import introBg from '@/shared/assets/images/members/members7.webp';
 import cls from './Layout.module.scss';
 import { useServerTranslation } from '@/shared/i18n';
 import { ScrollToSectionButton } from './_components/ScrollToSectionButton';
