@@ -125,3 +125,10 @@ export const getRouteAboutPage = () => '/about';
 export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';
 export const getRoute404Page = () => '/404';
+
+export const getRouteGameArt = () => '/game-art'; // Need to change paths when teachers page is finished
+export const getRouteLessonPresentation = () => '/lesson-presentation'; // Need to change paths when teachers page is finished
+export const getRouteInstructions = () => '/instructions'; // Need to change paths when teachers page is finished
+export const getRouteTeachingMaterials = () => '/teaching-materials'; // Need to change paths when teachers page is finished
+export const getRouteGameAnalysis = () => '/game-analysis'; // Need to change paths when teachers page is finished
+export const getRouteFeedbackAndDevelopment = () => '/feedback-and-development'; // Need to change paths when teachers page is finished

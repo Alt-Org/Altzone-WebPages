@@ -1,6 +1,32 @@
 .Sidebar {
     z-index: var(--sidebar-z-index) !important;
     height: 65%;
+    width: 22%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-left: 2rem;
+    margin-bottom: 5%;
+    overflow-y: auto;
+    transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
+
+    //@include custom-scrollbar;
+    &::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar in Chrome, Edge, and Safari */
+    }
+    overflow-x: hidden;
+
+    border-radius: 1vh;
+
+    &.collapsed {
+        width: 8vw; // Collapsed width
+    }
+}
+
+.SidebarContent {
+    z-index: var(--sidebar-z-index) !important;
+    height: 65%;
     width: 20%;
 
     background: rgba(0, 0, 0, 0.85);
@@ -11,14 +37,26 @@
     margin-bottom: 5%;
     overflow-y: auto;
     transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
-    @include custom-scrollbar;
+
+    //@include custom-scrollbar;
+    &::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar in Chrome, Edge, and Safari */
+    }
 
     overflow-x: hidden;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 1vh;
+
+    &.collapsed {
+        width: 5vw; // Collapsed width
+    }
+}
+
+.SidebarContent div div{
+    //background-color: red;
 }
 
 .items {
@@ -55,10 +93,11 @@
 
 
 
-.bottomItems {
-    display: inline-block;
-   text-align: start;
-    color:#FF681D;
+
+.bottomItems a {
+    display: flex;
+    text-align: start;
+    color: #FF681D;
     font-size: 1.5rem;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
@@ -66,9 +105,35 @@
     margin-left: 1.7rem;
 
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+
     &:hover {
         background: rgba(0, 0, 0, 0.60);
         color: var(--secondary-color);
     }
 }
 
+.toggleButton {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: scale(2);
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background-color: transparent;
+    color: #FF681D;
+    font-weight: 1000;
+    font-size: x-large;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        font-size: xx-large;
+        
+    }
+    &.collapsed {
+        right: 10px;
+    }
+}
