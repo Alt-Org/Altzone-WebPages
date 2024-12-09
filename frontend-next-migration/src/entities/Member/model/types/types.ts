@@ -17,17 +17,11 @@ export interface Member {
     department?: Department | null;
     team?: Team | null;
     translations?: Translation[];
-    userCreated?: string;
-    userUpdated?: string;
-    status: string;
 }
 
 export interface Department {
     id: number;
     name: string;
-    date_created: string;
-    date_updated: string;
-    status: string;
     translations: DepartmentTranslation[];
     members: Member[];
 }
@@ -35,9 +29,6 @@ export interface Department {
 export interface Team {
     name: string;
     id: number;
-    date_created: string;
-    date_updated: string;
-    status: string;
     translations: TeamTranslation[];
     members: Member[];
     departments: Department[];
