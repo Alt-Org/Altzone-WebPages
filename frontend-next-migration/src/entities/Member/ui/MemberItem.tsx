@@ -6,6 +6,7 @@ import { getLinks } from '../api/mappers';
 import { Member } from '../model/types/types';
 import cls from './MemberItem.module.scss';
 import { envHelper } from '@/shared/const/envHelper';
+import { getTaskTranslation, getLanguageCode } from '../api/translations';
 
 interface MemberItemProps {
     member: Member;
@@ -20,9 +21,8 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
             ? `${envHelper.strapiHost}/assets/${member.logo.id}`
             : null;
 
-    const fullLanguageCode = language === 'en' ? 'en-US' : language === 'fi' ? 'fi-FI' : 'default';
-    const translation = member.translations?.find((t) => t.languages_code === fullLanguageCode);
-    const task = translation?.task;
+    const fullLanguageCode = getLanguageCode(language);
+    const task = getTaskTranslation(member.translations || [], fullLanguageCode);
 
     return (
         <li className={cls.workmanComponent}>
@@ -69,4 +69,5 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
         </li>
     );
 };
+
 export default MemberItem;
