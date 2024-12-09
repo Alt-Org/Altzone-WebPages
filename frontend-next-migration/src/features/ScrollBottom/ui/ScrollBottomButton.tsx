@@ -1,5 +1,5 @@
 'use client';
-import { memo, useRef } from 'react';
+import { memo, ReactNode, useRef } from 'react';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { scrollToBottom } from '../model/scrollToBottom/scrollToBottom';
 import { useBottomAnimationCancellation } from '../model/useBottomAnimationCancellation/useBottomAnimationCancellation';
@@ -7,7 +7,7 @@ import { useBottomAnimationCancellation } from '../model/useBottomAnimationCance
 interface Props {
     speedInMs?: number;
     className?: string;
-    text?: string;
+    text?: ReactNode | string;
     isDisabled?: boolean;
     onBeforePlay?: () => void;
 }

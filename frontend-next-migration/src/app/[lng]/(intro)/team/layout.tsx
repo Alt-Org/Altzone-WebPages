@@ -4,7 +4,7 @@ import { LayoutWithIntro } from '@/preparedPages/Layouts';
 import introBg from '@/shared/assets/images/members/members7.webp';
 import cls from './Layout.module.scss';
 import { useServerTranslation } from '@/shared/i18n';
-import { ScrollToSectionButton } from './_components/ScrollToSectionButton';
+import { ScrollBottomButton } from './_components/_ScrollBottomButton';
 
 type Props = {
     children: ReactNode;
@@ -28,12 +28,12 @@ export default async function TeamLayout({ children, params }: Props) {
                 description={t('page-description')}
                 blurLineClass={cls.blurLine}
                 bottomAdditional={
-                    <ScrollToSectionButton
+                    <ScrollBottomButton
+                        IdToScrollBeforePlay={'members'}
                         className={cls.diveButton}
-                        scrollToId={'members'}
                     >
                         <b>{t('meet-button')}</b>
-                    </ScrollToSectionButton>
+                    </ScrollBottomButton>
                 }
             >
                 {children}
@@ -42,3 +42,10 @@ export default async function TeamLayout({ children, params }: Props) {
         </>
     );
 }
+
+// <ScrollToSectionButton
+//     className={cls.diveButton}
+//     scrollToId={'members'}
+// >
+//     <b>{t('meet-button')}</b>
+// </ScrollToSectionButton>
