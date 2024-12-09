@@ -1,11 +1,19 @@
-import { useState, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, Dispatch, SetStateAction } from 'react';
 import { Stat } from '../../types/hero';
 import { useClientTranslation } from '@/shared/i18n';
 import { statsPricingData } from '../../model/stats/statsPricingData';
 import { AttributePricingHelper } from '../../model/stats/AttributesPricingHelper';
 import cls from './AttributesPricing.module.scss';
+import { statValue } from '@/entities/Hero/model/stats/statsDataV2';
 
 export type AttributesPricingProps = {
+    selectedStat: Stat;
+    setSelectedStat: Dispatch<SetStateAction<Stat>>;
+    fromLevel: number;
+    setFromLevel: Dispatch<SetStateAction<number>>;
+    setToLevel: Dispatch<SetStateAction<number>>;
+    toLevel: number;
+    setUpgradePotential: Dispatch<SetStateAction<number>>;
     stats: Stat[];
 };
 /**
@@ -20,18 +28,23 @@ export type AttributesPricingProps = {
  * @returns the pricing component if statsPricingData is loaded
  */
 
-export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Element => {
-    const [selectedStat, setSelectedStat] = useState(stats[0]);
-    const [fromLevel, setFromLevel] = useState(
-        stats[0].defaultLevel + (stats[0].developmentLevel || 0),
-    );
-    const [toLevel, setToLevel] = useState(
-        stats[0].defaultLevel + (stats[0].developmentLevel || 0),
-    );
-
+export const AttributesPricing3 = ({
+    stats,
+    selectedStat,
+    setSelectedStat,
+    fromLevel,
+    setFromLevel,
+    setToLevel,
+    toLevel,
+    setUpgradePotential,
+}: AttributesPricingProps): JSX.Element => {
     const { t } = useClientTranslation('heroes-stats-pricing');
 
-    const totalUpgraded = useMemo(() => AttributePricingHelper.getTotalUpgraded(stats), [stats]);
+    const totalUpgraded = useMemo(() => {
+        const total = AttributePricingHelper.getTotalUpgraded(stats);
+        setUpgradePotential(10 - total);
+        return total;
+    }, [stats]);
 
     const setDropdowns = useCallback(
         (statName: string) => {
@@ -59,6 +72,7 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
     const handleStatChange = useCallback(
         (event: React.ChangeEvent<HTMLSelectElement>) => {
             const statName = event.target.value;
+            setUpgradePotential(10 - totalUpgraded);
             setDropdowns(statName);
         },
         [stats, selectedStat],
@@ -68,9 +82,13 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
         setFromLevel(Number(event.target.value));
     }, []);
 
-    const handleToLevelChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-        setToLevel(Number(event.target.value));
-    }, []);
+    const handleToLevelChange = useCallback(
+        (event: React.ChangeEvent<HTMLSelectElement>) => {
+            setToLevel(Number(event.target.value));
+            setUpgradePotential(10 - Number(event.target.value) + selectedStat.defaultLevel);
+        },
+        [selectedStat],
+    );
 
     const levelRange = useMemo(() => getLevelRange(), [getLevelRange, totalUpgraded, currentLevel]);
 
@@ -109,6 +127,9 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
                         </option>
                     ))}
                 </select>
+                <div className={cls.Value}>
+                    {t(selectedStat.name)} {t('value')}
+                </div>
             </div>
             <div className={cls.InlineBlock}>
                 <div className={cls.Header}>{t('fromLevel')}</div>
@@ -127,6 +148,7 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
                         </option>
                     ))}
                 </select>
+                <div className={cls.Value}>{statValue[selectedStat.name][fromLevel]}</div>
             </div>
             <div className={cls.InlineBlock}>
                 <div className={cls.Header}>{t('toLevel')}</div>
@@ -145,6 +167,7 @@ export const AttributesPricing3 = ({ stats }: AttributesPricingProps): JSX.Eleme
                         </option>
                     ))}
                 </select>
+                <div className={cls.Value}>{statValue[selectedStat.name][toLevel]}</div>
             </div>
             <div className={cls.InlineBlock}>
                 <div className={cls.Price}>{t('cost')}</div>

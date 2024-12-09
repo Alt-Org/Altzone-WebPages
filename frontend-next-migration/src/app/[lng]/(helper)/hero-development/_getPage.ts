@@ -7,7 +7,6 @@ export async function _getPage(lng: string) {
     return createPage<HeroDevelopmentPageProps>({
         buildPage: () => ({
             title: t('title'),
-            text: t('text'),
         }),
         buildSeo: () => ({
             title: t('head-title'),

@@ -20,6 +20,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         children,
         onOpen,
         onClose,
+        dataTestId,
         openByDefault = false,
     } = props;
 
@@ -93,6 +94,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             <div
                 onClick={!isDisabled?.status ? toggleDropdown : undefined}
                 role="button"
+                data-testid={dataTestId}
                 title={isDisabled?.status ? isDisabled?.reason : ''}
                 tabIndex={0}
                 className={classNames(cls.childrenWrapper, {}, [
@@ -120,6 +122,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                         if (element && typeof element === 'object' && 'elementText' in element) {
                             return (
                                 <div
+                                    data-testid={element.elementText}
                                     key={index}
                                     className={
                                         element.isDisabled && element.isDisabled.status
@@ -152,14 +155,25 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             )}
                                         </AppLink>
                                     ) : (
-                                        <span className={contentItemClassName}>
+                                        <span
+                                            className={contentItemClassName}
+                                            onClick={element.onClickCallback}
+                                            data-testid={element.elementText + '_span'}
+                                        >
                                             {element.elementText}
                                         </span>
                                     )}
                                 </div>
                             );
                         } else {
-                            return <div key={index}>{element}</div>;
+                            return (
+                                <div
+                                    data-testid={dataTestId}
+                                    key={index}
+                                >
+                                    {element}
+                                </div>
+                            );
                         }
                     })}
                 </div>
