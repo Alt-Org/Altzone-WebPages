@@ -17,6 +17,13 @@
     cursor: not-allowed;
   }
 
+  padding: 15px 20px;
+  border-radius: var(--border-radius-custom);
+  min-width: fit-content;
+  width: clamp(100px, 10vw, 120px);
+  align-self: center;
+
+
 }
 
 .membersListContainer {

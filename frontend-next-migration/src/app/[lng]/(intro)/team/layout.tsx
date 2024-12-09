@@ -3,10 +3,8 @@ import { ScrollTop } from '@/features/ScrollTop';
 import { LayoutWithIntro } from '@/preparedPages/Layouts';
 import introBg from '@/shared/assets/images/comics/comics5.webp';
 import cls from './Layout.module.scss';
-// import { ScrollToSectionButton } from "@/app/[lng]/(intro)/comics/_components/ScrollToSectionButton";
 import { useServerTranslation } from '@/shared/i18n';
-import { ScrollBottomButton } from '@/features/ScrollBottom';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { ScrollToSectionButton } from './_components/ScrollToSectionButton';
 
 type Props = {
     children: ReactNode;
@@ -30,17 +28,17 @@ export default async function TeamLayout({ children, params }: Props) {
                 description={t('page-description')}
                 blurLineClass={cls.blurLine}
                 bottomAdditional={
-                    // <ScrollToSectionButton
-                    //     className={cls.diveButton}
-                    //     scrollToId={comicsSectionId}
-                    // >
-                    //     <b>{t('page-dive')}</b>
-                    // </ScrollToSectionButton>
-                    <ScrollBottomButton
-                        // isDisabled={isError || isLoading}
-                        className={classNames(cls.diveButton)}
-                        text={`${t('page-play')} ▶`}
-                    />
+                    <ScrollToSectionButton
+                        className={cls.diveButton}
+                        scrollToId={'members'}
+                    >
+                        <b>{t('meet-button')}</b>
+                    </ScrollToSectionButton>
+                    // <ScrollBottomButton
+                    //     // isDisabled={isError || isLoading}
+                    //     className={classNames(cls.diveButton)}
+                    //     text={`${t('meet-button')} ▶`}
+                    // />
                 }
             >
                 {children}

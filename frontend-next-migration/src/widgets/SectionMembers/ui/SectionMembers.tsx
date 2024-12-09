@@ -1,6 +1,6 @@
 import { useParams } from 'next/navigation';
 import { FC } from 'react';
-// import { ScrollBottomButton } from '@/features/ScrollBottom';
+import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { MemberItem, useGetMembersQuery } from '@/entities/Member';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
@@ -16,7 +16,7 @@ interface WorkersSectionProps {
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const params = useParams();
     const lng = params.lng as string;
-    const { t } = useClientTranslation('team');
+    const { t } = useClientTranslation('members');
 
     const {
         data: members = [],
@@ -30,11 +30,11 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
-            {/*<ScrollBottomButton*/}
-            {/*    isDisabled={isError || isLoading}*/}
-            {/*    className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}*/}
-            {/*    text={isError ? `${t('playButton')} 🚫` : t('playButton')}*/}
-            {/*/>*/}
+            <ScrollBottomButton
+                isDisabled={isError || isLoading}
+                className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}
+                text={isError ? `${t('page-play')} 🚫` : `${t('page-play')} ▶`}
+            />
             <Container className={cls.membersListContainer}>
                 {isError && <p>Error fetching data</p>}
                 {isLoading ? <SkeletonLoaderWithHeader sections={5} /> : null}
