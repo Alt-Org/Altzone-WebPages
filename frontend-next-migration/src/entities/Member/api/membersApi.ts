@@ -15,13 +15,13 @@ const membersApi = directusApi.injectEndpoints({
                     const members = await client.request<Record<string, any>[]>(
                         readItems('members', {
                             fields: [
-                                '*', // All member fields
-                                'department.*', // Include department details
-                                'department.translations.*', // Include department translations
-                                'team.*', // Include team details
-                                'team.translations.*', // Correctly include team translations
-                                'translations.*', // Include all member translations
-                                'logo.*', // Include logo details
+                                '*',
+                                'department.*',
+                                'department.translations.*',
+                                'team.*',
+                                'team.translations.*',
+                                'translations.*',
+                                'logo.*',
                             ],
                         }),
                     );
