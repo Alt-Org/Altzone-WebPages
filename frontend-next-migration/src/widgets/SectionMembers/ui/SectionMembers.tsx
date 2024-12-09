@@ -45,7 +45,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                 key={team.id}
                                 className={cls.teamCard}
                             >
-                                <h1>{team.name}</h1>
+                                <h2>{team.name}</h2>
                                 <ul className={cls.teamMembersList}>
                                     {team.members.map((member) => (
                                         <MemberItem
@@ -60,7 +60,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                         key={department.id}
                                         className={cls.departmentCard}
                                     >
-                                        <h2>{department.name}</h2>
+                                        <h3>{department.name}</h3>
                                         <ul className={cls.departmentMembersList}>
                                             {department.members.map((member) => (
                                                 <MemberItem

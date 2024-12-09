@@ -29,7 +29,7 @@
   padding-right: 1rem;
   align-items: start;
 
-  h1 {
+  h2 {
     text-transform: uppercase;
     color: var(--secondary-color);
     text-align: start;
@@ -38,7 +38,7 @@
     background-color: transparent;
   }
 
-  h2 {
+  h3 {
     color: var(--secondary-color);
     text-align: center;
     font-size: clamp(0.5rem, 3vw, 2rem);
