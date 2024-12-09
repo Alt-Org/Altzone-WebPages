@@ -18,7 +18,7 @@ type Props = {
 export default async function TeamLayout({ children, params }: Props) {
     const { lng } = params;
 
-    const { t } = await useServerTranslation(lng, 'comics');
+    const { t } = await useServerTranslation(lng, 'members');
 
     return (
         <>
@@ -38,8 +38,8 @@ export default async function TeamLayout({ children, params }: Props) {
                     // </ScrollToSectionButton>
                     <ScrollBottomButton
                         // isDisabled={isError || isLoading}
-                        className={classNames(cls.scrollBottomButton)}
-                        text={t('playButton')}
+                        className={classNames(cls.diveButton)}
+                        text={`${t('Play')} ▶`}
                     />
                 }
             >

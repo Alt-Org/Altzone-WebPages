@@ -29,8 +29,9 @@ const ScrollBottomButtonComponent = (props: Props) => {
             disabled={isDisabled}
             className={className}
             id={ScrollButtonId}
-            theme={ButtonTheme.Graffiti}
-            size={ButtonSize.XL}
+            withScalableLink={true}
+            size={ButtonSize.L}
+            theme={ButtonTheme.BACKGROUND}
             onClick={handleWatchClick}
         >
             {text}
