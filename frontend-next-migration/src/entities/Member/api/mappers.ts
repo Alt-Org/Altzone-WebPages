@@ -1,24 +1,74 @@
 import { faGithub, faLinkedin, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { Member, Team, Department } from '@/entities/Member/model/types/types';
+import { Member, Team } from '@/entities/Member/model/types/types';
+import { getDepartmentTranslation, getTeamTranslation, getLanguageCode } from './translations';
 
-export const getLinks = () => ({
-    website: faGlobe,
-    github: faGithub,
-    linkedin: faLinkedin,
-    facebook: faFacebook,
-    instagram: faInstagram,
-    email: faEnvelope,
-});
+/**
+ * Provides a set of icon links for various platforms.
+ *
+ * @returns {object} An object containing font-awesome icons for different links.
+ */
+export const getLinks = () => {
+    return {
+        website: faGlobe,
+        github: faGithub,
+        linkedin: faLinkedin,
+        facebook: faFacebook,
+        instagram: faInstagram,
+        email: faEnvelope,
+    };
+};
 
-export interface OrganizedData {
-    teamsMap: Map<number, Team>;
-    unmatchedDepartments: Department[];
-}
+/**
+ * Represents the organized data structure containing teams and departments.
+ *
+ * @typedef {Object} OrganizedData
+ * @property {Map<number, Team>} teamsMap - A map associating team IDs with team objects,
+ *                                           organized according to their translation and language preference.
+ */
 
+/**
+ * Organizes members into teams and departments based on their properties,
+ * and sorts both the members alphabetically within their teams and departments,
+ * as well as the teams based on a predefined order dictated by language.
+ *
+ * @param {Member[]} members - An array of member objects, each containing associated team and department data.
+ * @param {string} lng - The language code used to determine which language to use for translations and sorting.
+ * @returns {OrganizedData} The organized data containing teams mapped by their IDs.
+ */
 export const organizeMembers = (members: Member[], lng: string) => {
     const teamsMap = new Map<number, Team>();
-    const unmatchedDepartments: Department[] = [];
+    const fullLanguageCode = getLanguageCode(lng);
+
+    const enOrder = [
+        'Game Design',
+        'Mentoring',
+        'Development',
+        'Graphics',
+        'Sounds',
+        'Comic Book',
+        'Production',
+        'Analysis',
+        'Game Art Education Package',
+        'Other Participants',
+        'Special Thanks',
+    ];
+
+    const fiOrder = [
+        'Pelisuunnittelu',
+        'Mentorointi',
+        'Ohjelmistokehitys',
+        'Grafiikka',
+        'Äänet',
+        'Sarjakuva',
+        'Tuotanto',
+        'Analyysi',
+        'Pelitaiteen Opetuspaketti',
+        'Muut Mukana Olleet',
+        'Erityiskiitokset',
+    ];
+
+    const order = lng === 'fi' ? fiOrder : enOrder;
 
     members.forEach((member: Member) => {
         const memberTeam = member.team;
@@ -27,13 +77,10 @@ export const organizeMembers = (members: Member[], lng: string) => {
         if (memberTeam) {
             let team = teamsMap.get(memberTeam.id);
             if (!team) {
-                const teamNameTranslation = memberTeam.translations.find(
-                    (t) => t.languages_code === lng,
+                const teamName = getTeamTranslation(
+                    memberTeam.translations || [],
+                    fullLanguageCode,
                 );
-
-                const teamName = teamNameTranslation
-                    ? teamNameTranslation.team
-                    : memberTeam.translations[0]?.team || 'Unnamed';
 
                 team = { ...memberTeam, name: teamName, members: [], departments: [] };
                 teamsMap.set(memberTeam.id, team);
@@ -44,7 +91,12 @@ export const organizeMembers = (members: Member[], lng: string) => {
                     (departmentItem) => departmentItem.id === memberDepartment.id,
                 );
                 if (!department) {
-                    department = { ...memberDepartment, members: [] };
+                    const departmentName = getDepartmentTranslation(
+                        memberDepartment.translations || [],
+                        fullLanguageCode,
+                    );
+
+                    department = { ...memberDepartment, name: departmentName, members: [] };
                     team.departments.push(department);
                 }
 
@@ -54,6 +106,17 @@ export const organizeMembers = (members: Member[], lng: string) => {
             }
         }
     });
+    teamsMap.forEach((team) => {
+        team.members.sort((a, b) => a.name.localeCompare(b.name));
+        team.departments.forEach((department) => {
+            department.members.sort((a, b) => a.name.localeCompare(b.name));
+        });
+    });
+    const sortedTeams = Array.from(teamsMap.values()).sort((a, b) => {
+        const indexA = order.indexOf(a.name);
+        const indexB = order.indexOf(b.name);
+        return indexA - indexB;
+    });
 
-    return { teamsMap, unmatchedDepartments };
+    return { teamsMap: new Map(sortedTeams.map((team) => [team.id, team])) };
 };
