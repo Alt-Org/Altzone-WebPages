@@ -20,7 +20,7 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
      * @type {boolean}
      * @default false
      */
-    const [isEnlarged, setIsEnlarged] = useState(false);
+    const [isEnlarged, setIsEnlarged] = useState<boolean>(false);
     /**
      * Handles image clicking. Changes the state of the image.
      */
