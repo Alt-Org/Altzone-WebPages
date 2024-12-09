@@ -1,6 +1,6 @@
 import { useParams } from 'next/navigation';
 import { FC } from 'react';
-import { ScrollBottomButton } from '@/features/ScrollBottom';
+// import { ScrollBottomButton } from '@/features/ScrollBottom';
 import { MemberItem, useGetMembersQuery } from '@/entities/Member';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
