@@ -1,0 +1,146 @@
+.dropdown {
+
+}
+.main {
+  background-color: rgba(0,0,0,.5);
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  flex-direction: column;
+  margin-top: 5em;
+  padding: 2em;
+  border-radius: 2em;
+  &.isDesktop,&.isWidescreen {
+    width:70%;
+    justify-content: space-between;
+  }
+  &.isTablet{
+    width:90%;
+  }
+  &.isMobile {
+    align-items: center;
+    width:100%;
+  }
+}
+.HeroAndChart {
+  width:100%;
+  display:flex;
+  &.isDesktop,&.isWidescreen {
+    flex-direction: row;
+   // justify-content: space-between;
+  }
+  &.isTablet{
+    flex-direction: row;
+  }
+  &.isMobile {
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+  }
+}
+.Hero {
+  &.isDesktop,&.isTablet,&.isWidescreen {
+    display: inline-block;
+    width: 40%;
+    max-width: 400px;
+  }
+  &.isMobile {
+    width:fit-content;
+
+  }
+}
+.InfoSection {
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  width:90%;
+  justify-content: space-between;
+  &.isDesktop,&.isWidescreen,&.isTablet {
+    flex-direction: row;
+  }
+  &.isMobile {
+    flex-direction:column-reverse;
+  }
+  }
+
+.BarChartBlock {
+  display: inline-block;
+  &.isDesktop,&.isWidescreen {
+    width: 50%;
+    padding: 4em 2em 1em 4em;
+    height: 350px;
+    max-width: 500px;
+    margin-left: 5%;
+    margin-right: 7%;
+    align-self: flex-end;
+  }
+  &.isTablet{
+    width: 60%;
+    padding: 4em 2em 1em 2em;
+    height: 400px;
+    align-self: flex-end;
+  }
+  &.isMobile {
+    margin: 2em 1em 2em 1em;
+    width:100%;
+    height:400px;
+  }
+}
+.Image{
+  max-width:300px;
+  margin-left: auto;
+  margin-right:auto;
+}
+.Image.isMobile{
+  max-height: 50vh;
+  width: auto;
+}
+.Title {
+  text-align: center;
+}
+.AttributesPricingBlock{
+  width:100%;
+  padding: 1em;
+}
+.FatGreen {
+  color:var(--inverted-primary-color);
+  font-weight: 900;
+}
+.InfoTable {
+  &.isDesktop,&.isWidescreen,&.isTablet {
+    width: 60%;
+  }
+  &.isMobile {
+    width:100%;
+  }
+
+}
+.InfoTable td {
+  padding: .5em;
+}
+.PriceTable {
+  margin-top: 2em;
+  border:1px solid black;
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border-spacing: .3em;
+
+}
+.PriceTable tr{
+
+}
+.PriceTable td {
+  margin:.2em;
+  background: #242424;
+}
+.PriceTable th {
+
+  padding-left:1em;
+  padding-right: 1em;
+}
+.Pie{
+  margin-right: auto;
+  margin-left: auto;
+}

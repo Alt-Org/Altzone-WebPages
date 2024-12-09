@@ -7,5 +7,20 @@
 "stat":"Stat",
 "fromLevel":"From Level",
 "toLevel":"To Level",
-"cost":"Cost"
+"cost":"Cost",
+  "veryStrongSkill": "A very strong skill",
+  "strongSkill": "A strong skill",
+  "fairlyStrongSkill": "A fairly strong skill",
+  "intermediate": "Intermediate",
+  "ratherWeakSkill": "A rather weak skill",
+  "weakSkill": "A weak skill",
+  "veryWeakSkill": "A very weak skill",
+  "rarityClass": "Rarity Class",
+  "upgradePotentialAfterUpdate": "Upgrade potential after update",
+  "value": "value",
+  "level": "Level",
+  "stepsPerLevel": "Steps/Level",
+  "stepsPrice": "Step Price",
+  "price": "Price"
+
 }

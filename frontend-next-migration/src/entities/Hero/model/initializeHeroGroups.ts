@@ -20,6 +20,7 @@ import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
+import { statData } from '@/entities/Hero/model/stats/statsDataV2';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
     return {
@@ -38,6 +39,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('RETROFLECTOR.heroes.hannuHodari.title'),
                     slug: HeroSlug.HANNU_HODARI,
                     description: t('RETROFLECTOR.heroes.hannuHodari.description'),
+                    stats: statData.HANNU_HODARI,
                 },
 
                 {
@@ -49,6 +51,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('RETROFLECTOR.heroes.pirate.title'),
                     slug: HeroSlug.PIRATE,
                     description: t('RETROFLECTOR.heroes.pirate.description'),
+                    stats: statData.PIRATE,
                 },
             ],
         },
@@ -68,6 +71,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.SOUL_SISTERS,
                     title: t('CONFLUENT.heroes.SoulSisters.title'),
                     description: t('CONFLUENT.heroes.SoulSisters.description'),
+                    stats: statData.SOUL_SISTERS,
                 },
 
                 {
@@ -79,6 +83,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.SLEEPER,
                     title: t('CONFLUENT.heroes.Sleeper.title'),
                     description: t('CONFLUENT.heroes.Sleeper.description'),
+                    stats: statData.SLEEPER,
                 },
             ],
         },
@@ -98,6 +103,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.GRAFFITI_ARTIST,
                     title: t('PROJECTOR.heroes.GraffitiArtist.title'),
                     description: t('PROJECTOR.heroes.GraffitiArtist.description'),
+                    stats: statData.GRAFFITI_ARTIST,
                 },
             ],
         },
@@ -117,6 +123,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.RESEARCHER,
                     title: t('INTELLECTUALIZER.heroes.Researcher.title'),
                     description: t('INTELLECTUALIZER.heroes.Researcher.description'),
+                    stats: statData.RESEARCHER,
                 },
             ],
         },
@@ -136,6 +143,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.CONMAN,
                     title: t('TRICKSTER.heroes.Conman.title'),
                     description: t('TRICKSTER.heroes.Conman.description'),
+                    stats: statData.CONMAN,
                 },
             ],
         },
@@ -155,6 +163,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.FATE_PRIEST,
                     title: t('OBEDIENT.heroes.FatePriest.title'),
                     description: t('OBEDIENT.heroes.FatePriest.description'),
+                    stats: statData.FATE_PRIEST,
                 },
             ],
         },
