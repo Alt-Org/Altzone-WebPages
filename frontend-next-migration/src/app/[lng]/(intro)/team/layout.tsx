@@ -21,7 +21,6 @@ export default async function TeamLayout({ children, params }: Props) {
     return (
         <>
             <LayoutWithIntro
-                key={'2'}
                 introHeight={'86vh'}
                 title={t('page-title')}
                 overlayColor={'rgba(7, 27, 30, 0.5'}
@@ -37,7 +36,6 @@ export default async function TeamLayout({ children, params }: Props) {
                 //     // </ScrollToSectionButton>
                 // }
             >
-                <div>lol</div>
                 {children}
             </LayoutWithIntro>
             <ScrollTop />
