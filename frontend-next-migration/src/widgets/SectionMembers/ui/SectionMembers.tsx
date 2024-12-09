@@ -30,11 +30,11 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
-            <ScrollBottomButton
-                isDisabled={isError || isLoading}
-                className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}
-                text={isError ? `${t('playButton')} 🚫` : t('playButton')}
-            />
+            {/*<ScrollBottomButton*/}
+            {/*    isDisabled={isError || isLoading}*/}
+            {/*    className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}*/}
+            {/*    text={isError ? `${t('playButton')} 🚫` : t('playButton')}*/}
+            {/*/>*/}
             <Container className={cls.membersListContainer}>
                 {isError && <p>Error fetching data</p>}
                 {isLoading ? <SkeletonLoaderWithHeader sections={5} /> : null}
