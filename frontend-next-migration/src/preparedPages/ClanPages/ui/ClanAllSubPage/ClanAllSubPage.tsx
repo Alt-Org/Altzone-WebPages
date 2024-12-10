@@ -25,8 +25,6 @@ const ClanAllSubPage = () => {
         isLoading,
     } = useGetClansQuery({ page: currentPage, search: currentSearch });
 
-    console.log(useGetLeaderboardQuery())
-
     if (isLoading)
         return isMobileSize ? (
             <SkeletonLoaderForClansMobile
