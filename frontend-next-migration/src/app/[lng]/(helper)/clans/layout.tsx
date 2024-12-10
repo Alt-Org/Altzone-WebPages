@@ -1,4 +1,4 @@
-import './clanPageLayout.scss';
+import './ClanPageLayout.scss';
 
 type LayoutProps = {
     children: React.ReactNode;
