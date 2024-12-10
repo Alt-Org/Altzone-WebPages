@@ -15,7 +15,6 @@
 
 .header {
     flex-shrink: 0;
-    background-color: #462cdb;
     padding: 1rem;
     text-align: center;
 }
@@ -23,14 +22,12 @@
 /* Sidebar styles */
 .sidebar {
     flex: 1;
-    background-color: #157c26;
     padding: 1rem;
     display: none;
 }
 
 .content {
     flex: 1;
-    background-color: brown;
     padding: 1rem;
     margin: 0.5rem;
 }
@@ -66,7 +63,6 @@
     }
     .mobileNav {
         display: block;
-        background-color: #157c26;
         /* Visible on mobile */
         margin-top: 0.5rem;
         height: 50px;
