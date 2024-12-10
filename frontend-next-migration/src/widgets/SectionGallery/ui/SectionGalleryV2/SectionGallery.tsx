@@ -23,20 +23,15 @@ interface FullProps {
 type GalleryProps = (PreviewProps | FullProps) & {
     images: PhotoObject[];
     socialMediaLinks: string[];
-    mockImages?: PhotoObject[]; // for Storybook
 };
 
 export const SectionGallery = (props: GalleryProps) => {
-    const { version, seeMoreLink, mockImages, images } = props;
+    const { version, seeMoreLink, images } = props;
 
     let imagesArray: PhotoObject[] = [];
     let previewImages: PhotoObject[] = [];
 
-    if (mockImages) {
-        imagesArray = Object.values(mockImages);
-        const previewCount = 4;
-        previewImages = imagesArray.slice(0, previewCount);
-    } else if (images) {
+    if (images) {
         imagesArray = Object.values(images);
         const previewCount = 8;
         previewImages = imagesArray.slice(0, previewCount);
