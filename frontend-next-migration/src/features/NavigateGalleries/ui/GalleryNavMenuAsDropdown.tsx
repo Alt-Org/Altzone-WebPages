@@ -1,27 +1,35 @@
 'use client';
 import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
-import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
+import { useParams } from 'next/navigation';
+import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
 
 interface GalleryNavMenuProps {
     // className?: string;
     openByDefault?: boolean;
 }
 
-const categories: string[] = ['All', 'Nature', 'City', 'People', 'Technology'];
+const categoriesEn: string[] = ['All', 'Nature', 'City', 'People', 'Technology'];
+const categoriesFi: string[] = ['Kaikki', 'Luonto', 'Kaupunki', 'Ihmiset', 'Teknologia'];
 
 const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     const { openByDefault = false } = props;
 
+    const params = useParams();
+    const lng = params.lng as string;
+
+    const title = lng === 'en' ? 'Categories' : 'Kategoriat';
+    const categories = lng === 'en' ? categoriesEn : categoriesFi;
+
     const dropdownItems = categories.map((category) => ({
         link: {
             isExternal: false,
-            path: getRouteOneHeroPage(category),
+            path: getRouteGalleryCategoryPage(category.toLowerCase()),
         },
         elementText: category,
     }));
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
-        title: 'Categories',
+        title: title,
         openByDefault: openByDefault,
         dropdownItems: dropdownItems,
     };
