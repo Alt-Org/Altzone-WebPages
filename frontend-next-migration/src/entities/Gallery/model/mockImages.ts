@@ -7,7 +7,7 @@ import { PhotoObject } from '@/entities/Gallery/types/gallery';
  * There are two different templates for generating mock photo objects.
  */
 
-const baseImage1 = {
+export const baseImage1 = {
     id: '56789',
     category: {
         id: '56789',
@@ -31,7 +31,7 @@ const baseImage1 = {
     },
 };
 
-const baseImage2 = {
+export const baseImage2 = {
     id: '12345',
     category: {
         id: '12345',
@@ -50,7 +50,7 @@ const baseImage2 = {
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s',
             width: 275,
             height: 275,
-            altText: 'ful picture',
+            altText: 'full picture',
         },
     },
 };
@@ -70,7 +70,7 @@ export const generateMockImages = (
     baseImage1: PhotoObject,
     baseImage2: PhotoObject,
     length: number,
-) => {
+): PhotoObject[] => {
     const mockImages = Array.from({ length: length }, (_, i) => {
         const baseImage = i % 2 === 0 ? baseImage1 : baseImage2;
         return {
