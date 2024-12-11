@@ -1,4 +1,3 @@
-import { useClientTranslation } from '@/shared/i18n';
 import { FurnitureSet, SetInfo, Piece, PieceType } from '../types/set';
 import { initializeFurnitureSets } from './initializeFurniture';
 import { TFunction } from 'i18next';
@@ -10,6 +9,9 @@ const enums: Record<string, FurnitureSet> = {
     muistoja: FurnitureSet.MUISTOJA,
 };
 
+/**
+ * Class for handling furniture sets and regarding methods
+ */
 export class FurnitureManager {
     private readonly furnitureSets: Record<FurnitureSet, SetInfo>;
 
@@ -29,6 +31,7 @@ export class FurnitureManager {
         });
     }
     /**
+     * Also sorts the items in ascending order by rarity.
      *
      * @param {string} id The id of the furniture set
      * @throws {Error} Throws an error if the set does not exist
@@ -62,8 +65,9 @@ export class FurnitureManager {
         return set;
     }
     /**
+     * import Types from initializeFurniture and use those as category id
      *
-     * @param {PieceType} cat Short for category id
+     * @param {PieceType} cat Short for category
      * @returns {Array<Piece>} Returns an array of Pieces with the same category
      */
     public getPiecesByCategory(cat: PieceType): Array<Piece> {
