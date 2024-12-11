@@ -7,6 +7,7 @@ const enums: Record<string, FurnitureSet> = {
     neuro: FurnitureSet.NEURO,
     taakka: FurnitureSet.TAAKKA,
     rakkaus: FurnitureSet.RAKKAUS,
+    muistoja: FurnitureSet.MUISTOJA,
 };
 
 export class FurnitureManager {

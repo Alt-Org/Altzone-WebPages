@@ -4,6 +4,7 @@ export enum FurnitureSet {
     TAAKKA = 'TAAKKA',
     NEURO = 'NEURO',
     RAKKAUS = 'RAKKAUS',
+    MUISTOJA = 'MUISTOJA',
 }
 
 export enum Rarities {
@@ -34,6 +35,7 @@ export enum Types {
     SINKS = 'SINKS',
     CABINETS = 'CABINETS',
     BEDS = 'BEDS',
+    ITEMS = 'ITEMS',
 }
 export interface PieceType {
     name: string;
@@ -53,6 +55,11 @@ export enum Materials {
     PORCELAIN = 'PORCELAIN',
     MGLASS = 'MGLASS',
     STEEL = 'STEEL',
+    PLASTIC = 'PLASTIC',
+    CLAY = 'CLAY',
+    PLANT = 'PLANT',
+    PAPER = 'PAPER',
+    WAX = 'WAX',
 }
 export interface MaterialType {
     name: string;
@@ -65,6 +72,8 @@ export enum Recycles {
     METAL = 'METAL',
     PLASTIC = 'PLASTIC',
     DUMP = 'DUMP',
+    BIOWASTE = 'BIOWASTE',
+    PAPER = 'PAPER',
 }
 export interface RecycleType {
     name: string;
@@ -72,7 +81,7 @@ export interface RecycleType {
 
 export interface Piece {
     set?: SetInfo;
-    cover?: StaticImageData | string;
+    cover: StaticImageData | string;
     path: string;
     weight: number;
     cost: number;
@@ -85,21 +94,16 @@ export interface Piece {
 export interface SetInfo {
     id: string;
     path: string;
+    cover: StaticImageData | string;
     author: string;
     coverposition: FurnitureSetCoverPosition;
-    cover: StaticImageData | string;
     items: Piece[];
     disabled?: boolean;
     key?: string;
 }
 
 export enum FurnitureSetCoverPosition {
-    BOTTOM = 'Bottom',
-    BOTTOMLEFT = 'BottomLeft',
-    BOTTOMRIGHT = 'BottomRight',
-    TOP = 'Top',
-    TOPLEFT = 'TopLeft',
-    TOPRIGHT = 'TopRight',
-    RIGHT = 'Right',
-    LEFT = 'Left',
+    FULL = 'Full',
+    MEDIUM = 'Medium',
+    SMALL = 'Small',
 }

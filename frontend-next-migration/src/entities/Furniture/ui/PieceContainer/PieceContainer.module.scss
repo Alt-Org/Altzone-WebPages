@@ -32,11 +32,29 @@
     .Cover {
         position: absolute;
         z-index: 2;
-        top: 50%;
-        left: 50%;
-        width: 100%;
+        top: calc(50% + var(--coverVerticalOffset));
+        left: calc(50% + var(--coverHorizontalOffset));
+        width: calc(100% + var(--coverWidthOffset));
+        max-width: none;
         max-height: 100%;
         translate: -50% -50%;
+    }
+
+    // cover positions to account for different image sizes
+    .Full {
+        --coverWidthOffset: -23%;
+        --coverHorizontalOffset: 0px;
+        --coverVerticalOffset: 0.7%;
+    }
+    .Medium {
+        --coverWidthOffset: 0%;
+        --coverHorizontalOffset: 0px;
+        --coverVerticalOffset: 0px;
+    }
+    .Small {
+        --coverWidthOffset: 15%;
+        --coverHorizontalOffset: -0.5%;
+        --coverVerticalOffset: 0.8%;
     }
 }
 

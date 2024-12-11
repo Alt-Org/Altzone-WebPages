@@ -4,17 +4,22 @@ import { RefObject, useRef } from 'react';
 import Image from 'next/image';
 import PieceView from '../PieceView/PieceView';
 import { useClientTranslation } from '@/shared/i18n';
+import { Piece } from '../../types/set';
 
 type Props = {
     noView?: boolean;
-    item: any;
+    item: Piece;
 };
 
 export const PieceCard = (props: Props) => {
     const { noView, item } = props;
     const { path, rarity, cover, set, num } = item;
 
-    const setpath = set.path;
+    if (!set) {
+        return;
+    }
+
+    const { coverposition, path: setpath } = set;
 
     const { color, lightcolor, darkcolor } = rarity;
 
@@ -62,7 +67,7 @@ export const PieceCard = (props: Props) => {
                     onClick={click}
                 >
                     <Image
-                        className={cls.Cover}
+                        className={`${cls.Cover} ${cls[coverposition]}`}
                         src={cover}
                         alt={'cover'}
                     />

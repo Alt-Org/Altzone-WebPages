@@ -11,9 +11,12 @@ type Props = {
 };
 
 export const SetCard = (props: Props) => {
-    const { id, author, cover, coverposition, items, disabled } = props.set;
+    const { id, disabled, cover } = props.set;
 
     if (disabled) {
+        return;
+    }
+    if (!cover) {
         return;
     }
 

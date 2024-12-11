@@ -1,26 +1,47 @@
-import neuroCover from '@/shared/assets/images/furniture/neuro/NEURO_WEB.webp';
-import taakkaCover from '@/shared/assets/images/furniture/taakka/TAAKKA_WEB.webp';
-import rakkausCover from '@/shared/assets/images/furniture/rakkaus/RAKKAUS_WEB.png';
-import rakkauscloset from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterKaappi.png';
-import rakkausctable from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterKahvipöytä.png';
-import rakkauslamp from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterLamppu.png';
-import rakkauscarpet from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterMatto.png';
-import rakkausarmchair from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterNojatuoli.png';
-import rakkausmirror from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterPeili.png';
-import rakkaustable from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterPöytä.png';
-import rakkausbed from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterSänky.png';
-import rakkaussofa from '@/shared/assets/images/furniture/rakkaus/posters/ShopPosterSohva.png';
-import neuroclock from '@/shared/assets/images/furniture/neuro/posters/ShopPosterClockNeuro.png';
-import neurochair from '@/shared/assets/images/furniture/neuro/posters/ShopPosterChairNeuro.png';
-import neurostool from '@/shared/assets/images/furniture/neuro/posters/ShopPosterStoolNeuro.png';
-import neurodrawer from '@/shared/assets/images/furniture/neuro/posters/ShopPosterDresserNeuro.png';
-import taakkaarmchair from '@/shared/assets/images/furniture/taakka/posters/ShopPosterArmchairTaakka.png';
-import taakkacloset from '@/shared/assets/images/furniture/taakka/posters/ShopPosterClosetTaakka.png';
-import taakkamirror from '@/shared/assets/images/furniture/taakka/posters/ShopPosterMirrorTaakka.png';
-import taakkalamp from '@/shared/assets/images/furniture/taakka/posters/ShopPosterFloorlampTaakka.png';
-import taakkacouch from '@/shared/assets/images/furniture/taakka/posters/ShopPosterSofaTaakka.png';
-import taakkastable from '@/shared/assets/images/furniture/taakka/posters/ShopPosterSidetableTaakka.png';
-import taakkatable from '@/shared/assets/images/furniture/taakka/posters/ShopPosterCoffeetableTaakka.png';
+import neuroCover from '@/shared/assets/images/furniture/neuro/cover.webp';
+import taakkaCover from '@/shared/assets/images/furniture/taakka/cover.webp';
+import rakkausCover from '@/shared/assets/images/furniture/rakkaus/cover.webp';
+import muistojaCover from '@/shared/assets/images/furniture/muistoja/cover.webp';
+import rakkauscloset from '@/shared/assets/images/furniture/rakkaus/posters/closet.png';
+import rakkausctable from '@/shared/assets/images/furniture/rakkaus/posters/coffeetable.png';
+import rakkauslamp from '@/shared/assets/images/furniture/rakkaus/posters/lamp.png';
+import rakkauscarpet from '@/shared/assets/images/furniture/rakkaus/posters/carpet.png';
+import rakkausarmchair from '@/shared/assets/images/furniture/rakkaus/posters/armchair.png';
+import rakkausmirror from '@/shared/assets/images/furniture/rakkaus/posters/mirror.png';
+import rakkaustable from '@/shared/assets/images/furniture/rakkaus/posters/table.png';
+import rakkausbed from '@/shared/assets/images/furniture/rakkaus/posters/bed.png';
+import rakkaussofa from '@/shared/assets/images/furniture/rakkaus/posters/couch.png';
+import rakkausbook from '@/shared/assets/images/furniture/rakkaus/posters/book.png';
+import rakkauscandles from '@/shared/assets/images/furniture/rakkaus/posters/candles.png';
+import rakkausbooks from '@/shared/assets/images/furniture/rakkaus/posters/books.png';
+import rakkauspillow from '@/shared/assets/images/furniture/rakkaus/posters/pillow.png';
+import rakkausplush from '@/shared/assets/images/furniture/rakkaus/posters/elephant.png';
+import rakkausflower from '@/shared/assets/images/furniture/rakkaus/posters/flower.png';
+import neuroclock from '@/shared/assets/images/furniture/neuro/posters/clock.png';
+import neurochair from '@/shared/assets/images/furniture/neuro/posters/chair.png';
+import neurostool from '@/shared/assets/images/furniture/neuro/posters/stool.png';
+import neurodrawer from '@/shared/assets/images/furniture/neuro/posters/drawer.png';
+import taakkaarmchair from '@/shared/assets/images/furniture/taakka/posters/armchair.png';
+import taakkacloset from '@/shared/assets/images/furniture/taakka/posters/closet.png';
+import taakkamirror from '@/shared/assets/images/furniture/taakka/posters/mirror.png';
+import taakkalamp from '@/shared/assets/images/furniture/taakka/posters/lamp.png';
+import taakkacouch from '@/shared/assets/images/furniture/taakka/posters/sofa.png';
+import taakkastable from '@/shared/assets/images/furniture/taakka/posters/sidetable.png';
+import taakkatable from '@/shared/assets/images/furniture/taakka/posters/coffeetable.png';
+import muistojaarmchair from '@/shared/assets/images/furniture/muistoja/posters/armchair.png';
+import muistojacarpet from '@/shared/assets/images/furniture/muistoja/posters/carpet.png';
+import muistojactable from '@/shared/assets/images/furniture/muistoja/posters/coffeetable.png';
+import muistojacommode from '@/shared/assets/images/furniture/muistoja/posters/commode.png';
+import muistojadrawings from '@/shared/assets/images/furniture/muistoja/posters/drawings.png';
+import muistojaficus from '@/shared/assets/images/furniture/muistoja/posters/ficus.png';
+import muistojaflowers from '@/shared/assets/images/furniture/muistoja/posters/flowers.png';
+import muistojafox from '@/shared/assets/images/furniture/muistoja/posters/fox.png';
+import muistojaoldcarpet from '@/shared/assets/images/furniture/muistoja/posters/oldcarpet.png';
+import muistojaoldwindow from '@/shared/assets/images/furniture/muistoja/posters/oldwindow.png';
+import muistojapainting from '@/shared/assets/images/furniture/muistoja/posters/painting.png';
+import muistojapictures from '@/shared/assets/images/furniture/muistoja/posters/pictures.png';
+import muistojasofa from '@/shared/assets/images/furniture/muistoja/posters/sofa.png';
+import muistojawindow from '@/shared/assets/images/furniture/muistoja/posters/window.png';
 import {
     FurnitureSet,
     SetInfo,
@@ -109,6 +130,9 @@ export const types: Record<Types, PieceType> = {
     [Types.BEDS]: {
         name: 'TYPES.BEDS.name',
     },
+    [Types.ITEMS]: {
+        name: 'TYPES.ITEMS.name',
+    },
 };
 export const materials: Record<Materials, MaterialType> = {
     [Materials.WOOD]: {
@@ -150,6 +174,21 @@ export const materials: Record<Materials, MaterialType> = {
     [Materials.STEEL]: {
         name: 'MATERIALS.STEEL.name',
     },
+    [Materials.PLASTIC]: {
+        name: 'MATERIALS.PLASTIC.name',
+    },
+    [Materials.CLAY]: {
+        name: 'MATERIALS.CLAY.name',
+    },
+    [Materials.PLANT]: {
+        name: 'MATERIALS.PLANT.name',
+    },
+    [Materials.PAPER]: {
+        name: 'MATERIALS.PAPER.name',
+    },
+    [Materials.WAX]: {
+        name: 'MATERIALS.WAX.name',
+    },
 };
 export const recycles: Record<Recycles, RecycleType> = {
     [Recycles.GENERAL]: {
@@ -173,6 +212,12 @@ export const recycles: Record<Recycles, RecycleType> = {
     [Recycles.DUMP]: {
         name: 'RECYCLES.DUMP.name',
     },
+    [Recycles.BIOWASTE]: {
+        name: 'RECYCLES.BIOWASTE.name',
+    },
+    [Recycles.PAPER]: {
+        name: 'RECYCLES.PAPER.name',
+    },
 };
 
 export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
@@ -182,7 +227,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'NEUROSET',
             author: 'Simo Ryhänen',
             cover: neuroCover,
-            coverposition: FurnitureSetCoverPosition.BOTTOMRIGHT,
+            coverposition: FurnitureSetCoverPosition.SMALL,
             items: [
                 {
                     path: 'CLOCK',
@@ -235,7 +280,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'TAAKKASET',
             author: 'Simo Ryhänen',
             cover: taakkaCover,
-            coverposition: FurnitureSetCoverPosition.BOTTOMRIGHT,
+            coverposition: FurnitureSetCoverPosition.SMALL,
             items: [
                 {
                     num: 'R45.0',
@@ -322,7 +367,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'RAKKAUSSET',
             author: 'IV',
             cover: rakkausCover,
-            coverposition: FurnitureSetCoverPosition.BOTTOM,
+            coverposition: FurnitureSetCoverPosition.MEDIUM,
             items: [
                 {
                     num: 'F41.8',
@@ -422,6 +467,235 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                     materials: [materials.WOOD],
                     recycling: [recycles.WOOD],
                     cover: rakkauscloset,
+                },
+                {
+                    num: 'R45.5',
+                    type: types.ITEMS,
+                    path: 'CANDLES',
+                    weight: 0.3,
+                    cost: 30,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.WAX],
+                    recycling: [recycles.GENERAL],
+                    cover: rakkauscandles,
+                },
+                {
+                    num: 'R46.1',
+                    type: types.ITEMS,
+                    path: 'BOOKS',
+                    weight: 3,
+                    cost: 60,
+                    rarity: rarityList.RARE,
+                    materials: [materials.PAPER],
+                    recycling: [recycles.PAPER],
+                    cover: rakkausbooks,
+                },
+                {
+                    num: 'F60.7',
+                    type: types.ITEMS,
+                    path: 'PLUSH',
+                    weight: 1,
+                    cost: 100,
+                    rarity: rarityList.EPIC,
+                    materials: [materials.POLYESTER],
+                    recycling: [recycles.GENERAL],
+                    cover: rakkausplush,
+                },
+                {
+                    num: 'F32',
+                    type: types.ITEMS,
+                    path: 'FLOWER',
+                    weight: 2,
+                    cost: 50,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.CLAY, materials.PLANT],
+                    recycling: [recycles.BIOWASTE],
+                    cover: rakkausflower,
+                },
+                {
+                    num: 'F60.4',
+                    type: types.ITEMS,
+                    path: 'BOOK',
+                    weight: 0.5,
+                    cost: 30,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.PAPER],
+                    recycling: [recycles.PAPER],
+                    cover: rakkausbook,
+                },
+                {
+                    num: 'F43.1',
+                    type: types.ITEMS,
+                    path: 'PILLOW',
+                    weight: 0.5,
+                    cost: 50,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.POLYESTER],
+                    recycling: [recycles.GENERAL],
+                    cover: rakkauspillow,
+                },
+            ],
+        },
+        [FurnitureSet.MUISTOJA]: {
+            id: 'muistoja',
+            path: 'MUISTOJASET',
+            author: 'Tähti',
+            cover: muistojaCover,
+            coverposition: FurnitureSetCoverPosition.FULL,
+            items: [
+                {
+                    num: 'F44',
+                    type: types.COUCHES,
+                    path: 'COUCH',
+                    weight: 20,
+                    cost: 100,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.WOOD, materials.LEATHER],
+                    recycling: [recycles.GENERAL],
+                    cover: muistojasofa,
+                },
+                {
+                    num: 'F44',
+                    type: types.CHAIRS,
+                    path: 'ARMCHAIR',
+                    weight: 5,
+                    cost: 60,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.WOOD, materials.LEATHER],
+                    recycling: [recycles.GENERAL],
+                    cover: muistojaarmchair,
+                },
+                {
+                    num: 'F44',
+                    type: types.PLANTS,
+                    path: 'FICUS',
+                    weight: 3,
+                    cost: 120,
+                    rarity: rarityList.RARE,
+                    materials: [materials.PLANT, materials.PLASTIC, materials.CLAY],
+                    recycling: [recycles.GENERAL, recycles.BIOWASTE],
+                    cover: muistojaficus,
+                },
+                {
+                    num: 'F44',
+                    type: types.PLANTS,
+                    path: 'FLOWERS',
+                    weight: 1,
+                    cost: 50,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.PLANT, materials.GLASS, materials.PLASTIC],
+                    recycling: [recycles.GENERAL, recycles.BIOWASTE],
+                    cover: muistojaflowers,
+                },
+                {
+                    num: 'F44',
+                    type: types.TABLES,
+                    path: 'COFFEETABLE',
+                    weight: 20,
+                    cost: 60,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.WOOD, materials.PAPER],
+                    recycling: [recycles.WOOD],
+                    cover: muistojactable,
+                },
+                {
+                    num: 'F44',
+                    type: types.TABLES,
+                    path: 'DRAWER',
+                    weight: 17,
+                    cost: 100,
+                    rarity: rarityList.RARE,
+                    materials: [materials.WOOD, materials.PAPER, materials.FABRIC],
+                    recycling: [recycles.WOOD],
+                    cover: muistojacommode,
+                },
+                {
+                    num: 'F44',
+                    type: types.RUGS,
+                    path: 'OLDCARPET',
+                    weight: 7,
+                    cost: 150,
+                    rarity: rarityList.RARE,
+                    materials: [materials.FABRIC],
+                    recycling: [recycles.GENERAL],
+                    cover: muistojaoldcarpet,
+                },
+                {
+                    num: 'F44',
+                    type: types.RUGS,
+                    path: 'NEWCARPET',
+                    weight: 7,
+                    cost: 150,
+                    rarity: rarityList.RARE,
+                    materials: [materials.FABRIC],
+                    recycling: [recycles.GENERAL],
+                    cover: muistojacarpet,
+                },
+                {
+                    num: 'F44',
+                    type: types.WALL,
+                    path: 'PAINTING',
+                    weight: 2,
+                    cost: 40,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.WOOD],
+                    recycling: [recycles.GENERAL],
+                    cover: muistojapainting,
+                },
+                {
+                    num: 'F44',
+                    type: types.WALL,
+                    path: 'DRAWINGS',
+                    weight: 1,
+                    cost: 60,
+                    rarity: rarityList.RARE,
+                    materials: [materials.PAPER],
+                    recycling: [recycles.PAPER],
+                    cover: muistojadrawings,
+                },
+                {
+                    num: 'F44',
+                    type: types.WALL,
+                    path: 'PICTURES',
+                    weight: 2,
+                    cost: 60,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.WOOD],
+                    recycling: [recycles.GENERAL],
+                    cover: muistojapictures,
+                },
+                {
+                    num: 'F44',
+                    type: types.WALL,
+                    path: 'OLDWINDOW',
+                    weight: 1,
+                    cost: 50,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.GLASS, materials.FABRIC],
+                    recycling: [recycles.GLASS],
+                    cover: muistojaoldwindow,
+                },
+                {
+                    num: 'F44',
+                    type: types.WALL,
+                    path: 'NEWWINDOW',
+                    weight: 1,
+                    cost: 50,
+                    rarity: rarityList.COMMON,
+                    materials: [materials.GLASS, materials.FABRIC],
+                    recycling: [recycles.GLASS],
+                    cover: muistojawindow,
+                },
+                {
+                    num: 'F44',
+                    type: types.ITEMS,
+                    path: 'FOXTOY',
+                    weight: 1,
+                    cost: 70,
+                    rarity: rarityList.RARE,
+                    materials: [materials.FABRIC],
+                    recycling: [recycles.GENERAL],
+                    cover: muistojafox,
                 },
             ],
         },
