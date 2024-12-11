@@ -14,5 +14,8 @@
     "TOILETS": "Vessanpöntöt",
     "SINKS": "Käsienpesualtaat",
     "BEDS": "Sängyt",
-    "ITEMS": "Esineet"
+    "ITEMS": "Esineet",
+    "head-title": "Huonekalujen kategoriat",
+    "head-description": "Hae huonekaluista kategorialla",
+    "head-keywords": "huonekalu, kategoria, keräily"
 }
