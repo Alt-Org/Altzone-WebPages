@@ -9,6 +9,7 @@ import SadEmoji from '@/shared/assets/icons/Feedback/SadnessChatEmoticon.png';
 import send from '@/shared/assets/icons/Feedback/Email Send.png';
 import { useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 
 /**
  * FeedbackCard component for rendering a basic feedback card.
@@ -75,7 +76,7 @@ export function FeedbackCard() {
             </CustomForm.Button>
             <a
                 className={cls.linkToForm}
-                href=""
+                href={AppExternalLinks.googleFeedback}
             >
                 {t('href-to-fullform')}
             </a>
