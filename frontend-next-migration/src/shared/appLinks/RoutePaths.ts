@@ -32,6 +32,8 @@ export enum AppRoutesLinks {
 
     HERO_DEVELOPMENT = 'HERO_DEVELOPMENT',
 
+    JOIN_US = 'JOIN_US',
+
     NOT_FOUND = 'NOT_FOUND',
     NOT_FOUND_CATCH = 'NOT_FOUND_CATCH',
 
@@ -73,6 +75,8 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.HEROES_ONE]: '/heroes/:slug',
     [AppRoutesLinks.HERO_DEVELOPMENT]: '/hero-development',
 
+    [AppRoutesLinks.JOIN_US]: '/join-us',
+
     [AppRoutesLinks.NEWS]: news,
     [AppRoutesLinks.NEWSELEMENT]: news + '/:id',
     [AppRoutesLinks.FORUM]: '/forum',
@@ -112,6 +116,8 @@ export const getRouteAllClanSearchPage = () => '/clans';
 export const getRouteOneClanPage = (id: string) => `/clans/${id}`;
 export const getRouteEveryClansPage = () => '/clans/all';
 export const getRouteAddNewClanPage = () => '/clans/addNew';
+
+export const getRouteJoinUsPage = () => '/join-us';
 
 export const getRoutePrivacyPage = () => '/privacy';
 export const getRouteCookiesPage = () => '/cookies';

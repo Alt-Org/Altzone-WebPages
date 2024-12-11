@@ -1,5 +1,4 @@
 .pageContainer {
-  padding-top: 10%;
   display: flex;
   flex-direction: column;
 }
@@ -16,8 +15,8 @@
   align-content: center;
   flex-direction: row;
   width: 90%;
-  border: 2px solid rgb(13, 174, 13);
-  border-radius: 10px;
+  border: 2px solid var(--inverted-secondary-color);
+  border-radius: var(--border-radius-custom);
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
   margin-bottom: 10%;
@@ -69,7 +68,7 @@
     }
     &.active {
       color: orange;
-      border-left: 4px solid yellow;
+      border-left: 4000px solid yellow;
     }
     &:active {
       outline: none;
@@ -94,10 +93,13 @@
   height: fit-content;
   margin: 5%;
   padding: 7%;
-  background-color: orange;
-  border-radius: 10px;
-  color: black;
-  border: 2px solid rgb(13, 174, 13);
+  background-color: rgba(0, 0, 0, 0.70);
+  //background-color: var(--inverted-bg-color);
+  //background-color: orange;
+  border-radius: var(--border-radius-custom);
+  color: var(--primary-color);
+  //box-shadow: 0 0 2.5px var(--secondary-color);
+
 
   h2 {
     text-align: center;
@@ -106,15 +108,42 @@
     font-weight: bold;
     border-radius: 10px;
     margin-bottom: 0.5em;
-    background-color: rgb(13, 174, 13);
   }
+
+  h2::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    margin: 0.3em auto 0;
+    border-radius: var(--border-radius-custom);
+    animation: lineExpand 1s ease-in-out forwards;
+  }
+
+  @keyframes lineExpand {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 70%;
+    }
+  }
+
+
+
   a {
-    color: rgb(81, 255, 0);
+    color: var(--inverted-primary-color);
+
+
   }
 
   a:hover {
-    color: rgb(255, 255, 255);
+    color: var(--secondary-color)
   }
+
+
+
 }
 
 .sectionImage {
@@ -125,6 +154,10 @@
   max-height: 350px;
   width: auto;
   object-fit: contain;
+
+
+  box-shadow: 0 0 4px var(--secondary-color);
+
 }
 
 .content.isMobile {
@@ -134,20 +167,4 @@
   padding: 0;
   font-size: 1.2em;
   margin: 15px;
-}
-
-.mainContent.isMobile {
-  margin-top: 15%;
-}
-
-.mainContent.isTablet {
-  top: 2rem;
-}
-
-.mainContent.isDesktop {
-  top: 0.5rem;
-}
-
-.mainContent.isWidescreen {
-  top: -1rem;
 }

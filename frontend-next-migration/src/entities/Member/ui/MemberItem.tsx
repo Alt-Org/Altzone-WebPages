@@ -5,21 +5,36 @@ import { FC } from 'react';
 import { getLinks } from '../api/mappers';
 import { Member } from '../model/types/types';
 import cls from './MemberItem.module.scss';
+import { envHelper } from '@/shared/const/envHelper';
+import { getTaskTranslation, getLanguageCode } from '../api/translations';
 
-const MemberItem: FC<{ member: Member }> = ({ member }) => {
+interface MemberItemProps {
+    member: Member;
+    language: string;
+}
+
+const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
     const linksMap = getLinks();
+
+    const logoUrl =
+        member.logo && typeof member.logo === 'object' && 'id' in member.logo
+            ? `${envHelper.strapiHost}/assets/${member.logo.id}`
+            : null;
+
+    const fullLanguageCode = getLanguageCode(language);
+    const task = getTaskTranslation(member.translations || [], fullLanguageCode);
 
     return (
         <li className={cls.workmanComponent}>
             <div className={cls.memberRow}>
                 <div className={cls.centerContainer}>
                     <span className={cls.memberName}>{member.name}</span>
-                    <span className={cls.taskText}>{member.task}</span>
+                    <span className={cls.taskText}>{task}</span>
                     <div className={cls.iconContainer}>
                         <div className={cls.memberLogo}>
-                            {member.logo ? (
+                            {logoUrl ? (
                                 <Image
-                                    src={member.logo}
+                                    src={logoUrl}
                                     alt={member.name}
                                     className={cls.Logo}
                                     width={500}
@@ -30,8 +45,8 @@ const MemberItem: FC<{ member: Member }> = ({ member }) => {
                             )}
                         </div>
                         {Object.entries(linksMap).map(([key, icon]) => {
-                            const link = member[key as keyof Omit<Member, 'id'>];
-                            if (link) {
+                            const link = member[key as keyof Member];
+                            if (typeof link === 'string') {
                                 const href = key === 'email' ? `mailto:${link}` : link;
                                 const target = key === 'email' ? '_self' : '_blank';
                                 return (

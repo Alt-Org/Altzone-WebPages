@@ -1,0 +1,25 @@
+{
+    "join-us": "Join us!",
+    "head-title": "Join us - Altzone",
+
+    "block-label-discord": "Discord",
+    "block-label-reddit": "Reddit",
+    "block-label-teachers": "Teacher!",
+    "block-label-duunitori": "Duunitori",
+    "block-label-feedback": "Give feedback",
+    "block-label-instagram": "Instagram",
+
+    "block-description-discord": "You can become a tester and developer by joining our Discord gaming community",
+    "block-description-reddit": "",
+    "block-description-teachers": "Sign up to test the teaching package",
+    "block-description-duunitori": "",
+    "block-description-feedback": "",
+    "block-description-instagram": "Follow us on Insatgram!",
+
+    "block-link-text-discord": "discord.gg/mgjQkCR2Fg",
+    "block-link-text-reddit": "www.reddit.com/r/PRGaltzone/",
+    "block-link-text-teachers": "To the teaching package",
+    "block-link-text-duunitori": "Open jobs",
+    "block-link-text-feedback": "Feedback form",
+    "block-link-text-instagram": "@gamingpsyche"
+}

@@ -13,8 +13,9 @@ import {
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import { authUserReducer, authMiddleware } from '@/entities/Auth';
 import { envHelper } from '@/shared/const/envHelper';
-import { gameApi, strapiApi } from '@/shared/api';
+import { gameApi, strapiApi, directusApi } from '@/shared/api';
 import { StateSchema } from './StateSchema';
+import { navBarReducer } from '@/widgets/Navbar/model/navbarSlice/navBarSlice';
 
 const createNoopStorage = () => {
     return {
@@ -39,14 +40,16 @@ const storage = typeof window !== 'undefined' ? createWebStorage('local') : crea
 export function createReduxStore(initialState?: StateSchema) {
     const rootReducer = combineReducers({
         authUser: authUserReducer,
+        navbar: navBarReducer,
         [gameApi.reducerPath]: gameApi.reducer,
         [strapiApi.reducerPath]: strapiApi.reducer,
+        [directusApi.reducerPath]: directusApi.reducer,
     });
 
     const persistConfig = {
         key: 'root',
         storage,
-        blacklist: [gameApi.reducerPath, strapiApi.reducerPath],
+        blacklist: [gameApi.reducerPath, strapiApi.reducerPath, directusApi.reducerPath],
     };
 
     const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -62,7 +65,12 @@ export function createReduxStore(initialState?: StateSchema) {
                 serializableCheck: {
                     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
                 },
-            }).concat(gameApi.middleware, strapiApi.middleware, authMiddleware),
+            }).concat(
+                gameApi.middleware,
+                strapiApi.middleware,
+                directusApi.middleware,
+                authMiddleware,
+            ),
     });
 
     const persistor = persistStore(store);

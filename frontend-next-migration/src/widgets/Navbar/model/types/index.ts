@@ -81,5 +81,3 @@ export type NavbarBuild = {
     menu: NavbarMenu;
     namedMenu: NamedMenu;
 };
-
-export type NavBarType = 'Default' | 'GameArt' | 'Cookies' | 'Privacy' | 'None';

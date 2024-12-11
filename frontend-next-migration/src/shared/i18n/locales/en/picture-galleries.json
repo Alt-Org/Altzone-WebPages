@@ -1,9 +1,12 @@
 {
-  "picture-galleries": "Galleries",
+  "picture-galleries": "Behind the Scenes of Creativity",
   "Chat": "Chat",
   "Hahmot": "Heroes",
   "Huonekalut": "Furniture",
-  "head-title": "Picture Galleries",
+  "head-title": "Behind the Scenes of Creativity",
   "head-description": "Browse developers', artists', and designers' works and discover inspiring projects.",
-  "head-keywords": "altzone, picture galleries, art, projects, developers, designers"
+  "head-keywords": "altzone, picture galleries, art, projects, developers, designers",
+  "info-text":  "Explore a diverse collection of artistic galleries and videos that unveil the creativity behind game design. These collections offer an exclusive look at sketches, concepts, and completed works that played a crucial role in shaping our immersive game world and storytelling.",
+  "socials-text": "Also, check out our socials!",
+  "explore": "Explore"
 }

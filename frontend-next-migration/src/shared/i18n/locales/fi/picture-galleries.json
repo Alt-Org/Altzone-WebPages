@@ -1,9 +1,12 @@
 {
-  "picture-galleries": "Kuvagalleriat",
+  "picture-galleries": "Luovuuden Kulissit",
   "Chat": "Chat",
   "Hahmot": "Hahmot",
   "Huonekalut": "Huonekalut",
-  "head-title": "Kuvagalleriat",
+  "head-title": "Luovuuden Kulissit",
   "head-description": "Selaa kehittäjien, taiteilijoiden ja suunnittelijoiden töitä ja löydä inspiroivia projekteja.",
-  "head-keywords": "altzone, kuvagalleriat, taide, projektit, kehittäjät, suunnittelijat"
+  "head-keywords": "altzone, kuvagalleriat, taide, projektit, kehittäjät, suunnittelijat",
+  "info-text": "Tutustu monipuoliseen kokoelmaan, joka sisältää taiteellisia gallerioita ja videoita ja paljastaa pelisuunnittelun taustalla olevan luovuuden. Näiden kokoelmien avulla voit nähdä luonnoksia, konsepteja ja valmiita teoksia, jotka olivat avainasemassa pelimaailmamme kehittämisessä ja sen tarinankerronnassa.",
+  "socials-text": "Löydä lisää meidän someista!",
+  "explore": "Tutustu"
 }

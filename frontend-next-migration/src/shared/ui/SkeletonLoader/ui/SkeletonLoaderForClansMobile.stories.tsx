@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { SkeletonLoaderForClansMobile } from './SkeletonLoader';
 
 const meta = {
-    title: 'shared/SkeletonLoaderForClansMobile',
+    title: 'shared/ui/SkeletonLoader/SkeletonLoaderForClansMobile',
     component: SkeletonLoaderForClansMobile,
     argTypes: {
         numberOfCards: {
@@ -66,6 +66,14 @@ const meta = {
     },
     tags: ['autodocs'],
     parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
         docs: {
             description: {
                 component:

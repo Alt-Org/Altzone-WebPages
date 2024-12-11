@@ -1,0 +1,20 @@
+.Item {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-radius: var(--border-radius-custom);
+    background-color: var(--transparent-bg-dark);
+    overflow: hidden;
+    pointer-events: all;
+}
+
+.Image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    &:hover,
+    &:active {
+        transform: scale(1.1);
+    }
+}

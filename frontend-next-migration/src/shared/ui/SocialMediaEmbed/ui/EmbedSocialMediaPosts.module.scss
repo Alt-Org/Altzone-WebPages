@@ -1,0 +1,12 @@
+.Iframe {
+    border-radius: var(--border-radius-custom);
+}
+
+.Wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,7 @@
+{
+    "resistance":"paksunahkaisuus",
+    "hp":"elinvoima",
+    "size":"koko",
+    "impactForce":"iskuvoima",
+    "speed":"nopeus"
+}

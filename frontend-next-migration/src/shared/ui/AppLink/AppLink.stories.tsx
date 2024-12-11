@@ -1,34 +1,74 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+import React, { FC, memo, ReactNode } from 'react';
 import { AppLink, AppLinkTheme } from './AppLink';
 
-export default {
-    title: 'shared/AppLink',
+const meta = {
+    title: 'shared/ui/AppLink',
     component: AppLink,
     argTypes: {
-        backgroundColor: { control: 'color' },
+        to: {
+            control: 'text',
+            description: 'URL to navigate to when the link is clicked.',
+            defaultValue: '',
+        },
+        className: {
+            control: 'text',
+            description:
+                'Additional CSS class names to apply to the root container for custom styling.',
+            defaultValue: '',
+        },
+        theme: {
+            control: AppLinkTheme,
+            description: 'The theme of the link.',
+            defaultValue: AppLinkTheme.PRIMARY,
+        },
+        isExternal: {
+            control: 'boolean',
+            description: 'Whether the link is an external link.',
+            defaultValue: false,
+        },
+        children: {
+            control: 'text',
+            description: 'The content of the link.',
+            defaultValue: '',
+        },
     },
     args: {
-        to: '/',
+        to: 'https://altzone.fi',
+        className: '',
+        theme: AppLinkTheme.PRIMARY,
+        isExternal: true,
+        children: 'Lorem Ipsum',
     },
-} as ComponentMeta<typeof AppLink>;
+    tags: ['autodocs'],
+    parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
+        layout: 'centered',
+        docs: {
+            description: {
+                component:
+                    'The `AppLink` component is a reusable component that renders a link. It can handle both internal and external URLs.',
+            },
+        },
+    },
+} satisfies Meta<typeof AppLink>;
+export default meta;
 
-const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args}>text</AppLink>;
+type Story = StoryObj<typeof meta>;
 
-export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
-    theme: AppLinkTheme.PRIMARY,
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-    children: 'Text',
-    theme: AppLinkTheme.SECONDARY,
-};
-
-export const Red = Template.bind({});
-Red.args = {
-    children: 'Text',
-    theme: AppLinkTheme.RED,
+export const Default: Story = {
+    args: {
+        to: 'https://altzone.fi',
+        className: '',
+        theme: AppLinkTheme.PRIMARY,
+        isExternal: true,
+        children: 'Lorem Ipsum',
+    },
 };

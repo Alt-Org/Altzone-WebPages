@@ -1,7 +1,7 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
-import { LayoutWithSidebars } from '@/shared/ui/Layouts';
+import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 
 const Page = () => {
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {

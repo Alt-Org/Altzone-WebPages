@@ -1,30 +1,39 @@
 'use client';
+import cls from './page.module.scss';
 import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
-import { HorizontalLines } from '@/shared/ui/HorizontalLines';
-import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
-import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
+import { HorizontalLines } from '@/shared/ui/PageDividers';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
 } from './_components/sections/ProjectDescription';
+import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import {
     VideoAndGalleries,
+    // VideoAndGalleries,
     VideoAndGalleriesProps,
 } from './_components/sections/VideoAndGalleries';
-import cls from './page.module.scss';
+import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
+import { Gallery, GalleryProps } from './_components/sections/Gallery';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
+    gallery: GalleryProps;
     heroesBlocks: HeroesBlocksProps;
 };
 
 function MainPage(props: Props) {
-    const { projectDescription, playWithUs, videoAndGalleries, heroesBlocks } = props;
-
-    const sameBg = undefined;
+    const {
+        projectDescription,
+        playWithUs,
+        // getToKnowComics,
+        heroesBlocks,
+        videoAndGalleries,
+        // classifiedHeroesBlocks,
+        gallery,
+    } = props;
 
     return (
         <div className={cls.MainPage}>
@@ -32,16 +41,19 @@ function MainPage(props: Props) {
                 className={cls.description}
                 {...projectDescription}
             />
-
             <HorizontalLines />
+
             <PlayWithUs {...playWithUs} />
 
+            {/*<HorizontalLines />*/}
+
+            {/*<VideoAndGalleries*/}
+            {/*    {...videoAndGalleries}*/}
+            {/*/>*/}
+
             <HorizontalLines />
 
-            <VideoAndGalleries
-                backgroundImageSrc={sameBg}
-                {...videoAndGalleries}
-            />
+            <Gallery {...gallery} />
 
             <HorizontalLines />
 
@@ -50,10 +62,6 @@ function MainPage(props: Props) {
                 maxHeroesPerGroup={2}
                 maxGroupsPerPage={3}
             />
-
-            {/*<HorizontalLines />*/}
-
-            <HorizontalLines />
 
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}

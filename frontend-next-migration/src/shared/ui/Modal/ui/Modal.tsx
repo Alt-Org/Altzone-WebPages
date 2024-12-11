@@ -9,7 +9,11 @@ type Props = {
     children: ReactNode;
 };
 
-ReactModal.setAppElement('#root');
+if (document.getElementById('root')) {
+    ReactModal.setAppElement('#root');
+} else {
+    ReactModal.setAppElement('#storybook-docs'); // This if-else statement is for StoryBook documentation.
+}
 
 /**
  * Modal component that uses ReactModal under the hood.

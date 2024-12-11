@@ -3,9 +3,11 @@ import { memo, useCallback } from 'react';
 import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './styles.module.scss';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 export type GalleryCategoriesWithModalSliderProps = {
-    title: string;
+    title?: string;
     followLastImage?: boolean;
     sources: string[];
     cover: { name: string; url: string };
@@ -33,9 +35,10 @@ export const GalleryCategoriesWithModalSlider = memo(
             <div style={{ cursor: 'pointer' }}>
                 <Fancybox>
                     <div className={cls.cover}>
-                        <a
-                            data-fancybox={title}
-                            href={cover.url}
+                        <AppLink
+                            data-fancybox={cover.name}
+                            to={cover.url}
+                            className={cls.link}
                         >
                             <Image
                                 loading={'eager'}
@@ -45,20 +48,22 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 className={cls.coverImage}
                                 alt={cover.name}
                             />
-                            <h2 className={cls.title}>{t(`${title}`)}</h2>
-                        </a>
+                            {title && <h3 className={cls.title}>{t(`${title}`)}</h3>}
+
+                            <Button theme={ButtonTheme.OUTLINE}>{t('explore')}</Button>
+                        </AppLink>
                     </div>
 
                     <div style={{ display: 'none' }}>
                         {getSortedSources(sources).map((source, index) =>
                             index !== 0 ? (
-                                <a
+                                <AppLink
                                     key={index}
-                                    data-fancybox={title}
-                                    href={source}
+                                    data-fancybox={cover.name}
+                                    to={source}
                                 >
-                                    {/*<Image loading={"lazy"} alt={source.split('/').pop()?.split('.')[0]} src={source} width="200" height="150" />*/}
-                                </a>
+                                    ''
+                                </AppLink>
                             ) : null,
                         )}
                     </div>

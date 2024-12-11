@@ -1,11 +1,17 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { getRouteAllHeroesPage, getRouteComicsPage } from '@/shared/appLinks/RoutePaths';
+import {
+    getRouteAllHeroesPage,
+    getRouteComicsPage,
+    getRouteGalleryPage,
+} from '@/shared/appLinks/RoutePaths';
 import { createPage } from '@/app/_helpers';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'main');
+
+    const { t: tPG } = await useServerTranslation(lng, 'picture-galleries');
 
     return createPage<MainPageProps>({
         buildSeo: () => ({
@@ -55,6 +61,21 @@ export async function _getPage(lng: string) {
                     text: t('classifiedHeroesBlocks-seeMore'),
                     href: getRouteAllHeroesPage(),
                 },
+            },
+            gallery: {
+                title: tPG('picture-galleries'),
+                infoText: tPG('info-text'),
+                socialsText: tPG('socials-text'),
+                seeMoreLink: {
+                    text: t('gallery-seeMore'),
+                    href: getRouteGalleryPage(),
+                },
+                socialMediaLinks: [
+                    AppExternalLinks.igPost1,
+                    AppExternalLinks.igPost2,
+                    AppExternalLinks.fbPost1,
+                ],
+                videoLink: AppExternalLinks.previewVideoYoutube,
             },
         }),
     });

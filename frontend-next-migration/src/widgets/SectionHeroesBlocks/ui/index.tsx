@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { HeroManager } from '@/entities/Hero';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
@@ -8,6 +7,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import HeroesBlocks from './heroesBlocks/HeroesBlocks';
 import cls from './main.module.scss';
 import { Container } from '@/shared/ui/Container';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 const sameBg = undefined;
 
@@ -68,7 +68,7 @@ function Main(props: Props) {
                             size={ButtonSize.XL}
                             ref={ref}
                         >
-                            <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
+                            <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
                         </Button>
                     </div>
                 )}

@@ -1,0 +1,36 @@
+.VideoContentYoutube {
+    iframe {
+        border-radius: var(--border-radius-custom);
+    }
+
+}
+
+.videoWrapper {
+    width: 90%;
+}
+
+.Row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttonContainer {
+    text-align: center;
+}
+
+.Facebook {
+    border-radius: var(--border-radius-custom);
+}
+
+@media screen and (min-width: 900px) {
+    
+    .videoWrapper {
+        width: 450px;
+    }
+}
+
+  

@@ -15,15 +15,19 @@
     "getToKnowComics": "Tutustu sarjakuvaan",
     "getToKnowComics-title": "Pelikeksijän tarina",
 
-    "videoAndGalleries-title": "Meidän taide:",
+  "videoAndGalleries-title": "Meidän taide:",
 
-    "playWithUs-title": "Meidän linkit:",
-    "playWithUs-OpenPositions-title": "Katso avoimet paikat",
-    "playWithUs-OpenPositions-body": "Tule mukaan",
-    "playWithUs-BecomeATester-title": "Tule testaajaksi",
-    "playWithUs-BecomeATester-body": "Tee sovelluksesta parempi",
-    "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
 
-    "classifiedHeroesBlocks-title": "Hahmot",
-    "classifiedHeroesBlocks-seeMore": "Katso lisää"
+  "playWithUs-title": "Meidän linkit:",
+  "playWithUs-OpenPositions-title": "Katso avoimet paikat",
+  "playWithUs-OpenPositions-body" : "Tule mukaan",
+  "playWithUs-BecomeATester-title" : "Tule testaajaksi",
+  "playWithUs-BecomeATester-body" : "Tee sovelluksesta parempi",
+  "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
+
+  "classifiedHeroesBlocks-title": "Hahmot",
+  "classifiedHeroesBlocks-seeMore": "Lisää",
+
+
+  "gallery-seeMore": "Katso lisää"
 }

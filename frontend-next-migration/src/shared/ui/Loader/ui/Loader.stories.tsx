@@ -1,19 +1,46 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Loader } from './Loader';
 
-export default {
-    title: 'shared/Loader',
+const meta = {
+    title: 'shared/ui/Loader',
     component: Loader,
     argTypes: {
-        backgroundColor: { control: 'color' },
+        className: {
+            control: 'text',
+            description:
+                'Additional CSS class names to apply to the root container for custom styling.',
+            defaultValue: '',
+        },
     },
     args: {
-        to: '/',
+        className: '',
     },
-} as ComponentMeta<typeof Loader>;
+    tags: ['autodocs'],
+    parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
+        layout: 'centered',
+        docs: {
+            description: {
+                component: 'Loader component displays an animated loading indicator.',
+            },
+        },
+    },
+} satisfies Meta<typeof Loader>;
 
-const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />;
+export default meta;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+    args: {
+        className: '',
+    },
+};

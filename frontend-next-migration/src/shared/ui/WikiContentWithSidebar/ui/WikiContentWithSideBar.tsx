@@ -1,11 +1,10 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
-import { ScrollTop } from '@/features/ScrollTop';
+import { useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import NavbarSide from '@/shared/ui/NavbarSide/ui/NavbarSide';
 import cls from './WikiContentWithSideBar.module.scss';
+import { TableOfContents } from '@/shared/ui/TableOfContents';
 
 /**
  * Represents a section in the sidebar.
@@ -61,7 +60,7 @@ export type Props = {
 const WikiContentWithSideBar = (props: Props) => {
     const { sections = [] } = props;
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
-    const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
+
     const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>({});
 
     const combinedModCss: Mods = {
@@ -80,11 +79,7 @@ const WikiContentWithSideBar = (props: Props) => {
             <div className={classNames(cls.mainContent, combinedModCss)}>
                 {!isMobileSize && (
                     <div className={classNames(cls.navbarSide, combinedModCss)}>
-                        <NavbarSide
-                            sections={sections}
-                            activeSection={activeSection}
-                            setActiveSection={setActiveSection}
-                        />
+                        <TableOfContents sections={sections} />
                     </div>
                 )}
                 <div
@@ -119,7 +114,6 @@ const WikiContentWithSideBar = (props: Props) => {
                     )}
                 </div>
             </div>
-            {(isMobileSize || isTabletSize) && <ScrollTop />}
         </div>
     );
 };
