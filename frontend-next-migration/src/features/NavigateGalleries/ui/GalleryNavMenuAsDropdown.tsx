@@ -30,7 +30,7 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
             path: getRouteGalleryCategoryPage(category.toLowerCase()),
         },
         elementText: category,
-        active: false,
+        active: true,
     })) as DropDownElementASTextOrLink[];
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
