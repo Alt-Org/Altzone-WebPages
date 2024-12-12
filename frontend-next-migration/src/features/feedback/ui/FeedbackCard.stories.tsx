@@ -3,7 +3,7 @@ import React from 'react';
 import FeedbackCard from './FeedbackCard';
 
 export default {
-    title: 'features/FeedbackCard',
+    title: 'features/feedback/FeedbackCard',
     component: FeedbackCard,
     args: {
         className: '',
