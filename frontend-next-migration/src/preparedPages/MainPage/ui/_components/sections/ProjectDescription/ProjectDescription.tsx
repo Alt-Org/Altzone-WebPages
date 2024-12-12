@@ -5,7 +5,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import greenHaired from '@/shared/assets/images/heros/hannu-hodari/ahmatti_2_60.webp';
 import { Container } from '@/shared/ui/Container';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { Paragraph } from '@/shared/ui/Paragraph';
+import TextSlider from '@/shared/ui/TextSlider/TextSlider';
 import cls from './ProjectDescription.module.scss';
 
 export interface Props {
@@ -44,7 +44,8 @@ export const ProjectDescription = (props: Props) => {
                             className={classNames(cls.Image, mods)}
                         />
                     )}
-                    <Paragraph
+
+                    <TextSlider
                         className={cls.description}
                         text={description}
                     />
