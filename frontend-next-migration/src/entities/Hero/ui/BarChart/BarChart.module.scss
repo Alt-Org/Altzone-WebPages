@@ -61,13 +61,13 @@
     justify-content: space-between;
     text-align: right;
     padding-right: 5px;
-    border-right: 2px solid lightgreen;
+    border-right: 2px solid var(--secondary-color);
     
 }
 .Number {
     
     font-weight:bold;
-    color: lightgreen;
+    color: var(--secondary-color);
 
 }
 .Bars {
