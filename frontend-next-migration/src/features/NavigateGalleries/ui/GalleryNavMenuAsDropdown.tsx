@@ -1,8 +1,11 @@
 'use client';
 import { useParams } from 'next/navigation';
-import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
+import {
+    NavMenuWithDropdowns,
+    NavMenuWithDropdownsProps,
+    DropDownElementASTextOrLink,
+} from '@/shared/ui/NavMenuWithDropdowns';
 import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
-import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper';
 
 interface GalleryNavMenuProps {
     // className?: string;
