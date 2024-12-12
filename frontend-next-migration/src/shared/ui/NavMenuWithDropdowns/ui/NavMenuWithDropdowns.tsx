@@ -52,12 +52,14 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                             <AppLink
                                 isExternal={item.link.isExternal}
                                 to={item.link.path}
+                                className={classNames(cls.link, { [cls.active]: item.active })}
                             >
-                                {' '}
                                 {item.elementText}
                             </AppLink>
                         ) : (
-                            <div>{item.elementText}</div>
+                            <div className={classNames(cls.text, { [cls.active]: item.active })}>
+                                {item.elementText}
+                            </div>
                         )
                     ) : (
                         <div key={index}>{item}</div>

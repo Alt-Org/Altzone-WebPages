@@ -1,27 +1,46 @@
 'use client';
-import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
-import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
+import { useParams } from 'next/navigation';
+import {
+    NavMenuWithDropdowns,
+    NavMenuWithDropdownsProps,
+    DropDownElementASTextOrLink,
+} from '@/shared/ui/NavMenuWithDropdowns';
+import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
+import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
 
 interface GalleryNavMenuProps {
     // className?: string;
     openByDefault?: boolean;
 }
 
-const categories: string[] = ['All', 'Nature', 'City', 'People', 'Technology'];
-
 const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     const { openByDefault = false } = props;
 
-    const dropdownItems = categories.map((category) => ({
+    const params = useParams();
+    const lng = params.lng as string;
+    const currentCategory = params.category as string;
+    const language = getLanguageCode(lng);
+    const { categories } = useGetDirectusGalleryImages(language);
+
+    const title = lng === 'en' ? 'Categories' : 'Kategoriat';
+
+    const allCategory = {
+        name: lng === 'en' ? 'All' : 'Kaikki',
+    };
+
+    const extendedCategories = [allCategory, ...categories];
+
+    const dropdownItems = extendedCategories.map((category) => ({
         link: {
             isExternal: false,
-            path: getRouteOneHeroPage(category),
+            path: getRouteGalleryCategoryPage(category.name.toLowerCase()),
         },
-        elementText: category,
-    }));
+        elementText: category.name,
+        active: category.name.toLowerCase() === currentCategory,
+    })) as DropDownElementASTextOrLink[];
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
-        title: 'Categories',
+        title: title,
         openByDefault: openByDefault,
         dropdownItems: dropdownItems,
     };

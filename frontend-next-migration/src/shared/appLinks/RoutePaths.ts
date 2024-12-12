@@ -15,6 +15,7 @@ export enum AppRoutesLinks {
 
     PICTURE_GALLERY = 'PICTURE_GALLERY',
     COMICS_GALLERY = 'COMICS_GALLERY',
+    PICTURE_GALLERY_CATEGORY = 'PICTURE_GALLERY_CATEGORY',
 
     MAIN = 'MAIN',
     ABOUT = 'ABOUT',
@@ -64,6 +65,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
     [AppRoutesLinks.PICTURE_GALLERY]: '/picture-galleries',
     [AppRoutesLinks.COMICS_GALLERY]: '/comics',
+    [AppRoutesLinks.PICTURE_GALLERY_CATEGORY]: '/picture-galleries/:category',
 
     [AppRoutesLinks.MAIN]: '/',
     [AppRoutesLinks.ABOUT]: '/about',
@@ -107,6 +109,7 @@ export const getRouteHeroDevPage = () => '/hero-development';
 
 export const getRouteComicsPage = () => '/comics';
 export const getRouteGalleryPage = () => '/picture-galleries';
+export const getRouteGalleryCategoryPage = (category: string) => `/picture-galleries/${category}`;
 export const getRouteGameArtPage = () => '/artGame';
 
 export const getRouteMyClanPage = () => '/clans/myclan';
