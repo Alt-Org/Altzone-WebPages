@@ -2,7 +2,7 @@
   display: inline-block;
   position: absolute;
   top: 45%;
-  color: var(--secondary-color);
+  color: var(--inverted-primary-color);
   font-weight :bolder;
   font-size:1.5em;
   right: 0;
@@ -22,4 +22,7 @@
   border: 2px solid var(--inverted-secondary-color);
   border-radius: 1em;
   background: black;
+}
+.Group {
+  color:var(--inverted-primary-color)
 }

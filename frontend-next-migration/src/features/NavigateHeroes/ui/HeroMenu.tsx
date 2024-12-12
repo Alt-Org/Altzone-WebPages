@@ -21,7 +21,12 @@ const HeroMenu: React.FC<HeroMenuProps> = ({ className, onClickCallback, selecte
         <div className={classNames(cls.Text, undefined, [className || ''])}>
             {allHeroGroups.map((group, index) => (
                 <>
-                    <div key={index + group.name}>{group.name}</div>
+                    <div
+                        key={index + group.name}
+                        className={cls.Group}
+                    >
+                        {group.name}
+                    </div>
                     {group.heroes.map((hero, index) =>
                         selectedHero === hero.slug ? (
                             <div
