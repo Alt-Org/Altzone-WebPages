@@ -31,6 +31,48 @@ function isDropDownElementASTextOrLink(item: any): item is DropDownElementASText
     return typeof item === 'object' && item !== null && 'elementText' in item;
 }
 
+// function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
+//     const { dropdownItems, className = '', title, openByDefault = false } = props;
+//
+//     return (
+//         <div className={classNames(cls.NavMenuWithDropdowns, {}, [className])}>
+//             <DropdownWrapper
+//                 openByDefault={openByDefault}
+//                 elements={dropdownItems.map((item, index) =>
+//                     isDropdownItem(item) ? (
+//                         <NestedDropDown
+//                             key={item.title}
+//                             openByDefault={item.openByDefault}
+//                             elements={item.elements}
+//                         >
+//                             {item.title}
+//                         </NestedDropDown>
+//                     ) : isDropDownElementASTextOrLink(item) ? (
+//                         item?.link ? (
+//                             <AppLink
+//                                 isExternal={item.link.isExternal}
+//                                 to={item.link.path}
+//                             >
+//                                 {' '}
+//                                 {item.elementText}
+//                             </AppLink>
+//                         ) : (
+//                             <div>{item.elementText}</div>
+//                         )
+//                     ) : (
+//                         <div key={index}>{item}</div>
+//                     ),
+//                 )}
+//                 className={cls.topDropDown}
+//                 childrenWrapperClassName={cls.topDropDownChildren}
+//                 contentClassName={cls.topDropDownContent}
+//             >
+//                 {title}
+//             </DropdownWrapper>
+//         </div>
+//     );
+// }
+
 function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
     const { dropdownItems, className = '', title, openByDefault = false } = props;
 
@@ -52,12 +94,14 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                             <AppLink
                                 isExternal={item.link.isExternal}
                                 to={item.link.path}
+                                className={classNames(cls.link, { [cls.active]: item.active })}
                             >
-                                {' '}
                                 {item.elementText}
                             </AppLink>
                         ) : (
-                            <div>{item.elementText}</div>
+                            <div className={classNames(cls.text, { [cls.active]: item.active })}>
+                                {item.elementText}
+                            </div>
                         )
                     ) : (
                         <div key={index}>{item}</div>

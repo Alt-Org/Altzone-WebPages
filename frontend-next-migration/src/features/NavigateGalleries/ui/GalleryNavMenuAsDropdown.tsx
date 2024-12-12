@@ -1,7 +1,8 @@
 'use client';
-import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
 import { useParams } from 'next/navigation';
+import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
 import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
+import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper';
 
 interface GalleryNavMenuProps {
     // className?: string;
@@ -26,7 +27,8 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
             path: getRouteGalleryCategoryPage(category.toLowerCase()),
         },
         elementText: category,
-    }));
+        active: false,
+    })) as DropDownElementASTextOrLink[];
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
         title: title,
