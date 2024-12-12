@@ -4,10 +4,16 @@ import { getPhotoVersionTranslation, getCategoryTranslation } from '../api/trans
 import { useGetGalleryCategoriesQuery } from '../api/galleryCategoriesApi';
 import { useGetPhotoObjectsQuery, useGetPhotoVersionsQuery } from '../api/galleryApi';
 
-jest.mock('@/entities/Gallery', () => ({
+jest.mock('../api/galleryApi', () => ({
     useGetPhotoObjectsQuery: jest.fn(),
     useGetPhotoVersionsQuery: jest.fn(),
+}));
+
+jest.mock('../api/galleryCategoriesApi', () => ({
     useGetGalleryCategoriesQuery: jest.fn(),
+}));
+
+jest.mock('../api/translations', () => ({
     getPhotoVersionTranslation: jest.fn(),
     getCategoryTranslation: jest.fn(),
 }));
