@@ -19,6 +19,7 @@
 .Box {
   padding: .5em;
   position: relative;
-  border: 2px solid blue;
+  border: 2px solid var(--inverted-secondary-color);
+  border-radius: 1em;
   background: black;
 }
