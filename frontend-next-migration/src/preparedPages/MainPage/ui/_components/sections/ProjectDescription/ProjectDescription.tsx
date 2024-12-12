@@ -12,10 +12,11 @@ export interface Props {
     className?: string;
     title: string;
     description: string;
+    descriptionArray?: string[];
 }
 
 export const ProjectDescription = (props: Props) => {
-    const { className = '', description, title } = props;
+    const { className = '', description, title, descriptionArray } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -46,6 +47,7 @@ export const ProjectDescription = (props: Props) => {
                     )}
 
                     <TextSlider
+                        textArray={descriptionArray}
                         className={cls.description}
                         text={description}
                     />
