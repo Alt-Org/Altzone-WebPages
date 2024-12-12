@@ -8,19 +8,27 @@ import Image from 'next/image';
 import { Piece } from '@/entities/Furniture/types/set';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
+import { useParams, useRouter } from 'next/navigation';
 
-type Props = {
-    params: { id: string };
-};
-
-const OneSetPage = (props: Props) => {
-    const { id } = props.params;
+const OneSetPage = () => {
+    const { id } = useParams();
+    const router = useRouter();
 
     const { t } = useClientTranslation('furnitureinfo');
 
     const manager = new FurnitureManager();
 
-    const set = manager.getFurnitureSet(id);
+    let set;
+    try {
+        set = manager.getFurnitureSet(id as string);
+    } catch (err) {
+        set = undefined;
+    }
+
+    if (!set) {
+        router.push('/furniture/set');
+        return;
+    }
 
     const { path, cover, author, items } = set;
 
