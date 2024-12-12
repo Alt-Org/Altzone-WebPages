@@ -3,7 +3,6 @@ import cls from './TextSlider.module.scss';
 
 type Props = {
     className?: string;
-    text?: string;
     textArray?: string[];
     leftArrow?: ReactNode;
     rightArrow?: ReactNode;
@@ -12,26 +11,23 @@ type Props = {
 export const TextSlider = (props: Props) => {
     const {
         className = '',
-        text = '',
         leftArrow = <LeftArrowSVG />,
         rightArrow = <RightArrowSVG />,
         textArray = [],
     } = props;
 
-    // console.log(textArray);
-
     const [textIndex, setTextIndex] = useState(0);
 
     const showNextText = () => {
         setTextIndex((index) => {
-            if (index === text.length - 1) return 0;
+            if (index === textArray.length - 1) return 0;
             return index + 1;
         });
     };
 
     const showPrevText = () => {
         setTextIndex((index) => {
-            if (index === 0) return text.length - 1;
+            if (index === 0) return textArray.length - 1;
             return index - 1;
         });
     };
@@ -45,8 +41,7 @@ export const TextSlider = (props: Props) => {
                 {rightArrow}
             </div>
 
-            {text.length > 0 && <p>{text[textIndex]}</p>}
-            <p>{text}</p>
+            {textArray.length > 0 && <p>{textArray[textIndex]}</p>}
 
             <div
                 className={cls.btnLeft}

@@ -6,7 +6,7 @@ const meta: Meta<typeof TextSlider> = {
     component: TextSlider,
     tags: ['autodocs'],
     argTypes: {
-        text: {
+        textArray: {
             control: 'object',
             description: 'Array of strings to be displayed in the slider',
         },
@@ -30,13 +30,13 @@ type Story = StoryObj<typeof TextSlider>;
 
 export const Default: Story = {
     args: {
-        text: ['First Slide', 'Second Slide', 'Third Slide'],
+        textArray: ['First Slide', 'Second Slide', 'Third Slide'],
     },
 };
 
 export const CustomArrows: Story = {
     args: {
-        text: ['Slide A', 'Slide B', 'Slide C'],
+        textArray: ['Slide A', 'Slide B', 'Slide C'],
         leftArrow: <span style={{ color: 'red' }}>⬅️</span>,
         rightArrow: <span style={{ color: 'green' }}>➡️</span>,
     },

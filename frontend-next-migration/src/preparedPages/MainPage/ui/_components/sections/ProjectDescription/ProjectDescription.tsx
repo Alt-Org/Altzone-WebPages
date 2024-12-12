@@ -49,7 +49,6 @@ export const ProjectDescription = (props: Props) => {
                     <TextSlider
                         textArray={descriptionArray}
                         className={cls.description}
-                        text={description}
                     />
                 </div>
             </Container>
