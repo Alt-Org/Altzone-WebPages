@@ -1,4 +1,4 @@
-import { Stat } from '../../types/hero';
+import { Stat } from '@/entities/Hero';
 
 export const color = {
     resistance: 'rgb(153,0,255)',
@@ -219,7 +219,7 @@ export const statData: NamedStatArray = {
         {
             name: 'size',
             defaultLevel: 6,
-            rarityClass: 4,
+            rarityClass: 10,
         },
         {
             name: 'impactForce',
