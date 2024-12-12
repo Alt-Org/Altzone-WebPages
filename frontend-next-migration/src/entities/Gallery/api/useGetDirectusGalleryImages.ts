@@ -1,15 +1,9 @@
 import { envHelper } from '@/shared/const/envHelper';
 import { useMemo } from 'react';
-import {
-    useGetGalleryCategoriesQuery,
-    useGetPhotoObjectsQuery,
-    useGetPhotoVersionsQuery,
-    getPhotoVersionTranslation,
-    getCategoryTranslation,
-    Category,
-    PhotoObject,
-    PhotoVersion,
-} from '@/entities/Gallery';
+import { Category, PhotoObject, PhotoVersion } from '../types/gallery';
+import { getPhotoVersionTranslation, getCategoryTranslation } from '../api/translations';
+import { useGetGalleryCategoriesQuery } from '../api/galleryCategoriesApi';
+import { useGetPhotoObjectsQuery, useGetPhotoVersionsQuery } from '../api/galleryApi';
 
 /**
  * Hook to fetch and process gallery images from Directus.

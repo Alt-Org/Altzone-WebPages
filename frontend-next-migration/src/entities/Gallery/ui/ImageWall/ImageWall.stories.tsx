@@ -1,5 +1,6 @@
 import { StoryObj } from '@storybook/react';
-import { mockImagesFull, mockImagesPreview, ImageWall } from '@/entities/Gallery';
+import { ImageWall } from './ImageWall';
+import { mockImagesFull, mockImagesPreview } from '../../model/mockImages';
 
 const meta = {
     title: 'entities/Gallery/ImageWall',

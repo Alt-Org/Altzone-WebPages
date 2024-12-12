@@ -1,4 +1,4 @@
-import { PhotoObject, PhotoVersion } from '@/entities/Gallery';
+import { PhotoObject, PhotoVersion } from '../types/gallery';
 
 /**
  * Filters and transforms photo objects into an array of photo versions based on the specified version type.

@@ -1,7 +1,8 @@
 'use client';
 import cls from './ImageWall.module.scss';
 import Image from 'next/image';
-import { PhotoObject, PhotoVersion, filterAndTransformImages } from '@/entities/Gallery';
+import { PhotoObject, PhotoVersion } from '../../types/gallery';
+import { filterAndTransformImages } from '../../api/filterAndTransformImages';
 import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { Border } from '../Border/Border';
 import { MasonryWrapper } from '@/shared/ui/MasonryWrapper';

@@ -1,4 +1,4 @@
-import { PhotoVersionTranslations, CategoryTranslations } from '@/entities/Gallery';
+import { PhotoVersionTranslations, CategoryTranslations } from '../types/gallery';
 
 export const getLanguageCode = (language: string): string => {
     return language === 'en' ? 'en-US' : language === 'fi' ? 'fi-FI' : 'default';

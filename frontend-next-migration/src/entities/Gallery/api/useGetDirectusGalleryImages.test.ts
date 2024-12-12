@@ -1,12 +1,8 @@
 import { renderHook } from '@testing-library/react';
 import { useGetDirectusGalleryImages } from '../api/useGetDirectusGalleryImages';
-import {
-    useGetPhotoObjectsQuery,
-    useGetPhotoVersionsQuery,
-    useGetGalleryCategoriesQuery,
-    getPhotoVersionTranslation,
-    getCategoryTranslation,
-} from '@/entities/Gallery';
+import { getPhotoVersionTranslation, getCategoryTranslation } from '../api/translations';
+import { useGetGalleryCategoriesQuery } from '../api/galleryCategoriesApi';
+import { useGetPhotoObjectsQuery, useGetPhotoVersionsQuery } from '../api/galleryApi';
 
 jest.mock('@/entities/Gallery', () => ({
     useGetPhotoObjectsQuery: jest.fn(),
