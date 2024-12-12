@@ -6,31 +6,37 @@ import {
     DropDownElementASTextOrLink,
 } from '@/shared/ui/NavMenuWithDropdowns';
 import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
+import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
 
 interface GalleryNavMenuProps {
     // className?: string;
     openByDefault?: boolean;
 }
 
-const categoriesEn: string[] = ['All', 'Nature', 'City', 'People', 'Technology'];
-const categoriesFi: string[] = ['Kaikki', 'Luonto', 'Kaupunki', 'Ihmiset', 'Teknologia'];
-
 const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     const { openByDefault = false } = props;
 
     const params = useParams();
     const lng = params.lng as string;
+    const currentCategory = params.category as string;
+    const language = getLanguageCode(lng);
+    const { categories } = useGetDirectusGalleryImages(language);
 
     const title = lng === 'en' ? 'Categories' : 'Kategoriat';
-    const categories = lng === 'en' ? categoriesEn : categoriesFi;
 
-    const dropdownItems = categories.map((category) => ({
+    const allCategory = {
+        name: lng === 'en' ? 'All' : 'Kaikki',
+    };
+
+    const extendedCategories = [allCategory, ...categories];
+
+    const dropdownItems = extendedCategories.map((category) => ({
         link: {
             isExternal: false,
-            path: getRouteGalleryCategoryPage(category.toLowerCase()),
+            path: getRouteGalleryCategoryPage(category.name.toLowerCase()),
         },
-        elementText: category,
-        active: true, // todo define only for the correct one
+        elementText: category.name,
+        active: category.name.toLowerCase() === currentCategory,
     })) as DropDownElementASTextOrLink[];
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
