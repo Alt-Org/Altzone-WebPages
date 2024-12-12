@@ -1,10 +1,10 @@
 'use client';
-import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { EmbedSocialMediaPosts } from '@/shared/ui/SocialMediaEmbed';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './SectionGallery.module.scss';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 export type SectionGalleryProps = {
     socialMediaLinks: string[];
@@ -56,7 +56,7 @@ export const SectionGallery = (props: SectionGalleryProps) => {
                         size={ButtonSize.XL}
                         ref={ref}
                     >
-                        <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
+                        <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
                     </Button>
                 </div>
             )}

@@ -23,13 +23,9 @@ export type AccessTokenInfoResponse = {
     accessTokenExpiresInSecIn: number;
 };
 
-type AccessTokenInfo = {
-    accessToken: string;
-    accessTokenExpiresAt: number;
-};
+export type { AccessTokenInfo } from '@/shared/types/shared';
 
 export type AuthUserSchema = {
-    profile?: IProfile<IPlayer>;
     accessTokenInfo?: AccessTokenInfo;
     isSessionExpired: boolean;
 };

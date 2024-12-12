@@ -40,7 +40,7 @@
 // js online
     "eqeqeq": ["error", "always"],
     "complexity": ["warn", { "max": 10 }],
-    "max-params": ["error", 4],
+    "max-params": ["error", 5],
     "max-depth": ["error", { "max": 3 }],
     "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
     "no-console": ["error", { "allow": ["warn", "error"] }],

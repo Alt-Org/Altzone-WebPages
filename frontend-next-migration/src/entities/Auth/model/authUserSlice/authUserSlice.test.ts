@@ -1,33 +1,15 @@
 import { PURGE } from 'redux-persist';
 import { AuthUserSchema } from '../../types/authUser';
-import {
-    authUserReducer,
-    authUserActions,
-    selectIsAuthenticated,
-    selectHasClan,
-} from './authUserSlice';
+import { authUserReducer, authUserActions, selectIsAuthenticated } from './authUserSlice';
 
 describe('authUserSlice', () => {
     const initialState: AuthUserSchema = {
         accessTokenInfo: undefined,
-        profile: undefined,
         isSessionExpired: false,
     };
 
     it('should return the initial state when passed an empty action', () => {
         expect(authUserReducer(undefined, { type: '' })).toEqual(initialState);
-    });
-
-    it('should handle setProfile', () => {
-        const profile = { name: 'John Doe', email: 'john@example.com' };
-        // @ts-ignore
-        const action = authUserActions.setProfile(profile);
-        const expectedState = {
-            ...initialState,
-            profile,
-        };
-
-        expect(authUserReducer(initialState, action)).toEqual(expectedState);
     });
 
     it('should handle setAccessTokenInfo', () => {
@@ -55,7 +37,6 @@ describe('authUserSlice', () => {
     it('should handle logout', () => {
         const stateWithProfile = {
             accessTokenInfo: { token: 'abc123' },
-            profile: { name: 'John Doe', email: 'john@example.com' },
             isSessionExpired: false,
         };
         const action = authUserActions.logout();
@@ -71,7 +52,6 @@ describe('authUserSlice', () => {
     it('should handle PURGE action', () => {
         const stateWithProfile = {
             accessTokenInfo: { token: 'abc123' },
-            profile: { name: 'John Doe', email: 'john@example.com' },
             isSessionExpired: false,
         };
         const action = { type: PURGE };
@@ -83,44 +63,73 @@ describe('authUserSlice', () => {
         expect(authUserReducer(stateWithProfile, action)).toEqual(expectedState);
     });
 
-    // Селекторы
-    it('selectIsAuthenticated should return true if profile exists', () => {
+    it('selectIsAuthenticated should return false if accessToken doesnt exist', () => {
         const state = {
-            authUser: { profile: { name: 'John Doe' }, accessTokenInfo: undefined },
-        };
-        // @ts-ignore
-        expect(selectIsAuthenticated(state)).toBe(true);
-    });
-
-    it('selectIsAuthenticated should return true if accessTokenInfo exists', () => {
-        const state = {
-            authUser: { profile: undefined, accessTokenInfo: { token: 'abc123' } },
-        };
-        // @ts-ignore
-        expect(selectIsAuthenticated(state)).toBe(true);
-    });
-
-    it('selectIsAuthenticated should return false if neither profile nor accessTokenInfo exist', () => {
-        const state = {
-            authUser: { profile: undefined, accessTokenInfo: undefined },
+            authUser: { accessTokenInfo: undefined },
         };
         // @ts-ignore
         expect(selectIsAuthenticated(state)).toBe(false);
     });
 
-    it('selectHasClan should return true if the user has a clan', () => {
+    it('selectIsAuthenticated should return true if accessTokenInfo exists', () => {
         const state = {
-            authUser: { profile: { Player: { clan_id: '123' } } },
+            authUser: { accessTokenInfo: { token: 'abc123' } },
         };
         // @ts-ignore
-        expect(selectHasClan(state)).toBe(true);
+        expect(selectIsAuthenticated(state)).toBe(true);
     });
 
-    it('selectHasClan should return false if the user does not have a clan', () => {
-        const state = {
-            authUser: { profile: { Player: { clan_id: undefined } } },
-        };
-        // @ts-ignore
-        expect(selectHasClan(state)).toBe(false);
-    });
+    //Commented code moved to profileSlice.ts since these test are related to profile or use its elements
+
+    // it('should handle setProfile', () => {
+    //     const profile = { name: 'John Doe', email: 'john@example.com' };
+    //     // @ts-ignore
+    //     const action = authUserActions.setProfile(profile);
+    //     const expectedState = {
+    //         ...initialState,
+    //         profile,
+    //     };
+
+    //     expect(authUserReducer(initialState, action)).toEqual(expectedState);
+    // });
+    // Селекторы
+    // it('selectIsAuthenticated should return true if profile exists', () => {
+    //     const state = {
+    //         authUser: { profile: { name: 'John Doe' }, accessTokenInfo: undefined },
+    //     };
+    //     // @ts-ignore
+    //     expect(selectIsAuthenticated(state)).toBe(true);
+    // });
+
+    // it('selectIsAuthenticated should return true if accessTokenInfo exists', () => {
+    //     const state = {
+    //         authUser: { profile: undefined, accessTokenInfo: { token: 'abc123' } },
+    //     };
+    //     // @ts-ignore
+    //     expect(selectIsAuthenticated(state)).toBe(true);
+    // });
+
+    // it('selectIsAuthenticated should return false if neither profile nor accessTokenInfo exist', () => {
+    //     const state = {
+    //         authUser: { profile: undefined, accessTokenInfo: undefined },
+    //     };
+    //     // @ts-ignore
+    //     expect(selectIsAuthenticated(state)).toBe(false);
+    // });
+
+    // it('selectHasClan should return true if the user has a clan', () => {
+    //     const state = {
+    //         authUser: { profile: { Player: { clan_id: '123' } } },
+    //     };
+    //     // @ts-ignore
+    //     expect(selectHasClan(state)).toBe(true);
+    // });
+
+    // it('selectHasClan should return false if the user does not have a clan', () => {
+    //     const state = {
+    //         authUser: { profile: { Player: { clan_id: undefined } } },
+    //     };
+    //     // @ts-ignore
+    //     expect(selectHasClan(state)).toBe(false);
+    // });
 });

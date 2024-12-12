@@ -4,9 +4,10 @@ import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './styles.module.scss';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 export type GalleryCategoriesWithModalSliderProps = {
-    title: string;
+    title?: string;
     followLastImage?: boolean;
     sources: string[];
     cover: { name: string; url: string };
@@ -35,8 +36,9 @@ export const GalleryCategoriesWithModalSlider = memo(
                 <Fancybox>
                     <div className={cls.cover}>
                         <AppLink
-                            data-fancybox={title}
+                            data-fancybox={cover.name}
                             to={cover.url}
+                            className={cls.link}
                         >
                             <Image
                                 loading={'eager'}
@@ -46,7 +48,9 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 className={cls.coverImage}
                                 alt={cover.name}
                             />
-                            <h2 className={cls.title}>{t(`${title}`)}</h2>
+                            {title && <h3 className={cls.title}>{t(`${title}`)}</h3>}
+
+                            <Button theme={ButtonTheme.OUTLINE}>{t('explore')}</Button>
                         </AppLink>
                     </div>
 
@@ -55,7 +59,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                             index !== 0 ? (
                                 <AppLink
                                     key={index}
-                                    data-fancybox={title}
+                                    data-fancybox={cover.name}
                                     to={source}
                                 >
                                     ''

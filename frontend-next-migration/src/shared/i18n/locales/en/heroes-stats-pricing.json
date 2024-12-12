@@ -1,0 +1,11 @@
+{
+"resistance":"resistance",
+"hp":"hp",
+"size":"size",
+"impactForce":"impact force",
+"speed":"speed",
+"stat":"Stat",
+"fromLevel":"From Level",
+"toLevel":"To Level",
+"cost":"Cost"
+}

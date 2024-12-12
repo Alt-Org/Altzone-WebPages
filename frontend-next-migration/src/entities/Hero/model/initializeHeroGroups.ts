@@ -11,6 +11,7 @@ import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-gir
 import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
 import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
+import fatePriestGif from '@/shared/assets/images/heros/fate-priest/fate-priest.gif';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
@@ -148,7 +149,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                 {
                     id: 524234,
                     srcImg: fatePriest,
-                    srcGif: comingSoon,
+                    srcGif: fatePriestGif,
                     alt: t('OBEDIENT.heroes.FatePriest.alt'),
                     altGif: t('OBEDIENT.heroes.FatePriest.altGif'),
                     slug: HeroSlug.FATE_PRIEST,
