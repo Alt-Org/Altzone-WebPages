@@ -21,5 +21,6 @@
   "level": "Leveli",
   "stepsPerLevel": "Askelia/Leveli",
   "stepsPrice": "Askel Hinta",
-  "price": "Hinta"
+  "price": "Hinta",
+  "fatePriestCannotBeDeveloped": "Tapauskovaista ei voi kehittää."
 }

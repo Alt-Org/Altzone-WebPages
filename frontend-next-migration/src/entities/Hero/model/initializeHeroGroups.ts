@@ -20,7 +20,7 @@ import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
-import { statData } from '@/entities/Hero/model/stats/statsDataV2';
+import { statData } from '@/entities/Hero';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
     return {

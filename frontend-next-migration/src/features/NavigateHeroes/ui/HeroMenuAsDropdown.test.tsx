@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useClientTranslation } from '@/shared/i18n';
 import { HeroSlug } from '@/entities/Hero';
-import HeroMenuAsDropdown from '@/features/NavigateHeroes/ui/HeroMenuAsDropdown';
+import HeroMenuAsDropdown from './HeroMenuAsDropdown';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),

@@ -1,10 +1,8 @@
 import React, { useCallback, useMemo, Dispatch, SetStateAction } from 'react';
-import { Stat } from '../../types/hero';
 import { useClientTranslation } from '@/shared/i18n';
-import { statsPricingData } from '../../model/stats/statsPricingData';
+import { statsPricingData, Stat, statValue } from '@/entities/Hero';
 import { AttributePricingHelper } from '../../model/stats/AttributesPricingHelper';
 import cls from './AttributesPricing.module.scss';
-import { statValue } from '@/entities/Hero/model/stats/statsDataV2';
 
 export type AttributesPricingProps = {
     selectedStat: Stat;

@@ -1,26 +1,32 @@
 'use client';
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useState, SetStateAction } from 'react';
 import Image from 'next/image';
 import cls from './HeroDevelopmentPage.module.scss';
-import { HeroManager, AttributesPie } from '@/entities/Hero';
-import { HeroWithGroup, HeroSlug, Stat } from '@/entities/Hero/types/hero';
-import { BarChart } from '@/entities/Hero/ui/BarChart/BarChart';
-import { color, rarityClassNames } from '@/entities/Hero/model/stats/statsDataV2';
-import { statsPricingData } from '@/entities/Hero/model/stats/statsPricingData';
+import {
+    AttributesPie,
+    AttributesPricing3,
+    BarChart,
+    HeroManager,
+    HeroSlug,
+    Hero,
+    Stat,
+    rarityClassNames,
+    color,
+    statsPricingData,
+} from '@/entities/Hero';
 import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { AttributesPricing3 } from '@/entities/Hero/ui/AttributesPricing3/AttributesPricingV3';
-import HeroMenuAsDropdown from '@/features/NavigateHeroes/ui/HeroMenuAsDropdown';
+import { HeroMenu, HeroMenuAsDropdown } from '@/features/NavigateHeroes';
+import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 
 export interface Props {
     title: string;
 }
 
 const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
-    const [hero, setHero] = useState<HeroWithGroup>();
     const [key, setKey] = useState(Math.random());
-    const [stat, setStat] = useState<Stat>({ name: 'hp', defaultLevel: 1, rarityClass: 1 });
+    const [stat, setStat] = useState<Stat>({ name: 'resistance', defaultLevel: 1, rarityClass: 1 });
     const [toLevel, setToLevel] = useState<number>(0);
     const [fromLevel, setFromLevel] = useState<number>(0);
     const [upgradePotential, setUpgradePotential] = useState<number>(10);
@@ -28,18 +34,20 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
     const { t } = useClientTranslation('heroes-stats-pricing');
     const heroManager = new HeroManager(translation.t);
 
+    const initializeHeroColors = useCallback((hero: Hero) => {
+        const heroToColors = hero || heroManager.getAllHeroes()[0];
+        heroToColors.stats.forEach((stat) => {
+            stat.color = color[stat.name];
+        });
+        return heroToColors;
+    }, []);
+
+    const [hero, setHero] = useState<Hero>(initializeHeroColors(heroManager.getAllHeroes()[0]));
+
     const onClickHero = useCallback(
         (heroSlug: HeroSlug) => {
-            const hero = heroManager.getHeroBySlug(heroSlug);
-            if (hero) {
-                hero.stats.forEach((stat) => {
-                    stat.color = color[stat.name];
-                });
-                setStat(hero.stats[0]);
-                setFromLevel(hero.stats[0].defaultLevel + (hero.stats[0].developmentLevel || 0));
-                setToLevel(hero.stats[0].defaultLevel + (hero.stats[0].developmentLevel || 0));
-                setHero(hero);
-            }
+            const hero = heroManager.getHeroBySlug(heroSlug) || heroManager.getAllHeroes()[0];
+            setHero(initializeHeroColors(hero) as SetStateAction<Hero>);
             setKey(Math.random());
         },
         [hero],
@@ -151,32 +159,49 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
                     </table>
                 </>
             );
-        else return <div />;
+        else
+            return hero ? (
+                <div className={cls.FatePriest}>{t('fatePriestCannotBeDeveloped')}</div>
+            ) : (
+                <div />
+            );
     };
     if (!statsPricingData) {
         return <h2>{t('Stat pricing data is unavailable')}</h2>;
     }
     return (
-        <main className={classNames(cls.main, combinedModCss)}>
-            <h1 style={{ textAlign: 'center' }}>{title}</h1>
-            <div className={classNames(cls.HeroAndChart, combinedModCss)}>
-                <div className={classNames(cls.Hero, combinedModCss)}>
-                    <div className={cls.dropdown}>
-                        <HeroMenuAsDropdown
-                            key={key}
-                            onClickCallback={onClickHero}
-                        />
-                        {hero && (
-                            <Image
-                                className={classNames(cls.Image, combinedModCss)}
-                                src={hero?.srcImg}
-                                alt="kuva"
+        <LayoutWithSidebars
+            leftTopSidebar={{
+                component: (
+                    <div style={{ width: 'fit-content' }}>
+                        {isDesktopSize || isWidescreenSize ? (
+                            <HeroMenu
+                                onClickCallback={onClickHero}
+                                selectedHero={hero.slug}
+                            />
+                        ) : (
+                            <HeroMenuAsDropdown
+                                className={classNames(cls.dropdown, combinedModCss)}
+                                key={key}
+                                onClickCallback={onClickHero}
                             />
                         )}
                     </div>
-                    {hero && <h1 className={cls.Title}>{hero.title}</h1>}
+                ),
+            }}
+        >
+            <div className={classNames(cls.Header, combinedModCss)}>{title}</div>
+            <div className={classNames(cls.HeroAndChart, combinedModCss)}>
+                <div className={classNames(cls.Hero, combinedModCss)}>
+                    {hero && (
+                        <Image
+                            className={classNames(cls.Image, combinedModCss)}
+                            src={hero?.srcImg}
+                            alt="kuva"
+                        />
+                    )}
+                    <div>{hero && <h1 className={cls.Title}>{hero.title}</h1>}</div>
                 </div>
-
                 {hero && (
                     <div className={classNames(cls.BarChartBlock, combinedModCss)}>
                         <BarChart stats={hero?.stats} />
@@ -184,7 +209,7 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
                 )}
             </div>
             {getDevelopment()}
-        </main>
+        </LayoutWithSidebars>
     );
 };
 

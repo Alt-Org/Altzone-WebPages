@@ -21,6 +21,6 @@
   "level": "Level",
   "stepsPerLevel": "Steps/Level",
   "stepsPrice": "Step Price",
-  "price": "Price"
-
+  "price": "Price",
+  "fatePriestCannotBeDeveloped": "Fate-priest cannot be developed."
 }

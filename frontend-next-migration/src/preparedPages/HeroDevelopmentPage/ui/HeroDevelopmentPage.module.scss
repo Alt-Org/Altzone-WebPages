@@ -1,5 +1,12 @@
 .dropdown {
-
+  border: 2px solid var(--inverted-secondary-color);
+  border-radius: 1em;
+  &.isTablet {
+    width: 500px;
+  }
+  &.isMobile {
+    width: 300px;
+  }
 }
 .main {
   background-color: rgba(0,0,0,.5);
@@ -38,7 +45,18 @@
     width:100%;
   }
 }
+.Header {
+  font-size: 3em;
+  font-weight: bolder;
+  &.isWidescreen,&.isDesktop {
+    text-align: left;
+  }
+  &.isTablet,&.isMobile {
+    text-align: center;
+  }
+}
 .Hero {
+  margin-top: 2em;
   &.isDesktop,&.isTablet,&.isWidescreen {
     display: inline-block;
     width: 40%;
@@ -103,7 +121,7 @@
   padding: 1em;
 }
 .FatGreen {
-  color:var(--inverted-primary-color);
+  color:var(--secondary-color);
   font-weight: 900;
 }
 .InfoTable {
@@ -143,4 +161,11 @@
 .Pie{
   margin-right: auto;
   margin-left: auto;
+}
+.FatePriest {
+  color:var(--inverted-primary-color);
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 2em;
 }
