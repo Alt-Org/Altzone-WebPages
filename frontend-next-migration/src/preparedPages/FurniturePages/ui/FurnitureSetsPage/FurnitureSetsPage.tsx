@@ -1,5 +1,5 @@
 'use client';
-import { FurnitureManager, SetCard, SetInfo } from '@/entities/Furniture';
+import { FurnitureManager, SetCard } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
@@ -20,7 +20,7 @@ const FurnitureSetsPage = () => {
                 />
                 <h1>{t('furnituresets-title')}</h1>
                 <div className={cls.CardsContainer}>
-                    {manager.getAllFurnitureSets().map((set: SetInfo) => {
+                    {manager.getAllFurnitureSets().map((set) => {
                         return (
                             <SetCard
                                 set={set}
