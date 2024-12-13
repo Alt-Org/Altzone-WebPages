@@ -1,20 +1,13 @@
 'use client';
+import { useState } from 'react';
+import { FurnitureManager, types, PieceCard, Piece } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
-import cls from './FurnitureCategoryPage.module.scss';
-import {
-    FurnitureManager,
-    SetCard,
-    FurnitureFilters,
-    types,
-    PieceCard,
-} from '@/entities/Furniture';
 import { useClientTranslation } from '@/shared/i18n';
-import { useRef, useState } from 'react';
 import { Button } from '@/shared/ui/Button';
-import { Piece, PieceType } from '@/entities/Furniture/types/furniture';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
+import cls from './FurnitureCategoryPage.module.scss';
 
 const FurnitureCategoryPage = () => {
     const { t } = useClientTranslation('furniturecategory');
