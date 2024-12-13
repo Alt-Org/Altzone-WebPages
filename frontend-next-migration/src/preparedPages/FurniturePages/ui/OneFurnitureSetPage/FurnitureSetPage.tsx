@@ -1,14 +1,13 @@
 'use client';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { FurnitureManager, PieceCard } from '@/entities/Furniture';
-import { useClientTranslation } from '@/shared/i18n';
-import cls from './FurnitureSetPage.module.scss';
-import { Container } from '@/shared/ui/Container';
 import Image from 'next/image';
-import { Piece } from '@/entities/Furniture/types/furniture';
+import { useParams, useRouter } from 'next/navigation';
+import { FurnitureManager, PieceCard, Piece } from '@/entities/Furniture';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useClientTranslation } from '@/shared/i18n';
+import { Container } from '@/shared/ui/Container';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
-import { useParams, useRouter } from 'next/navigation';
+import cls from './FurnitureSetPage.module.scss';
 
 const OneSetPage = () => {
     const { id } = useParams();
