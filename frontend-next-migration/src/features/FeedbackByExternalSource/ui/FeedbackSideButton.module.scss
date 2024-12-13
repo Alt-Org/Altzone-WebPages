@@ -1,28 +1,22 @@
-.SideButton{
-  //width: fit-content;
+.SideButton {
+    //width: fit-content;
 
+    height: fit-content;
+    min-height: 100px;
+    position: fixed;
+    bottom: 50%;
 
-  height: fit-content;
-  min-height: 100px;
-  position: fixed;
-  bottom: 50%;
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
 
+    right: 10px;
+    background-color: var(--inverted-bg-color) !important;
+    z-index: var(--sideButton-z-index) !important;
+    font-family: var(--font-family-texts) !important;
+    line-height: 1 !important;
+    transform: rotate(180deg);
+    padding: 12px !important;
 
-  -webkit-writing-mode: vertical-lr;
-  writing-mode: vertical-lr;
-
-
-
-  right: 10px;
-  background-color: var(--inverted-bg-color)!important;
-  z-index: var(--sideButton-z-index) !important;
-  font-family: var(--font-family-texts) !important;
-  line-height: 1 !important;
-  transform: rotate(180deg);
-  padding: 12px !important;
-
-
+    border: 4px solid #ffa100;
+    color: #ffa100;
 }
-
-
-
