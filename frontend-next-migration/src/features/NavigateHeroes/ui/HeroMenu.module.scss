@@ -4,24 +4,41 @@
   top: 45%;
   color: var(--inverted-primary-color);
   font-weight :bolder;
-  font-size:1.5em;
+  font-size:1em;
   right: 0;
   cursor: pointer;
 }
 .Text {
+  padding: 1em;
+  overflow:hidden;
   white-space: nowrap;
+  opacity: 100%;
   font-weight: bold;
+  border: 2px solid var(--inverted-secondary-color);
+  border-radius: 1em;
+  transition: opacity 0.3s ease-out;
+  &.Hidden {
+    opacity:0;
+  }
 }
 .Hero {
   padding-left: 1em;
   cursor: pointer;
+  &.Hidden {
+    cursor: default;
+  }
 }
 .Box {
-  padding: .5em;
+
+
+  width: 100%;
   position: relative;
-  border: 2px solid var(--inverted-secondary-color);
-  border-radius: 1em;
+
   background: black;
+  transition: width 0.3s ease-out;
+  &.Hidden {
+    width:0;
+  }
 }
 .Group {
   color:var(--inverted-primary-color)
