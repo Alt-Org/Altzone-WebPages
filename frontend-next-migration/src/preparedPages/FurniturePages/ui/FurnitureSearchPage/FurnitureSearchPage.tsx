@@ -1,13 +1,12 @@
 'use client';
+import { Ref, useRef, useState } from 'react';
+import { FurnitureManager, PieceCard, Piece } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
-import cls from './FurnitureSearchPage.module.scss';
-import { FurnitureManager, SetCard, FurnitureFilters, PieceCard } from '@/entities/Furniture';
 import { useClientTranslation } from '@/shared/i18n';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
-import { FormEvent, Ref, useRef, useState } from 'react';
-import { Piece } from '@/entities/Furniture/types/furniture';
+import cls from './FurnitureSearchPage.module.scss';
 
 const FurnitureSearchPage = () => {
     const { t } = useClientTranslation('furnituresearch');
