@@ -18,27 +18,18 @@ const FurnitureCategoryPage = () => {
     const list = useMemo(() => manager.getPiecesByCategory(category), [manager, category]);
     const categories = useMemo(() => Object.entries(types), []);
 
-    const getCategoryButtonClass = useCallback(
-        (value: PieceType) =>
-            classNames('', {
-                [cls.Enabled]: value === category,
-                [cls.Disabled]: value !== category,
-            }),
-        [category],
-    );
-
     const renderCategoryButtons = useCallback(
         () =>
-            categories.map(([category, value]) => (
+            categories.map(([cat, value]) => (
                 <Button
-                    key={category}
-                    className={getCategoryButtonClass(value)}
+                    key={cat}
+                    className={classNames(cls.categoryButton, { [cls.active]: value === category })}
                     onClick={() => setCategory(value)}
                 >
-                    {t(category)}
+                    {t(cat)}
                 </Button>
             )),
-        [categories, getCategoryButtonClass, t],
+        [categories, t, category],
     );
 
     const renderPieceCards = useCallback(

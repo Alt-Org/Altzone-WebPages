@@ -50,23 +50,20 @@
         font-weight: 400;
     }
 
-    font-family: var(--font-family-main);
+    font-family: var(--font-family-main), serif;
     padding-bottom: 10px;
     text-align: center;
 }
 
-.Enabled,
-.Disabled {
+
+.categoryButton{
     border-radius: 4px;
     background-color: black;
-}
-
-.Enabled {
-    border: 2px solid var(--secondary-color);
-    color: var(--secondary-color);
-
-}
-
-.Disabled {
     border: 2px solid black;
+
+
+     &.active{
+     border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+}
 }
