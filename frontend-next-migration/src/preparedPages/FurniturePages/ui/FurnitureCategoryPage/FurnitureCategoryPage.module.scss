@@ -62,7 +62,9 @@
 }
 
 .Enabled {
-    border: 2px solid white;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+
 }
 
 .Disabled {
