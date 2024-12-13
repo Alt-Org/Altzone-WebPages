@@ -1,6 +1,6 @@
+import { TFunction } from 'i18next';
 import { FurnitureSet, SetInfo, Piece, PieceType } from '../types/furniture';
 import { initializeFurnitureSets } from './initializeFurniture';
-import { TFunction } from 'i18next';
 
 const enums: Record<string, FurnitureSet> = {
     neuro: FurnitureSet.NEURO,
@@ -20,49 +20,47 @@ export class FurnitureManager {
     }
 
     /**
-     *
-     * @returns {Array<SetInfo>} Returns an array of all sets
-     */
-    public getAllFurnitureSets(): Array<SetInfo> {
-        return Object.entries(this.furnitureSets).map((set) => {
-            return {
-                ...this.getFurnitureSet(set[1].id),
-            };
-        });
-    }
-    /**
      * Also sorts the items in ascending order by rarity.
      *
      * @param {string} id The id of the furniture set
      * @throws {Error} Throws an error if the set does not exist
      * @returns {SetInfo} Returns a single set
      */
-    public getFurnitureSet(id: string): SetInfo {
+    public getFurnitureSet(id: string): SetInfo | null {
         if (!enums[id]) {
-            throw new Error('no set exists for id ' + String(id));
+            console.warn(`No set exists for id ${id}`);
+            return null;
         }
+
         const set = this.furnitureSets[enums[id]];
 
         const ordered: Array<Array<Piece>> = [[], [], [], [], []];
 
-        set.items.map((item: Piece) => {
+        set.items.forEach((item: Piece) => {
             ordered[item.rarity.index].push(item);
-            return true;
         });
 
         set.items = [];
-        ordered.map((order: Array<Piece>) => {
-            order.map((item: Piece) => {
+        ordered.forEach((order: Array<Piece>) => {
+            order.forEach((item: Piece) => {
                 set.items.push({
                     ...item,
                     set: set,
                 });
-                return true;
             });
-            return true;
         });
 
         return set;
+    }
+
+    /**
+     *
+     * @returns {Array<SetInfo>} Returns an array of all sets
+     */
+    public getAllFurnitureSets(): Array<SetInfo> {
+        return Object.entries(this.furnitureSets)
+            .map(([_, value]) => this.getFurnitureSet(value.id))
+            .filter((set): set is SetInfo => set !== null);
     }
     /**
      * import Types from initializeFurniture and use those as category id

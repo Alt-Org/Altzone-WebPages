@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { FurnitureManager, PieceCard, Piece } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
@@ -9,24 +9,24 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './FurnitureSetPage.module.scss';
 
+const NotFound = () => {
+    return (
+        <Container>
+            <h1>Set not found</h1>
+            <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- Back to all sets</AppLink>
+        </Container>
+    );
+};
+
 const OneSetPage = () => {
     const { id } = useParams();
-    const router = useRouter();
-
     const { t } = useClientTranslation('furnitureinfo');
 
     const manager = new FurnitureManager();
-
-    let set;
-    try {
-        set = manager.getFurnitureSet(id as string);
-    } catch (err) {
-        set = undefined;
-    }
+    const set = manager.getFurnitureSet(id as string);
 
     if (!set) {
-        router.push('/furniture/set');
-        return;
+        return <NotFound />;
     }
 
     const { path, cover, author, items } = set;
@@ -37,7 +37,7 @@ const OneSetPage = () => {
                 <div className={cls.Cover}>
                     <Image
                         src={cover}
-                        alt={'cover'}
+                        alt={t(`${path}.name`)}
                     />
                 </div>
                 <div className={cls.Back}>
@@ -46,14 +46,12 @@ const OneSetPage = () => {
                 <h1>{t(`${path}.name`)}</h1>
                 <h3>{author}</h3>
                 <div className={cls.CardsContainer}>
-                    {items.map((item: Piece) => {
-                        return (
-                            <PieceCard
-                                item={item}
-                                key={item.path}
-                            />
-                        );
-                    })}
+                    {items.map((item: Piece) => (
+                        <PieceCard
+                            item={item}
+                            key={item.path}
+                        />
+                    ))}
                 </div>
             </Container>
         </div>
