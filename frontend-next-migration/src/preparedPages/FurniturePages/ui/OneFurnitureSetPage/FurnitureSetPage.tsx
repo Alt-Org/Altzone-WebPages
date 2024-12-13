@@ -5,7 +5,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import cls from './FurnitureSetPage.module.scss';
 import { Container } from '@/shared/ui/Container';
 import Image from 'next/image';
-import { Piece } from '@/entities/Furniture/types/set';
+import { Piece } from '@/entities/Furniture/types/furniture';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import { useParams, useRouter } from 'next/navigation';

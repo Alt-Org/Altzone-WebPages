@@ -1,5 +1,5 @@
 import { useServerTranslation } from '@/shared/i18n';
-import { SetInfo } from '../types/set';
+import { SetInfo } from '../types/furniture';
 import { FurnitureManager } from './FurnitureManager';
 import { types } from './initializeFurniture';
 

@@ -7,7 +7,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import { FormEvent, Ref, useRef, useState } from 'react';
-import { Piece } from '@/entities/Furniture/types/set';
+import { Piece } from '@/entities/Furniture/types/furniture';
 
 const FurnitureSearchPage = () => {
     const { t } = useClientTranslation('furnituresearch');

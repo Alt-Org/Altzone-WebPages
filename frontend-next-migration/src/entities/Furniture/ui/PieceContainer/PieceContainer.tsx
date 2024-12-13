@@ -4,7 +4,7 @@ import { RefObject, useRef } from 'react';
 import Image from 'next/image';
 import PieceView from '../PieceView/PieceView';
 import { useClientTranslation } from '@/shared/i18n';
-import { Piece } from '../../types/set';
+import { Piece } from '../../types/furniture';
 
 type Props = {
     noView?: boolean;

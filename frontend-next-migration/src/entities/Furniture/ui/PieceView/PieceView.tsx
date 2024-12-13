@@ -1,6 +1,6 @@
 'use client';
 import { ForwardedRef, forwardRef } from 'react';
-import { MaterialType, Piece, SetInfo } from '../../types/set';
+import { MaterialType, Piece, SetInfo } from '../../types/furniture';
 import cls from './PieceView.module.scss';
 import { PieceCard } from '../PieceContainer/PieceContainer';
 import { useClientTranslation } from '@/shared/i18n';

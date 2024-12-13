@@ -54,7 +54,7 @@ import {
     MaterialType,
     Recycles,
     RecycleType,
-} from '../types/set';
+} from '../types/furniture';
 
 export const rarityList: Record<Rarities, PieceRarity> = {
     [Rarities.COMMON]: {

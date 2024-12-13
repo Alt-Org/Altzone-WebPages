@@ -12,7 +12,7 @@ import {
 import { useClientTranslation } from '@/shared/i18n';
 import { useRef, useState } from 'react';
 import { Button } from '@/shared/ui/Button';
-import { Piece, PieceType } from '@/entities/Furniture/types/set';
+import { Piece, PieceType } from '@/entities/Furniture/types/furniture';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 

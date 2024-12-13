@@ -4,7 +4,7 @@ import { Container } from '@/shared/ui/Container';
 import cls from './FurnitureSetsPage.module.scss';
 import { FurnitureManager, SetCard, FurnitureFilters } from '@/entities/Furniture';
 import { useClientTranslation } from '@/shared/i18n';
-import { SetInfo } from '@/entities/Furniture/types/set';
+import { SetInfo } from '@/entities/Furniture/types/furniture';
 
 const FurnitureSetsPage = () => {
     const { t } = useClientTranslation('furniture');

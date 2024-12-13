@@ -1,4 +1,4 @@
-import { FurnitureSet, SetInfo, Piece, PieceType } from '../types/set';
+import { FurnitureSet, SetInfo, Piece, PieceType } from '../types/furniture';
 import { initializeFurnitureSets } from './initializeFurniture';
 import { TFunction } from 'i18next';
 

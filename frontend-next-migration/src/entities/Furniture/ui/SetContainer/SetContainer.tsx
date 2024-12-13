@@ -4,7 +4,7 @@ import { getRouteOneFurnitureSetPage } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './SetContainer.module.scss';
-import { SetInfo } from '../../types/set';
+import { SetInfo } from '../../types/furniture';
 
 type Props = {
     set: SetInfo;
