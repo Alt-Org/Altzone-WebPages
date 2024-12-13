@@ -1,10 +1,9 @@
 'use client';
+import { FurnitureManager, SetCard, FurnitureFilters, SetInfo } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
-import cls from './FurnitureSetsPage.module.scss';
-import { FurnitureManager, SetCard, FurnitureFilters } from '@/entities/Furniture';
 import { useClientTranslation } from '@/shared/i18n';
-import { SetInfo } from '@/entities/Furniture/types/furniture';
+import cls from './FurnitureSetsPage.module.scss';
 
 const FurnitureSetsPage = () => {
     const { t } = useClientTranslation('furniture');
