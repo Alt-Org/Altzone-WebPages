@@ -1,0 +1,54 @@
+.SetPage {
+    margin-top: 30px;
+}
+
+.Container {
+    background-color: var(--transparent-bg-dark);
+    border-radius: var(--border-radius-custom);
+
+    h1 {
+        font-size: clamp(40px, 7vw, 50px);
+        line-height: 1.5;
+        font-weight: 600;
+    }
+    h3 {
+        font-size: clamp(20px, 5vw, 30px);
+        line-height: 1.25;
+        font-weight: 400;
+    }
+
+    font-family: var(--font-family-main);
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.Back {
+    text-align: left;
+    margin-left: 8px;
+}
+.Cover {
+    padding: 8px;
+    width: 100%;
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 1;
+    }
+}
+.CardsContainer {
+    display: grid;
+    padding: 8px;
+    grid-template-columns: 25% 25% 25% 25%;
+
+    @media (max-width: 1190px) {
+        grid-template-columns: 33.333% 33.333%;
+    }
+    @media (max-width: 1000px) {
+        grid-template-columns: 50% 50%;
+    }
+    @media (max-width: 768px) {
+        grid-template-columns: 100%;
+    }
+}

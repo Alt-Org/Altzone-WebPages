@@ -1,0 +1,85 @@
+.Card,.StaticCard {
+    height: auto;
+    aspect-ratio: 1 / 1.5;
+    margin: 8px;
+    --hoverOffset: 8px;
+    position: relative;
+}
+
+.Content {
+    transition: 100ms ease-in-out;
+    border-radius: 32px;
+    width: calc(100% - var(--hoverOffset));
+    height: calc(100% - var(--hoverOffset));
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    position: absolute;
+
+    .Title {
+        position: absolute;
+        top: 16px;
+        width: 100%;
+        color: white;
+        text-shadow: 2px 2px black;
+        z-index: 3;
+        font-size: 2em;
+    }
+
+    .Id {
+        position: absolute;
+        bottom: 6px;
+        right: 24px;
+        text-align: left;
+        color: white;
+        text-shadow: 2px 2px 0px black;
+    }
+
+    .Cover {
+        position: absolute;
+        z-index: 2;
+        top: calc(50% + var(--coverVerticalOffset));
+        left: calc(50% + var(--coverHorizontalOffset));
+        width: calc(100% + var(--coverWidthOffset));
+        max-width: none;
+        max-height: 100%;
+        translate: -50% -50%;
+    }
+
+    // cover positions to account for different image sizes
+    .Full {
+        --coverWidthOffset: -23%;
+        --coverHorizontalOffset: 0px;
+        --coverVerticalOffset: 0.7%;
+    }
+    .Medium {
+        --coverWidthOffset: 0%;
+        --coverHorizontalOffset: 0px;
+        --coverVerticalOffset: 0px;
+    }
+    .Small {
+        --coverWidthOffset: 15%;
+        --coverHorizontalOffset: -0.5%;
+        --coverVerticalOffset: 0.8%;
+    }
+}
+
+.Card:hover {
+    --hoverOffset: -8px;
+}
+
+.ViewContainer {
+    display: block;
+}
+
+.Container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #00000000;
+    border: none;
+}
+
+.Container:hover {
+    cursor: pointer;
+}

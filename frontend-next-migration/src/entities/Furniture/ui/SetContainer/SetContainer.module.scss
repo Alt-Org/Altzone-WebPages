@@ -1,0 +1,26 @@
+.Container {
+    
+}
+.Card {
+    padding: 8px;
+
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 4px;
+
+    transition: 100ms ease-in-out;
+
+    img {
+        border-radius: 4px;
+        border: 2px solid black;
+    }
+}
+.Card:hover {
+    padding: 2px;
+
+}
+
+.Cover {
+    
+}
