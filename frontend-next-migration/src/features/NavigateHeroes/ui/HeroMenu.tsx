@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import cls from './HeroMenu.module.scss';
 import { HeroManager, HeroSlug, Hero } from '@/entities/Hero';
 import { useClientTranslation } from '@/shared/i18n';
@@ -9,19 +9,26 @@ interface HeroMenuProps {
     className?: string;
     onClickCallback: (heroSlug: HeroSlug) => void;
     selectedHero: HeroSlug;
+    sidebarVisible: boolean;
+    setSidebarVisible: (visible: boolean) => void;
 }
 
-const HeroMenu: React.FC<HeroMenuProps> = ({ className, onClickCallback, selectedHero }) => {
-    const [visible, setVisible] = useState<boolean>(true);
+const HeroMenu: React.FC<HeroMenuProps> = ({
+    sidebarVisible,
+    setSidebarVisible,
+    className,
+    onClickCallback,
+    selectedHero,
+}) => {
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
     const allHeroGroups = heroManager.getGroupsWithHeroesAsArray();
 
     const mods: Mods = {
-        [cls.Hidden]: !visible,
+        [cls.Hidden]: !sidebarVisible,
     };
     const getHero = (hero: Hero, index: number) => {
-        if (visible) {
+        if (sidebarVisible) {
             return selectedHero === hero.slug ? (
                 <div
                     onClick={() => onClickCallback(hero.slug)}
@@ -77,17 +84,17 @@ const HeroMenu: React.FC<HeroMenuProps> = ({ className, onClickCallback, selecte
 
     return (
         <div className={classNames(cls.Box, mods)}>
-            {visible ? (
+            {sidebarVisible ? (
                 <div
                     className={cls.Arrow}
-                    onClick={() => setVisible(false)}
+                    onClick={() => setSidebarVisible(false)}
                 >
                     {'<'}
                 </div>
             ) : (
                 <div
                     className={cls.Arrow}
-                    onClick={() => setVisible(true)}
+                    onClick={() => setSidebarVisible(true)}
                 >
                     {'>'}
                 </div>

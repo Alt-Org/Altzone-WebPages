@@ -26,6 +26,7 @@ export interface Props {
 
 const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
     const [key, setKey] = useState(Math.random());
+    const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
     const [stat, setStat] = useState<Stat>({ name: 'resistance', defaultLevel: 1, rarityClass: 1 });
     const [toLevel, setToLevel] = useState<number>(0);
     const [fromLevel, setFromLevel] = useState<number>(0);
@@ -172,12 +173,15 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
+                collapsed: !sidebarVisible,
                 component: (
                     <div style={{ width: 'fit-content' }}>
                         {isDesktopSize || isWidescreenSize ? (
                             <HeroMenu
                                 onClickCallback={onClickHero}
                                 selectedHero={hero.slug}
+                                sidebarVisible={sidebarVisible}
+                                setSidebarVisible={setSidebarVisible}
                             />
                         ) : (
                             <HeroMenuAsDropdown
