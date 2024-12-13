@@ -1,10 +1,20 @@
-.Card, .StaticCard {
+.Card,.StaticCard {
     height: auto;
     aspect-ratio: 1 / 1.5;
     margin: 8px;
+    --hoverOffset: 8px;
     position: relative;
+}
+
+.Content {
     transition: 100ms ease-in-out;
     border-radius: 32px;
+    width: calc(100% - var(--hoverOffset));
+    height: calc(100% - var(--hoverOffset));
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    position: absolute;
 
     .Title {
         position: absolute;
@@ -23,10 +33,6 @@
         text-align: left;
         color: white;
         text-shadow: 2px 2px 0px black;
-    }
-
-    .Background {
-        background: linear-gradient(90deg, 0% red, 100% blue);
     }
 
     .Cover {
@@ -59,7 +65,7 @@
 }
 
 .Card:hover {
-    margin: 0px;
+    --hoverOffset: -8px;
 }
 
 .ViewContainer {

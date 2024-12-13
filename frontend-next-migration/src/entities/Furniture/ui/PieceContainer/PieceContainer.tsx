@@ -56,24 +56,26 @@ export const PieceCard = (props: Props) => {
                     />
                 </div>
             )}
-            <div
-                className={card}
-                style={{
-                    background: `linear-gradient(180deg, ${lightcolor} 0%, ${color} 10%, ${color} 40%, ${darkcolor} 50%, ${darkcolor} 100%)`,
-                }}
-            >
-                <button
-                    className={cls.Container}
-                    onClick={click}
+            <div className={card}>
+                <div
+                    className={cls.Content}
+                    style={{
+                        background: `linear-gradient(180deg, ${lightcolor} 0%, ${color} 10%, ${color} 40%, ${darkcolor} 50%, ${darkcolor} 100%)`,
+                    }}
                 >
-                    <Image
-                        className={`${cls.Cover} ${cls[coverposition]}`}
-                        src={cover}
-                        alt={'cover'}
-                    />
-                    <p className={cls.Title}>{t(`${setpath}.ITEMS.${path}.name`)}</p>
-                    <p className={cls.Id}>{num}</p>
-                </button>
+                    <button
+                        className={cls.Container}
+                        onClick={click}
+                    >
+                        <Image
+                            className={`${cls.Cover} ${cls[coverposition]}`}
+                            src={cover}
+                            alt={'cover'}
+                        />
+                        <p className={cls.Title}>{t(`${setpath}.ITEMS.${path}.name`)}</p>
+                        <p className={cls.Id}>{num}</p>
+                    </button>
+                </div>
             </div>
         </div>
     );

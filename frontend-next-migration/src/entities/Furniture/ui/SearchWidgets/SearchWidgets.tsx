@@ -11,7 +11,7 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 type Props = {};
 
 export const FurnitureFilters = (props: Props) => {
-    const { t } = useClientTranslation('widgets');
+    const { t } = useClientTranslation('furniture');
 
     return (
         <div className={cls.Container}>
