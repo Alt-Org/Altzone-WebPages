@@ -29,13 +29,13 @@ const FurnitureCategoryPage = () => {
 
     const renderCategoryButtons = useCallback(
         () =>
-            categories.map(([id, value]) => (
+            categories.map(([category, value]) => (
                 <Button
-                    key={id}
+                    key={category}
                     className={getCategoryButtonClass(value)}
                     onClick={() => setCategory(value)}
                 >
-                    {t(id)}
+                    {t(category)}
                 </Button>
             )),
         [categories, getCategoryButtonClass, t],
