@@ -60,8 +60,9 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
             {leftTopSidebar && (
                 <aside
                     style={{
-                        minWidth: collapsed ? '0' : '220px',
-                        flexBasis: collapsed ? '0%' : '20%',
+                        minWidth: collapsed ? '1em' : '220px',
+                        flexBasis: collapsed ? '1em' : '20%',
+                        overflowX: collapsed ? 'hidden' : 'auto',
                         top: !isTopIndentCustom ? '50px' : undefined,
                     }}
                     className={classNames(cls.sidebar, leftTopSidebarMods, [cls.leftTopSidebar])}
