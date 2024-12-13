@@ -25,7 +25,6 @@ const FurnitureSearchPage = () => {
         setinput(el.value);
     };
 
-    let i = 0;
     const list = manager.getPiecesByKeyword(input, useClientTranslation('furnitureinfo').t);
     return (
         <div className={classNames(cls.Page)}>
@@ -42,12 +41,11 @@ const FurnitureSearchPage = () => {
                     <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
                 </div>
                 <div className={cls.CardsContainer}>
-                    {list.map((item: Piece) => {
-                        i++;
+                    {list.map((item: Piece, index) => {
                         return (
                             <PieceCard
                                 item={item}
-                                key={i}
+                                key={index}
                             />
                         );
                     })}

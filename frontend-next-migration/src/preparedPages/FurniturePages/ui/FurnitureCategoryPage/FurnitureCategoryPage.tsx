@@ -34,10 +34,10 @@ const FurnitureCategoryPage = () => {
 
     const renderPieceCards = useCallback(
         () =>
-            list.map((item) => (
+            list.map((item, index) => (
                 <PieceCard
                     item={item}
-                    key={item.path}
+                    key={index}
                 />
             )),
         [list],
