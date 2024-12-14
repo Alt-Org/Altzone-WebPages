@@ -64,10 +64,7 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
             />
             <div className={cls.Container}>
                 <div className={cls.Content}>
-                    <PieceCard
-                        noView={true}
-                        item={piece}
-                    />
+                    <PieceCard item={piece} />
                     <div className={cls.Info}>
                         <h2 className={cls.Title}>{t(`${set.path}.ITEMS.${piece.path}.name`)}</h2>
                         <div className={cls.Table}>
