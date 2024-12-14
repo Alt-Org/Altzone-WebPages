@@ -9,7 +9,19 @@
   width: min(832px, 90%);
   z-index: 99;
   outline: none;
-  transition: border 0.3s ease, transform 0.2s ease;
+  transform: translateY(-20px) scale(0.95);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.Dialog.open {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.Dialog.close {
+  transform: translateY(-20px) scale(0.95);
+  opacity: 0;
 }
 
 .Dialog:focus {

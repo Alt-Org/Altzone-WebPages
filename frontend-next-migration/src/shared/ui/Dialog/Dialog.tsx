@@ -1,8 +1,9 @@
 'use client';
-import { MouseEvent, ReactNode, useEffect, useRef } from 'react';
+import clsx from 'clsx';
+import { MouseEvent, ReactNode, useEffect, useRef, useState } from 'react';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import cls from './Dialog.module.scss';
 import useScrollLock from '@/shared/lib/hooks/useScrollLock';
+import cls from './Dialog.module.scss';
 
 type DialogProps = {
     isOpen: boolean;
@@ -12,34 +13,41 @@ type DialogProps = {
 
 const Dialog = ({ isOpen, onClose, children }: DialogProps) => {
     const dialogRef = useRef<HTMLDialogElement>(null);
+    const [isClosing, setIsClosing] = useState(false);
 
     useEffect(() => {
         const dialog = dialogRef.current;
-
         if (!dialog) return;
 
         if (isOpen) {
-            if (!dialog.open) {
-                dialog.showModal();
-            }
-            setTimeout(() => {
-                dialog.focus();
-            }, 0);
+            if (!dialog.open) dialog.showModal();
+            dialog.focus();
         } else if (dialog.open) {
-            dialog.close();
+            setIsClosing(true);
+            const timeoutId = setTimeout(() => {
+                dialog.close();
+                setIsClosing(false);
+            }, 300);
+
+            return () => clearTimeout(timeoutId);
         }
     }, [isOpen]);
 
-    useScrollLock(isOpen);
+    useScrollLock(isOpen || isClosing);
+
     const handleBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
         if (event.target === dialogRef.current) {
             onClose();
         }
     };
+
     return (
         <dialog
             ref={dialogRef}
-            className={cls.Dialog}
+            className={clsx(cls.Dialog, {
+                [cls.open]: isOpen && !isClosing,
+                [cls.close]: isClosing,
+            })}
             onClick={handleBackdropClick}
         >
             <Button
