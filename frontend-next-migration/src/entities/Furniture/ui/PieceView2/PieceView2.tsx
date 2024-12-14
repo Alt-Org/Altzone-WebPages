@@ -2,7 +2,6 @@
 import { TFunction } from 'i18next';
 import Image from 'next/image';
 import { forwardRef, ReactNode, useImperativeHandle, useRef } from 'react';
-import { PieceCard } from '@/entities/Furniture/ui/PieceCard/PieceCard';
 import { useClientTranslation } from '@/shared/i18n';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
