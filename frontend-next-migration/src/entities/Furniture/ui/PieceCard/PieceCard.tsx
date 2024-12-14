@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { RefObject, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { Piece } from '../../types/furniture';
 import PieceView2 from '../PieceView2/PieceView2';
@@ -20,8 +20,6 @@ export const PieceCard = (props: Props) => {
 
     const { coverposition, path: setpath } = set;
     const { color, lightcolor, darkcolor } = rarity;
-
-    const ref: RefObject<HTMLDivElement> = useRef(null);
 
     const { t } = useClientTranslation('furnitureinfo');
 
@@ -76,3 +74,5 @@ export const PieceCard = (props: Props) => {
         </div>
     );
 };
+
+// className={`${cls.Cover} ${cls[coverposition]}`}

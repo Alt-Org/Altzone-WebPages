@@ -227,6 +227,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'NEUROSET',
             author: 'Simo Ryhänen',
             cover: neuroCover,
+            //todo should be fixed, idk why we should hardcode it
             coverposition: FurnitureSetCoverPosition.SMALL,
             items: [
                 {
@@ -280,6 +281,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'TAAKKASET',
             author: 'Simo Ryhänen',
             cover: taakkaCover,
+            //todo should be fixed, idk why we should hardcode it
             coverposition: FurnitureSetCoverPosition.SMALL,
             items: [
                 {
