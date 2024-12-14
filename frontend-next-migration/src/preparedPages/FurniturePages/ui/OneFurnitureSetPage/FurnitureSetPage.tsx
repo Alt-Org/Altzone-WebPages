@@ -45,15 +45,6 @@ const OneSetPage = () => {
                 </div>
                 <h1>{t(`${path}.name`)}</h1>
                 <h3>{author}</h3>
-                {/*<div className={cls.CardsContainer}>*/}
-                {/*    {items.map((item: Piece) => (*/}
-                {/*        <PieceCard*/}
-                {/*            item={item}*/}
-                {/*            key={item.path}*/}
-                {/*        />*/}
-                {/*    ))}*/}
-                {/*</div>*/}
-
                 <FurnitureCardsContainer items={items} />
             </Container>
         </div>

@@ -37,10 +37,3 @@
         aspect-ratio: 3 / 1;
     }
 }
-.CardsContainer {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    min-height: 100%;
-    padding: 0 20px;
-}
