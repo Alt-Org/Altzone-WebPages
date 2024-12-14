@@ -47,7 +47,7 @@
         right: 4px;
         width: 48px;
         height: 48px;
-        font-size: 32;
+        font-size: 32px;
         text-align: center;
     }
     .Info {
@@ -76,3 +76,44 @@
     width: 1em;
     height: 1em;
 }
+
+//.Dialog {
+//    position: fixed;
+//    inset: 0;
+//    margin: auto;
+//    background-color: #000000cc;
+//    border: none;
+//    border-radius: 16px;
+//    padding: 0;
+//    width: min(832px, 90%);
+//    height: auto;
+//    overflow: auto;
+//    z-index: 99;
+//}
+//
+//.Container {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    background-color: #000;
+//    border-radius: 16px;
+//    padding: 16px;
+//    text-align: left;
+//    color: white;
+//}
+//
+//.Close {
+//    position: absolute;
+//    top: 8px;
+//    right: 8px;
+//    width: 32px;
+//    height: 32px;
+//    font-size: 24px;
+//    text-align: center;
+//    cursor: pointer;
+//}
+//
+//.Coin {
+//    width: 1em;
+//    height: 1em;
+//}

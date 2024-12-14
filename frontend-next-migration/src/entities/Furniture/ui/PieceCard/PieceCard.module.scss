@@ -4,6 +4,12 @@
     margin: 8px;
     --hoverOffset: 8px;
     position: relative;
+    max-width: 100%;
+    cursor: pointer!important;
+}
+
+.StaticCard{
+    cursor: crosshair;
 }
 
 .Content {
@@ -41,8 +47,8 @@
         top: calc(50% + var(--coverVerticalOffset));
         left: calc(50% + var(--coverHorizontalOffset));
         width: calc(100% + var(--coverWidthOffset));
-        max-width: none;
-        max-height: 100%;
+        //max-width: none;
+        //max-height: 100%;
         translate: -50% -50%;
     }
 
@@ -80,6 +86,6 @@
     border: none;
 }
 
-.Container:hover {
-    cursor: pointer;
-}
+//.Container:hover {
+//    cursor: pointer;
+//}

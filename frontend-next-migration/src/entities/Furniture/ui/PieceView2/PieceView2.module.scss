@@ -1,0 +1,52 @@
+.Dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    background-color: #000000cc;
+    border: none;
+    border-radius: 16px;
+    padding: 0;
+    width: min(832px, 90%);
+    z-index: 99;
+    //height: 60vh;
+}
+
+.Container {
+    display: flex;
+    //flex-direction: column;
+    //align-items: center;
+
+    //align-items: stretch;
+
+    height: 100%;
+
+    background-color: #000;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: left;
+    color: white;
+
+
+    .leftCorner{
+        flex: 1;
+    }
+
+    .rightCorner{
+        flex: 1;
+    }
+
+
+}
+
+.Close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 24px;
+}
+
+.Coin {
+    display: inline;
+    width: 1em;
+    height: 1em;
+}

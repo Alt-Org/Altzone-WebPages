@@ -2,11 +2,11 @@
 import { TFunction } from 'i18next';
 import Image from 'next/image';
 import { ForwardedRef, forwardRef } from 'react';
-import { PieceCard } from '@/entities/Furniture/ui/PieceCard/PieceCard';
 import { useClientTranslation } from '@/shared/i18n';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
 import { MaterialType, Piece, SetInfo } from '../../types/furniture';
+import { PieceCard } from '../PieceCard/PieceCard';
 import cls from './PieceView.module.scss';
 
 type Props = {
@@ -50,7 +50,7 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
         div.style.display = 'none';
     };
 
-    const { color, lightcolor, darkcolor } = piece.rarity;
+    // const { color, lightcolor, darkcolor } = piece.rarity;
 
     piece.set = set;
     return (
@@ -69,20 +69,8 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
                         item={piece}
                     />
                     <div className={cls.Info}>
-                        <h2
-                            //style={{ color: `${lightcolor}` }}
-                            className={cls.Title}
-                        >
-                            {t(`${set.path}.ITEMS.${piece.path}.name`)}
-                        </h2>
-                        <div
-                            className={cls.Table}
-                            style={
-                                {
-                                    //color: `${color}`
-                                }
-                            }
-                        >
+                        <h2 className={cls.Title}>{t(`${set.path}.ITEMS.${piece.path}.name`)}</h2>
+                        <div className={cls.Table}>
                             <div>
                                 <label>{t('label-weight')}:</label>
                                 <p>{piece.weight} kg</p>
@@ -105,15 +93,7 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
                                 <p>{materialsToString(piece.materials, t)}</p>
                             </div>
                         </div>
-                        <p
-                            style={
-                                {
-                                    //color: `${darkcolor}`
-                                }
-                            }
-                        >
-                            {t(`${set.path}.ITEMS.${piece.path}.desc`)}
-                        </p>
+                        <p>{t(`${set.path}.ITEMS.${piece.path}.desc`)}</p>
                     </div>
                     <Button
                         onClick={onClose}

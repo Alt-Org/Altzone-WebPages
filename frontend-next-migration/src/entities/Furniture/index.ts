@@ -1,7 +1,7 @@
 export { FurnitureManager } from './model/FurnitureManager';
 
 export { SetCard } from './ui/SetContainer/SetContainer';
-export { PieceCard } from '@/entities/Furniture/ui/PieceCard/PieceCard';
+export { PieceCard } from './ui/PieceCard/PieceCard';
 export { default as PieceView } from './ui/PieceView/PieceView';
 
 export { types } from './model/initializeFurniture';
