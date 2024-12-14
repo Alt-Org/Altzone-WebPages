@@ -1,6 +1,6 @@
 'use client';
 import { useState, useMemo, useCallback } from 'react';
-import { FurnitureManager, types, PieceCard } from '@/entities/Furniture';
+import { FurnitureManager, types, PieceCard, FurnitureCardsContainer } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
@@ -11,13 +11,10 @@ import cls from './FurnitureCategoryPage.module.scss';
 
 const FurnitureCategoryPage = () => {
     const { t } = useClientTranslation('furniturecategory');
-
     const manager = useMemo(() => new FurnitureManager(), []);
     const [category, setCategory] = useState(types.CHAIRS);
-
     const list = useMemo(() => manager.getPiecesByCategory(category), [manager, category]);
     const categories = useMemo(() => Object.entries(types), []);
-
     const renderCategoryButtons = useCallback(
         () =>
             categories.map(([cat, value]) => (
@@ -32,26 +29,12 @@ const FurnitureCategoryPage = () => {
         [categories, t, category],
     );
 
-    const renderPieceCards = useCallback(
-        () =>
-            list.map((item, index) => (
-                <PieceCard
-                    item={item}
-                    key={index}
-                />
-            )),
-        [list],
-    );
+    const renderPieceCards = useCallback(() => <FurnitureCardsContainer items={list} />, [list]);
 
     const hasNoResults = list.length === 0;
 
     const renderContent = useMemo(
-        () =>
-            hasNoResults ? (
-                <h3>{t('no-results')}</h3>
-            ) : (
-                <div className={cls.CardsContainer}>{renderPieceCards()}</div>
-            ),
+        () => (hasNoResults ? <h3>{t('no-results')}</h3> : renderPieceCards()),
         [renderPieceCards, t],
     );
 

@@ -14,25 +14,6 @@
         display: block;
     }
 }
-.CardsContainer {
-    padding: 8px;
-    display: grid;
-
-    grid-template-columns: 25% 25% 25% 25%;
-
-
-    @media (max-width: 1190px) {
-        grid-template-columns: 33.333% 33.333% 33.333%;
-    }
-
-    @media (max-width: 1000px) {
-        grid-template-columns: 50% 50%;
-    }
-
-    @media (max-width: 768px) {
-        grid-template-columns: 100%;
-    }
-}
 
 .Container {
     background-color: var(--transparent-bg-dark);
