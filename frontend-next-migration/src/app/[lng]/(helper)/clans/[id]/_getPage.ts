@@ -11,7 +11,6 @@ export async function _getPage(lng: string, id: string) {
         return notFound();
     }
     const clanData = await response.json();
-
     return createPage<ClanRoomSubPageProps>({
         buildPage: () => ({
             translations: {
@@ -42,8 +41,8 @@ export async function _getPage(lng: string, id: string) {
         }),
         buildSeo: () => ({
             title: `${t('head-title')}: ${clanData.data.Clan.name}`,
-            description: t('head-description'),
-            keywords: t('head-keywords'),
+            description: `${clanData.data.Clan.phrase}`,
+            keywords: `${t('head-keywords')}, ${clanData.data.Clan.tag}`,
         }),
     });
 }
