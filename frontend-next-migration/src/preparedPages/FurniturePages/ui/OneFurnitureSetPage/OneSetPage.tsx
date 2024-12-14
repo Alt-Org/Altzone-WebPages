@@ -8,10 +8,11 @@ import cls from './OneSetPage.module.scss';
 
 export interface FurnitureOneSetPageProps {
     setInfo: SetInfo;
+    header: string;
 }
 
 const OneSetPage = (props: FurnitureOneSetPageProps) => {
-    const { setInfo: set } = props;
+    const { setInfo: set, header } = props;
     const { t } = useClientTranslation('furnitureinfo');
     const { path, cover, author, items } = set;
 
@@ -20,13 +21,13 @@ const OneSetPage = (props: FurnitureOneSetPageProps) => {
             <div className={cls.Cover}>
                 <Image
                     src={cover}
-                    alt={t(`${path}.name`)}
+                    alt={header + "'s cover"}
                 />
             </div>
             <div className={cls.Back}>
                 <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
             </div>
-            <h1>{t(`${path}.name`)}</h1>
+            <h1>{header}</h1>
             <h3>{author}</h3>
             <FurnitureCardsContainer items={items} />
         </>

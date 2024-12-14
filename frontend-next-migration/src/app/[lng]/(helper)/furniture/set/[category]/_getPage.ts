@@ -13,9 +13,13 @@ export async function _getPage(lng: string, category: string) {
     if (!set) {
         return notFound();
     }
+
+    const setPathName = `${t(`${set.path}.name`)}`;
+
     return createPage<FurnitureOneSetPageProps>({
         buildPage: () => ({
             setInfo: set,
+            header: setPathName,
         }),
         buildSeo: () => ({
             title: capitalizeFirstLetter(set.id),
