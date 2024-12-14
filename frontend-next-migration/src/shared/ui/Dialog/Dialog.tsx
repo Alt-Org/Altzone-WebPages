@@ -21,6 +21,9 @@ const Dialog = ({ isOpen, onClose, children }: DialogProps) => {
             if (!dialog.open) {
                 dialog.showModal();
             }
+            setTimeout(() => {
+                dialog.focus();
+            }, 0);
         } else if (dialog.open) {
             dialog.close();
         }

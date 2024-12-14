@@ -8,15 +8,22 @@
   padding: 0;
   width: min(832px, 90%);
   z-index: 99;
+  outline: none;
+  transition: border 0.3s ease, transform 0.2s ease;
+}
+
+.Dialog:focus {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transform: scale(1.01);
 }
 
 .Dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(0.5px);
-  animation: fadeIn 0.3s ease;
+  animation: Dialog-fadeIn 0.3s ease;
 }
 
-@keyframes fadeIn {
+@keyframes Dialog-fadeIn {
   from {
     opacity: 0;
   }
