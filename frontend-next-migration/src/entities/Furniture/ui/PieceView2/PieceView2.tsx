@@ -5,6 +5,7 @@ import { ReactNode, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
+import useScrollLock from '@/shared/lib/hooks/useScrollLock';
 import { MaterialType, Piece } from '../../types/furniture';
 import cls from './PieceView2.module.scss';
 
@@ -157,33 +158,35 @@ const PieceView2 = ({ piece, leftCorner, isOpen, onClose }: Props) => {
         }
     }, [isOpen]);
 
-    useEffect(() => {
-        const abortController = new AbortController();
-        const signal = abortController.signal;
+    useScrollLock(isOpen);
 
-        const preventScroll = (event: Event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
-        };
-
-        const preventArrowScroll = (event: KeyboardEvent) => {
-            const keysToBlock = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
-            if (keysToBlock.includes(event.key)) {
-                event.preventDefault();
-            }
-        };
-
-        if (isOpen) {
-            window.addEventListener('wheel', preventScroll, { passive: false, signal });
-            window.addEventListener('touchmove', preventScroll, { passive: false, signal });
-            window.addEventListener('keydown', preventArrowScroll, { signal });
-        }
-
-        return () => {
-            abortController.abort();
-        };
-    }, [isOpen]);
+    // useEffect(() => {
+    //     const abortController = new AbortController();
+    //     const signal = abortController.signal;
+    //
+    //     const preventScroll = (event: Event) => {
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //         return false;
+    //     };
+    //
+    //     const preventArrowScroll = (event: KeyboardEvent) => {
+    //         const keysToBlock = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+    //         if (keysToBlock.includes(event.key)) {
+    //             event.preventDefault();
+    //         }
+    //     };
+    //
+    //     if (isOpen) {
+    //         window.addEventListener('wheel', preventScroll, { passive: false, signal });
+    //         window.addEventListener('touchmove', preventScroll, { passive: false, signal });
+    //         window.addEventListener('keydown', preventArrowScroll, { signal });
+    //     }
+    //
+    //     return () => {
+    //         abortController.abort();
+    //     };
+    // }, [isOpen]);
 
     const handleBackdropClick = (event: React.MouseEvent<HTMLDialogElement>) => {
         if (event.target === dialogRef.current) {
