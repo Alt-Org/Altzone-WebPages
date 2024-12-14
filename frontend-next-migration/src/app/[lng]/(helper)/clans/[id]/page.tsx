@@ -1,21 +1,13 @@
 import { ClanRoomSubPage as PreparedPage } from '@/preparedPages/ClanPages';
 import { useServerTranslation } from '@/shared/i18n';
-import { Metadata } from 'next';
+import { withMetadataGenerator } from '@/app/_helpers';
+import { _getPage } from './_getPage';
 
 type Props = {
     params: { lng: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { t } = await useServerTranslation(params.lng, 'clan');
-
-    return {
-        title: t('head-title'),
-        description: t('head-description'),
-        keywords: t('head-keywords'),
-    };
-}
+export const generateMetadata = withMetadataGenerator(_getPage);
 
 export default async function ClanRoomSubPage({ params }: Props) {
     const { t } = await useServerTranslation(params.lng, 'clan');
