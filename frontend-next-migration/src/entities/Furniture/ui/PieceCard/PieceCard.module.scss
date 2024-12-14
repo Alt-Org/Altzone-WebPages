@@ -1,4 +1,5 @@
 .ViewContainer {
+    cursor: pointer;
 }
 
 
@@ -13,9 +14,11 @@
 .Card {
     transition: transform 0.3s ease-in-out;
 
+    cursor: pointer!important;
+
     &:hover {
         transform: scale(1.03);
-        cursor: pointer;
+        cursor: pointer!important;
     }
 }
 
@@ -106,8 +109,10 @@
     height: 100%;
     background: transparent;
     border: none;
-    //display: block;
+    cursor: pointer;
+}
 
-
+.StaticContainer{
+    cursor: auto;
 }
 

@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Piece } from '../../types/furniture';
 import PieceView from '../PieceView/PieceView';
 import cls from './PieceCard.module.scss';
@@ -42,7 +43,7 @@ export const PieceCard = (props: Props) => {
                 }}
             >
                 <button
-                    className={cls.Container}
+                    className={classNames(cls.Container, { [cls.StaticContainer]: isStatic })}
                     onClick={!isStatic ? handleOpenDialog : undefined}
                     disabled={isStatic}
                 >
