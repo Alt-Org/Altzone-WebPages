@@ -20,6 +20,7 @@ export async function _getPage(lng: string, category: string) {
         buildPage: () => ({
             setInfo: set,
             header: setPathName,
+            textBack: `<-- ${t('text-back')}`,
         }),
         buildSeo: () => ({
             title: capitalizeFirstLetter(set.id),
