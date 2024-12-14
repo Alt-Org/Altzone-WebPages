@@ -1,14 +1,12 @@
+.ViewContainer {
+}
+
+
 .Card,.StaticCard {
     height: auto;
     aspect-ratio: 1 / 1.5;
     margin: 8px;
     position: relative;
-
-    max-width: 90%;
-
-    @media (max-width: breakpoint(md)){
-        max-width: 70%;
-    }
     cursor: pointer!important;
 }
 
@@ -113,6 +111,3 @@
 
 }
 
-.ViewContainer {
-    display: block;
-}

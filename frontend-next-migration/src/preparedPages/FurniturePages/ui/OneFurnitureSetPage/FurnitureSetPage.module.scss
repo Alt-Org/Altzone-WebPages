@@ -39,16 +39,8 @@
 }
 .CardsContainer {
     display: grid;
-    padding: 8px;
-    grid-template-columns: 25% 25% 25% 25%;
-
-    @media (max-width: 1190px) {
-        grid-template-columns: 33.333% 33.333%;
-    }
-    @media (max-width: 1000px) {
-        grid-template-columns: 50% 50%;
-    }
-    @media (max-width: 768px) {
-        grid-template-columns: 100%;
-    }
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    min-height: 100%;
+    padding: 0 20px;
 }

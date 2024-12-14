@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { FurnitureManager, PieceCard, Piece } from '@/entities/Furniture';
+import { FurnitureManager, FurnitureCardsContainer } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
@@ -45,14 +45,16 @@ const OneSetPage = () => {
                 </div>
                 <h1>{t(`${path}.name`)}</h1>
                 <h3>{author}</h3>
-                <div className={cls.CardsContainer}>
-                    {items.map((item: Piece) => (
-                        <PieceCard
-                            item={item}
-                            key={item.path}
-                        />
-                    ))}
-                </div>
+                {/*<div className={cls.CardsContainer}>*/}
+                {/*    {items.map((item: Piece) => (*/}
+                {/*        <PieceCard*/}
+                {/*            item={item}*/}
+                {/*            key={item.path}*/}
+                {/*        />*/}
+                {/*    ))}*/}
+                {/*</div>*/}
+
+                <FurnitureCardsContainer items={items} />
             </Container>
         </div>
     );
