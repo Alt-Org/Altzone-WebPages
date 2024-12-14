@@ -11,9 +11,9 @@
 .StaticCard{
     cursor: crosshair;
 
-    @media (max-width: breakpoint(md)){
+    @media (max-width: breakpoint(sm)){
         margin: auto;
-        height: 300px;
+        height: 250px;
     }
 
     @media (max-width: breakpoint(xs)) {
@@ -42,11 +42,11 @@
         z-index: 3;
         font-size: 2.5em;
 
-        @media only screen and (max-width: 600px){
-            font-size: 1.8em;
+        @media (max-width: breakpoint(md)){
+            font-size: 1.5em;
         }
 
-        @media only screen and (max-width: 450px){
+        @media (max-width: breakpoint(xs)){
             font-size: unset;
         }
 
