@@ -3,6 +3,13 @@
   color: var(--primary-color);
   background: var(--secondary-color);
   padding: 6px 15px;
+
+
+  &:focus {
+    outline: none;
+    border: 2px solid white;
+  }
+
 }
 
 .clear,
