@@ -6,6 +6,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
 import useScrollLock from '@/shared/lib/hooks/useScrollLock';
+import Dialog from '@/shared/ui/Dialog/Dialog';
 import { MaterialType, Piece } from '../../types/furniture';
 import cls from './PieceView2.module.scss';
 
@@ -50,11 +51,15 @@ const PieceView2 = ({ piece, leftCorner, isOpen, onClose }: Props) => {
     };
 
     return (
-        <dialog
-            ref={dialogRef}
-            className={cls.Dialog}
-            onClick={handleBackdropClick}
+        <Dialog
+            isOpen={isOpen}
+            onClose={onClose}
         >
+            {/*<dialog*/}
+            {/*    ref={dialogRef}*/}
+            {/*    className={cls.Dialog}*/}
+            {/*    onClick={handleBackdropClick}*/}
+            {/*>*/}
             <div className={cls.Container}>
                 <div className={cls.leftCorner}>{leftCorner}</div>
                 <div className={cls.rightCorner}>
@@ -93,16 +98,8 @@ const PieceView2 = ({ piece, leftCorner, isOpen, onClose }: Props) => {
 
                     <p style={{ color: darkcolor }}>{t(`${set?.path}.ITEMS.${piece.path}.desc`)}</p>
                 </div>
-
-                <Button
-                    onClick={onClose}
-                    className={cls.Close}
-                    theme={ButtonTheme.Graffiti}
-                >
-                    X
-                </Button>
             </div>
-        </dialog>
+        </Dialog>
     );
 };
 
