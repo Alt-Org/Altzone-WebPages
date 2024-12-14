@@ -43,6 +43,7 @@ const Dialog = ({ isOpen, onClose, children }: DialogProps) => {
 
     return (
         <dialog
+            role="dialog"
             ref={dialogRef}
             className={clsx(cls.Dialog, {
                 [cls.open]: isOpen && !isClosing,
