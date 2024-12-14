@@ -5,7 +5,7 @@ import { getRouteAllHeroesPage } from '@/shared/appLinks/RoutePaths';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './HeroPage.module.scss';
 
-interface Props {
+export interface Props {
     newSelectedHero: HeroWithGroup;
     prevHeroLink: string;
     nextHeroLink: string;
