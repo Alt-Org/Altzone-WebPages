@@ -1,11 +1,9 @@
 'use client';
 import { TFunction } from 'i18next';
 import Image from 'next/image';
-import { ReactNode, useEffect, useRef, MouseEvent } from 'react';
+import { ReactNode } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
-import useScrollLock from '@/shared/lib/hooks/useScrollLock';
 import Dialog from '@/shared/ui/Dialog/Dialog';
 import { MaterialType, Piece } from '../../types/furniture';
 import cls from './PieceView2.module.scss';
@@ -23,43 +21,13 @@ const materialsToString = (materials: Array<MaterialType>, t: TFunction): string
 
 const PieceView2 = ({ piece, leftCorner, isOpen, onClose }: Props) => {
     const { t } = useClientTranslation('furnitureinfo');
-    const dialogRef = useRef<HTMLDialogElement>(null);
-
     const { set, rarity } = piece;
     const { color, lightcolor, darkcolor } = rarity;
-
-    useEffect(() => {
-        const dialog = dialogRef.current;
-
-        if (!dialog) return;
-
-        if (isOpen) {
-            if (!dialog.open) {
-                dialog.showModal();
-            }
-        } else if (dialog.open) {
-            dialog.close();
-        }
-    }, [isOpen]);
-
-    useScrollLock(isOpen);
-
-    const handleBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
-        if (event.target === dialogRef.current) {
-            onClose();
-        }
-    };
-
     return (
         <Dialog
             isOpen={isOpen}
             onClose={onClose}
         >
-            {/*<dialog*/}
-            {/*    ref={dialogRef}*/}
-            {/*    className={cls.Dialog}*/}
-            {/*    onClick={handleBackdropClick}*/}
-            {/*>*/}
             <div className={cls.Container}>
                 <div className={cls.leftCorner}>{leftCorner}</div>
                 <div className={cls.rightCorner}>

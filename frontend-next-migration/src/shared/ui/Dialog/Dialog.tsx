@@ -2,6 +2,7 @@
 import { MouseEvent, ReactNode, useEffect, useRef } from 'react';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import cls from './Dialog.module.scss';
+import useScrollLock from '@/shared/lib/hooks/useScrollLock';
 
 type DialogProps = {
     isOpen: boolean;
@@ -29,12 +30,12 @@ const Dialog = ({ isOpen, onClose, children }: DialogProps) => {
         }
     }, [isOpen]);
 
+    useScrollLock(isOpen);
     const handleBackdropClick = (event: MouseEvent<HTMLDialogElement>) => {
         if (event.target === dialogRef.current) {
             onClose();
         }
     };
-
     return (
         <dialog
             ref={dialogRef}
