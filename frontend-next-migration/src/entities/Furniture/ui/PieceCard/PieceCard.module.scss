@@ -4,9 +4,11 @@
     margin: 8px;
     position: relative;
 
+    max-width: 90%;
 
-    max-width: 80%;
-
+    @media (max-width: breakpoint(md)){
+        max-width: 70%;
+    }
     cursor: pointer!important;
 }
 
