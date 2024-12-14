@@ -1,5 +1,5 @@
 .ViewContainer {
-    cursor: pointer;
+    //cursor: pointer;
 }
 
 
@@ -8,17 +8,14 @@
     aspect-ratio: 1 / 1.5;
     margin: 8px;
     position: relative;
-    cursor: pointer!important;
 }
 
 .Card {
     transition: transform 0.3s ease-in-out;
 
-    cursor: pointer!important;
 
     &:hover {
         transform: scale(1.03);
-        cursor: pointer!important;
     }
 }
 
