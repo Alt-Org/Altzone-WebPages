@@ -1,13 +1,13 @@
 'use client';
-import { ForwardedRef, forwardRef } from 'react';
-import { MaterialType, Piece, SetInfo } from '../../types/furniture';
-import cls from './PieceView.module.scss';
-import { PieceCard } from '../PieceContainer/PieceContainer';
-import { useClientTranslation } from '@/shared/i18n';
 import { TFunction } from 'i18next';
+import Image from 'next/image';
+import { ForwardedRef, forwardRef } from 'react';
+import { PieceCard } from '@/entities/Furniture/ui/PieceCard/PieceCard';
+import { useClientTranslation } from '@/shared/i18n';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
-import Image from 'next/image';
+import { MaterialType, Piece, SetInfo } from '../../types/furniture';
+import cls from './PieceView.module.scss';
 
 type Props = {
     piece: Piece;
@@ -75,7 +75,6 @@ const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) =
                         >
                             {t(`${set.path}.ITEMS.${piece.path}.name`)}
                         </h2>
-
                         <div
                             className={cls.Table}
                             style={

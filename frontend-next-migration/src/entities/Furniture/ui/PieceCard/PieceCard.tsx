@@ -1,10 +1,10 @@
 'use client';
-import cls from './PieceContainer.module.scss';
-import { RefObject, useRef } from 'react';
 import Image from 'next/image';
-import PieceView from '../PieceView/PieceView';
+import { RefObject, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { Piece } from '../../types/furniture';
+import PieceView from '../PieceView/PieceView';
+import cls from './PieceCard.module.scss';
 
 type Props = {
     noView?: boolean;
