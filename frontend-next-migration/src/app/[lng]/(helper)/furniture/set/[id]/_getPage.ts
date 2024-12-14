@@ -3,6 +3,7 @@ import { useServerTranslation } from '@/shared/i18n';
 import { FurnitureOneSetPageProps } from '@/preparedPages/FurniturePages';
 import { FurnitureManager } from '@/entities/Furniture';
 import { notFound } from 'next/navigation';
+import { capitalizeFirstLetter } from '@/shared/lib/capitalizeFirstLetter';
 
 export async function _getPage(lng: string, id: string) {
     const { t } = await useServerTranslation(lng, 'furnitureinfo');
@@ -12,13 +13,12 @@ export async function _getPage(lng: string, id: string) {
     if (!set) {
         return notFound();
     }
-
     return createPage<FurnitureOneSetPageProps>({
         buildPage: () => ({
             setInfo: set,
         }),
         buildSeo: () => ({
-            title: t('head-title'),
+            title: capitalizeFirstLetter(set.id),
             description: t('head-description'),
             keywords: t('head-keywords'),
         }),
