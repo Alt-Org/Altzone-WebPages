@@ -1,7 +1,7 @@
 'use client';
 import { TFunction } from 'i18next';
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
@@ -19,17 +19,35 @@ const materialsToString = (materials: Array<MaterialType>, t: TFunction): string
     return materials.map((material) => t(material.name)).join(', ');
 };
 
-const PieceView = ({ piece, leftCorner, isOpen, onClose }: Props) => {
+const PieceView2 = ({ piece, leftCorner, isOpen, onClose }: Props) => {
     const { t } = useClientTranslation('furnitureinfo');
+    const dialogRef = useRef<HTMLDialogElement>(null);
 
     const { set, rarity } = piece;
     const { color, lightcolor, darkcolor } = rarity;
 
-    if (!isOpen) return null;
+    //dialog api says us to do like this
+    useEffect(() => {
+        const dialog = dialogRef.current;
+
+        if (!dialog) return;
+
+        if (isOpen) {
+            if (!dialog.open) {
+                dialog.showModal();
+            }
+        } else if (dialog.open) {
+            dialog.close();
+        }
+    }, [isOpen]);
+
+    const handleClose = () => {
+        onClose();
+    };
 
     return (
         <dialog
-            open
+            ref={dialogRef}
             className={cls.Dialog}
         >
             <div className={cls.Container}>
@@ -72,7 +90,7 @@ const PieceView = ({ piece, leftCorner, isOpen, onClose }: Props) => {
                 </div>
 
                 <Button
-                    onClick={onClose}
+                    onClick={handleClose}
                     className={cls.Close}
                     theme={ButtonTheme.Graffiti}
                 >
@@ -83,4 +101,4 @@ const PieceView = ({ piece, leftCorner, isOpen, onClose }: Props) => {
     );
 };
 
-export default PieceView;
+export default PieceView2;
