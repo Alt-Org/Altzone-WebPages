@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import cls from './TextSlider.module.scss';
 
 type Props = {
@@ -17,6 +17,19 @@ export const TextSlider = (props: Props) => {
     } = props;
 
     const [textIndex, setTextIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const showNextText = () => {
         setTextIndex((index) => {
@@ -32,23 +45,52 @@ export const TextSlider = (props: Props) => {
         });
     };
 
+    const handleTouchStart = (e: React.TouchEvent) => {
+        if (!isMobile) return;
+        const touchStartX = e.touches[0].clientX;
+        // console.log(`touchStartX: ${touchStartX}`);
+
+        const handleTouchMove = (e: TouchEvent) => {
+            const touchEndX = e.touches[0]?.clientX || touchStartX;
+            // console.log(`touchEndX: ${touchEndX}`);
+            const diffX = touchStartX - touchEndX;
+
+            if (diffX > 5) {
+                showNextText();
+            } else if (diffX < -5) {
+                showPrevText();
+            }
+
+            document.removeEventListener('touchmove', handleTouchMove);
+        };
+
+        document.addEventListener('touchmove', handleTouchMove);
+    };
+
     return (
-        <div className={`${cls.TextSlider} ${className}`}>
-            <div
-                className={cls.btnRight}
-                onClick={showNextText}
-            >
-                {rightArrow}
-            </div>
+        <div
+            className={`${cls.TextSlider} ${className}`}
+            onTouchStart={handleTouchStart}
+        >
+            {!isMobile && (
+                <div
+                    className={cls.btnRight}
+                    onClick={showNextText}
+                >
+                    {rightArrow}
+                </div>
+            )}
 
             {textArray.length > 0 && <p>{textArray[textIndex]}</p>}
 
-            <div
-                className={cls.btnLeft}
-                onClick={showPrevText}
-            >
-                {leftArrow}
-            </div>
+            {!isMobile && (
+                <div
+                    className={cls.btnLeft}
+                    onClick={showPrevText}
+                >
+                    {leftArrow}
+                </div>
+            )}
         </div>
     );
 };
