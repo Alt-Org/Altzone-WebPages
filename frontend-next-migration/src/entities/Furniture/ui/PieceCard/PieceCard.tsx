@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
-import { RefObject, useRef } from 'react';
+import { RefObject, useRef, useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { Piece } from '../../types/furniture';
 import PieceView from '../PieceView/PieceView';
-import PieceView2, { PieceViewRef } from '../PieceView2/PieceView2';
+import PieceView2 from '../PieceView2/PieceView2';
 import cls from './PieceCard.module.scss';
 
 type Props = {
@@ -23,22 +23,25 @@ export const PieceCard = (props: Props) => {
     const { coverposition, path: setpath } = set;
     const { color, lightcolor, darkcolor } = rarity;
 
-    const ref2: RefObject<PieceViewRef> = useRef(null);
     const ref: RefObject<HTMLDivElement> = useRef(null);
 
     const { t } = useClientTranslation('furnitureinfo');
 
-    const handleOpenDialog = () => {
-        ref2.current?.open();
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    const handleOpenDialogNew = () => {
+        setIsDialogOpen(true);
+    };
+
+    const handleCloseDialogNew = () => {
+        setIsDialogOpen(false);
     };
 
     const click = () => {
         if (noView) {
             return;
         }
-
-        handleOpenDialog();
-
+        handleOpenDialogNew();
         const div = ref.current;
         if (!div) {
             return;
@@ -81,7 +84,8 @@ export const PieceCard = (props: Props) => {
                     />
                     <PieceView2
                         piece={item}
-                        ref={ref2}
+                        isOpen={isDialogOpen}
+                        onClose={handleCloseDialogNew}
                         leftCorner={renderCard(true)}
                     />
                 </div>
