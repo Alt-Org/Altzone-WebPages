@@ -1,6 +1,6 @@
 'use client';
 import { Ref, useRef, useState } from 'react';
-import { FurnitureManager, PieceCard, Piece } from '@/entities/Furniture';
+import { FurnitureManager, FurnitureCardsContainer } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
@@ -40,16 +40,7 @@ const FurnitureSearchPage = () => {
                 <div className={cls.Back}>
                     <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
                 </div>
-                <div className={cls.CardsContainer}>
-                    {list.map((item: Piece, index) => {
-                        return (
-                            <PieceCard
-                                item={item}
-                                key={index}
-                            />
-                        );
-                    })}
-                </div>
+                <FurnitureCardsContainer items={list} />
             </Container>
         </div>
     );
