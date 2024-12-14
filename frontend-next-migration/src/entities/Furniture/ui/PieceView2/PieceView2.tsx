@@ -16,19 +16,6 @@ type Props = {
     onClose: () => void;
 };
 
-const preventScroll = (event: Event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    return false;
-};
-
-const preventArrowScroll = (event: KeyboardEvent) => {
-    const keysToBlock = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
-    if (keysToBlock.includes(event.key)) {
-        event.preventDefault();
-    }
-};
-
 const materialsToString = (materials: Array<MaterialType>, t: TFunction): string => {
     return materials.map((material) => t(material.name)).join(', ');
 };
