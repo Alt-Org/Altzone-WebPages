@@ -77,11 +77,11 @@ export const PieceCard = (props: Props) => {
         <div>
             {!noView && (
                 <div className={cls.ViewContainer}>
-                    {/*<PieceView*/}
-                    {/*    piece={item}*/}
-                    {/*    set={set}*/}
-                    {/*    ref={ref}*/}
-                    {/*/>*/}
+                    <PieceView
+                        piece={item}
+                        set={set}
+                        ref={ref}
+                    />
                     <PieceView2
                         piece={item}
                         isOpen={isDialogOpen}

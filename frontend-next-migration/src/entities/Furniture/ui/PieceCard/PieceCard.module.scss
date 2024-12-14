@@ -24,12 +24,21 @@
 
     .Title {
         position: absolute;
-        top: 16px;
+        top: 0px;
         width: 100%;
         color: white;
         text-shadow: 2px 2px black;
         z-index: 3;
-        font-size: 2em;
+        font-size: 2.5em;
+
+        @media only screen and (max-width: 600px){
+            font-size: 1.8em;
+        }
+
+        @media only screen and (max-width: 450px){
+            font-size: unset;
+        }
+
     }
 
     .Id {

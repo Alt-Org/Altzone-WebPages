@@ -17,13 +17,38 @@
     .rightCorner{
         padding-top: 16px;
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
 
 
 }
 
 .Coin {
-    display: inline;
     width: 1em;
     height: 1em;
+}
+
+.Details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.DetailItem {
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+    align-items: center;
+}
+
+.Label {
+    font-weight: bold;
+}
+
+.Value {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
