@@ -45,19 +45,14 @@ const FurnitureCategoryPage = () => {
     );
 
     return (
-        <div className={classNames(cls.Page)}>
-            <Container className={cls.Container}>
-                <h1>{t('results')}</h1>
-
-                <div className={cls.Buttons}>{renderCategoryButtons()}</div>
-
-                <div className={cls.Back}>
-                    <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
-                </div>
-
-                {renderContent}
-            </Container>
-        </div>
+        <>
+            <h1>{t('results')}</h1>
+            <div className={cls.Buttons}>{renderCategoryButtons()}</div>
+            <div className={cls.Back}>
+                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
+            </div>
+            {renderContent}
+        </>
     );
 };
 

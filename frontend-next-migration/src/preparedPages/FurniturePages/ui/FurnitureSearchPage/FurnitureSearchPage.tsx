@@ -27,22 +27,20 @@ const FurnitureSearchPage = () => {
 
     const list = manager.getPiecesByKeyword(input, useClientTranslation('furnitureinfo').t);
     return (
-        <div className={classNames(cls.Page)}>
-            <Container className={cls.Container}>
-                <h1>{t('results')}</h1>
-                <div className={cls.Searchbar}>
-                    <input
-                        onInput={oninput}
-                        ref={ref}
-                        placeholder={t('search-placeholder')}
-                    />
-                </div>
-                <div className={cls.Back}>
-                    <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
-                </div>
-                <FurnitureCardsContainer items={list} />
-            </Container>
-        </div>
+        <>
+            <h1>{t('results')}</h1>
+            <div className={cls.Searchbar}>
+                <input
+                    onInput={oninput}
+                    ref={ref}
+                    placeholder={t('search-placeholder')}
+                />
+            </div>
+            <div className={cls.Back}>
+                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
+            </div>
+            <FurnitureCardsContainer items={list} />
+        </>
     );
 };
 

@@ -32,22 +32,20 @@ const OneSetPage = () => {
     const { path, cover, author, items } = set;
 
     return (
-        <div className={classNames(cls.SetPage)}>
-            <Container className={cls.Container}>
-                <div className={cls.Cover}>
-                    <Image
-                        src={cover}
-                        alt={t(`${path}.name`)}
-                    />
-                </div>
-                <div className={cls.Back}>
-                    <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
-                </div>
-                <h1>{t(`${path}.name`)}</h1>
-                <h3>{author}</h3>
-                <FurnitureCardsContainer items={items} />
-            </Container>
-        </div>
+        <>
+            <div className={cls.Cover}>
+                <Image
+                    src={cover}
+                    alt={t(`${path}.name`)}
+                />
+            </div>
+            <div className={cls.Back}>
+                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
+            </div>
+            <h1>{t(`${path}.name`)}</h1>
+            <h3>{author}</h3>
+            <FurnitureCardsContainer items={items} />
+        </>
     );
 };
 
