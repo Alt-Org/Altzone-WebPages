@@ -95,7 +95,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: breakpoint(md)) {
   :root {
     --navbar-logo-height: 140px;
   }
@@ -111,3 +111,4 @@
     width: auto;
   }
 }
+

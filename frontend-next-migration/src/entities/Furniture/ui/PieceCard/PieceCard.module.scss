@@ -10,6 +10,17 @@
 
 .StaticCard{
     cursor: crosshair;
+
+    @media (max-width: breakpoint(md)){
+        margin: auto;
+        height: 300px;
+    }
+
+    @media (max-width: breakpoint(xs)) {
+        margin: auto;
+        height: 220px;
+    }
+
 }
 
 .Content {
