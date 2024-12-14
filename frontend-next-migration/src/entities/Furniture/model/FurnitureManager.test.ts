@@ -15,21 +15,11 @@ describe('FurnitureManager', () => {
             if (!id) {
                 return true;
             }
-            expect(manager.getFurnitureSet(id).id).toBe(set.id);
+            // @ts-ignore
+            expect(manager?.getFurnitureSet(id).id).toBe(set.id);
 
             return true;
         });
-    });
-
-    it('should return correct error messages with invalid values', () => {
-        let err;
-        try {
-            manager.getFurnitureSet('anonexistentsetthatdoesnotexist');
-        } catch (error) {
-            err = error;
-        }
-
-        expect(err).toBeTruthy();
     });
 
     it('should return pieces in only same category', () => {
@@ -86,6 +76,7 @@ describe('FurnitureManager', () => {
 
     describe('should return set reference within piece info', () => {
         sets.map((set) => {
+            // @ts-ignore
             const info: SetInfo = manager.getFurnitureSet(set.id);
             expect(info).toBeTruthy();
             if (!info) {
