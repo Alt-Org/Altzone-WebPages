@@ -1,6 +1,7 @@
 import { HeroPage as PreparedHeroPage } from '@/preparedPages/HeroesPages';
 import { notFound } from 'next/navigation';
 import { _getPage } from './_getPage';
+import { withMetadataGenerator } from '@/app/_helpers';
 
 interface Props extends DefaultAppRouterProps {
     params: DefaultAppRouterProps['params'] & {
@@ -8,9 +9,7 @@ interface Props extends DefaultAppRouterProps {
     };
 }
 
-//todo add seo, try with it:
-// import {withPageData ,createMetadataGenerator} from "@/app/_helpers";
-// import {_getPage} from "./_getPage";
+export const generateMetadata = withMetadataGenerator(_getPage);
 
 export default async function HeroPage({ params }: Props) {
     const { slug, lng } = params;

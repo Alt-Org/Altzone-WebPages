@@ -28,11 +28,10 @@ export async function _getPage(lng: string, slug: string) {
             prevHeroLink: prevHeroLink,
             nextHeroLink: nextHeroLink,
         }),
-        // todo it should be kinda dynamic
         buildSeo: () => ({
-            title: t('head-title'),
-            description: t('head-description'),
-            keywords: t('head-keywords'),
+            title: currentHero.title,
+            description: currentHero.description,
+            keywords: `${t('head-keywords')}, ${currentHero.title}, ${currentHero.groupEnum}, ${currentHero.groupName}`,
         }),
     });
 }
