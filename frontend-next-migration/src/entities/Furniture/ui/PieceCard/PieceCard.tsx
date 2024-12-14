@@ -3,21 +3,19 @@ import Image from 'next/image';
 import { RefObject, useRef, useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { Piece } from '../../types/furniture';
-import PieceView from '../PieceView/PieceView';
 import PieceView2 from '../PieceView2/PieceView2';
 import cls from './PieceCard.module.scss';
 
 type Props = {
-    noView?: boolean;
     item: Piece;
 };
 
 export const PieceCard = (props: Props) => {
-    const { noView, item } = props;
+    const { item } = props;
     const { path, rarity, cover, set, num } = item;
 
     if (!set) {
-        return;
+        return null;
     }
 
     const { coverposition, path: setpath } = set;
@@ -29,28 +27,16 @@ export const PieceCard = (props: Props) => {
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-    const handleOpenDialogNew = () => {
+    const handleOpenDialog = () => {
         setIsDialogOpen(true);
     };
 
-    const handleCloseDialogNew = () => {
+    const handleCloseDialog = () => {
         setIsDialogOpen(false);
     };
 
-    const click = () => {
-        if (noView) {
-            return;
-        }
-        handleOpenDialogNew();
-        const div = ref.current;
-        if (!div) {
-            return;
-        }
-        div.style.display = 'block';
-    };
-
-    const renderCard = (noView: boolean) => (
-        <div className={noView ? cls.StaticCard : cls.Card}>
+    const renderCard = (isStatic: boolean) => (
+        <div className={isStatic ? cls.StaticCard : cls.Card}>
             <div
                 className={cls.Content}
                 style={{
@@ -59,7 +45,8 @@ export const PieceCard = (props: Props) => {
             >
                 <button
                     className={cls.Container}
-                    onClick={click}
+                    onClick={!isStatic ? handleOpenDialog : undefined}
+                    disabled={isStatic}
                 >
                     <Image
                         className={`${cls.Cover} ${cls[coverposition]}`}
@@ -75,17 +62,12 @@ export const PieceCard = (props: Props) => {
 
     return (
         <div>
-            {!noView && (
+            {isDialogOpen && (
                 <div className={cls.ViewContainer}>
-                    <PieceView
-                        piece={item}
-                        set={set}
-                        ref={ref}
-                    />
                     <PieceView2
                         piece={item}
                         isOpen={isDialogOpen}
-                        onClose={handleCloseDialogNew}
+                        onClose={handleCloseDialog}
                         leftCorner={renderCard(true)}
                     />
                 </div>
