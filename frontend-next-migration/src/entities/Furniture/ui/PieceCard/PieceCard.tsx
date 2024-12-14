@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { Piece } from '../../types/furniture';
-import PieceView2 from '../PieceView2/PieceView2';
+import PieceView from '../PieceView/PieceView';
 import cls from './PieceCard.module.scss';
 
 type Props = {
@@ -62,7 +62,7 @@ export const PieceCard = (props: Props) => {
         <div>
             {isDialogOpen && (
                 <div className={cls.ViewContainer}>
-                    <PieceView2
+                    <PieceView
                         piece={item}
                         isOpen={isDialogOpen}
                         onClose={handleCloseDialog}
@@ -74,5 +74,3 @@ export const PieceCard = (props: Props) => {
         </div>
     );
 };
-
-// className={`${cls.Cover} ${cls[coverposition]}`}

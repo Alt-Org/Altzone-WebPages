@@ -1,110 +1,83 @@
 'use client';
 import { TFunction } from 'i18next';
 import Image from 'next/image';
-import { ForwardedRef, forwardRef } from 'react';
+import { ReactNode } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
 import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png';
-import { MaterialType, Piece, SetInfo } from '../../types/furniture';
-import { PieceCard } from '../PieceCard/PieceCard';
+import Dialog from '@/shared/ui/Dialog/Dialog';
+import { MaterialType, Piece } from '../../types/furniture';
 import cls from './PieceView.module.scss';
 
-type Props = {
+interface Props {
     piece: Piece;
-    set: SetInfo;
-};
+    leftCorner?: ReactNode;
+    isOpen: boolean;
+    onClose: () => void;
+}
 
 const materialsToString = (materials: Array<MaterialType>, t: TFunction): string => {
-    let str = '';
-
-    let comma = false;
-    for (const material of materials) {
-        if (comma) {
-            str = str + ', ';
-        }
-        comma = true;
-
-        str = str + t(material.name);
-    }
-
-    return str;
+    return materials.map((material) => t(material.name)).join(', ');
 };
 
-const PieceView = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
-    const { piece, set } = props;
-
+const PieceView = ({ piece, leftCorner, isOpen, onClose }: Props) => {
     const { t } = useClientTranslation('furnitureinfo');
+    const { set, rarity } = piece;
+    const { lightcolor, darkcolor } = rarity;
 
-    const onClose = () => {
-        if (!ref) {
-            return;
-        }
-        if (!('current' in ref)) {
-            return;
-        }
-        const div = ref.current;
-        if (!div) {
-            return;
-        }
-
-        div.style.display = 'none';
-    };
-
-    // const { color, lightcolor, darkcolor } = piece.rarity;
-
-    piece.set = set;
     return (
-        <div
-            ref={ref}
-            className={cls.Background}
+        <Dialog
+            isOpen={isOpen}
+            onClose={onClose}
         >
-            <button
-                onClick={onClose}
-                className={cls.Catch}
-            />
-            <div className={cls.Container}>
-                <div className={cls.Content}>
-                    <PieceCard item={piece} />
-                    <div className={cls.Info}>
-                        <h2 className={cls.Title}>{t(`${set.path}.ITEMS.${piece.path}.name`)}</h2>
-                        <div className={cls.Table}>
-                            <div>
-                                <label>{t('label-weight')}:</label>
-                                <p>{piece.weight} kg</p>
-                            </div>
-                            <div>
-                                <label>{t('label-price')}:</label>
-                                <p>{piece.cost}</p>
+            <section className={cls.Container}>
+                <div className={cls.leftCorner}>{leftCorner}</div>
+
+                <article className={cls.rightCorner}>
+                    <h2
+                        className={cls.Title}
+                        style={{ color: lightcolor }}
+                    >
+                        {t(`${set?.path}.ITEMS.${piece.path}.name`, {
+                            defaultValue: 'Unknown Item',
+                        })}
+                    </h2>
+
+                    <div className={cls.Details}>
+                        <div className={cls.DetailItem}>
+                            <span className={cls.Label}>{t('label-weight')}:</span>
+                            <span className={cls.Value}>{piece.weight} kg</span>
+                        </div>
+                        <div className={cls.DetailItem}>
+                            <span className={cls.Label}>{t('label-price')}:</span>
+                            <span className={cls.Value}>
+                                {piece.cost}
                                 <Image
                                     className={cls.Coin}
                                     src={coinIcon}
-                                    alt={'coin-icon'}
+                                    alt={t('label-coin-icon')}
                                 />
-                            </div>
-                            <div>
-                                <label>{t('label-author')}:</label>
-                                <p>{set.author}</p>
-                            </div>
-                            <div>
-                                <label>{t('label-materials')}:</label>
-                                <p>{materialsToString(piece.materials, t)}</p>
-                            </div>
+                            </span>
                         </div>
-                        <p>{t(`${set.path}.ITEMS.${piece.path}.desc`)}</p>
+                        <div className={cls.DetailItem}>
+                            <span className={cls.Label}>{t('label-author')}:</span>
+                            <span className={cls.Value}>{set?.author || t('label-unknown')}</span>
+                        </div>
+                        <div className={cls.DetailItem}>
+                            <span className={cls.Label}>{t('label-materials')}:</span>
+                            <span className={cls.Value}>
+                                {materialsToString(piece.materials, t)}
+                            </span>
+                        </div>
                     </div>
-                    <Button
-                        onClick={onClose}
-                        className={cls.Close}
-                        theme={ButtonTheme.Graffiti}
-                    >
-                        X
-                    </Button>
-                </div>
-            </div>
-        </div>
+                    <p style={{ color: darkcolor }}>
+                        {t(`${set?.path}.ITEMS.${piece.path}.desc`, {
+                            defaultValue: 'No description available',
+                        })}
+                    </p>
+                </article>
+            </section>
+        </Dialog>
     );
-});
-
-PieceView.displayName = 'PieceView';
+};
 
 export default PieceView;
