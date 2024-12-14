@@ -47,7 +47,7 @@ import {
     SetInfo,
     PieceRarity,
     Rarities,
-    Types,
+    Category,
     FurnitureSetCoverPosition,
     PieceType,
     Materials,
@@ -93,44 +93,44 @@ export const rarityList: Record<Rarities, PieceRarity> = {
         index: 4,
     },
 };
-export const types: Record<Types, PieceType> = {
-    [Types.CHAIRS]: {
+export const categories: Record<Category, PieceType> = {
+    [Category.CHAIRS]: {
         name: 'TYPES.CHAIRS.name',
     },
-    [Types.CABINETS]: {
+    [Category.CABINETS]: {
         name: 'TYPES.CABINETS.name',
     },
-    [Types.COUCHES]: {
+    [Category.COUCHES]: {
         name: 'TYPES.COUCHES.name',
     },
-    [Types.LIGHTS]: {
+    [Category.LIGHTS]: {
         name: 'TYPES.LIGHTS.name',
     },
-    [Types.PLANTS]: {
+    [Category.PLANTS]: {
         name: 'TYPES.PLANTS.name',
     },
-    [Types.TABLES]: {
+    [Category.TABLES]: {
         name: 'TYPES.TABLES.name',
     },
-    [Types.RUGS]: {
+    [Category.RUGS]: {
         name: 'TYPES.RUGS.name',
     },
-    [Types.WALL]: {
+    [Category.WALL]: {
         name: 'TYPES.WALL.name',
     },
-    [Types.MIRRORS]: {
+    [Category.MIRRORS]: {
         name: 'TYPES.MIRRORS.name',
     },
-    [Types.TOILETS]: {
+    [Category.TOILETS]: {
         name: 'TYPES.TOILETS.name',
     },
-    [Types.SINKS]: {
+    [Category.SINKS]: {
         name: 'TYPES.SINKS.name',
     },
-    [Types.BEDS]: {
+    [Category.BEDS]: {
         name: 'TYPES.BEDS.name',
     },
-    [Types.ITEMS]: {
+    [Category.ITEMS]: {
         name: 'TYPES.ITEMS.name',
     },
 };
@@ -233,7 +233,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 {
                     path: 'CLOCK',
                     num: 'F30',
-                    type: types.WALL,
+                    type: categories.WALL,
                     weight: 1,
                     cost: 40,
                     rarity: rarityList.COMMON,
@@ -244,7 +244,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 {
                     path: 'CHAIR',
                     num: 'R44.1',
-                    type: types.CHAIRS,
+                    type: categories.CHAIRS,
                     weight: 10,
                     cost: 170,
                     rarity: rarityList.EPIC,
@@ -255,7 +255,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 {
                     path: 'STOOL',
                     num: 'R41',
-                    type: types.CHAIRS,
+                    type: categories.CHAIRS,
                     weight: 4,
                     cost: 40,
                     rarity: rarityList.COMMON,
@@ -266,7 +266,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 {
                     path: 'DRAWER',
                     num: 'F41.1',
-                    type: types.CABINETS,
+                    type: categories.CABINETS,
                     weight: 24,
                     cost: 100,
                     rarity: rarityList.RARE,
@@ -286,7 +286,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             items: [
                 {
                     num: 'R45.0',
-                    type: types.COUCHES,
+                    type: categories.COUCHES,
                     path: 'COUCH',
                     weight: 30,
                     cost: 150,
@@ -297,7 +297,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R45.0',
-                    type: types.CHAIRS,
+                    type: categories.CHAIRS,
                     path: 'ARMCHAIR',
                     weight: 16,
                     cost: 120,
@@ -308,7 +308,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R45.0',
-                    type: types.LIGHTS,
+                    type: categories.LIGHTS,
                     // eslint-disable-next-line max-lines
                     path: 'FLOORLAMP',
                     weight: 2.8,
@@ -320,7 +320,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R45.0',
-                    type: types.TABLES,
+                    type: categories.TABLES,
                     path: 'TABLE',
                     weight: 26,
                     cost: 80,
@@ -331,7 +331,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R45.0',
-                    type: types.TABLES,
+                    type: categories.TABLES,
                     path: 'SIDETABLE',
                     weight: 16,
                     cost: 60,
@@ -342,7 +342,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R45.0',
-                    type: types.MIRRORS,
+                    type: categories.MIRRORS,
                     path: 'FULLMIRROR',
                     weight: 8,
                     cost: 100,
@@ -353,7 +353,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R45.0',
-                    type: types.CABINETS,
+                    type: categories.CABINETS,
                     path: 'CLOSET',
                     weight: 48,
                     cost: 120,
@@ -373,7 +373,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             items: [
                 {
                     num: 'F41.8',
-                    type: types.COUCHES,
+                    type: categories.COUCHES,
                     path: 'COUCH',
                     weight: 27,
                     cost: 130,
@@ -384,7 +384,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F41.8',
-                    type: types.CHAIRS,
+                    type: categories.CHAIRS,
                     path: 'ARMCHAIR',
                     weight: 13,
                     cost: 100,
@@ -395,7 +395,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: '',
-                    type: types.LIGHTS,
+                    type: categories.LIGHTS,
                     path: 'CEILINGLAMP',
                     weight: 2,
                     cost: 200,
@@ -406,7 +406,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: '',
-                    type: types.TABLES,
+                    type: categories.TABLES,
                     path: 'DININGTABLE',
                     weight: 30,
                     cost: 100,
@@ -417,7 +417,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: '',
-                    type: types.TABLES,
+                    type: categories.TABLES,
                     path: 'TABLE',
                     weight: 20,
                     cost: 60,
@@ -428,7 +428,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: '',
-                    type: types.BEDS,
+                    type: categories.BEDS,
                     path: 'BED',
                     weight: 20,
                     cost: 200,
@@ -439,7 +439,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F41.2',
-                    type: types.RUGS,
+                    type: categories.RUGS,
                     path: 'CARPET',
                     weight: 6,
                     cost: 150,
@@ -450,7 +450,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F40.8',
-                    type: types.WALL,
+                    type: categories.WALL,
                     path: 'MIRROR',
                     weight: 10,
                     cost: 170,
@@ -461,7 +461,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F41.8',
-                    type: types.CABINETS,
+                    type: categories.CABINETS,
                     path: 'CLOSET',
                     weight: 45,
                     cost: 130,
@@ -472,7 +472,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R45.5',
-                    type: types.ITEMS,
+                    type: categories.ITEMS,
                     path: 'CANDLES',
                     weight: 0.3,
                     cost: 30,
@@ -483,7 +483,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'R46.1',
-                    type: types.ITEMS,
+                    type: categories.ITEMS,
                     path: 'BOOKS',
                     weight: 3,
                     cost: 60,
@@ -494,7 +494,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F60.7',
-                    type: types.ITEMS,
+                    type: categories.ITEMS,
                     path: 'PLUSH',
                     weight: 1,
                     cost: 100,
@@ -505,7 +505,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F32',
-                    type: types.ITEMS,
+                    type: categories.ITEMS,
                     path: 'FLOWER',
                     weight: 2,
                     cost: 50,
@@ -516,7 +516,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F60.4',
-                    type: types.ITEMS,
+                    type: categories.ITEMS,
                     path: 'BOOK',
                     weight: 0.5,
                     cost: 30,
@@ -527,7 +527,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F43.1',
-                    type: types.ITEMS,
+                    type: categories.ITEMS,
                     path: 'PILLOW',
                     weight: 0.5,
                     cost: 50,
@@ -547,7 +547,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             items: [
                 {
                     num: 'F44',
-                    type: types.COUCHES,
+                    type: categories.COUCHES,
                     path: 'COUCH',
                     weight: 20,
                     cost: 100,
@@ -558,7 +558,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.CHAIRS,
+                    type: categories.CHAIRS,
                     path: 'ARMCHAIR',
                     weight: 5,
                     cost: 60,
@@ -569,7 +569,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.PLANTS,
+                    type: categories.PLANTS,
                     path: 'FICUS',
                     weight: 3,
                     cost: 120,
@@ -580,7 +580,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.PLANTS,
+                    type: categories.PLANTS,
                     path: 'FLOWERS',
                     weight: 1,
                     cost: 50,
@@ -591,7 +591,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.TABLES,
+                    type: categories.TABLES,
                     path: 'COFFEETABLE',
                     weight: 20,
                     cost: 60,
@@ -602,7 +602,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.TABLES,
+                    type: categories.TABLES,
                     path: 'DRAWER',
                     weight: 17,
                     cost: 100,
@@ -613,7 +613,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.RUGS,
+                    type: categories.RUGS,
                     path: 'OLDCARPET',
                     weight: 7,
                     cost: 150,
@@ -624,7 +624,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.RUGS,
+                    type: categories.RUGS,
                     path: 'NEWCARPET',
                     weight: 7,
                     cost: 150,
@@ -635,7 +635,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.WALL,
+                    type: categories.WALL,
                     path: 'PAINTING',
                     weight: 2,
                     cost: 40,
@@ -646,7 +646,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.WALL,
+                    type: categories.WALL,
                     path: 'DRAWINGS',
                     weight: 1,
                     cost: 60,
@@ -657,7 +657,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.WALL,
+                    type: categories.WALL,
                     path: 'PICTURES',
                     weight: 2,
                     cost: 60,
@@ -668,7 +668,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.WALL,
+                    type: categories.WALL,
                     path: 'OLDWINDOW',
                     weight: 1,
                     cost: 50,
@@ -679,7 +679,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.WALL,
+                    type: categories.WALL,
                     path: 'NEWWINDOW',
                     weight: 1,
                     cost: 50,
@@ -690,7 +690,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
                 },
                 {
                     num: 'F44',
-                    type: types.ITEMS,
+                    type: categories.ITEMS,
                     path: 'FOXTOY',
                     weight: 1,
                     cost: 70,

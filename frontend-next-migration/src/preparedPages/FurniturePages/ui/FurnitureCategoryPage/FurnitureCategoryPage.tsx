@@ -1,6 +1,11 @@
 'use client';
 import { useState, useMemo, useCallback } from 'react';
-import { FurnitureManager, types, PieceCard, FurnitureCardsContainer } from '@/entities/Furniture';
+import {
+    FurnitureManager,
+    categories,
+    PieceCard,
+    FurnitureCardsContainer,
+} from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
@@ -12,12 +17,13 @@ import cls from './FurnitureCategoryPage.module.scss';
 const FurnitureCategoryPage = () => {
     const { t } = useClientTranslation('furniturecategory');
     const manager = useMemo(() => new FurnitureManager(), []);
-    const [category, setCategory] = useState(types.CHAIRS);
+
+    const [category, setCategory] = useState(categories.CHAIRS);
     const list = useMemo(() => manager.getPiecesByCategory(category), [manager, category]);
-    const categories = useMemo(() => Object.entries(types), []);
+    const cats = useMemo(() => Object.entries(categories), []);
     const renderCategoryButtons = useCallback(
         () =>
-            categories.map(([cat, value]) => (
+            cats.map(([cat, value]) => (
                 <Button
                     key={cat}
                     className={classNames(cls.categoryButton, { [cls.active]: value === category })}
@@ -26,7 +32,7 @@ const FurnitureCategoryPage = () => {
                     {t(cat)}
                 </Button>
             )),
-        [categories, t, category],
+        [t, category, cats],
     );
 
     const renderPieceCards = useCallback(() => <FurnitureCardsContainer items={list} />, [list]);

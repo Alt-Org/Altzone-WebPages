@@ -1,7 +1,7 @@
 import { useServerTranslation } from '@/shared/i18n';
 import { SetInfo } from '../types/furniture';
 import { FurnitureManager } from './FurnitureManager';
-import { types } from './initializeFurniture';
+import { categories } from './initializeFurniture';
 
 describe('FurnitureManager', () => {
     const manager = new FurnitureManager();
@@ -23,7 +23,7 @@ describe('FurnitureManager', () => {
     });
 
     it('should return pieces in only same category', () => {
-        Object.entries(types).map((info) => {
+        Object.entries(categories).map((info) => {
             const type = info[1];
 
             const items = manager.getPiecesByCategory(type);

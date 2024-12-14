@@ -22,7 +22,7 @@ export interface PieceRarity {
     index: number;
 }
 
-export enum Types {
+export enum Category {
     COUCHES = 'COUCHES',
     CHAIRS = 'CHAIRS',
     LIGHTS = 'LIGHTS',

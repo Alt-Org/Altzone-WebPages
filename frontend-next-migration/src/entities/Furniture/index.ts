@@ -5,7 +5,7 @@ export { PieceCard } from './ui/PieceCard/PieceCard';
 export { default as PieceView } from './ui/PieceView/PieceView';
 export { default as FurnitureCardsContainer } from './ui/CardsContainer/CardsContainer';
 
-export { types } from './model/initializeFurniture';
+export { categories } from './model/initializeFurniture';
 
 export type {
     FurnitureSetCoverPosition,
@@ -16,7 +16,7 @@ export type {
     MaterialType,
     Recycles,
     RecycleType,
-    Types,
+    Category,
     PieceType,
     Rarities,
     PieceRarity,

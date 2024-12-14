@@ -63,7 +63,7 @@ export class FurnitureManager {
             .filter((set): set is SetInfo => set !== null);
     }
     /**
-     * import Types from initializeFurniture and use those as category id
+     * import Category from initializeFurniture and use those as category id
      *
      * @param {PieceType} cat Short for category
      * @returns {Array<Piece>} Returns an array of Pieces with the same category
