@@ -5,10 +5,10 @@ import { FurnitureManager } from '@/entities/Furniture';
 import { notFound } from 'next/navigation';
 import { capitalizeFirstLetter } from '@/shared/lib/capitalizeFirstLetter';
 
-export async function _getPage(lng: string, id: string) {
+export async function _getPage(lng: string, category: string) {
     const { t } = await useServerTranslation(lng, 'furnitureinfo');
     const manager = new FurnitureManager();
-    const set = manager.getFurnitureSet(id);
+    const set = manager.getFurnitureSet(category);
 
     if (!set) {
         return notFound();
