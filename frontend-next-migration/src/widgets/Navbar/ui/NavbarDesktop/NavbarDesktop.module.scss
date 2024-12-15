@@ -75,6 +75,7 @@
 
   &.active {
     color: var(--secondary-color)!important;
+    font-weight: 600;
     &>a{
       color: var(--secondary-color)!important;
       font-weight: 600;
