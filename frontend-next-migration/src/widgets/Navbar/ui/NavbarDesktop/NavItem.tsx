@@ -1,13 +1,12 @@
 'use client';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import { memo } from 'react';
 import { useUserPermissionsV2 } from '@/entities/Auth';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
-import { NavbarBuild, NavbarMenuItem } from '../../model/types';
+import { NavbarMenuItem } from '../../model/types';
 import cls from './NavbarDesktop.module.scss';
 
 type NavItemProps = {
