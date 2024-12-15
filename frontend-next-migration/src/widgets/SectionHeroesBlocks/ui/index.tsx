@@ -42,7 +42,10 @@ function Main(props: Props) {
         : heroesGroups2;
 
     return (
-        <Container fluid={true}>
+        <Container
+            fluid={true}
+            className={cls.container}
+        >
             <section className={cls.Section}>
                 <h1 className={cls.Header}>{title}</h1>
 

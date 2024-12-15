@@ -6,11 +6,35 @@
 
 
     h1 {
-        font-size: var(--font-line-xxxl);
+        font-size: var(--font-line-4xl);
         line-height: 1.5;
         font-weight: bold;
         text-align: center;
         margin: 40px auto;
-        color: var(--secondary-color);
+        color: var(--primary-color);
+
+
+        &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            margin: 0 auto 0;
+            border-radius: var(--border-radius-custom);
+            animation: lineExpand 1s ease-in-out forwards;
+        }
     }
+
+
+    @keyframes lineExpand {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 40%;
+        }
+    }
+
+
 }
