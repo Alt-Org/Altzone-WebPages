@@ -6,6 +6,10 @@
   flex-direction: column;
   gap: 1rem;
 
+  border-radius: var(--border-radius-custom);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+
 }
 
 .Header{
