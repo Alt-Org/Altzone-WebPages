@@ -14,8 +14,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         className = '',
         childrenWrapperClassName = '',
         contentClassName = '',
-        //todo for some reason doesnt work (we cant see it in html)
-        // contentItemClassName = '',
+        contentItemClassName = '',
         elements,
         isDisabled,
         children,
@@ -162,10 +161,9 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                         <AppLink
                                             to={element.link.path}
                                             isExternal={element.link.isExternal}
-                                            className={classNames('', {
+                                            className={classNames(contentItemClassName, {
                                                 [cls.active]: element.active,
                                             })}
-                                            // className={classNames(contentItemClassName, {[cls.active]: element.active})}
                                         >
                                             {element.elementText}
                                             {element.link.isExternal && (

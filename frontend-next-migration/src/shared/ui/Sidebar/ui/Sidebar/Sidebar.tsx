@@ -153,6 +153,7 @@ export const Sidebar = ({
                     item={item}
                     collapsed={isCollapsed}
                     key={item.name}
+                    active={item.active}
                 />
             )),
         [isCollapsed, sidebarItemsList],
