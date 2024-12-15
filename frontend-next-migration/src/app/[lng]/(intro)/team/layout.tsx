@@ -21,7 +21,7 @@ export default async function TeamLayout({ children, params }: Props) {
     return (
         <>
             <LayoutWithIntro
-                introHeight={'86vh'}
+                introHeight={'800px'}
                 title={t('page-title')}
                 overlayColor={'rgba(7, 27, 30, 0.5'}
                 bgImage={introBg.src}
