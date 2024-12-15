@@ -55,11 +55,11 @@
   }
 
   a {
-    color: var(--inverted-primary-color);
-  }
-
-  a:hover {
-    color: var(--secondary-color)
+    text-decoration: underline;
+    color: var(--inverted-primary-color)!important;
+    &:hover {
+      color: var(--secondary-color)!important;
+    }
   }
 
 }
