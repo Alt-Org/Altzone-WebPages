@@ -13,22 +13,22 @@ import cls from './NavbarDesktop.module.scss';
 type NavItemProps = {
     item: NavbarMenuItem;
     className?: string;
+    currentPath?: string;
 };
 
 const NavItem = memo((props: NavItemProps) => {
-    const { item, className = '' } = props;
+    const { item, className = '', currentPath = '' } = props;
     const { type: itemType } = item;
     const { t } = useClientTranslation('navbar');
     const { checkPermissionFor } = useUserPermissionsV2();
-    const pathname = usePathname();
-
-    const isActive = itemType === 'navLink' && pathname === item.path;
 
     if (itemType === 'navLink') {
         return (
             <li
                 key={item.path}
-                className={classNames(cls.navItem, { [cls.active]: isActive }, [className])}
+                className={classNames(cls.navItem, { [cls.active]: currentPath === item.path }, [
+                    className,
+                ])}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
@@ -49,18 +49,33 @@ const NavItem = memo((props: NavItemProps) => {
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
-                return {
+                // @ts-ignore
+                const transformedElement = {
                     // @ts-ignore
                     ...element,
                     // @ts-ignore
                     elementText: t(`${element.elementText}`),
+                    // @ts-ignore
+                    // contentItemClassName: cls.dropdownElement,
+                    contentItemClassName: classNames(cls.dropdownElement, {
+                        [cls.active]: currentPath === element?.link?.path,
+                    }),
+                    // @ts-ignore
+                    active: currentPath === element?.link?.path,
                 };
+
+                return transformedElement;
             })
             .filter((element) => element !== null);
+
+        // console.log(localizedElements)
+
+        const isDropdownActive = localizedElements.some((element) => element.active);
+
         return (
             <li
                 key={item.name}
-                className={classNames(cls.navItem, {}, [className])}
+                className={classNames(cls.navItem, { [cls.active]: isDropdownActive }, [className])}
             >
                 <DropdownWrapper
                     elements={localizedElements}

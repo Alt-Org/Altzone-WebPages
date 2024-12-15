@@ -1,3 +1,4 @@
+import { usePathname } from 'next/navigation';
 import { CSSProperties, memo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
@@ -81,6 +82,9 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         setIsAnimating(false);
     };
 
+    const pathname = usePathname();
+    const realPath = `/${pathname.split('/')[2]}`;
+
     return (
         <nav
             className={classNames(cls.siteNav, mods, [className])}
@@ -91,9 +95,10 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                 <ul className={classNames(cls.siteNavContentList, ModsUlAndLi)}>
                     {navbarBuild.menu.map((item) => (
                         <NavItem
+                            currentPath={realPath}
                             item={item}
                             key={item.name}
-                            className={classNames(cls.navItem, ModsUlAndLi)}
+                            className={classNames('', ModsUlAndLi)}
                         />
                     ))}
 
