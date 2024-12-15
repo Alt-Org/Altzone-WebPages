@@ -18,7 +18,7 @@
             content: '';
             display: block;
             width: 0;
-            height: 2px;
+            height: 4px;
             background-color: var(--secondary-color);
             margin: 0 auto 0;
             border-radius: var(--border-radius-custom);
@@ -32,7 +32,8 @@
             width: 0;
         }
         100% {
-            width: 40%;
+            width: 400px;
+            max-width: 70vw;
         }
     }
 
