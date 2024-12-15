@@ -28,7 +28,7 @@ const FurnitureSearchPage = () => {
     const list = manager.getPiecesByKeyword(input, useClientTranslation('furnitureinfo').t);
     return (
         <>
-            <h1>{t('results')}</h1>
+            <h1 className={cls.title}>{t('results')}</h1>
             <div className={cls.Searchbar}>
                 <input
                     onInput={oninput}

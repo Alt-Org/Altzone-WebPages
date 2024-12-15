@@ -22,7 +22,8 @@
 
   h1{
     font-size: clamp(40px, 7vw, 50px);
-    font-family: var(--font-family-main);
+    font-family: var(--font-family-main), serif;
+    color: var(--secondary-color);
     line-height: 1.5;
     font-weight: bold;
     text-align: center;

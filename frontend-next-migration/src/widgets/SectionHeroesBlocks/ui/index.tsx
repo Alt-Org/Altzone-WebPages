@@ -4,10 +4,10 @@ import { HeroManager } from '@/entities/Hero';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
-import HeroesBlocks from './heroesBlocks/HeroesBlocks';
-import cls from './main.module.scss';
 import { Container } from '@/shared/ui/Container';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import HeroesBlocks from './heroesBlocks/HeroesBlocks';
+import cls from './main.module.scss';
 
 const sameBg = undefined;
 
@@ -44,7 +44,7 @@ function Main(props: Props) {
     return (
         <Container fluid={true}>
             <section className={cls.Section}>
-                <h2 className={cls.Header}>{title}</h2>
+                <h1 className={cls.Header}>{title}</h1>
 
                 {displayedGroups.map((group) => (
                     <HeroesBlocks
