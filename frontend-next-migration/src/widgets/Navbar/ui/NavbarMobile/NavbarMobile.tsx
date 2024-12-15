@@ -12,16 +12,6 @@ import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
-// /**
-//  * Properties for NavbarTouchComponent component
-//  *
-//  * @property {number} marginTop Margin at the top
-//  * @property {(isMenuOpen: boolean) => void} onBurgerButtonClick The function is informed in the button event whether the sidebar is open.
-//  * @property {string} className Additional CSS classes
-//  * @property {string} side On which side does the sidebar appear?
-//  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
-//  * @property {NavBarType} navNarType Navbar type
-//  */
 export interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
@@ -48,8 +38,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    // const { isFixed, toggleFixed } = useFixed();
-    // const { isCollapsed, toggleCollapsed } = useCollapsed();
     const hasScrollbar = useIsPageScrollbar();
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
