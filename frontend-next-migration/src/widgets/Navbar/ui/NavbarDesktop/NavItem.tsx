@@ -93,7 +93,8 @@ const NavItem = memo((props: NavItemProps) => {
         return (
             <li
                 key={item.src}
-                className={className}
+                className={classNames(cls.navItem, {}, [className])}
+                // className={className}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
