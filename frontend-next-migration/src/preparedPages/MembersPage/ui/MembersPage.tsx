@@ -11,7 +11,10 @@ import cls from './MembersPage.module.scss';
  */
 const MembersPage: FC = () => {
     return (
-        <div className={classNames(cls.MembersPage)}>
+        <div
+            id={'members'}
+            className={classNames(cls.MembersPage)}
+        >
             <SectionMembers className={cls.workersSection} />
         </div>
     );

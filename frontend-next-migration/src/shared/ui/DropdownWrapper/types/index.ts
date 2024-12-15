@@ -9,6 +9,7 @@ export type DropDownElementASTextOrLink = {
     id?: string;
     elementText: string;
     link?: Link;
+    active?: boolean;
     onClickCallback?: () => void;
     dataTestId?: string;
     isDisabled?: {

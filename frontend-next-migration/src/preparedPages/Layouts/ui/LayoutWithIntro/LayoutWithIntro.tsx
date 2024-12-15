@@ -1,7 +1,7 @@
 import { ReactNode, CSSProperties } from 'react';
-import cls from './LayoutWithIntro.module.scss';
 import { BlurLine } from '@/shared/ui/PageDividers';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './LayoutWithIntro.module.scss';
 
 interface LayoutWithIntroProps {
     bgImage: string;
@@ -9,6 +9,7 @@ interface LayoutWithIntroProps {
     description: string;
     bottomAdditional?: ReactNode;
     introHeight?: string;
+    introMinHeight?: string;
     overlayColor?: string;
     blurLineClass?: string;
     children: ReactNode;
@@ -20,6 +21,7 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
         title,
         description,
         bottomAdditional,
+        introMinHeight = '50vh',
         introHeight = '50vh',
         overlayColor = 'rgba(0, 0, 0, 0.5)',
         blurLineClass = '',
@@ -33,7 +35,8 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
                 style={
                     {
                         backgroundImage: `url(${bgImage})`,
-                        minHeight: introHeight,
+                        height: introHeight,
+                        minHeight: introMinHeight,
                         '--overlay-color': overlayColor,
                     } as CSSProperties
                 }

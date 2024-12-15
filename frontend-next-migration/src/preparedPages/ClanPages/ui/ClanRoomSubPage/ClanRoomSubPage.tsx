@@ -15,38 +15,42 @@ import {
 } from '../_components/clanoverview/clanViewAndSearch';
 import cls from './ClanRoomSubPage.module.scss';
 
-type Props = {
-    toastMessages: {
-        error: string;
-        notLoggedIn: string;
-        clanNotOpen: string;
-        editMode: string;
-    };
-    buttons: {
-        joinClan: string;
-        leaveClan: string;
-        editClan: string;
-    };
-    clanInfo: {
-        memberListTitle: string;
-        mottoText: string;
-        infoText: string;
-        assetsText: string;
-        memberCountText: string;
-        languageText: string;
-        goalText: string;
-        ageLimitText: string;
-        winsText: string;
-        lossesText: string;
+export type Props = {
+    translations: {
+        toastMessages: {
+            error: string;
+            notLoggedIn: string;
+            clanNotOpen: string;
+            editMode: string;
+        };
+        buttons: {
+            joinClan: string;
+            leaveClan: string;
+            editClan: string;
+        };
+        clanInfo: {
+            memberListTitle: string;
+            mottoText: string;
+            infoText: string;
+            assetsText: string;
+            memberCountText: string;
+            languageText: string;
+            goalText: string;
+            ageLimitText: string;
+            winsText: string;
+            lossesText: string;
+        };
     };
 };
 
 const ClanRoomSubPage = (props: Props) => {
+    const { translations } = props;
+
     const {
         toastMessages,
         buttons,
         clanInfo: { memberListTitle, mottoText, infoText, ...rest },
-    } = props;
+    } = translations;
 
     const { id } = useParams();
     const { isMobileSize } = useIsMobileSize();

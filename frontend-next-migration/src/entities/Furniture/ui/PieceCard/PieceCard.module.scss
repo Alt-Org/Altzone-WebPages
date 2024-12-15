@@ -1,0 +1,115 @@
+.ViewContainer {
+    //cursor: pointer;
+}
+
+
+.Card,.StaticCard {
+    height: auto;
+    aspect-ratio: 1 / 1.5;
+    margin: 8px;
+    position: relative;
+}
+
+.Card {
+    transition: transform 0.3s ease-in-out;
+
+
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+
+.StaticCard{
+    cursor: crosshair;
+
+    @media (max-width: breakpoint(sm)){
+        margin: auto;
+        height: 250px;
+    }
+
+    @media (max-width: breakpoint(xs)) {
+        margin: auto;
+        height: 220px;
+    }
+
+}
+
+.Content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    transition: transform 0.3s ease;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.7));
+
+    .Title {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        color: white;
+        text-shadow: 2px 2px black;
+        font-size: 2em;
+        text-align: center;
+        z-index: 3;
+
+        @media (max-width: 768px) {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 1em;
+        }
+    }
+
+    .Id {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        color: white;
+        text-shadow: 1px 1px black;
+        font-size: 1em;
+    }
+
+    .Cover {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: auto;
+        //max-height: 100%;
+        //object-fit: fill;
+        object-fit: contain;
+        z-index: 2;
+    }
+
+
+    //todo should be fixed, idk why we should hardcode it
+    .Full {
+        width: 70%;
+    }
+    .Medium {
+        width: 90%;
+    }
+    .Small {
+        width: 100%;
+    }
+
+}
+
+.Container {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.StaticContainer{
+    cursor: auto;
+}
+

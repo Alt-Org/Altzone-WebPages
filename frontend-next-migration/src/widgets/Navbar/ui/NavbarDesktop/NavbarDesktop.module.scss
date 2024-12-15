@@ -69,6 +69,11 @@
     overflow-x: hidden;
   }
 
+  &.active {
+    color: orange;
+    font-weight: bold;
+  }
+
 }
 
 

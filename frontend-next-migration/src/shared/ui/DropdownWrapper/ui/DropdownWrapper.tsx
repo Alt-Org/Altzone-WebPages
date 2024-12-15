@@ -46,20 +46,26 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         setAnimationState('');
     };
 
-    const handleMouseOver = () => {
+    const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
+
+    const handleMouseEnter = () => {
         if (!mouseOverLeaveMode) return;
+
+        if (closeTimer) {
+            clearTimeout(closeTimer);
+            setCloseTimer(null);
+        }
         setIsOpen(true);
     };
 
-    const handleMouseOut = (event: MouseEvent<HTMLDivElement>) => {
+    const handleMouseLeave = () => {
         if (!mouseOverLeaveMode) return;
 
-        const currentTarget = event.currentTarget;
-        const relatedTarget = event.relatedTarget as Node;
-
-        if (!currentTarget.contains(relatedTarget)) {
+        const timer = setTimeout(() => {
             setIsOpen(false);
-        }
+            setCloseTimer(null);
+        }, 200);
+        setCloseTimer(timer);
     };
 
     const toggleDropdown = (): void => {
@@ -82,8 +88,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     return (
         <div
             className={classNames(cls.DropdownWrapper, mods, [className])}
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             <div
                 onClick={!isDisabled?.status ? toggleDropdown : undefined}

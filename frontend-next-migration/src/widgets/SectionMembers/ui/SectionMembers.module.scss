@@ -17,6 +17,13 @@
     cursor: not-allowed;
   }
 
+  padding: 15px 20px;
+  border-radius: var(--border-radius-custom);
+  min-width: fit-content;
+  width: clamp(100px, 10vw, 120px);
+  align-self: center;
+
+
 }
 
 .membersListContainer {
@@ -29,7 +36,7 @@
   padding-right: 1rem;
   align-items: start;
 
-  h1 {
+  h2 {
     text-transform: uppercase;
     color: var(--secondary-color);
     text-align: start;
@@ -38,7 +45,7 @@
     background-color: transparent;
   }
 
-  h2 {
+  h3 {
     color: var(--secondary-color);
     text-align: center;
     font-size: clamp(0.5rem, 3vw, 2rem);
