@@ -93,7 +93,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                         <NavItem
                             item={item}
                             key={item.name}
-                            navbarBuild={navbarBuild}
                             className={classNames(cls.navItem, ModsUlAndLi)}
                         />
                     ))}
