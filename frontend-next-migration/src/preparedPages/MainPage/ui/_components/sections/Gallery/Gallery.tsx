@@ -7,6 +7,8 @@ import cls from './Gallery.module.scss';
 import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
 import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
 import { SectionGallerias } from '@/widgets/SectionGallerias';
+import { useParams } from 'next/navigation';
+import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
 
 export type Props = {
     title: string;
@@ -22,6 +24,10 @@ export type Props = {
 
 const Gallery = (props: Props) => {
     const { title, infoText, socialsText, seeMoreLink, socialMediaLinks, videoLink } = props;
+    const params = useParams();
+    const lng = params.lng as string;
+    const language = getLanguageCode(lng);
+    const { photoObjects, isLoading } = useGetDirectusGalleryImages(language);
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -31,6 +37,8 @@ const Gallery = (props: Props) => {
     const mods = {
         [cls.inView]: inView,
     };
+
+    if (isLoading) <p>Loading...</p>;
 
     return (
         <section
@@ -62,6 +70,7 @@ const Gallery = (props: Props) => {
                 {/*/>*/}
 
                 <SectionGalleryV2
+                    images={photoObjects}
                     version={'preview'}
                     socialMediaLinks={socialMediaLinks}
                     seeMoreLink={seeMoreLink}
