@@ -57,9 +57,10 @@ const NavItem = memo((props: NavItemProps) => {
                     elementText: t(`${element.elementText}`),
                     // @ts-ignore
                     // contentItemClassName: cls.dropdownElement,
-                    contentItemClassName: classNames(cls.dropdownElement, {
-                        [cls.active]: currentPath === element?.link?.path,
-                    }),
+                    // contentItemClassName: classNames(cls.dropdownElement, {
+                    //     // @ts-ignore
+                    //     [cls.active]: currentPath === element?.link?.path,
+                    // }),
                     // @ts-ignore
                     active: currentPath === element?.link?.path,
                 };
