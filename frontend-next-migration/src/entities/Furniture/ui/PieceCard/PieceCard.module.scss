@@ -50,7 +50,7 @@
         position: absolute;
         top: 10px;
         width: 100%;
-        color: white;
+        color: var(--primary-color);
         text-shadow: 2px 2px black;
         font-size: 2em;
         text-align: center;
@@ -69,7 +69,7 @@
         position: absolute;
         bottom: 10px;
         right: 10px;
-        color: white;
+        color: var(--primary-color);
         text-shadow: 1px 1px black;
         font-size: 1em;
     }
