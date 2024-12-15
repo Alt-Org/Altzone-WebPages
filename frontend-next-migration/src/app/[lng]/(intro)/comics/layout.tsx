@@ -23,7 +23,8 @@ export default async function ComicsLayout({ children, params }: Props) {
         <>
             <ScrollTop />
             <LayoutWithIntro
-                introHeight={'800px'}
+                introMinHeight={'800px'}
+                introHeight={'86vh'}
                 title={t('page-title')}
                 overlayColor={'rgba(7, 27, 30, 0.5'}
                 bgImage={introBg.src}
