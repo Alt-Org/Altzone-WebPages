@@ -29,13 +29,10 @@ const ClickableBorder = forwardRef((props: Props, ref: ForwardedRef<HTMLDivEleme
     const { children, borderImageSource, className = '' } = props;
     const [isHovered, setIsHovered] = useState(false);
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
+    const handleFocus = () => setIsHovered(true);
+    const handleBlur = () => setIsHovered(false);
 
     const borderImageStyle = isHovered
         ? { borderImageSource: `url(${borderImageSource})` }
@@ -48,6 +45,8 @@ const ClickableBorder = forwardRef((props: Props, ref: ForwardedRef<HTMLDivEleme
             ref={ref}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             className={classNames(cls.content, mods, [className])}
             style={borderImageStyle}
         >
