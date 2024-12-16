@@ -123,14 +123,12 @@
 
   ul {
     position: absolute;
-    margin-top: 5px;
-    top: -105px;
-    height: max-content;
-    width: max-content;
+    top: -60px;
+    width: 100%;
     border-radius: var(--border-radius-custom);
     outline: 2px solid var(--inverted-primary-color);
     list-style-type: none;
-    padding: 0 10px;
+    padding: 4px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -140,6 +138,13 @@
 
   li {
     cursor: pointer;
+    height: 25px;
+    display:flex;
+    align-items: center;
+  }
+
+  li:hover {
+    color: white;
   }
 
 }
