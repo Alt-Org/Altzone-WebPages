@@ -25,7 +25,6 @@ export interface Props {
 }
 
 const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
-    const [key, setKey] = useState(Math.random());
     const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
     const [stat, setStat] = useState<Stat>({ name: 'resistance', defaultLevel: 1, rarityClass: 1 });
     const [toLevel, setToLevel] = useState<number>(0);
@@ -49,7 +48,6 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
         (heroSlug: HeroSlug) => {
             const hero = heroManager.getHeroBySlug(heroSlug) || heroManager.getAllHeroes()[0];
             setHero(initializeHeroColors(hero) as SetStateAction<Hero>);
-            setKey(Math.random());
         },
         [hero],
     );
@@ -179,15 +177,15 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
                         {isDesktopSize || isWidescreenSize ? (
                             <HeroMenu
                                 onClickCallback={onClickHero}
-                                selectedHero={hero.slug}
                                 sidebarVisible={sidebarVisible}
                                 setSidebarVisible={setSidebarVisible}
+                                selectedHero={hero.slug}
                             />
                         ) : (
                             <HeroMenuAsDropdown
                                 className={classNames(cls.dropdown, combinedModCss)}
-                                key={key}
                                 onClickCallback={onClickHero}
+                                selectedHero={hero.slug}
                             />
                         )}
                     </div>

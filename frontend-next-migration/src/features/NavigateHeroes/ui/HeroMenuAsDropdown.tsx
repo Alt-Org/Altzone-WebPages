@@ -5,15 +5,21 @@ import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
     DropdownItem,
+    DropDownElementASTextOrLink,
 } from '@/shared/ui/NavMenuWithDropdowns';
 import { useClientTranslation } from '@/shared/i18n';
 
 interface HeroMenuProps {
     className?: string;
     onClickCallback: (heroSlug: HeroSlug) => void;
+    selectedHero: HeroSlug;
 }
 
-const HeroMenuAsDropdown: React.FC<HeroMenuProps> = ({ className, onClickCallback }) => {
+const HeroMenuAsDropdown: React.FC<HeroMenuProps> = ({
+    selectedHero,
+    className,
+    onClickCallback,
+}) => {
     const { t } = useClientTranslation('heroes');
     const heroManager = new HeroManager(t);
 
@@ -27,10 +33,11 @@ const HeroMenuAsDropdown: React.FC<HeroMenuProps> = ({ className, onClickCallbac
                 elements: group.heroes.map((hero) => ({
                     elementText: hero.title,
                     id: hero.id.toString(),
+                    active: selectedHero === hero.slug,
                     onClickCallback: () => onClickCallback(hero.slug),
-                })),
+                })) as DropDownElementASTextOrLink[],
             })),
-        [],
+        [selectedHero],
     );
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = useMemo(
         () => ({
@@ -38,7 +45,7 @@ const HeroMenuAsDropdown: React.FC<HeroMenuProps> = ({ className, onClickCallbac
             openByDefault: false,
             dropdownItems: dropdownItems,
         }),
-        [],
+        [selectedHero],
     );
 
     return (

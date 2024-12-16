@@ -181,7 +181,16 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             )}
                                         </AppLink>
                                     ) : (
-                                        <span className={''}>
+                                        <span
+                                            className={''}
+                                            style={{
+                                                cursor: 'pointer',
+                                                color: element.active
+                                                    ? 'var(--secondary-color)'
+                                                    : 'white',
+                                            }}
+                                            onClick={element.onClickCallback}
+                                        >
                                             {/*<span className={contentItemClassName}>*/}
                                             {element.elementText}
                                         </span>
