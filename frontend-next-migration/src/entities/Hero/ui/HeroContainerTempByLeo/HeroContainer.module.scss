@@ -13,6 +13,23 @@
   z-index: 1;
   animation: fadeIn 1s ease-in-out;
   max-width: 99vw;
+
+  //background-color: rgba(0, 0, 0, 0.6);
+  //border-radius: var(--border-radius-custom);
+  //padding: 20px;
+  //height: 100vh;
+
+
+  @media (min-width: 1000px) {
+
+    &{
+      // todo it is ideal size for full hd , but we really cannot use it like this, so just hero container could be refactored instead
+      transform: scale(0.8);
+    }
+
+  }
+
+
 }
 
 .heroImgSideWrapper {

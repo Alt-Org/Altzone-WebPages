@@ -46,7 +46,7 @@ const FurnitureCategoryPage = () => {
 
     return (
         <>
-            <h1>{t('results')}</h1>
+            <h1 className={cls.title}>{t('results')}</h1>
             <div className={cls.Buttons}>{renderCategoryButtons()}</div>
             <div className={cls.Back}>
                 <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>

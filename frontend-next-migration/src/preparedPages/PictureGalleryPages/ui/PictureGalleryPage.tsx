@@ -1,12 +1,12 @@
 'use client';
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { SectionGalleryV2 } from '@/widgets/SectionGallery';
-import { Container } from '@/shared/ui/Container';
-import cls from './PictureGalleryPage.module.scss';
-import useSizes from '@/shared/lib/hooks/useSizes';
 import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
 import { useGetDirectusGalleryImages, getLanguageCode, PhotoObject } from '@/entities/Gallery';
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { Container } from '@/shared/ui/Container';
+import useSizes from '@/shared/lib/hooks/useSizes';
+import cls from './PictureGalleryPage.module.scss';
 
 export interface Props {
     title: string;
@@ -63,53 +63,3 @@ const PictureGalleryPage = (props: Props) => {
 };
 
 export default PictureGalleryPage;
-
-// import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
-
-// import { SectionGallerias } from '@/widgets/SectionGallerias';
-// import { SectionGalleriasPaths } from "@/shared/const/SectionGalleriasPaths";
-
-{
-    /*<p className={cls.SocialsText}>{socialsText}</p>*/
-}
-
-{
-    /* <SectionGallerias parentDirectory={SectionGalleriasPaths.artGalleries} /> */
-}
-
-{
-    /*version1*/
-}
-{
-    /*<SectionGalleryV1*/
-}
-{
-    /*    socialMediaLinks={socialMediaLinks}*/
-}
-{
-    /*    videoLink={videoLink}*/
-}
-{
-    /*/>*/
-}
-
-{
-    /*<div className={cls.videoWrapper}>*/
-}
-{
-    /*    <YouTubeFacade previewVideoYoutube={videoLink} />*/
-}
-{
-    /*</div>*/
-}
-
-{
-    /*<SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/
-}
-{
-    /*<SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />*/
-}
-
-{
-    /* version2 */
-}

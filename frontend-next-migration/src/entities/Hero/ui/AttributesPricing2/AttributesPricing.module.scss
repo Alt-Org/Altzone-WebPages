@@ -25,7 +25,7 @@
 .Dropdown {
     outline: 2px solid var(--inverted-primary-color);
     background-color: rgba(0,0,0,.7);
-    color:white;
+    color: var(--primary-color);
     border-radius: .5em;
 }
 .Price {

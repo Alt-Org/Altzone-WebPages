@@ -50,6 +50,10 @@
 }
 
 .navItem {
+
+  color: var(--primary-color);
+
+
   opacity: 1;
   transform: translateX(0) scaleX(1);
   transform-origin: right;
@@ -70,13 +74,14 @@
   }
 
   &.active {
-    color: orange;
-    font-weight: bold;
+    color: var(--secondary-color)!important;
+    //font-weight: 600;
+    &>a{
+      color: var(--secondary-color)!important;
+      //font-weight: 600;
+    }
   }
-
 }
-
-
 
 .appLinkLogo {
   display: block;

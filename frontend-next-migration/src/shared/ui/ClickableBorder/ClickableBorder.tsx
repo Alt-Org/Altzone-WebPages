@@ -27,27 +27,26 @@ type Props = {
  */
 const ClickableBorder = forwardRef((props: Props, ref: ForwardedRef<HTMLDivElement>) => {
     const { children, borderImageSource, className = '' } = props;
-    const [isHovered, setIsHovered] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
+    const handleMouseEnter = () => setIsActive(true);
+    const handleMouseLeave = () => setIsActive(false);
+    const handleFocus = () => setIsActive(true);
+    const handleBlur = () => setIsActive(false);
 
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
-
-    const borderImageStyle = isHovered
+    const borderImageStyle = isActive
         ? { borderImageSource: `url(${borderImageSource})` }
         : { borderImageSource: 'none' };
 
-    const mods = { [cls.hovered]: isHovered };
+    const mods = { [cls.hovered]: isActive };
 
     return (
         <div
             ref={ref}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             className={classNames(cls.content, mods, [className])}
             style={borderImageStyle}
         >

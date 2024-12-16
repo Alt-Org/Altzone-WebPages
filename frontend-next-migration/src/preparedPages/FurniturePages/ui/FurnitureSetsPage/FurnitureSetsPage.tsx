@@ -15,7 +15,7 @@ const FurnitureSetsPage = () => {
                 searchText={t('search')}
                 categoriesText={t('categories')}
             />
-            <h1>{t('furnituresets-title')}</h1>
+            <h1 className={cls.title}>{t('furnituresets-title')}</h1>
             <div className={cls.CardsContainer}>
                 {manager.getAllFurnitureSets().map((set) => {
                     return (

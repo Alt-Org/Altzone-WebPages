@@ -41,7 +41,7 @@ const OneSetPage = (props: FurnitureOneSetPageProps): JSX.Element => {
             <div className={cls.Back}>
                 <AppLink to={getRouteAllFurnitureSetsPage()}>{textBack}</AppLink>
             </div>
-            <h1>{header}</h1>
+            <h1 className={cls.title}>{header}</h1>
             <h3>{author}</h3>
             <FurnitureCardsContainer items={items} />
         </>
