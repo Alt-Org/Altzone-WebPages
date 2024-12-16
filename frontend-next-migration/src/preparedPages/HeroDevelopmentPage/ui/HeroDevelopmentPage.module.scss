@@ -48,6 +48,7 @@
   font-weight: bolder;
   &.isWidescreen,&.isDesktop {
     text-align: left;
+    padding-left: 1em;
   }
   &.isTablet,&.isMobile {
     text-align: center;
