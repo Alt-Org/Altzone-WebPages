@@ -1,120 +1,243 @@
 {
     "set-not-found": "Set not found",
-    "head-title": "Furniture set",
-    "head-description": "Katso huonekalusetin tietoja ja huonekaluja",
-    "head-keywords": "furniture, collection, set",
+    "head-title": "Set of Furniture",
+    "head-description": "View the pieces of a furniture set.",
+    "head-keywords": "furniture, set, collection",
     "text-back": "back",
     "price": "Price",
-    "TAAKKASET.name": "Taakka",
-    "NEUROSET.name": "Neuro",
-    "RAKKAUSSET.name": "Rakkaus",
-    "SCRODINGERSET.name": "Scrödinger",
-    "MUISTOJASET.name": "Muistoja",
-    "TAAKKASET.ITEMS.COUCH.name": "Couch",
-    "TAAKKASET.ITEMS.COUCH.desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to look heavy. The colors are from Atlas-titan's statue.",
-    "RAKKAUSSET.ITEMS.COUCH.name": "Couch",
-    "RAKKAUSSET.ITEMS.COUCH.desc": "Love yourself just the way you are.",
-    "TAAKKASET.ITEMS.ARMCHAIR.name": "Armchair",
-    "TAAKKASET.ITEMS.ARMCHAIR.desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to look heavy. The colors are from Atlas-titan's statue.",
-    "RAKKAUSSET.ITEMS.ARMCHAIR.name": "Armchair",
-    "RAKKAUSSET.ITEMS.ARMCHAIR.desc": "Love yourself just the way you are.",
-    "NEUROSET.ITEMS.CHAIR.name": "Chair",
-    "NEUROSET.ITEMS.CHAIR.desc": "The chair represents hallucinations and phobias. The chair even looks like some kind of a bug.",
-    "NEUROSET.ITEMS.STOOL.name": "Stool",
-    "NEUROSET.ITEMS.STOOL.desc": "The theme of Neuro is the effects of mental health to the brain's activity. The stool describes the theme in general.",
-    "TAAKKASET.ITEMS.FLOORLAMP.name": "Floor lamp",
-    "TAAKKASET.ITEMS.FLOORLAMP.desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to look heavy. The colors are from Atlas-titan's statue.",
-    "RAKKAUSSET.ITEMS.CEILINGLAMP.name": "Ceiling lamp",
-    "RAKKAUSSET.ITEMS.CEILINGLAMP.desc": "Love yourself just the way you are.",
-    "TAAKKASET.ITEMS.TABLE.name": "Table",
-    "TAAKKASET.ITEMS.TABLE.desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to look heavy. The colors are from Atlas-titan's statue.",
-    "TAAKKASET.ITEMS.SIDETABLE.name": "Sidetable",
-    "TAAKKASET.ITEMS.SIDETABLE.desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to look heavy. The colors are from Atlas-titan's statue.",
-    "RAKKAUSSET.ITEMS.TABLE.name": "Table",
-    "RAKKAUSSET.ITEMS.TABLE.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.DININGTABLE.name": "Dining table",
-    "RAKKAUSSET.ITEMS.DININGTABLE.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.BED.name": "Bed",
-    "RAKKAUSSET.ITEMS.BED.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.CARPET.name": "Carpet",
-    "RAKKAUSSET.ITEMS.CARPET.desc": "Love yourself just the way you are.",
-    "SCRODINGERSET.ITEMS.CARPET.name": "Carpet",
-    "SCRODINGERSET.ITEMS.CARPET.desc": "- mitä kaikkea joutuu itsestään piilottamaan nyt ja historiassa (esim. noitavainot, alkemistit, paranormaaliin uskominen) ettei tule leimatuksi mielisairaaksi tms. - kenestäkään ei voi tietää mitä joku piilottelee. - miksi juuri wc-huonekalut (osalle turvapaikka kodinkin sisällä, esim. oven saa lukkoon)",
-    "SCRODINGERSET.ITEMS.MIRROR.name": "Mirror",
-    "SCRODINGERSET.ITEMS.MIRROR.desc": "- mitä kaikkea joutuu itsestään piilottamaan nyt ja historiassa (esim. noitavainot, alkemistit, paranormaaliin uskominen) ettei tule leimatuksi mielisairaaksi tms. - kenestäkään ei voi tietää mitä joku piilottelee. - miksi juuri wc-huonekalut (osalle turvapaikka kodinkin sisällä, esim. oven saa lukkoon)",
-    "RAKKAUSSET.ITEMS.MIRROR.name": "Mirror",
-    "RAKKAUSSET.ITEMS.MIRROR.desc": "Love yourself just the way you are.",
-    "NEUROSET.ITEMS.CLOCK.name": "Clock",
-    "NEUROSET.ITEMS.CLOCK.desc": "The clock represents divided personality and bipolar disorder.",
-    "TAAKKASET.ITEMS.FULLMIRROR.name": "Mirror",
-    "TAAKKASET.ITEMS.FULLMIRROR.desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to look heavy. The colors are from Atlas-titan's statue.",
-    "SCRODINGERSET.ITEMS.SINK.name": "Sink",
-    "SCRODINGERSET.ITEMS.SINK.desc": "- mitä kaikkea joutuu itsestään piilottamaan nyt ja historiassa (esim. noitavainot, alkemistit, paranormaaliin uskominen) ettei tule leimatuksi mielisairaaksi tms. - kenestäkään ei voi tietää mitä joku piilottelee. - miksi juuri wc-huonekalut (osalle turvapaikka kodinkin sisällä, esim. oven saa lukkoon)",
-    "SCRODINGERSET.ITEMS.TOILET.name": "Toilet",
-    "SCRODINGERSET.ITEMS.TOILET.desc": "- mitä kaikkea joutuu itsestään piilottamaan nyt ja historiassa (esim. noitavainot, alkemistit, paranormaaliin uskominen) ettei tule leimatuksi mielisairaaksi tms. - kenestäkään ei voi tietää mitä joku piilottelee. - miksi juuri wc-huonekalut (osalle turvapaikka kodinkin sisällä, esim. oven saa lukkoon)",
-    "TAAKKASET.ITEMS.CLOSET.name": "Closet",
-    "TAAKKASET.ITEMS.CLOSET.desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to look heavy. The colors are from Atlas-titan's statue.",
-    "RAKKAUSSET.ITEMS.CLOSET.name": "Closet",
-    "RAKKAUSSET.ITEMS.CLOSET.desc": "Love yourself just the way you are.",
-    "NEUROSET.ITEMS.DRAWER.name": "Drawer",
-    "NEUROSET.ITEMS.DRAWER.desc": "The drawer looks afraid or anxious while holding its head as if it was in pain.",
-    "RAKKAUSSET.ITEMS.CANDLES.name": "Candles",
-    "RAKKAUSSET.ITEMS.CANDLES.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.PILLOW.name": "Pillow",
-    "RAKKAUSSET.ITEMS.PILLOW.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.FLOWER.name": "Flower",
-    "RAKKAUSSET.ITEMS.FLOWER.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.BOOK.name": "Book",
-    "RAKKAUSSET.ITEMS.BOOK.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.BOOKS.name": "Pile of books",
-    "RAKKAUSSET.ITEMS.BOOKS.desc": "Love yourself just the way you are.",
-    "RAKKAUSSET.ITEMS.PLUSH.name": "Plush toy",
-    "RAKKAUSSET.ITEMS.PLUSH.desc": "Love yourself just the way you are.",
-    "MUISTOJASET.ITEMS.COUCH.name": "Couch",
-    "MUISTOJASET.ITEMS.COUCH.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.ARMCHAIR.name": "Armchair",
-    "MUISTOJASET.ITEMS.ARMCHAIR.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.FLOWERS.name": "Flowers",
-    "MUISTOJASET.ITEMS.FLOWERS.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.COFFEETABLE.name": "Coffee table",
-    "MUISTOJASET.ITEMS.COFFEETABLE.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.PAINTING.name": "Painting",
-    "MUISTOJASET.ITEMS.PAINTING.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.PICTURES.name": "Pictures",
-    "MUISTOJASET.ITEMS.PICTURES.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.OLDWINDOW.name": "Old window",
-    "MUISTOJASET.ITEMS.OLDWINDOW.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.NEWWINDOW.name": "New window",
-    "MUISTOJASET.ITEMS.NEWWINDOW.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.FICUS.name": "Ficus",
-    "MUISTOJASET.ITEMS.FICUS.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.DRAWER.name": "Drawer",
-    "MUISTOJASET.ITEMS.DRAWER.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.OLDCARPET.name": "Old carpet",
-    "MUISTOJASET.ITEMS.OLDCARPET.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.NEWCARPET.name": "New carpet",
-    "MUISTOJASET.ITEMS.NEWCARPET.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.DRAWINGS.name": "Drawings",
-    "MUISTOJASET.ITEMS.DRAWINGS.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MUISTOJASET.ITEMS.FOXTOY.name": "Fox plush toy",
-    "MUISTOJASET.ITEMS.FOXTOY.desc": "While remembering the past, one can analyze their deeds and make conclusions or simply remember nice moments.",
-    "MATERIALS.POLYESTER.name": "Polyester",
-    "MATERIALS.WOOD.name": "Wood",
-    "MATERIALS.ALUMINIUM.name": "Aluminium",
-    "MATERIALS.LEATHER.name": "Leather",
-    "MATERIALS.FABRIC.name": "Fabric",
-    "MATERIALS.BOARD.name": "Wooden board",
-    "MATERIALS.GLASS.name": "Glass",
-    "MATERIALS.MGLASS.name": "Mirror glass",
-    "MATERIALS.PORCELAIN.name": "Porcelain",
-    "MATERIALS.MELAMINE.name": "Melamine",
-    "MATERIALS.METAL.name": "Metal",
-    "MATERIALS.ELECTRONICS.name": "Electronics",
-    "MATERIALS.PAPER.name": "Paper",
-    "MATERIALS.PLASTIC.name": "Plastic",
-    "MATERIALS.CLAY.name": "Clay",
-    "MATERIALS.PLANT.name": "Plant",
-    "MATERIALS.WAX.name": "Wax",
+    "TAAKKASET": {
+        "name": "Taakka",
+        "items": {
+            "COUCH": {
+                "name": "Couch",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "ARMCHAIR": {
+                "name": "Armchair",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "CLOSET": {
+                "name": "Closet",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "FULLMIRROR": {
+                "name": "Mirror",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "FLOORLAMP": {
+                "name": "Lamp",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "TABLE": {
+                "name": "Table",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "SIDETABLE": {
+                "name": "Side table",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            }
+        }
+    },
+    "NEUROSET": {
+        "name": "Neuro",
+        "items": {
+            "CHAIR": {
+                "name": "Chair",
+                "desc": "The chair represents hallucinations and phobias. The chair itself looks like some kind of a bug."
+            },
+            "STOOL": {
+                "name": "Stool",
+                "desc": "Neuro-set's theme is mental health's effect on the brain activity. The stool represents the theme in general."
+            },
+            "DRAWER": {
+                "name": "Drawer",
+                "desc": "The drawer looks afraid or anxious like it's holding its head as if hands settling on the area of pain."
+            },
+            "CLOCK": {
+                "name": "Clock",
+                "desc": "The clock represents divided personalities and bipolar disorder."
+            }
+        }
+    },
+    "RAKKAUSSET": {
+        "name": "Rakkaus",
+        "items": {
+            "ARMCHAIR": {
+                "name": "Armchair",
+                "desc": "Love yourself just the way you are."
+            },
+            "COUCH": {
+                "name": "Couch",
+                "desc": "Love yourself just the way you are."
+            },
+            "CEILINGLAMP": {
+                "name": "Lamp",
+                "desc": "Love yourself just the way you are."
+            },
+            "TABLE": {
+                "name": "Table",
+                "desc": "Love yourself just the way you are."
+            },
+            "DININGTABLE": {
+                "name": "Dining table",
+                "desc": "Love yourself just the way you are."
+            },
+            "BED": {
+                "name": "Bed",
+                "desc": "Love yourself just the way you are."
+            },
+            "CARPET": {
+                "name": "Carpet",
+                "desc": "Love yourself just the way you are."
+            },
+            "MIRROR": {
+                "name": "Mirror",
+                "desc": "Love yourself just the way you are."
+            },
+            "CANDLES": {
+                "name": "Candles",
+                "desc": "Love yourself just the way you are."
+            },
+            "PILLOW": {
+                "name": "Pillow",
+                "desc": "Love yourself just the way you are."
+            },
+            "FLOWER": {
+                "name": "Flower",
+                "desc": "Love yourself just the way you are."
+            },
+            "BOOK": {
+                "name": "Book",
+                "desc": "Love yourself just the way you are."
+            },
+            "BOOKS": {
+                "name": "Pile of books",
+                "desc": "Love yourself just the way you are."
+            },
+            "PLUSH": {
+                "name": "Plush toy",
+                "desc": "Love yourself just the way you are."
+            },
+            "CLOSET": {
+                "name": "Closet",
+                "desc": "Love yourself just the way you are."
+            }
+        }
+    },
+    "MUISTOJASET": {
+        "name": "Muistoja",
+        "items": {
+            "COUCH": {
+                "name": "Couch",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "ARMCHAIR": {
+                "name": "Armchair",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "FLOWERS": {
+                "name": "Flowers",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "COFFEETABLE": {
+                "name": "Coffee table",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "PAINTING": {
+                "name": "Painting",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "PICTURES": {
+                "name": "Pictures",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "OLDWINDOW": {
+                "name": "Old window",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "NEWWINDOW": {
+                "name": "New window",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "FICUS": {
+                "name": "Ficus",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "DRAWER": {
+                "name": "Drawer",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "OLDCARPET": {
+                "name": "Old carpet",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "NEWCARPET": {
+                "name": "New carpet",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "DRAWINGS": {
+                "name": "Drawings",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "FOXTOY": {
+                "name": "Fox plush",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            }
+        }
+    },
+    "materials": {
+        "POLYESTER": {
+            "name": "Polyester"
+        },
+        "WOOD": {
+            "name": "Wood"
+        },
+        "ALUMINIUM": {
+            "name": "Aluminium"
+        },
+        "LEATHER": {
+            "name": "Leather"
+        },
+        "FABRIC": {
+            "name": "Fabric"
+        },
+        "BOARD": {
+            "name": "Board"
+        },
+        "GLASS": {
+            "name": "Glass"
+        },
+        "MGLASS": {
+            "name": "Mirror glass"
+        },
+        "PORCELAIN": {
+            "name": "Porcelain"
+        },
+        "MELAMINE": {
+            "name": "Melamine"
+        },
+        "METAL": {
+            "name": "Metal"
+        },
+        "ELECTRONICS": {
+            "name": "Electronics"
+        },
+        "PAPER": {
+            "name": "Paper"
+        },
+        "PLASTIC": {
+            "name": "Plastic"
+        },
+        "CLAY": {
+            "name": "Clay"
+        },
+        "PLANT": {
+            "name": "Plant"
+        },
+        "WAX": {
+            "name": "Wax"
+        }
+    },
     "label-author": "Artist",
     "label-price": "Price",
     "label-weight": "Weight",
