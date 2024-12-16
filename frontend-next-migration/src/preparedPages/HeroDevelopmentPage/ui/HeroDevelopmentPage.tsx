@@ -174,12 +174,14 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
                 collapsed: !sidebarVisible,
                 component:
                     isDesktopSize || isWidescreenSize ? (
-                        <HeroMenu
-                            onClickCallback={onClickHero}
-                            sidebarVisible={sidebarVisible}
-                            setSidebarVisible={setSidebarVisible}
-                            selectedHero={hero.slug}
-                        />
+                        <div style={{ width: 'fit-content' }}>
+                            <HeroMenu
+                                onClickCallback={onClickHero}
+                                sidebarVisible={sidebarVisible}
+                                setSidebarVisible={setSidebarVisible}
+                                selectedHero={hero.slug}
+                            />
+                        </div>
                     ) : (
                         <HeroMenuAsDropdown
                             className={classNames(cls.dropdown, combinedModCss)}
