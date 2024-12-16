@@ -1,5 +1,5 @@
 'use client';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
@@ -18,28 +18,37 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     const { openByDefault = false } = props;
 
     const params = useParams();
+    const router = useRouter();
     const lng = params.lng as string;
     const currentCategory = params.category as string;
     const language = getLanguageCode(lng);
     const { categories } = useGetDirectusGalleryImages(language);
-    const allCategory = { name: lng === 'en' ? 'All' : 'Kaikki' };
-    const [selectedCategory, setSelectedCategory] = useState(allCategory.name.toLowerCase());
+    const allCategory = { name: lng === 'en' ? 'all' : 'kaikki' };
+    const extendedCategories = [allCategory, ...categories];
+    const [selectedCategory, setSelectedCategory] = useState(currentCategory || allCategory.name);
 
     useEffect(() => {
         if (currentCategory) setSelectedCategory(currentCategory);
     }, [currentCategory]);
 
-    const extendedCategories = [allCategory, ...categories];
+    useEffect(() => {
+        if (selectedCategory !== allCategory.name) {
+            setSelectedCategory(allCategory.name);
+            const newPath = getRouteGalleryCategoryPage(allCategory.name);
+            router.replace(newPath);
+        }
+    }, [lng]);
+
     const title = lng === 'en' ? 'Categories' : 'Kategoriat';
 
     const dropdownItems = extendedCategories.map((category) => ({
         link: {
             isExternal: false,
-            path: getRouteGalleryCategoryPage(category.name.toLowerCase()),
+            path: getRouteGalleryCategoryPage(category.name),
         },
         elementText:
             category.name.charAt(0).toUpperCase() + category.name.slice(1).replace('-', ' '),
-        active: category.name.toLowerCase() === selectedCategory,
+        active: category.name === selectedCategory,
     })) as DropDownElementASTextOrLink[];
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
