@@ -3,14 +3,36 @@ import { generateMockImages, baseImage1, baseImage2 } from '../model/mockImages'
 describe('Base Mock Images', () => {
     it('should have correct properties for baseImage1', () => {
         expect(baseImage1).toHaveProperty('id', '56789');
-        expect(baseImage1.category).toEqual({ id: '56789', name: 'All' });
+        expect(baseImage1.category).toEqual({
+            id: '56789',
+            translations: [
+                {
+                    id: 'category-56789',
+                    language: 'en',
+                    name: 'All',
+                    languages_code: 'en-US',
+                    category_id: '56789',
+                },
+            ],
+        });
         expect(baseImage1.versions.preview).toHaveProperty('altText', 'preview picture');
         expect(baseImage1.versions.full).toHaveProperty('altText', 'full picture');
     });
 
     it('should have correct properties for baseImage2', () => {
         expect(baseImage2).toHaveProperty('id', '12345');
-        expect(baseImage2.category).toEqual({ id: '12345', name: 'All' });
+        expect(baseImage2.category).toEqual({
+            id: '12345',
+            translations: [
+                {
+                    id: 'category-12345',
+                    language: 'en',
+                    name: 'All',
+                    languages_code: 'en-US',
+                    category_id: '12345',
+                },
+            ],
+        });
         expect(baseImage2.versions.preview).toHaveProperty('altText', 'preview picture');
         expect(baseImage2.versions.full).toHaveProperty('altText', 'full picture');
     });
