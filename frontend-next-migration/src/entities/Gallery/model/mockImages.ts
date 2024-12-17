@@ -11,7 +11,15 @@ export const baseImage1 = {
     id: '56789',
     category: {
         id: '56789',
-        name: 'All',
+        translations: [
+            {
+                id: 'category-56789',
+                language: 'en',
+                name: 'All',
+                languages_code: 'en-US',
+                category_id: '56789',
+            },
+        ],
     },
     versions: {
         preview: {
@@ -35,7 +43,15 @@ export const baseImage2 = {
     id: '12345',
     category: {
         id: '12345',
-        name: 'All',
+        translations: [
+            {
+                id: 'category-12345',
+                language: 'en',
+                name: 'All',
+                languages_code: 'en-US',
+                category_id: '12345',
+            },
+        ],
     },
     versions: {
         preview: {
