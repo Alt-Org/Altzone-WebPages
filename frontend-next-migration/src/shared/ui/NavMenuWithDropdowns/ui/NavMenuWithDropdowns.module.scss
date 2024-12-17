@@ -1,5 +1,15 @@
 .NavMenuWithDropdowns{
   width: 100%;
+
+  @media (max-width: breakpoint(lg)) {
+    width: 50%;
+    margin: auto;
+  }
+
+  @media (max-width: breakpoint(sm)) {
+    width: 80%;
+    margin: auto;
+  }
 }
 
 .topDropDown{
@@ -49,19 +59,5 @@
 .topDropDownContent {
   .active {
     color: var(--secondary-color);
-  }
-}
-
-@media screen and (max-width: 1020px) {
-  .NavMenuWithDropdowns{
-    width: 50%;
-    margin: auto;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .NavMenuWithDropdowns{
-    width: 80%;
-    margin: auto;
   }
 }
