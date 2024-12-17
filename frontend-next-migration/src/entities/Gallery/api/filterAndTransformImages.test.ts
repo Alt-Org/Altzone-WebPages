@@ -5,8 +5,16 @@ describe('filterAndTransformImages', () => {
         {
             id: '56789',
             category: {
-                id: '56789',
-                name: 'All',
+                id: '1',
+                translations: [
+                    {
+                        id: 'category-56789',
+                        language: 'en',
+                        name: 'Category 1',
+                        languages_code: 'en-US',
+                        category_id: '1',
+                    },
+                ],
             },
             versions: {
                 preview: {
@@ -28,8 +36,16 @@ describe('filterAndTransformImages', () => {
         {
             id: '12345',
             category: {
-                id: '12345',
-                name: 'All',
+                id: '1',
+                translations: [
+                    {
+                        id: 'category-12345',
+                        language: 'en',
+                        name: 'Category 1',
+                        languages_code: 'en-US',
+                        category_id: '1',
+                    },
+                ],
             },
             versions: {
                 preview: {
