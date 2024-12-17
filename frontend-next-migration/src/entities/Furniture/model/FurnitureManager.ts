@@ -29,10 +29,10 @@ export class FurnitureManager {
     }
 
     /**
-     * Returns the translations object for a furniture set.
+     * Returns the translation object for a furniture set.
      *
      * @param {TFunction} t Translator function. Must be set to 'furnitureinfo'
-     * @param {string} path The translation path to look for. Use 'SetInfo.path as variable'
+     * @param {string} path The translation path to look for. Use 'SetInfo.path'.
      * @returns {SetTranslation} Translation info for the set.
      */
     public getSetTranslation(t: TFunction, path: string): SetTranslation | string {
@@ -83,6 +83,14 @@ export class FurnitureManager {
             },
         };
     }
+
+    /**
+     * Returns the translation object for a piece within a furniture set.
+     *
+     * @param {SetTranslation} t Translations object. Use 'getSetTranslation' to get it.
+     * @param {string} path Translation path within set. Use 'Piece.path'.
+     * @returns {PieceTranslation} an object containing the translated name and description for a piece.
+     */
     public getPieceTranslation(t: SetTranslation | string, path: string): PieceTranslation {
         if (typeof t === 'string') {
             return { name: t, desc: t };
@@ -193,6 +201,13 @@ export class FurnitureManager {
 }
 
 let materialTranslationsMain: Record<string, MaterialTranslation> | undefined;
+/**
+ * Internal function that parses through raw translation data the first time it is called.
+ *
+ *
+ * @param t
+ * @returns
+ */
 const getMaterialMain = (t: TFunction) => {
     if (materialTranslationsMain) {
         return materialTranslationsMain;
@@ -222,6 +237,13 @@ const getMaterialMain = (t: TFunction) => {
     return info;
 };
 
+/**
+ * Function that returns a translated material name.
+ *
+ * @param {TFunction} t Translator function. Use key 'furnitureinfo'.
+ * @param {string} path Path to search for translation. Use 'MaterialType.name'.
+ * @returns {string} Translated result or appropriate fallback message.
+ */
 export const getMaterialName: (t: TFunction, path: string) => string = (
     t: TFunction,
     path: string,
