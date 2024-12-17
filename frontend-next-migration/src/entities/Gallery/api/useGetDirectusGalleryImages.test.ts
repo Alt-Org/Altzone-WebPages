@@ -110,14 +110,16 @@ describe('useGetDirectusGalleryImages', () => {
 
         const { result } = renderHook(() => useGetDirectusGalleryImages(mockLanguage));
 
-        expect(result.current.categories).toEqual([{ id: '1', name: 'Category 1' }]);
+        expect(result.current.categories).toEqual([
+            { id: '1', translations: [{ language: 'en', name: 'Category 1' }] },
+        ]);
         expect(result.current.photoVersions).toEqual([
             { id: '1', image: 'image1.jpg', width: 100, height: 100, altText: 'Alt 1' },
         ]);
         expect(result.current.photoObjects).toEqual([
             {
                 id: '1',
-                category: { id: '1', name: 'Category 1' },
+                category: { id: '1', translations: [{ language: 'en', name: 'Category 1' }] },
                 versions: {
                     preview: {
                         id: '2',

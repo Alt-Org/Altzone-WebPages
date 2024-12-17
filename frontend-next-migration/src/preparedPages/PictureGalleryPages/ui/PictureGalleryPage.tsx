@@ -3,7 +3,12 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
-import { useGetDirectusGalleryImages, getLanguageCode, PhotoObject } from '@/entities/Gallery';
+import {
+    useGetDirectusGalleryImages,
+    getLanguageCode,
+    PhotoObject,
+    getCategoryTranslation,
+} from '@/entities/Gallery';
 import { Container } from '@/shared/ui/Container';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './PictureGalleryPage.module.scss';
@@ -36,7 +41,9 @@ const PictureGalleryPage = (props: Props) => {
             setSelectedCategory(category);
             setFilteredImages(
                 photoObjects.filter(
-                    (photo) => photo.category.name.toLowerCase() === selectedCategory,
+                    (photo) =>
+                        getCategoryTranslation(photo.category.translations, language) ===
+                        selectedCategory,
                 ),
             );
         }
