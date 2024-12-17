@@ -107,3 +107,16 @@ export enum FurnitureSetCoverPosition {
     MEDIUM = 'Medium',
     SMALL = 'Small',
 }
+
+export interface SetTranslation {
+    name: string;
+    items: Record<string, PieceTranslation>;
+    unknown: PieceTranslation;
+}
+export interface PieceTranslation {
+    name: string;
+    desc: string;
+}
+export interface MaterialTranslation {
+    name: string;
+}

@@ -14,12 +14,15 @@ export async function _getPage(lng: string, category: string) {
         return notFound();
     }
 
-    const setPathName = `${t(`${set.path}.name`)}`;
+    const setPathName = manager.getSetTranslation(t, set.path);
 
     return createPage<FurnitureOneSetPageProps>({
         buildPage: () => ({
             setInfo: set,
-            header: setPathName,
+            header:
+                (typeof setPathName === 'string' && setPathName) ||
+                (typeof setPathName !== 'string' && setPathName.name) ||
+                'Unknown',
             textBack: `<-- ${t('text-back')}`,
         }),
         buildSeo: () => ({

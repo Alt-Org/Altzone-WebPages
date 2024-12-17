@@ -6,6 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Piece } from '../../types/furniture';
 import PieceView from '../PieceView/PieceView';
 import cls from './PieceCard.module.scss';
+import { FurnitureManager } from '../../model/FurnitureManager';
 
 type Props = {
     item: Piece;
@@ -23,6 +24,9 @@ export const PieceCard = (props: Props) => {
     const { color, lightcolor, darkcolor } = rarity;
 
     const { t } = useClientTranslation('furnitureinfo');
+    const tmanager = new FurnitureManager();
+    const setTranslations = tmanager.getSetTranslation(t, setpath);
+    const pieceTranslations = tmanager.getPieceTranslation(setTranslations, path);
 
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -52,7 +56,7 @@ export const PieceCard = (props: Props) => {
                         src={cover}
                         alt="cover"
                     />
-                    <p className={cls.Title}>{t(`${setpath}.ITEMS.${path}.name`)}</p>
+                    <p className={cls.Title}>{pieceTranslations.name}</p>
                     <p className={cls.Id}>{num}</p>
                 </button>
             </div>
