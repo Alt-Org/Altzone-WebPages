@@ -57,7 +57,7 @@ const PictureGalleryPage = (props: Props) => {
                 <h1>{title}</h1>
                 <p className={cls.InfoText}>{infoText}</p>
 
-                {isTouchDevice && <GalleryNavMenuAsDropdown />}
+                {isTouchDevice && <GalleryNavMenuAsDropdown openByDefault={true} />}
 
                 <SectionGalleryV2
                     version={'full'}

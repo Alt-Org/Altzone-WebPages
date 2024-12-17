@@ -46,16 +46,16 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         setAnimationState('');
     };
 
-    const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-        const relatedTarget = event.relatedTarget as HTMLElement;
-        if (!relatedTarget || !event.currentTarget.contains(relatedTarget)) {
-            const timer = setTimeout(() => {
-                setIsOpen(false);
-                setCloseTimer(null);
-            }, 200);
-            setCloseTimer(timer);
-        }
-    };
+    // const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    //     const relatedTarget = event.relatedTarget as HTMLElement;
+    //     if (!relatedTarget || !event.currentTarget.contains(relatedTarget)) {
+    //         const timer = setTimeout(() => {
+    //             setIsOpen(false);
+    //             setCloseTimer(null);
+    //         }, 200);
+    //         setCloseTimer(timer);
+    //     }
+    // };
 
     const handleMouseEnter = () => {
         if (!mouseOverLeaveMode) return;
@@ -107,7 +107,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             className={classNames(cls.DropdownWrapper, mods, [className])}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onBlur={handleBlur}
+            // onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             tabIndex={0}
             role="button"
