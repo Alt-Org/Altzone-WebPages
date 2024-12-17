@@ -1,3 +1,17 @@
+.NavMenuWithDropdowns{
+  width: 100%;
+
+  @media (max-width: breakpoint(lg)) {
+    width: 50%;
+    margin: auto;
+  }
+
+  @media (max-width: breakpoint(sm)) {
+    width: 80%;
+    margin: auto;
+  }
+}
+
 .topDropDown{
   padding: 10px 0;
   color: var(--primary-color);
@@ -13,6 +27,7 @@
   .topDropDownContent{
     padding-left: 15px;
     padding-right: 15px;
+    font-size: 26px;
   }
 
 }
@@ -38,9 +53,11 @@
     &  a:hover{
       color: var(--secondary-color);
     }
-
-
   }
-
 }
 
+.topDropDownContent {
+  .active {
+    color: var(--secondary-color);
+  }
+}

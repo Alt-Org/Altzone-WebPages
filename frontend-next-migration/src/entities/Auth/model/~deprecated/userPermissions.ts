@@ -1,5 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { selectHasClan, selectIsAuthenticated } from '../authUserSlice/authUserSlice';
+import { selectIsAuthenticated } from '../authUserSlice/authUserSlice';
+import { selectHasClan } from '@/entities/Profile/model/profileSlice/profileSlice';
 
 const canISeeClans = createSelector(selectIsAuthenticated, (isAuthenticated) => isAuthenticated);
 

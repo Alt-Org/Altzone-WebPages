@@ -3,7 +3,7 @@ import { IProfile } from '@/entities/Profile';
 
 export type IPlayerRegisterPartDto = Pick<
     IPlayer,
-    'name' | 'backpackCapacity' | 'uniqueIdentifier' | 'above13'
+    'name' | 'backpackCapacity' | 'uniqueIdentifier' | 'above13' | 'parentalAuth'
 >;
 
 export type IUserRegisterDto = Pick<IProfile<IPlayer>, 'username'> & {
@@ -23,13 +23,9 @@ export type AccessTokenInfoResponse = {
     accessTokenExpiresInSecIn: number;
 };
 
-type AccessTokenInfo = {
-    accessToken: string;
-    accessTokenExpiresAt: number;
-};
+export type { AccessTokenInfo } from '@/shared/types/shared';
 
 export type AuthUserSchema = {
-    profile?: IProfile<IPlayer>;
     accessTokenInfo?: AccessTokenInfo;
     isSessionExpired: boolean;
 };

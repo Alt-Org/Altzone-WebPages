@@ -38,6 +38,10 @@
     text-align: left;
 }
 
+.noResults {
+    text-align: left;
+}
+
 .tableContainer {
     border-radius: var(--border-radius-custom);
 
@@ -49,7 +53,6 @@
 .clanList {
     width: 100%;
     border-collapse: collapse;
-    min-height: 400px;
     // max-height: 40vh;
 }
 

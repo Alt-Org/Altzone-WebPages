@@ -1,27 +1,67 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Container } from './Container';
 
-export default {
-    title: 'shared/Container',
+const meta = {
+    title: 'shared/ui/Container',
     component: Container,
+    argTypes: {
+        className: {
+            control: 'text',
+            description:
+                'Additional CSS class names to apply to the root container for custom styling.',
+            defaultValue: '',
+        },
+        fluid: {
+            control: 'boolean',
+            description: 'Whether the container should be fluid.',
+            defaultValue: false,
+        },
+        children: {
+            control: 'text',
+            description: 'The content of the container.',
+            defaultValue: '',
+        },
+    },
     args: {
         className: '',
         fluid: false,
+        children: '',
     },
-} as ComponentMeta<typeof Container>;
+    tags: ['autodocs'],
+    parameters: {
+        backgrounds: {
+            default: 'dark',
+            values: [
+                { name: 'light', value: '#ffffff' },
+                { name: 'dark', value: '#333333' },
+                { name: 'gray', value: '#dddddd' },
+            ],
+        },
+        layout: 'centered',
+        docs: {
+            description: {
+                component:
+                    'The `Container` component is a flexible wrapper component that conditionally applies classes based on its props.',
+            },
+        },
+    },
+} satisfies Meta<typeof Container>;
+export default meta;
 
-const Template: ComponentStory<typeof Container> = (args) => {
-    return <Container {...args} />;
+type Story = StoryObj<typeof meta>;
+
+export const NotFluid: Story = {
+    args: {
+        className: '',
+        fluid: false,
+        children: 'This is the content of the container.',
+    },
 };
 
-export const Default = Template.bind({});
-Default.args = {
-    children: <div>Default content</div>,
-};
-
-export const Fluid = Template.bind({});
-Fluid.args = {
-    fluid: true,
-    children: <div>Fluid content</div>,
+export const Fluid: Story = {
+    args: {
+        className: '',
+        fluid: true,
+        children: 'This is the content of the container.',
+    },
 };

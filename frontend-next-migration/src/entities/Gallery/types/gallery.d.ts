@@ -14,3 +14,39 @@ export type ImageData = {
     height: number;
     blurDataURL?: string;
 };
+
+export interface CategoryTranslations {
+    id: string;
+    languages_code: string;
+    category_id: string;
+    name: string;
+}
+
+export interface PhotoVersionTranslations {
+    id: string;
+    languages_code: string;
+    photo_version_id: string;
+    altText: string;
+}
+
+export interface Category {
+    id: string;
+    translations: CategoryTranslations[];
+}
+
+export interface PhotoVersion {
+    id: string;
+    image: string;
+    width: number;
+    height: number;
+    altText: string;
+}
+
+export interface PhotoObject {
+    id: string;
+    category: Category;
+    versions: {
+        preview: PhotoVersion;
+        full: PhotoVersion;
+    };
+}

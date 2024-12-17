@@ -37,6 +37,7 @@ export const useRegisterForm = (toLoginPage: string) => {
                 backpackCapacity: 100,
                 name: fieldValues.username,
                 above13: fieldValues.ageConsent,
+                parentalAuth: false,
             },
         };
         await regist(ObjectToBeSent);

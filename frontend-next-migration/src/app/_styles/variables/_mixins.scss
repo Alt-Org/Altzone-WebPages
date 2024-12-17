@@ -107,3 +107,31 @@
     border-top: 15px solid #ffffff;
   }
 }
+
+
+
+$breakpoint-xs: 400px; /* Extra small */
+$breakpoint-sm: 576px; /* Small */
+$breakpoint-md: 768px; /* Medium */
+$breakpoint-lg: 992px; /* Large */
+$breakpoint-xl: 1200px; /* Extra Large */
+$breakpoint-xxl: 1400px; /* Extra Extra Large */
+
+// function to get breakpoint
+@function breakpoint($name) {
+  @if $name == xs {
+    @return $breakpoint-xs;
+  } @else if $name == sm {
+    @return $breakpoint-sm;
+  } @else if $name == md {
+    @return $breakpoint-md;
+  } @else if $name == lg {
+    @return $breakpoint-lg;
+  } @else if $name == xl {
+    @return $breakpoint-xl;
+  } @else if $name == xxl {
+    @return $breakpoint-xxl;
+  } @else {
+    @error "Breakpoint with the name `#{$name}` is not defined.";
+  }
+}

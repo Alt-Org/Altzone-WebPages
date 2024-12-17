@@ -7,6 +7,8 @@ import cls from './Gallery.module.scss';
 import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
 import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
 import { SectionGallerias } from '@/widgets/SectionGallerias';
+import { useParams } from 'next/navigation';
+import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
 
 export type Props = {
     title: string;
@@ -22,6 +24,10 @@ export type Props = {
 
 const Gallery = (props: Props) => {
     const { title, infoText, socialsText, seeMoreLink, socialMediaLinks, videoLink } = props;
+    const params = useParams();
+    const lng = params.lng as string;
+    const language = getLanguageCode(lng);
+    const { photoObjects, isLoading } = useGetDirectusGalleryImages(language);
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -32,6 +38,8 @@ const Gallery = (props: Props) => {
         [cls.inView]: inView,
     };
 
+    if (isLoading) <p>Loading...</p>;
+
     return (
         <section
             ref={ref}
@@ -40,26 +48,33 @@ const Gallery = (props: Props) => {
             <Container className={cls.Container}>
                 <h2 className={classNames(cls.title, mods)}>{title}</h2>
                 <p className={cls.InfoText}>{infoText}</p>
-                <div className={cls.SectionGalleriasWrapper}>
-                    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />
-                </div>
+
+                {/*<SectionGalleryV1*/}
+                {/*    socialMediaLinks={socialMediaLinks}*/}
+                {/*    videoLink={videoLink}*/}
+                {/*/>*/}
+
+                {/*<div className={cls.SectionGalleriasWrapper}>*/}
+                {/*    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/}
+                {/*</div>*/}
 
                 <div className={cls.videoWrapper}>
                     <YouTubeFacade previewVideoYoutube={videoLink} />
                 </div>
 
-                <p className={cls.SocialsText}>{socialsText}</p>
+                {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
 
-                <SectionGalleryV1
-                    socialMediaLinks={socialMediaLinks}
-                    videoLink={videoLink}
-                />
-
-                {/*<SectionGalleryV2*/}
-                {/*    version={'preview'}*/}
+                {/*<SectionGalleryV1*/}
                 {/*    socialMediaLinks={socialMediaLinks}*/}
-                {/*    seeMoreLink={seeMoreLink}*/}
+                {/*    videoLink={videoLink}*/}
                 {/*/>*/}
+
+                <SectionGalleryV2
+                    images={photoObjects}
+                    version={'preview'}
+                    socialMediaLinks={socialMediaLinks}
+                    seeMoreLink={seeMoreLink}
+                />
             </Container>
         </section>
     );

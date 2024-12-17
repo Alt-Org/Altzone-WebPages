@@ -1,13 +1,13 @@
 'use client';
-import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import { HeroManager } from '@/entities/Hero';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
+import { Container } from '@/shared/ui/Container';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import HeroesBlocks from './heroesBlocks/HeroesBlocks';
 import cls from './main.module.scss';
-import { Container } from '@/shared/ui/Container';
 
 const sameBg = undefined;
 
@@ -42,9 +42,12 @@ function Main(props: Props) {
         : heroesGroups2;
 
     return (
-        <Container fluid={true}>
+        <Container
+            fluid={true}
+            className={cls.container}
+        >
             <section className={cls.Section}>
-                <h2 className={cls.Header}>{title}</h2>
+                <h1 className={cls.Header}>{title}</h1>
 
                 {displayedGroups.map((group) => (
                     <HeroesBlocks
@@ -68,7 +71,7 @@ function Main(props: Props) {
                             size={ButtonSize.XL}
                             ref={ref}
                         >
-                            <Link href={seeMoreLink.href}>{seeMoreLink.text}</Link>
+                            <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
                         </Button>
                     </div>
                 )}

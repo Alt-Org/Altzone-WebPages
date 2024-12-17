@@ -3,8 +3,9 @@ import { ReactNode, useRef } from 'react';
 import { Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { ScrollTop } from '@/features/ScrollTop';
-import Intro from './_intro/Intro';
-import { _useScrollHandler } from './_useScrollHandler';
+// import Intro from './_intro/Intro';
+// import { _useScrollHandler } from './_useScrollHandler';
+import { LayoutDefault } from '@/preparedPages/Layouts';
 
 type Props = {
     children: ReactNode;
@@ -22,7 +23,7 @@ export default function HomeLayout({ children }: Props) {
             {/*/>*/}
             <>
                 <Navbar />
-                {children}
+                <LayoutDefault marginTop={'160px'}>{children}</LayoutDefault>
                 <Footer />
                 <ScrollTop />
             </>

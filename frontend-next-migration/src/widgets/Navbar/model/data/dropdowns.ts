@@ -8,6 +8,8 @@ import {
     getRouteGameArtPage,
     getRouteAllHeroesPage,
     getRouteAllClanSearchPage,
+    getRouteAllFurnitureSetsPage,
+    getRouteJoinUsPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -22,8 +24,8 @@ export const dropdowns = {
         {
             elementText: 'join',
             link: {
-                path: AppExternalLinks.join,
-                isExternal: true,
+                path: getRouteJoinUsPage(),
+                isExternal: false,
             },
         },
         {
@@ -88,6 +90,17 @@ export const dropdowns = {
             link: {
                 path: getRouteComicsPage(),
                 isExternal: false,
+            },
+        },
+        {
+            elementText: 'furnituresets',
+            link: {
+                path: getRouteAllFurnitureSetsPage(),
+                isExternal: false,
+            },
+            isDisabled: {
+                status: false,
+                reason: 'Kirjaudu ensin!',
             },
         },
     ],

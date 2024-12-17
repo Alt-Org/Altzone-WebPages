@@ -1,24 +1,38 @@
 'use client';
-import { memo, useRef } from 'react';
+import { memo, ReactNode, useRef } from 'react';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { scrollToBottom } from '../model/scrollToBottom/scrollToBottom';
 import { useBottomAnimationCancellation } from '../model/useBottomAnimationCancellation/useBottomAnimationCancellation';
-import { isDisabled } from '@testing-library/user-event/dist/types/utils';
 
 interface Props {
     speedInMs?: number;
     className?: string;
-    text?: string;
+    text?: ReactNode | string;
     isDisabled?: boolean;
+    onBeforePlay?: () => void;
 }
 
 const ScrollBottomButtonComponent = (props: Props) => {
-    const { speedInMs = 50000, className = '', text = 'play', isDisabled = false } = props;
+    const {
+        speedInMs = 25000,
+        className = '',
+        text = 'play',
+        isDisabled = false,
+        onBeforePlay,
+    } = props;
 
     const ScrollButtonId = 'ScrollButton';
     const animationFrameIdRef = useRef<number>(0);
-
     const handleWatchClick = () => {
+        if (onBeforePlay) {
+            onBeforePlay();
+
+            setTimeout(() => {
+                scrollToBottom(speedInMs, animationFrameIdRef);
+            }, 500);
+
+            return;
+        }
         scrollToBottom(speedInMs, animationFrameIdRef);
     };
 
@@ -29,11 +43,12 @@ const ScrollBottomButtonComponent = (props: Props) => {
             disabled={isDisabled}
             className={className}
             id={ScrollButtonId}
-            theme={ButtonTheme.Graffiti}
-            size={ButtonSize.XL}
+            withScalableLink={true}
+            size={ButtonSize.L}
+            theme={ButtonTheme.BACKGROUND}
             onClick={handleWatchClick}
         >
-            {text}
+            <b>{text}</b>
         </Button>
     );
 };

@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { CSSProperties, memo, useMemo, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { CSSProperties, memo, useEffect, useMemo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
@@ -8,28 +9,26 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
-import { useCollapsed } from '../../model/CollapsedProvider';
-import { defineNs } from '../../model/defineNs';
-import { useFixed } from '../../model/FixedProvider';
-import { ItemType, NavbarBuild, NavBarType } from '../../model/types';
-import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
+import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
-interface NavbarTouchProps {
+export interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
     side?: 'left' | 'right';
     className?: string;
-    navBarType?: NavBarType;
+    isFixed: boolean;
+    isCollapsed: boolean;
+    toggleCollapsed: () => void;
+    toggleFixed: () => void;
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, side = 'left', className = '', navBarType = 'Default' } = props;
+    const { marginTop, navbarBuild, side = 'left', className = '', toggleFixed, isFixed } = props;
 
-    const ns = defineNs(navBarType);
-    const { t } = useClientTranslation(ns);
+    const { t } = useClientTranslation('navbar');
 
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
@@ -40,8 +39,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { isFixed, toggleFixed } = useFixed();
-    const { isCollapsed, toggleCollapsed } = useCollapsed();
     const hasScrollbar = useIsPageScrollbar();
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -60,6 +57,15 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setTimeout(() => setSidebarItemsListResetKey((currentKey) => currentKey + 1), 500);
     };
 
+    const [realPath, setRealPath] = useState('/');
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const pathSegments = pathname.split('/').filter(Boolean);
+        const newPath = pathSegments.length === 1 ? '/' : `/${pathSegments[1] || ''}`;
+        setRealPath(newPath);
+    }, [pathname]);
+
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map((item) => {
@@ -68,6 +74,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         path: item.path,
                         name: t(`${item.name}`),
                         type: sidebarItemType.ISidebarItemBasic,
+                        active: realPath === item.path,
                     };
                 }
                 if (item.type === ItemType.navDropDown) {
@@ -87,9 +94,14 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                 ...element,
                                 // @ts-ignore todo add guard
                                 elementText: t(`${element.elementText}`), // Localize elementText
+                                // @ts-ignore
+                                active: realPath === element?.link?.path,
                             };
                         })
                         .filter((element) => element !== null); // Filter out any null elements
+
+                    const isDropdownActive = localizedElements.some((element) => element.active);
+
                     // If there are no valid elements left, return null to skip this item
                     if (localizedElements.length === 0) {
                         return null;
@@ -98,6 +110,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     return {
                         name: t(`${item.name}`),
                         elements: localizedElements,
+                        active: isDropdownActive,
                         type: sidebarItemType.ISidebarItemDropDown,
                     };
                 }
@@ -105,28 +118,28 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 return null;
             })
             .filter((item) => item !== null) as ISidebarItem[];
-    }, [navbarBuild, t, isSidebarOpen]);
+    }, [t, navbarBuild?.menu, permissionToSeeOwnClan.isGranted, realPath]);
 
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
-        [cls.collapsed]: isCollapsed,
+        // [cls.collapsed]: isCollapsed,
         [cls.collapsing]: isAnimating,
     } as Record<string, boolean>;
 
     const sidebarMods: Record<string, boolean> = {
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
-        [cls.collapsed]: isCollapsed,
+        // [cls.collapsed]: isCollapsed,
     };
 
-    const handleCollapseClick = () => {
-        if (!isAnimating) {
-            setIsAnimating(true);
-            toggleCollapsed();
-        }
-    };
+    // const handleCollapseClick = () => {
+    //     if (!isAnimating) {
+    //         setIsAnimating(true);
+    //         toggleCollapsed();
+    //     }
+    // };
 
     const handleTransitionEnd = () => {
         setIsAnimating(false);
@@ -177,7 +190,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <AppLink
                 className={classNames(
                     cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
-                    { [cls.collapsed]: isCollapsed },
+                    // { [cls.collapsed]: isCollapsed },
+                    {},
                     [],
                 )}
                 theme={AppLinkTheme.PRIMARY}
@@ -193,7 +207,10 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <div className={cls.buttonContainer}>
                 {hasScrollbar && (
                     <div
-                        className={classNames(cls.navItem, { [cls.collapsed]: isCollapsed })}
+                        className={classNames(
+                            cls.navItem,
+                            // { [cls.collapsed]: isCollapsed }
+                        )}
                         onTransitionEnd={handleTransitionEnd}
                     >
                         <ToggleFixButton

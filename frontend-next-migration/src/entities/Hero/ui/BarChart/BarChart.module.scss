@@ -1,0 +1,100 @@
+.Container{
+    container-type:size;
+}
+
+@container (aspect-ratio < 1.2) {
+    .Barchart{
+        font-size:8cqh;
+        height:65%;
+    }
+    .Explanations {
+        font-size:7cqh;
+    }
+    .List {
+        column-count: 1;
+    }
+    .ListItem {
+        line-height: 1em;
+    }
+}
+@container (aspect-ratio > 1.2) {
+    .Barchart{
+        font-size:10cqh;
+        height:70%;
+    }
+    .Explanations {
+        font-size:7cqh;
+        padding-top: .5em;
+    }
+    .List {
+        column-count: 2;
+    }
+    .ListItem{
+        line-height: 1.2em;
+    }
+}
+@container (aspect-ratio > 2) {
+    .Barchart{
+        height:75%;
+    }
+    .List {
+        column-count: 3;
+    }
+}
+
+.Barchart {
+    display: flex;
+    width: 100%;
+    position:relative;
+}
+.Explanations {
+    width: 100%;
+    padding-left: 2em;
+    font-weight: bold;
+   
+}
+.yAxis {
+    width: fit-content;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    text-align: right;
+    padding-right: 5px;
+    border-right: 2px solid var(--secondary-color);
+    
+}
+.Number {
+    
+    font-weight:bold;
+    color: var(--secondary-color);
+
+}
+.Bars {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+}
+.BarContainer {
+    flex:1;
+    transition: height 0.3s ease;
+}
+
+.Bar{
+    float:right;
+    height: 100%;
+    width: 80%;
+    border-radius:.5em .5em 0 0;
+}
+.Shadow{
+    border-radius:.5em .5em 0 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+}
+.Highlight {
+    border-radius:.5em .5em 0 0;
+    height: 100%;
+    width: 80%;
+}

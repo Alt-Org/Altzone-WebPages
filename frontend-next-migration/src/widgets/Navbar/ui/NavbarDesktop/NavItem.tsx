@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import { memo } from 'react';
 import { useUserPermissionsV2 } from '@/entities/Auth';
@@ -5,19 +6,18 @@ import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
-import { NavbarBuild, NavbarMenuItem } from '../../model/types';
+import { NavbarMenuItem } from '../../model/types';
 import cls from './NavbarDesktop.module.scss';
 
 type NavItemProps = {
     item: NavbarMenuItem;
     className?: string;
-    navbarBuild: NavbarBuild;
+    currentPath?: string;
 };
 
 const NavItem = memo((props: NavItemProps) => {
-    const { item, className = '', navbarBuild } = props;
+    const { item, className = '', currentPath = '' } = props;
     const { type: itemType } = item;
-
     const { t } = useClientTranslation('navbar');
     const { checkPermissionFor } = useUserPermissionsV2();
 
@@ -25,7 +25,9 @@ const NavItem = memo((props: NavItemProps) => {
         return (
             <li
                 key={item.path}
-                className={classNames(cls.navItem, {}, [className])}
+                className={classNames(cls.navItem, { [cls.active]: currentPath === item.path }, [
+                    className,
+                ])}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
@@ -37,26 +39,43 @@ const NavItem = memo((props: NavItemProps) => {
             </li>
         );
     }
+
     if (itemType === 'navDropDown') {
         const canUserSeeOwnClan = checkPermissionFor('clan:seeOwn').isGranted;
         const localizedElements = item.elements
             .map((element) => {
-                // @ts-ignore todo add guard
+                // @ts-ignore
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
-                return {
-                    // @ts-ignore todo add guard
+                // @ts-ignore
+                const transformedElement = {
+                    // @ts-ignore
                     ...element,
-                    // @ts-ignore todo add guard
+                    // @ts-ignore
                     elementText: t(`${element.elementText}`),
+                    // @ts-ignore
+                    // contentItemClassName: cls.dropdownElement,
+                    // contentItemClassName: classNames(cls.dropdownElement, {
+                    //     // @ts-ignore
+                    //     [cls.active]: currentPath === element?.link?.path,
+                    // }),
+                    // @ts-ignore
+                    active: currentPath === element?.link?.path,
                 };
+
+                return transformedElement;
             })
             .filter((element) => element !== null);
+
+        // console.log(localizedElements)
+
+        const isDropdownActive = localizedElements.some((element) => element.active);
+
         return (
             <li
                 key={item.name}
-                className={classNames('', {}, [className])}
+                className={classNames(cls.navItem, { [cls.active]: isDropdownActive }, [className])}
             >
                 <DropdownWrapper
                     elements={localizedElements}
@@ -74,7 +93,8 @@ const NavItem = memo((props: NavItemProps) => {
         return (
             <li
                 key={item.src}
-                className={className}
+                className={classNames(cls.navItem, {}, [className])}
+                // className={className}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
@@ -84,8 +104,8 @@ const NavItem = memo((props: NavItemProps) => {
                     <Image
                         priority={true}
                         loading={'eager'}
-                        alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
-                        src={navbarBuild?.namedMenu?.navLogo?.src || ''}
+                        alt={item.name || ''}
+                        src={item.src || ''}
                         width={120}
                         height={0}
                         className={cls.itemLogoImg}

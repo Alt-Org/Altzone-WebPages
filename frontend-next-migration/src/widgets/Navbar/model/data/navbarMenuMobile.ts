@@ -24,30 +24,3 @@ navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());
 
 export const navbarMenuMobile = navbarBuilder.build();
-
-const navbarGameArtBuilder = new NavbarBuilder();
-navbarGameArtBuilder.addLogo('main', img as unknown as string, getRouteMainPage());
-navbarGameArtBuilder.addLink('main', getRouteMainPage(), false);
-ArtGameSections.forEach((section) => {
-    navbarGameArtBuilder.addLink(section.label, `#${section.id}`, false);
-});
-
-export const navbarGameArtMobile = navbarGameArtBuilder.build();
-
-const navbarCookiesBuilder = new NavbarBuilder();
-navbarCookiesBuilder.addLogo('main', img as unknown as string, getRouteMainPage());
-navbarCookiesBuilder.addLink('main', getRouteMainPage(), false);
-CookiesSections.forEach((section) => {
-    navbarCookiesBuilder.addLink(section.label, `#${section.id}`, false);
-});
-
-export const navbarCookiesMobile = navbarCookiesBuilder.build();
-
-const navbarPrivacyBuilder = new NavbarBuilder();
-navbarPrivacyBuilder.addLogo('main', img as unknown as string, getRouteMainPage());
-navbarPrivacyBuilder.addLink('main', getRouteMainPage(), false);
-PrivacySections.forEach((section) => {
-    navbarPrivacyBuilder.addLink(section.label, `#${section.id}`, false);
-});
-
-export const navbarPrivacyMobile = navbarPrivacyBuilder.build();

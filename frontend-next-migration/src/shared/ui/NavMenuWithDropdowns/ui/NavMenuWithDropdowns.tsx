@@ -1,6 +1,12 @@
-import { DropDownElement, DropdownWrapper } from '@/shared/ui/DropdownWrapper';
+import {
+    DropDownElement,
+    DropdownWrapper,
+    DropDownElementASTextOrLink,
+} from '@/shared/ui/DropdownWrapper';
 import { ReactNode } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 export interface DropdownItem {
     title: string;
@@ -9,32 +15,54 @@ export interface DropdownItem {
 }
 
 export interface NavMenuWithDropdownsProps {
-    dropdownItems: (DropdownItem | ReactNode)[];
+    dropdownItems: (DropdownItem | ReactNode | DropDownElementASTextOrLink)[];
     openByDefault?: boolean;
     title: string;
     className?: string;
 }
 
-function isDropdownItem(item: DropdownItem | ReactNode): item is DropdownItem {
+function isDropdownItem(
+    item: DropdownItem | ReactNode | DropDownElementASTextOrLink,
+): item is DropdownItem {
     return typeof item === 'object' && item !== null && 'title' in item && 'elements' in item;
 }
 
+function isDropDownElementASTextOrLink(item: any): item is DropDownElementASTextOrLink {
+    return typeof item === 'object' && item !== null && 'elementText' in item;
+}
+
 function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
-    const { dropdownItems, className, title, openByDefault = false } = props;
+    const { dropdownItems, className = '', title, openByDefault = false } = props;
 
     return (
-        <div className={className}>
+        <div className={classNames(cls.NavMenuWithDropdowns, {}, [className])}>
             <DropdownWrapper
                 openByDefault={openByDefault}
+                dataTestId={title}
                 elements={dropdownItems.map((item, index) =>
                     isDropdownItem(item) ? (
                         <NestedDropDown
                             key={item.title}
                             openByDefault={item.openByDefault}
                             elements={item.elements}
+                            dataTestId={item.title}
                         >
                             {item.title}
                         </NestedDropDown>
+                    ) : isDropDownElementASTextOrLink(item) ? (
+                        item?.link ? (
+                            <AppLink
+                                isExternal={item.link.isExternal}
+                                to={item.link.path}
+                                className={classNames(cls.link, { [cls.active]: item.active })}
+                            >
+                                {item.elementText}
+                            </AppLink>
+                        ) : (
+                            <div className={classNames(cls.text, { [cls.active]: item.active })}>
+                                {item.elementText}
+                            </div>
+                        )
                     ) : (
                         <div key={index}>{item}</div>
                     ),
@@ -53,10 +81,11 @@ interface NestedDropDownProps {
     openByDefault?: boolean;
     elements: DropDownElement[];
     children: ReactNode;
+    dataTestId?: string;
 }
 
 function NestedDropDown(props: NestedDropDownProps) {
-    const { openByDefault, elements, children } = props;
+    const { openByDefault, elements, children, dataTestId } = props;
 
     return (
         <DropdownWrapper
@@ -65,6 +94,7 @@ function NestedDropDown(props: NestedDropDownProps) {
             contentClassName={cls.subDropDownContent}
             childrenWrapperClassName={cls.subDropDownChildren}
             elements={elements}
+            dataTestId={dataTestId}
         >
             {children}
         </DropdownWrapper>

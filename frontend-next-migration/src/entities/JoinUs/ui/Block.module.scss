@@ -1,0 +1,39 @@
+.Container {
+    padding: 20px;
+    margin: auto 0;
+    text-align: center;
+    height: 100%;
+    place-content: center;
+    border-radius: var(--border-radius-custom);
+    background-color: var(--transparent-bg-dark);
+    border: 2px solid rgb(13, 174, 13);
+
+    h2 {
+        padding: 0;
+        margin: 0;
+        font-size: 2.2em;
+    }
+
+    h3 {
+        font-size: 1.7em;
+        margin-top: 25px;
+    }
+
+    p {
+        font-size: 1.3em;
+        margin: 15px auto;
+    }
+
+    a {
+        text-decoration: underline;
+        font-size: 1.3em;
+        color: var(--inverted-primary-color)!important;
+
+
+        &:hover {
+            color: var(--secondary-color)!important;
+        }
+
+    }
+
+}

@@ -1,12 +1,13 @@
 import { useParams } from 'next/navigation';
 import { FC } from 'react';
-import { ScrollBottomButton } from '@/features/ScrollBottom';
-import { DepartmentItem, MemberItem, useGetTeamsQuery } from '@/entities/Member';
+// import { ScrollBottomButton } from '@/features/ScrollBottom';
+import { MemberItem, useGetMembersQuery } from '@/entities/Member';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
 import { SkeletonLoaderWithHeader } from '@/shared/ui/SkeletonLoader';
 import cls from './SectionMembers.module.scss';
+import { organizeMembers } from '@/entities/Member/api/mappers'; // Ensure correct import path
 
 interface WorkersSectionProps {
     className?: string;
@@ -15,58 +16,65 @@ interface WorkersSectionProps {
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const params = useParams();
     const lng = params.lng as string;
-    const { t } = useClientTranslation('team');
+    const { t } = useClientTranslation('members');
 
     const {
-        data: teams = [],
+        data: members = [],
         isError,
         isLoading,
-    } = useGetTeamsQuery(lng, {
+    } = useGetMembersQuery(undefined, {
         refetchOnMountOrArgChange: false,
     });
 
+    const { teamsMap } = organizeMembers(members, lng);
+
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
-            <ScrollBottomButton
-                isDisabled={isError || isLoading}
-                className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}
-                text={isError ? `${t('playButton')} 🚫` : t('playButton')}
-            />
+            {/*<ScrollBottomButton*/}
+            {/*    isDisabled={isError || isLoading}*/}
+            {/*    className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}*/}
+            {/*    text={isError ? `${t('page-play')} 🚫` : `${t('page-play')} ▶`}*/}
+            {/*/>*/}
             <Container className={cls.membersListContainer}>
-                {isError && <p>Error fetching teams data</p>}
-
-                {isLoading || isError ? (
-                    <SkeletonLoaderWithHeader sections={5} />
-                ) : (
-                    teams.map((team) => (
-                        <div
-                            key={team.id}
-                            className={cls.memberCard}
-                        >
-                            <h1 className={cls.membersListContainer}>{team.name}</h1>
-                            {team.departments.length > 0 && (
-                                <div className={cls.departmentsSection}>
-                                    {team.departments.map((department) => (
-                                        <DepartmentItem
-                                            key={department.id}
-                                            department={department}
-                                        />
-                                    ))}
-                                </div>
-                            )}
-                            {/* Render members that do not belong to any department */}
-                            {team.members.length > 0 && (
-                                <ul className={cls.membersList}>
+                {isError && <p>Error fetching data</p>}
+                {isLoading ? <SkeletonLoaderWithHeader sections={5} /> : null}
+                {!isLoading && !isError && (
+                    <>
+                        {Array.from(teamsMap.values()).map((team) => (
+                            <div
+                                key={team.id}
+                                className={cls.teamCard}
+                            >
+                                <h2>{team.name}</h2>
+                                <ul className={cls.teamMembersList}>
                                     {team.members.map((member) => (
                                         <MemberItem
                                             key={member.id}
                                             member={member}
+                                            language={lng}
                                         />
                                     ))}
                                 </ul>
-                            )}
-                        </div>
-                    ))
+                                {team.departments.map((department) => (
+                                    <div
+                                        key={department.id}
+                                        className={cls.departmentCard}
+                                    >
+                                        <h3>{department.name}</h3>
+                                        <ul className={cls.departmentMembersList}>
+                                            {department.members.map((member) => (
+                                                <MemberItem
+                                                    key={member.id}
+                                                    member={member}
+                                                    language={lng}
+                                                />
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                    </>
                 )}
             </Container>
         </div>

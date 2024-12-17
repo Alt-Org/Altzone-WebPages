@@ -1,0 +1,26 @@
+.Layout{
+  margin-top: 150px;
+  margin-bottom: 120px;
+  min-height: 60vh;
+
+  background-color: var(--transparent-bg-dark);
+  border-radius: var(--border-radius-custom);
+
+
+  h1 {
+    font-size: clamp(40px, 7vw, 50px);
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: clamp(20px, 5vw, 30px);
+    line-height: 1.25;
+    font-weight: 400;
+  }
+
+  font-family: var(--font-family-main), serif;
+  padding-bottom: 10px;
+  text-align: center;
+
+}

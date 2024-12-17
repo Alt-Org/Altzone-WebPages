@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import { _NavbarForHelperRoute } from './_NavbarForHelperRoute';
 import { Footer } from '@/widgets/Footer';
+import { Navbar } from '@/widgets/Navbar';
+import LayoutDefault from '../../../preparedPages/Layouts/ui/LayoutDefault/LayoutDefault';
 
 type Props = {
     children: ReactNode;
@@ -9,9 +10,11 @@ type Props = {
 export default function HelperLayout({ children }: Props) {
     // TODO: Check how this solution is bad for semantics; it was added as a hotfix for the jumping footer
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '130vh' }}>
-            <_NavbarForHelperRoute />
-            <div style={{ flex: 1 }}>{children}</div>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Navbar />
+            <div style={{ flex: 1 }}>
+                <LayoutDefault>{children}</LayoutDefault>
+            </div>
             <Footer />
         </div>
     );

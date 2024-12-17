@@ -1,0 +1,246 @@
+{
+    "set-not-found": "Settiä ei löydy",
+    "head-title": "Huonekalumallisto",
+    "head-description": "Katso huonekalumalliston tietoja ja huonekaluja.",
+    "head-keywords": "huonekalu, mallisto, keräily",
+    "text-back": "takaisin",
+    "price": "Hinta",
+    "TAAKKASET": {
+        "name": "Taakka",
+        "items": {
+            "COUCH": {
+                "name": "Sohva",
+                "desc": "Teemana on Taakka. Sen voi tulkita monella tapaa, mutta huonekaluista on tarkoitus tulla painava vaikutelma. Värit mukailevat Atlas-titaanin patsasta."
+            },
+            "ARMCHAIR": {
+                "name": "Nojatuoli",
+                "desc": "Teemana on Taakka. Sen voi tulkita monella tapaa, mutta huonekaluista on tarkoitus tulla painava vaikutelma. Värit mukailevat Atlas-titaanin patsasta."
+            },
+            "CLOSET": {
+                "name": "Kaappi",
+                "desc": "Teemana on Taakka. Sen voi tulkita monella tapaa, mutta huonekaluista on tarkoitus tulla painava vaikutelma. Värit mukailevat Atlas-titaanin patsasta."
+            },
+            "FULLMIRROR": {
+                "name": "Peili",
+                "desc": "Teemana on Taakka. Sen voi tulkita monella tapaa, mutta huonekaluista on tarkoitus tulla painava vaikutelma. Värit mukailevat Atlas-titaanin patsasta."
+            },
+            "FLOORLAMP": {
+                "name": "Lattiavalaisin",
+                "desc": "Teemana on Taakka. Sen voi tulkita monella tapaa, mutta huonekaluista on tarkoitus tulla painava vaikutelma. Värit mukailevat Atlas-titaanin patsasta."
+            },
+            "TABLE": {
+                "name": "Sohvapöytä",
+                "desc": "Teemana on Taakka. Sen voi tulkita monella tapaa, mutta huonekaluista on tarkoitus tulla painava vaikutelma. Värit mukailevat Atlas-titaanin patsasta."
+            },
+            "SIDETABLE": {
+                "name": "Sivupöytä",
+                "desc": "Teemana on Taakka. Sen voi tulkita monella tapaa, mutta huonekaluista on tarkoitus tulla painava vaikutelma. Värit mukailevat Atlas-titaanin patsasta."
+            }
+        }
+    },
+    "NEUROSET": {
+        "name": "Neuro",
+        "items": {
+            "CHAIR": {
+                "name": "Tuoli",
+                "desc": "Tuoli kuvastaa harhakuvia tai fobiaa. Tuoli hieman muistuttaa jonkinlaista ötökkää."
+            },
+            "STOOL": {
+                "name": "Jakkara",
+                "desc": "Neuro-huonekalusetin teemana on mielenterveyden vaikutus aivojen sähköiseen toimintaan. Jakkara kuvastaa teemaa yleisesti."
+            },
+            "DRAWER": {
+                "name": "Lipasto",
+                "desc": "Lipasto näyttää pelokkaalta tai ahdistuneelta ja pitelee päätään, ihan kuin kädet hakeutuisivat kipualueelle."
+            },
+            "CLOCK": {
+                "name": "Seinäkello",
+                "desc": "Kello kuvastaa jakautunutta persoonallisuutta ja kaksisuuntaista mielenhäiriötä."
+            }
+        }
+    },
+    "RAKKAUSSET": {
+        "name": "Rakkaus",
+        "items": {
+            "ARMCHAIR": {
+                "name": "Nojatuoli",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "COUCH": {
+                "name": "Sohva",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "CEILINGLAMP": {
+                "name": "Kattolamppu",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "TABLE": {
+                "name": "Sohvapöytä",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "DININGTABLE": {
+                "name": "Ruokapöytä",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "BED": {
+                "name": "Sänky",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "CARPET": {
+                "name": "Matto",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "MIRROR": {
+                "name": "Peili",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "CANDLES": {
+                "name": "Kynttilät",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "PILLOW": {
+                "name": "Tyyny",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "FLOWER": {
+                "name": "Kukka",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "BOOK": {
+                "name": "Kirja",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "BOOKS": {
+                "name": "Kirjapino",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "PLUSH": {
+                "name": "Pehmo",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            },
+            "CLOSET": {
+                "name": "Kaappi",
+                "desc": "Rakasta itseäsi sellaisena kuin olet."
+            }
+        }
+    },
+    "MUISTOJASET": {
+        "name": "Muistoja",
+        "items": {
+            "COUCH": {
+                "name": "Sohva",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "ARMCHAIR": {
+                "name": "Nojatuoli",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "FLOWERS": {
+                "name": "Kukkia",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "COFFEETABLE": {
+                "name": "Kahvipöytä",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "PAINTING": {
+                "name": "Maalaus",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "PICTURES": {
+                "name": "Kuvat",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "OLDWINDOW": {
+                "name": "Vanha ikkuna",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "NEWWINDOW": {
+                "name": "Uusi ikkuna",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "FICUS": {
+                "name": "Ficus",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "DRAWER": {
+                "name": "Lipasto",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "OLDCARPET": {
+                "name": "Vanha matto",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "NEWCARPET": {
+                "name": "Uusi matto",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "DRAWINGS": {
+                "name": "Piirrustukset",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            },
+            "FOXTOY": {
+                "name": "Kettu lelu",
+                "desc": "Muistaessan menneisyyden henkilö voi analyisoida tekojaan ja tehdä johtopäätöksiä tai yksinkertaisesti muistaa miellyttäviä hetkiä."
+            }
+        }
+    },
+    "materials": {
+        "POLYESTER": {
+            "name": "Polyesteri"
+        },
+        "WOOD": {
+            "name": "Puu"
+        },
+        "ALUMINIUM": {
+            "name": "Alumiini"
+        },
+        "LEATHER": {
+            "name": "Nahka"
+        },
+        "FABRIC": {
+            "name": "Kangas"
+        },
+        "BOARD": {
+            "name": "Lastulevy"
+        },
+        "GLASS": {
+            "name": "Lasi"
+        },
+        "MGLASS": {
+            "name": "Peililasi"
+        },
+        "PORCELAIN": {
+            "name": "Posliini"
+        },
+        "MELAMINE": {
+            "name": "Melamiini"
+        },
+        "METAL": {
+            "name": "Metalli"
+        },
+        "ELECTRONICS": {
+            "name": "Elektroniikka"
+        },
+        "PAPER": {
+            "name": "Paperi"
+        },
+        "PLASTIC": {
+            "name": "Muovi"
+        },
+        "CLAY": {
+            "name": "Savi"
+        },
+        "PLANT": {
+            "name": "Kasvi"
+        },
+        "WAX": {
+            "name": "Vaha"
+        }
+    },
+    "label-author": "Taiteilija",
+    "label-price": "Hinta",
+    "label-weight": "Paino",
+    "label-materials": "Materiaalit",
+    "close-view": "Sulje"
+}

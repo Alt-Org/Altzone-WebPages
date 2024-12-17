@@ -15,6 +15,7 @@ export enum AppRoutesLinks {
 
     PICTURE_GALLERY = 'PICTURE_GALLERY',
     COMICS_GALLERY = 'COMICS_GALLERY',
+    PICTURE_GALLERY_CATEGORY = 'PICTURE_GALLERY_CATEGORY',
 
     MAIN = 'MAIN',
     ABOUT = 'ABOUT',
@@ -31,6 +32,8 @@ export enum AppRoutesLinks {
     HEROES_ONE = 'HEROES_ONE',
 
     HERO_DEVELOPMENT = 'HERO_DEVELOPMENT',
+
+    JOIN_US = 'JOIN_US',
 
     NOT_FOUND = 'NOT_FOUND',
     NOT_FOUND_CATCH = 'NOT_FOUND_CATCH',
@@ -62,6 +65,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
     [AppRoutesLinks.PICTURE_GALLERY]: '/picture-galleries',
     [AppRoutesLinks.COMICS_GALLERY]: '/comics',
+    [AppRoutesLinks.PICTURE_GALLERY_CATEGORY]: '/picture-galleries/:category',
 
     [AppRoutesLinks.MAIN]: '/',
     [AppRoutesLinks.ABOUT]: '/about',
@@ -72,6 +76,8 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.HEROES]: '/heroes',
     [AppRoutesLinks.HEROES_ONE]: '/heroes/:slug',
     [AppRoutesLinks.HERO_DEVELOPMENT]: '/hero-development',
+
+    [AppRoutesLinks.JOIN_US]: '/join-us',
 
     [AppRoutesLinks.NEWS]: news,
     [AppRoutesLinks.NEWSELEMENT]: news + '/:id',
@@ -103,6 +109,7 @@ export const getRouteHeroDevPage = () => '/hero-development';
 
 export const getRouteComicsPage = () => '/comics';
 export const getRouteGalleryPage = () => '/picture-galleries';
+export const getRouteGalleryCategoryPage = (category: string) => `/picture-galleries/${category}`;
 export const getRouteGameArtPage = () => '/artGame';
 
 export const getRouteMyClanPage = () => '/clans/myclan';
@@ -113,9 +120,16 @@ export const getRouteOneClanPage = (id: string) => `/clans/${id}`;
 export const getRouteEveryClansPage = () => '/clans/all';
 export const getRouteAddNewClanPage = () => '/clans/addNew';
 
+export const getRouteJoinUsPage = () => '/join-us';
+
 export const getRoutePrivacyPage = () => '/privacy';
 export const getRouteCookiesPage = () => '/cookies';
 export const getRouteAboutPage = () => '/about';
 export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';
 export const getRoute404Page = () => '/404';
+
+export const getRouteAllFurnitureSetsPage = () => '/furniture';
+export const getRouteOneFurnitureSetPage = (id: string) => `/furniture/set/${id}`;
+export const getRouteFurnitureSearchPage = () => '/furniture/search';
+export const getRouteFurnitureCategoryPage = () => '/furniture/category';
