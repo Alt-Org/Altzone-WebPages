@@ -12,7 +12,7 @@ const CardsContainer = ({ items }: CardsContainerProps) => {
             {items.map((item: Piece) => (
                 <PieceCard
                     item={item}
-                    key={item.path}
+                    key={((item.set && item.set.path) || 'Unknown') + item.path}
                 />
             ))}
         </div>

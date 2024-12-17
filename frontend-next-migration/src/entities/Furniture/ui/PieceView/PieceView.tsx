@@ -7,6 +7,7 @@ import coinIcon from '@/shared/assets/images/furniture/CommonCurrencySymbol.png'
 import Dialog from '@/shared/ui/Dialog/Dialog';
 import { MaterialType, Piece } from '../../types/furniture';
 import cls from './PieceView.module.scss';
+import { FurnitureManager, getMaterialName } from '../../model/FurnitureManager';
 
 interface Props {
     piece: Piece;
@@ -16,13 +17,20 @@ interface Props {
 }
 
 const materialsToString = (materials: Array<MaterialType>, t: TFunction): string => {
-    return materials.map((material) => t(material.name)).join(', ');
+    return materials.map((material) => getMaterialName(t, material.name)).join(', ');
 };
 
 const PieceView = ({ piece, leftCorner, isOpen, onClose }: Props) => {
     const { t } = useClientTranslation('furnitureinfo');
-    const { set, rarity } = piece;
+    const { set, rarity, path } = piece;
     const { lightcolor, darkcolor } = rarity;
+
+    const manager = new FurnitureManager();
+
+    const translationPath = manager.getPieceTranslation(
+        manager.getSetTranslation(t, set?.path || 'Unknown'),
+        path,
+    );
 
     return (
         <Dialog
@@ -37,9 +45,7 @@ const PieceView = ({ piece, leftCorner, isOpen, onClose }: Props) => {
                         className={cls.Title}
                         style={{ color: lightcolor }}
                     >
-                        {t(`${set?.path}.ITEMS.${piece.path}.name`, {
-                            defaultValue: 'Unknown Item',
-                        })}
+                        {translationPath.name}
                     </h2>
 
                     <div className={cls.Details}>
@@ -69,11 +75,7 @@ const PieceView = ({ piece, leftCorner, isOpen, onClose }: Props) => {
                             </span>
                         </div>
                     </div>
-                    <p style={{ color: darkcolor }}>
-                        {t(`${set?.path}.ITEMS.${piece.path}.desc`, {
-                            defaultValue: 'No description available',
-                        })}
-                    </p>
+                    <p style={{ color: darkcolor }}>{translationPath.desc}</p>
                 </article>
             </section>
         </Dialog>

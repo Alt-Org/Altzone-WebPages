@@ -14,7 +14,7 @@ export async function _getPage(lng: string, category: string) {
         return notFound();
     }
 
-    const setPathName = `${t(`${set.path}.name`)}`;
+    const setPathName = manager.getSetTranslation(t, set.path).name;
 
     return createPage<FurnitureOneSetPageProps>({
         buildPage: () => ({

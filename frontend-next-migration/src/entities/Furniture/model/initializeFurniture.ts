@@ -95,128 +95,128 @@ export const rarityList: Record<Rarities, PieceRarity> = {
 };
 export const categories: Record<Category, PieceType> = {
     [Category.CHAIRS]: {
-        name: 'TYPES.CHAIRS.name',
+        name: 'CHAIRS',
     },
     [Category.CABINETS]: {
-        name: 'TYPES.CABINETS.name',
+        name: 'CABINETS',
     },
     [Category.COUCHES]: {
-        name: 'TYPES.COUCHES.name',
+        name: 'COUCHES',
     },
     [Category.LIGHTS]: {
-        name: 'TYPES.LIGHTS.name',
+        name: 'LIGHTS',
     },
     [Category.PLANTS]: {
-        name: 'TYPES.PLANTS.name',
+        name: 'PLANTS',
     },
     [Category.TABLES]: {
-        name: 'TYPES.TABLES.name',
+        name: 'TABLES',
     },
     [Category.RUGS]: {
-        name: 'TYPES.RUGS.name',
+        name: 'RUGS',
     },
     [Category.WALL]: {
-        name: 'TYPES.WALL.name',
+        name: 'WALL',
     },
     [Category.MIRRORS]: {
-        name: 'TYPES.MIRRORS.name',
+        name: 'MIRRORS',
     },
     [Category.TOILETS]: {
-        name: 'TYPES.TOILETS.name',
+        name: 'TOILETS',
     },
     [Category.SINKS]: {
-        name: 'TYPES.SINKS.name',
+        name: 'SINKS',
     },
     [Category.BEDS]: {
-        name: 'TYPES.BEDS.name',
+        name: 'BEDS',
     },
     [Category.ITEMS]: {
-        name: 'TYPES.ITEMS.name',
+        name: 'ITEMS',
     },
 };
 export const materials: Record<Materials, MaterialType> = {
     [Materials.WOOD]: {
-        name: 'MATERIALS.WOOD.name',
+        name: 'WOOD',
     },
     [Materials.POLYESTER]: {
-        name: 'MATERIALS.POLYESTER.name',
+        name: 'POLYESTER',
     },
     [Materials.ALUMINIUM]: {
-        name: 'MATERIALS.ALUMINIUM.name',
+        name: 'ALUMINIUM',
     },
     [Materials.LEATHER]: {
-        name: 'MATERIALS.LEATHER.name',
+        name: 'LEATHER',
     },
     [Materials.GLASS]: {
-        name: 'MATERIALS.GLASS.name',
+        name: 'GLASS',
     },
     [Materials.MELAMINE]: {
-        name: 'MATERIALS.MELAMINE.name',
+        name: 'MELAMINE',
     },
     [Materials.BOARD]: {
-        name: 'MATERIALS.BOARD.name',
+        name: 'BOARD',
     },
     [Materials.FABRIC]: {
-        name: 'MATERIALS.FABRIC.name',
+        name: 'FABRIC',
     },
     [Materials.METAL]: {
-        name: 'MATERIALS.METAL.name',
+        name: 'METAL',
     },
     [Materials.ELECTRONICS]: {
-        name: 'MATERIALS.ELECTRONICS.name',
+        name: 'ELECTRONICS',
     },
     [Materials.PORCELAIN]: {
-        name: 'MATERIALS.PORCELAIN.name',
+        name: 'PORCELAIN',
     },
     [Materials.MGLASS]: {
-        name: 'MATERIALS.MGLASS.name',
+        name: 'MGLASS',
     },
     [Materials.STEEL]: {
-        name: 'MATERIALS.STEEL.name',
+        name: 'STEEL',
     },
     [Materials.PLASTIC]: {
-        name: 'MATERIALS.PLASTIC.name',
+        name: 'PLASTIC',
     },
     [Materials.CLAY]: {
-        name: 'MATERIALS.CLAY.name',
+        name: 'CLAY',
     },
     [Materials.PLANT]: {
-        name: 'MATERIALS.PLANT.name',
+        name: 'PLANT',
     },
     [Materials.PAPER]: {
-        name: 'MATERIALS.PAPER.name',
+        name: 'PAPER',
     },
     [Materials.WAX]: {
-        name: 'MATERIALS.WAX.name',
+        name: 'WAX',
     },
 };
 export const recycles: Record<Recycles, RecycleType> = {
     [Recycles.GENERAL]: {
-        name: 'RECYCLES.GENERAL.name',
+        name: 'GENERAL',
     },
     [Recycles.ELECTRONICS]: {
-        name: 'RECYCLES.ELECTRONICS.name',
+        name: 'ELECTRONICS',
     },
     [Recycles.GLASS]: {
-        name: 'RECYCLES.GLASS.name',
+        name: 'GLASS',
     },
     [Recycles.WOOD]: {
-        name: 'RECYCLES.WOOD.name',
+        name: 'WOOD',
     },
     [Recycles.METAL]: {
-        name: 'RECYCLES.METAL.name',
+        name: 'METAL',
     },
     [Recycles.PLASTIC]: {
-        name: 'RECYCLES.PLASTIC.name',
+        name: 'PLASTIC',
     },
     [Recycles.DUMP]: {
-        name: 'RECYCLES.DUMP.name',
+        name: 'DUMP',
     },
     [Recycles.BIOWASTE]: {
-        name: 'RECYCLES.BIOWASTE.name',
+        name: 'BIOWASTE',
     },
     [Recycles.PAPER]: {
-        name: 'RECYCLES.PAPER.name',
+        name: 'PAPER',
     },
 };
 
