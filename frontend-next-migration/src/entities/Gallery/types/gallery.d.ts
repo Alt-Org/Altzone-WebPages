@@ -31,7 +31,7 @@ export interface PhotoVersionTranslations {
 
 export interface Category {
     id: string;
-    name: string;
+    translations: CategoryTranslations[];
 }
 
 export interface PhotoVersion {

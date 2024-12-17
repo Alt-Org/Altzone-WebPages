@@ -1,7 +1,7 @@
 import { envHelper } from '@/shared/const/envHelper';
 import { useMemo } from 'react';
 import { Category, PhotoObject, PhotoVersion } from '../types/gallery';
-import { getPhotoVersionTranslation, getCategoryTranslation } from '../api/translations';
+import { getPhotoVersionTranslation } from '../api/translations';
 import { useGetGalleryCategoriesQuery } from '../api/galleryCategoriesApi';
 import { useGetPhotoObjectsQuery, useGetPhotoVersionsQuery } from '../api/galleryApi';
 
@@ -49,7 +49,7 @@ export const useGetDirectusGalleryImages = (lng: string) => {
         if (!cData) return [];
         return cData.map((item) => ({
             id: item.id,
-            name: getCategoryTranslation(item.translations || [], lng),
+            translations: item.translations,
         }));
     }, [cData]);
 
@@ -70,7 +70,7 @@ export const useGetDirectusGalleryImages = (lng: string) => {
             id: item.id,
             category: {
                 id: item.category.id,
-                name: getCategoryTranslation(item.category.translations || [], lng),
+                translations: item.category.translations,
             },
             versions: {
                 preview: {
