@@ -1,3 +1,4 @@
+import { statData } from '@/entities/Hero';
 import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
 import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
 import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
@@ -7,9 +8,10 @@ import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
-import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-boxing.gif';
+import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-white-bg.gif';
 import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
+import conmanGif from '@/shared/assets/images/heros/conman/conman.gif';
 import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
 import fatePriestGif from '@/shared/assets/images/heros/fate-priest/fate-priest.gif';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
@@ -20,7 +22,6 @@ import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
-import { statData } from '@/entities/Hero';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
     return {
@@ -137,7 +138,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                 {
                     id: 522313,
                     srcImg: conman,
-                    srcGif: comingSoon,
+                    srcGif: conmanGif,
                     alt: t('TRICKSTER.heroes.Conman.alt'),
                     altGif: t('TRICKSTER.heroes.Conman.altGif'),
                     slug: HeroSlug.CONMAN,
