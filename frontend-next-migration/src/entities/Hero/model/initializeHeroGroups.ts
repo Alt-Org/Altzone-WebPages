@@ -2,7 +2,7 @@ import { statData } from '@/entities/Hero';
 import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
 import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
 import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.gif';
+import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari-white-bg.gif';
 import pirate from '@/shared/assets/images/heros/pirate/pirate.png';
 import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
