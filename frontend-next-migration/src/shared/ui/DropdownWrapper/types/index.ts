@@ -11,6 +11,7 @@ export type DropDownElementASTextOrLink = {
     link?: Link;
     active?: boolean;
     onClickCallback?: () => void;
+    dataTestId?: string;
     isDisabled?: {
         status: boolean;
         reason: string;
@@ -30,6 +31,7 @@ export type DropdownWrapperProps = {
     onOpen?: () => void;
     onClose?: () => void;
     children: ReactNode;
+    dataTestId?: string;
     mouseOverLeaveMode?: boolean;
     isDisabled?: {
         status: boolean;

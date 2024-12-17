@@ -7,11 +7,11 @@ jest.mock('@/shared/i18n', () => ({
 }));
 const props = {
     stats: [
-        { name: 'resistance', value: 1, color: 'rgb(153,0,255)' },
-        { name: 'hp', value: 2, color: 'rgb(0,255,0)' },
-        { name: 'size', value: 5, color: 'rgb(224,102,102)' },
-        { name: 'impactForce', value: 3, color: 'rgb(255,153,0)' },
-        { name: 'speed', value: 2, color: 'rgb(0,255,255)' },
+        { name: 'resistance', defaultLevel: 1, color: 'rgb(153,0,255)' },
+        { name: 'hp', defaultLevel: 2, color: 'rgb(0,255,0)' },
+        { name: 'size', defaultLevel: 5, color: 'rgb(224,102,102)' },
+        { name: 'impactForce', defaultLevel: 3, color: 'rgb(255,153,0)' },
+        { name: 'speed', defaultLevel: 2, color: 'rgb(0,255,255)' },
     ],
 };
 describe('BarChart', () => {

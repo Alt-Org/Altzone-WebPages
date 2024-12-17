@@ -38,12 +38,14 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
         <div className={classNames(cls.NavMenuWithDropdowns, {}, [className])}>
             <DropdownWrapper
                 openByDefault={openByDefault}
+                dataTestId={title}
                 elements={dropdownItems.map((item, index) =>
                     isDropdownItem(item) ? (
                         <NestedDropDown
                             key={item.title}
                             openByDefault={item.openByDefault}
                             elements={item.elements}
+                            dataTestId={item.title}
                         >
                             {item.title}
                         </NestedDropDown>
@@ -79,10 +81,11 @@ interface NestedDropDownProps {
     openByDefault?: boolean;
     elements: DropDownElement[];
     children: ReactNode;
+    dataTestId?: string;
 }
 
 function NestedDropDown(props: NestedDropDownProps) {
-    const { openByDefault, elements, children } = props;
+    const { openByDefault, elements, children, dataTestId } = props;
 
     return (
         <DropdownWrapper
@@ -91,6 +94,7 @@ function NestedDropDown(props: NestedDropDownProps) {
             contentClassName={cls.subDropDownContent}
             childrenWrapperClassName={cls.subDropDownChildren}
             elements={elements}
+            dataTestId={dataTestId}
         >
             {children}
         </DropdownWrapper>
