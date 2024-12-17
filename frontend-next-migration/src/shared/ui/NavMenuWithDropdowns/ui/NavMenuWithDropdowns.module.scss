@@ -1,5 +1,15 @@
 .NavMenuWithDropdowns{
   width: 100%;
+
+  @media (max-width: breakpoint(lg)) {
+    width: 50%;
+    margin: auto;
+  }
+
+  @media (max-width: breakpoint(sm)) {
+    width: 80%;
+    margin: auto;
+  }
 }
 
 .topDropDown{
