@@ -46,12 +46,12 @@ describe('FeedbackCard', () => {
     });
 
     it('disables send button while submitting feedback', async () => {
-        const mockMutation = jest.fn().mockResolvedValue({}); // Simulate successful mutation
+        const mockMutation = jest.fn().mockResolvedValue({});
         // @ts-ignore
         jest.mocked(useAddFeedbackMutation).mockReturnValue([mockMutation, { isLoading: true }]);
 
         render(<FeedbackCard />);
-        const sendButton = screen.getByText('loading'); // This is the text when isLoading is true
+        const sendButton = screen.getByText('loading');
         expect(sendButton).toBeDisabled();
     });
 });
