@@ -21,8 +21,8 @@ export const FeedbackSideButton = (props: Props) => {
         feedbackIcon = (
             <Image
                 src={feedBackIcon}
-                width={24}
-                height={24}
+                width={48}
+                height={48}
                 alt="Feed-Back-Icon"
             />
         ),
@@ -44,8 +44,10 @@ export const FeedbackSideButton = (props: Props) => {
                 type="button"
                 onClick={handleClick}
             >
-                {feedbackIcon}
-                {t('feedback')}
+                <div className={cls.ContentWrapper}>
+                    <div className={cls.Text}>{t('Feedback')}</div>
+                    <div className={cls.Icon}>{feedbackIcon}</div>
+                </div>
             </Button>
         )
     );

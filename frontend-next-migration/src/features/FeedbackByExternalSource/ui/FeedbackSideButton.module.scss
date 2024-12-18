@@ -10,13 +10,34 @@
     writing-mode: vertical-lr;
 
     right: 10px;
-    background-color: var(--inverted-bg-color) !important;
+    background-color: #121212;
+    // background-color: var(--inverted-bg-color) !important;
     z-index: var(--sideButton-z-index) !important;
-    font-family: var(--font-family-texts) !important;
+    // font-family: var(--font-family-texts) !important;
+    font-family:
+        'DM Sans',
+        9pt regular;
     line-height: 1 !important;
     transform: rotate(180deg);
-    padding: 12px !important;
+    // padding: 12px !important;
 
+    border-radius: 28px;
     border: 4px solid #ffa100;
+}
+
+.ContentWrapper {
+    display: flex;
+    align-items: center;
+    padding-bottom: 32px;
+    padding-top: 32px;
+}
+.Icon {
+    transform: rotate(180deg);
+    padding-bottom: 16px;
+}
+
+.Text {
+    font-size: 24px;
     color: #ffa100;
+    text-shadow: none;
 }
