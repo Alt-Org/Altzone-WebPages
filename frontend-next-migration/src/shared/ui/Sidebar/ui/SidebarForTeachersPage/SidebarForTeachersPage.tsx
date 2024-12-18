@@ -15,7 +15,7 @@ import {
 } from '@/shared/appLinks/RoutePaths';
 import { link } from 'fs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 interface SidebarForTeachersPageProps {
     sidebarClassName?: string;
@@ -42,14 +42,14 @@ export const SidebarForTeachersPage = ({ sidebarClassName = '' }: SidebarForTeac
             type: sidebarItemType.ISidebarItemDropDown,
             elements: [
                 {
-                    elementText: `- ${t('teaching-material')}`,
+                    elementText: `${t('teaching-material')}`,
                     link: {
                         path: getRouteTeachingMaterials(),
                         isExternal: false,
                     },
                 },
                 {
-                    elementText: `- ${t('game-analysis')}`,
+                    elementText: `${t('game-analysis')}`,
                     link: {
                         path: getRouteGameAnalysis(),
                         isExternal: false,
@@ -99,9 +99,9 @@ export const SidebarForTeachersPage = ({ sidebarClassName = '' }: SidebarForTeac
             >
                 <FontAwesomeIcon
                     size={'2xs'}
-                    icon={faCaretDown}
+                    icon={faAngleLeft}
                     style={{
-                        transform: isCollapsed ? 'rotate(-90deg)' : 'rotate(90deg)',
+                        transform: isCollapsed ? 'rotate(0deg)' : 'rotate(180deg)',
                         transition: 'transform 0.4s ease-in-out',
                     }}
                 />

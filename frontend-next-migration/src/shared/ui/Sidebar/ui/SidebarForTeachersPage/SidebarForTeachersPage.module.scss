@@ -7,26 +7,24 @@
     left: 0;
     margin-left: 2rem;
     margin-bottom: 5%;
+    overflow-x: hidden;
     overflow-y: auto;
     transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    border-radius: 1vh;
 
-    //@include custom-scrollbar;
     &::-webkit-scrollbar {
         display: none;
         /* Hide scrollbar in Chrome, Edge, and Safari */
     }
-    overflow-x: hidden;
-
-    border-radius: 1vh;
 
     &.collapsed {
-        width: 8vw; // Collapsed width
+        width: 8vw; 
     }
 }
 
 .SidebarContent {
     z-index: var(--sidebar-z-index) !important;
-    height: 65%;
+    height: 70%;
     width: 20%;
 
     background: rgba(0, 0, 0, 0.85);
@@ -38,7 +36,6 @@
     overflow-y: auto;
     transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
 
-    //@include custom-scrollbar;
     &::-webkit-scrollbar {
         display: none;
         /* Hide scrollbar in Chrome, Edge, and Safari */
@@ -48,33 +45,37 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     border-radius: 1vh;
 
     &.collapsed {
-        width: 5vw; // Collapsed width
+        width: 5vw; 
     }
 }
 
-.SidebarContent div div{
-    //background-color: red;
-}
-
 .items {
-    margin-top: 3rem;
+    margin-top: 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
+
+    &.collapsed{
+        width: 75%;
+        overflow: hidden;
+    }
 }
 
 
 .items a,
 .items div {
     color: #FF681D;
-    font-size: 1.5rem;
+    font-size: 22px;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
-
+    align-items: start;
+    
     &:hover {
         background: rgba(0, 0, 0, 0.60);
         color: var(--secondary-color);
@@ -84,26 +85,22 @@
 .items div div {
     margin-bottom: 1rem;
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
-
+    align-items: center;
     &:hover {
         background: rgba(0, 0, 0, 0.60);
         color: var(--secondary-color);
     }
 }
 
-
-
-
 .bottomItems a {
     display: flex;
     text-align: start;
     color: #FF681D;
-    font-size: 1.5rem;
+    font-size: 22px;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 2rem;
     margin-left: 1.7rem;
-
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 
     &:hover {
@@ -112,11 +109,22 @@
     }
 }
 
+.bottomItems{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.collapsed{
+      width: 50%;
+      //background-color: #FF681D;
+      overflow: hidden;
+    }
+}
+
 .toggleButton {
     position: absolute;
     top: 50%;
-    right: 0px;
-    transform: scale(2);
+    right: 1vh;
+    transform: scale(1.8);
     width: fit-content;
     height: fit-content;
     border: none;
