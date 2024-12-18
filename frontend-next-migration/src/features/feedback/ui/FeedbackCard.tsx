@@ -54,7 +54,7 @@ export default function FeedbackCard() {
             showToast(t('success'), 'success');
             setFeedback('');
             setFeedbackEmoji(undefined);
-        } catch (error: any) {
+        } catch {
             showToast(t('error-submit-failed'), 'error');
         }
     };
