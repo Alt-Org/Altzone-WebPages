@@ -25,15 +25,9 @@
 }
 .FeedbackCardContainer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 330px !important;
-  height: 325px !important;
-
   position: fixed;
-  bottom: 50%;
-  right: calc(10px + 60px);
-
+  bottom: 20%;
+  right: calc(60px);
   z-index: calc(var(--sideButton-z-index) + 1);
 }
 
