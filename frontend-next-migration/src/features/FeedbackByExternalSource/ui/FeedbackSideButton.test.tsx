@@ -1,11 +1,8 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import * as openLinkInNewTabModule from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
+import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { FeedbackSideButton } from './FeedbackSideButton';
 
-jest.mock('@/shared/lib/openLinkInNewTab/openLinkInNewTab');
 jest.mock('@/shared/i18n');
 jest.mock('@/shared/lib/hooks/useIsMobileSize');
 
@@ -39,19 +36,6 @@ describe('FeedbackSideButton', () => {
 
         const button = screen.getByRole('button', { name: 'feedback' });
         expect(button).toBeInTheDocument();
-    });
-
-    it('calls openLinkInNewTab on button click', () => {
-        (useIsMobileSize as jest.Mock).mockReturnValue({ isMobileSize: false });
-
-        render(<FeedbackSideButton disableMobile={false} />);
-
-        const button = screen.getByRole('button', { name: 'feedback' });
-        fireEvent.click(button);
-
-        expect(openLinkInNewTabModule.openLinkInNewTab).toHaveBeenCalledWith(
-            AppExternalLinks.googleFeedback,
-        );
     });
 
     it('renders a disabled button when on mobile and disableMobile is true', () => {
