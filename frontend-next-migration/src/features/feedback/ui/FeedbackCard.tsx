@@ -18,8 +18,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function FeedbackCard() {
     const { t } = useClientTranslation('feedbackCard');
-
-    // State management for user feedback
     const [feedback, setFeedback] = useState<string>('');
     const [feedbackEmoji, setFeedbackEmoji] = useState<number>();
 

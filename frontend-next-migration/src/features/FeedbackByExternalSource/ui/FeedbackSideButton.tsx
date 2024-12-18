@@ -15,8 +15,6 @@ export const FeedbackSideButton = (props: Props) => {
 
     const { t } = useClientTranslation('translation');
     const { isMobileSize } = useIsMobileSize();
-
-    // State for controlling FeedbackCard visibility
     const [isFeedbackVisible, setFeedbackVisible] = useState(false);
 
     const handleButtonClick = () => {
@@ -34,8 +32,6 @@ export const FeedbackSideButton = (props: Props) => {
                 >
                     {t('feedback')}
                 </Button>
-
-                {/* Render FeedbackCard if visible */}
                 {isFeedbackVisible && (
                     <div className={cls.FeedbackOverlay}>
                         <div className={cls.FeedbackCardContainer}>
