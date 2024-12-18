@@ -2,6 +2,8 @@
     "title": "Tell your opinion about our websites",
     "input-placeholder": "Please write here",
     "send": "Send",
-    "href-to-fullform": "Go to the full form ->"
+    "href-to-fullform": "Go to the full form ->",
+    "error": "Select emote and then write feedback",
+    "success": "Thank you very much! We appreciate your feedback."
   }
   
