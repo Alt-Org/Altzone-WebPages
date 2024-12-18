@@ -15,6 +15,8 @@ import { useAddFeedbackMutation } from '@/entities/Feedback/api/feedbackApi';
 import { Feedback } from '@/entities/Feedback/model/types/types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function FeedbackCard() {
     const { t } = useClientTranslation('feedbackCard');
@@ -109,14 +111,46 @@ export default function FeedbackCard() {
                     </>
                 )}
             </CustomForm.Button>
-            <a
-                className={cls.linkToForm}
-                href={AppExternalLinks.googleFeedback}
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                {t('href-to-fullform')}
-            </a>
+            <div className={cls.linkToFormContainer}>
+                <a
+                    className={cls.linkToForm}
+                    href={AppExternalLinks.googleFeedback}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {t('href-to-webform')}
+                    <FontAwesomeIcon
+                        className={cls.externalLinkIcon}
+                        size={'2xs'}
+                        icon={faExternalLink}
+                        style={{
+                            display: 'inline',
+                            verticalAlign: 'middle',
+                            marginLeft: '5px',
+                            color: 'var(--inverted-primary-color)',
+                        }}
+                    />
+                </a>
+                <a
+                    className={cls.linkToForm}
+                    href={AppExternalLinks.googleFeedback}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {t('href-to-gameform')}
+                    <FontAwesomeIcon
+                        className={cls.externalLinkIcon}
+                        size={'2xs'}
+                        icon={faExternalLink}
+                        style={{
+                            display: 'inline',
+                            verticalAlign: 'middle',
+                            marginLeft: '5px',
+                            color: 'var(--inverted-primary-color)',
+                        }}
+                    />
+                </a>
+            </div>
         </CustomForm>
     );
 }
