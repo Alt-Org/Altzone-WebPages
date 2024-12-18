@@ -7,7 +7,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import Image from 'next/image';
 import cls from './FeedbackSideButton.module.scss';
-import feedBackIcon from './FeedBackIcon1.svg';
+import feedBackIcon from '@/shared/assets/icons/FeedbackSideButtonIcon.svg';
 
 type Props = {
     // The button does not display on mobile devices
