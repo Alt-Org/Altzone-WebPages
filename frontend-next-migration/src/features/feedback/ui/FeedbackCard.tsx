@@ -42,7 +42,7 @@ export default function FeedbackCard() {
 
     const submitFeedback = async () => {
         if (!feedback || !feedbackEmoji) {
-            showToast(t('Emote or Text is missing'), 'error');
+            showToast(t('error'), 'error');
             return;
         }
 
@@ -53,11 +53,11 @@ export default function FeedbackCard() {
             };
             await addFeedback(feedbackData).unwrap();
 
-            showToast(t("Thank's for your feedback!"), 'success');
+            showToast(t('success'), 'success');
             setFeedback('');
             setFeedbackEmoji(undefined);
         } catch (error: any) {
-            showToast(t('something went wrong'), 'error');
+            showToast(t('error-submit-failed'), 'error');
         }
     };
 
