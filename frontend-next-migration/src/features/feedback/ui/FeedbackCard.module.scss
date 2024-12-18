@@ -2,13 +2,13 @@
 
 .feedbackForm{
     border-radius: var(--border-radius-custom);
-    background-color: rgba(0, 0, 0, 0.47);
+    background-color: rgba(0, 0, 0, 0.90);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 10px;
 
-    width: 330px !important;
+    width: 350px !important;
     height: 325px !important;
 }
 
@@ -37,7 +37,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 9px 12px; 
+    padding: 9px 12px;
     gap: 10px;
 
     width: 95%;
@@ -74,7 +74,20 @@
 .selectedEmoji {
     transform: scale(1.25);
 }
+.linkToFormContainer{
+    flex-direction: row;
+    gap: 10px;
+}
+.linkToFormContainer {
+    display: flex; /* Aktivoi flexbox-asettelu */
+    flex-direction: row; /* Varmistaa, että sisältö on rivillä */
+    gap: 10px; /* Lisää tilaa elementtien väliin */
+}
 
+.linkToFormContainer > * {
+    display: inline-block; /* Varautuu block-tilan oletukseen */
+    vertical-align: middle; /* Sijoittaa tekstin pystysuunnassa keskelle */
+}
 
 
 
