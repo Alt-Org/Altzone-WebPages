@@ -1,19 +1,18 @@
 'use client';
-import cls from './page.module.scss';
 import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
 import { HorizontalLines } from '@/shared/ui/PageDividers';
+import { Gallery, GalleryProps } from './_components/sections/Gallery';
+import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
+import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
 } from './_components/sections/ProjectDescription';
-import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import {
     VideoAndGalleries,
-    // VideoAndGalleries,
     VideoAndGalleriesProps,
 } from './_components/sections/VideoAndGalleries';
-import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
-import { Gallery, GalleryProps } from './_components/sections/Gallery';
+import cls from './page.module.scss';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -53,15 +52,15 @@ function MainPage(props: Props) {
 
             <HorizontalLines />
 
-            <Gallery {...gallery} />
-
-            <HorizontalLines />
-
             <SectionHeroesBlocks
                 {...heroesBlocks}
                 maxHeroesPerGroup={2}
                 maxGroupsPerPage={3}
             />
+
+            <HorizontalLines />
+
+            <Gallery {...gallery} />
 
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}
