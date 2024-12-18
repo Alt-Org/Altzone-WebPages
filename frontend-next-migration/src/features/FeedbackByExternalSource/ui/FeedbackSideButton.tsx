@@ -39,7 +39,7 @@ export const FeedbackSideButton = (props: Props) => {
                 {isFeedbackVisible && (
                     <div className={cls.FeedbackOverlay}>
                         <div className={cls.FeedbackCardContainer}>
-                            <FeedbackCard onClose={() => setFeedbackVisible(false)} />
+                            <FeedbackCard />
                         </div>
                     </div>
                 )}
