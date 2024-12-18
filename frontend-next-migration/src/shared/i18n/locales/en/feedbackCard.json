@@ -4,6 +4,8 @@
     "send": "Send",
     "href-to-fullform": "Go to the full form ->",
     "error": "Select emote and then write feedback",
-    "success": "Thank you very much! We appreciate your feedback."
+    "success": "Thank you very much! We appreciate your feedback.",
+    "href-to-webform":"Website feedback",
+    "href-to-gameform": "Game feedback"
   }
   
