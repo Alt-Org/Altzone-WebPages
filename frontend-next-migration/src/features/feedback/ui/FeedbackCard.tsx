@@ -13,6 +13,8 @@ import { useClientTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { useAddFeedbackMutation } from '@/entities/Feedback/api/feedbackApi';
 import { Feedback } from '@/entities/Feedback/model/types/types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function FeedbackCard() {
     const { t } = useClientTranslation('feedbackCard');
@@ -30,28 +32,32 @@ export default function FeedbackCard() {
     ];
 
     const [addFeedback, { isLoading }] = useAddFeedbackMutation();
+    const showToast = (message: string, type: 'success' | 'error') => {
+        if (type === 'success') {
+            toast.success(message, { position: 'bottom-center', autoClose: 3000 });
+        } else {
+            toast.error(message, { position: 'bottom-center', autoClose: 3000 });
+        }
+    };
 
     const submitFeedback = async () => {
         if (!feedback || !feedbackEmoji) {
-            alert(t('error-missing-data')); // Notify user if feedback or emoji is missing
+            showToast(t('Emote or Text is missing'), 'error');
             return;
         }
 
         try {
             const feedbackData: Feedback = {
-                feedbackText: feedback, // Map `feedback` state to `feedbackText`
-                rating: feedbackEmoji, // Map `feedbackEmoji` to `rating`
+                feedbackText: feedback,
+                rating: feedbackEmoji,
             };
-
-            // Submit feedback to API
             await addFeedback(feedbackData).unwrap();
 
-            alert(t('success-message')); // Success message
+            showToast(t("Thank's for your feedback!"), 'success');
             setFeedback('');
             setFeedbackEmoji(undefined);
         } catch (error: any) {
-            console.error('Error submitting feedback:', error);
-            alert(t('error-submit-failed')); // Error message
+            showToast(t('something went wrong'), 'error');
         }
     };
 
@@ -59,8 +65,8 @@ export default function FeedbackCard() {
         <CustomForm
             className={cls.feedbackForm}
             onSubmit={async (event) => {
-                event.preventDefault(); // Prevent default form submission
-                await submitFeedback(); // Await the asynchronous function
+                event.preventDefault();
+                await submitFeedback();
             }}
         >
             <h3 className={cls.feedbackTitle}>{t('title')}</h3>
@@ -68,7 +74,7 @@ export default function FeedbackCard() {
                 {emojies?.map((image, index) => (
                     <Image
                         src={image.src}
-                        alt={`Feedback Emoji ${image.value}`} // Descriptive alt text
+                        alt={`Feedback Emoji ${image.value}`}
                         key={index}
                         className={image.value === feedbackEmoji ? cls.selectedEmoji : cls.emoji}
                         onClick={() => setFeedbackEmoji(image.value)}
@@ -83,7 +89,7 @@ export default function FeedbackCard() {
                 inputProps={{
                     placeholder: t('input-placeholder'),
                     value: feedback,
-                    onChange: (event) => setFeedback(event.target.value), // Use descriptive name
+                    onChange: (event) => setFeedback(event.target.value),
                 }}
             />
             <CustomForm.Button
