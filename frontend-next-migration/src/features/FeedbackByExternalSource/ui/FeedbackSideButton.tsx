@@ -1,13 +1,12 @@
 'use client';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { openLinkInNewTab } from '@/shared/lib/openLinkInNewTab/openLinkInNewTab';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import { useState } from 'react';
 import cls from './FeedbackSideButton.module.scss';
+import { FeedbackCard } from '@/features/feedback';
 
 type Props = {
-    // The button does not display on mobile devices
     disableMobile?: boolean;
 };
 
@@ -15,23 +14,36 @@ export const FeedbackSideButton = (props: Props) => {
     const { disableMobile = true } = props;
 
     const { t } = useClientTranslation('translation');
-
     const { isMobileSize } = useIsMobileSize();
 
-    const handleClick = () => {
-        openLinkInNewTab(AppExternalLinks.googleFeedback);
+    // State for controlling FeedbackCard visibility
+    const [isFeedbackVisible, setFeedbackVisible] = useState(false);
+
+    const handleButtonClick = () => {
+        setFeedbackVisible(!isFeedbackVisible);
     };
 
     return (
         (!isMobileSize || !disableMobile) && (
-            <Button
-                theme={ButtonTheme.Graffiti}
-                className={cls.SideButton}
-                type="button"
-                onClick={handleClick}
-            >
-                {t('feedback')}
-            </Button>
+            <>
+                <Button
+                    theme={ButtonTheme.Graffiti}
+                    className={cls.SideButton}
+                    type="button"
+                    onClick={handleButtonClick}
+                >
+                    {t('feedback')}
+                </Button>
+
+                {/* Render FeedbackCard if visible */}
+                {isFeedbackVisible && (
+                    <div className={cls.FeedbackOverlay}>
+                        <div className={cls.FeedbackCardContainer}>
+                            <FeedbackCard onClose={() => setFeedbackVisible(false)} />
+                        </div>
+                    </div>
+                )}
+            </>
         )
     );
 };
