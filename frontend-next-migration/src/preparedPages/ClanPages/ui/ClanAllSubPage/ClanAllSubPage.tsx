@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
+import { GetClansResponse, useGetClansQuery, useGetLeaderboardQuery } from '@/entities/Clan';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
