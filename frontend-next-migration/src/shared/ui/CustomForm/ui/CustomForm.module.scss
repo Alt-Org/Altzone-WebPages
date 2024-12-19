@@ -1,10 +1,9 @@
-.Form{
+.Form {
   -webkit-user-select: none;
   user-select: none;
   width: 420px;
   padding: 30px;
   border-radius: var(--border-radius-custom);
-  background-color: rgba(0, 0, 0, 0.47);
   display: grid;
   gap: 10px;
   color: var(--primary-color);
@@ -14,25 +13,24 @@
     width: 300px;
   }
 
-
-  h1{
+  h1 {
     margin-bottom: 5px;
     text-align: center;
   }
 
-
-  div{
-    display: grid;
+  div {
+    display: flex; /* Muuttaa divin asettelun gridistä riviksi */
+    flex-direction: row; /* Elementit samalle riville */
+    align-items: center; /* Tasoita pystysuunnassa keskelle */
+    gap: 10px; /* Tilaa elementtien väliin */
   }
 
-
-  span{
-    margin-bottom: 3px;
+  span {
+    margin-bottom: 0; /* Ei ylimääräistä pystymarginaalia */
     padding-left: 3px;
   }
 
-
-  input{
+  input {
     height: 50px;
     border-radius: var(--border-radius-custom);
     outline: none;
@@ -48,7 +46,7 @@
     font-family: var(--font-family-texts);
   }
 
-  .submit{
+  .submit {
     @include link-scale-effect;
     margin-top: 8px;
     font: var(--font-xl);
@@ -60,6 +58,4 @@
     height: 16px;
     cursor: pointer;
   }
-
 }
-

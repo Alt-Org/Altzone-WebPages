@@ -4,6 +4,9 @@
   align-items: center;
   justify-content: center;
 }
+.teamMembersList{
+  padding-top: 1rem;
+}
 
 .MembersSection li {
   list-style-type: none;
@@ -31,17 +34,15 @@
   font-family: var(--font-family-main);
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: var(--border-radius-custom);
-  padding: 0.7rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.7rem 2rem 2rem 2rem;
   align-items: start;
 
   h2 {
     text-transform: uppercase;
     color: var(--secondary-color);
-    text-align: start;
-    padding-left: 3rem;
-    padding-bottom: 1rem;
+    text-align: center;
+    padding-right: 20%;
+    padding-top: 2rem;
     background-color: transparent;
   }
 
@@ -49,11 +50,8 @@
     color: var(--secondary-color);
     text-align: center;
     font-size: clamp(0.5rem, 3vw, 2rem);
-    padding-bottom: 0.8rem;
-    padding-right: 6rem;
+    padding-bottom: 1%;
+    padding-right: 20%;
+    padding-top: 0.5rem;
   }
-}
-.memberCard {
-  padding-bottom: 3rem;
-  border-radius: var(--border-radius-custom);
 }

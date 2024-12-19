@@ -1,5 +1,4 @@
 'use client';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { ScrollTop } from '@/features/ScrollTop';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
@@ -25,10 +24,6 @@ const PrivacyPage = (props: Props) => {
     return (
         <div className={classNames(cls.pageContainer)}>
             <WikiContentWithSidebar sections={sections} />
-            <div>
-                <FeedbackSideButton />
-            </div>
-            {/*//todo move from here to app router*/}
             <ScrollTop />
         </div>
     );

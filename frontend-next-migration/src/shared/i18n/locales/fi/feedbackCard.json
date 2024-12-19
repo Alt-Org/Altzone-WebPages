@@ -2,5 +2,9 @@
     "title": "Kerro mielipiteesi verkkosivuistamme",
     "input-placeholder": "Kirjoita tähän",
     "send": "Lähetä",
-    "href-to-fullform": "Siirry koko lomakkeeseen ->"
+    "href-to-fullform": "Siirry koko lomakkeeseen ->",
+    "error": "Valitse mieliala ja sitten kirjoita palaute.",
+    "success": "Kiitos paljon! Arvostamme palautettasi.",
+    "href-to-webform": "Verkkosivun palaute",
+    "href-to-gameform": "Pelin palaute"
   }
