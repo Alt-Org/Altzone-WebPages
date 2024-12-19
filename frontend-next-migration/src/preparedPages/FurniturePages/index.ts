@@ -5,4 +5,5 @@ export type { FurnitureOneSetPageProps } from './ui/OneFurnitureSetPage/OneSetPa
 export { default as FurnitureCategoryPage } from './ui/FurnitureCategoryPage/FurnitureCategoryPage.async';
 export type { FurnitureCategoryPageProps } from './ui/FurnitureCategoryPage/FurnitureCategoryPage';
 export { default as FurnitureSearchPage } from './ui/FurnitureSearchPage/FurnitureSearchPage.async';
+export type { FurnitureSearchPageProps } from './ui/FurnitureSearchPage/FurnitureSearchPage';
 export { default as FurnitureLayout } from './ui/FurnitureLayout/FurnitureLayout';
