@@ -114,7 +114,7 @@ export default function FeedbackCard() {
             <div className={cls.linkToFormContainer}>
                 <a
                     className={cls.linkToForm}
-                    href={AppExternalLinks.googleGameFeedback}
+                    href={AppExternalLinks.googleWebFeedback}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
