@@ -1,22 +1,23 @@
 'use client';
 import { useState, useMemo, useCallback } from 'react';
-import {
-    FurnitureManager,
-    categories,
-    PieceCard,
-    FurnitureCardsContainer,
-} from '@/entities/Furniture';
+import { FurnitureManager, categories, FurnitureCardsContainer } from '@/entities/Furniture';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Container } from '@/shared/ui/Container';
-import { useClientTranslation } from '@/shared/i18n';
 import { Button } from '@/shared/ui/Button';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './FurnitureCategoryPage.module.scss';
 
-const FurnitureCategoryPage = () => {
-    const { t } = useClientTranslation('furniturecategory');
+type Props = {
+    translations: Record<string, string>;
+    textback: string;
+    textresults: string;
+    textnoresults: string;
+};
+
+const FurnitureCategoryPage = (props: Props) => {
     const manager = useMemo(() => new FurnitureManager(), []);
+
+    const { translations, textback, textresults, textnoresults } = props;
 
     const [category, setCategory] = useState(categories.CHAIRS);
     const list = useMemo(() => manager.getPiecesByCategory(category), [manager, category]);
@@ -29,10 +30,10 @@ const FurnitureCategoryPage = () => {
                     className={classNames(cls.categoryButton, { [cls.active]: value === category })}
                     onClick={() => setCategory(value)}
                 >
-                    {t(cat)}
+                    {translations[cat]}
                 </Button>
             )),
-        [t, category, cats],
+        [translations, category, cats],
     );
 
     const renderPieceCards = useCallback(() => <FurnitureCardsContainer items={list} />, [list]);
@@ -40,16 +41,16 @@ const FurnitureCategoryPage = () => {
     const hasNoResults = list.length === 0;
 
     const renderContent = useMemo(
-        () => (hasNoResults ? <h3>{t('no-results')}</h3> : renderPieceCards()),
-        [renderPieceCards, t],
+        () => (hasNoResults ? <h3>{textnoresults}</h3> : renderPieceCards()),
+        [renderPieceCards, textnoresults],
     );
 
     return (
         <>
-            <h1 className={cls.title}>{t('results')}</h1>
+            <h1 className={cls.title}>{textresults}</h1>
             <div className={cls.Buttons}>{renderCategoryButtons()}</div>
             <div className={cls.Back}>
-                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
+                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {textback}</AppLink>
             </div>
             {renderContent}
         </>
