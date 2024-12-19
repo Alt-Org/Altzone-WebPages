@@ -1,5 +1,6 @@
 import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
+import { FurnitureCategoryPageProps } from '@/preparedPages/FurniturePages';
 import { categories } from '@/entities/Furniture';
 
 export async function _getPage(lng: string) {
@@ -12,7 +13,7 @@ export async function _getPage(lng: string) {
         return true;
     });
 
-    return createPage({
+    return createPage<FurnitureCategoryPageProps>({
         buildPage: () => ({
             translations: translations,
             textback: t('text-back'),

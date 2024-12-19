@@ -7,14 +7,14 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './FurnitureCategoryPage.module.scss';
 
-type Props = {
+export interface FurnitureCategoryPageProps {
     translations: Record<string, string>;
     textback: string;
     textresults: string;
     textnoresults: string;
-};
+}
 
-const FurnitureCategoryPage = (props: Props) => {
+const FurnitureCategoryPage = (props: FurnitureCategoryPageProps) => {
     const manager = useMemo(() => new FurnitureManager(), []);
 
     const { translations, textback, textresults, textnoresults } = props;

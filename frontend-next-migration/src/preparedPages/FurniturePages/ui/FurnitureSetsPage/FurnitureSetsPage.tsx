@@ -1,21 +1,27 @@
 'use client';
 import { FurnitureManager, SetCard } from '@/entities/Furniture';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Container } from '@/shared/ui/Container';
-import { useClientTranslation } from '@/shared/i18n';
 import { FurnitureFilters } from './_components/FurnitureFilters/FurnitureFilters';
 import cls from './FurnitureSetsPage.module.scss';
 
-const FurnitureSetsPage = () => {
-    const { t } = useClientTranslation('furniture');
+export interface FurniturePageProps {
+    buttonsearchlabel: string;
+    buttoncategorieslabel: string;
+    header: string;
+    comingsoon: string;
+}
+
+const FurnitureSetsPage = (props: FurniturePageProps) => {
     const manager = new FurnitureManager();
+
+    const { buttoncategorieslabel, buttonsearchlabel, header, comingsoon } = props;
+
     return (
         <>
             <FurnitureFilters
-                searchText={t('search')}
-                categoriesText={t('categories')}
+                searchText={buttonsearchlabel}
+                categoriesText={buttoncategorieslabel}
             />
-            <h1 className={cls.title}>{t('furnituresets-title')}</h1>
+            <h1 className={cls.title}>{header}</h1>
             <div className={cls.CardsContainer}>
                 {manager.getAllFurnitureSets().map((set) => {
                     return (
@@ -26,7 +32,7 @@ const FurnitureSetsPage = () => {
                     );
                 })}
             </div>
-            <h3>{t('furnituresets-morecomingsoon')}</h3>
+            <h3>{comingsoon}</h3>
         </>
     );
 };
