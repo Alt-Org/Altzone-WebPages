@@ -38,6 +38,6 @@
 
 .Text {
     font-size: 24px;
-    color: #ffa100;
+    color: var(--primary-color-text) !important;
     text-shadow: none;
 }

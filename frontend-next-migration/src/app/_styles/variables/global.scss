@@ -1,113 +1,109 @@
-@import "mixins";
+@import 'mixins';
 
 :root {
-  --font-family-texts: "Rubik";
-  --font-family-main: 'Urbanist', sans-serif;
+    --font-family-texts: 'Rubik';
+    --font-family-main: 'Urbanist', sans-serif;
 
-  --font-size-s: 14px;
-  --font-line-s: 20px;
-  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
-  //--font-s: var(--font-size-s) / var(--font-line-s);
+    --font-size-s: 14px;
+    --font-line-s: 20px;
+    --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+    //--font-s: var(--font-size-s) / var(--font-line-s);
 
-  --font-size-xs: 12px;
-  --font-line-xs: 18px;
-  --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
-  //--font-xs: var(--font-size-xs) / var(--font-line-xs);
+    --font-size-xs: 12px;
+    --font-line-xs: 18px;
+    --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
+    //--font-xs: var(--font-size-xs) / var(--font-line-xs);
 
-  --font-size-m: 16px;
-  --font-line-m: 24px;
-  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
-  //--font-m: var(--font-size-m) / var(--font-line-m);
+    --font-size-m: 16px;
+    --font-line-m: 24px;
+    --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+    //--font-m: var(--font-size-m) / var(--font-line-m);
 
-  --font-size-l: 24px;
-  --font-line-l: 32px;
-  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
-  //--font-l: var(--font-size-l) / var(--font-line-l);
+    --font-size-l: 24px;
+    --font-line-l: 32px;
+    --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+    //--font-l: var(--font-size-l) / var(--font-line-l);
 
-  --font-size-xl: 32px;
-  --font-line-xl: 40px;
-  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
-  //--font-xl: var(--font-size-xl) / var(--font-line-xl);
+    --font-size-xl: 32px;
+    --font-line-xl: 40px;
+    --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+    //--font-xl: var(--font-size-xl) / var(--font-line-xl);
 
-  --font-size-xxl: 40px;
-  --font-line-xxl: 48px;
-  --font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-main);
-  //--font-xxl: var(--font-size-xxl) / var(--font-line-xxl);
+    --font-size-xxl: 40px;
+    --font-line-xxl: 48px;
+    --font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-main);
+    //--font-xxl: var(--font-size-xxl) / var(--font-line-xxl);
 
-  --font-size-xxxl: 48px;
-  --font-line-xxxl: 56px;
-  --font-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl) var(--font-family-main);
-  //--font-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl);
+    --font-size-xxxl: 48px;
+    --font-line-xxxl: 56px;
+    --font-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl) var(--font-family-main);
+    //--font-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl);
 
+    --font-size-4xl: 56px;
+    --font-line-4xl: 64px;
+    --font-4xl: var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-main);
+    //--font-4xl: var(--font-size-4xl) / var(--font-line-4xl);
 
-  --font-size-4xl: 56px;
-  --font-line-4xl: 64px;
-  --font-4xl: var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-main);
-  //--font-4xl: var(--font-size-4xl) / var(--font-line-4xl);
+    --font-size-5xl: 64px;
+    --font-line-5xl: 72px;
+    --font-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-main);
+    //--font-5xl: var(--font-size-5xl) / var(--font-line-5xl);
 
-  --font-size-5xl: 64px;
-  --font-line-5xl: 72px;
-  --font-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-main);
-  //--font-5xl: var(--font-size-5xl) / var(--font-line-5xl);
+    // sizes
+    --navbar-height: 150px;
+    //--navbar-height: 20vh;
+    //--navbar-logo-height: 17vh;
+    --navbar-logo-height: 200px;
+    --navbar-logo-width: 200px;
+    //--sidebar-width: 1000px;
+    --sidebar-width: 340px;
+    --sidebar-width-collapsed: 0px;
 
-  // sizes
-  --navbar-height: 150px;
-  //--navbar-height: 20vh;
-  //--navbar-logo-height: 17vh;
-  --navbar-logo-height: 200px;
-  --navbar-logo-width: 200px;
-  //--sidebar-width: 1000px;
-  --sidebar-width: 340px;
-  --sidebar-width-collapsed: 0px;
+    // indexes
+    --modal-z-index: 10;
+    --sidebar-z-index: 30;
+    --navbar-z-index: 29;
+    --sideButton-z-index: 5;
 
-  // indexes
-  --modal-z-index: 10;
-  --sidebar-z-index: 30;
-  --navbar-z-index: 29;
-  --sideButton-z-index: 5;
+    // colors
+    --transparent-bg: rgba(35, 35, 61, 0.76);
+    --transparent-bg-dark: rgba(0, 0, 0, 0.55);
+    --transparent-bg-darker: rgba(0, 0, 0, 0.7);
+    --transparent-bg-gray: rgba(107, 99, 99, 0.7);
+    --transparent-bg-orange: rgba(207, 109, 40, 0.7);
+    --overlay-color: rgba(0, 0, 0, 0.34);
+    --red-light: #f80606;
+    --red-dark: #c50404;
+    --primary-color-text: #ffa100;
 
-  // colors
-  --transparent-bg: rgba(35, 35, 61, 0.76);
-  --transparent-bg-dark: rgba(0, 0, 0, 0.55);
-  --transparent-bg-darker: rgba(0, 0, 0, 0.7);
-  --transparent-bg-gray: rgba(107, 99, 99, 0.7);
-  --transparent-bg-orange: rgba(207, 109, 40, 0.7);
-  --overlay-color: rgba(0, 0, 0, 0.34);
-  --red-light: #f80606;
-  --red-dark: #c50404;
+    // border-radius
+    --border-radius-custom: 15px;
 
+    //borders
+    --border-thick-yellow: 5px solid yellow;
+    --border-thick-black: 5px solid black;
 
-  // border-radius
-  --border-radius-custom: 15px;
+    //animations
+    --animation-link-hover-scale: 1.05;
+    --animation-link-active-scale: 0.95;
 
-  //borders
-  --border-thick-yellow: 5px solid yellow;
-  --border-thick-black: 5px solid black;
-
-
-  //animations
-  --animation-link-hover-scale: 1.05;
-  --animation-link-active-scale: 0.95;
-
-  --animation-icon-hover-scale: 1.2;
-  --animation-icon-active-scale: 0.95;
-
+    --animation-icon-hover-scale: 1.2;
+    --animation-icon-active-scale: 0.95;
 }
 
-
 @media (max-width: 768px) {
-  :root {
-    --navbar-logo-height: 140px;
-  }
+    :root {
+        --navbar-logo-height: 140px;
+    }
 
-  body.body-scroll-disabled {
-    overflow: hidden;
-  }
+    body.body-scroll-disabled {
+        overflow: hidden;
+    }
 }
 
 @media (max-width: 550px) {
-  :root {
-    --navbar-logo-height: 100px;
-    width: auto;
-  }
+    :root {
+        --navbar-logo-height: 100px;
+        width: auto;
+    }
 }
