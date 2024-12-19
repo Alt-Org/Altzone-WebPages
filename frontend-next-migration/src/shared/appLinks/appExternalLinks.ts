@@ -19,6 +19,8 @@ export const AppExternalLinks = {
     duunitori: 'https://duunitori.fi/tyopaikat?haku=Psyche%27s%20Royale%20Gaming',
     googleFeedback:
         'https://docs.google.com/forms/d/e/1FAIpQLScYGN0JlcgkqKpotNeE6hyWLG7oI1g19myAtrHf2mmHz7g7AA/viewform',
+    googleGameFeedback:
+        'https://docs.google.com/forms/d/e/1FAIpQLSf_7s7mE-F_2G3mPAN630r7zHainD5vvQHw1suYUqtlvAcp5g/viewform',
     stub: '#developerChangeThisLink',
     join: 'https://discord.gg/mgjQkCR2Fg',
     dlpackage:
