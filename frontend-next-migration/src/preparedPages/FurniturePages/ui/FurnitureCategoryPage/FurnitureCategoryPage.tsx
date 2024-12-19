@@ -9,15 +9,15 @@ import cls from './FurnitureCategoryPage.module.scss';
 
 export interface FurnitureCategoryPageProps {
     translations: Record<string, string>;
-    textback: string;
-    textresults: string;
-    textnoresults: string;
+    textBack: string;
+    textResults: string;
+    textNoResults: string;
 }
 
 const FurnitureCategoryPage = (props: FurnitureCategoryPageProps) => {
     const manager = useMemo(() => new FurnitureManager(), []);
 
-    const { translations, textback, textresults, textnoresults } = props;
+    const { translations, textBack, textResults, textNoResults } = props;
 
     const [category, setCategory] = useState(categories.CHAIRS);
     const list = useMemo(() => manager.getPiecesByCategory(category), [manager, category]);
@@ -41,16 +41,16 @@ const FurnitureCategoryPage = (props: FurnitureCategoryPageProps) => {
     const hasNoResults = list.length === 0;
 
     const renderContent = useMemo(
-        () => (hasNoResults ? <h3>{textnoresults}</h3> : renderPieceCards()),
-        [renderPieceCards, textnoresults],
+        () => (hasNoResults ? <h3>{textNoResults}</h3> : renderPieceCards()),
+        [renderPieceCards, textNoResults],
     );
 
     return (
         <>
-            <h1 className={cls.title}>{textresults}</h1>
+            <h1 className={cls.title}>{textResults}</h1>
             <div className={cls.Buttons}>{renderCategoryButtons()}</div>
             <div className={cls.Back}>
-                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {textback}</AppLink>
+                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {textBack}</AppLink>
             </div>
             {renderContent}
         </>

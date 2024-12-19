@@ -11,13 +11,13 @@ import cls from './FurnitureSearchPage.module.scss';
 export interface FurnitureSearchPageProps {
     header: string;
     placeholder: string;
-    textback: string;
+    textBack: string;
 }
 
 const FurnitureSearchPage = (props: FurnitureSearchPageProps) => {
     const manager = new FurnitureManager();
 
-    const { header, placeholder, textback } = props;
+    const { header, placeholder, textBack } = props;
 
     const [input, setinput] = useState('');
 
@@ -43,7 +43,7 @@ const FurnitureSearchPage = (props: FurnitureSearchPageProps) => {
                 />
             </div>
             <div className={cls.Back}>
-                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {textback}</AppLink>
+                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {textBack}</AppLink>
             </div>
             <FurnitureCardsContainer items={list} />
         </>

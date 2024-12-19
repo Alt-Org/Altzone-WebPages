@@ -6,10 +6,10 @@ export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'furniture');
     return createPage<FurniturePageProps>({
         buildPage: () => ({
-            buttonsearchlabel: t('search'),
-            buttoncategorieslabel: t('categories'),
+            buttonSearchLabel: t('search'),
+            buttonCategoriesLabel: t('categories'),
             header: t('furnituresets-title'),
-            comingsoon: t('furnituresets-morecomingsoon'),
+            comingSoon: t('furnituresets-morecomingsoon'),
         }),
         buildSeo: () => ({
             title: t('head-title'),

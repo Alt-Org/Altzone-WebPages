@@ -16,9 +16,9 @@ export async function _getPage(lng: string) {
     return createPage<FurnitureCategoryPageProps>({
         buildPage: () => ({
             translations: translations,
-            textback: t('text-back'),
-            textresults: t('results'),
-            textnoresults: t('no-results'),
+            textBack: t('text-back'),
+            textResults: t('results'),
+            textNoResults: t('no-results'),
         }),
         buildSeo: () => ({
             title: t('head-title'),

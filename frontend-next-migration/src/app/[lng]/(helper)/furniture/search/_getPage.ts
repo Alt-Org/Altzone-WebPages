@@ -8,7 +8,7 @@ export async function _getPage(lng: string) {
         buildPage: () => ({
             header: t('results'),
             placeholder: t('search-placeholder'),
-            textback: t('text-back'),
+            textBack: t('text-back'),
         }),
         buildSeo: () => ({
             title: t('head-title'),

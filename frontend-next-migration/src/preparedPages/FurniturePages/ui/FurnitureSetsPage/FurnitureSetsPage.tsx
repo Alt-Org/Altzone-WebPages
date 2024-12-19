@@ -4,22 +4,22 @@ import { FurnitureFilters } from './_components/FurnitureFilters/FurnitureFilter
 import cls from './FurnitureSetsPage.module.scss';
 
 export interface FurniturePageProps {
-    buttonsearchlabel: string;
-    buttoncategorieslabel: string;
+    buttonSearchLabel: string;
+    buttonCategoriesLabel: string;
     header: string;
-    comingsoon: string;
+    comingSoon: string;
 }
 
 const FurnitureSetsPage = (props: FurniturePageProps) => {
     const manager = new FurnitureManager();
 
-    const { buttoncategorieslabel, buttonsearchlabel, header, comingsoon } = props;
+    const { buttonCategoriesLabel, buttonSearchLabel, header, comingSoon } = props;
 
     return (
         <>
             <FurnitureFilters
-                searchText={buttonsearchlabel}
-                categoriesText={buttoncategorieslabel}
+                searchText={buttonSearchLabel}
+                categoriesText={buttonCategoriesLabel}
             />
             <h1 className={cls.title}>{header}</h1>
             <div className={cls.CardsContainer}>
@@ -32,7 +32,7 @@ const FurnitureSetsPage = (props: FurniturePageProps) => {
                     );
                 })}
             </div>
-            <h3>{comingsoon}</h3>
+            <h3>{comingSoon}</h3>
         </>
     );
 };
