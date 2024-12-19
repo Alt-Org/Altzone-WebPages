@@ -10,6 +10,7 @@ import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
 import cls from '@/preparedPages/MainPage/ui/page.module.scss';
+import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
@@ -86,6 +87,7 @@ export default function RootLayout(props: Props) {
                 {/*//todo potentialy we can remove even this ContentWithBackground, but we have to be sure that it work in samy way in backgroundImage*/}
                 <ContentWithBackground>
                     <Providers>
+                        <FeedbackSideButton />
                         {children}
                         <CookieConsentComponent />
                     </Providers>
