@@ -12,13 +12,13 @@ import feedBackIcon from '@/shared/assets/icons/FeedbackSideButtonIcon.svg';
 type Props = {
     // The button does not display on mobile devices
     disableMobile?: boolean;
-    feedbackIcon?: ReactNode;
+    fBackIcon?: ReactNode;
 };
 
 export const FeedbackSideButton = (props: Props) => {
     const {
         disableMobile = true,
-        feedbackIcon = (
+        fBackIcon = (
             <Image
                 src={feedBackIcon}
                 width={48}
@@ -46,7 +46,7 @@ export const FeedbackSideButton = (props: Props) => {
             >
                 <div className={cls.ContentWrapper}>
                     <div className={cls.Text}>{t('Feedback')}</div>
-                    <div className={cls.Icon}>{feedbackIcon}</div>
+                    <div className={cls.Icon}>{fBackIcon}</div>
                 </div>
             </Button>
         )
