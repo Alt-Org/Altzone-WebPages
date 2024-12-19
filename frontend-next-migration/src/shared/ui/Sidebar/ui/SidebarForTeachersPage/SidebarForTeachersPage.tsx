@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ISidebarItem, sidebarItemType } from '@/shared/ui/Sidebar/model/items';
 import { SidebarItem } from '@/shared/ui/Sidebar/ui/SidebarItem/SidebarItem';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './SidebarForTeachersPage.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
-import { useRouter } from 'next/navigation';
 import {
     getRouteGameArt,
     getRouteLessonPresentation,
@@ -13,9 +12,11 @@ import {
     getRouteGameAnalysis,
     getRouteFeedbackAndDevelopment,
 } from '@/shared/appLinks/RoutePaths';
-import { link } from 'fs';
+import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
+import { useRouter } from 'next/navigation';
 
 interface SidebarForTeachersPageProps {
     sidebarClassName?: string;
@@ -24,6 +25,48 @@ interface SidebarForTeachersPageProps {
 export const SidebarForTeachersPage = ({ sidebarClassName = '' }: SidebarForTeachersPageProps) => {
     const { t } = useClientTranslation('teachersPage');
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [useAlternateComponent, setUseAlternateComponent] = useState(false);
+
+    const router = useRouter();
+
+    function navigateToGameArt() {
+        router.push(getRouteGameArt());
+    }
+    function navigateToFeedbackAndDevelopment() {
+        router.push(getRouteGameArt());
+    }
+    function navigateToGameAnalysis() {
+        router.push(getRouteGameArt());
+    }
+    function navigateToLessonPresentation() {
+        router.push(getRouteGameArt());
+    }
+    function navigateToInstructions() {
+        router.push(getRouteGameArt());
+    }
+    function navigateToTeachingMaterials() {
+        router.push(getRouteGameArt());
+    }
+
+    // Detect screen width changes
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(max-width: 1023px)'); // Adjust the screen size as needed
+
+        const handleMediaChange = (eee: MediaQueryListEvent) => {
+            setUseAlternateComponent(eee.matches);
+        };
+
+        // Set initial state
+        setUseAlternateComponent(mediaQuery.matches);
+
+        // Add event listener
+        mediaQuery.addEventListener('change', handleMediaChange);
+
+        // Cleanup on component unmount
+        return () => {
+            mediaQuery.removeEventListener('change', handleMediaChange);
+        };
+    }, []);
 
     const sidebarItems: ISidebarItem[] = [
         { name: t('game-art'), type: sidebarItemType.ISidebarItemBasic, path: getRouteGameArt() },
@@ -65,9 +108,67 @@ export const SidebarForTeachersPage = ({ sidebarClassName = '' }: SidebarForTeac
         path: getRouteFeedbackAndDevelopment(),
     };
 
+    const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
+        title: t('dropdown-navigation'),
+        openByDefault: false,
+        dropdownItems: [
+            <div
+                key={1}
+                className={classNames(cls.dropDownItem)}
+                onClick={() => navigateToGameArt()}
+            >
+                {t('game-art')}
+            </div>,
+            <div
+                key={2}
+                className={classNames(cls.dropDownItem)}
+                onClick={() => navigateToLessonPresentation()}
+            >
+                {t('lesson-presentation')}
+            </div>,
+            <div
+                key={3}
+                className={classNames(cls.dropDownItem)}
+                onClick={() => navigateToInstructions()}
+            >
+                {t('instructions')}
+            </div>,
+            <div
+                key={4}
+                className={classNames(cls.dropDownItem)}
+                onClick={() => navigateToTeachingMaterials()}
+            >
+                {t('teaching-material')}
+            </div>,
+            <div
+                key={5}
+                className={classNames(cls.dropDownItem)}
+                onClick={() => navigateToGameAnalysis()}
+            >
+                {t('game-analysis')}
+            </div>,
+            <div
+                key={6}
+                className={classNames(cls.dropDownItem)}
+                onClick={() => navigateToFeedbackAndDevelopment()}
+            >
+                {t('feedback-and-development')}
+            </div>,
+        ],
+    };
+
     const toggleSidebar = () => {
         setIsCollapsed((prevState) => !prevState);
     };
+
+    // Render alternate component if condition is met
+    if (useAlternateComponent) {
+        return (
+            <div style={{ marginBottom: '20%' }}>
+                <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(cls.Sidebar, { [cls.collapsed]: isCollapsed })}>

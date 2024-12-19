@@ -14,11 +14,9 @@
 
     &::-webkit-scrollbar {
         display: none;
-        /* Hide scrollbar in Chrome, Edge, and Safari */
     }
-
     &.collapsed {
-        width: 8vw; 
+        width: 4vw; 
     }
 }
 
@@ -26,21 +24,14 @@
     z-index: var(--sidebar-z-index) !important;
     height: 70%;
     width: 20%;
-
     background: rgba(0, 0, 0, 0.85);
     position: fixed;
     bottom: 0;
     left: 0;
     margin-left: 2rem;
     margin-bottom: 5%;
-    overflow-y: auto;
     transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
-
-    &::-webkit-scrollbar {
-        display: none;
-        /* Hide scrollbar in Chrome, Edge, and Safari */
-    }
-
+    overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -48,8 +39,11 @@
     align-items: center;
     border-radius: 1vh;
 
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &.collapsed {
-        width: 5vw; 
+        width: 1vw;
     }
 }
 
@@ -61,11 +55,9 @@
     width: 100%;
 
     &.collapsed{
-        width: 75%;
-        overflow: hidden;
+        display: none;
     }
 }
-
 
 .items a,
 .items div {
@@ -86,10 +78,6 @@
     margin-bottom: 1rem;
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
     align-items: center;
-    &:hover {
-        background: rgba(0, 0, 0, 0.60);
-        color: var(--secondary-color);
-    }
 }
 
 .bottomItems a {
@@ -110,13 +98,8 @@
 }
 
 .bottomItems{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     &.collapsed{
-      width: 50%;
-      //background-color: #FF681D;
-      overflow: hidden;
+        display: none;
     }
 }
 
@@ -139,9 +122,16 @@
 
     &:hover {
         font-size: xx-large;
-        
     }
     &.collapsed {
         right: 10px;
     }
+}
+
+.dropDownItem{
+    color: #FF681D;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
