@@ -1,26 +1,27 @@
 'use client';
 import React from 'react';
-import cls from './HeroMenu.module.scss';
-import { HeroManager, HeroSlug, Hero } from '@/entities/Hero';
+import { usePathname } from 'next/navigation';
+import cls from './HeroNavMenu.module.scss';
+import { HeroManager, Hero } from '@/entities/Hero';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { getRouteOneHeroDevPage } from '@/shared/appLinks/RoutePaths';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
-interface HeroMenuProps {
+interface HeroNavMenuProps {
     className?: string;
-    onClickCallback: (heroSlug: HeroSlug) => void;
-    selectedHero: HeroSlug;
     sidebarVisible: boolean;
     setSidebarVisible: (visible: boolean) => void;
 }
 
-const HeroMenu: React.FC<HeroMenuProps> = ({
+const HeroNavMenu: React.FC<HeroNavMenuProps> = ({
     sidebarVisible,
     setSidebarVisible,
     className,
-    onClickCallback,
-    selectedHero,
 }) => {
     const { t } = useClientTranslation('heroes');
+    const pathname = usePathname();
+    const selectedHero = pathname.split('/')[3];
     const heroManager = new HeroManager(t);
     const allHeroGroups = heroManager.getGroupsWithHeroesAsArray();
 
@@ -30,21 +31,24 @@ const HeroMenu: React.FC<HeroMenuProps> = ({
     const getHero = (hero: Hero, index: number) => {
         if (sidebarVisible) {
             return selectedHero === hero.slug ? (
-                <div
-                    onClick={() => onClickCallback(hero.slug)}
-                    key={index}
-                    className={cls.Hero}
-                    style={{ color: 'var(--secondary-color)' }}
-                >
-                    {hero.title}
+                <div>
+                    <AppLink
+                        key={index}
+                        isExternal={false}
+                        to={getRouteOneHeroDevPage(hero.slug)}
+                    >
+                        <span className={cls.SelectedHero}>{hero.title}</span>
+                    </AppLink>
                 </div>
             ) : (
-                <div
-                    onClick={() => onClickCallback(hero.slug)}
-                    key={index}
-                    className={cls.Hero}
-                >
-                    {hero.title}
+                <div>
+                    <AppLink
+                        key={index}
+                        isExternal={false}
+                        to={getRouteOneHeroDevPage(hero.slug)}
+                    >
+                        <span className={cls.Hero}>{hero.title}</span>
+                    </AppLink>
                 </div>
             );
         } else {
@@ -83,7 +87,7 @@ const HeroMenu: React.FC<HeroMenuProps> = ({
     );
 
     return (
-        <div className={classNames(cls.Box, mods)}>
+        <div className={classNames(cls.Root, mods)}>
             {sidebarVisible ? (
                 <div
                     className={cls.Arrow}
@@ -104,4 +108,4 @@ const HeroMenu: React.FC<HeroMenuProps> = ({
     );
 };
 
-export default HeroMenu;
+export default HeroNavMenu;
