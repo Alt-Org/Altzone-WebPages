@@ -17,7 +17,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 
 export interface HeroDevelopmentPageProps {
-    hero: Hero;
+    hero: Hero | undefined;
 }
 
 const HeroDevelopmentPage: React.FC<HeroDevelopmentPageProps> = ({ hero }) => {

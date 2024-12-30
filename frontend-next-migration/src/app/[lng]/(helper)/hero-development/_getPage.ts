@@ -5,9 +5,7 @@ import { HeroDevelopmentPageProps } from '@/preparedPages/HeroDevelopmentPage';
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'hero-development');
     return createPage<HeroDevelopmentPageProps>({
-        buildPage: () => ({
-            title: t('title'),
-        }),
+        buildPage: () => ({ hero: undefined }),
         buildSeo: () => ({
             title: t('head-title'),
             description: t('head-description'),
