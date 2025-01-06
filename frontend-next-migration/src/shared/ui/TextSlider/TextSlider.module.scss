@@ -5,6 +5,8 @@
     flex-direction: column;
     text-align: left;
     width: 100%;
+    height: 200px;
+    justify-content: center;
     margin: 2%;
     color: white;
     position: relative;
@@ -61,4 +63,55 @@
 .btnRight:hover {
     background-color: #444;
     box-shadow: 0 0 15px #ffa101;
+}
+
+@media (max-width: 768px) {
+    .TextSlider {
+        height: 220px;
+        padding: 4%;
+        margin: 1%;
+    }
+
+    .TextSlider p {
+        margin: 0.5rem 15px;
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 480px) {
+        .TextSlider {
+            padding: 6%;
+
+            .TextSlider p {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+/* Медиа-запросы для планшетов */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .TextSlider {
+        height: 220px;
+        padding: 3%;
+        margin: 1.5%;
+        transition: none;
+    }
+
+    .TextSlider:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .TextSlider p {
+        font-size: 1.1rem;
+        margin: 0.5rem 20px;
+        line-height: 1.5;
+    }
+
+    .btnLeft:hover,
+    .btnRight:hover {
+        background-color: inherit;
+        box-shadow: none;
+    }
 }
