@@ -33,7 +33,7 @@
 }
 
 /* Desktop */
-@media (min-width: 1024px) {
+@media (min-width: breakpoint(lg)) {
     .sidebar {
         display: block;
         /* Visible on desktop */
@@ -48,7 +48,7 @@
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: breakpoint(lg)) {
     .layoutContainer {
         flex-direction: column;
     }
