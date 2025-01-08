@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import cls from './HeroNavMenu.module.scss';
 import { HeroManager, Hero } from '@/entities/Hero';
@@ -10,15 +10,10 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 interface HeroNavMenuProps {
     className?: string;
-    sidebarVisible: boolean;
-    setSidebarVisible: (visible: boolean) => void;
 }
 
-const HeroNavMenu: React.FC<HeroNavMenuProps> = ({
-    sidebarVisible,
-    setSidebarVisible,
-    className,
-}) => {
+const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
+    const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
     const { t } = useClientTranslation('heroes');
     const pathname = usePathname();
     const selectedHero = pathname.split('/')[3];
