@@ -26,9 +26,8 @@ const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
     const getHero = (hero: Hero, index: number) => {
         if (sidebarVisible) {
             return selectedHero === hero.slug ? (
-                <div>
+                <div key={hero.slug + index}>
                     <AppLink
-                        key={index}
                         isExternal={false}
                         to={getRouteOneHeroDevPage(hero.slug)}
                     >
@@ -36,9 +35,8 @@ const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
                     </AppLink>
                 </div>
             ) : (
-                <div>
+                <div key={hero.slug + index}>
                     <AppLink
-                        key={index}
                         isExternal={false}
                         to={getRouteOneHeroDevPage(hero.slug)}
                     >
@@ -49,7 +47,7 @@ const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
         } else {
             return selectedHero === hero.slug ? (
                 <div
-                    key={index}
+                    key={hero.slug + index}
                     className={classNames(cls.Hero, mods)}
                     style={{ color: 'var(--secondary-color)' }}
                 >
@@ -57,7 +55,7 @@ const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
                 </div>
             ) : (
                 <div
-                    key={index}
+                    key={hero.slug + index}
                     className={classNames(cls.Hero, mods)}
                 >
                     {hero.title}
@@ -68,15 +66,10 @@ const HeroNavMenu: React.FC<HeroNavMenuProps> = ({ className }) => {
     const getList = (
         <div className={classNames(cls.Text, mods, [className || ''])}>
             {allHeroGroups.map((group, index) => (
-                <>
-                    <div
-                        key={index + group.name}
-                        className={cls.Group}
-                    >
-                        {group.name}
-                    </div>
+                <div key={index}>
+                    <div className={cls.Group}>{group.name}</div>
                     {group.heroes.map((hero, index) => getHero(hero, index))}
-                </>
+                </div>
             ))}
         </div>
     );
