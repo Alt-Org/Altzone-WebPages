@@ -6,6 +6,7 @@ export {
     useGetClansQuery,
     useLeaveClanMutation,
     useJoinClanMutation,
+    useGetLeaderboardQuery,
 } from './model/clanApi';
 
 export { useClanData } from './model/useClanData';
