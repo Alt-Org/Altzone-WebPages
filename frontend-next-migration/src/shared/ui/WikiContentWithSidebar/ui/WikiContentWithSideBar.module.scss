@@ -24,7 +24,7 @@
 }
 
 .mainContent.isMobile {
-  display:block;
+  padding: 15px;
 }
 
 .navbarSide {
@@ -167,10 +167,10 @@
 .content.isMobile {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
   padding: 0;
   font-size: 1.2em;
-  margin: 15px;
+  margin: auto;
 
   a {
     word-wrap: break-word;
