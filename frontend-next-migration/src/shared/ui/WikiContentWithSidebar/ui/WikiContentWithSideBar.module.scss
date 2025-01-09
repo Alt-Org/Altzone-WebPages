@@ -23,6 +23,10 @@
   overflow: visible; // Ensure this is set
 }
 
+.mainContent.isMobile {
+  display:block;
+}
+
 .navbarSide {
   position: sticky;
   top: 9.5rem;
