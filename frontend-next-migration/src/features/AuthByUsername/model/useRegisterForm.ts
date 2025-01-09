@@ -1,5 +1,4 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import {
@@ -28,10 +27,9 @@ export const useRegisterForm = () => {
     } = useForm({
         resolver: yupResolver(ValidationRegisterSchema),
     });
-    const [usernameError, setUsernameError] = useState<string | null>(null);
-    const [regist, { isLoading: isRegisterLoading, error: registerError }] = useRegisterMutation();
 
-    const [login, { isLoading }] = useLoginMutation();
+    const [regist, { isLoading: isRegisterLoading }] = useRegisterMutation();
+    const [login, { isLoading: isLoginLoading }] = useLoginMutation();
 
     const onFormSubmit = async (fieldValues: FieldValues) => {
         try {
@@ -44,20 +42,20 @@ export const useRegisterForm = () => {
                     backpackCapacity: 100,
                     name: fieldValues.username,
                     above13: fieldValues.ageConsent,
-                    parentalAuth: false,
+                    parentalAuth: true,
                 },
             };
-
             // Register the user
             await regist(registerPayload).unwrap();
-            toast.success(t('account-created'));
 
-            // Perform auto-login
+            // auto-login
             const loginResponse = await login({
                 username: fieldValues.username,
                 password: fieldValues.password,
             }).unwrap();
-            // Update Redux store with user data
+
+            toast.success(t('account-created'));
+
             dispatch(
                 authUserActions.setAccessTokenInfo({
                     accessToken: loginResponse.accessToken,
@@ -73,22 +71,25 @@ export const useRegisterForm = () => {
                 }),
             );
 
+            // Redirect to home page
             router.push('/');
         } catch (error: any) {
             const errorMessage =
-                error?.data?.message?.[0] ?? error?.data?.message ?? 'username is already in use';
+                error?.data?.message?.[0] ??
+                error?.data?.message ??
+                t('Käyttäjänimi on jo käytössä, valitse toinen käyttäjänimi');
             toast.error(errorMessage);
-            setUsernameError(t('Käyttäjänimi on jo käyttössä,valitse toinen käyttäjänimi'));
         }
     };
-    const isSubmitting = isRegisterLoading || isLoading;
-    return {
-        register,
-        handleSubmit,
+
+    const formState = {
         onFormSubmit,
         errors,
-        isSubmitting,
+        isLoading: isRegisterLoading || isLoginLoading,
+        register,
+        handleSubmit,
         getValues,
-        usernameError,
     };
+
+    return formState;
 };
