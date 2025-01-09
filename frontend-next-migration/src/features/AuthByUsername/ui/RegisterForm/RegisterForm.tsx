@@ -4,7 +4,6 @@ import { useRegisterForm } from '../../model/useRegisterForm';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
-import { Rubik } from 'next/font/google';
 
 export interface RegisterFormProps {
     toLoginPage: string;
@@ -15,7 +14,7 @@ const RegisterForm = (props: RegisterFormProps) => {
     const { toLoginPage, extraContent } = props;
 
     const { t } = useClientTranslation('auth');
-    const { register, handleSubmit, onFormSubmit, errors, usernameError } = useRegisterForm(toLoginPage);
+    const { register, handleSubmit, onFormSubmit, errors } = useRegisterForm();
 
     return (
         <BaseAuthForm
@@ -28,17 +27,6 @@ const RegisterForm = (props: RegisterFormProps) => {
                         label={t('username')}
                         inputProps={{ ...register('username'), required: true }}
                     />
-                    {usernameError && (
-                        <p
-                            style={{
-                                color: 'red',
-                                fontFamily: '__Urbanist_98bc90',
-                                fontSize: '14px',
-                            }}
-                        >
-                            {usernameError}
-                        </p>
-                    )}
 
                     <BaseAuthForm.InputField
                         key={'password'}
