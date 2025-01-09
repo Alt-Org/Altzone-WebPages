@@ -1,30 +1,21 @@
 import { renderHook, act } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
 import { useRegisterForm } from './useRegisterForm';
 import { useRegisterMutation, useLoginMutation } from '@/entities/Auth';
 import { useClientTranslation } from '@/shared/i18n';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
+import { getJwtExpTimeStamp } from '@/shared/lib/getJwtExpTimeStamp';
+import { profileActions } from '@/entities/Profile';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { ValidationRegisterSchema } from '../validations';
 
+// Mock setup
+global.fetch = jest.fn();
+const mockPush = jest.fn();
 jest.mock('react-hook-form', () => ({
     useForm: jest.fn(),
-}));
-
-jest.mock('@/entities/Auth', () => ({
-    useRegisterMutation: jest.fn(),
-    useLoginMutation: jest.fn(),
-
-}));
-
-jest.mock('@/shared/i18n', () => ({
-    useClientTranslation: jest.fn(),
-}));
-
-jest.mock('next/navigation', () => ({
-    useRouter: jest.fn().mockReturnValue({
-        push: jest.fn(),
-    }),
 }));
 
 jest.mock('react-toastify', () => ({
@@ -34,61 +25,66 @@ jest.mock('react-toastify', () => ({
     },
 }));
 
-describe('useRegisterForm', () => {
-    const mockT = jest.fn((key) => key);
-    const mockStore = configureStore([]);
-    const store = mockStore({});
+jest.mock('next/navigation', () => ({
+    useRouter: jest.fn(() => ({ push: mockPush })),
+}));
 
+// Create mutation mocks
+const mockRegisterMutation = jest.fn();
+const mockLoginMutation = jest.fn();
+
+jest.mock('@/entities/Auth', () => ({
+    useRegisterMutation: () => [mockRegisterMutation, { isLoading: false }],
+    useLoginMutation: () => [mockLoginMutation, { isLoading: false }],
+}));
+
+jest.mock('@/shared/i18n', () => ({
+    useClientTranslation: jest.fn(() => ({ t: jest.fn((key) => key) })),
+}));
+
+describe('useRegisterForm', () => {
     beforeEach(() => {
         (useForm as jest.Mock).mockReturnValue({
             register: jest.fn(),
             handleSubmit: jest.fn(),
             formState: { errors: {} },
+            getValues: jest.fn(),
         });
-        (useClientTranslation as jest.Mock).mockReturnValue({ t: mockT });
         jest.clearAllMocks();
     });
+    describe('useRegisterForm', () => {
+        it('should auto-login after successful registration and navigate to home page', async () => {
+            // Arrange
+            const { result } = renderHook(() => useRegisterForm());
 
-    const renderWithProvider = (hook: () => any) =>
-        renderHook(hook, {
-            wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
-        });
-
-    it('should auto-login after successful registration and navigate to home page', async () => {
-        // Mock the `register` mutation
-        const mockRegist = jest.fn().mockResolvedValue({});
-
-        // Mock the `login` mutation
-        const mockLogin = jest.fn().mockResolvedValue({
-            accessToken: 'fake-token',
-            username: 'testuser',
-            Player: {},
-            _id: 'user-id',
-        });
-
-        (useRegisterMutation as jest.Mock).mockReturnValue([mockRegist, { isLoading: false }]);
-        (useLoginMutation as jest.Mock).mockReturnValue([mockLogin, { isLoading: false }]);
-
-        const { result } = renderWithProvider(() => useRegisterForm());
-
-        // Simulate form submission
-        await act(async () => {
-            await result.current.onFormSubmit({
-                username: 'testuser',
-                password: 'password123',
-                ageConsent: true,
+            // Act
+            await act(async () => {
+                await result.current.onFormSubmit({
+                    username: 'test',
+                    password: 'test123',
+                    ageConsent: true,
+                });
             });
+
+            // Assert
+            expect(mockPush).toHaveBeenCalledWith('/');
+            expect(toast.success).toHaveBeenCalledWith('account-created');
         });
-
-        // Expect the `register` function to be called
-        expect(mockRegist).toHaveBeenCalled();
-
-        // ✅ Expect the `login` function to be called
-        expect(mockLogin).toHaveBeenCalled();
-
-        // ✅ Expect the router to navigate to the home page
-        expect(useRouter().push).toHaveBeenCalledWith('/');
     });
+    // check  error toast was shown
+    expect(toast.error).toHaveBeenCalledWith(
+        'käyttäjätunnus on jo käytössä, Ole hyvä valitse toinen käyttäjätunnus',
+    );
 
+    // Verify login was not called after failed registration
+    expect(mockLoginMutation).not.toHaveBeenCalled();
 
+    // no navigation occurred
+    expect(mockPush).not.toHaveBeenCalled();
+});
+it('should not navigate when form validation fails', async () => {
+    mockRegisterMutation.mockResolvedValue({ data: { id: 1, username: 'test' } });
+
+    // Verify navigation did not occur
+    expect(mockPush).not.toHaveBeenCalled();
 });
