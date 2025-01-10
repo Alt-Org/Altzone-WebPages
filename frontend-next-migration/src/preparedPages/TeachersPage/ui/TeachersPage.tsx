@@ -1,7 +1,5 @@
-import { SectionGallerias } from '@/widgets/SectionGallerias';
-import { Container } from '@/shared/ui/Container';
-import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
 import cls from './TeachersPage.module.scss';
+import { ComingSoon } from '@/widgets/ComingSoon';
 
 export interface Props {
     title: string;
@@ -12,7 +10,7 @@ const TeachersPage = (props: Props) => {
 
     return (
         <div className={cls.Wrapper}>
-            <h1>Testi</h1>
+            <ComingSoon />
         </div>
     );
 };
