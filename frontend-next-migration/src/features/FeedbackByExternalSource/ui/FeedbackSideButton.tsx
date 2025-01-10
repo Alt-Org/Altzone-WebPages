@@ -21,8 +21,8 @@ export const FeedbackSideButton = (props: Props) => {
         fBackIcon = (
             <Image
                 src={feedBackIcon}
-                width={48}
-                height={48}
+                width={24}
+                height={24}
                 alt="Feed-Back-Icon"
             />
         ),
