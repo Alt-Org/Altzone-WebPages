@@ -1,0 +1,14 @@
+.blurLine {
+  filter: blur(25px) !important;
+  background: linear-gradient(rgba(19, 179, 194, 0.29), rgba(35, 48, 51, 0.47), rgba(2, 76, 80, 0.4)) !important;
+}
+
+
+.diveButton{
+  margin-top: 20px;
+  padding: 15px 20px;
+  border-radius: var(--border-radius-custom);
+  min-width: fit-content;
+  width: clamp(100px, 10vw, 120px);
+  align-self: center;
+}

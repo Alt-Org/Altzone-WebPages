@@ -2,7 +2,6 @@
 import { useParams } from 'next/navigation';
 import { Navbar } from '@/widgets/Navbar';
 import { NavGoBackButton } from '@/features/NavGoBack';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { newsDataLocally } from '@/entities/News';
 import { getPostDataById, Post } from '@/shared/ui/Post';
 import { Container } from '@/shared/ui/Container';
@@ -19,7 +18,6 @@ const NewsElementPage = () => {
     return (
         <Container>
             <div className={classNames(cls.NewsElementPage)}>
-                <FeedbackSideButton />
                 <Navbar className={cls.navbar} />
                 <NavGoBackButton />
                 {postData ? <Post postData={postData} /> : 'Not found'}

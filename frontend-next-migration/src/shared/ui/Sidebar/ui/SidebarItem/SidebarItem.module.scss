@@ -8,6 +8,11 @@
     background: rgba(0, 0, 0, 0.60);
     color: var(--secondary-color);
   }
+
+  &.active {
+    color: var(--secondary-color);
+  }
+
 }
 
 .itemBasic{
@@ -26,6 +31,15 @@
   //padding-top: 3px;
   padding-left: 20px;
   padding-right: 20px;
+
+  //todo try to fix because scale is not the best variant
+  &  * > * {
+    transform: scale(0.95);
+  }
+  &.active {
+    color: var(--secondary-color)!important;
+  }
+
 }
 
 .link {

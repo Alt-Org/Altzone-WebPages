@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { CSSProperties, memo, useMemo, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { CSSProperties, memo, useEffect, useMemo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
@@ -12,16 +13,6 @@ import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
-// /**
-//  * Properties for NavbarTouchComponent component
-//  *
-//  * @property {number} marginTop Margin at the top
-//  * @property {(isMenuOpen: boolean) => void} onBurgerButtonClick The function is informed in the button event whether the sidebar is open.
-//  * @property {string} className Additional CSS classes
-//  * @property {string} side On which side does the sidebar appear?
-//  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
-//  * @property {NavBarType} navNarType Navbar type
-//  */
 export interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
@@ -48,8 +39,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    // const { isFixed, toggleFixed } = useFixed();
-    // const { isCollapsed, toggleCollapsed } = useCollapsed();
     const hasScrollbar = useIsPageScrollbar();
 
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -68,6 +57,15 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setTimeout(() => setSidebarItemsListResetKey((currentKey) => currentKey + 1), 500);
     };
 
+    const [realPath, setRealPath] = useState('/');
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const pathSegments = pathname.split('/').filter(Boolean);
+        const newPath = pathSegments.length === 1 ? '/' : `/${pathSegments[1] || ''}`;
+        setRealPath(newPath);
+    }, [pathname]);
+
     const sidebarItemsList: ISidebarItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map((item) => {
@@ -76,6 +74,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         path: item.path,
                         name: t(`${item.name}`),
                         type: sidebarItemType.ISidebarItemBasic,
+                        active: realPath === item.path,
                     };
                 }
                 if (item.type === ItemType.navDropDown) {
@@ -95,9 +94,14 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                 ...element,
                                 // @ts-ignore todo add guard
                                 elementText: t(`${element.elementText}`), // Localize elementText
+                                // @ts-ignore
+                                active: realPath === element?.link?.path,
                             };
                         })
                         .filter((element) => element !== null); // Filter out any null elements
+
+                    const isDropdownActive = localizedElements.some((element) => element.active);
+
                     // If there are no valid elements left, return null to skip this item
                     if (localizedElements.length === 0) {
                         return null;
@@ -106,6 +110,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     return {
                         name: t(`${item.name}`),
                         elements: localizedElements,
+                        active: isDropdownActive,
                         type: sidebarItemType.ISidebarItemDropDown,
                     };
                 }
@@ -113,7 +118,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 return null;
             })
             .filter((item) => item !== null) as ISidebarItem[];
-    }, [navbarBuild, t, isSidebarOpen]);
+    }, [t, navbarBuild?.menu, permissionToSeeOwnClan.isGranted, realPath]);
 
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 

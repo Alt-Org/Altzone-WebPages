@@ -3,6 +3,7 @@
 }
 
 .Navbar {
+  position: absolute;
   font: var(--font-xxl);
   display: flex;
   align-items: center;
@@ -58,15 +59,14 @@
 }
 
 .fixed {
-  position: sticky;
-  top: 34px;
+  //position: sticky;
+  //top: 34px;
 
-  @media (min-width: 550px){
-    margin-top: 50px;
-  }
+  //@media (min-width: 550px){
+  //  margin-top: 50px;
+  //}
 
-  //position: fixed;
-  //padding-top: 50px;
+  position: fixed;
 }
 
 

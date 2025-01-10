@@ -1,7 +1,6 @@
 'use client';
-import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { ImageWall, ImageData, useGetStrapiGalleryImages } from '@/entities/Gallery';
+import { ImageWall, PhotoObject } from '@/entities/Gallery';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
@@ -22,29 +21,21 @@ interface FullProps {
 }
 
 type GalleryProps = (PreviewProps | FullProps) & {
+    images: PhotoObject[];
     socialMediaLinks: string[];
-    mockImages?: { [key: string]: ImageData }; // for Storybook
 };
 
 export const SectionGallery = (props: GalleryProps) => {
-    const [images, setImages] = useState<{ [key: string]: ImageData }>({});
-    const { version, seeMoreLink, mockImages } = props;
+    const { version, seeMoreLink, images } = props;
 
-    useEffect(() => {
-        if (mockImages) {
-            setImages(mockImages); // Use mock images if provided (Storybook)
-        } else {
-            const filteredImages = useGetStrapiGalleryImages(
-                require.context('/public/images/gallery', false, /\.(png|jpe?g|svg|webp)$/),
-                'public/images/gallery',
-            );
-            setImages(filteredImages);
-        }
-    }, [mockImages]);
+    let imagesArray: PhotoObject[] = [];
+    let previewImages: PhotoObject[] = [];
 
-    const imagesArray = Object.values(images);
-    const previewCount = 8;
-    const previewImages = imagesArray.slice(0, previewCount);
+    if (images) {
+        imagesArray = Object.values(images);
+        const previewCount = 8;
+        previewImages = imagesArray.slice(0, previewCount);
+    }
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -60,13 +51,13 @@ export const SectionGallery = (props: GalleryProps) => {
             {/*<EmbedSocialMediaPosts posts={socialMediaLinks} />*/}
             {version === 'full' ? (
                 <ImageWall
-                    // version={version}
+                    version={version}
                     images={imagesArray}
                 />
             ) : (
                 <>
                     <ImageWall
-                        // version={version}
+                        version={version}
                         images={previewImages}
                     />
                     <div

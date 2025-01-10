@@ -106,10 +106,10 @@
     "description": "Hämääjät on ...",
     "heroes": {
       "Conman": {
-        "title": "Hujari",
-        "alt": "Hujari kuva",
-        "altGif": "Hujari animation kuva",
-        "description": "Hujari  käyttää taitavasti petosta ja viekkautta manipuloidakseen tunteita ja harhauttaakseen vastustajia. Hänen pääkykynsä on luoda illuusioita, jotka saavat ympäröivät näkemään jotain, mitä ei oikeasti ole olemassa. \\nLisäksi hän pystyy tuottamaan häiritseviä ääniä ja visuaalisia tehosteita ohjatakseen tunteiden keskittymisen muille kohteille tai piiloutuakseen itse luomaansa kaaokseen. Joskus hänen oveluutensa kuitenkin kääntyy häntä itseään vastaan."
+        "title": "Huijari",
+        "alt": "Huijari kuva",
+        "altGif": "Huijari animation kuva",
+        "description": "Huijari  käyttää taitavasti petosta ja viekkautta manipuloidakseen tunteita ja harhauttaakseen vastustajia. Hänen pääkykynsä on luoda illuusioita, jotka saavat ympäröivät näkemään jotain, mitä ei oikeasti ole olemassa. \\nLisäksi hän pystyy tuottamaan häiritseviä ääniä ja visuaalisia tehosteita ohjatakseen tunteiden keskittymisen muille kohteille tai piiloutuakseen itse luomaansa kaaokseen. Joskus hänen oveluutensa kuitenkin kääntyy häntä itseään vastaan."
       }
     }
   },

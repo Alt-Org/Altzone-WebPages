@@ -9,12 +9,14 @@ export type ISidebarItemBasic = {
     type: sidebarItemType.ISidebarItemBasic;
     path: string;
     name: string;
+    active?: boolean;
 };
 
 export type ISidebarItemDropDown = {
     type: sidebarItemType.ISidebarItemDropDown;
     name: string;
     elements: Array<DropDownElement>;
+    active?: boolean;
 };
 
 export type ISidebarItem = ISidebarItemBasic | ISidebarItemDropDown;

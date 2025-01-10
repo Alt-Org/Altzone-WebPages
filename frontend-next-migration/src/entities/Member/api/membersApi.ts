@@ -1,77 +1,43 @@
-import { strapiApi } from '@/shared/api/strapiApi';
-import { Team } from '../model/types/types';
-import { getMembers, getDepartments } from './mappers';
+import { directusApi } from '@/shared/api';
+import { Member } from '../model/types/types';
+import { envHelper } from '@/shared/const/envHelper';
+import { createDirectus, rest, readItems } from '@directus/sdk';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-const teamApi = strapiApi.injectEndpoints({
+const directusBaseUrl = envHelper.directusHost;
+const client = createDirectus(directusBaseUrl).with(rest());
+
+const membersApi = directusApi.injectEndpoints({
     endpoints: (builder) => ({
-        fetchTeams: builder.query<Team[], string>({
-            keepUnusedDataFor: 10000,
-            query: (locale = 'en') => {
-                const strapiLocale = locale === 'fi' ? 'fi-FI' : 'en';
-                return `/teams?locale=${strapiLocale}&populate=departments.localizations,members.Logo,departments.members.Logo`;
-            },
-
-            transformResponse: (response: any, meta, arg) => {
-                const strapiLocale = arg === 'fi' ? 'fi-FI' : 'en';
-
-                const teams: Team[] = response.data.map((item: any) => {
-                    let members = getMembers(item.attributes.members?.data || []);
-                    const departments = getDepartments(
-                        item.attributes.departments?.data || [],
-                        strapiLocale,
+        getMembers: builder.query<Member[], void>({
+            queryFn: async (): Promise<{ data: Member[] } | { error: FetchBaseQueryError }> => {
+                try {
+                    const members = await client.request<Record<string, any>[]>(
+                        readItems('members', {
+                            fields: [
+                                '*',
+                                'department.*',
+                                'department.translations.*',
+                                'team.*',
+                                'team.translations.*',
+                                'translations.*',
+                                'logo.*',
+                            ],
+                            limit: 500,
+                        }),
                     );
-
-                    const departmentMemberIds = departments.flatMap((dept) =>
-                        dept.members.map((member) => member.id),
-                    );
-                    members = members.filter((member) => !departmentMemberIds.includes(member.id));
-
+                    return { data: members as Member[] };
+                } catch (error: any) {
                     return {
-                        id: item.id,
-                        name: item.attributes.Team || item.attributes.Name,
-                        createdAt: item.attributes.createdAt,
-                        updatedAt: item.attributes.updatedAt,
-                        locale: item.attributes.locale,
-                        members,
-                        departments,
+                        error: {
+                            status: error.status || 500,
+                            data: { message: error.message || 'Data fetch failed' } as any,
+                        },
                     };
-                });
-
-                const orderEn = [
-                    'Game Design',
-                    'Mentoring',
-                    'Programming',
-                    'Graphics',
-                    'Sounds',
-                    'Comic book',
-                    'Production',
-                    'Analysis',
-                    'Art',
-                    'Game Art Education Package',
-                    'Other Participants',
-                    'Special Thanks',
-                ];
-
-                const orderFi = [
-                    'Pelisuunnittelu',
-                    'Mentorointi',
-                    'Ohjelmointi',
-                    'Grafiikka',
-                    'Äänet',
-                    'Sarjakuva',
-                    'Tuotanto',
-                    'Analyysi',
-                    'Pelitaiteen opetuspaketti',
-                    'Muut mukana olleet',
-                    'Erityiskiitokset',
-                ];
-
-                const order = arg === 'fi' ? orderFi : orderEn;
-
-                return teams.sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));
+                }
             },
         }),
     }),
 });
 
-export const { useFetchTeamsQuery: useGetTeamsQuery } = teamApi;
+export const { useGetMembersQuery } = membersApi;

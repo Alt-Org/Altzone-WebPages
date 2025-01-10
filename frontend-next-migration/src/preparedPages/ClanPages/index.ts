@@ -2,7 +2,10 @@ export { ClanMainPageAsync as ClanMainPage } from './ui/ClanMainPage/ClanMainPag
 
 export { default as ClanAllSubPage } from './ui/ClanAllSubPage/ClanAllSubPage';
 
-export { default as ClanRoomSubPage } from './ui/ClanRoomSubPage/ClanRoomSubPage';
+export {
+    default as ClanRoomSubPage,
+    type Props as ClanRoomSubPageProps,
+} from './ui/ClanRoomSubPage/ClanRoomSubPage';
 
 export { default as ClanAddSubPage } from './ui/ClanAddSubPage/ClanAddSubPage';
 

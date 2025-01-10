@@ -25,3 +25,18 @@ export function createMetadataGenerator(getPage: (lng: string) => Promise<{ seo:
         return await extractSEO(params.lng, getPage);
     };
 }
+
+//works better than createMetadataGenerator see FurnitureOneSetPage
+export function withMetadataGenerator(
+    getPage: (lng: string, ...args: any[]) => Promise<{ seo: DefaultSeo }>,
+): (props: DefaultAppRouterProps) => Promise<Metadata> {
+    return async function MetadataWithHOC(props: DefaultAppRouterProps): Promise<Metadata> {
+        const { params } = props;
+
+        const { lng, ...restParams } = params;
+
+        const data = await getPage(lng, ...Object.values(restParams));
+
+        return extractSEO(lng, () => Promise.resolve(data));
+    };
+}

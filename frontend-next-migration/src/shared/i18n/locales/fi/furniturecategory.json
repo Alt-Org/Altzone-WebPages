@@ -1,0 +1,21 @@
+{
+    "text-back": "takaisin",
+    "results": "Huonekalut",
+    "no-results": "Ei huonekaluja tällä kategorialla",
+    "CHAIRS": "Tuolit",
+    "CABINETS": "Kaapit",
+    "COUCHES": "Sohvat",
+    "LIGHTS": "Valaistukset",
+    "PLANTS": "Kasvit",
+    "TABLES": "Pöydät",
+    "RUGS": "Matot",
+    "WALL": "Seinälle ripustettavat",
+    "MIRRORS": "Peilit",
+    "TOILETS": "Vessanpöntöt",
+    "SINKS": "Käsienpesualtaat",
+    "BEDS": "Sängyt",
+    "ITEMS": "Esineet",
+    "head-title": "Huonekalujen kategoriat",
+    "head-description": "Hae huonekaluista kategorialla",
+    "head-keywords": "huonekalu, kategoria, keräily"
+}

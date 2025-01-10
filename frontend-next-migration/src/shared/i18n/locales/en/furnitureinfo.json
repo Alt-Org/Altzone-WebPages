@@ -1,0 +1,246 @@
+{
+    "set-not-found": "Set not found",
+    "head-title": "Set of Furniture",
+    "head-description": "View the pieces of a furniture set.",
+    "head-keywords": "furniture, set, collection",
+    "text-back": "back",
+    "price": "Price",
+    "TAAKKASET": {
+        "name": "Taakka",
+        "items": {
+            "COUCH": {
+                "name": "Couch",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "ARMCHAIR": {
+                "name": "Armchair",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "CLOSET": {
+                "name": "Closet",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "FULLMIRROR": {
+                "name": "Mirror",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "FLOORLAMP": {
+                "name": "Lamp",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "TABLE": {
+                "name": "Table",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            },
+            "SIDETABLE": {
+                "name": "Side table",
+                "desc": "The theme is Taakka, which can be interpreted in many ways. The pieces are meant to give a heavy impression."
+            }
+        }
+    },
+    "NEUROSET": {
+        "name": "Neuro",
+        "items": {
+            "CHAIR": {
+                "name": "Chair",
+                "desc": "The chair represents hallucinations and phobias. The chair itself looks like some kind of a bug."
+            },
+            "STOOL": {
+                "name": "Stool",
+                "desc": "Neuro-set's theme is mental health's effect on the brain activity. The stool represents the theme in general."
+            },
+            "DRAWER": {
+                "name": "Drawer",
+                "desc": "The drawer looks afraid or anxious like it's holding its head as if hands settling on the area of pain."
+            },
+            "CLOCK": {
+                "name": "Clock",
+                "desc": "The clock represents divided personalities and bipolar disorder."
+            }
+        }
+    },
+    "RAKKAUSSET": {
+        "name": "Rakkaus",
+        "items": {
+            "ARMCHAIR": {
+                "name": "Armchair",
+                "desc": "Love yourself just the way you are."
+            },
+            "COUCH": {
+                "name": "Couch",
+                "desc": "Love yourself just the way you are."
+            },
+            "CEILINGLAMP": {
+                "name": "Lamp",
+                "desc": "Love yourself just the way you are."
+            },
+            "TABLE": {
+                "name": "Table",
+                "desc": "Love yourself just the way you are."
+            },
+            "DININGTABLE": {
+                "name": "Dining table",
+                "desc": "Love yourself just the way you are."
+            },
+            "BED": {
+                "name": "Bed",
+                "desc": "Love yourself just the way you are."
+            },
+            "CARPET": {
+                "name": "Carpet",
+                "desc": "Love yourself just the way you are."
+            },
+            "MIRROR": {
+                "name": "Mirror",
+                "desc": "Love yourself just the way you are."
+            },
+            "CANDLES": {
+                "name": "Candles",
+                "desc": "Love yourself just the way you are."
+            },
+            "PILLOW": {
+                "name": "Pillow",
+                "desc": "Love yourself just the way you are."
+            },
+            "FLOWER": {
+                "name": "Flower",
+                "desc": "Love yourself just the way you are."
+            },
+            "BOOK": {
+                "name": "Book",
+                "desc": "Love yourself just the way you are."
+            },
+            "BOOKS": {
+                "name": "Pile of books",
+                "desc": "Love yourself just the way you are."
+            },
+            "PLUSH": {
+                "name": "Plush toy",
+                "desc": "Love yourself just the way you are."
+            },
+            "CLOSET": {
+                "name": "Closet",
+                "desc": "Love yourself just the way you are."
+            }
+        }
+    },
+    "MUISTOJASET": {
+        "name": "Muistoja",
+        "items": {
+            "COUCH": {
+                "name": "Couch",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "ARMCHAIR": {
+                "name": "Armchair",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "FLOWERS": {
+                "name": "Flowers",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "COFFEETABLE": {
+                "name": "Coffee table",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "PAINTING": {
+                "name": "Painting",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "PICTURES": {
+                "name": "Pictures",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "OLDWINDOW": {
+                "name": "Old window",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "NEWWINDOW": {
+                "name": "New window",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "FICUS": {
+                "name": "Ficus",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "DRAWER": {
+                "name": "Drawer",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "OLDCARPET": {
+                "name": "Old carpet",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "NEWCARPET": {
+                "name": "New carpet",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "DRAWINGS": {
+                "name": "Drawings",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            },
+            "FOXTOY": {
+                "name": "Fox plush",
+                "desc": "While thinking about one's past, they can make conclusions or simply think about nice moments."
+            }
+        }
+    },
+    "materials": {
+        "POLYESTER": {
+            "name": "Polyester"
+        },
+        "WOOD": {
+            "name": "Wood"
+        },
+        "ALUMINIUM": {
+            "name": "Aluminium"
+        },
+        "LEATHER": {
+            "name": "Leather"
+        },
+        "FABRIC": {
+            "name": "Fabric"
+        },
+        "BOARD": {
+            "name": "Board"
+        },
+        "GLASS": {
+            "name": "Glass"
+        },
+        "MGLASS": {
+            "name": "Mirror glass"
+        },
+        "PORCELAIN": {
+            "name": "Porcelain"
+        },
+        "MELAMINE": {
+            "name": "Melamine"
+        },
+        "METAL": {
+            "name": "Metal"
+        },
+        "ELECTRONICS": {
+            "name": "Electronics"
+        },
+        "PAPER": {
+            "name": "Paper"
+        },
+        "PLASTIC": {
+            "name": "Plastic"
+        },
+        "CLAY": {
+            "name": "Clay"
+        },
+        "PLANT": {
+            "name": "Plant"
+        },
+        "WAX": {
+            "name": "Wax"
+        }
+    },
+    "label-author": "Artist",
+    "label-price": "Price",
+    "label-weight": "Weight",
+    "label-materials": "Materials",
+    "close-view": "Close"
+}

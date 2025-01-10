@@ -7,13 +7,18 @@ export interface Props {
     title: string;
 }
 
+export const comicsSectionId = 'comics-section';
+
 const ComicsGalleriesPage = (props: Props) => {
     const { title } = props;
 
     return (
-        <div className={cls.Wrapper}>
+        <div
+            className={cls.Wrapper}
+            id={comicsSectionId}
+        >
             <Container className={cls.Container}>
-                <h1>{title}</h1>
+                <h2>{title}</h2>
                 <SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />
             </Container>
         </div>

@@ -8,6 +8,7 @@ import cls from './SidebarItem.module.scss';
 interface SidebarItemProps {
     item: ISidebarItem;
     collapsed: boolean;
+    active?: boolean;
 }
 
 /**
@@ -35,13 +36,17 @@ interface SidebarItemProps {
  *    collapsed={true}
  * />
  */
-export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
+export const SidebarItem = memo(({ item, collapsed, active = false }: SidebarItemProps) => {
     if (item.type === sidebarItemType.ISidebarItemBasic) {
         return (
             <AppLink
                 theme={AppLinkTheme.PRIMARY}
                 to={item.path}
-                className={classNames(cls.item, { [cls.collapsed]: collapsed }, [cls.itemBasic])}
+                className={classNames(
+                    cls.item,
+                    { [cls.collapsed]: collapsed, [cls.active]: active },
+                    [cls.itemBasic],
+                )}
             >
                 <span className={cls.link}>{item.name}</span>
             </AppLink>
@@ -51,7 +56,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     if (item.type === sidebarItemType.ISidebarItemDropDown) {
         return (
             <DropdownWrapper
-                className={cls.itemDropDown}
+                className={classNames(cls.itemDropDown, { [cls.active]: active })}
                 contentItemClassName={cls.item}
                 contentClassName={classNames(cls.link, { [cls.collapsed]: collapsed })}
                 elements={item.elements}

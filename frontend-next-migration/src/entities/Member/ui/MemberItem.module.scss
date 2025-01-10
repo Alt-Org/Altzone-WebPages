@@ -14,9 +14,13 @@
   }
 
   .taskText {
+    font-weight: lighter;
+    font-size: 80%;
     text-align: left;
     flex: 2;
     min-width: 0;
+    display: flex;
+    align-items: center;
   }
 
   .iconContainer {
@@ -26,6 +30,9 @@
     justify-content: flex-end;
     flex: 1;
     min-width: 0;
+    @media only screen and (min-width: 760px) {
+      padding-right: 2rem;
+    }
   }
 
   .centerContainer {
@@ -44,7 +51,12 @@
     height: clamp(0.5rem, 3vw, 2rem);
     border-radius: 50%;
     overflow: hidden;
-    @include link-scale-effect('icon');
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .memberLogoEnlarged {
+    transform: scale(3);
+    transition: transform 0.3s ease-in-out;
   }
 
   .Logo {
@@ -60,7 +72,7 @@
   .placeholderLogo {
     width: 100%;
     height: 100%;
-    opacity: 0;
+    opacity: 100;
     border-radius: 50%;
     @include link-scale-effect('icon');
   }

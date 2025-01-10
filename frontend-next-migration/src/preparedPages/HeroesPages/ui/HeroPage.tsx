@@ -3,9 +3,10 @@ import { HeroNavMenuAsDropdown } from '@/features/NavigateHeroes';
 import { HeroContainer, HeroWithGroup } from '@/entities/Hero';
 import { getRouteAllHeroesPage } from '@/shared/appLinks/RoutePaths';
 import useSizes from '@/shared/lib/hooks/useSizes';
+import { Container } from '@/shared/ui/Container';
 import cls from './HeroPage.module.scss';
 
-interface Props {
+export interface Props {
     newSelectedHero: HeroWithGroup;
     prevHeroLink: string;
     nextHeroLink: string;
@@ -19,7 +20,11 @@ const HeroPage = (props: Props) => {
     const navbarOnMobile = isMobileSize;
 
     return (
-        <main className={cls.main}>
+        <Container
+            as={'main'}
+            fluid={true}
+            className={cls.main}
+        >
             {navbarOnMobile && <HeroNavMenuAsDropdown className={cls.dropDown} />}
 
             <HeroContainer
@@ -34,7 +39,7 @@ const HeroPage = (props: Props) => {
                 rightArrowLink={nextHeroLink}
                 xLink={getRouteAllHeroesPage()}
             />
-        </main>
+        </Container>
     );
 };
 
