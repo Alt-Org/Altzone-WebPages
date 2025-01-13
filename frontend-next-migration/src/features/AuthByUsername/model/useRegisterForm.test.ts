@@ -48,7 +48,7 @@ beforeEach(() => {
 it('should show error toast if login fails after registration', async () => {
     const mockRegister = jest.fn().mockResolvedValue({});
     const mockLogin = jest.fn().mockRejectedValue({
-        data: { message: 'Käyttäjänimi on jo käytössä, valitse toinen käyttäjänimi' },
+        data: { message: 'username-already-taken' },
     });
 
     (useRegisterMutation as jest.Mock).mockReturnValue([mockRegister, { isLoading: false }]);
