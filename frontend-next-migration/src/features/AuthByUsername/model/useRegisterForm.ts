@@ -42,7 +42,7 @@ export const useRegisterForm = () => {
                     backpackCapacity: 100,
                     name: fieldValues.username,
                     above13: fieldValues.ageConsent,
-                    parentalAuth: true,
+                    parentalAuth: false,
                 },
             };
             // Register the user
@@ -75,9 +75,7 @@ export const useRegisterForm = () => {
             router.push('/');
         } catch (error: any) {
             const errorMessage =
-                error?.data?.message?.[0] ??
-                error?.data?.message ??
-                t('Käyttäjänimi on jo käytössä, valitse toinen käyttäjänimi');
+                error?.data?.message?.[0] ?? error?.data?.message ?? t('username-already-taken');
             toast.error(errorMessage);
         }
     };
