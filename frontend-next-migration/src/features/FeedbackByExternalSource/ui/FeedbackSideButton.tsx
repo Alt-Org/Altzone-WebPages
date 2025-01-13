@@ -4,7 +4,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { useState } from 'react';
 import cls from './FeedbackSideButton.module.scss';
-import { FeedbackCard } from '@/features/feedback';
+import { FeedbackCard } from '@/features/Feedback';
 
 type Props = {
     disableMobile?: boolean;
