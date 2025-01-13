@@ -4,7 +4,7 @@ import { Urbanist, Rubik } from 'next/font/google';
 import { ReactNode } from 'react';
 import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { CookieConsentComponent } from '@/features/CookieConsent';
-import { FeedbackSideButton } from '@/features/Feedback';
+// import { FeedbackSideButton } from '@/features/Feedback';
 import { languages } from '@/shared/i18n/settings/settings';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
@@ -86,7 +86,7 @@ export default function RootLayout(props: Props) {
                 {/*//todo potentialy we can remove even this ContentWithBackground, but we have to be sure that it work in samy way in backgroundImage*/}
                 <ContentWithBackground>
                     <Providers>
-                        <FeedbackSideButton />
+                        {/*<FeedbackSideButton />*/}
                         {children}
                         <CookieConsentComponent />
                     </Providers>
