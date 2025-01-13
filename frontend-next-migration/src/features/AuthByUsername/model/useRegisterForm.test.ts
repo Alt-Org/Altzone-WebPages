@@ -63,11 +63,10 @@ it('should show error toast if login fails after registration', async () => {
             password: 'password123',
             repeatPassword: 'password123',
             Player: {
-                name: 'testuser',
-                uniqueIdentifier: 'testuser',
-                above13: true,
-                parentalAuth: false, // Corrected value
                 backpackCapacity: 100,
+                name: 'testuser',
+                parentalAuth: false,
+                uniqueIdentifier: 'testuser',
             },
         });
     });
@@ -78,10 +77,8 @@ it('should show error toast if login fails after registration', async () => {
         repeatPassword: 'password123',
         Player: {
             backpackCapacity: 100,
-
             name: 'testuser',
-            parentalAuth: true,
-
+            parentalAuth: false,
             uniqueIdentifier: 'testuser',
         },
     });
@@ -104,10 +101,9 @@ it('should call register and login on form submit', async () => {
             repeatPassword: 'password123',
             Player: {
                 backpackCapacity: 100,
-
                 name: 'testuser',
-                parentalAuth: true,
-
+                above13: true,
+                parentalAuth: false,
                 uniqueIdentifier: 'testuser',
             },
         });
@@ -119,10 +115,8 @@ it('should call register and login on form submit', async () => {
         repeatPassword: 'password123',
         Player: {
             backpackCapacity: 100,
-
             name: 'testuser',
-            parentalAuth: true,
-
+            parentalAuth: false,
             uniqueIdentifier: 'testuser',
         },
     });
