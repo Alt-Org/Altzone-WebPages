@@ -11,7 +11,6 @@ import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
-
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
