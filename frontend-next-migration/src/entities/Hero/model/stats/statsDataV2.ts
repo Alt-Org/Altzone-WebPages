@@ -1,4 +1,4 @@
-import { Stat } from '@/entities/Hero';
+import { Stat } from '../../types/hero';
 
 export const color = {
     resistance: 'rgb(153,0,255)',
