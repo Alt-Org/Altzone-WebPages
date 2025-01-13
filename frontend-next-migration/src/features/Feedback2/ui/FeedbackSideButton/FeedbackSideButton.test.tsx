@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { FeedbackSideButton } from './FeedbackSideButton';
+import { default as FeedbackSideButton } from './FeedbackSideButton';
 
 jest.mock('@/shared/i18n');
 jest.mock('@/shared/lib/hooks/useIsMobileSize');
