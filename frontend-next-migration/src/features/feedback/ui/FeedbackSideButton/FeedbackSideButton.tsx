@@ -1,16 +1,16 @@
 'use client';
+import { useState } from 'react';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { useState } from 'react';
+import { default as FeedbackCard } from '../FeedbackCard/FeedbackCard';
 import cls from './FeedbackSideButton.module.scss';
-import { FeedbackCard } from '@/features/Feedback';
 
 type Props = {
     disableMobile?: boolean;
 };
 
-export const FeedbackSideButton = (props: Props) => {
+const FeedbackSideButton = (props: Props) => {
     const { disableMobile = true } = props;
 
     const { t } = useClientTranslation('translation');
@@ -43,3 +43,5 @@ export const FeedbackSideButton = (props: Props) => {
         )
     );
 };
+
+export default FeedbackSideButton;

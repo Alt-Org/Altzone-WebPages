@@ -2,15 +2,15 @@ import { dir } from 'i18next';
 import type { Viewport } from 'next';
 import { Urbanist, Rubik } from 'next/font/google';
 import { ReactNode } from 'react';
+import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { CookieConsentComponent } from '@/features/CookieConsent';
+import { FeedbackSideButton } from '@/features/Feedback';
 import { languages } from '@/shared/i18n/settings/settings';
-import { Providers } from '../_providers';
-import '../_styles/index.scss';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
-import cls from '@/preparedPages/MainPage/ui/page.module.scss';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
+import { Providers } from '../_providers';
+import '../_styles/index.scss';
 
 // const openSans = Open_Sans({
 //   subsets: ['latin'],

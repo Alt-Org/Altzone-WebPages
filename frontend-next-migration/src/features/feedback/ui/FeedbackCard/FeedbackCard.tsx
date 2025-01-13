@@ -1,22 +1,22 @@
 'use client';
-import { CustomForm } from '@/shared/ui/CustomForm';
-import cls from './FeedbackCard.module.scss';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAddFeedbackMutation } from '@/entities/Feedback/api/feedbackApi';
+import { Feedback } from '@/entities/Feedback';
+import { CustomForm } from '@/shared/ui/CustomForm';
 import AngerEmoji from '@/shared/assets/icons/Feedback/AngerChatEmoticon.png';
 import JoyEmoji from '@/shared/assets/icons/Feedback/JoyChatEmoticon.png';
 import LoveEmoji from '@/shared/assets/icons/Feedback/LoveChatEmoticon.png';
 import PlayfulEmoji from '@/shared/assets/icons/Feedback/PlayfulChatEmoticon.png';
 import SadEmoji from '@/shared/assets/icons/Feedback/SadnessChatEmoticon.png';
 import send from '@/shared/assets/icons/Feedback/Email Send.png';
-import { useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { useAddFeedbackMutation } from '@/entities/Feedback/api/feedbackApi';
-import { Feedback } from '@/entities/Feedback/model/types/types';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import cls from './FeedbackCard.module.scss';
 
 export default function FeedbackCard() {
     const { t } = useClientTranslation('feedbackCard');

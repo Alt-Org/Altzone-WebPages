@@ -1,1 +1,1 @@
-export { default as FeedbackCard } from './ui/FeedbackCard';
+export { default as FeedbackSideButton } from './ui/FeedbackSideButton/FeedbackSideButton';

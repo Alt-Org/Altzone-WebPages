@@ -1,8 +1,8 @@
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
-import FeedbackCard from './FeedbackCard';
-import { useAddFeedbackMutation } from '@/entities/Feedback/api/feedbackApi';
 import { toast } from 'react-toastify';
+import { useAddFeedbackMutation } from '@/entities/Feedback/api/feedbackApi';
 import { useClientTranslation } from '@/shared/i18n';
+import FeedbackCard from './FeedbackCard';
 
 jest.mock('@/entities/Feedback/api/feedbackApi', () => ({
     useAddFeedbackMutation: jest.fn(),
