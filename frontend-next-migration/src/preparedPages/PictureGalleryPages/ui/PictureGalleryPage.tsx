@@ -3,6 +3,7 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
+import { LayoutWithSidebars } from '../../Layouts';
 import {
     useGetDirectusGalleryImages,
     getLanguageCode,
@@ -52,20 +53,27 @@ const PictureGalleryPage = (props: Props) => {
     if (isLoading) <p>Loading...</p>;
 
     return (
-        <div className={cls.Wrapper}>
-            <Container className={cls.Container}>
-                <h1>{title}</h1>
-                <p className={cls.InfoText}>{infoText}</p>
+        <LayoutWithSidebars
+            leftTopSidebar={{
+                component: <GalleryNavMenuAsDropdown openByDefault={true} />,
+                hideOnMobile: true,
+            }}
+        >
+            <div className={cls.Wrapper}>
+                <Container className={cls.Container}>
+                    <h1>{title}</h1>
+                    <p className={cls.InfoText}>{infoText}</p>
 
-                {isTouchDevice && <GalleryNavMenuAsDropdown openByDefault={true} />}
+                    {isTouchDevice && <GalleryNavMenuAsDropdown openByDefault={true} />}
 
-                <SectionGalleryV2
-                    version={'full'}
-                    socialMediaLinks={socialMediaLinks}
-                    images={filteredImages}
-                />
-            </Container>
-        </div>
+                    <SectionGalleryV2
+                        version={'full'}
+                        socialMediaLinks={socialMediaLinks}
+                        images={filteredImages}
+                    />
+                </Container>
+            </div>
+        </LayoutWithSidebars>
     );
 };
 
