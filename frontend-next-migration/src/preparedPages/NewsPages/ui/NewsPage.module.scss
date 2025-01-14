@@ -1,6 +1,17 @@
-//.NewsPage{
-//  min-height: calc(100dvh - 367px);
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//}
+.NewsPage{
+    min-height: calc(100dvh - 367px);
+}
+
+.TitleAndTabs {
+    padding: 0 20px;
+    h1 {
+        font-size: var(--font-line-4xl);
+        line-height: 1.5;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+}
+.NewsAndSideBar {
+    margin-top:80px;
+    background-color: unset;
+}
