@@ -1,0 +1,61 @@
+.clanInfo {
+    width: 18rem;
+    background-color: #1a1a1a;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    color: white;
+  
+    .header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+  
+        .title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+  
+        .titleSection {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: row;
+  
+            .labels {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-end;
+                gap: 0.65rem;
+                max-width: 30rem;
+            }
+        }
+    }
+  
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        color: black;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.25rem;
+        width: 100%;
+  
+        .members {
+            font-size: 0.975rem;
+        }
+  
+        .points {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.975rem;
+  
+            .crown {
+                color: #fbbf24;
+                font-size: 1.75rem;
+            }
+        }
+    }
+  }
