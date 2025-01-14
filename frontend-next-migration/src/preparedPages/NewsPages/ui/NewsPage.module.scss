@@ -3,7 +3,7 @@
 }
 
 .TitleAndTabs {
-    padding: 0 20px;
+    // padding: 0 20px;
     h1 {
         font-size: var(--font-line-4xl);
         line-height: 1.5;
@@ -11,7 +11,19 @@
         color: var(--primary-color);
     }
 }
+.TitleAndTabs.isTablet, .TitleAndTabs.isMobile {
+    text-align: center;
+    padding:0;
+}
+.TitleAlignBox {
+    display: flex
+}
+.TitleAlignBox.isTablet, .TitleAlignBox.isMobile {
+    display: block;
+} 
+
 .NewsAndSideBar {
+    padding:0;
     margin-top:80px;
     background-color: unset;
 }
