@@ -220,6 +220,7 @@ function MultiSelectionDropdown<T>({
                 </p>
             )}
             <MultiSelect
+                className={classNames(cls.dropdown, {}, [className])}
                 options={formattedOptions}
                 value={value}
                 onChange={selectionLogic}
