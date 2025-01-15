@@ -31,12 +31,13 @@ const PictureGalleryPage = (props: Props) => {
     const language = getLanguageCode(lng);
     const { photoObjects, isLoading } = useGetDirectusGalleryImages(language);
     const [filteredImages, setFilteredImages] = useState<PhotoObject[]>(photoObjects);
+    const allCategory = lng === 'en' ? 'all' : 'kaikki';
     const [selectedCategory, setSelectedCategory] = useState<string>('');
 
     const isTouchDevice = isTabletSize || isMobileSize;
 
     useEffect(() => {
-        if (!category || selectedCategory === 'all' || selectedCategory === 'kaikki') {
+        if (!category || selectedCategory === allCategory) {
             setFilteredImages(photoObjects);
         } else {
             setSelectedCategory(category);
@@ -55,7 +56,14 @@ const PictureGalleryPage = (props: Props) => {
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
-                component: <GalleryNavMenuAsDropdown openByDefault={true} />,
+                component: (
+                    <GalleryNavMenuAsDropdown
+                        openByDefault={true}
+                        language={language}
+                        allCategory={allCategory}
+                        className={cls.Dropdown}
+                    />
+                ),
                 hideOnMobile: true,
             }}
         >
@@ -64,7 +72,14 @@ const PictureGalleryPage = (props: Props) => {
                     <h1>{title}</h1>
                     <p className={cls.InfoText}>{infoText}</p>
 
-                    {isTouchDevice && <GalleryNavMenuAsDropdown openByDefault={true} />}
+                    {isTouchDevice && (
+                        <GalleryNavMenuAsDropdown
+                            openByDefault={true}
+                            language={language}
+                            allCategory={allCategory}
+                            className={cls.Dropdown}
+                        />
+                    )}
 
                     <SectionGalleryV2
                         version={'full'}

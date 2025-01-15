@@ -6,27 +6,23 @@ import {
     DropDownElementASTextOrLink,
 } from '@/shared/ui/NavMenuWithDropdowns';
 import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
-import {
-    getLanguageCode,
-    useGetDirectusGalleryImages,
-    getCategoryTranslation,
-} from '@/entities/Gallery';
+import { useGetDirectusGalleryImages, getCategoryTranslation } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
 
 interface GalleryNavMenuProps {
     openByDefault?: boolean;
+    language: string;
+    allCategory: string;
+    className: string;
 }
 
 const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
-    const { openByDefault = false } = props;
+    const { openByDefault = false, language, allCategory, className } = props;
 
     const params = useParams();
     const router = useRouter();
-    const lng = params.lng as string;
     const currentCategory = params.category as string;
-    const language = getLanguageCode(lng);
     const { categories } = useGetDirectusGalleryImages(language);
-    const allCategory = lng === 'en' ? 'all' : 'kaikki';
     const [selectedCategory, setSelectedCategory] = useState(currentCategory || allCategory);
 
     useEffect(() => {
@@ -54,9 +50,9 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
                 setSelectedCategory(allCategory);
             }
         }
-    }, [categories, lng]);
+    }, [categories, language]);
 
-    const title = lng === 'en' ? 'Categories' : 'Kategoriat';
+    const title = language === 'en-US' ? 'Categories' : 'Kategoriat';
 
     const dropdownItems: DropDownElementASTextOrLink[] = [
         {
@@ -88,7 +84,12 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
         dropdownItems: dropdownItems,
     };
 
-    return <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />;
+    return (
+        <NavMenuWithDropdowns
+            className={className}
+            {...navMenuWithDropdownsProps}
+        />
+    );
 };
 
 export default GalleryNavMenuAsDropdown;
