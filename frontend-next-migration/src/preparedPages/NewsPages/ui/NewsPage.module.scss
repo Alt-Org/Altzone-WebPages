@@ -1,9 +1,9 @@
 .NewsPage{
     min-height: calc(100dvh - 367px);
 }
-
+// Top content
 .TitleAndTabs {
-    // padding: 0 20px;
+    // The main title of this page
     h1 {
         font-size: var(--font-line-4xl);
         line-height: 1.5;
@@ -13,17 +13,65 @@
 }
 .TitleAndTabs.isTablet, .TitleAndTabs.isMobile {
     text-align: center;
-    padding:0;
 }
-.TitleAlignBox {
+.ContentAlignBox {
     display: flex
 }
-.TitleAlignBox.isTablet, .TitleAlignBox.isMobile {
+.ContentAlignBox.isTablet, .ContentAlignBox.isMobile {
     display: block;
 } 
-
+.ContentAlignBoxLeftBox {
+    min-width: 220px;
+    flex-basis: 20%;
+}
+.ContentAlignBoxRightBox {
+    flex: 1 1;
+    margin-right: 130px;
+}
+.ContentAlignBoxRightBox.isMobile, .ContentAlignBoxRightBox.isTablet {
+    flex: unset;
+    margin-right: unset;
+} 
+// Tabs-section
+.Tabs {
+    display: flex;
+    justify-content: flex-end;
+    gap:20px;
+}
+.Tabs.isMobile, .Tabs.isTablet {
+    flex-direction: column;
+    margin-top:16px;
+}
+// LayoutWithSidebar section
 .NewsAndSideBar {
     padding:0;
-    margin-top:80px;
+    margin-top:60px;
     background-color: unset;
+}
+.NewsAndSideBar.isMobile, .NewsAndSideBar.isTablet {
+    margin-top: unset;
+}
+// Categories
+.CategoriesSection {
+    width: calc(100% - 40px);
+}
+// News
+.News {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 130px;
+}
+.News.isMobile, .News.isTablet {
+    margin-right: unset;
+}
+
+.NewsArticle { // Update these when working with the real cards
+    border: 1px solid black;
+    flex: 0 1 49%; // 2 articles per row, 2% of empty space 
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+.NewsArticle.isTablet, .NewsArticle.isMobile {
+    flex: 0 1 100%; // 1 article per row
 }
