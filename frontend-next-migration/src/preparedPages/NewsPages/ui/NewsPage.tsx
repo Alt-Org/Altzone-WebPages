@@ -51,18 +51,18 @@ const NewsPage = () => {
                                 {!isMobileSize && !isTabletSize ? (
                                     <div>
                                         {/* Searchbox (desktop, widescreen) */}
-                                        <div>
-                                            <p style={{ border: '1px solid black' }}>Search box</p>
+                                        <div className={cls.borderBox}>
+                                            <p>Search box</p>
                                         </div>
                                     </div>
                                 ) : (
                                     <>
                                         {/* Categories (mobile, tablet) */}
-                                        <div style={{ border: '1px solid black', width: '100%' }}>
+                                        <div className={cls.borderBox}>
                                             <p>categories mobile</p>
                                         </div>
                                         {/* Searchbox (mobile, tablet) */}
-                                        <div style={{ border: '1px solid black' }}>
+                                        <div className={cls.borderBox}>
                                             <p>Search box</p>
                                         </div>
                                     </>
@@ -79,13 +79,7 @@ const NewsPage = () => {
                                 // Categories-section (desktop)
                                 <div className={cls.CategoriesSection}>
                                     {/* Categories (desktop, widescreen)*/}
-                                    <div
-                                        style={{
-                                            border: '1px solid black',
-                                            borderRadius: '12px',
-                                            padding: '1em',
-                                        }}
-                                    >
+                                    <div className={cls.categoriesDesktop}>
                                         <h2>Categories</h2>
                                         <p>Category</p>
                                         <p>Category</p>
@@ -113,7 +107,7 @@ const NewsPage = () => {
                                     className={cls.NewsArticle}
                                 >
                                     {/* The card*/}
-                                    <div style={{ padding: '1em' }}>
+                                    <div className={cls.newsCard}>
                                         <div>
                                             <h2>{newsArticle.heading}</h2>
                                         </div>

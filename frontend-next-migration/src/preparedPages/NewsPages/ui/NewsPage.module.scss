@@ -68,11 +68,27 @@ $breakpoint-lg:1023px;
     }
 }
 .NewsArticle { // Update these when working with the real cards
-    border: 1px solid black;
     flex: 0 1 49%; // 2 articles per row, 2% of empty space 
     margin-bottom: 20px;
-    border-radius: 12px;
     @media (max-width: breakpoint(lg)) {
         flex: 0 1 100%; // 1 article per row
     }
+}
+
+
+
+
+// All supplement element styles (remove these when adding the real components / elements)
+.borderBox {
+    border: 1px solid black;
+}
+.categoriesDesktop {
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 1em;
+}
+.newsCard {
+    border-radius: 12px;
+    border: 1px solid black;
+    padding:10px;
 }
