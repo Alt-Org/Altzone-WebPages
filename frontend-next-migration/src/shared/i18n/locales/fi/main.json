@@ -11,23 +11,26 @@
 
     "project-description-title": "Mitä on Alt Zone?",
     "project-description-text": "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa. ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle. Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla. Oppilailla on mahdollisuus jatkokehittää peliä sovelluskaupasta myöhemmin ladattavaksi ALT Zone 2.0 - mobiilipeliksi. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen siihen perustettavan säätiön kautta.",
+    "project-description-array": [
+        "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa.",
+        "ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle. Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla.",
+        "Oppilailla on mahdollisuus jatkokehittää peliä sovelluskaupasta myöhemmin ladattavaksi ALT Zone 2.0 - mobiilipeliksi. ALT Zone 2.0 pelin tuotto menee nuorten unelmien tukemiseen siihen perustettavan säätiön kautta."
+    ],
 
     "getToKnowComics": "Tutustu sarjakuvaan",
     "getToKnowComics-title": "Pelikeksijän tarina",
 
-  "videoAndGalleries-title": "Meidän taide:",
+    "videoAndGalleries-title": "Meidän taide:",
 
+    "playWithUs-title": "Meidän linkit:",
+    "playWithUs-OpenPositions-title": "Katso avoimet paikat",
+    "playWithUs-OpenPositions-body": "Tule mukaan",
+    "playWithUs-BecomeATester-title": "Tule testaajaksi",
+    "playWithUs-BecomeATester-body": "Tee sovelluksesta parempi",
+    "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
 
-  "playWithUs-title": "Meidän linkit:",
-  "playWithUs-OpenPositions-title": "Katso avoimet paikat",
-  "playWithUs-OpenPositions-body" : "Tule mukaan",
-  "playWithUs-BecomeATester-title" : "Tule testaajaksi",
-  "playWithUs-BecomeATester-body" : "Tee sovelluksesta parempi",
-  "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
+    "classifiedHeroesBlocks-title": "Hahmot",
+    "classifiedHeroesBlocks-seeMore": "Lisää",
 
-  "classifiedHeroesBlocks-title": "Hahmot",
-  "classifiedHeroesBlocks-seeMore": "Lisää",
-
-
-  "gallery-seeMore": "Katso lisää"
+    "gallery-seeMore": "Katso lisää"
 }

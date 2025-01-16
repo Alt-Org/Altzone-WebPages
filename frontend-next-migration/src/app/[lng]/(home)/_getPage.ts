@@ -46,6 +46,9 @@ export async function _getPage(lng: string) {
             projectDescription: {
                 title: t('project-description-title'),
                 description: t('project-description-text'),
+                descriptionArray: t('project-description-array', {
+                    returnObjects: true,
+                }) as unknown as string[],
             },
             getToKnowComics: {
                 title: t('getToKnowComics-title'),
