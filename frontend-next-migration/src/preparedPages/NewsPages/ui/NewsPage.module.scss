@@ -1,3 +1,5 @@
+$breakpoint-lg:1023px;
+
 .NewsPage{
     min-height: calc(100dvh - 367px);
 }
@@ -10,16 +12,16 @@
         font-weight: bold;
         color: var(--primary-color);
     }
-}
-.TitleAndTabs.isTablet, .TitleAndTabs.isMobile {
-    text-align: center;
+    @media (max-width: breakpoint(lg)) {
+        text-align: center;
+    }
 }
 .ContentAlignBox {
-    display: flex
+    display: flex;
+    @media (max-width: breakpoint(lg)) {
+        display: block;
+    }
 }
-.ContentAlignBox.isTablet, .ContentAlignBox.isMobile {
-    display: block;
-} 
 .ContentAlignBoxLeftBox {
     min-width: 220px;
     flex-basis: 20%;
@@ -27,29 +29,29 @@
 .ContentAlignBoxRightBox {
     flex: 1 1;
     margin-right: 130px;
+    @media (max-width: breakpoint(lg)) {
+        flex: unset;
+        margin-right: unset;
+    }
 }
-.ContentAlignBoxRightBox.isMobile, .ContentAlignBoxRightBox.isTablet {
-    flex: unset;
-    margin-right: unset;
-} 
 // Tabs-section
 .Tabs {
     display: flex;
     justify-content: flex-end;
     gap:20px;
-}
-.Tabs.isMobile, .Tabs.isTablet {
-    flex-direction: column;
-    margin-top:16px;
+    @media (max-width: breakpoint(lg)) {
+        flex-direction: column;
+        margin-top:16px;
+    }
 }
 // LayoutWithSidebar section
 .NewsAndSideBar {
     padding:0;
     margin-top:60px;
     background-color: unset;
-}
-.NewsAndSideBar.isMobile, .NewsAndSideBar.isTablet {
-    margin-top: unset;
+    @media (max-width: breakpoint(lg)) {
+        margin-top: unset;
+    }
 }
 // Categories
 .CategoriesSection {
@@ -61,17 +63,16 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-right: 130px;
+    @media (max-width: breakpoint(lg)) {
+        margin-right: unset;
+    }
 }
-.News.isMobile, .News.isTablet {
-    margin-right: unset;
-}
-
 .NewsArticle { // Update these when working with the real cards
     border: 1px solid black;
     flex: 0 1 49%; // 2 articles per row, 2% of empty space 
     margin-bottom: 20px;
     border-radius: 12px;
-}
-.NewsArticle.isTablet, .NewsArticle.isMobile {
-    flex: 0 1 100%; // 1 article per row
+    @media (max-width: breakpoint(lg)) {
+        flex: 0 1 100%; // 1 article per row
+    }
 }

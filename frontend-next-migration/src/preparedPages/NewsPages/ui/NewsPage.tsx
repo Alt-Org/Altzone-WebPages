@@ -1,6 +1,5 @@
 'use client';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { WallIntroAnimation } from '@/shared/ui/WallIntroAnimation';
 import { Container } from '@/shared/ui/Container';
@@ -35,28 +34,20 @@ const NewsPage = () => {
         ],
     };
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
-    const combinedModCss: Mods = {
-        [cls.isMobile]: isMobileSize,
-        [cls.isTablet]: isTabletSize,
-        [cls.isDesktop]: isDesktopSize,
-        [cls.isWidescreen]: isWidescreenSize,
-    };
     return (
         <WallIntroAnimation>
-            <main className={classNames(cls.NewsPage, combinedModCss)}>
-                <Container className={classNames(cls.TitleAndTabs, combinedModCss)}>
-                    <div className={classNames(cls.ContentAlignBox, combinedModCss)}>
+            <main className={cls.NewsPage}>
+                <Container className={cls.TitleAndTabs}>
+                    <div className={cls.ContentAlignBox}>
                         {!isMobileSize && !isTabletSize && (
-                            <div
-                                className={classNames(cls.ContentAlignBoxLeftBox, combinedModCss)}
-                            />
+                            <div className={cls.ContentAlignBoxLeftBox} />
                         )}
-                        <div className={classNames(cls.ContentAlignBoxRightBox, combinedModCss)}>
+                        <div className={cls.ContentAlignBoxRightBox}>
                             <div>
                                 {/* Title */}
                                 <h1>{title}</h1>
                             </div>
-                            <div className={classNames(cls.Tabs, combinedModCss)}>
+                            <div className={cls.Tabs}>
                                 {!isMobileSize && !isTabletSize ? (
                                     <div>
                                         {/* Searchbox (desktop, widescreen) */}
@@ -86,7 +77,7 @@ const NewsPage = () => {
                         component:
                             isDesktopSize || isWidescreenSize ? (
                                 // Categories-section (desktop)
-                                <div className={classNames(cls.CategoriesSection, combinedModCss)}>
+                                <div className={cls.CategoriesSection}>
                                     {/* Categories (desktop, widescreen)*/}
                                     <div
                                         style={{
@@ -106,10 +97,10 @@ const NewsPage = () => {
                                 <div />
                             ),
                     }}
-                    className={classNames(cls.NewsAndSideBar, combinedModCss)}
+                    className={cls.NewsAndSideBar}
                 >
                     {/* News-section (all devices) */}
-                    <div className={classNames(cls.News, combinedModCss)}>
+                    <div className={cls.News}>
                         {news.map(
                             (newsArticle: /* This could have it's own type when working with real data*/ {
                                 id: number;
@@ -119,7 +110,7 @@ const NewsPage = () => {
                             }) => (
                                 <div
                                     key={newsArticle.id}
-                                    className={classNames(cls.NewsArticle, combinedModCss)}
+                                    className={cls.NewsArticle}
                                 >
                                     {/* The card*/}
                                     <div style={{ padding: '1em' }}>
