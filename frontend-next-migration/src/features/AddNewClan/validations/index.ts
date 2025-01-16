@@ -25,7 +25,7 @@ export const ValidationAddNewClan = yup.object().shape({
         .string()
         .required()
         .min(3, 'Moton on oltava vähintään 3 merkkiä pitkä')
-        .max(15, 'Moton on oltava enintään 15 merkkiä pitkä')
+        .max(30, 'Moton on oltava enintään 30 merkkiä pitkä')
         .matches(/^[A-Za-z0-9_]+$/, 'Motto voi sisältää vain kirjaimia, numeroita ja alaviivoja'),
 
     labels: yup

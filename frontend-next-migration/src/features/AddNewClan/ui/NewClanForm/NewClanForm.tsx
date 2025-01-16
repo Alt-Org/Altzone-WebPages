@@ -51,14 +51,14 @@ export const NewClanForm = ({ onSuccess, className = '' }: Props) => {
                 error={errors?.phrase?.message}
                 inputProps={{
                     ...register('phrase'),
-                    required: false,
+                    required: true,
                 }}
             />
 
             <CustomForm.MultiSelectionDropdown
                 label={'Tunniste'}
                 options={ClanLabel}
-                maxSelections={3}
+                maxSelections={5}
                 value={selected}
                 error={errors?.labels?.message}
                 inputProps={{
