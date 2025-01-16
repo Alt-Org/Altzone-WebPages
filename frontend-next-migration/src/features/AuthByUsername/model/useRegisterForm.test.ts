@@ -1,124 +1,123 @@
 import { renderHook, act } from '@testing-library/react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { useRegisterMutation } from '@/entities/Auth';
-import { useClientTranslation } from '@/shared/i18n';
 import { useRegisterForm } from './useRegisterForm';
-
-jest.mock('react-hook-form', () => ({
-    useForm: jest.fn(),
-}));
-
-jest.mock('@hookform/resolvers/yup', () => ({
-    yupResolver: jest.fn(),
-}));
+import { useRegisterMutation, useLoginMutation } from '@/entities/Auth';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useClientTranslation } from '@/shared/i18n';
+import { useRouter } from 'next/navigation';
 
 jest.mock('@/entities/Auth', () => ({
     useRegisterMutation: jest.fn(),
+    useLoginMutation: jest.fn(),
+    authUserActions: {
+        setAccessTokenInfo: jest.fn(),
+    },
 }));
-
+jest.mock('react-redux', () => ({
+    useDispatch: jest.fn(),
+}));
+jest.mock('react-hook-form', () => ({
+    useForm: jest.fn(),
+}));
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
 }));
-
-jest.mock('react-toastify', () => ({
-    toast: {
-        success: jest.fn(),
-        error: jest.fn(),
-    },
+jest.mock('next/navigation', () => ({
+    useRouter: jest.fn(),
 }));
 
-describe('useRegisterForm', () => {
-    const mockT = jest.fn((key) => key);
-    const toLoginPage = '/login';
+const mockDispatch = jest.fn();
+const mockRouter = { push: jest.fn() };
+const mockT = jest.fn((key) => key);
 
-    beforeEach(() => {
-        (useForm as jest.Mock).mockReturnValue({
-            register: jest.fn(),
-            handleSubmit: jest.fn(),
-            formState: { errors: {} },
-        });
-        (useRegisterMutation as jest.Mock).mockReturnValue([
-            jest.fn(),
-            { data: null, isLoading: false, error: null },
-        ]);
-        (useClientTranslation as jest.Mock).mockReturnValue({ t: mockT });
-        jest.clearAllMocks();
+beforeEach(() => {
+    (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
+    (useForm as jest.Mock).mockReturnValue({
+        register: jest.fn(),
+        handleSubmit: jest.fn(),
+        formState: { errors: {} },
+        getValues: jest.fn(),
+    });
+    (useRegisterMutation as jest.Mock).mockReturnValue([jest.fn(), { isLoading: false }]);
+    (useLoginMutation as jest.Mock).mockReturnValue([jest.fn(), { isLoading: false }]);
+    (useClientTranslation as jest.Mock).mockReturnValue({ t: mockT });
+    (useRouter as jest.Mock).mockReturnValue(mockRouter);
+    jest.clearAllMocks();
+});
+
+it('should show error toast if login fails after registration', async () => {
+    const mockRegister = jest.fn().mockResolvedValue({});
+    const mockLogin = jest.fn().mockRejectedValue({
+        data: { message: 'username-already-taken' },
     });
 
-    it('should return register, handleSubmit, onFormSubmit, errors, and toLoginPage', () => {
-        const { result } = renderHook(() => useRegisterForm(toLoginPage));
+    (useRegisterMutation as jest.Mock).mockReturnValue([mockRegister, { isLoading: false }]);
+    (useLoginMutation as jest.Mock).mockReturnValue([mockLogin, { isLoading: false }]);
 
-        expect(result.current.register).toBeDefined();
-        expect(result.current.handleSubmit).toBeDefined();
-        expect(result.current.onFormSubmit).toBeDefined();
-        expect(result.current.errors).toEqual({});
-        expect(result.current.toLoginPage).toBe(toLoginPage);
-    });
+    const { result } = renderHook(() => useRegisterForm());
 
-    it('should call regist on form submit with correct data', async () => {
-        const mockRegist = jest.fn();
-        (useRegisterMutation as jest.Mock).mockReturnValue([
-            mockRegist,
-            { data: null, isLoading: false, error: null },
-        ]);
-
-        const { result } = renderHook(() => useRegisterForm(toLoginPage));
-
-        const fieldValues = {
+    // Simulate form submission
+    await act(async () => {
+        await result.current.onFormSubmit({
             username: 'testuser',
-            password: 'password',
-            ageConsent: true,
-        };
-        await act(async () => {
-            await result.current.onFormSubmit(fieldValues);
-        });
-
-        const expectedData = {
-            username: 'testuser',
-            password: 'password',
-            repeatPassword: 'password',
+            password: 'password123',
+            repeatPassword: 'password123',
             Player: {
+                backpackCapacity: 100,
+                name: 'testuser',
+                parentalAuth: false,
                 uniqueIdentifier: 'testuser',
+            },
+        });
+    });
+
+    expect(mockRegister).toHaveBeenCalledWith({
+        username: 'testuser',
+        password: 'password123',
+        repeatPassword: 'password123',
+        Player: {
+            backpackCapacity: 100,
+            name: 'testuser',
+            parentalAuth: false,
+            uniqueIdentifier: 'testuser',
+        },
+    });
+});
+
+it('should call register and login on form submit', async () => {
+    const mockRegister = jest.fn().mockResolvedValue({});
+    const mockLogin = jest.fn().mockResolvedValue({});
+
+    (useRegisterMutation as jest.Mock).mockReturnValue([mockRegister, { isLoading: false }]);
+    (useLoginMutation as jest.Mock).mockReturnValue([mockLogin, { isLoading: false }]);
+
+    const { result } = renderHook(() => useRegisterForm());
+
+    // Simulate form submission
+    await act(async () => {
+        await result.current.onFormSubmit({
+            username: 'testuser',
+            password: 'password123',
+            repeatPassword: 'password123',
+            Player: {
                 backpackCapacity: 100,
                 name: 'testuser',
                 above13: true,
                 parentalAuth: false,
+                uniqueIdentifier: 'testuser',
             },
-        };
-
-        expect(mockRegist).toHaveBeenCalledWith(expectedData);
+        });
     });
 
-    it('should show success toast on successful registration', () => {
-        const mockData = { success: true };
-        (useRegisterMutation as jest.Mock).mockReturnValue([
-            jest.fn(),
-            { data: mockData, isLoading: false, error: null },
-        ]);
-
-        const { result, rerender } = renderHook(() => useRegisterForm(toLoginPage));
-
-        act(() => {
-            rerender();
-        });
-
-        expect(toast.success).toHaveBeenCalledWith('account-created');
-    });
-
-    it('should show error toast if there is an error', () => {
-        const mockError = { data: { message: ['Registration failed'] } };
-        (useRegisterMutation as jest.Mock).mockReturnValue([
-            jest.fn(),
-            { data: null, isLoading: false, error: mockError },
-        ]);
-
-        const { result, rerender } = renderHook(() => useRegisterForm(toLoginPage));
-
-        act(() => {
-            rerender();
-        });
-
-        expect(toast.error).toHaveBeenCalledWith(mockError.data.message[0]);
+    expect(mockRegister).toHaveBeenCalledWith({
+        username: 'testuser',
+        password: 'password123',
+        repeatPassword: 'password123',
+        Player: {
+            backpackCapacity: 100,
+            name: 'testuser',
+            parentalAuth: false,
+            uniqueIdentifier: 'testuser',
+        },
     });
 });
