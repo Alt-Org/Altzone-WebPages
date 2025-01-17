@@ -4,6 +4,19 @@ import ClanInfoTitle from './clanInfoTitle/ClanInfoTitle';
 import { useGetClansQuery } from '@/entities/Clan';
 import { Container } from '@/shared/ui/Container';
 import cls from './ClanMainPage.module.scss';
+/**
+ * ClanMainPage component for rendering the main page with clan information.
+ *
+ * @param {object} props - The properties for the ClanMainPage component.
+ * @param {React.ReactNode} props.children - The children components to be rendered inside the ClanMainPage.
+ * 
+ * @returns {JSX.Element} - The rendered ClanMainPage component.
+ *
+ * @example
+ * <ClanMainPage>
+ *   <SomeChildComponent />
+ * </ClanMainPage>
+ */
 
 const ClanMainPage = ({ children }: any) => {
     const { data, isLoading, error } = useGetClansQuery({});
@@ -18,7 +31,7 @@ const ClanMainPage = ({ children }: any) => {
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
                 <div className={cls.ClansViewMain}>{children}</div>
-                   {/* Loading the clan info component with the data we extracted from the query */}
+                 {/* this just temporary to show the clan info in the ClanMain page for now when all the components are ready we will remove this. */}
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : error ? (
