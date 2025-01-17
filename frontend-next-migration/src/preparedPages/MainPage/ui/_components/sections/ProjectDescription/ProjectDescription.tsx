@@ -5,17 +5,18 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import greenHaired from '@/shared/assets/images/heros/hannu-hodari/ahmatti_2_60.webp';
 import { Container } from '@/shared/ui/Container';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { Paragraph } from '@/shared/ui/Paragraph';
+import TextSlider from '@/shared/ui/TextSlider/TextSlider';
 import cls from './ProjectDescription.module.scss';
 
 export interface Props {
     className?: string;
     title: string;
     description: string;
+    descriptionArray?: string[];
 }
 
 export const ProjectDescription = (props: Props) => {
-    const { className = '', description, title } = props;
+    const { className = '', description, title, descriptionArray } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -44,9 +45,10 @@ export const ProjectDescription = (props: Props) => {
                             className={classNames(cls.Image, mods)}
                         />
                     )}
-                    <Paragraph
+
+                    <TextSlider
+                        textArray={descriptionArray}
                         className={cls.description}
-                        text={description}
                     />
                 </div>
             </Container>

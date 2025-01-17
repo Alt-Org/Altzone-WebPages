@@ -14,7 +14,7 @@ const RegisterForm = (props: RegisterFormProps) => {
     const { toLoginPage, extraContent } = props;
 
     const { t } = useClientTranslation('auth');
-    const { register, handleSubmit, onFormSubmit, errors } = useRegisterForm(toLoginPage);
+    const { register, handleSubmit, onFormSubmit, errors } = useRegisterForm();
 
     return (
         <BaseAuthForm
@@ -27,6 +27,7 @@ const RegisterForm = (props: RegisterFormProps) => {
                         label={t('username')}
                         inputProps={{ ...register('username'), required: true }}
                     />
+
                     <BaseAuthForm.InputField
                         key={'password'}
                         error={errors?.password?.message && t(`${errors.password.message}`)}

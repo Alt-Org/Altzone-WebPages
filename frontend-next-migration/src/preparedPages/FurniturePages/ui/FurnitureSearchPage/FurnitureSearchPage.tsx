@@ -8,10 +8,16 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './FurnitureSearchPage.module.scss';
 
-const FurnitureSearchPage = () => {
-    const { t } = useClientTranslation('furnituresearch');
+export interface FurnitureSearchPageProps {
+    header: string;
+    placeholder: string;
+    textBack: string;
+}
 
+const FurnitureSearchPage = (props: FurnitureSearchPageProps) => {
     const manager = new FurnitureManager();
+
+    const { header, placeholder, textBack } = props;
 
     const [input, setinput] = useState('');
 
@@ -28,16 +34,16 @@ const FurnitureSearchPage = () => {
     const list = manager.getPiecesByKeyword(input, useClientTranslation('furnitureinfo').t);
     return (
         <>
-            <h1 className={cls.title}>{t('results')}</h1>
+            <h1 className={cls.title}>{header}</h1>
             <div className={cls.Searchbar}>
                 <input
                     onInput={oninput}
                     ref={ref}
-                    placeholder={t('search-placeholder')}
+                    placeholder={placeholder}
                 />
             </div>
             <div className={cls.Back}>
-                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {t('text-back')}</AppLink>
+                <AppLink to={getRouteAllFurnitureSetsPage()}>&lt;- {textBack}</AppLink>
             </div>
             <FurnitureCardsContainer items={list} />
         </>

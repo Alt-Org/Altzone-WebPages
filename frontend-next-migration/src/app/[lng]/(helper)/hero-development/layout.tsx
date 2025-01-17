@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { HeroDevelopmentSidebar } from '@/features/NavigateHeroes';
 
@@ -15,7 +14,6 @@ export default function HeroDevelopmentLayout({ children }: Props) {
             }}
         >
             {children}
-            <FeedbackSideButton />
         </LayoutWithSidebars>
     );
 }

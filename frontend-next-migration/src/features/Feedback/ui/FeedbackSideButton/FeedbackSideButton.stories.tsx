@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
-import { FeedbackSideButton } from './FeedbackSideButton';
+import { default as FeedbackSideButton } from './FeedbackSideButton';
 
 export default {
     title: 'features/FeedbackByExternalSource/SideButton',
