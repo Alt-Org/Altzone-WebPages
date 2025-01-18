@@ -1,11 +1,13 @@
 'use client';
-import { faCaretDown, faExternalLink } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, KeyboardEvent, FocusEvent } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapperProps } from '../types';
 import cls from './DropdownWrapper.module.scss';
+import Image from 'next/image';
+import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 
 export const DropdownWrapper = (props: DropdownWrapperProps) => {
     const {
@@ -126,14 +128,20 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                 ])}
             >
                 {children}
-                <FontAwesomeIcon
-                    size={'2xs'}
-                    icon={faCaretDown}
+                <span
                     style={{
+                        display: 'inline-block',
                         transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                         transition: 'transform 0.4s ease-in-out',
                     }}
-                />
+                >
+                    <Image
+                        loading="eager"
+                        alt={'Chevron'}
+                        src={chevronDown}
+                        className={cls.chevronImage}
+                    />
+                </span>
             </div>
 
             {shouldRender && (

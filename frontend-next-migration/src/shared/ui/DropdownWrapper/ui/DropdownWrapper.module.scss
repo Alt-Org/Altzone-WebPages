@@ -1,13 +1,20 @@
 .DropdownWrapper {
   user-select: none;
 }
+
 .DropdownWrapper.contentAbsolute {
   position: relative;
+
   .dropdownContent {
     position: absolute;
     width: max-content;
   }
 }
+
+.chevronImage {
+  width: 16px;
+}
+
 .dropdownContent {
 
 
@@ -35,6 +42,7 @@
       opacity: 0;
       transform: translateY(-10px) scaleY(0);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -46,12 +54,14 @@
       opacity: 1;
       transform: translateY(0);
     }
+
     to {
       opacity: 0;
       transform: translateY(-10px) scaleY(0);
     }
   }
 }
+
 .childrenWrapper {
   display: flex;
   align-items: center;
@@ -70,7 +80,5 @@
 
 
 .active {
-  color: var(--secondary-color)!important;
+  color: var(--secondary-color) !important;
 }
-
-
