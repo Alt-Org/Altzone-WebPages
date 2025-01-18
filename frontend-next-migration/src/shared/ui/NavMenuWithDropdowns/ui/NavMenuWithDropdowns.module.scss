@@ -1,5 +1,8 @@
-.NavMenuWithDropdowns{
+.NavMenuWithDropdowns {
   width: 100%;
+  filter: drop-shadow(2px 4px var(--drop-shadows));
+  font: var(--font-m);
+  line-height: var(--font-line-l);
 
   @media (max-width: breakpoint(lg)) {
     width: 50%;
@@ -7,50 +10,51 @@
   }
 
   @media (max-width: breakpoint(sm)) {
-    width: 80%;
+    width: 90%;
     margin: auto;
   }
 }
 
-.topDropDown{
+.topDropDown {
   padding: 10px 0;
-  color: var(--primary-color);
-  font-size: 40px;
-  border-radius: var(--border-radius-custom);
+  color: var(--content-primary);
+  transition: transform 0.4s ease-in-out;
+  border-radius: var(--border-radius-figma);
+  border: 2px solid var(--drop-shadows);
   width: 100%;
-  background-color: black;
+  background-color: var(--base-card-background);
 
-  .topDropDownChildren{
-    justify-content: center;
-  }
-
-  .topDropDownContent{
+  .topDropDownChildren {
+    justify-content: space-between;
     padding-left: 15px;
     padding-right: 15px;
-    font-size: 26px;
+  }
+
+  .topDropDownContent {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
 }
 
-.subDropDown{
+.subDropDown {
   color: var(--inverted-primary-color);
-  font-size: 24px;
   justify-self: flex-start;
   width: 100%;
 
-  .subDropDownChildren{
+  .subDropDownChildren {
     justify-content: space-between;
   }
 
-  .subDropDownContent{
+  .subDropDownContent {
     padding-left: 15px;
     color: var(--primary-color);
 
-    & > *:hover{
+    &>*:hover {
       color: var(--secondary-color);
     }
 
-    &  a:hover{
+    & a:hover {
       color: var(--secondary-color);
     }
   }
