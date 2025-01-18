@@ -3,10 +3,11 @@ import {
     DropdownWrapper,
     DropDownElementASTextOrLink,
 } from '@/shared/ui/DropdownWrapperV2';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { usePathname } from 'next/navigation';
 
 export interface DropdownItem {
     title: string;
@@ -17,6 +18,7 @@ export interface DropdownItem {
 export interface NavMenuWithDropdownsProps {
     dropdownItems: (DropdownItem | ReactNode | DropDownElementASTextOrLink)[];
     openByDefault?: boolean;
+    titleAsActive?: boolean;
     title: string;
     className?: string;
 }
@@ -32,7 +34,36 @@ function isDropDownElementASTextOrLink(item: any): item is DropDownElementASText
 }
 
 function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
-    const { dropdownItems, className = '', title, openByDefault = false } = props;
+    const {
+        dropdownItems,
+        className = '',
+        title,
+        openByDefault = false,
+        titleAsActive = false,
+    } = props;
+
+    const [realPath, setRealPath] = useState('/');
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const pathSegments = pathname.split('/').filter(Boolean);
+        const newPath = `/${pathSegments.slice(1, 4).join('/')}`;
+        // console.log(newPath);
+        // console.log(pathSegments);
+        setRealPath(newPath);
+    }, [pathname]);
+
+    // Function to set title to active paths title, experimental
+    const getActiveTitle = (): string => {
+        for (const item of dropdownItems) {
+            if (isDropDownElementASTextOrLink(item) && item.link?.path === realPath) {
+                return item.elementText || '';
+            }
+        }
+        return title; // Default title if no active found
+    };
+
+    const dynamicTitle = titleAsActive ? getActiveTitle() : title;
 
     return (
         <div className={classNames(cls.NavMenuWithDropdowns, {}, [className])}>
@@ -71,7 +102,7 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                 childrenWrapperClassName={cls.topDropDownChildren}
                 contentClassName={cls.topDropDownContent}
             >
-                {title}
+                {dynamicTitle}
             </DropdownWrapper>
         </div>
     );
