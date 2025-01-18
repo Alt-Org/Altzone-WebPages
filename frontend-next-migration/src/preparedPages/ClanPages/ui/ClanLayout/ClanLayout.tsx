@@ -4,7 +4,7 @@ import {
     DropdownItem,
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
-} from '@/shared/ui/NavMenuWithDropdowns';
+} from '@/shared/ui/NavMenuWithDropdownsV2';
 
 type LayoutProps = {
     children: React.ReactNode;
