@@ -45,6 +45,7 @@ const ClanMainPage = ({ children }: any) => {
                             maxPlayers={clan.maxPlayers}
                             points={clan.points}
                             labels={clan.labels}
+                            id={clan._id}
                         />
                     ))
                 ) : (
