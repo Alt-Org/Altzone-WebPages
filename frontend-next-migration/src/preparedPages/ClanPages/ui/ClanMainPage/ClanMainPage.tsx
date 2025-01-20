@@ -42,7 +42,7 @@ const ClanMainPage = ({ children }: any) => {
                             name={clan.name}
                             ageRange={clan.ageRange}
                             playerCount={clan.playerCount}
-                            maxPlayers={clan.maxPlayers}
+                            // maxPlayers={clan.maxPlayers}
                             points={clan.points}
                             labels={clan.labels}
                             id={clan._id}
