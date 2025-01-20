@@ -1,131 +1,76 @@
 
 .clanInfo {
     padding: 1rem;
-    background: white;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
+    margin-top: 20px;
     background-color: #1a1a1a;
     border-radius: 0.75rem;
     width: 18rem;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+
 }
 
-.header {
+
+.points {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    p {
+        margin-top: 30px;
+        font-weight: 600;
+    }
 }
-
-.titleSection {
-    width: 100%;
-}
-
-.titleRow {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    // margin: 0;
-    margin-left: 40px;
-
-}
-
-.tag {
-    font-size: 1rem;
-    color: #d3d9e4;
-    // margin: 0;
-    margin-left: 10px;
-}
-
-.contentRow {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.logo {
-    width: 108px;
-    height: 90px;
-    object-fit: contain;
-
+.crown {
+    color: #fbbf24;
+    font-size: 3rem;
 }
 
 .labels {
+    display: grid;
+    grid-template-columns: 50px 50px;
+
+
+
+  }
+  .titleContainer {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    flex: 1;
+    justify-content: center;
+    align-items: center;
 }
 
-.label {
-    background-color: #f3f4f6;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    color: #4b5563;
+.title {
+    text-align: center;
 }
-
+.header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 2rem;
+}
 .footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
-    padding-top: 1rem;
     border-top: 1px solid #e5e7eb;
     background-color: rgb(239, 233, 233);
     color: black;
-    border-radius: 0.25rem;
-
+    margin-top: 1rem;
+    border-radius: 0.70rem;
+    height: 60px;
 }
 
 .members {
     color: black;
-    margin-left: 10px;
-    // color: #cad0dc;
     font-size: 0.975rem;
+    font-weight: bold;
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.points {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    
-    p {
-        margin: 0;
-        font-weight: 600;
-    }
+
+.play{
+    margin-left: 10px;
 }
-
-.crown {
-    color: #fbbf24;
-    font-size: 1.75rem;
-}
-// .footer {
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-    // background-color: white;
-    // color: black;
-//     padding: 0.5rem 0.75rem;
-    // border-radius: 0.25rem;
-//     width: 100%;
-
-//     .members {
-//         font-size: 0.975rem;
-//     }
-
-//     .points {
-//         display: flex;
-//         align-items: center;
-//         gap: 0.25rem;
-//         font-size: 0.975rem;
-
-//         .crown {
-//             color: #fbbf24;
-//             font-size: 1.75rem;
-//         }
-//     }
-// }
