@@ -1,0 +1,31 @@
+.Card {
+    // width:700px;
+    // height:204px;
+    width:540px;
+    height:154px;
+}
+
+.ModularCardBase.TitleImageCard {
+    display: flex;
+    border:1px solid black;
+    height: 100%;
+}
+.ModularCardContainer.TitleImageCard {
+    flex-basis: 50%;
+}
+.ModularCardBase.TitleImageCard div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    // padding:;
+}
+.ModularCardBody.TitleImageCard {
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    @media (max-width:breakpoint(xs)) {
+        -webkit-line-clamp: 2;
+    }
+}
