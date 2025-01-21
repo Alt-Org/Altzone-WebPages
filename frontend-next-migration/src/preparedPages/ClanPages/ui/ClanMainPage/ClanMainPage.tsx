@@ -1,5 +1,5 @@
 'use client';
-import ClanInfoTitle from './clanInfoTitle/clanInfoTitle';
+import ClanInfoTitle from './ClanInfoTitle/ClanInfoTitle';
 import { useGetClansQuery } from '@/entities/Clan';
 import { Container } from '@/shared/ui/Container';
 import cls from './ClanMainPage.module.scss';
