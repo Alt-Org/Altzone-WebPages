@@ -1,8 +1,8 @@
 'use client';
-import ClanInfoTitle from './ClanInfoTitle/ClanInfoTitle';
 import { useGetClansQuery } from '@/entities/Clan';
 import { Container } from '@/shared/ui/Container';
 import cls from './ClanMainPage.module.scss';
+import ClanInfoTile from './clanInfoTile/ClanInfoTile';
 /**
  * ClanMainPage component for rendering the main page with clan information.
  *
@@ -23,7 +23,6 @@ const ClanMainPage = ({ children }: any) => {
     // Extracting the clans array from the data object.
     const clansArray = data?.data?.Clan || [];
 
-
     return (
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
@@ -35,12 +34,11 @@ const ClanMainPage = ({ children }: any) => {
                     <p>Error loading clans</p>
                 ) : clansArray && clansArray.length > 0 ? (
                     clansArray.map((clan: any) => (
-                        <ClanInfoTitle
+                        <ClanInfoTile
                             key={clan._id}
                             name={clan.name}
                             ageRange={clan.ageRange}
                             playerCount={clan.playerCount}
-                            // maxPlayers={clan.maxPlayers}
                             points={clan.points}
                             labels={clan.labels}
                             id={clan._id}
