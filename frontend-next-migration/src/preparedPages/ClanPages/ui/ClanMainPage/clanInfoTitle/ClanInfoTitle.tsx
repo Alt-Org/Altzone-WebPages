@@ -1,7 +1,8 @@
 'use client';
 import Image from 'next/image';
 import clanLogo from '@/shared/assets/images/clanLogos/temp-clanlogo.png';
-import styles from './ClanInfoTitle.module.scss';
+import label from '@/shared/assets/images/labels.svg';
+import cls from './ClanInfoTitle.module.scss';
 import { useRouter } from 'next/navigation';
 
 interface ClanInfoTitleProps {
@@ -24,7 +25,7 @@ interface ClanInfoTitleProps {
  * @param {number} props.points - The points scored by the clan.
  * @param {string[]} props.labels - The labels associated with the clan.
  *
- * @returns {JSX.Element} The ClanInfoTitle component.
+ * @returns {JSX.Element} The clanInfoTitle component.
  */
 const ClanInfoTitle = ({ id, name, ageRange, playerCount, points, labels }: ClanInfoTitleProps) => {
     const router = useRouter();
@@ -34,35 +35,35 @@ const ClanInfoTitle = ({ id, name, ageRange, playerCount, points, labels }: Clan
     };
     return (
         <div
-            className={styles.clanInfo}
+            className={cls.clanInfo}
             onClick={handleClanClick}
             role="button"
         >
-            <div className={styles.titleContainer}>
-                <h1 className={styles.title}>{name}</h1>
+            <div className={cls.titleContainer}>
+                <h1 className={cls.title}>{name}</h1>
             </div>
-            <div className={styles.header}>
+            <div className={cls.header}>
                 <Image
                     src={clanLogo}
                     alt={'clan logo'}
-                    className={styles.logo}
+                    className={cls.logo}
                 />
-                <div className={styles.labels}>
-                    <div>18+</div>
-                    <div>18+</div>
-                    <div>18+</div>
-                    <div>18+</div>
+                <div className={cls.labels}>
+                    <div><Image src={label} alt={'labels'} className={cls.label}/></div>
+                    <div><Image src={label} alt={'labels'} className={cls.label}/></div>
+                    <div><Image src={label} alt={'labels'} className={cls.label}/></div>
+                    <div><Image src={label} alt={'labels'} className={cls.label}/></div>
                 </div>
             </div>
-            <div className={styles.footer}>
-                <div className={styles.members}>
+            <div className={cls.footer}>
+                <div className={cls.members}>
                     Members
-                    <div className={styles.play}>{playerCount} /10</div>
+                    <div className={cls.play}>{playerCount} /10</div>
                 </div>
 
-                <div className={styles.points}>
+                <div className={cls.points}>
                     <p>{points}</p>
-                    <span className={styles.crown}>♛</span>
+                    <span className={cls.crown}>♛</span>
                 </div>
             </div>
         </div>
