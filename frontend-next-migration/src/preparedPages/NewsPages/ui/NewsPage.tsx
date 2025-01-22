@@ -73,7 +73,6 @@ const NewsPage = () => {
                 </Container>
                 <LayoutWithSidebars
                     leftTopSidebar={{
-                        collapsed: false,
                         component:
                             isDesktopSize || isWidescreenSize ? (
                                 // Categories-section (desktop)
