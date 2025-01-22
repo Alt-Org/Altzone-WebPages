@@ -27,6 +27,7 @@ export enum AppRoutesLinks {
     NEWS = 'NEWS',
     NEWSELEMENT = 'NEWSELEMENT',
     MEMBERS = 'MEMBERS',
+    TEACHERS = 'TEACHERS',
 
     HEROES = 'HEROES',
     HEROES_ONE = 'HEROES_ONE',
@@ -83,6 +84,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.NEWSELEMENT]: news + '/:id',
     [AppRoutesLinks.FORUM]: '/forum',
     [AppRoutesLinks.MEMBERS]: '/team',
+    [AppRoutesLinks.TEACHERS]: '/teachers',
     [AppRoutesLinks.NOT_FOUND]: '/404',
     [AppRoutesLinks.COMING]: '/coming',
 
@@ -92,6 +94,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
 export const getRouteMainPage = () => '/';
 export const getRouteTeamPage = () => '/team';
+export const getRouteTeachersPage = () => '/teachers';
 
 export const getRouteAuthPage = () => '/auth';
 export const getRouteLogoutPage = () => '/auth/logout';
