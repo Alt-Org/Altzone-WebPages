@@ -106,6 +106,7 @@ export const getRouteOneNewsPage = (id: string) => `/news/${id}`;
 export const getRouteAllHeroesPage = () => '/heroes';
 export const getRouteOneHeroPage = (slug: string) => `/heroes/${slug}`;
 export const getRouteHeroDevPage = () => '/hero-development';
+export const getRouteOneHeroDevPage = (slug: string) => `/hero-development/${slug}`;
 
 export const getRouteComicsPage = () => '/comics';
 export const getRouteGalleryPage = () => '/picture-galleries';

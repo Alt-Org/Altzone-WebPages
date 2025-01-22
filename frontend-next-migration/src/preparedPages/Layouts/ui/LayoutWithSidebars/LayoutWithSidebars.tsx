@@ -10,7 +10,6 @@ interface SidebarConfig {
     component: ReactNode;
     hideOnMobile?: boolean;
     hideOnDesktop?: boolean;
-    collapsed?: boolean;
 }
 
 interface DesktopLeftSidebarLayoutPropsBase {
@@ -37,7 +36,6 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
     const bothSidebarsVisibleOnDesktop =
         !leftTopSidebar?.hideOnDesktop && !rightBottomSidebar?.hideOnDesktop;
-    const collapsed = leftTopSidebar?.collapsed;
     const shouldBeFluid = hasBothSidebars && bothSidebarsVisibleOnDesktop;
 
     const leftTopSidebarMods = {
@@ -60,9 +58,9 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
             {leftTopSidebar && (
                 <aside
                     style={{
-                        minWidth: collapsed ? '1em' : '220px',
-                        flexBasis: collapsed ? '1em' : '20%',
-                        overflowX: collapsed ? 'hidden' : 'auto',
+                        minWidth: 'fit-content',
+                        flexBasis: 'fit-content',
+                        overflowX: 'hidden',
                         top: !isTopIndentCustom ? '50px' : undefined,
                     }}
                     className={classNames(cls.sidebar, leftTopSidebarMods, [cls.leftTopSidebar])}
