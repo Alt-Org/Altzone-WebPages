@@ -61,6 +61,39 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         className: 'customClass',
+        theme: ModularCardTheme.NEWSIMAGE,
+        children: [
+            <ModularCardContent
+                theme={ModularCardTheme.NEWSIMAGE}
+                key={0}
+            >
+                <ModularCardContainer theme={ModularCardTheme.NEWSIMAGE}>
+                    <ModularCardTitle theme={ModularCardTheme.NEWSIMAGE}>Otsikko</ModularCardTitle>
+                    <ModularCardBody theme={ModularCardTheme.NEWSIMAGE}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni assumenda,
+                        perspiciatis quidem neque minus, aperiam a reiciendis nesciunt ea
+                        perferendis quisquam explicabo reprehenderit consequatur? Eligendi vel
+                        tenetur molestias corporis! Ab! molestias corporis! Ab! molestias corporis!
+                        Ab! molestias corporis! Ab! molestias corporis! Ab! explicabo reprehenderit
+                        consequatur? Eligendi vel tenetur molestias corporis! Ab! molestias
+                        corporis! Ab! molestias corporis! Ab! molestias corporis! Ab! molestias
+                        corporis! Ab!
+                    </ModularCardBody>
+                    <ModularCardFooter theme={ModularCardTheme.NEWSIMAGE}>
+                        22.1.2025 11.27
+                    </ModularCardFooter>
+                </ModularCardContainer>
+                <ModularCardContainer theme={ModularCardTheme.NEWSIMAGE}>
+                    <p>s</p>
+                </ModularCardContainer>
+            </ModularCardContent>,
+        ],
+    },
+};
+
+export const TitleImage: Story = {
+    args: {
+        className: 'customClass',
         theme: ModularCardTheme.TITLEIMAGE,
         children: [
             <ModularCardContent
@@ -69,15 +102,6 @@ export const Default: Story = {
             >
                 <ModularCardContainer theme={ModularCardTheme.TITLEIMAGE}>
                     <ModularCardTitle theme={ModularCardTheme.TITLEIMAGE}>Otsikko</ModularCardTitle>
-                    <ModularCardBody theme={ModularCardTheme.TITLEIMAGE}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni assumenda,
-                        perspiciatis quidem neque minus, aperiam a reiciendis nesciunt ea
-                        perferendis quisquam explicabo reprehenderit consequatur? Eligendi vel
-                        tenetur molestias corporis! Ab!
-                    </ModularCardBody>
-                    <ModularCardFooter theme={ModularCardTheme.TITLEIMAGE}>
-                        Footer
-                    </ModularCardFooter>
                 </ModularCardContainer>
                 <ModularCardContainer theme={ModularCardTheme.TITLEIMAGE}>
                     <p>s</p>

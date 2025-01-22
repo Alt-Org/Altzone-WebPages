@@ -1,14 +1,77 @@
 .Card {
-    // width:700px;
+    width:50%;
     // height:204px;
-    width:540px;
-    height:154px;
+    // width:540px;
+    // height:154px;
+    border:1px solid black;
+    border-radius: var(--border-radius-custom);
+    margin:30px;
+    @media (max-width:breakpoint(lg)) {
+        width:70%; 
+    }
 }
+
+.ModularCardBase.NewsImageCard {
+    display: flex;
+    height: 100%;
+    
+}
+.ModularCardContainer.NewsImageCard {
+    flex-basis: 50%;
+}
+.ModularCardBase.NewsImageCard div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-left:.5em;
+    padding-right:.5em;
+    // padding:;
+}
+.ModularCardTitle.NewsImageCard {
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-top: .3em;
+    margin-bottom: .5em;
+    // @media (max-width:breakpoint(md)) {
+    //     margin-top: .2em;
+    //     margin-bottom: .3em;
+    // }
+}
+.ModularCardBody.NewsImageCard {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp:5;
+    @media (max-width:breakpoint(lg)) {
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+    @media (max-width:breakpoint(xs)) {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+    
+}
+.ModularCardFooter.NewsImageCard {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left:0;
+    padding-right:0;
+    margin-top: .5em;
+    margin-bottom: .3em;
+}
+
+
+
+
 
 .ModularCardBase.TitleImageCard {
     display: flex;
-    border:1px solid black;
     height: 100%;
+    
 }
 .ModularCardContainer.TitleImageCard {
     flex-basis: 50%;
@@ -17,17 +80,43 @@
     display: flex;
     flex-direction: column;
     align-content: center;
+    padding-left:.5em;
+    padding-right:.5em;
     // padding:;
 }
+.ModularCardTitle.TitleImageCard {
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-top: .3em;
+    margin-bottom: .5em;
+    // @media (max-width:breakpoint(md)) {
+    //     margin-top: .2em;
+    //     margin-bottom: .3em;
+    // }
+}
 .ModularCardBody.TitleImageCard {
-    flex-grow: 1;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
     line-clamp:5;
+    @media (max-width:breakpoint(lg)) {
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
     @media (max-width:breakpoint(xs)) {
         -webkit-line-clamp: 2;
         line-clamp: 2;
     }
+    
+}
+.ModularCardFooter.TitleImageCard {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left:0;
+    padding-right:0;
+    margin-top: .5em;
+    margin-bottom: .3em;
 }
