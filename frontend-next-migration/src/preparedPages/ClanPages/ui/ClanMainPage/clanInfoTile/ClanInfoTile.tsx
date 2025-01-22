@@ -12,10 +12,11 @@ interface ClanInfoTileProps {
     playerCount: number;
     points: number;
     labels: string[];
+    logo: string;
 }
 
 /**
- * ClanInfoTitle component displays information about a clan and navigates to the clan's page when clicked.
+ * ClanInfoTile component displays information about a clan and navigates to the clan's page when clicked.
  *
  * @param {Object} props - The properties object.
  * @param {string} props.id - The unique identifier of the clan.
@@ -24,12 +25,19 @@ interface ClanInfoTileProps {
  * @param {number} props.playerCount - The number of players in the clan.
  * @param {number} props.points - The points scored by the clan.
  * @param {string[]} props.labels - The labels associated with the clan.
- *
+ * @param {string} props.logo - The logo of the clan.
  * @returns {JSX.Element} The ClanInfoTile component.
  */
-const ClanInfoTile = ({ id, name, ageRange, playerCount, points, labels }: ClanInfoTileProps) => {
+const ClanInfoTile = ({
+    id,
+    name,
+    ageRange,
+    playerCount,
+    points,
+    labels,
+    logo,
+}: ClanInfoTileProps) => {
     const router = useRouter();
-    // when clan is clicked it redirects to that particular clan information
     const handleClanClick = () => {
         router.push(`/clans/${id}`);
     };
@@ -44,7 +52,7 @@ const ClanInfoTile = ({ id, name, ageRange, playerCount, points, labels }: ClanI
             </div>
             <div className={cls.header}>
                 <Image
-                    src={clanLogo}
+                    src={logo || clanLogo}
                     alt={'clan logo'}
                     className={cls.logo}
                 />
