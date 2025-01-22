@@ -1,4 +1,5 @@
 import { FC, memo, ReactNode } from 'react';
+import Image, { StaticImageData } from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './ModularCard.module.scss';
@@ -137,6 +138,27 @@ const ModularCardFooter = memo((props: CardProps) => {
 });
 
 ModularCardFooter.displayName = 'ModularCardFooter';
+
+const ModularCardImage = memo(
+    (props: {
+        className: string;
+        theme: ModularCardTheme;
+        children: ReactNode;
+        alt: string;
+        src: StaticImageData | string;
+    }) => {
+        const { className = '', theme = ModularCardTheme.PRIMARY, children, alt, src } = props;
+        return (
+            <Image
+                className={classNames(cls.ModularCardFooter, {}, [className, cls[theme]])}
+                src={src}
+                alt={alt}
+            />
+        );
+    },
+);
+
+ModularCardImage.displayName = 'ModularCardImage';
 
 /* 
 a
