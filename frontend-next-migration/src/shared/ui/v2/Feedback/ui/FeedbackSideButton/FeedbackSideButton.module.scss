@@ -1,0 +1,39 @@
+.SideButton{
+  //width: fit-content;
+
+
+  height: fit-content;
+  min-height: 100px;
+  position: fixed;
+  bottom: 50%;
+
+
+  -webkit-writing-mode: vertical-lr;
+  writing-mode: vertical-lr;
+
+
+
+  right: 10px;
+  background-color: var(--inverted-bg-color)!important;
+  z-index: var(--sideButton-z-index) !important;
+  font-family: var(--font-family-texts) !important;
+  line-height: 1 !important;
+  transform: rotate(180deg);
+  padding: 12px !important;
+
+
+}
+.FeedbackCardContainer {
+  display: flex;
+  position: fixed;
+  bottom: 20%;
+  right: calc(60px);
+  z-index: calc(var(--sideButton-z-index) + 1);
+}
+
+.feedbackForm.hidden {
+  display: none;
+}
+
+
+
