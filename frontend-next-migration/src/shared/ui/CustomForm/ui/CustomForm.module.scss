@@ -31,11 +31,10 @@
   }
 
   input {
-    height: 50px;
     border-radius: var(--border-radius-custom);
     outline: none;
     border: none;
-    padding: 10px;
+    width: 100%;
   }
 
   p {
