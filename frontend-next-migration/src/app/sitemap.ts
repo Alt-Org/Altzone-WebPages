@@ -20,13 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: 'https://altzone.fi/fi/news',
             lastModified: new Date(),
             changeFrequency: 'daily',
-            priority: 1.0,
+            priority: 0.9,
         },
         {
             url: 'https://altzone.fi/fi/heroes',
             lastModified: new Date(),
             changeFrequency: 'monthly',
-            priority: 0.5,
+            priority: 0.8,
         },
         {
             url: 'https://altzone.fi/fi/hero-development',
@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: 'https://altzone.fi/fi/clans',
             lastModified: new Date(),
             changeFrequency: 'daily',
-            priority: 0.9,
+            priority: 0.8,
         },
         {
             url: 'https://altzone.fi/fi/picture-galleries',
@@ -55,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: 'https://altzone.fi/fi/furniture',
             lastModified: new Date(),
-            changeFrequency: 'monthly',
+            changeFrequency: 'weekly',
             priority: 0.8,
         },
         {
