@@ -10,6 +10,7 @@ interface SidebarConfig {
     component: ReactNode;
     hideOnMobile?: boolean;
     hideOnDesktop?: boolean;
+    collapsed?: boolean;
 }
 
 interface DesktopLeftSidebarLayoutPropsBase {
@@ -26,6 +27,7 @@ type RequireAtLeastOneSidebar<T> =
 
 type DesktopLeftSidebarLayoutProps = RequireAtLeastOneSidebar<DesktopLeftSidebarLayoutPropsBase>;
 
+// eslint-disable-next-line complexity
 const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const { leftTopSidebar, rightBottomSidebar, children, className = '' } = props;
 
@@ -37,7 +39,7 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const bothSidebarsVisibleOnDesktop =
         !leftTopSidebar?.hideOnDesktop && !rightBottomSidebar?.hideOnDesktop;
     const shouldBeFluid = hasBothSidebars && bothSidebarsVisibleOnDesktop;
-
+    const collapsed = leftTopSidebar?.collapsed;
     const leftTopSidebarMods = {
         [cls.hideOnMobile]: leftTopSidebar?.hideOnMobile,
         [cls.hideOnDesktop]: leftTopSidebar?.hideOnDesktop,
@@ -58,9 +60,9 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
             {leftTopSidebar && (
                 <aside
                     style={{
-                        minWidth: 'fit-content',
-                        flexBasis: 'fit-content',
-                        overflowX: 'hidden',
+                        minWidth: collapsed ? '1em' : '220px',
+                        flexBasis: collapsed ? '1em' : '20%',
+                        overflowX: collapsed ? 'hidden' : 'auto',
                         top: !isTopIndentCustom ? '50px' : undefined,
                     }}
                     className={classNames(cls.sidebar, leftTopSidebarMods, [cls.leftTopSidebar])}
