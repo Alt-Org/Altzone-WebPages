@@ -55,13 +55,13 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://altzone.fi/fi/join-us</loc>
+    <loc>https://altzone.fi/en/join-us</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://altzone.fi/fi/team</loc>
+    <loc>https://altzone.fi/en/team</loc>
     <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
