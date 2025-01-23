@@ -1,0 +1,33 @@
+.Arrow {
+    display: inline-block;
+    position: absolute;
+    top: 45%;
+    color: var(--secondary-color);
+    font-weight :bolder;
+    font-size:1.5em;
+    right: .3em;
+    cursor: pointer;
+}
+
+.Box {
+    width: 100%;
+    position: relative;
+    background: black;
+    border-radius: 10px;
+}
+
+.Category {
+    padding-left: 0.5em;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.Text {
+    padding: 1em;
+    font-size: 26px;
+
+    h2 {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+}
