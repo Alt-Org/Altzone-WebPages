@@ -33,6 +33,9 @@ $breakpoint-lg:1023px;
         flex: unset;
         margin-right: unset;
     }
+    @media (min-width: calc(breakpoint(xxl) + 130px)) {
+        margin-right: unset;
+    }
 }
 // Tabs-section
 .Tabs {
@@ -71,6 +74,9 @@ $breakpoint-lg:1023px;
         margin-left:auto;
         margin-right:auto;
         max-width: 640px;
+    }
+    @media (min-width: calc(breakpoint(xxl) + 130px)) {
+        margin-right: unset;
     }
 }
 .NewsArticle { // Update these when working with the real cards
