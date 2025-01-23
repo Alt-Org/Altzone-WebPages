@@ -8,7 +8,7 @@ import {
 } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-import cls from './GalleyNavMenuAsSidebar.module.scss';
+import cls from './GalleryNavMenuAsSidebar.module.scss';
 
 export interface SidebarProps {
     sidebarVisible: boolean;
