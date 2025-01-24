@@ -27,20 +27,18 @@ const PictureGalleryPage = (props: Props) => {
     const { isMobileSize, isTabletSize } = useSizes();
     const params = useParams();
     const lng = params.lng as string;
-    const category = params.category as string;
     const language = getLanguageCode(lng);
     const { photoObjects, isLoading } = useGetDirectusGalleryImages(language);
     const [filteredImages, setFilteredImages] = useState<PhotoObject[]>(photoObjects);
     const allCategory = lng === 'en' ? 'all' : 'kaikki';
-    const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const [selectedCategory, setSelectedCategory] = useState<string>(allCategory);
 
     const isTouchDevice = isTabletSize || isMobileSize;
 
     useEffect(() => {
-        if (!category || selectedCategory === allCategory) {
+        if (selectedCategory === allCategory) {
             setFilteredImages(photoObjects);
         } else {
-            setSelectedCategory(category);
             setFilteredImages(
                 photoObjects.filter(
                     (photo) =>
@@ -51,7 +49,7 @@ const PictureGalleryPage = (props: Props) => {
         }
     }, [photoObjects, selectedCategory]);
 
-    if (isLoading) <p>Loading...</p>;
+    if (isLoading) return <p>Loading...</p>;
 
     return (
         <LayoutWithSidebars
@@ -61,7 +59,11 @@ const PictureGalleryPage = (props: Props) => {
                         openByDefault={true}
                         language={language}
                         allCategory={allCategory}
-                        className={cls.Dropdown}
+                        onClickCallback={(category) => {
+                            setSelectedCategory(category);
+                        }}
+                        selectedCategory={selectedCategory}
+                        isTouchDevice={false}
                     />
                 ),
                 hideOnMobile: true,
@@ -77,7 +79,11 @@ const PictureGalleryPage = (props: Props) => {
                             openByDefault={true}
                             language={language}
                             allCategory={allCategory}
-                            className={cls.Dropdown}
+                            onClickCallback={(category) => {
+                                setSelectedCategory(category);
+                            }}
+                            selectedCategory={selectedCategory}
+                            isTouchDevice={true}
                         />
                     )}
 
