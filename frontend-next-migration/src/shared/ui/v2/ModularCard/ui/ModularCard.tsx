@@ -143,14 +143,14 @@ const ModularCardImage = memo(
     (props: {
         className: string;
         theme: ModularCardTheme;
-        children: ReactNode;
+        // children: ReactNode;
         alt: string;
         src: StaticImageData | string;
     }) => {
-        const { className = '', theme = ModularCardTheme.PRIMARY, children, alt, src } = props;
+        const { className = '', theme = ModularCardTheme.PRIMARY, alt, src } = props;
         return (
             <Image
-                className={classNames(cls.ModularCardFooter, {}, [className, cls[theme]])}
+                className={classNames(cls.ModularCardImage, {}, [className, cls[theme]])}
                 src={src}
                 alt={alt}
             />
@@ -176,6 +176,7 @@ export {
     ModularCardTitle,
     ModularCardBody,
     ModularCardFooter,
+    ModularCardImage,
 };
 /**
  * Card.Title component for the Card.

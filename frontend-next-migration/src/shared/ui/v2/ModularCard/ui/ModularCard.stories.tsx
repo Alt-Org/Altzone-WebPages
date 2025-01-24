@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-//import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
     ModularCard,
     ModularCardTheme,
@@ -8,6 +8,7 @@ import {
     ModularCardTitle,
     ModularCardBody,
     ModularCardFooter,
+    ModularCardImage,
 } from './ModularCard'; // Import your component
 
 const meta = {
@@ -84,7 +85,12 @@ export const Default: Story = {
                     </ModularCardFooter>
                 </ModularCardContainer>
                 <ModularCardContainer theme={ModularCardTheme.NEWSIMAGE}>
-                    <p>s</p>
+                    <ModularCardImage
+                        className=""
+                        theme={ModularCardTheme.NEWSIMAGE}
+                        src={hannu}
+                        alt="hannu"
+                    />
                 </ModularCardContainer>
             </ModularCardContent>,
         ],
