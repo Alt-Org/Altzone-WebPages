@@ -22,13 +22,13 @@
 }
 
 .Category {
-    padding-left: 0.5em;
+    padding-left: 1em;
     width: fit-content;
     cursor: pointer;
 }
 
 .Text {
-    padding: 1em;
+    padding: 1em 0.5em;
     font-size: 26px;
     overflow: hidden;
     transition: opacity 0.3s ease-in-out;
