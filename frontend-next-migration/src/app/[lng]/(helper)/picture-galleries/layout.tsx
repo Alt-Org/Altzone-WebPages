@@ -9,6 +9,7 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
+                collapsed: !sidebarVisible,
                 component: (
                     <GalleryNavMenuAsSidebar
                         sidebarVisible={sidebarVisible}
