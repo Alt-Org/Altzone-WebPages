@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { default as FeedbackCard } from '../FeedbackCard/FeedbackCard';
+import { FeedbackCard } from '@/shared/ui/v2/Feedback/index';
 import cls from './FeedbackSideButton.module.scss';
 
 type Props = {
