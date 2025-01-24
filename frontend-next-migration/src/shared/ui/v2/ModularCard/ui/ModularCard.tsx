@@ -160,6 +160,15 @@ const ModularCardImage = memo(
 
 ModularCardImage.displayName = 'ModularCardImage';
 
+const ModularCardImageTriangle = memo((props: any) => {
+    const { className = '', theme = ModularCardTheme.PRIMARY } = props;
+    return (
+        <span className={classNames(cls.ModularCardImageTriangle, {}, [className, cls[theme]])} />
+    );
+});
+
+ModularCardImageTriangle.displayName = 'ModularCardImageTriangle';
+
 /* 
 a
 a
@@ -177,6 +186,7 @@ export {
     ModularCardBody,
     ModularCardFooter,
     ModularCardImage,
+    ModularCardImageTriangle,
 };
 /**
  * Card.Title component for the Card.

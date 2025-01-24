@@ -9,6 +9,7 @@ import {
     ModularCardBody,
     ModularCardFooter,
     ModularCardImage,
+    ModularCardImageTriangle,
 } from './ModularCard'; // Import your component
 
 const meta = {
@@ -91,6 +92,7 @@ export const Default: Story = {
                         src={hannu}
                         alt="hannu"
                     />
+                    <ModularCardImageTriangle theme={ModularCardTheme.NEWSIMAGE} />
                 </ModularCardContainer>
             </ModularCardContent>,
         ],
