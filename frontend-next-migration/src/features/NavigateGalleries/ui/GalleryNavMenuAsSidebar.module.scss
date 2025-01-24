@@ -14,6 +14,11 @@
     position: relative;
     background: black;
     border-radius: 10px;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-out;
+
+    &.Hidden {
+        width: 0;
+    }
 }
 
 .Category {
@@ -25,9 +30,15 @@
 .Text {
     padding: 1em;
     font-size: 26px;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
 
     h2 {
         margin-bottom: 10px;
         text-align: center;
+    }
+
+    &.Hidden {
+        opacity: 0;
     }
 }
