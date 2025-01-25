@@ -1,0 +1,116 @@
+.TextSlider {
+    padding: 2%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(25, 25, 25, 0.9));
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    height: 200px;
+    justify-content: center;
+    margin: 2%;
+    color: white;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    p {
+        margin: 0.5rem 30px;
+        font-size: 1.3rem;
+        text-align: justify;
+        line-height: 1.6;
+        font-weight: bold;
+        user-select: none;
+    }
+}
+
+.TextSlider:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.btnLeft {
+    left: 0;
+}
+
+.btnRight {
+    right: 0;
+}
+
+.btnLeft,
+.btnRight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 2;
+    transition:
+        background-color 0.3s,
+        box-shadow 0.3s;
+    user-select: none;
+}
+
+.btnLeft:hover,
+.btnRight:hover {
+    background-color: #444;
+    box-shadow: 0 0 15px #ffa101;
+}
+
+@media (max-width: 768px) {
+    .TextSlider {
+        height: 220px;
+        padding: 4%;
+        margin: 1%;
+    }
+
+    .TextSlider p {
+        margin: 0.5rem 15px;
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 480px) {
+        .TextSlider {
+            padding: 6%;
+
+            .TextSlider p {
+                font-size: 0.9rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .TextSlider {
+        height: 220px;
+        padding: 3%;
+        margin: 1.5%;
+        transition: none;
+    }
+
+    .TextSlider:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .TextSlider p {
+        font-size: 1.1rem;
+        margin: 0.5rem 20px;
+        line-height: 1.5;
+    }
+
+    .btnLeft:hover,
+    .btnRight:hover {
+        background-color: inherit;
+        box-shadow: none;
+    }
+}

@@ -1,5 +1,4 @@
 import { SectionHeroesBlocks } from '@/widgets/SectionHeroesBlocks';
-import { FeedbackSideButton } from '@/features/FeedbackByExternalSource';
 import { Container } from '@/shared/ui/Container';
 import cls from './HeroesPage.module.scss';
 
@@ -16,7 +15,6 @@ const HeroesPage = (props: Props) => {
             fluid={true}
             className={cls.main}
         >
-            <FeedbackSideButton disableMobile={true} />
             <SectionHeroesBlocks title={SectionHeroesBlocksTitle} />
         </Container>
     );

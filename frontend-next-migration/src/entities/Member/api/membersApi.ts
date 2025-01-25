@@ -23,6 +23,7 @@ const membersApi = directusApi.injectEndpoints({
                                 'translations.*',
                                 'logo.*',
                             ],
+                            limit: 500,
                         }),
                     );
                     return { data: members as Member[] };

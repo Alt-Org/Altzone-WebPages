@@ -2,5 +2,19 @@
   "head-title": "Hero development",
   "head-description": "See how the heroes are developing.",
   "title": "Hero Development",
-  "text": "Coming soon..."
+  "text": "This is a generic tool for exploring levels and pricing. It is not associated with the player's character profiles, except for the starting levels of the characters, which are the same for everyone.",
+  "veryStrongSkill": "A very strong skill",
+  "strongSkill": "A strong skill",
+  "fairlyStrongSkill": "A fairly strong skill",
+  "intermediate": "Intermediate",
+  "ratherWeakSkill": "A rather weak skill",
+  "weakSkill": "A weak skill",
+  "veryWeakSkill": "A very weak skill",
+  "rarityClass": "Rarity Class",
+  "upgradePotentialAfterUpdate": "Upgrade potential after update",
+  "level": "Level",
+  "stepsPerLevel": "Steps/Level",
+  "stepsPrice": "Step Price",
+  "price": "Price",
+  "fatePriestCannotBeDeveloped": "Fate-priest cannot be developed."
 }

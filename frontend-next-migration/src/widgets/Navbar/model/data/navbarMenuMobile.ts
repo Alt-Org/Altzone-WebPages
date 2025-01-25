@@ -8,6 +8,7 @@ import {
     getRouteAllNewsPage,
     getRouteTeamPage,
     getRouteLoginPage,
+    getRouteTeachersPage,
 } from '@/shared/appLinks/RoutePaths';
 import img from '@/shared/assets/images/altLogo.png';
 
@@ -19,6 +20,7 @@ navbarBuilder.addDropDown('gallery', false, dropdowns.gallery);
 navbarBuilder.addDropDown('gameart', false, dropdowns.gameart);
 navbarBuilder.addDropDown('community', false, dropdowns.community);
 navbarBuilder.addLink('team', getRouteTeamPage(), false);
+navbarBuilder.addLink('teachers', getRouteTeachersPage(), false);
 navbarBuilder.addLogo('main', img as unknown as string, getRouteMainPage());
 navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());

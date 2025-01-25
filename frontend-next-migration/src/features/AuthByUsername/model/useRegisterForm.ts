@@ -1,66 +1,93 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { IUserRegisterDto, useRegisterMutation } from '@/entities/Auth';
+import {
+    IUserRegisterDto,
+    useRegisterMutation,
+    useLoginMutation,
+    authUserActions,
+} from '@/entities/Auth';
 import { useClientTranslation } from '@/shared/i18n';
 import { ValidationRegisterSchema } from '../validations';
+import { useDispatch } from 'react-redux';
+import { profileActions } from '@/entities/Profile';
+import { getJwtExpTimeStamp } from '@/shared/lib/getJwtExpTimeStamp';
+import { useRouter } from 'next/navigation';
 
-export const useRegisterForm = (toLoginPage: string) => {
+export const useRegisterForm = () => {
     const { t } = useClientTranslation('auth');
+    const dispatch = useDispatch();
+    const router = useRouter();
 
     const {
         register,
         handleSubmit,
         formState: { errors },
+        getValues,
     } = useForm({
         resolver: yupResolver(ValidationRegisterSchema),
     });
 
-    const [
-        regist,
-        {
-            data,
-            isLoading,
-            // isError,
-            error,
-        },
-    ] = useRegisterMutation();
+    const [regist, { isLoading: isRegisterLoading }] = useRegisterMutation();
+    const [login, { isLoading: isLoginLoading }] = useLoginMutation();
 
-    async function onFormSubmit(fieldValues: FieldValues) {
-        const ObjectToBeSent: IUserRegisterDto = {
-            username: fieldValues.username,
-            password: fieldValues.password,
-            repeatPassword: fieldValues.password,
-            Player: {
-                uniqueIdentifier: fieldValues.username,
-                backpackCapacity: 100,
-                name: fieldValues.username,
-                above13: fieldValues.ageConsent,
-                parentalAuth: false,
-            },
-        };
-        await regist(ObjectToBeSent);
-    }
+    const onFormSubmit = async (fieldValues: FieldValues) => {
+        try {
+            const registerPayload: IUserRegisterDto = {
+                username: fieldValues.username,
+                password: fieldValues.password,
+                repeatPassword: fieldValues.password,
+                Player: {
+                    uniqueIdentifier: fieldValues.username,
+                    backpackCapacity: 100,
+                    name: fieldValues.username,
+                    above13: fieldValues.ageConsent,
+                    parentalAuth: false,
+                },
+            };
+            // Register the user
+            await regist(registerPayload).unwrap();
 
-    useEffect(() => {
-        if (data) {
+            // auto-login
+            const loginResponse = await login({
+                username: fieldValues.username,
+                password: fieldValues.password,
+            }).unwrap();
+
             toast.success(t('account-created'));
-            return;
-        }
 
-        if (error) {
-            // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
-            toast.error(error?.data?.message[0] ?? error?.data?.message);
-            return;
-        }
-    }, [isLoading, data, error, t]);
+            dispatch(
+                authUserActions.setAccessTokenInfo({
+                    accessToken: loginResponse.accessToken,
+                    accessTokenExpiresAt: getJwtExpTimeStamp(loginResponse.accessToken),
+                }),
+            );
 
-    return {
-        register,
-        handleSubmit,
+            dispatch(
+                profileActions.setProfile({
+                    username: loginResponse.username,
+                    Player: loginResponse.Player,
+                    _id: loginResponse._id,
+                }),
+            );
+
+            // Redirect to home page
+            router.push('/');
+        } catch (error: any) {
+            const errorMessage =
+                error?.data?.message?.[0] ?? error?.data?.message ?? t('username-already-taken');
+            toast.error(errorMessage);
+        }
+    };
+
+    const formState = {
         onFormSubmit,
         errors,
-        toLoginPage,
+        isLoading: isRegisterLoading || isLoginLoading,
+        register,
+        handleSubmit,
+        getValues,
     };
+
+    return formState;
 };

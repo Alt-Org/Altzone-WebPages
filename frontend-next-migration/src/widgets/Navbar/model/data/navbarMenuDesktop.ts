@@ -4,6 +4,7 @@ import {
     getRouteAllNewsPage,
     getRouteTeamPage,
     getRouteLoginPage,
+    getRouteTeachersPage,
 } from '@/shared/appLinks/RoutePaths';
 import { dropdowns } from './dropdowns';
 import { NavbarBuilder } from './NavbarBuilder';
@@ -16,6 +17,7 @@ navbarBuilder.addDropDown('gallery', true, dropdowns.gallery);
 navbarBuilder.addDropDown('gameart', true, dropdowns.gameart);
 navbarBuilder.addDropDown('community', true, dropdowns.community);
 navbarBuilder.addLink('team', getRouteTeamPage(), true);
+navbarBuilder.addLink('teachers', getRouteTeachersPage(), true);
 navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());
 

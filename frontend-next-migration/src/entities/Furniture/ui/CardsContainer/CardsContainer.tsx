@@ -1,5 +1,6 @@
 'use client';
-import { PieceCard, Piece } from '@/entities/Furniture';
+import { PieceCard } from '../PieceCard/PieceCard';
+import { Piece } from '../../types/furniture';
 import cls from './CardsContainer.module.scss';
 
 interface CardsContainerProps {
