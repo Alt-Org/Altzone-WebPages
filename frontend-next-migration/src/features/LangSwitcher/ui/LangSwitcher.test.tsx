@@ -25,20 +25,31 @@ describe('LangSwitcher', () => {
     it('renders with the correct default language', () => {
         render(<LangSwitcher />);
 
-        const select = screen.getByTestId('language-switcher') as HTMLSelectElement; // Cast to HTMLSelectElement
-        expect(select).toHaveValue('en'); // Check that the default language is 'en'
+        const button = screen.getByRole('button', { name: /finnish|english/i }); // Look for the button with the current language label
+        expect(button).toBeInTheDocument(); // Ensure the button is present
+
+        // Verify that the button's text corresponds to the default language ('en')
+        expect(button).toHaveTextContent('english');
     });
 
     it('changes the language when a new option is selected', () => {
         // Mock window.location.href to prevent real navigation
-        // @ts-ignore
-        delete window.location;
-        window.location = { href: '' } as Location;
+        Object.defineProperty(window, 'location', {
+            value: {
+                href: '',
+            },
+            writable: true,
+        });
 
         render(<LangSwitcher />);
 
-        const select = screen.getByTestId('language-switcher') as HTMLSelectElement; // Cast to HTMLSelectElement
-        fireEvent.change(select, { target: { value: 'fi' } });
+        // Find the button that toggles the dropdown
+        const button = screen.getByRole('button', { name: /finnish|english/i });
+        fireEvent.click(button);
+
+        // Find the list item for the Finnish option and click it
+        const finnishOption = screen.getByRole('option', { name: /finnish/i });
+        fireEvent.click(finnishOption);
 
         // Check that the URL is updated with the new language
         expect(window.location.href).toBe('/fi/some-path');
@@ -46,14 +57,22 @@ describe('LangSwitcher', () => {
 
     it('does not change the URL if the same language is selected', () => {
         // Mock window.location.href to prevent real navigation
-        // @ts-ignore
-        delete window.location;
-        window.location = { href: '/en/some-path' } as Location;
+        Object.defineProperty(window, 'location', {
+            value: {
+                href: '/en/some-path',
+            },
+            writable: true,
+        });
 
         render(<LangSwitcher />);
 
-        const select = screen.getByTestId('language-switcher') as HTMLSelectElement; // Cast to HTMLSelectElement
-        fireEvent.change(select, { target: { value: 'en' } });
+        // Find the button that toggles the dropdown
+        const button = screen.getByRole('button', { name: /finnish|english/i });
+        fireEvent.click(button);
+
+        // Find the list item for the English option and click it
+        const finnishOption = screen.getByRole('option', { name: /english/i });
+        fireEvent.click(finnishOption);
 
         // Check that the URL remains unchanged
         expect(window.location.href).toBe('/en/some-path');
@@ -68,16 +87,24 @@ describe('LangSwitcher', () => {
 
     it('calls handleChangeLanguage when selecting a different language', () => {
         // Mock window.location.href to prevent real navigation
-        // @ts-ignore
-        delete window.location;
-        window.location = { href: '' } as Location;
+        Object.defineProperty(window, 'location', {
+            value: {
+                href: '',
+            },
+            writable: true,
+        });
 
         render(<LangSwitcher />);
 
-        const select = screen.getByTestId('language-switcher') as HTMLSelectElement; // Cast to HTMLSelectElement
-        fireEvent.change(select, { target: { value: 'fi' } });
+        // Find the button that toggles the dropdown
+        const button = screen.getByRole('button', { name: /finnish|english/i });
+        fireEvent.click(button);
 
-        // Expect window.location.href to be updated
+        // Find the list item for the Finnish option and click it
+        const finnishOption = screen.getByRole('option', { name: /finnish/i });
+        fireEvent.click(finnishOption);
+
+        // Check that the URL is updated with the new language
         expect(window.location.href).toBe('/fi/some-path');
     });
 
@@ -89,19 +116,33 @@ describe('LangSwitcher', () => {
 
         render(<LangSwitcher />);
 
-        const select = screen.getByTestId('language-switcher') as HTMLSelectElement; // Cast to HTMLSelectElement
-        expect(select).not.toHaveValue('es'); // 'es' should not be available
-        expect(select).toHaveValue('fi'); // Fallback to 'en'
+        const button = screen.getByRole('button');
+
+        // Assert that the button does not show 'es' as the current language
+        expect(button).not.toHaveTextContent('spanish');
+
+        // Assert that the fallback language is displayed
+        expect(button).toHaveTextContent('finnish');
+
+        // Check that the default language is Finnish
+        expect(window.location.href).toContain('/fi/');
     });
 
     it('contains all available language options', () => {
         render(<LangSwitcher />);
 
+        // Open the dropdown to reveal the options
+        const button = screen.getByRole('button', { name: /finnish|english/i });
+        fireEvent.click(button);
+
+        // Get all options rendered as list items
         const options = screen.getAllByRole('option');
         const availableLanguages = ['fi', 'en'];
+
+        // Verify each option's value is in the list of available languages
         options.forEach((option) => {
-            // @ts-ignore
-            expect(availableLanguages).toContain(option.value); // Check that all options are valid
+            const value = option.getAttribute('data-option-value');
+            expect(availableLanguages).toContain(value);
         });
     });
 });
