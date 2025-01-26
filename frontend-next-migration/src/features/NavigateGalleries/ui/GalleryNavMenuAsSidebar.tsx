@@ -9,6 +9,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './GalleryNavMenuAsSidebar.module.scss';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 
 export interface SidebarProps {
     sidebarVisible: boolean;
@@ -65,6 +66,10 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
         setSelectedCategory(category);
     };
 
+    const mods: Mods = {
+        [cls.Hidden]: !sidebarVisible,
+    };
+
     const getCategory = (category: Category, index: number) => {
         const translatedCategory = getCategoryTranslation(category.translations, language);
 
@@ -103,7 +108,7 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
     };
 
     const getList = (
-        <div className={cls.Text}>
+        <div className={classNames(cls.Text, mods)}>
             <h2>{t('category-menu-title')}</h2>
 
             <div
@@ -119,7 +124,7 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
     );
 
     return (
-        <div className={cls.Box}>
+        <div className={classNames(cls.Box, mods)}>
             <div
                 className={cls.Arrow}
                 onClick={() => setSidebarVisible(!sidebarVisible)}

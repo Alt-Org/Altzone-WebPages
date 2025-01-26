@@ -18,12 +18,6 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
                 ),
                 hideOnMobile: true,
             }}
-            // rightBottomSidebar={
-            // {
-            //     component: <GalleryNavMenuAsDropdown openByDefault={true} />,
-            //     hideOnMobile: true,
-            // }
-            // }
         >
             {children}
         </LayoutWithSidebars>
