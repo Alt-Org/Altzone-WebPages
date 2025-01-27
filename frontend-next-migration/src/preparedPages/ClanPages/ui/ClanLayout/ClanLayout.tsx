@@ -1,6 +1,5 @@
 // remember to remove use client
 'use client';
-import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import cls from './ClanLayout.module.scss';
 import {
     NavMenuWithDropdowns,
