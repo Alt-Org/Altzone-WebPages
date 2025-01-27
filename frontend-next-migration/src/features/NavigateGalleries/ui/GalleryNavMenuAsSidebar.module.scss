@@ -14,20 +14,31 @@
     position: relative;
     background: black;
     border-radius: 10px;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-out;
+
+    &.Hidden {
+        width: 0;
+    }
 }
 
 .Category {
-    padding-left: 0.5em;
+    padding-left: 1em;
     width: fit-content;
     cursor: pointer;
 }
 
 .Text {
-    padding: 1em;
+    padding: 1em 0.5em;
     font-size: 26px;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
 
     h2 {
         margin-bottom: 10px;
         text-align: center;
+    }
+
+    &.Hidden {
+        opacity: 0;
     }
 }
