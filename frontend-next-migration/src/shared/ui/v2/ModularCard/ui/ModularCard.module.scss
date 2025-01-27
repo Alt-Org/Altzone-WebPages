@@ -3,6 +3,8 @@
     height:199px;
     border:1px solid black;
     border-radius: var(--border-radius-custom);
+    display: flex;
+    height: 100%;
     // margin:30px;
     @media (max-width:breakpoint(lg)) {
         width:90%;
@@ -13,25 +15,18 @@
         width:100%;
     }
 }
-
-.ModularCardBase.NewsImageCard {
-    display: flex;
-    height: 100%;
-    
-}
-.ModularCardContainer.NewsImageCard {
+.Card.NewsImageCard > div {
     flex-basis: 50%;
     overflow: hidden;
 }
-.ModularCardBase.NewsImageCard > div:nth-child(1) {
+.Card.NewsImageCard > .ModularCardTexts {
     display: flex;
     flex-direction: column;
     align-content: center;
     padding-left:.5em;
     padding-right:.5em;
-    // padding:;
 }
-.ModularCardTitle.NewsImageCard {
+.Card.NewsImageCard > .ModularCardTexts > .ModularCardTitle {
     padding-left:0 !important;
     padding-right:0 !important;
     margin-top: .3em;
@@ -40,8 +35,12 @@
     //     margin-top: .2em;
     //     margin-bottom: .3em;
     // }
+    h2 {
+        font-family:var(--font-family-main);
+        color:var(--secondary-color);
+    }
 }
-.ModularCardBody.NewsImageCard {
+.Card.NewsImageCard > .ModularCardTexts > .ModularCardBody {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -55,9 +54,9 @@
         -webkit-line-clamp: 2;
         line-clamp: 2;
     }
-    
+
 }
-.ModularCardFooter.NewsImageCard {
+.Card.NewsImageCard > .ModularCardTexts > .ModularCardFootnote {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -67,7 +66,7 @@
     margin-top: .5em;
     margin-bottom: .3em;
 }
-.ModularCardImage.NewsImageCard {
+.Card.NewsImageCard > .ModularCardImageSection > .ModularCardImage {
     // position: absolute;
     object-fit:contain;
     height:100%;
@@ -98,7 +97,7 @@
 .ModularCardBase.TitleImageCard {
     display: flex;
     height: 100%;
-    
+
 }
 .ModularCardContainer.TitleImageCard {
     flex-basis: 50%;

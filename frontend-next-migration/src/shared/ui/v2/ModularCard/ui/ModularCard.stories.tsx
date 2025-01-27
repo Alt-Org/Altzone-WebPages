@@ -95,9 +95,30 @@ export const Default: Story = {
             //         <ModularCardImageTriangle theme={ModularCardTheme.NEWSIMAGE} />
             //     </ModularCardContainer>
             // </ModularCardContent>,
-            <ModularCard.Texts>
-                <ModularCard.Texts.Title>Hello</ModularCard.Texts.Title>
-            </ModularCard.Texts>
+            <>
+                <ModularCard.Texts>
+                    <ModularCard.Texts.Title>Hello</ModularCard.Texts.Title>
+                    <ModularCard.Texts.Body>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni assumenda,
+                        perspiciatis quidem neque minus, aperiam a reiciendis nesciunt ea
+                        perferendis quisquam explicabo reprehenderit consequatur? Eligendi vel
+                        tenetur molestias corporis! Ab! molestias corporis! Ab! molestias corporis!
+                        Ab! molestias corporis! Ab! molestias corporis! Ab! explicabo reprehenderit
+                        consequatur? Eligendi vel tenetur molestias corporis! Ab! molestias
+                        corporis! Ab! molestias corporis! Ab! molestias corporis! Ab! molestias
+                        corporis! Ab!
+                    </ModularCard.Texts.Body>
+                    <ModularCard.Texts.Footnote>22.1.2025 11.27</ModularCard.Texts.Footnote>
+                </ModularCard.Texts>
+                <ModularCard.Image>
+                    <ModularCard.Image.Image
+                        className=""
+                        theme={ModularCardTheme.NEWSIMAGE}
+                        src={hannu}
+                        alt="hannu"
+                    />
+                </ModularCard.Image>
+            </>
         ),
     },
 };
