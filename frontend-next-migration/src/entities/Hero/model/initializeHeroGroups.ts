@@ -1,4 +1,3 @@
-import { statData } from '@/entities/Hero';
 import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
 import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
 import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
@@ -21,6 +20,7 @@ import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
+import { statData } from '../model/stats/statsDataV2';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {

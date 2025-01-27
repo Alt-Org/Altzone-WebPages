@@ -14,6 +14,7 @@ interface GetClansQueryParams {
 }
 
 const clanUrl = 'clan';
+const leaderboardUrl = 'leaderboard';
 
 const clanApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -24,6 +25,12 @@ const clanApi = gameApi.injectEndpoints({
                 params,
             }),
             providesTags: [GameApiCacheTags.CLAN],
+        }),
+        getLeaderboard: builder.query<GetClansResponse, void>({
+            query: () => ({
+                url: `${leaderboardUrl}/clan`,
+                method: 'GET',
+            }),
         }),
         getClanById: builder.query<GetClanResponse, string>({
             query: (clanId) => `${clanUrl}/${clanId}`,
@@ -83,4 +90,5 @@ export const {
     useUpdateClanMutation,
     useJoinClanMutation,
     useLeaveClanMutation,
+    useGetLeaderboardQuery,
 } = clanApi;

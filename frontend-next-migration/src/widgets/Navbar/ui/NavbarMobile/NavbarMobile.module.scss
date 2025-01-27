@@ -98,15 +98,55 @@
 }
 
 .langSwitcher {
+  position: relative;
   border-radius: var(--border-radius-custom);
   border: 2px solid var(--inverted-primary-color);
-  &:focus {
-    outline: none;
-    box-shadow: none;
-  }
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--secondary-color) !important;
   font-size: var(--font-size-m) !important;
+  height: 42px;
+
+  button {
+    padding: 2px;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: var(--font-size-m) !important;
+    color: var(--secondary-color) !important;
+    border-radius: var(--border-radius-custom);
+    border: 2px solid transparent;
+    cursor: pointer;
+    min-width: 80px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  ul {
+    position: absolute;
+    top: -60px;
+    width: 100%;
+    border-radius: var(--border-radius-custom);
+    outline: 2px solid var(--inverted-primary-color);
+    list-style-type: none;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: var(--transparent-bg-dark);
+  }
+
+  li {
+    cursor: pointer;
+    height: 25px;
+    display:flex;
+    align-items: center;
+  }
+
+  li:hover {
+    color: white;
+  }
+
 }
 
 

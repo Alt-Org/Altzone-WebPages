@@ -27,6 +27,7 @@ type RequireAtLeastOneSidebar<T> =
 
 type DesktopLeftSidebarLayoutProps = RequireAtLeastOneSidebar<DesktopLeftSidebarLayoutPropsBase>;
 
+// eslint-disable-next-line complexity
 const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const { leftTopSidebar, rightBottomSidebar, children, className = '' } = props;
 
@@ -37,9 +38,8 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
     const bothSidebarsVisibleOnDesktop =
         !leftTopSidebar?.hideOnDesktop && !rightBottomSidebar?.hideOnDesktop;
-    const collapsed = leftTopSidebar?.collapsed;
     const shouldBeFluid = hasBothSidebars && bothSidebarsVisibleOnDesktop;
-
+    const collapsed = leftTopSidebar?.collapsed;
     const leftTopSidebarMods = {
         [cls.hideOnMobile]: leftTopSidebar?.hideOnMobile,
         [cls.hideOnDesktop]: leftTopSidebar?.hideOnDesktop,

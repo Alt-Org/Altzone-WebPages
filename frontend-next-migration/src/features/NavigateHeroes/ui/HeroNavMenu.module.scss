@@ -13,7 +13,6 @@
   overflow:hidden;
   white-space: nowrap;
   opacity: 100%;
-  font-weight: bold;
   border: 2px solid var(--inverted-secondary-color);
   border-radius: 1em;
   transition: opacity 0.3s ease-out;
@@ -28,12 +27,19 @@
     cursor: default;
   }
 }
-.Box {
-
-
+.SelectedHero {
+  color: var(--secondary-color);
+  padding-left: 1em;
+  cursor: pointer;
+  &.Hidden {
+    cursor: default;
+  }
+}
+.Root {
+  font-family:Georgia, Times New Roman, serif;
+  font-size: 1.3em;
   width: 100%;
   position: relative;
-
   background: black;
   transition: width 0.3s ease-out;
   &.Hidden {

@@ -2,9 +2,8 @@
   -webkit-user-select: none;
   user-select: none;
   width: 420px;
-  padding: 30px;
+  padding: 15px;
   border-radius: var(--border-radius-custom);
-  background-color: rgba(0, 0, 0, 0.47);
   display: grid;
   gap: 10px;
   color: var(--primary-color);
@@ -14,12 +13,10 @@
     width: 300px;
   }
 
-
   h1 {
     margin-bottom: 5px;
     text-align: center;
   }
-
 
   div {
     display: grid;
@@ -32,7 +29,6 @@
     overflow-x: hidden;
   }
 
-
   input {
     height: 50px;
     border-radius: var(--border-radius-custom);
@@ -43,9 +39,12 @@
 
   p {
     color: var(--error-color);
+    margin-top: 5px;
+    margin-bottom: 20px;
+
     height: 15px;
     line-height: 15px;
-    font: var(--font-xs);
+    font: var(--font-m);
     font-family: var(--font-family-texts);
   }
 
@@ -61,10 +60,8 @@
     height: 16px;
     cursor: pointer;
   }
-
-
+    
   .dropdown {
     color: rgba(0, 0, 0, 0.85);
   }
-
 }

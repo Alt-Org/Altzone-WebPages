@@ -2,5 +2,19 @@
   "head-title": "Hahmojen kehittäminen",
   "head-description": "Näe kuinka hahmot kehittyvät.",
   "title": "Hahmon kehitys",
-  "text": "Tulossa pian..."
+  "text": "Tämä on geneerinen työkalu levelien ja hintojen tutkiskeluun. Tämä ei assosioidu pelaajan omiin hahmoprofiileihin muuten kuin hahmon lähtötasoleveleissä, jotka ovat kaikille samat.",
+  "veryStrongSkill": "Todella vahva taito",
+  "strongSkill": "Vahva taito",
+  "fairlyStrongSkill": "Aika vahva taito",
+  "intermediate": "Keskitasoa",
+  "ratherWeakSkill": "Aika heikko taito",
+  "weakSkill": "Heikko taito",
+  "veryWeakSkill": "Todella heikko taito",
+  "rarityClass": "Harvinaisuusluokka",
+  "upgradePotentialAfterUpdate": "päivityksen jälkeinen päivityspotentiaali",
+  "level": "Leveli",
+  "stepsPerLevel": "Askelia/Leveli",
+  "stepsPrice": "Askel Hinta",
+  "price": "Hinta",
+  "fatePriestCannotBeDeveloped": "Tapauskovaista ei voi kehittää."
 }
