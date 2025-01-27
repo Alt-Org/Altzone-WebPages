@@ -1,9 +1,62 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
-import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
+'use client';
+import {
+    NavMenuWithDropdowns,
+    NavMenuWithDropdownsProps,
+} from '@/shared/ui/NavMenuWithDropdownsV2';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 
 const Page = () => {
+    const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
+        title: 'Klaanit',
+        openByDefault: false,
+        titleAsActive: true,
+        dropdownItems: [
+            { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
+            { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
+            { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
+            { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
+        ],
+    };
+
+    const navMenuWithDropdownsProps3: NavMenuWithDropdownsProps = {
+        title: 'Klaanit',
+        openByDefault: true,
+        staticDropdown: true,
+        dropdownItems: [
+            { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
+            { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
+            { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
+            { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
+        ],
+    };
+
+    const navMenuWithDropdownsProps4: NavMenuWithDropdownsProps = {
+        title: 'Klaanit',
+        openByDefault: true,
+        staticDropdown: true,
+        dropdownItems: [
+            { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
+            { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
+            { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
+            {
+                title: 'Heroes',
+                openByDefault: false,
+                elements: [
+                    // links can be used as well, just add the "link" to object
+                    {
+                        elementText: 'Hero 1',
+                        id: 'hero1',
+                        link: { path: RoutePaths.HEROES, isExternal: false },
+                    },
+                    { elementText: 'Hero 2', id: 'hero2' },
+                ],
+            },
+            { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
+        ],
+    };
+
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
         title: 'Forum',
         openByDefault: true,
@@ -75,6 +128,10 @@ const Page = () => {
                 ),
             }}
         >
+            <h4>Clan Example</h4>
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
             <h1>Main Page Content</h1>
             <p>
                 This is the main content, adapting to both desktop and mobile devices. This is the
