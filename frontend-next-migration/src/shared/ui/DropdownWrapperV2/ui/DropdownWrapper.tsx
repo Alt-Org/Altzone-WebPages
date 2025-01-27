@@ -9,6 +9,7 @@ import cls from './DropdownWrapper.module.scss';
 import Image from 'next/image';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 
+// eslint-disable-next-line complexity
 export const DropdownWrapper = (props: DropdownWrapperProps) => {
     const {
         contentAbsolute = false,
@@ -23,6 +24,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         onOpen,
         onClose,
         openByDefault = false,
+        staticDropdown = false,
+        staticTitle = '',
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault);
@@ -117,33 +120,40 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             aria-expanded={isOpen}
             aria-disabled={isDisabled?.status}
         >
-            <div
-                onClick={!isDisabled?.status ? toggleDropdown : undefined}
-                role="button"
-                title={isDisabled?.status ? isDisabled?.reason : ''}
-                // tabIndex={-1}
-                className={classNames(cls.childrenWrapper, {}, [
-                    childrenWrapperClassName,
-                    mainElementClass,
-                ])}
-            >
-                {children}
-                <span
-                    style={{
-                        display: 'inline-block',
-                        transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.4s ease-in-out',
-                    }}
+            {staticDropdown ? (
+                <div
+                    title={isDisabled?.status ? isDisabled?.reason : ''}
+                    className={classNames(cls.staticHeading)}
                 >
-                    <Image
-                        loading="eager"
-                        alt={'Chevron'}
-                        src={chevronDown}
-                        className={cls.chevronImage}
-                    />
-                </span>
-            </div>
-
+                    {staticTitle}
+                </div>
+            ) : (
+                <div
+                    onClick={!isDisabled?.status ? toggleDropdown : undefined}
+                    role="button"
+                    title={isDisabled?.status ? isDisabled?.reason : ''}
+                    className={classNames(cls.childrenWrapper, {}, [
+                        childrenWrapperClassName,
+                        mainElementClass,
+                    ])}
+                >
+                    {children}
+                    <span
+                        style={{
+                            display: 'inline-block',
+                            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.4s ease-in-out',
+                        }}
+                    >
+                        <Image
+                            loading="eager"
+                            alt={'Chevron'}
+                            src={chevronDown}
+                            className={cls.chevronImage}
+                        />
+                    </span>
+                </div>
+            )}
             {shouldRender && (
                 <div
                     className={classNames(cls.dropdownContent, modsContent, [contentClassName])}
