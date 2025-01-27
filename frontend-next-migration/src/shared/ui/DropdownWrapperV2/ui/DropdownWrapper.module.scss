@@ -17,7 +17,8 @@
 
 .dropdownContent {
 
-
+  padding-top: 10px;
+  line-height: 40px;
   transform-origin: top;
   opacity: 0;
   transform: translateY(-10px);
@@ -60,6 +61,13 @@
       transform: translateY(-10px) scaleY(0);
     }
   }
+}
+
+.staticHeading {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  margin-bottom: 23px;
+  margin-top: 12px;
 }
 
 .childrenWrapper {
