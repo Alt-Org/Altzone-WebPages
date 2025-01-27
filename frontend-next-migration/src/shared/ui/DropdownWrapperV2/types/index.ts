@@ -38,4 +38,6 @@ export type DropdownWrapperProps = {
         reason: string;
     };
     openByDefault?: boolean;
+    staticDropdown?: boolean;
+    staticTitle?: string;
 };
