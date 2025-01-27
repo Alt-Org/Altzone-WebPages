@@ -19,6 +19,7 @@ export interface NavMenuWithDropdownsProps {
     dropdownItems: (DropdownItem | ReactNode | DropDownElementASTextOrLink)[];
     openByDefault?: boolean;
     titleAsActive?: boolean;
+    staticDropdown?: boolean;
     title: string;
     className?: string;
 }
@@ -39,6 +40,7 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
         className = '',
         title,
         openByDefault = false,
+        staticDropdown = false,
         titleAsActive = false,
     } = props;
 
@@ -69,6 +71,8 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
         <div className={classNames(cls.NavMenuWithDropdowns, {}, [className])}>
             <DropdownWrapper
                 openByDefault={openByDefault}
+                staticDropdown={staticDropdown}
+                staticTitle={title}
                 dataTestId={title}
                 elements={dropdownItems.map((item, index) =>
                     isDropdownItem(item) ? (
