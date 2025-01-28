@@ -77,7 +77,7 @@ interface ModularCardTexts extends FC<CardCompoundProps> {
 
 interface ModularCardImageSection extends FC<CardCompoundProps> {
     Image: FC<ModularCardImageProps>;
-    // Body?: FC<CardCompoundProps>;
+    Triangle: FC<{ className?: string }>;
 }
 
 interface ModularCardComponent extends FC<CardProps> {
@@ -246,6 +246,14 @@ const ModularCardImage = memo((props: ModularCardImageProps) => {
 
 ModularCardImage.displayName = 'modularcard-Image-Image';
 
+const ModularCardTriangle = memo((props: { className?: string }) => {
+    const { className = '' } = props;
+
+    return <span className={classNames(cls.ModularCardTriangle, {}, [className])} />;
+});
+
+ModularCardTriangle.displayName = 'modularcard-Image-Triangle';
+
 const ModularCardTexts: ModularCardTexts = (props: CardCompoundProps) => {
     const { children, className = '' } = props;
     return <div className={classNames(cls.ModularCardTexts, {}, [className])}>{children}</div>;
@@ -263,6 +271,7 @@ const ModularCardImageSection: ModularCardImageSection = (props: CardCompoundPro
 ModularCardImageSection.displayName = 'modularcard-IamgeSection';
 
 ModularCardImageSection.Image = ModularCardImage;
+ModularCardImageSection.Triangle = ModularCardTriangle;
 
 ModularCardTexts.Title = ModularCardTitle;
 ModularCardTexts.Body = ModularCardBody;

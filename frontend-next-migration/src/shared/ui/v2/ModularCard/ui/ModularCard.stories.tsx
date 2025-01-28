@@ -117,6 +117,7 @@ export const Default: Story = {
                         src={hannu}
                         alt="hannu"
                     />
+                    <ModularCard.Image.Triangle />
                 </ModularCard.Image>
             </>
         ),

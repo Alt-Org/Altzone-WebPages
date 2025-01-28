@@ -1,11 +1,11 @@
 .Card.NewsImageCard, .Card.TitleImageCard {
     width:50%;
     height:199px;
-    border:1px solid black;
+    border:2px solid black;
     border-radius: var(--border-radius-custom);
     display: flex;
-    height: 100%;
-    // margin:30px;
+    margin:30px;
+    box-shadow: 6px 9px 2px black;
     @media (max-width:breakpoint(lg)) {
         width:90%;
         height: 175px;
@@ -74,7 +74,7 @@
     transform: scale(2.5) translate3d(20px,-5px,0);
     border-radius: var(--border-radius-custom);
 }
-.ModularCardImageTriangle.NewsImageCard {
+.Card.NewsImageCard > .ModularCardImageSection > .ModularCardTriangle {
     position: absolute;
     width: 0;
     height: 0;
