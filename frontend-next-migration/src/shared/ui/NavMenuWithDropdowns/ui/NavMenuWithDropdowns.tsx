@@ -59,7 +59,10 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                                 {item.elementText}
                             </AppLink>
                         ) : (
-                            <div className={classNames(cls.text, { [cls.active]: item.active })}>
+                            <div
+                                className={classNames(cls.text, { [cls.active]: item.active })}
+                                onClick={item.onClickCallback}
+                            >
                                 {item.elementText}
                             </div>
                         )
