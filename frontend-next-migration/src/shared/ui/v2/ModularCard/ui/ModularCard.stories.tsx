@@ -103,7 +103,6 @@ export const TitleImage: Story = {
                 <ModularCard.Texts>
                     <ModularCard.Texts.Title>Hello</ModularCard.Texts.Title>
                 </ModularCard.Texts>
-                <ModularCard.Image.Triangle />
                 <ModularCard.Image>
                     <ModularCard.Image.Image
                         className=""
@@ -111,6 +110,7 @@ export const TitleImage: Story = {
                         src={hannu}
                         alt="hannu"
                     />
+                    <ModularCard.Image.Triangle />
                 </ModularCard.Image>
             </>
         ),
