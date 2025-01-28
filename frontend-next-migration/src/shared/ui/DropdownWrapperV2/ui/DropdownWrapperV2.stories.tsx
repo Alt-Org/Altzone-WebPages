@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DropDownElement, DropdownWrapperProps } from '../types';
 
 const meta = {
-    title: 'shared/ui/DropdownWrapper',
+    title: 'shared/ui/DropdownWrapperV2',
     component: DropdownWrapper,
     argTypes: {
         className: {
@@ -63,6 +63,23 @@ const meta = {
             action: 'closed',
             description: 'Callback function triggered when the dropdown closes.',
         },
+        openByDefault: {
+            control: 'boolean',
+            description: 'Determines if the dropdown should be open by default.',
+            defaultValue: false,
+        },
+        staticDropdown: {
+            control: 'boolean',
+            description:
+                'Specifies whether the first dropdown element remains static and always open.',
+            defaultValue: false,
+        },
+        staticTitle: {
+            control: 'text',
+            description:
+                'Uses the title provided by the interface if staticDropdown is set to true.',
+            defaultValue: false,
+        },
     },
     args: {
         className: '',
@@ -74,6 +91,9 @@ const meta = {
         contentItemClassName: '',
         elements: [],
         isDisabled: { status: false, reason: '' },
+        openByDefault: false,
+        staticDropdown: false,
+        staticTitle: '',
     },
     tags: ['autodocs'],
     parameters: {
