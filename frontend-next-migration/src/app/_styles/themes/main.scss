@@ -1,22 +1,20 @@
- // ==========================================
+// ==========================================
 // Colors
 // ==========================================
 
 // Primary color and variants
-:root{
-
-
-    --primaryColor: #FFA100;
-    --primaryColorVariantHover: #FFB434;
-    --primaryColorVariantPressed: #E89301;
+:root {
+    --primary-color: #FFA100;
+    --primary-color-variant-hover: #FFB434;
+    --primary-color-variant-pressed: #E89301;
     
     // Secondary color and variants
-    --secondaryColor: #10D131;
-    --secondaryColorVariantHover: #41D95B;
-    --secondaryColorVariantPressed: #0FBD2E;
+    --secondary-color: #10D131;
+    --secondary-color-variant-hover: #41D95B;
+    --secondary-color-variant-pressed: #0FBD2E;
     
     // Tertiary color
-    --tertiaryColor: #C0FF43;
+    --tertiary-color: #C0FF43;
     
     // Background, text, and neutral colors
     --background: #1E3544;
@@ -35,37 +33,37 @@
     // Chart Colors
     // ==========================================
     
-    --chartsResistanceDefault: #764FEA;
-    --chartsResistancePieChartLight: #8C6BEB;
-    --chartsImpactForceDefault: #FF8000;
-    --chartsImpactForcePieChartLight: #FFAA55;
-    --chartsSizeDefault: #CE3B39;
-    --chartsSizePieChartLight: #ED6E6C;
-    --chartsHealthDefault: #3FE22E;
-    --chartsHealthPieChartLight: #87EE7D;
-    --chartsSpeedDefault: #00FFFF;
-    --chartsSpeedPieChartLight: #A2FFFF;
+    --charts-resistance-default: #764FEA;
+    --charts-resistance-pie-chart-light: #8C6BEB;
+    --charts-impact-force-default: #FF8000;
+    --charts-impact-force-pie-chart-light: #FFAA55;
+    --charts-size-default: #CE3B39;
+    --charts-size-pie-chart-light: #ED6E6C;
+    --charts-health-default: #3FE22E;
+    --charts-health-pie-chart-light: #87EE7D;
+    --charts-speed-default: #00FFFF;
+    --charts-speed-pie-chart-light: #A2FFFF;
     
     // ==========================================
     // Defense and Characters Colors
     // ==========================================
     
-    --defenseClassColorsRetroflector: #FF0000;
-    --defenseClassColorsObidient: #FF8E00;
-    --defenseClassColorsProjector: #FFFF00;
-    --defenseClassColorsDeflector: #008E00;
-    --defenseClassColorsDesensitizer: #00C0C0;
-    --defenseClassColorsIntellectualizer: #400098;
-    --defenseClassColorsConfluent: #8E008E;
+    --defense-class-colors-retroflector: #FF0000;
+    --defense-class-colors-obidient: #FF8E00;
+    --defense-class-colors-projector: #FFFF00;
+    --defense-class-colors-deflector: #008E00;
+    --defense-class-colors-desensitizer: #00C0C0;
+    --defense-class-colors-intellectualizer: #400098;
+    --defense-class-colors-confluent: #8E008E;
     
     // ==========================================
     // Shop Colors
     // ==========================================
     
-    --shopFrameCommon: #FFA99F;
-    --shopFrameRare: #D0D0D0;
-    --shopFrameEpic: #FFE99C;
-    --shopFrameAntique: #A8DBE8;
+    --shop-frame-common: #FFA99F;
+    --shop-frame-rare: #D0D0D0;
+    --shop-frame-epic: #FFE99C;
+    --shop-frame-antique: #A8DBE8;
     
     // ==========================================
     // Heading Styles
@@ -122,17 +120,17 @@
     --l: (x: 6, y: 12, blur: 0, spread: 0, opacity: 1);
     
     // Base Spacing
-    --spacing0: 0px;
-    --spacing50: 2px;
-    --spacing100: 4px;
-    --spacing200: 8px;
-    --spacing250: 12px;
-    --spacing300: 16px;
-    --spacing400: 24px;
-    --spacing500: 32px;
-    --spacing600: 48px;
-    --spacing700: 64px;
-    --spacing800: 96px;
+    --spacing-0: 0px;
+    --spacing-50: 2px;
+    --spacing-100: 4px;
+    --spacing-200: 8px;
+    --spacing-250: 12px;
+    --spacing-300: 16px;
+    --spacing-400: 24px;
+    --spacing-500: 32px;
+    --spacing-600: 48px;
+    --spacing-700: 64px;
+    --spacing-800: 96px;
     
     // Borders
     --border-desktop: 4px;
@@ -142,4 +140,4 @@
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
-    }
+}
