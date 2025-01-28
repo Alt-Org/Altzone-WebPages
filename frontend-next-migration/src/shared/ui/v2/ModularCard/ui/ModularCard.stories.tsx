@@ -83,7 +83,6 @@ export const Default: Story = {
                 <ModularCard.Image>
                     <ModularCard.Image.Image
                         className=""
-                        theme={ModularCardTheme.NEWSIMAGE}
                         src={hannu}
                         alt="hannu"
                     />
@@ -106,7 +105,6 @@ export const TitleImage: Story = {
                 <ModularCard.Image>
                     <ModularCard.Image.Image
                         className=""
-                        theme={ModularCardTheme.NEWSIMAGE}
                         src={hannu}
                         alt="hannu"
                     />

@@ -15,23 +15,44 @@ export enum ModularCardTheme {
 }
 
 /**
- * Props for the Card component.
- * {Object} CardProps
+ * Props for the ModularCard component.
+ * {Object} ModularCardProps
  * @property {string} [className=""] - Additional class name(s) for the Card.
  * @property {CardTheme} [theme=CardTheme.PRIMARY] - Theme for the Card.
  * @property {ReactNode} children - The content of the Card.
  *
  * @example
- * <Card className="customClass" theme={CardTheme.PRIMARY}>
- *    <Card.Title>Title</Card.Title>
- *    <Card.Body>Body</Card.Body>
- *    <Card.Date>2023-10-01</Card.Date>
- *    <Card.ReadMoreLink path="/details" withScalableLink>
- *        Read More
- *    </Card.ReadMoreLink>
- * </Card>
+ * // With TITLEIMAGE theme
+ * <ModularCard className="customClass" theme={ModularCardTheme.TITLEIMAGE}>
+ *      <ModularCard.Texts>
+ *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *      </ModularCard.Texts>
+ *      <ModularCard.Image>
+ *          <ModularCard.Image.Image
+ *              src={image}
+ *              alt="alt"
+ *          />
+ *          <ModularCard.Image.Triangle />
+ *      </ModularCard.Image>
+ * </ModularCard>
+ * @example
+ * // With NEWSIMAGE theme
+ * <ModularCard className="customClass" theme={ModularCardTheme.NEWSIMAGE}>
+ *      <ModularCard.Texts>
+ *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *          <ModularCard.Texts.Body>Body</ModularCard.Texts.Body>
+ *          <ModularCard.Texts.Footnote>Footnote</ModularCard.Texts.Footnote>
+ *      </ModularCard.Texts>
+ *      <ModularCard.Image>
+ *          <ModularCard.Image.Image
+ *              src={image}
+ *              alt="alt"
+ *          />
+ *          <ModularCard.Image.Triangle />
+ *      </ModularCard.Image>
+ * </ModularCard>
  */
-interface CardProps {
+interface ModularCardProps {
     className?: string;
     theme?: ModularCardTheme;
     children: ReactNode;
@@ -43,8 +64,7 @@ interface CardCompoundProps {
 }
 
 interface ModularCardImageProps {
-    className: string;
-    theme: ModularCardTheme;
+    className?: string;
     alt: string;
     src: StaticImageData | string;
 }
@@ -55,20 +75,6 @@ interface ReadMoreLinkProps extends CardCompoundProps {
     withScalableLink?: boolean;
 }
 
-/**
- * Card component with composable subcomponents.
- * @component
- *
- * @example
- * <Card className="customClass" theme={CardTheme.PRIMARY}>
- *    <Card.Title>Title</Card.Title>
- *    <Card.Body>Body</Card.Body>
- *    <Card.Date>2023-10-01</Card.Date>
- *    <Card.ReadMoreLink path="/details" withScalableLink>
- *        Read More
- *    </Card.ReadMoreLink>
- * </Card>
- */
 interface ModularCardTexts extends FC<CardCompoundProps> {
     Title: FC<CardCompoundProps>;
     Body: FC<CardCompoundProps>;
@@ -80,122 +86,42 @@ interface ModularCardImageSection extends FC<CardCompoundProps> {
     Triangle: FC<{ className?: string }>;
 }
 
-interface ModularCardComponent extends FC<CardProps> {
+/**
+ * Card component with composable subcomponents.
+ * @component
+ *
+ * @example
+ * <ModularCard className="customClass" theme={ModularCardTheme.TITLEIMAGE}>
+ *      <ModularCard.Texts>
+ *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *      </ModularCard.Texts>
+ *      <ModularCard.Image>
+ *          <ModularCard.Image.Image
+ *              src={image}
+ *              alt="alt"
+ *          />
+ *          <ModularCard.Image.Triangle />
+ *      </ModularCard.Image>
+ * </ModularCard>
+ */
+interface ModularCardComponent extends FC<ModularCardProps> {
     Texts: ModularCardTexts;
     Image: ModularCardImageSection;
 }
 
-/* 
-a
-a
-a
-a
-a
-a
-a
-a
-*/
-const ModularCard: ModularCardComponent = (props: CardProps) => {
+const ModularCard: ModularCardComponent = (props: ModularCardProps) => {
     const { className = '', theme = ModularCardTheme.PRIMARY, children } = props;
     return <div className={classNames(cls.Card, {}, [className, cls[theme]])}>{children}</div>;
 };
 
-// const ModularCardContent = memo((props: CardProps) => {
-//     const { className = '', theme = ModularCardTheme.PRIMARY, children } = props;
-//     return (
-//         <div className={classNames(cls.ModularCardBase, {}, [className, cls[theme]])}>
-//             {children}
-//         </div>
-//     );
-// });
-
-// ModularCardContent.displayName = 'ModularCardContent';
-
-// const ModularCardContainer = memo((props: CardProps) => {
-//     const { className = '', theme = ModularCardTheme.PRIMARY, children } = props;
-//     return (
-//         <div className={classNames(cls.ModularCardContainer, {}, [className, cls[theme]])}>
-//             {children}
-//         </div>
-//     );
-// });
-
-// ModularCardContainer.displayName = 'ModularCardContainer';
-
-// const ModularCardTitle = memo((props: CardProps) => {
-//     const { className = '', theme = ModularCardTheme.PRIMARY, children } = props;
-//     return (
-//         <div className={classNames(cls.ModularCardTitle, {}, [className, cls[theme]])}>
-//             <h2>{children}</h2>
-//         </div>
-//     );
-// });
-
-// ModularCardTitle.displayName = 'ModularCardTitle';
-
-// const ModularCardBody = memo((props: CardProps) => {
-//     const { className = '', theme = ModularCardTheme.PRIMARY, children } = props;
-//     return (
-//         <div className={classNames(cls.ModularCardBody, {}, [className, cls[theme]])}>
-//             <p>{children}</p>
-//         </div>
-//     );
-// });
-
-// ModularCardBody.displayName = 'ModularCardBody';
-
-// const ModularCardFooter = memo((props: CardProps) => {
-//     const { className = '', theme = ModularCardTheme.PRIMARY, children } = props;
-//     return (
-//         <div className={classNames(cls.ModularCardFooter, {}, [className, cls[theme]])}>
-//             <p>{children}</p>
-//         </div>
-//     );
-// });
-
-// ModularCardFooter.displayName = 'ModularCardFooter';
-
-// const ModularCardImage = memo(
-//     (props: {
-//         className: string;
-//         theme: ModularCardTheme;
-//         // children: ReactNode;
-//         alt: string;
-//         src: StaticImageData | string;
-//     }) => {
-//         const { className = '', theme = ModularCardTheme.PRIMARY, alt, src } = props;
-//         return (
-//             <Image
-//                 className={classNames(cls.ModularCardImage, {}, [className, cls[theme]])}
-//                 src={src}
-//                 alt={alt}
-//             />
-//         );
-//     },
-// );
-
-// ModularCardImage.displayName = 'ModularCardImage';
-
-// const ModularCardImageTriangle = memo((props: any) => {
-//     const { className = '', theme = ModularCardTheme.PRIMARY } = props;
-//     return (
-//         <span className={classNames(cls.ModularCardImageTriangle, {}, [className, cls[theme]])} />
-//     );
-// });
-
-// ModularCardImageTriangle.displayName = 'ModularCardImageTriangle';
-// export {
-//     ModularCardContent,
-//     ModularCardContainer,
-//     ModularCardTitle,
-//     ModularCardBody,
-//     ModularCardFooter,
-//     ModularCardImage,
-//     ModularCardImageTriangle,
-// };
-
-// v2
-
+/**
+ * ModularCard.Texts.Title component for the ModularCard.
+ * @component
+ * @param {CardCompoundProps} props - Props for the component.
+ *
+ * @example
+ * <ModularCard.Texts.Title className="customTitleClass">Card Title</ModularCard.Texts.Title>
+ */
 const ModularCardTitle = memo((props: CardCompoundProps) => {
     const { children, className = '' } = props;
 
@@ -208,6 +134,14 @@ const ModularCardTitle = memo((props: CardCompoundProps) => {
 
 ModularCardTitle.displayName = 'modularcard-Texts-Title';
 
+/**
+ * ModularCard.Texts.Body component for the ModularCard.
+ * @component
+ * @param {CardCompoundProps} props - Props for the component.
+ *
+ * @example
+ * <ModularCard.Texts.Body className="customBodyClass">Card Body</ModularCard.Texts.Body>
+ */
 const ModularCardBody = memo((props: CardCompoundProps) => {
     const { children, className = '' } = props;
 
@@ -220,6 +154,14 @@ const ModularCardBody = memo((props: CardCompoundProps) => {
 
 ModularCardBody.displayName = 'modularcard-Texts-Body';
 
+/**
+ * ModularCard.Texts.Footnote component for the ModularCard.
+ * @component
+ * @param {CardCompoundProps} props - Props for the component.
+ *
+ * @example
+ * <ModularCard.Texts.Footnote className="customFootnoteClass">Card Footnote</ModularCard.Texts.Footnote>
+ */
 const ModularCardFootnote = memo((props: CardCompoundProps) => {
     const { children, className = '' } = props;
 
@@ -232,6 +174,18 @@ const ModularCardFootnote = memo((props: CardCompoundProps) => {
 
 ModularCardFootnote.displayName = 'modularcard-Texts-Footnote';
 
+/**
+ * ModularCard.Image.Image component for the ModularCard.
+ * @component
+ * @param {ModularCardImageProps} props - Props for the component.
+ *
+ * @example
+ * <ModularCard.Image.Image
+ *      className="customImageClass"
+ *      src={image}
+ *      alt="alt"
+ * />
+ */
 const ModularCardImage = memo((props: ModularCardImageProps) => {
     const { className = '', alt, src } = props;
 
@@ -246,6 +200,14 @@ const ModularCardImage = memo((props: ModularCardImageProps) => {
 
 ModularCardImage.displayName = 'modularcard-Image-Image';
 
+/**
+ * ModularCard.Image.Triangle component for the ModularCard.
+ * @component
+ * @param {{className:string}} props - Props for the component.
+ *
+ * @example
+ * <ModularCard.Image.Triangle />
+ */
 const ModularCardTriangle = memo((props: { className?: string }) => {
     const { className = '' } = props;
 
@@ -254,6 +216,16 @@ const ModularCardTriangle = memo((props: { className?: string }) => {
 
 ModularCardTriangle.displayName = 'modularcard-Image-Triangle';
 
+/**
+ * ModularCard.Texts component for the ModularCard.
+ * @component
+ * @param {CardCompoundProps} props - Props for the component.
+ *
+ * @example
+ * <ModularCard.Texts>
+ *      <ModularCard.Title>Card title</ModularCard.Title>
+ * <ModularCard.Texts/>
+ */
 const ModularCardTexts: ModularCardTexts = (props: CardCompoundProps) => {
     const { children, className = '' } = props;
     return <div className={classNames(cls.ModularCardTexts, {}, [className])}>{children}</div>;
@@ -261,6 +233,20 @@ const ModularCardTexts: ModularCardTexts = (props: CardCompoundProps) => {
 
 ModularCardTexts.displayName = 'modularcard-Texts';
 
+/**
+ * ModularCard.Image component for the ModularCard.
+ * @component
+ * @param {CardCompoundProps} props - Props for the component.
+ *
+ * @example
+ * <ModularCard.Image>
+ *      <ModularCard.Image.Image
+ *          className="customImageClass"
+ *          src={image}
+ *          alt="alt"
+ *      />
+ * <ModularCard.Image/>
+ */
 const ModularCardImageSection: ModularCardImageSection = (props: CardCompoundProps) => {
     const { children, className = '' } = props;
     return (
@@ -270,64 +256,24 @@ const ModularCardImageSection: ModularCardImageSection = (props: CardCompoundPro
 
 ModularCardImageSection.displayName = 'modularcard-IamgeSection';
 
+// ImageSection
 ModularCardImageSection.Image = ModularCardImage;
 ModularCardImageSection.Triangle = ModularCardTriangle;
 
+// Texts
 ModularCardTexts.Title = ModularCardTitle;
 ModularCardTexts.Body = ModularCardBody;
 ModularCardTexts.Footnote = ModularCardFootnote;
 
-/* 
-a
-a
-a
-a
-a
-a
-a
-a
-*/
-/**
- * Card.Title component for the Card.
- * @component
- * @param {CardCompoundProps} props - Props for the component.
- *
- * @example
- * <Card.Title className="customTitleClass">Card Title</Card.Title>
- */
-
-/**
- * Card.ReadMoreLink component for the Card.
- * @component
- * @param {ReadMoreLinkProps} props - Props for the component.
- *
- * @example
- * <Card.ReadMoreLink path="/details" className="customLinkClass" withScalableLink>
- *    Read More
- * </Card.ReadMoreLink>
- */
-const ReadMoreLink = memo((props: ReadMoreLinkProps) => {
-    const { children, className = '', path, isExternal = false, withScalableLink = false } = props;
-    const mods: Record<string, boolean> = {
-        [cls.withScalableLink]: withScalableLink,
-    } as Record<string, boolean>;
-    return (
-        <AppLink
-            to={path}
-            isExternal={isExternal}
-        >
-            <h2 className={classNames(cls.ReadMoreLink, mods, [className])}>{children}</h2>
-        </AppLink>
-    );
-});
-
-ReadMoreLink.displayName = 'card-ReadMoreLink';
-
-// ModularCard.Title = CardTitle;
-// Card.Body = CardBody;
-// Card.Date = CardDate;
-// Card.ReadMoreLink = ReadMoreLink;
+// Adding texts and imagesection
 ModularCard.Texts = ModularCardTexts;
 ModularCard.Image = ModularCardImageSection;
 
 export { ModularCard };
+
+// <AppLink
+//     to={path}
+//     isExternal={isExternal}
+// >
+//     <h2 className={classNames(cls.ReadMoreLink, mods, [className])}>{children}</h2>
+// </AppLink>
