@@ -233,11 +233,11 @@ const ModularCardFootnote = memo((props: CardCompoundProps) => {
 ModularCardFootnote.displayName = 'modularcard-Texts-Footnote';
 
 const ModularCardImage = memo((props: ModularCardImageProps) => {
-    const { className = '', theme = ModularCardTheme.PRIMARY, alt, src } = props;
+    const { className = '', alt, src } = props;
 
     return (
         <Image
-            className={classNames(cls.ModularCardImage, {}, [className, cls[theme]])}
+            className={classNames(cls.ModularCardImage, {}, [className])}
             src={src}
             alt={alt}
         />
