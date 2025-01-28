@@ -128,9 +128,27 @@ const Page = () => {
                 ),
             }}
         >
-            <h4>Clan Example</h4>
+            <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
+            <div style={{ margin: '20px' }}>
+                <h5>
+                    Version with dropdown closed by default (mainly designed for mobile but works
+                    for both. Test in mobile resolution too)
+                </h5>
+            </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
+            <div style={{ margin: '20px' }}>
+                <h5>
+                    Static version of dropdown, mainly meant for desktop and requires
+                    "openByDefault: true" to function properly
+                </h5>
+            </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
+            <div style={{ margin: '20px' }}>
+                <h5>
+                    Static version of dropdown with subcategories, mainly meant for desktop and
+                    requires "openByDefault: true" to function properly
+                </h5>
+            </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
             <h1>Main Page Content</h1>
             <p>
