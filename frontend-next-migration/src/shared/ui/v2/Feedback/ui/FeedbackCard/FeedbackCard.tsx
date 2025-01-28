@@ -7,32 +7,22 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAddFeedbackMutation, Feedback } from '@/entities/Feedback';
 import { CustomForm } from '@/shared/ui/CustomForm';
-import AngerEmoji from '@/shared/assets/icons/Feedback/AngerChatEmoticon.png';
-import JoyEmoji from '@/shared/assets/icons/Feedback/JoyChatEmoticon.png';
-import LoveEmoji from '@/shared/assets/icons/Feedback/LoveChatEmoticon.png';
-import PlayfulEmoji from '@/shared/assets/icons/Feedback/PlayfulChatEmoticon.png';
-import SadEmoji from '@/shared/assets/icons/Feedback/SadnessChatEmoticon.png';
 import send from '@/shared/assets/icons/Feedback/Email Send.png';
 import { useClientTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import cls from './FeedbackCard.module.scss';
+import FeedbackEmoji from '../FeedbackEmoji/FeedbackEmoji';
+import { Sedgwick_Ave_Display } from 'next/font/google';
 
-/**
- * @deprecated
- */
+const sedgwickFont = Sedgwick_Ave_Display({
+    subsets: ['latin'],
+    weight: '400',
+});
 
 export default function FeedbackCard() {
     const { t } = useClientTranslation('feedbackCard');
     const [feedback, setFeedback] = useState<string>('');
     const [feedbackEmoji, setFeedbackEmoji] = useState<number>();
-
-    const emojies = [
-        { src: AngerEmoji.src, value: 1 },
-        { src: SadEmoji.src, value: 2 },
-        { src: PlayfulEmoji.src, value: 3 },
-        { src: JoyEmoji.src, value: 4 },
-        { src: LoveEmoji.src, value: 5 },
-    ];
 
     const [addFeedback, { isLoading }] = useAddFeedbackMutation();
     const showToast = (message: string, type: 'success' | 'error') => {
@@ -72,20 +62,13 @@ export default function FeedbackCard() {
                 await submitFeedback();
             }}
         >
-            <h3 className={cls.feedbackTitle}>{t('title')}</h3>
-            <div className={cls.feedbackEmojies}>
-                {emojies?.map((image, index) => (
-                    <Image
-                        src={image.src}
-                        alt={`Feedback Emoji ${image.value}`}
-                        key={index}
-                        className={image.value === feedbackEmoji ? cls.selectedEmoji : cls.emoji}
-                        onClick={() => setFeedbackEmoji(image.value)}
-                        width={50}
-                        height={32}
-                    />
-                ))}
-            </div>
+            <h3 className={`${cls.feedbackTitle} ${sedgwickFont.className}`}>{t('title')}</h3>
+            <FeedbackEmoji
+                listClassName={cls.emojiList}
+                value={feedbackEmoji}
+                onImageClick={setFeedbackEmoji}
+            />
+
             <CustomForm.InputField
                 label=""
                 className={cls.textInput}
@@ -104,13 +87,13 @@ export default function FeedbackCard() {
                     t('loading')
                 ) : (
                     <>
+                        {t('send')}
                         <Image
                             src={send.src}
                             alt="Send feedback icon"
-                            width={24}
-                            height={24}
+                            width={20}
+                            height={20}
                         />{' '}
-                        {t('send')}
                     </>
                 )}
             </CustomForm.Button>
@@ -130,7 +113,7 @@ export default function FeedbackCard() {
                             display: 'inline',
                             verticalAlign: 'middle',
                             marginLeft: '5px',
-                            color: 'var(--inverted-primary-color)',
+                            color: '#FFA101',
                         }}
                     />
                 </a>
@@ -149,7 +132,7 @@ export default function FeedbackCard() {
                             display: 'inline',
                             verticalAlign: 'middle',
                             marginLeft: '5px',
-                            color: 'var(--inverted-primary-color)',
+                            color: '#FFA101',
                         }}
                     />
                 </a>
