@@ -18,7 +18,7 @@
 .feedbackTitle {
     font-style: normal;
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.9rem;
     line-height: 40px;
     padding: 0 1em 0 1em;
     height: fit-content;
@@ -60,14 +60,10 @@
     font-family: var(--font-family-texts), sans-serif;
     color: var(--inverted-bg-color);
     padding: 5px;
+    padding-left: 12px;
     width: 300px;
-
-    
-
     background: #FFFFFF;
     border: 2px solid #000000;
-
-
     box-shadow: 2px 4px 0 #121212;
     border-radius: 25px;
     box-sizing: border-box;
@@ -75,7 +71,7 @@
 
 
 .emojiList {
-    display: flex;
+    display: inline-flex !important;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -91,7 +87,7 @@
 
 .linkToFormContainer {
     width: 300px;
-    display: flex;
+    display: inline-flex !important;
     flex-direction: row;
     justify-content: space-between;
     gap: unset;
