@@ -136,16 +136,13 @@ const Page = () => {
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
             <div style={{ margin: '20px' }}>
                 <h5>
-                    Static version of dropdown, mainly meant for desktop and requires
-                    "openByDefault: true" to function properly
+                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is true
+                    dropdown will always be open)
                 </h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
             <div style={{ margin: '20px' }}>
-                <h5>
-                    Static version of dropdown with subcategories, mainly meant for desktop and
-                    requires "openByDefault: true" to function properly
-                </h5>
+                <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
             <h1>Main Page Content</h1>
