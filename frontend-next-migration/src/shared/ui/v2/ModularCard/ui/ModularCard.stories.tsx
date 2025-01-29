@@ -26,6 +26,16 @@ const meta = {
             description: 'Theme for the Card.',
             defaultValue: ModularCardTheme.PRIMARY,
         },
+        path: {
+            control: 'text',
+            description: 'URL to navigate to when the link is clicked.',
+            defaultValue: undefined,
+        },
+        isExternal: {
+            control: 'boolean',
+            description: 'Whether the link is an external link.',
+            defaultValue: false,
+        },
         children: {
             control: 'text',
             description: 'The content inside the Card.',
@@ -97,18 +107,20 @@ export const TitleImage: Story = {
     args: {
         className: 'customClass',
         theme: ModularCardTheme.TITLEIMAGE,
+        path: 'https://altzone.fi',
+        isExternal: true,
         children: (
             <>
                 <ModularCard.Texts>
                     <ModularCard.Texts.Title>Hello</ModularCard.Texts.Title>
                 </ModularCard.Texts>
                 <ModularCard.Image>
+                    <ModularCard.Image.Triangle />
                     <ModularCard.Image.Image
                         className=""
                         src={hannu}
                         alt="hannu"
                     />
-                    <ModularCard.Image.Triangle />
                 </ModularCard.Image>
             </>
         ),

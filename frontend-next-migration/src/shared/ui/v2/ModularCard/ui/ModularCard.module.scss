@@ -1,35 +1,17 @@
+// NewsImageCard
 .Card.NewsImageCard  {
-    // width:calc(50% - 30px);
-    height:199px;
+    background-color: var(--bg-color);
+    height:211px;
     border: 2px solid black;
     border-radius: var(--border-radius-custom);
     display: flex;
     margin:15px;
     box-shadow: 6px 9px 2px black;
     @media (max-width:breakpoint(lg)) {
-        // width:calc(90% - 30px);
-        height: 175px;
+        height: 187px;
     }
     @media (max-width:breakpoint(md)) {
-        height:127px;
-        // width: calc(100% - 30px);
-    }
-}
-.Card.TitleImageCard {
-    // width:calc(50% - 30px);
-    height:199px;
-    border: 2px solid black;
-    border-radius: var(--border-radius-custom);
-    display: flex;
-    margin:15px;
-    box-shadow: 3px 5px 2px black;
-    @media (max-width:breakpoint(lg)) {
-        // width:calc(90% - 30px);
-        height: 175px;
-    }
-    @media (max-width:breakpoint(md)) {
-        height:127px;
-        // width: calc(100% - 30px);
+        height:139px;
     }
 }
 .Card.NewsImageCard > div {
@@ -37,6 +19,7 @@
     overflow: hidden;
 }
 .Card.NewsImageCard > .ModularCardTexts {
+    font-family:var(--body-font);
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -48,12 +31,9 @@
     padding-right:0 !important;
     margin-top: .3em;
     margin-bottom: .5em;
-    // @media (max-width:breakpoint(md)) {
-    //     margin-top: .2em;
-    //     margin-bottom: .3em;
-    // }
     h2 {
-        font-family:var(--font-family-main);
+        font-family:var(--heading-font);
+        font-size:var(--font-size-xl);
         color:var(--secondary-color);
     }
 }
@@ -84,7 +64,6 @@
     margin-bottom: .3em;
 }
 .Card.NewsImageCard > .ModularCardImageSection > .ModularCardImage {
-    // position: absolute;
     object-fit:contain;
     height:100%;
     width:100%;
@@ -95,20 +74,35 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-bottom: 199px solid var(--bg-color);
+    border-bottom: 211px solid var(--bg-color);
     border-right: 157px solid transparent;
     transform: translateY(-100%);
     @media (max-width:breakpoint(lg)) {
-        border-bottom: 175px solid var(--bg-color);
+        border-bottom: 187px solid var(--bg-color);
         border-right: 130px solid transparent;
     }
     @media (max-width:breakpoint(md)) {
-        border-bottom: 127px solid var(--bg-color);
+        border-bottom: 139px solid var(--bg-color);
         border-right: 80px solid transparent;
     }
 }
 
-
+// TItleImageCard
+.Card.TitleImageCard {
+    background-color: var(--bg-color);
+    height:211px;
+    border: 2px solid black;
+    border-radius: var(--border-radius-custom);
+    display: flex;
+    margin:15px;
+    box-shadow: 3px 5px 2px black;
+    @media (max-width:breakpoint(lg)) {
+        height: 187px;
+    }
+    @media (max-width:breakpoint(md)) {
+        height:139px;
+    }
+}
 .Card.TitleImageCard > div {
     flex-basis: 50%;
 }
@@ -118,50 +112,40 @@
     justify-content: center;
     padding-left:.5em;
     padding-right:.5em;
-    // padding:;
 }
 .Card.TitleImageCard > .ModularCardTexts > .ModularCardTitle {
     padding-left:0 !important;
     padding-right:0 !important;
     margin-top: .3em;
     margin-bottom: .5em;
-    // @media (max-width:breakpoint(md)) {
-    //     margin-top: .2em;
-    //     margin-bottom: .3em;
-    // }
     h2 {
-        font-family:var(--font-family-main);
-        color:var(--secondary-color);
+        font-family:var(--heading-font);
         font-size:var(--font-size-xl);
+        color:var(--secondary-color);
         margin-left: 30px;
     }
 }
 .Card.TitleImageCard > .ModularCardImageSection {
-    display: flex;
-    justify-content:end;
-    background-color: red;
-    border-radius: 0 var(--border-radius-custom) var(--border-radius-custom);
+    border-radius: 0 var(--border-radius-custom) var(--border-radius-custom) 0;
 }
 .Card.TitleImageCard > .ModularCardImageSection > .ModularCardImage {
     height: 100%;
     width:min-content;
     object-fit: contain;
-    
+    margin-left:auto;
 }
 .Card.TitleImageCard > .ModularCardImageSection > .ModularCardTriangle {
     position: absolute;
-    left:50%;
     width: 0;
     height: 0;
-    border-bottom: 195px solid var(--bg-color);
+    border-bottom: 207px solid var(--bg-color);
     border-right: 157px solid transparent;
-    // transform: translate3d(-100%, -200%, 0);
     @media (max-width:breakpoint(lg)) {
-        border-bottom: 171px solid var(--bg-color);
+        border-bottom: 183px solid var(--bg-color);
         border-right: 130px solid transparent;
     }
     @media (max-width:breakpoint(md)) {
-        border-bottom: 123px solid var(--bg-color);
+        border-bottom: 135px solid var(--bg-color);
         border-right: 80px solid transparent;
     }
 }

@@ -1,4 +1,14 @@
-import { FC, memo, ReactNode } from 'react';
+import {
+    FC,
+    memo,
+    ReactNode,
+    forwardRef,
+    LegacyRef,
+    HTMLAttributes,
+    DetailedHTMLProps,
+    ForwardRefExoticComponent,
+    RefAttributes,
+} from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
@@ -52,9 +62,14 @@ export enum ModularCardTheme {
  *      </ModularCard.Image>
  * </ModularCard>
  */
-interface ModularCardProps {
+interface ModularCardProps
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     className?: string;
     theme?: ModularCardTheme;
+    path?: string;
+    isExternal?: boolean;
+    withScalableLink?: boolean;
+    ref?: LegacyRef<HTMLDivElement>;
     children: ReactNode;
 }
 
@@ -86,34 +101,54 @@ interface ModularCardImageSection extends FC<CardCompoundProps> {
     Triangle: FC<{ className?: string }>;
 }
 
-/**
- * Card component with composable subcomponents.
- * @component
- *
- * @example
- * <ModularCard className="customClass" theme={ModularCardTheme.TITLEIMAGE}>
- *      <ModularCard.Texts>
- *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
- *      </ModularCard.Texts>
- *      <ModularCard.Image>
- *          <ModularCard.Image.Image
- *              src={image}
- *              alt="alt"
- *          />
- *          <ModularCard.Image.Triangle />
- *      </ModularCard.Image>
- * </ModularCard>
- */
-interface ModularCardComponent extends FC<ModularCardProps> {
+interface ModularCardComponent
+    extends ForwardRefExoticComponent<
+        Omit<ModularCardProps, 'ref'> & RefAttributes<HTMLDivElement>
+    > {
     Texts: ModularCardTexts;
     Image: ModularCardImageSection;
 }
 
-const ModularCard: ModularCardComponent = (props: ModularCardProps) => {
-    const { className = '', theme = ModularCardTheme.PRIMARY, children } = props;
-    return <div className={classNames(cls.Card, {}, [className, cls[theme]])}>{children}</div>;
-};
+const ModularCard: any = forwardRef<HTMLDivElement, ModularCardProps>((props, ref) => {
+    const {
+        className = '',
+        theme = ModularCardTheme.PRIMARY,
+        path,
+        isExternal = false,
+        withScalableLink = false,
+        children,
+        ...otherProps
+    } = props;
+    const mods: Record<string, boolean> = {
+        [cls.withScalableLink]: withScalableLink,
+    };
+    return (
+        <div>
+            {path ? (
+                <AppLink
+                    to={path}
+                    isExternal={isExternal}
+                >
+                    <div
+                        className={classNames(cls.Card, {}, [className, cls[theme]])}
+                        {...otherProps}
+                    >
+                        {children}
+                    </div>
+                </AppLink>
+            ) : (
+                <div
+                    className={classNames(cls.Card, {}, [className, cls[theme]])}
+                    {...otherProps}
+                >
+                    {children}
+                </div>
+            )}
+        </div>
+    );
+});
 
+ModularCard.displayName = 'modularcard';
 /**
  * ModularCard.Texts.Title component for the ModularCard.
  * @component
@@ -269,7 +304,27 @@ ModularCardTexts.Footnote = ModularCardFootnote;
 ModularCard.Texts = ModularCardTexts;
 ModularCard.Image = ModularCardImageSection;
 
-export { ModularCard };
+/**
+ * Card component with composable subcomponents.
+ * @component
+ *
+ * @example
+ * <ModularCard className="customClass" theme={ModularCardTheme.TITLEIMAGE}>
+ *      <ModularCard.Texts>
+ *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *      </ModularCard.Texts>
+ *      <ModularCard.Image>
+ *          <ModularCard.Image.Image
+ *              src={image}
+ *              alt="alt"
+ *          />
+ *          <ModularCard.Image.Triangle />
+ *      </ModularCard.Image>
+ * </ModularCard>
+ */
+const ModularCardInRightType: ModularCardComponent = ModularCard;
+
+export { ModularCardInRightType as ModularCard };
 
 // <AppLink
 //     to={path}
