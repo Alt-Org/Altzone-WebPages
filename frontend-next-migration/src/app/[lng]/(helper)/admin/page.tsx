@@ -22,7 +22,6 @@ const Page = () => {
 
     const navMenuWithDropdownsProps3: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
-        openByDefault: true,
         staticDropdown: true,
         dropdownItems: [
             { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
@@ -34,7 +33,6 @@ const Page = () => {
 
     const navMenuWithDropdownsProps4: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
-        openByDefault: true,
         staticDropdown: true,
         dropdownItems: [
             { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
