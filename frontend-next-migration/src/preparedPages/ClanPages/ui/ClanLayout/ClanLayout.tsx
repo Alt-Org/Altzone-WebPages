@@ -1,4 +1,3 @@
-// remember to remove use client
 'use client';
 import cls from './ClanLayout.module.scss';
 import {
