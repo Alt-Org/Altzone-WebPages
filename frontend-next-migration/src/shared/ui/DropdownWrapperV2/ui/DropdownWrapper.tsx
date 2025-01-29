@@ -28,7 +28,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         staticTitle = '',
     } = props;
 
-    const [isOpen, setIsOpen] = useState<boolean>(openByDefault);
+    const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
     const [shouldRender, setShouldRender] = useState<boolean>(false);
     const [animationState, setAnimationState] = useState<'opening' | 'closing' | ''>('');
     const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
