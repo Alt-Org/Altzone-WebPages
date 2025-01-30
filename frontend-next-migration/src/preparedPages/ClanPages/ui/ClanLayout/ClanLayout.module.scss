@@ -30,6 +30,9 @@
     flex: 1;
     padding: 1rem;
     margin: 0.5rem;
+    max-width: 75%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Desktop */
@@ -38,11 +41,13 @@
         display: block;
         /* Visible on desktop */
     }
+
     .header {
         text-align: left;
         padding: 1rem 2rem;
         margin-bottom: 1rem;
     }
+
     .mobileNav {
         display: none;
     }
@@ -52,25 +57,30 @@
     .layoutContainer {
         flex-direction: column;
     }
+
     .headerSidebarContainer {
         width: 100%;
-        margin: 0;       
+        margin: 0;
     }
+
     .header {
         text-align: center;
         height: 50px;
         padding: 0.5rem;
     }
+
     .mobileNav {
-        display: block;
+        display: contents;
         /* Visible on mobile */
         margin-top: 0.5rem;
         height: 50px;
     }
+
     .sidebar {
         display: none;
         /* Hidden on mobile */
     }
+
     .content {
         margin: 0rem;
         margin-top: 0.5rem;

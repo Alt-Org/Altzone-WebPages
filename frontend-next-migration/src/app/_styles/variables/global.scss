@@ -7,7 +7,7 @@
   --font-size-s: 14px;
   --font-line-s: 20px;
   --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
-  // --font-s: var(--font-size-s) / var(--font-line-s);
+  //--font-s: var(--font-size-s) / var(--font-line-s);
 
   --font-size-xs: 12px;
   --font-line-xs: 18px;
@@ -50,6 +50,9 @@
   --font-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-main);
   //--font-5xl: var(--font-size-5xl) / var(--font-line-5xl);
 
+  //figma spacers
+  --spacer300: 16px;
+
   // sizes
   --navbar-height: 150px;
   //--navbar-height: 20vh;
@@ -76,9 +79,15 @@
   --red-light: #f80606;
   --red-dark: #c50404;
 
+  --content-primary: #FFA100;
+  --base-card-background: #1E3544;
+  --drop-shadows: #121212;
+
 
   // border-radius
   --border-radius-custom: 15px;
+  --border-radius-figma: 25px;
+  --border-radius-figmadesktop: 12px;
 
   //borders
   --border-thick-yellow: 5px solid yellow;
@@ -111,4 +120,3 @@
     width: auto;
   }
 }
-
