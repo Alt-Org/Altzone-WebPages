@@ -2,11 +2,11 @@
 .Card.NewsImageCard  {
     background-color: var(--bg-color);
     height:211px;
-    border: 2px solid black;
+    border: 2px solid #121212;
     border-radius: var(--border-radius-custom);
     display: flex;
     margin:15px;
-    box-shadow: 6px 9px 2px black;
+    box-shadow: 4px 6px 2px #121212;
     @media (max-width:breakpoint(lg)) {
         height: 187px;
     }
@@ -74,15 +74,15 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-bottom: 211px solid var(--bg-color);
+    border-bottom: 207px solid var(--bg-color);
     border-right: 157px solid transparent;
-    transform: translateY(-100%);
+    // transform: translateY(-100%);
     @media (max-width:breakpoint(lg)) {
-        border-bottom: 187px solid var(--bg-color);
+        border-bottom: 183px solid var(--bg-color);
         border-right: 130px solid transparent;
     }
     @media (max-width:breakpoint(md)) {
-        border-bottom: 139px solid var(--bg-color);
+        border-bottom: 135px solid var(--bg-color);
         border-right: 80px solid transparent;
     }
 }
@@ -91,11 +91,11 @@
 .Card.TitleImageCard {
     background-color: var(--bg-color);
     height:211px;
-    border: 2px solid black;
+    border: 2px solid #121212;
     border-radius: var(--border-radius-custom);
     display: flex;
     margin:15px;
-    box-shadow: 3px 5px 2px black;
+    box-shadow: 2px 4px 2px #121212;
     @media (max-width:breakpoint(lg)) {
         height: 187px;
     }

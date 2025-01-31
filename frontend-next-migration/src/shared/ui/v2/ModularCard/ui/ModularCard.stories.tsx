@@ -1,16 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import {
-    ModularCard,
-    ModularCardTheme,
-    // ModularCardContent,
-    // ModularCardContainer,
-    // ModularCardTitle,
-    // ModularCardBody,
-    // ModularCardFooter,
-    // ModularCardImage,
-    // ModularCardImageTriangle,
-} from './ModularCard'; // Import your component
+import { ModularCard, ModularCardTheme } from './ModularCard'; // Import your component
 
 const meta = {
     title: 'shared/ui/v2/ModularCard',
@@ -91,12 +81,12 @@ export const Default: Story = {
                     <ModularCard.Texts.Footnote>22.1.2025 11.27</ModularCard.Texts.Footnote>
                 </ModularCard.Texts>
                 <ModularCard.Image>
+                    <ModularCard.Image.Triangle />
                     <ModularCard.Image.Image
                         className=""
                         src={hannu}
                         alt="hannu"
                     />
-                    <ModularCard.Image.Triangle />
                 </ModularCard.Image>
             </>
         ),
@@ -126,43 +116,3 @@ export const TitleImage: Story = {
         ),
     },
 };
-
-// export const TitleImage: Story = {
-//     args: {
-//         className: 'customClass',
-//         theme: ModularCardTheme.TITLEIMAGE,
-//         children: [
-//             <ModularCardContent
-//                 theme={ModularCardTheme.TITLEIMAGE}
-//                 key={0}
-//             >
-//                 <ModularCardContainer theme={ModularCardTheme.TITLEIMAGE}>
-//                     <ModularCardTitle theme={ModularCardTheme.TITLEIMAGE}>Otsikko</ModularCardTitle>
-//                 </ModularCardContainer>
-//                 <ModularCardContainer theme={ModularCardTheme.TITLEIMAGE}>
-//                     <p>s</p>
-//                 </ModularCardContainer>
-//             </ModularCardContent>,
-//         ],
-//     },
-// };
-
-// export const WithCustomLink: Story = {
-//     args: {
-//         className: 'customClass',
-//         theme: ModularCardTheme.PRIMARY,
-//         children: (
-//             <>
-//                 <ModularCard.Title>Another Card</ModularCard.Title>
-//                 <ModularCard.Body>This is another example of card content.</Card.Body>
-//                 <ModularCard.Date>2023-11-05</ModularCard.Date>
-//                 <ModularCard.ReadMoreLink
-//                     path="https://example.com"
-//                     isExternal
-//                 >
-//                     Visit External Link
-//                 </ModularCard.ReadMoreLink>
-//             </>
-//         ),
-//     },
-// };

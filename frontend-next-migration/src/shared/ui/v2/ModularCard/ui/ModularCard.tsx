@@ -210,7 +210,7 @@ const ModularCardFootnote = memo((props: CardCompoundProps) => {
 ModularCardFootnote.displayName = 'modularcard-Texts-Footnote';
 
 /**
- * ModularCard.Image.Image component for the ModularCard.
+ * ModularCard.Image.Image component for displaying image in left side.
  * @component
  * @param {ModularCardImageProps} props - Props for the component.
  *
@@ -236,12 +236,17 @@ const ModularCardImage = memo((props: ModularCardImageProps) => {
 ModularCardImage.displayName = 'modularcard-Image-Image';
 
 /**
- * ModularCard.Image.Triangle component for the ModularCard.
+ * ModularCard.Image.Triangle component for the being in top of the image.
  * @component
  * @param {{className:string}} props - Props for the component.
  *
  * @example
- * <ModularCard.Image.Triangle />
+ * <ModularCard.Image.Triangle /> // This is plced before the image is placed.
+ * <ModularCard.Image.Image
+ *      className="customImageClass"
+ *      src={image}
+ *      alt="alt"
+ * />
  */
 const ModularCardTriangle = memo((props: { className?: string }) => {
     const { className = '' } = props;
