@@ -3,8 +3,7 @@
   font: var(--font-xxl);
   padding-top: 50px;
   color: #fbf7dc;
-  color:var(--content-primary);
-
+  
   width: 100%;
   text-align: center;
   z-index: var(--navbar-z-index);
@@ -12,7 +11,7 @@
   top: 0;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
-  //position: relative;
+  position: relative;
   height: var(--navbar-height);
   user-select: none;
   &.collapsing{
@@ -29,22 +28,19 @@
 }
 
 .siteNavContentList {
-  height: 52px;
- 
-  // height: var(--navbar-height);
+  // height: 52px;
+  height:180px;
+
   // padding: 0 10px 0 50px;
   padding :23px, 23px;
   background-color:var(--base-card-background);
   border-radius: var(--border-radius-custom);
   border: 4px solid var(--drop-shadows);
-  color:var(--content-primary);
-
   gap: 1em;
   list-style: none;
   z-index: 2;
   position: relative;
   width: 100%;
-
   // transition: width 0.4s ease-out, padding-right 0.4s ease-out, opacity 0.4s ease-out;
   transition:  0.4s ease-out;
 
@@ -59,11 +55,16 @@
   opacity: 0.8;
 }
 
+.navItem>ul{
+  list-style-type: none;
+
+
+}
 .navItem {
 
   // color: var(--primary-color);
-// color:var(--content-primary);
-
+color:var(--content-primary);
+list-style-type: none;
 
   opacity: 1;
   transform: translateX(0) scaleX(1);
@@ -84,16 +85,15 @@
     overflow-x: hidden;
   }
 
-  // &.active {
-  //   color: var(--secondary-color)!important;
-  //   //font-weight: 600;
-  //   &>a{
-  //     color: var(--secondary-color)!important;
-  //     //font-weight: 600;
-  //   }
-  // }
+  &.active {
+    color: var(--secondary-color)!important;
+    //font-weight: 600;
+    &>a{
+      color: var(--secondary-color)!important;
+      //font-weight: 600;
+    }
+  }
 }
-
 
 .appLinkLogo {
   display: block;
@@ -120,21 +120,21 @@
     max-width: 150%;
   }
 }
-
 .itemNavbarDropDownContent {
   // outline: 2px solid var(--inverted-primary-color);
   text-align: left;
   // border-radius: var(--border-radius-custom);
   // background-color: var(--transparent-bg-dark);
-  background-color:var(--base-card-background);
 
+  // background-color:var(--base-card-background);
+  top: 100px;
   padding: 10px;
+  
 
   //div {
   //  @include link-scale-effect;
   //}
 }
-
 
 
 .langSwitcher {
@@ -168,9 +168,6 @@
     width: 100%;
     // border-radius: var(--border-radius-custom);
     // outline: 2px solid var(--inverted-primary-color);
-    // color: var(--content-primary);
-    // color:var(--content-primary);
-
     list-style-type: none;
     padding: 4px;
     display: flex;
@@ -190,7 +187,7 @@
   }
 
   li:hover {
-    // color: white;
+    color: white;
 
   }
 
