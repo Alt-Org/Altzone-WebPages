@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import { memo } from 'react';
@@ -5,7 +6,6 @@ import { useUserPermissionsV2 } from '@/entities/Auth';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
-import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import { NavbarMenuItem } from '../../model/types';
 import cls from './NavbarDesktop.module.scss';
 
@@ -72,22 +72,28 @@ const NavItem = memo((props: NavItemProps) => {
 
         const isDropdownActive = localizedElements.some((element) => element.active);
 
-        return (
-            <li
-                key={item.name}
-                className={classNames(cls.navItem, { [cls.active]: isDropdownActive }, [className])}
-            >
-                <DropdownWrapper
-                    elements={localizedElements}
-                    contentAbsolute={true}
-                    mouseOverLeaveMode={true}
-                    contentClassName={cls.itemNavbarDropDownContent}
-                >
-                    <div>{t(`${item.name}`)}</div>
-                </DropdownWrapper>
-            </li>
-        );
-    }
+    return (
+                    <li
+                        key={item.name}
+                        className={classNames(cls.navItem, { [cls.active]: isDropdownActive }, [className])}
+                    >
+                        <div>{t(`${item.name}`)}</div>
+                        <ul className={cls.itemNavbarDropDownContent}>
+                            {localizedElements.map((element) => (
+                                <li key={element.elementText} className={classNames({ [cls.active]: element.active })}>
+                                    <AppLink
+                                        theme={AppLinkTheme.SECONDARY}
+                                        to={element.link.path}
+                                    >
+                                        {element.elementText}
+                                    </AppLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
+                );
+            }
+        
 
     if (itemType === 'navLogo') {
         return (
