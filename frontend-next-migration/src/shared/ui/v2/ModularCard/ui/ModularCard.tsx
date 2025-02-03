@@ -25,42 +25,15 @@ export enum ModularCardTheme {
 }
 
 /**
- * Props for the ModularCard component.
+ * Props for the ModularCard component. Extends HTMLDivElement attributes.
  * {Object} ModularCardProps
  * @property {string} [className=""] - Additional class name(s) for the Card.
  * @property {CardTheme} [theme=CardTheme.PRIMARY] - Theme for the Card.
+ * @property {string} [path] - Link address (optional).
+ * @property {string} [isExternal=false] - If path is not in this server (optional).
+ * @property {string} [withScalableLink] - Additional styling to link (optional).
+ * @property {LegacyRef<HTMLDivElement>} [ref] - Reference to the card (optional)
  * @property {ReactNode} children - The content of the Card.
- *
- * @example
- * // With TITLEIMAGE theme
- * <ModularCard className="customClass" theme={ModularCardTheme.TITLEIMAGE}>
- *      <ModularCard.Texts>
- *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
- *      </ModularCard.Texts>
- *      <ModularCard.Image>
- *          <ModularCard.Image.Image
- *              src={image}
- *              alt="alt"
- *          />
- *          <ModularCard.Image.Triangle />
- *      </ModularCard.Image>
- * </ModularCard>
- * @example
- * // With NEWSIMAGE theme
- * <ModularCard className="customClass" theme={ModularCardTheme.NEWSIMAGE}>
- *      <ModularCard.Texts>
- *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
- *          <ModularCard.Texts.Body>Body</ModularCard.Texts.Body>
- *          <ModularCard.Texts.Footnote>Footnote</ModularCard.Texts.Footnote>
- *      </ModularCard.Texts>
- *      <ModularCard.Image>
- *          <ModularCard.Image.Image
- *              src={image}
- *              alt="alt"
- *          />
- *          <ModularCard.Image.Triangle />
- *      </ModularCard.Image>
- * </ModularCard>
  */
 interface ModularCardProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -82,12 +55,6 @@ interface ModularCardImageProps {
     className?: string;
     alt: string;
     src: StaticImageData | string;
-}
-
-interface ReadMoreLinkProps extends CardCompoundProps {
-    path: string;
-    isExternal?: boolean;
-    withScalableLink?: boolean;
 }
 
 interface ModularCardTexts extends FC<CardCompoundProps> {
@@ -122,28 +89,27 @@ const ModularCard: any = forwardRef<HTMLDivElement, ModularCardProps>((props, re
     const mods: Record<string, boolean> = {
         [cls.withScalableLink]: withScalableLink,
     };
-    return (
-        <div>
-            {path ? (
-                <AppLink
-                    to={path}
-                    isExternal={isExternal}
-                >
-                    <div
-                        className={classNames(cls.Card, {}, [className, cls[theme]])}
-                        {...otherProps}
-                    >
-                        {children}
-                    </div>
-                </AppLink>
-            ) : (
+    if (path) {
+        return (
+            <AppLink
+                to={path}
+                isExternal={isExternal}
+            >
                 <div
                     className={classNames(cls.Card, {}, [className, cls[theme]])}
                     {...otherProps}
                 >
                     {children}
                 </div>
-            )}
+            </AppLink>
+        );
+    }
+    return (
+        <div
+            className={classNames(cls.Card, {}, [className, cls[theme]])}
+            {...otherProps}
+        >
+            {children}
         </div>
     );
 });
@@ -271,8 +237,6 @@ const ModularCardTexts: ModularCardTexts = (props: CardCompoundProps) => {
     return <div className={classNames(cls.ModularCardTexts, {}, [className])}>{children}</div>;
 };
 
-ModularCardTexts.displayName = 'modularcard-Texts';
-
 /**
  * ModularCard.Image component for the ModularCard.
  * @component
@@ -294,8 +258,6 @@ const ModularCardImageSection: ModularCardImageSection = (props: CardCompoundPro
     );
 };
 
-ModularCardImageSection.displayName = 'modularcard-IamgeSection';
-
 // ImageSection
 ModularCardImageSection.Image = ModularCardImage;
 ModularCardImageSection.Triangle = ModularCardTriangle;
@@ -305,7 +267,7 @@ ModularCardTexts.Title = ModularCardTitle;
 ModularCardTexts.Body = ModularCardBody;
 ModularCardTexts.Footnote = ModularCardFootnote;
 
-// Adding texts and imagesection
+// Adding texts and imagesection to modularcard
 ModularCard.Texts = ModularCardTexts;
 ModularCard.Image = ModularCardImageSection;
 
@@ -314,9 +276,36 @@ ModularCard.Image = ModularCardImageSection;
  * @component
  *
  * @example
- * <ModularCard className="customClass" theme={ModularCardTheme.TITLEIMAGE}>
+ * // With TITLEIMAGE theme
+ * <ModularCard
+ *      className="customClass"
+ *      theme={ModularCardTheme.TITLEIMAGE}
+ *      path='/fi/page/details'
+ *      isExternal={false}
+ *      withScalableLink={true}
+ * >
  *      <ModularCard.Texts>
  *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *      </ModularCard.Texts>
+ *      <ModularCard.Image>
+ *          <ModularCard.Image.Image
+ *              src={image}
+ *              alt="alt"
+ *          />
+ *          <ModularCard.Image.Triangle />
+ *      </ModularCard.Image>
+ * </ModularCard>
+ * @example
+ * // With NEWSIMAGE theme
+ * <ModularCard
+ *      className="customClass"
+ *      theme={ModularCardTheme.NEWSIMAGE}
+ *      onClick={onClickHandler}
+ * >
+ *      <ModularCard.Texts>
+ *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *          <ModularCard.Texts.Body>Body</ModularCard.Texts.Body>
+ *          <ModularCard.Texts.Footnote>Footnote</ModularCard.Texts.Footnote>
  *      </ModularCard.Texts>
  *      <ModularCard.Image>
  *          <ModularCard.Image.Image
@@ -330,10 +319,3 @@ ModularCard.Image = ModularCardImageSection;
 const ModularCardInRightType: ModularCardComponent = ModularCard;
 
 export { ModularCardInRightType as ModularCard };
-
-// <AppLink
-//     to={path}
-//     isExternal={isExternal}
-// >
-//     <h2 className={classNames(cls.ReadMoreLink, mods, [className])}>{children}</h2>
-// </AppLink>
