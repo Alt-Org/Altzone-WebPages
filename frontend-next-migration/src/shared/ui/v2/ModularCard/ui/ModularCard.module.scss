@@ -24,14 +24,14 @@
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
     display: flex;
-    box-shadow: 4px 8px 0 #121212;
+    box-shadow: 4px 8px 0 var(--black);
     @media (max-width:breakpoint(xxl)) {
         height: 160px;
     }
     @media (max-width:breakpoint(md)) {
         height:132px;
         border: var(--border-mobile) solid var(--black);
-        box-shadow: 2px 4px 0 #121212;
+        box-shadow: 2px 4px 0 var(--black);
     }
 }
 .Card.NewsImageCard > div {
@@ -113,10 +113,10 @@
 .Card.TitleImageCard {
     background-color: var(--background);
     height: 187px;
-    border: var(--border-mobile) solid #121212;
+    border: var(--border-mobile) solid var(--black);
     border-radius: var(--border-radius-sm);
     display: flex;
-    box-shadow: 2px 4px 2px #121212;
+    box-shadow: 2px 4px 0 var(--black);
     @media (max-width:breakpoint(md)) {
         height:139px;
     }
