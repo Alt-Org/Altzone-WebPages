@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import { ModularCard, ModularCardTheme } from './ModularCard'; // Import your component
+import ModularCard, { ModularCardTheme } from './ModularCard'; // Import your component
 
 const meta = {
     title: 'shared/ui/v2/ModularCard',

@@ -76,7 +76,7 @@ interface ModularCardComponent
     Image: ModularCardImageSection;
 }
 
-const ModularCard: any = forwardRef<HTMLDivElement, ModularCardProps>((props, ref) => {
+const ModularCardBase: any = forwardRef<HTMLDivElement, ModularCardProps>((props, ref) => {
     const {
         className = '',
         theme = ModularCardTheme.PRIMARY,
@@ -114,7 +114,7 @@ const ModularCard: any = forwardRef<HTMLDivElement, ModularCardProps>((props, re
     );
 });
 
-ModularCard.displayName = 'modularcard';
+ModularCardBase.displayName = 'modularcard';
 /**
  * ModularCard.Texts.Title component for the ModularCard.
  * @component
@@ -268,8 +268,8 @@ ModularCardTexts.Body = ModularCardBody;
 ModularCardTexts.Footnote = ModularCardFootnote;
 
 // Adding texts and imagesection to modularcard
-ModularCard.Texts = ModularCardTexts;
-ModularCard.Image = ModularCardImageSection;
+ModularCardBase.Texts = ModularCardTexts;
+ModularCardBase.Image = ModularCardImageSection;
 
 /**
  * Card component with composable subcomponents.
@@ -316,6 +316,6 @@ ModularCard.Image = ModularCardImageSection;
  *      </ModularCard.Image>
  * </ModularCard>
  */
-const ModularCardInRightType: ModularCardComponent = ModularCard;
+const ModularCard: ModularCardComponent = ModularCardBase;
 
-export { ModularCardInRightType as ModularCard };
+export default ModularCard;
