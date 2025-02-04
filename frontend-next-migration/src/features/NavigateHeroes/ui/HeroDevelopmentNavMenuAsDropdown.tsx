@@ -10,8 +10,11 @@ import {
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { getRouteOneHeroDevPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
+    const { isMobileSize, isTabletSize } = useSizes();
+    const isTouchDevice = isMobileSize || isTabletSize;
     const { t } = useClientTranslation('heroes');
     const pathname = usePathname();
     const selectedHero = pathname.split('/')[3];
@@ -39,6 +42,7 @@ const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
     return (
         <NavMenuWithDropdowns
             className={cls.Width}
+            staticDropdown={isTouchDevice ? false : true}
             {...navMenuWithDropdownsProps}
         />
     );
