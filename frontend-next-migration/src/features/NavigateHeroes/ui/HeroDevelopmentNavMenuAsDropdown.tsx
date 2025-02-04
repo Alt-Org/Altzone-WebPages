@@ -23,7 +23,7 @@ const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
     const allHeroGroups = heroManager.getGroupsWithHeroesAsArray();
 
     const dropdownItems: DropdownItem[] = allHeroGroups.map((group) => ({
-        title: group.name,
+        title: group.name.charAt(0) + group.name.slice(1).toLowerCase(),
         openByDefault: false,
         elements: group.heroes.map((hero) => ({
             elementText: hero.title,
