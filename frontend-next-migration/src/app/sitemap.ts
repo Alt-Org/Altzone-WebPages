@@ -5,11 +5,23 @@ export const dynamic = 'force-static';
 
 /**
  * Generate a sitemap.xml file.
+ * @constant {string} BASE_URL - The base domain for all URLs, fetched from envHelper.
  * @returns {MetadataRoute.Sitemap} A Sitemap object that contains page URLs and other information.
  * @property {string} url - Page URL.
+ * @property {Date} lastModified - The last modification date of the page.
  * @property {'always'|'daily'|'weekly'|'monthly'|'yearly'|'never'} changefreq - Page change frequency.
  * @property {number} priority - Page importance (0.0-1.0).
+ * Example usage:
+ * [
+ *   {
+ *     url: "https://altzone.fi/fi/news",
+ *     lastModified: new Date(),
+ *     changeFrequency: "daily",
+ *     priority: 0.9
+ *   }
+ * ]
  */
+
 const BASE_URL = envHelper.appDomain;
 
 export default function sitemap(): MetadataRoute.Sitemap {
