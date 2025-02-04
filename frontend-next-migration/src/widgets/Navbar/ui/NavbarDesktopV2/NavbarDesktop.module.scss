@@ -2,36 +2,25 @@
   position: absolute;
   font: var(--font-xxl);
   padding-top: 50px;
-  color: #fbf7dc;
   
   width: 100%;
   text-align: center;
   z-index: var(--navbar-z-index);
   font-weight: 500;
-  top: 0;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
   margin-top: 5px;
   position: relative;
   height: var(--navbar-height);
   user-select: none;
-  &.collapsing{
-    overflow: hidden;
-  }
-  &.collapsed{
-    overflow: hidden;
-  }
-}
 
-.siteNav.fixed {
-  position: fixed;
-  //position: sticky;
+  &.hover{
+    height:200px;
+   }
+
 }
 
 .siteNavContentList {
-  // height: 52px;
-  height:180px;
-
-  // padding: 0 10px 0 50px;
+  height: 52px;
   padding :23px, 23px;
   background-color:var(--base-card-background);
   border-radius: var(--border-radius-custom);
@@ -41,13 +30,14 @@
   z-index: 2;
   position: relative;
   width: 100%;
-  // transition: width 0.4s ease-out, padding-right 0.4s ease-out, opacity 0.4s ease-out;
   transition:  0.4s ease-out;
-
-  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  &:hover {
+    height: 200px;
+    align-items: flex-start;
+  }
 }
 
 .siteNavContentList.collapsed {
@@ -55,44 +45,32 @@
   opacity: 0.8;
 }
 
-.navItem>ul{
-  list-style-type: none;
-
-
-}
 .navItem {
+  color:var(--content-primary);
 
-  // color: var(--primary-color);
-color:var(--content-primary);
+
 list-style-type: none;
 
   opacity: 1;
-  transform: translateX(0) scaleX(1);
-  transform-origin: right;
   transition: transform 0.3s ease-out 0.2s, opacity 0.3s ease-out 0.5s;
-  visibility:visible;
-
-  display: flex;
+  // visibility:visible
   height: max-content;
   line-height: initial;
   padding: 10px 0;
-
+  position: relative;
   &.collapsed{
     transform: translateX(-100px) scaleX(0.7);
     opacity: 0;
     visibility: hidden;
     transition: transform 0.3s ease-in, opacity 0.3s ease-in;
     overflow-x: hidden;
+    
+  }
+ &:hover > ul {
+    display: block;
+  
   }
 
-  &.active {
-    color: var(--secondary-color)!important;
-    //font-weight: 600;
-    &>a{
-      color: var(--secondary-color)!important;
-      //font-weight: 600;
-    }
-  }
 }
 
 .appLinkLogo {
@@ -121,21 +99,22 @@ list-style-type: none;
   }
 }
 .itemNavbarDropDownContent {
-  // outline: 2px solid var(--inverted-primary-color);
-  text-align: left;
-  // border-radius: var(--border-radius-custom);
-  // background-color: var(--transparent-bg-dark);
-
-  // background-color:var(--base-card-background);
-  top: 100px;
+  text-align: center;
+  list-style-type: none;
   padding: 10px;
-  
+  display: none;
+  color: #fbf7dc !important;
 
   //div {
   //  @include link-scale-effect;
   //}
+ 
 }
 
+.siteNavContentList:hover .itemNavbarDropDownContent {
+  display: block;
+
+}
 
 .langSwitcher {
   position: relative;
@@ -166,15 +145,15 @@ list-style-type: none;
     right: 0;
     height: max-content;
     width: 100%;
-    // border-radius: var(--border-radius-custom);
-    // outline: 2px solid var(--inverted-primary-color);
     list-style-type: none;
     padding: 4px;
     display: flex;
+
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    // background-color: var(--transparent-bg-dark);
+
+    background-color: var(--transparent-bg-dark);
     background-color: var(--base-card-background);
     
   }
@@ -190,8 +169,9 @@ list-style-type: none;
     color: white;
 
   }
-
+ 
 }
+
 
 .authButton {
   border-radius: var(--border-radius-custom);
@@ -208,6 +188,15 @@ list-style-type: none;
   }
 }
 
+.siteNavContentList:hover .authButton {
+  top:20px; 
+ 
+}
+.siteNavContentList:hover .langSwitcher {
+  top:12px; 
+}
+
+
 .logoutButton {
   cursor: pointer;
 }
@@ -216,24 +205,8 @@ list-style-type: none;
 .FixButtonWrapper {
   margin-left: auto;
   margin-right: 50px;
+  margin-bottom:9px;
   &.fixed{
     margin-right: unset;
-  }
-}
-
-.CollapseButtonWrapper {
-  position: absolute;
-  right: 12px;
-  top: 8px;
-  cursor: pointer;
-  opacity: 1!important;
-  .CollapseButton{
-    cursor: pointer;
-  }
-  &.collapsing{
-    .CollapseButton{
-      pointer-events: none;
-      opacity: 0.5;
-    }
   }
 }
