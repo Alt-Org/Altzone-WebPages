@@ -7,7 +7,7 @@ import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
     DropdownItem,
-} from '@/shared/ui/NavMenuWithDropdowns';
+} from '@/shared/ui/NavMenuWithDropdownsV2';
 import { getRouteOneHeroDevPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
 
