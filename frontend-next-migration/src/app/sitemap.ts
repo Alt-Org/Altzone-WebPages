@@ -1,4 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { envHelper } from '@/shared/const/envHelper';
+
+export const dynamic = 'force-static';
 
 /**
  * Generate a sitemap.xml file.
@@ -7,71 +10,72 @@ import type { MetadataRoute } from 'next';
  * @property {'always'|'daily'|'weekly'|'monthly'|'yearly'|'never'} changefreq - Page change frequency.
  * @property {number} priority - Page importance (0.0-1.0).
  */
+const BASE_URL = envHelper.appDomain || 'https://altzone.fi';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
         {
-            url: 'https://altzone.fi',
+            url: `${BASE_URL}`,
             lastModified: new Date(),
             changeFrequency: 'always',
             priority: 1.0,
         },
         {
-            url: 'https://altzone.fi/fi/news',
+            url: `${BASE_URL}/fi/news`,
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.9,
         },
         {
-            url: 'https://altzone.fi/fi/heroes',
+            url: `${BASE_URL}/fi/heroes`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: 'https://altzone.fi/fi/hero-development',
+            url: `${BASE_URL}/fi/hero-development`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.5,
         },
         {
-            url: 'https://altzone.fi/fi/clans',
+            url: `${BASE_URL}/fi/clans`,
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.8,
         },
         {
-            url: 'https://altzone.fi/fi/picture-galleries',
+            url: `${BASE_URL}/fi/picture-galleries`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
-            url: 'https://altzone.fi/fi/comics',
+            url: `${BASE_URL}/fi/comics`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.4,
         },
         {
-            url: 'https://altzone.fi/fi/furniture',
+            url: `${BASE_URL}/fi/furniture`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
         },
         {
-            url: 'https://altzone.fi/fi/artGame',
+            url: `${BASE_URL}/fi/artGame`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.3,
         },
         {
-            url: 'https://altzone.fi/fi/join-us',
+            url: `${BASE_URL}/fi/join-us`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.3,
         },
         {
-            url: 'https://altzone.fi/fi/team',
+            url: `${BASE_URL}/fi/team`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.5,
