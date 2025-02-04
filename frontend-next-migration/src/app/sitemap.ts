@@ -10,7 +10,7 @@ export const dynamic = 'force-static';
  * @property {'always'|'daily'|'weekly'|'monthly'|'yearly'|'never'} changefreq - Page change frequency.
  * @property {number} priority - Page importance (0.0-1.0).
  */
-const BASE_URL = envHelper.appDomain || 'https://altzone.fi';
+const BASE_URL = envHelper.appDomain;
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
