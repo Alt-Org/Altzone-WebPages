@@ -15,8 +15,8 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import cls from './ModularCard.module.scss';
 
 /**
- * Module containing a React CardTheme component with customizable themes, sizes, and square styling.
- * @module Card
+ * Module containing a React CardTheme component with customizable themes, sizes, and square styling. (PRIMARY, TITLEIMAGE, NEWSCARD)
+ * @module ModularCard
  */
 export enum ModularCardTheme {
     PRIMARY = '',
@@ -119,6 +119,7 @@ const ModularCardBase: any = forwardRef<HTMLDivElement, ModularCardProps>((props
 ModularCardBase.displayName = 'modularcard';
 /**
  * ModularCard.Texts.Title component for the ModularCard.
+ * @module ModularCard
  * @component
  * @param {CardCompoundProps} props - Props for the component.
  *
@@ -139,6 +140,7 @@ ModularCardTitle.displayName = 'modularcard-Texts-Title';
 
 /**
  * ModularCard.Texts.Body component for the ModularCard.
+ * @module ModularCard
  * @component
  * @param {CardCompoundProps} props - Props for the component.
  *
@@ -159,6 +161,7 @@ ModularCardBody.displayName = 'modularcard-Texts-Body';
 
 /**
  * ModularCard.Texts.Footnote component for the ModularCard.
+ * @module ModularCard
  * @component
  * @param {CardCompoundProps} props - Props for the component.
  *
@@ -179,6 +182,7 @@ ModularCardFootnote.displayName = 'modularcard-Texts-Footnote';
 
 /**
  * ModularCard.Image.Image component for displaying image in left side.
+ * @module ModularCard
  * @component
  * @param {ModularCardImageProps} props - Props for the component.
  *
@@ -205,6 +209,7 @@ ModularCardImage.displayName = 'modularcard-Image-Image';
 
 /**
  * ModularCard.Image.Triangle component for the being in top of the image.
+ * @module ModularCard
  * @component
  * @param {{className:string}} props - Props for the component.
  *
@@ -226,6 +231,7 @@ ModularCardTriangle.displayName = 'modularcard-Image-Triangle';
 
 /**
  * ModularCard.Texts component for the ModularCard.
+ * @module ModularCard
  * @component
  * @param {CardCompoundProps} props - Props for the component.
  *
@@ -241,6 +247,7 @@ const ModularCardTexts: ModularCardTexts = (props: CardCompoundProps) => {
 
 /**
  * ModularCard.Image component for the ModularCard.
+ * @module ModularCard
  * @component
  * @param {CardCompoundProps} props - Props for the component.
  *
@@ -275,7 +282,7 @@ ModularCardBase.Image = ModularCardImageSection;
 
 /**
  * Card component with composable subcomponents.
- * @component
+ * @module ModularCard
  *
  * @example
  * // With TITLEIMAGE theme
