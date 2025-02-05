@@ -1,22 +1,22 @@
-.Card {
-    --border-radius-md: 8px;
-    --border-radius-sm: 4px;
-    --heading-font: 'Sedgwick Ave Display', cursive;
-    --body-font: 'DM Sans', sans-serif;
-    --heading-font-size: 24px;
-    --h1-size-mobile: 32px;
-    --h2-size-mobile: 24px;
-    --h2-size-desktop: 64px;
-    --h3-size-desktop: 48px;
-    --body-size-desktop: 16px;
-    --small-size-desktop: 14px;
-    --border-desktop: 4px;
-    --border-mobile: 2px;
-    --primary-color: #FFA100;
-    --background: #1E3544;
-    --white: #FAF9F6;
-    --black: #121212;
-}
+// .Card {
+//     --border-radius-md: 8px;
+//     --border-radius-sm: 4px;
+//     --heading-font: 'Sedgwick Ave Display', cursive;
+//     --body-font: 'DM Sans', sans-serif;
+//     --heading-font-size: 24px;
+//     --h1-size-mobile: 32px;
+//     --h2-size-mobile: 24px;
+//     --h2-size-desktop: 64px;
+//     --h3-size-desktop: 48px;
+//     --body-size-desktop: 16px;
+//     --small-size-desktop: 14px;
+//     --border-desktop: 4px;
+//     --border-mobile: 2px;
+//     --primary-color: #FFA100;
+//     --background: #1E3544;
+//     --white: #FAF9F6;
+//     --black: #121212;
+// }
 
 .withScalableLink{
     @include link-scale-effect;
