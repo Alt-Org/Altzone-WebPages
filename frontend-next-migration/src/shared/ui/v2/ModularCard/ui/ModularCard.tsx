@@ -309,7 +309,7 @@ ModularCardBase.Image = ModularCardImageSection;
  * <ModularCard
  *      className="customClass"
  *      theme={ModularCardTheme.NEWSCARD}
- *      onClick={onClickHandler}
+ *      onClick={onClickHandler} // When using this property, 'use client' is required in parent
  *      withScalableLink={true} // Can be used even without interactivity
  * >
  *      <ModularCard.Texts>

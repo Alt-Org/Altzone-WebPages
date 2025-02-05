@@ -24,6 +24,7 @@
 
 // NewsImageCard
 .Card.NewsImageCard  {
+    position:relative;
     background-color: var(--background);
     height:203px;
     border: var(--border-desktop) solid var(--black);
@@ -119,6 +120,7 @@
 
 // TItleImageCard
 .Card.TitleImageCard {
+    position: relative;
     background-color: var(--background);
     height: 187px;
     border: var(--border-desktop) solid var(--black);
