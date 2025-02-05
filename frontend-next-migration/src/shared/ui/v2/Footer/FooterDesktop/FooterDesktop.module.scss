@@ -23,8 +23,6 @@
 .rights {
   padding: 1rem 0;
   text-align: center;
-  width: inherit;
-  
 }
 
 
@@ -39,5 +37,6 @@
 }
 
 .FeedbackContainer {
-  justify-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,11 +1,9 @@
 .Rights {
   font: var(--font-m);
   font-family: var(--font-family-texts);
+  justify-content: center;
 }
 
-.Rights a {
-  margin-left: 1rem;
-}
 
 .Rights a:last-of-type {
   margin-right: 1rem;
@@ -40,7 +38,7 @@
 
 .RightLinkContainer {
   display: flex;
-  gap: 3rem;
+  gap: 3.2rem;
   padding: 0 2rem 0 1rem;
   justify-content: center;
   padding-bottom: 0.5rem;
