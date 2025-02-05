@@ -3,7 +3,7 @@
   height: 100%;
   width: clamp(var(--sidebar-width), 100%, 550px);
 
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--base-card-background);
   position: fixed;
   top: 0;
   overflow-y: auto;
