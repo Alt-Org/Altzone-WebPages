@@ -31,3 +31,21 @@
   text-decoration: underline;
   color: orange;
 }
+
+.RightContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RightLinkContainer {
+  display: flex;
+  gap: 3rem;
+  padding: 0 2rem 0 1rem;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+
+  @media (max-width: 1023px) {
+    gap: 2rem;
+  };
+}
