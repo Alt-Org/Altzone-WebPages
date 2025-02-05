@@ -145,12 +145,12 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                             transition: 'transform 0.4s ease-in-out',
                         }}
                     >
-                        <Image
+                        {/* <Image
                             loading="eager"
                             alt={'Chevron'}
                             src={chevronDown}
                             className={cls.chevronImage}
-                        />
+                        /> */}
                     </span>
                 </div>
             )}
@@ -191,9 +191,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     icon={faExternalLink}
                                                     style={{
                                                         display: 'inline',
-                                                        verticalAlign: 'middle',
+                                                        verticalAlign: 'center',
                                                         marginLeft: '5px',
-                                                        color: 'var(--inverted-primary-color)',
+                                                        // color: 'var(--inverted-primary-color)',
+                                                        color: 'var(--content-primary)',
                                                     }}
                                                 />
                                             )}
