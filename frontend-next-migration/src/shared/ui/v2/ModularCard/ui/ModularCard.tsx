@@ -296,7 +296,7 @@ ModularCardBase.Image = ModularCardImageSection;
  *      <ModularCard.Texts>
  *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
  *      </ModularCard.Texts>
- *      <ModularCard.Image>
+ *      <ModularCard.Image className={cls.Hero} > // Here you can change image container styling by using className(s).
  *          <ModularCard.Image.Triangle />
  *          <ModularCard.Image.Image
  *              src={image}
