@@ -22,72 +22,72 @@ export const dynamic = 'force-static';
  * ]
  */
 
-const BASE_URL = envHelper.appDomain;
+const baseUrl = envHelper.appDomain;
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
         {
-            url: `${BASE_URL}`,
+            url: `${baseUrl}`,
             lastModified: new Date(),
             changeFrequency: 'always',
             priority: 1.0,
         },
         {
-            url: `${BASE_URL}/fi/news`,
+            url: `${baseUrl}/fi/news`,
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.9,
         },
         {
-            url: `${BASE_URL}/fi/heroes`,
+            url: `${baseUrl}/fi/heroes`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: `${BASE_URL}/fi/hero-development`,
+            url: `${baseUrl}/fi/hero-development`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.5,
         },
         {
-            url: `${BASE_URL}/fi/clans`,
+            url: `${baseUrl}/fi/clans`,
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.8,
         },
         {
-            url: `${BASE_URL}/fi/picture-galleries`,
+            url: `${baseUrl}/fi/picture-galleries`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
-            url: `${BASE_URL}/fi/comics`,
+            url: `${baseUrl}/fi/comics`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.4,
         },
         {
-            url: `${BASE_URL}/fi/furniture`,
+            url: `${baseUrl}/fi/furniture`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
         },
         {
-            url: `${BASE_URL}/fi/artGame`,
+            url: `${baseUrl}/fi/artGame`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.3,
         },
         {
-            url: `${BASE_URL}/fi/join-us`,
+            url: `${baseUrl}/fi/join-us`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.3,
         },
         {
-            url: `${BASE_URL}/fi/team`,
+            url: `${baseUrl}/fi/team`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.5,
