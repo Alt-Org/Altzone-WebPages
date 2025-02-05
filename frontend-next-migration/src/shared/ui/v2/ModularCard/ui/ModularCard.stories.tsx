@@ -26,6 +26,11 @@ const meta = {
             description: 'Whether the link is an external link.',
             defaultValue: false,
         },
+        withScalableLink: {
+            control: 'boolean',
+            description: 'If true, applies scalable link behavior to the button.',
+            defaultValue: false,
+        },
         children: {
             control: 'text',
             description: 'The content inside the Card.',
@@ -63,7 +68,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         className: 'customClass',
-        theme: ModularCardTheme.NEWSIMAGE,
+        theme: ModularCardTheme.NEWSCARD,
+        path: '/details',
+        withScalableLink: true,
         children: (
             <>
                 <ModularCard.Texts>
@@ -99,6 +106,7 @@ export const TitleImage: Story = {
         theme: ModularCardTheme.TITLEIMAGE,
         path: 'https://altzone.fi',
         isExternal: true,
+        withScalableLink: true,
         children: (
             <>
                 <ModularCard.Texts>

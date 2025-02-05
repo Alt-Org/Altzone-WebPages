@@ -21,7 +21,7 @@ import cls from './ModularCard.module.scss';
 export enum ModularCardTheme {
     PRIMARY = '',
     TITLEIMAGE = 'TitleImageCard',
-    NEWSIMAGE = 'NewsImageCard',
+    NEWSCARD = 'NewsImageCard',
 }
 
 /**
@@ -96,7 +96,8 @@ const ModularCardBase: any = forwardRef<HTMLDivElement, ModularCardProps>((props
                 isExternal={isExternal}
             >
                 <div
-                    className={classNames(cls.Card, {}, [className, cls[theme]])}
+                    className={classNames(cls.Card, mods, [className, cls[theme]])}
+                    ref={ref}
                     {...otherProps}
                 >
                     {children}
@@ -106,7 +107,8 @@ const ModularCardBase: any = forwardRef<HTMLDivElement, ModularCardProps>((props
     }
     return (
         <div
-            className={classNames(cls.Card, {}, [className, cls[theme]])}
+            className={classNames(cls.Card, mods, [className, cls[theme]])}
+            ref={ref}
             {...otherProps}
         >
             {children}
@@ -288,19 +290,20 @@ ModularCardBase.Image = ModularCardImageSection;
  *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
  *      </ModularCard.Texts>
  *      <ModularCard.Image>
+ *          <ModularCard.Image.Triangle />
  *          <ModularCard.Image.Image
  *              src={image}
  *              alt="alt"
  *          />
- *          <ModularCard.Image.Triangle />
  *      </ModularCard.Image>
  * </ModularCard>
  * @example
- * // With NEWSIMAGE theme
+ * // With NEWSCARD theme
  * <ModularCard
  *      className="customClass"
- *      theme={ModularCardTheme.NEWSIMAGE}
+ *      theme={ModularCardTheme.NEWSCARD}
  *      onClick={onClickHandler}
+ *      withScalableLink={true} // Can be used even without interactivity
  * >
  *      <ModularCard.Texts>
  *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
@@ -308,11 +311,11 @@ ModularCardBase.Image = ModularCardImageSection;
  *          <ModularCard.Texts.Footnote>Footnote</ModularCard.Texts.Footnote>
  *      </ModularCard.Texts>
  *      <ModularCard.Image>
+ *          <ModularCard.Image.Triangle />
  *          <ModularCard.Image.Image
  *              src={image}
  *              alt="alt"
  *          />
- *          <ModularCard.Image.Triangle />
  *      </ModularCard.Image>
  * </ModularCard>
  */

@@ -1,35 +1,40 @@
-// .Card {
-//     --border-radius-md: 8px;
-//     --border-radius-sm: 4px;
-//     --heading-font: 'Sedgwick Ave Display', cursive;
-//     --body-font: 'DM Sans', sans-serif;
-//     --heading-font-size: 24px;
-//     --h1-size-mobile: 32px;
-//     --h2-size-mobile: 24px;
-//     --h2-size-desktop: 64px;
-//     --h3-size-desktop: 48px;
-//     --border-desktop: 4px;
-//     --border-mobile: 2px;
-//     --primary-color: #FFA100;
-//     --background: #1E3544;
-//     --white: #FAF9F6;
-//     --black: #121212;
-// }
+.Card {
+    --border-radius-md: 8px;
+    --border-radius-sm: 4px;
+    --heading-font: 'Sedgwick Ave Display', cursive;
+    --body-font: 'DM Sans', sans-serif;
+    --heading-font-size: 24px;
+    --h1-size-mobile: 32px;
+    --h2-size-mobile: 24px;
+    --h2-size-desktop: 64px;
+    --h3-size-desktop: 48px;
+    --body-size-desktop: 16px;
+    --small-size-desktop: 14px;
+    --border-desktop: 4px;
+    --border-mobile: 2px;
+    --primary-color: #FFA100;
+    --background: #1E3544;
+    --white: #FAF9F6;
+    --black: #121212;
+}
 
+.withScalableLink{
+    @include link-scale-effect;
+  }
 
 // NewsImageCard
 .Card.NewsImageCard  {
     background-color: var(--background);
-    height:208px;
+    height:203px;
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
     display: flex;
     box-shadow: 4px 8px 0 var(--black);
     @media (max-width:breakpoint(xxl)) {
-        height: 160px;
+        height: 155px;
     }
     @media (max-width:breakpoint(md)) {
-        height:132px;
+        height:127px;
         border: var(--border-mobile) solid var(--black);
         box-shadow: 2px 4px 0 var(--black);
     }
@@ -40,6 +45,7 @@
 }
 .Card.NewsImageCard > .ModularCardTexts {
     font-family:var(--body-font);
+    font-size: var(--body-size-desktop);
     color: var(--white);
     display: flex;
     flex-direction: column;
@@ -79,6 +85,8 @@
     
 }
 .Card.NewsImageCard > .ModularCardTexts > .ModularCardFootnote {
+    font-family:var(--body-font);
+    font-size: var(--small-size-desktop);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -97,14 +105,14 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-bottom: 200px solid var(--background);
+    border-bottom: 195px solid var(--background);
     border-right: 157px solid transparent;
     @media (max-width:breakpoint(xxl)) {
-        border-bottom: 152px solid var(--background);
+        border-bottom: 147px solid var(--background);
         border-right: 130px solid transparent;
     }
     @media (max-width:breakpoint(md)) {
-        border-bottom: 128px solid var(--background);
+        border-bottom: 123px solid var(--background);
         border-right: 80px solid transparent;
     }
 }
@@ -113,12 +121,13 @@
 .Card.TitleImageCard {
     background-color: var(--background);
     height: 187px;
-    border: var(--border-mobile) solid var(--black);
-    border-radius: var(--border-radius-sm);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
     display: flex;
-    box-shadow: 2px 4px 0 var(--black);
+    box-shadow: 4px 8px 0 var(--black);
     @media (max-width:breakpoint(md)) {
         height:139px;
+        box-shadow: 2px 4px 0 var(--black);
     }
 }
 .Card.TitleImageCard > div {
@@ -158,10 +167,10 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-bottom: 183px solid var(--background);
+    border-bottom: 179px solid var(--background);
     border-right: 130px solid transparent;
     @media (max-width:breakpoint(md)) {
-        border-bottom: 135px solid var(--background);
+        border-bottom: 131px solid var(--background);
         border-right: 80px solid transparent;
     }
 }
