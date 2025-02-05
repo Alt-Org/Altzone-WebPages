@@ -1,76 +1,84 @@
+
 .siteNav {
   position: absolute;
   font: var(--font-xxl);
   padding-top: 50px;
-  
   width: 100%;
   text-align: center;
   z-index: var(--navbar-z-index);
-  font-weight: 500;
+  font-weight:bold;
   font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
-  margin-top: 5px;
   position: relative;
   height: var(--navbar-height);
   user-select: none;
-
-  &.hover{
-    height:200px;
-   }
-
 }
 
 .siteNavContentList {
+  flex-wrap: nowrap; // Allows items to wrap properly if necessary
   height: 52px;
-  padding :23px, 23px;
-  background-color:var(--base-card-background);
+  background-color: var(--base-card-background);
   border-radius: var(--border-radius-custom);
   border: 4px solid var(--drop-shadows);
-  gap: 1em;
+  gap: 4em;
   list-style: none;
   z-index: 2;
   position: relative;
   width: 100%;
-  transition:  0.4s ease-out;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  transition: 0.4s ease-out;
+ display: flex;
+
   &:hover {
     height: 200px;
-    align-items: flex-start;
   }
-}
-
-.siteNavContentList.collapsed {
-  width: 50px;
-  opacity: 0.8;
 }
 
 .navItem {
-  color:var(--content-primary);
-
-
-list-style-type: none;
-
+  color: var(--content-primary);
+  list-style-type: none;
   opacity: 1;
   transition: transform 0.3s ease-out 0.2s, opacity 0.3s ease-out 0.5s;
-  // visibility:visible
   height: max-content;
   line-height: initial;
-  padding: 10px 0;
   position: relative;
-  &.collapsed{
-    transform: translateX(-100px) scaleX(0.7);
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
-    overflow-x: hidden;
-    
-  }
- &:hover > ul {
-    display: block;
-  
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
 
+ 
+}
+.siteNavContentList:hover .itemNavbarDropDownContent{ 
+  // align-self: center;
+  align-items: self-start;
+
+  justify-items: space-between;
+}
+.itemNavbarDropDownContent {
+  list-style-type: none;
+  padding: 10px 0;
+  display: none;
+  width: 120px;
+  position: absolute;
+
+  
+  a{
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.siteNavContentList:hover .itemNavbarDropDownContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.color {
+  color: var(--content-primary);
+  width: 100%;
+  text-align: center;
 }
 
 .appLinkLogo {
@@ -80,42 +88,27 @@ list-style-type: none;
 
   .itemLogoImg {
     position: absolute;
-    top: -2.5416666667000003em;
+    top: -2.5em;
     left: 0;
     z-index: 100;
     height: auto;
     max-width: none;
     width: auto;
   }
+}
+.authButton {
+  border-radius: var(--border-radius-custom);
+  outline: 2px solid var(--inverted-primary-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--secondary-color) !important;
+  font-size: var(--font-size-m) !important;
+  text-align: center;
+  padding: 4px;
 
-  .itemClanLogoImg {
-    position: absolute;
-    top: -4.5em;
-    left: 0;
-    z-index: 100;
-    height: auto;
-    width: 150%;
-    max-width: 150%;
+  & > * {
+    color: var(--secondary-color) !important;
   }
 }
-.itemNavbarDropDownContent {
-  text-align: center;
-  list-style-type: none;
-  padding: 10px;
-  display: none;
-  color: #fbf7dc !important;
-
-  //div {
-  //  @include link-scale-effect;
-  //}
- 
-}
-
-.siteNavContentList:hover .itemNavbarDropDownContent {
-  display: block;
-
-}
-
 .langSwitcher {
   position: relative;
   border-radius: var(--border-radius-custom);
@@ -171,42 +164,20 @@ list-style-type: none;
   }
  
 }
-
-
-.authButton {
-  border-radius: var(--border-radius-custom);
-  outline: 2px solid var(--inverted-primary-color);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: var(--secondary-color) !important;
-  font-size: var(--font-size-m) !important;
-  text-align: center;
-
-  padding: 4px;
-
-  &>* {
-    color: var(--secondary-color) !important;
-  }
-}
-
-.siteNavContentList:hover .authButton {
-  top:20px; 
- 
-}
-.siteNavContentList:hover .langSwitcher {
-  top:12px; 
-}
-
-
 .logoutButton {
   cursor: pointer;
 }
 
-
 .FixButtonWrapper {
   margin-left: auto;
   margin-right: 50px;
-  margin-bottom:9px;
-  &.fixed{
+  // margin-bottom: 5px;
+  &.fixed {
     margin-right: unset;
   }
+}
+
+.navItem {
+  margin-top: 7px;
+  
 }
