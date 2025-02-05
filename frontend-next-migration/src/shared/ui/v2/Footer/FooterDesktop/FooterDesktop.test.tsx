@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { SocialIconLink, Texts } from '../../model/types/types';
+import { SocialIconLink, Texts } from '@/widgets/Footer/model/types/types';
 import FooterDesktop from './FooterDesktop';
+
+jest.mock('@/shared/ui/v2/Feedback');
 
 // Mock data for social links and texts
 const mockSocialLinks: SocialIconLink[] = [
