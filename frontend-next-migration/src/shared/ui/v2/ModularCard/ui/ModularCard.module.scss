@@ -122,13 +122,13 @@
 .Card.TitleImageCard {
     position: relative;
     background-color: var(--background);
-    height: 187px;
+    height: 220px;
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
     display: flex;
     box-shadow: 4px 8px 0 var(--black);
     @media (max-width:breakpoint(md)) {
-        height:139px;
+        height:160px;
         box-shadow: 2px 4px 0 var(--black);
     }
 }
@@ -169,10 +169,10 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-bottom: 179px solid var(--background);
-    border-right: 130px solid transparent;
+    border-bottom: 212px solid var(--background);
+    border-right: 140px solid transparent;
     @media (max-width:breakpoint(md)) {
-        border-bottom: 131px solid var(--background);
-        border-right: 80px solid transparent;
+        border-bottom: 152px solid var(--background);
+        border-right: 85px solid transparent;
     }
 }
