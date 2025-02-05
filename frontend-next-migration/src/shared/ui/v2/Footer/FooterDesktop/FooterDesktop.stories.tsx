@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { socialIconLinks } from '../../model/data/socialSectionMenu';
+import { socialIconLinks } from '@/widgets/Footer/model/data/socialSectionMenu';
 import FooterDesktop from './FooterDesktop';
 
+// In order to get the stories to display the footer, you have to delete className ${sedgwickFont.className} from
+// both titles of footers and FeedBackCard components
 const meta = {
-    title: 'widgets/Footer/Desktop',
+    title: 'Features/v2/Footer/Desktop',
     component: FooterDesktop,
     parameters: {
         layout: 'centered',
@@ -38,7 +40,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        title: 'Be part of our community 😊',
+        title: 'Be part of our community',
         socialIconLinks: socialIconLinks,
         texts: {
             consent: 'Consent',
