@@ -1,4 +1,5 @@
 .ScrollTop {
+  // _styles/themes/main.scss
   --primary-color: #FFA100;
   --white: #FAF9F6;
   --black: #121212;
@@ -7,33 +8,29 @@
   color: var(--black);
   border: var(--border-desktop) solid var(--black);
   border-radius: var(--border-radius-custom);
-  z-index: var(--navbar-z-index);
   background-color: var(--primary-color);
+  z-index: var(--navbar-z-index);
   cursor: pointer;
   width: 70px;
   height: 70px;
   position: fixed;
-  bottom: 117px; // 32px + 70px + 15px + 70px
+  bottom: 118px; // 32px + 70px + 16px + 70px
   right: 32px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-  transform: rotate(90deg);
+  transform: rotate(90deg); // For making '<<' (\226A) point up
   font-size: 70px !important;
-  padding: 4px auto;
 }
+
 .ScrollTop::before {
   position: absolute;
   top:0px;
   left:0px;
-  content:'\226A';
+  content:'\226A'; // Much less than -symbol ('<<')
 }
 
 .show {
   opacity: 1;
   visibility: visible;
 }
-
-
-
-// 70px x 70px, bottom 102, right 32px
