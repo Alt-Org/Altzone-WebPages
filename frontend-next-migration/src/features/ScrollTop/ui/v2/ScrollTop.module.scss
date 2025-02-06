@@ -1,0 +1,39 @@
+.ScrollTop {
+  --primary-color: #FFA100;
+  --white: #FAF9F6;
+  --black: #121212;
+  --border-desktop: 4px;
+
+  color: var(--black);
+  border: var(--border-desktop) solid var(--black);
+  border-radius: var(--border-radius-custom);
+  z-index: var(--navbar-z-index);
+  background-color: var(--primary-color);
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  position: fixed;
+  bottom: 117px; // 32px + 70px + 15px + 70px
+  right: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transform: rotate(90deg);
+  font-size: 70px !important;
+  padding: 4px auto;
+}
+.ScrollTop::before {
+  position: absolute;
+  top:0px;
+  left:0px;
+  content:'\226A';
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+// 70px x 70px, bottom 102, right 32px
