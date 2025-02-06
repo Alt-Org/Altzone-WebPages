@@ -65,5 +65,4 @@ export const newsApi = directusApi.injectEndpoints({
     }),
 });
 
-// Export the hooks for easy access throughout your app
 export const { useGetNewsQuery, useGetNewsCategoriesQuery } = newsApi;
