@@ -14,7 +14,7 @@
 .feedbackTitle {
     font-style: normal;
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.9rem;
     line-height: 40px;
     padding: 5px 1em 0 1em;
     height: fit-content;
@@ -60,7 +60,7 @@
 }
 
 .emojiList {
-    display: flex;
+    display: inline-flex !important;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -76,7 +76,7 @@
 
 .linkToFormContainer {
     width: 300px;
-    display: flex;
+    display: inline-flex !important;
     flex-direction: row;
     justify-content: space-between;
     gap: unset;

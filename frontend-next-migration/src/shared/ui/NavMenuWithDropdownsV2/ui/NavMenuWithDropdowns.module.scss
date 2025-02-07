@@ -1,0 +1,90 @@
+.NavMenuWithDropdowns {
+  width: 100%;
+  filter: drop-shadow(8px 12px var(--drop-shadows));
+  font: var(--font-m);
+  line-height: var(--font-line-l);
+  font-size: var(--font-size-l);
+
+  // max-width can be changed but shouldnt really be necessary
+  max-width: 320px;
+
+  @media (max-width: breakpoint(lg)) {
+    width: 50%;
+    filter: drop-shadow(2px 4px var(--drop-shadows));
+
+    .topDropDown {
+      padding: 12px 24px;
+      border-radius: var(--border-radius-figma);
+      border: 2px solid var(--drop-shadows);
+      line-height: var(--font-line-m);
+    }
+
+    margin: auto;
+  }
+
+  @media (max-width: breakpoint(sm)) {
+    width: 100%;
+    filter: drop-shadow(2px 4px var(--drop-shadows));
+
+    .topDropDown {
+      padding: 12px 24px;
+      border-radius: var(--border-radius-figma);
+      border: 2px solid var(--drop-shadows);
+      line-height: var(--font-line-m);
+    }
+
+    margin: auto;
+  }
+}
+
+.topDropDown {
+  padding: 23px 23px;
+  color: var(--content-primary);
+  transition: transform 0.4s ease-in-out;
+  border-radius: var(--border-radius-figmadesktop);
+  border: 4px solid var(--drop-shadows);
+  width: 100%;
+  background-color: var(--base-card-background);
+
+  .topDropDownChildren {
+    justify-content: space-between;
+    // padding-left: 15px;
+    // padding-right: 15px;
+  }
+
+  // .topDropDownContent {
+  //   padding-left: 15px;
+  //   padding-right: 15px;
+  // }
+
+}
+
+.subDropDown {
+  color: var(--content-primary);
+  justify-self: flex-start;
+  width: 100%;
+  text-decoration: underline;
+
+  .subDropDownChildren {
+    justify-content: space-between;
+  }
+
+  .subDropDownContent * {
+    padding-left: 15px;
+    color: var(--primary-color);
+
+    &>*:hover {
+      color: var(--secondary-color);
+    }
+
+    & a:hover {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+.topDropDownContent {
+  .active {
+    color: var(--secondary-color);
+  }
+}

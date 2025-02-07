@@ -9,7 +9,6 @@ export const CookieConsentComponent = () => (
     <CookieConsent
         location="bottom"
         buttonText="I consent"
-        flipButtons
         cookieName="AltZoneCookieConsent"
         declineButtonText="Decline"
         enableDeclineButton
