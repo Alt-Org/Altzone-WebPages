@@ -19,7 +19,11 @@ const sedgwickFont = Sedgwick_Ave_Display({
     weight: '400',
 });
 
-export default function FeedbackCard() {
+interface FeedbackCardProps {
+    variant?: 'full' | 'embedabble';
+}
+
+export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps) {
     const { t } = useClientTranslation('feedbackCard');
     const [feedback, setFeedback] = useState<string>('');
     const [feedbackEmoji, setFeedbackEmoji] = useState<number>();
@@ -56,13 +60,16 @@ export default function FeedbackCard() {
 
     return (
         <CustomForm
-            className={cls.feedbackForm}
+            className={`${cls.feedbackForm} ${variant === 'embedabble' ? cls.embedabbleVersion : ''}`}
             onSubmit={async (event) => {
                 event.preventDefault();
                 await submitFeedback();
             }}
         >
-            <h3 className={`${cls.feedbackTitle} ${sedgwickFont.className}`}>{t('title')}</h3>
+            {variant === 'full' && (
+                <h3 className={`${cls.feedbackTitle} ${sedgwickFont.className}`}>{t('title')}</h3>
+            )}
+
             <FeedbackEmoji
                 listClassName={cls.emojiList}
                 value={feedbackEmoji}
@@ -93,50 +100,53 @@ export default function FeedbackCard() {
                             alt="Send feedback icon"
                             width={20}
                             height={20}
-                        />{' '}
+                        />
                     </>
                 )}
             </CustomForm.Button>
-            <div className={cls.linkToFormContainer}>
-                <a
-                    className={cls.linkToForm}
-                    href={AppExternalLinks.googleWebFeedback}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {t('href-to-webform')}
-                    <FontAwesomeIcon
-                        className={cls.externalLinkIcon}
-                        size={'2xs'}
-                        icon={faExternalLink}
-                        style={{
-                            display: 'inline',
-                            verticalAlign: 'middle',
-                            marginLeft: '5px',
-                            color: '#FFA101',
-                        }}
-                    />
-                </a>
-                <a
-                    className={cls.linkToForm}
-                    href={AppExternalLinks.googleFeedback}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    {t('href-to-gameform')}
-                    <FontAwesomeIcon
-                        className={cls.externalLinkIcon}
-                        size={'2xs'}
-                        icon={faExternalLink}
-                        style={{
-                            display: 'inline',
-                            verticalAlign: 'middle',
-                            marginLeft: '5px',
-                            color: '#FFA101',
-                        }}
-                    />
-                </a>
-            </div>
+
+            {variant === 'full' && (
+                <div className={cls.linkToFormContainer}>
+                    <a
+                        className={cls.linkToForm}
+                        href={AppExternalLinks.googleWebFeedback}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {t('href-to-webform')}
+                        <FontAwesomeIcon
+                            className={cls.externalLinkIcon}
+                            size={'2xs'}
+                            icon={faExternalLink}
+                            style={{
+                                display: 'inline',
+                                verticalAlign: 'middle',
+                                marginLeft: '5px',
+                                color: '#FFA101',
+                            }}
+                        />
+                    </a>
+                    <a
+                        className={cls.linkToForm}
+                        href={AppExternalLinks.googleFeedback}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {t('href-to-gameform')}
+                        <FontAwesomeIcon
+                            className={cls.externalLinkIcon}
+                            size={'2xs'}
+                            icon={faExternalLink}
+                            style={{
+                                display: 'inline',
+                                verticalAlign: 'middle',
+                                marginLeft: '5px',
+                                color: '#FFA101',
+                            }}
+                        />
+                    </a>
+                </div>
+            )}
         </CustomForm>
     );
 }
