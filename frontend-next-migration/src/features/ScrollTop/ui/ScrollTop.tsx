@@ -11,6 +11,10 @@ interface ScrollTopProps {
     innerText?: string;
 }
 
+/**
+ * @deprecated use v2 instead
+ * (features/ScrollTop/ui/v2/ScrollTop)
+ */
 export const ScrollTop = memo(({ className = '', innerText }: ScrollTopProps) => {
     const { t } = useClientTranslation('translation');
 
