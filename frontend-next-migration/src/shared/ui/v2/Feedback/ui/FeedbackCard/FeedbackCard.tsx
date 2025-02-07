@@ -66,9 +66,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps) {
                 await submitFeedback();
             }}
         >
-            {variant === 'full' && (
-                <h3 className={`${cls.feedbackTitle} ${sedgwickFont.className}`}>{t('title')}</h3>
-            )}
+            <h3 className={`${cls.feedbackTitle} ${sedgwickFont.className}`}>{t('title')}</h3>
 
             <FeedbackEmoji
                 listClassName={cls.emojiList}
@@ -85,6 +83,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps) {
                     onChange: (event) => setFeedback(event.target.value),
                 }}
             />
+
             <CustomForm.Button
                 className={cls.feedbackButton}
                 type="submit"
@@ -104,49 +103,46 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps) {
                     </>
                 )}
             </CustomForm.Button>
-
-            {variant === 'full' && (
-                <div className={cls.linkToFormContainer}>
-                    <a
-                        className={cls.linkToForm}
-                        href={AppExternalLinks.googleWebFeedback}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {t('href-to-webform')}
-                        <FontAwesomeIcon
-                            className={cls.externalLinkIcon}
-                            size={'2xs'}
-                            icon={faExternalLink}
-                            style={{
-                                display: 'inline',
-                                verticalAlign: 'middle',
-                                marginLeft: '5px',
-                                color: '#FFA101',
-                            }}
-                        />
-                    </a>
-                    <a
-                        className={cls.linkToForm}
-                        href={AppExternalLinks.googleFeedback}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        {t('href-to-gameform')}
-                        <FontAwesomeIcon
-                            className={cls.externalLinkIcon}
-                            size={'2xs'}
-                            icon={faExternalLink}
-                            style={{
-                                display: 'inline',
-                                verticalAlign: 'middle',
-                                marginLeft: '5px',
-                                color: '#FFA101',
-                            }}
-                        />
-                    </a>
-                </div>
-            )}
+            <div className={cls.linkToFormContainer}>
+                <a
+                    className={cls.linkToForm}
+                    href={AppExternalLinks.googleWebFeedback}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {t('href-to-webform')}
+                    <FontAwesomeIcon
+                        className={cls.externalLinkIcon}
+                        size={'2xs'}
+                        icon={faExternalLink}
+                        style={{
+                            display: 'inline',
+                            verticalAlign: 'middle',
+                            marginLeft: '5px',
+                            color: '#FFA101',
+                        }}
+                    />
+                </a>
+                <a
+                    className={cls.linkToForm}
+                    href={AppExternalLinks.googleFeedback}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {t('href-to-gameform')}
+                    <FontAwesomeIcon
+                        className={cls.externalLinkIcon}
+                        size={'2xs'}
+                        icon={faExternalLink}
+                        style={{
+                            display: 'inline',
+                            verticalAlign: 'middle',
+                            marginLeft: '5px',
+                            color: '#FFA101',
+                        }}
+                    />
+                </a>
+            </div>
         </CustomForm>
     );
 }
