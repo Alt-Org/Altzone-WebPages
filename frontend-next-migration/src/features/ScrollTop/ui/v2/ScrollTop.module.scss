@@ -13,6 +13,8 @@
   cursor: pointer;
   width: 70px;
   height: 70px;
+  padding:0 !important;
+  display: grid;
   position: fixed;
   bottom: 118px; // 32px + 70px + 16px + 70px
   right: 32px;
@@ -24,9 +26,6 @@
 }
 
 .ScrollTop::before {
-  position: absolute;
-  top:0px;
-  left:0px;
   content:'\226A'; // Much less than -symbol ('<<')
 }
 
