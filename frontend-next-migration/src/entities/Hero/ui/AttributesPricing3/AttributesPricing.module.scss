@@ -21,12 +21,16 @@
     outline: 2px solid var(--secondary-color);
     font-weight: bolder;
     border-width: 1px;
+    text-align: center;
+    font-size: 1.5em;
 }
 .Dropdown {
     outline: 2px solid var(--secondary-color);
     background-color: rgba(0,0,0,.7);
     color: var(--primary-color);
     border-radius: .5em;
+    text-align: center;
+    font-size: 1.5em;
 }
 .Price {
     font-weight: bold;
@@ -35,7 +39,12 @@
     color:var(--secondary-color);
     font-weight: bold;
     font-size: 2em;
-    line-height: .5em;
+    line-height: 1em;
     margin-top: -.5em;
     height:fit-content;
+}
+.Value {
+    padding-left: .4em;
+    font-size: 1.2em;
+    padding-top: .3em;
 }

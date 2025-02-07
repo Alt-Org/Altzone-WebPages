@@ -75,6 +75,13 @@ export const Example: Story = {
                 image: 'https://altzone.fi/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhannu-hodari.755680ec.png&w=1920&q=75',
                 imageAlt: 'Image 3',
             },
+            {
+                id: 'section4',
+                label: 'Section 4 This is a long word: Hydrochlorofluorocarbon',
+                description: 'Description for section 4',
+                image: 'https://altzone.fi/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpirate.9a5e151f.png&w=1920&q=75',
+                imageAlt: 'Image 4',
+            },
         ],
     },
 };

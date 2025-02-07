@@ -1,3 +1,4 @@
 export { default as HeroNavMenuAsDropdown } from './ui/HeroNavMenuAsDropdown';
-export { default as HeroMenuAsDropdown } from './ui/HeroMenuAsDropdown';
-export { default as HeroMenu } from './ui/HeroMenu';
+export { default as HeroNavMenu } from './ui/HeroNavMenu';
+export { default as HeroDevelopmentNavMenuAsDropdown } from './ui/HeroDevelopmentNavMenuAsDropdown';
+export { default as HeroDevelopmentSidebar } from './ui/HeroDevelopmentSidebar';

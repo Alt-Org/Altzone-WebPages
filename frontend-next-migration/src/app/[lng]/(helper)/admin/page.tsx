@@ -1,11 +1,63 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
+'use client';
 import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import {
+    NavMenuWithDropdowns,
+    NavMenuWithDropdownsProps,
+} from '@/shared/ui/NavMenuWithDropdownsV2';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 
 const Page = () => {
+    const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
+        title: 'Klaanit',
+        openByDefault: false,
+        titleAsActive: true,
+        dropdownItems: [
+            { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
+            { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
+            { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
+            { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
+        ],
+    };
+
+    const navMenuWithDropdownsProps3: NavMenuWithDropdownsProps = {
+        title: 'Klaanit',
+        staticDropdown: true,
+        dropdownItems: [
+            { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
+            { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
+            { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
+            { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
+        ],
+    };
+
+    const navMenuWithDropdownsProps4: NavMenuWithDropdownsProps = {
+        title: 'Klaanit',
+        staticDropdown: true,
+        dropdownItems: [
+            { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
+            { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
+            { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
+            {
+                title: 'Heroes',
+                openByDefault: false,
+                elements: [
+                    // links can be used as well, just add the "link" to object
+                    {
+                        elementText: 'Hero 1',
+                        id: 'hero1',
+                        link: { path: RoutePaths.HEROES, isExternal: false },
+                    },
+                    { elementText: 'Hero 2', id: 'hero2' },
+                ],
+            },
+            { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
+        ],
+    };
+
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
         title: 'Forum',
         openByDefault: true,
@@ -77,6 +129,25 @@ const Page = () => {
                 ),
             }}
         >
+            <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
+            <div style={{ margin: '20px' }}>
+                <h5>
+                    Version with dropdown closed by default (mainly designed for mobile but works
+                    for both. Test in mobile resolution too)
+                </h5>
+            </div>
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
+            <div style={{ margin: '20px' }}>
+                <h5>
+                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is true
+                    dropdown will always be open)
+                </h5>
+            </div>
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
+            <div style={{ margin: '20px' }}>
+                <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
+            </div>
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
             <h1>Main Page Content</h1>
             {/* Testing ModularCard */}
             <div

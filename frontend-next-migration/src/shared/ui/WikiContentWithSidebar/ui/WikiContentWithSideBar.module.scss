@@ -23,6 +23,10 @@
   overflow: visible; // Ensure this is set
 }
 
+.mainContent.isMobile {
+  padding: 15px;
+}
+
 .navbarSide {
   position: sticky;
   top: 9.5rem;
@@ -163,8 +167,12 @@
 .content.isMobile {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
   padding: 0;
   font-size: 1.2em;
-  margin: 15px;
+  margin: auto;
+
+  a {
+    word-wrap: break-word;
+  }
 }

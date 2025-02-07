@@ -1,7 +1,10 @@
+'use client';
 import { CustomForm } from '@/shared/ui/CustomForm';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useNewClanForm } from '../../model/useNewClanForm';
 import cls from './NewClanForm.module.scss';
+import { ClanLabel } from '@/entities/Clan/enum/clanLabel.enum';
+import { useState } from 'react';
 
 type Props = {
     onSuccess?: () => void;
@@ -9,9 +12,11 @@ type Props = {
 };
 
 export const NewClanForm = ({ onSuccess, className = '' }: Props) => {
-    const { register, handleSubmit, onFormSubmit, errors } = useNewClanForm({
+    const { register, handleSubmit, onFormSubmit, errors, setValue } = useNewClanForm({
         onSuccess,
     });
+
+    const [selected, setSelected] = useState<{ label: any; value: string }[]>([]);
 
     return (
         <CustomForm
@@ -37,6 +42,32 @@ export const NewClanForm = ({ onSuccess, className = '' }: Props) => {
                 inputProps={{
                     ...register('tag'),
                     required: true,
+                }}
+            />
+
+            <CustomForm.InputField
+                key={'phrase'}
+                label={'Motto'}
+                error={errors?.phrase?.message}
+                inputProps={{
+                    ...register('phrase'),
+                    required: true,
+                }}
+            />
+
+            <CustomForm.MultiSelectionDropdown
+                label={'Tunniste'}
+                options={ClanLabel}
+                maxSelections={5}
+                value={selected}
+                error={errors?.labels?.message}
+                inputProps={{
+                    ...register('labels'),
+                    required: true,
+                }}
+                onSelectChange={(newSelection) => {
+                    setSelected(newSelection);
+                    setValue('labels', newSelection);
                 }}
             />
 
