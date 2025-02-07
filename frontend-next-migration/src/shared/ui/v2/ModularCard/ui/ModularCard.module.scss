@@ -1,0 +1,199 @@
+.Card {
+    --border-radius-md: 8px;
+    --border-radius-sm: 4px;
+    --heading-font: 'Sedgwick Ave Display', cursive;
+    --body-font: 'DM Sans', sans-serif;
+    --heading-font-size: 24px;
+    --h1-size-mobile: 32px;
+    --h2-size-mobile: 24px;
+    --h2-size-desktop: 64px;
+    --h3-size-desktop: 48px;
+    --body-size-desktop: 16px;
+    --small-size-desktop: 14px;
+    --border-desktop: 4px;
+    --border-mobile: 2px;
+    --primary-color: #FFA100;
+    --background: #1E3544;
+    --white: #FAF9F6;
+    --black: #121212;
+}
+
+
+.withScalableLink {
+
+    .ModularCardTexts {
+        transition: all ease-in-out;
+        transition-duration: 0.7s;
+    }
+    &:hover {
+        .ModularCardTexts {
+            flex-basis: 30% !important;
+        }
+    }
+    
+}
+
+// NewsImageCard
+.Card.NewsImageCard  {
+    position:relative;
+    background-color: var(--background);
+    height:203px;
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    box-shadow: 4px 8px 0 var(--black);
+    @media (max-width:breakpoint(xxl)) {
+        height: 155px;
+    }
+    @media (max-width:breakpoint(md)) {
+        height:127px;
+        border: var(--border-mobile) solid var(--black);
+        box-shadow: 2px 4px 0 var(--black);
+    }
+}
+.Card.NewsImageCard > .ModularCardTexts {
+    font-family:var(--body-font);
+    font-size: var(--body-size-desktop);
+    color: var(--white);
+    flex-basis: 50%;
+    // overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-left:.5em;
+    padding-right:.5em;
+}
+.Card.NewsImageCard > .ModularCardTexts > .ModularCardTitle {
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-bottom: .5em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    h2 {
+        font-family:var(--heading-font);
+        font-size:var(--heading-font-size);
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            
+            font-size:var(--h2-size-mobile);
+            margin-top:.7em;
+        }
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
+}
+.Card.NewsImageCard > .ModularCardTexts > .ModularCardBody {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp:5;
+    @media (max-width:breakpoint(xxl)) {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+    }
+    @media (max-width:breakpoint(md)) {
+        display: none;
+    }
+    
+}
+.Card.NewsImageCard > .ModularCardTexts > .ModularCardFootnote {
+    font-family:var(--body-font);
+    font-size: var(--small-size-desktop);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left:0;
+    padding-right:0;
+    margin-top: .5em;
+    margin-bottom: .3em;
+}
+.Card.NewsImageCard > .ModularCardImageSection {
+    overflow: hidden;
+    flex-grow:1;
+}
+.Card.NewsImageCard > .ModularCardImageSection > .ModularCardImage {
+    object-fit:contain;
+    height:100%;
+    width:100%;
+}
+.Card.NewsImageCard > .ModularCardImageSection > .ModularCardTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 195px solid var(--background);
+    border-right: 157px solid transparent;
+    @media (max-width:breakpoint(xxl)) {
+        border-bottom: 147px solid var(--background);
+        border-right: 130px solid transparent;
+    }
+    @media (max-width:breakpoint(md)) {
+        border-bottom: 123px solid var(--background);
+        border-right: 80px solid transparent;
+    }
+}
+
+// TItleImageCard
+.Card.TitleImageCard {
+    position: relative;
+    background-color: var(--background);
+    height: 220px;
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    box-shadow: 4px 8px 0 var(--black);
+    @media (max-width:breakpoint(md)) {
+        height:160px;
+        box-shadow: 2px 4px 0 var(--black);
+    }
+}
+.Card.TitleImageCard > div {
+    flex-basis: 50%;
+}
+.Card.TitleImageCard > .ModularCardTexts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left:.5em;
+    padding-right:.5em;
+}
+.Card.TitleImageCard > .ModularCardTexts > .ModularCardTitle {
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-top: .3em;
+    margin-bottom: .5em;
+    h2 {
+        font-family:var(--heading-font);
+        font-size:var((--h1-size-mobile));
+        color:var(--primary-color);
+        margin-left: 30px;
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            font-size:var(--h2-size-mobile);
+        }
+    }
+}
+.Card.TitleImageCard > .ModularCardImageSection > .ModularCardImage {
+    height: 100%;
+    width:min-content;
+    object-fit: contain;
+    margin-left:auto;
+}
+.Card.TitleImageCard > .ModularCardImageSection > .ModularCardTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 212px solid var(--background);
+    border-right: 140px solid transparent;
+    @media (max-width:breakpoint(md)) {
+        border-bottom: 152px solid var(--background);
+        border-right: 85px solid transparent;
+    }
+}
