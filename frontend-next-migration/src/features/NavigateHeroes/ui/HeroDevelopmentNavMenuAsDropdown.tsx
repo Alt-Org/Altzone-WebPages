@@ -33,18 +33,34 @@ const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
         })),
     }));
 
-    const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
+    const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: t('section-title'),
         openByDefault: false,
         dropdownItems: dropdownItems,
     };
 
+    const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
+        title: t('section-title'),
+        openByDefault: true,
+        staticDropdown: true,
+        dropdownItems: dropdownItems,
+    };
+
     return (
-        <NavMenuWithDropdowns
-            className={cls.Width}
-            staticDropdown={isTouchDevice ? false : true}
-            {...navMenuWithDropdownsProps}
-        />
+        <div>
+            <nav style={isTouchDevice ? { display: 'contents' } : { display: 'none' }}>
+                <NavMenuWithDropdowns
+                    className={cls.Width}
+                    {...navMenuWithDropdownsMobileProps}
+                />
+            </nav>
+            <nav style={isTouchDevice ? { display: 'none' } : { display: 'block' }}>
+                <NavMenuWithDropdowns
+                    className={cls.Width}
+                    {...navMenuWithDropdownsDesktopProps}
+                />
+            </nav>
+        </div>
     );
 };
 
