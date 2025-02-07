@@ -4,7 +4,7 @@ import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
     DropDownElementASTextOrLink,
-} from '@/shared/ui/NavMenuWithDropdowns';
+} from '@/shared/ui/NavMenuWithDropdownsV2';
 import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
 import {
     getLanguageCode,
@@ -12,6 +12,7 @@ import {
     getCategoryTranslation,
 } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 interface GalleryNavMenuProps {
     openByDefault?: boolean;
@@ -19,7 +20,8 @@ interface GalleryNavMenuProps {
 
 const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     const { openByDefault = false } = props;
-
+    const { isMobileSize, isTabletSize } = useSizes();
+    const isTouchDevice = isMobileSize || isTabletSize;
     const params = useParams();
     const router = useRouter();
     const lng = params.lng as string;
@@ -82,13 +84,29 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
         }),
     ];
 
-    const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
+    const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: title,
         openByDefault: openByDefault,
         dropdownItems: dropdownItems,
     };
 
-    return <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />;
+    const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
+        title: title,
+        openByDefault: openByDefault,
+        staticDropdown: true,
+        dropdownItems: dropdownItems,
+    };
+
+    return (
+        <div>
+            <nav style={isTouchDevice ? { display: 'contents' } : { display: 'none' }}>
+                <NavMenuWithDropdowns {...navMenuWithDropdownsMobileProps} />
+            </nav>
+            <nav style={isTouchDevice ? { display: 'none' } : { display: 'block' }}>
+                <NavMenuWithDropdowns {...navMenuWithDropdownsDesktopProps} />
+            </nav>
+        </div>
+    );
 };
 
 export default GalleryNavMenuAsDropdown;
