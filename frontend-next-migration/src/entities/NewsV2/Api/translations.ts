@@ -1,4 +1,4 @@
-import { NewsTranslation, CategoryTranslation } from '../../News/model/types/types';
+import { NewsTranslation, CategoryTranslation } from '../model/types/types';
 
 /**
  * Helper function to get the language code.
