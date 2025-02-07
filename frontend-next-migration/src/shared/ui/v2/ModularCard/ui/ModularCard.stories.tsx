@@ -74,7 +74,9 @@ export const Default: Story = {
         children: (
             <>
                 <ModularCard.Texts>
-                    <ModularCard.Texts.Title>Hello</ModularCard.Texts.Title>
+                    <ModularCard.Texts.Title>
+                        Hello HelloHello Hello HelloHello
+                    </ModularCard.Texts.Title>
                     <ModularCard.Texts.Body>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni assumenda,
                         perspiciatis quidem neque minus, aperiam a reiciendis nesciunt ea
