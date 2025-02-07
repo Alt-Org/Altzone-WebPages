@@ -1,6 +1,5 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
-import { NavMenuWithDropdowns, NavMenuWithDropdownsProps } from '@/shared/ui/NavMenuWithDropdowns';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
@@ -174,7 +173,6 @@ const Page = () => {
                             //     // console.log(`clicked modularcard ${card.id}`);
                             // }} // Needs use-client parent
                             withScalableLink={true}
-                            // key={card.id} // Card has key property
                         >
                             <ModularCard.Texts>
                                 <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
