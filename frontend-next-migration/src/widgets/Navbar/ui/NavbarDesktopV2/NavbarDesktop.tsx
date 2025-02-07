@@ -6,9 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
-import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { NavbarBuild } from '../../model/types';
-import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
@@ -32,17 +30,7 @@ export interface NavbarProps {
 }
 
 const NavbarDesktop = memo((props: NavbarProps) => {
-    const {
-        navbarBuild,
-        marginTop,
-        className = '',
-        toggleCollapsed,
-        toggleFixed,
-        isCollapsed,
-        isFixed,
-    } = props;
-
-    const hasScrollbar = useIsPageScrollbar();
+    const { navbarBuild, marginTop, className = '', toggleFixed, isCollapsed, isFixed } = props;
 
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
@@ -65,21 +53,8 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         [cls.collapsed]: isCollapsed,
     } as Record<string, boolean>;
 
-    const handleCollapseClick = () => {
-        if (!isAnimating) {
-            setIsAnimating(true);
-            toggleCollapsed?.();
-            // dispatch(navBarActions.toggleCollapsed());
-        }
-    };
-
     const handleToggleFixed = () => {
-        // dispatch(navBarActions.toggleFixed());
         toggleFixed?.();
-    };
-
-    const handleTransitionEnd = () => {
-        setIsAnimating(false);
     };
 
     const [realPath, setRealPath] = useState('/');
@@ -136,38 +111,14 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                         ) : null}
                     </li>
 
-                    {hasScrollbar && (
-                        <li
-                            data-testid="toggleFixButtonWrapper"
-                            onTransitionEnd={handleTransitionEnd}
-                            className={classNames(
-                                cls.FixButtonWrapper,
-                                { ...ModsUlAndLi, [cls.fixed]: !isFixed },
-                                [cls.navItem],
-                            )}
-                        >
-                            <ToggleFixButton
-                                onClick={handleToggleFixed}
-                                isFixed={isFixed}
-                                className={cls.FixButton}
-                            />
-                        </li>
-                    )}
-                    {isFixed && (
-                        <li
-                            data-testid="collapseExpandWrapper"
-                            className={classNames(cls.CollapseButtonWrapper, {
-                                [cls.collapsing]: isAnimating,
-                            })}
-                        >
-                            <ToggleCollapseButton
-                                onClick={handleCollapseClick}
-                                isCollapsed={isCollapsed}
-                                className={cls.CollapseButton}
-                                disabled={isAnimating}
-                            />
-                        </li>
-                    )}
+                    <li>
+                        <ToggleFixButton
+                            onClick={handleToggleFixed}
+                            isFixed={isFixed}
+                            className={cls.FixButton}
+                            data-testid="toggleFixButton"
+                        />
+                    </li>
                 </ul>
             </Container>
         </nav>
