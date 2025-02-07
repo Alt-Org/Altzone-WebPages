@@ -12,6 +12,8 @@ export type IClan = {
     admin_ids: string[];
     Player: Array[];
     isOpen: boolean;
+    phrase: string;
+    labels: Array[];
 };
 
 export type ICreateClanResponse = {
@@ -32,8 +34,14 @@ export type IJoin = {
     join_message: string;
 };
 
-export type IClanCreateDto = Pick<IClan, 'name' | 'tag' | 'gameCoins' | 'isOpen'>;
+export type IClanCreateDto = Pick<
+    IClan,
+    'name' | 'tag' | 'phrase' | 'labels' | 'gameCoins' | 'isOpen'
+>;
 
-export type IClanUpdateDto = Pick<IClan, '_id' | 'name' | 'tag' | 'gameCoins' | 'isOpen'>;
+export type IClanUpdateDto = Pick<
+    IClan,
+    '_id' | 'name' | 'tag' | 'phrase' | 'labels' | 'gameCoins' | 'isOpen'
+>;
 
 export type IJoinDto = Pick<IJoin, 'clan_id' | 'player_id' | 'join_message'>;

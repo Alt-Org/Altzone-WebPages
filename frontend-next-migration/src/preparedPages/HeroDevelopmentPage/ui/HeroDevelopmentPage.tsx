@@ -1,13 +1,11 @@
 'use client';
-import React, { useCallback, useMemo, useState, SetStateAction } from 'react';
+import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
 import cls from './HeroDevelopmentPage.module.scss';
 import {
     AttributesPie,
     AttributesPricing3,
     BarChart,
-    HeroManager,
-    HeroSlug,
     Hero,
     Stat,
     rarityClassNames,
@@ -17,40 +15,17 @@ import {
 import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import { HeroMenu, HeroMenuAsDropdown } from '@/features/NavigateHeroes';
-import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 
-export interface Props {
-    title: string;
+export interface HeroDevelopmentPageProps {
+    hero: Hero | undefined;
 }
 
-const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
-    const [sidebarVisible, setSidebarVisible] = useState<boolean>(true);
+const HeroDevelopmentPage: React.FC<HeroDevelopmentPageProps> = ({ hero }) => {
     const [stat, setStat] = useState<Stat>({ name: 'resistance', defaultLevel: 1, rarityClass: 1 });
     const [toLevel, setToLevel] = useState<number>(0);
     const [fromLevel, setFromLevel] = useState<number>(0);
     const [upgradePotential, setUpgradePotential] = useState<number>(10);
-    const translation = useClientTranslation('heroes');
-    const { t } = useClientTranslation('heroes-stats-pricing');
-    const heroManager = new HeroManager(translation.t);
-
-    const initializeHeroColors = useCallback((hero: Hero) => {
-        const heroToColors = hero || heroManager.getAllHeroes()[0];
-        heroToColors.stats.forEach((stat) => {
-            stat.color = color[stat.name];
-        });
-        return heroToColors;
-    }, []);
-
-    const [hero, setHero] = useState<Hero>(initializeHeroColors(heroManager.getAllHeroes()[0]));
-
-    const onClickHero = useCallback(
-        (heroSlug: HeroSlug) => {
-            const hero = heroManager.getHeroBySlug(heroSlug) || heroManager.getAllHeroes()[0];
-            setHero(initializeHeroColors(hero) as SetStateAction<Hero>);
-        },
-        [hero],
-    );
+    const { t } = useClientTranslation('hero-development');
 
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
     const combinedModCss: Mods = {
@@ -108,11 +83,16 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
                             <tbody>
                                 <tr>
                                     <td>{t('upgradePotentialAfterUpdate')}</td>
-                                    <td className={cls.FatGreen}>{upgradePotential}</td>
+                                    <td
+                                        style={{ width: '12em' }}
+                                        className={cls.FatGreen}
+                                    >
+                                        {upgradePotential}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>{t('rarityClass')}</td>
-                                    <td>
+                                    <td style={{ width: '12em' }}>
                                         <span className={cls.FatGreen}>
                                             {t(rarityClassNames[stat.rarityClass])}
                                         </span>
@@ -169,48 +149,31 @@ const HeroDevelopmentPage: React.FC<Props> = ({ title }) => {
         return <h2>{t('Stat pricing data is unavailable')}</h2>;
     }
     return (
-        <LayoutWithSidebars
-            leftTopSidebar={{
-                collapsed: !sidebarVisible,
-                component:
-                    isDesktopSize || isWidescreenSize ? (
-                        <div style={{ width: 'fit-content' }}>
-                            <HeroMenu
-                                onClickCallback={onClickHero}
-                                sidebarVisible={sidebarVisible}
-                                setSidebarVisible={setSidebarVisible}
-                                selectedHero={hero.slug}
+        <div className={cls.Root}>
+            <div className={classNames(cls.Header, combinedModCss)}>{t('title')}</div>
+            {hero === undefined ? (
+                <div className={cls.Purpose}>{t('text')}</div>
+            ) : (
+                <div className={classNames(cls.HeroAndChart, combinedModCss)}>
+                    <div className={classNames(cls.Hero, combinedModCss)}>
+                        {hero && (
+                            <Image
+                                className={classNames(cls.Image, combinedModCss)}
+                                src={hero?.srcImg}
+                                alt="kuva"
                             />
-                        </div>
-                    ) : (
-                        <HeroMenuAsDropdown
-                            className={classNames(cls.dropdown, combinedModCss)}
-                            onClickCallback={onClickHero}
-                            selectedHero={hero.slug}
-                        />
-                    ),
-            }}
-        >
-            <div className={classNames(cls.Header, combinedModCss)}>{title}</div>
-            <div className={classNames(cls.HeroAndChart, combinedModCss)}>
-                <div className={classNames(cls.Hero, combinedModCss)}>
-                    {hero && (
-                        <Image
-                            className={classNames(cls.Image, combinedModCss)}
-                            src={hero?.srcImg}
-                            alt="kuva"
-                        />
-                    )}
-                    <div>{hero && <h1 className={cls.Title}>{hero.title}</h1>}</div>
-                </div>
-                {hero && (
-                    <div className={classNames(cls.BarChartBlock, combinedModCss)}>
-                        <BarChart stats={hero?.stats} />
+                        )}
+                        <div>{hero && <h1 className={cls.Title}>{hero.title}</h1>}</div>
                     </div>
-                )}
-            </div>
+                    {hero && (
+                        <div className={classNames(cls.BarChartBlock, combinedModCss)}>
+                            <BarChart stats={hero?.stats} />
+                        </div>
+                    )}
+                </div>
+            )}
             {getDevelopment()}
-        </LayoutWithSidebars>
+        </div>
     );
 };
 

@@ -2,7 +2,6 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { SectionGalleryV2 } from '@/widgets/SectionGallery';
-import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
 import {
     useGetDirectusGalleryImages,
     getLanguageCode,
@@ -10,7 +9,6 @@ import {
     getCategoryTranslation,
 } from '@/entities/Gallery';
 import { Container } from '@/shared/ui/Container';
-import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './PictureGalleryPage.module.scss';
 
 export interface Props {
@@ -22,8 +20,7 @@ export interface Props {
 }
 
 const PictureGalleryPage = (props: Props) => {
-    const { title, infoText, socialMediaLinks } = props;
-    const { isMobileSize, isTabletSize } = useSizes();
+    const { socialMediaLinks } = props;
     const params = useParams();
     const lng = params.lng as string;
     const category = params.category as string;
@@ -31,8 +28,6 @@ const PictureGalleryPage = (props: Props) => {
     const { photoObjects, isLoading } = useGetDirectusGalleryImages(language);
     const [filteredImages, setFilteredImages] = useState<PhotoObject[]>(photoObjects);
     const [selectedCategory, setSelectedCategory] = useState<string>('');
-
-    const isTouchDevice = isTabletSize || isMobileSize;
 
     useEffect(() => {
         if (!category || selectedCategory === 'all' || selectedCategory === 'kaikki') {
@@ -54,11 +49,6 @@ const PictureGalleryPage = (props: Props) => {
     return (
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
-                <h1>{title}</h1>
-                <p className={cls.InfoText}>{infoText}</p>
-
-                {isTouchDevice && <GalleryNavMenuAsDropdown openByDefault={true} />}
-
                 <SectionGalleryV2
                     version={'full'}
                     socialMediaLinks={socialMediaLinks}

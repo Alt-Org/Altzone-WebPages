@@ -18,6 +18,7 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
         register,
         handleSubmit,
         formState: { errors },
+        setValue,
     } = useForm({
         resolver: yupResolver(ValidationAddNewClan),
     });
@@ -52,7 +53,13 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
     };
 
     async function onFormSubmit(fieldValues: FieldValues) {
-        await create(fieldValues as IClanCreateDto);
+        //converting label to array of lowercase strings
+        const newFieldValues = {
+            ...fieldValues,
+            labels: fieldValues.labels.map((item: any) => item.value.toLowerCase()),
+        };
+
+        await create(newFieldValues as IClanCreateDto);
     }
 
     useEffect(() => {
@@ -76,5 +83,6 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
         handleSubmit,
         onFormSubmit,
         errors,
+        setValue,
     };
 };

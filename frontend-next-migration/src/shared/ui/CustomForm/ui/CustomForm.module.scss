@@ -19,23 +19,21 @@
   }
 
   div {
-    display: flex; /* Muuttaa divin asettelun gridistä riviksi */
-    flex-direction: row; /* Elementit samalle riville */
-    align-items: center; /* Tasoita pystysuunnassa keskelle */
-    gap: 10px; /* Tilaa elementtien väliin */
+    display: grid;
   }
 
+
   span {
-    margin-bottom: 0; /* Ei ylimääräistä pystymarginaalia */
+    margin-bottom: 3px;
     padding-left: 3px;
+    overflow-x: hidden;
   }
 
   input {
-    height: 50px;
     border-radius: var(--border-radius-custom);
     outline: none;
     border: none;
-    padding: 10px;
+    width: 100%;
   }
 
   p {
@@ -60,5 +58,9 @@
     width: 16px;
     height: 16px;
     cursor: pointer;
+  }
+    
+  .dropdown {
+    color: rgba(0, 0, 0, 0.85);
   }
 }

@@ -27,6 +27,7 @@ export enum AppRoutesLinks {
     NEWS = 'NEWS',
     NEWSELEMENT = 'NEWSELEMENT',
     MEMBERS = 'MEMBERS',
+    TEACHERS = 'TEACHERS',
 
     HEROES = 'HEROES',
     HEROES_ONE = 'HEROES_ONE',
@@ -83,6 +84,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.NEWSELEMENT]: news + '/:id',
     [AppRoutesLinks.FORUM]: '/forum',
     [AppRoutesLinks.MEMBERS]: '/team',
+    [AppRoutesLinks.TEACHERS]: '/teachers',
     [AppRoutesLinks.NOT_FOUND]: '/404',
     [AppRoutesLinks.COMING]: '/coming',
 
@@ -92,6 +94,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
 
 export const getRouteMainPage = () => '/';
 export const getRouteTeamPage = () => '/team';
+export const getRouteTeachersPage = () => '/teachers';
 
 export const getRouteAuthPage = () => '/auth';
 export const getRouteLogoutPage = () => '/auth/logout';
@@ -106,6 +109,7 @@ export const getRouteOneNewsPage = (id: string) => `/news/${id}`;
 export const getRouteAllHeroesPage = () => '/heroes';
 export const getRouteOneHeroPage = (slug: string) => `/heroes/${slug}`;
 export const getRouteHeroDevPage = () => '/hero-development';
+export const getRouteOneHeroDevPage = (slug: string) => `/hero-development/${slug}`;
 
 export const getRouteComicsPage = () => '/comics';
 export const getRouteGalleryPage = () => '/picture-galleries';

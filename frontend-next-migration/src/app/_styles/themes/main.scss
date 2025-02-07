@@ -1,0 +1,143 @@
+// ==========================================
+// Colors
+// ==========================================
+
+// Primary color and variants
+.app-main-theme {
+    --primary-color: #FFA100;
+    --primary-color-variant-hover: #FFB434;
+    --primary-color-variant-pressed: #E89301;
+    
+    // Secondary color and variants
+    --secondary-color: #10D131;
+    --secondary-color-variant-hover: #41D95B;
+    --secondary-color-variant-pressed: #0FBD2E;
+    
+    // Tertiary color
+    --tertiary-color: #C0FF43;
+    
+    // Background, text, and neutral colors
+    --background: #1E3544;
+    --white: #FAF9F6;
+    --black: #121212;
+    --neutral: #CBCBCB;
+    
+    // ==========================================
+    // Status Colors
+    // ==========================================
+    
+    --error: #FF0010;
+    --success: #10D131;
+    
+    // ==========================================
+    // Chart Colors
+    // ==========================================
+    
+    --charts-resistance-default: #764FEA;
+    --charts-resistance-pie-chart-light: #8C6BEB;
+    --charts-impact-force-default: #FF8000;
+    --charts-impact-force-pie-chart-light: #FFAA55;
+    --charts-size-default: #CE3B39;
+    --charts-size-pie-chart-light: #ED6E6C;
+    --charts-health-default: #3FE22E;
+    --charts-health-pie-chart-light: #87EE7D;
+    --charts-speed-default: #00FFFF;
+    --charts-speed-pie-chart-light: #A2FFFF;
+    
+    // ==========================================
+    // Defense and Characters Colors
+    // ==========================================
+    
+    --defense-class-colors-retroflector: #FF0000;
+    --defense-class-colors-obidient: #FF8E00;
+    --defense-class-colors-projector: #FFFF00;
+    --defense-class-colors-deflector: #008E00;
+    --defense-class-colors-desensitizer: #00C0C0;
+    --defense-class-colors-intellectualizer: #400098;
+    --defense-class-colors-confluent: #8E008E;
+    
+    // ==========================================
+    // Shop Colors
+    // ==========================================
+    
+    --shop-frame-common: #FFA99F;
+    --shop-frame-rare: #D0D0D0;
+    --shop-frame-epic: #FFE99C;
+    --shop-frame-antique: #A8DBE8;
+    
+    // ==========================================
+    // Heading Styles
+    // ==========================================
+    
+    // Font families
+    --heading-font: 'Sedgwick Ave Display', cursive;
+    --body-font: 'DM Sans', sans-serif;
+    
+    // Desktop heading sizes
+    --h1-size-desktop: 128px;
+    --h2-size-desktop: 64px;
+    --h3-size-desktop: 48px;
+    --h4-size-desktop: 24px;
+    --h5-size-desktop: 18px;
+    --body-size-desktop: 16px;
+    --small-size-desktop: 14px;
+    
+    // Mobile heading sizes
+    --h1-size-mobile: 32px;
+    --h2-size-mobile: 24px;
+    --h3-size-mobile: 24px;
+    --h4-size-mobile: 24px;
+    
+    // Rounders
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-pill: 9999px;
+    
+    // ==========================================
+    // Additional Global Values
+    // ==========================================
+    
+    // Fonts
+    --primary-font: 'Roboto', sans-serif;
+    --secondary-font: 'Montserrat', sans-serif;
+    --body-font-size: 16px;
+    --heading-font-size: 24px;
+    
+    // Corner Radius
+    --corner-radius-web: 12px;
+    --corner-radius-large: 25px;
+    --corner-radius-small: 4px;
+    
+    // Thickness
+    --thickness-web: 4px;
+    --thickness-mobile: 2px;
+    
+    // Box-shadow values for cards and buttons
+    --xs: (x: 1, y: 1, blur: 0, spread: 0, opacity: 1);
+    --s: (x: 2, y: 4, blur: 0, spread: 0, opacity: 1); 
+    --m: (x: 4, y: 8, blur: 0, spread: 0, opacity: 1);
+    --l: (x: 6, y: 12, blur: 0, spread: 0, opacity: 1);
+    
+    // Base Spacing
+    --spacing-0: 0px;
+    --spacing-50: 2px;
+    --spacing-100: 4px;
+    --spacing-200: 8px;
+    --spacing-250: 12px;
+    --spacing-300: 16px;
+    --spacing-400: 24px;
+    --spacing-500: 32px;
+    --spacing-600: 48px;
+    --spacing-700: 64px;
+    --spacing-800: 96px;
+    
+    // Borders
+    --border-desktop: 4px;
+    --border-mobile: 2px;
+    
+    // Other reusable variables
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+}

@@ -17,6 +17,10 @@ import { useClientTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import cls from './FeedbackCard.module.scss';
 
+/**
+ * @deprecated
+ */
+
 export default function FeedbackCard() {
     const { t } = useClientTranslation('feedbackCard');
     const [feedback, setFeedback] = useState<string>('');
