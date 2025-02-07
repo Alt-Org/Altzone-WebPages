@@ -52,7 +52,7 @@ const FooterDesktopComponent = memo((props: Props) => {
                 />
             </Container>
             <Container className={cls.FeedbackContainer}>
-                <FeedbackCard />
+                <FeedbackCard variant={'embedabble'} />
             </Container>
         </footer>
     );
