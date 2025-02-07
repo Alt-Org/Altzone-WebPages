@@ -22,7 +22,6 @@ export interface NewsTranslation {
     title: string;
     preview_text: string;
     body_text: string;
-    footnotes: string | null;
 }
 
 export interface Category {
@@ -32,7 +31,7 @@ export interface Category {
     date_created: string;
     user_updated: string | null;
     date_updated: string | null;
-    category_image: string; // ID or URL of the image
+    category_image: string;
     translations: CategoryTranslation[];
 }
 
