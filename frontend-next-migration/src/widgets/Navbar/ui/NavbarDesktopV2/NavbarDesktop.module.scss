@@ -23,6 +23,7 @@
   position: relative;
   width: 100%;
   display: flex;
+
   &:hover {
     height: 200px;
   }
@@ -100,7 +101,7 @@
   text-align: center;
   padding: 4px;
 
-  & > * {
+  &>* {
     color: var(--secondary-color) !important;
   }
 }
@@ -168,6 +169,7 @@
 .logoutButton {
   cursor: pointer;
 }
-.FixButton{
+
+.FixButton {
   margin-top: 6px;
 }
