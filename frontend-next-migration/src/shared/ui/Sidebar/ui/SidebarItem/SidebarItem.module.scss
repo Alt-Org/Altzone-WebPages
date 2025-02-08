@@ -18,30 +18,25 @@
 .itemBasic{
   padding-top: 3px;
 }
-
-.itemDropDown{
+.itemDropDown {
   cursor: pointer;
   transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
   padding-top: 3px;
   border-radius: var(--border-radius-custom);
   &:hover {
     background: var(--inverted-bg-color-transparency);
-    //background: rgba(0, 0, 0, 0.60);
   }
-  //padding-top: 3px;
+
   padding-left: 20px;
   padding-right: 20px;
 
-  //todo try to fix because scale is not the best variant
-  &  * > * {
+  & *>* {
     transform: scale(0.95);
   }
   &.active {
-    color: var(--secondary-color)!important;
+    color: var(--secondary-color) !important;
   }
-
 }
-
 .link {
   padding-top: 0;
   visibility: visible;
