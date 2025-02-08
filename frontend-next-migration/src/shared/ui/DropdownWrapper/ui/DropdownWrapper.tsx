@@ -21,9 +21,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         onOpen,
         onClose,
         openByDefault = false,
+        isOpen,
+        onClick,
     } = props;
 
-    const [isOpen, setIsOpen] = useState<boolean>(openByDefault);
     const [shouldRender, setShouldRender] = useState<boolean>(false);
     const [animationState, setAnimationState] = useState<'opening' | 'closing' | ''>('');
     const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
@@ -46,17 +47,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         setAnimationState('');
     };
 
-    // const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-    //     const relatedTarget = event.relatedTarget as HTMLElement;
-    //     if (!relatedTarget || !event.currentTarget.contains(relatedTarget)) {
-    //         const timer = setTimeout(() => {
-    //             setIsOpen(false);
-    //             setCloseTimer(null);
-    //         }, 200);
-    //         setCloseTimer(timer);
-    //     }
-    // };
-
     const handleMouseEnter = () => {
         if (!mouseOverLeaveMode) return;
 
@@ -64,28 +54,22 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             clearTimeout(closeTimer);
             setCloseTimer(null);
         }
-        setIsOpen(true);
     };
 
     const handleMouseLeave = () => {
         if (!mouseOverLeaveMode) return;
 
         const timer = setTimeout(() => {
-            setIsOpen(false);
             setCloseTimer(null);
         }, 200);
         setCloseTimer(timer);
     };
 
-    const toggleDropdown = (): void => {
-        setIsOpen(!isOpen);
-    };
-
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'Enter' && !isDisabled?.status) {
-            setIsOpen(!isOpen);
+            onClick?.();
         } else if (event.key === 'Escape' && isOpen) {
-            setIsOpen(false);
+            onClick?.();
         }
     };
 
@@ -107,19 +91,17 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             className={classNames(cls.DropdownWrapper, mods, [className])}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            // onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             tabIndex={0}
             role="button"
             aria-haspopup="true"
             aria-expanded={isOpen}
             aria-disabled={isDisabled?.status}
+            onClick={onClick}
         >
             <div
-                onClick={!isDisabled?.status ? toggleDropdown : undefined}
                 role="button"
                 title={isDisabled?.status ? isDisabled?.reason : ''}
-                // tabIndex={-1}
                 className={classNames(cls.childrenWrapper, {}, [
                     childrenWrapperClassName,
                     mainElementClass,
@@ -191,7 +173,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             }}
                                             onClick={element.onClickCallback}
                                         >
-                                            {/*<span className={contentItemClassName}>*/}
                                             {element.elementText}
                                         </span>
                                     )}
