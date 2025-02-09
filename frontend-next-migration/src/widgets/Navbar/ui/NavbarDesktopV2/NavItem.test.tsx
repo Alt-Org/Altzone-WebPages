@@ -50,13 +50,6 @@ jest.mock('@/shared/ui/DropdownWrapperV2', () => ({
                     title=""
                 >
                     {children}
-                    <span
-                        style={{
-                            display: 'inline-block',
-                            transform: `rotate(${isOpen ? 180 : 0}deg)`,
-                            transition: 'transform 0.4s ease-in-out',
-                        }}
-                    />
                 </div>
                 {isOpen && (
                     <div
