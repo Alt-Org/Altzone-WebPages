@@ -5,9 +5,9 @@ import { useUserPermissionsV2 } from '@/entities/Auth';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2';
 import { NavbarMenuItem } from '../../model/types';
 import cls from './NavbarDesktop.module.scss';
-import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2';
 
 type NavItemProps = {
     item: NavbarMenuItem;
@@ -34,7 +34,7 @@ const NavItem = memo((props: NavItemProps) => {
                     to={item.path}
                     key={item.path}
                 >
-                    <span className={cls.color}>{t(`${item.name}`)}</span>
+                    <span className={cls.col}>{t(`${item.name}`)}</span>
                 </AppLink>
             </li>
         );
@@ -55,12 +55,20 @@ const NavItem = memo((props: NavItemProps) => {
                     // @ts-ignore
                     elementText: t(`${element.elementText}`),
                     // @ts-ignore
+                    // contentItemClassName: cls.dropdownElement,
+                    // contentItemClassName: classNames(cls.dropdownElement, {
+                    //     // @ts-ignore
+                    //     [cls.active]: currentPath === element?.link?.path,
+                    // }),
+                    // @ts-ignore
                     active: currentPath === element?.link?.path,
                 };
 
                 return transformedElement;
             })
             .filter((element) => element !== null);
+
+        // console.log(localizedElements)
 
         const isDropdownActive = localizedElements.some((element) => element.active);
 
@@ -76,7 +84,7 @@ const NavItem = memo((props: NavItemProps) => {
                     contentClassName={cls.itemNavbarDropDownContent}
                     openByDefault={false}
                 >
-                    <div className={cls.color}>{t(`${item.name}`)}</div>
+                    <div className={cls.col}>{t(`${item.name}`)}</div>
                 </DropdownWrapper>
             </li>
         );
@@ -87,6 +95,7 @@ const NavItem = memo((props: NavItemProps) => {
             <li
                 key={item.src}
                 className={classNames(cls.navItem, {}, [className])}
+                // className={className}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
