@@ -60,12 +60,11 @@ export const Sidebar = ({
 }: SidebarProps) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
     const [isOpening, setIsOpening] = useState(false);
-    const [openDropdown, setOpenDropdown] = useState<string | null>(null); // Track open dropdown
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
     const handleBurgerButtonClick = () => {
         setIsOpening(true);
         setTimeout(() => setIsOpening(false), 500);
-
         setIsCollapsed((prevState) => {
             if (prevState) {
                 document.body.classList.add('no-scroll');
@@ -118,10 +117,9 @@ export const Sidebar = ({
         () =>
             sidebarItemsList.map((item) => (
                 <SidebarItem
+                    key={item.name}
                     item={item}
                     collapsed={isCollapsed}
-                    key={item.name}
-                    active={item.active}
                     openDropdown={openDropdown}
                     setOpenDropdown={setOpenDropdown}
                 />
