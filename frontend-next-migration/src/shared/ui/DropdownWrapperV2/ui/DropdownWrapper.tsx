@@ -22,10 +22,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         isDisabled,
         children,
         onOpen,
-        onClose,
         openByDefault = false,
         staticDropdown = false,
         staticTitle = '',
+        isOpen: controlledIsOpen,
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
@@ -34,13 +34,18 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
+        if (controlledIsOpen !== undefined) {
+            setIsOpen(controlledIsOpen);
+        }
+    }, [controlledIsOpen]);
+
+    useEffect(() => {
         if (isOpen) {
             setShouldRender(true);
             setAnimationState('opening');
             if (onOpen) onOpen();
         } else if (shouldRender) {
             setAnimationState('closing');
-            if (onClose) onClose();
         }
     }, [isOpen]);
 
@@ -50,17 +55,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         }
         setAnimationState('');
     };
-
-    // const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-    //     const relatedTarget = event.relatedTarget as HTMLElement;
-    //     if (!relatedTarget || !event.currentTarget.contains(relatedTarget)) {
-    //         const timer = setTimeout(() => {
-    //             setIsOpen(false);
-    //             setCloseTimer(null);
-    //         }, 200);
-    //         setCloseTimer(timer);
-    //     }
-    // };
 
     const handleMouseEnter = () => {
         if (!mouseOverLeaveMode) return;
@@ -112,7 +106,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             className={classNames(cls.DropdownWrapper, mods, [className])}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            // onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             tabIndex={0}
             role="button"
