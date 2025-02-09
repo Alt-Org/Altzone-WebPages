@@ -31,6 +31,7 @@ export type DropdownWrapperProps = {
     onOpen?: () => void;
     isOpen?: boolean;
     children: ReactNode;
+    onClose?: () => void;
     dataTestId?: string;
     mouseOverLeaveMode?: boolean;
     isDisabled?: {
