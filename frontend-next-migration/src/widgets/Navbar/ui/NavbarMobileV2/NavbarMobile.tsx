@@ -152,6 +152,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <div
                 className={classNames(cls.NavbarMobile__burger, sidebarMods)}
                 onClick={handleBurgerClick}
+                data-testid="burger-button"
             />
             <Sidebar
                 sidebarItemsListResetKey={sidebarItemsListResetKey}
