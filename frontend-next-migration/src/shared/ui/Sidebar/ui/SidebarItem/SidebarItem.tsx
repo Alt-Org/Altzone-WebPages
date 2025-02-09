@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2';
 import { ISidebarItem, sidebarItemType } from '../../model/items';
 import cls from './SidebarItem.module.scss';
 
@@ -12,7 +12,6 @@ interface SidebarItemProps {
     openDropdown: string | null;
     setOpenDropdown: (name: string | null) => void;
 }
-
 /**
  * Renders a sidebar item, which can either be a basic item or a dropdown.
  * @param {SidebarItemProps} props - The props for the component.
@@ -35,7 +34,10 @@ interface SidebarItemProps {
  *    item={{
  *        type: sidebarItemType.ISidebarItemDropDown,
  *        name: 'Settings',
- *        elements: [{ elementText: 'Profile', link: {path: '/profile'} }, { elementText: 'Logout', onClickCallback: handleLogout }]
+ *        elements: [
+ *            { elementText: 'Profile', link: { path: '/profile' } },
+ *            { elementText: 'Logout', onClickCallback: handleLogout }
+ *        ]
  *    }}
  *    collapsed={true}
  *    openDropdown={openDropdown}
@@ -45,14 +47,6 @@ interface SidebarItemProps {
 
 export const SidebarItem = memo(
     ({ item, collapsed, active = false, openDropdown, setOpenDropdown }: SidebarItemProps) => {
-        const handleDropdownClick = () => {
-            if (openDropdown === item.name) {
-                setOpenDropdown(null);
-            } else {
-                setOpenDropdown(item.name);
-            }
-        };
-
         if (item.type === sidebarItemType.ISidebarItemBasic) {
             return (
                 <AppLink
@@ -77,9 +71,9 @@ export const SidebarItem = memo(
                     contentClassName={classNames(cls.link, { [cls.collapsed]: collapsed })}
                     elements={item.elements}
                     isOpen={openDropdown === item.name}
-                    onClick={handleDropdownClick}
+                    onOpen={() => setOpenDropdown(item.name)}
                 >
-                    {item.name}
+                    <div className={cls.item}> {item.name} </div>
                 </DropdownWrapper>
             );
         }
