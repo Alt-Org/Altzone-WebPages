@@ -132,7 +132,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                     onClick={!isDisabled?.status ? toggleDropdown : undefined}
                     role="button"
                     title={isDisabled?.status ? isDisabled?.reason : ''}
-                    className={classNames(cls.childrenWrapper, {}, [
+                    className={classNames(cls.childrenWrapper, { [cls.active]: isOpen }, [
                         childrenWrapperClassName,
                         mainElementClass,
                     ])}
