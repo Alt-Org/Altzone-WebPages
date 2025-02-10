@@ -1,5 +1,6 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
+import { ScrollTop } from '@/features/ScrollTop';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
@@ -243,6 +244,7 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
+            <ScrollTop />
         </LayoutWithSidebars>
     );
 };
