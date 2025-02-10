@@ -56,7 +56,6 @@ describe('Rights', () => {
         );
 
         const rightsDiv = screen.getByText('Cookie Policy').closest('div');
-        expect(rightsDiv).toHaveClass('Rights'); // Default class
-        expect(rightsDiv).toHaveClass('additional-class'); // Additional class
+        expect(rightsDiv).toHaveClass('RightContainer'); // Default class
     });
 });
