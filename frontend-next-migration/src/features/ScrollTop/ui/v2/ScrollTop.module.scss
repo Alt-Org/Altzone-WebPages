@@ -25,11 +25,11 @@
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
   transform: rotate(90deg); // For making '<<' (\226A) point up
   font-size: 70px !important;
-
   @media (max-width:breakpoint(lg)) {
     width:60px;
     height:60px;
     right: 16px;
+    bottom: 260px;
     border-width: var(--border-mobile);
     border-radius: calc(var(--border-radius-custom) * 1.5);
     font: var(--font-xxl) !important;
