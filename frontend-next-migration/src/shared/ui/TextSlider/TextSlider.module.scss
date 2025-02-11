@@ -63,11 +63,6 @@
 .btnRight:hover {
     background-color: #444;
     box-shadow: 0 0 15px #ffa101;
-    
-    @media screen and  (max-width: 768px) {
-        background-color: inherit;
-        box-shadow: none;
-    }
 }
 
 @media (max-width: 768px) {
@@ -81,6 +76,12 @@
         margin: 0.5rem 15px;
         font-size: 1rem;
         line-height: 1.4;
+    }
+
+    .btnLeft:hover,
+    .btnRight:hover {
+        background-color: inherit;
+        box-shadow: none;
     }
 
     @media (max-width: 480px) {
@@ -113,9 +114,4 @@
         line-height: 1.5;
     }
 
-    .btnLeft:hover,
-    .btnRight:hover {
-        background-color: inherit;
-        box-shadow: none;
-    }
 }
