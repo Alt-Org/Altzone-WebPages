@@ -68,8 +68,6 @@ const NavItem = memo((props: NavItemProps) => {
             })
             .filter((element) => element !== null);
 
-        // console.log(localizedElements)
-
         const isDropdownActive = localizedElements.some((element) => element.active);
 
         return (
@@ -80,11 +78,10 @@ const NavItem = memo((props: NavItemProps) => {
                 <DropdownWrapper
                     elements={localizedElements}
                     contentAbsolute={true}
-                    mouseOverLeaveMode={true}
                     contentClassName={cls.itemNavbarDropDownContent}
-                    openByDefault={false}
+                    isOpen={true}
                 >
-                    <div className={cls.col}>{t(`${item.name}`)}</div>
+                    <div className={cls.item}>{t(`${item.name}`)}</div>
                 </DropdownWrapper>
             </li>
         );
@@ -95,7 +92,6 @@ const NavItem = memo((props: NavItemProps) => {
             <li
                 key={item.src}
                 className={classNames(cls.navItem, {}, [className])}
-                // className={className}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
