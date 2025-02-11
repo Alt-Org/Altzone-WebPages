@@ -63,6 +63,10 @@
 .btnRight:hover {
     background-color: #444;
     box-shadow: 0 0 15px #ffa101;
+    @media screen and  (max-width: 768px) {
+        background-color: inherit;
+        box-shadow: none;
+    }
 }
 
 @media (max-width: 768px) {
