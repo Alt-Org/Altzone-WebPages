@@ -138,7 +138,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                     ])}
                 >
                     {children}
-                    <span
+                    {/* <span
                         style={{
                             display: 'inline-block',
                             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -151,7 +151,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                             src={chevronDown}
                             className={cls.chevronImage}
                         />
-                    </span>
+                    </span> */}
                 </div>
             )}
             {shouldRender && (
