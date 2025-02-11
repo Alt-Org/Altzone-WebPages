@@ -6,8 +6,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapperProps } from '../types';
 import cls from './DropdownWrapper.module.scss';
-import Image from 'next/image';
-import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 
 // eslint-disable-next-line complexity
 export const DropdownWrapper = (props: DropdownWrapperProps) => {
@@ -137,14 +135,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                             transition: 'transform 0.4s ease-in-out',
                         }}
-                    >
-                        {/* <Image
-                            loading="eager"
-                            alt={'Chevron'}
-                            src={chevronDown}
-                            className={cls.chevronImage}
-                        /> */}
-                    </span>
+                    />
                 </div>
             )}
             {shouldRender && (
@@ -184,9 +175,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     icon={faExternalLink}
                                                     style={{
                                                         display: 'inline',
-                                                        verticalAlign: 'center',
+                                                        verticalAlign: 'middle',
                                                         marginLeft: '5px',
-                                                        // color: 'var(--inverted-primary-color)',
                                                         color: 'var(--content-primary)',
                                                     }}
                                                 />
@@ -203,7 +193,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             }}
                                             onClick={element.onClickCallback}
                                         >
-                                            {/*<span className={contentItemClassName}>*/}
+                                            {/* <span className={contentItemClassName}> */}
                                             {element.elementText}
                                         </span>
                                     )}
