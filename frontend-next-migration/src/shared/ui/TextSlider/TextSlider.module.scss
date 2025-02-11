@@ -77,7 +77,10 @@
         font-size: 1rem;
         line-height: 1.4;
     }
-
+    .btnLeft,
+    .btnRight {
+        width: 30px;
+    }
     .btnLeft:hover,
     .btnRight:hover {
         background-color: inherit;
