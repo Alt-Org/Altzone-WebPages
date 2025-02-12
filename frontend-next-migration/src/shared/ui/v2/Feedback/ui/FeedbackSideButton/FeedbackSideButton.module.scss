@@ -1,28 +1,65 @@
 .SideButton{
   //width: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  font-family: var(--font-family-main) !important;
+  font-size: var(--font-size-m) !important;
 
 
   height: fit-content;
-  min-height: 100px;
+  min-height: 110px;
+  width: 3rem;
   position: fixed;
   bottom: 50%;
+  align-items: center;
 
 
   -webkit-writing-mode: vertical-lr;
   writing-mode: vertical-lr;
+  border-radius: 15px;
+  border-width: 4px !important;
+  border-style: solid !important;
+
 
 
 
   right: 10px;
   background-color: var(--inverted-bg-color)!important;
   z-index: var(--sideButton-z-index) !important;
-  font-family: var(--font-family-texts) !important;
+  font-family:  16px !important;
   line-height: 1 !important;
   transform: rotate(180deg);
-  padding: 12px !important;
+  padding: 14px 0 14px 0 !important;
 
+  &:focus {
+    outline: none !important;
+  }
 
 }
+
+.activeButton {
+  @extend .SideButton;
+  background-color: var(--inverted-bg-color) !important;
+  color: var(--secondary-color) !important;
+  border-color: var(--secondary-color) !important;
+}
+
+.nonActiveButton {
+  @extend .SideButton;
+  background-color: var(--secondary-color) !important;
+  color: var(--inverted-bg-color) !important;
+  border-color: var(--inverted-bg-color) !important;
+}
+
+.feedbackButtonContainer {
+  display: flex;
+}
+
+.megafone {
+  transform: rotate( 180deg);
+}
+
 .FeedbackCardContainer {
   display: flex;
   position: fixed;
