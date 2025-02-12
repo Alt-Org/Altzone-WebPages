@@ -53,7 +53,7 @@ const FeedbackSideButton = (props: Props) => {
                         theme={ButtonTheme.CLEAR}
                         square={false}
                         size={ButtonSize.L}
-                        className={isFeedbackVisible ? cls.nonActiveButton : cls.activeButton}
+                        className={isFeedbackVisible ? cls.activeButton : cls.nonActiveButton}
                         type="button"
                         onClick={handleButtonClick}
                     >

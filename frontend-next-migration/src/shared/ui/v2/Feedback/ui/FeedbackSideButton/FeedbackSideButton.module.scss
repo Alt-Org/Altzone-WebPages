@@ -38,14 +38,14 @@
 
 }
 
-.activeButton {
+.nonActiveButton {
   @extend .SideButton;
   background-color: var(--inverted-bg-color) !important;
   color: var(--secondary-color) !important;
   border-color: var(--secondary-color) !important;
 }
 
-.nonActiveButton {
+.activeButton {
   @extend .SideButton;
   background-color: var(--secondary-color) !important;
   color: var(--inverted-bg-color) !important;
