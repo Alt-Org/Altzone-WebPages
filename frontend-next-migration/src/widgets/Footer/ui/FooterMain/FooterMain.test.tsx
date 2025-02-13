@@ -9,6 +9,8 @@ jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
 }));
 
+jest.mock('@/shared/ui/v2/Feedback');
+
 jest.mock('../../model/data/socialSectionMenu', () => ({
     socialIconLinks: [
         { link: 'https://facebook.com', icon: '/icons/facebook.svg', name: 'Facebook' },

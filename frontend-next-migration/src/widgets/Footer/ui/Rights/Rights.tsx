@@ -20,26 +20,28 @@ export const Rights = memo((props: RightsProps) => {
 
     return (
         <div className={classNames(cls.Rights, {}, [className])}>
-            <p>
-                <AppLink
-                    className={cls.cookies}
-                    to={getRouteCookiesPage()}
-                >
-                    {cookies}
-                </AppLink>{' '}
-                <AppLink
-                    className={cls.privacy}
-                    to={getRoutePrivacyPage()}
-                >
-                    {privacy}
-                </AppLink>
-                <span
-                    onClick={handleResetCookies}
-                    className={cls.resetCookies}
-                >
-                    {consent}
-                </span>
-            </p>
+            <div className={cls.RightContainer}>
+                <p className={cls.RightLinkContainer}>
+                    <AppLink
+                        className={cls.cookies}
+                        to={getRouteCookiesPage()}
+                    >
+                        {cookies}
+                    </AppLink>{' '}
+                    <AppLink
+                        className={cls.privacy}
+                        to={getRoutePrivacyPage()}
+                    >
+                        {privacy}
+                    </AppLink>
+                    <span
+                        onClick={handleResetCookies}
+                        className={cls.resetCookies}
+                    >
+                        {consent}
+                    </span>
+                </p>
+            </div>
             <p>
                 <span className={cls.copySymbol}>&copy;</span> {currentYear} {companyName}{' '}
             </p>

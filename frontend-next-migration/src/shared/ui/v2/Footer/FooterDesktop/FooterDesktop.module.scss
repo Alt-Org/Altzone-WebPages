@@ -1,0 +1,42 @@
+.Footer {
+  font: var(--font-xl);
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px 25px 5px 25px;
+
+}
+
+.title {
+  padding-top: 1rem;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.socialSection {
+  padding-top: 1rem;
+  justify-content: center;
+}
+
+.rights {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+
+.FooterContainer {
+  align-self: flex-start;
+  justify-items: center;
+
+}
+
+.ImageContainer {
+  justify-items: flex-start;
+}
+
+.FeedbackContainer {
+  display: flex;
+  justify-content: flex-end;
+}
