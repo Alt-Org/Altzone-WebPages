@@ -1,8 +1,8 @@
-import Discord from '@/shared/assets/images/discord.svg';
+import Discord from '@/shared/assets/images/Discord2.svg';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import Instagram from '@/shared/assets/images/instagram.svg';
-import Facebook from '@/shared/assets/images/facebook.svg';
-import Youtube from '@/shared/assets/images/youtube.svg';
+import Instagram from '@/shared/assets/images/Insta2.svg';
+import Facebook from '@/shared/assets/images/Facebook2.svg';
+import Youtube from '@/shared/assets/images/Youtube2.svg';
 import { SocialIconLink } from '../types/types';
 
 export const socialIconLinks: SocialIconLink[] = [
