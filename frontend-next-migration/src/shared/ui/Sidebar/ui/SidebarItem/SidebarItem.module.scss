@@ -4,12 +4,12 @@
     padding-left: 20px !important;
     padding-right: 20px !important;
     &:hover {
+       text-decoration: underline;
         color: var(--content-primary);
     }
-
     &.active {
         color: var(--content-primary) !important;
-        text-decoration: underline;
+       
     }
 }
 .itemBasic {
@@ -17,9 +17,7 @@
 }
 .itemDropDown .link {
     margin-left: 50px;
-    &:hover {
-        text-decoration: underline;
-    }
+  
 }
 .itemDropDown {
     cursor: pointer;
@@ -38,7 +36,6 @@
     }
     &.active {
         color: var(--content-primary) !important;
-        text-decoration: underline;
     }
 }
 .link {
