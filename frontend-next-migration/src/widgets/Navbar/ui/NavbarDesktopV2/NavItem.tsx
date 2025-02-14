@@ -79,9 +79,9 @@ const NavItem = memo((props: NavItemProps) => {
                     elements={localizedElements}
                     contentAbsolute={true}
                     contentClassName={cls.itemNavbarDropDownContent}
-                    isOpen={true}
+                    openByDefault={true}
                 >
-                    <div className={cls.item}>{t(`${item.name}`)}</div>
+                    <div className={cls.col}>{t(`${item.name}`)}</div>
                 </DropdownWrapper>
             </li>
         );
