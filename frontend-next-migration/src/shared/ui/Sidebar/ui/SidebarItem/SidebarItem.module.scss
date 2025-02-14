@@ -1,52 +1,59 @@
 .item {
-  font: var(--font-xxl);
- 
-  padding-left: 20px!important;
-  padding-right: 20px!important;
-  &:hover {
-    color: var(--content-primary);
-  }
+    font: var(--font-xxl);
 
-  &.active {
-     color: var(--content-primary) !important;
-    text-decoration:underline;
-  }
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    &:hover {
+        color: var(--content-primary);
+    }
 
+    &.active {
+        color: var(--content-primary) !important;
+        text-decoration: underline;
+    }
 }
-.itemBasic{
-  padding-top: 3px;
+.itemBasic {
+    padding-top: 3px;
 }
-.itemDropDown .link{
-  margin-left:50px;
-
+.itemDropDown .link {
+    margin-left: 50px;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 .itemDropDown {
-  cursor: pointer;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
-  padding-top: 3px;
-  border-radius: var(--border-radius-custom);
-  &:hover {
-    background: var(--inverted-bg-color-transparency);
-  }
-  padding-right: 40px;
+    cursor: pointer;
+    transition:
+        background-color 0.4s ease-in-out,
+        color 0.4s ease-in-out;
+    padding-top: 3px;
+    border-radius: var(--border-radius-custom);
+    &:hover {
+        background: var(--inverted-bg-color-transparency);
+    }
+    padding-right: 40px;
 
-  & *>* {
-    transform: scale(0.95);
-  }
-  &.active {
-    color: var(--content-primary) !important;
-    text-decoration:underline;
-  }
+    & * > * {
+        transform: scale(0.95);
+    }
+    &.active {
+        color: var(--content-primary) !important;
+        text-decoration: underline;
+    }
 }
 .link {
-  padding-top: 0;
-  visibility: visible;
-  transition: visibility 0.4s ease-in-out, width 0.4s ease-in-out;
+    padding-top: 0;
+    visibility: visible;
+    transition:
+        visibility 0.4s ease-in-out,
+        width 0.4s ease-in-out;
 }
 .collapsed {
-  .link {
-    visibility: hidden;
-    width: 0;
-    transition: visibility 0.4s ease-out, width 0.4s ease-out;
-  }
+    .link {
+        visibility: hidden;
+        width: 0;
+        transition:
+            visibility 0.4s ease-out,
+            width 0.4s ease-out;
+    }
 }
