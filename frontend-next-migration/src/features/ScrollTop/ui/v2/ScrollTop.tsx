@@ -1,8 +1,10 @@
 'use client';
 import { memo, useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useCurrentYPosition } from '@/shared/lib/hooks';
+import upUpIcon from '@/shared/assets/icons/UpUp arrows.svg';
 import cls from './ScrollTop.module.scss';
 
 interface ScrollTopProps {
@@ -33,7 +35,12 @@ export const ScrollTop = memo(({ className = '' }: ScrollTopProps) => {
             theme={ButtonTheme.OUTLINE}
             className={classNames(cls.ScrollTop, { [cls.show]: showButton }, [className])}
             onClick={handleButtonClick}
-        />
+        >
+            <Image
+                src={upUpIcon}
+                alt="double chevron pointing up"
+            />
+        </Button>
     );
 });
 

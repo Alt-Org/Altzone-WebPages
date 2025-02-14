@@ -36,7 +36,7 @@ const Template: ComponentStory<typeof ScrollTop> = (args) => {
                     opacity: '0.1',
                     position: 'fixed',
                     right: '32px',
-                    bottom: '32px',
+                    bottom: '170px',
                     width: '70px',
                     height: '70px',
                 }}

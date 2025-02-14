@@ -17,32 +17,25 @@
   height: 70px;
   padding:0 !important;
   position: fixed;
-  bottom: 118px; // 32px + 70px + 16px + 70px
+  bottom: 256px; // 100px + 70px + 16px + 70px
   right: 32px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-  transform: rotate(90deg); // For making '<<' (\226A) point up
-  font-size: 70px !important;
   @media (max-width:breakpoint(lg)) {
     width:60px;
     height:60px;
     right: 16px;
-    bottom: 260px;
+    bottom: 266px;
     border-width: var(--border-mobile);
     border-radius: calc(var(--border-radius-custom) * 1.5);
-    font-size: 40px !important;
   }
 }
-
-.ScrollTop::before {
-  content:'\226A'; // Much less than -symbol ('<<')
-  position:absolute;
-  top:0;
-  left:0;
+.ScrollTop > img {
+  width:70%;
+  margin:auto;
   @media (max-width:breakpoint(lg)) {
-    top:-2px;
-    left:10px;
+    width:40%;
   }
 }
 
