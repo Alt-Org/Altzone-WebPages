@@ -12,12 +12,6 @@ import { useClientTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import cls from './FeedbackCard.module.scss';
 import FeedbackEmoji from '../FeedbackEmoji/FeedbackEmoji';
-import { Sedgwick_Ave_Display } from 'next/font/google';
-
-const sedgwickFont = Sedgwick_Ave_Display({
-    subsets: ['latin'],
-    weight: '400',
-});
 
 /**
  * Props for the FeedbackCard component.
@@ -90,7 +84,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
                 await submitFeedback();
             }}
         >
-            <h3 className={`${cls.feedbackTitle} ${sedgwickFont.className}`}>{t('title')}</h3>
+            <h3 className={cls.feedbackTitle}>{t('title')}</h3>
             <FeedbackEmoji
                 listClassName={cls.emojiList}
                 value={feedbackEmoji}

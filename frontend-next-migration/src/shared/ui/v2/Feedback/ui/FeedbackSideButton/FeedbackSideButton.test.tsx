@@ -16,7 +16,7 @@ describe('FeedbackSideButton', () => {
 
         render(<FeedbackSideButton disableMobile={false} />);
 
-        const button = screen.getByRole('button', { name: 'feedback' });
+        const button = screen.getByRole('button', { name: 'feedback megafone' });
         expect(button).toBeInTheDocument();
     });
 
@@ -25,7 +25,7 @@ describe('FeedbackSideButton', () => {
 
         render(<FeedbackSideButton disableMobile={true} />);
 
-        const button = screen.queryByRole('button', { name: 'feedback' });
+        const button = screen.queryByRole('button', { name: 'feedback megafone' });
         expect(button).not.toBeInTheDocument();
     });
 
@@ -34,21 +34,21 @@ describe('FeedbackSideButton', () => {
 
         render(<FeedbackSideButton disableMobile={false} />);
 
-        const button = screen.getByRole('button', { name: 'feedback' });
+        const button = screen.getByRole('button', { name: 'feedback megafone' });
         expect(button).toBeInTheDocument();
     });
 
     it('renders a disabled button when on mobile and disableMobile is true', () => {
         (useIsMobileSize as jest.Mock).mockReturnValue({ isMobileSize: true });
         render(<FeedbackSideButton disableMobile={true} />);
-        const button = screen.queryByRole('button', { name: 'feedback' });
+        const button = screen.queryByRole('button', { name: 'feedback megafone' });
         expect(button).not.toBeInTheDocument();
     });
 
     it('renders an enabled button when on mobile and disableMobile is false', () => {
         (useIsMobileSize as jest.Mock).mockReturnValue({ isMobileSize: true });
         render(<FeedbackSideButton disableMobile={false} />);
-        const button = screen.getByRole('button', { name: 'feedback' });
+        const button = screen.getByRole('button', { name: 'feedback megafone' });
         expect(button).toBeInTheDocument();
         expect(button).toBeEnabled();
     });

@@ -8,7 +8,10 @@
     padding-top: 0;
     align-items: center;
     gap: 10px;
-    box-shadow: 3px 4px 0 #121212;
+    box-shadow: 6px 8px 1px #000000;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #000000;
 }
 
 .feedbackTitle {
@@ -19,6 +22,7 @@
     padding: 5px 1em 0 1em;
     height: fit-content;
     color: var(--secondary-color) !important;
+    font-family: var(--font-family-title);
     text-align: center;
     width: 100%;
     margin: 0 auto;
@@ -71,6 +75,7 @@
 .linkToForm {
     display: flex;
     flex-direction: row;
+    font-family: var(--font-family-secondary);
     font-size: 1rem;
 }
 
