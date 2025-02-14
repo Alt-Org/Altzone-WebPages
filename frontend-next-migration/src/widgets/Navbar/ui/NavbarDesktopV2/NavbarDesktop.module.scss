@@ -32,6 +32,7 @@
 .col {
     color: var(--content-primary);
     text-align: center;
+    font-weight: 600;
 }
 
 .siteNavContentList:hover .itemNavbarDropDownContent {
@@ -40,17 +41,13 @@
     align-items: self-start;
     justify-items: space-between;
 }
-
 .siteNavContentList {
     height: 52px;
     background-color: var(--base-card-background);
-    border-radius: var(--border-radius-custom);
-    // border-radius: var(--border-radius-figma);
+    border-radius: var(--border-radius-figmadesktop);
     border: 2px solid var(--drop-shadows);
-    box-shadow: -5px 15px 7px 0px var(--drop-shadows);
-
-    gap: 2em;
-
+    box-shadow: 3px 7px 0 var(--drop-shadows);
+    gap:2em;
     list-style: none;
     z-index: 2;
     position: relative;
@@ -88,12 +85,9 @@
         transform 0.3s ease-out 0.2s,
         opacity 0.3s ease-out 0.5s;
     visibility: visible;
-
     display: flex;
     height: max-content;
     line-height: initial;
-    padding: 10px 0;
-
     &.collapsed {
         transform: translateX(-100px) scaleX(0.7);
         opacity: 0;
@@ -144,6 +138,10 @@
     display: none;
 }
 
+.siteNavContentList:hover .itemNavbarDropDownContent > *:hover {
+    text-decoration: underline;
+}
+
 .siteNavContentList:hover .langSwitcher li {
     display: flex;
 }
@@ -152,7 +150,7 @@
     border-radius: var(--border-radius-custom);
     border: 2px solid var(--inverted-primary-color);
     background-color: rgba(0, 0, 0, 0.8);
-    // color: var(--secondary-color) !important;
+    color: var(--secondary-color) !important;
     color: white;
     font-size: var(--font-size-m) !important;
     padding: 2px;
@@ -241,7 +239,7 @@
 .CollapseButtonWrapper {
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 5px;
     cursor: pointer;
     opacity: 1 !important;
 
@@ -256,3 +254,8 @@
         }
     }
 }
+.siteNavContentList:hover .navItem:nth-child(3) { margin-left: 30px;}
+.siteNavContentList:hover .navItem:nth-child(3) { margin-left: 10px;}
+.siteNavContentList:hover .navItem:nth-child(6) {margin-left:80px;}
+.siteNavContentList:hover .navItem:nth-child(4) {margin-left: 40px;}
+.siteNavContentList:hover .navItem:nth-child(5) {margin-left: 60px;}
