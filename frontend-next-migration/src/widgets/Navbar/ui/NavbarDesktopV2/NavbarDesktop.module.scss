@@ -47,7 +47,7 @@
     border-radius: var(--border-radius-figmadesktop);
     border: 2px solid var(--drop-shadows);
     box-shadow: 3px 7px 0 var(--drop-shadows);
-    gap:2em;
+    gap: 2em;
     list-style: none;
     z-index: 2;
     position: relative;
@@ -254,8 +254,18 @@
         }
     }
 }
-.siteNavContentList:hover .navItem:nth-child(3) { margin-left: 30px;}
-.siteNavContentList:hover .navItem:nth-child(3) { margin-left: 10px;}
-.siteNavContentList:hover .navItem:nth-child(6) {margin-left:80px;}
-.siteNavContentList:hover .navItem:nth-child(4) {margin-left: 40px;}
-.siteNavContentList:hover .navItem:nth-child(5) {margin-left: 60px;}
+.siteNavContentList:hover .navItem:nth-child(3) {
+    margin-left: 30px;
+}
+.siteNavContentList:hover .navItem:nth-child(3) {
+    margin-left: 10px;
+}
+.siteNavContentList:hover .navItem:nth-child(6) {
+    margin-left: 80px;
+}
+.siteNavContentList:hover .navItem:nth-child(4) {
+    margin-left: 40px;
+}
+.siteNavContentList:hover .navItem:nth-child(5) {
+    margin-left: 60px;
+}
