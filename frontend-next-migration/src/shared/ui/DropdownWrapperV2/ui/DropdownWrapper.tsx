@@ -6,6 +6,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapperProps } from '../types';
 import cls from './DropdownWrapper.module.scss';
+import Image from 'next/image';
+import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 
 // eslint-disable-next-line complexity
 export const DropdownWrapper = (props: DropdownWrapperProps) => {
@@ -20,10 +22,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         isDisabled,
         children,
         onOpen,
+        onClose,
         openByDefault = false,
         staticDropdown = false,
         staticTitle = '',
-        isOpen: controlledIsOpen,
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
@@ -32,18 +34,13 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
-        if (controlledIsOpen !== undefined) {
-            setIsOpen(controlledIsOpen);
-        }
-    }, [controlledIsOpen]);
-
-    useEffect(() => {
         if (isOpen) {
             setShouldRender(true);
             setAnimationState('opening');
             if (onOpen) onOpen();
         } else if (shouldRender) {
             setAnimationState('closing');
+            if (onClose) onClose();
         }
     }, [isOpen]);
 
@@ -53,6 +50,17 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         }
         setAnimationState('');
     };
+
+    // const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+    //     const relatedTarget = event.relatedTarget as HTMLElement;
+    //     if (!relatedTarget || !event.currentTarget.contains(relatedTarget)) {
+    //         const timer = setTimeout(() => {
+    //             setIsOpen(false);
+    //             setCloseTimer(null);
+    //         }, 200);
+    //         setCloseTimer(timer);
+    //     }
+    // };
 
     const handleMouseEnter = () => {
         if (!mouseOverLeaveMode) return;
@@ -104,6 +112,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             className={classNames(cls.DropdownWrapper, mods, [className])}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            // onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             tabIndex={0}
             role="button"
@@ -135,7 +144,14 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                             transition: 'transform 0.4s ease-in-out',
                         }}
-                    />
+                    >
+                        <Image
+                            loading="eager"
+                            alt={'Chevron'}
+                            src={chevronDown}
+                            className={cls.chevronImage}
+                        />
+                    </span>
                 </div>
             )}
             {shouldRender && (
@@ -176,8 +192,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     style={{
                                                         display: 'inline',
                                                         verticalAlign: 'middle',
-                                                        marginLeft: '10px',
-                                                        color: 'var(--content-primary)',
+                                                        marginLeft: '5px',
+                                                        color: 'var(--inverted-primary-color)',
                                                     }}
                                                 />
                                             )}
@@ -193,7 +209,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             }}
                                             onClick={element.onClickCallback}
                                         >
-                                            {/* <span className={contentItemClassName}> */}
+                                            {/*<span className={contentItemClassName}>*/}
                                             {element.elementText}
                                         </span>
                                     )}
