@@ -8,9 +8,9 @@
   --h1-size-mobile: 32px;
 
   color: var(--black);
-  border: var(--border-desktop) solid var(--black);
-  border-radius: var(--border-radius-custom);
-  background-color: var(--primary-color);
+  border: var(--border-desktop) solid var(--black)!important;
+  border-radius: var(--border-radius-custom)!important;
+  background-color: var(--primary-color)!important;
   z-index: var(--navbar-z-index);
   cursor: pointer;
   width: 70px;
@@ -27,8 +27,8 @@
     height:60px;
     right: 16px;
     bottom: 266px;
-    border-width: var(--border-mobile);
-    border-radius: calc(var(--border-radius-custom) * 1.5);
+    border-width: var(--border-mobile)!important;
+    border-radius: calc(var(--border-radius-custom !important) * 1.5);
   }
 }
 .ScrollTop > img {
