@@ -4,14 +4,20 @@
 
 .DropdownWrapper.contentAbsolute {
     position: relative;
+
     .dropdownContent {
         position: absolute;
         width: max-content;
     }
 }
+
+.chevronImage {
+    width: 16px;
+}
+
 .dropdownContent {
     padding-top: 10px;
-    line-height: 30px;
+    line-height: 40px;
     transform-origin: top;
     opacity: 0;
     transform: translateY(-10px);
@@ -57,6 +63,7 @@
         }
     }
 }
+
 .staticHeading {
     font-size: var(--font-size-xl);
     font-weight: bold;
@@ -66,9 +73,10 @@
 
 .childrenWrapper {
     display: flex;
-    gap: 10px;
-    font-weight: 600;
+    align-items: center;
+    gap: 7px;
 }
+
 .disabled {
     color: #c0c0c0;
     opacity: 0.5;
