@@ -5,7 +5,7 @@ export const dynamic = 'force-static';
 
 /**
  * Generate a sitemap.xml file.
- * @constant {string} BASE_URL - The base domain for all URLs, fetched from envHelper.
+ * @constant {string} siteUrl - The base domain for all URLs, fetched from envHelper.
  * @returns {MetadataRoute.Sitemap} A Sitemap object that contains page URLs and other information.
  * @property {string} url - Page URL.
  * @property {Date} lastModified - The last modification date of the page.
@@ -22,72 +22,72 @@ export const dynamic = 'force-static';
  * ]
  */
 
-const baseUrl = envHelper.appDomain;
+const siteUrl = envHelper.appDomain;
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
         {
-            url: `${baseUrl}`,
+            url: `${siteUrl}`,
             lastModified: new Date(),
             changeFrequency: 'always',
             priority: 1.0,
         },
         {
-            url: `${baseUrl}/fi/news`,
+            url: `${siteUrl}/fi/news`,
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/fi/heroes`,
+            url: `${siteUrl}/fi/heroes`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/fi/hero-development`,
+            url: `${siteUrl}/fi/hero-development`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.5,
         },
         {
-            url: `${baseUrl}/fi/clans`,
+            url: `${siteUrl}/fi/clans`,
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/fi/picture-galleries`,
+            url: `${siteUrl}/fi/picture-galleries`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
-            url: `${baseUrl}/fi/comics`,
+            url: `${siteUrl}/fi/comics`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.4,
         },
         {
-            url: `${baseUrl}/fi/furniture`,
+            url: `${siteUrl}/fi/furniture`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/fi/artGame`,
+            url: `${siteUrl}/fi/artGame`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.3,
         },
         {
-            url: `${baseUrl}/fi/join-us`,
+            url: `${siteUrl}/fi/join-us`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 0.3,
         },
         {
-            url: `${baseUrl}/fi/team`,
+            url: `${siteUrl}/fi/team`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.5,
