@@ -1,11 +1,9 @@
 .Rights {
   font: var(--font-m);
   font-family: var(--font-family-texts);
+  justify-content: center;
 }
 
-.Rights a {
-  margin-left: 1rem;
-}
 
 .Rights a:last-of-type {
   margin-right: 1rem;
@@ -30,4 +28,22 @@
 .privacy:hover {
   text-decoration: underline;
   color: orange;
+}
+
+.RightContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RightLinkContainer {
+  display: flex;
+  gap: 3.2rem;
+  padding: 0 2rem 0 1rem;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+
+  @media (max-width: 1023px) {
+    gap: 2rem;
+  };
 }

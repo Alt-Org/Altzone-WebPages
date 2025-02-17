@@ -7,6 +7,10 @@ import { Title } from '../Title/Title';
 import cls from './FooterDesktop.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
+/**
+ * @deprecated
+ */
+
 interface Props {
     title: string;
     socialIconLinks: SocialIconLink[];
