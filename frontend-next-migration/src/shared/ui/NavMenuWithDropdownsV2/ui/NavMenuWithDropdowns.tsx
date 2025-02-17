@@ -112,6 +112,7 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
             <DropdownWrapper
                 openByDefault={openByDefault}
                 staticDropdown={staticDropdown}
+                dynamicTitle={dynamicTitle}
                 staticTitle={title}
                 dataTestId={title}
                 elements={dropdownItems.map((item, index) =>
@@ -145,9 +146,8 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                 className={cls.topDropDown}
                 childrenWrapperClassName={cls.topDropDownChildren}
                 contentClassName={cls.topDropDownContent}
-            >
-                {dynamicTitle}
-            </DropdownWrapper>
+                showArrow={true}
+            />
         </div>
     );
 }

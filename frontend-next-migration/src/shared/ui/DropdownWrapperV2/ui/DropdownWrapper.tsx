@@ -26,6 +26,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         openByDefault = false,
         staticDropdown = false,
         staticTitle = '',
+        dynamicTitle,
+        showArrow,
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
@@ -128,30 +130,43 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                     {staticTitle}
                 </div>
             ) : (
-                <div
-                    onClick={!isDisabled?.status ? toggleDropdown : undefined}
-                    role="button"
-                    title={isDisabled?.status ? isDisabled?.reason : ''}
-                    className={classNames(cls.childrenWrapper, { [cls.active]: isOpen }, [
-                        childrenWrapperClassName,
-                        mainElementClass,
-                    ])}
-                >
-                    {children}
-                    {/* <span
-                        style={{
-                            display: 'inline-block',
-                            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                            transition: 'transform 0.4s ease-in-out',
-                        }}
+                <div>
+                    <div
+                        onClick={!isDisabled?.status ? toggleDropdown : undefined}
+                        role="button"
+                        className={cls.dynamicHeading}
                     >
-                        <Image
-                            loading="eager"
-                            alt={'Chevron'}
-                            src={chevronDown}
-                            className={cls.chevronImage}
-                        />
-                    </span> */}
+                        {dynamicTitle}
+                        {showArrow && (
+                            <span
+                                style={{
+                                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                                    transition: 'transform 0.4s ease-in-out',
+                                    position: 'absolute',
+                                    right: '10%',
+                                    marginTop: '7px',
+                                }}
+                            >
+                                <Image
+                                    loading="eager"
+                                    alt={'Chevron'}
+                                    src={chevronDown}
+                                    className={cls.chevronImage}
+                                />
+                            </span>
+                        )}
+                    </div>
+                    <div
+                        onClick={!isDisabled?.status ? toggleDropdown : undefined}
+                        role="button"
+                        title={isDisabled?.status ? isDisabled?.reason : ''}
+                        className={classNames(cls.childrenWrapper, { [cls.active]: isOpen }, [
+                            childrenWrapperClassName,
+                            mainElementClass,
+                        ])}
+                    >
+                        {children}
+                    </div>
                 </div>
             )}
             {shouldRender && (
