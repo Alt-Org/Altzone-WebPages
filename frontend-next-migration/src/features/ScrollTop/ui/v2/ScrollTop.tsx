@@ -1,25 +1,17 @@
 'use client';
 import { memo, useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useCurrentYPosition } from '@/shared/lib/hooks';
-import { useClientTranslation } from '@/shared/i18n';
+import upUpIcon from '@/shared/assets/icons/UpUp arrows.svg';
 import cls from './ScrollTop.module.scss';
 
 interface ScrollTopProps {
     className?: string;
-    innerText?: string;
 }
 
-/**
- * @deprecated use v2 instead
- * (features/ScrollTop/ui/v2/ScrollTop)
- */
-export const ScrollTop = memo(({ className = '', innerText }: ScrollTopProps) => {
-    const { t } = useClientTranslation('translation');
-
-    const localInnerText = innerText ? innerText : t('upButton');
-
+export const ScrollTop = memo(({ className = '' }: ScrollTopProps) => {
     const currentYPosition = useCurrentYPosition();
 
     const handleButtonClick = useCallback(() => {
@@ -44,7 +36,10 @@ export const ScrollTop = memo(({ className = '', innerText }: ScrollTopProps) =>
             className={classNames(cls.ScrollTop, { [cls.show]: showButton }, [className])}
             onClick={handleButtonClick}
         >
-            {localInnerText}
+            <Image
+                src={upUpIcon}
+                alt="double chevron pointing up"
+            />
         </Button>
     );
 });
