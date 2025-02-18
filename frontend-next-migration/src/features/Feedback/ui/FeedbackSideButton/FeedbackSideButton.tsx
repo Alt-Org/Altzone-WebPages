@@ -6,6 +6,10 @@ import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { FeedbackCard } from '@/shared/ui/v2/Feedback';
 import cls from './FeedbackSideButton.module.scss';
 
+/**
+ * @deprecated
+ */
+
 type Props = {
     disableMobile?: boolean;
 };
