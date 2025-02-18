@@ -13,6 +13,7 @@ import {
 } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
+import { useClientTranslation } from '@/shared/i18n';
 
 interface GalleryNavMenuProps {
     openByDefault?: boolean;
@@ -30,6 +31,7 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     const { categories } = useGetDirectusGalleryImages(language);
     const allCategory = lng === 'en' ? 'all' : 'kaikki';
     const [selectedCategory, setSelectedCategory] = useState(currentCategory || allCategory);
+    const { t } = useClientTranslation('picture-galleries');
 
     useEffect(() => {
         if (currentCategory) setSelectedCategory(currentCategory);
@@ -58,8 +60,6 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
         }
     }, [categories, lng]);
 
-    const title = lng === 'en' ? 'Categories' : 'Kategoriat';
-
     const dropdownItems: DropDownElementASTextOrLink[] = [
         {
             link: {
@@ -85,13 +85,13 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     ];
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
-        title: title,
+        title: t('category-menu-title'),
         openByDefault: openByDefault,
         dropdownItems: dropdownItems,
     };
 
     const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
-        title: title,
+        title: t('category-menu-title'),
         openByDefault: openByDefault,
         staticDropdown: true,
         dropdownItems: dropdownItems,

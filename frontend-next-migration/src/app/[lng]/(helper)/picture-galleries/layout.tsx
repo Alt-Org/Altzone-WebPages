@@ -9,7 +9,6 @@ import { cls } from '@/preparedPages/PictureGalleryPages';
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
     const { isMobileSize, isTabletSize } = useSizes();
     const isTouchDevice = isMobileSize || isTabletSize;
-    const dropdown = isTouchDevice ? <GalleryNavMenuAsDropdown openByDefault={false} /> : null;
     const { t } = useClientTranslation('picture-galleries');
 
     return (
@@ -21,7 +20,7 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
         >
             <h1 className={cls.Title}>{t('picture-galleries')}</h1>
             <p className={cls.InfoText}>{t('info-text')}</p>
-            {dropdown}
+            {isTouchDevice ? <GalleryNavMenuAsDropdown openByDefault={false} /> : null}
             {children}
         </LayoutWithSidebars>
     );
