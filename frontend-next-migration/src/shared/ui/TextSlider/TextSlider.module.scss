@@ -1,6 +1,6 @@
 .TextSlider {
     padding: 2%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(25, 25, 25, 0.9));
+    background: var(--base-card-background);
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -10,8 +10,10 @@
     margin: 2%;
     color: white;
     position: relative;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-radius: var(--border-radius-figmadesktop);
+    border: 2px solid #000000;
+    box-shadow: 2px 4px 0 #121212;
+    box-sizing: border-box;
     overflow: hidden;
     transition:
         transform 0.3s ease,
@@ -28,7 +30,6 @@
         text-align: justify;
         line-height: 1.6;
         font-weight: bold;
-        user-select: none;
     }
 }
 
@@ -47,7 +48,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 50px;
+    width: 40px;
     cursor: pointer;
     color: white;
     display: flex;
@@ -62,7 +63,7 @@
 
     &:hover {
         background-color: #444;
-        box-shadow: 0 0 15px #ffa101;
+        box-shadow: 0 0 5px #ffa101;
     }
 }
 
@@ -111,7 +112,7 @@
             transform: none;
             box-shadow: none;
             background-color: inherit;
-            box-shadow: none;
+
         }
     }
 
@@ -121,4 +122,24 @@
         line-height: 1.5;
     }
 
+}
+.paginationDots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    user-select: none !important;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
 }
