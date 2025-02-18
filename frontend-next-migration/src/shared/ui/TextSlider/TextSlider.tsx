@@ -85,25 +85,30 @@ export const TextSlider = (props: Props) => {
             className={`${cls.TextSlider} ${className}`}
             onTouchStart={handleTouchStart}
         >
-            {!isMobile && (
-                <div
-                    className={cls.btnRight}
-                    onClick={showNextText}
-                >
-                    {rightArrow}
-                </div>
-            )}
+            <div
+                className={cls.btnRight}
+                onClick={showNextText}
+            >
+                {rightArrow}
+            </div>
 
             {textArray.length > 0 && <p>{textArray[textIndex]}</p>}
 
-            {!isMobile && (
-                <div
-                    className={cls.btnLeft}
-                    onClick={showPrevText}
-                >
-                    {leftArrow}
-                </div>
-            )}
+            <div
+                className={cls.btnLeft}
+                onClick={showPrevText}
+            >
+                {leftArrow}
+            </div>
+            <div className={cls.paginationDots}>
+                {textArray.map((_, index) => (
+                    <span
+                        key={index}
+                        className={`${cls.dot} ${textIndex === index ? cls.active : ''}`}
+                        onClick={() => setTextIndex(index)}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
