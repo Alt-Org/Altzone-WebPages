@@ -100,6 +100,15 @@ export const TextSlider = (props: Props) => {
             >
                 {leftArrow}
             </div>
+            <div className={cls.paginationDots}>
+                {textArray.map((_, index) => (
+                    <span
+                        key={index}
+                        className={`${cls.dot} ${textIndex === index ? cls.active : ''}`}
+                        onClick={() => setTextIndex(index)}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
