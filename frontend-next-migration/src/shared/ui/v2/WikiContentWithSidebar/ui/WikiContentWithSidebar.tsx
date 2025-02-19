@@ -19,6 +19,7 @@ interface Section {
 
 export type Props = {
     sections: Section[];
+    title: string;
 };
 
 /**
@@ -58,7 +59,7 @@ export type Props = {
  * ```
  */
 const WikiContentWithSideBar = (props: Props) => {
-    const { sections = [] } = props;
+    const { sections = [], title } = props;
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
 
     const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>({});
@@ -86,6 +87,7 @@ const WikiContentWithSideBar = (props: Props) => {
                     className={classNames(cls.content, combinedModCss)}
                     id="content"
                 >
+                    <h1>{title}</h1>
                     {sections.length > 0 ? (
                         sections.map((section) => (
                             <div

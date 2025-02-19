@@ -32,7 +32,7 @@
     top: 9.5rem;
     max-height: 55vh;
     margin-left: 2rem;
-    margin-top: 2rem;
+    margin-top: 7rem;
     width: 20%;
     font-size: 1em;
 
@@ -90,12 +90,20 @@
 .content {
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 70%;
     padding-left: 5%;
     padding-right: 5%;
     font-size: 1.5em;
     margin: 3px;
+
+    h1 {
+        font-size: clamp(40px, 7vw, 50px);
+        font-family: var(--font-family-main), serif;
+        color: var(--secondary-color);
+        line-height: 1.5;
+        font-weight: bold;
+        padding-left: 5%;
+    }
 }
 
 .section {

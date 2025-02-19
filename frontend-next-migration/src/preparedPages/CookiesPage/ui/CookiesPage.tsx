@@ -1,7 +1,7 @@
 'use client';
 import { ScrollTop } from '@/features/ScrollTop';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
+import { WikiContentWithSidebar } from '@/shared/ui/v2/WikiContentWithSidebar';
 import cls from './CookiesPage.module.scss';
 
 interface Section {
@@ -16,14 +16,18 @@ interface Section {
 
 export type Props = {
     sections: Section[];
+    title: string;
 };
 
 const CookiesPage = (props: Props) => {
-    const { sections = [] } = props;
+    const { sections = [], title } = props;
 
     return (
         <div className={classNames(cls.pageContainer)}>
-            <WikiContentWithSidebar sections={sections} />
+            <WikiContentWithSidebar
+                title={title}
+                sections={sections}
+            />
             <ScrollTop />
         </div>
     );
