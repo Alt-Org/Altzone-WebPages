@@ -4,7 +4,7 @@ import { useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './WikiContentWithSideBar.module.scss';
-import { TableOfContents } from '@/shared/ui/TableOfContents';
+import { TableOfContents } from '../../TableOfContents';
 
 /**
  * Represents a section in the sidebar.
