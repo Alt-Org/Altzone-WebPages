@@ -53,12 +53,14 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
                     const newPath = getRouteGalleryCategoryPage(translatedName);
                     router.replace(newPath);
                     setSelectedCategory(translatedName);
+                } else {
+                    setSelectedCategory(currentCategory);
                 }
             } else {
                 setSelectedCategory(allCategory);
             }
         }
-    }, [categories, lng]);
+    }, [categories, lng, currentCategory]);
 
     const dropdownItems: DropDownElementASTextOrLink[] = [
         {

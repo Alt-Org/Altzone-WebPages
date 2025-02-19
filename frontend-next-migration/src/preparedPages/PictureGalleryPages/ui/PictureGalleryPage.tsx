@@ -27,22 +27,20 @@ const PictureGalleryPage = (props: Props) => {
     const language = getLanguageCode(lng);
     const { photoObjects, isLoading } = useGetDirectusGalleryImages(language);
     const [filteredImages, setFilteredImages] = useState<PhotoObject[]>(photoObjects);
-    const [selectedCategory, setSelectedCategory] = useState<string>('');
+    const allCategory = lng === 'en' ? 'all' : 'kaikki';
 
     useEffect(() => {
-        if (!category || selectedCategory === 'all' || selectedCategory === 'kaikki') {
+        if (!category || category === allCategory) {
             setFilteredImages(photoObjects);
         } else {
-            setSelectedCategory(category);
             setFilteredImages(
                 photoObjects.filter(
                     (photo) =>
-                        getCategoryTranslation(photo.category.translations, language) ===
-                        selectedCategory,
+                        getCategoryTranslation(photo.category.translations, language) === category,
                 ),
             );
         }
-    }, [photoObjects, selectedCategory]);
+    }, [photoObjects, category]);
 
     if (isLoading) <p>Loading...</p>;
 
