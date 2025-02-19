@@ -87,17 +87,14 @@ export default function RootLayout(props: Props) {
             <body
                 style={{
                     // backgroundImage: `url("/images/background.webp")`,
-                    backgroundImage: `url("${bgPictureCompressed.src}")`,
+                    backgroundImage: `url("${bgPicture.src}")`,
                 }}
             >
-                {/*//todo potentialy we can remove even this ContentWithBackground, but we have to be sure that it work in samy way in backgroundImage*/}
-                <ContentWithBackground>
-                    <Providers>
-                        <FeedbackSideButton />
-                        {children}
-                        <CookieConsentComponent />
-                    </Providers>
-                </ContentWithBackground>
+                <Providers>
+                    <FeedbackSideButton />
+                    {children}
+                    <CookieConsentComponent />
+                </Providers>
             </body>
         </html>
     );
