@@ -8,17 +8,13 @@
 }
 
 .mainContent {
-    top: 1.7rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-content: center;
     flex-direction: row;
     width: 90%;
-    border: 2px solid var(--inverted-secondary-color);
-    border-radius: var(--border-radius-custom);
     position: relative;
-    background-color: rgba(0, 0, 0, 0.4);
     margin-bottom: 10%;
     overflow: visible; // Ensure this is set
 }
@@ -111,31 +107,20 @@
     height: fit-content;
     margin: 5%;
     padding: 7%;
-    background-color: rgba(0, 0, 0, 0.70);
-    //background-color: var(--inverted-bg-color);
-    //background-color: orange;
-    border-radius: var(--border-radius-custom);
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-figmadesktop);
+    border: 2px solid var(--drop-shadows);
     color: var(--primary-color);
-    //box-shadow: 0 0 2.5px var(--secondary-color);
+    box-shadow: 5px 7px var(--drop-shadows);
+    font-family: var(--font-family-main), serif;
 
     h2 {
-        text-align: center;
-        color: rgb(233, 225, 225);
+        color: var(--secondary-color);
         font-size: 1.7em;
         font-weight: bold;
+        font-family: var(--font-family-main), serif;
         border-radius: 10px;
         margin-bottom: 0.5em;
-    }
-
-    h2::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 2px;
-        background-color: var(--secondary-color);
-        margin: 0.3em auto 0;
-        border-radius: var(--border-radius-custom);
-        animation: lineExpand 1s ease-in-out forwards;
     }
 
     @keyframes lineExpand {
