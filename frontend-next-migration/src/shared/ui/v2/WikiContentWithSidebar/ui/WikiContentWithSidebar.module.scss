@@ -2,9 +2,18 @@
     display: flex;
     flex-direction: column;
 }
-.pageContainer.isWidescreen {
-    padding-left: 5rem;
-    padding-right: 5rem;
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 0;
+    font-size: 1.2em;
+    margin: auto;
+
+    a {
+        word-wrap: break-word;
+    }
 }
 
 .mainContent {
@@ -13,15 +22,12 @@
     display: flex;
     align-content: center;
     flex-direction: row;
-    width: 90%;
+    width: 100%;
     position: relative;
     margin-bottom: 10%;
     overflow: visible; // Ensure this is set
 }
 
-.mainContent.isMobile {
-    padding: 15px;
-}
 
 .navbarSide {
     position: sticky;
@@ -30,7 +36,8 @@
     margin-left: 2rem;
     margin-top: 7rem;
     width: 20%;
-    font-size: 1em;
+    font-size: 1.2em;
+    font-family: var(--font-family-main), serif;
 
     &::-webkit-scrollbar {
         display: none;
@@ -67,12 +74,12 @@
         transition: color 0.5s, border-left 0.2s;
 
         &:hover {
-            color: orange;
+            color: var(--secondary-color);
         }
 
         &.active {
-            color: orange;
-            border-left: 4000px solid yellow;
+            color: var(--secondary-color);
+            border-left: 2px solid var(--secondary-color);
         }
 
         &:active {
@@ -83,14 +90,13 @@
     }
 }
 
+
 .content {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    padding-left: 5%;
-    padding-right: 5%;
-    font-size: 1.5em;
-    margin: 3px;
+    width: 90%;
+    font-size: 1.2em;
+    margin: auto;
 
     h1 {
         font-size: clamp(40px, 7vw, 50px);
@@ -98,14 +104,15 @@
         color: var(--secondary-color);
         line-height: 1.5;
         font-weight: bold;
-        padding-left: 5%;
+        text-align: center;
     }
 }
+
 
 .section {
     width: 100%;
     height: fit-content;
-    margin: 5%;
+    margin: 3% 0%;
     padding: 7%;
     background-color: var(--bg-color);
     border-radius: var(--border-radius-figmadesktop);
@@ -154,16 +161,40 @@
     box-shadow: 0 0 4px var(--secondary-color);
   
 }
-  
-.content.isMobile {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 0;
-    font-size: 1.2em;
-    margin: auto;
 
-    a {
-        word-wrap: break-word;
+@media screen and (min-width: breakpoint(md)) {
+    .pageContainer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-right: 10px;
+    }
+
+    .section {
+        padding: 5%;
+    }
+
+}
+
+@media screen and (min-width: breakpoint(lg)) {
+    .section {
+        margin: 5%;
+        padding: 7%;
+    }
+
+    .content {
+        width: 70%;
+        margin: 0;
+
+        h1 {
+            text-align: left;
+            padding-left: 5%;
+        }
+    }
+}
+
+@media screen and (min-width: breakpoint(xxl)) {
+    .pageContainer {
+        max-width: 1500px;
+        margin: auto;
     }
 }
