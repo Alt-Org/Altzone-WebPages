@@ -61,6 +61,7 @@ export type Props = {
 const WikiContentWithSideBar = (props: Props) => {
     const { sections = [], title } = props;
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
+    const isTouchDevice = isMobileSize || isTabletSize;
 
     const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>({});
 
@@ -78,7 +79,7 @@ const WikiContentWithSideBar = (props: Props) => {
     return (
         <div className={classNames(cls.pageContainer, combinedModCss)}>
             <div className={classNames(cls.mainContent, combinedModCss)}>
-                {!isMobileSize && (
+                {!isTouchDevice && (
                     <div className={classNames(cls.navbarSide, combinedModCss)}>
                         <TableOfContents sections={sections} />
                     </div>
