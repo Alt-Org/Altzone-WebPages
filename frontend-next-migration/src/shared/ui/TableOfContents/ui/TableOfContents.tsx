@@ -12,6 +12,8 @@ interface TableOfContentsProps {
 }
 
 /**
+ * @deprecated This component is deprecated. New version can be found in the v2 folder.
+ *
  * TableOfContents component that displays a navigation sidebar with clickable section labels.
  * Automatically highlights the active section based on scroll position.
  *
