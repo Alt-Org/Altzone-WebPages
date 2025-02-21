@@ -1,6 +1,7 @@
 .pageContainer {
     display: flex;
     flex-direction: column;
+    margin: auto;
 }
 
 .content {
@@ -96,7 +97,6 @@
     flex-direction: column;
     width: 90%;
     font-size: 1.2em;
-    margin: auto;
 
     h1 {
         font-size: clamp(40px, 7vw, 50px);
@@ -199,6 +199,5 @@
 @media screen and (min-width: breakpoint(xxl)) {
     .pageContainer {
         max-width: 1500px;
-        margin: auto;
     }
 }
