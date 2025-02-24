@@ -1,3 +1,5 @@
+$touchSize: 1024px;
+
 .pageContainer {
     display: flex;
     flex-direction: column;
@@ -174,12 +176,7 @@
 
 }
 
- /* 
-    Breakpoints don't match with useSizes so styling gets messed up between
-    992px ($breakpoint-lg) and 1024px (max width of isTabletSize), which is 
-    why breakpoint(lg) is replaced by hard coded 1024px here.
- */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $touchSize) {
     .section {
         margin: 5%;
         padding: 7%;
