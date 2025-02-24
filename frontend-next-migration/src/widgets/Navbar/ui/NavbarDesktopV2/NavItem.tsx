@@ -5,7 +5,7 @@ import { useUserPermissionsV2 } from '@/entities/Auth';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
-import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import { NavbarMenuItem } from '../../model/types';
 import cls from './NavbarDesktop.module.scss';
 
@@ -45,6 +45,7 @@ const NavItem = memo((props: NavItemProps) => {
         const localizedElements = item.elements
             .map((element) => {
                 // @ts-ignore
+
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
@@ -53,6 +54,7 @@ const NavItem = memo((props: NavItemProps) => {
                     // @ts-ignore
                     ...element,
                     // @ts-ignore
+
                     elementText: t(`${element.elementText}`),
                     // @ts-ignore
                     // contentItemClassName: cls.dropdownElement,
@@ -79,7 +81,8 @@ const NavItem = memo((props: NavItemProps) => {
                     elements={localizedElements}
                     contentAbsolute={true}
                     contentClassName={cls.itemNavbarDropDownContent}
-                    openByDefault={true}
+                    disableClickToggle={true}
+                    isOpen={true}
                 >
                     <div className={cls.col}>{t(`${item.name}`)}</div>
                 </DropdownWrapper>
@@ -92,6 +95,7 @@ const NavItem = memo((props: NavItemProps) => {
             <li
                 key={item.src}
                 className={classNames(cls.navItem, {}, [className])}
+                // className={className}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
