@@ -11,6 +11,7 @@ interface SidebarConfig {
     hideOnMobile?: boolean;
     hideOnDesktop?: boolean;
     collapsed?: boolean;
+    className?: string;
 }
 
 interface DesktopLeftSidebarLayoutPropsBase {
@@ -65,7 +66,14 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
                         overflowX: collapsed ? 'hidden' : 'auto',
                         top: !isTopIndentCustom ? '50px' : undefined,
                     }}
-                    className={classNames(cls.sidebar, leftTopSidebarMods, [cls.leftTopSidebar])}
+                    className={classNames(
+                        cls.sidebar,
+                        leftTopSidebarMods,
+                        [cls.leftTopSidebar, leftTopSidebar.className].filter((x) => {
+                            // Filtering undefined index values out
+                            return x !== undefined;
+                        }),
+                    )}
                 >
                     {leftTopSidebar.component}
                 </aside>
@@ -81,9 +89,14 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
             {rightBottomSidebar && (
                 <aside
                     style={{ top: !isTopIndentCustom ? '50px' : undefined }}
-                    className={classNames(cls.sidebar, rightBottomSidebarMods, [
-                        cls.rightBottomSidebar,
-                    ])}
+                    className={classNames(
+                        cls.sidebar,
+                        rightBottomSidebarMods,
+                        [cls.rightBottomSidebar, rightBottomSidebar.className].filter((x) => {
+                            // Filtering undefined index values out
+                            return x !== undefined;
+                        }),
+                    )}
                 >
                     {rightBottomSidebar.component}
                 </aside>
