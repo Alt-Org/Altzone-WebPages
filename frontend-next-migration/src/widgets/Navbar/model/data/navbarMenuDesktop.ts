@@ -17,7 +17,6 @@ navbarBuilder.addDropDown('gallery', true, dropdowns.gallery);
 navbarBuilder.addDropDown('gameart', true, dropdowns.gameart);
 navbarBuilder.addDropDown('community', true, dropdowns.community);
 navbarBuilder.addLink('team', getRouteTeamPage(), true);
-navbarBuilder.addLink('teachers', getRouteTeachersPage(), true);
 navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());
 

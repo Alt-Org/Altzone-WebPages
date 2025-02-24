@@ -1,0 +1,215 @@
+.sidebar{
+  padding-top: 12%;
+}
+
+.Navbar {
+  position: absolute;
+  font: var(--font-xxl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // background-color: rgba(0, 0, 0, 0.7);
+  background-color:var(--base-card-background);
+
+  height: 50px;
+  margin-top: 35px;
+  margin-left: auto;
+  z-index: var(--navbar-z-index);
+  top: 0;
+  left: 0;
+  right: 0;
+  width:100%;
+  transition: width 0.4s ease-out, padding-right 0.4s ease-out, opacity 0.4s ease-out;
+  &.collapsing{
+    overflow: hidden;
+  }
+  &.collapsed{
+    overflow: hidden;
+  }
+  @media (min-width: 550px){
+    margin-top: 50px;
+  }
+}
+.Navbar.collapsed {
+  width: 65px;
+  opacity: 0.8;
+}
+.NavbarMobile__burger {
+  width: auto;
+  height: 80%;
+  left: 20px;
+  cursor: pointer;
+  user-select: none;
+  transform: scale(80%);
+}
+
+.NavbarMobile__burger svg {
+  width: auto;
+  height: 100%;
+}
+
+.NavbarMobile__center {
+  margin-left: auto!important;
+  margin-right: auto!important;
+}
+
+.navLogo {
+  img {
+    width: 25vw;
+    max-width: 150px;
+  }
+}
+
+.fixed {
+  //position: sticky;
+  //top: 34px;
+
+  //@media (min-width: 550px){
+  //  margin-top: 50px;
+  //}
+
+  position: fixed;
+}
+
+
+.authSection {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: var(--border-radius-custom);
+  box-shadow: 0 0 0 2px var(--inverted-primary-color);
+  padding: 5px;
+  text-align: center;
+  font-family: var(--font-family-texts), serif !important;
+  font: var(--font-l);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: var(--secondary-color) !important;
+
+  &{
+    .authSectionLink{
+      color: var(--secondary-color) !important;
+    }
+  }
+
+}
+
+.sidebarBottom {
+  display: flex;
+  gap: 10px;
+}
+
+.langSwitcher {
+  position: relative;
+  border-radius: var(--border-radius-custom);
+  border: 2px solid var(--inverted-primary-color);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: var(--secondary-color) !important;
+  font-size: var(--font-size-m) !important;
+  height: 42px;
+
+  button {
+    padding: 2px;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: var(--font-size-m) !important;
+    color: var(--secondary-color) !important;
+    border-radius: var(--border-radius-custom);
+    border: 2px solid transparent;
+    cursor: pointer;
+    min-width: 80px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  ul {
+    position: absolute;
+    top: -60px;
+    width: 100%;
+    border-radius: var(--border-radius-custom);
+    outline: 2px solid var(--inverted-primary-color);
+    list-style-type: none;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: var(--transparent-bg-dark);
+  }
+
+  li {
+    cursor: pointer;
+    height: 25px;
+    display:flex;
+    align-items: center;
+  }
+
+  li:hover {
+    color: white;
+  }
+
+}
+
+
+
+.CollapseButtonWrapper {
+  
+  cursor: pointer;
+  opacity: 1!important;
+  .CollapseButton{
+    cursor: pointer;
+  }
+  &.collapsing{
+    .CollapseButton{
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+}
+.FixButtonWrapper {
+
+  margin-left: auto;
+  margin-right: 50px;
+  width:fit-content;
+  &.fixed{
+    margin-right: unset;
+  }
+}
+.navItem {
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+  transform-origin: right;
+  transition: transform 0.3s ease-out 0.2s, opacity 0.3s ease-out 0.5s;
+  visibility: visible;
+/*
+  display: flex;
+  height: max-content;
+  line-height: initial;
+  padding: 10px 0;
+*/
+  &.collapsed{
+    transform: translateX(-100px) scaleX(0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    overflow-x: hidden;
+  }
+}
+.buttonContainer {
+ // Button margin-right + buttonContainer margin-right == 20px
+  display:flex;
+  margin-right: 8px;
+  text-align: center;
+  position: absolute;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  right: 0px;
+  width:fit-content;
+}
+
+.Button{
+  text-align: center;
+  margin-right: 12px;
+}

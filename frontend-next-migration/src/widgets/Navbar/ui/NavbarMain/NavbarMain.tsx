@@ -2,8 +2,10 @@
 import { memo, useMemo } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
-import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
-import NavbarMobile from '../NavbarMobile/NavbarMobile';
+// import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
+import NavbarDesktop from '../NavbarDesktopV2/NavbarDesktop';
+import NavbarMobile from '../NavbarMobileV2/NavbarMobile';
+// import NavbarMobile from '../NavbarMobile/NavbarMobile';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     navBarActions,

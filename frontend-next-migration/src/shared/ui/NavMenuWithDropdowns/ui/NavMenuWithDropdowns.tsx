@@ -37,6 +37,7 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
     return (
         <div className={classNames(cls.NavMenuWithDropdowns, {}, [className])}>
             <DropdownWrapper
+                isOpen={true}
                 openByDefault={openByDefault}
                 dataTestId={title}
                 elements={dropdownItems.map((item, index) =>
@@ -89,6 +90,7 @@ function NestedDropDown(props: NestedDropDownProps) {
 
     return (
         <DropdownWrapper
+            isOpen={false}
             openByDefault={openByDefault}
             className={cls.subDropDown}
             contentClassName={cls.subDropDownContent}

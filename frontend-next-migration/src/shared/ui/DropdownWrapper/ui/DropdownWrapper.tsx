@@ -20,7 +20,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         children,
         onOpen,
         onClose,
-        openByDefault = false,
+        openByDefault = true,
+        disableClickToggle = false,
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault);
@@ -78,6 +79,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     };
 
     const toggleDropdown = (): void => {
+        if (disableClickToggle) return;
         setIsOpen(!isOpen);
     };
 
@@ -116,7 +118,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             aria-disabled={isDisabled?.status}
         >
             <div
-                onClick={!isDisabled?.status ? toggleDropdown : undefined}
+                onClick={!isDisabled?.status && !disableClickToggle ? toggleDropdown : undefined}
                 role="button"
                 title={isDisabled?.status ? isDisabled?.reason : ''}
                 // tabIndex={-1}
@@ -126,14 +128,14 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                 ])}
             >
                 {children}
-                <FontAwesomeIcon
+                {/* <FontAwesomeIcon
                     size={'2xs'}
                     icon={faCaretDown}
                     style={{
                         transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                         transition: 'transform 0.4s ease-in-out',
                     }}
-                />
+                /> */}
             </div>
 
             {shouldRender && (
@@ -174,8 +176,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     style={{
                                                         display: 'inline',
                                                         verticalAlign: 'middle',
-                                                        marginLeft: '5px',
-                                                        color: 'var(--inverted-primary-color)',
+                                                        marginLeft: '15px',
+                                                        color: 'var(--content-primary)',
                                                     }}
                                                 />
                                             )}
