@@ -107,14 +107,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             className={classNames('', ModsUlAndLi)}
                         />
                     ))}
-
-                    <li
-                        className={classNames(cls.navItem, ModsUlAndLi)}
-                        key={'switcher key'}
-                    >
-                        <LangSwitcher className={cls.langSwitcher} />
-                    </li>
-
                     <li
                         className={classNames(cls.navItem, ModsUlAndLi, [cls.authButton])}
                         key={'auth key'}
@@ -124,7 +116,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                 theme={AppLinkTheme.PRIMARY}
                                 to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
                             >
-                                <span>{t(`${navbarBuild.namedMenu?.navAuthLogin?.name}`)}</span>
+                                <span>log</span>
                             </AppLink>
                         ) : permissionToLogout.isGranted ? (
                             <p
@@ -134,6 +126,12 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                 {t(`logout`)}
                             </p>
                         ) : null}
+                    </li>
+                    <li
+                        className={classNames(cls.navItem, ModsUlAndLi)}
+                        key={'switcher key'}
+                    >
+                        <LangSwitcher className={cls.langSwitcher} />
                     </li>
 
                     {hasScrollbar && (
@@ -153,6 +151,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             />
                         </li>
                     )}
+
                     {isFixed && (
                         <li
                             data-testid="collapseExpandWrapper"
