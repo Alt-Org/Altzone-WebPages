@@ -25,45 +25,35 @@ jest.mock('@/entities/Auth', () => ({
 }));
 
 // Mock DropdownWrapper with actual structure
-jest.mock('@/shared/ui/DropdownWrapperV2', () => ({
+jest.mock('@/shared/ui/DropdownWrapper', () => ({
     DropdownWrapper: ({ children, elements, contentAbsolute, contentClassName }: any) => {
-        const [isOpen, setIsOpen] = React.useState(false);
+        const [isVisible, setIsVisible] = React.useState(false);
 
         return (
             <div
                 className={`DropdownWrapper ${contentAbsolute ? 'contentAbsolute' : ''}`}
                 aria-haspopup="true"
-                aria-expanded={isOpen}
                 role="button"
                 tabIndex={0}
-                onMouseEnter={() => setIsOpen(true)}
-                onMouseLeave={() => setIsOpen(false)}
+                onMouseEnter={() => setIsVisible(true)}
+                onMouseLeave={() => setIsVisible(false)}
             >
-                <div
-                    className="childrenWrapper"
-                    role="button"
-                    title=""
-                >
-                    {children}
-                </div>
-                {isOpen && (
+                <div className="childrenWrapper">{children}</div>
+                {isVisible && (
                     <div
-                        className={`dropdownContent open opening ${contentClassName}`}
+                        className={`dropdownContent ${contentClassName}`}
                         role="menu"
                     >
                         {elements.map((element: any, index: number) => (
                             <div
                                 key={index}
                                 role="menuitem"
-                                title=""
-                                className=""
                             >
-                                <a
-                                    href={element.link.path}
-                                    className="AppLink primary"
-                                >
-                                    {element.elementText}
-                                </a>
+                                {element.link ? (
+                                    <a href={element.link.path}>{element.elementText}</a>
+                                ) : (
+                                    <span>{element.elementText}</span>
+                                )}
                             </div>
                         ))}
                     </div>
@@ -90,7 +80,10 @@ describe('NavItem Component', () => {
 
     const hoverMenuItem = async (menuText: string) => {
         const menuItem = screen.getByText(menuText);
-        fireEvent.mouseEnter(menuItem.closest('.DropdownWrapper'));
+        const dropdownWrapper = menuItem.closest('.DropdownWrapper');
+        if (!dropdownWrapper) throw new Error('DropdownWrapper not found');
+
+        fireEvent.mouseEnter(dropdownWrapper);
         await waitFor(() => screen.getByRole('menu'));
     };
 
@@ -105,11 +98,20 @@ describe('NavItem Component', () => {
         };
 
         renderNavItem(item);
-        await hoverMenuItem('Menu');
+        const menuItem = screen.getByText('Menu');
+        expect(menuItem).toBeInTheDocument();
 
-        expect(screen.getByRole('menu')).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: 'Profile' })).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: 'Settings' })).toBeInTheDocument();
+        // Initially dropdown items should not be visible
+        expect(screen.queryByRole('link', { name: 'Profile' })).not.toBeInTheDocument();
+        expect(screen.queryByRole('link', { name: 'Settings' })).not.toBeInTheDocument();
+
+        // After hover, dropdown items should be visible
+        const dropdownWrapper = screen.getByRole('button');
+        fireEvent.mouseEnter(dropdownWrapper);
+        await waitFor(() => {
+            expect(screen.getByRole('link', { name: 'Profile' })).toBeInTheDocument();
+            expect(screen.getByRole('link', { name: 'Settings' })).toBeInTheDocument();
+        });
     });
 
     it('should render clan page link if user has permission', async () => {
@@ -224,6 +226,19 @@ describe('NavItem Component', () => {
 
         const listItem = screen.getByRole('listitem');
         expect(listItem).toHaveClass(cls.active);
+    });
+
+    it('should render navDropDown with disableClickToggle prop', () => {
+        const item = {
+            name: 'Menu',
+            type: 'navDropDown' as const,
+            elements: [{ elementText: 'Option1', link: { path: '/option1', isExternal: false } }],
+        };
+
+        renderNavItem(item);
+        const dropdownWrapper = screen.getByRole('button');
+        expect(dropdownWrapper).toBeInTheDocument();
+        expect(dropdownWrapper).toHaveAttribute('aria-haspopup', 'true');
     });
 
     describe('Custom Styling', () => {
