@@ -1,0 +1,34 @@
+
+.Footer {
+font: var(--font-xl);
+background: var(--bg-color);
+display: flex;
+flex-direction: column;
+gap: 2.5rem;
+padding: 1.5rem 0 1rem 0;
+}
+
+
+.title {
+  color: var(--secondary-color);
+  }
+
+.socialSection {
+  justify-content: center;
+  padding: 2rem 0 1rem 0;
+  }
+  
+.rights {
+  text-align: center;
+  }
+
+  
+.FooterContainer {
+  gap: 5rem;
+  }
+  
+  
+.FeedbackContainer {
+  display: flex;
+  justify-content: center;
+  }

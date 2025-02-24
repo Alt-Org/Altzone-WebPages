@@ -7,11 +7,14 @@ import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
     DropdownItem,
-} from '@/shared/ui/NavMenuWithDropdowns';
+} from '@/shared/ui/NavMenuWithDropdownsV2';
 import { getRouteOneHeroDevPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
+    const { isMobileSize, isTabletSize } = useSizes();
+    const isTouchDevice = isMobileSize || isTabletSize;
     const { t } = useClientTranslation('heroes');
     const pathname = usePathname();
     const selectedHero = pathname.split('/')[3];
@@ -20,7 +23,7 @@ const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
     const allHeroGroups = heroManager.getGroupsWithHeroesAsArray();
 
     const dropdownItems: DropdownItem[] = allHeroGroups.map((group) => ({
-        title: group.name,
+        title: group.name.charAt(0) + group.name.slice(1).toLowerCase(),
         openByDefault: false,
         elements: group.heroes.map((hero) => ({
             elementText: hero.title,
@@ -30,17 +33,34 @@ const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
         })),
     }));
 
-    const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
+    const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: t('section-title'),
         openByDefault: false,
         dropdownItems: dropdownItems,
     };
 
+    const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
+        title: t('section-title'),
+        openByDefault: true,
+        staticDropdown: true,
+        dropdownItems: dropdownItems,
+    };
+
     return (
-        <NavMenuWithDropdowns
-            className={cls.Width}
-            {...navMenuWithDropdownsProps}
-        />
+        <div>
+            <nav style={isTouchDevice ? { display: 'contents' } : { display: 'none' }}>
+                <NavMenuWithDropdowns
+                    className={cls.Width}
+                    {...navMenuWithDropdownsMobileProps}
+                />
+            </nav>
+            <nav style={isTouchDevice ? { display: 'none' } : { display: 'block' }}>
+                <NavMenuWithDropdowns
+                    className={cls.Width}
+                    {...navMenuWithDropdownsDesktopProps}
+                />
+            </nav>
+        </div>
     );
 };
 

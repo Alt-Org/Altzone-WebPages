@@ -32,6 +32,8 @@ export type DropdownWrapperProps = {
     isOpen?: boolean;
     children: ReactNode;
     onClose?: () => void;
+    onClose?: () => void;
+    children?: ReactNode;
     dataTestId?: string;
     mouseOverLeaveMode?: boolean;
     isDisabled?: {
@@ -41,4 +43,6 @@ export type DropdownWrapperProps = {
     openByDefault?: boolean;
     staticDropdown?: boolean;
     staticTitle?: string;
+    dynamicTitle?: string;
+    showArrow?: boolean;
 };
