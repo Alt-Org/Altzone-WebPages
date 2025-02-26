@@ -20,22 +20,6 @@
 
   padding-bottom: 40px;
 
-  h1{
-    font-size: clamp(40px, 7vw, 50px);
-    font-family: var(--font-family-main), serif;
-    color: var(--secondary-color);
-    line-height: 1.5;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  .InfoText {
-    width: 85%;
-    margin: 20px auto;
-    text-align: center;
-    font-size: 1.2em;
-  }
-
   .SocialsText {
     width: 85%;
     margin: auto;
@@ -50,6 +34,21 @@
 
 }
 
+.Title {
+  font-size: clamp(40px, 7vw, 50px);
+  font-family: var(--font-family-main), serif;
+  color: var(--secondary-color);
+  line-height: 1.5;
+  font-weight: bold;
+  text-align: center;
+}
+
+.InfoText {
+  width: 85%;
+  margin: 40px auto;
+  text-align: center;
+  font-size: 1.2em;
+}
 
 
 .galleries{
@@ -63,16 +62,17 @@
   .Container {
     //margin-top: 10vh;
 
-    .InfoText {
-      width: 75%;
-      font-size: 1.5em;
-    }
-  
     .SocialsText {
       width: 75%;
       font-size: 1.5em;
     }
   }
+
+  .InfoText {
+    width: 75%;
+    font-size: 1.5em;
+  }
+
 }
 
 .videoWrapper{

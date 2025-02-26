@@ -23,10 +23,13 @@ body {
   font: 16px/24px;
   line-height: 1.5;
   color: var(--primary-color);
-  // need to be here because of other browsers
   @include custom-scrollbar;
   background-color: var(--bg-color);
-
+  background-repeat: repeat;
+  background-size: contain;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
 
 
 }

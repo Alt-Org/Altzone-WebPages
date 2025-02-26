@@ -1,10 +1,10 @@
 import { dir } from 'i18next';
 import type { Viewport } from 'next';
-import { Urbanist, Rubik } from 'next/font/google';
+import { Urbanist, Rubik, Sedgwick_Ave_Display } from 'next/font/google';
 import { ReactNode } from 'react';
 import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { CookieConsentComponent } from '@/features/CookieConsent';
-import { FeedbackSideButton } from '@/features/Feedback';
+import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { languages } from '@/shared/i18n/settings/settings';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
@@ -15,6 +15,13 @@ import '../_styles/index.scss';
 //   subsets: ['latin'],
 //   display: 'swap',
 // });
+
+const sedgwickFont = Sedgwick_Ave_Display({
+    subsets: ['latin'],
+    weight: '400',
+    variable: '--font-family-title',
+    fallback: ['system-ui', 'arial'],
+});
 
 const urbanist = Urbanist({
     variable: '--font-family-main',
@@ -62,7 +69,7 @@ export default function RootLayout(props: Props) {
         <html
             lang={lng}
             dir={dir(lng)}
-            className={`${urbanist.variable} ${rubik.variable}`}
+            className={`${urbanist.variable} ${rubik.variable} ${sedgwickFont.variable}`}
         >
             <head>
                 <link
@@ -80,17 +87,14 @@ export default function RootLayout(props: Props) {
             <body
                 style={{
                     // backgroundImage: `url("/images/background.webp")`,
-                    backgroundImage: `url("${bgPictureCompressed.src}")`,
+                    backgroundImage: `url("${bgPicture.src}")`,
                 }}
             >
-                {/*//todo potentialy we can remove even this ContentWithBackground, but we have to be sure that it work in samy way in backgroundImage*/}
-                <ContentWithBackground>
-                    <Providers>
-                        <FeedbackSideButton />
-                        {children}
-                        <CookieConsentComponent />
-                    </Providers>
-                </ContentWithBackground>
+                <Providers>
+                    <FeedbackSideButton />
+                    {children}
+                    <CookieConsentComponent />
+                </Providers>
             </body>
         </html>
     );
