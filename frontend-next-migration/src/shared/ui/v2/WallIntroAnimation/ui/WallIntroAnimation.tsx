@@ -2,6 +2,25 @@
 import { useEffect, useState, ReactNode } from 'react';
 import cls from './WallIntroAnimation.module.scss';
 
+/**
+ * WallIntroAnimation component displays an animated wall.
+ *
+ * @param {ReactNode} children - The components or elements wrapped inside this component.
+ * @param {boolean} renderOnce - Render animation only once per session.
+ * @returns JSX element representing the WallIntroAnimation.
+ *
+ * @example
+ *
+ *  <WallIntroAnimation renderOnce={true}>
+ *      <div
+ *          id={'members'}
+ *          className={classNames(cls.MembersPage)}
+ *      >
+ *          <SectionMembers className={cls.workersSection} />
+ *     </div>
+ *  </WallIntroAnimation>
+ */
+
 interface WallLoaderProps {
     children: ReactNode;
     renderOnce?: boolean;
