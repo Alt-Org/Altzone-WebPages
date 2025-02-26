@@ -30,8 +30,6 @@ export type DropdownWrapperProps = {
     elements: Array<DropDownElement>;
     onOpen?: () => void;
     isOpen?: boolean;
-    children: ReactNode;
-    onClose?: () => void;
     onClose?: () => void;
     children?: ReactNode;
     dataTestId?: string;
