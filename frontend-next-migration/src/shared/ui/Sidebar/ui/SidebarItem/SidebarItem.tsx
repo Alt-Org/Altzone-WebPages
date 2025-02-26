@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import { ISidebarItem, sidebarItemType } from '../../model/items';
 import cls from './SidebarItem.module.scss';
 
