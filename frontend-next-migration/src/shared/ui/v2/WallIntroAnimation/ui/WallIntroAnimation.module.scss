@@ -1,0 +1,58 @@
+// WallIntroAnimation.module.scss
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.wallLeft,
+.wallRight {
+  transform-style: preserve-3d;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  transform: translateX(0);
+  transition: transform 1s ease;
+  background-image: url("../../../../assets/images/backgrounds/background-compressed.webp");
+}
+
+.wallLeft {
+  transform-origin: left;
+  box-shadow: 5px 0px 30px 20px rgba(0, 0, 0, 0.5);
+}
+
+.wallRight {
+  transform-origin: right;
+  box-shadow: -5px 0px 30px 20px rgba(0, 0, 0, 0.5);
+}
+
+.loader.loaded .wallLeft {
+  transform: translateX(-100%);
+}
+
+.loader.loaded .wallRight {
+  transform: translateX(100%);
+}
+
+.content {
+  opacity: 0;
+  transition: opacity 1s ease;
+  position: relative;
+  z-index: 0;
+}
+
+.wrapper .loader.loaded + .content {
+  opacity: 1;
+}
