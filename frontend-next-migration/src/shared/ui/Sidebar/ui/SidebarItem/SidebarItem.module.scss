@@ -1,15 +1,18 @@
 .item {
     font: var(--font-xxl);
-
     padding-left: 20px !important;
     padding-right: 20px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: flex;
+    align-items: center;
     &:hover {
-       text-decoration: underline;
+        text-decoration: underline;
         color: var(--content-primary);
     }
     &.active {
         color: var(--content-primary) !important;
-       
     }
 }
 .itemBasic {
@@ -17,7 +20,6 @@
 }
 .itemDropDown .link {
     margin-left: 50px;
-  
 }
 .itemDropDown {
     cursor: pointer;
@@ -25,11 +27,13 @@
         background-color 0.4s ease-in-out,
         color 0.4s ease-in-out;
     padding-top: 3px;
+    padding-right: 40px;
+    white-space: nowrap;
+    width: 100%;
     border-radius: var(--border-radius-custom);
     &:hover {
         background: var(--inverted-bg-color-transparency);
     }
-    padding-right: 40px;
 
     & * > * {
         transform: scale(0.95);
