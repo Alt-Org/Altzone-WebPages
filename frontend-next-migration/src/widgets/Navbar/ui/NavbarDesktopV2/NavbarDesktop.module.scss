@@ -8,6 +8,7 @@
     z-index: var(--navbar-z-index);
     font-weight: 500;
     top: 0;
+
     font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
     user-select: none;
 
@@ -39,6 +40,11 @@
     padding-top: 15px;
     inline-size: 140px;
     overflow-wrap: break-word;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
 .siteNavContentList {
@@ -53,22 +59,19 @@
     position: relative;
     width: 100%;
     transition:
-        width 0.4s ease-out,
-        padding-right 0.4s ease-out,
-        opacity 0.4s ease-out,
-        height 0.4s ease-out;
+        width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        padding-right 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     margin-left: auto;
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
     &:hover {
-        height: 190px;
-
-        .CollapseButtonWrapper {
-            position: absolute;
-            top: 4px;
-        }
+        height: auto;
+        min-height: 52px;
+        padding-bottom: 150px;
     }
 
     @media (max-width: breakpoint(xxl)) {
@@ -93,16 +96,22 @@
     }
 }
 
-
-
 .siteNavContentList.collapsed {
-    width: 50px;
-    height: 52px;
     opacity: 0.8;
+    width: 52px;
+    padding: 0;
+    overflow: hidden;
+    transition:
+        width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .siteNavContentList:hover .navItem {
-    margin-top: -150px;
+    transition:
+        margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navItem {
@@ -111,8 +120,10 @@
     transform: translateX(0) scaleX(1);
     transform-origin: right;
     transition:
-        transform 0.3s ease-out 0.2s,
-        opacity 0.3s ease-out 0.5s;
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.2s ease-out;
     visibility: visible;
     display: flex;
     height: max-content;
@@ -128,15 +139,15 @@
         opacity: 0;
         visibility: hidden;
         transition:
-            transform 0.3s ease-in,
-            opacity 0.3s ease-in;
-        overflow-x: hidden;
+            transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+            visibility 0s linear 0.3s;
     }
 
     &.active {
         color: var(--secondary-color) !important;
 
-        &>a {
+        & > a {
             color: var(--secondary-color) !important;
         }
     }
@@ -171,10 +182,22 @@
 .itemNavbarDropDownContent {
     text-align: left;
     display: none;
-    gap: 6px;
+    gap: 8px;
+    opacity: 0;
+    z-index: 1;
+    transform: translateY(-10px);
+    position: absolute;
+    top: 100%;
+    margin-right: 100px;
+    min-width: 140px;
+    max-width: 200px;
+    word-wrap: break-word;
+    transition:
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.siteNavContentList:hover .itemNavbarDropDownContent>*:hover {
+.siteNavContentList:hover .itemNavbarDropDownContent > *:hover {
     text-decoration: underline;
 }
 
@@ -252,12 +275,10 @@
     width: 38px;
     cursor: pointer;
 
-    &>* {
+    & > * {
         color: var(--secondary-color) !important;
     }
 }
-
-
 
 .CollapseButtonWrapper {
     position: absolute;
