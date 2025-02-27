@@ -52,7 +52,10 @@ export default function WallIntroAnimation({ children, renderOnce }: WallLoaderP
     return (
         <div className={cls.wrapper}>
             <div className={`${cls.loader} ${isLoaded ? cls.loaded : ''}`}>
-                <div className={cls.wallLeft} />
+                <div
+                    className={cls.wallLeft}
+                    data-testid="testWall"
+                />
                 <div className={cls.wallRight} />
             </div>
             <div
