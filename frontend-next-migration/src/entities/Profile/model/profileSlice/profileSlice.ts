@@ -11,7 +11,7 @@ if (typeof localStorage !== 'undefined') {
 
 const parsedProfile: ProfileSchema = storedProfile
     ? (JSON.parse(storedProfile) as ProfileSchema)
-    : { profile: undefined };
+    : { Profile: undefined };
 
 const initialState: ProfileSchema = parsedProfile;
 
@@ -20,12 +20,12 @@ export const profileSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder.addCase(PURGE, (state) => {
-            state.profile = undefined;
+            state.Profile = undefined;
         });
     },
     reducers: {
         setProfile: (state, action: PayloadAction<IProfile<IPlayer>>) => {
-            state.profile = action.payload;
+            state.Profile = action.payload;
         },
     },
 });
@@ -33,8 +33,8 @@ export const profileSlice = createSlice({
 export const { actions: profileActions } = profileSlice;
 export const { reducer: profileReducer } = profileSlice;
 
-export const selectProfile = (state: ProfileSchema) => state.profile;
+export const selectProfile = (state: ProfileSchema) => state.Profile;
 
-export const selectClanId = (state: ProfileSchema) => state.profile?.Player?.clan_id;
+export const selectClanId = (state: ProfileSchema) => state.Profile?.Player?.clan_id;
 
-export const selectHasClan = createSelector(selectProfile, (profile) => !!profile?.Player?.clan_id);
+export const selectHasClan = createSelector(selectProfile, (Profile) => !!Profile?.Player?.clan_id);

@@ -5,10 +5,14 @@ export type IProfile<Player> = {
 };
 
 export type ProfileSchema = {
-    profile?: IProfile<IPlayer>;
+    Profile?: IProfile<IPlayer>;
 };
 
 export type IUpdateProfileDto = {
     username: string;
     password: string;
+};
+
+export type IGetProfileInfoResponse = {
+    data?: ProfileSchema;
 };
