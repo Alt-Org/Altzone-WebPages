@@ -92,6 +92,7 @@
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 12px;
+    --border-radius-xl: 25px;
     --border-radius-pill: 9999px;
     
     // ==========================================
@@ -103,6 +104,17 @@
     --secondary-font: 'Montserrat', sans-serif;
     --body-font-size: 16px;
     --heading-font-size: 24px;
+
+    // Font line sizes
+    --font-line-xs: 18px;
+    --font-line-s: 20px;
+    --font-line-m: 24px;
+    --font-line-l: 32px;
+    --font-line-xl: 40px;
+    --font-line-xxl: 48px;
+    --font-line-xxxl: 56px;
+    --font-line-4xl: 64px;
+    --font-line-5xl: 72px;
     
     // Corner Radius
     --corner-radius-web: 12px;
