@@ -5,6 +5,10 @@ export type IProfile<Player> = {
 };
 
 export type ProfileSchema = {
+    profile?: IProfile<IPlayer>;
+};
+
+export type ProfileResponseSchema = {
     Profile?: IProfile<IPlayer>;
 };
 
@@ -14,5 +18,5 @@ export type IUpdateProfileDto = {
 };
 
 export type IGetProfileInfoResponse = {
-    data?: ProfileSchema;
+    data?: ProfileResponseSchema;
 };
