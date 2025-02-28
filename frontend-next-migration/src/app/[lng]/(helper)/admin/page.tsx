@@ -9,9 +9,9 @@ import {
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
@@ -111,20 +111,20 @@ const Page = () => {
     };
 
     // Testing api: get profile info
-    const dispatch = useDispatch();
-    const { data, error } = useGetProfileInfoQuery();
+    // const dispatch = useDispatch();
+    // const { data, error } = useGetProfileInfoQuery();
 
-    useEffect(() => {
-        if (data?.data?.Profile) {
-            dispatch(
-                profileActions.setProfile({
-                    username: data.data.Profile.username,
-                    Player: data.data.Profile.Player,
-                    _id: data.data.Profile._id,
-                }),
-            );
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (data?.data?.Profile) {
+    //         dispatch(
+    //             profileActions.setProfile({
+    //                 username: data.data.Profile.username,
+    //                 Player: data.data.Profile.Player,
+    //                 _id: data.data.Profile._id,
+    //             }),
+    //         );
+    //     }
+    // }, []);
     return (
         <LayoutWithSidebars
             // rightSidebar={di}
@@ -340,7 +340,7 @@ const Page = () => {
             </p>
 
             {/* Get profile info */}
-            {error ? (
+            {/* {error ? (
                 <p style={{ wordWrap: 'break-word', color: 'red' }}>
                     Please login to get profile info
                 </p>
@@ -348,8 +348,7 @@ const Page = () => {
                 <p style={{ wordWrap: 'break-word', color: 'green' }}>
                     {JSON.stringify(data?.data?.Profile?.username)}
                 </p>
-            )}
-            {/* <button onClick={() => {dispatch}}>Update profile</button> */}
+            )} */}
             <ScrollTop />
         </LayoutWithSidebars>
     );
