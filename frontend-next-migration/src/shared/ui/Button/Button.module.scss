@@ -1,12 +1,12 @@
 .Button {
   cursor: pointer;
-  color: var(--primary-color);
-  background: var(--secondary-color);
+  color: var(--white);
+  background: var(--primary-color);
   padding: 6px 15px;
 
 
   &:focus {
-    outline: 2px solid var(--primary-color);
+    outline: 2px solid var(--white);
   }
 
 }
@@ -19,44 +19,44 @@
   outline: none;
 
   &:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
 }
 
 .clearInverted {
-  color: var(--inverted-primary-color);
+  color: var(--secondary-color);
 
   &:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
 }
 
 .outline {
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 1px solid var(--white);
+  color: var(--white);
   background: none;
 }
 
 .background {
-  background: var(--bg-color);
-  color: var(--primary-color);
+  background: var(--background);
+  color: var(--white);
   border: none;
 
   &:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
 }
 
 .backgroundInverted {
-  background: var(--inverted-bg-color);
-  color: var(--inverted-primary-color);
+  background: var(--black);
+  color: var(--secondary-color);
   border: none;
 
   &:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
 }
