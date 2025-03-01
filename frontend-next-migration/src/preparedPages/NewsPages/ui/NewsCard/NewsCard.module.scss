@@ -1,0 +1,89 @@
+.NewsCard {
+    display: flex;
+    justify-content: space-between;
+    background: var(--dark-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1.5rem;
+    gap: 1rem;
+    border: 1px solid var(--accent-color);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--az-heading);
+    margin: 0;
+}
+
+.text {
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.date {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: auto;
+}
+
+.imageContainer {
+    width: 120px;
+    height: 120px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.readMoreLink {
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 768px) {
+    .NewsCard {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .imageContainer {
+        width: 100%;
+        height: 160px;
+        order: -1;
+    }
+
+    .title {
+        font-size: 1.125rem;
+    }
+} 
