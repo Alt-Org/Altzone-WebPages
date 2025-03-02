@@ -13,20 +13,24 @@ interface NewsCardProps {
 }
 
 const NewsCard = (props: NewsCardProps) => {
-    const { className, title, content, date, imageUrl, id } = props;
+    const { className, title, content, date, imageUrl } = props;
 
     return (
-        <Card className={classNames(cls.NewsCard, {}, [className])}>
+        <div className={classNames(cls.NewsCard, {}, [className])}>
             <div className={cls.content}>
-                <h3 className={cls.title}>{title}</h3>
+                <h3 className={cls.azHeading}>{title}</h3>
                 <p className={cls.text}>{content}</p>
                 <span className={cls.date}>{date}</span>
             </div>
             <div className={cls.imageContainer}>
-                <img src={imageUrl} alt={title} className={cls.image} />
+                <img
+                    src={imageUrl}
+                    alt={title}
+                    className={cls.image}
+                />
             </div>
-        </Card>
+        </div>
     );
 };
 
-export default memo(NewsCard); 
+export default memo(NewsCard);
