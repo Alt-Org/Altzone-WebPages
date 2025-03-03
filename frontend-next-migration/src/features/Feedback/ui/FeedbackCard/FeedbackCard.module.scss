@@ -21,7 +21,7 @@
     font-size: 24px;
     line-height: 32px;
 
-    color: #FFA101;
+    color: #FF0010;
 };
 
 
@@ -78,14 +78,14 @@
     gap: 10px;
 }
 .linkToFormContainer {
-    display: flex; /* Aktivoi flexbox-asettelu */
-    flex-direction: row; /* Varmistaa, että sisältö on rivillä */
-    gap: 10px; /* Lisää tilaa elementtien väliin */
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .linkToFormContainer > * {
-    display: inline-block; /* Varautuu block-tilan oletukseen */
-    vertical-align: middle; /* Sijoittaa tekstin pystysuunnassa keskelle */
+    display: inline-block;
+    vertical-align: middle;
 }
 
 
