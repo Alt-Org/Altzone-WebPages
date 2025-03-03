@@ -1,10 +1,5 @@
-/*
-     On the row 62 in .textInput, the height was 40px which is why it did not
-     match the text input on Figma. I set the height to 45px and now it does match the requirements
- */
-
 .feedbackForm {
-    background-color: #1E3544;
+    background-color: var(--base-card-background);
     display: flex;
     flex-direction: column;
     margin: 5px;
@@ -27,7 +22,7 @@
     padding: 5px 1em 0 1em;
     height: fit-content;
     color: var(--secondary-color);
-    font-family: var(--font-family-title);
+    font-family: var(--font-family-title),serif;
     text-align: center;
     width: 100%;
     margin: 0 auto;
@@ -49,7 +44,7 @@
     width: 300px;
     height: 48px;
     background: var(--secondary-color) !important;
-    border: 2px solid #000000 !important;
+    border: 2px solid var(--drop-shadows) !important;
     border-radius: 25px !important;
     box-shadow: 2px 4px 0 #121212 !important;
 }
@@ -80,7 +75,7 @@
 .linkToForm {
     display: flex;
     flex-direction: row;
-    font-family: var(--font-family-secondary);
+    font-family: var(--font-family-secondary) serif;
     font-size: 1rem;
 }
 
