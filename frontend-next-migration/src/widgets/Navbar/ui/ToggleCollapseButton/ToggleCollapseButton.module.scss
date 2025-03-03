@@ -1,9 +1,9 @@
 .ToggleCollapseButton {
   display: flex;
   align-items: center;
-  box-shadow: 0 0 0 4px var(--inverted-primary-color);
+  box-shadow: 0 0 0 4px var(--secondary-color);
   border-radius: var(--border-radius-custom);
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   border: none;
   height: 30px;
   width: 35px;
