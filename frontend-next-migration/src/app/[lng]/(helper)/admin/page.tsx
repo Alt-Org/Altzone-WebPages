@@ -9,7 +9,9 @@ import {
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-
+// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
@@ -108,6 +110,21 @@ const Page = () => {
         ],
     };
 
+    // Testing api: get profile info
+    // const dispatch = useDispatch();
+    // const { data, error } = useGetProfileInfoQuery();
+
+    // useEffect(() => {
+    //     if (data?.data?.Profile) {
+    //         dispatch(
+    //             profileActions.setProfile({
+    //                 username: data.data.Profile.username,
+    //                 Player: data.data.Profile.Player,
+    //                 _id: data.data.Profile._id,
+    //             }),
+    //         );
+    //     }
+    // }, []);
     return (
         <LayoutWithSidebars
             // rightSidebar={di}
@@ -321,6 +338,17 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
+
+            {/* Get profile info */}
+            {/* {error ? (
+                <p style={{ wordWrap: 'break-word', color: 'red' }}>
+                    Please login to get profile info
+                </p>
+            ) : (
+                <p style={{ wordWrap: 'break-word', color: 'green' }}>
+                    {JSON.stringify(data?.data?.Profile?.username)}
+                </p>
+            )} */}
             <ScrollTop />
         </LayoutWithSidebars>
     );

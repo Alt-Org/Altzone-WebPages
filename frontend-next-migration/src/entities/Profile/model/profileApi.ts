@@ -1,9 +1,15 @@
 import { gameApi } from '@/shared/api';
-import { IUpdateProfileDto } from '../types/profile';
+import { IUpdateProfileDto, IGetProfileInfoResponse } from '../types/profile';
 
 const profileUrl = 'profile';
 const profileApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
+        getProfileInfo: builder.query<IGetProfileInfoResponse, void>({
+            query: () => ({
+                url: `${profileUrl}/info`,
+                method: 'GET',
+            }),
+        }),
         deleteProfile: builder.mutation<void, void>({
             query: () => ({
                 url: `${profileUrl}`,
@@ -23,6 +29,7 @@ const profileApi = gameApi.injectEndpoints({
 });
 
 export const {
+    useGetProfileInfoQuery,
     useDeleteProfileMutation,
     useUpdateProfileMutation,
     endpoints: profileEndpoints,
