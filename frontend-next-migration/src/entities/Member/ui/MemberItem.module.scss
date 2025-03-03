@@ -41,7 +41,7 @@
   }
 
   .clickableLogo {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     cursor: pointer;
     @include link-scale-effect('icon');
   }
@@ -66,7 +66,7 @@
     border-radius: 50%;
     cursor: pointer;
     @include link-scale-effect('icon');
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
   }
 
   .placeholderLogo {
