@@ -6,11 +6,11 @@
   padding-right: 20px!important;;
   &:hover {
     background: rgba(0, 0, 0, 0.60);
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
   &.active {
-    color: var(--secondary-color);
+    color: var(--primary-color);
   }
 
 }
@@ -37,7 +37,7 @@
     transform: scale(0.95);
   }
   &.active {
-    color: var(--secondary-color)!important;
+    color: var(--primary-color)!important;
   }
 
 }

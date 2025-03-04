@@ -1,5 +1,5 @@
 .title{
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .Back {
@@ -24,7 +24,7 @@
 
 
      &.active{
-     border: 2px solid var(--secondary-color);
-    color: var(--secondary-color);
+     border: 2px solid var(--primary-color);
+    color: var(--primary-color);
 }
 }

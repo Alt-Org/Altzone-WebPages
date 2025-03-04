@@ -71,7 +71,7 @@
 }
 
 .dynamicHeading {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -79,10 +79,10 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  color: var(--primary-color);
+  color: var(--white);
   cursor: pointer;
   &:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color-variant-hover);
   }
 }
 
@@ -98,6 +98,6 @@
 
 
 .active {
-  color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
   text-decoration: underline;
 }
