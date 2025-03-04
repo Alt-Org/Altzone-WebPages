@@ -16,7 +16,6 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
             leftTopSidebar={{
                 component: <GalleryNavMenuAsDropdown openByDefault={true} />,
                 hideOnMobile: true,
-                className: cls.Sidebar,
             }}
         >
             <h1 className={cls.Title}>{t('picture-galleries')}</h1>
