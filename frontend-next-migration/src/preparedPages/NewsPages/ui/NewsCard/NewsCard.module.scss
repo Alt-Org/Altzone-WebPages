@@ -3,17 +3,21 @@
     justify-content: space-between;
     background: var(--dark-bg);
     border-radius: 8px;
-    padding: 1rem;
-    gap: 1rem;
-    min-height: 120px;
-    border: 1px solid rgba(255, 165, 0, 0.3);
+    // padding: 1rem;
+    // min-height: 120px;
+    filter: drop-shadow(2px 4px var(--drop-shadows));
+    border-radius: var(--border-radius-figmadesktop);
+    border: 4px solid var(--drop-shadows);
+    width: 100%;
+    background-color: var(--base-card-background);
 }
 
 .content {
-    flex: 2;
+    flex: 4;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+    padding-left: 0.5rem;
 }
 
 .azHeading {
@@ -37,25 +41,21 @@
 }
 
 .imageContainer {
-    width: 120px;
-    height: 120px;
+    width: 340px;
+    height: 150px;
     flex-shrink: 0;
     overflow: hidden;
     position: relative;
-    clip-path: polygon(100% 0, 100% 100%, 0 100%, 25% 0);
-    border-radius: 4px;
 }
 
 .image {
-    width: 180%;
-    height: 180%;
+    height: 360px;
     object-fit: cover;
     position: absolute;
-    right: -20%;
-    top: 45%;
+    left: 97px;
+    top: 17%;
     transform: translateY(-40%);
-    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 55%);
-    
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 45% 100%, 0 30%);
 }
 
 .footer {
@@ -90,4 +90,4 @@
     .title {
         font-size: 1.125rem;
     }
-} 
+}
