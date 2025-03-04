@@ -27,7 +27,6 @@ const GameArtPackagePage = (props: Props) => {
             rightBottomSidebar={{
                 component: <TableOfContents sections={sections} />,
                 hideOnMobile: true,
-                className: cls.Sidebar,
             }}
         >
             <WikiContent sections={sections} />
