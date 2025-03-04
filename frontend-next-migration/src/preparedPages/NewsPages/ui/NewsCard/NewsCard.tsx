@@ -18,7 +18,7 @@ const NewsCard = (props: NewsCardProps) => {
     return (
         <div className={classNames(cls.NewsCard, {}, [className])}>
             <div className={cls.content}>
-                <h3 className={cls.azHeading}>{title}</h3>
+                <h3 className={cls.title}>{title}</h3>
                 <p className={cls.text}>{content}</p>
                 <span className={cls.date}>{date}</span>
             </div>
