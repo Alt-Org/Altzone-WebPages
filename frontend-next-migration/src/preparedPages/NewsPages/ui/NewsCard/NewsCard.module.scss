@@ -1,11 +1,8 @@
 .NewsCard {
     display: flex;
     justify-content: space-between;
-    background: var(--dark-bg);
-    border-radius: 8px;
-    // padding: 1rem;
-    // min-height: 120px;
-    filter: drop-shadow(2px 4px var(--drop-shadows));
+    // border-radius: 8px;
+    filter: drop-shadow(8px 12px var(--drop-shadows));
     border-radius: var(--border-radius-figmadesktop);
     border: 4px solid var(--drop-shadows);
     width: 100%;
