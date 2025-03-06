@@ -1,90 +1,81 @@
 .NewsCard {
-    display: flex;
+    // display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    // border-radius: 8px;
     filter: drop-shadow(8px 12px var(--drop-shadows));
     border-radius: var(--border-radius-figmadesktop);
     border: 4px solid var(--drop-shadows);
     width: 100%;
     background-color: var(--base-card-background);
-}
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+    @media (max-width: 602px) {
+        flex-direction: column;
+    }
 
+    @media (max-width: 480px) {
+        grid-template-rows: auto;
+    }
+    @media (max-width: 390px) {
+        width: 150%;
+        margin-left: -20px;
+    }
+}
 .content {
     flex: 4;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    text-overflow: ellipsis;
+    line-height: 2rem;
+    font-family: var(--font-family-main);
     padding-left: 0.5rem;
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
 }
 
-.azHeading {
-    font-family: var(--font-family-az);
+.title {
+    display: flex;
+    margin-top: 5px;
     color: var(--az-heading);
-    font-size: 1.25rem;
-    margin: 0;
+    font-size: 1.1rem;
+    width: 200px;
+    line-height: 2rem;
+    text-overflow: ellipsis;
 }
 
 .text {
     color: var(--text-primary);
-    line-height: 1.5;
+    line-height: 1.5rem;
     margin: 0;
-    font-size: 0.875rem;
+    font-size: 1rem;
 }
 
 .date {
-    font-size: 0.75rem;
     color: var(--text-secondary);
     margin-top: auto;
+    margin-bottom: auto;
+    font-size: 1rem;
 }
 
 .imageContainer {
-    width: 340px;
-    height: 150px;
+    width: 100%;
+    height: 200px;
     flex-shrink: 0;
     overflow: hidden;
     position: relative;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
-
 .image {
-    height: 360px;
+    width: 100%;
+    height: auto;
     object-fit: cover;
-    position: absolute;
-    left: 97px;
-    top: 17%;
-    transform: translateY(-40%);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 45% 100%, 0 30%);
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: auto;
-}
-
-.readMoreLink {
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
-}
-
-@media (max-width: 768px) {
-    .NewsCard {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .imageContainer {
-        width: 100%;
-        height: 160px;
-        order: -1;
-    }
-
-    .title {
-        font-size: 1.125rem;
-    }
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 45% 100%, 0 -25%);
 }
