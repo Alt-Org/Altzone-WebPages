@@ -21,7 +21,12 @@ export const ScrollTop = memo(({ className = '' }: ScrollTopProps) => {
     const [showButton, setShowButton] = useState(false);
 
     useEffect(() => {
-        if (currentYPosition > window.innerHeight / 6) {
+        const viewportHeight = window.innerHeight;
+        const pageHeight = document.body.scrollHeight;
+        const scrollThreshold = viewportHeight / 6;
+        const bottomThreshold = pageHeight - viewportHeight - scrollThreshold;
+
+        if (currentYPosition > scrollThreshold && currentYPosition < bottomThreshold) {
             setShowButton(true);
         } else {
             setShowButton(false);
