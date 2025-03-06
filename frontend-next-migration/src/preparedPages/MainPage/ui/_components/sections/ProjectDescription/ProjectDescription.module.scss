@@ -92,6 +92,10 @@
 
 .titleQuestion {
   font-size: var(--font-line-xxxl);
+  font-family: var(--font-family-title);
+  text-align: center;
+  color: var(--primary-color);
+  padding: 15px;
 
  @media screen and (max-width: 600px) {
    & {
