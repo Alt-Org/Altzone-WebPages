@@ -19,7 +19,7 @@
   }
 
  button:hover{
-    color: var(--secondary-color);
+    color: var(--primary-color);
  }
 
   img{
@@ -54,7 +54,7 @@
   margin: 0;
   padding: 1%;
   background-color: transparent;
-  color: var(--primary-color);
+  color: var(--white);
   border-bottom-right-radius: var(--border-radius-custom);
   font-size: 2em;
 }

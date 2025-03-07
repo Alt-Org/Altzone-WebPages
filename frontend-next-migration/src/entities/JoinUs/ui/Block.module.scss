@@ -27,11 +27,11 @@
     a {
         text-decoration: underline;
         font-size: 1.3em;
-        color: var(--inverted-primary-color)!important;
+        color: var(--secondary-color)!important;
 
 
         &:hover {
-            color: var(--secondary-color)!important;
+            color: var(--primary-color)!important;
         }
 
     }

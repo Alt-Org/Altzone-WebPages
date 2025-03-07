@@ -1,6 +1,6 @@
 .Footer {
   font: var(--font-xl);
-  background: var(--bg-color);
+  background: var(--background);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -11,7 +11,7 @@
 
 .title {
   padding-top: 1rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   text-align: center;
 }
 

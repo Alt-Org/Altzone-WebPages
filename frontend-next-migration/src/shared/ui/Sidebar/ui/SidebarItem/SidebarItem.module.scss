@@ -9,12 +9,13 @@
     align-items: center;
     &:hover {
         text-decoration: underline;
-        color: var(--content-primary);
+        color: var(--primary-color);
     }
     &.active {
-        color: var(--content-primary) !important;
+        color: var(--primary-color) !important;
     }
 }
+
 .itemBasic {
     padding-top: 3px;
 }
@@ -39,8 +40,9 @@
         transform: scale(0.95);
     }
     &.active {
-        color: var(--content-primary) !important;
+        color: var(--primary-color) !important;
     }
+  
 }
 .link {
     padding-top: 0;

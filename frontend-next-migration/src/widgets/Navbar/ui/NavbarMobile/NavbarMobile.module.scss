@@ -73,7 +73,7 @@
 .authSection {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: var(--border-radius-custom);
-  box-shadow: 0 0 0 2px var(--inverted-primary-color);
+  box-shadow: 0 0 0 2px var(--secondary-color);
   padding: 5px;
   text-align: center;
   font-family: var(--font-family-texts), serif !important;
@@ -82,11 +82,11 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
 
   &{
     .authSectionLink{
-      color: var(--secondary-color) !important;
+      color: var(--primary-color) !important;
     }
   }
 
@@ -100,9 +100,9 @@
 .langSwitcher {
   position: relative;
   border-radius: var(--border-radius-custom);
-  border: 2px solid var(--inverted-primary-color);
+  border: 2px solid var(--secondary-color);
   background-color: rgba(0, 0, 0, 0.8);
-  color: var(--secondary-color) !important;
+  color: var(--primary-color) !important;
   font-size: var(--font-size-m) !important;
   height: 42px;
 
@@ -110,7 +110,7 @@
     padding: 2px;
     background-color: rgba(0, 0, 0, 0.8);
     font-size: var(--font-size-m) !important;
-    color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
     border-radius: var(--border-radius-custom);
     border: 2px solid transparent;
     cursor: pointer;
@@ -126,7 +126,7 @@
     top: -60px;
     width: 100%;
     border-radius: var(--border-radius-custom);
-    outline: 2px solid var(--inverted-primary-color);
+    outline: 2px solid var(--secondary-color);
     list-style-type: none;
     padding: 4px;
     display: flex;
