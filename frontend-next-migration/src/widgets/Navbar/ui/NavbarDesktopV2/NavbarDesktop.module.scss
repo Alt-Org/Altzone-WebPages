@@ -10,7 +10,6 @@
     top: 0;
     font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
     user-select: none;
-    //   transition: all 0.3s ease; /* Add smooth transition */
 
     &.collapsing {
         overflow: hidden;
@@ -46,14 +45,13 @@
 .siteNavContentList {
 
     height: 52px;
-    transition: height 1s ease 0s;
+    transition: height 0.3s ease 0s;
     // transition: height 1s cubic-bezier(0.11, 0, 0.5, 0) 0s;
     align-items: center;
     background-color: var(--base-card-background);
     filter: drop-shadow(8px 12px var(--drop-shadows));
     border-radius: var(--border-radius-figmadesktop);
     border: 4px solid var(--drop-shadows);
-
     gap: 3.5em;
     list-style: none;
     z-index: 2;
@@ -96,13 +94,6 @@
     }
 }
 
-// .siteNavContentList.collapsed {
-//     opacity: 0.8;
-//     height: 52px;
-//     padding: 0;
-//     overflow: hidden;
-
-// }
 .siteNavContentList.collapsed {
     width: 50px;
     opacity: 0.8;
@@ -115,12 +106,6 @@
     opacity: 1;
     transform: translateX(0) scaleX(1);
     transform-origin: right;
-    transition:
-        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        margin-top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        color 0.2s ease-out;
-    visibility: visible;
     line-height: initial;
     cursor: pointer;
 
@@ -140,7 +125,6 @@
     &.collapsed {
         transform: translateX(-100px) scaleX(0.7);
         opacity: 0;
-        visibility: hidden;
     }
 
     &.active {
@@ -180,14 +164,6 @@
 
 .itemNavbarDropDownContent {
     text-align: left;
-    display: none;
-    // gap: 8px;
-    // position: absolute;
-    // top: 100%;
-    // margin-right: 100px;
-    // min-width: 140px;
-    // max-width: 200px;
-    // word-wrap: break-word;
 }
 
 .siteNavContentList:hover .itemNavbarDropDownContent>*:hover {
