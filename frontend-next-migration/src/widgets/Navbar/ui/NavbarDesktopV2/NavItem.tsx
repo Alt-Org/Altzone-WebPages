@@ -13,10 +13,11 @@ type NavItemProps = {
     item: NavbarMenuItem;
     className?: string;
     currentPath?: string;
+    mouseOver: boolean;
 };
 
 const NavItem = memo((props: NavItemProps) => {
-    const { item, className = '', currentPath = '' } = props;
+    const { item, className = '', currentPath = '', mouseOver } = props;
     const { type: itemType } = item;
     const { t } = useClientTranslation('navbar');
     const { checkPermissionFor } = useUserPermissionsV2();
@@ -82,7 +83,7 @@ const NavItem = memo((props: NavItemProps) => {
                     contentAbsolute={true}
                     contentClassName={cls.itemNavbarDropDownContent}
                     disableClickToggle={true}
-                    isOpen={true}
+                    isOpen={mouseOver}
                 >
                     <div className={cls.col}>{t(`${item.name}`)}</div>
                 </DropdownWrapper>

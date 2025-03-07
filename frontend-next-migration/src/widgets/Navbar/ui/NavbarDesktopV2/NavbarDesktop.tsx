@@ -52,6 +52,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
 
     const { t } = useClientTranslation('navbar');
     const [isAnimating, setIsAnimating] = useState(false);
+    const [isMouseOver, setIsMouseOver] = useState(false);
 
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
 
@@ -98,9 +99,14 @@ const NavbarDesktop = memo((props: NavbarProps) => {
             aria-label="Nav menu"
         >
             <Container>
-                <ul className={classNames(cls.siteNavContentList, ModsUlAndLi)}>
+                <ul
+                    className={classNames(cls.siteNavContentList, ModsUlAndLi)}
+                    onMouseEnter={() => setIsMouseOver(true)}
+                    onMouseLeave={() => setIsMouseOver(false)}
+                >
                     {navbarBuild.menu.map((item) => (
                         <NavItem
+                            mouseOver={isMouseOver}
                             currentPath={realPath}
                             item={item}
                             key={item.name}
