@@ -28,5 +28,9 @@
   "development": "Kehittäminen",
   "pictures": "Kuvat",
   "teachers": "Opettajat",
-  "furnituresets": "Huonekalumallistot"
+  "furnituresets": "Huonekalumallistot",
+  "theme": "Teemavärit",
+  "Main": "Päävärit",
+  "Light": "Vaalea",
+  "Dark": "Tumma"
 }
