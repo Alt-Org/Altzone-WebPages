@@ -8,9 +8,7 @@
         width: max-content;
     }
 }
-.chevronImage {
-    width: 16px;
-}
+
 .dropdownContent {
     padding-top: 10px;
     line-height: 40px;
@@ -66,11 +64,8 @@
 
 .childrenWrapper {
     display: flex;
-    align-items: center;
     gap: 7px;
-  display: flex;
   align-items: center;
-  gap: 7px;
   color: var(--primary-color);
   cursor: pointer;
   &:hover {
