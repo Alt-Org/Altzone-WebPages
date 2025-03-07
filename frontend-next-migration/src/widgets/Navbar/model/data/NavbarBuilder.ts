@@ -17,7 +17,7 @@ import {
 
  *     @description
  *     At the addDropDown function I had to change the elements variable to turn it into map so theme colors would change
- *     I already tested other dropdowns on the website: they work perfectly without effects of the change
+ *     I already checked other dropdowns on the website: they work perfectly without effects of the change
  *
  */
 
