@@ -10,7 +10,7 @@
     top: 0;
     font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
     user-select: none;
-//   transition: all 0.3s ease; /* Add smooth transition */
+    //   transition: all 0.3s ease; /* Add smooth transition */
 
     &.collapsing {
         overflow: hidden;
@@ -47,8 +47,8 @@
 
     height: 52px;
     transition: height 1s ease 0s;
-// transition: height 1s cubic-bezier(0.11, 0, 0.5, 0) 0s;
-align-items: center;
+    // transition: height 1s cubic-bezier(0.11, 0, 0.5, 0) 0s;
+    align-items: center;
     background-color: var(--base-card-background);
     filter: drop-shadow(8px 12px var(--drop-shadows));
     border-radius: var(--border-radius-figmadesktop);
@@ -62,13 +62,16 @@ align-items: center;
     margin-left: auto;
     display: flex;
     top: 0;
-    align-items: center;
-    justify-content: flex-end;
-&:hover {
-    height: 170px;
-    top:0;
-    opacity: 1;
-}
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding-top: 5px;
+
+    &:hover {
+        height: 170px;
+        top: 0;
+        opacity: 1;
+    }
 
 
     @media (max-width: breakpoint(xxl)) {
@@ -106,14 +109,8 @@ align-items: center;
     height: 52px;
 }
 
-.siteNavContentList:hover> .navItem {
-    margin-top: -130px; 
-
-}
-
-
 .navItem {
-position: relative;
+    position: relative;
     color: var(--content-primary);
     opacity: 1;
     transform: translateX(0) scaleX(1);
@@ -126,6 +123,7 @@ position: relative;
     visibility: visible;
     line-height: initial;
     cursor: pointer;
+
     &:hover .itemNavbarDropDownContent {
         display: flex;
         flex-direction: column;
@@ -134,6 +132,7 @@ position: relative;
         opacity: 1;
         z-index: 3;
     }
+
     &:hover {
         color: var(--secondary-color);
     }
@@ -147,7 +146,7 @@ position: relative;
     &.active {
         color: var(--secondary-color) !important;
 
-        & > a {
+        &>a {
             color: var(--secondary-color) !important;
         }
     }
@@ -191,7 +190,7 @@ position: relative;
     // word-wrap: break-word;
 }
 
-.siteNavContentList:hover .itemNavbarDropDownContent > *:hover {
+.siteNavContentList:hover .itemNavbarDropDownContent>*:hover {
     text-decoration: underline;
 }
 
@@ -269,7 +268,7 @@ position: relative;
     width: 38px;
     cursor: pointer;
 
-    & > * {
+    &>* {
         color: var(--secondary-color) !important;
     }
 }
