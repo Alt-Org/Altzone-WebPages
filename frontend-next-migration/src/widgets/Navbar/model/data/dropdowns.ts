@@ -11,6 +11,16 @@ import {
     getRouteAllFurnitureSetsPage,
     getRouteJoinUsPage,
 } from '@/shared/appLinks/RoutePaths';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { Theme } from '@/app/_providers/ThemeProvider';
+
+/**
+ *
+ *  @module dropdowns
+ *
+ *  @description
+ *  I added a new dropdown for switching theme
+ */
 
 export const dropdowns = {
     community: [
@@ -136,6 +146,30 @@ export const dropdowns = {
         //             isExternal: true
         //         }
         //     }
-        // ]
+        // ],
+    ],
+
+    theme: [
+        {
+            elementText: 'Main',
+            onClickCallback: () => {
+                localStorage.setItem('theme', Theme.MAIN);
+                document.body.className = Theme.MAIN;
+            },
+        },
+        {
+            elementText: 'Light',
+            onClickCallback: () => {
+                localStorage.setItem('theme', Theme.LIGHT);
+                document.body.className = Theme.LIGHT;
+            },
+        },
+        {
+            elementText: 'Dark',
+            onClickCallback: () => {
+                localStorage.setItem('theme', Theme.DARK);
+                document.body.className = Theme.DARK;
+            },
+        },
     ],
 };

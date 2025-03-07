@@ -12,6 +12,15 @@ import {
 
 // /* eslint-disable max-params*/
 
+/**
+ *     @param {DropDownElement[]} elements
+
+ *     @description
+ *     At the addDropDown function I had to change the elements variable to turn it into map so theme colors would change
+ *     I already tested other dropdowns on the website: they work perfectly without effects of the change
+ *
+ */
+
 export class NavbarBuilder {
     private menu: NavbarMenuItem[] = [];
     private namedMenu: NamedMenu = {};
@@ -40,7 +49,11 @@ export class NavbarBuilder {
         this.menu.push({
             name,
             isActive,
-            elements,
+            elements: elements.map((element) =>
+                element !== null && typeof element === 'object' && 'onClickCallback' in element
+                    ? { ...element, onClickCallback: element.onClickCallback }
+                    : element,
+            ),
             type: ItemType.navDropDown,
             position,
             accessErrorMsg,
