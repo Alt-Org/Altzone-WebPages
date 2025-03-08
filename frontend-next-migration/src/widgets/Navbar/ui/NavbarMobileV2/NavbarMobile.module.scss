@@ -87,11 +87,11 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: var(--content-primary) !important;
+    color: var(--primary-color) !important;
 
     & {
         .authSectionLink {
-            color: var(--content-primary) !important;
+            color: var(--primary-color) !important;
         }
     }
 }
@@ -135,9 +135,9 @@
 .langSwitcher {
     position: relative;
     border-radius: 50%;
-    border: 2px solid var(--content-primary);
+    border: 2px solid var(--primary-color);
     background-color: rgba(0, 0, 0, 0.8);
-    color: var(--content-primary) !important;
+    color: var(--primary-color) !important; 
     font-size: var(--font-size-m) !important;
     width: 40px;
     display: flex;
