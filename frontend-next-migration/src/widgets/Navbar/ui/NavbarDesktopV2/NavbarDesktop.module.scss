@@ -22,7 +22,7 @@
 }
 
 .col {
-    color: var(--content-primary);
+    color: var(--primary-color);
     text-align: center;
     font-weight: 600;
     padding: auto;
@@ -43,7 +43,7 @@
     align-items: center;
     background-color: var(--base-card-background);
     filter: drop-shadow(8px 12px var(--drop-shadows));
-    border-radius: var(--border-radius-figmadesktop);
+    border-radius: var(--border-radius-lg);
     border: 4px solid var(--drop-shadows);
     gap: 3.5em;
     list-style: none;
@@ -58,7 +58,7 @@
     align-content: flex-start;
     padding-top: 5px;
     &:hover {
-        height: 170px;
+        height: 190px;
         top: 0;
         opacity: 1;
     }
@@ -95,7 +95,7 @@
 
 .navItem {
     position: relative;
-    color: var(--content-primary);
+    color: var(--primary-color);
     transform: translateX(0) scaleX(1);
     transform-origin: right;
     line-height: initial;
@@ -112,14 +112,14 @@
     &:hover .itemNavbarDropDownContent {
         display: flex;
         flex-direction: column;
-        padding-top: 15px;
+        // padding-top: 10px;
         inline-size: 140px;
         opacity: 1;
         z-index: 3;
     }
 
     &:hover {
-        color: var(--content-primary);
+        color: var(--primary-color);
     }
 
     &.collapsed {
@@ -130,14 +130,18 @@
     }
 
     &.active {
-        color: var(--content-primary) !important;
+        color: var(--primary-color) !important;
 
         & > a {
-            color: var(--content-primary) !important;
+            color: var(--primary-color) !important;
         }
     }
 }
 
+.itemNavbarDropDownContent{
+    gap:0.2rem;
+
+}
 .appLinkLogo {
     display: block;
     position: relative;
@@ -178,10 +182,10 @@
 
 .langSwitcher {
     border-radius: 50%;
-    border: 2px solid var(--content-primary);
+    border: 2px solid var(--primary-color);
     top: 10px;
     background-color: rgba(0, 0, 0, 0.8);
-    color: var(--content-primary) !important;
+    color: var(--primary-color) !important;
     color: white;
     background-color: rgb(8, 4, 4);
     font-size: var(--font-size-m) !important;
@@ -235,9 +239,9 @@
     top: 2px;
     position: relative;
     border-radius: 50%;
-    outline: 2px solid var((--content-primary));
+    outline: 2px solid var((--primary-color));
     background-color: rgba(0, 0, 0, 0.8);
-    color: var(--content-primary) !important;
+    color: var(--primary-color) !important;
     font-size: var(--font-size-m) !important;
     text-align: center;
     padding: 5px;
@@ -247,7 +251,7 @@
     cursor: pointer;
 
     & > * {
-        color: var(--content-primary) !important;
+        color: var(--primary-color) !important;
     }
 }
 
