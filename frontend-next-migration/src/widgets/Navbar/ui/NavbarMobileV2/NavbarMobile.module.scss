@@ -78,7 +78,7 @@
     overflow: hidden;
     width: 35px;
     height: 35px;
-    box-shadow: 0 0 0 2px var(--secondary-color);
+    box-shadow: 0 0 0 2px var(--content-primary);
     padding: 5px;
     text-align: center;
     font-family: var(--font-family-texts), serif !important;
@@ -87,11 +87,11 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: var(--secondary-color) !important;
+    color: var(--content-primary) !important;
 
     & {
         .authSectionLink {
-            color: var(--secondary-color) !important;
+            color: var(--content-primary) !important;
         }
     }
 }
@@ -135,9 +135,9 @@
 .langSwitcher {
     position: relative;
     border-radius: 50%;
-    border: 2px solid var(--secondary-color);
+    border: 2px solid var(--content-primary);
     background-color: rgba(0, 0, 0, 0.8);
-    color: var(--secondary-color) !important;
+    color: var(--content-primary) !important;
     font-size: var(--font-size-m) !important;
     width: 40px;
     display: flex;
@@ -151,7 +151,7 @@
         padding: 2px 8px;
         background-color: rgba(0, 0, 0, 0.8);
         font-size: var(--font-size-m) !important;
-        color: var(--secondary-color) !important;
+        color: var(--content-primary) !important;
         border-radius: 50%;
         border: 2px solid transparent;
         cursor: pointer;
