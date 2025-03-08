@@ -13,10 +13,11 @@ type NavItemProps = {
     item: NavbarMenuItem;
     className?: string;
     currentPath?: string;
+    mouseOver: boolean;
 };
 
 const NavItem = memo((props: NavItemProps) => {
-    const { item, className = '', currentPath = '' } = props;
+    const { item, className = '', currentPath = '', mouseOver } = props;
     const { type: itemType } = item;
     const { t } = useClientTranslation('navbar');
     const { checkPermissionFor } = useUserPermissionsV2();
@@ -34,7 +35,7 @@ const NavItem = memo((props: NavItemProps) => {
                     to={item.path}
                     key={item.path}
                 >
-                    <span>{t(`${item.name}`)}</span>
+                    <span className={cls.col}>{t(`${item.name}`)}</span>
                 </AppLink>
             </li>
         );
@@ -45,6 +46,7 @@ const NavItem = memo((props: NavItemProps) => {
         const localizedElements = item.elements
             .map((element) => {
                 // @ts-ignore
+
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
@@ -53,6 +55,7 @@ const NavItem = memo((props: NavItemProps) => {
                     // @ts-ignore
                     ...element,
                     // @ts-ignore
+
                     elementText: t(`${element.elementText}`),
                     // @ts-ignore
                     // contentItemClassName: cls.dropdownElement,
@@ -68,8 +71,6 @@ const NavItem = memo((props: NavItemProps) => {
             })
             .filter((element) => element !== null);
 
-        // console.log(localizedElements)
-
         const isDropdownActive = localizedElements.some((element) => element.active);
 
         return (
@@ -78,13 +79,13 @@ const NavItem = memo((props: NavItemProps) => {
                 className={classNames(cls.navItem, { [cls.active]: isDropdownActive }, [className])}
             >
                 <DropdownWrapper
-                    isOpen={false}
                     elements={localizedElements}
                     contentAbsolute={true}
-                    mouseOverLeaveMode={true}
                     contentClassName={cls.itemNavbarDropDownContent}
+                    disableClickToggle={true}
+                    isOpen={mouseOver}
                 >
-                    <div>{t(`${item.name}`)}</div>
+                    <div className={cls.col}>{t(`${item.name}`)}</div>
                 </DropdownWrapper>
             </li>
         );
