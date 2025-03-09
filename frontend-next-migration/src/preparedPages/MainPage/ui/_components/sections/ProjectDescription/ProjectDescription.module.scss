@@ -110,3 +110,10 @@
   }
 
 }
+
+@media screen and (min-width: breakpoint(lg)) {
+  .description {
+    width: 60%;
+  }
+}
+
