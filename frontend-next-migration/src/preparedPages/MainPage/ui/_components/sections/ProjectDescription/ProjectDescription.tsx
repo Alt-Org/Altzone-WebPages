@@ -47,11 +47,6 @@ export const ProjectDescription = (props: Props) => {
                         />
                     )}
 
-                    {/* <TextSlider
-                        textArray={descriptionArray}
-                        className={cls.description}
-                    /> */}
-
                     <Paragraph
                         className={cls.description}
                         text={description}
