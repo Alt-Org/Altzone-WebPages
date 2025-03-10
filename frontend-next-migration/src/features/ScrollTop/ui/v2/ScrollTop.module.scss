@@ -17,7 +17,7 @@
   height: 70px;
   padding:0 !important;
   position: fixed;
-  bottom: 266px; // 100px + 70px + 16px + 70px Original Space 330px
+  bottom: 266px;
   right: 5px;
   opacity: 0;
   visibility: hidden;
@@ -26,7 +26,7 @@
     width:60px;
     height:60px;
     right: 16px;
-    bottom: 240px; // Original Space 266px
+    bottom: 240px;
     border-width: var(--border-mobile)!important;
     border-radius: calc(var(--border-radius-custom !important) * 1.5);
   }
