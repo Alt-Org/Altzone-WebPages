@@ -1,6 +1,6 @@
 .TextSlider {
     padding: 2%;
-    background: var(--base-card-background);
+    background: var(--background);
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -10,7 +10,7 @@
     margin: 2%;
     color: white;
     position: relative;
-    border-radius: var(--border-radius-figmadesktop);
+    border-radius: var(--border-radius-lg);
     border: 2px solid #000000;
     box-shadow: 2px 4px 0 #121212;
     box-sizing: border-box;
@@ -141,5 +141,5 @@
 }
 
 .dot.active {
-    background-color: var(--white);
+    background-color: var(--primary-color);
 }
