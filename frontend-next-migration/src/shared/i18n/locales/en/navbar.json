@@ -30,10 +30,6 @@
   "development": "Development",
   "pictures": "Pictures",
   "teachers": "Teachers",
-  "furnituresets": "Furniture",
-  "theme": "Theme",
-  "Main": "Main",
-  "Light": "Light",
-  "Dark": "Dark"
+  "furnituresets": "Furniture"
 
 }

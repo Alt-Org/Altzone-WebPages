@@ -9,13 +9,6 @@ import {
 import { dropdowns } from './dropdowns';
 import { NavbarBuilder } from './NavbarBuilder';
 
-/**
-*     @module Navbar
-
- *    @description
- *    Added the dropdown for theme colors
- */
-
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLogo('Nav logo', img as unknown as string, getRouteMainPage());
 navbarBuilder.addLink('news', getRouteAllNewsPage(), true);
@@ -27,6 +20,5 @@ navbarBuilder.addLink('team', getRouteTeamPage(), true);
 navbarBuilder.addLink('teachers', getRouteTeachersPage(), true);
 navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());
-navbarBuilder.addDropDown('theme', true, dropdowns.theme);
 
 export const navbarMenuDesktop = navbarBuilder.build();
