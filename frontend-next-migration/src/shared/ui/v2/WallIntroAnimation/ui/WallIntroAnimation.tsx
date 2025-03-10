@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState, ReactNode } from 'react';
 import cls from './WallIntroAnimation.module.scss';
+import IntroWall from '../../IntroWall/IntroWall';
 
 /**
  * WallIntroAnimation component displays an animated wall.
@@ -33,7 +34,7 @@ export default function WallIntroAnimation({ children, renderOnce }: WallLoaderP
 
     useEffect(() => {
         if (!renderOnce || !isRenderedOnce) {
-            const timer = setTimeout(() => setIsLoaded(true), 100);
+            const timer = setTimeout(() => setIsLoaded(true), 50);
             const hideTimer = setTimeout(() => setIsVisible(false), 1000);
             if (renderOnce) {
                 sessionStorage.setItem('isRendered', 'true');
@@ -52,11 +53,7 @@ export default function WallIntroAnimation({ children, renderOnce }: WallLoaderP
     return (
         <div className={cls.wrapper}>
             <div className={`${cls.loader} ${isLoaded ? cls.loaded : ''}`}>
-                <div
-                    className={cls.wallLeft}
-                    data-testid="testWall"
-                />
-                <div className={cls.wallRight} />
+                <IntroWall />
             </div>
             <div
                 className={cls.content}
