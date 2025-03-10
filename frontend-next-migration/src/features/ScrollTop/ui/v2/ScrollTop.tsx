@@ -7,6 +7,15 @@ import { useCurrentYPosition } from '@/shared/lib/hooks';
 import upUpIcon from '@/shared/assets/icons/UpUp arrows.svg';
 import cls from './ScrollTop.module.scss';
 
+/**
+ * Checks whether the user's current Y position is between scrollThreshold and bottomThreshold.
+ * If it is, shows the button, otherwise hides it.
+ *
+ * @param {number} currentYPosition - The user's current Y-position.
+ * @param {number} scrollThreshold - The threshold value above which the button is displayed.
+ * @param {number} bottomThreshold - The threshold below which the button is hidden.
+ */
+
 interface ScrollTopProps {
     className?: string;
 }
