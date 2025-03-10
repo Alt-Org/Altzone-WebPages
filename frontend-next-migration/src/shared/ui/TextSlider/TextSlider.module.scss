@@ -30,6 +30,7 @@
         text-align: justify;
         line-height: 1.6;
         font-weight: bold;
+        overflow-y: auto;
     }
 }
 
@@ -69,7 +70,7 @@
 
 @media (max-width: breakpoint(md)) {
     .TextSlider {
-        height: 280px;
+        height: 300px;
         padding: 4%;
         margin: 1%;
     }
