@@ -12,6 +12,15 @@ import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 // import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
 // import { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
+
+/**
+ *
+ *  @module admin
+ *
+ *  @description
+ *  I added design of a new dropdown
+ */
+
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
@@ -58,6 +67,13 @@ const Page = () => {
             },
             { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
         ],
+    };
+
+    const navMenuWithDropdownsProps5: NavMenuWithDropdownsProps = {
+        title: 'Theme',
+        openByDefault: false,
+        titleAsActive: true,
+        dropdownItems: [{ elementText: 'Main' }, { elementText: 'Light' }, { elementText: 'Dark' }],
     };
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
@@ -160,6 +176,8 @@ const Page = () => {
                     dropdown will always be open)
                 </h5>
             </div>
+            <div style={{ margin: '20px' }} />
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps5} />
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
             <div style={{ margin: '20px' }}>
                 <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
