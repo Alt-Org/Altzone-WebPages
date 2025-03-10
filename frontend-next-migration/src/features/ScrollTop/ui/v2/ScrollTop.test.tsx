@@ -46,13 +46,33 @@ describe('ScrollTop', () => {
         expect(button).toHaveClass('ScrollTop');
     });
 
-    it('shows button when scrolled down', () => {
-        // Mock the hook to simulate scrolling down the page
-        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(window.innerHeight / 4);
-        render(<ScrollTop />); // Render the component
+    it('shows button when scrolled down, but not too far', () => {
+        // Simulate page height and viewport height
+        const viewportHeight = window.innerHeight;
+        const pageHeight = 2 * viewportHeight; // Example page height
+        const scrollThreshold = viewportHeight / 6;
+        const bottomThreshold = pageHeight - viewportHeight - scrollThreshold;
+
+        // Simulate scrolling to a position where the button should be visible
+        const scrollY = (scrollThreshold + bottomThreshold) / 2;
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(scrollY);
+
+        render(<ScrollTop />);
+
+        // Simulate scroll event
+        fireEvent.scroll(window, { target: { scrollY } });
 
         // Verify that the button is visible
         expect(screen.getByTestId('scroll-to-top-btn')).toHaveClass('show');
+
+        // Simulate scrolling to a position where the button should be hidden
+        const scrollYNearBottom = bottomThreshold + 10;
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(scrollYNearBottom);
+
+        fireEvent.scroll(window, { target: { scrollY: scrollYNearBottom } });
+
+        // Verify that the button is hidden
+        expect(screen.getByTestId('scroll-to-top-btn')).not.toHaveClass('show');
     });
 
     it('hides button when scrolled up', () => {
