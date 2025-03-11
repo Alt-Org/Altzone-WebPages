@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { Container } from '@/shared/ui/Container';
-import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodariNewsPage.png';
+// import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodariNewsPage.png';
+import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import NewsCard from './NewsCard/NewsCard';
 import cls from './NewsPage.module.scss';
 import { SearchInput } from '@/features/Search';
