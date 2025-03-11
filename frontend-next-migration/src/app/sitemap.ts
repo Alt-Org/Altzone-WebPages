@@ -22,7 +22,7 @@ export const dynamic = 'force-static';
  * ]
  */
 
-const siteUrl = envHelper.appDomain;
+const siteUrl = `https://${envHelper.appDomain}`;
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
