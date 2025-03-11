@@ -1,0 +1,34 @@
+.searchContainer {
+  width: 100%;
+  max-width: 250px;
+  margin:  auto 0;
+}
+
+@media (min-width: 768px) {
+  .searchContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+}
+ 
+.searchInput::placeholder {
+    color: var(--content-primary);
+    font-size: 13px;
+}
+.searchInput {
+    width: 250px;
+    height: 40px;
+    background-color: var(--base-card-background);
+    color: var(--primary-color);
+    padding: 10px;
+    border-radius: 25px;
+    border: 2px solid var(--drop-shadows);
+    cursor: default;
+}
+
+.searchInput:focus {
+    outline: none;
+}
