@@ -1,109 +1,131 @@
-
-
 .NewsCard {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 40% 60%;
     justify-content: space-between;
     filter: drop-shadow(8px 12px var(--drop-shadows));
     border-radius: var(--border-radius-figmadesktop);
     border: 4px solid var(--drop-shadows);
     width: 100%;
     background-color: var(--base-card-background);
-    margin-top: 20px;
-    margin-bottom: 5px;
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-    height: 152px;
+    height: auto;
+    min-height: 100px;
     transition: transform 0.2s ease-in-out;
 
     &:hover {
-        transform: scale(1.05);
-    }
-    @media (max-width: 768px) {
-        flex-direction: column;
-    }
-    @media (max-width: 602px) {
-        flex-direction: column;
+        transform: scale(1.02);
     }
 
+    @media (max-width: 1440px) {
+        height: 145px;
+        font-size: 0.4rem;
+        .date {
+            margin-bottom: 10px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        height: 180px;
+        grid-template-columns: 40% 60%;
+        font-size: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        width: 85%;
+        margin-top: -20px;
+
+        grid-template-columns: 40% 60%;
+        font-size: 0.2rem;
+        // margin: auto;
+        min-height: 100px;
+    }
     @media (max-width: 480px) {
-        flex-direction: column;
-        .content {
-            line-height: 0.1em;
-        }
-    }
-    @media (max-width: 390px) {
-        width: 73%;
-        height: 68%;
+        width: 80%;
+        margin: auto;
+        margin-top: -10px;
+        grid-template-columns: 40% 90%;
+        // height: 190px;
         margin-left: -15px;
-        .text {
-            font-size: 0.8rem;
-            line-height: 1.3rem;
-        }
-        height: 155px;
     }
-    @media (max-width: 320px) {
-        width: 65%;
-        height: 67%;
-        margin-left: -8px;
-        .text {
-            font-size: 1rem;
-            line-height: 1rem;
-        }
-        .title {
-            gap: 1rem;
-            line-height: 1rem;
-            font-size: 1rem;
-            text-overflow: ellipsis;
-        }
-        height: 140px;
+
+    @media (max-width: 390px) {
+        width: 80%;
+        height: 100px;
+        margin: auto;
+        grid-template-columns: 25% 80%;
+        margin-left: -15px;
+    }
+  
+      @media (max-width: 320px) {
+        width: 70%;
+        height: 100px;
+        margin: auto;
+        grid-template-columns: 20% 80%;
+        margin-left: -20px;
     }
 }
 .content {
     display: flex;
     flex-direction: column;
-    text-overflow: ellipsis;
-    line-height: 2rem;
-    font-family: var(--font-family-main);
-    padding-left: 0.5rem;
+    padding: 0.3rem;
+    overflow: hidden;
+    height: 100%;
+    width: 205px;
+    line-height: 1rem;
+    justify-content: space-between;
+    @media (max-width: 390px) {
+        font-size: 0.3rem;
+    }
 }
 
 .title {
-    display: flex;
-    margin-top: 5px;
     color: var(--az-heading);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     width: 100%;
-    line-height: 2rem;
+    line-height: 1.3rem;
+    white-space: wrap;
     text-overflow: ellipsis;
 }
 
 .text {
     color: var(--text-primary);
-    line-height: 1.5rem;
-    margin: 0;
+    line-height: 1.5;
     font-size: 1rem;
+    margin-top: auto;
+    @media (max-width: 390px) {
+        height: 200px;
+        font-size: 0.5rem;
+        line-height: 0.5rem;
+    }
+      @media (max-width: 320px) {
+        height: 50px;
+        line-height: 1rem;
+    }
 }
 
 .date {
     color: var(--text-secondary);
-    margin-top: 10px;
-    margin-bottom: auto;
-    font-size: 1rem;
-    margin-bottom: auto;
+    font-size: 0.8rem;
+    margin-top: auto;
 }
-
 .imageContainer {
     flex-shrink: 0;
-    overflow: hidden;
-    border-radius: 12px;
+    border-radius: 10px;
     width: 100%;
-    height: 159px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 .image {
     width: 100%;
-    height: 90%;
+    height: 100%;
+    margin-left: 107px;
     object-fit: cover;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 45% 100%, 0 -25%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 -45%);
+
+    @media (max-width: 768px) {
+    //  transform: translateY(-30%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%, 0 -40%);
+
+
+    }
 }
