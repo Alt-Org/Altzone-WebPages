@@ -11,7 +11,6 @@ import {
     getRouteAllFurnitureSetsPage,
     getRouteJoinUsPage,
 } from '@/shared/appLinks/RoutePaths';
-import { Theme } from '@/app/_providers/ThemeProvider';
 
 export const dropdowns = {
     community: [
