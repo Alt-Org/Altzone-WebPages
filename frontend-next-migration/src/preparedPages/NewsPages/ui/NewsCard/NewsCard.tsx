@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { Card } from '@/shared/ui/Card/Card';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NewsCard.module.scss';
+import Image from 'next/image';
 
 interface NewsCardProps {
     className?: string;
@@ -23,10 +23,12 @@ const NewsCard = (props: NewsCardProps) => {
                 <span className={cls.date}>{date}</span>
             </div>
             <div className={cls.imageContainer}>
-                <img
+                <Image
                     src={imageUrl}
                     alt={title}
                     className={cls.image}
+                    width={600}
+                    height={300}
                 />
             </div>
         </div>
