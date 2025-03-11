@@ -26,7 +26,7 @@ const ClanInfo = (props: Props) => {
     return (
         <div className={cls.clanInfo}>
             <p className={cls.infoItem}>
-                {assetsText}: {clanData.gameCoins}
+                {assetsText}: {clanData}
             </p>
             <p className={cls.infoItem}>
                 {memberCountText}: {clanData.playerCount}/10
