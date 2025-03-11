@@ -6,7 +6,7 @@ import { NavMenuWithDropdowns } from '@/shared/ui/NavMenuWithDropdownsV2';
 
 export default function NewsLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div style={{ marginRight: '90px'}}>
+        <div>
             <LayoutWithSidebars
                 leftTopSidebar={{
                 component: (
