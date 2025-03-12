@@ -10,7 +10,7 @@ describe('WallIntroanimation', () => {
                 </div>
             </WallIntroAnimation>,
         );
-        const wall = screen.getAllByTestId('testWall').at(0);
+        const wall = screen.getAllByTestId('TestWall').at(0);
         expect(wall).toBeInTheDocument();
     });
 

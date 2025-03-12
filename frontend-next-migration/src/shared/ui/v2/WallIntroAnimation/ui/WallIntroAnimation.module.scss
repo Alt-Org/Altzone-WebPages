@@ -17,34 +17,6 @@
   overflow: hidden;
 }
 
-.wallLeft,
-.wallRight {
-  transform-style: preserve-3d;
-  width: 50%;
-  height: 100%;
-  position: relative;
-  transform: translateX(0);
-  transition: transform 1s ease;
-  background-image: url("../../../../assets/images/backgrounds/background-compressed.webp");
-}
-
-.wallLeft {
-  transform-origin: left;
-  box-shadow: 5px 0px 30px 20px rgba(0, 0, 0, 0.5);
-}
-
-.wallRight {
-  transform-origin: right;
-  box-shadow: -5px 0px 30px 20px rgba(0, 0, 0, 0.5);
-}
-
-.loader.loaded .wallLeft {
-  transform: translateX(-100%);
-}
-
-.loader.loaded .wallRight {
-  transform: translateX(100%);
-}
 
 .content {
   opacity: 0;

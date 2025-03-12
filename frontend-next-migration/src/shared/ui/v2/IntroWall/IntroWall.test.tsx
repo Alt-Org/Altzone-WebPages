@@ -1,7 +1,7 @@
 import IntroWall from './IntroWall';
 import { render, screen } from '@testing-library/react';
 
-describe('WallIntroanimation', () => {
+describe('IntroWall', () => {
     it('renders wall correctly', () => {
         render(<IntroWall />);
         const wall = screen.getAllByTestId('TestWall').at(0);

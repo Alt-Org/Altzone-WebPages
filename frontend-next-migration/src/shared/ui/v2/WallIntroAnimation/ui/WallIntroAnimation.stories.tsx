@@ -6,7 +6,7 @@ import WallIntroAnimation from './WallIntroAnimation';
  * The `WallIntroAnimation` component renders opening animation for pages or components.
  */
 const meta = {
-    title: 'features/v2/wallIntroAnimation',
+    title: 'features/v2/WallIntroAnimation/wallIntroAnimation',
     component: WallIntroAnimation,
     parameters: {
         layout: 'centered',
@@ -20,7 +20,7 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {
         children: {
-            description: 'Renders the children that are wrapped inside the WallIntroAnimation',
+            description: 'Renders the children that are wrapped inside the `WallIntroAnimation`',
         },
     },
 } satisfies Meta<typeof WallIntroAnimation>;
@@ -44,7 +44,7 @@ export const Default: Story = {
     parameters: {
         docs: {
             description: {
-                story: 'Displays the `WallIntroAnimation',
+                story: 'Displays the `WallIntroAnimation`',
             },
         },
     },

@@ -6,7 +6,7 @@ import IntroWall from './IntroWall';
  * The `IntroWall` component renders animation of crumbling wall.
  */
 const meta = {
-    title: 'features/v2/IntroWall',
+    title: 'features/v2/IntroWall/IntroWall',
     component: IntroWall,
     parameters: {
         layout: 'centered',

@@ -1,5 +1,4 @@
 
-
 .wall {
     position: fixed;
     top: 0;
@@ -21,7 +20,7 @@ $drop-count: 96;
         --tile-tilt: 0deg;
         width: auto;
         height: 8rem;
-        animation: drop 0.6s ease-in #{$i * 0.008s} both;
+        animation: drop 0.55s ease-in #{$i * 0.009s} both;
         z-index: ($drop-count - $i);
         box-shadow: 0 4px 3px 3px rgba($color: #011639de, $alpha: 0.5);
         border-radius: 6px;
@@ -34,18 +33,14 @@ $drop-count: 96;
     }
 }
 
-$min: -50;
-$max: 50;
-
 
 @keyframes drop {
-    $random-value: random($max - $min) + $min;
     0% {
         transform: translateY(0) translateZ(0) rotate(0);
         filter: blur(0);
     }
     100% {
-        transform: translateY(95vh) translateZ(550px) rotate(var(--tile-tilt));
+        transform: translateY(95vh) translateZ(650px) rotate(var(--tile-tilt));
         filter: blur(5px);
     }
 }

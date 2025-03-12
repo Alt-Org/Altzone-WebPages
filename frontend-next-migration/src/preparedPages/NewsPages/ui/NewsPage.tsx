@@ -1,7 +1,7 @@
 'use client';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { WallIntroAnimation } from '@/shared/ui/WallIntroAnimation';
+import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { Container } from '@/shared/ui/Container';
 import cls from './NewsPage.module.scss';
 
