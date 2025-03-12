@@ -11,7 +11,7 @@
         font-weight: bold;
         text-align: center;
         margin: 40px auto;
-        color: var(--primary-color);
+        color: var(--white);
 
 
         &::after {
@@ -19,7 +19,7 @@
             display: block;
             width: 0;
             height: 4px;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             margin: 0 auto 0;
             border-radius: var(--border-radius-custom);
             animation: lineExpand 1s ease-in-out forwards;

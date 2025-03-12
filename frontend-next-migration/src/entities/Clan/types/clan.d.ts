@@ -1,5 +1,6 @@
 export type GetClansResponse = ResponseShapeArray<'Clan', IClan>;
 export type GetClanResponse = ResponseShapeOne<'Clan', IClan>;
+export type GetClanPositionResponse = ResponseShapeOne<'Object', IClanPosition>;
 
 export type IClan = {
     _id: string;
@@ -14,6 +15,11 @@ export type IClan = {
     isOpen: boolean;
     phrase: string;
     labels: Array[];
+    positionLeaderboard?: number;
+};
+
+export type IClanPosition = {
+    position: number;
 };
 
 export type ICreateClanResponse = {

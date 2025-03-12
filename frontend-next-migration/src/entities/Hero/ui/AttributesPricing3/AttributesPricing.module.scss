@@ -11,21 +11,21 @@
     display: inline-block;
 }
 .Header {
-    color:var(--secondary-color);
+    color:var(--primary-color);
     font-weight: bold;
     white-space: nowrap;
 }
 .Stats {
     border-radius: .5em;
     background-color: rgba(0,0,0,.7);
-    outline: 2px solid var(--secondary-color);
+    outline: 2px solid var(--primary-color);
     font-weight: bolder;
     border-width: 1px;
     text-align: center;
     font-size: 1.5em;
 }
 .Dropdown {
-    outline: 2px solid var(--secondary-color);
+    outline: 2px solid var(--primary-color);
     background-color: rgba(0,0,0,.7);
     color: var(--primary-color);
     border-radius: .5em;
@@ -36,7 +36,7 @@
     font-weight: bold;
 }
 .Sum {
-    color:var(--secondary-color);
+    color:var(--primary-color);
     font-weight: bold;
     font-size: 2em;
     line-height: 1em;

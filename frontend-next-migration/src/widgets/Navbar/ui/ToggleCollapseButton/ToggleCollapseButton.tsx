@@ -1,7 +1,8 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ToggleCollapseButton.module.scss';
 import Image from 'next/image';
-import visible from '@/shared/assets/icons/visible.svg';
+// import visible from '@/shared/assets/icons/visible.svg';
+import visible from '@/shared/assets/icons/visibleV2.svg';
 import invisible from '@/shared/assets/icons/hidden.svg';
 
 type Props = {

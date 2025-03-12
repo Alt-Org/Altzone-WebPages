@@ -38,9 +38,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
-
     const hasScrollbar = useIsPageScrollbar();
-
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -124,23 +122,13 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
-        // [cls.collapsed]: isCollapsed,
         [cls.collapsing]: isAnimating,
     } as Record<string, boolean>;
 
     const sidebarMods: Record<string, boolean> = {
         [cls.left]: side === 'left',
         [cls.right]: side === 'right',
-        // [cls.collapsed]: isCollapsed,
     };
-
-    // const handleCollapseClick = () => {
-    //     if (!isAnimating) {
-    //         setIsAnimating(true);
-    //         toggleCollapsed();
-    //     }
-    // };
-
     const handleTransitionEnd = () => {
         setIsAnimating(false);
     };
@@ -190,7 +178,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <AppLink
                 className={classNames(
                     cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
-                    // { [cls.collapsed]: isCollapsed },
                     {},
                     [],
                 )}
@@ -220,20 +207,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         />
                     </div>
                 )}
-                {/*{isFixed && (*/}
-                {/*    <div*/}
-                {/*        className={classNames(cls.CollapseButtonWrapper, {*/}
-                {/*            [cls.collapsing]: isAnimating,*/}
-                {/*        })}*/}
-                {/*    >*/}
-                {/*        <ToggleCollapseButton*/}
-                {/*            onClick={handleCollapseClick}*/}
-                {/*            isCollapsed={isCollapsed}*/}
-                {/*            className={cls.Button}*/}
-                {/*            disabled={isAnimating}*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*)}*/}
             </div>
         </nav>
     );
