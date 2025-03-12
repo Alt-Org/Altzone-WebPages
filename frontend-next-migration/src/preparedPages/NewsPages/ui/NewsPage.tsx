@@ -1,8 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { Container } from '@/shared/ui/Container';
-// import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodariNewsPage.png';
-import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import NewsCard from './NewsCard/NewsCard';
 import cls from './NewsPage.module.scss';
 import { SearchInput } from '@/features/Search';
@@ -20,7 +18,6 @@ const NewsPage = () => {
             title: 'Hannu Hodari News',
             content: 'Check out the latest news about Hannu Hodari and his amazing adventures!',
             date: '2024-03-01',
-            imageUrl: hannu.src,
         },
         {
             id: 2,
@@ -28,7 +25,6 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
-            imageUrl: hannu.src,
         },
 
         {
@@ -37,7 +33,6 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
-            imageUrl: hannu.src,
         },
         {
             id: 4,
@@ -45,19 +40,19 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
-            imageUrl: hannu.src,
         },
     ];
-
     return (
         <main className={cls.NewsPage}>
             <Container>
                 <div className={cls.header}>
-                    <h1>News</h1>
-                    <SearchInput
-                        value={searchValue}
-                        onChange={handleSearchChange}
-                    />
+                    <h1 className={cls.title}>News</h1>
+                    <div>
+                        <SearchInput
+                            value={searchValue}
+                            onChange={handleSearchChange}
+                        />
+                    </div>
                 </div>
                 <div className={cls.newsGrid}>
                     {newsPageMock.map((news) => (
