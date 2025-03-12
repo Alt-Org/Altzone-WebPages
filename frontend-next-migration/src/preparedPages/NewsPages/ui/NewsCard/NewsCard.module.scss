@@ -17,10 +17,6 @@
 
     @media (max-width: 1440px) {
         height: 145px;
-        font-size: 0.4rem;
-        .date {
-            margin-bottom: 10px;
-        }
     }
 
     @media (min-width: 1024px) {
@@ -31,19 +27,16 @@
 
     @media (max-width: 768px) {
         width: 85%;
-        margin-top: -20px;
-
         grid-template-columns: 40% 60%;
         font-size: 0.2rem;
-        // margin: auto;
         min-height: 100px;
+        margin: auto;
     }
     @media (max-width: 480px) {
         width: 80%;
         margin: auto;
         margin-top: -10px;
         grid-template-columns: 40% 90%;
-        // height: 190px;
         margin-left: -15px;
     }
 
