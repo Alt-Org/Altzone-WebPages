@@ -68,7 +68,7 @@ describe('ScrollTop', () => {
 
     it('should not be visible at the bottom of the page', () => {
         // Mock the hook to simulate being at the bottom of the page
-        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(window.innerHeight * 2);
+        (hooks.useCurrentYPosition as jest.Mock).mockReturnValue(window.innerHeight * 6);
 
         render(<ScrollTop />); // Render the component
 
