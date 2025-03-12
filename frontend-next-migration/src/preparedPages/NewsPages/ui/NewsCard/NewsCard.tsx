@@ -16,7 +16,7 @@ const NewsCard = (props: NewsCardProps) => {
     const { className, title, content, date } = props;
 
     return (
-        <div className={classNames(cls.NewsCard, {}, [className])}>
+        <div className={classNames(cls.NewsCard, {})}>
             <div className={cls.content}>
                 <h3 className={cls.title}>{title}</h3>
                 <p className={cls.text}>{content}</p>
