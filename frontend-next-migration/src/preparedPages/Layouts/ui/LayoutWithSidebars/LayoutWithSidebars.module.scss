@@ -34,12 +34,9 @@ $touchSize: 1023px;
   margin-left:-15px;
   padding-right: 20px;
   transition: min-width,flex-basis .3s ease-out;
-
   //&.topIndent{
   //  top: $navbar-height;
   //}
-
-
   @media (max-width: $touchSize) {
     padding-left: unset;
     display: flex;

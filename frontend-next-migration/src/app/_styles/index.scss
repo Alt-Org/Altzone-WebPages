@@ -2,6 +2,7 @@
 @import "variables/global";
 @import "themes/light";
 @import "themes/dark";
+@import "themes/main";
 
 @-moz-document url-prefix() {
   * {
@@ -22,9 +23,9 @@
 body {
   font: 16px/24px;
   line-height: 1.5;
-  color: var(--primary-color);
+  color: var(--white);
   @include custom-scrollbar;
-  background-color: var(--bg-color);
+  background-color: var(--background);
   background-repeat: repeat;
   background-size: contain;
   -webkit-background-size: contain;

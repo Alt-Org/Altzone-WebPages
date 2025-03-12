@@ -4,6 +4,7 @@ export {
     useUpdateClanMutation,
     useGetClanByIdWithPlayersQuery,
     useGetClansQuery,
+    useGetClanLeaderboardPositionQuery,
     useLeaveClanMutation,
     useJoinClanMutation,
     useGetLeaderboardQuery,

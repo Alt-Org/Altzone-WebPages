@@ -1,6 +1,7 @@
 import { gameApi, GameApiCacheTags } from '@/shared/api';
 import {
     GetClanResponse,
+    GetClanPositionResponse,
     GetClansResponse,
     IClanCreateDto,
     IClanUpdateDto,
@@ -29,6 +30,12 @@ const clanApi = gameApi.injectEndpoints({
         getLeaderboard: builder.query<GetClansResponse, void>({
             query: () => ({
                 url: `${leaderboardUrl}/clan`,
+                method: 'GET',
+            }),
+        }),
+        getClanLeaderboardPosition: builder.query<GetClanPositionResponse, void>({
+            query: () => ({
+                url: `${leaderboardUrl}/clan/position`,
                 method: 'GET',
             }),
         }),
@@ -83,6 +90,7 @@ const clanApi = gameApi.injectEndpoints({
 
 export const {
     useGetClansQuery,
+    useGetClanLeaderboardPositionQuery,
     useGetClanByIdQuery,
     useGetClanByIdWithPlayersQuery,
     useCreateClanMutation,

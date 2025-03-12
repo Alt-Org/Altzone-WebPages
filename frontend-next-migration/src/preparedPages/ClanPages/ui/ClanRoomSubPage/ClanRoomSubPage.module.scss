@@ -13,7 +13,7 @@
 }
 
 .DeleteClanBtn {
-  background-color: var(--error-color);
+  background-color: var(--error);
   @include link-scale-effect;
   font-family: var(--font-family-texts)
 }

@@ -51,7 +51,7 @@
 
 .SeeMore:hover {
   @include link-scale-effect;
-  color: var(--secondary-color)!important;
+  color: var(--primary-color)!important;
 
   //filter: blur(0);
   ////background-color: rgba(0, 0, 0, 0.9);

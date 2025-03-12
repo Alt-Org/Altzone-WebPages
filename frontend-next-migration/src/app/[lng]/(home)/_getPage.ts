@@ -44,8 +44,8 @@ export async function _getPage(lng: string) {
                 webGlNotice: t('playWithUs-WebGLNotice'),
             },
             projectDescription: {
-                title: t('project-description-title'),
-                description: t('project-description-text'),
+                title: t('main-title'),
+                description: t('main-description'),
                 descriptionArray: t('project-description-array', {
                     returnObjects: true,
                 }) as unknown as string[],
