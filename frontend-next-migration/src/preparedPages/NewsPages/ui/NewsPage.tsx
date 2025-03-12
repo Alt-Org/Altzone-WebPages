@@ -9,7 +9,7 @@ const NewsPage = () => {
     const [searchValue, setSearchValue] = useState('');
     // later use this to fetch data from the backend
     const handleSearchChange = () => {
-        setSearchValue(e.target.value);
+        // setSearchValue(e.target.value);
     };
 
     const newsPageMock = [
