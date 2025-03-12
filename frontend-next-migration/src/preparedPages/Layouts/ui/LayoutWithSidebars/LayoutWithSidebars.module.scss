@@ -25,12 +25,12 @@ $touchSize: 1023px;
 .sidebar {
   position: sticky;
   top: $navbar-height;
+  margin-top: 140px;
   height: calc(100vh - #{$navbar-height});
   flex-shrink: 0;
   min-width: 250px;
   flex-basis: 20%;
   overflow-y: auto;
-  // padding-left: 20px;
   margin-left:-15px;
   padding-right: 20px;
   transition: min-width,flex-basis .3s ease-out;
@@ -61,7 +61,9 @@ $touchSize: 1023px;
     //border-right: 0.1px solid rgb(62, 107, 50);
 
     @media (max-width: $touchSize) {
-      order: 1;
+      order: 0;
+      // margin-top: 90px;
+      // margin-bottom: 160px;
       border-right: unset;
     }
   }
