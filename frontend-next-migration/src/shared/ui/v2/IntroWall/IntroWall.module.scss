@@ -5,32 +5,32 @@
     top: 0;
     align-content: start; 
     display: grid;
-    grid-template-columns: repeat(6, 480px);
-    grid-auto-rows: 180px;
+    grid-template-columns: repeat(8, 280px);
+    grid-auto-rows: 120px;
     width: 100vw;
     height: 100vh;
     z-index: 100;
     perspective: 1000px;
 }
 
-$drop-count: 40;
+$drop-count: 96;
 
 @for $i from 0 through $drop-count {
     
     .drop-#{$i} {
         --tile-tilt: 0deg;
         width: auto;
-        height: 12rem;
-        animation: drop 0.7s ease-in #{$i * 0.01s} both;
+        height: 8rem;
+        animation: drop 0.6s ease-in #{$i * 0.008s} both;
         z-index: ($drop-count - $i);
         box-shadow: 0 4px 3px 3px rgba($color: #011639de, $alpha: 0.5);
         border-radius: 6px;
     }
 }
 
-@for $i from 1 through 6 {
-    .tile:nth-child(12n + #{$i}) {
-        margin-left: -15rem;
+@for $i from 1 through 8 {
+    .tile:nth-child(16n + #{$i}) {
+        margin-left: -10rem;
     }
 }
 
@@ -45,7 +45,7 @@ $max: 50;
         filter: blur(0);
     }
     100% {
-        transform: translateY(95vh) translateZ(400px) rotate(var(--tile-tilt));
+        transform: translateY(95vh) translateZ(550px) rotate(var(--tile-tilt));
         filter: blur(5px);
     }
 }
