@@ -13,7 +13,7 @@ interface NewsCardProps {
 }
 
 const NewsCard = (props: NewsCardProps) => {
-    const { className, title, content, date } = props;
+    const { title, content, date } = props;
 
     return (
         <div className={classNames(cls.NewsCard, {})}>
