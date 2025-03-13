@@ -64,7 +64,7 @@ describe('ScrollTop', () => {
         Object.defineProperty(window, 'innerHeight', {
             writable: true,
             configurable: true,
-            value: 1000, // Esimerkkiarvo
+            value: 1000, // Example value
         });
 
         Object.defineProperty(document.body, 'scrollHeight', {
