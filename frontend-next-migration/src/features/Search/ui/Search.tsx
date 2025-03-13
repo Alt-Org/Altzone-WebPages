@@ -47,7 +47,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ value, onChange }) => 
             <CustomForm.InputField
                 label=""
                 inputProps={{
-                    placeholder: 'Hea',
+                    placeholder: 'Hae',
                     className: cls.searchInput,
                     value: value,
                     onChange: onChange,
