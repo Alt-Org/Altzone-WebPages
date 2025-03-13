@@ -25,9 +25,9 @@
   "graffitiGayaDescription": "Graffiti Gaya skilfully projects emotions outside herself - onto other characters as well as into art. \nGaya protects herself by spraying a cloud of spray paint that directs emotions to a teammate. Gaya bears no responsibility.",
   "graffitiGayaAlt": "Graffiti Gaya's image",
 
-  "pirate" : "Pullo-Piraatti",
-  "pirateDescription": "Pullo-Piraatti fights emotions by concentrating on drinking. He is constantly on guard, never letting go of his shield, \nbut is in a constant state of flux.",
-  "pirateAlt": "Pirate's image",
+  "alcoholic" : "Alkoholisti",
+  "alcoholicDescription": "Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations.",
+  "alcoholicAlt": "Alholic's image",
 
   "not-found-title": "Could not find requested hero",
   "not-found-check-heroes": "Check Available Heroes",
@@ -45,11 +45,11 @@
         "description": "Glutton fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
       },
 
-      "pirate": {
-        "title": "Bottle-Pirate",
-        "alt": "Bottle-pirate image",
+      "alcoholic": {
+        "title": "Alcoholic",
+        "alt": "Alcoholic's image",
         "altGif": "",
-        "description": "Bottle-pirate  fights emotions by concentrating on drinking. He is constantly on guard, never letting go of his shield, \nbut is in a constant state of flux."
+        "description": "Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations."
       }
 
     }

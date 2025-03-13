@@ -25,9 +25,9 @@
   "graffitiGayaDescription": "Graffiti-Gaya projisoi taitavasti tunteet itsensä ulkopuolelle - niin toisiin hahmoihin, kuin taiteeseen. \nGaya suojautuu suihkuttamalla spraymaalipilven, joka ohjaa tunteet joukkuetoverin hoidettavaksi. Gaya ei vastuuta kanna.",
   "graffitiGayaAlt": "Graffiti Gayan kuva",
 
-  "pirate" : "Pullo-Piraatti",
-  "pirateDescription": "Pullo-Piraatti torjuu tunteita keskittymällä juomiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa.",
-  "pirateAlt": "Merirosvon kuva",
+  "alcoholic" : "Alkoholisti",
+  "alcoholicDescription": "Alkoholisti hakee tukea ja turvaa viinasta. Juominen on hänelle tapa turruttaa epävarmuuksia ja saada rohkeutta, jota hän kokee tarvitsevansa toimiakseen sosiaalisissa tilanteissa. ",
+  "alcoholicAlt": "Alkoholistin kuva",
 
 
   "not-found-title": "Etsittyä sankaria ei löytynyt",
@@ -45,11 +45,11 @@
         "altGif": "",
         "description": "Ahmatti torjuu tunteita keskittymällä syömiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa. "
       },
-      "pirate": {
-        "title": "Pullo-Piraatti",
-        "alt": "Pullo-Piraatti kuva",
-        "altGif": "Pullo-Piraatti gifkuva",
-        "description": "Pullo-Piraatti torjuu tunteita keskittymällä juomiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa."
+      "alcoholic": {
+        "title": "Alkoholisti",
+        "alt": "Alkoholistin kuva",
+        "altGif": "Alkoholistin gifkuva",
+        "description": "Alkoholisti hakee tukea ja turvaa viinasta. Juominen on hänelle tapa turruttaa epävarmuuksia ja saada rohkeutta, jota hän kokee tarvitsevansa toimiakseen sosiaalisissa tilanteissa. "
       }
 
     }
