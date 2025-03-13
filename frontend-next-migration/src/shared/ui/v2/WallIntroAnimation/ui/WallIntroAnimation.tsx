@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, ReactNode } from 'react';
 import cls from './WallIntroAnimation.module.scss';
-import IntroWall from '../../IntroWall/IntroWall';
+import { IntroWall } from '@/shared/ui/v2/IntroWall';
 
 /**
  * WallIntroAnimation component displays an animated wall.
