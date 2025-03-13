@@ -1,0 +1,33 @@
+.ContentAlignBox {
+    display: flex;
+    align-items: center;
+    @media (max-width: breakpoint(lg)) {
+        display: block;
+    }
+}
+.ContentAlignBoxLeftBox {
+    min-width: 220px;
+    flex-basis: 20%;
+    @media (max-width: breakpoint(lg)) {
+        min-width: unset;
+        flex-basis: unset;   
+    }
+}
+.ContentAlignBoxRightBox {
+    flex: 1 1;
+    margin-right: 130px;
+    h1 {
+        color: var(--primary-color);
+        font-family: var(--heading-font);
+    }
+    @media (max-width: breakpoint(lg)) {
+        flex: unset;
+        margin-right: unset;
+    }
+    @media (min-width: calc(breakpoint(xxl) + 130px)) {
+        margin-right: unset;
+    }
+}
+.SearchContainer {
+    width: 150px;
+}
