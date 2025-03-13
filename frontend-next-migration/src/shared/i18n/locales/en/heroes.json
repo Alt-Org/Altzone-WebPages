@@ -26,7 +26,7 @@
   "graffitiGayaAlt": "Graffiti Gaya's image",
 
   "alcoholic" : "Alkoholisti",
-  "alcoholicDescription": "Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations.",
+  "alcoholicDescription": "The Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations.",
   "alcoholicAlt": "Alholic's image",
 
   "not-found-title": "Could not find requested hero",
@@ -49,7 +49,7 @@
         "title": "Alcoholic",
         "alt": "Alcoholic's image",
         "altGif": "",
-        "description": "Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations."
+        "description": "The Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations."
       }
 
     }
