@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import { HeroDevelopmentSidebar } from '@/features/NavigateHeroes';
+import { HeroDevelopmentNavMenuAsDropdown } from '@/features/NavigateHeroes';
 
 type Props = {
     children: ReactNode;
@@ -10,7 +10,7 @@ export default function HeroDevelopmentLayout({ children }: Props) {
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
-                component: <HeroDevelopmentSidebar />,
+                component: <HeroDevelopmentNavMenuAsDropdown />,
             }}
         >
             {children}

@@ -15,134 +15,81 @@ jest.mock('react-i18next', () => ({
 
 describe('LangSwitcher', () => {
     beforeEach(() => {
-        (usePathname as jest.Mock).mockReturnValue('/en/some-path'); // Return a path for the test
+        (usePathname as jest.Mock).mockReturnValue('/en/some-path');
         (useTranslation as jest.Mock).mockReturnValue({
-            t: (key: string) => key, // Return the key as translation
-            i18n: { language: 'en' }, // Set the initial language
+            t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
+            i18n: { language: 'en' },
         });
     });
 
     it('renders with the correct default language', () => {
         render(<LangSwitcher />);
-
-        const button = screen.getByRole('button', { name: /finnish|english/i }); // Look for the button with the current language label
-        expect(button).toBeInTheDocument(); // Ensure the button is present
-
-        // Verify that the button's text corresponds to the default language ('en')
-        expect(button).toHaveTextContent('english');
+        const langDisplay = screen.getByText('en');
+        expect(langDisplay).toBeInTheDocument();
+        expect(screen.getByText('ENG')).toBeInTheDocument();
     });
 
-    it('changes the language when a new option is selected', () => {
-        // Mock window.location.href to prevent real navigation
+    it('changes the language when clicked', () => {
         Object.defineProperty(window, 'location', {
-            value: {
-                href: '',
-            },
+            value: { href: '' },
             writable: true,
         });
 
         render(<LangSwitcher />);
 
-        // Find the button that toggles the dropdown
-        const button = screen.getByRole('button', { name: /finnish|english/i });
-        fireEvent.click(button);
+        const langSwitcher = screen.getByTestId('language-switcher');
+        fireEvent.click(langSwitcher.firstElementChild!);
 
-        // Find the list item for the Finnish option and click it
-        const finnishOption = screen.getByRole('option', { name: /finnish/i });
+        const finnishOption = screen.getByRole('option', { name: 'FIN' });
         fireEvent.click(finnishOption);
 
-        // Check that the URL is updated with the new language
         expect(window.location.href).toBe('/fi/some-path');
     });
 
     it('does not change the URL if the same language is selected', () => {
-        // Mock window.location.href to prevent real navigation
         Object.defineProperty(window, 'location', {
-            value: {
-                href: '/en/some-path',
-            },
+            value: { href: '/en/some-path' },
             writable: true,
         });
 
         render(<LangSwitcher />);
 
-        // Find the button that toggles the dropdown
-        const button = screen.getByRole('button', { name: /finnish|english/i });
-        fireEvent.click(button);
+        const langSwitcher = screen.getByTestId('language-switcher');
+        fireEvent.click(langSwitcher.firstElementChild!);
 
-        // Find the list item for the English option and click it
-        const finnishOption = screen.getByRole('option', { name: /english/i });
-        fireEvent.click(finnishOption);
+        const englishOption = screen.getByRole('option', { name: 'ENG' });
+        fireEvent.click(englishOption);
 
-        // Check that the URL remains unchanged
         expect(window.location.href).toBe('/en/some-path');
-    });
-
-    it('renders with a custom class name', () => {
-        render(<LangSwitcher className="custom-class" />);
-
-        const select = screen.getByTestId('language-switcher') as HTMLSelectElement; // Cast to HTMLSelectElement
-        expect(select).toHaveClass('custom-class'); // Check that the custom class is applied
-    });
-
-    it('calls handleChangeLanguage when selecting a different language', () => {
-        // Mock window.location.href to prevent real navigation
-        Object.defineProperty(window, 'location', {
-            value: {
-                href: '',
-            },
-            writable: true,
-        });
-
-        render(<LangSwitcher />);
-
-        // Find the button that toggles the dropdown
-        const button = screen.getByRole('button', { name: /finnish|english/i });
-        fireEvent.click(button);
-
-        // Find the list item for the Finnish option and click it
-        const finnishOption = screen.getByRole('option', { name: /finnish/i });
-        fireEvent.click(finnishOption);
-
-        // Check that the URL is updated with the new language
-        expect(window.location.href).toBe('/fi/some-path');
     });
 
     it('falls back to default language when current language is not in options', () => {
         (useTranslation as jest.Mock).mockReturnValue({
-            t: (key: string) => key,
-            i18n: { language: 'es' }, // Set an unavailable language 'es'
+            t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
+            i18n: { language: 'es' },
         });
 
         render(<LangSwitcher />);
 
-        const button = screen.getByRole('button');
-
-        // Assert that the button does not show 'es' as the current language
-        expect(button).not.toHaveTextContent('spanish');
-
-        // Assert that the fallback language is displayed
-        expect(button).toHaveTextContent('finnish');
-
-        // Check that the default language is Finnish
-        expect(window.location.href).toContain('/fi/');
+        const langDisplay = screen.getByText('fi');
+        expect(langDisplay).toBeInTheDocument();
     });
 
     it('contains all available language options', () => {
         render(<LangSwitcher />);
 
-        // Open the dropdown to reveal the options
-        const button = screen.getByRole('button', { name: /finnish|english/i });
-        fireEvent.click(button);
+        const langSwitcher = screen.getByTestId('language-switcher');
+        fireEvent.click(langSwitcher.firstElementChild!);
 
-        // Get all options rendered as list items
         const options = screen.getAllByRole('option');
-        const availableLanguages = ['fi', 'en'];
+        expect(options).toHaveLength(2);
+        expect(options[0]).toHaveTextContent('FIN');
+        expect(options[1]).toHaveTextContent('ENG');
+    });
 
-        // Verify each option's value is in the list of available languages
-        options.forEach((option) => {
-            const value = option.getAttribute('data-option-value');
-            expect(availableLanguages).toContain(value);
-        });
+    it('renders with a custom class name', () => {
+        render(<LangSwitcher className="custom-class" />);
+        const switcher = screen.getByTestId('language-switcher');
+        expect(switcher).toHaveClass('custom-class');
     });
 });

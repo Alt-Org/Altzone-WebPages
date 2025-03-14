@@ -1,5 +1,6 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
+import { ScrollTop } from '@/features/ScrollTop';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
@@ -9,6 +10,11 @@ import {
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
+
+// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
+// import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -108,6 +114,24 @@ const Page = () => {
         ],
     };
 
+    // Testing clan api
+    // const clanPosition = useGetClanLeaderboardPositionQuery();
+
+    // Testing api: get profile info
+    // const dispatch = useDispatch();
+    // const { data, error } = useGetProfileInfoQuery();
+
+    // useEffect(() => {
+    //     if (data?.data?.Profile) {
+    //         dispatch(
+    //             profileActions.setProfile({
+    //                 username: data.data.Profile.username,
+    //                 Player: data.data.Profile.Player,
+    //                 _id: data.data.Profile._id,
+    //             }),
+    //         );
+    //     }
+    // }, []);
     return (
         <WallIntroAnimation>
             <LayoutWithSidebars
@@ -327,6 +351,28 @@ const Page = () => {
                     This is the main content, adapting to both desktop and mobile devices. This is
                     the main content, adapting to both desktop and mobile devices
                 </p>
+                {/* Get clan leaderboard position */}
+                {/* {clanPosition.error ? (
+                <p style={{ wordWrap: 'break-word', color: 'red' }}>
+                    Please login to get clan leaderboard position
+                </p>
+            ) : (
+                <p style={{ wordWrap: 'break-word', color: 'green' }}>
+                    {JSON.stringify(clanPosition.data)}
+                </p>
+            )} */}
+
+                {/* Get profile info */}
+                {/* {error ? (
+                <p style={{ wordWrap: 'break-word', color: 'red' }}>
+                    Please login to get profile info
+                </p>
+            ) : (
+                <p style={{ wordWrap: 'break-word', color: 'green' }}>
+                    {JSON.stringify(data?.data?.Profile?.username)}
+                </p>
+            )} */}
+                <ScrollTop />
             </LayoutWithSidebars>
         </WallIntroAnimation>
     );

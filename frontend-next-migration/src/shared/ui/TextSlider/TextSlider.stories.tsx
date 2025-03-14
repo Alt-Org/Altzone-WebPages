@@ -41,3 +41,9 @@ export const CustomArrows: Story = {
         rightArrow: <span style={{ color: 'green' }}>➡️</span>,
     },
 };
+
+export const WithPagination: Story = {
+    args: {
+        textArray: ['Page 1', 'Page 2', 'Page 3', 'Page 4'],
+    },
+};
