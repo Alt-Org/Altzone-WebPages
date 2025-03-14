@@ -35,7 +35,7 @@ export default function WallIntroAnimation({ children, renderOnce }: WallLoaderP
     useEffect(() => {
         if (!renderOnce || !isRenderedOnce) {
             const timer = setTimeout(() => setIsLoaded(true), 50);
-            const hideTimer = setTimeout(() => setIsVisible(false), 1000);
+            const hideTimer = setTimeout(() => setIsVisible(false), 1500);
             if (renderOnce) {
                 sessionStorage.setItem('isRendered', 'true');
             }

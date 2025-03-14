@@ -24,18 +24,14 @@ export default function IntroWall() {
     useEffect(() => {
         const wallArray = [];
         for (let i = 0; i < amount; i++) {
-            wallArray.push(randomImg());
+            const number = Math.floor(Math.random() * 4);
+            wallArray.push(tiles[number]);
         }
         setWall(wallArray);
     }, []);
 
     const randomInt = (min: number, max: number): number => {
         return Math.floor(Math.random() * (max - min)) + min;
-    };
-
-    const randomImg = (): StaticImageData => {
-        const number = Math.floor(Math.random() * 4);
-        return tiles[number];
     };
 
     return (
