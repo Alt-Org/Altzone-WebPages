@@ -2,6 +2,10 @@
 import { useEffect, useState, ReactNode } from 'react';
 import cls from './WallIntroAnimation.module.scss';
 
+/**
+ * @deprecated
+ */
+
 interface WallLoaderProps {
     children: ReactNode;
 }

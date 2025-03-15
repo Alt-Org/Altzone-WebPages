@@ -9,10 +9,13 @@ import {
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
+import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
+
 // import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
 // import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
 // import { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
+
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
@@ -130,82 +133,116 @@ const Page = () => {
     //     }
     // }, []);
     return (
-        <LayoutWithSidebars
-            // rightSidebar={di}
-            // leftSidebar={<div></div>}
-            leftTopSidebar={{
-                component: (
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-                    </div>
-                ),
-            }}
-            rightBottomSidebar={{
-                hideOnMobile: true,
-                // hideOnDesktop: true,
-                component: (
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-                    </div>
-                ),
-            }}
-        >
-            <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
-            <div style={{ margin: '20px' }}>
-                <h5>
-                    Version with dropdown closed by default (mainly designed for mobile but works
-                    for both. Test in mobile resolution too)
-                </h5>
-            </div>
-            <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
-            <div style={{ margin: '20px' }}>
-                <h5>
-                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is true
-                    dropdown will always be open)
-                </h5>
-            </div>
-            <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
-            <div style={{ margin: '20px' }}>
-                <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
-            </div>
-            <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
-            <h1>Main Page Content</h1>
-            {/* Testing ModularCard */}
-            <div
-                style={{
-                    display: 'flex',
-                    gap: '10px',
-                    flexWrap: 'wrap',
-                    margin: '10px 0 20px',
+        <WallIntroAnimation>
+            <LayoutWithSidebars
+                // rightSidebar={di}
+                // leftSidebar={<div></div>}
+                leftTopSidebar={{
+                    component: (
+                        <div style={{ width: '100%', maxWidth: '600px' }}>
+                            <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+                        </div>
+                    ),
+                }}
+                rightBottomSidebar={{
+                    hideOnMobile: true,
+                    // hideOnDesktop: true,
+                    component: (
+                        <div style={{ width: '100%', maxWidth: '600px' }}>
+                            <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+                        </div>
+                    ),
                 }}
             >
-                {[{ id: 1 }, { id: 2 }].map((card) => (
+                <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
+                <div style={{ margin: '20px' }}>
+                    <h5>
+                        Version with dropdown closed by default (mainly designed for mobile but
+                        works for both. Test in mobile resolution too)
+                    </h5>
+                </div>
+                <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
+                <div style={{ margin: '20px' }}>
+                    <h5>
+                        Static version of dropdown, mainly meant for desktop. (if staticDropdown is
+                        true dropdown will always be open)
+                    </h5>
+                </div>
+                <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
+                <div style={{ margin: '20px' }}>
+                    <h5>
+                        Static version of dropdown with subcategories, mainly meant for desktop.
+                    </h5>
+                </div>
+                <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
+                <h1>Main Page Content</h1>
+                {/* Testing ModularCard */}
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '10px',
+                        flexWrap: 'wrap',
+                        margin: '10px 0 20px',
+                    }}
+                >
+                    {[{ id: 1 }, { id: 2 }].map((card) => (
+                        <div
+                            key={card.id}
+                            style={{
+                                width: '100%',
+                                // flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
+                                /*  flexBasis: 100%; on mobile tablet devices  */
+                            }}
+                        >
+                            <ModularCard
+                                className="customClass"
+                                theme={ModularCardTheme.NEWSCARD}
+                                // onClick={() => {
+                                //     // console.log(`clicked modularcard ${card.id}`);
+                                // }} // Needs use-client parent
+                                withScalableLink={true}
+                            >
+                                <ModularCard.Texts>
+                                    <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+                                    <ModularCard.Texts.Body>
+                                        This is the main content, adapting to both desktop and
+                                        mobile main content, adapting to both desktop and mobile
+                                        devices main content, adapting to both desktop and mobile
+                                        devices main content, adapting to both desktop and mobile
+                                        devices main content, adapting to both desktop and mobile
+                                        devices
+                                    </ModularCard.Texts.Body>
+                                    <ModularCard.Texts.Footnote>
+                                        Footnote
+                                    </ModularCard.Texts.Footnote>
+                                </ModularCard.Texts>
+                                <ModularCard.Image>
+                                    <ModularCard.Image.Triangle />
+                                    <ModularCard.Image.Image
+                                        src={hannu}
+                                        alt="hannu hodari"
+                                    />
+                                </ModularCard.Image>
+                            </ModularCard>
+                        </div>
+                    ))}
                     <div
-                        key={card.id}
                         style={{
                             width: '100%',
-                            // flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
-                            /*  flexBasis: 100%; on mobile tablet devices  */
                         }}
                     >
                         <ModularCard
                             className="customClass"
-                            theme={ModularCardTheme.NEWSCARD}
+                            theme={ModularCardTheme.TITLEIMAGE}
                             // onClick={() => {
                             //     // console.log(`clicked modularcard ${card.id}`);
                             // }} // Needs use-client parent
+                            path="/fi/page/details"
+                            isExternal={false}
                             withScalableLink={true}
                         >
                             <ModularCard.Texts>
                                 <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
-                                <ModularCard.Texts.Body>
-                                    This is the main content, adapting to both desktop and mobile
-                                    main content, adapting to both desktop and mobile devices main
-                                    content, adapting to both desktop and mobile devices main
-                                    content, adapting to both desktop and mobile devices main
-                                    content, adapting to both desktop and mobile devices
-                                </ModularCard.Texts.Body>
-                                <ModularCard.Texts.Footnote>Footnote</ModularCard.Texts.Footnote>
                             </ModularCard.Texts>
                             <ModularCard.Image>
                                 <ModularCard.Image.Triangle />
@@ -216,135 +253,106 @@ const Page = () => {
                             </ModularCard.Image>
                         </ModularCard>
                     </div>
-                ))}
-                <div
-                    style={{
-                        width: '100%',
-                    }}
-                >
-                    <ModularCard
-                        className="customClass"
-                        theme={ModularCardTheme.TITLEIMAGE}
-                        // onClick={() => {
-                        //     // console.log(`clicked modularcard ${card.id}`);
-                        // }} // Needs use-client parent
-                        path="/fi/page/details"
-                        isExternal={false}
-                        withScalableLink={true}
-                    >
-                        <ModularCard.Texts>
-                            <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
-                        </ModularCard.Texts>
-                        <ModularCard.Image>
-                            <ModularCard.Image.Triangle />
-                            <ModularCard.Image.Image
-                                src={hannu}
-                                alt="hannu hodari"
-                            />
-                        </ModularCard.Image>
-                    </ModularCard>
                 </div>
-            </div>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
 
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
+                <p>This is the main content, adapting to both desktop and mobile devices.</p>
 
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-            <p>
-                This is the main content, adapting to both desktop and mobile devices. This is the
-                main content, adapting to both desktop and mobile devices
-            </p>
-
-            {/* Get clan leaderboard position */}
-            {/* {clanPosition.error ? (
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                <p>
+                    This is the main content, adapting to both desktop and mobile devices. This is
+                    the main content, adapting to both desktop and mobile devices
+                </p>
+                {/* Get clan leaderboard position */}
+                {/* {clanPosition.error ? (
                 <p style={{ wordWrap: 'break-word', color: 'red' }}>
                     Please login to get clan leaderboard position
                 </p>
@@ -354,8 +362,8 @@ const Page = () => {
                 </p>
             )} */}
 
-            {/* Get profile info */}
-            {/* {error ? (
+                {/* Get profile info */}
+                {/* {error ? (
                 <p style={{ wordWrap: 'break-word', color: 'red' }}>
                     Please login to get profile info
                 </p>
@@ -364,8 +372,9 @@ const Page = () => {
                     {JSON.stringify(data?.data?.Profile?.username)}
                 </p>
             )} */}
-            <ScrollTop />
-        </LayoutWithSidebars>
+                <ScrollTop />
+            </LayoutWithSidebars>
+        </WallIntroAnimation>
     );
 };
 

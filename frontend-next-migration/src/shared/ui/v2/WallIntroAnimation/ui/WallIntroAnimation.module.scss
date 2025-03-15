@@ -1,0 +1,30 @@
+// WallIntroAnimation.module.scss
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+
+.content {
+  opacity: 0;
+  transition: opacity 1s ease;
+  position: relative;
+  z-index: 0;
+}
+
+.wrapper .loader.loaded + .content {
+  opacity: 1;
+}
