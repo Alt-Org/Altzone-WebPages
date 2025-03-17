@@ -14,9 +14,9 @@ interface PageTitleProps {
 
 const PageTitle = ({ titleText, searchVisible = false }: PageTitleProps) => {
     return (
-        <Container className={cls.ContentAlignBox}>
-            <div className={cls.ContentAlignBoxLeftBox} />
-            <div className={cls.ContentAlignBoxRightBox}>
+        <Container className={cls.PageTitleContainer}>
+            <div className={cls.PageTitleLeft} />
+            <div className={cls.PageTitle}>
                 {/* Title */}
                 <h1>{titleText}</h1>
             </div>
