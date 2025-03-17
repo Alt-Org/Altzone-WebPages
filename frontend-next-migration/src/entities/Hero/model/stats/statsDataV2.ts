@@ -259,4 +259,31 @@ export const statData: NamedStatArray = {
             rarityClass: 3,
         },
     ],
+    RACIST: [
+        {
+            name: 'resistance',
+            defaultLevel: 14,
+            rarityClass: 1,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 1,
+            rarityClass: 10,
+        },
+        {
+            name: 'size',
+            defaultLevel: 8,
+            rarityClass: 5,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 6,
+            rarityClass: 3,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 3,
+            rarityClass: 8,
+        },
+    ],
 };
