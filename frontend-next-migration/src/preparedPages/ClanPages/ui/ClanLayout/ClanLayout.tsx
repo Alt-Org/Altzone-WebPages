@@ -1,12 +1,42 @@
 'use client';
-import cls from './ClanLayout.module.scss';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
 } from '@/shared/ui/NavMenuWithDropdownsV2';
+import { Container } from '@/shared/ui/Container';
+import cls from './ClanLayout.module.scss';
+
+type PageTitleProps = {
+    titleText: string;
+    searchVisible?: boolean;
+};
 
 type LayoutProps = {
     children: React.ReactNode;
+};
+
+/**
+ * Displays h1 title and possibly a searchbar
+ * @param param0 props
+ * @returns ReactNode
+ */
+
+const PageTitle = ({ titleText, searchVisible = false }: PageTitleProps) => {
+    return (
+        <Container className={cls.PageTitleContainer}>
+            <div className={cls.PageTitleLeft} />
+            <div className={cls.PageTitle}>
+                {/* Title */}
+                <h1>{titleText}</h1>
+            </div>
+            {searchVisible && (
+                <div className={cls.SearchContainer}>
+                    {/* placeholder for search */}
+                    <p>Search</p>
+                </div>
+            )}
+        </Container>
+    );
 };
 
 const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
@@ -37,6 +67,11 @@ const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
 const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className={cls.container}>
+            {/* The title will be placed here */}
+            {/* <PageTitle
+                titleText="Tulostaulukko"
+                searchVisible
+            /> */}
             <div className={cls.layoutContainer}>
                 <div className={cls.headerSidebarContainer}>
                     {/* According to Figma plans, header wont be necessary
