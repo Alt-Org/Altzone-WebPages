@@ -29,6 +29,9 @@
   "alcoholicDescription": "Alkoholisti hakee tukea ja turvaa viinasta. Juominen on hänelle tapa turruttaa epävarmuuksia ja saada rohkeutta, jota hän kokee tarvitsevansa toimiakseen sosiaalisissa tilanteissa. ",
   "alcoholicAlt": "Alkoholistin kuva",
 
+  "racist": "Rasisti",
+  "racistDescription": "Rasisti näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.",
+  "racistAlt": "Rasistin kuva",
 
   "not-found-title": "Etsittyä sankaria ei löytynyt",
   "not-found-check-heroes": "Tarkista saatavilla olevat sankarit",
@@ -125,9 +128,19 @@
         "description": "Tapauskovainen luottaa horjumattomasti sattuman ja kohtalon voimaan. Kohtaessaan voimakkaita tunteita hän heittää kolikkoa tai noppaakin, päättäen seuraavat liikkeensä täysin sattuman sanelemana. Tämä usko kohtaloon voi johtaa yllättäviin ja joskus kaoottisiin tuloksiin, antaen hänelle ainutlaatuisen edun arvaamattomissa tilanteissa. Hänen riippuvuutensa kohtalosta tarkoittaa kuitenkin, että lopputulos jää usein puhtaan onnen varaan, mikä ei aina palvele tiimin etua."
       }
     }
+  },
+
+  "DESENSITIZER": {
+    "name": "TUNNOTTOMAT",
+    "description": "TUNNOTTOMAT on...",
+    "heroes": {
+      "Racist": {
+        "title": "Rasisiti",
+        "alt": "Rasistin kuva",
+        "altGif": "Rasistin animaatiogif",
+        "description": "Rasisti näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.\n"
+      }
+    }
   }
-
-
-
 
 }

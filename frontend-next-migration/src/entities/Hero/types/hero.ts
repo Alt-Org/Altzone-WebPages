@@ -2,7 +2,7 @@ import { StaticImageData } from 'next/image';
 
 export enum HeroGroup {
     RETROFLECTOR = 'RETROFLECTOR',
-    // DESENSITIZER = "DESENSITIZER",
+    DESENSITIZER = 'DESENSITIZER',
     TRICKSTER = 'TRICKSTER',
     OBEDIENT = 'OBEDIENT',
     PROJECTOR = 'PROJECTOR',
@@ -20,6 +20,7 @@ export enum HeroSlug {
     CONMAN = 'conman',
     SLEEPER = 'sleeper',
     FATE_PRIEST = 'fate-priest',
+    RACIST = 'racist',
 }
 
 export interface Hero {

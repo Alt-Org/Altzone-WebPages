@@ -19,6 +19,7 @@ import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
+import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { statData } from '../model/stats/statsDataV2';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
@@ -165,6 +166,26 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('OBEDIENT.heroes.FatePriest.title'),
                     description: t('OBEDIENT.heroes.FatePriest.description'),
                     stats: statData.FATE_PRIEST,
+                },
+            ],
+        },
+
+        [HeroGroup.DESENSITIZER]: {
+            name: t('DESENSITIZER.name'),
+            description: t('DESENSITIZER.description'),
+            bgColour: 'rgba(0,192,192,0.7)',
+            label: lightBlue,
+            heroes: [
+                {
+                    id: 848349,
+                    srcImg: comingSoon,
+                    srcGif: comingSoon,
+                    alt: t('DESENSITIZER.heroes.Racist.alt'),
+                    altGif: t('DESENSITIZER.heroes.Racist.altGif'),
+                    slug: HeroSlug.RACIST,
+                    title: t('DESENSITIZER.heroes.Racist.title'),
+                    description: t('DESENSITIZER.heroes.Racist.description'),
+                    stats: statData.RACIST,
                 },
             ],
         },
