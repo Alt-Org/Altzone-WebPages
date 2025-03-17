@@ -4,6 +4,7 @@ export type GetClanResponse = ResponseShapeOne<'Clan', IClan>;
 export type IClan = {
     _id: string;
     name: string;
+    gameCoins: number;
     playerCount: number;
     stockCount: number;
     itemCount: number;
