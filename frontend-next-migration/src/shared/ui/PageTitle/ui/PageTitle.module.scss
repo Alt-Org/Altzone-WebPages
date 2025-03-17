@@ -5,6 +5,7 @@
     padding-right: 1.5rem;
     @media (max-width: breakpoint(lg)) {
         display: block;
+        padding-right: unset;
     }
 }
 
@@ -37,6 +38,11 @@
 
 .SearchContainer {
     width: 180px;
+
+    @media (max-width: breakpoint(lg)) {
+        visibility: hidden;
+        display: none;
+    }
 
     // properties to enhance the placeholder
     background-color: var(--background);
