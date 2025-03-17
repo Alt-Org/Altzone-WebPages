@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import PageTitle from './PageTitle';
-import { useState } from 'react';
+import { AppLink } from '../../AppLink/AppLink';
 
 const meta = {
     title: 'shared/ui/PageTitle',
@@ -43,21 +42,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const Template = (args: any) => {
-    return (
-        <>
-            <PageTitle {...args} />
-            {/* <LayoutWithSidebars
-                leftTopSidebar={{
-                    component: <p>Sidebar</p>,
-                }}
-            >
-                <p>Content</p>
-            </LayoutWithSidebars> */}
-        </>
-    );
-};
-
 // Define Example story
 export const Default: Story = {
     args: {
@@ -66,14 +50,6 @@ export const Default: Story = {
 };
 
 export const WithSearchField: Story = {
-    args: {
-        titleText: 'Tulostaulukko',
-        searchVisible: true,
-    },
-};
-
-export const ExampleOnUse: Story = {
-    render: Template,
     args: {
         titleText: 'Tulostaulukko',
         searchVisible: true,

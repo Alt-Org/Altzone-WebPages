@@ -1,33 +1,46 @@
 .ContentAlignBox {
     display: flex;
-    align-items: center;
+    align-items:flex-end;
+    margin-bottom: 2rem;
+    padding-right: 1.5rem;
     @media (max-width: breakpoint(lg)) {
         display: block;
     }
 }
+
 .ContentAlignBoxLeftBox {
-    min-width: 220px;
-    flex-basis: 20%;
+    width: 25%;
+    margin: 0.5rem;
     @media (max-width: breakpoint(lg)) {
-        min-width: unset;
-        flex-basis: unset;   
+        visibility: hidden;
+        display: none;
     }
 }
+
 .ContentAlignBoxRightBox {
     flex: 1 1;
-    margin-right: 130px;
+    padding-left: 1.5rem;
+    max-width: 75%;
+
     h1 {
         color: var(--primary-color);
         font-family: var(--heading-font);
+        font-size: var(--font-size-xxxl);
     }
+
     @media (max-width: breakpoint(lg)) {
-        flex: unset;
-        margin-right: unset;
-    }
-    @media (min-width: calc(breakpoint(xxl) + 130px)) {
-        margin-right: unset;
+        padding-left: unset;
+        max-width: unset;
+        text-align: center;
     }
 }
+
 .SearchContainer {
-    width: 150px;
+    width: 180px;
+
+    // properties to enhance the placeholder
+    background-color: var(--background);
+    color: var(--primary-color);
+    border-radius: var(--border-radius-lg);
+    padding: 0.1em;
 }

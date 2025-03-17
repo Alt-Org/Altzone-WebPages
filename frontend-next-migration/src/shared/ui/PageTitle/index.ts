@@ -1,1 +1,1 @@
-export { default as Paragraph } from './ui/PageTitle';
+export { default as PageTitle } from './ui/PageTitle';

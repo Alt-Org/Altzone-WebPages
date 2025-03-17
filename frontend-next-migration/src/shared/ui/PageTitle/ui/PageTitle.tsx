@@ -1,18 +1,20 @@
-'use-client';
+import { Container } from '@/shared/ui/Container';
 import cls from './PageTitle.module.scss';
-
-interface Search {
-    className?: string;
-}
 
 interface PageTitleProps {
     titleText: string;
     searchVisible?: boolean;
 }
 
+/**
+ * Displays h1 title and possibly a searchbar
+ * @param param0 props
+ * @returns ReactNode
+ */
+
 const PageTitle = ({ titleText, searchVisible = false }: PageTitleProps) => {
     return (
-        <div className={cls.ContentAlignBox}>
+        <Container className={cls.ContentAlignBox}>
             <div className={cls.ContentAlignBoxLeftBox} />
             <div className={cls.ContentAlignBoxRightBox}>
                 {/* Title */}
@@ -20,13 +22,11 @@ const PageTitle = ({ titleText, searchVisible = false }: PageTitleProps) => {
             </div>
             {searchVisible && (
                 <div className={cls.SearchContainer}>
-                    <input
-                        type="text"
-                        style={{ width: '100%' }}
-                    />
+                    {/* placeholder for search */}
+                    <p>Search</p>
                 </div>
             )}
-        </div>
+        </Container>
     );
 };
 
