@@ -170,12 +170,6 @@ const Page = () => {
                 </h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
-            <div style={{ margin: '20px' }}>
-                <h5>
-                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is true
-                    dropdown will always be open)
-                </h5>
-            </div>
             <div style={{ margin: '20px' }} />
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps5} />
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
