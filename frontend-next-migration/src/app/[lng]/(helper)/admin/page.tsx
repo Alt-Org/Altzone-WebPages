@@ -62,6 +62,13 @@ const Page = () => {
         ],
     };
 
+    const navMenuWithDropdownsProps5: NavMenuWithDropdownsProps = {
+        title: 'Theme',
+        openByDefault: false,
+        titleAsActive: true,
+        dropdownItems: [{ elementText: 'Main' }, { elementText: 'Light' }, { elementText: 'Dark' }],
+    };
+
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
         title: 'Forum',
         openByDefault: true,
