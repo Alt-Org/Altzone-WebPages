@@ -12,17 +12,12 @@ const meta = {
         layout: 'centered',
         docs: {
             description: {
-                component:
-                    'The `WallIntroAnimation` component renders an opening animation that wraps page or component as a child',
+                component: 'The `WallIntroAnimation` component renders an opening animation',
             },
         },
     },
     tags: ['autodocs'],
-    argTypes: {
-        children: {
-            description: 'Renders the children that are wrapped inside the `WallIntroAnimation`',
-        },
-    },
+    argTypes: {},
 } satisfies Meta<typeof WallIntroAnimation>;
 
 export default meta;
@@ -34,13 +29,7 @@ type Story = StoryObj<typeof meta>;
  * renders opening animation
  */
 export const Default: Story = {
-    args: {
-        children: (
-            <div>
-                <h1>Children</h1>
-            </div>
-        ),
-    },
+    args: {},
     parameters: {
         docs: {
             description: {
