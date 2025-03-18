@@ -29,8 +29,19 @@ export const scrollToBottom = (
     animationFrameIdRef: MutableRefObject<number>,
 ) => {
     const currentPosition = window.scrollY;
-    const targetPosition = document.body.scrollHeight - window.innerHeight;
+
+    // Ensure scroll starts right above the "Meidän Tiimimme" layout
+    const targetElement = document.querySelector('#meidan-tiimimme'); // Use the correct ID or class for the target element
+    const targetPosition = targetElement
+        ? targetElement.getBoundingClientRect().top + window.scrollY
+        : document.body.scrollHeight - window.innerHeight;
+
     const distance = targetPosition - currentPosition;
+
+    // Apply a slower speed factor
+    const speedFactor = 15; // Adjust this value to slow it down further
+    const dynamicSpeedInMs = distance * speedFactor;
+
     const startTime = performance.now();
 
     /**
@@ -40,10 +51,10 @@ export const scrollToBottom = (
      */
     const animateScroll = (currentTime: number) => {
         const elapsedTime = currentTime - startTime;
-        const scrollPosition = linear(elapsedTime, currentPosition, distance, speedInMs);
+        const scrollPosition = linear(elapsedTime, currentPosition, distance, dynamicSpeedInMs);
         window.scrollTo(0, scrollPosition);
 
-        if (elapsedTime < speedInMs) {
+        if (elapsedTime < dynamicSpeedInMs) {
             animationFrameIdRef.current = requestAnimationFrame(animateScroll);
         }
     };
