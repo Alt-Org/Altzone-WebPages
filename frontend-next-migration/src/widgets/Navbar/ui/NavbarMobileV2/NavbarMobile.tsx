@@ -9,6 +9,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
+import userIcon from '@/shared/assets/icons/userIcon.svg';
+import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
 import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
@@ -206,6 +208,12 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 />
             </AppLink>
             <div className={cls.buttonContainer}>
+                <Image
+                    src={userIcon}
+                    alt="icon of a person inside a circle"
+                    width={20}
+                    height={20}
+                />
                 {hasScrollbar && (
                     <div
                         className={classNames(

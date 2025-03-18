@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import NavbarMobile, { NavbarTouchProps } from '../NavbarMobile/NavbarMobile';
+import NavbarMobile, { NavbarTouchProps } from './NavbarMobile';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 
 const meta: Meta<typeof NavbarMobile> = {
-    title: '@/widgets/Navbar/ui/NavbarMobile/NavbarMobile',
+    title: '@/widgets/Navbar/ui/NavbarMobileV2/NavbarMobile',
     component: NavbarMobile,
     argTypes: {
         marginTop: {

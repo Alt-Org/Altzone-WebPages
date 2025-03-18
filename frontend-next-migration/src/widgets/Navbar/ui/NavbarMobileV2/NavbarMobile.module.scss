@@ -9,7 +9,8 @@
     align-items: center;
     justify-content: space-between;
     background-color: var(--base-card-background);
-
+    border: 2px solid var(--black);
+    border-radius: var(--border-radius-pill);
     height: 50px;
     margin-top: 35px;
     margin-left: auto;
