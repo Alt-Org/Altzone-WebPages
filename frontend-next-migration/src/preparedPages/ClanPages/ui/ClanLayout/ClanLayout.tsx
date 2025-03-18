@@ -5,6 +5,7 @@ import {
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { Container } from '@/shared/ui/Container';
 import cls from './ClanLayout.module.scss';
+import { useClientTranslation } from '@/shared/i18n';
 
 type PageTitleProps = {
     titleText: string;
@@ -39,45 +40,49 @@ const PageTitle = ({ titleText, searchVisible = false }: PageTitleProps) => {
     );
 };
 
-const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
-    title: 'Klaanit',
-    openByDefault: true,
-    titleAsActive: true,
-    staticDropdown: true,
-    dropdownItems: [
-        { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
-        { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
-        { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
-        { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
-    ],
-};
-
-const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
-    title: 'Klaanit',
-    openByDefault: false,
-    titleAsActive: true,
-    dropdownItems: [
-        { elementText: 'Selaa Klaaneja', link: { path: '/clans', isExternal: false } },
-        { elementText: 'Leaderboard', link: { path: '/clans/leaderboard', isExternal: false } },
-        { elementText: 'Klaanisivu', link: { path: '/clans/myclan', isExternal: false } },
-        { elementText: 'Kauppa', link: { path: '/store', isExternal: false } },
-    ],
-};
-
 const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
+    const { t } = useClientTranslation('clan');
+
+    const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
+        title: t('head-title'),
+        openByDefault: true,
+        titleAsActive: false,
+        staticDropdown: true,
+        dropdownItems: [
+            { elementText: t('browse-clans'), link: { path: '/clans', isExternal: false } },
+            {
+                elementText: t('leaderboard-title'),
+                link: { path: '/clans/leaderboard', isExternal: false },
+            },
+            { elementText: t('my_clan'), link: { path: '/clans/myclan', isExternal: false } },
+            { elementText: t('store-title'), link: { path: '/store', isExternal: false } },
+        ],
+    };
+
+    const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
+        title: t('head-title'),
+        openByDefault: false,
+        titleAsActive: false,
+        dropdownItems: [
+            { elementText: t('browse-clans'), link: { path: '/clans', isExternal: false } },
+            {
+                elementText: t('leaderboard-title'),
+                link: { path: '/clans/leaderboard', isExternal: false },
+            },
+            { elementText: t('my_clan'), link: { path: '/clans/myclan', isExternal: false } },
+            { elementText: t('store-title'), link: { path: '/store', isExternal: false } },
+        ],
+    };
     return (
         <div className={cls.container}>
-            {/* The title will be placed here */}
-            {/* <PageTitle
-                titleText="Tulostaulukko"
-                searchVisible
-            /> */}
+            {
+                <PageTitle
+                    titleText="H1 Primary Heading"
+                    searchVisible={false}
+                />
+            }
             <div className={cls.layoutContainer}>
                 <div className={cls.headerSidebarContainer}>
-                    {/* According to Figma plans, header wont be necessary
-                    <header className={cls.header}>
-                        <h1>Clans</h1>
-                    </header> */}
                     <nav className={cls.mobileNav}>
                         <NavMenuWithDropdowns {...navMenuWithDropdownsMobileProps} />
                     </nav>
