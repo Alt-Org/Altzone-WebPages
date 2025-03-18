@@ -390,7 +390,6 @@ export default Page;
 //     {/*<NavigationDropdown menuItems={menuData}/>*/}
 // </div>
 
-//{
-
-//<CustomEditor.CreateNewMode entityName={'News_Blog'} />*/
-//}
+{
+    /*<CustomEditor.CreateNewMode entityName={'News_Blog'} />*/
+}
