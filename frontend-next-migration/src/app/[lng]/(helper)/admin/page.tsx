@@ -69,13 +69,6 @@ const Page = () => {
         ],
     };
 
-    const navMenuWithDropdownsProps5: NavMenuWithDropdownsProps = {
-        title: 'Theme',
-        openByDefault: false,
-        titleAsActive: true,
-        dropdownItems: [{ elementText: 'Main' }, { elementText: 'Light' }, { elementText: 'Dark' }],
-    };
-
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
         title: 'Forum',
         openByDefault: true,
@@ -170,8 +163,6 @@ const Page = () => {
                 </h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
-            <div style={{ margin: '20px' }} />
-            <NavMenuWithDropdowns {...navMenuWithDropdownsProps5} />
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
             <div style={{ margin: '20px' }}>
                 <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
