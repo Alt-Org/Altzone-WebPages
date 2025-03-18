@@ -10,6 +10,16 @@
     height: 100vh;
     z-index: 100;
     perspective: 1000px;
+
+    @media (max-width:breakpoint(md)) {
+        grid-template-columns: repeat(8, 15rem);
+        grid-auto-rows: 6rem;
+    }
+
+    @media (max-width:breakpoint(sm)) {
+        grid-template-columns: repeat(8, 10rem);
+        grid-auto-rows: 5rem;
+    }
 }
 
 $drop-count: 96;
@@ -17,6 +27,7 @@ $drop-count: 96;
 @for $i from 0 through $drop-count {
     
     .drop-#{$i} {
+
         --tile-tilt: 0deg;
         width: auto;
         height: 11vh;
@@ -24,13 +35,30 @@ $drop-count: 96;
         z-index: ($drop-count - $i);
         box-shadow: 0 4px 3px 3px rgba($color: #121823c8, $alpha: 0.5);
         border-radius: 6px;
+        
+        @media (max-width:breakpoint(md)) {
+            height: 6rem;   
+        }
+
+        @media (max-width:breakpoint(sm)) {
+            height: 5rem;   
+        }
     }
 }
 
 @for $i from 1 through 8 {
     .tile:nth-child(16n + #{$i}) {
-        margin-left: -10rem;
+        margin-left: -50%;
+    
+        @media (max-width:breakpoint(md))  {
+            margin-left: -40%;
+        }
+
+        @media (max-width:breakpoint(xs)) {
+            margin-left: -45%
+        }
     }
+    
 }
 
 
