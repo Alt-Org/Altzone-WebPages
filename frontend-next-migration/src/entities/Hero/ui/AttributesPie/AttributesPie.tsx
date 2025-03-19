@@ -56,23 +56,23 @@ interface Props {
  * ```
  */
 export const AttributesPie = (props: Props): JSX.Element => {
-    const containerRef = useRef<HTMLDivElement>(null); // Säilön viite
-    const canvasRef = useRef<HTMLCanvasElement>(null); // Canvasin viite
-    const [dynamicRadius, setDynamicRadius] = useState<number>(props.radius); // Dynaaminen säde
+    const containerRef = useRef<HTMLDivElement>(null); // Reference to the container
+    const canvasRef = useRef<HTMLCanvasElement>(null); // Reference to the canvas
+    const [dynamicRadius, setDynamicRadius] = useState<number>(props.radius); // Dynamic radius
 
     const { borderwidth, bordercolor, characterDefault, characterUpgrade } = props;
 
-    // Lasketaan säde säilön koon perusteella
+    // Calculate the radius based on the container size
     useLayoutEffect(() => {
         const container = containerRef.current;
 
         if (container) {
             const size = Math.min(container.offsetWidth, container.offsetHeight);
-            setDynamicRadius(size / 2); // Päivitetään säde
+            setDynamicRadius(size / 2); // Update the radius
         }
     }, []);
 
-    // Piirretään canvas dynaamisen säteen perusteella
+    // Render the canvas based on the dynamic radius
     useLayoutEffect(() => {
         const canvas = canvasRef.current;
 
@@ -100,7 +100,7 @@ export const AttributesPie = (props: Props): JSX.Element => {
 
         const render = (context: CanvasRenderingContext2D, angle: number, section: PieSection) => {
             const { value, color } = section;
-            const x = dynamicRadius, // Käytetään dynaamista sädettä
+            const x = dynamicRadius, // Use dynamic radius
                 y = dynamicRadius;
             const alpha = value / max;
             const currentangle = alpha * Math.PI;
@@ -142,23 +142,23 @@ export const AttributesPie = (props: Props): JSX.Element => {
 
     const renderBackground = (context: CanvasRenderingContext2D) => {
         context.fillStyle = bordercolor;
-        context.clearRect(0, 0, dynamicRadius * 2, dynamicRadius * 2); // Käytetään dynaamista sädettä
+        context.clearRect(0, 0, dynamicRadius * 2, dynamicRadius * 2); // Use dynamic radius
 
         context.beginPath();
-        context.arc(dynamicRadius, dynamicRadius, dynamicRadius, 0, Math.PI * 2); // Käytetään dynaamista sädettä
+        context.arc(dynamicRadius, dynamicRadius, dynamicRadius, 0, Math.PI * 2); // Use dynamic radius
         context.fill();
     };
 
     return (
         <div
-            ref={containerRef} // Säilön viite
+            ref={containerRef} // Reference to the container
             className={classNames(cls.Container)}
-            style={{ width: '100%', height: '100%' }} // Responsiivinen tyyli
+            style={{ width: '100%', height: '100%' }} // Responsive styling
         >
             <canvas
-                ref={canvasRef} // Canvasin viite
-                width={dynamicRadius * 2} // Käytetään dynaamista sädettä
-                height={dynamicRadius * 2} // Käytetään dynaamista sädettä
+                ref={canvasRef} // Reference to the canvas
+                width={dynamicRadius * 2} // Use dynamic radius
+                height={dynamicRadius * 2} // Use dynamic radius
             />
         </div>
     );
