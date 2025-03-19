@@ -122,13 +122,13 @@ export const AttributesPie = (props: Props): JSX.Element => {
             context.beginPath();
 
             context.moveTo(x, y);
-            context.arc(x, y, dynamicRadius - borderwidth, angle, angle + currentangle); // Käytetään dynaamista sädettä
+            context.arc(x, y, dynamicRadius - borderwidth, angle, angle + currentangle);
 
             context.fill();
 
-            renderBorder(context, angle, dynamicRadius); // Käytetään dynaamista sädettä
+            renderBorder(context, angle, dynamicRadius);
             angle += currentangle;
-            renderBorder(context, angle, dynamicRadius); // Käytetään dynaamista sädettä
+            renderBorder(context, angle, dynamicRadius);
 
             return angle;
         };
