@@ -63,7 +63,6 @@ const NewsPage = () => {
                 </div>
             </Container>
         </main>
-
     );
 };
 
