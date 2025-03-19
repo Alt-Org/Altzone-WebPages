@@ -21,21 +21,37 @@ $touchSize: 1023px;
 }
 
 .sidebar {
-    position: sticky;
-    top: $navbar-height;
-    height: calc(100vh - #{$navbar-height});
-    flex-shrink: 0;
-    min-width: 250px;
-    flex-basis: 20%;
-    overflow-y: auto;
-    margin-left: -15px;
-    padding-right: 20px;
-    transition:
-        min-width,
-        flex-basis 0.3s ease-out;
-    //&.topIndent{
-    //  top: $navbar-height;
-    //}
+  position: sticky;
+  top: $navbar-height;
+  height: calc(100vh - #{$navbar-height});
+  flex-shrink: 0;
+  min-width: 300px;
+  flex-basis: 22%;
+  overflow-y: auto;
+  transition: min-width,flex-basis .3s ease-out;
+
+  //&.topIndent{
+  //  top: $navbar-height;
+  //}
+
+
+  @media (max-width: $touchSize) {
+    padding-left: unset;
+    display: flex;
+    justify-content: center;
+    position: static;
+    height: auto;
+    min-width: unset;
+    flex-basis: unset;
+
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px;
+
+  }
+
+  &.leftTopSidebar {
+    //border-right: 0.1px solid rgb(62, 107, 50);
     @media (max-width: $touchSize) {
         padding-left: unset;
         display: flex;
