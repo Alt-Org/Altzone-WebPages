@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { Container } from '@/shared/ui/Container';
-// import NewsCard from '../../../widgets/NewsCard/ui/NewsCard';
 import { NewsCard } from '@/widgets/NewsCard';
 import cls from './NewsPage.module.scss';
 import { SearchInput } from '@/features/Search';
@@ -12,7 +11,6 @@ const NewsPage = () => {
     const handleSearchChange = () => {
         // setSearchValue(e.target.value);
     };
-
     const newsPageMock = [
         {
             id: 1,
@@ -65,6 +63,7 @@ const NewsPage = () => {
                 </div>
             </Container>
         </main>
+
     );
 };
 

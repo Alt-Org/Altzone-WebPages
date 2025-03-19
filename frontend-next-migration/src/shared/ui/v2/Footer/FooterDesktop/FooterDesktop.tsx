@@ -11,10 +11,10 @@ import Image from 'next/image';
 import { FeedbackCard } from '@/shared/ui/v2/Feedback';
 import { Sedgwick_Ave_Display } from 'next/font/google';
 
-const sedgwickFont = Sedgwick_Ave_Display({
-    subsets: ['latin'],
-    weight: '400',
-});
+// const sedgwickFont = Sedgwick_Ave_Display({
+//     subsets: ['latin'],
+//     weight: '400',
+// });
 
 interface Props {
     title: string;
@@ -39,7 +39,7 @@ const FooterDesktopComponent = memo((props: Props) => {
             </Container>
             <Container className={cls.FooterContainer}>
                 <Title
-                    className={`${cls.title}  ${sedgwickFont.className}`}
+                    className={`${cls.title}`}
                     title={title}
                 />
                 <SocialSection

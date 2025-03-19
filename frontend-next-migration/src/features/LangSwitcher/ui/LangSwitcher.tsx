@@ -2,6 +2,8 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import languageIcon from '@/shared/assets/icons/langIcon.svg';
+import Image from 'next/image';
 
 type LangSwitcherProps = {
     className?: string;
@@ -98,9 +100,12 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
-                {selected}
+                <Image
+                    src={languageIcon}
+                    alt="Language Menu Icon"
+                />
             </div>
-            <div style={{ marginLeft: 25 }}>
+            <div>
                 {options
                     .filter((option) => option.value === language)
                     .map((option) => option.label)
