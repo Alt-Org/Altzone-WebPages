@@ -20,6 +20,8 @@ export interface HeroDevelopmentPageProps {
     hero: Hero | undefined;
 }
 
+const pieRadius = 70; // Configurable radius value shared across files
+
 const HeroDevelopmentPage: React.FC<HeroDevelopmentPageProps> = ({ hero }) => {
     const [stat, setStat] = useState<Stat>({ name: 'resistance', defaultLevel: 1, rarityClass: 1 });
     const [toLevel, setToLevel] = useState<number>(0);
@@ -106,7 +108,7 @@ const HeroDevelopmentPage: React.FC<HeroDevelopmentPageProps> = ({ hero }) => {
                                 characterUpgrade={upgradeSlice}
                                 borderwidth={2}
                                 bordercolor="#000000"
-                                radius={70}
+                                radius={pieRadius}
                             />
                         </div>
                     </div>
