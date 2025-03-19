@@ -15,6 +15,12 @@ import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
+enum DropDownTypes {
+    EMPTY = '',
+    HAMBURGER = 'hamburger',
+    AUTH = 'auth',
+}
+
 export interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
@@ -146,6 +152,22 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const handleTransitionEnd = () => {
         setIsAnimating(false);
     };
+
+    const [dropdownType, setDropdownType] = useState<
+        DropDownTypes.EMPTY | DropDownTypes.HAMBURGER | DropDownTypes.AUTH
+    >(DropDownTypes.EMPTY);
+
+    const dropdownContent = {
+        [DropDownTypes.EMPTY]: null,
+        [DropDownTypes.HAMBURGER]: sidebarItemsList,
+        [DropDownTypes.AUTH]: <p>auth form</p>,
+    };
+
+    const getDropdownContent = (
+        dropdownType: DropDownTypes.EMPTY | DropDownTypes.HAMBURGER | DropDownTypes.AUTH,
+    ) => {
+        return dropdownContent[dropdownType];
+    };
     return (
         <nav
             className={classNames(cls.Navbar, mods, [className])}
@@ -156,7 +178,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 onClick={handleBurgerClick}
                 data-testid="burger-button"
             />
-            <Sidebar
+            {/* <Sidebar
                 sidebarItemsListResetKey={sidebarItemsListResetKey}
                 buttonClassName={classNames(
                     cls.NavbarMobile__burger + ' ' + cls.navItem,
@@ -189,7 +211,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         </div>
                     </div>
                 }
-            />
+            /> */}
             <AppLink
                 className={classNames(
                     cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
@@ -213,6 +235,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     alt="icon of a person inside a circle"
                     width={20}
                     height={20}
+                    onClick={() => {
+                        setDropdownType(DropDownTypes.AUTH);
+                    }}
                 />
                 {hasScrollbar && (
                     <div
@@ -244,6 +269,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 {/*    </div>*/}
                 {/*)}*/}
             </div>
+            {getDropdownContent(dropdownType)}
         </nav>
     );
 };

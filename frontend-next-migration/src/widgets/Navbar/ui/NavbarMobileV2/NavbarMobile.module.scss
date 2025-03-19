@@ -15,10 +15,11 @@
     margin-top: 35px;
     margin-left: auto;
     z-index: var(--navbar-z-index);
+    filter: drop-shadow(4px 4px black);
     top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+    left: 10px;
+    right: 10px;
+    // width: 100%;
     transition:
         width 0.4s ease-out,
         padding-right 0.4s ease-out,
@@ -35,6 +36,16 @@
     @media (min-width: 550px) {
         margin-top: 50px;
     }
+}
+
+.NavbarContent {
+    display: flex;
+    height: 50px;
+    
+}
+
+.NavbarDropdown {
+
 }
 
 .Navbar.collapsed {
@@ -244,7 +255,7 @@
 
 .buttonContainer {
     display: flex;
-    margin-right: 8px;
+    margin-right: 15px;
     text-align: center;
     position: absolute;
     justify-content: flex-end;
