@@ -16,10 +16,7 @@ interface NewsCardProps {
 const NewsCard = (props: NewsCardProps) => {
     const { title, date, id, content, imageSrc = hannu.src } = props;
     return (
-        <div
-            // href={getRouteOneNewsPage(id.toString())}
-            className={classNames(cls.NewsCard, {})}
-        >
+        <div className={classNames(cls.NewsCard, {})}>
             <div className={cls.content}>
                 <h3 className={cls.title}>{title}</h3>
                 <p className={cls.text}>{content}</p>
