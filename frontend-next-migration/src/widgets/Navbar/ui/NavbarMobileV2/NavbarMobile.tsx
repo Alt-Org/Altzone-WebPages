@@ -14,7 +14,7 @@ import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
 import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
-
+import { NavMenu } from '@/shared/ui/NavMenu';
 enum DropDownTypes {
     EMPTY = '',
     HAMBURGER = 'hamburger',
@@ -159,13 +159,16 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const dropdownContent = {
         [DropDownTypes.EMPTY]: null,
-        [DropDownTypes.HAMBURGER]: sidebarItemsList,
+        [DropDownTypes.HAMBURGER]: <p>hello</p>,
         [DropDownTypes.AUTH]: <p>auth form</p>,
     };
 
     const getDropdownContent = (
         dropdownType: DropDownTypes.EMPTY | DropDownTypes.HAMBURGER | DropDownTypes.AUTH,
     ) => {
+        if (dropdownType === DropDownTypes.HAMBURGER) {
+            return dropdownContent[dropdownType];
+        }
         return dropdownContent[dropdownType];
     };
     return (

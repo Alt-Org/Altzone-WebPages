@@ -14,11 +14,6 @@ const meta: Meta<NavMenuProps> = {
             control: 'object',
             description: 'An array of dropdown items including nested dropdown elements.',
         },
-        openByDefault: {
-            control: 'boolean',
-            description: 'Specifies if the dropdown should be open by default.',
-            defaultValue: false,
-        },
         staticDropdown: {
             control: 'boolean',
             description: 'Determines if the first dropdown element remains static and always open.',
@@ -69,7 +64,6 @@ export const Default: Story = {
             { elementText: 'Item 1', link: { path: '/item1', isExternal: false } },
             {
                 title: 'Category 1',
-                openByDefault: false,
                 elements: [
                     { id: '1', elementText: 'Item 2', link: { path: '/item2', isExternal: true } },
                     { id: '2', elementText: 'Item 3', link: { path: '/item3', isExternal: false } },
@@ -77,10 +71,16 @@ export const Default: Story = {
             },
             {
                 title: 'Category 2',
-                openByDefault: false,
                 elements: [
                     { id: '3', elementText: 'Item 4', link: { path: '/item4', isExternal: true } },
                     { id: '4', elementText: 'Item 5', link: { path: '/item5', isExternal: false } },
+                ],
+            },
+            {
+                title: 'Category 3',
+                elements: [
+                    { id: '5', elementText: 'Item 4', link: { path: '/item4', isExternal: true } },
+                    { id: '6', elementText: 'Item 5', link: { path: '/item5', isExternal: false } },
                 ],
             },
             <p key="hello">

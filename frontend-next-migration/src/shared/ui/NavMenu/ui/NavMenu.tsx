@@ -2,9 +2,9 @@ import {
     DropDownElement,
     DropdownWrapper,
     DropDownElementASTextOrLink,
-} from '@/shared/ui/DropdownWrapperV2';
+} from '@/shared/ui/DropdownWrapper';
 import { ReactNode, useEffect, useState } from 'react';
-import cls from './NavMenuWithDropdowns.module.scss';
+import cls from './NavMenu.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { usePathname } from 'next/navigation';
@@ -12,7 +12,7 @@ import { usePathname } from 'next/navigation';
 export interface DropdownItem {
     title: string;
     elements: DropDownElement[];
-    openByDefault?: boolean;
+    children?: ReactNode;
 }
 
 export interface NavMenuProps {
@@ -107,6 +107,8 @@ function NavMenu(props: NavMenuProps): JSX.Element {
 
     const dynamicTitle = titleAsActive ? getActiveTitle() : title;
 
+    const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+
     return (
         <div className={classNames(cls.NavMenu, {}, [className])}>
             {/* <DropdownWrapper
@@ -124,17 +126,25 @@ function NavMenu(props: NavMenuProps): JSX.Element {
             {dropdownItems.map((item, index) =>
                 isDropdownItem(item) ? (
                     <DropdownWrapper
-                        key={item.title}
-                        openByDefault={item.openByDefault}
+                        key={index}
+                        childrenWrapperClassName={cls.ChildrenWrapper}
+                        isOpen={index === openDropdown}
+                        onOpen={() => {
+                            setOpenDropdown(index);
+                        }}
+                        onClose={() => {
+                            if (openDropdown === index) setOpenDropdown(null);
+                        }}
                         elements={item.elements}
                         dataTestId={item.title}
                         contentClassName={cls.DropDownElementChildren}
                     >
-                        {item.title}
+                        {item.children ? item.children : item.title}
                     </DropdownWrapper>
                 ) : isDropDownElementASTextOrLink(item) ? (
                     item?.link ? (
                         <AppLink
+                            key={index}
                             isExternal={item.link.isExternal}
                             to={item.link.path}
                             className={classNames(cls.link, { [cls.active]: item.active })}
@@ -142,7 +152,10 @@ function NavMenu(props: NavMenuProps): JSX.Element {
                             {item.elementText}
                         </AppLink>
                     ) : (
-                        <div className={classNames(cls.text, { [cls.active]: item.active })}>
+                        <div
+                            key={index}
+                            className={classNames(cls.text, { [cls.active]: item.active })}
+                        >
                             {item.elementText}
                         </div>
                     )

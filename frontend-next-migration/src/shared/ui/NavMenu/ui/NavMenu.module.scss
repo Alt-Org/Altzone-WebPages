@@ -5,47 +5,29 @@
   line-height: var(--font-line-l);
   font-size: var(--font-size-l);
 
-  // max-width can be changed but shouldnt really be necessary
-  max-width: 320px;
-
-  @media (max-width: breakpoint(lg)) {
-    width: 50%;
-    // filter: drop-shadow(2px 4px var(--black));
-
-    .topDropDown {
-      padding: 12px 24px;
-      border-radius: var(--border-radius-xl);
-      border: 2px solid var(--black);
-      line-height: var(--font-line-m);
-    }
-
-    margin: auto;
-  }
-
-  @media (max-width: breakpoint(sm)) {
-    width: 100%;
-    filter: drop-shadow(2px 4px var(--black));
-
-    .topDropDown {
-      padding: 12px 24px;
-      border-radius: var(--border-radius-xl);
-      border: 2px solid var(--black);
-      line-height: var(--font-line-m);
-    }
-
-    margin: auto;
-  }
 }
+
+.ChildrenWrapper {
+  inline-size: auto;
+}
+
 .DropDownElementChildren {
   margin-top:0;
   padding:0;
 }
 
-.DropDownElementChildren > div{
+.DropDownElementChildren > div {
   margin:0;
   padding:0;
   margin-left: 2.5em;
   line-height: 1;
+}
+// .DropDownElementChildren > div > a {
+//   display: flex;
+// }
+.DropDownElementChildren > div > a > svg {
+  float: right;
+  margin-right: 10px;
 }
 
 .topDropDown {
