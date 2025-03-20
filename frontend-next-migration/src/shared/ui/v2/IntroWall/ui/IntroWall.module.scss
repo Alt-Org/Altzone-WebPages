@@ -5,7 +5,7 @@
     align-content: start; 
     display: grid;
     grid-template-columns: repeat(8, 15vw);
-    grid-auto-rows: 10vh;
+    grid-auto-rows: 12vh;
     width: 100vw;
     height: 100vh;
     z-index: 100;
@@ -30,7 +30,7 @@ $drop-count: 96;
 
         --tile-tilt: 0deg;
         width: auto;
-        height: 11vh;
+        height: 13vh;
         animation: drop 0.55s ease-in #{$i * 0.02s} both;
         z-index: ($drop-count - $i);
         box-shadow: 0 4px 3px 3px rgba($color: #121823c8, $alpha: 0.5);
