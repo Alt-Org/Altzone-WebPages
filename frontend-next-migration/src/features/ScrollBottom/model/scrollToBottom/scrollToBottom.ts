@@ -16,7 +16,7 @@ const slowScroll = (
     slower: number,
 ): number => {
     const adjustedElapsedTime = elapsedTime / slower;
-    return (distance * adjustedElapsedTime) / 1000 + currentPosition; // Makes it slower
+    return (distance * adjustedElapsedTime) / 1000 + currentPosition; // Makes it scroll slower
 };
 
 /**
@@ -49,6 +49,6 @@ export const scrollToBottom = (
         if (elapsedTime < speedInMs * slower) {
             animationFrameIdRef.current = requestAnimationFrame(animateScroll);
         }
-    }; // this is something
+    };
     animationFrameIdRef.current = requestAnimationFrame(animateScroll);
 };
