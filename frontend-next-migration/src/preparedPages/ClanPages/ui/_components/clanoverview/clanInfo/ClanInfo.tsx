@@ -1,7 +1,14 @@
 import cls from './ClanInfo.module.scss';
 
 type Props = {
-    clanData: any;
+    clanData: {
+        playerCount?: number;
+        language?: string;
+        goal?: string;
+        ageLimit?: number;
+        wins?: number;
+        losses?: number;
+    };
     assetsText: string;
     memberCountText: string;
     languageText: string;
@@ -11,41 +18,36 @@ type Props = {
     lossesText: string;
 };
 
-const ClanInfo = (props: Props) => {
-    const {
-        clanData,
-        assetsText,
-        memberCountText,
-        languageText,
-        goalText,
-        ageLimitText,
-        winsText,
-        lossesText,
-    } = props;
+const ClanInfo = ({
+    clanData,
+    memberCountText,
+    languageText,
+    goalText,
+    ageLimitText,
+    winsText,
+    lossesText,
+}: Props) => {
+    if (!clanData) return <p className={cls.error}>Clan data is missing</p>;
 
     return (
         <div className={cls.clanInfo}>
             <p className={cls.infoItem}>
-                {assetsText}: {clanData.gameCoins}
-                {assetsText}: {clanData}
+                {memberCountText}: {clanData.playerCount ?? 'N/A'}/10
             </p>
             <p className={cls.infoItem}>
-                {memberCountText}: {clanData.playerCount}/10
+                {languageText}: {clanData.language ?? 'Unknown'}
             </p>
             <p className={cls.infoItem}>
-                {languageText}: {clanData.name}
+                {goalText}: {clanData.goal ?? 'Not specified'}
             </p>
             <p className={cls.infoItem}>
-                {goalText}: {clanData.name}
+                {ageLimitText}: {clanData.ageLimit ?? 'No limit'}
             </p>
             <p className={cls.infoItem}>
-                {ageLimitText}: {clanData.name}
+                {winsText}: {clanData.wins ?? 0}
             </p>
             <p className={cls.infoItem}>
-                {winsText}: {clanData.name}
-            </p>
-            <p className={cls.infoItem}>
-                {lossesText}: {clanData.name}
+                {lossesText}: {clanData.losses ?? 0}
             </p>
         </div>
     );
