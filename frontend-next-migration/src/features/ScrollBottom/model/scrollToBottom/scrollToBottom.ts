@@ -1,7 +1,7 @@
 import { MutableRefObject } from 'react';
 
 /**
- * Calculates the next scroll position based on elapsed time, current position, distance, and slow speed factor.
+ * Calculates the next scroll position based on the elapsed time and current position.
  *
  * @param {number} elapsedTime - The time elapsed since the animation started.
  * @param {number} currentPosition - The current position of the scroll.
@@ -9,7 +9,7 @@ import { MutableRefObject } from 'react';
  * @param {number} slower - Makes it to slow down the scroll.
  * @returns {number} - The next scroll position.
  */
-const slowScroll = (
+const linear = (
     elapsedTime: number,
     currentPosition: number,
     distance: number,
@@ -20,7 +20,7 @@ const slowScroll = (
 };
 
 /**
- * Scrolls the page to the bottom at a much slower speed.
+ * Scrolls the page to the bottom at a specified speed.
  *
  * @param {number} speedInMs - The total speed of the scroll animation in milliseconds.
  * @param {MutableRefObject<number>} animationFrameIdRef - The reference to the animation frame ID.
@@ -43,7 +43,7 @@ export const scrollToBottom = (
      */
     const animateScroll = (currentTime: number) => {
         const elapsedTime = currentTime - startTime;
-        const scrollPosition = slowScroll(elapsedTime, currentPosition, distance, slower);
+        const scrollPosition = linear(elapsedTime, currentPosition, distance, slower);
         window.scrollTo(0, scrollPosition);
 
         if (elapsedTime < speedInMs * slower) {
