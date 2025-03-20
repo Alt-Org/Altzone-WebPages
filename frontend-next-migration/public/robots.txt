@@ -1,4 +1,6 @@
 User-agent: *
-Disallow:
+Allow: /
 
 Sitemap: https://altzone.fi/sitemap.xml
+Sitemap: https://altzone.fi/fi/sitemap.xml
+Sitemap: https://altzone.fi/en/sitemap.xml
