@@ -15,9 +15,8 @@ const slowScroll = (
     distance: number,
     slower: number,
 ): number => {
-    // Reduce the rate of scroll by increasing the factor to slow down the scroll speed
     const adjustedElapsedTime = elapsedTime / slower;
-    return (distance * adjustedElapsedTime) / 1000 + currentPosition; // Adjusted to make it slower
+    return (distance * adjustedElapsedTime) / 1000 + currentPosition; // Makes it slower
 };
 
 /**
@@ -35,7 +34,7 @@ export const scrollToBottom = (
     const distance = targetPosition - currentPosition;
     const startTime = performance.now();
 
-    const slower = 150; // Increase this to make the scroll slower (higher values = slower scroll)
+    const slower = 150; // higher value = slower scroll
 
     /**
      * Animates the scroll position with a slow effect.
@@ -50,7 +49,6 @@ export const scrollToBottom = (
         if (elapsedTime < speedInMs * slower) {
             animationFrameIdRef.current = requestAnimationFrame(animateScroll);
         }
-    };
-
+    }; // this is something
     animationFrameIdRef.current = requestAnimationFrame(animateScroll);
 };
