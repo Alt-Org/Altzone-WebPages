@@ -15,11 +15,14 @@ import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 import { NavMenu } from '@/shared/ui/NavMenu';
-enum DropDownTypes {
-    EMPTY = '',
-    HAMBURGER = 'hamburger',
-    AUTH = 'auth',
+import { INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu/ui/NavMenu';
+enum DropdownTypes {
+    EMPTY = 'EMPTY',
+    HAMBURGER = 'HAMBURGER',
+    AUTH = 'AUTH',
 }
+
+type DropdownType = DropdownTypes.EMPTY | DropdownTypes.HAMBURGER | DropdownTypes.AUTH;
 
 export interface NavbarTouchProps {
     marginTop?: number;
@@ -54,6 +57,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     // A crutch to reset dropdowns when closing the navbar
     const [sidebarItemsListResetKey, setSidebarItemsListResetKey] = useState(0);
+
+    const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.HAMBURGER);
+
     const handleBurgerClick = () => {
         setIsSidebarOpen(true);
         props.onBurgerButtonClick?.(true);
@@ -74,14 +80,14 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setRealPath(newPath);
     }, [pathname]);
 
-    const sidebarItemsList: ISidebarItem[] = useMemo(() => {
+    const sidebarItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map((item) => {
                 if (item.type === ItemType.navLink) {
                     return {
                         path: item.path,
                         name: t(`${item.name}`),
-                        type: sidebarItemType.ISidebarItemBasic,
+                        type: NavMenuItemType.Link,
                         active: realPath === item.path,
                     };
                 }
@@ -119,19 +125,20 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         name: t(`${item.name}`),
                         elements: localizedElements,
                         active: isDropdownActive,
-                        type: sidebarItemType.ISidebarItemDropDown,
+                        type: NavMenuItemType.Dropdown,
                     };
                 }
 
                 return null;
             })
-            .filter((item) => item !== null) as ISidebarItem[];
+            .filter((item) => item !== null) as INavMenuItem[];
     }, [t, navbarBuild?.menu, permissionToSeeOwnClan.isGranted, realPath]);
 
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
+        [cls.openDropdown]: dropdownType !== DropdownTypes.EMPTY,
         // [cls.collapsed]: isCollapsed,
         [cls.collapsing]: isAnimating,
     } as Record<string, boolean>;
@@ -153,35 +160,51 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setIsAnimating(false);
     };
 
-    const [dropdownType, setDropdownType] = useState<
-        DropDownTypes.EMPTY | DropDownTypes.HAMBURGER | DropDownTypes.AUTH
-    >(DropDownTypes.EMPTY);
-
     const dropdownContent = {
-        [DropDownTypes.EMPTY]: null,
-        [DropDownTypes.HAMBURGER]: <p>hello</p>,
-        [DropDownTypes.AUTH]: <p>auth form</p>,
+        [DropdownTypes.EMPTY]: null,
+        [DropdownTypes.HAMBURGER]: (
+            <NavMenu
+                title="title"
+                dropdownItems={sidebarItemsList}
+            />
+        ),
+        [DropdownTypes.AUTH]: <p>auth form</p>,
     };
 
-    const getDropdownContent = (
-        dropdownType: DropDownTypes.EMPTY | DropDownTypes.HAMBURGER | DropDownTypes.AUTH,
-    ) => {
-        if (dropdownType === DropDownTypes.HAMBURGER) {
-            return dropdownContent[dropdownType];
+    const getDropdownContent = (dropdownType: DropdownType) => {
+        if (dropdownType === DropdownTypes.HAMBURGER) {
+            return <div className={cls.NavbarDropdown}>{dropdownContent[dropdownType]}</div>;
         }
         return dropdownContent[dropdownType];
+    };
+
+    const toggleDropdown = (dropdown: DropdownType) => {
+        if (dropdown === dropdownType) {
+            setDropdownType(DropdownTypes.EMPTY);
+        } else {
+            setDropdownType(DropdownTypes[dropdown]);
+        }
     };
     return (
         <nav
             className={classNames(cls.Navbar, mods, [className])}
             style={style}
         >
-            <div
-                className={classNames(cls.NavbarMobile__burger, sidebarMods)}
-                onClick={handleBurgerClick}
-                data-testid="burger-button"
-            />
-            {/* <Sidebar
+            <div className={cls.NavbarContent}>
+                <div
+                    className={classNames(cls.NavbarMobile__burger, sidebarMods)}
+                    onClick={handleBurgerClick}
+                    data-testid="burger-button"
+                />
+                <div onClick={() => toggleDropdown(DropdownTypes.HAMBURGER)}>
+                    <Image
+                        src={hamburgerIcon}
+                        alt="Three vertical lines. Is svg image in the open navigation menu button."
+                        width={26}
+                        height={20}
+                    />
+                </div>
+                {/* <Sidebar
                 sidebarItemsListResetKey={sidebarItemsListResetKey}
                 buttonClassName={classNames(
                     cls.NavbarMobile__burger + ' ' + cls.navItem,
@@ -215,62 +238,61 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     </div>
                 }
             /> */}
-            <AppLink
-                className={classNames(
-                    cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
-                    // { [cls.collapsed]: isCollapsed },
-                    {},
-                    [],
-                )}
-                theme={AppLinkTheme.PRIMARY}
-                to={navbarBuild?.namedMenu?.navLogo?.path || ''}
-            >
-                <Image
-                    loading={'eager'}
-                    width={180}
-                    src={navbarBuild?.namedMenu?.navLogo?.src || ''}
-                    alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
-                />
-            </AppLink>
-            <div className={cls.buttonContainer}>
-                <Image
-                    src={userIcon}
-                    alt="icon of a person inside a circle"
-                    width={20}
-                    height={20}
-                    onClick={() => {
-                        setDropdownType(DropDownTypes.AUTH);
-                    }}
-                />
-                {hasScrollbar && (
-                    <div
-                        className={classNames(
-                            cls.navItem,
-                            // { [cls.collapsed]: isCollapsed }
-                        )}
-                        onTransitionEnd={handleTransitionEnd}
-                    >
-                        <ToggleFixButton
-                            isFixed={isFixed}
-                            onClick={toggleFixed}
-                            className={cls.Button}
-                        />
-                    </div>
-                )}
-                {/*{isFixed && (*/}
-                {/*    <div*/}
-                {/*        className={classNames(cls.CollapseButtonWrapper, {*/}
-                {/*            [cls.collapsing]: isAnimating,*/}
-                {/*        })}*/}
-                {/*    >*/}
-                {/*        <ToggleCollapseButton*/}
-                {/*            onClick={handleCollapseClick}*/}
-                {/*            isCollapsed={isCollapsed}*/}
-                {/*            className={cls.Button}*/}
-                {/*            disabled={isAnimating}*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*)}*/}
+                <AppLink
+                    className={classNames(
+                        cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
+                        // { [cls.collapsed]: isCollapsed },
+                        {},
+                        [],
+                    )}
+                    theme={AppLinkTheme.PRIMARY}
+                    to={navbarBuild?.namedMenu?.navLogo?.path || ''}
+                >
+                    <Image
+                        loading={'eager'}
+                        width={180}
+                        src={navbarBuild?.namedMenu?.navLogo?.src || ''}
+                        alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
+                    />
+                </AppLink>
+                <div className={cls.buttonContainer}>
+                    <Image
+                        src={userIcon}
+                        alt="icon of a person inside a circle"
+                        width={20}
+                        height={20}
+                        onClick={() => toggleDropdown(DropdownTypes.AUTH)}
+                    />
+                    {hasScrollbar && (
+                        <div
+                            className={classNames(
+                                cls.navItem,
+                                // { [cls.collapsed]: isCollapsed }
+                            )}
+                            onTransitionEnd={handleTransitionEnd}
+                        >
+                            <ToggleFixButton
+                                isFixed={isFixed}
+                                onClick={toggleFixed}
+                                className={cls.Button}
+                            />
+                        </div>
+                    )}
+                    {/*{isFixed && (*/}
+                    {/*    <div*/}
+                    {/*        className={classNames(cls.CollapseButtonWrapper, {*/}
+                    {/*            [cls.collapsing]: isAnimating,*/}
+                    {/*        })}*/}
+                    {/*    >*/}
+                    {/*        <ToggleCollapseButton*/}
+                    {/*            onClick={handleCollapseClick}*/}
+                    {/*            isCollapsed={isCollapsed}*/}
+                    {/*            className={cls.Button}*/}
+                    {/*            disabled={isAnimating}*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*)}*/}
+                </div>
             </div>
             {getDropdownContent(dropdownType)}
         </nav>

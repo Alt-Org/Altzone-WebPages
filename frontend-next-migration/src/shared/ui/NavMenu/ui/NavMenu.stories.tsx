@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import NavMenu, { NavMenuProps } from './NavMenu';
+import NavMenu, { NavMenuProps, NavMenuItemType } from './NavMenu';
 
 const meta: Meta<NavMenuProps> = {
     title: 'shared/ui/NavMenu',
@@ -36,16 +36,15 @@ const meta: Meta<NavMenuProps> = {
         backgrounds: {
             default: 'light',
             values: [
-                { name: 'light', value: '#ffffff' },
+                { name: 'light', value: '#dddddd' },
                 { name: 'dark', value: '#333333' },
                 { name: 'gray', value: '#dddddd' },
             ],
         },
-        layout: 'centered',
         docs: {
             description: {
                 component:
-                    'The `NavMenu` component is a flexible navigation menu that supports nested dropdowns and dynamic titles. However storybook doesnt reflect how mobile version looks',
+                    'The `NavMenu` component is a flexible navigation menu that supports nested dropdowns and dynamic titles.',
             },
         },
     },
@@ -61,31 +60,47 @@ export const Default: Story = {
         staticDropdown: false,
         titleAsActive: false,
         dropdownItems: [
-            { elementText: 'Item 1', link: { path: '/item1', isExternal: false } },
+            { type: NavMenuItemType.Link, name: 'Item 1', path: '/item1' },
             {
-                title: 'Category 1',
+                type: NavMenuItemType.Dropdown,
+                name: 'Category 1',
                 elements: [
-                    { id: '1', elementText: 'Item 2', link: { path: '/item2', isExternal: true } },
+                    {
+                        id: '1',
+                        elementText: 'Item 2',
+                        link: { path: 'https://altzone.fi', isExternal: true },
+                    },
                     { id: '2', elementText: 'Item 3', link: { path: '/item3', isExternal: false } },
                 ],
             },
             {
-                title: 'Category 2',
+                type: NavMenuItemType.Dropdown,
+                name: 'Category 2',
                 elements: [
-                    { id: '3', elementText: 'Item 4', link: { path: '/item4', isExternal: true } },
+                    {
+                        id: '3',
+                        elementText: 'Item 4',
+                        link: { path: 'https://altzone.fi', isExternal: true },
+                    },
                     { id: '4', elementText: 'Item 5', link: { path: '/item5', isExternal: false } },
                 ],
             },
             {
-                title: 'Category 3',
+                type: NavMenuItemType.Dropdown,
+                name: 'Category 3',
                 elements: [
-                    { id: '5', elementText: 'Item 4', link: { path: '/item4', isExternal: true } },
+                    {
+                        id: '5',
+                        elementText: 'Item 4',
+                        link: { path: 'https://altzone.fi', isExternal: true },
+                    },
                     { id: '6', elementText: 'Item 5', link: { path: '/item5', isExternal: false } },
                 ],
             },
-            <p key="hello">
-                Custom element <strong>(maybe icon?)</strong>
-            </p>,
+            {
+                type: NavMenuItemType.Element,
+                element: <p>React node</p>,
+            },
         ],
     },
 };

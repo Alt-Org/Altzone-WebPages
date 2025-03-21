@@ -9,14 +9,36 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { usePathname } from 'next/navigation';
 
-export interface DropdownItem {
-    title: string;
-    elements: DropDownElement[];
-    children?: ReactNode;
+export enum NavMenuItemType {
+    Dropdown = 'NavManuDropdown',
+    Link = 'NavMenuLink',
+    Element = 'NavMenuElement',
 }
 
+export type INavMenuDropdown = {
+    type: NavMenuItemType.Dropdown;
+    name: string;
+    elements: DropDownElement[];
+    active?: boolean;
+};
+
+export type INavMenuLink = {
+    type: NavMenuItemType.Link;
+    path: string;
+    name: string;
+    active?: boolean;
+};
+
+export type INavMenuElement = {
+    type: NavMenuItemType.Element;
+    element: ReactNode;
+};
+
+export type INavMenuItem = INavMenuLink | INavMenuDropdown | INavMenuElement;
+
 export interface NavMenuProps {
-    dropdownItems: (DropdownItem | ReactNode | DropDownElementASTextOrLink)[];
+    dropdownItems: INavMenuItem[];
+    // (DropdownItem | ReactNode | DropDownElementASTextOrLink)[]
     openByDefault?: boolean;
     titleAsActive?: boolean;
     staticDropdown?: boolean;
@@ -25,9 +47,9 @@ export interface NavMenuProps {
 }
 
 function isDropdownItem(
-    item: DropdownItem | ReactNode | DropDownElementASTextOrLink,
-): item is DropdownItem {
-    return typeof item === 'object' && item !== null && 'title' in item && 'elements' in item;
+    item: INavMenuDropdown | ReactNode | DropDownElementASTextOrLink,
+): item is INavMenuDropdown {
+    return typeof item === 'object' && item !== null && 'name' in item && 'elements' in item;
 }
 
 function isDropDownElementASTextOrLink(item: any): item is DropDownElementASTextOrLink {
@@ -86,7 +108,7 @@ function NavMenu(props: NavMenuProps): JSX.Element {
 
     const [realPath, setRealPath] = useState('/');
     const pathname = usePathname();
-
+    // console.log(dropdownItems);
     useEffect(() => {
         const pathSegments = pathname.split('/').filter(Boolean);
         const newPath = `/${pathSegments.slice(1, 4).join('/')}`;
@@ -123,46 +145,36 @@ function NavMenu(props: NavMenuProps): JSX.Element {
                 contentClassName={cls.topDropDownContent}
                 showArrow={true}
             /> */}
-            {dropdownItems.map((item, index) =>
-                isDropdownItem(item) ? (
-                    <DropdownWrapper
-                        key={index}
-                        childrenWrapperClassName={cls.ChildrenWrapper}
-                        isOpen={index === openDropdown}
-                        onOpen={() => {
-                            setOpenDropdown(index);
-                        }}
-                        onClose={() => {
-                            if (openDropdown === index) setOpenDropdown(null);
-                        }}
-                        elements={item.elements}
-                        dataTestId={item.title}
-                        contentClassName={cls.DropDownElementChildren}
-                    >
-                        {item.children ? item.children : item.title}
-                    </DropdownWrapper>
-                ) : isDropDownElementASTextOrLink(item) ? (
-                    item?.link ? (
+            {dropdownItems.map((item, index) => (
+                <div key={index}>
+                    {item.type === NavMenuItemType.Dropdown && (
+                        <DropdownWrapper
+                            childrenWrapperClassName={cls.ChildrenWrapper}
+                            isOpen={index === openDropdown}
+                            onOpen={() => {
+                                setOpenDropdown(index);
+                            }}
+                            onClose={() => {
+                                if (openDropdown === index) setOpenDropdown(null);
+                            }}
+                            elements={item.elements}
+                            dataTestId={item.name}
+                            contentClassName={cls.DropDownElementChildren}
+                        >
+                            {item.name}
+                        </DropdownWrapper>
+                    )}
+                    {item.type === NavMenuItemType.Link && (
                         <AppLink
-                            key={index}
-                            isExternal={item.link.isExternal}
-                            to={item.link.path}
+                            to={item.path}
                             className={classNames(cls.link, { [cls.active]: item.active })}
                         >
-                            {item.elementText}
+                            {item.name}
                         </AppLink>
-                    ) : (
-                        <div
-                            key={index}
-                            className={classNames(cls.text, { [cls.active]: item.active })}
-                        >
-                            {item.elementText}
-                        </div>
-                    )
-                ) : (
-                    <div key={index}>{item}</div>
-                ),
-            )}
+                    )}
+                    {item.type === NavMenuItemType.Element && item.element}
+                </div>
+            ))}
         </div>
     );
 }

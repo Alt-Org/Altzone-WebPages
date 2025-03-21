@@ -5,15 +5,15 @@
 .Navbar {
     position: absolute;
     font: var(--font-xxl);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
     background-color: var(--base-card-background);
     border: 2px solid var(--black);
     border-radius: var(--border-radius-pill);
-    height: 50px;
+    // height: 50px;
     margin-top: 35px;
-    margin-left: auto;
+    // margin-left: auto;
     z-index: var(--navbar-z-index);
     filter: drop-shadow(4px 4px black);
     top: 0;
@@ -22,6 +22,7 @@
     // width: 100%;
     transition:
         width 0.4s ease-out,
+        height 0.4s ease-out,
         padding-right 0.4s ease-out,
         opacity 0.4s ease-out;
 
@@ -41,11 +42,19 @@
 .NavbarContent {
     display: flex;
     height: 50px;
-    
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 .NavbarDropdown {
+    padding: 15px;
+}
 
+.openDropdown {
+    border-radius: var(--border-radius-xl);
+    transition: all;
+    transition-duration: 0.4s;
 }
 
 .Navbar.collapsed {
