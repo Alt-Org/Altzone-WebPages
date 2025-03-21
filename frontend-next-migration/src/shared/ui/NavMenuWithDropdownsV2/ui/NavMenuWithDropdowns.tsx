@@ -72,6 +72,26 @@ function isDropDownElementASTextOrLink(item: any): item is DropDownElementASText
  *     },
  *   ],
  * };
+ * @example
+ * //Example with I18N and language handling on routing.
+ *  const params = useParams();
+ *  const lng = params.lng as string;
+ *
+ *    const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
+ *       title: t('head-title'),
+ *       openByDefault: true,
+ *       titleAsActive: false,
+ *       staticDropdown: true,
+ *       dropdownItems: [
+ *           { elementText: t('browse-clans'), link: { path: `/${lng}/clans`, isExternal: false } },
+ *           {
+ *               elementText: t('leaderboard-title'),
+ *               link: { path: `/${lng}/clans/leaderboard`, isExternal: false },
+ *           },
+ *           { elementText: t('my_clan'), link: { path: `/${lng}/clans/myclan`, isExternal: false } },
+ *           { elementText: t('store-title'), link: { path: `/${lng}/store`, isExternal: false } },
+ *       ],
+ *   };
  */
 
 function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {

@@ -1,0 +1,60 @@
+/* Page Title */
+.PageTitleContainer {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    padding-right: 1.5rem;
+}
+
+.PageTitleLeft {
+    width: 25%;
+    margin: 0.5rem;
+}
+
+.PageTitle {
+    flex: 1 1;
+    padding-left: 1.5rem;
+    max-width: 75%;
+
+    h1 {
+        color: var(--primary-color);
+        font-family: var(--font-family-title);
+        font-size: var(--font-size-xxxl);
+        font-weight: 100;
+    }
+}
+
+.SearchContainer {
+    width: 180px;
+
+    // properties to enhance the placeholder
+    background-color: var(--background);
+    color: var(--primary-color);
+    border-radius: var(--border-radius-lg);
+    padding: 0.1em;
+}
+
+@media (max-width: breakpoint(lg)) {
+
+    /* Pagetitle */
+    .PageTitleContainer {
+        display: block;
+        padding-right: unset;
+    }
+
+    .PageTitleLeft {
+        visibility: hidden;
+        display: none;
+    }
+
+    .PageTitle {
+        padding-left: unset;
+        max-width: unset;
+        text-align: center;
+    }
+
+    .SearchContainer {
+        visibility: hidden;
+        display: none;
+    }
+}
