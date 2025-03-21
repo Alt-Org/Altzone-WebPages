@@ -70,7 +70,7 @@ export const statData: NamedStatArray = {
             rarityClass: 3,
         },
     ],
-    PIRATE: [
+    ALCOHOLIC: [
         {
             name: 'resistance',
             defaultLevel: 8,
