@@ -222,7 +222,7 @@
     ul {
         display: none;
         position: absolute;
-        margin-top: 80px;
+        margin-top: 105px;
         height: max-content;
         width: max-content;
         list-style-type: none;
@@ -239,6 +239,7 @@
         display: flex;
         align-items: center;
         display: none;
+        color: white;
     }
 
     li:hover {

@@ -16,7 +16,7 @@ type Option = {
 
 export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     const currentPathname = usePathname();
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(true);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const {
@@ -27,6 +27,7 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     const options = [
         { label: t('FIN'), value: 'fi' },
         { label: t('ENG'), value: 'en' },
+        { label: t('RU'), value: 'ru' },
         // Add more languages here
     ];
 
