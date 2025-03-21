@@ -11,10 +11,7 @@ import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { useClientTranslation } from '@/shared/i18n';
-// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
-// import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
@@ -237,27 +234,6 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
-
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-
             <p>
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
