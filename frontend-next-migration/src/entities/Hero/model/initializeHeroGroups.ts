@@ -2,8 +2,7 @@ import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
 import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
 import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari-white-bg.gif';
-import pirate from '@/shared/assets/images/heros/pirate/pirate.png';
-import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
+import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
@@ -13,12 +12,14 @@ import conman from '@/shared/assets/images/heros/conman/conman.webp';
 import conmanGif from '@/shared/assets/images/heros/conman/conman.gif';
 import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
 import fatePriestGif from '@/shared/assets/images/heros/fate-priest/fate-priest.gif';
+import racist from '@/shared/assets/images/heros/racist/Rasisti.png';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
+import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { statData } from '../model/stats/statsDataV2';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
@@ -45,14 +46,14 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
 
                 {
                     id: 14342,
-                    srcImg: pirate,
-                    srcGif: pirateGif,
-                    alt: t('RETROFLECTOR.heroes.pirate.alt'),
-                    altGif: t('RETROFLECTOR.heroes.pirate.altGif'),
-                    title: t('RETROFLECTOR.heroes.pirate.title'),
-                    slug: HeroSlug.PIRATE,
-                    description: t('RETROFLECTOR.heroes.pirate.description'),
-                    stats: statData.PIRATE,
+                    srcImg: alcoholic,
+                    srcGif: comingSoon,
+                    alt: t('RETROFLECTOR.heroes.alcoholic.alt'),
+                    altGif: t('RETROFLECTOR.heroes.alcoholic.altGif'),
+                    title: t('RETROFLECTOR.heroes.alcoholic.title'),
+                    slug: HeroSlug.ALCOHOLIC,
+                    description: t('RETROFLECTOR.heroes.alcoholic.description'),
+                    stats: statData.ALCOHOLIC,
                 },
             ],
         },
@@ -165,6 +166,26 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('OBEDIENT.heroes.FatePriest.title'),
                     description: t('OBEDIENT.heroes.FatePriest.description'),
                     stats: statData.FATE_PRIEST,
+                },
+            ],
+        },
+
+        [HeroGroup.DESENSITIZER]: {
+            name: t('DESENSITIZER.name'),
+            description: t('DESENSITIZER.description'),
+            bgColour: 'rgba(0,192,192,0.7)',
+            label: lightBlue,
+            heroes: [
+                {
+                    id: 848349,
+                    srcImg: racist,
+                    srcGif: comingSoon,
+                    alt: t('DESENSITIZER.heroes.Racist.alt'),
+                    altGif: t('DESENSITIZER.heroes.Racist.altGif'),
+                    slug: HeroSlug.RACIST,
+                    title: t('DESENSITIZER.heroes.Racist.title'),
+                    description: t('DESENSITIZER.heroes.Racist.description'),
+                    stats: statData.RACIST,
                 },
             ],
         },
