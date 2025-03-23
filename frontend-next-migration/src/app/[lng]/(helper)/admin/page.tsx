@@ -1,6 +1,5 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
-import { ScrollTop } from '@/features/ScrollTop';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
@@ -10,7 +9,6 @@ import {
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
-import { ComingSoon } from '@/widgets/ComingSoon';
 // import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
 // import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
 // import { useEffect } from 'react';
@@ -330,4 +328,3 @@ const Page = () => {
 };
 
 export default Page;
-
