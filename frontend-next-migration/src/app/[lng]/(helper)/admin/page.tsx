@@ -1,6 +1,5 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
-import { ScrollTop } from '@/features/ScrollTop';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
@@ -11,6 +10,12 @@ import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { useClientTranslation } from '@/shared/i18n';
+import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
+// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
+// import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -102,6 +107,29 @@ const Page = () => {
                 ),
             }}
         >
+            <WallIntroAnimation renderOnce={true} />
+            <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
+            <div style={{ margin: '20px' }}>
+                <h5>
+                    Version with dropdown closed by default (mainly designed for mobile but works
+                    for both. Test in mobile resolution too)
+                </h5>
+            </div>
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
+            <div style={{ margin: '20px' }}>
+                <h5>
+                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is true
+                    dropdown will always be open)
+                </h5>
+            </div>
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps3} />
+            <div style={{ margin: '20px' }}>
+                <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
+            </div>
+            <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
+            <h1>Main Page Content</h1>
+            {/* Testing ModularCard */}
+
             <div
                 style={{
                     display: 'flex',
