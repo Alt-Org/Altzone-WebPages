@@ -152,8 +152,7 @@ export const AttributesPie = (props: Props): JSX.Element => {
     return (
         <div
             ref={containerRef} // Reference to the container
-            className={classNames(cls.Container)}
-            style={{ width: '100%', height: '100%' }} // Responsive styling
+            className={classNames(cls.Container)} // Use the class from SCSS
         >
             <canvas
                 ref={canvasRef} // Reference to the canvas

@@ -108,16 +108,13 @@ const HeroDevelopmentPage: React.FC<HeroDevelopmentPageProps> = ({ hero }) => {
                             <tbody>
                                 <tr>
                                     <td>{t('upgradePotentialAfterUpdate')}</td>
-                                    <td
-                                        style={{ width: '12em' }}
-                                        className={cls.FatGreen}
-                                    >
+                                    <td className={`${cls.FatGreen} ${cls.InfoTableCell}`}>
                                         {upgradePotential}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>{t('rarityClass')}</td>
-                                    <td style={{ width: '12em' }}>
+                                    <td className={cls.InfoTableCell}>
                                         <span className={cls.FatGreen}>
                                             {t(rarityClassNames[stat.rarityClass])}
                                         </span>
