@@ -139,6 +139,12 @@
         "alt": "Racist main image",
         "altGif": "Racist animation gif",
         "description": "The Racist sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause."
+      },
+      "Meatwall": {
+        "title": "Meatwall",
+        "alt": "Meatwall's main image",
+        "altGif": "Meatwall's animation gif",
+        "description": "The Meatwall is the embodiment of discipline. For him, the gym is a safe haven to retreat to, where training and the pursuit of physical perfection focus his thoughts away from the feelings that trouble his mind. He uses the routines of sports and the doses of endorphins found at the limits of his body to dull the emotions he is not ready to face."
       }
     }
   }

@@ -13,6 +13,7 @@ import conmanGif from '@/shared/assets/images/heros/conman/conman.gif';
 import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
 import fatePriestGif from '@/shared/assets/images/heros/fate-priest/fate-priest.gif';
 import racist from '@/shared/assets/images/heros/racist/Rasisti.png';
+import meatwall from '@/shared/assets/images/heros/meatwall/Meatwall.png';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
@@ -185,6 +186,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.RACIST,
                     title: t('DESENSITIZER.heroes.Racist.title'),
                     description: t('DESENSITIZER.heroes.Racist.description'),
+                    stats: statData.RACIST,
+                },
+                {
+                    id: 848341,
+                    srcImg: meatwall,
+                    srcGif: comingSoon,
+                    alt: t('DESENSITIZER.heroes.Meatwall.alt'),
+                    altGif: t('DESENSITIZER.heroes.Meatwall.altGif'),
+                    slug: HeroSlug.MEATWALL,
+                    title: t('DESENSITIZER.heroes.Meatwall.title'),
+                    description: t('DESENSITIZER.heroes.Meatwall.description'),
                     stats: statData.RACIST,
                 },
             ],

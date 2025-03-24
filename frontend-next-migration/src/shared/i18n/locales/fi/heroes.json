@@ -139,6 +139,12 @@
         "alt": "Rasistin kuva",
         "altGif": "Rasistin animaatiogif",
         "description": "Rasisti näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.\n"
+      },
+      "Meatwall": {
+        "title": "Lihamuuri",
+        "alt": "Lihamuurin kuva",
+        "altGif": "Lihamuurin animaatiogif",
+        "description": "Lihamuuri on kurinalaisuuden ruumiillistuma. Hänelle punttisali on turvasatama, jonne vetäytyä ja jossa treenaus ja kehollisen täydellisyyden tavoittelu keskittävät ajatukset pois mieltä vaivaavista tuntemuksista. Hän käyttää urheilun tuomia rutiineja ja kehonsa äärirajoilta löytyviä endorfiini-annoksia vaimentaakseen tunteita, joita ei ole valmis kohtaamaan."
       }
     }
   }
