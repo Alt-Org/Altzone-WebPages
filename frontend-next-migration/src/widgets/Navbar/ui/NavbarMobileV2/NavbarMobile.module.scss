@@ -10,26 +10,29 @@
     // justify-content: space-between;
     background-color: var(--base-card-background);
     border: 2px solid var(--black);
-    border-radius: var(--border-radius-pill);
+    border-radius: var(--border-radius-xl);
     // height: 50px;
     margin-top: 35px;
     // margin-left: auto;
     z-index: var(--navbar-z-index);
-    filter: drop-shadow(4px 4px black);
+    box-shadow: 4px 4px black;
     top: 0;
     left: 10px;
     right: 10px;
     // width: 100%;
     transition:
-        width 0.4s ease-out,
-        height 0.4s ease-out,
-        padding-right 0.4s ease-out,
-        opacity 0.4s ease-out;
-
+    //     // width 0.4s ease-out,
+    //     // height 0.4s ease-out,
+    //     // padding-right 0.4s ease-out,
+    //     // opacity 0.4s ease-out;
+        height 0.4s ease-out;
+    //     transform 0.4 ease-out;
+    height: 50px;
+    
     &.collapsing {
         overflow: hidden;
     }
-
+    overflow: hidden;
     &.collapsed {
         overflow: hidden;
     }
@@ -47,14 +50,24 @@
 
 }
 
+
 .NavbarDropdown {
     padding: 15px;
+    // transition: transform 0.26s ease;
+    // transform-origin:top;
+    // transform: scaleY(0);
+    //transform: translateY(-100px);
 }
-
+// .oaaa {
+//     transform: scaleY(1);
+// }
 .openDropdown {
     border-radius: var(--border-radius-xl);
-    transition: all;
-    transition-duration: 0.4s;
+    height: unset;
+    
+    //transform: scaleY(-100px);
+    //transition: all;
+    //transition-duration: 0.4s;
 }
 
 .Navbar.collapsed {

@@ -1,6 +1,15 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { CSSProperties, memo, useEffect, useMemo, useState } from 'react';
+import {
+    CSSProperties,
+    memo,
+    useEffect,
+    useMemo,
+    useState,
+    useRef,
+    SetStateAction,
+    ReactNode,
+} from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
@@ -36,6 +45,35 @@ export interface NavbarTouchProps {
     toggleFixed: () => void;
 }
 
+type DropdownElem = 'div' | 'nav';
+
+interface DropdownBoxProps {
+    as?: DropdownElem;
+    callback: (ref: React.RefObject<HTMLDivElement>) => void;
+    className?: string;
+    children: ReactNode;
+}
+
+const DropdownBox = ({
+    as: Component = 'div',
+    callback,
+    className,
+    children,
+}: DropdownBoxProps) => {
+    const ref = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        callback(ref);
+    });
+    return (
+        <Component
+            ref={ref}
+            className={className}
+        >
+            {children}
+        </Component>
+    );
+};
+
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const { marginTop, navbarBuild, side = 'left', className = '', toggleFixed, isFixed } = props;
 
@@ -58,7 +96,35 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // A crutch to reset dropdowns when closing the navbar
     const [sidebarItemsListResetKey, setSidebarItemsListResetKey] = useState(0);
 
-    const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.HAMBURGER);
+    const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.EMPTY);
+    const [isAnimating2, setIsAnimating2] = useState(false);
+    const [height, setHeight] = useState(0);
+    const ref = useRef<HTMLDivElement>(null);
+
+    const toggleAnimation = () => {};
+
+    useEffect(() => {
+        // console.log('hello');
+        if (ref.current) {
+            // const observer = new ResizeObserver(() => {
+            //     if(ref.current?.clientHeight && height !== ref.current?.clientHeight) {
+            //         setHeight(ref.current?.offsetHeight);
+            //     }
+            // });
+            // observer.observe(ref.current);
+            // return () => observer.disconnect();
+            setHeight(ref.current.clientHeight);
+        }
+    });
+    useEffect(() => {
+        if (ref.current && dropdownType !== DropdownTypes.EMPTY) {
+            // ref.current.style.height = `${height}px`;
+            // ref.current.style.minHeight = `${height}px`;
+            ref.current.style.height = `${height}px`;
+        } else if (ref.current) {
+            ref.current.style = '';
+        }
+    }, [height]);
 
     const handleBurgerClick = () => {
         setIsSidebarOpen(true);
@@ -173,7 +239,11 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const getDropdownContent = (dropdownType: DropdownType) => {
         if (dropdownType === DropdownTypes.HAMBURGER) {
-            return <div className={cls.NavbarDropdown}>{dropdownContent[dropdownType]}</div>;
+            return (
+                <div className={`${cls.NavbarDropdown} ${cls.oaaa}`}>
+                    {dropdownContent[dropdownType]}
+                </div>
+            );
         }
         return dropdownContent[dropdownType];
     };
@@ -189,7 +259,13 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         <nav
             className={classNames(cls.Navbar, mods, [className])}
             style={style}
+            ref={ref}
         >
+            {/* <DropdownBox
+        //     className={classNames(cls.Navbar, mods, [className])}
+        //     style={style}
+        //     ref={ref}
+        // > */}
             <div className={cls.NavbarContent}>
                 <div
                     className={classNames(cls.NavbarMobile__burger, sidebarMods)}
@@ -295,6 +371,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 </div>
             </div>
             {getDropdownContent(dropdownType)}
+            {/* </DropdownBox> */}
         </nav>
     );
 };
