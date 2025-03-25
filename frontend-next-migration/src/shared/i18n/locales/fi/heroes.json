@@ -101,11 +101,11 @@
         "description": "Tiimityössä kahdesta tulee yksi, voittamaton tiimi. Tunteiden lähestyessä he puhaltavat suuren purkkapallon suojakseen ja\n hidastavat tapahtumien kulkua imulla, josta on vaikea päästä irti."
       },
 
-      "Sleeper": {
-        "title": "Unikeko",
-        "alt": "Unikeko  pääkuva",
-        "altGif": "Unikeko  animaatiogif",
-        "description": "Unikeko , rauhallinen ja salaperäinen, omaa ainutlaatuisen kyvyn vaivuttaa ympärillään olevat tunteet rauhalliseen tilaan, lieventäen niiden intensiteettiä ja hidastaen reaktiivisia impulsseja. Hänen läsnäolonsa voi saada jopa voimakkaimmat tunteet tuntumaan uneliailta, luoden turvallisen tilan itselleen ja liittolaisilleen. Kuitenkin, mitä enemmän hän käyttää voimaansa, sitä suurempi riski hänellä on ajautua omaan unimaailmaansa, toisinaan irtaantuen liikaa todellisuudesta."
+      "SleepySleeper": {
+        "title": "Valveenvälttelijä",
+        "alt": "Valveenvälttelijän  pääkuva",
+        "altGif": "Valveenvälttelijän  animaatiogif",
+        "description": "Valveenvälttelijä pakenee ylikuormittavaa todellisuutta unimaailmaan. Uni on hänelle keino irtautua ja saada turvaa ympäristöstä, jossa hänen tunteensa ja tarpeensa ovat toissijaisia ja missä hänen oma identiteettinsä on kadonnut muihin mukautumisen jäljiltä. Alati väsynyt, Valveenvälttelijä selviytyy päivästä tietäen, että pian hän voi taas nukahtaa."
       }
     }
   },

@@ -101,11 +101,11 @@
         "altGif": "Soul-sisters animation gif",
         "description": "In Girl team, the two become one, an invincible team. As emotions approach, they blow up a large bubblegum bubble to protect themselves and\n slowing down the course of events with a suction that is hard to release. "
       },
-      "Sleeper": {
-        "title": "Sleeper",
-        "alt": "Sleeper main image",
-        "altGif": "Sleeper animation gif",
-        "description": "Sleeper, calm and mysterious, has the unique ability to lull emotions around her into a tranquil state, dampening their intensity and slowing down any reactive impulses. Her presence can make even the most volatile emotions feel drowsy, creating a safe space for her and her allies. However, the more she uses her power, the more she risks drifting into her own dreamscape, occasionally becoming too disconnected from reality."
+      "SleepySleeper": {
+        "title": "Sleepy Sleeper",
+        "alt": "Sleepy Sleeper main image",
+        "altGif": "Sleepy Sleeper animation gif",
+        "description": "The Sleepy Sleeper escapes an overwhelming reality into a world of dreams. Sleep is a way for her to detach herself and find security from an environment where her feelings and needs are secondary and where her own identity has been lost due to conforming to others. Always tired, the Sleepy Sleeper gets through the day knowing that soon she will be able to fall asleep again."
       }
     }
   },

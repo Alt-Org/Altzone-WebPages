@@ -124,7 +124,7 @@ export const statData: NamedStatArray = {
             rarityClass: 10,
         },
     ],
-    SLEEPER: [
+    SLEEPY_SLEEPER: [
         {
             name: 'resistance',
             defaultLevel: 12,

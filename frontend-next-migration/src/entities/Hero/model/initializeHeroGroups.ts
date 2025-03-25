@@ -8,7 +8,7 @@ import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafit
 import mirror from '@/shared/assets/images/heros/mirror/Mirror.webp';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
 import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-white-bg.gif';
-import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
+import sleepySleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.webp';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
 import jokester from '@/shared/assets/images/heros/jokester/Jokester.webp';
 import conmanGif from '@/shared/assets/images/heros/conman/conman.gif';
@@ -81,13 +81,13 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
 
                 {
                     id: 34123,
-                    srcImg: sleeper,
+                    srcImg: sleepySleeper,
                     srcGif: comingSoon,
-                    alt: t('CONFLUENT.heroes.Sleeper.alt'),
-                    altGif: t('CONFLUENT.heroes.Sleeper.altGif'),
-                    slug: HeroSlug.SLEEPER,
-                    title: t('CONFLUENT.heroes.Sleeper.title'),
-                    description: t('CONFLUENT.heroes.Sleeper.description'),
+                    alt: t('CONFLUENT.heroes.SleepySleeper.alt'),
+                    altGif: t('CONFLUENT.heroes.SleepySleeper.altGif'),
+                    slug: HeroSlug.SLEEPY_SLEEPER,
+                    title: t('CONFLUENT.heroes.SleepySleeper.title'),
+                    description: t('CONFLUENT.heroes.SleepySleeper.description'),
                     stats: statData.SLEEPER,
                 },
             ],

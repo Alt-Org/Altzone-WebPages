@@ -350,7 +350,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
             ],
         },
     },
-    [HeroSlug.SLEEPER]: {
+    [HeroSlug.SLEEPY_SLEEPER]: {
         1: {
             attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
             defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
