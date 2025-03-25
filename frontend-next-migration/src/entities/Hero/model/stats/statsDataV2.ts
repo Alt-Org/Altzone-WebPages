@@ -178,6 +178,33 @@ export const statData: NamedStatArray = {
             rarityClass: 5,
         },
     ],
+    MIRROR: [
+        {
+            name: 'resistance',
+            defaultLevel: 10,
+            rarityClass: 5,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 3,
+            rarityClass: 7,
+        },
+        {
+            name: 'size',
+            defaultLevel: 8,
+            rarityClass: 7,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 7,
+            rarityClass: 7,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 4,
+            rarityClass: 5,
+        },
+    ],
     RESEARCHER: [
         {
             name: 'resistance',

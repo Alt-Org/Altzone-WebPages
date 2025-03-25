@@ -14,6 +14,7 @@ export enum HeroGroup {
 export enum HeroSlug {
     HANNU_HODARI = 'ahmat',
     GRAFFITI_ARTIST = 'graffiti-artist',
+    MIRROR = 'mirror',
     RESEARCHER = 'researcher',
     ALCOHOLIC = 'alcoholic',
     SOUL_SISTERS = 'soul-sisters',

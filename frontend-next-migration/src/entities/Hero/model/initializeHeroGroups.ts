@@ -5,6 +5,7 @@ import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hoda
 import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
+import mirror from '@/shared/assets/images/heros/mirror/Mirror.webp';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
 import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-white-bg.gif';
 import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
@@ -108,6 +109,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('PROJECTOR.heroes.GraffitiArtist.title'),
                     description: t('PROJECTOR.heroes.GraffitiArtist.description'),
                     stats: statData.GRAFFITI_ARTIST,
+                },
+                {
+                    id: 312315,
+                    srcImg: mirror,
+                    srcGif: comingSoon,
+                    alt: t('PROJECTOR.heroes.Mirror.alt'),
+                    altGif: t('PROJECTOR.heroes.Mirror.altGif'),
+                    slug: HeroSlug.MIRROR,
+                    title: t('PROJECTOR.heroes.Mirror.title'),
+                    description: t('PROJECTOR.heroes.Mirror.description'),
+                    stats: statData.MIRROR,
                 },
             ],
         },

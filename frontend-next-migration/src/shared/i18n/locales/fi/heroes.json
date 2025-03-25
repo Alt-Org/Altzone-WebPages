@@ -67,6 +67,12 @@
         "alt": "Olen GRAFFITI TAITEILIJA",
         "altGif": "",
         "description": "Graffiti-Gaya projisoi taitavasti tunteet itsensä ulkopuolelle - niin toisiin hahmoihin, kuin taiteeseen. \nGaya suojautuu suihkuttamalla spraymaalipilven, joka ohjaa tunteet joukkuetoverin hoidettavaksi. Gaya ei vastuuta kanna."
+      },
+      "Mirror": {
+        "title": "Peilinnäyttäjä",
+        "alt": "Peilinnäyttäjän kuva",
+        "altGif": "Peilinnäyttäjän animaatiogif",
+        "description": "Peilinnäyttäjä on yksinäinen ja kipeästi hyväksyntää kaipaava hahmo, joka pyrkii muiden tunteita mukailemalla sulautumaan joukkoon ja välttelee omien tunteidensa näyttämistä porukasta erottumisen pelosta. Hän nauraa ja paheksuu muiden mukana, vaikkei se oikeasti hyvältä tuntuisikaan ja hänen sisimpänsä alkaisi rakoilla."
       }
     }
   },

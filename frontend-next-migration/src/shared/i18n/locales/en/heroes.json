@@ -68,6 +68,12 @@
         "alt": "I am Grafitti artist",
         "altGif": "",
         "description": "Graffiti Gaya skilfully projects emotions outside herself - onto other characters as well as into art. \nGaya protects herself by spraying a cloud of spray paint that directs emotions to a teammate. Gaya bears no responsibility."
+      },
+      "Mirror": {
+        "title": "Mirror",
+        "alt": "Mirror's image",
+        "altGif": "Mirror's animation gif",
+        "description": "The Mirror is a lonely and approval-hungry character who tries to blend in with the crowd by mimicking the feelings of others and avoids showing her own feelings for fear of standing out from the crowd. She laughs and disapproves along with others, even though it doesn't really feel good and her insides start to crack."
       }
     }
   },
