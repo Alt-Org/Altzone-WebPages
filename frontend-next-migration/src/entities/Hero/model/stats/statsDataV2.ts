@@ -286,7 +286,7 @@ export const statData: NamedStatArray = {
             rarityClass: 8,
         },
     ],
-    FATE_PRIEST: [
+    BELIEVER: [
         {
             name: 'resistance',
             defaultLevel: 10,

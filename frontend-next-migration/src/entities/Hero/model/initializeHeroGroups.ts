@@ -12,8 +12,7 @@ import sleepySleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.webp
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
 import jokester from '@/shared/assets/images/heros/jokester/Jokester.webp';
 import conmanGif from '@/shared/assets/images/heros/conman/conman.gif';
-import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
-import fatePriestGif from '@/shared/assets/images/heros/fate-priest/fate-priest.gif';
+import believer from '@/shared/assets/images/heros/fate-priest/Believer.webp';
 import racist from '@/shared/assets/images/heros/racist/Rasisti.png';
 import meatwall from '@/shared/assets/images/heros/meatwall/Meatwall.png';
 import veteran from '@/shared/assets/images/heros/veteran/Veteran.webp';
@@ -184,14 +183,14 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 524234,
-                    srcImg: fatePriest,
-                    srcGif: fatePriestGif,
-                    alt: t('OBEDIENT.heroes.FatePriest.alt'),
-                    altGif: t('OBEDIENT.heroes.FatePriest.altGif'),
-                    slug: HeroSlug.FATE_PRIEST,
-                    title: t('OBEDIENT.heroes.FatePriest.title'),
-                    description: t('OBEDIENT.heroes.FatePriest.description'),
-                    stats: statData.FATE_PRIEST,
+                    srcImg: believer,
+                    srcGif: comingSoon,
+                    alt: t('OBEDIENT.heroes.Believer.alt'),
+                    altGif: t('OBEDIENT.heroes.Believer.altGif'),
+                    slug: HeroSlug.BELIEVER,
+                    title: t('OBEDIENT.heroes.Believer.title'),
+                    description: t('OBEDIENT.heroes.Believer.description'),
+                    stats: statData.BELIEVER,
                 },
             ],
         },

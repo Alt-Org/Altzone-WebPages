@@ -21,7 +21,7 @@ export enum HeroSlug {
     CONMAN = 'conman',
     JOKESTER = 'jokester',
     SLEEPY_SLEEPER = 'sleepy-sleeper',
-    FATE_PRIEST = 'fate-priest',
+    BELIEVER = 'believer',
     RACIST = 'racist',
     MEATWALL = 'meatwall',
     VETERAN = 'veteran',

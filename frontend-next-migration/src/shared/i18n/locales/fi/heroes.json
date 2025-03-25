@@ -133,11 +133,11 @@
     "name": "TOTTELIJAT ",
     "description": "TOTTELIJAT on ...",
     "heroes": {
-      "FatePriest": {
+      "Believer": {
         "title": "Tapauskovainen",
         "alt": "Tapauskovaisen kuva",
         "altGif": "Tapauskovainen animaatiogif",
-        "description": "Tapauskovainen luottaa horjumattomasti sattuman ja kohtalon voimaan. Kohtaessaan voimakkaita tunteita hän heittää kolikkoa tai noppaakin, päättäen seuraavat liikkeensä täysin sattuman sanelemana. Tämä usko kohtaloon voi johtaa yllättäviin ja joskus kaoottisiin tuloksiin, antaen hänelle ainutlaatuisen edun arvaamattomissa tilanteissa. Hänen riippuvuutensa kohtalosta tarkoittaa kuitenkin, että lopputulos jää usein puhtaan onnen varaan, mikä ei aina palvele tiimin etua."
+        "description": "Tapauskovainen luottaa luojansa ohjaukseen. Dogmaattisesti oppineena hän tuntee oikean ja väärän, sekä seuraamukset polulta eksymisestä. Oikean tien sokea seuraaminen on pitänyt hänet poissa hankaluuksista ja vaikkei hän sääntöjä tai niiden syitä ymmärräkään, hän tietää, että niillä on tarkoitus ja sukupolvet häntä ennenkin ovat niitä noudattaneet."
       }
     }
   },
