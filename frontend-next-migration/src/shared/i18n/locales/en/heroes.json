@@ -83,10 +83,10 @@
     "description": "INTELLECTUALIZER  is ...",
     "heroes": {
       "Researcher": {
-        "title": "Researcher ",
-        "alt": "I am a Researcher",
-        "altGif": "",
-        "description": "Albert Älypää protects himself from emotions with a non-fiction book that creates diagrams of the emotional trajectory on the playing field. \nBut Albert's constant graphs can sometimes annoy his teammates."
+        "title": "Researcher",
+        "alt": "Researcher's image",
+        "altGif": "Researcher's animation gif",
+        "description": "The Researcher is an intellectual with a wealth of knowledge, whose self-esteem is tied to his intelligence. He seeks to dominate conversations, picking on others for trivial faults, and using esoteric language to impress others with his intellectual gifts. Always right, the Researcher never admits his own mistakes and does everything he can to stay on top of the debate."
       }
     }
   },
