@@ -113,6 +113,12 @@
         "alt": "Conman main image",
         "altGif": "Conman animation gif",
         "description": "Conman skillfully uses deception and trickery to manipulate emotions and distract opponents. His main ability is creating illusions that deceive those around him, making them see what isn’t really there. \\nHe can also produce distracting sounds and visuals to redirect the focus of emotions onto other targets or to hide within the chaos he creates. However, sometimes his cunning backfires on him."
+      },
+      "Jokester": {
+        "title": "Jokester",
+        "alt": "Jokester's image",
+        "altGif": "Jokester's animation gif",
+        "description": "The Jokester is the life of the party in his friend group. Seeing the fun in everything, being around him keeps things relaxed and boredom at bay. Cheerful and always with a fun quip on the tip of his tongue, he is a sought-after companion until it's time for humor to step aside to make room for genuine connection. At that point, others notice that the Jokester is taking distance and revealing his only true friend, sarcasm."
       }
     }
   },

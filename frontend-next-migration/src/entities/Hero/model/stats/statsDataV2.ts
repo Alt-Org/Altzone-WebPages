@@ -232,6 +232,33 @@ export const statData: NamedStatArray = {
             rarityClass: 8,
         },
     ],
+    JOKESTER: [
+        {
+            name: 'resistance',
+            defaultLevel: 5,
+            rarityClass: 8,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 2,
+            rarityClass: 3,
+        },
+        {
+            name: 'size',
+            defaultLevel: 6,
+            rarityClass: 10,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 7,
+            rarityClass: 7,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 10,
+            rarityClass: 8,
+        },
+    ],
     FATE_PRIEST: [
         {
             name: 'resistance',

@@ -18,6 +18,7 @@ export enum HeroSlug {
     ALCOHOLIC = 'alcoholic',
     SOUL_SISTERS = 'soul-sisters',
     CONMAN = 'conman',
+    JOKESTER = 'jokester',
     SLEEPER = 'sleeper',
     FATE_PRIEST = 'fate-priest',
     RACIST = 'racist',

@@ -9,6 +9,7 @@ import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.
 import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-white-bg.gif';
 import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
+import jokester from '@/shared/assets/images/heros/jokester/Jokester.webp';
 import conmanGif from '@/shared/assets/images/heros/conman/conman.gif';
 import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
 import fatePriestGif from '@/shared/assets/images/heros/fate-priest/fate-priest.gif';
@@ -147,6 +148,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('TRICKSTER.heroes.Conman.title'),
                     description: t('TRICKSTER.heroes.Conman.description'),
                     stats: statData.CONMAN,
+                },
+                {
+                    id: 522314,
+                    srcImg: jokester,
+                    srcGif: comingSoon,
+                    alt: t('TRICKSTER.heroes.Jokester.alt'),
+                    altGif: t('TRICKSTER.heroes.Jokester.altGif'),
+                    slug: HeroSlug.JOKESTER,
+                    title: t('TRICKSTER.heroes.Jokester.title'),
+                    description: t('TRICKSTER.heroes.Jokester.description'),
+                    stats: statData.JOKESTER,
                 },
             ],
         },
