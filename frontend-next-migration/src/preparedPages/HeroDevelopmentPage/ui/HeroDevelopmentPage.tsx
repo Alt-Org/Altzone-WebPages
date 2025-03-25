@@ -63,7 +63,7 @@ const HeroDevelopmentPage: React.FC<HeroDevelopmentPageProps> = ({ hero }) => {
     );
     const getDevelopment = () => {
         // fate-priest cannot be developed
-        if (hero && hero.slug !== 'fate-priest')
+        if (hero && hero.slug !== 'believer')
             return (
                 <>
                     <div className={classNames(cls.AttributesPricingBlock, combinedModCss)}>
