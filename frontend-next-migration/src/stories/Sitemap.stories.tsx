@@ -1,5 +1,5 @@
 import React from 'react';
-import sitemap from '../app/sitemap';
+import sitemap from '@/app/[lng]/sitemap';
 
 export default {
     title: 'Sitemap',
