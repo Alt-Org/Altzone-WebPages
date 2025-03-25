@@ -157,6 +157,12 @@
         "alt": "Meatwall's main image",
         "altGif": "Meatwall's animation gif",
         "description": "The Meatwall is the embodiment of discipline. For him, the gym is a safe haven to retreat to, where training and the pursuit of physical perfection focus his thoughts away from the feelings that trouble his mind. He uses the routines of sports and the doses of endorphins found at the limits of his body to dull the emotions he is not ready to face."
+      },
+      "Veteran": {
+        "title": "Veteran",
+        "alt": "Veteran's image",
+        "altGif": "Veteran's animation gif",
+        "description": "The Veteran is a post-traumatic wreck who has returned home from the front, and the unresolved war traumas still haunt his mind years later. In his attempt to adapt to normal life, the Veteran has pushed the memories of the horrors he experienced in battle to the background, but this constant escape has only taken him beyond salvation, and the bad feeling that has been stuck in him suddenly emerges in everyday situations, preventing him from achieving the peace he desires."
       }
     }
   }

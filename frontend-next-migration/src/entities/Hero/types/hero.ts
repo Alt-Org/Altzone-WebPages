@@ -24,6 +24,7 @@ export enum HeroSlug {
     FATE_PRIEST = 'fate-priest',
     RACIST = 'racist',
     MEATWALL = 'meatwall',
+    VETERAN = 'veteran',
 }
 
 export interface Hero {

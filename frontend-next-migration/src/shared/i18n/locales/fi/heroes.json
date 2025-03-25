@@ -157,6 +157,12 @@
         "alt": "Lihamuurin kuva",
         "altGif": "Lihamuurin animaatiogif",
         "description": "Lihamuuri on kurinalaisuuden ruumiillistuma. Hänelle punttisali on turvasatama, jonne vetäytyä ja jossa treenaus ja kehollisen täydellisyyden tavoittelu keskittävät ajatukset pois mieltä vaivaavista tuntemuksista. Hän käyttää urheilun tuomia rutiineja ja kehonsa äärirajoilta löytyviä endorfiini-annoksia vaimentaakseen tunteita, joita ei ole valmis kohtaamaan."
+      },
+      "Veteran": {
+        "title": "Postraumaattinen Veteraani",
+        "alt": "Postraumaattisen Veteraanin kuva",
+        "altGif": "Postraumaattisen Veteraanin animaatiogif",
+        "description": "Veteraani on rintamalta kotiinpalannut posttraumaattinen ihmisraunio, jonka käsittelemättömät sotatraumat kummittelevat mielessä vielä vuosienkin jälkeen. Yrittäessään sopeutua normaaliin elämään Veteraani on puskenut muistot taisteluissa koetuista kauheuksista taka-alalle, mutta tämä alituinen pakoilu on vienyt häntä vain pelastuksen tuolle puolen ja häneen pinttynyt paha olo tulee esiin yllättäen arkisissa tilanteissa, estäen häntä saavuttamasta haluamaansa rauhaa."
       }
     }
   }
