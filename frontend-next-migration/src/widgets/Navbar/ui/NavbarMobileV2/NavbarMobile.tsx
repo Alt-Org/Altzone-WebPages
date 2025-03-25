@@ -1,30 +1,21 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import {
-    CSSProperties,
-    memo,
-    useEffect,
-    useMemo,
-    useState,
-    useRef,
-    SetStateAction,
-    ReactNode,
-} from 'react';
+import { CSSProperties, memo, useEffect, useMemo, useState, useRef } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
-import { sidebarItemType } from '@/shared/ui/Sidebar/model/items';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
 import userIcon from '@/shared/assets/icons/userIcon.svg';
 import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
+import closeIcon from '@/shared/assets/icons/closeIcon.svg';
 import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 import { NavMenu } from '@/shared/ui/NavMenu';
 import { INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu/ui/NavMenu';
+
 enum DropdownTypes {
     EMPTY = 'EMPTY',
     HAMBURGER = 'HAMBURGER',
@@ -45,35 +36,6 @@ export interface NavbarTouchProps {
     toggleFixed: () => void;
 }
 
-type DropdownElem = 'div' | 'nav';
-
-interface DropdownBoxProps {
-    as?: DropdownElem;
-    callback: (ref: React.RefObject<HTMLDivElement>) => void;
-    className?: string;
-    children: ReactNode;
-}
-
-const DropdownBox = ({
-    as: Component = 'div',
-    callback,
-    className,
-    children,
-}: DropdownBoxProps) => {
-    const ref = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        callback(ref);
-    });
-    return (
-        <Component
-            ref={ref}
-            className={className}
-        >
-            {children}
-        </Component>
-    );
-};
-
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const { marginTop, navbarBuild, side = 'left', className = '', toggleFixed, isFixed } = props;
 
@@ -90,52 +52,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const hasScrollbar = useIsPageScrollbar();
 
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
-
-    // A crutch to reset dropdowns when closing the navbar
-    const [sidebarItemsListResetKey, setSidebarItemsListResetKey] = useState(0);
-
     const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.EMPTY);
-    const [isAnimating2, setIsAnimating2] = useState(false);
-    const [height, setHeight] = useState(0);
-    const ref = useRef<HTMLDivElement>(null);
-
-    const toggleAnimation = () => {};
-
-    useEffect(() => {
-        // console.log('hello');
-        if (ref.current) {
-            // const observer = new ResizeObserver(() => {
-            //     if(ref.current?.clientHeight && height !== ref.current?.clientHeight) {
-            //         setHeight(ref.current?.offsetHeight);
-            //     }
-            // });
-            // observer.observe(ref.current);
-            // return () => observer.disconnect();
-            setHeight(ref.current.clientHeight);
-        }
-    });
-    useEffect(() => {
-        if (ref.current && dropdownType !== DropdownTypes.EMPTY) {
-            // ref.current.style.height = `${height}px`;
-            // ref.current.style.minHeight = `${height}px`;
-            ref.current.style.height = `${height}px`;
-        } else if (ref.current) {
-            ref.current.style = '';
-        }
-    }, [height]);
-
-    const handleBurgerClick = () => {
-        setIsSidebarOpen(true);
-        props.onBurgerButtonClick?.(true);
-    };
-    const handleSidebarClose = () => {
-        setIsSidebarOpen(false);
-        props.onBurgerButtonClick?.(false);
-        // we should give some time for animation
-        setTimeout(() => setSidebarItemsListResetKey((currentKey) => currentKey + 1), 500);
-    };
 
     const [realPath, setRealPath] = useState('/');
     const pathname = usePathname();
@@ -146,7 +63,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setRealPath(newPath);
     }, [pathname]);
 
-    const sidebarItemsList: INavMenuItem[] = useMemo(() => {
+    const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map((item) => {
                 if (item.type === ItemType.navLink) {
@@ -205,36 +122,22 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
         [cls.openDropdown]: dropdownType !== DropdownTypes.EMPTY,
-        // [cls.collapsed]: isCollapsed,
-        [cls.collapsing]: isAnimating,
     } as Record<string, boolean>;
-
-    const sidebarMods: Record<string, boolean> = {
-        [cls.left]: side === 'left',
-        [cls.right]: side === 'right',
-        // [cls.collapsed]: isCollapsed,
-    };
-
-    // const handleCollapseClick = () => {
-    //     if (!isAnimating) {
-    //         setIsAnimating(true);
-    //         toggleCollapsed();
-    //     }
-    // };
-
-    const handleTransitionEnd = () => {
-        setIsAnimating(false);
-    };
 
     const dropdownContent = {
         [DropdownTypes.EMPTY]: null,
         [DropdownTypes.HAMBURGER]: (
             <NavMenu
                 title="title"
-                dropdownItems={sidebarItemsList}
+                dropdownItems={navManuItemsList}
             />
         ),
-        [DropdownTypes.AUTH]: <p>auth form</p>,
+        [DropdownTypes.AUTH]: (
+            <input
+                type="text"
+                placeholder="test field"
+            />
+        ),
     };
 
     const getDropdownContent = (dropdownType: DropdownType) => {
@@ -248,18 +151,10 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         return dropdownContent[dropdownType];
     };
 
-    const toggleDropdown = (dropdown: DropdownType) => {
-        if (dropdown === dropdownType) {
-            setDropdownType(DropdownTypes.EMPTY);
-        } else {
-            setDropdownType(DropdownTypes[dropdown]);
-        }
-    };
     return (
         <nav
             className={classNames(cls.Navbar, mods, [className])}
             style={style}
-            ref={ref}
         >
             {/* <DropdownBox
         //     className={classNames(cls.Navbar, mods, [className])}
@@ -267,53 +162,25 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         //     ref={ref}
         // > */}
             <div className={cls.NavbarContent}>
-                <div
-                    className={classNames(cls.NavbarMobile__burger, sidebarMods)}
-                    onClick={handleBurgerClick}
-                    data-testid="burger-button"
-                />
-                <div onClick={() => toggleDropdown(DropdownTypes.HAMBURGER)}>
-                    <Image
-                        src={hamburgerIcon}
-                        alt="Three vertical lines. Is svg image in the open navigation menu button."
-                        width={26}
-                        height={20}
-                    />
+                <div className={cls.HamurgerBtn}>
+                    {dropdownType !== DropdownTypes.EMPTY ? (
+                        <Image
+                            src={closeIcon}
+                            alt="X shaped svg image. For closing navigation bar menus."
+                            width={20}
+                            height={20}
+                            onClick={() => setDropdownType(DropdownTypes.EMPTY)}
+                        />
+                    ) : (
+                        <Image
+                            src={hamburgerIcon}
+                            alt="Three vertical lines. Is svg image in the open navigation menu button."
+                            width={26}
+                            height={20}
+                            onClick={() => setDropdownType(DropdownTypes.HAMBURGER)}
+                        />
+                    )}
                 </div>
-                {/* <Sidebar
-                sidebarItemsListResetKey={sidebarItemsListResetKey}
-                buttonClassName={classNames(
-                    cls.NavbarMobile__burger + ' ' + cls.navItem,
-                    sidebarMods,
-                )}
-                sidebarClassName={cls.sidebar}
-                sidebarItemsList={sidebarItemsList}
-                side={side}
-                closeOnClickOutside
-                onClose={handleSidebarClose}
-                bottomItems={
-                    <div className={cls.sidebarBottom}>
-                        <LangSwitcher className={cls.langSwitcher} />
-                        <div className={cls.authSection}>
-                            {permissionToLogin.isGranted && (
-                                <AppLink
-                                    className={cls.authSectionLink}
-                                    theme={AppLinkTheme.PRIMARY}
-                                    to={navbarBuild?.namedMenu?.navAuthLogin?.path || ''}
-                                    key={navbarBuild?.namedMenu?.navAuthLogin?.path || ''}
-                                >
-                                    <span>
-                                        {t(`${navbarBuild?.namedMenu?.navAuthLogin?.name}`)}
-                                    </span>
-                                </AppLink>
-                            )}
-                            {permissionToLogout.isGranted && (
-                                <div onClick={() => logout()}>{t(`logout`)}</div>
-                            )}
-                        </div>
-                    </div>
-                }
-            /> */}
                 <AppLink
                     className={classNames(
                         cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
@@ -326,7 +193,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 >
                     <Image
                         loading={'eager'}
-                        width={180}
+                        // width={180}
                         src={navbarBuild?.namedMenu?.navLogo?.src || ''}
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                     />
@@ -337,16 +204,10 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         alt="icon of a person inside a circle"
                         width={20}
                         height={20}
-                        onClick={() => toggleDropdown(DropdownTypes.AUTH)}
+                        onClick={() => setDropdownType(DropdownTypes.AUTH)}
                     />
                     {hasScrollbar && (
-                        <div
-                            className={classNames(
-                                cls.navItem,
-                                // { [cls.collapsed]: isCollapsed }
-                            )}
-                            onTransitionEnd={handleTransitionEnd}
-                        >
+                        <div className={classNames(cls.navItem)}>
                             <ToggleFixButton
                                 isFixed={isFixed}
                                 onClick={toggleFixed}
@@ -354,24 +215,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                             />
                         </div>
                     )}
-                    {/*{isFixed && (*/}
-                    {/*    <div*/}
-                    {/*        className={classNames(cls.CollapseButtonWrapper, {*/}
-                    {/*            [cls.collapsing]: isAnimating,*/}
-                    {/*        })}*/}
-                    {/*    >*/}
-                    {/*        <ToggleCollapseButton*/}
-                    {/*            onClick={handleCollapseClick}*/}
-                    {/*            isCollapsed={isCollapsed}*/}
-                    {/*            className={cls.Button}*/}
-                    {/*            disabled={isAnimating}*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
-                    {/*)}*/}
                 </div>
             </div>
             {getDropdownContent(dropdownType)}
-            {/* </DropdownBox> */}
         </nav>
     );
 };
