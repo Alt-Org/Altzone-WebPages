@@ -42,11 +42,11 @@
     "name": "TORJUJAT",
     "description": "TORJUJAT on ...",
     "heroes": {
-      "hannuHodari": {
+      "Overeater": {
         "title": "Ahmatti",
         "alt": "Olen Ahmatti",
         "altGif": "",
-        "description": "Ahmatti torjuu tunteita keskittymällä syömiseen. Hän on jatkuvasti varuillaan, eikä hän koskaan luovu suojakilvestään, \nvaan se elää jatkuvassa muodonmuutoksessa. "
+        "description": "Ahmatilla on pakonomainen suhde ruokaan. Syöminen on hänelle tapa käsitellä tunteita, tuoden hänelle lohtua ja kontrollia - erityisesti hänen tuntiessaan olonsa hylätyksi, tai eristyksissä olevaksi. Ruoka on Ahmatille kuin alati läsnä oleva kumppani, joka kulkee hänen rinnallaan päivästä toiseen ja pystyy auttamaan häntä hädän hetkellä."
       },
       "alcoholic": {
         "title": "Alkoholisti",

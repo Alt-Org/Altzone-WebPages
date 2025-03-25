@@ -43,7 +43,7 @@ type NamedStatArray = {
 };
 
 export const statData: NamedStatArray = {
-    HANNU_HODARI: [
+    OVEREATER: [
         {
             name: 'resistance',
             defaultLevel: 5,

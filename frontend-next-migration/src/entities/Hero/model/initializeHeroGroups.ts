@@ -1,7 +1,7 @@
 import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
 import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
-import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari-white-bg.gif';
+import overeater from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import overeaterGif from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari-white-bg.gif';
 import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
 import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
@@ -37,14 +37,14 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 4341,
-                    srcImg: hannuHodari,
-                    srcGif: hannuHodariGiF,
-                    alt: t('RETROFLECTOR.heroes.hannuHodari.alt'),
-                    altGif: t('RETROFLECTOR.heroes.hannuHodari.altGif'),
-                    title: t('RETROFLECTOR.heroes.hannuHodari.title'),
-                    slug: HeroSlug.HANNU_HODARI,
-                    description: t('RETROFLECTOR.heroes.hannuHodari.description'),
-                    stats: statData.HANNU_HODARI,
+                    srcImg: overeater,
+                    srcGif: overeaterGif,
+                    alt: t('RETROFLECTOR.heroes.Overeater.alt'),
+                    altGif: t('RETROFLECTOR.heroes.Overeater.altGif'),
+                    title: t('RETROFLECTOR.heroes.Overeater.title'),
+                    slug: HeroSlug.OVEREATER,
+                    description: t('RETROFLECTOR.heroes.Overeater.description'),
+                    stats: statData.OVEREATER,
                 },
 
                 {

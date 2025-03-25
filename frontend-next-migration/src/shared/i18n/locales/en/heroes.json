@@ -42,11 +42,11 @@
     "name": "RETROFLECTOR",
     "description": "RETROFLECTOR is ...",
     "heroes": {
-      "hannuHodari": {
-        "title": "Glutton",
-        "alt": "Glutton image",
-        "altGif": "Glutton gif",
-        "description": "Glutton fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux."
+      "Overeater": {
+        "title": "Overeater",
+        "alt": "Overeater image",
+        "altGif": "Overeater gif",
+        "description": "The Overeater has a compulsive relationship with food. Eating is a way for him to process emotions, bringing him comfort and control - especially when he feels abandoned or isolated. Food is like an ever-present companion for the Overeater, walking alongside him day after day and able to help him in a time of need."
       },
 
       "alcoholic": {
