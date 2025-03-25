@@ -63,11 +63,11 @@
     "name": "PROJECTOR",
     "description": "PROJECTOR on ...",
     "heroes": {
-      "GraffitiArtist": {
-        "title": "Grafitti artist ",
-        "alt": "I am Grafitti artist",
-        "altGif": "",
-        "description": "Graffiti Gaya skilfully projects emotions outside herself - onto other characters as well as into art. \nGaya protects herself by spraying a cloud of spray paint that directs emotions to a teammate. Gaya bears no responsibility."
+      "Provocateur": {
+        "title": "Provocateur",
+        "alt": "Provocateur's image",
+        "altGif": "Provocateour's animation gif",
+        "description": "The Provocateur is a storyteller who communicates through her art. Her work is a way to process emotions, find silver linings in the trials that plague her, and say the things that cannot be put into words. The Provocateur also has a deep desire to touch other people, to create reactions and experiences in them, and to challenge their views through her art. Her story is readable by everyone, but it only opens up to those who look deeper than the surface."
       },
       "Mirror": {
         "title": "Mirror",

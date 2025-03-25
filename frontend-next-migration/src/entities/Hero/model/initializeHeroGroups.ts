@@ -3,8 +3,8 @@ import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_danc
 import overeater from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import overeaterGif from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari-white-bg.gif';
 import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
-import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
-import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
+import provocateur from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
+import provocateurGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
 import mirror from '@/shared/assets/images/heros/mirror/Mirror.webp';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
 import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-white-bg.gif';
@@ -101,14 +101,14 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 312314,
-                    srcImg: graffittiGaya,
-                    srcGif: graffittiGayaGif,
-                    alt: t('PROJECTOR.heroes.GraffitiArtist.alt'),
-                    altGif: t('PROJECTOR.heroes.GraffitiArtist.altGif'),
-                    slug: HeroSlug.GRAFFITI_ARTIST,
-                    title: t('PROJECTOR.heroes.GraffitiArtist.title'),
-                    description: t('PROJECTOR.heroes.GraffitiArtist.description'),
-                    stats: statData.GRAFFITI_ARTIST,
+                    srcImg: provocateur,
+                    srcGif: provocateurGif,
+                    alt: t('PROJECTOR.heroes.Provocateur.alt'),
+                    altGif: t('PROJECTOR.heroes.Provocateur.altGif'),
+                    slug: HeroSlug.PROVOCATEUR,
+                    title: t('PROJECTOR.heroes.Provocateur.title'),
+                    description: t('PROJECTOR.heroes.Provocateur.description'),
+                    stats: statData.PROVOCATEUR,
                 },
                 {
                     id: 312315,

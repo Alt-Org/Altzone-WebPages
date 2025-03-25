@@ -13,7 +13,7 @@ export enum HeroGroup {
 
 export enum HeroSlug {
     OVEREATER = 'overeater',
-    GRAFFITI_ARTIST = 'graffiti-artist',
+    PROVOCATEUR = 'provocateur',
     MIRROR = 'mirror',
     RESEARCHER = 'researcher',
     ALCOHOLIC = 'alcoholic',

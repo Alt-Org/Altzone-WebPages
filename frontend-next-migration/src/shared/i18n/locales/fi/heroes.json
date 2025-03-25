@@ -62,11 +62,11 @@
     "name": "PEILAAJAT",
     "description": "PEILAAJAT on ...",
     "heroes": {
-      "GraffitiArtist": {
-        "title": "Grafittitaiteilija",
-        "alt": "Olen GRAFFITI TAITEILIJA",
-        "altGif": "",
-        "description": "Graffiti-Gaya projisoi taitavasti tunteet itsensä ulkopuolelle - niin toisiin hahmoihin, kuin taiteeseen. \nGaya suojautuu suihkuttamalla spraymaalipilven, joka ohjaa tunteet joukkuetoverin hoidettavaksi. Gaya ei vastuuta kanna."
+      "Provocateur": {
+        "title": "Provokaattori",
+        "alt": "Provokaattorin kuva",
+        "altGif": "Provokaattorin animaatio gif",
+        "description": "Provokaattori on tarinankertoja, joka kommunikoi taiteensa kautta. Hänen teoksensa ovat tapa käsitellä tunteita, löytää hopeareunuksia häntä vaivaavista koettelemuksista ja sanoa ne asiat, mihin ei löydy sanoja. Provokaattorilla on myös syvä halu koskettaa muita ihmisiä, luoda heissä reaktioita ja kokemuksia sekä haastaa heidän näkemyksiään taiteensa välityksellä. Hänen tarinansa on kaikkien luettavissa, mutta se aukeaa vain niille, jotka katsovat pintaa syvemmälle."
       },
       "Mirror": {
         "title": "Peilinnäyttäjä",

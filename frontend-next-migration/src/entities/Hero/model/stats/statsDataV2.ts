@@ -151,7 +151,7 @@ export const statData: NamedStatArray = {
             rarityClass: 10,
         },
     ],
-    GRAFFITI_ARTIST: [
+    PROVOCATEUR: [
         {
             name: 'resistance',
             defaultLevel: 10,

@@ -60,7 +60,7 @@ export const statsData: Record<HeroSlug, Record<HeroLevel, HeroStats>> = {
             ],
         },
     },
-    [HeroSlug.GRAFFITI_ARTIST]: {
+    [HeroSlug.PROVOCATEUR]: {
         1: {
             attack: [{ statLevel: 1, value: 10, cost: 50, upgradePotential: 2 }],
             defense: [{ statLevel: 1, value: 5, cost: 40, upgradePotential: 2 }],
