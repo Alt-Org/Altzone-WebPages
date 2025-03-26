@@ -21,10 +21,10 @@
   "UserInterface": "User Interface",
   "WebPagesCode": "Web Pages Code",
 
-  "head-title": "Team - Altzone",
+  "head-title": "Team",
   "head-description": "Get to know the Altzone project team dedicated to creating memorable gaming experiences and comic galleries.",
   "head-keywords": "altzone, team, developers, comics, games, community",
-
+  "search_placeholder": "Search member",
   "page-title": "Our Team",
   "page-description": "Meet our talented team! Here you can discover all the contributors behind the creation of our exciting game. From developers and designers to writers and testers, everyone plays an essential role.",
   "page-play": "Play",

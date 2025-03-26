@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 .teamMembersList{
   padding-top: 1rem;
@@ -36,14 +37,20 @@
   border-radius: var(--border-radius-custom);
   padding: 0.7rem 2rem 2rem 2rem;
   align-items: start;
+  background-color: var(--background);
+  width: 100%;
+  border-style: solid;
+  border-color: var(--black);
+  border-width: 2px;
 
-  h2 {
+  h1 {
     text-transform: uppercase;
     color: var(--primary-color);
     text-align: center;
     padding-right: 20%;
     padding-top: 2rem;
     background-color: transparent;
+    font-family: var(--font-family-title),serif;
   }
 
   h3 {
@@ -53,5 +60,6 @@
     padding-bottom: 1%;
     padding-right: 20%;
     padding-top: 0.5rem;
+    font-family: var(--font-family-title),serif;
   }
 }

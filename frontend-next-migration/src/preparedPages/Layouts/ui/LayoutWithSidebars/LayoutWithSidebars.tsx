@@ -12,6 +12,7 @@ interface SidebarConfig {
     hideOnDesktop?: boolean;
     collapsed?: boolean;
     className?: string;
+    variant?: 'normal' | 'wide';
 }
 
 interface DesktopLeftSidebarLayoutPropsBase {
@@ -36,6 +37,8 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const isCollapsed = useSelector(selectIsCollapsed);
     const isTopIndentCustom = isFixed && !isCollapsed;
 
+    const variant = leftTopSidebar?.variant ?? 'normal';
+
     const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
     const bothSidebarsVisibleOnDesktop =
         !leftTopSidebar?.hideOnDesktop && !rightBottomSidebar?.hideOnDesktop;
@@ -55,16 +58,19 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
 
     return (
         <Container
-            className={classNames(cls.container, {}, [className])}
+            className={classNames(`${variant === 'wide' ? cls.wideContainer : cls.container}`, {}, [
+                className,
+            ])}
             fluid={shouldBeFluid}
         >
             {leftTopSidebar && (
                 <aside
                     style={{
-                        minWidth: collapsed ? '1em' : '250px',
-                        flexBasis: collapsed ? '1em' : '20%',
+                        minWidth: variant === 'wide' ? '5%' : collapsed ? '1em' : '250px',
+                        flexBasis: variant === 'wide' ? '15%' : collapsed ? '1em' : '20%',
                         overflowX: collapsed ? 'hidden' : 'auto',
                         top: !isTopIndentCustom ? '50px' : undefined,
+                        marginTop: variant === 'wide' ? 'calc(20vh + 4rem)' : undefined,
                     }}
                     className={classNames(
                         cls.sidebar,

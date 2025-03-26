@@ -1,0 +1,51 @@
+
+.headerImg {
+    width: 70%;
+    height: 40rem;
+    border-radius: var(--border-radius-md);
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--black);
+    box-shadow: 3px 4px black;
+    
+}
+
+.HeaderContainer {
+    margin-top: 24vh;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        font-family: var(--font-family-title),serif;
+        color: var(--primary-color);
+        font-size: var(--h2-size-desktop);
+        width: 70%;
+        align-self: center;
+    }
+}
+
+.TitleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    align-items: center;
+    height: 9rem;
+}
+
+.Searchfield {
+    border-radius: var(--border-radius-xl);
+    color: var(--primary-color);
+    background-color: var(--background);
+    height: 2.5rem;
+    width: 13rem;
+    overflow: hidden;
+    border-style: solid;
+    border-color: var(--black);
+    border-width: 3px;
+    filter: drop-shadow(3px 5px var(--drop-shadows));
+}
+
+

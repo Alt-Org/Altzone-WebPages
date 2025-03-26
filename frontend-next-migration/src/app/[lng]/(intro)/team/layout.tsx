@@ -1,10 +1,12 @@
 import React, { ReactNode } from 'react';
 import { ScrollTop } from '@/features/ScrollTop';
-import { LayoutWithIntro } from '@/preparedPages/Layouts';
+import { LayoutWithIntro, LayoutWithSidebars } from '@/preparedPages/Layouts';
 import introBg from '@/shared/assets/images/members/members7.webp';
 import cls from './Layout.module.scss';
 import { useServerTranslation } from '@/shared/i18n';
 import { ScrollBottomButton } from './_components/_ScrollBottomButton';
+import MemberSidebar from '@/features/NavigateMembers/ui/MemberSidebar';
+import TeamHeaderDesktop from './_components/TeamHeaderDesktop/TeamHeaderDesktop';
 
 type Props = {
     children: ReactNode;
@@ -19,27 +21,19 @@ export default async function TeamLayout({ children, params }: Props) {
     const { t } = await useServerTranslation(lng, 'members');
 
     return (
-        <>
-            <LayoutWithIntro
-                introMinHeight={'800px'}
-                introHeight={'86vh'}
-                // introHeight={'86vh'}
-                title={t('page-title')}
-                overlayColor={'rgba(7, 27, 30, 0.5'}
-                bgImage={introBg.src}
-                description={t('page-description')}
-                blurLineClass={cls.blurLine}
-                bottomAdditional={
-                    <ScrollBottomButton
-                        IdToScrollBeforePlay={'members'}
-                        className={cls.diveButton}
-                        text={`${t('meet-button')}`}
-                    />
-                }
+        <div className={cls.MemberContainer}>
+            <TeamHeaderDesktop lng={lng} />
+            <LayoutWithSidebars
+                className={cls.MembersPage}
+                leftTopSidebar={{
+                    variant: 'wide',
+                    component: <MemberSidebar />,
+                    hideOnMobile: true,
+                }}
             >
                 {children}
-            </LayoutWithIntro>
-            <ScrollTop />
-        </>
+                <ScrollTop />
+            </LayoutWithSidebars>
+        </div>
     );
 }

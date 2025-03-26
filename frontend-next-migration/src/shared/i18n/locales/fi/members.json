@@ -21,10 +21,10 @@
   "UserInterface": "Käyttöliittymä",
   "WebPagesCode": "Verkkosivukoodi",
 
-  "head-title": "Tiimi - Altzone",
+  "head-title": "Tiimi",
   "head-description": "Tutustu Altzone-projektin tiimiin, joka on omistautunut luomaan mieleenpainuvia pelikokemuksia ja sarjakuvagallerioita.",
   "head-keywords": "altzone, tiimi, kehittäjät, sarjakuvat, pelit, yhteisö",
-
+  "search_placeholder": "Etsi tiimiläistä",
   "page-title": "Meidän tiimimme",
   "page-description": "Tapaa lahjakas tiimimme! Täältä löydät kaikki henkilöt, jotka osallistuvat jännittävän pelimme luomiseen. Kehittäjistä ja suunnittelijoista kirjoittajiin ja testaajiin – jokaisella on tärkeä rooli.",
   "page-play": "Toista",
