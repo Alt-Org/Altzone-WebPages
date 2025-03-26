@@ -40,14 +40,8 @@ export type IJoin = {
     join_message: string;
 };
 
-export type IClanCreateDto = Pick<
-    IClan,
-    'name' | 'tag' | 'phrase' | 'labels' | 'gameCoins' | 'isOpen'
->;
+export type IClanCreateDto = Pick<IClan, 'name' | 'tag' | 'phrase' | 'labels' | 'isOpen'>;
 
-export type IClanUpdateDto = Pick<
-    IClan,
-    '_id' | 'name' | 'tag' | 'phrase' | 'labels' | 'gameCoins' | 'isOpen'
->;
+export type IClanUpdateDto = Pick<IClan, '_id' | 'name' | 'tag' | 'phrase' | 'labels' | 'isOpen'>;
 
 export type IJoinDto = Pick<IJoin, 'clan_id' | 'player_id' | 'join_message'>;
