@@ -15,7 +15,6 @@ const NewsPage = () => {
     const handleSearchChange = () => {
         // setSearchValue(e.target.value);
     };
-
     const newsPageMock = [
         {
             id: 1,
