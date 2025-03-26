@@ -2,6 +2,7 @@ import React from 'react';
 import search from '@/shared/assets/icons/search.png';
 import { CustomForm } from '@/shared/ui/CustomForm';
 import cls from './Search.module.scss';
+import { useClientTranslation } from '@/shared/i18n';
 
 interface SearchInputProps {
     placeholder?: string;
@@ -42,12 +43,13 @@ interface SearchInputProps {
  */
 
 export const SearchInput: React.FC<SearchInputProps> = ({ value, onChange }) => {
+    const { t } = useClientTranslation('search');
     return (
         <div className={cls.searchContainer}>
             <CustomForm.InputField
                 label=""
                 inputProps={{
-                    placeholder: 'Hae',
+                    placeholder: t('search'),
                     className: cls.searchInput,
                     value: value,
                     onChange: onChange,
