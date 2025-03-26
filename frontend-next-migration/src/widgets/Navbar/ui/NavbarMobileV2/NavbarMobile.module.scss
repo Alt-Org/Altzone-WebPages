@@ -5,34 +5,27 @@
 .Navbar {
     position: absolute;
     font: var(--font-xxl);
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-between;
     background-color: var(--base-card-background);
     border: 2px solid var(--black);
     border-radius: var(--border-radius-xl);
-    // height: 50px;
+
     margin-top: 35px;
-    // margin-left: auto;
     z-index: var(--navbar-z-index);
     box-shadow: 4px 4px black;
     top: 0;
     left: 10px;
     right: 10px;
-    // width: 100%;
     transition:
-    //     // width 0.4s ease-out,
-    //     // height 0.4s ease-out,
-    //     // padding-right 0.4s ease-out,
-    //     // opacity 0.4s ease-out;
+        width 0.4s ease-out,
+        height 0.4s ease-out,
+        padding-right 0.4s ease-out,
+        opacity 0.4s ease-out,
         height 0.4s ease-out;
-    //     transform 0.4 ease-out;
-    height: 50px;
-
+    
     &.collapsing {
         overflow: hidden;
     }
-    overflow: hidden;
+
     &.collapsed {
         overflow: hidden;
     }
@@ -53,22 +46,16 @@
 
 .NavbarDropdown {
     padding: 15px;
-    // transition: transform 0.26s ease;
+    transition: transform 0.86s ease;
     // transform-origin:top;
-    // transform: scaleY(0);
-    //transform: translateY(-100px);
+    // transform: translateY(-100%);
 }
-// .oaaa {
-//     transform: scaleY(1);
+.test {
+    // transform: translateY(10%);
+}
+// .openDropdown {
+    // height: calc-size(auto); // experimental
 // }
-.openDropdown {
-    border-radius: var(--border-radius-xl);
-    height: unset;
-
-    //transform: scaleY(-100px);
-    //transition: all;
-    //transition-duration: 0.4s;
-}
 
 .Navbar.collapsed {
     width: 65px;
@@ -94,7 +81,6 @@
 }
 
 .fixed {
-    //position: sticky;
     position: fixed;
 }
 
@@ -213,6 +199,47 @@
 //         color: white;
 //     }
 // }
+.langSwitcher {
+    top: 10px;
+    color: var(--primary-color) !important;
+    color: white;
+    font-size: var(--font-xxl) !important;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0 12px;
+    flex-wrap:wrap;
+    ul {
+        // display: none;
+        // position: absolute;
+        // margin-top: 80px;
+        height: max-content;
+        width: 100%;
+        list-style-type: none;
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 70px;
+    }
+
+    li {
+        cursor: pointer;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        color:white;
+        // display: none;
+    }
+
+    li:hover {
+        color: white;
+    }
+
+    img {
+        width: 28px;
+    }
+}
 
 .buttonContainer {
     display: flex;

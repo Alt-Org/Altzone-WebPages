@@ -7,7 +7,7 @@ import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
-import userIcon from '@/shared/assets/icons/userIcon.svg';
+import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
 import closeIcon from '@/shared/assets/icons/closeIcon.svg';
 import { ItemType, NavbarBuild } from '../../model/types';
@@ -129,7 +129,13 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         [DropdownTypes.HAMBURGER]: (
             <NavMenu
                 title="title"
-                dropdownItems={navManuItemsList}
+                // todo langswitcher could be in navbarmobile data and not hardcoded here
+                dropdownItems={navManuItemsList.concat([
+                    {
+                        type: NavMenuItemType.Element,
+                        element: <LangSwitcher className={cls.langSwitcher} />,
+                    },
+                ])}
             />
         ),
         [DropdownTypes.AUTH]: (
@@ -141,14 +147,14 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     };
 
     const getDropdownContent = (dropdownType: DropdownType) => {
-        if (dropdownType === DropdownTypes.HAMBURGER) {
-            return (
-                <div className={`${cls.NavbarDropdown} ${cls.oaaa}`}>
-                    {dropdownContent[dropdownType]}
-                </div>
-            );
+        if (dropdownType === DropdownTypes.EMPTY) {
+            return null;
         }
-        return dropdownContent[dropdownType];
+        return (
+            <div className={`${cls.NavbarDropdown} ${cls.test}`}>
+                {dropdownContent[dropdownType]}
+            </div>
+        );
     };
 
     return (
@@ -200,11 +206,17 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 </AppLink>
                 <div className={cls.buttonContainer}>
                     <Image
-                        src={userIcon}
+                        src={profileIcon}
                         alt="icon of a person inside a circle"
                         width={20}
                         height={20}
-                        onClick={() => setDropdownType(DropdownTypes.AUTH)}
+                        onClick={() =>
+                            setDropdownType(
+                                dropdownType === DropdownTypes.AUTH
+                                    ? DropdownTypes.EMPTY
+                                    : DropdownTypes.AUTH,
+                            )
+                        }
                     />
                     {hasScrollbar && (
                         <div className={classNames(cls.navItem)}>
