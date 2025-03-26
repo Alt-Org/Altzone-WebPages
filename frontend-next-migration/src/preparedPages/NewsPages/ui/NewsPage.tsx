@@ -4,13 +4,18 @@ import { Container } from '@/shared/ui/Container';
 import { NewsCard } from '@/widgets/NewsCard';
 import cls from './NewsPage.module.scss';
 import { SearchInput } from '@/features/Search';
+import { useClientTranslation } from '@/shared/i18n';
 
 const NewsPage = () => {
     const [searchValue, setSearchValue] = useState('');
+
+    const { t } = useClientTranslation('search');
+
     // later use this to fetch data from the backend
     const handleSearchChange = () => {
         // setSearchValue(e.target.value);
     };
+
     const newsPageMock = [
         {
             id: 1,
@@ -45,7 +50,7 @@ const NewsPage = () => {
         <main className={cls.NewsPage}>
             <Container>
                 <div className={cls.header}>
-                    <h2 className={cls.title}>News</h2>
+                    <h2 className={cls.title}>{t('newsTitle')}</h2>
                     <div>
                         <SearchInput
                             value={searchValue}
