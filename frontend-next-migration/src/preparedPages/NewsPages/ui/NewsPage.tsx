@@ -45,7 +45,7 @@ const NewsPage = () => {
         <main className={cls.NewsPage}>
             <Container>
                 <div className={cls.header}>
-                    <h1 className={cls.title}>News</h1>
+                    <h2 className={cls.title}>News</h2>
                     <div>
                         <SearchInput
                             value={searchValue}
