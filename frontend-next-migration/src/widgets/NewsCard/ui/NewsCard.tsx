@@ -18,21 +18,20 @@ const NewsCard = (props: NewsCardProps) => {
     return (
         <div className={classNames(cls.NewsCard, {})}>
             <div className={cls.content}>
-                <h3 className={cls.title}>{title}</h3>
+                <h2 className={cls.title}>{title}</h2>
                 <p className={cls.text}>{content}</p>
-                <span className={cls.date}>{date}</span>
-            </div>
-
-            <div className={cls.imageContainer}>
-                <div className={cls.imageWrapper}>
-                    <Image
-                        src={imageSrc}
-                        alt={title}
-                        className={cls.image}
-                        layout="responsive"
-                        width={200}
-                        height={554}
-                    />
+                <span className={cls.date}>Date:{date}</span>
+                <div className={cls.imageContainer}>
+                    <div className={cls.imageWrapper}>
+                        <Image
+                            src={imageSrc}
+                            alt={title}
+                            className={cls.image}
+                            layout="responsive"
+                            width={100}
+                            height={600}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
