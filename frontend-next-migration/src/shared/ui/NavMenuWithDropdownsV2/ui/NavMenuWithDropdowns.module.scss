@@ -6,7 +6,7 @@
   font-size: var(--font-size-l);
 
   // max-width can be changed but shouldnt really be necessary
-  max-width: 320px;
+  max-width: 280px;
 
   @media (max-width: breakpoint(lg)) {
     width: 50%;
