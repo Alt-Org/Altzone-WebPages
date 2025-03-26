@@ -1,7 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import useSizes from '@/shared/lib/hooks/use
 import { Container } from '@/shared/ui/Container';
 import { NewsCard } from '@/widgets/NewsCard';
 import cls from './NewsPage.module.scss';
