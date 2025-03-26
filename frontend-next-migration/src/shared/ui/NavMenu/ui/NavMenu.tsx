@@ -8,85 +8,34 @@ import cls from './NavMenu.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { usePathname } from 'next/navigation';
-
-export enum NavMenuItemType {
-    Dropdown = 'NavManuDropdown',
-    Link = 'NavMenuLink',
-    Element = 'NavMenuElement',
-}
-
-export type INavMenuDropdown = {
-    type: NavMenuItemType.Dropdown;
-    name: string;
-    elements: DropDownElement[];
-    active?: boolean;
-};
-
-export type INavMenuLink = {
-    type: NavMenuItemType.Link;
-    path: string;
-    name: string;
-    active?: boolean;
-};
-
-export type INavMenuElement = {
-    type: NavMenuItemType.Element;
-    element: ReactNode;
-};
-
-export type INavMenuItem = INavMenuLink | INavMenuDropdown | INavMenuElement;
+import { INavMenuItem, NavMenuItemType } from '../model/types/';
 
 export interface NavMenuProps {
     dropdownItems: INavMenuItem[];
-    // (DropdownItem | ReactNode | DropDownElementASTextOrLink)[]
-    openByDefault?: boolean;
-    titleAsActive?: boolean;
-    staticDropdown?: boolean;
-    title: string;
     className?: string;
-}
-
-function isDropdownItem(
-    item: INavMenuDropdown | ReactNode | DropDownElementASTextOrLink,
-): item is INavMenuDropdown {
-    return typeof item === 'object' && item !== null && 'name' in item && 'elements' in item;
-}
-
-function isDropDownElementASTextOrLink(item: any): item is DropDownElementASTextOrLink {
-    return typeof item === 'object' && item !== null && 'elementText' in item;
 }
 
 /**
  * NavMenu component for creating a navigation menu with dropdowns. This like an open NavMenuWithDropdownsV2 but without the dropdown mechanic
  *
  * @param {NavMenuProps} props - The properties for the NavMenu component.
- * @param {string} props.title - The title displayed for the dropdown menu.
- * @param {(DropdownItem | ReactNode | DropDownElementASTextOrLink)[]} props.dropdownItems - An array of dropdown items, which can include nested dropdown elements or plain React nodes.
- * @param {boolean} [props.openByDefault=false] - Specifies if the dropdown should be open by default.
- * @param {boolean} [props.staticDropdown=false] - Determines if the first dropdown element remains static and always open.
- * @param {boolean} [props.titleAsActive=false] - Uses the active dropdown item title as the main dropdown title if the item's link path matches the current router path.
+ * @param {INavMenuItem[]} props.dropdownItems - An array of dropdown items, which can include nested dropdown elements or plain React nodes.
  * @param {string} [props.className=''] - Additional CSS classes for styling the root container.
  * @returns {JSX.Element} - The rendered `NavMenu` component.
  *
  * @example
  * const navMenuProps: NavMenuProps = {
- *   title: 'Menu',
- *   openByDefault: false,
- *   staticDropdown: false,
- *   titleAsActive: false,
  *   dropdownItems: [
  *     { elementText: 'Item 1', link: { path: '/item1', isExternal: false } },
  *     {
- *       title: 'Category 1',
- *       openByDefault: false,
+ *       name: 'Category 1',
  *       elements: [
  *         { id: '1', elementText: 'Item 2', link: { path: '/item2', isExternal: false } },
  *         { id: '2', elementText: 'Item 3', link: { path: '/item3', isExternal: false } },
  *       ],
  *     },
  *     {
- *       title: 'Category 2',
- *       openByDefault: false,
+ *       name: 'Category 2',
  *       elements: [
  *         { id: '3', elementText: 'Item 4', link: { path: '/item4', isExternal: false } },
  *         { id: '4', elementText: 'Item 5', link: { path: '/item5', isExternal: false } },
@@ -97,59 +46,20 @@ function isDropDownElementASTextOrLink(item: any): item is DropDownElementASText
  */
 
 function NavMenu(props: NavMenuProps): JSX.Element {
-    const {
-        dropdownItems,
-        className = '',
-        title,
-        openByDefault = false,
-        staticDropdown = false,
-        titleAsActive = false,
-    } = props;
-
-    const [realPath, setRealPath] = useState('/');
-    const pathname = usePathname();
-    // console.log(dropdownItems);
-    useEffect(() => {
-        const pathSegments = pathname.split('/').filter(Boolean);
-        const newPath = `/${pathSegments.slice(1, 4).join('/')}`;
-        // console.log(newPath);
-        // console.log(pathSegments);
-        setRealPath(newPath);
-    }, [pathname]);
-
-    // Function to set title to active paths title, experimental
-    const getActiveTitle = (): string => {
-        for (const item of dropdownItems) {
-            if (isDropDownElementASTextOrLink(item) && item.link?.path === realPath) {
-                return item.elementText || '';
-            }
-        }
-        return title; // Default title if no active found
-    };
-
-    const dynamicTitle = titleAsActive ? getActiveTitle() : title;
+    const { dropdownItems, className = '' } = props;
 
     const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
     return (
         <div className={classNames(cls.NavMenu, {}, [className])}>
-            {/* <DropdownWrapper
-                openByDefault={openByDefault}
-                staticDropdown={staticDropdown}
-                dynamicTitle={dynamicTitle}
-                staticTitle={title}
-                dataTestId={title}
-                elements={}
-                className={cls.topDropDown}
-                childrenWrapperClassName={cls.topDropDownChildren}
-                contentClassName={cls.topDropDownContent}
-                showArrow={true}
-            /> */}
             {dropdownItems.map((item, index) => (
                 <div key={index}>
                     {item.type === NavMenuItemType.Dropdown && (
                         <DropdownWrapper
-                            childrenWrapperClassName={cls.ChildrenWrapper}
+                            childrenWrapperClassName={classNames(cls.ChildrenWrapper, {
+                                [cls.activeDropdown]: index === openDropdown,
+                                [cls.active]: item.active,
+                            })}
                             isOpen={index === openDropdown}
                             onOpen={() => {
                                 setOpenDropdown(index);

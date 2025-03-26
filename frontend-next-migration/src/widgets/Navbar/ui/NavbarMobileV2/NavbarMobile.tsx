@@ -13,8 +13,7 @@ import closeIcon from '@/shared/assets/icons/closeIcon.svg';
 import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
-import { NavMenu } from '@/shared/ui/NavMenu';
-import { INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu/ui/NavMenu';
+import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 
 enum DropdownTypes {
     EMPTY = 'EMPTY',
@@ -128,7 +127,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         [DropdownTypes.EMPTY]: null,
         [DropdownTypes.HAMBURGER]: (
             <NavMenu
-                title="title"
                 // todo langswitcher could be in navbarmobile data and not hardcoded here
                 dropdownItems={navManuItemsList.concat([
                     {
@@ -139,10 +137,21 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             />
         ),
         [DropdownTypes.AUTH]: (
-            <input
-                type="text"
-                placeholder="test field"
-            />
+            <div>
+                {permissionToLogin.isGranted ? (
+                    <p>Login</p>
+                ) : permissionToLogout.isGranted ? (
+                    <>
+                        <AppLink to="/profile">{t('profile')}</AppLink>
+                        <button
+                            className={cls.logoutButton}
+                            onClick={() => logout()}
+                        >
+                            {t('logout')}
+                        </button>
+                    </>
+                ) : null}
+            </div>
         ),
     };
 

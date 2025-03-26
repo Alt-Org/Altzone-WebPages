@@ -4,7 +4,8 @@
 
 .Navbar {
     position: absolute;
-    font: var(--font-xxl);
+    font: var(--font-l);
+    font-weight: 100 !important;
     background-color: var(--base-card-background);
     border: 2px solid var(--black);
     border-radius: var(--border-radius-xl);
@@ -257,6 +258,17 @@
 .Button {
     text-align: center;
     margin-right: 12px;
+}
+
+.logoutButton {
+    // margin: 15px;
+    background-color: var(--primary-color);
+    border: var(--border-mobile) solid var(--black);
+    border-radius: var(--border-radius-xl);
+    box-shadow: 2px 2px var(--black);
+    // color: var(--white);
+    width: 100%;
+    padding: 10px;
 }
 
 .CollapseButtonWrapper {
