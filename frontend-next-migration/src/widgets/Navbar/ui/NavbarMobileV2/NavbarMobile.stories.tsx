@@ -20,10 +20,6 @@ const meta: Meta<typeof NavbarMobile> = {
             description: 'Additional CSS classes',
             control: { type: 'text' },
         },
-        side: {
-            description: 'On which side does the sidebar appear?',
-            control: { type: 'select', options: ['left', 'right'] },
-        },
         navbarBuild: {
             description: 'Navigation bar components according to usage type and view size',
             control: { type: 'object' },
@@ -31,7 +27,6 @@ const meta: Meta<typeof NavbarMobile> = {
     },
     args: {
         marginTop: 0,
-        side: 'left',
         className: '',
         navbarBuild: getNavbarBuildBySize('mobile'),
     },
@@ -45,7 +40,6 @@ const Template: Story<NavbarTouchProps> = (args) => <NavbarMobile {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     marginTop: 0,
-    side: 'left',
     className: '',
     navbarBuild: getNavbarBuildBySize('mobile'),
 };

@@ -1,19 +1,20 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { CSSProperties, memo, useEffect, useMemo, useState, useRef } from 'react';
+import { CSSProperties, memo, useEffect, useMemo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
+import { getRouteComingSoonPage, getRouteLoginPage } from '@/shared/appLinks/RoutePaths';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
 import closeIcon from '@/shared/assets/icons/closeIcon.svg';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 import { ItemType, NavbarBuild } from '../../model/types';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
-import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 
 enum DropdownTypes {
     EMPTY = 'EMPTY',
@@ -27,7 +28,6 @@ export interface NavbarTouchProps {
     marginTop?: number;
     onBurgerButtonClick?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
-    side?: 'left' | 'right';
     className?: string;
     isFixed: boolean;
     isCollapsed: boolean;
@@ -36,7 +36,7 @@ export interface NavbarTouchProps {
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, side = 'left', className = '', toggleFixed, isFixed } = props;
+    const { marginTop, navbarBuild, className = '', toggleFixed, isFixed } = props;
 
     const { t } = useClientTranslation('navbar');
 
@@ -50,11 +50,10 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const [logout] = useLogoutMutation();
 
     const hasScrollbar = useIsPageScrollbar();
+    const pathname = usePathname();
 
     const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.EMPTY);
-
     const [realPath, setRealPath] = useState('/');
-    const pathname = usePathname();
 
     useEffect(() => {
         const pathSegments = pathname.split('/').filter(Boolean);
@@ -90,7 +89,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                 ...element,
                                 // @ts-ignore todo add guard
                                 elementText: t(`${element.elementText}`), // Localize elementText
-                                // @ts-ignore
+                                // @ts-ignore todo add guard
                                 active: realPath === element?.link?.path,
                             };
                         })
@@ -116,54 +115,51 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             .filter((item) => item !== null) as INavMenuItem[];
     }, [t, navbarBuild?.menu, permissionToSeeOwnClan.isGranted, realPath]);
 
+    const dropdownContent = useMemo(() => {
+        return {
+            [DropdownTypes.EMPTY]: null,
+            [DropdownTypes.HAMBURGER]: (
+                <NavMenu
+                    // todo langswitcher could be in the navbarmobile data instead of hardcoded here.
+                    dropdownItems={navManuItemsList.concat([
+                        {
+                            type: NavMenuItemType.Element,
+                            element: <LangSwitcher className={cls.langSwitcher} />,
+                        },
+                    ])}
+                />
+            ),
+            [DropdownTypes.AUTH]: (
+                <div>
+                    {permissionToLogin.isGranted ? (
+                        <AppLink to={getRouteLoginPage()}>{t('login')}</AppLink>
+                    ) : permissionToLogout.isGranted ? (
+                        <>
+                            <AppLink to={getRouteComingSoonPage()}>{t('profile')}</AppLink>
+                            <button
+                                className={cls.logoutButton}
+                                onClick={() => logout()}
+                            >
+                                {t('logout')}
+                            </button>
+                        </>
+                    ) : null}
+                </div>
+            ),
+        };
+    }, [permissionToLogin.isGranted, permissionToLogout.isGranted, navManuItemsList]);
+
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
-        [cls.openDropdown]: dropdownType !== DropdownTypes.EMPTY,
     } as Record<string, boolean>;
-
-    const dropdownContent = {
-        [DropdownTypes.EMPTY]: null,
-        [DropdownTypes.HAMBURGER]: (
-            <NavMenu
-                // todo langswitcher could be in navbarmobile data and not hardcoded here
-                dropdownItems={navManuItemsList.concat([
-                    {
-                        type: NavMenuItemType.Element,
-                        element: <LangSwitcher className={cls.langSwitcher} />,
-                    },
-                ])}
-            />
-        ),
-        [DropdownTypes.AUTH]: (
-            <div>
-                {permissionToLogin.isGranted ? (
-                    <p>Login</p>
-                ) : permissionToLogout.isGranted ? (
-                    <>
-                        <AppLink to="/profile">{t('profile')}</AppLink>
-                        <button
-                            className={cls.logoutButton}
-                            onClick={() => logout()}
-                        >
-                            {t('logout')}
-                        </button>
-                    </>
-                ) : null}
-            </div>
-        ),
-    };
 
     const getDropdownContent = (dropdownType: DropdownType) => {
         if (dropdownType === DropdownTypes.EMPTY) {
             return null;
         }
-        return (
-            <div className={`${cls.NavbarDropdown} ${cls.test}`}>
-                {dropdownContent[dropdownType]}
-            </div>
-        );
+        return dropdownContent[dropdownType];
     };
 
     return (
@@ -171,11 +167,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             className={classNames(cls.Navbar, mods, [className])}
             style={style}
         >
-            {/* <DropdownBox
-        //     className={classNames(cls.Navbar, mods, [className])}
-        //     style={style}
-        //     ref={ref}
-        // > */}
             <div className={cls.NavbarContent}>
                 <div className={cls.HamurgerBtn}>
                     {dropdownType !== DropdownTypes.EMPTY ? (
@@ -189,7 +180,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     ) : (
                         <Image
                             src={hamburgerIcon}
-                            alt="Three vertical lines. Is svg image in the open navigation menu button."
+                            alt="Three vertical lines. Is svg image used in the open navigation menu button."
                             width={26}
                             height={20}
                             onClick={() => setDropdownType(DropdownTypes.HAMBURGER)}
@@ -208,7 +199,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 >
                     <Image
                         loading={'eager'}
-                        // width={180}
                         src={navbarBuild?.namedMenu?.navLogo?.src || ''}
                         alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
                     />
@@ -238,7 +228,13 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     )}
                 </div>
             </div>
-            {getDropdownContent(dropdownType)}
+            <div
+                className={classNames(cls.NavbarDropdown, {
+                    [cls.dropdownA]: dropdownType !== DropdownTypes.EMPTY,
+                })}
+            >
+                {getDropdownContent(dropdownType)}
+            </div>
         </nav>
     );
 };

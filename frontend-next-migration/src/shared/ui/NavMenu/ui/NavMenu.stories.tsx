@@ -1,29 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
-import NavMenu, { NavMenuProps, NavMenuItemType } from './NavMenu';
+import NavMenu, { NavMenuProps } from './NavMenu';
+import { NavMenuItemType } from '../model/types';
 
 const meta: Meta<NavMenuProps> = {
     title: 'shared/ui/NavMenu',
     component: NavMenu,
     argTypes: {
-        title: {
-            control: 'text',
-            description: 'The title displayed for the dropdown menu.',
-            defaultValue: 'Menu',
-        },
         dropdownItems: {
             control: 'object',
             description: 'An array of dropdown items including nested dropdown elements.',
-        },
-        staticDropdown: {
-            control: 'boolean',
-            description: 'Determines if the first dropdown element remains static and always open.',
-            defaultValue: false,
-        },
-        titleAsActive: {
-            control: 'boolean',
-            description:
-                'Uses the active dropdown item title as the main dropdown title. (title set only if items link path is the same as router path)',
-            defaultValue: false,
         },
         className: {
             control: 'text',
@@ -55,10 +40,6 @@ type Story = StoryObj<NavMenuProps>;
 
 export const Default: Story = {
     args: {
-        title: 'Menu',
-        openByDefault: false,
-        staticDropdown: false,
-        titleAsActive: false,
         dropdownItems: [
             { type: NavMenuItemType.Link, name: 'Item 1', path: '/item1' },
             {
