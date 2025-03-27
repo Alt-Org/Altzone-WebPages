@@ -1,6 +1,5 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
-import { ScrollTop } from '@/features/ScrollTop';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
@@ -16,7 +15,6 @@ import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 // import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
 // import { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
-
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -295,7 +293,6 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
-            <ScrollTop />
         </LayoutWithSidebars>
     );
 };
