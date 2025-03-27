@@ -1,35 +1,57 @@
 .TextSlider {
-    padding: 2%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(25, 25, 25, 0.9));
+    padding: 4%;
+    background: var(--background);
     display: flex;
     flex-direction: column;
     text-align: left;
     width: 100%;
-    height: 200px;
+    height: auto;
+    min-height: 200px;
+    max-height: 400px;
     justify-content: center;
     margin: 2%;
-    color: white;
+    color: var(--white);
     position: relative;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-radius: var(--border-radius-lg);
+    border: 2px solid var(--black);
+    box-shadow: 2px 4px 0 var(--black);
+    box-sizing: border-box;
     overflow: hidden;
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px var(--black);
+    }
 
     p {
-        margin: 0.5rem 30px;
-        font-size: 1.3rem;
+        margin: 0.5rem 3vw;
+        font-size: clamp(0.9rem, 2vw, 1.3rem);
         text-align: justify;
         line-height: 1.6;
         font-weight: bold;
-        user-select: none;
+        overflow-y: auto;
     }
 }
 
-.TextSlider:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+.btnLeft, .btnRight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 5vw;
+    cursor: pointer;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 2;
+    transition:
+            background-color 0.3s,
+            box-shadow 0.3s;
+    user-select: none;
 }
 
 .btnLeft {
@@ -42,75 +64,29 @@
 
 .btnLeft,
 .btnRight {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50px;
-    cursor: pointer;
-    color: white;
+    &:hover {
+        background-color: #444;
+        box-shadow: 0 0 5px var(--primary-color);
+    }
+}
+
+.paginationDots {
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 0;
-    z-index: 2;
-    transition:
-        background-color 0.3s,
-        box-shadow 0.3s;
-    user-select: none;
+    margin-top: 2vh;
+    user-select: none !important;
 }
 
-.btnLeft:hover,
-.btnRight:hover {
-    background-color: #444;
-    box-shadow: 0 0 15px #ffa101;
+.dot {
+    width: 1vw;
+    height: 1vw;
+    margin: 0 0.5vw;
+    background-color: var(--white);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-@media (max-width: 768px) {
-    .TextSlider {
-        height: 220px;
-        padding: 4%;
-        margin: 1%;
-    }
-
-    .TextSlider p {
-        margin: 0.5rem 15px;
-        font-size: 1rem;
-        line-height: 1.4;
-    }
-
-    @media (max-width: 480px) {
-        .TextSlider {
-            padding: 6%;
-
-            .TextSlider p {
-                font-size: 0.9rem;
-            }
-        }
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-    .TextSlider {
-        height: 220px;
-        padding: 3%;
-        margin: 1.5%;
-        transition: none;
-    }
-
-    .TextSlider:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
-    .TextSlider p {
-        font-size: 1.1rem;
-        margin: 0.5rem 20px;
-        line-height: 1.5;
-    }
-
-    .btnLeft:hover,
-    .btnRight:hover {
-        background-color: inherit;
-        box-shadow: none;
-    }
+.dot.active {
+    background-color: var(--primary-color);
 }

@@ -3,7 +3,7 @@
   height: 100%;
   width: clamp(var(--sidebar-width), 100%, 550px);
 
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--base-card-background);
   position: fixed;
   top: 0;
   overflow-y: auto;
@@ -51,8 +51,11 @@
   &.expandedButton .faBars {
     opacity: 0; /* Hide the burger icon. */
     transform: rotate(90deg); /* Rotate the icon by 90 degrees. */
-  }
 
+  }
+.faTimes{
+  color:var(--content-primary);
+}
   &.collapsedButton .faTimes {
     opacity: 0; /* Hide the cross icon. */
     transform: rotate(-90deg); /* Set the initial rotation position. */

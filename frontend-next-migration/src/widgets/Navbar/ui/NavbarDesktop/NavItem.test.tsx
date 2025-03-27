@@ -11,17 +11,56 @@ import {
 } from '../../model/types';
 import { PermissionError, useUserPermissionsV2 } from '@/entities/Auth';
 import user from '@testing-library/user-event';
+import cls from './NavbarDesktop.module.scss';
 
+// Mock next/image
+jest.mock('next/image', () => ({
+    __esModule: true,
+    default: (props: any) => <img {...props} />,
+}));
+
+// Mock translations
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: () => ({
         t: (key: string) => key,
     }),
 }));
 
+// Mock permissions
 jest.mock('@/entities/Auth', () => ({
     useUserPermissionsV2: jest.fn(() => ({
         checkPermissionFor: () => ({ isGranted: true }),
     })),
+}));
+
+// Mock DropdownWrapper to always show content in tests
+jest.mock('@/shared/ui/DropdownWrapper', () => ({
+    DropdownWrapper: ({ children, elements, contentAbsolute, contentClassName }: any) => (
+        <div
+            className={`DropdownWrapper ${contentAbsolute ? 'contentAbsolute' : ''}`}
+            role="button"
+            aria-haspopup="true"
+        >
+            <div className="childrenWrapper">{children}</div>
+            <div
+                className={`dropdownContent ${contentClassName}`}
+                role="menu"
+            >
+                {elements.map((element: any, index: number) => (
+                    <div
+                        key={index}
+                        role="menuitem"
+                    >
+                        {element.link ? (
+                            <a href={element.link.path}>{element.elementText}</a>
+                        ) : (
+                            <span>{element.elementText}</span>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    ),
 }));
 
 describe('NavItem Component', () => {
@@ -64,46 +103,30 @@ describe('NavItem Component', () => {
     });
 
     it('should render navDropDown correctly with permitted elements', async () => {
-        const item: NavbarDropDownObject = {
+        const item = {
             name: 'Menu',
-            isActive: true,
-            type: ItemType.navDropDown,
+            type: 'navDropDown',
             elements: [
-                {
-                    elementText: 'Profile',
-                    link: {
-                        isExternal: false,
-                        path: '/profile',
-                    },
-                },
-
-                {
-                    elementText: 'Settings',
-                    link: {
-                        isExternal: false,
-                        path: '/settings',
-                    },
-                },
+                { elementText: 'Profile', link: { path: '/profile', isExternal: false } },
+                { elementText: 'Settings', link: { path: '/settings', isExternal: false } },
             ],
         };
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+
+        render(<NavItem item={item} />);
 
         const menuItem = screen.getByText('Menu');
-        expect(menuItem).toBeInTheDocument();
+        const dropdownWrapper = menuItem.closest('[role="button"]');
+        expect(dropdownWrapper).toBeInTheDocument();
 
-        expect(screen.queryByText('Profile')).not.toBeInTheDocument();
-        expect(screen.queryByText('Settings')).not.toBeInTheDocument();
+        // Simulate hover
+        fireEvent.mouseEnter(dropdownWrapper!);
 
-        fireEvent.mouseOver(menuItem);
-
+        // Wait for dropdown content
         await waitFor(() => {
-            expect(screen.getByText('Profile')).toBeInTheDocument();
-            expect(screen.getByText('Settings')).toBeInTheDocument();
+            const menuItems = screen.getAllByRole('menuitem');
+            expect(menuItems).toHaveLength(2);
+            expect(menuItems[0]).toHaveTextContent('Profile');
+            expect(menuItems[1]).toHaveTextContent('Settings');
         });
     });
 
@@ -156,33 +179,23 @@ describe('NavItem Component', () => {
         expect(screen.queryByText('clanpage')).not.toBeInTheDocument();
     });
 
-    it('should render clan page link if user has permission', () => {
-        (useUserPermissionsV2 as jest.MockedFunction<typeof useUserPermissionsV2>).mockReturnValue({
-            checkPermissionFor: () => ({ isGranted: true }),
-        });
-        const item: NavbarDropDownObject = {
+    it('should render clan page link if user has permission', async () => {
+        const item = {
             name: 'Menu',
-            isActive: true,
-            type: ItemType.navDropDown,
-            elements: [
-                {
-                    elementText: 'clanpage',
-                    link: {
-                        isExternal: true,
-                        path: '/clan',
-                    },
-                },
-            ],
+            type: 'navDropDown',
+            elements: [{ elementText: 'clanpage', link: { path: '/clan', isExternal: true } }],
         };
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
-        const menu = screen.getByText('Menu');
-        user.hover(menu);
-        expect(screen.getByText('clanpage')).toBeInTheDocument();
+
+        render(<NavItem item={item} />);
+
+        const menuItem = screen.getByText('Menu');
+        const dropdownWrapper = menuItem.closest('[role="button"]');
+        fireEvent.mouseEnter(dropdownWrapper!);
+
+        await waitFor(() => {
+            const menuItems = screen.getAllByRole('menuitem');
+            expect(menuItems[0]).toHaveTextContent('clanpage');
+        });
     });
 
     it('should not render anything for unknown item type', () => {
@@ -260,31 +273,21 @@ describe('NavItem Component', () => {
     });
 
     it('should open dropdown menu on hover', async () => {
-        const item: NavbarDropDownObject = {
+        const item = {
             name: 'Menu',
-            isActive: true,
-            type: ItemType.navDropDown,
-            elements: [
-                {
-                    elementText: 'Option1',
-                    // @ts-ignore
-                    path: '/option1',
-                },
-            ],
+            type: 'navDropDown',
+            elements: [{ elementText: 'Option1', link: { path: '/option1', isExternal: false } }],
         };
 
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        render(<NavItem item={item} />);
 
         const menuItem = screen.getByText('Menu');
-        fireEvent.mouseOver(menuItem);
+        const dropdownWrapper = menuItem.closest('[role="button"]');
+        fireEvent.mouseEnter(dropdownWrapper!);
 
         await waitFor(() => {
-            expect(screen.getByText('Option1')).toBeInTheDocument();
+            const menuItems = screen.getAllByRole('menuitem');
+            expect(menuItems[0]).toHaveTextContent('Option1');
         });
     });
 

@@ -78,6 +78,7 @@ const NavItem = memo((props: NavItemProps) => {
                 className={classNames(cls.navItem, { [cls.active]: isDropdownActive }, [className])}
             >
                 <DropdownWrapper
+                    isOpen={false}
                     elements={localizedElements}
                     contentAbsolute={true}
                     mouseOverLeaveMode={true}

@@ -2,8 +2,8 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import languageIcon from '@/shared/assets/icons/langIcon.svg';
+import Image from 'next/image';
 
 type LangSwitcherProps = {
     className?: string;
@@ -25,14 +25,17 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     } = useTranslation();
 
     const options = [
-        { label: t('finnish'), value: 'fi' },
-        { label: t('english'), value: 'en' },
+        { label: t('FIN'), value: 'fi' },
+        { label: t('ENG'), value: 'en' },
         // Add more languages here
     ];
 
     // Get the label of the current language
     const [selected, setSelected] = useState<string>(
-        options.find((option) => option.value === language)?.label || options[0]?.label || '',
+        // options.find((option) => option.value === language)?.label || options[0]?.label || '',
+
+        //temporary fix
+        options.find((option) => option.value === language)?.value || options[0]?.value || '',
     );
 
     const handleChangeLanguage = (newLanguage: AppLanguage) => {
@@ -86,17 +89,28 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
             ref={dropdownRef}
             className={classNames('', {}, [className])}
         >
-            <button
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    marginLeft: 3,
+                }}
                 onClick={toggleDropdown}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
-                {selected}
-                <FontAwesomeIcon
-                    icon={faChevronDown}
-                    size="2xs"
+                <Image
+                    src={languageIcon}
+                    alt="Language Menu Icon"
                 />
-            </button>
+            </div>
+            <div>
+                {options
+                    .filter((option) => option.value === language)
+                    .map((option) => option.label)
+                    .join(', ')}
+            </div>
             {isOpen && (
                 <ul>
                     {options.map((option) => (

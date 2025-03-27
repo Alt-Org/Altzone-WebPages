@@ -1,17 +1,16 @@
 .ToggleCollapseButton {
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 0 4px var(--inverted-primary-color);
-  border-radius: var(--border-radius-custom);
-  background-color: var(--secondary-color);
-  border: none;
-  height: 30px;
-  width: 35px;
-  padding: 3px;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    height: 30px;
+    width: 40px;
+    padding: 3px;
+    cursor: pointer;
 }
 
 .buttonImage {
-  display: block;
-  width: 100%;
+    display: block;
+    filter: brightness(0) saturate(100%) invert(68%) sepia(49%) saturate(1026%) hue-rotate(359deg)
+        brightness(101%) contrast(106%);
 }

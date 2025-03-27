@@ -253,9 +253,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                         <div>
                             <strong>{t('clan')}:</strong> {clan?.name}
                         </div>
-                        <div>
-                            <strong>{t('coins')}:</strong> {clan?.gameCoins}
-                        </div>
+
                         <div>
                             <strong>{t('tag')}:</strong> {clan?.tag}
                         </div>
@@ -351,7 +349,7 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                                 <td>{idx + 1}</td>
                                 <td>{clan?.name}</td>
                                 <td>Joku Mestari </td>
-                                <td>{clan?.gameCoins}</td>
+
                                 <td>{clan?.playerCount}</td>
                                 <td>{clan?.tag}</td>
                             </tr>

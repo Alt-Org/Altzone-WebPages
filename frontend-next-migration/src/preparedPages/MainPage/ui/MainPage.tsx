@@ -13,6 +13,7 @@ import {
     VideoAndGalleriesProps,
 } from './_components/sections/VideoAndGalleries';
 import cls from './page.module.scss';
+import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -36,6 +37,7 @@ function MainPage(props: Props) {
 
     return (
         <div className={cls.MainPage}>
+            <WallIntroAnimation renderOnce={true} />
             <ProjectDescription
                 className={cls.description}
                 {...projectDescription}

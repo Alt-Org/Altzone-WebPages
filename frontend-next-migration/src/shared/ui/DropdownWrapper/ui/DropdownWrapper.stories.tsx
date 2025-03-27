@@ -115,5 +115,6 @@ export const Default: Story = {
                 elementText: 'Option 3',
             },
         ],
+        isOpen: false,
     },
 };

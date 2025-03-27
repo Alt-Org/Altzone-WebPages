@@ -46,7 +46,7 @@
 .Header {
   font-size: 3em;
   font-weight: bolder;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   &.isWidescreen,&.isDesktop {
     text-align: left;
     padding-left: 1em;
@@ -123,7 +123,7 @@
   padding: 1em;
 }
 .FatGreen {
-  color:var(--secondary-color);
+  color:var(--primary-color);
   font-weight: 900;
 }
 .InfoTable {
