@@ -1,12 +1,12 @@
 import React from 'react';
-import sitemap from '../app/sitemap';
+import sitemap from '@/app/[lng]/sitemap';
 
 export default {
     title: 'Sitemap',
 };
 
 export const SitemapStory = () => {
-    const sitemapData = sitemap();
+    const sitemapData = sitemap(); // Fetch dynamic sitemap data
 
     const containerStyle: React.CSSProperties = {
         fontFamily: 'monospace',
@@ -20,6 +20,10 @@ export const SitemapStory = () => {
         <div style={containerStyle}>
             <h2>Sitemap</h2>
             <pre>{JSON.stringify(sitemapData, null, 2)}</pre>
+            <p>
+                Displayed here is the dynamically generated sitemap with both Finnish and English
+                content.
+            </p>
         </div>
     );
 };
