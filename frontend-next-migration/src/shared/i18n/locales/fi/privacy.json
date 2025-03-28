@@ -1,32 +1,43 @@
 {
   "main-title": "Yksityisyys",
+
+  "privacy-nav-menu-title": "Tietosuojaseloste",
   "privacy-label": "Tietosuojaseloste",
   "privacy-description": "Tämä tietosuojaseloste selventää, miten mobiilipeli ALT Zone 1.0 käsittelee ja säilyttää käyttäjän henkilötietoja. Pidämme tärkeänä käyttäjiemme yksityisyyttä ja sitoudumme suojaamaan heidän henkilötietojaan sovellettavan lainsäädännön, mukaan lukien EU:n yleisen tietosuoja-asetuksen (GDPR), mukaisesti.",
 
+  "interpretation-nav-menu-title": "Rekisterinpitäjä",
   "interpretation-label": "Rekisterinpitäjä",
   "interpretation-description": "Rekisterinpitäjänä toimii Psyche’s Royale Gaming ry, joka vastaa henkilötietojesi käsittelystä tässä tietosuojaselosteessa kuvatulla tavalla.",
 
+  "collecting-nav-menu-title": "Henkilötiedot",
   "collecting-label": "Kerättävät henkilötiedot ja käsittelyn tarkoitus",
   "collecting-description": "Keräämme ja käsittelemme seuraavia henkilötietoja tarjotaksemme sinulle pääsyn Peliin ja sen toimintoihin:<br> ● <b>Käyttäjätunnus ja salasana</b>: Käyttäjän luoma käyttäjätunnus ja salasana tallennetaan, jotta käyttäjä voi kirjautua Peliin. Salasana tallennetaan suojatussa muodossa. Salasanan palautuskoodi tallennetaan myös käyttäjän pyynnöstä, jotta käyttäjä voi palauttaa salasanansa tarvittaessa.<br> ● <b>Klaani</b>: Tieto siitä, mihin klaaniin käyttäjä kuuluu, säilytetään. Tämä tieto liittyy käyttäjän osallistumiseen pelin sisäiseen yhteisötoimintaan.<br> ● <b>Pelihahmot ja muokkaukset</b>: Tallennamme tiedot käyttäjän keräämistä pelihahmoista ja kaikista niihin tehdyistä muokkauksista, jotta pelaaja voi jatkaa peliä myöhemminkin.<br> ● <b>Avatar ja muokkaukset</b>: Säilytämme käyttäjän luoman avatarin ja siihen tehdyt muokkaukset.<br> ● <b>Chat-viestit</b>: Käyttäjän pelin sisällä kirjoittamat chat-viestit tallennetaan, jotta ne ovat saatavilla myöhemmin ja tarvittaessa palautettavissa.<br> ● <b>Pelaajan ikä</b>: Kysymme pelaajan iän käyttäjätilin luomisen yhteydessä varmistaaksemme, että käyttäjä täyttää ikärajoitukset.<br> Näitä tietoja käsitellään palvelun tarjoamiseksi, käyttäjäkokemuksen parantamiseksi sekä lainmukaisten velvoitteiden täyttämiseksi.",
 
+  "analytics-nav-menu-title": "Analytiikka",
   "analytics-label": "Analytiikka ja pelin käytön seuranta",
   "analytics-description": "Saatamme käyttää pelin kehittämiseksi ja käyttäjäkokemuksen parantamiseksi kolmannen osapuolen analytiikka-työkalua. Tämä työkalu voi kerätä tietoa siitä, miten pelaajat käyttävät peliä, mukaan lukien pelin eteneminen, käyttäjän tekemät valinnat ja pelissä vietetty aika. Nämä tiedot kerätään anonyymisti eikä niitä yhdistetä suoraan käyttäjän henkilötietoihin.",
 
+  "legal-basis-nav-menu-title": "Oikeusperusteet",
   "legal-basis-label": "Oikeusperusteet henkilötietojen käsittelylle",
   "legal-basis-description": "Henkilötietojen käsittelyn oikeusperusteina ovat:<br> ● <b>Sopimuksen täytäntöönpano</b>: Käyttäjätunnuksen, salasanan ja muiden pelitietojen käsittely on tarpeen käyttäjän kanssa tehdyn sopimuksen, eli pelin käyttösopimuksen, täytäntöönpanemiseksi.<br> ● <b>Oikeutettu etu</b>: Analytiikkatietojen kerääminen pelin kehittämiseksi ja käyttäjäkokemuksen parantamiseksi perustuu oikeutettuun etuumme.<br> ● <b>Lakisääteinen velvoite</b>: Käyttäjän iän tarkistaminen varmistaa, että noudatamme ikärajoituksia ja alaikäisten tietosuojan varmistamista koskevia velvoitteita.",
 
+  "data-retention-nav-menu-title": "Säilyttäminen",
   "data-retention-label": "Tietojen säilyttäminen",
   "data-retention-description": "Säilytämme henkilötietojasi niin kauan kuin se on tarpeen edellä kuvattujen käsittelytarkoitusten toteuttamiseksi tai kunnes pyydät tietojesi poistamista. Voit pyytää tietojesi poistamista milloin tahansa lähettämällä vapaamuotoisen pyynnön sähköpostitse osoitteeseen proyaleg@gmail.com. Poistamme tällöin kaikki sinuun liittyvät tiedot pysyvästi ja peruuttamattomasti, ellei lainsäädäntö edellytä niiden säilyttämistä.",
 
+  "rights-nav-menu-title": "Oikeutesi",
   "rights-label": "Oikeutesi",
   "rights-description": "GDPR mukaisesti sinulla on oikeus:<br> ● <b>Pääsy tietoihin</b>: Voit pyytää kopiota tallennetuista henkilötiedoistasi.<br> ● <b>Oikaista tietoja</b>: Voit pyytää virheellisten tai puutteellisten tietojen korjaamista.<br> ● <b>Poistaa tiedot</b>: Voit pyytää henkilötietojesi poistamista ('oikeus tulla unohdetuksi').<br> ● <b>Rajoittaa käsittelyä</b>: Voit pyytää käsittelyn rajoittamista tietyissä tilanteissa.<br> ● <b>Tietojen siirrettävyys</b>: Voit pyytää, että henkilötietosi toimitetaan sinulle tai toiselle rekisterinpitäjälle jäsennellyssä ja koneellisesti luettavassa muodossa.<br> ● <b>Vastustaa käsittelyä</b>: Voit vastustaa henkilötietojesi käsittelyä, jos käsittely perustuu oikeutettuun etuun.<br> Voit käyttää näitä oikeuksia ottamalla yhteyttä sähköpostitse osoitteeseen proyaleg@gmail.com. Jos koet, että henkilötietojasi on käsitelty lainvastaisesti, sinulla on oikeus tehdä valitus valvontaviranomaiselle.",
 
+  "security-nav-menu-title": "Suojaaminen",
   "security-label": "Tietojen suojaaminen",
   "security-description": "Tietojesi suojaaminen on meille ensisijaisen tärkeää. Käytämme asianmukaisia teknisiä ja organisatorisia toimenpiteitä henkilötietojesi suojaamiseksi luvattomalta pääsyltä, muutoksilta, paljastamiselta tai tuhoamiselta.",
 
+  "changes-nav-menu-title": "Muutokset",
   "changes-label": "Muutokset tietosuojaselosteeseen",
   "changes-description": "Pidätämme oikeuden päivittää tätä tietosuojaselostetta tarvittaessa esimerkiksi lainsäädännön muuttuessa tai palvelun kehittyessä. Suosittelemme tarkistamaan tietosuojaselosteen säännöllisesti.",
 
+  "contact-nav-menu-title": "Yhteystiedot",
   "contact-label": "Yhteystiedot",
   "contact-description": "Jos sinulla on kysymyksiä tai huolenaiheita liittyen tähän tietosuojaselosteeseen tai henkilötietojesi käsittelyyn, voit ottaa meihin yhteyttä sähköpostitse osoitteessa proyaleg@gmail.com. <br> <br> Päivitetty: 23.8.2024"
 }
