@@ -10,6 +10,7 @@ $touchSize: 1023px;
     @media (max-width: $touchSize) {
         order: 0;
         border-right: unset;
+     
     }
     @media (max-width: 768px) {
         order: 1;
@@ -22,12 +23,9 @@ $touchSize: 1023px;
     align-items: center;
     margin-bottom: 40px;
     justify-content: space-between;
-}
 
-@media (max-width: 768px) {
-    .header {
+    @media (max-width: breakpoint(xl)) {
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
     }
 }
