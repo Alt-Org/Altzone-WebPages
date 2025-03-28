@@ -3,7 +3,6 @@ import { usePathname } from 'next/navigation';
 import { CSSProperties, memo, useEffect, useMemo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
-import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
 import { getRouteComingSoonPage, getRouteLoginPage } from '@/shared/appLinks/RoutePaths';
@@ -13,7 +12,6 @@ import closeIcon from '@/shared/assets/icons/closeIcon.svg';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 import { ItemType, NavbarBuild } from '../../model/types';
-import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
 
 enum DropdownTypes {
@@ -36,7 +34,7 @@ export interface NavbarTouchProps {
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, className = '', toggleFixed, isFixed } = props;
+    const { marginTop, navbarBuild, className = '', isFixed } = props;
 
     const { t } = useClientTranslation('navbar');
 
@@ -49,7 +47,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const hasScrollbar = useIsPageScrollbar();
     const pathname = usePathname();
 
     const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.EMPTY);
@@ -130,7 +127,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 />
             ),
             [DropdownTypes.AUTH]: (
-                <div>
+                <div data-testid="mobile-navbar-profile">
                     {permissionToLogin.isGranted ? (
                         <AppLink to={getRouteLoginPage()}>{t('login')}</AppLink>
                     ) : permissionToLogout.isGranted ? (
@@ -170,21 +167,26 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             <div className={cls.NavbarContent}>
                 <div className={cls.HamurgerBtn}>
                     {dropdownType !== DropdownTypes.EMPTY ? (
-                        <Image
-                            src={closeIcon}
-                            alt="X shaped svg image. For closing navigation bar menus."
-                            width={20}
-                            height={20}
-                            onClick={() => setDropdownType(DropdownTypes.EMPTY)}
-                        />
+                        <div onClick={() => setDropdownType(DropdownTypes.EMPTY)}>
+                            <Image
+                                src={closeIcon}
+                                alt="X shaped svg image. For closing navigation bar menus."
+                                width={20}
+                                height={20}
+                            />
+                        </div>
                     ) : (
-                        <Image
-                            src={hamburgerIcon}
-                            alt="Three vertical lines. Is svg image used in the open navigation menu button."
-                            width={26}
-                            height={20}
+                        <div
                             onClick={() => setDropdownType(DropdownTypes.HAMBURGER)}
-                        />
+                            data-testid="mobile-navbar-burger-button"
+                        >
+                            <Image
+                                src={hamburgerIcon}
+                                alt="Three vertical lines. Is svg image used in the open navigation menu button."
+                                width={26}
+                                height={20}
+                            />
+                        </div>
                     )}
                 </div>
                 <AppLink
@@ -204,11 +206,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     />
                 </AppLink>
                 <div className={cls.buttonContainer}>
-                    <Image
-                        src={profileIcon}
-                        alt="icon of a person inside a circle"
-                        width={20}
-                        height={20}
+                    <div
+                        data-testid="mobile-navbar-profile-button"
                         onClick={() =>
                             setDropdownType(
                                 dropdownType === DropdownTypes.AUTH
@@ -216,21 +215,19 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                     : DropdownTypes.AUTH,
                             )
                         }
-                    />
-                    {hasScrollbar && (
-                        <div className={classNames(cls.navItem)}>
-                            <ToggleFixButton
-                                isFixed={isFixed}
-                                onClick={toggleFixed}
-                                className={cls.Button}
-                            />
-                        </div>
-                    )}
+                    >
+                        <Image
+                            src={profileIcon}
+                            alt="icon of a person inside a circle"
+                            width={20}
+                            height={20}
+                        />
+                    </div>
                 </div>
             </div>
             <div
                 className={classNames(cls.NavbarDropdown, {
-                    [cls.dropdownA]: dropdownType !== DropdownTypes.EMPTY,
+                    [cls.openDropdown]: dropdownType !== DropdownTypes.EMPTY,
                 })}
             >
                 {getDropdownContent(dropdownType)}

@@ -51,7 +51,10 @@ function NavMenu(props: NavMenuProps): JSX.Element {
     const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
     return (
-        <div className={classNames(cls.NavMenu, {}, [className])}>
+        <div
+            className={classNames(cls.NavMenu, {}, [className])}
+            data-testid="nav-menu"
+        >
             {dropdownItems.map((item, index) => (
                 <div key={index}>
                     {item.type === NavMenuItemType.Dropdown && (
