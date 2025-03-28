@@ -26,8 +26,9 @@ export interface NavMenuProps {
  * @example
  * const navMenuProps: NavMenuProps = {
  *   dropdownItems: [
- *     { elementText: 'Item 1', link: { path: '/item1', isExternal: false } },
+ *     { type: NavMenuItemType.NavMenuLink, name: 'Item 1', path: '/item1' },
  *     {
+ *       type: NavMenuItemType.NavMenuDropdown
  *       name: 'Category 1',
  *       elements: [
  *         { id: '1', elementText: 'Item 2', link: { path: '/item2', isExternal: false } },
@@ -35,6 +36,7 @@ export interface NavMenuProps {
  *       ],
  *     },
  *     {
+ *       type: NavMenuItemType.NavMenuDropdown
  *       name: 'Category 2',
  *       elements: [
  *         { id: '3', elementText: 'Item 4', link: { path: '/item4', isExternal: false } },
