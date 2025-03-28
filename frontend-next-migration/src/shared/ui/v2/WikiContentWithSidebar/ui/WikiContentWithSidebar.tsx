@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import cls from './WikiContentWithSideBar.module.scss';
+import cls from './WikiContentWithSidebar.module.scss';
 import { TableOfContents } from '../../TableOfContents';
 
 /**
