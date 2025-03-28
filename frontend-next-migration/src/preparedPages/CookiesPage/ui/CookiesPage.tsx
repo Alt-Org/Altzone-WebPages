@@ -6,6 +6,7 @@ import cls from './CookiesPage.module.scss';
 
 interface Section {
     id: string;
+    navMenuTitle: string;
     label: string;
     description: string;
     image: string;

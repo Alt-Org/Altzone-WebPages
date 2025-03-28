@@ -5,6 +5,7 @@ import cls from './TableOfContents.module.scss';
 interface Section {
     id: string;
     label: string;
+    navMenuTitle: string;
 }
 
 interface TableOfContentsProps {
@@ -100,7 +101,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ sections }) => {
                             className={activeSection === section.id ? cls.active : ''}
                             onClick={() => scrollToSection(section.id)}
                         >
-                            {section.label}
+                            {section.navMenuTitle}
                         </li>
                     ))}
                 </ul>
