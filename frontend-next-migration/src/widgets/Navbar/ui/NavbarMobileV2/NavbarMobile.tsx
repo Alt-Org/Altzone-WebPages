@@ -24,7 +24,7 @@ type DropdownType = DropdownTypes.EMPTY | DropdownTypes.HAMBURGER | DropdownType
 
 export interface NavbarTouchProps {
     marginTop?: number;
-    onBurgerButtonClick?: (isMenuOpen: boolean) => void;
+    onDropdownChange?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
     className?: string;
     isFixed: boolean;
@@ -34,7 +34,7 @@ export interface NavbarTouchProps {
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, className = '', isFixed } = props;
+    const { marginTop, navbarBuild, className = '', onDropdownChange, isFixed } = props;
 
     const { t } = useClientTranslation('navbar');
 
@@ -57,6 +57,12 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         const newPath = pathSegments.length === 1 ? '/' : `/${pathSegments[1] || ''}`;
         setRealPath(newPath);
     }, [pathname]);
+
+    useEffect(() => {
+        if (onDropdownChange) {
+            onDropdownChange(dropdownType !== DropdownTypes.EMPTY);
+        }
+    }, [dropdownType, onDropdownChange]);
 
     const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])

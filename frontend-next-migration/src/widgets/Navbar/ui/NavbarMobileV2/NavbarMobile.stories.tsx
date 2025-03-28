@@ -11,9 +11,9 @@ const meta: Meta<typeof NavbarMobile> = {
             description: 'Margin at the top',
             control: { type: 'number' },
         },
-        onBurgerButtonClick: {
+        onDropdownChange: {
             description:
-                'The function is informed in the button event whether the sidebar is open.',
+                'The function is informed in the dropdown open/close event whether the dropdown is open',
             action: 'clicked',
         },
         className: {
@@ -40,6 +40,9 @@ const Template: Story<NavbarTouchProps> = (args) => <NavbarMobile {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     marginTop: 0,
+    onDropdownChange: (collapsed) => {
+        /*console.log(`dropdownChange ${collapsed}`)*/
+    },
     className: '',
     navbarBuild: getNavbarBuildBySize('mobile'),
 };
