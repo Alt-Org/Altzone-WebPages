@@ -10,6 +10,8 @@
     transition: transform 0.2s ease-in-out;
     width: 100%;
     max-width: 780px;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -17,29 +19,31 @@
         transform: scale(1.02);
         cursor: pointer;
     }
-    @media (max-width: ($breakpoint-xl)) {
+    @media (max-width: breakpoint(xl)) {
         height: 150px;
         width: 100%;
         max-width: 500px;
+    }
+    @media (max-width: breakpoint(md)) {
+        height: 130px;
+        width: 70%;
+        margin: 0 auto;
+    }
+    @media (max-width: breakpoint(sm)) {
+        height: 120px;
+        width: 80%;
+        margin: 0 auto;
+    }
+    @media (max-width: breakpoint(xs)) {
+        height: 110px;
+        width: 70%;
+        margin: auto 0;
     }
 
-    @media (max-width: ($breakpoint-md)) {
-        height: 150px;
-        width: 100%;
-        max-width: 500px;
-    }
-    @media (max-width: ($breakpoint-sm)) {
-        height: 110px;
-        width: 75%;
-        margin-right: 40%;
-    }
-    @media (max-width: 390px) {
-        margin-right: 40%;
-    }
     @media (max-width: 320px) {
-        height: 100px;
+        height: 110px;
         width: 60%;
-        margin-right: 40%;
+        margin: auto 0;
     }
 }
 .imageContainer {
@@ -52,7 +56,7 @@
     height: 100%;
     width: 72%;
     height: auto;
-    @media (max-width: 390px) {
+    @media (max-width: breakpoint(xs)) {
         width: 90%;
     }
 }
@@ -66,7 +70,7 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 -15%);
     transform: translateY(-27%);
 
-    @media (max-width: 390px) {
+    @media (max-width: breakpoint(xs)) {
         margin-left: 35%;
     }
     @media (max-width: 320px) {
@@ -91,7 +95,15 @@
     font-weight: bolder;
     text-overflow: ellipsis;
     font-family: var(--font-family-title);
-    @media (max-width: 390px) {
+    @media (max-width: breakpoint(sm)) {
+        font-size: 1rem;
+        padding-top: 10px;
+    }
+    @media (max-width: breakpoint(xs)) {
+        font-size: 1rem;
+        padding-top: 10px;
+    }
+    @media (max-width: 320px) {
         font-size: 1rem;
         padding-top: 10px;
     }
@@ -102,24 +114,24 @@
     line-height: 1.5em;
     font-size: 1.2rem;
     margin-top: auto;
-    width: 280px;
-
+    width: 255px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    @media (max-width: 768px) {
+    @media (max-width: breakpoint(md)) {
         font-size: 0.9rem;
         line-height: 1rem;
         -webkit-line-clamp: 2;
     }
-    @media (max-width: 390px) {
+    @media (max-width: breakpoint(sm)) {
         font-size: 0.8rem;
         line-height: 1rem;
-        color: var(--primary-color);
-        font-family: var(--font-family-title);
-        -webkit-line-clamp: 1;
-        width: 110%;
+        -webkit-line-clamp: 2;
+        width: 200px;
+    }
+    @media (max-width: 390px) {
+        display: none;
     }
 }
 
@@ -129,7 +141,7 @@
     margin-top: auto;
     margin-bottom: 5px;
 
-    @media (max-width: 390px) {
+    @media (max-width: breakpoint(xs)) {
         font-size: 0.6rem;
     }
 }
