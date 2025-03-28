@@ -14,7 +14,7 @@ $touchSize: 1023px;
         }
     }
 
-    @media (max-width: 786px) {
+    @media (max-width: breakpoint(md)) {
         .searchContainer {
             flex-direction: column;
             justify-content: space-between;
