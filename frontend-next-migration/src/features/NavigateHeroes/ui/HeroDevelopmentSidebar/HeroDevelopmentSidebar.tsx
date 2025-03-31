@@ -1,7 +1,17 @@
 'use client';
-import { HeroDevelopmentNavMenuAsDropdown, HeroNavMenu } from '@/features/NavigateHeroes';
-import useSizes from '@/shared/lib/hooks/useSizes';
 import React from 'react';
+import dynamic from 'next/dynamic';
+import useSizes from '@/shared/lib/hooks/useSizes';
+
+const HeroDevelopmentNavMenuAsDropdown = dynamic(
+    () => import('../HeroNavMenuAsDropdown/HeroNavMenuAsDropdown'),
+    {
+        ssr: false,
+    },
+);
+const HeroNavMenu = dynamic(() => import('../HeroNavMenu/HeroNavMenu'), {
+    ssr: false,
+});
 
 const HeroDevelopmentSidebar: React.FC = () => {
     const { isDesktopSize, isWidescreenSize } = useSizes();
