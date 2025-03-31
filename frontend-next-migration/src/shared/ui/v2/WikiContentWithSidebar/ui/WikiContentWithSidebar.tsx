@@ -3,14 +3,15 @@ import Image from 'next/image';
 import { useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import cls from './WikiContentWithSideBar.module.scss';
-import { TableOfContents } from '@/shared/ui/TableOfContents';
+import cls from './WikiContentWithSidebar.module.scss';
+import { TableOfContents } from '../../TableOfContents';
 
 /**
  * Represents a section in the sidebar.
  */
 interface Section {
     id: string;
+    navMenuTitle: string;
     label: string;
     description: string;
     image: string;
@@ -19,11 +20,10 @@ interface Section {
 
 export type Props = {
     sections: Section[];
+    title: string;
 };
 
 /**
- * @deprecated This component is deprecated. New version can be found in the v2 folder.
- *
  * WikiContentWithSideBar component renders a page with a sidebar containing sections
  * and a main content area with detailed information about each section.
  *
@@ -60,8 +60,9 @@ export type Props = {
  * ```
  */
 const WikiContentWithSideBar = (props: Props) => {
-    const { sections = [] } = props;
+    const { sections = [], title } = props;
     const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
+    const isTouchDevice = isMobileSize || isTabletSize;
 
     const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>({});
 
@@ -79,7 +80,7 @@ const WikiContentWithSideBar = (props: Props) => {
     return (
         <div className={classNames(cls.pageContainer, combinedModCss)}>
             <div className={classNames(cls.mainContent, combinedModCss)}>
-                {!isMobileSize && (
+                {!isTouchDevice && (
                     <div className={classNames(cls.navbarSide, combinedModCss)}>
                         <TableOfContents sections={sections} />
                     </div>
@@ -88,6 +89,7 @@ const WikiContentWithSideBar = (props: Props) => {
                     className={classNames(cls.content, combinedModCss)}
                     id="content"
                 >
+                    <h1>{title}</h1>
                     {sections.length > 0 ? (
                         sections.map((section) => (
                             <div

@@ -8,6 +8,7 @@ export async function _getPage(lng: string) {
     return createPage<CookiesPageProps>({
         buildPage: () => ({
             sections: makeCookiesSectionsWithI18n(t),
+            title: t('main-title'),
         }),
         buildSeo: () => ({
             title: t('head-title'),

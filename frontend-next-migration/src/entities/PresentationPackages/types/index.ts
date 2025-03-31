@@ -1,5 +1,6 @@
 export interface PresentationSection {
     id: string;
+    navMenuTitle: string;
     label: string;
     description: string;
     image: string;

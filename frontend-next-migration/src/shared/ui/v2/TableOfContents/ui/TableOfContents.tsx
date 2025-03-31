@@ -5,6 +5,7 @@ import cls from './TableOfContents.module.scss';
 interface Section {
     id: string;
     label: string;
+    navMenuTitle: string;
 }
 
 interface TableOfContentsProps {
@@ -12,8 +13,6 @@ interface TableOfContentsProps {
 }
 
 /**
- * @deprecated This component is deprecated. New version can be found in the v2 folder.
- *
  * TableOfContents component that displays a navigation sidebar with clickable section labels.
  * Automatically highlights the active section based on scroll position.
  *
@@ -102,7 +101,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ sections }) => {
                             className={activeSection === section.id ? cls.active : ''}
                             onClick={() => scrollToSection(section.id)}
                         >
-                            {section.label}
+                            {section.navMenuTitle}
                         </li>
                     ))}
                 </ul>
