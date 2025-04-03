@@ -9,7 +9,7 @@
     "arrowParens": "always",
     "jsxSingleQuote": false,
     "bracketSameLine": false,
-    "endOfLine": "auto",
+    "endOfLine": "lf",
     "singleAttributePerLine": true,
     "proseWrap": "preserve"
 }
