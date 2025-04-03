@@ -28,5 +28,13 @@
   "page-title": "Our Team",
   "page-description": "Meet our talented team! Here you can discover all the contributors behind the creation of our exciting game. From developers and designers to writers and testers, everyone plays an essential role.",
   "page-play": "Play",
-  "meet-button": "Meet"
+  "meet-button": "Meet",
+
+  "Planningteam-label": "Game Desing",
+  "Technicalteam-label": "Development",
+  "Artisticteam-label": "Graphics",
+  "Production-label": "Mentoring",
+  "Education-label": "Writers",
+  "Other-label": "Sounds",
+  "Thanks-label": "Comic book"
 }

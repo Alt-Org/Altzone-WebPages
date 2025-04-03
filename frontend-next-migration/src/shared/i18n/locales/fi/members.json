@@ -28,6 +28,14 @@
   "page-title": "Meidän tiimimme",
   "page-description": "Tapaa lahjakas tiimimme! Täältä löydät kaikki henkilöt, jotka osallistuvat jännittävän pelimme luomiseen. Kehittäjistä ja suunnittelijoista kirjoittajiin ja testaajiin – jokaisella on tärkeä rooli.",
   "page-play": "Toista",
-  "meet-button": "Tapaa"
+  "meet-button": "Tapaa",
 
+
+  "Planningteam-label": "Suunnittelutiimi",
+  "Technicalteam-label": "Tekninen tiimi",
+  "Artisticteam-label": "Taiteellinen tiimi",
+  "Production-label": "Tuotanto",
+  "Education-label": "Opetuspaketti",
+  "Other-label": "Projetin kehityksessä mukana olleet",
+  "Thanks-label": "Kiitokset"
 }

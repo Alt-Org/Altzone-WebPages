@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
+import { Props } from './MembersPage';
 
-// const MembersPageAsync = dynamic(() => import('./MembersPage'));
-const MembersPage = dynamic(() => import('./MembersPage'));
+const MembersPage = dynamic<Props>(() => import('./MembersPage'));
 
 // export default MembersPageAsync;
 export default MembersPage;

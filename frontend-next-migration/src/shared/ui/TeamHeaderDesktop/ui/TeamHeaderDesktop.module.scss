@@ -1,17 +1,17 @@
 
 .headerImg {
     width: 70%;
-    height: 40rem;
+    height: 45rem;
     border-radius: var(--border-radius-md);
     border-style: solid;
     border-width: 3px;
     border-color: var(--black);
     box-shadow: 3px 4px black;
+    justify-items: center;
     
 }
 
 .HeaderContainer {
-    margin-top: 24vh;
     justify-items: center;
     align-items: center;
     display: flex;
@@ -24,6 +24,11 @@
         width: 70%;
         align-self: center;
     }
+}
+
+.HeaderImageContainer {
+    width: 100%;
+    justify-items: center;
 }
 
 .TitleContainer {

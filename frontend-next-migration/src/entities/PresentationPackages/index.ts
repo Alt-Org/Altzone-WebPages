@@ -9,3 +9,6 @@ export { makeCookiesSectionsWithI18n } from '@/entities/PresentationPackages/mod
 
 export { PrivacySections } from '@/entities/PresentationPackages/model/data/privacySections';
 export { makePrivacySectionsWithI18n } from '@/entities/PresentationPackages/model/makeSectionsWithI18n';
+
+export { MembersSections } from '@/entities/PresentationPackages/model/data/membersSections';
+export { makeMembersSectionsWithI18n } from '@/entities/PresentationPackages/model/makeSectionsWithI18n';
