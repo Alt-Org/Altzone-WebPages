@@ -1,28 +1,24 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import NavbarMobile, { NavbarTouchProps } from '../NavbarMobile/NavbarMobile';
+import NavbarMobile, { NavbarTouchProps } from './NavbarMobile';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 
 const meta: Meta<typeof NavbarMobile> = {
-    title: '@/widgets/Navbar/ui/NavbarMobile/NavbarMobile',
+    title: '@/widgets/Navbar/ui/NavbarMobileV2/NavbarMobile',
     component: NavbarMobile,
     argTypes: {
         marginTop: {
             description: 'Margin at the top',
             control: { type: 'number' },
         },
-        onBurgerButtonClick: {
+        onDropdownChange: {
             description:
-                'The function is informed in the button event whether the sidebar is open.',
+                'The function is informed in the dropdown open/close event whether the dropdown is open',
             action: 'clicked',
         },
         className: {
             description: 'Additional CSS classes',
             control: { type: 'text' },
-        },
-        side: {
-            description: 'On which side does the sidebar appear?',
-            control: { type: 'select', options: ['left', 'right'] },
         },
         navbarBuild: {
             description: 'Navigation bar components according to usage type and view size',
@@ -31,7 +27,6 @@ const meta: Meta<typeof NavbarMobile> = {
     },
     args: {
         marginTop: 0,
-        side: 'left',
         className: '',
         navbarBuild: getNavbarBuildBySize('mobile'),
     },
@@ -45,7 +40,9 @@ const Template: Story<NavbarTouchProps> = (args) => <NavbarMobile {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     marginTop: 0,
-    side: 'left',
+    onDropdownChange: (collapsed) => {
+        /*console.log(`dropdownChange ${collapsed}`)*/
+    },
     className: '',
     navbarBuild: getNavbarBuildBySize('mobile'),
 };

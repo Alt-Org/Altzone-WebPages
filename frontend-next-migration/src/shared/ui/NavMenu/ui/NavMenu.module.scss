@@ -1,0 +1,34 @@
+.NavMenu {
+  width: 100%;
+  font: var(--font-m);
+  line-height: var(--font-line-l);
+  font-size: var(--font-size-l);
+}
+
+.ChildrenWrapper {
+  inline-size: auto;
+}
+
+.DropDownElementChildren {
+  margin-top:0;
+  padding:0;
+}
+
+.DropDownElementChildren > div {
+  margin-left: 2.5em;
+  line-height: 1;
+}
+
+.DropDownElementChildren > div > a > svg {
+  float: right;
+  margin-right: 10px;
+}
+
+.active {
+  color: var(--primary-color) !important;
+}
+
+.activeDropdown {
+  color: var(--primary-color) !important;
+  text-decoration: underline !important;
+}
