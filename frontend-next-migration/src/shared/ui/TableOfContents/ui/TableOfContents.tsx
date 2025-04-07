@@ -10,7 +10,7 @@ interface Section {
 
 interface TableOfContentsProps {
     sections: Section[];
-    className: string;
+    className?: string;
     title?: string;
 }
 
