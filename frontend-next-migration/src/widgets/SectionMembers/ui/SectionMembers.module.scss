@@ -41,7 +41,7 @@
   width: 100%;
   border-style: solid;
   border-color: var(--black);
-  border-width: 2px;
+  border-width: var(--border-desktop);
 
   h1 {
     text-transform: uppercase;

@@ -21,14 +21,6 @@ $touchSize: 1023px;
   }
 }
 
-.wideContainer {
-  @extend .container;
-  background-color:  rgba(0, 0, 0, 0);
-  padding: 0 !important;
-  max-width: 80vw !important;
-  margin-left: 4vw !important;
-}
-
 .sidebar {
   position: sticky;
   top: $navbar-height;
@@ -61,7 +53,7 @@ $touchSize: 1023px;
 
   &.leftTopSidebar {
 
-
+    margin-top: 0 !important;
     //border-right: 0.1px solid rgb(62, 107, 50);
 
     @media (max-width: $touchSize) {

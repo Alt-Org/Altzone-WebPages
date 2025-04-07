@@ -1,10 +1,10 @@
 
 .headerImg {
     width: 70%;
-    height: 45rem;
+    height: 80vh !important;
     border-radius: var(--border-radius-md);
     border-style: solid;
-    border-width: 3px;
+    border-width: var(--border-desktop);
     border-color: var(--black);
     box-shadow: 3px 4px black;
     justify-items: center;
@@ -28,7 +28,8 @@
 
 .HeaderImageContainer {
     width: 100%;
-    justify-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .TitleContainer {
@@ -49,8 +50,8 @@
     overflow: hidden;
     border-style: solid;
     border-color: var(--black);
-    border-width: 3px;
-    filter: drop-shadow(3px 5px var(--drop-shadows));
+    border-width: var(--border-desktop);
+    box-shadow: 3px 4px black;
 }
 
 

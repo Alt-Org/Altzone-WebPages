@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import cls from './TableOfContents.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface Section {
     id: string;
@@ -9,6 +10,8 @@ interface Section {
 
 interface TableOfContentsProps {
     sections: Section[];
+    className: string;
+    title?: string;
 }
 
 /**
@@ -32,7 +35,7 @@ interface TableOfContentsProps {
  *   setActiveSection={setActiveSection}
  * />
  */
-const TableOfContents: React.FC<TableOfContentsProps> = ({ sections }) => {
+const TableOfContents: React.FC<TableOfContentsProps> = ({ sections, className, title }) => {
     const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
 
     useEffect(() => {
@@ -92,7 +95,8 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ sections }) => {
 
     return (
         <div className={cls.navbarSideContainer}>
-            <div className={cls.navbarSide}>
+            <div className={classNames(cls.navbarSide, {}, [className ?? ''])}>
+                {title && <h3 className={cls.sectionTitle}>{title}</h3>}
                 <ul>
                     {sections.map((section) => (
                         <li

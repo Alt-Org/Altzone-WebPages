@@ -15,6 +15,8 @@
 
 .workersSection {
   z-index: 2;
+  width: 112%;
+
 
   @media only screen and (min-width: 1921px) {
     * {
@@ -25,4 +27,28 @@
 
 .wholePageBG {
   filter: brightness(85%);
+}
+
+.TeamSideBar {
+  background-color: var(--background);
+  font-family: var(--body-font);
+  font-size: var(--font-line-s);
+  border-style: solid;
+  border-width: var(--border-desktop);
+  border-color: var(--black);
+  max-width: 13vw;
+  transform: translateX(1vw);
+  min-width: 8vw;
+  
+  
+}
+
+
+.TeamPageSidebar {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  max-width: 80vw;
+  margin-left: 4vw;
+  background-attachment: none;
+  margin-left: -0.8vw;
 }
