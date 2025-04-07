@@ -5,7 +5,6 @@ export type ToggleItem = {
     type: CustomSwitchItems.ToggleItem;
     isOpen: boolean;
     onOpen: () => void;
-    identifier: number;
     className?: string;
     children: ReactNode;
 };

@@ -30,7 +30,6 @@ export interface CustomSwitchProps {
  *   ].map((elem, index) => {
  *       return {
  *           type: CustomSwitchItems.ToggleItem as CustomSwitchItems.ToggleItem,
- *           identifier: index,
  *           isOpen: customSwitchOption === index,
  *           onOpen: () => {
  *               if (customSwitchOption !== index) {
