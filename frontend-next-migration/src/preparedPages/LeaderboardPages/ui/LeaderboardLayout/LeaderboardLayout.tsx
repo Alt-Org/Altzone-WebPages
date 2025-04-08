@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useState, useEffect, useMemo } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { CustomSwitch, CustomSwitchItems, ToggleLink } from '@/shared/ui/CustomSwitch';
@@ -19,26 +19,28 @@ const LeaderboardLayout = ({ children }: { children: ReactNode }) => {
         setRealPath(newPath);
     }, [pathname]);
 
-    const CustomSwitchElements: ToggleLink[] = [
-        {
-            children: <p>Globaali</p>,
-            path: `/${lng}/leaderboard`,
-        },
-        {
-            children: <p>Klaani</p>,
-            path: `/${lng}/leaderboard/clan`,
-        },
-        {
-            children: <p>Kaverit</p>,
-            path: `/${lng}/leaderboard/friends`,
-        },
-    ].map((elem) => {
-        return {
-            type: CustomSwitchItems.ToggleLink,
-            isOpen: elem.path === realPath,
-            ...elem,
-        };
-    });
+    const CustomSwitchElements: ToggleLink[] = useMemo(() => {
+        return [
+            {
+                children: <p>Globaali</p>,
+                path: `/${lng}/leaderboard`,
+            },
+            {
+                children: <p>Klaani</p>,
+                path: `/${lng}/leaderboard/clans`,
+            },
+            {
+                children: <p>Kaverit</p>,
+                path: `/${lng}/leaderboard/friends`,
+            },
+        ].map((elem) => {
+            return {
+                type: CustomSwitchItems.ToggleLink,
+                isOpen: elem.path === realPath,
+                ...elem,
+            };
+        });
+    }, [realPath, lng]);
 
     return (
         <LayoutWithSidebars

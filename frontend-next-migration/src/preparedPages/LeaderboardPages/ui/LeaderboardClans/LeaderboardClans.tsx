@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LeaderboardClan = () => {
+const LeaderboardClans = () => {
     return <div>LeaderboardClan</div>;
 };
 
-export default LeaderboardClan;
+export default LeaderboardClans;
