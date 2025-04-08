@@ -48,18 +48,21 @@ const HeroDevelopmentNavMenuAsDropdown: React.FC = () => {
 
     return (
         <div>
-            <nav style={isTouchDevice ? { display: 'contents' } : { display: 'none' }}>
-                <NavMenuWithDropdowns
-                    className={cls.Width}
-                    {...navMenuWithDropdownsMobileProps}
-                />
-            </nav>
-            <nav style={isTouchDevice ? { display: 'none' } : { display: 'block' }}>
-                <NavMenuWithDropdowns
-                    className={cls.Width}
-                    {...navMenuWithDropdownsDesktopProps}
-                />
-            </nav>
+            {isTouchDevice ? (
+                <nav className={cls.NavMenuWithDropdownsTouch}>
+                    <NavMenuWithDropdowns
+                        className={cls.Width}
+                        {...navMenuWithDropdownsMobileProps}
+                    />
+                </nav>
+            ) : (
+                <nav>
+                    <NavMenuWithDropdowns
+                        className={cls.Width}
+                        {...navMenuWithDropdownsDesktopProps}
+                    />
+                </nav>
+            )}
         </div>
     );
 };

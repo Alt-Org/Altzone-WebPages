@@ -130,12 +130,6 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
                         className={cls.externalLinkIcon}
                         size={'2xs'}
                         icon={faExternalLink}
-                        style={{
-                            display: 'inline',
-                            verticalAlign: 'middle',
-                            marginLeft: '5px',
-                            color: '#FFA101',
-                        }}
                     />
                 </a>
                 <a
@@ -149,12 +143,6 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
                         className={cls.externalLinkIcon}
                         size={'2xs'}
                         icon={faExternalLink}
-                        style={{
-                            display: 'inline',
-                            verticalAlign: 'middle',
-                            marginLeft: '5px',
-                            color: '#FFA101',
-                        }}
                     />
                 </a>
             </div>
