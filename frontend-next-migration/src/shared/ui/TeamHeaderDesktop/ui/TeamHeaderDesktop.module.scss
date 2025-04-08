@@ -1,6 +1,6 @@
 
 .headerImg {
-    width: 70%;
+    width: 70% !important;
     height: 80vh !important;
     border-radius: var(--border-radius-md);
     border-style: solid;
@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 70%;
+    width: 70% !important;
     align-items: center;
     height: 9rem;
 }

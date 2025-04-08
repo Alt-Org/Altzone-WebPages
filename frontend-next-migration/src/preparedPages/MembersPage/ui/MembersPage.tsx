@@ -35,7 +35,23 @@ const MembersPage = (props: Props) => {
     const { t } = useClientTranslation('members');
     const title = t('Tableofcontent-title');
 
-    return (
+    return isTouchDevice ? (
+        <div
+            id={'members'}
+            className={classNames(cls.MembersPageMobile)}
+        >
+            <TeamHeaderDesktop image={sections[0].image} />
+            <div className={cls.DropdownContainer}>
+                <TableOfContents
+                    sections={sections}
+                    className={cls.TeamDropdown}
+                    dropdownClassName={cls.TeamDropdownItems}
+                    title={title}
+                />
+            </div>
+            <SectionMembers className={cls.workersSectionMobile} />
+        </div>
+    ) : (
         <div
             id={'members'}
             className={classNames(cls.MembersPage)}
@@ -44,7 +60,6 @@ const MembersPage = (props: Props) => {
             <LayoutWithSidebars
                 className={cls.TeamPageSidebar}
                 leftTopSidebar={{
-                    variant: 'wide',
                     component: (
                         <TableOfContents
                             sections={sections}
@@ -55,7 +70,6 @@ const MembersPage = (props: Props) => {
                     hideOnMobile: true,
                 }}
             >
-                {isTouchDevice && <h2>Dropdown here</h2>}
                 <SectionMembers className={cls.workersSection} />
             </LayoutWithSidebars>
         </div>

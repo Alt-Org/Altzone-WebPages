@@ -15,8 +15,7 @@
 
 .workersSection {
   z-index: 2;
-  width: 112%;
-
+  width: 112% !important;
 
   @media only screen and (min-width: 1921px) {
     * {
@@ -39,16 +38,65 @@
   max-width: 13vw;
   transform: translateX(1vw);
   min-width: 8vw;
-  
-  
 }
 
 
 .TeamPageSidebar {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0) !important;
   padding: 0;
-  max-width: 80vw;
-  margin-left: 4vw;
+  max-width: 80vw !important;
+  margin-left: 4vw !important;
   background-attachment: none;
-  margin-left: -0.8vw;
+  margin-left: -0.8vw !important;
+}
+
+.TeamDropdown {
+  border-radius: var(--border-radius-xl);
+  color: var(--primary-color);
+  background-color: var(--background);
+  height: 3rem;
+  border-style: solid;
+  border-color: var(--black);
+  border-width: var(--border-mobile);
+  box-shadow: 3px 4px black;
+  padding: 8px 0 2px 18px;
+  width: 87%;
+  max-width: 320px;
+  position: relative;
+  font: var(--font-m);
+  font-size: var(--font-size-l);
+}
+
+.workersSectionMobile {
+  width:90%;
+  margin: 3vh 0 3vh;
+  filter: drop-shadow(2px 2px var(--drop-shadows));
+}
+
+.MembersPageMobile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12vh;
+}
+
+.TeamDropdownItems {
+  background-color: var(--background);
+  border-style: solid;
+  border-width: var(--border-mobile);
+  border-color: var(--black);
+  border-radius: var(--border-radius-md);
+  border-top: none;
+  transform: translateX(-0.5rem) translateY(0.5rem) !important;
+}
+
+.TeamDropdownItems > div {
+  padding-left: 10px;
+}
+
+.DropdownContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
 }
