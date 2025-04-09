@@ -88,6 +88,8 @@
   border-radius: var(--border-radius-md);
   border-top: none;
   transform: translateX(-0.5rem) translateY(0.5rem) !important;
+  z-index: 3;
+  position: relative;
 }
 
 .TeamDropdownItems > div {

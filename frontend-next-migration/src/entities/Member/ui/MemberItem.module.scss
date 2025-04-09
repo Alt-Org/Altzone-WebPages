@@ -1,7 +1,25 @@
+$tabletbreakpoint: breakpoint(md) + 1;
+
 .memberRow {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  padding: 0.2em 0 0.2em 0;
+
+
+  .textContainer{
+    display: flex;
+
+    @media (min-width: $tabletbreakpoint){
+      width: 85%;
+      flex-direction: row;
+      }
+
+    @media (max-width: breakpoint(md)){
+      flex-direction: column;
+      gap: 0.1em;
+      }
+  }
 
   .memberName {
     font-weight: bold;
@@ -11,6 +29,10 @@
     padding-right: 2rem;
     display: flex;
     justify-content: flex-end;
+
+    @media (max-width: breakpoint(md)){
+      justify-content: flex-start;
+      }
   }
 
   .taskText {
@@ -21,6 +43,7 @@
     min-width: 0;
     display: flex;
     align-items: center;
+    width: fit-content !important;
   }
 
   .iconContainer {
@@ -31,13 +54,14 @@
     flex: 1;
     min-width: 0;
     @media only screen and (min-width: 760px) {
-      padding-right: 2rem;
+      padding-right: 1rem;
     }
   }
 
   .centerContainer {
     display: flex;
     flex: 2;
+      
   }
 
   .clickableLogo {

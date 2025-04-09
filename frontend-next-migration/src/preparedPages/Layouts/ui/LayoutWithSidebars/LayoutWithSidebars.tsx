@@ -12,7 +12,6 @@ interface SidebarConfig {
     hideOnDesktop?: boolean;
     collapsed?: boolean;
     className?: string;
-    variant?: 'normal' | 'wide';
 }
 
 interface DesktopLeftSidebarLayoutPropsBase {
@@ -36,8 +35,6 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
     const isFixed = useSelector(selectIsFixed);
     const isCollapsed = useSelector(selectIsCollapsed);
     const isTopIndentCustom = isFixed && !isCollapsed;
-
-    const variant = leftTopSidebar?.variant ?? 'normal';
 
     const hasBothSidebars = !!leftTopSidebar && !!rightBottomSidebar;
     const bothSidebarsVisibleOnDesktop =
