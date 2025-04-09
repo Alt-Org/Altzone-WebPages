@@ -1,13 +1,20 @@
 
 .headerImg {
-    width: 70% !important;
-    height: 80vh !important;
+    width: 71.5%;
+    height: 75vh;
     border-radius: var(--border-radius-md);
     border-style: solid;
     border-width: var(--border-desktop);
     border-color: var(--black);
     box-shadow: 3px 4px black;
     justify-items: center;
+
+    @media (max-width: breakpoint(md)){
+        width: 90%;
+        height: 50vh;
+        display: flex;
+        justify-self: flex-start;
+      }
     
 }
 
@@ -27,9 +34,9 @@
 }
 
 .HeaderImageContainer {
-    width: 100%;
     justify-content: center;
     display: flex;
+    width: 100vw;
 }
 
 .TitleContainer {
@@ -42,16 +49,31 @@
 }
 
 .Searchfield {
-    border-radius: var(--border-radius-xl);
+    background: transparent;
+    border: none;
     color: var(--primary-color);
-    background-color: var(--background);
-    height: 2.5rem;
-    width: 13rem;
-    overflow: hidden;
-    border-style: solid;
-    border-color: var(--black);
-    border-width: var(--border-desktop);
-    box-shadow: 3px 4px black;
+    margin-left: 0.5em;
+    outline: none;
+    font-family: var(--primary-font),serif;
+    
+    &::placeholder {
+        color: var(--primary-color);
+    }
 }
 
+.inputContainer {
+    display: flex;
+    align-items: center;
+    background-color: var(--background);
+    color: var(--primary-color);
+    padding: 0.4em 1em;
+    border-radius: 9999px;
+    width: fit-content;
+    border-style: solid;
+    border-color: var(--black);
+    border-width: 3px;
+    box-shadow: 3px 4px black;
+    max-width: 320px;
+    height: 3rem;
+}
 

@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './MembersPage.module.scss';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { TableOfContents } from '@/shared/ui/TableOfContents';
-import TeamHeaderDesktop from '@/shared/ui/TeamHeaderDesktop';
+import { TeamHeaderDesktop, TeamHeaderMobile } from '@/shared/ui/TeamHeader';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useClientTranslation } from '@/shared/i18n';
 
@@ -40,15 +40,16 @@ const MembersPage = (props: Props) => {
             id={'members'}
             className={classNames(cls.MembersPageMobile)}
         >
-            <TeamHeaderDesktop image={sections[0].image} />
-            <div className={cls.DropdownContainer}>
-                <TableOfContents
-                    sections={sections}
-                    className={cls.TeamDropdown}
-                    dropdownClassName={cls.TeamDropdownItems}
-                    title={title}
-                />
-            </div>
+            <TeamHeaderMobile image={sections[0].image}>
+                <div className={cls.DropdownContainer}>
+                    <TableOfContents
+                        sections={sections}
+                        className={cls.TeamDropdown}
+                        dropdownClassName={cls.TeamDropdownItems}
+                        title={title}
+                    />
+                </div>
+            </TeamHeaderMobile>
             <SectionMembers className={cls.workersSectionMobile} />
         </div>
     ) : (
