@@ -3,10 +3,11 @@ import { SectionMembers } from '@/widgets/SectionMembers';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './MembersPage.module.scss';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import { TableOfContents } from '@/shared/ui/TableOfContents';
-import { TeamHeaderDesktop, TeamHeaderMobile } from '@/shared/ui/TeamHeader';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { useClientTranslation } from '@/shared/i18n';
+import { TeamHeader } from '@/shared/ui/TeamHeader/ui/TeamHeader';
+import { FC } from 'react';
+import headerImg from '@/shared/assets/images/members/members8.webp';
+import { MembersNavMenu } from '@/features/NavigateMembers/ui/MemberNavMenuAsDropdown';
 
 /**
  * The above code defines a React functional component for a Members Page with a background image
@@ -14,61 +15,38 @@ import { useClientTranslation } from '@/shared/i18n';
  * @returns The `MembersPage` component is being returned. It is a functional component.
  */
 
-interface Section {
-    id: string;
-    label: string;
-    description: string;
-    image: string;
-    imageAlt: string;
-}
-
-export type Props = {
-    sections: Section[];
-};
-
-const MembersPage = (props: Props) => {
-    const { sections = [] } = props;
+const MembersPage: FC = () => {
     const { isMobileSize, isTabletSize } = useSizes();
     const isTouchDevice = isMobileSize || isTabletSize;
-    sections.map((section) => (section.id = section.label));
-
-    const { t } = useClientTranslation('members');
-    const title = t('Tableofcontent-title');
 
     return isTouchDevice ? (
         <div
             id={'members'}
             className={classNames(cls.MembersPageMobile)}
         >
-            <TeamHeaderMobile image={sections[0].image}>
-                <div className={cls.DropdownContainer}>
-                    <TableOfContents
-                        sections={sections}
-                        className={cls.TeamDropdown}
-                        dropdownClassName={cls.TeamDropdownItems}
-                        title={title}
-                    />
-                </div>
-            </TeamHeaderMobile>
-            <SectionMembers className={cls.workersSectionMobile} />
+            <TeamHeader image={headerImg}>
+                <LayoutWithSidebars
+                    className={cls.TeamPageSidebar}
+                    leftTopSidebar={{
+                        component: <MembersNavMenu />,
+                        hideOnMobile: false,
+                    }}
+                >
+                    <SectionMembers className={cls.workersMobileSection} />
+                </LayoutWithSidebars>
+            </TeamHeader>
         </div>
     ) : (
         <div
             id={'members'}
-            className={classNames(cls.MembersPage)}
+            className={classNames(cls.MembersPageMobile)}
         >
-            <TeamHeaderDesktop image={sections[0].image} />
+            <TeamHeader image={headerImg} />
             <LayoutWithSidebars
                 className={cls.TeamPageSidebar}
                 leftTopSidebar={{
-                    component: (
-                        <TableOfContents
-                            sections={sections}
-                            className={cls.TeamSideBar}
-                            title={title}
-                        />
-                    ),
-                    hideOnMobile: true,
+                    component: <MembersNavMenu />,
+                    hideOnMobile: false,
                 }}
             >
                 <SectionMembers className={cls.workersSection} />

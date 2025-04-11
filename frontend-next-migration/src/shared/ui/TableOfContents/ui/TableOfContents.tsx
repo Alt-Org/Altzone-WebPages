@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import cls from './TableOfContents.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import { DropdownWrapper } from '../../DropdownWrapperV2';
 
 interface Section {
     id: string;
@@ -13,8 +11,6 @@ interface Section {
 interface TableOfContentsProps {
     sections: Section[];
     className?: string;
-    title?: string;
-    dropdownClassName?: string;
 }
 
 /**
@@ -39,10 +35,8 @@ interface TableOfContentsProps {
  * />
  */
 const TableOfContents: React.FC<TableOfContentsProps> = (props: TableOfContentsProps) => {
-    const { sections, className, title, dropdownClassName } = props;
+    const { sections, className } = props;
     const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
-    const { isMobileSize, isTabletSize } = useSizes();
-    const isTouchDevice = isMobileSize || isTabletSize;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -99,10 +93,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = (props: TableOfContentsP
         }
     };
 
-    return !isTouchDevice ? (
+    return (
         <div className={cls.navbarSideContainer}>
             <div className={classNames(cls.navbarSide, {}, [className ?? ''])}>
-                {title && <h3 className={cls.sectionTitle}>{title}</h3>}
                 <ul>
                     {sections.map((section) => (
                         <li
@@ -115,22 +108,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = (props: TableOfContentsP
                     ))}
                 </ul>
             </div>
-        </div>
-    ) : (
-        <div className={classNames('', {}, [className ?? ''])}>
-            <DropdownWrapper
-                contentClassName={classNames(cls.defaultDropdown, {}, [dropdownClassName ?? ''])}
-                elements={sections.map((section) => ({
-                    id: section.id,
-                    elementText: section.label,
-                    onClickCallback: () => {
-                        scrollToSection(section.id);
-                    },
-                }))}
-                dynamicTitle={title}
-                isOpen={false}
-                showArrow={true}
-            />
         </div>
     );
 };

@@ -1,2 +1,1 @@
-export { TeamHeaderDesktop } from './ui/TeamHeaderDesktop/TeamHeaderDesktop';
-export { TeamHeaderMobile } from './ui/TeamHeaderMobile/TeamHeaderMobile';
+export { TeamHeader as default } from './ui/TeamHeader';
