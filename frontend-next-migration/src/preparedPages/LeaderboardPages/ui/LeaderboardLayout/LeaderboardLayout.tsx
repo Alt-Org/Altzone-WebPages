@@ -3,6 +3,8 @@ import { ReactNode, useState, useEffect, useMemo } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { CustomSwitch, CustomSwitchItems, ToggleLink } from '@/shared/ui/CustomSwitch';
+import { NavMenuWithDropdowns } from '@/shared/ui/NavMenuWithDropdownsV2';
+import cls from './LeaderboardLayout.module.scss';
 
 const LeaderboardLayout = ({ children }: { children: ReactNode }) => {
     const params = useParams();
@@ -44,13 +46,55 @@ const LeaderboardLayout = ({ children }: { children: ReactNode }) => {
 
     return (
         <LayoutWithSidebars
-            rightBottomSidebar={{
-                component: <p>categories</p>,
-                hideOnMobile: true,
+            className={cls.LayoutWithSidebars}
+            leftTopSidebar={{
+                component: (
+                    <NavMenuWithDropdowns
+                        openByDefault={true}
+                        dropdownItems={[
+                            { elementText: 'Item 1', link: { path: '/item1', isExternal: false } },
+                            {
+                                title: 'Category 1',
+                                openByDefault: false,
+                                elements: [
+                                    {
+                                        id: '1',
+                                        elementText: 'Item 2',
+                                        link: { path: '/item2', isExternal: false },
+                                    },
+                                    {
+                                        id: '2',
+                                        elementText: 'Item 3',
+                                        link: { path: '/item3', isExternal: false },
+                                    },
+                                ],
+                            },
+                            {
+                                title: 'Category 2',
+                                openByDefault: false,
+                                elements: [
+                                    {
+                                        id: '3',
+                                        elementText: 'Item 4',
+                                        link: { path: '/item4', isExternal: false },
+                                    },
+                                    {
+                                        id: '4',
+                                        elementText: 'Item 5',
+                                        link: { path: '/item5', isExternal: false },
+                                    },
+                                ],
+                            },
+                        ]}
+                        title={'Kategoriat'}
+                    />
+                ),
             }}
         >
-            <CustomSwitch elements={CustomSwitchElements} />
-            {children}
+            <main className={cls.Content}>
+                <CustomSwitch elements={CustomSwitchElements} />
+                {children}
+            </main>
         </LayoutWithSidebars>
     );
 };

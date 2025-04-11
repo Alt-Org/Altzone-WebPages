@@ -1,0 +1,65 @@
+.Podiums {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    // height:200px;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 4px 4px var(--black);
+}
+.PodiumContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.ClanIcon {
+    flex: 1 1;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+.ClanIcon > img {
+    width: 80px;
+    margin: 0 auto;
+}
+.Podium {
+    border-top: 2px solid var(--primary-color);
+    border-left: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-direction: column;
+}
+.Medal {
+    height: 30px;
+}
+.Medal > img {
+    position: relative;
+    margin: auto;
+    top: -15px;
+}
+.Leader {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 90px;
+    text-align: center;
+    p {
+        margin: 0 .5em 0 .5em;
+        margin-left: -100%;
+        margin-right: -100%;
+    }
+}
+.PodiumSilver {
+    flex-basis: 90px;
+}
+.PodiumGold {
+    flex-basis: 100px;
+}
+.PodiumBronze {
+    flex-basis: 80px;
+}
