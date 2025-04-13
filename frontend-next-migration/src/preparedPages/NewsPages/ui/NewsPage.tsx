@@ -3,24 +3,19 @@ import { useState } from 'react';
 import { Container } from '@/shared/ui/Container';
 import { NewsCard } from '@/widgets/NewsCard';
 import cls from './NewsPage.module.scss';
-import { SearchInput } from '@/features/Search';
-import { useClientTranslation } from '@/shared/i18n';
 
 const NewsPage = () => {
-    const [searchValue, setSearchValue] = useState('');
-
-    const { t } = useClientTranslation('search');
-
     // later use this to fetch data from the backend
-    const handleSearchChange = () => {
-        // setSearchValue(e.target.value);
-    };
+    // const handleSearchChange = () => {
+    //     // setSearchValue(e.target.value);
+    // };
     const newsPageMock = [
         {
             id: 1,
             title: 'Hannu Hodari News',
             content: 'Check out the latest news about Hannu Hodari and his amazing adventures!',
             date: '2024-03-01',
+            imageSrc: '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png',
         },
         {
             id: 2,
@@ -28,6 +23,7 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
+            imageSrc: '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png',
         },
 
         {
@@ -36,6 +32,7 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
+            imageSrc: '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png',
         },
         {
             id: 4,
@@ -43,20 +40,12 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
+            imageSrc: '@/shared/assets/images/heros/conman/conman.png',
         },
     ];
     return (
         <main className={cls.NewsPage}>
             <Container>
-                <div className={cls.header}>
-                    <h2 className={cls.title}>{t('newsTitle')}</h2>
-                    <div>
-                        <SearchInput
-                            value={searchValue}
-                            onChange={handleSearchChange}
-                        />
-                    </div>
-                </div>
                 <div className={cls.newsGrid}>
                     {newsPageMock.map((news) => (
                         <NewsCard
