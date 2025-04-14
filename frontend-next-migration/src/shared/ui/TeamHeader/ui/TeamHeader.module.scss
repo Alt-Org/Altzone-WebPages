@@ -1,0 +1,103 @@
+
+.headerImg {
+    width: 71.5%;
+    height: 40rem;
+    border-radius: var(--border-radius-lg);
+    border-style: solid;
+    border-width: var(--border-desktop);
+    border-color: var(--black);
+    box-shadow: 3px 4px black;
+    justify-items: center;
+
+    @media (max-width: breakpoint(md)){
+        width: 90%;
+        height: 40vh;
+        display: flex;
+        justify-self: flex-start;
+      }
+    
+}
+
+.HeaderContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+}
+
+.HeaderImageContainer {
+    justify-content: center;
+    display: flex;
+    width: 100vw;
+}
+
+.TitleContainer {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    
+    h2 {
+        font-family: var(--font-family-title),serif;
+        color: var(--primary-color);
+        font-size: var(--h2-size-desktop);
+    }
+
+    @media (max-width: breakpoint(md)){
+        width: 100%;
+      }
+}
+
+.DesktopTitleContainer {
+    @extend .TitleContainer;
+    flex-direction: row;
+    justify-items: end;
+}
+
+.Searchfield {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    margin-left: 0.5em;
+    outline: none;
+    font-family: var(--primary-font),serif;
+    
+    &::placeholder {
+        color: var(--primary-color);
+    }
+}
+
+.InputContainer {
+    display: flex;
+    align-items: center;
+    background-color: var(--background);
+    color: var(--primary-color);
+    padding: 0.4em 1em;
+    border-radius: var(--corner-radius-large);
+    border-style: solid;
+    border-color: var(--black);
+    border-width: 3px;
+    box-shadow: 3px 4px black;
+    width: 87%;
+    max-width: 320px;
+    height: 3rem;
+}
+
+.InputParent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.DesktopInputParent {
+    @extend .InputParent;
+    justify-content: flex-end;
+}
+
+.HeaderMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+}

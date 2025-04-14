@@ -45,26 +45,13 @@
   background-color: rgba(0, 0, 0, 0) !important;
   padding: 0;
   max-width: 80vw !important;
-  margin-left: 4vw !important;
+  margin-left: -0.6vw !important;
   background-attachment: none;
-  margin-left: -0.8vw !important;
 }
 
-.TeamDropdown {
-  border-radius: var(--border-radius-xl);
-  color: var(--primary-color);
-  background-color: var(--background);
-  height: 3rem;
-  border-style: solid;
-  border-color: var(--black);
-  border-width: var(--border-mobile);
-  box-shadow: 3px 4px black;
-  padding: 8px 0 2px 18px;
-  width: 87%;
-  max-width: 320px;
-  position: relative;
-  font: var(--font-m);
-  font-size: var(--font-size-l);
+.TeamPageSidebarMobile{
+  background-color: rgba(0, 0, 0, 0) !important;
+  padding: 0 3vh;
 }
 
 .workersSectionMobile {
@@ -77,28 +64,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 12vh;
+  margin-top: 16vh;
 }
 
-.TeamDropdownItems {
-  background-color: var(--background);
-  border-style: solid;
-  border-width: var(--border-mobile);
-  border-color: var(--black);
-  border-radius: var(--border-radius-md);
-  border-top: none;
-  transform: translateX(-0.5rem) translateY(0.5rem) !important;
-  z-index: 3;
-  position: relative;
-}
-
-.TeamDropdownItems > div {
-  padding-left: 10px;
-}
-
-.DropdownContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  
-}

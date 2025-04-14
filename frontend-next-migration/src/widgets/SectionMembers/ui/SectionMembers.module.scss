@@ -4,6 +4,10 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+
+  @media (max-width: breakpoint(md)){
+    width: 90%;
+  }
 }
 .teamMembersList{
   padding-top: 0.8vh;

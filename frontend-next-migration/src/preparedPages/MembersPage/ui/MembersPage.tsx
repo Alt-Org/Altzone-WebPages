@@ -24,29 +24,23 @@ const MembersPage: FC = () => {
             id={'members'}
             className={classNames(cls.MembersPageMobile)}
         >
-            <TeamHeader image={headerImg}>
-                <LayoutWithSidebars
-                    className={cls.TeamPageSidebar}
-                    leftTopSidebar={{
-                        component: <MembersNavMenu />,
-                        hideOnMobile: false,
-                    }}
-                >
-                    <SectionMembers className={cls.workersMobileSection} />
-                </LayoutWithSidebars>
-            </TeamHeader>
+            <TeamHeader
+                image={headerImg}
+                dropdown={<MembersNavMenu />}
+            />
+            <SectionMembers className={cls.workersMobileSection} />
         </div>
     ) : (
         <div
             id={'members'}
-            className={classNames(cls.MembersPageMobile)}
+            className={classNames(cls.MembersPage)}
         >
             <TeamHeader image={headerImg} />
             <LayoutWithSidebars
                 className={cls.TeamPageSidebar}
                 leftTopSidebar={{
                     component: <MembersNavMenu />,
-                    hideOnMobile: false,
+                    hideOnMobile: true,
                 }}
             >
                 <SectionMembers className={cls.workersSection} />

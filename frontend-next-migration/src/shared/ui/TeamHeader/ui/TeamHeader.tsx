@@ -1,7 +1,7 @@
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './TeamHeader.module.scss';
 import Image, { StaticImageData } from 'next/image';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import useSizes from '@/shared/lib/hooks/useSizes';
@@ -9,21 +9,23 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 type Props = {
     image: StaticImageData;
     children?: ReactNode;
+    dropdown?: ReactNode;
 };
 
-export function TeamHeader({ image, children }: Props) {
+export function TeamHeader(props: Props) {
+    const { image, children, dropdown } = props;
     const { t } = useClientTranslation('members');
     const { isMobileSize, isTabletSize } = useSizes();
     const isTouchDevice = isMobileSize || isTabletSize;
 
     return isTouchDevice ? (
-        <div className={cls.HeaderContainer}>
+        <div className={cls.HeaderMobile}>
             <div className={cls.TitleContainer}>
                 <h2>{t('head-title')}</h2>
             </div>
-            {children}
-            <div className={cls.inputParent}>
-                <div className={cls.inputContainer}>
+            {dropdown}
+            <div className={cls.InputParent}>
+                <div className={cls.InputContainer}>
                     <FontAwesomeIcon
                         className={cls.textInputIcon}
                         size={'lg'}
@@ -42,8 +44,8 @@ export function TeamHeader({ image, children }: Props) {
                 <Image
                     src={image}
                     alt={'Header image'}
-                    width={1000}
-                    height={1000}
+                    width={0}
+                    height={0}
                     quality={100}
                     className={cls.headerImg}
                     loading={'eager'}
@@ -53,10 +55,10 @@ export function TeamHeader({ image, children }: Props) {
     ) : (
         <>
             <div className={cls.HeaderContainer}>
-                <div className={cls.desktopTitleContainer}>
+                <div className={cls.DesktopTitleContainer}>
                     <h2>{t('head-title')}</h2>
-                    <div className={cls.desktopInputParent}>
-                        <div className={cls.inputContainer}>
+                    <div className={cls.DesktopInputParent}>
+                        <div className={cls.InputContainer}>
                             <FontAwesomeIcon
                                 className={cls.textInputIcon}
                                 size={'lg'}
