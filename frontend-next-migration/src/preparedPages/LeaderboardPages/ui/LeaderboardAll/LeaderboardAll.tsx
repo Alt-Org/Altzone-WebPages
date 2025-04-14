@@ -9,7 +9,7 @@ const LeaderboardAll = () => {
                 <SectionLeaderboard
                     leaders={
                         [
-                            { name: 'aaaaaaaaaaaaaaa', points: 8321 },
+                            { name: 'a', points: 8321 },
                             { name: 'aaaaaaaaaaaaaaa', points: 8212 },
                             { name: 'aaaaaaaaaaaaaaa', points: 8204 },
                             { name: 'pelaaja', points: 8156 },

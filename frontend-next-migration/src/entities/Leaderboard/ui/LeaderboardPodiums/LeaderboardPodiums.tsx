@@ -1,15 +1,15 @@
 import { memo } from 'react';
 import Image from 'next/image';
-import { IPlayer } from '@/entities/User';
 import medal1 from '@/shared/assets/icons/medal-nro1-40px.svg';
 import medal2 from '@/shared/assets/icons/medal-nro2-40px.svg';
 import medal3 from '@/shared/assets/icons/medal-nro3-40px.svg';
 import clanLogo from '@/shared/assets/images/clanLogos/temp-clanlogo.png';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { LeaderboardItem } from '../../types/leaderboard';
 import cls from './LeaderboardPodiums.module.scss';
 
 interface PodiumProps {
-    leaders: IPlayer[];
+    leaders: LeaderboardItem[];
     className?: string;
 }
 
@@ -40,7 +40,7 @@ const LeaderboardPodium = memo(({ leaders, className }: PodiumProps) => {
                         {leaders[1] ? (
                             <>
                                 <p>{leaders[1].name}</p>
-                                <p>{leaders[1].points}</p>
+                                <p>{leaders[1].points}p</p>
                             </>
                         ) : null}
                     </div>
@@ -64,7 +64,7 @@ const LeaderboardPodium = memo(({ leaders, className }: PodiumProps) => {
                         {leaders[0] ? (
                             <>
                                 <p>{leaders[0].name}</p>
-                                <p>{leaders[0].points}</p>
+                                <p>{leaders[0].points}p</p>
                             </>
                         ) : null}
                     </div>
@@ -88,7 +88,7 @@ const LeaderboardPodium = memo(({ leaders, className }: PodiumProps) => {
                         {leaders[2] ? (
                             <>
                                 <p>{leaders[2].name}</p>
-                                <p>{leaders[2].points}</p>
+                                <p>{leaders[2].points}p</p>
                             </>
                         ) : null}
                     </div>
