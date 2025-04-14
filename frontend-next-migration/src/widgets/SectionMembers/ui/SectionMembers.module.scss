@@ -35,7 +35,7 @@
 }
 
 .membersListContainer {
-  font-size: clamp(0.5rem, 3vw, 1.7rem);
+  font-size: var(--heading-font-size);
   font-family: var(--font-family-main);
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: var(--border-radius-custom);
