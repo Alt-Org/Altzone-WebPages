@@ -9,10 +9,10 @@ const LeaderboardAll = () => {
                 <SectionLeaderboard
                     leaders={
                         [
-                            { name: 'a', points: 8321 },
-                            { name: 'aaaaaaaaaaaaaaa', points: 8212 },
-                            { name: 'aaaaaaaaaaaaaaa', points: 8204 },
-                            { name: 'pelaaja', points: 8156 },
+                            { name: 'aaaaaaaaaaaa', points: 21 },
+                            { name: 'a', points: 12 },
+                            { name: 'a', points: 4 },
+                            { name: 'pelaaja', points: 1 },
                         ] as IPlayer[]
                     }
                 />
@@ -25,7 +25,7 @@ const LeaderboardAll = () => {
                             { name: 'aaaaaaaaaaaaaaa', points: 8321 },
                             { name: 'aaaaaaaaaaaaaaa', points: 8212 },
                             { name: 'aaaaaaaaaaaaaaa', points: 8204 },
-                            { name: 'pelaaja', points: 8156 },
+                            { name: 'pelaajaaaaaaaaa', points: 8156 },
                         ] as IPlayer[]
                     }
                 />
