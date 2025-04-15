@@ -1,9 +1,8 @@
 'use client';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
-    DropdownItem,
     DropDownElementASTextOrLink,
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { useClientTranslation } from '@/shared/i18n';
@@ -12,6 +11,7 @@ import { useGetMemberTeamsQuery } from '@/entities/Member/api/memberTeamsApi';
 import { getLanguageCode, getTeamTranslation } from '@/entities/Member/api/translations';
 import { useParams } from 'next/navigation';
 import cls from './MemberNavMenuAsDropdown.module.scss';
+import { organizeTeams } from '@/entities/Member/api/mappers';
 
 export const MembersNavMenu: React.FC = () => {
     const { isMobileSize, isTabletSize } = useSizes();
@@ -31,12 +31,14 @@ export const MembersNavMenu: React.FC = () => {
 
     const sections = useMemo(() => {
         return teams.map((team) => ({
-            id: getTeamTranslation(team.translations || [], fullLanguageCode),
+            id: team.id,
             label: getTeamTranslation(team.translations || [], fullLanguageCode),
         }));
     }, [teams, fullLanguageCode]);
 
-    const dropdownItems: DropDownElementASTextOrLink[] = sections.map((section) => ({
+    const sortedSections = organizeTeams(sections, lng);
+
+    const dropdownItems: DropDownElementASTextOrLink[] = sortedSections.map((section) => ({
         title: section.label,
         openByDefault: false,
         elementText: section.label,

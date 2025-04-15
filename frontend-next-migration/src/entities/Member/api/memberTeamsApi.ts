@@ -9,7 +9,7 @@ const client = createDirectus(directusBaseUrl).with(rest());
  * API service for fetching member teams from a Directus backend.
  *
  * This service uses the Directus SDK and Redux Toolkit Query to define endpoints for fetching
- * teams data, including their associated translations.
+ * teams data.
  *
  * @module memberTeamsApi
  *
@@ -17,7 +17,7 @@ const client = createDirectus(directusBaseUrl).with(rest());
  * Endpoint to fetch member teams from the Directus `teams` collection.
  * Retrieves information about teams, including their translations.
  *
- * @returns {object} Response containing an array of teams.
+ * @returns {Record<string, any>[]} Response containing an array of teams.
  */
 
 const memberTeamsApi = directusApi.injectEndpoints({
