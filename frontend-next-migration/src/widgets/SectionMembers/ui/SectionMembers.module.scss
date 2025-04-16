@@ -1,12 +1,16 @@
+$touchSize: 1023px;
+
 .MembersSection {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  filter: drop-shadow(4px 5px var(--drop-shadows));
 
-  @media (max-width: breakpoint(md)){
-    width: 90%;
+  @media (max-width: $touchSize){
+    width: 90% !important;
+    margin-bottom: 3vh;
   }
 }
 .teamMembersList{
@@ -35,7 +39,7 @@
 }
 
 .membersListContainer {
-  font-size: var(--heading-font-size);
+  font-size: clamp(0.5rem, 3vw, 1.7rem);
   font-family: var(--font-family-main);
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: var(--border-radius-custom);

@@ -20,33 +20,25 @@ export const getLinks = () => {
 };
 
 const enOrder = [
-    'Game Design',
-    'Mentoring',
-    'Development',
-    'Graphics',
-    'Writers',
-    'Sounds',
-    'Comic Book',
+    'Design Team',
+    'Technical Team',
+    'Artistic Team',
     'Production',
-    'Analysis',
-    'Game Art Education Package',
-    'Other Participants',
-    'Special Thanks',
+    'Community',
+    'Art Education',
+    'Involved In The Project',
+    'Thanks',
 ];
 
 const fiOrder = [
-    'Pelisuunnittelu',
-    'Mentorointi',
-    'Ohjelmistokehitys',
-    'Grafiikka',
-    'Kirjoittajat',
-    'Äänet',
-    'Sarjakuva',
+    'Suunnittelutiimi',
+    'Tekninen Tiimi',
+    'Taiteellinen Tiimi',
     'Tuotanto',
-    'Analyysi',
-    'Pelitaiteen Opetuspaketti',
-    'Muut Mukana Olleet',
-    'Erityiskiitokset',
+    'Yhteisö',
+    'Taidekasvatus',
+    'Projektin Kehityksessä Mukana Olleet',
+    'Kiitokset',
 ];
 
 /**

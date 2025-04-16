@@ -1,6 +1,7 @@
+$touchSize: 1023px;
 
 .headerImg {
-    width: 71.5%;
+    width: 70%;
     height: 40rem;
     border-radius: var(--border-radius-lg);
     border-style: solid;
@@ -9,7 +10,7 @@
     box-shadow: 3px 4px black;
     justify-items: center;
 
-    @media (max-width: breakpoint(md)){
+    @media (max-width: $touchSize){
         width: 90%;
         height: 40vh;
         display: flex;
@@ -29,7 +30,7 @@
 .HeaderImageContainer {
     justify-content: center;
     display: flex;
-    width: 100vw;
+    width: 100%;
 }
 
 .TitleContainer {
@@ -44,7 +45,7 @@
         font-size: var(--h2-size-desktop);
     }
 
-    @media (max-width: breakpoint(md)){
+    @media (max-width: $touchSize){
         width: 100%;
       }
 }
@@ -100,4 +101,5 @@
     flex-direction: column;
     gap: 1.5rem;
     padding-bottom: 1.5rem;
+    width: 100%;
 }
