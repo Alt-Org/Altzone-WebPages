@@ -11,6 +11,7 @@ import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { useClientTranslation } from '@/shared/i18n';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 // import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
 // import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
 // import { useEffect } from 'react';
@@ -126,7 +127,13 @@ const Page = () => {
                 <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
-            <h1>Main Page Content</h1>
+
+            <div style={{ margin: '20px' }}>
+                <h5>Theme switcher component.</h5>
+            </div>
+            <ThemeSwitcher />
+
+            <h1 style={{ marginTop: '20px' }}>Main Page Content</h1>
             {/* Testing ModularCard */}
 
             <div
