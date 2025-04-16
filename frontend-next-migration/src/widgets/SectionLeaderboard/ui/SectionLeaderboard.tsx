@@ -1,22 +1,24 @@
-import React from 'react';
-import { IPlayer } from '@/entities/User';
-import { LeaderboardPodiums, LeaderboardCard } from '@/entities/Leaderboard';
+import { Leaderboard, LeaderboardTitle } from '@/entities/Leaderboard';
+import { LeaderboardItem } from '@/entities/Leaderboard/types/leaderboard';
+import { LeaderboardType } from '../types';
 
 interface SectionLeaderboardProps {
-    leaders: IPlayer[];
+    leaderboards: LeaderboardType[];
     className?: string;
 }
 
-const SectionLeaderboard = ({ leaders, className }: SectionLeaderboardProps) => {
+const SectionLeaderboard = ({ leaderboards, className }: SectionLeaderboardProps) => {
+    // return
     return (
-        <div>
-            <LeaderboardPodiums leaders={leaders.splice(0, 3)} />
-            {leaders.map((leader, index) => (
-                <LeaderboardCard
+        <div style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
+            {leaderboards.map((leaderboard, index) => (
+                <div
                     key={index}
-                    element={leader}
-                    position={index + 4}
-                />
+                    style={{ width: '100%' }}
+                >
+                    <LeaderboardTitle title={leaderboard.title} />
+                    <Leaderboard leaders={leaderboard.leaders} />
+                </div>
             ))}
         </div>
     );
