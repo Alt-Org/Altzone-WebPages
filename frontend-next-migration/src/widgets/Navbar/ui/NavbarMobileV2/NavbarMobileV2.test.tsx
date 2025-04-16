@@ -53,10 +53,10 @@ describe('Navbar mobile', () => {
         );
 
         expect(screen.getByRole('navigation')).toBeInTheDocument();
-        expect(screen.getByTestId('burger-button')).toBeInTheDocument();
+        expect(screen.getByTestId('mobile-navbar-burger-button')).toBeInTheDocument();
     });
 
-    test('toggles sidebar on burger button click', async () => {
+    test('toggles nav-menu on burger button click', async () => {
         render(
             <NavbarMobile
                 toggleCollapsed={jest.fn()}
@@ -67,9 +67,26 @@ describe('Navbar mobile', () => {
             />,
         );
 
-        const burgerButton = screen.getByTestId('burger-button'); // Use getByTestId
+        const burgerButton = screen.getByTestId('mobile-navbar-burger-button'); // Use getByTestId
         await userEvent.click(burgerButton);
 
-        expect(screen.getByTestId('sidebar')).toBeVisible();
+        expect(screen.getByTestId('nav-menu')).toBeVisible();
+    });
+
+    test('toggles profile on profile button click', async () => {
+        render(
+            <NavbarMobile
+                toggleCollapsed={jest.fn()}
+                isCollapsed={true}
+                isFixed={true}
+                toggleFixed={jest.fn()}
+                navbarBuild={getNavbarBuildBySize('mobile')}
+            />,
+        );
+
+        const profileButton = screen.getByTestId('mobile-navbar-profile-button'); // Use getByTestId
+        await userEvent.click(profileButton);
+
+        expect(screen.getByTestId('mobile-navbar-profile')).toBeVisible();
     });
 });

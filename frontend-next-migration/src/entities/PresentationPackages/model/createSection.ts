@@ -54,6 +54,7 @@ interface SectionData {
 export function createSection(data: SectionData): PresentationSection {
     return {
         id: `section${data.index + 1}`,
+        navMenuTitle: `${data.prefix}-nav-menu-title`,
         label: `${data.prefix}-label`,
         description: `${data.prefix}-description`,
         image: data?.image?.src,

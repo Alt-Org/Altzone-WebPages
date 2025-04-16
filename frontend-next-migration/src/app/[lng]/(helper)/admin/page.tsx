@@ -1,6 +1,5 @@
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
-import { ScrollTop } from '@/features/ScrollTop';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
@@ -9,10 +8,14 @@ import {
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { RoutePaths } from '@/shared/appLinks/RoutePaths';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
+import { PageTitle } from '@/shared/ui/PageTitle';
+import { useClientTranslation } from '@/shared/i18n';
+import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 // import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
 // import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
 // import { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
+
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
         title: 'Klaanit',
@@ -78,57 +81,10 @@ const Page = () => {
                     { elementText: 'Hero 2', id: 'hero2' },
                 ],
             },
-            // {
-            //     title: 'Heroes',
-            //     openByDefault: true,
-            //     elements: [
-            //         // links can be used as well, just add the "link" to object
-            //         {
-            //             elementText: 'Hero 1',
-            //             id: 'hero1',
-            //             link: { path: RoutePaths.HEROES, isExternal: false },
-            //         },
-            //         { elementText: 'Hero 2', id: 'hero2' },
-            //     ],
-            // },
-
-            // {
-            //     title: 'News',
-            //     openByDefault: false,
-            //     elements: [
-            //         {
-            //             elementText: 'Piece of news 1',
-            //             id: 'news1',
-            //             link: {
-            //                 path: 'https://gamerant.com/capcom-reports-high-pc-sales/',
-            //                 isExternal: true,
-            //             },
-            //         },
-            //         { elementText: 'Piece of news 2', id: 'news2' },
-            //         { elementText: 'Piece of news 3', id: 'news3' },
-            //     ],
-            // },
         ],
     };
 
-    // Testing clan api
-    // const clanPosition = useGetClanLeaderboardPositionQuery();
-
-    // Testing api: get profile info
-    // const dispatch = useDispatch();
-    // const { data, error } = useGetProfileInfoQuery();
-
-    // useEffect(() => {
-    //     if (data?.data?.Profile) {
-    //         dispatch(
-    //             profileActions.setProfile({
-    //                 username: data.data.Profile.username,
-    //                 Player: data.data.Profile.Player,
-    //                 _id: data.data.Profile._id,
-    //             }),
-    //         );
-    //     }
-    // }, []);
+    const { t } = useClientTranslation('admin');
     return (
         <LayoutWithSidebars
             // rightSidebar={di}
@@ -150,6 +106,7 @@ const Page = () => {
                 ),
             }}
         >
+            <WallIntroAnimation renderOnce={true} />
             <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
             <div style={{ margin: '20px' }}>
                 <h5>
@@ -171,6 +128,7 @@ const Page = () => {
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
             <h1>Main Page Content</h1>
             {/* Testing ModularCard */}
+
             <div
                 style={{
                     display: 'flex',
@@ -249,6 +207,20 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
+            <PageTitle
+                titleText={t('adminTestTitle')}
+                searchVisible={false}
+                dynamicTitle="admin"
+            />
+            <PageTitle
+                titleText={t('staticTestTitle')}
+                searchVisible={true}
+            />
+            <PageTitle
+                titleText={t('adminTestTitle')}
+                searchVisible={false}
+                dynamicTitle="admin"
+            />
             <p>
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
@@ -289,27 +261,6 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
-
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-            <p>This is the main content, adapting to both desktop and mobile devices.</p>
-
             <p>
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
@@ -342,50 +293,8 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
-
-            {/* Get clan leaderboard position */}
-            {/* {clanPosition.error ? (
-                <p style={{ wordWrap: 'break-word', color: 'red' }}>
-                    Please login to get clan leaderboard position
-                </p>
-            ) : (
-                <p style={{ wordWrap: 'break-word', color: 'green' }}>
-                    {JSON.stringify(clanPosition.data)}
-                </p>
-            )} */}
-
-            {/* Get profile info */}
-            {/* {error ? (
-                <p style={{ wordWrap: 'break-word', color: 'red' }}>
-                    Please login to get profile info
-                </p>
-            ) : (
-                <p style={{ wordWrap: 'break-word', color: 'green' }}>
-                    {JSON.stringify(data?.data?.Profile?.username)}
-                </p>
-            )} */}
-            <ScrollTop />
         </LayoutWithSidebars>
     );
 };
 
 export default Page;
-
-// <div
-//     style={{
-//         display: 'flex',
-//         justifyContent: 'center',
-//         marginTop: '200px',
-//     }}
-// >
-//     {/*better to use className for that, inline styled used only for testing*/}
-//     <div style={{ width: '100%', maxWidth: '600px' }}>
-//         <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-//     </div>
-//
-//     {/*<NavigationDropdown menuItems={menuData}/>*/}
-// </div>
-
-{
-    /*<CustomEditor.CreateNewMode entityName={'News_Blog'} />*/
-}

@@ -12,6 +12,8 @@ import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButt
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
+import profileIcon from '@/shared/assets/icons/profileIcon.svg';
+import Image from 'next/image';
 
 /**
  * Properties for NavnarDesctop component
@@ -122,14 +124,20 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                 theme={AppLinkTheme.PRIMARY}
                                 to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
                             >
-                                <span>log</span>
+                                <Image
+                                    src={profileIcon}
+                                    alt="Login Icon"
+                                />
                             </AppLink>
                         ) : permissionToLogout.isGranted ? (
                             <p
                                 className={cls.logoutButton}
                                 onClick={() => logout()}
                             >
-                                {t(`logout`)}
+                                <Image
+                                    src={profileIcon}
+                                    alt="Logout Icon"
+                                />
                             </p>
                         ) : null}
                     </li>

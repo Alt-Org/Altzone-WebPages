@@ -17,6 +17,7 @@ const makeSectionsWithI18n = (
     return (t: (key: string) => string): PresentationSection[] => {
         return sections.map((section) => ({
             ...section,
+            navMenuTitle: t(section.navMenuTitle),
             label: t(section.label),
             description: t(section.description),
             image: section.image,

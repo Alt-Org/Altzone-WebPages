@@ -49,7 +49,6 @@ describe('onFormSubmit', () => {
         const { result } = renderHook(() => useNewClanForm({ onSuccess: mockOnSuccess }));
 
         const mockValues = {
-            gameCoins: 1,
             isOpen: true,
             name: 'mandoliini',
             tag: 'mandoliini',
@@ -67,7 +66,6 @@ describe('onFormSubmit', () => {
         };
 
         const newMockValues = {
-            gameCoins: 1,
             isOpen: true,
             name: 'mandoliini',
             tag: 'mandoliini',

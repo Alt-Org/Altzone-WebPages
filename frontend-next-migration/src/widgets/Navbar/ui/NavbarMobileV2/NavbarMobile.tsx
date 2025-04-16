@@ -3,21 +3,29 @@ import { usePathname } from 'next/navigation';
 import { CSSProperties, memo, useEffect, useMemo, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
-import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
-import { sidebarItemType } from '@/shared/ui/Sidebar/model/items';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ISidebarItem, Sidebar } from '@/shared/ui/Sidebar';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { useClientTranslation } from '@/shared/i18n';
+import { getRouteComingSoonPage, getRouteLoginPage } from '@/shared/appLinks/RoutePaths';
+import profileIcon from '@/shared/assets/icons/profileIcon.svg';
+import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
+import closeIcon from '@/shared/assets/icons/closeIcon.svg';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 import { ItemType, NavbarBuild } from '../../model/types';
-import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
 import cls from './NavbarMobile.module.scss';
+
+enum DropdownTypes {
+    EMPTY = 'EMPTY',
+    HAMBURGER = 'HAMBURGER',
+    AUTH = 'AUTH',
+}
+
+type DropdownType = DropdownTypes.EMPTY | DropdownTypes.HAMBURGER | DropdownTypes.AUTH;
 
 export interface NavbarTouchProps {
     marginTop?: number;
-    onBurgerButtonClick?: (isMenuOpen: boolean) => void;
+    onDropdownChange?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
-    side?: 'left' | 'right';
     className?: string;
     isFixed: boolean;
     isCollapsed: boolean;
@@ -26,7 +34,7 @@ export interface NavbarTouchProps {
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, side = 'left', className = '', toggleFixed, isFixed } = props;
+    const { marginTop, navbarBuild, className = '', onDropdownChange, isFixed } = props;
 
     const { t } = useClientTranslation('navbar');
 
@@ -39,26 +47,10 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const hasScrollbar = useIsPageScrollbar();
-
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
-
-    // A crutch to reset dropdowns when closing the navbar
-    const [sidebarItemsListResetKey, setSidebarItemsListResetKey] = useState(0);
-    const handleBurgerClick = () => {
-        setIsSidebarOpen(true);
-        props.onBurgerButtonClick?.(true);
-    };
-    const handleSidebarClose = () => {
-        setIsSidebarOpen(false);
-        props.onBurgerButtonClick?.(false);
-        // we should give some time for animation
-        setTimeout(() => setSidebarItemsListResetKey((currentKey) => currentKey + 1), 500);
-    };
-
-    const [realPath, setRealPath] = useState('/');
     const pathname = usePathname();
+
+    const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.EMPTY);
+    const [realPath, setRealPath] = useState('/');
 
     useEffect(() => {
         const pathSegments = pathname.split('/').filter(Boolean);
@@ -66,14 +58,20 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         setRealPath(newPath);
     }, [pathname]);
 
-    const sidebarItemsList: ISidebarItem[] = useMemo(() => {
+    useEffect(() => {
+        if (onDropdownChange) {
+            onDropdownChange(dropdownType !== DropdownTypes.EMPTY);
+        }
+    }, [dropdownType, onDropdownChange]);
+
+    const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map((item) => {
                 if (item.type === ItemType.navLink) {
                     return {
                         path: item.path,
                         name: t(`${item.name}`),
-                        type: sidebarItemType.ISidebarItemBasic,
+                        type: NavMenuItemType.Link,
                         active: realPath === item.path,
                     };
                 }
@@ -94,7 +92,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                 ...element,
                                 // @ts-ignore todo add guard
                                 elementText: t(`${element.elementText}`), // Localize elementText
-                                // @ts-ignore
+                                // @ts-ignore todo add guard
                                 active: realPath === element?.link?.path,
                             };
                         })
@@ -111,130 +109,134 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         name: t(`${item.name}`),
                         elements: localizedElements,
                         active: isDropdownActive,
-                        type: sidebarItemType.ISidebarItemDropDown,
+                        type: NavMenuItemType.Dropdown,
                     };
                 }
 
                 return null;
             })
-            .filter((item) => item !== null) as ISidebarItem[];
+            .filter((item) => item !== null) as INavMenuItem[];
     }, [t, navbarBuild?.menu, permissionToSeeOwnClan.isGranted, realPath]);
+
+    const dropdownContent = useMemo(() => {
+        return {
+            [DropdownTypes.EMPTY]: null,
+            [DropdownTypes.HAMBURGER]: (
+                <NavMenu
+                    // todo langswitcher could be in the navbarmobile data instead of hardcoded here.
+                    dropdownItems={navManuItemsList.concat([
+                        {
+                            type: NavMenuItemType.Element,
+                            element: <LangSwitcher className={cls.langSwitcher} />,
+                        },
+                    ])}
+                />
+            ),
+            [DropdownTypes.AUTH]: (
+                <div data-testid="mobile-navbar-profile">
+                    {permissionToLogin.isGranted ? (
+                        <AppLink to={getRouteLoginPage()}>{t('login')}</AppLink>
+                    ) : permissionToLogout.isGranted ? (
+                        <>
+                            <AppLink to={getRouteComingSoonPage()}>{t('profile')}</AppLink>
+                            <button
+                                className={cls.logoutButton}
+                                onClick={() => logout()}
+                            >
+                                {t('logout')}
+                            </button>
+                        </>
+                    ) : null}
+                </div>
+            ),
+        };
+    }, [permissionToLogin.isGranted, permissionToLogout.isGranted, navManuItemsList]);
 
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
-        // [cls.collapsed]: isCollapsed,
-        [cls.collapsing]: isAnimating,
     } as Record<string, boolean>;
 
-    const sidebarMods: Record<string, boolean> = {
-        [cls.left]: side === 'left',
-        [cls.right]: side === 'right',
-        // [cls.collapsed]: isCollapsed,
+    const getDropdownContent = (dropdownType: DropdownType) => {
+        if (dropdownType === DropdownTypes.EMPTY) {
+            return null;
+        }
+        return dropdownContent[dropdownType];
     };
 
-    // const handleCollapseClick = () => {
-    //     if (!isAnimating) {
-    //         setIsAnimating(true);
-    //         toggleCollapsed();
-    //     }
-    // };
-
-    const handleTransitionEnd = () => {
-        setIsAnimating(false);
-    };
     return (
         <nav
             className={classNames(cls.Navbar, mods, [className])}
             style={style}
         >
-            <div
-                className={classNames(cls.NavbarMobile__burger, sidebarMods)}
-                onClick={handleBurgerClick}
-                data-testid="burger-button"
-            />
-            <Sidebar
-                sidebarItemsListResetKey={sidebarItemsListResetKey}
-                buttonClassName={classNames(
-                    cls.NavbarMobile__burger + ' ' + cls.navItem,
-                    sidebarMods,
-                )}
-                sidebarClassName={cls.sidebar}
-                sidebarItemsList={sidebarItemsList}
-                side={side}
-                closeOnClickOutside
-                onClose={handleSidebarClose}
-                bottomItems={
-                    <div className={cls.sidebarBottom}>
-                        <LangSwitcher className={cls.langSwitcher} />
-                        <div className={cls.authSection}>
-                            {permissionToLogin.isGranted && (
-                                <AppLink
-                                    className={cls.authSectionLink}
-                                    theme={AppLinkTheme.PRIMARY}
-                                    to={navbarBuild?.namedMenu?.navAuthLogin?.path || ''}
-                                    key={navbarBuild?.namedMenu?.navAuthLogin?.path || ''}
-                                >
-                                    <span>
-                                        {t(`${navbarBuild?.namedMenu?.navAuthLogin?.name}`)}
-                                    </span>
-                                </AppLink>
-                            )}
-                            {permissionToLogout.isGranted && (
-                                <div onClick={() => logout()}>{t(`logout`)}</div>
-                            )}
+            <div className={cls.NavbarContent}>
+                <div className={cls.HamurgerBtn}>
+                    {dropdownType !== DropdownTypes.EMPTY ? (
+                        <div onClick={() => setDropdownType(DropdownTypes.EMPTY)}>
+                            <Image
+                                src={closeIcon}
+                                alt="X shaped svg image. For closing navigation bar menus."
+                                width={20}
+                                height={20}
+                            />
                         </div>
-                    </div>
-                }
-            />
-            <AppLink
-                className={classNames(
-                    cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
-                    // { [cls.collapsed]: isCollapsed },
-                    {},
-                    [],
-                )}
-                theme={AppLinkTheme.PRIMARY}
-                to={navbarBuild?.namedMenu?.navLogo?.path || ''}
-            >
-                <Image
-                    loading={'eager'}
-                    width={180}
-                    src={navbarBuild?.namedMenu?.navLogo?.src || ''}
-                    alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
-                />
-            </AppLink>
-            <div className={cls.buttonContainer}>
-                {hasScrollbar && (
+                    ) : (
+                        <div
+                            onClick={() => setDropdownType(DropdownTypes.HAMBURGER)}
+                            data-testid="mobile-navbar-burger-button"
+                        >
+                            <Image
+                                src={hamburgerIcon}
+                                alt="Three vertical lines. Is svg image used in the open navigation menu button."
+                                width={26}
+                                height={20}
+                            />
+                        </div>
+                    )}
+                </div>
+                <AppLink
+                    className={classNames(
+                        cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
+                        // { [cls.collapsed]: isCollapsed },
+                        {},
+                        [],
+                    )}
+                    theme={AppLinkTheme.PRIMARY}
+                    to={navbarBuild?.namedMenu?.navLogo?.path || ''}
+                >
+                    <Image
+                        loading={'eager'}
+                        src={navbarBuild?.namedMenu?.navLogo?.src || ''}
+                        alt={navbarBuild?.namedMenu?.navLogo?.name || ''}
+                    />
+                </AppLink>
+                <div className={cls.buttonContainer}>
                     <div
-                        className={classNames(
-                            cls.navItem,
-                            // { [cls.collapsed]: isCollapsed }
-                        )}
-                        onTransitionEnd={handleTransitionEnd}
+                        data-testid="mobile-navbar-profile-button"
+                        onClick={() =>
+                            setDropdownType(
+                                dropdownType === DropdownTypes.AUTH
+                                    ? DropdownTypes.EMPTY
+                                    : DropdownTypes.AUTH,
+                            )
+                        }
                     >
-                        <ToggleFixButton
-                            isFixed={isFixed}
-                            onClick={toggleFixed}
-                            className={cls.Button}
+                        <Image
+                            src={profileIcon}
+                            alt="icon of a person inside a circle"
+                            width={20}
+                            height={20}
                         />
                     </div>
-                )}
-                {/*{isFixed && (*/}
-                {/*    <div*/}
-                {/*        className={classNames(cls.CollapseButtonWrapper, {*/}
-                {/*            [cls.collapsing]: isAnimating,*/}
-                {/*        })}*/}
-                {/*    >*/}
-                {/*        <ToggleCollapseButton*/}
-                {/*            onClick={handleCollapseClick}*/}
-                {/*            isCollapsed={isCollapsed}*/}
-                {/*            className={cls.Button}*/}
-                {/*            disabled={isAnimating}*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*)}*/}
+                </div>
+            </div>
+            <div
+                className={classNames(cls.NavbarDropdown, {
+                    [cls.openDropdown]: dropdownType !== DropdownTypes.EMPTY,
+                })}
+            >
+                {getDropdownContent(dropdownType)}
             </div>
         </nav>
     );

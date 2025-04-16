@@ -99,7 +99,7 @@
 
 .content {
   position: relative;
-  padding: 2em;
+  padding: 1.5em;
 }
 
 .heroImgWrapper {
@@ -117,7 +117,8 @@
 }
 
 .heroImg {
-  width: 100%;
+  width: auto;
+  max-height: 220px;
   user-select: none;
   pointer-events: none;
 

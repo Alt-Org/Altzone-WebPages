@@ -1,6 +1,6 @@
 {
   "all_clans": "Kaikki Klaanit",
-  "my_clan": "Minun klaani",
+  "my_clan": "Minun Klaani",
   "create_clan": "Luo Klaani",
   "confirm_delete_clan": "Oletko varma?",
   "clan_deleted": "Klaani poistettiin onnistuneesti",
@@ -42,5 +42,8 @@
   "goal": "Tavoite",
   "age_limit": "Ikäraja",
   "wins": "Voitot",
-  "losses": "Tappiot"
+  "losses": "Tappiot",
+  "leaderboard-title": "Tulostaulukko",
+  "browse-clans": "Selaa Klaaneja",
+  "store-title": "Kauppa"
 }
