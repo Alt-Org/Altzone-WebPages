@@ -45,7 +45,7 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                 key={team.id}
                                 className={cls.teamCard}
                             >
-                                <h2>{team.name}</h2>
+                                <h1 id={team.name}>{team.name}</h1>
                                 <ul className={cls.teamMembersList}>
                                     {team.members.map((member) => (
                                         <MemberItem
