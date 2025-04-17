@@ -11,10 +11,10 @@ const Leaderboard = ({ leaders, className }: LeaderboardProps) => {
     return (
         <div className={className}>
             <LeaderboardPodiums
-                leaders={leaders.splice(0, 3)}
+                leaders={leaders.slice(0, 3)}
                 className={cls.LeaderboardPodiums}
             />
-            {leaders.map((leader, index) => (
+            {leaders.slice(3).map((leader, index) => (
                 <LeaderboardCard
                     key={index}
                     element={leader}

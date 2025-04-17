@@ -1,7 +1,10 @@
+'use client';
 import React from 'react';
 import { SectionLeaderboard } from '@/widgets/SectionLeaderboard';
 import { LeaderboardTitle } from '@/entities/Leaderboard';
 import { IPlayer } from '@/entities/User';
+import { LeaderboardItem } from '@/entities/Leaderboard/types/leaderboard';
+import { useGetLeaderboardQuery } from '@/entities/Clan';
 
 const LeaderboardAll = () => {
     return (
@@ -10,20 +13,20 @@ const LeaderboardAll = () => {
                 {
                     title: 'Voitot',
                     leaders: [
-                        { name: 'aaaaaaaaaaaa', points: 21 },
-                        { name: 'a', points: 12 },
-                        { name: 'a', points: 4 },
-                        { name: 'pelaaja', points: 1 },
-                    ] as IPlayer[],
+                        { name: '12kirjaintaa', points: 21 },
+                        { name: 'Nimi Nimi', points: 12 },
+                        { name: 'Nimi Nimi', points: 4 },
+                        { name: 'Nimi Nimi', points: 1 },
+                    ] as LeaderboardItem[],
                 },
                 {
                     title: 'Aktiivisuus',
                     leaders: [
-                        { name: 'aaaaaaaaaaaa', points: 21 },
-                        { name: 'a', points: 12 },
-                        { name: 'a', points: 4 },
-                        { name: 'pelaaja', points: 1 },
-                    ] as IPlayer[],
+                        { name: '12kirjaintaa', points: 21 },
+                        { name: 'Nimi Nimi', points: 12 },
+                        { name: 'Nimi Nimi', points: 4 },
+                        { name: '12kirjaintaa', points: 1 },
+                    ] as LeaderboardItem[],
                 },
             ]}
         />
