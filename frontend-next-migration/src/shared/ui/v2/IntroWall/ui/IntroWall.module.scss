@@ -1,0 +1,74 @@
+
+.wall {
+    position: fixed;
+    top: 0;
+    align-content: start; 
+    display: grid;
+    grid-template-columns: repeat(8, 15vw);
+    grid-auto-rows: 12vh;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    perspective: 1000px;
+
+    @media (max-width:breakpoint(md)) {
+        grid-template-columns: repeat(8, 15rem);
+        grid-auto-rows: 6rem;
+    }
+
+    @media (max-width:breakpoint(sm)) {
+        grid-template-columns: repeat(8, 10rem);
+        grid-auto-rows: 5rem;
+    }
+}
+
+$drop-count: 96;
+
+@for $i from 0 through $drop-count {
+    
+    .drop-#{$i} {
+
+        --tile-tilt: 0deg;
+        width: auto;
+        height: 13vh;
+        animation: drop 0.55s ease-in #{$i * 0.02s} both;
+        z-index: ($drop-count - $i);
+        box-shadow: 0 4px 3px 3px rgba($color: #121823c8, $alpha: 0.5);
+        border-radius: 6px;
+        
+        @media (max-width:breakpoint(md)) {
+            height: 6rem;   
+        }
+
+        @media (max-width:breakpoint(sm)) {
+            height: 5rem;   
+        }
+    }
+}
+
+@for $i from 1 through 8 {
+    .tile:nth-child(16n + #{$i}) {
+        margin-left: -50%;
+    
+        @media (max-width:breakpoint(md))  {
+            margin-left: -40%;
+        }
+
+        @media (max-width:breakpoint(xs)) {
+            margin-left: -45%
+        }
+    }
+    
+}
+
+
+@keyframes drop {
+    0% {
+        transform: translateY(0) translateZ(0) rotate(0);
+        filter: blur(0);
+    }
+    100% {
+        transform: translateY(95vh) translateZ(650px) rotate(var(--tile-tilt));
+        filter: blur(5px);
+    }
+}

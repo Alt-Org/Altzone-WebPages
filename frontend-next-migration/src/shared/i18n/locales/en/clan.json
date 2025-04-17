@@ -1,6 +1,6 @@
 {
   "all_clans": "All clans",
-  "my_clan": "My clan",
+  "my_clan": "My Clan",
   "create_clan": "Create clan",
   "confirm_delete_clan": "Are you sure?",
   "clan_deleted": "Clan deleted successfully",
@@ -42,5 +42,8 @@
   "goal": "Goal",
   "age_limit": "Age limit",
   "wins": "Wins",
-  "losses": "Losses"
+  "losses": "Losses",
+  "leaderboard-title": "Leaderboard",
+  "browse-clans": "Browse Clans",
+  "store-title": "Store"
 }

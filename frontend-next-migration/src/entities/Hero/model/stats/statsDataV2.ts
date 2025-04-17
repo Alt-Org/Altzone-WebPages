@@ -43,7 +43,7 @@ type NamedStatArray = {
 };
 
 export const statData: NamedStatArray = {
-    HANNU_HODARI: [
+    OVEREATER: [
         {
             name: 'resistance',
             defaultLevel: 5,
@@ -70,7 +70,7 @@ export const statData: NamedStatArray = {
             rarityClass: 3,
         },
     ],
-    PIRATE: [
+    ALCOHOLIC: [
         {
             name: 'resistance',
             defaultLevel: 8,
@@ -124,7 +124,7 @@ export const statData: NamedStatArray = {
             rarityClass: 10,
         },
     ],
-    SLEEPER: [
+    SLEEPY_SLEEPER: [
         {
             name: 'resistance',
             defaultLevel: 12,
@@ -151,7 +151,34 @@ export const statData: NamedStatArray = {
             rarityClass: 10,
         },
     ],
-    GRAFFITI_ARTIST: [
+    PROVOCATEUR: [
+        {
+            name: 'resistance',
+            defaultLevel: 10,
+            rarityClass: 5,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 3,
+            rarityClass: 7,
+        },
+        {
+            name: 'size',
+            defaultLevel: 8,
+            rarityClass: 7,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 7,
+            rarityClass: 7,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 4,
+            rarityClass: 5,
+        },
+    ],
+    MIRROR: [
         {
             name: 'resistance',
             defaultLevel: 10,
@@ -232,7 +259,34 @@ export const statData: NamedStatArray = {
             rarityClass: 8,
         },
     ],
-    FATE_PRIEST: [
+    JOKESTER: [
+        {
+            name: 'resistance',
+            defaultLevel: 5,
+            rarityClass: 8,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 2,
+            rarityClass: 3,
+        },
+        {
+            name: 'size',
+            defaultLevel: 6,
+            rarityClass: 10,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 7,
+            rarityClass: 7,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 10,
+            rarityClass: 8,
+        },
+    ],
+    BELIEVER: [
         {
             name: 'resistance',
             defaultLevel: 10,
@@ -257,6 +311,87 @@ export const statData: NamedStatArray = {
             name: 'speed',
             defaultLevel: 10,
             rarityClass: 3,
+        },
+    ],
+    RACIST: [
+        {
+            name: 'resistance',
+            defaultLevel: 14,
+            rarityClass: 1,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 1,
+            rarityClass: 10,
+        },
+        {
+            name: 'size',
+            defaultLevel: 8,
+            rarityClass: 5,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 6,
+            rarityClass: 3,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 3,
+            rarityClass: 8,
+        },
+    ],
+    MEATWALL: [
+        {
+            name: 'resistance',
+            defaultLevel: 14,
+            rarityClass: 1,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 1,
+            rarityClass: 10,
+        },
+        {
+            name: 'size',
+            defaultLevel: 8,
+            rarityClass: 5,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 6,
+            rarityClass: 3,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 3,
+            rarityClass: 8,
+        },
+    ],
+    VETERAN: [
+        {
+            name: 'resistance',
+            defaultLevel: 14,
+            rarityClass: 1,
+        },
+        {
+            name: 'hp',
+            defaultLevel: 1,
+            rarityClass: 10,
+        },
+        {
+            name: 'size',
+            defaultLevel: 8,
+            rarityClass: 5,
+        },
+        {
+            name: 'impactForce',
+            defaultLevel: 6,
+            rarityClass: 3,
+        },
+        {
+            name: 'speed',
+            defaultLevel: 3,
+            rarityClass: 8,
         },
     ],
 };

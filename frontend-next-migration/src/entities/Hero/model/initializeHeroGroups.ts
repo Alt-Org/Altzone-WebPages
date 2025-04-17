@@ -1,24 +1,31 @@
 import einstein from '@/shared/assets/images/heros/einstein/einstein.png';
-import einsteinGif from '@/shared/assets/images/heros/einstein/einstein-dab_dance.gif';
-import hannuHodari from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import hannuHodariGiF from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari-white-bg.gif';
-import pirate from '@/shared/assets/images/heros/pirate/pirate.png';
-import pirateGif from '@/shared/assets/images/heros/pirate/pirate-catwalk.gif';
-import graffittiGaya from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
-import graffittiGayaGif from '@/shared/assets/images/heros/graffitti-gaya/grafitti-gaya.gif';
+import professorGif from '@/shared/assets/images/heros/einstein/Professor.gif';
+import overeater from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import overeaterGif from '@/shared/assets/images/heros/hannu-hodari/Overeater.gif';
+import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
+import provocateur from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
+import mirror from '@/shared/assets/images/heros/mirror/Mirror.webp';
+import mirrorGif from '@/shared/assets/images/heros/mirror/Mirror.gif';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
-import purpleGirlsGif from '@/shared/assets/images/heros/purple-girls/purple-girls-white-bg.gif';
-import sleeper from '@/shared/assets/images/heros/sleeper/sleeper.webp';
+import sleepySleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.webp';
+import sleeperGif from '@/shared/assets/images/heros/sleeper/Sleeper.gif';
 import conman from '@/shared/assets/images/heros/conman/conman.webp';
-import conmanGif from '@/shared/assets/images/heros/conman/conman.gif';
-import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.webp';
-import fatePriestGif from '@/shared/assets/images/heros/fate-priest/fate-priest.gif';
+import conmanGif from '@/shared/assets/images/heros/conman/Conman_new.gif';
+import jokester from '@/shared/assets/images/heros/jokester/Jokester.webp';
+import believer from '@/shared/assets/images/heros/fate-priest/Believer.webp';
+import believerGif from '@/shared/assets/images/heros/fate-priest/Believer.gif';
+import racist from '@/shared/assets/images/heros/racist/Rasisti.png';
+import racistGif from '@/shared/assets/images/heros/racist/Rasisti.gif';
+import meatwall from '@/shared/assets/images/heros/meatwall/Meatwall.png';
+import veteran from '@/shared/assets/images/heros/veteran/Veteran.webp';
+import veteranGif from '@/shared/assets/images/heros/veteran/Veteran.gif';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
+import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import { statData } from '../model/stats/statsDataV2';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
@@ -33,26 +40,26 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 4341,
-                    srcImg: hannuHodari,
-                    srcGif: hannuHodariGiF,
-                    alt: t('RETROFLECTOR.heroes.hannuHodari.alt'),
-                    altGif: t('RETROFLECTOR.heroes.hannuHodari.altGif'),
-                    title: t('RETROFLECTOR.heroes.hannuHodari.title'),
-                    slug: HeroSlug.HANNU_HODARI,
-                    description: t('RETROFLECTOR.heroes.hannuHodari.description'),
-                    stats: statData.HANNU_HODARI,
+                    srcImg: overeater,
+                    srcGif: overeaterGif,
+                    alt: t('RETROFLECTOR.heroes.Overeater.alt'),
+                    altGif: t('RETROFLECTOR.heroes.Overeater.altGif'),
+                    title: t('RETROFLECTOR.heroes.Overeater.title'),
+                    slug: HeroSlug.OVEREATER,
+                    description: t('RETROFLECTOR.heroes.Overeater.description'),
+                    stats: statData.OVEREATER,
                 },
 
                 {
                     id: 14342,
-                    srcImg: pirate,
-                    srcGif: pirateGif,
-                    alt: t('RETROFLECTOR.heroes.pirate.alt'),
-                    altGif: t('RETROFLECTOR.heroes.pirate.altGif'),
-                    title: t('RETROFLECTOR.heroes.pirate.title'),
-                    slug: HeroSlug.PIRATE,
-                    description: t('RETROFLECTOR.heroes.pirate.description'),
-                    stats: statData.PIRATE,
+                    srcImg: alcoholic,
+                    srcGif: comingSoon,
+                    alt: t('RETROFLECTOR.heroes.alcoholic.alt'),
+                    altGif: t('RETROFLECTOR.heroes.alcoholic.altGif'),
+                    title: t('RETROFLECTOR.heroes.alcoholic.title'),
+                    slug: HeroSlug.ALCOHOLIC,
+                    description: t('RETROFLECTOR.heroes.alcoholic.description'),
+                    stats: statData.ALCOHOLIC,
                 },
             ],
         },
@@ -66,7 +73,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                 {
                     id: 313213,
                     srcImg: purpleGirls,
-                    srcGif: purpleGirlsGif,
+                    srcGif: comingSoon,
                     alt: t('CONFLUENT.heroes.SoulSisters.alt'),
                     altGif: t('CONFLUENT.heroes.SoulSisters.altGif'),
                     slug: HeroSlug.SOUL_SISTERS,
@@ -77,13 +84,13 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
 
                 {
                     id: 34123,
-                    srcImg: sleeper,
-                    srcGif: comingSoon,
-                    alt: t('CONFLUENT.heroes.Sleeper.alt'),
-                    altGif: t('CONFLUENT.heroes.Sleeper.altGif'),
-                    slug: HeroSlug.SLEEPER,
-                    title: t('CONFLUENT.heroes.Sleeper.title'),
-                    description: t('CONFLUENT.heroes.Sleeper.description'),
+                    srcImg: sleepySleeper,
+                    srcGif: sleeperGif,
+                    alt: t('CONFLUENT.heroes.SleepySleeper.alt'),
+                    altGif: t('CONFLUENT.heroes.SleepySleeper.altGif'),
+                    slug: HeroSlug.SLEEPY_SLEEPER,
+                    title: t('CONFLUENT.heroes.SleepySleeper.title'),
+                    description: t('CONFLUENT.heroes.SleepySleeper.description'),
                     stats: statData.SLEEPER,
                 },
             ],
@@ -97,14 +104,25 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 312314,
-                    srcImg: graffittiGaya,
-                    srcGif: graffittiGayaGif,
-                    alt: t('PROJECTOR.heroes.GraffitiArtist.alt'),
-                    altGif: t('PROJECTOR.heroes.GraffitiArtist.altGif'),
-                    slug: HeroSlug.GRAFFITI_ARTIST,
-                    title: t('PROJECTOR.heroes.GraffitiArtist.title'),
-                    description: t('PROJECTOR.heroes.GraffitiArtist.description'),
-                    stats: statData.GRAFFITI_ARTIST,
+                    srcImg: provocateur,
+                    srcGif: comingSoon,
+                    alt: t('PROJECTOR.heroes.Provocateur.alt'),
+                    altGif: t('PROJECTOR.heroes.Provocateur.altGif'),
+                    slug: HeroSlug.PROVOCATEUR,
+                    title: t('PROJECTOR.heroes.Provocateur.title'),
+                    description: t('PROJECTOR.heroes.Provocateur.description'),
+                    stats: statData.PROVOCATEUR,
+                },
+                {
+                    id: 312315,
+                    srcImg: mirror,
+                    srcGif: mirrorGif,
+                    alt: t('PROJECTOR.heroes.Mirror.alt'),
+                    altGif: t('PROJECTOR.heroes.Mirror.altGif'),
+                    slug: HeroSlug.MIRROR,
+                    title: t('PROJECTOR.heroes.Mirror.title'),
+                    description: t('PROJECTOR.heroes.Mirror.description'),
+                    stats: statData.MIRROR,
                 },
             ],
         },
@@ -118,7 +136,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                 {
                     id: 52231233123,
                     srcImg: einstein,
-                    srcGif: einsteinGif,
+                    srcGif: professorGif,
                     alt: t('INTELLECTUALIZER.heroes.Researcher.alt'),
                     altGif: t('INTELLECTUALIZER.heroes.Researcher.altGif'),
                     slug: HeroSlug.RESEARCHER,
@@ -146,6 +164,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     description: t('TRICKSTER.heroes.Conman.description'),
                     stats: statData.CONMAN,
                 },
+                {
+                    id: 522314,
+                    srcImg: jokester,
+                    srcGif: comingSoon,
+                    alt: t('TRICKSTER.heroes.Jokester.alt'),
+                    altGif: t('TRICKSTER.heroes.Jokester.altGif'),
+                    slug: HeroSlug.JOKESTER,
+                    title: t('TRICKSTER.heroes.Jokester.title'),
+                    description: t('TRICKSTER.heroes.Jokester.description'),
+                    stats: statData.JOKESTER,
+                },
             ],
         },
 
@@ -157,14 +186,56 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 524234,
-                    srcImg: fatePriest,
-                    srcGif: fatePriestGif,
-                    alt: t('OBEDIENT.heroes.FatePriest.alt'),
-                    altGif: t('OBEDIENT.heroes.FatePriest.altGif'),
-                    slug: HeroSlug.FATE_PRIEST,
-                    title: t('OBEDIENT.heroes.FatePriest.title'),
-                    description: t('OBEDIENT.heroes.FatePriest.description'),
-                    stats: statData.FATE_PRIEST,
+                    srcImg: believer,
+                    srcGif: believerGif,
+                    alt: t('OBEDIENT.heroes.Believer.alt'),
+                    altGif: t('OBEDIENT.heroes.Believer.altGif'),
+                    slug: HeroSlug.BELIEVER,
+                    title: t('OBEDIENT.heroes.Believer.title'),
+                    description: t('OBEDIENT.heroes.Believer.description'),
+                    stats: statData.BELIEVER,
+                },
+            ],
+        },
+
+        [HeroGroup.DESENSITIZER]: {
+            name: t('DESENSITIZER.name'),
+            description: t('DESENSITIZER.description'),
+            bgColour: 'rgba(0,192,192,0.7)',
+            label: lightBlue,
+            heroes: [
+                {
+                    id: 848349,
+                    srcImg: racist,
+                    srcGif: racistGif,
+                    alt: t('DESENSITIZER.heroes.Racist.alt'),
+                    altGif: t('DESENSITIZER.heroes.Racist.altGif'),
+                    slug: HeroSlug.RACIST,
+                    title: t('DESENSITIZER.heroes.Racist.title'),
+                    description: t('DESENSITIZER.heroes.Racist.description'),
+                    stats: statData.RACIST,
+                },
+                {
+                    id: 848341,
+                    srcImg: meatwall,
+                    srcGif: comingSoon,
+                    alt: t('DESENSITIZER.heroes.Meatwall.alt'),
+                    altGif: t('DESENSITIZER.heroes.Meatwall.altGif'),
+                    slug: HeroSlug.MEATWALL,
+                    title: t('DESENSITIZER.heroes.Meatwall.title'),
+                    description: t('DESENSITIZER.heroes.Meatwall.description'),
+                    stats: statData.RACIST,
+                },
+                {
+                    id: 848342,
+                    srcImg: veteran,
+                    srcGif: veteranGif,
+                    alt: t('DESENSITIZER.heroes.Veteran.alt'),
+                    altGif: t('DESENSITIZER.heroes.Veteran.altGif'),
+                    slug: HeroSlug.VETERAN,
+                    title: t('DESENSITIZER.heroes.Veteran.title'),
+                    description: t('DESENSITIZER.heroes.Veteran.description'),
+                    stats: statData.VETERAN,
                 },
             ],
         },

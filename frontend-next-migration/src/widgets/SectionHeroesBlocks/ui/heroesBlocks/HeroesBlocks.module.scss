@@ -13,6 +13,15 @@
   grid-template-columns: repeat(3, 1fr);
   //grid-gap: 20px;
   justify-items: center;
+  grid-auto-flow: row dense
+}
+
+.HeroCard:nth-child(2):nth-last-child(1) {
+  grid-column: 2;
+}
+
+.HeroCard:nth-child(4):nth-last-child(n + 1) {
+  grid-column-start: 2;
 }
 
 .Group {

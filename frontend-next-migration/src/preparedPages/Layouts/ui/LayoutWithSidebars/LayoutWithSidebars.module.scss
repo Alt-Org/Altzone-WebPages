@@ -26,8 +26,8 @@ $touchSize: 1023px;
   top: $navbar-height;
   height: calc(100vh - #{$navbar-height});
   flex-shrink: 0;
-  min-width: 250px;
-  flex-basis: 20%;
+  min-width: 300px;
+  flex-basis: 22%;
   overflow-y: auto;
   transition: min-width,flex-basis .3s ease-out;
 
