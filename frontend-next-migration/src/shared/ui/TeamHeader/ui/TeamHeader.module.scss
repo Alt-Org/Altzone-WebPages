@@ -1,20 +1,26 @@
-$touchSize: 1023px;
+
 
 .headerImg {
-    width: 70%;
-    height: 40rem;
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
     border-radius: var(--border-radius-lg);
     border-style: solid;
     border-width: var(--border-desktop);
     border-color: var(--black);
-    box-shadow: 3px 4px black;
+    box-shadow: 3px 4px var(--black);
     justify-items: center;
+    margin-left: 0;
+    margin-right: auto;
 
-    @media (max-width: $touchSize){
+    @media (min-width: breakpoint(xxl)){
+        width: 100%;
+        margin-left: auto;
+    }
+
+    @media (max-width: breakpoint(lg)){
         width: 90%;
-        height: 40vh;
-        display: flex;
-        justify-self: flex-start;
+        margin-left: auto;
       }
     
 }
@@ -22,22 +28,37 @@ $touchSize: 1023px;
 .HeaderContainer {
     align-items: center;
     display: flex;
-    flex-direction: column;
-    gap: 1.5em;
+    flex-direction: row;
     width: 100%;
+}
+
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-right: 15vh;
 }
 
 .HeaderImageContainer {
     justify-content: center;
     display: flex;
     width: 100%;
+    flex-direction: row;
+    align-items: center;
 }
 
 .TitleContainer {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 100%;
     align-items: center;
+    max-width: 1400px;
+    margin-right: auto;
+
+    @media (min-width: breakpoint(xxl)){
+        margin-left: auto;
+    }
     
     h2 {
         font-family: var(--font-family-title),serif;
@@ -45,7 +66,7 @@ $touchSize: 1023px;
         font-size: var(--h2-size-desktop);
     }
 
-    @media (max-width: $touchSize){
+    @media (max-width: breakpoint(lg)){
         width: 100%;
       }
 }
@@ -103,3 +124,23 @@ $touchSize: 1023px;
     padding-bottom: 1.5rem;
     width: 100%;
 }
+
+.emptyContainer {
+    min-width: 300px;
+    overflow: hidden !important;
+    flex-basis: 0 !important;
+    margin-left: 1% !important;
+    
+    @media (max-width: breakpoint(lg)) {
+        width: 0;
+      }
+}
+
+.diveButton{
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: var(--border-radius-custom);
+    min-width: fit-content;
+    width: clamp(100px, 10vw, 120px);
+    align-self: center;
+  }

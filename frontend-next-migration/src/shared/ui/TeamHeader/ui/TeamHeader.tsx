@@ -55,37 +55,41 @@ export function TeamHeader(props: Props) {
     ) : (
         <>
             <div className={cls.HeaderContainer}>
-                <div className={cls.DesktopTitleContainer}>
-                    <h2>{t('head-title')}</h2>
-                    <div className={cls.DesktopInputParent}>
-                        <div className={cls.InputContainer}>
-                            <FontAwesomeIcon
-                                className={cls.textInputIcon}
-                                size={'lg'}
-                                icon={faMagnifyingGlass}
-                            />
-                            <input
-                                name="search"
-                                placeholder={t('search_placeholder')}
-                                type="text"
-                                id="search"
-                                className={cls.Searchfield}
-                            />
+                <div className={cls.emptyContainer} />
+                <div className={cls.dataContainer}>
+                    <div className={cls.DesktopTitleContainer}>
+                        <h2>{t('head-title')}</h2>
+                        <div className={cls.DesktopInputParent}>
+                            <div className={cls.InputContainer}>
+                                <FontAwesomeIcon
+                                    className={cls.textInputIcon}
+                                    size={'lg'}
+                                    icon={faMagnifyingGlass}
+                                />
+                                <input
+                                    name="search"
+                                    placeholder={t('search_placeholder')}
+                                    type="text"
+                                    id="search"
+                                    className={cls.Searchfield}
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className={cls.HeaderImageContainer}>
-                    <Image
-                        src={image}
-                        alt={'Header image'}
-                        width={1000}
-                        height={1000}
-                        quality={100}
-                        className={cls.headerImg}
-                        loading={'eager'}
-                    />
+                    <div className={cls.HeaderImageContainer}>
+                        <Image
+                            src={image}
+                            alt={'Header image'}
+                            width={1000}
+                            height={1000}
+                            quality={100}
+                            className={cls.headerImg}
+                            loading={'eager'}
+                        />
+                    </div>
                 </div>
             </div>
+
             {children}
         </>
     );
