@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  box-shadow: 3px 4px var(--black);
 
   @media (max-width: breakpoint(lg)){
     width: 95%;

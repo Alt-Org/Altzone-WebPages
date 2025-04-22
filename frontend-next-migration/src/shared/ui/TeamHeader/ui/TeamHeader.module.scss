@@ -30,17 +30,27 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+
+    @media (max-width: breakpoint(lg)) {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
 }
 
 .dataContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-right: 15vh;
+    gap: 1rem;
+
+    @media (min-width: breakpoint(lg)) {
+        align-items: center;
+        width: 100%;
+        padding-right: 15vh;
+    }
 }
 
-.HeaderImageContainer {
+.ImageContainer {
     justify-content: center;
     display: flex;
     width: 100%;
@@ -51,10 +61,15 @@
 .TitleContainer {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     width: 100%;
     align-items: center;
     max-width: 1400px;
     margin-right: auto;
+
+    @media (min-width: breakpoint(lg)){
+        flex-direction: row;
+    }
 
     @media (min-width: breakpoint(xxl)){
         margin-left: auto;
@@ -69,12 +84,6 @@
     @media (max-width: breakpoint(lg)){
         width: 100%;
       }
-}
-
-.DesktopTitleContainer {
-    @extend .TitleContainer;
-    flex-direction: row;
-    justify-items: end;
 }
 
 .Searchfield {
@@ -100,7 +109,7 @@
     border-style: solid;
     border-color: var(--black);
     border-width: 3px;
-    box-shadow: 3px 4px black;
+    box-shadow: 3px 4px var(--black);
     width: 87%;
     max-width: 280px;
     height: 3rem;
@@ -110,19 +119,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
-}
 
-.DesktopInputParent {
-    @extend .InputParent;
-    justify-content: flex-end;
-}
-
-.HeaderMobile {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding-bottom: 1.5rem;
-    width: 100%;
+    @media (min-width: breakpoint(lg)) {
+        justify-content: flex-end;
+    }
 }
 
 .emptyContainer {
