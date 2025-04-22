@@ -1,7 +1,7 @@
 'use client';
 import { memo, useMemo } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
+import { useNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 // import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
 import NavbarDesktop from '../NavbarDesktopV2/NavbarDesktop';
 import NavbarMobile from '../NavbarMobileV2/NavbarMobile';
@@ -39,7 +39,7 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
     const size = useMemo(() => (isTouchSize ? 'mobile' : 'desktop'), [isTouchSize]);
 
-    const navbarBuild = useMemo(() => getNavbarBuildBySize(size), [size]);
+    const navbarBuild = useMemo(() => useNavbarBuildBySize(size), [size]);
 
     return isTouchSize ? (
         <NavbarMobile
