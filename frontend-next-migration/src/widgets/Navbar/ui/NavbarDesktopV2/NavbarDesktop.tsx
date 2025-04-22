@@ -14,6 +14,7 @@ import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import Image from 'next/image';
+import { useNavbarLinks } from '../../hooks/useNavbarLinks';
 
 /**
  * Properties for NavnarDesctop component
@@ -43,6 +44,16 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         isCollapsed,
         isFixed,
     } = props;
+
+    const links = useNavbarLinks();
+
+    {
+        links.map((link) => (
+            <li key={link.href}>
+                <a href={link.href}>{link.label}</a>
+            </li>
+        ));
+    }
 
     const hasScrollbar = useIsPageScrollbar();
 
