@@ -6,10 +6,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  filter: drop-shadow(4px 5px var(--drop-shadows));
 
   @media (max-width: breakpoint(lg)){
-    width: 90%;
+    width: 95%;
     margin-bottom: 3vh;
   }
 }
@@ -49,6 +48,10 @@
   border-style: solid;
   border-color: var(--black);
   border-width: var(--border-desktop);
+
+  @media (max-width: breakpoint(lg)){
+    max-width: 100%;
+  }
 
   h1 {
     text-transform: uppercase;

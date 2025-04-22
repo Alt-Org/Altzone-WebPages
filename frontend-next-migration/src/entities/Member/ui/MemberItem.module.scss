@@ -49,8 +49,12 @@
     justify-content: flex-end;
     flex: 1;
     min-width: 0;
-    @media only screen and (min-width: 760px) {
+    @media only screen and (min-width: breakpoint(md)) {
       padding-right: 1rem;
+    }
+
+    @media (max-width: breakpoint(lg)) {
+      align-items: flex-start;
     }
   }
 

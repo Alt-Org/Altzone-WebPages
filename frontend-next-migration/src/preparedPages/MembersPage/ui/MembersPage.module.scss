@@ -1,45 +1,14 @@
-.MembersPage {
-  padding-top: 150px;
-  padding-bottom: 50px;
-  width: 100%;
-}
 
 .workersSection {
   z-index: 2;
 }
 
-.TeamPageSidebar {
-  background-color: rgba(0, 0, 0, 0) !important;
-  padding: 0;
-  max-width: 100%;
+
+.Members {
   width: 100%;
-  padding-right: 15vh;
-   > aside {
-    overflow: hidden !important;
-    flex-basis: 0 !important;
-    margin-left: 1% !important;
-    width: 20%;
-
-    @media (max-width: breakpoint(lg)) {
-      max-width: 200px;
-    }
-  }
-
-  > div {
-    width: 100%;
-    margin-right: auto;
-    margin-left: 0;
-    @media (min-width: breakpoint(xxl)) {
-      margin-left: auto !important;
-    }
+   
+  @media (max-width: breakpoint(lg)) {
+    display: flex;
+    justify-content: center;
   }
 }
-
-.MembersPageMobile{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 16vh;
-
-}
-
