@@ -1,10 +1,9 @@
-import { useNavbarLinks } from '../hooks/useNavbarLinks';
+import { navbarMenuDesktop } from './data/navbarMenuDesktop';
+import { navbarMenuMobile } from './data/navbarMenuMobile';
 
-export const useNavbarBuildBySize = (size: 'desktop' | 'mobile' | 'tablet') => {
-    const links = useNavbarLinks();
-
-    return {
-        type: size === 'desktop' ? 'large' : 'small',
-        links,
-    };
+export const getNavbarBuildBySize = (size: 'mobile' | 'tablet' | 'desktop') => {
+    if (size === 'desktop') {
+        return navbarMenuDesktop;
+    }
+    return navbarMenuMobile;
 };
