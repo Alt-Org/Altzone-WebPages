@@ -1,1 +1,1 @@
-export type LeaderboardItem = IPlayer;
+export type LeaderboardItem = IPlayer | IClan;

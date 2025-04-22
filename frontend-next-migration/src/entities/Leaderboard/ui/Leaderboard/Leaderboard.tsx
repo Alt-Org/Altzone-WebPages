@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { LeaderboardPodiums, LeaderboardCard } from '@/entities/Leaderboard';
 import { LeaderboardItem } from '../../types/leaderboard';
 import cls from './Leaderboard.module.scss';
@@ -7,7 +8,7 @@ interface LeaderboardProps {
     className?: string;
 }
 
-const Leaderboard = ({ leaders, className }: LeaderboardProps) => {
+const Leaderboard = memo(({ leaders, className }: LeaderboardProps) => {
     return (
         <div className={className}>
             <LeaderboardPodiums
@@ -23,6 +24,7 @@ const Leaderboard = ({ leaders, className }: LeaderboardProps) => {
             ))}
         </div>
     );
-};
+});
+Leaderboard.displayName = 'Leaderboard';
 
 export default Leaderboard;

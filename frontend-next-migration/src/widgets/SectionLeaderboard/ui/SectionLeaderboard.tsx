@@ -1,21 +1,22 @@
 'use client';
 import { useState } from 'react';
 import { Leaderboard, LeaderboardTitle } from '@/entities/Leaderboard';
-import { LeaderboardItem } from '@/entities/Leaderboard/types/leaderboard';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { CustomSwitch, CustomSwitchItems } from '@/shared/ui/CustomSwitch';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { LeaderboardType } from '../types';
 import cls from './SectionLeaderboard.module.scss';
 
 interface SectionLeaderboardProps {
-    leaderboards: LeaderboardType[];
+    leaderboard1?: LeaderboardType;
+    leaderboard2?: LeaderboardType;
     className?: string;
 }
 
-const SectionLeaderboard = ({ leaderboards, className }: SectionLeaderboardProps) => {
-    // return
+const SectionLeaderboard = ({ leaderboard1, leaderboard2, className }: SectionLeaderboardProps) => {
     const [customSwitchOption, setCustomSwitchOption] = useState(0);
-    const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
+    const { isMobileSize, isTabletSize } = useSizes();
+    const leaderboards = [leaderboard1, leaderboard2].filter((element) => element !== undefined);
     return isMobileSize || isTabletSize ? (
         <div>
             <CustomSwitch
@@ -37,26 +38,38 @@ const SectionLeaderboard = ({ leaderboards, className }: SectionLeaderboardProps
                         };
                     })}
             />
-            {leaderboards.length + 1 >= customSwitchOption ? (
+            {leaderboards.length - 1 >= customSwitchOption ? (
                 <div className={cls.LeaderboardContainer}>
                     <Leaderboard leaders={leaderboards[customSwitchOption].leaders} />
                 </div>
             ) : null}
         </div>
     ) : (
-        <div className={cls.Leaderboards}>
-            {leaderboards.map((leaderboard, index) => (
-                <div
-                    key={index}
-                    className={cls.LeaderboardContainer}
-                >
+        <div
+            className={classNames(
+                cls.Leaderboards,
+                {},
+                [className].filter((element) => element !== undefined),
+            )}
+        >
+            {leaderboard1 && (
+                <div className={cls.LeaderboardContainer}>
                     <LeaderboardTitle
-                        title={leaderboard.title}
+                        title={leaderboard1.title}
                         className={cls.LeaderboardTitle}
                     />
-                    <Leaderboard leaders={leaderboard.leaders} />
+                    <Leaderboard leaders={leaderboard1.leaders} />
                 </div>
-            ))}
+            )}
+            {leaderboard2 && (
+                <div className={cls.LeaderboardContainer}>
+                    <LeaderboardTitle
+                        title={leaderboard2.title}
+                        className={cls.LeaderboardTitle}
+                    />
+                    <Leaderboard leaders={leaderboard2.leaders} />
+                </div>
+            )}
         </div>
     );
 };
