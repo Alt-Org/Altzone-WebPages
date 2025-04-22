@@ -2,11 +2,13 @@
 import { ReactNode, useState, useEffect, useMemo } from 'react';
 import { useParams, usePathname } from 'next/navigation';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
+import { useClientTranslation } from '@/shared/i18n';
 import { CustomSwitch, CustomSwitchItems, ToggleLink } from '@/shared/ui/CustomSwitch';
 import { NavMenuWithDropdowns } from '@/shared/ui/NavMenuWithDropdownsV2';
 import cls from './LeaderboardLayout.module.scss';
 
 const LeaderboardLayout = ({ children }: { children: ReactNode }) => {
+    const { t } = useClientTranslation('leaderboard');
     const params = useParams();
     const lng = params.lng as string;
 
@@ -24,15 +26,15 @@ const LeaderboardLayout = ({ children }: { children: ReactNode }) => {
     const CustomSwitchElements: ToggleLink[] = useMemo(() => {
         return [
             {
-                children: <p>Globaali</p>,
+                children: <p>{t('global')}</p>,
                 path: `/${lng}/leaderboard`,
             },
             {
-                children: <p>Klaani</p>,
+                children: <p>{t('clan')}</p>,
                 path: `/${lng}/leaderboard/clans`,
             },
             {
-                children: <p>Kaverit</p>,
+                children: <p>{t('friends')}</p>,
                 path: `/${lng}/leaderboard/friends`,
             },
         ].map((elem) => {
