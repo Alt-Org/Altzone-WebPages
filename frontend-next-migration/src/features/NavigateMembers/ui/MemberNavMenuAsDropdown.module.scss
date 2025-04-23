@@ -1,4 +1,9 @@
 .Width {
     width: 100%;
     min-width: 280px;
+
+    @media (max-width: breakpoint(lg)) {
+      min-width: 320px;
+
+    }
   }
