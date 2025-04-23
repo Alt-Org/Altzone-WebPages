@@ -1,45 +1,66 @@
+'use client';
 import React, { ReactNode } from 'react';
 import { ScrollTop } from '@/features/ScrollTop';
-import { LayoutWithIntro } from '@/preparedPages/Layouts';
-import introBg from '@/shared/assets/images/members/members7.webp';
 import cls from './Layout.module.scss';
-import { useServerTranslation } from '@/shared/i18n';
+import useSizes from '@/shared/lib/hooks/useSizes';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import TeamHeader from '@/shared/ui/TeamHeader';
+import MembersNavMenu from '@/features/NavigateMembers';
+import { LayoutWithSidebars } from '@/preparedPages/Layouts';
+import headerImg from '@/shared/assets/images/members/members8.webp';
 import { ScrollBottomButton } from './_components/_ScrollBottomButton';
+import play from '@/shared/assets/icons/playIcon.svg';
 
 type Props = {
     children: ReactNode;
-    params: {
-        lng: string;
-    };
 };
 
-export default async function TeamLayout({ children, params }: Props) {
-    const { lng } = params;
+export default function TeamLayout({ children }: Props) {
+    const { isMobileSize, isTabletSize } = useSizes();
+    const isTouchDevice = isMobileSize || isTabletSize;
 
-    const { t } = await useServerTranslation(lng, 'members');
-
-    return (
-        <>
-            <LayoutWithIntro
-                introMinHeight={'800px'}
-                introHeight={'86vh'}
-                // introHeight={'86vh'}
-                title={t('page-title')}
-                overlayColor={'rgba(7, 27, 30, 0.5'}
-                bgImage={introBg.src}
-                description={t('page-description')}
-                blurLineClass={cls.blurLine}
-                bottomAdditional={
+    return isTouchDevice ? (
+        <div
+            id={'members'}
+            className={classNames(cls.MembersPageMobile)}
+        >
+            <TeamHeader
+                image={headerImg}
+                dropdown={<MembersNavMenu />}
+            />
+            <div className={cls.buttonContainer}>
+                <ScrollBottomButton
+                    IdToScrollBeforePlay={'members'}
+                    className={cls.diveButton}
+                    image={play}
+                />
+            </div>
+            {children}
+            <ScrollTop />
+        </div>
+    ) : (
+        <div
+            id={'members'}
+            className={classNames(cls.MembersPage)}
+        >
+            <TeamHeader image={headerImg} />
+            <LayoutWithSidebars
+                className={cls.TeamPageSidebar}
+                leftTopSidebar={{
+                    component: <MembersNavMenu />,
+                    hideOnMobile: true,
+                }}
+            >
+                <div className={cls.buttonContainer}>
                     <ScrollBottomButton
                         IdToScrollBeforePlay={'members'}
                         className={cls.diveButton}
-                        text={`${t('meet-button')}`}
+                        image={play}
                     />
-                }
-            >
+                </div>
                 {children}
-            </LayoutWithIntro>
-            <ScrollTop />
-        </>
+                <ScrollTop />
+            </LayoutWithSidebars>
+        </div>
     );
 }

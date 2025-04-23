@@ -32,7 +32,7 @@ const FooterDesktopComponent = memo((props: Props) => {
                 <Image
                     src={Ahmat}
                     alt={'description hero'}
-                    className={classNames(cls.Imamkukui)}
+                    className={classNames(cls.FooterImage)}
                     width={270}
                     height={270}
                 />
