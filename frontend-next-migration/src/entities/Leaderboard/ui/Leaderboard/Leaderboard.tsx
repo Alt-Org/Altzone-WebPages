@@ -20,6 +20,7 @@ const Leaderboard = memo(({ leaders, className }: LeaderboardProps) => {
                     key={index}
                     element={leader}
                     position={index + 4}
+                    className={cls.LeaderboardCard}
                 />
             ))}
         </div>
