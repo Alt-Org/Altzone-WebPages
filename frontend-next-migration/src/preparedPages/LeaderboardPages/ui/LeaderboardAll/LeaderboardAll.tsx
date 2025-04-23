@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { SectionLeaderboard } from '@/widgets/SectionLeaderboard';
 import { LeaderboardItem } from '@/entities/Leaderboard/types/leaderboard';
 import { useGetLeaderboardQuery } from '@/entities/Clan';
