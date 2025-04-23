@@ -7,15 +7,28 @@
     align-items: center;
     height: 40px;
 }
+.ScaleOnHover {
+    transition: transform 0.3s ease;
+    &:hover {
+        transform: scale(1.05);
+    }
+}
 .Position {
     margin-left: 1em;
     margin-right: 1em;
     color: var(--primary-color);
     font-weight: bold;
+    flex-basis: 1rem;
 }
 .LastMatch {
     margin-left: 1em;
     margin-right: 1em;
+}
+.ChevronDown {
+    fill: var(--error);
+}
+.ChevronUp {
+    fill: var(--success)
 }
 .ClanLogo {
     margin-left: 2em;

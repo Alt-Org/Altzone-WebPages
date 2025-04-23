@@ -16,6 +16,7 @@ const LeaderboardAll = () => {
                     ? {
                           title: t('wins'),
                           leaders: pointsLeaderboard.data.data.Clan as LeaderboardItem[],
+                          path: '/clans',
                       }
                     : undefined
             }
@@ -24,6 +25,7 @@ const LeaderboardAll = () => {
                     ? {
                           title: t('activity'),
                           leaders: activityLeaderboard.data.data.Clan as LeaderboardItem[],
+                          path: '/clans',
                       }
                     : undefined
             }

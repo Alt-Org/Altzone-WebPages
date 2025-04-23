@@ -31,7 +31,7 @@ const LeaderboardPodium = memo(({ leaders, path, className }: PodiumProps) => {
                     path ? (
                         <AppLink
                             key={index}
-                            to={`${path}${leaders[index] ? leaders[index].id : ''}`}
+                            to={`${path}/${leaders[index] ? leaders[index].id : ''}`}
                             className={`${cls.PodiumContainer} ${cls[`PodiumContainer${index}`]}`}
                         >
                             <div className={cls.ClanIcon}>

@@ -58,7 +58,10 @@ const SectionLeaderboard = ({ leaderboard1, leaderboard2, className }: SectionLe
                         title={leaderboard1.title}
                         className={cls.LeaderboardTitle}
                     />
-                    <Leaderboard leaders={leaderboard1.leaders} />
+                    <Leaderboard
+                        leaders={leaderboard1.leaders}
+                        path={leaderboard1.path}
+                    />
                 </div>
             )}
             {leaderboard2 && (
@@ -67,7 +70,10 @@ const SectionLeaderboard = ({ leaderboard1, leaderboard2, className }: SectionLe
                         title={leaderboard2.title}
                         className={cls.LeaderboardTitle}
                     />
-                    <Leaderboard leaders={leaderboard2.leaders} />
+                    <Leaderboard
+                        leaders={leaderboard2.leaders}
+                        path={leaderboard2.path}
+                    />
                 </div>
             )}
         </div>
