@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
 import { useMemo } from 'react';
+import { useNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 
 const meta: Meta<typeof NavbarDesktop> = {
     title: 'widgets/Navbar/ui/NavbarDesktopV2/NavbarDesktop',
@@ -43,6 +44,7 @@ const meta: Meta<typeof NavbarDesktop> = {
 export default meta;
 
 export const Navbar = (args: NavbarProps) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const navbarBuild = useMemo(() => useNavbarBuildBySize('desktop'), []);
     return (
         <NavbarDesktop
