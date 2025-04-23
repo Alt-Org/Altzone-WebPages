@@ -15,7 +15,6 @@ const NewsPage = () => {
             title: 'Hannu Hodari News',
             content: 'Check out the latest news about Hannu Hodari and his amazing adventures!',
             date: '2024-03-01',
-            imageSrc: '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png',
         },
         {
             id: 2,
@@ -23,7 +22,6 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
-            imageSrc: '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png',
         },
 
         {
@@ -32,7 +30,6 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
-            imageSrc: '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png',
         },
         {
             id: 4,
@@ -40,7 +37,6 @@ const NewsPage = () => {
             content:
                 'Another interesting news article with important information about recent developments.',
             date: '2024-02-28',
-            imageSrc: '@/shared/assets/images/heros/conman/conman.png',
         },
     ];
     return (
