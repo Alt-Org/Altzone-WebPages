@@ -10,6 +10,7 @@
     box-shadow: 4px 8px var(--black);
     @media (max-width: breakpoint('md')) {
         box-shadow: 2px 4px var(--black);
+        border: var(--border-mobile) solid var(--black);
     }
 }
 .PodiumContainer {

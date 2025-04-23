@@ -3,9 +3,11 @@
     background-color: var(--background);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-lg);
-    // box-shadow: 4px 4px var(--black);
     align-items: center;
     height: 40px;
+    @media (max-width: breakpoint('md')) {
+        border: var(--border-mobile) solid var(--black);
+    }
 }
 .ScaleOnHover {
     transition: transform 0.3s ease;
