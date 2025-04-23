@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
-import { useNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
+import { useMemo } from 'react';
 
 const meta: Meta<typeof NavbarDesktop> = {
     title: 'widgets/Navbar/ui/NavbarDesktopV2/NavbarDesktop',
@@ -35,11 +35,19 @@ const meta: Meta<typeof NavbarDesktop> = {
         toggleFixed: () => undefined,
         toggleCollapsed: () => undefined,
         className: '',
-        navbarBuild: useNavbarBuildBySize('desktop'),
+        navbarBuild: undefined, // Placeholder for useMemo
     },
     tags: ['autodocs'],
 };
 
 export default meta;
 
-export const Navbar = (args: NavbarProps) => <NavbarDesktop {...args} />;
+export const Navbar = (args: NavbarProps) => {
+    const navbarBuild = useMemo(() => useNavbarBuildBySize('desktop'), []);
+    return (
+        <NavbarDesktop
+            {...args}
+            navbarBuild={navbarBuild}
+        />
+    );
+};
