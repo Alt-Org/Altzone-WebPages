@@ -6,5 +6,7 @@ export const useNavbarBuildBySize = (size: string) => {
     return {
         type: size === 'desktop' ? 'large' : 'small',
         links,
+        menu: [], // Add a default menu property
+        namedMenu: {}, // Add a default namedMenu property
     };
 };
