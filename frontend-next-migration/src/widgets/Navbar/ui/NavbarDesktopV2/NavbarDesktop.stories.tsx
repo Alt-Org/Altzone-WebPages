@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
-import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
+import { useNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 
 const meta: Meta<typeof NavbarDesktop> = {
     title: 'widgets/Navbar/ui/NavbarDesktopV2/NavbarDesktop',
@@ -35,7 +35,7 @@ const meta: Meta<typeof NavbarDesktop> = {
         toggleFixed: () => undefined,
         toggleCollapsed: () => undefined,
         className: '',
-        navbarBuild: getNavbarBuildBySize('desktop'),
+        navbarBuild: useNavbarBuildBySize('desktop'),
     },
     tags: ['autodocs'],
 };

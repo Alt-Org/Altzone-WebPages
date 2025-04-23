@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
-import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
+import { useNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
+
 const meta: Meta<typeof NavbarDesktop> = {
     title: '@/widgets/Navbar/ui/NavbarDesktop/NavbarDesktop',
     component: NavbarDesktop,

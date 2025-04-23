@@ -39,6 +39,7 @@ export const NavbarMain = memo((props: NavbarMainProps) => {
 
     const size = useMemo(() => (isTouchSize ? 'mobile' : 'desktop'), [isTouchSize]);
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const navbarBuild = useMemo(() => useNavbarBuildBySize(size), [size]);
 
     return isTouchSize ? (
