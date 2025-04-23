@@ -12,10 +12,13 @@ export interface Props {
     locality: string;
     nationality: string;
     behind: string;
-    story: string;
+    V2019: string;
+    V2020: string;
+    V2021: string;
+    V2022: string;
+    V2023: string;
+    V2024: string;
 }
-
-interface section {}
 
 const About = (props: Props) => {
     const {
@@ -27,7 +30,12 @@ const About = (props: Props) => {
         locality,
         nationality,
         behind,
-        story,
+        V2019,
+        V2020,
+        V2021,
+        V2022,
+        V2023,
+        V2024,
     } = props;
 
     return (
@@ -62,26 +70,22 @@ const About = (props: Props) => {
                     id={cls.line}
                 >
                     <p className={cls.yearh1}>2019</p>
-                    <p className={cls.p}>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                        1500s, when an unknown printer took a galley of type and scrambled it to
-                        make a type specimen book. It has survived not only five centuries, but also
-                        the leap into electronic typesetting, remaining essentially unchanged. It
-                        was popularised in the 1960s with the release of Letraset sheets containing
-                        Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
-                    </p>
+                    <p className={cls.p}>{V2019}</p>
+
                     <p className={cls.yearh1}>2020</p>
-                    <p className={cls.p}>{story}</p>
+                    <p className={cls.p}>{V2020}</p>
+
                     <p className={cls.yearh1}>2021</p>
-                    <p className={cls.p}>{story}</p>
+                    <p className={cls.p}>{V2021}</p>
+
                     <p className={cls.yearh1}>2022</p>
-                    <p className={cls.p}>{story}</p>
+                    <p className={cls.p}>{V2022}</p>
+
                     <p className={cls.yearh1}>2023</p>
-                    <p className={cls.p}>{story}</p>
+                    <p className={cls.p}>{V2023}</p>
+
                     <p className={cls.yearh1}>2024</p>
-                    <p className={cls.p}>{story}</p>
+                    <p className={cls.p}>{V2024}</p>
                 </div>
             </div>
         </main>

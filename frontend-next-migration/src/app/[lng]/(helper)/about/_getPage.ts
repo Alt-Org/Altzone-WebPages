@@ -15,7 +15,12 @@ export async function _getPage(lng: any) {
             locality: t('locality'),
             nationality: t('nationality'),
             behind: t('behind'),
-            story: t('V2019'),
+            V2019: t('V2019'),
+            V2020: t('V2020'),
+            V2021: t('V2021'),
+            V2022: t('V2022'),
+            V2023: t('V2023'),
+            V2024: t('V2024'),
         }),
         buildSeo: () => ({
             title: t('head-title'),
