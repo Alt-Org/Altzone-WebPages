@@ -18,6 +18,7 @@
     flex-basis: 0 !important;
     margin-left: 1% !important;
     width: 20%;
+    transform: translateY(3.7rem);
 
     @media (max-width: breakpoint(lg)) {
       max-width: 200px;
@@ -40,5 +41,31 @@
   align-items: center;
   margin-top: 16vh;
 
+}
+
+.diveButton{
+  border-radius: var(--border-radius-custom);
+  min-width: fit-content;
+  width: 1rem;
+  align-self: center;
+  background-color: var(--primary-color);
+  color: var(--black);
+  border-style: solid;
+  border-color: var(--black);
+  padding: 6px 8px;
+}
+
+.buttonContainer {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+
+  @media (max-width: breakpoint(lg)) {
+    justify-content: flex-start;
+    width: 95%;
+  }
 }
 

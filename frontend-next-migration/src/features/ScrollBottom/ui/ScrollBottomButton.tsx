@@ -3,6 +3,7 @@ import { memo, ReactNode, useRef } from 'react';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { scrollToBottom } from '../model/scrollToBottom/scrollToBottom';
 import { useBottomAnimationCancellation } from '../model/useBottomAnimationCancellation/useBottomAnimationCancellation';
+import Image, { StaticImageData } from 'next/image';
 
 interface Props {
     speedInMs?: number;
@@ -10,6 +11,7 @@ interface Props {
     text?: ReactNode | string;
     isDisabled?: boolean;
     onBeforePlay?: () => void;
+    image?: StaticImageData;
 }
 
 const ScrollBottomButtonComponent = (props: Props) => {
@@ -19,6 +21,7 @@ const ScrollBottomButtonComponent = (props: Props) => {
         text = 'play',
         isDisabled = false,
         onBeforePlay,
+        image,
     } = props;
 
     const ScrollButtonId = 'ScrollButton';
@@ -48,7 +51,18 @@ const ScrollBottomButtonComponent = (props: Props) => {
             theme={ButtonTheme.BACKGROUND}
             onClick={handleWatchClick}
         >
-            <b>{text}</b>
+            <b>
+                {!image ? (
+                    text
+                ) : (
+                    <Image
+                        height={20}
+                        width={20}
+                        src={image}
+                        alt={'icon'}
+                    />
+                )}
+            </b>
         </Button>
     );
 };

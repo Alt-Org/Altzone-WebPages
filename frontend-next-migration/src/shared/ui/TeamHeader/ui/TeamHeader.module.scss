@@ -50,7 +50,7 @@
     }
 }
 
-.ImageContainer {
+.Imagecontainer {
     justify-content: center;
     display: flex;
     width: 100%;
@@ -135,12 +135,3 @@
         width: 0;
       }
 }
-
-.diveButton{
-    margin-top: 20px;
-    padding: 15px 20px;
-    border-radius: var(--border-radius-custom);
-    min-width: fit-content;
-    width: clamp(100px, 10vw, 120px);
-    align-self: center;
-  }
