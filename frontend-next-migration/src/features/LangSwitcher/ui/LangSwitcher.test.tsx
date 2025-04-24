@@ -35,7 +35,7 @@ describe('LangSwitcher', () => {
         const englishOption = screen.getByText('Englanti');
         expect(englishOption).toBeInTheDocument(); // Ensures 'Englanti' (for English) is present
 
-        const russianOption = screen.getByText('RU');
-        expect(russianOption).toBeInTheDocument(); // Ensures 'RU' is present for Russian
+        const russianOption = screen.getByText('RUS');
+        expect(russianOption).toBeInTheDocument(); // Ensures 'RUS' is present for Russian
     });
 });
