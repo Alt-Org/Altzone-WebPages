@@ -23,7 +23,7 @@ async function runTest() {
                 messages: [
                     {
                         role: 'user',
-                        content: "Say 'Hello World!'",
+                        content: 'kerro millä kielellä kirjoitan',
                     },
                 ],
             }),
