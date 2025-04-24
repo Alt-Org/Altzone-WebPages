@@ -27,7 +27,7 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     const options = [
         { label: t('FIN'), value: 'fi' },
         { label: t('ENG'), value: 'en' },
-        { label: t('RU'), value: 'ru' },
+        { label: t('RUS'), value: 'ru' },
         // Add more languages here
     ];
 
