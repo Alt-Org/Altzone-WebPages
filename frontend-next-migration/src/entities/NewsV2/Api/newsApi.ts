@@ -1,6 +1,6 @@
 import { directusApi } from '@/shared/api'; // Ensure the base Directus API setup is correct.
 import { envHelper } from '@/shared/const/envHelper';
-import { createDirectus, rest, readItems } from '@directus/sdk';
+import { createDirectus, rest, readItems, readItem } from '@directus/sdk';
 
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());
@@ -54,6 +54,41 @@ export const newsApi = directusApi.injectEndpoints({
                 return { data: newsItems };
             },
         }),
+        /**
+         * Fetches a single news item by its ID, including related data such as category,
+         * translations, and images.
+         *
+         * @param {string} id - The ID of the news item to fetch.
+         * @returns {Promise<Object>} The news item data.
+         */
+        getNewsById: builder.query({
+            queryFn: async (_arg: string) => {
+                try {
+                    const newsItem = await client.request(
+                        readItem('news', _arg, {
+                            fields: [
+                                '*',
+                                'category.*',
+                                'titlePicture.*',
+                                'extrapicture.*',
+                                'extraPicture2.*',
+                                'extraPicture3.*',
+                                'extraPicture4.*',
+                                'category.translations.*',
+                                'translations.*',
+                            ],
+                            deep: {
+                                category: { translations: true },
+                                translations: true,
+                            },
+                        }),
+                    );
+                    return { data: newsItem };
+                } catch (error) {
+                    return { error };
+                }
+            },
+        }),
 
         /**
          * Fetches a list of news categories, including their images and translations.
@@ -87,4 +122,4 @@ export const newsApi = directusApi.injectEndpoints({
  * @hook {useGetNewsQuery} A hook to fetch the news articles.
  * @hook {useGetNewsCategoriesQuery} A hook to fetch the news categories.
  */
-export const { useGetNewsQuery, useGetNewsCategoriesQuery } = newsApi;
+export const { useGetNewsQuery, useGetNewsByIdQuery, useGetNewsCategoriesQuery } = newsApi;
