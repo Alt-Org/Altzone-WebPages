@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-// Runnable with command: npx ts-node src/shared/api/ChatBotApiTest.ts
+// Runnable with command: npx ts-node src/shared/api/LlmApiTest.ts
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env.local' });
