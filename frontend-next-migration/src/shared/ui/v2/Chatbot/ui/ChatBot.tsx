@@ -22,7 +22,9 @@ export const ChatBotComponent: React.FC = () => {
 
     useEffect(() => {
         // Lataa konteksti sovelluksen alussa
-        const combinedData = [data1, data2].map((d) => flattenObject(d).join('\n')).join('\n\n');
+        const combinedData = [data1, data2]
+            .map((data) => flattenObject(data).join('\n'))
+            .join('\n\n');
         setContext(combinedData);
 
         // Alustava viesti
@@ -119,7 +121,7 @@ export const ChatBotComponent: React.FC = () => {
                 <input
                     type="text"
                     value={userInput}
-                    onChange={(e) => setUserInput(e.target.value)}
+                    onChange={(event) => setUserInput(event.target.value)}
                     placeholder="Kirjoita viestisi..."
                     style={{
                         flex: 1,
