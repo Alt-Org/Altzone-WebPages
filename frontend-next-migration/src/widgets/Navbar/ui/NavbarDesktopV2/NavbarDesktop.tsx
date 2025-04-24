@@ -17,6 +17,7 @@ import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import Image from 'next/image';
 
 /**
+ *
  * Properties for NavbarDesktop component
  *
  * @property {number} marginTop Margin at the top
