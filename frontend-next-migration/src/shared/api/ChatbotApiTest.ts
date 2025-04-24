@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
+// Runnable with command: npx ts-node src/shared/api/ChatBotApiTest.ts
 import dotenv from 'dotenv';
 
-// Lataa .env.local-tiedosto
 dotenv.config({ path: '.env.local' });
 
 async function runTest() {
