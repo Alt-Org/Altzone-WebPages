@@ -1,3 +1,4 @@
+'use client';
 import { usePathname } from 'next/navigation';
 import { CSSProperties, memo, useEffect, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
@@ -16,7 +17,7 @@ import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import Image from 'next/image';
 
 /**
- * Properties for NavnarDesctop component
+ * Properties for NavbarDesktop component
  *
  * @property {number} marginTop Margin at the top
  * @property {string} className Additional CSS classes
@@ -45,14 +46,13 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     } = props;
 
     const hasScrollbar = useIsPageScrollbar();
-
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
     const permissionToLogout = checkPermissionFor('logout');
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
-
     const { t } = useClientTranslation('navbar');
+
     const [isAnimating, setIsAnimating] = useState(false);
     const [isMouseOver, setIsMouseOver] = useState(false);
 
@@ -62,22 +62,20 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         [cls.fixed]: isFixed,
         [cls.collapsed]: isCollapsed,
         [cls.collapsing]: isAnimating,
-    } as Record<string, boolean>;
+    };
 
     const ModsUlAndLi: Record<string, boolean> = {
         [cls.collapsed]: isCollapsed,
-    } as Record<string, boolean>;
+    };
 
     const handleCollapseClick = () => {
         if (!isAnimating) {
             setIsAnimating(true);
             toggleCollapsed?.();
-            // dispatch(navBarActions.toggleCollapsed());
         }
     };
 
     const handleToggleFixed = () => {
-        // dispatch(navBarActions.toggleFixed());
         toggleFixed?.();
     };
 
@@ -115,6 +113,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             className={classNames('', ModsUlAndLi)}
                         />
                     ))}
+
                     <li
                         className={classNames(cls.navItem, ModsUlAndLi, [cls.authButton])}
                         key={'auth key'}
@@ -141,11 +140,14 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             </p>
                         ) : null}
                     </li>
+
                     <li
                         className={classNames(cls.navItem, ModsUlAndLi)}
                         key={'switcher key'}
                     >
-                        <LangSwitcher className={cls.langSwitcher} />
+                        <div className={cls.langSwitcherWrapper}>
+                            <LangSwitcher className={cls.langSwitcher} />
+                        </div>
                     </li>
 
                     {hasScrollbar && (
@@ -166,6 +168,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                         </li>
                     )}
 
+                    {/* Collapse Toggle */}
                     {isFixed && (
                         <li
                             data-testid="collapseExpandWrapper"
@@ -188,6 +191,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     );
 });
 
-export default NavbarDesktop;
-
 NavbarDesktop.displayName = 'NavbarDesktop';
+
+export default NavbarDesktop;

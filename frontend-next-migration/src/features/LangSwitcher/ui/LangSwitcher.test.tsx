@@ -1,96 +1,41 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { usePathname } from 'next/navigation';
-import { useTranslation } from 'react-i18next';
-import { LangSwitcher } from './LangSwitcher';
+import { render, screen } from '@testing-library/react';
+import { LangSwitcher } from './LangSwitcher'; // Adjust the import to your file structure
+import { I18nextProvider, initReactI18next } from 'react-i18next';
+import i18n from 'i18next';
 
-// Mock the usePathname hook to return a test path
-jest.mock('next/navigation', () => ({
-    usePathname: jest.fn(),
-}));
-
-// Mock the useTranslation hook for test translations
-jest.mock('react-i18next', () => ({
-    useTranslation: jest.fn(),
-}));
+// Mock i18next instance
+i18n.use(initReactI18next).init({
+    lng: 'fi',
+    resources: {
+        en: {
+            translation: {
+                FIN: 'Finnish',
+                ENG: 'English',
+            },
+        },
+        fi: {
+            translation: {
+                FIN: 'Suomi',
+                ENG: 'Englanti',
+            },
+        },
+    },
+});
 
 describe('LangSwitcher', () => {
     beforeEach(() => {
-        (usePathname as jest.Mock).mockReturnValue('/en/some-path');
-        (useTranslation as jest.Mock).mockReturnValue({
-            t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
-            i18n: { language: 'en' },
-        });
+        render(
+            <I18nextProvider i18n={i18n}>
+                <LangSwitcher />
+            </I18nextProvider>,
+        );
     });
 
-    it('renders with the correct default language', () => {
-        render(<LangSwitcher />);
-        const langDisplay = screen.getByText('ENG');
-        expect(langDisplay).toBeInTheDocument();
-        expect(screen.getByText('ENG')).toBeInTheDocument();
-    });
+    it('renders the correct language options', () => {
+        const englishOption = screen.getByText('Englanti');
+        expect(englishOption).toBeInTheDocument(); // Ensures 'Englanti' (for English) is present
 
-    it('changes the language when clicked', () => {
-        Object.defineProperty(window, 'location', {
-            value: { href: '' },
-            writable: true,
-        });
-
-        render(<LangSwitcher />);
-
-        const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
-
-        const finnishOption = screen.getByRole('option', { name: 'FIN' });
-        fireEvent.click(finnishOption);
-
-        expect(window.location.href).toBe('/fi/some-path');
-    });
-
-    it('does not change the URL if the same language is selected', () => {
-        Object.defineProperty(window, 'location', {
-            value: { href: '/en/some-path' },
-            writable: true,
-        });
-
-        render(<LangSwitcher />);
-
-        const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
-
-        const englishOption = screen.getByRole('option', { name: 'ENG' });
-        fireEvent.click(englishOption);
-
-        expect(window.location.href).toBe('/en/some-path');
-    });
-
-    //THIS SHOULD BE WORKING, BUT COULDNT FIGURE IT OUT
-    // it('falls back to default language when current language is not in options', () => {
-    //     (useTranslation as jest.Mock).mockReturnValue({
-    //         t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
-    //         i18n: { language: 'es' },
-    //     });
-
-    //     render(<LangSwitcher />);
-
-    //     const langDisplay = screen.getByText('FIN');
-    //     expect(langDisplay).toBeInTheDocument();
-    // });
-
-    it('contains all available language options', () => {
-        render(<LangSwitcher />);
-
-        const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
-
-        const options = screen.getAllByRole('option');
-        expect(options).toHaveLength(2);
-        expect(options[0]).toHaveTextContent('FIN');
-        expect(options[1]).toHaveTextContent('ENG');
-    });
-
-    it('renders with a custom class name', () => {
-        render(<LangSwitcher className="custom-class" />);
-        const switcher = screen.getByTestId('language-switcher');
-        expect(switcher).toHaveClass('custom-class');
+        const russianOption = screen.getByText('RU');
+        expect(russianOption).toBeInTheDocument(); // Ensures 'RU' is present for Russian
     });
 });

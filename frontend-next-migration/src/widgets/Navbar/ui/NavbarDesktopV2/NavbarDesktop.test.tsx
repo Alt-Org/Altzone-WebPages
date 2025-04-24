@@ -22,7 +22,6 @@ jest.mock('@/entities/Auth', () => ({
 }));
 
 jest.mock('@/shared/lib/hooks/useIsPageScrollbar');
-
 jest.mock('react-i18next', () => ({
     useTranslation: jest.fn().mockReturnValue({
         t: jest.fn((key) => key),
@@ -33,17 +32,6 @@ jest.mock('react-i18next', () => ({
 jest.mock('next/navigation', () => ({
     usePathname: jest.fn(),
 }));
-
-describe('Navbar', () => {
-    beforeEach(() => {
-        (useClientTranslation as jest.Mock).mockReturnValue({ t: jest.fn((key) => key) });
-        (useIsPageScrollbar as jest.Mock).mockReturnValue(true);
-    });
-
-    test('render components', async () => {
-        render(<div />);
-    });
-});
 
 describe('NavbarDesktop', () => {
     const mockToggleCollapsed = jest.fn();
@@ -107,8 +95,8 @@ describe('NavbarDesktop', () => {
     test('applies collapsed styles when isCollapsed is true', () => {
         renderNavbar({ isCollapsed: true });
 
-        const navList = screen.getByRole('list');
-        expect(navList).toHaveClass(cls.collapsed);
+        const navLists = screen.getAllByRole('list');
+        expect(navLists[0]).toHaveClass(cls.collapsed);
     });
 
     test('does not show collapse button when not fixed', () => {
