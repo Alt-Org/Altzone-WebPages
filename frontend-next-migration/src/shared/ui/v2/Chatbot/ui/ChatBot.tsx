@@ -1,20 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import data1 from '@/shared/i18n/locales/fi/heroes.json';
+import data2 from '@/shared/i18n/locales/fi/about.json';
+
+function flattenObject(obj: any, prefix = ''): string[] {
+    return Object.entries(obj).flatMap(([key, value]) => {
+        const newKey = prefix ? `${prefix}.${key}` : key;
+        if (typeof value === 'object' && value !== null) {
+            return flattenObject(value, newKey);
+        } else {
+            return [`${newKey}: ${value}`];
+        }
+    });
+}
 
 export const ChatBotComponent: React.FC = () => {
-    const [messages, setMessages] = useState<{ role: string; content: string }[]>([
-        {
-            role: 'assistant',
-            content: 'Hei! Olen Albotti. Ja voin kertoa pelistä kaiken mitä haluat tietää',
-        },
-    ]);
+    const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
     const [userInput, setUserInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [context, setContext] = useState('');
+
+    useEffect(() => {
+        // Lataa konteksti sovelluksen alussa
+        const combinedData = [data1, data2].map((d) => flattenObject(d).join('\n')).join('\n\n');
+        setContext(combinedData);
+
+        // Alustava viesti
+        setMessages([
+            {
+                role: 'assistant',
+                content: 'Hei! Olen Albotti. Voin kertoa pelistä kaiken mitä haluat tietää.',
+            },
+        ]);
+    }, []);
 
     const handleSendMessage = async () => {
         if (!userInput.trim()) return;
 
-        // Lisää käyttäjän viesti keskusteluun
         const newMessages = [...messages, { role: 'user', content: userInput }];
         setMessages(newMessages);
         setUserInput('');
@@ -37,7 +59,15 @@ export const ChatBotComponent: React.FC = () => {
                 },
                 body: JSON.stringify({
                     model: 'gpt-3.5-turbo',
-                    messages: newMessages,
+                    messages: [
+                        {
+                            role: 'system',
+                            content:
+                                'Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin vain tämän tiedon pohjalta:\n\n' +
+                                context,
+                        },
+                        ...newMessages,
+                    ],
                 }),
             });
 
@@ -59,14 +89,7 @@ export const ChatBotComponent: React.FC = () => {
     };
 
     return (
-        <div
-            style={{
-                maxWidth: '600px',
-                margin: '0 auto',
-                padding: '20px',
-                fontFamily: 'Arial, sans-serif',
-            }}
-        >
+        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
             <h1>ChatBot</h1>
             <div
                 style={{
@@ -96,7 +119,7 @@ export const ChatBotComponent: React.FC = () => {
                 <input
                     type="text"
                     value={userInput}
-                    onChange={(event) => setUserInput(event.target.value)}
+                    onChange={(e) => setUserInput(e.target.value)}
                     placeholder="Kirjoita viestisi..."
                     style={{
                         flex: 1,
@@ -123,4 +146,5 @@ export const ChatBotComponent: React.FC = () => {
         </div>
     );
 };
+
 export default ChatBotComponent;
