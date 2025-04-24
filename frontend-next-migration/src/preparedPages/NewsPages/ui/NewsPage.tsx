@@ -1,49 +1,29 @@
 'use client';
-import { useState } from 'react';
 import { Container } from '@/shared/ui/Container';
 import { NewsCard } from '@/widgets/NewsCard';
 import cls from './NewsPage.module.scss';
+import { useGetNewsQuery } from '@/entities/NewsV2';
+import { useParams } from 'next/navigation';
+import { formatNews } from '@/entities/News';
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
     // const handleSearchChange = () => {
     //     // setSearchValue(e.target.value);
     // };
-    const newsPageMock = [
-        {
-            id: 1,
-            title: 'Hannu Hodari News',
-            content: 'Check out the latest news about Hannu Hodari and his amazing adventures!',
-            date: '2024-03-01',
-        },
-        {
-            id: 2,
-            title: 'Latest News Title 2',
-            content:
-                'Another interesting news article with important information about recent developments.',
-            date: '2024-02-28',
-        },
 
-        {
-            id: 3,
-            title: 'Latest News Title 3',
-            content:
-                'Another interesting news article with important information about recent developments.',
-            date: '2024-02-28',
-        },
-        {
-            id: 4,
-            title: 'Latest News Title 4',
-            content:
-                'Another interesting news article with important information about recent developments.',
-            date: '2024-02-28',
-        },
-    ];
+    const { data } = useGetNewsQuery();
+    const params = useParams();
+    const lng = params.lng as string;
+    const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
+
+    const groupedNews = formatNews(data, lngCode || 'fi-FI');
+
     return (
         <main className={cls.NewsPage}>
             <Container>
                 <div className={cls.newsGrid}>
-                    {newsPageMock.map((news) => (
+                    {groupedNews.map((news) => (
                         <NewsCard
                             key={news.id}
                             {...news}
