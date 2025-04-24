@@ -16,7 +16,6 @@ import { envHelper } from '@/shared/const/envHelper';
 import { gameApi, strapiApi, directusApi } from '@/shared/api';
 import { StateSchema } from './StateSchema';
 import { navBarReducer } from '@/widgets/Navbar/model/navbarSlice/navBarSlice';
-import { llmApi } from '@/shared/api/llmApi';
 
 const createNoopStorage = () => {
     return {
@@ -45,18 +44,12 @@ export function createReduxStore(initialState?: StateSchema) {
         [gameApi.reducerPath]: gameApi.reducer,
         [strapiApi.reducerPath]: strapiApi.reducer,
         [directusApi.reducerPath]: directusApi.reducer,
-        [llmApi.reducerPath]: llmApi.reducer,
     });
 
     const persistConfig = {
         key: 'root',
         storage,
-        blacklist: [
-            gameApi.reducerPath,
-            strapiApi.reducerPath,
-            directusApi.reducerPath,
-            llmApi.reducerPath,
-        ],
+        blacklist: [gameApi.reducerPath, strapiApi.reducerPath, directusApi.reducerPath],
     };
 
     const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -77,7 +70,6 @@ export function createReduxStore(initialState?: StateSchema) {
                 strapiApi.middleware,
                 directusApi.middleware,
                 authMiddleware,
-                llmApi.middleware,
             ),
     });
 
