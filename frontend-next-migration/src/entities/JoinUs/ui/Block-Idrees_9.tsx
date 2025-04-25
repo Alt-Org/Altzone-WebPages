@@ -1,10 +1,35 @@
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { BlockSection } from '../types';
 import cls from './Block.module.scss';
+import Image from 'next/image';
 
 interface Props {
     block: BlockSection;
 }
+
+/*
+export const Block = (props: Props) => {
+    const { block } = props;
+
+    return (
+        <div
+            className={cls.Container}
+            data-testid="block"
+        >
+            <img src={block.img} alt={block.imgAlt} />
+            <h2>{block.label}</h2>
+            <p>{block.description}</p>
+            <AppLink
+                className={cls.link}
+                isExternal={true}
+                to={block.link}
+            >
+                {block.linkText}
+            </AppLink>
+        </div>
+    );
+};
+*/
 
 export const Block = (props: Props) => {
     const { block } = props;
@@ -23,27 +48,16 @@ export const Block = (props: Props) => {
             </div>
             <div className="text-container">
                 <h2>{block.label}</h2>
-                <p className={cls.multilineText}>{block.description}</p>
+                <p>{block.description}</p>
                 {block.links.map((link, index) => (
-                    <div
+                    <a
                         key={index}
-                        className={cls.linkWrapper}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        <a
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {link.iconSrc && (
-                                <img
-                                    src={link.iconSrc}
-                                    alt={`${link.text} icon`}
-                                    className={cls.icon}
-                                />
-                            )}
-                            {link.text}
-                        </a>
-                    </div>
+                        Testilinkki
+                    </a>
                 ))}
             </div>
         </div>

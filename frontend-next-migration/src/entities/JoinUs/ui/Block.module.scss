@@ -1,17 +1,54 @@
 .Container {
-    padding: 20px;
+
     margin: auto 0;
     text-align: center;
     height: 100%;
     place-content: center;
     border-radius: var(--border-radius-custom);
-    background-color: var(--transparent-bg-dark);
-    border: 2px solid rgb(13, 174, 13);
+    background-color: #1E3544;
+    border: 2px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 10, 10);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+
+    .text-containe{
+        flex: 1; // teksti kasvaa
+        padding: 0 0 20px 0;
+
+    }
+    
+    .multilineText {
+        white-space: pre-line;
+      }
+
+    .ImageWrapper  {
+        width: 236px;
+        height: 236px;
+        display: flex;
+        flex-shrink: 0;
+        margin: auto 10px;
+        padding: 10px;
+        align-items: center;
+
+
+        img{
+            width: 12em;
+            height: 12em;
+            object-fit: center;
+        }
+      }
 
     h2 {
-        padding: 0;
+        padding: 10px 0 0 0;
         margin: 0;
-        font-size: 2.2em;
+        font-size: 2.0em;
+        font-weight: 200;
+        color: var(--primary-color);
+        font-family: var(--font-family-title);
+        white-space: pre-line;
     }
 
     h3 {
@@ -20,20 +57,37 @@
     }
 
     p {
-        font-size: 1.3em;
+        font-size: 0.9em;
         margin: 15px auto;
+        font-family: default;
+        color: var(--text-color);
+        line-height: 1.1em;
+        font-weight: 200;
+        text-align: left;
+        max-width: 600px;
+        
     }
 
     a {
         text-decoration: underline;
-        font-size: 1.3em;
-        color: var(--secondary-color)!important;
-
+        font-size: 0.9em;
+        color: var(--primary-color)!important;
+        text-decoration: none;
+        
 
         &:hover {
-            color: var(--primary-color)!important;
+            color: var(--secondary-color)!important;
         }
-
+    
+    &::after {
+        content: '';
+        display: block;
+        padding: 0 0 10px;
     }
-
+    }
+    .linkWrapper {
+        padding: 0;
+        margin: 0;
+        line-height: 0.8em;
+    }
 }

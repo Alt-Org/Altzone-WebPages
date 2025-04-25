@@ -6,7 +6,7 @@ import { BlockSection } from '../types';
 export interface Props {
     title: string;
     discordBlock: BlockSection;
-    redditBlock: BlockSection;
+    connectionBlock: BlockSection;
     instagramBlock: BlockSection;
     teachersBlock: BlockSection;
     feedbackBlock: BlockSection;
@@ -17,7 +17,7 @@ export const JoinUsPage = (props: Props) => {
     const {
         title,
         discordBlock,
-        redditBlock,
+        connectionBlock,
         instagramBlock,
         teachersBlock,
         feedbackBlock,
@@ -30,12 +30,12 @@ export const JoinUsPage = (props: Props) => {
                 <h1>{title}</h1>
                 <SectionJoinUs
                     blocks={[
-                        discordBlock,
-                        redditBlock,
+                        connectionBlock,
                         instagramBlock,
-                        feedbackBlock,
                         teachersBlock,
+                        discordBlock,
                         duunitoriBlock,
+                        feedbackBlock,
                     ]}
                 />
             </Container>

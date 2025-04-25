@@ -7,6 +7,7 @@ const mockDiscordBlock: BlockSection = {
     description: 'Description here',
     link: 'https://example.com/',
     linkText: 'Open link',
+    img: 'https://example.com/image.png',
 };
 
 const mockRedditBlock: BlockSection = {
@@ -14,6 +15,7 @@ const mockRedditBlock: BlockSection = {
     description: 'Description here',
     link: 'https://example.com/',
     linkText: 'Open link',
+    img: 'https://example.com/image.png',
 };
 
 const mockTeachersBlock: BlockSection = {
@@ -21,6 +23,7 @@ const mockTeachersBlock: BlockSection = {
     description: 'Description here',
     link: 'https://example.com/',
     linkText: 'Open link',
+    img: 'https://example.com/image.png',
 };
 
 const mockFeedbackBlock: BlockSection = {
@@ -28,6 +31,7 @@ const mockFeedbackBlock: BlockSection = {
     description: 'Description here',
     link: 'https://example.com/',
     linkText: 'Open link',
+    img: 'https://example.com/image.png',
 };
 
 const mockDuunitoriBlock: BlockSection = {
@@ -35,6 +39,7 @@ const mockDuunitoriBlock: BlockSection = {
     description: 'Description here',
     link: 'https://example.com/',
     linkText: 'Open link',
+    img: 'https://example.com/image.png',
 };
 
 const mockInstagramBlock: BlockSection = {
@@ -42,6 +47,7 @@ const mockInstagramBlock: BlockSection = {
     description: 'Description here',
     link: 'https://example.com/',
     linkText: 'Open link',
+    img: 'https://example.com/image.png',
 };
 
 const meta = {
@@ -91,7 +97,7 @@ export const Default: Story = {
     args: {
         title: 'Join Us!',
         discordBlock: mockDiscordBlock,
-        redditBlock: mockRedditBlock,
+        connectionBlock: mockRedditBlock,
         teachersBlock: mockTeachersBlock,
         feedbackBlock: mockFeedbackBlock,
         duunitoriBlock: mockDuunitoriBlock,
