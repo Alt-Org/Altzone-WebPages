@@ -11,11 +11,12 @@ interface NewsCardProps {
     previewText: string;
     date: string;
     id: number;
-    imageSrc?: string;
+    titlePicture?: string;
 }
 
 const NewsCard = (props: NewsCardProps) => {
-    const { title, date, id, previewText, imageSrc = hannu.src } = props;
+    const { title, date, id, previewText, titlePicture } = props;
+    const picture = titlePicture || hannu.src;
     return (
         <Link
             rel="id"
@@ -29,7 +30,7 @@ const NewsCard = (props: NewsCardProps) => {
                     <div className={cls.imageContainer}>
                         <div className={cls.imageWrapper}>
                             <Image
-                                src={imageSrc}
+                                src={picture}
                                 alt={title}
                                 className={cls.image}
                                 layout="responsive"

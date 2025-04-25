@@ -92,6 +92,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 400;
 
     @media (max-width: breakpoint(sm)),
     (max-width: breakpoint(xs)),
@@ -109,8 +110,10 @@
     margin-top: auto;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    font-family: var(--body-font);
 
     @media (max-width: breakpoint(md)) {
         font-size: 0.9rem;
