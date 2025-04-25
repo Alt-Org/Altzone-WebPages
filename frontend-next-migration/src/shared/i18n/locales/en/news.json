@@ -3,5 +3,7 @@
   "read-more": "Read more",
   "head-description": "Read the latest news from Altzone.",
   "head-keywords": "altzone, news, community, comics, games",
-  "category-title": "Category"
+  "category-title": "Category",
+  "next-button": "Next",
+  "previous-button": "Previous"
 }

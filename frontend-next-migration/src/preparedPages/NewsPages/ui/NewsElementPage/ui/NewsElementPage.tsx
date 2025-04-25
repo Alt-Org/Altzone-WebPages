@@ -59,7 +59,7 @@ const NewsElementPage = () => {
                             className={cls.buttonImage}
                         />
                     }
-                    {'Edellinen'}
+                    {t('previous-button')}
                 </Button>
                 <Button
                     disabled={data.nextId === null}
@@ -68,7 +68,7 @@ const NewsElementPage = () => {
                     size={ButtonSize.M}
                     className={classNames(cls.ButtonNewsNavigation)}
                 >
-                    {'Seuraava'}
+                    {t('next-button')}
                     {
                         <Image
                             loading="eager"
