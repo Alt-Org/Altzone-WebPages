@@ -26,7 +26,7 @@
 
 .PageTitleAlt {
     flex: 1 1;
-    max-width: 75%;
+    max-width: max-content;
 
     h1 {
         color: var(--primary-color);

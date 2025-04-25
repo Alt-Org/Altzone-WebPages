@@ -3,12 +3,14 @@ import cls from './PageTitle.module.scss';
 import { usePathname } from 'next/navigation';
 import { PageTitles } from '@/shared/ui/PageTitle/enum/PageTitle.enum';
 import { useClientTranslation } from '@/shared/i18n';
+import Link from 'next/link';
 
 interface PageTitleProps {
     titleText: string;
     searchVisible?: boolean;
     dynamicTitle?: string;
     alternate?: boolean;
+    href?: string;
 }
 /**
  * PageTitle component for displaying an H1 title and an optional search bar.
@@ -43,6 +45,7 @@ const PageTitle = ({
     searchVisible = false,
     dynamicTitle = '',
     alternate = false,
+    href = '',
 }: PageTitleProps) => {
     const { t } = useClientTranslation(dynamicTitle);
 
@@ -55,9 +58,11 @@ const PageTitle = ({
 
     return alternate ? (
         <Container className={cls.PageTitleContainer}>
-            <div className={cls.PageTitleAlt}>
-                <h1>{dynamicTitle ? t(title) : titleText}</h1>
-            </div>
+            <Link href={href}>
+                <div className={cls.PageTitleAlt}>
+                    <h1>{dynamicTitle ? t(title) : titleText}</h1>
+                </div>
+            </Link>
             {searchVisible && (
                 <div className={cls.SearchContainer}>
                     {/* placeholder for search */}
@@ -68,9 +73,11 @@ const PageTitle = ({
     ) : (
         <Container className={cls.PageTitleContainer}>
             <div className={cls.PageTitleLeft} />
-            <div className={cls.PageTitle}>
-                <h1>{dynamicTitle ? t(title) : titleText}</h1>
-            </div>
+            <Link href={href}>
+                <div className={cls.PageTitle}>
+                    <h1>{dynamicTitle ? t(title) : titleText}</h1>
+                </div>
+            </Link>
             {searchVisible && (
                 <div className={cls.SearchContainer}>
                     {/* placeholder for search */}

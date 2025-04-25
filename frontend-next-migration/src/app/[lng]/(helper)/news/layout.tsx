@@ -17,6 +17,7 @@ export default function NewsLayout({ children }: { children: React.ReactNode }) 
                         titleText={t('newsTitle')}
                         searchVisible={false}
                         alternate={true}
+                        href={'/news'}
                     />
                     <LayoutWithSidebars
                         leftTopSidebar={{
@@ -37,6 +38,7 @@ export default function NewsLayout({ children }: { children: React.ReactNode }) 
                             titleText={t('newsTitle')}
                             searchVisible={false}
                             alternate={true}
+                            href={'/news'}
                         />
                         {children}
                     </LayoutWithSidebars>
