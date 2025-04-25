@@ -28,7 +28,7 @@ export const newsApi = directusApi.injectEndpoints({
          * @property {Array} data - An array of news items with their associated details.
          */
         getNews: builder.query({
-            queryFn: async (_arg: void) => {
+            queryFn: async (_arg: number) => {
                 const newsItems = await client.request(
                     readItems('news', {
                         fields: [
@@ -49,6 +49,7 @@ export const newsApi = directusApi.injectEndpoints({
                         filter: {
                             status: { _eq: 'published' },
                         },
+                        limit: _arg,
                     }),
                 );
                 return { data: newsItems };
@@ -56,7 +57,7 @@ export const newsApi = directusApi.injectEndpoints({
         }),
         /**
          * Fetches a single news item by its ID, including related data such as category,
-         * translations, and images.
+         * translations, and images. Also retrieves the IDs of the next and previous news items.
          *
          * @param {string} id - The ID of the news item to fetch.
          * @returns {Promise<Object>} The news item data.
@@ -64,6 +65,7 @@ export const newsApi = directusApi.injectEndpoints({
         getNewsById: builder.query({
             queryFn: async (_arg: string) => {
                 try {
+                    const id = parseInt(_arg);
                     const newsItem = await client.request(
                         readItem('news', _arg, {
                             fields: [
@@ -83,9 +85,46 @@ export const newsApi = directusApi.injectEndpoints({
                             },
                         }),
                     );
-                    return { data: newsItem };
+
+                    const nextNews = await client.request(
+                        readItems('news', {
+                            filter: {
+                                id: { _gt: id },
+                                status: { _eq: 'published' },
+                            },
+                            sort: ['id'],
+                            limit: 1,
+                            fields: ['id'],
+                        }),
+                    );
+
+                    const prevNews = await client.request(
+                        readItems('news', {
+                            filter: {
+                                id: { _lt: id },
+                                status: { _eq: 'published' },
+                            },
+                            sort: ['-id'],
+                            limit: 1,
+                            fields: ['id'],
+                        }),
+                    );
+
+                    return {
+                        data: {
+                            nextId: nextNews?.[0]?.id || null,
+                            prevId: prevNews?.[0]?.id || null,
+                            ...newsItem,
+                        },
+                        error: undefined,
+                        meta: undefined,
+                    };
                 } catch (error) {
-                    return { error };
+                    return {
+                        data: undefined,
+                        error: undefined,
+                        meta: undefined,
+                    };
                 }
             },
         }),

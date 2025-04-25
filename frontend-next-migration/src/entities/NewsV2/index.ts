@@ -1,3 +1,3 @@
-import { useGetNewsQuery, useGetNewsCategoriesQuery } from './Api/newsApi';
+import { useGetNewsQuery, useGetNewsCategoriesQuery, useGetNewsByIdQuery } from './Api/newsApi';
 
-export { useGetNewsQuery, useGetNewsCategoriesQuery };
+export { useGetNewsQuery, useGetNewsCategoriesQuery, useGetNewsByIdQuery };
