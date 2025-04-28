@@ -54,7 +54,7 @@ export const ChatBotComponent: React.FC = () => {
         try {
             const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
             if (!apiKey) {
-                setError('OpenAI API key is missing. Please set it in the .env.local file.');
+                setError('Somethings wrong with the API.');
                 setLoading(false);
                 return;
             }
