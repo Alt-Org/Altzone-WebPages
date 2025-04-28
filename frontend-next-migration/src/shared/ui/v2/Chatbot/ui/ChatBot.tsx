@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import data1 from '@/shared/i18n/locales/fi/heroes.json';
 import data2 from '@/shared/i18n/locales/fi/about.json';
@@ -84,6 +85,29 @@ export const ChatBotComponent: React.FC = () => {
 
             const data = await response.json();
             const assistantMessage = data.choices[0]?.message?.content || 'En osaa vastata tähän.';
+
+            // --- COST CALCULATION --- source for prices: https://platform.openai.com/docs/pricing
+            //gpt-4o-mini
+            const tokenPrompt = 0.0000000015;
+            const tokenCompletion = 0.000000006;
+            const apiCall = 0.0001; // Cost per API call, estimated.
+
+            // gpt-3.5-turbo
+            //const tokenPrompt = 0.000003;
+            //const tokenCompletion = 0.000006;
+            //const apiCall = 0.0001; // Cost per API call, estimated.
+
+            const promptTokens = data.usage?.prompt_tokens || 0;
+            const completionTokens = data.usage?.completion_tokens || 0;
+            const costTotal =
+                promptTokens * tokenPrompt + completionTokens * tokenCompletion + apiCall;
+
+            console.log('Using model:', data.model);
+            console.log(`Prompt tokens used: ${promptTokens}`);
+            console.log(`Completion tokens used: ${completionTokens}`);
+            console.log(`Single call cost: €${costTotal}`);
+            console.log(`Estimated cost for 1000 calls: €${costTotal * 1000}`);
+            // --- END COST CALCULATION ---
             setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
         } catch (err) {
             setError(`Unexpected Error: ${err}`);
