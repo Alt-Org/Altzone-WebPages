@@ -1,0 +1,7 @@
+{
+    "description": "Tämä verkkosivusto käyttää evästeitä ja paikallista tallennusta käyttäjäkokemuksen parantamiseksi.",
+    "note": "Jos et hyväksy evästeitä, voit silti käyttää sivustoa, mutta osa toiminnoista saattaa olla rajoitettuja.",
+    "terms": "Sivustoa käyttämällä hyväksyt tietosuojakäytäntömme ja evästeiden käytön.",
+    "declineButton": "Jatka hyväksymättä",
+    "acceptButton": "Hyväksy"
+}
