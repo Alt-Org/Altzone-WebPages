@@ -1,8 +1,22 @@
 /* eslint-disable no-console */
+/**
+ * ChatBotComponent
+ *
+ * A React component that acts as a chatbot. It uses OpenAI's API to respond to user questions
+ * based on context loaded from JSON files.
+ */
+
 import React, { useState, useEffect } from 'react';
 import data1 from '@/shared/i18n/locales/fi/heroes.json';
 import data2 from '@/shared/i18n/locales/fi/about.json';
 
+/**
+ * Flattens a nested object into an array of strings with key-value pairs.
+ *
+ * @param {object} obj - The object to flatten.
+ * @param {string} [prefix=''] - The prefix for nested keys.
+ * @returns {string[]} - An array of flattened key-value pairs as strings.
+ */
 function flattenObject(obj: any, prefix = ''): string[] {
     return Object.entries(obj).flatMap(([key, value]) => {
         const newKey = prefix ? `${prefix}.${key}` : key;
@@ -14,6 +28,14 @@ function flattenObject(obj: any, prefix = ''): string[] {
     });
 }
 
+/**
+ * ChatBotComponent
+ *
+ * A functional React component that provides a chatbot interface. The chatbot uses OpenAI's API
+ * to generate responses based on user input and context from JSON files.
+ *
+ * @returns {JSX.Element} - The rendered chatbot component.
+ */
 export const ChatBotComponent: React.FC = () => {
     const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
     const [userInput, setUserInput] = useState('');
@@ -21,14 +43,17 @@ export const ChatBotComponent: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [context, setContext] = useState('');
 
+    /**
+     * useEffect hook to load context from JSON files on component mount.
+     */
     useEffect(() => {
-        // Lataa konteksti sovelluksen alussa
+        // Combine data from JSON files into a single context string
         const combinedData = [data1, data2]
             .map((data) => flattenObject(data).join('\n'))
             .join('\n\n');
         setContext(combinedData);
 
-        // Alustava viesti
+        // Initialize the chatbot with a welcome message
         setMessages([
             {
                 role: 'assistant',
@@ -37,6 +62,14 @@ export const ChatBotComponent: React.FC = () => {
         ]);
     }, []);
 
+    /**
+     * Handles sending a message to the chatbot.
+     *
+     * Validates user input, sends it to OpenAI's API, and updates the chat messages with the response.
+     *
+     * @async
+     * @returns {Promise<void>}
+     */
     const handleSendMessage = async () => {
         if (!userInput.trim()) return;
 
@@ -54,7 +87,7 @@ export const ChatBotComponent: React.FC = () => {
         try {
             const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
             if (!apiKey) {
-                setError('Somethings wrong with the API.');
+                setError('OpenAI API key is missing. Please set it in the .env.local file.');
                 setLoading(false);
                 return;
             }
@@ -91,16 +124,10 @@ export const ChatBotComponent: React.FC = () => {
             const data = await response.json();
             const assistantMessage = data.choices[0]?.message?.content || 'En osaa vastata tähän.';
 
-            // --- COST CALCULATION --- source for prices: https://platform.openai.com/docs/pricing
-            //gpt-4o-mini
+            // --- COST CALCULATION ---
             const tokenPrompt = 0.0000000015;
             const tokenCompletion = 0.000000006;
-            const apiCall = 0.0001; // Cost per API call, estimated.
-
-            // gpt-3.5-turbo
-            //const tokenPrompt = 0.000003;
-            //const tokenCompletion = 0.000006;
-            //const apiCall = 0.0001; // Cost per API call, estimated.
+            const apiCall = 0.0001;
 
             const promptTokens = data.usage?.prompt_tokens || 0;
             const completionTokens = data.usage?.completion_tokens || 0;
@@ -113,6 +140,7 @@ export const ChatBotComponent: React.FC = () => {
             console.log(`Single call cost: €${costTotal}`);
             console.log(`Estimated cost for 1000 calls: €${costTotal * 1000}`);
             // --- END COST CALCULATION ---
+
             setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
         } catch (err) {
             setError(`Unexpected Error: ${err}`);
