@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--background);
+    box-shadow: 2px 4px var(--black);
+    margin-top: 1rem;
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-lg);
+    font-family: var(--body-font);
+}
+
+.text {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--primary-color-variant-hover);
+        text-decoration: underline;
+    }
+}

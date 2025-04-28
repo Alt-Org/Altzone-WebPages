@@ -1,0 +1,15 @@
+{
+    "activity": "Aktiivisuus",
+    "clan": "Klaani",
+    "friends": "Kaverit",
+    "friends_not_logged_in": "Sinun täytyy kirjautua ALTZONE tilillesi nähdäksesi kaveriesi tulostaulun",
+    "login": "Kirjaudu sisään",
+    "global": "Globaali",
+    "head-title": "Tulostaulu",
+    "head-description": "Katso ALTZONEN pelaajien ja klaanien sijoitukset tulostaulussa",
+    "head-keywords": "leaderboard, pelaajat, klaanit",
+    "leaderboard_title": "Leaderboard",
+    "search_placeholder": "Hae",
+    "search_btn_text": "Etsi",
+    "wins": "Voitot"
+  }
