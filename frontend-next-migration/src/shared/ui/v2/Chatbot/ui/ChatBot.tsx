@@ -39,6 +39,11 @@ export const ChatBotComponent: React.FC = () => {
     const handleSendMessage = async () => {
         if (!userInput.trim()) return;
 
+        if (userInput.length > 40) {
+            setError('Viestisi on liian pitkä! Syötä enintään 40 merkkiä.');
+            return;
+        }
+
         const newMessages = [...messages, { role: 'user', content: userInput }];
         setMessages(newMessages);
         setUserInput('');
@@ -65,7 +70,7 @@ export const ChatBotComponent: React.FC = () => {
                         {
                             role: 'system',
                             content:
-                                'Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin lyhyesti vain tämän tiedon pohjalta:\n\n' +
+                                'Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin vain tämän tiedon pohjalta:\n\n' +
                                 context,
                         },
                         ...newMessages,
