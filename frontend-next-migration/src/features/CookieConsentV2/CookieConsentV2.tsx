@@ -14,7 +14,7 @@ const CookieConsentV2 = () => {
     const handleAccept = () => {
         localStorage.setItem('cookieConsent', 'accepted');
         setIsVisible(false);
-        // Lisää tähän evästeiden latauslogiikka
+        // Here you can add any additional logic for when the user accepts cookies
     };
 
     const handleDecline = () => {
