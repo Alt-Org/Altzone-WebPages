@@ -11,6 +11,7 @@
  * @property {string} companyName - The name of the company/organization, defaults to "Psyche's Royale Gaming ry".
  * @property {string} strapiHost - The URL for the Strapi backend. Defaults to an empty string if not provided.
  * @property {string} directusHost - The URL for the Directus backend. Defaults to an empty string if not provided.
+ * @property {string} openAiApiKey - The URL for the LLM backend. Defaults to an empty string if not provided.
  */
 export const envHelper = {
     isDevMode: process.env.NODE_ENV === 'development',
@@ -19,4 +20,5 @@ export const envHelper = {
     companyName: process.env.COMPANY_NAME || "Psyche's Royale Gaming ry",
     strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
     directusHost: process.env.NEXT_PUBLIC_DIRECTUS_HOST || '',
+    openAiApiKey: process.env.NEXT_PUBLIC_LLM_HOST || '',
 } as const;
