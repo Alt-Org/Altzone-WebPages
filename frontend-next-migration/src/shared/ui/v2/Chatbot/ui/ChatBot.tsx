@@ -60,16 +60,18 @@ export const ChatBotComponent: React.FC = () => {
                     Authorization: `Bearer ${apiKey}`,
                 },
                 body: JSON.stringify({
-                    model: 'gpt-3.5-turbo',
+                    model: 'gpt-4o-mini',
                     messages: [
                         {
                             role: 'system',
                             content:
-                                'Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin vain tämän tiedon pohjalta:\n\n' +
+                                'Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin lyhyesti vain tämän tiedon pohjalta:\n\n' +
                                 context,
                         },
                         ...newMessages,
                     ],
+                    max_tokens: 200,
+                    stop: ['.'],
                 }),
             });
 
