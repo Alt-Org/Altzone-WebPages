@@ -5,49 +5,92 @@ import { BlockSection } from '../types';
 const mockDiscordBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',
-    link: 'https://example.com/',
-    linkText: 'Open link',
+    links: [
+        {
+            text: 'Example Link',
+            url: 'https://example.com/',
+            isExternal: true,
+        },
+    ],
     img: 'https://example.com/image.png',
 };
 
 const mockRedditBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',
-    link: 'https://example.com/',
-    linkText: 'Open link',
+    links: [
+        {
+            text: 'Open link',
+            url: 'https://example.com/',
+            isExternal: true,
+        },
+    ],
     img: 'https://example.com/image.png',
 };
 
 const mockTeachersBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',
-    link: 'https://example.com/',
-    linkText: 'Open link',
+    links: [
+        {
+            text: 'Open link',
+            url: 'https://example.com/',
+            isExternal: true,
+        },
+    ],
     img: 'https://example.com/image.png',
 };
 
 const mockFeedbackBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',
-    link: 'https://example.com/',
-    linkText: 'Open link',
+    links: [
+        {
+            text: 'Open link',
+            url: 'https://example.com/',
+            isExternal: true,
+        },
+    ],
     img: 'https://example.com/image.png',
 };
 
 const mockDuunitoriBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',
-    link: 'https://example.com/',
-    linkText: 'Open link',
+    links: [
+        {
+            text: 'Open link',
+            url: 'https://example.com/',
+            isExternal: true,
+        },
+    ],
     img: 'https://example.com/image.png',
 };
 
 const mockInstagramBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',
-    link: 'https://example.com/',
-    linkText: 'Open link',
+    links: [
+        {
+            text: 'Open link',
+            url: 'https://example.com/',
+            isExternal: true,
+        },
+    ],
     img: 'https://example.com/image.png',
+};
+
+const mockConnectionBlock: BlockSection = {
+    label: 'Connection Label',
+    description: 'Connection description here',
+    links: [
+        {
+            text: 'Connection Link',
+            url: 'https://example.com/',
+            isExternal: true,
+        },
+    ],
+    img: 'https://example.com/connection-image.png',
 };
 
 const meta = {
@@ -87,8 +130,9 @@ const meta = {
             description: 'An object that contains the Alt Zones Instagram account.',
         },
     },
+    connectionBlock: mockConnectionBlock,
+    instagramBlock: mockInstagramBlock,
 };
-
 export default meta;
 
 type Story = StoryObj<typeof meta>;
@@ -97,10 +141,11 @@ export const Default: Story = {
     args: {
         title: 'Join Us!',
         discordBlock: mockDiscordBlock,
-        connectionBlock: mockRedditBlock,
+        // redditBlock: mockRedditBlock,
         teachersBlock: mockTeachersBlock,
         feedbackBlock: mockFeedbackBlock,
         duunitoriBlock: mockDuunitoriBlock,
+        connectionBlock: mockConnectionBlock,
         instagramBlock: mockInstagramBlock,
     },
     parameters: {

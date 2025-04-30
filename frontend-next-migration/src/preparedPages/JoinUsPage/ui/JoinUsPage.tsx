@@ -11,6 +11,7 @@ export interface Props {
     teachersBlock: BlockSection;
     feedbackBlock: BlockSection;
     duunitoriBlock: BlockSection;
+    navHeight?: number;
 }
 
 export const JoinUsPage = (props: Props) => {
@@ -27,7 +28,9 @@ export const JoinUsPage = (props: Props) => {
     return (
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
-                <h1>{title}</h1>
+                <div>
+                    <h1>{title}</h1>
+                </div>
                 <SectionJoinUs
                     blocks={[
                         connectionBlock,

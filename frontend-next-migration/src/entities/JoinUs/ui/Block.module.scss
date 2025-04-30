@@ -1,22 +1,22 @@
 .Container {
 
     margin: auto 0;
+    padding: 0 0 5px 0;
     text-align: center;
     height: 100%;
     place-content: center;
     border-radius: var(--border-radius-custom);
     background-color: #1E3544;
     border: 2px solid black;
-    box-shadow: 0 0 10px rgba(0, 0, 10, 10);
+    box-shadow: 0.5rem 0.5rem black;
     text-align: left;
     display: flex;
     align-items: center;
     justify-content: start;
 
 
-    .text-containe{
-        flex: 1; // teksti kasvaa
-        padding: 0 0 20px 0;
+    .Content{
+        flex-grow: 1;
 
     }
     
@@ -25,7 +25,7 @@
       }
 
     .ImageWrapper  {
-        width: 236px;
+        width: fit-content;
         height: 236px;
         display: flex;
         flex-shrink: 0;
@@ -42,9 +42,9 @@
       }
 
     h2 {
-        padding: 10px 0 0 0;
+        padding: 15px 0 0 0;
         margin: 0;
-        font-size: 2.0em;
+        font-size: 2.4em;
         font-weight: 200;
         color: var(--primary-color);
         font-family: var(--font-family-title);
@@ -58,13 +58,14 @@
 
     p {
         font-size: 0.9em;
-        margin: 15px auto;
+        margin: 15px 0;
         font-family: default;
         color: var(--text-color);
         line-height: 1.1em;
         font-weight: 200;
         text-align: left;
-        max-width: 600px;
+        max-width: 85%;
+        align-self:flex-start;
         
     }
 
@@ -90,4 +91,101 @@
         margin: 0;
         line-height: 0.8em;
     }
+
+    
+     .linkWrapper:has(img) {
+
+        display: flex;
+        align-items: center;
+        margin: 0 10px 0 0;
+     a {
+            display:inline-flex;
+            flex-direction: row;
+
+            img{
+                filter: brightness(0) invert(1);
+                width: 2.7vh;
+            }
+          }
+
+        }
 }
+
+
+
+@media (max-width: 768px) {
+    .Container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px 0 0;
+        margin: auto;
+        width: 100%;
+        box-shadow: 0.2rem 0.2rem #121212;
+
+        .linkWrapper {
+            margin: 0;
+            padding: 0;
+        }
+        .ImageWrapper {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                width: 8em;
+                height: 8em;
+                object-fit: center;
+            }
+        }
+
+ 
+        
+        p{
+            font-size: 0.8em;
+            margin: 10px auto;
+            padding: 0 10px;
+            text-align: center;
+            max-width: 100%;
+        }
+        .linkWrapper:has(img) {
+
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 0 10px 10px ;
+
+            }
+
+    }
+}
+@media (min-width: 768px) and (max-width: 900px) {
+    .Container {
+        .ImageWrapper {
+            width: fit-content;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                width: 8em;
+                height: 8em;
+                object-fit: center;
+            }
+        }
+    }
+}
+
+
+
+
+
+
