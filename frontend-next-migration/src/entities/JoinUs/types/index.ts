@@ -12,6 +12,12 @@
 export interface BlockSection {
     label: string;
     description: string;
-    link: string;
-    linkText: string;
+    links: {
+        text: string;
+        url: string;
+        isExternal?: boolean;
+        iconSrc?: string;
+    }[];
+    img: string;
+    imgAlt?: string;
 }
