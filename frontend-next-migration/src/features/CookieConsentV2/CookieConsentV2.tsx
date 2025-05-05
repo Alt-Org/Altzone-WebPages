@@ -1,6 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
+'use client';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './CookieConsentV2.css';
+import Sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
 
 const CookieConsentV2 = () => {
     const { t } = useTranslation('cookieConsent');
@@ -14,7 +17,6 @@ const CookieConsentV2 = () => {
     const handleAccept = () => {
         localStorage.setItem('cookieConsent', 'accepted');
         setIsVisible(false);
-        // Here you can add any additional logic for when the user accepts cookies
     };
 
     const handleDecline = () => {
@@ -26,12 +28,20 @@ const CookieConsentV2 = () => {
 
     return (
         <div className="cookie-consent-v2">
-            <p>{t('description')}</p>
-            <p>{t('note')}</p>
-            <p>{t('terms')}</p>
-            <div className="cookie-consent-buttons">
-                <button onClick={handleDecline}>{t('declineButton')}</button>
-                <button onClick={handleAccept}>{t('acceptButton')}</button>
+            <div className="cookie-consent-content">
+                <div className="cookie-text">
+                    <h1>{t('header')}</h1>
+                    <p>{t('description')}</p>
+                    <div className="cookie-consent-buttons">
+                        <button onClick={handleDecline}>{t('declineButton')}</button>
+                        <button onClick={handleAccept}>{t('acceptButton')}</button>
+                    </div>
+                </div>
+                <img
+                    src={Sleeper.src}
+                    alt="Cookie character"
+                    className="cookie-image"
+                />
             </div>
         </div>
     );
