@@ -93,10 +93,11 @@
 
 .text {
   color: var(--white);
-  font-family: var(--font-family-secondary) serif;
+  font-family: var(--font-family-secondary);
   padding: 10px 5em;
   text-align: center;
   width: 100%;
+  white-space: pre-line;
 }
 
 .newsGrid {
