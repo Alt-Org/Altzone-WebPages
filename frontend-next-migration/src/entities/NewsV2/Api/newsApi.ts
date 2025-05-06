@@ -159,6 +159,7 @@ export const newsApi = directusApi.injectEndpoints({
  * including loading state, data, and errors.
  *
  * @hook {useGetNewsQuery} A hook to fetch the news articles.
+ * @hook {useGetNewsByIdQuery} A hook to fetch the news article by Id.
  * @hook {useGetNewsCategoriesQuery} A hook to fetch the news categories.
  */
 export const { useGetNewsQuery, useGetNewsByIdQuery, useGetNewsCategoriesQuery } = newsApi;
