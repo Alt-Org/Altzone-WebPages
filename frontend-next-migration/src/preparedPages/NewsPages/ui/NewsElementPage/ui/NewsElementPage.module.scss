@@ -100,10 +100,17 @@
   white-space: pre-line;
 }
 
+@media (max-width: breakpoint(md)) {
+  .text {
+    padding: 10px 1em;
+  }
+}
+
 .newsGrid {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  justify-content: center;
 }
 
 .readmoreText {

@@ -21,6 +21,7 @@ const NewsCard = (props: NewsCardProps) => {
         <Link
             rel="id"
             href={`/news/${id}`}
+            className={classNames(cls.NewsCardLink)}
         >
             <div className={classNames(cls.NewsCard, {})}>
                 <div className={cls.content}>
