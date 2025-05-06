@@ -1,12 +1,16 @@
 'use client';
-import { formatNews, formatNewsSingle } from '@/entities/News';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useScrollToTop } from '@/shared/lib/hooks';
 import cls from './NewsElementPage.module.scss';
 import Image from 'next/image';
-import { useGetNewsByIdQuery, useGetNewsQuery } from '@/entities/NewsV2';
+import {
+    useGetNewsByIdQuery,
+    useGetNewsQuery,
+    formatNews,
+    formatNewsSingle,
+} from '@/entities/NewsV2';
 import { envHelper } from '@/shared/const/envHelper';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import chevronleft from '@/shared/assets/icons/ChevronLeftBlack.svg';

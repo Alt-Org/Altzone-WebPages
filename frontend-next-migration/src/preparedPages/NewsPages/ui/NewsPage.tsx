@@ -2,9 +2,8 @@
 import { Container } from '@/shared/ui/Container';
 import { NewsCard } from '@/widgets/NewsCard';
 import cls from './NewsPage.module.scss';
-import { useGetNewsQuery } from '@/entities/NewsV2';
+import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
-import { formatNews } from '@/entities/News';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 
