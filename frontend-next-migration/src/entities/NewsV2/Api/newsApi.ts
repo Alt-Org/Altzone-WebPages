@@ -1,6 +1,6 @@
 import { directusApi } from '@/shared/api'; // Ensure the base Directus API setup is correct.
 import { envHelper } from '@/shared/const/envHelper';
-import { createDirectus, rest, readItems } from '@directus/sdk';
+import { createDirectus, rest, readItems, readItem } from '@directus/sdk';
 
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());
@@ -28,7 +28,7 @@ export const newsApi = directusApi.injectEndpoints({
          * @property {Array} data - An array of news items with their associated details.
          */
         getNews: builder.query({
-            queryFn: async (_arg: void) => {
+            queryFn: async (_arg: number) => {
                 const newsItems = await client.request(
                     readItems('news', {
                         fields: [
@@ -49,9 +49,83 @@ export const newsApi = directusApi.injectEndpoints({
                         filter: {
                             status: { _eq: 'published' },
                         },
+                        limit: _arg,
                     }),
                 );
                 return { data: newsItems };
+            },
+        }),
+        /**
+         * Fetches a single news item by its ID, including related data such as category,
+         * translations, and images. Also retrieves the IDs of the next and previous news items.
+         *
+         * @param {string} id - The ID of the news item to fetch.
+         * @returns {Promise<Object>} The news item data.
+         */
+        getNewsById: builder.query({
+            queryFn: async (_arg: string) => {
+                try {
+                    const id = parseInt(_arg);
+                    const newsItem = await client.request(
+                        readItem('news', _arg, {
+                            fields: [
+                                '*',
+                                'category.*',
+                                'titlePicture.*',
+                                'extrapicture.*',
+                                'extraPicture2.*',
+                                'extraPicture3.*',
+                                'extraPicture4.*',
+                                'category.translations.*',
+                                'translations.*',
+                            ],
+                            deep: {
+                                category: { translations: true },
+                                translations: true,
+                            },
+                        }),
+                    );
+
+                    const nextNews = await client.request(
+                        readItems('news', {
+                            filter: {
+                                id: { _gt: id },
+                                status: { _eq: 'published' },
+                            },
+                            sort: ['id'],
+                            limit: 1,
+                            fields: ['id'],
+                        }),
+                    );
+
+                    const prevNews = await client.request(
+                        readItems('news', {
+                            filter: {
+                                id: { _lt: id },
+                                status: { _eq: 'published' },
+                            },
+                            sort: ['-id'],
+                            limit: 1,
+                            fields: ['id'],
+                        }),
+                    );
+
+                    return {
+                        data: {
+                            nextId: nextNews?.[0]?.id || null,
+                            prevId: prevNews?.[0]?.id || null,
+                            ...newsItem,
+                        },
+                        error: undefined,
+                        meta: undefined,
+                    };
+                } catch (error) {
+                    return {
+                        data: undefined,
+                        error: undefined,
+                        meta: undefined,
+                    };
+                }
             },
         }),
 
@@ -85,6 +159,7 @@ export const newsApi = directusApi.injectEndpoints({
  * including loading state, data, and errors.
  *
  * @hook {useGetNewsQuery} A hook to fetch the news articles.
+ * @hook {useGetNewsByIdQuery} A hook to fetch the news article by Id.
  * @hook {useGetNewsCategoriesQuery} A hook to fetch the news categories.
  */
-export const { useGetNewsQuery, useGetNewsCategoriesQuery } = newsApi;
+export const { useGetNewsQuery, useGetNewsByIdQuery, useGetNewsCategoriesQuery } = newsApi;
