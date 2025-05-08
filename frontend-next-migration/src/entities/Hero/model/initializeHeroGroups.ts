@@ -14,8 +14,8 @@ import conmanGif from '@/shared/assets/images/heros/conman/Conman_new.gif';
 import jokester from '@/shared/assets/images/heros/jokester/Jokester.webp';
 import believer from '@/shared/assets/images/heros/fate-priest/Believer.webp';
 import believerGif from '@/shared/assets/images/heros/fate-priest/Believer.gif';
-import racist from '@/shared/assets/images/heros/racist/Rasisti.png';
-import racistGif from '@/shared/assets/images/heros/racist/Rasisti.gif';
+import hateSpeech from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
+import hateSpeechGif from '@/shared/assets/images/heros/hate-speech/Vihapuhe.gif';
 import meatwall from '@/shared/assets/images/heros/meatwall/Meatwall.png';
 import veteran from '@/shared/assets/images/heros/veteran/Veteran.webp';
 import veteranGif from '@/shared/assets/images/heros/veteran/Veteran.gif';
@@ -206,14 +206,14 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 848349,
-                    srcImg: racist,
-                    srcGif: racistGif,
-                    alt: t('DESENSITIZER.heroes.Racist.alt'),
-                    altGif: t('DESENSITIZER.heroes.Racist.altGif'),
-                    slug: HeroSlug.RACIST,
-                    title: t('DESENSITIZER.heroes.Racist.title'),
-                    description: t('DESENSITIZER.heroes.Racist.description'),
-                    stats: statData.RACIST,
+                    srcImg: hateSpeech,
+                    srcGif: hateSpeechGif,
+                    alt: t('DESENSITIZER.heroes.HateSpeech.alt'),
+                    altGif: t('DESENSITIZER.heroes.HateSpeech.altGif'),
+                    slug: HeroSlug.HATE_SPEECH,
+                    title: t('DESENSITIZER.heroes.HateSpeech.title'),
+                    description: t('DESENSITIZER.heroes.HateSpeech.description'),
+                    stats: statData.HATE_SPEECH,
                 },
                 {
                     id: 848341,
@@ -224,7 +224,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     slug: HeroSlug.MEATWALL,
                     title: t('DESENSITIZER.heroes.Meatwall.title'),
                     description: t('DESENSITIZER.heroes.Meatwall.description'),
-                    stats: statData.RACIST,
+                    stats: statData.MEATWALL,
                 },
                 {
                     id: 848342,

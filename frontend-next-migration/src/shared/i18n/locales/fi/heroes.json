@@ -29,9 +29,9 @@
   "alcoholicDescription": "Alkoholisti hakee tukea ja turvaa viinasta. Juominen on hänelle tapa turruttaa epävarmuuksia ja saada rohkeutta, jota hän kokee tarvitsevansa toimiakseen sosiaalisissa tilanteissa. ",
   "alcoholicAlt": "Alkoholistin kuva",
 
-  "racist": "Rasisti",
-  "racistDescription": "Rasisti näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.",
-  "racistAlt": "Rasistin kuva",
+  "hate-speech": "Vihapuhe",
+  "hateSpeechDescription": "Vihapuhe näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.",
+  "hateSpeechAlt": "Vihapuheen kuva",
 
   "not-found-title": "Etsittyä sankaria ei löytynyt",
   "not-found-check-heroes": "Tarkista saatavilla olevat sankarit",
@@ -146,11 +146,11 @@
     "name": "TUNNOTTOMAT",
     "description": "TUNNOTTOMAT on...",
     "heroes": {
-      "Racist": {
-        "title": "Rasisti",
-        "alt": "Rasistin kuva",
-        "altGif": "Rasistin animaatiogif",
-        "description": "Rasisti näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.\n"
+      "HateSpeech": {
+        "title": "Vihapuhe",
+        "alt": "Vihapuheen kuva",
+        "altGif": "Vihapuheen animaatiogif",
+        "description": "Vihapuhe näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.\n"
       },
       "Meatwall": {
         "title": "Lihamuuri",

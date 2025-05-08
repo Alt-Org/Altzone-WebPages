@@ -29,9 +29,9 @@
   "alcoholicDescription": "The Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations.",
   "alcoholicAlt": "Alholic's image",
 
-  "racist": "Racists",
-  "racistDescription": "The Racist sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause.",
-  "racistAlt": "Racist's image",
+  "hate-speech": "Hate Speech",
+  "hateSpeechDescription": "The Hate Speech sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause.",
+  "hateSpeechAlt": "Hate Speech image",
 
   "not-found-title": "Could not find requested hero",
   "not-found-check-heroes": "Check Available Heroes",
@@ -146,11 +146,11 @@
     "name": "DESENSITIZER",
     "description": "DESENSITIZER is...",
     "heroes": {
-      "Racist": {
-        "title": "Racist",
-        "alt": "Racist main image",
-        "altGif": "Racist animation gif",
-        "description": "The Racist sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause."
+      "HateSpeech": {
+        "title": "Hate Speech",
+        "alt": "Hate Speech main image",
+        "altGif": "Hate Speech animation gif",
+        "description": "The Hate Speech sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause."
       },
       "Meatwall": {
         "title": "Meatwall",
