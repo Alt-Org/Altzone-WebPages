@@ -12,11 +12,12 @@ export interface Props {
     className?: string;
     title: string;
     description: string;
+    subDescription?: string;
     descriptionArray?: string[];
 }
 
 export const ProjectDescription = (props: Props) => {
-    const { className = '', description, title, descriptionArray } = props;
+    const { className = '', description, title, subDescription, descriptionArray } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -36,19 +37,25 @@ export const ProjectDescription = (props: Props) => {
             id="description"
         >
             <Container className={classNames(cls.Container, mods)}>
+                {!isMobileSize && (
+                    <Image
+                        src={greenHaired}
+                        alt={'description hero'}
+                        className={classNames(cls.Image, mods)}
+                    />
+                )}
+
                 <h2 className={cls.titleQuestion}>{title}</h2>
                 <div className={classNames(cls.imageTextBlock, mods)}>
-                    {!isMobileSize && (
-                        <Image
-                            src={greenHaired}
-                            alt={'description hero'}
-                            className={classNames(cls.Image, mods)}
-                        />
-                    )}
-
                     <Paragraph
                         className={cls.description}
                         text={description}
+                    />
+                </div>
+                <div className={classNames(cls.subDescription, mods)}>
+                    <Paragraph
+                        className={cls.subDescription}
+                        text={subDescription}
                     />
                 </div>
             </Container>

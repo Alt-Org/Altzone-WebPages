@@ -42,7 +42,6 @@ function MainPage(props: Props) {
                 className={cls.description}
                 {...projectDescription}
             />
-            <HorizontalLines />
 
             <PlayWithUs {...playWithUs} />
 
