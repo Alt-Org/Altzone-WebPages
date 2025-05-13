@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -31,7 +30,28 @@ const CookieConsentV2 = () => {
             <div className="cookie-consent-content">
                 <div className="cookie-text">
                     <h1>{t('header')}</h1>
-                    <p>{t('description')}</p>
+                    <p>
+                        {t('description')
+                            .split(
+                                /(tietosuojan|evästeiden|privacy|cookies|конфиденциальности|файлов cookie)/,
+                            )
+                            .map((part, index) => (
+                                <React.Fragment key={index}>
+                                    {[
+                                        'tietosuojan',
+                                        'evästeiden',
+                                        'privacy',
+                                        'cookies',
+                                        'конфиденциальности',
+                                        'файлов cookie',
+                                    ].includes(part) ? (
+                                        <span className="highlight">{part}</span>
+                                    ) : (
+                                        part
+                                    )}
+                                </React.Fragment>
+                            ))}
+                    </p>
                     <div className="cookie-consent-buttons">
                         <button onClick={handleDecline}>{t('declineButton')}</button>
                         <button onClick={handleAccept}>{t('acceptButton')}</button>
