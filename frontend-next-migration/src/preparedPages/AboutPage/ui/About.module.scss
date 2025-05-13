@@ -7,15 +7,36 @@
   background-color:#203444;
   text-align: center;
   border-radius: 5px;
-  width: 30%;
   outline: 7px solid black;
   margin-bottom: 5%;
+  width: 30%;
+   @media (min-width: 1400px) and (max-width: 2004px){
+    width: 40%;
+  }
+  @media (max-width: breakpoint(xxl)){
+    width: 50%;
+  }
+  @media (max-width: breakpoint(xl)){
+    width: 50%;
+  }
+  @media (max-width: breakpoint(md)){
+    width: 70%;
+  }
+  @media (max-width: breakpoint(sm)){
+    width: 90%;
+  }
 }
 
 .headergrid{
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1;
+  @media (max-width: breakpoint(md)){
+    grid-template-columns: 50% 50%;
+  }
+  @media (max-width: breakpoint(sm)){
+    grid-template-columns: 50% 50%;
+  }
 }
 
 .storygrid {
@@ -23,7 +44,15 @@
   grid-template-columns: 25% 75%;
   grid-template-rows: 6;
   white-space: pre-line;
-  padding-bottom: 3%;
+  @media (max-width: breakpoint(xl)){
+    grid-template-columns: 35% 65%;
+  }
+  @media (max-width: breakpoint(md)){
+    grid-template-columns: 30% 70%;
+  }
+  @media (max-width: breakpoint(sm)){
+    grid-template-columns: 100%;
+  }
 }
   
 .h1{
@@ -38,6 +67,9 @@
   font-size: 60%;
   text-align: left;
   padding: 2%;
+  @media (max-width: breakpoint(sm)){
+    padding-left: 10%;
+  }
 }
 
 .gridp{
@@ -53,9 +85,28 @@
   padding-top: 8%;
   padding-right: 10%;
   text-align: right;
+  @media (max-width: breakpoint(sm)){
+    text-align: left;
+  }
 }
 
 #line{
   border-left: 10px solid orange;
   margin-left: 5%;
+  margin-bottom: 50px;
+}
+
+.yearh1::before {
+  content: "";
+  position:static;
+  border: solid orange;
+  border-width: 5px;
+  padding-left: 50px;
+  float: left;
+  @media (max-width: breakpoint(sm)){
+    padding-left: 30px;
+  }
+  @media (min-width: 1400px) and (max-width: 2004px){
+    padding-left: 40px;
+  }
 }

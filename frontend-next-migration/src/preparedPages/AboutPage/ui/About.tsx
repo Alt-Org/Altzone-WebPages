@@ -42,7 +42,7 @@ const About = (props: Props) => {
         <main className={cls.main}>
             <div className={cls.container}>
                 <p className={cls.h1}>{title}</p>
-                <p className={cls.p}>{description}</p>
+                <p className={cls.gridp}>{description}</p>
                 <p className={cls.h1}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
