@@ -51,8 +51,6 @@ function MainPage(props: Props) {
             {/*    {...videoAndGalleries}*/}
             {/*/>*/}
 
-            <HorizontalLines />
-
             <SectionHeroesBlocks
                 {...heroesBlocks}
                 maxHeroesPerGroup={2}

@@ -1,10 +1,12 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import gameImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import {
     getRouteAllHeroesPage,
     getRouteComicsPage,
     getRouteGalleryPage,
+    getRouteAboutPage,
 } from '@/shared/appLinks/RoutePaths';
 import { createPage } from '@/app/_helpers';
 
@@ -25,6 +27,9 @@ export async function _getPage(lng: string) {
                 webGl: {
                     title: t('PlayOnline'),
                     link: AppExternalLinks.webgl,
+                    titleDownload: t('playWithUs-download'),
+                    text: t('playWithUs-text'),
+                    downloadText: t('playWithUs-download-text'),
                 },
                 googlePLayLink: AppExternalLinks.downloadAndroid,
                 belowNavs: [
@@ -67,12 +72,12 @@ export async function _getPage(lng: string) {
                 },
             },
             gallery: {
-                title: tPG('picture-galleries'),
-                infoText: tPG('info-text'),
-                socialsText: tPG('socials-text'),
+                title: t('project-description-title'),
+                infoText: t('project-description-text'),
+                socialsText: t('socials-text'),
                 seeMoreLink: {
                     text: t('gallery-seeMore'),
-                    href: getRouteGalleryPage(),
+                    href: getRouteAboutPage(),
                 },
                 socialMediaLinks: [
                     AppExternalLinks.igPost1,
@@ -80,6 +85,7 @@ export async function _getPage(lng: string) {
                     AppExternalLinks.fbPost1,
                 ],
                 videoLink: AppExternalLinks.previewVideoYoutube,
+                gameImg: gameImg.src,
             },
         }),
     });

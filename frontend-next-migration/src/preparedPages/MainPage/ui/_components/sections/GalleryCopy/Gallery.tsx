@@ -20,12 +20,10 @@ export type Props = {
     };
     socialMediaLinks: string[];
     videoLink: string;
-    gameImg?: string;
 };
 
 const Gallery = (props: Props) => {
-    const { title, infoText, socialsText, seeMoreLink, socialMediaLinks, videoLink, gameImg } =
-        props;
+    const { title, infoText, socialsText, seeMoreLink, socialMediaLinks, videoLink } = props;
     const params = useParams();
     const lng = params.lng as string;
     const language = getLanguageCode(lng);
@@ -48,18 +46,8 @@ const Gallery = (props: Props) => {
             className={classNames(cls.SectionGallery, mods)}
         >
             <Container className={cls.Container}>
-                <div className={cls.titleWrapper}>
-                    <h2 className={classNames(cls.title, mods)}>{title}</h2>
-                    <p className={cls.InfoText}>{infoText}</p>
-                    <a
-                        className={cls.aboutLink}
-                        href={seeMoreLink.href}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        {seeMoreLink.text}
-                    </a>
-                </div>
+                <h2 className={classNames(cls.title, mods)}>{title}</h2>
+                <p className={cls.InfoText}>{infoText}</p>
 
                 {/*<SectionGalleryV1*/}
                 {/*    socialMediaLinks={socialMediaLinks}*/}
@@ -70,11 +58,8 @@ const Gallery = (props: Props) => {
                 {/*    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/}
                 {/*</div>*/}
 
-                <div className={cls.imgWrapper}>
-                    <img
-                        src={gameImg}
-                        alt=""
-                    />
+                <div className={cls.videoWrapper}>
+                    <YouTubeFacade previewVideoYoutube={videoLink} />
                 </div>
 
                 {/*<p className={cls.SocialsText}>{socialsText}</p>*/}

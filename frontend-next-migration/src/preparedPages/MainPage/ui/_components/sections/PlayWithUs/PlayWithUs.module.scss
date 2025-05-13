@@ -6,12 +6,14 @@
   min-height: 100vh;
   position: relative;
   gap: 20px;
+
 }
 
 .title {
-  text-align: center;
+  font-family: var(--font-family-title), sans-serif;
   font-size: var(--font-line-xxxl);
-
+  color: var(--primary-color);
+  margin-bottom: 20px;
   //todo add animation as well
   //opacity: 0;
   //transform: translateX(-100%);
@@ -49,6 +51,7 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    
   }
 
 }
@@ -56,29 +59,30 @@
 
 .Buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  width: 100%;
+  justify-content: space-evenly;
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 
+  }
 }
 
-.webGl {
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 95px;
-  //height: 10vh!important;
-  //width: 50% !important;
-  max-width: 80%;
-
+.webGl { 
+  width: fit-content;
+  padding: 0 1.2rem;
+  border-radius: 40px;
+  border: 1px solid black;
+  height: 50%;
+  background-color: var(--primary-color);
   & * {
-    font-size: 2.7rem !important;
+    font-size: 1.3rem !important;
+    color: var(--white) !important;
   }
 
-  padding: 0.5rem;
 
 
   white-space: nowrap;
@@ -93,10 +97,12 @@
 
   @media (max-width: 450px) {
     & * {
-      font-size: 2.4rem !important;
+      font-size: 2rem !important;
     }
   }
-
+  h3{
+    color: black !important;
+  }
 }
 
 .BtnDownloadWrapper{
@@ -105,6 +111,7 @@
   min-width: 300px;
   display: flex;
   justify-content: center;
+  
 }
 
 .BtnDownload {
@@ -112,6 +119,7 @@
   border-radius: var(--border-radius-custom);
   width: inherit;
   height: inherit;
+  
 }
 
 
@@ -120,7 +128,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex: 1;
   margin-top: 2rem;
 }
@@ -128,9 +136,14 @@
 .ContentWithNav{
   display: flex;
   flex-direction: column;
-  width: 50%;
   justify-content: center;
   align-items:center;
+  background-color: #1E3544;
+  border: 3px solid black;
+  padding: 20px;
+  box-shadow: 0.5rem 0.5rem black;
+  border-radius: var(--border-radius-custom);
+  
 }
 
 .WebGLNotice {

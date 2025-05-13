@@ -12,10 +12,6 @@
 .SectionGallery {
     margin: 40px auto;
     opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     &.inView{
         animation: fadeIn 2s ease-out;
         opacity: 1;
@@ -24,33 +20,19 @@
 
 .Container {
     margin-top: 20px;
-    width: 50%;
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     gap: 20px;
-    
 }
 
-.titleWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:start;
-    background-color: #1E3544;
-    border: 3px solid black;
-    padding: 20px;
-    box-shadow: 0.5rem 0.5rem black;
-    border-radius: var(--border-radius-custom); 
-}
 .title {
     text-align: center;
-    font-size: var(--font-line-xl);
-    font-family: var(--font-family-title), sans-serif;
+    font-size: var(--font-line-xxxl);
     opacity: 0;
     transform: translateX(-100%);
     transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-    color: var(--primary-color);
+  
     &.inView {
         opacity: 1;
         transform: translateX(0);
@@ -69,12 +51,13 @@
 
 .InfoText {
     font-size: 1.2em;
-    padding: 10px 0; 
-    text-align: start;
-    white-space: pre-wrap;
-    @media screen and (min-width: 768px) {
-        font-size: 1.2em;
+    width: 85%;
+    margin: auto;
+    text-align: center;
 
+    @media screen and (min-width: 768px) {
+        font-size: 1.5em;
+        width: 70%;
     }
 }
 
@@ -97,7 +80,6 @@
     }
 }
 
-
 .videoWrapper {
     padding: 0 40px;
 }
@@ -118,5 +100,3 @@
     background-color: rgba(0, 0, 0, 0.6);
     width: fit-content;
 }
-
-
