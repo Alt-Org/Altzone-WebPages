@@ -28,7 +28,7 @@ describe('ThemeSwitcher', () => {
 
     it('should render the button with DarkIcon when theme is dark', () => {
         (useTheme as jest.Mock).mockReturnValue({
-            theme: Theme.DARK,
+            theme: Theme.MAIN,
             toggleTheme: jest.fn(),
         });
 
