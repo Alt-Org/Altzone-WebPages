@@ -21,7 +21,7 @@ export const newsApi = directusApi.injectEndpoints({
          *
          * The query includes news content, related category data, translation information, and images (e.g.,
          * titlePicture, extra pictures). The filter ensures that only news items with a status of 'published'
-         * are retrieved.
+         * are retrieved. Results are sorted by the `date` field in descending order to show the latest news first.
          *
          * @query
          * @returns {Promise<Object>} The data containing the fetched news items.
@@ -49,6 +49,7 @@ export const newsApi = directusApi.injectEndpoints({
                         filter: {
                             status: { _eq: 'published' },
                         },
+                        sort: ['-date'],
                         limit: _arg,
                     }),
                 );
