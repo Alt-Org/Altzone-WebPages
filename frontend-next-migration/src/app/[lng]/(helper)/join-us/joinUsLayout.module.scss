@@ -1,0 +1,18 @@
+
+
+.joinUsLayout {
+margin-top: -80px; // ei tarvita navia mobiilissa
+
+  @media (max-width: breakpoint(sm)) {
+    margin-top: -60px; // ei tarvita navia mobiilissa
+  }
+
+  @media (max-width: breakpoint(lg)) {
+    margin-top: -80px; // vähän pienempi nav mobiilissa
+  }
+
+
+    @media ((min-width: breakpoint(xxl)) and (max-width: 1500px)) {
+        margin-top: -30px; // ei tarvita navia mobiilissa
+    }
+}
