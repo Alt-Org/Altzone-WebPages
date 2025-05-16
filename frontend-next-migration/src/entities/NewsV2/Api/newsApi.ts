@@ -49,7 +49,7 @@ export const newsApi = directusApi.injectEndpoints({
                         filter: {
                             status: { _eq: 'published' },
                         },
-                        sort: ['-date'],
+                        sort: ['-date', '-date_created'],
                         limit: _arg,
                     }),
                 );
@@ -90,10 +90,12 @@ export const newsApi = directusApi.injectEndpoints({
                     const nextNews = await client.request(
                         readItems('news', {
                             filter: {
-                                id: { _gt: id },
+                                date: { _gte: newsItem.date },
+                                date_created: { _gt: newsItem.date_created },
+                                id: { _neq: id },
                                 status: { _eq: 'published' },
                             },
-                            sort: ['id'],
+                            sort: ['date', 'date_created'],
                             limit: 1,
                             fields: ['id'],
                         }),
@@ -102,10 +104,12 @@ export const newsApi = directusApi.injectEndpoints({
                     const prevNews = await client.request(
                         readItems('news', {
                             filter: {
-                                id: { _lt: id },
+                                date: { _lte: newsItem.date },
+                                date_created: { _lt: newsItem.date_created },
+                                id: { _neq: id },
                                 status: { _eq: 'published' },
                             },
-                            sort: ['-id'],
+                            sort: ['-date', '-date_created'],
                             limit: 1,
                             fields: ['id'],
                         }),
