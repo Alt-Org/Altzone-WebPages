@@ -87,6 +87,22 @@ export async function _getPage(lng: string) {
                 videoLink: AppExternalLinks.previewVideoYoutube,
                 gameImg: gameImg.src,
             },
+            galleryCopy: {
+                title: t('project-description-title'),
+                infoText: t('project-description-text'),
+                socialsText: t('socials-text'),
+                seeMoreLink: {
+                    text: t('gallery-seeMore'),
+                    href: getRouteAboutPage(),
+                },
+                socialMediaLinks: [
+                    AppExternalLinks.igPost1,
+                    AppExternalLinks.igPost2,
+                    AppExternalLinks.fbPost1,
+                ],
+                videoLink: AppExternalLinks.previewVideoYoutube,
+                gameImg: gameImg.src,
+            },
         }),
     });
 }

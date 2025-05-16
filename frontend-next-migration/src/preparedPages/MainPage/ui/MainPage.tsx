@@ -4,6 +4,7 @@ import { HorizontalLines } from '@/shared/ui/PageDividers';
 import { Gallery, GalleryProps } from './_components/sections/Gallery';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
+import { NewsSection } from './_components/sections/NewsSection';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
@@ -22,6 +23,7 @@ export type Props = {
     videoAndGalleries: VideoAndGalleriesProps;
     gallery: GalleryProps;
     heroesBlocks: HeroesBlocksProps;
+    galleryCopy: GalleryProps;
 };
 
 function MainPage(props: Props) {
@@ -60,6 +62,20 @@ function MainPage(props: Props) {
             <HorizontalLines />
 
             <Gallery {...gallery} />
+            <HorizontalLines />
+            <NewsSection />
+            {/*<Gallery {...galleryCopy} />*/}
+
+            {/*<HorizontalLines />*/}
+            {/*<SectionRanking*/}
+            {/*    rankingPlayerText={t('ranking-player')}*/}
+            {/*    rankingScoreText={t('ranking-score')}*/}
+            {/*/>*/}
+
+            {/*<HorizontalLines />*/}
+            {/*<PlayWithUs*/}
+            {/*    {...playWithUs}*/}
+            {/*/>*/}
 
             {/*<GetToKnowComics*/}
             {/*    backgroundImageSrc={sameBg}*/}
