@@ -58,7 +58,7 @@ export const newsApi = directusApi.injectEndpoints({
         }),
         /**
          * Fetches a single news item by its ID, including related data such as category,
-         * translations, and images. Also retrieves the IDs of the next and previous news items.
+         * translations, and images. Also retrieves the IDs of the next and previous news items base on the published date.
          *
          * @param {string} id - The ID of the news item to fetch.
          * @returns {Promise<Object>} The news item data.
