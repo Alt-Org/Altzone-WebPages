@@ -6,14 +6,14 @@
     padding-bottom: 2vh;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: breakpoint(sm)) {
     .Container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
         margin: 10px auto ;
     }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: breakpoint(sm)) {
     .Container {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
