@@ -49,7 +49,7 @@ export const newsApi = directusApi.injectEndpoints({
                         filter: {
                             status: { _eq: 'published' },
                         },
-                        sort: ['-date', '-date_created'],
+                        sort: ['-date', '-id'],
                         limit: _arg,
                     }),
                 );
@@ -90,12 +90,19 @@ export const newsApi = directusApi.injectEndpoints({
                     const nextNews = await client.request(
                         readItems('news', {
                             filter: {
-                                date: { _gte: newsItem.date },
-                                date_created: { _gt: newsItem.date_created },
+                                _or: [
+                                    { date: { _gt: newsItem.date } },
+                                    {
+                                        _and: [
+                                            { date: { _eq: newsItem.date } },
+                                            { id: { _gt: id } },
+                                        ],
+                                    },
+                                ],
                                 id: { _neq: id },
                                 status: { _eq: 'published' },
                             },
-                            sort: ['date', 'date_created'],
+                            sort: ['date', 'id'],
                             limit: 1,
                             fields: ['id'],
                         }),
@@ -104,12 +111,19 @@ export const newsApi = directusApi.injectEndpoints({
                     const prevNews = await client.request(
                         readItems('news', {
                             filter: {
-                                date: { _lte: newsItem.date },
-                                date_created: { _lt: newsItem.date_created },
+                                _or: [
+                                    { date: { _lt: newsItem.date } },
+                                    {
+                                        _and: [
+                                            { date: { _eq: newsItem.date } },
+                                            { id: { _lt: id } },
+                                        ],
+                                    },
+                                ],
                                 id: { _neq: id },
                                 status: { _eq: 'published' },
                             },
-                            sort: ['-date', '-date_created'],
+                            sort: ['-date', '-id'],
                             limit: 1,
                             fields: ['id'],
                         }),
