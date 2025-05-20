@@ -18,6 +18,7 @@ import chevronright from '@/shared/assets/icons/ChevronRightBlack.svg';
 import { useRouter, useParams } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
+import ShareButton from './ShareButton';
 
 const NewsElementPage = () => {
     useScrollToTop();
@@ -101,6 +102,8 @@ const NewsElementPage = () => {
                     />
                 </div>
                 <h1 className={cls.title}>{post?.title}</h1>
+                <ShareButton />
+
                 <h3 className={cls.subtitle}>{post?.previewText}</h3>
                 <p className={cls.text}>{post?.bodyText}</p>
                 <span className={cls.date}>{post?.date}</span>
