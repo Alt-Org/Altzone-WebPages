@@ -87,6 +87,14 @@ export const newsApi = directusApi.injectEndpoints({
                         }),
                     );
 
+                    if (!newsItem) {
+                        return {
+                            data: undefined,
+                            error: { status: 404, data: 'News item not found' },
+                            meta: undefined,
+                        };
+                    }
+
                     const nextNews = await client.request(
                         readItems('news', {
                             filter: {
