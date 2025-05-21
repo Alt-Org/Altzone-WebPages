@@ -15,6 +15,7 @@ import {
 } from './_components/sections/VideoAndGalleries';
 import cls from './page.module.scss';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
+import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -24,6 +25,7 @@ export type Props = {
     gallery: GalleryProps;
     heroesBlocks: HeroesBlocksProps;
     galleryCopy: GalleryProps;
+    contactSection: ContactSectionProps;
 };
 
 function MainPage(props: Props) {
@@ -35,6 +37,7 @@ function MainPage(props: Props) {
         videoAndGalleries,
         // classifiedHeroesBlocks,
         gallery,
+        contactSection,
     } = props;
 
     return (
@@ -58,12 +61,12 @@ function MainPage(props: Props) {
                 maxHeroesPerGroup={2}
                 maxGroupsPerPage={3}
             />
-
-            <HorizontalLines />
-
             <Gallery {...gallery} />
-            <HorizontalLines />
+
             <NewsSection />
+            <HorizontalLines />
+            <ContactSection {...contactSection} />
+
             {/*<Gallery {...galleryCopy} />*/}
 
             {/*<HorizontalLines />*/}

@@ -2,6 +2,7 @@ import { MainPageProps } from '@/preparedPages/MainPage';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import gameImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
+import ContactImg from '@/shared/assets/images/Orang_hero.webp';
 import {
     getRouteAllHeroesPage,
     getRouteComicsPage,
@@ -102,6 +103,11 @@ export async function _getPage(lng: string) {
                 ],
                 videoLink: AppExternalLinks.previewVideoYoutube,
                 gameImg: gameImg.src,
+            },
+            contactSection: {
+                title: t('contact-title'),
+                googlePLayLink: AppExternalLinks.duunitori,
+                linkText: t('contact-linkText'),
             },
         }),
     });
