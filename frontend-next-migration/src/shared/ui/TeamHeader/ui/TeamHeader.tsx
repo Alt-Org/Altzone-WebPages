@@ -24,7 +24,7 @@ export function TeamHeader(props: Props) {
                 <div className={cls.TitleContainer}>
                     <h2>{t('head-title')}</h2>
                     {isTouchDevice && dropdown}
-                    <div className={cls.InputParent}>
+                    {/* <div className={cls.InputParent}>
                         <div className={cls.InputContainer}>
                             <FontAwesomeIcon
                                 className={cls.textInputIcon}
@@ -39,7 +39,7 @@ export function TeamHeader(props: Props) {
                                 className={cls.Searchfield}
                             />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className={cls.ImageContainer}>
                     <Image
