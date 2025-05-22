@@ -23,10 +23,10 @@ const enOrder = [
     'Design Team',
     'Technical Team',
     'Artistic Team',
+    'Art Education',
     'Production',
     'Community Management',
     'Community Content',
-    'Art Education',
     'Participated in the Development of the Project',
     'Special Thanks',
 ];
@@ -35,10 +35,10 @@ const fiOrder = [
     'Suunnittelutiimi',
     'Tekninen Tiimi',
     'Taiteellinen Tiimi',
+    'Taidekasvatus',
     'Tuotanto',
     'Yhteisömanagerointi',
     'Yhteisösisältö',
-    'Taidekasvatus',
     'Projektin Kehityksessä Mukana Olleet',
     'Erityiskiitokset',
 ];
