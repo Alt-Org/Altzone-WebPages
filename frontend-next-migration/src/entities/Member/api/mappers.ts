@@ -61,8 +61,8 @@ const enDepartmentOrder = [
 
 const fiDepartmentOrder = [
     'Ydintiimi',
-    'Vastaavat ohjelmistokehittäjät',
-    'API ohjelmoijat',
+    'Vastaavat Ohjelmistokehittäjät',
+    'API Ohjelmoijat',
     'Ohjelmoijat',
     'Testaus ja Analytiikka',
     'Tekninen Mentorointi',
@@ -71,7 +71,7 @@ const fiDepartmentOrder = [
     'Äänisuunnittelu ja Sävellys',
     'Käsikirjoitus',
     'Sarjakuvataiteilija',
-    'Taiteellinen mentorointi',
+    'Taiteellinen Mentorointi',
 ];
 
 /**
