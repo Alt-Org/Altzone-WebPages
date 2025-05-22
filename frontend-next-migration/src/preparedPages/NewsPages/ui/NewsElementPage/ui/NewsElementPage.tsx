@@ -24,17 +24,17 @@ const NewsElementPage = () => {
     const params = useParams();
     const id = params.id;
     const lng = params.lng as string;
+    const router = useRouter();
+
+    const formatDate = (dateString: string) => {
+        return new Date(dateString).toLocaleDateString('fi-FI');
+    };
 
     const { t } = useClientTranslation('news');
     const { data: moreNews } = useGetNewsQuery(2);
     const { data, isLoading } = useGetNewsByIdQuery(id as string);
     const directusBaseUrl = envHelper.directusHost;
-    const router = useRouter();
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
-
-    const handleNextNews = (newsId: string) => {
-        if (newsId) router.push(`/news/${newsId}`);
-    };
 
     if (isLoading || !data) {
         return <div>Loading...</div>;
@@ -45,6 +45,7 @@ const NewsElementPage = () => {
     const picture = post.titlePicture?.id
         ? `${directusBaseUrl}/assets/${post.titlePicture.id}`
         : hannu.src;
+
     return (
         <Container>
             <div className={cls.navButtons}>
@@ -55,14 +56,12 @@ const NewsElementPage = () => {
                     size={ButtonSize.M}
                     className={classNames(cls.ButtonNewsNavigation)}
                 >
-                    {
-                        <Image
-                            loading="eager"
-                            alt={'Pin'}
-                            src={chevronleft}
-                            className={cls.buttonImage}
-                        />
-                    }
+                    <Image
+                        loading="eager"
+                        alt={'Pin'}
+                        src={chevronleft}
+                        className={cls.buttonImage}
+                    />
                     {t('previous-button')}
                 </Button>
                 <Button
@@ -73,41 +72,44 @@ const NewsElementPage = () => {
                     className={classNames(cls.ButtonNewsNavigation)}
                 >
                     {t('next-button')}
-                    {
-                        <Image
-                            loading="eager"
-                            alt={'Pin'}
-                            src={chevronright}
-                            className={cls.buttonImage}
-                        />
-                    }
+                    <Image
+                        loading="eager"
+                        alt={'Pin'}
+                        src={chevronright}
+                        className={cls.buttonImage}
+                    />
                 </Button>
             </div>
+
             <div className={classNames(cls.NewsElementPage)}>
                 <div className={cls.imageContainer}>
                     <Image
                         src={picture}
-                        alt={''}
+                        alt=""
                         className={cls.imageBlur}
                         width={100}
                         height={600}
                     />
                     <Image
                         src={picture}
-                        alt={''}
+                        alt=""
                         className={cls.image}
                         width={100}
                         height={600}
                     />
                 </div>
                 <h1 className={cls.title}>{post?.title}</h1>
-                <h3 className={cls.subtitle}>{post?.previewText}</h3>
                 <p className={cls.text}>{post?.bodyText}</p>
-                <span className={cls.date}>{post?.date}</span>
+                <span className={cls.date}>
+                    {post.author ? `${post.author}, ` : ''}
+                    {formatDate(post.date)}
+                </span>
             </div>
+
             <div className={cls.readmoreText}>
                 <h1 className={cls.titleReadmore}>{t('read-more')}</h1>
             </div>
+
             <div className={cls.newsGrid}>
                 {groupedNews.map((news) => {
                     const imageSrc = news.titlePicture?.id
