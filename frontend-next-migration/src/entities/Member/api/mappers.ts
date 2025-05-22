@@ -23,22 +23,55 @@ const enOrder = [
     'Design Team',
     'Technical Team',
     'Artistic Team',
-    'Production',
-    'Community',
     'Art Education',
-    'Involved In The Project',
-    'Thanks',
+    'Production',
+    'Community Management',
+    'Community Content',
+    'Participated in the Development of the Project',
+    'Special Thanks',
 ];
 
 const fiOrder = [
     'Suunnittelutiimi',
     'Tekninen Tiimi',
     'Taiteellinen Tiimi',
-    'Tuotanto',
-    'Yhteisö',
     'Taidekasvatus',
+    'Tuotanto',
+    'Yhteisömanagerointi',
+    'Yhteisösisältö',
     'Projektin Kehityksessä Mukana Olleet',
-    'Kiitokset',
+    'Erityiskiitokset',
+];
+
+// Define department order for each language
+const enDepartmentOrder = [
+    'Coreteam',
+    'Lead Developer',
+    'API Developers',
+    'Developers',
+    'Testing and Analytics',
+    'Technical Mentoring',
+    'Artistic Director',
+    'Graphics',
+    'Sound Design and Composition',
+    'Screenwriting',
+    'Comic Book Artist',
+    'Artistic Mentorship',
+];
+
+const fiDepartmentOrder = [
+    'Ydintiimi',
+    'Vastaavat Ohjelmistokehittäjät',
+    'API Ohjelmoijat',
+    'Ohjelmoijat',
+    'Testaus ja Analytiikka',
+    'Tekninen Mentorointi',
+    'Taiteellinen Vastaava',
+    'Grafiikka',
+    'Äänisuunnittelu ja Sävellys',
+    'Käsikirjoitus',
+    'Sarjakuvataiteilija',
+    'Taiteellinen Mentorointi',
 ];
 
 /**
@@ -64,6 +97,7 @@ export const organizeMembers = (members: Member[], lng: string) => {
     const fullLanguageCode = getLanguageCode(lng);
 
     const order = lng === 'fi' ? fiOrder : enOrder;
+    const departmentOrder = lng === 'fi' ? fiDepartmentOrder : enDepartmentOrder;
 
     members.forEach((member: Member) => {
         const memberTeam = member.team;
@@ -103,6 +137,22 @@ export const organizeMembers = (members: Member[], lng: string) => {
     });
     teamsMap.forEach((team) => {
         team.members.sort((a, b) => a.name.localeCompare(b.name));
+
+        // Sort departments within each team according to departmentOrder
+        team.departments.sort((a, b) => {
+            const indexA = departmentOrder.indexOf(a.name);
+            const indexB = departmentOrder.indexOf(b.name);
+
+            // If department is not in the order array, place it at the end
+            if (indexA === -1 && indexB === -1) {
+                return a.name.localeCompare(b.name); // Alphabetical if neither is in order list
+            }
+            if (indexA === -1) return 1; // a not in list, b in list
+            if (indexB === -1) return -1; // a in list, b not in list
+
+            return indexA - indexB; // Both in list, sort by position
+        });
+
         team.departments.forEach((department) => {
             department.members.sort((a, b) => a.name.localeCompare(b.name));
         });
@@ -134,4 +184,24 @@ export const organizeTeams = (teamProps: Record<any, string>[], lng: string) => 
     });
 
     return sortedTeams;
+};
+
+/**
+ * Organizes departments based on a predefined order dictated by language.
+ *
+ * @param {Record<any, string>[]} departmentProps - An array of department records, containing label and id.
+ * @param {string} lng - The language code used to determine which language to use for translations and sorting.
+ * @returns {Record<any, string>[]} The organized departments mapped by their IDs.
+ */
+
+export const organizeDepartments = (departmentProps: Record<any, string>[], lng: string) => {
+    const order = lng === 'fi' ? fiDepartmentOrder : enDepartmentOrder;
+
+    const sortedDepartments = Array.from(departmentProps).sort((a, b) => {
+        const indexA = order.indexOf(a.label);
+        const indexB = order.indexOf(b.label);
+        return indexA - indexB;
+    });
+
+    return sortedDepartments;
 };
