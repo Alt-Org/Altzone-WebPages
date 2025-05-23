@@ -7,7 +7,6 @@
  * and responsive design. The chatbot uses context from JSON files to provide relevant responses.
  *
  * @module ChatBotButton
- * @since 1.0.0
  */
 
 import React from 'react';
