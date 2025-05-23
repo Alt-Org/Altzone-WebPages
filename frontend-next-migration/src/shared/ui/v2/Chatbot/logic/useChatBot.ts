@@ -38,7 +38,6 @@ export interface ChatMessage {
     role: string;
     content: string;
 }
-
 /**
  * Flattens a nested object into an array of strings with key-value pairs.
  * Recursively processes nested objects and creates dot-notation keys.
@@ -60,7 +59,6 @@ function flattenObject(obj: any, prefix = ''): string[] {
         }
     });
 }
-
 /**
  * Custom hook for chatbot functionality that manages chat state, messages, and API interactions.
  * Provides chat functionality including message handling, API calls to OpenAI,
