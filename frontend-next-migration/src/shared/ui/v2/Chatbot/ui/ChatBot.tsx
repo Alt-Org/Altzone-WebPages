@@ -13,7 +13,7 @@ import xButton from '@/shared/assets/icons/xButton.svg';
 import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
 import sendArrow from '@/shared/assets/icons/sendArrow.svg';
 import { useChatBot } from '../logic/useChatBot';
-import { t } from 'i18next';
+import { useClientTranslation } from '@/shared/i18n';
 
 /**
  * ChatBotButton
@@ -31,6 +31,7 @@ export interface ChatBotButtonProps {
 export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
     const { messages, userInput, loading, error, setUserInput, handleSendMessage } = useChatBot();
     const [visible, setVisible] = React.useState(true);
+    const { t } = useClientTranslation('chatbot');
 
     const closeChat = () => {
         setVisible(false);
@@ -51,7 +52,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                         height={48}
                     />
                     <div className={cls['chatbot-title']}>
-                        <h1>{t('CHATBOT')}</h1>
+                        <h1>{t('chatbotTitle')}</h1>
                     </div>
                     <button
                         className={cls['close-button']}
@@ -87,17 +88,17 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                         type="text"
                         value={userInput}
                         onChange={(event) => setUserInput(event.target.value)}
-                        placeholder="Kirjoita viestisi..."
+                        placeholder={t('write_your_message')}
                         className={cls['message-input']}
                     />
                     <button
                         onClick={handleSendMessage}
                         disabled={loading}
                         className={cls['send-button']}
-                        aria-label="Lähetä"
+                        aria-label="Send"
                     >
                         {loading ? (
-                            'Lähetetään...'
+                            t('sending')
                         ) : (
                             <span
                                 style={{
