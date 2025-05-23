@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useClientTranslation } from '@/shared/i18n';
 import data1 from '@/shared/i18n/locales/fi/heroes.json';
 import data2 from '@/shared/i18n/locales/fi/about.json';
 
@@ -37,6 +38,7 @@ export const useChatBot = () => {
     const [error, setError] = useState<string | null>(null);
     const [context, setContext] = useState('');
     const [visible, setVisible] = useState(true);
+    const { t } = useClientTranslation('chatbot');
 
     useEffect(() => {
         const combinedData = [data1, data2]
@@ -46,11 +48,10 @@ export const useChatBot = () => {
         setMessages([
             {
                 role: 'assistant',
-                content:
-                    'Hei, olen botti Borelius! Vastailen mielelläni kysymyksiisi liittyen Alt Zone, PRG, peli ja nettisivut.',
+                content: t('welcomeMessage'),
             },
         ]);
-    }, []);
+    }, [t]);
 
     const clearChat = () => {
         setMessages([]);
@@ -64,7 +65,7 @@ export const useChatBot = () => {
         if (!userInput.trim()) return;
 
         if (userInput.length > 40) {
-            setError('Viestisi on liian pitkä! Syötä enintään 40 merkkiä.');
+            setError(t('errorMessageTooLong'));
             return;
         }
 
@@ -77,7 +78,7 @@ export const useChatBot = () => {
         try {
             const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
             if (!apiKey) {
-                setError('OpenAI API key is missing. Please set it in the .env.local file.');
+                setError(t('errorApiKeyMissing'));
                 setLoading(false);
                 return;
             }
@@ -93,9 +94,7 @@ export const useChatBot = () => {
                     messages: [
                         {
                             role: 'system',
-                            content:
-                                'Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin vain tämän tiedon pohjalta:\n\n' +
-                                context,
+                            content: t('systemPrompt') + '\n\n' + context,
                         },
                         ...newMessages,
                     ],
@@ -112,11 +111,11 @@ export const useChatBot = () => {
             }
 
             const data = await response.json();
-            const assistantMessage = data.choices[0]?.message?.content || 'En osaa vastata tähän.';
+            const assistantMessage = data.choices[0]?.message?.content || t('errorDefaultResponse');
 
             setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
         } catch (err) {
-            setError(`Unexpected Error: ${err}`);
+            setError(`${t('errorUnexpected')} ${err}`);
         } finally {
             setLoading(false);
         }
