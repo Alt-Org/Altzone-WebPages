@@ -1,19 +1,18 @@
-//Author: Sauli  
 .shareButton {
   background-color: #1E3544;
-  color: white;
+  color: #ffa100; 
   border: none;
   border-radius: 6px;
-  padding: 10px 16px;
-  font-size: 16px;
+  padding: 1px 1px ;
+  
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.1s ease-in-out;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+   
 }
 
 .shareButton:hover {
   
-   border: 0.2em solid #ffa100; // ← tässä lisätään border kun hover
+   border: 0.1em solid #ffa100; 
 }

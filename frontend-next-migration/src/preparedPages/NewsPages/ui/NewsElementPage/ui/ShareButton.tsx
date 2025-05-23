@@ -1,18 +1,36 @@
-//Author: Sauli
 'use client';
-import { useState } from 'react';
+import Image from 'next/image';
+import { useState, ReactNode } from 'react';
 import styles from './ShareButton.module.scss';
 import { toast } from 'react-toastify';
+import ShareIcon from '@/shared/assets/icons/ShareIcon.svg';
 
-const ShareButton = () => {
-    const [copied, setCopied] = useState(false);
+interface ShareButtonProps {
+    children?: ReactNode;
+}
 
-    const handleShare = async () => {
+/**
+ * ShareButton component renders a button that copies the current page URL
+ * to the clipboard and shows a success or error toast notification.
+ *
+ * @component
+ * @param {ShareButtonProps} props - Optional children to render inside the button.
+ * @returns {JSX.Element} A button element with a share icon and optional label.
+ */
+const ShareButton = ({ children }: ShareButtonProps): JSX.Element => {
+    /**
+     * Handles the share action by copying the current URL to the clipboard.
+     * Displays a toast notification on success or failure.
+     *
+     * @async
+     * @returns {Promise<void>}
+     * @throws {Error} If clipboard access fails or user blocks permission.
+     */
+    const handleShare = async (): Promise<void> => {
         try {
             await navigator.clipboard.writeText(window.location.href);
-            setCopied(true);
+
             toast.success('Link copied!');
-            setTimeout(() => setCopied(false), 2000);
         } catch (err) {
             toast.error('Failed to copy link');
         }
@@ -24,12 +42,11 @@ const ShareButton = () => {
             onClick={handleShare}
             aria-label="Share this news article"
         >
-            <img
-                src="/icons/ShareIcon.svg"
-                alt="Share icon"
-                width={24}
-                height={24}
+            <Image
+                src={ShareIcon}
+                alt="Login Icon"
             />
+            {children}
         </button>
     );
 };

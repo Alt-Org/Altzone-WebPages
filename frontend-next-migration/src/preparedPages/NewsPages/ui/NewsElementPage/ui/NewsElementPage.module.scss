@@ -133,3 +133,38 @@
   color: var(--primary-color);
   font-family: var(--font-family-secondary);
 }
+
+.metaContainer {
+
+  color: orange; 
+  display: flex;
+  flex-direction: column;
+   position: relative;
+  margin-left: 10 ;
+  padding-left: 10 ;
+  left: 1em;
+  align-self: flex-start;
+  text-align: left;
+  padding: 10;
+
+}
+
+.shareButton{
+ 
+  color: orange; 
+  display: flex;
+  flex-direction: column;
+ margin-bottom: 1.0rem; 
+}
+
+.author{
+  margin-bottom: -0.5rem; 
+}
+.date {
+  margin-bottom: 0.5rem; 
+}
+.shareLabel {
+  text-align: center;
+  font-size: 0.9rem;
+ 
+}

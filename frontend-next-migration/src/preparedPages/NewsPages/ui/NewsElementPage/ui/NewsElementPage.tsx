@@ -102,11 +102,19 @@ const NewsElementPage = () => {
                     />
                 </div>
                 <h1 className={cls.title}>{post?.title}</h1>
-                <ShareButton />
 
                 <h3 className={cls.subtitle}>{post?.previewText}</h3>
                 <p className={cls.text}>{post?.bodyText}</p>
-                <span className={cls.date}>{post?.date}</span>
+
+                <div className={cls.metaContainer}>
+                    <span className={cls.author}>{post.author}</span>
+                    <span className={cls.date}>{post?.date || 'Date/Time'}</span>
+                    <div className={cls.shareButton}>
+                        <ShareButton>
+                            <span className={cls.shareLabel}>Jaa</span>
+                        </ShareButton>
+                    </div>
+                </div>
             </div>
             <div className={cls.readmoreText}>
                 <h1 className={cls.titleReadmore}>{t('read-more')}</h1>
