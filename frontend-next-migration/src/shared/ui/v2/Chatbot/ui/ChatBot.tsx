@@ -1,9 +1,13 @@
 /* eslint-disable no-console */
 /**
- * ChatBotButton
+ * ChatBotButton Component
  *
- * A React component that acts as a chatbot. It uses OpenAI's API to respond to user questions
- * based on context loaded from JSON files.
+ * A React component that provides a complete chatbot interface with OpenAI integration.
+ * Features include message history, real-time responses, auto-scrolling, internationalization,
+ * and responsive design. The chatbot uses context from JSON files to provide relevant responses.
+ *
+ * @module ChatBotButton
+ * @since 1.0.0
  */
 
 import React from 'react';
@@ -16,24 +20,55 @@ import { useChatBot } from '../logic/useChatBot';
 import { useClientTranslation } from '@/shared/i18n';
 
 /**
- * ChatBotButton
- *
- * A functional React component that provides a chatbot interface. The chatbot uses OpenAI's API
- * to generate responses based on user input and context from JSON files.
- *
- * @returns {JSX.Element} - The rendered chatbot component.
+ * Props for the ChatBotButton component
+ * @interface ChatBotButtonProps
+ * @property {() => void} [onClose] - Optional callback function called when the chatbot is closed
  */
-
 export interface ChatBotButtonProps {
+    /** Optional callback function triggered when the chatbot close button is clicked */
     onClose?: () => void;
 }
 
+/**
+ * ChatBotButton - A comprehensive chatbot interface component
+ *
+ * Renders a floating chatbot window with header, scrollable message area, and input field.
+ * Integrates with OpenAI's API to provide intelligent responses based on loaded context data.
+ * Supports multiple languages through internationalization and includes responsive design
+ * for both desktop and mobile devices.
+ *
+ * @component
+ * @param {ChatBotButtonProps} props - The component props
+ * @param {() => void} [props.onClose] - Optional callback when chatbot is closed
+ * @returns {JSX.Element | null} The rendered chatbot component or null if not visible
+ *
+ * @example
+ * // Basic usage
+ * <ChatBotButton />
+ *
+ * @example
+ * // With close callback
+ * <ChatBotButton onClose={() => console.log('Chatbot closed')} />
+ *
+ * @example
+ * // Controlled visibility from parent
+ * const [showChatbot, setShowChatbot] = useState(true);
+ * return (
+ *   <ChatBotButton onClose={() => setShowChatbot(false)} />
+ * );
+ */
 export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
     const { messages, userInput, loading, error, setUserInput, handleSendMessage, messagesEndRef } =
         useChatBot();
     const [visible, setVisible] = React.useState(true);
     const { t } = useClientTranslation('chatbot');
 
+    /**
+     * Handles closing the chatbot interface
+     * Sets visibility to false and calls the optional onClose callback if provided
+     * @function closeChat
+     * @returns {void}
+     */
     const closeChat = () => {
         setVisible(false);
         if (onClose) onClose();
