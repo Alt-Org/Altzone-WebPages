@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import data1 from '@/shared/i18n/locales/fi/heroes.json';
 import data2 from '@/shared/i18n/locales/fi/about.json';
@@ -39,6 +39,7 @@ export const useChatBot = () => {
     const [context, setContext] = useState('');
     const [visible, setVisible] = useState(true);
     const { t } = useClientTranslation('chatbot');
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const combinedData = [data1, data2]
@@ -52,6 +53,11 @@ export const useChatBot = () => {
             },
         ]);
     }, [t]);
+
+    // Auto-scroll to bottom when new message is added
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
 
     const clearChat = () => {
         setMessages([]);
@@ -132,5 +138,6 @@ export const useChatBot = () => {
         closeChat,
         visible,
         setVisible,
+        messagesEndRef,
     };
 };
