@@ -72,11 +72,19 @@ export const useChatBot = () => {
     const { t } = useClientTranslation('chatbot');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    /**
+     * Initializes the context with combined data from locale files
+     * @returns {string} The initialized context string
+     */
+    const initializeContext = (): string => {
         const combinedData = [data1, data2]
             .map((data) => flattenObject(data).join('\n'))
             .join('\n\n');
-        setContext(combinedData);
+        return combinedData;
+    };
+
+    useEffect(() => {
+        setContext(initializeContext());
         setMessages([
             {
                 role: 'assistant',
@@ -91,14 +99,19 @@ export const useChatBot = () => {
     }, [messages]);
 
     /**
-     * Clears all chat messages and resets the chat state
+     * Clears all chat messages and resets the chat state while preserving system context
      * @example
-     * clearChat(); // Removes all messages and clears input
+     * clearChat(); // Removes all messages and clears input but keeps system context
      */
     const clearChat = () => {
-        setMessages([]);
+        setMessages([
+            {
+                role: 'assistant',
+                content: t('welcomeMessage'),
+            },
+        ]);
         setUserInput('');
-        setContext('');
+        setContext(initializeContext());
     };
 
     /**
