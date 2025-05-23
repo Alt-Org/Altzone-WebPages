@@ -1,17 +1,33 @@
 .chatbot-container {
-    max-width: 400px;
-    margin: 0 auto;
+    position: fixed;
+    bottom: 24px;
+    right: 100px;
+    max-width: 460px;
+    width: clamp(300px, 25vw, 460px);
+    margin: 0;
     padding: 0;
-    border-radius: var(--border-radius-custom);
     border: var(--border-desktop) solid black;
+    border-radius: var(--border-radius-custom);
     background-color: var(--base-card-background);
     box-shadow: var(--m);
     color: var(--content-primary);
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: clamp(500px, 70vh, 764px);
+    max-height: 764px;
     overflow: hidden;
     outline: none;
+    z-index: 1001;
+
+    // Responsive for mobile
+    @media (max-width: 768px) {
+        bottom: 100px;
+        right: 24px;
+        left: 24px;
+        width: auto;
+        max-width: none;
+        height: clamp(400px, 60vh, 600px);
+    }
 }
 
 .chatbot-header {
@@ -102,31 +118,47 @@
 
     .input-container {
         display: flex;
-        gap: 10px;
+        align-items: center;
+        gap: 0;
         margin-top: auto;
         padding: 10px 0;
+        position: relative;
 
         .message-input {
             flex: 1;
-            padding: 10px;
-            border-radius: 20px;
-            border: var(--border-mobile) solid var(--black);
+            padding: 10px 50px 10px 15px;
+            border-radius: var(--border-radius-xl);
+            border: var(--border-mobile) solid var(--primary-color);
+            background-color: var(--background);
+            color: var(--primary-color);
             font-size: 14px;
+            outline: none;
+
+            &::placeholder {
+                color: rgba(255, 161, 0, 0.6);
+            }
 
             &:focus {
-                outline: none;
-                border-color: var(--primary-color);
+                border-color: var(--primary-color-variant-hover);
+                box-shadow: 0 0 0 1px var(--primary-color-variant-hover);
             }
         }
 
         .send-button {
-            padding: 8px 15px;
-            background-color: var(--primary-color);
-            color: var(--black);
-            border: var(--border-mobile) solid var(--black);
-            border-radius: 20px;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 8px;
+            background-color: transparent;
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-lg);
             cursor: pointer;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &:disabled {
                 opacity: 0.7;
@@ -134,7 +166,8 @@
             }
 
             &:hover:not(:disabled) {
-                background-color: var(--primary-color-variant-hover);
+                background-color: var(--primary-color);
+                border-radius: var(--border-radius-lg);
             }
         }
     }
