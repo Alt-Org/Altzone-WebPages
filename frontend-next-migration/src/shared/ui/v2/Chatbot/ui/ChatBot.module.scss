@@ -54,17 +54,26 @@
     }
 
     .close-button {
-        background: none;
-        border: none;
+        background: var(--error);
+        border: var(--border-mobile) solid var(--black);
+        border-radius: var(--border-radius-lg);
         cursor: pointer;
-        padding: 0.25rem;
+        padding: 0.3rem;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        box-shadow: var(--s);
 
         &:hover {
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: var(--red-dark);
+            box-shadow: var(--m);
+            transform: scale(var(--animation-icon-hover-scale));
+        }
+
+        &:active {
+            transform: scale(var(--animation-icon-active-scale));
+            box-shadow: var(--xs);
         }
     }
 

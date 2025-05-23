@@ -9,7 +9,7 @@
 import React from 'react';
 import Image from 'next/image';
 import cls from './ChatBot.module.scss';
-import xButton from '@/shared/assets/icons/xButton.svg';
+import xIcon from '@/shared/assets/icons/xIcon.svg';
 import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
 import sendArrow from '@/shared/assets/icons/sendArrow.svg';
 import { useChatBot } from '../logic/useChatBot';
@@ -59,10 +59,10 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                         onClick={closeChat}
                     >
                         <Image
-                            src={xButton}
+                            src={xIcon}
                             alt="Close"
-                            width={36}
-                            height={36}
+                            width={28}
+                            height={28}
                         />
                     </button>
                 </div>
