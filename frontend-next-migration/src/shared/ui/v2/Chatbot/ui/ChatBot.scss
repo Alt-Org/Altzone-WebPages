@@ -1,24 +1,32 @@
 .chatbot-container {
     max-width: 400px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0;
     padding: 0;
     border: var(--border-thick-black);
     border-radius: var(--border-radius-custom);
     background-color: var(--base-card-background);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--drop-shadows);
     color: var(--content-primary);
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 350px;
     overflow: hidden;
+    z-index: 5;
 }
 
 .chatbot-header {
     display: flex;
+    color: black;
+    font-family: var(--font-family);
+    font-family: var();
     align-items: center;
     justify-content: space-between;
     padding: 10px 15px;
-    border-bottom: 1px solid var(--border-color, #ddd);
+    padding-bottom: 1rem;
+    background-color: var(--content-primary);
+    border-radius: var(--border-radius-custom);
+    margin: 1rem;
 
     .logo {
         cursor: pointer;
