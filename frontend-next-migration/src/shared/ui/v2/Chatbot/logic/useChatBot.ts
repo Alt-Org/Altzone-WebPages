@@ -1,7 +1,32 @@
 import { useState, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-import data1 from '@/shared/i18n/locales/fi/heroes.json';
-import data2 from '@/shared/i18n/locales/fi/about.json';
+// Finnish locale files
+import fiHeroes from '@/shared/i18n/locales/fi/heroes.json';
+import fiJoinUs from '@/shared/i18n/locales/fi/join-us.json';
+import fiFooter from '@/shared/i18n/locales/fi/footer.json';
+import fiAbout from '@/shared/i18n/locales/fi/about.json';
+import fiArtGame from '@/shared/i18n/locales/fi/artGame.json';
+import fiFurnitureinfo from '@/shared/i18n/locales/fi/furnitureinfo.json';
+import fiCookies from '@/shared/i18n/locales/fi/cookies.json';
+import fiPrivacy from '@/shared/i18n/locales/fi/privacy.json';
+// English locale files
+import enHeroes from '@/shared/i18n/locales/en/heroes.json';
+import enJoinUs from '@/shared/i18n/locales/en/join-us.json';
+import enFooter from '@/shared/i18n/locales/en/footer.json';
+import enAbout from '@/shared/i18n/locales/en/about.json';
+import enArtGame from '@/shared/i18n/locales/en/artGame.json';
+import enFurnitureinfo from '@/shared/i18n/locales/en/furnitureinfo.json';
+import enCookies from '@/shared/i18n/locales/en/cookies.json';
+import enPrivacy from '@/shared/i18n/locales/en/privacy.json';
+// Russian locale files
+import ruHeroes from '@/shared/i18n/locales/ru/heroes.json';
+import ruJoinUs from '@/shared/i18n/locales/ru/join-us.json';
+import ruFooter from '@/shared/i18n/locales/ru/footer.json';
+import ruAbout from '@/shared/i18n/locales/ru/about.json';
+import ruArtGame from '@/shared/i18n/locales/ru/artGame.json';
+import ruFurnitureinfo from '@/shared/i18n/locales/ru/furnitureinfo.json';
+import ruCookies from '@/shared/i18n/locales/ru/cookies.json';
+import ruPrivacy from '@/shared/i18n/locales/ru/privacy.json';
 
 /**
  * Represents a chat message with role and content
@@ -73,13 +98,62 @@ export const useChatBot = () => {
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     /**
-     * Initializes the context with combined data from locale files
-     * @returns {string} The initialized context string
+     * Initializes the context with combined data from locale files across all supported languages
+     * @returns {string} The initialized context string with data from Finnish, English and Russian locales
      */
     const initializeContext = (): string => {
-        const combinedData = [data1, data2]
+        // Finnish data
+        const finnishData = [
+            fiHeroes,
+            fiJoinUs,
+            fiFooter,
+            fiAbout,
+            fiArtGame,
+            fiFurnitureinfo,
+            fiCookies,
+            fiPrivacy,
+        ]
             .map((data) => flattenObject(data).join('\n'))
-            .join('\n\n');
+            .join('\n');
+
+        // English data
+        const englishData = [
+            enHeroes,
+            enJoinUs,
+            enFooter,
+            enAbout,
+            enArtGame,
+            enFurnitureinfo,
+            enCookies,
+            enPrivacy,
+        ]
+            .map((data) => flattenObject(data).join('\n'))
+            .join('\n');
+
+        // Russian data
+        const russianData = [
+            ruHeroes,
+            ruJoinUs,
+            ruFooter,
+            ruAbout,
+            ruArtGame,
+            ruFurnitureinfo,
+            ruCookies,
+            ruPrivacy,
+        ]
+            .map((data) => flattenObject(data).join('\n'))
+            .join('\n');
+
+        // Combine all language data with clear separators
+        const combinedData = [
+            '=== FINNISH DATA ===',
+            finnishData,
+            '\n=== ENGLISH DATA ===',
+            englishData,
+            '\n=== RUSSIAN DATA ===',
+            russianData,
+        ].join('\n\n');
+
         return combinedData;
     };
 
