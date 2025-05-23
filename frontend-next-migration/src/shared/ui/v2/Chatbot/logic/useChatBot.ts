@@ -36,18 +36,13 @@ export const useChatBot = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [context, setContext] = useState('');
+    const [visible, setVisible] = useState(true);
 
-    /**
-     * useEffect hook to load context from JSON files on component mount.
-     */
     useEffect(() => {
-        // Combine data from JSON files into a single context string
         const combinedData = [data1, data2]
             .map((data) => flattenObject(data).join('\n'))
             .join('\n\n');
         setContext(combinedData);
-
-        // Initialize the chatbot with a welcome message
         setMessages([
             {
                 role: 'assistant',
@@ -57,23 +52,14 @@ export const useChatBot = () => {
         ]);
     }, []);
 
-    /**
-     * Clears the chatbot conversation
-     */
     const clearChat = () => {
         setMessages([]);
         setUserInput('');
         setContext('');
     };
 
-    /**
-     * Handles sending a message to the chatbot.
-     *
-     * Validates user input, sends it to OpenAI's API, and updates the chat messages with the response.
-     *
-     * @async
-     * @returns {Promise<void>}
-     */
+    const closeChat = () => setVisible(false);
+
     const handleSendMessage = async () => {
         if (!userInput.trim()) return;
 
@@ -144,5 +130,8 @@ export const useChatBot = () => {
         setUserInput,
         handleSendMessage,
         clearChat,
+        closeChat,
+        visible,
+        setVisible,
     };
 };
