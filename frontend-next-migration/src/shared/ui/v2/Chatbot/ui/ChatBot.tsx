@@ -14,7 +14,6 @@ import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
 import sendArrow from '@/shared/assets/icons/sendArrow.svg';
 import { useChatBot } from '../logic/useChatBot';
 import { t } from 'i18next';
-import { PageTitle } from '@/shared/ui/PageTitle';
 
 /**
  * ChatBotComponent
@@ -48,14 +47,11 @@ export const ChatBotComponent: React.FC<ChatBotComponentProps> = ({ onClose }) =
                         src={xsLogo}
                         alt="XS Logo"
                         className={cls['logo']}
-                        width={48}
-                        height={48}
+                        width={32}
+                        height={32}
                     />
-                    <div className={cls['page-title']}>
-                        <PageTitle
-                            titleText={t('CHATBOT')}
-                            searchVisible={true}
-                        />
+                    <div className={cls['chatbot-title']}>
+                        <h1>{t('CHATBOT')}</h1>
                     </div>
                     <button
                         className={cls['close-button']}
@@ -64,8 +60,8 @@ export const ChatBotComponent: React.FC<ChatBotComponentProps> = ({ onClose }) =
                         <Image
                             src={xButton}
                             alt="Close"
-                            width={48}
-                            height={48}
+                            width={24}
+                            height={24}
                         />
                     </button>
                 </div>
