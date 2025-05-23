@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import ChatBotComponent from './ChatBot';
+import ChatBotButton from './ChatBot';
 import ChatbotIcon from '@/shared/assets/icons/Chatbot.svg';
 import Image from 'next/image';
 
-export const OpenChatbot: React.FC = () => {
+export const ChatBotToggleButton: React.FC = () => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -34,9 +34,9 @@ export const OpenChatbot: React.FC = () => {
                     />
                 </button>
             )}
-            {open && <ChatBotComponent onClose={() => setOpen(false)} />}
+            {open && <ChatBotButton onClose={() => setOpen(false)} />}
         </>
     );
 };
 
-export default OpenChatbot;
+export default ChatBotToggleButton;
