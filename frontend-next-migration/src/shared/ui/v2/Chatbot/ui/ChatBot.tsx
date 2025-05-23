@@ -46,10 +46,6 @@ export interface ChatBotButtonProps {
  * <ChatBotButton />
  *
  * @example
- * // With close callback
- * <ChatBotButton onClose={() => console.log('Chatbot closed')} />
- *
- * @example
  * // Controlled visibility from parent
  * const [showChatbot, setShowChatbot] = useState(true);
  * return (
