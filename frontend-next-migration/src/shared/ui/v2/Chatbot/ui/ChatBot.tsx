@@ -88,6 +88,11 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                         type="text"
                         value={userInput}
                         onChange={(event) => setUserInput(event.target.value)}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter' && !loading) {
+                                handleSendMessage();
+                            }
+                        }}
                         placeholder={t('write_your_message')}
                         className={cls['message-input']}
                     />
