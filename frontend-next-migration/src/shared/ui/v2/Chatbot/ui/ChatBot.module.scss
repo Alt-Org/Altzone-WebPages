@@ -1,3 +1,5 @@
+@import 'src/app/_styles/variables/mixins';
+
 .chatbot-container {
     position: fixed;
     bottom: 24px;
@@ -100,6 +102,8 @@
     flex-direction: column;
     border: none;
     outline: none;
+
+    @include orange-scrollbar;
 
     .message {
         margin: 10px 0;
