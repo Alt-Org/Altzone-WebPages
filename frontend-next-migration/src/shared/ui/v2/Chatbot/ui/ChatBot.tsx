@@ -29,7 +29,8 @@ export interface ChatBotButtonProps {
 }
 
 export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
-    const { messages, userInput, loading, error, setUserInput, handleSendMessage } = useChatBot();
+    const { messages, userInput, loading, error, setUserInput, handleSendMessage, messagesEndRef } =
+        useChatBot();
     const [visible, setVisible] = React.useState(true);
     const { t } = useClientTranslation('chatbot');
 
@@ -83,58 +84,59 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                     </div>
                 ))}
                 {error && <p className={cls['error-message']}>{error}</p>}
-                <div className={cls['input-container']}>
-                    <input
-                        type="text"
-                        value={userInput}
-                        onChange={(event) => setUserInput(event.target.value)}
-                        onKeyDown={(event) => {
-                            if (event.key === 'Enter' && !loading) {
-                                handleSendMessage();
-                            }
-                        }}
-                        placeholder={t('write_your_message')}
-                        className={cls['message-input']}
-                    />
-                    <button
-                        onClick={handleSendMessage}
-                        disabled={loading}
-                        className={cls['send-button']}
-                        aria-label="Send"
-                    >
-                        {loading ? (
-                            t('sending')
-                        ) : (
-                            <span
+                <div ref={messagesEndRef} />
+            </div>
+            <div className={cls['input-container']}>
+                <input
+                    type="text"
+                    value={userInput}
+                    onChange={(event) => setUserInput(event.target.value)}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter' && !loading) {
+                            handleSendMessage();
+                        }
+                    }}
+                    placeholder={t('write_your_message')}
+                    className={cls['message-input']}
+                />
+                <button
+                    onClick={handleSendMessage}
+                    disabled={loading}
+                    className={cls['send-button']}
+                    aria-label="Send"
+                >
+                    {loading ? (
+                        t('sending')
+                    ) : (
+                        <span
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                background: 'none',
+                                boxShadow: 'none',
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                        >
+                            <Image
+                                src={typeof sendArrow === 'string' ? sendArrow : sendArrow.src}
+                                alt="Lähetä"
+                                width={24}
+                                height={24}
                                 style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
                                     background: 'none',
                                     boxShadow: 'none',
                                     border: 'none',
-                                    padding: 0,
-                                    margin: 0,
+                                    filter: 'none',
+                                    display: 'block',
                                 }}
-                            >
-                                <Image
-                                    src={typeof sendArrow === 'string' ? sendArrow : sendArrow.src}
-                                    alt="Lähetä"
-                                    width={24}
-                                    height={24}
-                                    style={{
-                                        background: 'none',
-                                        boxShadow: 'none',
-                                        border: 'none',
-                                        filter: 'none',
-                                        display: 'block',
-                                    }}
-                                    draggable={false}
-                                />
-                            </span>
-                        )}
-                    </button>
-                </div>
+                                draggable={false}
+                            />
+                        </span>
+                    )}
+                </button>
             </div>
         </div>
     );
