@@ -38,7 +38,7 @@ function flattenObject(obj: any, prefix = ''): string[] {
 
 /**
  * Custom hook for chatbot functionality that manages chat state, messages, and API interactions.
- * Provides complete chatbot functionality including message handling, API calls to OpenAI,
+ * Provides chat functionality including message handling, API calls to OpenAI,
  * auto-scrolling, error handling, and internationalization support.
  *
  * @returns {Object} Chatbot state and control functions
@@ -49,9 +49,6 @@ function flattenObject(obj: any, prefix = ''): string[] {
  * @returns {Function} returns.setUserInput - Function to update user input
  * @returns {Function} returns.handleSendMessage - Function to send a message to the API
  * @returns {Function} returns.clearChat - Function to clear all messages and reset state
- * @returns {Function} returns.closeChat - Function to hide the chatbot
- * @returns {boolean} returns.visible - Whether the chatbot is visible
- * @returns {Function} returns.setVisible - Function to control chatbot visibility
  * @returns {React.RefObject<HTMLDivElement>} returns.messagesEndRef - Ref for auto-scrolling to latest message
  *
  * @example
@@ -63,9 +60,6 @@ function flattenObject(obj: any, prefix = ''): string[] {
  *   setUserInput,
  *   handleSendMessage,
  *   clearChat,
- *   closeChat,
- *   visible,
- *   setVisible,
  *   messagesEndRef
  * } = useChatBot();
  */
@@ -75,7 +69,6 @@ export const useChatBot = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [context, setContext] = useState('');
-    const [visible, setVisible] = useState(true);
     const { t } = useClientTranslation('chatbot');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -107,8 +100,6 @@ export const useChatBot = () => {
         setUserInput('');
         setContext('');
     };
-
-    const closeChat = () => setVisible(false);
 
     /**
      * Sends user message to OpenAI API and gets response
@@ -185,9 +176,6 @@ export const useChatBot = () => {
         setUserInput,
         handleSendMessage,
         clearChat,
-        closeChat,
-        visible,
-        setVisible,
         messagesEndRef,
     };
 };

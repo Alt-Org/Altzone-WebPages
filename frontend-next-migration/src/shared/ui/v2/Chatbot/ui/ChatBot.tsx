@@ -34,42 +34,46 @@ export interface ChatBotButtonProps {
  * Renders a floating chatbot window with header, scrollable message area, and input field.
  * Integrates with OpenAI's API to provide intelligent responses based on loaded context data.
  * Supports multiple languages through internationalization and includes responsive design
- * for both desktop and mobile devices.
+ * for both desktop and mobile devices. Visibility is controlled by parent component.
  *
  * @component
  * @param {ChatBotButtonProps} props - The component props
- * @param {() => void} [props.onClose] - Optional callback when chatbot is closed
- * @returns {JSX.Element | null} The rendered chatbot component or null if not visible
+ * @param {() => void} [props.onClose] - Optional callback when chatbot close button is clicked
+ * @returns {JSX.Element} The rendered chatbot component
  *
  * @example
- * // Basic usage
+ * // Basic usage - always visible
  * <ChatBotButton />
  *
  * @example
- * // Controlled visibility from parent
+ * // With close callback
+ * <ChatBotButton onClose={() => console.log('Chatbot closed')} />
+ *
+ * @example
+ * // Controlled by parent component
  * const [showChatbot, setShowChatbot] = useState(true);
  * return (
- *   <ChatBotButton onClose={() => setShowChatbot(false)} />
+ *   <>
+ *     {showChatbot && (
+ *       <ChatBotButton onClose={() => setShowChatbot(false)} />
+ *     )}
+ *   </>
  * );
  */
 export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
     const { messages, userInput, loading, error, setUserInput, handleSendMessage, messagesEndRef } =
         useChatBot();
-    const [visible, setVisible] = React.useState(true);
     const { t } = useClientTranslation('chatbot');
 
     /**
      * Handles closing the chatbot interface
-     * Sets visibility to false and calls the optional onClose callback if provided
+     * Calls the onClose callback if provided
      * @function closeChat
      * @returns {void}
      */
     const closeChat = () => {
-        setVisible(false);
         if (onClose) onClose();
     };
-
-    if (!visible) return null;
 
     return (
         <div className={cls['chatbot-container']}>
