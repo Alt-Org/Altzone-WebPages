@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ChatBotButton from './ChatBot';
-import ChatbotIcon from '@/shared/assets/icons/Chatbot.svg';
+import ChatsIcon from '@/shared/assets/icons/Chats.svg';
 import Image from 'next/image';
+import cls from './ChatbotButton.module.scss';
 
 export const ChatBotToggleButton: React.FC = () => {
     const [open, setOpen] = useState(false);
@@ -11,26 +12,16 @@ export const ChatBotToggleButton: React.FC = () => {
             {!open && (
                 <button
                     onClick={() => setOpen(true)}
-                    style={{
-                        position: 'fixed',
-                        bottom: 24,
-                        right: 24,
-                        zIndex: 1000,
-                        background: 'none',
-                        border: 'none',
-                        padding: 0,
-                        cursor: 'pointer',
-                        borderRadius: '50%',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                    }}
-                    aria-label="Avaa Chatbot"
+                    className={cls['chatbot-toggle-button']}
+                    aria-label="Open Chatbot"
                 >
                     <Image
-                        src={ChatbotIcon}
-                        alt="Avaa Chatbot"
-                        width={56}
-                        height={56}
+                        src={ChatsIcon}
+                        alt="Open Chatbot"
+                        width={32}
+                        height={32}
                         draggable={false}
+                        className={cls.icon}
                     />
                 </button>
             )}
