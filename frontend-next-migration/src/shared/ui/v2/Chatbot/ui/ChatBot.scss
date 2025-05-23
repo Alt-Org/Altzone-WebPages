@@ -8,8 +8,13 @@
     }
 
     .chatbot-messages {
-        border: 1px solid #ccc;
-        border-radius: 8px;
+        border: var(--border-thick-black);
+        border-radius: var(--border-radius-figma);
+        background-color: var(--base-card-background);
+        box-shadow: var(--shadow-figma);
+        color: var(--content-primary);
+        display: flex;
+        flex-direction: column;
         padding: 10px;
         height: 400px;
         overflow-y: auto;
