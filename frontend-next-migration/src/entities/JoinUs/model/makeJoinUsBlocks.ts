@@ -74,16 +74,16 @@ export const makeDiscordBlock = makeBlocksWithI18n(
 export const makeRedditBlock = makeBlocksWithI18n(
     'connection',
     [
-        { text: 'email', url: '', isExternal: true },
-        { text: 'phone', url: '', isExternal: false },
+        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
+        { text: 'phone', url: 'tel:+358442407396', isExternal: true },
     ],
     ConnectionImage.src.toString(),
 );
 export const makeTeachersBlock = makeBlocksWithI18n(
     'teachers',
     [
-        { text: 'email', url: '', isExternal: true },
-        { text: 'phone', url: '', isExternal: true },
+        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
+        { text: 'phone', url: 'tel:+358442407396', isExternal: true },
         { text: 'teacherPg', url: AppExternalLinks.dlpackage, isExternal: true },
     ],
     teachersImage.src.toString(),
