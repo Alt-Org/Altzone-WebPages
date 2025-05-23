@@ -8,10 +8,13 @@
 
 import React from 'react';
 import Image from 'next/image';
+import cls from './ChatBot.module.scss';
 import xButton from '@/shared/assets/icons/xButton.svg';
 import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
+import sendArrow from '@/shared/assets/icons/sendArrow.svg';
 import { useChatBot } from '../logic/useChatBot';
-import './ChatBot.scss';
+import { t } from 'i18next';
+import { PageTitle } from '@/shared/ui/PageTitle';
 
 /**
  * ChatBotComponent
@@ -21,57 +24,113 @@ import './ChatBot.scss';
  *
  * @returns {JSX.Element} - The rendered chatbot component.
  */
-export const ChatBotComponent: React.FC = () => {
-    const { messages, userInput, loading, error, setUserInput, handleSendMessage, clearChat } =
-        useChatBot();
+
+export interface ChatBotComponentProps {
+    onClose?: () => void;
+}
+
+export const ChatBotComponent: React.FC<ChatBotComponentProps> = ({ onClose }) => {
+    const { messages, userInput, loading, error, setUserInput, handleSendMessage } = useChatBot();
+    const [visible, setVisible] = React.useState(true);
+
+    const closeChat = () => {
+        setVisible(false);
+        if (onClose) onClose();
+    };
+
+    if (!visible) return null;
 
     return (
-        <div className="chatbot-container">
-            <div className="chatbot-header">
-                <Image
-                    src={xsLogo}
-                    alt="XS Logo"
-                    className="logo"
-                    width={48}
-                    height={48}
-                />
-                <h1>Chatbot</h1>
-                <button
-                    className="close-button"
-                    onClick={clearChat}
-                >
+        <div className={cls['chatbot-container']}>
+            <div className={cls['chatbot-header']}>
+                <div className={cls['header-content']}>
                     <Image
-                        src={xButton}
-                        alt="Close"
+                        src={xsLogo}
+                        alt="XS Logo"
+                        className={cls['logo']}
                         width={48}
                         height={48}
                     />
-                </button>
+                    <div className={cls['page-title']}>
+                        <PageTitle
+                            titleText={t('CHATBOT')}
+                            searchVisible={true}
+                        />
+                    </div>
+                    <button
+                        className={cls['close-button']}
+                        onClick={closeChat}
+                    >
+                        <Image
+                            src={xButton}
+                            alt="Close"
+                            width={48}
+                            height={48}
+                        />
+                    </button>
+                </div>
             </div>
-            <div className="chatbot-messages">
+            <div className={cls['chatbot-messages']}>
                 {messages.map((msg, index) => (
                     <div
                         key={index}
-                        className={`message ${msg.role === 'assistant' ? 'assistant-message' : 'user-message'}`}
+                        className={
+                            cls['message'] +
+                            ' ' +
+                            (msg.role === 'assistant'
+                                ? cls['assistant-message']
+                                : cls['user-message'])
+                        }
                     >
                         {msg.content}
                     </div>
                 ))}
-                {error && <p className="error-message">{error}</p>}
-                <div className="input-container">
+                {error && <p className={cls['error-message']}>{error}</p>}
+                <div className={cls['input-container']}>
                     <input
                         type="text"
                         value={userInput}
                         onChange={(event) => setUserInput(event.target.value)}
                         placeholder="Kirjoita viestisi..."
-                        className="message-input"
+                        className={cls['message-input']}
                     />
                     <button
                         onClick={handleSendMessage}
                         disabled={loading}
-                        className="send-button"
+                        className={cls['send-button']}
+                        aria-label="Lähetä"
                     >
-                        {loading ? 'Lähetetään...' : 'Lähetä'}
+                        {loading ? (
+                            'Lähetetään...'
+                        ) : (
+                            <span
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    background: 'none',
+                                    boxShadow: 'none',
+                                    border: 'none',
+                                    padding: 0,
+                                    margin: 0,
+                                }}
+                            >
+                                <Image
+                                    src={typeof sendArrow === 'string' ? sendArrow : sendArrow.src}
+                                    alt="Lähetä"
+                                    width={24}
+                                    height={24}
+                                    style={{
+                                        background: 'none',
+                                        boxShadow: 'none',
+                                        border: 'none',
+                                        filter: 'none',
+                                        display: 'block',
+                                    }}
+                                    draggable={false}
+                                />
+                            </span>
+                        )}
                     </button>
                 </div>
             </div>
