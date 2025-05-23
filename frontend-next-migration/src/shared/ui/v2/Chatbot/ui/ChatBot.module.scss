@@ -6,6 +6,7 @@
     border: var(--border-thick-black);
     border-radius: var(--border-radius-custom);
     background-color: var(--base-card-background);
+    filter: drop-shadow(var(--drop-shadows));
     box-shadow: 0 4px 8px var(--drop-shadows);
     color: var(--content-primary);
     display: flex;
@@ -18,8 +19,7 @@
 .chatbot-header {
     display: flex;
     color: black;
-    font-family: var(--font-family);
-    font-family: var();
+    font-family: var(--heading-font);
     align-items: center;
     justify-content: space-between;
     padding: 10px 15px;
@@ -30,13 +30,6 @@
 
     .logo {
         cursor: pointer;
-    }
-
-    h2 {
-        margin: 0;
-        font-size: 18px;
-        flex-grow: 1;
-        text-align: center;
     }
 
     .close-button {
@@ -56,23 +49,25 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
+    font-family: var(--body-font);
 
     .message {
         margin: 10px 0;
         padding: 8px 12px;
         border-radius: 12px;
         max-width: 80%;
-
         &.user-message {
             align-self: flex-end;
-            background-color: var(--message-user-bg, #e3f2fd);
+            background-color: var(--content-primary);
+
             color: var(--message-user-text, #0d47a1);
             text-align: right;
         }
 
         &.assistant-message {
             align-self: flex-start;
-            background-color: var(--message-assistant-bg, #f5f5f5);
+            background-color: var(--content-primary);
+
             color: var(--message-assistant-text, #333);
             text-align: left;
         }
@@ -89,20 +84,19 @@
         gap: 10px;
         margin-top: auto;
         padding: 10px 0;
-
         .message-input {
             flex: 1;
             padding: 10px;
             border-radius: 20px;
             border: 1px solid #ccc;
             font-size: 14px;
+            font-family: var(--body-font);
 
             &:focus {
                 outline: none;
                 border-color: var(--input-focus, #007bff);
             }
         }
-
         .send-button {
             padding: 8px 15px;
             background-color: #007bff;
@@ -111,6 +105,7 @@
             border-radius: 20px;
             cursor: pointer;
             font-weight: 500;
+            font-family: var(--body-font);
 
             &:disabled {
                 opacity: 0.7;
