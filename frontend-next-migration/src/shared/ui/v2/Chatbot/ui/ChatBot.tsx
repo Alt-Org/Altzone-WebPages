@@ -47,8 +47,8 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                         src={xsLogo}
                         alt="XS Logo"
                         className={cls['logo']}
-                        width={32}
-                        height={32}
+                        width={48}
+                        height={48}
                     />
                     <div className={cls['chatbot-title']}>
                         <h1>{t('CHATBOT')}</h1>
@@ -60,8 +60,8 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                         <Image
                             src={xButton}
                             alt="Close"
-                            width={24}
-                            height={24}
+                            width={36}
+                            height={36}
                         />
                     </button>
                 </div>

@@ -18,18 +18,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 0.6rem;
 
     .header-content {
         display: flex;
         width: 100%;
         align-items: center;
         justify-content: space-between;
-        gap: 0.5rem;
-        border: var(--border-desktop) solid var(--black);
-        border-radius: var(--border-radius-figma);
+        gap: 0.8rem;
+        border: var(--border-mobile) solid var(--black);
+        border-radius: var(--border-radius-xl);
         background-color: var(--primary-color);
-        padding: 0.5rem 1rem;
+        padding: 0.8rem 1.4rem;
     }
 
     .logo {
@@ -46,7 +46,6 @@
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        border-radius: 4px;
 
         &:hover {
             background-color: rgba(0, 0, 0, 0.1);
@@ -60,7 +59,7 @@
         h1 {
             color: var(--black, #000);
             font-family: var(--font-family-title, Arial, sans-serif);
-            font-size: 1.1rem;
+            font-size: 1.8rem;
             font-weight: 600;
             margin: 0;
             padding: 0;
@@ -80,19 +79,18 @@
     .message {
         margin: 10px 0;
         padding: 8px 12px;
-        border-radius: 12px;
+        border-radius: var(--border-radius-xl);
         max-width: 80%;
+        background-color: var(--primary-color);
+        color: var(--black);
+        border: var(--border-mobile) solid var(--black);
     }
     .user-message {
         align-self: flex-end;
-        background-color: var(--message-user-bg, #e3f2fd);
-        color: var(--message-user-text, #0d47a1);
         text-align: right;
     }
     .assistant-message {
         align-self: flex-start;
-        background-color: var(--message-assistant-bg, #f5f5f5);
-        color: var(--message-assistant-text, #333);
         text-align: left;
     }
 
