@@ -7,8 +7,11 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import data1 from '@/shared/i18n/locales/fi/heroes.json';
 import data2 from '@/shared/i18n/locales/fi/about.json';
+import xButton from '@/shared/assets/icons/xButton.svg';
+import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
 import './ChatBot.scss';
 
 /**
@@ -152,14 +155,37 @@ export const ChatBotComponent: React.FC = () => {
 
     return (
         <div className="chatbot-container">
+            <div className="chatbot-header">
+                <Image
+                    src={xsLogo}
+                    alt="XS Logo"
+                    className="logo"
+                    width={24}
+                    height={24}
+                />
+                <h2>Chatbot</h2>
+                <button
+                    className="close-button"
+                    onClick={() => {
+                        setMessages([]);
+                        setUserInput('');
+                        setContext('');
+                    }}
+                >
+                    <Image
+                        src={xButton}
+                        alt="Close"
+                        width={20}
+                        height={20}
+                    />
+                </button>
+            </div>
             <div className="chatbot-messages">
-                <h1>ChatBot</h1>
                 {messages.map((msg, index) => (
                     <div
                         key={index}
                         className={`message ${msg.role === 'assistant' ? 'assistant-message' : 'user-message'}`}
                     >
-                        <strong>{msg.role === 'assistant' ? 'Albotti' : 'Sinä'}:</strong>{' '}
                         {msg.content}
                     </div>
                 ))}
