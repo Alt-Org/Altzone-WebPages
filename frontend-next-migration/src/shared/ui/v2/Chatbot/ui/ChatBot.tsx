@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /**
- * ChatBotComponent
+ * ChatBotButton
  *
  * A React component that acts as a chatbot. It uses OpenAI's API to respond to user questions
  * based on context loaded from JSON files.
@@ -16,7 +16,7 @@ import { useChatBot } from '../logic/useChatBot';
 import { t } from 'i18next';
 
 /**
- * ChatBotComponent
+ * ChatBotButton
  *
  * A functional React component that provides a chatbot interface. The chatbot uses OpenAI's API
  * to generate responses based on user input and context from JSON files.
@@ -24,11 +24,11 @@ import { t } from 'i18next';
  * @returns {JSX.Element} - The rendered chatbot component.
  */
 
-export interface ChatBotComponentProps {
+export interface ChatBotButtonProps {
     onClose?: () => void;
 }
 
-export const ChatBotComponent: React.FC<ChatBotComponentProps> = ({ onClose }) => {
+export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
     const { messages, userInput, loading, error, setUserInput, handleSendMessage } = useChatBot();
     const [visible, setVisible] = React.useState(true);
 
@@ -134,4 +134,4 @@ export const ChatBotComponent: React.FC<ChatBotComponentProps> = ({ onClose }) =
     );
 };
 
-export default ChatBotComponent;
+export default ChatBotButton;
