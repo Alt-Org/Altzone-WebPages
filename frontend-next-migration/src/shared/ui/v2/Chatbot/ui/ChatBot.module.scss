@@ -16,9 +16,8 @@
 .chatbot-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 15px;
-    border-bottom: 1px solid var(--border-color, #ddd);
+    justify-content: center;
+    padding: 0.5rem;
 
     .header-content {
         display: flex;
@@ -26,6 +25,10 @@
         align-items: center;
         justify-content: space-between;
         gap: 0.5rem;
+        border: var(--border-thick-black);
+        border-radius: var(--border-radius-figma);
+        background-color: var(--primary-color);
+        padding: 0.5rem 1rem;
     }
 
     .logo {
@@ -33,30 +36,34 @@
         flex-shrink: 0;
     }
 
-    .page-title {
-        flex: 1 1 auto;
-        margin: 0 0.5rem;
-        font-size: 1.1rem;
-        text-align: center;
-        font-weight: 600;
-        line-height: 1.2;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
     .close-button {
         background: none;
         border: none;
         cursor: pointer;
-        padding: 0;
+        padding: 0.25rem;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        width: 32px;
-        height: 32px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .chatbot-title {
+        flex: 1;
+        text-align: center;
+
+        h1 {
+            color: var(--black, #000);
+            font-family: var(--font-family-title, Arial, sans-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            padding: 0;
+        }
     }
 }
 
