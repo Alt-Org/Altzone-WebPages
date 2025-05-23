@@ -9,6 +9,7 @@
 import React, { useState, useEffect } from 'react';
 import data1 from '@/shared/i18n/locales/fi/heroes.json';
 import data2 from '@/shared/i18n/locales/fi/about.json';
+import './ChatBot.scss';
 
 /**
  * Flattens a nested object into an array of strings with key-value pairs.
@@ -150,56 +151,32 @@ export const ChatBotComponent: React.FC = () => {
     };
 
     return (
-        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
+        <div className="chatbot-container">
             <h1>ChatBot</h1>
-            <div
-                style={{
-                    border: '1px solid #ccc',
-                    borderRadius: '8px',
-                    padding: '10px',
-                    height: '400px',
-                    overflowY: 'auto',
-                    marginBottom: '10px',
-                }}
-            >
+            <div className="chatbot-messages">
                 {messages.map((msg, index) => (
                     <div
                         key={index}
-                        style={{
-                            textAlign: msg.role === 'assistant' ? 'left' : 'right',
-                            margin: '10px 0',
-                        }}
+                        className={`message ${msg.role === 'assistant' ? 'assistant-message' : 'user-message'}`}
                     >
                         <strong>{msg.role === 'assistant' ? 'Albotti' : 'Sinä'}:</strong>{' '}
                         {msg.content}
                     </div>
                 ))}
             </div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <div style={{ display: 'flex', gap: '10px' }}>
+            {error && <p className="error-message">{error}</p>}
+            <div className="input-container">
                 <input
                     type="text"
                     value={userInput}
                     onChange={(event) => setUserInput(event.target.value)}
                     placeholder="Kirjoita viestisi..."
-                    style={{
-                        flex: 1,
-                        padding: '10px',
-                        borderRadius: '4px',
-                        border: '1px solid #ccc',
-                    }}
+                    className="message-input"
                 />
                 <button
                     onClick={handleSendMessage}
                     disabled={loading}
-                    style={{
-                        padding: '10px 20px',
-                        backgroundColor: '#007bff',
-                        color: '#fff',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
-                    }}
+                    className="send-button"
                 >
                     {loading ? 'Lähetetään...' : 'Lähetä'}
                 </button>
