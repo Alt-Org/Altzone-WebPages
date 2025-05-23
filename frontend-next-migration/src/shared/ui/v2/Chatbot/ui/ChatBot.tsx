@@ -152,8 +152,8 @@ export const ChatBotComponent: React.FC = () => {
 
     return (
         <div className="chatbot-container">
-            <h1>ChatBot</h1>
             <div className="chatbot-messages">
+                <h1>ChatBot</h1>
                 {messages.map((msg, index) => (
                     <div
                         key={index}
@@ -163,23 +163,23 @@ export const ChatBotComponent: React.FC = () => {
                         {msg.content}
                     </div>
                 ))}
-            </div>
-            {error && <p className="error-message">{error}</p>}
-            <div className="input-container">
-                <input
-                    type="text"
-                    value={userInput}
-                    onChange={(event) => setUserInput(event.target.value)}
-                    placeholder="Kirjoita viestisi..."
-                    className="message-input"
-                />
-                <button
-                    onClick={handleSendMessage}
-                    disabled={loading}
-                    className="send-button"
-                >
-                    {loading ? 'Lähetetään...' : 'Lähetä'}
-                </button>
+                {error && <p className="error-message">{error}</p>}
+                <div className="input-container">
+                    <input
+                        type="text"
+                        value={userInput}
+                        onChange={(event) => setUserInput(event.target.value)}
+                        placeholder="Kirjoita viestisi..."
+                        className="message-input"
+                    />
+                    <button
+                        onClick={handleSendMessage}
+                        disabled={loading}
+                        className="send-button"
+                    >
+                        {loading ? 'Lähetetään...' : 'Lähetä'}
+                    </button>
+                </div>
             </div>
         </div>
     );
