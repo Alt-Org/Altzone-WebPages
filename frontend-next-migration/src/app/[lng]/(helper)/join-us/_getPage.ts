@@ -16,7 +16,7 @@ export async function _getPage(lng: string) {
         buildPage: () => ({
             title: t('join-us'),
             discordBlock: makeDiscordBlock(t),
-            redditBlock: makeRedditBlock(t),
+            connectionBlock: makeRedditBlock(t),
             teachersBlock: makeTeachersBlock(t),
             feedbackBlock: makeFeedbackBlock(t),
             duunitoriBlock: makeDuunitoriBlock(t),
