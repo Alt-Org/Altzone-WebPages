@@ -1,0 +1,37 @@
+.chatbot-toggle-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-custom);
+    padding: 0.75rem;
+    cursor: pointer;
+    box-shadow: var(--s);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    &:hover {
+        background-color: var(--primary-color-variant-hover);
+        transform: scale(var(--animation-icon-hover-scale));
+        box-shadow: var(--m);
+    }
+
+    &:active {
+        transform: scale(var(--animation-icon-active-scale));
+        box-shadow: var(--xs);
+    }
+
+    &:focus {
+        outline: 2px solid var(--primary-color-variant-hover);
+        outline-offset: 2px;
+    }
+
+    .icon {
+        display: block;
+        width: 32px;
+        height: 32px;
+    }
+}

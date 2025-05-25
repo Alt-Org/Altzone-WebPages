@@ -1,0 +1,11 @@
+{
+    "chatbotTitle": "Chatbot",
+    "write_your_message": "Kirjoita viestisi...",
+    "sending": "Lähetetään...",
+    "welcomeMessage": "Hei, olen botti Borelius! Vastailen mielelläni kysymyksiisi liittyen Alt Zone, PRG, peli ja nettisivut.",
+    "systemPrompt": "Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin vain tämän tiedon pohjalta:",
+    "errorMessageTooLong": "Viestisi on liian pitkä! Syötä enintään 40 merkkiä.",
+    "errorApiKeyMissing": "OpenAI API key puuttuu. Aseta se .env.local tiedostoon.",
+    "errorDefaultResponse": "En osaa vastata tähän.",
+    "errorUnexpected": "Odottamaton virhe:"
+}

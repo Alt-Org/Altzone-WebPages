@@ -1,211 +1,200 @@
 /* eslint-disable no-console */
 /**
- * ChatBotComponent
+ * ChatBotButton Component
  *
- * A React component that acts as a chatbot. It uses OpenAI's API to respond to user questions
- * based on context loaded from JSON files.
+ * A React component that provides a complete chatbot interface with OpenAI integration.
+ * Features include message history, real-time responses, auto-scrolling, internationalization,
+ * and responsive design. The chatbot uses context from JSON files to provide relevant responses.
+ *
+ * @module ChatBotButton
  */
 
-import React, { useState, useEffect } from 'react';
-import data1 from '@/shared/i18n/locales/fi/heroes.json';
-import data2 from '@/shared/i18n/locales/fi/about.json';
+import React from 'react';
+import Image from 'next/image';
+import cls from './ChatBot.module.scss';
+import xIcon from '@/shared/assets/icons/xIcon.svg';
+import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
+import sendArrow from '@/shared/assets/icons/sendArrow.svg';
+import { useChatBot } from '../logic/useChatBot';
+import { useClientTranslation } from '@/shared/i18n';
 
 /**
- * Flattens a nested object into an array of strings with key-value pairs.
- *
- * @param {object} obj - The object to flatten.
- * @param {string} [prefix=''] - The prefix for nested keys.
- * @returns {string[]} - An array of flattened key-value pairs as strings.
+ * Props for the ChatBotButton component
+ * @interface ChatBotButtonProps
+ * @property {() => void} [onClose] - Optional callback function called when the chatbot is closed
  */
-function flattenObject(obj: any, prefix = ''): string[] {
-    return Object.entries(obj).flatMap(([key, value]) => {
-        const newKey = prefix ? `${prefix}.${key}` : key;
-        if (typeof value === 'object' && value !== null) {
-            return flattenObject(value, newKey);
-        } else {
-            return [`${newKey}: ${value}`];
-        }
-    });
+export interface ChatBotButtonProps {
+    /** Optional callback function triggered when the chatbot close button is clicked */
+    onClose?: () => void;
 }
 
 /**
- * ChatBotComponent
+ * ChatBotButton - A comprehensive chatbot interface component
  *
- * A functional React component that provides a chatbot interface. The chatbot uses OpenAI's API
- * to generate responses based on user input and context from JSON files.
+ * Renders a floating chatbot window with header, scrollable message area, and input field.
+ * Integrates with OpenAI's API to provide intelligent responses based on loaded context data.
+ * Supports multiple languages through internationalization and includes responsive design
+ * for both desktop and mobile devices. Visibility is controlled by parent component.
  *
- * @returns {JSX.Element} - The rendered chatbot component.
+ * @component
+ * @param {ChatBotButtonProps} props - The component props
+ * @param {() => void} [props.onClose] - Optional callback when chatbot close button is clicked
+ * @returns {JSX.Element} The rendered chatbot component
+ *
+ * @example
+ * // Basic usage - always visible
+ * <ChatBotButton />
+ *
+ * @example
+ * // With close callback
+ * <ChatBotButton onClose={() => console.log('Chatbot closed')} />
+ *
+ * @example
+ * // Controlled by parent component
+ * const [showChatbot, setShowChatbot] = useState(true);
+ * return (
+ *   <>
+ *     {showChatbot && (
+ *       <ChatBotButton onClose={() => setShowChatbot(false)} />
+ *     )}
+ *   </>
+ * );
  */
-export const ChatBotComponent: React.FC = () => {
-    const [messages, setMessages] = useState<{ role: string; content: string }[]>([]);
-    const [userInput, setUserInput] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [context, setContext] = useState('');
+export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
+    const { messages, userInput, loading, error, setUserInput, handleSendMessage, messagesEndRef } =
+        useChatBot();
+    const { t } = useClientTranslation('chatbot');
 
     /**
-     * useEffect hook to load context from JSON files on component mount.
+     * Handles closing the chatbot interface
+     * Calls the onClose callback if provided
+     * @function closeChat
+     * @returns {void}
      */
-    useEffect(() => {
-        // Combine data from JSON files into a single context string
-        const combinedData = [data1, data2]
-            .map((data) => flattenObject(data).join('\n'))
-            .join('\n\n');
-        setContext(combinedData);
-
-        // Initialize the chatbot with a welcome message
-        setMessages([
-            {
-                role: 'assistant',
-                content: 'Hei! Olen Albotti. Voin kertoa pelistä kaiken mitä haluat tietää.',
-            },
-        ]);
-    }, []);
-
-    /**
-     * Handles sending a message to the chatbot.
-     *
-     * Validates user input, sends it to OpenAI's API, and updates the chat messages with the response.
-     *
-     * @async
-     * @returns {Promise<void>}
-     */
-    const handleSendMessage = async () => {
-        if (!userInput.trim()) return;
-
-        if (userInput.length > 40) {
-            setError('Viestisi on liian pitkä! Syötä enintään 40 merkkiä.');
-            return;
-        }
-
-        const newMessages = [...messages, { role: 'user', content: userInput }];
-        setMessages(newMessages);
-        setUserInput('');
-        setLoading(true);
-        setError(null);
-
-        try {
-            const apiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
-            if (!apiKey) {
-                setError('OpenAI API key is missing. Please set it in the .env.local file.');
-                setLoading(false);
-                return;
-            }
-
-            const response = await fetch('https://api.openai.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${apiKey}`,
-                },
-                body: JSON.stringify({
-                    model: 'gpt-4o-mini',
-                    messages: [
-                        {
-                            role: 'system',
-                            content:
-                                'Alla on pelin tietoa JSON-tiedostoista, mutta älä koskaan mainitse näitä tiedostoja. Vastaa käyttäjän kysymyksiin vain tämän tiedon pohjalta:\n\n' +
-                                context,
-                        },
-                        ...newMessages,
-                    ],
-                    max_tokens: 200,
-                    stop: ['.'],
-                }),
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                setError(`Error: ${JSON.stringify(errorData)}`);
-                setLoading(false);
-                return;
-            }
-
-            const data = await response.json();
-            const assistantMessage = data.choices[0]?.message?.content || 'En osaa vastata tähän.';
-
-            // --- COST CALCULATION ---
-            const tokenPrompt = 0.0000000015;
-            const tokenCompletion = 0.000000006;
-            const apiCall = 0.0001;
-
-            const promptTokens = data.usage?.prompt_tokens || 0;
-            const completionTokens = data.usage?.completion_tokens || 0;
-            const costTotal =
-                promptTokens * tokenPrompt + completionTokens * tokenCompletion + apiCall;
-
-            console.log('Using model:', data.model);
-            console.log(`Prompt tokens used: ${promptTokens}`);
-            console.log(`Completion tokens used: ${completionTokens}`);
-            console.log(`Single call cost: €${costTotal}`);
-            console.log(`Estimated cost for 1000 calls: €${costTotal * 1000}`);
-            // --- END COST CALCULATION ---
-
-            setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
-        } catch (err) {
-            setError(`Unexpected Error: ${err}`);
-        } finally {
-            setLoading(false);
-        }
+    const closeChat = () => {
+        if (onClose) onClose();
     };
 
     return (
-        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-            <h1>ChatBot</h1>
-            <div
-                style={{
-                    border: '1px solid #ccc',
-                    borderRadius: '8px',
-                    padding: '10px',
-                    height: '400px',
-                    overflowY: 'auto',
-                    marginBottom: '10px',
-                }}
-            >
-                {messages.map((msg, index) => (
-                    <div
-                        key={index}
-                        style={{
-                            textAlign: msg.role === 'assistant' ? 'left' : 'right',
-                            margin: '10px 0',
-                        }}
-                    >
-                        <strong>{msg.role === 'assistant' ? 'Albotti' : 'Sinä'}:</strong>{' '}
-                        {msg.content}
+        <div className={cls['chatbot-container']}>
+            <div className={cls['chatbot-header']}>
+                <div className={cls['header-content']}>
+                    <Image
+                        src={xsLogo}
+                        alt="XS Logo"
+                        className={cls['logo']}
+                        width={48}
+                        height={48}
+                    />
+                    <div className={cls['chatbot-title']}>
+                        <h1>{t('chatbotTitle')}</h1>
                     </div>
-                ))}
+                    <button
+                        className={cls['close-button']}
+                        onClick={closeChat}
+                    >
+                        <Image
+                            src={xIcon}
+                            alt="Close"
+                            width={28}
+                            height={28}
+                        />
+                    </button>
+                </div>
             </div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <div style={{ display: 'flex', gap: '10px' }}>
+            <div className={cls['chatbot-messages']}>
+                {messages.map((msg, index) => (
+                    <>
+                        <div
+                            key={index}
+                            className={
+                                cls['message'] +
+                                ' ' +
+                                (msg.role === 'assistant'
+                                    ? cls['assistant-message']
+                                    : cls['user-message'])
+                            }
+                        >
+                            <div className={cls['message-content']}>{msg.content}</div>
+                        </div>
+                        {msg.role === 'assistant' && (
+                            <div className={cls['message-header']}>
+                                <span className={cls['bot-name']}>Botti Borelius</span>
+                                <span className={cls['message-timestamp']}>
+                                    {new Date().toLocaleTimeString(undefined, {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: false,
+                                    })}{' '}
+                                    {new Date()
+                                        .toLocaleDateString(undefined, {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: '2-digit',
+                                        })
+                                        .replace(/\//g, '.')}
+                                </span>
+                            </div>
+                        )}
+                    </>
+                ))}
+                {error && <p className={cls['error-message']}>{error}</p>}
+                <div ref={messagesEndRef} />
+            </div>
+            <div className={cls['input-container']}>
                 <input
                     type="text"
                     value={userInput}
                     onChange={(event) => setUserInput(event.target.value)}
-                    placeholder="Kirjoita viestisi..."
-                    style={{
-                        flex: 1,
-                        padding: '10px',
-                        borderRadius: '4px',
-                        border: '1px solid #ccc',
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter' && !loading) {
+                            handleSendMessage();
+                        }
                     }}
+                    placeholder={t('write_your_message')}
+                    className={cls['message-input']}
                 />
                 <button
                     onClick={handleSendMessage}
                     disabled={loading}
-                    style={{
-                        padding: '10px 20px',
-                        backgroundColor: '#007bff',
-                        color: '#fff',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer',
-                    }}
+                    className={cls['send-button']}
+                    aria-label="Send"
                 >
-                    {loading ? 'Lähetetään...' : 'Lähetä'}
+                    {loading ? (
+                        t('sending')
+                    ) : (
+                        <span
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                background: 'none',
+                                boxShadow: 'none',
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                        >
+                            <Image
+                                src={typeof sendArrow === 'string' ? sendArrow : sendArrow.src}
+                                alt="Lähetä"
+                                width={24}
+                                height={24}
+                                style={{
+                                    background: 'none',
+                                    boxShadow: 'none',
+                                    border: 'none',
+                                    filter: 'none',
+                                    display: 'block',
+                                }}
+                                draggable={false}
+                            />
+                        </span>
+                    )}
                 </button>
             </div>
         </div>
     );
 };
 
-export default ChatBotComponent;
+export default ChatBotButton;

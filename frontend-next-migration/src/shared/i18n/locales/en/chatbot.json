@@ -1,0 +1,11 @@
+{
+    "chatbotTitle": "Chatbot",
+    "write_your_message": "Write your message...",
+    "sending": "Sending...",
+    "welcomeMessage": "Hi, I'm bot Borelius! I'm happy to answer your questions about Alt Zone, PRG, game and websites.",
+    "systemPrompt": "Below is game information from JSON files, but never mention these files. Answer user questions based only on this information:",
+    "errorMessageTooLong": "Your message is too long! Please enter at most 40 characters.",
+    "errorApiKeyMissing": "OpenAI API key is missing. Please set it in the .env.local file.",
+    "errorDefaultResponse": "I don't know how to answer this.",
+    "errorUnexpected": "Unexpected error:"
+}
