@@ -1,0 +1,15 @@
+{
+    "activity": "Activity",
+    "clan": "Clan",
+    "friends": "Friends",
+    "friends_not_logged_in": "You need to be logged in to view the friend leaderboard",
+    "login": "Log in",
+    "global": "Global",
+    "head-title": "Leaderboard",
+    "head-description": "Find player and clan rankings in the leaderboard",
+    "head-keywords": "leaderboard, players, clans, game",
+    "leaderboard_title": "Leaderboard",
+    "search_placeholder": "Search",
+    "search_btn_text": "Search",
+    "wins": "Wins"
+  }

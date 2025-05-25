@@ -1,0 +1,148 @@
+.NewsCard {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--base-card-background);
+    border: 4px solid var(--drop-shadows);
+    border-radius: var(--border-radius-figmadesktop);
+    filter: drop-shadow(8px 12px var(--drop-shadows));
+    height: 150px;
+    width: 100%;
+    max-width: 780px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+
+    @media (max-width: breakpoint(xl)) {
+        max-width: 500px;
+    }
+
+    @media (max-width: breakpoint(md)) {
+        height: 130px;
+        width: 70%;
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        height: 120px;
+        width: 80%;
+    }
+
+    @media (max-width: breakpoint(xs)),
+    (max-width: 320px) {
+        height: 110px;
+        width: 70%;
+        margin: auto 0;
+    }
+
+    @media (max-width: 320px) {
+        width: 60%;
+    }
+}
+
+.imageContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    width: 72%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 10px;
+
+    @media (max-width: breakpoint(xs)) {
+        width: 90%;
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-left: 32%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 -15%);
+    transform: translateY(-27%);
+
+    @media (max-width: breakpoint(xs)),
+    (max-width: 320px) {
+        margin-left: 35%;
+    }
+}
+
+.NewsCardLink {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0.5rem 50% 0 0.5rem;
+    overflow: hidden;
+}
+
+.title {
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-l);
+    font-weight: bolder;
+    color: var(--primary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+
+    @media (max-width: breakpoint(sm)),
+    (max-width: breakpoint(xs)),
+    (max-width: 320px) {
+        font-size: 1rem;
+        padding-top: 10px;
+    }
+}
+
+.text {
+    color: var(--white);
+    font-size: 1.2rem;
+    line-height: 1.5em;
+    width: 255px;
+    margin-top: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--body-font);
+
+    @media (max-width: breakpoint(md)) {
+        font-size: 0.9rem;
+        line-height: 1rem;
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        font-size: 0.8rem;
+        width: 200px;
+    }
+
+    @media (max-width: 390px) {
+        display: none;
+    }
+}
+
+.date {
+    color: var(--white) !important;
+    font-size: 0.8rem;
+    margin-top: auto;
+    margin-bottom: 5px;
+
+    @media (max-width: breakpoint(xs)) {
+        font-size: 0.6rem;
+    }
+}

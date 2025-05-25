@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import cls from './TableOfContents.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface Section {
     id: string;
@@ -9,9 +10,12 @@ interface Section {
 
 interface TableOfContentsProps {
     sections: Section[];
+    className?: string;
 }
 
 /**
+ * @deprecated This component is deprecated. New version can be found in the v2 folder.
+ *
  * TableOfContents component that displays a navigation sidebar with clickable section labels.
  * Automatically highlights the active section based on scroll position.
  *
@@ -32,7 +36,8 @@ interface TableOfContentsProps {
  *   setActiveSection={setActiveSection}
  * />
  */
-const TableOfContents: React.FC<TableOfContentsProps> = ({ sections }) => {
+const TableOfContents: React.FC<TableOfContentsProps> = (props: TableOfContentsProps) => {
+    const { sections, className } = props;
     const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
 
     useEffect(() => {
@@ -92,7 +97,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ sections }) => {
 
     return (
         <div className={cls.navbarSideContainer}>
-            <div className={cls.navbarSide}>
+            <div className={classNames(cls.navbarSide, {}, [className ?? ''])}>
                 <ul>
                     {sections.map((section) => (
                         <li

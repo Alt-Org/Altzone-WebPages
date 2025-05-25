@@ -5,8 +5,9 @@ import { BlockSection } from '../types';
 const mockBlock: BlockSection = {
     label: 'Block Label',
     description: 'A description for this section',
-    link: 'https://example.com',
-    linkText: 'More details',
+    links: [{ url: 'https://example.com', text: 'More details' }],
+    img: '',
+    imgAlt: 'Image alt text',
 };
 
 const meta = {

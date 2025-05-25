@@ -1,6 +1,6 @@
 import { dir } from 'i18next';
 import type { Viewport } from 'next';
-import { Urbanist, Rubik, Sedgwick_Ave_Display } from 'next/font/google';
+import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
 import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { CookieConsentComponent } from '@/features/CookieConsent';
@@ -21,6 +21,12 @@ const sedgwickFont = Sedgwick_Ave_Display({
     weight: '400',
     variable: '--font-family-title',
     fallback: ['system-ui', 'arial'],
+});
+
+const dmSans = DM_Sans({
+    subsets: ['latin'],
+    weight: '400',
+    variable: '--font-family-secondary',
 });
 
 const urbanist = Urbanist({
@@ -69,7 +75,7 @@ export default function RootLayout(props: Props) {
         <html
             lang={lng}
             dir={dir(lng)}
-            className={`${urbanist.variable} ${rubik.variable} ${sedgwickFont.variable}`}
+            className={`${urbanist.variable} ${rubik.variable} ${sedgwickFont.variable} ${dmSans.variable}`}
         >
             <head>
                 <link

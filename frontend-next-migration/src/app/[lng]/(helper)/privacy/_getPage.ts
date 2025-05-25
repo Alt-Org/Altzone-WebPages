@@ -9,10 +9,11 @@ export async function _getPage(lng: string) {
     return createPage<PrivacyPageProps>({
         buildPage: () => ({
             sections: makePrivacySectionsWithI18n(t),
+            title: t('main-title'),
         }),
         buildSeo: () => ({
-            title: t('head-title'),
-            description: t('head-description'),
+            title: t('main-title'),
+            description: t('privacy-description'),
             keywords: t('head-keywords'),
         }),
     });

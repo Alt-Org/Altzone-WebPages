@@ -2,24 +2,43 @@
     "join-us": "Tule mukaan!",
     "head-title": "Tule mukaan - Altzone",
 
-    "block-label-discord": "Discord",
-    "block-label-reddit": "Reddit",
-    "block-label-teachers": "Opettaja!",
-    "block-label-duunitori": "Duunitori",
-    "block-label-feedback": "Anna palautetta",
-    "block-label-instagram": "Instagram",
 
-    "block-description-discord": "Testaajaksi ja kehittäjäksi pääsee liittymällä Discord-peliyhteisöömme",
-    "block-description-reddit": "",
+    "block-label-connection": "Ota yhteyttä",
+    "block-label-teachers": "Oletko opettaja?",
+    "block-label-duunitori": "Työskentele \nKanssamme",
+    "block-label-feedback": "Anna palautetta",
+    "block-label-instagram": "Keskustele lisää \nsomessa",
+    "block-label-discord": "Tule Testaajaksi",
+
+    "block-description-discord": "Tule kertomaan ideasi liittymällä discord- \npeliyhteisöömme",
+    "block-description-connection": "Mikäli kiinnostuit projektistamme, ota rohkeasti yhteyttä",
     "block-description-teachers": "Ilmoittaudu testaamaan opetuspakettia",
-    "block-description-duunitori": "",
-    "block-description-feedback": "",
-    "block-description-instagram": "Seuraa meitä Instagramissa!",
+    "block-description-duunitori": "Tarjoamme mahdollisuuksien mukaan palkatonta työkokeilua ja -harjoittelua projektimme parissa. Olet tervetullut tekemään hommia myös vapaaehtoisena. \n\nTarkastele avoimia paikkoja Duunitorista.",
+"block-description-feedback": "Palautelomakkeen tavoite on kerätä palautetta \nnettisivuista ja mobiilipelistä jatkokehitystä varten. \nPalautteesi on ensisijaisen tärkeää ja  käsittelemme \npalautteet yhdessä kehitystiimin kanssa. \n\nKiitos vastauksistasi jo etukäteen!",
+    "block-description-instagram": "",
 
     "block-link-text-discord": "discord.gg/mgjQkCR2Fg",
-    "block-link-text-reddit": "www.reddit.com/r/PRGaltzone/",
-    "block-link-text-teachers": "Opetuspakettiin",
-    "block-link-text-duunitori": "Avoimet paikat",
-    "block-link-text-feedback": "Palaute lomake",
-    "block-link-text-instagram": "@gamingpsyche"
+    "block-link-text-teacherPg": "Tutustu opetuspakettiin",
+    "block-link-text-duunitori": "Avoimet paikat Duunitorissa",
+    "block-link-text-feedbackWep": "Verkkosivu lomake",
+    "block-link-text-feedbackGame": "Peli lomake",
+    "block-link-text-instagram": "@gamingpsyche",
+    "block-link-text-email": "proyaleg@gmail.com",
+    "block-link-text-phone": "+358442407396",
+    "block-link-text-icone": "",
+    
+    "block-image-alt-discord": "Discord",
+    "block-image-alt-connection": "Reddit",
+    "block-image-alt-teachers": "Teacher!",
+    "block-image-alt-duunitori": "Duunitori",
+    "block-image-alt-feedback": "Feedback",
+    "block-image-alt-instagram": "Instagram",
+
+
+    "block-website": "www.example.com"
+
 }
+
+
+
+

@@ -22,6 +22,8 @@ export type Props = {
 };
 
 /**
+ * @deprecated This component is deprecated. New version can be found in the v2 folder.
+ *
  * WikiContentWithSideBar component renders a page with a sidebar containing sections
  * and a main content area with detailed information about each section.
  *

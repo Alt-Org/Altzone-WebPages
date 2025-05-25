@@ -1,5 +1,5 @@
 'use client';
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AttributesPie.module.scss';
 
@@ -12,7 +12,7 @@ import cls from './AttributesPie.module.scss';
  * @property {SliceState} characterUpgrade - The properties for the upgraded state of the pie slice.
  * @property {number} borderwidth - The width of the border for the pie slice.
  * @property {string} bordercolor - The color of the border for the pie slice.
- * @property {number} radius - The radius of the pie slice.
+ * @property {number} radius - The initial radius of the pie slice.
  */
 interface Props {
     characterDefault: SliceState;
@@ -28,7 +28,6 @@ interface Props {
  * @param {Props} props - The properties passed to the component.
  *
  * @returns {JSX.Element} A JSX element representing the pie chart wrapped in a div container.
- *
  * @example
  * ```typescript jsx
  * const defaultSlice = {
@@ -57,12 +56,25 @@ interface Props {
  * ```
  */
 export const AttributesPie = (props: Props): JSX.Element => {
-    const ref = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null); // Reference to the container
+    const canvasRef = useRef<HTMLCanvasElement>(null); // Reference to the canvas
+    const [dynamicRadius, setDynamicRadius] = useState<number>(props.radius); // Dynamic radius
 
-    const { radius, borderwidth, bordercolor, characterDefault, characterUpgrade } = props;
+    const { borderwidth, bordercolor, characterDefault, characterUpgrade } = props;
 
+    // Calculate the radius based on the container size
     useLayoutEffect(() => {
-        const canvas: any = ref.current;
+        const container = containerRef.current;
+
+        if (container) {
+            const size = Math.min(container.offsetWidth, container.offsetHeight);
+            setDynamicRadius(size / 2); // Update the radius
+        }
+    }, []);
+
+    // Render the canvas based on the dynamic radius
+    useLayoutEffect(() => {
+        const canvas = canvasRef.current;
 
         if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
             return;
@@ -73,7 +85,7 @@ export const AttributesPie = (props: Props): JSX.Element => {
             return;
         }
 
-        if (borderwidth >= radius) {
+        if (borderwidth >= dynamicRadius) {
             return;
         }
 
@@ -81,15 +93,15 @@ export const AttributesPie = (props: Props): JSX.Element => {
 
         renderSlice(ctx, characterDefault, Math.PI / 2);
         renderSlice(ctx, characterUpgrade, Math.PI / 2 + Math.PI);
-    });
+    }, [dynamicRadius, characterDefault, characterUpgrade]);
 
     const renderSlice = (context: CanvasRenderingContext2D, slice: SliceState, angle: number) => {
         const { max, sections } = slice;
 
         const render = (context: CanvasRenderingContext2D, angle: number, section: PieSection) => {
             const { value, color } = section;
-            const x = radius,
-                y = radius;
+            const x = dynamicRadius, // Use dynamic radius
+                y = dynamicRadius;
             const alpha = value / max;
             const currentangle = alpha * Math.PI;
 
@@ -110,13 +122,13 @@ export const AttributesPie = (props: Props): JSX.Element => {
             context.beginPath();
 
             context.moveTo(x, y);
-            context.arc(x, y, radius - borderwidth, angle, angle + currentangle);
+            context.arc(x, y, dynamicRadius - borderwidth, angle, angle + currentangle);
 
             context.fill();
 
-            renderBorder(context, angle, radius);
+            renderBorder(context, angle, dynamicRadius);
             angle += currentangle;
-            renderBorder(context, angle, radius);
+            renderBorder(context, angle, dynamicRadius);
 
             return angle;
         };
@@ -127,21 +139,25 @@ export const AttributesPie = (props: Props): JSX.Element => {
             angle = render(context, angle, section);
         }
     };
+
     const renderBackground = (context: CanvasRenderingContext2D) => {
         context.fillStyle = bordercolor;
-        context.clearRect(0, 0, radius * 2, radius * 2);
+        context.clearRect(0, 0, dynamicRadius * 2, dynamicRadius * 2); // Use dynamic radius
 
         context.beginPath();
-        context.arc(radius, radius, radius, 0, Math.PI * 2);
+        context.arc(dynamicRadius, dynamicRadius, dynamicRadius, 0, Math.PI * 2); // Use dynamic radius
         context.fill();
     };
 
     return (
-        <div className={classNames(cls.Container)}>
+        <div
+            ref={containerRef} // Reference to the container
+            className={classNames(cls.Container)} // Use the class from SCSS
+        >
             <canvas
-                ref={ref}
-                width={radius * 2}
-                height={radius * 2}
+                ref={canvasRef} // Reference to the canvas
+                width={dynamicRadius * 2} // Use dynamic radius
+                height={dynamicRadius * 2} // Use dynamic radius
             />
         </div>
     );
