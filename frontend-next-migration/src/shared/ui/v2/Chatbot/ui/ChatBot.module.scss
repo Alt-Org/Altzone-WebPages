@@ -6,8 +6,6 @@
     right: 100px;
     max-width: 460px;
     width: clamp(300px, 25vw, 460px);
-    margin: 0;
-    padding: 0;
     border: var(--border-desktop) solid black;
     border-radius: var(--border-radius-custom);
     background-color: var(--base-card-background);
@@ -18,7 +16,6 @@
     height: clamp(500px, 70vh, 764px);
     max-height: 764px;
     overflow: hidden;
-    outline: none;
     z-index: 1001;
 
     // Responsive for mobile
@@ -88,7 +85,6 @@
             font-size: 1.8rem;
             font-weight: 600;
             margin: 0;
-            padding: 0;
         }
     }
 }
@@ -99,8 +95,6 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    border: none;
-    outline: none;
 
     @include orange-scrollbar;
 
@@ -112,23 +106,16 @@
         background-color: var(--primary-color);
         color: var(--black);
         border: var(--border-mobile) solid var(--black);
-
-        .message-content {
-            color: var(--black);
-        }
     }
 
     .message-header {
         display: flex;
         justify-content: flex-start;
-        align-items: center;
         margin-top: 2px;
         margin-bottom: 8px;
-        margin-left: 0;
         max-width: 80%;
         font-size: 0.8rem;
         gap: 2px;
-        color: var(--white) !important;
 
         .bot-name {
             color: var(--white) !important;
@@ -136,7 +123,7 @@
         }
 
         .message-timestamp {
-            color: white !important;
+            color: var(--white) !important;
             opacity: 0.9;
         }
     }
@@ -145,6 +132,7 @@
         align-self: flex-end;
         text-align: right;
     }
+
     .assistant-message {
         align-self: flex-start;
         text-align: left;
@@ -160,7 +148,6 @@
 .input-container {
     display: flex;
     align-items: center;
-    gap: 0;
     padding: 15px;
     position: relative;
     background-color: var(--base-card-background);
