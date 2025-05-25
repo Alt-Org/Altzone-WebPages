@@ -113,7 +113,6 @@
         border-radius: 50%;
         cursor: pointer;
         @include link-scale-effect('icon');
-        background-color: var(--primary-color);
     }
 
     .placeholderLogo {
