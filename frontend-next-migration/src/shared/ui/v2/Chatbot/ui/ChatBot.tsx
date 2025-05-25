@@ -104,18 +104,39 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
             </div>
             <div className={cls['chatbot-messages']}>
                 {messages.map((msg, index) => (
-                    <div
-                        key={index}
-                        className={
-                            cls['message'] +
-                            ' ' +
-                            (msg.role === 'assistant'
-                                ? cls['assistant-message']
-                                : cls['user-message'])
-                        }
-                    >
-                        {msg.content}
-                    </div>
+                    <>
+                        <div
+                            key={index}
+                            className={
+                                cls['message'] +
+                                ' ' +
+                                (msg.role === 'assistant'
+                                    ? cls['assistant-message']
+                                    : cls['user-message'])
+                            }
+                        >
+                            <div className={cls['message-content']}>{msg.content}</div>
+                        </div>
+                        {msg.role === 'assistant' && (
+                            <div className={cls['message-header']}>
+                                <span className={cls['bot-name']}>Botti Borelius</span>
+                                <span className={cls['message-timestamp']}>
+                                    {new Date().toLocaleTimeString(undefined, {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: false,
+                                    })}{' '}
+                                    {new Date()
+                                        .toLocaleDateString(undefined, {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: '2-digit',
+                                        })
+                                        .replace(/\//g, '.')}
+                                </span>
+                            </div>
+                        )}
+                    </>
                 ))}
                 {error && <p className={cls['error-message']}>{error}</p>}
                 <div ref={messagesEndRef} />

@@ -112,7 +112,35 @@
         background-color: var(--primary-color);
         color: var(--black);
         border: var(--border-mobile) solid var(--black);
+
+        .message-content {
+            color: var(--black);
+        }
     }
+
+    .message-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 2px;
+        margin-bottom: 8px;
+        margin-left: 0;
+        max-width: 80%;
+        font-size: 0.8rem;
+        gap: 2px;
+        color: var(--white) !important;
+
+        .bot-name {
+            color: var(--white) !important;
+            font-weight: 600;
+        }
+
+        .message-timestamp {
+            color: white !important;
+            opacity: 0.9;
+        }
+    }
+
     .user-message {
         align-self: flex-end;
         text-align: right;
