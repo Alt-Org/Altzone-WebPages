@@ -18,7 +18,7 @@ import chevronright from '@/shared/assets/icons/ChevronRightBlack.svg';
 import { useRouter, useParams } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
-import ShareButton from './ShareButton';
+import { ShareButton } from '@/shared/ui/v2/ShareButton';
 
 const NewsElementPage = () => {
     useScrollToTop();
