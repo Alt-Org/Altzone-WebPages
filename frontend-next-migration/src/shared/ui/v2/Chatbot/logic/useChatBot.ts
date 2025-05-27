@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-import { useGetChatbotDataQuery } from '@/shared/api';
-import { createChatbotContext } from '../utils/directusDataProcessor';
+import { useGetChatbotContextQuery } from '@/shared/api';
 
 /**
  * Represents a chat message with role and content
@@ -53,17 +52,15 @@ export const useChatBot = () => {
     const { t, i18n } = useClientTranslation('chatbot');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    // Fetch data from Directus
-    const { data: chatbotData, isLoading: isDataLoading } = useGetChatbotDataQuery();
+    // Fetch context from Directus for current language
+    const currentLanguage = i18n.language || 'fi';
+    const { data: contextData = '', isLoading: isContextLoading } =
+        useGetChatbotContextQuery(currentLanguage);
 
-    // Initialize context when data is loaded
+    // Update context state when data changes
     useEffect(() => {
-        if (!isDataLoading && chatbotData) {
-            const currentLanguage = i18n.language || 'fi';
-            const newContext = createChatbotContext(chatbotData, currentLanguage);
-            setContext(newContext);
-        }
-    }, [chatbotData, isDataLoading, i18n.language]);
+        setContext(contextData);
+    }, [contextData]);
 
     // Initialize welcome message
     useEffect(() => {

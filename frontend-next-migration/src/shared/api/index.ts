@@ -4,4 +4,4 @@ export { strapiApi } from './strapiApi';
 
 export { directusApi } from './directusApi';
 
-export { chatbotApi, useGetChatbotDataQuery } from './chatbotApi';
+export { chatbotApi, useGetChatbotContextQuery } from './chatbotApi';
