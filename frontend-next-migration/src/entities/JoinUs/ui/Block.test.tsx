@@ -4,59 +4,62 @@ import { BlockSection } from '../types';
 import cls from './Block.module.scss';
 
 describe('Block', () => {
-    it('renders the label, description and link', () => {
-        const mockBlock: BlockSection = {
-            label: 'Test label',
-            description: 'Mock description',
-            link: 'https://example.com',
-            linkText: 'Click here',
-        };
+    /**
+     * Helper mock block for testing
+     */
+    const mockBlock: BlockSection = {
+        label: 'Test label',
+        description: 'Mock description',
+        links: [
+            {
+                text: 'Click here',
+                url: 'https://example.com',
+                isExternal: true,
+            },
+        ],
+        img: '',
+        imgAlt: 'Mock alt text',
+    };
 
+    it('renders the label, description, and link text', () => {
         render(<Block block={mockBlock} />);
 
         expect(screen.getByText('Test label')).toBeInTheDocument();
+
         expect(screen.getByText('Mock description')).toBeInTheDocument();
+
         expect(screen.getByText('Click here')).toBeInTheDocument();
     });
 
-    it('link has correct text and href attribute', () => {
-        const mockBlock: BlockSection = {
-            label: 'Test label',
-            description: 'Mock description',
-            link: 'https://example.com',
-            linkText: 'Click here',
-        };
-
+    it('link has correct href attribute', () => {
         render(<Block block={mockBlock} />);
-
-        expect(screen.getByText('Click here')).toBeInTheDocument();
 
         const linkElement = screen.getByText('Click here');
         expect(linkElement).toHaveAttribute('href', 'https://example.com');
     });
 
-    it('handles missing label or description gracefully', () => {
-        const mockBlock: BlockSection = {
+    it('handles missing label and description gracefully', () => {
+        const mockEmptyBlock: BlockSection = {
             label: '',
             description: '',
-            link: 'https://example.com',
-            linkText: 'Click here',
+            links: [
+                {
+                    text: 'Click here',
+                    url: 'https://example.com',
+                    isExternal: true,
+                },
+            ],
+            img: '',
+            imgAlt: '',
         };
 
-        const { container } = render(<Block block={mockBlock} />);
-        expect(container).toBeInTheDocument();
+        const { container } = render(<Block block={mockEmptyBlock} />);
 
+        expect(container).toBeInTheDocument();
         expect(screen.getByText('Click here')).toBeInTheDocument();
     });
 
-    it('applies the correct class', () => {
-        const mockBlock: BlockSection = {
-            label: 'Test label',
-            description: 'Mock description',
-            link: 'https://example.com',
-            linkText: 'Click here',
-        };
-
+    it('applies the correct container class', () => {
         const { container } = render(<Block block={mockBlock} />);
 
         expect(container.firstChild).toHaveClass(cls.Container);

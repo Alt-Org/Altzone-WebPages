@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { envHelper } from '@/shared/const/envHelper';
 
-const directusApiUrl = envHelper.directusHost;
+const directusApiUrl = envHelper.directusHost || '';
 
 /**
  * The `directusApi` variable is an API slice created using the Redux Toolkit's `createApi` method.
@@ -10,6 +10,12 @@ const directusApiUrl = envHelper.directusHost;
  */
 export const directusApi = createApi({
     reducerPath: 'directusApi',
-    baseQuery: fetchBaseQuery({ baseUrl: directusApiUrl }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: directusApiUrl,
+        prepareHeaders: (headers) => {
+            // Add any default headers if needed
+            return headers;
+        },
+    }),
     endpoints: () => ({}),
 });

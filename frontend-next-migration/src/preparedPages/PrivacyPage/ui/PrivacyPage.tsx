@@ -1,11 +1,12 @@
 'use client';
 import { ScrollTop } from '@/features/ScrollTop';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { WikiContentWithSidebar } from '@/shared/ui/WikiContentWithSidebar';
+import { WikiContentWithSidebar } from '@/shared/ui/v2/WikiContentWithSidebar';
 import cls from './Privacy.module.scss';
 
 interface Section {
     id: string;
+    navMenuTitle: string;
     label: string;
     description: string;
     image: string;
@@ -16,14 +17,18 @@ interface Section {
 
 export type Props = {
     sections: Section[];
+    title: string;
 };
 
 const PrivacyPage = (props: Props) => {
-    const { sections = [] } = props;
+    const { sections = [], title } = props;
 
     return (
         <div className={classNames(cls.pageContainer)}>
-            <WikiContentWithSidebar sections={sections} />
+            <WikiContentWithSidebar
+                title={title}
+                sections={sections}
+            />
             <ScrollTop />
         </div>
     );

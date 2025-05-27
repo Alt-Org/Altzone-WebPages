@@ -2,7 +2,7 @@ import { StaticImageData } from 'next/image';
 
 export enum HeroGroup {
     RETROFLECTOR = 'RETROFLECTOR',
-    // DESENSITIZER = "DESENSITIZER",
+    DESENSITIZER = 'DESENSITIZER',
     TRICKSTER = 'TRICKSTER',
     OBEDIENT = 'OBEDIENT',
     PROJECTOR = 'PROJECTOR',
@@ -12,14 +12,19 @@ export enum HeroGroup {
 }
 
 export enum HeroSlug {
-    HANNU_HODARI = 'ahmat',
-    GRAFFITI_ARTIST = 'graffiti-artist',
+    OVEREATER = 'overeater',
+    PROVOCATEUR = 'provocateur',
+    MIRROR = 'mirror',
     RESEARCHER = 'researcher',
-    PIRATE = 'pirate',
+    ALCOHOLIC = 'alcoholic',
     SOUL_SISTERS = 'soul-sisters',
     CONMAN = 'conman',
-    SLEEPER = 'sleeper',
-    FATE_PRIEST = 'fate-priest',
+    JOKESTER = 'jokester',
+    SLEEPY_SLEEPER = 'sleepy-sleeper',
+    BELIEVER = 'believer',
+    HATE_SPEECH = 'hate-speech',
+    MEATWALL = 'meatwall',
+    VETERAN = 'war-veteran',
 }
 
 export interface Hero {

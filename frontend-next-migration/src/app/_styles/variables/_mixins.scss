@@ -1,114 +1,135 @@
 @mixin link-scale-effect($type: 'default') {
-  transition: transform 0.2s ease;
+    transition: transform 0.2s ease;
 
-  @if $type == 'icon' {
-    &:hover {
-      transform: scale(var(--animation-icon-hover-scale));
-    }
+    @if $type == 'icon' {
+        &:hover {
+            transform: scale(var(--animation-icon-hover-scale));
+        }
 
-    &:active {
-      transform: scale(var(--animation-icon-active-scale));
-    }
-  } @else {
-    &:hover {
-      transform: scale(var(--animation-link-hover-scale));
-    }
+        &:active {
+            transform: scale(var(--animation-icon-active-scale));
+        }
+    } @else {
+        &:hover {
+            transform: scale(var(--animation-link-hover-scale));
+        }
 
-    &:active {
-      transform: scale(var(--animation-link-active-scale));
+        &:active {
+            transform: scale(var(--animation-link-active-scale));
+        }
     }
-  }
 }
 
 @mixin custom-scrollbar {
+    @-moz-document url-prefix() {
+        scrollbar-color: #fff #000;
+        scrollbar-width: thin;
+    }
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
 
-  @-moz-document url-prefix() {
-      scrollbar-color: #fff #000;
-      scrollbar-width: thin;
-  }
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
+    &::-webkit-scrollbar-thumb {
+        background-color: #fff;
+        border-radius: var(--border-radius-custom);
+        border: 1px solid #000;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #fff;
-    border-radius: var(--border-radius-custom);
-    border: 1px solid #000;
-  }
+    &::-webkit-scrollbar-track {
+        background-color: rgb(0, 0, 0);
+        border-radius: var(--border-radius-custom);
+    }
+}
 
-  &::-webkit-scrollbar-track {
-    background-color: rgb(0, 0, 0);
-    border-radius: var(--border-radius-custom);
-  }
+@mixin orange-scrollbar {
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: var(--border-radius-lg);
+        border: none;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--primary-color-variant-hover);
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
 }
 
 @mixin position-absolute-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @mixin custom-invisible-hover {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 
-  &:hover {
-    opacity: 1;
-  }
+    &:hover {
+        opacity: 1;
+    }
 }
 
 @mixin font-size-increase($amount: 1.2) {
-  &:hover {
-    font-size: $amount * 100%;
-  }
+    &:hover {
+        font-size: $amount * 100%;
+    }
 }
 
 @mixin backGroundImageDefault {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 @mixin ScrollbarWithArrowButtons {
-  &::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background: #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 8px;
-    height: 15px;
-  }
+    &::-webkit-scrollbar-thumb {
+        background: #ffffff;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 8px;
+        height: 15px;
+    }
 
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 
-  &::-webkit-scrollbar-button:single-button {
-    background-color: transparent;
-    display: block;
-    cursor: pointer;
-  }
+    &::-webkit-scrollbar-button:single-button {
+        background-color: transparent;
+        display: block;
+        cursor: pointer;
+    }
 
-  &::-webkit-scrollbar-button:single-button:vertical:decrement {
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 15px solid #ffffff;
-  }
+    &::-webkit-scrollbar-button:single-button:vertical:decrement {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 15px solid #ffffff;
+    }
 
-  &::-webkit-scrollbar-button:single-button:vertical:increment {
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 15px solid #ffffff;
-  }
+    &::-webkit-scrollbar-button:single-button:vertical:increment {
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 15px solid #ffffff;
+    }
 }
-
-
 
 $breakpoint-xs: 400px; /* Extra small */
 $breakpoint-sm: 576px; /* Small */
@@ -119,19 +140,19 @@ $breakpoint-xxl: 1400px; /* Extra Extra Large */
 
 // function to get breakpoint
 @function breakpoint($name) {
-  @if $name == xs {
-    @return $breakpoint-xs;
-  } @else if $name == sm {
-    @return $breakpoint-sm;
-  } @else if $name == md {
-    @return $breakpoint-md;
-  } @else if $name == lg {
-    @return $breakpoint-lg;
-  } @else if $name == xl {
-    @return $breakpoint-xl;
-  } @else if $name == xxl {
-    @return $breakpoint-xxl;
-  } @else {
-    @error "Breakpoint with the name `#{$name}` is not defined.";
-  }
+    @if $name == xs {
+        @return $breakpoint-xs;
+    } @else if $name == sm {
+        @return $breakpoint-sm;
+    } @else if $name == md {
+        @return $breakpoint-md;
+    } @else if $name == lg {
+        @return $breakpoint-lg;
+    } @else if $name == xl {
+        @return $breakpoint-xl;
+    } @else if $name == xxl {
+        @return $breakpoint-xxl;
+    } @else {
+        @error "Breakpoint with the name `#{$name}` is not defined.";
+    }
 }

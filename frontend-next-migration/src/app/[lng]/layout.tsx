@@ -1,14 +1,12 @@
 import { dir } from 'i18next';
 import type { Viewport } from 'next';
-import { Urbanist, Rubik, Sedgwick_Ave_Display } from 'next/font/google';
+import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
-import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { CookieConsentComponent } from '@/features/CookieConsent';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
+import { ChatBotToggleButton } from '@/shared/ui/v2/Chatbot';
 import { languages } from '@/shared/i18n/settings/settings';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
+import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
 // const openSans = Open_Sans({
@@ -20,19 +18,32 @@ const sedgwickFont = Sedgwick_Ave_Display({
     subsets: ['latin'],
     weight: '400',
     variable: '--font-family-title',
-    fallback: ['system-ui', 'arial'],
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
+});
+
+const dmSans = DM_Sans({
+    subsets: ['latin'],
+    weight: '400',
+    variable: '--font-family-secondary',
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const urbanist = Urbanist({
     variable: '--font-family-main',
     subsets: ['latin'],
     weight: '700',
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const rubik = Rubik({
     subsets: ['latin'],
     weight: '400',
     variable: '--font-family-texts',
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
 });
 
 export const viewport: Viewport = {
@@ -42,7 +53,7 @@ export const viewport: Viewport = {
     userScalable: false,
 };
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
     return languages.map((lng) => ({ lng }));
 }
 
@@ -53,13 +64,6 @@ interface Props {
     };
 }
 
-const ContentWithBackground = withBackgroundImage({
-    alt: 'Main-Page underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-    shouldBeLazyLoaded: true,
-})(({ children }: any) => children);
-
 export default function RootLayout(props: Props) {
     const { children, params } = props;
 
@@ -69,7 +73,7 @@ export default function RootLayout(props: Props) {
         <html
             lang={lng}
             dir={dir(lng)}
-            className={`${urbanist.variable} ${rubik.variable} ${sedgwickFont.variable}`}
+            className={`${urbanist.variable} ${rubik.variable} ${sedgwickFont.variable} ${dmSans.variable}`}
         >
             <head>
                 <link
@@ -84,17 +88,15 @@ export default function RootLayout(props: Props) {
                     sizes="72x72"
                 />
             </head>
-            <body
-                style={{
-                    // backgroundImage: `url("/images/background.webp")`,
-                    backgroundImage: `url("${bgPicture.src}")`,
-                }}
-            >
-                <Providers>
-                    <FeedbackSideButton />
-                    {children}
-                    <CookieConsentComponent />
-                </Providers>
+            <body>
+                <LayoutWithBackground>
+                    <Providers>
+                        <FeedbackSideButton />
+                        <ChatBotToggleButton />
+                        {children}
+                        <CookieConsentComponent />
+                    </Providers>
+                </LayoutWithBackground>
             </body>
         </html>
     );

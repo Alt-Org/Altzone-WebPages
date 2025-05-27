@@ -43,6 +43,7 @@ export const ProjectDescription = (props: Props) => {
                             src={greenHaired}
                             alt={'description hero'}
                             className={classNames(cls.Image, mods)}
+                            priority
                         />
                     )}
 

@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useClientTranslation } from '@/shared/i18n';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
-import { FeedbackCard } from '@/shared/ui/v2/Feedback';
-import cls from './FeedbackSideButton.module.scss';
-import Image from 'next/image';
 import megafone from '@/shared/assets/icons/Feedback/Megafone.svg';
+import FeedbackCard from '../FeedbackCard/FeedbackCard';
+import cls from './FeedbackSideButton.module.scss';
 
 type Props = {
     disableMobile?: boolean;

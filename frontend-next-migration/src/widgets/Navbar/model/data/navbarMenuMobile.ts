@@ -13,7 +13,7 @@ import {
 import img from '@/shared/assets/images/altLogo.png';
 
 const navbarBuilder = new NavbarBuilder();
-navbarBuilder.addLink('main', getRouteMainPage(), false);
+// navbarBuilder.addLink('main', getRouteMainPage(), false);
 navbarBuilder.addLink('news', getRouteAllNewsPage(), true);
 navbarBuilder.addDropDown('game', false, dropdowns.game);
 navbarBuilder.addDropDown('gallery', false, dropdowns.gallery);
