@@ -1,32 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-// Finnish locale files
-import fiHeroes from '@/shared/i18n/locales/fi/heroes.json';
-import fiJoinUs from '@/shared/i18n/locales/fi/join-us.json';
-import fiFooter from '@/shared/i18n/locales/fi/footer.json';
-import fiAbout from '@/shared/i18n/locales/fi/about.json';
-import fiArtGame from '@/shared/i18n/locales/fi/artGame.json';
-import fiFurnitureinfo from '@/shared/i18n/locales/fi/furnitureinfo.json';
-import fiCookies from '@/shared/i18n/locales/fi/cookies.json';
-import fiPrivacy from '@/shared/i18n/locales/fi/privacy.json';
-// English locale files
-import enHeroes from '@/shared/i18n/locales/en/heroes.json';
-import enJoinUs from '@/shared/i18n/locales/en/join-us.json';
-import enFooter from '@/shared/i18n/locales/en/footer.json';
-import enAbout from '@/shared/i18n/locales/en/about.json';
-import enArtGame from '@/shared/i18n/locales/en/artGame.json';
-import enFurnitureinfo from '@/shared/i18n/locales/en/furnitureinfo.json';
-import enCookies from '@/shared/i18n/locales/en/cookies.json';
-import enPrivacy from '@/shared/i18n/locales/en/privacy.json';
-// Russian locale files
-import ruHeroes from '@/shared/i18n/locales/ru/heroes.json';
-import ruJoinUs from '@/shared/i18n/locales/ru/join-us.json';
-import ruFooter from '@/shared/i18n/locales/ru/footer.json';
-import ruAbout from '@/shared/i18n/locales/ru/about.json';
-import ruArtGame from '@/shared/i18n/locales/ru/artGame.json';
-import ruFurnitureinfo from '@/shared/i18n/locales/ru/furnitureinfo.json';
-import ruCookies from '@/shared/i18n/locales/ru/cookies.json';
-import ruPrivacy from '@/shared/i18n/locales/ru/privacy.json';
+import { useGetChatbotDataQuery } from '@/shared/api';
+import { createChatbotContext } from '../utils/directusDataProcessor';
 
 /**
  * Represents a chat message with role and content
@@ -38,31 +13,14 @@ export interface ChatMessage {
     role: string;
     content: string;
 }
-/**
- * Flattens a nested object into an array of strings with key-value pairs.
- * Recursively processes nested objects and creates dot-notation keys.
- *
- * @param {any} obj - The object to flatten (can contain nested objects)
- * @param {string} [prefix=''] - The prefix for nested keys (used internally for recursion)
- * @returns {string[]} An array of flattened key-value pairs as strings in format "key: value"
- * @example
- * // Returns: ["name: John", "address.city: New York", "address.zip: 10001"]
- * flattenObject({ name: "John", address: { city: "New York", zip: 10001 } })
- */
-function flattenObject(obj: any, prefix = ''): string[] {
-    return Object.entries(obj).flatMap(([key, value]) => {
-        const newKey = prefix ? `${prefix}.${key}` : key;
-        if (typeof value === 'object' && value !== null) {
-            return flattenObject(value, newKey);
-        } else {
-            return [`${newKey}: ${value}`];
-        }
-    });
-}
+
 /**
  * Custom hook for chatbot functionality that manages chat state, messages, and API interactions.
  * Provides chat functionality including message handling, API calls to OpenAI,
  * auto-scrolling, error handling, and internationalization support.
+ *
+ * This hook now fetches context data from Directus collections (heroes, general_content, faq)
+ * instead of using static JSON files, providing dynamic and up-to-date information.
  *
  * @returns {Object} Chatbot state and control functions
  * @returns {ChatMessage[]} returns.messages - Array of chat messages
@@ -92,71 +50,23 @@ export const useChatBot = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [context, setContext] = useState('');
-    const { t } = useClientTranslation('chatbot');
+    const { t, i18n } = useClientTranslation('chatbot');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    /**
-     * Initializes the context with combined data from locale files across all supported languages
-     * @returns {string} The initialized context string with data from Finnish, English and Russian locales
-     */
-    const initializeContext = (): string => {
-        // Finnish data
-        const finnishData = [
-            fiHeroes,
-            fiJoinUs,
-            fiFooter,
-            fiAbout,
-            fiArtGame,
-            fiFurnitureinfo,
-            fiCookies,
-            fiPrivacy,
-        ]
-            .map((data) => flattenObject(data).join('\n'))
-            .join('\n');
+    // Fetch data from Directus
+    const { data: chatbotData, isLoading: isDataLoading } = useGetChatbotDataQuery();
 
-        // English data
-        const englishData = [
-            enHeroes,
-            enJoinUs,
-            enFooter,
-            enAbout,
-            enArtGame,
-            enFurnitureinfo,
-            enCookies,
-            enPrivacy,
-        ]
-            .map((data) => flattenObject(data).join('\n'))
-            .join('\n');
-
-        // Russian data
-        const russianData = [
-            ruHeroes,
-            ruJoinUs,
-            ruFooter,
-            ruAbout,
-            ruArtGame,
-            ruFurnitureinfo,
-            ruCookies,
-            ruPrivacy,
-        ]
-            .map((data) => flattenObject(data).join('\n'))
-            .join('\n');
-
-        // Combine all language data with clear separators
-        const combinedData = [
-            '=== FINNISH DATA ===',
-            finnishData,
-            '\n=== ENGLISH DATA ===',
-            englishData,
-            '\n=== RUSSIAN DATA ===',
-            russianData,
-        ].join('\n\n');
-
-        return combinedData;
-    };
-
+    // Initialize context when data is loaded
     useEffect(() => {
-        setContext(initializeContext());
+        if (!isDataLoading && chatbotData) {
+            const currentLanguage = i18n.language || 'fi';
+            const newContext = createChatbotContext(chatbotData, currentLanguage);
+            setContext(newContext);
+        }
+    }, [chatbotData, isDataLoading, i18n.language]);
+
+    // Initialize welcome message
+    useEffect(() => {
         setMessages([
             {
                 role: 'assistant',
@@ -183,7 +93,7 @@ export const useChatBot = () => {
             },
         ]);
         setUserInput('');
-        setContext(initializeContext());
+        // Context will be refreshed automatically by useEffect when data changes
     };
 
     /**
