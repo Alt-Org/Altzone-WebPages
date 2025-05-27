@@ -12,6 +12,7 @@ import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
 import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
+import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
@@ -102,6 +103,8 @@ export default function RootLayout(props: Props) {
                     <ChatBotToggleButton />
                     {children}
                     <CookieConsentComponent />
+
+                    <CookieConsentV2 />
                 </Providers>
             </body>
         </html>
