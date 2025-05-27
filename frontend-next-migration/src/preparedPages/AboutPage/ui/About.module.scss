@@ -57,7 +57,6 @@
 }
 
 .h1 {
-    font-family: var(--font-family-title);
     font-weight: bold;
     color: var(--primary-color);
     font-size: var(--font-size-xl);
@@ -89,9 +88,8 @@
 }
 
 .yearh1 {
-    font-family: var(--font-family-title);
     font-weight: bold;
-    color: orange;
+    color: var(--primary-color);
     font-size: var(--font-size-xl);
     text-align: left;
     @media (max-width: breakpoint(sm)) {
