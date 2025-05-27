@@ -16,31 +16,13 @@ export default function HomeLayout({ children }: Props) {
     // const { isScrollbarHidden, scrollToContent } = _useScrollHandler(introRef);
 
     return (
-        <>
-            {/*<Intro*/}
-            {/*    scrollToContent={scrollToContent}*/}
-            {/*    ref={introRef}*/}
-            {/*/>*/}
-            <>
-                <Navbar />
-                <LayoutDefault marginTop={'160px'}>{children}</LayoutDefault>
-                <Footer />
-                <ScrollTop />
-            </>
-            {/*<style*/}
-            {/*    jsx*/}
-            {/*    global*/}
-            {/*>{`*/}
-            {/*    html {*/}
-            {/*        scrollbar-width: ${isScrollbarHidden ? 'none' : 'auto'};*/}
-            {/*    }*/}
-            {/*    body {*/}
-            {/*        -ms-overflow-style: ${isScrollbarHidden ? 'none' : 'auto'};*/}
-            {/*    }*/}
-            {/*    body::-webkit-scrollbar {*/}
-            {/*        display: ${isScrollbarHidden ? 'none' : 'block'};*/}
-            {/*    }*/}
-            {/*`}</style>*/}
-        </>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Navbar />
+            <div style={{ flex: 1 }}>
+                <LayoutDefault>{children}</LayoutDefault>
+            </div>
+            <Footer />
+            <ScrollTop />
+        </div>
     );
 }
