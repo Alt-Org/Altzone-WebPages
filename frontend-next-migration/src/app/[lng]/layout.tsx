@@ -21,25 +21,32 @@ const sedgwickFont = Sedgwick_Ave_Display({
     subsets: ['latin'],
     weight: '400',
     variable: '--font-family-title',
-    fallback: ['system-ui', 'arial'],
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const dmSans = DM_Sans({
     subsets: ['latin'],
     weight: '400',
     variable: '--font-family-secondary',
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const urbanist = Urbanist({
     variable: '--font-family-main',
     subsets: ['latin'],
     weight: '700',
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
 });
 
 const rubik = Rubik({
     subsets: ['latin'],
     weight: '400',
     variable: '--font-family-texts',
+    fallback: ['system-ui', 'arial', 'sans-serif'],
+    display: 'swap',
 });
 
 export const viewport: Viewport = {
