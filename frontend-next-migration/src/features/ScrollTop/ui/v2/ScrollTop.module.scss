@@ -1,45 +1,41 @@
 .ScrollTop {
-  // _styles/themes/main.scss
-  --primary-color: #FFA100;
-  --white: #FAF9F6;
-  --black: #121212;
-  --border-desktop: 4px;
-  --border-mobile: 2px;
-  --h1-size-mobile: 32px;
+    // _styles/themes/main.scss
+    --primary-color: #ffa100;
+    --white: #faf9f6;
+    --black: #121212;
+    --border-desktop: 4px;
+    --border-mobile: 2px;
+    --h1-size-mobile: 32px;
 
-  color: var(--black);
-  border: var(--border-desktop) solid var(--black)!important;
-  border-radius: var(--border-radius-custom)!important;
-  background-color: var(--primary-color)!important;
-  z-index: var(--navbar-z-index);
-  cursor: pointer;
-  width: 70px;
-  height: 70px;
-  padding:0 !important;
-  position: fixed;
-  bottom: 266px;
-  right: 5px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-  @media (max-width:breakpoint(lg)) {
-    width:60px;
-    height:60px;
-    right: 16px;
-    bottom: 266px;
-    border-width: var(--border-mobile)!important;
-    border-radius: calc(var(--border-radius-custom !important) * 1.5);
-  }
+    color: var(--black);
+    border: var(--border-desktop) solid var(--black) !important;
+    border-radius: var(--border-radius-custom) !important;
+    background-color: var(--primary-color) !important;
+    z-index: 10; /* Alennetaan z-index jotta footer ja navbar pysyvät päällä */
+    cursor: pointer;
+    padding: 0.75rem; /* Sama padding kuin chatbot-nappulassa */
+    position: fixed;
+    bottom: 80px; /* Sama korkeus kuin chatbot-nappula */
+    right: 24px; /* Siirretään oikealle reunaan */
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out;
+    @media (max-width: breakpoint(lg)) {
+        right: 24px; /* Mobiilissa myös oikealla reunassa */
+        bottom: 80px;
+        border-width: var(--border-mobile) !important;
+        border-radius: calc(var(--border-radius-custom !important) * 1.5);
+    }
 }
 .ScrollTop > img {
-  width:70%;
-  margin:auto;
-  @media (max-width:breakpoint(lg)) {
-    width:40%;
-  }
+    width: 32px;
+    height: 32px;
+    display: block;
 }
 
 .show {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }

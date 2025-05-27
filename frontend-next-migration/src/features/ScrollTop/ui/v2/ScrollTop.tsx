@@ -30,12 +30,8 @@ export const ScrollTop = memo(({ className = '' }: ScrollTopProps) => {
     const [showButton, setShowButton] = useState(false);
 
     useEffect(() => {
-        const viewportHeight = window.innerHeight;
-        const pageHeight = document.body.scrollHeight;
-        const scrollThreshold = viewportHeight / 6;
-        const bottomThreshold = pageHeight - viewportHeight - scrollThreshold;
-
-        if (currentYPosition > scrollThreshold && currentYPosition < bottomThreshold) {
+        // Yksinkertainen näkyvyys: näytä kun scrollattu yli 100px
+        if (currentYPosition > 100) {
             setShowButton(true);
         } else {
             setShowButton(false);
