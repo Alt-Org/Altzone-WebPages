@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import ChatBotButton from '../../ChatBot';
 import ChatsIcon from '@/shared/assets/icons/Chats.svg';
