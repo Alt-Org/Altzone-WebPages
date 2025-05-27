@@ -67,7 +67,8 @@
 }
 
 .h1 {
-    font-weight: bold;
+    font-weight: 400;
+    font-family: var(--font-family-title);
     color: var(--primary-color);
     font-size: var(--font-size-xl);
     padding-bottom: var(--spacing-sm);

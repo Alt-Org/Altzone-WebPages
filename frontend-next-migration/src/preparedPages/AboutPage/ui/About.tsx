@@ -1,11 +1,5 @@
 'use client';
-import { Sedgwick_Ave_Display } from 'next/font/google';
 import cls from './About.module.scss';
-
-const sedgwickFont = Sedgwick_Ave_Display({
-    subsets: ['latin'],
-    weight: '400',
-});
 
 export interface Props {
     title: string;
@@ -45,9 +39,9 @@ const About = (props: Props) => {
     return (
         <main className={cls.main}>
             <div className={cls.container}>
-                <p className={`${cls.h1} ${sedgwickFont.className}`}>{title}</p>
+                <p className={`${cls.h1}`}>{title}</p>
                 <p className={cls.gridp}>{description}</p>
-                <p className={`${cls.h1} ${sedgwickFont.className}`}>{keywords}</p>
+                <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
                         <p>10</p>
@@ -69,7 +63,7 @@ const About = (props: Props) => {
             </div>
             <div className={cls.container}>
                 <p
-                    className={`${cls.h1} ${sedgwickFont.className}`}
+                    className={`${cls.h1}`}
                     id={cls.History}
                 >
                     {storytitle}
@@ -78,22 +72,22 @@ const About = (props: Props) => {
                     className={cls.storygrid}
                     id={cls.line}
                 >
-                    <p className={`${cls.yearh1} ${sedgwickFont.className}`}>2019</p>
+                    <p className={`${cls.yearh1}`}>2019</p>
                     <p className={cls.p}>{V2019}</p>
 
-                    <p className={`${cls.yearh1} ${sedgwickFont.className}`}>2020</p>
+                    <p className={`${cls.yearh1}`}>2020</p>
                     <p className={cls.p}>{V2020}</p>
 
-                    <p className={`${cls.yearh1} ${sedgwickFont.className}`}>2021</p>
+                    <p className={`${cls.yearh1}`}>2021</p>
                     <p className={cls.p}>{V2021}</p>
 
-                    <p className={`${cls.yearh1} ${sedgwickFont.className}`}>2022</p>
+                    <p className={`${cls.yearh1}`}>2022</p>
                     <p className={cls.p}>{V2022}</p>
 
-                    <p className={`${cls.yearh1} ${sedgwickFont.className}`}>2023</p>
+                    <p className={`${cls.yearh1}`}>2023</p>
                     <p className={cls.p}>{V2023}</p>
 
-                    <p className={`${cls.yearh1} ${sedgwickFont.className}`}>2024</p>
+                    <p className={`${cls.yearh1}`}>2024</p>
                     <p className={cls.p}>{V2024}</p>
                 </div>
             </div>
