@@ -32,12 +32,26 @@ export const chatbotApi = directusApi.injectEndpoints({
 
                     chatbotData.forEach((item: any) => {
                         if (item.translations && Array.isArray(item.translations)) {
+                            // Map short language codes to full locale codes
+                            const languageMap: { [key: string]: string } = {
+                                fi: 'fi-FI',
+                                en: 'en-US',
+                                ru: 'ru-RU',
+                            };
+
+                            const fullLanguageCode = languageMap[language] || language;
+
                             const translation = item.translations.find(
-                                (t: any) => t.languages_code === language,
+                                (t: any) => t.languages_code === fullLanguageCode,
                             );
                             if (translation) {
                                 Object.entries(translation).forEach(([key, value]) => {
-                                    if (key !== 'id' && key !== 'languages_code' && value) {
+                                    if (
+                                        key !== 'id' &&
+                                        key !== 'chatbot_content_id' &&
+                                        key !== 'languages_code' &&
+                                        value
+                                    ) {
                                         contextText += `${key}: ${value}\n`;
                                     }
                                 });
