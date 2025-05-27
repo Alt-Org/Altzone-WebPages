@@ -3,7 +3,7 @@ import type { Viewport } from 'next';
 import { Urbanist, Rubik, Sedgwick_Ave_Display } from 'next/font/google';
 import { ReactNode } from 'react';
 import cls from '@/preparedPages/MainPage/ui/page.module.scss';
-import { CookieConsentComponent } from '@/features/CookieConsent';
+// import { CookieConsentComponent } from '@/features/CookieConsent';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { languages } from '@/shared/i18n/settings/settings';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
@@ -94,7 +94,7 @@ export default function RootLayout(props: Props) {
                 <Providers>
                     <FeedbackSideButton />
                     {children}
-                    <CookieConsentComponent />
+                    {/* <CookieConsentComponent /> */}
 
                     <CookieConsentV2 />
                 </Providers>
