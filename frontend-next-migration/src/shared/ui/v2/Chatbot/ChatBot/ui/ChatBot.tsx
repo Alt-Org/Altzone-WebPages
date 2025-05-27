@@ -1,3 +1,4 @@
+'use client';
 /**
  * ChatBotButton Component
  *
@@ -7,7 +8,6 @@
  *
  * @module ChatBotButton
  */
-
 import React from 'react';
 import Image from 'next/image';
 import cls from './ChatBot.module.scss';
