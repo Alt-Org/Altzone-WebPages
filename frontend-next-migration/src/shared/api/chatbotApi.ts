@@ -1,14 +1,9 @@
 import { directusApi } from './directusApi';
-import { envHelper } from '@/shared/const/envHelper';
-import { createDirectus, rest, readItems } from '@directus/sdk';
-
-const directusBaseUrl = envHelper.directusHost;
-const client = createDirectus(directusBaseUrl).with(rest());
 
 /**
  * API service for fetching chatbot context data from Directus backend.
  *
- * This service fetches data from the 'chatbot' collection that contains
+ * This service fetches data from the 'chatbot_content' collection that contains
  * all the context information needed for the chatbot responses.
  * The data includes translations for multiple languages (Finnish, English, Russian).
  */
@@ -18,33 +13,30 @@ export const chatbotApi = directusApi.injectEndpoints({
          * Fetches chatbot context for specific language
          */
         getChatbotContext: builder.query<string, string>({
-            queryFn: async (language: string) => {
-                try {
-                    const chatbotData = await client.request(
-                        readItems('chatbot_content', {
-                            fields: ['id', 'translations.*'],
-                            deep: { translations: true },
-                        }),
-                    );
+            query: (language: string) => {
+                // Map short language codes to full locale codes
+                const languageMap: { [key: string]: string } = {
+                    fi: 'fi-FI',
+                    en: 'en-US',
+                    ru: 'ru-RU',
+                };
+                const fullLanguageCode = languageMap[language] || language;
 
-                    // Process data and create context string
-                    let contextText = '=== CHATBOT CONTEXT DATA ===\n';
+                return {
+                    url: '/items/chatbot_content',
+                    params: {
+                        fields: 'id,translations.*',
+                        'deep[translations][_filter][languages_code][_eq]': fullLanguageCode,
+                    },
+                };
+            },
+            transformResponse: (response: any) => {
+                let contextText = '=== CHATBOT CONTEXT DATA ===\n';
 
-                    chatbotData.forEach((item: any) => {
+                if (response?.data && Array.isArray(response.data)) {
+                    response.data.forEach((item: any) => {
                         if (item.translations && Array.isArray(item.translations)) {
-                            // Map short language codes to full locale codes
-                            const languageMap: { [key: string]: string } = {
-                                fi: 'fi-FI',
-                                en: 'en-US',
-                                ru: 'ru-RU',
-                            };
-
-                            const fullLanguageCode = languageMap[language] || language;
-
-                            const translation = item.translations.find(
-                                (t: any) => t.languages_code === fullLanguageCode,
-                            );
-                            if (translation) {
+                            item.translations.forEach((translation: any) => {
                                 Object.entries(translation).forEach(([key, value]) => {
                                     if (
                                         key !== 'id' &&
@@ -55,16 +47,12 @@ export const chatbotApi = directusApi.injectEndpoints({
                                         contextText += `${key}: ${value}\n`;
                                     }
                                 });
-                            }
+                            });
                         }
                     });
-
-                    return { data: contextText };
-                } catch (error) {
-                    // eslint-disable-next-line no-console
-                    console.error('❌ Error fetching chatbot data:', error);
-                    throw error;
                 }
+
+                return contextText;
             },
         }),
     }),
