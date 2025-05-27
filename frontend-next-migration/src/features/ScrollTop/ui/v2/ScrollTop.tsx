@@ -2,7 +2,6 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { useCurrentYPosition } from '@/shared/lib/hooks';
 import upUpIcon from '@/shared/assets/icons/UpUp arrows.svg';
 import cls from './ScrollTop.module.scss';
@@ -39,18 +38,20 @@ export const ScrollTop = memo(({ className = '' }: ScrollTopProps) => {
     }, [currentYPosition]);
 
     return (
-        <Button
+        <button
             data-testid="scroll-to-top-btn"
-            size={ButtonSize.XXXL}
-            theme={ButtonTheme.OUTLINE}
             className={classNames(cls.ScrollTop, { [cls.show]: showButton }, [className])}
             onClick={handleButtonClick}
+            aria-label="Scroll to top"
         >
             <Image
                 src={upUpIcon}
                 alt="double chevron pointing up"
+                width={32}
+                height={32}
+                draggable={false}
             />
-        </Button>
+        </button>
     );
 });
 
