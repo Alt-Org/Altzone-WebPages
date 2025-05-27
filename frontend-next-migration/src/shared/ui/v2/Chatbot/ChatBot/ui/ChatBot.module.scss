@@ -2,8 +2,8 @@
 
 .chatbot-container {
     position: fixed;
-    bottom: 80px; /* Nostetaan footerin yläpuolelle */
-    right: 176px; /* Chatbot-nappulan vasemmalle puolelle */
+    bottom: 24px;
+    right: 100px;
     max-width: 460px;
     width: clamp(300px, 25vw, 460px);
     border: var(--border-desktop) solid black;
@@ -16,11 +16,11 @@
     height: clamp(500px, 70vh, 764px);
     max-height: 764px;
     overflow: hidden;
-    z-index: 25; /* Chatbot-ikkuna näkyy footerin päällä */
+    z-index: 25;
 
     // Responsive for mobile
     @media (max-width: 768px) {
-        bottom: 100px;
+        bottom: 24px;
         right: 24px;
         left: 24px;
         width: auto;
