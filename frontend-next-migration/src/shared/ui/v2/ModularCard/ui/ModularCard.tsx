@@ -22,6 +22,7 @@ export enum ModularCardTheme {
     PRIMARY = '',
     TITLEIMAGE = 'TitleImageCard',
     NEWSCARD = 'NewsImageCard',
+    DEFENSECARD = 'DefenseCard',
 }
 
 /**

@@ -139,6 +139,7 @@
     }
 }
 
+
 // TItleImageCard
 .Card.TitleImageCard {
     position: relative;
@@ -196,4 +197,23 @@
         border-bottom: 152px solid var(--background);
         border-right: 85px solid transparent;
     }
+}
+
+.Card.DefenseCard {
+    position:relative;
+    background-color: var(--background);
+    height:203px;
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    box-shadow: 4px 8px 0 var(--black);
+    @media (max-width:breakpoint(xxl)) {
+        height: 155px;
+    }
+    @media (max-width:breakpoint(md)) {
+        height:127px;
+        border: var(--border-mobile) solid var(--black);
+        box-shadow: 2px 4px 0 var(--black);
+    }
+
 }

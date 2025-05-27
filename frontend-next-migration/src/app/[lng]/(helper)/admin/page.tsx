@@ -99,16 +99,93 @@ const Page = () => {
                     </div>
                 ),
             }}
-            rightBottomSidebar={{
-                hideOnMobile: true,
-                // hideOnDesktop: true,
-                component: (
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-                    </div>
-                ),
-            }}
+            // rightBottomSidebar={{
+            //     hideOnMobile: true,
+            //     // hideOnDesktop: true,
+            //     component: (
+            //         <div style={{ width: '100%', maxWidth: '600px' }}>
+            //             <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+            //         </div>
+            //     ),
+            // }}
         >
+            {/* Testing ModularCard */}
+            <h2>Testing Defense Gallery ModularCard</h2>
+            <div
+                style={{
+                    display: 'flex',
+                    gap: '10px',
+                    flexWrap: 'wrap',
+                    margin: '10px 0 20px',
+                }}
+            >
+                {[{ id: 1 }, { id: 2 }].map((card) => (
+                    <div
+                        key={card.id}
+                        style={{
+                            width: '100%',
+                            flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
+                            /*  flexBasis: 100%; on mobile tablet devices  */
+                        }}
+                    >
+                        <ModularCard
+                            className="customClass"
+                            theme={ModularCardTheme.DEFENSECARD}
+                            // onClick={() => {
+                            //     // console.log(`clicked modularcard ${card.id}`);
+                            // }} // Needs use-client parent
+                            withScalableLink={true}
+                        >
+                            <ModularCard.Texts>
+                                <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+                                <ModularCard.Texts.Body>
+                                    This is the main content, adapting to both desktop and mobile
+                                    main content, adapting to both desktop and mobile devices main
+                                    content, adapting to both desktop and mobile devices main
+                                    content, adapting to both desktop and mobile devices main
+                                    content, adapting to both desktop and mobile devices
+                                </ModularCard.Texts.Body>
+                            </ModularCard.Texts>
+                            <ModularCard.Image>
+                                <ModularCard.Image.Triangle />
+                                <ModularCard.Image.Image
+                                    src={hannu}
+                                    alt="hannu hodari"
+                                />
+                            </ModularCard.Image>
+                        </ModularCard>
+                    </div>
+                ))}
+                <div
+                    style={{
+                        width: '100%',
+                    }}
+                >
+                    <ModularCard
+                        className="customClass"
+                        theme={ModularCardTheme.TITLEIMAGE}
+                        // onClick={() => {
+                        //     // console.log(`clicked modularcard ${card.id}`);
+                        // }} // Needs use-client parent
+                        path="/fi/page/details"
+                        isExternal={false}
+                        withScalableLink={true}
+                    >
+                        <ModularCard.Texts>
+                            <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+                        </ModularCard.Texts>
+                        <ModularCard.Image>
+                            <ModularCard.Image.Triangle />
+                            <ModularCard.Image.Image
+                                src={hannu}
+                                alt="hannu hodari"
+                            />
+                        </ModularCard.Image>
+                    </ModularCard>
+                </div>
+            </div>
+            {/* End of Testing ModularCard */}
+
             <WallIntroAnimation renderOnce={true} />
             <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
             <div style={{ margin: '20px' }}>
@@ -137,7 +214,6 @@ const Page = () => {
 
             <h1 style={{ marginTop: '20px' }}>Main Page Content</h1>
             {/* Testing ModularCard */}
-
             <div
                 style={{
                     display: 'flex',
@@ -151,7 +227,7 @@ const Page = () => {
                         key={card.id}
                         style={{
                             width: '100%',
-                            // flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
+                            flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
                             /*  flexBasis: 100%; on mobile tablet devices  */
                         }}
                     >
