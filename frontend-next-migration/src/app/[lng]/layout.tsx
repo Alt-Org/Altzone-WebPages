@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { CookieConsentComponent } from '@/features/CookieConsent';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
+import { ChatBotToggleButton } from '@/shared/ui/v2/Chatbot';
 import { languages } from '@/shared/i18n/settings/settings';
 import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
 import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
@@ -98,6 +99,7 @@ export default function RootLayout(props: Props) {
             >
                 <Providers>
                     <FeedbackSideButton />
+                    <ChatBotToggleButton />
                     {children}
                     <CookieConsentComponent />
                 </Providers>
