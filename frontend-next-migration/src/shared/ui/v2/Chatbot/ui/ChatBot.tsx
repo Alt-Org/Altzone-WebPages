@@ -104,9 +104,8 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
             </div>
             <div className={cls['chatbot-messages']}>
                 {messages.map((msg, index) => (
-                    <>
+                    <React.Fragment key={index}>
                         <div
-                            key={index}
                             className={
                                 cls['message'] +
                                 ' ' +
@@ -136,7 +135,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                                 </span>
                             </div>
                         )}
-                    </>
+                    </React.Fragment>
                 ))}
                 {error && <p className={cls['error-message']}>{error}</p>}
                 <div ref={messagesEndRef} />
