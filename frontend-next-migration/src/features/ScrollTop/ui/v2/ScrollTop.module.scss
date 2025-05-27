@@ -8,25 +8,45 @@
     --h1-size-mobile: 32px;
 
     color: var(--black);
-    border: var(--border-desktop) solid var(--black) !important;
-    border-radius: var(--border-radius-custom) !important;
-    background-color: var(--primary-color) !important;
-    z-index: 10; /* Alennetaan z-index jotta footer ja navbar pysyvät päällä */
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-custom);
+    background-color: var(--primary-color);
+    z-index: 10;
     cursor: pointer;
-    padding: 0.75rem; /* Sama padding kuin chatbot-nappulassa */
+    padding: 0.75rem;
+    box-shadow: var(--s);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
     position: fixed;
-    bottom: 80px; /* Sama korkeus kuin chatbot-nappula */
-    right: 24px; /* Siirretään oikealle reunaan */
+    bottom: 100px;
+    right: 24px;
     opacity: 0;
     visibility: hidden;
     transition:
         opacity 0.2s ease-in-out,
         visibility 0.2s ease-in-out;
+    &:hover {
+        background-color: var(--primary-color-variant-hover);
+        transform: scale(var(--animation-icon-hover-scale));
+        box-shadow: var(--m);
+    }
+
+    &:active {
+        transform: scale(var(--animation-icon-active-scale));
+        box-shadow: var(--xs);
+    }
+
+    &:focus {
+        outline: 2px solid var(--primary-color-variant-hover);
+        outline-offset: 2px;
+    }
+
     @media (max-width: breakpoint(lg)) {
-        right: 24px; /* Mobiilissa myös oikealla reunassa */
-        bottom: 80px;
-        border-width: var(--border-mobile) !important;
-        border-radius: calc(var(--border-radius-custom !important) * 1.5);
+        right: 24px;
+        bottom: 100px;
+        border-width: var(--border-mobile);
+        border-radius: calc(var(--border-radius-custom) * 1.5);
     }
 }
 .ScrollTop > img {
