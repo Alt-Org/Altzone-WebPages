@@ -98,6 +98,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                             alt="Close"
                             width={28}
                             height={28}
+                            style={{ width: 'auto', height: 'auto' }}
                         />
                     </button>
                 </div>
@@ -185,6 +186,8 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                                     border: 'none',
                                     filter: 'none',
                                     display: 'block',
+                                    width: 'auto',
+                                    height: 'auto',
                                 }}
                                 draggable={false}
                             />
