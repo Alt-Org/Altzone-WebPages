@@ -2,14 +2,11 @@ import { dir } from 'i18next';
 import type { Viewport } from 'next';
 import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
-import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { CookieConsentComponent } from '@/features/CookieConsent';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { ChatBotToggleButton } from '@/shared/ui/v2/Chatbot';
 import { languages } from '@/shared/i18n/settings/settings';
-import { withBackgroundImage } from '@/shared/lib/hocs/withBackgroundImage';
-import bgPicture from '@/shared/assets/images/backgrounds/background.webp';
-import bgPictureCompressed from '@/shared/assets/images/backgrounds/background-compressed.webp';
+import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
 // const openSans = Open_Sans({
@@ -56,7 +53,7 @@ export const viewport: Viewport = {
     userScalable: false,
 };
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
     return languages.map((lng) => ({ lng }));
 }
 
@@ -66,13 +63,6 @@ interface Props {
         lng: string;
     };
 }
-
-const ContentWithBackground = withBackgroundImage({
-    alt: 'Main-Page underground style background',
-    imagePath: bgPicture as unknown as string,
-    className: cls.wholePageBG,
-    shouldBeLazyLoaded: true,
-})(({ children }: any) => children);
 
 export default function RootLayout(props: Props) {
     const { children, params } = props;
@@ -98,18 +88,15 @@ export default function RootLayout(props: Props) {
                     sizes="72x72"
                 />
             </head>
-            <body
-                style={{
-                    // backgroundImage: `url("/images/background.webp")`,
-                    backgroundImage: `url("${bgPicture.src}")`,
-                }}
-            >
-                <Providers>
-                    <FeedbackSideButton />
-                    <ChatBotToggleButton />
-                    {children}
-                    <CookieConsentComponent />
-                </Providers>
+            <body>
+                <LayoutWithBackground>
+                    <Providers>
+                        <FeedbackSideButton />
+                        <ChatBotToggleButton />
+                        {children}
+                        <CookieConsentComponent />
+                    </Providers>
+                </LayoutWithBackground>
             </body>
         </html>
     );
