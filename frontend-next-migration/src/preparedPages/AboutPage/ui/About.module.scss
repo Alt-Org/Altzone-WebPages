@@ -1,152 +1,152 @@
 .main {
-  display:grid;
-  justify-items: center;
-}
-  
-.container {
-  background: var(--background);
-  text-align: center;
-  border-radius: var( --corner-radius-web);
-  outline: var(--thickness-web) solid var(--black);
-  box-shadow: 10px 10px #121212;
-  margin-bottom: 5%;
-  width: 30%;
-   @media (min-width: 1400px) and (max-width: 2004px){
-    width: 40%;
-  }
-  @media (max-width: breakpoint(xxl)){
-    width: 50%;
-  }
-  @media (max-width: breakpoint(xl)){
-    width: 50%;
-  }
-  @media (max-width: breakpoint(md)){
-    width: 70%;
-  }
-  @media (max-width: breakpoint(sm)){
-    width: 90%;
-  }
+    display: grid;
+    justify-items: center;
 }
 
-.headergrid{
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 1;
-  @media (max-width: breakpoint(md)){
-    grid-template-columns: 50% 50%;
-  }
-  @media (max-width: breakpoint(sm)){
-    grid-template-columns: 50% 50%;
-  }
+.container {
+    background: var(--background);
+    text-align: center;
+    border-radius: var(--corner-radius-web);
+    outline: var(--thickness-web) solid var(--black);
+    box-shadow: 10px 10px #121212;
+    margin-bottom: 5%;
+    width: 30%;
+    @media (min-width: 1400px) and (max-width: 2004px) {
+        width: 40%;
+    }
+    @media (max-width: breakpoint(xxl)) {
+        width: 50%;
+    }
+    @media (max-width: breakpoint(xl)) {
+        width: 50%;
+    }
+    @media (max-width: breakpoint(md)) {
+        width: 70%;
+    }
+    @media (max-width: breakpoint(sm)) {
+        width: 90%;
+    }
+}
+
+.headergrid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 1;
+    @media (max-width: breakpoint(md)) {
+        grid-template-columns: 50% 50%;
+    }
+    @media (max-width: breakpoint(sm)) {
+        grid-template-columns: 50% 50%;
+    }
 }
 
 .storygrid {
-  display: grid;
-  grid-template-columns: 25% 73%;
-  grid-template-rows: 6;
-  white-space: pre-line;
-  @media (max-width: breakpoint(xl)){
-    grid-template-columns: 35% 65%;
-  }
-  @media (max-width: breakpoint(md)){
-    grid-template-columns: 30% 70%;
-  }
-  @media (max-width: breakpoint(sm)){
-    grid-template-columns: 100%;
-  }
-}
-  
-.h1{
-  font: var(--heading-font);
-  font-weight: bold;
-  color: var(--primary-color);
-  font-size: var(--font-size-xl);
-  padding-bottom: var(--spacing-sm);
-  padding-top: var(--spacing-sm);
-  @media (max-width: breakpoint(sm)){
-    font-size: var(--h2-size-mobile);
-  }
-  @media (max-width: breakpoint(md)){
-    font-size: var(--h2-size-mobile);
-  }
+    display: grid;
+    grid-template-columns: 25% 73%;
+    grid-template-rows: 6;
+    white-space: pre-line;
+    @media (max-width: breakpoint(xl)) {
+        grid-template-columns: 35% 65%;
+    }
+    @media (max-width: breakpoint(md)) {
+        grid-template-columns: 30% 70%;
+    }
+    @media (max-width: breakpoint(sm)) {
+        grid-template-columns: 100%;
+    }
 }
 
-.p{
-  font: var(--body-font);
-  font-size: var(--font-size-s);
-  text-align: left;
-  padding-bottom: var(--spacing-700);
-  @media (max-width: breakpoint(sm)){
-    padding-left: 10%;
-  }
+.h1 {
+    font-family: var(--font-family-title);
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+    padding-bottom: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    @media (max-width: breakpoint(sm)) {
+        font-size: var(--h2-size-mobile);
+    }
+    @media (max-width: breakpoint(md)) {
+        font-size: var(--h2-size-mobile);
+    }
 }
 
-.gridp{
-  font: var(--body-font);
-  font-size: var(--font-size-s);
-  text-align: center;
-  padding: 2%;
-}
-
-.yearh1{
-  font: var(--heading-font);
-  font-weight: bold;
-  color: orange;
-  font-size: var(--font-size-xl);
-  text-align: left;
-  @media (max-width: breakpoint(sm)){
+.p {
+    font: var(--body-font);
+    font-size: var(--font-size-s);
     text-align: left;
-    padding-bottom: var(--spacing-lg);
-    font-size: var(--h3-size-mobile);
-  }
-  @media (max-width: breakpoint(md)){
+    padding-bottom: var(--spacing-700);
+    @media (max-width: breakpoint(sm)) {
+        padding-left: 10%;
+    }
+}
+
+.gridp {
+    font: var(--body-font);
+    font-size: var(--font-size-s);
+    text-align: center;
+    padding: 2%;
+}
+
+.yearh1 {
+    font-family: var(--font-family-title);
+    font-weight: bold;
+    color: orange;
+    font-size: var(--font-size-xl);
     text-align: left;
-    padding-bottom: var(--spacing-lg);
-    font-size: var(--h3-size-mobile);
-  }
-  @media (max-width: breakpoint(lg)){
-    font-size: var(--h3-size-mobile);
-  }
+    @media (max-width: breakpoint(sm)) {
+        text-align: left;
+        padding-bottom: var(--spacing-lg);
+        font-size: var(--h3-size-mobile);
+    }
+    @media (max-width: breakpoint(md)) {
+        text-align: left;
+        padding-bottom: var(--spacing-lg);
+        font-size: var(--h3-size-mobile);
+    }
+    @media (max-width: breakpoint(lg)) {
+        font-size: var(--h3-size-mobile);
+    }
 }
 
-#line{
-  border-left: 10px solid orange;
-  margin-left: 5%;
-  margin-bottom: var(--spacing-600);
+#line {
+    border-left: 10px solid orange;
+    margin-left: 5%;
+    margin-bottom: var(--spacing-600);
 }
 
-#History{
-  padding-bottom: var(--spacing-600);
+#History {
+    padding-bottom: var(--spacing-600);
 }
 
 .yearh1::before {
-  content: "";
-  position:static;
-  border: solid orange;
-  border-radius: 0px 10px 10px 0px;
-  border-width: 5px;
-  padding-left: var(--spacing-500);
-  float: left;
-  margin-top: var(--spacing-300);
-  margin-right: var(--spacing-sm);
-  @media (max-width: breakpoint(sm)){
-    padding-left: var(--spacing-lg);
+    content: '';
+    position: static;
+    border: solid orange;
+    border-radius: 0px 10px 10px 0px;
+    border-width: 5px;
+    padding-left: var(--spacing-500);
+    float: left;
+    margin-top: var(--spacing-300);
     margin-right: var(--spacing-sm);
-    margin-top: var(--spacing-250);
-  }
-  @media (max-width: breakpoint(md)){
-    padding-left: var(--spacing-lg);
-    margin-top: var(--spacing-250);
-  }
-  @media (max-width: breakpoint(lg)){
-    padding-left: var(--spacing-lg);
-    margin-top: var(--spacing-250);
-  }
-  @media (max-width: breakpoint(xl)){
-    padding-left: var(--spacing-md);
-    margin-right: var(--spacing-md);
-  }
-  @media (max-width: breakpoint(xxl)){
-    padding-left: var(--spacing-md);
-  }
+    @media (max-width: breakpoint(sm)) {
+        padding-left: var(--spacing-lg);
+        margin-right: var(--spacing-sm);
+        margin-top: var(--spacing-250);
+    }
+    @media (max-width: breakpoint(md)) {
+        padding-left: var(--spacing-lg);
+        margin-top: var(--spacing-250);
+    }
+    @media (max-width: breakpoint(lg)) {
+        padding-left: var(--spacing-lg);
+        margin-top: var(--spacing-250);
+    }
+    @media (max-width: breakpoint(xl)) {
+        padding-left: var(--spacing-md);
+        margin-right: var(--spacing-md);
+    }
+    @media (max-width: breakpoint(xxl)) {
+        padding-left: var(--spacing-md);
+    }
 }
