@@ -1,5 +1,7 @@
 'use client';
 import cls from './About.module.scss';
+import chevronDown from '@/shared/assets/icons/chevronDown.svg';
+import Image from 'next/image';
 
 export interface Props {
     title: string;
@@ -44,19 +46,19 @@ const About = (props: Props) => {
                 <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
-                        <p>10</p>
+                        <p className={cls.gridp}>10</p>
                         <p className={cls.gridp}>{project}</p>
                     </div>
                     <div>
-                        <p>10</p>
+                        <p className={cls.gridp}>10</p>
                         <p className={cls.gridp}>{locality}</p>
                     </div>
                     <div>
-                        <p>10</p>
+                        <p className={cls.gridp}>10</p>
                         <p className={cls.gridp}>{nationality}</p>
                     </div>
                     <div>
-                        <p>10</p>
+                        <p className={cls.gridp}>10</p>
                         <p className={cls.gridp}>{behind}</p>
                     </div>
                 </div>
@@ -89,6 +91,13 @@ const About = (props: Props) => {
 
                     <p className={`${cls.yearh1}`}>2024</p>
                     <p className={cls.p}>{V2024}</p>
+                    <Image
+                        loading="eager"
+                        alt={'Chevron'}
+                        src={chevronDown}
+                        className={cls.chevronImage}
+                        width={50}
+                    />
                 </div>
             </div>
         </main>

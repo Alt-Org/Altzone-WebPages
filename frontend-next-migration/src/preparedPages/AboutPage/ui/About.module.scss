@@ -102,7 +102,8 @@
 }
 
 .yearh1 {
-    font-weight: bold;
+    font-weight: 400;
+    font-family: var(--font-family-title);
     color: var(--primary-color);
     font-size: var(--font-size-xl);
     text-align: left;
@@ -124,6 +125,10 @@
     }
 }
 
+.transform {
+    transform: translateY(-50%);
+}
+
 #line {
     border-left: 10px solid orange;
     margin-left: 5%;
@@ -132,6 +137,18 @@
 
 #History {
     padding-bottom: var(--spacing-600);
+}
+
+.chevronImage {
+    transform: translate(-60%, 10%);
+
+    @media (max-width: breakpoint(sm)) {
+        transform: translate(-60%, 35%) scale(0.8);
+    }
+
+    @media (max-width: breakpoint(md)) {}
+
+    @media (max-width: breakpoint(lg)) {}
 }
 
 .yearh1::before {
