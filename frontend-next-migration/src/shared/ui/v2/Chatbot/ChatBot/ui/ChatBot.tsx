@@ -15,7 +15,7 @@ import cls from './ChatBot.module.scss';
 import xIcon from '@/shared/assets/icons/xIcon.svg';
 import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
 import sendArrow from '@/shared/assets/icons/sendArrow.svg';
-import { useChatBot } from '../logic/useChatBot';
+import { useChatBot } from '../../logic/useChatBot';
 import { useClientTranslation } from '@/shared/i18n';
 
 /**
