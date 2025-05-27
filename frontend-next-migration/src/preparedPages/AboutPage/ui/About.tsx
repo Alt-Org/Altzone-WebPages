@@ -1,7 +1,5 @@
 'use client';
-import { object, string } from 'yup';
 import cls from './About.module.scss';
-import { title } from 'process';
 
 export interface Props {
     title: string;
@@ -64,7 +62,12 @@ const About = (props: Props) => {
                 </div>
             </div>
             <div className={cls.container}>
-                <p className={cls.h1}>{storytitle}</p>
+                <p
+                    className={cls.h1}
+                    id={cls.History}
+                >
+                    {storytitle}
+                </p>
                 <div
                     className={cls.storygrid}
                     id={cls.line}

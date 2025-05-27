@@ -1,7 +1,6 @@
 import { useServerTranslation } from '@/shared/i18n';
 import { createPage } from '@/app/_helpers';
 import { AboutPageProps } from '@/preparedPages/AboutPage';
-import { object } from 'yup';
 
 export async function _getPage(lng: any) {
     const { t } = await useServerTranslation(lng, 'about');
