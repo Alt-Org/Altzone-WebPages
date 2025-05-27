@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /**
  * ChatBotButton Component
  *
@@ -47,7 +46,7 @@ export interface ChatBotButtonProps {
  *
  * @example
  * // With close callback
- * <ChatBotButton onClose={() => console.log('Chatbot closed')} />
+ * <ChatBotButton onClose={() => setChatbotVisible(false)} />
  *
  * @example
  * // Controlled by parent component
