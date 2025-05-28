@@ -114,17 +114,17 @@ const Page = () => {
             <div
                 style={{
                     display: 'flex',
-                    gap: '10px',
+                    gap: '16px',
                     flexWrap: 'wrap',
                     margin: '10px 0 20px',
                 }}
             >
-                {[{ id: 1 }, { id: 2 }].map((card) => (
+                {[{ id: 1 }, { id: 2 }, { id: 3 }].map((card) => (
                     <div
                         key={card.id}
                         style={{
                             width: '100%',
-                            flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
+                            flexBasis: 'calc(50% - 16px)', // makes 2 columns, vertical gap = 10px
                             /*  flexBasis: 100%; on mobile tablet devices  */
                         }}
                     >
@@ -137,14 +137,8 @@ const Page = () => {
                             withScalableLink={true}
                         >
                             <ModularCard.Texts>
-                                <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
-                                <ModularCard.Texts.Body>
-                                    This is the main content, adapting to both desktop and mobile
-                                    main content, adapting to both desktop and mobile devices main
-                                    content, adapting to both desktop and mobile devices main
-                                    content, adapting to both desktop and mobile devices main
-                                    content, adapting to both desktop and mobile devices
-                                </ModularCard.Texts.Body>
+                                <ModularCard.Texts.Title>Torjujat</ModularCard.Texts.Title>
+                                <ModularCard.Texts.Body>Ahmatti</ModularCard.Texts.Body>
                             </ModularCard.Texts>
                             <ModularCard.Image>
                                 <ModularCard.Image.Triangle />
