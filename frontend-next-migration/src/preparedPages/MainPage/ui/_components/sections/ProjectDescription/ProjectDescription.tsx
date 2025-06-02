@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import greenHaired from '@/shared/assets/images/heros/hannu-hodari/ahmatti_2_60.webp';
+import greenHaired from '@/shared/assets/images/mainpage/subway_WEBP.webp';
 import { Container } from '@/shared/ui/Container';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import cls from './ProjectDescription.module.scss';
@@ -17,7 +17,7 @@ export interface Props {
 }
 
 export const ProjectDescription = (props: Props) => {
-    const { className = '', description, title, subDescription, descriptionArray } = props;
+    const { description, title, subDescription } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -33,17 +33,18 @@ export const ProjectDescription = (props: Props) => {
     return (
         <section
             ref={ref}
-            className={classNames(cls.Section, mods, [className])}
+            className={classNames(cls.Section, mods)}
             id="description"
         >
             <Container className={classNames(cls.Container, mods)}>
-                {!isMobileSize && (
-                    <Image
+
+                   <Image
                         src={greenHaired}
                         alt={'description hero'}
-                        className={classNames(cls.Image, mods)}
+                        style={{ objectFit: 'cover' }}
+                        className={classNames(cls.Image)}
                     />
-                )}
+                
 
                 <h2 className={cls.titleQuestion}>{title}</h2>
                 <div className={classNames(cls.imageTextBlock, mods)}>

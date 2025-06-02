@@ -26,7 +26,7 @@
   align-items: center;
   opacity: 0;
   transform: translateY(20px);
-
+  width: 100%;
   &.inView{
     animation: slideIn 1.8s ease-in-out;
     transform: translateY(0);
@@ -93,7 +93,7 @@
   }
 
   p{
-    font-size: var(--font-line-l);
+    font-size: 3.5rem;
     font-family: var(--font-family-title), sans-serif;
     font-weight: lighter;
     text-align: center;
@@ -114,13 +114,12 @@
 }
 
 .Image {
-
+  display: inline-block;
   height: auto;
+  width: cover;
+  background-size: cover;
   object-fit: cover;
-
-  &.inView{
-    animation: rotate 1.5s alternate;
-  }
+  margin-bottom: 40px;
 
 }
 

@@ -6,6 +6,7 @@
   min-height: 100vh;
   position: relative;
   gap: 20px;
+  justify-content:start;
 
 }
 
@@ -189,20 +190,22 @@
 @media (max-width: 1150px) {
   .Content {
     width: 90%;
-  }
-
-  .Buttons {
-    //width: 100%;
-    align-items: center;
     flex-direction: column;
-
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
-  //.NavElements {
-    //margin-bottom: 5rem;
-    //margin-top: 1rem;
- // }
-
   .sideImg {
-    display: none;
+    margin-left: 0;
+    align-self: center;
+  }
+
 }
+
+
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-line-xxl);
+  }
+
 }
