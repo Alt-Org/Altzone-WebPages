@@ -2,6 +2,11 @@
 'use client';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import vihapuhe from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
+import jokester from '@/shared/assets/images/heros/jokester/Jokester.png';
+import sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
+import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.png';
+import mirror from '@/shared/assets/images/heros/mirror/Mirror.png';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
@@ -119,7 +124,14 @@ const Page = () => {
                     margin: '10px 0 20px',
                 }}
             >
-                {[{ id: 1 }, { id: 2 }, { id: 3 }].map((card) => (
+                {[
+                    { id: 1, src: vihapuhe },
+                    { id: 2, src: jokester },
+                    { id: 3, src: fatePriest },
+                    { id: 4, src: mirror },
+                    { id: 5, src: hannu },
+                    { id: 6, src: sleeper },
+                ].map((card) => (
                     <div
                         key={card.id}
                         style={{
@@ -138,12 +150,12 @@ const Page = () => {
                         >
                             <ModularCard.Texts>
                                 <ModularCard.Texts.Title>Torjujat</ModularCard.Texts.Title>
-                                <ModularCard.Texts.Body>Ahmatti</ModularCard.Texts.Body>
+                                <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
                             </ModularCard.Texts>
                             <ModularCard.Image>
                                 <ModularCard.Image.Triangle />
                                 <ModularCard.Image.Image
-                                    src={hannu}
+                                    src={card.src}
                                     alt="hannu hodari"
                                 />
                             </ModularCard.Image>

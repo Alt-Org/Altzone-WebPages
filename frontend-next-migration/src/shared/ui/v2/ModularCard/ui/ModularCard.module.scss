@@ -24,11 +24,11 @@
 
     .ModularCardTexts {
         transition: all ease-in-out;
-        transition-duration: 0.7s;
+        transition-duration: 0.5s;
     }
     &:hover {
         .ModularCardTexts {
-            flex-basis: 36% !important;
+            flex-basis: 40% !important;
         }
     }
     
@@ -209,6 +209,7 @@
     border-radius: var(--border-radius-md);
     display: flex;
     box-shadow: 4px 8px 0 var(--black);
+    overflow: hidden;
     @media (max-width:breakpoint(md)) {
         height:160px;
         box-shadow: 2px 4px 0 var(--black);
@@ -243,16 +244,33 @@
 
 .Card.DefenseCard > .ModularCardImageSection {
     flex-basis: 55%;
-    border: 4px solid #FF0000;
-    overflow: hidden;
+    // border: 4px solid #FF0000;
+    overflow: visible;
+    position: relative;
+}
+
+.Card.DefenseCard > .ModularCardImageSection > .ModularCardTriangle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    transform: skewX(20deg);
+    // border-bottom: 212px solid var(--background);
+    // border-right: 140px solid transparent;
+    background-color: var(--color-retroflector);
+    // @media (max-width:breakpoint(md)) {
+    //     border-bottom: 152px solid var(--background);
+    //     border-right: 85px solid transparent;
+    // }
 }
 
 
 .Card.DefenseCard > .ModularCardImageSection > .ModularCardImage {
     position: relative;
-    left: 24px;
+    left: 32px;
     max-width: 100%;
-    height: calc(100% + 16px);
+    height: calc(100% + 32px);
     object-fit: contain;
 }
 
