@@ -57,7 +57,6 @@
   padding: 0;
   .description{
     background-color: transparent;
-
   }
   &.inView{
     animation: zoomIn 1.8s ease-in-out;
@@ -139,11 +138,7 @@
   max-width: 90%;
   white-space: pre-line;
 
- @media screen and (max-width: 600px) {
-   & {
-     font-size: var(--font-line-xxl);
-   }
- }
+
 
   @media screen and (max-width: 400px) {
     & {
@@ -153,9 +148,21 @@
 
 }
 
-@media screen and (min-width: breakpoint(lg)) {
+@media screen and (max-width: breakpoint(sm)) {
   .description {
     width: 60%;
+    p{
+      font-size: 0.9rem;
+      text-align: left;
+    }
+  }
+  .titleQuestion{
+    font-size: 1.5rem;
+
+  }
+  .subDescription{
+    p{
+      font-size: 1.5rem;
+    }
   }
 }
-

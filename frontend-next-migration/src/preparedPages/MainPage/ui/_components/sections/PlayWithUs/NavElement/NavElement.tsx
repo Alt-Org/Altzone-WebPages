@@ -28,7 +28,7 @@ export const NavElement = memo(({ navElem, className = '' }: NavElementProps) =>
                     {navElem?.title && <h3>{navElem.title}</h3>}
                 </AppLink>
             </div>
-            <p>{navElem?.body && <p>{navElem.body}</p>}</p>
+            <p className={cls.textUnderButton}>{navElem?.body && <p>{navElem.body}</p>}</p>
         </div>
     );
 });

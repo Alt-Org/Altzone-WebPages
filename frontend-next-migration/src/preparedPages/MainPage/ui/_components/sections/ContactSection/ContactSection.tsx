@@ -21,6 +21,11 @@ export const ContactSection = (props: Props) => {
             fluid={true}
         >
             <div className={cls.Content}>
+                <Image
+                    src={ContactImg}
+                    alt={'Side image with hero'}
+                    className={cls.sideImg}
+                />
                 <div className={cls.ContentWithNav}>
                     <h2 className={cls.title}>{title}</h2>
                     <a
@@ -32,11 +37,6 @@ export const ContactSection = (props: Props) => {
                         {linkText}
                     </a>
                 </div>
-                <Image
-                    src={ContactImg}
-                    alt={'Side image with hero'}
-                    className={cls.sideImg}
-                />
             </div>
         </Container>
     );

@@ -43,11 +43,12 @@ const PlayWithUs = (props: Props) => {
                 {title}
             </h2> */}
             <div className={cls.Content}>
-                <Image
+<div className={cls.imageHolder}>                 <Image
                     src={sideImg}
                     alt={'Side image with hero'}
                     className={cls.sideImg}
                 />
+</div>
                 <div className={cls.ContentWithNav}>
                     <h2 className={cls.title}>{props.title}</h2>
                     <div className={cls.Buttons}>

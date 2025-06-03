@@ -9,6 +9,24 @@
   justify-content:start;
 
 }
+.Buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+  }
+}
+ .sideImg {
+    margin-left: 0;
+    align-self: center;
+  }
+
 
 .title {
   font-family: var(--font-family-title), sans-serif;
@@ -45,32 +63,9 @@
 
 
 
-@media (max-width: 1150px) {
-  .NavElements {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    
-  }
-
-}
 
 
-.Buttons {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
 
-  }
-}
 
 .webGl { 
   width: fit-content;
@@ -89,7 +84,7 @@
   white-space: nowrap;
   min-width: fit-content;
 
-  @media (max-width: 1500px) {
+  @media (max-width: breakpoint(md)) {
     & * {
       font-size: 2rem !important;
     }
@@ -106,14 +101,7 @@
   }
 }
 
-.BtnDownloadWrapper{
-  height: 95px;
-  width: auto;
-  min-width: 300px;
-  display: flex;
-  justify-content: center;
-  
-}
+
 
 .BtnDownload {
   @include link-scale-effect;
@@ -123,6 +111,11 @@
   
 }
 
+.imageHolder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .Content {
   width: 90%;
@@ -144,53 +137,65 @@
   padding: 20px;
   box-shadow: 0.5rem 0.5rem black;
   border-radius: var(--border-radius-custom);
+
   
 }
 
-.WebGLNotice {
-  margin-top: auto;
-  margin-bottom: 20px;
-  align-self: center;
-  background-color: var(--transparent-bg-darker);
-  color: var(--white);
-  padding: 10px 15px;
-  border-radius: 15px;
-  font-size: 0.9rem;
-  max-width: 30%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 
+@media (max-width: breakpoint(sm)) {
 
-.WarningIcon {
-  font-size: 1.2rem;
-  color: yellow;
- }
-
-
-@media (max-width: 768px) {
-  .WebGLNotice {
-   max-width: 38vh;
-   }
-  }
-  .WarningIcon {
-   font-size: 1.2rem;
-   color: yellow;
-  }
-
-.sideImg {
-  width: 35%;
-  align-self: center;
-  margin-left: 25vh;
-}
-
-
-@media (max-width: 1150px) {
-  .Content {
+   
+    .Content {
     width: 90%;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+  }
+  .imageHolder{
+    min-width: 450px;
+  }
+  .sideImg {
+    margin-left: 0;
+    align-self: center;
+    width: 3000px !important;
+
+  }
+  .title{
+  font-size: 1.6rem !important;
+  }
+  }
+
+@media (max-width: breakpoint(md)) {
+  .WebGLNotice {
+   max-width: 38vh;
+
+   }
+   
+    .Content {
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+  }
+  .sideImg {
+    margin-left: 0;
+    align-self: center;
+    width: 50% !important;
+
+  }
+  }
+
+
+
+
+
+@media (max-width: breakpoint(xl)) {
+ .Content {
+    width: 90%;
     align-items: center;
     justify-content: center;
     gap: 20px;
@@ -198,14 +203,38 @@
   .sideImg {
     margin-left: 0;
     align-self: center;
+    width: 90%;
   }
-
+    .NavElements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .title{
+    font-size: 2.4rem;
+  }
 }
 
-
-@media (max-width: 768px) {
-  .title {
-    font-size: var(--font-line-xxl);
+@media (min-width: breakpoint(xl)) {
+ .Content {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
-
+  .sideImg {
+    margin-left: 0;
+    align-self: center;
+    width: 100% !important;
+  }
+    .NavElements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+  }
 }

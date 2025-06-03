@@ -36,6 +36,8 @@
   max-width: 500px;
   min-width: 300px;
   background-color:#1E3544;
+  box-shadow: 0.2rem 0.2rem black;
+  border: 1px solid black;
 }
 
 .cardContent {
@@ -70,7 +72,7 @@
 @media screen and (max-width: breakpoint(sm)) {
   .card {
     flex-direction: column;
-    max-width: 100%;
+    max-width: 70%;
   }
   .cardImage img {
     width: 100%;
@@ -78,16 +80,18 @@
   }
   .cardContent {
     padding: 1rem;
+
   }
   .cardTitle {
     font-size: var(--font-line-xl);
   }
   .cardBody {
-    font-size: var(--font-line-sm);
+    font-size: 0.9rem;
   }
   .cardFooter {
     font-size: var(--font-line-xs);
   }
+
   
 }
 @media screen and (max-width: breakpoint(xl)) {

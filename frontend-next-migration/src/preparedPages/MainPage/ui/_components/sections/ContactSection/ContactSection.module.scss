@@ -17,10 +17,10 @@
   box-shadow: 0.5rem 0.5rem black;
   border-radius: var(--border-radius-custom);
   margin: 20px 0;
-  gap: 5rem;
   width: fit-content;
   height: 20rem;
   padding: 4rem;
+  
 }
 
 .ContentWithNav{
@@ -52,14 +52,67 @@
       color: var(--background-secondary-color);
       transform: scale(0.95);
     }
+  }
+}
+
+
+@media screen and (max-width: breakpoint(md)) {
+  .Content {
+      height: 15rem;
+  }
+  .ContentWithNav {
+    gap: 3rem;
+    .title {
+      font-size: 1.3rem;
+    }
+        .Link{
+      font-size: 0.8rem;
+    }
+  }
+  .sideImg{
+    margin-top: -90px;
+    width: 15rem;
+  }
+
+  
+}
+@media screen and (max-width: breakpoint(sm)) {
+.ContentWithNav {
+    gap: 1rem;
+    .title {
+      font-size: 1.2rem;
+    }
+        .Link{
+      font-size: 0.8rem;
+    }
+  }
+  .sideImg{
+margin-top: -120px;
+    width: 100%;
+    }
+  .Content {
+    height: fit-content;
+    flex-direction: column;
 
   }
 }
 
-@media screen and (max-width: breakpoint(sm)) {
- 
-  
-}
-@media screen and (max-width: breakpoint(xl)) {
+@media screen and (max-width: breakpoint(xs)) {
+.ContentWithNav {
+    gap: 0;
+    .title {
+      font-size: 1.2rem;
+    }
+        .Link{
+      font-size: 0.8rem;
+    }
+  }
+  .sideImg{
+margin-top: -120px;
+    width: 100%;
+    }
+  .Content {
+    height: fit-content;
 
+  }
 }
