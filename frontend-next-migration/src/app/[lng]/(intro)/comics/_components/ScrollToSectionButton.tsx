@@ -18,7 +18,7 @@ export const ScrollToSectionButton = (props: ScrollToSectionButtonProps) => {
         }
     };
 
-    return (
+    /*return (
         <Button
             onClick={() => scrollToSection(scrollToId)}
             className={className}
@@ -28,5 +28,5 @@ export const ScrollToSectionButton = (props: ScrollToSectionButtonProps) => {
         >
             <b>{children}</b>
         </Button>
-    );
+    );*/
 };

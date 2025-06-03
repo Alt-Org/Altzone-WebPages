@@ -1,3 +1,4 @@
+
 .Wrapper {
   display: flex;
   flex-direction: column;
@@ -14,12 +15,17 @@
   flex-grow: 1;
   border-radius: var(--border-radius-custom);
   //background-color: var(--transparent-bg-dark);
+
   h2{
     font-size: clamp(40px, 7vw, 50px);
     line-height: 1.5;
-    font-weight: bold;
+    font-weight: normal;
     text-align: center;
     margin-bottom: 40px;
+    color: var(--primary-color);
+    font-family: var(--font-family-title);
+    font-size: var(--h2-size-desktop);
+    margin-right: 350px;
   }
 
 }
