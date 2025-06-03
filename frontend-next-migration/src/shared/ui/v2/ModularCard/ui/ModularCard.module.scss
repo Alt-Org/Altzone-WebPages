@@ -13,6 +13,7 @@
     --border-desktop: 4px;
     --border-mobile: 2px;
     --primary-color: #FFA100;
+    --primary-border: #FFA100;
     --background: #1E3544;
     --white: #FAF9F6;
     --black: #121212;
@@ -150,6 +151,7 @@
     border-radius: var(--border-radius-md);
     display: flex;
     box-shadow: 4px 8px 0 var(--black);
+    background-color: #FF0000;
     @media (max-width:breakpoint(md)) {
         height:160px;
         box-shadow: 2px 4px 0 var(--black);
@@ -182,6 +184,7 @@
         }
     }
 }
+
 .Card.TitleImageCard > .ModularCardImageSection > .ModularCardImage {
     height: 100%;
     width:min-content;
@@ -203,19 +206,25 @@
 // DefenseCard
 .Card.DefenseCard {
     position: relative;
+    display: flex;
     background-color: var(--background);
     height: 184px;
     border: var(--border-desktop) solid var(--black);
+
     border-radius: var(--border-radius-md);
-    display: flex;
     box-shadow: 4px 8px 0 var(--black);
     overflow: hidden;
+    transition: border-color 0.3s ease-out;
     @media (max-width:breakpoint(md)) {
         height:160px;
         box-shadow: 2px 4px 0 var(--black);
     }
 
+    &:hover {
+        border-color: var(--primary-border);
+    }
 }
+
 
 .Card.DefenseCard > .ModularCardTexts {
     flex-basis: 45%;
@@ -235,16 +244,27 @@
     }
 }
 
+.Card.DefenseCard > .ModularCardTexts > .ModularCardTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+}
+
 .Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
     font-size: var(--h1-size-mobile);
     line-height: 40px;
     color:var(--primary-color);
-
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
 }
 
 .Card.DefenseCard > .ModularCardImageSection {
     flex-basis: 55%;
-    // border: 4px solid #FF0000;
     overflow: visible;
     position: relative;
 }

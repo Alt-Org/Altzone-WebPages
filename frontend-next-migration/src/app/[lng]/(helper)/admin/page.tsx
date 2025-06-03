@@ -119,8 +119,8 @@ const Page = () => {
             <div
                 style={{
                     display: 'flex',
-                    gap: '16px',
                     flexWrap: 'wrap',
+                    gap: '32px',
                     margin: '10px 0 20px',
                 }}
             >
@@ -135,9 +135,7 @@ const Page = () => {
                     <div
                         key={card.id}
                         style={{
-                            width: '100%',
-                            flexBasis: 'calc(50% - 16px)', // makes 2 columns, vertical gap = 10px
-                            /*  flexBasis: 100%; on mobile tablet devices  */
+                            flexBasis: 'calc(50% - 16px)', // makes 2 columns, vertical gap = 32px
                         }}
                     >
                         <ModularCard
@@ -149,8 +147,10 @@ const Page = () => {
                             withScalableLink={true}
                         >
                             <ModularCard.Texts>
-                                <ModularCard.Texts.Title>Torjujat</ModularCard.Texts.Title>
-                                <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
+                                <ModularCard.Texts.Title>Torjujat Torjujat</ModularCard.Texts.Title>
+                                <ModularCard.Texts.Body>
+                                    Hahmon nimi Hahmon nimi
+                                </ModularCard.Texts.Body>
                             </ModularCard.Texts>
                             <ModularCard.Image>
                                 <ModularCard.Image.Triangle />
