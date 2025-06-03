@@ -8,6 +8,7 @@
     --h2-size-mobile: 24px;
     --h2-size-desktop: 64px;
     --h3-size-desktop: 48px;
+    --defense-h2-mobile: 20px;
     --body-size-desktop: 16px;
     --small-size-desktop: 14px;
     --border-desktop: 4px;
@@ -25,7 +26,7 @@
 
     .ModularCardTexts {
         transition: all ease-in-out;
-        transition-duration: 0.5s;
+        transition-duration: 0.3s;
     }
     &:hover {
         .ModularCardTexts {
@@ -231,16 +232,15 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    justify-content: center;
     padding-left: 1em;
-    padding-right: 1em;
+    margin-top: 56px;
     font-family: var(--font-family-title);
     font-style: normal;
-    font-weight: 400;
     h2 {
-        font-size:var(--h2-size-mobile);
-        line-height: 24px;
+        font-weight: 400;
+        font-size: var(--defense-h2-mobile);
         color:var(--white);
+        line-height: 24px;
     }
 }
 
@@ -254,6 +254,7 @@
 
 .Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
     font-size: var(--h1-size-mobile);
+    font-weight: 400;
     line-height: 40px;
     color:var(--primary-color);
     display: -webkit-box;
@@ -269,7 +270,8 @@
     position: relative;
 }
 
-.Card.DefenseCard > .ModularCardImageSection > .ModularCardTriangle {
+.Card.DefenseCard > .ModularCardImageSection::before {
+    content: "";
     position: absolute;
     left: 0;
     top: 0;

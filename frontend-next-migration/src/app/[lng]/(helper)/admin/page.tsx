@@ -147,13 +147,11 @@ const Page = () => {
                             withScalableLink={true}
                         >
                             <ModularCard.Texts>
-                                <ModularCard.Texts.Title>Torjujat Torjujat</ModularCard.Texts.Title>
-                                <ModularCard.Texts.Body>
-                                    Hahmon nimi Hahmon nimi
-                                </ModularCard.Texts.Body>
+                                <ModularCard.Texts.Title>Torjujat </ModularCard.Texts.Title>
+                                <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
                             </ModularCard.Texts>
                             <ModularCard.Image>
-                                <ModularCard.Image.Triangle />
+                                {/* <ModularCard.Image.Triangle /> */}
                                 <ModularCard.Image.Image
                                     src={card.src}
                                     alt="hannu hodari"
