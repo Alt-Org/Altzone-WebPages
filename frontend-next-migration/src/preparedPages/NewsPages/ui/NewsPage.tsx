@@ -6,20 +6,18 @@ import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import { formatDate } from '@/shared/lib/formatters/formatDate';
 
 const NewsPage = () => {
-    // later use this to fetch data from the backend
-    // const handleSearchChange = () => {
-    //     // setSearchValue(e.target.value);
-    // };
-
     const { data } = useGetNewsQuery(6);
+
     const params = useParams();
-    const lng = params.lng as string;
+    const lng = (params?.lng as string) || 'fi';
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
+
     const directusBaseUrl = envHelper.directusHost;
 
-    const groupedNews = formatNews(data, lngCode || 'fi-FI');
+    const groupedNews = formatNews(data, lngCode);
 
     return (
         <main className={cls.NewsPage}>
@@ -29,13 +27,14 @@ const NewsPage = () => {
                         const imageSrc = news.titlePicture?.id
                             ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
                             : hannu.src;
+
                         return (
                             <NewsCard
                                 key={news.id}
                                 titlePicture={imageSrc}
                                 title={news.title}
                                 previewText={news.previewText}
-                                date={news.date}
+                                date={formatDate(news.date, { locale: lngCode, format: 'long' })}
                                 id={news.id}
                             />
                         );

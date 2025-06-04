@@ -1,38 +1,36 @@
 'use client';
-import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import { Container } from '@/shared/ui/Container';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { useScrollToTop } from '@/shared/lib/hooks';
-import cls from './NewsElementPage.module.scss';
 import Image from 'next/image';
+import { useRouter, useParams } from 'next/navigation';
+import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import chevronleft from '@/shared/assets/icons/ChevronLeftBlack.svg';
+import chevronright from '@/shared/assets/icons/ChevronRightBlack.svg';
+import { Container } from '@/shared/ui/Container';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { NewsCard } from '@/widgets/NewsCard';
+import { useScrollToTop } from '@/shared/lib/hooks';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { formatDate } from '@/shared/lib/formatters/formatDate';
+import { envHelper } from '@/shared/const/envHelper';
 import {
     useGetNewsByIdQuery,
     useGetNewsQuery,
     formatNews,
     formatNewsSingle,
 } from '@/entities/NewsV2';
-import { envHelper } from '@/shared/const/envHelper';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import chevronleft from '@/shared/assets/icons/ChevronLeftBlack.svg';
-import chevronright from '@/shared/assets/icons/ChevronRightBlack.svg';
-import { useRouter, useParams } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
-import { NewsCard } from '@/widgets/NewsCard';
+import cls from './NewsElementPage.module.scss';
 
-const NewsElementPage = () => {
+function NewsElementPage() {
     useScrollToTop();
     const params = useParams();
     const id = params.id;
     const lng = params.lng as string;
     const router = useRouter();
-
-    const formatDate = (dateString: string) => {
-        return new Date(dateString).toLocaleDateString('fi-FI');
-    };
-
     const { t } = useClientTranslation('news');
+
     const { data: moreNews } = useGetNewsQuery(2);
     const { data, isLoading } = useGetNewsByIdQuery(id as string);
+
     const directusBaseUrl = envHelper.directusHost;
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
 
@@ -42,9 +40,19 @@ const NewsElementPage = () => {
 
     const post = formatNewsSingle(data, lngCode || 'fi-FI');
     const groupedNews = formatNews(moreNews, lngCode || 'fi-FI');
+
     const picture = post.titlePicture?.id
         ? `${directusBaseUrl}/assets/${post.titlePicture.id}`
         : hannu.src;
+
+    const formattedDate = formatDate(post.date);
+    const formattedAuthor = post.formattedAuthor;
+
+    const handleNextNews = (newsId: string | null) => {
+        if (newsId) {
+            router.push(`/${lng}/news/${newsId}`);
+        }
+    };
 
     return (
         <Container>
@@ -58,12 +66,13 @@ const NewsElementPage = () => {
                 >
                     <Image
                         loading="eager"
-                        alt={'Pin'}
+                        alt="Previous"
                         src={chevronleft}
                         className={cls.buttonImage}
                     />
                     {t('previous-button')}
                 </Button>
+
                 <Button
                     disabled={data.nextId === null}
                     onClick={() => handleNextNews(data.nextId)}
@@ -74,7 +83,7 @@ const NewsElementPage = () => {
                     {t('next-button')}
                     <Image
                         loading="eager"
-                        alt={'Pin'}
+                        alt="Next"
                         src={chevronright}
                         className={cls.buttonImage}
                     />
@@ -98,12 +107,15 @@ const NewsElementPage = () => {
                         height={600}
                     />
                 </div>
+
                 <h1 className={cls.title}>{post?.title}</h1>
+                <h3 className={cls.subtitle}>{post?.subtitle}</h3>
+
                 <p className={cls.text}>{post?.bodyText}</p>
-                <span className={cls.date}>
-                    {post.author ? `${post.author}, ` : ''}
-                    {formatDate(post.date)}
-                </span>
+
+                <p className={cls['news-meta']}>
+                    {formattedAuthor ? `${formattedAuthor} / ${formattedDate}` : formattedDate}
+                </p>
             </div>
 
             <div className={cls.readmoreText}>
@@ -115,6 +127,7 @@ const NewsElementPage = () => {
                     const imageSrc = news.titlePicture?.id
                         ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
                         : hannu.src;
+
                     return (
                         <NewsCard
                             key={news.id}
@@ -129,6 +142,6 @@ const NewsElementPage = () => {
             </div>
         </Container>
     );
-};
+}
 
 export default NewsElementPage;
