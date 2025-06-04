@@ -1,6 +1,7 @@
 .siteNav {
   position: absolute;
   font: var(--font-xxl);
+  font-family: var(--font-family-main) !important;
   padding-top: 50px;
   color: #fbf7dc;
   width: 100%;
@@ -13,10 +14,12 @@
   //position: relative;
   height: var(--navbar-height);
   user-select: none;
-  &.collapsing{
+
+  &.collapsing {
     overflow: hidden;
   }
-  &.collapsed{
+
+  &.collapsed {
     overflow: hidden;
   }
 }
@@ -65,7 +68,7 @@
   line-height: initial;
   padding: 10px 0;
 
-  &.collapsed{
+  &.collapsed {
     transform: translateX(-100px) scaleX(0.7);
     opacity: 0;
     visibility: hidden;
@@ -74,10 +77,11 @@
   }
 
   &.active {
-    color: var(--primary-color)!important;
+    color: var(--primary-color) !important;
+
     //font-weight: 600;
-    &>a{
-      color: var(--primary-color)!important;
+    &>a {
+      color: var(--primary-color) !important;
       //font-weight: 600;
     }
   }
@@ -166,7 +170,7 @@
   li {
     cursor: pointer;
     height: 25px;
-    display:flex;
+    display: flex;
     align-items: center;
   }
 
@@ -199,7 +203,8 @@
 .FixButtonWrapper {
   margin-left: auto;
   margin-right: 50px;
-  &.fixed{
+
+  &.fixed {
     margin-right: unset;
   }
 }
@@ -209,12 +214,14 @@
   right: 12px;
   top: 8px;
   cursor: pointer;
-  opacity: 1!important;
-  .CollapseButton{
+  opacity: 1 !important;
+
+  .CollapseButton {
     cursor: pointer;
   }
-  &.collapsing{
-    .CollapseButton{
+
+  &.collapsing {
+    .CollapseButton {
       pointer-events: none;
       opacity: 0.5;
     }

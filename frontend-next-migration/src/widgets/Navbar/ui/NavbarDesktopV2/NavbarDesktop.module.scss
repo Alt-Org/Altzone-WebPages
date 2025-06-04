@@ -1,12 +1,13 @@
 .siteNav {
     position: absolute;
     font: var(--font-xxl);
+    font-family: var(--font-family-main) !important;
     padding-top: 50px;
     color: #fbf7dc;
     width: 100%;
     text-align: center;
     z-index: var(--navbar-z-index);
-    font-weight: 500;
+    //font-weight: 500;
     top: 0;
     font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
     user-select: none;
