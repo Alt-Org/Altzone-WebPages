@@ -50,8 +50,27 @@ export const GalleryCategoriesWithModalSlider = memo(
                             />
                             {title && <h3 className={cls.title}>{t(`${title}`)}</h3>}
 
-                            <Button theme={ButtonTheme.OUTLINE}>{t('explore')}</Button>
+                            {/* <Button theme={ButtonTheme.OUTLINE}>{t('explore')}</Button> */}
                         </AppLink>
+
+                        {sources.length > 1 && (
+                            <AppLink
+                                data-fancybox={cover.name}
+                                to={sources[1]}
+                                className={cls.link}
+                            >
+                                <div className={cls.cover}>
+                                    <Image
+                                        loading="lazy"
+                                        src={sources[1]}
+                                        width="250"
+                                        height="292"
+                                        className={cls.coverImage}
+                                        alt={`${cover.name} - Page 1`}
+                                    />
+                                </div>
+                            </AppLink>
+                        )}
                     </div>
 
                     <div style={{ display: 'none' }}>
