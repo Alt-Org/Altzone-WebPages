@@ -1,4 +1,5 @@
 .Card {
+    --border-radius-lg: 12px;
     --border-radius-md: 8px;
     --border-radius-sm: 4px;
     --heading-font: 'Sedgwick Ave Display', cursive;
@@ -8,7 +9,6 @@
     --h2-size-mobile: 24px;
     --h2-size-desktop: 64px;
     --h3-size-desktop: 48px;
-    --defense-h2-mobile: 20px;
     --body-size-desktop: 16px;
     --small-size-desktop: 14px;
     --border-desktop: 4px;
@@ -209,21 +209,30 @@
     position: relative;
     display: flex;
     background-color: var(--background);
-    height: 184px;
+    height: 192px;
     border: var(--border-desktop) solid var(--black);
-
     border-radius: var(--border-radius-md);
     box-shadow: 4px 8px 0 var(--black);
     overflow: hidden;
     transition: border-color 0.3s ease-out;
-    @media (max-width:breakpoint(md)) {
-        height:160px;
-        box-shadow: 2px 4px 0 var(--black);
-    }
-
     &:hover {
         border-color: var(--primary-border);
     }
+    @media (max-width: breakpoint(xl)) {
+        height: 184px;
+    }
+    @media (max-width:breakpoint(md)) {
+        height: 152px;
+        box-shadow: 2px 4px 0 var(--black);
+    }
+    @media (max-width: 640px) {
+        height: 144px;
+    }
+    @media (max-width:breakpoint(sm)) {
+        height: 128px;
+        box-shadow: 1px 2px 0 var(--black);
+    }
+
 }
 
 
@@ -232,15 +241,41 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding-left: 1em;
+    padding-left: 16px;
     margin-top: 56px;
     font-family: var(--font-family-title);
     font-style: normal;
     h2 {
         font-weight: 400;
-        font-size: var(--defense-h2-mobile);
+        font-size: 20px;
         color:var(--white);
-        line-height: 24px;
+        line-height: var(--font-line-m);
+    }
+    @media (max-width: breakpoint(xl)) {
+        h2 {
+            font-size: 18px;
+        }
+    }
+    @media (max-width: breakpoint(md)) {
+        gap: 4px;
+        margin-top: 48px;
+        padding-left: 12px;
+        h2 {
+            font-size: var(--font-size-m);
+        }
+    }
+    @media (max-width: 640px) {
+        margin-top: 56px;
+        h2 {
+            line-height: var(--font-line-xs);
+            font-size: var(--font-size-s);
+        }
+    }
+    @media (max-width: breakpoint(md)) {
+        margin-top: 40px;
+    }
+    @media (max-width: breakpoint(sm)) {
+        padding-left: 8px;
     }
 }
 
@@ -253,15 +288,25 @@
 }
 
 .Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
-    font-size: var(--h1-size-mobile);
-    font-weight: 400;
-    line-height: 40px;
+    font-size: var(--font-size-xl);
+    line-height: var(--font-line-xl);
     color:var(--primary-color);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     line-clamp: 1;
     overflow: hidden;
+    @media (max-width: breakpoint(xl)) {
+       font-size: 28px;
+       line-height: var(--font-line-l);
+    }
+    @media (max-width: breakpoint(md)) {
+       font-size: var(--font-size-l);
+    }
+    @media (max-width: 640px) {
+        font-size: var(--font-size-m);
+        line-height: var(--font-line-s);
+    }
 }
 
 .Card.DefenseCard > .ModularCardImageSection {
@@ -278,21 +323,28 @@
     width: 150%;
     height: 100%;
     transform: skewX(20deg);
-    // border-bottom: 212px solid var(--background);
-    // border-right: 140px solid transparent;
     background-color: var(--color-retroflector);
-    // @media (max-width:breakpoint(md)) {
-    //     border-bottom: 152px solid var(--background);
-    //     border-right: 85px solid transparent;
-    // }
 }
 
 
 .Card.DefenseCard > .ModularCardImageSection > .ModularCardImage {
     position: relative;
-    left: 32px;
+    left: 24px;
     max-width: 100%;
-    height: calc(100% + 32px);
+    height: calc(100% + 36px);
     object-fit: contain;
+    @media (max-width: breakpoint(xl)) {
+        left: 20px;
+    }
+    @media (max-width: breakpoint(md)) {
+        height: calc(100% + 24px);
+    }
+    @media (max-width: 640px) {
+        left: 16px;
+    }
+    @media (max-width: breakpoint(sm)) {
+        left: 12px;
+        top: -8px;
+    }
 }
 
