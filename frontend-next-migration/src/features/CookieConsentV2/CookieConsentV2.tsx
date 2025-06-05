@@ -4,40 +4,48 @@ import { useTranslation } from 'react-i18next';
 import CookieConsent from 'react-cookie-consent';
 import cls from './CookieConsentV2.module.scss';
 import Sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
+import Link from 'next/link';
 
 const CookieConsentV2: React.FC = () => {
-    const { t } = useTranslation('cookieConsent');
+    const { t, i18n } = useTranslation('cookieConsent');
 
     const descriptionParts = t('description').split(
         /(tietosuojan|evästeiden|privacy|cookies|конфиденциальности|файлов cookie)/,
     );
 
+    const getLocalizedUrl = (base: string) => {
+        const lang = i18n.language || 'en';
+        if (base === 'privacy') return `/` + lang + `/privacy`;
+        if (base === 'cookies') return `/` + lang + `/cookies`;
+        return '/';
+    };
+
     const renderDescription = () =>
         descriptionParts.map((part, index) => {
             if (['tietosuojan', 'privacy', 'конфиденциальности'].includes(part)) {
                 return (
-                    <a
+                    <Link
                         key={index}
-                        href="https://altzone.fi/en/privacy"
+                        href={getLocalizedUrl('privacy')}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cls.highlight}
                     >
                         {part}
-                    </a>
+                    </Link>
                 );
             }
             if (['evästeiden', 'cookies', 'файлов cookie'].includes(part)) {
                 return (
-                    <a
+                    <Link
                         key={index}
-                        href="https://altzone.fi/en/cookies"
+                        href={getLocalizedUrl('cookies')}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cls.highlight}
                     >
                         {part}
-                    </a>
+                    </Link>
                 );
             }
             return <React.Fragment key={index}>{part}</React.Fragment>;
