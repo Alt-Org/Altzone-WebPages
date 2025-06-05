@@ -43,6 +43,7 @@ const GetToKnowComics = memo((props: Props) => {
                 src={bookImg}
                 alt={'section-get-to-know-book-image'}
                 className={classNames(cls.centeredImage, mods)}
+                priority
             />
             <Button
                 withScalableLink

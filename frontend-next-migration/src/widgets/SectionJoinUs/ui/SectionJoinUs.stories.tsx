@@ -6,38 +6,67 @@ const mockBlock: BlockSection[] = [
     {
         label: 'Block label',
         description: 'A block with unique content.',
-        link: 'https://example.com/',
-        linkText: 'Discover More',
+        links: [
+            {
+                text: 'Discover More',
+                url: 'https://example.com/',
+                isExternal: true,
+            },
+        ],
+        img: '',
+        imgAlt: 'Block image alt text',
     },
     {
         label: 'Block label',
         description: 'A block with unique content.',
-        link: 'https://example.com/',
-        linkText: 'Discover More',
+        links: [
+            {
+                text: 'Discover More',
+                url: 'https://example.com/',
+                isExternal: true,
+            },
+        ],
+        img: '',
+        imgAlt: 'Block image alt text',
     },
     {
         label: 'Block label',
         description: 'A block with unique content.',
-        link: 'https://example.com/',
-        linkText: 'Discover More',
+        links: [
+            {
+                text: 'Discover More',
+                url: 'https://example.com/',
+                isExternal: true,
+            },
+        ],
+        img: '',
+        imgAlt: 'Block image alt text',
     },
     {
         label: 'Block label',
         description: 'A block with unique content.',
-        link: 'https://example.com/',
-        linkText: 'Discover More',
+        links: [
+            {
+                text: 'Discover More',
+                url: 'https://example.com/',
+                isExternal: true,
+            },
+        ],
+        img: '',
+        imgAlt: 'Block image alt text',
     },
     {
         label: 'Block label',
         description: 'A block with unique content.',
-        link: 'https://example.com/',
-        linkText: 'Discover More',
-    },
-    {
-        label: 'Block label',
-        description: 'A block with unique content.',
-        link: 'https://example.com/',
-        linkText: 'Discover More',
+        links: [
+            {
+                text: 'Discover More',
+                url: 'https://example.com/',
+                isExternal: true,
+            },
+        ],
+        img: '',
+        imgAlt: 'Block image alt text',
     },
 ];
 

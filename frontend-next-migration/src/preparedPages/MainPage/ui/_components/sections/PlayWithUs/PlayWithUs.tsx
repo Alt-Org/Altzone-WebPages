@@ -78,6 +78,7 @@ const PlayWithUs = (props: Props) => {
                     src={sideImg}
                     alt={'Side image with hero'}
                     className={cls.sideImg}
+                    priority
                 />
             </div>
             <div className={cls.WebGLNotice}>

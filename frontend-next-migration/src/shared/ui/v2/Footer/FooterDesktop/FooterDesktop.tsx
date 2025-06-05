@@ -33,8 +33,9 @@ const FooterDesktopComponent = memo((props: Props) => {
                     src={Ahmat}
                     alt={'description hero'}
                     className={classNames(cls.FooterImage)}
-                    width={270}
-                    height={270}
+                    width={200}
+                    height={200}
+                    style={{ width: 'auto', height: 'auto' }}
                 />
             </Container>
             <Container className={cls.FooterContainer}>
