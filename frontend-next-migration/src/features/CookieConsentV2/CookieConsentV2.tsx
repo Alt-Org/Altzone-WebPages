@@ -51,7 +51,7 @@ const CookieConsentV2: React.FC = () => {
                 buttonText={t('acceptButton')}
                 declineButtonText={t('declineButton')}
                 enableDeclineButton
-                cookieName="cookieConsent"
+                cookieName="AltZoneCookieConsent"
                 containerClasses={cls.cookieConsentV2}
                 buttonClasses={cls.acceptButton}
                 declineButtonClasses={cls.declineButton}
