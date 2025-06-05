@@ -128,6 +128,35 @@
     margin: 0 auto;
 }
 
+ feature/update-news-element-page
+
+.news-meta {
+  /* Body (primary text) */
+
+width: 380px;
+height: 23px;
+
+/* WEB/Body (primary text)
+
+Primary body text, main content paragraphs
+*/
+font-family: 'DM Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 23px;
+text-align: center;
+
+color: #FFA100;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+}
+
 .date {
     color: var(--primary-color);
     font-family: var(--font-family-secondary);
@@ -172,3 +201,4 @@
     text-align: center;
     font-size: 0.9rem;
 }
+ dev
