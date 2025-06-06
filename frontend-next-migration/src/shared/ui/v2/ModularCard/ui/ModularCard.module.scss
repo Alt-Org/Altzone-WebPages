@@ -19,6 +19,12 @@
     --white: #FAF9F6;
     --black: #121212;
     --color-retroflector: #FF0000;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 56px;
 }
 
 
@@ -208,8 +214,8 @@
 .Card.DefenseCard {
     position: relative;
     display: flex;
-    background-color: var(--background);
     height: 192px;
+    background-color: var(--background);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
     box-shadow: 4px 8px 0 var(--black);
@@ -229,7 +235,7 @@
         height: 144px;
     }
     @media (max-width:breakpoint(sm)) {
-        height: 128px;
+        height: 120px;
         box-shadow: 1px 2px 0 var(--black);
     }
 
@@ -240,42 +246,39 @@
     flex-basis: 45%;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding-left: 16px;
-    margin-top: 56px;
+    gap: var(--spacing-xs);
+    padding-left: var(--spacing-md);
+    margin-top: var(--spacing-xxl);
     font-family: var(--font-family-title);
     font-style: normal;
     h2 {
         font-weight: 400;
-        font-size: 20px;
+        font-size: var(--font-size-l);
+        line-height: var(--font-line-l);
         color:var(--white);
-        line-height: var(--font-line-m);
     }
     @media (max-width: breakpoint(xl)) {
+        margin-top: var(--spacing-xl);
         h2 {
             font-size: 18px;
         }
     }
-    @media (max-width: breakpoint(md)) {
-        gap: 4px;
-        margin-top: 48px;
-        padding-left: 12px;
+    @media (max-width: breakpoint(md)) {        
+        padding-left: var(--spacing-sm);
         h2 {
             font-size: var(--font-size-m);
+            line-height: var(--font-line-m);
         }
     }
     @media (max-width: 640px) {
-        margin-top: 56px;
         h2 {
             line-height: var(--font-line-xs);
             font-size: var(--font-size-s);
         }
     }
-    @media (max-width: breakpoint(md)) {
-        margin-top: 40px;
-    }
     @media (max-width: breakpoint(sm)) {
-        padding-left: 8px;
+        padding-left: var(--spacing-sm);
+        margin-top: var(--spacing-lg);
     }
 }
 
@@ -300,12 +303,9 @@
        font-size: 28px;
        line-height: var(--font-line-l);
     }
-    @media (max-width: breakpoint(md)) {
-       font-size: var(--font-size-l);
-    }
     @media (max-width: 640px) {
         font-size: var(--font-size-m);
-        line-height: var(--font-line-s);
+        line-height: var(--font-line-m);
     }
 }
 
@@ -326,6 +326,9 @@
     background-color: var(--color-retroflector);
 }
 
+.Card.DefenseCard.bg-green > .ModularCardImageSection::before {
+    background-color: green;
+}
 
 .Card.DefenseCard > .ModularCardImageSection > .ModularCardImage {
     position: relative;

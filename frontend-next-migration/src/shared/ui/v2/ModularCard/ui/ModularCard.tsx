@@ -326,6 +326,25 @@ ModularCardBase.Image = ModularCardImageSection;
  *          />
  *      </ModularCard.Image>
  * </ModularCard>
+ * @example
+ * // With DEFENSE theme
+ * <ModularCard
+ *      className="customClass"
+ *      theme={ModularCardTheme.DEFENSECARD}
+ *      path='/fi/page/details'
+ *      isExternal={false}
+ *      withScalableLink={true}
+ * >
+ *      <ModularCard.Texts>
+ *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *      </ModularCard.Texts>
+ *      <ModularCard.Image className={cls.Hero} > // Here you can change image container styling by using className(s).
+ *          <ModularCard.Image.Image
+ *              src={image}
+ *              alt="alt"
+ *          />
+ *      </ModularCard.Image>
+ * </ModularCard>
  */
 const ModularCard: ModularCardComponent = ModularCardBase;
 
