@@ -150,7 +150,7 @@
 
 @media screen and (max-width: breakpoint(sm)) {
   .description {
-    width: 60%;
+    width: 80%;
     p{
       font-size: 0.9rem;
       text-align: left;
@@ -158,9 +158,11 @@
   }
   .titleQuestion{
     font-size: 1.5rem;
+    width: 80%;
 
   }
   .subDescription{
+    width: 80%;
     p{
       font-size: 1.5rem;
     }

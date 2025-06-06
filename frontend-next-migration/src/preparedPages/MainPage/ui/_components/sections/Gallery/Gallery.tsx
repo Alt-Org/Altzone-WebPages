@@ -4,11 +4,13 @@ import { SectionGalleryV2, SectionGalleryV1 } from '@/widgets/SectionGallery';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Gallery.module.scss';
-import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
-import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
-import { SectionGallerias } from '@/widgets/SectionGallerias';
 import { useParams } from 'next/navigation';
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
+import instaIcon from '@/shared/assets/images/Insta2.svg';
+import discordIcon from '@/shared/assets/images/Discord2.svg';
+import facebookIcon from '@/shared/assets/images/Facebook2.svg';
+import youtubeIcon from '@/shared/assets/images/Youtube2.svg';
 
 export type Props = {
     title: string;
@@ -59,6 +61,21 @@ const Gallery = (props: Props) => {
                     >
                         {seeMoreLink.text}
                     </a>
+                    <p className={cls.socialMediaLinks}>Seuraa Alt Zonea somessa</p>
+                    <div className={cls.socialMediaHolder}>
+                        <a href={AppExternalLinks.discord} target="_blank" rel="noreferrer">
+                            <img src={discordIcon.src} alt="Discord" className={cls.socialMediaIcon} />
+                        </a>
+                        <a href={AppExternalLinks.instagram} target="_blank" rel="noreferrer">
+                            <img src={instaIcon.src} alt="Instagram" className={cls.socialMediaIcon} />
+                        </a>
+                        <a href={AppExternalLinks.facebook} target="_blank" rel="noreferrer">
+                            <img src={facebookIcon.src} alt="Facebook" className={cls.socialMediaIcon} />
+                        </a>
+                        <a href={AppExternalLinks.youtube} target="_blank" rel="noreferrer">
+                            <img src={youtubeIcon.src} alt="YouTube" className={cls.socialMediaIcon} />
+                        </a>
+                    </div>
                 </div>
 
                 {/*<SectionGalleryV1*/}
@@ -76,7 +93,7 @@ const Gallery = (props: Props) => {
                         alt=""
                     />
                 </div>
-
+ 
                 {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
 
                 {/*<SectionGalleryV1*/}

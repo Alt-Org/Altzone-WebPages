@@ -12,6 +12,7 @@
 .SectionGallery {
     margin: 40px auto;
     opacity: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,9 +23,11 @@
     }
 }
 
+
+
 .Container {
     margin-top: 20px;
-    width: 50%;
+    width: 70%;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -41,7 +44,10 @@
     border: 3px solid black;
     padding: 20px;
     box-shadow: 0.5rem 0.5rem black;
-    border-radius: var(--border-radius-custom); 
+    border-radius: 10px; 
+    height: fit-content;
+    align-self: center;
+    width: 90%;
 }
 .title {
     text-align: center;
@@ -68,7 +74,7 @@
 
 
 .InfoText {
-    font-size: 1.2em;
+    font-size: 1.1em;
     padding: 10px 0; 
     text-align: start;
     white-space: pre-wrap;
@@ -78,28 +84,13 @@
     }
 }
 
-.SocialsText {
-    width: fit-content;
-    margin: auto;
-    margin-top: 20px;
-    font-size: 1.3em;
-    text-align: center;
-
-    @media screen and (min-width: 768px) {
-        font-size: var(--font-line-xl);
-    }
-}
-
-
-@media screen and (max-width: 900px) {
-    .SectionGallery {
-        margin-top: 40px;
-    }
-}
-
-
-.videoWrapper {
-    padding: 0 40px;
+.socialMediaHolder{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 10rem;
 }
 
 .videoWrapper>div {
@@ -108,6 +99,13 @@
     max-width: 700px;
     //height: 100% !important;
     border-radius: var(--border-radius-custom);
+}
+
+.imgWrapper{
+    width: 100%;
+}
+.socialMediaLinks{
+    margin-top: 15px;
 }
 
 
@@ -120,3 +118,69 @@
 }
 
 
+@media screen and (max-width: breakpoint(md)) {
+    .SectionGallery {
+        margin-top: 40px;
+    }
+    .Container{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+    .title{
+        font-size: 1.7rem;
+    }
+    .socialMediaLinks,
+    .InfoText{
+        font-size: 0.8rem;
+    }
+    .titleWrapper{
+     width: 100%;   
+
+    }
+
+}
+
+@media screen and (max-width: breakpoint(sm)) {
+    .title{
+        font-size: 1.3rem;
+    }
+
+    .InfoText{
+        font-size: 0.6rem;
+    }
+    .aboutLink{
+        font-size: 0.6rem;
+    }
+
+}
+
+
+@media screen and (max-width: breakpoint(xs)) {
+    .title{
+        font-size: 1.1rem;
+    }
+    
+
+    .InfoText{
+        font-size: 0.5rem;
+    }
+    .aboutLink{
+        font-size: 0.5rem;
+    }
+
+}
+
+@media screen and (max-width: breakpoint(xxl)) {
+    .title{
+        font-size: 1.7rem;
+    }
+    .InfoText{
+        font-size: 0.8rem;
+    }
+    .aboutLink{
+        font-size: 0.8rem;
+    }
+}
