@@ -26,8 +26,11 @@ pipeline {
         }
 
         stage('Run automation tests') {
-            steps {
-              dir('frontend-next-migration'){
+          steps {
+            dir('frontend-next-migration') {
+              withCredentials([file(credentialsId: 'alt-site-env-test-file', variable: 'ENV_LOCAL_FILE')]) {
+                sh 'cp $ENV_LOCAL_FILE .env.local'
+
                 script {
                   def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
 
@@ -41,12 +44,13 @@ pipeline {
                 }
               }
             }
-            post {
-                always {
-                    recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/cobertura-coverage.xml']])
-                    junit allowEmptyResults: true, checksName: 'Unit Tests', stdioRetention: 'FAILED', testResults: 'junit.xml'
-                }
+          }
+          post {
+            always {
+              recordCoverage(tools: [[parser: 'COBERTURA', pattern: '**/cobertura-coverage.xml']])
+              junit allowEmptyResults: true, checksName: 'Unit Tests', stdioRetention: 'FAILED', testResults: 'junit.xml'
             }
+          }
         }
 
         stage('Build and Push Docker Image') {
