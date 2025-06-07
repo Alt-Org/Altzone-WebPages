@@ -9,22 +9,25 @@ pipeline {
     stages {
         stage('Install npm dependencies') {
             steps {
-                cache(defaultBranch: 'dev',
-                  maxCacheSize: 2048,
-                  caches: [
-                    arbitraryFileCache(
-                        path: "node_modules",
-                        includes: "**/*",
-                        cacheValidityDecidingFile: "package-lock.json"
-                    )
-                  ]) {
-                    sh "npm install"
+                dir(frontend-next-migration){
+                  cache(defaultBranch: 'dev',
+                    maxCacheSize: 2048,
+                    caches: [
+                      arbitraryFileCache(
+                          path: "node_modules",
+                          includes: "**/*",
+                          cacheValidityDecidingFile: "package-lock.json"
+                      )
+                    ]) {
+                      sh "npm install"
+                  }
                 }
             }
         }
 
         stage('Run automation tests') {
             steps {
+              dir(frontend-next-migration){
                 script {
                   def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
 
@@ -36,6 +39,7 @@ pipeline {
                     }
                   }
                 }
+              }
             }
             post {
                 always {
@@ -51,16 +55,17 @@ pipeline {
                 anyOf {
                     branch 'main'
                     branch 'dev'
-                    branch 'prod'
                 }
             }
             steps {
-              withCredentials([string(credentialsId: 'alt-docker-image-name-prefix', variable: 'IMAGE_NAME_PREFIX')]) {
-                script {
-                  def image = docker.build("${IMAGE_NAME_PREFIX}-site:${DOCKER_IMAGE_TAG}")
-                  docker.withRegistry('https://index.docker.io/v1/', 'alt-dockerhub') {
-                    image.push()
-                    image.push("${DOCKER_IMAGE_TAG_LATEST}")
+              dir(frontend-next-migration){
+                withCredentials([string(credentialsId: 'alt-docker-image-name-prefix', variable: 'IMAGE_NAME_PREFIX')]) {
+                  script {
+                    def image = docker.build("${IMAGE_NAME_PREFIX}-site:${DOCKER_IMAGE_TAG}")
+                    docker.withRegistry('https://index.docker.io/v1/', 'alt-dockerhub') {
+                      image.push()
+                      image.push("${DOCKER_IMAGE_TAG_LATEST}")
+                    }
                   }
                 }
               }
@@ -72,7 +77,6 @@ pipeline {
             anyOf {
               branch 'main'
               branch 'dev'
-              branch 'prod'
             }
           }
           steps {
