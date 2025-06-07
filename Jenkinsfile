@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Install npm dependencies') {
             steps {
-                dir(frontend-next-migration){
+                dir('frontend-next-migration'){
                   cache(defaultBranch: 'dev',
                     maxCacheSize: 2048,
                     caches: [
@@ -27,7 +27,7 @@ pipeline {
 
         stage('Run automation tests') {
             steps {
-              dir(frontend-next-migration){
+              dir('frontend-next-migration'){
                 script {
                   def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
 
@@ -58,7 +58,7 @@ pipeline {
                 }
             }
             steps {
-              dir(frontend-next-migration){
+              dir('frontend-next-migration'){
                 withCredentials([string(credentialsId: 'alt-docker-image-name-prefix', variable: 'IMAGE_NAME_PREFIX')]) {
                   script {
                     def image = docker.build("${IMAGE_NAME_PREFIX}-site:${DOCKER_IMAGE_TAG}")
