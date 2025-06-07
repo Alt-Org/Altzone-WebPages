@@ -13,7 +13,7 @@ dotenv.config({ path: '.env.local' });
  * Config for CI / CD pipeline
  */
 const config: Config = {
-    testMatch: ['**/?(*.)+(test).ts'],
+    testMatch: ['<rootDir>/src/**/*.test.ts'],
     rootDir: '.',
     clearMocks: true,
     moduleDirectories: ['node_modules', __dirname],
@@ -28,6 +28,8 @@ const config: Config = {
     coverageProvider: 'v8',
     coverageReporters: ['cobertura'],
     reporters: ['jest-junit'],
+
+    collectCoverageFrom: ['src/**/*.{ts,tsx}'],
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
