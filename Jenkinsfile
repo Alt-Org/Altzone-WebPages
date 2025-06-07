@@ -30,18 +30,18 @@ pipeline {
             dir('frontend-next-migration') {
               withCredentials([file(credentialsId: 'alt-site-env-test-file', variable: 'ENV_LOCAL_FILE')]) {
                 sh 'cp $ENV_LOCAL_FILE .env.local'
-
-                script {
-                  def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
-
-                  if (firstTestResult != 0) {
-                    def retryResult = sh(script: 'npm run test:ci-retry-failed', returnStatus: true)
-
-                    if (retryResult != 0) {
-                      error("Tests failed after retry")
-                    }
-                  }
-                }
+                sh 'npm run test:ci'
+//                 script {
+//                   def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
+//
+//                   if (firstTestResult != 0) {
+//                     def retryResult = sh(script: 'npm run test:ci-retry-failed', returnStatus: true)
+//
+//                     if (retryResult != 0) {
+//                       error("Tests failed after retry")
+//                     }
+//                   }
+//                 }
               }
             }
           }
