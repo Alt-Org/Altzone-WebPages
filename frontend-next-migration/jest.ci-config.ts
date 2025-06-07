@@ -13,6 +13,8 @@ dotenv.config({ path: '.env.local' });
  * Config for CI / CD pipeline
  */
 const config: Config = {
+    maxWorkers: 2,
+
     testMatch: ['<rootDir>/src/**/*.test.{ts,tsx}'],
     rootDir: '.',
     clearMocks: true,
