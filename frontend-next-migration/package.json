@@ -11,6 +11,7 @@
     "start": "next start",
     "test": "jest",
     "test:ci": "jest --ci --maxWorkers=3 --config=jest.ci-config.ts",
+    "test:ci-retry-failed": "jest --ci --onlyFailures --maxWorkers=3",
     "test:watch": "jest --watch",
     "check:circular": "madge --circular --extensions ts,tsx --ts-config ./tsconfig.json src/",
     "lint": "next lint",
