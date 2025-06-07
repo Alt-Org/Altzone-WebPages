@@ -25,7 +25,7 @@ const config: Config = {
 
     collectCoverage: true,
     coverageDirectory: 'coverage',
-    coverageProvider: 'v8',
+    // coverageProvider: 'v8',
     coverageReporters: ['cobertura'],
     reporters: ['jest-junit'],
 
