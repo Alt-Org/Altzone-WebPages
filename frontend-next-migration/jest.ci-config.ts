@@ -13,7 +13,7 @@ dotenv.config({ path: '.env.local' });
  * Config for CI / CD pipeline
  */
 const config: Config = {
-    testMatch: ['<rootDir>/src/**/*.test.ts'],
+    testMatch: ['<rootDir>/src/**/*.test.{ts,tsx}'],
     rootDir: '.',
     clearMocks: true,
     moduleDirectories: ['node_modules', __dirname],
