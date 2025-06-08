@@ -93,6 +93,7 @@ pipeline {
             anyOf {
               branch 'main'
               branch 'dev'
+              branch 'mikhail/feature/jenkins-setup'
             }
           }
           steps {
@@ -101,7 +102,8 @@ pipeline {
               string(credentialsId: 'alt-server-webhook-url', variable: 'WEBHOOK_URL')
             ]) {
               script {
-                def payload = """{"name": "site", "tag": "${env.BRANCH_NAME}"}"""
+//                 def payload = """{"name": "site", "tag": "${env.BRANCH_NAME}"}"""
+                def payload = """{"name": "site", "tag": "dev"}"""
                 withEnv(["PAYLOAD=${payload}"]) {
                   sh(script: '''
                     SIGNATURE=$(echo "$PAYLOAD" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
