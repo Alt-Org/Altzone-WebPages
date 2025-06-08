@@ -73,7 +73,8 @@ pipeline {
                     def image = docker.build("${IMAGE_NAME_PREFIX}-site:dev")
                     docker.withRegistry('https://index.docker.io/v1/', 'alt-dockerhub') {
                       image.push()
-                      image.push("${DOCKER_IMAGE_TAG_LATEST}")
+//                       image.push("${DOCKER_IMAGE_TAG_LATEST}")
+                      image.push("dev-latest")
                     }
                   }
                 }
