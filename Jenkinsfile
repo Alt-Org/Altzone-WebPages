@@ -67,10 +67,10 @@ pipeline {
             }
             steps {
               dir('frontend-next-migration'){
-                withCredentials(
-                  [string(credentialsId: 'alt-docker-image-name-prefix', variable: 'IMAGE_NAME_PREFIX')],
-                  [file(credentialsId: 'alt-site-env-test-file', variable: 'ENV_LOCAL_FILE')]
-                ) {
+                withCredentials([
+                    string(credentialsId: 'alt-docker-image-name-prefix', variable: 'IMAGE_NAME_PREFIX'),
+                    file(credentialsId: 'alt-site-env-build-file', variable: 'ENV_LOCAL_FILE')
+                  ]) {
                   sh 'rm -f .env.local || true'
                   sh 'cp $ENV_LOCAL_FILE .env.local'
 
