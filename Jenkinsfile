@@ -62,7 +62,6 @@ pipeline {
                 anyOf {
                     branch 'main'
                     branch 'dev'
-                    branch 'mikhail/feature/jenkins-setup'
                 }
             }
             steps {
@@ -75,12 +74,10 @@ pipeline {
                   sh 'cp $ENV_LOCAL_FILE .env.local'
 
                   script {
-//                     def image = docker.build("${IMAGE_NAME_PREFIX}-site:${DOCKER_IMAGE_TAG}")
-                    def image = docker.build("${IMAGE_NAME_PREFIX}-site:dev")
+                    def image = docker.build("${IMAGE_NAME_PREFIX}-site:${DOCKER_IMAGE_TAG}")
                     docker.withRegistry('https://index.docker.io/v1/', 'alt-dockerhub') {
                       image.push()
-//                       image.push("${DOCKER_IMAGE_TAG_LATEST}")
-                      image.push("dev-latest")
+                      image.push("${DOCKER_IMAGE_TAG_LATEST}")
                     }
                   }
                 }
@@ -93,7 +90,6 @@ pipeline {
             anyOf {
               branch 'main'
               branch 'dev'
-              branch 'mikhail/feature/jenkins-setup'
             }
           }
           steps {
@@ -102,8 +98,7 @@ pipeline {
               string(credentialsId: 'alt-server-webhook-url', variable: 'WEBHOOK_URL')
             ]) {
               script {
-//                 def payload = """{"name": "site", "tag": "${env.BRANCH_NAME}"}"""
-                def payload = """{"name": "site", "tag": "dev"}"""
+                def payload = """{"name": "site", "tag": "${env.BRANCH_NAME}"}"""
                 withEnv(["PAYLOAD=${payload}"]) {
                   sh(script: '''
                     SIGNATURE=$(echo "$PAYLOAD" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
