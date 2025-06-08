@@ -36,14 +36,17 @@ export const ProjectDescription = (props: Props) => {
             className={classNames(cls.Section, mods)}
             id="description"
         >
-            <Container className={classNames(cls.Container, mods)}>
-
-                   <Image
+                            <div className={cls.imgHolder}>
+                                       <Image
                         src={greenHaired}
                         alt={'description hero'}
                         style={{ objectFit: 'cover' }}
                         className={classNames(cls.Image)}
                     />
+                </div>
+            <Container className={classNames(cls.Container, mods)}>
+
+
                 
 
                 <h2 className={cls.titleQuestion}>{title}</h2>

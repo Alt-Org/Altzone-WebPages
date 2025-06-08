@@ -21,10 +21,10 @@
 
   }
 }
- .sideImg {
+ .imageHolder {
     margin-left: 0;
     align-self: center;
-    width: 100%;
+    width: 50%;
   }
 
 
@@ -99,6 +99,7 @@
   h3{
     color: black !important;
   }
+
 }
 
 
@@ -154,12 +155,11 @@
     
   }
   .imageHolder{
-    width: 450px !important ;
+    width: 100% !important;
   }
   .sideImg {
     margin-left: 0;
     align-self: center;
-
   }
   .title{
   font-size: 1.6rem !important;
@@ -181,7 +181,7 @@
     
   }
     .imageHolder{
-    width: 60% !important;
+  //  width: 100% !important;
   }
   .sideImg {
     margin-left: 0;
