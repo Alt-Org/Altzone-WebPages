@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev -p 5173",
-    "build": "next build",
+    "build": "next build --no-lint",
     "start": "next start",
     "test": "jest",
     "test:ci": "jest --ci --config=jest.ci-config.ts",

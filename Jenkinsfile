@@ -29,7 +29,7 @@ pipeline {
           steps {
             dir('frontend-next-migration') {
               withCredentials([file(credentialsId: 'alt-site-env-test-file', variable: 'ENV_LOCAL_FILE')]) {
-                sh 'rm -f .env.local'
+                sh 'rm -f .env.local || true'
                 sh 'cp $ENV_LOCAL_FILE .env.local'
                 script {
                   def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
@@ -48,7 +48,7 @@ pipeline {
           post {
             always {
               dir('frontend-next-migration') {
-                sh 'rm -f .env.local'
+                sh 'rm -f .env.local || true'
                 recordCoverage(tools: [[parser: 'COBERTURA', pattern: 'coverage/cobertura-coverage.xml']])
                 junit allowEmptyResults: true, checksName: 'Unit Tests', stdioRetention: 'FAILED', testResults: 'junit.xml'
               }
