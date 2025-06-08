@@ -29,7 +29,8 @@ pipeline {
           steps {
             dir('frontend-next-migration') {
               withCredentials([file(credentialsId: 'alt-site-env-test-file', variable: 'ENV_LOCAL_FILE')]) {
-                sh 'rm -f .env.local && cp $ENV_LOCAL_FILE .env.local'
+                sh 'rm -f .env.local'
+                sh 'cp $ENV_LOCAL_FILE .env.local'
                 script {
                   def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
 
@@ -47,6 +48,7 @@ pipeline {
           post {
             always {
               dir('frontend-next-migration') {
+                sh 'rm -f .env.local'
                 recordCoverage(tools: [[parser: 'COBERTURA', pattern: 'coverage/cobertura-coverage.xml']])
                 junit allowEmptyResults: true, checksName: 'Unit Tests', stdioRetention: 'FAILED', testResults: 'junit.xml'
               }
@@ -60,13 +62,15 @@ pipeline {
                 anyOf {
                     branch 'main'
                     branch 'dev'
+                    branch 'mikhail/feature/jenkins-setup'
                 }
             }
             steps {
               dir('frontend-next-migration'){
                 withCredentials([string(credentialsId: 'alt-docker-image-name-prefix', variable: 'IMAGE_NAME_PREFIX')]) {
                   script {
-                    def image = docker.build("${IMAGE_NAME_PREFIX}-site:${DOCKER_IMAGE_TAG}")
+//                     def image = docker.build("${IMAGE_NAME_PREFIX}-site:${DOCKER_IMAGE_TAG}")
+                    def image = docker.build("${IMAGE_NAME_PREFIX}-site:dev")
                     docker.withRegistry('https://index.docker.io/v1/', 'alt-dockerhub') {
                       image.push()
                       image.push("${DOCKER_IMAGE_TAG_LATEST}")
