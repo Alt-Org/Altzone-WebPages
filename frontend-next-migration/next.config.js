@@ -4,22 +4,14 @@ const path = require('path');
 const nextConfig = {
     images: {
         remotePatterns: [
-            {
-                hostname: process.env.NEXT_PUBLIC_API_LINK
-                    ? new URL(process.env.NEXT_PUBLIC_API_LINK).hostname
-                    : 'http://localhost:1234',
-            },
+            { hostname: getSafeHostname(process.env.NEXT_PUBLIC_API_LINK) },
             { hostname: 'hips.hearstapps.com' },
             { hostname: 'www.thesprucepets.com' },
             { hostname: 'heroes.ts.unsplash.com' },
             { hostname: 'raw.githubusercontent.com' },
             { hostname: 'raw.githubusercontent.com' },
             { hostname: 'localhost' },
-            {
-                hostname: process.env.NEXT_PUBLIC_STRAPI_HOST
-                    ? new URL(process.env.NEXT_PUBLIC_STRAPI_HOST).hostname
-                    : 'http://localhost:2345',
-            },
+            { hostname: getSafeHostname(process.env.NEXT_PUBLIC_STRAPI_HOST) },
         ],
     },
     sassOptions: {
@@ -35,3 +27,19 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+function getSafeHostname(envVar, fallback = 'localhost') {
+    if (!envVar) {
+        console.warn(`[next.config.js] WARNING: missing env var, falling back to ${fallback}`);
+        return fallback;
+    }
+
+    try {
+        return new URL(envVar).hostname;
+    } catch {
+        console.warn(
+            `[next.config.js] WARNING: invalid URL in env var, falling back to ${fallback}`,
+        );
+        return fallback;
+    }
+}
