@@ -64,7 +64,6 @@ function MainPage(props: Props) {
             <Gallery {...gallery} />
 
             <NewsSection />
-            <HorizontalLines />
             <ContactSection {...contactSection} />
 
             {/*<Gallery {...galleryCopy} />*/}
