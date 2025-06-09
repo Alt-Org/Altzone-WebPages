@@ -331,12 +331,13 @@ ModularCardBase.Image = ModularCardImageSection;
  * <ModularCard
  *      className="customClass"
  *      theme={ModularCardTheme.DEFENSECARD}
- *      path='/fi/page/details'
+ *      path="/fi/page/details"
  *      isExternal={false}
  *      withScalableLink={true}
  * >
  *      <ModularCard.Texts>
  *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *          <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
  *      </ModularCard.Texts>
  *      <ModularCard.Image className={cls.Hero} > // Here you can change image container styling by using className(s).
  *          <ModularCard.Image.Image

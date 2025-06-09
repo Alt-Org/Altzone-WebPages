@@ -22,7 +22,7 @@
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
-    --spacing-lg: 32px;
+    --spacing-lg: 36px;
     --spacing-xl: 48px;
     --spacing-xxl: 56px;
 }
@@ -158,7 +158,6 @@
     border-radius: var(--border-radius-md);
     display: flex;
     box-shadow: 4px 8px 0 var(--black);
-    background-color: #FF0000;
     @media (max-width:breakpoint(md)) {
         height:160px;
         box-shadow: 2px 4px 0 var(--black);
@@ -272,13 +271,16 @@
     }
     @media (max-width: 640px) {
         h2 {
-            line-height: var(--font-line-xs);
             font-size: var(--font-size-s);
+            line-height: var(--font-line-xs);
         }
     }
     @media (max-width: breakpoint(sm)) {
-        padding-left: var(--spacing-sm);
         margin-top: var(--spacing-lg);
+        h2 {
+            font-size: 12px;
+            line-height: 16px;
+        }
     }
 }
 
@@ -303,9 +305,16 @@
        font-size: 28px;
        line-height: var(--font-line-l);
     }
+    @media (max-width: breakpoint(md)) {
+        font-size: var(--font-size-l);
+    }
     @media (max-width: 640px) {
         font-size: var(--font-size-m);
         line-height: var(--font-line-m);
+    }
+    @media (max-width: breakpoint(sm)) {
+        font-size: var(--font-size-s);
+        line-height: var(--font-line-s);
     }
 }
 
