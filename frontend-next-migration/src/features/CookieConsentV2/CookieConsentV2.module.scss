@@ -6,7 +6,8 @@
     width: 780px;
     padding: 24px;
     background: var(--background);
-    border: 1.5px solid var(--border-color);
+    border: solid var(--black);
+    border-width: var(--border-desktop);
     border-radius: var(--border-radius-lg);
     font-family: var(--body-font);
     line-height: 1.6;
@@ -61,13 +62,12 @@
 .acceptButton {
     background: #ffa100;
     color: #000000;
-    border: 1px solid var(--border-color);
     padding: 12px 24px;
     border-radius: var(--border-radius-xl);
     font-weight: 400;
     stroke: var(--primary-color);
-    box-shadow: var(--l);
     cursor: pointer;
+    border: solid var(--primary-color);
 
     &:hover {
         opacity: 0.9;
@@ -83,8 +83,8 @@
     border-radius: var(--border-radius-xl);
     border: 1.5px solid var(--border-color);
     stroke: var(--background);
-    // box-shadow: var(--l);
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+    border: solid var(--black);
     cursor: pointer;
 
     &:hover {
