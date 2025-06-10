@@ -16,7 +16,7 @@
     flex-direction: column;
     overflow: hidden;
     box-sizing: border-box;
-    box-shadow: var(--l);
+    box-shadow: 8px 8px 1px #000000;
 }
 .cookieConsentV2 button + button {
     margin-left: 15px;
@@ -67,7 +67,8 @@
     font-weight: 400;
     stroke: var(--primary-color);
     cursor: pointer;
-    border: solid var(--primary-color);
+    border: solid var(--black);
+    box-shadow: 2px 4px 0 var(--black) !important;
 
     &:hover {
         opacity: 0.9;
@@ -85,6 +86,7 @@
     stroke: var(--background);
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
     border: solid var(--black);
+    box-shadow: 2px 4px 0 var(--black) !important;
     cursor: pointer;
 
     &:hover {
