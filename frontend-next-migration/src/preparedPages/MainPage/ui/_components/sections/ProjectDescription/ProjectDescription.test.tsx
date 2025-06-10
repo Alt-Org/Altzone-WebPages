@@ -4,12 +4,21 @@ import { ProjectDescription, Props } from './ProjectDescription';
 
 // Mock IntersectionObserver
 beforeAll(() => {
-  global.IntersectionObserver = class {
-    constructor() {}
+  class MockIntersectionObserver {
+    readonly root: Element | null = null;
+    readonly rootMargin: string = '';
+    readonly thresholds: ReadonlyArray<number> = [];
+    constructor(_: IntersectionObserverCallback, __?: IntersectionObserverInit) {}
     observe() {}
     disconnect() {}
     unobserve() {}
-  };
+    takeRecords() { return []; }
+  }
+  Object.defineProperty(global, 'IntersectionObserver', {
+    writable: true,
+    configurable: true,
+    value: MockIntersectionObserver,
+  });
 });
 
 describe('ProjectDescription', () => {

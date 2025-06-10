@@ -1,3 +1,4 @@
+import { render, screen } from '@testing-library/react';
 import Gallery, { Props } from './Gallery';
 
 const mockProps: Props = {

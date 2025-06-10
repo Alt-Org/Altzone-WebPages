@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import greenHaired from '@/shared/assets/images/mainpage/subway_WEBP.webp';
 import { Container } from '@/shared/ui/Container';
-import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import cls from './ProjectDescription.module.scss';
 import { Paragraph } from '@/shared/ui/Paragraph';
 
@@ -28,7 +27,6 @@ export const ProjectDescription = (props: Props) => {
         [cls.inView]: inView,
     };
 
-    const { isMobileSize } = useIsMobileSize();
 
     return (
         <section
