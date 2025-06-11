@@ -1,6 +1,5 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
-import { SectionGalleryV2, SectionGalleryV1 } from '@/widgets/SectionGallery';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Gallery.module.scss';
@@ -26,8 +25,7 @@ export type Props = {
 };
 
 const Gallery = (props: Props) => {
-    const { title, infoText, socialsText, seeMoreLink, socialMediaLinks, videoLink, gameImg } =
-        props;
+    const { title, infoText, seeMoreLink, gameImg } = props;
     const params = useParams();
     const lng = params.lng as string;
     const language = getLanguageCode(lng);
@@ -63,29 +61,52 @@ const Gallery = (props: Props) => {
                     </a>
                     <p className={cls.socialMediaLinks}>Seuraa Alt Zonea somessa</p>
                     <div className={cls.socialMediaHolder}>
-                        <a href={AppExternalLinks.discord} target="_blank" rel="noreferrer">
-                            <img src={discordIcon.src} alt="Discord" className={cls.socialMediaIcon} />
+                        <a
+                            href={AppExternalLinks.discord}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <img
+                                src={discordIcon.src}
+                                alt="Discord"
+                                className={cls.socialMediaIcon}
+                            />
                         </a>
-                        <a href={AppExternalLinks.instagram} target="_blank" rel="noreferrer">
-                            <img src={instaIcon.src} alt="Instagram" className={cls.socialMediaIcon} />
+                        <a
+                            href={AppExternalLinks.instagram}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <img
+                                src={instaIcon.src}
+                                alt="Instagram"
+                                className={cls.socialMediaIcon}
+                            />
                         </a>
-                        <a href={AppExternalLinks.facebook} target="_blank" rel="noreferrer">
-                            <img src={facebookIcon.src} alt="Facebook" className={cls.socialMediaIcon} />
+                        <a
+                            href={AppExternalLinks.facebook}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <img
+                                src={facebookIcon.src}
+                                alt="Facebook"
+                                className={cls.socialMediaIcon}
+                            />
                         </a>
-                        <a href={AppExternalLinks.youtube} target="_blank" rel="noreferrer">
-                            <img src={youtubeIcon.src} alt="YouTube" className={cls.socialMediaIcon} />
+                        <a
+                            href={AppExternalLinks.youtube}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <img
+                                src={youtubeIcon.src}
+                                alt="YouTube"
+                                className={cls.socialMediaIcon}
+                            />
                         </a>
                     </div>
                 </div>
-
-                {/*<SectionGalleryV1*/}
-                {/*    socialMediaLinks={socialMediaLinks}*/}
-                {/*    videoLink={videoLink}*/}
-                {/*/>*/}
-
-                {/*<div className={cls.SectionGalleriasWrapper}>*/}
-                {/*    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />*/}
-                {/*</div>*/}
 
                 <div className={cls.imgWrapper}>
                     <img
@@ -93,13 +114,6 @@ const Gallery = (props: Props) => {
                         alt=""
                     />
                 </div>
- 
-                {/*<p className={cls.SocialsText}>{socialsText}</p>*/}
-
-                {/*<SectionGalleryV1*/}
-                {/*    socialMediaLinks={socialMediaLinks}*/}
-                {/*    videoLink={videoLink}*/}
-                {/*/>*/}
             </Container>
         </section>
     );

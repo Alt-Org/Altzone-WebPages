@@ -1,9 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import googlePLay from '@/shared/assets/images/media/googleplay.png';
 import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { NavElement, NavItem } from './NavElement/NavElement';
 import cls from './PlayWithUs.module.scss';
 import { Container } from '@/shared/ui/Container';
@@ -25,13 +22,7 @@ export type Props = {
 };
 
 const PlayWithUs = (props: Props) => {
-    const {
-        webGl,
-        googlePLayLink = AppExternalLinks.downloadAndroid,
-        belowNavs,
-        webGlNotice,
-        title,
-    } = props;
+    const { webGl, googlePLayLink = AppExternalLinks.downloadAndroid } = props;
 
     return (
         <Container
@@ -39,16 +30,14 @@ const PlayWithUs = (props: Props) => {
             className={cls.SectionPlayWithUs}
             fluid={true}
         >
-            {/* <h2 className={cls.title}>
-                {title}
-            </h2> */}
             <div className={cls.Content}>
-<div className={cls.imageHolder}>                 <Image
-                    src={sideImg}
-                    alt={'Side image with hero'}
-                    className={cls.sideImg}
-                />
-</div>
+                <div className={cls.imageHolder}>
+                    <Image
+                        src={sideImg}
+                        alt={'Side image with hero'}
+                        className={cls.sideImg}
+                    />
+                </div>
                 <div className={cls.ContentWithNav}>
                     <h2 className={cls.title}>{props.title}</h2>
                     <div className={cls.Buttons}>

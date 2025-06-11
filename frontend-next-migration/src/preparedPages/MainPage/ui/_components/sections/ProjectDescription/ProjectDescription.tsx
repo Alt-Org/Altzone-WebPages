@@ -27,26 +27,21 @@ export const ProjectDescription = (props: Props) => {
         [cls.inView]: inView,
     };
 
-
     return (
         <section
             ref={ref}
             className={classNames(cls.Section, mods)}
             id="description"
         >
-                            <div className={cls.imgHolder}>
-                                       <Image
-                        src={greenHaired}
-                        alt={'description hero'}
-                        style={{ objectFit: 'cover' }}
-                        className={classNames(cls.Image)}
-                    />
-                </div>
+            <div className={cls.imgHolder}>
+                <Image
+                    src={greenHaired}
+                    alt={'description hero'}
+                    style={{ objectFit: 'cover' }}
+                    className={classNames(cls.Image)}
+                />
+            </div>
             <Container className={classNames(cls.Container, mods)}>
-
-
-                
-
                 <h2 className={cls.titleQuestion}>{title}</h2>
                 <div className={classNames(cls.imageTextBlock, mods)}>
                     <Paragraph
