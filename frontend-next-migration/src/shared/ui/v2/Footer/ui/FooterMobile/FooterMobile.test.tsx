@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { SocialIconLink, Texts } from '../../../../../widgets/Footer/model/types/types';
+import { SocialIconLink, Texts } from '../../../../../../widgets/Footer/model/types/types';
 import FooterMobile from './FooterMobile';
 import { beforeEach } from 'node:test';
 import { useClientTranslation } from '@/shared/i18n';
