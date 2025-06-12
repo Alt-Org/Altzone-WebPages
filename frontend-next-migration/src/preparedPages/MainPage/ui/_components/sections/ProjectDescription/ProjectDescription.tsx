@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import greenHaired from '@/shared/assets/images/heros/hannu-hodari/ahmatti_2_60.webp';
+import ahmatti from '@/shared/assets/images/heros/hannu-hodari/ahmatti_2_60.webp';
 import { Container } from '@/shared/ui/Container';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import cls from './ProjectDescription.module.scss';
@@ -40,7 +40,7 @@ export const ProjectDescription = (props: Props) => {
                 <div className={classNames(cls.imageTextBlock, mods)}>
                     {!isMobileSize && (
                         <Image
-                            src={greenHaired}
+                            src={ahmatti}
                             alt={'description hero'}
                             className={classNames(cls.Image, mods)}
                             priority
