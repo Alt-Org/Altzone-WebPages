@@ -22,7 +22,7 @@ const FooterDesktopComponent = memo((props: Props) => {
     return (
         <footer className={classNames(cls.Footer, {}, [className])}>
             <Container className={cls.ImageContainer}>
-                <RandomCharacter />
+                <RandomCharacter size={256} />
             </Container>
             <Container className={cls.FooterContainer}>
                 <Title
