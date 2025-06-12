@@ -20,11 +20,20 @@ const getImagePaths = () => {
 
 const imagePaths = getImagePaths();
 
-export const useRandomCharacter = () => {
+interface UseRandomCharacterOptions {
+    size?: number | string;
+}
+
+export const useRandomCharacter = (options: UseRandomCharacterOptions = {}) => {
+    const { size = 100 } = options;
+
     const characterPath = useMemo(() => {
         const randomIndex = Math.floor(Math.random() * imagePaths.length);
         return imagePaths[randomIndex];
     }, []);
 
-    return { characterPath };
+    return {
+        characterPath,
+        size,
+    };
 };
