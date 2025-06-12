@@ -8,12 +8,13 @@ const getImagePaths = () => {
 
     try {
         const context = require.context('@/shared/assets/images/heros', true, /\.png$/);
-        return context
+        const paths = context
             .keys()
             .filter((key) => !key.includes('hero-container') && !key.includes('hero-border'))
             .map((key) => context(key).default);
+
+        return paths.length > 0 ? paths : [HannuHodari];
     } catch {
-        // Fallback if require.context is not available.
         return [HannuHodari];
     }
 };
