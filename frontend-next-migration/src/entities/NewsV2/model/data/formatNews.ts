@@ -25,5 +25,6 @@ export function formatNewsSingle(newsItem: any, lngCode: string) {
         titlePicture: newsItem.titlePicture || null,
         previewText: translation?.preview_text || '',
         bodyText: translation?.body_text || '',
+        author: newsItem?.author || 'Anonymous',
     };
 }

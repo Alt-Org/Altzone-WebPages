@@ -10,7 +10,9 @@ import {
     getRouteAllClanSearchPage,
     getRouteAllFurnitureSetsPage,
     getRouteJoinUsPage,
+    getRouteAboutPage,
 } from '@/shared/appLinks/RoutePaths';
+import { isExternal } from 'util/types';
 
 export const dropdowns = {
     community: [
@@ -33,6 +35,13 @@ export const dropdowns = {
             link: {
                 path: AppExternalLinks.reddit,
                 isExternal: true,
+            },
+        },
+        {
+            elementText: 'about',
+            link: {
+                path: getRouteAboutPage(),
+                isExternal: false,
             },
         },
     ],

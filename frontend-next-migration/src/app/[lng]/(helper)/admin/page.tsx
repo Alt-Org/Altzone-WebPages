@@ -11,7 +11,8 @@ import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { useClientTranslation } from '@/shared/i18n';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
-import { ChatBotComponent } from '@/shared/ui/v2/Chatbot';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+
 // import ChatBotComponent from '@/features/Chatbot/ChatBot'; // Uncomment if needed
 // import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
 // import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
@@ -128,7 +129,13 @@ const Page = () => {
                 <h5>Static version of dropdown with subcategories, mainly meant for desktop.</h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps4} />
-            <h1>Main Page Content</h1>
+
+            <div style={{ margin: '20px' }}>
+                <h5>Theme switcher component.</h5>
+            </div>
+            <ThemeSwitcher />
+
+            <h1 style={{ marginTop: '20px' }}>Main Page Content</h1>
             {/* Testing ModularCard */}
 
             <div
@@ -295,7 +302,6 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
-            <ChatBotComponent />
         </LayoutWithSidebars>
     );
 };

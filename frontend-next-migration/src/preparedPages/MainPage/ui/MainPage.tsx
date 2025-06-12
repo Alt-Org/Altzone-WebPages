@@ -9,10 +9,7 @@ import {
     ProjectDescription,
     ProjectDescriptionProps,
 } from './_components/sections/ProjectDescription';
-import {
-    VideoAndGalleries,
-    VideoAndGalleriesProps,
-} from './_components/sections/VideoAndGalleries';
+import { VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries';
 import cls from './page.module.scss';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
@@ -34,7 +31,6 @@ function MainPage(props: Props) {
         playWithUs,
         // getToKnowComics,
         heroesBlocks,
-        videoAndGalleries,
         // classifiedHeroesBlocks,
         gallery,
         contactSection,

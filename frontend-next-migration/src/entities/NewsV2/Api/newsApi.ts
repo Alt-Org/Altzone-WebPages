@@ -21,7 +21,7 @@ export const newsApi = directusApi.injectEndpoints({
          *
          * The query includes news content, related category data, translation information, and images (e.g.,
          * titlePicture, extra pictures). The filter ensures that only news items with a status of 'published'
-         * are retrieved.
+         * are retrieved. Results are sorted by the `date` field in descending order to show the latest news first.
          *
          * @query
          * @returns {Promise<Object>} The data containing the fetched news items.
@@ -49,6 +49,7 @@ export const newsApi = directusApi.injectEndpoints({
                         filter: {
                             status: { _eq: 'published' },
                         },
+                        sort: ['-date', '-id'],
                         limit: _arg,
                     }),
                 );
@@ -57,7 +58,7 @@ export const newsApi = directusApi.injectEndpoints({
         }),
         /**
          * Fetches a single news item by its ID, including related data such as category,
-         * translations, and images. Also retrieves the IDs of the next and previous news items.
+         * translations, and images. Also retrieves the IDs of the next and previous news items base on the published date.
          *
          * @param {string} id - The ID of the news item to fetch.
          * @returns {Promise<Object>} The news item data.
@@ -86,13 +87,30 @@ export const newsApi = directusApi.injectEndpoints({
                         }),
                     );
 
+                    if (!newsItem) {
+                        return {
+                            data: undefined,
+                            error: { status: 404, data: 'News item not found' },
+                            meta: undefined,
+                        };
+                    }
+
                     const nextNews = await client.request(
                         readItems('news', {
                             filter: {
-                                id: { _gt: id },
+                                _or: [
+                                    { date: { _gt: newsItem.date } },
+                                    {
+                                        _and: [
+                                            { date: { _eq: newsItem.date } },
+                                            { id: { _gt: id } },
+                                        ],
+                                    },
+                                ],
+                                id: { _neq: id },
                                 status: { _eq: 'published' },
                             },
-                            sort: ['id'],
+                            sort: ['date', 'id'],
                             limit: 1,
                             fields: ['id'],
                         }),
@@ -101,10 +119,19 @@ export const newsApi = directusApi.injectEndpoints({
                     const prevNews = await client.request(
                         readItems('news', {
                             filter: {
-                                id: { _lt: id },
+                                _or: [
+                                    { date: { _lt: newsItem.date } },
+                                    {
+                                        _and: [
+                                            { date: { _eq: newsItem.date } },
+                                            { id: { _lt: id } },
+                                        ],
+                                    },
+                                ],
+                                id: { _neq: id },
                                 status: { _eq: 'published' },
                             },
-                            sort: ['-id'],
+                            sort: ['-date', '-id'],
                             limit: 1,
                             fields: ['id'],
                         }),
