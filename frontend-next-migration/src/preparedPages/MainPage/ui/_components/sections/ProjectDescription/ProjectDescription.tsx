@@ -16,7 +16,7 @@ export interface Props {
 }
 
 export const ProjectDescription = (props: Props) => {
-    const { className = '', description, title, descriptionArray } = props;
+    const { className = '', description, title } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
