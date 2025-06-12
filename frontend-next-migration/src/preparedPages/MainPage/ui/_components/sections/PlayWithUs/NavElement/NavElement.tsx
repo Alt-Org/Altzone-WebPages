@@ -9,6 +9,7 @@ export type NavItem = {
     body?: string;
     link: string;
     isExternal: boolean;
+    parent?: string;
 };
 
 interface NavElementProps {
@@ -18,15 +19,16 @@ interface NavElementProps {
 
 export const NavElement = memo(({ navElem, className = '' }: NavElementProps) => {
     return (
-        <div className={classNames(cls.NavElement, {}, [className])}>
-            <AppLink
-                to={navElem.link}
-                isExternal={navElem.isExternal}
-            >
-                {navElem?.title && <h3>{navElem.title}</h3>}
-
-                {navElem?.body && <p>{navElem.body}</p>}
-            </AppLink>
+        <div className={classNames(cls.parent)}>
+            <div className={classNames(cls.NavElement, {}, [className])}>
+                <AppLink
+                    to={navElem.link}
+                    isExternal={navElem.isExternal}
+                >
+                    {navElem?.title && <h3>{navElem.title}</h3>}
+                </AppLink>
+            </div>
+            <p className={cls.textUnderButton}>{navElem?.body && <span>{navElem.body}</span>}</p>
         </div>
     );
 });
