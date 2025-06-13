@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * A component that renders a navigation menu for news categories as a dropdown.
  *
@@ -25,6 +26,8 @@ import {
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
+import { useGetNewsCategoriesQuery } from '@/entities/NewsV2';
+import { useParams } from 'next/navigation';
 
 interface NewsPageNavMenuAsDropdownProps {
     className?: string;
@@ -35,9 +38,20 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
     const isTouchDevice = isMobileSize || isTabletSize;
     const { t } = useClientTranslation('news');
 
-    // hard-coded categories
-    const categories = ['Kategoria', 'Kategoria', 'Kategoria', 'Kategoria', 'Kategoria'];
-
+    const { data } = useGetNewsCategoriesQuery();
+    const params = useParams();
+    const lng = params.lng as string;
+    const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
+    const categories = data
+        ? data
+            .map((item) => {
+                const translation = item.translations.find(
+                    (t: { languages_code: string }) => t.languages_code === lngCode
+                );
+                return translation?.category ?? '';
+            })
+            .filter(Boolean)
+        : [];
     const groupedNews: Record<string, any[]> = {};
 
     categories.forEach((category) => {
@@ -56,13 +70,13 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
     }));
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
-        title: t('Kategoriat'),
+        title: t('category-title'),
         openByDefault: false,
         dropdownItems: dropdownItems,
     };
 
     const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
-        title: t('Kategoriat'),
+        title: t('category-title'),
         openByDefault: true,
         staticDropdown: true,
         dropdownItems: dropdownItems,
@@ -70,18 +84,17 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
 
     return (
         <div className={className}>
-            <nav style={isTouchDevice ? { display: 'contents' } : { display: 'none' }}>
+            {isTouchDevice ? (<nav>
                 <NavMenuWithDropdowns
                     className={cls.Width}
                     {...navMenuWithDropdownsMobileProps}
                 />
-            </nav>
-            <nav style={isTouchDevice ? { display: 'none' } : { display: 'block' }}>
+            </nav>) : (<nav>
                 <NavMenuWithDropdowns
                     className={cls.Width}
                     {...navMenuWithDropdownsDesktopProps}
                 />
-            </nav>
+            </nav>)}
         </div>
     );
 };

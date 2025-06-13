@@ -1,0 +1,79 @@
+.Podiums {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 4px 8px var(--black);
+    @media (max-width: breakpoint('md')) {
+        box-shadow: 2px 4px var(--black);
+        border: var(--border-mobile) solid var(--black);
+    }
+}
+.PodiumContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+// Gold
+.PodiumContainer0 {
+    order: 2;
+    .Podium {
+        flex-basis: 100px;
+    }
+}
+// Silver
+.PodiumContainer1 {
+    order: 1;
+    .Podium {
+        flex-basis: 90px;
+    }
+}
+// Bronze
+.PodiumContainer2 {
+    order: 3;
+    .Podium {
+        flex-basis: 80px;
+    }
+}
+.ClanIcon {
+    flex: 1 1;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+.ClanIcon > img {
+    width: 80px;
+    margin: 0 auto;
+}
+.Podium {
+    border-top: 2px solid var(--primary-color);
+    border-left: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    flex-direction: column; 
+}
+.Medal {
+    height: 30px;
+}
+.Medal > img {
+    position: relative;
+    margin: auto;
+    top: -15px;
+}
+.Leader {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-width: 90px;
+    padding: .3em;
+    text-align: center;
+    p {
+        text-align: center;
+    }
+}

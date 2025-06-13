@@ -1,4 +1,5 @@
 $touchSize: 1023px;
+
 .title {
     font-size: 3em;
     font-weight: bolder;
@@ -10,13 +11,15 @@ $touchSize: 1023px;
     @media (max-width: $touchSize) {
         order: 0;
         border-right: unset;
-     
+
     }
+
     @media (max-width: 768px) {
         order: 1;
         margin-right: 30px;
     }
 }
+
 .header {
     display: flex;
     flex-direction: row;
@@ -29,8 +32,10 @@ $touchSize: 1023px;
         align-items: center;
     }
 }
+
 .newsGrid {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    justify-content: center;
 }

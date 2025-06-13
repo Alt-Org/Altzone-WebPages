@@ -1,0 +1,13 @@
+
+.LayoutWithSidebars {
+    background-color: unset;
+}
+.Content {
+    margin-right:60px;
+    @media(min-width: calc(breakpoint(xxl) + 116px)) {
+        margin-right:unset;
+    }
+    @media(max-width: breakpoint(xl)) {
+        margin-right:unset;
+    }
+}
