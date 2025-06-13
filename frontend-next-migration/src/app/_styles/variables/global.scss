@@ -80,11 +80,10 @@
   --overlay-color: rgba(0, 0, 0, 0.34);
   --red-light: #f80606;
   --red-dark: #c50404;
-
   --content-primary: #FFA100;
   --base-card-background: #1E3544;
   --drop-shadows: #121212;
-
+--text-color-dark-yellow: #DAA520;
 
   // border-radius
   --border-radius-custom: 15px;
@@ -102,6 +101,7 @@
 
   --animation-icon-hover-scale: 1.2;
   --animation-icon-active-scale: 0.95;
+  
 
 }
 
@@ -122,3 +122,4 @@
     width: auto;
   }
 }
+
