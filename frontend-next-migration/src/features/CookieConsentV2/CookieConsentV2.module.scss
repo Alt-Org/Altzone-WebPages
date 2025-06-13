@@ -18,7 +18,8 @@
     box-sizing: border-box;
     box-shadow: 8px 8px 1px #000000;
 }
-.cookieConsentV2 button + button {
+
+.cookieConsentV2 button+button {
     margin-left: 15px;
 }
 
@@ -107,6 +108,11 @@
         width: 90%;
     }
 
+    .cookieConsentV2 button+button {
+        margin-left: 0px;
+        padding-top: 10px;
+    }
+
     .cookieConsentContent {
         flex-direction: column;
         width: 333px;
@@ -141,6 +147,11 @@
 @media (max-width: breakpoint(sm)) {
     .cookieConsentV2 {
         width: 88%;
+    }
+
+    .cookieConsentV2 button+button {
+        margin-left: 0px;
+        margin-top: 10px;
     }
 
     .cookieConsentContent {
