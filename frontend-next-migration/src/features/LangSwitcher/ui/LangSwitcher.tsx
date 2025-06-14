@@ -1,12 +1,14 @@
+'use client';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './LangSwitcher.module.scss';
 import languageIcon from '@/shared/assets/icons/langIcon.svg';
 import Image from 'next/image';
 
 type LangSwitcherProps = {
     className?: string;
+    mouseOver?: boolean;
 };
 
 type Option = {
@@ -14,7 +16,7 @@ type Option = {
     value: string;
 };
 
-export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
+export const LangSwitcher = ({ mouseOver = true }: LangSwitcherProps) => {
     const currentPathname = usePathname();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -27,14 +29,11 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     const options = [
         { label: t('FIN'), value: 'fi' },
         { label: t('ENG'), value: 'en' },
+        { label: t('RUS'), value: 'ru' },
         // Add more languages here
     ];
 
-    // Get the label of the current language
     const [selected, setSelected] = useState<string>(
-        // options.find((option) => option.value === language)?.label || options[0]?.label || '',
-
-        //temporary fix
         options.find((option) => option.value === language)?.value || options[0]?.value || '',
     );
 
@@ -51,11 +50,9 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
 
     const toggleDropdown = () => setIsOpen(!isOpen);
 
-    // Selecting an option by pressing enter (for keyboard accessibility)
     const handleEnter = (event: React.KeyboardEvent<HTMLLIElement>) => {
         const items = Array.from(document.querySelectorAll('.selectable-item'));
         const activeElement = document.activeElement;
-        // Active element is one of the options and the pressed key is enter
         if (activeElement && event.key === 'Enter') {
             const currentIndex = items.indexOf(activeElement);
             if (currentIndex !== -1) {
@@ -70,7 +67,6 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         }
     };
 
-    // Close the menu if clicking outside of it
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -87,16 +83,11 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         <div
             data-testid="language-switcher"
             ref={dropdownRef}
-            className={classNames('', {}, [className])}
+            className={cls.languageSwitcher}
         >
             <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    marginLeft: 3,
-                }}
                 onClick={toggleDropdown}
+                className={cls.languageToggle}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
@@ -104,21 +95,20 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
                     src={languageIcon}
                     alt="Language Menu Icon"
                 />
+                <div className={cls.languageLabel}>
+                    {options
+                        .filter((option) => option.value === language)
+                        .map((option) => option.label)
+                        .join(', ')}
+                </div>
             </div>
-            <div>
-                {options
-                    .filter((option) => option.value === language)
-                    .map((option) => option.label)
-                    .join(', ')}
-            </div>
-            {isOpen && (
-                <ul>
+            {isOpen && mouseOver && (
+                <ul className={cls.dropdown}>
                     {options.map((option) => (
                         <li
-                            className="selectable-item"
+                            className={cls.selectableItem}
                             key={option.value}
                             onClick={() => handleOptionClick(option)}
-                            // For screen readers
                             role="option"
                             aria-selected={option.value === language ? 'true' : 'false'}
                             tabIndex={0}

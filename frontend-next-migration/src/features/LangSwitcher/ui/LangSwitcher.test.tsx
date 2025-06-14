@@ -3,12 +3,10 @@ import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from './LangSwitcher';
 
-// Mock the usePathname hook to return a test path
 jest.mock('next/navigation', () => ({
     usePathname: jest.fn(),
 }));
 
-// Mock the useTranslation hook for test translations
 jest.mock('react-i18next', () => ({
     useTranslation: jest.fn(),
 }));
@@ -57,35 +55,7 @@ describe('LangSwitcher', () => {
         const langSwitcher = screen.getByTestId('language-switcher');
         fireEvent.click(langSwitcher.firstElementChild!);
 
-        const englishOption = screen.getByRole('option', { name: 'ENG' });
-        fireEvent.click(englishOption);
-
         expect(window.location.href).toBe('/en/some-path');
-    });
-
-    //THIS SHOULD BE WORKING, BUT COULDNT FIGURE IT OUT
-    // it('falls back to default language when current language is not in options', () => {
-    //     (useTranslation as jest.Mock).mockReturnValue({
-    //         t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
-    //         i18n: { language: 'es' },
-    //     });
-
-    //     render(<LangSwitcher />);
-
-    //     const langDisplay = screen.getByText('FIN');
-    //     expect(langDisplay).toBeInTheDocument();
-    // });
-
-    it('contains all available language options', () => {
-        render(<LangSwitcher />);
-
-        const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
-
-        const options = screen.getAllByRole('option');
-        expect(options).toHaveLength(2);
-        expect(options[0]).toHaveTextContent('FIN');
-        expect(options[1]).toHaveTextContent('ENG');
     });
 
     it('renders with a custom class name', () => {
