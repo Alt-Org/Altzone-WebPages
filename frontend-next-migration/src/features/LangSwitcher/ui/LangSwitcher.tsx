@@ -2,12 +2,13 @@
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './LangSwitcher.module.scss';
 import languageIcon from '@/shared/assets/icons/langIcon.svg';
 import Image from 'next/image';
 
 type LangSwitcherProps = {
     className?: string;
+    mouseOver?: boolean;
 };
 
 type Option = {
@@ -15,7 +16,7 @@ type Option = {
     value: string;
 };
 
-export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
+export const LangSwitcher = ({ mouseOver = true }: LangSwitcherProps) => {
     const currentPathname = usePathname();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -82,17 +83,11 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         <div
             data-testid="language-switcher"
             ref={dropdownRef}
-            className={classNames('', {}, [className])}
+            className={cls.languageSwitcher}
         >
             <div
                 onClick={toggleDropdown}
-                style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginLeft: 3,
-                    cursor: 'pointer',
-                }}
+                className={cls.languageToggle}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
@@ -100,18 +95,18 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
                     src={languageIcon}
                     alt="Language Menu Icon"
                 />
-                <div style={{ marginLeft: 13 }}>
+                <div className={cls.languageLabel}>
                     {options
                         .filter((option) => option.value === language)
                         .map((option) => option.label)
                         .join(', ')}
                 </div>
             </div>
-            {isOpen && (
-                <ul>
+            {isOpen && mouseOver && (
+                <ul className={cls.dropdown}>
                     {options.map((option) => (
                         <li
-                            className="selectable-item"
+                            className={cls.selectableItem}
                             key={option.value}
                             onClick={() => handleOptionClick(option)}
                             role="option"
