@@ -1,132 +1,48 @@
 'use client';
-import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import useSizes from '@/shared/lib/hooks/useSizes';
 import { Container } from '@/shared/ui/Container';
+import { NewsCard } from '@/widgets/NewsCard';
 import cls from './NewsPage.module.scss';
-import { ComingSoon } from '@/widgets/ComingSoon';
+import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
+import { useParams } from 'next/navigation';
+import { envHelper } from '@/shared/const/envHelper';
+import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 
 const NewsPage = () => {
-    // Here could be the props, now this is just hardcoded data
-    const { title, news } = {
-        title: 'NEWS',
-        news: [
-            {
-                id: 1,
-                heading: '[Heading]',
-                content:
-                    '[body (primary text)] Some very long text. Some very long text. Some very long text. Some very long text. Some very long text. Some very long text.',
-                date: '[small-text/footnotes date and time]',
-            },
-            {
-                id: 2,
-                heading: '[Heading]',
-                content:
-                    '[body (primary text)] Some very long text. Some very long text. Some very long text. Some very long text. Some very long text. Some very long text.',
-                date: '[small-text/footnotes date and time]',
-            },
-            {
-                id: 3,
-                heading: '[Heading]',
-                content:
-                    '[body (primary text)] Some very long text. Some very long text. Some very long text. Some very long text. Some very long text. Some very long text.',
-                date: '[small-text/footnotes date and time]',
-            },
-        ],
-    };
-    const { isMobileSize, isTabletSize, isDesktopSize, isWidescreenSize } = useSizes();
+    // later use this to fetch data from the backend
+    // const handleSearchChange = () => {
+    //     // setSearchValue(e.target.value);
+    // };
+
+    const { data } = useGetNewsQuery(6);
+    const params = useParams();
+    const lng = params.lng as string;
+    const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
+    const directusBaseUrl = envHelper.directusHost;
+
+    const groupedNews = formatNews(data, lngCode || 'fi-FI');
+
     return (
-        <main>
-            <ComingSoon />
+        <main className={cls.NewsPage}>
+            <Container>
+                <div className={cls.newsGrid}>
+                    {groupedNews.map((news) => {
+                        const imageSrc = news.titlePicture?.id
+                            ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
+                            : hannu.src;
+                        return (
+                            <NewsCard
+                                key={news.id}
+                                titlePicture={imageSrc}
+                                title={news.title}
+                                previewText={news.previewText}
+                                date={news.date}
+                                id={news.id}
+                            />
+                        );
+                    })}
+                </div>
+            </Container>
         </main>
-        // <WallIntroAnimation>
-        //     <main className={cls.NewsPage}>
-        //         <Container className={cls.TitleAndTabs}>
-        //             <div className={cls.ContentAlignBox}>
-        //                 {!isMobileSize && !isTabletSize && (
-        //                     <div className={cls.ContentAlignBoxLeftBox} />
-        //                 )}
-        //                 <div className={cls.ContentAlignBoxRightBox}>
-        //                     <div>
-        //                         {/* Title */}
-        //                         <h1>{title}</h1>
-        //                     </div>
-        //                     <div className={cls.Tabs}>
-        //                         {!isMobileSize && !isTabletSize ? (
-        //                             <div>
-        //                                 {/* Searchbox (desktop, widescreen) */}
-        //                                 <div className={cls.borderBox}>
-        //                                     <p>Search box</p>
-        //                                 </div>
-        //                             </div>
-        //                         ) : (
-        //                             <>
-        //                                 {/* Categories (mobile, tablet) */}
-        //                                 <div className={cls.borderBox}>
-        //                                     <p>categories mobile</p>
-        //                                 </div>
-        //                                 {/* Searchbox (mobile, tablet) */}
-        //                                 <div className={cls.borderBox}>
-        //                                     <p>Search box</p>
-        //                                 </div>
-        //                             </>
-        //                         )}
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </Container>
-        //         <LayoutWithSidebars
-        //             leftTopSidebar={{
-        //                 component:
-        //                     isDesktopSize || isWidescreenSize ? (
-        //                         // Categories-section (desktop)
-        //                         <div className={cls.CategoriesSection}>
-        //                             {/* Categories (desktop, widescreen)*/}
-        //                             <div className={cls.categoriesDesktop}>
-        //                                 <h2>Categories</h2>
-        //                                 <p>Category</p>
-        //                                 <p>Category</p>
-        //                                 <p>Category</p>
-        //                                 <p>Category</p>
-        //                             </div>
-        //                         </div>
-        //                     ) : (
-        //                         <div />
-        //                     ),
-        //             }}
-        //             className={cls.NewsAndSideBar}
-        //         >
-        //             {/* News-section (all devices) */}
-        //             <div className={cls.News}>
-        //                 {news.map(
-        //                     (newsArticle: /* This could have it's own type when working with real data*/ {
-        //                         id: number;
-        //                         heading: string;
-        //                         content: string;
-        //                         date: string;
-        //                     }) => (
-        //                         <div
-        //                             key={newsArticle.id}
-        //                             className={cls.NewsArticle}
-        //                         >
-        //                             {/* The card*/}
-        //                             <div className={cls.newsCard}>
-        //                                 <div>
-        //                                     <h2>{newsArticle.heading}</h2>
-        //                                 </div>
-        //                                 <div>
-        //                                     <p>{newsArticle.content}</p>
-        //                                 </div>
-        //                                 <div>
-        //                                     <p>{newsArticle.date}</p>
-        //                                 </div>
-        //                             </div>
-        //                         </div>
-        //                     ),
-        //                 )}
-        //             </div>
-        //         </LayoutWithSidebars>
-        //     </main>
-        // </WallIntroAnimation>
     );
 };
 

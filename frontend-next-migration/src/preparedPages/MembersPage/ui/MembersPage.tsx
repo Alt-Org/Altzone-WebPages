@@ -1,20 +1,17 @@
 'use client';
-import { FC } from 'react';
 import { SectionMembers } from '@/widgets/SectionMembers';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './MembersPage.module.scss';
+import { FC } from 'react';
 
 /**
  * The above code defines a React functional component for a Members Page with a background image
  * applied using a higher-order component.
  * @returns The `MembersPage` component is being returned. It is a functional component.
  */
+
 const MembersPage: FC = () => {
     return (
-        <div
-            id={'members'}
-            className={classNames(cls.MembersPage)}
-        >
+        <div className={cls.Members}>
             <SectionMembers className={cls.workersSection} />
         </div>
     );

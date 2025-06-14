@@ -1,0 +1,137 @@
+
+
+.headerImg {
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
+    border-radius: var(--border-radius-lg);
+    border-style: solid;
+    border-width: var(--border-desktop);
+    border-color: var(--black);
+    box-shadow: 3px 4px var(--black);
+    justify-items: center;
+    margin-left: 0;
+    margin-right: auto;
+
+    @media (min-width: breakpoint(xxl)){
+        width: 100%;
+        margin-left: auto;
+    }
+
+    @media (max-width: breakpoint(lg)){
+        width: 95%;
+        margin-left: auto;
+      }
+    
+}
+
+.HeaderContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    @media (max-width: breakpoint(lg)) {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: breakpoint(lg)) {
+        align-items: center;
+        width: 100%;
+        padding-right: 15vh;
+    }
+}
+
+.Imagecontainer {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.TitleContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+    max-width: 1400px;
+    margin-right: auto;
+
+    @media (min-width: breakpoint(lg)){
+        flex-direction: row;
+    }
+
+    @media (min-width: breakpoint(xxl)){
+        margin-left: auto;
+    }
+    
+    h2 {
+        font-family: var(--font-family-title),serif;
+        color: var(--primary-color);
+        font-size: var(--h2-size-desktop);
+    }
+
+    @media (max-width: breakpoint(lg)){
+        width: 100%;
+      }
+}
+
+.Searchfield {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    margin-left: 0.5em;
+    outline: none;
+    font-family: var(--primary-font),serif;
+    
+    &::placeholder {
+        color: var(--primary-color);
+    }
+}
+
+.InputContainer {
+    display: flex;
+    align-items: center;
+    background-color: var(--background);
+    color: var(--primary-color);
+    padding: 0.4em 1em;
+    border-radius: var(--corner-radius-large);
+    border-style: solid;
+    border-color: var(--black);
+    border-width: 3px;
+    box-shadow: 3px 4px var(--black);
+    width: 87%;
+    max-width: 320px;
+    height: 3rem;
+}
+
+.InputParent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: breakpoint(lg)) {
+        justify-content: flex-end;
+    }
+}
+
+.emptyContainer {
+    min-width: 300px;
+    overflow: hidden !important;
+    flex-basis: 0 !important;
+    margin-left: 1% !important;
+    
+    @media (max-width: breakpoint(lg)) {
+        width: 0;
+      }
+}

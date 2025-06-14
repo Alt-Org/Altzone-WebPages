@@ -313,7 +313,7 @@ export const statData: NamedStatArray = {
             rarityClass: 3,
         },
     ],
-    RACIST: [
+    HATE_SPEECH: [
         {
             name: 'resistance',
             defaultLevel: 14,

@@ -22,7 +22,7 @@ export enum HeroSlug {
     JOKESTER = 'jokester',
     SLEEPY_SLEEPER = 'sleepy-sleeper',
     BELIEVER = 'believer',
-    RACIST = 'racist',
+    HATE_SPEECH = 'hate-speech',
     MEATWALL = 'meatwall',
     VETERAN = 'war-veteran',
 }

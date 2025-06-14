@@ -13,9 +13,8 @@ export function useTheme(): UseThemeResult {
         if (!theme) return;
 
         const themeCycle: Record<Theme, Theme> = {
-            [Theme.DARK]: Theme.LIGHT,
+            [Theme.MAIN]: Theme.LIGHT,
             [Theme.LIGHT]: Theme.MAIN,
-            [Theme.MAIN]: Theme.DARK,
         };
 
         const newTheme = themeCycle[theme];

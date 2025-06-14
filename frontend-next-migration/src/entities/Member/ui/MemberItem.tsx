@@ -42,8 +42,10 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
         <li className={cls.workmanComponent}>
             <div className={cls.memberRow}>
                 <div className={cls.centerContainer}>
-                    <span className={cls.memberName}>{member.name}</span>
-                    <span className={cls.taskText}>{task}</span>
+                    <div className={cls.textContainer}>
+                        <span className={cls.memberName}>{member.name}</span>
+                        <span className={cls.taskText}>{task}</span>
+                    </div>
                     <div className={cls.iconContainer}>
                         <div
                             className={`${cls.memberLogo} ${isEnlarged ? cls.memberLogoEnlarged : ''}`}

@@ -19,6 +19,59 @@ export const getLinks = () => {
     };
 };
 
+const enOrder = [
+    'Design Team',
+    'Technical Team',
+    'Artistic Team',
+    'Art Education',
+    'Production',
+    'Community Management',
+    'Community Content',
+    'Participated in the Development of the Project',
+    'Special Thanks',
+];
+
+const fiOrder = [
+    'Suunnittelutiimi',
+    'Tekninen Tiimi',
+    'Taiteellinen Tiimi',
+    'Taidekasvatus',
+    'Tuotanto',
+    'Yhteisömanagerointi',
+    'Yhteisösisältö',
+    'Projektin Kehityksessä Mukana Olleet',
+    'Erityiskiitokset',
+];
+
+// Define department order for each language
+const enDepartmentOrder = [
+    'Coreteam',
+    'Lead Developer',
+    'Developers',
+    'Testing and Analytics',
+    'Technical Mentoring',
+    'Artistic Director',
+    'Graphics',
+    'Sound Design and Composition',
+    'Screenwriting',
+    'Comic Book Artist',
+    'Artistic Mentorship',
+];
+
+const fiDepartmentOrder = [
+    'Ydintiimi',
+    'Vastaavat Ohjelmistokehittäjät',
+    'Ohjelmoijat',
+    'Testaus ja Analytiikka',
+    'Tekninen Mentorointi',
+    'Taiteellinen Vastaava',
+    'Grafiikka',
+    'Äänisuunnittelu ja Sävellys',
+    'Käsikirjoitus',
+    'Sarjakuvataiteilija',
+    'Taiteellinen Mentorointi',
+];
+
 /**
  * Represents the organized data structure containing teams and departments.
  *
@@ -36,41 +89,13 @@ export const getLinks = () => {
  * @param {string} lng - The language code used to determine which language to use for translations and sorting.
  * @returns {OrganizedData} The organized data containing teams mapped by their IDs.
  */
+
 export const organizeMembers = (members: Member[], lng: string) => {
     const teamsMap = new Map<number, Team>();
     const fullLanguageCode = getLanguageCode(lng);
 
-    const enOrder = [
-        'Game Design',
-        'Mentoring',
-        'Development',
-        'Graphics',
-        'Writers',
-        'Sounds',
-        'Comic Book',
-        'Production',
-        'Analysis',
-        'Game Art Education Package',
-        'Other Participants',
-        'Special Thanks',
-    ];
-
-    const fiOrder = [
-        'Pelisuunnittelu',
-        'Mentorointi',
-        'Ohjelmistokehitys',
-        'Grafiikka',
-        'Kirjoittajat',
-        'Äänet',
-        'Sarjakuva',
-        'Tuotanto',
-        'Analyysi',
-        'Pelitaiteen Opetuspaketti',
-        'Muut Mukana Olleet',
-        'Erityiskiitokset',
-    ];
-
     const order = lng === 'fi' ? fiOrder : enOrder;
+    const departmentOrder = lng === 'fi' ? fiDepartmentOrder : enDepartmentOrder;
 
     members.forEach((member: Member) => {
         const memberTeam = member.team;
@@ -110,6 +135,22 @@ export const organizeMembers = (members: Member[], lng: string) => {
     });
     teamsMap.forEach((team) => {
         team.members.sort((a, b) => a.name.localeCompare(b.name));
+
+        // Sort departments within each team according to departmentOrder
+        team.departments.sort((a, b) => {
+            const indexA = departmentOrder.indexOf(a.name);
+            const indexB = departmentOrder.indexOf(b.name);
+
+            // If department is not in the order array, place it at the end
+            if (indexA === -1 && indexB === -1) {
+                return a.name.localeCompare(b.name); // Alphabetical if neither is in order list
+            }
+            if (indexA === -1) return 1; // a not in list, b in list
+            if (indexB === -1) return -1; // a in list, b not in list
+
+            return indexA - indexB; // Both in list, sort by position
+        });
+
         team.departments.forEach((department) => {
             department.members.sort((a, b) => a.name.localeCompare(b.name));
         });
@@ -121,4 +162,44 @@ export const organizeMembers = (members: Member[], lng: string) => {
     });
 
     return { teamsMap: new Map(sortedTeams.map((team) => [team.id, team])) };
+};
+
+/**
+ * Organizes teams based on a predefined order dictated by language.
+ *
+ * @param {Record<any, string>[]} teamProps - An array of team records, containing label and id.
+ * @param {string} lng - The language code used to determine which language to use for translations and sorting.
+ * @returns {Record<any, string>[]} The organized teams mapped by their IDs.
+ */
+
+export const organizeTeams = (teamProps: Record<any, string>[], lng: string) => {
+    const order = lng === 'fi' ? fiOrder : enOrder;
+
+    const sortedTeams = Array.from(teamProps).sort((a, b) => {
+        const indexA = order.indexOf(a.label);
+        const indexB = order.indexOf(b.label);
+        return indexA - indexB;
+    });
+
+    return sortedTeams;
+};
+
+/**
+ * Organizes departments based on a predefined order dictated by language.
+ *
+ * @param {Record<any, string>[]} departmentProps - An array of department records, containing label and id.
+ * @param {string} lng - The language code used to determine which language to use for translations and sorting.
+ * @returns {Record<any, string>[]} The organized departments mapped by their IDs.
+ */
+
+export const organizeDepartments = (departmentProps: Record<any, string>[], lng: string) => {
+    const order = lng === 'fi' ? fiDepartmentOrder : enDepartmentOrder;
+
+    const sortedDepartments = Array.from(departmentProps).sort((a, b) => {
+        const indexA = order.indexOf(a.label);
+        const indexB = order.indexOf(b.label);
+        return indexA - indexB;
+    });
+
+    return sortedDepartments;
 };

@@ -55,7 +55,7 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
 
     return (
         <Container
-            className={classNames(cls.container, {}, [className])}
+            className={classNames(cls.container, {}, [className ?? ''])}
             fluid={shouldBeFluid}
         >
             {leftTopSidebar && (
