@@ -74,6 +74,7 @@
   border: 1px solid black;
   height: 50%;
   background-color: var(--primary-color);
+    box-shadow: 3px 4px 0px #121212; 
   & * {
     font-size: 1.3rem !important;
     color: var(--white) !important;
@@ -138,6 +139,7 @@
   padding: 20px;
   box-shadow: 0.5rem 0.5rem black;
   border-radius: var(--border-radius-custom);
+  
 
   
 }
