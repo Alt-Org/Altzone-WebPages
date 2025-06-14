@@ -147,7 +147,10 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                         key={'switcher key'}
                     >
                         <div className={cls.langSwitcherWrapper}>
-                            <LangSwitcher className={cls.langSwitcher} />
+                            <LangSwitcher
+                                mouseOver={isMouseOver}
+                                className={cls.langSwitcher}
+                            />
                         </div>
                     </li>
 
