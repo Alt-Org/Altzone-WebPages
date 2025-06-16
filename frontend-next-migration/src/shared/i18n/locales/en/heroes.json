@@ -1,173 +1,140 @@
 {
-  "head-title": "AltZone",
-    "head-description": "Altzone offers players the opportunity to join a community, play games, and explore new comics.",
-    "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
-    "og-title": "AltZone - Start Your Game Here",
-    "og-description": "AltZone offers players the opportunity to join a community, play games, and explore new comics.",
+    "head-title": "AltZone - Heroes",
+    "head-description": "Meet the AltZone game characters and their stories. Each character represents different defense mechanisms and emotions.",
+    "head-keywords": "altzone, game, heroes, characters, community, comics, galleries, play, register, log in",
+    "og-title": "AltZone - Meet the Game Characters",
+    "og-description": "Meet the AltZone game characters and their stories. Each character represents different defense mechanisms and emotions.",
 
-  "green-haired" : "Green Haired",
-  "greenHairedDescription": "Hannu Hodari's fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux. ",
-  "greenHairedImgAlt": "Green haired hero's image",
+    "not-found-title": "Could not find requested hero",
+    "not-found-check-heroes": "Check Available Heroes",
 
-  "hannu-hodari" : "Hannu Hodari",
-  "hannuHodariDescription": "Hannu Hodari's fights emotions by focusing on eating. He is constantly on guard, never letting go of his shield, \nbut lives in a constant state of flux. ",
-  "hannuHodariImgAlt": "Hannu Hodari's image",
+    "section-title": "Heroes",
 
-  "purple-girls" : "Purple Twins",
-  "purpleGirlsDescription": "In Girl team, the two become one, an invincible team. As emotions approach, they blow up a large bubblegum bubble to protect themselves and\n slowing down the course of events with a suction that is hard to release. ",
-  "purpleGirlsImgAlt": "Purple Twins' image",
+    "RETROFLECTOR": {
+        "name": "RETROFLECTOR",
+        "description": "RETROFLECTOR is ...",
+        "heroes": {
+            "Overeater": {
+                "title": "Overeater",
+                "alt": "Overeater image",
+                "altGif": "Overeater gif",
+                "description": "The Overeater has a compulsive relationship with food. Eating is a way for him to process emotions, bringing him comfort and control - especially when he feels abandoned or isolated. Food is like an ever-present companion for the Overeater, walking alongside him day after day and able to help him in a time of need."
+            },
 
-  "einstein" : "Albert Älypää",
-  "einsteinDescription": "Albert Älypää protects himself from emotions with a non-fiction book that creates diagrams of the emotional trajectory on the playing field. \nBut Albert's constant graphs can sometimes annoy his teammates. ",
-  "einsteinImgAlt": "Einstein's image",
+            "alcoholic": {
+                "title": "Alcoholic",
+                "alt": "Alcoholic's image",
+                "altGif": "",
+                "description": "The Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations. When drunk, he's like another, better version of himself, like a superhero emerging from an ordinary, flavorless shell. However, alcohol prevents him from being vulnerable and finding true connection with others, leading to confused behavior as the evening darkens and an inevitable drinker's remorse in the morning."
+            }
+        }
+    },
 
-  "graffitiGaya" : "Graffiti-Gaya",
-  "graffitiGayaDescription": "Graffiti Gaya skilfully projects emotions outside herself - onto other characters as well as into art. \nGaya protects herself by spraying a cloud of spray paint that directs emotions to a teammate. Gaya bears no responsibility.",
-  "graffitiGayaAlt": "Graffiti Gaya's image",
+    "PROJECTOR": {
+        "name": "PROJECTOR",
+        "description": "PROJECTOR on ...",
+        "heroes": {
+            "Provocateur": {
+                "title": "Provocateur",
+                "alt": "Provocateur's image",
+                "altGif": "Provocateour's animation gif",
+                "description": "The Provocateur is a storyteller who communicates through her art. Her work is a way to process emotions, find silver linings in the trials that plague her, and say the things that cannot be put into words. The Provocateur also has a deep desire to touch other people, to create reactions and experiences in them, and to challenge their views through her art. Her story is readable by everyone, but it only opens up to those who look deeper than the surface."
+            },
+            "Mirror": {
+                "title": "Mirror User",
+                "alt": "Mirror's image",
+                "altGif": "Mirror's animation gif",
+                "description": "The Mirror User is a lonely and approval-hungry character who tries to blend in with the crowd by mimicking the feelings of others and avoids showing her own feelings for fear of standing out from the crowd. She laughs and disapproves along with others, even though it doesn't really feel good and her insides start to crack."
+            }
+        }
+    },
 
-  "alcoholic" : "Alkoholisti",
-  "alcoholicDescription": "The Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations.",
-  "alcoholicAlt": "Alholic's image",
+    "INTELLECTUALIZER": {
+        "name": "INTELLECTUALIZER",
+        "description": "INTELLECTUALIZER  is ...",
+        "heroes": {
+            "Researcher": {
+                "title": "Researcher",
+                "alt": "Researcher's image",
+                "altGif": "Researcher's animation gif",
+                "description": "The Researcher is an intellectual with a wealth of knowledge, whose self-esteem is tied to his intelligence. He seeks to dominate conversations, picking on others for trivial faults, and using esoteric language to impress others with his intellectual gifts. Always right, the Researcher never admits his own mistakes and does everything he can to stay on top of the debate."
+            }
+        }
+    },
 
-  "hate-speech": "Hate Speech",
-  "hateSpeechDescription": "The Hate Speech sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause.",
-  "hateSpeechAlt": "Hate Speech image",
+    "CONFLUENT": {
+        "name": "CONFLUENT",
+        "description": "CONFLUENT  is ...",
+        "heroes": {
+            "SoulSisters": {
+                "title": "Soul Sisters",
+                "alt": "Soul-sisters main image",
+                "altGif": "Soul-sisters animation gif",
+                "description": "The Soul Sisters are an inseparable duo. To outsiders, they seem like giggling besties whose thoughts flow together. They share joys and sorrows together and give each other strength and support. However, behind their unbreakable bond lies a secret that has brought them closer together."
+            },
+            "SleepySleeper": {
+                "title": "Sleepy Sleeper",
+                "alt": "Sleepy Sleeper main image",
+                "altGif": "Sleepy Sleeper animation gif",
+                "description": "The Sleepy Sleeper escapes an overwhelming reality into a world of dreams. Sleep is a way for her to detach herself and find security from an environment where her feelings and needs are secondary and where her own identity has been lost due to conforming to others. Always tired, the Sleepy Sleeper gets through the day knowing that soon she will be able to fall asleep again."
+            }
+        }
+    },
 
-  "not-found-title": "Could not find requested hero",
-  "not-found-check-heroes": "Check Available Heroes",
+    "TRICKSTER": {
+        "name": "TRICKSTER",
+        "description": "Trickster  is ...",
+        "heroes": {
+            "Conman": {
+                "title": "Conman",
+                "alt": "Conman main image",
+                "altGif": "Conman animation gif",
+                "description": "Conman skillfully uses deception and trickery to manipulate emotions and distract opponents. His main ability is creating illusions that deceive those around him, making them see what isn’t really there. \\nHe can also produce distracting sounds and visuals to redirect the focus of emotions onto other targets or to hide within the chaos he creates. However, sometimes his cunning backfires on him."
+            },
+            "Jokester": {
+                "title": "Jokester",
+                "alt": "Jokester's image",
+                "altGif": "Jokester's animation gif",
+                "description": "The Jokester is the life of the party in his friend group. Seeing the fun in everything, being around him keeps things relaxed and boredom at bay. Cheerful and always with a fun quip on the tip of his tongue, he is a sought-after companion until it's time for humor to step aside to make room for genuine connection. At that point, others notice that the Jokester is taking distance and revealing his only true friend, sarcasm."
+            }
+        }
+    },
 
-  "section-title": "Heroes",
+    "OBEDIENT": {
+        "name": "OBEDIENT",
+        "description": "OBEDIENT  is ...",
+        "heroes": {
+            "Believer": {
+                "title": "Believer",
+                "alt": "Believer's main image",
+                "altGif": "Believer's animation gif",
+                "description": "The Believer trusts in the guidance of his creator. Dogmatically educated, he knows right from wrong, and the consequences of straying from the path. Blindly following the right path has kept him out of trouble, and even though he doesn't understand the rules or their reasons, he knows that they have a purpose and that generations before him have followed them."
+            }
+        }
+    },
 
-  "RETROFLECTOR": {
-    "name": "RETROFLECTOR",
-    "description": "RETROFLECTOR is ...",
-    "heroes": {
-      "Overeater": {
-        "title": "Overeater",
-        "alt": "Overeater image",
-        "altGif": "Overeater gif",
-        "description": "The Overeater has a compulsive relationship with food. Eating is a way for him to process emotions, bringing him comfort and control - especially when he feels abandoned or isolated. Food is like an ever-present companion for the Overeater, walking alongside him day after day and able to help him in a time of need."
-      },
-
-      "alcoholic": {
-        "title": "Alcoholic",
-        "alt": "Alcoholic's image",
-        "altGif": "",
-        "description": "The Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations. When drunk, he's like another, better version of himself, like a superhero emerging from an ordinary, flavorless shell. However, alcohol prevents him from being vulnerable and finding true connection with others, leading to confused behavior as the evening darkens and an inevitable drinker's remorse in the morning."
-      }
-
+    "DESENSITIZER": {
+        "name": "DESENSITIZER",
+        "description": "DESENSITIZER is...",
+        "heroes": {
+            "HateSpeech": {
+                "title": "Hate Speech",
+                "alt": "Hate Speech main image",
+                "altGif": "Hate Speech animation gif",
+                "description": "The Hate Speech sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause."
+            },
+            "Meatwall": {
+                "title": "Meatwall",
+                "alt": "Meatwall's main image",
+                "altGif": "Meatwall's animation gif",
+                "description": "The Meatwall is the embodiment of discipline. For him, the gym is a safe haven to retreat to, where training and the pursuit of physical perfection focus his thoughts away from the feelings that trouble his mind. He uses the routines of sports and the doses of endorphins found at the limits of his body to dull the emotions he is not ready to face."
+            },
+            "Veteran": {
+                "title": "War Veteran",
+                "alt": "War Veteran's image",
+                "altGif": "War Veteran's animation gif",
+                "description": "The War Veteran is a post-traumatic wreck who has returned home from the front, and the unresolved war traumas still haunt his mind years later. In his attempt to adapt to normal life, the Veteran has pushed the memories of the horrors he experienced in battle to the background, but this constant escape has only taken him beyond salvation, and the bad feeling that has been stuck in him suddenly emerges in everyday situations, preventing him from achieving the peace he desires."
+            }
+        }
     }
-  },
-
-  "PROJECTOR": {
-    "name": "PROJECTOR",
-    "description": "PROJECTOR on ...",
-    "heroes": {
-      "Provocateur": {
-        "title": "Provocateur",
-        "alt": "Provocateur's image",
-        "altGif": "Provocateour's animation gif",
-        "description": "The Provocateur is a storyteller who communicates through her art. Her work is a way to process emotions, find silver linings in the trials that plague her, and say the things that cannot be put into words. The Provocateur also has a deep desire to touch other people, to create reactions and experiences in them, and to challenge their views through her art. Her story is readable by everyone, but it only opens up to those who look deeper than the surface."
-      },
-      "Mirror": {
-        "title": "Mirror User",
-        "alt": "Mirror's image",
-        "altGif": "Mirror's animation gif",
-        "description": "The Mirror User is a lonely and approval-hungry character who tries to blend in with the crowd by mimicking the feelings of others and avoids showing her own feelings for fear of standing out from the crowd. She laughs and disapproves along with others, even though it doesn't really feel good and her insides start to crack."
-      }
-    }
-  },
-
-  "INTELLECTUALIZER": {
-    "name": "INTELLECTUALIZER",
-    "description": "INTELLECTUALIZER  is ...",
-    "heroes": {
-      "Researcher": {
-        "title": "Researcher",
-        "alt": "Researcher's image",
-        "altGif": "Researcher's animation gif",
-        "description": "The Researcher is an intellectual with a wealth of knowledge, whose self-esteem is tied to his intelligence. He seeks to dominate conversations, picking on others for trivial faults, and using esoteric language to impress others with his intellectual gifts. Always right, the Researcher never admits his own mistakes and does everything he can to stay on top of the debate."
-      }
-    }
-  },
-
-  "CONFLUENT": {
-    "name": "CONFLUENT",
-    "description": "CONFLUENT  is ...",
-    "heroes": {
-      "SoulSisters": {
-        "title": "Soul Sisters",
-        "alt": "Soul-sisters main image",
-        "altGif": "Soul-sisters animation gif",
-        "description": "The Soul Sisters are an inseparable duo. To outsiders, they seem like giggling besties whose thoughts flow together. They share joys and sorrows together and give each other strength and support. However, behind their unbreakable bond lies a secret that has brought them closer together."
-      },
-      "SleepySleeper": {
-        "title": "Sleepy Sleeper",
-        "alt": "Sleepy Sleeper main image",
-        "altGif": "Sleepy Sleeper animation gif",
-        "description": "The Sleepy Sleeper escapes an overwhelming reality into a world of dreams. Sleep is a way for her to detach herself and find security from an environment where her feelings and needs are secondary and where her own identity has been lost due to conforming to others. Always tired, the Sleepy Sleeper gets through the day knowing that soon she will be able to fall asleep again."
-      }
-    }
-  },
-
-  "TRICKSTER": {
-    "name": "TRICKSTER",
-    "description": "Trickster  is ...",
-    "heroes": {
-      "Conman": {
-        "title": "Conman",
-        "alt": "Conman main image",
-        "altGif": "Conman animation gif",
-        "description": "Conman skillfully uses deception and trickery to manipulate emotions and distract opponents. His main ability is creating illusions that deceive those around him, making them see what isn’t really there. \\nHe can also produce distracting sounds and visuals to redirect the focus of emotions onto other targets or to hide within the chaos he creates. However, sometimes his cunning backfires on him."
-      },
-      "Jokester": {
-        "title": "Jokester",
-        "alt": "Jokester's image",
-        "altGif": "Jokester's animation gif",
-        "description": "The Jokester is the life of the party in his friend group. Seeing the fun in everything, being around him keeps things relaxed and boredom at bay. Cheerful and always with a fun quip on the tip of his tongue, he is a sought-after companion until it's time for humor to step aside to make room for genuine connection. At that point, others notice that the Jokester is taking distance and revealing his only true friend, sarcasm."
-      }
-    }
-  },
-
-  "OBEDIENT": {
-    "name": "OBEDIENT",
-    "description": "OBEDIENT  is ...",
-    "heroes": {
-      "Believer": {
-        "title": "Believer",
-        "alt": "Believer's main image",
-        "altGif": "Believer's animation gif",
-        "description": "The Believer trusts in the guidance of his creator. Dogmatically educated, he knows right from wrong, and the consequences of straying from the path. Blindly following the right path has kept him out of trouble, and even though he doesn't understand the rules or their reasons, he knows that they have a purpose and that generations before him have followed them."
-      }
-    }
-  },
-
-  "DESENSITIZER": {
-    "name": "DESENSITIZER",
-    "description": "DESENSITIZER is...",
-    "heroes": {
-      "HateSpeech": {
-        "title": "Hate Speech",
-        "alt": "Hate Speech main image",
-        "altGif": "Hate Speech animation gif",
-        "description": "The Hate Speech sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause."
-      },
-      "Meatwall": {
-        "title": "Meatwall",
-        "alt": "Meatwall's main image",
-        "altGif": "Meatwall's animation gif",
-        "description": "The Meatwall is the embodiment of discipline. For him, the gym is a safe haven to retreat to, where training and the pursuit of physical perfection focus his thoughts away from the feelings that trouble his mind. He uses the routines of sports and the doses of endorphins found at the limits of his body to dull the emotions he is not ready to face."
-      },
-      "Veteran": {
-        "title": "War Veteran",
-        "alt": "War Veteran's image",
-        "altGif": "War Veteran's animation gif",
-        "description": "The War Veteran is a post-traumatic wreck who has returned home from the front, and the unresolved war traumas still haunt his mind years later. In his attempt to adapt to normal life, the Veteran has pushed the memories of the horrors he experienced in battle to the background, but this constant escape has only taken him beyond salvation, and the bad feeling that has been stuck in him suddenly emerges in everyday situations, preventing him from achieving the peace he desires."
-      }
-    }
-  }
-
 }
-
-
-

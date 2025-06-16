@@ -47,7 +47,6 @@ const fiOrder = [
 const enDepartmentOrder = [
     'Coreteam',
     'Lead Developer',
-    'API Developers',
     'Developers',
     'Testing and Analytics',
     'Technical Mentoring',
@@ -62,7 +61,6 @@ const enDepartmentOrder = [
 const fiDepartmentOrder = [
     'Ydintiimi',
     'Vastaavat Ohjelmistokehittäjät',
-    'API Ohjelmoijat',
     'Ohjelmoijat',
     'Testaus ja Analytiikka',
     'Tekninen Mentorointi',

@@ -12,8 +12,8 @@ export async function _getPage(lng: string) {
             title: t('main-title'),
         }),
         buildSeo: () => ({
-            title: t('head-title'),
-            description: t('head-description'),
+            title: t('main-title'),
+            description: t('privacy-description'),
             keywords: t('head-keywords'),
         }),
     });

@@ -18,6 +18,7 @@ import chevronright from '@/shared/assets/icons/ChevronRightBlack.svg';
 import { useRouter, useParams } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
+import { ShareButton } from '@/shared/ui/v2/ShareButton';
 
 const NewsElementPage = () => {
     useScrollToTop();
@@ -101,9 +102,21 @@ const NewsElementPage = () => {
                     />
                 </div>
                 <h1 className={cls.title}>{post?.title}</h1>
+
                 <h3 className={cls.subtitle}>{post?.previewText}</h3>
+
+                <div className={cls.metaContainer}>
+                    <span className={cls.author}>{post.author}</span>
+                    <span className={cls.date}>{post?.date || 'Date/Time'}</span>
+                </div>
+
                 <p className={cls.text}>{post?.bodyText}</p>
-                <span className={cls.date}>{post?.date}</span>
+
+                <div className={cls.shareButton}>
+                    <ShareButton>
+                        <span className={cls.shareLabel}>Jaa</span>
+                    </ShareButton>
+                </div>
             </div>
             <div className={cls.readmoreText}>
                 <h1 className={cls.titleReadmore}>{t('read-more')}</h1>
