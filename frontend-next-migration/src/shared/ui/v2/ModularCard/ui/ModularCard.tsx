@@ -345,7 +345,10 @@ ModularCardBase.Image = ModularCardImageSection;
  *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
  *          <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
  *      </ModularCard.Texts>
- *      <ModularCard.Image className={cls.Hero} > // Here you can change image container styling by using className(s).
+ *      <ModularCard.Image
+ *          className={cls.Hero} // Here you can change image container styling by using className(s).
+ *          style={{ '--before-color': 'green' } as React.CSSProperties} // Set background color via --before-color variable
+ *      >
  *          <ModularCard.Image.Image
  *              src={image}
  *              alt="alt"
