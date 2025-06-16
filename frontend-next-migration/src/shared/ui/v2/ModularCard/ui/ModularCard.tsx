@@ -50,6 +50,7 @@ interface ModularCardProps
 interface CardCompoundProps {
     className?: string;
     children: ReactNode;
+    style?: React.CSSProperties;
 }
 
 interface ModularCardImageProps {
@@ -262,9 +263,14 @@ const ModularCardTexts: ModularCardTexts = (props: CardCompoundProps) => {
  * <ModularCard.Image/>
  */
 const ModularCardImageSection: ModularCardImageSection = (props: CardCompoundProps) => {
-    const { children, className = '' } = props;
+    const { children, className = '', style } = props;
     return (
-        <div className={classNames(cls.ModularCardImageSection, {}, [className])}>{children}</div>
+        <div
+            className={classNames(cls.ModularCardImageSection, {}, [className])}
+            style={style}
+        >
+            {children}
+        </div>
     );
 };
 

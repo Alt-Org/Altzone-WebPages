@@ -18,6 +18,8 @@ import { useClientTranslation } from '@/shared/i18n';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { ChatBotComponent } from '@/shared/ui/v2/Chatbot';
+import cls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
+
 // import ChatBotComponent from '@/features/Chatbot/ChatBot'; // Uncomment if needed
 // import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
 // import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
@@ -150,7 +152,9 @@ const Page = () => {
                                 <ModularCard.Texts.Title>Torjujat </ModularCard.Texts.Title>
                                 <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
                             </ModularCard.Texts>
-                            <ModularCard.Image>
+                            <ModularCard.Image
+                                style={{ '--before-color': 'green' } as React.CSSProperties}
+                            >
                                 <ModularCard.Image.Image
                                     src={card.src}
                                     alt="hannu hodari"

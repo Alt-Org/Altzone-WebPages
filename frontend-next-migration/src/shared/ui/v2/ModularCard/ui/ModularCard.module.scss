@@ -18,7 +18,6 @@
     --background: #1E3544;
     --white: #FAF9F6;
     --black: #121212;
-    --color-retroflector: #FF0000;
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
@@ -331,12 +330,8 @@
     top: 0;
     width: 150%;
     height: 100%;
-    transform: skewX(20deg);
-    background-color: var(--color-retroflector);
-}
-
-.Card.DefenseCard.bg-green > .ModularCardImageSection::before {
-    background-color: green;
+    transform: skewX(20deg);    
+    background-color: var(--before-color, red);
 }
 
 .Card.DefenseCard > .ModularCardImageSection > .ModularCardImage {
