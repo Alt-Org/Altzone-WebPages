@@ -22,6 +22,7 @@ export enum ModularCardTheme {
     PRIMARY = '',
     TITLEIMAGE = 'TitleImageCard',
     NEWSCARD = 'NewsImageCard',
+    DEFENSECARD = 'DefenseCard',
 }
 
 /**
@@ -49,6 +50,7 @@ interface ModularCardProps
 interface CardCompoundProps {
     className?: string;
     children: ReactNode;
+    style?: React.CSSProperties;
 }
 
 interface ModularCardImageProps {
@@ -261,9 +263,14 @@ const ModularCardTexts: ModularCardTexts = (props: CardCompoundProps) => {
  * <ModularCard.Image/>
  */
 const ModularCardImageSection: ModularCardImageSection = (props: CardCompoundProps) => {
-    const { children, className = '' } = props;
+    const { children, className = '', style } = props;
     return (
-        <div className={classNames(cls.ModularCardImageSection, {}, [className])}>{children}</div>
+        <div
+            className={classNames(cls.ModularCardImageSection, {}, [className])}
+            style={style}
+        >
+            {children}
+        </div>
     );
 };
 
@@ -319,6 +326,29 @@ ModularCardBase.Image = ModularCardImageSection;
  *      </ModularCard.Texts>
  *      <ModularCard.Image>
  *          <ModularCard.Image.Triangle />
+ *          <ModularCard.Image.Image
+ *              src={image}
+ *              alt="alt"
+ *          />
+ *      </ModularCard.Image>
+ * </ModularCard>
+ * @example
+ * // With DEFENSE theme
+ * <ModularCard
+ *      className="customClass"
+ *      theme={ModularCardTheme.DEFENSECARD}
+ *      path="/fi/page/details"
+ *      isExternal={false}
+ *      withScalableLink={true}
+ * >
+ *      <ModularCard.Texts>
+ *          <ModularCard.Texts.Title>Title</ModularCard.Texts.Title>
+ *          <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
+ *      </ModularCard.Texts>
+ *      <ModularCard.Image
+ *          className={cls.Hero} // Here you can change image container styling by using className(s).
+ *          style={{ '--before-color': 'green' } as React.CSSProperties} // Set background color via --before-color variable
+ *      >
  *          <ModularCard.Image.Image
  *              src={image}
  *              alt="alt"

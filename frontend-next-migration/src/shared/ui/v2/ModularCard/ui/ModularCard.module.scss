@@ -1,4 +1,5 @@
 .Card {
+    --border-radius-lg: 12px;
     --border-radius-md: 8px;
     --border-radius-sm: 4px;
     --heading-font: 'Sedgwick Ave Display', cursive;
@@ -13,6 +14,7 @@
     --border-desktop: 4px;
     --border-mobile: 2px;
     --primary-color: #FFA100;
+    --primary-border: #FFA100;
     --background: #1E3544;
     --white: #FAF9F6;
     --black: #121212;
@@ -23,11 +25,11 @@
 
     .ModularCardTexts {
         transition: all ease-in-out;
-        transition-duration: 0.7s;
+        transition-duration: 0.3s;
     }
     &:hover {
         .ModularCardTexts {
-            flex-basis: 30% !important;
+            flex-basis: 40% !important;
         }
     }
     
@@ -139,6 +141,7 @@
     }
 }
 
+
 // TItleImageCard
 .Card.TitleImageCard {
     position: relative;
@@ -180,6 +183,7 @@
         }
     }
 }
+
 .Card.TitleImageCard > .ModularCardImageSection > .ModularCardImage {
     height: 100%;
     width:min-content;
@@ -197,3 +201,151 @@
         border-right: 85px solid transparent;
     }
 }
+
+// DefenseCard
+.Card.DefenseCard {
+    position: relative;
+    display: flex;
+    height: 192px;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 8px 0 var(--black);
+    overflow: hidden;
+    transition: border-color 0.3s ease-out;
+    &:hover {
+        border-color: var(--primary-border);
+    }
+    @media (max-width: breakpoint(xl)) {
+        height: 184px;
+    }
+    @media (max-width:breakpoint(md)) {
+        height: 152px;
+        box-shadow: 2px 4px 0 var(--black);
+    }
+    @media (max-width: 640px) {
+        height: 144px;
+    }
+    @media (max-width:breakpoint(sm)) {
+        height: 120px;
+        box-shadow: 1px 2px 0 var(--black);
+    }
+
+}
+
+
+.Card.DefenseCard > .ModularCardTexts {
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-100);
+    padding-left: var(--spacing-300);
+    margin-top: calc(var(--spacing-600) + 8px);
+    font-family: var(--font-family-title);
+    font-style: normal;
+    h2 {
+        font-weight: 400;
+        font-size: var(--font-size-l);
+        line-height: var(--font-line-l);
+        color:var(--white);
+    }
+    @media (max-width: breakpoint(xl)) {
+        margin-top: var(--spacing-600);
+        h2 {
+            font-size: 18px;
+        }
+    }
+    @media (max-width: breakpoint(md)) {        
+        padding-left: var(--spacing-200);
+        h2 {
+            font-size: var(--font-size-m);
+            line-height: var(--font-line-m);
+        }
+    }
+    @media (max-width: 640px) {
+        h2 {
+            font-size: var(--font-size-s);
+            line-height: var(--font-line-xs);
+        }
+    }
+    @media (max-width: breakpoint(sm)) {
+        margin-top: calc(var(--spacing-500) + 4px);
+        h2 {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+}
+
+.Card.DefenseCard > .ModularCardTexts > .ModularCardTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+}
+
+.Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
+    font-size: var(--font-size-xl);
+    line-height: var(--font-line-xl);
+    color:var(--primary-color);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    @media (max-width: breakpoint(xl)) {
+       font-size: 28px;
+       line-height: var(--font-line-l);
+    }
+    @media (max-width: breakpoint(md)) {
+        font-size: var(--font-size-l);
+    }
+    @media (max-width: 640px) {
+        font-size: var(--font-size-m);
+        line-height: var(--font-line-m);
+    }
+    @media (max-width: breakpoint(sm)) {
+        font-size: var(--font-size-s);
+        line-height: var(--font-line-s);
+    }
+}
+
+.Card.DefenseCard > .ModularCardImageSection {
+    flex-basis: 55%;
+    overflow: visible;
+    position: relative;
+}
+
+.Card.DefenseCard > .ModularCardImageSection::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    transform: skewX(20deg);    
+    background-color: var(--before-color, red);
+}
+
+.Card.DefenseCard > .ModularCardImageSection > .ModularCardImage {
+    position: relative;
+    left: 24px;
+    max-width: 100%;
+    height: calc(100% + 36px);
+    object-fit: contain;
+    @media (max-width: breakpoint(xl)) {
+        left: 20px;
+    }
+    @media (max-width: breakpoint(md)) {
+        height: calc(100% + 24px);
+    }
+    @media (max-width: 640px) {
+        left: 16px;
+    }
+    @media (max-width: breakpoint(sm)) {
+        left: 12px;
+        top: -8px;
+    }
+}
+
