@@ -22,12 +22,13 @@ import cls from './NewsPageNavMenuAsDropdown.module.scss';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
-    DropdownItem,
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useGetNewsCategoriesQuery } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
+import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper';
+import { NewsCategorySlug } from '@/entities/NewsV2/model/types/types';
 
 interface NewsPageNavMenuAsDropdownProps {
     className?: string;
@@ -42,31 +43,38 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
     const params = useParams();
     const lng = params.lng as string;
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
+
+    // map english name to slug
+    const categoryNameToSlugMap: Record<string, string> = {
+        'Update': NewsCategorySlug.UPDATE,
+        'Announcement': NewsCategorySlug.ANNOUNCEMENT,
+        'Game Update': NewsCategorySlug.GAME_UPDATE,
+    };
+
+    // Extract categories with localized names and slugs
     const categories = data
         ? data
             .map((item) => {
                 const translation = item.translations.find(
                     (t: { languages_code: string }) => t.languages_code === lngCode
                 );
-                return translation?.category ?? '';
+                const englishTranslation = item.translations.find(
+                    (t: { languages_code: string }) => t.languages_code === 'en-US'
+                );   
+                return {
+                    localizedName: translation?.category ?? '',
+                    slug: categoryNameToSlugMap[englishTranslation?.category] || '',
+                };
             })
-            .filter(Boolean)
+            .filter((item) => item.localizedName && item.slug)
         : [];
-    const groupedNews: Record<string, any[]> = {};
 
-    categories.forEach((category) => {
-        groupedNews[category] = [];
-    });
-
-    const dropdownItems: DropdownItem[] = categories.map((category) => ({
-        title: category,
-        elements: groupedNews[category].map(() => ({
-            elementText: '',
-            link: {
-                path: '',
-                isExternal: false,
-            },
-        })),
+    const dropdownItems: DropDownElementASTextOrLink[] = categories.map((category) => ({
+        elementText: category.localizedName,
+        link: {
+            path: `/news/category/${category.slug}`,
+            isExternal: false
+        },
     }));
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
