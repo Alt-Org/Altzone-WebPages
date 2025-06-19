@@ -9,6 +9,7 @@ export async function _getPage(lng: string) {
     return createPage<GameArtPageProps>({
         buildPage: () => ({
             sections: makeArtGameSectionsWithI18n(t),
+            title: t('section-title'),
         }),
         buildSeo: () => ({
             title: t('head-title'),
