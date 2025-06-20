@@ -76,7 +76,6 @@
   font-size: 2em;
 }
 
-/* Responsive design for mobile */
 @media (max-width: 768px) {
   .cover {
     flex-direction: column;
@@ -84,7 +83,6 @@
     padding: 0 20px;
   }
 
-  /* For mobile, we'll put the symbols on the sides */
   .cover {
     position: relative;
   }
@@ -114,7 +112,7 @@
 }
 
 .zoomButton {
-  background-color:  var(--primary-color);
+  background-color: var(--primary-color);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 90000px;
@@ -123,7 +121,43 @@
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color:  darkorange;
+    background-color: darkorange;
   }
+}
+
+.zoomedImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 292px;
+  border: 2px solid orange;
+  z-index: 999;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  pointer-events: none;
+}
+
+.zoomButton {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 90000px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darkorange;
+  }
+}
+
+.zoomButton.active {
+  background-color: #c26b22;
+}
+
+.zoomed {
+  transition: transform 0.2s ease;
+  cursor: zoom-out;
 }
 

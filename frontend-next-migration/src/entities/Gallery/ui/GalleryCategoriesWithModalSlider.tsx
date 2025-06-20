@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './styles.module.scss';
@@ -16,9 +16,9 @@ export type GalleryCategoriesWithModalSliderProps = {
 export const GalleryCategoriesWithModalSlider = memo(
     ({ title, sources, cover }: GalleryCategoriesWithModalSliderProps) => {
         const { t } = useClientTranslation('picture-galleries');
-        const [pageIndex, setPageIndex] = useState(0); // 0 = cover only
+        const [pageIndex, setPageIndex] = useState(0);
+        const [zoomMode, setZoomMode] = useState(false);
 
-        // Filter out cover URL from sources if it exists to avoid duplication
         const filteredSources = sources.filter((src) => src !== cover.url);
 
         const getSortedSources = useCallback((sources: string[]) => {
@@ -30,75 +30,99 @@ export const GalleryCategoriesWithModalSlider = memo(
         }, []);
 
         const sortedSources = getSortedSources(filteredSources);
-
-        // maxPageIndex: 0 = cover, then ceil(length / 2) for pairs
         const maxPageIndex = Math.ceil(sortedSources.length / 2);
 
-        const handlePreviousPage = () => {
-            setPageIndex((prev) => Math.max(0, prev - 1));
+        const changePage = (direction: 'next' | 'prev') => {
+            setPageIndex((prev) => {
+                return direction === 'next'
+                    ? Math.min(maxPageIndex, prev + 1)
+                    : Math.max(0, prev - 1);
+            });
         };
 
-        const handleNextPage = () => {
-            setPageIndex((prev) => Math.min(maxPageIndex, prev + 1));
+        useEffect(() => {
+            const handleKeyDown = (e: KeyboardEvent) => {
+                if (e.key === 'ArrowLeft' && pageIndex > 0) {
+                    changePage('prev');
+                } else if (e.key === 'ArrowRight' && pageIndex < maxPageIndex) {
+                    changePage('next');
+                }
+            };
+            window.addEventListener('keydown', handleKeyDown);
+            return () => window.removeEventListener('keydown', handleKeyDown);
+        }, [pageIndex, maxPageIndex]);
+
+        const handleImageClick = (
+            e: React.MouseEvent<HTMLDivElement>,
+            imgEl: HTMLImageElement | null,
+        ) => {
+            if (!imgEl || !zoomMode) return;
+            e.preventDefault();
+
+            const isZoomed = imgEl.classList.contains(cls.zoomed);
+            if (isZoomed) {
+                imgEl.classList.remove(cls.zoomed);
+                imgEl.style.transform = '';
+                imgEl.style.transformOrigin = '';
+            } else {
+                const rect = imgEl.getBoundingClientRect();
+                const offsetX = e.clientX - rect.left;
+                const offsetY = e.clientY - rect.top;
+                const percentX = (offsetX / rect.width) * 100;
+                const percentY = (offsetY / rect.height) * 100;
+                imgEl.classList.add(cls.zoomed);
+                imgEl.style.transform = 'scale(2)';
+                imgEl.style.transformOrigin = `${percentX}% ${percentY}%`;
+            }
+        };
+
+        const renderSingleImage = (src: string, alt: string) => {
+            return (
+                <div
+                    className={cls.pageWrapper}
+                    onClick={(e) => handleImageClick(e, e.currentTarget.querySelector('img'))}
+                >
+                    {zoomMode ? (
+                        <div className={cls.link}>
+                            <Image
+                                src={src}
+                                width={250}
+                                height={292}
+                                className={cls.coverImage}
+                                alt={alt}
+                            />
+                        </div>
+                    ) : (
+                        <AppLink
+                            data-fancybox={cover.name}
+                            to={src}
+                            className={cls.link}
+                        >
+                            <Image
+                                src={src}
+                                width={250}
+                                height={292}
+                                className={cls.coverImage}
+                                alt={alt}
+                            />
+                        </AppLink>
+                    )}
+                </div>
+            );
         };
 
         const renderImages = () => {
             if (pageIndex === 0) {
-                // Show cover alone
-                return (
-                    <AppLink
-                        data-fancybox={cover.name}
-                        to={cover.url}
-                        className={cls.link}
-                    >
-                        <Image
-                            src={cover.url}
-                            width={250}
-                            height={292}
-                            className={cls.coverImage}
-                            alt={cover.name}
-                        />
-                        {title && <h3 className={cls.title}>{t(`${title}`)}</h3>}
-                    </AppLink>
-                );
+                return renderSingleImage(cover.url, cover.name);
             } else {
-                // Show two pages: sources[2*(pageIndex-1)] and sources[2*(pageIndex-1)+1]
                 const startIndex = (pageIndex - 1) * 2;
                 const left = sortedSources[startIndex];
                 const right = sortedSources[startIndex + 1];
 
                 return (
                     <>
-                        {left && (
-                            <AppLink
-                                data-fancybox={cover.name}
-                                to={left}
-                                className={cls.link}
-                            >
-                                <Image
-                                    src={left}
-                                    width={250}
-                                    height={292}
-                                    className={cls.coverImage}
-                                    alt={`Page ${startIndex + 1}`}
-                                />
-                            </AppLink>
-                        )}
-                        {right && (
-                            <AppLink
-                                data-fancybox={cover.name}
-                                to={right}
-                                className={cls.link}
-                            >
-                                <Image
-                                    src={right}
-                                    width={250}
-                                    height={292}
-                                    className={cls.coverImage}
-                                    alt={`Page ${startIndex + 2}`}
-                                />
-                            </AppLink>
-                        )}
+                        {left && renderSingleImage(left, `Page ${startIndex + 1}`)}
+                        {right && renderSingleImage(right, `Page ${startIndex + 2}`)}
                     </>
                 );
             }
@@ -110,53 +134,21 @@ export const GalleryCategoriesWithModalSlider = memo(
                     <div className={cls.galleryContainer}>
                         <div className={cls.zoomButtonWrapper}>
                             <button
-                                className={cls.zoomButton}
-                                onClick={() => {
-                                    const imageIndex =
-                                        pageIndex === 0 ? 0 : (pageIndex - 1) * 2 + 1;
-                                    const fancyboxElements = document.querySelectorAll(
-                                        `[data-fancybox="${cover.name}"]`,
-                                    );
-                                    if (fancyboxElements[imageIndex]) {
-                                        (fancyboxElements[imageIndex] as HTMLElement).click();
-                                    }
-                                }}
+                                className={`${cls.zoomButton} ${zoomMode ? cls.active : ''}`}
+                                onClick={() => setZoomMode((prev) => !prev)}
                             >
                                 <Image
                                     src="/images/ZoomPlus.png"
                                     width={20}
                                     height={20}
-                                    alt=""
-                                />
-                            </button>
-
-                            <button
-                                className={cls.zoomButton}
-                                onClick={() => {
-                                    const imageIndex =
-                                        pageIndex === 0 ? 0 : (pageIndex - 1) * 2 + 1;
-                                    const fancyboxElements = document.querySelectorAll(
-                                        `[data-fancybox="${cover.name}"]`,
-                                    );
-                                    if (fancyboxElements[imageIndex]) {
-                                        // Open in fullscreen with Fancybox
-                                        (fancyboxElements[imageIndex] as HTMLElement).click();
-                                    }
-                                }}
-                            >
-                                <Image
-                                    src="/images/Fullscreen.png"
-                                    width={20}
-                                    height={20}
-                                    alt=""
+                                    alt="Zoom"
                                 />
                             </button>
                         </div>
 
                         <div className={cls.cover}>
-                            {/* Left Arrow */}
                             <span
-                                onClick={pageIndex > 0 ? handlePreviousPage : undefined}
+                                onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
                                 className={`${cls.navSymbol} ${
                                     pageIndex === 0 ? cls.disabled : ''
                                 }`}
@@ -167,12 +159,12 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 {'<'}
                             </span>
 
-                            {/* Render images */}
                             {renderImages()}
 
-                            {/* Right Arrow */}
                             <span
-                                onClick={pageIndex < maxPageIndex ? handleNextPage : undefined}
+                                onClick={
+                                    pageIndex < maxPageIndex ? () => changePage('next') : undefined
+                                }
                                 className={`${cls.navSymbol} ${
                                     pageIndex === maxPageIndex ? cls.disabled : ''
                                 }`}
@@ -185,7 +177,6 @@ export const GalleryCategoriesWithModalSlider = memo(
                         </div>
                     </div>
 
-                    {/* Hidden preload for fancybox */}
                     <div style={{ display: 'none' }}>
                         {[cover.url, ...sortedSources].map((src, idx) => (
                             <AppLink
