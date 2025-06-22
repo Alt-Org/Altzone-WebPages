@@ -30,7 +30,7 @@
   flex-direction: column;
   gap: 2rem;
   .title{
-    font-size: 2.5rem;
+    font-size: var(--font-line-xl);
     color: var(--primary-color);
     white-space: pre-line;
     text-align: center;
