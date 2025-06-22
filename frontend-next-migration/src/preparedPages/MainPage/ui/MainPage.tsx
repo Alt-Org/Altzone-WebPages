@@ -4,7 +4,7 @@ import { HorizontalLines } from '@/shared/ui/PageDividers';
 import { Gallery, GalleryProps } from './_components/sections/Gallery';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
-import { NewsSection } from './_components/sections/NewsSection';
+import { NewsSection, NewsSectionProps } from './_components/sections/NewsSection';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
@@ -23,6 +23,7 @@ export type Props = {
     heroesBlocks: HeroesBlocksProps;
     galleryCopy: GalleryProps;
     contactSection: ContactSectionProps;
+    newsSection: NewsSectionProps;
 };
 
 function MainPage(props: Props) {
@@ -34,6 +35,7 @@ function MainPage(props: Props) {
         // classifiedHeroesBlocks,
         gallery,
         contactSection,
+        newsSection,
     } = props;
 
     return (
@@ -59,7 +61,7 @@ function MainPage(props: Props) {
             />
             <Gallery {...gallery} />
 
-            <NewsSection />
+            <NewsSection {...newsSection} />
             <ContactSection {...contactSection} />
 
             {/*<Gallery {...galleryCopy} />*/}

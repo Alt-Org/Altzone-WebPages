@@ -110,6 +110,9 @@ export async function _getPage(lng: string) {
                 googlePLayLink: AppExternalLinks.duunitori,
                 linkText: t('contact-linkText'),
             },
+            newsSection: {
+                mainTitle: t('newsSection-title'),
+            },
         }),
     });
 }

@@ -2,13 +2,15 @@
 import { Container } from '@/shared/ui/Container';
 import cls from './NewsSection.module.scss'; // uusi SCSS-tiedosto
 
-// lisää oma placeholder-kuva tähän
+export type Props = {
+    mainTitle?: string;
+};
 
-export const NewsSection = () => {
+export const NewsSection = (props: Props) => {
     return (
         <section className={cls.Section}>
             <Container className={cls.Container}>
-                <h2 className={cls.mainTitle}>Alt Uutiset</h2>
+                <h2 className={cls.mainTitle}>{props.mainTitle}</h2>
                 <div className={cls.grid}>
                     <h2 className={cls.title} />
                     {[1, 2].map((_, index) => (
