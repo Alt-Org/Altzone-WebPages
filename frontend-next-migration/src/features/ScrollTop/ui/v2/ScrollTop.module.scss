@@ -4,7 +4,7 @@
     --white: #faf9f6;
     --black: #121212;
     --border-desktop: 4px;
-    --border-mobile: 2px;
+   // --border-mobile: 2px;
     --h1-size-mobile: 32px;
 
     color: var(--black);
@@ -46,7 +46,8 @@
         right: 24px;
         bottom: 100px;
         border-width: var(--border-mobile);
-        border-radius: calc(var(--border-radius-custom) * 1.5);
+        border-radius: var(--border-radius-custom);
+        box-shadow: var(--s);
     }
 }
 .ScrollTop > img {
