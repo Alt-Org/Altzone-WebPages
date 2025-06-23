@@ -33,11 +33,9 @@ export const GalleryCategoriesWithModalSlider = memo(
         const maxPageIndex = Math.ceil(sortedSources.length / 2);
 
         const changePage = (direction: 'next' | 'prev') => {
-            setPageIndex((prev) => {
-                return direction === 'next'
-                    ? Math.min(maxPageIndex, prev + 1)
-                    : Math.max(0, prev - 1);
-            });
+            setPageIndex((prev) =>
+                direction === 'next' ? Math.min(maxPageIndex, prev + 1) : Math.max(0, prev - 1),
+            );
         };
 
         useEffect(() => {
@@ -76,40 +74,38 @@ export const GalleryCategoriesWithModalSlider = memo(
             }
         };
 
-        const renderSingleImage = (src: string, alt: string) => {
-            return (
-                <div
-                    className={cls.pageWrapper}
-                    onClick={(e) => handleImageClick(e, e.currentTarget.querySelector('img'))}
-                >
-                    {zoomMode ? (
-                        <div className={cls.link}>
-                            <Image
-                                src={src}
-                                width={250}
-                                height={292}
-                                className={cls.coverImage}
-                                alt={alt}
-                            />
-                        </div>
-                    ) : (
-                        <AppLink
-                            data-fancybox={cover.name}
-                            to={src}
-                            className={cls.link}
-                        >
-                            <Image
-                                src={src}
-                                width={250}
-                                height={292}
-                                className={cls.coverImage}
-                                alt={alt}
-                            />
-                        </AppLink>
-                    )}
-                </div>
-            );
-        };
+        const renderSingleImage = (src: string, alt: string) => (
+            <div
+                className={cls.pageWrapper}
+                onClick={(e) => handleImageClick(e, e.currentTarget.querySelector('img'))}
+            >
+                {zoomMode ? (
+                    <div className={cls.link}>
+                        <Image
+                            src={src}
+                            width={250}
+                            height={292}
+                            className={cls.coverImage}
+                            alt={alt}
+                        />
+                    </div>
+                ) : (
+                    <AppLink
+                        data-fancybox={cover.name}
+                        to={src}
+                        className={cls.link}
+                    >
+                        <Image
+                            src={src}
+                            width={250}
+                            height={292}
+                            className={cls.coverImage}
+                            alt={alt}
+                        />
+                    </AppLink>
+                )}
+            </div>
+        );
 
         const renderImages = () => {
             if (pageIndex === 0) {
@@ -132,7 +128,9 @@ export const GalleryCategoriesWithModalSlider = memo(
             <div style={{ cursor: 'pointer' }}>
                 <Fancybox>
                     <div className={cls.galleryContainer}>
-                        <div className={cls.zoomButtonWrapper}>
+                        <div
+                            className={`${cls.zoomButtonWrapper} ${pageIndex === 0 ? cls.coverZoomPosition : ''}`}
+                        >
                             <button
                                 className={`${cls.zoomButton} ${zoomMode ? cls.active : ''}`}
                                 onClick={() => setZoomMode((prev) => !prev)}
@@ -149,9 +147,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                         <div className={cls.cover}>
                             <span
                                 onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
-                                className={`${cls.navSymbol} ${
-                                    pageIndex === 0 ? cls.disabled : ''
-                                }`}
+                                className={`${cls.navSymbol} ${pageIndex === 0 ? cls.disabled : ''}`}
                                 role="button"
                                 tabIndex={pageIndex > 0 ? 0 : -1}
                                 aria-label="Previous"
@@ -165,9 +161,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 onClick={
                                     pageIndex < maxPageIndex ? () => changePage('next') : undefined
                                 }
-                                className={`${cls.navSymbol} ${
-                                    pageIndex === maxPageIndex ? cls.disabled : ''
-                                }`}
+                                className={`${cls.navSymbol} ${pageIndex === maxPageIndex ? cls.disabled : ''}`}
                                 role="button"
                                 tabIndex={pageIndex < maxPageIndex ? 0 : -1}
                                 aria-label="Next"
@@ -187,6 +181,47 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 ''
                             </AppLink>
                         ))}
+                    </div>
+
+                    <div className={cls.sliderContainer}>
+                        <button
+                            className={cls.arrowButton}
+                            onClick={() => changePage('prev')}
+                            disabled={pageIndex === 0}
+                        >
+                            {'<'}
+                        </button>
+
+                        <span className={cls.pageNumber}>{pageIndex * 2 || 1}</span>
+
+                        <input
+                            type="range"
+                            min={0}
+                            max={maxPageIndex}
+                            value={pageIndex}
+                            onChange={(e) => setPageIndex(parseInt(e.target.value))}
+                            className={cls.pageSlider}
+                            style={
+                                {
+                                    '--percent':
+                                        maxPageIndex === 0
+                                            ? '0%'
+                                            : `${(pageIndex / maxPageIndex) * 100}%`,
+                                } as React.CSSProperties
+                            }
+                        />
+
+                        <span className={cls.pageNumber}>
+                            {Math.min(sortedSources.length, (pageIndex || 0) * 2 + 1)}
+                        </span>
+
+                        <button
+                            className={cls.arrowButton}
+                            onClick={() => changePage('next')}
+                            disabled={pageIndex === maxPageIndex}
+                        >
+                            {'>'}
+                        </button>
                     </div>
                 </Fancybox>
             </div>
