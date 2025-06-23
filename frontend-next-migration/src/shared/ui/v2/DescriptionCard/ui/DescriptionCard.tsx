@@ -212,7 +212,7 @@ const DescriptionCardImage = memo((props: DescriptionCardImageProps) => {
     return (
         <div className={cls.DescriptionCardCoverImageContainer}>
             <Image
-                className={classNames(cls.DescriptionCardImage, {}, [cls.Cover, className])}
+                className={classNames(cls.Cover, {}, [className])}
                 src={src}
                 alt={alt}
                 fill
