@@ -4,13 +4,22 @@
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 20px;
+  background-color: red;
 
   //@media (max-width: 1200px) {
   //  margin-top: 50px;
   //}
 
 }
-
+.MainWrapper{
+  background-color: orange !important;
+}
+.LeftSidebar{
+  background-color: yellow;
+}
+.Maincontainer{
+  background-color: white !important;
+}
 
 .Container{
   flex-grow: 1;
@@ -36,18 +45,16 @@
 
 .Title {
   font-size: clamp(40px, 7vw, 50px);
-  font-family: var(--font-family-main), serif;
+  font-family: var(--font-family-title), serif;
   color: var(--primary-color);
   line-height: 1.5;
   font-weight: bold;
-  text-align: center;
+
 }
 
 .InfoText {
   width: 85%;
-  margin: 40px auto;
-  text-align: center;
-  font-size: 1.2em;
+  font-size: 1rem !important;
 }
 
 

@@ -12,10 +12,11 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     const { t } = useClientTranslation('picture-galleries');
 
     return (
-        <LayoutWithSidebars
+        <LayoutWithSidebars className='test'
             leftTopSidebar={{
                 component: <GalleryNavMenuAsDropdown openByDefault={true} />,
                 hideOnMobile: true,
+                className: cls.LeftSidebar,
             }}
         >
             <h1 className={cls.Title}>{t('picture-galleries')}</h1>
