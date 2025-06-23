@@ -29,6 +29,7 @@ import { useGetNewsCategoriesQuery } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
 import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper';
 import { NewsCategorySlug } from '@/entities/NewsV2/model/types/types';
+import { getRouteNewsCategoryPage } from '@/shared/appLinks/RoutePaths';
 
 interface NewsPageNavMenuAsDropdownProps {
     className?: string;
@@ -68,13 +69,14 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
             })
             .filter((item) => item.localizedName && item.slug)
         : [];
-
+    
     const dropdownItems: DropDownElementASTextOrLink[] = categories.map((category) => ({
-        elementText: category.localizedName,
+        elementText: category.localizedName.charAt(0).toUpperCase() + category.localizedName.slice(1),
         link: {
-            path: `/news/category/${category.slug}`,
+            path: getRouteNewsCategoryPage(category.slug),
             isExternal: false
         },
+        active: params.slug === category.slug,
     }));
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
@@ -94,12 +96,14 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
         <div className={className}>
             {isTouchDevice ? (<nav>
                 <NavMenuWithDropdowns
-                    className={cls.Width}
+                    className={cls.WidthNewsNavMenu}
+                    customActiveClassName={cls.NewsActive}
                     {...navMenuWithDropdownsMobileProps}
                 />
             </nav>) : (<nav>
                 <NavMenuWithDropdowns
-                    className={cls.Width}
+                    className={cls.NewsNavMenu}
+                    customActiveClassName={cls.NewsActive}
                     {...navMenuWithDropdownsDesktopProps}
                 />
             </nav>)}

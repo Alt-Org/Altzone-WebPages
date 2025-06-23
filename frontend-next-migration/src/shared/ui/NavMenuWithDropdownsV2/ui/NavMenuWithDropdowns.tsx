@@ -22,6 +22,7 @@ export interface NavMenuWithDropdownsProps {
     staticDropdown?: boolean;
     title: string;
     className?: string;
+    customActiveClassName?: string;
 }
 
 function isDropdownItem(
@@ -102,6 +103,7 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
         openByDefault = false,
         staticDropdown = false,
         titleAsActive = false,
+        customActiveClassName = '',
     } = props;
 
     const [realPath, setRealPath] = useState('/');
@@ -150,7 +152,10 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                             <AppLink
                                 isExternal={item.link.isExternal}
                                 to={item.link.path}
-                                className={classNames(cls.link, { [cls.active]: item.active })}
+                                className={classNames(cls.link, {
+                                    [cls.active]: item.active,
+                                    [customActiveClassName ?? '']: item.active,
+                                })}
                             >
                                 {item.elementText}
                             </AppLink>
