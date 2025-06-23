@@ -45,6 +45,7 @@ function isDropDownElementASTextOrLink(item: any): item is DropDownElementASText
  * @param {boolean} [props.staticDropdown=false] - Determines if the first dropdown element remains static and always open.
  * @param {boolean} [props.titleAsActive=false] - Uses the active dropdown item title as the main dropdown title if the item's link path matches the current router path.
  * @param {string} [props.className=''] - Additional CSS classes for styling the root container.
+ * @param {string} [props.customActiveClassName=''] - Custom class name to apply when an item is active. Only applies to `DropDownElementASTextOrLink` items.
  * @returns {JSX.Element} - The rendered `NavMenuWithDropdowns` component.
  *
  * @example
