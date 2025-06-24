@@ -44,9 +44,6 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 4px 8px 0 var(--black);
-    font-size: .8em;
-    line-height: 1em;
-    font-weight: lighter;
     @media (max-width:breakpoint(md)) {
         height:160px;
         box-shadow: 2px 4px 0 var(--black);
@@ -59,6 +56,8 @@
     justify-content: center;
     padding-left: 1em;
     padding-right:.5em;
+    font-size: .8em;
+    font-family: var(--body-font);
 }
 
 .Card.DefenseGalleryCard > .DescriptionCardTexts > .DescriptionCardTitle {
@@ -90,7 +89,6 @@
 .Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer {
     position: relative;
     height: 100%;
-    aspect-ratio: auto;
 }
 .Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
     object-fit: cover !important;
