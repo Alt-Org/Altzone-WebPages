@@ -4,18 +4,22 @@
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 20px;
-  background-color: red;
+  background-color: rgb(109, 39, 39);
 
   //@media (max-width: 1200px) {
   //  margin-top: 50px;
   //}
 
 }
-.MainWrapper{
-  background-color: orange !important;
+.mainTitle{
+  font-size: 4rem;
+  font-family: var(--font-family-title), serif;
+  color: var(--primary-color);
+  line-height: 1.5;
+  margin-left: 20rem;
 }
 .LeftSidebar{
-  background-color: yellow;
+  background-color: rgba(143, 143, 98, 0.699);
 }
 .Maincontainer{
   background-color: white !important;
@@ -42,19 +46,26 @@
   gap: 20px;
 
 }
+.Header{
+  background-color: #1E3544;
+  box-shadow: 0.3rem 0.3rem black;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
 
 .Title {
-  font-size: clamp(40px, 7vw, 50px);
+  font-size: 2rem;
   font-family: var(--font-family-title), serif;
   color: var(--primary-color);
   line-height: 1.5;
-  font-weight: bold;
 
 }
 
 .InfoText {
-  width: 85%;
-  font-size: 1rem !important;
+  font-size: 0.8rem !important;
+   font-family: var(--font-family-secondary), serif;
 }
 
 
@@ -63,6 +74,7 @@
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
+
 }
 
 @media (min-width: 768px) {
