@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
     DropDownElementASTextOrLink,
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { useParams } from 'next/navigation';
 import cls from './GameArtNavMenuAsDropdown.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface Section {
     id: string;

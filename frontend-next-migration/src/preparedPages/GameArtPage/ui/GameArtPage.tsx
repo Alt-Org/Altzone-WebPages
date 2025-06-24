@@ -3,6 +3,8 @@ import cls from './GameArtPage.module.scss';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import WikiContent from '@/shared/ui/WikiContent/ui/WikiContent';
 import GameArtNavMenu from '@/features/NavigateGameArt';
+import { PageTitle } from '@/shared/ui/PageTitle';
+import { Container } from '@/shared/ui/Container';
 
 interface Section {
     id: string;
@@ -30,7 +32,12 @@ const GameArtPackagePage = (props: Props) => {
                     hideOnMobile: true,
                 }}
             >
-                <h1 className={cls.h1}>{title}</h1>
+                <Container className={cls.Title}>
+                    <PageTitle
+                        titleText={title}
+                        alternate={true}
+                    />
+                </Container>
                 <WikiContent sections={sections} />
             </LayoutWithSidebars>
         </main>
