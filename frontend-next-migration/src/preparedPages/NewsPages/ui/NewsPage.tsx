@@ -6,6 +6,7 @@ import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import { useGetNewsByCategorySlugQuery } from '@/entities/NewsV2/Api/newsApi';
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
@@ -13,13 +14,18 @@ const NewsPage = () => {
     //     // setSearchValue(e.target.value);
     // };
 
-    const { data } = useGetNewsQuery(6);
+    const { data: news } = useGetNewsQuery(6);
     const params = useParams();
+    // console.log(params);
     const lng = params.lng as string;
+    const categorySlug = params.slug as string | undefined;
+    const { data: newsByCategory, error } = useGetNewsByCategorySlugQuery(categorySlug ?? '');
+    // console.log(newsByCategory);
+    // console.log(error);
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
     const directusBaseUrl = envHelper.directusHost;
 
-    const groupedNews = formatNews(data, lngCode || 'fi-FI');
+    const groupedNews = formatNews(news, lngCode || 'fi-FI');
 
     return (
         <main className={cls.NewsPage}>

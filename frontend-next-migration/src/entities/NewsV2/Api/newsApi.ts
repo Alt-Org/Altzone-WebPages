@@ -1,3 +1,4 @@
+import { categoryNameToSlugMap } from '@/features/NavigateNewsPage/ui/NewsPageNavMenuAsDropdown';
 import { directusApi } from '@/shared/api'; // Ensure the base Directus API setup is correct.
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems, readItem } from '@directus/sdk';
@@ -176,6 +177,71 @@ export const newsApi = directusApi.injectEndpoints({
                 return { data: newsCategories };
             },
         }),
+        getNewsByCategorySlug: builder.query({
+            queryFn: async (_arg: string) => {
+                const categoryNames = Object.keys(categoryNameToSlugMap);
+                const categoryName = categoryNames.find(
+                    (name) => categoryNameToSlugMap[name] === _arg,
+                );
+                // Ensure the category slug is valid
+                if (!categoryName) {
+                    return {
+                        data: undefined,
+                        error: { status: 404, data: 'Category not found' },
+                        meta: undefined,
+                    };
+                }
+                try {
+                    const newsByCategorySlug = await client.request(
+                        readItems('news', {
+                            fields: [
+                                '*',
+                                'category.*',
+                                'titlePicture.*',
+                                'extrapicture.*',
+                                'extraPicture2.*',
+                                'extraPicture3.*',
+                                'extraPicture4.*',
+                                'category.translations.*',
+                                'translations.*',
+                            ],
+                            deep: {
+                                category: { translations: true },
+                                translations: true,
+                            },
+                            filter: {
+                                category: {
+                                    translations: {
+                                        languages_code: { _eq: 'en-US' },
+                                        category: { _eq: categoryName },
+                                    },
+                                },
+                                status: { _eq: 'published' },
+                            },
+                            sort: ['-date', '-id'],
+                        }),
+                    );
+                    if (!newsByCategorySlug) {
+                        return {
+                            data: undefined,
+                            error: { status: 404, data: 'No news found for this category' },
+                            meta: undefined,
+                        };
+                    }
+                    return {
+                        data: newsByCategorySlug,
+                        error: undefined,
+                        meta: undefined,
+                    };
+                } catch (error) {
+                    return {
+                        data: undefined,
+                        error: { status: 500, data: 'Error fetching news by category slug' },
+                        meta: undefined,
+                    };
+                }
+            },
+        }),
     }),
 });
 
@@ -189,4 +255,9 @@ export const newsApi = directusApi.injectEndpoints({
  * @hook {useGetNewsByIdQuery} A hook to fetch the news article by Id.
  * @hook {useGetNewsCategoriesQuery} A hook to fetch the news categories.
  */
-export const { useGetNewsQuery, useGetNewsByIdQuery, useGetNewsCategoriesQuery } = newsApi;
+export const {
+    useGetNewsQuery,
+    useGetNewsByIdQuery,
+    useGetNewsCategoriesQuery,
+    useGetNewsByCategorySlugQuery,
+} = newsApi;

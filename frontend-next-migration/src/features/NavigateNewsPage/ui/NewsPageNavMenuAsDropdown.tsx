@@ -35,6 +35,13 @@ interface NewsPageNavMenuAsDropdownProps {
     className?: string;
 }
 
+// map english name to slug
+export const categoryNameToSlugMap: Record<string, string> = {
+    'Update': NewsCategorySlug.UPDATE,
+    'Announcement': NewsCategorySlug.ANNOUNCEMENT,
+    'Game Update': NewsCategorySlug.GAME_UPDATE,
+};
+
 const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ className }) => {
     const { isMobileSize, isTabletSize } = useSizes();
     const isTouchDevice = isMobileSize || isTabletSize;
@@ -44,13 +51,6 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
     const params = useParams();
     const lng = params.lng as string;
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
-
-    // map english name to slug
-    const categoryNameToSlugMap: Record<string, string> = {
-        'Update': NewsCategorySlug.UPDATE,
-        'Announcement': NewsCategorySlug.ANNOUNCEMENT,
-        'Game Update': NewsCategorySlug.GAME_UPDATE,
-    };
 
     // Extract categories with localized names and slugs
     const categories = data
