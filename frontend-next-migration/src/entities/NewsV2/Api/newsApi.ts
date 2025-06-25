@@ -7,6 +7,15 @@ import { News } from '../model/types/types';
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());
 
+type GetNewsArgs = {
+    limit: number;
+    categorySlug?: string;
+};
+
+const slugToCategoryNameMap = Object.fromEntries(
+    Object.entries(categoryNameToSlugMap).map(([name, slug]) => [slug, name]),
+);
+
 /**
  * API service for interacting with the Directus backend to fetch news and news categories.
  *
@@ -29,33 +38,82 @@ export const newsApi = directusApi.injectEndpoints({
          * @returns {Promise<Object>} The data containing the fetched news items.
          * @property {Array} data - An array of news items with their associated details.
          */
-        getNews: builder.query<News[], number>({
-            queryFn: async (_arg: number) => {
-                const newsItems = await client.request<News[]>(
-                    readItems('news', {
-                        fields: [
-                            '*',
-                            'category.*',
-                            'titlePicture.*',
-                            'extrapicture.*',
-                            'extraPicture2.*',
-                            'extraPicture3.*',
-                            'extraPicture4.*',
-                            'category.translations.*',
-                            'translations.*',
-                        ],
-                        deep: {
-                            category: { translations: true },
-                            translations: true,
-                        },
-                        filter: {
-                            status: { _eq: 'published' },
-                        },
-                        sort: ['-date', '-id'],
-                        limit: _arg,
-                    }),
-                );
-                return { data: newsItems };
+        getNews: builder.query<News[], GetNewsArgs>({
+            queryFn: async ({ limit, categorySlug }) => {
+                const sharedFields = [
+                    '*',
+                    'category.*',
+                    'titlePicture.*',
+                    'extrapicture.*',
+                    'extraPicture2.*',
+                    'extraPicture3.*',
+                    'extraPicture4.*',
+                    'category.translations.*',
+                    'translations.*',
+                ];
+                try {
+                    if (!categorySlug) {
+                        const newsItems = await client.request<News[]>(
+                            readItems('news', {
+                                fields: sharedFields,
+                                deep: {
+                                    category: { translations: true },
+                                    translations: true,
+                                },
+                                filter: {
+                                    status: { _eq: 'published' },
+                                },
+                                sort: ['-date', '-id'],
+                                limit: limit,
+                            }),
+                        );
+                        return { data: newsItems };
+                    }
+
+                    // Convert category slug to category name
+                    const categoryName = slugToCategoryNameMap[categorySlug];
+
+                    // Ensure the category slug is valid
+                    if (!categoryName) {
+                        return {
+                            data: undefined,
+                            error: { status: 404, data: 'Category not found' },
+                            meta: undefined,
+                        };
+                    }
+                    const newsByCategory = await client.request<News[]>(
+                        readItems('news', {
+                            fields: sharedFields,
+                            deep: {
+                                category: { translations: true },
+                                translations: true,
+                            },
+                            filter: {
+                                category: {
+                                    translations: {
+                                        languages_code: { _eq: 'en-US' },
+                                        category: { _eq: categoryName },
+                                    },
+                                },
+                                status: { _eq: 'published' },
+                            },
+                            sort: ['-date', '-id'],
+                            limit: limit,
+                        }),
+                    );
+                    return {
+                        data: newsByCategory,
+                        error: undefined,
+                        meta: undefined,
+                    };
+                } catch (error) {
+                    // console.error('News fetch error:', error);
+                    return {
+                        data: undefined,
+                        error: { status: 500, data: 'Internal server error' },
+                        meta: undefined,
+                    };
+                }
             },
         }),
         /**
@@ -178,71 +236,6 @@ export const newsApi = directusApi.injectEndpoints({
                 return { data: newsCategories };
             },
         }),
-        getNewsByCategorySlug: builder.query<News[], string>({
-            queryFn: async (_arg: string) => {
-                const categoryNames = Object.keys(categoryNameToSlugMap);
-                const categoryName = categoryNames.find(
-                    (name) => categoryNameToSlugMap[name] === _arg,
-                );
-                // Ensure the category slug is valid
-                if (!categoryName) {
-                    return {
-                        data: undefined,
-                        error: { status: 404, data: 'Category not found' },
-                        meta: undefined,
-                    };
-                }
-                try {
-                    const newsByCategorySlug = await client.request<News[]>(
-                        readItems('news', {
-                            fields: [
-                                '*',
-                                'category.*',
-                                'titlePicture.*',
-                                'extrapicture.*',
-                                'extraPicture2.*',
-                                'extraPicture3.*',
-                                'extraPicture4.*',
-                                'category.translations.*',
-                                'translations.*',
-                            ],
-                            deep: {
-                                category: { translations: true },
-                                translations: true,
-                            },
-                            filter: {
-                                category: {
-                                    translations: {
-                                        languages_code: { _eq: 'en-US' },
-                                        category: { _eq: categoryName },
-                                    },
-                                },
-                                status: { _eq: 'published' },
-                            },
-                            sort: ['-date', '-id'],
-                        }),
-                    );
-                    if (!newsByCategorySlug) {
-                        return {
-                            data: undefined,
-                            error: { status: 404, data: 'No news found for this category' },
-                            meta: undefined,
-                        };
-                    }
-                    return {
-                        data: newsByCategorySlug,
-                        error: undefined,
-                        meta: undefined,
-                    };
-                } catch (error) {
-                    return {
-                        data: undefined,
-                        error: { status: 500, data: 'Error fetching news by category slug' },
-                        meta: undefined,
-                    };
-                }
-            },
-        }),
     }),
 });
 
@@ -256,9 +249,4 @@ export const newsApi = directusApi.injectEndpoints({
  * @hook {useGetNewsByIdQuery} A hook to fetch the news article by Id.
  * @hook {useGetNewsCategoriesQuery} A hook to fetch the news categories.
  */
-export const {
-    useGetNewsQuery,
-    useGetNewsByIdQuery,
-    useGetNewsCategoriesQuery,
-    useGetNewsByCategorySlugQuery,
-} = newsApi;
+export const { useGetNewsQuery, useGetNewsByIdQuery, useGetNewsCategoriesQuery } = newsApi;
