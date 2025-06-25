@@ -14,18 +14,18 @@ const NewsPage = () => {
     //     // setSearchValue(e.target.value);
     // };
 
-    const { data: news } = useGetNewsQuery(6);
     const params = useParams();
-    // console.log(params);
     const lng = params.lng as string;
     const categorySlug = params.slug as string | undefined;
-    const { data: newsByCategory, error } = useGetNewsByCategorySlugQuery(categorySlug ?? '');
-    // console.log(newsByCategory);
-    // console.log(error);
+
+    const { data: news } = useGetNewsQuery(6);
+    const { data: newsByCategory } = useGetNewsByCategorySlugQuery(categorySlug ?? '');
+
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
     const directusBaseUrl = envHelper.directusHost;
 
-    const groupedNews = formatNews(news, lngCode || 'fi-FI');
+    const newsData = newsByCategory ?? news;
+    const groupedNews = formatNews(newsData, lngCode || 'fi-FI');
 
     return (
         <main className={cls.NewsPage}>

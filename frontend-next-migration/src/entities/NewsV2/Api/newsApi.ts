@@ -2,6 +2,7 @@ import { categoryNameToSlugMap } from '@/features/NavigateNewsPage/ui/NewsPageNa
 import { directusApi } from '@/shared/api'; // Ensure the base Directus API setup is correct.
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems, readItem } from '@directus/sdk';
+import { News } from '../model/types/types';
 
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());
@@ -28,9 +29,9 @@ export const newsApi = directusApi.injectEndpoints({
          * @returns {Promise<Object>} The data containing the fetched news items.
          * @property {Array} data - An array of news items with their associated details.
          */
-        getNews: builder.query({
+        getNews: builder.query<News[], number>({
             queryFn: async (_arg: number) => {
-                const newsItems = await client.request(
+                const newsItems = await client.request<News[]>(
                     readItems('news', {
                         fields: [
                             '*',
@@ -177,7 +178,7 @@ export const newsApi = directusApi.injectEndpoints({
                 return { data: newsCategories };
             },
         }),
-        getNewsByCategorySlug: builder.query({
+        getNewsByCategorySlug: builder.query<News[], string>({
             queryFn: async (_arg: string) => {
                 const categoryNames = Object.keys(categoryNameToSlugMap);
                 const categoryName = categoryNames.find(
@@ -192,7 +193,7 @@ export const newsApi = directusApi.injectEndpoints({
                     };
                 }
                 try {
-                    const newsByCategorySlug = await client.request(
+                    const newsByCategorySlug = await client.request<News[]>(
                         readItems('news', {
                             fields: [
                                 '*',
