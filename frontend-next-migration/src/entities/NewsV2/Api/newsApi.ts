@@ -1,7 +1,7 @@
 import { categoryNameToSlugMap } from '@/features/NavigateNewsPage/ui/NewsPageNavMenuAsDropdown';
 import { directusApi } from '@/shared/api'; // Ensure the base Directus API setup is correct.
 import { envHelper } from '@/shared/const/envHelper';
-import { createDirectus, rest, readItems, readItem } from '@directus/sdk';
+import { createDirectus, rest, readItems, readItem, aggregate } from '@directus/sdk';
 import { News } from '../model/types/types';
 
 const directusBaseUrl = envHelper.directusHost;
@@ -9,7 +9,8 @@ const client = createDirectus(directusBaseUrl).with(rest());
 
 type GetNewsArgs = {
     limit: number;
-    categorySlug?: string;
+    page?: number | undefined;
+    categorySlug?: string | undefined;
 };
 
 const slugToCategoryNameMap = Object.fromEntries(
@@ -39,7 +40,7 @@ export const newsApi = directusApi.injectEndpoints({
          * @property {Array} data - An array of news items with their associated details.
          */
         getNews: builder.query<News[], GetNewsArgs>({
-            queryFn: async ({ limit, categorySlug }) => {
+            queryFn: async ({ limit, page, categorySlug }) => {
                 const sharedFields = [
                     '*',
                     'category.*',
@@ -51,6 +52,7 @@ export const newsApi = directusApi.injectEndpoints({
                     'category.translations.*',
                     'translations.*',
                 ];
+                const safeLimit = typeof limit === 'number' ? limit : 10;
                 try {
                     if (!categorySlug) {
                         const newsItems = await client.request<News[]>(
@@ -64,7 +66,8 @@ export const newsApi = directusApi.injectEndpoints({
                                     status: { _eq: 'published' },
                                 },
                                 sort: ['-date', '-id'],
-                                limit: limit,
+                                limit: safeLimit,
+                                page,
                             }),
                         );
                         return { data: newsItems };
@@ -98,7 +101,8 @@ export const newsApi = directusApi.injectEndpoints({
                                 status: { _eq: 'published' },
                             },
                             sort: ['-date', '-id'],
-                            limit: limit,
+                            limit: safeLimit,
+                            page,
                         }),
                     );
                     return {
@@ -107,7 +111,7 @@ export const newsApi = directusApi.injectEndpoints({
                         meta: undefined,
                     };
                 } catch (error) {
-                    // console.error('News fetch error:', error);
+                    console.error('News fetch error:', error);
                     return {
                         data: undefined,
                         error: { status: 500, data: 'Internal server error' },
@@ -236,6 +240,38 @@ export const newsApi = directusApi.injectEndpoints({
                 return { data: newsCategories };
             },
         }),
+        getTotalNewsCount: builder.query<number, void>({
+            queryFn: async (_arg: void) => {
+                try {
+                    const totalNewsCount = await client.request(
+                        aggregate('news', {
+                            aggregate: { count: '*' },
+                            query: {
+                                filter: {
+                                    status: { _eq: 'published' },
+                                },
+                            },
+                        }),
+                    );
+                    if (!totalNewsCount) {
+                        return {
+                            data: undefined,
+                            error: { status: 404, data: 'No news count found' },
+                        };
+                    }
+                    return {
+                        data: totalNewsCount[0].count as unknown as number,
+                        error: undefined,
+                    };
+                } catch (error) {
+                    console.error('Total news counr fetch error:', error);
+                    return {
+                        data: undefined,
+                        error: { status: 500, data: 'Internal server error' },
+                    };
+                }
+            },
+        }),
     }),
 });
 
@@ -249,4 +285,9 @@ export const newsApi = directusApi.injectEndpoints({
  * @hook {useGetNewsByIdQuery} A hook to fetch the news article by Id.
  * @hook {useGetNewsCategoriesQuery} A hook to fetch the news categories.
  */
-export const { useGetNewsQuery, useGetNewsByIdQuery, useGetNewsCategoriesQuery } = newsApi;
+export const {
+    useGetNewsQuery,
+    useGetNewsByIdQuery,
+    useGetNewsCategoriesQuery,
+    useGetTotalNewsCountQuery,
+} = newsApi;

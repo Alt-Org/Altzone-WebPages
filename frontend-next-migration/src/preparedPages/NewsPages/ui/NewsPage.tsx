@@ -6,6 +6,7 @@ import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
@@ -15,14 +16,25 @@ const NewsPage = () => {
 
     const params = useParams();
     const lng = params.lng as string;
-    const categorySlug = params.slug as string | undefined;
+    const categorySlug = typeof params.slug === 'string' ? params.slug : undefined;
+    const page = 3;
+    const limit = 6;
 
-    const { data: news } = useGetNewsQuery({ limit: 6, categorySlug: categorySlug });
+    const { data: news } = useGetNewsQuery({ limit, page, categorySlug });
+    const { data: totalNewsCount } = useGetTotalNewsCountQuery();
+    // console.log(totalNewsCount);
 
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
     const directusBaseUrl = envHelper.directusHost;
 
+    const hasMoreNews = () => {
+        const recievedCount = limit * page;
+        return recievedCount < (totalNewsCount ?? 0);
+    };
+    // console.log('has more news?,', hasMoreNews());
+
     const groupedNews = formatNews(news, lngCode || 'fi-FI');
+    // console.log(groupedNews);
 
     return (
         <main className={cls.NewsPage}>
