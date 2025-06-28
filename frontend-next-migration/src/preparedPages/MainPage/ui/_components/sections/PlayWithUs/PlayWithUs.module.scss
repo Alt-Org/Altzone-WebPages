@@ -18,8 +18,20 @@
     align-items: center;
     flex-direction: column;
     gap: 10px;
-
-  }
+    div{
+      link{
+        font-size: 1rem !important;
+        width: 10px;
+      }
+    }
+    p{
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-line-md);
+      @media screen and (max-width: breakpoint(md)) {
+        font-size: 0.7rem;
+      }
+    }
+      }
 }
  .imageHolder {
     margin-left: 0;
@@ -69,19 +81,11 @@
 
 .webGl { 
   width: fit-content;
-  padding: 0 1.2rem;
-  border-radius: 40px;
-  border: 1px solid black;
-  height: 50%;
-  background-color: var(--primary-color);
-    box-shadow: 3px 4px 0px #121212; 
+background-color: transparent;
   & * {
-    font-size: 1.3rem !important;
-    color: var(--white) !important;
+    font-size: 1rem !important;
+    font-family: var(--font-family-secondary);
   }
-
-
-
   white-space: nowrap;
   min-width: fit-content;
 
@@ -91,18 +95,20 @@
     }
   }
 
-
-  @media (max-width: 450px) {
-    & * {
-      font-size: 2rem !important;
-    }
-  }
-  h3{
+a{
+  padding: 9px 20px;
+  border-radius: 40px;
+  border: 1px solid black;
+  height: 50%;
+  background-color: var(--primary-color);
+    box-shadow: 3px 4px 0px #121212; 
+    h3{
     color: black !important;
-  }
 
+  }
 }
 
+}
 
 
 .BtnDownload {

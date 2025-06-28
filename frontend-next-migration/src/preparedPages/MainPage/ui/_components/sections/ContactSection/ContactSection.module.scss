@@ -47,6 +47,7 @@
     transition: all 0.3s ease-in-out;
     border: 1px solid black;
     box-shadow: 0.1rem 0.3rem black;
+    font-family: var(--font-family-secondary) !important;
     &:hover{
       background-color: var(--primary-color);
       color: var(--background-secondary-color);
@@ -93,7 +94,7 @@ margin-top: -120px;
   .Content {
     height: fit-content;
     flex-direction: column;
-
+    
   }
 }
 

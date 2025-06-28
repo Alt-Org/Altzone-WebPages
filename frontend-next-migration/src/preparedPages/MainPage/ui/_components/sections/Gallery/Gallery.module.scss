@@ -72,12 +72,15 @@
     }
 }
 
-
+.parent{
+    background-color: red;
+}
 .InfoText {
     font-size: 1.1em;
     padding: 10px 0; 
     text-align: start;
     white-space: pre-wrap;
+    font-family: var(--font-family-secondary);
     @media screen and (min-width: 768px) {
         font-size: 1.2em;
 
