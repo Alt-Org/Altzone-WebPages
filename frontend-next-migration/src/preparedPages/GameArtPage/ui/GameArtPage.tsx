@@ -1,8 +1,10 @@
 'use client';
 import cls from './GameArtPage.module.scss';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
-import { TableOfContents } from '@/shared/ui/TableOfContents';
 import WikiContent from '@/shared/ui/WikiContent/ui/WikiContent';
+import GameArtNavMenu from '@/features/NavigateGameArt';
+import { PageTitle } from '@/shared/ui/PageTitle';
+import { Container } from '@/shared/ui/Container';
 
 interface Section {
     id: string;
@@ -16,21 +18,29 @@ interface Section {
 
 export type Props = {
     sections: Section[];
+    title: string;
 };
 
 const GameArtPackagePage = (props: Props) => {
-    const { sections = [] } = props;
+    const { sections = [], title } = props;
 
     return (
-        <LayoutWithSidebars
-            className={cls.GameArtPackagePage}
-            rightBottomSidebar={{
-                component: <TableOfContents sections={sections} />,
-                hideOnMobile: true,
-            }}
-        >
-            <WikiContent sections={sections} />
-        </LayoutWithSidebars>
+        <main>
+            <LayoutWithSidebars
+                leftTopSidebar={{
+                    component: <GameArtNavMenu sections={sections} />,
+                    hideOnMobile: true,
+                }}
+            >
+                <Container className={cls.Title}>
+                    <PageTitle
+                        titleText={title}
+                        alternate={true}
+                    />
+                </Container>
+                <WikiContent sections={sections} />
+            </LayoutWithSidebars>
+        </main>
     );
 };
 

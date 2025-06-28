@@ -1,11 +1,11 @@
 .navbarSide {
-  margin-left: 0.2rem;
-  margin-right: 0.2rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 2px solid rgb(13, 174, 13);
-  border-radius: 10px;
-  overflow-y: auto;
-
+  background: var(--background);
+  border-radius: var(--corner-radius-web);
+  outline: var(--thickness-web) solid var(--black);
+  box-shadow: 10px 10px var(--black);
+  width: 95%;
+  margin-left: 0.3rem;
+  font-family: var(--font-family-secondary);
   ul {
     list-style: none;
   }
@@ -22,8 +22,6 @@
 
     &.active {
       color: orange;
-      border-left: 4px solid yellow;
-      margin-left: 0.3rem;
     }
 
     &:active {
