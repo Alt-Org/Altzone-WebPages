@@ -28,8 +28,8 @@
             opacity 0.2s ease-in-out,
             visibility 0.2s ease-in-out;
     &:hover {
-        background-color: var(--primary-color);
-        transform: none;
+        background-color: var(--primary-color-variant-hover);
+        transform: scale(var(--animation-icon-hover-scale));
         box-shadow: var(--s);
     }
 
