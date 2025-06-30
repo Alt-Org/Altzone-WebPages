@@ -2,6 +2,11 @@
 'use client';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import vihapuhe from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
+import jokester from '@/shared/assets/images/heros/jokester/Jokester.png';
+import sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
+import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.png';
+import mirror from '@/shared/assets/images/heros/mirror/Mirror.png';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
@@ -15,6 +20,8 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
+import cls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
+
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -96,28 +103,78 @@ const Page = () => {
                     </div>
                 ),
             }}
-            rightBottomSidebar={{
-                hideOnMobile: true,
-                // hideOnDesktop: true,
-                component: (
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-                    </div>
-                ),
-            }}
+            // rightBottomSidebar={{
+            //     hideOnMobile: true,
+            //     // hideOnDesktop: true,
+            //     component: (
+            //         <div style={{ width: '100%', maxWidth: '600px' }}>
+            //             <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+            //         </div>
+            //     ),
+            // }}
         >
+            {/* Testing ModularCard */}
+            <h2>Testing Defense Gallery ModularCard</h2>
+            <div
+                style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '16px',
+                    margin: '10px 0 20px',
+                }}
+            >
+                {[
+                    { id: 1, src: vihapuhe },
+                    { id: 2, src: jokester },
+                    { id: 3, src: fatePriest },
+                    { id: 4, src: mirror },
+                    { id: 5, src: hannu },
+                    { id: 6, src: sleeper },
+                ].map((card) => (
+                    <div
+                        key={card.id}
+                        style={{
+                            flexBasis: 'calc(50% - 8px)', // makes 2 columns, vertical gap = 32px
+                        }}
+                    >
+                        <ModularCard
+                            className="customClass"
+                            theme={ModularCardTheme.DEFENSECARD}
+                            // onClick={() => {
+                            //     // console.log(`clicked modularcard ${card.id}`);
+                            // }} // Needs use-client parent
+                            withScalableLink={true}
+                        >
+                            <ModularCard.Texts>
+                                <ModularCard.Texts.Title>Torjujat </ModularCard.Texts.Title>
+                                <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
+                            </ModularCard.Texts>
+                            <ModularCard.Image
+                                style={{ '--before-color': 'green' } as React.CSSProperties}
+                            >
+                                <ModularCard.Image.Image
+                                    src={card.src}
+                                    alt="hannu hodari"
+                                />
+                            </ModularCard.Image>
+                        </ModularCard>
+                    </div>
+                ))}
+            </div>
+            {/* End of Testing ModularCard */}
+
             <WallIntroAnimation renderOnce={true} />
             <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
             <div style={{ margin: '20px' }}>
                 <h5>
                     Version with dropdown closed by default (mainly designed for mobile but works
-                    for both. Test in mobile resolution too)
+                    works for both. Test in mobile resolution too)
                 </h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
             <div style={{ margin: '20px' }}>
                 <h5>
-                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is true
+                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is
                     dropdown will always be open)
                 </h5>
             </div>
@@ -134,7 +191,6 @@ const Page = () => {
 
             <h1 style={{ marginTop: '20px' }}>Main Page Content</h1>
             {/* Testing ModularCard */}
-
             <div
                 style={{
                     display: 'flex',
@@ -148,7 +204,7 @@ const Page = () => {
                         key={card.id}
                         style={{
                             width: '100%',
-                            // flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
+                            flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
                             /*  flexBasis: 100%; on mobile tablet devices  */
                         }}
                     >

@@ -2,13 +2,14 @@ import { dir } from 'i18next';
 import type { Viewport } from 'next';
 import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
-import { CookieConsentComponent } from '@/features/CookieConsent';
+import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { ChatBotToggleButton } from '@/shared/ui/v2/Chatbot';
 import { languages } from '@/shared/i18n/settings/settings';
 import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
+import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
@@ -94,7 +95,7 @@ export default function RootLayout(props: Props) {
                         <FeedbackSideButton />
                         <ChatBotToggleButton />
                         {children}
-                        <CookieConsentComponent />
+                        <CookieConsentV2 />
                     </Providers>
                 </LayoutWithBackground>
             </body>
