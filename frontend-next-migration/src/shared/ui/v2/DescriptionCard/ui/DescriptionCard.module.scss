@@ -30,7 +30,6 @@
             flex-basis: 30% !important;
         }
     }
-    
 }
 
 // DefenseGalleryCard
@@ -40,11 +39,12 @@
     background-color: var(--background);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
+    overflow: hidden;
     display: flex;
     justify-content: space-between;
     box-shadow: 4px 8px 0 var(--black);
     @media (max-width:breakpoint(md)) {
-        height:160px;
+        height:160px !important;
         box-shadow: 2px 4px 0 var(--black);
     }
 }

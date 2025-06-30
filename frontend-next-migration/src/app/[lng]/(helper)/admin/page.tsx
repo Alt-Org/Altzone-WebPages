@@ -15,11 +15,6 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
-// import ChatBotComponent from '@/features/Chatbot/ChatBot'; // Uncomment if needed
-// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
-// import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
