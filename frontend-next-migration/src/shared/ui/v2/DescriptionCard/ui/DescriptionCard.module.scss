@@ -35,8 +35,7 @@
 
 // DefenseGalleryCard
 .Card.DefenseGalleryCard {
-    --height: 150px !important;
-    height: var(--height);
+    height: 150px !important;  //remember to update .DescriptionCardTriangle bottom-border
     position: relative;
     background-color: var(--background);
     border: var(--border-desktop) solid var(--black);
@@ -101,8 +100,8 @@
     width: 0;
     height: 0;
 
-    border-bottom: calc(var(--height) - var(--border-radius-md)) solid var(--background);
-    border-right: calc(var(--height) / 2) solid transparent;
+    border-bottom: 142px solid var(--background);
+    border-right: 71px solid transparent;
     @media (max-width:breakpoint(md)) {
         border-bottom: 152px solid var(--background);
         border-right: 85px solid transparent;
