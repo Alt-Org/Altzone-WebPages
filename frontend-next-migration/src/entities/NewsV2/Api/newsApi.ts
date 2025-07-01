@@ -259,8 +259,9 @@ export const newsApi = directusApi.injectEndpoints({
                             error: { status: 404, data: 'No news count found' },
                         };
                     }
+                    // console.log('total news count', totalNewsCount[0].count);
                     return {
-                        data: totalNewsCount[0].count as unknown as number,
+                        data: Number(totalNewsCount[0].count) as number,
                         error: undefined,
                     };
                 } catch (error) {
