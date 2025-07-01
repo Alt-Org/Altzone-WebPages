@@ -49,9 +49,7 @@
     box-shadow: 0.1rem 0.3rem black;
     font-family: var(--font-family-secondary) !important;
     &:hover{
-      background-color: var(--primary-color);
-      color: var(--background-secondary-color);
-      transform: scale(0.95);
+      transform: scale(1.05);
     }
   }
 }
