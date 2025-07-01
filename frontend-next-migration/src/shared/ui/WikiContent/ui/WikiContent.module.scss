@@ -59,13 +59,10 @@
   object-fit: contain;
   box-shadow: 0 0 4px var(--primary-color);
   float: right;
+}
 
-  @media (max-width: breakpoint(md)) {
-      float: left;
-    }
-
-    @media (max-width: breakpoint(sm)) {
-      float: left;
-    }
+.contentImage {
+  display: flex;
+  justify-content: center;
 }
 
