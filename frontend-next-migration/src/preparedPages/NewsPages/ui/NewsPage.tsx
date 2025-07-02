@@ -7,9 +7,8 @@ import { useParams } from 'next/navigation';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
-import { current } from '@reduxjs/toolkit';
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
@@ -26,81 +25,75 @@ const NewsPage = () => {
     const limit = 6;
     const [currentPage, setCurrentPage] = useState(1);
     const [allNews, setAllNews] = useState<News[]>([]);
+    const [hasMoreNewsState, setHasMoreNewsState] = useState<boolean>(false);
 
     const { data: news } = useGetNewsQuery({ limit, page: currentPage, categorySlug });
     const { data: totalNewsCount } = useGetTotalNewsCountQuery();
+    // console.log('🔄 NewsPage render', { currentPage, allNews, hasMoreNewsState });
 
-    const hasMoreNews = () => {
-        const receivedCount = limit * currentPage;
-        if (typeof totalNewsCount !== 'number') return false;
-        return receivedCount < totalNewsCount;
-    };
-    const [hasMoreNewsState, setHasMoreNewsState] = useState(hasMoreNews());
-    // console.log(
-    //     'has more news',
-    //     hasMoreNews(),
-    //     'hasmorenews state',
-    //     hasMoreNewsState,
-    //     'totalnews count',
-    //     totalNewsCount,
-    //     'current page',
-    //     currentPage,
-    // );
-    useEffect(() => {
-        setHasMoreNewsState(hasMoreNews());
+    const hasMoreNews = useMemo(() => {
+        if (typeof totalNewsCount !== 'number') {
+            return false;
+        }
+        return limit * currentPage < totalNewsCount;
     }, [currentPage, totalNewsCount]);
 
     useEffect(() => {
         if (news) {
+            // console.log('data arrived', news);
+            if (news.length === 0) {
+                setHasMoreNewsState(false);
+            }
             setAllNews((prevNews) => {
+                // console.log('news', news);
                 return currentPage === 1 ? news : [...prevNews, ...news];
             });
         }
     }, [news]);
 
+    useEffect(() => {
+        setHasMoreNewsState(hasMoreNews);
+    }, [currentPage, totalNewsCount]);
+
     const loadMoreNews = () => {
         if (hasMoreNewsState) {
-            // console.log(allNews);
+            // console.log('loadMoreNews called...');
             setCurrentPage((prev) => prev + 1);
         }
     };
 
     useEffect(() => {
-        // console.log('page', currentPage);
-    }, [currentPage]);
+        // console.log('current Page changed', currentPage);
+    }, [currentPage, totalNewsCount]);
 
-    const observeElem = useRef<HTMLSpanElement | null>(null);
+    const observerRef = useRef<HTMLSpanElement | null>(null);
     const handleObserver = (entries: IntersectionObserverEntry[]) => {
-        // console.log(entries[0]);
+        // console.log('🔍 Observer fired', entries[0]);
         if (entries[0].isIntersecting) {
-            // your logic here
             loadMoreNews();
         }
     };
-    const observerOptions = {
-        threshold: 1,
-    };
 
     useEffect(() => {
+        // console.log('🔄 useEffect for IntersectionObserver');
         if (typeof window === 'undefined' || !window.IntersectionObserver) return;
-        if (!observeElem.current) {
+        const observerElem = observerRef.current;
+        if (!observerElem) {
             return;
         }
-        const observer = new IntersectionObserver(handleObserver, observerOptions);
-        if (observeElem.current) {
-            observer.observe(observeElem.current);
-        }
+        const observer = new IntersectionObserver(handleObserver, {
+            threshold: 1,
+        });
+        observer.observe(observerElem);
 
-        // clean up
         return () => {
-            if (observeElem.current) {
-                observer.unobserve(observeElem.current);
+            if (observerElem) {
+                observer.unobserve(observerElem);
             }
         };
     }, [hasMoreNewsState]);
 
     const groupedNews = formatNews(allNews, lngCode || 'fi-FI');
-    // console.log(groupedNews);
 
     return (
         <main className={cls.NewsPage}>
@@ -122,7 +115,7 @@ const NewsPage = () => {
                         );
                     })}
                     {hasMoreNewsState ? (
-                        <span ref={observeElem} />
+                        <span ref={observerRef} />
                     ) : (
                         <div>There is no news left</div>
                     )}
