@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import CookieConsent from 'react-cookie-consent';
-import cls from './CookieConsentV4.module.scss';
+import cls from './CookieConsentV3.module.scss';
 import Sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
 import Link from 'next/link';
 import MinimizeButton from '@/shared/assets/icons/MinimizeButton.svg';
