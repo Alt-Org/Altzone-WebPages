@@ -31,11 +31,10 @@ const NewsPage = () => {
     const { data: totalNewsCount } = useGetTotalNewsCountQuery();
     // console.log('🔄 NewsPage render', { currentPage, allNews, hasMoreNewsState });
 
-    const hasMoreNews = useMemo(() => {
-        if (typeof totalNewsCount !== 'number') {
-            return false;
+    useEffect(() => {
+        if (typeof totalNewsCount === 'number') {
+            setHasMoreNewsState(limit * currentPage < totalNewsCount);
         }
-        return limit * currentPage < totalNewsCount;
     }, [currentPage, totalNewsCount]);
 
     useEffect(() => {
@@ -45,15 +44,10 @@ const NewsPage = () => {
                 setHasMoreNewsState(false);
             }
             setAllNews((prevNews) => {
-                // console.log('news', news);
                 return currentPage === 1 ? news : [...prevNews, ...news];
             });
         }
     }, [news]);
-
-    useEffect(() => {
-        setHasMoreNewsState(hasMoreNews);
-    }, [currentPage, totalNewsCount]);
 
     const loadMoreNews = () => {
         if (hasMoreNewsState) {
@@ -114,12 +108,11 @@ const NewsPage = () => {
                             />
                         );
                     })}
-                    {hasMoreNewsState ? (
-                        <span ref={observerRef} />
-                    ) : (
-                        <div>There is no news left</div>
-                    )}
+                    {hasMoreNewsState && <span ref={observerRef} />}
                 </div>
+                {typeof totalNewsCount === 'number' && !hasMoreNewsState && (
+                    <div className={cls.noMoreNews}>No more news available</div>
+                )}
             </Container>
         </main>
     );
