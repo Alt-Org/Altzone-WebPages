@@ -18,7 +18,7 @@ const CookieConsentV4: React.FC = () => {
     const { xs } = useBreakpoints();
 
     useEffect(() => {
-        const consent = document.cookie.includes('AltZoneCookieConsent='); // Tarkistetaan CookieConsent-komponentin käyttämä eväste
+        const consent = document.cookie.includes('AltZoneCookieConsent=');
         if (consent) {
             setCookiesHandled(true);
         }
