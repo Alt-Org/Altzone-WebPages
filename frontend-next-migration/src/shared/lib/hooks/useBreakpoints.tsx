@@ -26,8 +26,8 @@ const useSizes = () => {
     const checkSizes = () => {
         const width = window.innerWidth;
         return {
-            xs: width <= 575,
-            sm: width >= 576 && width < 768,
+            xs: width <= 576,
+            sm: width >= 577 && width < 768,
             md: width >= 768 && width < 992,
             lg: width >= 992 && width < 1200,
             xl: width >= 1200 && width < 1400,
