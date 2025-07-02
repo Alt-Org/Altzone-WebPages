@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
 import CookieConsent from 'react-cookie-consent';
@@ -7,15 +7,14 @@ import cls from './CookieConsentV3.module.scss';
 import Sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
 import Link from 'next/link';
 import MinimizeButton from '@/shared/assets/icons/MinimizeButton.svg';
-import AcceptButton from '@/shared/assets/icons/AcceptButton.svg';
-import DeclineButton from '@/shared/assets/icons/DeclineButton.svg';
+import Accept from '@/shared/assets/icons/Correct.svg';
+import Decline from '@/shared/assets/icons/X.svg';
 import useBreakpoints from '@/shared/lib/hooks/useBreakpoints';
 
 const CookieConsentV4: React.FC = () => {
     const { t, i18n } = useTranslation('cookieConsent');
     const [isMinimized, setIsMinimized] = useState(false);
     const [cookiesHandled, setCookiesHandled] = useState(false);
-    const contentRef = useRef<HTMLDivElement>(null);
     const { xs } = useBreakpoints();
 
     useEffect(() => {
@@ -85,7 +84,6 @@ const CookieConsentV4: React.FC = () => {
     return (
         <div
             className={cls.cookieConsentV2}
-            ref={contentRef}
             style={{
                 height: isMinimized ? '130px' : xs ? '690px' : '360px',
                 overflow: 'hidden',
@@ -102,24 +100,26 @@ const CookieConsentV4: React.FC = () => {
                         <p>{renderDescription(shortDescriptionParts)}</p>
                     </div>
                     <button
+                        style={{ backgroundColor: 'red' }}
                         className={cls.processButton}
                         onClick={() => handleEventCookies('decline')}
                     >
                         <Image
-                            src={DeclineButton}
-                            width={60}
-                            height={60}
+                            src={Decline}
+                            width={40}
+                            height={40}
                             alt="Decline button"
                         />
                     </button>
                     <button
+                        style={{ backgroundColor: 'green' }}
                         className={cls.processButton}
                         onClick={() => handleEventCookies('accept')}
                     >
                         <Image
-                            src={AcceptButton}
-                            width={60}
-                            height={60}
+                            src={Accept}
+                            width={40}
+                            height={40}
                             alt="Accept button"
                         />
                     </button>
