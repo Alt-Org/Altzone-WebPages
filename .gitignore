@@ -16,14 +16,19 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
+.next
+node_modules/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+.coverage
+.swc
 /frontend/.env
 /frontend/storybook-static/*
 
 /frontend-next-migration/analyze/nodejs.html
 /strapi-cms/.env
+
