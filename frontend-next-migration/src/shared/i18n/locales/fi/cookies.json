@@ -1,9 +1,9 @@
 {
-  "head-title": "AltZone",
-  "head-description": "Altzone on yhteisöllisesti rakennettava mobiilimoninpeli, jonka tavoitteena on toimia viihteellisenä pelitaiteen opetuspakettina",
+  "head-title": "ALT Zone",
+  "head-description": "ALT Zone on yhteisöllisesti rakennettava mobiilimoninpeli, jonka tavoitteena on toimia viihteellisenä pelitaiteen opetuspakettina",
   "head-keywords": "altzone, peli, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu sisään",
-  "og-title": "AltZone - Aloita pelisi täällä",
-  "og-description": "Altzone on yhteisöllisesti rakennettava mobiilimoninpeli, jonka tavoitteena on toimia viihteellisenä pelitaiteen opetuspakettina",
+  "og-title": "ALT Zone - Aloita pelisi täällä",
+  "og-description": "ALT Zone on yhteisöllisesti rakennettava mobiilimoninpeli, jonka tavoitteena on toimia viihteellisenä pelitaiteen opetuspakettina",
   "section-title": "Pelitaide",
   "main": "Etusivu",
   "main-title": "Evästeet",
@@ -18,7 +18,7 @@
 
   "interpretation-nav-menu-title": "Tulkinnat",
   "interpretation-label": "Tulkinnat ja määritelmät",
-  "interpretation-description": "<h3>Tulkinta</h3>Sanoilla, joiden alkukirjain on iso, on tässä käytännössä määritellyt merkitykset. Seuraavilla määritelmillä on sama merkitys riippumatta siitä, esiintyvätkö ne yksikössä vai monikossa.<br><br><h3>Määritelmät</h3>Tätä evästekäytäntöä varten:<br><br> ●<b>Yritys</b> (johon viitataan joko 'Yritys', 'Me', 'Meitä' tai 'Meidän' tässä evästekäytännössä) tarkoittaa Psyche's Royale Gaming ry: tä, Laturinkatu 3, 08100 Lohja.<br> ●<b>Evästeet</b> tarkoittavat pieniä tiedostoja, jotka verkkosivusto asettaa tietokoneellesi, mobiililaitteellesi tai mille tahansa muulle laitteelle ja jotka sisältävät tietoja selaushistoriastasi kyseisellä verkkosivustolla sen monien käyttötarkoitusten joukossa.<br> ●<b>Verkkosivusto</b> viittaa AltZoneen, joka on saatavilla osoitteesta <https://altzone.fi><br> ●<b>Tili</b> tarkoittaa ainutlaatuista tiliä, joka on luotu sinulle, jotta voit käyttää Palveluamme tai sen osia.<br> ●<b>Sinä</b> tarkoittaa henkilöä, joka käyttää Verkkosivustoa, tai yritystä, tai muuta oikeushenkilöä, jonka puolesta kyseinen henkilö käyttää Verkkosivustoa, soveltuvin osin.<br> ●<b>Käyttötiedoilla</b> tarkoitetaan tietoja, jotka kerätään automaattisesti, joko Palvelun käytöstä tai itse Palvelun infrastruktuurista (esimerkiksi sivukäynnin kesto).",
+  "interpretation-description": "<h3>Tulkinta</h3>Sanoilla, joiden alkukirjain on iso, on tässä käytännössä määritellyt merkitykset. Seuraavilla määritelmillä on sama merkitys riippumatta siitä, esiintyvätkö ne yksikössä vai monikossa.<br><br><h3>Määritelmät</h3>Tätä evästekäytäntöä varten:<br><br> ●<b>Yritys</b> (johon viitataan joko 'Yritys', 'Me', 'Meitä' tai 'Meidän' tässä evästekäytännössä) tarkoittaa Psyche's Royale Gaming ry: tä, Laturinkatu 3, 08100 Lohja.<br> ●<b>Evästeet</b> tarkoittavat pieniä tiedostoja, jotka verkkosivusto asettaa tietokoneellesi, mobiililaitteellesi tai mille tahansa muulle laitteelle ja jotka sisältävät tietoja selaushistoriastasi kyseisellä verkkosivustolla sen monien käyttötarkoitusten joukossa.<br> ●<b>Verkkosivusto</b> viittaa ALT Zoneen, joka on saatavilla osoitteesta <https://altzone.fi><br> ●<b>Tili</b> tarkoittaa ainutlaatuista tiliä, joka on luotu sinulle, jotta voit käyttää Palveluamme tai sen osia.<br> ●<b>Sinä</b> tarkoittaa henkilöä, joka käyttää Verkkosivustoa, tai yritystä, tai muuta oikeushenkilöä, jonka puolesta kyseinen henkilö käyttää Verkkosivustoa, soveltuvin osin.<br> ●<b>Käyttötiedoilla</b> tarkoitetaan tietoja, jotka kerätään automaattisesti, joko Palvelun käytöstä tai itse Palvelun infrastruktuurista (esimerkiksi sivukäynnin kesto).",
 
   "type-nav-menu-title": "Käyttö",
   "type-label": "Evästeiden käyttö",
