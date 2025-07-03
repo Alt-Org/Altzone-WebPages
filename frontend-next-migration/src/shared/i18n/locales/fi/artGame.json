@@ -10,7 +10,8 @@
   "info-label": "Mitä on pelitaide?",
   "info-description": "Pelit ja leikit ovat olleet osa ihmisten kulttuuria ihmiskunnan alkuhämärästä asti, jonka tuorein ilmaisumuoto, eli digitaalinen videopeli on ehtinyt kypsyä keskellämme n. 60 vuotta. Tarinankerronnan muotona tämä on vielä lyhyt aika, kun verrataan esimerkiksi teatteriin, kirjallisuuteen ja arkkitehtuuriin, jotka ovat olleet osa kulttuuriamme jo vuosituhansia. Lähin vertailukohta löytyy elokuvista, joita on tehty vain n. tuplasti kauemmin. Videopeli on kuitenkin tarinankerronnan muodoista ainoa, joka tarjoaa kokijalle mahdollisuuden osallistua ja ainakin näennäisesti vaikuttaa tarinaan toiminnallisella tasolla. Videopelejä on tietysti paljon erilaisia; toisissa korostuu enemmän vapaa leikki ja toisissa moraalisiin valintoihin johdattava juoni, mutta kaikkia yhdistää pelisuunnittelijan luoman kokemusmaailman sisällä harjoitettava kokeileva ja tutkiva, merkityksiä rakentava toiminta. Videopelit ovat moniaistillisia kokemuksia, jotka voivat parhaimmillaan toimia muiden taiteiden tavoin keskustelun herättäjinä ja välineinä, viisauden kasvattajina ja tunne-elämän vahvistajana.",
 
-  "intro-label": "ALT Zone -opetuspaketti",
+  "intro-label": "Opetuspaketti",
+
   "intro-description": "ALT Zone 1.0 on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Samalla tavoin kuin kirjallisuuden opetuksessa luetaan yhteinen kirja ja analysoidaan sitä yhdessä luoden merkityskieltä kirjallisuuden ymmärtämiselle, niin ALT Zone tarjoaa samanlaisen yhteisen alustan pelitaiteen opetukseen. Oppilaiden jatkokehitysideoiden pohjalta syntyy ALT Zone 2.0 -mobiilipeli, jonka kuka tahansa voi ladata sovelluskaupasta.",
 
   "implementation-label": "Toteutus luokassa",
