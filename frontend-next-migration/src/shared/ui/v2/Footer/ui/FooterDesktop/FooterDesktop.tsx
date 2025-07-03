@@ -6,15 +6,8 @@ import { SocialSection } from '@/widgets/Footer/ui/SocialSection/SocialSection';
 import { Title } from '@/widgets/Footer/ui/Title/Title';
 import cls from './FooterDesktop.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import Ahmat from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import Image from 'next/image';
 import { FeedbackCard } from '@/shared/ui/v2/Feedback';
-import { Sedgwick_Ave_Display } from 'next/font/google';
-
-// const sedgwickFont = Sedgwick_Ave_Display({
-//     subsets: ['latin'],
-//     weight: '400',
-// });
+import { RandomCharacter } from '@/shared/ui/v2/Footer/ui/FooterDesktop/RandomCharacter';
 
 interface Props {
     title: string;
@@ -29,14 +22,7 @@ const FooterDesktopComponent = memo((props: Props) => {
     return (
         <footer className={classNames(cls.Footer, {}, [className])}>
             <Container className={cls.ImageContainer}>
-                <Image
-                    src={Ahmat}
-                    alt={'description hero'}
-                    className={classNames(cls.FooterImage)}
-                    width={200}
-                    height={200}
-                    style={{ width: 'auto', height: 'auto' }}
-                />
+                <RandomCharacter size={256} />
             </Container>
             <Container className={cls.FooterContainer}>
                 <Title

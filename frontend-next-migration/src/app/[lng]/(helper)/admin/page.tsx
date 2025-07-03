@@ -2,6 +2,11 @@
 'use client';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
+import vihapuhe from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
+import jokester from '@/shared/assets/images/heros/jokester/Jokester.png';
+import sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
+import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.png';
+import mirror from '@/shared/assets/images/heros/mirror/Mirror.png';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
@@ -12,12 +17,11 @@ import { PageTitle } from '@/shared/ui/PageTitle';
 import { useClientTranslation } from '@/shared/i18n';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
+import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
+import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
+import cls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
 
-// import ChatBotComponent from '@/features/Chatbot/ChatBot'; // Uncomment if needed
-// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
-// import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -99,28 +103,78 @@ const Page = () => {
                     </div>
                 ),
             }}
-            rightBottomSidebar={{
-                hideOnMobile: true,
-                // hideOnDesktop: true,
-                component: (
-                    <div style={{ width: '100%', maxWidth: '600px' }}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
-                    </div>
-                ),
-            }}
+            // rightBottomSidebar={{
+            //     hideOnMobile: true,
+            //     // hideOnDesktop: true,
+            //     component: (
+            //         <div style={{ width: '100%', maxWidth: '600px' }}>
+            //             <NavMenuWithDropdowns {...navMenuWithDropdownsProps} />
+            //         </div>
+            //     ),
+            // }}
         >
+            {/* Testing ModularCard */}
+            <h2>Testing Defense Gallery ModularCard</h2>
+            <div
+                style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '16px',
+                    margin: '10px 0 20px',
+                }}
+            >
+                {[
+                    { id: 1, src: vihapuhe },
+                    { id: 2, src: jokester },
+                    { id: 3, src: fatePriest },
+                    { id: 4, src: mirror },
+                    { id: 5, src: hannu },
+                    { id: 6, src: sleeper },
+                ].map((card) => (
+                    <div
+                        key={card.id}
+                        style={{
+                            flexBasis: 'calc(50% - 8px)', // makes 2 columns, vertical gap = 32px
+                        }}
+                    >
+                        <ModularCard
+                            className="customClass"
+                            theme={ModularCardTheme.DEFENSECARD}
+                            // onClick={() => {
+                            //     // console.log(`clicked modularcard ${card.id}`);
+                            // }} // Needs use-client parent
+                            withScalableLink={true}
+                        >
+                            <ModularCard.Texts>
+                                <ModularCard.Texts.Title>Torjujat </ModularCard.Texts.Title>
+                                <ModularCard.Texts.Body>Hahmon nimi</ModularCard.Texts.Body>
+                            </ModularCard.Texts>
+                            <ModularCard.Image
+                                style={{ '--before-color': 'green' } as React.CSSProperties}
+                            >
+                                <ModularCard.Image.Image
+                                    src={card.src}
+                                    alt="hannu hodari"
+                                />
+                            </ModularCard.Image>
+                        </ModularCard>
+                    </div>
+                ))}
+            </div>
+            {/* End of Testing ModularCard */}
+
             <WallIntroAnimation renderOnce={true} />
             <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
             <div style={{ margin: '20px' }}>
                 <h5>
                     Version with dropdown closed by default (mainly designed for mobile but works
-                    for both. Test in mobile resolution too)
+                    works for both. Test in mobile resolution too)
                 </h5>
             </div>
             <NavMenuWithDropdowns {...navMenuWithDropdownsProps2} />
             <div style={{ margin: '20px' }}>
                 <h5>
-                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is true
+                    Static version of dropdown, mainly meant for desktop. (if staticDropdown is
                     dropdown will always be open)
                 </h5>
             </div>
@@ -137,7 +191,6 @@ const Page = () => {
 
             <h1 style={{ marginTop: '20px' }}>Main Page Content</h1>
             {/* Testing ModularCard */}
-
             <div
                 style={{
                     display: 'flex',
@@ -151,7 +204,7 @@ const Page = () => {
                         key={card.id}
                         style={{
                             width: '100%',
-                            // flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
+                            flexBasis: 'calc(50% - 5px)', // makes 2 columns, vertical gap = 10px
                             /*  flexBasis: 100%; on mobile tablet devices  */
                         }}
                     >
@@ -302,6 +355,41 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
+
+            <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
+                <DescriptionCard.Texts width="35%">
+                    <DescriptionCard.Texts.Title>Defenssigalleria</DescriptionCard.Texts.Title>
+                    <DescriptionCard.Texts.Body>
+                        Lorem ipsum dolor sit amet consectetur. Id tincidunt scelerisque augue leo
+                        nam diam tortor eget pharetra.
+                    </DescriptionCard.Texts.Body>
+                </DescriptionCard.Texts>
+                <DescriptionCard.Image width="65%">
+                    <DescriptionCard.Image.Image
+                        src={defenceGallery}
+                        alt="defence gallery"
+                    />
+                </DescriptionCard.Image>
+            </DescriptionCard>
+            <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
+                <DescriptionCard.Texts>
+                    <DescriptionCard.Texts.Title>Torjujat</DescriptionCard.Texts.Title>
+                    <DescriptionCard.Texts.Body>
+                        Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse. Heidän
+                        kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta periksi paineen
+                        kasvaessa.
+                    </DescriptionCard.Texts.Body>
+                </DescriptionCard.Texts>
+                <DescriptionCard.Image bgColour="#FF0000">
+                    <DescriptionCard.Image.Triangle />
+                    <DescriptionCard.Image.Image
+                        src={retroflector}
+                        alt="defence gallery"
+                        height={100}
+                        marginLeft="20%"
+                    />
+                </DescriptionCard.Image>
+            </DescriptionCard>
         </LayoutWithSidebars>
     );
 };
