@@ -51,19 +51,24 @@ const WikiContent = (props: Props) => {
                             className={cls.section}
                         >
                             <h2>{section.label}</h2>
-                            <p dangerouslySetInnerHTML={{ __html: section.description }} />
-                            {section.image && !imageErrors[section.id] && (
-                                <div className={classNames(cls.contentImage, combinedModCss)}>
-                                    <Image
-                                        src={section.image}
-                                        className={cls.sectionImage}
-                                        alt={section.imageAlt}
-                                        height={600}
-                                        width={600}
-                                        onError={() => handleImageError(section.id)}
-                                    />
-                                </div>
-                            )}
+                            <div className={cls.divider}>
+                                <p
+                                    className={cls.p}
+                                    dangerouslySetInnerHTML={{ __html: section.description }}
+                                />
+                                {section.image && !imageErrors[section.id] && (
+                                    <div className={classNames(cls.contentImage, combinedModCss)}>
+                                        <Image
+                                            src={section.image}
+                                            className={cls.sectionImage}
+                                            alt={section.imageAlt}
+                                            height={600}
+                                            width={600}
+                                            onError={() => handleImageError(section.id)}
+                                        />
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     ))
                 ) : (

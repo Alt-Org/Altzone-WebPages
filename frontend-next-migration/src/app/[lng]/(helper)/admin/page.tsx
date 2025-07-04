@@ -17,13 +17,11 @@ import { PageTitle } from '@/shared/ui/PageTitle';
 import { useClientTranslation } from '@/shared/i18n';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
+import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
+import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
 import cls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
 
-// import ChatBotComponent from '@/features/Chatbot/ChatBot'; // Uncomment if needed
-// import { useGetProfileInfoQuery, profileActions } from '@/entities/Profile/';
-// import { useGetClanLeaderboardPositionQuery } from '@/entities/Clan/';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -357,6 +355,41 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
+
+            <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
+                <DescriptionCard.Texts width="35%">
+                    <DescriptionCard.Texts.Title>Defenssigalleria</DescriptionCard.Texts.Title>
+                    <DescriptionCard.Texts.Body>
+                        Lorem ipsum dolor sit amet consectetur. Id tincidunt scelerisque augue leo
+                        nam diam tortor eget pharetra.
+                    </DescriptionCard.Texts.Body>
+                </DescriptionCard.Texts>
+                <DescriptionCard.Image width="65%">
+                    <DescriptionCard.Image.Image
+                        src={defenceGallery}
+                        alt="defence gallery"
+                    />
+                </DescriptionCard.Image>
+            </DescriptionCard>
+            <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
+                <DescriptionCard.Texts>
+                    <DescriptionCard.Texts.Title>Torjujat</DescriptionCard.Texts.Title>
+                    <DescriptionCard.Texts.Body>
+                        Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse. Heidän
+                        kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta periksi paineen
+                        kasvaessa.
+                    </DescriptionCard.Texts.Body>
+                </DescriptionCard.Texts>
+                <DescriptionCard.Image bgColour="#FF0000">
+                    <DescriptionCard.Image.Triangle />
+                    <DescriptionCard.Image.Image
+                        src={retroflector}
+                        alt="defence gallery"
+                        height={100}
+                        marginLeft="20%"
+                    />
+                </DescriptionCard.Image>
+            </DescriptionCard>
         </LayoutWithSidebars>
     );
 };
