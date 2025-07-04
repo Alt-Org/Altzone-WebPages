@@ -1,0 +1,117 @@
+.SectionPlayWithUs {
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.Content{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  flex-direction: row;
+  background-color: #1E3544;
+  border: 3px solid black;
+  box-shadow: 0.5rem 0.5rem black;
+  border-radius: var(--border-radius-custom);
+  margin: 20px 0;
+  width: fit-content;
+  height: 20rem;
+  padding: 4rem;
+  
+}
+
+.ContentWithNav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  .title{
+    font-size: var(--font-line-xl);
+    color: var(--primary-color);
+    white-space: pre-line;
+    text-align: center;
+    font-family: var(--font-family-title), sans-serif;
+
+  }
+  .Link{
+
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px ;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0.1rem 0.3rem black;
+    font-family: var(--font-family-secondary) !important;
+    &:hover{
+      transform: scale(1.05);
+    }
+  }
+}
+
+
+@media screen and (max-width: breakpoint(md)) {
+  .Content {
+      height: 15rem;
+  }
+  .ContentWithNav {
+    gap: 3rem;
+    .title {
+      font-size: 1.3rem;
+    }
+        .Link{
+      font-size: 0.8rem;
+    }
+  }
+  .sideImg{
+    margin-top: -90px;
+    width: 15rem;
+  }
+
+  
+}
+@media screen and (max-width: breakpoint(sm)) {
+.ContentWithNav {
+    gap: 1rem;
+    .title {
+      font-size: 1.2rem;
+    }
+        .Link{
+      font-size: 0.8rem;
+    }
+  }
+  .sideImg{
+margin-top: -120px;
+    width: 100%;
+    }
+  .Content {
+    height: fit-content;
+    flex-direction: column;
+    
+  }
+}
+
+@media screen and (max-width: breakpoint(xs)) {
+.ContentWithNav {
+    gap: 0;
+    .title {
+      font-size: 1.2rem;
+    }
+        .Link{
+      font-size: 0.8rem;
+    }
+  }
+  .sideImg{
+margin-top: -120px;
+    width: 100%;
+    }
+  .Content {
+    height: fit-content;
+
+  }
+}

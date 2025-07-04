@@ -1,9 +1,6 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import googlePLay from '@/shared/assets/images/media/googleplay.png';
-import sideImg from '@/shared/assets/images/heros/einstein/professori_60.webp';
+import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { NavElement, NavItem } from './NavElement/NavElement';
 import cls from './PlayWithUs.module.scss';
 import { Container } from '@/shared/ui/Container';
@@ -11,6 +8,9 @@ import { Container } from '@/shared/ui/Container';
 type WebGl = {
     title: string;
     link: string;
+    titleDownload?: string;
+    text?: string;
+    downloadText?: string;
 };
 
 export type Props = {
@@ -22,12 +22,7 @@ export type Props = {
 };
 
 const PlayWithUs = (props: Props) => {
-    const {
-        webGl,
-        googlePLayLink = AppExternalLinks.downloadAndroid,
-        belowNavs,
-        webGlNotice,
-    } = props;
+    const { webGl, googlePLayLink = AppExternalLinks.downloadAndroid } = props;
 
     return (
         <Container
@@ -35,11 +30,16 @@ const PlayWithUs = (props: Props) => {
             className={cls.SectionPlayWithUs}
             fluid={true}
         >
-            {/* <h2 className={cls.title}>
-                {title}
-            </h2> */}
             <div className={cls.Content}>
+                <div className={cls.imageHolder}>
+                    <Image
+                        src={sideImg}
+                        alt={'Side image with hero'}
+                        className={cls.sideImg}
+                    />
+                </div>
                 <div className={cls.ContentWithNav}>
+                    <h2 className={cls.title}>{props.title}</h2>
                     <div className={cls.Buttons}>
                         <NavElement
                             className={cls.webGl}
@@ -47,43 +47,23 @@ const PlayWithUs = (props: Props) => {
                                 isExternal: true,
                                 title: webGl.title,
                                 link: webGl.link,
+                                body: webGl.text,
                             }}
                             key={webGl.title}
                         />
 
-                        <Link
-                            href={googlePLayLink}
-                            target={'_blank'}
-                            className={cls.BtnDownloadWrapper}
-                        >
-                            <Image
-                                src={googlePLay}
-                                alt={'google play button'}
-                                className={cls.BtnDownload}
-                            />
-                        </Link>
-                    </div>
-
-                    <div className={classNames(cls.NavElements, {}, [])}>
-                        {belowNavs.map((item) => (
-                            <NavElement
-                                navElem={item}
-                                key={item.title}
-                            />
-                        ))}
+                        <NavElement
+                            className={cls.webGl}
+                            navElem={{
+                                isExternal: true,
+                                title: webGl.titleDownload,
+                                link: googlePLayLink,
+                                body: webGl.downloadText,
+                            }}
+                            key={webGl.title}
+                        />
                     </div>
                 </div>
-
-                <Image
-                    src={sideImg}
-                    alt={'Side image with hero'}
-                    className={cls.sideImg}
-                    priority
-                />
-            </div>
-            <div className={cls.WebGLNotice}>
-                <span className={cls.WarningIcon}>▲</span>
-                {webGlNotice}
             </div>
         </Container>
     );
