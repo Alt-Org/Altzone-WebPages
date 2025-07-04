@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
 
 const NewsPage = () => {
@@ -32,16 +32,15 @@ const NewsPage = () => {
     const { data: totalNewsCount } = useGetTotalNewsCountQuery(categorySlug ?? '');
     // console.log('🔄 NewsPage render', { currentPage, allNews, hasMoreNewsState, isLoading });
 
+    const isLoadingRef = useRef(isLoading);
+    useEffect(() => {
+        isLoadingRef.current = isLoading;
+    }, [isLoading]);
+
     useEffect(() => {
         if (typeof totalNewsCount === 'number') {
             setHasMoreNewsState(limit * currentPage < totalNewsCount);
         }
-        // console.log(
-        //     'current Page/total news changed',
-        //     currentPage,
-        //     totalNewsCount,
-        //     hasMoreNewsState,
-        // );
     }, [currentPage, totalNewsCount]);
 
     useEffect(() => {
@@ -56,7 +55,6 @@ const NewsPage = () => {
             setIsLoading(false);
             // console.log('isLoading', isLoading);
         }
-        // console.log('isLoading', isLoading);
     }, [news]);
     useEffect(() => {
         // console.log('isLoading changed:', isLoading);
@@ -73,11 +71,20 @@ const NewsPage = () => {
     const observerRef = useRef<HTMLSpanElement | null>(null);
     const handleObserver = (entries: IntersectionObserverEntry[]) => {
         // console.log('🔍 Observer fired', entries[0]);
-        // console.log('isLoading', isLoading);
         // console.log(
-        //     entries[0].isIntersecting && !isLoading && hasMoreNewsState && allNews.length > 0,
+        //     'is intersecting',
+        //     entries[0].isIntersecting,
+        //     'isLoading',
+        //     !isLoading,
+        //     'isLoadingRef',
+        //     !isLoadingRef.current,
+        //     'hasMoreNewsState',
+        //     hasMoreNewsState,
+        //     'allNews.length',
+        //     allNews.length > 0,
         // );
-        if (entries[0].isIntersecting && !isLoading && hasMoreNewsState && allNews.length > 0) {
+        // console.log(entries[0].isIntersecting && !isLoadingRef.current && hasMoreNewsState);
+        if (entries[0].isIntersecting && !isLoadingRef.current && hasMoreNewsState) {
             loadMoreNews();
         }
     };
