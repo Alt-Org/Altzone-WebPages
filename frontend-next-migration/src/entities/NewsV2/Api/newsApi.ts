@@ -240,28 +240,62 @@ export const newsApi = directusApi.injectEndpoints({
                 return { data: newsCategories };
             },
         }),
-        getTotalNewsCount: builder.query<number, void>({
-            queryFn: async (_arg: void) => {
+        getTotalNewsCount: builder.query<number, string>({
+            queryFn: async (categorySlug?: string) => {
                 try {
+                    if (!categorySlug) {
+                        const totalNewsCount = await client.request(
+                            aggregate('news', {
+                                aggregate: { count: '*' },
+                                query: {
+                                    filter: {
+                                        status: { _eq: 'published' },
+                                    },
+                                },
+                            }),
+                        );
+                        if (!totalNewsCount) {
+                            return {
+                                data: undefined,
+                                error: { status: 404, data: 'No news count found' },
+                            };
+                        }
+                        // console.log('total news count', totalNewsCount[0].count);
+                        return {
+                            data: Number(totalNewsCount[0].count),
+                            error: undefined,
+                        };
+                    }
+
+                    // Convert category slug to category name
+                    const categoryName = slugToCategoryNameMap[categorySlug];
+
+                    // Ensure the category slug is valid
+                    if (!categoryName) {
+                        return {
+                            data: undefined,
+                            error: { status: 404, data: 'Category not found' },
+                            meta: undefined,
+                        };
+                    }
                     const totalNewsCount = await client.request(
                         aggregate('news', {
                             aggregate: { count: '*' },
                             query: {
                                 filter: {
+                                    category: {
+                                        translations: {
+                                            languages_code: { _eq: 'en-US' },
+                                            category: { _eq: categoryName },
+                                        },
+                                    },
                                     status: { _eq: 'published' },
                                 },
                             },
                         }),
                     );
-                    if (!totalNewsCount) {
-                        return {
-                            data: undefined,
-                            error: { status: 404, data: 'No news count found' },
-                        };
-                    }
-                    // console.log('total news count', totalNewsCount[0].count);
                     return {
-                        data: Number(totalNewsCount[0].count) as number,
+                        data: Number(totalNewsCount[0].count),
                         error: undefined,
                     };
                 } catch (error) {

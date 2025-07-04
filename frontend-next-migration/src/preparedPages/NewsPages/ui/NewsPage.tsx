@@ -26,15 +26,22 @@ const NewsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [allNews, setAllNews] = useState<News[]>([]);
     const [hasMoreNewsState, setHasMoreNewsState] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const { data: news } = useGetNewsQuery({ limit, page: currentPage, categorySlug });
-    const { data: totalNewsCount } = useGetTotalNewsCountQuery();
-    // console.log('🔄 NewsPage render', { currentPage, allNews, hasMoreNewsState });
+    const { data: totalNewsCount } = useGetTotalNewsCountQuery(categorySlug ?? '');
+    // console.log('🔄 NewsPage render', { currentPage, allNews, hasMoreNewsState, isLoading });
 
     useEffect(() => {
         if (typeof totalNewsCount === 'number') {
             setHasMoreNewsState(limit * currentPage < totalNewsCount);
         }
+        // console.log(
+        //     'current Page/total news changed',
+        //     currentPage,
+        //     totalNewsCount,
+        //     hasMoreNewsState,
+        // );
     }, [currentPage, totalNewsCount]);
 
     useEffect(() => {
@@ -46,24 +53,31 @@ const NewsPage = () => {
             setAllNews((prevNews) => {
                 return currentPage === 1 ? news : [...prevNews, ...news];
             });
+            setIsLoading(false);
+            // console.log('isLoading', isLoading);
         }
+        // console.log('isLoading', isLoading);
     }, [news]);
+    useEffect(() => {
+        // console.log('isLoading changed:', isLoading);
+    }, [isLoading]);
 
     const loadMoreNews = () => {
         if (hasMoreNewsState) {
             // console.log('loadMoreNews called...');
+            setIsLoading(true);
             setCurrentPage((prev) => prev + 1);
         }
     };
 
-    useEffect(() => {
-        // console.log('current Page changed', currentPage);
-    }, [currentPage, totalNewsCount]);
-
     const observerRef = useRef<HTMLSpanElement | null>(null);
     const handleObserver = (entries: IntersectionObserverEntry[]) => {
         // console.log('🔍 Observer fired', entries[0]);
-        if (entries[0].isIntersecting) {
+        // console.log('isLoading', isLoading);
+        // console.log(
+        //     entries[0].isIntersecting && !isLoading && hasMoreNewsState && allNews.length > 0,
+        // );
+        if (entries[0].isIntersecting && !isLoading && hasMoreNewsState && allNews.length > 0) {
             loadMoreNews();
         }
     };
@@ -72,7 +86,7 @@ const NewsPage = () => {
         // console.log('🔄 useEffect for IntersectionObserver');
         if (typeof window === 'undefined' || !window.IntersectionObserver) return;
         const observerElem = observerRef.current;
-        if (!observerElem) {
+        if (!observerElem || !hasMoreNewsState) {
             return;
         }
         const observer = new IntersectionObserver(handleObserver, {
