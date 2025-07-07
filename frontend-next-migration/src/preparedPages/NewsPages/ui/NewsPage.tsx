@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
 
 const NewsPage = () => {
@@ -30,12 +30,6 @@ const NewsPage = () => {
 
     const { data: news } = useGetNewsQuery({ limit, page: currentPage, categorySlug });
     const { data: totalNewsCount } = useGetTotalNewsCountQuery(categorySlug ?? '');
-    // console.log('🔄 NewsPage render', { currentPage, allNews, hasMoreNewsState, isLoading });
-
-    const isLoadingRef = useRef(isLoading);
-    useEffect(() => {
-        isLoadingRef.current = isLoading;
-    }, [isLoading]);
 
     useEffect(() => {
         if (typeof totalNewsCount === 'number') {
@@ -45,7 +39,6 @@ const NewsPage = () => {
 
     useEffect(() => {
         if (news) {
-            // console.log('data arrived', news);
             if (news.length === 0) {
                 setHasMoreNewsState(false);
             }
@@ -53,60 +46,33 @@ const NewsPage = () => {
                 return currentPage === 1 ? news : [...prevNews, ...news];
             });
             setIsLoading(false);
-            // console.log('isLoading', isLoading);
         }
     }, [news]);
-    useEffect(() => {
-        // console.log('isLoading changed:', isLoading);
-    }, [isLoading]);
 
     const loadMoreNews = () => {
         if (hasMoreNewsState) {
-            // console.log('loadMoreNews called...');
             setIsLoading(true);
             setCurrentPage((prev) => prev + 1);
         }
     };
 
-    const observerRef = useRef<HTMLSpanElement | null>(null);
-    const handleObserver = (entries: IntersectionObserverEntry[]) => {
-        // console.log('🔍 Observer fired', entries[0]);
-        // console.log(
-        //     'is intersecting',
-        //     entries[0].isIntersecting,
-        //     'isLoading',
-        //     !isLoading,
-        //     'isLoadingRef',
-        //     !isLoadingRef.current,
-        //     'hasMoreNewsState',
-        //     hasMoreNewsState,
-        //     'allNews.length',
-        //     allNews.length > 0,
-        // );
-        // console.log(entries[0].isIntersecting && !isLoadingRef.current && hasMoreNewsState);
-        if (entries[0].isIntersecting && !isLoadingRef.current && hasMoreNewsState) {
-            loadMoreNews();
-        }
-    };
-
-    useEffect(() => {
-        // console.log('🔄 useEffect for IntersectionObserver');
-        if (typeof window === 'undefined' || !window.IntersectionObserver) return;
-        const observerElem = observerRef.current;
-        if (!observerElem || !hasMoreNewsState) {
-            return;
-        }
-        const observer = new IntersectionObserver(handleObserver, {
-            threshold: 1,
-        });
-        observer.observe(observerElem);
-
-        return () => {
-            if (observerElem) {
-                observer.unobserve(observerElem);
+    const observer = useRef<IntersectionObserver | null>(null);
+    const observeElementRef = useCallback(
+        (node: HTMLDivElement | null) => {
+            if (observer.current) {
+                observer.current.disconnect();
             }
-        };
-    }, [hasMoreNewsState]);
+            observer.current = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !isLoading && hasMoreNewsState) {
+                    loadMoreNews();
+                }
+            });
+            if (node) {
+                observer.current.observe(node);
+            }
+        },
+        [hasMoreNewsState, isLoading],
+    );
 
     const groupedNews = formatNews(allNews, lngCode || 'fi-FI');
 
@@ -129,7 +95,7 @@ const NewsPage = () => {
                             />
                         );
                     })}
-                    {hasMoreNewsState && <span ref={observerRef} />}
+                    {hasMoreNewsState && <div ref={observeElementRef} />}
                 </div>
                 {typeof totalNewsCount === 'number' && !hasMoreNewsState && (
                     <div className={cls.noMoreNews}>No more news available</div>
