@@ -171,12 +171,11 @@ MobileCardBase.Image = MobileCardImageSection;
  *                            <MobileCard
  *                                 path='/hero-development'
  *                                 withScalableLink={true}
- *                                 key={index}
  *                                 theme={MobileCardTheme.DEFENSEGALLERY}>
  *                                 <MobileCard.Texts
  *                                     title1="Mikälie"
  *                                     title2="Tämäonpitkänimi"
- *                                />
+ *                                >Lorem Ipsum</MobileCard.Texts>
  *                                 <MobileCard.Image
  *                                     backgroundColor="yellow"
  *                                     src={jokester}
@@ -185,7 +184,6 @@ MobileCardBase.Image = MobileCardImageSection;
  *                             </MobileCard>
  * @example
  *                        <MobileCard
- *                             key={index}
  *                             theme={MobileCardTheme.DEFENSEGALLERY}
  *                         >
  *                             <MobileCard.Texts
