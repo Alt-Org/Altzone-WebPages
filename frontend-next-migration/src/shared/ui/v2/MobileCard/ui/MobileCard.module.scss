@@ -7,14 +7,14 @@
 .MobileCard.DefenseGalleryCard  {
   @include card-dimensions;
   overflow: hidden;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--corner-radius-web);
   background-color: var(--base-card-background);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
   border: var(--border-mobile) solid var(--black);
-
+  box-shadow: var(--black) 4px 6px 0;
 }
 .withScalableLink {
   .TextContainer {
