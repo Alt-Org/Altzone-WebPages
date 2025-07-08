@@ -9,6 +9,7 @@ import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
+import { useClientTranslation } from '@/shared/i18n';
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
@@ -28,6 +29,7 @@ const NewsPage = () => {
     const [hasMoreNewsState, setHasMoreNewsState] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
+    const { t } = useClientTranslation('news');
     const { data: news } = useGetNewsQuery({ limit, page: currentPage, categorySlug });
     const { data: totalNewsCount } = useGetTotalNewsCountQuery(categorySlug ?? '');
 
@@ -56,9 +58,11 @@ const NewsPage = () => {
         }
     };
 
+    // Intersection Observer to load more news when the observeElementRef is in view
     const observer = useRef<IntersectionObserver | null>(null);
     const observeElementRef = useCallback(
         (node: HTMLDivElement | null) => {
+            if (isLoading) return;
             if (observer.current) {
                 observer.current.disconnect();
             }
@@ -73,6 +77,13 @@ const NewsPage = () => {
         },
         [hasMoreNewsState, isLoading],
     );
+
+    const renderNoMoreNews = () => {
+        if (typeof totalNewsCount === 'number' && !hasMoreNewsState && allNews.length >= 5) {
+            return <div className={cls.noMoreNews}>{t('no-more-news')}</div>;
+        }
+        return null;
+    };
 
     const groupedNews = formatNews(allNews, lngCode || 'fi-FI');
 
@@ -97,9 +108,8 @@ const NewsPage = () => {
                     })}
                     {hasMoreNewsState && <div ref={observeElementRef} />}
                 </div>
-                {typeof totalNewsCount === 'number' && !hasMoreNewsState && (
-                    <div className={cls.noMoreNews}>No more news available</div>
-                )}
+                <div>{isLoading && 'Loading...'}</div>
+                {renderNoMoreNews()}
             </Container>
         </main>
     );
