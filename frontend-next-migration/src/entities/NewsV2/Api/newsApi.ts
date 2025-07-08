@@ -1,8 +1,8 @@
-import { categoryNameToSlugMap } from '@/features/NavigateNewsPage/ui/NewsPageNavMenuAsDropdown';
 import { directusApi } from '@/shared/api'; // Ensure the base Directus API setup is correct.
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems, readItem, aggregate } from '@directus/sdk';
 import { News } from '../model/types/types';
+import { categoryNameToSlugMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
 
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());

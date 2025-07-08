@@ -28,19 +28,12 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { useGetNewsCategoriesQuery } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
 import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper';
-import { NewsCategorySlug } from '@/entities/NewsV2/model/types/types';
 import { getRouteNewsCategoryPage } from '@/shared/appLinks/RoutePaths';
+import { categoryNameToSlugMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
 
 interface NewsPageNavMenuAsDropdownProps {
     className?: string;
 }
-
-// map english name to slug
-export const categoryNameToSlugMap: Record<string, string> = {
-    'Update': NewsCategorySlug.UPDATE,
-    'Announcement': NewsCategorySlug.ANNOUNCEMENT,
-    'Game Update': NewsCategorySlug.GAME_UPDATE,
-};
 
 const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ className }) => {
     const { isMobileSize, isTabletSize } = useSizes();
