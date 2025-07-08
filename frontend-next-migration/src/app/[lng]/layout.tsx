@@ -9,7 +9,8 @@ import { languages } from '@/shared/i18n/settings/settings';
 import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
-import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
+//import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
+import CookieConsentV3 from '@/features/CookieConsentV3/CookieConsentV3';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
@@ -95,7 +96,7 @@ export default function RootLayout(props: Props) {
                         <FeedbackSideButton />
                         <ChatBotToggleButton />
                         {children}
-                        <CookieConsentV2 />
+                        <CookieConsentV3 />
                     </Providers>
                 </LayoutWithBackground>
             </body>
