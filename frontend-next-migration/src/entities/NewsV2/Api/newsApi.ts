@@ -29,13 +29,17 @@ const slugToCategoryNameMap = Object.fromEntries(
 export const newsApi = directusApi.injectEndpoints({
     endpoints: (builder) => ({
         /**
-         * Fetches the list of published news items along with their associated data.
+         * Fetches the list of published news items along with their associated data. Optionally filters by category slug.
          *
          * The query includes news content, related category data, translation information, and images (e.g.,
          * titlePicture, extra pictures). The filter ensures that only news items with a status of 'published'
          * are retrieved. Results are sorted by the `date` field in descending order to show the latest news first.
          *
          * @query
+         * @param {Object} args - The arguments for the query.
+         * @param {number} args.limit - The maximum number of news items to fetch.
+         * @param {number} [args.page] - The page number for pagination.
+         * @param {string} [args.categorySlug] - The slug of the category to filter news items by. If not provided, all published news items are fetched.
          * @returns {Promise<Object>} The data containing the fetched news items.
          * @property {Array} data - An array of news items with their associated details.
          */
@@ -67,7 +71,7 @@ export const newsApi = directusApi.injectEndpoints({
                                 },
                                 sort: ['-date', '-id'],
                                 limit: safeLimit,
-                                page,
+                                page: page || 1,
                             }),
                         );
                         return { data: newsItems };
@@ -111,7 +115,6 @@ export const newsApi = directusApi.injectEndpoints({
                         meta: undefined,
                     };
                 } catch (error) {
-                    console.error('News fetch error:', error);
                     return {
                         data: undefined,
                         error: { status: 500, data: 'Internal server error' },
@@ -213,7 +216,7 @@ export const newsApi = directusApi.injectEndpoints({
                 } catch (error) {
                     return {
                         data: undefined,
-                        error: undefined,
+                        error: { status: 500, data: 'Internal server error' },
                         meta: undefined,
                     };
                 }
