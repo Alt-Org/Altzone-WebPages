@@ -96,11 +96,11 @@ const Page = () => {
     const componentsArray = Array(9).fill(null);
     const handleFocusAndScroll = () => {
         if (cardRef.current) {
-            cardRef.current.focus(); // Fokusoi elementtiin ensin
+            cardRef.current.focus();
             cardRef.current.scrollIntoView({
-                behavior: 'smooth', // Rullausanimaatio voi olla 'auto' tai 'smooth'
-                block: 'start', // Elementin pystysuuntainen sijainti — alku
-                inline: 'nearest', // Elementin vaakasuuntainen sijainti
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
             });
         }
     };
@@ -138,7 +138,7 @@ const Page = () => {
                 }}
                 onClick={handleFocusAndScroll}
             >
-                focus testing button
+                focus
             </button>
             <h2>Testing Defense Gallery ModularCard</h2>
             <div
