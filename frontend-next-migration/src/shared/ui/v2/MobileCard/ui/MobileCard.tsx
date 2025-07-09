@@ -1,4 +1,4 @@
-import {
+import React, {
     memo,
     ReactNode,
     forwardRef,
@@ -62,8 +62,8 @@ interface MobileCardComponent
     extends ForwardRefExoticComponent<
         Omit<MobileCardProps, 'ref'> & RefAttributes<HTMLDivElement>
     > {
-    Texts: MobileCardTextsProps;
-    Image: MobileCardImageSectionProps;
+    Texts: React.FC<MobileCardTextsProps>;
+    Image: React.FC<MobileCardImageSectionProps>;
 }
 
 const MobileCardBase: any = forwardRef<HTMLDivElement, MobileCardProps>(
