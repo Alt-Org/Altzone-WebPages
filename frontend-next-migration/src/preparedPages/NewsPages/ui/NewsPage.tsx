@@ -19,7 +19,7 @@ const NewsPage = () => {
 
     const params = useParams();
     const lng = params.lng as string;
-    const categorySlug = typeof params.slug === 'string' ? params.slug : undefined;
+    const currentSlug = typeof params.slug === 'string' ? params.slug : undefined;
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
     const directusBaseUrl = envHelper.directusHost;
 
@@ -30,8 +30,8 @@ const NewsPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const { t } = useClientTranslation('news');
-    const { data: news } = useGetNewsQuery({ limit, page: currentPage, categorySlug });
-    const { data: totalNewsCount } = useGetTotalNewsCountQuery(categorySlug ?? '');
+    const { data: news } = useGetNewsQuery({ limit, page: currentPage, categorySlug: currentSlug });
+    const { data: totalNewsCount } = useGetTotalNewsCountQuery(currentSlug ?? '');
 
     useEffect(() => {
         if (typeof totalNewsCount === 'number') {
@@ -108,7 +108,7 @@ const NewsPage = () => {
                     })}
                     {hasMoreNewsState && <div ref={observeElementRef} />}
                 </div>
-                <div>{isLoading && 'Loading...'}</div>
+                <div>{isLoading && 'Loading... from news page'}</div>
                 {renderNoMoreNews()}
             </Container>
         </main>

@@ -6,5 +6,7 @@
   "category-title": "Category",
   "next-button": "Next",
   "previous-button": "Previous",
-  "no-more-news": "No more news available"
+  "no-more-news": "No more news available",
+  "not-found-category-title": "Category not found",
+  "page-not-found": "Page not found"
 }

@@ -2,7 +2,7 @@ import { directusApi } from '@/shared/api'; // Ensure the base Directus API setu
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems, readItem, aggregate } from '@directus/sdk';
 import { News } from '../model/types/types';
-import { categoryNameToSlugMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
+import { slugToCategoryNameMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
 
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());
@@ -12,10 +12,6 @@ type GetNewsArgs = {
     page?: number | undefined;
     categorySlug?: string | undefined;
 };
-
-const slugToCategoryNameMap = Object.fromEntries(
-    Object.entries(categoryNameToSlugMap).map(([name, slug]) => [slug, name]),
-);
 
 /**
  * API service for interacting with the Directus backend to fetch news and news categories.
