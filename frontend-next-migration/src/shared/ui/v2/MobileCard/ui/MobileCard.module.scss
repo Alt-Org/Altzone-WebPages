@@ -1,7 +1,7 @@
 @mixin card-dimensions {
   --gap: 0.5em;
-  width: calc(33.33% - var(--gap));
-  height: calc(33.33vh - var(--gap));
+  width: calc(33.333% - 2 * var(--gap) / 3);
+  height: calc(33.333vh - 2 * var(--gap) / 3);
 }
 
 .MobileCard.DefenseGalleryCard  {
