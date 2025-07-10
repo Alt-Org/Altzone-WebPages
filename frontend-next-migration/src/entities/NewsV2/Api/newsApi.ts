@@ -239,6 +239,17 @@ export const newsApi = directusApi.injectEndpoints({
                 return { data: newsCategories };
             },
         }),
+        /**
+         * Fetches the total count of published news items. Optionally filters by category slug.
+         *
+         * If no category slug is provided, it returns the total count of all published news items.
+         * If a category slug is provided, it converts the slug to a category name and returns the count
+         * of published news items in that category.
+         *
+         * @query
+         * @param {string} [categorySlug] - The slug of the category to filter news items by. If not provided, counts all published news items.
+         * @returns {Promise<Object>} The total count of news items.
+         */
         getTotalNewsCount: builder.query<number, string>({
             queryFn: async (categorySlug?: string) => {
                 try {
@@ -259,7 +270,6 @@ export const newsApi = directusApi.injectEndpoints({
                                 error: { status: 404, data: 'No news count found' },
                             };
                         }
-                        // console.log('total news count', totalNewsCount[0].count);
                         return {
                             data: Number(totalNewsCount[0].count),
                             error: undefined,
@@ -298,7 +308,6 @@ export const newsApi = directusApi.injectEndpoints({
                         error: undefined,
                     };
                 } catch (error) {
-                    console.error('Total news counr fetch error:', error);
                     return {
                         data: undefined,
                         error: { status: 500, data: 'Internal server error' },
