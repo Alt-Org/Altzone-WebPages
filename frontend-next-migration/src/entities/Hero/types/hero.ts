@@ -53,6 +53,7 @@ export interface GroupInfo {
     name: string;
     description: string;
     bgColour: string;
+    srcImg: StaticImageData | string;
     label: StaticImageData | string;
     heroes: Hero[];
 }

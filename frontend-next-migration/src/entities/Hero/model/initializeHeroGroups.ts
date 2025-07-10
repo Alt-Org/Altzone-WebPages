@@ -27,7 +27,8 @@ import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
 import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
-import { statData } from '../model/stats/statsDataV2';
+import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
+import { statData } from '@/entities/Hero';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
@@ -35,6 +36,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.RETROFLECTOR]: {
             name: t('RETROFLECTOR.name'),
             description: t('RETROFLECTOR.description'),
+            srcImg: retroflector,
             bgColour: 'rgba(226, 5, 5, 0.5)',
             label: red,
             heroes: [
@@ -67,6 +69,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.CONFLUENT]: {
             name: t('CONFLUENT.name'),
             description: t('CONFLUENT.description'),
+            srcImg: retroflector,
             bgColour: 'rgba(145, 4, 148, 0.5)',
             label: purpleBg,
             heroes: [
@@ -99,6 +102,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.PROJECTOR]: {
             name: t('PROJECTOR.name'),
             description: t('PROJECTOR.description'),
+            srcImg: retroflector,
             bgColour: 'rgba(254, 237, 1, 0.5)',
             label: yellow,
             heroes: [
@@ -130,6 +134,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.INTELLECTUALIZER]: {
             name: t('INTELLECTUALIZER.name'),
             description: t('INTELLECTUALIZER.description'),
+            srcImg: retroflector,
             bgColour: 'rgba(51, 3, 147, 0.5)',
             label: darkBlue,
             heroes: [
@@ -150,6 +155,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.TRICKSTER]: {
             name: t('TRICKSTER.name'),
             description: t('TRICKSTER.description'),
+            srcImg: retroflector,
             bgColour: 'rgba(47,153,51,0.5)',
             label: greenBg,
             heroes: [
@@ -181,6 +187,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.OBEDIENT]: {
             name: t('OBEDIENT.name'),
             description: t('OBEDIENT.description'),
+            srcImg: retroflector,
             bgColour: 'rgba(240,153,0,0.7)',
             label: orange,
             heroes: [
@@ -201,6 +208,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
         [HeroGroup.DESENSITIZER]: {
             name: t('DESENSITIZER.name'),
             description: t('DESENSITIZER.description'),
+            srcImg: retroflector,
             bgColour: 'rgba(0,192,192,0.7)',
             label: lightBlue,
             heroes: [
