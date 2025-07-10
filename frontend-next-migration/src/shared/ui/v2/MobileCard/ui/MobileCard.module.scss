@@ -17,20 +17,20 @@
   box-shadow: var(--black) 4px 6px 0;
 }
 .withScalableLink {
+  transition: border-color ease .4s;
   .TextContainer {
-    transition: all ease;
-    transition-duration: .4s;
+    transition: height ease .4s;
   }
   .ImageContainer{
-    transition: all ease-in-out;
-    transition-duration: .4s;
+    transition: height ease .4s;
   }
-  &:hover {
+  &:active {
+    border-color: var(--primary-color);
     .TextContainer {
-      height: 40% !important;
+      height: 20% !important;
     }
     .ImageContainer {
-      height: 60% !important;
+      height: 80% !important;
     }
   }
 }
@@ -52,6 +52,7 @@
   margin-top: 10%;
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title1 {
+  color:var(--white);
   font-family: var(--font-family-title);
   font-size: 1.5rem;
   font-weight: 400;
@@ -61,5 +62,13 @@
   font-family: var(--font-family-title);
   font-size: 1.5rem;
   font-weight: 400;
+  @media (max-width: breakpoint(sm)) {
+    font-size: 1rem;
+  }
+  @media (max-width: breakpoint(xs)) {
+    font-size: .8rem;
+  }
+
 }
+
 

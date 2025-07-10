@@ -33,16 +33,31 @@ export enum MobileCardTheme {
  * @property {LegacyRef<HTMLDivElement>} [ref] - Reference to the card (optional)
  * @property {ReactNode} children - The content of the Card.
  */
-interface MobileCardProps
+interface MobileCardPropsBase
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     theme?: MobileCardTheme;
     className?: string;
     children: ReactNode;
     path?: string;
     isExternal?: boolean;
-    withScalableLink?: boolean;
     ref?: LegacyRef<HTMLDivElement>;
+    ariaLabel?: string;
+    role?: string;
 }
+
+interface ScalableLinkProps {
+    withScalableLink: true;
+    ariaLabel: string;
+    role: string;
+}
+
+interface NonScalableLinkProps {
+    withScalableLink?: false;
+}
+
+type MobileCardProps =
+    | (MobileCardPropsBase & ScalableLinkProps)
+    | (MobileCardPropsBase & NonScalableLinkProps);
 
 interface MobileCardTextsProps {
     className?: string;
@@ -75,7 +90,16 @@ const MobileCardBase: any = forwardRef<HTMLDivElement, MobileCardProps>(
             className = '',
             children,
             theme = MobileCardTheme.PRIMARY,
+            ariaLabel,
+            role,
         } = props;
+
+        if (withScalableLink && (!ariaLabel || !role)) {
+            throw new Error(
+                "When 'withScalableLink' is true, 'ariaLabel' and 'role' must be provided.",
+            );
+        }
+
         const mods: Record<string, boolean> = {
             [cls.withScalableLink]: withScalableLink,
         };
@@ -88,6 +112,8 @@ const MobileCardBase: any = forwardRef<HTMLDivElement, MobileCardProps>(
                 >
                     <div
                         ref={ref}
+                        role={role}
+                        aria-label={ariaLabel}
                         tabIndex={0}
                         style={{ width: '100%' }}
                         className={classNames(cls.MobileCard, mods, [className, cls[theme]])}
@@ -171,6 +197,8 @@ MobileCardBase.Image = MobileCardImageSection;
  *                            <MobileCard
  *                                 path='/hero-development'
  *                                 withScalableLink={true}
+ *                                 ariaLabel="link to hero development page"
+ *                                 role="link"
  *                                 theme={MobileCardTheme.DEFENSEGALLERY}>
  *                                 <MobileCard.Texts
  *                                     title1="Mikälie"

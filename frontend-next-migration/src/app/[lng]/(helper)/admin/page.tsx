@@ -432,12 +432,14 @@ const Page = () => {
                                 ref={cardRef}
                                 path="/hero-development"
                                 withScalableLink={true}
+                                ariaLabel="link to hero development page"
+                                role="link"
                                 key={index}
                                 theme={MobileCardTheme.DEFENSEGALLERY}
                             >
                                 <MobileCard.Texts
                                     title1="Mikälie"
-                                    title2="Tämäonpitkänimi"
+                                    title2="Skitsofreenikko"
                                 />
                                 <MobileCard.Image
                                     backgroundColor="yellow"
