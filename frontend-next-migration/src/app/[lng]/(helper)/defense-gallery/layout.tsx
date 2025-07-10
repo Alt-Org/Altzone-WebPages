@@ -10,26 +10,30 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     const isTouchDevice = isMobileSize || isTabletSize;
     const { t } = useClientTranslation('heroes');
 
-    const NavMenuPlaceholder = () => (
-        <div
-            style={{
-                background: 'var(--base-card-background)',
-                paddingLeft: '12px',
-                borderRadius: '12px',
-                margin: '1em',
-                maxHeight: '400px',
-                width: '80%',
-                height: '100%',
-                border: '4px solid var(--black)',
-            }}
-        >
-            nav menu placeholder
-        </div>
-    );
+    const NavMenuPlaceholder = (props) => {
+        const { className } = props;
+        return (
+            <div
+                className={className}
+                style={{
+                    background: 'var(--base-card-background)',
+                    paddingLeft: '12px',
+                    borderRadius: '12px',
+                    padding: '1em',
+                    maxHeight: '400px',
+                    width: '80%',
+                    height: '100%',
+                    border: '4px solid var(--black)',
+                }}
+            >
+                nav menu placeholder
+            </div>
+        );
+    };
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
-                component: <NavMenuPlaceholder />,
+                component: <NavMenuPlaceholder className={cls.NavMenuSidebar} />,
                 hideOnMobile: true,
             }}
         >

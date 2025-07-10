@@ -43,6 +43,7 @@ interface ModularCardProps
     path?: string;
     isExternal?: boolean;
     withScalableLink?: boolean;
+    height?: string;
     ref?: LegacyRef<HTMLDivElement>;
     children: ReactNode;
 }
@@ -86,6 +87,7 @@ const ModularCardBase: any = forwardRef<HTMLDivElement, ModularCardProps>((props
         isExternal = false,
         withScalableLink = false,
         children,
+        height,
         ...otherProps
     } = props;
     const mods: Record<string, boolean> = {
@@ -99,6 +101,7 @@ const ModularCardBase: any = forwardRef<HTMLDivElement, ModularCardProps>((props
             >
                 <div
                     className={classNames(cls.Card, mods, [className, cls[theme]])}
+                    style={{ height }}
                     ref={ref}
                     {...otherProps}
                 >
@@ -111,6 +114,7 @@ const ModularCardBase: any = forwardRef<HTMLDivElement, ModularCardProps>((props
         <div
             className={classNames(cls.Card, mods, [className, cls[theme]])}
             ref={ref}
+            style={{ height }}
             {...otherProps}
         >
             {children}
