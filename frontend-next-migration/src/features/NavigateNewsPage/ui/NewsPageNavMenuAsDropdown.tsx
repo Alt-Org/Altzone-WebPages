@@ -7,12 +7,11 @@
  * - For desktop devices: Shows an expanded static menu
  *
  * @component
- * @param {object} props - Component properties
- * @param {string} [props.className] - Optional CSS class name for styling the container
+ * @returns {JSX.Element} The rendered navigation menu component.
  *
  * @example
  *
- * <NewsPageNavMenuAsDropdown className="custom-menu-class" />
+ * <NewsPageNavMenuAsDropdown/>
  */
 'use client';
 import React from 'react';
@@ -29,11 +28,7 @@ import { DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper';
 import { getRouteNewsCategoryPage } from '@/shared/appLinks/RoutePaths';
 import { categoryNameToSlugMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
 
-interface NewsPageNavMenuAsDropdownProps {
-    className?: string;
-}
-
-const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ className }) => {
+const NewsPageNavMenuAsDropdown: React.FC = () => {
     const { isMobileSize, isTabletSize } = useSizes();
     const isTouchDevice = isMobileSize || isTabletSize;
     const { t } = useClientTranslation('news');
