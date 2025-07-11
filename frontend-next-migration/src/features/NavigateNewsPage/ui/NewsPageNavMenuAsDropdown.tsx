@@ -13,8 +13,6 @@
  * @example
  *
  * <NewsPageNavMenuAsDropdown className="custom-menu-class" />
- * @remarks
- * Currently using hard-coded categories as placeholders.
  */
 'use client';
 import React from 'react';
@@ -62,7 +60,6 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
             })
             .filter((item) => item.localizedName && item.slug)
         : [];
-    
     const dropdownItems: DropDownElementASTextOrLink[] = categories.map((category) => ({
         elementText: category.localizedName.charAt(0).toUpperCase() + category.localizedName.slice(1),
         link: {
@@ -71,7 +68,6 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
         },
         active: params.slug === category.slug,
     }));
-
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: t('category-title'),
         openByDefault: false,
@@ -86,21 +82,23 @@ const NewsPageNavMenuAsDropdown: React.FC<NewsPageNavMenuAsDropdownProps> = ({ c
     };
 
     return (
-        <div className={className}>
-            {isTouchDevice ? (<nav>
+        // Use a fragment to avoid unnecessary div wrapper
+        // eslint-disable-next-line react/jsx-no-useless-fragment
+        <>
+            {isTouchDevice ? (
                 <NavMenuWithDropdowns
                     className={cls.WidthNewsNavMenu}
                     customActiveClassName={cls.NewsActive}
                     {...navMenuWithDropdownsMobileProps}
                 />
-            </nav>) : (<nav>
+            ) : (
                 <NavMenuWithDropdowns
                     className={cls.NewsNavMenu}
                     customActiveClassName={cls.NewsActive}
                     {...navMenuWithDropdownsDesktopProps}
                 />
-            </nav>)}
-        </div>
+            )}
+        </>
     );
 };
 
