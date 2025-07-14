@@ -38,7 +38,7 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
             }}
         >
             <h1 className={cls.Title}>{t('defense-gallery')}</h1>
-            {isTouchDevice ? <NavMenuPlaceholder /> : null}
+            {isTouchDevice ? <NavMenuPlaceholder className={cls.Dropdown} /> : null}
             {children}
         </LayoutWithSidebars>
     );

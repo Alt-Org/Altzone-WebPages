@@ -13,6 +13,7 @@ const SingleDefensePage = (props: Props) => {
     const { heroGroup } = props;
     const { t } = useClientTranslation('heroes');
     const heroGroups = initializeHeroGroups(t);
+
     //const heroManager = new HeroManager(t);
     //console.log(heroManager.getHeroesBySpecificGroup(heroGroup));
     return (
@@ -40,7 +41,7 @@ const SingleDefensePage = (props: Props) => {
                 style={{
                     display: 'flex',
                     paddingTop: '1em',
-                    justifyContent: 'center',
+                    justifyContent: 'left',
                     flexWrap: 'wrap',
                     gap: '1em',
                 }}
@@ -54,6 +55,7 @@ const SingleDefensePage = (props: Props) => {
                             className="customClass"
                             theme={ModularCardTheme.DEFENSECARD}
                             withScalableLink={true}
+                            path={`/defense-gallery/${heroGroup}/${hero.slug}`}
                             height="150px"
                         >
                             <ModularCard.Texts>
