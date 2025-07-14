@@ -16,6 +16,8 @@ interface AppLinkProps {
     isExternal?: boolean;
     children: ReactNode;
     'data-fancybox'?: string;
+    role?: string;
+    ariaLabel?: string;
 }
 
 /**
@@ -46,6 +48,8 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         children,
         theme = AppLinkTheme.PRIMARY,
         isExternal,
+        role = 'link',
+        ariaLabel,
         'data-fancybox': dataFancybox,
     } = props;
 
@@ -57,6 +61,8 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-fancybox={dataFancybox}
+                role={role}
+                aria-label={ariaLabel}
             >
                 {children}
             </a>
@@ -66,6 +72,8 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
     return (
         <Link
             href={to}
+            role={role}
+            aria-label={ariaLabel}
             className={classNames(cls.AppLink, {}, [className, cls[theme]])}
             data-fancybox={dataFancybox}
         >

@@ -27,42 +27,38 @@ export enum MobileCardTheme {
  * {Object} ModularCardProps
  * @property {string} [className=""] - Additional class name(s) for the Card.
  * @property {theme} [theme=MobileCardTheme.PRIMARY] - Theme for the Card.
- * @property {string} [path] - Link address (optional).
- * @property {string} [isExternal=false] - If path is not in this server (optional).
- * @property {string} [withScalableLink] - Additional styling to link (optional).
- * @property {LegacyRef<HTMLDivElement>} [ref] - Reference to the card (optional)
  * @property {ReactNode} children - The content of the Card.
  */
-interface MobileCardPropsBase
+interface MobileCardProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     theme?: MobileCardTheme;
     className?: string;
     children: ReactNode;
-    path?: string;
-    isExternal?: boolean;
     ref?: LegacyRef<HTMLDivElement>;
-    ariaLabel?: string;
-    role?: string;
 }
-
-interface ScalableLinkProps {
-    withScalableLink: true;
-    ariaLabel: string;
-    role: string;
-}
-
-interface NonScalableLinkProps {
-    withScalableLink?: false;
-}
-
-type MobileCardProps =
-    | (MobileCardPropsBase & ScalableLinkProps)
-    | (MobileCardPropsBase & NonScalableLinkProps);
 
 interface MobileCardTextsProps {
     className?: string;
     title1: string;
     title2: string;
+    children?: ReactNode;
+}
+
+/**
+ * Props for the MobileCardLink component.
+ * {Object} LinkProps
+ * @property {string} [path] - Link address (optional).
+ * @property {string} [isExternal=false] - If path is not in this server (optional).
+ * @property {string} [withScalableLink] - Additional styling to link (optional).
+ * @property {string} [className=""] - Additional class name(s) for the Card.
+ * @property {ReactNode} [children] - The content of the Card.
+ */
+interface LinkProps {
+    path: string;
+    ariaLabel: string;
+    isExternal?: boolean;
+    withScalableLink?: boolean;
+    className?: string;
     children?: ReactNode;
 }
 
@@ -81,48 +77,36 @@ interface MobileCardComponent
     Image: React.FC<MobileCardImageSectionProps>;
 }
 
+export const MobileCardLink: React.FC<LinkProps> = (props: LinkProps) => {
+    const {
+        path,
+        isExternal = false,
+        withScalableLink = false,
+        className = '',
+        children,
+        ariaLabel,
+    } = props;
+
+    const mods: Record<string, boolean> = {
+        [cls.withScalableLink]: withScalableLink,
+    };
+
+    return (
+        <AppLink
+            to={path}
+            isExternal={isExternal}
+            ariaLabel={ariaLabel}
+            className={classNames(cls.AppLink, mods, [className])}
+        >
+            {children}
+        </AppLink>
+    );
+};
+
 const MobileCardBase: any = forwardRef<HTMLDivElement, MobileCardProps>(
     (props: MobileCardProps, ref): JSX.Element => {
-        const {
-            path,
-            isExternal = false,
-            withScalableLink = false,
-            className = '',
-            children,
-            theme = MobileCardTheme.PRIMARY,
-            ariaLabel,
-            role,
-        } = props;
+        const { className = '', children, theme = MobileCardTheme.PRIMARY } = props;
 
-        if (withScalableLink && (!ariaLabel || !role)) {
-            throw new Error(
-                "When 'withScalableLink' is true, 'ariaLabel' and 'role' must be provided.",
-            );
-        }
-
-        const mods: Record<string, boolean> = {
-            [cls.withScalableLink]: withScalableLink,
-        };
-        if (path) {
-            return (
-                <AppLink
-                    to={path}
-                    isExternal={isExternal}
-                    className={cls.AppLink}
-                >
-                    <div
-                        ref={ref}
-                        role={role}
-                        aria-label={ariaLabel}
-                        tabIndex={0}
-                        style={{ width: '100%' }}
-                        className={classNames(cls.MobileCard, mods, [className, cls[theme]])}
-                    >
-                        {children}
-                    </div>
-                </AppLink>
-            );
-        }
         return (
             <div
                 ref={ref}
@@ -194,22 +178,26 @@ MobileCardBase.Image = MobileCardImageSection;
 /**
  * Card component with composable subcomponents.
  * @example
- *                            <MobileCard
- *                                 path='/hero-development'
- *                                 withScalableLink={true}
+ *                             <MobileCardLink
+ *                                 path="/hero-development"
  *                                 ariaLabel="link to hero development page"
- *                                 role="link"
- *                                 theme={MobileCardTheme.DEFENSEGALLERY}>
- *                                 <MobileCard.Texts
- *                                     title1="Mikälie"
- *                                     title2="Tämäonpitkänimi"
- *                                >Lorem Ipsum</MobileCard.Texts>
- *                                 <MobileCard.Image
- *                                     backgroundColor="yellow"
- *                                     src={jokester}
- *                                     alt="Jåker"
- *                                 />
- *                             </MobileCard>
+ *                                 withScalableLink={true}
+ *                             >
+ *                                 <MobileCard
+ *                                     ref={cardRef}
+ *                                     theme={MobileCardTheme.DEFENSEGALLERY}
+ *                                 >
+ *                                     <MobileCard.Texts
+ *                                         title1="Mikälie"
+ *                                         title2="Skitsofreenikko"
+ *                                     />
+ *                                     <MobileCard.Image
+ *                                         backgroundColor="yellow"
+ *                                         src={jokester}
+ *                                         alt="Jåker"
+ *                                     />
+ *                                 </MobileCard>
+ *                             </MobileCardLink>
  * @example
  *                        <MobileCard
  *                             theme={MobileCardTheme.DEFENSEGALLERY}

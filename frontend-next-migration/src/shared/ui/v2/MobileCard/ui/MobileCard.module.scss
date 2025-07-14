@@ -25,7 +25,9 @@
     transition: height ease .4s;
   }
   &:active {
-    border-color: var(--primary-color);
+    .MobileCard {
+      border-color: var(--primary-color);
+    }
     .TextContainer {
       height: 20% !important;
     }
@@ -34,8 +36,16 @@
     }
   }
 }
+
+.MobileCard {
+  transition: border-color ease .4s;
+}
 .AppLink {
   @include card-dimensions;
+}
+
+.AppLink .MobileCard {
+  width: 100% !important;
 }
 
 .MobileCard.DefenseGalleryCard > .ImageContainer {
@@ -70,5 +80,3 @@
   }
 
 }
-
-

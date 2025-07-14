@@ -21,7 +21,7 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
-import { MobileCard, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
+import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -428,25 +428,27 @@ const Page = () => {
                 {componentsArray.map((_, index) => {
                     if (index === 0)
                         return (
-                            <MobileCard
-                                ref={cardRef}
-                                path="/hero-development"
-                                withScalableLink={true}
-                                ariaLabel="link to hero development page"
-                                role="link"
+                            <MobileCardLink
                                 key={index}
-                                theme={MobileCardTheme.DEFENSEGALLERY}
+                                path="/hero-development"
+                                ariaLabel="link to hero development page"
+                                withScalableLink={true}
                             >
-                                <MobileCard.Texts
-                                    title1="Mikälie"
-                                    title2="Skitsofreenikko"
-                                />
-                                <MobileCard.Image
-                                    backgroundColor="yellow"
-                                    src={jokester}
-                                    alt="Jåker"
-                                />
-                            </MobileCard>
+                                <MobileCard
+                                    ref={cardRef}
+                                    theme={MobileCardTheme.DEFENSEGALLERY}
+                                >
+                                    <MobileCard.Texts
+                                        title1="Mikälie"
+                                        title2="Skitsofreenikko"
+                                    />
+                                    <MobileCard.Image
+                                        backgroundColor="yellow"
+                                        src={jokester}
+                                        alt="Jåker"
+                                    />
+                                </MobileCard>
+                            </MobileCardLink>
                         );
                     return (
                         <MobileCard
