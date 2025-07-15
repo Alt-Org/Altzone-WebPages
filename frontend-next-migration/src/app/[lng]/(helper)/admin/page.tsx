@@ -7,6 +7,7 @@ import jokester from '@/shared/assets/images/heros/jokester/Jokester.png';
 import sleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
 import fatePriest from '@/shared/assets/images/heros/fate-priest/fate-priest.png';
 import mirror from '@/shared/assets/images/heros/mirror/Mirror.png';
+import { useRef } from 'react';
 import {
     NavMenuWithDropdowns,
     NavMenuWithDropdownsProps,
@@ -20,8 +21,7 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
-import cls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
-
+import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -90,8 +90,21 @@ const Page = () => {
             },
         ],
     };
+    const cardRef = useRef<HTMLDivElement>(null);
 
     const { t } = useClientTranslation('admin');
+    const componentsArray = Array(9).fill(null);
+    const handleFocusAndScroll = () => {
+        if (cardRef.current) {
+            cardRef.current.focus();
+            cardRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
+            });
+        }
+    };
+
     return (
         <LayoutWithSidebars
             // rightSidebar={di}
@@ -114,6 +127,19 @@ const Page = () => {
             // }}
         >
             {/* Testing ModularCard */}
+            <button
+                style={{
+                    paddingLeft: '1em',
+                    paddingRight: '1em',
+                    border: '1px solid black',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    backgroundColor: 'lightblue',
+                }}
+                onClick={handleFocusAndScroll}
+            >
+                focus
+            </button>
             <h2>Testing Defense Gallery ModularCard</h2>
             <div
                 style={{
@@ -390,6 +416,58 @@ const Page = () => {
                     />
                 </DescriptionCard.Image>
             </DescriptionCard>
+            <div
+                style={{
+                    display: 'flex',
+                    gap: '.5em',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    marginTop: '.5em',
+                }}
+            >
+                {componentsArray.map((_, index) => {
+                    if (index === 0)
+                        return (
+                            <MobileCardLink
+                                key={index}
+                                path="/hero-development"
+                                ariaLabel="link to hero development page"
+                                withScalableLink={true}
+                            >
+                                <MobileCard
+                                    ref={cardRef}
+                                    theme={MobileCardTheme.DEFENSEGALLERY}
+                                >
+                                    <MobileCard.Texts
+                                        title1="Mikälie"
+                                        title2="Skitsofreenikko"
+                                    />
+                                    <MobileCard.Image
+                                        backgroundColor="yellow"
+                                        src={jokester}
+                                        alt="Jåker"
+                                    />
+                                </MobileCard>
+                            </MobileCardLink>
+                        );
+                    return (
+                        <MobileCard
+                            key={index}
+                            theme={MobileCardTheme.DEFENSEGALLERY}
+                        >
+                            <MobileCard.Texts
+                                title1="Torjujat"
+                                title2="Ahmatti"
+                            />
+                            <MobileCard.Image
+                                backgroundColor="#FF0000"
+                                src={hannu}
+                                alt="hannu hodari"
+                            />
+                        </MobileCard>
+                    );
+                })}
+            </div>
         </LayoutWithSidebars>
     );
 };
