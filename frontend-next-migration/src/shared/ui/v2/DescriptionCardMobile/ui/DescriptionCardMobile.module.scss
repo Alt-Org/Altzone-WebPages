@@ -1,10 +1,11 @@
 @mixin card-dimensions {
-  with: 100%;
+  width: 100%;
   height: fit-content;
 }
 
 .DescriptionCardMobile.DefenseGalleryCard  {
   @include card-dimensions;
+  position: relative;
   overflow: hidden;
   border-radius: var(--corner-radius-web);
   background-color: var(--base-card-background);
@@ -47,19 +48,24 @@
 .AppLink .DescriptionCardMobile {
   width: 100% !important;
 }
-.Image {
+
+.DescriptionCardMobile.DefenseGalleryCard > div > .ImageContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  object-fit: cover;
+  height: 100%;
+  z-index: 1;
+  clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
 }
-.DescriptionCardMobile.DefenseGalleryCard > .ImageContainer {
-  flex-basis: 50%;
-  width: 100%;
-  overflow: visible;
-  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.DescriptionCardMobile.DefenseGalleryCard > div > .BackgroundColorImage {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 2;
 }
+
 .DescriptionCardMobile.DefenseGalleryCard > .CoverImageContainer {
   height: 70%;
   width: 100%;
@@ -67,11 +73,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  .Image {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 .DescriptionCardMobile.DefenseGalleryCard > .TextContainer {
   margin: 1em 1em 0 1em;
   text-align: left;
-  flex-basis: 50%;
+  color:var(--white);
 }
 .DescriptionCardMobile.DefenseGalleryCard > .TextContainer > .Title {
   color:var(--primary-color);
@@ -81,4 +91,3 @@
 
 
 }
-

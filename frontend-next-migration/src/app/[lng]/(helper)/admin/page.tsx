@@ -400,18 +400,24 @@ const Page = () => {
                             alt="defence gallery"
                         />
                     </DescriptionCardMobile>
-                    <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
-                        <DescriptionCardMobile.Texts title="Torjujat">
-                            Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse.
-                            Heidän kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta
-                            periksi paineen kasvaessa.
-                        </DescriptionCardMobile.Texts>
-                        <DescriptionCardMobile.Image
-                            src={retroflector}
-                            alt="retroflector"
-                            backgroundColor="#FF0000"
-                        />
-                    </DescriptionCardMobile>
+                    <DescriptionCardMobileLink
+                        path="/hero-development"
+                        ariaLabel="link to hero development page"
+                        withScalableLink={true}
+                    >
+                        <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+                            <DescriptionCardMobile.Texts title="Torjujat">
+                                Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse.
+                                Heidän kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta
+                                periksi paineen kasvaessa.
+                            </DescriptionCardMobile.Texts>
+                            <DescriptionCardMobile.Image
+                                src={retroflector}
+                                alt="retroflector"
+                                backgroundColor="#FF0000"
+                            />
+                        </DescriptionCardMobile>
+                    </DescriptionCardMobileLink>
                 </>
             ) : (
                 <>

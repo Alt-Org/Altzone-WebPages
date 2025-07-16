@@ -66,8 +66,6 @@ interface MobileCardImageSectionProps {
     alt: string;
     src: StaticImageData | string;
     backgroundColor?: string;
-    paddingLeft?: string;
-    height?: number;
 }
 
 interface MobileCardComponent
@@ -128,8 +126,7 @@ MobileCardBase.displayName = 'DescriptionCardMobile';
  * This component is useful for displaying structured information in a card-like layout for mobile views.
  *
  * @typedef {Object} MobileCardTextsProps
- * @property {string} title1 - The title of the card (group). Defaults to an empty string if not provided.
- * @property {string} title2 - The second title of the card (name). Defaults to an empty string if not provided.
+ * @property {string} title - The title of the card (group). Defaults to an empty string if not provided.
  * @property {React.ReactNode} [children] - Optional additional content to be rendered inside the card.
  *
  * @component
@@ -147,39 +144,28 @@ const MobileCardTexts = memo(({ title = '', children }: MobileCardTextsProps): J
 MobileCardTexts.displayName = 'DescriptionCardMobile-Texts';
 /**
  * MobileCardImageSection is a React functional component that displays an
- * image within an image container. The container's background color can
- * be customized using the `backgroundColor` prop. This component is memoized
- * to optimize rendering performance.
+ * image with optional background color.
  *
- * @param {Object} props - The properties object for the MobileCardImageSection component.
- * @param {string} [props.className] - Optional CSS class name for additional styling.
- * @param {string} props.alt - Alternate text for the image, used for accessibility.
- * @param {string} props.backgroundColor - Background color for the container.
- * @param {string} props.src - Source URL of the image to be displayed.
- * @returns {JSX.Element} The rendered MobileCardImageSection component.
+ * @typedef {Object} MobileCardImageSectionProps
+ * @property {string} [className=""] - Additional class name(s) for the component.
+ * @property {string} [alt] - Alternative text for the image.
+ * @property {string} [backgroundColor] - Background color for the image.
+ * @property {StaticImageData | string} src - The source of the image.
  */
 const MobileCardImageSection = memo(
-    ({
-        className = '',
-        alt,
-        backgroundColor,
-        src,
-        height,
-        paddingLeft,
-    }: MobileCardImageSectionProps): JSX.Element => {
+    ({ className = '', alt, backgroundColor, src }: MobileCardImageSectionProps): JSX.Element => {
         if (backgroundColor) {
             return (
-                <div
-                    className={classNames(cls.ImageContainer, undefined, [className])}
-                    style={{ backgroundColor }}
-                >
+                <div style={{ height: '150px', position: 'relative', overflow: 'hidden' }}>
+                    <div
+                        className={classNames(cls.ImageContainer, undefined, [className])}
+                        style={{ backgroundColor }}
+                    />
                     <Image
-                        objectFit="contain"
-                        objectPosition="center"
-                        quality={100}
+                        className={cls.BackgroundColorImage}
                         src={src}
                         alt={alt}
-                        height={height}
+                        height={110}
                     />
                 </div>
             );
@@ -201,40 +187,35 @@ MobileCardBase.Image = MobileCardImageSection;
 /**
  * Card component with composable subcomponents.
  * @example
- *                             <MobileCardLink
- *                                 path="/hero-development"
- *                                 ariaLabel="link to hero development page"
- *                                 withScalableLink={true}
- *                             >
- *                                 <MobileCard
- *                                     ref={cardRef}
- *                                     theme={MobileCardTheme.DEFENSEGALLERY}
- *                                 >
- *                                     <MobileCard.Texts
- *                                         title1="Mikälie"
- *                                         title2="Skitsofreenikko"
- *                                     />
- *                                     <MobileCard.Image
- *                                         backgroundColor="yellow"
- *                                         src={jokester}
- *                                         alt="Jåker"
- *                                     />
- *                                 </MobileCard>
- *                             </MobileCardLink>
- * @example
- *                        <MobileCard
- *                             theme={MobileCardTheme.DEFENSEGALLERY}
- *                         >
- *                             <MobileCard.Texts
- *                                 title1="Torjujat"
- *                                 title2="Ahmatti"
- *                             />
- *                             <MobileCard.Image
+ *                    <DescriptionCardMobileLink
+ *                         path="/hero-development"
+ *                         ariaLabel="link to hero development page"
+ *                         withScalableLink={true}
+ *                     >
+ *                         <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+ *                             <DescriptionCardMobile.Texts title="Torjujat">
+ *                                 Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse.
+ *                                 Heidän kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta
+ *                                 periksi paineen kasvaessa.
+ *                             </DescriptionCardMobile.Texts>
+ *                             <DescriptionCardMobile.Image
+ *                                 src={retroflector}
+ *                                 alt="retroflector"
  *                                 backgroundColor="#FF0000"
- *                                 src={hannu}
- *                                 alt="hannu hodari"
  *                             />
- *                         </MobileCard>
+ *                         </DescriptionCardMobile>
+ *                     </DescriptionCardMobileLink>
+ * @example
+ *                    <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+ *                         <DescriptionCardMobile.Texts title="Defenssigalleria">
+ *                             Lorem ipsum dolor sit amet consectetur. Id tincidunt scelerisque augue
+ *                             leo nam diam tortor eget pharetra.
+ *                         </DescriptionCardMobile.Texts>
+ *                         <DescriptionCardMobile.Image
+ *                             src={defenceGalleryMobile}
+ *                             alt="defence gallery"
+ *                         />
+ *                     </DescriptionCardMobile>
  */
 const DescriptionCardMobile: MobileCardComponent = MobileCardBase;
 export default DescriptionCardMobile;
