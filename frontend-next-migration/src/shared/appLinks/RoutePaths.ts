@@ -105,6 +105,7 @@ export const getRouteSessionExpiredPage = () => '/auth/sessionExpired';
 
 export const getRouteAllNewsPage = () => '/news';
 export const getRouteOneNewsPage = (id: string) => `/news/${id}`;
+export const getRouteNewsCategoryPage = (slug: string) => `/news/category/${slug}`;
 
 export const getRouteAllHeroesPage = () => '/heroes';
 export const getRouteOneHeroPage = (slug: string) => `/heroes/${slug}`;

@@ -5,5 +5,8 @@
   "head-keywords": "altzone, uutiset, yhteisö, sarjakuvat, pelit",
   "category-title": "Kategoriat",
   "next-button": "Seuraava",
-  "previous-button": "Edellinen"
+  "previous-button": "Edellinen",
+  "no-more-news": "Kaikki uutiset on ladattu",
+  "not-found-category-title": "Kategoriaa ei löytynyt",
+  "page-not-found": "Sivua ei löytynyt"
 }

@@ -27,7 +27,7 @@ const NewsElementPage = () => {
     const lng = params.lng as string;
 
     const { t } = useClientTranslation('news');
-    const { data: moreNews } = useGetNewsQuery(2);
+    const { data: moreNews } = useGetNewsQuery({ limit: 2 });
     const { data, isLoading } = useGetNewsByIdQuery(id as string);
     const directusBaseUrl = envHelper.directusHost;
     const router = useRouter();
