@@ -11,8 +11,6 @@
     top: 0;
     left: 10px;
     right: 10px;
-    // transition:
-        // height 0.4s ease-out;
     
     @media (min-width: 550px) {
         margin-top: 50px;
@@ -29,13 +27,19 @@
 }
 
 .NavbarDropdown {
-    transition: transform 0.4s ease-out;
-    transform-origin: top;
     transform: scaleY(0);
+    transform-origin: top;
+    max-height: 0;
+    overflow: hidden;
+    transition: 
+        transform 0.4s ease,
+        max-height 0.4s ease;
+
 }
 .openDropdown {
     padding: 15px;
     transform: scaleY(1);
+    max-height: 260px;
 }
 
 .HamurgerBtn {
