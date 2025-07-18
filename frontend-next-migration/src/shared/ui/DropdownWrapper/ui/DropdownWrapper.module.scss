@@ -12,6 +12,7 @@
     padding: 8px 0;
     transform-origin: top;
     opacity: 0;
+    max-height: 0;
     transform: translateY(-10px);
     transition:
         opacity 0.3s ease,
@@ -21,6 +22,7 @@
     &.open {
         opacity: 1;
         transform: translateY(0);
+        max-height: 400px;
     }
 
     &.opening {
