@@ -4,28 +4,20 @@ import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useClientTranslation } from '@/shared/i18n';
 import { cls } from '@/preparedPages/DefenseGalleryPages';
+import { classNames } from '@/shared/lib/classNames/classNames';
+
+interface Props {
+    className: string;
+}
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
     const { isMobileSize, isTabletSize } = useSizes();
-    const isTouchDevice = isMobileSize || isTabletSize;
     const { t } = useClientTranslation('heroes');
 
-    const NavMenuPlaceholder = (props) => {
+    const NavMenuPlaceholder = (props: Props) => {
         const { className } = props;
         return (
-            <div
-                className={className}
-                style={{
-                    background: 'var(--base-card-background)',
-                    paddingLeft: '12px',
-                    borderRadius: '12px',
-                    padding: '1em',
-                    maxHeight: '400px',
-                    width: '80%',
-                    height: '100%',
-                    border: '4px solid var(--black)',
-                }}
-            >
+            <div className={classNames(cls.NavMenu, undefined, [className])}>
                 nav menu placeholder
             </div>
         );
@@ -37,8 +29,18 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
                 hideOnMobile: true,
             }}
         >
-            <h1 className={cls.Title}>{t('defense-gallery')}</h1>
-            {isTouchDevice ? <NavMenuPlaceholder className={cls.Dropdown} /> : null}
+            {isMobileSize && <h1 className={cls.Title}>{t('section-title')}</h1>}
+            {isTabletSize && <h1 className={cls.Title}>{t('defense-gallery')}</h1>}
+            {isTabletSize && (
+                <NavMenuPlaceholder
+                    className={classNames(cls.NavMenu, undefined, [cls.DropdownTablet])}
+                />
+            )}
+            {isMobileSize && (
+                <NavMenuPlaceholder
+                    className={classNames(cls.NavMenu, undefined, [cls.DropdownMobile])}
+                />
+            )}
             {children}
         </LayoutWithSidebars>
     );

@@ -24,7 +24,7 @@ const useSizes = () => {
     const checkSizes = () => {
         const width = window.innerWidth;
         return {
-            isMobileSize: width <= 768,
+            isMobileSize: width < 768,
             isTabletSize: width >= 768 && width < 1024,
             isDesktopSize: width >= 1024 && width < 1440,
             isWidescreenSize: width >= 1440,

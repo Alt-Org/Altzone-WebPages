@@ -1,23 +1,95 @@
 'use client';
-import { HeroGroup, HeroManager } from '@/entities/Hero';
+import { HeroGroup } from '@/entities/Hero';
+import Image from 'next/image';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
 import { useClientTranslation } from '@/shared/i18n';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
-import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
+import useSizes from '@/shared/lib/hooks/useSizes';
+import {
+    DescriptionCardMobile,
+    DescriptionCardMobileTheme,
+} from '@/shared/ui/v2/DescriptionCardMobile';
+import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
+import search from '@/shared/assets/icons/Search.svg';
+import { cls } from '@/preparedPages/DefenseGalleryPages';
 
 export interface Props {
     heroGroup: HeroGroup;
 }
+export interface SearchBarProps {
+    className: string;
+}
+const SearchBarPlaceholder = (props: SearchBarProps) => {
+    const { className } = props;
+    return (
+        <div className={classNames(cls.SearchBar, undefined, [className])}>
+            <Image
+                src={search}
+                alt="search icon"
+                height={20}
+            />
+            <div style={{ paddingLeft: '1em' }}>Search</div>
+        </div>
+    );
+};
 const SingleDefensePage = (props: Props) => {
     const { heroGroup } = props;
     const { t } = useClientTranslation('heroes');
     const heroGroups = initializeHeroGroups(t);
+    const { isMobileSize, isTabletSize } = useSizes();
 
-    //const heroManager = new HeroManager(t);
-    //console.log(heroManager.getHeroesBySpecificGroup(heroGroup));
+    if (isMobileSize)
+        return (
+            <div>
+                <SearchBarPlaceholder className={cls.SearchBarMobile} />
+                <div style={{ marginBottom: '1em' }}>
+                    <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+                        <DescriptionCardMobile.Texts title={heroGroups[heroGroup].name}>
+                            {heroGroups[heroGroup].description}
+                        </DescriptionCardMobile.Texts>
+                        <DescriptionCardMobile.Image
+                            src={heroGroups[heroGroup].srcImg}
+                            alt={heroGroups[heroGroup].name}
+                            backgroundColor={heroGroups[heroGroup].bgColour}
+                        />
+                    </DescriptionCardMobile>
+                </div>
+                <div className={cls.MobileCardContainer}>
+                    {heroGroups[heroGroup].heroes.map((hero, index) => (
+                        <MobileCardLink
+                            key={index}
+                            path={`/heroes/${hero.slug}`}
+                            ariaLabel={`link to ${hero.title} page`}
+                            withScalableLink={true}
+                        >
+                            <MobileCard theme={MobileCardTheme.DEFENSEGALLERY}>
+                                <MobileCard.Texts
+                                    title1={heroGroups[heroGroup].name}
+                                    title2={hero.title}
+                                />
+                                <MobileCard.Image
+                                    backgroundColor={heroGroups[heroGroup].bgColour}
+                                    src={hero.srcImg}
+                                    alt={hero.title}
+                                />
+                            </MobileCard>
+                        </MobileCardLink>
+                    ))}
+                </div>
+            </div>
+        );
     return (
         <div>
+            {isTabletSize ? (
+                <SearchBarPlaceholder className={cls.SearchBarTablet} />
+            ) : (
+                <div className={cls.TitleBar}>
+                    <h1 className={cls.Title}>{t('defense-gallery')}</h1>
+                    <SearchBarPlaceholder className={cls.SearchBarDesktop} />
+                </div>
+            )}
             <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
                 <DescriptionCard.Texts>
                     <DescriptionCard.Texts.Title>
@@ -37,25 +109,16 @@ const SingleDefensePage = (props: Props) => {
                     />
                 </DescriptionCard.Image>
             </DescriptionCard>
-            <div
-                style={{
-                    display: 'flex',
-                    paddingTop: '1em',
-                    justifyContent: 'left',
-                    flexWrap: 'wrap',
-                    gap: '1em',
-                }}
-            >
+            <div className={cls.DesktopCardContainer}>
                 {heroGroups[heroGroup].heroes.map((hero, index) => (
                     <div
                         key={index}
                         style={{ width: 'calc(50% - .5em)' }}
                     >
                         <ModularCard
-                            className="customClass"
                             theme={ModularCardTheme.DEFENSECARD}
                             withScalableLink={true}
-                            path={`/defense-gallery/${heroGroup}/${hero.slug}`}
+                            path={`/heroes/${hero.slug}`}
                             height="150px"
                         >
                             <ModularCard.Texts>

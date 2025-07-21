@@ -37,7 +37,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('RETROFLECTOR.name'),
             description: t('RETROFLECTOR.description'),
             srcImg: retroflector,
-            bgColour: 'rgba(226, 5, 5, 0.5)',
+            bgColour: '#FF0000',
             label: red,
             heroes: [
                 {
@@ -70,7 +70,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('CONFLUENT.name'),
             description: t('CONFLUENT.description'),
             srcImg: retroflector,
-            bgColour: 'rgba(145, 4, 148, 0.5)',
+            bgColour: '#8E008E',
             label: purpleBg,
             heroes: [
                 {
@@ -103,7 +103,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('PROJECTOR.name'),
             description: t('PROJECTOR.description'),
             srcImg: retroflector,
-            bgColour: 'rgba(254, 237, 1, 0.5)',
+            bgColour: '#FF8E00',
             label: yellow,
             heroes: [
                 {
@@ -135,7 +135,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('INTELLECTUALIZER.name'),
             description: t('INTELLECTUALIZER.description'),
             srcImg: retroflector,
-            bgColour: 'rgba(51, 3, 147, 0.5)',
+            bgColour: '#400098',
             label: darkBlue,
             heroes: [
                 {
@@ -188,7 +188,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('OBEDIENT.name'),
             description: t('OBEDIENT.description'),
             srcImg: retroflector,
-            bgColour: 'rgba(240,153,0,0.7)',
+            bgColour: '#FFFF00',
             label: orange,
             heroes: [
                 {
@@ -209,7 +209,7 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             name: t('DESENSITIZER.name'),
             description: t('DESENSITIZER.description'),
             srcImg: retroflector,
-            bgColour: 'rgba(0,192,192,0.7)',
+            bgColour: '#00C0C0',
             label: lightBlue,
             heroes: [
                 {
