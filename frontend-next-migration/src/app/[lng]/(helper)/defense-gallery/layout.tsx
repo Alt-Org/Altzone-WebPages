@@ -27,6 +27,7 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
             leftTopSidebar={{
                 component: <NavMenuPlaceholder className={cls.NavMenuSidebar} />,
                 hideOnMobile: true,
+                width: '160px',
             }}
         >
             {isMobileSize && <h1 className={cls.Title}>{t('section-title')}</h1>}
