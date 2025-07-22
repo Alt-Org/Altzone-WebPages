@@ -1,4 +1,4 @@
-import { gameApi, GameApiCacheTags } from '@/shared/api';
+import { teacherApi, TeacherApiCacheTags } from '@/shared/api/teacherApi';
 import { GetBoxResponse, CreateBoxResponse, Box } from '../types/types';
 
 const boxUrl = 'box';
@@ -28,7 +28,7 @@ export type UpdateBoxArgs = {
     testersSharedPassword: string;
 };
 
-const boxApi = gameApi.injectEndpoints({
+const boxApi = teacherApi.injectEndpoints({
     endpoints: (builder) => ({
         /** This endpoint is used to create a new testing box.
          * The response includes the created box data.
@@ -42,7 +42,7 @@ const boxApi = gameApi.injectEndpoints({
                 method: 'POST',
                 body: creds,
             }),
-            invalidatesTags: [GameApiCacheTags.BOX],
+            invalidatesTags: [TeacherApiCacheTags.BOX],
         }),
         /** This endpoint updates the box configuration with the provided clans to create,
          * number of testers, and shared password for testers.
@@ -56,7 +56,7 @@ const boxApi = gameApi.injectEndpoints({
                 method: 'PATCH',
                 body: boxToUpdate,
             }),
-            invalidatesTags: [GameApiCacheTags.BOX],
+            invalidatesTags: [TeacherApiCacheTags.BOX],
         }),
         /** This endpoint deletes the box data associated with the logged-in user.
          * @returns {void} - No content is returned upon successful deletion.
@@ -67,7 +67,7 @@ const boxApi = gameApi.injectEndpoints({
                 url: boxUrl,
                 method: 'DELETE',
             }),
-            invalidatesTags: [GameApiCacheTags.BOX],
+            invalidatesTags: [TeacherApiCacheTags.BOX],
         }),
         /** This endpoint retrieves all boxes.
          * @returns {GetBoxResponse} - Response containing an array of boxes, metadata and pagination data
@@ -78,7 +78,7 @@ const boxApi = gameApi.injectEndpoints({
                 url: boxUrl,
                 method: 'GET',
             }),
-            providesTags: [GameApiCacheTags.BOX],
+            providesTags: [TeacherApiCacheTags.BOX],
         }),
         /** This endpoint resets the testing box. Removes all data created during the testing session
          * and returns the box state to the PREPARING stage.
@@ -90,7 +90,7 @@ const boxApi = gameApi.injectEndpoints({
                 url: `${boxUrl}/reset`,
                 method: 'PUT',
             }),
-            invalidatesTags: [GameApiCacheTags.BOX],
+            invalidatesTags: [TeacherApiCacheTags.BOX],
         }),
         // Start testing session
         startTestingSession: builder.mutation<void, void>({
@@ -98,7 +98,7 @@ const boxApi = gameApi.injectEndpoints({
                 url: `${boxUrl}/start`,
                 method: 'POST',
             }),
-            invalidatesTags: [GameApiCacheTags.BOX],
+            invalidatesTags: [TeacherApiCacheTags.BOX],
         }),
         // Get box data by id
         getBoxById: builder.query<GetBoxResponse, string>({
@@ -106,7 +106,7 @@ const boxApi = gameApi.injectEndpoints({
                 url: `${boxUrl}/${boxId}`,
                 method: 'GET',
             }),
-            providesTags: [GameApiCacheTags.BOX],
+            providesTags: [TeacherApiCacheTags.BOX],
         }),
         // Delete box by id
         deleteBoxById: builder.mutation<void, string>({
@@ -114,7 +114,7 @@ const boxApi = gameApi.injectEndpoints({
                 url: `${boxUrl}/${boxId}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: [GameApiCacheTags.BOX],
+            invalidatesTags: [TeacherApiCacheTags.BOX],
         }),
         // Add a daily task to box
         addDailyTaskToBox: builder.mutation<void, DailyTaskParams>({
@@ -123,7 +123,9 @@ const boxApi = gameApi.injectEndpoints({
                 method: 'POST',
                 body: dailyTask,
             }),
-            invalidatesTags: [GameApiCacheTags.BOX],
+            invalidatesTags: [TeacherApiCacheTags.BOX],
         }),
     }),
 });
+
+export const { useCreateBoxMutation } = boxApi;

@@ -43,9 +43,9 @@ type AdminPlayer = {
     backpackCapacity: number;
     points: number;
     uniqueIdentifier: string;
-    above13: boolean;
-    parentalAuth: boolean;
-    currentAvatarId: number;
+    above13?: boolean | null;
+    parentalAuth: boolean | null;
+    currentAvatarId?: number;
     gameStatistics: {
         playedBattles: number;
         wonBattles: number;
@@ -59,7 +59,7 @@ type AdminPlayer = {
     };
     profile_id: string;
     clan_id: string;
-    battleCharacter_ids: Record<string, unknown>;
+    battleCharacter_ids?: string[];
     avatar: {
         head: number;
         hair: number;
@@ -95,7 +95,7 @@ type ClansForBox = Omit<IClan, 'Player' | 'labels'> & {
 };
 
 type CreateBoxResponse = {
-    data: Omit<Box, 'testersSharedPassword' | 'accountClaimersIds'> & {
+    data: Omit<Box, 'adminPassword' | 'testersSharedPassword' | 'accountClaimersIds'> & {
         chat_id: string;
         adminPlayer: AdminPlayer;
         clans: ClansForBox[];
