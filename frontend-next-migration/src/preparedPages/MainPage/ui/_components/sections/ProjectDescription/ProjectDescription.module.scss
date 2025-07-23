@@ -1,7 +1,9 @@
 .Section {
-  display: flex;
+  display: flex;;
+  margin: -150px 0;
   opacity: 0;
   flex-direction: column;
+  margin-bottom: 10rem;
   &.inView{
     animation: fadeIn 1s ease-in-out;
     opacity: 1;
