@@ -90,6 +90,7 @@ import Image from 'next/image';
 interface FrameSet {
     title: string;
     description: string;
+    supdescription: string;
     frames: string[][]; // each row is an array of image paths
 }
 
@@ -117,6 +118,7 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
                     <div className={cls.textBlock}>
                         <h1 className={cls.title}>{set.title}</h1>
                         <p className={cls.description}>{set.description}</p>
+                        <p className={cls.supdescription}>{set.supdescription}</p>
                     </div>
                     <div className={cls.framesContainer}>
                         {set.frames.map((row, rowIndex) => (
@@ -132,20 +134,20 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
                                         <Image
                                             src={imgSrc}
                                             alt={`Frame ${imgIndex}`}
-                                            width={100}
+                                            width={1000}
                                             height={100}
                                             className={cls.frameImage}
                                         />
                                     </div>
                                 ))}
                                 <div className={cls.buttonWrapper}>
-                            <Button
-                          theme={ButtonTheme.Graffiti}
-                            className={classNames(cls.animateButton, mods)}
-                        >
-                            Animation
-                        </Button>
-                    </div>
+                                    <Button
+                                        theme={ButtonTheme.Graffiti}
+                                        className={classNames(cls.animateButton, mods)}
+                                    >
+                                        Animation
+                                    </Button>
+                                </div>
                             </div>
                         ))}
                     </div>

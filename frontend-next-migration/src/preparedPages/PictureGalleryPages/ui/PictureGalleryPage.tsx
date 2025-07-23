@@ -1,6 +1,10 @@
 'use client';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import firstImg from '@/shared/assets/images/gallery/Frame 523.png';
+import secindtImg from '@/shared/assets/images/gallery/Frame 524.png';
+import thirdtImg from '@/shared/assets/images/gallery/Frame 525.png';
+import buttonImg from '@/shared/assets/images/gallery/Frame 526.png';
 // import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { AnimationGallerySection } from '@/widgets/SectionGallery/ui/SectionGalleryV2/SectionGallery';
 import {
@@ -50,19 +54,22 @@ const PictureGalleryPage = () => {
     // Dummy data for filteredImages to avoid errors
     const filteredImages: PhotoObject[] = [
         {
-            title: 'ensimmäinen Otsikko',
-            description: 'ensimmäinen Kuvaus',
-            frames: [['/frontend-next-migration/src/shared/assets/images/heros/conman/conman.png', '/images/picture124.PNG']],
+            title: 'Valveenvälttelijä',
+            description: 'Tekijä: Netti-C Samu (tähän kohtaan tekijän oikea nimi tai haluttu taiteilijanimi)',
+            supdescription: 'Tähän lisää tekstiä jos tekijä haluaa selittää prosessistaan.',
+            frames: [[firstImg.src, secindtImg.src, thirdtImg.src]],
         },
         {
-            title: 'Toinen Otsikko',
-            description: 'Toinen Kuvaus',
-            frames: [['/images/picture125.PNG', '/images/picture126.PNG']],
+            title: 'Valveenvälttelijä',
+            description: 'Tekijä: Netti-C Samu (tähän kohtaan tekijän oikea nimi tai haluttu taiteilijanimi)',
+            supdescription: 'Tähän lisää tekstiä jos tekijä haluaa selittää prosessistaan.',
+            frames: [[firstImg.src, secindtImg.src, thirdtImg.src]],
         },
         {
-            title: 'Kolmas Otsikko',
-            description: 'Kolmas Kuvaus',
-            frames: [['/images/picture127.PNG', '/images/picture128.PNG']],
+            title: 'Valveenvälttelijä',
+            description: 'Tekijä: Netti-C Samu (tähän kohtaan tekijän oikea nimi tai haluttu taiteilijanimi)',
+            supdescription: 'Tähän lisää tekstiä jos tekijä haluaa selittää prosessistaan.',
+            frames: [[firstImg.src, secindtImg.src, thirdtImg.src]],
         },
     ];
 
@@ -81,6 +88,7 @@ const PictureGalleryPage = () => {
                         // Adjust these mappings as needed based on your PhotoObject and FrameSet definitions
                         title: photo.title || '',
                         description: photo.description || '',
+                        supdescription: photo.supdescription || '',
                         frames: photo.frames || [],
                         // Add other FrameSet properties if required
                     }))}

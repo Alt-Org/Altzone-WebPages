@@ -62,8 +62,14 @@
 }
 
 .description {
+  font-family: var(--font-family-title), serif;
   font-size: 1.1rem;
-  color: #666;
+}
+
+.supdescription {
+  font-size: 1rem;
+  color: #faf9f6c9;
+  margin-top: 1rem;
 }
 
 .framesContainer {
@@ -74,15 +80,15 @@
 
 .frameRow {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   gap: 1rem;
 }
 
 .imageWrapper {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 15rem;
+  height: 150px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -95,8 +101,8 @@
 
 
 .animateButton {
-  width: 100px;
-  height: 100px;
+  width: 15rem;
+  height: 150px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
