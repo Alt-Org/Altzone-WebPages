@@ -17,24 +17,6 @@
   border: 2px solid var(--black);
   box-shadow: var(--black) 4px 4px 0;
 }
-.DropdownTablet {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  margin: 0 auto;
-  height: 1.5em;
-  border-radius: 1.5em;
-}
-.DropdownMobile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  height: 1.5em;
-  border-radius: 1.5em;
-}
 .TitleBar {
   display: flex;
   justify-content: space-between;

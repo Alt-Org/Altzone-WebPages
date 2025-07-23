@@ -1,0 +1,44 @@
+.Arrow {
+  display: inline-block;
+  position: absolute;
+  top: 45%;
+  color: var(--secondary-color);
+  font-weight :bolder;
+  font-size:1em;
+  right: .5em;
+  cursor: pointer;
+}
+.Text {
+  padding: 1em;
+  overflow:hidden;
+  white-space: nowrap;
+  opacity: 100%;
+  border: 2px solid var(--inverted-secondary-color);
+  border-radius: 1em;
+  transition: opacity 0.3s ease-out;
+}
+.HeroGroup {
+  cursor: pointer;
+}
+.SelectedHeroGroup {
+  color: var(--primary-color);;
+  cursor: pointer;
+  text-decoration: underline;
+
+}
+.Root {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1em;
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  background: var(--base-card-background);
+  border-radius: var(--corner-radius-web);
+  box-shadow: var(--black) 4px 4px 0;
+  border: var(--border-desktop) solid var(--black);
+  margin-top: 4.4em;
+}
+.Title {
+  color: var(--primary-color);
+  font-size: 1.3em;
+}
