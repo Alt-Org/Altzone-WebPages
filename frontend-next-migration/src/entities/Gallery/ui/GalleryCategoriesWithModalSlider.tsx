@@ -1,190 +1,108 @@
 'use client';
 import Image from 'next/image';
-import { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './styles.module.scss';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
-/**
- * Props for the GalleryCategoriesWithModalSlider component.
- *
- * @typedef {Object} GalleryCategoriesWithModalSliderProps
- * @property {string} [title] - Optional title of the gallery.
- * @property {boolean} [followLastImage] - Unused for now, reserved for future use.
- * @property {string[]} sources - Array of image URLs including the cover.
- * @property {{ name: string; url: string }} cover - The cover image metadata.
- */
 export type GalleryCategoriesWithModalSliderProps = {
     title?: string;
     followLastImage?: boolean;
     sources: string[];
-    cover: { name: string; url: string };
+    cover: {
+        name: string;
+        url: string;
+    };
 };
 
-/**
- * GalleryCategoriesWithModalSlider displays a paginated and zoomable comic-style image viewer.
- * It supports a single cover image and multiple image pairs with Fancybox integration.
- *
- * @component
- * @param {GalleryCategoriesWithModalSliderProps} props - Props passed to the component.
- * @returns {JSX.Element}
- */
 export const GalleryCategoriesWithModalSlider = memo(
-    ({ title, sources, cover }: GalleryCategoriesWithModalSliderProps): JSX.Element => {
+    ({ sources, cover }: GalleryCategoriesWithModalSliderProps) => {
         const { t } = useClientTranslation('picture-galleries');
         const [pageIndex, setPageIndex] = useState(0);
-        const [zoomMode, setZoomMode] = useState(false);
+        const anchorRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
-        /** Filters out the cover from the full image list */
+        // Remove cover from sources, sort pages
         const filteredSources = sources.filter((src) => src !== cover.url);
+        const sortedSources = [...filteredSources].sort((a, b) => {
+            const numA = parseInt(a.match(/\d+/)?.[0] || '', 10);
+            const numB = parseInt(b.match(/\d+/)?.[0] || '', 10);
+            return numA - numB;
+        });
 
-        /**
-         * Sorts the image URLs numerically based on digits in the filenames.
-         *
-         * @param {string[]} sources - List of image URLs.
-         * @returns {string[]} Sorted list.
-         */
-        const getSortedSources = useCallback((sources: string[]): string[] => {
-            return [...sources].sort((a, b) => {
-                const numberA = Number.parseInt(a.match(/\d+/)?.[0] || '', 10);
-                const numberB = Number.parseInt(b.match(/\d+/)?.[0] || '', 10);
-                return numberA - numberB;
-            });
-        }, []);
-
-        const sortedSources = getSortedSources(filteredSources);
+        const allImages = [cover.url, ...sortedSources];
         const maxPageIndex = Math.ceil(sortedSources.length / 2);
 
-        /**
-         * Increments or decrements page index.
-         *
-         * @param {'next' | 'prev'} direction - Which direction to move.
-         */
-        const changePage = (direction: 'next' | 'prev') => {
+        const changePage = (dir: 'next' | 'prev') => {
             setPageIndex((prev) =>
-                direction === 'next' ? Math.min(maxPageIndex, prev + 1) : Math.max(0, prev - 1),
+                dir === 'next' ? Math.min(maxPageIndex, prev + 1) : Math.max(0, prev - 1),
             );
         };
 
-        /**
-         * Adds keydown listeners for left/right arrow keys to navigate.
-         */
         useEffect(() => {
-            const handleKeyDown = (e: KeyboardEvent) => {
-                if (e.key === 'ArrowLeft' && pageIndex > 0) {
-                    changePage('prev');
-                } else if (e.key === 'ArrowRight' && pageIndex < maxPageIndex) {
-                    changePage('next');
-                }
+            const handle = (e: KeyboardEvent) => {
+                if (e.key === 'ArrowLeft' && pageIndex > 0) changePage('prev');
+                else if (e.key === 'ArrowRight' && pageIndex < maxPageIndex) changePage('next');
             };
-            window.addEventListener('keydown', handleKeyDown);
-            return () => window.removeEventListener('keydown', handleKeyDown);
+            window.addEventListener('keydown', handle);
+            return () => window.removeEventListener('keydown', handle);
         }, [pageIndex, maxPageIndex]);
 
-        /**
-         * Handles zoom in/out on image when in zoom mode.
-         *
-         * @param {React.MouseEvent<HTMLDivElement>} e - Click event
-         * @param {HTMLImageElement | null} imgEl - Target image element
-         */
-        const handleImageClick = (
-            e: React.MouseEvent<HTMLDivElement>,
-            imgEl: HTMLImageElement | null,
-        ) => {
-            if (!imgEl || !zoomMode) return;
-            e.preventDefault();
+        const handleZoomClick = () => {
+            const targetIndex = pageIndex === 0 ? 0 : 1 + (pageIndex - 1) * 2;
 
-            const isZoomed = imgEl.classList.contains(cls.zoomed);
-            if (isZoomed) {
-                imgEl.classList.remove(cls.zoomed);
-                imgEl.style.transform = '';
-                imgEl.style.transformOrigin = '';
-            } else {
-                const rect = imgEl.getBoundingClientRect();
-                const offsetX = e.clientX - rect.left;
-                const offsetY = e.clientY - rect.top;
-                const percentX = (offsetX / rect.width) * 100;
-                const percentY = (offsetY / rect.height) * 100;
-                imgEl.classList.add(cls.zoomed);
-                imgEl.style.transform = 'scale(2)';
-                imgEl.style.transformOrigin = `${percentX}% ${percentY}%`;
-            }
+            anchorRefs.current[targetIndex]?.click();
         };
 
-        /**
-         * Renders a single image (cover or one page).
-         *
-         * @param {string} src - Image source
-         * @param {string} alt - Alt text
-         * @returns {JSX.Element}
-         */
-        const renderSingleImage = (src: string, alt: string): JSX.Element => (
+        const renderSingleImage = (src: string, alt: string, idx: number) => (
             <div
                 className={cls.pageWrapper}
-                onClick={(e) => handleImageClick(e, e.currentTarget.querySelector('img'))}
+                key={src}
             >
-                {zoomMode ? (
-                    <div className={cls.link}>
-                        <Image
-                            src={src}
-                            width={250}
-                            height={292}
-                            className={cls.coverImage}
-                            alt={alt}
-                        />
-                    </div>
-                ) : (
-                    <AppLink
-                        data-fancybox={cover.name}
-                        to={src}
-                        className={cls.link}
-                    >
-                        <Image
-                            src={src}
-                            width={250}
-                            height={292}
-                            className={cls.coverImage}
-                            alt={alt}
-                        />
-                    </AppLink>
-                )}
+                <a
+                    href={src}
+                    data-fancybox={cover.name}
+                    ref={(el) => (anchorRefs.current[idx] = el)}
+                    className={cls.link}
+                >
+                    <Image
+                        src={src}
+                        width={250}
+                        height={292}
+                        className={cls.coverImage}
+                        alt={alt}
+                    />
+                </a>
             </div>
         );
 
-        /**
-         * Renders either the cover page or a pair of pages.
-         *
-         * @returns {JSX.Element}
-         */
-        const renderImages = (): JSX.Element => {
-            if (pageIndex === 0) {
-                return renderSingleImage(cover.url, cover.name);
-            } else {
-                const startIndex = (pageIndex - 1) * 2;
-                const left = sortedSources[startIndex];
-                const right = sortedSources[startIndex + 1];
+        const renderImages = () => {
+            if (pageIndex === 0) return renderSingleImage(cover.url, cover.name, 0);
 
-                return (
-                    <>
-                        {left && renderSingleImage(left, `Page ${startIndex + 1}`)}
-                        {right && renderSingleImage(right, `Page ${startIndex + 2}`)}
-                    </>
-                );
-            }
+            const start = (pageIndex - 1) * 2;
+            const left = sortedSources[start];
+            const right = sortedSources[start + 1];
+
+            return (
+                <>
+                    {left && renderSingleImage(left, `Page ${start + 1}`, start + 1)}
+                    {right && renderSingleImage(right, `Page ${start + 2}`, start + 2)}
+                </>
+            );
         };
 
         return (
             <div style={{ cursor: 'pointer' }}>
                 <Fancybox>
-                    {/* Top Zoom Button */}
-                    <div className={`${cls.galleryContainer}`}>
+                    {/* Zoom Button */}
+                    <div className={cls.galleryContainer}>
                         <div
-                            className={`${cls.zoomButtonWrapper} ${pageIndex === 0 ? cls.coverZoomPosition : ''}`}
+                            className={`${cls.zoomButtonWrapper} ${
+                                pageIndex === 0 ? cls.coverZoomPosition : ''
+                            }`}
                         >
                             <button
-                                className={`${cls.zoomButton} ${zoomMode ? cls.active : ''}`}
-                                onClick={() => setZoomMode((prev) => !prev)}
+                                className={cls.zoomButton}
+                                onClick={handleZoomClick}
                             >
                                 <Image
                                     src="/images/ZoomPlus.png"
@@ -195,14 +113,12 @@ export const GalleryCategoriesWithModalSlider = memo(
                             </button>
                         </div>
 
-                        {/* Image Pair Viewer */}
+                        {/* Image + Arrows */}
                         <div className={cls.cover}>
                             <span
                                 onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
                                 className={`${cls.navSymbol} ${pageIndex === 0 ? cls.disabled : ''}`}
                                 role="button"
-                                tabIndex={pageIndex > 0 ? 0 : -1}
-                                aria-label="Previous"
                             >
                                 {'<'}
                             </span>
@@ -215,28 +131,25 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 }
                                 className={`${cls.navSymbol} ${pageIndex === maxPageIndex ? cls.disabled : ''}`}
                                 role="button"
-                                tabIndex={pageIndex < maxPageIndex ? 0 : -1}
-                                aria-label="Next"
                             >
                                 {'>'}
                             </span>
                         </div>
                     </div>
 
-                    {/* Hidden Fancybox preload links */}
+                    {/* Hidden preload links (used by Fancybox only) */}
                     <div style={{ display: 'none' }}>
-                        {[cover.url, ...sortedSources].map((src, idx) => (
-                            <AppLink
-                                key={idx}
+                        {allImages.map((src, i) => (
+                            <a
+                                key={i}
+                                href={src}
                                 data-fancybox={cover.name}
-                                to={src}
-                            >
-                                ''
-                            </AppLink>
+                                ref={(el) => (anchorRefs.current[i] = el)}
+                            />
                         ))}
                     </div>
 
-                    {/* Slider and navigation buttons below */}
+                    {/* Slider */}
                     <div className={cls.sliderContainer}>
                         <button
                             className={cls.arrowButton}
@@ -253,7 +166,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                             min={0}
                             max={maxPageIndex}
                             value={pageIndex}
-                            onChange={(e) => setPageIndex(parseInt(e.target.value))}
+                            onChange={(e) => setPageIndex(Number(e.target.value))}
                             className={cls.pageSlider}
                             style={
                                 {
