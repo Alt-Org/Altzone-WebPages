@@ -30,12 +30,39 @@ type Box = {
     sessionResetTime: number; // Unix timestamp (ms)
     adminProfile_id: string;
     adminPlayer_id: string;
-    clan_ids: string[];
-    soulHome_ids: string[];
-    room_ids: string[];
-    stock_ids: string[];
+    // clan_ids: string[];
+    // soulHome_ids: string[];
+    // room_ids: string[];
+    // stock_ids: string[];
     accountClaimersIds: string[];
     dailyTasks: DailyTask[];
+};
+
+type Avatar = {
+    head: number;
+    hair: number;
+    eyes: number;
+    nose: number;
+    mouth: number;
+    eyebrows: number;
+    clothes: number;
+    feet: number;
+    hands: number;
+    skinColor: string;
+};
+
+type Message = {
+    date: string;
+    count: number;
+};
+
+type GameStatistics = {
+    playedBattles: number;
+    wonBattles: number;
+    diamondsAmount: number;
+    startedVotings: number;
+    participatedVotings: number;
+    messages: Message[];
 };
 
 type AdminPlayer = {
@@ -44,35 +71,14 @@ type AdminPlayer = {
     points: number;
     uniqueIdentifier: string;
     above13?: boolean | null;
-    parentalAuth: boolean | null;
-    currentAvatarId?: number;
-    gameStatistics: {
-        playedBattles: number;
-        wonBattles: number;
-        diamondsAmount: number;
-        startedVotings: number;
-        participatedVotings: number;
-        messages: {
-            date: string;
-            count: number;
-        }[];
-    };
-    profile_id: string;
-    clan_id: string;
+    parentalAuth?: boolean | null;
+    currentAvatarId?: number | null;
+    gameStatistics?: GameStatistics;
+    profile_id?: string;
+    clan_id?: string;
     battleCharacter_ids?: string[];
-    avatar: {
-        head: number;
-        hair: number;
-        eyes: number;
-        nose: number;
-        mouth: number;
-        eyebrows: number;
-        clothes: number;
-        feet: number;
-        hands: number;
-        skinColor: string;
-    };
-    clanRole_id: Record<string, unknown>;
+    avatar?: Avatar;
+    clanRole_id: string | null;
     _id: string;
 };
 
@@ -95,10 +101,12 @@ type ClansForBox = Omit<IClan, 'Player' | 'labels'> & {
 };
 
 type CreateBoxResponse = {
-    data: Omit<Box, 'adminPassword' | 'testersSharedPassword' | 'accountClaimersIds'> & {
-        chat_id: string;
-        adminPlayer: AdminPlayer;
-        clans: ClansForBox[];
+    data: {
+        Box: Omit<Box, 'adminPassword' | 'testersSharedPassword' | 'accountClaimersIds'> & {
+            adminPlayer: AdminPlayer;
+            // currently Postman does not return clans, but it is in the Swagger example
+            // clans: ClansForBox[];
+        };
     };
     metaData: MetaData;
 };

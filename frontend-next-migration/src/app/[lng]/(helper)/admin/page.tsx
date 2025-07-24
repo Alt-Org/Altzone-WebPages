@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
@@ -22,6 +23,8 @@ import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/Descriptio
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
+import { useCreateBoxMutation } from '@/entities/Box/model/boxApi';
+import { CreateBoxTest } from '@/features/BoxTest/ui/CreateBoxTest';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -126,6 +129,18 @@ const Page = () => {
             //     ),
             // }}
         >
+            {/* Testing Box Api */}
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    margin: '20px 0',
+                }}
+            >
+                <CreateBoxTest />
+            </div>
+            {/* End of Testing Box Api */}
             {/* Testing ModularCard */}
             <button
                 style={{
