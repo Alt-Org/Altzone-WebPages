@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Fancybox from '@/shared/ui/Fancybox/Fancybox';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './styles.module.scss';
@@ -16,53 +16,53 @@ export type GalleryCategoriesWithModalSliderProps = {
 };
 
 export const GalleryCategoriesWithModalSlider = memo(
-    ({ sources, cover }: GalleryCategoriesWithModalSliderProps) => {
+    ({ title, sources, cover }: GalleryCategoriesWithModalSliderProps) => {
         const { t } = useClientTranslation('picture-galleries');
         const [pageIndex, setPageIndex] = useState(0);
-        const anchorRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
-        // Remove cover from sources, sort pages
+        // Filter and sort images, ensure cover is first
         const filteredSources = sources.filter((src) => src !== cover.url);
         const sortedSources = [...filteredSources].sort((a, b) => {
             const numA = parseInt(a.match(/\d+/)?.[0] || '', 10);
             const numB = parseInt(b.match(/\d+/)?.[0] || '', 10);
             return numA - numB;
         });
-
         const allImages = [cover.url, ...sortedSources];
         const maxPageIndex = Math.ceil(sortedSources.length / 2);
 
-        const changePage = (dir: 'next' | 'prev') => {
+        const changePage = (direction: 'next' | 'prev') => {
             setPageIndex((prev) =>
-                dir === 'next' ? Math.min(maxPageIndex, prev + 1) : Math.max(0, prev - 1),
+                direction === 'next' ? Math.min(maxPageIndex, prev + 1) : Math.max(0, prev - 1),
             );
         };
 
         useEffect(() => {
-            const handle = (e: KeyboardEvent) => {
+            const handleKeyDown = (e: KeyboardEvent) => {
                 if (e.key === 'ArrowLeft' && pageIndex > 0) changePage('prev');
                 else if (e.key === 'ArrowRight' && pageIndex < maxPageIndex) changePage('next');
             };
-            window.addEventListener('keydown', handle);
-            return () => window.removeEventListener('keydown', handle);
+            window.addEventListener('keydown', handleKeyDown);
+            return () => window.removeEventListener('keydown', handleKeyDown);
         }, [pageIndex, maxPageIndex]);
 
-        const handleZoomClick = () => {
-            const targetIndex = pageIndex === 0 ? 0 : 1 + (pageIndex - 1) * 2;
-
-            anchorRefs.current[targetIndex]?.click();
+        const openCurrentInFancybox = () => {
+            const indexToOpen = pageIndex === 0 ? 0 : 1 + (pageIndex - 1) * 2;
+            const el = document.getElementById(
+                `fancybox-image-${indexToOpen}`,
+            ) as HTMLAnchorElement;
+            if (el) el.click();
         };
 
         const renderSingleImage = (src: string, alt: string, idx: number) => (
             <div
                 className={cls.pageWrapper}
-                key={src}
+                key={idx}
             >
                 <a
+                    id={`fancybox-image-${idx}`}
                     href={src}
                     data-fancybox={cover.name}
-                    ref={(el) => (anchorRefs.current[idx] = el)}
-                    className={cls.link}
+                    data-index={idx}
                 >
                     <Image
                         src={src}
@@ -76,25 +76,27 @@ export const GalleryCategoriesWithModalSlider = memo(
         );
 
         const renderImages = () => {
-            if (pageIndex === 0) return renderSingleImage(cover.url, cover.name, 0);
+            if (pageIndex === 0) {
+                return renderSingleImage(cover.url, cover.name, 0);
+            } else {
+                const start = (pageIndex - 1) * 2;
+                const left = sortedSources[start];
+                const right = sortedSources[start + 1];
 
-            const start = (pageIndex - 1) * 2;
-            const left = sortedSources[start];
-            const right = sortedSources[start + 1];
-
-            return (
-                <>
-                    {left && renderSingleImage(left, `Page ${start + 1}`, start + 1)}
-                    {right && renderSingleImage(right, `Page ${start + 2}`, start + 2)}
-                </>
-            );
+                return (
+                    <>
+                        {left && renderSingleImage(left, `Page ${start + 1}`, 1 + start)}
+                        {right && renderSingleImage(right, `Page ${start + 2}`, 2 + start)}
+                    </>
+                );
+            }
         };
 
         return (
             <div style={{ cursor: 'pointer' }}>
                 <Fancybox>
-                    {/* Zoom Button */}
                     <div className={cls.galleryContainer}>
+                        {/* Zoom Button */}
                         <div
                             className={`${cls.zoomButtonWrapper} ${
                                 pageIndex === 0 ? cls.coverZoomPosition : ''
@@ -102,7 +104,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                         >
                             <button
                                 className={cls.zoomButton}
-                                onClick={handleZoomClick}
+                                onClick={openCurrentInFancybox}
                             >
                                 <Image
                                     src="/images/ZoomPlus.png"
@@ -113,12 +115,14 @@ export const GalleryCategoriesWithModalSlider = memo(
                             </button>
                         </div>
 
-                        {/* Image + Arrows */}
+                        {/* Viewer with arrows */}
                         <div className={cls.cover}>
                             <span
                                 onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
                                 className={`${cls.navSymbol} ${pageIndex === 0 ? cls.disabled : ''}`}
                                 role="button"
+                                tabIndex={pageIndex > 0 ? 0 : -1}
+                                aria-label="Previous"
                             >
                                 {'<'}
                             </span>
@@ -131,25 +135,17 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 }
                                 className={`${cls.navSymbol} ${pageIndex === maxPageIndex ? cls.disabled : ''}`}
                                 role="button"
+                                tabIndex={pageIndex < maxPageIndex ? 0 : -1}
+                                aria-label="Next"
                             >
                                 {'>'}
                             </span>
                         </div>
                     </div>
 
-                    {/* Hidden preload links (used by Fancybox only) */}
-                    <div style={{ display: 'none' }}>
-                        {allImages.map((src, i) => (
-                            <a
-                                key={i}
-                                href={src}
-                                data-fancybox={cover.name}
-                                ref={(el) => (anchorRefs.current[i] = el)}
-                            />
-                        ))}
-                    </div>
+                    {/* No hidden preload block anymore to avoid duplication */}
 
-                    {/* Slider */}
+                    {/* Page slider */}
                     <div className={cls.sliderContainer}>
                         <button
                             className={cls.arrowButton}
@@ -166,7 +162,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                             min={0}
                             max={maxPageIndex}
                             value={pageIndex}
-                            onChange={(e) => setPageIndex(Number(e.target.value))}
+                            onChange={(e) => setPageIndex(parseInt(e.target.value))}
                             className={cls.pageSlider}
                             style={
                                 {
