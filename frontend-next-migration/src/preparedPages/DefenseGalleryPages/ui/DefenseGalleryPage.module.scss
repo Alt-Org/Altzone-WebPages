@@ -1,8 +1,10 @@
+
 .Title {
   font-family:var(--font-family-title);
   color:var(--primary-color);
   text-align: center;
   font-size: 3em;
+  padding-bottom: .2em;
 
 
 }
@@ -50,6 +52,14 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
+.Input{
+  color: var(--primary-color);
+  padding-left: 1em;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+}
 .SearchBarDesktop {
   width: 200px;
 }
@@ -57,16 +67,23 @@
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+  @media (max-width: 1023px) {
+    margin-left: 0;
+    width: 280px;
+  }
+  @media (max-width: 992px) {
+    margin-left: auto;
+  }
 }
 .SearchBarMobile {
-  width: 100%;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .SearchBar input {
   width: 100%;
 }
-.SearchBar button {
-  margin-top: 1em;
-}
+
 .NavMenuSidebar {
   border-radius: var(--border-radius-md);
   margin-right: 1em;

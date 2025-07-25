@@ -5,6 +5,7 @@ import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups
 import { useClientTranslation } from '@/shared/i18n';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import React from 'react';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import {
@@ -20,9 +21,11 @@ export interface Props {
 }
 export interface SearchBarProps {
     className: string;
+    value: string;
+    onChange: (value: string) => void;
 }
-const SearchBarPlaceholder = (props: SearchBarProps) => {
-    const { className } = props;
+export const SearchBar = (props: SearchBarProps) => {
+    const { className, value, onChange } = props;
     return (
         <div className={classNames(cls.SearchBar, undefined, [className])}>
             <Image
@@ -30,7 +33,13 @@ const SearchBarPlaceholder = (props: SearchBarProps) => {
                 alt="search icon"
                 height={20}
             />
-            <div style={{ paddingLeft: '1em' }}>Search</div>
+            <input
+                type="text"
+                value={value}
+                onChange={(event) => onChange(event.target.value)}
+                placeholder="Search"
+                className={cls.Input}
+            />
         </div>
     );
 };
@@ -39,11 +48,29 @@ const SingleDefensePage = (props: Props) => {
     const { t } = useClientTranslation('heroes');
     const heroGroups = initializeHeroGroups(t);
     const { isMobileSize, isTabletSize } = useSizes();
+    const [searchQuery, setSearchQuery] = React.useState('');
+
+    const filteredHeroes = React.useMemo(() => {
+        if (!searchQuery.trim()) {
+            return heroGroups[heroGroup].heroes;
+        }
+
+        const query = searchQuery.toLowerCase();
+        return heroGroups[heroGroup].heroes.filter(
+            (hero) =>
+                hero.title.toLowerCase().includes(query) ||
+                heroGroups[heroGroup].name.toLowerCase().includes(query),
+        );
+    }, [searchQuery, heroGroup, heroGroups]);
 
     if (isMobileSize)
         return (
             <div>
-                <SearchBarPlaceholder className={cls.SearchBarMobile} />
+                <SearchBar
+                    className={cls.SearchBarMobile}
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                />
                 <div style={{ marginBottom: '1em' }}>
                     <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
                         <DescriptionCardMobile.Texts title={heroGroups[heroGroup].name}>
@@ -57,7 +84,7 @@ const SingleDefensePage = (props: Props) => {
                     </DescriptionCardMobile>
                 </div>
                 <div className={cls.MobileCardContainer}>
-                    {heroGroups[heroGroup].heroes.map((hero, index) => (
+                    {filteredHeroes.map((hero, index) => (
                         <MobileCardLink
                             key={index}
                             path={`/heroes/${hero.slug}`}
@@ -88,11 +115,19 @@ const SingleDefensePage = (props: Props) => {
             }}
         >
             {isTabletSize ? (
-                <SearchBarPlaceholder className={cls.SearchBarTablet} />
+                <SearchBar
+                    className={cls.SearchBarTablet}
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                />
             ) : (
                 <div className={cls.TitleBar}>
                     <h1 className={cls.Title}>{t('defense-gallery')}</h1>
-                    <SearchBarPlaceholder className={cls.SearchBarDesktop} />
+                    <SearchBar
+                        className={cls.SearchBarDesktop}
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                    />
                 </div>
             )}
             <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
@@ -115,7 +150,7 @@ const SingleDefensePage = (props: Props) => {
                 </DescriptionCard.Image>
             </DescriptionCard>
             <div className={cls.DesktopCardContainer}>
-                {heroGroups[heroGroup].heroes.map((hero, index) => (
+                {filteredHeroes.map((hero, index) => (
                     <div
                         key={index}
                         style={{ width: 'calc(50% - .5em)' }}
@@ -151,4 +186,5 @@ const SingleDefensePage = (props: Props) => {
         </div>
     );
 };
+
 export default SingleDefensePage;
