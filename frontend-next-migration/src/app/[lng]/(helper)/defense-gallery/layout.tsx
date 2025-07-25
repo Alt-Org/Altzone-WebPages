@@ -4,7 +4,7 @@ import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { HeroGroupNavMenu, HeroGroupNavMenuAsDropdown } from '@/features/NavigateHeroGroups';
 import { useClientTranslation } from '@/shared/i18n';
-import { cls } from '@/preparedPages/DefenseGalleryPages';
+import { PageTitle } from '@/shared/ui/PageTitle';
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
     const { isMobileSize, isTabletSize } = useSizes();
@@ -18,8 +18,20 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
                 width: '200px',
             }}
         >
-            {isMobileSize && <h1 className={cls.Title}>{t('section-title')}</h1>}
-            {isTabletSize && <h1 className={cls.Title}>{t('defense-gallery')}</h1>}
+            {isMobileSize && (
+                <PageTitle
+                    titleText={t('section-title')}
+                    alternate={true}
+                    searchVisible={false}
+                />
+            )}
+            {isTabletSize && (
+                <PageTitle
+                    titleText={t('defense-gallery')}
+                    alternate={true}
+                    searchVisible={false}
+                />
+            )}
             {(isTabletSize || isMobileSize) && <HeroGroupNavMenuAsDropdown />}
             {children}
         </LayoutWithSidebars>

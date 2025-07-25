@@ -15,6 +15,7 @@ import {
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import search from '@/shared/assets/icons/Search.svg';
 import { cls } from '@/preparedPages/DefenseGalleryPages';
+import { PageTitle } from '@/shared/ui/PageTitle';
 
 export interface Props {
     heroGroup: HeroGroup;
@@ -122,7 +123,11 @@ const SingleDefensePage = (props: Props) => {
                 />
             ) : (
                 <div className={cls.TitleBar}>
-                    <h1 className={cls.Title}>{t('defense-gallery')}</h1>
+                    <PageTitle
+                        titleText={t('defense-gallery')}
+                        alternate={true}
+                        searchVisible={false}
+                    />
                     <SearchBar
                         className={cls.SearchBarDesktop}
                         value={searchQuery}
