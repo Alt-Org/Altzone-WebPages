@@ -44,6 +44,7 @@ const CreateBoxTest = () => {
 
     return (
         <div>
+            <h3>Create a Testing Box</h3>
             <button
                 style={{
                     border: '1px solid white',

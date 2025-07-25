@@ -187,4 +187,17 @@ const boxApi = gameApi.injectEndpoints({
     }),
 });
 
-export const { useCreateBoxMutation } = boxApi;
+export const {
+    useLazyClaimTesterAccountQuery,
+    useCreateBoxMutation,
+    useDeleteBoxMutation,
+    useResetBoxMutation,
+    useStartTestingSessionMutation,
+    useGetBoxByIdQuery,
+    useDeleteBoxByIdMutation,
+    useAddDailyTaskToBoxMutation,
+    useUpdateBoxDailyTaskMutation,
+    useAddMultipleDailyTasksMutation,
+    useDeleteBoxDailyTaskMutation,
+    useDefineTestersAmountMutation,
+} = boxApi;

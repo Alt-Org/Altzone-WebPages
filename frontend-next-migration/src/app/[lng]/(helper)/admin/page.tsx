@@ -23,8 +23,8 @@ import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/Descriptio
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
-import { useCreateBoxMutation } from '@/entities/Box/model/boxApi';
 import { CreateBoxTest } from '@/features/BoxTest/ui/CreateBoxTest';
+import { ClaimTesterAccountTest } from '@/features/BoxTest/ui/ClaimTesterAccountTest';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -138,6 +138,7 @@ const Page = () => {
                     margin: '20px 0',
                 }}
             >
+                <ClaimTesterAccountTest />
                 <CreateBoxTest />
             </div>
             {/* End of Testing Box Api */}
