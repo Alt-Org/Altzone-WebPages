@@ -35,7 +35,7 @@ type Box = {
     // room_ids: string[];
     // stock_ids: string[];
     accountClaimersIds: string[];
-    dailyTasks: DailyTask[];
+    // dailyTasks: DailyTask[];
 };
 
 type Avatar = {
@@ -103,6 +103,7 @@ type ClansForBox = Omit<IClan, 'Player' | 'labels'> & {
 type CreateBoxResponse = {
     data: {
         Box: Omit<Box, 'adminPassword' | 'testersSharedPassword' | 'accountClaimersIds'> & {
+            accesToken: string;
             adminPlayer: AdminPlayer;
             // currently Postman does not return clans, but it is in the Swagger example
             // clans: ClansForBox[];
@@ -110,6 +111,13 @@ type CreateBoxResponse = {
     };
     metaData: MetaData;
 };
+
+// TODO
+type ResetBoxResponse = {};
+
+type AddDailyTaskResponse = {};
+
+type AddMultipleDailyTasksResponse = {};
 
 type GetBoxResponse = ResponseShapeArray<'Box', Box>;
 
@@ -140,4 +148,7 @@ export type {
     BoxValidationError,
     AdminPlayer,
     ClansForBox,
+    ResetBoxResponse,
+    AddDailyTaskResponse,
+    AddMultipleDailyTasksResponse,
 };

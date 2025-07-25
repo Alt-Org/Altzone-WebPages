@@ -16,7 +16,6 @@
 export const envHelper = {
     isDevMode: process.env.NODE_ENV === 'development',
     apiLink: process.env.NEXT_PUBLIC_API_LINK || '',
-    teacherApiLink: process.env.NEXT_PUBLIC_TEACHER_API_LINK || '',
     appDomain: process.env.NEXT_PUBLIC_APP_DOMAIN || 'altzone.fi',
     companyName: process.env.COMPANY_NAME || "Psyche's Royale Gaming ry",
     strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
