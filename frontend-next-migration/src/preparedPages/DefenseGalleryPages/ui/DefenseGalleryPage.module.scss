@@ -42,6 +42,14 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
+.Container {
+  margin-right: 3em;
+  margin-left: 0;
+  @media (max-width: 1023px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 .Input{
   color: var(--primary-color);
   padding-left: 1em;

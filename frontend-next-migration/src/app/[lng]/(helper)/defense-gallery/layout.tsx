@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode } from 'react';
+import { ReactNode, useMemo } from 'react';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { HeroGroupNavMenu, HeroGroupNavMenuAsDropdown } from '@/features/NavigateHeroGroups';
@@ -10,29 +10,30 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     const { isMobileSize, isTabletSize } = useSizes();
     const { t } = useClientTranslation('heroes');
 
+    const titleText = useMemo(() => {
+        if (isTabletSize) return t('defense-gallery');
+        if (isMobileSize) return t('section-title');
+        return '';
+    }, [isMobileSize, isTabletSize]);
+
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
                 component: <HeroGroupNavMenu />,
                 hideOnMobile: true,
-                width: '200px',
+                width: '300px',
             }}
         >
-            {isMobileSize && (
-                <PageTitle
-                    titleText={t('section-title')}
-                    alternate={true}
-                    searchVisible={false}
-                />
+            {(isTabletSize || isMobileSize) && (
+                <>
+                    <PageTitle
+                        titleText={titleText}
+                        alternate={true}
+                        searchVisible={false}
+                    />
+                    <HeroGroupNavMenuAsDropdown />
+                </>
             )}
-            {isTabletSize && (
-                <PageTitle
-                    titleText={t('defense-gallery')}
-                    alternate={true}
-                    searchVisible={false}
-                />
-            )}
-            {(isTabletSize || isMobileSize) && <HeroGroupNavMenuAsDropdown />}
             {children}
         </LayoutWithSidebars>
     );

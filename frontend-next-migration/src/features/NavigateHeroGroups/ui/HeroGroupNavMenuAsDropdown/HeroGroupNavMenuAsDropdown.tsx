@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { HeroGroup, HeroManager } from '@/entities/Hero';
+import { HeroGroup } from '@/entities/Hero';
 import { usePathname } from 'next/navigation';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
 import {

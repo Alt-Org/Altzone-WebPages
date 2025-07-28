@@ -109,12 +109,7 @@ const SingleDefensePage = (props: Props) => {
             </div>
         );
     return (
-        <div
-            style={{
-                marginRight: isTabletSize ? 'auto' : '3em',
-                marginLeft: isTabletSize ? 'auto' : '1em',
-            }}
-        >
+        <div className={cls.Container}>
             {isTabletSize ? (
                 <SearchBar
                     className={cls.SearchBarTablet}
