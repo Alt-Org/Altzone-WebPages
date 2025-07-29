@@ -25,6 +25,8 @@ import retroflector from '@/shared/assets/images/descriptionCard/retroflector.pn
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import { CreateBoxTest } from '@/features/BoxTest/ui/CreateBoxTest';
 import { ClaimTesterAccountTest } from '@/features/BoxTest/ui/ClaimTesterAccountTest';
+import { DeleteBoxTest } from '@/features/BoxTest/ui/DeleteBoxTest';
+import { ResetBoxTest } from '@/features/BoxTest/ui/ResetBoxTest';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -140,7 +142,10 @@ const Page = () => {
             >
                 <ClaimTesterAccountTest />
                 <CreateBoxTest />
+                <DeleteBoxTest />
+                <ResetBoxTest />
             </div>
+
             {/* End of Testing Box Api */}
             {/* Testing ModularCard */}
             <button

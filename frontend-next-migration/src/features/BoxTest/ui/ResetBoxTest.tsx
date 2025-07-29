@@ -1,29 +1,24 @@
-import { useCreateBoxMutation } from '@/entities/Box/model/boxApi';
+import { useResetBoxMutation } from '@/entities/Box/model/boxApi';
 import { useEffect } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
-const CreateBoxTest = () => {
-    const [createBox, { data: createdBox, error: createBoxError }] = useCreateBoxMutation();
-    const handleCreatingABox = async () => {
-        const createBoxArgs = {
-            adminPassword: '1617181920',
-            playerName: 'LiemNguyen4',
-            clanNames: ['TestClan', 'TestClan2'],
-        };
+const ResetBoxTest = () => {
+    const [resetBox, { data: resetBoxData, error: resetBoxError }] = useResetBoxMutation();
+    const handleResetBox = async () => {
         try {
-            await createBox(createBoxArgs).unwrap();
+            await resetBox().unwrap();
         } catch (error) {
-            console.error('create box error', error);
+            console.error('reset box error', error);
         }
     };
     useEffect(() => {
-        if (createdBox) {
+        if (resetBoxData) {
             // eslint-disable-next-line no-console
-            console.log('Box created successfully:', createdBox);
-        } else if (createBoxError) {
-            console.error('Error creating box:', createBoxError);
+            console.log('Box reset successfully:', resetBoxData);
+        } else if (resetBoxError) {
+            console.error('Error resetting box:', resetBoxError);
         }
-    }, [createBoxError, createdBox]);
+    }, [resetBoxError, resetBoxData]);
 
     return (
         <div
@@ -35,7 +30,7 @@ const CreateBoxTest = () => {
                 padding: '20px',
             }}
         >
-            <h3>Create a Testing Box</h3>
+            <h3>Reset the testing box data</h3>
             <button
                 style={{
                     border: '1px solid white',
@@ -48,13 +43,13 @@ const CreateBoxTest = () => {
                     borderRadius: '5px',
                     margin: '10px 0',
                 }}
-                onClick={handleCreatingABox}
+                onClick={() => handleResetBox()}
             >
-                Create a testing box
+                Reset
             </button>
-            {createBoxError && <BoxErrorMessage error={createBoxError} />}
+            {resetBoxError && <BoxErrorMessage error={resetBoxError} />}
         </div>
     );
 };
 
-export { CreateBoxTest };
+export { ResetBoxTest };

@@ -137,6 +137,8 @@ type BoxValidationError = {
 type BoxErrorResponse = {
     statusCode: number;
     errors: BoxValidationError[];
+    error?: string;
+    message?: string;
 };
 
 export type {

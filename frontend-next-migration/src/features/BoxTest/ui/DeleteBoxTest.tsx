@@ -1,29 +1,25 @@
-import { useCreateBoxMutation } from '@/entities/Box/model/boxApi';
+import { useDeleteBoxMutation } from '@/entities/Box/model/boxApi';
+import { BoxErrorResponse } from '@/entities/Box/types/types';
 import { useEffect } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
-const CreateBoxTest = () => {
-    const [createBox, { data: createdBox, error: createBoxError }] = useCreateBoxMutation();
-    const handleCreatingABox = async () => {
-        const createBoxArgs = {
-            adminPassword: '1617181920',
-            playerName: 'LiemNguyen4',
-            clanNames: ['TestClan', 'TestClan2'],
-        };
+const DeleteBoxTest = () => {
+    const [deleteBox, { data: deletedBox, error: deleteBoxError }] = useDeleteBoxMutation();
+    const handleDeletingABox = async () => {
         try {
-            await createBox(createBoxArgs).unwrap();
+            await deleteBox().unwrap();
         } catch (error) {
-            console.error('create box error', error);
+            console.error('delete box error', error);
         }
     };
     useEffect(() => {
-        if (createdBox) {
+        if (deletedBox) {
             // eslint-disable-next-line no-console
-            console.log('Box created successfully:', createdBox);
-        } else if (createBoxError) {
-            console.error('Error creating box:', createBoxError);
+            console.log('Box deleted successfully:', deletedBox);
+        } else if (deleteBoxError) {
+            console.error('Error deleting box:', deleteBoxError);
         }
-    }, [createBoxError, createdBox]);
+    }, [deleteBoxError, deletedBox]);
 
     return (
         <div
@@ -35,7 +31,7 @@ const CreateBoxTest = () => {
                 padding: '20px',
             }}
         >
-            <h3>Create a Testing Box</h3>
+            <h3>Delete data associated with a logged-in user</h3>
             <button
                 style={{
                     border: '1px solid white',
@@ -48,13 +44,13 @@ const CreateBoxTest = () => {
                     borderRadius: '5px',
                     margin: '10px 0',
                 }}
-                onClick={handleCreatingABox}
+                onClick={handleDeletingABox}
             >
-                Create a testing box
+                Delete Box
             </button>
-            {createBoxError && <BoxErrorMessage error={createBoxError} />}
+            {deleteBoxError && <BoxErrorMessage error={deleteBoxError} />}
         </div>
     );
 };
 
-export { CreateBoxTest };
+export { DeleteBoxTest };
