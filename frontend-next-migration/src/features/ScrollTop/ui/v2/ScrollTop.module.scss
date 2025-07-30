@@ -24,9 +24,8 @@
     opacity: 0;
     visibility: hidden;
 
-    // 🔧 Fix for stuck transform on mobile
-    transform: scale(1); // Base state
-    touch-action: manipulation; // Better mobile behavior
+    transform: scale(1);
+    touch-action: manipulation;
 
     transition:
             transform 0.2s ease,
