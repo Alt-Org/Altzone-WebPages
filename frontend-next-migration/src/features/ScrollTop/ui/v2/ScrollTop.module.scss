@@ -44,7 +44,6 @@
         box-shadow: var(--xs);
     }
 
-    // 🔧 Reset stuck active state
     &:not(:active) {
         transform: scale(1);
     }
