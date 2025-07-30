@@ -63,12 +63,12 @@
 
 .description {
   font-family: var(--font-family-title), serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .supdescription {
-  font-size: 1rem;
-  color: #faf9f6c9;
+  font-size: 0.8rem;
+  color: #faf9f6c0;
   margin-top: 1rem;
 }
 
@@ -130,6 +130,7 @@
   }
   .supdescription {
     font-size: 0.9rem;
+    text-align: start;
   
 }
   

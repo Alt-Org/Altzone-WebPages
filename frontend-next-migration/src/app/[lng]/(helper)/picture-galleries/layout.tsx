@@ -12,24 +12,23 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     const { t } = useClientTranslation('picture-galleries');
 
     return (
-        <>
-            <div >
+        <LayoutWithSidebars
+            className="test"
+            leftTopSidebar={{
+                component: <GalleryNavMenuAsDropdown openByDefault={true} />,
+                hideOnMobile: true,
+                className: cls.LeftSidebar,
+            }}
+        >
+            <div>
                 <h1 className={cls.mainTitle}>{t('picture-galleries-title')}</h1>
             </div>
-            <LayoutWithSidebars className='test'
-                leftTopSidebar={{
-                    component: <GalleryNavMenuAsDropdown openByDefault={true} />,
-                    hideOnMobile: true,
-                    className: cls.LeftSidebar,
-                }}
-            >
-                <div className={cls.Header}>
+            <div className={cls.Header}>
                 <h1 className={cls.Title}>{t('picture-galleries')}</h1>
                 <p className={cls.InfoText}>{t('info-text')}</p>
-                </div>
-                {isTouchDevice ? <GalleryNavMenuAsDropdown openByDefault={false} /> : null}
-                {children}
-            </LayoutWithSidebars>
-        </>
+            </div>
+            {isTouchDevice ? <GalleryNavMenuAsDropdown openByDefault={false} /> : null}
+            {children}
+        </LayoutWithSidebars>
     );
 }
