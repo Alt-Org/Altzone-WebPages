@@ -47,9 +47,9 @@ export interface PhotoObject {
     description: string;
     supdescription: string;
     frames: string[][];
-    id: string;
-    category: Category;
-    versions: {
+    id?: string;
+    category?: Category;
+    versions?: {
         preview: PhotoVersion;
         full: PhotoVersion;
     };

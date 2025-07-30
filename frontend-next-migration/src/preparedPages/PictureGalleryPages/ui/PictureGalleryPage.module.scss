@@ -4,7 +4,7 @@
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 20px;
-  background-color: rgb(109, 39, 39);
+  background-color: rgba(109, 39, 39, 0.322);
 
   //@media (max-width: 1200px) {
   //  margin-top: 50px;
@@ -16,10 +16,10 @@
   font-family: var(--font-family-title), serif;
   color: var(--primary-color);
   line-height: 1.5;
-  margin-left: 20rem;
+  text-align: center;
 }
 .LeftSidebar{
-  background-color: rgba(143, 143, 98, 0.699);
+  background-color: rgba(143, 143, 98, 0.308);
 }
 .Maincontainer{
   background-color: white !important;
@@ -108,3 +108,12 @@
 
 
 
+
+
+
+@media (max-width: breakpoint(sm)) {
+.Header{
+  display: none;
+}
+  
+}

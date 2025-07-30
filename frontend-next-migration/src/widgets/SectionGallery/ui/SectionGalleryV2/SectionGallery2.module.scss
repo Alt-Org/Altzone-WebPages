@@ -81,14 +81,13 @@
 .frameRow {
   display: flex;
   flex-wrap: nowrap;
+  flex-direction: row;
   justify-content: center;
   gap: 1rem;
 }
 
 .imageWrapper {
   position: relative;
-  width: 15rem;
-  height: 150px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -101,9 +100,39 @@
 
 
 .animateButton {
-  width: 15rem;
-  height: 150px;
+  width: 25vh;
+  height: 100%;
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+
+
+
+
+
+
+@media (max-width: breakpoint(sm)) {
+  .frameRow {
+    flex-direction: column;
+  }
+  .animateButton{
+    width: 100%;
+    height: 20vh;
+}
+.textBlock{
+    text-align: center;
+  }
+  .title{
+  font-size: 1.5rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .supdescription {
+    font-size: 0.9rem;
+  
+}
+  
+}
+
+  
