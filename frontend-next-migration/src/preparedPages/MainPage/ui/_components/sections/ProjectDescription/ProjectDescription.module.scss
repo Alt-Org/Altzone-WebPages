@@ -1,14 +1,12 @@
 .Section {
-  display: flex;;
-  margin: -150px 0;
+  display: flex;
   opacity: 0;
   flex-direction: column;
-  margin-bottom: 10rem;
+  margin-top: -10vh;
   &.inView{
     animation: fadeIn 1s ease-in-out;
     opacity: 1;
   }
-
 }
 
 @keyframes fadeIn {
@@ -35,7 +33,6 @@
     transform: translateY(0);
     opacity: 1;
   }
-
 }
 
 @keyframes slideIn {
