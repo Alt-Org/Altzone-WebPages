@@ -1,20 +1,20 @@
-import { useResetBoxMutation } from '@/entities/Box/model/boxApi';
+import { useStartTestingSessionMutation } from '@/entities/Box/model/boxApi';
 import { useEffect } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
-const ResetBoxTest = () => {
-    const [resetBox, { data: resetBoxData, error: resetBoxError }] = useResetBoxMutation();
-    const handleResetBox = () => {
-        resetBox();
+const StartTestingSessionTest = () => {
+    const [startTestingSession, { data, error }] = useStartTestingSessionMutation();
+    const handleStartTestingSession = () => {
+        startTestingSession();
     };
     useEffect(() => {
-        if (resetBoxData) {
+        if (data) {
             // eslint-disable-next-line no-console
-            console.log('Box reset successfully:', resetBoxData);
-        } else if (resetBoxError) {
-            console.error('Error resetting box:', resetBoxError);
+            console.log('testing session started successfully:', data);
+        } else if (error) {
+            console.error('Error starting testing session:', error);
         }
-    }, [resetBoxError, resetBoxData]);
+    }, [error, data]);
 
     return (
         <div
@@ -26,7 +26,7 @@ const ResetBoxTest = () => {
                 padding: '20px',
             }}
         >
-            <h3>Reset the testing box data</h3>
+            <h3>Start testing session</h3>
             <button
                 style={{
                     border: '1px solid white',
@@ -39,13 +39,13 @@ const ResetBoxTest = () => {
                     borderRadius: '5px',
                     margin: '10px 0',
                 }}
-                onClick={() => handleResetBox()}
+                onClick={handleStartTestingSession}
             >
-                Reset
+                Start
             </button>
-            {resetBoxError && <BoxErrorMessage error={resetBoxError} />}
+            {error && <BoxErrorMessage error={error} />}
         </div>
     );
 };
 
-export { ResetBoxTest };
+export { StartTestingSessionTest };

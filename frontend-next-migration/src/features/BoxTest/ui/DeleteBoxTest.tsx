@@ -1,16 +1,11 @@
 import { useDeleteBoxMutation } from '@/entities/Box/model/boxApi';
-import { BoxErrorResponse } from '@/entities/Box/types/types';
 import { useEffect } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
 const DeleteBoxTest = () => {
     const [deleteBox, { data: deletedBox, error: deleteBoxError }] = useDeleteBoxMutation();
-    const handleDeletingABox = async () => {
-        try {
-            await deleteBox().unwrap();
-        } catch (error) {
-            console.error('delete box error', error);
-        }
+    const handleDeletingABox = () => {
+        deleteBox();
     };
     useEffect(() => {
         if (deletedBox) {

@@ -164,7 +164,7 @@ const boxApi = gameApi.injectEndpoints({
          * @param {string} _id - The _id of the daily task to be deleted.
          * @returns {void} - No content is returned upon successful deletion.
          */
-        deleteBoxDailyTask: builder.mutation<void, string>({
+        deleteBoxDailyTaskById: builder.mutation<void, string>({
             query: (_id) => ({
                 url: `${boxUrl}/dailyTask/${_id}`,
                 method: 'DELETE',
@@ -185,6 +185,7 @@ const boxApi = gameApi.injectEndpoints({
             invalidatesTags: [GameApiCacheTags.BOX],
         }),
     }),
+    overrideExisting: false,
 });
 
 export const {
@@ -194,10 +195,11 @@ export const {
     useResetBoxMutation,
     useStartTestingSessionMutation,
     useGetBoxByIdQuery,
+    useLazyGetBoxByIdQuery,
     useDeleteBoxByIdMutation,
     useAddDailyTaskToBoxMutation,
     useUpdateBoxDailyTaskMutation,
     useAddMultipleDailyTasksMutation,
-    useDeleteBoxDailyTaskMutation,
+    useDeleteBoxDailyTaskByIdMutation,
     useDefineTestersAmountMutation,
 } = boxApi;

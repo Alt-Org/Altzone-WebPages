@@ -27,6 +27,14 @@ import { CreateBoxTest } from '@/features/BoxTest/ui/CreateBoxTest';
 import { ClaimTesterAccountTest } from '@/features/BoxTest/ui/ClaimTesterAccountTest';
 import { DeleteBoxTest } from '@/features/BoxTest/ui/DeleteBoxTest';
 import { ResetBoxTest } from '@/features/BoxTest/ui/ResetBoxTest';
+import { StartTestingSessionTest } from '@/features/BoxTest/ui/StartTestingSessionTest';
+import { GetBoxByIdTest } from '@/features/BoxTest/ui/GetBoxByIdTest';
+import { DeleteBoxByIdTest } from '@/features/BoxTest/ui/DeleteBoxByIdTest';
+import { AddDailyTaskToBoxTest } from '@/features/BoxTest/ui/AddDailyTaskToBoxTest';
+import { UpdateBoxDailyTaskTest } from '@/features/BoxTest/ui/UpdateBoxDailyTaskTest';
+import { AddMultipleDailyTasksTest } from '@/features/BoxTest/ui/AddMultipleDailTasksTest';
+import { DeleteBoxDailyTaskByIdTest } from '@/features/BoxTest/ui/DeleteBoxDailyTaskByIdTest';
+import { DefineTesterAmountTest } from '@/features/BoxTest/ui/DefineTesterAmountTest';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -144,6 +152,14 @@ const Page = () => {
                 <CreateBoxTest />
                 <DeleteBoxTest />
                 <ResetBoxTest />
+                <StartTestingSessionTest />
+                <GetBoxByIdTest />
+                <DeleteBoxByIdTest />
+                <AddDailyTaskToBoxTest />
+                <UpdateBoxDailyTaskTest />
+                <AddMultipleDailyTasksTest />
+                <DeleteBoxDailyTaskByIdTest />
+                <DefineTesterAmountTest />
             </div>
 
             {/* End of Testing Box Api */}

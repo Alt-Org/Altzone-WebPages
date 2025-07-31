@@ -1,23 +1,23 @@
-import { useLazyClaimTesterAccountQuery } from '@/entities/Box/model/boxApi';
+import { useLazyGetBoxByIdQuery } from '@/entities/Box/model/boxApi';
 import { useEffect, useState } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
-const ClaimTesterAccountTest = () => {
-    const [triggerClaim, { data, error }] = useLazyClaimTesterAccountQuery();
+const GetBoxByIdTest = () => {
+    const [triggerGetBoxById, { data, error }] = useLazyGetBoxByIdQuery();
 
-    const [password, setPassword] = useState('');
+    const [id, setId] = useState('');
 
-    const handleClaimTesterAccount = async (password: string) => {
+    const handleGetBoxById = async (id: string) => {
         // eslint-disable-next-line no-console
-        console.log('Claiming tester account with password:', password);
-        await triggerClaim(password);
+        console.log('Get box by id:', id);
+        await triggerGetBoxById(id);
     };
     useEffect(() => {
         if (data) {
             // eslint-disable-next-line no-console
-            console.log('Claimed account successfully:', data);
+            console.log('Get box by id successfully:', data);
         } else if (error) {
-            console.error('Error claiming tester account:', error);
+            console.error('Error getting box:', error);
         }
     }, [data]);
 
@@ -31,12 +31,12 @@ const ClaimTesterAccountTest = () => {
                 padding: '20px',
             }}
         >
-            <h3>Claim Tester Account</h3>
+            <h3>Get box by id</h3>
             <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(elem) => setPassword(elem.target.value)}
+                type="text"
+                placeholder="Enter box id"
+                value={id}
+                onChange={(elem) => setId(elem.target.value)}
             />
             <button
                 style={{
@@ -50,14 +50,14 @@ const ClaimTesterAccountTest = () => {
                     borderRadius: '5px',
                     margin: '10px 0',
                 }}
-                onClick={() => handleClaimTesterAccount(password)}
+                onClick={() => handleGetBoxById(id)}
             >
-                Claim tester account
+                Get box
             </button>
-            {typeof data !== 'undefined' && <div>Account claimed successfully!</div>}
+            {typeof data !== 'undefined' && <div>Get box successfully!</div>}
             {error && <BoxErrorMessage error={error} />}
         </div>
     );
 };
 
-export { ClaimTesterAccountTest };
+export { GetBoxByIdTest };

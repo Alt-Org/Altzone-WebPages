@@ -1,20 +1,21 @@
-import { useResetBoxMutation } from '@/entities/Box/model/boxApi';
+import { useAddMultipleDailyTasksMutation } from '@/entities/Box/model/boxApi';
 import { useEffect } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
-const ResetBoxTest = () => {
-    const [resetBox, { data: resetBoxData, error: resetBoxError }] = useResetBoxMutation();
-    const handleResetBox = () => {
-        resetBox();
+const AddMultipleDailyTasksTest = () => {
+    const [addMultipleDailyTasks, { data, error }] = useAddMultipleDailyTasksMutation();
+    const handleAddMultipleDailyTasks = () => {
+        const args = ['Test Daily Task 1', 'Test Daily Task 2'];
+        addMultipleDailyTasks(args);
     };
     useEffect(() => {
-        if (resetBoxData) {
+        if (data) {
             // eslint-disable-next-line no-console
-            console.log('Box reset successfully:', resetBoxData);
-        } else if (resetBoxError) {
-            console.error('Error resetting box:', resetBoxError);
+            console.log('Daily tasks added successfully:', data);
+        } else if (error) {
+            console.error('Error adding daily tasks:', error);
         }
-    }, [resetBoxError, resetBoxData]);
+    }, [error, data]);
 
     return (
         <div
@@ -26,7 +27,7 @@ const ResetBoxTest = () => {
                 padding: '20px',
             }}
         >
-            <h3>Reset the testing box data</h3>
+            <h3>Add Daily Tasks</h3>
             <button
                 style={{
                     border: '1px solid white',
@@ -39,13 +40,13 @@ const ResetBoxTest = () => {
                     borderRadius: '5px',
                     margin: '10px 0',
                 }}
-                onClick={() => handleResetBox()}
+                onClick={() => handleAddMultipleDailyTasks()}
             >
-                Reset
+                Add Daily Tasks
             </button>
-            {resetBoxError && <BoxErrorMessage error={resetBoxError} />}
+            {error && <BoxErrorMessage error={error} />}
         </div>
     );
 };
 
-export { ResetBoxTest };
+export { AddMultipleDailyTasksTest };

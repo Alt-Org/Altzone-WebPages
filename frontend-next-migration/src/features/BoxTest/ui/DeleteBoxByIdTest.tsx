@@ -1,25 +1,21 @@
-import { useLazyClaimTesterAccountQuery } from '@/entities/Box/model/boxApi';
+import { useDeleteBoxByIdMutation } from '@/entities/Box/model/boxApi';
 import { useEffect, useState } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
-const ClaimTesterAccountTest = () => {
-    const [triggerClaim, { data, error }] = useLazyClaimTesterAccountQuery();
-
-    const [password, setPassword] = useState('');
-
-    const handleClaimTesterAccount = async (password: string) => {
-        // eslint-disable-next-line no-console
-        console.log('Claiming tester account with password:', password);
-        await triggerClaim(password);
+const DeleteBoxByIdTest = () => {
+    const [deleteBoxById, { data, error }] = useDeleteBoxByIdMutation();
+    const [boxId, setBoxId] = useState('');
+    const handleDeletingBoxById = (boxId: string) => {
+        deleteBoxById(boxId);
     };
     useEffect(() => {
         if (data) {
             // eslint-disable-next-line no-console
-            console.log('Claimed account successfully:', data);
+            console.log('Box deleted successfully:', data);
         } else if (error) {
-            console.error('Error claiming tester account:', error);
+            console.error('Error deleting box:', error);
         }
-    }, [data]);
+    }, [error, data]);
 
     return (
         <div
@@ -31,12 +27,12 @@ const ClaimTesterAccountTest = () => {
                 padding: '20px',
             }}
         >
-            <h3>Claim Tester Account</h3>
+            <h3>Delete box by id</h3>
             <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(elem) => setPassword(elem.target.value)}
+                type="text"
+                placeholder="Enter Box ID"
+                value={boxId}
+                onChange={(elem) => setBoxId(elem.target.value)}
             />
             <button
                 style={{
@@ -50,14 +46,13 @@ const ClaimTesterAccountTest = () => {
                     borderRadius: '5px',
                     margin: '10px 0',
                 }}
-                onClick={() => handleClaimTesterAccount(password)}
+                onClick={() => handleDeletingBoxById(boxId)}
             >
-                Claim tester account
+                Delete Box
             </button>
-            {typeof data !== 'undefined' && <div>Account claimed successfully!</div>}
             {error && <BoxErrorMessage error={error} />}
         </div>
     );
 };
 
-export { ClaimTesterAccountTest };
+export { DeleteBoxByIdTest };
