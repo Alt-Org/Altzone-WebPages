@@ -6,7 +6,7 @@ import {
     getRouteComicsPage,
     getRouteGalleryPage,
     getRouteGameArtPage,
-    getRouteAllHeroesPage,
+    getRouteDefenseGalleryPage,
     getRouteAllClanSearchPage,
     getRouteAllFurnitureSetsPage,
     getRouteJoinUsPage,
@@ -56,7 +56,7 @@ export const dropdowns = {
         {
             elementText: 'heroes',
             link: {
-                path: getRouteAllHeroesPage(),
+                path: getRouteDefenseGalleryPage(),
                 isExternal: false,
             },
         },
