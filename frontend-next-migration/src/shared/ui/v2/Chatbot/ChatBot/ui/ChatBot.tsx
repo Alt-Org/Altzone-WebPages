@@ -14,7 +14,7 @@ import cls from './ChatBot.module.scss';
 import xIcon from '@/shared/assets/icons/xIcon.svg';
 import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
 import sendArrow from '@/shared/assets/icons/sendArrow.svg';
-import { useChatBot } from '../../logic/useChatBot';
+import { QuestionButton, useChatBot } from '../../logic/useChatBot';
 import { useClientTranslation } from '@/shared/i18n';
 
 /**
@@ -135,6 +135,20 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                                 </span>
                             </div>
                         )}
+                        <div className={cls['button-message']}>
+                            <button className={cls.button}>{msg.question1}</button>
+                        </div>
+                        <div className={cls['button-message']}>
+                            <button className={cls.button}>{msg.question2}</button>
+                        </div>
+                        <div className={cls['button-message']}>
+                            <button
+                                className={cls.button}
+                                onClick={QuestionButton()}
+                            >
+                                {msg.question3}
+                            </button>
+                        </div>
                     </React.Fragment>
                 ))}
                 {error && <p className={cls['error-message']}>{error}</p>}

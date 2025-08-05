@@ -8,5 +8,8 @@
     "errorMessageTooLong": "Viestisi on liian pitkä! Syötä enintään 40 merkkiä.",
     "errorApiKeyMissing": "OpenAI API key puuttuu. Aseta se .env.local tiedostoon.",
     "errorDefaultResponse": "En osaa vastata tähän.",
-    "errorUnexpected": "Odottamaton virhe:"
+    "errorUnexpected": "Odottamaton virhe:",
+    "preQuestion1": "ALT Zone?",
+    "preQuestion2": "PRG?",
+    "preQuestion3": "Nettisivut?"
 }

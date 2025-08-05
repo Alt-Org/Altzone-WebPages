@@ -11,7 +11,12 @@ import { useGetChatbotContextQuery } from '@/shared/api';
 export interface ChatMessage {
     role: string;
     content: string;
+    question1: string;
+    question2: string;
+    question3: string;
 }
+
+export function QuestionButton() {}
 
 /**
  * Custom hook for chatbot functionality that manages chat state, messages, and API interactions.
@@ -68,6 +73,9 @@ export const useChatBot = () => {
             {
                 role: 'assistant',
                 content: t('welcomeMessage'),
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
             },
         ]);
     }, [t]);
@@ -87,6 +95,9 @@ export const useChatBot = () => {
             {
                 role: 'assistant',
                 content: t('welcomeMessage'),
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
             },
         ]);
         setUserInput('');
