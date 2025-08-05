@@ -57,12 +57,12 @@ type Message = {
 };
 
 type GameStatistics = {
-    playedBattles: number;
-    wonBattles: number;
-    diamondsAmount: number;
-    startedVotings: number;
-    participatedVotings: number;
-    messages: Message[];
+    playedBattles?: number;
+    wonBattles?: number;
+    diamondsAmount?: number;
+    startedVotings?: number;
+    participatedVotings?: number;
+    messages?: Message[];
 };
 
 type AdminPlayer = {
@@ -98,6 +98,37 @@ type ClansForBox = Omit<IClan, 'Player' | 'labels'> & {
         rights: Record<string, unknown>;
         _id: Record<string, unknown>;
     }[];
+};
+
+type BoxAdminCreds = {
+    adminPassword: string;
+    playerName: string;
+    clanNames: string[];
+};
+
+type AddDailyTaskParams = {
+    type: string;
+    title: string;
+    amount: number;
+    points: number;
+    coins: number;
+    timeLimitMinutes: number;
+};
+
+type ClansToCreate = {
+    name: string;
+    isOpen: boolean;
+};
+
+type UpdateBoxArgs = {
+    clansToCreate: ClansToCreate[];
+    testersAmount: number;
+    testersSharedPassword: string;
+};
+
+type DefineTestersAmountArgs = {
+    amountToAdd: number;
+    amountToRemove: number;
 };
 
 type CreateBoxResponse = {
@@ -141,8 +172,29 @@ type BoxErrorResponse = {
     message?: string;
 };
 
+type ClaimAccountResponse = {
+    _id: string;
+    points: number;
+    backpackCapacity: number;
+    above13?: boolean | null;
+    parentalAuth: boolean | null;
+    gameStatistics: GameStatistics;
+    battleCharacter_ids?: string[];
+    currentAvatarId?: number;
+    profile_id: string;
+    clan_id: string;
+    // Clan: ClanDto;
+    // CustomCharacter: CustomCharacterDto[];
+    password: string;
+    accessToken: string;
+};
+
 export type {
     Box,
+    BoxAdminCreds,
+    AddDailyTaskParams,
+    UpdateBoxArgs,
+    DefineTestersAmountArgs,
     GetBoxResponse,
     DailyTask,
     CreateBoxResponse,
@@ -153,4 +205,5 @@ export type {
     ResetBoxResponse,
     AddDailyTaskResponse,
     AddMultipleDailyTasksResponse,
+    ClaimAccountResponse,
 };

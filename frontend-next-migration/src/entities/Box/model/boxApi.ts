@@ -5,48 +5,21 @@ import {
     ResetBoxResponse,
     AddDailyTaskResponse,
     AddMultipleDailyTasksResponse,
+    ClaimAccountResponse,
+    BoxAdminCreds,
+    AddDailyTaskParams,
+    DefineTestersAmountArgs,
 } from '../types/types';
 
 const boxUrl = 'box';
-
-export type BoxAdminCreds = {
-    adminPassword: string;
-    playerName: string;
-    clanNames: string[];
-};
-
-export type AddDailyTaskParams = {
-    type: string;
-    title: string;
-    amount: number;
-    points: number;
-    coins: number;
-    timeLimitMinutes: number;
-};
-
-export type ClansToCreate = {
-    name: string;
-    isOpen: boolean;
-};
-
-export type UpdateBoxArgs = {
-    clansToCreate: ClansToCreate[];
-    testersAmount: number;
-    testersSharedPassword: string;
-};
-
-export type DefineTestersAmountArgs = {
-    amountToAdd: number;
-    amountToRemove: number;
-};
 
 const boxApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
         /** Tester can claim his/her account for the testing box.
          * * @param {string} password - The password to claim the tester account.
-         * @returns {void} - No content is returned upon successful claim.
+         * @returns {ClaimAccountResponse} - The response containing the claimed account data.
          */
-        claimTesterAccount: builder.query<void, string>({
+        claimTesterAccount: builder.query<ClaimAccountResponse, string>({
             query: (password) => ({
                 url: `${boxUrl}/claim-account?password=${password}`,
             }),
