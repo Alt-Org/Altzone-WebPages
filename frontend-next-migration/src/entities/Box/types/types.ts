@@ -106,15 +106,6 @@ type BoxAdminCreds = {
     clanNames: string[];
 };
 
-type AddDailyTaskParams = {
-    type: string;
-    title: string;
-    amount: number;
-    points: number;
-    coins: number;
-    timeLimitMinutes: number;
-};
-
 type ClansToCreate = {
     name: string;
     isOpen: boolean;
@@ -143,10 +134,22 @@ type CreateBoxResponse = {
     metaData: MetaData;
 };
 
+type PredefinedDailyTask = {
+    _id: string;
+    type: string;
+    title: string;
+    amount: number;
+    points: number;
+    coins: number;
+    timeLimitMinutes: number;
+};
+
+type UpdatePredefinedDailyTaskArgs = {
+    _id: string;
+} & Partial<Omit<PredefinedDailyTask, '_id'>>;
+
 // TODO
 type ResetBoxResponse = {};
-
-type AddDailyTaskResponse = {};
 
 type AddMultipleDailyTasksResponse = {};
 
@@ -192,7 +195,8 @@ type ClaimAccountResponse = {
 export type {
     Box,
     BoxAdminCreds,
-    AddDailyTaskParams,
+    PredefinedDailyTask,
+    UpdatePredefinedDailyTaskArgs,
     UpdateBoxArgs,
     DefineTestersAmountArgs,
     GetBoxResponse,
@@ -203,7 +207,6 @@ export type {
     AdminPlayer,
     ClansForBox,
     ResetBoxResponse,
-    AddDailyTaskResponse,
     AddMultipleDailyTasksResponse,
     ClaimAccountResponse,
 };

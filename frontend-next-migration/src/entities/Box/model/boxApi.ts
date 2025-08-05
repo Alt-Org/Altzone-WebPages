@@ -3,12 +3,12 @@ import {
     GetBoxResponse,
     CreateBoxResponse,
     ResetBoxResponse,
-    AddDailyTaskResponse,
     AddMultipleDailyTasksResponse,
     ClaimAccountResponse,
     BoxAdminCreds,
-    AddDailyTaskParams,
     DefineTestersAmountArgs,
+    PredefinedDailyTask,
+    UpdatePredefinedDailyTaskArgs,
 } from '../types/types';
 
 const boxUrl = 'box';
@@ -96,9 +96,9 @@ const boxApi = gameApi.injectEndpoints({
 
         /** Add a daily task to array of predefined daily tasks.
          * @param {AddDailyTaskParams} dailyTask - The daily task data to be added.
-         * @returns {AddDailyTaskResponse} - The response containing the added daily task data.
+         * @returns {PredefinedDailyTask} - The response containing the added daily task data.
          */
-        addDailyTaskToBox: builder.mutation<AddDailyTaskResponse, AddDailyTaskParams>({
+        addDailyTaskToBox: builder.mutation<PredefinedDailyTask, Omit<PredefinedDailyTask, '_id'>>({
             query: (dailyTask) => ({
                 url: `${boxUrl}/dailyTask`,
                 method: 'POST',
@@ -111,7 +111,7 @@ const boxApi = gameApi.injectEndpoints({
          * @param {AddDailyTaskParams & { _id: string }} dailyTask - The daily task data to update, including its _id.
          * @returns {void} - No content is returned upon successful update.
          */
-        updateBoxDailyTask: builder.mutation<void, AddDailyTaskParams & { _id: string }>({
+        updateBoxDailyTask: builder.mutation<void, UpdatePredefinedDailyTaskArgs>({
             query: (dailyTask) => ({
                 url: `${boxUrl}/dailyTask`,
                 method: 'PUT',

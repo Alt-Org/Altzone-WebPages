@@ -1,7 +1,6 @@
 import { useAddDailyTaskToBoxMutation } from '@/entities/Box/model/boxApi';
 import { useEffect, useState } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
-import { title } from 'process';
 
 const AddDailyTaskToBoxTest = () => {
     const [addDailyTaskToBox, { data, error }] = useAddDailyTaskToBoxMutation();
