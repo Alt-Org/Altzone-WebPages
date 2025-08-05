@@ -95,7 +95,7 @@ const boxApi = gameApi.injectEndpoints({
         }),
 
         /** Add a daily task to array of predefined daily tasks.
-         * @param {AddDailyTaskParams} dailyTask - The daily task data to be added.
+         * @param {Omit<PredefinedDailyTask, '_id'>} dailyTask - The daily task data to be added.
          * @returns {PredefinedDailyTask} - The response containing the added daily task data.
          */
         addDailyTaskToBox: builder.mutation<PredefinedDailyTask, Omit<PredefinedDailyTask, '_id'>>({
@@ -108,7 +108,7 @@ const boxApi = gameApi.injectEndpoints({
         }),
 
         /** Update a predefined daily task of a box by its _id
-         * @param {AddDailyTaskParams & { _id: string }} dailyTask - The daily task data to update, including its _id.
+         * @param {UpdatePredefinedDailyTaskArgs} dailyTask - The daily task data to update, including its _id.
          * @returns {void} - No content is returned upon successful update.
          */
         updateBoxDailyTask: builder.mutation<void, UpdatePredefinedDailyTaskArgs>({
