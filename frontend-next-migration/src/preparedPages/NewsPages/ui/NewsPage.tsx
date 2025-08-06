@@ -103,6 +103,7 @@ const NewsPage = () => {
                                 previewText={news.previewText}
                                 date={news.date}
                                 id={news.id}
+                                tabIndex={0}
                             />
                         );
                     })}

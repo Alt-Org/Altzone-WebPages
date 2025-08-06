@@ -15,7 +15,12 @@
     position: relative;
 
     &:hover {
-        border-color: var(--primary-border);
+        border-color: var(--primary-color);
+    }
+
+    &:focus {
+        outline: 3px solid var(--primary-color);
+        outline-offset: -3px;
     }
 
     @media (max-width: breakpoint(xl)) {
@@ -77,6 +82,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    // &:focus {
+    //     outline: none;
+    // }
 }
 
 .content {

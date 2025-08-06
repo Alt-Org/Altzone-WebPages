@@ -12,18 +12,23 @@ interface NewsCardProps {
     date: string;
     id: number;
     titlePicture?: string;
+    tabIndex?: number;
 }
 
 const NewsCard = (props: NewsCardProps) => {
-    const { title, date, id, previewText, titlePicture } = props;
+    const { title, date, id, previewText, titlePicture, tabIndex } = props;
     const picture = titlePicture || hannu.src;
     return (
         <Link
             rel="id"
             href={`/news/${id}`}
             className={classNames(cls.NewsCardLink)}
+            tabIndex={-1} // -1 to prevent focus on the link itself, but allow focus on the card
         >
-            <div className={classNames(cls.NewsCard, {})}>
+            <div
+                className={classNames(cls.NewsCard, {})}
+                tabIndex={tabIndex}
+            >
                 <div className={cls.content}>
                     <h2 className={cls.title}>{title}</h2>
                     <p className={cls.text}>{previewText}</p>
