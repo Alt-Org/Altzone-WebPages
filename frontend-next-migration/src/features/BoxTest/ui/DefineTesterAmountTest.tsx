@@ -1,5 +1,5 @@
 import { useDefineTestersAmountMutation } from '@/entities/Box/model/boxApi';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BoxErrorMessage } from './BoxErrorMessage';
 
 const DefineTesterAmountTest = () => {
