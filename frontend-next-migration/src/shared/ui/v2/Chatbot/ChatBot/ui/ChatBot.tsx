@@ -136,10 +136,20 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                             </div>
                         )}
                         <div className={cls['button-message']}>
-                            <button className={cls.button}>{msg.question1}</button>
+                            <button
+                                className={cls.button}
+                                onClick={QuestionButton()}
+                            >
+                                {msg.question1}
+                            </button>
                         </div>
                         <div className={cls['button-message']}>
-                            <button className={cls.button}>{msg.question2}</button>
+                            <button
+                                className={cls.button}
+                                onClick={QuestionButton()}
+                            >
+                                {msg.question2}
+                            </button>
                         </div>
                         <div className={cls['button-message']}>
                             <button
