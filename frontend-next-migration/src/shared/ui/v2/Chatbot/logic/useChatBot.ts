@@ -175,6 +175,7 @@ export const useChatBot = () => {
             const data = await response.json();
             const assistantMessage = data.choices[0]?.message?.content || t('errorDefaultResponse');
 
+            // Still Error Here
             setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
         } catch (err) {
             setError(`${t('errorUnexpected')} ${err}`);
