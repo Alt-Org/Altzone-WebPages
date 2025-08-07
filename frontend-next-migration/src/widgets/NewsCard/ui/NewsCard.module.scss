@@ -14,15 +14,6 @@
     overflow: hidden;
     position: relative;
 
-    &:hover {
-        border-color: var(--primary-color);
-    }
-
-    &:focus {
-        outline: 3px solid var(--primary-color);
-        outline-offset: -3px;
-    }
-
     @media (max-width: breakpoint(xl)) {
         max-width: 500px;
     }
@@ -48,6 +39,12 @@
         width: 60%;
     }
 }
+
+
+.NewsCardLink:hover .NewsCard, .NewsCardLink:focus .NewsCard {
+    border-color: var(--primary-color);
+}
+
 
 .imageContainer {
     position: absolute;
@@ -82,6 +79,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .content {
