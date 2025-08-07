@@ -111,16 +111,28 @@ export const useChatBot = () => {
      * // User types "Hello" and clicks send
      * handleSendMessage(); // Sends to API and gets AI response
      */
-    const handleSendMessage = async () => {
-        if (!userInput.trim()) return;
+    const handleSendMessage = async (messageContent: string = userInput) => {
+        const content = messageContent.trim() || userInput.trim();
+        if (!content) {
+            return;
+        }
 
-        if (userInput.length > 40) {
+        if (content.length > 40) {
             setError(t('errorMessageTooLong'));
             return;
         }
 
-        const newMessages = [...messages, { role: 'user', content: userInput }];
+        const newMessage = {
+            role: 'user',
+            content: content,
+            question1: '',
+            question2: '',
+            question3: '',
+        };
+
+        const newMessages = [...messages, newMessage];
         setMessages(newMessages);
+
         setUserInput('');
         setLoading(true);
         setError(null);

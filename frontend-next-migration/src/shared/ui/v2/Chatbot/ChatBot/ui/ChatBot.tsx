@@ -137,24 +137,24 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                         )}
                         <div className={cls['button-message']}>
                             <button
-                                className={cls.button}
-                                onClick={QuestionButton()}
+                                className={cls['button']}
+                                onClick={() => handleSendMessage(msg.question1)}
                             >
                                 {msg.question1}
                             </button>
                         </div>
                         <div className={cls['button-message']}>
                             <button
-                                className={cls.button}
-                                onClick={QuestionButton()}
+                                className={cls['button']}
+                                onClick={() => handleSendMessage(msg.question2)}
                             >
                                 {msg.question2}
                             </button>
                         </div>
                         <div className={cls['button-message']}>
                             <button
-                                className={cls.button}
-                                onClick={QuestionButton()}
+                                className={cls['button']}
+                                onClick={() => handleSendMessage(msg.question3)}
                             >
                                 {msg.question3}
                             </button>
@@ -178,7 +178,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                     className={cls['message-input']}
                 />
                 <button
-                    onClick={handleSendMessage}
+                    onClick={() => handleSendMessage()}
                     disabled={loading}
                     className={cls['send-button']}
                     aria-label="Send"
