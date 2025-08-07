@@ -8,5 +8,8 @@
     "errorMessageTooLong": "Ваше сообщение слишком длинное! Введите не более 40 символов.",
     "errorApiKeyMissing": "API ключ OpenAI отсутствует. Установите его в файле .env.local.",
     "errorDefaultResponse": "Я не знаю, как на это ответить.",
-    "errorUnexpected": "Неожиданная ошибка:"
+    "errorUnexpected": "Неожиданная ошибка:",
+    "preQuestion1": "ALT Zone?",
+    "preQuestion2": "PRG?",
+    "preQuestion3": "Веб-сайт?"
 }

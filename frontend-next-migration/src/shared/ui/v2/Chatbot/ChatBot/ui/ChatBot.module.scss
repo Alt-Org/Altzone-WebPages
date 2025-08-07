@@ -145,6 +145,27 @@
     }
 }
 
+.button {
+    width: 100%;
+    text-align: right;
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+}
+
+.button-message {
+    display: flex;
+    align-self: flex-end;
+    width: 40%;
+    margin: 4px 0;
+    padding: 8px 12px;
+    border-radius: var(--border-radius-xl);
+    max-width: 80%;
+    background-color: var(--primary-color);
+    color: var(--black);
+    border: var(--border-mobile) solid var(--black);
+}
+
 .input-container {
     display: flex;
     align-items: center;
@@ -199,3 +220,5 @@
         }
     }
 }
+
+
