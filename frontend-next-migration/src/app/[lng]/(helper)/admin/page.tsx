@@ -21,6 +21,7 @@ import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
+import defenceGalleryMobile from '@/shared/assets/images/descriptionCard/defense_gallery_mobile.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import { CreateBoxTest } from '@/features/BoxTest/ui/CreateBoxTest';
@@ -35,6 +36,12 @@ import { UpdateBoxDailyTaskTest } from '@/features/BoxTest/ui/UpdateBoxDailyTask
 import { AddMultipleDailyTasksTest } from '@/features/BoxTest/ui/AddMultipleDailTasksTest';
 import { DeleteBoxDailyTaskByIdTest } from '@/features/BoxTest/ui/DeleteBoxDailyTaskByIdTest';
 import { DefineTesterAmountTest } from '@/features/BoxTest/ui/DefineTesterAmountTest';
+import {
+    DescriptionCardMobile,
+    DescriptionCardMobileLink,
+    DescriptionCardMobileTheme,
+} from '@/shared/ui/v2/DescriptionCardMobile';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 const Page = () => {
     const navMenuWithDropdownsProps2: NavMenuWithDropdownsProps = {
@@ -104,7 +111,7 @@ const Page = () => {
         ],
     };
     const cardRef = useRef<HTMLDivElement>(null);
-
+    const { isMobileSize } = useSizes();
     const { t } = useClientTranslation('admin');
     const componentsArray = Array(9).fill(null);
     const handleFocusAndScroll = () => {
@@ -418,41 +425,77 @@ const Page = () => {
                 This is the main content, adapting to both desktop and mobile devices. This is the
                 main content, adapting to both desktop and mobile devices
             </p>
-
-            <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
-                <DescriptionCard.Texts width="35%">
-                    <DescriptionCard.Texts.Title>Defenssigalleria</DescriptionCard.Texts.Title>
-                    <DescriptionCard.Texts.Body>
-                        Lorem ipsum dolor sit amet consectetur. Id tincidunt scelerisque augue leo
-                        nam diam tortor eget pharetra.
-                    </DescriptionCard.Texts.Body>
-                </DescriptionCard.Texts>
-                <DescriptionCard.Image width="65%">
-                    <DescriptionCard.Image.Image
-                        src={defenceGallery}
-                        alt="defence gallery"
-                    />
-                </DescriptionCard.Image>
-            </DescriptionCard>
-            <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
-                <DescriptionCard.Texts>
-                    <DescriptionCard.Texts.Title>Torjujat</DescriptionCard.Texts.Title>
-                    <DescriptionCard.Texts.Body>
-                        Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse. Heidän
-                        kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta periksi paineen
-                        kasvaessa.
-                    </DescriptionCard.Texts.Body>
-                </DescriptionCard.Texts>
-                <DescriptionCard.Image bgColour="#FF0000">
-                    <DescriptionCard.Image.Triangle />
-                    <DescriptionCard.Image.Image
-                        src={retroflector}
-                        alt="defence gallery"
-                        height={100}
-                        marginLeft="20%"
-                    />
-                </DescriptionCard.Image>
-            </DescriptionCard>
+            {isMobileSize ? (
+                <>
+                    <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+                        <DescriptionCardMobile.Texts title="Defenssigalleria">
+                            Lorem ipsum dolor sit amet consectetur. Id tincidunt scelerisque augue
+                            leo nam diam tortor eget pharetra.
+                        </DescriptionCardMobile.Texts>
+                        <DescriptionCardMobile.Image
+                            src={defenceGalleryMobile}
+                            alt="defence gallery"
+                        />
+                    </DescriptionCardMobile>
+                    <DescriptionCardMobileLink
+                        path="/hero-development"
+                        ariaLabel="link to hero development page"
+                        withScalableLink={true}
+                    >
+                        <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+                            <DescriptionCardMobile.Texts title="Torjujat">
+                                Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse.
+                                Heidän kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta
+                                periksi paineen kasvaessa.
+                            </DescriptionCardMobile.Texts>
+                            <DescriptionCardMobile.Image
+                                src={retroflector}
+                                alt="retroflector"
+                                backgroundColor="#FF0000"
+                            />
+                        </DescriptionCardMobile>
+                    </DescriptionCardMobileLink>
+                </>
+            ) : (
+                <>
+                    <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
+                        <DescriptionCard.Texts width="35%">
+                            <DescriptionCard.Texts.Title>
+                                Defenssigalleria
+                            </DescriptionCard.Texts.Title>
+                            <DescriptionCard.Texts.Body>
+                                Lorem ipsum dolor sit amet consectetur. Id tincidunt scelerisque
+                                augue leo nam diam tortor eget pharetra.
+                            </DescriptionCard.Texts.Body>
+                        </DescriptionCard.Texts>
+                        <DescriptionCard.Image width="65%">
+                            <DescriptionCard.Image.Image
+                                src={defenceGallery}
+                                alt="defence gallery"
+                            />
+                        </DescriptionCard.Image>
+                    </DescriptionCard>
+                    <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
+                        <DescriptionCard.Texts>
+                            <DescriptionCard.Texts.Title>Torjujat</DescriptionCard.Texts.Title>
+                            <DescriptionCard.Texts.Body>
+                                Torjujat ovat ujoudeltaan tehokkaita suojautumaan kilpensä taakse.
+                                Heidän kilpensä ei kuitenkaan ole loputon, vaan sekin antaa lopulta
+                                periksi paineen kasvaessa.
+                            </DescriptionCard.Texts.Body>
+                        </DescriptionCard.Texts>
+                        <DescriptionCard.Image bgColour="#FF0000">
+                            <DescriptionCard.Image.Triangle />
+                            <DescriptionCard.Image.Image
+                                src={retroflector}
+                                alt="defence gallery"
+                                height={100}
+                                marginLeft="20%"
+                            />
+                        </DescriptionCard.Image>
+                    </DescriptionCard>
+                </>
+            )}
             <div
                 style={{
                     display: 'flex',

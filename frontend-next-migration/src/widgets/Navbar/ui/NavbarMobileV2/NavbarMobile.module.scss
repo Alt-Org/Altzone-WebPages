@@ -10,9 +10,8 @@
     box-shadow: 4px 4px black;
     top: 0;
     left: 10px;
-    right: 10px;
-    // transition:
-        // height 0.4s ease-out;
+    right: 10px;  
+
     
     @media (min-width: 550px) {
         margin-top: 50px;
@@ -29,13 +28,18 @@
 }
 
 .NavbarDropdown {
-    transition: transform 0.4s ease-out;
-    transform-origin: top;
     transform: scaleY(0);
+    transform-origin: top;
+    max-height: 0;
+    transition: 
+        transform 0.3s ease,
+        max-height 0.3s ease;
+
 }
 .openDropdown {
     padding: 15px;
     transform: scaleY(1);
+    max-height: 400px;
 }
 
 .HamurgerBtn {
@@ -125,7 +129,8 @@
     transform: translateX(0) scaleX(1);
     transform-origin: right;
     transition:
-        transform 0.3s ease-out 0.2s,
-        opacity 0.3s ease-out 0.5s;
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out;
     visibility: visible;
 }
+
