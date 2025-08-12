@@ -1,15 +1,26 @@
 {
-    "activity": "Activity",
-    "clan": "Clan",
-    "friends": "Friends",
-    "friends_not_logged_in": "You need to be logged in to view the friend leaderboard",
-    "login": "Log in",
-    "global": "Global",
-    "head-title": "Leaderboard",
-    "head-description": "Find player and clan rankings in the leaderboard",
-    "head-keywords": "leaderboard, players, clans, game",
-    "leaderboard_title": "Leaderboard",
-    "search_placeholder": "Search",
-    "search_btn_text": "Search",
-    "wins": "Wins"
-  }
+  "activity": "Activity",
+  "clan": "Clan",
+  "friends": "Friends",
+  "friends_not_logged_in": "You need to be logged in to view the friend leaderboard",
+  "login": "Sign in",
+  "login_prompt": "Please sign in to view your clan position",
+  "global": "Global",
+  "head-title": "Leaderboard",
+  "head-description": "Find player and clan rankings in the leaderboard",
+  "head-keywords": "leaderboard, players, clans, game",
+  "leaderboard_title": "Leaderboard",
+  "search_placeholder": "Search",
+  "search_btn_text": "Search",
+  "wins": "Wins",
+  "top_players": "Top Players",
+  "top_clans": "Top Clans",
+  "loading": "Loading...",
+  "not_logged_in_position": "You need to be logged in to see your clan position.",
+  "your_clan_position": "Your clan is currently ranked #{{position}}",
+  "not_in_clan": "You are not in a clan yet.",
+  "unexpected_error": "An unexpected error occurred. Please try again.",
+  "loading_position": "Fetching your clan position..."
+}
+
+
