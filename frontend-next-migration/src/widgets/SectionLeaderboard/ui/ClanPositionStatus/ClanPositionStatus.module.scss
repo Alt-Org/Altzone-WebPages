@@ -1,0 +1,31 @@
+.statusBox {
+  margin-top: 24px;
+  padding: 12px 16px;
+  background-color: #eba80d;
+  color: #000000;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.link {
+  color: #000000;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+.position {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffc107;
+}
+
+.message {
+  margin-bottom: 16px;
+  color: #ccc;
+  font-style: italic;
+}
+
+.error {
+  color: red;
+  margin-bottom: 16px;
+}
