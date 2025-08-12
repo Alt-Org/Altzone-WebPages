@@ -13,6 +13,8 @@ export enum AppRoutesLinks {
     CLAN_LEADERBOARD = 'CLAN_LEADERBOARD',
     CLAN_MY_CLAN = 'my_clan',
 
+    LEADERBOARD = 'LEADERBOARD',
+
     PICTURE_GALLERY = 'PICTURE_GALLERY',
     COMICS_GALLERY = 'COMICS_GALLERY',
     PICTURE_GALLERY_CATEGORY = 'PICTURE_GALLERY_CATEGORY',
@@ -63,6 +65,8 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.CLAN_ONE]: '/clans/:id',
     [AppRoutesLinks.CLAN_MY_CLAN]: '/clans/myclan',
     [AppRoutesLinks.CLAN_LEADERBOARD]: '/clans/leaderboard',
+
+    [AppRoutesLinks.LEADERBOARD]: '/leaderboard',
 
     [AppRoutesLinks.PICTURE_GALLERY]: '/picture-galleries',
     [AppRoutesLinks.COMICS_GALLERY]: '/comics',
@@ -118,6 +122,7 @@ export const getRouteGameArtPage = () => '/artGame';
 
 export const getRouteMyClanPage = () => '/clans/myclan';
 export const getRouteClanLeadeboardPage = () => '/clans/leaderboard';
+export const getRouteLeaderboardPage = () => '/leaderboard';
 
 export const getRouteAllClanSearchPage = () => '/clans';
 export const getRouteOneClanPage = (id: string) => `/clans/${id}`;
