@@ -1,13 +1,19 @@
-
-.LayoutWithSidebars {
-    background-color: unset;
+.LayoutWrapper {
+  background-color: unset;
 }
+
 .Content {
-    margin-right:60px;
-    @media(min-width: calc(breakpoint(xxl) + 116px)) {
-        margin-right:unset;
-    }
-    @media(max-width: breakpoint(xl)) {
-        margin-right:unset;
-    }
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.InnerContainer {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 12px 32px;
+  }
 }
