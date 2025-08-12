@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--base-card-background);
-    border: 4px solid var(--drop-shadows);
+    border: 3px solid var(--drop-shadows);
     border-radius: var(--border-radius-figmadesktop);
     filter: drop-shadow(8px 12px var(--drop-shadows));
     height: 150px;
@@ -13,12 +13,6 @@
     margin: 0 auto;
     overflow: hidden;
     position: relative;
-    transition: transform 0.2s ease-in-out;
-
-    &:hover {
-        transform: scale(1.02);
-        cursor: pointer;
-    }
 
     @media (max-width: breakpoint(xl)) {
         max-width: 500px;
@@ -45,6 +39,12 @@
         width: 60%;
     }
 }
+
+
+.NewsCardLink:hover .NewsCard, .NewsCardLink:focus .NewsCard {
+    border-color: var(--primary-color);
+}
+
 
 .imageContainer {
     position: absolute;
@@ -79,6 +79,10 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .content {
