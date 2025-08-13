@@ -1,6 +1,6 @@
 // Escapes HTML special characters (e.g., <, >, &, ", ') for safe rendering
-export function escapeHtml(s: string) {
-    return s
+export function escapeHtml(input: string) {
+    return input
         .replaceAll(/&/g, '&amp;')
         .replaceAll(/</g, '&lt;')
         .replaceAll(/>/g, '&gt;')
@@ -12,7 +12,7 @@ export function escapeHtml(s: string) {
 export function linkify(text: string): string {
     const escaped = escapeHtml(text);
 
-    const urlRe = /\b(https?:\/\/[^\s<>()]+|www\.[^\s<>()]+)\b/g;
+    const urlRe = /\b(https?:\/\/[^\s<>()"]+|www\.[^\s<>()"]+)\b/g;
 
     return escaped.replace(urlRe, (raw) => {
         let url = raw;
@@ -26,8 +26,9 @@ export function linkify(text: string): string {
 
         if (!url) return raw;
 
-        const href = url.startsWith('www.') ? `https://${url}` : url;
+        const hrefRaw = url.startsWith('www.') ? `https://${url}` : url;
+        const href = encodeURI(hrefRaw).replace(/"/g, '&quot;');
 
-        return `<a href="${href}" target="_blank" rel="noopener noreferrer" style="color:#121212; text-decoration:underline;">${url}</a>${escapeHtml(trailing)}`;
+        return `<a href="${href}" style="color:#121212; text-decoration:underline;">${url}</a>${escapeHtml(trailing)}`;
     });
 }
