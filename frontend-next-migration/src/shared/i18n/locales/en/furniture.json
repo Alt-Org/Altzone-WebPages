@@ -6,5 +6,23 @@
     "furnituresets-title": "All sets of Furniture",
     "furnituresets-morecomingsoon": "More sets coming soon...",
     "search": "Search",
-    "categories": "Categories"
+    "categories": "Categories",
+    "sets": "Sets",
+    "furniture": "Furniture",
+
+    "furniture-collections-title": "Furniture collections",
+    "search-placeholder": "Search...",
+    "tables": "Tables",
+    "chairs": "Chairs",
+    "couches": "Sofas",
+    "beds": "Beds",
+    "cabinets": "Cabinets",
+    "lights": "Lighting",
+    "rugs": "Carpets",
+    "plants": "Plants",
+    "decorative-items": "Decorative items",
+    "other": "Other",
+    
+    "back-button": "Back",
+    "sort-placeholder": "Sort by..."
 }

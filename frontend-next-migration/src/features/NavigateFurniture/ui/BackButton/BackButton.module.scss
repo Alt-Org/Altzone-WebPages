@@ -1,0 +1,35 @@
+.BackButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--black);
+    border: 2px solid var(--black);
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s ease;
+    box-shadow: var(--black) 3px 3px 0;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+/* Mobile styles override */
+@media (max-width: 480px) {
+    .BackButton {
+        background-color: transparent;
+        border: none;
+        padding: 0.25rem;
+    }
+}
+
+.MobileBackIcon {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}

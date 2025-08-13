@@ -1,0 +1,31 @@
+.NavigationRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    margin-top: 0;
+    margin-bottom: 0;
+    height:2em;
+}
+
+.BackButton {
+    /* Additional styles for the back button within the navigation row if needed */
+}
+
+.SortDropdown {
+    max-width: 200px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .NavigationRow {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .SortDropdown {
+        max-width: 150px;
+    }
+}

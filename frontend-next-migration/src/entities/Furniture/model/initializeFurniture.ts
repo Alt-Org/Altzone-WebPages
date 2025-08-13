@@ -1,7 +1,11 @@
-import neuroCover from '@/shared/assets/images/furniture/neuro/cover.webp';
-import taakkaCover from '@/shared/assets/images/furniture/taakka/cover.webp';
-import rakkausCover from '@/shared/assets/images/furniture/rakkaus/cover.webp';
-import muistojaCover from '@/shared/assets/images/furniture/muistoja/cover.webp';
+import neuroCover from '@/shared/assets/images/furniture/neuro/cover.png';
+import taakkaCover from '@/shared/assets/images/furniture/taakka/cover.png';
+import rakkausCover from '@/shared/assets/images/furniture/rakkaus/cover.png';
+import muistojaCover from '@/shared/assets/images/furniture/muistoja/cover.png';
+import neuroCoverWebp from '@/shared/assets/images/furniture/neuro/cover.webp';
+import taakkaCoverWebp from '@/shared/assets/images/furniture/taakka/cover.webp';
+import rakkausCoverWebp from '@/shared/assets/images/furniture/rakkaus/cover.webp';
+import muistojaCoverWebp from '@/shared/assets/images/furniture/muistoja/cover.webp';
 import rakkauscloset from '@/shared/assets/images/furniture/rakkaus/posters/closet.webp';
 import rakkausctable from '@/shared/assets/images/furniture/rakkaus/posters/coffeetable.webp';
 import rakkauslamp from '@/shared/assets/images/furniture/rakkaus/posters/lamp.webp';
@@ -133,6 +137,9 @@ export const categories: Record<Category, PieceType> = {
     [Category.ITEMS]: {
         name: 'ITEMS',
     },
+    [Category.DECORATIONS]: {
+        name: 'DECORATIONS',
+    },
 };
 export const materials: Record<Materials, MaterialType> = {
     [Materials.WOOD]: {
@@ -227,6 +234,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'NEUROSET',
             author: 'Simo Ryhänen',
             cover: neuroCover,
+            coverWebp: neuroCoverWebp,
             //todo should be fixed, idk why we should hardcode it
             coverposition: FurnitureSetCoverPosition.SMALL,
             items: [
@@ -281,6 +289,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'TAAKKASET',
             author: 'Simo Ryhänen',
             cover: taakkaCover,
+            coverWebp: taakkaCoverWebp,
             //todo should be fixed, idk why we should hardcode it
             coverposition: FurnitureSetCoverPosition.SMALL,
             items: [
@@ -369,6 +378,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'RAKKAUSSET',
             author: 'IV',
             cover: rakkausCover,
+            coverWebp: rakkausCoverWebp,
             coverposition: FurnitureSetCoverPosition.MEDIUM,
             items: [
                 {
@@ -543,6 +553,7 @@ export const initializeFurnitureSets = (): Record<FurnitureSet, SetInfo> => {
             path: 'MUISTOJASET',
             author: 'Tähti',
             cover: muistojaCover,
+            coverWebp: muistojaCoverWebp,
             coverposition: FurnitureSetCoverPosition.FULL,
             items: [
                 {

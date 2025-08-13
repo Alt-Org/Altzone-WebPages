@@ -1,0 +1,157 @@
+@keyframes fadeIn {
+    0% { 
+        opacity: 0; 
+        visibility: hidden; 
+    }
+    1% {
+        visibility: visible;
+        opacity: 0;
+    }
+    100% { 
+        opacity: 1; 
+        visibility: visible; 
+    }
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity: 1; 
+        visibility: visible; 
+    }
+    to { 
+        opacity: 0; 
+        visibility: hidden; 
+    }
+}
+
+.PopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeIn 0.3s ease-in-out forwards;
+    will-change: opacity, visibility;
+}
+
+.PopupContent {
+    background-color: var(--base-card-background);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    max-width: 800px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: fit-content;
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeIn 0.4s ease-in-out forwards;
+    will-change: opacity, visibility;
+    box-shadow: var(--black) 7px 10px 0;
+}
+
+.fadeOut {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+.PopupContainer {
+    display: flex;
+}
+
+.CloseButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--primary-color);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+.PopupHeader {
+    margin-bottom: 20px;
+    padding-right: 40px;
+}
+
+.PopupTitle {
+    color: var(--primary-color);
+    font-size: 48px;
+    margin: 0;
+    font-family: var(--font-family-title);
+    font-weight: 100;
+}
+
+.PopupBody {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+
+    @media (max-width: 768px) {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
+
+.InfoColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    padding-right: 20px;
+    max-width: 80%;
+}
+
+.InfoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.InfoLabel {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+}
+
+.InfoValue {
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+}
+
+.ImageColumn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+
+    img {
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+    }
+}
