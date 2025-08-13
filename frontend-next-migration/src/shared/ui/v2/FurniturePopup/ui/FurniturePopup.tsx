@@ -4,7 +4,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
 import cls from './FurniturePopup.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import xButton from '@/shared/assets/icons/XButton.svg';
+import xButton from '@/shared/assets/icons/xButton.svg';
 import commonCurrencySymbol from '@/shared/assets/icons/CommonCurrencySymbol.svg';
 
 interface FurniturePopupProps {
