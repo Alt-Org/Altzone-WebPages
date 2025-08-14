@@ -8,5 +8,8 @@
     "errorMessageTooLong": "Your message is too long! Please enter at most 40 characters.",
     "errorApiKeyMissing": "OpenAI API key is missing. Please set it in the .env.local file.",
     "errorDefaultResponse": "I don't know how to answer this.",
-    "errorUnexpected": "Unexpected error:"
+    "errorUnexpected": "Unexpected error:",
+    "preQuestion1": "ALT Zone?",
+    "preQuestion2": "PRG?",
+    "preQuestion3": "Websites?"
 }
