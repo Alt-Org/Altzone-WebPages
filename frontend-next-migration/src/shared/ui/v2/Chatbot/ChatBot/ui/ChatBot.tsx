@@ -90,7 +90,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                     </div>
                     <button
                         className={cls['close-button']}
-                        onClick={closeChat}
+                        onClick={() => closeChat()}
                     >
                         <Image
                             src={xIcon}
