@@ -16,6 +16,7 @@ import xsLogo from '@/shared/assets/icons/xsAltLogo.svg';
 import sendArrow from '@/shared/assets/icons/sendArrow.svg';
 import { useChatBot } from '../../logic/useChatBot';
 import { useClientTranslation } from '@/shared/i18n';
+import { linkify } from '../../utils/linkify';
 
 /**
  * Props for the ChatBotButton component
@@ -114,7 +115,15 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                                     : cls['user-message'])
                             }
                         >
-                            <div className={cls['message-content']}>{msg.content}</div>
+                            <div
+                                className={cls['message-content']}
+                                dangerouslySetInnerHTML={{
+                                    __html:
+                                        msg.role === 'assistant'
+                                            ? linkify(msg.content)
+                                            : msg.content,
+                                }}
+                            />
                         </div>
                         {msg.role === 'assistant' && (
                             <div className={cls['message-header']}>
