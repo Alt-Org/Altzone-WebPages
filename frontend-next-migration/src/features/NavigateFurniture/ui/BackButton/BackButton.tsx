@@ -26,6 +26,7 @@ export const BackButton = (props: BackButtonProps) => {
     return isMobileSize ? (
         <button
             className={classNames(styles.MobileBackIcon, undefined, [className ? className : ''])}
+            onClick={handleBack}
         >
             <Image
                 src={backOrange}
