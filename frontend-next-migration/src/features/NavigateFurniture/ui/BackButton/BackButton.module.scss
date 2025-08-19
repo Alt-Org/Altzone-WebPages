@@ -17,15 +17,6 @@
     }
 }
 
-/* Mobile styles override */
-@media (max-width: 480px) {
-    .BackButton {
-        background-color: transparent;
-        border: none;
-        padding: 0.25rem;
-    }
-}
-
 .MobileBackIcon {
     cursor: pointer;
     background-color: transparent;

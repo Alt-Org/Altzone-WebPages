@@ -14,7 +14,7 @@ export const NavigationRow = (props: NavigationRowProps) => {
 
     return (
         <div className={classNames(styles.NavigationRow, undefined, [className ? className : ''])}>
-            <BackButton className={styles.BackButton} />
+            <BackButton />
             <SortDropdown className={styles.SortDropdown} />
         </div>
     );

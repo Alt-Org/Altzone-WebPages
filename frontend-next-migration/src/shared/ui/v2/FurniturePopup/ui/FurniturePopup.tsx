@@ -52,7 +52,7 @@ export const FurniturePopup: React.FC<FurniturePopupProps> = ({
         >
             <div
                 className={classNames(cls.PopupContent, { [cls.fadeOut]: isFadingOut })}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(event) => event.stopPropagation()}
             >
                 <div
                     className={cls.CloseButton}
