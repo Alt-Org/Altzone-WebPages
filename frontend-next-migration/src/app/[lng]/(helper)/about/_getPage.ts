@@ -1,6 +1,7 @@
 import { useServerTranslation } from '@/shared/i18n';
 import { createPage } from '@/app/_helpers';
 import { AboutPageProps } from '@/preparedPages/AboutPage';
+import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: any) {
     const { t } = await useServerTranslation(lng, 'about');
@@ -25,6 +26,12 @@ export async function _getPage(lng: any) {
             title: t('head-title'),
             description: t('head-description'),
             keywords: t('head-keywords'),
+            openGraph: {
+                ...defaultOpenGraph,
+                title: t('head-title'),
+                description: t('head-description'),
+                // url: '/about',
+            },
         }),
     });
 }

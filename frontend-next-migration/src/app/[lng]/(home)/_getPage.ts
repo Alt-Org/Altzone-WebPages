@@ -5,8 +5,10 @@ import {
     getRouteAllHeroesPage,
     getRouteComicsPage,
     getRouteGalleryPage,
+    getRouteMainPage,
 } from '@/shared/appLinks/RoutePaths';
 import { createPage } from '@/app/_helpers';
+import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'main');
@@ -18,6 +20,12 @@ export async function _getPage(lng: string) {
             title: t('head-title'),
             description: t('head-description'),
             keywords: t('head-keywords'),
+            openGraph: {
+                ...defaultOpenGraph,
+                title: t('og-title'),
+                description: t('og-description'),
+                url: `${getRouteMainPage()}${lng}`,
+            },
         }),
         buildPage: () => ({
             playWithUs: {

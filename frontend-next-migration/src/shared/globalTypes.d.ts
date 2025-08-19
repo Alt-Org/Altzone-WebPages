@@ -39,4 +39,11 @@ declare interface DefaultAppRouterProps {
 declare interface DefaultSeo {
     title: string;
     description: string;
+    keywords?: string;
+    openGraph?: {
+        title?: string;
+        description?: string;
+        image?: string;
+        url?: string;
+    };
 }
