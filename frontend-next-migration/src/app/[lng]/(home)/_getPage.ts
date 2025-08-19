@@ -26,6 +26,9 @@ export async function _getPage(lng: string) {
                 description: t('og-description'),
                 url: `${getRouteMainPage()}${lng}`,
             },
+            alternates: {
+                canonical: `${getRouteMainPage()}${lng}`,
+            },
         }),
         buildPage: () => ({
             playWithUs: {

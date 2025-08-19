@@ -46,4 +46,7 @@ declare interface DefaultSeo {
         image?: string;
         url?: string;
     };
+    alternates?: {
+        canonical: string;
+    };
 }

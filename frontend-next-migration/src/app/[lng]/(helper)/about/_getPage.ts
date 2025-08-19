@@ -2,6 +2,7 @@ import { useServerTranslation } from '@/shared/i18n';
 import { createPage } from '@/app/_helpers';
 import { AboutPageProps } from '@/preparedPages/AboutPage';
 import { defaultOpenGraph } from '@/shared/seoConstants';
+import { getRouteAboutPage } from '@/shared/appLinks/RoutePaths';
 
 export async function _getPage(lng: any) {
     const { t } = await useServerTranslation(lng, 'about');
@@ -28,9 +29,12 @@ export async function _getPage(lng: any) {
             keywords: t('head-keywords'),
             openGraph: {
                 ...defaultOpenGraph,
-                title: t('head-title'),
-                description: t('head-description'),
-                // url: '/about',
+                title: t('og-title'),
+                description: t('og-description'),
+                url: `/${lng}${getRouteAboutPage()}`,
+            },
+            alternates: {
+                canonical: `/${lng}${getRouteAboutPage()}`,
             },
         }),
     });
