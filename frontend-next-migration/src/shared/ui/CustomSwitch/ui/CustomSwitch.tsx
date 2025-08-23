@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { CustomSwitchItems } from '../model/enum/CustomSwitch.enum';
-import { ToggleItem, ToggleLink } from '../model/types/';
+import { CustomSwitchItems } from '@/shared/ui/CustomSwitch';
+import { ToggleItem, ToggleLink, ProgressIndicator } from '../model/types/';
 import cls from './CustomSwitch.module.scss';
 
 export interface CustomSwitchProps {
-    elements: ToggleItem[] | ToggleLink[];
+    elements: ToggleItem[] | ToggleLink[] | ProgressIndicator[];
     className?: string;
 }
 
@@ -49,6 +49,9 @@ const CustomSwitch = ({ elements, className }: CustomSwitchProps) => {
         {},
         [className].filter((i) => i !== undefined),
     );
+
+    const openIndex = elements.findIndex((elem) => elem.isOpen);
+
     return (
         <div className={customSwitchClassName}>
             {elements.map((element, index) => (
@@ -69,6 +72,16 @@ const CustomSwitch = ({ elements, className }: CustomSwitchProps) => {
                                 [cls.OpenToggleItem]: element.isOpen,
                             })}
                             onClick={element.onOpen}
+                        >
+                            {element.children}
+                        </div>
+                    )}
+                    {element.type === CustomSwitchItems.ProgressIndicator && (
+                        <div
+                            className={classNames(cls.ProgressItem, {
+                                [cls.OpenToggleItem]: element.isOpen,
+                                [cls.BeforeOpen]: openIndex !== -1 && index < openIndex,
+                            })}
                         >
                             {element.children}
                         </div>
