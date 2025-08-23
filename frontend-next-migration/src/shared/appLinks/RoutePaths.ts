@@ -129,6 +129,7 @@ export const getRouteJoinUsPage = () => '/join-us';
 
 export const getRoutePrivacyPage = () => '/privacy';
 export const getRouteCookiesPage = () => '/cookies';
+export const getRouteDataPolicyPage = () => '/data-policy';
 export const getRouteAboutPage = () => '/about';
 export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';
