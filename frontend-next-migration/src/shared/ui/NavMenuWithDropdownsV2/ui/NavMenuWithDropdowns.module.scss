@@ -79,6 +79,7 @@
 
     & a:hover {
       color: var(--primary-color);
+      text-decoration: underline;
     }
     
     &.active {

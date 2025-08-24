@@ -1,7 +1,7 @@
 'use client';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import React from 'react';
-import { BackButton } from '../BackButton/BackButton';
+import { BackButton } from '@/shared/ui/v2/BackButton';
 import { SortDropdown } from '../SortDropdown/SortDropdown';
 import styles from './NavigationRow.module.scss';
 

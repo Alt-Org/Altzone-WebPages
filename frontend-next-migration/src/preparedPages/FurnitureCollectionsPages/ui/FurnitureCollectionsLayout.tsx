@@ -14,7 +14,12 @@ const CollectionLayout = ({ children }: { children: ReactNode }) => {
         <LayoutWithSidebars
             className={cls.LayoutWithSidebars}
             leftTopSidebar={{
-                component: <CollectionsNavMenuAsDropdown className={cls.NavMenu} />,
+                component: (
+                    <CollectionsNavMenuAsDropdown
+                        isMobileSize={isMobileSize}
+                        className={cls.NavMenu}
+                    />
+                ),
                 hideOnMobile: true,
             }}
         >
@@ -25,7 +30,7 @@ const CollectionLayout = ({ children }: { children: ReactNode }) => {
                         alternate={true}
                         searchVisible={false}
                     />
-                    <CollectionsNavMenuAsDropdown />
+                    <CollectionsNavMenuAsDropdown isMobileSize={isMobileSize} />
                 </>
             )}
             <main className={cls.Content}>{children}</main>

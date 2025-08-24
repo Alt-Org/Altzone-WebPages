@@ -60,6 +60,7 @@ import {
     RecycleType,
 } from '../types/furniture';
 
+/* eslint-disable max-lines */
 export const rarityList: Record<Rarities, PieceRarity> = {
     [Rarities.COMMON]: {
         name: 'COMMON',
