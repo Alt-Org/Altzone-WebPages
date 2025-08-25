@@ -11,13 +11,10 @@ export type {
     FurnitureSetCoverPosition,
     SetInfo,
     Piece,
-    FurnitureSet,
-    Materials,
     MaterialType,
-    Recycles,
     RecycleType,
-    Category,
     PieceType,
-    Rarities,
     PieceRarity,
 } from './types/furniture';
+
+export { FurnitureSet, Materials, Recycles, Category, Rarities } from './types/furniture';

@@ -21,6 +21,7 @@ import cls from './DescriptionCard.module.scss';
 export enum DescriptionCardTheme {
     PRIMARY = '',
     DEFENSEGALLERY = 'DefenseGalleryCard',
+    FURNITURECOLLECTION = 'FurnitureCollectionCard',
 }
 
 /**
@@ -43,6 +44,7 @@ interface DescriptionCardProps
     withScalableLink?: boolean;
     ref?: LegacyRef<HTMLDivElement>;
     children: ReactNode;
+    height?: string;
 }
 
 /**
@@ -314,6 +316,7 @@ DescriptionCardBase.Image = DescriptionCardImageSection;
  * @module DescriptionCard
  *
  * @example
+ *              <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
  *                <DescriptionCard.Texts>
  *                     <DescriptionCard.Texts.Title>Torjujat</DescriptionCard.Texts.Title>
  *                     <DescriptionCard.Texts.Body>
@@ -333,6 +336,7 @@ DescriptionCardBase.Image = DescriptionCardImageSection;
  *                 </DescriptionCard.Image>
  *             </DescriptionCard>
  * @example
+ *              <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
  *                 <DescriptionCard.Texts width="30%">
  *                     <DescriptionCard.Texts.Title>Defenssigalleria</DescriptionCard.Texts.Title>
  *                     <DescriptionCard.Texts.Body>

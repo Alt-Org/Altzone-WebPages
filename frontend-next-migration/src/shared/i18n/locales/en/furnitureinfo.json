@@ -242,5 +242,7 @@
     "label-price": "Price",
     "label-weight": "Weight",
     "label-materials": "Materials",
-    "close-view": "Close"
+    "close-view": "Close",
+    "label-diagnosis-number": "Diagnosis number",
+    "collection": "Collection"
 }
