@@ -12,7 +12,7 @@ export interface Props {
     locality: string;
     nationality: string;
     behind: string;
-    projectCount: string;
+    projectCount: number;
     localityCount: string;
     nationalityCount: string;
     behindCount: string;

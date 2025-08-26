@@ -1,31 +1,17 @@
 import { useServerTranslation } from '@/shared/i18n';
 import { createPage } from '@/app/_helpers';
 import { AboutPageProps } from '@/preparedPages/AboutPage';
-import { envHelper } from '@/shared/const/envHelper';
+import { fetchMembersServer } from '@/entities/Member';
 
 export async function _getPage(lng: any) {
     const { t } = await useServerTranslation(lng, 'about');
 
-    let uniqueMemberCount = 0;
+    let uniqueMemberCount: number = 0;
 
     try {
-        const response = await fetch(`${envHelper.strapiHost}/items/members?limit=1000`);
-        if (!response.ok) {
-            console.error('Failed to fetch team data, status:', response.status);
-        } else {
-            const teamData = await response.json();
-            if (Array.isArray(teamData?.data)) {
-                const uniqueNames = new Set<string>();
-                teamData.data.forEach((member: { name?: string }) => {
-                    if (member?.name) uniqueNames.add(member.name);
-                });
-                uniqueMemberCount = uniqueNames.size;
-            } else {
-                console.error('Unexpected team data shape:', teamData);
-            }
-        }
-    } catch (err) {
-        console.error('Error fetching team data:', err);
+        uniqueMemberCount = await fetchMembersServer();
+    } catch (e) {
+        console.error('Error fetching team data:', e);
     }
 
     return createPage<AboutPageProps>({
@@ -38,10 +24,10 @@ export async function _getPage(lng: any) {
             locality: t('locality'),
             nationality: t('nationality'),
             behind: t('behind'),
-            projectCount: t(uniqueMemberCount.toString()),
-            localityCount: t('localityCount'),
-            nationalityCount: t('nationalityCount'),
-            behindCount: t('6'),
+            projectCount: uniqueMemberCount,
+            localityCount: '15',
+            nationalityCount: '5',
+            behindCount: '6',
             V2019: t('V2019'),
             V2020: t('V2020'),
             V2021: t('V2021'),

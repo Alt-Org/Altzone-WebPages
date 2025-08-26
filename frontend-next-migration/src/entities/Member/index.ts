@@ -1,2 +1,2 @@
 export { MemberItem } from './ui';
-export { useGetMembersQuery } from './api/membersApi';
+export { useGetMembersQuery, fetchMembersServer } from './api/membersApi';
