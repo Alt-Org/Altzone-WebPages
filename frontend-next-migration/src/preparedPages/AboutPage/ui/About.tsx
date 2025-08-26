@@ -12,6 +12,10 @@ export interface Props {
     locality: string;
     nationality: string;
     behind: string;
+    projectCount: string;
+    localityCount: string;
+    nationalityCount: string;
+    behindCount: string;
     V2019: string;
     V2020: string;
     V2021: string;
@@ -30,6 +34,10 @@ const About = (props: Props) => {
         locality,
         nationality,
         behind,
+        projectCount,
+        localityCount,
+        nationalityCount,
+        behindCount,
         V2019,
         V2020,
         V2021,
@@ -46,19 +54,19 @@ const About = (props: Props) => {
                 <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.gridp}>{projectCount}</p>
                         <p className={cls.gridp}>{project}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.gridp}>{localityCount}</p>
                         <p className={cls.gridp}>{locality}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.gridp}>{nationalityCount}</p>
                         <p className={cls.gridp}>{nationality}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.gridp}>{behindCount}</p>
                         <p className={cls.gridp}>{behind}</p>
                     </div>
                 </div>
