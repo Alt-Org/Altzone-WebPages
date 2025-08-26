@@ -9,6 +9,7 @@ export enum GameApiCacheTags {
     CLAN = 'Clan',
     GALLERY = 'Gallery',
     PROFILE = 'Profile',
+    BOX = 'Box',
 }
 
 export const gameApi = createApi({

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-import { useGetChatbotContextQuery } from '@/shared/api';
+import { useGetChatbotContextQuery, useGetChatbotLinksQuery } from '@/shared/api';
 
 /**
  * Represents a chat message with role and content
@@ -57,13 +57,24 @@ export const useChatBot = () => {
 
     // Fetch context from Directus for current language
     const currentLanguage = i18n.language || 'fi';
+    const { data: linkData = [] } = useGetChatbotLinksQuery(currentLanguage);
     const { data: contextData = '', isLoading: isContextLoading } =
         useGetChatbotContextQuery(currentLanguage);
 
     // Update context state when data changes
     useEffect(() => {
-        setContext(contextData);
-    }, [contextData]);
+        const baseUrl = 'https://altzone.fi';
+        const linksText = linkData
+            .map(
+                (link) =>
+                    `- ${link.title} page: ${link.url.startsWith('http') ? link.url : baseUrl + link.url}`,
+            )
+            .join('\n');
+
+        const fullContext = `${contextData}\n\nHere are some important links you can mention in your answers:\n${linksText}`;
+
+        setContext(fullContext);
+    }, [contextData, linkData]);
 
     // Initialize welcome message
     useEffect(() => {
@@ -158,7 +169,7 @@ export const useChatBot = () => {
                         ...newMessages,
                     ],
                     max_tokens: 200,
-                    stop: ['.'],
+                    // stop: ['.'],
                 }),
             });
 
