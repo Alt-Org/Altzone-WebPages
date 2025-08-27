@@ -1,9 +1,9 @@
 import React from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { CustomSwitchItems } from '@/shared/ui/CustomSwitch';
-import { ToggleItem, ToggleLink, ProgressIndicator } from '../model/types/';
 import cls from './CustomSwitch.module.scss';
+import { CustomSwitchItems } from '@/shared/ui/CustomSwitch';
+import type { ToggleItem, ToggleLink, ProgressIndicator } from '../model/types';
 
 export interface CustomSwitchProps {
     elements: ToggleItem[] | ToggleLink[] | ProgressIndicator[];
