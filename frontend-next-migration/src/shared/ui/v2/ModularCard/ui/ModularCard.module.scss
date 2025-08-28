@@ -286,8 +286,7 @@
     overflow: hidden;
     font: var(--font-sw-xl);
     @media (max-width: breakpoint(xl)) {
-       font-size: 28px;
-       font: var(--font-sw-l);
+        font: var(--font-sw-l);
     }
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-l);
