@@ -1,12 +1,12 @@
 {
-  "resistance":"paksunahkaisuus",
-  "hp":"elinvoima",
-  "size":"koko",
-  "impactForce":"iskuvoima",
-  "speed":"nopeus",
-  "stat":"Statsi",
-  "fromLevel":"Leveliltä",
-  "toLevel":"Levelille",
-  "cost":"Kustannus",
-  "value": "(arvo)"
+    "resistance": "paksunahkaisuus",
+    "hp": "elinvoima",
+    "size": "koko",
+    "impactForce": "iskuvoima",
+    "speed": "nopeus",
+    "stat": "Statsi",
+    "fromLevel": "Leveliltä",
+    "toLevel": "Levelille",
+    "cost": "Kustannus",
+    "value": "(arvo)"
 }

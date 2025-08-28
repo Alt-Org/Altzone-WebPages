@@ -15,7 +15,7 @@ interface HeroGroupNavMenuProps {
     className?: string;
 }
 
-const HeroGroupNavMenu: React.FC<HeroGroupNavMenuProps> = ({ className }) => {
+const HeroGroupNavMenu: React.FC<HeroGroupNavMenuProps> = ({ className: _className }) => {
     const { t } = useClientTranslation('heroes');
     const pathname = usePathname();
     const selectedHeroGroup = pathname.split('/')[3];
@@ -23,7 +23,6 @@ const HeroGroupNavMenu: React.FC<HeroGroupNavMenuProps> = ({ className }) => {
 
     function capitalizeString(inputString: HeroGroup | string) {
         if (!inputString) return '';
-
         return inputString.charAt(0).toUpperCase() + inputString.slice(1).toLowerCase();
     }
 

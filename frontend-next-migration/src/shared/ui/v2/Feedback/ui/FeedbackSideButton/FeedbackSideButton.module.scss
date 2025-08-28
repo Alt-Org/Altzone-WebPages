@@ -1,78 +1,69 @@
-.SideButton{
-  //width: fit-content;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  font-family: var(--font-family-main) !important;
-  font-size: var(--font-size-m) !important;
+.SideButton {
+    //width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    font-family: var(--font-family-main) !important;
+    font-size: var(--font-size-m) !important;
 
+    height: fit-content;
+    min-height: 110px;
+    width: 3rem;
+    position: fixed;
+    bottom: 50%;
+    align-items: center;
 
-  height: fit-content;
-  min-height: 110px;
-  width: 3rem;
-  position: fixed;
-  bottom: 50%;
-  align-items: center;
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    border-radius: 15px;
+    border-width: 4px !important;
+    border-style: solid !important;
 
+    right: 10px;
+    background-color: var(--black) !important;
+    z-index: var(--sideButton-z-index) !important;
+    font-family: 16px !important;
+    line-height: 1 !important;
+    transform: rotate(180deg);
+    padding: 14px 0 14px 0 !important;
 
-  -webkit-writing-mode: vertical-lr;
-  writing-mode: vertical-lr;
-  border-radius: 15px;
-  border-width: 4px !important;
-  border-style: solid !important;
-
-
-
-
-  right: 10px;
-  background-color: var(--black)!important;
-  z-index: var(--sideButton-z-index) !important;
-  font-family:  16px !important;
-  line-height: 1 !important;
-  transform: rotate(180deg);
-  padding: 14px 0 14px 0 !important;
-
-  &:focus {
-    outline: none !important;
-  }
-
+    &:focus {
+        outline: none !important;
+    }
 }
 
 .nonActiveButton {
-  @extend .SideButton;
-  background-color: var(--black) !important;
-  color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
+    @extend .SideButton;
+    background-color: var(--black) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .activeButton {
-  @extend .SideButton;
-  background-color: var(--primary-color) !important;
-  color: var(--black) !important;
-  border-color: var(--black) !important;
+    @extend .SideButton;
+    background-color: var(--primary-color) !important;
+    color: var(--black) !important;
+    border-color: var(--black) !important;
 }
 
 .feedbackButtonContainer {
-  display: flex;
+    display: flex;
 }
 
 .megafone {
-  transform: rotate( 180deg);
+    transform: rotate(180deg);
 }
 
 .FeedbackCardContainer {
-  display: flex;
-  position: fixed;
-  right: calc(10px);
-  z-index: calc(var(--sideButton-z-index) + 1);
+    display: flex;
+    position: fixed;
+    right: calc(10px);
+    z-index: calc(var(--sideButton-z-index) + 1);
 
-  top: 50%;
-  transform: translate(-18%, -40%);
+    top: 50%;
+    transform: translate(-18%, -40%);
 }
 
 .feedbackForm.hidden {
-  display: none;
+    display: none;
 }
-
-
-

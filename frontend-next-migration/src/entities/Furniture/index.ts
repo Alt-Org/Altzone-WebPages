@@ -5,7 +5,7 @@ export { PieceCard } from './ui/PieceCard/PieceCard';
 export { default as PieceView } from './ui/PieceView/PieceView';
 export { default as FurnitureCardsContainer } from './ui/CardsContainer/CardsContainer';
 
-export { categories } from './model/initializeFurniture';
+export { categories } from './model/data/categories';
 
 export type {
     FurnitureSetCoverPosition,

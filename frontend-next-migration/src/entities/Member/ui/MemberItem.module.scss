@@ -1,129 +1,132 @@
 .memberRow {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 0.2em 0 0.2em 0;
-
-  .textContainer {
     display: flex;
-    width: 75%;
-    flex-direction: row;
-
-    @media (max-width: breakpoint(lg)) {
-      flex-direction: column;
-      gap: 0.1em;
-      width: 70%;
-    }
-  }
-
-  .memberName {
-    font-weight: bold;
-    text-align: end;
-    flex: 2;
-    min-width: 0;
-    padding-right: 1.5rem;
-    display: flex;
-    justify-content: flex-end;
-    font-size: 0.9em;
-
-    @media (max-width: breakpoint(lg)) {
-      justify-content: flex-start;
-      font-size: 0.85em;
-    }
-  }
-
-  .taskText {
-    font-weight: lighter;
-    font-size: 75%;
-    text-align: left;
-    flex: 2;
-    min-width: 0;
-    display: flex;
-    align-items: center;
-    width: fit-content !important;
-
-    @media (max-width: breakpoint(lg)) {
-      font-size: 70%;
-    }
-  }
-
-  .iconContainer {
-    display: flex;
-    gap: 0.7rem;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 1;
-    min-width: 0;
-
-    @media only screen and (min-width: breakpoint(md)) {
-      padding-right: 1rem;
-    }
-
-    @media (max-width: breakpoint(lg)) {
-      align-items: flex-start;
-      gap: 0.6rem;
-    }
-  }
-
-  .centerContainer {
-    display: flex;
-    flex: 2;
-  }
-
-  .clickableLogo {
-    color: var(--primary-color);
-    cursor: pointer;
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    @include link-scale-effect('icon');
-
-    @media (max-width: breakpoint(lg)) {
-      font-size: clamp(0.9rem, 3vw, 1.2rem);
-    }
-  }
-
-  .memberLogo {
-    width: clamp(1rem, 2.5vw, 1.4rem);
-    height: clamp(1rem, 2.5vw, 1.4rem);
-    border-radius: 100%;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-
-    @media (max-width: breakpoint(lg)) {
-      width: clamp(0.9rem, 3vw, 1.2rem);
-      height: clamp(0.9rem, 3vw, 1.2rem);
-    }
-  }
-
-  .memberLogoEnlarged {
-    transform: scale(3);
-    transition: transform, border-radius, width 0.5s ease-in-out;
-    border-radius: 0%;
-    width: fit-content;
-  }
-
-  .Logo {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0%;
-    cursor: pointer;
-    @include link-scale-effect('icon');
-    background: radial-gradient(circle at center, var(--background) 50%, transparent 90%);
-  }
+    justify-content: space-between;
+    padding: 0.2em 0 0.2em 0;
 
-  .placeholderLogo {
-    width: 100%;
-    height: 100%;
-    opacity: 100;
-    border-radius: 50%;
-    @include link-scale-effect('icon');
-  }
+    .textContainer {
+        display: flex;
+        width: 75%;
+        flex-direction: row;
+
+        @media (max-width: breakpoint(lg)) {
+            flex-direction: column;
+            gap: 0.1em;
+            width: 70%;
+        }
+    }
+
+    .memberName {
+        font-weight: bold;
+        text-align: end;
+        flex: 2;
+        min-width: 0;
+        padding-right: 1.5rem;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 0.9em;
+
+        @media (max-width: breakpoint(lg)) {
+            justify-content: flex-start;
+            font-size: 0.85em;
+        }
+    }
+
+    .taskText {
+        font-weight: lighter;
+        font-size: 75%;
+        text-align: left;
+        flex: 2;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        width: fit-content !important;
+
+        @media (max-width: breakpoint(lg)) {
+            font-size: 70%;
+        }
+    }
+
+    .iconContainer {
+        display: flex;
+        gap: 0.7rem;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+        min-width: 0;
+
+        @media only screen and (min-width: breakpoint(md)) {
+            padding-right: 1rem;
+        }
+
+        @media (max-width: breakpoint(lg)) {
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+    }
+
+    .centerContainer {
+        display: flex;
+        flex: 2;
+    }
+
+    .clickableLogo {
+        color: var(--primary-color);
+        cursor: pointer;
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        @include link-scale-effect('icon');
+
+        @media (max-width: breakpoint(lg)) {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+    }
+
+    .memberLogo {
+        width: clamp(1rem, 2.5vw, 1.4rem);
+        height: clamp(1rem, 2.5vw, 1.4rem);
+        border-radius: 100%;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+
+        @media (max-width: breakpoint(lg)) {
+            width: clamp(0.9rem, 3vw, 1.2rem);
+            height: clamp(0.9rem, 3vw, 1.2rem);
+        }
+    }
+
+    .memberLogoEnlarged {
+        transform: scale(3);
+        transition:
+            transform,
+            border-radius,
+            width 0.5s ease-in-out;
+        border-radius: 0%;
+        width: fit-content;
+    }
+
+    .Logo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0%;
+        cursor: pointer;
+        @include link-scale-effect('icon');
+        background: radial-gradient(circle at center, var(--background) 50%, transparent 90%);
+    }
+
+    .placeholderLogo {
+        width: 100%;
+        height: 100%;
+        opacity: 100;
+        border-radius: 50%;
+        @include link-scale-effect('icon');
+    }
 }

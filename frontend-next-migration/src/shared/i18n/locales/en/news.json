@@ -1,12 +1,12 @@
 {
-  "head-title": "News",
-  "read-more": "Read more",
-  "head-description": "Read the latest news from ALT Zone.",
-  "head-keywords": "altzone, news, community, comics, games",
-  "category-title": "Category",
-  "next-button": "Next",
-  "previous-button": "Previous",
-  "no-more-news": "No more news available",
-  "not-found-category-title": "Category not found",
-  "page-not-found": "Page not found"
+    "head-title": "News",
+    "read-more": "Read more",
+    "head-description": "Read the latest news from ALT Zone.",
+    "head-keywords": "altzone, news, community, comics, games",
+    "category-title": "Category",
+    "next-button": "Next",
+    "previous-button": "Previous",
+    "no-more-news": "No more news available",
+    "not-found-category-title": "Category not found",
+    "page-not-found": "Page not found"
 }

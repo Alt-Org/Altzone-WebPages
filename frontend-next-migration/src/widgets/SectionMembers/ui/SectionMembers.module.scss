@@ -1,87 +1,85 @@
 .MembersSection {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  box-shadow: 3px 4px var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 3px 4px var(--black);
 
-  @media (max-width: breakpoint(lg)) {
-    width: 95%;
-    margin-bottom: 3vh;
-  }
+    @media (max-width: breakpoint(lg)) {
+        width: 95%;
+        margin-bottom: 3vh;
+    }
 }
 
 .teamMembersList {
-  padding-top: 0.8vh;
+    padding-top: 0.8vh;
 }
 
 .MembersSection li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 .scrollBottomButton {
-  margin-bottom: 10px;
-  @include link-scale-effect;
+    margin-bottom: 10px;
+    @include link-scale-effect;
 
-  &.disabled {
-    cursor: not-allowed;
-  }
+    &.disabled {
+        cursor: not-allowed;
+    }
 
-  padding: 15px 20px;
-  border-radius: var(--border-radius-custom);
-  min-width: fit-content;
-  width: clamp(100px, 10vw, 120px);
-  align-self: center;
-
-
+    padding: 15px 20px;
+    border-radius: var(--border-radius-custom);
+    min-width: fit-content;
+    width: clamp(100px, 10vw, 120px);
+    align-self: center;
 }
 
 .membersListContainer {
-  font-size: clamp(0.5rem, 3vw, 1.7rem);
-  font-family: var(--font-family-main);
-  background-color: rgba(0, 0, 0, 0.55);
-  border-radius: var(--border-radius-custom);
-  padding: 0.7rem 1rem 1rem 1rem;
-  background-color: var(--background);
-  width: 100%;
-  border-style: solid;
-  border-color: var(--black);
-  border-width: var(--border-desktop);
-
-  @media (max-width: breakpoint(lg)) {
-    max-width: 100%;
-  }
-
-  h1 {
-    text-transform: uppercase;
-    color: var(--primary-color);
-    text-align: center;
-    padding-right: 20%;
-    padding-top: 2rem;
-    background-color: transparent;
-    font-family: var(--font-family-title), serif;
-    font-weight: 400;
+    font-size: clamp(0.5rem, 3vw, 1.7rem);
+    font-family: var(--font-family-main);
+    background-color: rgba(0, 0, 0, 0.55);
+    border-radius: var(--border-radius-custom);
+    padding: 0.7rem 1rem 1rem 1rem;
+    background-color: var(--background);
+    width: 100%;
+    border-style: solid;
+    border-color: var(--black);
+    border-width: var(--border-desktop);
 
     @media (max-width: breakpoint(lg)) {
-      display: flex;
-      justify-self: flex-start;
+        max-width: 100%;
     }
-  }
 
-  h3 {
-    color: var(--primary-color);
-    text-align: center;
-    font-size: clamp(0.5rem, 4vw, 2rem);
-    padding-bottom: 1%;
-    padding-right: 20%;
-    padding-top: 0.5rem;
-    font-family: var(--font-family-title), serif;
-    font-weight: 400;
+    h1 {
+        text-transform: uppercase;
+        color: var(--primary-color);
+        text-align: center;
+        padding-right: 20%;
+        padding-top: 2rem;
+        background-color: transparent;
+        font-family: var(--font-family-title), serif;
+        font-weight: 400;
 
-    @media (max-width: breakpoint(lg)) {
-      display: flex;
-      justify-self: flex-start;
+        @media (max-width: breakpoint(lg)) {
+            display: flex;
+            justify-self: flex-start;
+        }
     }
-  }
+
+    h3 {
+        color: var(--primary-color);
+        text-align: center;
+        font-size: clamp(0.5rem, 4vw, 2rem);
+        padding-bottom: 1%;
+        padding-right: 20%;
+        padding-top: 0.5rem;
+        font-family: var(--font-family-title), serif;
+        font-weight: 400;
+
+        @media (max-width: breakpoint(lg)) {
+            display: flex;
+            justify-self: flex-start;
+        }
+    }
 }

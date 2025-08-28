@@ -16,7 +16,7 @@ export type SectionGalleryProps = {
 };
 
 export const SectionGallery = (props: SectionGalleryProps) => {
-    const { socialMediaLinks, videoLink, seeMoreLink } = props;
+    const { socialMediaLinks, videoLink: _videoLink, seeMoreLink } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -37,7 +37,7 @@ export const SectionGallery = (props: SectionGalleryProps) => {
                 {/*        params={{*/}
                 {/*            className: cls.VideoContentYoutube*/}
                 {/*        }}*/}
-                {/*        src={videoLink}*/}
+                {/*        src={_videoLink}*/}
                 {/*    />*/}
                 {/*</div>*/}
 

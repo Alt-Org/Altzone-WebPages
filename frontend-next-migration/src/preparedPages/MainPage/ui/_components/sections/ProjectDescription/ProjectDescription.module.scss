@@ -1,121 +1,115 @@
 .Section {
-  display: flex;
-  opacity: 0;
-  &.inView{
-    animation: fadeIn 1s ease-in-out;
-    opacity: 1;
-  }
-
+    display: flex;
+    opacity: 0;
+    &.inView {
+        animation: fadeIn 1s ease-in-out;
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .Container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  opacity: 0;
-  transform: translateY(20px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    opacity: 0;
+    transform: translateY(20px);
 
-  &.inView{
-    animation: slideIn 1.8s ease-in-out;
-    transform: translateY(0);
-    opacity: 1;
-  }
-
+    &.inView {
+        animation: slideIn 1.8s ease-in-out;
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .imageTextBlock {
-  display: flex;
-  align-items: center;
-  max-width: 80%;
-  margin-top: 20px;
-  transform: scale(0.8);
-  opacity: 0;
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    margin-top: 20px;
+    transform: scale(0.8);
+    opacity: 0;
 
-  &.inView{
-    animation: zoomIn 1.8s ease-in-out;
-    opacity: 1;
-    transform: scale(1);
-  }
-
+    &.inView {
+        animation: zoomIn 1.8s ease-in-out;
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes zoomIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .Image {
-  max-width: 30%;
-  height: auto;
+    max-width: 30%;
+    height: auto;
 
-  &.inView{
-    animation: rotate 1.5s alternate;
-  }
-
+    &.inView {
+        animation: rotate 1.5s alternate;
+    }
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .titleQuestion {
-  font-size: var(--font-line-xxxl);
-  font-family: var(--font-family-title), sans-serif;
-  font-weight: lighter;
-  text-align: center;
-  color: var(--primary-color);
-  padding: 15px;
-  max-width: 90%;
+    font-size: var(--font-line-xxxl);
+    font-family: var(--font-family-title), sans-serif;
+    font-weight: lighter;
+    text-align: center;
+    color: var(--primary-color);
+    padding: 15px;
+    max-width: 90%;
 
- @media screen and (max-width: 600px) {
-   & {
-     font-size: var(--font-line-xxl);
-   }
- }
-
-  @media screen and (max-width: 400px) {
-    & {
-      font-size: var(--font-line-l);
+    @media screen and (max-width: 600px) {
+        & {
+            font-size: var(--font-line-xxl);
+        }
     }
-  }
 
+    @media screen and (max-width: 400px) {
+        & {
+            font-size: var(--font-line-l);
+        }
+    }
 }
 
 @media screen and (min-width: breakpoint(lg)) {
-  .description {
-    width: 60%;
-  }
+    .description {
+        width: 60%;
+    }
 }
-

@@ -19,7 +19,7 @@ type Props = {
 };
 
 export const HeroCard = (props: Props) => {
-    const { id, title, imageSrc, imageAlt, className = '', backgroundColor, slug } = props;
+    const { id: _id, title, imageSrc, imageAlt, className = '', backgroundColor, slug } = props;
 
     const elementRef = useRef(null);
 

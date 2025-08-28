@@ -1,12 +1,11 @@
 .Container {
-
     margin: auto 0;
     padding: 0 0 5px 0;
     text-align: center;
     height: 100%;
     place-content: center;
     border-radius: var(--border-radius-custom);
-    background-color: #1E3544;
+    background-color: #1e3544;
     border: 2px solid black;
     box-shadow: 0.5rem 0.5rem black;
     text-align: left;
@@ -14,17 +13,15 @@
     align-items: center;
     justify-content: start;
 
-
-    .Content{
+    .Content {
         flex-grow: 1;
-
     }
-    
+
     .multilineText {
         white-space: pre-line;
-      }
+    }
 
-    .ImageWrapper  {
+    .ImageWrapper {
         width: fit-content;
         height: 236px;
         display: flex;
@@ -33,13 +30,12 @@
         padding: 10px;
         align-items: center;
 
-
-        img{
+        img {
             width: 12em;
             height: 12em;
             object-fit: center;
         }
-      }
+    }
 
     h2 {
         padding: 15px 0 0 0;
@@ -65,26 +61,24 @@
         font-weight: 200;
         text-align: left;
         max-width: 85%;
-        align-self:flex-start;
-        
+        align-self: flex-start;
     }
 
     a {
         text-decoration: underline;
         font-size: 0.9em;
-        color: var(--primary-color)!important;
+        color: var(--primary-color) !important;
         text-decoration: none;
-        
 
         &:hover {
-            color: var(--secondary-color)!important;
+            color: var(--secondary-color) !important;
         }
-    
-    &::after {
-        content: '';
-        display: block;
-        padding: 0 0 10px;
-    }
+
+        &::after {
+            content: '';
+            display: block;
+            padding: 0 0 10px;
+        }
     }
     .linkWrapper {
         padding: 0;
@@ -92,26 +86,21 @@
         line-height: 0.8em;
     }
 
-    
-     .linkWrapper:has(img) {
-
+    .linkWrapper:has(img) {
         display: flex;
         align-items: center;
         margin: 0 10px 0 0;
-     a {
-            display:inline-flex;
+        a {
+            display: inline-flex;
             flex-direction: row;
 
-            img{
+            img {
                 filter: brightness(0) invert(1);
                 width: 2.7vh;
             }
-          }
-
         }
+    }
 }
-
-
 
 @media (max-width: breakpoint(md)) {
     .Container {
@@ -137,16 +126,14 @@
             justify-content: center;
             align-items: center;
 
-            img{
+            img {
                 width: 8em;
                 height: 8em;
                 object-fit: center;
             }
         }
 
- 
-        
-        p{
+        p {
             font-size: 0.8em;
             margin: 10px auto;
             padding: 0 10px;
@@ -154,14 +141,11 @@
             max-width: 100%;
         }
         .linkWrapper:has(img) {
-
             display: flex;
             align-items: center;
             width: 100%;
-            margin: 0 10px 10px ;
-
-            }
-
+            margin: 0 10px 10px;
+        }
     }
 }
 @media (min-width: breakpoint(md)) and (max-width: 900px) {
@@ -175,7 +159,7 @@
             justify-content: center;
             align-items: center;
 
-            img{
+            img {
                 width: 8em;
                 height: 8em;
                 object-fit: center;
@@ -183,9 +167,3 @@
         }
     }
 }
-
-
-
-
-
-

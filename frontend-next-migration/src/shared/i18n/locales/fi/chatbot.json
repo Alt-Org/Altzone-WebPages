@@ -9,5 +9,4 @@
     "errorApiKeyMissing": "OpenAI API -avain puuttuu. Aseta se tiedostoon .env.local.",
     "errorDefaultResponse": "En osaa vastata tähän.",
     "errorUnexpected": "Odottamaton virhe:"
-  }
-  
+}

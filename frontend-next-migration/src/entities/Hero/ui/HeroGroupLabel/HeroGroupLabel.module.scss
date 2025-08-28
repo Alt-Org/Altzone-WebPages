@@ -1,21 +1,21 @@
 .container {
-  position: relative;
-  max-width: 400px;
-  width: 100%;
-  height: auto;
-  padding-top: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    padding-top: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .labelText {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: clamp(1rem, 4vw, 2rem);
-  font-weight: bold;
-  text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: clamp(1rem, 4vw, 2rem);
+    font-weight: bold;
+    text-align: center;
 }

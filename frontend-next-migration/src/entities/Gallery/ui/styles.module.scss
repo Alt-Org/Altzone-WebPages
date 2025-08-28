@@ -1,61 +1,58 @@
 .cover {
-  position: relative;
-  margin: 10px;
-  //background-color: var(--transparent-bg) !important;
-  border-radius: var(--border-radius-custom);
+    position: relative;
+    margin: 10px;
+    //background-color: var(--transparent-bg) !important;
+    border-radius: var(--border-radius-custom);
 }
 
-.link{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+.link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 
-  border-radius: var(--border-radius-custom);
-
-  button{
     border-radius: var(--border-radius-custom);
-  }
 
- button:hover{
-    color: var(--primary-color);
- }
+    button {
+        border-radius: var(--border-radius-custom);
+    }
 
-  img{
-    border-radius: var(--border-radius-custom);
-  }
+    button:hover {
+        color: var(--primary-color);
+    }
 
+    img {
+        border-radius: var(--border-radius-custom);
+    }
 }
-
 
 .coverImageWrapper {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-top: 100%;
-  border-radius: var(--border-radius-custom);
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    border-radius: var(--border-radius-custom);
 }
 
 .coverImageWrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--border-radius-custom);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-custom);
 }
 
 .title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-  padding: 1%;
-  background-color: transparent;
-  color: var(--white);
-  border-bottom-right-radius: var(--border-radius-custom);
-  font-size: 2em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 1%;
+    background-color: transparent;
+    color: var(--white);
+    border-bottom-right-radius: var(--border-radius-custom);
+    font-size: 2em;
 }
-

@@ -1,5 +1,3 @@
-
-
 .headerImg {
     width: 100%;
     max-width: 1400px;
@@ -13,16 +11,15 @@
     margin-left: 0;
     margin-right: auto;
 
-    @media (min-width: breakpoint(xxl)){
+    @media (min-width: breakpoint(xxl)) {
         width: 100%;
         margin-left: auto;
     }
 
-    @media (max-width: breakpoint(lg)){
+    @media (max-width: breakpoint(lg)) {
         width: 95%;
         margin-left: auto;
-      }
-    
+    }
 }
 
 .HeaderContainer {
@@ -67,23 +64,23 @@
     max-width: 1400px;
     margin-right: auto;
 
-    @media (min-width: breakpoint(lg)){
+    @media (min-width: breakpoint(lg)) {
         flex-direction: row;
     }
 
-    @media (min-width: breakpoint(xxl)){
+    @media (min-width: breakpoint(xxl)) {
         margin-left: auto;
     }
-    
+
     h2 {
-        font-family: var(--font-family-title),serif;
+        font-family: var(--font-family-title), serif;
         color: var(--primary-color);
         font-size: var(--h2-size-desktop);
     }
 
-    @media (max-width: breakpoint(lg)){
+    @media (max-width: breakpoint(lg)) {
         width: 100%;
-      }
+    }
 }
 
 .Searchfield {
@@ -92,8 +89,8 @@
     color: var(--primary-color);
     margin-left: 0.5em;
     outline: none;
-    font-family: var(--primary-font),serif;
-    
+    font-family: var(--primary-font), serif;
+
     &::placeholder {
         color: var(--primary-color);
     }
@@ -130,8 +127,8 @@
     overflow: hidden !important;
     flex-basis: 0 !important;
     margin-left: 1% !important;
-    
+
     @media (max-width: breakpoint(lg)) {
         width: 0;
-      }
+    }
 }

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
 
-.feedbackForm{
+.feedbackForm {
     border-radius: var(--border-radius-custom);
-    background-color: rgba(0, 0, 0, 0.90);
+    background-color: rgba(0, 0, 0, 0.9);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -12,8 +12,7 @@
     height: 325px !important;
 }
 
-
-.feedbackTitle{
+.feedbackTitle {
     width: 228px;
     height: 64px;
     font-family: 'Joti One';
@@ -21,9 +20,8 @@
     font-size: 24px;
     line-height: 32px;
 
-    color: #FF0010;
-};
-
+    color: #ff0010;
+}
 
 .feedbackButton {
     font-family: 'DM Sans';
@@ -43,17 +41,14 @@
     width: 95%;
     height: 48px;
 
-    background: #FFA101 !important;
+    background: #ffa101 !important;
     border: 2px solid #000000 !important;
     border-radius: 12px !important;
-};
-
+}
 
 .textInput {
     width: 95%;
-
 }
-
 
 .feedbackEmojies {
     display: flex !important;
@@ -62,8 +57,7 @@
     align-items: center;
     gap: 10px;
     padding-bottom: 5px;
-};
-
+}
 
 .emoji:hover {
     transform: scale(1.05);
@@ -73,7 +67,7 @@
 .selectedEmoji {
     transform: scale(1.25);
 }
-.linkToFormContainer{
+.linkToFormContainer {
     flex-direction: row;
     gap: 10px;
 }
@@ -87,6 +81,3 @@
     display: inline-block;
     vertical-align: middle;
 }
-
-
-

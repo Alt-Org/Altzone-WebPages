@@ -9,5 +9,4 @@
     "errorApiKeyMissing": "Отсутствует ключ API OpenAI. Укажите его в файле .env.local.",
     "errorDefaultResponse": "Я не знаю, как на это ответить.",
     "errorUnexpected": "Неожиданная ошибка:"
-  }
-  
+}

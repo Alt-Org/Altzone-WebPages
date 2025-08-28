@@ -10,8 +10,6 @@ import igIcon from '@/shared/assets/images/Insta2.svg';
 import fbdIcon from '@/shared/assets/images/Facebook2.svg';
 import discordIcon from '@/shared/assets/images/Discord2.svg';
 import ytIcon from '@/shared/assets/images/Youtube2.svg';
-import { block } from 'sharp';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Creates a function that generates a `BlockSection` object, used for building blocks on the "Join Us" page.
@@ -54,11 +52,11 @@ export const makeBlocksWithI18n = (
         return {
             label: t(`block-label-${section}`),
             description: t(`block-description-${section}`),
-            links: link.map((l) => ({
-                url: l.url,
-                text: t(`block-link-text-${l.text}`),
-                isExternal: l.isExternal ?? false,
-                iconSrc: l.iconSrc,
+            links: link.map((linkItem) => ({
+                url: linkItem.url,
+                text: t(`block-link-text-${linkItem.text}`),
+                isExternal: linkItem.isExternal ?? false,
+                iconSrc: linkItem.iconSrc,
             })),
             img: img || '',
             imgAlt: t(`block-image-alt-${section}`),
