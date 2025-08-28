@@ -146,3 +146,5 @@ export const getRouteDefenseGalleryGroupPage = (group: string) => `/defense-gall
 export const getRouteLeaderboardPage = () => '/leaderboard';
 export const getRouteLeaderboardFriendsPage = () => '/leaderboard/friends';
 export const getRouteLeaderboardClansPage = () => '/leaderboard/clans';
+
+export const getRouteGamePage = () => '/peli';
