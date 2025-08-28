@@ -41,26 +41,3 @@ const membersApi = directusApi.injectEndpoints({
 });
 
 export const { useGetMembersQuery } = membersApi;
-
-export async function fetchMembersServer(): Promise<number> {
-    try {
-        const members = await client.request<any[]>(readItems('members', { limit: 500 }));
-
-        const normalize = (s: unknown) =>
-            String(s ?? '')
-                .normalize('NFKD')
-                .replace(/[\u0300-\u036f]/g, '')
-                .replace(/\s+/g, ' ')
-                .trim()
-                .toLowerCase();
-
-        return new Set(
-            members.map((m, i) =>
-                normalize(m.name) ? `name:${normalize(m.name)}` : `__id_${m.id ?? i}`,
-            ),
-        ).size;
-    } catch (error) {
-        console.error('fetchMembersServer error:', error);
-        throw error;
-    }
-}
