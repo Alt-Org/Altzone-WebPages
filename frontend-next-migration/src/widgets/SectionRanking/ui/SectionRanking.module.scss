@@ -52,14 +52,12 @@
 
 .TableTitleRow {
   color: black;
-  font-weight: bold;
-  font-size: xx-large;
+  font: var(--font-xxl) 
 }
 
 .TableContentRow {
   color: black;
-  font-weight: bold;
-  font-size: xx-large;
+  font: var(--font-xxl) 
 }
 
 .TableContentRow td {

@@ -38,8 +38,7 @@
 }
 
 .membersListContainer {
-  font-size: clamp(0.5rem, 3vw, 1.7rem);
-  font-family: var(--font-family-main);
+  font: var(--font-l);
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: var(--border-radius-custom);
   padding: 0.7rem 1rem 1rem 1rem;
@@ -60,10 +59,10 @@
     padding-right: 20%;
     padding-top: 2rem;
     background-color: transparent;
-    font-family: var(--font-family-title), serif;
-    font-weight: 400;
+    font: var(--font-sw-5xl);
 
     @media (max-width: breakpoint(lg)) {
+      font: var(--font-sw-xl);
       display: flex;
       justify-self: flex-start;
     }
@@ -72,14 +71,13 @@
   h3 {
     color: var(--primary-color);
     text-align: center;
-    font-size: clamp(0.5rem, 4vw, 2rem);
     padding-bottom: 1%;
     padding-right: 20%;
     padding-top: 0.5rem;
-    font-family: var(--font-family-title), serif;
-    font-weight: 400;
+    font: var(--font-sw-xxl), serif;
 
     @media (max-width: breakpoint(lg)) {
+      font: var(--font-sw-l);
       display: flex;
       justify-self: flex-start;
     }

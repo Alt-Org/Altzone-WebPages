@@ -18,9 +18,7 @@
 
     h1 {
         color: var(--primary-color);
-        font-family: var(--font-family-title);
-        font-size: var(--h2-size-desktop);
-        font-weight: 100;
+        font: var(--font-sw-5xl);
     }
 }
 
@@ -30,9 +28,7 @@
 
     h1 {
         color: var(--primary-color);
-        font-family: var(--font-family-title);
-        font-size: var(--h2-size-desktop);
-        font-weight: 100;
+        font: var(--font-sw-5xl);
     }
 }
 
@@ -63,14 +59,14 @@
         padding-left: unset;
         max-width: unset;
         text-align: center;
-        font-size: var(--h1-size-mobile);
+        font: var(--font-sw-xl);
     }
 
     .PageTitleAlt {
         padding-left: unset;
         max-width: unset;
         text-align: center;
-        font-size: var(--h1-size-mobile);
+        font: var(--font-sw-xl);
     }
 
     .SearchContainer {

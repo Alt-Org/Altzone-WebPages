@@ -52,12 +52,12 @@
   word-wrap: break-word;
 
   h1{
-    font-size: var(--font-line-4xl);
+    font: var(--font-4xl);
     color: var(--primary-color)
   }
 
   //h1 {
-  //  font-size: var(--font-line-4xl);
+  //  font: var(--font-4xl);
   //  width: 100%;
   //  line-height: 1.5;
   //  font-weight: bold;
@@ -93,13 +93,13 @@
 
   @media (max-width: 600px){
     h1{
-      font-size: var(--font-line-xxxl);
+      font: var(--font-xxxl);
     }
   }
 
 
   p{
-    font-size: var(--font-line-m);
+    font: var(--font-m);
     //color: var(--secondary-color);
   }
 }

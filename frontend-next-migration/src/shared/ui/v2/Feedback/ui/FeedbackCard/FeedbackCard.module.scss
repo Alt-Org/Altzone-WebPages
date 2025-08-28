@@ -15,23 +15,17 @@
 }
 
 .feedbackTitle {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.9rem;
-    line-height: 40px;
+    font:var(--font-sw-xl);
     padding: 5px 1em 0 1em;
     height: fit-content;
     color: var(--primary-color);
-    font-family: var(--font-family-title),serif;
     text-align: center;
     width: 100%;
     margin: 0 auto;
 }
 
 .feedbackButton {
-    font-family: var(--font-family-texts), serif;
-    font-style: normal;
-    font-weight: 400;
+    font: var(--font-m);
     font-size: 18px !important;
     color: var(--black) !important;
     text-shadow: none !important;
@@ -50,12 +44,11 @@
 }
 
 .textInput {
-    font-size: 1rem;
-    font-family: var(--font-family-texts), sans-serif;
+    font: var(--font-m);
     color: var(--black);
     width: 100%;
     height: 45px;
-    padding: 0 10px;
+    padding: 10px 10px;
     background: #FFFFFF;
     border: 2px solid #000000;
     box-shadow: 2px 4px 0 #121212;
@@ -75,8 +68,7 @@
 .linkToForm {
     display: flex;
     flex-direction: row;
-    font-family: var(--font-family-secondary) serif;
-    font-size: 1rem;
+    font: var(--font-dm-m);
     color: var(--white);
 }
 

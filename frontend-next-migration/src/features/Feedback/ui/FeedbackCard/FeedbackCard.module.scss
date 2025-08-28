@@ -17,18 +17,14 @@
     width: 228px;
     height: 64px;
     font-family: 'Joti One';
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
+    font: var(--font-l);
 
     color: #FF0010;
 };
 
 
 .feedbackButton {
-    font-family: 'DM Sans';
-    font-style: normal;
-    font-weight: 400 !important;
+    font: var(--font-dm-m);
     font-size: 18px !important;
     color: #000000 !important;
     text-shadow: none !important;

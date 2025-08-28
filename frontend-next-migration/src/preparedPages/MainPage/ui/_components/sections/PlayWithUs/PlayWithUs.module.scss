@@ -10,7 +10,7 @@
 
 .title {
   text-align: center;
-  font-size: var(--font-line-xxxl);
+  font: var(--font-xxxl);
 
   //todo add animation as well
   //opacity: 0;
@@ -23,11 +23,11 @@
   //}
 
   @media screen and (max-width: 600px) {
-    font-size: var(--font-line-xxl);
+    font: var(--font-xxl);
   }
 
   @media screen and (max-width: 450px) {
-    font-size: var(--font-line-xl);
+    font: var(--font-xl);
   }
 }
 
@@ -75,7 +75,7 @@
   max-width: 80%;
 
   & * {
-    font-size: 2.7rem !important;
+    font: var(--font-xxl) !important;
   }
 
   padding: 0.5rem;
@@ -86,14 +86,14 @@
 
   @media (max-width: 1500px) {
     & * {
-      font-size: 2rem !important;
+      font: var(--font-xl) !important;
     }
   }
 
 
   @media (max-width: 450px) {
     & * {
-      font-size: 2.4rem !important;
+      font: var(--font-xxl) !important;
     }
   }
 
@@ -141,7 +141,7 @@
   color: var(--white);
   padding: 10px 15px;
   border-radius: 15px;
-  font-size: 0.9rem;
+  font: var(--font-s);
   max-width: 30%;
   text-align: center;
   display: flex;
@@ -151,7 +151,7 @@
 
 
 .WarningIcon {
-  font-size: 1.2rem;
+  font: var(--font-l);
   color: yellow;
  }
 
@@ -162,7 +162,7 @@
    }
   }
   .WarningIcon {
-   font-size: 1.2rem;
+   font: var(--font-l);
    color: yellow;
   }
 

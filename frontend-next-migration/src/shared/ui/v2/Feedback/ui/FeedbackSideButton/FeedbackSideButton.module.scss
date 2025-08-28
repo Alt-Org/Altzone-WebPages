@@ -3,8 +3,7 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  font-family: var(--font-family-main) !important;
-  font-size: var(--font-size-m) !important;
+  font: var(--font-m) !important;
 
 
   height: fit-content;
@@ -27,7 +26,6 @@
   right: 10px;
   background-color: var(--black)!important;
   z-index: var(--sideButton-z-index) !important;
-  font-family:  16px !important;
   line-height: 1 !important;
   transform: rotate(180deg);
   padding: 14px 0 14px 0 !important;

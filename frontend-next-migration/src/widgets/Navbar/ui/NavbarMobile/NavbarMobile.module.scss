@@ -76,7 +76,6 @@
   box-shadow: 0 0 0 2px var(--secondary-color);
   padding: 5px;
   text-align: center;
-  font-family: var(--font-family-texts), serif !important;
   font: var(--font-l);
   cursor: pointer;
   -webkit-user-select: none;
@@ -103,13 +102,13 @@
   border: 2px solid var(--secondary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--primary-color) !important;
-  font-size: var(--font-size-m) !important;
+  font: var(--font-m) !important;
   height: 42px;
 
   button {
     padding: 2px;
     background-color: rgba(0, 0, 0, 0.8);
-    font-size: var(--font-size-m) !important;
+    font: var(--font-m) !important;
     color: var(--primary-color) !important;
     border-radius: var(--border-radius-custom);
     border: 2px solid transparent;

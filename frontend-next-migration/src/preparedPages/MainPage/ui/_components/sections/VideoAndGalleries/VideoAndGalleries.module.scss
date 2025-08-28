@@ -3,6 +3,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -24,27 +25,24 @@
   opacity: 0;
 
 
-  &.inView{
+  &.inView {
     animation: fadeIn 2s ease-out;
     opacity: 1;
   }
 }
 
 .title {
-
-
-
   text-align: center;
-  font-size: var(--font-line-xxxl);
+  font: var(--font-xxxl);
   //line-height: 0;
 
 
   @media screen and (max-width: 600px) {
-    font-size: var(--font-line-xxl);
+    font: var(--font-xxl);
   }
 
   @media screen and (max-width: 450px) {
-    font-size: var(--font-line-xl);
+    font: var(--font-xl);
   }
 }
 
@@ -114,11 +112,10 @@
 }
 
 
-.VideoContentYoutube{
+.VideoContentYoutube {
 
 
   iframe {
     border-radius: var(--border-radius-custom);
   }
 }
-
