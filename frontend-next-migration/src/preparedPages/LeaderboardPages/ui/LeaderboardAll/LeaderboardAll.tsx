@@ -15,11 +15,6 @@ const LeaderboardAll = () => {
     const { data: playerData = [], isLoading: isLoadingPlayers } = useGetTopPlayersQuery(undefined) as { data: any[], isLoading: boolean };
     const { data: clanData = [], isLoading: isLoadingClans } = useGetTopClansQuery(undefined) as { data: any[], isLoading: boolean };
 
-    // Debug output for development
-    console.log('Players:', playerData, 'Clans:', clanData);
-
-
-
     // Show loading or empty state as needed
     if (isLoadingPlayers || isLoadingClans) {
         return <div>Loading leaderboard...</div>;
