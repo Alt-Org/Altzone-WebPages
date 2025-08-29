@@ -148,3 +148,4 @@ export const getRouteLeaderboardFriendsPage = () => '/leaderboard/friends';
 export const getRouteLeaderboardClansPage = () => '/leaderboard/clans';
 
 export const getRouteGamePage = () => '/peli';
+export const getRouteProfilePage = () => '/profile';
