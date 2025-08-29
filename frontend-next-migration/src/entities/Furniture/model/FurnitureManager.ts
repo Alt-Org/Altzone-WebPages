@@ -154,17 +154,22 @@ export class FurnitureManager {
      * @returns {Array<Piece>} Returns an array of Pieces with the same category
      */
     public getPiecesByCategory(cat: PieceType): Array<Piece> {
+        const getName = (v: unknown) =>
+            v && typeof v === 'object' && 'name' in (v as any)
+                ? String((v as any).name).toUpperCase()
+                : String(v ?? '').toUpperCase();
+
+        const target = getName(cat);
         const ret: Array<Piece> = [];
 
-        this.getAllFurnitureSets().map((set: SetInfo) => {
-            return set.items.map((piece: Piece) => {
-                if (piece.type === cat) {
+        this.getAllFurnitureSets().forEach((set: SetInfo) => {
+            set.items.forEach((piece: Piece) => {
+                if (getName((piece as any).type) === target) {
                     ret.push({
                         ...piece,
                         set: set,
                     });
                 }
-                return true;
             });
         });
 

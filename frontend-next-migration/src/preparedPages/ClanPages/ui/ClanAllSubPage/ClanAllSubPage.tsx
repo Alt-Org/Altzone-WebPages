@@ -50,8 +50,6 @@ const ClanAllSubPage = () => {
             />
         );
 
-    //if (error) return <div>Error: {JSON.stringify(error)}</div>;
-
     const onClickToClan = (id: string) => {
         router.push(getRouteOneClanPage(id));
     };
@@ -80,11 +78,7 @@ const ClanAllSubPage = () => {
         return (
             <>
                 <h1 className={cls.titleText}>{t('clans_title')}</h1>
-                {isMobileSize ? (
-                    <ClansSearchMobile onClickToSearch={onClickToSearch} />
-                ) : (
-                    <ClansSearchDesktop onClickToSearch={onClickToSearch} />
-                )}
+                <ClansSearch onClickToSearch={onClickToSearch} />
                 <h2 className={cls.noResults}>{t('no_result')}</h2>
             </>
         );
@@ -94,11 +88,7 @@ const ClanAllSubPage = () => {
         return (
             <>
                 <h1 className={cls.titleText}>{t('clans_title')}</h1>
-                {isMobileSize ? (
-                    <ClansSearchMobile onClickToSearch={onClickToSearch} />
-                ) : (
-                    <ClansSearchDesktop onClickToSearch={onClickToSearch} />
-                )}
+                <ClansSearch onClickToSearch={onClickToSearch} />
                 {isMobileSize ? (
                     <ClansViewMobile
                         clanServerResponse={clans}
@@ -119,20 +109,17 @@ const ClanAllSubPage = () => {
     return null;
 };
 
-type SearchProps = {
-    onClickToSearch?: (search: string) => void;
-};
+type SearchProps = { onClickToSearch?: (search: string) => void };
 
-const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
+const ClansSearch = ({ onClickToSearch }: SearchProps) => {
     const { t } = useClientTranslation('clan');
 
     const onClickSearch = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const searchField = document.querySelector<HTMLInputElement>('#search');
-        if (onClickToSearch && searchField) {
-            onClickToSearch(searchField.value);
-        }
+        if (onClickToSearch && searchField) onClickToSearch(searchField.value);
     };
+
     return (
         <form onSubmit={onClickSearch}>
             <input
@@ -153,34 +140,40 @@ const ClansSearchDesktop = ({ onClickToSearch }: SearchProps) => {
         </form>
     );
 };
-const ClansSearchMobile = ({ onClickToSearch }: SearchProps) => {
-    const { t } = useClientTranslation('clan');
 
-    const onClickSearch = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const searchField = document.querySelector<HTMLInputElement>('#search');
-        if (onClickToSearch && searchField) {
-            onClickToSearch(searchField.value);
-        }
-    };
+type PaginationProps = {
+    currentPage: number;
+    disablePrev: boolean;
+    disableNext: boolean;
+    onPrev: () => void;
+    onNext: () => void;
+};
+
+const Pagination = ({ currentPage, disablePrev, disableNext, onPrev, onNext }: PaginationProps) => {
     return (
-        <form onSubmit={onClickSearch}>
-            <input
-                name="search"
-                placeholder={t('search_placeholder')}
-                type="text"
-                id="search"
-            />
+        <div>
             <Button
-                type="submit"
+                onClick={onPrev}
                 theme={ButtonTheme.BACKGROUND}
                 size={ButtonSize.M}
                 className={cls.BtnGame}
                 square={false}
+                disabled={disablePrev}
             >
-                Find
+                Back
             </Button>
-        </form>
+            {currentPage}
+            <Button
+                onClick={onNext}
+                theme={ButtonTheme.BACKGROUND}
+                size={ButtonSize.M}
+                className={cls.BtnGame}
+                square={false}
+                disabled={disableNext}
+            >
+                Next
+            </Button>
+        </div>
     );
 };
 
@@ -199,47 +192,21 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
         if (onClickToPage) onClickToPage(page);
     };
 
+    const { currentPage, pageCount } = clanServerResponse.paginationData;
+    const disablePrev = currentPage === 1;
+    const disableNext = pageCount === undefined;
+
     return (
         <>
-            <div>
-                <Button
-                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage - 1)}
-                    theme={ButtonTheme.BACKGROUND}
-                    size={ButtonSize.M}
-                    className={cls.BtnGame}
-                    square={false}
-                    disabled={clanServerResponse.paginationData.currentPage === 1}
-                >
-                    Back
-                </Button>
-                {clanServerResponse.paginationData.currentPage}
-                <Button
-                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage + 1)}
-                    theme={ButtonTheme.BACKGROUND}
-                    size={ButtonSize.M}
-                    className={cls.BtnGame}
-                    square={false}
-                    disabled={clanServerResponse.paginationData.pageCount === undefined}
-                >
-                    Next
-                </Button>
-            </div>
+            <Pagination
+                currentPage={currentPage}
+                disablePrev={disablePrev}
+                disableNext={disableNext}
+                onPrev={() => onClickPage(currentPage - 1)}
+                onNext={() => onClickPage(currentPage + 1)}
+            />
             {clanServerResponse.data.Clan.map((clan, idx) => {
-                let bgColor;
-                switch (idx) {
-                    //     case 0:
-                    //         bgColor = 'rgba(218,165,32,0.89)';
-                    //         break;
-                    //     case 1:
-                    //         bgColor = 'rgba(192,192,192,0.75)';
-                    //         break;
-                    //     case 2:
-                    //         bgColor = 'rgb(162,108,62)';
-                    //         break;
-                    default:
-                        bgColor = 'rgba(0,0,0,0.6)';
-                        break;
-                }
+                const bgColor = 'rgba(0,0,0,0.6)';
                 return (
                     <div
                         key={idx}
@@ -253,7 +220,6 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                         <div>
                             <strong>{t('clan')}:</strong> {clan?.name}
                         </div>
-
                         <div>
                             <strong>{t('tag')}:</strong> {clan?.tag}
                         </div>
@@ -286,31 +252,19 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
         if (onClickToPage) onClickToPage(page);
     };
 
+    const { currentPage, pageCount } = clanServerResponse.paginationData;
+    const disablePrev = currentPage === 1;
+    const disableNext = pageCount === undefined;
+
     return (
         <div>
-            <div>
-                <Button
-                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage - 1)}
-                    theme={ButtonTheme.BACKGROUND}
-                    size={ButtonSize.M}
-                    className={cls.BtnGame}
-                    square={false}
-                    disabled={clanServerResponse.paginationData.currentPage === 1}
-                >
-                    Back
-                </Button>
-                {clanServerResponse.paginationData.currentPage}
-                <Button
-                    onClick={() => onClickPage(clanServerResponse.paginationData.currentPage + 1)}
-                    theme={ButtonTheme.BACKGROUND}
-                    size={ButtonSize.M}
-                    className={cls.BtnGame}
-                    square={false}
-                    disabled={clanServerResponse.paginationData.pageCount === undefined}
-                >
-                    Next
-                </Button>
-            </div>
+            <Pagination
+                currentPage={currentPage}
+                disablePrev={disablePrev}
+                disableNext={disableNext}
+                onPrev={() => onClickPage(currentPage - 1)}
+                onNext={() => onClickPage(currentPage + 1)}
+            />
             <table className={cls.ClanTable}>
                 <thead>
                     <tr>
@@ -324,21 +278,7 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                 </thead>
                 <tbody>
                     {clanServerResponse.data.Clan.map((clan, idx) => {
-                        let bgColor;
-                        switch (idx) {
-                            //     case 0:
-                            //         bgColor = 'rgba(218,165,32,0.89)';
-                            //         break;
-                            //     case 1:
-                            //         bgColor = 'rgba(192,192,192,0.75)';
-                            //         break;
-                            //     case 2:
-                            //         bgColor = 'rgb(162,108,62)';
-                            //         break;
-                            default:
-                                bgColor = 'rgba(0,0,0,0.6)';
-                                break;
-                        }
+                        const bgColor = 'rgba(0,0,0,0.6)';
 
                         return (
                             <tr
@@ -349,7 +289,6 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                                 <td>{idx + 1}</td>
                                 <td>{clan?.name}</td>
                                 <td>Joku Mestari </td>
-
                                 <td>{clan?.playerCount}</td>
                                 <td>{clan?.tag}</td>
                             </tr>

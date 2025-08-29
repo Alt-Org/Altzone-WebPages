@@ -1,6 +1,6 @@
 'use client';
 import { FC } from 'react';
-// @ts-ignore
+// @ts-ignore - 3rd-party package has no TypeScript types in our setup
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 

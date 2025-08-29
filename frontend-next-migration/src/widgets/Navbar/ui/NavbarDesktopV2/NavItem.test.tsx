@@ -1,3 +1,4 @@
+// src/widgets/Navbar/ui/NavbarDesktopV2/NavItem.test.tsx
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import NavItem from './NavItem';
@@ -7,7 +8,12 @@ import cls from './NavbarDesktop.module.scss';
 // Mock next/image
 jest.mock('next/image', () => ({
     __esModule: true,
-    default: (props: any) => <img {...props} />,
+    default: (props: any) => (
+        <img
+            alt=""
+            {...props}
+        />
+    ),
 }));
 
 // Mock translations
@@ -74,6 +80,7 @@ describe('NavItem Component', () => {
                 item={item}
                 className={className}
                 currentPath={currentPath}
+                mouseOver={false}
             />,
         );
     };

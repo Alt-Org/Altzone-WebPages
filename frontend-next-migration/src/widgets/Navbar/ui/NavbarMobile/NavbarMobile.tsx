@@ -36,13 +36,14 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const permissionToSeeOwnClan = checkPermissionFor('clan:seeOwn');
 
-    // todo looks like it should be moved to the feature layer
+    // todo: looks like this should be moved to the feature layer
     const [logout] = useLogoutMutation();
     const hasScrollbar = useIsPageScrollbar();
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const [_isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
 
-    // A crutch to reset dropdowns when closing the navbar
+    // reset dropdowns when closing the navbar
     const [sidebarItemsListResetKey, setSidebarItemsListResetKey] = useState(0);
     const handleBurgerClick = () => {
         setIsSidebarOpen(true);
@@ -51,7 +52,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const handleSidebarClose = () => {
         setIsSidebarOpen(false);
         props.onBurgerButtonClick?.(false);
-        // we should give some time for animation
+        // give some time for animation
         setTimeout(() => setSidebarItemsListResetKey((currentKey) => currentKey + 1), 500);
     };
 
@@ -76,31 +77,30 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     };
                 }
                 if (item.type === ItemType.navDropDown) {
-                    // Localize the elements within the dropdown, but skip if elementText equals "clanpage"
-                    //todo looks like that this logic should not be here in ui component
+                    // Localize dropdown elements; hide "clanpage" when user lacks permission
                     const localizedElements = item.elements
                         .map((element) => {
+                            // @ts-ignore -- union element: only link variant has elementText; runtime check follows
                             if (
-                                // @ts-ignore todo add guard
+                                // @ts-ignore -- accessing union variant safely for a simple equality check
                                 element.elementText === 'clanpage' &&
                                 !permissionToSeeOwnClan.isGranted
                             ) {
-                                return null; // Return null if elementText is "clanpage"
+                                return null;
                             }
                             return {
-                                // @ts-ignore todo add guard
+                                // @ts-ignore -- spreading union element for UI rendering
                                 ...element,
-                                // @ts-ignore todo add guard
-                                elementText: t(`${element.elementText}`), // Localize elementText
-                                // @ts-ignore
-                                active: realPath === element?.link?.path,
+                                // @ts-ignore -- localizing display text; exists only on link variant
+                                elementText: t(`${(element as any).elementText}`),
+                                // @ts-ignore -- UI-only flag to mark active child by current path
+                                active: realPath === (element as any)?.link?.path,
                             };
                         })
-                        .filter((element) => element !== null); // Filter out any null elements
+                        .filter((element) => element !== null) as any[];
 
                     const isDropdownActive = localizedElements.some((element) => element.active);
 
-                    // If there are no valid elements left, return null to skip this item
                     if (localizedElements.length === 0) {
                         return null;
                     }

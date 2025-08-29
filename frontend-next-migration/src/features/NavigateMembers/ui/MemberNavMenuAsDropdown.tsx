@@ -23,8 +23,8 @@ export const MembersNavMenu: React.FC = () => {
 
     const {
         data: teams = [],
-        isError,
-        isLoading,
+        isError: _isError,
+        isLoading: _isLoading,
     } = useGetMemberTeamsQuery(undefined, {
         refetchOnMountOrArgChange: false,
     });

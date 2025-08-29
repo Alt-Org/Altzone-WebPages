@@ -40,8 +40,8 @@ const Template: Story<NavbarTouchProps> = (args) => <NavbarMobile {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     marginTop: 0,
-    onDropdownChange: (collapsed) => {
-        /*console.log(`dropdownChange ${collapsed}`)*/
+    onDropdownChange: (_collapsed) => {
+        /* console.log(`dropdownChange ${_collapsed}`) */
     },
     className: '',
     navbarBuild: getNavbarBuildBySize('mobile'),

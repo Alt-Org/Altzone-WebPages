@@ -28,8 +28,7 @@
         width: 80%;
     }
 
-    @media (max-width: breakpoint(xs)),
-    (max-width: 320px) {
+    @media (max-width: breakpoint(xs)), (max-width: 320px) {
         height: 110px;
         width: 70%;
         margin: auto 0;
@@ -40,11 +39,10 @@
     }
 }
 
-
-.NewsCardLink:hover .NewsCard, .NewsCardLink:focus .NewsCard {
+.NewsCardLink:hover .NewsCard,
+.NewsCardLink:focus .NewsCard {
     border-color: var(--primary-color);
 }
-
 
 .imageContainer {
     position: absolute;
@@ -69,8 +67,7 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 -15%);
     transform: translateY(-27%);
 
-    @media (max-width: breakpoint(xs)),
-    (max-width: 320px) {
+    @media (max-width: breakpoint(xs)), (max-width: 320px) {
         margin-left: 35%;
     }
 }
@@ -104,9 +101,7 @@
     text-overflow: ellipsis;
     font-weight: 400;
 
-    @media (max-width: breakpoint(sm)),
-    (max-width: breakpoint(xs)),
-    (max-width: 320px) {
+    @media (max-width: breakpoint(sm)), (max-width: breakpoint(xs)), (max-width: 320px) {
         font-size: 1rem;
         padding-top: 10px;
     }

@@ -1,13 +1,13 @@
 import { ImageData } from '../types/gallery';
 
 export const useGetStrapiGalleryImages = (
-    r: __WebpackModuleApi.RequireContext,
+    req: __WebpackModuleApi.RequireContext,
     path: string,
 ): { [key: string]: ImageData } => {
     const images: { [key: string]: ImageData } = {};
 
-    r.keys().forEach((key) => {
-        const imagePath = r(key);
+    req.keys().forEach((key) => {
+        const imagePath = req(key);
         const imageKey = key.replace('./', '');
         images[imageKey] = imagePath.default;
     });

@@ -58,13 +58,13 @@ export const TextSlider = (props: Props) => {
         });
     };
 
-    const handleTouchStart = (e: React.TouchEvent) => {
+    const handleTouchStart = (event: React.TouchEvent) => {
         if (!isMobile) return;
-        const touchStartX = e.touches[0].clientX;
+        const touchStartX = event.touches[0].clientX;
         // console.log(`touchStartX: ${touchStartX}`);
 
-        const handleTouchMove = (e: TouchEvent) => {
-            const touchEndX = e.touches[0]?.clientX || touchStartX;
+        const handleTouchMove = (evt: TouchEvent) => {
+            const touchEndX = evt.touches[0]?.clientX || touchStartX;
             // console.log(`touchEndX: ${touchEndX}`);
             const diffX = touchStartX - touchEndX;
 

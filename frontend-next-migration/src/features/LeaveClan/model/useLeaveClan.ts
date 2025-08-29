@@ -12,9 +12,9 @@ const useLeaveClan = () => {
         const isConfirmed = window.confirm(t('toast_confirm'));
         if (isConfirmed) {
             const result = await leaveClan();
-            // @ts-ignore
+            // @ts-ignore - RTK Query trigger result is a union; runtime check for `error` is intentional
             if (result.error) {
-                // @ts-ignore
+                // @ts-ignore - Reading `error` from mutation result for user-facing toast message
                 toast.error(`${t('toast_error')}: ${result.error}`);
                 setIsCancelled(true);
                 return;

@@ -31,10 +31,10 @@ interface ClanInfoTileProps {
 const ClanInfoTile = ({
     id,
     name,
-    ageRange,
+    ageRange: _ageRange,
     playerCount,
     points,
-    labels,
+    labels: _labels,
     logo,
 }: ClanInfoTileProps) => {
     const router = useRouter();

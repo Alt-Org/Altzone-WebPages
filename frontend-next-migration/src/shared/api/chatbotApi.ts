@@ -95,8 +95,8 @@ export const chatbotApi = directusApi.injectEndpoints({
                             url: translation.url,
                             keywords: (translation.keywords || '')
                                 .split(',')
-                                .map((k: string) => k.trim())
-                                .filter((k: string) => k.length > 0),
+                                .map((keyword: string) => keyword.trim())
+                                .filter((keyword: string) => keyword.length > 0),
                         };
                     })
                     .filter(Boolean) as {

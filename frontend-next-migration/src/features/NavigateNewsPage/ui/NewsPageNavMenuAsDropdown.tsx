@@ -41,25 +41,26 @@ const NewsPageNavMenuAsDropdown: React.FC = () => {
     // Extract categories with localized names and slugs
     const categories = data
         ? data
-            .map((item) => {
-                const translation = item.translations.find(
-                    (t: { languages_code: string }) => t.languages_code === lngCode
-                );
-                const englishTranslation = item.translations.find(
-                    (t: { languages_code: string }) => t.languages_code === 'en-US'
-                );   
-                return {
-                    localizedName: translation?.category ?? '',
-                    slug: categoryNameToSlugMap[englishTranslation?.category] || '',
-                };
-            })
-            .filter((item) => item.localizedName && item.slug)
+              .map((item) => {
+                  const translation = item.translations.find(
+                      (t: { languages_code: string }) => t.languages_code === lngCode,
+                  );
+                  const englishTranslation = item.translations.find(
+                      (t: { languages_code: string }) => t.languages_code === 'en-US',
+                  );
+                  return {
+                      localizedName: translation?.category ?? '',
+                      slug: categoryNameToSlugMap[englishTranslation?.category] || '',
+                  };
+              })
+              .filter((item) => item.localizedName && item.slug)
         : [];
     const dropdownItems: DropDownElementASTextOrLink[] = categories.map((category) => ({
-        elementText: category.localizedName.charAt(0).toUpperCase() + category.localizedName.slice(1),
+        elementText:
+            category.localizedName.charAt(0).toUpperCase() + category.localizedName.slice(1),
         link: {
             path: getRouteNewsCategoryPage(category.slug),
-            isExternal: false
+            isExternal: false,
         },
         active: params.slug === category.slug,
     }));

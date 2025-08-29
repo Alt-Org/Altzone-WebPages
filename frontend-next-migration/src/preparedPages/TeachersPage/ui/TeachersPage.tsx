@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const TeachersPage = (props: Props) => {
-    const { title } = props;
+    const { title: _title } = props;
 
     return (
         <div className={cls.Wrapper}>

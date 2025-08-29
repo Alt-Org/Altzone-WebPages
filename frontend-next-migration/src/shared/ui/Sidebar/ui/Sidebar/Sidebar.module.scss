@@ -1,105 +1,111 @@
 .Sidebar {
-  z-index: var(--sidebar-z-index) !important;
-  height: 100%;
-  width: clamp(var(--sidebar-width), 100%, 550px);
+    z-index: var(--sidebar-z-index) !important;
+    height: 100%;
+    width: clamp(var(--sidebar-width), 100%, 550px);
 
-  background: var(--base-card-background);
-  position: fixed;
-  top: 0;
-  overflow-y: auto;
-  transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out;
-  @include custom-scrollbar;
-
-  &.left {
-    left: 0;
-  }
-
-  &.right {
-    right: 0;
-  }
-
-  overflow-x: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.button {
-  z-index: calc(var(--sidebar-z-index) + 1);
-  width: 33px;
-}
-
-.button {
-  position: relative;
-
-  .faBars,
-  .faTimes {
-    position: absolute;
+    background: var(--base-card-background);
+    position: fixed;
     top: 0;
-    left: 0;
-    opacity: 0; /* By default, both icons are hidden. */
-    transform-origin: center; /* Set the rotation center to the center of the icon. */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add rotation animation. */
-  }
+    overflow-y: auto;
+    transition:
+        width 0.4s ease-in-out,
+        background-color 0.4s ease-in-out;
+    @include custom-scrollbar;
 
-  &.collapsedButton .faBars {
-    opacity: 1; /* Display the burger icon. */
-    transform: rotate(0deg); /* Set the initial rotation position. */
-  }
+    &.left {
+        left: 0;
+    }
 
-  &.expandedButton .faBars {
-    opacity: 0; /* Hide the burger icon. */
-    transform: rotate(90deg); /* Rotate the icon by 90 degrees. */
+    &.right {
+        right: 0;
+    }
 
-  }
-.faTimes{
-  color:var(--content-primary);
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-  &.collapsedButton .faTimes {
-    opacity: 0; /* Hide the cross icon. */
-    transform: rotate(-90deg); /* Set the initial rotation position. */
-  }
 
-  &.expandedButton .faTimes {
-    opacity: 1; /* Display the cross icon. */
-    transform: rotate(0deg); /* Reset the icon to its original position. */
-  }
+.button {
+    z-index: calc(var(--sidebar-z-index) + 1);
+    width: 33px;
+}
+
+.button {
+    position: relative;
+
+    .faBars,
+    .faTimes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0; /* By default, both icons are hidden. */
+        transform-origin: center; /* Set the rotation center to the center of the icon. */
+        transition:
+            opacity 0.3s ease-in-out,
+            transform 0.3s ease-in-out; /* Add rotation animation. */
+    }
+
+    &.collapsedButton .faBars {
+        opacity: 1; /* Display the burger icon. */
+        transform: rotate(0deg); /* Set the initial rotation position. */
+    }
+
+    &.expandedButton .faBars {
+        opacity: 0; /* Hide the burger icon. */
+        transform: rotate(90deg); /* Rotate the icon by 90 degrees. */
+    }
+    .faTimes {
+        color: var(--content-primary);
+    }
+    &.collapsedButton .faTimes {
+        opacity: 0; /* Hide the cross icon. */
+        transform: rotate(-90deg); /* Set the initial rotation position. */
+    }
+
+    &.expandedButton .faTimes {
+        opacity: 1; /* Display the cross icon. */
+        transform: rotate(0deg); /* Reset the icon to its original position. */
+    }
 }
 
 .items {
-  margin-top: 70px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .items a {
-  display: block;
+    display: block;
 }
 
 .opening {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .collapsed {
-  width: var(--sidebar-width-collapsed);
-  opacity: 0;
-  transition: width 0.4s ease-out, opacity 0.4s ease-out;
+    width: var(--sidebar-width-collapsed);
+    opacity: 0;
+    transition:
+        width 0.4s ease-out,
+        opacity 0.4s ease-out;
 
-  white-space: nowrap;
-  overflow: hidden;
-
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .expanded {
-  width: clamp(var(--sidebar-width), 100%, 550px);
-  opacity: 1;
-  transition: width 0.4s ease-in, opacity 0.4s ease-in;
+    width: clamp(var(--sidebar-width), 100%, 550px);
+    opacity: 1;
+    transition:
+        width 0.4s ease-in,
+        opacity 0.4s ease-in;
 }
 
 .bottomItems {
-  display: flex;
-  margin: 20px 0;
-  justify-content: center;
+    display: flex;
+    margin: 20px 0;
+    justify-content: center;
 }

@@ -5,7 +5,7 @@
   hyphens: auto;
   padding: 10px;
 
-  background-color: var(--transparent-bg-darker); 
+  background-color: var(--transparent-bg-darker);
 
   p,
   a {
@@ -17,76 +17,20 @@
   }
 
   h3 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     font-weight: bold;
-    
   }
 
   min-width: 200px;
-
 }
-.parent{
 
-  .NavElement{
-
-    a{
-
-          h3{
-
+.parent {
+  @media (max-width: 1150px) {
+    .NavElement {
+      min-width: 320px;
+      //width: 55% !important;
     }
-    }
-
+    //align-items: center;
   }
-    
-
-  
 }
-@media (max-width: breakpoint(md)) {
-    .parent{
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-        .NavElement{
-
-    a{
-          h3{
-    font-size: 1.3rem !important;
-    }
-    }
-  }
-  p{
-    font-size: 0.9rem;
-  }
-    }
-    
-  }
-
-  @media (max-width: breakpoint(sm)) {
-    .parent{
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-        .NavElement{
-
-    a{
-          h3{
-    font-size: 1rem !important;
-    }
-    }
-  }
-  p{
-    font-size: 0.7rem;
-  }
-    }
- }
-    
-  
-
-  //align-items: center;

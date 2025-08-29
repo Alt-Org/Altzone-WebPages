@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
+import Image from 'next/image';
 import Fancybox from './Fancybox';
 
 const meta = {
@@ -57,9 +58,11 @@ export const Default: Story = {
                 data-fancybox="gallery"
                 href="https://altzone.fi/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhannu-hodari.755680ec.png&w=1920&q=75"
             >
-                <img
-                    src="thumbnail1.jpg"
+                <Image
+                    src="/thumbnail1.jpg"
                     alt="Thumbnail 1"
+                    width={200}
+                    height={120}
                 />
             </a>,
             <a
@@ -67,9 +70,11 @@ export const Default: Story = {
                 data-fancybox="gallery"
                 href="https://altzone.fi/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgraffitti-gaya.0b1229e0.png&w=1080&q=100"
             >
-                <img
-                    src="thumbnail2.jpg"
+                <Image
+                    src="/thumbnail2.jpg"
                     alt="Thumbnail 2"
+                    width={200}
+                    height={120}
                 />
             </a>,
         ],

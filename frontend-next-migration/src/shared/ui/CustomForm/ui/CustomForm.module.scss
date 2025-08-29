@@ -1,66 +1,65 @@
 .Form {
-  -webkit-user-select: none;
-  user-select: none;
-  width: 420px;
-  padding: 15px;
-  border-radius: var(--border-radius-custom);
-  display: grid;
-  gap: 10px;
-  color: var(--white);
-  font-family: var(--font-family-texts);
-
-  @media (max-width: 440px) {
-    width: 300px;
-  }
-
-  h1 {
-    margin-bottom: 5px;
-    text-align: center;
-  }
-
-  div {
-    display: grid;
-  }
-
-
-  span {
-    margin-bottom: 3px;
-    padding-left: 3px;
-    overflow-x: hidden;
-  }
-
-  input {
+    -webkit-user-select: none;
+    user-select: none;
+    width: 420px;
+    padding: 15px;
     border-radius: var(--border-radius-custom);
-    outline: none;
-    border: none;
-    width: 100%;
-  }
-
-  p {
-    color: var(--error);
-    margin-top: 5px;
-    margin-bottom: 20px;
-
-    height: 15px;
-    line-height: 15px;
-    font: var(--font-m);
+    display: grid;
+    gap: 10px;
+    color: var(--white);
     font-family: var(--font-family-texts);
-  }
 
-  .submit {
-    @include link-scale-effect;
-    margin-top: 8px;
-    font: var(--font-xl);
-  }
+    @media (max-width: 440px) {
+        width: 300px;
+    }
 
-  .field input[type="checkbox"] {
-    margin-right: 8px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-  }
-    
-  .dropdown {
-    color: rgba(0, 0, 0, 0.85);
-  }
+    h1 {
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    div {
+        display: grid;
+    }
+
+    span {
+        margin-bottom: 3px;
+        padding-left: 3px;
+        overflow-x: hidden;
+    }
+
+    input {
+        border-radius: var(--border-radius-custom);
+        outline: none;
+        border: none;
+        width: 100%;
+    }
+
+    p {
+        color: var(--error);
+        margin-top: 5px;
+        margin-bottom: 20px;
+
+        height: 15px;
+        line-height: 15px;
+        font: var(--font-m);
+        font-family: var(--font-family-texts);
+    }
+
+    .submit {
+        @include link-scale-effect;
+        margin-top: 8px;
+        font: var(--font-xl);
+    }
+
+    .field input[type='checkbox'] {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        color: rgba(0, 0, 0, 0.85);
+    }
 }

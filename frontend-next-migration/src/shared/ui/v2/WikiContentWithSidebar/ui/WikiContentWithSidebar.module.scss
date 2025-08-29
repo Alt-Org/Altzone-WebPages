@@ -31,7 +31,6 @@ $touchSize: 1024px;
     overflow: visible; // Ensure this is set
 }
 
-
 .navbarSide {
     position: sticky;
     top: 1.5rem;
@@ -72,7 +71,9 @@ $touchSize: 1024px;
         margin-top: 10px;
         cursor: pointer;
         padding: 10px;
-        transition: color 0.5s, border-left 0.2s;
+        transition:
+            color 0.5s,
+            border-left 0.2s;
 
         &:hover {
             color: var(--primary-color);
@@ -90,7 +91,6 @@ $touchSize: 1024px;
     }
 }
 
-
 .content {
     display: flex;
     flex-direction: column;
@@ -106,7 +106,6 @@ $touchSize: 1024px;
         text-align: center;
     }
 }
-
 
 .section {
     width: 100%;
@@ -143,7 +142,7 @@ $touchSize: 1024px;
     }
 
     a:hover {
-        color: var(--primary-color)
+        color: var(--primary-color);
     }
 }
 
@@ -155,9 +154,7 @@ $touchSize: 1024px;
     width: auto;
     object-fit: contain;
 
-
     box-shadow: 0 0 4px var(--primary-color);
-  
 }
 
 @media screen and (min-width: breakpoint(md)) {
@@ -169,7 +166,6 @@ $touchSize: 1024px;
     .section {
         padding: 5%;
     }
-
 }
 
 @media screen and (min-width: $touchSize) {

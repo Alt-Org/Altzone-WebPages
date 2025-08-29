@@ -8,7 +8,11 @@
     filter: blur(5px);
     transform: scale(0.9) rotate(-5deg);
     background-color: rgba(0, 0, 0, 0);
-    transition: opacity .5s ease-out, filter .5s ease-out, transform .5s ease-out, background-color 1.5s ease-out;
+    transition:
+        opacity 0.5s ease-out,
+        filter 0.5s ease-out,
+        transform 0.5s ease-out,
+        background-color 1.5s ease-out;
 }
 
 .SeeMore.inView {
@@ -22,5 +26,8 @@
     filter: blur(0);
     background-color: rgba(0, 0, 0, 0.9);
     transform: scale(1.05) rotate(0deg);
-    transition: filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    transition:
+        filter 0.3s ease,
+        background-color 0.3s ease,
+        transform 0.3s ease;
 }

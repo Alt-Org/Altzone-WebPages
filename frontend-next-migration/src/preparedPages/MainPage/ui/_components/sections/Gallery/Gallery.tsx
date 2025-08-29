@@ -1,15 +1,12 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
+import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Gallery.module.scss';
+import { YouTubeFacade } from '@/shared/ui/YouTubeFacade';
 import { useParams } from 'next/navigation';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
-import instaIcon from '@/shared/assets/images/Insta2.svg';
-import discordIcon from '@/shared/assets/images/Discord2.svg';
-import facebookIcon from '@/shared/assets/images/Facebook2.svg';
-import youtubeIcon from '@/shared/assets/images/Youtube2.svg';
 
 export type Props = {
     title: string;
@@ -25,7 +22,15 @@ export type Props = {
 };
 
 const Gallery = (props: Props) => {
-    const { title, infoText, seeMoreLink, gameImg } = props;
+    const {
+        title,
+        infoText,
+        socialsText: _socialsText,
+        seeMoreLink,
+        socialMediaLinks,
+        videoLink,
+    } = props;
+
     const params = useParams();
     const lng = params.lng as string;
     const language = getLanguageCode(lng);
@@ -48,72 +53,35 @@ const Gallery = (props: Props) => {
             className={classNames(cls.SectionGallery, mods)}
         >
             <Container className={cls.Container}>
-                <div className={cls.titleWrapper}>
-                    <h2 className={classNames(cls.title, mods)}>{title}</h2>
-                    <p className={cls.InfoText}>{infoText}</p>
-                    <a
-                        className={cls.aboutLink}
-                        href={seeMoreLink.href}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        {seeMoreLink.text}
-                    </a>
-                    <p className={cls.socialMediaLinks}>Seuraa Alt Zonea somessa</p>
-                    <div className={cls.socialMediaHolder}>
-                        <a
-                            href={AppExternalLinks.discord}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <img
-                                src={discordIcon.src}
-                                alt="Discord"
-                                className={cls.socialMediaIcon}
-                            />
-                        </a>
-                        <a
-                            href={AppExternalLinks.instagram}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <img
-                                src={instaIcon.src}
-                                alt="Instagram"
-                                className={cls.socialMediaIcon}
-                            />
-                        </a>
-                        <a
-                            href={AppExternalLinks.facebook}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <img
-                                src={facebookIcon.src}
-                                alt="Facebook"
-                                className={cls.socialMediaIcon}
-                            />
-                        </a>
-                        <a
-                            href={AppExternalLinks.youtube}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <img
-                                src={youtubeIcon.src}
-                                alt="YouTube"
-                                className={cls.socialMediaIcon}
-                            />
-                        </a>
-                    </div>
+                <h2 className={classNames(cls.title, mods)}>{title}</h2>
+                <p className={cls.InfoText}>{infoText}</p>
+
+                {/*<SectionGalleryV1
+                    socialMediaLinks={socialMediaLinks}
+                    videoLink={videoLink}
+                />*/}
+
+                {/*<div className={cls.SectionGalleriasWrapper}>
+                    <SectionGallerias parentDirectory={SectionGalleriasPaths.galleries} />
+                </div>*/}
+
+                <div className={cls.videoWrapper}>
+                    <YouTubeFacade previewVideoYoutube={videoLink} />
                 </div>
 
-                <div className={cls.imgWrapper}>
-                    <img
-                        src={gameImg}
-                        alt=""
-                    />
-                </div>
+                {/*<p className={cls.SocialsText}>{_socialsText}</p>*/}
+
+                {/*<SectionGalleryV1
+                    socialMediaLinks={socialMediaLinks}
+                    videoLink={videoLink}
+                />*/}
+
+                <SectionGalleryV2
+                    images={photoObjects}
+                    version={'preview'}
+                    socialMediaLinks={socialMediaLinks}
+                    seeMoreLink={seeMoreLink}
+                />
             </Container>
         </section>
     );
