@@ -18,6 +18,7 @@ export type Props = {
     };
     socialMediaLinks: string[];
     videoLink: string;
+    gameImg?: string;
 };
 
 const Gallery = (props: Props) => {
@@ -29,6 +30,7 @@ const Gallery = (props: Props) => {
         socialMediaLinks,
         videoLink,
     } = props;
+
     const params = useParams();
     const lng = params.lng as string;
     const language = getLanguageCode(lng);

@@ -1,17 +1,12 @@
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .SectionGallery {
     margin: 40px auto;
     opacity: 0;
+
     &.inView {
         animation: fadeIn 2s ease-out;
         opacity: 1;
@@ -20,15 +15,32 @@
 
 .Container {
     margin-top: 20px;
+    width: 70%;
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.titleWrapper {
+    display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    align-items: start;
+    background-color: #1E3544;
+    border: 3px solid black;
+    padding: 20px;
+    box-shadow: 0.5rem 0.5rem black;
+    border-radius: 10px;
+    height: fit-content;
+    align-self: center;
+    width: 90%;
 }
 
 .title {
     text-align: center;
-    font-size: var(--font-line-xxxl);
+    font-size: var(--font-line-xl);
+    font-family: var(--font-family-title), sans-serif;
     opacity: 0;
     transform: translateX(-100%);
     transition:
@@ -62,33 +74,26 @@
     }
 }
 
-.SocialsText {
-    width: fit-content;
-    margin: auto;
-    margin-top: 20px;
-    font-size: 1.3em;
-    text-align: center;
-
-    @media screen and (min-width: 768px) {
-        font-size: var(--font-line-xl);
-    }
-}
-
 @media screen and (max-width: 900px) {
     .SectionGallery {
         margin-top: 40px;
     }
 }
 
-.videoWrapper {
-    padding: 0 40px;
+.socialMediaHolder {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 10rem;
 }
 
 .videoWrapper > div {
     margin-left: auto;
     margin-right: auto;
     max-width: 700px;
-    //height: 100% !important;
+    // height: 100% !important;
     border-radius: var(--border-radius-custom);
 }
 

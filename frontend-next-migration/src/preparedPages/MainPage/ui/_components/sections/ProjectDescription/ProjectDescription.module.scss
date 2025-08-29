@@ -1,6 +1,7 @@
 .Section {
     display: flex;
     opacity: 0;
+
     &.inView {
         animation: fadeIn 1s ease-in-out;
         opacity: 1;

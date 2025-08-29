@@ -11,16 +11,15 @@
 .title {
     text-align: center;
     font-size: var(--font-line-xxxl);
+    // todo add animation as well
+    // opacity: 0;
+    // transform: translateX(-100%);
+    // transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
 
-    //todo add animation as well
-    //opacity: 0;
-    //transform: translateX(-100%);
-    //transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-
-    //&.inView {
-    //  opacity: 1;
-    //  transform: translateX(0);
-    //}
+    // &.inView {
+    //   opacity: 1;
+    //   transform: translateX(0);
+    // }
 
     @media screen and (max-width: 600px) {
         font-size: var(--font-line-xxl);
@@ -62,8 +61,8 @@
     align-items: center;
     text-align: center;
     height: 95px;
-    //height: 10vh!important;
-    //width: 50% !important;
+    // height: 10vh!important;
+    // width: 50% !important;
     max-width: 80%;
 
     & * {
@@ -147,10 +146,6 @@
         max-width: 38vh;
     }
 }
-.WarningIcon {
-    font-size: 1.2rem;
-    color: yellow;
-}
 
 .sideImg {
     width: 35%;
@@ -164,13 +159,14 @@
     }
 
     .Buttons {
-        //width: 100%;
+        // width: 100%;
         align-items: center;
         flex-direction: column;
     }
-    //.NavElements {
-    //margin-bottom: 5rem;
-    //margin-top: 1rem;
+
+    // .NavElements {
+    //   margin-bottom: 5rem;
+    //   margin-top: 1rem;
     // }
 
     .sideImg {
