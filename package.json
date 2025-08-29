@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@types/classnames": "^2.3.4",
+    "@types/next": "^9.0.0",
+    "@types/react": "^19.1.11",
+    "@types/react-dom": "^19.1.8"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "classnames": "^2.5.1"
+  }
+}

@@ -16,7 +16,7 @@ const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
     const { t } = useClientTranslation('clan');
 
     const params = useParams();
-    const lng = params.lng as string;
+    const lng = params?.lng as string;
 
     const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
         title: t('head-title'),
@@ -27,7 +27,7 @@ const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
             { elementText: t('browse-clans'), link: { path: `/${lng}/clans`, isExternal: false } },
             {
                 elementText: t('leaderboard-title'),
-                link: { path: `/${lng}/clans/leaderboard`, isExternal: false },
+                link: { path: `/${lng}/leaderboard`, isExternal: false },
             },
             {
                 elementText: t('my_clan'),
@@ -45,7 +45,7 @@ const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
             { elementText: t('browse-clans'), link: { path: `/${lng}/clans`, isExternal: false } },
             {
                 elementText: t('leaderboard-title'),
-                link: { path: `/${lng}/clans/leaderboard`, isExternal: false },
+                link: { path: `/${lng}/leaderboard`, isExternal: false },
             },
             {
                 elementText: t('my_clan'),

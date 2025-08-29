@@ -4,7 +4,7 @@ import { Feedback } from '../model/types/types';
 import { directusApi } from '@/shared/api';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
-const directusBaseUrl = envHelper.directusHost;
+const directusBaseUrl = 'https://devapi.altzone.fi/';
 const client = createDirectus(directusBaseUrl).with(rest());
 
 const feedbackApi = directusApi.injectEndpoints({
