@@ -15,3 +15,5 @@ export const categories: Record<Category, PieceType> = {
     [Category.BEDS]: { name: 'BEDS' },
     [Category.ITEMS]: { name: 'ITEMS' },
 };
+
+export default categories;
