@@ -2,7 +2,7 @@ import { directusApi } from '@/shared/api';
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems } from '@directus/sdk';
 
-const directusBaseUrl = envHelper.directusHost;
+const directusBaseUrl = 'https://devapi.altzone.fi/';
 const client = createDirectus(directusBaseUrl).with(rest());
 
 /**

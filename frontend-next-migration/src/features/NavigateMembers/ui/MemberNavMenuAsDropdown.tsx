@@ -18,7 +18,7 @@ export const MembersNavMenu: React.FC = () => {
     const isTouchDevice = isMobileSize || isTabletSize;
     const { t } = useClientTranslation('members');
     const params = useParams();
-    const lng = params.lng as string;
+    const lng = params?.lng as string || '';
     const fullLanguageCode = getLanguageCode(lng);
 
     const {

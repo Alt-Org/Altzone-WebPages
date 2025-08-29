@@ -2,6 +2,7 @@
     display: flex;
     gap: 40px;
     margin-top: 20px;
+    justify-content: center;
 }
 .LeaderboardSwitch {
     margin-top: 10px;
@@ -12,4 +13,8 @@
 }
 .LeaderboardTitle {
     margin-bottom: 10px;
+}
+.CenteredContent {
+    max-width: 900px; /* Adjust this value to get the desired width. */
+    margin: 0 auto;
 }

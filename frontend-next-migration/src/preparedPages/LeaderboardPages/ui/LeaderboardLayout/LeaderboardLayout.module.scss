@@ -1,13 +1,14 @@
 
 .LayoutWithSidebars {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
     background-color: unset;
 }
 .Content {
-    margin-right:60px;
-    @media(min-width: calc(breakpoint(xxl) + 116px)) {
-        margin-right:unset;
-    }
-    @media(max-width: breakpoint(xl)) {
-        margin-right:unset;
-    }
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1200px; 
+    padding: 0 16px;  
 }

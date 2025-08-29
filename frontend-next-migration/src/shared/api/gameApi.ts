@@ -19,7 +19,7 @@ export const gameApi = createApi({
         }
     },
     baseQuery: fetchBaseQuery({
-        baseUrl: envHelper.apiLink,
+        baseUrl: '/',
         credentials: 'include',
         /** todo violates fsd methodology, need to check if it is possible to add this logic via authMiddleware.
          * This also causes circular dependencies.

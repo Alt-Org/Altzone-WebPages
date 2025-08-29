@@ -1,30 +1,52 @@
+
+// LeaderboardAll.tsx
+// Updated to use new API hooks for fetching leaderboard data (players & clans)
+// Handles loading and empty states, and passes data to SectionLeaderboard
 'use client';
 import { SectionLeaderboard } from '@/widgets/SectionLeaderboard';
 import { LeaderboardItem } from '@/entities/Leaderboard/types/leaderboard';
-import { useGetLeaderboardQuery } from '@/entities/Clan';
+import { useGetTopPlayersQuery, useGetTopClansQuery } from '@/shared/api/leaderboardApi';
 import { useClientTranslation } from '@/shared/i18n';
 
 const LeaderboardAll = () => {
-    const { t } = useClientTranslation('leaderboard');
-    const pointsLeaderboard = useGetLeaderboardQuery();
-    const activityLeaderboard = useGetLeaderboardQuery();
 
+    const { t } = useClientTranslation('leaderboard');
+    // Fetch top players and clans using RTK Query hooks
+    const { data: playerData = [], isLoading: isLoadingPlayers } = useGetTopPlayersQuery(undefined) as { data: any[], isLoading: boolean };
+    const { data: clanData = [], isLoading: isLoadingClans } = useGetTopClansQuery(undefined) as { data: any[], isLoading: boolean };
+
+    // Debug output for development
+    console.log('Players:', playerData, 'Clans:', clanData);
+
+
+
+    // Show loading or empty state as needed
+    if (isLoadingPlayers || isLoadingClans) {
+        return <div>Loading leaderboard...</div>;
+    }
+
+    if ((!playerData || playerData.length === 0) && (!clanData || clanData.length === 0)) {
+        return <div>No leaderboard data available.</div>;
+    }
+
+
+    // Pass fetched data to SectionLeaderboard for display
     return (
         <SectionLeaderboard
             leaderboard1={
-                pointsLeaderboard.data?.data.Clan
+                playerData && playerData.length > 0
                     ? {
                           title: t('wins'),
-                          leaders: pointsLeaderboard.data.data.Clan as LeaderboardItem[],
+                          leaders: playerData,
                           path: '/clans',
                       }
                     : undefined
             }
             leaderboard2={
-                activityLeaderboard.data?.data.Clan
+                clanData && clanData.length > 0
                     ? {
                           title: t('activity'),
-                          leaders: activityLeaderboard.data.data.Clan as LeaderboardItem[],
+                          leaders: clanData,
                           path: '/clans',
                       }
                     : undefined
