@@ -72,7 +72,7 @@ export const dropdowns = {
          {
              elementText: 'leaderboard',
              link: {
-                 path: getRouteClanLeadeboardPage(),
+                 path: '/leaderboard',
                  isExternal: false,
              },
          },
