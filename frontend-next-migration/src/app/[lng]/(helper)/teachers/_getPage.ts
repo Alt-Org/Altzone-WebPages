@@ -1,5 +1,4 @@
 import { createPage } from '@/app/_helpers';
-import { TeachersPageProps } from '@/preparedPages/TeachersPage';
 import { getRouteTeachersPage } from '@/shared/appLinks/RoutePaths';
 import { useServerTranslation } from '@/shared/i18n';
 import { defaultOpenGraph } from '@/shared/seoConstants';
