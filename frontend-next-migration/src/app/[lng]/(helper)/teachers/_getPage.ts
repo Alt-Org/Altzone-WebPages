@@ -6,10 +6,8 @@ import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'teachers');
-    return createPage<TeachersPageProps>({
-        buildPage: () => ({
-            title: t('Teachers'),
-        }),
+    return createPage({
+        buildPage: () => ({}),
         buildSeo: () => ({
             title: t('head-title'),
             description: t('head-description'),

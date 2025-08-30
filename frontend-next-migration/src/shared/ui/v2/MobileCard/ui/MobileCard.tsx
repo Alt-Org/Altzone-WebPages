@@ -20,6 +20,7 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 export enum MobileCardTheme {
     PRIMARY = '',
     DEFENSEGALLERY = 'DefenseGalleryCard',
+    FURNITURECOLLECTION = 'FurnitureCollectionsCard',
 }
 
 /**
@@ -35,12 +36,14 @@ interface MobileCardProps
     className?: string;
     children: ReactNode;
     ref?: LegacyRef<HTMLDivElement>;
+    height?: string;
 }
 
 interface MobileCardTextsProps {
     className?: string;
     title1: string;
     title2: string;
+    text?: string;
     children?: ReactNode;
 }
 
@@ -62,8 +65,13 @@ interface LinkProps {
     children?: ReactNode;
 }
 
+interface HoverEffectProps {
+    children: ReactNode;
+}
+
 interface MobileCardImageSectionProps {
     className?: string;
+    fill?: boolean;
     alt: string;
     src: StaticImageData | string;
     backgroundColor?: string;
@@ -103,10 +111,25 @@ export const MobileCardLink: React.FC<LinkProps> = (props: LinkProps) => {
     );
 };
 
+export const HoverEffect: React.FC<HoverEffectProps> = ({ children }) => (
+    <div className={cls.withScalableLink}>{children}</div>
+);
+
 const MobileCardBase: any = forwardRef<HTMLDivElement, MobileCardProps>(
     (props: MobileCardProps, ref): JSX.Element => {
-        const { className = '', children, theme = MobileCardTheme.PRIMARY } = props;
-
+        const { className = '', children, theme = MobileCardTheme.PRIMARY, height } = props;
+        if (height) {
+            return (
+                <div
+                    ref={ref}
+                    tabIndex={0}
+                    style={{ height }}
+                    className={classNames(cls.MobileCard, undefined, [className, cls[theme]])}
+                >
+                    {children}
+                </div>
+            );
+        }
         return (
             <div
                 ref={ref}
@@ -133,11 +156,12 @@ MobileCardBase.displayName = 'MobileCard';
  * @returns {JSX.Element} A React component rendering a mobile card.
  */
 const MobileCardTexts = memo(
-    ({ title1 = '', title2 = '', children }: MobileCardTextsProps): JSX.Element => {
+    ({ title1 = '', title2 = '', text, children }: MobileCardTextsProps): JSX.Element => {
         return (
             <div className={cls.TextContainer}>
                 <h2 className={cls.Title1}>{title1}</h2>
                 <p className={cls.Title2}>{title2}</p>
+                <p className={cls.Text}>{text}</p>
                 {children}
             </div>
         );
@@ -158,16 +182,32 @@ MobileCardTexts.displayName = 'MobileCard-Texts';
  * @returns {JSX.Element} The rendered MobileCardImageSection component.
  */
 const MobileCardImageSection = memo(
-    ({ className = '', alt, backgroundColor, src }: MobileCardImageSectionProps): JSX.Element => {
+    ({
+        className = '',
+        alt,
+        backgroundColor,
+        src,
+        fill,
+    }: MobileCardImageSectionProps): JSX.Element => {
         return (
             <div
                 className={classNames(cls.ImageContainer, undefined, [className])}
                 style={{ backgroundColor }}
             >
-                <Image
-                    src={src}
-                    alt={alt}
-                />
+                {fill ? (
+                    <Image
+                        className={cls.Image}
+                        src={src}
+                        alt={alt}
+                        fill
+                    />
+                ) : (
+                    <Image
+                        className={cls.Image}
+                        src={src}
+                        alt={alt}
+                    />
+                )}
             </div>
         );
     },

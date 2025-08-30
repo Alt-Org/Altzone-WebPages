@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 // import { CustomEditor } from '@/shared/ui/CustomEditor';
 'use client';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
@@ -23,6 +24,18 @@ import defenceGallery from '@/shared/assets/images/descriptionCard/defense_galle
 import defenceGalleryMobile from '@/shared/assets/images/descriptionCard/defense_gallery_mobile.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
+import { CreateBoxTest } from '@/features/BoxTest/ui/CreateBoxTest';
+import { ClaimTesterAccountTest } from '@/features/BoxTest/ui/ClaimTesterAccountTest';
+import { DeleteBoxTest } from '@/features/BoxTest/ui/DeleteBoxTest';
+import { ResetBoxTest } from '@/features/BoxTest/ui/ResetBoxTest';
+import { StartTestingSessionTest } from '@/features/BoxTest/ui/StartTestingSessionTest';
+import { GetBoxByIdTest } from '@/features/BoxTest/ui/GetBoxByIdTest';
+import { DeleteBoxByIdTest } from '@/features/BoxTest/ui/DeleteBoxByIdTest';
+import { AddDailyTaskToBoxTest } from '@/features/BoxTest/ui/AddDailyTaskToBoxTest';
+import { UpdateBoxDailyTaskTest } from '@/features/BoxTest/ui/UpdateBoxDailyTaskTest';
+import { AddMultipleDailyTasksTest } from '@/features/BoxTest/ui/AddMultipleDailTasksTest';
+import { DeleteBoxDailyTaskByIdTest } from '@/features/BoxTest/ui/DeleteBoxDailyTaskByIdTest';
+import { DefineTesterAmountTest } from '@/features/BoxTest/ui/DefineTesterAmountTest';
 import {
     DescriptionCardMobile,
     DescriptionCardMobileLink,
@@ -133,6 +146,30 @@ const Page = () => {
             //     ),
             // }}
         >
+            {/* Testing Box Api */}
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    margin: '20px 0',
+                }}
+            >
+                <ClaimTesterAccountTest />
+                <CreateBoxTest />
+                <DeleteBoxTest />
+                <ResetBoxTest />
+                <StartTestingSessionTest />
+                <GetBoxByIdTest />
+                <DeleteBoxByIdTest />
+                <AddDailyTaskToBoxTest />
+                <UpdateBoxDailyTaskTest />
+                <AddMultipleDailyTasksTest />
+                <DeleteBoxDailyTaskByIdTest />
+                <DefineTesterAmountTest />
+            </div>
+
+            {/* End of Testing Box Api */}
             {/* Testing ModularCard */}
             <button
                 style={{
