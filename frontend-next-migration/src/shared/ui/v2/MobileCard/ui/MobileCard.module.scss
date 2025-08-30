@@ -35,6 +35,17 @@
       height: 80% !important;
     }
   }
+  &:hover {
+    .MobileCard {
+      border-color: var(--primary-color);
+    }
+    .TextContainer {
+      height: 20% !important;
+    }
+    .ImageContainer {
+      height: 80% !important;
+    }
+  }
 }
 
 .MobileCard {
@@ -74,6 +85,87 @@
   }
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title2 {
+  color:var(--primary-color);
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 400;
+  @media (max-width: breakpoint(sm)) {
+    font-size: 1rem;
+  }
+  @media (max-width: breakpoint(xs)) {
+    font-size: .8rem;
+  }
+
+}
+
+// FurnitureCollectionsCard
+
+@mixin furniture-card-dimensions {
+  --gap: 2em;
+  width: 100%;
+  height: 400px;
+}
+
+.MobileCard.FurnitureCollectionsCard  {
+  @include furniture-card-dimensions;
+  overflow: hidden;
+  border-radius: var(--corner-radius-web);
+  background-color: var(--base-card-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border: var(--border-mobile) solid var(--black);
+  box-shadow: var(--black) 4px 6px 0;
+  position: relative;
+}
+
+.FurnitureCollectionsCard.MobileCard  {
+  transition: border-color ease .4s;
+}
+.FurnitureCollectionsCard.AppLink  {
+  @include furniture-card-dimensions;
+}
+
+.AppLink .MobileCard {
+  width: 100% !important;
+}
+
+.MobileCard.FurnitureCollectionsCard > .ImageContainer {
+  width: 100%;
+  height: 70%;
+  background-color: transparent;
+  overflow: hidden;
+  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  
+  .Image {
+    object-fit: cover !important;
+    object-position: center bottom;
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+}
+.MobileCard.FurnitureCollectionsCard > .TextContainer {
+  margin-top: 10%;
+}
+.MobileCard.FurnitureCollectionsCard > .TextContainer > .Title1 {
+  color:var(--white);
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 400;
+  @media (max-width: breakpoint(sm)) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: breakpoint(xs)) {
+    font-size: .9rem;
+  }
+}
+.MobileCard.FurnitureCollectionsCard > .TextContainer > .Title2 {
   color:var(--primary-color);
   font-family: var(--font-family-title);
   font-size: 1.5rem;

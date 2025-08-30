@@ -1,1 +1,6 @@
-export { default as MobileCard, MobileCardLink, MobileCardTheme } from './ui/MobileCard';
+export {
+    default as MobileCard,
+    MobileCardLink,
+    HoverEffect,
+    MobileCardTheme,
+} from './ui/MobileCard';
