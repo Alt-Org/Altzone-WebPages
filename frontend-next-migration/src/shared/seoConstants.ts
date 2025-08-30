@@ -1,6 +1,7 @@
-// export const baseUrl = `https://${process.env.NEXT_PUBLIC_API_DOMAIN}`;
-export const baseUrl = `${process.env.NEXT_PUBLIC_LOCAL_HOST}`;
-export const openGraphImage = '/images/opengraph-image.png';
+export const baseUrl = `https://${process.env.NEXT_PUBLIC_API_DOMAIN}`;
+
+const openGraphImage = '/images/opengraph-image.png';
+
 export const defaultOpenGraph = {
     images: [
         {
