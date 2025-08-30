@@ -1,11 +1,11 @@
 {
-	"head-title": "Opettajien sivu",
-	"head-description": "Opi, miten voit järjestää ALT Zone -luokkahuoneen testisessioita neljässä yksinkertaisessa vaiheessa. Luo klaaneja, valmistele materiaaleja, jaa pelilinkki ja analysoi opiskelijoiden tuloksia - tee pelipohjaisesta oppimisesta hauskaa ja kilpailullista.",
-	"head-keywords": "altzone, opettajat, luokkahuoneen testaus, koulutuspelaaminen, pelipohjainen oppiminen, testiohjeet, luo klaaneja, analysoi tuloksia",
-	"og-title": "ALT Zone Opettajien sivu",
-	"og-description": "Vaiheittaiset ohjeet opettajille ALT Zone -luokkahuoneen testisessioiden järjestämiseen. Luo klaaneja, valmistele materiaaleja, käynnistä peli ja analysoi opiskelijoiden suoritustuloksia."
-  "instructions": "1. Ohjeet",
-  "preparation": "2. Valmistelu",
-  "gaming": "3. Pelaaminen",
-  "results": "4. Tulokset"
+    "head-title": "Opettajien sivu",
+    "head-description": "Opi, miten voit järjestää ALT Zone -luokkahuoneen testisessioita neljässä yksinkertaisessa vaiheessa. Luo klaaneja, valmistele materiaaleja, jaa pelilinkki ja analysoi opiskelijoiden tuloksia - tee pelipohjaisesta oppimisesta hauskaa ja kilpailullista.",
+    "head-keywords": "altzone, opettajat, luokkahuoneen testaus, koulutuspelaaminen, pelipohjainen oppiminen, testiohjeet, luo klaaneja, analysoi tuloksia",
+    "og-title": "ALT Zone Opettajien sivu",
+    "og-description": "Vaiheittaiset ohjeet opettajille ALT Zone -luokkahuoneen testisessioiden järjestämiseen. Luo klaaneja, valmistele materiaaleja, käynnistä peli ja analysoi opiskelijoiden suoritustuloksia.",
+    "instructions": "1. Ohjeet",
+    "preparation": "2. Valmistelu",
+    "gaming": "3. Pelaaminen",
+    "results": "4. Tulokset"
 }
