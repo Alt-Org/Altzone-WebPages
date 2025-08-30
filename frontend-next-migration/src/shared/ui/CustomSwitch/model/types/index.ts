@@ -16,3 +16,9 @@ export type ToggleLink = {
     className?: string;
     children: ReactNode;
 };
+export type ProgressIndicator = {
+    type: CustomSwitchItems.ProgressIndicator;
+    isOpen: boolean;
+    className?: string;
+    children: ReactNode;
+};
