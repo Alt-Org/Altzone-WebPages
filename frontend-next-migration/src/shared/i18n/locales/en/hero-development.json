@@ -1,6 +1,9 @@
 {
   "head-title": "Hero development",
   "head-description": "See how the heroes are developing.",
+  "head-keywords": "ALT Zone hero development, hero levels, hero skills, hero pricing, hero leveling, character development",
+  "og-title": "ALT Zone Hero Development Tool",
+  "og-description": "Discover how ALT Zone heroes develop over time. Use the leveling and pricing tool to explore progression paths and optimize your strategy.",
   "title": "Hero Development",
   "text": "This is a generic tool for exploring levels and pricing. It is not associated with the player's character profiles, except for the starting levels of the characters, which are the same for everyone.",
   "veryStrongSkill": "A very strong skill",

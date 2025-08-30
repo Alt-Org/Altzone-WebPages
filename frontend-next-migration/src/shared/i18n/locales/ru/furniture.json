@@ -1,6 +1,12 @@
-{
-    "furnituresets-title": "Translation?",
-    "furnituresets-morecomingsoon": "Translation?",
-    "back-button": "Translation?",
-    "sort-placeholder": "Translation?"
+{  
+    "head-title": "Модели мебели",
+    "head-description": "Просмотрите все модели мебели в игре в веб-браузере.",
+    "head-keywords": "мебель, набор, коллекция",
+    "og-title": "ALT Zone Модели мебели & Коллекции",
+    "og-description": "Изучите различные модели мебели, доступные в ALT Zone. Откройте для себя уникальные коллекции, чтобы улучшить свой игровой опыт.",
+
+    "furnituresets-title": "Все наборы мебели",
+    "furnituresets-morecomingsoon": "Скоро будут новые наборы...",
+    "search": "Поиск",
+    "categories": "Категории"
 }

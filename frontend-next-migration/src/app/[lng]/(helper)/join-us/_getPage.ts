@@ -9,6 +9,8 @@ import {
     makeTeachersBlock,
     makeInstagramBlock,
 } from '@/entities/JoinUs';
+import { getRouteJoinUsPage } from '@/shared/appLinks/RoutePaths';
+import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'join-us');
@@ -26,6 +28,15 @@ export async function _getPage(lng: string) {
             title: t('head-title'),
             description: t('head-description'),
             keywords: t('head-keywords'),
+            openGraph: {
+                ...defaultOpenGraph,
+                title: t('og-title'),
+                description: t('og-description'),
+                url: `/${lng}${getRouteJoinUsPage()}`,
+            },
+            alternates: {
+                canonical: `/${lng}${getRouteJoinUsPage()}`,
+            },
         }),
     });
 }
