@@ -15,8 +15,6 @@ import { defaultOpenGraph } from '@/shared/seoConstants';
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'main');
 
-    const { t: tPG } = await useServerTranslation(lng, 'picture-galleries');
-
     return createPage<MainPageProps>({
         buildSeo: () => ({
             title: t('head-title'),
