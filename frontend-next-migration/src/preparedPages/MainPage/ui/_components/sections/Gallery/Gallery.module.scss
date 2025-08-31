@@ -12,27 +12,51 @@
 .SectionGallery {
     margin: 40px auto;
     opacity: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     &.inView{
         animation: fadeIn 2s ease-out;
         opacity: 1;
     }
 }
 
+
+
 .Container {
     margin-top: 20px;
+    width: 70%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
+    gap: 50px;
+    
 }
 
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:start;
+    background-color: #1E3544;
+    border: 3px solid black;
+    padding: 20px;
+    box-shadow: 0.5rem 0.5rem black;
+    border-radius: 10px; 
+    height: fit-content;
+    align-self: center;
+    width: 90%;
+}
 .title {
     text-align: center;
-    font-size: var(--font-line-xxxl);
+    font-size: var(--font-line-xl);
+    font-family: var(--font-family-title), sans-serif;
     opacity: 0;
     transform: translateX(-100%);
     transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
-  
+    color: var(--primary-color);
     &.inView {
         opacity: 1;
         transform: translateX(0);
@@ -48,40 +72,28 @@
     }
 }
 
-
+.parent{
+    background-color: red;
+}
 .InfoText {
-    font-size: 1.2em;
-    width: 85%;
-    margin: auto;
-    text-align: center;
-
+    font-size: 1.1em;
+    padding: 10px 0; 
+    text-align: start;
+    white-space: pre-wrap;
+    font-family: var(--font-family-secondary);
     @media screen and (min-width: 768px) {
-        font-size: 1.5em;
-        width: 70%;
+        font-size: 1.2em;
+
     }
 }
 
-.SocialsText {
-    width: fit-content;
-    margin: auto;
-    margin-top: 20px;
-    font-size: 1.3em;
-    text-align: center;
-
-    @media screen and (min-width: 768px) {
-        font-size: var(--font-line-xl);
-    }
-}
-
-
-@media screen and (max-width: 900px) {
-    .SectionGallery {
-        margin-top: 40px;
-    }
-}
-
-.videoWrapper {
-    padding: 0 40px;
+.socialMediaHolder{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 10rem;
 }
 
 .videoWrapper>div {
@@ -92,6 +104,13 @@
     border-radius: var(--border-radius-custom);
 }
 
+.imgWrapper{
+    width: 100%;
+}
+.socialMediaLinks{
+    margin-top: 15px;
+}
+
 
 .SectionGalleriasWrapper{
     border-radius: var(--border-radius-custom);
@@ -99,4 +118,72 @@
     margin-left: auto;
     background-color: rgba(0, 0, 0, 0.6);
     width: fit-content;
+}
+
+
+@media screen and (max-width: breakpoint(md)) {
+    .SectionGallery {
+        margin-top: 40px;
+    }
+    .Container{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+    .title{
+        font-size: 1.7rem;
+    }
+    .socialMediaLinks,
+    .InfoText{
+        font-size: 0.8rem;
+    }
+    .titleWrapper{
+     width: 100%;   
+
+    }
+
+}
+
+@media screen and (max-width: breakpoint(sm)) {
+    .title{
+        font-size: 1.3rem;
+    }
+
+    .InfoText{
+        font-size: 0.6rem;
+    }
+    .aboutLink{
+        font-size: 0.6rem;
+    }
+
+}
+
+
+@media screen and (max-width: breakpoint(xs)) {
+    .title{
+        font-size: 1.1rem;
+    }
+    
+
+    .InfoText{
+        font-size: 0.5rem;
+    }
+    .aboutLink{
+        font-size: 0.5rem;
+    }
+
+}
+
+@media screen and (max-width: breakpoint(xxl)) {
+    .title{
+        font-size: 1.7rem;
+    }
+    .InfoText{
+        font-size: 0.8rem;
+    }
+    .aboutLink{
+        font-size: 0.8rem;
+    }
 }

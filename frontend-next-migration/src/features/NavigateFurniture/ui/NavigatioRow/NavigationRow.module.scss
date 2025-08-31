@@ -1,0 +1,19 @@
+.NavigationRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height:2em;
+}
+
+.SortDropdown {
+    max-width: 200px;
+}
+
+@media (max-width: breakpoint(xs)) {
+    .SortDropdown {
+        max-width: 150px;
+    }
+}
