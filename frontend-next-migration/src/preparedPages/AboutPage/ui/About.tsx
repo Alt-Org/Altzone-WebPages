@@ -15,7 +15,7 @@ export interface Props {
     projectCount: number;
     localityCount: string;
     nationalityCount: string;
-    behindCount: string;
+    behindCount: number;
     V2019: string;
     V2020: string;
     V2021: string;

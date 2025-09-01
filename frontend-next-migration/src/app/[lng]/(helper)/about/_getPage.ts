@@ -1,12 +1,13 @@
 import { useServerTranslation } from '@/shared/i18n';
 import { createPage } from '@/app/_helpers';
 import { AboutPageProps } from '@/preparedPages/AboutPage';
-import { fetchMembersServer } from '@/entities/About';
+import { fetchMembersServer, getBehindYears } from '@/entities/About';
 
 export async function _getPage(lng: any) {
     const { t } = await useServerTranslation(lng, 'about');
 
     let uniqueMemberCount: number = 0;
+    const behindCount = getBehindYears();
 
     try {
         uniqueMemberCount = await fetchMembersServer();
@@ -27,7 +28,7 @@ export async function _getPage(lng: any) {
             projectCount: uniqueMemberCount,
             localityCount: t('localityCount'),
             nationalityCount: t('nationalityCount'),
-            behindCount: t('behindCount'),
+            behindCount: behindCount,
             V2019: t('V2019'),
             V2020: t('V2020'),
             V2021: t('V2021'),
