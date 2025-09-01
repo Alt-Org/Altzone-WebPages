@@ -9,7 +9,6 @@ import {
     MaterialTranslation,
 } from '../types/furniture';
 import { initializeFurnitureSets } from './initializeFurniture';
-import { $SpecialObject } from 'i18next/typescript/helpers';
 
 const enums: Record<string, FurnitureSet> = {
     neuro: FurnitureSet.NEURO,
@@ -17,6 +16,10 @@ const enums: Record<string, FurnitureSet> = {
     rakkaus: FurnitureSet.RAKKAUS,
     muistoja: FurnitureSet.MUISTOJA,
 };
+
+type RawSet = { name?: unknown; items?: unknown };
+
+type RawPieceTranslation = { name?: unknown; desc?: unknown };
 
 /**
  * Class for handling furniture sets and regarding methods
@@ -28,55 +31,49 @@ export class FurnitureManager {
         this.furnitureSets = initializeFurnitureSets();
     }
 
+    /** ---------- helpers to keep complexity down ---------- */
+    private isObject(value: unknown): value is Record<string, unknown> {
+        return !!value && typeof value === 'object';
+    }
+
+    private coerceSet(rawUnknown: unknown): RawSet | null {
+        if (!this.isObject(rawUnknown)) return null;
+        return rawUnknown as RawSet;
+    }
+
+    private readItemsMap(obj: unknown): Record<string, unknown> | null {
+        if (!this.isObject(obj)) return null;
+        return obj as Record<string, unknown>;
+    }
+
     /**
      * Returns the translation object for a furniture set.
-     *
-     * @param {TFunction} t Translator function. Must be set to 'furnitureinfo'
-     * @param {string} path The translation path to look for. Use 'SetInfo.path'.
-     * @returns {SetTranslation} Translation info for the set.
      */
     public getSetTranslation(t: TFunction, path: string): SetTranslation | string {
-        const raw: $SpecialObject | string = t(path, { returnObjects: true });
+        const rawUnknown: unknown = t(path, { returnObjects: true });
+        if (typeof rawUnknown === 'string') return t('set-translation-missing-raw-data');
 
-        if (typeof raw === 'string') {
-            return t('set-translation-missing-raw-data');
-        }
-        if (
-            !('name' in raw) ||
-            typeof raw.name !== 'string' ||
-            !('items' in raw) ||
-            typeof raw.items !== 'object' ||
-            !raw.items
-        ) {
+        const raw = this.coerceSet(rawUnknown);
+        if (!raw || typeof raw.name !== 'string')
             return t('set-translation-missing-raw-properties');
-        }
+
+        const itemsObj = this.readItemsMap(raw.items);
+        if (!itemsObj) return t('set-translation-missing-raw-properties');
+
         const items: Record<string, PieceTranslation> = {};
-        Object.entries(raw.items).map((index) => {
-            const key = index[0];
-
-            if (typeof key !== 'string') {
-                return t('set-translation-invalid-key');
-            }
-
-            const value = index[1];
-
-            if (
-                typeof value !== 'object' ||
-                !('name' in value) ||
-                typeof value.name !== 'string' ||
-                !('desc' in value) ||
-                typeof value.desc !== 'string'
-            ) {
+        for (const [key, value] of Object.entries(itemsObj)) {
+            if (typeof key !== 'string' || !this.isObject(value))
+                return t('set-translation-missing-properties');
+            const valueObj = value as RawPieceTranslation;
+            if (typeof valueObj.name !== 'string' || typeof valueObj.desc !== 'string') {
                 return t('set-translation-missing-properties');
             }
-
-            items[key] = { name: value.name, desc: value.desc };
-            return true;
-        });
+            items[key] = { name: valueObj.name, desc: valueObj.desc };
+        }
 
         return {
             name: raw.name,
-            items: items,
+            items,
             unknown: {
                 name: t('piece-translation-unknown-item'),
                 desc: t('piece-translation-unknown-item'),
@@ -86,182 +83,144 @@ export class FurnitureManager {
 
     /**
      * Returns the translation object for a piece within a furniture set.
-     *
-     * @param {SetTranslation} t Translations object. Use 'getSetTranslation' to get it.
-     * @param {string} path Translation path within set. Use 'Piece.path'.
-     * @returns {PieceTranslation} an object containing the translated name and description for a piece.
      */
     public getPieceTranslation(t: SetTranslation | string, path: string): PieceTranslation {
-        if (typeof t === 'string') {
-            return { name: t, desc: t };
-        }
-        const raw: PieceTranslation | undefined = t.items[path];
-
-        if (!raw) {
-            return t.unknown;
-        }
-
-        return raw;
+        if (typeof t === 'string') return { name: t, desc: t };
+        return t.items[path] ?? t.unknown;
     }
 
     /**
      * Returns a furniture set with the items sorted in ascending order by rarity.
-     *
-     * @param {string} id The id of the furniture set
-     * @throws {Error} Throws an error if the set does not exist
-     * @returns {SetInfo} Returns a single set
      */
     public getFurnitureSet(id: string): SetInfo | null {
-        if (!enums[id]) {
+        const setKey = enums[id];
+        if (!setKey) {
+            // eslint-disable-next-line no-console
             console.warn(`No set exists for id ${id}`);
             return null;
         }
+        const baseSet = this.furnitureSets[setKey];
+        if (!baseSet) return null;
 
-        const set = this.furnitureSets[enums[id]];
+        const buckets: Array<Array<Piece>> = [[], [], [], [], []];
+        for (const item of baseSet.items) {
+            const idx =
+                typeof item?.rarity?.index === 'number'
+                    ? Math.max(0, Math.min(4, item.rarity.index))
+                    : 0;
+            buckets[idx].push(item);
+        }
 
-        const ordered: Array<Array<Piece>> = [[], [], [], [], []];
+        const sortedItems: Piece[] = [];
+        for (const bucket of buckets) {
+            for (const item of bucket) {
+                sortedItems.push({ ...item, set: baseSet });
+            }
+        }
 
-        set.items.forEach((item: Piece) => {
-            ordered[item.rarity.index].push(item);
-        });
-
-        set.items = [];
-        ordered.forEach((order: Array<Piece>) => {
-            order.forEach((item: Piece) => {
-                set.items.push({
-                    ...item,
-                    set: set,
-                });
-            });
-        });
-
-        return set;
+        const setInfo: SetInfo = { ...baseSet, items: sortedItems };
+        return setInfo;
     }
 
     /**
-     *
-     * @returns {Array<SetInfo>} Returns an array of all sets
+     * Returns an array of all sets.
      */
     public getAllFurnitureSets(): Array<SetInfo> {
-        return Object.entries(this.furnitureSets)
-            .map(([_, value]) => this.getFurnitureSet(value.id))
-            .filter((set): set is SetInfo => set !== null);
+        const results: SetInfo[] = [];
+        for (const value of Object.values(this.furnitureSets)) {
+            const setInfo = this.getFurnitureSet(value.id);
+            if (setInfo) results.push(setInfo);
+        }
+        return results;
     }
+
     /**
-     * import Category from initializeFurniture and use those as category id
-     *
-     * @param {PieceType} cat Short for category
-     * @returns {Array<Piece>} Returns an array of Pieces with the same category
+     * Returns pieces by category.
      */
     public getPiecesByCategory(cat: PieceType): Array<Piece> {
-        const getName = (v: unknown) =>
-            v && typeof v === 'object' && 'name' in (v as any)
-                ? String((v as any).name).toUpperCase()
-                : String(v ?? '').toUpperCase();
+        const normalize = (val: unknown) => {
+            if (val && typeof val === 'object' && 'name' in (val as Record<string, unknown>)) {
+                const nm = (val as Record<string, unknown>).name;
+                return String(nm ?? '').toUpperCase();
+            }
+            return String(val ?? '').toUpperCase();
+        };
 
-        const target = getName(cat);
-        const ret: Array<Piece> = [];
+        const target = normalize(cat);
+        const ret: Piece[] = [];
 
-        this.getAllFurnitureSets().forEach((set: SetInfo) => {
-            set.items.forEach((piece: Piece) => {
-                if (getName((piece as any).type) === target) {
-                    ret.push({
-                        ...piece,
-                        set: set,
-                    });
-                }
-            });
-        });
+        for (const set of this.getAllFurnitureSets()) {
+            for (const piece of set.items) {
+                const pieceType = (piece as unknown as { type?: unknown }).type;
+                if (normalize(pieceType) === target) ret.push({ ...piece, set });
+            }
+        }
 
         return ret;
     }
+
     /**
-     *
-     * @param {string} search keyword to search with
-     * @param {TFunction} t translator function, must be set to 'furnitureinfo'
-     * @returns {Array<Piece>} Returns an array of Pieces matching the search
+     * Keyword search across pieces.
      */
     public getPiecesByKeyword(search: string, t: TFunction<any, string>): Array<Piece> {
-        const ret: Array<Piece> = [];
+        const ret: Piece[] = [];
+        const needle = search.toLowerCase();
 
-        search = search.toLowerCase();
-        this.getAllFurnitureSets().map((set: SetInfo) => {
-            return set.items.map((piece: Piece) => {
-                const name =
+        for (const set of this.getAllFurnitureSets()) {
+            for (const piece of set.items) {
+                const haystack =
                     `${t(`${set.path}.name`)} ${t(`${set.path}.ITEMS.${piece.path}.name`)}`.toLowerCase();
-                const match = name.search(search);
-                if (match >= 0) {
-                    ret.push({
-                        ...piece,
-                        set: set,
-                    });
-                }
-
-                return true;
-            });
-        });
+                if (haystack.includes(needle)) ret.push({ ...piece, set });
+            }
+        }
 
         return ret;
     }
 }
 
-let materialTranslationsMain: Record<string, MaterialTranslation> | undefined;
-/**
- * Internal function that parses through raw translation data the first time it is called.
- *
- *
- * @param t
- * @returns
- */
-const getMaterialMain = (t: TFunction) => {
-    if (materialTranslationsMain) {
-        return materialTranslationsMain;
-    }
-    const raw: $SpecialObject | string = t('materials', { returnObjects: true });
+/** ---- Material translations with per-language cache ---- */
+const materialCache: Record<string, Record<string, MaterialTranslation>> = {};
 
-    if (typeof raw === 'string') {
-        return t('material-translation-not-found-main');
-    }
+/** Best-effort: read language from TFunction */
+const getLangFromT = (t: TFunction): string => {
+    const asAny = t as unknown as { language?: string; lng?: string };
+    return asAny.language ?? asAny.lng ?? 'default';
+};
+
+const getMaterialMain = (t: TFunction): Record<string, MaterialTranslation> | string => {
+    const lang = getLangFromT(t);
+    if (materialCache[lang]) return materialCache[lang];
+
+    const rawUnknown: unknown = t('materials', { returnObjects: true });
+    if (typeof rawUnknown === 'string') return t('material-translation-not-found-main');
+    if (!rawUnknown || typeof rawUnknown !== 'object')
+        return t('material-translation-invalid-value');
+
     const info: Record<string, MaterialTranslation> = {};
-    Object.entries({ ...raw }).map((index) => {
-        const key = index[0];
-        if (typeof key !== 'string') {
-            return t('material-translation-invalid-key');
-        }
-
-        const value = index[1];
-        if (typeof value !== 'object' || !('name' in value) || typeof value.name !== 'string') {
+    for (const [key, value] of Object.entries(rawUnknown as Record<string, unknown>)) {
+        if (typeof key !== 'string') return t('material-translation-invalid-key');
+        if (
+            !value ||
+            typeof value !== 'object' ||
+            typeof (value as { name?: unknown }).name !== 'string'
+        ) {
             return t('material-translation-invalid-value');
         }
+        info[key] = { name: (value as { name: string }).name };
+    }
 
-        info[key] = { name: value.name };
-        return true;
-    });
-
-    materialTranslationsMain = info;
+    materialCache[lang] = info;
     return info;
 };
 
 /**
  * Function that returns a translated material name.
- *
- * @param {TFunction} t Translator function. Use key 'furnitureinfo'.
- * @param {string} path Path to search for translation. Use 'MaterialType.name'.
- * @returns {string} Translated result or appropriate fallback message.
  */
 export const getMaterialName: (t: TFunction, path: string) => string = (
     t: TFunction,
     path: string,
 ) => {
     const info = getMaterialMain(t);
-
-    if (typeof info === 'string') {
-        return info;
-    }
-
-    if (!info[path]) {
-        return t('material-translation-path-is-null');
-    }
-
-    return info[path].name;
+    if (typeof info === 'string') return info;
+    return info[path]?.name ?? t('material-translation-path-is-null');
 };

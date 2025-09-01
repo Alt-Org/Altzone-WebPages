@@ -79,3 +79,5 @@ export const SectionGallery = (props: GalleryProps) => {
         </div>
     );
 };
+
+export default SectionGallery;
