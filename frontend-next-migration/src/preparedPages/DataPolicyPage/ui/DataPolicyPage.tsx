@@ -13,7 +13,13 @@ const DataPolicyPage = (props: Props) => {
         <main className={cls.main}>
             <div className={cls.container}>
                 <h1>{title}</h1>
-                <div className={cls.text}>{text}</div>
+                {/* <div className={cls.text}>{text}</div> */}
+                {typeof text === 'string'
+                    ? text
+                          .split('\n')
+                          .filter((line) => line.trim() !== '')
+                          .map((item, index) => <p key={index}>{item}</p>)
+                    : text}
             </div>
         </main>
     );
