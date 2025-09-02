@@ -134,6 +134,7 @@ export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';
 export const getRoute404Page = () => '/404';
 
+export const getRouteAllCollectionsPage = () => '/collections';
 export const getRouteAllFurnitureSetsPage = () => '/collections/furniture';
 export const getRouteOneFurnitureSetPage = (id: string) => `/furniture/set/${id}`;
 export const getRouteFurnitureSearchPage = () => '/furniture/search';
