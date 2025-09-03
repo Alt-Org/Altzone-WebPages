@@ -1,6 +1,5 @@
 'use client';
 import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
-import { HorizontalLines } from '@/shared/ui/PageDividers';
 import { Gallery, GalleryProps } from './_components/sections/Gallery';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';

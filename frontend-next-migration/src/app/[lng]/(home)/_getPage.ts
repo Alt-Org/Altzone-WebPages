@@ -3,11 +3,9 @@ import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import gameImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import iPhone16 from '@/shared/assets/images/mainpage/iPhone 16 Pro mockup natural titanium 1.png';
-import ContactImg from '@/shared/assets/images/Orang_hero.webp';
 import {
     getRouteAllHeroesPage,
     getRouteComicsPage,
-    getRouteGalleryPage,
     getRouteAboutPage,
 } from '@/shared/appLinks/RoutePaths';
 import { createPage } from '@/app/_helpers';
@@ -15,7 +13,7 @@ import { createPage } from '@/app/_helpers';
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'main');
 
-    const { t: tPG } = await useServerTranslation(lng, 'picture-galleries');
+    const { t: _tPG } = await useServerTranslation(lng, 'picture-galleries');
 
     return createPage<MainPageProps>({
         buildSeo: () => ({

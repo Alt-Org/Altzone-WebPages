@@ -1,6 +1,6 @@
 'use client';
 import { Container } from '@/shared/ui/Container';
-import cls from './NewsSection.module.scss'; // uusi SCSS-tiedosto
+import cls from './NewsSection.module.scss';
 
 export type Props = {
     mainTitle?: string;
@@ -31,8 +31,9 @@ export const NewsSection = (props: Props) => {
                                 </small>
                             </div>
                             <div className={cls.cardImage}>
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                    src={'sfs'}
+                                    src="sfs"
                                     alt="Placeholder"
                                 />
                             </div>
