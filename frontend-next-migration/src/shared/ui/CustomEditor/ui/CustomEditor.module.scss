@@ -5,7 +5,7 @@
 }
 
 .editorHeader {
-  font-size: 1.5rem;
+  font: var(--font-l);
   margin-bottom: 1rem;
 }
 
@@ -26,8 +26,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
   .editorTitle {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font: var(--font-l);
     border-bottom: 1px solid #cbd5e0;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
@@ -44,8 +43,7 @@
     }
 
     .label {
-      font-size: 0.875rem;
-      font-weight: 600;
+      font: var(--font-s);
       margin-bottom: 0.5rem;
     }
 
@@ -93,8 +91,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
   .previewTitle {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font: var(--font-l);
     border-bottom: 1px solid #cbd5e0;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;

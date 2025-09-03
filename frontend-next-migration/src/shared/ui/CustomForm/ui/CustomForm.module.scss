@@ -7,7 +7,6 @@
   display: grid;
   gap: 10px;
   color: var(--white);
-  font-family: var(--font-family-texts);
 
   @media (max-width: 440px) {
     width: 300px;
@@ -44,7 +43,6 @@
     height: 15px;
     line-height: 15px;
     font: var(--font-m);
-    font-family: var(--font-family-texts);
   }
 
   .submit {

@@ -3,8 +3,7 @@
   position: absolute;
   top: 45%;
   color: var(--secondary-color);
-  font-weight :bolder;
-  font-size:1em;
+  font: var(--font-m);
   right: .5em;
   cursor: pointer;
 }
@@ -37,7 +36,7 @@
 }
 .Root {
   font-family:Georgia, Times New Roman, serif;
-  font-size: 1.3em;
+  font: var(--font-l);
   width: 100%;
   position: relative;
   background: black;

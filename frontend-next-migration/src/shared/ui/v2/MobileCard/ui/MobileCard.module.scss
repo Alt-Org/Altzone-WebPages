@@ -63,26 +63,20 @@
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title1 {
   color:var(--white);
-  font-family: var(--font-family-title);
-  font-size: 1.5rem;
-  font-weight: 400;
   @media (max-width: breakpoint(sm)) {
-    font-size: 1.2rem;
+    font: var(--font-sw-m);
   }
   @media (max-width: breakpoint(xs)) {
-    font-size: .9rem;
+    font: var(--font-sw-s);
   }
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title2 {
   color:var(--primary-color);
-  font-family: var(--font-family-title);
-  font-size: 1.5rem;
-  font-weight: 400;
   @media (max-width: breakpoint(sm)) {
-    font-size: 1rem;
+    font: var(--font-sw-m);
   }
   @media (max-width: breakpoint(xs)) {
-    font-size: .8rem;
+    font: var(--font-sw-s);
   }
 
 }

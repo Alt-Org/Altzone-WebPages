@@ -17,18 +17,17 @@
   }
 
   .memberName {
-    font-weight: bold;
     text-align: end;
     flex: 2;
     min-width: 0;
     padding-right: 1.5rem;
     display: flex;
     justify-content: flex-end;
-    font-size: 0.9em;
+    font: var(--font-s);
 
     @media (max-width: breakpoint(lg)) {
       justify-content: flex-start;
-      font-size: 0.85em;
+      font: var(--font-s);
     }
   }
 

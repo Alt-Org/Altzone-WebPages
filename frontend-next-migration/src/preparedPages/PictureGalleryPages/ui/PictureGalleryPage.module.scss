@@ -24,7 +24,7 @@
     width: 85%;
     margin: auto;
     text-align: center;
-    font-size: 1.2em;
+    font: var(--font-m);
   }
 
 
@@ -39,7 +39,6 @@
   font-family: var(--font-family-main), serif;
   color: var(--primary-color);
   line-height: 1.5;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -47,7 +46,7 @@
   width: 85%;
   margin: 40px auto;
   text-align: center;
-  font-size: 1.2em;
+  font: var(--font-m);
 }
 
 
@@ -64,13 +63,13 @@
 
     .SocialsText {
       width: 75%;
-      font-size: 1.5em;
+      font: var(--font-l);
     }
   }
 
   .InfoText {
     width: 75%;
-    font-size: 1.5em;
+    font: var(--font-l);
   }
 
 }

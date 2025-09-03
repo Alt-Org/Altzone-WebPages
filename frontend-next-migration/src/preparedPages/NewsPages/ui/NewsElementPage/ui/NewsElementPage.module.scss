@@ -26,7 +26,7 @@
     border-style: solid;
     border-color: var(--black);
     color: var(--black);
-    font-family: var(--body-font);
+    font: var(--font-dm-m);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -112,7 +112,6 @@
 }
 
 .titleReadmore {
-    font-size: 1.9rem;
     line-height: 40px;
     color: var(--primary-color);
     font: var(--font-sw-xl), serif;

@@ -74,10 +74,8 @@
 
   &.active {
     color: var(--primary-color)!important;
-    //font-weight: 600;
     &>a{
       color: var(--primary-color)!important;
-      //font-weight: 600;
     }
   }
 }

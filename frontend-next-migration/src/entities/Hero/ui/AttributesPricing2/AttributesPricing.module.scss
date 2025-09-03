@@ -33,8 +33,7 @@
 }
 .Sum {
     color:var(--secondary-color);
-    font-weight: bold;
-    font-size: 2em;
+    font: var(--font-xl);
     line-height: .5em;
     margin-top: -.5em;
     height:fit-content;

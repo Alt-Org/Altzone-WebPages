@@ -50,12 +50,11 @@
 .Explanations {
     width: 100%;
     padding-left: 2em;
-    font-weight: bold;
    
 }
 .yAxis {
     width: fit-content;
-    font-size: 1em;
+    font: var(--font-m);
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
@@ -66,7 +65,6 @@
 }
 .Number {
     
-    font-weight:bold;
     color: var(--primary-color);
 
 }
