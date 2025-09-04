@@ -3,7 +3,7 @@
   overflow-x: hidden;
   border-collapse: collapse;
   max-width: 100px;
-
+  font: var(--font-m);
 
   th,
   td {
@@ -66,6 +66,7 @@
 }
 
 .titleText {
+  font: var(--font-xl);
   text-align: center;
   margin-bottom: 20px;
 }

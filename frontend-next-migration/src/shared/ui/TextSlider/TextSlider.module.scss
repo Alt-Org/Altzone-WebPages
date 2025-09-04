@@ -28,10 +28,9 @@
 
     p {
         margin: 0.5rem 3vw;
-        font-size: clamp(0.9rem, 2vw, 1.3rem);
+        font: var(--font-m);
         text-align: justify;
         line-height: 1.6;
-        font-weight: bold;
         overflow-y: auto;
     }
 }

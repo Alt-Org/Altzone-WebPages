@@ -96,6 +96,11 @@
     }
   }
 
+  @media (max-width: 350px){
+    h1{
+      font: var(--font-xxl);
+    }
+  }
 
   p{
     font: var(--font-m);

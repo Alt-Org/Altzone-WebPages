@@ -35,8 +35,7 @@
 }
 
 .Title {
-  font-size: clamp(40px, 7vw, 50px);
-  font-family: var(--font-family-main), serif;
+  font: var(--font-xxxl);
   color: var(--primary-color);
   line-height: 1.5;
   text-align: center;
@@ -72,6 +71,13 @@
     font: var(--font-l);
   }
 
+}
+
+@media (max-width: 480px) {
+  .Title {
+    font: var(--font-xxl);
+  }
+  
 }
 
 .videoWrapper{

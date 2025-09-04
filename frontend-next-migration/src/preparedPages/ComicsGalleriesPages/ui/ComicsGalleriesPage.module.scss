@@ -15,12 +15,21 @@
   border-radius: var(--border-radius-custom);
   //background-color: var(--transparent-bg-dark);
   h2{
-    font-size: clamp(40px, 7vw, 50px);
+    font: var(--font-xxxl);
     line-height: 1.5;
     text-align: center;
     margin-bottom: 40px;
   }
 
+}
+
+@media (max-width: 350px) {
+
+  .Container {
+    h2 {
+      font: var(--font-xxl);
+    }
+  }
 }
 
 .galleries{

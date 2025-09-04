@@ -32,8 +32,7 @@
   }
 
   .taskText {
-    font-weight: lighter;
-    font-size: 75%;
+    font: var(--font-s);
     text-align: left;
     flex: 2;
     min-width: 0;
@@ -42,7 +41,7 @@
     width: fit-content !important;
 
     @media (max-width: breakpoint(lg)) {
-      font-size: 70%;
+      font: var(--font-s);
     }
   }
 
@@ -72,14 +71,14 @@
   .clickableLogo {
     color: var(--primary-color);
     cursor: pointer;
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font: var(--font-m);
     display: flex;
     align-items: center;
     line-height: 1;
     @include link-scale-effect('icon');
 
     @media (max-width: breakpoint(lg)) {
-      font-size: clamp(0.9rem, 3vw, 1.2rem);
+      font: var(--font-s);
     }
   }
 

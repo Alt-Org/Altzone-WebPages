@@ -4,11 +4,11 @@
 
 @container (aspect-ratio < 1.2) {
     .Barchart{
-        font-size:8cqh;
+        font: var(--font-dm-s);
         height:65%;
     }
     .Explanations {
-        font-size:7cqh;
+        font: var(--font-dm-s);
     }
     .List {
         column-count: 1;
@@ -19,11 +19,11 @@
 }
 @container (aspect-ratio > 1.2) {
     .Barchart{
-        font-size:10cqh;
+        font: var(--font-dm-m);
         height:70%;
     }
     .Explanations {
-        font-size:7cqh;
+        font: var(--font-dm-m);
         padding-top: .5em;
     }
     .List {
