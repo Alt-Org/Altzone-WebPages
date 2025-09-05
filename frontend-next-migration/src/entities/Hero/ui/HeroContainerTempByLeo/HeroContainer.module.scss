@@ -141,7 +141,7 @@
   @include ScrollbarWithArrowButtons;
   padding-right: 0.5rem;
   overflow-y: auto;
-  font: var(--font-m);
+  font: var(--font-dm-m);
   border-radius: 10px;
   max-height: 38%;
 
@@ -150,7 +150,7 @@
   }
 
   @media(min-width: 900px){
-    font: var(--font-l);
+    font: var(--font-dm-l);
   }
 }
 

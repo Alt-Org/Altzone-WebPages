@@ -24,7 +24,7 @@
     width: 85%;
     margin: auto;
     text-align: center;
-    font: var(--font-m);
+    font: var(--font-dm-m);
   }
 
 
@@ -35,7 +35,7 @@
 }
 
 .Title {
-  font: var(--font-xxxl);
+  font: var(--font-sw-xxxl);
   color: var(--primary-color);
   line-height: 1.5;
   text-align: center;
@@ -45,7 +45,7 @@
   width: 85%;
   margin: 40px auto;
   text-align: center;
-  font: var(--font-m);
+  font: var(--font-dm-m);
 }
 
 
@@ -62,20 +62,20 @@
 
     .SocialsText {
       width: 75%;
-      font: var(--font-l);
+      font: var(--font-dm-m);
     }
   }
 
   .InfoText {
     width: 75%;
-    font: var(--font-l);
+    font: var(--font-dm-m);
   }
 
 }
 
 @media (max-width: 480px) {
   .Title {
-    font: var(--font-xxl);
+    font: var(--font-sw-xxl);
   }
   
 }
