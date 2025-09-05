@@ -7,7 +7,22 @@
     "global": "Globaali",
     "head-title": "Tulostaulu",
     "head-description": "Katso ALTZONEN pelaajien ja klaanien sijoitukset tulostaulussa",
-    "head-keywords": "leaderboard, pelaajat, klaanit",
+    "head-keywords": "ALT Zone tulostaulu, pelaajat, klaanit, peli, pelaajien sijoitukset, klaanien sijoitukset, pelitilastot",
+    "og-title": "ALT Zone Tulostaulu — Pelaajien & Klaanien Sijoitukset",
+    "og-description": "Tutustu ALT Zone tulostaulun pelaajien ja klaanien sijoituksiin. Näe pelaajien pisteet, klaanien sijoitukset ja ystäviesi tilastot yhdestä paikasta.",
+
+    "friends-head-title": "Kavereiden Tulostaulu",
+    "friends-head-description": "Löydä kavereidesi sijoitukset tulostaulusta",
+    "friends-head-keywords": "ALT Zone tulostaulu, kaverit, pelaajien sijoitukset, pelitilastot",
+    "friends-og-title": "ALT Zone Kavereiden Tulostaulu",
+    "friends-og-description": "Tutustu kavereidesi sijoituksiin ALT Zone tulostaulussa. Näe heidän pisteensä ja tilastonsa yhdestä paikasta.",
+
+    "clans-head-title": "Klaanien Tulostaulu",
+    "clans-head-description": "Löydä klaanien sijoitukset tulostaulusta",
+    "clans-head-keywords": "ALT Zone tulostaulu, klaanit, klaanien sijoitukset, pelitilastot",
+    "clans-og-title": "ALT Zone Klaanien Tulostaulu",
+    "clans-og-description": "Tutustu klaanien sijoituksiin ALT Zone tulostaulussa. Näe niiden pisteet ja tilastot yhdestä paikasta.",
+
     "leaderboard_title": "Leaderboard",
     "search_placeholder": "Hae",
     "search_btn_text": "Etsi",

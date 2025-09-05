@@ -88,3 +88,59 @@
     font-size: 1.5rem;
     font-weight: 400;
 }
+
+//furniture-collection
+
+.DescriptionCardMobile.FurnitureCollectionsCard {
+    @include card-dimensions;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--corner-radius-web);
+    background-color: var(--base-card-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border: var(--border-mobile) solid var(--black);
+    box-shadow: var(--black) 4px 6px 0;
+}
+.DescriptionCardMobile.FurnitureCollectionsCard > div > .ImageContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+}
+
+.DescriptionCardMobile.FurnitureCollectionsCard > div > .BackgroundColorImage {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    z-index: 2;
+}
+
+.DescriptionCardMobile.FurnitureCollectionsCard > .CoverImageContainer {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: polygon(0 40%, 100% 0, 100% 100%, 0 100%);
+    .Image {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+.DescriptionCardMobile.FurnitureCollectionsCard > .TextContainer {
+    margin: 1em 1em 0 1em;
+    text-align: left;
+    color: var(--white);
+}
+.DescriptionCardMobile.FurnitureCollectionsCard > .TextContainer > .Title {
+    color: var(--primary-color);
+    font-family: var(--font-family-title);
+    font-size: 1.5rem;
+    font-weight: 400;
+}

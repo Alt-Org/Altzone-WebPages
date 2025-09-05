@@ -65,6 +65,7 @@
 
     .subDropDownChildren {
         justify-content: space-between;
+        color: var(--primary-color);
     }
 
     .subDropDownContent * {
@@ -77,12 +78,37 @@
 
         & a:hover {
             color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        &.active {
+            color: var(--primary-color);
         }
     }
 }
 
 .topDropDownContent {
     .active {
+        color: var(--primary-color);
+    }
+}
+
+.link {
+    color: var(--white);
+
+    &.active {
+        color: var(--primary-color);
+    }
+    &:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}
+
+.text {
+    color: var(--white);
+    cursor: pointer;
+    &.active {
         color: var(--primary-color);
     }
 }

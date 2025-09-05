@@ -1,5 +1,5 @@
 import { dir } from 'i18next';
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
@@ -10,6 +10,7 @@ import { Providers } from '../_providers';
 import '../_styles/index.scss';
 //import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
 import CookieConsentV3 from '@/features/CookieConsentV3/CookieConsentV3';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
@@ -62,6 +63,15 @@ interface Props {
     children: ReactNode;
     params: {
         lng: string;
+    };
+}
+
+export function generateMetadata(): Metadata {
+    return {
+        metadataBase: new URL(baseUrl),
+        openGraph: {
+            ...defaultOpenGraph,
+        },
     };
 }
 

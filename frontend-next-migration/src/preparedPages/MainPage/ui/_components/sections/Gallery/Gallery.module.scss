@@ -1,6 +1,12 @@
 @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .SectionGallery {
@@ -27,7 +33,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    background-color: #1E3544;
+    background-color: #1e3544;
     border: 3px solid black;
     padding: 20px;
     box-shadow: 0.5rem 0.5rem black;

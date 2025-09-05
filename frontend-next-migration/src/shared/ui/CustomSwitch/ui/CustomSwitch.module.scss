@@ -35,3 +35,22 @@
         color: var(--black);
     }
 }
+.ProgressItem {
+    width: 100%;
+    text-align: center;
+    color: var(--primary-color);
+    font-family: var(--body-font);
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+    border: var(--border-mobile) solid var(--background);
+    border-radius: var(--border-radius-lg);
+    padding: 0.2em;
+}
+
+.ProgressItem.OpenToggleItem {
+    color: var(--black);
+}
+
+.BeforeOpen {
+    color: grey;
+}

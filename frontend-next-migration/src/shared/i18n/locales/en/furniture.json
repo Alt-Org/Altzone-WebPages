@@ -2,9 +2,29 @@
     "head-title": "Sets of Furniture",
     "head-description": "View the in-game sets of furniture in the web browser.",
     "head-keywords": "furniture, set, collection",
+    "og-title": "ALT Zone Furniture Sets & Collections",
+    "og-description": "Explore the various furniture sets available in ALT Zone. Discover unique collections to enhance your in-game experience.",
 
     "furnituresets-title": "All sets of Furniture",
     "furnituresets-morecomingsoon": "More sets coming soon...",
     "search": "Search",
-    "categories": "Categories"
+    "categories": "Categories",
+    "sets": "Sets",
+    "furniture": "Furniture",
+    "furniture-collections-title": "Furniture collections",
+    "search-placeholder": "Search...",
+    "all": "All",
+    "tables": "Tables",
+    "chairs": "Chairs",
+    "couches": "Sofas",
+    "beds": "Beds",
+    "cabinets": "Cabinets",
+    "lights": "Lighting",
+    "rugs": "Carpets",
+    "plants": "Plants",
+    "decorative-items": "Decorative items",
+    "other": "Other",
+
+    "back-button": "Back",
+    "sort-placeholder": "Sort by..."
 }

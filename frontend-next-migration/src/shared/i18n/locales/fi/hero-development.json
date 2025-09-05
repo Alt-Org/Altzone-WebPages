@@ -1,6 +1,9 @@
 {
     "head-title": "Hahmojen kehittäminen",
     "head-description": "Näe kuinka hahmot kehittyvät.",
+    "head-keywords": "ALT Zone hahmojen kehitys, hahmojen tasot, hahmojen taidot, hahmojen hinnoittelu, hahmojen kehittäminen, hahmojen kehitystyökalu",
+    "og-title": "ALT Zone Hahmojen Kehitystyökalu",
+    "og-description": "Tutustu siihen, kuinka ALT Zone -hahmot kehittyvät ajan myötä. Käytä tason ja hinnoittelun työkalua tutkiaksesi etenemispolkuja ja optimoidaksesi strategiaasi.",
     "title": "Hahmon kehitys",
     "text": "Tämä on geneerinen työkalu levelien ja hintojen tutkiskeluun. Tämä ei assosioidu pelaajan omiin hahmoprofiileihin muuten kuin hahmon lähtötasoleveleissä, jotka ovat kaikille samat.",
     "veryStrongSkill": "Todella vahva taito",
