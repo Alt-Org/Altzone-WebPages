@@ -1,19 +1,19 @@
 .DeleteClanBtn {
     background-color: var(--error);
     @include link-scale-effect;
-    font: var(--font-l);
+    font: var(--font-dm-l);
 }
 
 .EditClanBtn {
     background-color: rgba(0, 0, 0, 0.7);
     @include link-scale-effect;
-    font: var(--font-l);
+    font: var(--font-dm-l);
 }
 
 .JoinClanBtn {
     background-color: rgba(0, 0, 0, 0.7);
     @include link-scale-effect;
-    font: var(--font-l);
+    font: var(--font-dm-l);
 }
 
 .lock {

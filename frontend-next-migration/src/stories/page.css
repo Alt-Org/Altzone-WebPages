@@ -1,6 +1,6 @@
 .storybook-page {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font: var(--font-s);
+  font-size: 14px;
   line-height: 24px;
   padding: 48px 20px;
   margin: 0 auto;
@@ -9,7 +9,8 @@
 }
 
 .storybook-page h2 {
-  font: var(--font-xl);
+  font-weight: 700;
+  font-size: 32px;
   line-height: 1;
   margin: 0 0 4px;
   display: inline-block;
@@ -37,8 +38,9 @@
 .storybook-page .tip {
   display: inline-block;
   border-radius: 1em;
-  font: var(--font-xs);
+  font-size: 11px;
   line-height: 12px;
+  font-weight: 700;
   background: #e7fdd8;
   color: #66bf3c;
   padding: 4px 12px;
@@ -47,7 +49,7 @@
 }
 
 .storybook-page .tip-wrapper {
-  font: var(--font-s);
+  font-size: 13px;
   line-height: 20px;
   margin-top: 40px;
   margin-bottom: 40px;
