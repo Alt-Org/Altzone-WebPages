@@ -103,6 +103,12 @@ $touchSize: 1024px;
         line-height: 1.5 !important;
         text-align: center;
     }
+
+    @media(max-width: 500px){
+        h1 {
+            font: var(--font-sw-xxxl);
+        }
+    }
 }
 
 
