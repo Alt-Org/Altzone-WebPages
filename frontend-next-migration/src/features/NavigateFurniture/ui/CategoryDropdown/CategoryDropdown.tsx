@@ -11,41 +11,27 @@ export interface SwitchCategoryProps {
     setState: (state: Category | 'all' | 'other') => void;
     state: Category | 'all' | 'other';
 }
+
 const CategoryDropdown = (props: SwitchCategoryProps) => {
     const { setState, state } = props;
     const { t } = useClientTranslation('furniture');
 
-    // Get the current selected category text
-    const getCurrentCategoryText = () => {
-        switch (state) {
-            case 'all':
-                return t('all');
-            case 'other':
-                return t('other');
-            case Category.TABLES:
-                return t('tables');
-            case Category.CHAIRS:
-                return t('chairs');
-            case Category.COUCHES:
-                return t('couches');
-            case Category.BEDS:
-                return t('beds');
-            case Category.CABINETS:
-                return t('cabinets');
-            case Category.LIGHTS:
-                return t('lights');
-            case Category.RUGS:
-                return t('rugs');
-            case Category.PLANTS:
-                return t('plants');
-            case Category.DECORATIONS:
-                return t('decorative-items');
-            case Category.ITEMS:
-                return t('other');
-            default:
-                return t('all');
-        }
+    const keyMap: Partial<Record<Category | 'all' | 'other', string>> = {
+        all: 'all',
+        other: 'other',
+        [Category.TABLES]: 'tables',
+        [Category.CHAIRS]: 'chairs',
+        [Category.COUCHES]: 'couches',
+        [Category.BEDS]: 'beds',
+        [Category.CABINETS]: 'cabinets',
+        [Category.LIGHTS]: 'lights',
+        [Category.RUGS]: 'rugs',
+        [Category.PLANTS]: 'plants',
+        [Category.DECORATIONS]: 'decorative-items',
+        [Category.ITEMS]: 'other',
     };
+
+    const getCurrentCategoryText = () => t(keyMap[state] ?? 'all');
 
     const CategoryDropdownElements: DropDownElementASTextOrLink[] = useMemo(() => {
         return [
@@ -105,10 +91,9 @@ const CategoryDropdown = (props: SwitchCategoryProps) => {
                 onClickCallback: () => setState('other'),
             },
         ];
-    }, [state, t]);
+    }, [state, t, setState]);
 
     const navMenuWithDropdownsProps: NavMenuWithDropdownsProps = {
-        // Use the current selected category as the title instead of "categories"
         title: getCurrentCategoryText(),
         openByDefault: false,
         dropdownItems: CategoryDropdownElements,

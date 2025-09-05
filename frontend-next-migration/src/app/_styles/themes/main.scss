@@ -4,66 +4,66 @@
 
 // Primary color and variants
 .app-main-theme {
-    --primary-color: #FFA100;
-    --primary-color-variant-hover: #FFB434;
-    --primary-color-variant-pressed: #E89301;
+    --primary-color: #ffa100;
+    --primary-color-variant-hover: #ffb434;
+    --primary-color-variant-pressed: #e89301;
 
     // Secondary color and variants
-    --secondary-color: #10D131;
-    --secondary-color-variant-hover: #41D95B;
-    --secondary-color-variant-pressed: #0FBD2E;
+    --secondary-color: #10d131;
+    --secondary-color-variant-hover: #41d95b;
+    --secondary-color-variant-pressed: #0fbd2e;
 
     // Tertiary color
-    --tertiary-color: #C0FF43;
+    --tertiary-color: #c0ff43;
 
     // Background, text, and neutral colors
-    --background: #1E3544;
-    --white: #FAF9F6;
+    --background: #1e3544;
+    --white: #faf9f6;
     --black: #121212;
-    --neutral: #CBCBCB;
+    --neutral: #cbcbcb;
 
     // ==========================================
     // Status Colors
     // ==========================================
 
-    --error: #FF0010;
-    --success: #10D131;
+    --error: #ff0010;
+    --success: #10d131;
 
     // ==========================================
     // Chart Colors
     // ==========================================
 
-    --charts-resistance-default: #764FEA;
-    --charts-resistance-pie-chart-light: #8C6BEB;
-    --charts-impact-force-default: #FF8000;
-    --charts-impact-force-pie-chart-light: #FFAA55;
-    --charts-size-default: #CE3B39;
-    --charts-size-pie-chart-light: #ED6E6C;
-    --charts-health-default: #3FE22E;
-    --charts-health-pie-chart-light: #87EE7D;
-    --charts-speed-default: #00FFFF;
-    --charts-speed-pie-chart-light: #A2FFFF;
+    --charts-resistance-default: #764fea;
+    --charts-resistance-pie-chart-light: #8c6beb;
+    --charts-impact-force-default: #ff8000;
+    --charts-impact-force-pie-chart-light: #ffaa55;
+    --charts-size-default: #ce3b39;
+    --charts-size-pie-chart-light: #ed6e6c;
+    --charts-health-default: #3fe22e;
+    --charts-health-pie-chart-light: #87ee7d;
+    --charts-speed-default: #00ffff;
+    --charts-speed-pie-chart-light: #a2ffff;
 
     // ==========================================
     // Defense and Characters Colors
     // ==========================================
 
-    --defense-class-colors-retroflector: #FF0000;
-    --defense-class-colors-obidient: #FF8E00;
-    --defense-class-colors-projector: #FFFF00;
-    --defense-class-colors-deflector: #008E00;
-    --defense-class-colors-desensitizer: #00C0C0;
+    --defense-class-colors-retroflector: #ff0000;
+    --defense-class-colors-obidient: #ff8e00;
+    --defense-class-colors-projector: #ffff00;
+    --defense-class-colors-deflector: #008e00;
+    --defense-class-colors-desensitizer: #00c0c0;
     --defense-class-colors-intellectualizer: #400098;
-    --defense-class-colors-confluent: #8E008E;
+    --defense-class-colors-confluent: #8e008e;
 
     // ==========================================
     // Shop Colors
     // ==========================================
 
-    --shop-frame-common: #FFA99F;
-    --shop-frame-rare: #D0D0D0;
-    --shop-frame-epic: #FFE99C;
-    --shop-frame-antique: #A8DBE8;
+    --shop-frame-common: #ffa99f;
+    --shop-frame-rare: #d0d0d0;
+    --shop-frame-epic: #ffe99c;
+    --shop-frame-antique: #a8dbe8;
 
     // ==========================================
     // Heading Styles

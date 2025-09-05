@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styles from './ShareButton.module.scss';
 import { toast } from 'react-toastify';
 import ShareIcon from '@/shared/assets/icons/ShareIcon.svg';
@@ -29,9 +29,8 @@ const ShareButton = ({ children }: ShareButtonProps): JSX.Element => {
     const handleShare = async (): Promise<void> => {
         try {
             await navigator.clipboard.writeText(window.location.href);
-
             toast.success('Link copied!');
-        } catch (err) {
+        } catch {
             toast.error('Failed to copy link');
         }
     };

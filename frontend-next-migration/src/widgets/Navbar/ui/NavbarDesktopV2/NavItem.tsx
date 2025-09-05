@@ -45,25 +45,17 @@ const NavItem = memo((props: NavItemProps) => {
         const canUserSeeOwnClan = checkPermissionFor('clan:seeOwn').isGranted;
         const localizedElements = item.elements
             .map((element) => {
-                // @ts-ignore
-
+                // @ts-ignore - dropdown element type is broader at runtime; guard clanpage visibility
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
-                // @ts-ignore
+                // @ts-ignore - spread allowed: element comes from mixed dropdown element union
                 const transformedElement = {
-                    // @ts-ignore
+                    // @ts-ignore - keep original shape, TS can't narrow union here
                     ...element,
-                    // @ts-ignore
-
+                    // @ts-ignore - elementText exists on runtime object; translate label
                     elementText: t(`${element.elementText}`),
-                    // @ts-ignore
-                    // contentItemClassName: cls.dropdownElement,
-                    // contentItemClassName: classNames(cls.dropdownElement, {
-                    //     // @ts-ignore
-                    //     [cls.active]: currentPath === element?.link?.path,
-                    // }),
-                    // @ts-ignore
+                    // @ts-ignore - compute active state with optional link path
                     active: currentPath === element?.link?.path,
                 };
 
@@ -96,7 +88,6 @@ const NavItem = memo((props: NavItemProps) => {
             <li
                 key={item.src}
                 className={classNames(cls.navItem, {}, [className])}
-                // className={className}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}

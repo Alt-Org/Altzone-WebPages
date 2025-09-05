@@ -1,43 +1,42 @@
-.main{
+.main {
+    //367px allows us to avoid unwanted scrollbar...
+    height: clamp(400px, calc(100dvh - 367px), 100vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  //367px allows us to avoid unwanted scrollbar...
-  height: clamp(400px, calc(100dvh - 367px), 100vh);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  //min-height: 80vh;
-  //min-height: 100%;
-  //height: 100%;
-  //width: clamp(300px, 600px, 90%);
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
-  //align-content: center;
+    //min-height: 80vh;
+    //min-height: 100%;
+    //height: 100%;
+    //width: clamp(300px, 600px, 90%);
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
+    //align-content: center;
 }
 
 .container {
-  padding: 30px;
-  width: clamp(300px, 600px, 90%);
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: var(--border-radius-custom);
-  animation: fadeIn 3s forwards;
+    padding: 30px;
+    width: clamp(300px, 600px, 90%);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: var(--border-radius-custom);
+    animation: fadeIn 3s forwards;
 }
 
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 .NavGoBackButton {
-  padding-top: 2rem;
-  cursor: pointer;
-  color: var(--primary-color);
-  transition: opacity 0.3s;
+    padding-top: 2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: opacity 0.3s;
 
-  &:hover {
-    opacity: 0.8;
-  }
+    &:hover {
+        opacity: 0.8;
+    }
 }

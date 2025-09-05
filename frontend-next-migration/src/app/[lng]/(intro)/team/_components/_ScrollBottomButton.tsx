@@ -1,7 +1,7 @@
 'use client';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ScrollBottomButton as ScrollBottomButtonExternal } from '@/features/ScrollBottom';
-import { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
 
 interface ScrollToSectionButtonProps {
     text?: string;
@@ -11,7 +11,7 @@ interface ScrollToSectionButtonProps {
 }
 
 export const ScrollBottomButton = (props: ScrollToSectionButtonProps) => {
-    const { text, IdToScrollBeforePlay, className, image } = props;
+    const { IdToScrollBeforePlay, className, image } = props;
 
     const scrollToSection = () => {
         const element = document.getElementById(IdToScrollBeforePlay);

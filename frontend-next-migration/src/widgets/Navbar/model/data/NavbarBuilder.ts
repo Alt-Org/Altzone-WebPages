@@ -10,12 +10,11 @@ import {
     Position,
 } from '../types';
 
-// /* eslint-disable max-params*/
-
 export class NavbarBuilder {
     private menu: NavbarMenuItem[] = [];
     private namedMenu: NamedMenu = {};
 
+    // eslint-disable-next-line max-params
     addLink(
         name: string,
         path: string,
@@ -30,6 +29,7 @@ export class NavbarBuilder {
         this.menu.push({ name, type: ItemType.navLinkFake, position, reactKey });
     }
 
+    // eslint-disable-next-line max-params
     addDropDown(
         name: string,
         isActive: boolean,
@@ -47,6 +47,7 @@ export class NavbarBuilder {
         });
     }
 
+    // eslint-disable-next-line max-params
     addLogo(
         name: string,
         src: string,

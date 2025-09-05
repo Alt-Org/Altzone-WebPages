@@ -16,7 +16,7 @@ export type Props = {
 //todo handle IsError , isLoading cases
 const VideoAndGalleries = (props: Props) => {
     const {
-        backgroundImageSrc,
+        backgroundImageSrc: _backgroundImageSrc,
         /*title,*/
         videoLink = AppExternalLinks.previewVideoYoutube,
     } = props;
@@ -40,7 +40,7 @@ const VideoAndGalleries = (props: Props) => {
             ref={ref}
             className={classNames(cls.SectionVideoAndGalleries, mods)}
             // style={{
-            //     backgroundImage: backgroundImageSrc ? `url(${backgroundImageSrc})` : 'none',
+            //     backgroundImage: _backgroundImageSrc ? `url(${_backgroundImageSrc})` : 'none',
             // }}
         >
             <h3 className={cls.title}>{/* {title} */}</h3>

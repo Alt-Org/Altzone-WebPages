@@ -1,4 +1,4 @@
-.title{
+.title {
     color: var(--primary-color);
 }
 
@@ -7,7 +7,6 @@
     display: grid;
 
     grid-template-columns: 25% 25% 25% 25%;
-
 
     @media (max-width: 1190px) {
         grid-template-columns: 33.333% 33.333% 33.333%;

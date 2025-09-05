@@ -23,6 +23,8 @@ describe('profileSlice', () => {
                 profile_id: 'string',
                 clan_id: 'string',
                 above13: true,
+                points: 0,
+                parentalAuth: false,
             },
         };
 
@@ -47,6 +49,8 @@ describe('profileSlice', () => {
                     profile_id: 'string',
                     clan_id: 'string',
                     above13: true,
+                    points: 0,
+                    parentalAuth: false,
                 },
             },
         };
@@ -71,6 +75,8 @@ describe('profileSlice', () => {
                     profile_id: 'string',
                     clan_id: clan_id,
                     above13: true,
+                    points: 0,
+                    parentalAuth: false,
                 },
             },
         };
@@ -91,6 +97,8 @@ describe('profileSlice', () => {
                     profile_id: 'string',
                     clan_id: clan_id,
                     above13: true,
+                    points: 0,
+                    parentalAuth: false,
                 },
             },
         };
@@ -110,6 +118,8 @@ describe('profileSlice', () => {
                     profile_id: 'string',
                     clan_id: undefined,
                     above13: true,
+                    points: 0,
+                    parentalAuth: false,
                 },
             },
         };

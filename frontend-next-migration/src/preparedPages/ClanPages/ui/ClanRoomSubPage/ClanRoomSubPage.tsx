@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { useClanData } from '@/entities/Clan';
 import { Loader } from '@/shared/ui/Loader';
 import clanLogo from '@/shared/assets/images/clanLogos/temp-clanlogo.png';
-import clanHome from '@/shared/assets/images/clanLogos/temp-clanHome.png';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { ButtonField } from '../_components/clanoverview/buttonField';
 import { ClanInfo } from '../_components/clanoverview/clanInfo';
@@ -58,7 +57,7 @@ const ClanRoomSubPage = (props: Props) => {
 
     if (isLoading) return <Loader className={cls.Loader} />;
 
-    //proper error handling page should be implemented
+    // proper error handling page should be implemented
     if (error) {
         return <>{toast.error('error placeholder')}</>;
     }
@@ -112,7 +111,7 @@ const ClanRoomSubPage = (props: Props) => {
                     </div>
                     <div className={cls.clanMotto}>
                         {mottoText}
-                        {/* Clan Motto and most of ClanInfo yet to be implemented, using placeholders instead*/}
+                        {/* Clan Motto and most of ClanInfo yet to be implemented, using placeholders instead */}
                         <p className={cls.mottoText}>Unite, Conquer, Prevail!</p>
                     </div>
                     <div className={cls.clanInformation}>
@@ -126,6 +125,8 @@ const ClanRoomSubPage = (props: Props) => {
             </>
         );
     }
+
+    return null;
 };
 
 export default ClanRoomSubPage;

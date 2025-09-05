@@ -2,7 +2,6 @@ import { dir } from 'i18next';
 import type { Metadata, Viewport } from 'next';
 import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
-import cls from '@/preparedPages/MainPage/ui/page.module.scss';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { ChatBotToggleButton } from '@/shared/ui/v2/Chatbot';
 import { languages } from '@/shared/i18n/settings/settings';

@@ -15,19 +15,6 @@ const mockDiscordBlock: BlockSection = {
     img: 'https://example.com/image.png',
 };
 
-const mockRedditBlock: BlockSection = {
-    label: 'Label',
-    description: 'Description here',
-    links: [
-        {
-            text: 'Open link',
-            url: 'https://example.com/',
-            isExternal: true,
-        },
-    ],
-    img: 'https://example.com/image.png',
-};
-
 const mockTeachersBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',

@@ -110,7 +110,7 @@ export const newsApi = directusApi.injectEndpoints({
                         error: undefined,
                         meta: undefined,
                     };
-                } catch (error) {
+                } catch {
                     return {
                         data: undefined,
                         error: { status: 500, data: 'Internal server error' },
@@ -209,7 +209,7 @@ export const newsApi = directusApi.injectEndpoints({
                         error: undefined,
                         meta: undefined,
                     };
-                } catch (error) {
+                } catch {
                     return {
                         data: undefined,
                         error: { status: 500, data: 'Internal server error' },
@@ -307,7 +307,7 @@ export const newsApi = directusApi.injectEndpoints({
                         data: Number(totalNewsCount[0].count),
                         error: undefined,
                     };
-                } catch (error) {
+                } catch {
                     return {
                         data: undefined,
                         error: { status: 500, data: 'Internal server error' },

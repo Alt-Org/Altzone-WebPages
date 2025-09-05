@@ -1,8 +1,7 @@
-
 .wall {
     position: fixed;
     top: 0;
-    align-content: start; 
+    align-content: start;
     display: grid;
     grid-template-columns: repeat(8, 15vw);
     grid-auto-rows: 12vh;
@@ -11,12 +10,12 @@
     z-index: 100;
     perspective: 1000px;
 
-    @media (max-width:breakpoint(md)) {
+    @media (max-width: breakpoint(md)) {
         grid-template-columns: repeat(8, 15rem);
         grid-auto-rows: 6rem;
     }
 
-    @media (max-width:breakpoint(sm)) {
+    @media (max-width: breakpoint(sm)) {
         grid-template-columns: repeat(8, 10rem);
         grid-auto-rows: 5rem;
     }
@@ -25,9 +24,7 @@
 $drop-count: 96;
 
 @for $i from 0 through $drop-count {
-    
     .drop-#{$i} {
-
         --tile-tilt: 0deg;
         width: auto;
         height: 13vh;
@@ -35,13 +32,13 @@ $drop-count: 96;
         z-index: ($drop-count - $i);
         box-shadow: 0 4px 3px 3px rgba($color: #121823c8, $alpha: 0.5);
         border-radius: 6px;
-        
-        @media (max-width:breakpoint(md)) {
-            height: 6rem;   
+
+        @media (max-width: breakpoint(md)) {
+            height: 6rem;
         }
 
-        @media (max-width:breakpoint(sm)) {
-            height: 5rem;   
+        @media (max-width: breakpoint(sm)) {
+            height: 5rem;
         }
     }
 }
@@ -49,18 +46,16 @@ $drop-count: 96;
 @for $i from 1 through 8 {
     .tile:nth-child(16n + #{$i}) {
         margin-left: -50%;
-    
-        @media (max-width:breakpoint(md))  {
+
+        @media (max-width: breakpoint(md)) {
             margin-left: -40%;
         }
 
-        @media (max-width:breakpoint(xs)) {
-            margin-left: -45%
+        @media (max-width: breakpoint(xs)) {
+            margin-left: -45%;
         }
     }
-    
 }
-
 
 @keyframes drop {
     0% {

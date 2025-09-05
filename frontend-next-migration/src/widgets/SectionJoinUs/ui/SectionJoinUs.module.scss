@@ -10,7 +10,7 @@
     .Container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: repeat(3, minmax(0, 1fr));
-        margin: 10px auto ;
+        margin: 10px auto;
     }
 }
 @media screen and (max-width: breakpoint(sm)) {
@@ -21,6 +21,3 @@
         margin: 0 auto;
     }
 }
-
-
-

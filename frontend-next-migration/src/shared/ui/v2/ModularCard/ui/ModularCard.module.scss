@@ -13,16 +13,14 @@
     --small-size-desktop: 14px;
     --border-desktop: 4px;
     --border-mobile: 2px;
-    --primary-color: #FFA100;
-    --primary-border: #FFA100;
-    --background: #1E3544;
-    --white: #FAF9F6;
+    --primary-color: #ffa100;
+    --primary-border: #ffa100;
+    --background: #1e3544;
+    --white: #faf9f6;
     --black: #121212;
 }
 
-
 .withScalableLink {
-
     .ModularCardTexts {
         transition: all ease-in-out;
         transition-duration: 0.3s;
@@ -32,29 +30,28 @@
             flex-basis: 40% !important;
         }
     }
-    
 }
 
 // NewsImageCard
-.Card.NewsImageCard  {
-    position:relative;
+.Card.NewsImageCard {
+    position: relative;
     background-color: var(--background);
-    height:203px;
+    height: 203px;
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
     display: flex;
     box-shadow: 4px 8px 0 var(--black);
-    @media (max-width:breakpoint(xxl)) {
+    @media (max-width: breakpoint(xxl)) {
         height: 155px;
     }
-    @media (max-width:breakpoint(md)) {
-        height:127px;
+    @media (max-width: breakpoint(md)) {
+        height: 127px;
         border: var(--border-mobile) solid var(--black);
         box-shadow: 2px 4px 0 var(--black);
     }
 }
 .Card.NewsImageCard > .ModularCardTexts {
-    font-family:var(--body-font);
+    font-family: var(--body-font);
     font-size: var(--body-size-desktop);
     color: var(--white);
     flex-basis: 50%;
@@ -62,28 +59,27 @@
     display: flex;
     flex-direction: column;
     align-content: center;
-    padding-left:.5em;
-    padding-right:.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 .Card.NewsImageCard > .ModularCardTexts > .ModularCardTitle {
-    padding-left:0 !important;
-    padding-right:0 !important;
-    margin-bottom: .5em;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 0.5em;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     line-clamp: 1;
     overflow: hidden;
     h2 {
-        font-family:var(--heading-font);
-        font-size:var(--heading-font-size);
-        color:var(--primary-color);
+        font-family: var(--heading-font);
+        font-size: var(--heading-font-size);
+        color: var(--primary-color);
     }
-    @media (max-width:breakpoint(md)) {
+    @media (max-width: breakpoint(md)) {
         h2 {
-            
-            font-size:var(--h2-size-mobile);
-            margin-top:.7em;
+            font-size: var(--h2-size-mobile);
+            margin-top: 0.7em;
         }
         -webkit-line-clamp: 2;
         line-clamp: 2;
@@ -94,36 +90,35 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
-    line-clamp:5;
-    @media (max-width:breakpoint(xxl)) {
+    line-clamp: 5;
+    @media (max-width: breakpoint(xxl)) {
         -webkit-line-clamp: 3;
         line-clamp: 3;
     }
-    @media (max-width:breakpoint(md)) {
+    @media (max-width: breakpoint(md)) {
         display: none;
     }
-    
 }
 .Card.NewsImageCard > .ModularCardTexts > .ModularCardFootnote {
-    font-family:var(--body-font);
+    font-family: var(--body-font);
     font-size: var(--small-size-desktop);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-left:0;
-    padding-right:0;
-    margin-top: .5em;
-    margin-bottom: .3em;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
 }
 .Card.NewsImageCard > .ModularCardImageSection {
     overflow: hidden;
-    flex-grow:1;
+    flex-grow: 1;
 }
 .Card.NewsImageCard > .ModularCardImageSection > .ModularCardImage {
-    object-fit:contain;
-    height:100%;
-    width:100%;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
 }
 .Card.NewsImageCard > .ModularCardImageSection > .ModularCardTriangle {
     position: absolute;
@@ -131,16 +126,15 @@
     height: 0;
     border-bottom: 195px solid var(--background);
     border-right: 157px solid transparent;
-    @media (max-width:breakpoint(xxl)) {
+    @media (max-width: breakpoint(xxl)) {
         border-bottom: 147px solid var(--background);
         border-right: 130px solid transparent;
     }
-    @media (max-width:breakpoint(md)) {
+    @media (max-width: breakpoint(md)) {
         border-bottom: 123px solid var(--background);
         border-right: 80px solid transparent;
     }
 }
-
 
 // TItleImageCard
 .Card.TitleImageCard {
@@ -151,8 +145,8 @@
     border-radius: var(--border-radius-md);
     display: flex;
     box-shadow: 4px 8px 0 var(--black);
-    @media (max-width:breakpoint(md)) {
-        height:160px;
+    @media (max-width: breakpoint(md)) {
+        height: 160px;
         box-shadow: 2px 4px 0 var(--black);
     }
 }
@@ -163,32 +157,32 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left:.5em;
-    padding-right:.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 .Card.TitleImageCard > .ModularCardTexts > .ModularCardTitle {
-    padding-left:0 !important;
-    padding-right:0 !important;
-    margin-top: .3em;
-    margin-bottom: .5em;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
     h2 {
-        font-family:var(--heading-font);
-        font-size:var((--h1-size-mobile));
-        color:var(--primary-color);
+        font-family: var(--heading-font);
+        font-size: var((--h1-size-mobile));
+        color: var(--primary-color);
         margin-left: 30px;
     }
-    @media (max-width:breakpoint(md)) {
+    @media (max-width: breakpoint(md)) {
         h2 {
-            font-size:var(--h2-size-mobile);
+            font-size: var(--h2-size-mobile);
         }
     }
 }
 
 .Card.TitleImageCard > .ModularCardImageSection > .ModularCardImage {
     height: 100%;
-    width:min-content;
+    width: min-content;
     object-fit: contain;
-    margin-left:auto;
+    margin-left: auto;
 }
 .Card.TitleImageCard > .ModularCardImageSection > .ModularCardTriangle {
     position: absolute;
@@ -196,7 +190,7 @@
     height: 0;
     border-bottom: 212px solid var(--background);
     border-right: 140px solid transparent;
-    @media (max-width:breakpoint(md)) {
+    @media (max-width: breakpoint(md)) {
         border-bottom: 152px solid var(--background);
         border-right: 85px solid transparent;
     }
@@ -219,20 +213,18 @@
     @media (max-width: breakpoint(xl)) {
         height: 184px;
     }
-    @media (max-width:breakpoint(md)) {
+    @media (max-width: breakpoint(md)) {
         height: 152px;
         box-shadow: 2px 4px 0 var(--black);
     }
     @media (max-width: 640px) {
         height: 144px;
     }
-    @media (max-width:breakpoint(sm)) {
+    @media (max-width: breakpoint(sm)) {
         height: 120px;
         box-shadow: 1px 2px 0 var(--black);
     }
-
 }
-
 
 .Card.DefenseCard > .ModularCardTexts {
     flex-basis: 45%;
@@ -248,7 +240,7 @@
         font-weight: 400;
         font-size: var(--font-size-l);
         line-height: var(--font-line-l);
-        color:var(--white);
+        color: var(--white);
     }
     @media (max-width: breakpoint(xl)) {
         //margin-top: var(--spacing-600);
@@ -256,7 +248,7 @@
             font-size: 18px;
         }
     }
-    @media (max-width: breakpoint(md)) {        
+    @media (max-width: breakpoint(md)) {
         padding-left: var(--spacing-200);
         h2 {
             font-size: var(--font-size-m);
@@ -289,15 +281,15 @@
 .Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
     font-size: var(--font-size-xl);
     line-height: var(--font-line-xl);
-    color:var(--primary-color);
+    color: var(--primary-color);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     line-clamp: 1;
     overflow: hidden;
     @media (max-width: breakpoint(xl)) {
-       font-size: 28px;
-       line-height: var(--font-line-l);
+        font-size: 28px;
+        line-height: var(--font-line-l);
     }
     @media (max-width: breakpoint(md)) {
         font-size: var(--font-size-l);
@@ -319,13 +311,13 @@
 }
 
 .Card.DefenseCard > .ModularCardImageSection::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
     width: 150%;
     height: 100%;
-    transform: skewX(20deg);    
+    transform: skewX(20deg);
     background-color: var(--before-color, red);
 }
 
@@ -349,4 +341,3 @@
         top: -8px;
     }
 }
-

@@ -117,6 +117,7 @@ describe('useLoginForm', () => {
         );
 
         expect(mockDispatch).toHaveBeenCalledWith(
+            // @ts-ignore legacy test mock shape
             authUserActions.setProfile({
                 username: mockData.username,
                 // @ts-ignore
