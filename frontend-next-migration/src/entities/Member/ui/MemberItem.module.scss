@@ -23,16 +23,16 @@
     padding-right: 1.5rem;
     display: flex;
     justify-content: flex-end;
-    font: var(--font-s);
+    font: var(--font-l);
 
     @media (max-width: breakpoint(lg)) {
       justify-content: flex-start;
-      font: var(--font-s);
+      font: var(--font-dm-s);
     }
   }
 
   .taskText {
-    font: var(--font-s);
+    font: var(--font-l);
     text-align: left;
     flex: 2;
     min-width: 0;
@@ -41,7 +41,7 @@
     width: fit-content !important;
 
     @media (max-width: breakpoint(lg)) {
-      font: var(--font-s);
+      font: var(--font-dm-s);
     }
   }
 
