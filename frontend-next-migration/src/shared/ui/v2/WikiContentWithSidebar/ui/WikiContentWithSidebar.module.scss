@@ -100,7 +100,8 @@ $touchSize: 1024px;
     h1 {
         font: var(--font-sw-5xl);
         color: var(--primary-color);
-
+        line-height: 1.5 !important;
+        text-align: center;
     }
 }
 

@@ -86,6 +86,7 @@
     margin: 0 0 20px 0;
     color: var(--primary-color);
     font: var(--font-sw-xl);
+    line-height: 1.2 !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
@@ -221,6 +222,7 @@
         font: var(--font-dm-m);
         width: 301px;
         height: 224px;
+        line-height: 1.5 !important;
         padding-left: 8px;
     }
 

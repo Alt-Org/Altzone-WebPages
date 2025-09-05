@@ -241,6 +241,7 @@
     font: var(--font-sw-m);
 
     h2 {
+        line-height: var(--font-line-l) !important;
         font: var(--font-sw-m);
         color:var(--white);
     }
@@ -253,17 +254,20 @@
     @media (max-width: breakpoint(md)) {        
         padding-left: var(--spacing-200);
         h2 {
+            line-height: var(--font-line-m) !important;
             font: var(--font-sw-m);
         }
     }
     @media (max-width: 640px) {
         h2 {
+            line-height: var(--font-line-xs) !important;
             font: var(--font-sw-s);
         }
     }
     @media (max-width: breakpoint(sm)) {
         //margin-top: calc(var(--spacing-500) + 4px);
         h2 {
+            line-height: 16px !important;
             font: var(--font-sw-xs);
         }
     }
@@ -278,6 +282,7 @@
 }
 
 .Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
+    line-height: var(--font-line-xl) !important;
     color:var(--primary-color);
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -286,15 +291,18 @@
     overflow: hidden;
     font: var(--font-sw-xl);
     @media (max-width: breakpoint(xl)) {
+        line-height: var(--font-line-l) !important;
         font: var(--font-sw-l);
     }
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-l);
     }
     @media (max-width: 640px) {
+        line-height: var(--font-line-m) !important;
         font: var(--font-sw-m);
     }
     @media (max-width: breakpoint(sm)) {
+        line-height: var(--font-line-s) !important;
         font: var(--font-sw-s);
     }
 }

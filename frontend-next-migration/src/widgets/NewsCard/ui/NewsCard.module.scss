@@ -111,6 +111,7 @@
 
 .text {
     color: var(--white);
+    line-height: 1.5em !important;
     font: var(--font-dm-s);
     width: 255px;
     margin-top: auto;
@@ -121,6 +122,7 @@
     overflow: hidden;
 
     @media (max-width: breakpoint(md)) {
+        line-height: 1rem !important;
         font: var(--font-dm-s);
     }
 

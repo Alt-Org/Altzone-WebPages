@@ -1,6 +1,7 @@
 .NavMenuWithDropdowns {
   width: 100%;
   filter: drop-shadow(8px 12px var(--black));
+  line-height: var(--font-line-l) !important;
   font: var(--font-l);
 
   // max-width can be changed but shouldnt really be necessary
@@ -14,6 +15,7 @@
       padding: 12px 24px;
       border-radius: var(--border-radius-xl);
       border: 2px solid var(--black);
+      line-height: var(--font-line-m) !important;
       font: var(--font-m);
     }
 
@@ -28,6 +30,7 @@
       padding: 12px 24px;
       border-radius: var(--border-radius-xl);
       border: 2px solid var(--black);
+      line-height: var(--font-line-m) !important;
       font: var(--font-m);
     }
 
