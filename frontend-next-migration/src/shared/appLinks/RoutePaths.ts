@@ -140,6 +140,8 @@ export const getRouteOneFurnitureSetPage = (id: string) => `/furniture/set/${id}
 export const getRouteFurnitureSearchPage = () => '/furniture/search';
 export const getRouteFurnitureCategoryPage = () => '/furniture/category';
 
+export const getRouteAllMusicCollectionsPage = () => '/collections/music';
+
 export const getRouteDefenseGalleryPage = () => '/defense-gallery';
 export const getRouteDefenseGalleryGroupPage = (group: string) => `/defense-gallery/${group}`;
 
