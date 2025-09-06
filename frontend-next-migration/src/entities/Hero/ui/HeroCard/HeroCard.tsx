@@ -6,6 +6,7 @@ import { ClickableBorder } from '@/shared/ui/ClickableBorder';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import useResizeObserver, { ResizeCallback } from '@/shared/lib/hooks/useResizeObserver';
+import heroBorder from '@/shared/assets/images/heros/hero-border/hero-border3.png';
 import cls from './HeroCard.module.scss';
 
 type Props = {
@@ -21,6 +22,8 @@ type Props = {
 export const HeroCard = (props: Props) => {
     const { id, title, imageSrc, imageAlt, className = '', backgroundColor, slug } = props;
 
+    const borderImageUrl = heroBorder.src;
+
     const elementRef = useRef(null);
 
     const handleCardSizeUpdate: ResizeCallback<HTMLDivElement> = useCallback((refCurrent) => {
@@ -34,7 +37,7 @@ export const HeroCard = (props: Props) => {
         <div className={classNames(cls.Wrapper, {}, [className])}>
             <ClickableBorder
                 ref={elementRef}
-                borderImageSource={'/images/hero-border3.png'}
+                borderImageSource={borderImageUrl}
                 className={classNames(cls.ClickableBorder, {}, [])}
             >
                 <div
