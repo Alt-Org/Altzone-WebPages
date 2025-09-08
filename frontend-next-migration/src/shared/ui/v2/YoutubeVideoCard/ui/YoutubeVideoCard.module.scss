@@ -1,0 +1,66 @@
+.VideoCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 781px;
+    aspect-ratio: 16/9;
+
+    background-color: var(--background);
+    border: 4px solid var(--black);
+    box-shadow: 4px 8px 0px var(--black);
+    border-radius: 8px;
+
+
+}
+
+.IframeWrapper {
+    width: 100%;
+    aspect-ratio: 25 / 10; 
+    background: #121212;
+}
+
+.VideoIframe {
+    height: 100%;
+    border: 0;
+    border-style: none;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.TextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--font-size-l); // 24px;
+    gap: 4px;
+    padding: 0.75em 0;
+
+    @media (max-width: breakpoint(lg)) {
+        font-size: var(--font-size-m); // 16px
+        gap: 0;
+    }
+
+    @media (max-width: breakpoint(md)) {
+        font-size: var(--font-size-s); // 14px
+    }
+}
+
+.Title {
+    font-family: var(--font-family-title);
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 1.5em;
+    line-height: 1.75em;
+}
+
+.Artist {
+    font-family: var(--body-font);
+    font-size: 1em;
+    line-height: 1.25em;
+    color: var(--white);
+}
+
+
+

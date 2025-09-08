@@ -5,5 +5,9 @@
   "og-title": "ALT Zone Musiikki – Alkuperäiset Ääniraidat & Äänitallenteet",
   "og-description": "Tutustu ALT Zone -pelin alkuperäisiin ääniraitoihin ja äänitallenteisiin.",
 
-  "music-collections-title": "Musiikkikokoelmat"
+  "music-collections-title": "Musiikkikokoelmat",
+  "search-placeholder": "Hae...",
+
+  "back-button": "Takaisin",
+  "sort-placeholder": "Järjestä..."
 }

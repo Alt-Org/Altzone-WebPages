@@ -5,5 +5,9 @@
   "og-title": "ALT Zone Music – Original Soundtracks & Audio Tracks",
   "og-description": "Explore the original soundtracks and audio tracks from ALT Zone.",
 
-  "music-collections-title": "Music Collections"
+  "music-collections-title": "Music Collections",
+  "search-placeholder": "Search...",
+
+  "back-button": "Back",
+  "sort-placeholder": "Sort by..."
 }
