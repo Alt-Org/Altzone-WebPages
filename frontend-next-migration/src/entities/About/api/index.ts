@@ -1,1 +1,1 @@
-export { fetchMembersServer } from './aboutApi';
+export { fetchMembersServer, fetchDemographicsServer } from './aboutApi';

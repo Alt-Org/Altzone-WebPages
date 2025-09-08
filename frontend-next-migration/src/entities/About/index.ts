@@ -1,2 +1,2 @@
-export { fetchMembersServer } from './api';
+export { fetchMembersServer, fetchDemographicsServer } from './api';
 export { getBehindYears } from './lib';
