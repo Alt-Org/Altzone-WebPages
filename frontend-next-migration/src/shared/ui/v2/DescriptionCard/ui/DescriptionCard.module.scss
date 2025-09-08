@@ -108,81 +108,6 @@
         border-right: 85px solid transparent;
     }
 }
-// DefenseGalleryCard
-.Card.DefenseGalleryCard {
-    height: 150px !important;  //remember to update .DescriptionCardTriangle bottom-border
-    position: relative;
-    background-color: var(--background);
-    border: var(--border-desktop) solid var(--black);
-    border-radius: var(--border-radius-md);
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 4px 8px 0 var(--black);
-    @media (max-width:breakpoint(md)) {
-        height:160px !important;
-        box-shadow: 2px 4px 0 var(--black);
-    }
-}
-
-.Card.DefenseGalleryCard > .DescriptionCardTexts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 1em;
-    padding-right:.5em;
-    font-size: .8em;
-    font-family: var(--body-font);
-}
-
-.Card.DefenseGalleryCard > .DescriptionCardTexts > .DescriptionCardTitle {
-    padding-left:0 !important;
-    padding-right:0 !important;
-    margin-top: .3em;
-    margin-bottom: .3em;
-    h2 {
-        font-family:var(--font-family-title);
-        font-weight: 400;
-        font-size:var((--h1-size-mobile));
-        color:var(--primary-color);
-    }
-    @media (max-width:breakpoint(md)) {
-        h2 {
-            font-size:var(--h2-size-mobile);
-        }
-    }
-}
-
-.Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardScaledImageContainer {
-    margin-right: auto;
-    position: relative;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-.Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer {
-    position: relative;
-    height: 100%;
-}
-.Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
-    object-fit: cover !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-position: left !important;
-}
-.Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
-    position: absolute;
-    width: 0;
-    height: 0;
-
-    border-bottom: 142px solid var(--background);
-    border-right: 71px solid transparent;
-    @media (max-width:breakpoint(md)) {
-        border-bottom: 152px solid var(--background);
-        border-right: 85px solid transparent;
-    }
-}
 //FurnitureCollectionCard
 .Card.FurnitureCollectionCard {
     height: 220px !important;  //remember to update .DescriptionCardTriangle bottom-border
@@ -266,3 +191,73 @@
     }
 }
 
+// CollectionsCard
+.Card.CollectionsCard {
+    aspect-ratio: 1626/289;
+    height: auto !important;
+    position: relative;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 4px 8px 0 var(--black);
+    @media (max-width:breakpoint(md)) {
+        height:160px !important;
+        box-shadow: 2px 4px 0 var(--black);
+    }
+}
+
+.Card.CollectionsCard > .DescriptionCardTexts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1em;
+    padding-right:.5em;
+    font-size: .8em;
+    font-family: var(--body-font);
+}
+
+.Card.CollectionsCard > .DescriptionCardTexts > .DescriptionCardTitle {
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-top: .3em;
+    margin-bottom: .3em;
+    h2 {
+        font-family:var(--font-family-title);
+        font-weight: 400;
+        font-size:var((--h1-size-mobile));
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            font-size:var(--h2-size-mobile);
+        }
+    }
+}
+
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardScaledImageContainer {
+    margin-right: auto;
+    position: relative;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer {
+    position: relative;
+    height: 100%;
+}
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-position: center 74% !important;
+    clip-path: polygon(
+        0% 0%,   // top left
+        100% 0%,  // top right
+        100% 100%, // bottom right
+        20% 100%   // bottom left
+    );
+}
