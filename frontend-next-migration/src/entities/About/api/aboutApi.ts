@@ -39,21 +39,41 @@ export async function fetchMembersServer(): Promise<number> {
     }
 }
 
+/**
+ * Fetches demographics data from Directus.
+ * Returns the localities and nationalities counts from the latest record.
+ * Uses a cacheBuster query parameter to prevent cached responses and ensure the latest value is retrieved from the database.
+ *
+ * @returns {Promise<{localities: number, nationalities: number}>} Demographics counts.
+ * @throws {Error} On API request failure.
+ */
+
 export async function fetchDemographicsServer(): Promise<{
     localities: number;
     nationalities: number;
 }> {
     try {
-        const demographics = await client.request<Demographics>(
-            readItems('demographics', { limit: 25 }),
+        const cacheBuster = Date.now();
+        const demographics = await client.request<Demographics[]>(
+            readItems('demographics', {
+                filter: { status: { _neq: 'archived' } },
+                limit: 1,
+                cacheBuster,
+            }),
         );
 
+        if (!demographics.length) {
+            return { localities: 0, nationalities: 0 };
+        }
+
+        const { localities = 0, nationalities = 0 } = demographics[0];
+
         return {
-            localities: demographics.localities | 0,
-            nationalities: demographics.nationalities | 0,
+            localities,
+            nationalities,
         };
     } catch (error) {
         console.error('fetchDemographicsServer error:', error);
-        return { localities: 0, nationalities: 0 };
+        throw error;
     }
 }
