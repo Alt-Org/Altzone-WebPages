@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import ChatBotButton from '../../ChatBot';
+import ChatBotButton from '../../ui/ChatBot';
 import ChatsIcon from '@/shared/assets/icons/Chats.svg';
 import Image from 'next/image';
 import cls from './ChatbotButton.module.scss';
