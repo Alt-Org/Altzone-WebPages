@@ -23,7 +23,7 @@
     padding-right: 1.5rem;
     display: flex;
     justify-content: flex-end;
-    font: var(--font-l);
+    font: var(--font-dm-bold-l);
 
     @media (max-width: breakpoint(lg)) {
       justify-content: flex-start;
@@ -32,7 +32,7 @@
   }
 
   .taskText {
-    font: var(--font-l);
+    font: var(--font-dm-l);
     text-align: left;
     flex: 2;
     min-width: 0;
