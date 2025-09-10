@@ -126,6 +126,17 @@
   --font-line-5xl: 72px;
   --font-dm-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-secondary);
 
+  // Fonts using DM_SANS BOLD
+  --font-dm-bold-s: 700 var(--font-size-s) / var(--font-line-s) var(--font-family-secondary);
+  --font-dm-bold-xs: 700 var(--font-size-xs) / var(--font-line-xs) var(--font-family-secondary);
+  --font-dm-bold-m: 700 var(--font-size-m) / var(--font-line-m) var(--font-family-secondary);
+  --font-dm-bold-l: 700 var(--font-size-l) / var(--font-line-l) var(--font-family-secondary);
+  --font-dm-bold-xl: 700 var(--font-size-xl) / var(--font-line-xl) var(--font-family-secondary);
+  --font-dm-bold-xxl: 700 var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-secondary);
+  --font-dm-bold-xxxl: 700 var(--font-size-xxxl) / var(--font-line-xxxl) var(--font-family-secondary);
+  --font-dm-bold-4xl: 700 var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-secondary);
+  --font-dm-bold-5xl: 700 var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-secondary);
+
   //figma spacers
   --spacer300: 16px;
 
