@@ -1,6 +1,6 @@
 .siteNav {
   position: absolute;
-  font: var(--font-m);
+  font: var(--font-dm-bold-m);
   padding-top: 50px;
   color: #fbf7dc;
   width: 100%;
@@ -126,12 +126,12 @@
   border: 2px solid var(--secondary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--primary-color) !important;
-  font: var(--font-m) !important;
+  font: var(--font-dm-bold-m) !important;
   padding: 2px;
 
   button {
     background-color: rgba(0, 0, 0, 0.8);
-    font: var(--font-m) !important;
+    font: var(--font-dm-bold-m) !important;
     color: var(--primary-color) !important;
     border-radius: var(--border-radius-custom);
     border: 2px solid transparent;
@@ -178,7 +178,7 @@
   outline: 2px solid var(--secondary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--primary-color) !important;
-  font: var(--font-m) !important;
+  font: var(--font-dm-bold-m) !important;
   text-align: center;
 
   padding: 4px;

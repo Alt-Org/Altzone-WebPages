@@ -33,7 +33,7 @@
 .clanList {
     padding: 1px;
     border-radius: var(--border-radius-custom);
-    font: var(--font-m);
+    font: var(--font-dm-m);
     align-items: top;
     text-align: left;
 }
@@ -166,7 +166,7 @@
         background-color: rgba(0, 0, 0, 0);
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
         text-align: center;
-        font: var(--font-m);
+        font: var(--font-dm-m);
     }
 
     .clanListMobile.expanded {
@@ -175,6 +175,6 @@
         background-color: rgba(0, 0, 0, 1);
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
         text-align: center;
-        font: var(--font-m);
+        font: var(--font-dm-m);
     }
 }

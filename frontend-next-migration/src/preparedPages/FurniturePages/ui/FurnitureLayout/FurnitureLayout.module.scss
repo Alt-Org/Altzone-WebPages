@@ -8,12 +8,12 @@
 
 
   h1 {
-    font: var(--font-xxxl);
+    font: var(--font-dm-xxxl);
     line-height: 1.5;
   }
 
   h3 {
-    font: var(--font-l);
+    font: var(--font-dm-l);
     line-height: 1.25;
   }
 
@@ -23,22 +23,22 @@
   @media (max-width: breakpoint(md)) {
 
     h1 {
-      font: var(--font-xxl);
+      font: var(--font-dm-xxl);
     }
 
     h3 {
-      font: var(--font-l);
+      font: var(--font-dm-l);
     }
   }
 
     @media (max-width: 450px) {
 
     h1 {
-      font: var(--font-xl);
+      font: var(--font-dm-xl);
     }
 
     h3 {
-      font: var(--font-m);
+      font: var(--font-dm-m);
     }
   }
 }
