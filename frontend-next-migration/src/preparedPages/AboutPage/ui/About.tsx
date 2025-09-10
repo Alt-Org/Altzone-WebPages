@@ -2,6 +2,7 @@
 import cls from './About.module.scss';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 import Image from 'next/image';
+import { useGetMembersQuery, useGetDemographicsQuery, getBehindYears } from '@/entities/About';
 
 export interface Props {
     title: string;
@@ -12,10 +13,6 @@ export interface Props {
     locality: string;
     nationality: string;
     behind: string;
-    projectCount: number;
-    localityCount: number;
-    nationalityCount: number;
-    behindCount: number;
     V2019: string;
     V2020: string;
     V2021: string;
@@ -34,10 +31,6 @@ const About = (props: Props) => {
         locality,
         nationality,
         behind,
-        projectCount,
-        localityCount,
-        nationalityCount,
-        behindCount,
         V2019,
         V2020,
         V2021,
@@ -45,6 +38,15 @@ const About = (props: Props) => {
         V2023,
         V2024,
     } = props;
+
+    const { data: projectCount = 0, isLoading: membersLoading } = useGetMembersQuery();
+    const {
+        data: demographics = { localities: 0, nationalities: 0 },
+        isLoading: demographicsLoading,
+    } = useGetDemographicsQuery();
+
+    const behindCount = getBehindYears();
+    const isLoading = membersLoading || demographicsLoading;
 
     return (
         <main className={cls.main}>
@@ -54,15 +56,17 @@ const About = (props: Props) => {
                 <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
-                        <p className={cls.gridp}>{projectCount}</p>
+                        <p className={cls.gridp}>{isLoading ? '...' : projectCount}</p>
                         <p className={cls.gridp}>{project}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>{localityCount}</p>
+                        <p className={cls.gridp}>{isLoading ? '...' : demographics.localities}</p>
                         <p className={cls.gridp}>{locality}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>{nationalityCount}</p>
+                        <p className={cls.gridp}>
+                            {isLoading ? '...' : demographics.nationalities}
+                        </p>
                         <p className={cls.gridp}>{nationality}</p>
                     </div>
                     <div>

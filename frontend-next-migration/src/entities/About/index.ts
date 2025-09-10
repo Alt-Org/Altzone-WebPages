@@ -1,2 +1,2 @@
-export { fetchMembersServer, fetchDemographicsServer } from './api';
+export { useGetMembersQuery, useGetDemographicsQuery } from './api';
 export { getBehindYears } from './lib';

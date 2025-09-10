@@ -1,1 +1,1 @@
-export { fetchMembersServer, fetchDemographicsServer } from './aboutApi';
+export { useGetMembersQuery, useGetDemographicsQuery } from './aboutApi';

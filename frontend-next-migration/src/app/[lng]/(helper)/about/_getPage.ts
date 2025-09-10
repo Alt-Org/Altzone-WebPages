@@ -1,24 +1,11 @@
 import { useServerTranslation } from '@/shared/i18n';
 import { createPage } from '@/app/_helpers';
 import { AboutPageProps } from '@/preparedPages/AboutPage';
-import { fetchMembersServer, getBehindYears, fetchDemographicsServer } from '@/entities/About';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 import { getRouteAboutPage } from '@/shared/appLinks/RoutePaths';
 
 export async function _getPage(lng: any) {
     const { t } = await useServerTranslation(lng, 'about');
-
-    const behindCount = getBehindYears();
-
-    const { nationalities, localities } = await fetchDemographicsServer().catch((error) => {
-        console.error('Error fetching team data:', error);
-        return { nationalities: 0, localities: 0 };
-    });
-
-    const uniqueMemberCount = await fetchMembersServer().catch((error) => {
-        console.error('Error fetching team data:', error);
-        return 0;
-    });
 
     return createPage<AboutPageProps>({
         buildPage: () => ({
@@ -30,10 +17,6 @@ export async function _getPage(lng: any) {
             locality: t('locality'),
             nationality: t('nationality'),
             behind: t('behind'),
-            projectCount: uniqueMemberCount,
-            localityCount: localities,
-            nationalityCount: nationalities,
-            behindCount: behindCount,
             V2019: t('V2019'),
             V2020: t('V2020'),
             V2021: t('V2021'),
