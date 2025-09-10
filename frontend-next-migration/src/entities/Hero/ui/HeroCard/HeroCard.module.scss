@@ -6,19 +6,19 @@
 
 .heroName {
   transform: translateY(-70%);
-  font: var(--font-xl);
+  font: var(--font-dm-bold-xl);
   text-align: center;
   margin-top: 15px;
 
 
   @media (max-width: 1200px) {
-    font: var(--font-l);
+    font: var(--font-dm-bold-l);
     transform: translateY(-50%);
     margin-top: 5px;
   }
 
   @media (max-width: 500px) {
-    font: var(--font-m);
+    font: var(--font-dm-bold-m);
   }
 
 }

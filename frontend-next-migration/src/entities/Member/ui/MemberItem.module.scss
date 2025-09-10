@@ -27,12 +27,12 @@
 
     @media (max-width: breakpoint(lg)) {
       justify-content: flex-start;
-      font: var(--font-dm-s);
+      font: var(--font-dm-bold-s);
     }
   }
 
   .taskText {
-    font: var(--font-dm-l);
+    font: var(--font-dm-bold-l);
     text-align: left;
     flex: 2;
     min-width: 0;
@@ -41,7 +41,7 @@
     width: fit-content !important;
 
     @media (max-width: breakpoint(lg)) {
-      font: var(--font-dm-s);
+      font: var(--font-dm-bold-s);
     }
   }
 
@@ -71,14 +71,14 @@
   .clickableLogo {
     color: var(--primary-color);
     cursor: pointer;
-    font: var(--font-m);
+    font: var(--font-dm-m);
     display: flex;
     align-items: center;
     line-height: 1;
     @include link-scale-effect('icon');
 
     @media (max-width: breakpoint(lg)) {
-      font: var(--font-s);
+      font: var(--font-dm-s);
     }
   }
 

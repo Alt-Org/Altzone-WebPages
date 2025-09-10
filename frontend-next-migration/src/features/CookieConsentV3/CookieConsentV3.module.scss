@@ -35,7 +35,7 @@
     border-color: transparent;
     color: black;
     cursor: pointer;
-    font: var(--font-l);
+    font: var(--font-dm-l);
 
     &:hover {
         opacity: 0.9;
@@ -54,7 +54,7 @@
     background-color: transparent;
     cursor: pointer;
     border: 2px solid var(--black);
-    font: var(--font-m);
+    font: var(--font-dm-m);
     font-size: 20px !important;
     flex: 0 1 auto;
     box-shadow: 4px 4px 0 var(--black);
@@ -176,7 +176,7 @@
     }
 
     .cookieConsentContentText {
-        font: var(--font-m);
+        font: var(--font-dm-m);
         width: 301px;
         height: 224px;
         line-height: 1.5;
