@@ -11,7 +11,7 @@
   margin-top: 15px;
 
 
-  @media (max-width: 1200px) {
+  @media (max-width: breakpoint(xl)) {
     font: var(--font-dm-bold-l);
     transform: translateY(-50%);
     margin-top: 5px;

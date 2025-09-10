@@ -55,7 +55,7 @@
     margin: auto;
     text-align: center;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: breakpoint(md)) {
         font: var(--font-m);
         width: 70%;
     }
@@ -68,7 +68,7 @@
     font: var(--font-m);
     text-align: center;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: breakpoint(md)) {
         font: var(--font-xl);
     }
 }

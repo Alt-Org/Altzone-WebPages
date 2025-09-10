@@ -12,7 +12,7 @@
     margin-bottom: 5%;
     width: 30%;
 
-    @media (min-width: 1400px) and (max-width: 2004px) {
+    @media (min-width: breakpoint(xxl)) and (max-width: 2004px) {
         width: 40%;
     }
 

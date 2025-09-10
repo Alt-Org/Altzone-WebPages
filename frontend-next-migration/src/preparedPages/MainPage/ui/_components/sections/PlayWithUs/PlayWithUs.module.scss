@@ -10,7 +10,7 @@
 
 .title {
   text-align: center;
-  font: var(--font-xxxl);
+  font: var(--font-dm-bold-xxxl);
 
   //todo add animation as well
   //opacity: 0;
@@ -23,11 +23,11 @@
   //}
 
   @media screen and (max-width: 600px) {
-    font: var(--font-xxl);
+    font: var(--font-dm-bold-xxl);
   }
 
   @media screen and (max-width: 450px) {
-    font: var(--font-xl);
+    font: var(--font-dm-bold-xl);
   }
 }
 
@@ -75,7 +75,7 @@
   max-width: 80%;
 
   & * {
-    font: var(--font-xxl) !important;
+    font: var(--font-dm-xxl) !important;
   }
 
   padding: 0.5rem;
@@ -86,14 +86,14 @@
 
   @media (max-width: 1500px) {
     & * {
-      font: var(--font-xl) !important;
+      font: var(--font-dm-xl) !important;
     }
   }
 
 
   @media (max-width: 450px) {
     & * {
-      font: var(--font-xxl) !important;
+      font: var(--font-dm-xxl) !important;
     }
   }
 
@@ -141,7 +141,7 @@
   color: var(--white);
   padding: 10px 15px;
   border-radius: 15px;
-  font: var(--font-s);
+  font: var(--font-dm-s);
   max-width: 30%;
   text-align: center;
   display: flex;
@@ -151,18 +151,18 @@
 
 
 .WarningIcon {
-  font: var(--font-l);
+  font: var(--font-dm-l);
   color: yellow;
  }
 
 
-@media (max-width: 768px) {
+@media (max-width: breakpoint(md)) {
   .WebGLNotice {
    max-width: 38vh;
    }
   }
   .WarningIcon {
-   font: var(--font-l);
+   font: var(--font-dm-l);
    color: yellow;
   }
 

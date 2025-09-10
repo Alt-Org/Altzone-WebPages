@@ -12,7 +12,7 @@ $touchSize: 1023px;
 
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: breakpoint(md)) {
         order: 1;
         margin-right: 30px;
     }

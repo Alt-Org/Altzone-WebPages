@@ -19,7 +19,7 @@
     z-index: 25;
 
     // Responsive for mobile
-    @media (max-width: 768px) {
+    @media (max-width: breakpoint(md)) {
         bottom: 24px;
         right: 24px;
         left: 24px;
@@ -112,7 +112,7 @@
         margin-top: 2px;
         margin-bottom: 8px;
         max-width: 80%;
-        font: var(--font-xs);
+        font: var(--font-dm-xs);
         gap: 2px;
 
         .bot-name {
@@ -156,7 +156,7 @@
         border: var(--border-mobile) solid var(--primary-color);
         background-color: var(--background);
         color: var(--primary-color);
-        font: var(--font-s);
+        font: var(--font-dm-s);
         outline: none;
 
         &::placeholder {

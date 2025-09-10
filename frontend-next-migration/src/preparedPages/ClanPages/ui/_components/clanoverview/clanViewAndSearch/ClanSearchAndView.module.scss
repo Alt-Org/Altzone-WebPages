@@ -69,7 +69,7 @@
     color: rgb(168, 168, 168);
 }
 
-@media (max-width: 768px) {
+@media (max-width: breakpoint(md)) {
     .tableContainer {
         animation: fadeIn 1s ease-in;
         height: 80vh;
