@@ -14,7 +14,7 @@
 .dropdownContent {
     padding-top: 10px;
     line-height: 40px !important;
-    font: var(--font-dm-l);
+    font: var(--font-dm-bold-l);
     transform-origin: top;
     opacity: 0;
     transform: translateY(-10px);
@@ -62,13 +62,13 @@
 }
 
 .staticHeading {
-    font: var(--font-dm-xl);
+    font: var(--font-dm-bold-xl);
     margin-bottom: 23px;
     margin-top: 12px;
 }
 
 .dynamicHeading {
-    font: var(--font-dm-m);
+    font: var(--font-dm-bold-m);
     color: var(--primary-color);
     cursor: pointer;
 }

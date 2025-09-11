@@ -74,6 +74,9 @@
     text-align: center;
     width: 100%;
     margin: 0 auto;
+    @media (max-width: breakpoint(md)) {
+        font:var(--font-sw-l)
+    }
 }
 
 .subtitle {
@@ -83,6 +86,9 @@
     text-align: center;
     width: 100%;
     margin: 0 auto;
+    @media (max-width: breakpoint(md)) {
+        font: var(--font-sw-m);
+    }
 }
 
 .text {
