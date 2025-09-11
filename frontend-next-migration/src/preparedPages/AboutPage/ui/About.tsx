@@ -50,32 +50,32 @@ const About = (props: Props) => {
 
     return (
         <main className={cls.main}>
-            <div className={cls.container}>
+            <div className={cls.containerTop}>
                 <p className={`${cls.h1}`}>{title}</p>
                 <p className={cls.gridp}>{description}</p>
                 <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
-                        <p className={cls.gridp}>{isLoading ? '...' : projectCount}</p>
+                        <p className={cls.sValues}>{isLoading ? '...' : projectCount}</p>
                         <p className={cls.gridp}>{project}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>{isLoading ? '...' : demographics.localities}</p>
+                        <p className={cls.sValues}>{isLoading ? '...' : demographics.localities}</p>
                         <p className={cls.gridp}>{locality}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>
+                        <p className={cls.sValues}>
                             {isLoading ? '...' : demographics.nationalities}
                         </p>
                         <p className={cls.gridp}>{nationality}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>{behindCount}</p>
+                        <p className={cls.sValues}>{behindCount}</p>
                         <p className={cls.gridp}>{behind}</p>
                     </div>
                 </div>
             </div>
-            <div className={cls.container}>
+            <div className={cls.containerBottom}>
                 <p
                     className={`${cls.h1}`}
                     id={cls.History}

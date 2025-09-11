@@ -3,7 +3,38 @@
     justify-items: center;
 }
 
-.container {
+.containerTop {
+    background: var(--background);
+    text-align: center;
+    border-radius: var(--corner-radius-web);
+    outline: var(--thickness-web) solid var(--black);
+    box-shadow: 10px 10px #121212;
+    margin-bottom: 5%;
+    padding: 1.2rem;
+    width: 30%;
+
+    @media (min-width: 1400px) and (max-width: 2004px) {
+        width: 40%;
+    }
+
+    @media (max-width: breakpoint(xxl)) {
+        width: 50%;
+    }
+
+    @media (max-width: breakpoint(xl)) {
+        width: 50%;
+    }
+
+    @media (max-width: breakpoint(md)) {
+        width: 70%;
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        width: 90%;
+    }
+}
+
+.containerBottom {
     background: var(--background);
     text-align: center;
     border-radius: var(--corner-radius-web);
@@ -101,6 +132,12 @@
     padding: 2%;
 }
 
+.sValues {
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-m);
+    text-align: center;
+    padding: 1%;
+}
 .yearh1 {
     font-weight: 400;
     font-family: var(--font-family-title);
