@@ -21,7 +21,7 @@
     outline: 2px solid var(--primary-color);
     border-width: 1px;
     text-align: center;
-    font: var(--font-l);
+    font: var(--font-dm-l);
 }
 .Dropdown {
     outline: 2px solid var(--primary-color);
@@ -29,14 +29,14 @@
     color: var(--primary-color);
     border-radius: .5em;
     text-align: center;
-    font: var(--font-l);
+    font: var(--font-dm-l);
 }
 .Price {
 
 }
 .Sum {
     color:var(--primary-color);
-    font: var(--font-xl);
+    font: var(--font-dm-xl);
     line-height: 1em;
     margin-top: -.5em;
     height:fit-content;

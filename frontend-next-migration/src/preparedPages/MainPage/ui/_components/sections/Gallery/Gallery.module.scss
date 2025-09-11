@@ -28,7 +28,7 @@
 
 .title {
     text-align: center;
-    font: var(--font-xxxl);
+    font: var(--font-dm-xxxl);
     opacity: 0;
     transform: translateX(-100%);
     transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
@@ -39,12 +39,12 @@
     }
   
     @media screen and (max-width: 600px) {
-        font: var(--font-xxl);
+        font: var(--font-dm-xxl);
         margin-bottom: 20px;
     }
   
     @media screen and (max-width: 450px) {
-        font: var(--font-xl);
+        font: var(--font-dm-xl);
     }
 }
 

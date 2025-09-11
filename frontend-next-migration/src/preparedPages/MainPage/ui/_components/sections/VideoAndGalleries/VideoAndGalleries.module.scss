@@ -33,16 +33,16 @@
 
 .title {
   text-align: center;
-  font: var(--font-xxxl);
+  font: var(--font-dm-bold-xxxl);
   //line-height: 0;
 
 
   @media screen and (max-width: 600px) {
-    font: var(--font-xxl);
+    font: var(--font-dm-bold-xxl);
   }
 
   @media screen and (max-width: 450px) {
-    font: var(--font-xl);
+    font: var(--font-dm-bold-xl);
   }
 }
 

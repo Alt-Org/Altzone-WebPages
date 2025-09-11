@@ -4,7 +4,7 @@
 
 .Navbar {
   position: absolute;
-  font: var(--font-xxl);
+  font: var(--font-dm-bold-xxl);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,7 +76,7 @@
   box-shadow: 0 0 0 2px var(--secondary-color);
   padding: 5px;
   text-align: center;
-  font: var(--font-l);
+  font: var(--font-dm-bold-l);
   cursor: pointer;
   -webkit-user-select: none;
   -ms-user-select: none;

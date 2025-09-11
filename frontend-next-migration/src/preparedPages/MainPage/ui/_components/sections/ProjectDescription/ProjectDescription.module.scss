@@ -91,7 +91,7 @@
 }
 
 .titleQuestion {
-  font: var(--font-sw-xxxl), sans-serif;
+  font: var(--font-sw-4xl), sans-serif;
   text-align: center;
   color: var(--primary-color);
   padding: 15px;
@@ -99,13 +99,13 @@
 
  @media screen and (max-width: 600px) {
    & {
-     font: var(--font-xxl);
+     font: var(--font-sw-xxxl);
    }
  }
 
   @media screen and (max-width: breakpoint(xs)) {
     & {
-      font: var(--font-l);
+      font: var(--font-sw-xxxl);
     }
   }
 

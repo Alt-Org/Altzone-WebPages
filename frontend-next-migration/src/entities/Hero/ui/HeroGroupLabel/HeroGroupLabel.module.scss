@@ -15,11 +15,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font: var(--font-xl);
+  font: var(--font-dm-bold-xl);
   text-align: center;
 
   @media (max-width: 500px) {
-    font: var(--font-dm-m);
+    font: var(--font-dm-bold-m);
   }
 
 }

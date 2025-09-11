@@ -44,7 +44,7 @@
   }
 }
 .Header {
-  font: var(--font-xxxl);
+  font: var(--font-dm-bold-xxxl);
   color: var(--primary-color);
   &.isWidescreen,&.isDesktop {
     text-align: left;
@@ -165,7 +165,7 @@
 .FatePriest {
   color:var(--inverted-primary-color);
   text-align: center;
-  font: var(--font-l);
+  font: var(--font-dm-l);
   margin-top: 2em;
 }
 .Purpose {
@@ -176,7 +176,7 @@
   color: #e5e7eb;
   padding: 1.5em;
   border-radius: 1em;
-  font: var(--font-l);
+  font: var(--font-dm-l);
 }
 .Root {
   padding-bottom: 1.5em;

@@ -15,7 +15,7 @@
 .topDropDown{
   padding: 10px 0;
   color: var(--primary-color);
-  font: var(--font-xxl);
+  font: var(--font-dm-xxl);
   border-radius: var(--border-radius-custom);
   width: 100%;
   background-color: black;
@@ -27,14 +27,14 @@
   .topDropDownContent{
     padding-left: 15px;
     padding-right: 15px;
-    font: var(--font-l);
+    font: var(--font-dm-l);
   }
 
 }
 
 .subDropDown{
   color: var(--inverted-primary-color);
-  font: var(--font-l); 
+  font: var(--font-dm-l); 
   justify-self: flex-start;
   width: 100%;
 
