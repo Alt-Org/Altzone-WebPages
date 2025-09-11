@@ -7,7 +7,6 @@
   display: grid;
   gap: 10px;
   color: var(--white);
-  font-family: var(--font-family-texts);
 
   @media (max-width: 440px) {
     width: 300px;
@@ -43,14 +42,13 @@
 
     height: 15px;
     line-height: 15px;
-    font: var(--font-m);
-    font-family: var(--font-family-texts);
+    font: var(--font-dm-m);
   }
 
   .submit {
     @include link-scale-effect;
     margin-top: 8px;
-    font: var(--font-xl);
+    font: var(--font-dm-xl);
   }
 
   .field input[type="checkbox"] {

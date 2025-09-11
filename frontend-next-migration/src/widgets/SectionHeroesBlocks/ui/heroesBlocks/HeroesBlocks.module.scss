@@ -39,7 +39,7 @@
 }
 
 .labelTextClassName{
-  //font-size: var(--font-line-l)!important;
+  //font: var(--font-dm-l) !important;
 
   padding: 40px 30px;
 
@@ -62,7 +62,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: breakpoint(md)) {
   .Content {
     //grid-template-columns: 1fr;
     grid-gap: 10px;
@@ -90,7 +90,7 @@
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: breakpoint(xs)) {
   .Content {
     //grid-template-columns: 1fr;
     grid-gap: 5px;

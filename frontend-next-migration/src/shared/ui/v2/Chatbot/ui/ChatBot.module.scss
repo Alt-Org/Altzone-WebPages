@@ -19,7 +19,7 @@
     z-index: 25;
 
     // Responsive for mobile
-    @media (max-width: 768px) {
+    @media (max-width: breakpoint(md)) {
         bottom: 24px;
         right: 24px;
         left: 24px;
@@ -81,9 +81,7 @@
 
         h1 {
             color: var(--black, #000);
-            font-family: var(--font-family-title, Arial, sans-serif);
-            font-size: 1.8rem;
-            font-weight: 600;
+            font: var(--font-sw-xl);
             margin: 0;
         }
     }
@@ -114,12 +112,11 @@
         margin-top: 2px;
         margin-bottom: 8px;
         max-width: 80%;
-        font-size: 0.8rem;
+        font: var(--font-dm-xs);
         gap: 2px;
 
         .bot-name {
             color: var(--white) !important;
-            font-weight: 600;
         }
 
         .message-timestamp {
@@ -180,7 +177,7 @@
         border: var(--border-mobile) solid var(--primary-color);
         background-color: var(--background);
         color: var(--primary-color);
-        font-size: 14px;
+        font: var(--font-dm-s);
         outline: none;
 
         &::placeholder {
@@ -204,7 +201,6 @@
         border: none;
         border-radius: var(--border-radius-lg);
         cursor: pointer;
-        font-weight: 500;
         display: flex;
         align-items: center;
         justify-content: center;

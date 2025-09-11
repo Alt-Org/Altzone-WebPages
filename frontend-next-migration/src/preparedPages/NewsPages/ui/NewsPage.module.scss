@@ -1,10 +1,8 @@
 $touchSize: 1023px;
 
 .title {
-    font-size: 3em;
-    font-weight: bolder;
+    font: var(--font-sw-xxl);
     text-align: center;
-    font-family: var(--font-family-title);
     padding: 0;
     color: var(--primary-color);
 
@@ -14,7 +12,7 @@ $touchSize: 1023px;
 
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: breakpoint(md)) {
         order: 1;
         margin-right: 30px;
     }
@@ -42,8 +40,7 @@ $touchSize: 1023px;
 
 .noMoreNews {
     margin: 20px 0;
-    font-family: var(--font-family-secondary);
-    font-size: var(-font-size-m);
+    font: var(--font-dm-m);
     opacity: 0.7;
     text-align: center;
 }

@@ -12,7 +12,7 @@
     margin-bottom: 5%;
     width: 30%;
 
-    @media (min-width: 1400px) and (max-width: 2004px) {
+    @media (min-width: breakpoint(xxl)) and (max-width: 2004px) {
         width: 40%;
     }
 
@@ -67,25 +67,21 @@
 }
 
 .h1 {
-    font-weight: 400;
-    font-family: var(--font-family-title);
+    font: var(--font-sw-xl);
     color: var(--primary-color);
-    font-size: var(--font-size-xl);
     padding-bottom: var(--spacing-sm);
     padding-top: var(--spacing-sm);
 
     @media (max-width: breakpoint(sm)) {
-        font-size: var(--h2-size-mobile);
+        font: var(--font-sw-l);
     }
 
     @media (max-width: breakpoint(md)) {
-        font-size: var(--h2-size-mobile);
+        font: var(--font-sw-l);
     }
 }
-
 .p {
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-s);
+    font: var(--font-dm-s);
     text-align: left;
     padding-bottom: var(--spacing-700);
 
@@ -95,33 +91,30 @@
 }
 
 .gridp {
-    font-family: var(--font-family-secondary);
-    font-size: var(--font-size-s);
+    font: var(--font-dm-s);
     text-align: center;
     padding: 2%;
 }
 
 .yearh1 {
-    font-weight: 400;
-    font-family: var(--font-family-title);
+    font: var(--font-sw-xl);
     color: var(--primary-color);
-    font-size: var(--font-size-xl);
     text-align: left;
 
     @media (max-width: breakpoint(sm)) {
         text-align: left;
         padding-bottom: var(--spacing-lg);
-        font-size: var(--h3-size-mobile);
+        font: var(--font-sw-l);
     }
 
     @media (max-width: breakpoint(md)) {
         text-align: left;
         padding-bottom: var(--spacing-lg);
-        font-size: var(--h3-size-mobile);
+        font: var(--font-sw-l);
     }
 
     @media (max-width: breakpoint(lg)) {
-        font-size: var(--h3-size-mobile);
+        font: var(--font-sw-l);
     }
 }
 
