@@ -2,6 +2,8 @@ import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
 import { FurnitureCategoryPageProps } from '@/preparedPages/FurniturePages';
 import { categories } from '@/entities/Furniture';
+import { getRouteFurnitureCategoryPage } from '@/shared/appLinks/RoutePaths';
+import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'furniturecategory');
@@ -24,6 +26,15 @@ export async function _getPage(lng: string) {
             title: t('head-title'),
             description: t('head-description'),
             keywords: t('head-keywords'),
+            openGraph: {
+                ...defaultOpenGraph,
+                title: t('og-title'),
+                description: t('og-description'),
+                url: `/${lng}${getRouteFurnitureCategoryPage()}`,
+            },
+            alternates: {
+                canonical: `/${lng}${getRouteFurnitureCategoryPage()}`,
+            },
         }),
     });
 }

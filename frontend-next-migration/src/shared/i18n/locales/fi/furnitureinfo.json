@@ -242,5 +242,7 @@
     "label-price": "Hinta",
     "label-weight": "Paino",
     "label-materials": "Materiaalit",
-    "close-view": "Sulje"
+    "close-view": "Sulje",
+    "label-diagnosis-number": "Diagnostiikkanumero",
+    "collection": "Mallistot"
 }

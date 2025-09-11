@@ -90,7 +90,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                     </div>
                     <button
                         className={cls['close-button']}
-                        onClick={closeChat}
+                        onClick={() => closeChat()}
                     >
                         <Image
                             src={xIcon}
@@ -135,6 +135,34 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                                 </span>
                             </div>
                         )}
+                        {messages.length === 1 && (
+                            <>
+                                <div className={cls['button-message']}>
+                                    <button
+                                        className={cls['button']}
+                                        onClick={() => handleSendMessage(msg.question1)}
+                                    >
+                                        {msg.question1}
+                                    </button>
+                                </div>
+                                <div className={cls['button-message']}>
+                                    <button
+                                        className={cls['button']}
+                                        onClick={() => handleSendMessage(msg.question2)}
+                                    >
+                                        {msg.question2}
+                                    </button>
+                                </div>
+                                <div className={cls['button-message']}>
+                                    <button
+                                        className={cls['button']}
+                                        onClick={() => handleSendMessage(msg.question3)}
+                                    >
+                                        {msg.question3}
+                                    </button>
+                                </div>
+                            </>
+                        )}
                     </React.Fragment>
                 ))}
                 {error && <p className={cls['error-message']}>{error}</p>}
@@ -154,7 +182,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                     className={cls['message-input']}
                 />
                 <button
-                    onClick={handleSendMessage}
+                    onClick={() => handleSendMessage()}
                     disabled={loading}
                     className={cls['send-button']}
                     aria-label="Send"

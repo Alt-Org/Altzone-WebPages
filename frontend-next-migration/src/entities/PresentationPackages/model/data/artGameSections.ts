@@ -1,4 +1,10 @@
 import { createSection } from '../createSection';
+import info from '@/shared/assets/images/gameArt/info.webp';
+import intro from '@/shared/assets/images/gameArt/intro.webp';
+import implementation from '@/shared/assets/images/gameArt/implementation.webp';
+import message from '@/shared/assets/images/gameArt/message.webp';
+import joinus from '@/shared/assets/images/gameArt/joinus.webp';
+import gameArtLogo from '@/shared/assets/images/gameArt/gameArtLogo.webp';
 
 /**
  * This TypeScript code snippet is responsible for creating an array of sections for an art game.
@@ -17,15 +23,9 @@ const i18nKeyPrefixes = [
     'literature',
 ];
 
-const imageSrcs = [
-    '/images/gameArt/info.webp',
-    '/images/gameArt/intro.webp',
-    '/images/gameArt/implementation.webp',
-    '/images/gameArt/message.webp',
-    '/images/gameArt/joinus.webp',
-];
+const imageSrcs = [info.src, intro.src, implementation.src, message.src, joinus.src];
 
-const logoSrc = '/images/gameArt/gameArtLogo.webp';
+const logoSrc = gameArtLogo.src;
 
 /**
  * The `ArtGameSections` array is created by mapping over `i18nKeyPrefixes`.
@@ -34,7 +34,7 @@ const logoSrc = '/images/gameArt/gameArtLogo.webp';
 export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
     createSection({
         prefix: key,
-        index: index,
+        index,
         image: {
             src: imageSrcs[index],
             alt: `${key}-image`,
