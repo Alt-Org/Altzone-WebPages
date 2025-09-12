@@ -3,6 +3,21 @@
     justify-items: center;
 }
 
+.hero {
+    position: relative;
+    width: min(1100px, 95vw);
+    aspect-ratio: 16 / 6;
+    margin-bottom: var(--spacing-600);
+    border-radius: var(--corner-radius-web);
+    overflow: hidden;
+    outline: var(--thickness-web) solid var(--black);
+    box-shadow: 10px 10px #121212;
+}
+
+.heroImg {
+    object-fit: cover;
+}
+
 .container {
     background: var(--background);
     text-align: center;
@@ -64,6 +79,27 @@
     @media (max-width: breakpoint(sm)) {
         grid-template-columns: 100%;
     }
+}
+
+.yearImgWrap {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--corner-radius-web);
+    overflow: hidden;
+    outline: 4px solid var(--black);
+    box-shadow: 6px 6px #121212;
+    margin: 0 0 var(--spacing-400) 0;
+
+    @media (max-width: breakpoint(sm)) {
+        max-width: 94%;
+        margin-left: 3%;
+    }
+}
+
+.yearImg {
+    object-fit: cover;
 }
 
 .h1 {
