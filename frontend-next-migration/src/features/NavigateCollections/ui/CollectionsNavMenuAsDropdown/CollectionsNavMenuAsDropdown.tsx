@@ -155,20 +155,14 @@ const CollectionsNavMenuAsDropdown: React.FC<CollectionsNavMenuAsDropdownProps> 
         },
     ];
 
-    return isMobileSize ? (
+    return (
         <NavMenuWithDropdowns
+            key={isMobileSize ? 'mobile' : 'desktop'}
             className={className}
-            openByDefault={true}
+            openByDefault={!isMobileSize}
             dropdownItems={dropdownItems}
             title={t('categories')}
-        />
-    ) : (
-        <NavMenuWithDropdowns
-            className={className}
-            openByDefault={true}
-            dropdownItems={dropdownItems}
-            staticDropdown={true}
-            title={t('categories')}
+            staticDropdown={!isMobileSize}
         />
     );
 };

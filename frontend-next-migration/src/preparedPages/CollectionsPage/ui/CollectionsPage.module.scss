@@ -1,5 +1,14 @@
-.title {
-    font-family: var(--font-family-title);
-    font-size: var(--h2-size-desktop);
-    color: var(--primary-color);
+.NavMenu {
+    margin-top: 5.3em;
+}
+
+.Container {
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    @media (max-width:breakpoint(lg)) {
+        align-items: center;
+        gap: 0.5rem;
+    }
 }
