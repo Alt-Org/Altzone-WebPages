@@ -52,16 +52,16 @@
         width: 100%;
         color: var(--white);
         text-shadow: 2px 2px black;
-        font-size: 2em;
+        font: var(--font-dm-xl);
         text-align: center;
         z-index: 3;
 
-        @media (max-width: 768px) {
-            font-size: 1.5em;
+        @media (max-width: breakpoint(md)) {
+            font: var(--font-dm-l);
         }
 
         @media (max-width: 480px) {
-            font-size: 1em;
+            font: var(--font-dm-m);
         }
     }
 
@@ -71,7 +71,7 @@
         right: 10px;
         color: var(--white);
         text-shadow: 1px 1px black;
-        font-size: 1em;
+        font: var(--font-dm-m);
     }
 
     .Cover {

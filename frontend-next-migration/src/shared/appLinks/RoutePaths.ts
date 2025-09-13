@@ -129,6 +129,7 @@ export const getRouteJoinUsPage = () => '/join-us';
 
 export const getRoutePrivacyPage = () => '/privacy';
 export const getRouteCookiesPage = () => '/cookies';
+export const getRouteDataPolicyPage = () => '/data-policy';
 export const getRouteAboutPage = () => '/about';
 export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';
@@ -142,3 +143,10 @@ export const getRouteFurnitureCategoryPage = () => '/furniture/category';
 
 export const getRouteDefenseGalleryPage = () => '/defense-gallery';
 export const getRouteDefenseGalleryGroupPage = (group: string) => `/defense-gallery/${group}`;
+
+export const getRouteLeaderboardPage = () => '/leaderboard';
+export const getRouteLeaderboardFriendsPage = () => '/leaderboard/friends';
+export const getRouteLeaderboardClansPage = () => '/leaderboard/clans';
+
+export const getRouteGamePage = () => '/peli';
+export const getRouteProfilePage = () => '/profile';

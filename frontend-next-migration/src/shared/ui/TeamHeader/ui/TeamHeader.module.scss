@@ -76,9 +76,8 @@
     }
     
     h2 {
-        font-family: var(--font-family-title),serif;
+        font: var(--font-sw-5xl);
         color: var(--primary-color);
-        font-size: var(--h2-size-desktop);
     }
 
     @media (max-width: breakpoint(lg)){
@@ -92,7 +91,7 @@
     color: var(--primary-color);
     margin-left: 0.5em;
     outline: none;
-    font-family: var(--primary-font),serif;
+    font: var(--primary-font),serif;
     
     &::placeholder {
         color: var(--primary-color);

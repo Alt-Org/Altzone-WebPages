@@ -9,7 +9,7 @@
   align-items: center;
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 1.5em;
+  font: var(--font-dm-l);
 }
 
 .section {
@@ -23,16 +23,14 @@
   box-shadow: 10px 10px #121212;
 
   h2 {
-    font-family: var(--font-family-title) !important;
+    font: var(--font-sw-xxxl) !important;
     text-align: left;
     color: var(--primary-color);
-    font-size: var(--h3-size-desktop);
     margin-bottom: 0.5em;
   }
 
   p {
-    font-size: var(--font-size-m);
-    font-family: var(--font-family-secondary);
+    font: var(--font-dm-m);
   }
 }
 

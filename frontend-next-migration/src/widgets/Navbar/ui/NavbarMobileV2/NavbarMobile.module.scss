@@ -1,7 +1,6 @@
 .Navbar {
     position: absolute;
-    font: var(--font-l);
-    font-weight: 100 !important;
+    font: var(--font-dm-bold-l);
     background-color: var(--base-card-background);
     border: 2px solid var(--black);
     border-radius: var(--border-radius-xl);
@@ -68,7 +67,7 @@
     top: 10px;
     color: var(--primary-color) !important;
     color: white;
-    font-size: var(--font-xxl) !important;
+    font: var(--font-dm-bold-l) !important;
     margin: 0;
     display: flex;
     align-items: center;

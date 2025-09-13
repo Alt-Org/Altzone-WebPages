@@ -1,7 +1,10 @@
 {
     "join-us": "Tule mukaan!",
     "head-title": "Tule mukaan - ALT Zone",
-
+    "head-description": "Liity ALT Zone -projektiin! Tule testaajaksi, tutustu opetuspaketteihin, hae työharjoitteluun, liity Discord-yhteisöömme tai jaa palautteesi pelimme parantamiseksi.",
+    "head-keywords": "ALT Zone tule mukaan, testaaja, opetuspaketti, työharjoittelu, vapaaehtoistyö, Discord",
+    "og-title": "Liity ALT Zone -projektiin",
+    "og-description": "Ole osa ALT Zone -matkaa — testaa peliämme, tutustu opetusvälineisiin, liity Discordiin, hae työharjoittelua tai lähetä meille palautetta.",
 
     "block-label-connection": "Ota yhteyttä",
     "block-label-teachers": "Oletko opettaja?",

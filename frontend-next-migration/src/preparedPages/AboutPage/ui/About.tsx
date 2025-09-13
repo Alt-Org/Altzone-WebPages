@@ -2,6 +2,7 @@
 import cls from './About.module.scss';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 import Image from 'next/image';
+import { useGetMembersQuery, useGetDemographicsQuery, getBehindYears } from '@/entities/About';
 
 export interface Props {
     title: string;
@@ -38,32 +39,43 @@ const About = (props: Props) => {
         V2024,
     } = props;
 
+    const { data: projectCount = 0, isLoading: membersLoading } = useGetMembersQuery();
+    const {
+        data: demographics = { localities: 0, nationalities: 0 },
+        isLoading: demographicsLoading,
+    } = useGetDemographicsQuery();
+
+    const behindCount = getBehindYears();
+    const isLoading = membersLoading || demographicsLoading;
+
     return (
         <main className={cls.main}>
-            <div className={cls.container}>
+            <div className={cls.containerTop}>
                 <p className={`${cls.h1}`}>{title}</p>
                 <p className={cls.gridp}>{description}</p>
                 <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.sValues}>{isLoading ? '...' : projectCount}</p>
                         <p className={cls.gridp}>{project}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.sValues}>{isLoading ? '...' : demographics.localities}</p>
                         <p className={cls.gridp}>{locality}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.sValues}>
+                            {isLoading ? '...' : demographics.nationalities}
+                        </p>
                         <p className={cls.gridp}>{nationality}</p>
                     </div>
                     <div>
-                        <p className={cls.gridp}>10</p>
+                        <p className={cls.sValues}>{behindCount}</p>
                         <p className={cls.gridp}>{behind}</p>
                     </div>
                 </div>
             </div>
-            <div className={cls.container}>
+            <div className={cls.containerBottom}>
                 <p
                     className={`${cls.h1}`}
                     id={cls.History}
