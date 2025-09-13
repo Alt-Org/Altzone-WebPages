@@ -1,13 +1,13 @@
 'use client';
 import { NavigationRow } from '@/features/NavigateFurniture/ui/NavigatioRow/NavigationRow';
-import SearchIcon from '@/shared/assets/icons/Search.svg';
+// import SearchIcon from '@/shared/assets/icons/Search.svg';
 import { SearchBar } from '@/preparedPages/FurnitureCollectionsPages/ui/SingleFurnitureCollectionPage';
 import { useClientTranslation } from '@/shared/i18n';
 import { PageTitle } from '@/shared/ui/PageTitle';
-import Image from 'next/image';
 import cls from './MusicCollectionsPage.module.scss';
 import { useState } from 'react';
 import { YoutubeVideoCard } from '@/shared/ui/v2/YoutubeVideoCard';
+import { MusicManager } from '@/entities/Music/model/MusicCollectionsManager';
 
 // export interface SearchBarProps {
 //     className: string;
@@ -39,7 +39,11 @@ import { YoutubeVideoCard } from '@/shared/ui/v2/YoutubeVideoCard';
 
 const MusicCollectionsPage = () => {
     const { t } = useClientTranslation('music');
+    const manager = new MusicManager();
+
     const [searchQuery, setSearchQuery] = useState('');
+
+    const allItems = manager.getAllCollectionsItems();
     return (
         <>
             <div>
@@ -57,11 +61,19 @@ const MusicCollectionsPage = () => {
             </div>
             <NavigationRow />
             <div className={cls.DesktopCardContainer}>
-                <YoutubeVideoCard
-                    title="Sample Title"
-                    youtubeId="lkyuLMj1YSs?si=D30RRhxYHZ3o_t_3"
-                    artist="Sample Artist"
-                />
+                {allItems && allItems.length === 0 && <div>No music items found</div>}
+                {allItems &&
+                    allItems.length > 0 &&
+                    allItems.map((item, index) => {
+                        return (
+                            <YoutubeVideoCard
+                                key={index}
+                                title={item.musicTitle}
+                                youtubeId={item.youtubeId}
+                                artist={item.artistName}
+                            />
+                        );
+                    })}
             </div>
         </>
     );
