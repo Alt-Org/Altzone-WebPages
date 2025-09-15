@@ -29,14 +29,24 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
     const musicManager = new MusicManager();
     const collections = musicManager.getAllCollections();
 
-    const dropdownItems: DropDownElementASTextOrLink[] = collections.map((collection) => ({
-        elementText: t(`${collection.slug}-title`),
-        link: {
-            path: `${musicCollectionsRoute}/${collection.slug}`,
-            isExternal: false,
+    const dropdownItems: DropDownElementASTextOrLink[] = [
+        {
+            elementText: t('all-title'),
+            link: {
+                path: musicCollectionsRoute,
+                isExternal: false,
+            },
+            active: pathWithoutLng === musicCollectionsRoute,
         },
-        active: pathWithoutLng === `${musicCollectionsRoute}/${collection.slug}`,
-    }));
+        ...collections.map((collection) => ({
+            elementText: t(`${collection.slug}-title`),
+            link: {
+                path: `${musicCollectionsRoute}/${collection.slug}`,
+                isExternal: false,
+            },
+            active: pathWithoutLng === `${musicCollectionsRoute}/${collection.slug}`,
+        })),
+    ];
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: t('category-title'),
