@@ -57,7 +57,7 @@ const About = (props: Props) => {
                     fill
                     priority
                     className={cls.heroImg}
-                    sizes="(max-width: 768px) 95vw, 1100px"
+                    sizes="100vw"
                 />
             </section>
             <div className={cls.container}>

@@ -5,13 +5,9 @@
 
 .hero {
     position: relative;
-    width: min(1100px, 95vw);
-    aspect-ratio: 16 / 6;
+    width: 100%;
+    aspect-ratio: 16 / 9;
     margin-bottom: var(--spacing-600);
-    border-radius: var(--corner-radius-web);
-    overflow: hidden;
-    outline: var(--thickness-web) solid var(--black);
-    box-shadow: 10px 10px #121212;
 }
 
 .heroImg {
