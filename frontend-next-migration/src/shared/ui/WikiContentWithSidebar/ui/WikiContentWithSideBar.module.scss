@@ -34,7 +34,7 @@
   margin-left: 2rem;
   margin-top: 2rem;
   width: 20%;
-  font-size: 1em;
+  font: var(--font-dm-l);
   &::-webkit-scrollbar {
     display: none;
   }
@@ -88,7 +88,7 @@
   width: 70%;
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 1.5em;
+  font: var(--font-dm-m);
   margin: 3px;
 }
 
@@ -108,8 +108,7 @@
   h2 {
     text-align: center;
     color: rgb(233, 225, 225);
-    font-size: 1.7em;
-    font-weight: bold;
+    font: var(--font-sw-xl);
     border-radius: 10px;
     margin-bottom: 0.5em;
   }
@@ -169,7 +168,7 @@
   flex-direction: column;
   width: 100%;
   padding: 0;
-  font-size: 1.2em;
+  font: var(--font-dm-m);
   margin: auto;
 
   a {

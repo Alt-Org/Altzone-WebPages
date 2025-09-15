@@ -15,7 +15,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: clamp(1rem, 4vw, 2rem);
-  font-weight: bold;
+  font: var(--font-dm-bold-xl);
   text-align: center;
+
+  @media (max-width: 500px) {
+    font: var(--font-dm-bold-m);
+  }
+
 }

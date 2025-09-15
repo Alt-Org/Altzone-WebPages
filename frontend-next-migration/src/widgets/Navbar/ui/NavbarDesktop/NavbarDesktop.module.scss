@@ -1,14 +1,13 @@
 .siteNav {
   position: absolute;
-  font: var(--font-xxl);
+  font: var(--font-dm-bold-m);
   padding-top: 50px;
   color: #fbf7dc;
   width: 100%;
   text-align: center;
   z-index: var(--navbar-z-index);
-  font-weight: 500;
   top: 0;
-  font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
+  font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px) !important;
   margin-top: 5px;
   //position: relative;
   height: var(--navbar-height);
@@ -75,10 +74,8 @@
 
   &.active {
     color: var(--primary-color)!important;
-    //font-weight: 600;
     &>a{
       color: var(--primary-color)!important;
-      //font-weight: 600;
     }
   }
 }
@@ -129,12 +126,12 @@
   border: 2px solid var(--secondary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--primary-color) !important;
-  font-size: var(--font-size-m) !important;
+  font: var(--font-dm-bold-m) !important;
   padding: 2px;
 
   button {
     background-color: rgba(0, 0, 0, 0.8);
-    font-size: var(--font-size-m) !important;
+    font: var(--font-dm-bold-m) !important;
     color: var(--primary-color) !important;
     border-radius: var(--border-radius-custom);
     border: 2px solid transparent;
@@ -181,7 +178,7 @@
   outline: 2px solid var(--secondary-color);
   background-color: rgba(0, 0, 0, 0.8);
   color: var(--primary-color) !important;
-  font-size: var(--font-size-m) !important;
+  font: var(--font-dm-bold-m) !important;
   text-align: center;
 
   padding: 4px;

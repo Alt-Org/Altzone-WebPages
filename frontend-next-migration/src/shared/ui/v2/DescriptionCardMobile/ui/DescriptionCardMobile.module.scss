@@ -81,12 +81,11 @@
   margin: 1em 1em 0 1em;
   text-align: left;
   color:var(--white);
+  font: var(--font-dm-s);
 }
 .DescriptionCardMobile.DefenseGalleryCard > .TextContainer > .Title {
   color:var(--primary-color);
-  font-family: var(--font-family-title);
-  font-size: 1.5rem;
-  font-weight: 400;
+  font: var(--font-sw-l);
 
 
 }

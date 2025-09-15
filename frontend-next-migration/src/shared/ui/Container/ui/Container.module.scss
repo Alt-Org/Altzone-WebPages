@@ -4,25 +4,25 @@
   width: 100%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: breakpoint(sm)) {
   .Container {
     max-width: 640px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: breakpoint(md)) {
   .Container {
     max-width: 960px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: breakpoint(lg)) {
   .Container {
     max-width: 1200px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: breakpoint(xl)) {
   .Container {
     max-width: 1400px;
   }

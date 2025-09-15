@@ -10,15 +10,14 @@
 
 
     h2 {
-      font-size: 2rem;
+      font: var(--font-dm-xl);
       margin-bottom: 1rem;
-      font-weight: bold;
     }
 
 
     p {
       margin: 0.5rem 0;
-      font-size: 1.2rem;
+      font: var(--font-dm-m);
       text-align: justify;
     }
 
