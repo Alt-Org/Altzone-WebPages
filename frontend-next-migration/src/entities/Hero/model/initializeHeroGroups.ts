@@ -5,18 +5,21 @@ import overeaterGif from '@/shared/assets/images/heros/hannu-hodari/Overeater.gi
 import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
 import provocateur from '@/shared/assets/images/heros/graffitti-gaya/graffitti-gaya.png';
 import mirror from '@/shared/assets/images/heros/mirror/Mirror.webp';
+import bullying from '@/shared/assets/images/heros/bullying/bullying.png';
 import mirrorGif from '@/shared/assets/images/heros/mirror/Mirror.gif';
 import purpleGirls from '@/shared/assets/images/heros/purple-girls/purple-girls.webp';
 import sleepySleeper from '@/shared/assets/images/heros/sleeper/Sleeper_new.webp';
 import sleeperGif from '@/shared/assets/images/heros/sleeper/Sleeper.gif';
-import conman from '@/shared/assets/images/heros/conman/conman.webp';
+import conman from '@/shared/assets/images/heros/conman/conman.png';
 import conmanGif from '@/shared/assets/images/heros/conman/Conman_new.gif';
 import jokester from '@/shared/assets/images/heros/jokester/Jokester.webp';
 import believer from '@/shared/assets/images/heros/fate-priest/Believer.webp';
 import believerGif from '@/shared/assets/images/heros/fate-priest/Believer.gif';
 import hateSpeech from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
 import hateSpeechGif from '@/shared/assets/images/heros/hate-speech/Vihapuhe.gif';
+import scapegoater from '@/shared/assets/images/heros/scapegoater/scapegoater.png';
 import meatwall from '@/shared/assets/images/heros/meatwall/Meatwall.png';
+import lovers from '@/shared/assets/images/heros/lovers/lovers.png';
 import veteran from '@/shared/assets/images/heros/veteran/Veteran.webp';
 import veteranGif from '@/shared/assets/images/heros/veteran/Veteran.gif';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
@@ -28,7 +31,13 @@ import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_croppe
 import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
-import { statData } from '@/entities/Hero';
+import wiseacre from '@/shared/assets/images/heros/wiseagre/wiseagre.png';
+import capitalist from '@/shared/assets/images/heros/capitalist/capitalist.png';
+import ocd from '@/shared/assets/images/heros/ocd/ocd.png';
+import pranking from '@/shared/assets/images/heros/pranking/pranking.png';
+import seducer from '@/shared/assets/images/heros/seducer/seducer.png';
+import people_pleaser from '@/shared/assets/images/heros/people-pleaser/people-pleaser.png';
+import { statData, statData2, statData3 } from '@/entities/Hero';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
@@ -96,6 +105,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     description: t('CONFLUENT.heroes.SleepySleeper.description'),
                     stats: statData.SLEEPER,
                 },
+                {
+                    id: 34124,
+                    srcImg: lovers,
+                    srcGif: comingSoon,
+                    alt: t('CONFLUENT.heroes.Lovers.alt'),
+                    altGif: t('CONFLUENT.heroes.Lovers.altGif'),
+                    slug: HeroSlug.LOVERS,
+                    title: t('CONFLUENT.heroes.Lovers.title'),
+                    description: t('CONFLUENT.heroes.Lovers.description'),
+                    stats: statData2.LOVERS,
+                },
             ],
         },
 
@@ -128,6 +148,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     description: t('PROJECTOR.heroes.Mirror.description'),
                     stats: statData.MIRROR,
                 },
+                {
+                    id: 312316,
+                    srcImg: scapegoater,
+                    srcGif: comingSoon,
+                    alt: t('PROJECTOR.heroes.Scapegoater.alt'),
+                    altGif: t('PROJECTOR.heroes.Scapegoater.altGif'),
+                    slug: HeroSlug.SCAPEGOATER,
+                    title: t('PROJECTOR.heroes.Scapegoater.title'),
+                    description: t('PROJECTOR.heroes.Scapegoater.description'),
+                    stats: statData2.SCAPEGOATER,
+                },
             ],
         },
 
@@ -140,14 +171,36 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
             heroes: [
                 {
                     id: 52231233123,
-                    srcImg: einstein,
-                    srcGif: professorGif,
-                    alt: t('INTELLECTUALIZER.heroes.Researcher.alt'),
-                    altGif: t('INTELLECTUALIZER.heroes.Researcher.altGif'),
-                    slug: HeroSlug.RESEARCHER,
-                    title: t('INTELLECTUALIZER.heroes.Researcher.title'),
-                    description: t('INTELLECTUALIZER.heroes.Researcher.description'),
-                    stats: statData.RESEARCHER,
+                    srcImg: wiseacre,
+                    srcGif: comingSoon,
+                    alt: t('INTELLECTUALIZER.heroes.Wiseacre.alt'),
+                    altGif: t('INTELLECTUALIZER.heroes.Wiseacre.altGif'),
+                    slug: HeroSlug.WISEACRE,
+                    title: t('INTELLECTUALIZER.heroes.Wiseacre.title'),
+                    description: t('INTELLECTUALIZER.heroes.Wiseacre.description'),
+                    stats: statData2.WISEACRE,
+                },
+                {
+                    id: 52231233124,
+                    srcImg: capitalist,
+                    srcGif: comingSoon,
+                    alt: t('INTELLECTUALIZER.heroes.Capitalist.alt'),
+                    altGif: t('INTELLECTUALIZER.heroes.Capitalist.altGif'),
+                    slug: HeroSlug.CAPITALIST,
+                    title: t('INTELLECTUALIZER.heroes.Capitalist.title'),
+                    description: t('INTELLECTUALIZER.heroes.Capitalist.description'),
+                    stats: statData2.CAPITALIST,
+                },
+                {
+                    id: 52231233125,
+                    srcImg: ocd,
+                    srcGif: comingSoon,
+                    alt: t('INTELLECTUALIZER.heroes.Ocd.alt'),
+                    altGif: t('INTELLECTUALIZER.heroes.Ocd.altGif'),
+                    slug: HeroSlug.OCD,
+                    title: t('INTELLECTUALIZER.heroes.Ocd.title'),
+                    description: t('INTELLECTUALIZER.heroes.Ocd.description'),
+                    stats: statData2.OCD,
                 },
             ],
         },
@@ -181,6 +234,28 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     description: t('TRICKSTER.heroes.Jokester.description'),
                     stats: statData.JOKESTER,
                 },
+                {
+                    id: 522315,
+                    srcImg: pranking,
+                    srcGif: comingSoon,
+                    alt: t('TRICKSTER.heroes.Pranking.alt'),
+                    altGif: t('TRICKSTER.heroes.Pranking.altGif'),
+                    slug: HeroSlug.PRANKING,
+                    title: t('TRICKSTER.heroes.Pranking.title'),
+                    description: t('TRICKSTER.heroes.Pranking.description'),
+                    stats: statData2.PRANKING,
+                },
+                {
+                    id: 522316,
+                    srcImg: seducer,
+                    srcGif: comingSoon,
+                    alt: t('TRICKSTER.heroes.Seducer.alt'),
+                    altGif: t('TRICKSTER.heroes.Seducer.altGif'),
+                    slug: HeroSlug.SEDUCER,
+                    title: t('TRICKSTER.heroes.Seducer.title'),
+                    description: t('TRICKSTER.heroes.Seducer.description'),
+                    stats: statData3.SEDUCER,
+                },
             ],
         },
 
@@ -201,6 +276,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('OBEDIENT.heroes.Believer.title'),
                     description: t('OBEDIENT.heroes.Believer.description'),
                     stats: statData.BELIEVER,
+                },
+                {
+                    id: 524235,
+                    srcImg: people_pleaser,
+                    srcGif: comingSoon,
+                    alt: t('OBEDIENT.heroes.PeoplePleaser.alt'),
+                    altGif: t('OBEDIENT.heroes.PeoplePleaser.altGif'),
+                    slug: HeroSlug.PEOPLE_PLEASER,
+                    title: t('OBEDIENT.heroes.PeoplePleaser.title'),
+                    description: t('OBEDIENT.heroes.PeoplePleaser.description'),
+                    stats: statData3.PEOPLE_PLEASER,
                 },
             ],
         },
@@ -244,6 +330,17 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
                     title: t('DESENSITIZER.heroes.Veteran.title'),
                     description: t('DESENSITIZER.heroes.Veteran.description'),
                     stats: statData.VETERAN,
+                },
+                {
+                    id: 848343,
+                    srcImg: bullying,
+                    srcGif: comingSoon,
+                    alt: t('DESENSITIZER.heroes.Bullying.alt'),
+                    altGif: t('DESENSITIZER.heroes.Bullying.altGif'),
+                    slug: HeroSlug.BULLYING,
+                    title: t('DESENSITIZER.heroes.Bullying.title'),
+                    description: t('DESENSITIZER.heroes.Bullying.description'),
+                    stats: statData3.BULLYING,
                 },
             ],
         },
