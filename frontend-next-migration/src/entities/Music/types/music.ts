@@ -5,12 +5,17 @@ export interface MusicItem {
 }
 
 export interface CollectionInfo {
-    id: string;
-    title: CollectionTitle;
+    name: CollectionName;
     items?: MusicItem[];
+    slug: CollectionSlug;
 }
 
-export enum CollectionTitle {
+export enum CollectionName {
     JUKEBOX = 'Jukebox',
     BATTLE = 'Battle',
+}
+
+export enum CollectionSlug {
+    JUKEBOX = 'jukebox',
+    BATTLE = 'battle',
 }

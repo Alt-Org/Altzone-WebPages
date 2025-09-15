@@ -8,6 +8,11 @@
   "music-collections-title": "Music Collections",
   "search-placeholder": "Search...",
 
+  "category-title": "Categories",
+  "jukebox-title": "Jukebox",
+  "battle-title": "Battle",
+  "all": "All",
+
   "back-button": "Back",
   "sort-placeholder": "Sort by..."
 }

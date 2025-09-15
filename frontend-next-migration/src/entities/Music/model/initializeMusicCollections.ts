@@ -1,10 +1,10 @@
-import { CollectionTitle, CollectionInfo } from '../types/music';
+import { CollectionName, CollectionInfo, CollectionSlug } from '../types/music';
 
-export const initializeMusicCollections = (): Record<CollectionTitle, CollectionInfo> => {
+export const initializeMusicCollections = (): Record<CollectionName, CollectionInfo> => {
     return {
-        [CollectionTitle.JUKEBOX]: {
-            id: 'jukebox',
-            title: CollectionTitle.JUKEBOX,
+        [CollectionName.JUKEBOX]: {
+            name: CollectionName.JUKEBOX,
+            slug: CollectionSlug.JUKEBOX,
             items: [
                 {
                     musicTitle: 'Plan',
@@ -43,9 +43,9 @@ export const initializeMusicCollections = (): Record<CollectionTitle, Collection
                 },
             ],
         },
-        [CollectionTitle.BATTLE]: {
-            id: 'battle',
-            title: CollectionTitle.BATTLE,
+        [CollectionName.BATTLE]: {
+            name: CollectionName.BATTLE,
+            slug: CollectionSlug.BATTLE,
         },
     };
 };
