@@ -12,7 +12,7 @@ export type Props = {
 };
 
 export const ContactSection = (props: Props) => {
-    const { backgroundImageSrc: _backgroundImageSrc, googlePLayLink, linkText, title } = props;
+    const { googlePLayLink, linkText, title } = props;
     return (
         <Container
             as={'section'}

@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { Container } from '@/shared/ui/Container';
 import cls from './NewsSection.module.scss';
 
@@ -31,10 +32,11 @@ export const NewsSection = (props: Props) => {
                                 </small>
                             </div>
                             <div className={cls.cardImage}>
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                    src="sfs"
+                                <Image
+                                    src="/sfs"
                                     alt="Placeholder"
+                                    width={150}
+                                    height={150}
                                 />
                             </div>
                         </div>
