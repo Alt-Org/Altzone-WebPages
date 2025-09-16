@@ -1,12 +1,36 @@
-.fields{
-  gap: 16px
+.fields {
+    gap: 8px;
+
+    input {
+        background-color: var(--background-color);
+        color: white;
+        border: 2px solid rgba(0, 0, 0, 0.4);
+        border-radius: 25px;
+        padding: 8px;
+    }
+    input::placeholder {
+        color: var(--primary-color);
+    }
+    input:focus::placeholder {
+        color: transparent;
+    }
+}
+.header {
+    display: flex;
+    font-size: 0.8em;
+    justify-content: start;
+    font-weight: 300;
 }
 
 .actions {
-  gap: 12px;
-  text-align: center;
+    gap: 12px;
+    text-align: center;
 }
 
-.submitButton{
-  width: 100%;
+.submitButton {
+    color: black;
+    text-shadow: none;
+    font-weight: 400;
+    width: 100%;
+    background-color: rgb(197, 197, 197);
 }

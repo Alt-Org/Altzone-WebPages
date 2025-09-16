@@ -1,7 +1,6 @@
 'use client';
 import { useClientTranslation } from '@/shared/i18n';
 import { useLoginForm } from '../../model/useLoginForm';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
 
@@ -31,27 +30,30 @@ const LoginForm = (props: LoginFormProps) => {
                     <BaseAuthForm.InputField
                         key={'username'}
                         error={errors?.username?.message && t(`${errors.username.message}`)}
-                        label={t('username')}
-                        inputProps={{ ...register('username'), required: true }}
+                        label={t('')}
+                        inputProps={{
+                            ...register('username'),
+                            required: true,
+                            placeholder: t('username'),
+                        }}
                     />
                     <BaseAuthForm.InputField
                         key={'password'}
                         error={errors?.password?.message && t(`${errors.password.message}`)}
-                        label={t('password')}
-                        inputProps={{ ...register('password'), type: 'password', required: true }}
+                        label={t('')}
+                        inputProps={{
+                            ...register('password'),
+                            type: 'password',
+                            required: true,
+                            placeholder: t('password'),
+                        }}
                     />
                 </>
             }
             actions={
                 <>
-                    <BaseAuthForm.SubmitButton>{t('send')}</BaseAuthForm.SubmitButton>
+                    <BaseAuthForm.SubmitButton>{t('log_in')}</BaseAuthForm.SubmitButton>
                     {extraContent && <div>{extraContent}</div>}
-                    <AppLink
-                        theme={AppLinkTheme.PRIMARY}
-                        to={toRegisterPage}
-                    >
-                        {t('text_to_register')}
-                    </AppLink>
                 </>
             }
             onSubmit={handleSubmit(onFormSubmit)}

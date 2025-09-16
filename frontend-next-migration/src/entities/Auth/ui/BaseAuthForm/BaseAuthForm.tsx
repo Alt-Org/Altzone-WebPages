@@ -30,7 +30,9 @@ const BaseAuthForm: FC<BaseAuthFormProps> & {
 };
 
 BaseAuthForm.Header = ({ children }: { children: ReactNode }) => (
-    <CustomForm.Header>{children}</CustomForm.Header>
+    <CustomForm.Header>
+        <div className={cls.header}>{children}</div>
+    </CustomForm.Header>
 );
 BaseAuthForm.Header.displayName = 'BaseAuthForm.Header';
 
