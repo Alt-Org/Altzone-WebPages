@@ -1,3 +1,13 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
 .DesktopCardContainer {
     width: 100%;
     display: flex;
@@ -8,4 +18,21 @@
 
 .NavMenu {
     margin-top: 7em;
+}
+
+.TitleSearchBarContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.PageTitle {
+    @media (min-width: calc(breakpoint(lg) + 32px)) {
+        margin-bottom: 0;
+    }
+}
+
+.SearchBarDesktop {
+    max-width: 300px;
 }

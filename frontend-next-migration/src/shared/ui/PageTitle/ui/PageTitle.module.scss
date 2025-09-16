@@ -4,6 +4,10 @@
     align-items: flex-end;
     margin-bottom: 1.0rem;
     padding-right: 1.5rem;
+
+    @media (min-width: calc(breakpoint(lg) + 32px)) {
+        margin-bottom: 0;
+    }
 }
 
 .PageTitleLeft {

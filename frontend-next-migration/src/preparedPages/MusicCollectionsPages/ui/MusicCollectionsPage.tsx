@@ -8,6 +8,7 @@ import cls from './MusicCollectionsPage.module.scss';
 import { useState } from 'react';
 import { YoutubeVideoCard } from '@/shared/ui/v2/YoutubeVideoCard';
 import { MusicManager } from '@/entities/Music/model/MusicCollectionsManager';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 // export interface SearchBarProps {
 //     className: string;
@@ -40,25 +41,36 @@ import { MusicManager } from '@/entities/Music/model/MusicCollectionsManager';
 const MusicCollectionsPage = () => {
     const { t } = useClientTranslation('music');
     const manager = new MusicManager();
+    const { isMobileSize, isTabletSize } = useSizes();
 
     const [searchQuery, setSearchQuery] = useState('');
 
     const allItems = manager.getAllCollectionsItems();
     return (
-        <>
-            <div>
-                <PageTitle
-                    titleText={t('music-collections-title')}
-                    alternate={true}
-                    searchVisible={false}
-                />
+        <div className={cls.Container}>
+            {isMobileSize || isTabletSize ? (
                 <SearchBar
-                    className={cls.SearchBarDesktop}
+                    className={cls.SearchBarTablet}
                     value={searchQuery}
                     onChange={setSearchQuery}
                     placeholder={t('search-placeholder')}
                 />
-            </div>
+            ) : (
+                <div className={cls.TitleSearchBarContainer}>
+                    <PageTitle
+                        titleText={t('music-collections-title')}
+                        alternate={true}
+                        searchVisible={false}
+                        className={cls.PageTitle}
+                    />
+                    <SearchBar
+                        className={cls.SearchBarDesktop}
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                        placeholder={t('search-placeholder')}
+                    />
+                </div>
+            )}
             <NavigationRow />
             <div className={cls.DesktopCardContainer}>
                 {allItems && allItems.length === 0 && <div>No music items found</div>}
@@ -75,7 +87,7 @@ const MusicCollectionsPage = () => {
                         );
                     })}
             </div>
-        </>
+        </div>
     );
 };
 
