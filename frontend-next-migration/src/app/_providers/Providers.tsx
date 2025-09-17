@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './StoreProvider';
 import { ThemeProvider } from './ThemeProvider';
+import { CookiesProvider } from 'react-cookie';
 
 interface ProvidersProps {
     children: ReactNode;
@@ -19,8 +20,10 @@ export function Providers({ children }: ProvidersProps) {
                 persistor={persistor}
             >
                 <ThemeProvider>
-                    <ToastContainer />
-                    {children}
+                    <CookiesProvider>
+                        <ToastContainer />
+                        {children}
+                    </CookiesProvider>
                 </ThemeProvider>
             </PersistGate>
         </ReduxProvider>
