@@ -243,6 +243,13 @@
     }
 }
 
+.Card.CollectionsCard > .DescriptionCardImageSection {
+    flex-basis: 52% !important;
+    @media (max-width:breakpoint(lg)) {
+        flex-basis: 60% !important;
+    }
+}
+
 .Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardScaledImageContainer {
     margin-right: auto;
     position: relative;

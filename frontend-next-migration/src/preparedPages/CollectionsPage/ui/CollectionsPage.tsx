@@ -36,7 +36,7 @@ const CollectionsPage = () => {
                         {t('furniture-collections')}
                     </DescriptionCard.Texts.Body>
                 </DescriptionCard.Texts>
-                <DescriptionCard.Image width={isSmallScreen ? '60%' : '52%'}>
+                <DescriptionCard.Image>
                     <DescriptionCard.Image.Triangle />
                     <DescriptionCard.Image.Image
                         src={kipu}
@@ -58,7 +58,7 @@ const CollectionsPage = () => {
                         {t('music-collections')}
                     </DescriptionCard.Texts.Body>
                 </DescriptionCard.Texts>
-                <DescriptionCard.Image width={isSmallScreen ? '60%' : '52%'}>
+                <DescriptionCard.Image>
                     <DescriptionCard.Image.Triangle />
                     <DescriptionCard.Image.Image
                         src={music}
