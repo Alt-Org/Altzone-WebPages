@@ -1,8 +1,7 @@
 .Section {
     display: flex;
     opacity: 0;
-    flex-direction: column;
-    //margin-top: -10vh;
+
     &.inView {
         animation: fadeIn 1s ease-in-out;
         opacity: 1;
@@ -25,9 +24,10 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
     opacity: 0;
     transform: translateY(20px);
-    width: 100%;
+
     &.inView {
         animation: slideIn 1.8s ease-in-out;
         transform: translateY(0);
@@ -49,52 +49,15 @@
 .imageTextBlock {
     display: flex;
     align-items: center;
-    max-width: 100%;
-    justify-content: center;
-
+    max-width: 80%;
+    margin-top: 20px;
     transform: scale(0.8);
     opacity: 0;
-    padding: 0;
-    .description {
-        background-color: transparent;
-    }
-    &.inView {
-        animation: zoomIn 1.8s ease-in-out;
-        opacity: 1;
-        transform: scale(1);
-        background-color: none;
-    }
-    p {
-        font: var(--font-dm-l);
-        text-align: center;
-        white-space: pre-line;
-    }
-}
-
-.subDescription {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    transform: scale(0.8);
-    padding: 0;
-    margin: 0;
-
-    .subDescription {
-        background-color: transparent;
-    }
 
     &.inView {
         animation: zoomIn 1.8s ease-in-out;
         opacity: 1;
         transform: scale(1);
-    }
-
-    p {
-        font: var(--font-sw-xxxl);
-        text-align: center;
-        color: var(--primary-color);
-        white-space: pre-line;
     }
 }
 
@@ -110,12 +73,12 @@
 }
 
 .Image {
-    display: inline-block;
+    max-width: 30%;
     height: auto;
-    width: cover;
-    background-size: cover;
-    object-fit: cover;
-    margin-bottom: 40px;
+
+    &.inView {
+        animation: rotate 1.5s alternate;
+    }
 }
 
 @keyframes rotate {
@@ -125,36 +88,29 @@
 }
 
 .titleQuestion {
-    font: var(--font-sw-4xl), sans-serif;
+    font-size: var(--font-line-xxxl);
+    font-family: var(--font-family-title), sans-serif;
+    font-weight: lighter;
     text-align: center;
     color: var(--primary-color);
     padding: 15px;
     max-width: 90%;
-    white-space: pre-line;
 
-    @media screen and (max-width: breakpoint(xs)) {
+    @media screen and (max-width: 600px) {
         & {
-            font: var(--font-sw-xxxl);
+            font-size: var(--font-line-xxl);
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        & {
+            font-size: var(--font-line-l);
         }
     }
 }
 
-@media screen and (max-width: breakpoint(sm)) {
+@media screen and (min-width: breakpoint(lg)) {
     .description {
-        width: 80%;
-        p {
-            font-size: 0.9rem;
-            text-align: center;
-        }
-    }
-    .titleQuestion {
-        font-size: 1.5rem;
-        width: 80%;
-    }
-    .subDescription {
-        width: 80%;
-        p {
-            font: var(--font-sw-xl);
-        }
+        width: 60%;
     }
 }
