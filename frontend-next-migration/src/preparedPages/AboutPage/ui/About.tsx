@@ -114,7 +114,7 @@ const About = (props: Props) => {
                                 alt="2019 year image"
                                 fill
                                 className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 420px"
+                                sizes="(max-width: 768px) 94vw, 34vw"
                             />
                         </div>
                         <p className={cls.p}>{V2019}</p>
@@ -128,7 +128,7 @@ const About = (props: Props) => {
                                 alt="2020 year image"
                                 fill
                                 className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 420px"
+                                sizes="(max-width: 768px) 94vw, 34vw"
                             />
                         </div>
                         <p className={cls.p}>{V2020}</p>
@@ -142,7 +142,7 @@ const About = (props: Props) => {
                                 alt="2021 year image"
                                 fill
                                 className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 420px"
+                                sizes="(max-width: 768px) 94vw, 34vw"
                             />
                         </div>
                         <p className={cls.p}>{V2021}</p>
@@ -156,7 +156,7 @@ const About = (props: Props) => {
                                 alt="2022 year image"
                                 fill
                                 className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 420px"
+                                sizes="(max-width: 768px) 94vw, 34vw"
                             />
                         </div>
                         <p className={cls.p}>{V2022}</p>
@@ -170,7 +170,7 @@ const About = (props: Props) => {
                                 alt="2023 year image"
                                 fill
                                 className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 420px"
+                                sizes="(max-width: 768px) 94vw, 34vw"
                             />
                         </div>
                         <p className={cls.p}>{V2023}</p>
@@ -184,7 +184,7 @@ const About = (props: Props) => {
                                 alt="2024 year image"
                                 fill
                                 className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 420px"
+                                sizes="(max-width: 768px) 94vw, 34vw"
                             />
                         </div>
                         <p className={cls.p}>{V2024}</p>
