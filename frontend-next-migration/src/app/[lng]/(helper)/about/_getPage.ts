@@ -6,6 +6,7 @@ import { getRouteAboutPage } from '@/shared/appLinks/RoutePaths';
 
 export async function _getPage(lng: any) {
     const { t } = await useServerTranslation(lng, 'about');
+
     return createPage<AboutPageProps>({
         buildPage: () => ({
             title: t('head-title'),

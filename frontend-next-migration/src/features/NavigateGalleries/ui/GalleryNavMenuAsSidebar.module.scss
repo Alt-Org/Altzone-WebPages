@@ -3,9 +3,8 @@
     position: absolute;
     top: 45%;
     color: var(--secondary-color);
-    font-weight: bolder;
-    font-size: 1.5em;
-    right: 0.3em;
+    font: var(--font-dm-l);
+    right: .3em;
     cursor: pointer;
 }
 
@@ -14,9 +13,7 @@
     position: relative;
     background: black;
     border-radius: 10px;
-    transition:
-        width 0.3s ease-in-out,
-        opacity 0.3s ease-out;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-out;
 
     &.Hidden {
         width: 0;
@@ -29,13 +26,13 @@
     cursor: pointer;
 
     &:hover {
-        color: var(--secondary-color);
+        color: var(--secondary-color)
     }
 }
 
 .Text {
     padding: 1em 0.5em;
-    font-size: 26px;
+    font: var(--font-dm-l);
     overflow: hidden;
     transition: opacity 0.3s ease-in-out;
 

@@ -1,35 +1,34 @@
 .navbarSide {
-    background: var(--background);
-    border-radius: var(--corner-radius-web);
-    outline: var(--thickness-web) solid var(--black);
-    box-shadow: 10px 10px var(--black);
-    width: 95%;
-    margin-left: 0.3rem;
-    font-family: var(--font-family-secondary);
-    ul {
-        list-style: none;
+  background: var(--background);
+  border-radius: var(--corner-radius-web);
+  outline: var(--thickness-web) solid var(--black);
+  box-shadow: 10px 10px var(--black);
+  width: 95%;
+  margin-left: 0.3rem;
+  font: var(--font-dm-l);
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+
+    transition: color 0.5s, border-left 0.2s;
+    &:hover {
+      color: orange;
     }
 
-    li {
-        margin-top: 10px;
-        cursor: pointer;
-        padding: 10px;
-
-        transition:
-            color 0.5s,
-            border-left 0.2s;
-        &:hover {
-            color: orange;
-        }
-
-        &.active {
-            color: orange;
-        }
-
-        &:active {
-            outline: none;
-        }
-
-        user-select: none;
+    &.active {
+      color: orange;
     }
+
+    &:active {
+      outline: none;
+    }
+
+    user-select: none;
+  }
 }

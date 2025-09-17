@@ -1,23 +1,27 @@
 .Paragraph {
     padding: 2%;
-    background-color: var(--transparent-bg-darker);
+    background-color: var(--transparent-bg-darker);    
     display: flex;
     flex-direction: column;
     text-align: left;
     width: 100%;
     margin: 2%;
 
+
+
     h2 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        font-weight: bold;
+      font: var(--font-dm-xl);
+      margin-bottom: 1rem;
     }
 
+
     p {
-        margin: 0.5rem 0;
-        font-size: 1.2rem;
-        text-align: justify;
+      margin: 0.5rem 0;
+      font: var(--font-dm-m);
+      text-align: justify;
     }
 
     border-radius: var(--border-radius-custom);
-}
+    
+  }
+ 

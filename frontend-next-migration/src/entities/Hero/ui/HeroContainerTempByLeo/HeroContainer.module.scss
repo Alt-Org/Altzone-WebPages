@@ -1,179 +1,192 @@
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .componentWrapper {
-    display: flex;
-    align-items: center;
-    z-index: 1;
-    animation: fadeIn 1s ease-in-out;
-    max-width: 99vw;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  animation: fadeIn 1s ease-in-out;
+  max-width: 99vw;
 
-    //background-color: rgba(0, 0, 0, 0.6);
-    //border-radius: var(--border-radius-custom);
-    //padding: 20px;
-    //height: 100vh;
+  //background-color: rgba(0, 0, 0, 0.6);
+  //border-radius: var(--border-radius-custom);
+  //padding: 20px;
+  //height: 100vh;
 
-    @media (min-width: 1000px) {
-        & {
-            // todo it is ideal size for full hd , but we really cannot use it like this, so just hero container could be refactored instead
-            transform: scale(0.8);
-        }
+
+  @media (min-width: 1000px) {
+
+    &{
+      // todo it is ideal size for full hd , but we really cannot use it like this, so just hero container could be refactored instead
+      transform: scale(0.8);
     }
+
+  }
+
+
 }
 
 .heroImgSideWrapper {
-    user-select: none;
-    pointer-events: none;
-    position: relative;
-    max-width: 35em;
-    width: 35em;
-    height: 30em;
-    z-index: 1;
-    transform: translateX(5rem);
+  user-select: none;
+  pointer-events: none;
+  position: relative;
+  max-width: 35em;
+  width: 35em;
+  height: 30em;
+  z-index: 1;
+  transform: translateX(5rem);
 
+  .heroImgSide {
+    position: absolute;
+    top: -12em;
+    width: 40em;
+    height: 50em;
+    z-index: 2;
+  }
+
+  &.isTablet {
     .heroImgSide {
-        position: absolute;
-        top: -12em;
-        width: 40em;
-        height: 50em;
-        z-index: 2;
+      top: -8em;
+      width: 40em;
+      height: 40em;
+      z-index: 2;
     }
+  }
 
-    &.isTablet {
-        .heroImgSide {
-            top: -8em;
-            width: 40em;
-            height: 40em;
-            z-index: 2;
-        }
-    }
 }
 
 .heroImgSideWrapper.isMobile {
-    display: none;
+  display: none;
 }
 
 .container {
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 30rem;
-    height: 100%;
-    z-index: 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 30rem;
+  height: 100%;
+  z-index: 1;
 }
 
 .container.isMobile {
-    max-width: 35rem;
-    padding: 0 1.2rem;
+  max-width: 35rem;
+  padding: 0 1.2rem;
 }
 
 .container.isTablet {
-    max-width: 40rem;
+  max-width: 40rem;
 }
 
+
 .containerWrapper {
-    position: relative;
+  position: relative;
 }
 
 .contentWrapper {
-    display: flex;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    aspect-ratio: 12 / 16;
+  display: flex;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  aspect-ratio: 12 / 16;
 }
 
 .content {
-    position: relative;
-    padding: 1.5em;
+  position: relative;
+  padding: 1.5em;
 }
 
 .heroImgWrapper {
-    width: 100%;
-    min-height: 40%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+  width: 100%;
+  min-height: 40%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .heroImgWrapper.isMobile {
-    justify-content: space-between;
-    padding-left: 1rem;
-    padding-right: 1rem;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .heroImg {
-    width: auto;
-    max-height: 220px;
-    user-select: none;
-    pointer-events: none;
+  width: auto;
+  max-height: 220px;
+  user-select: none;
+  pointer-events: none;
 
-    border-radius: var(--border-radius-custom);
+  border-radius: var(--border-radius-custom);
+
 }
 .heroImg.isMobile {
-    width: 50%;
-    user-select: none;
-    pointer-events: none;
-    margin-left: 1rem;
-    margin-right: 1rem;
+  width: 50%;
+  user-select: none;
+  pointer-events: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .heroImg.isMobile {
-    transform: scale(120%);
+  transform: scale(120%);
 }
 
 .heroDescription {
-    @include ScrollbarWithArrowButtons;
-    padding-right: 0.5rem;
-    overflow-y: auto;
-    font-size: 1.4rem;
-    border-radius: 10px;
-    max-height: 38%;
+  @include ScrollbarWithArrowButtons;
+  padding-right: 0.5rem;
+  overflow-y: auto;
+  font: var(--font-dm-m);
+  border-radius: 10px;
+  max-height: 38%;
 
-    &.isMobile {
-        margin-top: 2rem;
-    }
+  &.isMobile{
+    margin-top: 2rem;
+  }
+
+  @media(min-width: 900px){
+    font: var(--font-dm-l);
+  }
 }
 
-.heroGroup {
-    position: absolute;
-    bottom: -110px;
-    left: 0;
-    right: 0;
-    //top: 20px;
+.heroGroup{
+  position: absolute;
+  bottom: -110px;
+  left: 0;
+  right: 0;
+  //top: 20px;
 
-    //bottom: 0px;
-    //top: -90px;
-    //left: 0px;
-    //right: 0;
+  //bottom: 0px;
+  //top: -90px;
+  //left: 0px;
+  //right: 0;
 
-    z-index: 1;
-    display: flex;
-    justify-content: center;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 
-.heroGroupLabel {
-    position: relative;
-    z-index: 10;
-    //width: 70%!important;
+.heroGroupLabel{
+  position: relative;
+  z-index: 10;
+  //width: 70%!important;
 
-    width: 300px;
+  width: 300px;
 
-    //@media(max-width: 700px){
-    //  width: 60% !important;
-    //}
+  //@media(max-width: 700px){
+  //  width: 60% !important;
+  //}
+
 }
 
-.heroGroupLabelText {
-    font-size: 20px !important;
-    @media (min-width: 700px) {
-        font-size: 1.5rem;
-    }
+.heroGroupLabelText{
+  font: var(--font-dm-bold-l);
+  @media(min-width: 700px){
+    font: var(--font-dm-bold-l);
+  }
 }

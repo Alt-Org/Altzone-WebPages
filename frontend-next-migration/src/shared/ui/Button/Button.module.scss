@@ -1,128 +1,136 @@
 .Button {
-    cursor: pointer;
-    color: var(--white);
-    background: var(--primary-color);
-    padding: 6px 15px;
+  cursor: pointer;
+  color: var(--white);
+  background: var(--primary-color);
+  padding: 6px 15px;
 
-    &:focus {
-        outline: 2px solid var(--white);
-    }
+
+  &:focus {
+    outline: 2px solid var(--white);
+  }
+
 }
 
 .clear,
 .clearInverted {
-    padding: 0;
-    border: none;
-    background: none;
-    outline: none;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
 
-    &:hover {
-        color: var(--primary-color);
-    }
+  &:hover {
+    color: var(--primary-color);
+  }
+
 }
 
 .clearInverted {
-    color: var(--secondary-color);
+  color: var(--secondary-color);
 
-    &:hover {
-        color: var(--primary-color);
-    }
+  &:hover {
+    color: var(--primary-color);
+  }
+
 }
 
 .outline {
-    border: 1px solid var(--white);
-    color: var(--white);
-    background: none;
+  border: 1px solid var(--white);
+  color: var(--white);
+  background: none;
 }
 
 .background {
-    background: var(--background);
-    color: var(--white);
-    border: none;
+  background: var(--background);
+  color: var(--white);
+  border: none;
 
-    &:hover {
-        color: var(--primary-color);
-    }
+  &:hover {
+    color: var(--primary-color);
+  }
+
 }
 
 .backgroundInverted {
-    background: var(--black);
-    color: var(--secondary-color);
-    border: none;
+  background: var(--black);
+  color: var(--secondary-color);
+  border: none;
 
-    &:hover {
-        color: var(--primary-color);
-    }
+  &:hover {
+    color: var(--primary-color);
+  }
+
 }
 
 .square {
-    padding: 0;
+  padding: 0;
 }
 
 .square.sizeM {
-    width: var(--font-line-m);
-    height: var(--font-line-m);
+  width: var(--font-line-m);
+  height: var(--font-line-m);
 }
 
 .square.sizeL {
-    width: var(--font-line-l);
-    height: var(--font-line-l);
+  width: var(--font-line-l);
+  height: var(--font-line-l);
 }
 
 .square.sizeXL {
-    width: var(--font-line-xl);
-    height: var(--font-line-xl);
+  width: var(--font-line-xl);
+  height: var(--font-line-xl);
 }
 
 .square.sizeXXL {
-    width: var(--font-line-xxl);
-    height: var(--font-line-xxl);
+  width: var(--font-line-xxl);
+  height: var(--font-line-xxl);
 }
 
 .square.sizeXXXL {
-    width: var(--font-line-xxxl);
-    height: var(--font-line-xxxl);
+  width: var(--font-line-xxxl);
+  height: var(--font-line-xxxl);
 }
 
 .sizeM {
-    font: var(--font-m);
+  font: var(--font-dm-m);
 }
 
 .sizeL {
-    font: var(--font-l);
+  font: var(--font-dm-l);
 }
 
 .sizeXL {
-    font: var(--font-xl);
+  font: var(--font-dm-xl);
 }
 
 .sizeXXL {
-    font: var(--font-xxl);
+  font: var(--font-dm-xxl);
 }
 
 .sizeXXXL {
-    font: var(--font-xxxl) !important;
+  font: var(--font-dm-xxxl) !important;
 }
 
 .disabled {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
-.withScalableLink {
-    @include link-scale-effect;
+.withScalableLink{
+  @include link-scale-effect;
 }
 
-.graffiti {
-    background-color: rgba(197, 4, 4, 0);
-    background-color: #333;
-    border: none;
-    border-radius: var(--border-radius-custom);
-    cursor: pointer;
-    outline: none;
-    text-shadow: 2px 2px 0 #000;
-    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+.graffiti{
+  background-color: rgba(197, 4, 4, 0);
+  background-color: #333;
+  border: none;
+  border-radius: var(--border-radius-custom);
+  cursor: pointer;
+  outline: none;
+  text-shadow: 2px 2px 0 #000;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
 
-    &:active {
-        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
-    }
+  &:active {
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
 }
+

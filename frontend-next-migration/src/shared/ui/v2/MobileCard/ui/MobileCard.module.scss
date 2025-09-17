@@ -1,178 +1,174 @@
 @mixin card-dimensions {
-    --gap: 0.5em;
-    width: calc(33.333% - 2 * var(--gap) / 3);
-    height: calc(33.333vh - 2 * var(--gap) / 3);
+  --gap: 0.5em;
+  width: calc(33.333% - 2 * var(--gap) / 3);
+  height: calc(33.333vh - 2 * var(--gap) / 3);
 }
 
-.MobileCard.DefenseGalleryCard {
-    @include card-dimensions;
-    overflow: hidden;
-    border-radius: var(--corner-radius-web);
-    background-color: var(--base-card-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    border: var(--border-mobile) solid var(--black);
-    box-shadow: var(--black) 4px 6px 0;
+.MobileCard.DefenseGalleryCard  {
+  @include card-dimensions;
+  overflow: hidden;
+  border-radius: var(--corner-radius-web);
+  background-color: var(--base-card-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border: var(--border-mobile) solid var(--black);
+  box-shadow: var(--black) 4px 6px 0;
 }
 .withScalableLink {
-    transition: border-color ease 0.4s;
+  transition: border-color ease .4s;
+  .TextContainer {
+    transition: height ease .4s;
+  }
+  .ImageContainer{
+    transition: height ease .4s;
+  }
+  &:active {
+    .MobileCard {
+      border-color: var(--primary-color);
+    }
     .TextContainer {
-        transition: height ease 0.4s;
+      height: 20% !important;
     }
     .ImageContainer {
-        transition: height ease 0.4s;
+      height: 80% !important;
     }
-    &:active {
-        .MobileCard {
-            border-color: var(--primary-color);
-        }
-        .TextContainer {
-            height: 20% !important;
-        }
-        .ImageContainer {
-            height: 80% !important;
-        }
+  }
+  &:hover {
+    .MobileCard {
+      border-color: var(--primary-color);
     }
-    &:hover {
-        .MobileCard {
-            border-color: var(--primary-color);
-        }
-        .TextContainer {
-            height: 20% !important;
-        }
-        .ImageContainer {
-            height: 80% !important;
-        }
+    .TextContainer {
+      height: 20% !important;
     }
+    .ImageContainer {
+      height: 80% !important;
+    }
+  }
 }
 
 .MobileCard {
-    transition: border-color ease 0.4s;
+  transition: border-color ease .4s;
 }
 .AppLink {
-    @include card-dimensions;
+  @include card-dimensions;
 }
 
 .AppLink .MobileCard {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .MobileCard.DefenseGalleryCard > .ImageContainer {
-    height: 70%;
-    width: 100%;
-    overflow: hidden;
-    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-    padding-top: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 70%;
+  width: 100%;
+  overflow: hidden;
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+  padding-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .MobileCard.DefenseGalleryCard > .TextContainer {
-    margin-top: 10%;
+  margin-top: 10%;
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title1 {
-    color: var(--white);
-    font-family: var(--font-family-title);
-    font-size: 1.5rem;
-    font-weight: 400;
-    @media (max-width: breakpoint(sm)) {
-        font-size: 1.2rem;
-    }
-    @media (max-width: breakpoint(xs)) {
-        font-size: 0.9rem;
-    }
+  color:var(--white);
+  @media (max-width: breakpoint(sm)) {
+    font: var(--font-sw-m);
+  }
+  @media (max-width: breakpoint(xs)) {
+    font: var(--font-sw-s);
+  }
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title2 {
-    color: var(--primary-color);
-    font-family: var(--font-family-title);
-    font-size: 1.5rem;
-    font-weight: 400;
-    @media (max-width: breakpoint(sm)) {
-        font-size: 1rem;
-    }
-    @media (max-width: breakpoint(xs)) {
-        font-size: 0.8rem;
-    }
+  color:var(--primary-color);
+  @media (max-width: breakpoint(sm)) {
+    font: var(--font-sw-m);
+  }
+  @media (max-width: breakpoint(xs)) {
+    font: var(--font-sw-s);
+  }
+
 }
 
 // FurnitureCollectionsCard
 
 @mixin furniture-card-dimensions {
-    --gap: 2em;
-    width: 100%;
-    height: 400px;
+  --gap: 2em;
+  width: 100%;
+  height: 400px;
 }
 
-.MobileCard.FurnitureCollectionsCard {
-    @include furniture-card-dimensions;
-    overflow: hidden;
-    border-radius: var(--corner-radius-web);
-    background-color: var(--base-card-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    border: var(--border-mobile) solid var(--black);
-    box-shadow: var(--black) 4px 6px 0;
-    position: relative;
+.MobileCard.FurnitureCollectionsCard  {
+  @include furniture-card-dimensions;
+  overflow: hidden;
+  border-radius: var(--corner-radius-web);
+  background-color: var(--base-card-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border: var(--border-mobile) solid var(--black);
+  box-shadow: var(--black) 4px 6px 0;
+  position: relative;
 }
 
-.FurnitureCollectionsCard.MobileCard {
-    transition: border-color ease 0.4s;
+.FurnitureCollectionsCard.MobileCard  {
+  transition: border-color ease .4s;
 }
-.FurnitureCollectionsCard.AppLink {
-    @include furniture-card-dimensions;
+.FurnitureCollectionsCard.AppLink  {
+  @include furniture-card-dimensions;
 }
 
 .AppLink .MobileCard {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .MobileCard.FurnitureCollectionsCard > .ImageContainer {
+  width: 100%;
+  height: 70%;
+  background-color: transparent;
+  overflow: hidden;
+  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  
+  .Image {
+    object-fit: cover !important;
+    object-position: center bottom;
     width: 100%;
-    height: 70%;
-    background-color: transparent;
-    overflow: hidden;
-    clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-
-    .Image {
-        object-fit: cover !important;
-        object-position: center bottom;
-        width: 100%;
-        height: auto;
-        max-height: none;
-    }
+    height: auto;
+    max-height: none;
+  }
 }
 .MobileCard.FurnitureCollectionsCard > .TextContainer {
-    margin-top: 10%;
+  margin-top: 10%;
 }
 .MobileCard.FurnitureCollectionsCard > .TextContainer > .Title1 {
-    color: var(--white);
-    font-family: var(--font-family-title);
-    font-size: 1.5rem;
-    font-weight: 400;
-    @media (max-width: breakpoint(sm)) {
-        font-size: 1.2rem;
-    }
-    @media (max-width: breakpoint(xs)) {
-        font-size: 0.9rem;
-    }
+  color:var(--white);
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 400;
+  @media (max-width: breakpoint(sm)) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: breakpoint(xs)) {
+    font-size: .9rem;
+  }
 }
 .MobileCard.FurnitureCollectionsCard > .TextContainer > .Title2 {
-    color: var(--primary-color);
-    font-family: var(--font-family-title);
-    font-size: 1.5rem;
-    font-weight: 400;
-    @media (max-width: breakpoint(sm)) {
-        font-size: 1rem;
-    }
-    @media (max-width: breakpoint(xs)) {
-        font-size: 0.8rem;
-    }
+  color:var(--primary-color);
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 400;
+  @media (max-width: breakpoint(sm)) {
+    font-size: 1rem;
+  }
+  @media (max-width: breakpoint(xs)) {
+    font-size: .8rem;
+  }
+
 }

@@ -4,10 +4,10 @@ import { notFound } from 'next/navigation';
 import { HeroGroup } from '@/entities/Hero';
 import { SingleDefensePageProps } from '@/preparedPages/DefenseGalleryPages';
 import { getRouteDefenseGalleryGroupPage } from '@/shared/appLinks/RoutePaths';
+import defenceGalleryImage from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 
 export async function _getPage(lng: string, heroGroup: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
-    const defenceGalleryImage = '/images/defense_gallery.png';
 
     if (!Object.values(HeroGroup).includes(heroGroup as HeroGroup)) {
         notFound();
@@ -24,7 +24,7 @@ export async function _getPage(lng: string, heroGroup: string) {
             openGraph: {
                 images: [
                     {
-                        url: `${defenceGalleryImage}`,
+                        url: defenceGalleryImage.src,
                     },
                 ],
                 title: `${t('og-title')} - ${heroGroup}`,

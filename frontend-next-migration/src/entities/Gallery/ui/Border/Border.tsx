@@ -1,15 +1,19 @@
 import { useRef, useCallback, ReactNode } from 'react';
 import { ClickableBorder } from '@/shared/ui/ClickableBorder';
 import useResizeObserver, { ResizeCallback } from '@/shared/lib/hooks/useResizeObserver';
+import heroBorder from '@/shared/assets/images/heros/hero-border/hero-border3.png';
 import cls from './Border.module.scss';
+import { StaticImageData } from 'next/image';
 
 export interface BorderProps {
-    borderImageSrc?: string;
+    borderImageSrc?: string | StaticImageData;
     children: ReactNode;
 }
 
 export const Border = (props: BorderProps) => {
-    const { borderImageSrc = '/images/hero-border3.png', children } = props;
+    const { borderImageSrc = heroBorder, children } = props;
+
+    const borderImageUrl = typeof borderImageSrc === 'string' ? borderImageSrc : borderImageSrc.src;
 
     const elementRef = useRef<HTMLDivElement>(null);
 
@@ -42,7 +46,7 @@ export const Border = (props: BorderProps) => {
     return (
         <ClickableBorder
             ref={elementRef}
-            borderImageSource={borderImageSrc}
+            borderImageSource={borderImageUrl}
             className={cls.ClickableBorder}
         >
             {children}

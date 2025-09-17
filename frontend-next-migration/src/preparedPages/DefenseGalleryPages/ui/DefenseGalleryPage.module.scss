@@ -1,92 +1,93 @@
 .NavMenu {
-    background: var(--base-card-background);
-    color: var(--primary-color);
-    border-radius: 12px;
-    padding: 1em 1em 1em 12px;
-    max-height: 250px;
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--black);
-    box-shadow: var(--black) 4px 4px 0;
+  background: var(--base-card-background);
+  color:var(--primary-color);
+  border-radius: 12px;
+  padding: 1em 1em 1em 12px;
+  max-height: 250px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--black);
+  box-shadow: var(--black) 4px 4px 0;
 }
 .TitleBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .DesktopCardContainer {
-    display: flex;
-    padding-top: 1em;
-    justify-content: left;
-    flex-wrap: wrap;
-    gap: 1em;
+  display: flex;
+  padding-top: 1em;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 .MobileCardContainer {
-    display: flex;
-    gap: 0.5em;
-    flex-wrap: wrap;
-    justify-content: left;
-    margin-top: 0.5em;
+  display: flex;
+  gap: .5em;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-top: .5em;
 }
 .SearchBar {
-    display: flex;
-    height: 20px;
-    justify-content: left;
-    color: var(--primary-color);
-    border: 2px solid var(--black);
-    box-shadow: var(--black) 4px 4px 0;
-    border-radius: 1.5em;
-    background: var(--base-card-background);
-    align-items: center;
-    padding: 1em;
-    margin-top: 1em;
-    margin-bottom: 1em;
+  display: flex;
+  height: 20px;
+  justify-content: left;
+  color:var(--primary-color);
+  border: 2px solid var(--black);
+  box-shadow: var(--black) 4px 4px 0;
+  border-radius: 1.5em;
+  background: var(--base-card-background);
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font: var(--font-dm-m);
 }
 .Container {
-    margin-right: 3em;
-    margin-left: 0;
-    @media (max-width: 1023px) {
-        margin-left: auto;
-        margin-right: auto;
-    }
+  margin-right: 3em;
+  margin-left: 0;
+  @media (max-width: 1023px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
-.Input {
-    color: var(--primary-color);
-    padding-left: 1em;
-    border: none;
-    background: transparent;
-    outline: none;
-    width: 100%;
+.Input{
+  color: var(--primary-color);
+  padding-left: 1em;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
 }
 .SearchBarDesktop {
-    width: 200px;
+  width: 200px;
 }
 .SearchBarTablet {
-    width: 60%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  @media (max-width: 1023px) {
+    margin-left: 0;
+    width: 280px;
+  }
+  @media (max-width: breakpoint(lg)) {
     margin-left: auto;
-    margin-right: auto;
-    @media (max-width: 1023px) {
-        margin-left: 0;
-        width: 280px;
-    }
-    @media (max-width: 992px) {
-        margin-left: auto;
-    }
+  }
 }
 .SearchBarMobile {
-    width: 280px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .SearchBar input {
-    width: 100%;
+  width: 100%;
 }
 
 .NavMenuSidebar {
-    border-radius: var(--border-radius-md);
-    margin-right: 1em;
-    margin-top: 5em;
+  border-radius: var(--border-radius-md);
+  margin-right: 1em;
+  margin-top: 5em;;
 }
 .Dropdown {
-    margin: 1em auto;
+  margin:1em auto;
 }

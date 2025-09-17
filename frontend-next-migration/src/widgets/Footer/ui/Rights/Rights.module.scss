@@ -1,48 +1,48 @@
 .Rights {
-    font: var(--font-m);
-    font-family: var(--font-family-texts);
-    justify-content: center;
+  font: var(--font-dm-m);
+  justify-content: center;
 }
 
+
 .Rights a:last-of-type {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .Rights p {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .resetCookies {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .resetCookies:hover {
-    text-decoration: underline;
-    color: orange;
+  text-decoration: underline;
+  color: orange;
 }
 .cookies:hover {
-    text-decoration: underline;
-    color: orange;
+  text-decoration: underline;
+  color: orange;
 }
 .privacy:hover {
-    text-decoration: underline;
-    color: orange;
+  text-decoration: underline;
+  color: orange;
 }
 
 .RightContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .RightLinkContainer {
-    display: flex;
-    gap: 3.2rem;
-    padding: 0 2rem 0 1rem;
-    justify-content: center;
-    padding-bottom: 0.5rem;
+  display: flex;
+  gap: 3.2rem;
+  padding: 0 2rem 0 1rem;
+  justify-content: center;
+  padding-bottom: 0.5rem;
 
-    @media (max-width: 1023px) {
-        gap: 2rem;
-    }
+  @media (max-width: 1023px) {
+    gap: 2rem;
+  };
 }

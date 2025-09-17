@@ -1,7 +1,8 @@
-.AttributePricing {
-    display: flex;
+.AttributePricing{
+    display:flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+   
 }
 .InlineBlock {
     margin-right: auto;
@@ -10,31 +11,30 @@
     display: inline-block;
 }
 .Header {
-    color: var(--secondary-color);
-    font-weight: bold;
+    color:var(--secondary-color);
+
     white-space: nowrap;
 }
 .Stats {
-    border-radius: 0.5em;
-    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: .5em;
+    background-color: rgba(0,0,0,.7);
     outline: 2px solid var(--secondary-color);
-    font-weight: bolder;
+
     border-width: 1px;
 }
 .Dropdown {
     outline: 2px solid var(--secondary-color);
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0,0,0,.7);
     color: var(--primary-color);
-    border-radius: 0.5em;
+    border-radius: .5em;
 }
 .Price {
-    font-weight: bold;
+
 }
 .Sum {
-    color: var(--secondary-color);
-    font-weight: bold;
-    font-size: 2em;
-    line-height: 0.5em;
-    margin-top: -0.5em;
-    height: fit-content;
+    color:var(--secondary-color);
+    font: var(--font-dm-xl);
+    line-height: .5em;
+    margin-top: -.5em;
+    height:fit-content;
 }

@@ -1,28 +1,33 @@
 .Card {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--transparent-bg);
-    height: 100%;
-    min-width: 360px;
-    padding: 50px 50px;
-    @media (max-width: 576px) {
-        min-width: 100%;
-    }
+  display: flex;
+  flex-direction: column;
+  background-color: var(--transparent-bg);
+  height: 100%;
+  min-width: 360px;
+  padding: 50px 50px;
+  @media (max-width: breakpoint(sm)) {
+    min-width: 100%;
+  }
 }
+
+
 
 .content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
-.title {
+.title{
+
 }
 
-.date {
+.date{
+
 }
 
-.body {
+.body{
+
 }
 
-.readMoreLink {
-    text-align: left;
+.readMoreLink{
+  text-align: left;
 }

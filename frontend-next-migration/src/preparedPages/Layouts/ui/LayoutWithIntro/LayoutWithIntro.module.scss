@@ -1,108 +1,124 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .intro {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--white);
-    text-align: center;
-    padding: 20px;
-    padding-top: 100px;
 
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        //background: rgba(0, 0, 0, var(--overlay-opacity, 0.5));
-        background-color: var(--overlay-color, rgba(0, 0, 0, 0.5));
-    }
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+  padding-top: 100px;
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    //background: rgba(0, 0, 0, var(--overlay-opacity, 0.5));
+    background-color: var(--overlay-color, rgba(0, 0, 0, 0.5));
+  }
+
 }
 
 .introText {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
 
-    z-index: 2;
-    //display: inline-block;
-    background: rgba(0, 0, 0, 80);
-    padding: 20px;
-    border-radius: var(--border-radius-custom);
-    max-width: 600px;
-    width: 90%;
-    margin: 0 auto;
-    overflow: hidden;
-    word-wrap: break-word;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 
-    h1 {
-        font-size: var(--font-line-4xl);
-        color: var(--primary-color);
+
+
+  z-index: 2;
+  //display: inline-block;
+  background: rgba(0, 0, 0, 80);
+  padding: 20px;
+  border-radius: var(--border-radius-custom);
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  word-wrap: break-word;
+
+  h1{
+    font: var(--font-dm-4xl);
+    color: var(--primary-color)
+  }
+
+  //h1 {
+  //  font: var(--font-dm-4xl);
+  //  width: 100%;
+  //  line-height: 1.5;
+  //  text-align: center;
+  //  margin: 40px auto;
+  //  color: var(--primary-color);
+  //
+  //
+  //  &::after {
+  //    content: '';
+  //    display: block;
+  //    width: 0;
+  //    height: 4px;
+  //    background-color: var(--secondary-color);
+  //    margin: 0 auto 0;
+  //    border-radius: var(--border-radius-custom);
+  //    animation: lineExpand 1s ease-in-out forwards;
+  //  }
+  //}
+  //
+  //
+  //@keyframes lineExpand {
+  //  0% {
+  //    width: 0;
+  //  }
+  //  100% {
+  //    width: 500px;
+  //    max-width: 70vw;
+  //  }
+  //}
+
+
+
+  @media (max-width: 600px){
+    h1{
+      font: var(--font-dm-xxxl);
     }
+  }
 
-    //h1 {
-    //  font-size: var(--font-line-4xl);
-    //  width: 100%;
-    //  line-height: 1.5;
-    //  font-weight: bold;
-    //  text-align: center;
-    //  margin: 40px auto;
-    //  color: var(--primary-color);
-    //
-    //
-    //  &::after {
-    //    content: '';
-    //    display: block;
-    //    width: 0;
-    //    height: 4px;
-    //    background-color: var(--secondary-color);
-    //    margin: 0 auto 0;
-    //    border-radius: var(--border-radius-custom);
-    //    animation: lineExpand 1s ease-in-out forwards;
-    //  }
-    //}
-    //
-    //
-    //@keyframes lineExpand {
-    //  0% {
-    //    width: 0;
-    //  }
-    //  100% {
-    //    width: 500px;
-    //    max-width: 70vw;
-    //  }
-    //}
-
-    @media (max-width: 600px) {
-        h1 {
-            font-size: var(--font-line-xxxl);
-        }
+  @media (max-width: 350px){
+    h1{
+      font: var(--font-dm-xxl);
     }
+  }
 
-    p {
-        font-size: var(--font-line-m);
-        //color: var(--secondary-color);
-    }
+  p{
+    font: var(--font-dm-m);
+    //color: var(--secondary-color);
+  }
 }
 
 .content {
-    //padding: 20px;
-    background: rgba(17, 17, 17, 1);
-    color: var(--white);
+  //padding: 20px;
+  background: rgba(17, 17, 17, 1);
+  color: var(--white);
 }
 
 .blurLine {
-    position: absolute;
-    bottom: -10%;
-    width: 100%;
+  position: absolute;
+  bottom: -10%;
+  width: 100%;
 }
+
+
+

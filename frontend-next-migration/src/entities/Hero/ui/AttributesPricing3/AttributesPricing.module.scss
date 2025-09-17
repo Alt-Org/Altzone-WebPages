@@ -1,7 +1,8 @@
-.AttributePricing {
-    display: flex;
+.AttributePricing{
+    display:flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+   
 }
 .InlineBlock {
     margin-right: auto;
@@ -10,40 +11,38 @@
     display: inline-block;
 }
 .Header {
-    color: var(--primary-color);
-    font-weight: bold;
+    color:var(--primary-color);
+
     white-space: nowrap;
 }
 .Stats {
-    border-radius: 0.5em;
-    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: .5em;
+    background-color: rgba(0,0,0,.7);
     outline: 2px solid var(--primary-color);
-    font-weight: bolder;
     border-width: 1px;
     text-align: center;
-    font-size: 1.5em;
+    font: var(--font-dm-l);
 }
 .Dropdown {
     outline: 2px solid var(--primary-color);
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0,0,0,.7);
     color: var(--primary-color);
-    border-radius: 0.5em;
+    border-radius: .5em;
     text-align: center;
-    font-size: 1.5em;
+    font: var(--font-dm-l);
 }
 .Price {
-    font-weight: bold;
+
 }
 .Sum {
-    color: var(--primary-color);
-    font-weight: bold;
-    font-size: 2em;
+    color:var(--primary-color);
+    font: var(--font-dm-xl);
     line-height: 1em;
-    margin-top: -0.5em;
-    height: fit-content;
+    margin-top: -.5em;
+    height:fit-content;
 }
 .Value {
-    padding-left: 0.4em;
-    font-size: 1.2em;
-    padding-top: 0.3em;
+    padding-left: .4em;
+    font: var(--font-dm-m);
+    padding-top: .3em;
 }

@@ -1,10 +1,11 @@
 import { createPage } from '@/app/_helpers';
 import { getRouteDefenseGalleryPage } from '@/shared/appLinks/RoutePaths';
 import { useServerTranslation } from '@/shared/i18n';
+import defenceGalleryImage from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
-    const defenceGalleryImage = '/images/defense_gallery.png';
+
     return createPage({
         buildPage: () => ({
             SectionHeroesBlocksTitle: t('section-title'),
@@ -16,7 +17,7 @@ export async function _getPage(lng: string) {
             openGraph: {
                 images: [
                     {
-                        url: `${defenceGalleryImage}`,
+                        url: defenceGalleryImage.src,
                     },
                 ],
                 title: t('og-title'),
