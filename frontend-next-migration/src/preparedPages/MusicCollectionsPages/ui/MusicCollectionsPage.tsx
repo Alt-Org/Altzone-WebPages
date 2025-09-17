@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import cls from './MusicCollectionsPage.module.scss';
 import SearchIcon from '@/shared/assets/icons/Search.svg';
@@ -34,9 +34,20 @@ const SearchBar = (props: SearchBarProps) => {
                 onChange={(event) => onChange(event.target.value)}
                 placeholder={placeholder}
                 className={cls.Input}
+                aria-label="Search input"
             />
         </div>
     );
+};
+const useDebounce = <T,>(value: T, delay: number): T => {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+        const handler = setTimeout(() => setDebouncedValue(value), delay);
+        return () => clearTimeout(handler);
+    }, [value, delay]);
+
+    return debouncedValue;
 };
 
 const MusicCollectionsPage = () => {
@@ -44,21 +55,22 @@ const MusicCollectionsPage = () => {
     const manager = new MusicManager();
     const { isMobileSize, isTabletSize } = useSizes();
     const [searchQuery, setSearchQuery] = useState('');
+    const debouncedSearchQuery = useDebounce(searchQuery, 400);
 
     const allItems = manager.getAllCollectionsItems();
     const filteredItems = React.useMemo(() => {
         if (!allItems) return [];
 
-        if (searchQuery.trim() === '') return allItems;
+        if (debouncedSearchQuery.trim() === '') return allItems;
 
         return allItems.filter((item) => {
             // filter by music title and artist name
             return (
-                item.musicTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.artistName.toLowerCase().includes(searchQuery.toLowerCase())
+                item.musicTitle.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+                item.artistName.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
             );
         });
-    }, [allItems, searchQuery]);
+    }, [allItems, debouncedSearchQuery]);
 
     return (
         <div className={cls.Container}>
@@ -89,10 +101,10 @@ const MusicCollectionsPage = () => {
                 {filteredItems && filteredItems.length === 0 && <div>No music items found</div>}
                 {filteredItems &&
                     filteredItems.length > 0 &&
-                    filteredItems.map((item, index) => {
+                    filteredItems.map((item) => {
                         return (
                             <YoutubeVideoCard
-                                key={index}
+                                key={item.youtubeId}
                                 title={item.musicTitle}
                                 youtubeId={item.youtubeId}
                                 artist={item.artistName}
