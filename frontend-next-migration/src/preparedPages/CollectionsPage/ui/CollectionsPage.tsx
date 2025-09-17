@@ -4,8 +4,6 @@ import cls from './CollectionsPage.module.scss';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import kipu from '@/shared/assets/images/furniture/KIPU_WEB.webp';
 import music from '@/shared/assets/images/gallery/MusicCollection.png';
-import kipuMobile from '@/shared/assets/images/furniture/Kipu_mobile.png';
-import musicMobile from '@/shared/assets/images/furniture/Music_mobile.png';
 import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { CollectionsNavMenuAsDropdown } from '@/features/NavigateCollections';
@@ -39,8 +37,9 @@ const CollectionsPage = () => {
                     </DescriptionCard.Texts.Body>
                 </DescriptionCard.Texts>
                 <DescriptionCard.Image width={isSmallScreen ? '60%' : '52%'}>
+                    <DescriptionCard.Image.Triangle />
                     <DescriptionCard.Image.Image
-                        src={isSmallScreen ? kipuMobile : kipu}
+                        src={kipu}
                         alt="furniture collection"
                     />
                 </DescriptionCard.Image>
@@ -60,8 +59,9 @@ const CollectionsPage = () => {
                     </DescriptionCard.Texts.Body>
                 </DescriptionCard.Texts>
                 <DescriptionCard.Image width={isSmallScreen ? '60%' : '52%'}>
+                    <DescriptionCard.Image.Triangle />
                     <DescriptionCard.Image.Image
-                        src={isSmallScreen ? musicMobile : music}
+                        src={music}
                         alt="music collection"
                     />
                 </DescriptionCard.Image>

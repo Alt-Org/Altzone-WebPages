@@ -222,6 +222,7 @@
     font-family: var(--body-font);
     text-wrap: nowrap;
     min-width: 0;
+    z-index: 2;
 }
 
 .Card.CollectionsCard > .DescriptionCardTexts > .DescriptionCardTitle {
@@ -265,15 +266,36 @@
         100% 100%, // bottom right
         20% 100%   // bottom left
     );
-    @media (max-width:breakpoint(md)) {
+}
+
+:global(.FurnitureCard).Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+    @media (max-width:breakpoint(lg)) {
+        width: 170% !important;
+        height: 170% !important;
+        object-fit: cover !important;
+        object-position: left 30% !important;
+        top: -50% !important;
+        left: 0 !important;
+        clip-path: none;
+    }
+}
+
+:global(.MusicCard).Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+    @media (max-width:breakpoint(lg)) {
         object-fit: cover !important;
         object-position: 85% center !important;
         left: 0 !important;
-        clip-path: polygon(
-            0% 0%,   // top left
-            100% 0%,  // top right
-            100% 100%, // bottom right
-            60% 100%   // bottom left
-        );
+        clip-path: none;
+    }
+}
+
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    @media (max-width:breakpoint(lg)) {
+        border-bottom: 153px solid var(--background);
+        border-right: 105px solid transparent;
+        z-index: 1;
     }
 }
