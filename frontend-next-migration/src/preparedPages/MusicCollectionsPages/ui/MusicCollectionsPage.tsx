@@ -98,7 +98,9 @@ const MusicCollectionsPage = () => {
             )}
             <NavigationRow />
             <div className={cls.DesktopCardContainer}>
-                {filteredItems && filteredItems.length === 0 && <div>No music items found</div>}
+                {filteredItems && filteredItems.length === 0 && (
+                    <div>{t('no-music-items-found')}</div>
+                )}
                 {filteredItems &&
                     filteredItems.length > 0 &&
                     filteredItems.map((item) => {

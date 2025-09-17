@@ -11,6 +11,7 @@
   "jukebox-title": "Jukebox",
   "battle-title": "Battle",
   "all-title": "Kaikki",
+  "no-music-items-found": "Musiikkikohteita ei löytynyt",
 
   "back-button": "Takaisin",
   "sort-placeholder": "Järjestä..."

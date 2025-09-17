@@ -1,11 +1,19 @@
 .Container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2.5em;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
+
+    @media (max-width: breakpoint(xl)) {
+        gap: 1.5em
+    }
+
+    @media (max-width: breakpoint(md)) {
+        gap: 0.5em
+    }
 }
 
 .DesktopCardContainer {
@@ -17,7 +25,11 @@
 }   
 
 .NavMenu {
-    margin-top: 7em;
+    margin-top: 8.5em;
+
+    @media (max-width: breakpoint(xl)) {
+        margin-top: 7.25em;
+    }
 }
 
 .TitleSearchBarContainer {

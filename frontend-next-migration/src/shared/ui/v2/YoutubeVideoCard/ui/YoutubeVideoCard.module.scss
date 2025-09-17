@@ -9,9 +9,15 @@
     border: 4px solid var(--black);
     box-shadow: 4px 8px 0px var(--black);
     border-radius: 8px;
+    text-align: center;
+
+    @media (max-width: breakpoint(md)) {
+        width: 100%;
+    }
 }
 
 .IframeWrapper {
+    flex-grow: 1;
     width: 100%;
     aspect-ratio: 25 / 10; 
     background: #121212;
@@ -27,20 +33,19 @@
 }
 
 .TextContainer {
+    flex-grow: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: var(--font-size-xl);
-    gap: 0.25em;
-    padding: 0.75em 0.125em;
+    justify-content: center;
+    font-size: var(--font-size-l);
+    gap: 0.125em;
+    padding: 0.5em 0.125em;
 
     @media (max-width: breakpoint(xxl)) {
-        font-size: var(--font-size-l); // 24px
+        font-size: var(--font-size-m);
         gap: 0;
-    }
-
-    @media (max-width: breakpoint(md)) {
-        font-size: var(--font-size-m); // 16px
     }
 }
 
