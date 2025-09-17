@@ -11,7 +11,7 @@
     border-radius: 8px;
     text-align: center;
 
-    @media (max-width: breakpoint(md)) {
+    @media (max-width: breakpoint(sm)) {
         width: 100%;
     }
 }
