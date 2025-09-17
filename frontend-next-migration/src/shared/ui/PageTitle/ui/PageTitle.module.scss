@@ -38,6 +38,12 @@
         font-size: var(--h2-size-desktop);
         font-weight: 100;
     }
+
+    @media (max-width: breakpoint(sm)) {
+        h1 {
+            font-size: var(--h3-size-desktop);
+        }
+    }
 }
 
 .SearchContainer {
