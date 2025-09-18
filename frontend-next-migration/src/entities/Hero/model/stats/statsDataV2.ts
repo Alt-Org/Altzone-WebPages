@@ -42,6 +42,7 @@ type NamedStatArray = {
     [key: string]: Stat[];
 };
 
+/* stats data */
 export const statData: NamedStatArray = {
     OVEREATER: [
         {
