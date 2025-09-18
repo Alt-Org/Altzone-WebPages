@@ -27,7 +27,7 @@ jobs:
 
       - name: Lint
         run: npm run lint
-        working-directory: pages/frontend
+        working-directory: ./frontend-next-migration
 
       - name: Build
         run: npm run build
