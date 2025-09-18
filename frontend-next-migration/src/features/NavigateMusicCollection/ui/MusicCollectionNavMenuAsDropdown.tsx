@@ -10,6 +10,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useParams, usePathname } from 'next/navigation';
 import { getRouteAllMusicCollectionsPage } from '@/shared/appLinks/RoutePaths';
+import cls from './MusicCollectionNavMenuAsDropdown.module.scss';
 
 interface MusicCollectionNavMenuAsDropdown {
     className?: string;
@@ -53,6 +54,7 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
         dropdownItems: dropdownItems,
         openByDefault: true,
         className: className,
+        customActiveClassName: cls.ActiveItem,
     };
 
     const navMenuWithDropdownsDesktopProps: NavMenuWithDropdownsProps = {
@@ -61,6 +63,7 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
         openByDefault: true,
         staticDropdown: true,
         className: className,
+        customActiveClassName: cls.ActiveItem,
     };
 
     return isMobileSize || isTabletSize ? (

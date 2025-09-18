@@ -8,8 +8,14 @@
     background-color: var(--background);
     border: 4px solid var(--black);
     box-shadow: 4px 8px 0px var(--black);
-    border-radius: 8px;
+    border-radius: var(--border-radius-md);;
     text-align: center;
+
+    @media (max-width: breakpoint(md)) {
+        border: 2px solid var(--black);
+        box-shadow: 2px 4px 0px var(--black);
+        border-radius: var(--border-radius-sm);
+    }
 
     @media (max-width: breakpoint(sm)) {
         width: 100%;

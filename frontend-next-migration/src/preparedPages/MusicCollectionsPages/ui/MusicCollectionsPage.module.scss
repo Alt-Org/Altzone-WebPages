@@ -22,13 +22,14 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 40px;
+    margin-top: 1em;
 }   
 
 .NavMenu {
-    margin-top: 8.5em;
+    margin-top: 9.35em;
 
     @media (max-width: breakpoint(xl)) {
-        margin-top: 7.25em;
+        margin-top: 7.95em;
     }
 }
 
