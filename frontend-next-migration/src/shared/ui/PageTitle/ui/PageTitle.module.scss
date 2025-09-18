@@ -2,7 +2,7 @@
 .PageTitleContainer {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 1.0rem;
+    margin-bottom: 1rem;
     padding-right: 1.5rem;
 }
 
@@ -55,7 +55,6 @@
 }
 
 @media (max-width: breakpoint(lg)) {
-
     /* Pagetitle */
     .PageTitleContainer {
         display: block;

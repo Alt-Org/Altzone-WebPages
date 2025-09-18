@@ -22,6 +22,8 @@ jest.mock('@/shared/ui/DropdownWrapper', () => ({
     DropdownWrapper: ({ children }) => <div>{children}</div>,
 }));
 
+const noop = () => {};
+
 describe('SidebarItem', () => {
     it('renders a basic sidebar item correctly', () => {
         const item: ISidebarItemBasic = {
@@ -33,6 +35,8 @@ describe('SidebarItem', () => {
             <SidebarItem
                 item={item}
                 collapsed={false}
+                openDropdown={null}
+                setOpenDropdown={noop}
             />,
         );
         // Check that the element renders
@@ -53,6 +57,8 @@ describe('SidebarItem', () => {
             <SidebarItem
                 item={item}
                 collapsed={true}
+                openDropdown={null}
+                setOpenDropdown={noop}
             />,
         );
 
@@ -74,6 +80,8 @@ describe('SidebarItem', () => {
             <SidebarItem
                 item={item}
                 collapsed={false}
+                openDropdown={null}
+                setOpenDropdown={noop}
             />,
         );
 

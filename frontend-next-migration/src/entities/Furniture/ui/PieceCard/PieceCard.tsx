@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Piece } from '../../types/furniture';
+import type { Piece } from '../../types/furniture';
 import PieceView from '../PieceView/PieceView';
 import cls from './PieceCard.module.scss';
 import { FurnitureManager } from '../../model/FurnitureManager';
@@ -12,31 +12,35 @@ type Props = {
     item: Piece;
 };
 
-export const PieceCard = (props: Props) => {
-    const { item } = props;
-    const { path, rarity, cover, set, num } = item;
+type InnerProps = {
+    item: Piece;
+    set: NonNullable<Piece['set']>;
+};
 
-    if (!set) {
-        return null;
-    }
+export const PieceCard = ({ item }: Props) => {
+    if (!item.set) return null;
+    return (
+        <PieceCardInner
+            item={item}
+            set={item.set}
+        />
+    );
+};
 
+const PieceCardInner = ({ item, set }: InnerProps) => {
+    const { t } = useClientTranslation('furnitureinfo');
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    const { path, rarity, cover, num } = item;
     const { coverposition, path: setpath } = set;
     const { color, lightcolor, darkcolor } = rarity;
 
-    const { t } = useClientTranslation('furnitureinfo');
     const tmanager = new FurnitureManager();
     const setTranslations = tmanager.getSetTranslation(t, setpath);
     const pieceTranslations = tmanager.getPieceTranslation(setTranslations, path);
 
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-    const handleOpenDialog = () => {
-        setIsDialogOpen(true);
-    };
-
-    const handleCloseDialog = () => {
-        setIsDialogOpen(false);
-    };
+    const handleOpenDialog = () => setIsDialogOpen(true);
+    const handleCloseDialog = () => setIsDialogOpen(false);
 
     const renderCard = (isStatic: boolean) => (
         <div className={isStatic ? cls.StaticCard : cls.Card}>

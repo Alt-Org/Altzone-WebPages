@@ -38,7 +38,9 @@ describe('LangSwitcher', () => {
         render(<LangSwitcher />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
+        const toggle = langSwitcher.querySelector('[aria-haspopup="true"]') as HTMLElement | null;
+        if (!toggle) throw new Error('Language toggle not found');
+        fireEvent.click(toggle);
 
         const finnishOption = screen.getByRole('option', { name: 'FIN' });
         fireEvent.click(finnishOption);
@@ -55,7 +57,9 @@ describe('LangSwitcher', () => {
         render(<LangSwitcher />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
+        const toggle = langSwitcher.querySelector('[aria-haspopup="true"]') as HTMLElement | null;
+        if (!toggle) throw new Error('Language toggle not found');
+        fireEvent.click(toggle);
 
         const englishOption = screen.getByRole('option', { name: 'ENG' });
         fireEvent.click(englishOption);
@@ -69,9 +73,9 @@ describe('LangSwitcher', () => {
     //         t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
     //         i18n: { language: 'es' },
     //     });
-
+    //
     //     render(<LangSwitcher />);
-
+    //
     //     const langDisplay = screen.getByText('FIN');
     //     expect(langDisplay).toBeInTheDocument();
     // });
@@ -80,7 +84,9 @@ describe('LangSwitcher', () => {
         render(<LangSwitcher />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
+        const toggle = langSwitcher.querySelector('[aria-haspopup="true"]') as HTMLElement | null;
+        if (!toggle) throw new Error('Language toggle not found');
+        fireEvent.click(toggle);
 
         const options = screen.getAllByRole('option');
         expect(options).toHaveLength(2);

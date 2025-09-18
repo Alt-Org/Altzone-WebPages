@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import cls from './ContactSection.module.scss';
 import { Container } from '@/shared/ui/Container';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import ContactImg from '@/shared/assets/images/Orang_hero.webp';
 
 export type Props = {
@@ -13,7 +12,7 @@ export type Props = {
 };
 
 export const ContactSection = (props: Props) => {
-    const { backgroundImageSrc, googlePLayLink, linkText, title } = props;
+    const { googlePLayLink, linkText, title } = props;
     return (
         <Container
             as={'section'}

@@ -1,4 +1,4 @@
-.title{
+.title {
     color: var(--primary-color);
 }
 
@@ -16,15 +16,13 @@
     }
 }
 
-
-.categoryButton{
+.categoryButton {
     border-radius: 4px;
     background-color: black;
     border: 2px solid black;
 
-
-     &.active{
-     border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-}
+    &.active {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+    }
 }
