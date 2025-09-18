@@ -20,6 +20,12 @@
         color: var(--primary-color);
         font: var(--font-sw-5xl);
     }
+
+    @media (max-width: breakpoint(lg)) {
+        h1 {
+            font: var(--font-sw-xxxl);
+        }
+    }
 }
 
 .PageTitleAlt {
@@ -29,6 +35,12 @@
     h1 {
         color: var(--primary-color);
         font: var(--font-sw-5xl);
+    }
+
+    @media (max-width: breakpoint(lg)) {
+        h1 {
+            font: var(--font-sw-xxxl);
+        }
     }
 }
 
