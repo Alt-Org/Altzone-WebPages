@@ -1,4 +1,4 @@
-import { Stat } from '../../types/hero';
+import { Stat } from '@/entities/Hero';
 
 type NamedStatArray = {
     [key: string]: Stat[];
@@ -140,7 +140,7 @@ export const statData2: NamedStatArray = {
             rarityClass: 10,
         },
     ],
-    SCAPEGOEATER: [
+    SCAPEGOATER: [
         {
             name: 'resistance',
             defaultLevel: 5,
@@ -167,7 +167,7 @@ export const statData2: NamedStatArray = {
             rarityClass: 5,
         },
     ],
-    WISEAGRE: [
+    WISEACRE: [
         {
             name: 'resistance',
             defaultLevel: 3,
