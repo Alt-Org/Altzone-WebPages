@@ -1,6 +1,6 @@
-'use client';
-import { withMetadataGenerator } from '@/app/_helpers';
-
 export { MyClanPage as default } from '@/preparedPages/ClanPages';
 
-// export const generateMetadata = withMetadataGenerator(_getPage);
+import { withMetadataGenerator } from '@/app/_helpers';
+import { _getPage } from '../_getPage';
+
+export const generateMetadata = withMetadataGenerator(_getPage);

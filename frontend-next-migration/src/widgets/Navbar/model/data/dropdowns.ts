@@ -2,7 +2,6 @@ import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import {
     getRouteHeroDevPage,
     getRouteMyClanPage,
-    getRouteClanLeadeboardPage,
     getRouteComicsPage,
     getRouteGalleryPage,
     getRouteGameArtPage,
@@ -13,7 +12,6 @@ import {
     getRouteJoinUsPage,
     getRouteAboutPage,
 } from '@/shared/appLinks/RoutePaths';
-import { isExternal } from 'util/types';
 
 export const dropdowns = {
     community: [

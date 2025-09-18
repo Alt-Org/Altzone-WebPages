@@ -17,7 +17,7 @@ export const EmbedSocialMediaPosts = ({ posts }: PostProps) => {
 
     return (
         <div className={cls.Wrapper}>
-            {links.map((l, index) => (
+            {links.map((link, index) => (
                 <div
                     key={index}
                     className={cls.Container}
@@ -25,7 +25,7 @@ export const EmbedSocialMediaPosts = ({ posts }: PostProps) => {
                     <iframe
                         className={cls.Iframe}
                         title="Embedded post"
-                        src={l}
+                        src={link}
                         style={{ width: 350, height: 400 }}
                     />
                 </div>

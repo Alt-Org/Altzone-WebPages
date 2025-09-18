@@ -7,21 +7,29 @@ export const color = {
     impactForce: 'rgb(255,153,0)',
     speed: 'rgb(0,255,255)',
 };
+
+const rangeByStep = (start: number, step: number, count: number): number[] =>
+    Array.from({ length: count }, (_, i) => start + i * step);
+
+const repeatSeq = (pairs: Array<[number, number]>): number[] =>
+    pairs.flatMap(([val, times]) => Array(times).fill(val));
+
+const sizeSpeedSeq = repeatSeq([
+    [4, 3],
+    [6, 3],
+    [8, 4],
+    [10, 4],
+    [12, 4],
+    [14, 3],
+    [16, 3],
+]);
+
 export const statValue = {
-    resistance: [
-        50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500,
-        525, 550, 575, 600, 625,
-    ],
-    hp: [
-        50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500,
-        525, 550, 575, 600, 625,
-    ],
-    size: [4, 4, 4, 6, 6, 6, 8, 8, 8, 8, 10, 10, 10, 10, 12, 12, 12, 12, 14, 14, 14, 16, 16, 16],
-    impactForce: [
-        5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190,
-        200, 210, 220, 230,
-    ],
-    speed: [4, 4, 4, 6, 6, 6, 8, 8, 8, 8, 10, 10, 10, 10, 12, 12, 12, 12, 14, 14, 14, 16, 16, 16],
+    resistance: rangeByStep(50, 25, 24),
+    hp: rangeByStep(50, 25, 24),
+    size: sizeSpeedSeq,
+    impactForce: [5, ...rangeByStep(10, 10, 23)],
+    speed: sizeSpeedSeq,
 };
 
 type RarityClass = {
@@ -38,360 +46,104 @@ export const rarityClassNames: RarityClass = {
     10: 'veryWeakSkill',
 };
 
-type NamedStatArray = {
-    [key: string]: Stat[];
-};
+type NamedStatArray = Record<string, Stat[]>;
+
+const mkStat = (name: Stat['name'], defaultLevel: number, rarityClass: number): Stat => ({
+    name,
+    defaultLevel,
+    rarityClass,
+});
 
 export const statData: NamedStatArray = {
     OVEREATER: [
-        {
-            name: 'resistance',
-            defaultLevel: 5,
-            rarityClass: 3,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 2,
-            rarityClass: 3,
-        },
-        {
-            name: 'size',
-            defaultLevel: 12,
-            rarityClass: 1,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 8,
-            rarityClass: 3,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 8,
-            rarityClass: 3,
-        },
+        mkStat('resistance', 5, 3),
+        mkStat('hp', 2, 3),
+        mkStat('size', 12, 1),
+        mkStat('impactForce', 8, 3),
+        mkStat('speed', 8, 3),
     ],
     ALCOHOLIC: [
-        {
-            name: 'resistance',
-            defaultLevel: 8,
-            rarityClass: 3,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 1,
-            rarityClass: 3,
-        },
-        {
-            name: 'size',
-            defaultLevel: 10,
-            rarityClass: 1,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 9,
-            rarityClass: 3,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 8,
-            rarityClass: 3,
-        },
+        mkStat('resistance', 8, 3),
+        mkStat('hp', 1, 3),
+        mkStat('size', 10, 1),
+        mkStat('impactForce', 9, 3),
+        mkStat('speed', 8, 3),
     ],
     SOUL_SISTERS: [
-        {
-            name: 'resistance',
-            defaultLevel: 11,
-            rarityClass: 3,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 2,
-            rarityClass: 8,
-        },
-        {
-            name: 'size',
-            defaultLevel: 12,
-            rarityClass: 3,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 2,
-            rarityClass: 10,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 2,
-            rarityClass: 10,
-        },
+        mkStat('resistance', 11, 3),
+        mkStat('hp', 2, 8),
+        mkStat('size', 12, 3),
+        mkStat('impactForce', 2, 10),
+        mkStat('speed', 2, 10),
     ],
     SLEEPY_SLEEPER: [
-        {
-            name: 'resistance',
-            defaultLevel: 12,
-            rarityClass: 3,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 3,
-            rarityClass: 8,
-        },
-        {
-            name: 'size',
-            defaultLevel: 10,
-            rarityClass: 3,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 1,
-            rarityClass: 10,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 4,
-            rarityClass: 10,
-        },
+        mkStat('resistance', 12, 3),
+        mkStat('hp', 3, 8),
+        mkStat('size', 10, 3),
+        mkStat('impactForce', 1, 10),
+        mkStat('speed', 4, 10),
     ],
     PROVOCATEUR: [
-        {
-            name: 'resistance',
-            defaultLevel: 10,
-            rarityClass: 5,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 3,
-            rarityClass: 7,
-        },
-        {
-            name: 'size',
-            defaultLevel: 8,
-            rarityClass: 7,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 7,
-            rarityClass: 7,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 4,
-            rarityClass: 5,
-        },
+        mkStat('resistance', 10, 5),
+        mkStat('hp', 3, 7),
+        mkStat('size', 8, 7),
+        mkStat('impactForce', 7, 7),
+        mkStat('speed', 4, 5),
     ],
     MIRROR: [
-        {
-            name: 'resistance',
-            defaultLevel: 10,
-            rarityClass: 5,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 3,
-            rarityClass: 7,
-        },
-        {
-            name: 'size',
-            defaultLevel: 8,
-            rarityClass: 7,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 7,
-            rarityClass: 7,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 4,
-            rarityClass: 5,
-        },
+        mkStat('resistance', 10, 5),
+        mkStat('hp', 3, 7),
+        mkStat('size', 8, 7),
+        mkStat('impactForce', 7, 7),
+        mkStat('speed', 4, 5),
     ],
     RESEARCHER: [
-        {
-            name: 'resistance',
-            defaultLevel: 3,
-            rarityClass: 7,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 8,
-            rarityClass: 5,
-        },
-        {
-            name: 'size',
-            defaultLevel: 8,
-            rarityClass: 8,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 10,
-            rarityClass: 10,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 6,
-            rarityClass: 7,
-        },
+        mkStat('resistance', 3, 7),
+        mkStat('hp', 8, 5),
+        mkStat('size', 8, 8),
+        mkStat('impactForce', 10, 10),
+        mkStat('speed', 6, 7),
     ],
     CONMAN: [
-        {
-            name: 'resistance',
-            defaultLevel: 5,
-            rarityClass: 8,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 2,
-            rarityClass: 3,
-        },
-        {
-            name: 'size',
-            defaultLevel: 6,
-            rarityClass: 10,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 7,
-            rarityClass: 7,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 10,
-            rarityClass: 8,
-        },
+        mkStat('resistance', 5, 8),
+        mkStat('hp', 2, 3),
+        mkStat('size', 6, 10),
+        mkStat('impactForce', 7, 7),
+        mkStat('speed', 10, 8),
     ],
     JOKESTER: [
-        {
-            name: 'resistance',
-            defaultLevel: 5,
-            rarityClass: 8,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 2,
-            rarityClass: 3,
-        },
-        {
-            name: 'size',
-            defaultLevel: 6,
-            rarityClass: 10,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 7,
-            rarityClass: 7,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 10,
-            rarityClass: 8,
-        },
+        mkStat('resistance', 5, 8),
+        mkStat('hp', 2, 3),
+        mkStat('size', 6, 10),
+        mkStat('impactForce', 7, 7),
+        mkStat('speed', 10, 8),
     ],
     BELIEVER: [
-        {
-            name: 'resistance',
-            defaultLevel: 10,
-            rarityClass: 3,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 10,
-            rarityClass: 3,
-        },
-        {
-            name: 'size',
-            defaultLevel: 10,
-            rarityClass: 1,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 10,
-            rarityClass: 3,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 10,
-            rarityClass: 3,
-        },
+        mkStat('resistance', 10, 3),
+        mkStat('hp', 10, 3),
+        mkStat('size', 10, 1),
+        mkStat('impactForce', 10, 3),
+        mkStat('speed', 10, 3),
     ],
     HATE_SPEECH: [
-        {
-            name: 'resistance',
-            defaultLevel: 14,
-            rarityClass: 1,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 1,
-            rarityClass: 10,
-        },
-        {
-            name: 'size',
-            defaultLevel: 8,
-            rarityClass: 5,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 6,
-            rarityClass: 3,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 3,
-            rarityClass: 8,
-        },
+        mkStat('resistance', 14, 1),
+        mkStat('hp', 1, 10),
+        mkStat('size', 8, 5),
+        mkStat('impactForce', 6, 3),
+        mkStat('speed', 3, 8),
     ],
     MEATWALL: [
-        {
-            name: 'resistance',
-            defaultLevel: 14,
-            rarityClass: 1,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 1,
-            rarityClass: 10,
-        },
-        {
-            name: 'size',
-            defaultLevel: 8,
-            rarityClass: 5,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 6,
-            rarityClass: 3,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 3,
-            rarityClass: 8,
-        },
+        mkStat('resistance', 14, 1),
+        mkStat('hp', 1, 10),
+        mkStat('size', 8, 5),
+        mkStat('impactForce', 6, 3),
+        mkStat('speed', 3, 8),
     ],
     VETERAN: [
-        {
-            name: 'resistance',
-            defaultLevel: 14,
-            rarityClass: 1,
-        },
-        {
-            name: 'hp',
-            defaultLevel: 1,
-            rarityClass: 10,
-        },
-        {
-            name: 'size',
-            defaultLevel: 8,
-            rarityClass: 5,
-        },
-        {
-            name: 'impactForce',
-            defaultLevel: 6,
-            rarityClass: 3,
-        },
-        {
-            name: 'speed',
-            defaultLevel: 3,
-            rarityClass: 8,
-        },
+        mkStat('resistance', 14, 1),
+        mkStat('hp', 1, 10),
+        mkStat('size', 8, 5),
+        mkStat('impactForce', 6, 3),
+        mkStat('speed', 3, 8),
     ],
 };

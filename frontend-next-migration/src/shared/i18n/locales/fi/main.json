@@ -15,7 +15,7 @@
     "main-sub-description": "Seikkaile sielujemme labyrintissa \nPystytkö kohtaamaan defenssisi?",
 
     "project-description-title": "Mitä on Alt Zone?",
-"project-description-text": "ALT Zone 1.0 on vapaaehtoistuotantona toteuttava taidemobiilipeli, jota tehdään yhteistyössä nuorten kanssa. Pelissä ihmisen suojautumismekanismit kohtaavat toisensa vuorovaikutustilanteiden taistelukentällä.\n\nPelin oheen luodaan yläasteille ja toisen asteen oppilaitoksille suunnattu pelitaidekasvatuksen materiaali, jota opettaja voi helposti soveltaa käytännössä. Oppilailla on mahdollisuus jatkaa pelin kehittämistä. Ideoiden pohjalta valmistuva ALT Zone 2.0 -pelin tuotto lahjoitetaan lyhentämättömänä nuorten unelmien tukemiseksi.",
+    "project-description-text": "ALT Zone 1.0 on vapaaehtoistuotantona toteuttava taidemobiilipeli, jota tehdään yhteistyössä nuorten kanssa. Pelissä ihmisen suojautumismekanismit kohtaavat toisensa vuorovaikutustilanteiden taistelukentällä.\n\nPelin oheen luodaan yläasteille ja toisen asteen oppilaitoksille suunnattu pelitaidekasvatuksen materiaali, jota opettaja voi helposti soveltaa käytännössä. Oppilailla on mahdollisuus jatkaa pelin kehittämistä. Ideoiden pohjalta valmistuva ALT Zone 2.0 -pelin tuotto lahjoitetaan lyhentämättömänä nuorten unelmien tukemiseksi.",
     "project-description-array": [
         "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa.",
         "ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle. Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla.",
@@ -47,5 +47,4 @@
     "contact-linkText": "Ota yhteyttä",
 
     "newsSection-title": "Alt Uutiset"
-
 }

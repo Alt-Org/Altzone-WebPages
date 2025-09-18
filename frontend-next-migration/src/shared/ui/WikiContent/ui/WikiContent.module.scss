@@ -23,7 +23,7 @@
   box-shadow: 10px 10px #121212;
 
   h2 {
-    font: var(--font-sw-xxxl) !important;
+    font: var(--font-sw-xl) !important;
     text-align: left;
     color: var(--primary-color);
     margin-bottom: 0.5em;
@@ -32,6 +32,12 @@
   p {
     font: var(--font-dm-m);
   }
+
+  @media (max-width: breakpoint(lg)) {
+    h2 {
+      text-align: center;
+    }
+  }
 }
 
 .divider {
@@ -39,12 +45,12 @@
   grid-template-columns: 75% 25%;
 
   @media (max-width: breakpoint(md)) {
-      display: inline;
-    }
+    display: inline;
+  }
 
-    @media (max-width: breakpoint(sm)) {
-      display: inline;
-    }
+  @media (max-width: breakpoint(sm)) {
+    display: inline;
+  }
 }
 
 .sectionImage {

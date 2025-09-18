@@ -7,7 +7,7 @@ interface LayoutDefaultProps {
 }
 
 const LayoutDefault = (props: LayoutDefaultProps) => {
-    const { children, marginTop = '24vh' } = props;
+    const { children, marginTop = '20vh' } = props;
 
     return <div style={{ marginTop }}>{children}</div>;
 };
