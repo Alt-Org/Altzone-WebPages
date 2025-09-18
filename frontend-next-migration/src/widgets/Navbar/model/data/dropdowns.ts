@@ -8,6 +8,7 @@ import {
     getRouteDefenseGalleryPage,
     getRouteAllClanSearchPage,
     getRouteAllFurnitureSetsPage,
+    getRouteAllCollectionsPage,
     getRouteJoinUsPage,
     getRouteAboutPage,
 } from '@/shared/appLinks/RoutePaths';
@@ -100,9 +101,9 @@ export const dropdowns = {
             },
         },
         {
-            elementText: 'furnituresets',
+            elementText: 'collections',
             link: {
-                path: getRouteAllFurnitureSetsPage(),
+                path: getRouteAllCollectionsPage(),
                 isExternal: false,
             },
             isDisabled: {
