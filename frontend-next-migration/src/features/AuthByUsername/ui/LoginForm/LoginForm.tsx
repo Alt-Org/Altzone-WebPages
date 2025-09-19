@@ -47,6 +47,7 @@ const LoginForm = (props: LoginFormProps) => {
                             required: true,
                             placeholder: t('password'),
                         }}
+                        showPasswordToggle={true}
                     />
                 </>
             }

@@ -27,7 +27,7 @@ const RegisterForm = (props: RegisterFormProps) => {
                         inputProps={{
                             ...register('username'),
                             required: true,
-                            placeholder: t('password_again'),
+                            placeholder: t('username'),
                         }}
                     />
 
@@ -41,6 +41,7 @@ const RegisterForm = (props: RegisterFormProps) => {
                             required: true,
                             placeholder: t('password'),
                         }}
+                        showPasswordToggle={true}
                     />
                     <BaseAuthForm.InputField
                         key={'repeatPassword'}
@@ -54,6 +55,7 @@ const RegisterForm = (props: RegisterFormProps) => {
                             required: true,
                             placeholder: t('password_again'),
                         }}
+                        showPasswordToggle={true}
                     />
                     <BaseAuthForm.Checkbox
                         key={'ageConsent'}
