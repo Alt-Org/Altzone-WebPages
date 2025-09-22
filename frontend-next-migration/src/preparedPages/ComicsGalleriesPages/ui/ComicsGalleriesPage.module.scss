@@ -1,22 +1,16 @@
-
 .Wrapper {
   display: flex;
   flex-direction: column;
-  //min-height: 80vh;
   padding-top: 130px;
   padding-bottom: 130px;
-
   position: relative;
-
 }
 
-
-.Container{
+.Container {
   flex-grow: 1;
   border-radius: var(--border-radius-custom);
-  //background-color: var(--transparent-bg-dark);
 
-  h2{
+  h2 {
     font-size: clamp(40px, 7vw, 50px);
     line-height: 1.5;
     font-weight: normal;
@@ -25,14 +19,31 @@
     color: var(--primary-color);
     font-family: var(--font-family-title);
     font-size: var(--h2-size-desktop);
-    margin-right: 350px;
+    margin-right: 350px; // ✅ desktop only
   }
-
 }
 
-.galleries{
+.galleries {
   display: flex;
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* ========================= */
+/* 📱 Mobile adjustments */
+/* ========================= */
+@media (max-width: 768px) {
+  .Wrapper {
+    padding-top: 10px;   // less padding on top
+    padding-bottom: 90px;
+  }
+
+  .Container {
+    h2 {
+      margin-right: 0;   // fix centering
+      font-size: var(--h2-size-desktop);
+      margin-bottom: 20px;
+    }
+  }
 }
