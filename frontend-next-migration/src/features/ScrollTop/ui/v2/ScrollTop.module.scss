@@ -7,7 +7,6 @@
     --border-mobile: 3px;
     --h1-size-mobile: 32px;
 
-
     color: var(--black);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-custom);
@@ -28,10 +27,10 @@
     touch-action: manipulation;
 
     transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            opacity 0.2s ease-in-out,
-            visibility 0.2s ease-in-out;
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out;
 
     &:hover {
         background-color: var(--primary-color-variant-hover);

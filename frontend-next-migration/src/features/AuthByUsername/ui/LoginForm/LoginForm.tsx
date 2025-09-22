@@ -16,7 +16,7 @@ const LoginForm = (props: LoginFormProps) => {
     const {
         toRegisterPage,
         onSuccessLogin = function () {},
-        toForgottenPwPage = '',
+        toForgottenPwPage: _toForgottenPwPage = '',
         extraContent,
     } = props;
 

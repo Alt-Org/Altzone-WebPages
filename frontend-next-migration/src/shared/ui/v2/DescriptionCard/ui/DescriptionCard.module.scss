@@ -13,6 +13,7 @@
     --border-desktop: 4px;
     --border-mobile: 2px;
     --primary-color: #FFA100;
+    --primary-border: #FFA100;
     --background: #1E3544;
     --white: #FAF9F6;
     --black: #121212;
@@ -20,15 +21,15 @@
 
 
 .withScalableLink {
-
     .DescriptionCardTexts {
         transition: all ease-in-out;
-        transition-duration: 0.7s;
+        transition-duration: 0.3s;
     }
     &:hover {
         .DescriptionCardTexts {
-            flex-basis: 30% !important;
+            flex-basis: 40% !important;
         }
+        border-color: var(--primary-border);
     }
 }
 
@@ -55,8 +56,7 @@
     justify-content: center;
     padding-left: 1em;
     padding-right:.5em;
-    font-size: .8em;
-    font-family: var(--body-font);
+    font: var(--font-dm-s);
 }
 
 .Card.DefenseGalleryCard > .DescriptionCardTexts > .DescriptionCardTitle {
@@ -65,14 +65,12 @@
     margin-top: .3em;
     margin-bottom: .3em;
     h2 {
-        font-family:var(--font-family-title);
-        font-weight: 400;
-        font-size:var((--h1-size-mobile));
+        font:var(--font-sw-xl);
         color:var(--primary-color);
     }
     @media (max-width:breakpoint(md)) {
         h2 {
-            font-size:var(--h2-size-mobile);
+            font:var(--font-sw-l);
         }
     }
 }
@@ -105,5 +103,206 @@
     @media (max-width:breakpoint(md)) {
         border-bottom: 152px solid var(--background);
         border-right: 85px solid transparent;
+    }
+}
+//FurnitureCollectionCard
+.Card.FurnitureCollectionCard {
+    height: 220px !important;  //remember to update .DescriptionCardTriangle bottom-border
+    position: relative;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 4px 8px 0 var(--black);
+    transition: border-color 0.3s ease-in-out;
+    &:hover {
+        border-color: var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        height:160px !important;
+        box-shadow: 2px 4px 0 var(--black);
+    }
+}
+
+.Card.FurnitureCollectionCard > .DescriptionCardTexts {
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1em;
+    padding-right:.5em;
+    font-size: .8em;
+    color: var(--white);
+    font-family: var(--body-font);
+}
+
+.Card.FurnitureCollectionCard > .DescriptionCardTexts > .DescriptionCardTitle {
+    padding-left:0 !important;
+    padding-right:0 !important;
+
+    margin-top: .3em;
+    margin-bottom: .3em;
+    h2 {
+        font-family:var(--font-family-title);
+        font-weight: 400;
+        font-size:var((--h1-size-mobile));
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            font-size:var(--h2-size-mobile);
+        }
+    }
+}
+
+.Card.FurnitureCollectionCard > .DescriptionCardImageSection > .DescriptionCardScaledImageContainer {
+    margin-right: auto;
+    position: relative;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.Card.FurnitureCollectionCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer {
+    position: relative;
+    height: 100%;
+}
+.Card.FurnitureCollectionCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-position: left !important;
+}
+.Card.FurnitureCollectionCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    border-bottom: 212px solid var(--background);
+    border-right: 71px solid transparent;
+    @media (max-width:breakpoint(md)) {
+        border-bottom: 222px solid var(--background);
+        border-right: 85px solid transparent;
+    }
+}
+
+// CollectionsCard
+.Card.CollectionsCard {
+    aspect-ratio: 1626/289;
+    height: auto !important;
+    position: relative;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 4px 4px 0 var(--black);
+    transition: border-color 0.3s ease-in-out;
+    &:hover {
+        border-color: var(--primary-color);
+    }
+    @media (max-width:breakpoint(lg)) {
+        aspect-ratio: 328/160;
+        height: 160px !important;
+        box-shadow: 2px 2px 0 var(--black);
+    }
+}
+
+.Card.CollectionsCard > .DescriptionCardTexts {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    justify-content: center;
+    padding-left: 1em;
+    padding-right:0;
+    font-size: .8em;
+    font-family: var(--body-font);
+    text-wrap: nowrap;
+    min-width: 0;
+    z-index: 2;
+}
+
+.Card.CollectionsCard > .DescriptionCardTexts > .DescriptionCardTitle {
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-top: .3em;
+    margin-bottom: .3em;
+    h2 {
+        font-family:var(--font-family-title);
+        font-weight: 400;
+        font-size:var((--h1-size-mobile));
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(lg)) {
+        h2 {
+            font-size:var(--h2-size-mobile);
+        }
+    }
+}
+
+.Card.CollectionsCard > .DescriptionCardImageSection {
+    flex-basis: 52% !important;
+    @media (max-width:breakpoint(lg)) {
+        flex-basis: 60% !important;
+    }
+}
+
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardScaledImageContainer {
+    margin-right: auto;
+    position: relative;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer {
+    position: relative;
+    height: 100%;
+}
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-position: center 74% !important;
+    clip-path: polygon(
+        0% 0%,   // top left
+        100% 0%,  // top right
+        100% 100%, // bottom right
+        20% 100%   // bottom left
+    );
+}
+
+:global(.FurnitureCard).Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+    @media (max-width:breakpoint(lg)) {
+        width: 170% !important;
+        height: 170% !important;
+        object-fit: cover !important;
+        object-position: left 30% !important;
+        top: -50% !important;
+        left: 0 !important;
+        clip-path: none;
+    }
+}
+
+:global(.MusicCard).Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+    @media (max-width:breakpoint(lg)) {
+        object-fit: cover !important;
+        object-position: 85% center !important;
+        left: 0 !important;
+        clip-path: none;
+    }
+}
+
+.Card.CollectionsCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    @media (max-width:breakpoint(lg)) {
+        border-bottom: 153px solid var(--background);
+        border-right: 105px solid transparent;
+        z-index: 1;
     }
 }

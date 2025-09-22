@@ -6,7 +6,6 @@ import {
 import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './GameArtNavMenuAsDropdown.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
-import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface Section {
     id: string;

@@ -3,6 +3,8 @@ import { useServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
 import { HeroGroup } from '@/entities/Hero';
 import { SingleDefensePageProps } from '@/preparedPages/DefenseGalleryPages';
+import { getRouteDefenseGalleryGroupPage } from '@/shared/appLinks/RoutePaths';
+import defenceGalleryImage from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 
 export async function _getPage(lng: string, heroGroup: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -19,6 +21,19 @@ export async function _getPage(lng: string, heroGroup: string) {
             title: heroGroup,
             description: heroGroup,
             keywords: `${t('head-keywords')}, ${heroGroup}`,
+            openGraph: {
+                images: [
+                    {
+                        url: defenceGalleryImage.src,
+                    },
+                ],
+                title: `${t('og-title')} - ${heroGroup}`,
+                description: t('og-description'),
+                url: `/${lng}${getRouteDefenseGalleryGroupPage(heroGroup as HeroGroup)}`,
+            },
+            alternates: {
+                canonical: `/${lng}${getRouteDefenseGalleryGroupPage(heroGroup as HeroGroup)}`,
+            },
         }),
     });
 }

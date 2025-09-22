@@ -1,7 +1,10 @@
 {
     "join-us": "Tule mukaan!",
     "head-title": "Tule mukaan - ALT Zone",
-
+    "head-description": "Liity ALT Zone -projektiin! Tule testaajaksi, tutustu opetuspaketteihin, hae työharjoitteluun, liity Discord-yhteisöömme tai jaa palautteesi pelimme parantamiseksi.",
+    "head-keywords": "ALT Zone tule mukaan, testaaja, opetuspaketti, työharjoittelu, vapaaehtoistyö, Discord",
+    "og-title": "Liity ALT Zone -projektiin",
+    "og-description": "Ole osa ALT Zone -matkaa — testaa peliämme, tutustu opetusvälineisiin, liity Discordiin, hae työharjoittelua tai lähetä meille palautetta.",
 
     "block-label-connection": "Ota yhteyttä",
     "block-label-teachers": "Oletko opettaja?",
@@ -14,7 +17,7 @@
     "block-description-connection": "Mikäli kiinnostuit projektistamme, ota rohkeasti yhteyttä",
     "block-description-teachers": "Ilmoittaudu testaamaan opetuspakettia",
     "block-description-duunitori": "Tarjoamme mahdollisuuksien mukaan palkatonta työkokeilua ja -harjoittelua projektimme parissa. Olet tervetullut tekemään hommia myös vapaaehtoisena. \n\nTarkastele avoimia paikkoja Duunitorista.",
-"block-description-feedback": "Palautelomakkeen tavoite on kerätä palautetta \nnettisivuista ja mobiilipelistä jatkokehitystä varten. \nPalautteesi on ensisijaisen tärkeää ja  käsittelemme \npalautteet yhdessä kehitystiimin kanssa. \n\nKiitos vastauksistasi jo etukäteen!",
+    "block-description-feedback": "Palautelomakkeen tavoite on kerätä palautetta \nnettisivuista ja mobiilipelistä jatkokehitystä varten. \nPalautteesi on ensisijaisen tärkeää ja  käsittelemme \npalautteet yhdessä kehitystiimin kanssa. \n\nKiitos vastauksistasi jo etukäteen!",
     "block-description-instagram": "",
 
     "block-link-text-discord": "discord.gg/mgjQkCR2Fg",
@@ -26,7 +29,7 @@
     "block-link-text-email": "proyaleg@gmail.com",
     "block-link-text-phone": "+358442407396",
     "block-link-text-icone": "",
-    
+
     "block-image-alt-discord": "Discord",
     "block-image-alt-connection": "Reddit",
     "block-image-alt-teachers": "Teacher!",
@@ -34,11 +37,5 @@
     "block-image-alt-feedback": "Feedback",
     "block-image-alt-instagram": "Instagram",
 
-
     "block-website": "www.example.com"
-
 }
-
-
-
-

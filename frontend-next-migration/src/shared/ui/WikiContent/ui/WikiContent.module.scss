@@ -9,7 +9,7 @@
   align-items: center;
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 1.5em;
+  font: var(--font-dm-l);
 }
 
 .section {
@@ -23,16 +23,20 @@
   box-shadow: 10px 10px #121212;
 
   h2 {
-    font-family: var(--font-family-title) !important;
+    font: var(--font-sw-xl) !important;
     text-align: left;
     color: var(--primary-color);
-    font-size: var(--h3-size-desktop);
     margin-bottom: 0.5em;
   }
 
   p {
-    font-size: var(--font-size-m);
-    font-family: var(--font-family-secondary);
+    font: var(--font-dm-m);
+  }
+
+  @media (max-width: breakpoint(lg)) {
+    h2 {
+      text-align: center;
+    }
   }
 }
 
@@ -41,12 +45,12 @@
   grid-template-columns: 75% 25%;
 
   @media (max-width: breakpoint(md)) {
-      display: inline;
-    }
+    display: inline;
+  }
 
-    @media (max-width: breakpoint(sm)) {
-      display: inline;
-    }
+  @media (max-width: breakpoint(sm)) {
+    display: inline;
+  }
 }
 
 .sectionImage {

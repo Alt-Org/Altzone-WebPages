@@ -52,15 +52,14 @@
   word-wrap: break-word;
 
   h1{
-    font-size: var(--font-line-4xl);
+    font: var(--font-dm-4xl);
     color: var(--primary-color)
   }
 
   //h1 {
-  //  font-size: var(--font-line-4xl);
+  //  font: var(--font-dm-4xl);
   //  width: 100%;
   //  line-height: 1.5;
-  //  font-weight: bold;
   //  text-align: center;
   //  margin: 40px auto;
   //  color: var(--primary-color);
@@ -93,13 +92,18 @@
 
   @media (max-width: 600px){
     h1{
-      font-size: var(--font-line-xxxl);
+      font: var(--font-dm-xxxl);
     }
   }
 
+  @media (max-width: 350px){
+    h1{
+      font: var(--font-dm-xxl);
+    }
+  }
 
   p{
-    font-size: var(--font-line-m);
+    font: var(--font-dm-m);
     //color: var(--secondary-color);
   }
 }

@@ -11,7 +11,7 @@ interface ChartProps {
 }
 
 const BarChart: React.FC<ChartProps> = ({ data, showYAxis = true }) => {
-    const maxValue = Math.max(...data.map((d) => d.value));
+    const maxValue = Math.max(...data.map((dp) => dp.value));
     const yTicks = 5;
     const tickValues = Array.from({ length: yTicks + 1 }, (_, i) =>
         Math.round((maxValue / yTicks) * i),

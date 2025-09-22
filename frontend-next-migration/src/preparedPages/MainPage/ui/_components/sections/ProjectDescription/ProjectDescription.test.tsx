@@ -35,6 +35,6 @@ describe('ProjectDescription', () => {
 
         expect(screen.getByText(defaultProps.title)).toBeInTheDocument();
         expect(screen.getByText(defaultProps.description)).toBeInTheDocument();
-        expect(screen.getByText(defaultProps.subDescription)).toBeInTheDocument();
+        expect(screen.getByText(defaultProps.subDescription as string)).toBeInTheDocument();
     });
 });

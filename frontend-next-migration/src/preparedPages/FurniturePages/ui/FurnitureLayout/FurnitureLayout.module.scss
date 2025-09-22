@@ -8,19 +8,37 @@
 
 
   h1 {
-    font-size: clamp(40px, 7vw, 50px);
+    font: var(--font-dm-xxxl);
     line-height: 1.5;
-    font-weight: 600;
   }
 
   h3 {
-    font-size: clamp(20px, 5vw, 30px);
+    font: var(--font-dm-l);
     line-height: 1.25;
-    font-weight: 400;
   }
 
-  font-family: var(--font-family-main), serif;
   padding-bottom: 10px;
   text-align: center;
 
+  @media (max-width: breakpoint(md)) {
+
+    h1 {
+      font: var(--font-dm-xxl);
+    }
+
+    h3 {
+      font: var(--font-dm-l);
+    }
+  }
+
+    @media (max-width: 450px) {
+
+    h1 {
+      font: var(--font-dm-xl);
+    }
+
+    h3 {
+      font: var(--font-dm-m);
+    }
+  }
 }

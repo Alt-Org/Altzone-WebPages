@@ -20,6 +20,7 @@ import { AppLink } from '@/shared/ui/AppLink/AppLink';
 export enum DescriptionCardMobileTheme {
     PRIMARY = '',
     DEFENSEGALLERY = 'DefenseGalleryCard',
+    FURNITURECOLLECTION = 'FurnitureCollectionsCard',
 }
 
 /**

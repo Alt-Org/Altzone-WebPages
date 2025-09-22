@@ -7,9 +7,8 @@
     border-radius: 10px;
     overflow-y: auto;
     padding: 10px;
-    font: var(--font-l);
-    line-height: var(--font-line-l);
-    font-size: var(--font-size-l);
+    font: var(--font-dm-l);
+    line-height: var(--font-line-l) !important;
 
     ul {
         list-style: none;
@@ -20,7 +19,9 @@
         cursor: pointer;
         padding: 10px;
 
-        transition: color 0.5s, border-left 0.2s;
+        transition:
+            color 0.5s,
+            border-left 0.2s;
 
         &:hover {
             color: orange;

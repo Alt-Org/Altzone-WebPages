@@ -1,10 +1,10 @@
+// src/widgets/Navbar/ui/NavbarDesktopV2/NavbarDesktop.tsx
 import { usePathname } from 'next/navigation';
 import { CSSProperties, memo, useEffect, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
-import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
 import { NavbarBuild } from '../../model/types';
@@ -52,7 +52,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
 
-    const { t } = useClientTranslation('navbar');
     const [isAnimating, setIsAnimating] = useState(false);
     const [isMouseOver, setIsMouseOver] = useState(false);
 
@@ -172,7 +171,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             className={classNames(cls.CollapseButtonWrapper, {
                                 [cls.collapsing]: isAnimating,
                             })}
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(event) => event.stopPropagation()}
                         >
                             <ToggleCollapseButton
                                 onClick={handleCollapseClick}

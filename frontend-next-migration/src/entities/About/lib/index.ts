@@ -1,0 +1,1 @@
+export { getBehindYears } from './getYearRange';

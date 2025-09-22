@@ -1,6 +1,5 @@
 //todo fix a mess with media queries
-.main{
-
+.main {
     //background-color: rgba(0, 0, 0, 0.7);
     //border-radius: var(--border-radius-custom);
     //padding: 20px;
@@ -34,7 +33,7 @@
     //    margin-bottom: 100px;
     //}
     //
-    //@media ((min-width: 351px) and (max-width: 768px)) {
+    //@media ((min-width: 351px) and (max-width: breakpoint(md))) {
     //    //margin-top: 150px;
     //    margin-top: 120px;
     //    margin-bottom: 150px;
@@ -60,16 +59,12 @@
     //    margin-top: 100px;
     //    margin-bottom: 50px;
     //}
-
-
-
 }
 
-.dropDown{
+.dropDown {
     width: 300px;
 }
 
-
-.wholePageBG{
+.wholePageBG {
     filter: brightness(85%);
 }

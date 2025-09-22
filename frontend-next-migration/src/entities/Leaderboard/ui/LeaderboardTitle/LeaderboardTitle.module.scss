@@ -1,12 +1,10 @@
 .LeaderboardTitle {
     background-color: var(--primary-color);
     color: var(--black);
-    font-family: var(--body-font);
-    font-weight: bold;
-    font-size: var(--font-size-sm);
+    font: var(--font-dm-m);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
     box-shadow: 4px 4px var(--black);
     text-align: center;
-    padding: .2em;
+    padding: 0.2em;
 }

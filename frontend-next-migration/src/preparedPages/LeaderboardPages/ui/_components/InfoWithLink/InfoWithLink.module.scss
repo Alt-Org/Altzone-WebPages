@@ -9,7 +9,7 @@
     margin-top: 1rem;
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-lg);
-    font-family: var(--body-font);
+    font: var(--font-dm-m);
 }
 
 .text {
@@ -20,7 +20,6 @@
 .link {
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: bold;
     transition: color 0.3s ease;
 
     &:hover {

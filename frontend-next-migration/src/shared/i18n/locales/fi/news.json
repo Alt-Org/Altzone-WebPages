@@ -1,12 +1,14 @@
 {
-  "head-title": "Uutiset",
-  "read-more": "Lue lisää",
-  "head-description": "Lue uusimmat uutiset ALT Zonesta.",
-  "head-keywords": "altzone, uutiset, yhteisö, sarjakuvat, pelit",
-  "category-title": "Kategoriat",
-  "next-button": "Seuraava",
-  "previous-button": "Edellinen",
-  "no-more-news": "Kaikki uutiset on ladattu",
-  "not-found-category-title": "Kategoriaa ei löytynyt",
-  "page-not-found": "Sivua ei löytynyt"
+    "head-title": "Uutiset",
+    "read-more": "Lue lisää",
+    "head-description": "Lue uusimmat uutiset ALT Zonesta.",
+    "head-keywords": "altzone, uutiset, yhteisö, sarjakuvat, pelit",
+    "og-title": "ALT Zone Uutiset",
+    "og-description": "Pysy ajan tasalla ALT Zone uutisten kanssa.",
+    "category-title": "Kategoriat",
+    "next-button": "Seuraava",
+    "previous-button": "Edellinen",
+    "no-more-news": "Kaikki uutiset on ladattu",
+    "not-found-category-title": "Kategoriaa ei löytynyt",
+    "page-not-found": "Sivua ei löytynyt"
 }

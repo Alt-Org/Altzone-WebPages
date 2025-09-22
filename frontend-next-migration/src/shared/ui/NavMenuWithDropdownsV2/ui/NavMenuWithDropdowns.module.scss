@@ -1,9 +1,8 @@
 .NavMenuWithDropdowns {
   width: 100%;
   filter: drop-shadow(8px 12px var(--black));
-  font: var(--font-m);
-  line-height: var(--font-line-l);
-  font-size: var(--font-size-l);
+  line-height: var(--font-line-l) !important;
+  font: var(--font-dm-l);
 
   // max-width can be changed but shouldnt really be necessary
   max-width: 280px;
@@ -16,7 +15,8 @@
       padding: 12px 24px;
       border-radius: var(--border-radius-xl);
       border: 2px solid var(--black);
-      line-height: var(--font-line-m);
+      line-height: var(--font-line-m) !important;
+      font: var(--font-dm-m);
     }
 
     margin: auto;
@@ -30,7 +30,8 @@
       padding: 12px 24px;
       border-radius: var(--border-radius-xl);
       border: 2px solid var(--black);
-      line-height: var(--font-line-m);
+      line-height: var(--font-line-m) !important;
+      font: var(--font-dm-m);
     }
 
     margin: auto;
@@ -66,6 +67,7 @@
 
   .subDropDownChildren {
     justify-content: space-between;
+    color: var(--primary-color);
   }
 
   .subDropDownContent * {
@@ -78,6 +80,11 @@
 
     & a:hover {
       color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    &.active {
+      color: var(--primary-color);
     }
   }
 }
@@ -86,4 +93,25 @@
   .active {
     color: var(--primary-color);
   }
+}
+
+.link {
+  color: var(--white);
+  
+  &.active {
+    color: var(--primary-color);
+  }
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+}
+
+.text {
+  color: var(--white);
+  cursor: pointer;
+  &.active {
+    color: var(--primary-color);
+  }
+
 }

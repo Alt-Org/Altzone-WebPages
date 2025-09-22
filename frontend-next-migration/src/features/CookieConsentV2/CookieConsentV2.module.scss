@@ -9,7 +9,7 @@
     border: solid var(--black);
     border-width: var(--border-desktop);
     border-radius: var(--border-radius-lg);
-    font-family: var(--body-font);
+    font: var(--font-dm-m);
     line-height: 1.6;
     z-index: 1000;
     display: flex;
@@ -19,7 +19,7 @@
     box-shadow: 8px 8px 1px #000000;
 }
 
-.cookieConsentV2 button+button {
+.cookieConsentV2 button + button {
     margin-left: 15px;
 }
 
@@ -37,19 +37,17 @@
 .cookieHeader {
     margin: 0 0 20px 0;
     color: var(--primary-color);
-    font-family: var(--font-family-title);
-    line-height: 1.2;
+    line-height: 1.2 !important;
+    font: var(--font-sw-xl);
     text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 .cookieConsentContentText {
-    font-size: 18px;
+    font: var(--font-dm-m);
     color: white;
-    line-height: 1.6;
-    font-weight: 400;
+    line-height: 1.6 !important;
     letter-spacing: -0.01em;
     text-align: left;
-    font-family: 'DM Sans', sans-serif;
     width: 432px;
     margin-bottom: 16px;
 }
@@ -65,7 +63,6 @@
     color: #000000;
     padding: 12px 24px;
     border-radius: var(--border-radius-xl);
-    font-weight: 400;
     stroke: var(--primary-color);
     cursor: pointer;
     border: solid var(--black);
@@ -108,7 +105,7 @@
         width: 90%;
     }
 
-    .cookieConsentV2 button+button {
+    .cookieConsentV2 button + button {
         margin-left: 0px;
         padding-top: 10px;
     }
@@ -120,11 +117,11 @@
     }
 
     .cookieHeader {
-        font-size: 20px;
+        font: var(--font-sw-l);
     }
 
     .cookieConsentContentText {
-        font-size: 16px;
+        font: var(--font-dm-m);
         width: 301px;
         height: 224px;
         line-height: 1.5;
@@ -149,7 +146,7 @@
         width: 88%;
     }
 
-    .cookieConsentV2 button+button {
+    .cookieConsentV2 button + button {
         margin-left: 0px;
         margin-top: 10px;
     }
@@ -161,11 +158,11 @@
     }
 
     .cookieHeader {
-        font-size: 20px;
+        font: var(--font-sw-l);
     }
 
     .cookieConsentContentText {
-        font-size: 16px;
+        font: var(--font-dm-m);
         width: 301px;
         height: 224px;
         line-height: 1.5;

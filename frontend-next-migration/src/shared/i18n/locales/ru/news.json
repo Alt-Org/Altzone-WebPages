@@ -1,5 +1,7 @@
 {
-  "head-title": "Новости",
-  "head-description": "Читайте последние новости от ALT Zone.",
-  "head-keywords": "altzone, новости, сообщество, комиксы, игры"
+    "head-title": "Новости",
+    "head-description": "Читайте последние новости от ALT Zone.",
+    "head-keywords": "altzone, новости, сообщество, комиксы, игры",
+    "og-title": "Новости ALT Zone",
+    "og-description": "Будьте в курсе последних новостей ALT Zone."
 }
