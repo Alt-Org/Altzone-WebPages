@@ -2,13 +2,21 @@ import { createPage } from '@/app/_helpers';
 import { PictureGalleryPageProps } from '@/preparedPages/PictureGalleryPages';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import { baseUrl } from '@/shared/seoConstants';
 
-export async function _getPage(lng: string) {
+export async function _getPage(lng: string, category: string) {
     const { t } = await useServerTranslation(lng, 'picture-galleries');
+
+    const categoryName = t(`categories.${category}.name`, category);
+    const categoryDesc = t(`categories.${category}.description`, t('head-description'));
+
+    const url = `/${lng}/picture-galleries/${category}`;
+    const imagePath = '/images/opengraph-image.png';
+    const imageAbs = `${baseUrl}${imagePath}`;
 
     return createPage<PictureGalleryPageProps>({
         buildPage: () => ({
-            title: t('picture-galleries'),
+            title: categoryName,
             infoText: t('info-text'),
             socialsText: t('socials-text'),
             socialMediaLinks: [
@@ -18,10 +26,21 @@ export async function _getPage(lng: string) {
             ],
             videoLink: AppExternalLinks.previewVideoYoutube,
         }),
-        buildSeo: () => ({
-            title: t('head-title'),
-            description: t('head-description'),
-            keywords: t('head-keywords'),
-        }),
+        buildSeo: () => {
+            const title = `${categoryName} — ${t('picture-galleries')}`;
+            return {
+                title,
+                description: categoryDesc,
+                keywords: `${categoryName}, ${t('head-keywords')}`,
+                alternates: { canonical: url },
+                openGraph: {
+                    type: 'website',
+                    title,
+                    description: categoryDesc,
+                    url,
+                    images: [{ url: imageAbs, width: 1200, height: 630 }],
+                },
+            };
+        },
     });
 }
