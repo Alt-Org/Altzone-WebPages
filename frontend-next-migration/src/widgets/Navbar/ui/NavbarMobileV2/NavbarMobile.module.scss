@@ -9,9 +9,8 @@
     box-shadow: 4px 4px black;
     top: 0;
     left: 10px;
-    right: 10px;  
+    right: 10px;
 
-    
     @media (min-width: 550px) {
         margin-top: 50px;
     }
@@ -30,19 +29,18 @@
     transform: scaleY(0);
     transform-origin: top;
     max-height: 0;
-    transition: 
+    transition:
         transform 0.3s ease,
         max-height 0.3s ease;
-
 }
 .openDropdown {
     padding: 15px;
     transform: scaleY(1);
-    max-height: 400px;
+    max-height: 450px;
 }
 
 .HamurgerBtn {
-    position:absolute;
+    position: absolute;
     margin-left: 15px;
 }
 
@@ -52,10 +50,10 @@
 }
 
 .navLogo {
-    height:100%;
+    height: 100%;
     img {
         height: 100%;
-        width:auto;
+        width: auto;
     }
 }
 
@@ -72,7 +70,7 @@
     display: flex;
     align-items: center;
     gap: 0 12px;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     ul {
         height: max-content;
         width: 100%;
@@ -81,14 +79,14 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin-left: 70px;
+        margin-left: 40px;
     }
 
     li {
         height: 25px;
         display: flex;
         align-items: center;
-        color:white;
+        color: white;
     }
 
     img {
@@ -133,3 +131,40 @@
     visibility: visible;
 }
 
+.authFormContainer {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > * {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    @media (min-width: 768px) {
+        max-width: 350px;
+    }
+}
+
+.toggleAuthMode {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+    font: var(--font-dm-m);
+    padding: 5px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.toggleAuthMode:hover {
+    color: var(--secondary-color);
+}
+
+.logoutButton:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+}

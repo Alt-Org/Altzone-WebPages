@@ -210,17 +210,35 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                 </div>
                             </div>
                         ) : permissionToLogout.isGranted ? (
-                            <p
-                                className={cls.logoutButton}
-                                onClick={() => logout()}
-                            >
-                                <Image
-                                    src={profileIcon}
-                                    alt="Logout Icon"
-                                    height={28}
-                                    width={28}
-                                />
-                            </p>
+                            <div className={cls.authContainer}>
+                                <div
+                                    className={cls.authTrigger}
+                                    onClick={() => handleDropdownClick('auth')}
+                                >
+                                    <Image
+                                        src={profileIcon}
+                                        alt="Profile Icon"
+                                        width={28}
+                                        height={28}
+                                    />
+                                </div>
+                                <div
+                                    className={classNames(cls.authDropdown, {
+                                        [cls.authDropdownVisible]:
+                                            authDropdown.state.isOpen && !isCollapsed,
+                                    })}
+                                >
+                                    <button
+                                        className={cls.logoutButton}
+                                        onClick={() => {
+                                            logout();
+                                            authDropdown.actions.reset();
+                                        }}
+                                    >
+                                        {t('logout')}
+                                    </button>
+                                </div>
+                            </div>
                         ) : null}
                     </li>
 

@@ -5,7 +5,11 @@ import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
-import { getRouteComingSoonPage, getRouteLoginPage } from '@/shared/appLinks/RoutePaths';
+import {
+    getRouteComingSoonPage,
+    getRouteLoginPage,
+    getRouteRegisterPage,
+} from '@/shared/appLinks/RoutePaths';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
 import closeIcon from '@/shared/assets/icons/closeIcon.svg';
@@ -13,6 +17,7 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 import { ItemType, NavbarBuild } from '../../model/types';
 import cls from './NavbarMobile.module.scss';
+import { LoginForm, RegisterForm } from '@/features/AuthByUsername';
 
 enum DropdownTypes {
     EMPTY = 'EMPTY',
@@ -37,20 +42,21 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const { marginTop, navbarBuild, className = '', onDropdownChange, isFixed } = props;
 
     const { t } = useClientTranslation('navbar');
+    const { t: tAuth } = useClientTranslation('auth');
 
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
     const permissionToLogout = checkPermissionFor('logout');
-
     const permissionToSeeOwnClan = checkPermissionFor('clan:seeOwn');
-
     // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
-
     const pathname = usePathname();
 
     const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.EMPTY);
     const [realPath, setRealPath] = useState('/');
+    const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+
+    const [isLangOpen, setIsLangOpen] = useState(false);
 
     useEffect(() => {
         const pathSegments = pathname.split('/').filter(Boolean);
@@ -63,6 +69,20 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             onDropdownChange(dropdownType !== DropdownTypes.EMPTY);
         }
     }, [dropdownType, onDropdownChange]);
+
+    useEffect(() => {
+        if (dropdownType === DropdownTypes.EMPTY) {
+            setIsLangOpen(false);
+        }
+    }, [dropdownType]);
+
+    const handleAuthSuccess = () => {
+        setDropdownType(DropdownTypes.EMPTY);
+    };
+
+    const toggleAuthMode = () => {
+        setAuthMode(authMode === 'login' ? 'register' : 'login');
+    };
 
     const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
@@ -79,7 +99,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     // Localize the elements within the dropdown, but skip if elementText equals "clanpage"
                     //todo looks like that this logic should not be here in ui component
                     const localizedElements = item.elements
-                        .map((element) => {
+                        .map((element: any) => {
                             if (
                                 // @ts-ignore todo add guard
                                 element.elementText === 'clanpage' &&
@@ -98,8 +118,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         })
                         .filter((element) => element !== null); // Filter out any null elements
 
-                    const isDropdownActive = localizedElements.some((element) => element.active);
-
+                    const isDropdownActive = localizedElements.some(
+                        (element: any) => element.active,
+                    );
                     // If there are no valid elements left, return null to skip this item
                     if (localizedElements.length === 0) {
                         return null;
@@ -127,36 +148,87 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     dropdownItems={navManuItemsList.concat([
                         {
                             type: NavMenuItemType.Element,
-                            element: <LangSwitcher className={cls.langSwitcher} />,
+                            element: (
+                                <div
+                                    className={cls.langSwitcherContainer}
+                                    onClick={() => setIsLangOpen(!isLangOpen)}
+                                >
+                                    <LangSwitcher
+                                        className={cls.langSwitcher}
+                                        isOpen={isLangOpen}
+                                    />
+                                </div>
+                            ),
                         },
                     ])}
                 />
             ),
             [DropdownTypes.AUTH]: (
-                <div data-testid="mobile-navbar-profile">
+                <div
+                    data-testid="mobile-navbar-profile"
+                    className={cls.authDropdownContent}
+                >
                     {permissionToLogin.isGranted ? (
-                        <AppLink to={getRouteLoginPage()}>{t('login')}</AppLink>
+                        <div className={cls.authFormContainer}>
+                            {authMode === 'login' ? (
+                                <LoginForm
+                                    toRegisterPage={getRouteRegisterPage()}
+                                    onSuccessLogin={handleAuthSuccess}
+                                    extraContent={
+                                        <button
+                                            type="button"
+                                            onClick={toggleAuthMode}
+                                            className={cls.toggleAuthMode}
+                                        >
+                                            {tAuth('text_to_register')}
+                                        </button>
+                                    }
+                                />
+                            ) : (
+                                <RegisterForm
+                                    toLoginPage={getRouteLoginPage()}
+                                    extraContent={
+                                        <button
+                                            type="button"
+                                            onClick={toggleAuthMode}
+                                            className={cls.toggleAuthMode}
+                                        >
+                                            {tAuth('text_to_login')}
+                                        </button>
+                                    }
+                                />
+                            )}
+                        </div>
                     ) : permissionToLogout.isGranted ? (
-                        <>
-                            <AppLink to={getRouteComingSoonPage()}>{t('profile')}</AppLink>
+                        <div className={cls.authFormContainer}>
                             <button
                                 className={cls.logoutButton}
                                 onClick={() => logout()}
                             >
-                                {t('logout')}
+                                {tAuth('logout')}
                             </button>
-                        </>
+                        </div>
                     ) : null}
                 </div>
             ),
         };
-    }, [permissionToLogin.isGranted, permissionToLogout.isGranted, navManuItemsList]);
+    }, [
+        permissionToLogin.isGranted,
+        permissionToLogout.isGranted,
+        navManuItemsList,
+        authMode,
+        tAuth,
+        handleAuthSuccess,
+        toggleAuthMode,
+        isLangOpen,
+        logout,
+    ]);
 
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
-    } as Record<string, boolean>;
+    };
 
     const getDropdownContent = (dropdownType: DropdownType) => {
         if (dropdownType === DropdownTypes.EMPTY) {

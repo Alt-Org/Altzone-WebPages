@@ -247,7 +247,14 @@
 }
 
 .logoutButton {
+    margin-top: 15px;
     cursor: pointer;
+    background-color: var(--primary-color);
+    border: var(--border-mobile) solid var(--black);
+    border-radius: var(--border-radius-xl);
+    box-shadow: 2px 2px var(--black);
+    width: 100%;
+    padding: 10px;
 }
 
 .FixButtonWrapper {
@@ -338,8 +345,4 @@
     padding: 5px 0;
     margin-top: 10px;
     font-size: inherit;
-
-    &:hover {
-        color: var(--secondary-color);
-    }
 }
