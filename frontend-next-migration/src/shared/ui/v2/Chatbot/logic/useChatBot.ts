@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-import { useGetChatbotContextQuery } from '@/shared/api';
+import { useGetChatbotContextQuery, useGetChatbotLinksQuery } from '@/shared/api';
 
 /**
  * Represents a chat message with role and content
@@ -11,6 +11,9 @@ import { useGetChatbotContextQuery } from '@/shared/api';
 export interface ChatMessage {
     role: string;
     content: string;
+    question1: string;
+    question2: string;
+    question3: string;
 }
 
 /**
@@ -54,13 +57,24 @@ export const useChatBot = () => {
 
     // Fetch context from Directus for current language
     const currentLanguage = i18n.language || 'fi';
+    const { data: linkData = [] } = useGetChatbotLinksQuery(currentLanguage);
     const { data: contextData = '', isLoading: isContextLoading } =
         useGetChatbotContextQuery(currentLanguage);
 
     // Update context state when data changes
     useEffect(() => {
-        setContext(contextData);
-    }, [contextData]);
+        const baseUrl = 'https://altzone.fi';
+        const linksText = linkData
+            .map(
+                (link) =>
+                    `- ${link.title} page: ${link.url.startsWith('http') ? link.url : baseUrl + link.url}`,
+            )
+            .join('\n');
+
+        const fullContext = `${contextData}\n\nHere are some important links you can mention in your answers:\n${linksText}`;
+
+        setContext(fullContext);
+    }, [contextData, linkData]);
 
     // Initialize welcome message
     useEffect(() => {
@@ -68,6 +82,9 @@ export const useChatBot = () => {
             {
                 role: 'assistant',
                 content: t('welcomeMessage'),
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
             },
         ]);
     }, [t]);
@@ -87,6 +104,9 @@ export const useChatBot = () => {
             {
                 role: 'assistant',
                 content: t('welcomeMessage'),
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
             },
         ]);
         setUserInput('');
@@ -100,15 +120,26 @@ export const useChatBot = () => {
      * // User types "Hello" and clicks send
      * handleSendMessage(); // Sends to API and gets AI response
      */
-    const handleSendMessage = async () => {
-        if (!userInput.trim()) return;
+    const handleSendMessage = async (messageContent: string = userInput) => {
+        const content = messageContent.trim() || userInput.trim();
+        if (!content) {
+            return;
+        }
 
-        if (userInput.length > 40) {
+        if (content.length > 40) {
             setError(t('errorMessageTooLong'));
             return;
         }
 
-        const newMessages = [...messages, { role: 'user', content: userInput }];
+        const newMessage = {
+            role: 'user',
+            content: content,
+            question1: t('preQuestion1'),
+            question2: t('preQuestion2'),
+            question3: t('preQuestion3'),
+        };
+
+        const newMessages = [...messages, newMessage];
         setMessages(newMessages);
         setUserInput('');
         setLoading(true);
@@ -138,7 +169,7 @@ export const useChatBot = () => {
                         ...newMessages,
                     ],
                     max_tokens: 200,
-                    stop: ['.'],
+                    // stop: ['.'],
                 }),
             });
 
@@ -152,7 +183,17 @@ export const useChatBot = () => {
             const data = await response.json();
             const assistantMessage = data.choices[0]?.message?.content || t('errorDefaultResponse');
 
-            setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
+            const assistantResponse = {
+                role: 'assistant',
+                content: assistantMessage,
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
+            };
+
+            setMessages([...newMessages, assistantResponse]);
+            // Still Error Here
+            // setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
         } catch (err) {
             setError(`${t('errorUnexpected')} ${err}`);
         } finally {

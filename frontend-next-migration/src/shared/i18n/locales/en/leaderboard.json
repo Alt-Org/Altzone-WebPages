@@ -7,9 +7,24 @@
     "global": "Global",
     "head-title": "Leaderboard",
     "head-description": "Find player and clan rankings in the leaderboard",
-    "head-keywords": "leaderboard, players, clans, game",
+    "head-keywords": "ALT Zone leaderboard, players, clans, game, player rankings, clan rankings, game stats",
+    "og-title": "ALT Zone Leaderboard — Player & Clan Rankings",
+    "og-description": "Check out the player and clan rankings in the ALT Zone leaderboard. See player points, clan rankings, and your friends' stats in one place.",
+
+    "friends-head-title": "Friends Leaderboard",
+    "friends-head-description": "Find your friends' rankings in the leaderboard",
+    "friends-head-keywords": "ALT Zone leaderboard, friends, player rankings, game stats",
+    "friends-og-title": "ALT Zone Friends Leaderboard",
+    "friends-og-description": "Check out your friends' rankings in the ALT Zone leaderboard. See their points and stats in one place.",
+
+    "clans-head-title": "Clans Leaderboard",
+    "clans-head-description": "Find clan rankings in the leaderboard",
+    "clans-head-keywords": "ALT Zone leaderboard, clans, clan rankings, game stats",
+    "clans-og-title": "ALT Zone Clans Leaderboard",
+    "clans-og-description": "Check out clan rankings in the ALT Zone leaderboard. See their points and stats in one place.",
+
     "leaderboard_title": "Leaderboard",
     "search_placeholder": "Search",
     "search_btn_text": "Search",
     "wins": "Wins"
-  }
+}

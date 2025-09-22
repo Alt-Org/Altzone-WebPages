@@ -1,6 +1,6 @@
 .CustomSwitch {
-    display:flex;
-    width:100%;
+    display: flex;
+    width: 100%;
     background-color: var(--background);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-lg);
@@ -11,16 +11,14 @@
 }
 
 .ToggleItem {
-    width:100%;
+    width: 100%;
     text-align: center;
     color: var(--primary-color);
-    font-family: var(--body-font);
-    font-weight: bold;
-    font-size: var(--font-size-sm);
+    font: var(--font-dm-m);
     border: var(--border-mobile) solid var(--background);
     border-radius: var(--border-radius-lg);
-    padding: .2em;
-    cursor:pointer;
+    padding: 0.2em;
+    cursor: pointer;
 
     &:hover {
         color: var(--primary-color-variant-hover);
@@ -32,6 +30,25 @@
     color: var(--black);
 
     &:hover {
-        color: var(--black)
+        color: var(--black);
     }
+}
+.ProgressItem {
+    width: 100%;
+    text-align: center;
+    color: var(--primary-color);
+    font-family: var(--body-font);
+    font-weight: bold;
+    font-size: var(--font-size-sm);
+    border: var(--border-mobile) solid var(--background);
+    border-radius: var(--border-radius-lg);
+    padding: 0.2em;
+}
+
+.ProgressItem.OpenToggleItem {
+    color: var(--black);
+}
+
+.BeforeOpen {
+    color: grey;
 }

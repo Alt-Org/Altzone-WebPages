@@ -32,7 +32,7 @@ $touchSize: 1023px;
 
 .searchInput::placeholder {
     color: var(--content-primary);
-    font-size: 13px;
+    font: var(--font-dm-s);
 }
 .searchInput {
     width: 250px;

@@ -55,10 +55,62 @@ export const chatbotApi = directusApi.injectEndpoints({
                 return contextText;
             },
         }),
+
+        /**
+         * Fetches chatbot links for specific language
+         */
+        getChatbotLinks: builder.query<
+            { slug: string; title: string; url: string; keywords: string[] }[],
+            string
+        >({
+            query: (language: string) => {
+                const languageMap: { [key: string]: string } = {
+                    fi: 'fi-FI',
+                    en: 'en-US',
+                    ru: 'ru-RU',
+                };
+                const fullLanguageCode = languageMap[language] || language;
+
+                return {
+                    url: '/items/chatbot_links',
+                    params: {
+                        fields: 'slug,translations.*',
+                        'deep[translations][_filter][languages_code][_eq]': fullLanguageCode,
+                    },
+                };
+            },
+            transformResponse: (response: any) => {
+                if (!response?.data || !Array.isArray(response.data)) return [];
+
+                return response.data
+                    .map((item: any) => {
+                        if (!item.translations || !Array.isArray(item.translations)) return null;
+
+                        const translation = item.translations[0];
+                        if (!translation) return null;
+
+                        return {
+                            slug: item.slug,
+                            title: translation.title,
+                            url: translation.url,
+                            keywords: (translation.keywords || '')
+                                .split(',')
+                                .map((keyword: string) => keyword.trim())
+                                .filter((keyword: string) => keyword.length > 0),
+                        };
+                    })
+                    .filter(Boolean) as {
+                    slug: string;
+                    title: string;
+                    url: string;
+                    keywords: string[];
+                }[];
+            },
+        }),
     }),
 });
 
 /**
- * Custom hooks for fetching chatbot context data
+ * Custom hooks for fetching chatbot context and links
  */
-export const { useGetChatbotContextQuery } = chatbotApi;
+export const { useGetChatbotContextQuery, useGetChatbotLinksQuery } = chatbotApi;

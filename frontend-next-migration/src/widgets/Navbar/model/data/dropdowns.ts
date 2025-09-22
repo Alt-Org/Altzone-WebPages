@@ -2,17 +2,16 @@ import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import {
     getRouteHeroDevPage,
     getRouteMyClanPage,
-    getRouteClanLeadeboardPage,
     getRouteComicsPage,
     getRouteGalleryPage,
     getRouteGameArtPage,
-    getRouteAllHeroesPage,
+    getRouteDefenseGalleryPage,
     getRouteAllClanSearchPage,
     getRouteAllFurnitureSetsPage,
+    getRouteAllCollectionsPage,
     getRouteJoinUsPage,
     getRouteAboutPage,
 } from '@/shared/appLinks/RoutePaths';
-import { isExternal } from 'util/types';
 
 export const dropdowns = {
     community: [
@@ -56,7 +55,7 @@ export const dropdowns = {
         {
             elementText: 'heroes',
             link: {
-                path: getRouteAllHeroesPage(),
+                path: getRouteDefenseGalleryPage(),
                 isExternal: false,
             },
         },
@@ -102,9 +101,9 @@ export const dropdowns = {
             },
         },
         {
-            elementText: 'furnituresets',
+            elementText: 'collections',
             link: {
-                path: getRouteAllFurnitureSetsPage(),
+                path: getRouteAllCollectionsPage(),
                 isExternal: false,
             },
             isDisabled: {

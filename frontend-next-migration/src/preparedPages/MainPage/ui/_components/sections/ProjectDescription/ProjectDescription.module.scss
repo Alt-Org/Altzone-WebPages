@@ -1,121 +1,160 @@
 .Section {
-  display: flex;
-  opacity: 0;
-  &.inView{
-    animation: fadeIn 1s ease-in-out;
-    opacity: 1;
-  }
-
+    display: flex;
+    opacity: 0;
+    flex-direction: column;
+    //margin-top: -10vh;
+    &.inView {
+        animation: fadeIn 1s ease-in-out;
+        opacity: 1;
+    }
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .Container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  opacity: 0;
-  transform: translateY(20px);
-
-  &.inView{
-    animation: slideIn 1.8s ease-in-out;
-    transform: translateY(0);
-    opacity: 1;
-  }
-
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    width: 100%;
+    &.inView {
+        animation: slideIn 1.8s ease-in-out;
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .imageTextBlock {
-  display: flex;
-  align-items: center;
-  max-width: 80%;
-  margin-top: 20px;
-  transform: scale(0.8);
-  opacity: 0;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    justify-content: center;
 
-  &.inView{
-    animation: zoomIn 1.8s ease-in-out;
-    opacity: 1;
-    transform: scale(1);
-  }
+    transform: scale(0.8);
+    opacity: 0;
+    padding: 0;
+    .description {
+        background-color: transparent;
+    }
+    &.inView {
+        animation: zoomIn 1.8s ease-in-out;
+        opacity: 1;
+        transform: scale(1);
+        background-color: none;
+    }
+    p {
+        font: var(--font-dm-l);
+        text-align: center;
+        white-space: pre-line;
+    }
+}
 
+.subDescription {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    transform: scale(0.8);
+    padding: 0;
+    margin: 0;
+
+    .subDescription {
+        background-color: transparent;
+    }
+
+    &.inView {
+        animation: zoomIn 1.8s ease-in-out;
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    p {
+        font: var(--font-sw-xxxl);
+        text-align: center;
+        color: var(--primary-color);
+        white-space: pre-line;
+    }
 }
 
 @keyframes zoomIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .Image {
-  max-width: 30%;
-  height: auto;
-
-  &.inView{
-    animation: rotate 1.5s alternate;
-  }
-
+    display: inline-block;
+    height: auto;
+    width: cover;
+    background-size: cover;
+    object-fit: cover;
+    margin-bottom: 40px;
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .titleQuestion {
-  font-size: var(--font-line-xxxl);
-  font-family: var(--font-family-title), sans-serif;
-  font-weight: lighter;
-  text-align: center;
-  color: var(--primary-color);
-  padding: 15px;
-  max-width: 90%;
+    font: var(--font-sw-4xl), sans-serif;
+    text-align: center;
+    color: var(--primary-color);
+    padding: 15px;
+    max-width: 90%;
+    white-space: pre-line;
 
- @media screen and (max-width: 600px) {
-   & {
-     font-size: var(--font-line-xxl);
-   }
- }
-
-  @media screen and (max-width: 400px) {
-    & {
-      font-size: var(--font-line-l);
+    @media screen and (max-width: breakpoint(xs)) {
+        & {
+            font: var(--font-sw-xxxl);
+        }
     }
-  }
-
 }
 
-@media screen and (min-width: breakpoint(lg)) {
-  .description {
-    width: 60%;
-  }
+@media screen and (max-width: breakpoint(sm)) {
+    .description {
+        width: 80%;
+        p {
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    }
+    .titleQuestion {
+        font-size: 1.5rem;
+        width: 80%;
+    }
+    .subDescription {
+        width: 80%;
+        p {
+            font: var(--font-sw-xl);
+        }
+    }
 }
-

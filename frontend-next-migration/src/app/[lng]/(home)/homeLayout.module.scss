@@ -1,0 +1,22 @@
+.joinUsLayout {
+    @media ((max-width: breakpoint(sm) )) {
+        margin-top: 12vh !important;
+    }
+
+    @media ((max-width: breakpoint(xl) ) and (min-width: breakpoint(sm))) {
+        margin-top: 15vh !important;
+    }
+    @media ((max-width: breakpoint(xxl) ) and (min-width: breakpoint(xl))) {
+        margin-top: 17vh !important;
+    }
+    @media ((min-width: breakpoint(xxl)) and (max-width: 1500px)) {
+        margin-top: 18vh;
+    }
+
+    @media (min-width: 1500px) {
+        margin-top: 17vh;
+    }
+    @media (min-width: 2000px) {
+        margin-top: 15vh;
+    }
+}

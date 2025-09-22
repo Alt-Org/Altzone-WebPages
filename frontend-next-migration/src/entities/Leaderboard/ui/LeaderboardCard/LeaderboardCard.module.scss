@@ -19,7 +19,6 @@
     margin-left: 1em;
     margin-right: 1em;
     color: var(--primary-color);
-    font-weight: bold;
     flex-basis: 1rem;
 }
 .LastMatch {
@@ -30,11 +29,11 @@
     fill: var(--error);
 }
 .ChevronUp {
-    fill: var(--success)
+    fill: var(--success);
 }
 .ClanLogo {
     margin-left: 2em;
-    margin-right: .7em;
+    margin-right: 0.7em;
 }
 .ClanLogo > img {
     height: 30px;

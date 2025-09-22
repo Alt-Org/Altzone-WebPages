@@ -1,14 +1,17 @@
 {
-    "head-title": "AltZone - Hahmot",
-    "head-description": "Tutustu AltZone-pelin hahmoihin ja heidän tarinoihinsa. Jokainen hahmo edustaa erilaisia puolustusmekanismeja ja tunteita.",
+    "head-title": "ALT Zone - Hahmot",
+    "head-description": "Tutustu ALT Zone-pelin hahmoihin ja heidän tarinoihinsa. Jokainen hahmo edustaa erilaisia puolustusmekanismeja ja tunteita.",
     "head-keywords": "altzone, peli, hahmot, sankarit, yhteisö, sarjakuvat, galleriat, pelaa, rekisteröidy, kirjaudu",
-    "og-title": "AltZone - Tutustu pelin hahmoihin",
-    "og-description": "Tutustu AltZone-pelin hahmoihin ja heidän tarinoihinsa. Jokainen hahmo edustaa erilaisia puolustusmekanismeja ja tunteita.",
+    "og-title": "ALT Zone - Tutustu pelin hahmoihin",
+    "og-description": "Tutustu ALT Zone-pelin hahmoihin ja heidän tarinoihinsa. Jokainen hahmo edustaa erilaisia puolustusmekanismeja ja tunteita.",
 
     "not-found-title": "Etsittyä sankaria ei löytynyt",
     "not-found-check-heroes": "Tarkista saatavilla olevat sankarit",
 
     "section-title": "Hahmot",
+    "defense-gallery": "Defenssigalleria",
+    "defense-gallery-description": "Defenssigalleria on...",
+    "defense-classes": "Defenssiluokat",
 
     "RETROFLECTOR": {
         "name": "TORJUJAT",

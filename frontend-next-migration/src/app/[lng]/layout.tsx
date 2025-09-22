@@ -1,14 +1,16 @@
 import { dir } from 'i18next';
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
-import { CookieConsentComponent } from '@/features/CookieConsent';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { ChatBotToggleButton } from '@/shared/ui/v2/Chatbot';
 import { languages } from '@/shared/i18n/settings/settings';
 import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
+//import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
+import CookieConsentV3 from '@/features/CookieConsentV3/CookieConsentV3';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
@@ -64,6 +66,15 @@ interface Props {
     };
 }
 
+export function generateMetadata(): Metadata {
+    return {
+        metadataBase: new URL(baseUrl),
+        openGraph: {
+            ...defaultOpenGraph,
+        },
+    };
+}
+
 export default function RootLayout(props: Props) {
     const { children, params } = props;
 
@@ -94,7 +105,7 @@ export default function RootLayout(props: Props) {
                         <FeedbackSideButton />
                         <ChatBotToggleButton />
                         {children}
-                        <CookieConsentComponent />
+                        <CookieConsentV3 />
                     </Providers>
                 </LayoutWithBackground>
             </body>

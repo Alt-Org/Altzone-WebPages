@@ -2,7 +2,6 @@
     iframe {
         border-radius: var(--border-radius-custom);
     }
-
 }
 
 .videoWrapper {
@@ -27,10 +26,7 @@
 }
 
 @media screen and (min-width: 900px) {
-    
     .videoWrapper {
         width: 450px;
     }
 }
-
-  

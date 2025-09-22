@@ -3,8 +3,7 @@
     position: absolute;
     top: 45%;
     color: var(--secondary-color);
-    font-weight :bolder;
-    font-size:1.5em;
+    font: var(--font-dm-l);
     right: .3em;
     cursor: pointer;
 }
@@ -33,7 +32,7 @@
 
 .Text {
     padding: 1em 0.5em;
-    font-size: 26px;
+    font: var(--font-dm-l);
     overflow: hidden;
     transition: opacity 0.3s ease-in-out;
 

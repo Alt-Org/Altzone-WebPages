@@ -24,19 +24,11 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         i18n: { language },
     } = useTranslation();
 
-    const options = [
+    const options: Option[] = [
         { label: t('FIN'), value: 'fi' },
         { label: t('ENG'), value: 'en' },
         // Add more languages here
     ];
-
-    // Get the label of the current language
-    const [selected, setSelected] = useState<string>(
-        // options.find((option) => option.value === language)?.label || options[0]?.label || '',
-
-        //temporary fix
-        options.find((option) => option.value === language)?.value || options[0]?.value || '',
-    );
 
     const handleChangeLanguage = (newLanguage: AppLanguage) => {
         window.location.href = currentPathname.replace(`/${language}`, `/${newLanguage}`);
@@ -46,7 +38,6 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         const selectedLanguage = option.value as AppLanguage;
         handleChangeLanguage(selectedLanguage);
         setIsOpen(false);
-        setSelected(option.label);
     };
 
     const toggleDropdown = () => setIsOpen(!isOpen);

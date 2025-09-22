@@ -1,6 +1,8 @@
 import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
 import { FurnitureSearchPageProps } from '@/preparedPages/FurniturePages';
+import { defaultOpenGraph } from '@/shared/seoConstants';
+import { getRouteFurnitureSearchPage } from '@/shared/appLinks/RoutePaths';
 
 export async function _getPage(lng: string) {
     const { t } = await useServerTranslation(lng, 'furnituresearch');
@@ -14,6 +16,15 @@ export async function _getPage(lng: string) {
             title: t('head-title'),
             description: t('head-description'),
             keywords: t('head-keywords'),
+            openGraph: {
+                ...defaultOpenGraph,
+                title: t('og-title'),
+                description: t('og-description'),
+                url: `/${lng}${getRouteFurnitureSearchPage()}`,
+            },
+            alternates: {
+                canonical: `/${lng}${getRouteFurnitureSearchPage()}`,
+            },
         }),
     });
 }

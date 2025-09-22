@@ -1,4 +1,11 @@
-{   "profile-deletion-title": "Profile Deletion",
+{
+    "head-title": "Profile - Altzone",
+    "head-description": "Manage your Altzone profile, including username, password, clan membership, game characters, and avatar customization. Learn about data retention and how to delete your account.",
+    "head-keywords": "altzone, profile, account management, delete account, clan membership, avatar customization, game data, privacy",
+    "og-title": "Altzone Profile Management",
+    "og-description": "View and manage your ALT Zone profile, including game data, clan memberships, and avatars. Learn how to request account deletion and control your stored personal information.",
+
+    "profile-deletion-title": "Profile Deletion",
     "profile-deletion-info": "We retain the following information about the user: Username and password, Clan, Game characters and their progress, Avatar and its customization The information is retained until the player requests its deletion.",
     "profile-deletion": "If you want to delete your account, please leave the clan and send a request to delete your information via email to: proyaleg@gmail.com. Remember to include your username and password. We will delete the information manually."
 }

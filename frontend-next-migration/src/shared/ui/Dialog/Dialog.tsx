@@ -77,8 +77,8 @@ const Dialog = ({ isOpen, onClose, children, titleId, descriptionId }: DialogPro
         const controller = new AbortController();
         const { signal } = controller;
 
-        const wrappedHandleKeyDown = (e: KeyboardEvent) => handleKeyDown(e);
-        const wrappedTrapFocus = (e: KeyboardEvent) => trapFocus(e);
+        const wrappedHandleKeyDown = (event: KeyboardEvent) => handleKeyDown(event);
+        const wrappedTrapFocus = (event: KeyboardEvent) => trapFocus(event);
 
         document.addEventListener('keydown', wrappedHandleKeyDown, { signal });
         document.addEventListener('keydown', wrappedTrapFocus, { signal });

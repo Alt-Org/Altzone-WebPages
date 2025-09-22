@@ -1,17 +1,17 @@
-.Title{
-  text-align: center;
-  color: var(--white)
+.Title {
+    text-align: center;
+    color: var(--white);
 }
 
 .TitleContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
 
-  @media (max-width: 1023px) {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    flex-direction: column;
-  };
+    @media (max-width: 1023px) {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        flex-direction: column;
+    }
 }

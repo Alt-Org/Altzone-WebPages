@@ -12,6 +12,7 @@ interface SidebarConfig {
     hideOnDesktop?: boolean;
     collapsed?: boolean;
     className?: string;
+    width?: string;
 }
 
 interface DesktopLeftSidebarLayoutPropsBase {
@@ -41,6 +42,8 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
         !leftTopSidebar?.hideOnDesktop && !rightBottomSidebar?.hideOnDesktop;
     const shouldBeFluid = hasBothSidebars && bothSidebarsVisibleOnDesktop;
     const collapsed = leftTopSidebar?.collapsed;
+    const width = leftTopSidebar?.width;
+
     const leftTopSidebarMods = {
         [cls.hideOnMobile]: leftTopSidebar?.hideOnMobile,
         [cls.hideOnDesktop]: leftTopSidebar?.hideOnDesktop,
@@ -61,8 +64,8 @@ const LayoutWithSidebars = (props: DesktopLeftSidebarLayoutProps) => {
             {leftTopSidebar && (
                 <aside
                     style={{
-                        minWidth: collapsed ? '1em' : '300px',
-                        flexBasis: collapsed ? '1em' : '22%',
+                        minWidth: collapsed ? '1em' : width ? width : '300px',
+                        flexBasis: collapsed ? '1em' : width ? width : '22%',
                         overflowX: collapsed ? 'hidden' : 'auto',
                         top: !isTopIndentCustom ? '50px' : undefined,
                     }}
