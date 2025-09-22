@@ -184,20 +184,18 @@
   }
 
   .navSymbol {
-   // display: none; // hide side arrows on small screens
+    display: none; // hide side arrows on small screens
   }
 
   .zoomButtonWrapper {
-    padding: 0;
-    justify-content: flex-end;
-    margin: 10px 10px 0 0;
-    width: 100%;
+    padding-right: 0;
+    justify-content: right;
+    margin-right: 0;
   }
 
   .coverZoomPosition {
     width: auto;
-    //margin: 10px auto;
-    align-self: flex-end;
+    margin: 10px auto;
   }
 
   .sliderContainer {
@@ -210,4 +208,3 @@
     height: auto;
   }
 }
-
