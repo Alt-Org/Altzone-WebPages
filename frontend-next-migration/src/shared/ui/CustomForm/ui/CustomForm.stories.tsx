@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import MemoizedForm from './CustomForm';
 import { useState } from 'react';
 import { ClanLabel } from '@/entities/Clan/enum/clanLabel.enum';

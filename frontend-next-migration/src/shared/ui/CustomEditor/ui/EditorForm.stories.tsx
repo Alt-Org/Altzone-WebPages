@@ -1,7 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { EditorForm } from './EditorForm';
 import { ChangeEvent, FormEvent } from 'react';
 import 'react-quill/dist/quill.snow.css';
+import { action } from 'storybook/actions';
 
 const meta = {
     title: 'shared/ui/CustomEditor/EditorForm',
@@ -91,5 +92,21 @@ export const Default: Story = {
         slug: '',
         description: '',
         content: '',
+        handleTitleChange: (event: ChangeEvent<HTMLInputElement>) => {
+            action(`Title changed: ${event.target.value}`);
+        },
+        handleSlugChange: (value: string) => {
+            action(`Slug changed: ${value}`);
+        },
+        handleDescriptionChange: (event: ChangeEvent<HTMLTextAreaElement>) => {
+            action(`Description changed: ${event.target.value}`);
+        },
+        handleContentChange: (value: string) => {
+            action(`Content changed: ${value}`);
+        },
+        handleSubmit: (event: FormEvent) => {
+            event.preventDefault();
+            action('Form submitted');
+        },
     },
 };

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { CustomSlider } from './CustomSlider';
 import NewsCard from '@/widgets/SectionNewsPreview/ui/NewsCard/NewsCard';
 

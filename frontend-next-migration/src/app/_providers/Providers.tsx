@@ -19,12 +19,12 @@ export function Providers({ children }: ProvidersProps) {
                 loading={null}
                 persistor={persistor}
             >
-                <ThemeProvider>
-                    <CookiesProvider>
+                <CookiesProvider>
+                    <ThemeProvider>
                         <ToastContainer />
                         {children}
-                    </CookiesProvider>
-                </ThemeProvider>
+                    </ThemeProvider>
+                </CookiesProvider>
             </PersistGate>
         </ReduxProvider>
     );

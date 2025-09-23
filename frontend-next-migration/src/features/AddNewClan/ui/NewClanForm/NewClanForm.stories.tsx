@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/nextjs';
 import { NewClanForm } from './NewClanForm';
 
 export default {
@@ -7,10 +7,6 @@ export default {
     args: {
         className: '',
     },
-} as ComponentMeta<typeof NewClanForm>;
+} as Meta<typeof NewClanForm>;
 
-const Template: ComponentStory<typeof NewClanForm> = (args) => {
-    return <NewClanForm {...args} />;
-};
-
-export const Default = Template.bind({});
+export const Default: StoryObj<typeof NewClanForm> = {};
