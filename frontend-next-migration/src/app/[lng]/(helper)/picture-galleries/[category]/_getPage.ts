@@ -10,7 +10,7 @@ export async function _getPage(lng: string, category: string) {
     const categoryName = t(`categories.${category}.name`, category);
     const categoryDesc = t(`categories.${category}.description`, t('head-description'));
 
-    const url = `/${lng}/picture-galleries/${category}`;
+    const path = `/${lng}/picture-galleries/${category}`;
     const imagePath = '/images/opengraph-image.png';
     const imageAbs = `${baseUrl}${imagePath}`;
 
@@ -32,12 +32,12 @@ export async function _getPage(lng: string, category: string) {
                 title,
                 description: categoryDesc,
                 keywords: `${categoryName}, ${t('head-keywords')}`,
-                alternates: { canonical: url },
+                alternates: { canonical: path },
                 openGraph: {
                     type: 'website',
                     title,
                     description: categoryDesc,
-                    url,
+                    url: path,
                     images: [{ url: imageAbs, width: 1200, height: 630 }],
                 },
             };
