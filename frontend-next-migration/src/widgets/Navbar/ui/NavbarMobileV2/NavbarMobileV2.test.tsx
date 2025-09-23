@@ -21,6 +21,22 @@ jest.mock('@/entities/Auth', () => ({
     }),
 }));
 
+// Mock the auth forms
+jest.mock('@/features/AuthByUsername', () => ({
+    LoginForm: ({ onSuccessLogin, extraContent }: any) => (
+        <div data-testid="login-form">
+            <button onClick={onSuccessLogin}>Login</button>
+            {extraContent}
+        </div>
+    ),
+    RegisterForm: ({ extraContent }: any) => (
+        <div data-testid="register-form">
+            Register Form
+            {extraContent}
+        </div>
+    ),
+}));
+
 jest.mock('@/shared/lib/hooks/useIsPageScrollbar');
 
 jest.mock('react-i18next', () => ({
@@ -36,7 +52,10 @@ jest.mock('next/navigation', () => ({
 
 describe('Navbar mobile', () => {
     beforeEach(() => {
-        (useClientTranslation as jest.Mock).mockReturnValue({ t: jest.fn((key) => key) });
+        // Mock both translation namespaces
+        (useClientTranslation as jest.Mock).mockImplementation((namespace) => ({
+            t: jest.fn((key) => `${namespace}.${key}`),
+        }));
         (useIsPageScrollbar as jest.Mock).mockReturnValue(true);
         (usePathname as jest.Mock).mockReturnValue('/some/path');
     });
@@ -67,7 +86,7 @@ describe('Navbar mobile', () => {
             />,
         );
 
-        const burgerButton = screen.getByTestId('mobile-navbar-burger-button'); // Use getByTestId
+        const burgerButton = screen.getByTestId('mobile-navbar-burger-button');
         await userEvent.click(burgerButton);
 
         expect(screen.getByTestId('nav-menu')).toBeVisible();
@@ -84,9 +103,50 @@ describe('Navbar mobile', () => {
             />,
         );
 
-        const profileButton = screen.getByTestId('mobile-navbar-profile-button'); // Use getByTestId
+        const profileButton = screen.getByTestId('mobile-navbar-profile-button');
         await userEvent.click(profileButton);
 
         expect(screen.getByTestId('mobile-navbar-profile')).toBeVisible();
+    });
+
+    test('shows login form when user can login', async () => {
+        render(
+            <NavbarMobile
+                toggleCollapsed={jest.fn()}
+                isCollapsed={true}
+                isFixed={true}
+                toggleFixed={jest.fn()}
+                navbarBuild={getNavbarBuildBySize('mobile')}
+            />,
+        );
+
+        const profileButton = screen.getByTestId('mobile-navbar-profile-button');
+        await userEvent.click(profileButton);
+
+        expect(screen.getByTestId('login-form')).toBeInTheDocument();
+    });
+
+    test('can toggle between login and register forms', async () => {
+        render(
+            <NavbarMobile
+                toggleCollapsed={jest.fn()}
+                isCollapsed={true}
+                isFixed={true}
+                toggleFixed={jest.fn()}
+                navbarBuild={getNavbarBuildBySize('mobile')}
+            />,
+        );
+
+        const profileButton = screen.getByTestId('mobile-navbar-profile-button');
+        await userEvent.click(profileButton);
+
+        // Initially shows login form
+        expect(screen.getByTestId('login-form')).toBeInTheDocument();
+
+        // Click toggle to register
+        const toggleButton = screen.getByText('auth.text_to_register');
+        await userEvent.click(toggleButton);
+
+        expect(screen.getByTestId('register-form')).toBeInTheDocument();
     });
 });

@@ -38,14 +38,10 @@ describe('LoginForm', () => {
     it('should render form with username and password fields', () => {
         render(<LoginForm {...defaultProps} />);
 
-        expect(screen.getByText('log_in')).toBeInTheDocument();
-        expect(screen.getByLabelText('username')).toBeInTheDocument();
-        expect(screen.getByLabelText('password')).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: 'send' })).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: 'text_to_register' })).toHaveAttribute(
-            'href',
-            '/register',
-        );
+        expect(screen.getAllByText('log_in').length).toBeGreaterThanOrEqual(1);
+        expect(screen.getByPlaceholderText('username')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('password')).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: 'log_in' })).toBeInTheDocument();
     });
 
     // todo
@@ -75,13 +71,5 @@ describe('LoginForm', () => {
 
         expect(screen.getByText('username_required')).toBeInTheDocument();
         expect(screen.getByText('password_required')).toBeInTheDocument();
-    });
-
-    it('should render the AppLink component with correct props', () => {
-        render(<LoginForm {...defaultProps} />);
-
-        const registerLink = screen.getByRole('link', { name: 'text_to_register' });
-        expect(registerLink).toBeInTheDocument();
-        expect(registerLink).toHaveAttribute('href', '/register');
     });
 });

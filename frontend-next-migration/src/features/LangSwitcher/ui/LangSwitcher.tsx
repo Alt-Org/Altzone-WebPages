@@ -24,7 +24,7 @@ export const LangSwitcher = ({ className = '', isOpen = false }: LangSwitcherPro
         i18n: { language },
     } = useTranslation();
 
-    const options = [
+    const options: Option[] = [
         { label: t('FIN'), value: 'fi' },
         { label: t('ENG'), value: 'en' },
         // Add more languages here

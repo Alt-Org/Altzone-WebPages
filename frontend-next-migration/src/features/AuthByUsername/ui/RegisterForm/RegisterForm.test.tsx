@@ -35,16 +35,12 @@ describe('RegisterForm', () => {
     it('should render form with username, password, repeatPassword fields and age consent checkbox', () => {
         render(<RegisterForm {...defaultProps} />);
 
-        expect(screen.getByText('register')).toBeInTheDocument();
-        expect(screen.getByLabelText('username')).toBeInTheDocument();
-        expect(screen.getByLabelText('password')).toBeInTheDocument();
-        expect(screen.getByLabelText('password_again')).toBeInTheDocument();
+        expect(screen.getAllByText('register').length).toBeGreaterThanOrEqual(1);
+        expect(screen.getByPlaceholderText('username')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('password')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('password_again')).toBeInTheDocument();
         expect(screen.getByLabelText('age_Consent')).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: 'send' })).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: 'text_to_login' })).toHaveAttribute(
-            'href',
-            '/login',
-        );
+        expect(screen.getByRole('button', { name: 'register' })).toBeInTheDocument();
     });
 
     // todo
@@ -78,13 +74,5 @@ describe('RegisterForm', () => {
         expect(screen.getByText('password_required')).toBeInTheDocument();
         expect(screen.getByText('repeat_password_required')).toBeInTheDocument();
         expect(screen.getByText('age_consent_required')).toBeInTheDocument();
-    });
-
-    it('should render the AppLink component with correct props', () => {
-        render(<RegisterForm {...defaultProps} />);
-
-        const loginLink = screen.getByRole('link', { name: 'text_to_login' });
-        expect(loginLink).toBeInTheDocument();
-        expect(loginLink).toHaveAttribute('href', '/login');
     });
 });
