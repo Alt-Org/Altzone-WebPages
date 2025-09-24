@@ -118,6 +118,13 @@
     margin-bottom: 40px;
 }
 
+.imgHolder {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
@@ -157,4 +164,5 @@
             font: var(--font-sw-xl);
         }
     }
+    
 }
