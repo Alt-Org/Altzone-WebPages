@@ -5,17 +5,22 @@ import cls from './MusicCollectionsPage.module.scss';
 import SearchIcon from '@/shared/assets/icons/Search.svg';
 import { useClientTranslation } from '@/shared/i18n';
 import { PageTitle } from '@/shared/ui/PageTitle';
-import { NavigationRow } from '@/features/NavigateFurniture/ui/NavigatioRow/NavigationRow';
 import { YoutubeVideoCard } from '@/shared/ui/v2/YoutubeVideoCard';
 import { MusicManager } from '@/entities/Music/model/MusicCollectionsManager';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { SortDropdown } from '@/features/NavigateFurniture/ui/SortDropdown/SortDropdown';
+import { BackButtonLink } from '@/shared/ui/v2/BackButtonLink/ui/BackButtonLink';
 
 interface SearchBarProps {
     className: string;
     value: string;
     onChange: (value: string) => void;
     placeholder: string;
+}
+
+interface NavigationRowProps {
+    className?: string;
 }
 
 const SearchBar = (props: SearchBarProps) => {
@@ -36,6 +41,17 @@ const SearchBar = (props: SearchBarProps) => {
                 className={cls.Input}
                 aria-label="Search input"
             />
+        </div>
+    );
+};
+
+const NavigationRow = (props: NavigationRowProps) => {
+    const { className } = props;
+
+    return (
+        <div className={classNames(cls.NavigationRow, undefined, [className ? className : ''])}>
+            <BackButtonLink href="/collections" />
+            <SortDropdown className={cls.SortDropdown} />
         </div>
     );
 };
