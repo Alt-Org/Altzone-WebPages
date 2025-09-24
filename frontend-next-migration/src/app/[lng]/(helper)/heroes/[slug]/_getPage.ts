@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
 import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 import { HeroPageProps } from '@/preparedPages/HeroesPages';
+import { baseUrl } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string, slug: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -23,6 +24,13 @@ export async function _getPage(lng: string, slug: string) {
     const prevHeroLink = getRouteOneHeroPage(prevHero.slug);
     const nextHeroLink = getRouteOneHeroPage(nextHero.slug);
 
+    // SEO
+    const path = `/${lng}${getRouteOneHeroPage(currentHero.slug)}`;
+    const imageAbs = `${baseUrl}/images/opengraph-image.png`;
+    const title = currentHero.title; // `${currentHero.title} — ${t('heroes')}`
+    const description = currentHero.description;
+    const keywords = `${t('head-keywords')}, ${currentHero.title}, ${currentHero.groupEnum}, ${currentHero.groupName}`;
+
     return createPage<HeroPageProps>({
         buildPage: () => ({
             newSelectedHero: currentHero,
@@ -30,9 +38,17 @@ export async function _getPage(lng: string, slug: string) {
             nextHeroLink: nextHeroLink,
         }),
         buildSeo: () => ({
-            title: currentHero.title,
-            description: currentHero.description,
-            keywords: `${t('head-keywords')}, ${currentHero.title}, ${currentHero.groupEnum}, ${currentHero.groupName}`,
+            title,
+            description,
+            keywords,
+            alternates: { canonical: path },
+            openGraph: {
+                type: 'website',
+                title,
+                description,
+                url: path,
+                images: [{ url: imageAbs, width: 1200, height: 630 }],
+            },
         }),
     });
 }
