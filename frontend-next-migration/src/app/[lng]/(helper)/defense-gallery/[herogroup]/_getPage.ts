@@ -5,6 +5,7 @@ import { HeroGroup } from '@/entities/Hero';
 import { SingleDefensePageProps } from '@/preparedPages/DefenseGalleryPages';
 import { getRouteDefenseGalleryGroupPage } from '@/shared/appLinks/RoutePaths';
 import defenceGalleryImage from '@/shared/assets/images/descriptionCard/defense_gallery.png';
+import { baseUrl } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string, heroGroup: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -13,26 +14,30 @@ export async function _getPage(lng: string, heroGroup: string) {
         notFound();
     }
 
+    const groupName = t(`groups.${heroGroup}.name`, heroGroup);
+    const groupDesc = t(`groups.${heroGroup}.description`, t('og-description'));
+
+    // SEO
+    const path = `/${lng}${getRouteDefenseGalleryGroupPage(heroGroup as HeroGroup)}`;
+    const imageAbs = `${baseUrl}${defenceGalleryImage.src}`;
+    const title = `${t('og-title')} - ${groupName}`;
+    const keywords = `${t('head-keywords')}, ${groupName}`;
+
     return createPage<SingleDefensePageProps>({
         buildPage: () => ({
             heroGroup: heroGroup as HeroGroup,
         }),
         buildSeo: () => ({
-            title: heroGroup,
-            description: heroGroup,
-            keywords: `${t('head-keywords')}, ${heroGroup}`,
+            title,
+            description: groupDesc,
+            keywords,
+            alternates: { canonical: path },
             openGraph: {
-                images: [
-                    {
-                        url: defenceGalleryImage.src,
-                    },
-                ],
-                title: `${t('og-title')} - ${heroGroup}`,
-                description: t('og-description'),
-                url: `/${lng}${getRouteDefenseGalleryGroupPage(heroGroup as HeroGroup)}`,
-            },
-            alternates: {
-                canonical: `/${lng}${getRouteDefenseGalleryGroupPage(heroGroup as HeroGroup)}`,
+                type: 'website',
+                title,
+                description: groupDesc,
+                url: path,
+                images: [{ url: imageAbs, width: 1200, height: 630 }],
             },
         }),
     });
