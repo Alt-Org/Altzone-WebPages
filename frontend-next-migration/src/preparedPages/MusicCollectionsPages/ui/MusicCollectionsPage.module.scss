@@ -43,6 +43,10 @@
     flex-wrap: wrap;
     gap: 40px;
     margin-top: 1em;
+
+    @media (max-width: breakpoint(xl)) {
+        gap: 32px;
+    }
 }   
 
 .NavMenu {

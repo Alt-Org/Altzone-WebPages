@@ -24,10 +24,8 @@ const YoutubeVideoCard: React.FC<YoutubeVideoCardProps> = ({
             <iframe
                 width="100%"
                 height="auto"
-                src={`https://www.youtube.com/embed/${youtubeId}?showinfo=0&rel=0`}
-                title={title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+                src={`https://www.youtube.com/embed/${youtubeId}?rel=0`}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
                 className={cls.VideoIframe}
             />
         </div>
