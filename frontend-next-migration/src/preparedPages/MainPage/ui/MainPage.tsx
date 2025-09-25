@@ -3,7 +3,10 @@ import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesB
 import { Gallery, GalleryProps } from './_components/sections/Gallery';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
-import { NewsSection, NewsSectionProps } from './_components/sections/NewsSection';
+import { NewsCard } from '@/widgets/NewsCard';
+import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
+import { envHelper } from '@/shared/const/envHelper';
+import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import {
     ProjectDescription,
     ProjectDescriptionProps,
@@ -22,7 +25,6 @@ export type Props = {
     heroesBlocks: HeroesBlocksProps;
     galleryCopy: GalleryProps;
     contactSection: ContactSectionProps;
-    newsSection: NewsSectionProps;
 };
 
 function MainPage(props: Props) {
@@ -34,8 +36,11 @@ function MainPage(props: Props) {
         // classifiedHeroesBlocks,
         gallery,
         contactSection,
-        newsSection,
     } = props;
+
+    const { data: latestNews } = useGetNewsQuery({ limit: 2, page: 1 });
+    const directusBaseUrl = envHelper.directusHost;
+    const groupedNews = formatNews(latestNews || [], 'fi-FI');
 
     return (
         <div className={cls.MainPage}>
@@ -59,8 +64,35 @@ function MainPage(props: Props) {
                 maxGroupsPerPage={3}
             />
             <Gallery {...gallery} />
-
-            <NewsSection {...newsSection} />
+            <div className={cls.newsSection}>
+                <h2 className={cls.newsHeader}>Alt Uutiset</h2>
+                <div className={cls.newsGrid}>
+                    {groupedNews.map((news) => {
+                        const imageSrc = news.titlePicture?.id
+                            ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
+                            : hannu.src;
+                        return (
+                            <NewsCard
+                                key={news.id}
+                                titlePicture={imageSrc}
+                                title={news.title}
+                                previewText={news.previewText}
+                                date={news.date}
+                                id={news.id}
+                            />
+                        );
+                    })}
+                </div>
+                <div className={cls.linkWrapper}>
+                    <a
+                        className={cls.link}
+                        href={`/news`}
+                        rel="noopener noreferrer"
+                    >
+                        Lue lisää
+                    </a>
+                </div>
+            </div>
             <ContactSection {...contactSection} />
 
             {/*<Gallery {...galleryCopy} />*/}
