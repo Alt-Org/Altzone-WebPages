@@ -28,9 +28,7 @@ export const GalleryCategoriesWithModalSlider = memo(
             return numA - numB;
         });
 
-        // CHANGE: build full array that includes cover + every page so Fancybox can see all images
-        const allImages = [cover.url, ...sortedSources]; // CHANGE
-
+        const allImages = [cover.url, ...sortedSources];
         const maxPageIndex = Math.ceil(sortedSources.length / 2);
 
         const changePage = (direction: 'next' | 'prev') => {
@@ -56,48 +54,44 @@ export const GalleryCategoriesWithModalSlider = memo(
             if (el) el.click();
         };
 
-        // CHANGE: accept `visible` param and set style on the anchor so non-active items remain in DOM but hidden
-        const renderSingleImage = (src: string, alt: string, idx: number, visible = true) => (
-            <div
-                className={cls.pageWrapper}
-                key={idx}
-            >
-                <a
-                    id={`fancybox-image-${idx}`}
-                    href={src}
-                    data-fancybox={cover.name}
-                    data-index={idx}
-                    style={{ display: visible ? 'block' : 'none' }} // CHANGE: keep anchors in DOM for Fancybox
-                >
-                    <Image
-                        src={src}
-                        width={250}
-                        height={292}
-                        className={cls.coverImage}
-                        alt={alt}
-                    />
-                </a>
-            </div>
-        );
-
-        // CHANGE: render ALL images (so Fancybox gets the full gallery),
-        // and compute visibility per-image instead of mounting only visible ones.
+        // Render all images in DOM; only toggle visibility (do not move pages)
         const renderImages = () => {
             return allImages.map((src, idx) => {
                 let visible = false;
 
-                // cover is index 0 in allImages
                 if (pageIndex === 0) {
-                    visible = idx === 0; // show only the cover
+                    visible = idx === 0; // show cover only
                 } else {
                     const start = (pageIndex - 1) * 2;
                     const leftIdx = 1 + start;
                     const rightIdx = 2 + start;
-                    visible = idx === leftIdx || idx === rightIdx; // show the current spread
+                    visible = idx === leftIdx || idx === rightIdx; // show spread
                 }
 
-                const alt = idx === 0 ? cover.name : `Page ${idx}`;
-                return renderSingleImage(src, alt, idx, visible);
+                return (
+                    <div
+                        className={cls.pageWrapper}
+                        key={idx}
+                        style={{
+                            display: visible ? 'flex' : 'none',
+                        }}
+                    >
+                        <a
+                            id={`fancybox-image-${idx}`}
+                            href={src}
+                            data-fancybox={cover.name}
+                            data-index={idx}
+                        >
+                            <Image
+                                src={src}
+                                width={250}
+                                height={292}
+                                className={cls.coverImage}
+                                alt={idx === 0 ? cover.name : `Page ${idx}`}
+                            />
+                        </a>
+                    </div>
+                );
             });
         };
 
@@ -124,7 +118,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                             </button>
                         </div>
 
-                        {/* Viewer with arrows */}
+                        {/* Viewer */}
                         <div className={cls.cover}>
                             <span
                                 onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
@@ -136,7 +130,6 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 {'<'}
                             </span>
 
-                            {/* CHANGE: renderImages now outputs all anchors; hidden ones remain in DOM */}
                             {renderImages()}
 
                             <span
@@ -152,8 +145,6 @@ export const GalleryCategoriesWithModalSlider = memo(
                             </span>
                         </div>
                     </div>
-
-                    {/* No hidden preload block anymore to avoid duplication */}
 
                     {/* Page slider */}
                     <div className={cls.sliderContainer}>
