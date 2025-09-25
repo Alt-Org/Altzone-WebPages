@@ -5,46 +5,42 @@
 @use "themes/main";
 
 @-moz-document url-prefix() {
-  * {
-    // need to be here because of firefox
-    @include custom-scrollbar;
-  }
+    * {
+        // need to be here because of firefox
+        @include custom-scrollbar;
+    }
 }
 
 @media screen and (min-width: 960px) {
-  html {
-    width:100vw;
-    // todo may be there is a better solution, it is done to avoid navbar jumping
-    overflow-x:hidden;
-  }
+    html {
+        width: 100vw;
+        // todo may be there is a better solution, it is done to avoid navbar jumping
+        overflow-x: hidden;
+    }
 }
-
 
 body {
-  font: 16px/24px;
-  line-height: 1.5;
-  color: var(--white);
-  @include custom-scrollbar;
-  background-color: var(--background);
-  background-repeat: repeat;
-  background-size: contain;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-
-
+    font: 16px/24px;
+    line-height: 1.5;
+    color: var(--white);
+    @include custom-scrollbar;
+    background-color: var(--background);
+    background-repeat: repeat;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
 }
-
 
 // react quill  editor settings
-.ql-align-center{
- text-align: center;
+.ql-align-center {
+    text-align: center;
 }
 
-.ql-align-right{
-  text-align: right;
+.ql-align-right {
+    text-align: right;
 }
 
-.ql-align-justify{
-  text-align: justify;
+.ql-align-justify {
+    text-align: justify;
 }

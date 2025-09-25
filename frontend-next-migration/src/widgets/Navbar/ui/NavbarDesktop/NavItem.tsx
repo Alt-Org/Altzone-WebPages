@@ -1,3 +1,4 @@
+// src/widgets/Navbar/ui/NavbarDesktop/NavItem.tsx
 'use client';
 import Image from 'next/image';
 import { memo } from 'react';
@@ -44,31 +45,23 @@ const NavItem = memo((props: NavItemProps) => {
         const canUserSeeOwnClan = checkPermissionFor('clan:seeOwn').isGranted;
         const localizedElements = item.elements
             .map((element) => {
-                // @ts-ignore
+                // @ts-ignore - element is a union from Dropdown wrapper; not all variants declare elementText
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) {
                     return null;
                 }
-                // @ts-ignore
+                // @ts-ignore - spread element although TS union lacks common shape for all properties
                 const transformedElement = {
-                    // @ts-ignore
+                    // @ts-ignore - preserve original element fields coming from runtime config
                     ...element,
-                    // @ts-ignore
+                    // @ts-ignore - localize elementText even though not in every union member
                     elementText: t(`${element.elementText}`),
-                    // @ts-ignore
-                    // contentItemClassName: cls.dropdownElement,
-                    // contentItemClassName: classNames(cls.dropdownElement, {
-                    //     // @ts-ignore
-                    //     [cls.active]: currentPath === element?.link?.path,
-                    // }),
-                    // @ts-ignore
+                    // @ts-ignore - add computed 'active' flag used only by rendering logic
                     active: currentPath === element?.link?.path,
                 };
 
                 return transformedElement;
             })
             .filter((element) => element !== null);
-
-        // console.log(localizedElements)
 
         const isDropdownActive = localizedElements.some((element) => element.active);
 
@@ -95,7 +88,6 @@ const NavItem = memo((props: NavItemProps) => {
             <li
                 key={item.src}
                 className={classNames(cls.navItem, {}, [className])}
-                // className={className}
             >
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
@@ -115,6 +107,8 @@ const NavItem = memo((props: NavItemProps) => {
             </li>
         );
     }
+
+    return null;
 });
 
 NavItem.displayName = 'NavItem';

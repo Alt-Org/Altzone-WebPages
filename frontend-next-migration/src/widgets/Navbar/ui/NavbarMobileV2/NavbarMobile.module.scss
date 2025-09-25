@@ -9,9 +9,8 @@
     box-shadow: 4px 4px black;
     top: 0;
     left: 10px;
-    right: 10px;  
+    right: 10px;
 
-    
     @media (min-width: 550px) {
         margin-top: 50px;
     }
@@ -30,10 +29,9 @@
     transform: scaleY(0);
     transform-origin: top;
     max-height: 0;
-    transition: 
+    transition:
         transform 0.3s ease,
         max-height 0.3s ease;
-
 }
 .openDropdown {
     padding: 15px;
@@ -42,7 +40,7 @@
 }
 
 .HamurgerBtn {
-    position:absolute;
+    position: absolute;
     margin-left: 15px;
 }
 
@@ -52,10 +50,10 @@
 }
 
 .navLogo {
-    height:100%;
+    height: 100%;
     img {
         height: 100%;
-        width:auto;
+        width: auto;
     }
 }
 
@@ -72,7 +70,7 @@
     display: flex;
     align-items: center;
     gap: 0 12px;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     ul {
         height: max-content;
         width: 100%;
@@ -88,7 +86,7 @@
         height: 25px;
         display: flex;
         align-items: center;
-        color:white;
+        color: white;
     }
 
     img {
@@ -132,4 +130,3 @@
         opacity 0.3s ease-out;
     visibility: visible;
 }
-

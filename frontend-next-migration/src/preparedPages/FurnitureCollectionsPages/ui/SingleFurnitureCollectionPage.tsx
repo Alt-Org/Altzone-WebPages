@@ -1,6 +1,6 @@
 'use client';
 import { FurnitureManager, Category, Piece } from '@/entities/Furniture';
-import { categories } from '@/entities/Furniture/model/initializeFurniture';
+import { categories } from '@/entities/Furniture/model/data/categories';
 import { useClientTranslation } from '@/shared/i18n';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import React, { useMemo, useState } from 'react';

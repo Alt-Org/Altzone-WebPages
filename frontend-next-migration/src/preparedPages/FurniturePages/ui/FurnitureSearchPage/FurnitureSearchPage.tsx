@@ -1,8 +1,6 @@
 'use client';
 import { Ref, useRef, useState } from 'react';
 import { FurnitureManager, FurnitureCardsContainer } from '@/entities/Furniture';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Container } from '@/shared/ui/Container';
 import { useClientTranslation } from '@/shared/i18n';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';

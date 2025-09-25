@@ -21,8 +21,8 @@ describe('PlayWithUs', () => {
 
         expect(screen.getByText(mockProps.title)).toBeInTheDocument();
         expect(screen.getByText(mockProps.webGl.title)).toBeInTheDocument();
-        expect(screen.getByText(mockProps.webGl.text)).toBeInTheDocument();
-        expect(screen.getByText(mockProps.webGl.titleDownload)).toBeInTheDocument();
-        expect(screen.getByText(mockProps.webGl.downloadText)).toBeInTheDocument();
+        expect(screen.getByText(mockProps.webGl.text as string)).toBeInTheDocument();
+        expect(screen.getByText(mockProps.webGl.titleDownload as string)).toBeInTheDocument();
+        expect(screen.getByText(mockProps.webGl.downloadText as string)).toBeInTheDocument();
     });
 });

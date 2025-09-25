@@ -151,13 +151,12 @@
         transform: translateX(-100px) scaleX(0.7);
         opacity: 0;
         visibility: hidden;
-
     }
 
     &.active {
         color: var(--primary-color) !important;
 
-        &>a {
+        & > a {
             color: var(--primary-color) !important;
         }
     }
@@ -165,7 +164,6 @@
 
 .itemNavbarDropDownContent {
     gap: 0.2rem;
-
 }
 
 .appLinkLogo {
@@ -199,7 +197,7 @@
     max-width: 170%;
 }
 
-.siteNavContentList:hover .itemNavbarDropDownContent>*:hover {
+.siteNavContentList:hover .itemNavbarDropDownContent > *:hover {
     text-decoration: underline;
 }
 
@@ -274,7 +272,7 @@
     width: 38px;
     cursor: pointer;
 
-    &>* {
+    & > * {
         color: var(--primary-color) !important;
     }
 }
