@@ -69,7 +69,7 @@
   width: 250px;
   align-self: flex-end;
   margin-top: -10px;
-  margin-bottom: 15px;
+  margin-bottom: 0;
   margin-right: 50px;
 }
 
@@ -179,35 +179,35 @@
 /* ========================= */
 @media (max-width: 768px) {
   .cover {
-    flex-direction: column;   // stack images vertically
-    gap: 10px;
-  }
-
-  .navSymbol {
-    // display: none; // hide side arrows on small screens
+    flex-direction: column;
+    gap: 5px;             // keeps spacing between pages
+    margin-bottom: 0;      // remove extra bottom margin
   }
 
   .zoomButtonWrapper {
-    padding: 0;
-    justify-content: flex-end;
-    margin: 10px 10px 0 0;
+    margin: 0;             // remove extra margin
+    padding: 0;            // keep alignment
+    justify-content: flex-end; // push button to right edge
     width: 100%;
   }
 
   .coverZoomPosition {
     width: auto;
-    //margin: 10px auto;
     align-self: flex-end;
+    margin-top: -10px;
+    margin-bottom: 0;
+    margin-right: 10px;    // near right edge
+  }
+
+  .navSymbol {
+    display: none;        // keep hidden on mobile
   }
 
   .sliderContainer {
-    max-width: 100%;
-    padding: 6px 10px;
+    margin-top: -200px;         // slider immediately under 2nd page
   }
 
   .pageWrapper img {
-    max-width: 100%;
-    height: auto;
+    margin-bottom: 0;
   }
 }
-
