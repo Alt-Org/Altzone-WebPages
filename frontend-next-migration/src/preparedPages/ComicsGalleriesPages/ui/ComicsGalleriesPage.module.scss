@@ -30,18 +30,16 @@
   flex-wrap: wrap;
 }
 
-/* ========================= */
-/* 📱 Mobile adjustments */
-/* ========================= */
+
 @media (max-width: 768px) {
   .Wrapper {
-    padding-top: 10px;   // less padding on top
+    padding-top: 10px;
     padding-bottom: 90px;
   }
 
   .Container {
     h2 {
-      margin-right: 0;   // fix centering
+      margin-right: 0;
       font-size: var(--h2-size-desktop);
       margin-bottom: 20px;
     }

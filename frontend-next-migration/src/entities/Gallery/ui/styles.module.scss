@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center; // ✅ vertical center arrows with pages
+  align-items: center;
   gap: 15px;
   margin-top: 10px;
 }
@@ -33,7 +33,7 @@
   color: var(--primary-color);
   cursor: pointer;
   user-select: none;
-  margin: 0 10px; // ✅ remove top margin
+  margin: 0 10px;
   transition: color 0.2s ease, transform 0.2s ease;
 
   &:hover:not(.disabled) {
@@ -174,20 +174,17 @@
   }
 }
 
-/* ========================= */
-/* 📱 Mobile adjustments */
-/* ========================= */
 @media (max-width: 768px) {
   .cover {
     flex-direction: column;
-    gap: 5px;           // spacing between pages
-    margin-bottom: 0;    // remove extra bottom margin
+    gap: 5px;
+    margin-bottom: 0;
   }
 
   .zoomButtonWrapper {
     margin: 0;
     padding: 0;
-    justify-content: flex-end; // push button to right edge
+    justify-content: flex-end;
     width: 100%;
   }
 
@@ -196,15 +193,15 @@
     align-self: flex-end;
     margin-top: -10px;
     margin-bottom: 0;
-    margin-right: 10px;  // keep button near right edge
+    margin-right: 10px;
   }
 
   .navSymbol {
-    display: none;       // hide arrows on mobile
+    display: none;
   }
 
   .sliderContainer {
-    margin-top: 10px;  // position slider near 2nd page
+    margin-top: 10px;
   }
 
   .pageWrapper img {
