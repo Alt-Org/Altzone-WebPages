@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/nextjs';
 import { EditorForm } from './EditorForm';
 import { ChangeEvent, FormEvent } from 'react';
-import 'react-quill/dist/quill.snow.css';
+import 'react-quill-new/dist/quill.snow.css';
 import { action } from 'storybook/actions';
 
 const meta = {
