@@ -19,6 +19,6 @@ export const envHelper = {
     appDomain: process.env.NEXT_PUBLIC_APP_DOMAIN || 'altzone.fi',
     companyName: process.env.COMPANY_NAME || "Psyche's Royale Gaming ry",
     strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
-    directusHost: process.env.NEXT_PUBLIC_DIRECTUS_HOST || '',
+    directusHost: process.env.NEXT_PUBLIC_DIRECTUS_HOST || 'http://localhost',
     openAiApiKey: process.env.NEXT_PUBLIC_LLM_HOST || '',
 } as const;
