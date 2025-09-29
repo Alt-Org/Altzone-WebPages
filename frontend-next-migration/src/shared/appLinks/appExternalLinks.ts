@@ -26,4 +26,8 @@ export const AppExternalLinks = {
     dlpackage:
         'https://docs.google.com/document/d/1QJy7PWREJaJpob6HbL26OEVtHrpDsbiHx_ZJIVdC8UI/edit',
     pastversions: 'https://drive.google.com/drive/folders/1n5GVJVXFF2F1sF5-C07uYkFNd9Bsdxzu',
+    prgActivityReport:
+        'https://drive.google.com/file/d/1UATY417TZnsShxNQGagV6JcJOsElvaB5/view?usp=drive_link',
+    prgBylaws:
+        'https://drive.google.com/file/d/1_ek4eGfbxbCYLliY53gLIs0Gv2pwRkhw/view?usp=drive_link',
 } as const;

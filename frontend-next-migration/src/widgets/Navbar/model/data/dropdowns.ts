@@ -7,10 +7,11 @@ import {
     getRouteGameArtPage,
     getRouteDefenseGalleryPage,
     getRouteAllClanSearchPage,
-    getRouteAllFurnitureSetsPage,
     getRouteAllCollectionsPage,
     getRouteJoinUsPage,
     getRouteAboutPage,
+    getRouteTeamPage,
+    getRoutePRGPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -135,7 +136,22 @@ export const dropdowns = {
             },
         },
     ],
-
+    team: [
+        {
+            elementText: 'team',
+            link: {
+                path: getRouteTeamPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'PRG',
+            link: {
+                path: getRoutePRGPage(),
+                isExternal: false,
+            },
+        },
+    ],
     profile: [
         //     {
         //         elementText: 'forum',
