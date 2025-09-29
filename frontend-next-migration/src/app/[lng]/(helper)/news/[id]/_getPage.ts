@@ -1,24 +1,22 @@
 import { createPage } from '@/app/_helpers';
-import { slugToCategoryNameMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
 import { useServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
-import { getRouteNewsCategoryPage } from '@/shared/appLinks/RoutePaths';
+import { getRouteOneNewsPage } from '@/shared/appLinks/RoutePaths';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
-export async function _getPage(lng: string, slug: string) {
+export async function _getPage(lng: string, id: string) {
     const { t } = await useServerTranslation(lng, 'news');
-    if (!slug || !slugToCategoryNameMap[slug]) {
-        return notFound();
+
+    if (!id) {
+        notFound();
     }
 
-    const categoryName = slugToCategoryNameMap[slug];
-
     // Routes & SEO
-    const relPath = getRouteNewsCategoryPage(encodeURIComponent(slug));
+    const relPath = getRouteOneNewsPage(encodeURIComponent(id));
     const path = `/${lng}${relPath}`;
-    const title = `${categoryName} - ${t('head-title')}`;
+    const title = t('head-title');
     const description = t('head-description');
-    const keywords = `${t('head-keywords')}, ${categoryName}`;
+    const keywords = t('head-keywords');
 
     return createPage({
         buildPage: () => ({}),
@@ -28,7 +26,7 @@ export async function _getPage(lng: string, slug: string) {
             keywords,
             openGraph: {
                 ...defaultOpenGraph,
-                type: 'website',
+                type: 'article',
                 title,
                 description,
                 url: path,
@@ -37,4 +35,3 @@ export async function _getPage(lng: string, slug: string) {
         }),
     });
 }
-// This file is used to generate the page data for the news category page.

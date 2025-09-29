@@ -3,7 +3,8 @@ import { useServerTranslation } from '@/shared/i18n';
 import { ClanRoomSubPageProps } from '@/preparedPages/ClanPages';
 import { envHelper } from '@/shared/const/envHelper';
 import { notFound } from 'next/navigation';
-import { baseUrl } from '@/shared/seoConstants';
+import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
+import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string, id: string) {
     const { t } = await useServerTranslation(lng, 'clan');
@@ -11,13 +12,12 @@ export async function _getPage(lng: string, id: string) {
     if (!response.ok) {
         return notFound();
     }
+
+    // Routes & SEO
     const clanData = await response.json();
     const clan = clanData?.data?.Clan ?? {};
-    const path = `/${lng}/clans/${id}`;
-
-    const imagePath = '/images/opengraph-image.png';
-    const imageAbs = `${baseUrl}${imagePath}`;
-
+    const relPath = getRouteOneClanPage(encodeURIComponent(id));
+    const path = `/${lng}${relPath}`;
     const title = `${t('head-title')}: ${clan.name ?? ''}`;
     const description = clan.phrase ?? t('head-description');
     const keywords = `${t('head-keywords')}${clan.tag ? `, ${clan.tag}` : ''}`;
@@ -54,14 +54,14 @@ export async function _getPage(lng: string, id: string) {
             title,
             description,
             keywords,
-            alternates: { canonical: path },
             openGraph: {
+                ...defaultOpenGraph,
                 type: 'website',
                 title,
                 description,
                 url: path,
-                images: [{ url: imageAbs, width: 1200, height: 630 }],
             },
+            alternates: { canonical: path },
         }),
     });
 }

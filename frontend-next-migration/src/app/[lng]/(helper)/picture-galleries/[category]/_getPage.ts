@@ -2,7 +2,8 @@ import { createPage } from '@/app/_helpers';
 import { PictureGalleryPageProps } from '@/preparedPages/PictureGalleryPages';
 import { useServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { baseUrl } from '@/shared/seoConstants';
+import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
+import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string, category: string) {
     const { t } = await useServerTranslation(lng, 'picture-galleries');
@@ -10,9 +11,8 @@ export async function _getPage(lng: string, category: string) {
     const categoryName = t(`categories.${category}.name`, category);
     const categoryDesc = t(`categories.${category}.description`, t('head-description'));
 
-    const path = `/${lng}/picture-galleries/${category}`;
-    const imagePath = '/images/opengraph-image.png';
-    const imageAbs = `${baseUrl}${imagePath}`;
+    const relPath = getRouteGalleryCategoryPage(encodeURIComponent(category));
+    const path = `/${lng}${relPath}`;
 
     return createPage<PictureGalleryPageProps>({
         buildPage: () => ({
@@ -32,14 +32,14 @@ export async function _getPage(lng: string, category: string) {
                 title,
                 description: categoryDesc,
                 keywords: `${categoryName}, ${t('head-keywords')}`,
-                alternates: { canonical: path },
                 openGraph: {
+                    ...defaultOpenGraph,
                     type: 'website',
                     title,
                     description: categoryDesc,
                     url: path,
-                    images: [{ url: imageAbs, width: 1200, height: 630 }],
                 },
+                alternates: { canonical: path },
             };
         },
     });

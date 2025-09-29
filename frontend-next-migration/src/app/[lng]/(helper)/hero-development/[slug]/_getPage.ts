@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { color, HeroManager, HeroSlug } from '@/entities/Hero';
 import { HeroDevelopmentPageProps } from '@/preparedPages/HeroDevelopmentPage';
 import { getRouteOneHeroDevPage } from '@/shared/appLinks/RoutePaths';
-import { baseUrl } from '@/shared/seoConstants';
+import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string, slug: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -17,9 +17,9 @@ export async function _getPage(lng: string, slug: string) {
         stat.color = color[stat.name];
     });
 
-    // SEO
-    const path = `/${lng}${getRouteOneHeroDevPage(currentHero.slug)}`;
-    const imageAbs = `${baseUrl}/images/opengraph-image.png`;
+    // Routes & SEO
+    const relPath = getRouteOneHeroDevPage(encodeURIComponent(currentHero.slug));
+    const path = `/${lng}${relPath}`;
     const title = currentHero.title;
     const description = currentHero.description;
     const keywords = `${t('head-keywords')}, ${currentHero.title}, ${currentHero.groupEnum}, ${currentHero.groupName}`;
@@ -32,14 +32,14 @@ export async function _getPage(lng: string, slug: string) {
             title,
             description,
             keywords,
-            alternates: { canonical: path },
             openGraph: {
+                ...defaultOpenGraph,
                 type: 'website',
                 title,
                 description,
                 url: path,
-                images: [{ url: imageAbs, width: 1200, height: 630 }],
             },
+            alternates: { canonical: path },
         }),
     });
 }
