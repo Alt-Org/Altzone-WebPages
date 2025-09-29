@@ -44,9 +44,13 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 4px 8px 0 var(--black);
+    transition: border-color 0.3s ease-out;
     @media (max-width:breakpoint(md)) {
         height:160px !important;
         box-shadow: 2px 4px 0 var(--black);
+    }
+    &:hover {
+        border-color: var(--primary-border);
     }
 }
 

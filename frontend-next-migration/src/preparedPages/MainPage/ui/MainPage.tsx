@@ -1,5 +1,12 @@
 'use client';
-import { SectionHeroesBlocks, HeroesBlocksProps } from '@/widgets/SectionHeroesBlocks';
+import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
+import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
+import {
+    DescriptionCardMobile,
+    DescriptionCardMobileTheme,
+} from '@/shared/ui/v2/DescriptionCardMobile';
+import defenceGalleryMobile from '@/shared/assets/images/descriptionCard/defense_gallery_mobile.png';
+import useSizes from '@/shared/lib/hooks/useSizes';
 import { Gallery, GalleryProps } from './_components/sections/Gallery';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
@@ -22,7 +29,6 @@ export type Props = {
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
     gallery: GalleryProps;
-    heroesBlocks: HeroesBlocksProps;
     galleryCopy: GalleryProps;
     contactSection: ContactSectionProps;
 };
@@ -32,12 +38,12 @@ function MainPage(props: Props) {
         projectDescription,
         playWithUs,
         // getToKnowComics,
-        heroesBlocks,
         // classifiedHeroesBlocks,
         gallery,
         contactSection,
     } = props;
 
+    const { isMobileSize } = useSizes();
     const { data: latestNews } = useGetNewsQuery({ limit: 2, page: 1 });
     const directusBaseUrl = envHelper.directusHost;
     const groupedNews = formatNews(latestNews || [], 'fi-FI');
@@ -57,12 +63,45 @@ function MainPage(props: Props) {
             {/*<VideoAndGalleries*/}
             {/*    {...videoAndGalleries}*/}
             {/*/>*/}
-
-            <SectionHeroesBlocks
-                {...heroesBlocks}
-                maxHeroesPerGroup={2}
-                maxGroupsPerPage={3}
-            />
+            {isMobileSize ? (
+                <div className={cls.descriptionCardMobile}>
+                    <a
+                        className={cls.cardLink}
+                        href={`/defense-gallery`}
+                        rel="noopener noreferrer"
+                    >
+                        <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+                            <DescriptionCardMobile.Texts title="Tutustu Defenssiluokkiimme" />
+                            <DescriptionCardMobile.Image
+                                src={defenceGalleryMobile}
+                                alt="defense gallery mobile"
+                            />
+                        </DescriptionCardMobile>
+                    </a>
+                </div>
+            ) : (
+                <div className={cls.descriptionCard}>
+                    <a
+                        className={cls.cardLink}
+                        href={`/defense-gallery`}
+                        rel="noopener noreferrer"
+                    >
+                        <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
+                            <DescriptionCard.Texts width="25%">
+                                <DescriptionCard.Texts.Title>
+                                    Tutustu Defenssiluokkiimme
+                                </DescriptionCard.Texts.Title>
+                            </DescriptionCard.Texts>
+                            <DescriptionCard.Image width="65%">
+                                <DescriptionCard.Image.Image
+                                    src={defenceGallery}
+                                    alt="defence gallery"
+                                />
+                            </DescriptionCard.Image>
+                        </DescriptionCard>
+                    </a>
+                </div>
+            )}
             <Gallery {...gallery} />
             <div className={cls.newsSection}>
                 <h2 className={cls.newsHeader}>Alt Uutiset</h2>

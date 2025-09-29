@@ -126,6 +126,9 @@
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
+    @media (max-width: breakpoint(xxl)) {
+        margin-top: 20px;
+    }
 }
 
 @keyframes rotate {
