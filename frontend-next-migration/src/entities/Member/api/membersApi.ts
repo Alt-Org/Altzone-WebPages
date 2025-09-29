@@ -22,6 +22,7 @@ const membersApi = directusApi.injectEndpoints({
                                 'team.translations.*',
                                 'translations.*',
                                 'logo.*',
+                                'portrait.*',
                             ],
                             limit: 500,
                         }),

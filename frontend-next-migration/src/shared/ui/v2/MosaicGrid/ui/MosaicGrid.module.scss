@@ -1,0 +1,13 @@
+.MosaicGrid {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(1rem, 1fr));
+    padding: 24px 48px;
+    gap: 48px;
+    background-color: var(--background);
+    border: 3px solid var(--black);
+    box-shadow: 4px 8px 0px var(--black);
+}
+
+.MosaicGridItem {
+    height: 700px;
+}

@@ -17,6 +17,7 @@ export interface Member {
     department?: Department | null;
     team?: Team | null;
     translations?: Translation[];
+    portrait?: string;
 }
 
 export interface Department {
