@@ -1,10 +1,14 @@
 import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
-import { color, HeroManager, HeroSlug } from '@/entities/Hero';
+import { color, HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
 import { HeroDevelopmentPageProps } from '@/preparedPages/HeroDevelopmentPage';
 import { getRouteOneHeroDevPage } from '@/shared/appLinks/RoutePaths';
-import { defaultOpenGraph } from '@/shared/seoConstants';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
+
+function getHeroOgImage(hero: HeroWithGroup) {
+    return `${baseUrl}${typeof hero.srcImg === 'string' ? hero.srcImg : hero.srcImg.src}`;
+}
 
 export async function _getPage(lng: string, slug: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -23,6 +27,7 @@ export async function _getPage(lng: string, slug: string) {
     const title = currentHero.title;
     const description = currentHero.description;
     const keywords = `${t('head-keywords')}, ${currentHero.title}, ${currentHero.groupEnum}, ${currentHero.groupName}`;
+    const ogImage = getHeroOgImage(currentHero);
 
     return createPage<HeroDevelopmentPageProps>({
         buildPage: () => ({
@@ -38,6 +43,12 @@ export async function _getPage(lng: string, slug: string) {
                 title,
                 description,
                 url: path,
+                images: [
+                    {
+                        url: ogImage,
+                        alt: `${title} - ${currentHero.groupName}`,
+                    },
+                ],
             },
             alternates: { canonical: path },
         }),
