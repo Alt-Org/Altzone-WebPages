@@ -4,7 +4,11 @@ import { notFound } from 'next/navigation';
 import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
 import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 import { HeroPageProps } from '@/preparedPages/HeroesPages';
-import { defaultOpenGraph } from '@/shared/seoConstants';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
+
+function getHeroOgImage(hero: HeroWithGroup) {
+    return `${baseUrl}${typeof hero.srcImg === 'string' ? hero.srcImg : hero.srcImg.src}`;
+}
 
 export async function _getPage(lng: string, slug: string) {
     const { t } = await useServerTranslation(lng, 'heroes');
@@ -30,6 +34,7 @@ export async function _getPage(lng: string, slug: string) {
     const title = currentHero.title;
     const description = currentHero.description;
     const keywords = `${t('head-keywords')}, ${currentHero.title}, ${currentHero.groupEnum}, ${currentHero.groupName}`;
+    const ogImage = getHeroOgImage(currentHero);
 
     return createPage<HeroPageProps>({
         buildPage: () => ({
@@ -47,6 +52,12 @@ export async function _getPage(lng: string, slug: string) {
                 title,
                 description,
                 url: path,
+                images: [
+                    {
+                        url: ogImage,
+                        alt: `${title} - ${currentHero.groupName}`,
+                    },
+                ],
             },
             alternates: { canonical: path },
         }),
