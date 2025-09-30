@@ -4,7 +4,9 @@ import { ClanRoomSubPageProps } from '@/preparedPages/ClanPages';
 import { envHelper } from '@/shared/const/envHelper';
 import { notFound } from 'next/navigation';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
-import { defaultOpenGraph } from '@/shared/seoConstants';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
+
+const OG_FALLBACK = `${baseUrl}/images/opengraph-image.png`;
 
 export async function _getPage(lng: string, id: string) {
     const { t } = await useServerTranslation(lng, 'clan');
@@ -16,11 +18,13 @@ export async function _getPage(lng: string, id: string) {
     // Routes & SEO
     const clanData = await response.json();
     const clan = clanData?.data?.Clan ?? {};
+
     const relPath = getRouteOneClanPage(encodeURIComponent(id));
     const path = `/${lng}${relPath}`;
     const title = `${t('head-title')}: ${clan.name ?? ''}`;
-    const description = clan.phrase ?? t('head-description');
+    const description = clan.phrase?.trim() || t('head-description');
     const keywords = `${t('head-keywords')}${clan.tag ? `, ${clan.tag}` : ''}`;
+    const ogImage = clan.ogImageUrl?.startsWith('http') ? clan.ogImageUrl : OG_FALLBACK;
 
     return createPage<ClanRoomSubPageProps>({
         buildPage: () => ({
@@ -60,6 +64,7 @@ export async function _getPage(lng: string, id: string) {
                 title,
                 description,
                 url: path,
+                images: [ogImage],
             },
             alternates: { canonical: path },
         }),
