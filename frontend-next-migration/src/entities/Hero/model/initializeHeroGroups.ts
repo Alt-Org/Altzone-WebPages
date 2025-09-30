@@ -28,7 +28,7 @@ import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_croppe
 import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
-import { statData } from '@/entities/Hero';
+import { statData } from '../model/stats/statsDataV2';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
