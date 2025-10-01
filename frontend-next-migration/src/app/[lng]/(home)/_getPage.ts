@@ -84,6 +84,7 @@ export async function _getPage(lng: string) {
                 title: t('project-description-title'),
                 infoText: t('project-description-text'),
                 socialsText: t('socials-text'),
+                followUsText: t('follow-us-text'),
                 seeMoreLink: {
                     text: t('gallery-seeMore'),
                     href: getRouteAboutPage(),
@@ -100,6 +101,7 @@ export async function _getPage(lng: string) {
                 title: t('project-description-title'),
                 infoText: t('project-description-text'),
                 socialsText: t('socials-text'),
+                followUsText: t('follow-us-text'),
                 seeMoreLink: {
                     text: t('gallery-seeMore'),
                     href: getRouteAboutPage(),
