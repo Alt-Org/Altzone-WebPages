@@ -1,21 +1,18 @@
-import type { StorybookConfig } from "@storybook/nextjs";
+import type { StorybookConfig } from '@storybook/nextjs';
+import path from 'path';
 
 const config: StorybookConfig = {
     stories: [
         // "../src/**/*.mdx",
-        "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+        '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     ],
 
     // stories: [
     //   '../src/**/*.stories.@(js|jsx|ts|tsx)'
     // ],
 
-    addons: [
-        "@storybook/addon-links",
-        "@storybook/addon-essentials",
-        "@storybook/addon-onboarding",
-        "@storybook/addon-interactions",
-    ],
+    addons: ['@storybook/addon-links', '@storybook/addon-onboarding', '@storybook/addon-docs'],
+
     framework: {
         name: '@storybook/nextjs',
         options: {
@@ -24,32 +21,24 @@ const config: StorybookConfig = {
             },
         },
     },
-
-    // features: {
-    //   storyStoreV7: false,
-    // },
-
-    //todo if we enable this to work with svgs we will break other image types for some reason..., figure our why
-    // webpackFinal: async (config) => {
-    //
-    //   const fileLoaderRule = config.module.rules.find((rule) =>
-    //       // @ts-ignore
-    //       rule.test?.test?.('.svg')
-    //   );
-    //   // @ts-ignore
-    //   fileLoaderRule.exclude = /\.svg$/;
-    //
-    //   config.module.rules.push({
-    //     test: /\.svg$/,
-    //     use: ['@svgr/webpack'],
-    //   });
-    //
-    //   return config;
-    // },
-
-
-    docs: {
-        autodocs: "tag",
+    webpackFinal: async (config) => {
+        config.resolve = config.resolve || {};
+        config.resolve.alias = {
+            ...(config.resolve.alias || {}),
+            '@': path.resolve(__dirname, '../src'),
+        };
+        if (config.module?.rules) {
+            config.module.rules.push({
+                test: /\.scss$/,
+                loader: 'sass-loader',
+                options: {
+                    additionalData: `
+           @use "@/app/_styles/variables/_mixins.scss" as *;
+         `,
+                },
+            });
+        }
+        return config;
     },
 };
 export default config;

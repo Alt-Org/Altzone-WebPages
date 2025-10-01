@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 const meta: Meta<typeof NavbarDesktop> = {

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { CustomEditorCreateNew } from './CustomEditorCreateNew';
 import './CustomEditor.module.scss'; // Adjust the path to your actual stylesheet
 

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/nextjs';
 import React from 'react';
 import { ScrollTop } from './ScrollTop';
 
@@ -9,10 +9,10 @@ export default {
         className: '',
         children: 'UP',
     },
-} as ComponentMeta<typeof ScrollTop>;
+} as Meta<typeof ScrollTop>;
 
-const Template: ComponentStory<typeof ScrollTop> = (args) => {
-    return (
+export const Default: StoryObj<typeof ScrollTop> = {
+    render: (args) => (
         <>
             <div
                 style={{
@@ -27,7 +27,5 @@ const Template: ComponentStory<typeof ScrollTop> = (args) => {
             </div>
             <ScrollTop {...args} />
         </>
-    );
+    ),
 };
-
-export const Default = Template.bind({});
