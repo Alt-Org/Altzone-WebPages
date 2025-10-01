@@ -3,7 +3,6 @@
     user-select: none;
     width: 420px;
     padding: 15px;
-    margin: 5px;
     border-radius: var(--border-radius-custom);
     display: grid;
     gap: 10px;
@@ -15,7 +14,7 @@
 
     h1 {
         text-align: center;
-        font-family: 'Inter', sans-serif;
+        margin-bottom: 5px;
     }
 
     div {
@@ -25,6 +24,7 @@
     span {
         margin-bottom: 3px;
         padding-left: 3px;
+        padding-right: 3px;
         overflow-x: hidden;
     }
 
@@ -42,7 +42,6 @@
         margin-bottom: 20px;
         height: 15px;
         line-height: 15px;
-        font: var(--font-dm-m);
     }
 
     .submit {
@@ -50,9 +49,7 @@
         background-color: rgba(203, 203, 203, 1);
         color: black;
         text-shadow: none;
-        font: var(--font-dm-xl);
         border-radius: var(--border-radius-custom);
-        padding: 10px;
     }
 
     .field input[type='checkbox'] {

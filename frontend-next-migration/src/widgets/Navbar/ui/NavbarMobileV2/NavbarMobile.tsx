@@ -5,11 +5,6 @@ import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
-import {
-    getRouteComingSoonPage,
-    getRouteLoginPage,
-    getRouteRegisterPage,
-} from '@/shared/appLinks/RoutePaths';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
 import closeIcon from '@/shared/assets/icons/closeIcon.svg';
@@ -172,7 +167,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                         <div className={cls.authFormContainer}>
                             {authMode === 'login' ? (
                                 <LoginForm
-                                    toRegisterPage={getRouteRegisterPage()}
                                     onSuccessLogin={handleAuthSuccess}
                                     extraContent={
                                         <button
@@ -186,7 +180,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                 />
                             ) : (
                                 <RegisterForm
-                                    toLoginPage={getRouteLoginPage()}
                                     extraContent={
                                         <button
                                             type="button"

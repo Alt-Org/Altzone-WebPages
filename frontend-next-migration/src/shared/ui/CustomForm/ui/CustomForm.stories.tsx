@@ -102,17 +102,19 @@ export const FormCheckbox: Story = {
 
 export const MultiSelectionDropdown: Story = {
     render: () => {
-        const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
-
-        return (
-            <MemoizedForm.MultiSelectionDropdown
-                label="Labels"
-                options={ClanLabel}
-                defaultSelected={{ ITSENÄISET: ClanLabel.ITSENÄISET }}
-                maxSelections={5}
-                value={selected}
-                onSelectChange={(newSelection) => setSelected(newSelection)}
-            />
-        );
+        function DropdownWithState() {
+            const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
+            return (
+                <MemoizedForm.MultiSelectionDropdown
+                    label="Labels"
+                    options={ClanLabel}
+                    defaultSelected={{ ITSENÄISET: ClanLabel.ITSENÄISET }}
+                    maxSelections={5}
+                    value={selected}
+                    onSelectChange={setSelected}
+                />
+            );
+        }
+        return <DropdownWithState />;
     },
 };

@@ -52,6 +52,35 @@ type InputFieldProps = {
     showPasswordToggle?: boolean;
 };
 
+interface PasswordToggleButtonProps {
+    showPassword: boolean;
+    onToggle: () => void;
+}
+
+function PasswordToggleButton({ showPassword, onToggle }: PasswordToggleButtonProps) {
+    return (
+        <button
+            type="button"
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            onClick={onToggle}
+            className={cls.showPassword}
+            style={{
+                position: 'absolute',
+                right: 15,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+            }}
+            tabIndex={-1}
+        >
+            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+        </button>
+    );
+}
+
 function InputField({
     label,
     error,
@@ -63,13 +92,18 @@ function InputField({
     const [showPassword, setShowPassword] = useState(false);
 
     const isPasswordType = inputProps?.type === 'password';
+    const shouldShowToggle = showPasswordToggle && isPasswordType;
 
-    const inputType =
-        showPasswordToggle && isPasswordType
-            ? showPassword
-                ? 'text'
-                : 'password'
-            : inputProps?.type || 'text';
+    const getInputType = () => {
+        if (!shouldShowToggle) {
+            return inputProps?.type || 'text';
+        }
+        return showPassword ? 'text' : 'password';
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
 
     return (
         <div
@@ -80,28 +114,13 @@ function InputField({
             <input
                 id={inputId}
                 {...inputProps}
-                type={inputType}
+                type={getInputType()}
             />
-            {showPasswordToggle && isPasswordType && (
-                <button
-                    type="button"
-                    aria-label={showPassword ? 'Hide password' : 'Show password'}
-                    onClick={() => setShowPassword((v) => !v)}
-                    className={cls.showPassword}
-                    style={{
-                        position: 'absolute',
-                        right: 10,
-                        top: '50%',
-                        transform: 'translateY(-50%)',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        padding: 0,
-                    }}
-                    tabIndex={-1}
-                >
-                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-                </button>
+            {shouldShowToggle && (
+                <PasswordToggleButton
+                    showPassword={showPassword}
+                    onToggle={togglePasswordVisibility}
+                />
             )}
             {error && (
                 <p

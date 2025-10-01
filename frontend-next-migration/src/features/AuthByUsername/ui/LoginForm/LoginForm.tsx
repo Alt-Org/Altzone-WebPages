@@ -5,20 +5,12 @@ import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
 
 export interface LoginFormProps {
-    toForgottenPwPage?: string;
-    toRegisterPage: string;
     onSuccessLogin?: () => void;
     extraContent?: ReactNode;
 }
 
 const LoginForm = (props: LoginFormProps) => {
-    const {
-        toRegisterPage,
-        onSuccessLogin = function () {},
-        toForgottenPwPage = '',
-        extraContent,
-    } = props;
-
+    const { onSuccessLogin = function () {}, extraContent } = props;
     const { t } = useClientTranslation('auth');
     const { register, handleSubmit, onFormSubmit, errors } = useLoginForm({ onSuccessLogin });
 

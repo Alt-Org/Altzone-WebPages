@@ -1,12 +1,19 @@
+.baseAuthForm {
+    margin-right: 15px;
+    @media (max-width: 900px) {
+        margin-right: 0;
+    }
+}
+
 .fields {
-    gap: 8px;
+    gap: 4px;
+    font: var(--font-dm-bold-s);
 
     input {
         background-color: var(--background-color);
         color: white;
         border: 2px solid rgba(18, 18, 18, 1);
         border-radius: 25px;
-        padding: 8px;
     }
     input::placeholder {
         color: var(--primary-color);
@@ -16,6 +23,7 @@
     }
 }
 .header {
+    font: var(--font-dm-bold-m);
     display: flex;
     font-size: 0.8em;
     justify-content: start;
@@ -23,6 +31,5 @@
 }
 
 .actions {
-    gap: 12px;
     text-align: center;
 }

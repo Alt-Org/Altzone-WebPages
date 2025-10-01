@@ -55,7 +55,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
-    padding-top: 3px;
+    padding-top: 7px;
 
     .navItem:nth-child(9) {
         margin-left: -35px;
@@ -269,7 +269,6 @@
 .authButton {
     position: relative;
     color: var(--primary-color) !important;
-    font: var(--font-dm-bold-m) !important;
     text-align: center;
     padding: 5px;
     align-items: center;
@@ -344,5 +343,6 @@
     cursor: pointer;
     padding: 5px 0;
     margin-top: 10px;
+    font: var(--font-dm-bold-m);
     font-size: inherit;
 }

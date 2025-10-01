@@ -1,5 +1,5 @@
 import { usePathname } from 'next/navigation';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import languageIcon from '@/shared/assets/icons/langIcon.svg';
@@ -31,10 +31,7 @@ export const LangSwitcher = ({ className = '', isOpen = false }: LangSwitcherPro
     ];
 
     // Get the label of the current language
-    const [selected, setSelected] = useState<string>(
-        // options.find((option) => option.value === language)?.label || options[0]?.label || '',
-
-        //temporary fix
+    const [_selected, setSelected] = useState<string>(
         options.find((option) => option.value === language)?.value || options[0]?.value || '',
     );
 
@@ -66,19 +63,6 @@ export const LangSwitcher = ({ className = '', isOpen = false }: LangSwitcherPro
             }
         }
     };
-
-    // Close the menu if clicking outside of it (only if managing own state)
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                // This would need to be handled by parent now
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    });
 
     return (
         <div

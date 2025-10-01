@@ -5,12 +5,11 @@ import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
 
 export interface RegisterFormProps {
-    toLoginPage: string;
     extraContent?: ReactNode;
 }
 
 const RegisterForm = (props: RegisterFormProps) => {
-    const { toLoginPage, extraContent } = props;
+    const { extraContent } = props;
 
     const { t } = useClientTranslation('auth');
     const { register, handleSubmit, onFormSubmit, errors } = useRegisterForm();

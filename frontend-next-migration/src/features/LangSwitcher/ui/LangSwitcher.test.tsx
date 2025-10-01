@@ -37,7 +37,10 @@ describe('LangSwitcher', () => {
         render(<LangSwitcher isOpen={true} />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
+        const iconDiv = langSwitcher.querySelector('div');
+        if (iconDiv) {
+            fireEvent.click(iconDiv);
+        }
 
         const finnishOption = screen.getByRole('option', { name: 'FIN' });
         fireEvent.click(finnishOption);
@@ -54,7 +57,10 @@ describe('LangSwitcher', () => {
         render(<LangSwitcher isOpen={true} />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
+        const iconDiv = langSwitcher.querySelector('div');
+        if (iconDiv) {
+            fireEvent.click(iconDiv);
+        }
 
         const englishOption = screen.getByRole('option', { name: 'ENG' });
         fireEvent.click(englishOption);
@@ -79,7 +85,10 @@ describe('LangSwitcher', () => {
         render(<LangSwitcher isOpen={true} />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
-        fireEvent.click(langSwitcher.firstElementChild!);
+        const iconDiv = langSwitcher.querySelector('div');
+        if (iconDiv) {
+            fireEvent.click(iconDiv);
+        }
 
         const options = screen.getAllByRole('option');
         expect(options).toHaveLength(2);

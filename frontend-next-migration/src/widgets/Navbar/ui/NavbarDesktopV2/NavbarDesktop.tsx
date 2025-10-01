@@ -1,3 +1,4 @@
+// src/widgets/Navbar/ui/NavbarDesktopV2/NavbarDesktop.tsx
 import { usePathname } from 'next/navigation';
 import { CSSProperties, memo, useEffect, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
@@ -15,7 +16,6 @@ import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import Image from 'next/image';
-import { getRouteLoginPage, getRouteRegisterPage } from '@/shared/appLinks/RoutePaths';
 
 /**
  * Properties for NavnarDesctop component
@@ -181,7 +181,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                 >
                                     {authMode === 'login' ? (
                                         <LoginForm
-                                            toRegisterPage={getRouteRegisterPage()}
                                             onSuccessLogin={handleAuthSuccess}
                                             extraContent={
                                                 <button
@@ -195,7 +194,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                         />
                                     ) : (
                                         <RegisterForm
-                                            toLoginPage={getRouteLoginPage()}
                                             extraContent={
                                                 <button
                                                     type="button"
@@ -281,7 +279,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             className={classNames(cls.CollapseButtonWrapper, {
                                 [cls.collapsing]: isAnimating,
                             })}
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(event) => event.stopPropagation()}
                         >
                             <ToggleCollapseButton
                                 onClick={handleCollapseClick}
