@@ -1,31 +1,32 @@
 {
-    "PlayOnline": "PLAY IN BROWSER!",
+    "PlayOnline": "PLAY",
 
-    "head-title": "AltZone",
+    "head-title": "ALT Zone",
     "head-description": "ALT Zone is an online multiplayer game designed for mobile platforms, developed as an educational tool for art education in primary schools.",
     "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
-    "og-title": "AltZone - Start Your Game Here",
+    "og-title": "ALT Zone - Start Your Game Here",
     "og-description": "ALT Zone is an online multiplayer game designed for mobile platforms, developed as an educational tool for art education in primary schools.",
     "ranking-player": "player",
     "ranking-score": "score",
 
     "main-title": "LET'S MAKE THE BEST GAME IN THE WORLD TOGETHER!",
-    "main-description": "In the ALT Zone mobile game, you enter the depths of the human mind, where game characters represent defense mechanisms and face each other on the battlefield of interaction situations.",
-
+    "main-description": "In the ALT Zone mobile game, you dive into the depths of the human mind, where game characters represent defense mechanisms and clash on the battlefield of social interaction.",
+    "main-sub-description": "Explore the labyrinth of our souls\nCan you face your defenses?",
     "project-description-title": "What is Alt Zone?",
-    "project-description-text": "ALT Zone is a mobile game with artistic content developed for use in elementary school art education. Teaching game art is inherently challenging; it heavily relies on personal experience and analysis, and achieving a common experience is nearly impossible. ALT Zone provides a common foundation for game art education. The teaching package is easy to implement; it includes a mobile or PC-tested demo game, as well as questions guiding thinking in the field of game art. The game can also be analyzed solely through videos and images.Students have the opportunity to further develop the game and later download it from the app store as ALT Zone 2.0 - a mobile game. The proceeds from ALT Zone 2.0 will go towards supporting the dreams of youth through the foundation established for this purpose.",
+    "project-description-text": "ALT Zone 1.0 is an art-based mobile game created as a volunteer-driven production in collaboration with young people. In the game, human defense mechanisms clash on the battlefield of social interaction.\n\nAn accompanying educational package for lower and upper secondary schools will be created, which teachers can easily apply in practice. Students have the opportunity to continue developing the game. The revenue from the resulting ALT Zone 2.0 game will be donated in full to support the dreams of young people.",
     "project-description-array": [
-        "ALT Zone is a mobile game with artistic content developed for use in elementary school art education. Teaching game art is inherently challenging; it heavily relies on personal experience and analysis, and achieving a common experience is nearly impossible.",
-        "ALT Zone provides a common foundation for game art education. The teaching package is easy to implement; it includes a mobile or PC-tested demo game, as well as questions guiding thinking in the field of game art. The game can also be analyzed solely through videos and images.",
-        "Students have the opportunity to further develop the game and later download it from the app store as ALT Zone 2.0 - a mobile game. The proceeds from ALT Zone 2.0 will go towards supporting the dreams of youth through the foundation established for this purpose."
+        "ALT Zone is a mobile game enriched with artistic content, developed as a teaching tool for art education in comprehensive schools. Teaching game art is inherently challenging; it relies heavily on personal experience and analysis, making shared experiences nearly impossible to achieve.",
+        "ALT Zone provides a common foundation for teaching game art. The teaching package is easy to implement; it includes a demo game that can be tested on a mobile or PC device, as well as questions guiding students toward critical thinking in game art. The game can also be analyzed solely through videos and images.",
+        "Students have the opportunity to continue developing the game into a downloadable mobile version, ALT Zone 2.0, available later from the app store. The revenue from ALT Zone 2.0 will support young people’s dreams through a dedicated foundation."
     ],
+    "follow-us-text": "Follow us on social media",
 
     "getToKnowComics": "Explore comics",
     "getToKnowComics-title": "The game inventor's story",
 
     "videoAndGalleries-title": "Our art:",
 
-    "playWithUs-title": "Our links:",
+    "playWithUs-title": "Start playing now!",
     "playWithUs-OpenPositions-title": "See open positions",
     "playWithUs-OpenPositions-body": "Come with us",
     "playWithUs-BecomeATester-title": "Become a tester",
@@ -35,5 +36,12 @@
     "classifiedHeroesBlocks-title": "Heroes",
     "classifiedHeroesBlocks-seeMore": "More",
 
-    "gallery-seeMore": "See more"
+    "gallery-seeMore": "See more",
+    "playWithUs-download-text": "Google Play Store",
+    "playWithUs-text": "In browser",
+    "playWithUs-download": "Download",
+    "contact-title": "Interested\nin working\nwith us?",
+    "contact-linkText": "Contact us",
+
+    "newsSection-title": "Alt News"
 }

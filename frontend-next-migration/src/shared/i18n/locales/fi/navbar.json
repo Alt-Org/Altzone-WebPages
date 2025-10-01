@@ -28,5 +28,7 @@
   "development": "Kehittäminen",
   "pictures": "Kuvat",
   "teachers": "Opettajat",
-  "furnituresets": "Huonekalumallistot"
+  "furnituresets": "Huonekalumallistot",
+  "collections": "Kokoelmat",
+  "about": "Meistä"
 }

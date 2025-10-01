@@ -22,6 +22,7 @@ export interface NavMenuWithDropdownsProps {
     staticDropdown?: boolean;
     title: string;
     className?: string;
+    customActiveClassName?: string;
 }
 
 function isDropdownItem(
@@ -44,6 +45,7 @@ function isDropDownElementASTextOrLink(item: any): item is DropDownElementASText
  * @param {boolean} [props.staticDropdown=false] - Determines if the first dropdown element remains static and always open.
  * @param {boolean} [props.titleAsActive=false] - Uses the active dropdown item title as the main dropdown title if the item's link path matches the current router path.
  * @param {string} [props.className=''] - Additional CSS classes for styling the root container.
+ * @param {string} [props.customActiveClassName=''] - Custom class name to apply when an item is active. Only applies to `DropDownElementASTextOrLink` items.
  * @returns {JSX.Element} - The rendered `NavMenuWithDropdowns` component.
  *
  * @example
@@ -102,6 +104,7 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
         openByDefault = false,
         staticDropdown = false,
         titleAsActive = false,
+        customActiveClassName = '',
     } = props;
 
     const [realPath, setRealPath] = useState('/');
@@ -150,12 +153,18 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                             <AppLink
                                 isExternal={item.link.isExternal}
                                 to={item.link.path}
-                                className={classNames(cls.link, { [cls.active]: item.active })}
+                                className={classNames(cls.link, {
+                                    [cls.active]: item.active,
+                                    [customActiveClassName ?? '']: item.active,
+                                })}
                             >
                                 {item.elementText}
                             </AppLink>
                         ) : (
-                            <div className={classNames(cls.text, { [cls.active]: item.active })}>
+                            <div
+                                className={classNames(cls.text, { [cls.active]: item.active })}
+                                onClick={item.onClickCallback}
+                            >
                                 {item.elementText}
                             </div>
                         )

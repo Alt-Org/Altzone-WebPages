@@ -4,7 +4,6 @@ import {
     getRouteAllNewsPage,
     getRouteTeamPage,
     getRouteLoginPage,
-    getRouteTeachersPage,
 } from '@/shared/appLinks/RoutePaths';
 import { dropdowns } from './dropdowns';
 import { NavbarBuilder } from './NavbarBuilder';

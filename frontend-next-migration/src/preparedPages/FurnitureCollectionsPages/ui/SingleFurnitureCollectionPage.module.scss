@@ -1,0 +1,91 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.TitleBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.Title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.SearchBar {
+    display: flex;
+    height: 20px;
+    justify-content: left;
+    color: var(--primary-color);
+    border: 2px solid var(--black);
+    box-shadow: var(--black) 4px 4px 0;
+    border-radius: 1.5em;
+    background: var(--base-card-background);
+    align-items: center;
+    font: var(--font-dm-m);
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.SearchBarDesktop {
+    max-width: 300px;
+}
+
+.SearchBarTablet {
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+.SearchBarMobile {
+    max-width: 100%;
+    margin-bottom: 1rem;
+}
+
+.Input {
+    color: var(--primary-color);
+    padding-left: 1em;
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+}
+
+.DesktopCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+}
+
+.MobileCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.CustomSwitch {
+    white-space: nowrap;
+}
+
+.NavigationRowMobile {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.NavigationRowDesktop {
+    margin-bottom: 1.5rem;
+}
+.Author {
+    margin: 2em 0;
+}

@@ -1,6 +1,10 @@
 {
     "join-us": "Join us!",
-    "head-title": "Join us - Altzone",
+    "head-title": "Join us - ALT Zone",
+    "head-description": "Join the ALT Zone project! Become a tester, explore teaching packages, apply for internships, join our Discord community, or share your feedback to improve our game.",
+    "head-keywords": "ALT Zone join us, tester, teaching package, internship, volunteer, Discord",
+    "og-title": "Join the ALT Zone Project",
+    "og-description": "Be part of the ALT Zone journey — test our game, explore teaching tools, join our Discord, apply for internships, or send us your feedback.",
 
     "block-label-discord": "Become a Tester",
     "block-label-connection": "Contact Us",

@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/nextjs';
 import { JoinUsPage } from './JoinUsPage';
 import { BlockSection } from '../types';
 
@@ -8,19 +8,6 @@ const mockDiscordBlock: BlockSection = {
     links: [
         {
             text: 'Example Link',
-            url: 'https://example.com/',
-            isExternal: true,
-        },
-    ],
-    img: 'https://example.com/image.png',
-};
-
-const mockRedditBlock: BlockSection = {
-    label: 'Label',
-    description: 'Description here',
-    links: [
-        {
-            text: 'Open link',
             url: 'https://example.com/',
             isExternal: true,
         },

@@ -1,14 +1,12 @@
-
 .workersSection {
-  z-index: 2;
+    z-index: 2;
 }
 
-
 .Members {
-  width: 100%;
-   
-  @media (max-width: breakpoint(lg)) {
-    display: flex;
-    justify-content: center;
-  }
+    width: 100%;
+
+    @media (max-width: breakpoint(lg)) {
+        display: flex;
+        justify-content: center;
+    }
 }

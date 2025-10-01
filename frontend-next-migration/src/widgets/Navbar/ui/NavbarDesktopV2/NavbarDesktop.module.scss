@@ -1,14 +1,13 @@
 .siteNav {
     position: absolute;
-    font: var(--font-xxl);
+    font: var(--font-dm-bold-m);
     padding-top: 50px;
     color: #fbf7dc;
     width: 100%;
     text-align: center;
     z-index: var(--navbar-z-index);
-    font-weight: 500;
     top: 0;
-    font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px);
+    font-size: max(calc(20 * calc(min(750px, 100vw) / 750)), 12px) !important;
     user-select: none;
 
     &.collapsed {
@@ -25,7 +24,6 @@
 .col {
     color: var(--primary-color);
     text-align: center;
-    font-weight: 600;
     padding: auto;
 }
 
@@ -153,13 +151,12 @@
         transform: translateX(-100px) scaleX(0.7);
         opacity: 0;
         visibility: hidden;
-
     }
 
     &.active {
         color: var(--primary-color) !important;
 
-        &>a {
+        & > a {
             color: var(--primary-color) !important;
         }
     }
@@ -167,7 +164,6 @@
 
 .itemNavbarDropDownContent {
     gap: 0.2rem;
-
 }
 
 .appLinkLogo {
@@ -198,9 +194,10 @@
 
 .itemNavbarDropDownContent {
     text-align: left;
+    max-width: 150%;
 }
 
-.siteNavContentList:hover .itemNavbarDropDownContent>*:hover {
+.siteNavContentList:hover .itemNavbarDropDownContent > *:hover {
     text-decoration: underline;
 }
 
@@ -212,7 +209,7 @@
     top: 10px;
     color: var(--primary-color) !important;
     color: white;
-    font-size: var(--font-size-m) !important;
+    font: var(--font-dm-bold-m) !important;
     width: 85px;
     margin: 0;
     display: flex;
@@ -266,7 +263,7 @@
 .authButton {
     position: relative;
     color: var(--primary-color) !important;
-    font-size: var(--font-size-m) !important;
+    font: var(--font-dm-bold-m) !important;
     text-align: center;
     padding: 5px;
     align-items: center;
@@ -275,7 +272,7 @@
     width: 38px;
     cursor: pointer;
 
-    &>* {
+    & > * {
         color: var(--primary-color) !important;
     }
 }

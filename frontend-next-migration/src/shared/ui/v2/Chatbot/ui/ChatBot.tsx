@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+'use client';
 /**
  * ChatBotButton Component
  *
@@ -8,7 +8,6 @@
  *
  * @module ChatBotButton
  */
-
 import React from 'react';
 import Image from 'next/image';
 import cls from './ChatBot.module.scss';
@@ -47,7 +46,7 @@ export interface ChatBotButtonProps {
  *
  * @example
  * // With close callback
- * <ChatBotButton onClose={() => console.log('Chatbot closed')} />
+ * <ChatBotButton onClose={() => setChatbotVisible(false)} />
  *
  * @example
  * // Controlled by parent component
@@ -91,22 +90,22 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                     </div>
                     <button
                         className={cls['close-button']}
-                        onClick={closeChat}
+                        onClick={() => closeChat()}
                     >
                         <Image
                             src={xIcon}
                             alt="Close"
                             width={28}
                             height={28}
+                            style={{ width: 'auto', height: 'auto' }}
                         />
                     </button>
                 </div>
             </div>
             <div className={cls['chatbot-messages']}>
                 {messages.map((msg, index) => (
-                    <>
+                    <React.Fragment key={index}>
                         <div
-                            key={index}
                             className={
                                 cls['message'] +
                                 ' ' +
@@ -136,7 +135,35 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                                 </span>
                             </div>
                         )}
-                    </>
+                        {messages.length === 1 && (
+                            <>
+                                <div className={cls['button-message']}>
+                                    <button
+                                        className={cls['button']}
+                                        onClick={() => handleSendMessage(msg.question1)}
+                                    >
+                                        {msg.question1}
+                                    </button>
+                                </div>
+                                <div className={cls['button-message']}>
+                                    <button
+                                        className={cls['button']}
+                                        onClick={() => handleSendMessage(msg.question2)}
+                                    >
+                                        {msg.question2}
+                                    </button>
+                                </div>
+                                <div className={cls['button-message']}>
+                                    <button
+                                        className={cls['button']}
+                                        onClick={() => handleSendMessage(msg.question3)}
+                                    >
+                                        {msg.question3}
+                                    </button>
+                                </div>
+                            </>
+                        )}
+                    </React.Fragment>
                 ))}
                 {error && <p className={cls['error-message']}>{error}</p>}
                 <div ref={messagesEndRef} />
@@ -155,7 +182,7 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                     className={cls['message-input']}
                 />
                 <button
-                    onClick={handleSendMessage}
+                    onClick={() => handleSendMessage()}
                     disabled={loading}
                     className={cls['send-button']}
                     aria-label="Send"
@@ -186,6 +213,8 @@ export const ChatBotButton: React.FC<ChatBotButtonProps> = ({ onClose }) => {
                                     border: 'none',
                                     filter: 'none',
                                     display: 'block',
+                                    width: 'auto',
+                                    height: 'auto',
                                 }}
                                 draggable={false}
                             />

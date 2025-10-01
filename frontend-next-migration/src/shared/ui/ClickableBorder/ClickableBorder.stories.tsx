@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import React from 'react';
 import ClickableBorder from './ClickableBorder';
 
@@ -7,7 +7,7 @@ const meta = {
     component: ClickableBorder,
     argTypes: {
         borderImageSource: {
-            control: 'any',
+            control: 'text',
             description: 'URL or path of the image to be used for the border when hovered.',
             defaultValue: '',
         },

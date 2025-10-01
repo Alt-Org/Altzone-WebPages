@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Check PR body for issue reference
         run: |
-          if ! grep -qiE '((Fixes|Resolves|Closes) #[0-9]+)' <<< "${{ github.event.pull_request.body }}"; then
+          if ! grep -qiE '((Fixes|Resolves|Closes) ($$#?[0-9]+$$|#[0-9]+))' <<< "${{ github.event.pull_request.body }}"; then
             echo "Please link this PR to an issue (e.g. 'Closes #123') see https://github.com/Alt-Org/Altzone-WebPages/wiki/4.-Pull-Request#description for reference."
             exit 1
           fi

@@ -3,7 +3,7 @@
   overflow-x: hidden;
   border-collapse: collapse;
   max-width: 100px;
-
+  font: var(--font-dm-m);
 
   th,
   td {
@@ -53,7 +53,7 @@
 
 
 .Loader {
-  @include position-absolute-center
+  @include position-absolute-center;
 }
 
 .Buttons {
@@ -66,6 +66,7 @@
 }
 
 .titleText {
+  font: var(--font-dm-bold-xl);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -79,7 +80,7 @@
 
 
   //line height: ;
-  font-size: 1em !important;
+  font: var(--font-dm-m) !important;
   white-space: nowrap;
   min-width: fit-content;
   //border: solid 1px var(--primary-color);

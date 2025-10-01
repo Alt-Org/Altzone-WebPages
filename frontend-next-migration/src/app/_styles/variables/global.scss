@@ -1,11 +1,6 @@
-@import "mixins";
-
 :root {
-  /*--font-family-texts: "Rubik";
-  --font-family-main: 'Urbanist', sans-serif;
-  --font-family-secondary: "DM Sans";*/
-  //--font-family-title: "Sedgwick Ave Display";
 
+// Fonts using Urbanist DEPRECATED
   --font-size-s: 14px;
   --font-line-s: 20px;
   --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
@@ -51,6 +46,94 @@
   --font-line-5xl: 72px;
   --font-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-main);
   //--font-5xl: var(--font-size-5xl) / var(--font-line-5xl);
+
+// Fonts using Sedgwick_Ave_Display HEADINGS
+  --font-size-s: 14px;
+  --font-line-s: 20px;
+  --font-sw-s: var(--font-size-s) / var(--font-line-s) var(--font-family-title);
+
+  --font-size-xs: 12px;
+  --font-line-xs: 18px;
+  --font-sw-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-title);
+
+  --font-size-m: 16px;
+  --font-line-m: 24px;
+  --font-sw-m: var(--font-size-m) / var(--font-line-m) var(--font-family-title);
+
+  --font-size-l: 24px;
+  --font-line-l: 32px;
+  --font-sw-l: var(--font-size-l) / var(--font-line-l) var(--font-family-title);
+
+  --font-size-xl: 32px;
+  --font-line-xl: 40px;
+  --font-sw-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-title);
+
+  --font-size-xxl: 40px;
+  --font-line-xxl: 48px;
+  --font-sw-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-title);
+
+  --font-size-xxxl: 48px;
+  --font-line-xxxl: 56px;
+  --font-sw-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl) var(--font-family-title);
+
+
+  --font-size-4xl: 56px;
+  --font-line-4xl: 64px;
+  --font-sw-4xl: var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-title);
+
+  --font-size-5xl: 64px;
+  --font-line-5xl: 72px;
+  --font-sw-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-title);
+
+// Fonts using DM_SANS BODY, P, NORMAL TEXT
+// NOTE: You might have noticed, that the px values are different to Figma Design System. This is simply to compensate for the 2K layout that they for some reason desided to use instead of FullHD. (text appear smaller than they actually are when implemented here. idk why they didnt just use responsive font units originally?)
+  --font-size-s: 14px;
+  --font-line-s: 20px;
+  --font-dm-s: var(--font-size-s) / var(--font-line-s) var(--font-family-secondary);
+
+  --font-size-xs: 12px;
+  --font-line-xs: 18px;
+  --font-dm-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-secondary);
+
+  --font-size-m: 16px;
+  --font-line-m: 24px;
+  --font-dm-m: var(--font-size-m) / var(--font-line-m) var(--font-family-secondary);
+
+  --font-size-l: 24px;
+  --font-line-l: 32px;
+  --font-dm-l: var(--font-size-l) / var(--font-line-l) var(--font-family-secondary);
+
+  --font-size-xl: 32px;
+  --font-line-xl: 40px;
+  --font-dm-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-secondary);
+
+  --font-size-xxl: 40px;
+  --font-line-xxl: 48px;
+  --font-dm-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-secondary);
+
+  --font-size-xxxl: 48px;
+  --font-line-xxxl: 56px;
+  --font-dm-xxxl: var(--font-size-xxxl) / var(--font-line-xxxl) var(--font-family-secondary);
+
+
+  --font-size-4xl: 56px;
+  --font-line-4xl: 64px;
+  --font-dm-4xl: var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-secondary);
+
+  --font-size-5xl: 64px;
+  --font-line-5xl: 72px;
+  --font-dm-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-secondary);
+
+  // Fonts using DM_SANS BOLD
+  --font-dm-bold-s: 700 var(--font-size-s) / var(--font-line-s) var(--font-family-secondary);
+  --font-dm-bold-xs: 700 var(--font-size-xs) / var(--font-line-xs) var(--font-family-secondary);
+  --font-dm-bold-m: 700 var(--font-size-m) / var(--font-line-m) var(--font-family-secondary);
+  --font-dm-bold-l: 700 var(--font-size-l) / var(--font-line-l) var(--font-family-secondary);
+  --font-dm-bold-xl: 700 var(--font-size-xl) / var(--font-line-xl) var(--font-family-secondary);
+  --font-dm-bold-xxl: 700 var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-secondary);
+  --font-dm-bold-xxxl: 700 var(--font-size-xxxl) / var(--font-line-xxxl) var(--font-family-secondary);
+  --font-dm-bold-4xl: 700 var(--font-size-4xl) / var(--font-line-4xl) var(--font-family-secondary);
+  --font-dm-bold-5xl: 700 var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-secondary);
 
   //figma spacers
   --spacer300: 16px;

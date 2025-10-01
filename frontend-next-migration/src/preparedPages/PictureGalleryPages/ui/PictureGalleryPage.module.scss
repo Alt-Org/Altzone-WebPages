@@ -5,7 +5,7 @@
   min-height: 100vh;
   padding-bottom: 20px;
 
-  //@media (max-width: 1200px) {
+  //@media (max-width: breakpoint(xl)) {
   //  margin-top: 50px;
   //}
 
@@ -24,7 +24,7 @@
     width: 85%;
     margin: auto;
     text-align: center;
-    font-size: 1.2em;
+    font: var(--font-dm-m);
   }
 
 
@@ -35,11 +35,9 @@
 }
 
 .Title {
-  font-size: clamp(40px, 7vw, 50px);
-  font-family: var(--font-family-main), serif;
+  font: var(--font-sw-xxxl);
   color: var(--primary-color);
   line-height: 1.5;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -47,7 +45,7 @@
   width: 85%;
   margin: 40px auto;
   text-align: center;
-  font-size: 1.2em;
+  font: var(--font-dm-m);
 }
 
 
@@ -58,21 +56,28 @@
   flex-wrap: wrap;
 }
 
-@media (min-width: 768px) {
+@media (min-width: breakpoint(md)) {
   .Container {
     //margin-top: 10vh;
 
     .SocialsText {
       width: 75%;
-      font-size: 1.5em;
+      font: var(--font-dm-m);
     }
   }
 
   .InfoText {
     width: 75%;
-    font-size: 1.5em;
+    font: var(--font-dm-m);
   }
 
+}
+
+@media (max-width: 480px) {
+  .Title {
+    font: var(--font-sw-xxl);
+  }
+  
 }
 
 .videoWrapper{

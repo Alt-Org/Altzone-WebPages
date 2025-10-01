@@ -69,3 +69,9 @@ export interface MediaFile {
     tus_data: string | null;
     uploaded_on: string;
 }
+
+export enum NewsCategorySlug {
+    UPDATE = 'update',
+    ANNOUNCEMENT = 'announcement',
+    GAME_UPDATE = 'game-update',
+}

@@ -35,6 +35,7 @@ export enum Category {
     SINKS = 'SINKS',
     CABINETS = 'CABINETS',
     BEDS = 'BEDS',
+    DECORATIONS = 'DECORATIONS',
     ITEMS = 'ITEMS',
 }
 export interface PieceType {
@@ -95,6 +96,7 @@ export interface SetInfo {
     id: string;
     path: string;
     cover: StaticImageData | string;
+    coverWebp?: StaticImageData | string;
     author: string;
     coverposition: FurnitureSetCoverPosition;
     items: Piece[];

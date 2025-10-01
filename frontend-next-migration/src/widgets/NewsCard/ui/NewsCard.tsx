@@ -34,7 +34,6 @@ const NewsCard = (props: NewsCardProps) => {
                                 src={picture}
                                 alt={title}
                                 className={cls.image}
-                                layout="responsive"
                                 width={100}
                                 height={600}
                             />

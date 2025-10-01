@@ -1,5 +1,4 @@
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { BlockSection } from '../types';
+import type { BlockSection } from '../types';
 import cls from './Block.module.scss';
 
 /**
@@ -24,6 +23,7 @@ export const Block = (props: Props) => {
             data-testid="block"
         >
             <div className={cls.ImageWrapper}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     className={cls.Image}
                     src={block.img}
@@ -45,6 +45,7 @@ export const Block = (props: Props) => {
                                 rel="noopener noreferrer"
                             >
                                 {link.iconSrc && (
+                                    // eslint-disable-next-line @next/next/no-img-element
                                     <img
                                         src={link.iconSrc}
                                         alt={`${link.text} icon`}

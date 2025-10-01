@@ -1,4 +1,5 @@
 .Card {
+    --border-radius-lg: 12px;
     --border-radius-md: 8px;
     --border-radius-sm: 4px;
     --heading-font: 'Sedgwick Ave Display', cursive;
@@ -13,6 +14,7 @@
     --border-desktop: 4px;
     --border-mobile: 2px;
     --primary-color: #FFA100;
+    --primary-border: #FFA100;
     --background: #1E3544;
     --white: #FAF9F6;
     --black: #121212;
@@ -23,11 +25,11 @@
 
     .ModularCardTexts {
         transition: all ease-in-out;
-        transition-duration: 0.7s;
+        transition-duration: 0.3s;
     }
     &:hover {
         .ModularCardTexts {
-            flex-basis: 30% !important;
+            flex-basis: 40% !important;
         }
     }
     
@@ -52,8 +54,7 @@
     }
 }
 .Card.NewsImageCard > .ModularCardTexts {
-    font-family:var(--body-font);
-    font-size: var(--body-size-desktop);
+    font: var(--font-dm-m);
     color: var(--white);
     flex-basis: 50%;
     // overflow: hidden;
@@ -73,14 +74,13 @@
     line-clamp: 1;
     overflow: hidden;
     h2 {
-        font-family:var(--heading-font);
-        font-size:var(--heading-font-size);
+        font: var(--font-sw-l);
         color:var(--primary-color);
     }
     @media (max-width:breakpoint(md)) {
         h2 {
             
-            font-size:var(--h2-size-mobile);
+            font: var(--font-sw-l);
             margin-top:.7em;
         }
         -webkit-line-clamp: 2;
@@ -103,8 +103,7 @@
     
 }
 .Card.NewsImageCard > .ModularCardTexts > .ModularCardFootnote {
-    font-family:var(--body-font);
-    font-size: var(--small-size-desktop);
+    font: var(--font-dm-s);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -139,6 +138,7 @@
     }
 }
 
+
 // TItleImageCard
 .Card.TitleImageCard {
     position: relative;
@@ -169,17 +169,17 @@
     margin-top: .3em;
     margin-bottom: .5em;
     h2 {
-        font-family:var(--heading-font);
-        font-size:var((--h1-size-mobile));
+        font: var(--font-sw-xl);
         color:var(--primary-color);
         margin-left: 30px;
     }
     @media (max-width:breakpoint(md)) {
         h2 {
-            font-size:var(--h2-size-mobile);
+            font: var(--font-sw-l);
         }
     }
 }
+
 .Card.TitleImageCard > .ModularCardImageSection > .ModularCardImage {
     height: 100%;
     width:min-content;
@@ -197,3 +197,151 @@
         border-right: 85px solid transparent;
     }
 }
+
+// DefenseCard
+.Card.DefenseCard {
+    position: relative;
+    display: flex;
+    height: 192px;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 8px 0 var(--black);
+    overflow: hidden;
+    transition: border-color 0.3s ease-out;
+    &:hover {
+        border-color: var(--primary-border);
+    }
+    @media (max-width: breakpoint(xl)) {
+        height: 184px;
+    }
+    @media (max-width:breakpoint(md)) {
+        height: 152px;
+        box-shadow: 2px 4px 0 var(--black);
+    }
+    @media (max-width: 640px) {
+        height: 144px;
+    }
+    @media (max-width:breakpoint(sm)) {
+        height: 120px;
+        box-shadow: 1px 2px 0 var(--black);
+    }
+
+}
+
+
+.Card.DefenseCard > .ModularCardTexts {
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-100);
+    padding-left: var(--spacing-300);
+    justify-content: center;
+    //margin-top: calc(var(--spacing-600) + 8px);
+    font: var(--font-sw-m);
+
+    h2 {
+        line-height: var(--font-line-l) !important;
+        font: var(--font-sw-m);
+        color:var(--white);
+    }
+    @media (max-width: breakpoint(xl)) {
+        //margin-top: var(--spacing-600);
+        h2 {
+            font: var(--font-sw-m);
+        }
+    }
+    @media (max-width: breakpoint(md)) {        
+        padding-left: var(--spacing-200);
+        h2 {
+            line-height: var(--font-line-m) !important;
+            font: var(--font-sw-m);
+        }
+    }
+    @media (max-width: 640px) {
+        h2 {
+            line-height: var(--font-line-xs) !important;
+            font: var(--font-sw-s);
+        }
+    }
+    @media (max-width: breakpoint(sm)) {
+        //margin-top: calc(var(--spacing-500) + 4px);
+        h2 {
+            line-height: 16px !important;
+            font: var(--font-sw-xs);
+        }
+    }
+}
+
+.Card.DefenseCard > .ModularCardTexts > .ModularCardTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+}
+
+.Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
+    line-height: var(--font-line-xl) !important;
+    color:var(--primary-color);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+    font: var(--font-sw-xl);
+    @media (max-width: breakpoint(xl)) {
+        line-height: var(--font-line-l) !important;
+        font: var(--font-sw-l);
+    }
+    @media (max-width: breakpoint(md)) {
+        font: var(--font-sw-l);
+    }
+    @media (max-width: 640px) {
+        line-height: var(--font-line-m) !important;
+        font: var(--font-sw-m);
+    }
+    @media (max-width: breakpoint(sm)) {
+        line-height: var(--font-line-s) !important;
+        font: var(--font-sw-s);
+    }
+}
+
+.Card.DefenseCard > .ModularCardImageSection {
+    flex-basis: 55%;
+    overflow: visible;
+    position: relative;
+}
+
+.Card.DefenseCard > .ModularCardImageSection::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150%;
+    height: 100%;
+    transform: skewX(20deg);    
+    background-color: var(--before-color, red);
+}
+
+.Card.DefenseCard > .ModularCardImageSection > .ModularCardImage {
+    position: relative;
+    left: 24px;
+    max-width: 100%;
+    height: calc(100% + 36px);
+    object-fit: contain;
+    @media (max-width: breakpoint(xl)) {
+        left: 20px;
+    }
+    @media (max-width: breakpoint(md)) {
+        height: calc(100% + 24px);
+    }
+    @media (max-width: 640px) {
+        left: 16px;
+    }
+    @media (max-width: breakpoint(sm)) {
+        left: 12px;
+        top: -8px;
+    }
+}
+

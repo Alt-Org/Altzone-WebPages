@@ -12,7 +12,7 @@
     text-align: left;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 
 
     .Content{
@@ -44,34 +44,30 @@
     h2 {
         padding: 15px 0 0 0;
         margin: 0;
-        font-size: 2.4em;
-        font-weight: 200;
         color: var(--primary-color);
-        font-family: var(--font-family-title);
+        font: var(--font-sw-xxl);
         white-space: pre-line;
     }
 
     h3 {
-        font-size: 1.7em;
+        font: var(--font-dm-l);
         margin-top: 25px;
     }
 
     p {
-        font-size: 0.9em;
+        font: var(--font-dm-s);
         margin: 15px 0;
-        font-family: default;
         color: var(--text-color);
         line-height: 1.1em;
-        font-weight: 200;
         text-align: left;
         max-width: 85%;
-        align-self:flex-start;
+        align-self: flex-start;
         
     }
 
     a {
         text-decoration: underline;
-        font-size: 0.9em;
+        font: var(--font-dm-s);
         color: var(--primary-color)!important;
         text-decoration: none;
         
@@ -147,7 +143,7 @@
  
         
         p{
-            font-size: 0.8em;
+            font: var(--font-dm-xs);
             margin: 10px auto;
             padding: 0 10px;
             text-align: center;

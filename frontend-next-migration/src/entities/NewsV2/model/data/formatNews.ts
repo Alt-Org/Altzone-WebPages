@@ -1,6 +1,7 @@
 'use client';
+import { News } from '@/entities/NewsV2/model/types/types';
 
-export function formatNews(newsArray: any[] = [], lngCode: string) {
+export function formatNews(newsArray: News[] = [], lngCode: string) {
     return newsArray.map((newsItem) => {
         const translation = newsItem.translations.find((t: any) => t.languages_code === lngCode);
 

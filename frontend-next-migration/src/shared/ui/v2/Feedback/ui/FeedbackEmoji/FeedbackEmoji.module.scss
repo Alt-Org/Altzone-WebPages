@@ -1,16 +1,14 @@
-
 .selectedEmoji {
     transition: 0.1s;
-    transform: scale(1.20);
-    outline: 3px solid #FFA101;
+    transform: scale(1.2);
+    outline: 3px solid #ffa101;
     border-radius: 25px;
     outline-offset: -4px;
-    box-shadow: 0px 1px 7px 1px rgba($color: #c5a804cc, $alpha: 1.0);
+    box-shadow: 0px 1px 7px 1px rgba($color: #c5a804cc, $alpha: 1);
     cursor: pointer;
     width: 48px;
     height: 48px;
 }
-
 
 .Emoji:hover {
     transform: scale(1.05);

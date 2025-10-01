@@ -47,7 +47,6 @@ const fiOrder = [
 const enDepartmentOrder = [
     'Coreteam',
     'Lead Developer',
-    'API Developers',
     'Developers',
     'Testing and Analytics',
     'Technical Mentoring',
@@ -62,7 +61,6 @@ const enDepartmentOrder = [
 const fiDepartmentOrder = [
     'Ydintiimi',
     'Vastaavat Ohjelmistokehittäjät',
-    'API Ohjelmoijat',
     'Ohjelmoijat',
     'Testaus ja Analytiikka',
     'Tekninen Mentorointi',
@@ -98,6 +96,12 @@ export const organizeMembers = (members: Member[], lng: string) => {
 
     const order = lng === 'fi' ? fiOrder : enOrder;
     const departmentOrder = lng === 'fi' ? fiDepartmentOrder : enDepartmentOrder;
+
+    // crutch fix for directus returning invalid data
+    if (!Array.isArray(members)) {
+        console.warn('Invalid members passed to organizeMembers', members);
+        return { teamsMap: new Map<number, Team>() };
+    }
 
     members.forEach((member: Member) => {
         const memberTeam = member.team;

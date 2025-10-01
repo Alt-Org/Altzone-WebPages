@@ -1,32 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
-// Finnish locale files
-import fiHeroes from '@/shared/i18n/locales/fi/heroes.json';
-import fiJoinUs from '@/shared/i18n/locales/fi/join-us.json';
-import fiFooter from '@/shared/i18n/locales/fi/footer.json';
-import fiAbout from '@/shared/i18n/locales/fi/about.json';
-import fiArtGame from '@/shared/i18n/locales/fi/artGame.json';
-import fiFurnitureinfo from '@/shared/i18n/locales/fi/furnitureinfo.json';
-import fiCookies from '@/shared/i18n/locales/fi/cookies.json';
-import fiPrivacy from '@/shared/i18n/locales/fi/privacy.json';
-// English locale files
-import enHeroes from '@/shared/i18n/locales/en/heroes.json';
-import enJoinUs from '@/shared/i18n/locales/en/join-us.json';
-import enFooter from '@/shared/i18n/locales/en/footer.json';
-import enAbout from '@/shared/i18n/locales/en/about.json';
-import enArtGame from '@/shared/i18n/locales/en/artGame.json';
-import enFurnitureinfo from '@/shared/i18n/locales/en/furnitureinfo.json';
-import enCookies from '@/shared/i18n/locales/en/cookies.json';
-import enPrivacy from '@/shared/i18n/locales/en/privacy.json';
-// Russian locale files
-import ruHeroes from '@/shared/i18n/locales/ru/heroes.json';
-import ruJoinUs from '@/shared/i18n/locales/ru/join-us.json';
-import ruFooter from '@/shared/i18n/locales/ru/footer.json';
-import ruAbout from '@/shared/i18n/locales/ru/about.json';
-import ruArtGame from '@/shared/i18n/locales/ru/artGame.json';
-import ruFurnitureinfo from '@/shared/i18n/locales/ru/furnitureinfo.json';
-import ruCookies from '@/shared/i18n/locales/ru/cookies.json';
-import ruPrivacy from '@/shared/i18n/locales/ru/privacy.json';
+import { useGetChatbotContextQuery, useGetChatbotLinksQuery } from '@/shared/api';
 
 /**
  * Represents a chat message with role and content
@@ -37,32 +11,18 @@ import ruPrivacy from '@/shared/i18n/locales/ru/privacy.json';
 export interface ChatMessage {
     role: string;
     content: string;
+    question1: string;
+    question2: string;
+    question3: string;
 }
-/**
- * Flattens a nested object into an array of strings with key-value pairs.
- * Recursively processes nested objects and creates dot-notation keys.
- *
- * @param {any} obj - The object to flatten (can contain nested objects)
- * @param {string} [prefix=''] - The prefix for nested keys (used internally for recursion)
- * @returns {string[]} An array of flattened key-value pairs as strings in format "key: value"
- * @example
- * // Returns: ["name: John", "address.city: New York", "address.zip: 10001"]
- * flattenObject({ name: "John", address: { city: "New York", zip: 10001 } })
- */
-function flattenObject(obj: any, prefix = ''): string[] {
-    return Object.entries(obj).flatMap(([key, value]) => {
-        const newKey = prefix ? `${prefix}.${key}` : key;
-        if (typeof value === 'object' && value !== null) {
-            return flattenObject(value, newKey);
-        } else {
-            return [`${newKey}: ${value}`];
-        }
-    });
-}
+
 /**
  * Custom hook for chatbot functionality that manages chat state, messages, and API interactions.
  * Provides chat functionality including message handling, API calls to OpenAI,
  * auto-scrolling, error handling, and internationalization support.
+ *
+ * This hook now fetches context data from Directus collections (heroes, general_content, faq)
+ * instead of using static JSON files, providing dynamic and up-to-date information.
  *
  * @returns {Object} Chatbot state and control functions
  * @returns {ChatMessage[]} returns.messages - Array of chat messages
@@ -92,75 +52,39 @@ export const useChatBot = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [context, setContext] = useState('');
-    const { t } = useClientTranslation('chatbot');
+    const { t, i18n } = useClientTranslation('chatbot');
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    /**
-     * Initializes the context with combined data from locale files across all supported languages
-     * @returns {string} The initialized context string with data from Finnish, English and Russian locales
-     */
-    const initializeContext = (): string => {
-        // Finnish data
-        const finnishData = [
-            fiHeroes,
-            fiJoinUs,
-            fiFooter,
-            fiAbout,
-            fiArtGame,
-            fiFurnitureinfo,
-            fiCookies,
-            fiPrivacy,
-        ]
-            .map((data) => flattenObject(data).join('\n'))
-            .join('\n');
+    // Fetch context from Directus for current language
+    const currentLanguage = i18n.language || 'fi';
+    const { data: linkData = [] } = useGetChatbotLinksQuery(currentLanguage);
+    const { data: contextData = '', isLoading: isContextLoading } =
+        useGetChatbotContextQuery(currentLanguage);
 
-        // English data
-        const englishData = [
-            enHeroes,
-            enJoinUs,
-            enFooter,
-            enAbout,
-            enArtGame,
-            enFurnitureinfo,
-            enCookies,
-            enPrivacy,
-        ]
-            .map((data) => flattenObject(data).join('\n'))
-            .join('\n');
-
-        // Russian data
-        const russianData = [
-            ruHeroes,
-            ruJoinUs,
-            ruFooter,
-            ruAbout,
-            ruArtGame,
-            ruFurnitureinfo,
-            ruCookies,
-            ruPrivacy,
-        ]
-            .map((data) => flattenObject(data).join('\n'))
-            .join('\n');
-
-        // Combine all language data with clear separators
-        const combinedData = [
-            '=== FINNISH DATA ===',
-            finnishData,
-            '\n=== ENGLISH DATA ===',
-            englishData,
-            '\n=== RUSSIAN DATA ===',
-            russianData,
-        ].join('\n\n');
-
-        return combinedData;
-    };
-
+    // Update context state when data changes
     useEffect(() => {
-        setContext(initializeContext());
+        const baseUrl = 'https://altzone.fi';
+        const linksText = linkData
+            .map(
+                (link) =>
+                    `- ${link.title} page: ${link.url.startsWith('http') ? link.url : baseUrl + link.url}`,
+            )
+            .join('\n');
+
+        const fullContext = `${contextData}\n\nHere are some important links you can mention in your answers:\n${linksText}`;
+
+        setContext(fullContext);
+    }, [contextData, linkData]);
+
+    // Initialize welcome message
+    useEffect(() => {
         setMessages([
             {
                 role: 'assistant',
                 content: t('welcomeMessage'),
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
             },
         ]);
     }, [t]);
@@ -180,10 +104,13 @@ export const useChatBot = () => {
             {
                 role: 'assistant',
                 content: t('welcomeMessage'),
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
             },
         ]);
         setUserInput('');
-        setContext(initializeContext());
+        // Context will be refreshed automatically by useEffect when data changes
     };
 
     /**
@@ -193,15 +120,26 @@ export const useChatBot = () => {
      * // User types "Hello" and clicks send
      * handleSendMessage(); // Sends to API and gets AI response
      */
-    const handleSendMessage = async () => {
-        if (!userInput.trim()) return;
+    const handleSendMessage = async (messageContent: string = userInput) => {
+        const content = messageContent.trim() || userInput.trim();
+        if (!content) {
+            return;
+        }
 
-        if (userInput.length > 40) {
+        if (content.length > 40) {
             setError(t('errorMessageTooLong'));
             return;
         }
 
-        const newMessages = [...messages, { role: 'user', content: userInput }];
+        const newMessage = {
+            role: 'user',
+            content: content,
+            question1: t('preQuestion1'),
+            question2: t('preQuestion2'),
+            question3: t('preQuestion3'),
+        };
+
+        const newMessages = [...messages, newMessage];
         setMessages(newMessages);
         setUserInput('');
         setLoading(true);
@@ -231,7 +169,7 @@ export const useChatBot = () => {
                         ...newMessages,
                     ],
                     max_tokens: 200,
-                    stop: ['.'],
+                    // stop: ['.'],
                 }),
             });
 
@@ -245,7 +183,17 @@ export const useChatBot = () => {
             const data = await response.json();
             const assistantMessage = data.choices[0]?.message?.content || t('errorDefaultResponse');
 
-            setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
+            const assistantResponse = {
+                role: 'assistant',
+                content: assistantMessage,
+                question1: t('preQuestion1'),
+                question2: t('preQuestion2'),
+                question3: t('preQuestion3'),
+            };
+
+            setMessages([...newMessages, assistantResponse]);
+            // Still Error Here
+            // setMessages([...newMessages, { role: 'assistant', content: assistantMessage }]);
         } catch (err) {
             setError(`${t('errorUnexpected')} ${err}`);
         } finally {

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import MemoizedForm from './CustomForm';
 import { useState } from 'react';
 import { ClanLabel } from '@/entities/Clan/enum/clanLabel.enum';
@@ -72,11 +72,13 @@ export const Example: Story = {
         ),
     },
 };
+
 export const FormHeader: Story = {
     args: {
         children: <MemoizedForm.Header>Form Title</MemoizedForm.Header>,
     },
 };
+
 export const FormButton: Story = {
     args: {
         children: <MemoizedForm.Button>Submit</MemoizedForm.Button>,
@@ -100,19 +102,22 @@ export const FormCheckbox: Story = {
     },
 };
 
-export const MultiSelectionDropdown: Story = {
-    render: () => {
-        const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
+// Wrapper component so Hooks are used inside a React component (fixes react-hooks/rules-of-hooks)
+const MultiSelectionDropdownStory: React.FC = () => {
+    const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
 
-        return (
-            <MemoizedForm.MultiSelectionDropdown
-                label="Labels"
-                options={ClanLabel}
-                defaultSelected={{ ITSENÄISET: ClanLabel.ITSENÄISET }}
-                maxSelections={5}
-                value={selected}
-                onSelectChange={(newSelection) => setSelected(newSelection)}
-            />
-        );
-    },
+    return (
+        <MemoizedForm.MultiSelectionDropdown
+            label="Labels"
+            options={ClanLabel}
+            defaultSelected={{ ITSENÄISET: ClanLabel.ITSENÄISET }}
+            maxSelections={5}
+            value={selected}
+            onSelectChange={(newSelection) => setSelected(newSelection)}
+        />
+    );
+};
+
+export const MultiSelectionDropdown: Story = {
+    render: () => <MultiSelectionDropdownStory />,
 };

@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import { StoryObj, Meta } from '@storybook/nextjs';
 import { default as FeedbackSideButton } from './FeedbackSideButton';
 
 export default {
@@ -8,15 +7,6 @@ export default {
     args: {
         className: '',
     },
-} as ComponentMeta<typeof FeedbackSideButton>;
+} as Meta<typeof FeedbackSideButton>;
 
-const Template: ComponentStory<typeof FeedbackSideButton> = () => {
-    return (
-        <>
-            {/*<div style={{ height: '2000px' , textAlign: 'center', color: "white" , fontSize: '36px' ,paddingTop: '1rem'}}></div>*/}
-            <FeedbackSideButton />
-        </>
-    );
-};
-
-export const Default = Template.bind({});
+export const Default: StoryObj<typeof FeedbackSideButton> = {};
