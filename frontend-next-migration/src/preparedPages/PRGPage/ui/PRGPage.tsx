@@ -26,7 +26,6 @@ const CheckPdfButton = (checkPdfButtonProps: CheckPdfButtonProps) => (
         className={cls.pdfButton}
         aria-label="Open the PDF in a new tab"
         isExternal={true}
-        rel="noopener noreferrer"
     >
         <span className={cls.label}>{checkPdfButtonProps.t('check-pdf')}</span>
         <Image
