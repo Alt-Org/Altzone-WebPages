@@ -30,4 +30,6 @@ export const AppExternalLinks = {
         'https://drive.google.com/file/d/1UATY417TZnsShxNQGagV6JcJOsElvaB5/view?usp=drive_link',
     prgBylaws:
         'https://drive.google.com/file/d/1_ek4eGfbxbCYLliY53gLIs0Gv2pwRkhw/view?usp=drive_link',
+    prgActionPlan:
+        'https://drive.google.com/file/d/1PdeCJNDY4yz5y7hQzRGpYrJF0q8Eqt9L/view?usp=drive_link',
 } as const;

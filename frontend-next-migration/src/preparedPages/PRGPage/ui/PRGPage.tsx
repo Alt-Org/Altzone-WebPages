@@ -24,7 +24,9 @@ const CheckPdfButton = (checkPdfButtonProps: CheckPdfButtonProps) => (
     <AppLink
         to={checkPdfButtonProps.link}
         className={cls.pdfButton}
-        aria-label="Open the PDF"
+        aria-label="Open the PDF in a new tab"
+        isExternal={true}
+        rel="noopener noreferrer"
     >
         <span className={cls.label}>{checkPdfButtonProps.t('check-pdf')}</span>
         <Image
@@ -79,7 +81,7 @@ const Boardcard = (props: BoardCardProps) => {
 
 const PRGPage = () => {
     const { t } = useClientTranslation('prg');
-    const { isMobileSize } = useSizes();
+    const { isMobileSize, isTabletSize } = useSizes();
 
     return (
         <div className={cls.Container}>
@@ -101,7 +103,7 @@ const PRGPage = () => {
                 <p className={cls.textCenter}>{t('action-plan-text')}</p>
                 <div className={cls.ButtonBlock}>
                     <CheckPdfButton
-                        link="/assets/pdf/PRG_Action_Plan.pdf" //The report is not yet available
+                        link={AppExternalLinks.prgActionPlan}
                         t={t}
                     />
                 </div>
@@ -124,7 +126,7 @@ const PRGPage = () => {
             </div>
             <div className={cls.TextContainer}>
                 <p className={cls.Subheading}>{t('prg-board')}</p>
-                {!isMobileSize ? (
+                {!isMobileSize && !isTabletSize ? (
                     <div className={cls.BoardCardContainer}>
                         <Boardcard
                             picture={Helena}
@@ -159,7 +161,7 @@ const PRGPage = () => {
                             job={'helena-job'}
                             profession={'helena-profession'}
                             t={t}
-                            isMobileSize={isMobileSize}
+                            isMobileSize={isMobileSize || isTabletSize}
                         />
                         <Boardcard
                             picture={Esa}
@@ -167,7 +169,7 @@ const PRGPage = () => {
                             job={'esa-job'}
                             profession={'esa-profession'}
                             t={t}
-                            isMobileSize={isMobileSize}
+                            isMobileSize={isMobileSize || isTabletSize}
                         />
                         <Boardcard
                             picture={Emmi_Irina}
@@ -175,7 +177,7 @@ const PRGPage = () => {
                             job={'emmi-irina-job'}
                             profession={'emmi-irina-profession'}
                             t={t}
-                            isMobileSize={isMobileSize}
+                            isMobileSize={isMobileSize || isTabletSize}
                         />
                     </div>
                 )}
