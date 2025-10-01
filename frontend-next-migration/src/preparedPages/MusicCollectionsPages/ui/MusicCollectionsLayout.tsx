@@ -15,6 +15,7 @@ const MusicCollectionsLayout = ({ children }: { children: ReactNode }) => {
             leftTopSidebar={{
                 component: <MusicCollectionNavMenuAsDropdown className={cls.NavMenu} />,
                 hideOnMobile: true,
+                hideOnDesktop: true,
             }}
         >
             {(isTabletSize || isMobileSize) && (
