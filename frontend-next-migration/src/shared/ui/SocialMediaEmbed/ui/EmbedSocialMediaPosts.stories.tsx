@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { EmbedSocialMediaPosts } from './EmbedSocialMediaPosts';
 

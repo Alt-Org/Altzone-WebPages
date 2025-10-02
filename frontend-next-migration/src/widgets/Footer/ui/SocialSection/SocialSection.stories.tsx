@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { SocialSection } from './SocialSection';
 import { socialIconLinks } from '../../model/data/socialSectionMenu';
 
