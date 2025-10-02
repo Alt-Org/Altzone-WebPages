@@ -12,7 +12,7 @@ jobs:
         run: |
           PR_BODY="${{ github.event.pull_request.body }}"
 
-          matches=$(echo "$PR_BODY" | grep -oiE '(Fixes|Resolves|Closes) #[0-9]+' | wc -l)
+          matches=$(printf '%s\n' "$PR_BODY" | grep -oiE '(Fixes|Resolves|Closes) #[0-9]+' | wc -l)
 
           if [ "$matches" -lt 1 ]; then
             echo "Please link this PR to an issue (e.g. 'Closes #123')"
