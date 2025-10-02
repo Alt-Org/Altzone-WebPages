@@ -38,7 +38,66 @@
     padding: 6px 8px;
 }
 
-.MosaicGrid{
+.MosaicGridContainer {
+    --white: #FAF9F6;
+}
+
+.MosaicGridContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 3px 4px var(--black);
+    background-color: var(--base-card-background);
+    border: 3px solid var(--black);
+    font-size: var(--font-size-m);
     margin-top: 3em;
     margin-bottom: 3em;
+    padding: 1.5em 3em;
+    gap: 1.5em;
+
+    @media (max-width: breakpoint(xl)) {
+        padding: 1em 1em;
+        gap: 1em;
+    }
+
+    @media (max-width: breakpoint(lg)) {
+        width: 95%;
+    }
 }
+
+.Title {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    font: var(--font-sw-xxxl);
+    text-align: center;
+}
+
+.Description {
+    font: var(--font-dm-m);
+    text-align: center;
+    color: var(--white);
+}
+
+.Link {
+    font: var(--font-dm-bold-l);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+    gap: 0.25em;
+    margin-top: 1em;
+}
+
+.LinkText{
+
+}
+
+.LinkIcon {
+    width: 0.85em;
+    height: 0.85em;
+    align-self: center;
+}
+

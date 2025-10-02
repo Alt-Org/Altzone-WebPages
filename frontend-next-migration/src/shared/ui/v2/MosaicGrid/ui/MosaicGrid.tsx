@@ -1,14 +1,72 @@
+import { Member } from '@/entities/Member/model/types/types';
 import cls from './MosaicGrid.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import Image from 'next/image';
+import useSizes from '@/shared/lib/hooks/useSizes';
+import { useMemo } from 'react';
 
 export interface MosaicGridProps {
     className?: string;
+    members: Member[];
 }
 
-const MosaicGrid = ({ className }: MosaicGridProps) => {
+const MosaicGrid = ({ className, members }: MosaicGridProps) => {
+    const { isMobileSize } = useSizes();
+
+    // shuffle members to fill the grid randomly
+    const shuffle = (array: Member[]): Member[] => {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    };
+    const shuffledMembers = useMemo(() => shuffle(members), [members]);
+
+    // Determine grid configuration based on screen size and number of members
+    const rows = isMobileSize ? 3 : members.length < 14 ? 2 : 3;
+    const cols = isMobileSize ? 3 : 7;
+    const totalSlots = rows * cols;
+
+    // Fill the grid with members, repeating if necessary
+    const filledMembers = useMemo(
+        () =>
+            Array.from({ length: totalSlots }, (_, arrayIndex) => {
+                if (shuffledMembers.length === 0) return null;
+                const memberIndex = arrayIndex % shuffledMembers.length;
+                return shuffledMembers[memberIndex];
+            }).filter(Boolean),
+        [shuffledMembers, totalSlots],
+    );
+
     return (
-        <div className={classNames(cls.MosaicGrid, undefined, [className ? className : ''])}>
-            <div className={classNames(cls.MosaicGridItem)} />
+        <div
+            className={classNames(
+                cls.MosaicGrid,
+                {
+                    [cls.Mobile]: isMobileSize,
+                    [cls.Desktop]: !isMobileSize,
+                    [cls.Rows2]: !isMobileSize && rows === 2,
+                    [cls.Rows3]: !isMobileSize && rows === 3,
+                },
+                [className ? className : ''],
+            )}
+        >
+            {filledMembers.map((member, index) =>
+                member ? (
+                    <Image
+                        key={`${member.id}-${index}`}
+                        src={
+                            process.env.NEXT_PUBLIC_DIRECTUS_HOST + '/assets/' + member.portrait?.id
+                        }
+                        alt={member.name}
+                        className={classNames(cls.MosaicGridImage)}
+                        width={126}
+                        height={126}
+                    />
+                ) : null,
+            )}
         </div>
     );
 };

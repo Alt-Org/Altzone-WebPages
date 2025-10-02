@@ -6,8 +6,12 @@ import PageTitle from '@/shared/ui/PageTitle/ui/PageTitle';
 import { MosaicGrid } from '@/shared/ui/v2/MosaicGrid';
 import { ScrollBottomButton } from '@/app/[lng]/(intro)/team/_components/_ScrollBottomButton';
 import play from '@/shared/assets/icons/playIcon.svg';
+import ExternalLink from '@/shared/assets/icons/ExternalLink.svg';
 import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container/ui/Container';
+import { useGetMembersQuery } from '@/entities/Member/api/membersApi';
+import Link from 'next/link';
+import Image from 'next/image';
 
 /**
  * The above code defines a React functional component for a Members Page with a background image
@@ -17,6 +21,14 @@ import { Container } from '@/shared/ui/Container/ui/Container';
 
 const MembersPage: FC = () => {
     const { t } = useClientTranslation('members');
+    const {
+        data: members = [],
+        isError,
+        isLoading,
+    } = useGetMembersQuery(undefined, {
+        refetchOnMountOrArgChange: false,
+    });
+    const membersWithPortrait = members.filter((member) => member.portrait);
     return (
         <>
             <PageTitle
@@ -24,9 +36,25 @@ const MembersPage: FC = () => {
                 searchVisible={false}
                 alternate={true}
             />
-            <Container>
-                <MosaicGrid className={cls.MosaicGrid} />
-            </Container>
+            <div className={cls.MosaicGridContainer}>
+                <h3 className={cls.Title}>{t('team-title')}</h3>
+                <p className={cls.Description}>{t('team-description')}</p>
+                <MosaicGrid
+                    className={cls.MosaicGrid}
+                    members={membersWithPortrait}
+                />
+                <Link
+                    href="/members"
+                    className={cls.Link}
+                >
+                    <span className={cls.LinkText}>{t('link-to-prg')}</span>
+                    <Image
+                        className={cls.LinkIcon}
+                        src={ExternalLink}
+                        alt="External Link Icon"
+                    />
+                </Link>
+            </div>
             <div className={cls.buttonContainer}>
                 <ScrollBottomButton
                     IdToScrollBeforePlay={'members'}

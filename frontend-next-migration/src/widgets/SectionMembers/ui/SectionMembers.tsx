@@ -25,7 +25,6 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     } = useGetMembersQuery(undefined, {
         refetchOnMountOrArgChange: false,
     });
-    // console.log('Members data:', members);
 
     const { teamsMap } = organizeMembers(members, lng);
 

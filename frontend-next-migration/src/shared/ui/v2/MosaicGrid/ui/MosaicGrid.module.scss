@@ -1,13 +1,55 @@
 .MosaicGrid {
+    --border-width: 2px;
+    --border-radius: 4px;
+}
+.MosaicGrid {
     display: grid;
-    grid-template-columns: repeat(8, minmax(1rem, 1fr));
-    padding: 24px 48px;
-    gap: 48px;
-    background-color: var(--background);
-    border: 3px solid var(--black);
-    box-shadow: 4px 8px 0px var(--black);
+    grid-template-rows: auto;
+    align-items: center;
+    align-content: center;
+    padding: 0px;
+    gap: 2px;
+
+    &.Mobile {
+        grid-template-columns:  repeat(3, minmax(1rem, 1fr));
+
+        .MosaicGridImage {
+            // 3x3 grid corners
+            &:nth-child(1) { border-top-left-radius: var(--border-radius); }
+            &:nth-child(3) { border-top-right-radius: var(--border-radius); }
+            &:nth-child(7) { border-bottom-left-radius: var(--border-radius); }
+            &:nth-child(9) { border-bottom-right-radius: var(--border-radius); }
+        }
+    }
+
+    &.Desktop {
+        grid-template-columns:  repeat(7, minmax(1rem, 1fr));
+
+        &.Rows2 {
+            .MosaicGridImage {
+                // 2 rows (7x2 = 14 images) grid corners
+                &:nth-child(1) { border-top-left-radius: var(--border-radius); }
+                &:nth-child(7) { border-top-right-radius: var(--border-radius); }
+                &:nth-child(8) { border-bottom-left-radius: var(--border-radius); }
+                &:nth-child(14) { border-bottom-right-radius: var(--border-radius); }
+            }
+        }
+
+        &.Rows3 {
+            .MosaicGridImage{
+                // 3 rows (7x3 = 21 images) grid corners
+                &:nth-child(1) { border-top-left-radius: var(--border-radius); }
+                &:nth-child(7) { border-top-right-radius: var(--border-radius); }
+                &:nth-child(15) { border-bottom-left-radius: var(--border-radius); }
+                &:nth-child(21) { border-bottom-right-radius: var(--border-radius); }
+            }
+        }
+    }
+
 }
 
-.MosaicGridItem {
-    height: 700px;
+.MosaicGridImage {
+    object-fit: cover;
+    background: var(--base-card-background);
+    border: 2px solid var(--content-primary);
 }
