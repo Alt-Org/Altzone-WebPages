@@ -15,7 +15,7 @@
 
     "RETROFLECTOR": {
         "name": "RETROFLECTOR",
-        "description": "RETROFLECTOR is ...",
+        "description": "They deny the existence of emotions and sacrifice themselves for the Ego, even though they pay a heavy price by resorting to unhealthy means.",
         "heroes": {
             "Overeater": {
                 "title": "Overeater",
@@ -35,7 +35,7 @@
 
     "PROJECTOR": {
         "name": "PROJECTOR",
-        "description": "PROJECTOR on ...",
+        "description": "They strike the Ego’s opponents by turning emotions back on them. However, when the mockery hits their own ankle, they become prone to giving up, as they cannot handle their own messes or take responsibility.",
         "heroes": {
             "Provocateur": {
                 "title": "Provocateur",
@@ -60,7 +60,7 @@
 
     "INTELLECTUALIZER": {
         "name": "INTELLECTUALIZER",
-        "description": "INTELLECTUALIZER  is ...",
+        "description": "They calculate and anticipate every move so that emotions cannot take them by surprise. Their analysis keeps Ego protected, but endless overthinking may frain the flavor from life.",
         "heroes": {
             "Wiseacre": {
                 "title": "Wiseacre",
@@ -85,7 +85,7 @@
 
     "CONFLUENT": {
         "name": "CONFLUENT",
-        "description": "CONFLUENT  is ...",
+        "description": "They are at their strongest within their own bubble, which they have developed to protect the Ego. However, isolation comes at a cost, as without their support network they become highly vulnerable.",
         "heroes": {
             "SoulSisters": {
                 "title": "Soul Sisters",
@@ -110,7 +110,7 @@
 
     "TRICKSTER": {
         "name": "TRICKSTER",
-        "description": "Trickster  is ...",
+        "description": "They protect the Ego by treating emotions like soap – they slip them away and turn them elsewhere so that the Ego avoids encountering them, while leaving others guessing at the unexpected move.",
         "heroes": {
             "Conman": {
                 "title": "Conman",
@@ -141,7 +141,7 @@
 
     "OBEDIENT": {
         "name": "OBEDIENT",
-        "description": "OBEDIENT  is ...",
+        "description": "They dedicate their lives to following the rules set by the Ego and are ready to defend them to their last breath. Unwaveringly loyal, yet unable to grow or move forward.",
         "heroes": {
             "Believer": {
                 "title": "Believer",
@@ -160,7 +160,7 @@
 
     "DESENSITIZER": {
         "name": "DESENSITIZER",
-        "description": "DESENSITIZER is...",
+        "description": "They can hide their emotions behind a tough exterior, but even through their strong presence protects the Ego from bruises, everything has its limits.",
         "heroes": {
             "HateSpeech": {
                 "title": "Hate Speech",

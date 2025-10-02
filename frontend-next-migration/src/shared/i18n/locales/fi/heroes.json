@@ -15,7 +15,7 @@
 
     "RETROFLECTOR": {
         "name": "TORJUJAT",
-        "description": "TORJUJAT on ...",
+        "description": "Kieltäytyvät täysin tunteiden olemassaolosta ja uhraavat itsensä Egon puolesta, vaikka maksavatkin siitä kovan hinnan turvautuessaan epäterveellisiin keinoihin.",
         "heroes": {
             "Overeater": {
                 "title": "Ahmatti",
@@ -34,7 +34,7 @@
 
     "PROJECTOR": {
         "name": "PEILAAJAT",
-        "description": "PEILAAJAT on ...",
+        "description": "Lyövät Egon vastustajat kääntämällä tunnehyökkäykset takaisin heitä vastaan. Pilkan osuessa omaan nilkkaan he ovat kuitenkin alttiita luovuttamaan, sillä he eivät kykene käsittelemään omia sotkujaan tai ottamaan vastuuta.",
         "heroes": {
             "Provocateur": {
                 "title": "Provokaattori",
@@ -59,7 +59,7 @@
 
     "INTELLECTUALIZER": {
         "name": "ÄLYLLISTÄJÄT",
-        "description": "ÄLYLLISTÄJÄT  on ...",
+        "description": "Laskelmoivat ja ennakoivat jokaisen liikkeen, jotta tunteet eivät pääse yllättämään. Heidän analyysinsa pitää Egon suojassa, mutta loputon yliajattelu saattaakin viedä maun elämästä.",
         "heroes": {
             "Wiseacre": {
                 "title": "Viisastelija",
@@ -84,7 +84,7 @@
 
     "CONFLUENT": {
         "name": "SULAUTUJAT",
-        "description": "SULAUTUJAT on ...",
+        "description": "Ovat vahvimmillaan oman kuplansa sisällä, jonka he ovat kehittäneet Egon suojelemiseksi. Eristäytymisellä on kuitenkin hintansa, sillä ilman tukiverkkoaan heistä tulee erittäin haavoittuvaisia.",
         "heroes": {
             "SoulSisters": {
                 "title": "Sielunsiskot",
@@ -110,7 +110,7 @@
 
     "TRICKSTER": {
         "name": "HÄMÄÄJÄT",
-        "description": "Hämääjät on ...",
+        "description": "Suojelevat Egoa kohtelemalla tunteita kuin saippuaa – ne lipsautetaan pois ja käännetään muualle, jotta Ego välttyy kohtaamasta niitä, samalla jättäen muut arvailemaan odottamatonta siirtoa.",
         "heroes": {
             "Conman": {
                 "title": "Huijari",
@@ -141,7 +141,7 @@
 
     "OBEDIENT": {
         "name": "TOTTELIJAT ",
-        "description": "TOTTELIJAT on ...",
+        "description": "Omistavat elämänsä Egon asettamien sääntöjen noudattamiselle ja ovat valmiita puolustamaan viimeiseen hengenvetoon asti. Vankkumattoman lojaaleja, vaikkakin kykenemättömiä kehittymään eteenpäin.",
         "heroes": {
             "Believer": {
                 "title": "Tapauskovainen",
@@ -160,7 +160,7 @@
 
     "DESENSITIZER": {
         "name": "TUNNOTTOMAT",
-        "description": "TUNNOTTOMAT on...",
+        "description": "Pystyvät piilottamaan tunteet kovan ulkokuorensa taakse, mutta vaikka vahva olemus suojeleekin Egoa kolhuilta, niin kaikella on rajansa.",
         "heroes": {
             "HateSpeech": {
                 "title": "Vihapuhe",
