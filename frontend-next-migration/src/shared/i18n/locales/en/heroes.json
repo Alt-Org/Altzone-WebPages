@@ -14,18 +14,18 @@
     "defense-classes": "Defense classes",
 
     "RETROFLECTOR": {
-        "name": "RETROFLECTOR",
+        "name": "RETROFLECTORS",
         "description": "They deny the existence of emotions and sacrifice themselves for the Ego, even though they pay a heavy price by resorting to unhealthy means.",
         "heroes": {
             "Overeater": {
-                "title": "Overeater",
+                "title": "Overeating",
                 "alt": "Overeater image",
                 "altGif": "Overeater gif",
                 "description": "The Overeater has a compulsive relationship with food. Eating is a way for him to process emotions, bringing him comfort and control - especially when he feels abandoned or isolated. Food is like an ever-present companion for the Overeater, walking alongside him day after day and able to help him in a time of need."
             },
 
             "alcoholic": {
-                "title": "Alcoholic",
+                "title": "Alcoholism",
                 "alt": "Alcoholic's image",
                 "altGif": "",
                 "description": "The Alcoholic seeks support and security from alcohol. Drinking is a way for him to numb his insecurities and gain the courage he feels he needs to function in social situations. When drunk, he's like another, better version of himself, like a superhero emerging from an ordinary, flavorless shell. However, alcohol prevents him from being vulnerable and finding true connection with others, leading to confused behavior as the evening darkens and an inevitable drinker's remorse in the morning."
@@ -34,23 +34,23 @@
     },
 
     "PROJECTOR": {
-        "name": "PROJECTOR",
+        "name": "PROJECTORS",
         "description": "They strike the Ego’s opponents by turning emotions back on them. However, when the mockery hits their own ankle, they become prone to giving up, as they cannot handle their own messes or take responsibility.",
         "heroes": {
             "Provocateur": {
-                "title": "Provocateur",
+                "title": "Provocation",
                 "alt": "Provocateur's image",
                 "altGif": "Provocateour's animation gif",
                 "description": "The Provocateur is a storyteller who communicates through her art. Her work is a way to process emotions, find silver linings in the trials that plague her, and say the things that cannot be put into words. The Provocateur also has a deep desire to touch other people, to create reactions and experiences in them, and to challenge their views through her art. Her story is readable by everyone, but it only opens up to those who look deeper than the surface."
             },
             "Mirror": {
-                "title": "Mirror User",
+                "title": "Projection",
                 "alt": "Mirror's image",
                 "altGif": "Mirror's animation gif",
                 "description": "The Mirror User is a lonely and approval-hungry character who tries to blend in with the crowd by mimicking the feelings of others and avoids showing her own feelings for fear of standing out from the crowd. She laughs and disapproves along with others, even though it doesn't really feel good and her insides start to crack."
             },
             "Scapegoater": {
-                "title": "Scapegoater",
+                "title": "Scapegoating",
                 "alt": "Scapegoater's image",
                 "altGif": "Scapegoater's animation gif",
                 "description": "The Scapegoater is..."
@@ -59,17 +59,17 @@
     },
 
     "INTELLECTUALIZER": {
-        "name": "INTELLECTUALIZER",
+        "name": "STRATEGISTS",
         "description": "They calculate and anticipate every move so that emotions cannot take them by surprise. Their analysis keeps Ego protected, but endless overthinking may frain the flavor from life.",
         "heroes": {
             "Wiseacre": {
-                "title": "Wiseacre",
+                "title": "Intellectualizing",
                 "alt": "Wiseacre's image",
                 "altGif": "Wiseacre's animation gif",
                 "description": "The Wiseacre is an intellectual armed with bottomless trivia, whose self-esteem is bound to their intelligence. They strive to dominate conversations, snap at others over trivial mistakes, and wield esoteric language to impress with their wit. Always right, the Know-It-All never admits their own errors and does everything possible to stay on top in battles of minds. Heaven forbid anyone should think them stupid."
             },
             "Capitalist": {
-                "title": "Capitalist",
+                "title": "Capitalism",
                 "alt": "Capitalist's image",
                 "altGif": "Capitalist's animation gif",
                 "description": "The Capitalist sees the world as stock prices and transactions. To them, money is the only measure of human worth, and they have devoted their life to amassing it. The Capitalist’s self-esteem rises with their bank balance, but a bad investment plunges them into deep shame and an identity crisis. Cold and calculating, the Capitalist always pursues their own gain, with others serving only as stepping stones on the path to success."
@@ -84,23 +84,23 @@
     },
 
     "CONFLUENT": {
-        "name": "CONFLUENT",
+        "name": "BLENDERS",
         "description": "They are at their strongest within their own bubble, which they have developed to protect the Ego. However, isolation comes at a cost, as without their support network they become highly vulnerable.",
         "heroes": {
             "SoulSisters": {
-                "title": "Soul Sisters",
+                "title": "Symbiosis",
                 "alt": "Soul-sisters main image",
                 "altGif": "Soul-sisters animation gif",
                 "description": "The Soul Sisters are an inseparable duo. To outsiders, they seem like giggling besties whose thoughts flow together. They share joys and sorrows together and give each other strength and support. However, behind their unbreakable bond lies a secret that has brought them closer together."
             },
             "SleepySleeper": {
-                "title": "Sleepy Sleeper",
+                "title": "Chronic Fatigue",
                 "alt": "Sleepy Sleeper main image",
                 "altGif": "Sleepy Sleeper animation gif",
                 "description": "The Sleepy Sleeper escapes an overwhelming reality into a world of dreams. Sleep is a way for her to detach herself and find security from an environment where her feelings and needs are secondary and where her own identity has been lost due to conforming to others. Always tired, the Sleepy Sleeper gets through the day knowing that soon she will be able to fall asleep again."
             },
             "Lovers": {
-                "title": "Lovers",
+                "title": "Limerence",
                 "alt": "Lovers main image",
                 "altGif": "Lovers animation gif",
                 "description": "The Lovers are a young couple utterly entranced by each other. Each the whole world to the other, they found in one another the safety and love they could not find elsewhere. In their own bubble of romance they need no one else, nor could anyone else understand them. In true love, there is no conflict and no distance. When two are as one, neither can be hurt."
@@ -109,17 +109,17 @@
     },
 
     "TRICKSTER": {
-        "name": "TRICKSTER",
+        "name": "TRICKSTERS",
         "description": "They protect the Ego by treating emotions like soap – they slip them away and turn them elsewhere so that the Ego avoids encountering them, while leaving others guessing at the unexpected move.",
         "heroes": {
             "Conman": {
-                "title": "Conman",
+                "title": "Deception",
                 "alt": "Conman main image",
                 "altGif": "Conman animation gif",
                 "description": "Conman skillfully uses deception and trickery to manipulate emotions and distract opponents. His main ability is creating illusions that deceive those around him, making them see what isn’t really there. \\nHe can also produce distracting sounds and visuals to redirect the focus of emotions onto other targets or to hide within the chaos he creates. However, sometimes his cunning backfires on him."
             },
             "Jokester": {
-                "title": "Jokester",
+                "title": "Joking",
                 "alt": "Jokester's image",
                 "altGif": "Jokester's animation gif",
                 "description": "The Jokester is the life of the party in his friend group. Seeing the fun in everything, being around him keeps things relaxed and boredom at bay. Cheerful and always with a fun quip on the tip of his tongue, he is a sought-after companion until it's time for humor to step aside to make room for genuine connection. At that point, others notice that the Jokester is taking distance and revealing his only true friend, sarcasm."
@@ -131,7 +131,7 @@
                 "description": "The Trickster is a capricious and mischievous warrior of the Deceivers, turning battle into a chaotic game. They never meet attacks head-on, but evade them by making situations unpredictable. Their tactic is to confuse, disrupt, and strike last."
             },
             "Seducer": {
-                "title": "Seducer",
+                "title": "Seduction",
                 "alt": "Seducer's image",
                 "altGif": "Seducer's animation gif",
                 "description": "The Seducer is an intoxicating blend of beauty and romance. With a playful, inviting glimmer in their eyes, they make sure the rosy games of love never go beneath the surface—where they quietly yearn for something lasting. Fleeing from their latest conquest, they break their own heart over and over again. The one who leaves is never left."
@@ -140,17 +140,17 @@
     },
 
     "OBEDIENT": {
-        "name": "OBEDIENT",
+        "name": "CONFORMERS",
         "description": "They dedicate their lives to following the rules set by the Ego and are ready to defend them to their last breath. Unwaveringly loyal, yet unable to grow or move forward.",
         "heroes": {
             "Believer": {
-                "title": "Believer",
+                "title": "Dogmatism",
                 "alt": "Believer's main image",
                 "altGif": "Believer's animation gif",
                 "description": "The Believer trusts in the guidance of his creator. Dogmatically educated, he knows right from wrong, and the consequences of straying from the path. Blindly following the right path has kept him out of trouble, and even though he doesn't understand the rules or their reasons, he knows that they have a purpose and that generations before him have followed them."
             },
             "PeoplePleaser": {
-                "title": "People Pleaser",
+                "title": "Pleasing",
                 "alt": "People Pleaser's main image",
                 "altGif": "People Pleaser's animation gif",
                 "description": "The workplace superwoman who does everything anyone asks and follows every rule to the letter… dead from burnout at 40."
@@ -159,7 +159,7 @@
     },
 
     "DESENSITIZER": {
-        "name": "DESENSITIZER",
+        "name": "DESENSITIZERS",
         "description": "They can hide their emotions behind a tough exterior, but even through their strong presence protects the Ego from bruises, everything has its limits.",
         "heroes": {
             "HateSpeech": {
@@ -169,13 +169,13 @@
                 "description": "The Hate Speech sees the world in black and white and firmly believes in the purity and superiority of his own group. He is a gullible and intolerant warrior who, empowered by nationalist fervor, is always on the front lines defending his cause."
             },
             "Meatwall": {
-                "title": "Meatwall",
+                "title": "Overtraining",
                 "alt": "Meatwall's main image",
                 "altGif": "Meatwall's animation gif",
                 "description": "The Meatwall is the embodiment of discipline. For him, the gym is a safe haven to retreat to, where training and the pursuit of physical perfection focus his thoughts away from the feelings that trouble his mind. He uses the routines of sports and the doses of endorphins found at the limits of his body to dull the emotions he is not ready to face."
             },
             "Veteran": {
-                "title": "War Veteran",
+                "title": "PTSD",
                 "alt": "War Veteran's image",
                 "altGif": "War Veteran's animation gif",
                 "description": "The War Veteran is a post-traumatic wreck who has returned home from the front, and the unresolved war traumas still haunt his mind years later. In his attempt to adapt to normal life, the Veteran has pushed the memories of the horrors he experienced in battle to the background, but this constant escape has only taken him beyond salvation, and the bad feeling that has been stuck in him suddenly emerges in everyday situations, preventing him from achieving the peace he desires."

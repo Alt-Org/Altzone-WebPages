@@ -18,13 +18,13 @@
         "description": "Kieltäytyvät täysin tunteiden olemassaolosta ja uhraavat itsensä Egon puolesta, vaikka maksavatkin siitä kovan hinnan turvautuessaan epäterveellisiin keinoihin.",
         "heroes": {
             "Overeater": {
-                "title": "Ahmatti",
+                "title": "Ahmiminen",
                 "alt": "Olen Ahmatti",
                 "altGif": "",
                 "description": "Ahmatilla on pakonomainen suhde ruokaan. Syöminen on hänelle tapa käsitellä tunteita, tuoden hänelle lohtua ja kontrollia - erityisesti hänen tuntiessaan olonsa hylätyksi, tai eristyksissä olevaksi. Ruoka on Ahmatille kuin alati läsnä oleva kumppani, joka kulkee hänen rinnallaan päivästä toiseen ja pystyy auttamaan häntä hädän hetkellä."
             },
             "alcoholic": {
-                "title": "Alkoholisti",
+                "title": "Alkoholismi",
                 "alt": "Alkoholistin kuva",
                 "altGif": "Alkoholistin gifkuva",
                 "description": "Alkoholisti hakee tukea ja turvaa viinasta. Juominen on hänelle tapa turruttaa epävarmuuksia ja saada rohkeutta, jota hän kokee tarvitsevansa toimiakseen sosiaalisissa tilanteissa. Humalassa hän on kuin toinen, parempi, versio itsestään, kuin arkisen ja mitäänsanomattoman kuoren sisältä paljastuva supersankari. Alkoholi kuitenkin estää häntä olemasta haavoittuvainen ja löytämästä todellista yhteyttä toisiin, ja johtaa illan pimentyessä sekavaan käytökseen ja väistämättömään morkkikseen aamun kajossa."
@@ -37,19 +37,19 @@
         "description": "Lyövät Egon vastustajat kääntämällä tunnehyökkäykset takaisin heitä vastaan. Pilkan osuessa omaan nilkkaan he ovat kuitenkin alttiita luovuttamaan, sillä he eivät kykene käsittelemään omia sotkujaan tai ottamaan vastuuta.",
         "heroes": {
             "Provocateur": {
-                "title": "Provokaattori",
+                "title": "Provosointi",
                 "alt": "Provokaattorin kuva",
                 "altGif": "Provokaattorin animaatio gif",
                 "description": "Provokaattori on tarinankertoja, joka kommunikoi taiteensa kautta. Hänen teoksensa ovat tapa käsitellä tunteita, löytää hopeareunuksia häntä vaivaavista koettelemuksista ja sanoa ne asiat, mihin ei löydy sanoja. Provokaattorilla on myös syvä halu koskettaa muita ihmisiä, luoda heissä reaktioita ja kokemuksia sekä haastaa heidän näkemyksiään taiteensa välityksellä. Hänen tarinansa on kaikkien luettavissa, mutta se aukeaa vain niille, jotka katsovat pintaa syvemmälle."
             },
             "Mirror": {
-                "title": "Peilinnäyttäjä",
+                "title": "Projisointi",
                 "alt": "Peilinnäyttäjän kuva",
                 "altGif": "Peilinnäyttäjän animaatiogif",
                 "description": "Peilinnäyttäjä on yksinäinen ja kipeästi hyväksyntää kaipaava hahmo, joka pyrkii muiden tunteita mukailemalla sulautumaan joukkoon ja välttelee omien tunteidensa näyttämistä porukasta erottumisen pelosta. Hän nauraa ja paheksuu muiden mukana, vaikkei se oikeasti hyvältä tuntuisikaan ja hänen sisimpänsä alkaisi rakoilla."
             },
             "Scapegoater": {
-                "title": "Riidankylväminen",
+                "title": "Syyllistäminen",
                 "alt": "Riidankylvämisen kuva",
                 "altGif": "Riidankylvämisen animaatiogif",
                 "description": "Riidankylväminen on..."
@@ -62,19 +62,19 @@
         "description": "Laskelmoivat ja ennakoivat jokaisen liikkeen, jotta tunteet eivät pääse yllättämään. Heidän analyysinsa pitää Egon suojassa, mutta loputon yliajattelu saattaakin viedä maun elämästä.",
         "heroes": {
             "Wiseacre": {
-                "title": "Viisastelija",
+                "title": "Viisastelu",
                 "alt": "Viisastelijan kuva",
                 "altGif": "Viisastelijan animaatiogif",
                 "description": "Viisastelija on pohjattomalla nippelitiedolla varustautunut intellektuaali, jonka itsetunto on nidottu älykkyyteen. Hän pyrkii hallitsemaan keskusteluja, näpäyttelee toisia yhdentekevistä mokista ja käyttää esoteerista kieltä tehdäkseen muihin vaikutuksen älynlahjoillaan. Aina oikeassa, Viisastelija ei ikinä myönnä omia virheitään ja tekee kaikkensa pysyäkseen niskan päällä mielten mittelöissä. Auta armias, jos joku luulisi häntä tyhmäksi."
             },
             "Capitalist": {
-                "title": "Kapitalisti",
+                "title": "Kapitalismi",
                 "alt": "Kapitalistin kuva",
                 "altGif": "Kapitalistin animaatiogif",
                 "description": "Kapitalisti näkee maailman pörssikursseina ja vaihtokauppoina. Hänelle raha on ainoa ihmisarvon mittari ja hän onkin omistanut elämänsä sen haalimiselle. Kapitalistin itsetunto nousee pankkitilin saldon mukana mutta väärä sijoitus syöksee hänet syvään häpeään ja identiteettikriisiin. Kylmä ja laskelmoiva, Kapitalisti ajaa aina omaa etuaan muiden ollessa vain askelkiviä matkalla menestykseen."
             },
             "Ocd": {
-                "title": "Pakko-oireinen",
+                "title": "Pakko-oireisuus",
                 "alt": "Pakko-oireisen kuva",
                 "altGif": "Pakko-oireisen animaatiogif",
                 "description": "Pakko-oireinen hallitsee tunteitaan rutiinein ja rituaalein. Näiden monimutkaisten seremonioiden suorittaminen antaa hänelle itsenäisyyden ja kontrollin tuntoa, ja estää häntä altistumasta sisäisen maailmansa ennalta-arvaamattomille ja kaoottisille oikuille. Poistaakseen mieleensä pinttyneet epäpuhtaudet, hän käy läpi käsiensä jokaisen uurteen, kunnes ne loistavat täydellisen tahrattomina."
@@ -87,20 +87,20 @@
         "description": "Ovat vahvimmillaan oman kuplansa sisällä, jonka he ovat kehittäneet Egon suojelemiseksi. Eristäytymisellä on kuitenkin hintansa, sillä ilman tukiverkkoaan heistä tulee erittäin haavoittuvaisia.",
         "heroes": {
             "SoulSisters": {
-                "title": "Sielunsiskot",
+                "title": "Symbioosi",
                 "alt": "Sielunsiskot kuva",
                 "altGif": "Sielunsiskot animation gif",
                 "description": "Sielunsiskot ovat erottamaton kaksikko. Ulkopuolisille he vaikuttavat keskenään kikattavilta bestiksiltä, joiden ajatuksetkin virtaavat yhteen. He jakavat yhdessä riemut ja surut ja antavat toisilleen voimaa ja tukea. Heidän särkymättömän siteensä taustalla on kuitenkin salaisuus, jonka varjeleminen ja kanssaeläminen on tehnyt heistä yhtä."
             },
 
             "SleepySleeper": {
-                "title": "Valveenvälttelijä",
+                "title": "Väsyminen",
                 "alt": "Valveenvälttelijän  pääkuva",
                 "altGif": "Valveenvälttelijän  animaatiogif",
                 "description": "Valveenvälttelijä pakenee ylikuormittavaa todellisuutta unimaailmaan. Uni on hänelle keino irtautua ja saada turvaa ympäristöstä, jossa hänen tunteensa ja tarpeensa ovat toissijaisia ja missä hänen oma identiteettinsä on kadonnut muihin mukautumisen jäljiltä. Alati väsynyt, Valveenvälttelijä selviytyy päivästä tietäen, että pian hän voi taas nukahtaa."
             },
             "Lovers": {
-                "title": "Pihkaantuneet",
+                "title": "Ihastuminen",
                 "alt": "Pihkaantuneiden pääkuva",
                 "altGif": "Pihkaantuneiden animaatiogif",
                 "description": "Pihkaantuneet ovat nuoripari täysin toistensa lumoissa. Toisilleen kaikki kaikessa, he löysivät toisistaan turvaa ja rakkautta, jota he eivät muualta saaneet. Omassa lemmen kuplassaan he eivät tarvitse muita, eivätkä muut heitä ymmärtäisikään. Tosirakkaudessa ei ole konfliktia eikä välimatkaa. Kun on yhtä, ei toista voi satuttaa."
@@ -113,25 +113,25 @@
         "description": "Suojelevat Egoa kohtelemalla tunteita kuin saippuaa – ne lipsautetaan pois ja käännetään muualle, jotta Ego välttyy kohtaamasta niitä, samalla jättäen muut arvailemaan odottamatonta siirtoa.",
         "heroes": {
             "Conman": {
-                "title": "Huijari",
+                "title": "Huijaaminen",
                 "alt": "Huijari kuva",
                 "altGif": "Huijari animation kuva",
                 "description": "Huijari  käyttää taitavasti petosta ja viekkautta manipuloidakseen tunteita ja harhauttaakseen vastustajia. Hänen pääkykynsä on luoda illuusioita, jotka saavat ympäröivät näkemään jotain, mitä ei oikeasti ole olemassa. \\nLisäksi hän pystyy tuottamaan häiritseviä ääniä ja visuaalisia tehosteita ohjatakseen tunteiden keskittymisen muille kohteille tai piiloutuakseen itse luomaansa kaaokseen. Joskus hänen oveluutensa kuitenkin kääntyy häntä itseään vastaan."
             },
             "Jokester": {
-                "title": "Vitsinvääntäjä",
+                "title": "Huumori",
                 "alt": "Vitsinvääntäjän kuva",
                 "altGif": "Vitsinvääntäjän animaatiogif",
                 "description": "Vitsinvääntäjä on kaveriporukkansa ilopilleri. Nähden hauskuuden kaikessa, hänen seurassaan meno pysyy rentona eikä tylsyys uhkaa. Hyväntuulisena ja aina hilpeä heitto kielen päällä, hän on haluttua seuraa kunnes huumorin olisi aika astua sivuun tehden tilaa aidolle yhteydelle. Tällöin muut huomaavat Vitsinvääntäjän pitävänkin heitä loitolla ja paljastavan hänen ainoan oikean ystävänsä, sarkasmin."
             },
             "Pranking": {
-                "title": "Jekkuilija",
+                "title": "Ilveily",
                 "alt": "Jekkuilijan kuva",
                 "altGif": "Jekkuilijan animaatiogif",
                 "description": "Jeikkuilija on Hämääjien oikukas ja ilkikurinen soturi, joka tekee taistelusta kaoottisen pelin. Hän ei pysähdy kohtaamaan hyökkäyksiä suoraan, vaan väistää ne tekemällä tilanteista arvaamattomia. Hänen taktiikkansa on hämätä, häiritä ja näpeltää viimeisenä."
             },
             "Seducer": {
-                "title": "Viettelijä",
+                "title": "Vietteleminen",
                 "alt": "Viettelijän kuva",
                 "altGif": "Viettelijän animaatiogif",
                 "description": "Viettelijä on huumaava sekoitus kauneutta ja romantiikkaa. Leikkisän kutsuva pilke silmäkulmissaan, hän varmistaa etteivät ruusuiset lemmenleikit etene pintaa syvemmälle, missä hän hiljaa kaipaa jotain pysyvää. Paetessaan viimeisimmältä saaliiltaan, hän särkee samalla oman sydämensä aina uudestaan. Jättäjä ei ikinä tule jätetyksi."
@@ -144,7 +144,7 @@
         "description": "Omistavat elämänsä Egon asettamien sääntöjen noudattamiselle ja ovat valmiita puolustamaan viimeiseen hengenvetoon asti. Vankkumattoman lojaaleja, vaikkakin kykenemättömiä kehittymään eteenpäin.",
         "heroes": {
             "Believer": {
-                "title": "Tapauskovainen",
+                "title": "Tapauskovaisuus",
                 "alt": "Tapauskovaisen kuva",
                 "altGif": "Tapauskovainen animaatiogif",
                 "description": "Tapauskovainen luottaa luojansa ohjaukseen. Dogmaattisesti oppineena hän tuntee oikean ja väärän, sekä seuraamukset polulta eksymisestä. Oikean tien sokea seuraaminen on pitänyt hänet poissa hankaluuksista ja vaikkei hän sääntöjä tai niiden syitä ymmärräkään, hän tietää, että niillä on tarkoitus ja sukupolvet häntä ennenkin ovat niitä noudattaneet."
@@ -169,13 +169,13 @@
                 "description": "Vihapuhe näkee maailman mustavalkoisena ja uskoo vankkumattomasti oman ryhmänsä puhtauteen ja ylivertaisuuteen. Hän on sinisilmäinen ja suvaitsematon soturi, joka kansanmielisen kiihkon voimaannuttamana on aina etulinjassa puolustamassa aatettaan.\n"
             },
             "Meatwall": {
-                "title": "Lihamuuri",
+                "title": "Ylikunto",
                 "alt": "Lihamuurin kuva",
                 "altGif": "Lihamuurin animaatiogif",
                 "description": "Lihamuuri on kurinalaisuuden ruumiillistuma. Hänelle punttisali on turvasatama, jonne vetäytyä ja jossa treenaus ja kehollisen täydellisyyden tavoittelu keskittävät ajatukset pois mieltä vaivaavista tuntemuksista. Hän käyttää urheilun tuomia rutiineja ja kehonsa äärirajoilta löytyviä endorfiini-annoksia vaimentaakseen tunteita, joita ei ole valmis kohtaamaan."
             },
             "Veteran": {
-                "title": "Sotaveteraani",
+                "title": "Traumaattisuus",
                 "alt": "Sotaveteraanin kuva",
                 "altGif": "Sota Veteraanin animaatiogif",
                 "description": "Sotaveteraani on rintamalta kotiinpalannut posttraumaattinen ihmisraunio, jonka käsittelemättömät sotatraumat kummittelevat mielessä vielä vuosienkin jälkeen. Yrittäessään sopeutua normaaliin elämään Veteraani on puskenut muistot taisteluissa koetuista kauheuksista taka-alalle, mutta tämä alituinen pakoilu on vienyt häntä vain pelastuksen tuolle puolen ja häneen pinttynyt paha olo tulee esiin yllättäen arkisissa tilanteissa, estäen häntä saavuttamasta haluamaansa rauhaa."
