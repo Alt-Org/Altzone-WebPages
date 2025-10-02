@@ -47,6 +47,12 @@
                 "alt": "Peilinnäyttäjän kuva",
                 "altGif": "Peilinnäyttäjän animaatiogif",
                 "description": "Peilinnäyttäjä on yksinäinen ja kipeästi hyväksyntää kaipaava hahmo, joka pyrkii muiden tunteita mukailemalla sulautumaan joukkoon ja välttelee omien tunteidensa näyttämistä porukasta erottumisen pelosta. Hän nauraa ja paheksuu muiden mukana, vaikkei se oikeasti hyvältä tuntuisikaan ja hänen sisimpänsä alkaisi rakoilla."
+            },
+            "Scapegoater": {
+                "title": "Riidankylväminen",
+                "alt": "Riidankylvämisen kuva",
+                "altGif": "Riidankylvämisen animaatiogif",
+                "description": "Riidankylväminen on..."
             }
         }
     },
@@ -55,11 +61,23 @@
         "name": "ÄLYLLISTÄJÄT",
         "description": "ÄLYLLISTÄJÄT  on ...",
         "heroes": {
-            "Researcher": {
+            "Wiseacre": {
                 "title": "Viisastelija",
                 "alt": "Viisastelijan kuva",
                 "altGif": "Viisastelijan animaatiogif",
-                "description": "Viisastelija on pohjattomalla nippelitiedolla varustautunut intellektuaali, jonka itsetunto on nidottu älykkyyteen. Hän pyrkii hallitsemaan keskusteluja, näpäyttelee toisia yhdentekevistä mokista ja käyttää esoteerista kieltä tehdäkseen muihin vaikutuksen älynlahjoillaan. Aina oikeassa, Viisastelija ei ikinä myönnä omia virheitään ja tekee kaikkensa pysyäkseen niskan päällä mielten mittelöissä."
+                "description": "Viisastelija on pohjattomalla nippelitiedolla varustautunut intellektuaali, jonka itsetunto on nidottu älykkyyteen. Hän pyrkii hallitsemaan keskusteluja, näpäyttelee toisia yhdentekevistä mokista ja käyttää esoteerista kieltä tehdäkseen muihin vaikutuksen älynlahjoillaan. Aina oikeassa, Viisastelija ei ikinä myönnä omia virheitään ja tekee kaikkensa pysyäkseen niskan päällä mielten mittelöissä. Auta armias, jos joku luulisi häntä tyhmäksi."
+            },
+            "Capitalist": {
+                "title": "Kapitalisti",
+                "alt": "Kapitalistin kuva",
+                "altGif": "Kapitalistin animaatiogif",
+                "description": "Kapitalisti näkee maailman pörssikursseina ja vaihtokauppoina. Hänelle raha on ainoa ihmisarvon mittari ja hän onkin omistanut elämänsä sen haalimiselle. Kapitalistin itsetunto nousee pankkitilin saldon mukana mutta väärä sijoitus syöksee hänet syvään häpeään ja identiteettikriisiin. Kylmä ja laskelmoiva, Kapitalisti ajaa aina omaa etuaan muiden ollessa vain askelkiviä matkalla menestykseen."
+            },
+            "Ocd": {
+                "title": "Pakko-oireinen",
+                "alt": "Pakko-oireisen kuva",
+                "altGif": "Pakko-oireisen animaatiogif",
+                "description": "Pakko-oireinen hallitsee tunteitaan rutiinein ja rituaalein. Näiden monimutkaisten seremonioiden suorittaminen antaa hänelle itsenäisyyden ja kontrollin tuntoa, ja estää häntä altistumasta sisäisen maailmansa ennalta-arvaamattomille ja kaoottisille oikuille. Poistaakseen mieleensä pinttyneet epäpuhtaudet, hän käy läpi käsiensä jokaisen uurteen, kunnes ne loistavat täydellisen tahrattomina."
             }
         }
     },
@@ -80,6 +98,12 @@
                 "alt": "Valveenvälttelijän  pääkuva",
                 "altGif": "Valveenvälttelijän  animaatiogif",
                 "description": "Valveenvälttelijä pakenee ylikuormittavaa todellisuutta unimaailmaan. Uni on hänelle keino irtautua ja saada turvaa ympäristöstä, jossa hänen tunteensa ja tarpeensa ovat toissijaisia ja missä hänen oma identiteettinsä on kadonnut muihin mukautumisen jäljiltä. Alati väsynyt, Valveenvälttelijä selviytyy päivästä tietäen, että pian hän voi taas nukahtaa."
+            },
+            "Lovers": {
+                "title": "Pihkaantuneet",
+                "alt": "Pihkaantuneiden pääkuva",
+                "altGif": "Pihkaantuneiden animaatiogif",
+                "description": "Pihkaantuneet ovat nuoripari täysin toistensa lumoissa. Toisilleen kaikki kaikessa, he löysivät toisistaan turvaa ja rakkautta, jota he eivät muualta saaneet. Omassa lemmen kuplassaan he eivät tarvitse muita, eivätkä muut heitä ymmärtäisikään. Tosirakkaudessa ei ole konfliktia eikä välimatkaa. Kun on yhtä, ei toista voi satuttaa."
             }
         }
     },
@@ -99,6 +123,18 @@
                 "alt": "Vitsinvääntäjän kuva",
                 "altGif": "Vitsinvääntäjän animaatiogif",
                 "description": "Vitsinvääntäjä on kaveriporukkansa ilopilleri. Nähden hauskuuden kaikessa, hänen seurassaan meno pysyy rentona eikä tylsyys uhkaa. Hyväntuulisena ja aina hilpeä heitto kielen päällä, hän on haluttua seuraa kunnes huumorin olisi aika astua sivuun tehden tilaa aidolle yhteydelle. Tällöin muut huomaavat Vitsinvääntäjän pitävänkin heitä loitolla ja paljastavan hänen ainoan oikean ystävänsä, sarkasmin."
+            },
+            "Pranking": {
+                "title": "Jekkuilija",
+                "alt": "Jekkuilijan kuva",
+                "altGif": "Jekkuilijan animaatiogif",
+                "description": "Jeikkuilija on Hämääjien oikukas ja ilkikurinen soturi, joka tekee taistelusta kaoottisen pelin. Hän ei pysähdy kohtaamaan hyökkäyksiä suoraan, vaan väistää ne tekemällä tilanteista arvaamattomia. Hänen taktiikkansa on hämätä, häiritä ja näpeltää viimeisenä."
+            },
+            "Seducer": {
+                "title": "Viettelijä",
+                "alt": "Viettelijän kuva",
+                "altGif": "Viettelijän animaatiogif",
+                "description": "Viettelijä on huumaava sekoitus kauneutta ja romantiikkaa. Leikkisän kutsuva pilke silmäkulmissaan, hän varmistaa etteivät ruusuiset lemmenleikit etene pintaa syvemmälle, missä hän hiljaa kaipaa jotain pysyvää. Paetessaan viimeisimmältä saaliiltaan, hän särkee samalla oman sydämensä aina uudestaan. Jättäjä ei ikinä tule jätetyksi."
             }
         }
     },
@@ -112,6 +148,12 @@
                 "alt": "Tapauskovaisen kuva",
                 "altGif": "Tapauskovainen animaatiogif",
                 "description": "Tapauskovainen luottaa luojansa ohjaukseen. Dogmaattisesti oppineena hän tuntee oikean ja väärän, sekä seuraamukset polulta eksymisestä. Oikean tien sokea seuraaminen on pitänyt hänet poissa hankaluuksista ja vaikkei hän sääntöjä tai niiden syitä ymmärräkään, hän tietää, että niillä on tarkoitus ja sukupolvet häntä ennenkin ovat niitä noudattaneet."
+            },
+            "PeoplePleaser": {
+                "title": "Miellyttäminen",
+                "alt": "Miellyttämisen kuva",
+                "altGif": "Miellyttämisen animaatiogif",
+                "description": "Työpaikan supernainen joka tekee kaiken mitä kuka pyytää ja noudattaa sääntöjä pilkulleen… 40v kuolee burnouttiin."
             }
         }
     },
@@ -137,6 +179,12 @@
                 "alt": "Sotaveteraanin kuva",
                 "altGif": "Sota Veteraanin animaatiogif",
                 "description": "Sotaveteraani on rintamalta kotiinpalannut posttraumaattinen ihmisraunio, jonka käsittelemättömät sotatraumat kummittelevat mielessä vielä vuosienkin jälkeen. Yrittäessään sopeutua normaaliin elämään Veteraani on puskenut muistot taisteluissa koetuista kauheuksista taka-alalle, mutta tämä alituinen pakoilu on vienyt häntä vain pelastuksen tuolle puolen ja häneen pinttynyt paha olo tulee esiin yllättäen arkisissa tilanteissa, estäen häntä saavuttamasta haluamaansa rauhaa."
+            },
+            "Bullying": {
+                "title": "Kiusaaminen",
+                "alt": "Kiusaamisen kuva",
+                "altGif": "Kiusaamisen animaatiogif",
+                "description": "Koulukiusaaja on huonon itsetunnon riivaama aggressiivinen alistaja. Suosion toivossa hän käyttää heikompiaan häikäilemättömästi hyväkseen piilottaakseen omat haavoittuvaisuutensa, turruttaen samalla mielessään kytevän katumuksen uhriensa kärsimyksestä."
             }
         }
     }

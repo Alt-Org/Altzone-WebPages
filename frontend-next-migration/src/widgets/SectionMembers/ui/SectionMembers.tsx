@@ -28,6 +28,12 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
     const { teamsMap } = organizeMembers(members, lng);
 
+    // If no members found, reload the page (to fix potential Directus caching issues)
+    if (teamsMap.size === 0 && !isLoading && !isError) {
+        location.reload();
+        return <p>{_t('no-members')}</p>;
+    }
+
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
             {/*<ScrollBottomButton

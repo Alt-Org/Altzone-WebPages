@@ -1,14 +1,9 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import NewsElementPage from './NewsElementPage';
 
 export default {
     title: 'pages/NewsPageElement',
     component: NewsElementPage,
-} as ComponentMeta<typeof NewsElementPage>;
+} as Meta<typeof NewsElementPage>;
 
-// @ts-ignore
-const Template: ComponentStory<typeof NewsElementPage> = (args) => <NewsElementPage {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary: StoryObj<typeof NewsElementPage> = {};
