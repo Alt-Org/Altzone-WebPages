@@ -22,6 +22,7 @@ import { VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries
 import cls from './page.module.scss';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
+import { useClientTranslation } from '@/shared/i18n';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -47,6 +48,7 @@ function MainPage(props: Props) {
     const { data: latestNews } = useGetNewsQuery({ limit: 2, page: 1 });
     const directusBaseUrl = envHelper.directusHost;
     const groupedNews = formatNews(latestNews || [], 'fi-FI');
+    const { t } = useClientTranslation('main');
 
     return (
         <div className={cls.MainPage}>
@@ -71,7 +73,7 @@ function MainPage(props: Props) {
                         rel="noopener noreferrer"
                     >
                         <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
-                            <DescriptionCardMobile.Texts title="Tutustu Defenssiluokkiimme" />
+                            <DescriptionCardMobile.Texts title={t('descriptionCard-title')} />
                             <DescriptionCardMobile.Image
                                 src={defenceGalleryMobile}
                                 alt="defense gallery mobile"
@@ -89,7 +91,7 @@ function MainPage(props: Props) {
                         <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
                             <DescriptionCard.Texts width="25%">
                                 <DescriptionCard.Texts.Title>
-                                    Tutustu Defenssiluokkiimme
+                                    {t('descriptionCard-title')}
                                 </DescriptionCard.Texts.Title>
                             </DescriptionCard.Texts>
                             <DescriptionCard.Image width="65%">
@@ -104,7 +106,7 @@ function MainPage(props: Props) {
             )}
             <Gallery {...gallery} />
             <div className={cls.newsSection}>
-                <h2 className={cls.newsHeader}>Alt Uutiset</h2>
+                <h2 className={cls.newsHeader}>{t('newsSection-title')}</h2>
                 <div className={cls.newsGrid}>
                     {groupedNews.map((news) => {
                         const imageSrc = news.titlePicture?.id
@@ -128,7 +130,7 @@ function MainPage(props: Props) {
                         href={`/news`}
                         rel="noopener noreferrer"
                     >
-                        Lue lisää
+                        {t('newsSection-seeMore')}
                     </a>
                 </div>
             </div>

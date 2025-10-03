@@ -33,8 +33,7 @@
     "playWithUs-BecomeATester-body": "Make the app better",
     "playWithUs-WebGLNotice": "Due to known WebGL compatibility issues, our WebGL game might not work correctly on iPhones or Macs.",
 
-    "classifiedHeroesBlocks-title": "Heroes",
-    "classifiedHeroesBlocks-seeMore": "More",
+    "descriptionCard-title": "Explore our Defense Classes",
 
     "gallery-seeMore": "See more",
     "playWithUs-download-text": "Google Play Store",
@@ -43,5 +42,6 @@
     "contact-title": "Interested\nin working\nwith us?",
     "contact-linkText": "Contact us",
 
-    "newsSection-title": "Alt News"
+    "newsSection-title": "Alt News",
+    "newsSection-seeMore": "See more"
 }

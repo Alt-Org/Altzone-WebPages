@@ -35,8 +35,7 @@
     "playWithUs-BecomeATester-body": "Tee sovelluksesta parempi",
     "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
 
-    "classifiedHeroesBlocks-title": "Hahmot",
-    "classifiedHeroesBlocks-seeMore": "Lisää",
+    "descriptionCard-title": "Tutustu Defenssiluokkiimme",
 
     "gallery-seeMore": "Lue lisää meistä about sivuiltamme",
     "socials-text": "Seuraa Alt Zonea somessa",
@@ -47,5 +46,6 @@
     "contact-title": "Kiinnostuitko\ntyöskentelemään\nkanssamme?",
     "contact-linkText": "Ota yhteyttä",
 
-    "newsSection-title": "Alt Uutiset"
+    "newsSection-title": "Alt Uutiset",
+    "newsSection-seeMore": "Lue lisää"
 }
