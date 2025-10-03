@@ -38,6 +38,8 @@ const SearchBar = (props: SearchBarProps) => {
                 placeholder={placeholder}
                 className={cls.Input}
                 aria-label="Search input"
+                disabled
+                readOnly
             />
         </div>
     );
