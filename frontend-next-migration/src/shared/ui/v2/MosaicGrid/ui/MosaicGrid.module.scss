@@ -51,5 +51,5 @@
 .MosaicGridImage {
     object-fit: cover;
     background: var(--base-card-background);
-    border: 2px solid var(--content-primary);
+    border: var(--border-width) solid var(--content-primary);
 }

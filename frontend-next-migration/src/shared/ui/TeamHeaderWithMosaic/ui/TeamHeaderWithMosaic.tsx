@@ -12,6 +12,7 @@ import ExternalLink from '@/shared/assets/icons/ExternalLink.svg';
 import SearchIcon from '@/shared/assets/icons/Search.svg';
 import { PageTitle } from '../../PageTitle';
 import { Container } from '../../Container';
+import { SkeletonLoaderWithHeader } from '../../SkeletonLoader';
 
 type Props = {
     dropdown?: ReactNode;
@@ -23,27 +24,25 @@ interface SearchBarProps {
     placeholder: string;
 }
 
-const SearchBar = (props: SearchBarProps) => {
-    const { className, placeholder } = props;
-    return (
-        <div className={classNames(cls.SearchBar, undefined, [className])}>
-            <Image
-                src={SearchIcon}
-                alt="search icon"
-                height={20}
-            />
-            <input
-                type="text"
-                name="search"
-                placeholder={placeholder}
-                className={cls.Input}
-                aria-label="Search input"
-                disabled
-                readOnly
-            />
-        </div>
-    );
-};
+// const SearchBar = (props: SearchBarProps) => {
+//     const { className, placeholder } = props;
+//     return (
+//         <div className={classNames(cls.SearchBar, undefined, [className])}>
+//             <Image
+//                 src={SearchIcon}
+//                 alt="search icon"
+//                 height={20}
+//             />
+//             <input
+//                 type="text"
+//                 name="search"
+//                 placeholder={placeholder}
+//                 className={cls.Input}
+//                 aria-label="Search input"
+//             />
+//         </div>
+//     );
+// };
 
 export function TeamHeaderWithMosaic(props: Props) {
     const { className, dropdown } = props;
@@ -62,19 +61,14 @@ export function TeamHeaderWithMosaic(props: Props) {
 
     if (isLoading) {
         return (
-            <div className={cls.HeaderContainer}>
+            <div
+                className={classNames(cls.HeaderContainer, undefined, [className ? className : ''])}
+            >
+                {!isTouchDevice && <div className={cls.emptyContainer} />}
                 <div className={cls.dataContainer}>
-                    <div className={cls.TitleContainer}>
-                        <h2>{t('head-title')}</h2>
-                        {isTouchDevice && dropdown}
-                    </div>
-                    <SearchBar
-                        className={cls.SearchBarTablet}
-                        placeholder={t('search-placeholder')}
-                    />
-                    <div className={cls.MosaicContainer}>
-                        <div className={cls.LoadingState}>Loading team members...</div>
-                    </div>
+                    <Container className={cls.Container}>
+                        <SkeletonLoaderWithHeader sections={1} />
+                    </Container>
                 </div>
             </div>
         );
@@ -95,10 +89,10 @@ export function TeamHeaderWithMosaic(props: Props) {
                                 alternate={true}
                             />
                             {dropdown}
-                            <SearchBar
+                            {/* <SearchBar
                                 className={cls.SearchBarMobile}
                                 placeholder={t('search-placeholder')}
-                            />
+                            /> */}
                         </>
                     ) : (
                         <div className={cls.TitleSearchBarContainer}>
@@ -107,10 +101,10 @@ export function TeamHeaderWithMosaic(props: Props) {
                                 searchVisible={false}
                                 alternate={true}
                             />
-                            <SearchBar
+                            {/* <SearchBar
                                 className={cls.SearchBarDesktop}
                                 placeholder={t('search-placeholder')}
-                            />
+                            /> */}
                         </div>
                     )}
                     <div className={cls.MosaicGridContainer}>

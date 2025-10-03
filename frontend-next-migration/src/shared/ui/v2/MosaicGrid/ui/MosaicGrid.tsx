@@ -4,6 +4,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import Image from 'next/image';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useMemo } from 'react';
+import { envHelper } from '@/shared/const/envHelper';
+import altLogo from '@/shared/assets/images/altLogo.png';
 
 export interface MosaicGridProps {
     className?: string;
@@ -12,6 +14,7 @@ export interface MosaicGridProps {
 
 const MosaicGrid = ({ className, members }: MosaicGridProps) => {
     const { isMobileSize } = useSizes();
+    const directusBaseUrl = envHelper.directusHost;
 
     // shuffle members to fill the grid randomly
     const shuffledMembers = useMemo(() => {
@@ -48,20 +51,21 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
                 [className ? className : ''],
             )}
         >
-            {filledMembers.map((member, index) =>
-                member ? (
+            {filledMembers.map((member, index) => {
+                const imageSrc = member?.portrait
+                    ? `${directusBaseUrl}/assets/${member.portrait.id}`
+                    : altLogo;
+                return member ? (
                     <Image
                         key={`${member.id}-${index}`}
-                        src={
-                            process.env.NEXT_PUBLIC_DIRECTUS_HOST + '/assets/' + member.portrait?.id
-                        }
+                        src={imageSrc}
                         alt={member.name}
                         className={classNames(cls.MosaicGridImage)}
                         width={252}
                         height={252}
                     />
-                ) : null,
-            )}
+                ) : null;
+            })}
         </div>
     );
 };
