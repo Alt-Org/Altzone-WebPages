@@ -22,6 +22,7 @@ import { VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries
 import cls from './page.module.scss';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
+import { useParams } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
 
 export type Props = {
@@ -44,10 +45,13 @@ function MainPage(props: Props) {
         contactSection,
     } = props;
 
+    const params = useParams();
+    const lng = params.lng as string;
+    const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
     const { isMobileSize } = useSizes();
     const { data: latestNews } = useGetNewsQuery({ limit: 2, page: 1 });
     const directusBaseUrl = envHelper.directusHost;
-    const groupedNews = formatNews(latestNews || [], 'fi-FI');
+    const groupedNews = formatNews(latestNews || [], lngCode || 'fi-FI');
     const { t } = useClientTranslation('main');
 
     return (
