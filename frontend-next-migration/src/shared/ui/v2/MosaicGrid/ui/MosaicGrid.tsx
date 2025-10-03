@@ -14,15 +14,14 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
     const { isMobileSize } = useSizes();
 
     // shuffle members to fill the grid randomly
-    const shuffle = (array: Member[]): Member[] => {
-        const shuffled = [...array];
+    const shuffledMembers = useMemo(() => {
+        const shuffled = [...members];
         for (let i = shuffled.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
         return shuffled;
-    };
-    const shuffledMembers = useMemo(() => shuffle(members), [members]);
+    }, [members]);
 
     // Determine grid configuration based on screen size and number of members
     const rows = isMobileSize ? 3 : members.length < 14 ? 2 : 3;
@@ -30,15 +29,11 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
     const totalSlots = rows * cols;
 
     // Fill the grid with members, repeating if necessary
-    const filledMembers = useMemo(
-        () =>
-            Array.from({ length: totalSlots }, (_, arrayIndex) => {
-                if (shuffledMembers.length === 0) return null;
-                const memberIndex = arrayIndex % shuffledMembers.length;
-                return shuffledMembers[memberIndex];
-            }).filter(Boolean),
-        [shuffledMembers, totalSlots],
-    );
+    const filledMembers = Array.from({ length: totalSlots }, (_, arrayIndex) => {
+        if (shuffledMembers.length === 0) return null;
+        const memberIndex = arrayIndex % shuffledMembers.length;
+        return shuffledMembers[memberIndex];
+    }).filter(Boolean);
 
     return (
         <div
@@ -62,8 +57,8 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
                         }
                         alt={member.name}
                         className={classNames(cls.MosaicGridImage)}
-                        width={126}
-                        height={126}
+                        width={252}
+                        height={252}
                     />
                 ) : null,
             )}

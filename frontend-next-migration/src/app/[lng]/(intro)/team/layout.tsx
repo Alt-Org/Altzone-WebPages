@@ -8,6 +8,7 @@ import MembersNavMenu from '@/features/NavigateMembers';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { ScrollBottomButton } from './_components/_ScrollBottomButton';
 import play from '@/shared/assets/icons/playIcon.svg';
+import { TeamHeaderWithMosaic } from '@/shared/ui/TeamHeaderWithMosaic/ui/TeamHeaderWithMosaic';
 
 type Props = {
     children: ReactNode;
@@ -22,13 +23,14 @@ export default function TeamLayout({ children }: Props) {
             id={'members'}
             className={classNames(cls.MembersPageMobile)}
         >
-            {/* <div className={cls.buttonContainer}>
+            <TeamHeaderWithMosaic dropdown={<MembersNavMenu />} />
+            <div className={cls.buttonContainer}>
                 <ScrollBottomButton
                     IdToScrollBeforePlay={'members'}
                     className={cls.diveButton}
                     image={play}
                 />
-            </div> */}
+            </div>
             {children}
             <ScrollTop />
         </div>
@@ -37,6 +39,7 @@ export default function TeamLayout({ children }: Props) {
             id={'members'}
             className={classNames(cls.MembersPage)}
         >
+            <TeamHeaderWithMosaic />
             <LayoutWithSidebars
                 className={cls.TeamPageSidebar}
                 leftTopSidebar={{
@@ -44,13 +47,13 @@ export default function TeamLayout({ children }: Props) {
                     hideOnMobile: true,
                 }}
             >
-                {/* <div className={cls.buttonContainer}>
+                <div className={cls.buttonContainer}>
                     <ScrollBottomButton
                         IdToScrollBeforePlay={'members'}
                         className={cls.diveButton}
                         image={play}
                     />
-                </div> */}
+                </div>
                 {children}
                 <ScrollTop />
             </LayoutWithSidebars>
