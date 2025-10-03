@@ -16,11 +16,16 @@
 }
 
 .descriptionCardMobile {
-    padding: 20px;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .descriptionCard {
-    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .heroSection {
