@@ -2,6 +2,11 @@ export interface Logo {
     url: string;
 }
 
+export interface Asset {
+    id: string;
+    title: string;
+}
+
 export interface Member {
     id: number;
     name: string;
@@ -17,6 +22,7 @@ export interface Member {
     department?: Department | null;
     team?: Team | null;
     translations?: Translation[];
+    portrait?: Asset | null;
 }
 
 export interface Department {
