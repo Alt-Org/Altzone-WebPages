@@ -18,6 +18,10 @@ import jokester from '@/shared/assets/images/heros/jokester/Jokester.webp';
 import pranking from '@/shared/assets/images/heros/pranking/pranking.png';
 import seducer from '@/shared/assets/images/heros/seducer/seducer.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
+import confluent from '@/shared/assets/images/descriptionCard/confluent.png';
+import projector from '@/shared/assets/images/descriptionCard/projector.png';
+import intellectualizer from '@/shared/assets/images/descriptionCard/intellectualizer.png';
+import trickster from '@/shared/assets/images/descriptionCard/trickster.png';
 import red from '@/shared/assets/images/heros/textBgColors/red_cropped.webp';
 import yellow from '@/shared/assets/images/heros/textBgColors/yellow.webp';
 import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_cropped.webp';
@@ -65,7 +69,7 @@ export const buildHeroGroupsPart1 = (
     [HeroGroup.CONFLUENT]: {
         name: t('CONFLUENT.name'),
         description: t('CONFLUENT.description'),
-        srcImg: retroflector,
+        srcImg: confluent,
         bgColour: '#8E008E',
         label: purpleBg,
         heroes: [
@@ -108,7 +112,7 @@ export const buildHeroGroupsPart1 = (
     [HeroGroup.PROJECTOR]: {
         name: t('PROJECTOR.name'),
         description: t('PROJECTOR.description'),
-        srcImg: retroflector,
+        srcImg: projector,
         bgColour: '#FF8E00',
         label: yellow,
         heroes: [
@@ -151,7 +155,7 @@ export const buildHeroGroupsPart1 = (
     [HeroGroup.INTELLECTUALIZER]: {
         name: t('INTELLECTUALIZER.name'),
         description: t('INTELLECTUALIZER.description'),
-        srcImg: retroflector,
+        srcImg: intellectualizer,
         bgColour: '#400098',
         label: darkBlue,
         heroes: [
@@ -194,7 +198,7 @@ export const buildHeroGroupsPart1 = (
     [HeroGroup.TRICKSTER]: {
         name: t('TRICKSTER.name'),
         description: t('TRICKSTER.description'),
-        srcImg: retroflector,
+        srcImg: trickster,
         bgColour: 'rgba(47,153,51,0.5)',
         label: greenBg,
         heroes: [

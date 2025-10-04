@@ -7,7 +7,8 @@ import veteran from '@/shared/assets/images/heros/veteran/Veteran.webp';
 import veteranGif from '@/shared/assets/images/heros/veteran/Veteran.gif';
 import bullying from '@/shared/assets/images/heros/bullying/bullying.png';
 import people_pleaser from '@/shared/assets/images/heros/people-pleaser/people-pleaser.png';
-import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
+import obedient from '@/shared/assets/images/descriptionCard/obedient.png';
+import desensitizer from '@/shared/assets/images/descriptionCard/desensitizer.png';
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
@@ -20,7 +21,7 @@ export const buildHeroGroupsPart2 = (
     [HeroGroup.OBEDIENT]: {
         name: t('OBEDIENT.name'),
         description: t('OBEDIENT.description'),
-        srcImg: retroflector,
+        srcImg: obedient,
         bgColour: '#FFFF00',
         label: orange,
         heroes: [
@@ -52,7 +53,7 @@ export const buildHeroGroupsPart2 = (
     [HeroGroup.DESENSITIZER]: {
         name: t('DESENSITIZER.name'),
         description: t('DESENSITIZER.description'),
-        srcImg: retroflector,
+        srcImg: desensitizer,
         bgColour: '#00C0C0',
         label: lightBlue,
         heroes: [
