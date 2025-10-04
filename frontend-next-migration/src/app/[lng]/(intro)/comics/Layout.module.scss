@@ -1,10 +1,6 @@
 .blurLine {
-    filter: blur(25px) !important;
-    background: linear-gradient(
-        rgba(19, 179, 194, 0.29),
-        rgba(35, 48, 51, 0.47),
-        rgba(2, 76, 80, 0.4)
-    ) !important;
+  filter: blur(25px) !important;
+//background: linear-gradient(rgba(19, 179, 194, 0.29), rgba(35, 48, 51, 0.47), rgba(2, 76, 80, 0.4)) !important;
 }
 
 .diveButton {
