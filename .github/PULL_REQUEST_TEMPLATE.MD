@@ -1,6 +1,6 @@
 ## 📄 **Pull Request Overview**
 
-closes [Provide IssueNumber]
+Closes [Provide IssueNumber]
 
 ## 🔧 **Changes Made**
 
