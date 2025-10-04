@@ -6,13 +6,14 @@
     display: grid;
     grid-template-rows: auto;
     align-items: center;
+    justify-items: center;
     align-content: center;
-    padding: 0px;
-    gap: 2px;
+    padding: 0;
+    gap: var(--border-width);
     border: var(--border-width) solid var(--content-primary);
     border-radius: var(--border-radius);
-    background-color: var(--content-primary);  
-    overflow: hidden;    
+    background-color: var(--content-primary);
+    overflow: hidden;
 
     &.Mobile {
         grid-template-columns:  repeat(3, minmax(1rem, 1fr));
