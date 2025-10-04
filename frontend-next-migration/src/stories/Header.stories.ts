@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Header } from './Header';
+import { action } from 'storybook/actions';
 
 const meta = {
     title: 'Example/Header',
@@ -21,7 +22,17 @@ export const LoggedIn: Story = {
         user: {
             name: 'Jane Doe',
         },
+        onLogin: action('onLogin'),
+        onLogout: action('onLogout'),
+        onCreateAccount: action('onCreateAccount'),
     },
 };
 
-export const LoggedOut: Story = {};
+export const LoggedOut: Story = {
+    args: {
+        user: undefined,
+        onLogin: action('onLogin'),
+        onLogout: action('onLogout'),
+        onCreateAccount: action('onCreateAccount'),
+    },
+};

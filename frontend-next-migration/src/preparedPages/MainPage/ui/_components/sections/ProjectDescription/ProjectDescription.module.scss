@@ -92,7 +92,8 @@
 
     p {
         font: var(--font-sw-xxxl);
-        text-align: center;
+        line-height: var(--font-line-4xl);
+        text-align: center !important;
         color: var(--primary-color);
         white-space: pre-line;
     }

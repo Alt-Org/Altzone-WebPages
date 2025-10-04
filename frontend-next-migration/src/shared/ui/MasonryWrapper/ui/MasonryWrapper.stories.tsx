@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/nextjs';
 import { MasonryWrapper } from './MasonryWrapper';
 import Image from 'next/image';
 

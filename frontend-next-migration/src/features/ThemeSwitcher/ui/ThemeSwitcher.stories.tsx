@@ -1,5 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 export default {
@@ -8,9 +7,6 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ThemeSwitcher>;
+} as Meta<typeof ThemeSwitcher>;
 
-const Template: ComponentStory<typeof ThemeSwitcher> = (args) => <ThemeSwitcher {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary: StoryObj<typeof ThemeSwitcher> = {};

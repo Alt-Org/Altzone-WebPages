@@ -7,7 +7,6 @@ import {
     getRouteGameArtPage,
     getRouteDefenseGalleryPage,
     getRouteAllClanSearchPage,
-    getRouteAllFurnitureSetsPage,
     getRouteAllCollectionsPage,
     getRouteJoinUsPage,
     getRouteAboutPage,

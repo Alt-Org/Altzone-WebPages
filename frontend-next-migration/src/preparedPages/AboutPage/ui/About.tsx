@@ -76,7 +76,14 @@ const About = (props: Props) => {
                 <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
-                        <p className={cls.sValues}>{isLoading ? '...' : projectCount}</p>
+                        {/* Fix bug with directus returning invalid type */}
+                        <p className={cls.sValues}>
+                            {isLoading
+                                ? '...'
+                                : typeof projectCount === 'number'
+                                  ? projectCount
+                                  : 'NaN'}
+                        </p>
                         <p className={cls.gridp}>{project}</p>
                     </div>
                     <div>

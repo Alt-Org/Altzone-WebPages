@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/nextjs';
 import { JoinUsPage } from './JoinUsPage';
 import { BlockSection } from '../types';
 
