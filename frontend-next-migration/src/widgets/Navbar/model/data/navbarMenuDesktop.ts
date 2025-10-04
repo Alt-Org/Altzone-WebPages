@@ -2,7 +2,6 @@ import img from '@/shared/assets/images/altLogo.png';
 import {
     getRouteMainPage,
     getRouteAllNewsPage,
-    getRouteTeamPage,
     getRouteLoginPage,
 } from '@/shared/appLinks/RoutePaths';
 import { dropdowns } from './dropdowns';
@@ -15,7 +14,7 @@ navbarBuilder.addDropDown('game', true, dropdowns.game);
 navbarBuilder.addDropDown('gallery', true, dropdowns.gallery);
 navbarBuilder.addDropDown('gameart', true, dropdowns.gameart);
 navbarBuilder.addDropDown('community', true, dropdowns.community);
-navbarBuilder.addLink('team', getRouteTeamPage(), true);
+navbarBuilder.addDropDown('team', true, dropdowns.team);
 navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());
 

@@ -152,3 +152,4 @@ export const getRouteLeaderboardClansPage = () => '/leaderboard/clans';
 
 export const getRouteGamePage = () => '/peli';
 export const getRouteProfilePage = () => '/profile';
+export const getRoutePRGPage = () => '/prg';
