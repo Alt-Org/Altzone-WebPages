@@ -15,6 +15,19 @@
     }
 }
 
+.descriptionCardMobile {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.descriptionCard {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .heroSection {
     //height: 800px;
     //min-height: 50vh;
@@ -29,6 +42,48 @@
     margin-bottom: 20vh;
 
     //width: 100%;
+}
+
+.newsGrid {
+    display: grid;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    justify-content: center;
+}
+
+.newsHeader {
+    font: var(--font-sw-xxl);
+    color: var(--primary-color);
+    text-align: center;
+    margin: 50px;
+
+    @media (max-width: breakpoint(sm)) {
+        font: var(--font-sw-xl);
+    }
+}
+
+.linkWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+    border: 1px solid black;
+    box-shadow: 0.1rem 0.3rem black;
+    font: var(--font-dm-m) !important;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 }
 
 .BtnGame {

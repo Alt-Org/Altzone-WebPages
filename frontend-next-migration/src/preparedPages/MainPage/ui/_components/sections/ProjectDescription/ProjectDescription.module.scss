@@ -65,9 +65,13 @@
         background-color: none;
     }
     p {
-        font: var(--font-dm-l);
+        font: var(--font-dm-bold-l) !important;
         text-align: center;
         white-space: pre-line;
+
+        @media screen and (max-width: breakpoint(sm)) {
+            font: var(--font-dm-bold-m) !important;
+        }
     }
 }
 
@@ -91,9 +95,8 @@
     }
 
     p {
-        font: var(--font-sw-xxxl);
-        line-height: var(--font-line-4xl);
-        text-align: center !important;
+        font: var(--font-sw-xxl) !important;
+        text-align: center;
         color: var(--primary-color);
         white-space: pre-line;
     }
@@ -119,6 +122,15 @@
     margin-bottom: 40px;
 }
 
+.imgHolder {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    @media (max-width: breakpoint(xxl)) {
+        margin-top: 20px;
+    }
+}
+
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
@@ -135,7 +147,7 @@
 
     @media screen and (max-width: breakpoint(xs)) {
         & {
-            font: var(--font-sw-xxxl);
+            font: var(--font-sw-xxl) !important;
         }
     }
 }
@@ -144,18 +156,19 @@
     .description {
         width: 80%;
         p {
-            font-size: 0.9rem;
+            font: var(--font-dm-m);
             text-align: center;
         }
     }
     .titleQuestion {
-        font-size: 1.5rem;
+        font: var(--font-sw-xxl);
         width: 80%;
     }
     .subDescription {
         width: 80%;
         p {
-            font: var(--font-sw-xl);
+            font: var(--font-sw-xl) !important;
         }
     }
+    
 }

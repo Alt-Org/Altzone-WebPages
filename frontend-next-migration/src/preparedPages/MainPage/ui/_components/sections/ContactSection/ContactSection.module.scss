@@ -32,8 +32,9 @@
         color: var(--primary-color);
         white-space: pre-line;
         text-align: center;
-        font-family: var(--font-family-title), sans-serif;
+        font: var(--font-sw-xxl), sans-serif;
     }
+
     .Link {
         color: black;
         text-decoration: none;
@@ -43,7 +44,7 @@
         transition: all 0.3s ease-in-out;
         border: 1px solid black;
         box-shadow: 0.1rem 0.3rem black;
-        font-family: var(--font-family-secondary) !important;
+        font: var(--font-dm-m) !important;
         &:hover {
             transform: scale(1.05);
         }
@@ -56,12 +57,15 @@
     }
     .ContentWithNav {
         gap: 3rem;
+        
         .title {
-            font-size: 1.3rem;
+            font: var(--font-sw-l), sans-serif;
         }
+
         .Link {
             font-size: 0.8rem;
         }
+
     }
     .sideImg {
         margin-top: -90px;
@@ -71,9 +75,11 @@
 @media screen and (max-width: breakpoint(sm)) {
     .ContentWithNav {
         gap: 1rem;
+
         .title {
-            font-size: 1.2rem;
+            font: var(--font-sw-l), sans-serif;
         }
+
         .Link {
             font-size: 0.8rem;
         }
@@ -91,9 +97,11 @@
 @media screen and (max-width: breakpoint(xs)) {
     .ContentWithNav {
         gap: 0;
+
         .title {
-            font-size: 1.2rem;
+            font: var(--font-sw-l), sans-serif;
         }
+
         .Link {
             font-size: 0.8rem;
         }
