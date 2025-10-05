@@ -13,6 +13,7 @@
     margin: 0 auto;
     overflow: hidden;
     position: relative;
+    transition: border-color 0.3s ease-out;
 
     @media (max-width: breakpoint(xl)) {
         max-width: 500px;
@@ -104,7 +105,6 @@
     @media (max-width: breakpoint(sm)),
     (max-width: breakpoint(xs)),
     (max-width: 320px) {
-        font: var(--font-sw-m);
         padding-top: 10px;
     }
 }
