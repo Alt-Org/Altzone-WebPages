@@ -4,19 +4,59 @@ import { notFound } from 'next/navigation';
 import { getRouteOneNewsPage } from '@/shared/appLinks/RoutePaths';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
+// Normalize Directus host (strip trailing slashes). Falls back to empty if not set.
+const HOST = (process.env.NEXT_PUBLIC_DIRECTUS_HOST || process.env.DIRECTUS_HOST || '').replace(
+    /\/+$/,
+    '',
+);
+
+// Tiny helper: fetch just the metadata we need for SEO (title, preview, OG image).
+// Keeps the client UI logic separate; this is server-only and fast.
+async function fetchNewsMeta(id: string, lng: string) {
+    if (!HOST) return null;
+
+    const url = new URL(`${HOST}/items/news/${id}`);
+    // Ask Directus only for the fields we actually use in SEO → smaller payload, quicker render.
+    url.searchParams.set(
+        'fields',
+        'translations.languages_code,translations.title,translations.preview_text,titlePicture.id',
+    );
+
+    try {
+        const res = await fetch(url.toString(), { cache: 'no-store' });
+        if (!res.ok) return null;
+
+        const data = (await res.json())?.data as any;
+        if (!data) return null;
+
+        const want = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
+        const tr =
+            data.translations?.find((t: any) => t.languages_code === want) ??
+            data.translations?.[0];
+
+        return {
+            title: tr?.title,
+            description: tr?.preview_text,
+            imageUrl: data.titlePicture?.id ? `${HOST}/assets/${data.titlePicture.id}` : undefined,
+        };
+    } catch {
+        // Silent fallback to defaults if Directus is down or the item is missing.
+        return null;
+    }
+}
+
 export async function _getPage(lng: string, id: string) {
+    if (!id) notFound();
     const { t } = await useServerTranslation(lng, 'news');
 
-    if (!id) {
-        notFound();
-    }
-
     // Routes & SEO
-    const relPath = getRouteOneNewsPage(encodeURIComponent(id));
-    const path = `/${lng}${relPath}`;
-    const title = t('head-title');
-    const description = t('head-description');
+    const path = `/${lng}${getRouteOneNewsPage(encodeURIComponent(id))}`;
+    const meta = await fetchNewsMeta(id, lng);
+
+    const title = meta?.title || t('head-title');
+    const description = meta?.description || t('head-description');
     const keywords = t('head-keywords');
+    const images = meta?.imageUrl ? [{ url: meta.imageUrl }] : (defaultOpenGraph.images ?? []);
 
     return createPage({
         buildPage: () => ({}),
@@ -30,6 +70,7 @@ export async function _getPage(lng: string, id: string) {
                 title,
                 description,
                 url: path,
+                images,
             },
             alternates: { canonical: path },
         }),

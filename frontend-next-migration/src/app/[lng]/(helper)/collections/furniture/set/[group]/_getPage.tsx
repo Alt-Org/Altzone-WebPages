@@ -1,13 +1,25 @@
 import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
+import { notFound } from 'next/navigation';
 import { SingleFurnitureCollectionPageProps } from '@/preparedPages/FurnitureCollectionsPages';
-import { defaultOpenGraph } from '@/shared/seoConstants';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
+import { FurnitureManager } from '@/entities/Furniture';
 import React from 'react';
 
 type Props = React.ComponentProps<typeof SingleFurnitureCollectionPageProps>;
 
+function getOgImageUrl(set: ReturnType<FurnitureManager['getFurnitureSet']>) {
+    const img = set?.coverWebp ?? set?.cover;
+    if (!img) return null;
+    const src = typeof img === 'string' ? img : img.src;
+    return /^https?:\/\//i.test(src) ? src : `${baseUrl}${src}`;
+}
+
 export async function _getPage(lng: string, group: string) {
     const { t } = await useServerTranslation(lng, 'furniture');
+    const manager = new FurnitureManager();
+    const set = manager.getFurnitureSet(group);
+    if (!set) notFound();
 
     // Title-casing fallback (e.g. "neuro" -> "Neuro")
     const toTitleCase = (text: string) =>
@@ -19,11 +31,17 @@ export async function _getPage(lng: string, group: string) {
     const setName = t(`sets.${group}.name`, toTitleCase(group));
     const setDesc = t(`sets.${group}.description`, t('head-description'));
 
-    // Routes & SEO (hepler handles encoding + correct / collection base)
+    // Routes & SEO
     const relPath = `/collections/furniture/set/${encodeURIComponent(group)}`;
     const path = `/${lng}${relPath}`;
     const title = `${setName} - ${t('head-title')}`;
     const keywords = `${setName}, ${t('head-keywords')}`;
+    const ogImageUrl = getOgImageUrl(set);
+    const ogImage = ogImageUrl
+        ? ({ url: ogImageUrl, alt: `${setName} – ${t('furniture-collections-title')}` } as const)
+        : null;
+
+    const ogImages = ogImage ? [ogImage] : (defaultOpenGraph.images ?? []);
 
     return createPage<Props>({
         buildPage: () => ({
@@ -39,6 +57,7 @@ export async function _getPage(lng: string, group: string) {
                 title,
                 description: setDesc,
                 url: path,
+                images: ogImages,
             },
             alternates: { canonical: path },
         }),

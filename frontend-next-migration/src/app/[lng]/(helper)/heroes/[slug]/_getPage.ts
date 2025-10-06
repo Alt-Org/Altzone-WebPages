@@ -6,8 +6,9 @@ import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 import { HeroPageProps } from '@/preparedPages/HeroesPages';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 
-function getHeroOgImage(hero: HeroWithGroup) {
-    return `${baseUrl}${typeof hero.srcImg === 'string' ? hero.srcImg : hero.srcImg.src}`;
+function getOgImageUrl(hero: HeroWithGroup) {
+    const src = typeof hero.srcImg === 'string' ? hero.srcImg : hero.srcImg.src;
+    return /^https?:\/\//i.test(src) ? src : `${baseUrl}${src}`;
 }
 
 export async function _getPage(lng: string, slug: string) {
@@ -34,7 +35,11 @@ export async function _getPage(lng: string, slug: string) {
     const title = currentHero.title;
     const description = currentHero.description;
     const keywords = `${t('head-keywords')}, ${currentHero.title}, ${currentHero.groupEnum}, ${currentHero.groupName}`;
-    const ogImage = getHeroOgImage(currentHero);
+    const ogImageUrl = getOgImageUrl(currentHero);
+    const ogImage = ogImageUrl
+        ? ({ url: ogImageUrl, alt: `${title} - ${currentHero.groupName}` } as const)
+        : null;
+    const ogImages = ogImage ? [ogImage] : (defaultOpenGraph.images ?? []);
 
     return createPage<HeroPageProps>({
         buildPage: () => ({
@@ -52,12 +57,7 @@ export async function _getPage(lng: string, slug: string) {
                 title,
                 description,
                 url: path,
-                images: [
-                    {
-                        url: ogImage,
-                        alt: `${title} - ${currentHero.groupName}`,
-                    },
-                ],
+                images: ogImages,
             },
             alternates: { canonical: path },
         }),
