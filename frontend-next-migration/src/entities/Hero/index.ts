@@ -12,6 +12,8 @@ export { default as HeroGroupLabel } from './ui/HeroGroupLabel/HeroGroupLabel';
 export { AttributesPie } from './ui/AttributesPie/AttributesPie';
 
 export { color, statValue, rarityClassNames, statData } from './model/stats/statsDataV2';
+export { statData2 } from './model/stats/statsDataV3';
+export { statData3 } from './model/stats/statsDataV4';
 export { BarChart } from './ui/BarChart/BarChart';
 export { statsPricingData } from './model/stats/statsPricingData';
 export { AttributesPricing3 } from './ui/AttributesPricing3/AttributesPricingV3';

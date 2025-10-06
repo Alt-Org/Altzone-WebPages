@@ -12,7 +12,7 @@
     text-align: left;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 
 
     .Content{
@@ -61,7 +61,7 @@
         line-height: 1.1em;
         text-align: left;
         max-width: 85%;
-        align-self:flex-start;
+        align-self: flex-start;
         
     }
 

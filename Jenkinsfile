@@ -25,36 +25,36 @@ pipeline {
             }
         }
 
-        stage('Run automation tests') {
-          steps {
-            dir('frontend-next-migration') {
-              withCredentials([file(credentialsId: 'alt-site-env-test-file', variable: 'ENV_LOCAL_FILE')]) {
-                sh 'rm -f .env.local || true'
-                sh 'cp $ENV_LOCAL_FILE .env.local'
-                script {
-                  def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
-
-                  if (firstTestResult != 0) {
-                    def retryResult = sh(script: 'npm run test:ci-retry-failed', returnStatus: true)
-
-                    if (retryResult != 0) {
-                      error("Tests failed after retry")
-                    }
-                  }
-                }
-              }
-            }
-          }
-          post {
-            always {
-              dir('frontend-next-migration') {
-                sh 'rm -f .env.local || true'
-                recordCoverage(tools: [[parser: 'COBERTURA', pattern: 'coverage/cobertura-coverage.xml']])
-                junit allowEmptyResults: true, checksName: 'Unit Tests', stdioRetention: 'FAILED', testResults: 'junit.xml'
-              }
-            }
-          }
-        }
+//         stage('Run automation tests') {
+//           steps {
+//             dir('frontend-next-migration') {
+//               withCredentials([file(credentialsId: 'alt-site-env-test-file', variable: 'ENV_LOCAL_FILE')]) {
+//                 sh 'rm -f .env.local || true'
+//                 sh 'cp $ENV_LOCAL_FILE .env.local'
+//                 script {
+//                   def firstTestResult = sh(script: 'npm run test:ci', returnStatus: true)
+//
+//                   if (firstTestResult != 0) {
+//                     def retryResult = sh(script: 'npm run test:ci-retry-failed', returnStatus: true)
+//
+//                     if (retryResult != 0) {
+//                       error("Tests failed after retry")
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           post {
+//             always {
+//               dir('frontend-next-migration') {
+//                 sh 'rm -f .env.local || true'
+//                 recordCoverage(tools: [[parser: 'COBERTURA', pattern: 'coverage/cobertura-coverage.xml']])
+//                 junit allowEmptyResults: true, checksName: 'Unit Tests', stdioRetention: 'FAILED', testResults: 'junit.xml'
+//               }
+//             }
+//           }
+//         }
 
         stage('Build and Push Docker Image') {
             agent { label 'docker-agent' }

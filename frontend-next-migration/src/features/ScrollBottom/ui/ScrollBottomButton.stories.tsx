@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryObj, Meta } from '@storybook/nextjs';
 import React from 'react';
 import { ScrollBottomButton } from './ScrollBottomButton';
 
@@ -8,10 +8,10 @@ export default {
     args: {
         className: '',
     },
-} as ComponentMeta<typeof ScrollBottomButton>;
+} as Meta<typeof ScrollBottomButton>;
 
-const Template: ComponentStory<typeof ScrollBottomButton> = (args) => {
-    return (
+export const Default: StoryObj<typeof ScrollBottomButton> = {
+    render: (args) => (
         <>
             <div
                 style={{
@@ -26,7 +26,5 @@ const Template: ComponentStory<typeof ScrollBottomButton> = (args) => {
             </div>
             <ScrollBottomButton {...args} />
         </>
-    );
+    ),
 };
-
-export const Default = Template.bind({});

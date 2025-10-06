@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import React, { FC, memo, ReactNode } from 'react';
 import { AppLink, AppLinkTheme } from './AppLink';
 
