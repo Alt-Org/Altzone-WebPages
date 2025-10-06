@@ -89,7 +89,6 @@ export const GalleryCategoriesWithModalSlider = memo(
                 );
             });
         };
-
         return (
             <div style={{ cursor: 'pointer' }}>
                 <Fancybox>
