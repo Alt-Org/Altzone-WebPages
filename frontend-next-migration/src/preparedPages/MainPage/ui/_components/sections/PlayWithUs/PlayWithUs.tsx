@@ -60,7 +60,7 @@ const PlayWithUs = (props: Props) => {
                                 link: googlePLayLink,
                                 body: webGl.downloadText,
                             }}
-                            key={webGl.title}
+                            key={webGl.titleDownload}
                         />
                     </div>
                 </div>
