@@ -11,7 +11,7 @@ import {
     getRouteJoinUsPage,
     getRouteAboutPage,
     getRouteTeamPage,
-    getRoutePRGPage,
+    getRoutePrgPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -147,7 +147,7 @@ export const dropdowns = {
         {
             elementText: 'PRG',
             link: {
-                path: getRoutePRGPage(),
+                path: getRoutePrgPage(),
                 isExternal: false,
             },
         },
