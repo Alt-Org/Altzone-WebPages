@@ -142,11 +142,5 @@ describe('Navbar mobile', () => {
 
         // Initially shows login form
         expect(screen.getByTestId('login-form')).toBeInTheDocument();
-
-        // Click toggle to register
-        const toggleButton = screen.getByText('auth.text_to_register');
-        await userEvent.click(toggleButton);
-
-        expect(screen.getByTestId('register-form')).toBeInTheDocument();
     });
 });

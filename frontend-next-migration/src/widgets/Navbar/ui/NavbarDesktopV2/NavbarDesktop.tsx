@@ -11,7 +11,7 @@ import { useDropdownManager } from '@/shared/lib/hooks/useDropdownManager';
 import { NavbarBuild } from '../../model/types';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
-import { LoginForm, RegisterForm } from '@/features/AuthByUsername';
+import { LoginForm } from '@/features/AuthByUsername';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
@@ -60,7 +60,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
 
     const [isAnimating, setIsAnimating] = useState(false);
     const [isMouseOver, setIsMouseOver] = useState(false);
-    const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
     const [realPath, setRealPath] = useState('/');
     const pathname = usePathname();
 
@@ -104,10 +103,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
 
     const handleAuthSuccess = () => {
         authDropdown.actions.reset();
-    };
-
-    const toggleAuthMode = () => {
-        setAuthMode(authMode === 'login' ? 'register' : 'login');
     };
 
     const handleNavbarMouseEnter = () => {
@@ -179,32 +174,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                             authDropdown.state.isOpen && !isCollapsed,
                                     })}
                                 >
-                                    {authMode === 'login' ? (
-                                        <LoginForm
-                                            onSuccessLogin={handleAuthSuccess}
-                                            extraContent={
-                                                <button
-                                                    type="button"
-                                                    onClick={toggleAuthMode}
-                                                    className={cls.toggleAuthMode}
-                                                >
-                                                    {t('text_to_register')}
-                                                </button>
-                                            }
-                                        />
-                                    ) : (
-                                        <RegisterForm
-                                            extraContent={
-                                                <button
-                                                    type="button"
-                                                    onClick={toggleAuthMode}
-                                                    className={cls.toggleAuthMode}
-                                                >
-                                                    {t('text_to_login')}
-                                                </button>
-                                            }
-                                        />
-                                    )}
+                                    <LoginForm onSuccessLogin={handleAuthSuccess} />
                                 </div>
                             </div>
                         ) : permissionToLogout.isGranted ? (
@@ -226,15 +196,18 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                             authDropdown.state.isOpen && !isCollapsed,
                                     })}
                                 >
-                                    <button
-                                        className={cls.logoutButton}
-                                        onClick={() => {
-                                            logout();
-                                            authDropdown.actions.reset();
-                                        }}
-                                    >
-                                        {t('logout')}
-                                    </button>
+                                    <div className={cls.authDropdownContent}>
+                                        <div className={cls.profileLabel}>{t('ownProfile')}</div>
+                                        <button
+                                            className={cls.logoutButton}
+                                            onClick={() => {
+                                                logout();
+                                                authDropdown.actions.reset();
+                                            }}
+                                        >
+                                            {t('logout')}
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         ) : null}

@@ -70,7 +70,7 @@
     }
 
     &:hover {
-        height: 380px;
+        height: 250px;
         top: 0;
         opacity: 1;
     }
@@ -246,17 +246,6 @@
     }
 }
 
-.logoutButton {
-    margin-top: 15px;
-    cursor: pointer;
-    background-color: var(--primary-color);
-    border: var(--border-mobile) solid var(--black);
-    border-radius: var(--border-radius-xl);
-    box-shadow: 2px 2px var(--black);
-    width: 100%;
-    padding: 10px;
-}
-
 .FixButtonWrapper {
     margin-left: auto;
     margin-right: 50px;
@@ -316,22 +305,27 @@
 }
 
 .authDropdown {
-    display: none;
     opacity: 0;
+    pointer-events: none;
     position: absolute;
     top: 5px;
-    max-width: 350px;
-    transform: translateX(40%);
+    max-width: 250px;
+    transform: translateX(40%) translateY(-4px) scale(0.98);
     font-size: 0.7em;
     max-height: 100px;
     border-radius: var(--border-radius-lg);
     color: var(--primary-color);
     padding: 15px;
-    transition: opacity 0.3s ease-in-out;
+    transition:
+        opacity 0.1s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s, 0s;
 
     &.authDropdownVisible {
-        display: flex;
         opacity: 1;
+        pointer-events: auto;
+        transform: translateX(40%) translateY(0) scale(1);
+        transition-delay: 0.2s, 0.2s;
     }
 }
 
@@ -345,4 +339,36 @@
     margin-top: 10px;
     font: var(--font-dm-bold-m);
     font-size: inherit;
+}
+
+.authDropdownContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+    min-width: 160px;
+    padding: 14px 0;
+}
+
+.profileLabel {
+    font-weight: 600;
+    font-size: 1.5em;
+    color: white;
+    text-align: left;
+    letter-spacing: 0.2px;
+}
+
+.logoutButton {
+    margin-top: 8px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius-xl);
+    box-shadow: 2px 2px var(--black);
+    width: 280px;
+    padding: 10px 0;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 1em;
+    text-align: center;
 }

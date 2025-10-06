@@ -34,7 +34,7 @@
         max-height 0.3s ease;
 }
 .openDropdown {
-    padding: 15px;
+    padding: 10px;
     transform: scaleY(1);
     max-height: 450px;
 }
@@ -120,6 +120,9 @@
     width: 100%;
     padding: 10px;
 }
+.profileLabel {
+    font-size: 1.2em;
+}
 
 .navItem {
     opacity: 1;
@@ -134,18 +137,19 @@
 .authFormContainer {
     width: 100%;
     max-width: 400px;
+    gap: 8px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    font: var(--font-dm-bold-m);
     & > * {
         width: 100%;
-        max-width: 300px;
+        max-width: 350px;
     }
 
     @media (min-width: 768px) {
-        max-width: 350px;
+        max-width: 380px;
     }
 }
 

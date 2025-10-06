@@ -12,7 +12,7 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 import { ItemType, NavbarBuild } from '../../model/types';
 import cls from './NavbarMobile.module.scss';
-import { LoginForm, RegisterForm } from '@/features/AuthByUsername';
+import { LoginForm } from '@/features/AuthByUsername';
 
 enum DropdownTypes {
     EMPTY = 'EMPTY',
@@ -49,7 +49,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const [dropdownType, setDropdownType] = useState<DropdownType>(DropdownTypes.EMPTY);
     const [realPath, setRealPath] = useState('/');
-    const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
 
     const [isLangOpen, setIsLangOpen] = useState(false);
 
@@ -73,10 +72,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const handleAuthSuccess = () => {
         setDropdownType(DropdownTypes.EMPTY);
-    };
-
-    const toggleAuthMode = () => {
-        setAuthMode(authMode === 'login' ? 'register' : 'login');
     };
 
     const navManuItemsList: INavMenuItem[] = useMemo(() => {
@@ -165,35 +160,11 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 >
                     {permissionToLogin.isGranted ? (
                         <div className={cls.authFormContainer}>
-                            {authMode === 'login' ? (
-                                <LoginForm
-                                    onSuccessLogin={handleAuthSuccess}
-                                    extraContent={
-                                        <button
-                                            type="button"
-                                            onClick={toggleAuthMode}
-                                            className={cls.toggleAuthMode}
-                                        >
-                                            {tAuth('text_to_register')}
-                                        </button>
-                                    }
-                                />
-                            ) : (
-                                <RegisterForm
-                                    extraContent={
-                                        <button
-                                            type="button"
-                                            onClick={toggleAuthMode}
-                                            className={cls.toggleAuthMode}
-                                        >
-                                            {tAuth('text_to_login')}
-                                        </button>
-                                    }
-                                />
-                            )}
+                            <LoginForm onSuccessLogin={handleAuthSuccess} />
                         </div>
                     ) : permissionToLogout.isGranted ? (
                         <div className={cls.authFormContainer}>
+                            <div className={cls.profileLabel}> {tAuth('ownProfile')}</div>
                             <button
                                 className={cls.logoutButton}
                                 onClick={() => logout()}
@@ -209,10 +180,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         permissionToLogin.isGranted,
         permissionToLogout.isGranted,
         navManuItemsList,
-        authMode,
         tAuth,
         handleAuthSuccess,
-        toggleAuthMode,
         isLangOpen,
         logout,
     ]);
