@@ -1,7 +1,7 @@
 .Container {
   margin-inline: auto;
   padding-inline: 16px;
-  font-family: 'DM Sans', sans-serif;
+  font: var(--font-dm-m) !important;
 
   @media (min-width: breakpoint(md)){
     width: 70%;
@@ -190,10 +190,19 @@
   width: 100%;
 }
 .Underline {
-  text-decoration: underline !important;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 1.5px;
+  &:hover {
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1.5px;
+  }
 }
+.MarginBottom {
+  margin-bottom: 2rem;
+}
+.bold {
+  font-weight: bold;
+}
+
 
 
 

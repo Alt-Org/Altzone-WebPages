@@ -12,6 +12,7 @@ import Helena from '@/shared/assets/images/board/helena.png';
 import Esa from '@/shared/assets/images/board/esa.png';
 import Emmi_Irina from '@/shared/assets/images/board/emmi-irina.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 type PrgT = TFunction<'prg'>;
 
@@ -24,7 +25,7 @@ const CheckPdfButton = (checkPdfButtonProps: CheckPdfButtonProps) => (
     <AppLink
         to={checkPdfButtonProps.link}
         className={cls.pdfButton}
-        aria-label="Open the PDF in a new tab"
+        aria-label={checkPdfButtonProps.t('open-pdf')}
         isExternal={true}
     >
         <span className={cls.label}>{checkPdfButtonProps.t('check-pdf')}</span>
@@ -123,7 +124,7 @@ const PRGPage = () => {
                     />
                 </div>
             </div>
-            <div className={cls.TextContainer}>
+            <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('prg-board')}</p>
                 {!isMobileSize && !isTabletSize ? (
                     <div className={cls.BoardCardContainer}>
@@ -183,11 +184,11 @@ const PRGPage = () => {
                 <AppLink
                     to={'/team'}
                     className={cls.MeetBoard}
-                    aria-label="Avaa PDF uudessa välilehdessä"
+                    aria-label={t('link-to-team-page')}
+                    isExternal={true}
                 >
-                    <span className={cls.label}>
+                    <span className={classNames(cls.label, undefined, [cls.bold, cls.Underline])}>
                         {t('alt-zone-team')}&nbsp;
-                        <span className={cls.Underline}>{t('here')}&nbsp;</span>
                     </span>
                     <Image
                         className={cls.icon}
