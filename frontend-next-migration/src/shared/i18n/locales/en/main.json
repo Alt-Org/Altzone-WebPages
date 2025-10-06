@@ -19,6 +19,7 @@
         "ALT Zone provides a common foundation for teaching game art. The teaching package is easy to implement; it includes a demo game that can be tested on a mobile or PC device, as well as questions guiding students toward critical thinking in game art. The game can also be analyzed solely through videos and images.",
         "Students have the opportunity to continue developing the game into a downloadable mobile version, ALT Zone 2.0, available later from the app store. The revenue from ALT Zone 2.0 will support young people’s dreams through a dedicated foundation."
     ],
+    "follow-us-text": "Follow us on social media",
 
     "getToKnowComics": "Explore comics",
     "getToKnowComics-title": "The game inventor's story",
@@ -32,8 +33,7 @@
     "playWithUs-BecomeATester-body": "Make the app better",
     "playWithUs-WebGLNotice": "Due to known WebGL compatibility issues, our WebGL game might not work correctly on iPhones or Macs.",
 
-    "classifiedHeroesBlocks-title": "Heroes",
-    "classifiedHeroesBlocks-seeMore": "More",
+    "descriptionCard-title": "Explore our Defense Classes",
 
     "gallery-seeMore": "See more",
     "playWithUs-download-text": "Google Play Store",
@@ -42,5 +42,6 @@
     "contact-title": "Interested\nin working\nwith us?",
     "contact-linkText": "Contact us",
 
-    "newsSection-title": "Alt News"
+    "newsSection-title": "Alt News",
+    "newsSection-seeMore": "See more"
 }

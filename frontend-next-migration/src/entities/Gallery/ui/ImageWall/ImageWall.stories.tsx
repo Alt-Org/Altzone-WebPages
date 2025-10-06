@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/nextjs';
 import { ImageWall } from './ImageWall';
 import { mockImagesFull, mockImagesPreview } from '../../model/mockImages';
 
