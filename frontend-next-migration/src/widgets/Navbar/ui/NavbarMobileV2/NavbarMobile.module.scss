@@ -26,6 +26,8 @@
 }
 
 .NavbarDropdown {
+    display: flex;
+    justify-content: center;
     transform: scaleY(0);
     transform-origin: top;
     max-height: 0;
@@ -135,7 +137,7 @@
 }
 
 .authFormContainer {
-    width: 100%;
+    min-width: 280px;
     max-width: 400px;
     gap: 8px;
     margin: 0 auto;

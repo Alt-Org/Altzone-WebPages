@@ -70,10 +70,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         }
     }, [dropdownType]);
 
-    const handleAuthSuccess = () => {
-        setDropdownType(DropdownTypes.EMPTY);
-    };
-
     const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map((item) => {
@@ -160,7 +156,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 >
                     {permissionToLogin.isGranted ? (
                         <div className={cls.authFormContainer}>
-                            <LoginForm onSuccessLogin={handleAuthSuccess} />
+                            <LoginForm />
                         </div>
                     ) : permissionToLogout.isGranted ? (
                         <div className={cls.authFormContainer}>
@@ -181,7 +177,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         permissionToLogout.isGranted,
         navManuItemsList,
         tAuth,
-        handleAuthSuccess,
         isLangOpen,
         logout,
     ]);

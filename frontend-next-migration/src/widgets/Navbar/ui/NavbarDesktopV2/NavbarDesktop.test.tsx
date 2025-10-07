@@ -157,11 +157,14 @@ describe('NavbarDesktop', () => {
         expect(mockToggleFixed).toHaveBeenCalled();
     });
 
-    test('applies collapsed styles when isCollapsed is true', () => {
-        renderNavbar({ isCollapsed: true });
+    test('applies mouseOver styles when isMouseOver is true', () => {
+        renderNavbar();
 
         const navList = screen.getByRole('list');
-        expect(navList).toHaveClass(cls.collapsed);
+        fireEvent.mouseEnter(navList);
+        expect(navList).toHaveClass(cls.mouseOver);
+        fireEvent.mouseLeave(navList);
+        expect(navList).not.toHaveClass(cls.mouseOver);
     });
 
     test('does not show collapse button when not fixed', () => {

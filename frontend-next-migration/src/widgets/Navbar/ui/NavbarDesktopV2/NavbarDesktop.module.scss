@@ -27,7 +27,7 @@
     padding: auto;
 }
 
-.siteNavContentList:hover .itemNavbarDropDownContent {
+.siteNavContentList.mouseOver .itemNavbarDropDownContent {
     display: flex;
     flex-direction: column;
     padding-top: 15px;
@@ -35,7 +35,6 @@
     overflow-wrap: break-word;
     opacity: 1;
 }
-
 .siteNavContentList {
     height: 52px;
     transition: height 0.3s ease 0s;
@@ -69,7 +68,7 @@
         margin-left: -20px;
     }
 
-    &:hover {
+    &.mouseOver {
         height: 250px;
         top: 0;
         opacity: 1;

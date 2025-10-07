@@ -101,10 +101,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         setIsAnimating(false);
     };
 
-    const handleAuthSuccess = () => {
-        authDropdown.actions.reset();
-    };
-
     const handleNavbarMouseEnter = () => {
         setIsMouseOver(true);
         // Show dropdowns if they were toggled
@@ -137,7 +133,9 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         >
             <Container>
                 <ul
-                    className={classNames(cls.siteNavContentList, ModsUlAndLi)}
+                    className={classNames(cls.siteNavContentList, {
+                        [cls.mouseOver]: isMouseOver,
+                    })}
                     onMouseEnter={handleNavbarMouseEnter}
                     onMouseLeave={handleNavbarMouseLeave}
                 >
@@ -174,7 +172,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                             authDropdown.state.isOpen && !isCollapsed,
                                     })}
                                 >
-                                    <LoginForm onSuccessLogin={handleAuthSuccess} />
+                                    <LoginForm />
                                 </div>
                             </div>
                         ) : permissionToLogout.isGranted ? (
@@ -202,7 +200,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                             className={cls.logoutButton}
                                             onClick={() => {
                                                 logout();
-                                                authDropdown.actions.reset();
                                             }}
                                         >
                                             {t('logout')}
