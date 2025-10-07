@@ -1,7 +1,7 @@
 'use client';
+import { FC } from 'react';
 import { SectionMembers } from '@/widgets/SectionMembers';
 import cls from './MembersPage.module.scss';
-import { FC } from 'react';
 
 /**
  * The above code defines a React functional component for a Members Page with a background image

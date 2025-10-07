@@ -114,7 +114,7 @@ const NewsElementPage = () => {
 
                 <div className={cls.shareButton}>
                     <ShareButton>
-                        <span className={cls.shareLabel}>Jaa</span>
+                        <span className={cls.shareLabel}>{t('share-button')}</span>
                     </ShareButton>
                 </div>
             </div>
