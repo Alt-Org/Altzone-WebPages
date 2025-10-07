@@ -3,15 +3,20 @@ import { slugToCategoryNameMap } from '@/entities/NewsV2/model/newsCategorySlugM
 import { useServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
 import { getRouteNewsCategoryPage } from '@/shared/appLinks/RoutePaths';
-import { defaultOpenGraph } from '@/shared/seoConstants';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
+
+const toAbsolute = (src?: string | null) =>
+    !src ? null : /^https?:\/\//i.test(src) ? src : `${baseUrl}${src}`;
 
 export async function _getPage(lng: string, slug: string) {
     const { t } = await useServerTranslation(lng, 'news');
     if (!slug || !slugToCategoryNameMap[slug]) {
-        return notFound();
+        notFound();
     }
 
-    const categoryName = slugToCategoryNameMap[slug];
+    const categoryName =
+        slugToCategoryNameMap[slug] ??
+        slug.replace(/-/g, ' ').replace(/\b\w/g, (ch: string) => ch.toUpperCase());
 
     // Routes & SEO
     const relPath = getRouteNewsCategoryPage(encodeURIComponent(slug));
@@ -19,6 +24,13 @@ export async function _getPage(lng: string, slug: string) {
     const title = `${categoryName} - ${t('head-title')}`;
     const description = t('head-description');
     const keywords = `${t('head-keywords')}, ${categoryName}`;
+
+    // OG image: default only (no category-specific image exists)
+    const ogDefault = defaultOpenGraph.images?.[0]?.url ?? null;
+    const ogUrl = toAbsolute(ogDefault);
+    const ogImages = ogUrl
+        ? [{ url: ogUrl, alt: `${categoryName} — ${t('head-title')}` }]
+        : (defaultOpenGraph.images ?? []);
 
     return createPage({
         buildPage: () => ({}),
@@ -32,6 +44,7 @@ export async function _getPage(lng: string, slug: string) {
                 title,
                 description,
                 url: path,
+                images: ogImages,
             },
             alternates: { canonical: path },
         }),

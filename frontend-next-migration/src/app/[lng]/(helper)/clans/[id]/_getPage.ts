@@ -4,9 +4,17 @@ import { ClanRoomSubPageProps } from '@/preparedPages/ClanPages';
 import { envHelper } from '@/shared/const/envHelper';
 import { notFound } from 'next/navigation';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
+import type { IClan } from '@/entities/Clan';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 
-const OG_FALLBACK = `${baseUrl}/images/opengraph-image.png`;
+const toAbsolute = (src?: string | null) =>
+    !src ? null : /^https?:\/\//i.test(src) ? src : `${baseUrl}${src}`;
+
+// Use fallback only, no clan-specific logo image exists
+function getOgImageUrl(_: Partial<IClan>) {
+    const fallback = defaultOpenGraph.images?.[0]?.url ?? null;
+    return toAbsolute(fallback);
+}
 
 export async function _getPage(lng: string, id: string) {
     const { t } = await useServerTranslation(lng, 'clan');
@@ -15,16 +23,22 @@ export async function _getPage(lng: string, id: string) {
         return notFound();
     }
 
-    // Routes & SEO
-    const clanData = await response.json();
-    const clan = clanData?.data?.Clan ?? {};
+    const payload = await response.json();
+    const clan = payload?.data?.Clan ?? {};
 
+    const name = (clan.name as string | undefined)?.trim() || id;
+    const desc = (clan.phrase as string | undefined)?.trim() || t('head-description');
+
+    // Routes & SEO
     const relPath = getRouteOneClanPage(encodeURIComponent(id));
     const path = `/${lng}${relPath}`;
-    const title = `${t('head-title')}: ${clan.name ?? ''}`;
-    const description = clan.phrase?.trim() || t('head-description');
+    const title = `${t('head-title')} — ${name}`;
     const keywords = `${t('head-keywords')}${clan.tag ? `, ${clan.tag}` : ''}`;
-    const ogImage = clan.ogImageUrl?.startsWith('http') ? clan.ogImageUrl : OG_FALLBACK;
+
+    const ogUrl = getOgImageUrl(clan);
+    const ogImages = ogUrl
+        ? [{ url: ogUrl, alt: `${name} — ${t('head-title')}` }]
+        : (defaultOpenGraph.images ?? []);
 
     return createPage<ClanRoomSubPageProps>({
         buildPage: () => ({
@@ -56,15 +70,15 @@ export async function _getPage(lng: string, id: string) {
         }),
         buildSeo: () => ({
             title,
-            description,
+            description: desc,
             keywords,
             openGraph: {
                 ...defaultOpenGraph,
                 type: 'website',
                 title,
-                description,
+                description: desc,
                 url: path,
-                images: [ogImage],
+                images: ogImages,
             },
             alternates: { canonical: path },
         }),

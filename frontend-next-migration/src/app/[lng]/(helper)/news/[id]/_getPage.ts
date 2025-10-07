@@ -2,7 +2,10 @@ import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
 import { getRouteOneNewsPage } from '@/shared/appLinks/RoutePaths';
-import { defaultOpenGraph } from '@/shared/seoConstants';
+import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
+
+const toAbsolute = (src?: string | null) =>
+    !src ? null : /^https?:\/\//i.test(src) ? src : `${baseUrl}${src}`;
 
 // Normalize Directus host (strip trailing slashes). Falls back to empty if not set.
 const HOST = (process.env.NEXT_PUBLIC_DIRECTUS_HOST || process.env.DIRECTUS_HOST || '').replace(
@@ -50,13 +53,19 @@ export async function _getPage(lng: string, id: string) {
     const { t } = await useServerTranslation(lng, 'news');
 
     // Routes & SEO
-    const path = `/${lng}${getRouteOneNewsPage(encodeURIComponent(id))}`;
+    const relPath = getRouteOneNewsPage(encodeURIComponent(id));
+    const path = `/${lng}${relPath}`;
+
     const meta = await fetchNewsMeta(id, lng);
 
-    const title = meta?.title || t('head-title');
-    const description = meta?.description || t('head-description');
+    const title = meta?.title ?? t('head-title');
+    const description = meta?.description ?? t('head-description');
     const keywords = t('head-keywords');
-    const images = meta?.imageUrl ? [{ url: meta.imageUrl }] : (defaultOpenGraph.images ?? []);
+
+    const ogUrl = toAbsolute(meta?.imageUrl ?? defaultOpenGraph.images?.[0]?.url ?? null);
+    const ogImages = ogUrl
+        ? [{ url: ogUrl, alt: `${title} — ${t('head-title')}` }]
+        : (defaultOpenGraph.images ?? []);
 
     return createPage({
         buildPage: () => ({}),
@@ -70,7 +79,7 @@ export async function _getPage(lng: string, id: string) {
                 title,
                 description,
                 url: path,
-                images,
+                images: ogImages,
             },
             alternates: { canonical: path },
         }),
