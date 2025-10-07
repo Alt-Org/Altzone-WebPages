@@ -20,7 +20,7 @@ export async function _getPage(lng: string, id: string) {
     const { t } = await useServerTranslation(lng, 'clan');
     const response = await fetch(`${envHelper.apiLink}/clan/${id}`);
     if (!response.ok) {
-        return notFound();
+        notFound();
     }
 
     const payload = await response.json();

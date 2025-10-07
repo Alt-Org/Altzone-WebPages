@@ -35,10 +35,10 @@ export async function _getPage(lng: string, group: string) {
     const relPath = `/collections/furniture/set/${encodeURIComponent(group)}`;
     const path = `/${lng}${relPath}`;
     const title = `${setName} - ${t('head-title')}`;
-    const keywords = `${setName}, ${t('head-keywords')}`;
+    const keywords = `${t('head-keywords')}, ${setName}`;
     const ogImageUrl = getOgImageUrl(set);
     const ogImage = ogImageUrl
-        ? ({ url: ogImageUrl, alt: `${setName} – ${t('furniture-collections-title')}` } as const)
+        ? ({ url: ogImageUrl, alt: `${setName} - ${t('furniture-collections-title')}` } as const)
         : null;
 
     const ogImages = ogImage ? [ogImage] : (defaultOpenGraph.images ?? []);

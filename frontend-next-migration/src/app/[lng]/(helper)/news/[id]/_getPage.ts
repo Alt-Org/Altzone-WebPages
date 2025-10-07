@@ -1,6 +1,7 @@
 import { createPage } from '@/app/_helpers';
 import { useServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
+import { envHelper } from '@/shared/const/envHelper';
 import { getRouteOneNewsPage } from '@/shared/appLinks/RoutePaths';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 
@@ -8,10 +9,7 @@ const toAbsolute = (src?: string | null) =>
     !src ? null : /^https?:\/\//i.test(src) ? src : `${baseUrl}${src}`;
 
 // Normalize Directus host (strip trailing slashes). Falls back to empty if not set.
-const HOST = (process.env.NEXT_PUBLIC_DIRECTUS_HOST || process.env.DIRECTUS_HOST || '').replace(
-    /\/+$/,
-    '',
-);
+const HOST = (envHelper.directusHost || '').replace(/\/+$/, '');
 
 // Tiny helper: fetch just the metadata we need for SEO (title, preview, OG image).
 // Keeps the client UI logic separate; this is server-only and fast.
@@ -59,7 +57,7 @@ export async function _getPage(lng: string, id: string) {
     const meta = await fetchNewsMeta(id, lng);
 
     const title = meta?.title ?? t('head-title');
-    const description = meta?.description ?? t('head-description');
+    const description = (meta?.description ?? t('head-description')).replace(/\s+/g, ' ').trim();
     const keywords = t('head-keywords');
 
     const ogUrl = toAbsolute(meta?.imageUrl ?? defaultOpenGraph.images?.[0]?.url ?? null);

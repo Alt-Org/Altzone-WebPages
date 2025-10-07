@@ -18,7 +18,7 @@ export async function _getPage(lng: string, category: string) {
     const relPath = getRouteGalleryCategoryPage(encodeURIComponent(category));
     const path = `/${lng}${relPath}`;
     const title = `${name} — ${t('picture-galleries')}`;
-    const keywords = `${name}, ${t('head-keywords')}`;
+    const keywords = `${t('head-keywords')}, ${name}`;
 
     // OG image: default only (no category-specific image exists)
     const defaultOg = defaultOpenGraph.images?.[0]?.url ?? null;
