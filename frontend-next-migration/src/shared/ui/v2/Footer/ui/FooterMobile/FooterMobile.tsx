@@ -7,12 +7,6 @@ import { Title } from '@/widgets/Footer/ui/Title/Title';
 import cls from './FooterMobile.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { FeedbackCard } from '@/shared/ui/v2/Feedback';
-import { Sedgwick_Ave_Display } from 'next/font/google';
-
-const sedgwickFont = Sedgwick_Ave_Display({
-    subsets: ['latin'],
-    weight: '400',
-});
 
 interface Props {
     title: string;
@@ -31,7 +25,7 @@ const FooterMobileComponent = memo((props: Props) => {
             </Container>
             <Container className={cls.FooterContainer}>
                 <Title
-                    className={`${cls.title}  ${sedgwickFont.className}`}
+                    className={cls.title}
                     title={title}
                 />
                 <SocialSection
