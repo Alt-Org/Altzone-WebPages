@@ -4,7 +4,6 @@ import { PageTitle } from '@/shared/ui/PageTitle';
 import type { TFunction } from 'i18next';
 import { useClientTranslation } from '@/shared/i18n';
 import prgDeveloper from '@/shared/assets/images/prgDeveloper.png';
-import ExternalLink from '@/shared/assets/icons/ExternalLink.svg';
 import Image, { StaticImageData } from 'next/image';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import useSizes from '@/shared/lib/hooks/useSizes';
@@ -13,6 +12,8 @@ import Esa from '@/shared/assets/images/board/esa.png';
 import Emmi_Irina from '@/shared/assets/images/board/emmi-irina.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type PrgT = TFunction<'prg'>;
 
@@ -29,11 +30,9 @@ const CheckPdfButton = (checkPdfButtonProps: CheckPdfButtonProps) => (
         isExternal={true}
     >
         <span className={cls.label}>{checkPdfButtonProps.t('check-pdf')}</span>
-        <Image
-            className={cls.icon}
-            src={ExternalLink}
-            alt="icon"
-            aria-hidden="true"
+        <FontAwesomeIcon
+            className={cls.externalLinkIcon}
+            icon={faExternalLink}
         />
     </AppLink>
 );
@@ -190,11 +189,9 @@ const PRGPage = () => {
                     <span className={classNames(cls.label, undefined, [cls.bold, cls.Underline])}>
                         {t('alt-zone-team')}&nbsp;
                     </span>
-                    <Image
-                        className={cls.icon}
-                        src={ExternalLink}
-                        alt="icon"
-                        aria-hidden="true"
+                    <FontAwesomeIcon
+                        className={cls.externalLinkIcon}
+                        icon={faExternalLink}
                     />
                 </AppLink>
             </div>
