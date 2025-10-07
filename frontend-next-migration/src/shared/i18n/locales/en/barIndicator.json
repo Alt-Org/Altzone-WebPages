@@ -1,0 +1,9 @@
+{
+  "hp": "HP",
+  "resistance": "Resistance",
+  "size": "Size",
+  "speed": "Speed",
+  "strike": "Impact force",
+  "development-threshold": "Development threshold:",
+  "level": "Level:"
+}
