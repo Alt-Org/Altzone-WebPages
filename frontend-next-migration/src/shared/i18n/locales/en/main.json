@@ -12,8 +12,8 @@
     "main-title": "LET'S MAKE THE BEST GAME IN THE WORLD TOGETHER!",
     "main-description": "In the ALT Zone mobile game, you dive into the depths of the human mind, where game characters represent defense mechanisms and clash on the battlefield of social interaction.",
     "main-sub-description": "Explore the labyrinth of our souls\nCan you face your defenses?",
-    "project-description-title": "What is Alt Zone?",
-    "project-description-text": "ALT Zone 1.0 is an art-based mobile game created as a volunteer-driven production in collaboration with young people. In the game, human defense mechanisms clash on the battlefield of social interaction.\n\nAn accompanying educational package for lower and upper secondary schools will be created, which teachers can easily apply in practice. Students have the opportunity to continue developing the game. The revenue from the resulting ALT Zone 2.0 game will be donated in full to support the dreams of young people.",
+    "project-description-title": "What is ALT Zone?",
+    "project-description-text": "ALT Zone is an art-based mobile game created as a volunteer-driven production in collaboration with young people. In the game, human defense mechanisms clash on the battlefield of social interaction.\n\nAn accompanying educational package for lower and upper secondary schools will be created, which teachers can easily apply in practice. Students have the opportunity to continue developing the game. The revenue from the resulting ALT Zone 2.0 game will be donated in full to support the dreams of young people.",
     "project-description-array": [
         "ALT Zone is a mobile game enriched with artistic content, developed as a teaching tool for art education in comprehensive schools. Teaching game art is inherently challenging; it relies heavily on personal experience and analysis, making shared experiences nearly impossible to achieve.",
         "ALT Zone provides a common foundation for teaching game art. The teaching package is easy to implement; it includes a demo game that can be tested on a mobile or PC device, as well as questions guiding students toward critical thinking in game art. The game can also be analyzed solely through videos and images.",
@@ -41,7 +41,7 @@
     "playWithUs-download": "Download",
     "contact-title": "Interested\nin working\nwith us?",
     "contact-linkText": "Contact us",
-
-    "newsSection-title": "Alt News",
+  
+    "newsSection-title": "ALT News",
     "newsSection-seeMore": "See more"
 }
