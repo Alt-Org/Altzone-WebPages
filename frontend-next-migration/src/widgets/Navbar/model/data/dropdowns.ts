@@ -10,6 +10,8 @@ import {
     getRouteAllCollectionsPage,
     getRouteJoinUsPage,
     getRouteAboutPage,
+    getRouteTeamPage,
+    getRoutePrgPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -134,7 +136,22 @@ export const dropdowns = {
             },
         },
     ],
-
+    team: [
+        {
+            elementText: 'team',
+            link: {
+                path: getRouteTeamPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'PRG',
+            link: {
+                path: getRoutePrgPage(),
+                isExternal: false,
+            },
+        },
+    ],
     profile: [
         //     {
         //         elementText: 'forum',
