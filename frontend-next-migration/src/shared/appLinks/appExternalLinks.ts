@@ -25,4 +25,10 @@ export const AppExternalLinks = {
     join: 'https://discord.gg/mgjQkCR2Fg',
     dlpackage: 'https://drive.google.com/file/d/16MJzw25RAzV0uH6m9VzReYGFCExK23Uh/view',
     pastversions: 'https://drive.google.com/drive/folders/1n5GVJVXFF2F1sF5-C07uYkFNd9Bsdxzu',
+    prgActivityReport:
+        'https://drive.google.com/file/d/1UATY417TZnsShxNQGagV6JcJOsElvaB5/view?usp=drive_link',
+    prgBylaws:
+        'https://drive.google.com/file/d/1_ek4eGfbxbCYLliY53gLIs0Gv2pwRkhw/view?usp=drive_link',
+    prgActionPlan:
+        'https://drive.google.com/file/d/1PdeCJNDY4yz5y7hQzRGpYrJF0q8Eqt9L/view?usp=drive_link',
 } as const;

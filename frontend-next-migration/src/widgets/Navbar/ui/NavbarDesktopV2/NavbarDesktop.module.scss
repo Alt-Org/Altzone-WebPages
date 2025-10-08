@@ -44,7 +44,7 @@
     filter: drop-shadow(8px 12px var(--drop-shadows));
     border-radius: var(--border-radius-lg);
     border: 4px solid var(--drop-shadows);
-    gap: 3.5em;
+    gap:3.2em;
     list-style: none;
     z-index: 2;
     position: relative;
@@ -127,7 +127,6 @@
     cursor: pointer;
     opacity: 1;
     transform: translateX(0) scaleX(1);
-    transform-origin: right;
     transition:
         transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
         opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
