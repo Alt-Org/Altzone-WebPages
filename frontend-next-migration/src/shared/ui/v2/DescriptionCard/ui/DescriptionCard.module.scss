@@ -17,19 +17,24 @@
     --background: #1E3544;
     --white: #FAF9F6;
     --black: #121212;
+
+    /* Smooth border-color change across all themes */
+    transition: border-color 0.3s ease-in-out;
 }
 
-
-.withScalableLink {
+/* Default clickable hover same as .withScalableLink, only when card is clickable and not using withScalableLink */
+.Card.clickableHover {
     .DescriptionCardTexts {
         transition: all ease-in-out;
         transition-duration: 0.3s;
     }
-    &:hover {
-        .DescriptionCardTexts {
-            flex-basis: 40% !important;
+    @media (min-width:breakpoint(md)) {
+        &:hover {
+            .DescriptionCardTexts {
+                flex-basis: 40% !important;
+            }
+            border-color: var(--primary-border);
         }
-        border-color: var(--primary-border);
     }
 }
 
@@ -44,6 +49,9 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 4px 8px 0 var(--black);
+    /* ensure hover border-color animates */
+    transition: border-color 0.3s ease-in-out;
+
     @media (max-width:breakpoint(md)) {
         height:160px !important;
         box-shadow: 2px 4px 0 var(--black);
@@ -117,9 +125,7 @@
     justify-content: space-between;
     box-shadow: 4px 8px 0 var(--black);
     transition: border-color 0.3s ease-in-out;
-    &:hover {
-        border-color: var(--primary-color);
-    }
+
     @media (max-width:breakpoint(md)) {
         height:160px !important;
         box-shadow: 2px 4px 0 var(--black);
