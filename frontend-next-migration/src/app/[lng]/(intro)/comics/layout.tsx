@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { LayoutWithIntro } from '@/preparedPages/Layouts';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import cls from './Layout.module.scss';
 import introBg from '@/shared/assets/images/comics/comics5.webp';
 import { ScrollToSectionButton } from './_components/ScrollToSectionButton';
@@ -17,7 +17,7 @@ type Props = {
 export default async function ComicsLayout({ children, params }: Props) {
     const { lng } = params;
 
-    const { t } = await useServerTranslation(lng, 'comics');
+    const { t } = await getServerTranslation(lng, 'comics');
 
     return (
         <>

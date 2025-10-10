@@ -1,11 +1,11 @@
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { createPage } from '@/app/_helpers';
 import { AboutPageProps } from '@/preparedPages/AboutPage';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 import { getRouteAboutPage } from '@/shared/appLinks/RoutePaths';
 
 export async function _getPage(lng: any) {
-    const { t } = await useServerTranslation(lng, 'about');
+    const { t } = await getServerTranslation(lng, 'about');
 
     return createPage<AboutPageProps>({
         buildPage: () => ({

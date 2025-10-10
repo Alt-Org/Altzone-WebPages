@@ -1,10 +1,10 @@
 import { createPage } from '@/app/_helpers';
 import { slugToCategoryNameMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
 
 export async function _getPage(lng: string, slug: string) {
-    const { t } = await useServerTranslation(lng, 'news');
+    const { t } = await getServerTranslation(lng, 'news');
     if (!slug || !slugToCategoryNameMap[slug]) {
         return notFound();
     }

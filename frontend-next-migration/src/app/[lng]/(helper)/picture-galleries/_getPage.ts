@@ -1,12 +1,12 @@
 import { createPage } from '@/app/_helpers';
 import { PictureGalleryPageProps } from '@/preparedPages/PictureGalleryPages';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { getRouteGalleryPage } from '@/shared/appLinks/RoutePaths';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'picture-galleries');
+    const { t } = await getServerTranslation(lng, 'picture-galleries');
     return createPage<PictureGalleryPageProps>({
         buildPage: () => ({
             title: t('picture-galleries'),

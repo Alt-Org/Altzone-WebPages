@@ -1,11 +1,11 @@
 import { createPage } from '@/app/_helpers';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { ClanRoomSubPageProps } from '@/preparedPages/ClanPages';
 import { envHelper } from '@/shared/const/envHelper';
 import { notFound } from 'next/navigation';
 
 export async function _getPage(lng: string, id: string) {
-    const { t } = await useServerTranslation(lng, 'clan');
+    const { t } = await getServerTranslation(lng, 'clan');
     const response = await fetch(`${envHelper.apiLink}/clan/${id}`);
     if (!response.ok) {
         return notFound();

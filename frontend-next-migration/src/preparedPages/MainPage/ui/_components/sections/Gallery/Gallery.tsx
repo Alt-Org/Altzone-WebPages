@@ -2,6 +2,7 @@
 import { useInView } from 'react-intersection-observer';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import Image from 'next/image';
 import cls from './Gallery.module.scss';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import instaIcon from '@/shared/assets/images/Insta2.svg';
@@ -59,10 +60,12 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={discordIcon.src}
                                 alt="Discord"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                         <a
@@ -70,10 +73,12 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={instaIcon.src}
                                 alt="Instagram"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                         <a
@@ -81,10 +86,12 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={facebookIcon.src}
                                 alt="Facebook"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                         <a
@@ -92,20 +99,26 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={youtubeIcon.src}
                                 alt="YouTube"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                     </div>
                 </div>
 
                 <div className={cls.imgWrapper}>
-                    <img
-                        src={gameImg}
-                        alt=""
-                    />
+                    {gameImg ? (
+                        <Image
+                            src={gameImg}
+                            alt=""
+                            width={32}
+                            height={32}
+                        />
+                    ) : null}
                 </div>
             </Container>
         </section>

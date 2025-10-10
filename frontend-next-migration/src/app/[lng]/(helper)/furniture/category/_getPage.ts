@@ -1,12 +1,12 @@
 import { createPage } from '@/app/_helpers';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { FurnitureCategoryPageProps } from '@/preparedPages/FurniturePages';
 import { categories } from '@/entities/Furniture';
 import { getRouteFurnitureCategoryPage } from '@/shared/appLinks/RoutePaths';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'furniturecategory');
+    const { t } = await getServerTranslation(lng, 'furniturecategory');
     const translations: Record<string, string> = {};
     Object.entries(categories).map((index) => {
         const name = index[1].name;

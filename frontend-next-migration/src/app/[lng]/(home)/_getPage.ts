@@ -1,5 +1,5 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import gameImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import iPhone16 from '@/shared/assets/images/mainpage/iPhone 16 Pro mockup natural titanium 1.png';
@@ -13,7 +13,7 @@ import { createPage } from '@/app/_helpers';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'main');
+    const { t } = await getServerTranslation(lng, 'main');
 
     return createPage<MainPageProps>({
         buildSeo: () => ({

@@ -1,10 +1,10 @@
 import { createPage } from '@/app/_helpers';
 import { getRouteLoginPage } from '@/shared/appLinks/RoutePaths';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'auth');
+    const { t } = await getServerTranslation(lng, 'auth');
     return createPage({
         buildPage: () => ({}),
         buildSeo: () => ({

@@ -1,8 +1,8 @@
 import { createPage } from '@/app/_helpers';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'clan');
+    const { t } = await getServerTranslation(lng, 'clan');
 
     return createPage({
         buildPage: () => ({}),

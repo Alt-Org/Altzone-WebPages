@@ -1,4 +1,4 @@
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { SetInfo } from '../types/furniture';
 import { FurnitureManager } from './FurnitureManager';
 import categories from './data/categories';
@@ -49,7 +49,7 @@ describe('FurnitureManager', () => {
 
         const promise = new Promise((completed) => {
             Object.entries(testlanguages).map(async (lang) => {
-                const { t } = await useServerTranslation(lang[0], 'furnitureinfo');
+                const { t } = await getServerTranslation(lang[0], 'furnitureinfo');
                 lang[1].map((keyword) => {
                     const results = manager.getPiecesByKeyword(keyword, t);
 

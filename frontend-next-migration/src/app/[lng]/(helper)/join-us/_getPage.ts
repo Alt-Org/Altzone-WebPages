@@ -1,6 +1,6 @@
 import { createPage } from '@/app/_helpers';
 import { JoinUsProps } from '@/preparedPages/JoinUsPage';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import {
     makeDiscordBlock,
     makeRedditBlock,
@@ -13,7 +13,7 @@ import { getRouteJoinUsPage } from '@/shared/appLinks/RoutePaths';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'join-us');
+    const { t } = await getServerTranslation(lng, 'join-us');
     return createPage<JoinUsProps>({
         buildPage: () => ({
             title: t('join-us'),

@@ -1,10 +1,10 @@
 import { createPage } from '@/app/_helpers';
 import { getRouteAllHeroesPage } from '@/shared/appLinks/RoutePaths';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'heroes');
+    const { t } = await getServerTranslation(lng, 'heroes');
     return createPage({
         buildPage: () => ({
             SectionHeroesBlocksTitle: t('section-title'),
