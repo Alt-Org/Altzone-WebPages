@@ -1,12 +1,12 @@
 import { createPage } from '@/app/_helpers';
 import { GameArtPageProps } from '@/preparedPages/GameArtPage';
 import { makeArtGameSectionsWithI18n } from '@/entities/PresentationPackages';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 import { getRouteGameArtPage } from '@/shared/appLinks/RoutePaths';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'artGame');
+    const { t } = await getServerTranslation(lng, 'artGame');
 
     return createPage<GameArtPageProps>({
         buildPage: () => ({

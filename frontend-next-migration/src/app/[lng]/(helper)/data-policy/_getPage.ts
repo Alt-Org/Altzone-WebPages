@@ -1,12 +1,12 @@
 import { createPage } from '@/app/_helpers';
 import { DataPolicyPageProps } from '@/preparedPages/DataPolicyPage';
 import { getRouteDataPolicyPage } from '@/shared/appLinks/RoutePaths';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
     // todo add it
-    const { t } = await useServerTranslation(lng, 'data-policy');
+    const { t } = await getServerTranslation(lng, 'data-policy');
     return createPage<DataPolicyPageProps>({
         //todo add translations!
         buildPage: () => ({
