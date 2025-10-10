@@ -1,4 +1,4 @@
-import { Stat } from '@/entities/Hero';
+import type { Stat } from '@/entities/Hero/types/hero';
 
 type NamedStatArray = {
     [key: string]: Stat[];
