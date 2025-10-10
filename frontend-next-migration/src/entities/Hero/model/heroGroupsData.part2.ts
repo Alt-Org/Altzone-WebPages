@@ -11,7 +11,8 @@ import retroflector from '@/shared/assets/images/descriptionCard/retroflector.pn
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
-import { statData2, statData3 } from '@/entities/Hero';
+import { statData2 } from '../model/stats/statsDataV3';
+import { statData3 } from '../model/stats/statsDataV4';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const buildHeroGroupsPart2 = (

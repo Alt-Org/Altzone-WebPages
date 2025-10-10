@@ -24,7 +24,9 @@ import darkBlue from '@/shared/assets/images/heros/textBgColors/dark-blue_croppe
 import greenBg from '@/shared/assets/images/heros/textBgColors/green2.webp';
 import purpleBg from '@/shared/assets/images/heros/textBgColors/purple.webp';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
-import { statData, statData2, statData3 } from '@/entities/Hero';
+import { statData } from '../model/stats/statsDataV2';
+import { statData2 } from '../model/stats/statsDataV3';
+import { statData3 } from '../model/stats/statsDataV4';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const buildHeroGroupsPart1 = (
