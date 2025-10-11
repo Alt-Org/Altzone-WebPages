@@ -5,21 +5,67 @@ import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 import NavbarDesktop from './NavbarDesktop';
 import { usePathname } from 'next/navigation';
 import cls from './NavbarDesktop.module.scss';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
 }));
 
-jest.mock('@/entities/Auth', () => ({
-    useLoginMutation: jest.fn(),
-    useLogoutMutation: () => [jest.fn()],
-    useUserPermissionsV2: () => ({
-        checkPermissionFor: (what: string) => {
-            if (what === 'login') return { isGranted: true };
-            return { isGranted: false };
-        },
-    }),
-}));
+jest.mock('@/entities/Auth', () => {
+    const MockBaseAuthForm = ({ header, fields, actions, onSubmit }: any) => (
+        <form onSubmit={onSubmit}>
+            <div>{header}</div>
+            <div>{fields}</div>
+            <div>{actions}</div>
+        </form>
+    );
+
+    MockBaseAuthForm.InputField = ({
+        label,
+        error,
+        inputProps,
+        showPasswordToggle,
+        ...props
+    }: any) => (
+        <div>
+            <label>{label}</label>
+            <input {...inputProps} />
+            {error && <span role="alert">{error}</span>}
+        </div>
+    );
+
+    MockBaseAuthForm.Header = ({ children }: any) => <div>{children}</div>;
+
+    MockBaseAuthForm.SubmitButton = ({ children }: any) => (
+        <button type="submit">{children}</button>
+    );
+
+    MockBaseAuthForm.Checkbox = ({ label, error, inputProps, ...props }: any) => (
+        <div>
+            <label>
+                <input
+                    type="checkbox"
+                    {...inputProps}
+                />
+                {label}
+            </label>
+            {error && <span role="alert">{error}</span>}
+        </div>
+    );
+
+    return {
+        useLoginMutation: jest.fn(() => [jest.fn(), { data: null, isLoading: false, error: null }]),
+        useLogoutMutation: () => [jest.fn()],
+        useUserPermissionsV2: () => ({
+            checkPermissionFor: (what: string) => {
+                if (what === 'login') return { isGranted: true };
+                return { isGranted: false };
+            },
+        }),
+        BaseAuthForm: MockBaseAuthForm,
+    };
+});
 
 jest.mock('@/shared/lib/hooks/useIsPageScrollbar');
 
@@ -34,6 +80,11 @@ jest.mock('next/navigation', () => ({
     usePathname: jest.fn(),
 }));
 
+const mockReducer = (state = {}) => state;
+const mockStore = configureStore({ reducer: mockReducer });
+
+const withProvider = (ui: React.ReactElement) => <Provider store={mockStore}>{ui}</Provider>;
+
 describe('Navbar', () => {
     beforeEach(() => {
         (useClientTranslation as jest.Mock).mockReturnValue({ t: jest.fn((key) => key) });
@@ -41,7 +92,7 @@ describe('Navbar', () => {
     });
 
     test('render components', async () => {
-        render(<div />);
+        render(withProvider(<div />));
     });
 });
 
@@ -58,14 +109,16 @@ describe('NavbarDesktop', () => {
 
     const renderNavbar = (props = {}) => {
         return render(
-            <NavbarDesktop
-                toggleCollapsed={mockToggleCollapsed}
-                isCollapsed={false}
-                isFixed={false}
-                toggleFixed={mockToggleFixed}
-                navbarBuild={getNavbarBuildBySize('desktop')}
-                {...props}
-            />,
+            withProvider(
+                <NavbarDesktop
+                    toggleCollapsed={mockToggleCollapsed}
+                    isCollapsed={false}
+                    isFixed={false}
+                    toggleFixed={mockToggleFixed}
+                    navbarBuild={getNavbarBuildBySize('desktop')}
+                    {...props}
+                />,
+            ),
         );
     };
 
@@ -104,11 +157,14 @@ describe('NavbarDesktop', () => {
         expect(mockToggleFixed).toHaveBeenCalled();
     });
 
-    test('applies collapsed styles when isCollapsed is true', () => {
-        renderNavbar({ isCollapsed: true });
+    test('applies mouseOver styles when isMouseOver is true', () => {
+        renderNavbar();
 
         const navList = screen.getByRole('list');
-        expect(navList).toHaveClass(cls.collapsed);
+        fireEvent.mouseEnter(navList);
+        expect(navList).toHaveClass(cls.mouseOver);
+        fireEvent.mouseLeave(navList);
+        expect(navList).not.toHaveClass(cls.mouseOver);
     });
 
     test('does not show collapse button when not fixed', () => {

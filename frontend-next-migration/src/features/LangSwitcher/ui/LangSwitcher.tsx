@@ -1,5 +1,5 @@
 import { usePathname } from 'next/navigation';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import languageIcon from '@/shared/assets/icons/langIcon.svg';
@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 type LangSwitcherProps = {
     className?: string;
+    isOpen?: boolean;
 };
 
 type Option = {
@@ -14,9 +15,8 @@ type Option = {
     value: string;
 };
 
-export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
+export const LangSwitcher = ({ className = '', isOpen = false }: LangSwitcherProps) => {
     const currentPathname = usePathname();
-    const [isOpen, setIsOpen] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const {
@@ -30,6 +30,11 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         // Add more languages here
     ];
 
+    // Get the label of the current language
+    const [_selected, setSelected] = useState<string>(
+        options.find((option) => option.value === language)?.value || options[0]?.value || '',
+    );
+
     const handleChangeLanguage = (newLanguage: AppLanguage) => {
         window.location.href = currentPathname.replace(`/${language}`, `/${newLanguage}`);
     };
@@ -37,10 +42,8 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
     const handleOptionClick = (option: Option) => {
         const selectedLanguage = option.value as AppLanguage;
         handleChangeLanguage(selectedLanguage);
-        setIsOpen(false);
+        setSelected(option.label);
     };
-
-    const toggleDropdown = () => setIsOpen(!isOpen);
 
     // Selecting an option by pressing enter (for keyboard accessibility)
     const handleEnter = (event: React.KeyboardEvent<HTMLLIElement>) => {
@@ -61,19 +64,6 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
         }
     };
 
-    // Close the menu if clicking outside of it
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
     return (
         <div
             data-testid="language-switcher"
@@ -87,7 +77,6 @@ export const LangSwitcher = ({ className = '' }: LangSwitcherProps) => {
                     alignItems: 'center',
                     marginLeft: 3,
                 }}
-                onClick={toggleDropdown}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >

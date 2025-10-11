@@ -27,7 +27,7 @@
     padding: auto;
 }
 
-.siteNavContentList:hover .itemNavbarDropDownContent {
+.siteNavContentList.mouseOver .itemNavbarDropDownContent {
     display: flex;
     flex-direction: column;
     padding-top: 15px;
@@ -35,7 +35,6 @@
     overflow-wrap: break-word;
     opacity: 1;
 }
-
 .siteNavContentList {
     height: 52px;
     transition: height 0.3s ease 0s;
@@ -55,7 +54,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
-    padding-top: 3px;
+    padding-top: 7px;
 
     .navItem:nth-child(9) {
         margin-left: -35px;
@@ -69,8 +68,8 @@
         margin-left: -20px;
     }
 
-    &:hover {
-        height: 190px;
+    &.mouseOver {
+        height: 250px;
         top: 0;
         opacity: 1;
     }
@@ -246,10 +245,6 @@
     }
 }
 
-.logoutButton {
-    cursor: pointer;
-}
-
 .FixButtonWrapper {
     margin-left: auto;
     margin-right: 50px;
@@ -262,7 +257,6 @@
 .authButton {
     position: relative;
     color: var(--primary-color) !important;
-    font: var(--font-dm-bold-m) !important;
     text-align: center;
     padding: 5px;
     align-items: center;
@@ -294,4 +288,93 @@
             opacity: 0.5;
         }
     }
+}
+.siteNav.collapsed .siteNavContentList {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    transition: width 0.3s ease-out;
+    opacity: 0.8;
+}
+
+.authContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.authTrigger {
+    cursor: pointer;
+    z-index: 1;
+}
+
+.authDropdown {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 5px;
+    max-width: 300px;
+    transform: translateX(40%) translateY(-4px) scale(0.98);
+    font-size: 0.7em;
+    max-height: 100px;
+    border-radius: var(--border-radius-lg);
+    color: var(--primary-color);
+    padding: 15px;
+    transition:
+        opacity 0.1s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s, 0s;
+
+    &.authDropdownVisible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(40%) translateY(0) scale(1);
+        transition-delay: 0.2s, 0.2s;
+    }
+}
+
+.toggleAuthMode {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 5px 0;
+    margin-top: 10px;
+    font: var(--font-dm-bold-m);
+    font-size: inherit;
+}
+
+.authDropdownContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+    min-width: 160px;
+    padding: 14px 0;
+}
+
+.profileLabel {
+    font-weight: 600;
+    font-size: 1.5em;
+    color: white;
+    text-align: left;
+    letter-spacing: 0.2px;
+}
+
+.logoutButton {
+    margin-top: 8px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius-xl);
+    box-shadow: 2px 2px var(--black);
+    width: 280px;
+    padding: 10px 0;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 1em;
+    text-align: center;
 }
