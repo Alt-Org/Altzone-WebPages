@@ -1,9 +1,9 @@
 import { createSection } from '../createSection';
-import info from '@/shared/assets/images/gameArt/info.webp';
-import intro from '@/shared/assets/images/gameArt/intro.webp';
-import implementation from '@/shared/assets/images/gameArt/implementation.webp';
-import message from '@/shared/assets/images/gameArt/message.webp';
-import joinus from '@/shared/assets/images/gameArt/joinus.webp';
+import info from '@/shared/assets/images/gameArt/videogames.png';
+import intro from '@/shared/assets/images/gameArt/teachingpackage.png';
+import implementation from '@/shared/assets/images/gameArt/teacherspage.png';
+import message from '@/shared/assets/images/gameArt/structure.png';
+import joinus from '@/shared/assets/images/gameArt/taskthemes.png';
 import gameArtLogo from '@/shared/assets/images/gameArt/gameArtLogo.webp';
 
 /**

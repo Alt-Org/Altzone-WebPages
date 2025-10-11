@@ -22,6 +22,7 @@ export enum DescriptionCardTheme {
     PRIMARY = '',
     DEFENSEGALLERY = 'DefenseGalleryCard',
     FURNITURECOLLECTION = 'FurnitureCollectionCard',
+    COLLECTIONS = 'CollectionsCard',
 }
 
 /**

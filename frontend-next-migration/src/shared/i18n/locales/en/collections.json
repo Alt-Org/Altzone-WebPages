@@ -1,4 +1,8 @@
 {
+  "head-title": "Collections",
+  "head-description": "Explore the collections",
+  "head-keywords": "collections, art, avatar, furniture",
+  "collections-title": "Collections",
   "All": "All",
   "avatar": "Avatar",
   "head": "Head",
@@ -10,9 +14,12 @@
   "hands": "Hands",
   "legs": "Legs",
   "furniture": "Furniture",
+  "furniture-collections": "Furniture Collections",
   "collections": "Collections",
   "music": "Music",
+  "music-collections": "Music Collections",
   "battle": "Battle",
   "jukebox": "Jukebox",
-  "categories": "Categories"
+  "categories": "Categories",
+  "search-placeholder": "Search"
 }

@@ -41,8 +41,8 @@ const CookieConsentV4: React.FC = () => {
 
     const getLocalizedUrl = (base: string) => {
         const lang = i18n.language || 'en';
-        if (base === 'privacy') return `/` + lang + `/privacy`;
-        if (base === 'cookies') return `/` + lang + `/cookies`;
+        if (base === 'privacy') return '/' + lang + '/privacy';
+        if (base === 'cookies') return '/' + lang + '/cookies';
         return '/';
     };
 
@@ -146,10 +146,13 @@ const CookieConsentV4: React.FC = () => {
                                 {renderDescription(descriptionParts)}
                             </p>
                         </div>
-                        <img
-                            src={Sleeper.src}
+                        <Image
+                            src={Sleeper}
                             alt="Cookie character"
                             className={cls.cookieImage}
+                            width={Sleeper.width}
+                            height={Sleeper.height}
+                            priority
                         />
                     </div>
                     <button

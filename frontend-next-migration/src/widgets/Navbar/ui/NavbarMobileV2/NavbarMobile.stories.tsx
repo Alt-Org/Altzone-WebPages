@@ -1,6 +1,5 @@
-import { Meta, Story } from '@storybook/react';
-import React from 'react';
-import NavbarMobile, { NavbarTouchProps } from './NavbarMobile';
+import { Meta, StoryObj } from '@storybook/nextjs';
+import NavbarMobile from './NavbarMobile';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 
 const meta: Meta<typeof NavbarMobile> = {
@@ -35,14 +34,13 @@ const meta: Meta<typeof NavbarMobile> = {
 
 export default meta;
 
-const Template: Story<NavbarTouchProps> = (args) => <NavbarMobile {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-    marginTop: 0,
-    onDropdownChange: (collapsed) => {
-        /*console.log(`dropdownChange ${collapsed}`)*/
+export const Default: StoryObj<typeof NavbarMobile> = {
+    args: {
+        marginTop: 0,
+        onDropdownChange: (_collapsed) => {
+            /*console.log(`dropdownChange ${_collapsed}`)*/
+        },
+        className: '',
+        navbarBuild: getNavbarBuildBySize('mobile'),
     },
-    className: '',
-    navbarBuild: getNavbarBuildBySize('mobile'),
 };

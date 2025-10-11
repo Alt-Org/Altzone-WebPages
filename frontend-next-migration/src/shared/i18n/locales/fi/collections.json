@@ -1,4 +1,8 @@
 {
+  "head-title": "Kokoelmat",
+  "head-description": "Tutustu kokoelmiin",
+  "head-keywords": "kokoelmat, taide, avatar, huonekalut",
+  "collections-title": "Kokoelmat",
   "All": "Kaikki",
   "avatar": "Avatar",
   "head": "Pää",
@@ -10,9 +14,13 @@
   "hands": "Kädet",
   "legs": "Jalat",
   "furniture": "Huonekalut",
+  "furniture-collections": "Huonekalukokoelmat",
   "collections": "Mallistot",
   "music": "Musiikki",
+  "music-collections": "Musiikkikokoelmat",
   "battle": "Battle",
   "jukebox": "Jukebox",
-  "categories": "Kategoriat"
+  "categories": "Kategoriat",
+  "search-placeholder": "Hae"
 }
+

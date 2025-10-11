@@ -16,7 +16,7 @@ interface WorkersSectionProps {
 export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
     const params = useParams();
     const lng = params.lng as string;
-    const { t } = useClientTranslation('members');
+    const { t: _t } = useClientTranslation('members');
 
     const {
         data: members = [],
@@ -28,13 +28,19 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
     const { teamsMap } = organizeMembers(members, lng);
 
+    // If no members found, reload the page (to fix potential Directus caching issues)
+    if (teamsMap.size === 0 && !isLoading && !isError) {
+        location.reload();
+        return <p>{_t('no-members')}</p>;
+    }
+
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
-            {/*<ScrollBottomButton*/}
-            {/*    isDisabled={isError || isLoading}*/}
-            {/*    className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}*/}
-            {/*    text={isError ? `${t('page-play')} 🚫` : `${t('page-play')} ▶`}*/}
-            {/*/>*/}
+            {/*<ScrollBottomButton
+                isDisabled={isError || isLoading}
+                className={classNames(cls.scrollBottomButton, { [cls.disabled]: isError })}
+                text={isError ? `${_t('page-play')} 🚫` : `${_t('page-play')} ▶`}
+            />*/}
             <Container className={cls.membersListContainer}>
                 {isError && <p>Error fetching data</p>}
                 {isLoading ? <SkeletonLoaderWithHeader sections={5} /> : null}

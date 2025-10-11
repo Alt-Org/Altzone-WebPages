@@ -2,17 +2,17 @@ import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import {
     getRouteHeroDevPage,
     getRouteMyClanPage,
-    getRouteClanLeadeboardPage,
     getRouteComicsPage,
     getRouteGalleryPage,
     getRouteGameArtPage,
     getRouteDefenseGalleryPage,
     getRouteAllClanSearchPage,
-    getRouteAllFurnitureSetsPage,
+    getRouteAllCollectionsPage,
     getRouteJoinUsPage,
     getRouteAboutPage,
+    getRouteTeamPage,
+    getRoutePrgPage,
 } from '@/shared/appLinks/RoutePaths';
-import { isExternal } from 'util/types';
 
 export const dropdowns = {
     community: [
@@ -102,9 +102,9 @@ export const dropdowns = {
             },
         },
         {
-            elementText: 'furnituresets',
+            elementText: 'collections',
             link: {
-                path: getRouteAllFurnitureSetsPage(),
+                path: getRouteAllCollectionsPage(),
                 isExternal: false,
             },
             isDisabled: {
@@ -136,7 +136,22 @@ export const dropdowns = {
             },
         },
     ],
-
+    team: [
+        {
+            elementText: 'team',
+            link: {
+                path: getRouteTeamPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'PRG',
+            link: {
+                path: getRoutePrgPage(),
+                isExternal: false,
+            },
+        },
+    ],
     profile: [
         //     {
         //         elementText: 'forum',

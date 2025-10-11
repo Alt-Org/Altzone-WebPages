@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import TableOfContents from './TableOfContents';
 import { useState } from 'react';
 
@@ -7,7 +7,7 @@ const meta = {
     component: TableOfContents,
     argTypes: {
         sections: {
-            control: 'array',
+            control: 'object',
             description: 'Array of section objects with `id` and `label`.',
             defaultValue: [],
         },

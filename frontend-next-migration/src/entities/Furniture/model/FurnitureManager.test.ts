@@ -1,7 +1,7 @@
 import { useServerTranslation } from '@/shared/i18n';
 import { SetInfo } from '../types/furniture';
 import { FurnitureManager } from './FurnitureManager';
-import { categories } from './initializeFurniture';
+import categories from './data/categories';
 
 describe('FurnitureManager', () => {
     const manager = new FurnitureManager();
@@ -28,7 +28,7 @@ describe('FurnitureManager', () => {
 
             const items = manager.getPiecesByCategory(type);
             items.map((item) => {
-                expect(item.type).toBe(type);
+                expect(item.type).toEqual(type);
                 return true;
             });
             return true;

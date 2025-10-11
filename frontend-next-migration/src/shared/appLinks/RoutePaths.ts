@@ -135,10 +135,13 @@ export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';
 export const getRoute404Page = () => '/404';
 
+export const getRouteAllCollectionsPage = () => '/collections';
 export const getRouteAllFurnitureSetsPage = () => '/collections/furniture';
 export const getRouteOneFurnitureSetPage = (id: string) => `/furniture/set/${id}`;
 export const getRouteFurnitureSearchPage = () => '/furniture/search';
 export const getRouteFurnitureCategoryPage = () => '/furniture/category';
+
+export const getRouteAllMusicCollectionsPage = () => '/collections/music';
 
 export const getRouteDefenseGalleryPage = () => '/defense-gallery';
 export const getRouteDefenseGalleryGroupPage = (group: string) => `/defense-gallery/${group}`;
@@ -149,3 +152,5 @@ export const getRouteLeaderboardClansPage = () => '/leaderboard/clans';
 
 export const getRouteGamePage = () => '/peli';
 export const getRouteProfilePage = () => '/profile';
+
+export const getRoutePrgPage = () => '/prg';

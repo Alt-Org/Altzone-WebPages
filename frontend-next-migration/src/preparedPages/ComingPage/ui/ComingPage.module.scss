@@ -1,74 +1,73 @@
 .main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .container {
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  font-family: var(--font-family-title);
-  color: var(--primary-color);
-  width: 80%;
-  padding-bottom: 100px;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    font: var(--font-sw-xxxl);
+    color: var(--primary-color);
+    width: 80%;
+    padding-bottom: 100px;
 }
 
 .title {
-  font-size: var(--h2-size-desktop);
-  padding: 10px;
+    font-size: var(--h2-size-desktop);
+    padding: 10px;
+    font-weight: 400;
 }
 
 .images {
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: center;
 }
 
 .images img {
-  margin-left: -25px;
-  margin-right: -20px;
+    margin-left: -25px;
+    margin-right: -20px;
 }
 
 .images .flipped {
-  transform: scaleX(-1);
-  margin-left: -5px; 
-  margin-right: -20px;
+    transform: scaleX(-1);
+    margin-left: -5px;
+    margin-right: -20px;
 }
 
 .images .pedant {
-  margin-left: -5px;
+    margin-left: -5px;
 }
 
 @media (max-width: breakpoint(lg)) {
-  .images {
-    transform: scale(0.8);
-  }
+    .images {
+        transform: scale(0.8);
+    }
 }
 
 @media (max-width: breakpoint(md)) {
-  .images {
-    transform: scale(0.7);
-  }
-  .title {
-    font-size: var(--h3-size-desktop);
-  }
+    .images {
+        transform: scale(0.7);
+    }
+    .title {
+        font-size: var(--h3-size-desktop);
+    }
 }
 
 @media (max-width: breakpoint(sm)) {
-  .images {
-    transform: scale(0.4);
-  }
-  .title {
-    font-size: var(--h1-size-mobile);
-  }
+    .images {
+        transform: scale(0.4);
+    }
+    .title {
+        font-size: var(--h1-size-mobile);
+    }
 }
 
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
-
-

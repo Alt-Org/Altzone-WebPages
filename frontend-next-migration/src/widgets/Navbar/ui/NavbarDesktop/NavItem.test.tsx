@@ -3,20 +3,22 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import NavItem from './NavItem';
 import {
     ItemType,
-    NavbarBuild,
     NavbarDropDownObject,
     NavbarLinkObject,
     NavbarMenuItem,
     NavLogoObject,
 } from '../../model/types';
 import { PermissionError, useUserPermissionsV2 } from '@/entities/Auth';
-import user from '@testing-library/user-event';
-import cls from './NavbarDesktop.module.scss';
 
 // Mock next/image
 jest.mock('next/image', () => ({
     __esModule: true,
-    default: (props: any) => <img {...props} />,
+    default: (props: any) => (
+        <img
+            alt={props.alt ?? ''}
+            {...props}
+        />
+    ),
 }));
 
 // Mock translations
@@ -64,18 +66,6 @@ jest.mock('@/shared/ui/DropdownWrapper', () => ({
 }));
 
 describe('NavItem Component', () => {
-    const navbarBuild: NavbarBuild = {
-        menu: [],
-        namedMenu: {
-            [ItemType.navLogo]: {
-                name: 'Logo',
-                src: '/logo.png',
-                path: '/',
-                type: ItemType.navLogo,
-            },
-        },
-    };
-
     beforeEach(() => {
         jest.clearAllMocks();
         (useUserPermissionsV2 as jest.MockedFunction<typeof useUserPermissionsV2>).mockReturnValue({
@@ -91,21 +81,17 @@ describe('NavItem Component', () => {
             type: ItemType.navLink,
         };
 
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        render(<NavItem item={item} />);
 
         expect(screen.getByText('Home')).toBeInTheDocument();
         expect(screen.getByRole('link')).toHaveAttribute('href', '/');
     });
 
     it('should render navDropDown correctly with permitted elements', async () => {
-        const item = {
+        const item: NavbarDropDownObject = {
             name: 'Menu',
-            type: 'navDropDown',
+            isActive: true,
+            type: ItemType.navDropDown,
             elements: [
                 { elementText: 'Profile', link: { path: '/profile', isExternal: false } },
                 { elementText: 'Settings', link: { path: '/settings', isExternal: false } },
@@ -118,10 +104,9 @@ describe('NavItem Component', () => {
         const dropdownWrapper = menuItem.closest('[role="button"]');
         expect(dropdownWrapper).toBeInTheDocument();
 
-        // Simulate hover
-        fireEvent.mouseEnter(dropdownWrapper!);
+        if (!dropdownWrapper) throw new Error('Dropdown wrapper not found');
+        fireEvent.mouseEnter(dropdownWrapper);
 
-        // Wait for dropdown content
         await waitFor(() => {
             const menuItems = screen.getAllByRole('menuitem');
             expect(menuItems).toHaveLength(2);
@@ -138,12 +123,7 @@ describe('NavItem Component', () => {
             type: ItemType.navLogo,
         };
 
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        render(<NavItem item={item} />);
 
         const imgElement = screen.getByRole('img');
         expect(imgElement).toHaveAttribute('src', '/logo.png');
@@ -154,6 +134,7 @@ describe('NavItem Component', () => {
         (useUserPermissionsV2 as jest.MockedFunction<typeof useUserPermissionsV2>).mockReturnValue({
             checkPermissionFor: () => ({ isGranted: false, error: 'NotInClan' as PermissionError }),
         });
+
         const item: NavbarDropDownObject = {
             name: 'Menu',
             isActive: true,
@@ -161,28 +142,21 @@ describe('NavItem Component', () => {
             elements: [
                 {
                     elementText: 'clanpage',
-                    link: {
-                        isExternal: true,
-                        path: '/clan',
-                    },
+                    link: { isExternal: true, path: '/clan' },
                 },
             ],
         };
 
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        render(<NavItem item={item} />);
 
         expect(screen.queryByText('clanpage')).not.toBeInTheDocument();
     });
 
     it('should render clan page link if user has permission', async () => {
-        const item = {
+        const item: NavbarDropDownObject = {
             name: 'Menu',
-            type: 'navDropDown',
+            isActive: true,
+            type: ItemType.navDropDown,
             elements: [{ elementText: 'clanpage', link: { path: '/clan', isExternal: true } }],
         };
 
@@ -190,7 +164,8 @@ describe('NavItem Component', () => {
 
         const menuItem = screen.getByText('Menu');
         const dropdownWrapper = menuItem.closest('[role="button"]');
-        fireEvent.mouseEnter(dropdownWrapper!);
+        if (!dropdownWrapper) throw new Error('Dropdown wrapper not found');
+        fireEvent.mouseEnter(dropdownWrapper);
 
         await waitFor(() => {
             const menuItems = screen.getAllByRole('menuitem');
@@ -199,18 +174,9 @@ describe('NavItem Component', () => {
     });
 
     it('should not render anything for unknown item type', () => {
-        // @ts-ignore
-        const item = {
-            name: 'Unknown',
-            type: 'unknownType',
-        } as NavbarMenuItem;
+        const item = { name: 'Unknown', type: 'unknownType' } as unknown as NavbarMenuItem;
 
-        const { container } = render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        const { container } = render(<NavItem item={item} />);
 
         expect(container.firstChild).toBeNull();
     });
@@ -223,12 +189,7 @@ describe('NavItem Component', () => {
             type: ItemType.navLink,
         };
 
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        render(<NavItem item={item} />);
 
         expect(screen.getByText('TranslatedName')).toBeInTheDocument();
     });
@@ -241,12 +202,7 @@ describe('NavItem Component', () => {
             type: ItemType.navLink,
         };
 
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        render(<NavItem item={item} />);
 
         const linkElement = screen.getByRole('link');
         expect(linkElement).not.toHaveClass('active');
@@ -263,7 +219,6 @@ describe('NavItem Component', () => {
         render(
             <NavItem
                 item={item}
-                navbarBuild={navbarBuild}
                 className="custom-class"
             />,
         );
@@ -273,9 +228,10 @@ describe('NavItem Component', () => {
     });
 
     it('should open dropdown menu on hover', async () => {
-        const item = {
+        const item: NavbarDropDownObject = {
             name: 'Menu',
-            type: 'navDropDown',
+            isActive: true,
+            type: ItemType.navDropDown,
             elements: [{ elementText: 'Option1', link: { path: '/option1', isExternal: false } }],
         };
 
@@ -283,7 +239,8 @@ describe('NavItem Component', () => {
 
         const menuItem = screen.getByText('Menu');
         const dropdownWrapper = menuItem.closest('[role="button"]');
-        fireEvent.mouseEnter(dropdownWrapper!);
+        if (!dropdownWrapper) throw new Error('Dropdown wrapper not found');
+        fireEvent.mouseEnter(dropdownWrapper);
 
         await waitFor(() => {
             const menuItems = screen.getAllByRole('menuitem');
@@ -299,12 +256,7 @@ describe('NavItem Component', () => {
             type: ItemType.navLink,
         };
 
-        render(
-            <NavItem
-                item={item}
-                navbarBuild={navbarBuild}
-            />,
-        );
+        render(<NavItem item={item} />);
 
         const linkElement = screen.getByRole('link');
         expect(linkElement).toHaveAttribute('href', '/home');

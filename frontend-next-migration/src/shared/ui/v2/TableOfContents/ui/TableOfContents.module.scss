@@ -19,7 +19,9 @@
         cursor: pointer;
         padding: 10px;
 
-        transition: color 0.5s, border-left 0.2s;
+        transition:
+            color 0.5s,
+            border-left 0.2s;
 
         &:hover {
             color: orange;

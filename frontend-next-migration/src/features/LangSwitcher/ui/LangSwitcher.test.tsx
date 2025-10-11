@@ -74,9 +74,9 @@ describe('LangSwitcher', () => {
     //         t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
     //         i18n: { language: 'es' },
     //     });
-
+    //
     //     render(<LangSwitcher />);
-
+    //
     //     const langDisplay = screen.getByText('FIN');
     //     expect(langDisplay).toBeInTheDocument();
     // });

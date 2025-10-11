@@ -21,7 +21,7 @@
     transition: height 0.3s ease-in-out;
 }
 
-.cookieConsentV2 button+button {
+.cookieConsentV2 button + button {
     margin-left: 15px;
 }
 .minimizeButton {
@@ -201,8 +201,7 @@
         width: 88%;
     }
 
-    button:not(.processButton) + button:not(.processButton)
-    {
+    button:not(.processButton) + button:not(.processButton) {
         margin-left: 0px;
         margin-top: 10px;
     }
@@ -216,7 +215,6 @@
     .cookieHeader {
         font: var(--font-sw-l);
     }
-
 
     .cookieConsentContentText {
         font: var(--font-dm-m);

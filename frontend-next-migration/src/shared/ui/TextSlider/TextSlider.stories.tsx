@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs';
 import TextSlider from './TextSlider';
 
 const meta: Meta<typeof TextSlider> = {

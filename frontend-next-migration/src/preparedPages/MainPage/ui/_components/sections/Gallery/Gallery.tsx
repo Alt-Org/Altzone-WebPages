@@ -3,9 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Gallery.module.scss';
-import { useParams } from 'next/navigation';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
 import instaIcon from '@/shared/assets/images/Insta2.svg';
 import discordIcon from '@/shared/assets/images/Discord2.svg';
 import facebookIcon from '@/shared/assets/images/Facebook2.svg';
@@ -15,6 +13,7 @@ export type Props = {
     title: string;
     infoText: string;
     socialsText: string;
+    followUsText: string;
     seeMoreLink: {
         text: string;
         href: string;
@@ -25,11 +24,7 @@ export type Props = {
 };
 
 const Gallery = (props: Props) => {
-    const { title, infoText, seeMoreLink, gameImg } = props;
-    const params = useParams();
-    const lng = params.lng as string;
-    const language = getLanguageCode(lng);
-    const { photoObjects, isLoading } = useGetDirectusGalleryImages(language);
+    const { title, infoText, seeMoreLink, gameImg, followUsText } = props;
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -39,8 +34,6 @@ const Gallery = (props: Props) => {
     const mods = {
         [cls.inView]: inView,
     };
-
-    if (isLoading) <p>Loading...</p>;
 
     return (
         <section
@@ -59,7 +52,7 @@ const Gallery = (props: Props) => {
                     >
                         {seeMoreLink.text}
                     </a>
-                    <p className={cls.socialMediaLinks}>Seuraa Alt Zonea somessa</p>
+                    <p className={cls.socialMediaLinks}>{followUsText}</p>
                     <div className={cls.socialMediaHolder}>
                         <a
                             href={AppExternalLinks.discord}

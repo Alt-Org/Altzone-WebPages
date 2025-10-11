@@ -1,71 +1,68 @@
-
 .MembersPage {
-  padding-top: 150px;
-  padding-bottom: 50px;
-  width: 100%;
+    padding-top: 150px;
+    padding-bottom: 50px;
+    width: 100%;
 }
 
 .TeamPageSidebar {
-  background-color: rgba(0, 0, 0, 0) !important;
-  padding: 0;
-  max-width: 100% !important;
-  width: 100% !important;
-  padding-right: 15vh;
-  margin-left: 0;
-
-   > aside {
-    overflow: hidden !important;
-    flex-basis: 0 !important;
-    margin-left: 1% !important;
-    width: 20%;
-    transform: translateY(3.7rem);
-
-    @media (max-width: breakpoint(lg)) {
-      max-width: 200px;
-    }
-  }
-
-  > div {
-    width: 100%;
-    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0) !important;
+    padding: 0;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-right: 15vh;
     margin-left: 0;
-    @media (min-width: breakpoint(xxl)) {
-      margin-left: auto !important;
+
+    > aside {
+        overflow: hidden !important;
+        flex-basis: 0 !important;
+        margin-left: 1% !important;
+        width: 20%;
+        transform: translateY(3.7rem);
+
+        @media (max-width: breakpoint(lg)) {
+            max-width: 200px;
+        }
     }
-  }
+
+    > div {
+        width: 100%;
+        margin-right: auto;
+        margin-left: 0;
+        @media (min-width: breakpoint(xxl)) {
+            margin-left: auto !important;
+        }
+    }
 }
 
-.MembersPageMobile{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 16vh;
-
+.MembersPageMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16vh;
 }
 
-.diveButton{
-  border-radius: var(--border-radius-custom);
-  min-width: fit-content;
-  width: 1rem;
-  align-self: center;
-  background-color: var(--primary-color);
-  color: var(--black);
-  border-style: solid;
-  border-color: var(--black);
-  padding: 6px 8px;
+.diveButton {
+    border-radius: var(--border-radius-custom);
+    min-width: fit-content;
+    width: 1rem;
+    align-self: center;
+    background-color: var(--primary-color);
+    color: var(--black);
+    border-style: solid;
+    border-color: var(--black);
+    padding: 6px 8px;
 }
 
 .buttonContainer {
-  width: 100%;
-  max-width: 1400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding-bottom: 1rem;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
 
-  @media (max-width: breakpoint(lg)) {
-    justify-content: flex-start;
-    width: 95%;
-  }
+    @media (max-width: breakpoint(lg)) {
+        justify-content: flex-start;
+        width: 95%;
+    }
 }
-

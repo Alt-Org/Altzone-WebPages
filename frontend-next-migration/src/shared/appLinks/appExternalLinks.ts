@@ -23,7 +23,12 @@ export const AppExternalLinks = {
         'https://docs.google.com/forms/d/e/1FAIpQLSf_7s7mE-F_2G3mPAN630r7zHainD5vvQHw1suYUqtlvAcp5g/viewform',
     stub: '#developerChangeThisLink',
     join: 'https://discord.gg/mgjQkCR2Fg',
-    dlpackage:
-        'https://docs.google.com/document/d/1QJy7PWREJaJpob6HbL26OEVtHrpDsbiHx_ZJIVdC8UI/edit',
+    dlpackage: 'https://drive.google.com/file/d/16MJzw25RAzV0uH6m9VzReYGFCExK23Uh/view',
     pastversions: 'https://drive.google.com/drive/folders/1n5GVJVXFF2F1sF5-C07uYkFNd9Bsdxzu',
+    prgActivityReport:
+        'https://drive.google.com/file/d/1UATY417TZnsShxNQGagV6JcJOsElvaB5/view?usp=drive_link',
+    prgBylaws:
+        'https://drive.google.com/file/d/1_ek4eGfbxbCYLliY53gLIs0Gv2pwRkhw/view?usp=drive_link',
+    prgActionPlan:
+        'https://drive.google.com/file/d/1PdeCJNDY4yz5y7hQzRGpYrJF0q8Eqt9L/view?usp=drive_link',
 } as const;

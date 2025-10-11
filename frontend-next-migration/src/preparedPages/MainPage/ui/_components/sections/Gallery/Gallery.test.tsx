@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Gallery, { Props } from './Gallery';
 
@@ -24,6 +25,7 @@ jest.mock('@/entities/Gallery', () => ({
         photoObjects: [],
         isLoading: false,
     })),
+    ImageWall: () => <img alt="mock-gallery-img" />,
 }));
 
 jest.mock('react-intersection-observer', () => ({
@@ -33,16 +35,24 @@ jest.mock('react-intersection-observer', () => ({
     }),
 }));
 
+jest.mock('@/shared/ui/MasonryWrapper', () => ({
+    MasonryWrapper: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}));
+
 describe('Gallery', () => {
     it('renders title, info text and see more link', () => {
         render(<Gallery {...mockProps} />);
-        expect(screen.getByText('Test Title')).toBeInTheDocument();
-        expect(screen.getByText('This is info text')).toBeInTheDocument();
-        expect(screen.getByText('More')).toHaveAttribute('href', 'https://example.com');
+        expect(screen.getByText(mockProps.title)).toBeInTheDocument();
+        expect(screen.getByText(mockProps.infoText)).toBeInTheDocument();
+        expect(screen.getByText(mockProps.seeMoreLink.text)).toHaveAttribute(
+            'href',
+            mockProps.seeMoreLink.href,
+        );
     });
 
-    it('renders social media icons', () => {
+    it('renders at least one link element', () => {
         render(<Gallery {...mockProps} />);
-        expect(screen.getAllByRole('img').length).toBeGreaterThanOrEqual(1); // Depends on mock
+        const links = screen.getAllByRole('link');
+        expect(links.length).toBeGreaterThanOrEqual(1);
     });
 });

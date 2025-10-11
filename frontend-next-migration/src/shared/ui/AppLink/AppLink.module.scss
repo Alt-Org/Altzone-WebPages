@@ -1,24 +1,23 @@
 .AppLink {
-  color: var(--white);
-  padding: 0;
-  margin: 0;
+    color: var(--white);
+    padding: 0;
+    margin: 0;
 
-  text-decoration: none;
+    text-decoration: none;
 
-  &:hover{
-    color: var(--primary-color-variant-hover)
-  }
-
+    &:hover {
+        color: var(--primary-color-variant-hover);
+    }
 }
 
 .primary {
-  color: var(--white);
+    color: var(--white);
 }
 
 .secondary {
-  color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .red {
-  color: red;
+    color: red;
 }
