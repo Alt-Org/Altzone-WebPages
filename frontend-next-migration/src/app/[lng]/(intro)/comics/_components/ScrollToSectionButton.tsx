@@ -1,24 +1,23 @@
 'use client';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { ReactNode } from 'react';
+// import { ReactNode } from 'react';
 
-interface ScrollToSectionButtonProps {
-    children: ReactNode;
-    className: string;
-    scrollToId: string;
-}
+// interface ScrollToSectionButtonProps {
+//     children: ReactNode;
+//     className: string;
+//     scrollToId: string;
+// }
 
-export const ScrollToSectionButton = (props: ScrollToSectionButtonProps) => {
-    const { children, className, scrollToId } = props;
+// export const ScrollToSectionButton = (props: ScrollToSectionButtonProps) => {
+// const { children, className, scrollToId } = props;
 
-    const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+// const scrollToSection = (id: string) => {
+//     const element = document.getElementById(id);
+//     if (element) {
+//         element.scrollIntoView({ behavior: 'smooth' });
+//     }
+// };
 
-    return (
+/*return (
         <Button
             onClick={() => scrollToSection(scrollToId)}
             className={className}
@@ -28,5 +27,5 @@ export const ScrollToSectionButton = (props: ScrollToSectionButtonProps) => {
         >
             <b>{children}</b>
         </Button>
-    );
-};
+    );*/
+// };

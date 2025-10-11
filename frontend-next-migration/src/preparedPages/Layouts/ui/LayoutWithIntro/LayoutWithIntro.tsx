@@ -1,12 +1,10 @@
 import { ReactNode, CSSProperties } from 'react';
-import { BlurLine } from '@/shared/ui/PageDividers';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './LayoutWithIntro.module.scss';
 
 interface LayoutWithIntroProps {
-    bgImage: string;
-    title: string;
-    description: string;
+    //bgImage: string;
+    //title: string;
+    //description: string;
     bottomAdditional?: ReactNode;
     introHeight?: string;
     introMinHeight?: string;
@@ -17,14 +15,14 @@ interface LayoutWithIntroProps {
 
 const LayoutWithIntro = (props: LayoutWithIntroProps) => {
     const {
-        bgImage,
-        title,
-        description,
-        bottomAdditional,
-        introMinHeight = '50vh',
-        introHeight = '50vh',
+        //bgImage,
+        // title,
+        // description,
+        //bottomAdditional,
+        //  introMinHeight = '50vh',
+        //  introHeight = '50vh',
         overlayColor = 'rgba(0, 0, 0, 0.5)',
-        blurLineClass = '',
+        //blurLineClass = '',
         children,
     } = props;
 
@@ -34,19 +32,19 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
                 className={cls.intro}
                 style={
                     {
-                        backgroundImage: `url(${bgImage})`,
-                        height: introHeight,
-                        minHeight: introMinHeight,
+                        //   backgroundImage: `url(${bgImage})`,
+                        //    height: introHeight,
+                        //  minHeight: introMinHeight,
                         '--overlay-color': overlayColor,
                     } as CSSProperties
                 }
             >
                 <div className={cls.introText}>
-                    <h1>{title}</h1>
+                    {/*    <h1>{title}</h1>
                     <p>{description}</p>
-                    {bottomAdditional}
+                    {bottomAdditional} */}
                 </div>
-                <BlurLine className={classNames(blurLineClass, {}, [cls.blurLine])} />
+                {/*  <BlurLine className={classNames(blurLineClass, {}, [cls.blurLine])} />*/}
             </div>
 
             <div className={cls.content}>{children}</div>
