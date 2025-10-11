@@ -1,6 +1,4 @@
 import { ReactNode, CSSProperties } from 'react';
-import { BlurLine } from '@/shared/ui/PageDividers';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './LayoutWithIntro.module.scss';
 
 interface LayoutWithIntroProps {
@@ -20,7 +18,7 @@ const LayoutWithIntro = (props: LayoutWithIntroProps) => {
         //bgImage,
         // title,
         // description,
-        bottomAdditional,
+        //bottomAdditional,
         //  introMinHeight = '50vh',
         //  introHeight = '50vh',
         overlayColor = 'rgba(0, 0, 0, 0.5)',

@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 'use client';
 import Image from 'next/image';
 import { memo, useEffect, useState } from 'react';
@@ -16,8 +17,8 @@ export type GalleryCategoriesWithModalSliderProps = {
 };
 
 export const GalleryCategoriesWithModalSlider = memo(
-    ({ title, sources, cover }: GalleryCategoriesWithModalSliderProps) => {
-        const { t } = useClientTranslation('picture-galleries');
+    ({ sources, cover }: GalleryCategoriesWithModalSliderProps) => {
+        useClientTranslation('picture-galleries');
         const [pageIndex, setPageIndex] = useState(0);
 
         const filteredSources = sources.filter((src) => src !== cover.url);
@@ -37,9 +38,9 @@ export const GalleryCategoriesWithModalSlider = memo(
         };
 
         useEffect(() => {
-            const handleKeyDown = (e: KeyboardEvent) => {
-                if (e.key === 'ArrowLeft' && pageIndex > 0) changePage('prev');
-                else if (e.key === 'ArrowRight' && pageIndex < maxPageIndex) changePage('next');
+            const handleKeyDown = (event: KeyboardEvent) => {
+                if (event.key === 'ArrowLeft' && pageIndex > 0) changePage('prev');
+                else if (event.key === 'ArrowRight' && pageIndex < maxPageIndex) changePage('next');
             };
             window.addEventListener('keydown', handleKeyDown);
             return () => window.removeEventListener('keydown', handleKeyDown);
@@ -161,7 +162,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 min={0}
                                 max={maxPageIndex}
                                 value={pageIndex}
-                                onChange={(e) => setPageIndex(parseInt(e.target.value))}
+                                onChange={(event) => setPageIndex(parseInt(event.target.value))}
                                 className={cls.pageSlider}
                                 style={
                                     {
