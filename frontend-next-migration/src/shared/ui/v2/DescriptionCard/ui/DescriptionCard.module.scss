@@ -24,14 +24,15 @@
 
 /* Default clickable hover same as .withScalableLink, only when card is clickable and not using withScalableLink */
 .Card.clickableHover {
-    .DescriptionCardTexts {
+    .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
         transition: all ease-in-out;
         transition-duration: 0.3s;
+        transform-origin: right;
     }
     @media (min-width:breakpoint(md)) {
         &:hover {
-            .DescriptionCardTexts {
-                flex-basis: 40% !important;
+            .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+                transform: scaleX(.9) !important;
             }
             border-color: var(--primary-border);
         }
@@ -100,6 +101,8 @@
     width: 100% !important;
     height: 100% !important;
     object-position: left !important;
+    display: block;
+    margin-left:auto;
 }
 .Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
     position: absolute;
@@ -180,6 +183,8 @@
     width: 100% !important;
     height: 100% !important;
     object-position: left !important;
+    display: block;
+    margin-left:auto;
 }
 .Card.FurnitureCollectionCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
     position: absolute;
@@ -206,7 +211,6 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 4px 4px 0 var(--black);
-    transition: border-color 0.3s ease-in-out;
     &:hover {
         border-color: var(--primary-color);
     }

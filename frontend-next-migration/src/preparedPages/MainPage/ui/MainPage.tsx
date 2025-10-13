@@ -91,7 +91,7 @@ function MainPage(props: Props) {
                         theme={DescriptionCardTheme.DEFENSEGALLERY}
                         path={'/defense-gallery'}
                     >
-                        <DescriptionCard.Texts width="25%">
+                        <DescriptionCard.Texts width="35%">
                             <DescriptionCard.Texts.Title>
                                 {t('descriptionCard-title')}
                             </DescriptionCard.Texts.Title>
