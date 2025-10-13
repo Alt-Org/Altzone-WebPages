@@ -136,25 +136,6 @@
     visibility: visible;
 }
 
-.authFormContainer {
-    min-width: 280px;
-    max-width: 400px;
-    gap: 8px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font: var(--font-dm-bold-m);
-    & > * {
-        width: 100%;
-        max-width: 350px;
-    }
-
-    @media (min-width: 768px) {
-        max-width: 380px;
-    }
-}
-
 .toggleAuthMode {
     background: none;
     border: none;

@@ -106,22 +106,22 @@ function InputField({
     };
 
     return (
-        <div
-            className={classNames(cls.field, {}, [className])}
-            style={{ position: 'relative' }}
-        >
+        <div className={classNames(cls.field, {}, [className])}>
             <label htmlFor={inputId}>{label}</label>
-            <input
-                id={inputId}
-                {...inputProps}
-                type={getInputType()}
-            />
-            {shouldShowToggle && (
-                <PasswordToggleButton
-                    showPassword={showPassword}
-                    onToggle={togglePasswordVisibility}
+            <div style={{ position: 'relative' }}>
+                <input
+                    id={inputId}
+                    {...inputProps}
+                    type={getInputType()}
                 />
-            )}
+                {shouldShowToggle && (
+                    <PasswordToggleButton
+                        showPassword={showPassword}
+                        onToggle={togglePasswordVisibility}
+                    />
+                )}
+            </div>
+
             {error && (
                 <p
                     role="alert"

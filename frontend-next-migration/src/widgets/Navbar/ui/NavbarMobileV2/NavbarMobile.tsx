@@ -155,9 +155,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     className={cls.authDropdownContent}
                 >
                     {permissionToLogin.isGranted ? (
-                        <div className={cls.authFormContainer}>
-                            <LoginForm />
-                        </div>
+                        <LoginForm />
                     ) : permissionToLogout.isGranted ? (
                         <div className={cls.authFormContainer}>
                             <div className={cls.profileLabel}> {tAuth('ownProfile')}</div>

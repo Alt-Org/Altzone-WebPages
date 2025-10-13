@@ -148,117 +148,120 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             className={classNames('', ModsUlAndLi)}
                         />
                     ))}
-
-                    <li
-                        className={classNames(cls.navItem, ModsUlAndLi)}
-                        key={'auth key'}
-                    >
-                        {permissionToLogin.isGranted ? (
-                            <div className={cls.authContainer}>
-                                <div
-                                    className={cls.authTrigger}
-                                    onClick={() => handleDropdownClick('auth')}
-                                >
-                                    <Image
-                                        src={profileIcon}
-                                        alt="Login Icon"
-                                        width={28}
-                                        height={28}
-                                    />
-                                </div>
-                                <div
-                                    className={classNames(cls.authDropdown, {
-                                        [cls.authDropdownVisible]:
-                                            authDropdown.state.isOpen && !isCollapsed,
-                                    })}
-                                >
-                                    <LoginForm />
-                                </div>
-                            </div>
-                        ) : permissionToLogout.isGranted ? (
-                            <div className={cls.authContainer}>
-                                <div
-                                    className={cls.authTrigger}
-                                    onClick={() => handleDropdownClick('auth')}
-                                >
-                                    <Image
-                                        src={profileIcon}
-                                        alt="Profile Icon"
-                                        width={28}
-                                        height={28}
-                                    />
-                                </div>
-                                <div
-                                    className={classNames(cls.authDropdown, {
-                                        [cls.authDropdownVisible]:
-                                            authDropdown.state.isOpen && !isCollapsed,
-                                    })}
-                                >
-                                    <div className={cls.authDropdownContent}>
-                                        <div className={cls.profileLabel}>{t('ownProfile')}</div>
-                                        <button
-                                            className={cls.logoutButton}
-                                            onClick={() => {
-                                                logout();
-                                            }}
-                                        >
-                                            {t('logout')}
-                                        </button>
+                    <div className={cls.controlContainer}>
+                        <li
+                            className={classNames(cls.navItem, ModsUlAndLi)}
+                            key={'auth key'}
+                        >
+                            {permissionToLogin.isGranted ? (
+                                <div className={cls.authContainer}>
+                                    <div
+                                        className={cls.authTrigger}
+                                        onClick={() => handleDropdownClick('auth')}
+                                    >
+                                        <Image
+                                            src={profileIcon}
+                                            alt="Login Icon"
+                                            width={28}
+                                            height={28}
+                                        />
+                                    </div>
+                                    <div
+                                        className={classNames(cls.authDropdown, {
+                                            [cls.authDropdownVisible]:
+                                                authDropdown.state.isOpen && !isCollapsed,
+                                        })}
+                                    >
+                                        <LoginForm />
                                     </div>
                                 </div>
+                            ) : permissionToLogout.isGranted ? (
+                                <div className={cls.authContainer}>
+                                    <div
+                                        className={cls.authTrigger}
+                                        onClick={() => handleDropdownClick('auth')}
+                                    >
+                                        <Image
+                                            src={profileIcon}
+                                            alt="Profile Icon"
+                                            width={28}
+                                            height={28}
+                                        />
+                                    </div>
+                                    <div
+                                        className={classNames(cls.authDropdown, {
+                                            [cls.authDropdownVisible]:
+                                                authDropdown.state.isOpen && !isCollapsed,
+                                        })}
+                                    >
+                                        <div className={cls.authDropdownContent}>
+                                            <div className={cls.profileLabel}>
+                                                {t('ownProfile')}
+                                            </div>
+                                            <button
+                                                className={cls.logoutButton}
+                                                onClick={() => {
+                                                    logout();
+                                                }}
+                                            >
+                                                {t('logout')}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : null}
+                        </li>
+
+                        <li
+                            className={classNames(cls.navItem, ModsUlAndLi)}
+                            key={'switcher key'}
+                        >
+                            <div
+                                onClick={() => handleDropdownClick('lang')}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <LangSwitcher
+                                    className={cls.langSwitcher}
+                                    isOpen={langDropdown.state.isOpen && !isCollapsed}
+                                />
                             </div>
-                        ) : null}
-                    </li>
-
-                    <li
-                        className={classNames(cls.navItem, ModsUlAndLi)}
-                        key={'switcher key'}
-                    >
-                        <div
-                            onClick={() => handleDropdownClick('lang')}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <LangSwitcher
-                                className={cls.langSwitcher}
-                                isOpen={langDropdown.state.isOpen && !isCollapsed}
-                            />
-                        </div>
-                    </li>
-
-                    {hasScrollbar && (
-                        <li
-                            data-testid="toggleFixButtonWrapper"
-                            onTransitionEnd={handleTransitionEnd}
-                            className={classNames(
-                                cls.FixButtonWrapper,
-                                { ...ModsUlAndLi, [cls.fixed]: !isFixed },
-                                [cls.navItem],
-                            )}
-                        >
-                            <ToggleFixButton
-                                onClick={toggleFixed}
-                                isFixed={isFixed}
-                                className={cls.FixButton}
-                            />
                         </li>
-                    )}
 
-                    {isFixed && (
-                        <li
-                            data-testid="collapseExpandWrapper"
-                            className={classNames(cls.CollapseButtonWrapper, {
-                                [cls.collapsing]: isAnimating,
-                            })}
-                            onClick={(event) => event.stopPropagation()}
-                        >
-                            <ToggleCollapseButton
-                                onClick={handleCollapseClick}
-                                isCollapsed={isCollapsed}
-                                className={cls.CollapseButton}
-                                disabled={isAnimating}
-                            />
-                        </li>
-                    )}
+                        {hasScrollbar && (
+                            <li
+                                data-testid="toggleFixButtonWrapper"
+                                onTransitionEnd={handleTransitionEnd}
+                                className={classNames(
+                                    cls.FixButtonWrapper,
+                                    { ...ModsUlAndLi, [cls.fixed]: !isFixed },
+                                    [cls.navItem],
+                                )}
+                            >
+                                <ToggleFixButton
+                                    onClick={toggleFixed}
+                                    isFixed={isFixed}
+                                    className={cls.FixButton}
+                                />
+                            </li>
+                        )}
+
+                        {isFixed && (
+                            <li
+                                data-testid="collapseExpandWrapper"
+                                className={classNames(cls.CollapseButtonWrapper, {
+                                    [cls.collapsing]: isAnimating,
+                                })}
+                                onClick={(event) => event.stopPropagation()}
+                            >
+                                <ToggleCollapseButton
+                                    onClick={handleCollapseClick}
+                                    isCollapsed={isCollapsed}
+                                    className={cls.CollapseButton}
+                                    disabled={isAnimating}
+                                />
+                            </li>
+                        )}
+                    </div>
                 </ul>
             </Container>
         </nav>

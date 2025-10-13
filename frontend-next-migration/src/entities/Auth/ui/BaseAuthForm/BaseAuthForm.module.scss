@@ -1,7 +1,6 @@
 .baseAuthForm {
-    margin-right: 15px;
-    @media (max-width: 900px) {
-        margin-right: 0;
+    @media (max-width: breakpoint(xl)) {
+        width: 280px;
     }
 }
 
@@ -25,7 +24,7 @@
 .header {
     font: var(--font-dm-bold-m);
     display: flex;
-    font-size: 0.8em;
+    font-size: 0.7em;
     justify-content: start;
     font-weight: 300;
 }

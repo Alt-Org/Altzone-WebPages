@@ -1,11 +1,11 @@
 .Form {
     -webkit-user-select: none;
     user-select: none;
-    width: 300px;
-    padding: 15px;
+    width: 280px;
+    padding: 10px;
     border-radius: var(--border-radius-custom);
     display: grid;
-    gap: 10px;
+    gap: 5px;
     color: var(--white);
 
     @media (max-width: 440px) {
@@ -38,9 +38,6 @@
 
     p {
         color: var(--error);
-        margin-top: 5px;
-        margin-bottom: 20px;
-        height: 15px;
         line-height: 15px;
     }
 
@@ -64,5 +61,9 @@
     }
     .showPassword {
         color: var(--primary-color);
+    }
+
+    .error {
+        font-size: 10px;
     }
 }
