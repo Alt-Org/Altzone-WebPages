@@ -345,3 +345,17 @@
     }
 }
 
+.Card.ClanCard {
+    background: var(--base-card-background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: 12px;
+    box-shadow: 4px 8px 0 var(--black);
+    color: var(--primary-color);
+    padding: var(--spacing-400);
+
+    @media (max-width: breakpoint(md)) {
+        border: var(--border-mobile) solid var(--black);
+        box-shadow: 2px 4px 0 var(--black);
+    }
+
+}
