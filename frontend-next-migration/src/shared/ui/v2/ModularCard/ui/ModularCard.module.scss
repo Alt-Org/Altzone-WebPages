@@ -345,3 +345,79 @@
     }
 }
 
+// SectionCard
+.Card.SectionCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 8px 0 var(--black);
+    overflow: hidden;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+
+    @media (max-width: breakpoint(md)) {
+        margin: 0;
+        margin-bottom: 30px;
+    }
+    
+}
+
+.Card.SectionCard > .ModularCardImageSection {
+    height: 100%;
+    width: min-content;
+    object-fit: contain;
+    margin-left: auto;
+}
+
+.Card.SectionCard > .ModularCardImageSection > .ModularCardTriangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 195px solid var(--background);
+    border-right: 157px solid transparent;
+    @media (max-width:breakpoint(xxl)) {
+        border-bottom: 147px solid var(--background);
+        border-right: 130px solid transparent;
+    }
+    @media (max-width:breakpoint(md)) {
+        border-bottom: 123px solid var(--background);
+        border-right: 80px solid transparent;
+    }
+}
+
+.Card.SectionCard > .ModularCardTexts {
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.Card.SectionCard > .ModularCardTexts > .ModularCardTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    h2 {
+        font: var(--font-sw-xxl);
+        color: var(--primary-color);
+    }
+    @media (max-width: breakpoint(md)) {
+        h2 {
+            font: var(--font-sw-xl);
+        }
+    }
+}
+.Card.SectionCard > .ModularCardTexts > .ModularCardBody {
+    font: var(--font-dm-m);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    @media (max-width: breakpoint(md)) {
+        font: var(--font-dm-m);
+    }
+}
