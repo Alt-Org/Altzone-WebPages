@@ -1,11 +1,11 @@
 import { createPage } from '@/app/_helpers';
 import { ProfilePageProps } from '@/preparedPages/ProfilePage';
 import { getRouteProfilePage } from '@/shared/appLinks/RoutePaths';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'profile');
+    const { t } = await getServerTranslation(lng, 'profile');
     return createPage<ProfilePageProps>({
         buildPage: () => ({
             title: t('profile-deletion-title'),
