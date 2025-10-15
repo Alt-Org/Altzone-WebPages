@@ -1,7 +1,6 @@
-'use client';
+/*  'use client';
 import { useInView } from 'react-intersection-observer';
-import { ImageWall } from '@/entities/Gallery/ui/ImageWall/ImageWall';
-import type { PhotoObject } from '@/entities/Gallery';
+import { ImageWall, PhotoObject } from '@/entities/Gallery';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
@@ -29,15 +28,23 @@ type GalleryProps = (PreviewProps | FullProps) & {
 export const SectionGallery = (props: GalleryProps) => {
     const { version, seeMoreLink, images } = props;
 
-    const imagesArray: PhotoObject[] = images ?? [];
-    const previewImages: PhotoObject[] = imagesArray.slice(0, 8);
+    let imagesArray: PhotoObject[] = [];
+    let previewImages: PhotoObject[] = [];
+
+    if (images) {
+        imagesArray = Object.values(images);
+        const previewCount = 8;
+        previewImages = imagesArray.slice(0, previewCount);
+    }
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
         triggerOnce: true,
     });
 
-    const mods = { [cls.inView]: inView };
+    const mods = {
+        [cls.inView]: inView,
+    };
 
     return (
         <div>
@@ -57,10 +64,11 @@ export const SectionGallery = (props: GalleryProps) => {
                         className={cls.buttonContainer}
                     >
                         <Button
-                            withScalableLink
+                            withScalableLink={true}
                             theme={ButtonTheme.Graffiti}
                             className={classNames(cls.SeeMore, mods)}
                             size={ButtonSize.XL}
+                            ref={ref}
                         >
                             <AppLink to={seeMoreLink.href}>{seeMoreLink.text}</AppLink>
                         </Button>
@@ -70,5 +78,80 @@ export const SectionGallery = (props: GalleryProps) => {
         </div>
     );
 };
+ */
+'use client';
+import { useInView } from 'react-intersection-observer';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import cls from './SectionGallery2.module.scss';
+import Image from 'next/image';
 
-export default SectionGallery;
+interface FrameSet {
+    title: string;
+    description: string;
+    supDescription: string;
+    frames: string[][]; // each row is an array of image paths
+}
+
+interface AnimationGalleryProps {
+    animations: FrameSet[];
+}
+
+export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) => {
+    const { inView } = useInView({
+        rootMargin: '-150px 0px',
+        triggerOnce: true,
+    });
+
+    const mods = {
+        [cls.inView]: inView,
+    };
+
+    return (
+        <section className={cls.AnimationGallerySection}>
+            {animations.map((set, index) => (
+                <div
+                    key={index}
+                    className={cls.block}
+                >
+                    <div className={cls.textBlock}>
+                        <h1 className={cls.title}>{set.title}</h1>
+                        <p className={cls.description}>{set.description}</p>
+                        <p className={cls.supdescription}>{set.supDescription}</p>
+                    </div>
+                    <div className={cls.framesContainer}>
+                        {set.frames.map((row, rowIndex) => (
+                            <div
+                                key={rowIndex}
+                                className={cls.frameRow}
+                            >
+                                {row.map((imgSrc, imgIndex) => (
+                                    <div
+                                        key={imgIndex}
+                                        className={cls.imageWrapper}
+                                    >
+                                        <Image
+                                            src={imgSrc}
+                                            alt={`Frame ${imgIndex}`}
+                                            width={1000}
+                                            height={100}
+                                            className={cls.frameImage}
+                                        />
+                                    </div>
+                                ))}
+                                <div className={cls.buttonWrapper}>
+                                    <Button
+                                        theme={ButtonTheme.Graffiti}
+                                        className={classNames(cls.animateButton, mods)}
+                                    >
+                                        Animation
+                                    </Button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </section>
+    );
+};

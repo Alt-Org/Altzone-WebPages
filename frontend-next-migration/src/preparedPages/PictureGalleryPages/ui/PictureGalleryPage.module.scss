@@ -4,13 +4,26 @@
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 20px;
+  //  background-color: rgba(109, 39, 39, 0.322);
 
-  //@media (max-width: breakpoint(xl)) {
+  //@media (max-width: 1200px) {
   //  margin-top: 50px;
   //}
 
 }
-
+.mainTitle{
+  font-size: 4rem;
+  font-family: var(--font-family-title), serif;
+  color: var(--primary-color);
+  line-height: 1.5;
+  margin-top: -10vh;
+}
+.LeftSidebar{
+  //  background-color: rgba(143, 143, 98, 0.308);
+}
+.Maincontainer{
+  background-color: white !important;
+}
 
 .Container{
   flex-grow: 1;
@@ -24,7 +37,7 @@
     width: 85%;
     margin: auto;
     text-align: center;
-    font: var(--font-dm-m);
+    font-size: 1.2em;
   }
 
 
@@ -33,19 +46,30 @@
   gap: 20px;
 
 }
+.Header{
+  background-color: #1E3544;
+  box-shadow: 0.3rem 0.3rem black;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+  margin-inline:1rem;
+}
 
 .Title {
-  font: var(--font-sw-xxxl);
+  font-size: 2rem;
+  font-family: var(--font-family-title), serif;
   color: var(--primary-color);
   line-height: 1.5;
-  text-align: center;
+
 }
 
 .InfoText {
-  width: 85%;
-  margin: 40px auto;
-  text-align: center;
+  margin-top: 10px;
+  font-size: 1rem !important;
+  display:inline;
   font: var(--font-dm-m);
+  color: #faf9f6c0;
 }
 
 
@@ -54,30 +78,24 @@
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
+
 }
 
-@media (min-width: breakpoint(md)) {
+@media (min-width: 768px) {
   .Container {
     //margin-top: 10vh;
 
     .SocialsText {
       width: 75%;
-      font: var(--font-dm-m);
+      font-size: 1.5em;
     }
   }
 
   .InfoText {
     width: 75%;
-    font: var(--font-dm-m);
+    font-size: 1.5em;
   }
 
-}
-
-@media (max-width: 480px) {
-  .Title {
-    font: var(--font-sw-xxl);
-  }
-  
 }
 
 .videoWrapper{
@@ -92,5 +110,29 @@
   border-radius: var(--border-radius-custom);
 }
 
+.TitleBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: 1rem;
+}
+
+.short {
+  width: 17.5rem;
+  @media (max-width: breakpoint(lg)){
+    margin-inline: auto;
+  }
+}
 
 
+
+@media (max-width: breakpoint(lg)) {
+  .mainTitle{
+    text-align: center;
+    font-size: 3rem;
+  }
+  .Maincontainer{
+    width: 100%;
+  }
+
+}

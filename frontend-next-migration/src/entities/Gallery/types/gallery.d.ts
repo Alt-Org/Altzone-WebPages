@@ -43,9 +43,13 @@ export interface PhotoVersion {
 }
 
 export interface PhotoObject {
-    id: string;
-    category: Category;
-    versions: {
+    title: string;
+    description: string;
+    supDescription: string;
+    frames: string[][];
+    id?: string;
+    category?: Category;
+    versions?: {
         preview: PhotoVersion;
         full: PhotoVersion;
     };
