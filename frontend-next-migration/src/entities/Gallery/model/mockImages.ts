@@ -94,12 +94,12 @@ export const generateMockImages = (
             id: `${baseImage.id}-${i + 1}`,
             versions: {
                 preview: {
-                    ...baseImage.versions.preview,
-                    id: `${baseImage.versions.preview.id}-${i + 1}`,
+                    ...baseImage.versions!.preview,
+                    id: `${baseImage.versions!.preview.id}-${i + 1}`,
                 },
                 full: {
-                    ...baseImage.versions.full,
-                    id: `${baseImage.versions.full.id}-${i + 1}`,
+                    ...baseImage.versions!.full,
+                    id: `${baseImage.versions!.full.id}-${i + 1}`,
                 },
             },
         };
