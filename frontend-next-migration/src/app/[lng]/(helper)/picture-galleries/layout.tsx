@@ -14,11 +14,14 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
 
     return (
         <LayoutWithSidebars
-            className="test"
             leftTopSidebar={{
-                component: <GalleryNavMenuAsDropdown openByDefault={true} />,
+                component: (
+                    <GalleryNavMenuAsDropdown
+                        className={cls.LeftSidebar}
+                        openByDefault={true}
+                    />
+                ),
                 hideOnMobile: true,
-                className: cls.LeftSidebar,
             }}
         >
             {isTouchDevice && (
