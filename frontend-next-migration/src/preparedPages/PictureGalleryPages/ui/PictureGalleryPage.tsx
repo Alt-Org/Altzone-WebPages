@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import firstImg from '@/shared/assets/images/gallery/Frame 523.png';
 import secindtImg from '@/shared/assets/images/gallery/Frame 524.png';
 import thirdtImg from '@/shared/assets/images/gallery/Frame 525.png';
@@ -24,7 +24,7 @@ export interface Props {
     socialMediaLinks: string[];
     videoLink: string;
 }
-
+//This may be useful later
 /* const PictureGalleryPage = (props: Props) => {
     const { socialMediaLinks } = props;
     const params = useParams();
@@ -82,6 +82,21 @@ const PictureGalleryPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const isBigDevice = isDesktopSize || isWidescreenSize;
 
+    const showCreativity = useMemo(
+        () => !isMobileSize && searchQuery.length === 0,
+        [isMobileSize, searchQuery],
+    );
+
+    // Filter images by search query matching title, description or supDescription (case-insensitive)
+    const filteredImages = useMemo(() => {
+        const query = searchQuery.trim().toLowerCase();
+        if (!query) return images;
+        return images.filter((photo) => {
+            const fields = [photo.title, photo.description, photo.supDescription];
+            return fields.some((find) => (find || '').toLowerCase().includes(query));
+        });
+    }, [searchQuery]);
+
     return (
         <div className={cls.Wrapper}>
             <Container className={cls.Container}>
@@ -105,14 +120,14 @@ const PictureGalleryPage = () => {
                         onChange={setSearchQuery}
                     />
                 )}
-                {!isMobileSize && (
+                {showCreativity && (
                     <div className={cls.Header}>
                         <h1 className={cls.Title}>{t('picture-galleries')}</h1>
                         <p className={cls.InfoText}>{t('info-text')}</p>
                     </div>
                 )}
                 <AnimationGallerySection
-                    animations={images.map((photo) => ({
+                    animations={filteredImages.map((photo) => ({
                         // Adjust these mappings as needed based on your PhotoObject and FrameSet definitions
                         title: photo.title || '',
                         description: photo.description || '',
