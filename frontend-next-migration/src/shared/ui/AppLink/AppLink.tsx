@@ -18,6 +18,7 @@ interface AppLinkProps {
     'data-fancybox'?: string;
     role?: string;
     ariaLabel?: string;
+    onClick?: () => void;
 }
 
 /**
@@ -52,6 +53,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         ariaLabel,
         'data-fancybox': dataFancybox,
     } = props;
+    const { onClick } = props;
 
     if (isExternal) {
         return (
@@ -63,6 +65,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
                 data-fancybox={dataFancybox}
                 role={role}
                 aria-label={ariaLabel}
+                onClick={onClick}
             >
                 {children}
             </a>
@@ -76,6 +79,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
             aria-label={ariaLabel}
             className={classNames(cls.AppLink, {}, [className, cls[theme]])}
             data-fancybox={dataFancybox}
+            onClick={onClick}
         >
             {children}
         </Link>

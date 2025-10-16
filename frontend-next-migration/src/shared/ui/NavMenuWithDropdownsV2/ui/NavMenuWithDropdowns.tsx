@@ -148,28 +148,8 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                         >
                             {item.title}
                         </NestedDropDown>
-                    ) : isDropDownElementASTextOrLink(item) ? (
-                        item?.link ? (
-                            <AppLink
-                                isExternal={item.link.isExternal}
-                                to={item.link.path}
-                                className={classNames(cls.link, {
-                                    [cls.active]: item.active,
-                                    [customActiveClassName ?? '']: item.active,
-                                })}
-                            >
-                                {item.elementText}
-                            </AppLink>
-                        ) : (
-                            <div
-                                className={classNames(cls.text, { [cls.active]: item.active })}
-                                onClick={item.onClickCallback}
-                            >
-                                {item.elementText}
-                            </div>
-                        )
                     ) : (
-                        <div key={index}>{item}</div>
+                        item
                     ),
                 )}
                 className={cls.topDropDown}

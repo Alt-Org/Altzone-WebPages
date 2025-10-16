@@ -64,6 +64,18 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         }
     }, [dropdownType, onDropdownChange]);
 
+    // Close the mobile dropdown when any leaf in dropdown trees is selected
+    useEffect(() => {
+        const handler = () => setDropdownType(DropdownTypes.EMPTY);
+        // Using 'as any' to avoid TS narrowing issues with CustomEvent typing in Next env
+        document.addEventListener('az:dropdown-select' as any, handler as any);
+        return () => {
+            document.removeEventListener('az:dropdown-select' as any, handler as any);
+        };
+    }, []);
+
+    const closeMobileDropdown = () => setDropdownType(DropdownTypes.EMPTY);
+
     const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
             .map((item) => {
@@ -135,13 +147,26 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             [DropdownTypes.AUTH]: (
                 <div data-testid="mobile-navbar-profile">
                     {permissionToLogin.isGranted ? (
-                        <AppLink to={getRouteLoginPage()}>{t('login')}</AppLink>
+                        <AppLink
+                            to={getRouteLoginPage()}
+                            onClick={closeMobileDropdown}
+                        >
+                            {t('login')}
+                        </AppLink>
                     ) : permissionToLogout.isGranted ? (
                         <>
-                            <AppLink to={getRouteComingSoonPage()}>{t('profile')}</AppLink>
+                            <AppLink
+                                to={getRouteComingSoonPage()}
+                                onClick={closeMobileDropdown}
+                            >
+                                {t('profile')}
+                            </AppLink>
                             <button
                                 className={cls.logoutButton}
-                                onClick={() => logout()}
+                                onClick={() => {
+                                    closeMobileDropdown();
+                                    logout();
+                                }}
                             >
                                 {t('logout')}
                             </button>
