@@ -11,15 +11,14 @@
   border-radius: var(--border-radius-custom);
 
   h2 {
-    font-size: clamp(40px, 7vw, 50px);
+    font-size: clamp(50px, 8vw, 70px); // bigger title
     line-height: 1.5;
     font-weight: normal;
     text-align: center;
     margin-bottom: 40px;
     color: var(--primary-color);
     font-family: var(--font-family-title);
-    font-size: var(--h2-size-desktop);
-    margin-right: 350px; // ✅ desktop only
+    margin-right: 350px; // desktop only
   }
 }
 
@@ -30,18 +29,40 @@
   flex-wrap: wrap;
 }
 
-
-@media (max-width: 768px) {
+/* Tablet screens (769px–1200px) */
+@media (max-width: 1200px) and (min-width: 769px) {
   .Wrapper {
-    padding-top: 10px;
-    padding-bottom: 90px;
+    padding-top: 60px;
+    padding-bottom: 100px;
   }
 
-  .Container {
-    h2 {
-      margin-right: 0;
-      font-size: var(--h2-size-desktop);
-      margin-bottom: 20px;
-    }
+  .Container h2 {
+    margin-right: 200px;
+    font-size: 48px; // bigger for tablet
+    margin-bottom: 25px;
+  }
+
+  .galleries {
+    gap: 20px;
+  }
+}
+
+/* Mobile screens (≤768px) */
+@media (max-width: 768px) {
+  .Wrapper {
+    padding-top: 20px;
+    padding-bottom: 80px;
+  }
+
+  .Container h2 {
+    margin-right: 0;
+    font-size: 36px; // bigger for mobile
+    margin-bottom: 20px;
+  }
+
+  .galleries {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
   }
 }
