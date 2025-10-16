@@ -32,7 +32,7 @@
     @media (min-width:breakpoint(md)) {
         &:hover {
             .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
-                transform: scaleX(.9) !important;
+                transform: translateX(20px) !important;
             }
             border-color: var(--primary-border);
         }
