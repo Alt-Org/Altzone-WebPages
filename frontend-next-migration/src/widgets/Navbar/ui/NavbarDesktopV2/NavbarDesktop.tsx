@@ -4,12 +4,14 @@ import { CSSProperties, memo, useEffect, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
+import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
 import useIsPageScrollbar from '@/shared/lib/hooks/useIsPageScrollbar';
+import { useDropdownManager } from '@/shared/lib/hooks/useDropdownManager';
 import { NavbarBuild } from '../../model/types';
 import { ToggleCollapseButton } from '../ToggleCollapseButton/ToggleCollapseButton';
 import { ToggleFixButton } from '../ToggleFixButton/ToggleFixButton';
+import { LoginForm } from '@/features/AuthByUsername';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
@@ -23,6 +25,7 @@ import Image from 'next/image';
  * @property {NavbarBuild} navbarBuild Navigation bar components according to usage type and view size
  * @property {boolean} isFixed This is deprecated. Fixed type is get from context
  */
+
 export interface NavbarProps {
     marginTop?: number;
     className?: string;
@@ -45,15 +48,20 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     } = props;
 
     const hasScrollbar = useIsPageScrollbar();
-
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
     const permissionToLogout = checkPermissionFor('logout');
-    // todo looks like it should be moved to the feature layer
     const [logout] = useLogoutMutation();
+    const { t } = useClientTranslation('auth');
+
+    // Optimized dropdown management
+    const authDropdown = useDropdownManager();
+    const langDropdown = useDropdownManager();
 
     const [isAnimating, setIsAnimating] = useState(false);
     const [isMouseOver, setIsMouseOver] = useState(false);
+    const [realPath, setRealPath] = useState('/');
+    const pathname = usePathname();
 
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
 
@@ -61,31 +69,55 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         [cls.fixed]: isFixed,
         [cls.collapsed]: isCollapsed,
         [cls.collapsing]: isAnimating,
-    } as Record<string, boolean>;
+    };
 
     const ModsUlAndLi: Record<string, boolean> = {
         [cls.collapsed]: isCollapsed,
-    } as Record<string, boolean>;
+    };
+
+    // Shared dropdown handler
+    const handleDropdownClick = (dropdown: 'auth' | 'lang') => {
+        if (dropdown === 'auth') {
+            authDropdown.actions.toggle();
+            if (!authDropdown.state.isToggled) {
+                langDropdown.actions.reset();
+            }
+        } else {
+            langDropdown.actions.toggle();
+            if (!langDropdown.state.isToggled) {
+                authDropdown.actions.reset();
+            }
+        }
+    };
 
     const handleCollapseClick = () => {
         if (!isAnimating) {
             setIsAnimating(true);
             toggleCollapsed?.();
-            // dispatch(navBarActions.toggleCollapsed());
         }
-    };
-
-    const handleToggleFixed = () => {
-        // dispatch(navBarActions.toggleFixed());
-        toggleFixed?.();
     };
 
     const handleTransitionEnd = () => {
         setIsAnimating(false);
     };
 
-    const [realPath, setRealPath] = useState('/');
-    const pathname = usePathname();
+    const handleNavbarMouseEnter = () => {
+        setIsMouseOver(true);
+        // Show dropdowns if they were toggled
+        if (authDropdown.state.isToggled) {
+            authDropdown.actions.open();
+        }
+        if (langDropdown.state.isToggled) {
+            langDropdown.actions.open();
+        }
+    };
+
+    const handleNavbarMouseLeave = () => {
+        setIsMouseOver(false);
+        // Hide dropdowns but keep toggled states
+        authDropdown.actions.close();
+        langDropdown.actions.close();
+    };
 
     useEffect(() => {
         const pathSegments = pathname.split('/').filter(Boolean);
@@ -101,9 +133,11 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         >
             <Container>
                 <ul
-                    className={classNames(cls.siteNavContentList, ModsUlAndLi)}
-                    onMouseEnter={() => setIsMouseOver(true)}
-                    onMouseLeave={() => setIsMouseOver(false)}
+                    className={classNames(cls.siteNavContentList, {
+                        [cls.mouseOver]: isMouseOver,
+                    })}
+                    onMouseEnter={handleNavbarMouseEnter}
+                    onMouseLeave={handleNavbarMouseLeave}
                 >
                     {navbarBuild.menu.map((item) => (
                         <NavItem
@@ -114,73 +148,120 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             className={classNames('', ModsUlAndLi)}
                         />
                     ))}
-                    <li
-                        className={classNames(cls.navItem, ModsUlAndLi, [cls.authButton])}
-                        key={'auth key'}
-                    >
-                        {permissionToLogin.isGranted ? (
-                            <AppLink
-                                theme={AppLinkTheme.PRIMARY}
-                                to={navbarBuild.namedMenu?.navAuthLogin?.path || ''}
-                            >
-                                <Image
-                                    src={profileIcon}
-                                    alt="Login Icon"
-                                />
-                            </AppLink>
-                        ) : permissionToLogout.isGranted ? (
-                            <p
-                                className={cls.logoutButton}
-                                onClick={() => logout()}
-                            >
-                                <Image
-                                    src={profileIcon}
-                                    alt="Logout Icon"
-                                />
-                            </p>
-                        ) : null}
-                    </li>
-                    <li
-                        className={classNames(cls.navItem, ModsUlAndLi)}
-                        key={'switcher key'}
-                    >
-                        <LangSwitcher className={cls.langSwitcher} />
-                    </li>
-
-                    {hasScrollbar && (
+                    <div className={cls.controlContainer}>
                         <li
-                            data-testid="toggleFixButtonWrapper"
-                            onTransitionEnd={handleTransitionEnd}
-                            className={classNames(
-                                cls.FixButtonWrapper,
-                                { ...ModsUlAndLi, [cls.fixed]: !isFixed },
-                                [cls.navItem],
-                            )}
+                            className={classNames(cls.navItem, ModsUlAndLi)}
+                            key={'auth key'}
                         >
-                            <ToggleFixButton
-                                onClick={handleToggleFixed}
-                                isFixed={isFixed}
-                                className={cls.FixButton}
-                            />
+                            {permissionToLogin.isGranted ? (
+                                <div className={cls.authContainer}>
+                                    <div
+                                        className={cls.authTrigger}
+                                        onClick={() => handleDropdownClick('auth')}
+                                    >
+                                        <Image
+                                            src={profileIcon}
+                                            alt="Login Icon"
+                                            width={28}
+                                            height={28}
+                                        />
+                                    </div>
+                                    <div
+                                        className={classNames(cls.authDropdown, {
+                                            [cls.authDropdownVisible]:
+                                                authDropdown.state.isOpen && !isCollapsed,
+                                        })}
+                                    >
+                                        <LoginForm />
+                                    </div>
+                                </div>
+                            ) : permissionToLogout.isGranted ? (
+                                <div className={cls.authContainer}>
+                                    <div
+                                        className={cls.authTrigger}
+                                        onClick={() => handleDropdownClick('auth')}
+                                    >
+                                        <Image
+                                            src={profileIcon}
+                                            alt="Profile Icon"
+                                            width={28}
+                                            height={28}
+                                        />
+                                    </div>
+                                    <div
+                                        className={classNames(cls.authDropdown, {
+                                            [cls.authDropdownVisible]:
+                                                authDropdown.state.isOpen && !isCollapsed,
+                                        })}
+                                    >
+                                        <div className={cls.authDropdownContent}>
+                                            <div className={cls.profileLabel}>
+                                                {t('ownProfile')}
+                                            </div>
+                                            <button
+                                                className={cls.logoutButton}
+                                                onClick={() => {
+                                                    logout();
+                                                }}
+                                            >
+                                                {t('logout')}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : null}
                         </li>
-                    )}
 
-                    {isFixed && (
                         <li
-                            data-testid="collapseExpandWrapper"
-                            className={classNames(cls.CollapseButtonWrapper, {
-                                [cls.collapsing]: isAnimating,
-                            })}
-                            onClick={(event) => event.stopPropagation()}
+                            className={classNames(cls.navItem, ModsUlAndLi)}
+                            key={'switcher key'}
                         >
-                            <ToggleCollapseButton
-                                onClick={handleCollapseClick}
-                                isCollapsed={isCollapsed}
-                                className={cls.CollapseButton}
-                                disabled={isAnimating}
-                            />
+                            <div
+                                onClick={() => handleDropdownClick('lang')}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                <LangSwitcher
+                                    className={cls.langSwitcher}
+                                    isOpen={langDropdown.state.isOpen && !isCollapsed}
+                                />
+                            </div>
                         </li>
-                    )}
+
+                        {hasScrollbar && (
+                            <li
+                                data-testid="toggleFixButtonWrapper"
+                                onTransitionEnd={handleTransitionEnd}
+                                className={classNames(
+                                    cls.FixButtonWrapper,
+                                    { ...ModsUlAndLi, [cls.fixed]: !isFixed },
+                                    [cls.navItem],
+                                )}
+                            >
+                                <ToggleFixButton
+                                    onClick={toggleFixed}
+                                    isFixed={isFixed}
+                                    className={cls.FixButton}
+                                />
+                            </li>
+                        )}
+
+                        {isFixed && (
+                            <li
+                                data-testid="collapseExpandWrapper"
+                                className={classNames(cls.CollapseButtonWrapper, {
+                                    [cls.collapsing]: isAnimating,
+                                })}
+                                onClick={(event) => event.stopPropagation()}
+                            >
+                                <ToggleCollapseButton
+                                    onClick={handleCollapseClick}
+                                    isCollapsed={isCollapsed}
+                                    className={cls.CollapseButton}
+                                    disabled={isAnimating}
+                                />
+                            </li>
+                        )}
+                    </div>
                 </ul>
             </Container>
         </nav>
@@ -188,5 +269,4 @@ const NavbarDesktop = memo((props: NavbarProps) => {
 });
 
 export default NavbarDesktop;
-
 NavbarDesktop.displayName = 'NavbarDesktop';

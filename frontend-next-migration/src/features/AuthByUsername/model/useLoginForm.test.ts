@@ -133,9 +133,10 @@ describe('useLoginForm', () => {
 
     it('should show error toast if there is an error', () => {
         const mockError = { data: { message: 'Login failed' } };
+        const mockReset = jest.fn();
         (useLoginMutation as jest.Mock).mockReturnValue([
             jest.fn(),
-            { data: null, isLoading: false, error: mockError },
+            { data: null, isLoading: false, error: mockError, reset: mockReset },
         ]);
 
         const { result, rerender } = renderHook(() =>
@@ -147,5 +148,6 @@ describe('useLoginForm', () => {
         });
 
         expect(toast.error).toHaveBeenCalledWith(mockError.data.message);
+        expect(mockReset).toHaveBeenCalled();
     });
 });

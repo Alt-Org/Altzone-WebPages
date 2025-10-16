@@ -30,16 +30,15 @@ const BaseAuthForm: FC<BaseAuthFormProps> & {
 };
 
 BaseAuthForm.Header = ({ children }: { children: ReactNode }) => (
-    <CustomForm.Header>{children}</CustomForm.Header>
+    <CustomForm.Header>
+        <div className={cls.header}>{children}</div>
+    </CustomForm.Header>
 );
 BaseAuthForm.Header.displayName = 'BaseAuthForm.Header';
 
 BaseAuthForm.SubmitButton = ({ children }: { children: ReactNode }) => (
-    <CustomForm.Button
-        type="submit"
-        className={cls.submitButton}
-    >
-        {children}
+    <CustomForm.Button type="submit">
+        <div className={cls.submit}>{children}</div>
     </CustomForm.Button>
 );
 BaseAuthForm.SubmitButton.displayName = 'BaseAuthForm.SubmitButton';
