@@ -289,6 +289,7 @@
     -webkit-line-clamp: 1;
     line-clamp: 1;
     overflow: hidden;
+    padding-bottom: 2px; // prevent descender clipping (e.g., 'y')
     font: var(--font-sw-xl);
     @media (max-width: breakpoint(xl)) {
         line-height: var(--font-line-l) !important;

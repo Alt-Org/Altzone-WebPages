@@ -30,7 +30,7 @@ const HeroGroupNavMenuAsDropdown: React.FC<HeroNavMenuProps> = ({ className }) =
 
     const dropdownItems: DropDownElementASTextOrLink[] = Object.keys(allHeroGroups).map(
         (group) => ({
-            elementText: capitalizeString(group),
+            elementText: capitalizeString(allHeroGroups[group as HeroGroup]?.name ?? String(group)),
             link: { path: getRouteDefenseGalleryGroupPage(group as HeroGroup), isExternal: false },
             active: group === selectedHeroGroup,
         }),

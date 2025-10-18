@@ -26,6 +26,7 @@ const useSizes = () => {
     const checkSizes = () => {
         const width = window.innerWidth;
         return {
+            customXxs: width <= 457,
             xs: width <= 576,
             sm: width >= 577 && width < 768,
             md: width >= 768 && width < 992,

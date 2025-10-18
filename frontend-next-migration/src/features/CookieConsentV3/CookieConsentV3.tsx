@@ -15,7 +15,7 @@ const CookieConsentV4: React.FC = () => {
     const { t, i18n } = useTranslation('cookieConsent');
     const [isMinimized, setIsMinimized] = useState(false);
     const [cookiesHandled, setCookiesHandled] = useState(false);
-    const { xs } = useBreakpoints();
+    const { xs, customXxs } = useBreakpoints();
 
     useEffect(() => {
         const consent = document.cookie.includes('AltZoneCookieConsent=');
@@ -85,7 +85,7 @@ const CookieConsentV4: React.FC = () => {
         <div
             className={cls.cookieConsentV2}
             style={{
-                height: isMinimized ? '130px' : xs ? '690px' : '360px',
+                height: isMinimized ? (customXxs ? '150px' : '130px') : xs ? '690px' : '360px',
                 overflow: 'hidden',
                 transition: 'height 0.3s ease',
             }}
