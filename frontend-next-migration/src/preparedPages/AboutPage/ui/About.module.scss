@@ -6,6 +6,7 @@
 .hero {
     position: relative;
     width: 100%;
+    max-width: 1400px;
     aspect-ratio: 16 / 9;
     margin-bottom: var(--spacing-600);
 }
@@ -215,7 +216,7 @@
     content: '';
     position: static;
     border: solid orange;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0 10px 10px 0;
     border-width: 5px;
     padding-left: var(--spacing-500);
     float: left;

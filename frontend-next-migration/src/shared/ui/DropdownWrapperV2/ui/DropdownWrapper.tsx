@@ -1,7 +1,7 @@
 'use client';
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useEffect, KeyboardEvent, FocusEvent, useRef } from 'react';
+import { useState, useEffect, KeyboardEvent, useRef } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapperProps } from '../types';
@@ -28,6 +28,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         staticTitle = '',
         dynamicTitle,
         showArrow,
+        autoClose = false,
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
@@ -243,9 +244,9 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             })}
                                             onClick={() => {
                                                 if (!openByDefault && !staticDropdown) {
-                                                    setIsOpen(false);
+                                                    if (autoClose) setIsOpen(false);
+                                                    notifySelect();
                                                 }
-                                                notifySelect();
                                             }}
                                         >
                                             {element.elementText}
@@ -274,9 +275,9 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             }}
                                             onClick={() => {
                                                 if (!openByDefault && !staticDropdown) {
-                                                    setIsOpen(false);
+                                                    if (autoClose) setIsOpen(false);
+                                                    notifySelect();
                                                 }
-                                                notifySelect();
                                                 element.onClickCallback?.();
                                             }}
                                         >

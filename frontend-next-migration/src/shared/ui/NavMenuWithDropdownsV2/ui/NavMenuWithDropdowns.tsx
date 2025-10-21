@@ -6,7 +6,6 @@ import {
 import { ReactNode, useEffect, useState } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { usePathname } from 'next/navigation';
 
 export interface DropdownItem {
@@ -104,7 +103,6 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
         openByDefault = false,
         staticDropdown = false,
         titleAsActive = false,
-        customActiveClassName = '',
     } = props;
 
     const [realPath, setRealPath] = useState('/');
@@ -138,13 +136,15 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                 dynamicTitle={dynamicTitle}
                 staticTitle={title}
                 dataTestId={title}
-                elements={dropdownItems.map((item, index) =>
+                autoClose={!openByDefault}
+                elements={dropdownItems.map((item) =>
                     isDropdownItem(item) ? (
                         <NestedDropDown
                             key={item.title}
                             openByDefault={item.openByDefault}
                             elements={item.elements}
                             dataTestId={item.title}
+                            autoClose={!openByDefault}
                         >
                             {item.title}
                         </NestedDropDown>
@@ -166,10 +166,11 @@ interface NestedDropDownProps {
     elements: DropDownElement[];
     children: ReactNode;
     dataTestId?: string;
+    autoClose: boolean;
 }
 
 function NestedDropDown(props: NestedDropDownProps) {
-    const { openByDefault, elements, children, dataTestId } = props;
+    const { openByDefault, elements, children, dataTestId, autoClose } = props;
 
     return (
         <DropdownWrapper
@@ -179,6 +180,7 @@ function NestedDropDown(props: NestedDropDownProps) {
             childrenWrapperClassName={cls.subDropDownChildren}
             elements={elements}
             dataTestId={dataTestId}
+            autoClose={autoClose}
         >
             {children}
         </DropdownWrapper>

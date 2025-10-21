@@ -52,6 +52,11 @@
             font-size: var(--h3-size-desktop);
         }
     }
+    @media (max-width: breakpoint(xs)) {
+        h1 {
+            font-size: var(--h1-size-mobile);
+        }
+    }
 }
 
 .SearchContainer {
