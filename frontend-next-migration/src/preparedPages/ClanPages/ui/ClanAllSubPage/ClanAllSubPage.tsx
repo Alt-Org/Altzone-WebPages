@@ -5,12 +5,23 @@ import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
+import { ClanCard } from '../ClanCard/ClanCard';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
     SkeletonLoaderForClansDesktop,
     SkeletonLoaderForClansMobile,
 } from '@/shared/ui/SkeletonLoader';
 import cls from './ClanAllSubPage.module.scss';
+import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
+import iconSpammer from '@/shared/assets/images/clanLabels/ClanLabelSpammer.png';
+import iconHumorous from '@/shared/assets/images/clanLabels/ClanLabelHumorous.png';
+import iconAnimalLovers from '@/shared/assets/images/clanLabels/ClanLabelAnimalLovers.png';
+
+const labels = [
+    { text: 'Spämmääjät', icon: iconSpammer },
+    { text: 'Humoristiset', icon: iconHumorous },
+    { text: 'Eläinrakkaat', icon: iconAnimalLovers },
+];
 
 const ClanAllSubPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -210,7 +221,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                 return (
                     <div
                         key={idx}
-                        className={cls.ClanCard}
+                        className={cls.ClanCardGrid}
                         style={{ backgroundColor: bgColor }}
                         onClick={() => onClick(clan?._id)}
                     >
@@ -265,37 +276,22 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                 onPrev={() => onClickPage(currentPage - 1)}
                 onNext={() => onClickPage(currentPage + 1)}
             />
-            <table className={cls.ClanTable}>
-                <thead>
-                    <tr>
-                        <th>{t('rating')}</th>
-                        <th>{t('clan')}</th>
-                        <th>{t('clan_master')}</th>
-                        <th>{t('coins')}</th>
-                        <th>{t('members')}</th>
-                        <th>{t('tag')}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {clanServerResponse.data.Clan.map((clan, idx) => {
-                        const bgColor = 'rgba(0,0,0,0.6)';
-
-                        return (
-                            <tr
-                                key={idx}
-                                style={{ backgroundColor: bgColor }}
-                                onClick={() => onClick(clan?._id)}
-                            >
-                                <td>{idx + 1}</td>
-                                <td>{clan?.name}</td>
-                                <td>Joku Mestari </td>
-                                <td>{clan?.playerCount}</td>
-                                <td>{clan?.tag}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <div className={cls.ClanCardGrid}>
+                {clanServerResponse.data.Clan.map((clan) => {
+                    return (
+                        <ClanCard
+                            key={clan._id}
+                            name={clan?.name}
+                            members={clan?.playerCount}
+                            capacity={30}
+                            coins={clan?.gameCoins}
+                            logo={clanLogo}
+                            labels={labels}
+                            onClick={() => onClick(clan?._id)}
+                        />
+                    );
+                })}
+            </div>
         </div>
     );
 };

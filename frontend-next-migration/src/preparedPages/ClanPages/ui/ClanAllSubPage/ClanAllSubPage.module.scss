@@ -39,17 +39,18 @@
 }
 
 .ClanCard {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: var(--border-radius-custom);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  cursor: pointer;
+  outline: none;
 
-  div {
-    cursor: pointer;
-    margin-bottom: 8px;
+  &:focus {
+    box-shadow: 0 0 0 2px var(--accent-600);
   }
 }
+
 
 
 .Loader {
@@ -84,4 +85,23 @@
   white-space: nowrap;
   min-width: fit-content;
   //border: solid 1px var(--primary-color);
+}
+
+/* Page grid for listing clan cards */
+.ClanCardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 24px 0;
+}
+
+@media (min-width: 1024px) {
+  .ClanCardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+    row-gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }

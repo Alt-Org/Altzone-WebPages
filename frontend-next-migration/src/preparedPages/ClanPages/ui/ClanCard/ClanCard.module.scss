@@ -1,0 +1,101 @@
+.ClanCard {
+    // Inherits base card styles from ModularCard
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    cursor: pointer;
+    outline: none;
+    &:focus {
+        box-shadow: 0 0 0 2px var(--accent-600);
+    }
+    --clan-logo-size: 120px;
+    --clan-v-gap:     10px;
+    --clan-grid-gap:  18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr var(--clan-logo-size); 
+    gap: var(--clan-grid-gap);
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--white);
+}
+
+.meta {
+    display: flex;
+    gap: 14px;
+    color: var(--white);
+    align-items: center;
+}
+
+.metaGroup {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.meta .metaLabel {
+  opacity: 0.85;
+  margin-right: 2px;
+}
+
+.labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFA100;                  
+    color: var(--black);                  
+    border: 2px solid var(--black);
+    border-radius: 12px;                  
+    padding: 0.45em 0.9em 0.45em 0.6em;   
+    font-size: 14px;  
+    font-weight: 600;                     
+    line-height: 1;
+}
+
+.logo {
+    position: relative;
+    width: var(--clan-logo-size);
+    height: var(--clan-logo-size);
+    border-radius: 12px;
+    overflow: hidden;
+    justify-self: end;
+    align-self: center;                   
+}
+
+.ClanCardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  justify-content: center;
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+}
