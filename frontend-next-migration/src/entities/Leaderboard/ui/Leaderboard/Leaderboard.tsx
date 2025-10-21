@@ -1,5 +1,6 @@
 import { memo } from 'react';
-import { LeaderboardPodiums, LeaderboardCard } from '@/entities/Leaderboard';
+import LeaderboardPodiums from '../LeaderboardPodiums/LeaderboardPodiums';
+import LeaderboardCard from '../LeaderboardCard/LeaderboardCard';
 import { LeaderboardItem } from '../../types/leaderboard';
 import cls from './Leaderboard.module.scss';
 

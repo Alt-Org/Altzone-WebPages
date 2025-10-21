@@ -102,22 +102,21 @@ export const FormCheckbox: Story = {
     },
 };
 
-// Wrapper component so Hooks are used inside a React component (fixes react-hooks/rules-of-hooks)
-const MultiSelectionDropdownStory: React.FC = () => {
-    const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
-
-    return (
-        <MemoizedForm.MultiSelectionDropdown
-            label="Labels"
-            options={ClanLabel}
-            defaultSelected={{ ITSENÄISET: ClanLabel.ITSENÄISET }}
-            maxSelections={5}
-            value={selected}
-            onSelectChange={(newSelection) => setSelected(newSelection)}
-        />
-    );
-};
-
 export const MultiSelectionDropdown: Story = {
-    render: () => <MultiSelectionDropdownStory />,
+    render: () => {
+        function DropdownWithState() {
+            const [selected, setSelected] = useState<{ label: any; value: any }[]>([]);
+            return (
+                <MemoizedForm.MultiSelectionDropdown
+                    label="Labels"
+                    options={ClanLabel}
+                    defaultSelected={{ ITSENÄISET: ClanLabel.ITSENÄISET }}
+                    maxSelections={5}
+                    value={selected}
+                    onSelectChange={setSelected}
+                />
+            );
+        }
+        return <DropdownWithState />;
+    },
 };

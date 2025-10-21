@@ -158,7 +158,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     style={{
                                                         display: 'inline',
                                                         verticalAlign: 'middle',
-                                                        marginLeft: '5px',
+                                                        marginLeft: '3px',
                                                         color: 'var(--content-primary)',
                                                     }}
                                                 />

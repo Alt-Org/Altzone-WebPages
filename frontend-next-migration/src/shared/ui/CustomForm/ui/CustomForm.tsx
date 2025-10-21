@@ -15,6 +15,8 @@ import { Button as CustomButton, ButtonTheme } from '@/shared/ui/Button/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CustomForm.module.scss';
 import { MultiSelect } from 'react-multi-select-component';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Header component for displaying a heading inside the form.
@@ -47,17 +49,79 @@ type InputFieldProps = {
     error?: any;
     className?: string;
     inputProps?: DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+    showPasswordToggle?: boolean;
 };
 
-function InputField({ label, error, inputProps, className = '' }: InputFieldProps) {
+interface PasswordToggleButtonProps {
+    showPassword: boolean;
+    onToggle: () => void;
+}
+
+function PasswordToggleButton({ showPassword, onToggle }: PasswordToggleButtonProps) {
+    return (
+        <button
+            type="button"
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            onClick={onToggle}
+            className={cls.showPassword}
+            style={{
+                position: 'absolute',
+                right: 15,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+            }}
+            tabIndex={-1}
+        >
+            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+        </button>
+    );
+}
+
+function InputField({
+    label,
+    error,
+    inputProps,
+    className = '',
+    showPasswordToggle = false,
+}: InputFieldProps) {
     const inputId = inputProps?.id || `input-${label}`;
+    const [showPassword, setShowPassword] = useState(false);
+
+    const isPasswordType = inputProps?.type === 'password';
+    const shouldShowToggle = showPasswordToggle && isPasswordType;
+
+    const getInputType = () => {
+        if (!shouldShowToggle) {
+            return inputProps?.type || 'text';
+        }
+        return showPassword ? 'text' : 'password';
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
+
     return (
         <div className={classNames(cls.field, {}, [className])}>
             <label htmlFor={inputId}>{label}</label>
-            <input
-                id={inputId}
-                {...inputProps}
-            />
+            <div style={{ position: 'relative' }}>
+                <input
+                    id={inputId}
+                    {...inputProps}
+                    type={getInputType()}
+                />
+                {shouldShowToggle && (
+                    <PasswordToggleButton
+                        showPassword={showPassword}
+                        onToggle={togglePasswordVisibility}
+                    />
+                )}
+            </div>
+
             {error && (
                 <p
                     role="alert"

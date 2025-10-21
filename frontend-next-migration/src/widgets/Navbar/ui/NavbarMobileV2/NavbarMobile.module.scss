@@ -26,6 +26,8 @@
 }
 
 .NavbarDropdown {
+    display: flex;
+    justify-content: center;
     transform: scaleY(0);
     transform-origin: top;
     max-height: 0;
@@ -34,9 +36,9 @@
         max-height 0.3s ease;
 }
 .openDropdown {
-    padding: 15px;
+    padding: 10px;
     transform: scaleY(1);
-    max-height: 400px;
+    max-height: 450px;
 }
 
 .HamurgerBtn {
@@ -79,7 +81,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin-left: 70px;
+        margin-left: 40px;
     }
 
     li {
@@ -120,6 +122,9 @@
     width: 100%;
     padding: 10px;
 }
+.profileLabel {
+    font-size: 1.2em;
+}
 
 .navItem {
     opacity: 1;
@@ -129,4 +134,24 @@
         transform 0.3s ease-out,
         opacity 0.3s ease-out;
     visibility: visible;
+}
+
+.toggleAuthMode {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+    font: var(--font-dm-m);
+    padding: 5px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.toggleAuthMode:hover {
+    color: var(--secondary-color);
+}
+
+.logoutButton:hover {
+    background-color: rgba(255, 0, 0, 0.2);
 }
