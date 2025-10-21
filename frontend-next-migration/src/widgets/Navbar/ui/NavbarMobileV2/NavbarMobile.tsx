@@ -13,6 +13,7 @@ import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 import { ItemType, NavbarBuild } from '../../model/types';
 import cls from './NavbarMobile.module.scss';
 import { LoginForm } from '@/features/AuthByUsername';
+import { getRouteComingSoonPage, getRouteLoginPage } from '@/shared/appLinks/RoutePaths';
 
 enum DropdownTypes {
     EMPTY = 'EMPTY',
@@ -156,10 +157,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 />
             ),
             [DropdownTypes.AUTH]: (
-                <div
-                    data-testid="mobile-navbar-profile"
-                    className={cls.authDropdownContent}
-                >
+                <div data-testid="mobile-navbar-profile">
                     {permissionToLogin.isGranted ? (
                         <AppLink
                             to={getRouteLoginPage()}
@@ -182,9 +180,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                                     logout();
                                 }}
                             >
-                                {tAuth('logout')}
+                                {t('logout')}
                             </button>
-                        </div>
+                        </>
                     ) : null}
                 </div>
             ),
