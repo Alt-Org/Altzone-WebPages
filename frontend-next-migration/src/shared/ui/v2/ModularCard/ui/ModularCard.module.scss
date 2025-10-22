@@ -352,10 +352,126 @@
     box-shadow: 4px 8px 0 var(--black);
     color: var(--white);
     padding: clamp(10px, 1vw, 14px);
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+
+    &:focus { box-shadow: 0 0 0 2px var(--accent-600); }
+
+    --clan-logo-size: 120px;
+    --clan-grid-gap: 18px;
+
+    @media (max-width: 1200px)  { --clan-logo-size: 104px; }
+    @media (max-width: 992px)   { --clan-logo-size: 88px;  }
 
     @media (max-width: breakpoint(md)) {
         border: var(--border-mobile) solid var(--black);
         box-shadow: 2px 4px 0 var(--black);
         padding: clamp(10px, 1.6vw, 14px);
     }
+}
+
+.Card.ClanCard :global(.ClanCard-grid) {
+    display: grid;
+    grid-template-columns: 1fr var(--clan-logo-size);
+    gap: var(--clan-grid-gap);
+    align-items: center;
+}
+
+.Card.ClanCard :global(.ClanCard-left) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Card.ClanCard :global(.ClanCard-title) {
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--white);
+}
+
+.Card.ClanCard :global(.ClanCard-meta) {
+    display: flex;
+    gap: 14px;
+    color: var(--white);
+    align-items: center;
+    font-size: 14px;
+}
+
+.Card.ClanCard :global(.ClanCard-metaGroup) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.Card.ClanCard :global(.ClanCard-metaLabel) {
+    opacity: 0.85;
+    margin-right: 2px;
+}
+
+.Card.ClanCard :global(.ClanCard-labels) {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 12px 16px;
+    margin-top: 8px;
+    align-content: start;
+    justify-content: start;
+}
+
+@media (max-width: 640px) {
+    .Card.ClanCard :global(.ClanCard-labels) {
+        grid-template-columns: 1fr; 
+    }
+}
+
+.Card.ClanCard :global(.ClanCard-label) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFA100;
+    color: var(--black);
+    border: 2px solid var(--black);
+    border-radius: 12px;
+    padding: 0.45em 0.9em 0.45em 0.6em;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.Card.ClanCard :global(.ClanCard-logo) {
+    position: relative;
+    width: var(--clan-logo-size);
+    height: var(--clan-logo-size);
+    border-radius: 12px;
+    overflow: hidden;
+    justify-self: end;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Card.ClanCard :global(.ClanCard-logo .ModularCardImageSection) {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.Card.ClanCard :global(.ClanCard-logo .ModularCardImageSection > span) {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+
+.Card.ClanCard :global(.ClanCard-logo img) {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
 }

@@ -5,7 +5,8 @@ import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
 import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
-import { ClanCard } from '../ClanCard/ClanCard';
+import Image from 'next/image';
+import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import {
     SkeletonLoaderForClansDesktop,
@@ -16,6 +17,8 @@ import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
 import iconSpammer from '@/shared/assets/images/clanLabels/ClanLabelSpammer.png';
 import iconHumorous from '@/shared/assets/images/clanLabels/ClanLabelHumorous.png';
 import iconAnimalLovers from '@/shared/assets/images/clanLabels/ClanLabelAnimalLovers.png';
+import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirstPlace.png';
+import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png';
 
 const labels = [
     { text: 'Spämmääjät', icon: iconSpammer },
@@ -30,36 +33,7 @@ const ClanAllSubPage = () => {
 
     const router = useRouter();
     const { t } = useClientTranslation('clan');
-    const {
-        data: clans,
-        error,
-        isLoading,
-    } = useGetClansQuery({ page: currentPage, search: currentSearch });
-
-    if (isLoading)
-        return isMobileSize ? (
-            <SkeletonLoaderForClansMobile
-                className={cls.skeletonLoader}
-                rating={t('rating')}
-                clan={t('clan')}
-                clanMaster={t('clan_master')}
-                coins={t('coins')}
-                members={t('members')}
-                tag={t('tag')}
-                clansTitle={t('clans_title')}
-            />
-        ) : (
-            <SkeletonLoaderForClansDesktop
-                className={cls.skeletonLoader}
-                rating={t('rating')}
-                clan={t('clan')}
-                clanMaster={t('clan_master')}
-                coins={t('coins')}
-                members={t('members')}
-                tag={t('tag')}
-                clansTitle={t('clans_title')}
-            />
-        );
+    const { data: clans, error } = useGetClansQuery({ page: currentPage, search: currentSearch });
 
     const onClickToClan = (id: string) => {
         router.push(getRouteOneClanPage(id));
@@ -277,20 +251,69 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                 onNext={() => onClickPage(currentPage + 1)}
             />
             <div className={cls.ClanCardGrid}>
-                {clanServerResponse.data.Clan.map((clan) => {
-                    return (
-                        <ClanCard
-                            key={clan._id}
-                            name={clan?.name}
-                            members={clan?.playerCount}
-                            capacity={30}
-                            coins={clan?.gameCoins}
-                            logo={clanLogo}
-                            labels={labels}
-                            onClick={() => onClick(clan?._id)}
-                        />
-                    );
-                })}
+                {clanServerResponse.data.Clan.map((clan) => (
+                    <ModularCard
+                        key={clan._id}
+                        theme={ModularCardTheme.CLAN}
+                        onClick={() => onClickToClan?.(clan._id)}
+                        role="button"
+                        tabIndex={0}
+                    >
+                        <div className="ClanCard-grid">
+                            <div className="ClanCard-left">
+                                <div className="ClanCard-title">{clan.name}</div>
+
+                                <div className="ClanCard-meta">
+                                    <span className="ClanCard-metaGroup">
+                                        <Image
+                                            src={iconLeaderboard}
+                                            alt="leader"
+                                            width={18}
+                                            height={18}
+                                        />
+                                        <Image
+                                            src={iconFlagFi}
+                                            alt="flag"
+                                            width={18}
+                                            height={18}
+                                        />
+                                        <span className="ClanCard-metaLabel">Members</span>
+                                        {clan.playerCount} / 30
+                                    </span>
+                                    {typeof clan.gameCoins === 'number' && (
+                                        <span>{clan.gameCoins}</span>
+                                    )}
+                                </div>
+
+                                <div className="ClanCard-labels">
+                                    {labels.map((l, i) => (
+                                        <span
+                                            className="ClanCard-label"
+                                            key={i}
+                                        >
+                                            <Image
+                                                src={l.icon}
+                                                alt={l.text}
+                                                width={18}
+                                                height={18}
+                                            />
+                                            {l.text}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="ClanCard-logo">
+                                <ModularCard.Image>
+                                    <ModularCard.Image.Image
+                                        src={clanLogo}
+                                        alt={`${clan.name} logo`}
+                                    />
+                                </ModularCard.Image>
+                            </div>
+                        </div>
+                    </ModularCard>
+                ))}
             </div>
         </div>
     );
