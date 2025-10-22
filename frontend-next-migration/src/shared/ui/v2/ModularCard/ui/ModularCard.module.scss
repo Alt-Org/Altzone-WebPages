@@ -349,7 +349,6 @@
 .Card.SectionCard {
     position: relative;
     display: flex;
-    flex-direction: column;
     background-color: var(--background);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-md);
@@ -357,42 +356,21 @@
     overflow: hidden;
     margin-left: 50px;
     margin-bottom: 50px;
-    margin-right: 50px;
+    margin-right: 20px;
 
     @media (max-width: breakpoint(md)) {
+        flex-direction: column;
         margin: 0;
         margin-bottom: 30px;
     }
     
 }
 
-.Card.SectionCard > .ModularCardImageSection {
-    height: 100%;
-    width: min-content;
-    object-fit: contain;
-    margin-left: auto;
-}
-
-.Card.SectionCard > .ModularCardImageSection > .ModularCardTriangle {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-bottom: 195px solid var(--background);
-    border-right: 157px solid transparent;
-    @media (max-width:breakpoint(xxl)) {
-        border-bottom: 147px solid var(--background);
-        border-right: 130px solid transparent;
-    }
-    @media (max-width:breakpoint(md)) {
-        border-bottom: 123px solid var(--background);
-        border-right: 80px solid transparent;
-    }
-}
-
 .Card.SectionCard > .ModularCardTexts {
-    flex-basis: 45%;
+    flex-basis: 95%;
     display: flex;
     flex-direction: column;
+    z-index: 2;
     gap: 10px;
     padding: 20px;
     justify-content: center;
@@ -419,5 +397,46 @@
     -webkit-box-orient: vertical;
     @media (max-width: breakpoint(md)) {
         font: var(--font-dm-m);
+    }
+}
+
+.Card.SectionCard > .ModularCardImageSection {
+    flex-basis: 40%;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.Card.SectionCard > .ModularCardImageSection > .ModularCardImage {
+    position: relative;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @media (max-width: breakpoint(md)) {
+        height: auto;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.Card.SectionCard > .ModularCardImageSection > .ModularCardTriangle {
+    position:absolute;
+    left: -1px;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    border-bottom: 192px solid var(--background);
+    border-right: 157px solid transparent;
+
+    @media (max-width:breakpoint(xxl)) {
+        border-bottom: 147px solid var(--background);
+        border-right: 130px solid transparent;
+    }
+    @media (max-width:breakpoint(md)) {
+        border-bottom: 123px solid var(--background);
+        border-right: 80px solid transparent;
     }
 }

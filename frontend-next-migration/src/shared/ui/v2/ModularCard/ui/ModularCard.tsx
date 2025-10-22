@@ -58,6 +58,8 @@ interface CardCompoundProps {
 interface ModularCardImageProps {
     className?: string;
     alt: string;
+    width?: number;
+    height?: number;
     src: StaticImageData | string;
 }
 
@@ -201,13 +203,15 @@ ModularCardFootnote.displayName = 'modularcard-Texts-Footnote';
  * />
  */
 const ModularCardImage = memo((props: ModularCardImageProps) => {
-    const { className = '', alt, src } = props;
+    const { className = '', alt, src, width, height } = props;
 
     return (
         <Image
             className={classNames(cls.ModularCardImage, {}, [className])}
             src={src}
             alt={alt}
+            width={width}
+            height={height}
         />
     );
 });
