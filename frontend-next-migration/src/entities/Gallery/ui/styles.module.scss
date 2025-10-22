@@ -1,3 +1,5 @@
+@import "src/app/_styles/variables/_mixins.scss";
+
 .galleryContainer {
   display: flex;
   flex-direction: column;
@@ -69,7 +71,6 @@
   width: 250px;
   align-self: flex-end;
   margin-top: -10px;
-  margin-bottom: 0;
   margin-right: 50px;
 }
 
@@ -174,8 +175,8 @@
   }
 }
 
-/* Tablet screens (769px–1200px) */
-@media (max-width: 1200px) and (min-width: 769px) {
+/* ✅ Tablet screens (769px–1200px) */
+@media (max-width: breakpoint(xl)) and (min-width: breakpoint(md)) {
   .cover {
     gap: 10px;
   }
@@ -185,8 +186,8 @@
   }
 }
 
-/* Mobile screens (≤768px) */
-@media (max-width: 768px) {
+/* ✅ Mobile screens (≤768px) */
+@media (max-width: breakpoint(md)) {
   .cover {
     flex-direction: column;
     gap: 5px;
@@ -204,7 +205,6 @@
     width: auto;
     align-self: flex-end;
     margin-top: -10px;
-    margin-bottom: 0;
     margin-right: 10px;
   }
 
