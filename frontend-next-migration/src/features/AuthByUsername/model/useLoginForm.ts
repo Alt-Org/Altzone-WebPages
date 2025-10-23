@@ -28,7 +28,7 @@ export const useLoginForm = (props: Props) => {
 
     const dispatch = useDispatch();
 
-    const [login, { data, isLoading, error }] = useLoginMutation();
+    const [login, { data, isLoading, error, reset }] = useLoginMutation();
 
     async function onFormSubmit(fieldValues: FieldValues) {
         await login(fieldValues as IUserLoginDto);
@@ -59,6 +59,7 @@ export const useLoginForm = (props: Props) => {
         if (error) {
             // @ts-ignore todo it works but ts for some reason doesnt recognise the type, figure our why and fix
             toast.error(error?.data?.message);
+            reset();
             return;
         }
     }, [data, isLoading, error, dispatch, onSuccessLogin, t]);

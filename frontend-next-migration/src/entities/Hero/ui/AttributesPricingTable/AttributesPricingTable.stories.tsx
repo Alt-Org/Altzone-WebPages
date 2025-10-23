@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/nextjs';
 import React from 'react';
 import { HeroSlug } from '../../types/hero';
 import { AttributesPricingTable } from './AttributesPricingTable';

@@ -1,12 +1,12 @@
 import { createPage } from '@/app/_helpers';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
 import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
 import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 import { HeroPageProps } from '@/preparedPages/HeroesPages';
 
 export async function _getPage(lng: string, slug: string) {
-    const { t } = await useServerTranslation(lng, 'heroes');
+    const { t } = await getServerTranslation(lng, 'heroes');
     const heroManager = new HeroManager(t);
 
     const currentHero = heroManager.getHeroBySlug(slug as HeroSlug);

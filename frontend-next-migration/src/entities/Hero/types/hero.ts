@@ -25,6 +25,15 @@ export enum HeroSlug {
     HATE_SPEECH = 'hate-speech',
     MEATWALL = 'meatwall',
     VETERAN = 'war-veteran',
+    LOVERS = 'lovers',
+    SCAPEGOATER = 'scapegoater',
+    WISEACRE = 'wiseacre',
+    CAPITALIST = 'capitalist',
+    OCD = 'ocd',
+    PRANKING = 'pranking',
+    SEDUCER = 'seducer',
+    PEOPLE_PLEASER = 'people-pleaser',
+    BULLYING = 'bullying',
 }
 
 export interface Hero {

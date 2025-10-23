@@ -1,12 +1,34 @@
+.baseAuthForm {
+    @media (max-width: breakpoint(xl)) {
+        width: 280px;
+    }
+}
+
 .fields {
-    gap: 16px;
+    gap: 4px;
+    font: var(--font-dm-bold-s);
+
+    input {
+        background-color: var(--background-color);
+        color: white;
+        border: 2px solid rgba(18, 18, 18, 1);
+        border-radius: 25px;
+    }
+    input::placeholder {
+        color: var(--primary-color);
+    }
+    input:focus::placeholder {
+        color: transparent;
+    }
+}
+.header {
+    font: var(--font-dm-bold-m);
+    display: flex;
+    font-size: 0.7em;
+    justify-content: start;
+    font-weight: 300;
 }
 
 .actions {
-    gap: 12px;
     text-align: center;
-}
-
-.submitButton {
-    width: 100%;
 }

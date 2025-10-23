@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import { StoryObj, Meta } from '@storybook/nextjs';
 import { NavGoBackButton } from './NavGoBackButton';
 
 export default {
@@ -8,10 +7,6 @@ export default {
     args: {
         className: '',
     },
-} as ComponentMeta<typeof NavGoBackButton>;
+} as Meta<typeof NavGoBackButton>;
 
-const Template: ComponentStory<typeof NavGoBackButton> = (args) => {
-    return <NavGoBackButton {...args} />;
-};
-
-export const Default = Template.bind({});
+export const Default: StoryObj<typeof NavGoBackButton> = {};

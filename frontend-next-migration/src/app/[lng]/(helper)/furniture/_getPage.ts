@@ -1,11 +1,11 @@
 import { createPage } from '@/app/_helpers';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { FurniturePageProps } from '@/preparedPages/FurniturePages';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'furniture');
+    const { t } = await getServerTranslation(lng, 'furniture');
     return createPage<FurniturePageProps>({
         buildPage: () => ({
             buttonSearchLabel: t('search'),

@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/nextjs';
 import { getRouteGalleryPage } from '@/shared/appLinks/RoutePaths';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { SectionGallery } from './SectionGallery';

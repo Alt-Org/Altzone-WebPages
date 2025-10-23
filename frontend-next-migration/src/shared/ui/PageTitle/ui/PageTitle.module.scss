@@ -4,6 +4,10 @@
     align-items: flex-end;
     margin-bottom: 1rem;
     padding-right: 1.5rem;
+
+    @media (min-width: calc(breakpoint(lg) + 32px)) {
+        margin-bottom: 0;
+    }
 }
 
 .PageTitleLeft {
@@ -40,6 +44,12 @@
     @media (max-width: breakpoint(lg)) {
         h1 {
             font: var(--font-sw-xxxl);
+        }
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        h1 {
+            font-size: var(--h3-size-desktop);
         }
     }
 }
