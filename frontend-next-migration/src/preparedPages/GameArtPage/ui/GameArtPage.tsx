@@ -38,7 +38,6 @@ const GameArtPackagePage = (props: Props) => {
             )}
 
             <LayoutWithSidebars
-                className={cls.SideBar}
                 leftTopSidebar={{
                     component: <GameArtNavMenu sections={sections} />,
                     hideOnMobile: false,

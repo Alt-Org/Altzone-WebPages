@@ -401,12 +401,18 @@
 }
 
 .Card.SectionCard > .ModularCardImageSection {
-    flex-basis: 40%;
+    flex-basis: 50%;
     position: relative;
     overflow: visible;
     display: flex;
     justify-content: flex-end;
     align-items: stretch;
+
+    @media (max-width: breakpoint(md)) {
+        height: auto;
+        width: 100%;
+        margin-top: 20px;
+    }
 }
 
 .Card.SectionCard > .ModularCardImageSection > .ModularCardImage {
@@ -423,18 +429,14 @@
 }
 
 .Card.SectionCard > .ModularCardImageSection > .ModularCardTriangle {
-    position:absolute;
-    left: -1px;
+    position: absolute;
+    left: -0.5px;
     width: 0;
     height: 0;
     z-index: 1;
-    border-bottom: 192px solid var(--background);
+    border-bottom: 700px solid var(--background);
     border-right: 157px solid transparent;
 
-    @media (max-width:breakpoint(xxl)) {
-        border-bottom: 147px solid var(--background);
-        border-right: 130px solid transparent;
-    }
     @media (max-width:breakpoint(md)) {
         border-bottom: 123px solid var(--background);
         border-right: 80px solid transparent;
