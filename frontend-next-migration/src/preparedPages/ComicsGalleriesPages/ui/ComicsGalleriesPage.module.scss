@@ -1,3 +1,5 @@
+@import "src/app/_styles/variables/_mixins.scss";
+
 .Wrapper {
   display: flex;
   flex-direction: column;
@@ -29,8 +31,8 @@
   flex-wrap: wrap;
 }
 
-/* Tablet screens (769px–1200px) */
-@media (max-width: 1200px) and (min-width: 769px) {
+/* ✅ Tablet screens (769px–1200px) */
+@media (max-width: breakpoint(xl)) and (min-width: breakpoint(md)) {
   .Wrapper {
     padding-top: 60px;
     padding-bottom: 100px;
@@ -47,8 +49,8 @@
   }
 }
 
-/* Mobile screens (≤768px) */
-@media (max-width: 768px) {
+/* ✅ Mobile screens (≤768px) */
+@media (max-width: breakpoint(md)) {
   .Wrapper {
     padding-top: 20px;
     padding-bottom: 80px;
