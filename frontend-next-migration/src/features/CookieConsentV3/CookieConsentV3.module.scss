@@ -19,14 +19,14 @@
     box-shadow: 8px 8px 1px #000000;
     transition: height 0.3s ease-in-out;
     height: 360px;
-    &.xs{
+    @media (max-width: breakpoint(xs)) {
         height: 690px;
     }
     &.minimized {
         height: 130px;
-    }
-    &.minimized.customXxs{
-        height: 150px;
+        @media (max-width: 457px) {
+            height: 150px;
+        }
     }
 }
 
