@@ -48,7 +48,7 @@ const GameArtPackagePage = (props: Props) => {
                     <Container className={cls.Title}>
                         <PageTitle
                             titleText={title}
-                            alternate
+                            alternate={true}
                         />
                     </Container>
                 )}

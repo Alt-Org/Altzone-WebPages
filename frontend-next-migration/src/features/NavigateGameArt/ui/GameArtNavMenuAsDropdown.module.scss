@@ -4,6 +4,7 @@
     padding-top: var(--spacing-800);
 
     @media (max-width: breakpoint(lg)) {
-        min-width: 320px;
+        min-width: 280px;
+        padding-top: 0;
     }
 }
