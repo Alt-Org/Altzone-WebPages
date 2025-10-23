@@ -1,3 +1,4 @@
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -26,7 +27,7 @@
     right: 0;
     bottom: 0;
     //background: rgba(0, 0, 0, var(--overlay-opacity, 0.5));
-    background-color: var(--overlay-color, rgba(0, 0, 0, 0.5));
+   // background-color: var(--overlay-color, rgba(0, 0, 0, 0.5));
   }
 
 }
@@ -42,9 +43,9 @@
 
   z-index: 2;
   //display: inline-block;
-  background: rgba(0, 0, 0, 80);
+  //background: rgba(0, 0, 0, 80);
   padding: 20px;
-  border-radius: var(--border-radius-custom);
+ // border-radius: var(--border-radius-custom);
   max-width: 600px;
   width: 90%;
   margin: 0 auto;
@@ -110,15 +111,15 @@
 
 .content {
   //padding: 20px;
-  background: rgba(17, 17, 17, 1);
+ // background: rgba(17, 17, 17, 1);
   color: var(--white);
 }
 
+/*
 .blurLine {
   position: absolute;
   bottom: -10%;
   width: 100%;
 }
-
-
+*/
 
