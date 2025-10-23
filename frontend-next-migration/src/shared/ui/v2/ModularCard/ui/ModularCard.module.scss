@@ -420,6 +420,7 @@
     max-width: 100%;
     height: 100%;
     object-fit: cover;
+    z-index: 0;
 
     @media (max-width: breakpoint(md)) {
         height: auto;
@@ -435,10 +436,12 @@
     height: 0;
     z-index: 1;
     border-bottom: 700px solid var(--background);
-    border-right: 157px solid transparent;
+    border-right: 200px solid transparent;
 
     @media (max-width:breakpoint(md)) {
-        border-bottom: 123px solid var(--background);
-        border-right: 80px solid transparent;
+        border: none;
+        top: -1px;
+        border-top: 160px solid var(--background);
+        border-right: 700px solid transparent;
     }
 }
