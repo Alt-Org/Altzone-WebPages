@@ -10,7 +10,6 @@
     border-width: var(--border-desktop);
     border-radius: var(--border-radius-lg);
     font: var(--font-dm-m);
-    height: fit-content;
     line-height: 1.6;
     z-index: 1000;
     display: flex;
@@ -19,6 +18,16 @@
     box-sizing: border-box;
     box-shadow: 8px 8px 1px #000000;
     transition: height 0.3s ease-in-out;
+    height: 360px;
+    &.xs{
+        height: 690px;
+    }
+    &.minimized {
+        height: 130px;
+    }
+    &.minimized.customXxs{
+        height: 150px;
+    }
 }
 
 .cookieConsentV2 button + button {

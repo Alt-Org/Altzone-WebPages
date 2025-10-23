@@ -87,7 +87,7 @@
     height: clamp(0.9rem, 2.5vw, 1.2rem);
     border-radius: 100%;
     overflow: hidden;
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
     transition: transform 0.3s ease-in-out;
     flex-shrink: 0;
     display: flex;

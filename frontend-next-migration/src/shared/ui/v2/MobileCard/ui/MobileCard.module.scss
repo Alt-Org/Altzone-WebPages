@@ -1,5 +1,5 @@
 @mixin card-dimensions {
-  --gap: 0.5em;
+  --gap: 0.5rem;
   width: calc(33.333% - 2 * var(--gap) / 3);
   height: calc(33.333vh - 2 * var(--gap) / 3);
 }
