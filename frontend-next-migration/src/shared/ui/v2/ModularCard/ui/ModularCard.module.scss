@@ -373,7 +373,7 @@
     z-index: 2;
     gap: 10px;
     padding: 20px;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .Card.SectionCard > .ModularCardTexts > .ModularCardTitle {
@@ -401,7 +401,7 @@
 }
 
 .Card.SectionCard > .ModularCardImageSection {
-    flex-basis: 50%;
+    height: auto;
     position: relative;
     overflow: visible;
     display: flex;
@@ -436,7 +436,7 @@
     height: 0;
     z-index: 1;
     border-bottom: 700px solid var(--background);
-    border-right: 200px solid transparent;
+    border-right: 300px solid transparent;
 
     @media (max-width:breakpoint(md)) {
         border: none;
