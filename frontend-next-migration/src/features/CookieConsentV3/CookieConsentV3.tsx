@@ -9,6 +9,7 @@ import Link from 'next/link';
 import MinimizeButton from '@/shared/assets/icons/MinimizeButton.svg';
 import Accept from '@/shared/assets/icons/Correct.svg';
 import Decline from '@/shared/assets/icons/X.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 const CookieConsentV4: React.FC = () => {
     const { t, i18n } = useTranslation('cookieConsent');
@@ -78,9 +79,9 @@ const CookieConsentV4: React.FC = () => {
     if (cookiesHandled) {
         return null;
     }
-
+    const mods = { [cls.minimized]: isMinimized };
     return (
-        <div className={cls.cookieConsentV2}>
+        <div className={classNames(cls.cookieConsentV2, mods, [])}>
             {isMinimized ? (
                 <div className={cls.alignVertically}>
                     <div
