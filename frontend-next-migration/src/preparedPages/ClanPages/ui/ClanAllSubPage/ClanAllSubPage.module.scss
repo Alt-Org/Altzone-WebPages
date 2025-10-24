@@ -88,20 +88,30 @@
 }
 
 /* Page grid for listing clan cards */
-.ClanCardGrid {
+.DesktopCardContainer {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 1rem;
   align-items: start;
-  padding: 24px 0;
+  padding: 1rem 0;
 }
 
 @media (min-width: 1024px) {
-  .ClanCardGrid {
+  .DesktopCardContainer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 32px;
-    row-gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
   }
 }
+
+.MobileCardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .5rem;                                       
+  margin-top: .75rem;
+}
+
+@media (max-width: 360px) {
+  .MobileCardContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
