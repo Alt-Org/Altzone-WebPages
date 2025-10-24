@@ -87,25 +87,22 @@ function MainPage(props: Props) {
                 </div>
             ) : (
                 <div className={cls.descriptionCard}>
-                    <a
-                        className={cls.cardLink}
-                        href={`/defense-gallery`}
-                        rel="noopener noreferrer"
+                    <DescriptionCard
+                        theme={DescriptionCardTheme.DEFENSEGALLERY}
+                        path={'/defense-gallery'}
                     >
-                        <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
-                            <DescriptionCard.Texts width="25%">
-                                <DescriptionCard.Texts.Title>
-                                    {t('descriptionCard-title')}
-                                </DescriptionCard.Texts.Title>
-                            </DescriptionCard.Texts>
-                            <DescriptionCard.Image width="65%">
-                                <DescriptionCard.Image.Image
-                                    src={defenceGallery}
-                                    alt="defence gallery"
-                                />
-                            </DescriptionCard.Image>
-                        </DescriptionCard>
-                    </a>
+                        <DescriptionCard.Texts width="35%">
+                            <DescriptionCard.Texts.Title>
+                                {t('descriptionCard-title')}
+                            </DescriptionCard.Texts.Title>
+                        </DescriptionCard.Texts>
+                        <DescriptionCard.Image width="65%">
+                            <DescriptionCard.Image.Image
+                                src={defenceGallery}
+                                alt="defence gallery"
+                            />
+                        </DescriptionCard.Image>
+                    </DescriptionCard>
                 </div>
             )}
             <Gallery {...gallery} />
