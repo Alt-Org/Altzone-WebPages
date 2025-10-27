@@ -435,12 +435,15 @@
     width: 0;
     height: 0;
     z-index: 1;
-    border-bottom: 700px solid var(--background);
+    border-bottom: 900px solid var(--background);
     border-right: 300px solid transparent;
+
+    @media (max-width:460px) {
+        margin-top: -45px;
+    }
 
     @media (max-width:breakpoint(md)) {
         border: none;
-        top: -1px;
         border-top: 160px solid var(--background);
         border-right: 700px solid transparent;
     }
