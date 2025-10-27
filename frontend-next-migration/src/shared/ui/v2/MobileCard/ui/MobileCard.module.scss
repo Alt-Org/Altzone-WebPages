@@ -172,3 +172,99 @@
   }
 
 }
+
+.MobileCard.ClanCard {
+    @include card-dimensions;
+    overflow: hidden;
+    border-radius: var(--corner-radius-web);
+    background-color: var(--base-card-background);
+    display: flex;
+    flex-direction: column;
+    border: var(--border-mobile) solid var(--black);
+    box-shadow: var(--black) 4px 6px 0;
+    padding: 0.5rem;
+}
+
+.MobileCard.ClanCard > .TextContainer:first-of-type {
+    height: 25%;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .Title1 {
+        color: var(--white);
+        font-family: var(--font-family-title);
+        font-size: 1.25rem;
+        line-height: 1.1;
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.MobileCard.ClanCard > .ImageContainer {
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem 0;
+
+    .Image {
+        width: auto;
+        height: 70%;
+        object-fit: contain !important;
+    }
+}
+
+.MobileCard.ClanCard > .TextContainer:last-of-type {
+    height: 30%;
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.MobileCard.ClanCard .Meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem;
+    
+    .MetaItem.Score {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        color: var(--white);
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.MobileCard.ClanCard .MetaItem.Members {
+    text-align: center;
+    
+    .Value {
+        color: var(--white);
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
+        font-size: 1.1rem;
+    }
+    
+    .MobileCard.ClanCard .MetaItem.Score {
+        font-size: 0.9rem;
+        
+        img {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}

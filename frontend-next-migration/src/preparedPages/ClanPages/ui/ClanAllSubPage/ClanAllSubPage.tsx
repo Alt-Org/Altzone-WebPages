@@ -9,10 +9,6 @@ import Image from 'next/image';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import {
-    SkeletonLoaderForClansDesktop,
-    SkeletonLoaderForClansMobile,
-} from '@/shared/ui/SkeletonLoader';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
 import iconSpammer from '@/shared/assets/images/clanLabels/ClanLabelSpammer.png';
@@ -197,17 +193,31 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                     <MobileCardLink
                         key={clan._id}
                         path={getRouteOneClanPage(clan._id)}
-                        ariaLabel={`Avaa klaani ${clan.name}`}
+                        ariaLabel={`Open clan ${clan.name}`}
                         withScalableLink
                         className={cls.MobileCardItem}
                     >
                         <MobileCard theme={MobileCardTheme.CLAN}>
-                            <MobileCard.Texts title2={clan.name}>
+                            <MobileCard.Texts
+                                title1={clan.name}
+                                title2={''}
+                            />
+
+                            <MobileCard.Image
+                                alt={`${clan.name} logo`}
+                                src={clanLogo}
+                                backgroundColor="transparent"
+                            />
+
+                            <MobileCard.Texts
+                                title1={''}
+                                title2={''}
+                            >
                                 <div className="Meta">
                                     <div className="MetaItem Score">
                                         <Image
                                             src={starGray}
-                                            alt="score"
+                                            alt="coins"
                                             width={16}
                                             height={16}
                                         />
@@ -217,20 +227,13 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                                                 : idx + 1}
                                         </span>
                                     </div>
-
-                                    <div className="MetaItem Members">
-                                        <span className="Value">
-                                            {t('members')} {clan.playerCount} / 30
-                                        </span>
-                                    </div>
+                                </div>
+                                <div className="MetaItem Members">
+                                    <span className="Value">
+                                        {t('members')} {clan.playerCount} / 30
+                                    </span>
                                 </div>
                             </MobileCard.Texts>
-
-                            <MobileCard.Image
-                                alt={`${clan.name} logo`}
-                                src={clanLogo}
-                                backgroundColor="transparent"
-                            />
                         </MobileCard>
                     </MobileCardLink>
                 ))}
@@ -311,7 +314,6 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
                                     </span>
                                 </div>
 
-                                {/* Label-tagit */}
                                 <div className="Labels">
                                     {labels.map((l) => (
                                         <span

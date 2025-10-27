@@ -346,6 +346,8 @@
 }
 
 .Card.ClanCard {
+    --card-height: 240px; 
+    height: var(--card-height);
     position: relative;
     display: flex;
     height: 192px;
@@ -360,34 +362,50 @@
         border-color: var(--primary-border);
     }
     @media (max-width: breakpoint(xl)) {
-        height: 184px;
+        --card-height: 200px;
     }
-    @media (max-width:breakpoint(md)) {
-        height: 152px;
-        box-shadow: 2px 4px 0 var(--black);
+    @media (max-width: breakpoint(lg)) {
+        --card-height: 180px;
     }
-    @media (max-width: 640px) {
-        height: 144px;
+    @media (max-width: breakpoint(md)) {
+        --card-height: 160px;
+        border-width: var(--border-mobile);
     }
-    @media (max-width:breakpoint(sm)) {
-        height: 120px;
-        box-shadow: 1px 2px 0 var(--black);
-    }
-
 }
 
 .Card.ClanCard > .ModularCardTexts {
+    flex-basis: 45%;
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-}
+    padding-left: var(--spacing-300, 1rem);
+    justify-content: center;                 
 
-.Card.ClanCard > .ModularCardTitle h2 {
-    font: var(--font-dm-bold-l);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
+    h2 {
+        line-height: var(--font-line-l) !important;
+        font: var(--font-sw-l);
+        color: var(--white);
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    @media (max-width: breakpoint(md)) {
+        padding-left: var(--spacing-200, 0.75rem);
+        h2 {
+            font: var(--font-sw-m);
+            line-height: var(--font-line-m) !important;
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding-left: 0.5rem;
+        h2 {
+            font: var(--font-sw-s);
+            line-height: var(--font-line-xs) !important;
+        }
+    }
 }
 
 .Card.ClanCard > .ModularCardBody p {
@@ -395,15 +413,32 @@
 }
 
 .Card.ClanCard > .ModularCardImageSection {
+    flex-basis: 55%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding-right: 1.5rem;
+
+    .ModularCardImage {
+        height: 75%;
+        width: auto;
+        object-fit: contain;
+    }
 }
 
 .Card.ClanCard > .ModularCardImageSection > .ModularCardImage {
-    width: 180px;
-    height: 180px;
+    width: auto;
+    height: var(--clan-logo-size);
+    max-width: 85%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+.Card.ClanCard > .ModularCardImageSection > .ModularCardImage {
+    width: auto;
+    height: 75%;
     object-fit: contain;
     pointer-events: none;
     user-select: none;
@@ -429,7 +464,7 @@
 .Card.ClanCard :global(.Labels) {
     display: grid;
     grid-template-columns: repeat(2, max-content);
-    gap: 12px 16px;
+    gap: 6px 6px;
     margin-top: 8px;
     align-content: start;
     justify-content: start;

@@ -21,6 +21,7 @@ export enum MobileCardTheme {
     PRIMARY = '',
     DEFENSEGALLERY = 'DefenseGalleryCard',
     FURNITURECOLLECTION = 'FurnitureCollectionsCard',
+    CLAN = 'ClanCard',
 }
 
 /**
