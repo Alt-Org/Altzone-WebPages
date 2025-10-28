@@ -72,7 +72,6 @@ const GameArtPackagePage = (props: Props) => {
 
                             {section.image && (
                                 <ModularCard.Image className={cls.SectionCardImage}>
-                                    <ModularCard.Image.Triangle />
                                     <ModularCard.Image.Image
                                         src={section.image}
                                         alt={section.imageAlt}

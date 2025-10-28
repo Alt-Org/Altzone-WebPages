@@ -380,6 +380,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    padding-bottom: 10px;
     h2 {
         font: var(--font-sw-xxl);
         color: var(--primary-color);
@@ -407,12 +408,13 @@
     display: flex;
     justify-content: flex-end;
     align-items: stretch;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%);
+    margin-left: -20px;
 
     @media (max-width: breakpoint(md)) {
         height: auto;
-        width: 100%;
-        clip-path: polygon(0 45%, 100% 25%, 100% 100%, 0 100%);
-        margin-top: -100px;
+        clip-path: polygon(0 50%, 100% 31%, 100% 100%, 0 100%);
+        margin-top: -110px;
     }
 
 }
@@ -428,20 +430,5 @@
         height: auto;
         width: 100%;
         margin-top: 80px;
-    }
-}
-
-.Card.SectionCard > .ModularCardImageSection > .ModularCardTriangle {
-    position: absolute;
-    left: -0.5px;
-    width: 0;
-    height: 0;
-    z-index: 1;
-    border-bottom: 700px solid var(--background);
-    border-right: 300px solid transparent;
-
-    @media (max-width:breakpoint(md)) {
-        z-index: 0;
-        top: -1px;
     }
 }
