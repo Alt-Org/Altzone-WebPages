@@ -1,6 +1,5 @@
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './TeamHeaderWithMosaic.module.scss';
-import Image from 'next/image';
 import React, { ReactNode } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useGetMembersQuery } from '@/entities/Member/api/membersApi';
@@ -8,8 +7,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import Link from 'next/dist/client/link';
 import { MosaicGrid } from '../../v2/MosaicGrid';
 import { getRoutePrgPage } from '@/shared/appLinks/RoutePaths';
-import ExternalLink from '@/shared/assets/icons/ExternalLink.svg';
-import SearchIcon from '@/shared/assets/icons/Search.svg';
 import { PageTitle } from '../../PageTitle';
 import { Container } from '../../Container';
 import { SkeletonLoaderWithHeader } from '../../SkeletonLoader';
@@ -19,10 +16,10 @@ type Props = {
     className?: string;
 };
 
-interface SearchBarProps {
-    className: string;
-    placeholder: string;
-}
+//interface SearchBarProps {
+//    className: string;
+//    placeholder: string;
+//}
 
 // const SearchBar = (props: SearchBarProps) => {
 //     const { className, placeholder } = props;
@@ -119,11 +116,6 @@ export function TeamHeaderWithMosaic(props: Props) {
                             className={cls.Link}
                         >
                             <span className={cls.LinkText}>{t('link-to-prg')}</span>
-                            <Image
-                                className={cls.LinkIcon}
-                                src={ExternalLink}
-                                alt="External Link Icon"
-                            />
                         </Link>
                     </div>
                 </Container>

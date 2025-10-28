@@ -129,7 +129,7 @@ const CollectionsNavMenuAsDropdown: React.FC<CollectionsNavMenuAsDropdownProps> 
             elements: [
                 {
                     id: '11',
-                    elementText: t('all'),
+                    elementText: t('All'),
                     link: { path: '/collections/music', isExternal: false },
                     active: pathWithoutLang === '/collections/music',
                 },

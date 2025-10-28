@@ -239,7 +239,6 @@
     justify-content: center;
     //margin-top: calc(var(--spacing-600) + 8px);
     font: var(--font-sw-m);
-
     h2 {
         line-height: var(--font-line-l) !important;
         font: var(--font-sw-m);
@@ -282,27 +281,28 @@
 }
 
 .Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
-    line-height: var(--font-line-xl) !important;
+    line-height: calc(var(--font-line-xl) + 6px) !important;
     color:var(--primary-color);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     line-clamp: 1;
     overflow: hidden;
+    padding-bottom: 5px; // prevent descender clipping (e.g., 'y')
     font: var(--font-sw-xl);
     @media (max-width: breakpoint(xl)) {
-        line-height: var(--font-line-l) !important;
+        line-height: calc(var(--font-line-l) + 5px) !important;
         font: var(--font-sw-l);
     }
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-l);
     }
     @media (max-width: 640px) {
-        line-height: var(--font-line-m) !important;
+        line-height: calc(var(--font-line-m) + 5px) !important;
         font: var(--font-sw-m);
     }
     @media (max-width: breakpoint(sm)) {
-        line-height: var(--font-line-s) !important;
+        line-height: calc(var(--font-line-s) + 4px) !important;
         font: var(--font-sw-s);
     }
 }

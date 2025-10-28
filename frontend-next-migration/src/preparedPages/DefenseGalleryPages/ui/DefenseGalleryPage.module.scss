@@ -23,10 +23,11 @@
 }
 .MobileCardContainer {
   display: flex;
-  gap: .5em;
+  gap: .5rem;
   flex-wrap: wrap;
   justify-content: left;
-  margin-top: .5em;
+  margin-top: .5rem;
+  width: 100%;
 }
 .SearchBar {
   display: flex;

@@ -86,14 +86,20 @@
     }
 
     a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         padding: 9px 20px 12px;
         border-radius: 40px;
         border: 1px solid black;
-        height: 50%;
         background-color: var(--primary-color);
         box-shadow: 3px 4px 0px #121212;
-        h3 {
+        @media (max-width: breakpoint(md)) {
+            padding: 4px 20px 5px;
+        }
+            h3 {
             color: black !important;
+            margin: 0; // ensure vertical centering unaffected by margins
         }
     }
 }

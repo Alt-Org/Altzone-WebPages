@@ -83,10 +83,11 @@
   }
 
   .memberLogo {
-    width: clamp(1rem, 2.5vw, 1.4rem);
-    height: clamp(1rem, 2.5vw, 1.4rem);
+    width: clamp(0.9rem, 2.5vw, 1.2rem);
+    height: clamp(0.9rem, 2.5vw, 1.2rem);
     border-radius: 100%;
     overflow: hidden;
+    border: 1px solid var(--primary-color);
     transition: transform 0.3s ease-in-out;
     flex-shrink: 0;
     display: flex;
@@ -104,6 +105,7 @@
     transform: scale(3);
     transition: transform, border-radius, width 0.5s ease-in-out;
     border-radius: 0%;
+    border: none;
     width: fit-content;
   }
 

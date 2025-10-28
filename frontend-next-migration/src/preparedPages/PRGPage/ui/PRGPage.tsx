@@ -184,15 +184,11 @@ const PRGPage = () => {
                     to={'/team'}
                     className={cls.MeetBoard}
                     aria-label={t('link-to-team-page')}
-                    isExternal={true}
+                    isExternal={false}
                 >
                     <span className={classNames(cls.label, undefined, [cls.bold, cls.Underline])}>
                         {t('alt-zone-team')}&nbsp;
                     </span>
-                    <FontAwesomeIcon
-                        className={cls.externalLinkIcon}
-                        icon={faExternalLink}
-                    />
                 </AppLink>
             </div>
         </div>

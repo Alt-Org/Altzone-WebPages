@@ -43,4 +43,5 @@ export type DropdownWrapperProps = {
     staticTitle?: string;
     dynamicTitle?: string;
     showArrow?: boolean;
+    autoClose?: boolean;
 };
