@@ -213,14 +213,16 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                                 title1={''}
                                 title2={''}
                             >
-                                <div className="Meta">
+                                <div className="ScoreRow">
                                     <div className="MetaItem Score">
                                         <Image
                                             src={starGray}
-                                            alt="coins"
+                                            alt="score"
                                             width={16}
                                             height={16}
                                         />
+                                    </div>
+                                    <div className="MetaItem Coins">
                                         <span className="Value">
                                             {typeof clan.gameCoins === 'number'
                                                 ? clan.gameCoins
@@ -228,6 +230,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                                         </span>
                                     </div>
                                 </div>
+
                                 <div className="MetaItem Members">
                                     <span className="Value">
                                         {t('members')} {clan.playerCount} / 30

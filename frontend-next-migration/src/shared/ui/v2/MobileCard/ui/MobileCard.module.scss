@@ -174,35 +174,40 @@
 }
 
 .MobileCard.ClanCard {
-    @include card-dimensions;
-    overflow: hidden;
-    border-radius: var(--corner-radius-web);
-    background-color: var(--base-card-background);
-    display: flex;
-    flex-direction: column;
-    border: var(--border-mobile) solid var(--black);
-    box-shadow: var(--black) 4px 6px 0;
-    padding: 0.5rem;
-}
+  @include card-dimensions;
+  overflow: hidden;
+  border-radius: var(--corner-radius-web);
+  background-color: var(--base-card-background);
+  display: flex;
+  flex-direction: column;
+  border: var(--border-mobile) solid var(--black);
+  box-shadow: var(--black) 4px 6px 0;
+  padding: 0.5rem;
 
-.MobileCard.ClanCard > .TextContainer:first-of-type {
-    height: 25%;
+  > .TextContainer:first-of-type {
+    height: 30%;
     padding: 0.25rem;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
     align-items: center;
-    justify-content: center;
 
     .Title1 {
-        color: var(--white);
-        font-family: var(--font-family-title);
-        font-size: 1.25rem;
-        line-height: 1.1;
-        margin: 0;
-        text-align: center;
+      color: var(--white);
+      font-family: var(--font-family-title);
+      font-size: 1.25rem;
+      line-height: 1.1;
+      margin: 0;
+      text-align: center;
     }
-}
 
-.MobileCard.ClanCard > .ImageContainer {
+    .Text {
+      margin: 0;
+    }
+  }
+
+  > .ImageContainer {
     height: 45%;
     display: flex;
     justify-content: center;
@@ -210,61 +215,64 @@
     padding: 0.25rem 0;
 
     .Image {
-        width: auto;
-        height: 70%;
-        object-fit: contain !important;
+      width: auto;
+      height: 70%;
+      object-fit: contain !important;
     }
-}
+  }
 
-.MobileCard.ClanCard > .TextContainer:last-of-type {
+  > .TextContainer:last-of-type {
     height: 30%;
     padding: 0.25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.5rem;
-}
+    gap: 0.4rem;
+    align-items: stretch;
 
-.MobileCard.ClanCard .Meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0.5rem;
-    
-    .MetaItem.Score {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1rem;
-        color: var(--white);
-
-        img {
-            width: 20px;
-            height: 20px;
-        }
+    :global(.ScoreRow) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      width: 100%;
     }
-}
 
-.MobileCard.ClanCard .MetaItem.Members {
-    text-align: center;
-    
-    .Value {
-        color: var(--white);
-        font-size: 0.9rem;
+    :global(.MetaItem) {
+      display: inline-flex;
+      align-items: center;
     }
+
+    :global(.MetaItem.Score) img {
+      width: 20px;
+      height: 20px;
+    }
+
+    :global(.MetaItem.Coins) .Value {
+      color: var(--white);
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    :global(.MetaItem.Members) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    :global(.MetaItem.Members) .Value {
+      color: var(--white);
+      font-size: 0.9rem;
+      line-height: 1.1;
+    }
+  }
 }
 
 @media (max-width: 360px) {
-    .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
-        font-size: 1.1rem;
-    }
-    
-    .MobileCard.ClanCard .MetaItem.Score {
-        font-size: 0.9rem;
-        
-        img {
-            width: 18px;
-            height: 18px;
-        }
-    }
+  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
+    font-size: 1.1rem;
+  }
+  .MobileCard.ClanCard > .TextContainer:last-of-type :global(.MetaItem.Score) img {
+    width: 18px;
+    height: 18px;
+  }
 }
