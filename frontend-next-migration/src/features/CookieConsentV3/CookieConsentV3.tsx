@@ -11,7 +11,7 @@ import Accept from '@/shared/assets/icons/Correct.svg';
 import Decline from '@/shared/assets/icons/X.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-const CookieConsentV4: React.FC = () => {
+const CookieConsentV3: React.FC = () => {
     const { t, i18n } = useTranslation('cookieConsent');
     const [isMinimized, setIsMinimized] = useState(false);
     const [cookiesHandled, setCookiesHandled] = useState(false);
@@ -164,4 +164,4 @@ const CookieConsentV4: React.FC = () => {
     );
 };
 
-export default CookieConsentV4;
+export default CookieConsentV3;

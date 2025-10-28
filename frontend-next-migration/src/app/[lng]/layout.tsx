@@ -9,7 +9,7 @@ import { Providers } from '../_providers';
 import '../_styles/index.scss';
 import localFont from 'next/font/local';
 //import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
-import CookieConsentV3 from '@/features/CookieConsentV3/CookieConsentV3';
+import { CookieConsentV3 } from '@/features/CookieConsentV3';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
