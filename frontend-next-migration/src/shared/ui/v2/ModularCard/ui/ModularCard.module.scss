@@ -411,7 +411,7 @@
     @media (max-width: breakpoint(md)) {
         height: auto;
         width: 100%;
-        clip-path: polygon(0 40%, 100% 20%, 100% 100%, 0 100%);
+        clip-path: polygon(0 45%, 100% 25%, 100% 100%, 0 100%);
         margin-top: -100px;
     }
 
@@ -441,9 +441,7 @@
     border-right: 300px solid transparent;
 
     @media (max-width:breakpoint(md)) {
-        border: none;
+        z-index: 0;
         top: -1px;
-        border-top: 160px solid var(--background);
-        border-right: 700px solid transparent;
     }
 }
