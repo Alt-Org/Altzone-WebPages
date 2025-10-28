@@ -9,7 +9,7 @@ import img2021 from '@/shared/assets/images/aboutPage/about2021.png';
 import img2022 from '@/shared/assets/images/aboutPage/about2022.png';
 import img2023 from '@/shared/assets/images/aboutPage/about2023.png';
 import img2024 from '@/shared/assets/images/aboutPage/about2024.png';
-import { useGetMembersQuery, useGetDemographicsQuery, getBehindYears } from '@/entities/About';
+import { useGetMembersCountQuery, useGetDemographicsQuery, getBehindYears } from '@/entities/About';
 
 export interface Props {
     title: string;
@@ -46,7 +46,7 @@ const About = (props: Props) => {
         V2024,
     } = props;
 
-    const { data: projectCount = 0, isLoading: membersLoading } = useGetMembersQuery();
+    const { data: projectCount = 0, isLoading: membersLoading } = useGetMembersCountQuery();
     const {
         data: demographics = { localities: 0, nationalities: 0 },
         isLoading: demographicsLoading,
@@ -76,14 +76,7 @@ const About = (props: Props) => {
                 <p className={`${cls.h1}`}>{keywords}</p>
                 <div className={cls.headergrid}>
                     <div>
-                        {/* Fix bug with directus returning invalid type */}
-                        <p className={cls.sValues}>
-                            {isLoading
-                                ? '...'
-                                : typeof projectCount === 'number'
-                                  ? projectCount
-                                  : 'NaN'}
-                        </p>
+                        <p className={cls.sValues}>{isLoading ? '...' : projectCount}</p>
                         <p className={cls.gridp}>{project}</p>
                     </div>
                     <div>

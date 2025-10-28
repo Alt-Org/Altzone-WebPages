@@ -22,7 +22,7 @@ const client = createDirectus(directusBaseUrl).with(rest());
 
 export const aboutApi = directusApi.injectEndpoints({
     endpoints: (builder) => ({
-        getMembers: builder.query<number, void>({
+        getMembersCount: builder.query<number, void>({
             queryFn: async () => {
                 try {
                     const members = await client.request<Member[]>(
@@ -96,4 +96,4 @@ export const aboutApi = directusApi.injectEndpoints({
     overrideExisting: false,
 });
 
-export const { useGetMembersQuery, useGetDemographicsQuery } = aboutApi;
+export const { useGetMembersCountQuery, useGetDemographicsQuery } = aboutApi;
