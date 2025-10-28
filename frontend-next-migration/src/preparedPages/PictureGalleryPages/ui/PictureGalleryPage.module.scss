@@ -11,13 +11,6 @@
   //}
 
 }
-.mainTitle{
-  font-size: 4rem;
-  font-family: var(--font-family-title), serif;
-  color: var(--primary-color);
-  line-height: 1.5;
-  margin-top: -10vh;
-}
 .LeftSidebar{
   margin-top: 6rem;
 }
@@ -57,11 +50,9 @@
 }
 
 .Title {
-  font-size: 2rem;
-  font-family: var(--font-family-title), serif;
+  font: var(--font-sw-xl);
+  margin-bottom: .2em;
   color: var(--primary-color);
-  line-height: 1.5;
-
 }
 
 .InfoText {
@@ -81,7 +72,7 @@
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: breakpoint(md)) {
   .Container {
     //margin-top: 10vh;
 
