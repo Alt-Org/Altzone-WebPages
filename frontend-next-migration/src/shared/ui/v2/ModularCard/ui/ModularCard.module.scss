@@ -411,8 +411,10 @@
     @media (max-width: breakpoint(md)) {
         height: auto;
         width: 100%;
-        margin-top: 20px;
+        clip-path: polygon(0 40%, 100% 20%, 100% 100%, 0 100%);
+        margin-top: -100px;
     }
+
 }
 
 .Card.SectionCard > .ModularCardImageSection > .ModularCardImage {
@@ -425,7 +427,7 @@
     @media (max-width: breakpoint(md)) {
         height: auto;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 80px;
     }
 }
 
@@ -435,15 +437,12 @@
     width: 0;
     height: 0;
     z-index: 1;
-    border-bottom: 900px solid var(--background);
+    border-bottom: 700px solid var(--background);
     border-right: 300px solid transparent;
-
-    @media (max-width:460px) {
-        margin-top: -45px;
-    }
 
     @media (max-width:breakpoint(md)) {
         border: none;
+        top: -1px;
         border-top: 160px solid var(--background);
         border-right: 700px solid transparent;
     }
