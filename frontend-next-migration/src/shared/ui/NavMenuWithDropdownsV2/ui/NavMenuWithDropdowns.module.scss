@@ -22,8 +22,9 @@
     margin: auto;
   }
 
-  @media (max-width: breakpoint(sm)) {
+  @media (max-width: breakpoint(md)) {
     width: 100%;
+    max-width: none; // allow full container width on mobile
     filter: drop-shadow(2px 4px var(--black));
 
     .topDropDown {

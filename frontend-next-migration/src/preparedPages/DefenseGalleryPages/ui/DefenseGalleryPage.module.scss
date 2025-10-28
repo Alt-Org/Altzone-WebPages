@@ -42,6 +42,10 @@
   margin-top: 1em;
   margin-bottom: 1em;
   font: var(--font-dm-m);
+  @media (max-width: breakpoint(md)) {
+    width: 100% !important;
+    margin-inline: 0;
+  }
 }
 .Container {
   margin-right: 3em;
