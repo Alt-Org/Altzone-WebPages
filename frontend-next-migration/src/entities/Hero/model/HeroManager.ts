@@ -57,8 +57,8 @@ export class HeroManager {
     }
 
     /**
-     * UUSI: CMS-first haku Directuksesta /heroes/[slug] -sivulle.
-     * Jos CMS:stä ei löydy (tai virhe), fallbackaa hardcodettuun dataan.
+     * NEW: CMS-first fetch from Directus for the /heroes/[slug] page.
+     * If not found in CMS (or an error occurs), falls back to hardcoded data.
      */
     public async getHeroBySlugAsync(
         slug: HeroSlug,
