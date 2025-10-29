@@ -2,6 +2,7 @@ import { GroupInfo, HeroWithGroup, HeroGroup, HeroSlug } from '../types/hero';
 // import { HeroLevel, HeroStats } from '../types/HeroStats';
 import { initializeHeroGroups } from './initializeHeroGroups';
 // import { HeroStatsManager } from './stats';
+import { fetchHeroBySlug } from './heroApi';
 
 export class HeroManager {
     private readonly t: (key: string) => string;
@@ -53,6 +54,23 @@ export class HeroManager {
 
     public getHeroBySlug(slug: HeroSlug): HeroWithGroup | undefined {
         return this.getAllHeroes().find((hero) => hero.slug === slug);
+    }
+
+    /**
+     * UUSI: CMS-first haku Directuksesta /heroes/[slug] -sivulle.
+     * Jos CMS:stä ei löydy (tai virhe), fallbackaa hardcodettuun dataan.
+     */
+    public async getHeroBySlugAsync(
+        slug: HeroSlug,
+        locale: 'en' | 'fi' | 'ru' = 'en',
+    ): Promise<HeroWithGroup | undefined> {
+        try {
+            const hero = await fetchHeroBySlug(slug, locale);
+            if (hero) return hero;
+        } catch {
+            // ignore error and fallback
+        }
+        return this.getHeroBySlug(slug);
     }
 
     public getHeroesBySpecificGroup(group: HeroGroup): HeroWithGroup[] | undefined {
