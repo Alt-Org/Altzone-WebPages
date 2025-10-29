@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
-import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import useSizes from '@/shared/lib/hooks/useSizes';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
@@ -27,7 +27,7 @@ const labels = [
 const ClanAllSubPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentSearch, setSearch] = useState('');
-    const { isMobileSize } = useIsMobileSize();
+    const { isMobileSize, isTabletSize } = useSizes();
 
     const router = useRouter();
     const { t } = useClientTranslation('clan');
@@ -276,73 +276,77 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: 
             />
             <div className={cls.DesktopCardContainer}>
                 {clanServerResponse.data.Clan.map((clan, idx) => (
-                    <ModularCard
+                    <div
                         key={clan._id}
-                        theme={ModularCardTheme.CLAN}
-                        onClick={() => onClickToClan?.(clan._id)}
-                        role="button"
-                        tabIndex={0}
-                        height="170px"
-                        withScalableLink
+                        style={{ width: 'calc(50% - .5em)' }}
                     >
-                        <ModularCard.Texts>
-                            <ModularCard.Texts.Title>{clan.name}</ModularCard.Texts.Title>
+                        <ModularCard
+                            theme={ModularCardTheme.CLAN}
+                            onClick={() => onClickToClan?.(clan._id)}
+                            role="button"
+                            tabIndex={0}
+                            height="170px"
+                            withScalableLink
+                        >
+                            <ModularCard.Texts>
+                                <ModularCard.Texts.Title>{clan.name}</ModularCard.Texts.Title>
 
-                            <ModularCard.Texts.Body>
-                                <div className="Meta">
-                                    <span className="MetaItem">
-                                        <Image
-                                            src={iconLeaderboard}
-                                            alt="leaderboard"
-                                            width={18}
-                                            height={18}
-                                        />
-                                    </span>
-
-                                    <span className="MetaItem">
-                                        <Image
-                                            src={iconFlagFi}
-                                            alt="flag"
-                                            width={18}
-                                            height={18}
-                                        />
-                                        <span className="Value">
-                                            {t('members')} {clan.playerCount} / 30
-                                        </span>
-                                        <span className="Value">
-                                            {typeof clan.gameCoins === 'number'
-                                                ? clan.gameCoins
-                                                : idx + 1}
-                                        </span>
-                                    </span>
-                                </div>
-
-                                <div className="Labels">
-                                    {labels.map((l) => (
-                                        <span
-                                            className="Label"
-                                            key={l.text}
-                                        >
+                                <ModularCard.Texts.Body>
+                                    <div className="Meta">
+                                        <span className="MetaItem">
                                             <Image
-                                                src={l.icon}
-                                                alt={l.text}
-                                                width={16}
-                                                height={16}
+                                                src={iconLeaderboard}
+                                                alt="leaderboard"
+                                                width={18}
+                                                height={18}
                                             />
-                                            {l.text}
                                         </span>
-                                    ))}
-                                </div>
-                            </ModularCard.Texts.Body>
-                        </ModularCard.Texts>
 
-                        <ModularCard.Image>
-                            <ModularCard.Image.Image
-                                src={clanLogo}
-                                alt={`${clan.name} logo`}
-                            />
-                        </ModularCard.Image>
-                    </ModularCard>
+                                        <span className="MetaItem">
+                                            <Image
+                                                src={iconFlagFi}
+                                                alt="flag"
+                                                width={18}
+                                                height={18}
+                                            />
+                                            <span className="Value">
+                                                {t('members')} {clan.playerCount} / 30
+                                            </span>
+                                            <span className="Value">
+                                                {typeof clan.gameCoins === 'number'
+                                                    ? clan.gameCoins
+                                                    : idx + 1}
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div className="Labels">
+                                        {labels.map((l) => (
+                                            <span
+                                                className="Label"
+                                                key={l.text}
+                                            >
+                                                <Image
+                                                    src={l.icon}
+                                                    alt={l.text}
+                                                    width={16}
+                                                    height={16}
+                                                />
+                                                {l.text}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </ModularCard.Texts.Body>
+                            </ModularCard.Texts>
+
+                            <ModularCard.Image>
+                                <ModularCard.Image.Image
+                                    src={clanLogo}
+                                    alt={`${clan.name} logo`}
+                                />
+                            </ModularCard.Image>
+                        </ModularCard>
+                    </div>
                 ))}
             </div>
         </div>
