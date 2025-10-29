@@ -1,4 +1,4 @@
-import { type GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
+import { type GroupInfo, HeroGroup } from '../types/hero';
 import { buildHeroGroups } from '@/entities/Hero/model/heroGroupsData';
 
 export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGroup, GroupInfo> => {
