@@ -60,7 +60,6 @@ const ClanAllSubPage = () => {
     if (error) {
         return (
             <>
-                <h1 className={cls.titleText}>{t('clans_title')}</h1>
                 <ClansSearch onClickToSearch={onClickToSearch} />
                 <h2 className={cls.noResults}>{t('no_result')}</h2>
             </>
@@ -70,7 +69,6 @@ const ClanAllSubPage = () => {
     if (clans) {
         return (
             <>
-                <h1 className={cls.titleText}>{t('clans_title')}</h1>
                 <ClansSearch onClickToSearch={onClickToSearch} />
                 {isMobileSize ? (
                     <ClansViewMobile
@@ -180,7 +178,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
     const disableNext = pageCount === undefined;
 
     return (
-        <>
+        <div>
             <Pagination
                 currentPage={currentPage}
                 disablePrev={disablePrev}
@@ -241,7 +239,7 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
                     </MobileCardLink>
                 ))}
             </div>
-        </>
+        </div>
     );
 };
 

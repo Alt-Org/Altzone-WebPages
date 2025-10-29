@@ -1,10 +1,12 @@
 /* Base styles */
 .layoutContainer {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     max-width: 1400px;
     margin: 0 auto;
     font: var(--font-dm-m);
+    align-items: flex-start;
 }
 
 .headerSidebarContainer {
@@ -12,6 +14,7 @@
     flex-direction: column;
     width: 25%;
     margin: 0.5rem;
+    align-self: stretch;
 }
 
 .header {
@@ -22,9 +25,17 @@
 
 /* Sidebar styles */
 .sidebar {
-    flex: 1;
-    padding: 1rem;
-    display: none;
+  flex: 0 0 auto;
+  padding: 1rem;
+  display: none;
+
+  @media (min-width: breakpoint(lg)) {
+    display: block;
+    position: sticky;
+    top: 50vh;                   
+    transform: translateY(-50%); 
+    height: max-content;         
+  }
 }
 
 .content {
@@ -32,7 +43,7 @@
     padding: 1rem;
     margin: 0.5rem;
     max-width: 75%;
-    overflow-y: auto;
+    overflow: visible;
     overflow-x: hidden;
 }
 
