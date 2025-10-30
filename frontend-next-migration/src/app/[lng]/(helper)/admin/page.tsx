@@ -115,6 +115,7 @@ const Page = () => {
                 primary={jokester}
                 secondary={hannu}
             />
+            <BarIndicatorBlock />
         </LayoutWithSidebars>
     );
 };
