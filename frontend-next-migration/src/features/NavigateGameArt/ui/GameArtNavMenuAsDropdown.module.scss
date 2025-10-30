@@ -3,7 +3,7 @@
     min-width: 300px;
     padding-top: var(--spacing-800);
 
-    @media (max-width: 1023px) {
+    @media (max-width: breakpoint(lg)) {
         min-width: 290px;
         padding-top: 0;
     }
