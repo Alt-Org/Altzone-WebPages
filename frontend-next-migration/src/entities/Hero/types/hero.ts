@@ -43,6 +43,7 @@ export interface Hero {
     alt: string;
     altGif: string;
     title: string;
+    rarityClass: string;
     description: string;
     slug: HeroSlug;
     stats: Stat[];

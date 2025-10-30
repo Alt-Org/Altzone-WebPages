@@ -1,0 +1,67 @@
+.Container {
+  display: block;
+}
+.TitleBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.BackButton {
+  margin-block: 1em;
+}
+.TwoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch; /* stretch items; text card opts out to keep content-height */
+  gap: 2rem; /* distance between elements */
+  margin-top: 2rem;
+}
+.Col {
+  display: contents; /* grid child wrappers not needed */
+}
+.Card {
+  background-color: var(--background);
+  border-radius: var(--border-radius-lg);
+  border: 4px solid var(--black);
+  filter: drop-shadow(8px 12px var(--black));
+  color: var(--primary-color);
+  padding: 2rem; /* unified padding so both cards have identical outer height */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* Text card follows its content height only */
+.TextCard {
+  /* no overrides: stretches with grid track height */
+}
+.CardTitle {
+  font: var(--font-sw-l);
+  margin: 0 0 1rem 0;
+}
+.Rarity {
+  font: var(--font-dm-m);
+}
+.Description {
+  margin-top: 2rem; /* spacing between rarity and description */
+  padding-bottom: 2rem; /* extra space below the text as requested */
+  font: var(--font-dm-m);
+  color: var(--white);
+}
+.ImageCard {
+  padding: 2rem; /* required padding for image card */
+  height: 100%; /* allow image card to stretch to the row height */
+  align-self: stretch; /* ensure the image card matches the text card height */
+}
+.ImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ResponsiveImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
