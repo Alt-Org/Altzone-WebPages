@@ -6,11 +6,14 @@ import SearchIcon from '@/shared/assets/icons/Search.svg';
 import { useClientTranslation } from '@/shared/i18n';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { YoutubeVideoCard } from '@/shared/ui/v2/YoutubeVideoCard';
-import { MusicManager } from '@/entities/Music/model/MusicCollectionsManager';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortDropdown } from '@/features/NavigateFurniture/ui/SortDropdown/SortDropdown';
 import { BackButtonLink } from '@/shared/ui/v2/BackButtonLink/ui/BackButtonLink';
+import { useParams } from 'next/navigation';
+import { useGetSongsQuery } from '@/entities/Music/api/musicApi'; // New: Hook for dynamic song fetching
+import { MusicItem, Song } from '@/entities/Music/types/music'; // Updated: Corrected import path for types
+import { extractYouTubeId } from '@/entities/Music/lib/utils'; // New: Utility for YouTube ID extraction
 
 interface SearchBarProps {
     className: string;
@@ -47,7 +50,6 @@ const SearchBar = (props: SearchBarProps) => {
 
 const NavigationRow = (props: NavigationRowProps) => {
     const { className } = props;
-
     return (
         <div className={classNames(cls.NavigationRow, undefined, [className ? className : ''])}>
             <BackButtonLink href="/collections" />
@@ -55,6 +57,7 @@ const NavigationRow = (props: NavigationRowProps) => {
         </div>
     );
 };
+
 const useDebounce = <T,>(value: T, delay: number): T => {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
@@ -66,27 +69,62 @@ const useDebounce = <T,>(value: T, delay: number): T => {
     return debouncedValue;
 };
 
+/**
+ * Main page component for displaying music collections.
+ *
+ * Changes:
+ * - Migrated from hardcoded `MusicManager` to dynamic fetching via `useGetSongsQuery`.
+ * - Added filtering to exclude songs without categories or valid YouTube links.
+ * - Implemented slug-based filtering for category pages (e.g., /music/jukebox).
+ * - Added null checks and error handling to prevent crashes.
+ * - Retained search and responsive UI, but now operates on fetched data.
+ *
+ * Purpose: Displays a list of YouTube music videos from Directus, with search, category filtering, and responsive design.
+ */
+
 const MusicCollectionsPage = () => {
     const { t } = useClientTranslation('music');
-    const manager = new MusicManager();
     const { isMobileSize, isTabletSize } = useSizes();
+    const params = useParams();
+    const slug = params.slug as string; // For /music/[slug] routing
     const [searchQuery, setSearchQuery] = useState('');
     const debouncedSearchQuery = useDebounce(searchQuery, 400);
 
-    const allItems = manager.getAllCollectionsItems();
+    const { data: songs, isLoading, error } = useGetSongsQuery(); // Fetch songs dynamically
+
+    // Map fetched songs to MusicItem[], filter by slug if present
+    const allItems: MusicItem[] = React.useMemo(() => {
+        if (!songs) return [];
+        return songs
+            .filter((song: Song) => song.category && song.video_link) // Skip songs without category or link
+            .map((song: Song) => {
+                const youtubeId = extractYouTubeId(song.video_link);
+                if (!youtubeId) return null; // Skip if no valid YouTube ID
+                return {
+                    id: song.id,
+                    musicTitle: song.song_name,
+                    artistName: song.composers,
+                    youtubeId,
+                    category: song.category?.category_name || 'Uncategorized', // Safe access
+                };
+            })
+            .filter((item) => item !== null) // Remove nulls from map
+            .filter((item) => !slug || item.category.toLowerCase() === slug.toLowerCase()); // Filter by slug
+    }, [songs, slug]);
+
+    // Filter by search
     const filteredItems = React.useMemo(() => {
         if (!allItems) return [];
-
         if (debouncedSearchQuery.trim() === '') return allItems;
-
-        return allItems.filter((item) => {
-            // filter by music title and artist name
-            return (
+        return allItems.filter(
+            (item) =>
                 item.musicTitle.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-                item.artistName.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
-            );
-        });
+                item.artistName.toLowerCase().includes(debouncedSearchQuery.toLowerCase()),
+        );
     }, [allItems, debouncedSearchQuery]);
+
+    if (isLoading) return <div>Loading songs...</div>; // Loading state
+    if (error) return <div>Error loading songs</div>; // Error state
 
     return (
         <div className={cls.Container}>
@@ -114,21 +152,16 @@ const MusicCollectionsPage = () => {
             )}
             <NavigationRow />
             <div className={cls.DesktopCardContainer}>
-                {filteredItems && filteredItems.length === 0 && (
-                    <div>{t('no-music-items-found')}</div>
-                )}
-                {filteredItems &&
-                    filteredItems.length > 0 &&
-                    filteredItems.map((item) => {
-                        return (
-                            <YoutubeVideoCard
-                                key={item.youtubeId}
-                                title={item.musicTitle}
-                                youtubeId={item.youtubeId}
-                                artist={item.artistName}
-                            />
-                        );
-                    })}
+                {filteredItems.length === 0 && <div>{t('no-music-items-found')}</div>}
+                {filteredItems.length > 0 &&
+                    filteredItems.map((item) => (
+                        <YoutubeVideoCard
+                            key={item.id}
+                            title={item.musicTitle}
+                            youtubeId={item.youtubeId}
+                            artist={item.artistName}
+                        />
+                    ))}
             </div>
         </div>
     );
