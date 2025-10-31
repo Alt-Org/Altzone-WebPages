@@ -6,6 +6,7 @@ const meta = {
     title: 'entities/Gallery/ImageWall',
     component: ImageWall,
 };
+
 export default meta;
 
 type Story = StoryObj<typeof meta>;
