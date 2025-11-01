@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
@@ -8,7 +8,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { SearchInput } from '@/features/Search';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
 import iconSpammer from '@/shared/assets/images/clanLabels/ClanLabelSpammer.png';
@@ -25,24 +25,23 @@ const labels = [
 ];
 
 const ClanAllSubPage = () => {
-    const [currentPage, setCurrentPage] = useState(1);
+    const [searchRaw, setSearchRaw] = useState('');
     const [currentSearch, setSearch] = useState('');
-    const { isMobileSize, isTabletSize } = useSizes();
+    const { isMobileSize } = useSizes();
+
+    useEffect(() => {
+        const id = setTimeout(() => {
+            setSearch(searchRaw ? convertToQuerySearch(searchRaw) : '');
+        });
+        return () => clearTimeout(id);
+    }, [searchRaw]);
 
     const router = useRouter();
     const { t } = useClientTranslation('clan');
-    const { data: clans, error } = useGetClansQuery({ page: currentPage, search: currentSearch });
+    const { data: clans, error } = useGetClansQuery({ page: 1, search: currentSearch });
 
     const onClickToClan = (id: string) => {
         router.push(getRouteOneClanPage(id));
-    };
-
-    const onClickToPage = (page: number) => {
-        setCurrentPage(page);
-    };
-
-    const onClickToSearch = (search: string) => {
-        setSearch(convertToQuerySearch(search));
     };
 
     // Temporary way to convert search query value to case-insensitive in front
@@ -60,7 +59,10 @@ const ClanAllSubPage = () => {
     if (error) {
         return (
             <>
-                <ClansSearch onClickToSearch={onClickToSearch} />
+                <ClansSearch
+                    value={searchRaw}
+                    onChange={(e) => setSearchRaw(e.target.value)}
+                />
                 <h2 className={cls.noResults}>{t('no_result')}</h2>
             </>
         );
@@ -69,18 +71,31 @@ const ClanAllSubPage = () => {
     if (clans) {
         return (
             <>
-                <ClansSearch onClickToSearch={onClickToSearch} />
+                {isMobileSize ? (
+                    <ClansSearch
+                        value={searchRaw}
+                        onChange={(e) => setSearchRaw(e.target.value)}
+                        className={cls.SearchBarMobile}
+                    />
+                ) : (
+                    <div className={cls.TitleBar}>
+                        <ClansSearch
+                            value={searchRaw}
+                            onChange={(e) => setSearchRaw(e.target.value)}
+                            className={cls.SearchBarDesktop}
+                        />
+                    </div>
+                )}
+
                 {isMobileSize ? (
                     <ClansViewMobile
                         clanServerResponse={clans}
                         onClickToClan={onClickToClan}
-                        onClickToPage={onClickToPage}
                     />
                 ) : (
                     <ClansViewDesktop
                         clanServerResponse={clans}
                         onClickToClan={onClickToClan}
-                        onClickToPage={onClickToPage}
                     />
                 )}
             </>
@@ -90,70 +105,19 @@ const ClanAllSubPage = () => {
     return null;
 };
 
-type SearchProps = { onClickToSearch?: (search: string) => void };
+type SearchProps = {
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    className?: string;
+};
 
-const ClansSearch = ({ onClickToSearch }: SearchProps) => {
-    const { t } = useClientTranslation('clan');
-
-    const onClickSearch = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const searchField = document.querySelector<HTMLInputElement>('#search');
-        if (onClickToSearch && searchField) onClickToSearch(searchField.value);
-    };
-
+const ClansSearch = ({ value, onChange, className }: SearchProps) => {
     return (
-        <form onSubmit={onClickSearch}>
-            <input
-                name="search"
-                placeholder={t('search_placeholder')}
-                type="text"
-                id="search"
+        <div className={className}>
+            <SearchInput
+                value={value}
+                onChange={onChange}
             />
-            <Button
-                type="submit"
-                theme={ButtonTheme.BACKGROUND}
-                size={ButtonSize.M}
-                className={cls.BtnGame}
-                square={false}
-            >
-                Find
-            </Button>
-        </form>
-    );
-};
-
-type PaginationProps = {
-    currentPage: number;
-    disablePrev: boolean;
-    disableNext: boolean;
-    onPrev: () => void;
-    onNext: () => void;
-};
-
-const Pagination = ({ currentPage, disablePrev, disableNext, onPrev, onNext }: PaginationProps) => {
-    return (
-        <div>
-            <Button
-                onClick={onPrev}
-                theme={ButtonTheme.BACKGROUND}
-                size={ButtonSize.M}
-                className={cls.BtnGame}
-                square={false}
-                disabled={disablePrev}
-            >
-                Back
-            </Button>
-            {currentPage}
-            <Button
-                onClick={onNext}
-                theme={ButtonTheme.BACKGROUND}
-                size={ButtonSize.M}
-                className={cls.BtnGame}
-                square={false}
-                disabled={disableNext}
-            >
-                Next
-            </Button>
         </div>
     );
 };
@@ -161,31 +125,16 @@ const Pagination = ({ currentPage, disablePrev, disableNext, onPrev, onNext }: P
 type MobileProps = {
     clanServerResponse: GetClansResponse;
     onClickToClan?: (id: string) => void;
-    onClickToPage?: (page: number) => void;
 };
 
-const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: MobileProps) => {
+const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => {
     const onClick = (id: string) => {
         if (onClickToClan) onClickToClan(id);
     };
     const { t } = useClientTranslation('clan');
-    const onClickPage = (page: number) => {
-        if (onClickToPage) onClickToPage(page);
-    };
-
-    const { currentPage, pageCount } = clanServerResponse.paginationData;
-    const disablePrev = currentPage === 1;
-    const disableNext = pageCount === undefined;
 
     return (
         <div>
-            <Pagination
-                currentPage={currentPage}
-                disablePrev={disablePrev}
-                disableNext={disableNext}
-                onPrev={() => onClickPage(currentPage - 1)}
-                onNext={() => onClickPage(currentPage + 1)}
-            />
             <div className={cls.MobileCardContainer}>
                 {clanServerResponse.data.Clan.map((clan, idx) => (
                     <MobileCardLink
@@ -246,32 +195,17 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: M
 type DesktopProps = {
     clanServerResponse: GetClansResponse;
     onClickToClan?: (id: string) => void;
-    onClickToPage?: (page: number) => void;
 };
 
-const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: DesktopProps) => {
+const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) => {
     const { t } = useClientTranslation('clan');
 
     const onClick = (id: string) => {
         if (onClickToClan) onClickToClan(id);
     };
-    const onClickPage = (page: number) => {
-        if (onClickToPage) onClickToPage(page);
-    };
-
-    const { currentPage, pageCount } = clanServerResponse.paginationData;
-    const disablePrev = currentPage === 1;
-    const disableNext = pageCount === undefined;
 
     return (
         <div>
-            <Pagination
-                currentPage={currentPage}
-                disablePrev={disablePrev}
-                disableNext={disableNext}
-                onPrev={() => onClickPage(currentPage - 1)}
-                onNext={() => onClickPage(currentPage + 1)}
-            />
             <div className={cls.DesktopCardContainer}>
                 {clanServerResponse.data.Clan.map((clan, idx) => (
                     <div
