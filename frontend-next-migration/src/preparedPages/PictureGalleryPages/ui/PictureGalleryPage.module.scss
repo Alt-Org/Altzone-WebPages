@@ -30,7 +30,6 @@
     width: 85%;
     margin: auto;
     text-align: center;
-    font-size: 1.2em;
   }
 
 
@@ -57,7 +56,6 @@
 
 .InfoText {
   margin-top: 10px;
-  font-size: 1rem !important;
   display:inline;
   font: var(--font-dm-m);
   color: #faf9f6c0;
@@ -78,13 +76,12 @@
 
     .SocialsText {
       width: 75%;
-      font-size: 1.5em;
     }
   }
 
   .InfoText {
     width: 75%;
-    font-size: 1.5em;
+    font: var(--font-dm-m);
   }
 
 }
@@ -128,7 +125,7 @@
 @media (max-width: breakpoint(lg)) {
   .mainTitle{
     text-align: center;
-    font-size: 3rem;
+    font: var(--font-sw-xxl);
   }
   .Maincontainer{
     width: 100%;

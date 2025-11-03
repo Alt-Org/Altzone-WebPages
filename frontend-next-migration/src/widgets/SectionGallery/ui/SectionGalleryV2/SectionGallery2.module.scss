@@ -59,12 +59,10 @@
 }
 
 .description {
-    font-family: var(--font-family-title), serif;
-    font-size: 1rem;
+    font: var(--font-sw-m);
 }
 
 .supdescription {
-    font-size: 1rem;
     font: var(--font-dm-m);
     color: #faf9f6c0;
     margin-top: 1rem;
@@ -123,13 +121,13 @@
         text-align: center;
     }
     .title{
-        font-size: 1.5rem;
+        font: var(--font-sw-l);
     }
     .description {
-        font-size: 1rem;
+        font: var(--font-dm-m);
     }
     .supdescription {
-        font-size: 0.9rem;
+        font: var(--font-dm-m);
         text-align: start;
 
     }
