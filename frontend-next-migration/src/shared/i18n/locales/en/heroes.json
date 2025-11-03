@@ -15,6 +15,16 @@
     "common": "Common",
     "rare": "Rare",
     "epic": "Epic",
+    "character-introduction": "Character introduction",
+    "rarity": "Rarity",
+    "character-skills": "Character skills",
+    "master": "Master",
+    "expert": "Expert",
+    "skilled": "Skilled",
+    "competent": "Competent",
+    "apprentice": "Apprentice",
+    "beginner": "Beginner",
+    "unskilled": "Unskilled",
 
     "RETROFLECTOR": {
         "name": "RETROFLECTORS",

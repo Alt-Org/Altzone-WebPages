@@ -36,7 +36,7 @@
 }
 .CardTitle {
   font: var(--font-sw-l);
-  margin: 0 0 1rem 0;
+  margin: 0 0 2rem 0;
 }
 .Rarity {
   font: var(--font-dm-m);
@@ -64,4 +64,22 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* Wide card below the two columns for hero stats */
+.WideCard {
+  margin-top: 2rem; /* required spacing above */
+}
+
+/* Flex container for stats bars */
+.StatsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem; /* row gap, column gap */
+}
+
+/* Optional wrapper to control each item spacing/responsiveness */
+.StatItem {
+  /* BarIndicator has fixed width depending on icon; let them wrap naturally */
 }

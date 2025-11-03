@@ -15,6 +15,16 @@
     "common": "Yleinen",
     "rare": "Harvinainen",
     "epic": "Eeppinen",
+    "character-introduction": "Hahmon esittely",
+    "rarity": "Harvinaisuus",
+    "character-skills": "Hahmon taidot",
+    "master": "Mestari",
+    "expert": "Asiantuntija",
+    "skilled": "Kokenut",
+    "competent": "Perusosaaja",
+    "apprentice": "Harjoittelija",
+    "beginner": "Aloittelija",
+    "unskilled": "Taidoton",
 
     "RETROFLECTOR": {
         "name": "TORJUJAT",
