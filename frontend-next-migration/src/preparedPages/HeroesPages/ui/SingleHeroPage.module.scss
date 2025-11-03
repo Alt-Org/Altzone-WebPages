@@ -29,6 +29,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  @media (max-width: breakpoint(md)) {
+    padding: 1rem;
+  }
 }
 /* Text card follows its content height only */
 .TextCard {
@@ -40,6 +43,10 @@
 }
 .Rarity {
   font: var(--font-dm-m);
+  color: var(--white);
+}
+.Bold {
+  font-weight: bold;
 }
 .Description {
   margin-top: 2rem; /* spacing between rarity and description */
@@ -47,10 +54,51 @@
   font: var(--font-dm-m);
   color: var(--white);
 }
+
+/* Mobile clamp for long descriptions: show first 6 lines and offer a read-more button */
+@media (max-width: breakpoint(md)) {
+  .DescriptionClamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 7.5rem;
+  }
+  .ReadMore {
+    margin-top: 0.75rem;
+    align-self: center; /* center the button horizontally inside the card */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* match BackButton look */
+    background-color: var(--primary-color);
+    color: var(--black);
+    border: 2px solid var(--black);
+    border-radius: 1rem;
+    padding: 0.3rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font: var(--font-dm-m);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--black) 3px 3px 0;
+
+    /* remove link-like underline from previous style */
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
 .ImageCard {
   padding: 2rem; /* required padding for image card */
   height: 100%; /* allow image card to stretch to the row height */
   align-self: stretch; /* ensure the image card matches the text card height */
+}
+.ImageCardMobile {
+  padding: 1rem;
+  margin-block: 2rem;
 }
 .ImageWrapper {
   position: relative;
@@ -59,6 +107,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Ensure image is visible on mobile: give the wrapper a fixed height */
+@media (max-width: breakpoint(md)) {
+  .ImageWrapper {
+    height: 250px;
+  }
 }
 .ResponsiveImage {
   width: 100%;
@@ -70,6 +125,16 @@
 .WideCard {
   margin-top: 2rem; /* required spacing above */
 }
+.Hero {
+  font: var(--font-sw-l);
+  @media (max-width: 1023px) {
+    margin-bottom: 1rem;
+  }
+  @media (max-width: breakpoint(md)) {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
 
 /* Flex container for stats bars */
 .StatsContainer {
@@ -77,6 +142,15 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem 1.5rem; /* row gap, column gap */
+}
+
+/* Mobile-specific layout: stack bars vertically and center them */
+.StatsContainerMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
 /* Optional wrapper to control each item spacing/responsiveness */

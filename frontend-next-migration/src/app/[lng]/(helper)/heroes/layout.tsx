@@ -6,6 +6,7 @@ import { SingleHeroNavMenuAsDropdown } from '@/features/NavigateHeroes';
 import { useClientTranslation } from '@/shared/i18n';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { useParams } from 'next/navigation';
+import { cls } from '@/preparedPages/HeroesPages';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
@@ -42,7 +43,7 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
                         alternate={true}
                         searchVisible={false}
                     />
-                    <h2>{subTitleText}</h2>
+                    <p className={cls.Hero}>{subTitleText}</p>
                     <SingleHeroNavMenuAsDropdown />
                 </>
             )}
