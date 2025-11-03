@@ -3,7 +3,6 @@
     flex-direction: column;
     min-height: 100vh;
     margin-bottom: 40px;
-    margin-top: 100px;
 }
 
 .Container {
@@ -11,8 +10,6 @@
 }
 
 .ClansViewMain {
-    overflow: hidden !important;
     position: relative;
-    overflow-y: auto;
     border-radius: var(--border-radius-custom);
 }

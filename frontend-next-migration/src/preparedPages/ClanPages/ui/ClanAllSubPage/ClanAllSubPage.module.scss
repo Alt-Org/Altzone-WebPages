@@ -11,6 +11,12 @@
   }
 }
 
+.Container {
+  padding: 0 16px;
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
 .Loader {
   @include position-absolute-center;
 }
@@ -50,7 +56,32 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-width: 0;
+  margin-bottom: 1rem;
+}
+
+.SearchBar {
+  display: flex;
+  height: 20px;
+  justify-content: left;
+  color: var(--primary-color);
+  border: 2px solid var(--black);
+  box-shadow: var(--black) 4px 4px 0;
+  border-radius: 1.5em;
+  background: var(--base-card-background);
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font: var(--font-dm-m);
+}
+
+.Input {
+  color: var(--primary-color);
+  padding-left: 1em;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
 }
 
 .SearchBarDesktop {
@@ -60,14 +91,19 @@
 .SearchBarMobile {
   width: 280px;
   max-width: 90%;
-  margin: 0.5rem auto 1rem;  /* keskelle otsikon alle */
+  margin: 0.5rem auto 1rem;
 }
 
-/* Varmistus: hakuwrapper ei aiheuta ylivuotoa pääkontissa */
+.SearchBarTablet {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 main :where(.SearchBarDesktop, .SearchBarMobile) {
   overflow: visible;
 }
-
 
 /* Page grid for listing clan cards */
 .DesktopCardContainer {

@@ -8,8 +8,8 @@ import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
-import { SearchInput } from '@/features/Search';
 import { PageTitle } from '@/shared/ui/PageTitle';
+import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
 import iconSpammer from '@/shared/assets/images/clanLabels/ClanLabelSpammer.png';
@@ -28,18 +28,18 @@ const labels = [
 const ClanAllSubPage = () => {
     const [searchRaw, setSearchRaw] = useState('');
     const [currentSearch, setSearch] = useState('');
-    const { isMobileSize } = useSizes();
+    const { isMobileSize, isTabletSize } = useSizes();
 
     useEffect(() => {
         const id = setTimeout(() => {
             setSearch(searchRaw ? convertToQuerySearch(searchRaw) : '');
-        });
+        }, 0);
         return () => clearTimeout(id);
     }, [searchRaw]);
 
     const router = useRouter();
     const { t } = useClientTranslation('clan');
-    const { data: clans, error } = useGetClansQuery({ page: 1, search: currentSearch });
+    const { data: clans } = useGetClansQuery({ page: 1, search: currentSearch });
 
     const onClickToClan = (id: string) => {
         router.push(getRouteOneClanPage(id));
@@ -57,82 +57,61 @@ const ClanAllSubPage = () => {
         return querySearch;
     };
 
-    if (error) {
-        return (
-            <>
-                <ClansSearch
-                    value={searchRaw}
-                    onChange={(e) => setSearchRaw(e.target.value)}
-                />
-                <h2 className={cls.noResults}>{t('no_result')}</h2>
-            </>
-        );
-    }
-
     if (clans) {
         return (
-            <>
+            <div className={cls.Container}>
                 {isMobileSize ? (
                     <>
-                        <PageTitle
-                            titleText={t('browse-clans')}
-                            alternate={true}
-                            searchVisible={false}
-                        />
-                        <ClansSearch
+                        <SearchBar
                             value={searchRaw}
-                            onChange={(e) => setSearchRaw(e.target.value)}
-                            className={cls.SearchBarMobile}
+                            onChange={setSearchRaw}
+                            wrapperClassName={`${cls.SearchBar} ${cls.SearchBarMobile}`}
+                            inputClassName={cls.Input}
+                        />
+                        <ClansViewMobile
+                            clanServerResponse={clans}
+                            onClickToClan={onClickToClan}
+                        />
+                    </>
+                ) : isTabletSize ? (
+                    <>
+                        <SearchBar
+                            value={searchRaw}
+                            onChange={setSearchRaw}
+                            wrapperClassName={`${cls.SearchBar} ${cls.SearchBarTablet}`}
+                            inputClassName={cls.Input}
+                        />
+                        <ClansViewDesktop
+                            clanServerResponse={clans}
+                            onClickToClan={onClickToClan}
                         />
                     </>
                 ) : (
-                    <div className={cls.TitleBar}>
-                        <PageTitle
-                            titleText={t('browse-clans')}
-                            alternate={true}
-                            searchVisible={false}
+                    <>
+                        <div className={cls.TitleBar}>
+                            <PageTitle
+                                titleText={t('browse-clans')}
+                                alternate
+                                searchVisible={false}
+                            />
+                            <SearchBar
+                                value={searchRaw}
+                                onChange={setSearchRaw}
+                                wrapperClassName={`${cls.SearchBar} ${cls.SearchBarDesktop}`}
+                                inputClassName={cls.Input}
+                            />
+                        </div>
+                        <ClansViewDesktop
+                            clanServerResponse={clans}
+                            onClickToClan={onClickToClan}
                         />
-                        <ClansSearch
-                            value={searchRaw}
-                            onChange={(e) => setSearchRaw(e.target.value)}
-                            className={cls.SearchBarDesktop}
-                        />
-                    </div>
+                    </>
                 )}
-
-                {isMobileSize ? (
-                    <ClansViewMobile
-                        clanServerResponse={clans}
-                        onClickToClan={onClickToClan}
-                    />
-                ) : (
-                    <ClansViewDesktop
-                        clanServerResponse={clans}
-                        onClickToClan={onClickToClan}
-                    />
-                )}
-            </>
+            </div>
         );
     }
 
     return null;
-};
-
-type SearchProps = {
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    className?: string;
-};
-
-const ClansSearch = ({ value, onChange, className }: SearchProps) => {
-    return (
-        <div className={className}>
-            <SearchInput
-                value={value}
-                onChange={onChange}
-            />
-        </div>
-    );
 };
 
 type MobileProps = {
