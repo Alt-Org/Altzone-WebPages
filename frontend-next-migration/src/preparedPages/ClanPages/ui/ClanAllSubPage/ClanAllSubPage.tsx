@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import { SearchInput } from '@/features/Search';
+import { PageTitle } from '@/shared/ui/PageTitle';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
 import iconSpammer from '@/shared/assets/images/clanLabels/ClanLabelSpammer.png';
@@ -72,13 +73,25 @@ const ClanAllSubPage = () => {
         return (
             <>
                 {isMobileSize ? (
-                    <ClansSearch
-                        value={searchRaw}
-                        onChange={(e) => setSearchRaw(e.target.value)}
-                        className={cls.SearchBarMobile}
-                    />
+                    <>
+                        <PageTitle
+                            titleText={t('browse-clans')}
+                            alternate={true}
+                            searchVisible={false}
+                        />
+                        <ClansSearch
+                            value={searchRaw}
+                            onChange={(e) => setSearchRaw(e.target.value)}
+                            className={cls.SearchBarMobile}
+                        />
+                    </>
                 ) : (
                     <div className={cls.TitleBar}>
+                        <PageTitle
+                            titleText={t('browse-clans')}
+                            alternate={true}
+                            searchVisible={false}
+                        />
                         <ClansSearch
                             value={searchRaw}
                             onChange={(e) => setSearchRaw(e.target.value)}

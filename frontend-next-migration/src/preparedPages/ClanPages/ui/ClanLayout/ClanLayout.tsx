@@ -7,6 +7,7 @@ import cls from './ClanLayout.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { useParams } from 'next/navigation';
+import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -56,26 +57,24 @@ const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
     };
 
     return (
-        <div className={cls.container}>
-            {
-                <PageTitle
-                    titleText={t('head-title')}
-                    searchVisible={false}
-                    dynamicTitle="clan"
-                />
-            }
+        <LayoutWithSidebars
+            className={cls.container}
+            leftTopSidebar={{
+                component: <NavMenuWithDropdowns {...navMenuWithDropdownsDesktopProps} />,
+                hideOnMobile: true,
+                className: cls.sidebar,
+                width: '300px',
+            }}
+        >
             <div className={cls.layoutContainer}>
                 <div className={cls.headerSidebarContainer}>
                     <nav className={cls.mobileNav}>
                         <NavMenuWithDropdowns {...navMenuWithDropdownsMobileProps} />
                     </nav>
-                    <aside className={cls.sidebar}>
-                        <NavMenuWithDropdowns {...navMenuWithDropdownsDesktopProps} />
-                    </aside>
                 </div>
                 <main className={cls.content}>{children}</main>
             </div>
-        </div>
+        </LayoutWithSidebars>
     );
 };
 
