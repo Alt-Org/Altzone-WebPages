@@ -1,0 +1,28 @@
+.lessonList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lessonListHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  margin-bottom: 2rem;
+    h2 {
+        font-family:var(--font-family-title);
+        font-weight: 400;
+        font-size:var(--h3-size-desktop);
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            font-size:var(--h2-size-mobile);
+        }
+    }
+    span {
+      font: var(--font-dm-bold-l);
+      color: var(--neutral);
+    }
+}

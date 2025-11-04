@@ -316,3 +316,81 @@
         z-index: 1;
     }
 }
+
+.Card.TeachersCard {
+    height: fit-content;
+    min-height: 200px;
+    width: 90%;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 4px 0 var(--black);
+    padding: 2em;
+}
+
+.Card.TeachersCard  > .DescriptionCardTexts > .DescriptionCardTitle {
+    h2 {
+        font-family:var(--font-family-title);
+        font-weight: 400;
+        font-size:var(--h3-size-desktop);
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            font-size:var(--h2-size-mobile);
+        }
+    }
+}
+.Card.TeachersCard  > .DescriptionCardTexts > .DescriptionCardBody {
+    h2 {
+        font-family:var(--font-family-title);
+        font-size:var(--heading-font-size);
+        color:var(--white);
+        line-height: 2;
+        margin-top: 0.5em;
+    }
+    p {
+        margin-bottom: 1em;
+        font: var(--font-dm-m);
+        color: var(--white);
+    }
+}
+
+.Card.LessonCard {
+    width: 230px;
+    aspect-ratio: 292/326;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 4px 0 var(--black);
+    padding: 2em 1em;
+}
+
+.Card.LessonCard  > .DescriptionCardTexts > .DescriptionCardTitle {
+    h2 {
+        font-family:var(--font-family-title);
+        font-size:var(--heading-font-size);
+        color:var(--white);
+        text-align: center;
+    }
+}
+
+.Card.LessonCard  > .DescriptionCardTexts > .DescriptionCardBody {
+    p {
+        font: var(--font-dm-m);
+        color: var(--white);
+        text-align: center;
+        margin: 0.5em 0;
+        padding: 0;
+        button,a {
+            width: 90%;
+            margin-top: 1em;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1em;
+        }
+    }
+}
