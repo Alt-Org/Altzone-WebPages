@@ -217,22 +217,22 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) =
 
                                 <ModularCard.Texts.Body>
                                     <div className="Meta">
-                                        <span className="MetaItem">
+                                        <span className="MetaItem MetaIcons">
                                             <Image
                                                 src={iconLeaderboard}
                                                 alt="leaderboard"
                                                 width={18}
                                                 height={18}
                                             />
-                                        </span>
-
-                                        <span className="MetaItem">
                                             <Image
                                                 src={iconFlagFi}
                                                 alt="flag"
                                                 width={18}
                                                 height={18}
                                             />
+                                        </span>
+
+                                        <span className="MetaItem">
                                             <span className="Value">
                                                 {t('members')} {clan.playerCount} / 30
                                             </span>

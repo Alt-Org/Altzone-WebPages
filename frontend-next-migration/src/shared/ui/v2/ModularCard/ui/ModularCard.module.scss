@@ -345,152 +345,203 @@
     }
 }
 
+// ClanCard
 .Card.ClanCard {
-    --card-height: 240px; 
-    height: var(--card-height);
-    position: relative;
-    display: flex;
-    background-color: var(--background);
-    border: var(--border-desktop) solid var(--black);
-    border-radius: var(--border-radius-md);
-    box-shadow: 4px 8px 0 var(--black);
-    overflow: hidden;
-    transition: border-color 0.3s ease-out;
-    cursor: pointer;
-    &:hover {
-        border-color: var(--primary-border);
-    }
-    @media (max-width: breakpoint(xl)) {
-        --card-height: 220px;
-    }
-    @media (max-width: breakpoint(md)) {
-        --card-height: 180px;
-        box-shadow: 2px 4px 0 var(--black);
-        border-width: var(--border-mobile);
-    }
-    @media (max-width: 640px) {
-        --card-height: 168px;
-    }
-    @media (max-width: breakpoint(sm)) {
-        --card-height: 152px;
-        box-shadow: 1px 2px 0 var(--black);
-    }
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  min-height: 180px;
+  background: var(--background);
+  border: var(--border-desktop) solid var(--black);
+  border-radius: var(--border-radius-md);
+  box-shadow: 4px 8px 0 var(--black);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .3s ease-out;
+
+  --label-font-size: 15.6px;
+  --label-gap: 5px;
+  --label-pad-y: .52em;
+  --label-pad-x: .95em;
+  --label-border: 2px;
+  --label-radius: 10px;
+
+  --meta-font-size: 14px;
+  --meta-col-gap: 16px;
+  --meta-row-gap: 6px;
+
+  --logo-lane-w: clamp(110px, 12vw, 160px);
+  --logo-max-h: 68%;
+
+  &:hover { border-color: var(--primary-border); }
+
+  @media (max-width: breakpoint(xl)) {
+    min-height: 168px;
+    --label-font-size: 15px;
+    --meta-font-size: 13.5px;
+  }
+  @media (max-width: breakpoint(md)) {
+    min-height: 152px;
+    border-width: var(--border-mobile);
+    box-shadow: 2px 4px 0 var(--black);
+
+    --label-font-size: 14.5px;
+    --label-pad-y: .48em;
+    --label-pad-x: .9em;
+    --label-radius: 11px;
+
+    --meta-font-size: 13px;
+    --meta-col-gap: 14px;
+
+    --logo-lane-w: clamp(100px, 18vw, 140px);
+    --logo-max-h: 64%;
+  }
+  @media (max-width: breakpoint(sm)) {
+    min-height: 128px;
+    box-shadow: 1px 2px 0 var(--black);
+
+    --label-font-size: 13.5px;
+    --label-pad-y: .44em;
+    --label-pad-x: .8em;
+    --label-border: 1.5px;
+    --label-radius: 10px;
+
+    --meta-font-size: 12.5px;
+    --meta-col-gap: 12px;
+
+    --logo-lane-w: clamp(90px, 26vw, 128px);
+    --logo-max-h: 60%;
+  }
 }
 
 .Card.ClanCard > .ModularCardTexts {
-    flex-basis: 45%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  min-width: 0;
+
+  h2 {
+    font: var(--font-sw-l);
+    line-height: var(--font-line-l);
+    color: var(--white);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  > .ModularCardBody {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
-    padding-left: var(--spacing-300, 1rem);
-    justify-content: center;                 
+    gap: .4rem;
+    min-width: 0;
+  }
 
-    h2 {
-        line-height: var(--font-line-l) !important;
-        font: var(--font-sw-l);
-        color: var(--white);
-        margin: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    @media (max-width: breakpoint(md)) {
-        padding-left: var(--spacing-200, 0.75rem);
-        h2 {
-            font: var(--font-sw-m);
-            line-height: var(--font-line-m) !important;
-        }
-    }
-
-    @media (max-width: 640px) {
-        padding-left: 0.5rem;
-        h2 {
-            font: var(--font-sw-s);
-            line-height: var(--font-line-xs) !important;
-        }
-    }
-}
-
-.Card.ClanCard > .ModularCardBody p {
-    margin: 0;
+  @media (max-width: breakpoint(md)) {
+    padding: .75rem;
+    > .ModularCardBody { gap: .48rem; }
+    h2 { font: var(--font-sw-m); }
+  }
+  @media (max-width: breakpoint(sm)) {
+    padding: .5rem;
+    > .ModularCardBody { gap: .44rem; }
+    h2 { font: var(--font-sw-s); }
+  }
 }
 
 .Card.ClanCard > .ModularCardImageSection {
-    flex-basis: 55%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 1.5rem;
+  flex: 0 0 var(--logo-lane-w);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0;
+  overflow: hidden;
 
-    .ModularCardImage {
-        height: 75%;
-        width: auto;
-        object-fit: contain;
-    }
-}
-
-.Card.ClanCard > .ModularCardImageSection > .ModularCardImage {
+  .ModularCardImage {
+    max-height: var(--logo-max-h);
     width: auto;
-    height: var(--clan-logo-size);
-    max-width: 85%;
+    height: auto;
     object-fit: contain;
     pointer-events: none;
     user-select: none;
-}
-
-.Card.ClanCard > .ModularCardImageSection > .ModularCardImage {
-    width: auto;
-    height: 75%;
-    object-fit: contain;
-    pointer-events: none;
-    user-select: none;
-
+  }
 }
 
 .Card.ClanCard :global(.Meta) {
-    display: flex;
-    gap: 14px;
-    color: var(--white);
-    align-items: center;
-    font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--meta-col-gap);
+  row-gap: var(--meta-row-gap);
+  color: var(--white);
+  font-size: var(--meta-font-size);
+  line-height: 1.28;
+  min-width: 0;
+}
+.Card.ClanCard :global(.MetaItem) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  white-space: nowrap;
+  flex-shrink: 1;
+}
+.Card.ClanCard :global(.MetaItem) img,
+.Card.ClanCard :global(.MetaItem) svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex: 0 0 auto;
+}
+.Card.ClanCard :global(.MetaItem) .Value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-.Card.ClanCard :global(.MetaItem) {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-
-      .Value { line-height: 1; }
+.Card.ClanCard :global(.MetaItem.MetaIcons) { gap: 6px; }
+.Card.ClanCard :global(.Meta) { column-gap: 12px; }
+@media (max-width: breakpoint(md)) {
+  .Card.ClanCard :global(.MetaItem.MetaIcons) { gap: 5px; }
+  .Card.ClanCard :global(.Meta) { column-gap: 10px; }
 }
 
 .Card.ClanCard :global(.Labels) {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    gap: 6px 6px;
-    margin-top: 8px;
-    align-content: start;
-    justify-content: start;
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 4px 4px;
+  margin-top: 6px;
+  align-content: start;
+  justify-content: start;
+  min-width: 0;
 }
-
-@media (max-width: 640px) {
-    .Card.ClanCard :global(.Labels) {
-        grid-template-columns: 1fr; 
-    }
-}
-
-.Card.ClanCard :global(.Label) {
-    display: inline-flex;
-    align-items: center;
+@media (max-width: breakpoint(md)) {
+  .Card.ClanCard :global(.Labels) {
+    grid-template-columns: 1fr;
     gap: 8px;
-    background: #FFA100;
-    color: var(--black);
-    border: 2px solid var(--black);
-    border-radius: 12px;
-    padding: 0.45em 0.9em 0.45em 0.6em;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
-    white-space: nowrap;
+  }
+}
+.Card.ClanCard :global(.Label) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--label-gap);
+  background: var(--primary-color);
+  color: var(--black);
+  border: var(--label-border) solid var(--black);
+  border-radius: var(--label-radius);
+  padding: var(--label-pad-y) var(--label-pad-x);
+  font-size: var(--label-font-size);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+
+  img, svg { width: 1.12em; height: 1.12em; flex: 0 0 auto; }
+}
+
+.Card.ClanCard :global(.Labels) > :global(.Label):nth-child(n + 4) { display: none; }
+@media (max-width: breakpoint(md)) {
+  .Card.ClanCard :global(.Labels) > :global(.Label):nth-child(n + 3) { display: none; }
 }
