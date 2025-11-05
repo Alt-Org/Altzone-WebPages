@@ -56,6 +56,7 @@ const GameArtPackagePage = (props: Props) => {
                     {sections.map((section) => (
                         <ModularCard
                             key={section.id}
+                            id={section.id}
                             theme={ModularCardTheme.SECTIONCARD}
                             className={cls.SectionCard}
                         >
