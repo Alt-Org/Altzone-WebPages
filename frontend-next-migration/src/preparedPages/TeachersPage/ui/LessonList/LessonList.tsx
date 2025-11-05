@@ -3,21 +3,40 @@ import cls from './LessonList.module.scss';
 import { Button } from '@/shared/ui/v2/Button';
 import plusIcon from '@/shared/assets/icons/plusIcon.svg';
 import Image from 'next/image';
+import { useState } from 'react';
+import NewLesson from './NewLesson';
 const LessonList = () => {
     // TODO: replace with real data fetched from backend
     // This is just a placeholder based on data present in the figma
     // real data may look different and would require refactoring the component
-    const mockLessons = [
-        { id: 'abc123', identifier: 'aabbcc', title: 'Ryhmä 7A' },
-        { id: 'def456', identifier: 'ddeeff', title: '7B' },
-        { id: 'ghi789', identifier: 'gghhii', title: '8A' },
-        { id: 'jkl012', identifier: 'Tunniste', title: '' },
-        { id: 'mno345', identifier: 'Tunniste', title: 'Oppitunti 5' },
-        { id: 'pqr678', identifier: 'Tunniste', title: '' },
-    ];
+    const [mockLessons, setMockLessons] = useState([
+        { id: 'abc123', identifier: 'aabbcc', title: 'Ryhmä 7A', numStudents: 12 },
+        { id: 'def456', identifier: 'ddeeff', title: '7B', numStudents: 10 },
+        { id: 'ghi789', identifier: 'gghhii', title: '8A', numStudents: 15 },
+        { id: 'jkl012', identifier: 'Tunniste', title: '', numStudents: 0 },
+        { id: 'mno345', identifier: 'Tunniste', title: 'Oppitunti 5', numStudents: 8 },
+        { id: 'pqr678', identifier: 'Tunniste', title: '', numStudents: 0 },
+    ]);
     const MAXLESSONS = 10;
     // add functions for creating and deleting lessons
-    const creatingLesson = false;
+    const [creatingLesson, setCreatingLesson] = useState(false);
+    const createLesson = (title: string, numStudents: number) => {
+        // logic for creating a lesson
+        // mock function for now, in NewLesson user defined title and number of students
+        // server would then create a random identifier and id for the lesson
+        const newLesson = {
+            id: Math.random().toString(36).slice(2, 11),
+            identifier: Math.random().toString(36).slice(2, 11),
+            title,
+            numStudents,
+        };
+        setMockLessons((prevLessons) => [...prevLessons, newLesson]);
+        setCreatingLesson(false);
+    };
+    const deleteLesson = (lessonId: string) => {
+        // logic for deleting a lesson
+        setMockLessons((prevLessons) => prevLessons.filter((lesson) => lesson.id !== lessonId));
+    };
     return (
         <div>
             <div className={cls.lessonListHeader}>
@@ -25,7 +44,12 @@ const LessonList = () => {
                 <span>
                     ({mockLessons.length}/{MAXLESSONS})
                 </span>
-                <Button disabled={creatingLesson || mockLessons.length >= MAXLESSONS}>
+                <Button
+                    disabled={creatingLesson || mockLessons.length >= MAXLESSONS}
+                    onClick={() => {
+                        setCreatingLesson(true);
+                    }}
+                >
                     Luo uusi oppitunti
                     <Image
                         src={plusIcon}
@@ -40,8 +64,15 @@ const LessonList = () => {
                         lessonId={lesson.id}
                         lessonTitle={lesson.title ? lesson.title : `Lesson ${num + 1}`}
                         lessonIdentifier={lesson.identifier}
+                        onDelete={deleteLesson}
                     />
                 ))}
+                {creatingLesson && (
+                    <NewLesson
+                        onCreate={createLesson}
+                        onCancel={() => setCreatingLesson(false)}
+                    />
+                )}
             </div>
         </div>
     );
