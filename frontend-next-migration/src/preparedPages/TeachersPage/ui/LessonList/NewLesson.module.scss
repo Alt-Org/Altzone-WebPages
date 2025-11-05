@@ -1,3 +1,6 @@
+.newLesson {
+    border: 1px solid var(--primary-color) !important;
+}
 .lessonTitleInput {
     background-color: transparent;
     width: 100%;
@@ -5,18 +8,29 @@
     border: 2px solid var(--black);
     color: var(--white);
     padding: 0.5em;
+    margin: 0;
     font-family: var(--font-family-title);
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-m);
     margin-bottom: 0.5em;
+}
+.lessonTitleInput::placeholder {
+    color: var(--white);
+    opacity: 0.8;
+}
+.lessonTitleInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
 }
 
 .numStudentsInput {
     background-color: var(--background);
     width: fit-content;
     border-radius: 0.5em;
-    margin-bottom: 1.5em;
     color: var(--white);
     padding: 2px 0 2px 0.5em;
     border: 2px solid var(--black);
     margin: 0;
+}
+.buttons {
+    margin-top: 0.3em !important;
 }

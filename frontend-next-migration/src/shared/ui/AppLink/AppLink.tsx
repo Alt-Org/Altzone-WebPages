@@ -18,7 +18,7 @@ interface AppLinkProps {
     'data-fancybox'?: string;
     role?: string;
     ariaLabel?: string;
-    onClick?: () => void;
+    onClick?: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
 }
 
 /**

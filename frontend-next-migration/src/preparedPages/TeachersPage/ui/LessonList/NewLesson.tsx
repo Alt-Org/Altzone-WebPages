@@ -25,7 +25,10 @@ const NewLesson = (props: NewLessonProps) => {
         props.onCreate(values.title, values.numStudents);
     };
     return (
-        <DescriptionCard theme={DescriptionCardTheme.LESSON}>
+        <DescriptionCard
+            theme={DescriptionCardTheme.LESSON}
+            className={cls.newLesson}
+        >
             <DescriptionCard.Texts>
                 <form onSubmit={handleCreate}>
                     <input
@@ -57,7 +60,7 @@ const NewLesson = (props: NewLessonProps) => {
                             }
                         </select>
                     </span>
-                    <div>
+                    <div className={cls.buttons}>
                         <Button type="submit">{t('create')}</Button>
                         <Button
                             theme={ButtonTheme.OUTLINE}
