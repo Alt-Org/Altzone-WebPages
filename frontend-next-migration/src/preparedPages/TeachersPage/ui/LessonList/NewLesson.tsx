@@ -2,6 +2,7 @@ import { Button, ButtonTheme } from '@/shared/ui/v2/Button/ui/Button';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import { useState } from 'react';
 import cls from './NewLesson.module.scss';
+import { useClientTranslation } from '@/shared/i18n';
 
 export interface NewLessonProps {
     onCreate: (title: string, numStudents: number) => void;
@@ -9,6 +10,7 @@ export interface NewLessonProps {
 }
 
 const NewLesson = (props: NewLessonProps) => {
+    const { t } = useClientTranslation('teachers');
     const [values, setValues] = useState({
         title: '',
         numStudents: 10,
@@ -28,14 +30,14 @@ const NewLesson = (props: NewLessonProps) => {
                 <form onSubmit={handleCreate}>
                     <input
                         type="text"
-                        placeholder="Nimeä oppitunti"
+                        placeholder={t('name-lesson')}
                         className={cls.lessonTitleInput}
                         name="title"
                         value={values.title}
                         onChange={handleChange}
                     />
                     <span>
-                        Oppilaiden määrä
+                        {t('number-students')}
                         <select
                             className={cls.numStudentsInput}
                             name="numStudents"
@@ -56,12 +58,12 @@ const NewLesson = (props: NewLessonProps) => {
                         </select>
                     </span>
                     <div>
-                        <Button type="submit">Luo</Button>
+                        <Button type="submit">{t('create')}</Button>
                         <Button
                             theme={ButtonTheme.OUTLINE}
                             onClick={props.onCancel}
                         >
-                            Peruuta
+                            {t('cancel')}
                         </Button>
                     </div>
                 </form>

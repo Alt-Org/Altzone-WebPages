@@ -1,6 +1,7 @@
 import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import { useState } from 'react';
+import { useClientTranslation } from '@/shared/i18n';
 
 export interface SingleLessonProps {
     lessonId: string;
@@ -10,6 +11,7 @@ export interface SingleLessonProps {
 }
 
 const SingleLesson = (props: SingleLessonProps) => {
+    const { t } = useClientTranslation('teachers');
     const [deleting, setDeleting] = useState(false);
     return (
         <DescriptionCard theme={DescriptionCardTheme.LESSON}>
@@ -19,27 +21,29 @@ const SingleLesson = (props: SingleLessonProps) => {
                 {!deleting && (
                     <div>
                         <Button path={`/lessons/${props.lessonIdentifier}`}>
-                            Siirry oppituntiin
+                            {t('goto-lesson')}
                         </Button>
                         <Button
                             theme={ButtonTheme.OUTLINE}
                             onClick={() => setDeleting(true)}
                         >
-                            Poista oppitunti
+                            {t('delete-lesson')}
                         </Button>
                     </div>
                 )}
                 {deleting && (
                     <div>
-                        <p>Oletko varma, että haluat poistaa oppitunnin?</p>
+                        <p>{t('confirm-delete')}</p>
                         <span>
                             <Button
                                 theme={ButtonTheme.OUTLINE}
                                 onClick={() => setDeleting(false)}
                             >
-                                Ei
+                                {t('no')}
                             </Button>
-                            <Button onClick={() => props.onDelete(props.lessonId)}>Kyllä</Button>
+                            <Button onClick={() => props.onDelete(props.lessonId)}>
+                                {t('yes')}
+                            </Button>
                         </span>
                     </div>
                 )}

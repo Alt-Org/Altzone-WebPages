@@ -317,6 +317,7 @@
     }
 }
 
+// TeachersCard
 .Card.TeachersCard {
     height: fit-content;
     min-height: 200px;
@@ -330,6 +331,8 @@
 
 .Card.TeachersCard  > .DescriptionCardTexts > .DescriptionCardTitle {
     h2 {
+        margin: 0;
+        padding: 0;
         font-family:var(--font-family-title);
         font-weight: 400;
         font-size:var(--h3-size-desktop);
@@ -342,7 +345,7 @@
     }
 }
 .Card.TeachersCard  > .DescriptionCardTexts {
-    h2 {
+    h3 {
         font-family:var(--font-family-title);
         font-size:var(--heading-font-size);
         color:var(--white);
@@ -356,6 +359,7 @@
     }
 }
 
+// LessonCard
 .Card.LessonCard {
     width: 230px;
     aspect-ratio: 292/326;

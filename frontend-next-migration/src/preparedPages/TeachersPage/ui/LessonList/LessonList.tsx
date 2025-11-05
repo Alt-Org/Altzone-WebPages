@@ -4,18 +4,20 @@ import { Button } from '@/shared/ui/v2/Button';
 import plusIcon from '@/shared/assets/icons/plusIcon.svg';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useClientTranslation } from '@/shared/i18n';
 import NewLesson from './NewLesson';
 const LessonList = () => {
+    const { t } = useClientTranslation('teachers');
     // TODO: replace with real data fetched from backend
     // This is just a placeholder based on data present in the figma
     // real data may look different and would require refactoring the component
     const [mockLessons, setMockLessons] = useState([
-        { id: 'abc123', identifier: 'aabbcc', title: 'Ryhmä 7A', numStudents: 12 },
-        { id: 'def456', identifier: 'ddeeff', title: '7B', numStudents: 10 },
-        { id: 'ghi789', identifier: 'gghhii', title: '8A', numStudents: 15 },
-        { id: 'jkl012', identifier: 'Tunniste', title: '', numStudents: 0 },
-        { id: 'mno345', identifier: 'Tunniste', title: 'Oppitunti 5', numStudents: 8 },
-        { id: 'pqr678', identifier: 'Tunniste', title: '', numStudents: 0 },
+        { id: 'abc123', identifier: 'aabbcc', title: 'Ryhmä 7A', numStudents: 20 },
+        { id: 'def456', identifier: 'ddeeff', title: '7B', numStudents: 40 },
+        { id: 'ghi789', identifier: 'gghhii', title: '8A', numStudents: 60 },
+        { id: 'jkl012', identifier: 'jjkkll', title: '', numStudents: 10 },
+        { id: 'mno345', identifier: 'mmnnoo', title: 'Oppitunti 5', numStudents: 30 },
+        { id: 'pqr678', identifier: 'ppqqrr', title: '', numStudents: 10 },
     ]);
     const MAXLESSONS = 10;
     // add functions for creating and deleting lessons
@@ -40,7 +42,7 @@ const LessonList = () => {
     return (
         <div>
             <div className={cls.lessonListHeader}>
-                <h2>Omat oppitunnit</h2>
+                <h2>{t('my-lessons')}</h2>
                 <span>
                     ({mockLessons.length}/{MAXLESSONS})
                 </span>
@@ -50,7 +52,7 @@ const LessonList = () => {
                         setCreatingLesson(true);
                     }}
                 >
-                    Luo uusi oppitunti
+                    {t('create-lesson')}
                     <Image
                         src={plusIcon}
                         alt="+"
@@ -62,7 +64,7 @@ const LessonList = () => {
                     <SingleLesson
                         key={lesson.id}
                         lessonId={lesson.id}
-                        lessonTitle={lesson.title ? lesson.title : `Lesson ${num + 1}`}
+                        lessonTitle={lesson.title ? lesson.title : `${t('lesson')} ${num + 1}`}
                         lessonIdentifier={lesson.identifier}
                         onDelete={deleteLesson}
                     />
