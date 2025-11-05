@@ -1,14 +1,11 @@
-/* ---- ClanLayout.module.scss ---- */
 .container {
   overflow: visible;
 }
 
-/* Desktop-sivupalkin mahdolliset lisästailit */
 .sidebar {
   padding: 0 16px;
 }
 
-/* Sivun varsinainen sisältöalue */
 .content {
   flex: 1 1 auto;
   box-sizing: border-box;
@@ -16,11 +13,10 @@
   max-width: unset;
   overflow: visible;
   overflow-x: hidden;
-  padding: 0 16px; /* sama sivupadding kuin DG */
+  padding: 0 16px;
   margin: 0 auto;
 }
 
-/* Mobile/Tablet nav (dropdown) */
 .mobileNav {
   display: block;
   margin: 0.5rem auto 0;

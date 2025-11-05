@@ -20,7 +20,7 @@ import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png
 import starGray from '@/shared/assets/images/clanLogos/TopPanelMatchmakingPorvarit.png';
 
 const labels = [
-    { text: 'Spämmääjät', icon: iconSpammer },
+    { text: 'Spämmääjä', icon: iconSpammer },
     { text: 'Humoristiset', icon: iconHumorous },
     { text: 'Eläinrakkaat', icon: iconAnimalLovers },
 ];
@@ -153,27 +153,22 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => 
                                 title2={''}
                             >
                                 <div className="ScoreRow">
-                                    <div className="MetaItem Score">
-                                        <Image
-                                            src={starGray}
-                                            alt="score"
-                                            width={16}
-                                            height={16}
-                                        />
-                                    </div>
-                                    <div className="MetaItem Coins">
-                                        <span className="Value">
-                                            {typeof clan.gameCoins === 'number'
-                                                ? clan.gameCoins
-                                                : idx + 1}
-                                        </span>
-                                    </div>
+                                    <Image
+                                        src={starGray}
+                                        alt="score"
+                                        width={18}
+                                        height={18}
+                                        className="StarIcon"
+                                    />
+                                    <span className="ScoreValue">
+                                        {typeof clan.gameCoins === 'number'
+                                            ? clan.gameCoins
+                                            : idx + 1}
+                                    </span>
                                 </div>
 
-                                <div className="MetaItem Members">
-                                    <span className="Value">
-                                        {t('members')} {clan.playerCount} / 30
-                                    </span>
+                                <div className="MembersRow">
+                                    {t('members')} {clan.playerCount} / 30
                                 </div>
                             </MobileCard.Texts>
                         </MobileCard>
