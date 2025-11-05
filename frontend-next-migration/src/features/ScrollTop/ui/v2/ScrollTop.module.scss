@@ -11,14 +11,18 @@
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-custom);
     background-color: var(--primary-color);
-    z-index: 10;
+    /* no high z-index by default so it won't overlay inputs */
     cursor: pointer;
     padding: 0.75rem;
     box-shadow: var(--s);
 
-    position: fixed;
-    bottom: 100px;
-    right: 24px;
+    /* Make the button participate in normal flow and stick near viewport bottom */
+    position: sticky;
+    bottom: calc(180px + var(--cookie-consent-offset, 0px)); /* default (mobile/tablet) + cookie bar height */
+    align-self: flex-end; /* place to the right in flex containers */
+    margin-right: 28px; /* right gap */
+    display: inline-flex; /* shrink to content width */
+    float: right; /* align right when not inside a flex container */
 
     opacity: 0;
     visibility: hidden;
@@ -51,15 +55,32 @@
         outline: 2px solid var(--primary-color-variant-hover);
         outline-offset: 2px;
     }
+    @media (max-width: 959px) {
+        margin-right: 25px;
+    }
+    /* Desktop: stack above ChatButton and stop 1rem above Footer; include cookie bar offset */
+    @media (min-width: 1024px) {
+        /* Place ScrollTop above fixed ChatButton: 24px (chat bottom) + ~64px (chat size) + 12px gap ≈ 100px */
+        //bottom: calc(100px + var(--cookie-consent-offset, 0px));
+        //margin-bottom: 1rem; /* maintain 1rem gap above Footer at natural stop */
+        /* Ensure it layers above the ChatButton (which has z-index:10) without using an excessive global z-index */
+        //&.show {
+        //    z-index: 11;
+        //}
+    }
 
+    /* Mobile tweaks */
     @media (max-width: breakpoint(lg)) {
-        right: 24px;
-        bottom: 100px;
         border-width: var(--border-mobile);
         border-radius: var(--border-radius-custom);
         box-shadow: var(--s);
         transform: none; // Mobile safety
     }
+}
+
+/* Raise just above the cookie bar only while it is visible */
+:root.cookie-consent-visible .ScrollTop {
+    z-index: 1001; /* Cookie bar uses z-index:1000 */
 }
 
 .ScrollTop > img {
