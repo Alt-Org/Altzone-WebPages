@@ -1,1 +1,1 @@
-export { useGetMembersQuery, useGetDemographicsQuery } from './aboutApi';
+export { useGetMembersCountQuery, useGetDemographicsQuery } from './aboutApi';

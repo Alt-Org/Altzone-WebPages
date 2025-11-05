@@ -18,7 +18,7 @@ const CollectionLayout = ({ children }: { children: ReactNode }) => {
                         alternate={true}
                         searchVisible={false}
                     />
-                    <CollectionsNavMenuAsDropdown isMobileSize={isMobileSize} />
+                    <CollectionsNavMenuAsDropdown isMobileSize={isMobileSize || isTabletSize} />
                 </>
             )}
             <main className={cls.Content}>{children}</main>

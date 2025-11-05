@@ -1,13 +1,8 @@
-import {
-    DropDownElement,
-    DropdownWrapper,
-    DropDownElementASTextOrLink,
-} from '@/shared/ui/DropdownWrapper';
-import { ReactNode, useEffect, useState } from 'react';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
+import { useState } from 'react';
 import cls from './NavMenu.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
-import { usePathname } from 'next/navigation';
 import { INavMenuItem, NavMenuItemType } from '../model/types/';
 
 export interface NavMenuProps {
@@ -83,6 +78,12 @@ function NavMenu(props: NavMenuProps): JSX.Element {
                         <AppLink
                             to={item.path}
                             className={classNames(cls.link, { [cls.active]: item.active })}
+                            onClick={() => {
+                                setOpenDropdown(null);
+                                try {
+                                    document.dispatchEvent(new CustomEvent('az:dropdown-select'));
+                                } catch {}
+                            }}
                         >
                             {item.name}
                         </AppLink>

@@ -64,11 +64,17 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         }
     }, [dropdownType, onDropdownChange]);
 
+    // Close the mobile dropdown when any leaf in dropdown trees is selected
     useEffect(() => {
-        if (dropdownType === DropdownTypes.EMPTY) {
-            setIsLangOpen(false);
-        }
-    }, [dropdownType]);
+        const handler = () => setDropdownType(DropdownTypes.EMPTY);
+        // Using 'as any' to avoid TS narrowing issues with CustomEvent typing in Next env
+        document.addEventListener('az:dropdown-select' as any, handler as any);
+        return () => {
+            document.removeEventListener('az:dropdown-select' as any, handler as any);
+        };
+    }, []);
+
+    const closeMobileDropdown = () => setDropdownType(DropdownTypes.EMPTY);
 
     const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
@@ -155,13 +161,16 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     className={cls.authDropdownContent}
                 >
                     {permissionToLogin.isGranted ? (
-                        <LoginForm />
+                        <LoginForm onSuccessLogin={closeMobileDropdown} />
                     ) : permissionToLogout.isGranted ? (
                         <div className={cls.authFormContainer}>
                             <div className={cls.profileLabel}> {tAuth('ownProfile')}</div>
                             <button
                                 className={cls.logoutButton}
-                                onClick={() => logout()}
+                                onClick={() => {
+                                    logout();
+                                    closeMobileDropdown();
+                                }}
                             >
                                 {tAuth('logout')}
                             </button>

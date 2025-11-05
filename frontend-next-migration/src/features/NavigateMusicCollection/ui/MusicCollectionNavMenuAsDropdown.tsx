@@ -52,7 +52,7 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: t('category-title'),
         dropdownItems: dropdownItems,
-        openByDefault: true,
+        openByDefault: false,
         className: className,
         customActiveClassName: cls.ActiveItem,
     };
