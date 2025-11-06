@@ -129,50 +129,54 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => 
         <div>
             <div className={cls.MobileCardContainer}>
                 {clanServerResponse.data.Clan.map((clan, idx) => (
-                    <MobileCardLink
+                    <div
                         key={clan._id}
-                        path={getRouteOneClanPage(clan._id)}
-                        ariaLabel={`Open clan ${clan.name}`}
-                        withScalableLink
-                        className={cls.MobileCardItem}
+                        className={cls.MobileCardItemWrap}
                     >
-                        <MobileCard theme={MobileCardTheme.CLAN}>
-                            <MobileCard.Texts
-                                title1={clan.name}
-                                title2={''}
-                            />
+                        <MobileCardLink
+                            path={getRouteOneClanPage(clan._id)}
+                            ariaLabel={`Open clan ${clan.name}`}
+                            withScalableLink
+                            className={cls.MobileCardItem}
+                        >
+                            <MobileCard theme={MobileCardTheme.CLAN}>
+                                <MobileCard.Texts
+                                    title1={clan.name}
+                                    title2={''}
+                                />
 
-                            <MobileCard.Image
-                                alt={`${clan.name} logo`}
-                                src={clanLogo}
-                                backgroundColor="transparent"
-                            />
+                                <MobileCard.Image
+                                    alt={`${clan.name} logo`}
+                                    src={clanLogo}
+                                    backgroundColor="transparent"
+                                />
 
-                            <MobileCard.Texts
-                                title1={''}
-                                title2={''}
-                            >
-                                <div className="ScoreRow">
-                                    <Image
-                                        src={starGray}
-                                        alt="score"
-                                        width={18}
-                                        height={18}
-                                        className="StarIcon"
-                                    />
-                                    <span className="ScoreValue">
-                                        {typeof clan.gameCoins === 'number'
-                                            ? clan.gameCoins
-                                            : idx + 1}
-                                    </span>
-                                </div>
+                                <MobileCard.Texts
+                                    title1={''}
+                                    title2={''}
+                                >
+                                    <div className="ScoreRow">
+                                        <Image
+                                            src={starGray}
+                                            alt="score"
+                                            width={18}
+                                            height={18}
+                                            className="StarIcon"
+                                        />
+                                        <span className="ScoreValue">
+                                            {typeof clan.gameCoins === 'number'
+                                                ? clan.gameCoins
+                                                : idx + 1}
+                                        </span>
+                                    </div>
 
-                                <div className="MembersRow">
-                                    {t('members')} {clan.playerCount} / 30
-                                </div>
-                            </MobileCard.Texts>
-                        </MobileCard>
-                    </MobileCardLink>
+                                    <div className="MembersRow">
+                                        {t('members')} {clan.playerCount} / 30
+                                    </div>
+                                </MobileCard.Texts>
+                            </MobileCard>
+                        </MobileCardLink>
+                    </div>
                 ))}
             </div>
         </div>

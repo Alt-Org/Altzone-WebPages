@@ -100,12 +100,10 @@
   margin-right: auto;
 }
 
-
 main :where(.SearchBarDesktop, .SearchBarMobile) {
   overflow: visible;
 }
 
-/* Page grid for listing clan cards */
 .DesktopCardContainer {
   display: flex;
   padding-top: 1em;
@@ -115,9 +113,22 @@ main :where(.SearchBarDesktop, .SearchBarMobile) {
 }
 
 .MobileCardContainer {
+  --gap: 1rem;
   display: flex;
-  gap: .5em;
   flex-wrap: wrap;
-  justify-content: left;
+  gap: var(--gap);
+  justify-content: flex-start;
   margin-top: .5em;
+}
+
+.MobileCardItemWrap {
+  box-sizing: border-box;
+  flex: 0 0 calc((100% - 2 * var(--gap)) / 3);
+  min-width: 0;
+}
+
+.MobileCardItemWrap > * {
+  display: block;
+  width: 100%;
+  min-width: 0;
 }
