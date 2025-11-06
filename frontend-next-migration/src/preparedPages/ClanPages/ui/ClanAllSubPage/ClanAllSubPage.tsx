@@ -90,7 +90,7 @@ const ClanAllSubPage = () => {
                     <>
                         <div className={cls.TitleBar}>
                             <PageTitle
-                                titleText={t('browse-clans')}
+                                titleText={t('clans')}
                                 alternate
                                 searchVisible={false}
                             />

@@ -60,7 +60,7 @@ const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
     const lng = params.lng as string;
 
     const items = [
-        { elementText: t('browse-clans'), link: { path: `/${lng}/clans`, isExternal: false } },
+        { elementText: t('clans'), link: { path: `/${lng}/clans`, isExternal: false } },
         {
             elementText: t('leaderboard-title'),
             link: { path: `/${lng}/clans/leaderboard`, isExternal: false },
@@ -97,7 +97,7 @@ const ClanMainPageLayout: React.FC<LayoutProps> = ({ children }) => {
             {isCompact && (
                 <>
                     <PageTitle
-                        titleText={t('browse-clans')}
+                        titleText={t('clans')}
                         alternate
                         searchVisible={false}
                     />
