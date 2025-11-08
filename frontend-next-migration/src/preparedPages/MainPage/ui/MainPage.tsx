@@ -59,8 +59,8 @@ function MainPage(props: Props) {
 
     return (
         <div className={cls.MainPage}>
+            <WallIntroAnimation renderOnce={true} />
             <div className={cls.mainImgWrapper}>
-                <WallIntroAnimation renderOnce={true} />
                 <div className={cls.buttonsOverlay}>
                     <Button
                         withScalableLink
