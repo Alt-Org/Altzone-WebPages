@@ -118,17 +118,22 @@ main :where(.SearchBarDesktop, .SearchBarMobile) {
   flex-wrap: wrap;
   gap: var(--gap);
   justify-content: flex-start;
-  margin-top: .5em;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: .5rem;
 }
 
 .MobileCardItemWrap {
   box-sizing: border-box;
   flex: 0 0 calc((100% - 2 * var(--gap)) / 3);
+  display: flex;
+  justify-content: center;
   min-width: 0;
 }
 
-.MobileCardItemWrap > * {
+.MobileCardItem {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
   display: block;
-  width: 100%;
-  min-width: 0;
 }
