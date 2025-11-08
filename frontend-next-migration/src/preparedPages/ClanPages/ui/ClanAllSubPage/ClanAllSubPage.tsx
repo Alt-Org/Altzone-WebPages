@@ -8,6 +8,8 @@ import { useClientTranslation } from '@/shared/i18n';
 import Image from 'next/image';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
+import cardCls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
+import mobileCardCls from '@/shared/ui/v2/MobileCard/ui/MobileCard.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
@@ -155,22 +157,22 @@ const ClansViewMobile = ({ clanServerResponse, onClickToClan }: MobileProps) => 
                                     title1={''}
                                     title2={''}
                                 >
-                                    <div className="ScoreRow">
+                                    <div className={mobileCardCls.ClanScoreRow}>
                                         <Image
                                             src={starGray}
                                             alt="score"
                                             width={18}
                                             height={18}
-                                            className="StarIcon"
+                                            className={mobileCardCls.ClanScoreStarIcon}
                                         />
-                                        <span className="ScoreValue">
+                                        <span className={mobileCardCls.ClanScoreValue}>
                                             {typeof clan.gameCoins === 'number'
                                                 ? clan.gameCoins
                                                 : idx + 1}
                                         </span>
                                     </div>
 
-                                    <div className="MembersRow">
+                                    <div className={mobileCardCls.ClanMembersRow}>
                                         {t('members')} {clan.playerCount} / 30
                                     </div>
                                 </MobileCard.Texts>
@@ -208,34 +210,35 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) =
                             onClick={() => onClickToClan?.(clan._id)}
                             role="button"
                             tabIndex={0}
-                            height="170px"
                             withScalableLink
                         >
                             <ModularCard.Texts>
                                 <ModularCard.Texts.Title>{clan.name}</ModularCard.Texts.Title>
 
                                 <ModularCard.Texts.Body>
-                                    <div className="Meta">
-                                        <span className="MetaItem MetaIcons">
+                                    <div className={cardCls.ClanMeta}>
+                                        <span className={cardCls.ClanMetaItem}>
                                             <Image
                                                 src={iconLeaderboard}
                                                 alt="leaderboard"
                                                 width={18}
                                                 height={18}
+                                                className={cardCls.ClanMetaIcon}
                                             />
                                             <Image
                                                 src={iconFlagFi}
                                                 alt="flag"
                                                 width={18}
                                                 height={18}
+                                                className={cardCls.ClanMetaIcon}
                                             />
                                         </span>
 
-                                        <span className="MetaItem">
-                                            <span className="Value">
+                                        <span className={cardCls.ClanMetaItem}>
+                                            <span className={cardCls.ClanMetaValue}>
                                                 {t('members')} {clan.playerCount} / 30
                                             </span>
-                                            <span className="Value">
+                                            <span className={cardCls.ClanMetaValue}>
                                                 {typeof clan.gameCoins === 'number'
                                                     ? clan.gameCoins
                                                     : idx + 1}
@@ -243,10 +246,10 @@ const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) =
                                         </span>
                                     </div>
 
-                                    <div className="Labels">
+                                    <div className={cardCls.ClanLabels}>
                                         {labels.map((l) => (
                                             <span
-                                                className="Label"
+                                                className={cardCls.ClanLabel}
                                                 key={l.text}
                                             >
                                                 <Image

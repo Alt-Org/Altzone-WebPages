@@ -352,7 +352,6 @@
   align-items: stretch;
   justify-content: space-between;
   flex-wrap: nowrap;
-  min-height: 180px;
   background: var(--background);
   border: var(--border-desktop) solid var(--black);
   border-radius: var(--border-radius-md);
@@ -361,58 +360,47 @@
   cursor: pointer;
   transition: border-color .3s ease-out;
 
-  --label-font-size: 15.6px;
-  --label-gap: 5px;
-  --label-pad-y: .52em;
-  --label-pad-x: .95em;
+  --label-font-size: clamp(12px, 1vw, 15.6px);
+  --label-gap: clamp(4px, .55vw, 7px);
+  --label-pad-y: clamp(4px, .5vw, 7px);
+  --label-pad-x: clamp(8px, .85vw, 12px);
   --label-border: 2px;
   --label-radius: 10px;
+  --label-row-h: calc(1em + (2 * var(--label-pad-y)) + 2px);
 
-  --meta-font-size: 14px;
-  --meta-col-gap: 16px;
-  --meta-row-gap: 6px;
+  --meta-font-size: clamp(12.5px, 1.05vw, 14px);
+  --meta-col-gap: clamp(6px, .8vw, 12px);
 
-  --logo-lane-w: clamp(110px, 12vw, 160px);
-  --logo-max-h: 68%;
+  --logo-lane-w: clamp(96px, 10.5vw, 150px);
+  --logo-max-h: 64%;
+
+  min-height: 180px;
 
   &:hover { border-color: var(--primary-border); }
 
-  @media (max-width: breakpoint(xl)) {
-    min-height: 168px;
-    --label-font-size: 15px;
-    --meta-font-size: 13.5px;
+  @media (max-width: 1280px) {
+    --logo-lane-w: clamp(92px, 10vw, 140px);
+    --logo-max-h: 60%;
   }
   @media (max-width: breakpoint(md)) {
-    min-height: 152px;
     border-width: var(--border-mobile);
     box-shadow: 2px 4px 0 var(--black);
+    min-height: 152px;
 
-    --label-font-size: 14.5px;
-    --label-pad-y: .48em;
-    --label-pad-x: .9em;
-    --label-radius: 11px;
+    --label-font-size: clamp(11.5px, 2.6vw, 14px);
+    --label-pad-y: clamp(3px, .45vw, 6px);
+    --label-pad-x: clamp(6px, .75vw, 10px);
 
-    --meta-font-size: 13px;
-    --meta-col-gap: 14px;
-
-    --logo-lane-w: clamp(100px, 18vw, 140px);
-    --logo-max-h: 64%;
+    --logo-lane-w: clamp(88px, 18vw, 132px);
+    --logo-max-h: 58%;
   }
   @media (max-width: breakpoint(sm)) {
-    min-height: 128px;
     box-shadow: 1px 2px 0 var(--black);
+    min-height: 128px;
 
-    --label-font-size: 13.5px;
-    --label-pad-y: .44em;
-    --label-pad-x: .8em;
+    --logo-lane-w: clamp(84px, 26vw, 120px);
+    --logo-max-h: 56%;
     --label-border: 1.5px;
-    --label-radius: 10px;
-
-    --meta-font-size: 12.5px;
-    --meta-col-gap: 12px;
-
-    --logo-lane-w: clamp(90px, 26vw, 128px);
-    --logo-max-h: 60%;
   }
 }
 
@@ -420,7 +408,8 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: .35rem;
   padding: 1rem;
   min-width: 0;
 
@@ -428,7 +417,7 @@
     font: var(--font-sw-l);
     line-height: var(--font-line-l);
     color: var(--white);
-    margin: 0;
+    margin: 0 0 .18rem 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -437,24 +426,25 @@
   > .ModularCardBody {
     display: flex;
     flex-direction: column;
-    gap: .4rem;
+    gap: .28rem;
     min-width: 0;
   }
 
   @media (max-width: breakpoint(md)) {
     padding: .75rem;
-    > .ModularCardBody { gap: .48rem; }
-    h2 { font: var(--font-sw-m); }
+    gap: .28rem;
+    h2 { font: var(--font-sw-m); margin-bottom: .12rem; }
   }
   @media (max-width: breakpoint(sm)) {
     padding: .5rem;
-    > .ModularCardBody { gap: .44rem; }
-    h2 { font: var(--font-sw-s); }
+    gap: .24rem;
+    h2 { font: var(--font-sw-s); margin-bottom: .1rem; }
   }
 }
 
 .Card.ClanCard > .ModularCardImageSection {
   flex: 0 0 var(--logo-lane-w);
+  min-width: var(--logo-lane-w);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -471,60 +461,66 @@
   }
 }
 
-.Card.ClanCard :global(.Meta) {
+.ClanMeta {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  column-gap: var(--meta-col-gap);
-  row-gap: var(--meta-row-gap);
+  gap: var(--meta-col-gap);
   color: var(--white);
   font-size: var(--meta-font-size);
   line-height: 1.28;
   min-width: 0;
+  overflow: hidden;
 }
-.Card.ClanCard :global(.MetaItem) {
+
+.ClanMetaItem {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   min-width: 0;
   white-space: nowrap;
-  flex-shrink: 1;
+  flex: 0 1 auto;
 }
-.Card.ClanCard :global(.MetaItem) img,
-.Card.ClanCard :global(.MetaItem) svg {
+
+.ClanMetaIcon {
   width: 1.2em;
   height: 1.2em;
   flex: 0 0 auto;
 }
-.Card.ClanCard :global(.MetaItem) .Value {
+
+.ClanMetaValue {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
 }
 
-.Card.ClanCard :global(.MetaItem.MetaIcons) { gap: 6px; }
-.Card.ClanCard :global(.Meta) { column-gap: 12px; }
-@media (max-width: breakpoint(md)) {
-  .Card.ClanCard :global(.MetaItem.MetaIcons) { gap: 5px; }
-  .Card.ClanCard :global(.Meta) { column-gap: 10px; }
-}
-
-.Card.ClanCard :global(.Labels) {
+.ClanLabels {
   display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: 4px 4px;
-  margin-top: 6px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, max-content));
+  gap: 6px;
+  margin-top: 4px;
   align-content: start;
   justify-content: start;
   min-width: 0;
+  min-height: calc((var(--label-row-h) * 2) + 6px);
+  overflow: hidden;
 }
-@media (max-width: breakpoint(md)) {
-  .Card.ClanCard :global(.Labels) {
-    grid-template-columns: 1fr;
-    gap: 8px;
+
+@media (max-width: 1150px) {
+  .ClanLabels {
+    grid-template-columns: repeat(auto-fit, minmax(120px, max-content));
   }
 }
-.Card.ClanCard :global(.Label) {
+
+@media (max-width: breakpoint(md)) {
+  .ClanLabels {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    min-height: calc((var(--label-row-h) * 2) + 8px);
+  }
+}
+
+.ClanLabel {
   display: inline-flex;
   align-items: center;
   gap: var(--label-gap);
@@ -536,12 +532,21 @@
   font-size: var(--label-font-size);
   font-weight: 700;
   line-height: 1;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 
-  img, svg { width: 1.12em; height: 1.12em; flex: 0 0 auto; }
+  img,
+  svg {
+    width: 1.12em;
+    height: 1.12em;
+    flex: 0 0 auto;
+  }
 }
 
-.Card.ClanCard :global(.Labels) > :global(.Label):nth-child(n + 4) { display: none; }
+.ClanLabels > .ClanLabel:nth-child(n + 4) { display: none; }
 @media (max-width: breakpoint(md)) {
-  .Card.ClanCard :global(.Labels) > :global(.Label):nth-child(n + 3) { display: none; }
+  .ClanLabels > .ClanLabel:nth-child(n + 3) { display: none; }
 }

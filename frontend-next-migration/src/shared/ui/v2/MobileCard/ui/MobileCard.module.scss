@@ -234,28 +234,30 @@
     align-items: center;
     text-align: center;
 
-    :global(.ScoreRow) {
+    .ClanScoreRow {
       display: flex;
       align-items: center;
-      justify-content: space-between;   
+      justify-content: space-between;
       width: 100%;
-      padding-inline: 0.25rem;          
-      gap: 0;                            
+      padding-inline: 0.25rem;
+      gap: 0;
     }
-    :global(.ScoreRow) .StarIcon {
+
+    .ClanScoreStarIcon {
       width: 20px;
       height: 20px;
-      flex: 0 0 auto;                
+      flex: 0 0 auto;
     }
-    :global(.ScoreRow) .ScoreValue {
+
+    .ClanScoreValue {
       color: var(--white);
       font-size: 1.05rem;
       line-height: 1;
-      flex: 0 0 auto;                   
+      flex: 0 0 auto;
       text-align: right;
     }
 
-    :global(.MembersRow) {
+    .ClanMembersRow {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -266,17 +268,16 @@
       font-size: 0.9rem;
       line-height: 1.1;
     }
-
-    :global(.MetaItem) {
-      display: inline-flex;
-      align-items: center;
-    }
-    :global(.MetaItem.Score) img { width: 20px; height: 20px; }
-    :global(.MetaItem.Coins) .Value { color: var(--white); font-size: 1.05rem; line-height: 1; }
   }
 }
 
 @media (max-width: 360px) {
-  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 { font-size: 1.1rem; }
-  .MobileCard.ClanCard > .TextContainer:last-of-type :global(.ScoreRow) .StarIcon { width: 18px; height: 18px; }
+  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
+    font-size: 1.1rem;
+  }
+
+  .MobileCard.ClanCard > .TextContainer:last-of-type .ClanScoreStarIcon {
+    width: 18px;
+    height: 18px;
+  }
 }
