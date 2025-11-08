@@ -59,46 +59,46 @@ function MainPage(props: Props) {
 
     return (
         <div className={cls.MainPage}>
-            <div>
-                <div className={cls.imageContainer}>
-                    <WallIntroAnimation renderOnce={true} />
-                </div>
-                <Button
-                    withScalableLink
-                    className={cls.aboutButton}
-                    theme={ButtonTheme.PRIMARY_2}
-                    size={ButtonSize.L}
-                    onClick={() => router.push('/about')}
-                >
-                    {t('main-about')}
-                </Button>
+            <div className={cls.mainImgWrapper}>
+                <WallIntroAnimation renderOnce={true} />
+                <div className={cls.buttonsOverlay}>
+                    <Button
+                        withScalableLink
+                        className={cls.aboutButton}
+                        theme={ButtonTheme.PRIMARY_2}
+                        size={ButtonSize.L}
+                        onClick={() => router.push('/about')}
+                    >
+                        {t('main-about')}
+                    </Button>
 
-                <Button
-                    withScalableLink
-                    className={cls.prgButton}
-                    theme={ButtonTheme.PRIMARY_2}
-                    size={ButtonSize.L}
-                    onClick={() => router.push('/prg')}
-                >
-                    {t('main-prg')}
-                </Button>
+                    <Button
+                        withScalableLink
+                        className={cls.prgButton}
+                        theme={ButtonTheme.PRIMARY_2}
+                        size={ButtonSize.L}
+                        onClick={() => router.push('/prg')}
+                    >
+                        {t('main-prg')}
+                    </Button>
 
-                {/**<Button
+                    {/**<Button
                     withScalableLink
                     className={cls.teachersButton}
                     theme={ButtonTheme.PRIMARY_2}
                     size={ButtonSize.L}>{t('main-teacherspage')}
                 </Button>**/}
 
-                <Button
-                    withScalableLink
-                    className={cls.playButton}
-                    theme={ButtonTheme.SECONDARY}
-                    size={ButtonSize.L}
-                    onClick={() => window.open(AppExternalLinks.downloadAndroid, '_blank')}
-                >
-                    {t('main-play')}
-                </Button>
+                    <Button
+                        withScalableLink
+                        className={cls.playButton}
+                        theme={ButtonTheme.SECONDARY}
+                        size={ButtonSize.L}
+                        onClick={() => window.open(AppExternalLinks.downloadAndroid, '_blank')}
+                    >
+                        {t('main-play')}
+                    </Button>
+                </div>
             </div>
 
             <ProjectDescription

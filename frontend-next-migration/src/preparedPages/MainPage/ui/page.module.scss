@@ -1,29 +1,35 @@
-.aboutButton {
-    position: absolute;
-    top: 6%;
-    left: 12%;
-    z-index: 2;
+.mainImgWrapper {
+    position: relative;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.prgButton {
+.buttonsOverlay {
     position: absolute;
-    top: 8%;
-    left: 12%;
-    z-index: 2;
-}
-
-.teachersButton {
-    position: absolute;
-    top: 10%;
-    left: 12%;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    left: 170px;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 30px;
     z-index: 2;
 }
 
 .playButton {
-    position: absolute;
-    top: 18.5%;
-    left: 35%;
-    z-index: 2;
+    align-self: center;
+    margin-top: 350px;
+    margin-right: 380px;
+}
+
+@media (max-width: 1080px) {
+    .buttonsOverlay {
+        display: none;
+    }
 }
 
 .description {
