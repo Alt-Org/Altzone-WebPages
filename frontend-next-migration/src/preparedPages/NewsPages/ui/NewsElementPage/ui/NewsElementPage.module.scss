@@ -75,7 +75,7 @@
     width: 100%;
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
-        font:var(--font-sw-l)
+        font: var(--font-sw-l);
     }
 }
 
@@ -111,6 +111,7 @@
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     justify-content: center;
+    margin-bottom: 1.5em;
 }
 
 .readmoreText {
