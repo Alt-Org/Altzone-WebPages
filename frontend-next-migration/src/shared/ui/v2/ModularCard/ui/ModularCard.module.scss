@@ -360,16 +360,16 @@
   cursor: pointer;
   transition: border-color .3s ease-out;
 
-  --label-font-size: clamp(12px, 1vw, 15.6px);
-  --label-gap: clamp(4px, .55vw, 7px);
-  --label-pad-y: clamp(4px, .5vw, 7px);
-  --label-pad-x: clamp(8px, .85vw, 12px);
+  --label-font-size: 0.95rem;
+  --label-gap: 0.4rem;
+  --label-pad-y: 0.45rem;
+  --label-pad-x: 0.9rem;
   --label-border: 1px;
   --label-radius: 6px;
   --label-row-h: calc(1em + (2 * var(--label-pad-y)) + 2px);
 
-  --meta-font-size: clamp(12.5px, 1.05vw, 14px);
-  --meta-col-gap: clamp(6px, .8vw, 12px);
+  --meta-font-size: 0.9rem;
+  --meta-col-gap: 0.75rem;
 
   --logo-lane-w: clamp(96px, 10.5vw, 150px);
   --logo-max-h: 64%;
@@ -381,25 +381,32 @@
   @media (max-width: 1280px) {
     --logo-lane-w: clamp(92px, 10vw, 140px);
     --logo-max-h: 60%;
+    --label-font-size: 0.9rem;
   }
+
   @media (max-width: breakpoint(md)) {
     border-width: var(--border-mobile);
     box-shadow: 2px 4px 0 var(--black);
     min-height: 152px;
 
-    --label-font-size: clamp(11.5px, 2.6vw, 14px);
-    --label-pad-y: clamp(3px, .45vw, 6px);
-    --label-pad-x: clamp(6px, .75vw, 10px);
+    --label-font-size: 0.85rem;
+    --label-pad-y: 0.35rem;
+    --label-pad-x: 0.8rem;
+    --label-row-h: calc(1em + (2 * var(--label-pad-y)) + 2px);
 
     --logo-lane-w: clamp(88px, 18vw, 132px);
     --logo-max-h: 58%;
   }
+
   @media (max-width: breakpoint(sm)) {
     box-shadow: 1px 2px 0 var(--black);
     min-height: 128px;
 
     --logo-lane-w: clamp(84px, 26vw, 120px);
     --logo-max-h: 56%;
+    --label-font-size: 0.8rem;
+    --label-pad-y: 0.3rem;
+    --label-pad-x: 0.7rem;
     --label-border: 1.5px;
   }
 }
@@ -435,6 +442,7 @@
     gap: .28rem;
     h2 { font: var(--font-sw-m); margin-bottom: .12rem; }
   }
+
   @media (max-width: breakpoint(sm)) {
     padding: .5rem;
     gap: .24rem;
@@ -508,7 +516,15 @@
 
 @media (max-width: 1150px) {
   .ClanLabels {
-    grid-template-columns: repeat(auto-fit, minmax(120px, max-content));
+    grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+  }
+}
+
+@media (max-width: breakpoint(md)) {
+  .ClanLabels {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    min-height: calc((var(--label-row-h) * 2) + 8px);
   }
 }
 
