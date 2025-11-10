@@ -80,7 +80,7 @@ export async function _getPage(lng: string) {
                     href: getRouteAllHeroesPage(),
                 },
             },
-            gallery: {
+            altZone: {
                 title: t('project-description-title'),
                 infoText: t('project-description-text'),
                 socialsText: t('socials-text'),
@@ -96,23 +96,6 @@ export async function _getPage(lng: string) {
                 ],
                 videoLink: AppExternalLinks.previewVideoYoutube,
                 gameImg: iPhone16.src,
-            },
-            galleryCopy: {
-                title: t('project-description-title'),
-                infoText: t('project-description-text'),
-                socialsText: t('socials-text'),
-                followUsText: t('follow-us-text'),
-                seeMoreLink: {
-                    text: t('gallery-seeMore'),
-                    href: getRouteAboutPage(),
-                },
-                socialMediaLinks: [
-                    AppExternalLinks.igPost1,
-                    AppExternalLinks.igPost2,
-                    AppExternalLinks.fbPost1,
-                ],
-                videoLink: AppExternalLinks.previewVideoYoutube,
-                gameImg: gameImg.src,
             },
             contactSection: {
                 title: t('contact-title'),
