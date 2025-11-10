@@ -11,6 +11,7 @@ const LessonList = () => {
     // TODO: replace with real data fetched from backend
     // This is just a placeholder based on data present in the figma
     // real data may look different and would require refactoring the component
+    // use src/entities/Box/model/boxApi.ts for fetching real data
     const [mockLessons, setMockLessons] = useState([
         { id: 'abc123', identifier: 'aabbcc', title: 'Ryhmä 7A', numStudents: 20 },
         { id: 'def456', identifier: 'ddeeff', title: '7B', numStudents: 40 },
@@ -20,10 +21,9 @@ const LessonList = () => {
         { id: 'pqr678', identifier: 'ppqqrr', title: '', numStudents: 10 },
     ]);
     const MAXLESSONS = 10;
-    // add functions for creating and deleting lessons
     const [creatingLesson, setCreatingLesson] = useState(false);
     const createLesson = (title: string, numStudents: number) => {
-        // logic for creating a lesson
+        // TODO: update logic for creating a lesson using real data
         // mock function for now, in NewLesson user defined title and number of students
         // server would then create a random identifier and id for the lesson
         const newLesson = {
@@ -36,7 +36,7 @@ const LessonList = () => {
         setCreatingLesson(false);
     };
     const deleteLesson = (lessonId: string) => {
-        // logic for deleting a lesson
+        // TODO: update with real delete logic
         setMockLessons((prevLessons) => prevLessons.filter((lesson) => lesson.id !== lessonId));
     };
     return (
@@ -55,7 +55,7 @@ const LessonList = () => {
                     {t('create-lesson')}
                     <Image
                         src={plusIcon}
-                        alt="+"
+                        alt="plus icon"
                     />
                 </Button>
             </div>

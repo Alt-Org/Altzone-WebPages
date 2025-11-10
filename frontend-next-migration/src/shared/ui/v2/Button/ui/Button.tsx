@@ -58,7 +58,6 @@ export const Button: React.FC<ButtonProps> = (props) => {
                 cls[theme],
                 disabled ? cls.disabled : '',
             ])}
-            {...otherProps}
         >
             {children}
         </AppLink>

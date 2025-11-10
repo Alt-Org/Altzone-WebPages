@@ -48,7 +48,8 @@ const NewLesson = (props: NewLessonProps) => {
                             onChange={handleChange}
                         >
                             {
-                                //10...60
+                                // TODO: replace with actual desired numbers of students
+                                // currently 10...60
                                 Array.from({ length: 6 }, (_, i) => (i + 1) * 10).map((num) => (
                                     <option
                                         key={num}
