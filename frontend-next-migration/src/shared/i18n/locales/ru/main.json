@@ -1,9 +1,22 @@
 {
-    "PlayOnline": "ИГРАЙ В БРАУЗЕРЕ!",
+
+    "main-title": "СДЕЛАЕМ ВМЕСТЕ САМУЮ ЛУЧШУЮ ИГРУ В МИРЕ!",
+    "main-description": "В мобильной игре ALT Zone вы погрузитесь в глубины человеческого разума, где персонажи олицетворяют собой механизмы защиты и сражаются друг с другом на поле социальных взаимодействий.",
+    "main-sub-description": "Пройдите лабиринт наших душ \n Готовы ли вы бросить вызов своим защитным механизмам?",
+    "playWithUs-title": "Играть сейчас",
+    "PlayOnline": "ИГРАТЬ В БРАУЗЕРЕ!",
+    "playWithUs-download": "Загрузить",
+    "playWithUs-text": "В браузере",
+    "descriptionCard-title": "Ознакомьтесь с классами защиты",
+    "newsSection-title": "ALT Новости",
+    "newsSection-seeMore": "Подробнее",
+    "contact-title": "Хотели бы\n работать \nс нами?",
+    "contact-linkText": "Связывайтесь",
     "getToKnowComics": "Наши комиксы",
     "head-title": "ALT Zone",
     "head-description": "ALT Zone — это онлайн-многопользовательская игра, разработанная для мобильных платформ в качестве образовательного инструмента для преподавания искусства в начальных школах.",
     "head-keywords": "altzone, игра, сообщество, комиксы, галереи, играть, зарегистрироваться, войти в систему",
+    "project-description-text": "ALT Zone is an art-based mobile game created as a volunteer-driven production in collaboration with young people. In the game, human defense mechanisms clash on the battlefield of social interaction.\n\nAn accompanying educational package for lower and upper secondary schools will be created, which teachers can easily apply in practice. Students have the opportunity to continue developing the game. The revenue from the resulting ALT Zone 2.0 game will be donated in full to support the dreams of young people.",
     "og-title": "ALT Zone - Начни свою игру здесь",
     "og-description": "ALT Zone — это онлайн-многопользовательская игра, разработанная для мобильных платформ в качестве образовательного инструмента для преподавания искусства в начальных школах.",
     "ranking-player": "игрок",
@@ -12,5 +25,10 @@
         "описание проекта, текст  в слайдере.",
         "описание проекта, текст  в слайдере.",
         "описание проекта, текст  в слайдере."
-    ]
+    ],
+    "project-description-title": "Что такое ALT Zone?",
+    "project-description-text": "ALT Zone — это мобильная арт-игра, созданная на волонтерских началах в сотрудничестве с молодежью. В игре механизмы защиты человека сталкиваются на поле социальных взаимодействий. \n К игре будет разработан сопутствующий образовательный пакет для младших и старших классов средней школы, который учителя смогут легко применять на практике. Учащиеся имеют возможность продолжить разработку игры. Весь доход от итоговой игры ALT Zone 2.0 будет пожертвован на поддержку мечты молодых людей.",
+    "gallery-seeMore": "Подробнее",
+    "follow-us-text": "Мы в социальных сетях"
+
 }
