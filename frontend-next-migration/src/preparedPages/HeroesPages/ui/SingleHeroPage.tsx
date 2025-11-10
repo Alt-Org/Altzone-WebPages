@@ -1,4 +1,15 @@
 'use client';
+/**
+ * SingleHeroPage – detail page for a single hero.
+ *
+ * The page retrieves hero data from initialized hero groups based on the given `slug`,
+ * and renders the description, rarity class, and stats.
+ *
+ * Also responsible for responsive behavior:
+ * - On mobile, the image is shown in a separate card and long descriptions
+ *   are clamped with a "Read more" toggle.
+ * - On desktop/tablet, headings and layout are two-column.
+ */
 import { HeroSlug, Hero } from '@/entities/Hero';
 import Image from 'next/image';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
@@ -11,10 +22,28 @@ import cls from './SingleHeroPage.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { BarIndicator } from '@/shared/ui/v2/BarIndicator';
 
+/**
+ * Props for `SingleHeroPage` component.
+ *
+ * Renders hero details for a specific hero identified by `slug`.
+ */
 export interface Props {
+    /** Hero identifier (URL slug) used to select a hero from initialized groups */
     slug: HeroSlug;
 }
 
+/**
+ * SingleHeroPage component that renders a detailed page for a hero.
+ *
+ * Responsibilities:
+ * - Finds the hero by `slug` from groups (already localized via `initializeHeroGroups`).
+ * - Displays the title, description, rarity class, and stats (`BarIndicator`).
+ * - Handles responsiveness: on mobile, the description can be expanded with a "Read more" button.
+ *
+ * @param props - Component props
+ * @param props.slug - Hero URL slug used to select the hero
+ * @returns JSX element that forms the page content
+ */
 const SingleHeroPage = (props: Props) => {
     const { slug } = props;
     const { t } = useClientTranslation('heroes');
@@ -30,7 +59,6 @@ const SingleHeroPage = (props: Props) => {
     const { titleText, hero } = useMemo<{ titleText: string; hero?: Hero }>(() => {
         // Find hero by slug across all groups
         for (const groupKey in heroGroups) {
-            // @ts-ignore iterate typed enum keys safely at runtime
             const group = heroGroups[groupKey as keyof typeof heroGroups];
             const hero = group.heroes.find((hero) => hero.slug === slug);
             if (hero) {
@@ -43,7 +71,17 @@ const SingleHeroPage = (props: Props) => {
         return { titleText: '', hero: undefined };
     }, [heroGroups, slug]);
 
-    function getSkillString(value: number): string {
+    /**
+     * Converts a hero's skill level (`rarityClass`/value) to an i18n key.
+     *
+     * Mapping examples:
+     * 1 -> `master`, 3 -> `expert`, 5 -> `skilled`, 10 -> `unskilled`.
+     * Returns `unskilled` by default if the value is not recognized.
+     *
+     * @param value - Numeric skill level value
+     * @returns I18n key string (e.g., `"master"`)
+     */
+    const getSkillString = (value: number): string => {
         const skills: { [key: number]: string } = {
             1: 'master',
             3: 'expert',
@@ -54,7 +92,7 @@ const SingleHeroPage = (props: Props) => {
             10: 'unskilled',
         };
         return skills[value] ?? 'unskilled';
-    }
+    };
 
     // Measure if description overflows when clamped (mobile only)
     useEffect(() => {

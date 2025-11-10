@@ -18,7 +18,6 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     const { titleText, subTitleText } = useMemo(() => {
         const heroGroups = initializeHeroGroups(t);
         for (const groupKey in heroGroups) {
-            // @ts-ignore enum key iteration at runtime
             const group = heroGroups[groupKey as keyof typeof heroGroups];
             const hero = group.heroes.find((hero) => hero.slug === slug);
             if (hero) {
