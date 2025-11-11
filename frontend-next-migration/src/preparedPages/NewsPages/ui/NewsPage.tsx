@@ -10,6 +10,7 @@ import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
 import { useClientTranslation } from '@/shared/i18n';
+import { PageTitle } from '@/shared/ui/PageTitle';
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
@@ -90,6 +91,11 @@ const NewsPage = () => {
     return (
         <main className={cls.NewsPage}>
             <Container>
+                <PageTitle
+                    titleText={t('head-title')}
+                    alternate={true}
+                    searchVisible={false}
+                />
                 <div className={cls.newsGrid}>
                     {groupedNews.map((news) => {
                         const imageSrc = news.titlePicture?.id

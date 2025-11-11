@@ -117,7 +117,7 @@
     overflow: hidden;
     outline: 4px solid var(--black);
     box-shadow: 6px 6px #121212;
-    margin: 0 0 var(--spacing-400) 0;
+    margin: -16px 0 var(--spacing-400) 0;
 
     @media (max-width: breakpoint(sm)) {
         max-width: none;
@@ -136,6 +136,7 @@
     font: var(--font-sw-xl);
     color: var(--primary-color);
     padding-bottom: var(--spacing-sm);
+    margin-bottom: 16px;
     padding-top: var(--spacing-sm);
 
     @media (max-width: breakpoint(sm)) {
@@ -163,8 +164,7 @@
 }
 
 .sValues {
-    font-family: var(--font-family-title);
-    font-size: var(--font-size-m);
+    font: var(font-sw-xl);
     text-align: center;
     padding: 1%;
 }
@@ -172,6 +172,7 @@
     font: var(--font-sw-xl);
     color: var(--primary-color);
     text-align: left;
+    margin-top: -16px;
 
     @media (max-width: breakpoint(sm)) {
         text-align: left;
@@ -187,6 +188,7 @@
 
     @media (max-width: breakpoint(lg)) {
         font: var(--font-sw-l);
+        margin-top: -12px;
     }
 }
 
