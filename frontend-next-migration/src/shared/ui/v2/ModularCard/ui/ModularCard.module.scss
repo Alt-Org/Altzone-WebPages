@@ -520,7 +520,7 @@
   }
 }
 
-@media (max-width: breakpoint(md)) {
+@media (max-width: breakpoint(sm)) {
   .ClanLabels {
     grid-template-columns: 1fr;
     gap: 8px;
