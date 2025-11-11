@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
@@ -27,38 +27,31 @@ const labels = [
     { text: 'Eläinrakkaat', icon: iconAnimalLovers },
 ];
 
+type ClanItem = GetClansResponse['data']['Clan'][number];
+
 const ClanAllSubPage = () => {
-    const [searchRaw, setSearchRaw] = useState('');
-    const [currentSearch, setSearch] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
     const { isMobileSize, isTabletSize } = useSizes();
     const router = useRouter();
     const { t } = useClientTranslation('clan');
-    const { data: clans } = useGetClansQuery({ page: 1, search: currentSearch });
+    const { data: clansResponse } = useGetClansQuery({ page: 1 });
 
-    useEffect(() => {
-        const id = setTimeout(() => {
-            setSearch(searchRaw ? convertToQuerySearch(searchRaw) : '');
-        }, 0);
-        return () => clearTimeout(id);
-    }, [searchRaw]);
+    const filteredClans = useMemo(() => {
+        if (!clansResponse) return [];
+
+        const allClans = clansResponse.data.Clan;
+        const query = searchQuery.trim().toLowerCase();
+
+        if (!query) return allClans;
+
+        return allClans.filter((clan) => clan.name.toLowerCase().includes(query));
+    }, [clansResponse, searchQuery]);
 
     const onClickToClan = (id: string) => {
         router.push(getRouteOneClanPage(id));
     };
 
-    // Temporary way to convert search query value to case-insensitive in front
-    const convertToQuerySearch = (search: string): string => {
-        // Converts value "testi" to: 'name=".*[tT][eE][sS][tT][iI].*"'
-        const cleanValue = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const convertedValue = cleanValue
-            .split('')
-            .map((char) => `[${char.toLowerCase()}${char.toUpperCase()}]`)
-            .join('');
-        const querySearch = `name=".*${convertedValue}.*"`;
-        return querySearch;
-    };
-
-    if (!clans) {
+    if (!clansResponse) {
         return null;
     }
 
@@ -67,23 +60,23 @@ const ClanAllSubPage = () => {
             {isMobileSize ? (
                 <>
                     <SearchBar
-                        value={searchRaw}
-                        onChange={setSearchRaw}
+                        value={searchQuery}
+                        onChange={setSearchQuery}
                         wrapperClassName={`${cls.SearchBar} ${cls.SearchBarMobile}`}
                         inputClassName={cls.Input}
                     />
-                    <ClansViewMobile clanServerResponse={clans} />
+                    <ClansViewMobile clans={filteredClans} />
                 </>
             ) : isTabletSize ? (
                 <>
                     <SearchBar
-                        value={searchRaw}
-                        onChange={setSearchRaw}
+                        value={searchQuery}
+                        onChange={setSearchQuery}
                         wrapperClassName={`${cls.SearchBar} ${cls.SearchBarTablet}`}
                         inputClassName={cls.Input}
                     />
                     <ClansViewDesktop
-                        clanServerResponse={clans}
+                        clans={filteredClans}
                         onClickToClan={onClickToClan}
                     />
                 </>
@@ -96,14 +89,14 @@ const ClanAllSubPage = () => {
                             searchVisible={false}
                         />
                         <SearchBar
-                            value={searchRaw}
-                            onChange={setSearchRaw}
+                            value={searchQuery}
+                            onChange={setSearchQuery}
                             wrapperClassName={`${cls.SearchBar} ${cls.SearchBarDesktop}`}
                             inputClassName={cls.Input}
                         />
                     </div>
                     <ClansViewDesktop
-                        clanServerResponse={clans}
+                        clans={filteredClans}
                         onClickToClan={onClickToClan}
                     />
                 </>
@@ -113,156 +106,148 @@ const ClanAllSubPage = () => {
 };
 
 type MobileProps = {
-    clanServerResponse: GetClansResponse;
+    clans: ClanItem[];
 };
 
-const ClansViewMobile = ({ clanServerResponse }: MobileProps) => {
+const ClansViewMobile = ({ clans }: MobileProps) => {
     const { t } = useClientTranslation('clan');
 
     return (
-        <div>
-            <div className={cls.MobileCardContainer}>
-                {clanServerResponse.data.Clan.map((clan, idx) => (
-                    <div
-                        key={clan._id}
-                        className={cls.MobileCardItemWrap}
+        <div className={cls.MobileCardContainer}>
+            {clans.map((clan) => (
+                <div
+                    key={clan._id}
+                    className={cls.MobileCardItemWrap}
+                >
+                    <MobileCardLink
+                        path={getRouteOneClanPage(clan._id)}
+                        ariaLabel={`Open clan ${clan.name}`}
+                        withScalableLink
+                        className={cls.MobileCardItem}
                     >
-                        <MobileCardLink
-                            path={getRouteOneClanPage(clan._id)}
-                            ariaLabel={`Open clan ${clan.name}`}
-                            withScalableLink
-                            className={cls.MobileCardItem}
-                        >
-                            <MobileCard theme={MobileCardTheme.CLAN}>
-                                <MobileCard.Texts
-                                    title1={clan.name}
-                                    title2={''}
-                                />
+                        <MobileCard theme={MobileCardTheme.CLAN}>
+                            <MobileCard.Texts
+                                title1={clan.name}
+                                title2={''}
+                            />
 
-                                <MobileCard.Image
-                                    alt={`${clan.name} logo`}
-                                    src={clanLogo}
-                                    backgroundColor="transparent"
-                                />
+                            <MobileCard.Image
+                                alt={`${clan.name} logo`}
+                                src={clanLogo}
+                                backgroundColor="transparent"
+                            />
 
-                                <MobileCard.Texts
-                                    title1={''}
-                                    title2={''}
-                                >
-                                    <div className={mobileCardCls.ClanScoreRow}>
-                                        <Image
-                                            src={starGray}
-                                            alt="score"
-                                            width={18}
-                                            height={18}
-                                            className={mobileCardCls.ClanScoreStarIcon}
-                                        />
-                                        <span className={mobileCardCls.ClanScoreValue}>
-                                            {typeof clan.gameCoins === 'number'
-                                                ? clan.gameCoins
-                                                : idx + 1}
-                                        </span>
-                                    </div>
+                            <MobileCard.Texts
+                                title1={''}
+                                title2={''}
+                            >
+                                <div className={mobileCardCls.ClanScoreRow}>
+                                    <Image
+                                        src={starGray}
+                                        alt="score"
+                                        width={18}
+                                        height={18}
+                                        className={mobileCardCls.ClanScoreStarIcon}
+                                    />
+                                    <span className={mobileCardCls.ClanScoreValue}>
+                                        {clan.gameCoins}
+                                    </span>
+                                </div>
 
-                                    <div className={mobileCardCls.ClanMembersRow}>
-                                        {t('members')} {clan.playerCount} / 30
-                                    </div>
-                                </MobileCard.Texts>
-                            </MobileCard>
-                        </MobileCardLink>
-                    </div>
-                ))}
-            </div>
+                                <div className={mobileCardCls.ClanMembersRow}>
+                                    {t('members')} {clan.playerCount} / 30
+                                </div>
+                            </MobileCard.Texts>
+                        </MobileCard>
+                    </MobileCardLink>
+                </div>
+            ))}
         </div>
     );
 };
 
 type DesktopProps = {
-    clanServerResponse: GetClansResponse;
+    clans: ClanItem[];
     onClickToClan?: (id: string) => void;
 };
 
-const ClansViewDesktop = ({ clanServerResponse, onClickToClan }: DesktopProps) => {
+const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
     const { t } = useClientTranslation('clan');
 
     return (
-        <div>
-            <div className={cls.DesktopCardContainer}>
-                {clanServerResponse.data.Clan.map((clan, idx) => (
-                    <div
-                        key={clan._id}
-                        style={{ width: 'calc(50% - .5em)' }}
+        <div className={cls.DesktopCardContainer}>
+            {clans.map((clan) => (
+                <div
+                    key={clan._id}
+                    style={{ width: 'calc(50% - .5em)' }}
+                >
+                    <ModularCard
+                        theme={ModularCardTheme.CLAN}
+                        onClick={() => onClickToClan?.(clan._id)}
+                        role="button"
+                        tabIndex={0}
+                        withScalableLink
                     >
-                        <ModularCard
-                            theme={ModularCardTheme.CLAN}
-                            onClick={() => onClickToClan?.(clan._id)}
-                            role="button"
-                            tabIndex={0}
-                            withScalableLink
-                        >
-                            <ModularCard.Texts>
-                                <ModularCard.Texts.Title>{clan.name}</ModularCard.Texts.Title>
+                        <ModularCard.Texts>
+                            <ModularCard.Texts.Title>{clan.name}</ModularCard.Texts.Title>
 
-                                <ModularCard.Texts.Body>
-                                    <div className={cardCls.ClanMeta}>
-                                        <span className={cardCls.ClanMetaItem}>
-                                            <Image
-                                                src={iconLeaderboard}
-                                                alt="leaderboard"
-                                                width={18}
-                                                height={18}
-                                                className={cardCls.ClanMetaIcon}
-                                            />
-                                            <Image
-                                                src={iconFlagFi}
-                                                alt="flag"
-                                                width={18}
-                                                height={18}
-                                                className={cardCls.ClanMetaIcon}
-                                            />
+                            <ModularCard.Texts.Body>
+                                <div className={cardCls.ClanMeta}>
+                                    <span className={cardCls.ClanMetaItem}>
+                                        <Image
+                                            src={iconLeaderboard}
+                                            alt="leaderboard"
+                                            width={18}
+                                            height={18}
+                                            className={cardCls.ClanMetaIcon}
+                                        />
+                                        <Image
+                                            src={iconFlagFi}
+                                            alt="flag"
+                                            width={18}
+                                            height={18}
+                                            className={cardCls.ClanMetaIcon}
+                                        />
+                                    </span>
+
+                                    <span className={cardCls.ClanMetaItem}>
+                                        <span className={cardCls.ClanMetaValue}>
+                                            {t('members')} {clan.playerCount} / 30
                                         </span>
-
-                                        <span className={cardCls.ClanMetaItem}>
-                                            <span className={cardCls.ClanMetaValue}>
-                                                {t('members')} {clan.playerCount} / 30
-                                            </span>
-                                            <span className={cardCls.ClanMetaValue}>
-                                                {typeof clan.gameCoins === 'number'
-                                                    ? clan.gameCoins
-                                                    : idx + 1}
-                                            </span>
+                                        <span className={cardCls.ClanMetaValue}>
+                                            {clan.gameCoins}
                                         </span>
-                                    </div>
+                                    </span>
+                                </div>
 
-                                    <div className={cardCls.ClanLabels}>
-                                        {labels.map((l) => (
-                                            <span
-                                                className={cardCls.ClanLabel}
-                                                key={l.text}
-                                            >
-                                                <Image
-                                                    src={l.icon}
-                                                    alt={l.text}
-                                                    width={16}
-                                                    height={16}
-                                                />
-                                                {l.text}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </ModularCard.Texts.Body>
-                            </ModularCard.Texts>
+                                <div className={cardCls.ClanLabels}>
+                                    {labels.map((l) => (
+                                        <span
+                                            className={cardCls.ClanLabel}
+                                            key={l.text}
+                                        >
+                                            <Image
+                                                src={l.icon}
+                                                alt={l.text}
+                                                width={16}
+                                                height={16}
+                                            />
+                                            {l.text}
+                                        </span>
+                                    ))}
+                                </div>
+                            </ModularCard.Texts.Body>
+                        </ModularCard.Texts>
 
-                            <ModularCard.Image>
-                                <ModularCard.Image.Image
-                                    src={clanLogo}
-                                    alt={`${clan.name} logo`}
-                                />
-                            </ModularCard.Image>
-                        </ModularCard>
-                    </div>
-                ))}
-            </div>
+                        <ModularCard.Image>
+                            <ModularCard.Image.Image
+                                src={clanLogo}
+                                alt={`${clan.name} logo`}
+                            />
+                        </ModularCard.Image>
+                    </ModularCard>
+                </div>
+            ))}
         </div>
     );
 };
