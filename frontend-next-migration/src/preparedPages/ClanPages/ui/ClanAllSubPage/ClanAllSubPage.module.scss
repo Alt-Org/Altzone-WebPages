@@ -1,53 +1,6 @@
-.ClanCard {
-  width: 100%;
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  cursor: pointer;
-  outline: none;
-
-  &:focus {
-    box-shadow: 0 0 0 2px var(--accent-600);
-  }
-}
-
 .Container {
   max-width: var(--content-width);
   margin: 0 auto;
-}
-
-.Loader {
-  @include position-absolute-center;
-}
-
-.Buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 20px;
-  width: 100%;
-  margin-top: 5%;
-}
-
-.titleText {
-  font: var(--font-dm-bold-xl);
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.notFound {
-  text-align: left;
-}
-
-.BtnGame {
-  background-color: var(--black) !important;
-
-
-  //line height: ;
-  font: var(--font-dm-m) !important;
-  white-space: nowrap;
-  min-width: fit-content;
-  //border: solid 1px var(--primary-color);
 }
 
 .TitleBar {
