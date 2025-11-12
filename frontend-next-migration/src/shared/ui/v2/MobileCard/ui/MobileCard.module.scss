@@ -218,7 +218,6 @@
     padding: 0.25rem 0;
 
     .Image {
-      width: auto;
       height: 74%;
       object-fit: contain !important;
     }
@@ -234,22 +233,21 @@
     align-items: stretch;
     text-align: center;
 
-    .ClanScoreRow {
+    .ClanInfoRow {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       padding: 0 0.25rem;
-      margin-inline: 0;
     }
 
-    .ClanScoreStarIcon {
+    .ClanInfoIcon {
       width: 20px;
       height: 20px;
       flex: 0 0 auto;
     }
 
-    .ClanScoreValue {
+    .ClanInfoValue {
       color: var(--white);
       font-size: 0.98rem;
       line-height: 1.05;
@@ -262,7 +260,6 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      text-align: center;
       margin-inline: auto;
       color: var(--white);
       font-size: 0.92rem;

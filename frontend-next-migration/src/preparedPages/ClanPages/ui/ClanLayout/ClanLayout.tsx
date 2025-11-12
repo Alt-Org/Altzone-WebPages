@@ -34,6 +34,7 @@ export const SearchBar = ({
             <Image
                 src={searchIcon}
                 alt="search icon"
+                width={20}
                 height={20}
             />
             <input

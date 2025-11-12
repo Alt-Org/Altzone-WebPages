@@ -21,7 +21,8 @@ import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirs
 import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png';
 import starGray from '@/shared/assets/images/clanLogos/TopPanelMatchmakingPorvarit.png';
 
-const labels = [
+// use real clan labels from API when available
+const MOCK_LABELS = [
     { text: 'Spämmääjä', icon: iconSpammer },
     { text: 'Humoristiset', icon: iconHumorous },
     { text: 'Eläinrakkaat', icon: iconAnimalLovers },
@@ -141,15 +142,13 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                                 title1={''}
                                 title2={''}
                             >
-                                <div className={mobileCardCls.ClanScoreRow}>
+                                <div className={mobileCardCls.ClanInfoRow}>
                                     <Image
                                         src={starGray}
                                         alt="score"
-                                        width={18}
-                                        height={18}
-                                        className={mobileCardCls.ClanScoreStarIcon}
+                                        className={mobileCardCls.ClanInfoIcon}
                                     />
-                                    <span className={mobileCardCls.ClanScoreValue}>
+                                    <span className={mobileCardCls.ClanInfoValue}>
                                         {clan.gameCoins}
                                     </span>
                                 </div>
@@ -192,36 +191,32 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                             <ModularCard.Texts.Title>{clan.name}</ModularCard.Texts.Title>
 
                             <ModularCard.Texts.Body>
-                                <div className={cardCls.ClanMeta}>
-                                    <span className={cardCls.ClanMetaItem}>
+                                <div className={cardCls.ClanInfoRow}>
+                                    <span className={cardCls.ClanInfoBadges}>
                                         <Image
                                             src={iconLeaderboard}
                                             alt="leaderboard"
-                                            width={18}
-                                            height={18}
-                                            className={cardCls.ClanMetaIcon}
+                                            className={cardCls.ClanInfoIcon}
                                         />
                                         <Image
                                             src={iconFlagFi}
                                             alt="flag"
-                                            width={18}
-                                            height={18}
-                                            className={cardCls.ClanMetaIcon}
+                                            className={cardCls.ClanInfoIcon}
                                         />
                                     </span>
 
-                                    <span className={cardCls.ClanMetaItem}>
-                                        <span className={cardCls.ClanMetaValue}>
+                                    <span className={cardCls.ClanInfoStats}>
+                                        <span className={cardCls.ClanInfoValue}>
                                             {t('members')} {clan.playerCount} / 30
                                         </span>
-                                        <span className={cardCls.ClanMetaValue}>
+                                        <span className={cardCls.ClanInfoValue}>
                                             {clan.gameCoins}
                                         </span>
                                     </span>
                                 </div>
 
                                 <div className={cardCls.ClanLabels}>
-                                    {labels.map((l) => (
+                                    {MOCK_LABELS.map((l) => (
                                         <span
                                             className={cardCls.ClanLabel}
                                             key={l.text}
@@ -229,8 +224,6 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                             <Image
                                                 src={l.icon}
                                                 alt={l.text}
-                                                width={16}
-                                                height={16}
                                             />
                                             {l.text}
                                         </span>

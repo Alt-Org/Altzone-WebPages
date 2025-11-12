@@ -351,7 +351,6 @@
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  flex-wrap: nowrap;
   background: var(--background);
   border: var(--border-desktop) solid var(--black);
   border-radius: var(--border-radius-md);
@@ -360,7 +359,10 @@
   cursor: pointer;
   transition: border-color .3s ease-out;
 
+  //Labels
   --label-font-size: 0.95rem;
+  --label-icon-box: 1.12em; 
+  --label-icon-scale: 1.35; 
   --label-gap: 0.4rem;
   --label-pad-y: 0.45rem;
   --label-pad-x: 0.9rem;
@@ -368,15 +370,19 @@
   --label-radius: 6px;
   --label-row-h: calc(1em + (2 * var(--label-pad-y)) + 2px);
 
-  --meta-font-size: 0.9rem;
-  --meta-col-gap: 0.75rem;
+  // Info row
+  --info-font-size: 0.9rem;
+  --info-col-gap: 0.75rem;
 
+  // Logo 
   --logo-lane-w: clamp(96px, 10.5vw, 150px);
   --logo-max-h: 64%;
 
   min-height: 180px;
 
-  &:hover { border-color: var(--primary-border); }
+  &:hover {
+    border-color: var(--primary-border);
+  }
 
   @media (max-width: 1280px) {
     --logo-lane-w: clamp(92px, 10vw, 140px);
@@ -440,13 +446,21 @@
   @media (max-width: breakpoint(md)) {
     padding: .75rem;
     gap: .28rem;
-    h2 { font: var(--font-sw-m); margin-bottom: .12rem; }
+
+    h2 {
+      font: var(--font-sw-m);
+      margin-bottom: .12rem;
+    }
   }
 
   @media (max-width: breakpoint(sm)) {
     padding: .5rem;
     gap: .24rem;
-    h2 { font: var(--font-sw-s); margin-bottom: .1rem; }
+
+    h2 {
+      font: var(--font-sw-s);
+      margin-bottom: .1rem;
+    }
   }
 }
 
@@ -456,32 +470,30 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 0;
   overflow: hidden;
 
   .ModularCardImage {
     max-height: var(--logo-max-h);
-    width: auto;
-    height: auto;
     object-fit: contain;
     pointer-events: none;
     user-select: none;
   }
 }
 
-.ClanMeta {
+.ClanInfoRow {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  gap: var(--meta-col-gap);
+  gap: var(--info-col-gap);
   color: var(--white);
-  font-size: var(--meta-font-size);
+  font-size: var(--info-font-size);
   line-height: 1.28;
   min-width: 0;
   overflow: hidden;
 }
 
-.ClanMetaItem {
+.ClanInfoBadges,
+.ClanInfoStats {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -490,13 +502,13 @@
   flex: 0 1 auto;
 }
 
-.ClanMetaIcon {
+.ClanInfoIcon {
   width: 1.2em;
   height: 1.2em;
   flex: 0 0 auto;
 }
 
-.ClanMetaValue {
+.ClanInfoValue {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
@@ -548,8 +560,10 @@
 
   img,
   svg {
-    width: 1.12em;
-    height: 1.12em;
-    flex: 0 0 auto;
+    width: var(--label-icon-box);
+    height: var(--label-icon-box);
+    flex: 0 0 var(--label-icon-box);
+    transform: scale(var(--label-icon-scale));
+    transform-origin: center;
   }
 }
