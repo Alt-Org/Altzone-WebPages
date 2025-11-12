@@ -181,7 +181,7 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                     style={{ width: 'calc(50% - .5em)' }}
                 >
                     <ModularCard
-                        theme={ModularCardTheme.CLAN}
+                        theme={ModularCardTheme.CLANCARD}
                         onClick={() => onClickToClan?.(clan._id)}
                         role="button"
                         tabIndex={0}
