@@ -25,6 +25,7 @@ export const Footer = (props: Props) => {
                 privacy: t('FooterPrivacy'),
                 cookies: t('FooterCookies'),
                 consent: t('FooterConsent'),
+                ethics: t('FooterEthics'),
                 companyName: envHelper.companyName,
             }}
             socialIconLinks={socialIconLinks}
@@ -39,6 +40,7 @@ export const Footer = (props: Props) => {
                 privacy: t('FooterPrivacy'),
                 cookies: t('FooterCookies'),
                 consent: t('FooterConsent'),
+                ethics: t('FooterEthics'),
                 companyName: envHelper.companyName,
             }}
             socialIconLinks={socialIconLinks}
