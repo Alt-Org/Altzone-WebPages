@@ -154,3 +154,5 @@ export const getRouteGamePage = () => '/peli';
 export const getRouteProfilePage = () => '/profile';
 
 export const getRoutePrgPage = () => '/prg';
+export const getRouteSingleHeroPage = (group: string, hero: string) =>
+    `/defense-gallery/${group}/${hero}`;
