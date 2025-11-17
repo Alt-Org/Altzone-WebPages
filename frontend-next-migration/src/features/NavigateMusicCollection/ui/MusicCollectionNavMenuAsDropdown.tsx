@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-// import { MusicManager } from '@/entities/Music/model/MusicCollectionsManager'; // Deprecated: Removed reliance on hardcoded manager
 import {
     DropDownElementASTextOrLink,
     NavMenuWithDropdowns,
@@ -11,7 +10,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { useParams, usePathname } from 'next/navigation';
 import { getRouteAllMusicCollectionsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './MusicCollectionNavMenuAsDropdown.module.scss';
-import { useGetSongCategoriesQuery } from '@/entities/Music/api/musicApi'; // New: Hook for dynamic category fetching
+import { useGetSongCategoriesQuery } from '@/entities/Music/api/musicApi';
 
 interface MusicCollectionNavMenuAsDropdown {
     className?: string;
@@ -19,14 +18,6 @@ interface MusicCollectionNavMenuAsDropdown {
 
 /**
  * Navigation dropdown for music collections.
- *
- * Changes:
- * - Replaced hardcoded categories from `MusicManager` with dynamic fetching via `useGetSongCategoriesQuery`.
- * - Added loading/error states for better UX.
- * - Builds dropdown items from fetched Directus data instead of static enums.
- * - Supports slug-based routing for category pages.
- *
- * Purpose: Displays a responsive dropdown menu with categories (e.g., Jukebox, Battle) fetched from Directus, enabling navigation to filtered music pages.
  */
 
 const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdown> = ({
@@ -40,12 +31,11 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
 
     const { isMobileSize, isTabletSize } = useSizes();
     const { t } = useClientTranslation('music');
-    const { data: categories, isLoading, error } = useGetSongCategoriesQuery(); // Fetch categories dynamically
+    const { data: categories, isLoading, error } = useGetSongCategoriesQuery();
 
-    // Build dropdown items from fetched categories
     const dropdownItems: DropDownElementASTextOrLink[] = [
         {
-            elementText: t('all-title'), // "All" option for full list
+            elementText: t('all-title'),
             link: {
                 path: musicCollectionsRoute,
                 isExternal: false,
@@ -53,9 +43,9 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
             active: pathWithoutLng === musicCollectionsRoute,
         },
         ...(categories?.map((category) => ({
-            elementText: t(`${category.category_name.toLowerCase()}-title`), // Localized category name
+            elementText: t(`${category.category_name.toLowerCase()}-title`),
             link: {
-                path: `${musicCollectionsRoute}/${category.category_name.toLowerCase()}`, // Slug-based path
+                path: `${musicCollectionsRoute}/${category.category_name.toLowerCase()}`,
                 isExternal: false,
             },
             active:
@@ -64,8 +54,8 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
         })) || []),
     ];
 
-    if (isLoading) return <div>Loading categories...</div>; // Loading state
-    if (error) return <div>Error loading categories</div>; // Error state
+    if (isLoading) return <div>Loading categories...</div>;
+    if (error) return <div>Error loading categories</div>;
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: t('category-title'),
