@@ -1,3 +1,7 @@
+/**
+ * @deprecated
+ */
+
 /*import { CollectionInfo, CollectionName, MusicItem } from '../types/music';
 import { initializeMusicCollections } from './initializeMusicCollections';
 
