@@ -75,7 +75,7 @@
     width: 100%;
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
-        font:var(--font-sw-l)
+        font: var(--font-sw-l);
     }
 }
 
@@ -114,6 +114,7 @@
     @media (max-width: 480px) {
         grid-template-columns: 1fr;
     }
+    margin-bottom: 1.5em;
 }
 
 .readmoreText {

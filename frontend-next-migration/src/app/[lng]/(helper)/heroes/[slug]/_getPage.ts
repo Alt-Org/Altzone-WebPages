@@ -3,7 +3,7 @@ import { getServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
 import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
 import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
-import { HeroPageProps } from '@/preparedPages/HeroesPages';
+import { SingleHeroPageProps } from '@/preparedPages/HeroesPages';
 
 export async function _getPage(lng: string, slug: string) {
     const { t } = await getServerTranslation(lng, 'heroes');
@@ -14,20 +14,9 @@ export async function _getPage(lng: string, slug: string) {
         notFound();
     }
 
-    const heroes = heroManager.getAllHeroes();
-    const prevHero =
-        heroManager.getHeroBeforeSpecificHero(currentHero.id) || (heroes.at(-1) as HeroWithGroup);
-    const nextHero =
-        heroManager.getHeroAfterSpecificHero(currentHero.id) || (heroes.at(0) as HeroWithGroup);
-
-    const prevHeroLink = getRouteOneHeroPage(prevHero.slug);
-    const nextHeroLink = getRouteOneHeroPage(nextHero.slug);
-
-    return createPage<HeroPageProps>({
+    return createPage<SingleHeroPageProps>({
         buildPage: () => ({
-            newSelectedHero: currentHero,
-            prevHeroLink: prevHeroLink,
-            nextHeroLink: nextHeroLink,
+            slug: slug as HeroSlug,
         }),
         buildSeo: () => ({
             title: currentHero.title,

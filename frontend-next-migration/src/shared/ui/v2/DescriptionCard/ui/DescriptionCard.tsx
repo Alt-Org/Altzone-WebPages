@@ -23,6 +23,8 @@ export enum DescriptionCardTheme {
     DEFENSEGALLERY = 'DefenseGalleryCard',
     FURNITURECOLLECTION = 'FurnitureCollectionCard',
     COLLECTIONS = 'CollectionsCard',
+    TEACHERS = 'TeachersCard',
+    LESSON = 'LessonCard',
 }
 
 /**
