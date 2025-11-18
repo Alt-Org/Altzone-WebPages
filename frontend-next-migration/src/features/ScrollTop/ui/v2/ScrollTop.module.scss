@@ -24,6 +24,7 @@
     display: inline-flex; /* shrink to content width */
     float: right; /* align right when not inside a flex container */
 
+
     opacity: 0;
     visibility: hidden;
 
@@ -55,19 +56,6 @@
         outline: 2px solid var(--primary-color-variant-hover);
         outline-offset: 2px;
     }
-    @media (max-width: 959px) {
-        margin-right: 25px;
-    }
-    /* Desktop: stack above ChatButton and stop 1rem above Footer; include cookie bar offset */
-    @media (min-width: 1024px) {
-        /* Place ScrollTop above fixed ChatButton: 24px (chat bottom) + ~64px (chat size) + 12px gap ≈ 100px */
-        //bottom: calc(100px + var(--cookie-consent-offset, 0px));
-        //margin-bottom: 1rem; /* maintain 1rem gap above Footer at natural stop */
-        /* Ensure it layers above the ChatButton (which has z-index:10) without using an excessive global z-index */
-        //&.show {
-        //    z-index: 11;
-        //}
-    }
 
     /* Mobile tweaks */
     @media (max-width: breakpoint(lg)) {
@@ -75,6 +63,7 @@
         border-radius: var(--border-radius-custom);
         box-shadow: var(--s);
         transform: none; // Mobile safety
+        margin-right: 25px;
     }
 }
 
