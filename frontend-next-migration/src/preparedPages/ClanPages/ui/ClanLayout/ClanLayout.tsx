@@ -40,7 +40,7 @@ export const SearchBar = ({
             <input
                 type="text"
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(event) => onChange(event.target.value)}
                 placeholder="Search"
                 className={inputClassName}
                 aria-label={ariaLabel}

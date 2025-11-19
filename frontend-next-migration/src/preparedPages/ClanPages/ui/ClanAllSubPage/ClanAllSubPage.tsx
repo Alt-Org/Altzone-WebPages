@@ -216,16 +216,16 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                 </div>
 
                                 <div className={cardCls.ClanLabels}>
-                                    {MOCK_LABELS.map((l) => (
+                                    {MOCK_LABELS.map((label) => (
                                         <span
                                             className={cardCls.ClanLabel}
-                                            key={l.text}
+                                            key={label.text}
                                         >
                                             <Image
-                                                src={l.icon}
-                                                alt={l.text}
+                                                src={label.icon}
+                                                alt={label.text}
                                             />
-                                            {l.text}
+                                            {label.text}
                                         </span>
                                     ))}
                                 </div>

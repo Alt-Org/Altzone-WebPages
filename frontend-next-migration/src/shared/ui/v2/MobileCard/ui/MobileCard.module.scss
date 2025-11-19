@@ -202,9 +202,10 @@
       margin: 0;
       text-align: center;
       max-width: 100%;
-      white-space: nowrap;
+      white-space: normal;
       overflow: hidden;
-      text-overflow: ellipsis;
+      word-break: break-word;
+      text-overflow: clip;
     }
 
     .Text { margin: 0; }
@@ -218,7 +219,7 @@
     padding: 0.25rem 0;
 
     .Image {
-      height: 74%;
+      height: auto;
       object-fit: contain !important;
     }
   }
@@ -268,8 +269,20 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  .MobileCard.ClanCard > .ImageContainer .Image {
+    width: 80%;
+  }
+}
+
+@media (max-width: 400px) {
+  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
+    font-size: 1.15rem;
+  }
+}
+
 @media (max-width: 360px) {
   .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
