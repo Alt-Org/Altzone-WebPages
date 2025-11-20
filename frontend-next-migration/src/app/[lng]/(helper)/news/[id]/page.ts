@@ -1,4 +1,7 @@
 // import { withMetadataGenerator } from "@/app/_helpers";
-export { NewsElementPage as default } from '@/preparedPages/NewsPages';
+import { withPageData, withMetadataGenerator } from '@/app/_helpers';
+import { _getPage } from './_getPage';
+import { NewsElementPage } from '@/preparedPages/NewsPages';
 
-// export const generateMetadata = withMetadataGenerator(_getPage);
+export const generateMetadata = withMetadataGenerator(_getPage);
+export default withPageData(NewsElementPage, _getPage);
