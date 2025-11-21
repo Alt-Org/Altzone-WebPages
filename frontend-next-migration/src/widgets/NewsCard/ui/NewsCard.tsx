@@ -28,17 +28,15 @@ const NewsCard = (props: NewsCardProps) => {
                     <p className={cls.text}>{previewText}</p>
                     <span className={cls.date}>{date}</span>
                     <div className={cls.imageContainer}>
-                        <div className={cls.imageWrapper}>
-                            {picture && (
-                                <Image
-                                    src={picture}
-                                    alt={title}
-                                    className={cls.image}
-                                    width={100}
-                                    height={600}
-                                />
-                            )}
-                        </div>
+                        {picture && (
+                            <Image
+                                src={picture}
+                                alt={title}
+                                className={cls.image}
+                                width={100}
+                                height={600}
+                            />
+                        )}
                     </div>
                 </div>
             </div>
