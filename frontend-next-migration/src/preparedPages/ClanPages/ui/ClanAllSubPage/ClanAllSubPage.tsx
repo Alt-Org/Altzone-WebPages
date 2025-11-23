@@ -2,16 +2,17 @@
 import { useRouter } from 'next/navigation';
 import { useState, useMemo } from 'react';
 import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
+import Image, { StaticImageData } from 'next/image';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
-import Image from 'next/image';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import cardCls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
 import mobileCardCls from '@/shared/ui/v2/MobileCard/ui/MobileCard.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { SearchBar } from '../ClanLayout/ClanLayout';
+import { ClanLabel } from '@/entities/Clan/enum/clanLabel.enum';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
 import iconSpammer from '@/shared/assets/images/clanLabels/ClanLabelSpammer.png';
@@ -21,14 +22,19 @@ import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirs
 import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png';
 import starGray from '@/shared/assets/images/clanLogos/TopPanelMatchmakingPorvarit.png';
 
-// use real clan labels from API when available
-const MOCK_LABELS = [
-    { text: 'Spämmääjä', icon: iconSpammer },
-    { text: 'Humoristiset', icon: iconHumorous },
-    { text: 'Eläinrakkaat', icon: iconAnimalLovers },
-];
-
 type ClanItem = GetClansResponse['data']['Clan'][number];
+
+const CLAN_LABEL_ICON_MAP: Partial<Record<ClanLabel, StaticImageData>> = {
+    [ClanLabel.SPÄMMÄÄJÄT]: iconSpammer,
+    [ClanLabel.HUUMORINTAJUISET]: iconHumorous,
+    [ClanLabel.ELÄINRAKKAAT]: iconAnimalLovers,
+};
+
+// Temporary fallback icon for clan labels
+const CLAN_LABEL_FALLBACK_ICON = iconSpammer;
+
+const getClanLabelIcon = (label: string) =>
+    CLAN_LABEL_ICON_MAP[label as ClanLabel] ?? CLAN_LABEL_FALLBACK_ICON;
 
 const ClanAllSubPage = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -214,18 +220,19 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                         </span>
                                     </span>
                                 </div>
-
                                 <div className={cardCls.ClanLabels}>
-                                    {MOCK_LABELS.map((label) => (
+                                    {clan.labels?.slice(0, 4).map((label) => (
                                         <span
                                             className={cardCls.ClanLabel}
-                                            key={label.text}
+                                            key={label}
+                                            title={label}
                                         >
                                             <Image
-                                                src={label.icon}
-                                                alt={label.text}
+                                                src={getClanLabelIcon(label)}
+                                                alt={label}
+                                                className={cardCls.ClanLabelIcon}
                                             />
-                                            {label.text}
+                                            <span className={cardCls.ClanLabelText}>{label}</span>
                                         </span>
                                     ))}
                                 </div>
