@@ -2,7 +2,6 @@
 import { ScrollTop } from '@/features/ScrollTop';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { WikiContentWithSidebar } from '@/shared/ui/v2/WikiContentWithSidebar';
-import cls from './EthicalGuidelinesPage.module.scss';
 
 interface Section {
     id: string;
@@ -24,7 +23,7 @@ const EthicalGuidelinesPage = (props: Props) => {
     const { sections = [], title } = props;
 
     return (
-        <div className={classNames(cls.pageContainer)}>
+        <div>
             <WikiContentWithSidebar
                 sections={sections}
                 title={title}

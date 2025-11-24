@@ -27,25 +27,25 @@ export const Rights = memo((props: RightsProps) => {
             <div className={cls.RightContainer}>
                 <p className={cls.RightLinkContainer}>
                     <AppLink
-                        className={cls.cookies}
+                        className={classNames(cls.cookies, {}, [cls.linkHover])}
                         to={getRouteCookiesPage()}
                     >
                         {cookies}
                     </AppLink>{' '}
                     <AppLink
-                        className={cls.privacy}
+                        className={classNames(cls.privacy, {}, [cls.linkHover])}
                         to={getRoutePrivacyPage()}
                     >
                         {privacy}
                     </AppLink>
                     <span
                         onClick={handleResetCookies}
-                        className={cls.resetCookies}
+                        className={classNames(cls.resetCookies, {}, [cls.linkHover])}
                     >
                         {consent}
                     </span>
                     <AppLink
-                        className={cls.ethics}
+                        className={classNames(cls.ethics, {}, [cls.linkHover])}
                         to={getRouteEthicalGuidelinesPage()}
                     >
                         {ethics}
