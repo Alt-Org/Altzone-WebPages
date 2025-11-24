@@ -406,8 +406,8 @@
 
   @media (max-width: breakpoint(sm)) {
     box-shadow: 1px 2px 0 var(--black);
-    min-height: 128px;
-
+    height: 280px;
+    min-height: unset;
     --logo-lane-w: clamp(84px, 26vw, 120px);
     --logo-max-h: 56%;
     --label-font-size: 0.8rem;
@@ -555,12 +555,15 @@
   line-height: 1;
   min-width: 0;
   max-width: 100%;
-  overflow: visible;
-  white-space: normal;
+  overflow: hidden;
+  white-space: nowrap;
 
   .ClanLabelText {
     display: block;
     min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   img,
