@@ -50,7 +50,7 @@
 .noImageContainer {
     position: relative;
     width: 100%;
-    height: 15vh;
+    height: 2vh;
     overflow: hidden;
     flex-shrink: 0;
     display: flex;
@@ -105,9 +105,10 @@
 .text {
     color: var(--white);
     font: var(--font-dm-m);
+    line-height: 28px;
     padding: 10px 5em;
-    text-align: center;
-    width: 100%;
+    text-align: left;
+    width: 80%;
     white-space: pre-line;
 }
 
