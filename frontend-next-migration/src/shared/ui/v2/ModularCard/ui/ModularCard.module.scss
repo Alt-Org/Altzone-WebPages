@@ -351,7 +351,7 @@
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  background: var(--background);
+  background-color: var(--background);
   border: var(--border-desktop) solid var(--black);
   border-radius: var(--border-radius-md);
   box-shadow: 4px 8px 0 var(--black);
@@ -394,8 +394,6 @@
     min-height: 152px;
 
     --label-font-size: 0.85rem;
-    --label-pad-y: 0.35rem;
-    --label-pad-x: 0.8rem;
 
     --logo-lane-w: clamp(88px, 18vw, 132px);
     --logo-max-h: 58%;
@@ -415,7 +413,6 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: .35rem;
   padding: 1rem;
   min-width: 0;
@@ -537,14 +534,13 @@
   font-size: var(--label-font-size);
   font-weight: 700;
   line-height: 1;
-  min-width: 0;
   max-width: 100%;
 
   .ClanLabelText {
     display: block;
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   img,
@@ -553,6 +549,5 @@
     height: var(--label-icon-box);
     flex: 0 0 var(--label-icon-box);
     transform: scale(var(--label-icon-scale));
-    transform-origin: center;
   }
 }
