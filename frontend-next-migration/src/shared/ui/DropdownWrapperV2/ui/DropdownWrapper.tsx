@@ -51,10 +51,10 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     // Close on outside click when not open by default and not static
     useEffect(() => {
         if (openByDefault || staticDropdown) return;
-        const handleDocMouseDown = (e: MouseEvent) => {
+        const handleDocMouseDown = (event: MouseEvent) => {
             if (!isOpen) return;
             const root = rootRef.current;
-            if (root && e.target instanceof Node && !root.contains(e.target)) {
+            if (root && event.target instanceof Node && !root.contains(event.target)) {
                 setIsOpen(false);
             }
         };

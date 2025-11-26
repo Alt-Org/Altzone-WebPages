@@ -1,8 +1,7 @@
 import { createPage } from '@/app/_helpers';
 import { getServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
-import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
-import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
+import { HeroManager, HeroSlug } from '@/entities/Hero';
 import { SingleHeroPageProps } from '@/preparedPages/HeroesPages';
 
 export async function _getPage(lng: string, slug: string) {

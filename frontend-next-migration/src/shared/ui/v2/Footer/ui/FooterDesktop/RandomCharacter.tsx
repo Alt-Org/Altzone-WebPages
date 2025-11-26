@@ -39,8 +39,6 @@ export const RandomCharacter = ({ size }: RandomCharacterProps) => {
                 height: imageSize,
                 objectFit: 'contain',
             }}
-            priority={false}
-            loading="lazy"
             placeholder="empty"
             onError={(error) => {
                 error.currentTarget.src = HannuHodari.src;

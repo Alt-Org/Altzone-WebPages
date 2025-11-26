@@ -95,7 +95,7 @@ export async function _getPage(lng: string) {
                     AppExternalLinks.fbPost1,
                 ],
                 videoLink: AppExternalLinks.previewVideoYoutube,
-                gameImg: iPhone16.src,
+                gameImg: iPhone16,
             },
             galleryCopy: {
                 title: t('project-description-title'),
@@ -112,7 +112,7 @@ export async function _getPage(lng: string) {
                     AppExternalLinks.fbPost1,
                 ],
                 videoLink: AppExternalLinks.previewVideoYoutube,
-                gameImg: gameImg.src,
+                gameImg: gameImg,
             },
             contactSection: {
                 title: t('contact-title'),

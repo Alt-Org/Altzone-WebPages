@@ -226,6 +226,7 @@ const DescriptionCardImage = memo((props: DescriptionCardImageProps) => {
                 className={classNames(cls.Cover, {}, [className])}
                 src={src}
                 alt={alt}
+                priority={true}
                 fill
                 sizes="100%"
             />

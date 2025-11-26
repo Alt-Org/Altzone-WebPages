@@ -2,7 +2,7 @@
 import { useInView } from 'react-intersection-observer';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import cls from './Gallery.module.scss';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import instaIcon from '@/shared/assets/images/Insta2.svg';
@@ -21,7 +21,7 @@ export type Props = {
     };
     socialMediaLinks: string[];
     videoLink: string;
-    gameImg?: string;
+    gameImg?: StaticImageData;
 };
 
 const Gallery = (props: Props) => {
@@ -113,10 +113,10 @@ const Gallery = (props: Props) => {
                 <div className={cls.imgWrapper}>
                     {gameImg ? (
                         <Image
+                            className={cls.gameImg}
                             src={gameImg}
                             alt=""
-                            width={32}
-                            height={32}
+                            priority={true}
                         />
                     ) : null}
                 </div>

@@ -114,7 +114,7 @@ export const FurniturePopup: React.FC<FurniturePopupProps> = ({
                                 alt={t(`${setPath}.items.${item.path}.name`)}
                                 width={300}
                                 height={300}
-                                objectFit="contain"
+                                style={{ objectFit: 'contain' }}
                             />
                         </div>
                     </div>
