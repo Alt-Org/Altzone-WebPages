@@ -35,8 +35,8 @@ export const RandomCharacter = ({ size }: RandomCharacterProps) => {
             width={numericSize}
             height={numericSize}
             style={{
-                width: imageSize,
                 height: imageSize,
+                width: 'auto',
                 objectFit: 'contain',
             }}
             placeholder="empty"
