@@ -25,7 +25,6 @@ export type DropdownWrapperProps = {
     className?: string;
     contentClassName?: string;
     contentItemClassName?: string;
-    childrenWrapperClassName?: string;
     contentAbsolute?: boolean;
     elements: Array<DropDownElement>;
     onOpen?: () => void;
@@ -44,4 +43,6 @@ export type DropdownWrapperProps = {
     dynamicTitle?: string;
     showArrow?: boolean;
     autoClose?: boolean;
+    headerClassName?: string;
+    childrenWrapperClassName?: string;
 };

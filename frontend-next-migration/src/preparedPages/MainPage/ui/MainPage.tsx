@@ -7,7 +7,7 @@ import {
 } from '@/shared/ui/v2/DescriptionCardMobile';
 import defenceGalleryMobile from '@/shared/assets/images/descriptionCard/defense_gallery_mobile.png';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { Gallery, GalleryProps } from './_components/sections/Gallery';
+import { AltZone, AltZoneProps } from './_components/sections/AltZone';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import { NewsCard } from '@/widgets/NewsCard';
@@ -32,8 +32,7 @@ export type Props = {
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
-    gallery: GalleryProps;
-    galleryCopy: GalleryProps;
+    altZone: AltZoneProps;
     contactSection: ContactSectionProps;
 };
 
@@ -43,7 +42,7 @@ function MainPage(props: Props) {
         playWithUs,
         // getToKnowComics,
         // classifiedHeroesBlocks,
-        gallery,
+        altZone,
         contactSection,
     } = props;
 
@@ -149,7 +148,7 @@ function MainPage(props: Props) {
                     </DescriptionCard>
                 </div>
             )}
-            <Gallery {...gallery} />
+            <AltZone {...altZone} />
             <div className={cls.newsSection}>
                 <h2 className={cls.newsHeader}>{t('newsSection-title')}</h2>
                 <div className={cls.newsGrid}>
@@ -180,8 +179,6 @@ function MainPage(props: Props) {
                 </div>
             </div>
             <ContactSection {...contactSection} />
-
-            {/*<Gallery {...galleryCopy} />*/}
 
             {/*<HorizontalLines />*/}
             {/*<SectionRanking*/}

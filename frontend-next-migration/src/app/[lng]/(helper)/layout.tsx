@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Footer } from '@/widgets/Footer';
 import { Navbar } from '@/widgets/Navbar';
+import { ScrollTop } from '@/features/ScrollTop';
 import LayoutDefault from '../../../preparedPages/Layouts/ui/LayoutDefault/LayoutDefault';
 
 type Props = {
@@ -15,6 +16,7 @@ export default function HelperLayout({ children }: Props) {
             <div style={{ flex: 1 }}>
                 <LayoutDefault>{children}</LayoutDefault>
             </div>
+            <ScrollTop />
             <Footer />
         </div>
     );

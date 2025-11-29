@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Gallery, { Props } from './Gallery';
+import AltZone, { Props } from './AltZone';
 
 const mockProps: Props = {
     title: 'Test Title',
@@ -15,19 +15,6 @@ const mockProps: Props = {
     gameImg: '/test-image.png',
 };
 
-jest.mock('next/navigation', () => ({
-    useParams: () => ({ lng: 'en' }),
-}));
-
-jest.mock('@/entities/Gallery', () => ({
-    getLanguageCode: jest.fn(() => 'en'),
-    useGetDirectusGalleryImages: jest.fn(() => ({
-        photoObjects: [],
-        isLoading: false,
-    })),
-    ImageWall: () => <img alt="mock-gallery-img" />,
-}));
-
 jest.mock('react-intersection-observer', () => ({
     useInView: () => ({
         ref: jest.fn(),
@@ -39,9 +26,9 @@ jest.mock('@/shared/ui/MasonryWrapper', () => ({
     MasonryWrapper: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
-describe('Gallery', () => {
+describe('AltZone', () => {
     it('renders title, info text and see more link', () => {
-        render(<Gallery {...mockProps} />);
+        render(<AltZone {...mockProps} />);
         expect(screen.getByText(mockProps.title)).toBeInTheDocument();
         expect(screen.getByText(mockProps.infoText)).toBeInTheDocument();
         expect(screen.getByText(mockProps.seeMoreLink.text)).toHaveAttribute(
@@ -51,7 +38,7 @@ describe('Gallery', () => {
     });
 
     it('renders at least one link element', () => {
-        render(<Gallery {...mockProps} />);
+        render(<AltZone {...mockProps} />);
         const links = screen.getAllByRole('link');
         expect(links.length).toBeGreaterThanOrEqual(1);
     });

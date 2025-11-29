@@ -153,8 +153,8 @@ function NavMenuWithDropdowns(props: NavMenuWithDropdownsProps): JSX.Element {
                     ),
                 )}
                 className={cls.topDropDown}
-                childrenWrapperClassName={cls.topDropDownChildren}
                 contentClassName={cls.topDropDownContent}
+                headerClassName={cls.topDropDownHeader}
                 showArrow={true}
             />
         </div>
@@ -177,7 +177,7 @@ function NestedDropDown(props: NestedDropDownProps) {
             openByDefault={openByDefault}
             className={cls.subDropDown}
             contentClassName={cls.subDropDownContent}
-            childrenWrapperClassName={cls.subDropDownChildren}
+            childrenWrapperClassName={cls.subDropDownHeader}
             elements={elements}
             dataTestId={dataTestId}
             autoClose={autoClose}
