@@ -417,6 +417,11 @@
         margin-top: -110px;
     }
 
+    @media ((min-width: breakpoint(sm)) and (max-width: breakpoint(md))) {
+        height: auto;
+        margin-top: -190px;
+    }
+
 }
 
 .Card.SectionCard > .ModularCardImageSection > .ModularCardImage {
