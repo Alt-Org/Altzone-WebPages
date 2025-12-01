@@ -12,11 +12,15 @@
     filter: drop-shadow(2px 4px var(--black));
 
     .topDropDown {
-      padding: 12px 24px;
+      padding: 0;
       border-radius: var(--border-radius-xl);
       border: 2px solid var(--black);
       line-height: var(--font-line-m) !important;
       font: var(--font-dm-m);
+    }
+
+    .topDropDownHeader {
+      padding: 12px 24px;
     }
 
     margin: auto;
@@ -27,11 +31,15 @@
     filter: drop-shadow(2px 4px var(--black));
 
     .topDropDown {
-      padding: 12px 24px;
+      padding: 0;
       border-radius: var(--border-radius-xl);
       border: 2px solid var(--black);
       line-height: var(--font-line-m) !important;
       font: var(--font-dm-m);
+    }
+
+    .topDropDownHeader {
+      padding: 12px 24px;
     }
 
     margin: auto;
@@ -39,7 +47,7 @@
 }
 
 .topDropDown {
-  padding: 23px 23px;
+  padding: 0;
   color: var(--primary-color);
   transition: transform 0.4s ease-in-out;
   border-radius: var(--border-radius-lg);
@@ -47,16 +55,24 @@
   width: 100%;
   background-color: var(--background);
 
+  .topDropDownHeader {
+    padding: 12px 24px;
+  }
+
   .topDropDownChildren {
     justify-content: space-between;
-    // padding-left: 15px;
+    padding-left: 1.5rem;
     // padding-right: 15px;
   }
 
-  // .topDropDownContent {
-  //   padding-left: 15px;
-  //   padding-right: 15px;
-  // }
+  .topDropDownContent {
+     padding-left: 1.5rem;
+     padding-right: 15px;
+     // Use a more compact typography to match reference (image 1)
+     font: var(--font-dm-l);
+     line-height: calc(var(--font-line-l) + 5px) !important;
+    font-weight: bold;
+   }
 
 }
 
@@ -67,6 +83,12 @@
 
   .subDropDownChildren {
     justify-content: space-between;
+    color: var(--primary-color);
+  }
+
+  // Hover for sub-dropdown header only (top dropdown header intentionally has no hover)
+  .subDropDownHeader:hover {
+    text-decoration: underline;
     color: var(--primary-color);
   }
 
@@ -87,11 +109,30 @@
       color: var(--primary-color);
     }
   }
+
+  // Ensure non-link text items (span) underline on hover as well
+  .subDropDownContent span:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
 }
 
 .topDropDownContent {
   .active {
     color: var(--primary-color);
+  }
+  // Ensure hover underline also for single-level dropdowns (no subdropdowns)
+  a:hover {
+    color: var(--primary-color) !important;
+    text-decoration: underline !important;
+  }
+  span:hover {
+    color: var(--primary-color) !important;
+    text-decoration: underline !important;
+  }
+  // Fallback to tint all hovered items primary
+  & *:hover {
+    color: var(--primary-color) !important;
   }
 }
 
@@ -114,4 +155,7 @@
     color: var(--primary-color);
   }
 
+}
+.subDropDownHeader {
+  color: var(--primary-color) !important;
 }

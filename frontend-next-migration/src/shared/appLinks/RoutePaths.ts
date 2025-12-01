@@ -21,6 +21,7 @@ export enum AppRoutesLinks {
     ABOUT = 'ABOUT',
     PRIVACY = 'privacy',
     COOKIES = 'cookies',
+    ETHICAL_GUIDELINES = 'ETHICAL_GUIDELINES',
     FORUM = 'FORUM',
     GAME_ART = 'GAME_ART',
 
@@ -72,6 +73,7 @@ export const RoutePaths: Record<AppRoutesLinks, string> = {
     [AppRoutesLinks.ABOUT]: '/about',
     [AppRoutesLinks.PRIVACY]: '/privacy',
     [AppRoutesLinks.COOKIES]: '/cookies',
+    [AppRoutesLinks.ETHICAL_GUIDELINES]: '/ethical-guidelines',
     [AppRoutesLinks.GAME_ART]: '/artGame',
 
     [AppRoutesLinks.HEROES]: '/heroes',
@@ -130,6 +132,7 @@ export const getRouteJoinUsPage = () => '/join-us';
 export const getRoutePrivacyPage = () => '/privacy';
 export const getRouteCookiesPage = () => '/cookies';
 export const getRouteDataPolicyPage = () => '/data-policy';
+export const getRouteEthicalGuidelinesPage = () => '/ethical-guidelines';
 export const getRouteAboutPage = () => '/about';
 export const getRouteComingSoonPage = () => '/coming';
 export const getRouteForumPage = () => '/forum';

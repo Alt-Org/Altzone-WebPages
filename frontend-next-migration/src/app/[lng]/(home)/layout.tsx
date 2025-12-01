@@ -14,8 +14,8 @@ export default function HomeLayout({ children }: Props) {
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Navbar />
             <div className={cls.joinUsLayout}>{children}</div>
-            <Footer />
             <ScrollTop />
+            <Footer />
         </div>
     );
 }

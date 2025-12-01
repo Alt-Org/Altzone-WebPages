@@ -44,6 +44,7 @@ export const Default: Story = {
             consent: 'Consent',
             cookies: 'Cookies',
             privacy: 'Privacy',
+            ethics: 'Ethical Guidelines',
             currentYear: new Date().getFullYear(),
             companyName: "Psyche's Royale Gaming ry",
         },

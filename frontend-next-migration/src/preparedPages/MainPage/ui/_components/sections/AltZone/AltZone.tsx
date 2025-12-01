@@ -3,12 +3,13 @@ import { useInView } from 'react-intersection-observer';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import Image, { StaticImageData } from 'next/image';
-import cls from './Gallery.module.scss';
+import cls from './AltZone.module.scss';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import instaIcon from '@/shared/assets/images/Insta2.svg';
 import discordIcon from '@/shared/assets/images/Discord2.svg';
 import facebookIcon from '@/shared/assets/images/Facebook2.svg';
 import youtubeIcon from '@/shared/assets/images/Youtube2.svg';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 export type Props = {
     title: string;
@@ -24,8 +25,9 @@ export type Props = {
     gameImg?: StaticImageData;
 };
 
-const Gallery = (props: Props) => {
+const AltZone = (props: Props) => {
     const { title, infoText, seeMoreLink, gameImg, followUsText } = props;
+    const { isMobileSize } = useSizes();
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -39,7 +41,7 @@ const Gallery = (props: Props) => {
     return (
         <section
             ref={ref}
-            className={classNames(cls.SectionGallery, mods)}
+            className={classNames(cls.SectionAltZone, mods)}
         >
             <Container className={cls.Container}>
                 <div className={cls.titleWrapper}>
@@ -112,12 +114,22 @@ const Gallery = (props: Props) => {
 
                 <div className={cls.imgWrapper}>
                     {gameImg ? (
-                        <Image
-                            className={cls.gameImg}
-                            src={gameImg}
-                            alt=""
-                            priority={true}
-                        />
+                        isMobileSize ? (
+                            <Image
+                                src={gameImg}
+                                alt=""
+                                width={328}
+                                height={477}
+                            />
+                        ) : (
+                            <Image
+                                src={gameImg}
+                                alt=""
+                                className={cls.MinSizes}
+                                width={677}
+                                height={978}
+                            />
+                        )
                     ) : null}
                 </div>
             </Container>
@@ -125,4 +137,4 @@ const Gallery = (props: Props) => {
     );
 };
 
-export default Gallery;
+export default AltZone;

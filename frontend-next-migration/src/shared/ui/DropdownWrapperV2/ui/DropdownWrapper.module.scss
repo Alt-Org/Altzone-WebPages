@@ -16,6 +16,7 @@
     line-height: 40px !important;
     font: var(--font-dm-bold-l);
     transform-origin: top;
+    padding-bottom: 1rem;
     opacity: 0;
     transform: translateY(-10px);
     transition:
@@ -63,8 +64,8 @@
 
 .staticHeading {
     font: var(--font-dm-bold-xl);
-    margin-bottom: 23px;
-    margin-top: 12px;
+    margin-top: 8px;
+    margin-bottom: 12px;
 }
 
 .dynamicHeading {
@@ -77,13 +78,19 @@
     display: flex;
     gap: 7px;
     align-items: center;
-    gap: 7px;
     color: var(--white);
     cursor: pointer;
 
     &:hover {
         color: var(--primary-color-variant-hover);
     }
+}
+
+// A wrapper that encompasses the entire clickable header area (title + children)
+.headerArea {
+    display: block;
+    width: 100%;
+    cursor: pointer;
 }
 
 .disabled {

@@ -92,8 +92,8 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
             />
             <CustomForm.InputField
                 label=""
-                className={cls.textInput}
                 inputProps={{
+                    className: cls.textInput,
                     placeholder: t('input-placeholder'),
                     value: feedback,
                     onChange: (event) => setFeedback(event.target.value),

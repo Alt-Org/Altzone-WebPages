@@ -15,7 +15,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         contentAbsolute = false,
         mouseOverLeaveMode = false,
         className = '',
-        childrenWrapperClassName = '',
         contentClassName = '',
         contentItemClassName = '',
         elements,
@@ -29,6 +28,8 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         dynamicTitle,
         showArrow,
         autoClose = false,
+        headerClassName = '',
+        childrenWrapperClassName = '',
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
@@ -50,7 +51,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
 
     // Close on outside click when not open by default and not static
     useEffect(() => {
-        if (openByDefault || staticDropdown) return;
+        if (openByDefault || staticDropdown || !autoClose) return;
         const handleDocMouseDown = (event: MouseEvent) => {
             if (!isOpen) return;
             const root = rootRef.current;
@@ -152,7 +153,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     };
 
     const mainElementClass = isDisabled?.status ? cls.disabled : '';
-
     return (
         <div
             ref={rootRef}
@@ -170,17 +170,26 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             {staticDropdown ? (
                 <div
                     title={isDisabled?.status ? isDisabled?.reason : ''}
-                    className={classNames(cls.staticHeading)}
+                    className={classNames(cls.headerArea, {}, [headerClassName])}
                 >
-                    {staticTitle}
+                    <div className={classNames(cls.staticHeading)}>{staticTitle}</div>
+                    <div
+                        className={classNames(cls.childrenWrapper, {}, [
+                            childrenWrapperClassName,
+                            mainElementClass,
+                        ])}
+                    >
+                        {children}
+                    </div>
                 </div>
             ) : (
-                <div>
-                    <div
-                        onClick={!isDisabled?.status ? toggleDropdown : undefined}
-                        role="button"
-                        className={cls.dynamicHeading}
-                    >
+                <div
+                    onClick={!isDisabled?.status ? toggleDropdown : undefined}
+                    role="button"
+                    title={isDisabled?.status ? isDisabled?.reason : ''}
+                    className={classNames(cls.headerArea, {}, [headerClassName])}
+                >
+                    <div className={cls.dynamicHeading}>
                         {dynamicTitle}
                         {showArrow && (
                             <span
@@ -202,9 +211,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                         )}
                     </div>
                     <div
-                        onClick={!isDisabled?.status ? toggleDropdown : undefined}
-                        role="button"
-                        title={isDisabled?.status ? isDisabled?.reason : ''}
                         className={classNames(cls.childrenWrapper, { [cls.active]: isOpen }, [
                             childrenWrapperClassName,
                             mainElementClass,

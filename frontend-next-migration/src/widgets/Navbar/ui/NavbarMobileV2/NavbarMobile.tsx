@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { CSSProperties, memo, useEffect, useMemo, useState } from 'react';
+import { CSSProperties, memo, useEffect, useMemo, useRef, useState } from 'react';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -52,6 +52,9 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const [isLangOpen, setIsLangOpen] = useState(false);
 
+    // Ref to detect outside clicks for the mobile menu
+    const navRef = useRef<HTMLElement | null>(null);
+
     useEffect(() => {
         const pathSegments = pathname.split('/').filter(Boolean);
         const newPath = pathSegments.length === 1 ? '/' : `/${pathSegments[1] || ''}`;
@@ -63,6 +66,38 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
             onDropdownChange(dropdownType !== DropdownTypes.EMPTY);
         }
     }, [dropdownType, onDropdownChange]);
+
+    // Close dropdown when clicking/touching outside the navbar or pressing Escape
+    useEffect(() => {
+        if (dropdownType === DropdownTypes.EMPTY) return;
+
+        const onPointerDown = (event: MouseEvent | TouchEvent | PointerEvent) => {
+            const target = event.target as Node | null;
+            const root = navRef.current;
+            if (!root) return;
+            if (target && root.contains(target)) {
+                return; // ignore clicks inside navbar
+            }
+            setDropdownType(DropdownTypes.EMPTY);
+        };
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setDropdownType(DropdownTypes.EMPTY);
+            }
+        };
+
+        document.addEventListener('pointerdown', onPointerDown as any, { capture: true } as any);
+        document.addEventListener('keydown', onKeyDown as any);
+        return () => {
+            document.removeEventListener(
+                'pointerdown',
+                onPointerDown as any,
+                { capture: true } as any,
+            );
+            document.removeEventListener('keydown', onKeyDown as any);
+        };
+    }, [dropdownType]);
 
     // Close the mobile dropdown when any leaf in dropdown trees is selected
     useEffect(() => {
@@ -203,6 +238,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     return (
         <nav
+            ref={navRef}
             className={classNames(cls.Navbar, mods, [className])}
             style={style}
         >
