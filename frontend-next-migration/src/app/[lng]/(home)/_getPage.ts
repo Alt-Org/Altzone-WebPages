@@ -1,7 +1,6 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
 import { getServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import gameImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import iPhone16 from '@/shared/assets/images/mainpage/iPhone 16 Pro mockup natural titanium 1.png';
 import {
     getRouteAllHeroesPage,
