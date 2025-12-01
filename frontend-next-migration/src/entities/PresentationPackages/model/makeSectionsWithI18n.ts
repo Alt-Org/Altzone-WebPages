@@ -2,6 +2,7 @@ import { PresentationSection } from '@/entities/PresentationPackages/types';
 import { ArtGameSections } from './data/artGameSections';
 import { CookiesSections } from './data/cookiesSections';
 import { PrivacySections } from './data/privacySections';
+import { EthicalGuidelinesSections } from './data/ethicalGuidelinesSections';
 
 /**
  * Takes an array of PresentationSections and returns a higher-order function that takes a translation function
@@ -58,3 +59,12 @@ export const makeCookiesSectionsWithI18n = makeSectionsWithI18n(CookiesSections)
  * @returns {Array} - The array of art game sections with internationalization support.
  */
 export const makePrivacySectionsWithI18n = makeSectionsWithI18n(PrivacySections);
+
+/**
+ * Creates ethical guidelines sections with internationalization support.
+ *
+ * @param {Array} EthicalGuidelinesSections - The array of art game sections.
+ * @returns {Array} - The array of art game sections with internationalization support.
+ */
+export const makeEthicalGuidelinesSectionsWithI18n =
+    makeSectionsWithI18n(EthicalGuidelinesSections);

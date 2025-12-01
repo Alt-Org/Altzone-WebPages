@@ -21,6 +21,7 @@ describe('Rights', () => {
         consent: 'Reset Cookies',
         currentYear: 2024, // Change currentYear to number
         privacy: 'Privacy Policy',
+        ethics: 'Ethical Guidelines',
         companyName: 'My Company',
     };
 
@@ -30,6 +31,7 @@ describe('Rights', () => {
         expect(screen.getByText('Cookie Policy')).toBeInTheDocument();
         expect(screen.getByText('Privacy Policy')).toBeInTheDocument();
         expect(screen.getByText('Reset Cookies')).toBeInTheDocument();
+        expect(screen.getByText('Ethical Guidelines')).toBeInTheDocument();
         expect(screen.getByText('2024 My Company')).toBeInTheDocument();
     });
 
