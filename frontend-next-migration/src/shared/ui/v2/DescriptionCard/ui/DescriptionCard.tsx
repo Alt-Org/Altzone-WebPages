@@ -213,8 +213,7 @@ const DescriptionCardImage = memo((props: DescriptionCardImageProps) => {
                 <Image
                     src={src}
                     alt={alt}
-                    objectFit="contain"
-                    objectPosition="center"
+                    style={{ objectFit: 'contain', objectPosition: 'center' }}
                     quality={100}
                     height={height}
                 />
