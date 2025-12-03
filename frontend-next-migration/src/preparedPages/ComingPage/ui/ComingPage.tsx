@@ -27,24 +27,28 @@ const ComingPage = (props: Props) => {
                     <Image
                         src={hateSpeech.src}
                         alt="Hate Speech"
+                        priority={true}
                         width={150}
                         height={150}
                     />
                     <Image
                         src={jokester}
                         alt="Jokester"
+                        priority={true}
                         width={150}
                         height={150}
                     />
                     <Image
                         src={believer}
                         alt="Believer"
+                        priority={true}
                         width={150}
                         height={150}
                     />
                     <Image
                         src={provocator}
                         alt="Provocator"
+                        priority={true}
                         width={150}
                         height={150}
                     />
@@ -53,6 +57,7 @@ const ComingPage = (props: Props) => {
                         alt="Alcoholic"
                         width={150}
                         height={150}
+                        priority={true}
                         className={cls.flipped}
                     />
                     <Image
@@ -60,11 +65,13 @@ const ComingPage = (props: Props) => {
                         alt="Purple Girls"
                         width={150}
                         height={150}
+                        priority={true}
                         className={cls.flipped}
                     />
                     <Image
                         src={pedant}
                         alt="Pedant"
+                        priority={true}
                         width={150}
                         height={150}
                         className={cls.pedant}

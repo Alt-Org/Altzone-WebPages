@@ -83,7 +83,9 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 width={250}
                                 height={292}
                                 className={cls.coverImage}
+                                priority={true}
                                 alt={idx === 0 ? cover.name : `Page ${idx}`}
+                                style={{ width: '100%', height: 'auto' }}
                             />
                         </a>
                     </div>
@@ -112,6 +114,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                                     width={20}
                                     height={20}
                                     alt="Zoom"
+                                    style={{ width: 'auto', height: 'auto' }}
                                 />
                             </button>
                         </div>

@@ -131,6 +131,7 @@ const SingleHeroPage = (props: Props) => {
                                     alt={hero.title}
                                     fill
                                     sizes="100vw"
+                                    priority={true}
                                     className={cls.ResponsiveImage}
                                 />
                             </div>
@@ -221,6 +222,8 @@ const SingleHeroPage = (props: Props) => {
                                     <Image
                                         src={hero.srcImg}
                                         alt={hero.title}
+                                        priority={true}
+                                        sizes="100%"
                                         fill
                                         className={cls.ResponsiveImage}
                                     />

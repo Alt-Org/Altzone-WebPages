@@ -10,6 +10,7 @@ import React, {
     InputHTMLAttributes,
     useState,
     useEffect,
+    useId,
 } from 'react';
 import { Button as CustomButton, ButtonTheme } from '@/shared/ui/Button/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -17,6 +18,16 @@ import cls from './CustomForm.module.scss';
 import { MultiSelect } from 'react-multi-select-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
+// Create a safe slug for use in id attributes
+function slugifyLabel(label?: string): string {
+    if (!label) return '';
+    return String(label)
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
 
 /**
  * Header component for displaying a heading inside the form.
@@ -88,7 +99,13 @@ function InputField({
     className = '',
     showPasswordToggle = false,
 }: InputFieldProps) {
-    const inputId = inputProps?.id || `input-${label}`;
+    const reactId = useId();
+    const slug = slugifyLabel(label);
+    const normalizedReactId = reactId
+        .toString()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-');
+    const inputId = inputProps?.id || (slug ? `input-${slug}` : `input-${normalizedReactId}`);
     const [showPassword, setShowPassword] = useState(false);
 
     const isPasswordType = inputProps?.type === 'password';
@@ -151,7 +168,13 @@ type CheckboxProps = {
  * <Form.Checkbox label="I agree" error="You must agree" inputProps={{ required: true }} />
  */
 function Checkbox({ label, error, inputProps, className = '' }: CheckboxProps) {
-    const inputId = inputProps?.id || `checkbox-${label}`;
+    const reactId = useId();
+    const slug = slugifyLabel(label);
+    const normalizedReactId = reactId
+        .toString()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-');
+    const inputId = inputProps?.id || (slug ? `checkbox-${slug}` : `checkbox-${normalizedReactId}`);
     return (
         <div className={classNames(cls.field, {}, [className])}>
             <label htmlFor={inputId}>

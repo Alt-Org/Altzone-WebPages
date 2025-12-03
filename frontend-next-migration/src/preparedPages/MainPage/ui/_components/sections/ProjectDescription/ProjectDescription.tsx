@@ -36,6 +36,7 @@ export const ProjectDescription = (props: Props) => {
             <div className={cls.imgHolder}>
                 <Image
                     src={greenHaired}
+                    priority={true}
                     alt={'description hero'}
                     style={{ objectFit: 'cover' }}
                     className={classNames(cls.Image)}

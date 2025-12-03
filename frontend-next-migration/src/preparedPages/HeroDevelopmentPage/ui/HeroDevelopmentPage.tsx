@@ -187,6 +187,7 @@ const HeroDevelopmentPage: React.FC<HeroDevelopmentPageProps> = ({ hero }) => {
                             <Image
                                 className={classNames(cls.Image, combinedModCss)}
                                 src={hero?.srcImg}
+                                priority={true}
                                 alt="image"
                             />
                         )}

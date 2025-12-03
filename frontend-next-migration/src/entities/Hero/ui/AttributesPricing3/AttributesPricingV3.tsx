@@ -1,9 +1,8 @@
-import React, { useCallback, useMemo, Dispatch, SetStateAction } from 'react';
+'use client';
+import React, { useCallback, useMemo, useEffect, Dispatch, SetStateAction } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { AttributePricingHelper } from '../../model/stats/AttributesPricingHelper';
-import { statValue } from '../../model/stats/statsDataV2';
-import { statsPricingData } from '../../model/stats/statsPricingData';
-import { Stat } from '../../types/hero';
+import { statValue, statsPricingData, Stat } from '@/entities/Hero';
 import cls from './AttributesPricing.module.scss';
 
 // import { statsPricingData, Stat, statValue } from '@/entities/Hero';
@@ -42,10 +41,12 @@ export const AttributesPricing3 = ({
     const { t } = useClientTranslation('heroes-stats-pricing');
 
     const totalUpgraded = useMemo(() => {
-        const total = AttributePricingHelper.getTotalUpgraded(stats);
-        setUpgradePotential(10 - total);
-        return total;
+        return AttributePricingHelper.getTotalUpgraded(stats);
     }, [stats]);
+
+    useEffect(() => {
+        setUpgradePotential(10 - totalUpgraded);
+    }, [totalUpgraded, setUpgradePotential]);
 
     const setDropdowns = useCallback(
         (statName: string) => {
@@ -62,8 +63,46 @@ export const AttributesPricing3 = ({
         [stats, selectedStat],
     );
 
-    //This fixes dropdown updates and out-of-range calculations in Storybook when editing Stats data.
-    const currentLevel = useMemo(() => setDropdowns(selectedStat.name), [stats, selectedStat]);
+    // Derive current level purely without causing side effects during render
+    const currentLevel = useMemo(() => {
+        const [, level] = AttributePricingHelper.getStatAndLevel(
+            selectedStat.name,
+            stats,
+            selectedStat,
+        );
+        return level;
+    }, [stats, selectedStat]);
+
+    // Keep dropdowns in sync if stats or selectedStat change (without causing render-time updates)
+    useEffect(() => {
+        if (!stats || stats.length === 0) return;
+
+        // If current selected stat is not present in the provided stats, fallback to the first available
+        const found = stats.find((stat) => stat.name === selectedStat.name);
+        if (!found) {
+            const fallback = stats[0];
+            const [, level] = AttributePricingHelper.getStatAndLevel(
+                fallback.name,
+                stats,
+                selectedStat,
+            );
+            setSelectedStat(fallback);
+            setFromLevel(level);
+            setToLevel(level);
+            return;
+        }
+
+        const [stat, level] = AttributePricingHelper.getStatAndLevel(
+            selectedStat.name,
+            stats,
+            selectedStat,
+        );
+        if (stat.name !== selectedStat.name) {
+            setSelectedStat(stat);
+        }
+        setFromLevel((prev) => (prev !== level ? level : prev));
+        setToLevel((prev) => (prev !== level ? level : prev));
+    }, [stats, selectedStat, setSelectedStat, setFromLevel, setToLevel]);
 
     const getLevelRange = useCallback(
         () => AttributePricingHelper.getLevelRange(totalUpgraded, currentLevel),
@@ -104,6 +143,17 @@ export const AttributesPricing3 = ({
         [fromLevel, toLevel, selectedStat.rarityClass, selectedStat.defaultLevel],
     );
 
+    // Ensure the select has a valid value on the very first render, even if selectedStat.name is not in stats yet
+    const selectedName = useMemo(() => {
+        const found = stats?.find((stat) => stat.name === selectedStat.name)?.name;
+        return found ?? stats?.[0]?.name ?? '';
+    }, [stats, selectedStat.name]);
+
+    const selectedColor = useMemo(() => {
+        const stat = stats?.find((stat) => stat.name === selectedName);
+        return stat?.color ?? selectedStat.color;
+    }, [stats, selectedName, selectedStat.color]);
+
     if (!statsPricingData) {
         return <h2>{t('Stat pricing data is unavailable')}</h2>;
     }
@@ -115,7 +165,8 @@ export const AttributesPricing3 = ({
                 <select
                     data-testid="stat"
                     className={cls.Stats}
-                    style={{ color: selectedStat.color, borderColor: selectedStat.color }}
+                    value={selectedName}
+                    style={{ color: selectedColor, borderColor: selectedColor }}
                     onChange={handleStatChange}
                 >
                     {stats.map((stat) => (

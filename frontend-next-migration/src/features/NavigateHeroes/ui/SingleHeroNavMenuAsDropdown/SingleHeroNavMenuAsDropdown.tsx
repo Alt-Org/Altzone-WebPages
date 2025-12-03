@@ -11,7 +11,6 @@ import {
 import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { classNames } from '@/shared/lib/classNames/classNames';
 
 const SingleHeroNavMenuAsDropdown: React.FC = () => {
     const { isMobileSize, isTabletSize } = useSizes();

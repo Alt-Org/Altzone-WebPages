@@ -36,6 +36,7 @@ const PlayWithUs = (props: Props) => {
                         src={sideImg}
                         alt={'Side image with hero'}
                         className={cls.sideImg}
+                        priority={true}
                     />
                 </div>
                 <div className={cls.ContentWithNav}>

@@ -1,6 +1,5 @@
 'use client';
 import { ScrollTop } from '@/features/ScrollTop';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { WikiContentWithSidebar } from '@/shared/ui/v2/WikiContentWithSidebar';
 
 interface Section {

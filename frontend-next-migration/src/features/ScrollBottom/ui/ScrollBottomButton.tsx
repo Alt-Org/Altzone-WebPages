@@ -4,6 +4,7 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
 import { scrollToBottom } from '../model/scrollToBottom/scrollToBottom';
 import { useBottomAnimationCancellation } from '../model/useBottomAnimationCancellation/useBottomAnimationCancellation';
 import Image, { StaticImageData } from 'next/image';
+import cls from './ScrollBottomButton.module.scss';
 
 interface Props {
     speedInMs?: number;
@@ -56,7 +57,7 @@ const ScrollBottomButtonComponent = (props: Props) => {
                     text
                 ) : (
                     <Image
-                        height={20}
+                        className={cls.Image}
                         width={20}
                         src={image}
                         alt={'icon'}

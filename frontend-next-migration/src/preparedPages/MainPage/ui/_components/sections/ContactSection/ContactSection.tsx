@@ -23,6 +23,7 @@ export const ContactSection = (props: Props) => {
                 <Image
                     src={ContactImg}
                     alt={'Side image with hero'}
+                    priority={true}
                     className={cls.sideImg}
                 />
                 <div className={cls.ContentWithNav}>
