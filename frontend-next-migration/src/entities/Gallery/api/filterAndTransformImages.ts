@@ -20,27 +20,27 @@ export const filterAndTransformImages = (
     version: string,
 ): PhotoVersion[] => {
     try {
-        let images: PhotoVersion[] = [];
-
-        if (version === 'full') {
-            images = photoObjects.map((po) => ({
-                id: po.versions.full.id,
-                image: po.versions.full.image,
-                width: po.versions.full.width,
-                height: po.versions.full.height,
-                altText: po.versions.full.altText,
-            }));
+        // Only allow the two supported versions
+        if (version !== 'full' && version !== 'preview') {
+            return [];
         }
 
-        if (version === 'preview') {
-            images = photoObjects.map((po) => ({
-                id: po.versions.preview.id,
-                image: po.versions.preview.image,
-                width: po.versions.preview.width,
-                height: po.versions.preview.height,
-                altText: po.versions.preview.altText,
-            }));
-        }
+        // Filter out entries with missing versions or missing selected version
+        const valid = photoObjects.filter((po) => {
+            const v = po.versions;
+            return !!(v && v[version]);
+        });
+
+        const images: PhotoVersion[] = valid.map((po) => {
+            const v = po.versions![version]!; // safe due to filtering above
+            return {
+                id: v.id,
+                image: v.image,
+                width: v.width,
+                height: v.height,
+                altText: v.altText || '',
+            };
+        });
 
         return images;
     } catch (error) {
