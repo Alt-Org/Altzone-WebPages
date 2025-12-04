@@ -3,6 +3,7 @@ import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems, readItem, aggregate } from '@directus/sdk';
 import { News } from '../model/types/types';
 import { slugToCategoryNameMap } from '@/entities/NewsV2/model/newsCategorySlugMap';
+import { formatDateToDMY } from '@/shared/lib/formatDate';
 
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());
@@ -70,7 +71,14 @@ export const newsApi = directusApi.injectEndpoints({
                                 page: page || 1,
                             }),
                         );
-                        return { data: newsItems };
+
+                        // format dates to D.M.YYYY before returning
+                        const formatted = newsItems.map((newsItem) => ({
+                            ...newsItem,
+                            date: formatDateToDMY((newsItem as any).date),
+                        })) as News[];
+
+                        return { data: formatted };
                     }
 
                     // Convert category slug to category name
@@ -105,8 +113,14 @@ export const newsApi = directusApi.injectEndpoints({
                             page,
                         }),
                     );
+
+                    const formattedByCategory = newsByCategory.map((newsItem) => ({
+                        ...newsItem,
+                        date: formatDateToDMY((newsItem as any).date),
+                    })) as News[];
+
                     return {
-                        data: newsByCategory,
+                        data: formattedByCategory,
                         error: undefined,
                         meta: undefined,
                     };
@@ -158,14 +172,17 @@ export const newsApi = directusApi.injectEndpoints({
                         };
                     }
 
+                    // Keep original date for next/prev queries
+                    const originalDate = (newsItem as any).date;
+
                     const nextNews = await client.request(
                         readItems('news', {
                             filter: {
                                 _or: [
-                                    { date: { _gt: newsItem.date } },
+                                    { date: { _gt: originalDate } },
                                     {
                                         _and: [
-                                            { date: { _eq: newsItem.date } },
+                                            { date: { _eq: originalDate } },
                                             { id: { _gt: id } },
                                         ],
                                     },
@@ -183,10 +200,10 @@ export const newsApi = directusApi.injectEndpoints({
                         readItems('news', {
                             filter: {
                                 _or: [
-                                    { date: { _lt: newsItem.date } },
+                                    { date: { _lt: originalDate } },
                                     {
                                         _and: [
-                                            { date: { _eq: newsItem.date } },
+                                            { date: { _eq: originalDate } },
                                             { id: { _lt: id } },
                                         ],
                                     },
@@ -200,11 +217,17 @@ export const newsApi = directusApi.injectEndpoints({
                         }),
                     );
 
+                    // format the single news item's date to D.M.YYYY (after using originalDate)
+                    const formattedNewsItem = {
+                        ...newsItem,
+                        date: formatDateToDMY(originalDate),
+                    };
+
                     return {
                         data: {
                             nextId: nextNews?.[0]?.id || null,
                             prevId: prevNews?.[0]?.id || null,
-                            ...newsItem,
+                            ...formattedNewsItem,
                         },
                         error: undefined,
                         meta: undefined,

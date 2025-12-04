@@ -1,5 +1,7 @@
 $touchSize: 1023px;
-
+.NewsPage {
+    min-height: 80vh;
+}
 .title {
     font: var(--font-sw-xxl);
     text-align: center;
@@ -35,6 +37,9 @@ $touchSize: 1023px;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     justify-content: center;
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .noMoreNews {

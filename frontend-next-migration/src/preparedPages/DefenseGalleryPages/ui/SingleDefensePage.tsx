@@ -14,7 +14,7 @@ import {
 } from '@/shared/ui/v2/DescriptionCardMobile';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import search from '@/shared/assets/icons/Search.svg';
-import { cls } from '@/preparedPages/DefenseGalleryPages';
+import cls from './DefenseGalleryPage.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 
 export interface Props {

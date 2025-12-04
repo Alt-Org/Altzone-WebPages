@@ -1,5 +1,5 @@
 import { MainPageProps } from '@/preparedPages/MainPage';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import gameImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import iPhone16 from '@/shared/assets/images/mainpage/iPhone 16 Pro mockup natural titanium 1.png';
@@ -13,7 +13,7 @@ import { createPage } from '@/app/_helpers';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'main');
+    const { t } = await getServerTranslation(lng, 'main');
 
     return createPage<MainPageProps>({
         buildSeo: () => ({
@@ -80,7 +80,7 @@ export async function _getPage(lng: string) {
                     href: getRouteAllHeroesPage(),
                 },
             },
-            gallery: {
+            altZone: {
                 title: t('project-description-title'),
                 infoText: t('project-description-text'),
                 socialsText: t('socials-text'),
@@ -96,23 +96,6 @@ export async function _getPage(lng: string) {
                 ],
                 videoLink: AppExternalLinks.previewVideoYoutube,
                 gameImg: iPhone16.src,
-            },
-            galleryCopy: {
-                title: t('project-description-title'),
-                infoText: t('project-description-text'),
-                socialsText: t('socials-text'),
-                followUsText: t('follow-us-text'),
-                seeMoreLink: {
-                    text: t('gallery-seeMore'),
-                    href: getRouteAboutPage(),
-                },
-                socialMediaLinks: [
-                    AppExternalLinks.igPost1,
-                    AppExternalLinks.igPost2,
-                    AppExternalLinks.fbPost1,
-                ],
-                videoLink: AppExternalLinks.previewVideoYoutube,
-                gameImg: gameImg.src,
             },
             contactSection: {
                 title: t('contact-title'),

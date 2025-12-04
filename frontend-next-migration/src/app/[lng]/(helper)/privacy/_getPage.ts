@@ -1,12 +1,12 @@
 import { createPage } from '@/app/_helpers';
 import { PrivacyPageProps } from '@/preparedPages/PrivacyPage';
 import { makePrivacySectionsWithI18n } from '@/entities/PresentationPackages';
-import { useServerTranslation } from '@/shared/i18n';
+import { getServerTranslation } from '@/shared/i18n';
 import { getRoutePrivacyPage } from '@/shared/appLinks/RoutePaths';
 import { defaultOpenGraph } from '@/shared/seoConstants';
 
 export async function _getPage(lng: string) {
-    const { t } = await useServerTranslation(lng, 'privacy');
+    const { t } = await getServerTranslation(lng, 'privacy');
 
     return createPage<PrivacyPageProps>({
         buildPage: () => ({

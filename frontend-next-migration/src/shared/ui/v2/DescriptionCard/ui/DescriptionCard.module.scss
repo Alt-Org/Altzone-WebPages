@@ -17,19 +17,25 @@
     --background: #1E3544;
     --white: #FAF9F6;
     --black: #121212;
+
+    /* Smooth border-color change across all themes */
+    transition: border-color 0.3s ease-in-out;
 }
 
-
-.withScalableLink {
-    .DescriptionCardTexts {
+/* Default clickable hover same as .withScalableLink, only when card is clickable and not using withScalableLink */
+.Card.clickableHover {
+    .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
         transition: all ease-in-out;
         transition-duration: 0.3s;
+        transform-origin: right;
     }
-    &:hover {
-        .DescriptionCardTexts {
-            flex-basis: 40% !important;
+    @media (min-width:breakpoint(md)) {
+        &:hover {
+            .DescriptionCardImageSection > .DescriptionCardCoverImageContainer > .Cover {
+                transform: translateX(20px) !important;
+            }
+            border-color: var(--primary-border);
         }
-        border-color: var(--primary-border);
     }
 }
 
@@ -44,6 +50,9 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 4px 8px 0 var(--black);
+    /* ensure hover border-color animates */
+    transition: border-color 0.3s ease-in-out;
+
     @media (max-width:breakpoint(md)) {
         height:160px !important;
         box-shadow: 2px 4px 0 var(--black);
@@ -92,6 +101,8 @@
     width: 100% !important;
     height: 100% !important;
     object-position: left !important;
+    display: block;
+    margin-left:auto;
 }
 .Card.DefenseGalleryCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
     position: absolute;
@@ -117,9 +128,7 @@
     justify-content: space-between;
     box-shadow: 4px 8px 0 var(--black);
     transition: border-color 0.3s ease-in-out;
-    &:hover {
-        border-color: var(--primary-color);
-    }
+
     @media (max-width:breakpoint(md)) {
         height:160px !important;
         box-shadow: 2px 4px 0 var(--black);
@@ -174,6 +183,8 @@
     width: 100% !important;
     height: 100% !important;
     object-position: left !important;
+    display: block;
+    margin-left:auto;
 }
 .Card.FurnitureCollectionCard > .DescriptionCardImageSection > .DescriptionCardTriangle {
     position: absolute;
@@ -200,7 +211,6 @@
     display: flex;
     justify-content: space-between;
     box-shadow: 4px 4px 0 var(--black);
-    transition: border-color 0.3s ease-in-out;
     &:hover {
         border-color: var(--primary-color);
     }
@@ -305,4 +315,95 @@
         border-right: 105px solid transparent;
         z-index: 1;
     }
+}
+
+// TeachersCard
+.Card.TeachersCard {
+    height: fit-content;
+    min-height: 200px;
+    width: 90%;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 4px 0 var(--black);
+    padding: 2em;
+}
+
+.Card.TeachersCard  > .DescriptionCardTexts > .DescriptionCardTitle {
+    h2 {
+        margin: 0;
+        padding: 0;
+        font: var(--font-sw-xxxl);
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            font: var(--font-sw-xl);
+        }
+    }
+}
+.Card.TeachersCard  > .DescriptionCardTexts {
+    h3 {
+        font: var(--font-sw-l);
+        line-height: 2;
+        margin-top: 0.5em;
+    }
+    p {
+        margin-bottom: 1em;
+        font: var(--font-dm-m);
+        color: var(--white);
+    }
+}
+
+// LessonCard
+.Card.LessonCard {
+    width: 230px;
+    aspect-ratio: 292/326;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 4px 0 var(--black);
+    padding: 2em 1em;
+}
+
+.Card.LessonCard  > .DescriptionCardTexts > .DescriptionCardTitle {
+    margin: 0;
+    h2 {
+        font: var(--font-sw-l);
+        color:var(--white);
+        text-align: center;
+    }
+    padding-bottom: 0.5em;
+}
+
+.Card.LessonCard  > .DescriptionCardTexts {
+    
+        font: var(--font-dm-m);
+        color: var(--white);
+        text-align: center;
+        margin: 0;
+        margin-top: 0.5em;
+        padding: 0;
+        button,a {
+            width: 90%;
+            margin-top: 1em;
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 1em;
+        }
+        span {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 0.5em;
+            button, a {
+                width: 50%;
+            }
+        }
+        p {
+            margin-top: 0.8em;
+        }
 }

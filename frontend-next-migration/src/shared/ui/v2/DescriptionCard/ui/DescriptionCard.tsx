@@ -23,6 +23,8 @@ export enum DescriptionCardTheme {
     DEFENSEGALLERY = 'DefenseGalleryCard',
     FURNITURECOLLECTION = 'FurnitureCollectionCard',
     COLLECTIONS = 'CollectionsCard',
+    TEACHERS = 'TeachersCard',
+    LESSON = 'LessonCard',
 }
 
 /**
@@ -43,6 +45,7 @@ interface DescriptionCardProps
     path?: string;
     isExternal?: boolean;
     withScalableLink?: boolean;
+    disableHoverDesktop?: boolean;
     ref?: LegacyRef<HTMLDivElement>;
     children: ReactNode;
     height?: string;
@@ -105,12 +108,17 @@ const DescriptionCardBase: any = forwardRef<HTMLDivElement, DescriptionCardProps
         path,
         isExternal = false,
         withScalableLink = false,
+        disableHoverDesktop = false,
         children,
         ...otherProps
     } = props;
+
+    const isHoverEnabled = (Boolean(path) && !disableHoverDesktop) || withScalableLink;
+
     const mods: Record<string, boolean> = {
-        [cls.withScalableLink]: withScalableLink,
+        [cls.clickableHover]: isHoverEnabled,
     };
+
     if (path) {
         return (
             <AppLink

@@ -9,13 +9,12 @@ import Link from 'next/link';
 import MinimizeButton from '@/shared/assets/icons/MinimizeButton.svg';
 import Accept from '@/shared/assets/icons/Correct.svg';
 import Decline from '@/shared/assets/icons/X.svg';
-import useBreakpoints from '@/shared/lib/hooks/useBreakpoints';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
-const CookieConsentV4: React.FC = () => {
+const CookieConsentV3: React.FC = () => {
     const { t, i18n } = useTranslation('cookieConsent');
     const [isMinimized, setIsMinimized] = useState(false);
     const [cookiesHandled, setCookiesHandled] = useState(false);
-    const { xs } = useBreakpoints();
 
     useEffect(() => {
         const consent = document.cookie.includes('AltZoneCookieConsent=');
@@ -80,16 +79,9 @@ const CookieConsentV4: React.FC = () => {
     if (cookiesHandled) {
         return null;
     }
-
+    const mods = { [cls.minimized]: isMinimized };
     return (
-        <div
-            className={cls.cookieConsentV2}
-            style={{
-                height: isMinimized ? '130px' : xs ? '690px' : '360px',
-                overflow: 'hidden',
-                transition: 'height 0.3s ease',
-            }}
-        >
+        <div className={classNames(cls.cookieConsentV2, mods, [])}>
             {isMinimized ? (
                 <div className={cls.alignVertically}>
                     <div
@@ -172,4 +164,4 @@ const CookieConsentV4: React.FC = () => {
     );
 };
 
-export default CookieConsentV4;
+export default CookieConsentV3;

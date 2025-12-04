@@ -22,6 +22,7 @@ export const NavElement = memo(({ navElem, className = '' }: NavElementProps) =>
         <div className={classNames(cls.parent)}>
             <div className={classNames(cls.NavElement, {}, [className])}>
                 <AppLink
+                    className={cls.align}
                     to={navElem.link}
                     isExternal={navElem.isExternal}
                 >

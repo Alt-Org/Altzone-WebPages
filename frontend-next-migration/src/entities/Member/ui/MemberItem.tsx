@@ -47,10 +47,10 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
                         <span className={cls.taskText}>{task}</span>
                     </div>
                     <div className={cls.iconContainer}>
-                        <div
-                            className={`${cls.memberLogo} ${isEnlarged ? cls.memberLogoEnlarged : ''}`}
-                        >
-                            {logoUrl ? (
+                        {logoUrl ? (
+                            <div
+                                className={`${cls.memberLogo} ${isEnlarged ? cls.memberLogoEnlarged : ''}`}
+                            >
                                 <Image
                                     src={logoUrl}
                                     alt={member.name}
@@ -59,10 +59,11 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
                                     width={500}
                                     height={500}
                                 />
-                            ) : (
-                                <div className={cls.placeholderLogo} />
-                            )}
-                        </div>
+                            </div>
+                        ) : (
+                            <div className={cls.placeholderLogo} />
+                        )}
+
                         {Object.entries(linksMap).map(([key, icon]) => {
                             const link = member[key as keyof Member];
                             if (typeof link === 'string') {

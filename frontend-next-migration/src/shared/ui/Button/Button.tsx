@@ -15,6 +15,8 @@ export enum ButtonTheme {
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
     Graffiti = 'graffiti',
+    PRIMARY_2 = 'primary2',
+    SECONDARY = 'secondary',
 }
 
 export enum ButtonSize {

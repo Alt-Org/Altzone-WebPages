@@ -1,4 +1,4 @@
-import { CollectionName, CollectionInfo, CollectionSlug } from '../types/music';
+/*import { CollectionName, CollectionInfo, CollectionSlug } from '../types/music';
 
 export const initializeMusicCollections = (): Record<CollectionName, CollectionInfo> => {
     return {
@@ -49,3 +49,4 @@ export const initializeMusicCollections = (): Record<CollectionName, CollectionI
         },
     };
 };
+*/

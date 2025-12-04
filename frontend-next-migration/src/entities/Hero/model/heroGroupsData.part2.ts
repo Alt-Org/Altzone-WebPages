@@ -12,7 +12,8 @@ import desensitizer from '@/shared/assets/images/descriptionCard/desensitizer.pn
 import orange from '@/shared/assets/images/heros/textBgColors/orange.webp';
 import lightBlue from '@/shared/assets/images/heros/textBgColors/light-blue.webp';
 import comingSoon from '@/shared/assets/images/heros/ComingSoon.webp';
-import { statData2, statData3 } from '@/entities/Hero';
+import { statData2 } from '../model/stats/statsDataV3';
+import { statData3 } from '../model/stats/statsDataV4';
 import { GroupInfo, HeroGroup, HeroSlug } from '../types/hero';
 
 export const buildHeroGroupsPart2 = (
@@ -27,6 +28,7 @@ export const buildHeroGroupsPart2 = (
         heroes: [
             {
                 id: 524234,
+                rarityClass: t('common'),
                 srcImg: believer,
                 srcGif: believerGif,
                 alt: t('OBEDIENT.heroes.Believer.alt'),
@@ -40,6 +42,7 @@ export const buildHeroGroupsPart2 = (
                 id: 524235,
                 srcImg: people_pleaser,
                 srcGif: comingSoon,
+                rarityClass: t('common'),
                 alt: t('OBEDIENT.heroes.PeoplePleaser.alt'),
                 altGif: t('OBEDIENT.heroes.PeoplePleaser.altGif'),
                 slug: HeroSlug.PEOPLE_PLEASER,
@@ -60,6 +63,7 @@ export const buildHeroGroupsPart2 = (
             {
                 id: 848349,
                 srcImg: hateSpeech,
+                rarityClass: t('epic'),
                 srcGif: hateSpeechGif,
                 alt: t('DESENSITIZER.heroes.HateSpeech.alt'),
                 altGif: t('DESENSITIZER.heroes.HateSpeech.altGif'),
@@ -70,6 +74,7 @@ export const buildHeroGroupsPart2 = (
             },
             {
                 id: 848341,
+                rarityClass: t('rare'),
                 srcImg: meatwall,
                 srcGif: comingSoon,
                 alt: t('DESENSITIZER.heroes.Meatwall.alt'),
@@ -83,6 +88,7 @@ export const buildHeroGroupsPart2 = (
                 id: 848342,
                 srcImg: veteran,
                 srcGif: veteranGif,
+                rarityClass: t('common'),
                 alt: t('DESENSITIZER.heroes.Veteran.alt'),
                 altGif: t('DESENSITIZER.heroes.Veteran.altGif'),
                 slug: HeroSlug.VETERAN,
@@ -93,6 +99,7 @@ export const buildHeroGroupsPart2 = (
             {
                 id: 848343,
                 srcImg: bullying,
+                rarityClass: t('rare'),
                 srcGif: comingSoon,
                 alt: t('DESENSITIZER.heroes.Bullying.alt'),
                 altGif: t('DESENSITIZER.heroes.Bullying.altGif'),

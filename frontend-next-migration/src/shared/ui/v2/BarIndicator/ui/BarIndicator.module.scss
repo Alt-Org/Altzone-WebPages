@@ -1,0 +1,48 @@
+.barIndicatorContainer {
+  display: flex;
+  gap: 4px;
+  width: fit-content;
+  height: 1.5rem;
+  min-height: 1.5rem;
+  overflow: visible;
+}
+.bar {
+  width: 5px;
+  height: 100%;
+  border-radius: 2px;
+}
+.barPrimary {
+  background-color: var(--primary-color);
+}
+.barWhite {
+  background-color: var(--white);
+}
+.barBlack {
+  background-color: var(--black);
+}
+.LabelContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.BarIndicator {
+  font: var(--font-dm-m);
+}
+.Orange{
+  color: var(--primary-color);
+  font-weight: bold;
+}
+.Bold{
+  font-weight: bold;
+}
+.label {
+  margin-bottom: .5rem;
+}
+.level {
+  margin-bottom: .3rem;
+  color: var(--white);
+}
+.threshold {
+  margin-top: .3rem;
+  color: var(--white);
+}

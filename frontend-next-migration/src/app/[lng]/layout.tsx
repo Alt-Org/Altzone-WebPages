@@ -1,6 +1,5 @@
 import { dir } from 'i18next';
 import type { Metadata, Viewport } from 'next';
-import { Urbanist, Rubik, Sedgwick_Ave_Display, DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { ChatBotToggleButton } from '@/shared/ui/v2/Chatbot';
@@ -8,43 +7,63 @@ import { languages } from '@/shared/i18n/settings/settings';
 import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
+import localFont from 'next/font/local';
 //import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
-import CookieConsentV3 from '@/features/CookieConsentV3/CookieConsentV3';
+import { CookieConsentV3 } from '@/features/CookieConsentV3';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
 // });
 
-const sedgwickFont = Sedgwick_Ave_Display({
-    subsets: ['latin'],
-    weight: '400',
+const sedgwickFont = localFont({
+    src: [
+        {
+            path: '../fonts/SedgwickAveDisplay-Regular.ttf',
+            weight: '400',
+            style: 'normal',
+        },
+    ],
     variable: '--font-family-title',
-    fallback: ['system-ui', 'arial', 'sans-serif'],
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
     display: 'swap',
 });
 
-const dmSans = DM_Sans({
-    subsets: ['latin'],
-    weight: '400',
+const dmSans = localFont({
+    src: [
+        {
+            path: '../fonts/DMSans-VariableFont_opsz,wght.ttf',
+            style: 'normal',
+        },
+    ],
     variable: '--font-family-secondary',
-    fallback: ['system-ui', 'arial', 'sans-serif'],
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
     display: 'swap',
 });
 
-const urbanist = Urbanist({
+const urbanist = localFont({
+    src: [
+        {
+            path: '../fonts/Urbanist-VariableFont_wght.ttf',
+            weight: '700',
+            style: 'normal',
+        },
+    ],
     variable: '--font-family-main',
-    subsets: ['latin'],
-    weight: '700',
-    fallback: ['system-ui', 'arial', 'sans-serif'],
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
     display: 'swap',
 });
 
-const rubik = Rubik({
-    subsets: ['latin'],
-    weight: '400',
+const rubik = localFont({
+    src: [
+        {
+            path: '../fonts/Rubik-VariableFont_wght.ttf',
+            weight: '400',
+            style: 'normal',
+        },
+    ],
     variable: '--font-family-texts',
-    fallback: ['system-ui', 'arial', 'sans-serif'],
+    fallback: ['system-ui', 'Arial', 'sans-serif'],
     display: 'swap',
 });
 

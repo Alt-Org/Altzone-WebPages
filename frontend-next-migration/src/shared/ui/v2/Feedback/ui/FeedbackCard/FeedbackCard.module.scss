@@ -47,13 +47,13 @@
 .textInput {
     font: var(--font-dm-m);
     color: var(--black);
-    width: 100%;
+    width: 300px !important;
     height: 45px;
     padding: 10px 10px;
     background: #FFFFFF;
     border: 2px solid #000000;
     box-shadow: 2px 4px 0 #121212;
-    border-radius: 25px;
+    border-radius: 25px !important;
     box-sizing: border-box;
 }
 

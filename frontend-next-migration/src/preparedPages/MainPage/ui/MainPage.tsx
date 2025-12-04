@@ -7,7 +7,7 @@ import {
 } from '@/shared/ui/v2/DescriptionCardMobile';
 import defenceGalleryMobile from '@/shared/assets/images/descriptionCard/defense_gallery_mobile.png';
 import useSizes from '@/shared/lib/hooks/useSizes';
-import { Gallery, GalleryProps } from './_components/sections/Gallery';
+import { AltZone, AltZoneProps } from './_components/sections/AltZone';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import { NewsCard } from '@/widgets/NewsCard';
@@ -21,17 +21,18 @@ import {
 import { VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries';
 import cls from './page.module.scss';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
+import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
 import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
     playWithUs: PlayWithUsProps;
     getToKnowComics: GetToKnowComicsProps;
     videoAndGalleries: VideoAndGalleriesProps;
-    gallery: GalleryProps;
-    galleryCopy: GalleryProps;
+    altZone: AltZoneProps;
     contactSection: ContactSectionProps;
 };
 
@@ -41,7 +42,7 @@ function MainPage(props: Props) {
         playWithUs,
         // getToKnowComics,
         // classifiedHeroesBlocks,
-        gallery,
+        altZone,
         contactSection,
     } = props;
 
@@ -53,10 +54,52 @@ function MainPage(props: Props) {
     const directusBaseUrl = envHelper.directusHost;
     const groupedNews = formatNews(latestNews || [], lngCode || 'fi-FI');
     const { t } = useClientTranslation('main');
+    const router = useRouter();
 
     return (
         <div className={cls.MainPage}>
             <WallIntroAnimation renderOnce={true} />
+            <div className={cls.mainImgWrapper}>
+                <div className={cls.buttonsOverlay}>
+                    <Button
+                        withScalableLink
+                        className={cls.aboutButton}
+                        theme={ButtonTheme.PRIMARY_2}
+                        size={ButtonSize.L}
+                        onClick={() => router.push('/about')}
+                    >
+                        {t('main-about')}
+                    </Button>
+
+                    <Button
+                        withScalableLink
+                        className={cls.prgButton}
+                        theme={ButtonTheme.PRIMARY_2}
+                        size={ButtonSize.L}
+                        onClick={() => router.push('/prg')}
+                    >
+                        {t('main-prg')}
+                    </Button>
+
+                    {/**<Button
+                    withScalableLink
+                    className={cls.teachersButton}
+                    theme={ButtonTheme.PRIMARY_2}
+                    size={ButtonSize.L}>{t('main-teacherspage')}
+                </Button>**/}
+
+                    <Button
+                        withScalableLink
+                        className={cls.playButton}
+                        theme={ButtonTheme.SECONDARY}
+                        size={ButtonSize.L}
+                        onClick={() => window.open(AppExternalLinks.downloadAndroid, '_blank')}
+                    >
+                        {t('main-play')}
+                    </Button>
+                </div>
+            </div>
+
             <ProjectDescription
                 className={cls.description}
                 {...projectDescription}
@@ -87,28 +130,25 @@ function MainPage(props: Props) {
                 </div>
             ) : (
                 <div className={cls.descriptionCard}>
-                    <a
-                        className={cls.cardLink}
-                        href={`/defense-gallery`}
-                        rel="noopener noreferrer"
+                    <DescriptionCard
+                        theme={DescriptionCardTheme.DEFENSEGALLERY}
+                        path={'/defense-gallery'}
                     >
-                        <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
-                            <DescriptionCard.Texts width="25%">
-                                <DescriptionCard.Texts.Title>
-                                    {t('descriptionCard-title')}
-                                </DescriptionCard.Texts.Title>
-                            </DescriptionCard.Texts>
-                            <DescriptionCard.Image width="65%">
-                                <DescriptionCard.Image.Image
-                                    src={defenceGallery}
-                                    alt="defence gallery"
-                                />
-                            </DescriptionCard.Image>
-                        </DescriptionCard>
-                    </a>
+                        <DescriptionCard.Texts width="35%">
+                            <DescriptionCard.Texts.Title>
+                                {t('descriptionCard-title')}
+                            </DescriptionCard.Texts.Title>
+                        </DescriptionCard.Texts>
+                        <DescriptionCard.Image width="65%">
+                            <DescriptionCard.Image.Image
+                                src={defenceGallery}
+                                alt="defence gallery"
+                            />
+                        </DescriptionCard.Image>
+                    </DescriptionCard>
                 </div>
             )}
-            <Gallery {...gallery} />
+            <AltZone {...altZone} />
             <div className={cls.newsSection}>
                 <h2 className={cls.newsHeader}>{t('newsSection-title')}</h2>
                 <div className={cls.newsGrid}>
@@ -139,8 +179,6 @@ function MainPage(props: Props) {
                 </div>
             </div>
             <ContactSection {...contactSection} />
-
-            {/*<Gallery {...galleryCopy} />*/}
 
             {/*<HorizontalLines />*/}
             {/*<SectionRanking*/}

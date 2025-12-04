@@ -1,6 +1,10 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { getRouteCookiesPage, getRoutePrivacyPage } from '@/shared/appLinks/RoutePaths';
+import {
+    getRouteCookiesPage,
+    getRoutePrivacyPage,
+    getRouteEthicalGuidelinesPage,
+} from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { useResetCookies } from '@/shared/lib/hooks/useResetCookies';
 import { Texts } from '../../model/types/types';
@@ -14,7 +18,7 @@ interface RightsProps {
 export const Rights = memo((props: RightsProps) => {
     const { className = '', texts } = props;
 
-    const { cookies, consent, currentYear, privacy, companyName } = texts;
+    const { cookies, consent, currentYear, privacy, ethics, companyName } = texts;
 
     const handleResetCookies = useResetCookies();
 
@@ -23,23 +27,29 @@ export const Rights = memo((props: RightsProps) => {
             <div className={cls.RightContainer}>
                 <p className={cls.RightLinkContainer}>
                     <AppLink
-                        className={cls.cookies}
+                        className={classNames(cls.cookies, {}, [cls.linkHover])}
                         to={getRouteCookiesPage()}
                     >
                         {cookies}
                     </AppLink>{' '}
                     <AppLink
-                        className={cls.privacy}
+                        className={classNames(cls.privacy, {}, [cls.linkHover])}
                         to={getRoutePrivacyPage()}
                     >
                         {privacy}
                     </AppLink>
                     <span
                         onClick={handleResetCookies}
-                        className={cls.resetCookies}
+                        className={classNames(cls.resetCookies, {}, [cls.linkHover])}
                     >
                         {consent}
                     </span>
+                    <AppLink
+                        className={classNames(cls.ethics, {}, [cls.linkHover])}
+                        to={getRouteEthicalGuidelinesPage()}
+                    >
+                        {ethics}
+                    </AppLink>
                 </p>
             </div>
             <p>

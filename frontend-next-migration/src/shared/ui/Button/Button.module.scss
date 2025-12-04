@@ -134,3 +134,48 @@
 
 }
 
+.primary2 {
+  background-color: var(--background);
+  color: var(--primary-color);
+  border: var(--black) solid 2px;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  font: var(--font-dm-bold-m);
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+  box-shadow: 4px 8px 0 var(--black);
+  
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.secondary {
+  background-color: var(--primary-color);
+  color: var(--black);
+  border: var(--black) solid 2px;
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  font: var(--font-dm-bold-m);
+  padding: 15px;
+  padding-left: 160px;
+  padding-right: 160px;
+  text-align: center;
+  box-shadow: 4px 8px 0 var(--black);
+
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.4s;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

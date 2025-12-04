@@ -2,12 +2,14 @@
 import { useInView } from 'react-intersection-observer';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import cls from './Gallery.module.scss';
+import Image from 'next/image';
+import cls from './AltZone.module.scss';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import instaIcon from '@/shared/assets/images/Insta2.svg';
 import discordIcon from '@/shared/assets/images/Discord2.svg';
 import facebookIcon from '@/shared/assets/images/Facebook2.svg';
 import youtubeIcon from '@/shared/assets/images/Youtube2.svg';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 export type Props = {
     title: string;
@@ -23,8 +25,9 @@ export type Props = {
     gameImg?: string;
 };
 
-const Gallery = (props: Props) => {
+const AltZone = (props: Props) => {
     const { title, infoText, seeMoreLink, gameImg, followUsText } = props;
+    const { isMobileSize } = useSizes();
 
     const { ref, inView } = useInView({
         rootMargin: '-150px 0px',
@@ -38,7 +41,7 @@ const Gallery = (props: Props) => {
     return (
         <section
             ref={ref}
-            className={classNames(cls.SectionGallery, mods)}
+            className={classNames(cls.SectionAltZone, mods)}
         >
             <Container className={cls.Container}>
                 <div className={cls.titleWrapper}>
@@ -59,10 +62,12 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={discordIcon.src}
                                 alt="Discord"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                         <a
@@ -70,10 +75,12 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={instaIcon.src}
                                 alt="Instagram"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                         <a
@@ -81,10 +88,12 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={facebookIcon.src}
                                 alt="Facebook"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                         <a
@@ -92,24 +101,40 @@ const Gallery = (props: Props) => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={youtubeIcon.src}
                                 alt="YouTube"
                                 className={cls.socialMediaIcon}
+                                width={32}
+                                height={32}
                             />
                         </a>
                     </div>
                 </div>
 
                 <div className={cls.imgWrapper}>
-                    <img
-                        src={gameImg}
-                        alt=""
-                    />
+                    {gameImg ? (
+                        isMobileSize ? (
+                            <Image
+                                src={gameImg}
+                                alt=""
+                                width={328}
+                                height={477}
+                            />
+                        ) : (
+                            <Image
+                                src={gameImg}
+                                alt=""
+                                className={cls.MinSizes}
+                                width={677}
+                                height={978}
+                            />
+                        )
+                    ) : null}
                 </div>
             </Container>
         </section>
     );
 };
 
-export default Gallery;
+export default AltZone;

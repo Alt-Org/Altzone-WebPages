@@ -1,7 +1,7 @@
 'use client';
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useEffect, KeyboardEvent, FocusEvent } from 'react';
+import { useState, useEffect, KeyboardEvent, useRef } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapperProps } from '../types';
@@ -15,7 +15,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         contentAbsolute = false,
         mouseOverLeaveMode = false,
         className = '',
-        childrenWrapperClassName = '',
         contentClassName = '',
         contentItemClassName = '',
         elements,
@@ -28,12 +27,16 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         staticTitle = '',
         dynamicTitle,
         showArrow,
+        autoClose = false,
+        headerClassName = '',
+        childrenWrapperClassName = '',
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
     const [shouldRender, setShouldRender] = useState<boolean>(false);
     const [animationState, setAnimationState] = useState<'opening' | 'closing' | ''>('');
     const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
+    const rootRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         if (isOpen) {
@@ -45,6 +48,40 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             if (onClose) onClose();
         }
     }, [isOpen]);
+
+    // Close on outside click when not open by default and not static
+    useEffect(() => {
+        if (openByDefault || staticDropdown || !autoClose) return;
+        const handleDocMouseDown = (event: MouseEvent) => {
+            if (!isOpen) return;
+            const root = rootRef.current;
+            if (root && event.target instanceof Node && !root.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleDocMouseDown);
+        return () => {
+            document.removeEventListener('mousedown', handleDocMouseDown);
+        };
+    }, [isOpen, openByDefault, staticDropdown]);
+
+    // Close ancestor dropdowns when a leaf item is selected inside them
+    useEffect(() => {
+        const handleDropdownSelect = (event: Event) => {
+            if (openByDefault || staticDropdown) return;
+            const root = rootRef.current;
+            if (!root) return;
+            const custom = event as CustomEvent<{ source: HTMLElement }>;
+            const source = custom.detail?.source;
+            if (source && root !== source && root.contains(source)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('az:dropdown-select' as any, handleDropdownSelect as any);
+        return () => {
+            document.removeEventListener('az:dropdown-select' as any, handleDropdownSelect as any);
+        };
+    }, [openByDefault, staticDropdown]);
 
     const handleAnimationEnd = () => {
         if (animationState === 'closing') {
@@ -88,6 +125,14 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         setIsOpen(!isOpen);
     };
 
+    // Notify other dropdown wrappers in the ancestor chain to close
+    const notifySelect = () => {
+        const root = rootRef.current;
+        if (!root) return;
+        const ev = new CustomEvent('az:dropdown-select', { detail: { source: root } });
+        document.dispatchEvent(ev);
+    };
+
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'Enter' && !isDisabled?.status) {
             setIsOpen(!isOpen);
@@ -108,9 +153,9 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     };
 
     const mainElementClass = isDisabled?.status ? cls.disabled : '';
-
     return (
         <div
+            ref={rootRef}
             className={classNames(cls.DropdownWrapper, mods, [className])}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -125,17 +170,26 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             {staticDropdown ? (
                 <div
                     title={isDisabled?.status ? isDisabled?.reason : ''}
-                    className={classNames(cls.staticHeading)}
+                    className={classNames(cls.headerArea, {}, [headerClassName])}
                 >
-                    {staticTitle}
+                    <div className={classNames(cls.staticHeading)}>{staticTitle}</div>
+                    <div
+                        className={classNames(cls.childrenWrapper, {}, [
+                            childrenWrapperClassName,
+                            mainElementClass,
+                        ])}
+                    >
+                        {children}
+                    </div>
                 </div>
             ) : (
-                <div>
-                    <div
-                        onClick={!isDisabled?.status ? toggleDropdown : undefined}
-                        role="button"
-                        className={cls.dynamicHeading}
-                    >
+                <div
+                    onClick={!isDisabled?.status ? toggleDropdown : undefined}
+                    role="button"
+                    title={isDisabled?.status ? isDisabled?.reason : ''}
+                    className={classNames(cls.headerArea, {}, [headerClassName])}
+                >
+                    <div className={cls.dynamicHeading}>
                         {dynamicTitle}
                         {showArrow && (
                             <span
@@ -157,9 +211,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                         )}
                     </div>
                     <div
-                        onClick={!isDisabled?.status ? toggleDropdown : undefined}
-                        role="button"
-                        title={isDisabled?.status ? isDisabled?.reason : ''}
                         className={classNames(cls.childrenWrapper, { [cls.active]: isOpen }, [
                             childrenWrapperClassName,
                             mainElementClass,
@@ -197,6 +248,12 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             className={classNames(contentItemClassName, {
                                                 [cls.active]: element.active,
                                             })}
+                                            onClick={() => {
+                                                if (!openByDefault && !staticDropdown) {
+                                                    if (autoClose) setIsOpen(false);
+                                                    notifySelect();
+                                                }
+                                            }}
                                         >
                                             {element.elementText}
                                             {element.link.isExternal && (
@@ -222,7 +279,13 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     ? 'var(--secondary-color)'
                                                     : 'white',
                                             }}
-                                            onClick={element.onClickCallback}
+                                            onClick={() => {
+                                                if (!openByDefault && !staticDropdown) {
+                                                    if (autoClose) setIsOpen(false);
+                                                    notifySelect();
+                                                }
+                                                element.onClickCallback?.();
+                                            }}
                                         >
                                             {/*<span className={contentItemClassName}>*/}
                                             {element.elementText}

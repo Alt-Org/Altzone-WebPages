@@ -139,6 +139,15 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             className={classNames(contentItemClassName, {
                                                 [cls.active]: element.active,
                                             })}
+                                            onClick={() => {
+                                                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                                                onClose && onClose();
+                                                try {
+                                                    document.dispatchEvent(
+                                                        new CustomEvent('az:dropdown-select'),
+                                                    );
+                                                } catch {}
+                                            }}
                                         >
                                             {element.elementText}
                                             {element.link.isExternal && (
@@ -149,7 +158,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     style={{
                                                         display: 'inline',
                                                         verticalAlign: 'middle',
-                                                        marginLeft: '5px',
+                                                        marginLeft: '3px',
                                                         color: 'var(--content-primary)',
                                                     }}
                                                 />
@@ -164,7 +173,16 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                     ? 'var(--secondary-color)'
                                                     : 'white',
                                             }}
-                                            onClick={element.onClickCallback}
+                                            onClick={() => {
+                                                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                                                onClose && onClose();
+                                                try {
+                                                    document.dispatchEvent(
+                                                        new CustomEvent('az:dropdown-select'),
+                                                    );
+                                                } catch {}
+                                                element.onClickCallback?.();
+                                            }}
                                         >
                                             {element.elementText}
                                         </span>

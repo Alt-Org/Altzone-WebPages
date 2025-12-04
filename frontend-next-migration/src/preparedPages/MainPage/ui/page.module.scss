@@ -1,3 +1,43 @@
+.mainImgWrapper {
+    position: relative;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.mainContainer > :first-child {
+  position: relative;
+  z-index: 3;
+}
+
+.buttonsOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    left: 170px;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 30px;
+    z-index: 4;
+}
+
+.playButton {
+    align-self: center;
+    margin-top: 350px;
+    margin-right: 380px;
+}
+
+@media (max-width: 1080px) {
+    .buttonsOverlay {
+        display: none;
+    }
+}
+
 .description {
     margin-top: 133px;
     margin-bottom: 133px;
@@ -51,6 +91,9 @@
     margin: 0 auto;
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     justify-content: center;
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .newsHeader {

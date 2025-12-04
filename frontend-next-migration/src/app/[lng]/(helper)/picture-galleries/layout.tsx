@@ -4,6 +4,7 @@ import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { GalleryNavMenuAsDropdown } from '@/features/NavigateGalleries';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useClientTranslation } from '@/shared/i18n';
+import { PageTitle } from '@/shared/ui/PageTitle';
 import { cls } from '@/preparedPages/PictureGalleryPages';
 
 export default function PictureGalleryLayout({ children }: { children: ReactNode }) {
@@ -14,13 +15,25 @@ export default function PictureGalleryLayout({ children }: { children: ReactNode
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
-                component: <GalleryNavMenuAsDropdown openByDefault={true} />,
+                component: (
+                    <GalleryNavMenuAsDropdown
+                        className={cls.LeftSidebar}
+                        openByDefault={true}
+                    />
+                ),
                 hideOnMobile: true,
             }}
         >
-            <h1 className={cls.Title}>{t('picture-galleries')}</h1>
-            <p className={cls.InfoText}>{t('info-text')}</p>
-            {isTouchDevice ? <GalleryNavMenuAsDropdown openByDefault={false} /> : null}
+            {isTouchDevice && (
+                <>
+                    <PageTitle
+                        titleText={t('picture-galleries-title')}
+                        alternate={true}
+                        searchVisible={false}
+                    />
+                    <GalleryNavMenuAsDropdown openByDefault={false} />
+                </>
+            )}
             {children}
         </LayoutWithSidebars>
     );
