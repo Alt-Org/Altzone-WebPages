@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import { MusicManager } from '@/entities/Music/model/MusicCollectionsManager';
 import {
     DropDownElementASTextOrLink,
     NavMenuWithDropdowns,
@@ -11,10 +10,15 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { useParams, usePathname } from 'next/navigation';
 import { getRouteAllMusicCollectionsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './MusicCollectionNavMenuAsDropdown.module.scss';
+import { useGetSongCategoriesQuery } from '@/entities/Music/api/musicApi';
 
 interface MusicCollectionNavMenuAsDropdown {
     className?: string;
 }
+
+/**
+ * Navigation dropdown for music collections.
+ */
 
 const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdown> = ({
     className,
@@ -27,8 +31,7 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
 
     const { isMobileSize, isTabletSize } = useSizes();
     const { t } = useClientTranslation('music');
-    const musicManager = new MusicManager();
-    const collections = musicManager.getAllCollections();
+    const { data: categories, isLoading, error } = useGetSongCategoriesQuery();
 
     const dropdownItems: DropDownElementASTextOrLink[] = [
         {
@@ -39,15 +42,20 @@ const MusicCollectionNavMenuAsDropdown: React.FC<MusicCollectionNavMenuAsDropdow
             },
             active: pathWithoutLng === musicCollectionsRoute,
         },
-        ...collections.map((collection) => ({
-            elementText: t(`${collection.slug}-title`),
+        ...(categories?.map((category) => ({
+            elementText: t(`${category.category_name.toLowerCase()}-title`),
             link: {
-                path: `${musicCollectionsRoute}/${collection.slug}`,
+                path: `${musicCollectionsRoute}/${category.category_name.toLowerCase()}`,
                 isExternal: false,
             },
-            active: pathWithoutLng === `${musicCollectionsRoute}/${collection.slug}`,
-        })),
+            active:
+                pathWithoutLng ===
+                `${musicCollectionsRoute}/${category.category_name.toLowerCase()}`,
+        })) || []),
     ];
+
+    if (isLoading) return <div>Loading categories...</div>;
+    if (error) return <div>Error loading categories</div>;
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {
         title: t('category-title'),

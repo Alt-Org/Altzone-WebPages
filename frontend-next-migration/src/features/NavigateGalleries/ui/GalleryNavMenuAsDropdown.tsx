@@ -17,10 +17,11 @@ import { useClientTranslation } from '@/shared/i18n';
 
 interface GalleryNavMenuProps {
     openByDefault?: boolean;
+    className?: string;
 }
 
 const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
-    const { openByDefault = false } = props;
+    const { openByDefault = false, className } = props;
     const { isMobileSize, isTabletSize } = useSizes();
     const isTouchDevice = isMobileSize || isTabletSize;
     const params = useParams();
@@ -100,7 +101,7 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
     };
 
     return (
-        <div>
+        <div className={className}>
             <nav style={isTouchDevice ? { display: 'contents' } : { display: 'none' }}>
                 <NavMenuWithDropdowns {...navMenuWithDropdownsMobileProps} />
             </nav>

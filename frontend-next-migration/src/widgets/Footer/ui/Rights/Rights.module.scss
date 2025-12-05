@@ -16,17 +16,15 @@
   cursor: pointer;
 }
 
-.resetCookies:hover {
-  text-decoration: underline;
-  color: orange;
+.linkHover {
+  &:hover {
+    text-decoration: underline;
+    color: orange;
+  }
 }
-.cookies:hover {
-  text-decoration: underline;
-  color: orange;
-}
-.privacy:hover {
-  text-decoration: underline;
-  color: orange;
+
+.ethics {
+  white-space: nowrap;
 }
 
 .RightContainer {

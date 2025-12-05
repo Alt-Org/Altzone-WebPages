@@ -30,6 +30,7 @@ const mockTexts: Texts = {
     consent: 'Reset Cookies',
     currentYear: 2025,
     privacy: 'Privacy Policy',
+    ethics: 'Ethical Guidelines',
     companyName: 'My Company',
 };
 

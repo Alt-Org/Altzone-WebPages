@@ -1,4 +1,8 @@
 .Title {
     padding-left: 5%;
     margin-bottom: 25px;
+
+    @media (max-width: breakpoint(lg)) {
+        margin-bottom: -30px;
+    }
 }

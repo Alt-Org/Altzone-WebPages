@@ -45,6 +45,7 @@ export const buildHeroGroupsPart1 = (
         heroes: [
             {
                 id: 4341,
+                rarityClass: t('common'),
                 srcImg: overeater,
                 srcGif: overeaterGif,
                 alt: t('RETROFLECTOR.heroes.Overeater.alt'),
@@ -56,6 +57,7 @@ export const buildHeroGroupsPart1 = (
             },
             {
                 id: 14342,
+                rarityClass: t('common'),
                 srcImg: alcoholic,
                 srcGif: comingSoon,
                 alt: t('RETROFLECTOR.heroes.alcoholic.alt'),
@@ -77,6 +79,7 @@ export const buildHeroGroupsPart1 = (
         heroes: [
             {
                 id: 313213,
+                rarityClass: t('epic'),
                 srcImg: purpleGirls,
                 srcGif: comingSoon,
                 alt: t('CONFLUENT.heroes.SoulSisters.alt'),
@@ -88,6 +91,7 @@ export const buildHeroGroupsPart1 = (
             },
             {
                 id: 34123,
+                rarityClass: t('common'),
                 srcImg: sleepySleeper,
                 srcGif: sleeperGif,
                 alt: t('CONFLUENT.heroes.SleepySleeper.alt'),
@@ -99,6 +103,7 @@ export const buildHeroGroupsPart1 = (
             },
             {
                 id: 34124,
+                rarityClass: t('common'),
                 srcImg: lovers,
                 srcGif: comingSoon,
                 alt: t('CONFLUENT.heroes.Lovers.alt'),
@@ -120,6 +125,7 @@ export const buildHeroGroupsPart1 = (
         heroes: [
             {
                 id: 312314,
+                rarityClass: t('epic'),
                 srcImg: provocateur,
                 srcGif: comingSoon,
                 alt: t('PROJECTOR.heroes.Provocateur.alt'),
@@ -131,6 +137,7 @@ export const buildHeroGroupsPart1 = (
             },
             {
                 id: 312315,
+                rarityClass: t('epic'),
                 srcImg: mirror,
                 srcGif: mirrorGif,
                 alt: t('PROJECTOR.heroes.Mirror.alt'),
@@ -142,6 +149,7 @@ export const buildHeroGroupsPart1 = (
             },
             {
                 id: 312316,
+                rarityClass: t('rare'),
                 srcImg: scapegoater,
                 srcGif: comingSoon,
                 alt: t('PROJECTOR.heroes.Scapegoater.alt'),
@@ -163,6 +171,7 @@ export const buildHeroGroupsPart1 = (
         heroes: [
             {
                 id: 52231233123,
+                rarityClass: t('rare'),
                 srcImg: wiseacre,
                 srcGif: comingSoon,
                 alt: t('INTELLECTUALIZER.heroes.Wiseacre.alt'),
@@ -174,6 +183,7 @@ export const buildHeroGroupsPart1 = (
             },
             {
                 id: 52231233124,
+                rarityClass: t('common'),
                 srcImg: capitalist,
                 srcGif: comingSoon,
                 alt: t('INTELLECTUALIZER.heroes.Capitalist.alt'),
@@ -186,6 +196,7 @@ export const buildHeroGroupsPart1 = (
             {
                 id: 52231233125,
                 srcImg: ocd,
+                rarityClass: t('epic'),
                 srcGif: comingSoon,
                 alt: t('INTELLECTUALIZER.heroes.Ocd.alt'),
                 altGif: t('INTELLECTUALIZER.heroes.Ocd.altGif'),
@@ -207,6 +218,7 @@ export const buildHeroGroupsPart1 = (
             {
                 id: 522313,
                 srcImg: conman,
+                rarityClass: t('rare'),
                 srcGif: conmanGif,
                 alt: t('TRICKSTER.heroes.Conman.alt'),
                 altGif: t('TRICKSTER.heroes.Conman.altGif'),
@@ -217,6 +229,7 @@ export const buildHeroGroupsPart1 = (
             },
             {
                 id: 522314,
+                rarityClass: t('common'),
                 srcImg: jokester,
                 srcGif: comingSoon,
                 alt: t('TRICKSTER.heroes.Jokester.alt'),
@@ -229,6 +242,7 @@ export const buildHeroGroupsPart1 = (
             {
                 id: 522315,
                 srcImg: pranking,
+                rarityClass: t('epic'),
                 srcGif: comingSoon,
                 alt: t('TRICKSTER.heroes.Pranking.alt'),
                 altGif: t('TRICKSTER.heroes.Pranking.altGif'),
@@ -240,6 +254,7 @@ export const buildHeroGroupsPart1 = (
             {
                 id: 522316,
                 srcImg: seducer,
+                rarityClass: t('epic'),
                 srcGif: comingSoon,
                 alt: t('TRICKSTER.heroes.Seducer.alt'),
                 altGif: t('TRICKSTER.heroes.Seducer.altGif'),
