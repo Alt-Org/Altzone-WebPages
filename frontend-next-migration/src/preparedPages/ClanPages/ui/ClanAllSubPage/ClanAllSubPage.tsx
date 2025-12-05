@@ -1,301 +1,239 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { GetClansResponse, useGetClansQuery } from '@/entities/Clan';
-import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import Image from 'next/image';
+import useSizes from '@/shared/lib/hooks/useSizes';
 import { getRouteOneClanPage } from '@/shared/appLinks/RoutePaths';
 import { useClientTranslation } from '@/shared/i18n';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import {
-    SkeletonLoaderForClansDesktop,
-    SkeletonLoaderForClansMobile,
-} from '@/shared/ui/SkeletonLoader';
+import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
+import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
+import { getClanLabelIcon } from '@/entities/Clan/config/clanLabelIcons';
+import cardCls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
+import mobileCardCls from '@/shared/ui/v2/MobileCard/ui/MobileCard.module.scss';
+import { PageTitle } from '@/shared/ui/PageTitle';
+import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
+import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
+import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirstPlace.png';
+import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png';
+import starGray from '@/shared/assets/images/clanLogos/TopPanelMatchmakingPorvarit.png';
+
+type ClanItem = GetClansResponse['data']['Clan'][number];
 
 const ClanAllSubPage = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [currentSearch, setSearch] = useState('');
-    const { isMobileSize } = useIsMobileSize();
-
+    const [searchQuery, setSearchQuery] = useState('');
+    const { isMobileSize, isTabletSize } = useSizes();
     const router = useRouter();
     const { t } = useClientTranslation('clan');
-    const {
-        data: clans,
-        error,
-        isLoading,
-    } = useGetClansQuery({ page: currentPage, search: currentSearch });
+    const { data: clansResponse } = useGetClansQuery({ page: 1 });
 
-    if (isLoading)
-        return isMobileSize ? (
-            <SkeletonLoaderForClansMobile
-                className={cls.skeletonLoader}
-                rating={t('rating')}
-                clan={t('clan')}
-                clanMaster={t('clan_master')}
-                coins={t('coins')}
-                members={t('members')}
-                tag={t('tag')}
-                clansTitle={t('clans_title')}
-            />
-        ) : (
-            <SkeletonLoaderForClansDesktop
-                className={cls.skeletonLoader}
-                rating={t('rating')}
-                clan={t('clan')}
-                clanMaster={t('clan_master')}
-                coins={t('coins')}
-                members={t('members')}
-                tag={t('tag')}
-                clansTitle={t('clans_title')}
-            />
-        );
+    const filteredClans = useMemo(() => {
+        if (!clansResponse) return [];
+
+        const allClans = clansResponse.data.Clan;
+        const query = searchQuery.trim().toLowerCase();
+
+        if (!query) return allClans;
+
+        return allClans.filter((clan) => clan.name.toLowerCase().includes(query));
+    }, [clansResponse, searchQuery]);
 
     const onClickToClan = (id: string) => {
         router.push(getRouteOneClanPage(id));
     };
 
-    const onClickToPage = (page: number) => {
-        setCurrentPage(page);
-    };
-
-    const onClickToSearch = (search: string) => {
-        setSearch(convertToQuerySearch(search));
-    };
-
-    // Temporary way to convert search query value to case-insensitive in front
-    const convertToQuerySearch = (search: string): string => {
-        // Converts value "testi" to: 'name=".*[tT][eE][sS][tT][iI].*"'
-        const cleanValue = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const convertedValue = cleanValue
-            .split('')
-            .map((char) => `[${char.toLowerCase()}${char.toUpperCase()}]`)
-            .join('');
-        const querySearch = `name=".*${convertedValue}.*"`;
-        return querySearch;
-    };
-
-    if (error) {
-        return (
-            <>
-                <h1 className={cls.titleText}>{t('clans_title')}</h1>
-                <ClansSearch onClickToSearch={onClickToSearch} />
-                <h2 className={cls.noResults}>{t('no_result')}</h2>
-            </>
-        );
+    if (!clansResponse) {
+        return null;
     }
 
-    if (clans) {
-        return (
-            <>
-                <h1 className={cls.titleText}>{t('clans_title')}</h1>
-                <ClansSearch onClickToSearch={onClickToSearch} />
-                {isMobileSize ? (
-                    <ClansViewMobile
-                        clanServerResponse={clans}
-                        onClickToClan={onClickToClan}
-                        onClickToPage={onClickToPage}
+    return (
+        <div className={cls.Container}>
+            {isMobileSize ? (
+                <>
+                    <SearchBar
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                        wrapperClassName={`${cls.SearchBar} ${cls.SearchBarMobile}`}
+                        inputClassName={cls.Input}
                     />
-                ) : (
+                    <ClansViewMobile clans={filteredClans} />
+                </>
+            ) : isTabletSize ? (
+                <>
+                    <SearchBar
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                        wrapperClassName={`${cls.SearchBar} ${cls.SearchBarTablet}`}
+                        inputClassName={cls.Input}
+                    />
                     <ClansViewDesktop
-                        clanServerResponse={clans}
+                        clans={filteredClans}
                         onClickToClan={onClickToClan}
-                        onClickToPage={onClickToPage}
                     />
-                )}
-            </>
-        );
-    }
-
-    return null;
-};
-
-type SearchProps = { onClickToSearch?: (search: string) => void };
-
-const ClansSearch = ({ onClickToSearch }: SearchProps) => {
-    const { t } = useClientTranslation('clan');
-
-    const onClickSearch = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const searchField = document.querySelector<HTMLInputElement>('#search');
-        if (onClickToSearch && searchField) onClickToSearch(searchField.value);
-    };
-
-    return (
-        <form onSubmit={onClickSearch}>
-            <input
-                name="search"
-                placeholder={t('search_placeholder')}
-                type="text"
-                id="search"
-            />
-            <Button
-                type="submit"
-                theme={ButtonTheme.BACKGROUND}
-                size={ButtonSize.M}
-                className={cls.BtnGame}
-                square={false}
-            >
-                Find
-            </Button>
-        </form>
-    );
-};
-
-type PaginationProps = {
-    currentPage: number;
-    disablePrev: boolean;
-    disableNext: boolean;
-    onPrev: () => void;
-    onNext: () => void;
-};
-
-const Pagination = ({ currentPage, disablePrev, disableNext, onPrev, onNext }: PaginationProps) => {
-    return (
-        <div>
-            <Button
-                onClick={onPrev}
-                theme={ButtonTheme.BACKGROUND}
-                size={ButtonSize.M}
-                className={cls.BtnGame}
-                square={false}
-                disabled={disablePrev}
-            >
-                Back
-            </Button>
-            {currentPage}
-            <Button
-                onClick={onNext}
-                theme={ButtonTheme.BACKGROUND}
-                size={ButtonSize.M}
-                className={cls.BtnGame}
-                square={false}
-                disabled={disableNext}
-            >
-                Next
-            </Button>
+                </>
+            ) : (
+                <>
+                    <div className={cls.TitleBar}>
+                        <PageTitle
+                            titleText={t('clans')}
+                            alternate
+                            searchVisible={false}
+                        />
+                        <SearchBar
+                            value={searchQuery}
+                            onChange={setSearchQuery}
+                            wrapperClassName={`${cls.SearchBar} ${cls.SearchBarDesktop}`}
+                            inputClassName={cls.Input}
+                        />
+                    </div>
+                    <ClansViewDesktop
+                        clans={filteredClans}
+                        onClickToClan={onClickToClan}
+                    />
+                </>
+            )}
         </div>
     );
 };
 
 type MobileProps = {
-    clanServerResponse: GetClansResponse;
-    onClickToClan?: (id: string) => void;
-    onClickToPage?: (page: number) => void;
+    clans: ClanItem[];
 };
 
-const ClansViewMobile = ({ clanServerResponse, onClickToClan, onClickToPage }: MobileProps) => {
-    const onClick = (id: string) => {
-        if (onClickToClan) onClickToClan(id);
-    };
+const ClansViewMobile = ({ clans }: MobileProps) => {
     const { t } = useClientTranslation('clan');
-    const onClickPage = (page: number) => {
-        if (onClickToPage) onClickToPage(page);
-    };
-
-    const { currentPage, pageCount } = clanServerResponse.paginationData;
-    const disablePrev = currentPage === 1;
-    const disableNext = pageCount === undefined;
 
     return (
-        <>
-            <Pagination
-                currentPage={currentPage}
-                disablePrev={disablePrev}
-                disableNext={disableNext}
-                onPrev={() => onClickPage(currentPage - 1)}
-                onNext={() => onClickPage(currentPage + 1)}
-            />
-            {clanServerResponse.data.Clan.map((clan, idx) => {
-                const bgColor = 'rgba(0,0,0,0.6)';
-                return (
-                    <div
-                        key={idx}
-                        className={cls.ClanCard}
-                        style={{ backgroundColor: bgColor }}
-                        onClick={() => onClick(clan?._id)}
+        <div className={cls.MobileCardContainer}>
+            {clans.map((clan) => (
+                <div
+                    key={clan._id}
+                    className={cls.MobileCardItemWrap}
+                >
+                    <MobileCardLink
+                        path={getRouteOneClanPage(clan._id)}
+                        ariaLabel={`Open clan ${clan.name}`}
+                        withScalableLink
+                        className={cls.MobileCardItem}
                     >
-                        <div>
-                            <strong>{t('rating')}:</strong> {idx + 1}
-                        </div>
-                        <div>
-                            <strong>{t('clan')}:</strong> {clan?.name}
-                        </div>
-                        <div>
-                            <strong>{t('tag')}:</strong> {clan?.tag}
-                        </div>
-                        <div>
-                            <strong>{t('members')}:</strong> {50}
-                        </div>
-                        <div>
-                            <strong>{t('clan_master')}:</strong> {t('some_master')} {idx + 1}
-                        </div>
-                    </div>
-                );
-            })}
-        </>
+                        <MobileCard theme={MobileCardTheme.CLAN}>
+                            <MobileCard.Texts
+                                title1={clan.name}
+                                title2={''}
+                            />
+
+                            <MobileCard.Image
+                                alt={`${clan.name} logo`}
+                                src={clanLogo}
+                                backgroundColor="transparent"
+                            />
+
+                            <MobileCard.Texts
+                                title1={''}
+                                title2={''}
+                            >
+                                <div className={mobileCardCls.ClanInfoRow}>
+                                    <Image
+                                        src={starGray}
+                                        alt="score"
+                                        className={mobileCardCls.ClanInfoIcon}
+                                    />
+                                    <span className={mobileCardCls.ClanInfoValue}>
+                                        {clan.gameCoins}
+                                    </span>
+                                </div>
+
+                                <div className={mobileCardCls.ClanMembersRow}>
+                                    {t('members')} {clan.playerCount} / 30
+                                </div>
+                            </MobileCard.Texts>
+                        </MobileCard>
+                    </MobileCardLink>
+                </div>
+            ))}
+        </div>
     );
 };
 
 type DesktopProps = {
-    clanServerResponse: GetClansResponse;
+    clans: ClanItem[];
     onClickToClan?: (id: string) => void;
-    onClickToPage?: (page: number) => void;
 };
 
-const ClansViewDesktop = ({ clanServerResponse, onClickToClan, onClickToPage }: DesktopProps) => {
+const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
     const { t } = useClientTranslation('clan');
 
-    const onClick = (id: string) => {
-        if (onClickToClan) onClickToClan(id);
-    };
-    const onClickPage = (page: number) => {
-        if (onClickToPage) onClickToPage(page);
-    };
-
-    const { currentPage, pageCount } = clanServerResponse.paginationData;
-    const disablePrev = currentPage === 1;
-    const disableNext = pageCount === undefined;
-
     return (
-        <div>
-            <Pagination
-                currentPage={currentPage}
-                disablePrev={disablePrev}
-                disableNext={disableNext}
-                onPrev={() => onClickPage(currentPage - 1)}
-                onNext={() => onClickPage(currentPage + 1)}
-            />
-            <table className={cls.ClanTable}>
-                <thead>
-                    <tr>
-                        <th>{t('rating')}</th>
-                        <th>{t('clan')}</th>
-                        <th>{t('clan_master')}</th>
-                        <th>{t('coins')}</th>
-                        <th>{t('members')}</th>
-                        <th>{t('tag')}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {clanServerResponse.data.Clan.map((clan, idx) => {
-                        const bgColor = 'rgba(0,0,0,0.6)';
+        <div className={cls.DesktopCardContainer}>
+            {clans.map((clan) => (
+                <div
+                    key={clan._id}
+                    style={{ width: 'calc(50% - .5em)' }}
+                >
+                    <ModularCard
+                        theme={ModularCardTheme.CLANCARD}
+                        onClick={() => onClickToClan?.(clan._id)}
+                        role="button"
+                        tabIndex={0}
+                        withScalableLink
+                    >
+                        <ModularCard.Texts>
+                            <ModularCard.Texts.Title>{clan.name}</ModularCard.Texts.Title>
 
-                        return (
-                            <tr
-                                key={idx}
-                                style={{ backgroundColor: bgColor }}
-                                onClick={() => onClick(clan?._id)}
-                            >
-                                <td>{idx + 1}</td>
-                                <td>{clan?.name}</td>
-                                <td>Joku Mestari </td>
-                                <td>{clan?.playerCount}</td>
-                                <td>{clan?.tag}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                            <ModularCard.Texts.Body>
+                                <div className={cardCls.ClanInfoRow}>
+                                    <span className={cardCls.ClanInfoBadges}>
+                                        <Image
+                                            src={iconLeaderboard}
+                                            alt="leaderboard"
+                                            className={cardCls.ClanInfoIcon}
+                                        />
+                                        <Image
+                                            src={iconFlagFi}
+                                            alt="flag"
+                                            className={cardCls.ClanInfoIcon}
+                                        />
+                                    </span>
+
+                                    <span className={cardCls.ClanInfoStats}>
+                                        <span className={cardCls.ClanInfoValue}>
+                                            {t('members')} {clan.playerCount} / 30
+                                        </span>
+                                        <span className={cardCls.ClanInfoValue}>
+                                            {clan.gameCoins}
+                                        </span>
+                                    </span>
+                                </div>
+                                <div className={cardCls.ClanLabels}>
+                                    {/* Display 4 labels */}
+                                    {clan.labels?.slice(0, 4).map((label) => (
+                                        <span
+                                            className={cardCls.ClanLabel}
+                                            key={label}
+                                            title={label}
+                                        >
+                                            <Image
+                                                src={getClanLabelIcon(label)}
+                                                alt={label}
+                                                className={cardCls.ClanLabelIcon}
+                                            />
+                                            <span className={cardCls.ClanLabelText}>{label}</span>
+                                        </span>
+                                    ))}
+                                </div>
+                            </ModularCard.Texts.Body>
+                        </ModularCard.Texts>
+
+                        <ModularCard.Image>
+                            <ModularCard.Image.Image
+                                src={clanLogo}
+                                alt={`${clan.name} logo`}
+                            />
+                        </ModularCard.Image>
+                    </ModularCard>
+                </div>
+            ))}
         </div>
     );
 };

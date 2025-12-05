@@ -172,3 +172,138 @@
   }
 
 }
+
+// ClanCard
+.MobileCard.ClanCard {
+  @include card-dimensions;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--corner-radius-web);
+  background-color: var(--base-card-background);
+  display: flex;
+  flex-direction: column;
+  border: var(--border-mobile) solid var(--black);
+  box-shadow: var(--black) 4px 6px 0;
+  padding: 0.5rem;
+
+  > .TextContainer:first-of-type {
+    height: 24%;
+    padding: 0.25rem 0.25rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+    .Title1 {
+      color: var(--white);
+      font: var(--font-sw-l);
+      line-height: 1.1;
+      margin: 0;
+      text-align: center;
+      max-width: 100%;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .Text { margin: 0; }
+  }
+
+  > .ImageContainer {
+    height: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25rem 0;
+    position: relative;
+    z-index: 0;
+
+    .Image {
+      height: auto;
+      max-width: 100%;
+      object-fit: contain !important;
+      transform-origin: center;
+    }
+  }
+
+  > .TextContainer:last-of-type {
+    height: 28%;
+    padding: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    align-items: stretch;
+    text-align: center;
+
+    .ClanInfoRow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 0.25rem;
+    }
+
+    .ClanInfoIcon {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .ClanInfoValue {
+      color: var(--white);
+      font-size: 0.98rem;
+      line-height: 1.05;
+      flex: 0 0 auto;
+      text-align: right;
+    }
+
+    .ClanMembersRow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-inline: auto;
+      color: var(--white);
+      font-size: 0.92rem;
+      line-height: 1.15;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .MobileCard.ClanCard > .ImageContainer .Image {
+    width: 80%;
+  }
+}
+
+@media (max-width: 400px) {
+  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
+    font-size: 1rem;
+  }
+}
+
+// Override withScalableLink behaviour for ClanCard only
+.withScalableLink {
+  .MobileCard.ClanCard {
+    > .TextContainer:first-of-type {
+      height: 24% !important;
+    }
+
+    > .ImageContainer {
+      height: 48% !important;
+    }
+
+    > .TextContainer:last-of-type {
+      height: 28% !important;
+    }
+  }
+}

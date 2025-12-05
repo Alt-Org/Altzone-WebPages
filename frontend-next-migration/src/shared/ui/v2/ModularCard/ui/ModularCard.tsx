@@ -23,6 +23,7 @@ export enum ModularCardTheme {
     TITLEIMAGE = 'TitleImageCard',
     NEWSCARD = 'NewsImageCard',
     DEFENSECARD = 'DefenseCard',
+    CLANCARD = 'ClanCard',
     SECTIONCARD = 'SectionCard',
 }
 
