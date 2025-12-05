@@ -1,5 +1,4 @@
 'use client';
-import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useScrollToTop } from '@/shared/lib/hooks';
@@ -45,7 +44,7 @@ const NewsElementPage = () => {
     const groupedNews = formatNews(moreNews, lngCode || 'fi-FI');
     const picture = post.titlePicture?.id
         ? `${directusBaseUrl}/assets/${post.titlePicture.id}`
-        : hannu.src;
+        : undefined;
     return (
         <Container>
             <div className={cls.navButtons}>
@@ -85,22 +84,27 @@ const NewsElementPage = () => {
                 </Button>
             </div>
             <div className={classNames(cls.NewsElementPage)}>
-                <div className={cls.imageContainer}>
-                    <Image
-                        src={picture}
-                        alt={''}
-                        className={cls.imageBlur}
-                        width={100}
-                        height={600}
-                    />
-                    <Image
-                        src={picture}
-                        alt={''}
-                        className={cls.image}
-                        width={100}
-                        height={600}
-                    />
-                </div>
+                {picture ? (
+                    <div className={cls.imageContainer}>
+                        <Image
+                            src={picture}
+                            alt={''}
+                            className={cls.imageBlur}
+                            width={100}
+                            height={600}
+                        />
+                        <Image
+                            src={picture}
+                            alt={''}
+                            className={cls.image}
+                            width={100}
+                            height={600}
+                        />
+                    </div>
+                ) : (
+                    <div className={cls.noImageContainer} />
+                )}
+
                 <h1 className={cls.title}>{post?.title}</h1>
 
                 <h3 className={cls.subtitle}>{post?.previewText}</h3>
@@ -125,7 +129,7 @@ const NewsElementPage = () => {
                 {groupedNews.map((news) => {
                     const imageSrc = news.titlePicture?.id
                         ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
-                        : hannu.src;
+                        : undefined;
                     return (
                         <NewsCard
                             key={news.id}
