@@ -5,7 +5,6 @@ import cls from './NewsPage.module.scss';
 import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
 import { envHelper } from '@/shared/const/envHelper';
-import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
@@ -100,7 +99,7 @@ const NewsPage = () => {
                     {groupedNews.map((news) => {
                         const imageSrc = news.titlePicture?.id
                             ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
-                            : hannu.src;
+                            : undefined;
                         return (
                             <NewsCard
                                 key={news.id}
