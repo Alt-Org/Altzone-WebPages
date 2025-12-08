@@ -1,10 +1,12 @@
 'use client';
 import React, { useState, useMemo } from 'react';
-import firstImg from '@/shared/assets/images/gallery/Frame 523.png';
-import secindtImg from '@/shared/assets/images/gallery/Frame 524.png';
-import thirdtImg from '@/shared/assets/images/gallery/Frame 525.png';
 import { AnimationGallerySection } from '@/widgets/SectionGallery/ui/SectionGalleryV2/SectionGallery';
-import { PhotoObject } from '@/entities/Gallery';
+import {
+    getLanguageCode,
+    PhotoObject,
+    useGetDirectusGalleryImages,
+    getCategoryTranslation,
+} from '@/entities/Gallery';
 import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
@@ -14,7 +16,7 @@ import { PageTitle } from '@/shared/ui/PageTitle';
 import { classNames } from '@/shared/lib/classNames/classNames';
 // import buttonImg from '@/shared/assets/images/gallery/Frame 526.png';
 // import { SectionGalleryV2 } from '@/widgets/SectionGallery';
-// import { useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 // import { useGetDirectusGalleryImages, getLanguageCode, getCategoryTranslation, } from '@/entities/Gallery';
 
 export interface Props {
@@ -51,51 +53,72 @@ export interface Props {
     if (isLoading) <p>Loading...</p>;
     */
 
-// Dummy data for filteredImages to avoid errors
-const images: PhotoObject[] = [
-    {
-        title: 'Valveenvälttelijä',
-        description:
-            'Tekijä: Netti-C Samu (tähän kohtaan tekijän oikea nimi tai haluttu taiteilijanimi)',
-        supDescription: 'Tähän lisää tekstiä jos tekijä haluaa selittää prosessistaan.',
-        frames: [[firstImg.src, secindtImg.src, thirdtImg.src]],
-    },
-    {
-        title: 'Valveenvälttelijä',
-        description:
-            'Tekijä: Netti-C Samu (tähän kohtaan tekijän oikea nimi tai haluttu taiteilijanimi)',
-        supDescription: 'Tähän lisää tekstiä jos tekijä haluaa selittää prosessistaan.',
-        frames: [[firstImg.src, secindtImg.src, thirdtImg.src]],
-    },
-    {
-        title: 'Valveenvälttelijä',
-        description:
-            'Tekijä: Netti-C Samu (tähän kohtaan tekijän oikea nimi tai haluttu taiteilijanimi)',
-        supDescription: 'Tähän lisää tekstiä jos tekijä haluaa selittää prosessistaan.',
-        frames: [[firstImg.src, secindtImg.src, thirdtImg.src]],
-    },
-];
-
 const PictureGalleryPage = () => {
     const { t } = useClientTranslation('picture-galleries');
     const { isMobileSize, isDesktopSize, isWidescreenSize } = useSizes();
     const [searchQuery, setSearchQuery] = useState('');
+
+    const params = useParams();
+    const lng = params.lng as string;
+    const categorySlug = params.category as string | undefined;
+
+    const languageCode = getLanguageCode(lng);
+    const { photoObjects, isLoading, error } = useGetDirectusGalleryImages(languageCode);
+
     const isBigDevice = isDesktopSize || isWidescreenSize;
+    const allCategory = lng === 'en' ? 'all' : 'kaikki';
 
     const showCreativity = useMemo(
         () => !isMobileSize && searchQuery.length === 0,
         [isMobileSize, searchQuery],
     );
 
-    // Filter images by search query matching title, description or supDescription (case-insensitive)
-    const filteredImages = useMemo(() => {
+    // filter images by category from URL params
+    const categoryFilteredImages: PhotoObject[] = useMemo(() => {
+        if (!photoObjects) return [];
+        if (!categorySlug || categorySlug === allCategory) {
+            return photoObjects;
+        }
+
+        return photoObjects.filter((photo) => {
+            if (!photo.category) return false;
+            const translatedCategory = getCategoryTranslation(
+                photo.category.translations,
+                languageCode,
+            );
+            return translatedCategory === categorySlug;
+        });
+    }, [photoObjects, categorySlug, allCategory, languageCode]);
+
+    // Filter images by search query matching title, description or subDescription (case-insensitive)
+    const filteredImages: PhotoObject[] = useMemo(() => {
         const query = searchQuery.trim().toLowerCase();
-        if (!query) return images;
-        return images.filter((photo) => {
-            const fields = [photo.title, photo.description, photo.supDescription];
+        if (!query) return categoryFilteredImages;
+        return categoryFilteredImages.filter((photo) => {
+            const fields = [photo.title, photo.description, photo.subDescription];
             return fields.some((find) => (find || '').toLowerCase().includes(query));
         });
-    }, [searchQuery]);
+    }, [searchQuery, categoryFilteredImages]);
+
+    if (isLoading) {
+        return (
+            <div className={cls.Wrapper}>
+                <Container className={cls.Container}>
+                    <p>{t('loading') ?? 'Loading...'}</p>
+                </Container>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className={cls.Wrapper}>
+                <Container className={cls.Container}>
+                    <p>{t('error-text') ?? 'Error loading gallery.'}</p>
+                </Container>
+            </div>
+        );
+    }
 
     return (
         <div className={cls.Wrapper}>
@@ -131,8 +154,13 @@ const PictureGalleryPage = () => {
                         // Adjust these mappings as needed based on your PhotoObject and FrameSet definitions
                         title: photo.title || '',
                         description: photo.description || '',
-                        supDescription: photo.supDescription || '',
-                        frames: photo.frames || [],
+                        subDescription: photo.subDescription || '',
+                        frames:
+                            photo.frames && photo.frames.length > 0
+                                ? photo.frames
+                                : photo.versions?.preview
+                                  ? [[photo.versions.preview.image]]
+                                  : [],
                         // Add other FrameSet properties if required
                     }))}
                 />
