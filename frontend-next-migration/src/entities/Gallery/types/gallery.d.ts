@@ -29,6 +29,15 @@ export interface PhotoVersionTranslations {
     altText: string;
 }
 
+export interface PhotoObjectTranslations {
+    id: string;
+    languages_code: string;
+    photo_object_id: string;
+    title?: string;
+    description?: string;
+    subDescription?: string;
+}
+
 export interface Category {
     id: string;
     translations: CategoryTranslations[];
@@ -49,6 +58,7 @@ export interface PhotoObject {
     frames?: string[][];
     id?: string;
     category?: Category;
+    translations?: PhotoObjectTranslations[];
     versions?: {
         preview: PhotoVersion;
         full: PhotoVersion;

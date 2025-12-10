@@ -1,7 +1,7 @@
 import { envHelper } from '@/shared/const/envHelper';
 import { useMemo } from 'react';
 import { Category, PhotoObject, PhotoVersion } from '../types/gallery';
-import { getPhotoVersionTranslation } from '../api/translations';
+import { getPhotoVersionTranslation, getPhotoObjectTexts } from '../api/translations';
 import { useGetGalleryCategoriesQuery } from '../api/galleryCategoriesApi';
 import { useGetPhotoObjectsQuery, useGetPhotoVersionsQuery } from '../api/galleryApi';
 
@@ -66,43 +66,47 @@ export const useGetDirectusGalleryImages = (lng: string) => {
 
     const photoObjects: PhotoObject[] = useMemo(() => {
         if (!poData) return [];
-        return poData.map((item) => ({
-            id: item.id,
-            title: item.title,
-            description: item.description,
-            subDescription: item.subDescription,
-            category: item.category
-                ? {
-                      id: item.category.id,
-                      translations: item.category.translations,
-                  }
-                : undefined,
-            versions:
-                item.preview && item.full
+        return poData.map((item) => {
+            const texts = getPhotoObjectTexts(item.translations || [], lng);
+
+            return {
+                id: item.id,
+                title: texts.title || item.title,
+                description: texts.description || item.description,
+                subDescription: texts.subDescription || item.subDescription,
+                category: item.category
                     ? {
-                          preview: {
-                              id: item.preview.id,
-                              image: `${directusBaseUrl}/assets/${item.preview.image}`,
-                              width: item.preview.width,
-                              height: item.preview.height,
-                              altText: getPhotoVersionTranslation(
-                                  item.preview.translations || [],
-                                  lng,
-                              ),
-                          },
-                          full: {
-                              id: item.full.id,
-                              image: `${directusBaseUrl}/assets/${item.full.image}`,
-                              width: item.full.width,
-                              height: item.full.height,
-                              altText: getPhotoVersionTranslation(
-                                  item.full.translations || [],
-                                  lng,
-                              ),
-                          },
+                          id: item.category.id,
+                          translations: item.category.translations,
                       }
                     : undefined,
-        }));
+                versions:
+                    item.preview && item.full
+                        ? {
+                              preview: {
+                                  id: item.preview.id,
+                                  image: `${directusBaseUrl}/assets/${item.preview.image}`,
+                                  width: item.preview.width,
+                                  height: item.preview.height,
+                                  altText: getPhotoVersionTranslation(
+                                      item.preview.translations || [],
+                                      lng,
+                                  ),
+                              },
+                              full: {
+                                  id: item.full.id,
+                                  image: `${directusBaseUrl}/assets/${item.full.image}`,
+                                  width: item.full.width,
+                                  height: item.full.height,
+                                  altText: getPhotoVersionTranslation(
+                                      item.full.translations || [],
+                                      lng,
+                                  ),
+                              },
+                          }
+                        : undefined,
+            };
+        });
     }, [poData, directusBaseUrl, lng]);
 
     return { photoVersions, categories, photoObjects, error, isLoading };

@@ -90,7 +90,6 @@ const PictureGalleryPage = () => {
         });
     }, [photoObjects, categorySlug, allCategory, languageCode]);
 
-    // Filter images by search query matching title, description or subDescription (case-insensitive)
     const filteredImages: PhotoObject[] = useMemo(() => {
         const query = searchQuery.trim().toLowerCase();
         if (!query) return categoryFilteredImages;
