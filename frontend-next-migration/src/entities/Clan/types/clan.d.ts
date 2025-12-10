@@ -16,6 +16,20 @@ export type IClan = {
     phrase: string;
     labels: Array[];
     positionLeaderboard?: number;
+
+    IClanRole: Array[];
+    goal: string;
+    clanLogo: string;
+    battlePoints: number;
+    language: string;
+    points: number;
+    ageRange: string;
+};
+
+export type IClanRole = {
+    _id: string;
+    name: string;
+    clanRoleType: string;
 };
 
 export type IClanPosition = {
@@ -44,3 +58,5 @@ export type IClanCreateDto = Pick<IClan, 'name' | 'tag' | 'phrase' | 'labels' | 
 export type IClanUpdateDto = Pick<IClan, '_id' | 'name' | 'tag' | 'phrase' | 'labels' | 'isOpen'>;
 
 export type IJoinDto = Pick<IJoin, 'clan_id' | 'player_id'>;
+
+export type IClanRoleDto = Pick<IClanRole, '_id' | 'name' | 'clanRoleType'>;
