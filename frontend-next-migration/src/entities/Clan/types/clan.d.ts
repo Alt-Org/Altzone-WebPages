@@ -17,7 +17,7 @@ export type IClan = {
     labels: Array[];
     positionLeaderboard?: number;
 
-    IClanRole: Array[];
+    roles: IClanRole[];
     goal: string;
     clanLogo: string;
     battlePoints: number;
