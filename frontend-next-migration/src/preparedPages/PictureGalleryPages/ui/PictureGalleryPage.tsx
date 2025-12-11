@@ -94,7 +94,7 @@ const PictureGalleryPage = () => {
         const query = searchQuery.trim().toLowerCase();
         if (!query) return categoryFilteredImages;
         return categoryFilteredImages.filter((photo) => {
-            const fields = [photo.title, photo.description, photo.subDescription];
+            const fields = [photo.title, photo.author, photo.description];
             return fields.some((find) => (find || '').toLowerCase().includes(query));
         });
     }, [searchQuery, categoryFilteredImages]);
@@ -152,8 +152,8 @@ const PictureGalleryPage = () => {
                     animations={filteredImages.map((photo) => ({
                         // Adjust these mappings as needed based on your PhotoObject and FrameSet definitions
                         title: photo.title || '',
+                        author: photo.author || '',
                         description: photo.description || '',
-                        subDescription: photo.subDescription || '',
                         frames:
                             photo.frames && photo.frames.length > 0
                                 ? photo.frames

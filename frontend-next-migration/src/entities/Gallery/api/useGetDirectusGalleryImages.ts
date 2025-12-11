@@ -72,8 +72,8 @@ export const useGetDirectusGalleryImages = (lng: string) => {
             return {
                 id: item.id,
                 title: texts.title || item.title,
+                author: texts.author || item.author,
                 description: texts.description || item.description,
-                subDescription: texts.subDescription || item.subDescription,
                 category: item.category
                     ? {
                           id: item.category.id,

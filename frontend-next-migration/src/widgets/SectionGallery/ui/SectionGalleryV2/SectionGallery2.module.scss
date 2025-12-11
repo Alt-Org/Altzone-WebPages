@@ -58,11 +58,11 @@
     color: var(--primary-color);
 }
 
-.description {
+.author {
     font: var(--font-sw-m);
 }
 
-.subdescription {
+.description {
     font: var(--font-dm-m);
     color: #faf9f6c0;
     margin-top: 1rem;
@@ -118,18 +118,18 @@
         height: 20vh;
     }
     .textBlock{
-        text-align: center;
+        text-align: start;
     }
     .title{
         font: var(--font-sw-l);
+        text-align: start;
+    }
+    .author {
+        text-align: start;
     }
     .description {
         font: var(--font-dm-m);
-    }
-    .subdescription {
-        font: var(--font-dm-m);
         text-align: start;
-
     }
 
 }

@@ -37,14 +37,14 @@ export const getPhotoObjectTexts = (
     languageCode: string,
 ) => {
     if (!translations || translations.length === 0) {
-        return { title: '', description: '', subDescription: '' };
+        return { title: '', author: '', description: '' };
     }
 
     const tr = translations.find((t) => t.languages_code === languageCode) ?? translations[0];
 
     return {
         title: tr.title ?? '',
+        author: tr.author ?? '',
         description: tr.description ?? '',
-        subDescription: tr.subDescription ?? '',
     };
 };

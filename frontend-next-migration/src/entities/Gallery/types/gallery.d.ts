@@ -34,8 +34,8 @@ export interface PhotoObjectTranslations {
     languages_code: string;
     photo_object_id: string;
     title?: string;
+    author?: string;
     description?: string;
-    subDescription?: string;
 }
 
 export interface Category {
@@ -53,8 +53,8 @@ export interface PhotoVersion {
 
 export interface PhotoObject {
     title?: string;
+    author?: string;
     description?: string;
-    subDescription?: string;
     frames?: string[][];
     id?: string;
     category?: Category;
