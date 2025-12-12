@@ -48,6 +48,7 @@
 .textBlock {
     text-align: start;
     max-width: 800px;
+    width: 100%;
 }
 
 .title {
@@ -118,14 +119,13 @@
         height: 20vh;
     }
     .textBlock{
-        text-align: start;
+        text-align: center;
     }
     .title{
         font: var(--font-sw-l);
-        text-align: start;
     }
     .author {
-        text-align: start;
+        text-align: center;
     }
     .description {
         font: var(--font-dm-m);
