@@ -47,7 +47,7 @@ const FIELDS = [
         `${key}.alt`,
         `${key}.altGif`,
     ]),
-    // hero-level rarityClass may live elsewhere in Directus; keep it out of the query to avoid 403s
+    'rarityClass',
     'group.id',
     'group.key',
     'group.bgColour',
@@ -68,7 +68,6 @@ const FIELDS = [
     ]),
     ...STATS_KEYS.flatMap((key) => [
         `${key}.name`,
-        `${key}.rarityClass`,
         `${key}.defaultLevel`,
         `${key}.developmentLevel`,
         `${key}.order`,
@@ -86,6 +85,8 @@ const mkStaticImage = (id?: string, width?: number, height?: number): StaticImag
     id
         ? ({ src: ASSET(id), width: width || 1, height: height || 1 } as unknown as StaticImageData)
         : '';
+const mapRarityClass = (val: number | string | undefined): string =>
+    typeof val === 'number' ? ({ 0: 'common', 1: 'rare', 2: 'epic' }[val] ?? '') : (val ?? '');
 // eslint-disable-next-line complexity
 function mapHero(item: any, locale: Locale): HeroWithGroup {
     // translations
@@ -124,13 +125,11 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
         firstArray(item, STATS_KEYS);
     const stats: Stat[] = (statsArr || [])
         .map((statItem: any) => {
-            // heroes_stats rows have fields directly on the row (name, rarityClass, defaultLevel, developmentLevel, order)
             const name = statItem?.name;
-            const rarityClass = statItem?.rarityClass;
             const defaultLevel = statItem?.defaultLevel;
             const developmentLevel = statItem?.developmentLevel ?? undefined;
             const order = statItem?.order ?? 0;
-            return { name, rarityClass, defaultLevel, developmentLevel, order };
+            return { name, rarityClass: 0, defaultLevel, developmentLevel, order };
         })
         .filter((stat: any) => !!stat?.name)
         .sort((a: any, b: any) => (a?.order ?? 0) - (b?.order ?? 0))
@@ -154,7 +153,7 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
         altGif: heroTr?.altGif ?? '',
         title: heroTr?.title ?? item.slug,
         description: heroTr?.description ?? '',
-        rarityClass: '',
+        rarityClass: mapRarityClass(item?.rarityClass),
         stats,
         groupEnum: (item?.group?.key as HeroGroup) ?? 'RETROFLECTOR',
         groupName: group.name,
@@ -193,14 +192,14 @@ export const heroApi = directusApi.injectEndpoints({
         }),
         getHeroStatsByHeroId: build.query<Stat[], { heroId: number }>({
             query: ({ heroId }) => ({
-                url: `/items/heroes_stats?filter[hero][_eq]=${heroId}&sort=order&fields=name,rarityClass,defaultLevel,developmentLevel,order`,
+                url: `/items/heroes_stats?filter[hero][_eq]=${heroId}&sort=order&fields=name,defaultLevel,developmentLevel,order`,
             }),
             transformResponse: (resp: any) =>
                 (resp?.data || []).map((row: any) => ({
                     name: row?.name,
-                    rarityClass: row?.rarityClass,
                     defaultLevel: row?.defaultLevel,
                     developmentLevel: row?.developmentLevel ?? undefined,
+                    rarityClass: 0,
                 })),
         }),
         getAllHeroes: build.query<HeroWithGroup[], { locale?: Locale }>({
