@@ -10,7 +10,7 @@
  *   are clamped with a "Read more" toggle.
  * - On desktop/tablet, headings and layout are two-column.
  */
-import { HeroSlug, Hero } from '@/entities/Hero';
+import { HeroSlug, Hero, HeroWithGroup } from '@/entities/Hero';
 import Image from 'next/image';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
 import { useClientTranslation } from '@/shared/i18n';
@@ -21,6 +21,8 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './SingleHeroPage.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { BarIndicator } from '@/shared/ui/v2/BarIndicator';
+import { useGetHeroBySlugQuery } from '@/entities/Hero/model/heroApi';
+import { useParams } from 'next/navigation';
 
 /**
  * Props for `SingleHeroPage` component.
@@ -30,6 +32,8 @@ import { BarIndicator } from '@/shared/ui/v2/BarIndicator';
 export interface Props {
     /** Hero identifier (URL slug) used to select a hero from initialized groups */
     slug: HeroSlug;
+    /** Hero data from server (optional, will fetch from Directus if not provided) */
+    newSelectedHero?: HeroWithGroup;
 }
 
 /**
@@ -45,10 +49,17 @@ export interface Props {
  * @returns JSX element that forms the page content
  */
 const SingleHeroPage = (props: Props) => {
-    const { slug } = props;
+    const { slug, newSelectedHero } = props;
     const { t } = useClientTranslation('heroes');
-    const heroGroups = initializeHeroGroups(t);
+    const params = useParams();
+    const locale = (params?.lng as 'en' | 'fi' | 'ru') || 'en';
     const { isMobileSize, isTabletSize } = useSizes();
+
+    // Try to fetch from Directus if hero not provided from server
+    const { data: directusHero } = useGetHeroBySlugQuery(
+        { slug, locale },
+        { skip: !!newSelectedHero },
+    );
 
     // Mobile-only: state for clamping description text
     const descRef = useRef<HTMLDivElement | null>(null);
@@ -57,19 +68,40 @@ const SingleHeroPage = (props: Props) => {
 
     // Determine selected hero and its group to populate localized titles
     const { titleText, hero } = useMemo<{ titleText: string; hero?: Hero }>(() => {
-        // Find hero by slug across all groups
+        // Priority: 1. Server-provided hero, 2. Directus hero, 3. Static data fallback
+        const selectedHero = newSelectedHero || directusHero;
+        if (selectedHero) {
+            return {
+                titleText: selectedHero.groupName,
+                hero: {
+                    id: selectedHero.id,
+                    slug: selectedHero.slug,
+                    srcImg: selectedHero.srcImg,
+                    srcGif: selectedHero.srcGif,
+                    alt: selectedHero.alt,
+                    altGif: selectedHero.altGif,
+                    title: selectedHero.title,
+                    rarityClass: selectedHero.rarityClass || '',
+                    description: selectedHero.description,
+                    stats: selectedHero.stats,
+                },
+            };
+        }
+
+        // Fallback to static data
+        const heroGroups = initializeHeroGroups(t);
         for (const groupKey in heroGroups) {
             const group = heroGroups[groupKey as keyof typeof heroGroups];
             const hero = group.heroes.find((hero) => hero.slug === slug);
             if (hero) {
                 return {
-                    titleText: group.name, // already localized via initializeHeroGroups(t)
+                    titleText: group.name,
                     hero,
                 };
             }
         }
         return { titleText: '', hero: undefined };
-    }, [heroGroups, slug]);
+    }, [newSelectedHero, directusHero, slug, t]);
 
     /**
      * Converts a hero's skill level (`rarityClass`/value) to an i18n key.

@@ -15,27 +15,36 @@ export async function _getPage(lng: string, slug: string) {
     const { t } = await getServerTranslation(lng, 'heroes');
     const heroManager = new HeroManager(t);
 
-    // CMS-first fetch; falls back to hardcoded data if CMS is empty in dev
-    if (!isHeroSlug(slug)) notFound();
+    // Initialize from Directus first
+    await heroManager.initializeFromDirectus(lng as 'en' | 'fi' | 'ru');
 
-    const currentHero = await heroManager.getHeroBySlugAsync(slug, lng as 'en' | 'fi' | 'ru');
+    // Try to get hero from Directus, fallback to static data
+    let currentHero = await heroManager.getHeroBySlugAsync(
+        slug as HeroSlug,
+        lng as 'en' | 'fi' | 'ru',
+    );
+    if (!currentHero) {
+        currentHero = heroManager.getHeroBySlug(slug as HeroSlug);
+    }
     if (!currentHero) {
         notFound();
     }
 
-    // Prev/Next navigation uses existing in-memory ordering for now
-    const heroes = heroManager.getAllHeroes();
+    // Get all heroes from Directus for navigation
+    const heroes = await heroManager.getAllHeroesFromDirectus(lng as 'en' | 'fi' | 'ru');
+    const currentHeroIndex = heroes.findIndex((hero) => hero.id === currentHero!.id);
     const prevHero =
-        heroManager.getHeroBeforeSpecificHero(currentHero.id) || (heroes.at(-1) as HeroWithGroup);
+        currentHeroIndex > 0
+            ? heroes[currentHeroIndex - 1]
+            : (heroes.at(-1) as HeroWithGroup | undefined);
     const nextHero =
-        heroManager.getHeroAfterSpecificHero(currentHero.id) || (heroes.at(0) as HeroWithGroup);
+        currentHeroIndex < heroes.length - 1
+            ? heroes[currentHeroIndex + 1]
+            : (heroes.at(0) as HeroWithGroup | undefined);
 
-    // Route links for the adjacent heroes
     const prevHeroLink = getRouteOneHeroPage(prevHero.slug);
     const nextHeroLink = getRouteOneHeroPage(nextHero.slug);
 
-    // Return page data for the prepared Hero page + minimal SEO
-    return createPage<HeroPageProps>({
     // Routes & SEO
     const relPath = getRouteOneHeroPage(encodeURIComponent(currentHero.slug));
     const path = `/${lng}${relPath}`;
@@ -52,8 +61,8 @@ export async function _getPage(lng: string, slug: string) {
         buildPage: () => ({
             slug: currentHero.slug,
             newSelectedHero: currentHero,
-            prevHeroLink,
-            nextHeroLink,
+            prevHeroLink: prevHeroLink,
+            nextHeroLink: nextHeroLink,
         }),
         buildSeo: () => ({
             title,

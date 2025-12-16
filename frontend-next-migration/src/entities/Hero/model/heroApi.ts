@@ -65,6 +65,9 @@ const FIELDS = [
         `${key}.altGif`,
     ]),
 
+    // hero rarity class
+    'rarityClass',
+
     // group basics
     'group.id',
     'group.key',
@@ -113,6 +116,49 @@ const mkStaticImage = (id?: string, width?: number, height?: number): StaticImag
     id
         ? ({ src: ASSET(id), width: width || 1, height: height || 1 } as unknown as StaticImageData)
         : '';
+
+/** Helper to group heroes by their groupEnum */
+function groupHeroesByGroup(heroes: HeroWithGroup[]): Record<HeroGroup, GroupInfo> {
+    const groupsMap = new Map<HeroGroup, GroupInfo>();
+
+    for (const hero of heroes) {
+        const groupKey = hero.groupEnum;
+
+        if (!groupsMap.has(groupKey)) {
+            groupsMap.set(groupKey, {
+                name: hero.groupName,
+                description: hero.groupDescription,
+                bgColour: hero.groupBgColour,
+                srcImg: typeof hero.groupLabel === 'string' ? '' : hero.groupLabel || '',
+                label: hero.groupLabel || '',
+                heroes: [],
+            });
+        }
+
+        const group = groupsMap.get(groupKey);
+        if (group) {
+            group.heroes.push({
+                id: hero.id,
+                slug: hero.slug,
+                srcImg: hero.srcImg,
+                srcGif: hero.srcGif,
+                alt: hero.alt,
+                altGif: hero.altGif,
+                title: hero.title,
+                rarityClass: hero.rarityClass || '',
+                description: hero.description,
+                stats: hero.stats,
+            });
+        }
+    }
+
+    const result = {} as Record<HeroGroup, GroupInfo>;
+    Array.from(groupsMap.entries()).forEach(([key, value]) => {
+        result[key] = value;
+    });
+
+    return result;
+}
 
 /** Mapper */
 // eslint-disable-next-line complexity
@@ -176,6 +222,7 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
         altGif: heroTr?.altGif ?? '',
         title: heroTr?.title ?? item.slug,
         description: heroTr?.description ?? '',
+        rarityClass: item.rarityClass || '',
         stats,
         groupEnum: (item?.group?.key as HeroGroup) ?? 'RETROFLECTOR',
         groupName: group.name,
@@ -195,6 +242,7 @@ export const heroApi = directusApi.injectEndpoints({
                 params.set('filter[slug][_eq]', slug);
                 params.set('limit', '1');
                 params.set('fields', FIELDS);
+                params.set('sort', 'order');
 
                 for (const key of HERO_TR_KEYS) {
                     params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
@@ -214,10 +262,64 @@ export const heroApi = directusApi.injectEndpoints({
             },
             providesTags: (_res, _err, args) => [{ type: 'Hero' as const, id: args.slug }],
         }),
+        getAllHeroes: build.query<HeroWithGroup[], { locale?: Locale }>({
+            query: ({ locale = 'en' }) => {
+                const params = new URLSearchParams();
+                params.set('fields', FIELDS);
+                params.set('sort', 'order');
+                params.set('limit', '-1');
+
+                for (const key of HERO_TR_KEYS) {
+                    params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
+                }
+                for (const key of GROUP_TR_KEYS) {
+                    params.set(
+                        `deep[group][${key}][filter][languages_code][_eq]`,
+                        languageCode(locale),
+                    );
+                }
+
+                return { url: `/items/heroes?${params.toString()}` };
+            },
+            transformResponse: (resp: any, _meta, args) => {
+                const items = resp?.data || [];
+                return items.map((item: any) => mapHero(item, (args?.locale ?? 'en') as Locale));
+            },
+            providesTags: () => [{ type: 'Hero' as const, id: 'LIST' }],
+        }),
+        getHeroGroups: build.query<Record<HeroGroup, GroupInfo>, { locale?: Locale }>({
+            query: ({ locale = 'en' }) => {
+                const params = new URLSearchParams();
+                params.set('fields', FIELDS);
+                params.set('sort', 'order');
+                params.set('limit', '-1');
+
+                for (const key of HERO_TR_KEYS) {
+                    params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
+                }
+                for (const key of GROUP_TR_KEYS) {
+                    params.set(
+                        `deep[group][${key}][filter][languages_code][_eq]`,
+                        languageCode(locale),
+                    );
+                }
+
+                return { url: `/items/heroes?${params.toString()}` };
+            },
+            transformResponse: (resp: any, _meta, args) => {
+                const items = resp?.data || [];
+                const heroes = items.map((item: any) =>
+                    mapHero(item, (args?.locale ?? 'en') as Locale),
+                );
+
+                return groupHeroesByGroup(heroes);
+            },
+            providesTags: () => [{ type: 'Hero' as const, id: 'GROUPS' }],
+        }),
     }),
 });
 
-export const { useGetHeroBySlugQuery } = heroApi;
+export const { useGetHeroBySlugQuery, useGetAllHeroesQuery, useGetHeroGroupsQuery } = heroApi;
 
 /* Plain fetch (SSR) */
 
@@ -230,6 +332,7 @@ export async function fetchHeroBySlug(
     params.set('filter[slug][_eq]', slug);
     params.set('limit', '1');
     params.set('fields', FIELDS);
+    params.set('sort', 'order');
 
     for (const key of HERO_TR_KEYS) {
         params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
@@ -246,4 +349,41 @@ export async function fetchHeroBySlug(
     const json = await res.json();
     const item = json?.data?.[0];
     return item ? mapHero(item, locale) : undefined;
+}
+
+/**
+ * Fetch all heroes from Directus
+ */
+export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGroup[]> {
+    const base = (envHelper.directusHost || '').replace(/\/$/, '');
+    const params = new URLSearchParams();
+    params.set('fields', FIELDS);
+    params.set('sort', 'order');
+    params.set('limit', '-1'); // Get all heroes
+
+    for (const key of HERO_TR_KEYS) {
+        params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
+    }
+    for (const key of GROUP_TR_KEYS) {
+        params.set(`deep[group][${key}][filter][languages_code][_eq]`, languageCode(locale));
+    }
+
+    const res = await fetch(`${base}/items/heroes?${params.toString()}`, {
+        next: { revalidate: 60 },
+    });
+    if (!res.ok) return [];
+
+    const json = await res.json();
+    const items = json?.data || [];
+    return items.map((item: any) => mapHero(item, locale));
+}
+
+/**
+ * Fetch all heroes grouped by their hero groups from Directus
+ */
+export async function fetchHeroGroups(
+    locale: Locale = 'en',
+): Promise<Record<HeroGroup, GroupInfo>> {
+    const allHeroes = await fetchAllHeroes(locale);
+    return groupHeroesByGroup(allHeroes);
 }

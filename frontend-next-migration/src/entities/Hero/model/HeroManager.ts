@@ -1,12 +1,13 @@
 import { GroupInfo, HeroWithGroup, HeroGroup, HeroSlug } from '../types/hero';
 // import { HeroLevel, HeroStats } from '../types/HeroStats';
-import { initializeHeroGroups } from './initializeHeroGroups';
+import { initializeHeroGroups, initializeHeroGroupsFromDirectus } from './initializeHeroGroups';
 // import { HeroStatsManager } from './stats';
-import { fetchHeroBySlug } from './heroApi';
+import { fetchHeroBySlug, fetchAllHeroes, type Locale } from './heroApi';
 
 export class HeroManager {
     private readonly t: (key: string) => string;
-    private readonly heroGroups: Record<HeroGroup, GroupInfo>;
+    private heroGroups: Record<HeroGroup, GroupInfo>;
+    private heroesCache: HeroWithGroup[] | null = null;
     // private heroStatsManager: HeroStatsManager;
 
     constructor(t: (key: string) => string) {
@@ -15,12 +16,30 @@ export class HeroManager {
         // this.heroStatsManager = new HeroStatsManager();
     }
 
+    /**
+     * Initialize hero groups from Directus (async)
+     */
+    public async initializeFromDirectus(locale: Locale = 'en'): Promise<void> {
+        try {
+            this.heroGroups = await initializeHeroGroupsFromDirectus(locale);
+            this.heroesCache = null; // Clear cache to force recalculation
+        } catch (error) {
+            console.error('Failed to initialize hero groups from Directus:', error);
+            // Keep existing static data as fallback
+        }
+    }
+
     // public getHeroStatsBySlugAndLevel(slug: HeroSlug, statLevel: HeroLevel): HeroStats {
     //     return this.heroStatsManager.getStatsForHero(slug, statLevel);
     // }
 
     public getAllHeroes(): HeroWithGroup[] {
-        return Object.entries(this.heroGroups).flatMap(([group, groupInfo]) => {
+        // Use cache if available
+        if (this.heroesCache) {
+            return this.heroesCache;
+        }
+
+        const heroes = Object.entries(this.heroGroups).flatMap(([group, groupInfo]) => {
             const {
                 name: groupName,
                 description: groupDescription,
@@ -36,6 +55,22 @@ export class HeroManager {
                 groupBgColour,
             }));
         });
+
+        this.heroesCache = heroes;
+        return heroes;
+    }
+
+    /**
+     * Get all heroes from Directus (async)
+     */
+    public async getAllHeroesFromDirectus(locale: Locale = 'en'): Promise<HeroWithGroup[]> {
+        try {
+            return await fetchAllHeroes(locale);
+        } catch (error) {
+            console.error('Failed to fetch all heroes from Directus:', error);
+            // Fallback to static data
+            return this.getAllHeroes();
+        }
     }
 
     public getGroupsWithHeroes(): Record<HeroGroup, GroupInfo> {
@@ -57,12 +92,12 @@ export class HeroManager {
     }
 
     /**
-     * NEW: CMS-first fetch from Directus for the /heroes/[slug] page.
-     * If not found in CMS (or an error occurs), falls back to hardcoded data.
+     * Get hero by slug from Directus (async)
+     * Falls back to static data if Directus fetch fails
      */
     public async getHeroBySlugAsync(
         slug: HeroSlug,
-        locale: 'en' | 'fi' | 'ru' = 'en',
+        locale: Locale = 'en',
     ): Promise<HeroWithGroup | undefined> {
         try {
             const hero = await fetchHeroBySlug(slug, locale);

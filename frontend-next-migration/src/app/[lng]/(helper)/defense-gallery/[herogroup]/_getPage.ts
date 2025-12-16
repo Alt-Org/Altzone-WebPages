@@ -1,14 +1,17 @@
 import { createPage } from '@/app/_helpers';
 import { getServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
-import { HeroGroup } from '@/entities/Hero';
-import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
+import { HeroGroup, GroupInfo } from '@/entities/Hero';
+import {
+    initializeHeroGroups,
+    initializeHeroGroupsFromDirectus,
+} from '@/entities/Hero/model/initializeHeroGroups';
 import { StaticImageData } from 'next/image';
 import { SingleDefensePageProps } from '@/preparedPages/DefenseGalleryPages';
 import { getRouteDefenseGalleryGroupPage } from '@/shared/appLinks/RoutePaths';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 
-function getOgImageUrl(info?: ReturnType<typeof initializeHeroGroups>[HeroGroup]) {
+function getOgImageUrl(info?: GroupInfo) {
     const candidate =
         (info?.srcImg as string | StaticImageData | undefined) ??
         (info?.heroes?.[0]?.srcImg as string | StaticImageData | undefined) ??
@@ -27,7 +30,17 @@ export async function _getPage(lng: string, heroGroup: string) {
     }
 
     const group = heroGroup as HeroGroup;
-    const groups = initializeHeroGroups(t);
+    // Try to fetch from Directus first, fallback to static data
+    let groups: Record<HeroGroup, GroupInfo>;
+    try {
+        groups = await initializeHeroGroupsFromDirectus(lng as 'en' | 'fi' | 'ru');
+        // If Directus returns empty, fallback to static
+        if (Object.keys(groups).length === 0) {
+            groups = initializeHeroGroups(t);
+        }
+    } catch {
+        groups = initializeHeroGroups(t);
+    }
     const info = groups[group];
 
     const groupName = info?.name ?? group;
