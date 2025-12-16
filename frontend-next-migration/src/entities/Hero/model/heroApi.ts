@@ -1,15 +1,11 @@
-/**
- * Hero API (Directus) — resilient mapping with locale filtering (normalized locales)
- */
-
 import { directusApi } from '@/shared/api/directusApi';
 import { envHelper } from '@/shared/const/envHelper';
 import type {
-    HeroWithGroup,
+    GroupInfo,
     HeroGroup,
     HeroSlug,
+    HeroWithGroup,
     Stat,
-    GroupInfo,
 } from '@/entities/Hero/types/hero';
 import type { StaticImageData } from 'next/image';
 import { groupHeroesByGroup } from './groupHeroesByGroup';
@@ -22,7 +18,9 @@ const HERO_IMG_KEYS = ['srcImg'] as const;
 const HERO_GIF_KEYS = ['srcGif'] as const;
 const GROUP_IMG_KEYS = ['srcImg'] as const;
 const GROUP_LABEL_KEYS = ['label'] as const;
-const STATS_KEYS = ['stats'] as const;
+// Directus can expose the O2M from heroes -> heroes_stats as `heroes_stats` (common),
+// while older/static mapping used `stats`. Support both.
+const STATS_KEYS = ['heroes_stats', 'stats'] as const;
 
 const ASSET = (id?: string) =>
     id ? `${(envHelper.directusHost || '').replace(/\/$/, '')}/assets/${id}` : '';
@@ -49,6 +47,7 @@ const FIELDS = [
         `${key}.alt`,
         `${key}.altGif`,
     ]),
+    // hero-level rarityClass may live elsewhere in Directus; keep it out of the query to avoid 403s
     'group.id',
     'group.key',
     'group.bgColour',
@@ -87,10 +86,6 @@ const mkStaticImage = (id?: string, width?: number, height?: number): StaticImag
     id
         ? ({ src: ASSET(id), width: width || 1, height: height || 1 } as unknown as StaticImageData)
         : '';
-
-const mapRarityClass = (val: number | string | undefined): string =>
-    typeof val === 'number' ? ({ 0: 'common', 1: 'rare', 2: 'epic' }[val] ?? '') : (val ?? '');
-
 // eslint-disable-next-line complexity
 function mapHero(item: any, locale: Locale): HeroWithGroup {
     // translations
@@ -123,16 +118,23 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
     );
 
     // stats
-    const statsArr = firstArray(item, STATS_KEYS);
+    // Prefer Directus O2M `heroes_stats` when present; fallback to `stats`
+    const statsArr =
+        (item?.heroes_stats && Array.isArray(item.heroes_stats) ? item.heroes_stats : null) ??
+        firstArray(item, STATS_KEYS);
     const stats: Stat[] = (statsArr || [])
-        .slice()
+        .map((statItem: any) => {
+            // heroes_stats rows have fields directly on the row (name, rarityClass, defaultLevel, developmentLevel, order)
+            const name = statItem?.name;
+            const rarityClass = statItem?.rarityClass;
+            const defaultLevel = statItem?.defaultLevel;
+            const developmentLevel = statItem?.developmentLevel ?? undefined;
+            const order = statItem?.order ?? 0;
+            return { name, rarityClass, defaultLevel, developmentLevel, order };
+        })
+        .filter((stat: any) => !!stat?.name)
         .sort((a: any, b: any) => (a?.order ?? 0) - (b?.order ?? 0))
-        .map((statItem: any) => ({
-            name: statItem?.name,
-            rarityClass: statItem?.rarityClass,
-            defaultLevel: statItem?.defaultLevel,
-            developmentLevel: statItem?.developmentLevel ?? undefined,
-        }));
+        .map(({ order: _order, ...rest }: any) => rest as Stat);
 
     const group: GroupInfo = {
         name: groupTr?.name ?? item?.group?.key ?? 'UNKNOWN',
@@ -152,7 +154,7 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
         altGif: heroTr?.altGif ?? '',
         title: heroTr?.title ?? item.slug,
         description: heroTr?.description ?? '',
-        rarityClass: mapRarityClass(item.rarityClass), // TODO: Fetch from heroes_stats collection if needed
+        rarityClass: '',
         stats,
         groupEnum: (item?.group?.key as HeroGroup) ?? 'RETROFLECTOR',
         groupName: group.name,
@@ -189,6 +191,18 @@ export const heroApi = directusApi.injectEndpoints({
             },
             providesTags: (_res, _err, args) => [{ type: 'Hero' as const, id: args.slug }],
         }),
+        getHeroStatsByHeroId: build.query<Stat[], { heroId: number }>({
+            query: ({ heroId }) => ({
+                url: `/items/heroes_stats?filter[hero][_eq]=${heroId}&sort=order&fields=name,rarityClass,defaultLevel,developmentLevel,order`,
+            }),
+            transformResponse: (resp: any) =>
+                (resp?.data || []).map((row: any) => ({
+                    name: row?.name,
+                    rarityClass: row?.rarityClass,
+                    defaultLevel: row?.defaultLevel,
+                    developmentLevel: row?.developmentLevel ?? undefined,
+                })),
+        }),
         getAllHeroes: build.query<HeroWithGroup[], { locale?: Locale }>({
             query: ({ locale = 'en' }) => ({
                 url: `/items/heroes?${buildParams(locale, { limit: '-1' }).toString()}`,
@@ -205,11 +219,6 @@ export const heroApi = directusApi.injectEndpoints({
             }),
             transformResponse: (resp: any, _meta, args) => {
                 const items = resp?.data || [];
-                if (items.length === 0) {
-                    // eslint-disable-next-line no-console
-                    console.warn('[getHeroGroups] Directus returned empty array');
-                    return {} as Record<HeroGroup, GroupInfo>;
-                }
                 const heroes = items.map((item: any) =>
                     mapHero(item, (args?.locale ?? 'en') as Locale),
                 );
@@ -220,7 +229,12 @@ export const heroApi = directusApi.injectEndpoints({
     }),
 });
 
-export const { useGetHeroBySlugQuery, useGetAllHeroesQuery, useGetHeroGroupsQuery } = heroApi;
+export const {
+    useGetHeroBySlugQuery,
+    useGetHeroStatsByHeroIdQuery,
+    useGetAllHeroesQuery,
+    useGetHeroGroupsQuery,
+} = heroApi;
 
 export async function fetchHeroBySlug(
     slug: HeroSlug,
@@ -239,13 +253,7 @@ export async function fetchHeroBySlug(
 
     try {
         const url = `${base}/items/heroes?${params.toString()}`;
-        // eslint-disable-next-line no-console
-        console.log(`[fetchHeroBySlug] Fetching "${slug}" from Directus`);
-
         const res = await fetch(url, { next: { revalidate: 60 } });
-        // eslint-disable-next-line no-console
-        console.log(`[fetchHeroBySlug] Response status: ${res.status} ${res.statusText}`);
-
         if (!res.ok) {
             const errorText = await res.text().catch(() => '');
             // eslint-disable-next-line no-console
@@ -265,8 +273,6 @@ export async function fetchHeroBySlug(
             return undefined;
         }
 
-        // eslint-disable-next-line no-console
-        console.log(`[fetchHeroBySlug] ✓ Successfully fetched "${slug}" from Directus`);
         return mapHero(item, locale);
     } catch (error) {
         // eslint-disable-next-line no-console
@@ -292,12 +298,7 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
 
     try {
         const url = `${base}/items/heroes?${params.toString()}`;
-        // eslint-disable-next-line no-console
-        console.log(`[fetchAllHeroes] Fetching from: ${base}/items/heroes (locale: ${locale})`);
-
         const res = await fetch(url, { next: { revalidate: 60 } });
-        // eslint-disable-next-line no-console
-        console.log(`[fetchAllHeroes] Response status: ${res.status} ${res.statusText}`);
 
         if (!res.ok) {
             const errorText = await res.text().catch(() => '');
@@ -310,17 +311,6 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
 
         const json = await res.json();
         const items = json?.data || [];
-        // eslint-disable-next-line no-console
-        console.log(`[fetchAllHeroes] Received ${items.length} items from Directus`);
-
-        if (items.length === 0) {
-            // eslint-disable-next-line no-console
-            console.warn('[fetchAllHeroes] Directus returned empty array - check data in CMS');
-            return [];
-        }
-
-        // eslint-disable-next-line no-console
-        console.log(`[fetchAllHeroes] ✓ Successfully mapped ${items.length} heroes from Directus`);
         return items.map((item: any) => mapHero(item, locale));
     } catch (error) {
         // eslint-disable-next-line no-console
@@ -330,11 +320,4 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
         );
         return [];
     }
-}
-
-export async function fetchHeroGroups(
-    locale: Locale = 'en',
-): Promise<Record<HeroGroup, GroupInfo>> {
-    const allHeroes = await fetchAllHeroes(locale);
-    return groupHeroesByGroup(allHeroes);
 }

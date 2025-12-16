@@ -1,6 +1,7 @@
 import { type GroupInfo, HeroGroup } from '../types/hero';
 import { buildHeroGroups } from '@/entities/Hero/model/heroGroupsData';
-import { fetchHeroGroups, type Locale } from './heroApi';
+import { fetchAllHeroes, type Locale } from './heroApi';
+import { groupHeroesByGroup } from './groupHeroesByGroup';
 
 /**
  * Initialize hero groups from static data (legacy, for fallback)
@@ -22,9 +23,8 @@ export async function initializeHeroGroupsFromDirectus(
     locale: Locale = 'en',
 ): Promise<Record<HeroGroup, GroupInfo>> {
     try {
-        const groups = await fetchHeroGroups(locale);
-        // Return empty record if Directus returned empty (caller should check and keep static data)
-        return groups;
+        const heroes = await fetchAllHeroes(locale);
+        return groupHeroesByGroup(heroes);
     } catch (error) {
         // eslint-disable-next-line no-console
         console.error(

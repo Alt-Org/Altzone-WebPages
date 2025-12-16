@@ -30,6 +30,7 @@ export const FIELDS = [
         `${key}.alt`,
         `${key}.altGif`,
     ]),
+    'rarityClass',
     'group.id',
     'group.key',
     'group.bgColour',

@@ -21,7 +21,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import cls from './SingleHeroPage.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { BarIndicator } from '@/shared/ui/v2/BarIndicator';
-import { useGetHeroBySlugQuery } from '@/entities/Hero/model/heroApi';
+import { useGetHeroBySlugQuery, useGetHeroStatsByHeroIdQuery } from '@/entities/Hero/model/heroApi';
 import { useParams } from 'next/navigation';
 
 /**
@@ -60,6 +60,11 @@ const SingleHeroPage = (props: Props) => {
         { slug, locale },
         { skip: !!newSelectedHero },
     );
+    const selectedHeroForStats = newSelectedHero || directusHero;
+    const { data: directusStats } = useGetHeroStatsByHeroIdQuery(
+        { heroId: selectedHeroForStats?.id as number },
+        { skip: !selectedHeroForStats?.id },
+    );
 
     // Mobile-only: state for clamping description text
     const descRef = useRef<HTMLDivElement | null>(null);
@@ -71,6 +76,8 @@ const SingleHeroPage = (props: Props) => {
         // Priority: 1. Server-provided hero, 2. Directus hero, 3. Static data fallback
         const selectedHero = newSelectedHero || directusHero;
         if (selectedHero) {
+            const mergedStats =
+                directusStats && directusStats.length > 0 ? directusStats : selectedHero.stats;
             return {
                 titleText: selectedHero.groupName,
                 hero: {
@@ -83,7 +90,7 @@ const SingleHeroPage = (props: Props) => {
                     title: selectedHero.title,
                     rarityClass: selectedHero.rarityClass || '',
                     description: selectedHero.description,
-                    stats: selectedHero.stats,
+                    stats: mergedStats,
                 },
             };
         }
@@ -101,7 +108,7 @@ const SingleHeroPage = (props: Props) => {
             }
         }
         return { titleText: '', hero: undefined };
-    }, [newSelectedHero, directusHero, slug, t]);
+    }, [newSelectedHero, directusHero, directusStats, slug, t]);
 
     /**
      * Converts a hero's skill level (`rarityClass`/value) to an i18n key.
