@@ -21,10 +21,16 @@ export class HeroManager {
      */
     public async initializeFromDirectus(locale: Locale = 'en'): Promise<void> {
         try {
-            this.heroGroups = await initializeHeroGroupsFromDirectus(locale);
-            this.heroesCache = null; // Clear cache to force recalculation
+            const directusGroups = await initializeHeroGroupsFromDirectus(locale);
+            // Only replace static data if Directus returned non-empty groups
+            if (directusGroups && Object.keys(directusGroups).length > 0) {
+                this.heroGroups = directusGroups;
+                this.heroesCache = null; // Clear cache to force recalculation
+            } else {
+                console.warn('[HeroManager] Directus returned empty groups, keeping static data');
+            }
         } catch (error) {
-            console.error('Failed to initialize hero groups from Directus:', error);
+            console.error('[HeroManager] Failed to initialize hero groups from Directus:', error);
             // Keep existing static data as fallback
         }
     }
@@ -65,9 +71,17 @@ export class HeroManager {
      */
     public async getAllHeroesFromDirectus(locale: Locale = 'en'): Promise<HeroWithGroup[]> {
         try {
-            return await fetchAllHeroes(locale);
+            const heroes = await fetchAllHeroes(locale);
+            // If Directus returns empty array, fallback to static data
+            if (heroes.length === 0) {
+                console.warn(
+                    '[HeroManager] Directus returned empty heroes array, using static data',
+                );
+                return this.getAllHeroes();
+            }
+            return heroes;
         } catch (error) {
-            console.error('Failed to fetch all heroes from Directus:', error);
+            console.error('[HeroManager] Failed to fetch all heroes from Directus:', error);
             // Fallback to static data
             return this.getAllHeroes();
         }

@@ -16,29 +16,18 @@ import { groupHeroesByGroup } from './groupHeroesByGroup';
 
 export type Locale = 'en' | 'fi' | 'ru';
 
-/** Relation field keys (O2M translations) */
 const HERO_TR_KEYS = ['translations'] as const;
 const GROUP_TR_KEYS = ['translations'] as const;
-
-/** File field keys */
 const HERO_IMG_KEYS = ['srcImg'] as const;
 const HERO_GIF_KEYS = ['srcGif'] as const;
 const GROUP_IMG_KEYS = ['srcImg'] as const;
 const GROUP_LABEL_KEYS = ['label'] as const;
-
-/** Stats relation key */
 const STATS_KEYS = ['stats'] as const;
 
-/** Build a public asset URL from a Directus file ID. */
 const ASSET = (id?: string) =>
     id ? `${(envHelper.directusHost || '').replace(/\/$/, '')}/assets/${id}` : '';
+const languageCode = (locale: Locale): string => locale;
 
-/** Normalized languages_code in Directus */
-function languageCode(locale: Locale): string {
-    return locale;
-}
-
-/** Pick the matching translation; fallback to first if none match */
 function pickTranslationByLocale<T extends { languages_code?: string }>(
     arr: T[] | undefined,
     locale: Locale,
@@ -47,17 +36,12 @@ function pickTranslationByLocale<T extends { languages_code?: string }>(
     return arr.find((t) => t?.languages_code === languageCode(locale)) ?? arr[0];
 }
 
-/** Fields requested from Directus */
 const FIELDS = [
     'id',
     'slug',
     'order',
-
-    // hero files (id + width + height)
     ...HERO_IMG_KEYS.flatMap((key) => [`${key}.id`, `${key}.width`, `${key}.height`]),
     ...HERO_GIF_KEYS.flatMap((key) => [`${key}.id`, `${key}.width`, `${key}.height`]),
-
-    // hero translations
     ...HERO_TR_KEYS.flatMap((key) => [
         `${key}.languages_code`,
         `${key}.title`,
@@ -65,16 +49,9 @@ const FIELDS = [
         `${key}.alt`,
         `${key}.altGif`,
     ]),
-
-    // hero rarity class
-    'rarityClass',
-
-    // group basics
     'group.id',
     'group.key',
     'group.bgColour',
-
-    // group files
     ...GROUP_IMG_KEYS.flatMap((key) => [
         `group.${key}.id`,
         `group.${key}.width`,
@@ -85,15 +62,11 @@ const FIELDS = [
         `group.${key}.width`,
         `group.${key}.height`,
     ]),
-
-    // group translations
     ...GROUP_TR_KEYS.flatMap((key) => [
         `group.${key}.languages_code`,
         `group.${key}.name`,
         `group.${key}.description`,
     ]),
-
-    // stats
     ...STATS_KEYS.flatMap((key) => [
         `${key}.name`,
         `${key}.rarityClass`,
@@ -103,22 +76,21 @@ const FIELDS = [
     ]),
 ].join(',');
 
-/** Utility helpers */
 const firstKey = (obj: any, keys: readonly string[]) =>
     keys.find((key) => key && obj?.[key] !== undefined);
-
 const firstArray = (obj: any, keys: readonly string[]) =>
     (keys
         .filter(Boolean)
         .map((key) => obj?.[key])
         .find((value) => Array.isArray(value)) as any[]) || [];
-
 const mkStaticImage = (id?: string, width?: number, height?: number): StaticImageData | '' =>
     id
         ? ({ src: ASSET(id), width: width || 1, height: height || 1 } as unknown as StaticImageData)
         : '';
 
-/** Mapper */
+const mapRarityClass = (val: number | string | undefined): string =>
+    typeof val === 'number' ? ({ 0: 'common', 1: 'rare', 2: 'epic' }[val] ?? '') : (val ?? '');
+
 // eslint-disable-next-line complexity
 function mapHero(item: any, locale: Locale): HeroWithGroup {
     // translations
@@ -180,7 +152,7 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
         altGif: heroTr?.altGif ?? '',
         title: heroTr?.title ?? item.slug,
         description: heroTr?.description ?? '',
-        rarityClass: item.rarityClass || '',
+        rarityClass: mapRarityClass(item.rarityClass), // TODO: Fetch from heroes_stats collection if needed
         stats,
         groupEnum: (item?.group?.key as HeroGroup) ?? 'RETROFLECTOR',
         groupName: group.name,
@@ -190,30 +162,27 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
     };
 }
 
-/* RTK Query API */
+function buildParams(locale: Locale, options?: { slug?: string; limit?: string }) {
+    const params = new URLSearchParams();
+    if (options?.slug) params.set('filter[slug][_eq]', options.slug);
+    if (options?.limit) params.set('limit', options.limit);
+    params.set('fields', FIELDS);
+    params.set('sort', 'order');
+    for (const key of HERO_TR_KEYS) {
+        params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
+    }
+    for (const key of GROUP_TR_KEYS) {
+        params.set(`deep[group][${key}][filter][languages_code][_eq]`, languageCode(locale));
+    }
+    return params;
+}
 
 export const heroApi = directusApi.injectEndpoints({
     endpoints: (build) => ({
         getHeroBySlug: build.query<HeroWithGroup | undefined, { slug: HeroSlug; locale?: Locale }>({
-            query: ({ slug, locale = 'en' }) => {
-                const params = new URLSearchParams();
-                params.set('filter[slug][_eq]', slug);
-                params.set('limit', '1');
-                params.set('fields', FIELDS);
-                params.set('sort', 'order');
-
-                for (const key of HERO_TR_KEYS) {
-                    params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
-                }
-                for (const key of GROUP_TR_KEYS) {
-                    params.set(
-                        `deep[group][${key}][filter][languages_code][_eq]`,
-                        languageCode(locale),
-                    );
-                }
-
-                return { url: `/items/heroes?${params.toString()}` };
-            },
+            query: ({ slug, locale = 'en' }) => ({
+                url: `/items/heroes?${buildParams(locale, { slug, limit: '1' }).toString()}`,
+            }),
             transformResponse: (resp: any, _meta, args) => {
                 const item = resp?.data?.[0];
                 return item ? mapHero(item, (args?.locale ?? 'en') as Locale) : undefined;
@@ -221,24 +190,9 @@ export const heroApi = directusApi.injectEndpoints({
             providesTags: (_res, _err, args) => [{ type: 'Hero' as const, id: args.slug }],
         }),
         getAllHeroes: build.query<HeroWithGroup[], { locale?: Locale }>({
-            query: ({ locale = 'en' }) => {
-                const params = new URLSearchParams();
-                params.set('fields', FIELDS);
-                params.set('sort', 'order');
-                params.set('limit', '-1');
-
-                for (const key of HERO_TR_KEYS) {
-                    params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
-                }
-                for (const key of GROUP_TR_KEYS) {
-                    params.set(
-                        `deep[group][${key}][filter][languages_code][_eq]`,
-                        languageCode(locale),
-                    );
-                }
-
-                return { url: `/items/heroes?${params.toString()}` };
-            },
+            query: ({ locale = 'en' }) => ({
+                url: `/items/heroes?${buildParams(locale, { limit: '-1' }).toString()}`,
+            }),
             transformResponse: (resp: any, _meta, args) => {
                 const items = resp?.data || [];
                 return items.map((item: any) => mapHero(item, (args?.locale ?? 'en') as Locale));
@@ -246,30 +200,19 @@ export const heroApi = directusApi.injectEndpoints({
             providesTags: () => [{ type: 'Hero' as const, id: 'LIST' }],
         }),
         getHeroGroups: build.query<Record<HeroGroup, GroupInfo>, { locale?: Locale }>({
-            query: ({ locale = 'en' }) => {
-                const params = new URLSearchParams();
-                params.set('fields', FIELDS);
-                params.set('sort', 'order');
-                params.set('limit', '-1');
-
-                for (const key of HERO_TR_KEYS) {
-                    params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
-                }
-                for (const key of GROUP_TR_KEYS) {
-                    params.set(
-                        `deep[group][${key}][filter][languages_code][_eq]`,
-                        languageCode(locale),
-                    );
-                }
-
-                return { url: `/items/heroes?${params.toString()}` };
-            },
+            query: ({ locale = 'en' }) => ({
+                url: `/items/heroes?${buildParams(locale, { limit: '-1' }).toString()}`,
+            }),
             transformResponse: (resp: any, _meta, args) => {
                 const items = resp?.data || [];
+                if (items.length === 0) {
+                    // eslint-disable-next-line no-console
+                    console.warn('[getHeroGroups] Directus returned empty array');
+                    return {} as Record<HeroGroup, GroupInfo>;
+                }
                 const heroes = items.map((item: any) =>
                     mapHero(item, (args?.locale ?? 'en') as Locale),
                 );
-
                 return groupHeroesByGroup(heroes);
             },
             providesTags: () => [{ type: 'Hero' as const, id: 'GROUPS' }],
@@ -279,66 +222,116 @@ export const heroApi = directusApi.injectEndpoints({
 
 export const { useGetHeroBySlugQuery, useGetAllHeroesQuery, useGetHeroGroupsQuery } = heroApi;
 
-/* Plain fetch (SSR) */
-
 export async function fetchHeroBySlug(
     slug: HeroSlug,
     locale: Locale = 'en',
 ): Promise<HeroWithGroup | undefined> {
     const base = (envHelper.directusHost || '').replace(/\/$/, '');
-    const params = new URLSearchParams();
-    params.set('filter[slug][_eq]', slug);
-    params.set('limit', '1');
-    params.set('fields', FIELDS);
-    params.set('sort', 'order');
-
-    for (const key of HERO_TR_KEYS) {
-        params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
-    }
-    for (const key of GROUP_TR_KEYS) {
-        params.set(`deep[group][${key}][filter][languages_code][_eq]`, languageCode(locale));
+    if (!base) {
+        // eslint-disable-next-line no-console
+        console.warn(
+            '[fetchHeroBySlug] Directus host not configured - check NEXT_PUBLIC_DIRECTUS_HOST env var',
+        );
+        return undefined;
     }
 
-    const res = await fetch(`${base}/items/heroes?${params.toString()}`, {
-        next: { revalidate: 60 },
-    });
-    if (!res.ok) return undefined;
+    const params = buildParams(locale, { slug, limit: '1' });
 
-    const json = await res.json();
-    const item = json?.data?.[0];
-    return item ? mapHero(item, locale) : undefined;
+    try {
+        const url = `${base}/items/heroes?${params.toString()}`;
+        // eslint-disable-next-line no-console
+        console.log(`[fetchHeroBySlug] Fetching "${slug}" from Directus`);
+
+        const res = await fetch(url, { next: { revalidate: 60 } });
+        // eslint-disable-next-line no-console
+        console.log(`[fetchHeroBySlug] Response status: ${res.status} ${res.statusText}`);
+
+        if (!res.ok) {
+            const errorText = await res.text().catch(() => '');
+            // eslint-disable-next-line no-console
+            console.warn(
+                `[fetchHeroBySlug] Directus error ${res.status} for "${slug}": ${errorText.substring(0, 200)}`,
+            );
+            return undefined;
+        }
+
+        const json = await res.json();
+        const item = json?.data?.[0];
+        if (!item) {
+            // eslint-disable-next-line no-console
+            console.warn(
+                `[fetchHeroBySlug] No hero found in Directus for slug "${slug}" (response had ${json?.data?.length || 0} items)`,
+            );
+            return undefined;
+        }
+
+        // eslint-disable-next-line no-console
+        console.log(`[fetchHeroBySlug] ✓ Successfully fetched "${slug}" from Directus`);
+        return mapHero(item, locale);
+    } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(
+            `[fetchHeroBySlug] ✗ Error fetching "${slug}":`,
+            error instanceof Error ? error.message : error,
+        );
+        return undefined;
+    }
 }
 
-/**
- * Fetch all heroes from Directus
- */
 export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGroup[]> {
     const base = (envHelper.directusHost || '').replace(/\/$/, '');
-    const params = new URLSearchParams();
-    params.set('fields', FIELDS);
-    params.set('sort', 'order');
-    params.set('limit', '-1'); // Get all heroes
-
-    for (const key of HERO_TR_KEYS) {
-        params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
-    }
-    for (const key of GROUP_TR_KEYS) {
-        params.set(`deep[group][${key}][filter][languages_code][_eq]`, languageCode(locale));
+    if (!base) {
+        // eslint-disable-next-line no-console
+        console.warn(
+            '[fetchAllHeroes] Directus host not configured - check NEXT_PUBLIC_DIRECTUS_HOST env var',
+        );
+        return [];
     }
 
-    const res = await fetch(`${base}/items/heroes?${params.toString()}`, {
-        next: { revalidate: 60 },
-    });
-    if (!res.ok) return [];
+    const params = buildParams(locale, { limit: '-1' });
 
-    const json = await res.json();
-    const items = json?.data || [];
-    return items.map((item: any) => mapHero(item, locale));
+    try {
+        const url = `${base}/items/heroes?${params.toString()}`;
+        // eslint-disable-next-line no-console
+        console.log(`[fetchAllHeroes] Fetching from: ${base}/items/heroes (locale: ${locale})`);
+
+        const res = await fetch(url, { next: { revalidate: 60 } });
+        // eslint-disable-next-line no-console
+        console.log(`[fetchAllHeroes] Response status: ${res.status} ${res.statusText}`);
+
+        if (!res.ok) {
+            const errorText = await res.text().catch(() => '');
+            // eslint-disable-next-line no-console
+            console.warn(
+                `[fetchAllHeroes] Directus error ${res.status}: ${errorText.substring(0, 200)}`,
+            );
+            return [];
+        }
+
+        const json = await res.json();
+        const items = json?.data || [];
+        // eslint-disable-next-line no-console
+        console.log(`[fetchAllHeroes] Received ${items.length} items from Directus`);
+
+        if (items.length === 0) {
+            // eslint-disable-next-line no-console
+            console.warn('[fetchAllHeroes] Directus returned empty array - check data in CMS');
+            return [];
+        }
+
+        // eslint-disable-next-line no-console
+        console.log(`[fetchAllHeroes] ✓ Successfully mapped ${items.length} heroes from Directus`);
+        return items.map((item: any) => mapHero(item, locale));
+    } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(
+            '[fetchAllHeroes] ✗ Fetch error:',
+            error instanceof Error ? error.message : error,
+        );
+        return [];
+    }
 }
 
-/**
- * Fetch all heroes grouped by their hero groups from Directus
- */
 export async function fetchHeroGroups(
     locale: Locale = 'en',
 ): Promise<Record<HeroGroup, GroupInfo>> {

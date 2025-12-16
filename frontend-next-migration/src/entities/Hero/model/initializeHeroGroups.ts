@@ -23,10 +23,15 @@ export async function initializeHeroGroupsFromDirectus(
 ): Promise<Record<HeroGroup, GroupInfo>> {
     try {
         const groups = await fetchHeroGroups(locale);
+        // Return empty record if Directus returned empty (caller should check and keep static data)
         return groups;
     } catch (error) {
-        console.error('Failed to fetch hero groups from Directus:', error);
-        // Return empty record as fallback
+        // eslint-disable-next-line no-console
+        console.error(
+            '[initializeHeroGroupsFromDirectus] Failed to fetch hero groups from Directus:',
+            error,
+        );
+        // Return empty record - caller should check and keep static data
         return {} as Record<HeroGroup, GroupInfo>;
     }
 }
