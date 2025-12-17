@@ -192,14 +192,14 @@ export const heroApi = directusApi.injectEndpoints({
         }),
         getHeroStatsByHeroId: build.query<Stat[], { heroId: number }>({
             query: ({ heroId }) => ({
-                url: `/items/heroes_stats?filter[hero][_eq]=${heroId}&sort=order&fields=name,defaultLevel,developmentLevel,order`,
+                url: `/items/heroes_stats?filter[hero][_eq]=${heroId}&sort=order&fields=name,rarityClass,defaultLevel,developmentLevel,order`,
             }),
             transformResponse: (resp: any) =>
                 (resp?.data || []).map((row: any) => ({
                     name: row?.name,
+                    rarityClass: row?.rarityClass,
                     defaultLevel: row?.defaultLevel,
                     developmentLevel: row?.developmentLevel ?? undefined,
-                    rarityClass: 0,
                 })),
         }),
         getAllHeroes: build.query<HeroWithGroup[], { locale?: Locale }>({

@@ -76,8 +76,22 @@ const SingleHeroPage = (props: Props) => {
         // Priority: 1. Server-provided hero, 2. Directus hero, 3. Static data fallback
         const selectedHero = newSelectedHero || directusHero;
         if (selectedHero) {
+            // Merge Directus stats (levels) with baseline tiers (rarityClass) from the hero data.
+            // Directus `heroes_stats` rows may not contain `rarityClass`, but UI needs it for the
+            // "master/expert/..." label.
             const mergedStats =
-                directusStats && directusStats.length > 0 ? directusStats : selectedHero.stats;
+                directusStats && directusStats.length > 0
+                    ? directusStats.map((row) => {
+                          const baseline = selectedHero.stats.find(
+                              (stat) => stat.name === row.name,
+                          );
+                          return {
+                              ...row,
+                              // Prefer Directus rarityClass when present; fallback to baseline (static) tier.
+                              rarityClass: row.rarityClass ?? baseline?.rarityClass ?? 10,
+                          };
+                      })
+                    : selectedHero.stats;
             return {
                 titleText: selectedHero.groupName,
                 hero: {
@@ -109,6 +123,12 @@ const SingleHeroPage = (props: Props) => {
         }
         return { titleText: '', hero: undefined };
     }, [newSelectedHero, directusHero, directusStats, slug, t]);
+
+    const rarityLabel = useMemo(() => {
+        if (!hero?.rarityClass) return '';
+        const key = hero.rarityClass.toLowerCase();
+        return key === 'common' || key === 'rare' || key === 'epic' ? t(key) : hero.rarityClass;
+    }, [hero?.rarityClass, t]);
 
     /**
      * Converts a hero's skill level (`rarityClass`/value) to an i18n key.
@@ -178,7 +198,7 @@ const SingleHeroPage = (props: Props) => {
                             <h3 className={cls.CardTitle}>{t('character-introduction')}</h3>
                             <div className={cls.Rarity}>
                                 {t('rarity')}:&nbsp;
-                                <span className={cls.Bold}>{hero.rarityClass}</span>
+                                <span className={cls.Bold}>{rarityLabel}</span>
                             </div>
                             <div
                                 ref={descRef}
@@ -249,7 +269,7 @@ const SingleHeroPage = (props: Props) => {
                                 <h3 className={cls.CardTitle}>{t('character-introduction')}</h3>
                                 <div className={cls.Rarity}>
                                     {t('rarity')}:&nbsp;
-                                    <span className={cls.Bold}>{hero.rarityClass}</span>
+                                    <span className={cls.Bold}>{rarityLabel}</span>
                                 </div>
                                 <div className={cls.Description}>{hero.description}</div>
                             </div>
