@@ -15,9 +15,37 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import chevronleft from '@/shared/assets/icons/ChevronLeftBlack.svg';
 import chevronright from '@/shared/assets/icons/ChevronRightBlack.svg';
 import { useRouter, useParams } from 'next/navigation';
+import { linkify } from '@/shared/ui/v2/Chatbot/utils/linkify';
 import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
 import { ShareButton } from '@/shared/ui/v2/ShareButton';
+
+type HeroImageProps = {
+    picture?: string;
+};
+
+const HeroImage = ({ picture }: HeroImageProps) => {
+    if (!picture) return <div className={cls.noImageContainer} />;
+
+    return (
+        <div className={cls.imageContainer}>
+            <Image
+                src={picture}
+                alt=""
+                className={cls.imageBlur}
+                width={100}
+                height={600}
+            />
+            <Image
+                src={picture}
+                alt=""
+                className={cls.image}
+                width={100}
+                height={600}
+            />
+        </div>
+    );
+};
 
 const NewsElementPage = () => {
     useScrollToTop();
@@ -45,6 +73,9 @@ const NewsElementPage = () => {
     const picture = post.titlePicture?.id
         ? `${directusBaseUrl}/assets/${post.titlePicture.id}`
         : undefined;
+
+    const bodyHtml = linkify(post?.bodyText ?? '');
+
     return (
         <Container>
             <div className={cls.navButtons}>
@@ -84,26 +115,7 @@ const NewsElementPage = () => {
                 </Button>
             </div>
             <div className={classNames(cls.NewsElementPage)}>
-                {picture ? (
-                    <div className={cls.imageContainer}>
-                        <Image
-                            src={picture}
-                            alt={''}
-                            className={cls.imageBlur}
-                            width={100}
-                            height={600}
-                        />
-                        <Image
-                            src={picture}
-                            alt={''}
-                            className={cls.image}
-                            width={100}
-                            height={600}
-                        />
-                    </div>
-                ) : (
-                    <div className={cls.noImageContainer} />
-                )}
+                <HeroImage picture={picture} />
 
                 <h1 className={cls.title}>{post?.title}</h1>
 
@@ -114,7 +126,10 @@ const NewsElementPage = () => {
                     <span className={cls.date}>{post?.date || 'Date/Time'}</span>
                 </div>
 
-                <p className={cls.text}>{post?.bodyText}</p>
+                <div
+                    className={cls.text}
+                    dangerouslySetInnerHTML={{ __html: bodyHtml }}
+                />
 
                 <div className={cls.shareButton}>
                     <ShareButton>

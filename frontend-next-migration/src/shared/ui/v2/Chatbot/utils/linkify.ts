@@ -29,6 +29,6 @@ export function linkify(text: string): string {
         const hrefRaw = url.startsWith('www.') ? `https://${url}` : url;
         const href = encodeURI(hrefRaw).replace(/"/g, '&quot;');
 
-        return `<a href="${href}" style="color:#121212; text-decoration:underline;">${url}</a>${escapeHtml(trailing)}`;
+        return `<a href="${href}" target="_blank" rel="noopener noreferrer" style="color:#121212; text-decoration:underline;">${url}</a>${escapeHtml(trailing)}`;
     });
 }
