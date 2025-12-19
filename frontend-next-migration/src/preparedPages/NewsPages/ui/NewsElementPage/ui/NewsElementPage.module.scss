@@ -10,6 +10,14 @@
     align-items: center;
     justify-content: center;
     row-gap: 1rem;
+    padding-inline: 5em;
+}
+
+@media (max-width: breakpoint(md)) {
+  .NewsElementPage {
+    padding-inline: 1em;
+    align-items: stretch;
+  }
 }
 
 .navButtons {
@@ -87,6 +95,7 @@
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-l);
+        text-align: left;
     }
 }
 
@@ -99,6 +108,7 @@
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-m);
+        text-align: left;
     }
 }
 
@@ -106,16 +116,15 @@
     color: var(--white);
     font: var(--font-dm-m);
     line-height: 28px;
-    padding: 10px 5em;
+    padding: 10px 0;
     text-align: left;
-    width: 80%;
+    width: 100%;
     white-space: pre-line;
 }
 
 @media (max-width: breakpoint(md)) {
     .text {
-        padding: 10px 1em;
-        width: 98%;
+        text-align: left;
     }
 }
 
@@ -158,6 +167,13 @@
     padding: 0 40px 20px 40px;
     width: 100%;
     gap: 16px;
+    @media (max-width: breakpoint(md)) {
+        justify-content: flex-start;
+        padding: 0 0 20px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px
+    }
 }
 
 .shareButton {
@@ -165,7 +181,7 @@
     display: flex;
     align-items: center;
     align-self: flex-start;
-    padding: 0 5em;
+    padding: 0;
     margin-top: 16px;
 }
 
