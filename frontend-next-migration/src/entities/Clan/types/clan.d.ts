@@ -11,10 +11,10 @@ export type IClan = {
     itemCount: number;
     tag: string;
     admin_ids: string[];
-    Player: Array[]; // conflict with swagger
+    Player: Array[];
     isOpen: boolean;
     phrase: string;
-    labels: Array[]; // conflict with swagger
+    labels: Array[];
     positionLeaderboard?: number;
 
     roles: IClanRole[];
