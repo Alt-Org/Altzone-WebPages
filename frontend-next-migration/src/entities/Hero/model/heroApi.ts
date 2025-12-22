@@ -24,7 +24,16 @@ const STATS_KEYS = ['heroes_stats', 'stats'] as const;
 
 const ASSET = (id?: string) =>
     id ? `${(envHelper.directusHost || '').replace(/\/$/, '')}/assets/${id}` : '';
-const languageCode = (locale: Locale): string => locale;
+/** Normalize locale code to Directus format (fi -> fi-FI, en -> en-US, ru -> ru-RU) */
+const normalizeLocale = (locale: Locale): string => {
+    const localeMap: Record<Locale, string> = {
+        fi: 'fi-FI',
+        en: 'en-US',
+        ru: 'ru-RU',
+    };
+    return localeMap[locale] || locale;
+};
+const languageCode = (locale: Locale): string => normalizeLocale(locale);
 
 function pickTranslationByLocale<T extends { languages_code?: string }>(
     arr: T[] | undefined,
