@@ -52,8 +52,8 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
                                         <Image
                                             src={imgSrc}
                                             alt={`Frame ${imgIndex}`}
-                                            width={1000}
-                                            height={100}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, 33vw"
                                             className={cls.frameImage}
                                         />
                                     </div>
