@@ -127,11 +127,11 @@
     flex: 0 0 auto;
     aspect-ratio: auto;
     min-height: 0;
-    height: clamp(240px, 40vh, 460px);
+    height: clamp(280px, 55vh, 560px);
   }
 
   .frameImage {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
