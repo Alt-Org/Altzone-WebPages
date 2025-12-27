@@ -177,6 +177,9 @@
     align-self: flex-start;
     padding: 0 5em; 
     margin-top: 16px;
+    @media (max-width: breakpoint(md)) {
+        padding: 0 1em;
+    }
 }
 
 .author {
