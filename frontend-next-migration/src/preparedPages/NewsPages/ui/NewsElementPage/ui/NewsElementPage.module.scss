@@ -65,6 +65,10 @@
     object-position: center;
     align-self: center;
     box-shadow: var(--s-blur);
+    @media (max-width: breakpoint(md)) {
+        width: auto;
+        height: 75%;
+    }
 }
 
 .imageBlur {

@@ -21,4 +21,6 @@ export const envHelper = {
     strapiHost: process.env.NEXT_PUBLIC_STRAPI_HOST || '',
     directusHost: process.env.NEXT_PUBLIC_DIRECTUS_HOST || '',
     openAiApiKey: process.env.NEXT_PUBLIC_LLM_HOST || '',
+    gaProdId: process.env.NEXT_PUBLIC_GA_PROD_ID || '',
+    gaDevId: process.env.NEXT_PUBLIC_GA_DEV_ID || '',
 } as const;
