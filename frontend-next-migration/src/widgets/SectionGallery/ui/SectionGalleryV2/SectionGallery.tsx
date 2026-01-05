@@ -7,8 +7,8 @@ import Image from 'next/image';
 
 interface FrameSet {
     title: string;
+    author: string;
     description: string;
-    supDescription: string;
     frames: string[][]; // each row is an array of image paths
 }
 
@@ -35,8 +35,8 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
                 >
                     <div className={cls.textBlock}>
                         <h1 className={cls.title}>{set.title}</h1>
+                        <p className={cls.author}>{set.author}</p>
                         <p className={cls.description}>{set.description}</p>
-                        <p className={cls.supdescription}>{set.supDescription}</p>
                     </div>
                     <div className={cls.framesContainer}>
                         {set.frames.map((row, rowIndex) => (
@@ -52,8 +52,8 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
                                         <Image
                                             src={imgSrc}
                                             alt={`Frame ${imgIndex}`}
-                                            width={1000}
-                                            height={100}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, 33vw"
                                             className={cls.frameImage}
                                         />
                                     </div>
