@@ -1,4 +1,8 @@
-import { PhotoVersionTranslations, CategoryTranslations } from '../types/gallery';
+import {
+    PhotoVersionTranslations,
+    CategoryTranslations,
+    PhotoObjectTranslations,
+} from '../types/gallery';
 
 export const getLanguageCode = (language: string): string => {
     return language === 'en' ? 'en-US' : language === 'fi' ? 'fi-FI' : 'default';
@@ -26,4 +30,21 @@ export const getPhotoVersionTranslation = (
     languageCode: string,
 ) => {
     return getTranslation(translations, languageCode, 'altText', '');
+};
+
+export const getPhotoObjectTexts = (
+    translations: PhotoObjectTranslations[] = [],
+    languageCode: string,
+) => {
+    if (!translations || translations.length === 0) {
+        return { title: '', author: '', description: '' };
+    }
+
+    const tr = translations.find((t) => t.languages_code === languageCode) ?? translations[0];
+
+    return {
+        title: tr.title ?? '',
+        author: tr.author ?? '',
+        description: tr.description ?? '',
+    };
 };

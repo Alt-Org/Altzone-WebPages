@@ -1,7 +1,7 @@
 import { envHelper } from '@/shared/const/envHelper';
 import { useMemo } from 'react';
 import { Category, PhotoObject, PhotoVersion } from '../types/gallery';
-import { getPhotoVersionTranslation } from '../api/translations';
+import { getPhotoVersionTranslation, getPhotoObjectTexts } from '../api/translations';
 import { useGetGalleryCategoriesQuery } from '../api/galleryCategoriesApi';
 import { useGetPhotoObjectsQuery, useGetPhotoVersionsQuery } from '../api/galleryApi';
 
@@ -62,34 +62,52 @@ export const useGetDirectusGalleryImages = (lng: string) => {
             height: item.height,
             altText: getPhotoVersionTranslation(item.translations || [], lng),
         }));
-    }, [pvData]);
+    }, [pvData, lng]);
 
     const photoObjects: PhotoObject[] = useMemo(() => {
         if (!poData) return [];
-        return poData.map((item) => ({
-            id: item.id,
-            category: {
-                id: item.category.id,
-                translations: item.category.translations,
-            },
-            versions: {
-                preview: {
-                    id: item.preview.id,
-                    image: `${directusBaseUrl}/assets/${item.preview.image}`,
-                    width: item.preview.width,
-                    height: item.preview.height,
-                    altText: getPhotoVersionTranslation(item.preview.translations || [], lng),
-                },
-                full: {
-                    id: item.full.id,
-                    image: `${directusBaseUrl}/assets/${item.full.image}`,
-                    width: item.full.width,
-                    height: item.full.height,
-                    altText: getPhotoVersionTranslation(item.full.translations || [], lng),
-                },
-            },
-        }));
-    }, [poData, directusBaseUrl]);
+        return poData.map((item) => {
+            const texts = getPhotoObjectTexts(item.translations || [], lng);
+
+            return {
+                id: item.id,
+                title: texts.title || item.title,
+                author: texts.author || item.author,
+                description: texts.description || item.description,
+                category: item.category
+                    ? {
+                          id: item.category.id,
+                          translations: item.category.translations,
+                      }
+                    : undefined,
+                versions:
+                    item.preview && item.full
+                        ? {
+                              preview: {
+                                  id: item.preview.id,
+                                  image: `${directusBaseUrl}/assets/${item.preview.image}`,
+                                  width: item.preview.width,
+                                  height: item.preview.height,
+                                  altText: getPhotoVersionTranslation(
+                                      item.preview.translations || [],
+                                      lng,
+                                  ),
+                              },
+                              full: {
+                                  id: item.full.id,
+                                  image: `${directusBaseUrl}/assets/${item.full.image}`,
+                                  width: item.full.width,
+                                  height: item.full.height,
+                                  altText: getPhotoVersionTranslation(
+                                      item.full.translations || [],
+                                      lng,
+                                  ),
+                              },
+                          }
+                        : undefined,
+            };
+        });
+    }, [poData, directusBaseUrl, lng]);
 
     return { photoVersions, categories, photoObjects, error, isLoading };
 };

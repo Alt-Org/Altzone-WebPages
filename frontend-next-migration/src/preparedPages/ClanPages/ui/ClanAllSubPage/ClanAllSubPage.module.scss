@@ -1,87 +1,94 @@
-.ClanTable {
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-collapse: collapse;
-  max-width: 100px;
-  font: var(--font-dm-m);
-
-  th,
-  td {
-    padding: 0px 10px;
-    border-bottom: 1px solid rgba(255, 0, 0, 0.11);
-    white-space: nowrap;
-    word-wrap: break-word;
-  }
-
-
-  th {
-    background-color: rgb(100, 84, 66);
-    text-align: left;
-  }
-
-  tr:hover {
-    cursor: pointer;
-
-    &:hover {
-      //@include link-scale-effect;
-      background-color: rgba(203, 15, 15, 0.47) !important;
-    }
-  }
-
-  tr {
-    height: 40px;
-    border-collapse: collapse;
-    white-space: nowrap;
-    word-wrap: break-word;
-  }
-
-
+.Container {
+  max-width: var(--content-width);
+  margin: 0 auto;
 }
 
-.ClanCard {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: var(--border-radius-custom);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  div {
-    cursor: pointer;
-    margin-bottom: 8px;
-  }
-}
-
-
-.Loader {
-  @include position-absolute-center;
-}
-
-.Buttons {
+.TitleBar {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.SearchBar {
+  display: flex;
+  height: 20px;
+  justify-content: left;
+  color: var(--primary-color);
+  border: 2px solid var(--black);
+  box-shadow: var(--black) 4px 4px 0;
+  border-radius: 1.5em;
+  background: var(--base-card-background);
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font: var(--font-dm-m);
+}
+
+.Input {
+  color: var(--primary-color);
+  padding-left: 1em;
+  border: none;
+  background: transparent;
+  outline: none;
   width: 100%;
-  margin-top: 5%;
 }
 
-.titleText {
-  font: var(--font-dm-bold-xl);
-  text-align: center;
-  margin-bottom: 20px;
+.SearchBarDesktop {
+  width: 200px;
 }
 
-.notFound {
-  text-align: left;
+.SearchBarMobile {
+  width: 280px;
+  max-width: 90%;
+  margin: 0.5rem auto 1rem;
 }
 
-.BtnGame {
-  background-color: var(--black) !important;
+.SearchBarTablet {
+  width: 280px;
+  max-width: 90%;
+  margin: 0.5rem auto 1rem;
+}
 
+main :where(.SearchBarDesktop, .SearchBarMobile) {
+  overflow: visible;
+}
 
-  //line height: ;
-  font: var(--font-dm-m) !important;
-  white-space: nowrap;
-  min-width: fit-content;
-  //border: solid 1px var(--primary-color);
+.DesktopCardContainer {
+  display: flex;
+  padding-top: 1em;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.MobileCardContainer {
+  --gap: 0.45rem;
+  --row-gap: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--gap);
+  row-gap: var(--row-gap);
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  padding-inline: 0;
+  margin-top: 0.25rem;
+}
+
+.MobileCardItemWrap {
+  box-sizing: border-box;
+  flex: 0 0 calc((100% - 2 * var(--gap)) / 3);
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.MobileCardItem {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+  display: block;
 }

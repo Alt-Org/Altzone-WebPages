@@ -37,6 +37,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@hookform/resolvers": "^3.3.2",
     "@next/bundle-analyzer": "^14.0.1",
+    "@next/third-parties": "^16.0.8",
     "@reduxjs/toolkit": "^1.9.7",
     "accept-language": "^3.0.18",
     "html-react-parser": "^5.1.1",

@@ -16,6 +16,7 @@ jest.mock('../api/galleryCategoriesApi', () => ({
 jest.mock('../api/translations', () => ({
     getPhotoVersionTranslation: jest.fn(),
     getCategoryTranslation: jest.fn(),
+    getPhotoObjectTexts: jest.fn(() => ({ title: '', author: '', description: '' })),
 }));
 
 jest.mock('@/shared/const/envHelper', () => ({
