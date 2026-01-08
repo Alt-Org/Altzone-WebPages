@@ -1,7 +1,8 @@
 import { createPage } from '@/app/_helpers';
 import { getServerTranslation } from '@/shared/i18n';
 import { notFound } from 'next/navigation';
-import { HeroManager, HeroSlug } from '@/entities/Hero';
+import { HeroManager, HeroSlug, HeroWithGroup } from '@/entities/Hero';
+import { getRouteOneHeroPage } from '@/shared/appLinks/RoutePaths';
 import { SingleHeroPageProps } from '@/preparedPages/HeroesPages';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 
