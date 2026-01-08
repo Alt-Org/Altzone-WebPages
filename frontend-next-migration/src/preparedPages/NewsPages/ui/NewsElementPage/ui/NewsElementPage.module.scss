@@ -91,6 +91,8 @@
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-l);
+        padding: 10px 1em;
+        text-align: left;
     }
 }
 
@@ -103,6 +105,8 @@
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-m);
+        padding: 10px 1em;
+        text-align: left;
     }
 }
 
@@ -112,14 +116,13 @@
     line-height: 28px;
     padding: 10px 5em;
     text-align: left;
-    width: 80%;
+    width: 100%;
     white-space: pre-line;
 }
 
 @media (max-width: breakpoint(md)) {
     .text {
         padding: 10px 1em;
-        width: 98%;
     }
 }
 
@@ -162,6 +165,13 @@
     padding: 0 40px 20px 40px;
     width: 100%;
     gap: 16px;
+    @media (max-width: breakpoint(md)) {
+        justify-content: flex-start;
+        padding: 10px 1em;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px
+    }
 }
 
 .shareButton {
@@ -169,8 +179,11 @@
     display: flex;
     align-items: center;
     align-self: flex-start;
-    padding: 0 5em;
+    padding: 0 5em; 
     margin-top: 16px;
+    @media (max-width: breakpoint(md)) {
+        padding: 0 1em;
+    }
 }
 
 .author {
