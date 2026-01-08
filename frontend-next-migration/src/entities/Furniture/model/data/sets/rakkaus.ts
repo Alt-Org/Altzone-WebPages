@@ -23,7 +23,7 @@ import { rarityList } from '../rarities';
 export const rakkausSet: SetInfo = {
     id: 'rakkaus',
     path: 'RAKKAUSSET',
-    author: 'IV',
+    author: 'Ida Vesterinen',
     cover: rakkausCover,
     coverposition: FurnitureSetCoverPosition.MEDIUM,
     items: [
