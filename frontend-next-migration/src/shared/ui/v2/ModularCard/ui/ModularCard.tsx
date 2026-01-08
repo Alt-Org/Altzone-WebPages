@@ -211,8 +211,7 @@ const ModularCardImage = memo((props: ModularCardImageProps) => {
             className={classNames(cls.ModularCardImage, {}, [className])}
             src={src}
             alt={alt}
-            width={width}
-            height={height}
+            priority={true}
         />
     );
 });

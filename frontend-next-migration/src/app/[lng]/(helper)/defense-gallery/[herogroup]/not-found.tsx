@@ -18,7 +18,10 @@ export default function NotFound() {
             }}
         >
             <h1>{t('not-found-title')}</h1>
-            <Link href={getRouteAllHeroesPage()}>
+            <Link
+                href={getRouteAllHeroesPage()}
+                prefetch={false}
+            >
                 <b>{t('not-found-check-heroes')}</b>
             </Link>
         </div>

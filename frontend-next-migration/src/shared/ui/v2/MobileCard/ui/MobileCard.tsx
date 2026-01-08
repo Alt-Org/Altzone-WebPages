@@ -201,6 +201,8 @@ const MobileCardImageSection = memo(
                         src={src}
                         alt={alt}
                         fill
+                        priority={true}
+                        sizes="(min-width: 512px) 50vw, 100vw"
                     />
                 ) : (
                     <Image

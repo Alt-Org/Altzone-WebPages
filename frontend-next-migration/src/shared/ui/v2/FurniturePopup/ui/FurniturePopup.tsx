@@ -110,11 +110,12 @@ export const FurniturePopup: React.FC<FurniturePopupProps> = ({
                         </div>
                         <div className={cls.ImageColumn}>
                             <Image
+                                className={cls.Image}
                                 src={item.cover}
                                 alt={t(`${setPath}.items.${item.path}.name`)}
                                 width={300}
                                 height={300}
-                                objectFit="contain"
+                                style={{ objectFit: 'contain' }}
                             />
                         </div>
                     </div>
