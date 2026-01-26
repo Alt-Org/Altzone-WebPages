@@ -3,7 +3,7 @@
   padding-inline: 16px;
   font: var(--font-dm-m) !important;
 
-  @media (min-width: breakpoint(md)){
+  @media (min-width: breakpoint(md)) {
     width: 70%;
   }
 }
@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .TextContainer {
   margin-top: 2rem;
   border-radius: var(--corner-radius-web);
@@ -20,16 +21,19 @@
   box-shadow: var(--black) 4px 6px 0;
   padding: 1rem;
 }
+
 .Subheading {
   font: var(--font-sw-xl);
   color: var(--primary-color);
   text-align: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  @media (max-width: #{breakpoint(sm)}){
+
+  @media (max-width: #{breakpoint(sm)}) {
     font-size: 1.5rem;
   }
 }
+
 .textColumns {
   box-sizing: border-box;
   padding-inline: 32px;
@@ -46,10 +50,12 @@
     column-count: 2;
   }
 }
+
 .textCenter {
   text-align: center;
   padding-inline: 2em;
 }
+
 .pdfButton {
   display: inline-flex;
   align-items: center;
@@ -113,12 +119,14 @@
   border-radius: .8em;
   width: calc(33% - 1.333rem);
 }
+
 .BoardCardInfoArea {
   outline: 2px solid var(--primary-color);
   border-radius: .8em;
   text-align: center;
   height: 100%;
 }
+
 .BoardCardInfoAreaMobile {
   outline: 1px solid var(--primary-color);
   border-bottom-right-radius: .6em;
@@ -127,6 +135,7 @@
   height: 100%;
   width: 100%;
 }
+
 .BoardCardMobile {
   display: flex;
   flex-direction: column;
@@ -135,38 +144,45 @@
   width: 100%;
   align-items: center;
 }
+
 .Name {
   font: var(--font-sw-l);
   color: var(--white);
   padding-top: .5rem;
 }
+
 .Job {
   font: var(--font-sw-m);
   font-size: 1.2rem;
   color: var(--primary-color);
   padding-top: .2rem;
 }
+
 .Profession {
   padding-top: .2rem;
   padding-bottom: .2rem;
 
 }
+
 .NameMobile {
   font: var(--font-sw-m);
   color: var(--white);
   padding-top: .5rem;
 }
+
 .JobMobile {
   font: var(--font-sw-s);
   font-size: 1.2rem;
   color: var(--primary-color);
   padding-top: .2rem;
 }
+
 .ProfessionMobile {
   padding-top: .2rem;
   padding-bottom: .2rem;
   font-size: .8rem;
 }
+
 .BoardCardContainer {
   justify-content: center;
   display: flex;
@@ -175,11 +191,13 @@
   margin-top: 1rem;
   padding-inline: 2rem;
 }
+
 .BoardCardHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .MeetBoard {
   padding-top: 1rem !important;
   color: var(--primary-color) !important;
@@ -187,15 +205,18 @@
   display: block;
   width: 100%;
 }
+
 .SeeBoard {
   padding-top: 2rem;
 }
+
 .BoardCardMobileContainer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
 }
+
 .Underline {
   &:hover {
     text-decoration: underline !important;
@@ -203,13 +224,25 @@
     text-decoration-thickness: 1.5px;
   }
 }
+
 .MarginBottom {
   margin-bottom: 2rem;
 }
+
 .bold {
   font-weight: bold;
 }
 
-
-
-
+.registryInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: .8em;
+  white-space: pre-line;
+}
