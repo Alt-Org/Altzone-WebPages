@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Container } from '@/shared/ui/Container';
-import { SocialIconLink, Texts } from '@/widgets/Footer/model/types/types';
+import { SocialIconLink, Texts } from '@/shared/types/types';
 import { Rights } from '@/widgets/Footer/ui/Rights/Rights';
 import { SocialSection } from '@/widgets/Footer/ui/SocialSection/SocialSection';
 import { Title } from '@/widgets/Footer/ui/Title/Title';

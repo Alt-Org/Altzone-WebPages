@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
-import { SocialIconLink } from '../../model/types/types';
+import { SocialIconLink } from '../../../../shared/types/types';
 import Image from 'next/image';
 import cls from './SocialSection.module.scss';
 

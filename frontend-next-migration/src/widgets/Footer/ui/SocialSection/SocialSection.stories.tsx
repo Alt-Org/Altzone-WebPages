@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/nextjs';
 import { SocialSection } from './SocialSection';
-import { socialIconLinks } from '../../model/data/socialSectionMenu';
+import { socialIconLinks } from '../../../../shared/const/socialSectionMenu';
 
 const meta: Meta<typeof SocialSection> = {
     title: 'widgets/Footer/SocialSection',

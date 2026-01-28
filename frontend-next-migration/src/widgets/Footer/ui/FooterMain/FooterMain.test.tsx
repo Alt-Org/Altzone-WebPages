@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import { envHelper } from '@/shared/const/envHelper';
-import { socialIconLinks } from '../../model/data/socialSectionMenu';
+import { socialIconLinks } from '../../../../shared/const/socialSectionMenu';
 import { Footer } from './FooterMain';
 
 // Mock the useClientTranslation hook

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { SocialIconLink, Texts } from '@/widgets/Footer/model/types/types';
+import { SocialIconLink, Texts } from '@/shared/types/types';
 import FooterDesktop from './FooterDesktop';
 
 jest.mock('@/shared/ui/v2/Feedback');

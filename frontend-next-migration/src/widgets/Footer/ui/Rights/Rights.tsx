@@ -7,7 +7,7 @@ import {
 } from '@/shared/appLinks/RoutePaths';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { useResetCookies } from '@/shared/lib/hooks/useResetCookies';
-import { Texts } from '../../model/types/types';
+import { Texts } from '../../../../shared/types/types';
 import cls from './Rights.module.scss';
 
 interface RightsProps {

@@ -1,6 +1,6 @@
 import { useClientTranslation } from '@/shared/i18n';
 import { envHelper } from '@/shared/const/envHelper';
-import { socialIconLinks } from '../../model/data/socialSectionMenu';
+import { socialIconLinks } from '../../../../shared/const/socialSectionMenu';
 import { FooterDesktop, FooterMobile } from '@/shared/ui/v2/Footer';
 import useSizes from '@/shared/lib/hooks/useSizes';
 

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { SocialIconLink, Texts } from '../../model/types/types';
+import { SocialIconLink, Texts } from '../../../../shared/types/types';
 import FooterDesktop from './FooterDesktop';
 
 // Mock data for social links and texts
