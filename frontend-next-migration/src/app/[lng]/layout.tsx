@@ -18,10 +18,10 @@ import { envHelper } from '@/shared/const/envHelper';
 //   display: 'swap',
 // });
 
-const sedgwickFont = localFont({
+const markoFont = localFont({
     src: [
         {
-            path: '../fonts/SedgwickAveDisplay-Regular.ttf',
+            path: '../fonts/MarkoOne-Regular.ttf',
             weight: '400',
             style: 'normal',
         },
@@ -107,7 +107,7 @@ export default function RootLayout(props: Props) {
         <html
             lang={lng}
             dir={dir(lng)}
-            className={`${urbanist.variable} ${rubik.variable} ${sedgwickFont.variable} ${dmSans.variable}`}
+            className={`${urbanist.variable} ${rubik.variable} ${markoFont.variable} ${dmSans.variable}`}
         >
             <head>
                 <link
