@@ -13,7 +13,7 @@ const useJoinClan = () => {
         join_message: string,
         onSuccess?: () => void,
     ) => {
-        const result = await joinClan({ clan_id, player_id, join_message });
+        const result = await joinClan({ clan_id, player_id });
         // @ts-ignore todo figure out ts
         if (result?.error) {
             // @ts-ignore todo figure out ts
