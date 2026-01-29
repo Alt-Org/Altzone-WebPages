@@ -10,7 +10,6 @@ export interface Asset {
 export interface Member {
     id: number;
     name: string;
-    task?: string;
     email?: string;
     logo?: Logo | null;
     website?: string;
@@ -19,10 +18,15 @@ export interface Member {
     facebook?: string | null;
     instagram?: string | null;
     language?: string;
-    department?: Department | null;
-    team?: Team | null;
-    translations?: Translation[];
+    roles?: MemberRole[];
     portrait?: Asset | null;
+}
+
+export interface MemberRole {
+    id: number;
+    team?: Team | null;
+    department?: Department | null;
+    translations?: RoleTranslation[];
 }
 
 export interface Department {
@@ -42,21 +46,28 @@ export interface Team {
 
 export interface DepartmentTranslation {
     id: number;
-    departments_id: number;
+    departments_v2_id: number;
     languages_code: string;
-    department: string;
+    name: string;
 }
 
 export interface TeamTranslation {
     id: number;
-    teams_id: number;
+    teams_v2_id: number;
     languages_code: string;
-    team: string;
+    name: string;
 }
 
 export interface Translation {
     id: number;
     members_id: number;
+    languages_code: string;
+    task?: string;
+}
+
+export interface RoleTranslation {
+    id: number;
+    members_roles_id: number;
     languages_code: string;
     task?: string;
 }
