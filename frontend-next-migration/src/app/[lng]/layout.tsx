@@ -13,6 +13,8 @@ import { CookieConsentV3 } from '@/features/CookieConsentV3';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { envHelper } from '@/shared/const/envHelper';
+import { LayoutBackgroundController } from './_components/LayoutBackgroundController';
+
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
@@ -123,14 +125,14 @@ export default function RootLayout(props: Props) {
                 />
             </head>
             <body>
-                <LayoutWithBackground>
+                <LayoutBackgroundController lng={lng}>
                     <Providers>
                         <FeedbackSideButton />
                         <ChatBotToggleButton />
                         {children}
                         <CookieConsentV3 />
                     </Providers>
-                </LayoutWithBackground>
+                </LayoutBackgroundController>
             </body>
             {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
         </html>

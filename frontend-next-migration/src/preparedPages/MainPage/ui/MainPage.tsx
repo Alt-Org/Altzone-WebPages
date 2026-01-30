@@ -1,4 +1,5 @@
 'use client';
+import { Header } from '@/widgets/Header';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import {
@@ -20,7 +21,6 @@ import {
 } from './_components/sections/ProjectDescription';
 import { VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries';
 import cls from './page.module.scss';
-import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
 import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
 import { useParams, useRouter } from 'next/navigation';
@@ -58,47 +58,7 @@ function MainPage(props: Props) {
 
     return (
         <div className={cls.MainPage}>
-            <WallIntroAnimation renderOnce={true} />
-            <div className={cls.mainImgWrapper}>
-                <div className={cls.buttonsOverlay}>
-                    <Button
-                        withScalableLink
-                        className={cls.aboutButton}
-                        theme={ButtonTheme.PRIMARY_2}
-                        size={ButtonSize.L}
-                        onClick={() => router.push('/about')}
-                    >
-                        {t('main-about')}
-                    </Button>
-
-                    <Button
-                        withScalableLink
-                        className={cls.prgButton}
-                        theme={ButtonTheme.PRIMARY_2}
-                        size={ButtonSize.L}
-                        onClick={() => router.push('/prg')}
-                    >
-                        {t('main-prg')}
-                    </Button>
-
-                    {/**<Button
-                    withScalableLink
-                    className={cls.teachersButton}
-                    theme={ButtonTheme.PRIMARY_2}
-                    size={ButtonSize.L}>{t('main-teacherspage')}
-                </Button>**/}
-
-                    <Button
-                        withScalableLink
-                        className={cls.playButton}
-                        theme={ButtonTheme.SECONDARY}
-                        size={ButtonSize.L}
-                        onClick={() => window.open(AppExternalLinks.downloadAndroid, '_blank')}
-                    >
-                        {t('main-play')}
-                    </Button>
-                </div>
-            </div>
+            <Header />
 
             <ProjectDescription
                 className={cls.description}

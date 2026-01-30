@@ -6,6 +6,7 @@ interface LayoutWithBackgroundProps {
     imagePath?: string;
     alt?: string;
     shouldBeLazyLoaded?: boolean;
+    showBackground?: boolean;
 }
 
 /**
@@ -16,12 +17,14 @@ interface LayoutWithBackgroundProps {
  * @param imagePath - Path to the background image (defaults to main background)
  * @param alt - Alt text for the background image (for accessibility)
  * @param shouldBeLazyLoaded - Whether to lazy load the background image (not used with CSS background)
+ * @param showBackground - Whether to render the background image
  */
 const LayoutWithBackground = (props: LayoutWithBackgroundProps) => {
     const {
         children,
         imagePath = bgPicture.src,
         alt = 'Main-Page underground style background',
+        showBackground = true,
     } = props;
 
     const backgroundStyle: CSSProperties = {
@@ -40,11 +43,13 @@ const LayoutWithBackground = (props: LayoutWithBackgroundProps) => {
 
     return (
         <>
-            <div
-                style={backgroundStyle}
-                role="img"
-                aria-label={alt}
-            />
+            {showBackground && (
+                <div
+                    style={backgroundStyle}
+                    role="img"
+                    aria-label={alt}
+                />
+            )}
             <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
         </>
     );

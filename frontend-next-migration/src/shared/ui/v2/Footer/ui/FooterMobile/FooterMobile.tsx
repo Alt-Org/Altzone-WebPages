@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Container } from '@/shared/ui/Container';
 import { SocialIconLink, Texts } from '@/shared/types/types';
 import { Rights } from '@/widgets/Footer/ui/Rights/Rights';
-import { SocialSection } from '@/widgets/Footer/ui/SocialSection/SocialSection';
+import { SocialSection } from '@/shared/SocialSection/SocialSection';
 import { Title } from '@/widgets/Footer/ui/Title/Title';
 import cls from './FooterMobile.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
