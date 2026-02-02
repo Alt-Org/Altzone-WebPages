@@ -1,22 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cls from './WallIntroAnimation.module.scss';
 import { IntroWall } from '@/shared/ui/v2/IntroWall';
-
-/**
- * WallIntroAnimation component displays an animated wall.
- *
- * @param {boolean} renderOnce - Render animation only once per session.
- * @returns JSX element representing the WallIntroAnimation.
- *
- * @example
- *
- *
- *      <div>
- *         <WallIntroAnimation />
- *     </div>
- *
- */
 
 interface WallLoaderProps {
     renderOnce?: boolean;
@@ -25,30 +10,53 @@ interface WallLoaderProps {
 export default function WallIntroAnimation({ renderOnce }: WallLoaderProps) {
     const [isLoaded, setIsLoaded] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
-    const isRenderedOnce = localStorage.getItem('isRendered');
+
+    const mountedRef = useRef(true);
 
     useEffect(() => {
-        if (!renderOnce || !isRenderedOnce) {
-            const timer = setTimeout(() => setIsLoaded(true), 50);
-            const hideTimer = setTimeout(() => setIsVisible(false), 2000);
-            if (renderOnce) {
-                setTimeout(() => localStorage.setItem('isRendered', 'true'), 400);
-            }
-            return () => {
-                clearTimeout(timer);
-                clearTimeout(hideTimer);
-            };
-        } else if (isRenderedOnce) {
-            setIsVisible(false);
-        }
-    }, []);
+        mountedRef.current = true;
 
-    if (!renderOnce || !isRenderedOnce)
-        return (
-            <div className={cls.wrapper}>
-                <div className={`${cls.loader} ${isLoaded ? cls.loaded : ''}`}>
-                    <IntroWall />
-                </div>
+        const hasRendered = renderOnce ? localStorage.getItem('isRendered') === 'true' : false;
+
+        if (renderOnce && hasRendered) {
+            setIsVisible(false);
+            return () => {
+                mountedRef.current = false;
+            };
+        }
+
+        const t1 = window.setTimeout(() => {
+            if (!mountedRef.current) return;
+            setIsLoaded(true);
+        }, 50);
+
+        const t2 = window.setTimeout(() => {
+            if (!mountedRef.current) return;
+            setIsVisible(false);
+        }, 2000);
+
+        const t3 = renderOnce
+            ? window.setTimeout(() => {
+                  if (!mountedRef.current) return;
+                  localStorage.setItem('isRendered', 'true');
+              }, 400)
+            : undefined;
+
+        return () => {
+            mountedRef.current = false;
+            window.clearTimeout(t1);
+            window.clearTimeout(t2);
+            if (t3) window.clearTimeout(t3);
+        };
+    }, [renderOnce]);
+
+    if (!isVisible) return null;
+
+    return (
+        <div className={cls.wrapper}>
+            <div className={`${cls.loader} ${isLoaded ? cls.loaded : ''}`}>
+                <IntroWall />
             </div>
-        );
+        </div>
+    );
 }

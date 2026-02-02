@@ -10,14 +10,28 @@ interface LayoutWithBackgroundProps {
 }
 
 /**
- * Layout component that provides a full-page background image.
- * Uses CSS background-image for optimal image quality and performance.
+ * LayoutWithBackground renders a fixed full-viewport background texture
+ * behind the application content.
  *
- * @param children - The content to render over the background
- * @param imagePath - Path to the background image (defaults to main background)
- * @param alt - Alt text for the background image (for accessibility)
- * @param shouldBeLazyLoaded - Whether to lazy load the background image (not used with CSS background)
- * @param showBackground - Whether to render the background image
+ * Responsibilities:
+ * - Provides a global background layer using CSS `background-image`.
+ * - Keeps background rendering separate from page/feature logic.
+ *
+ * Non-responsibilities:
+ * - Does NOT render hero images or page-specific visuals.
+ * - Does NOT control animations or page transitions.
+ *
+ * Notes:
+ * - Background visibility is controlled via `showBackground`.
+ * - This component is intended to be used at layout level.
+ * - Route-based background logic should be handled by a wrapper
+ *   (e.g. LayoutBackgroundController), not inside this component.
+ *
+ * @param children - Page or layout content rendered above the background.
+ * @param imagePath - Optional background image path (defaults to main background texture).
+ * @param alt - Accessible description for the background image.
+ * @param shouldBeLazyLoaded - Reserved for future use (not applicable to CSS backgrounds).
+ * @param showBackground - Enables or disables rendering of the background layer.
  */
 const LayoutWithBackground = (props: LayoutWithBackgroundProps) => {
     const {

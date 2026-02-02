@@ -1,54 +1,90 @@
 .Header {
   width: 100%;
-  background: var(--black);
+  background: transparent;
   color: var(--white);
-  font: var(--font-dm-xl);
 }
 
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: clamp(560px, 72vh, 860px);
+  width: 100%;
   align-items: stretch;
-  min-height: 70vh; /* hero-tuntuma, säädä myöhemmin */
 }
 
+/* left image flush to the left edge */
 .left {
-  flex: 1;
   position: relative;
   overflow: hidden;
 }
 
-/* Next/Image img */
 .left :global(img) {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  display: block;
 }
 
+/* right column */
 .right {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 3rem;
-  gap: 1.5rem;
+  padding: 56px 64px;
+  gap: 24px;
+
+  /* keep it transparent so brick background shows through */
+  background: transparent;
 }
 
 .textBlock {
-  max-width: 420px;
+  max-width: 520px;
 }
 
-/* varaus tuleville teksteille */
-.textBlock h1 {
+.title {
   font: var(--font-dm-xxl);
+  margin: 0 0 8px 0;
 }
 
-.textBlock p {
-  opacity: 0.85;
+.subtitle {
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.5;
+  font: var(--font-dm-m);
+}
+
+.ctaRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font: var(--font-dm-m);
+}
+
+.ctaPrimary {
+  background: var(--primary-color);
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--primary-color);
+}
+
+.followText {
+  margin-top: 16px;
+  font: var(--font-dm-m);
+  opacity: 0.9;
 }
 
 .socialSection {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
