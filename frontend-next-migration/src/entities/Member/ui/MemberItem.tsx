@@ -36,11 +36,19 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
             : null;
 
     const fullLanguageCode = getLanguageCode(language);
-    // Get task from first role's translations, or fall back to empty string
-    const task =
-        member.roles && member.roles.length > 0 && member.roles[0].translations
-            ? getRoleTaskTranslation(member.roles[0].translations, fullLanguageCode)
-            : '';
+    // Get all tasks from all roles, avoiding duplicates
+    const allTasks = member.roles
+        ? member.roles
+              .map((role) => {
+                  if (role.translations && role.translations.length > 0) {
+                      return getRoleTaskTranslation(role.translations, fullLanguageCode);
+                  }
+                  return '';
+              })
+              .filter((task) => task && task.trim() !== '')
+              .filter((task, index, array) => array.indexOf(task) === index) // Remove duplicates
+        : [];
+    const task = allTasks.join(', ');
 
     return (
         <li className={cls.workmanComponent}>
