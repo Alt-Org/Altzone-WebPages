@@ -13,14 +13,15 @@ const membersApi = directusApi.injectEndpoints({
             queryFn: async (): Promise<{ data: Member[] } | { error: FetchBaseQueryError }> => {
                 try {
                     const members = await client.request<Record<string, any>[]>(
-                        readItems('members', {
+                        readItems('members_v2', {
                             fields: [
                                 '*',
-                                'department.*',
-                                'department.translations.*',
-                                'team.*',
-                                'team.translations.*',
-                                'translations.*',
+                                'roles.id',
+                                'roles.team.*',
+                                'roles.team.translations.*',
+                                'roles.department.*',
+                                'roles.department.translations.*',
+                                'roles.translations.*',
                                 'logo.*',
                                 'portrait.id',
                                 'portrait.title',
@@ -28,6 +29,7 @@ const membersApi = directusApi.injectEndpoints({
                             limit: 500,
                         }),
                     );
+
                     return { data: members as Member[] };
                 } catch (error: any) {
                     return {
