@@ -46,11 +46,13 @@ const galleryApi = directusApi.injectEndpoints({
                             'category.translations.*',
                             'full.translations.*',
                             'preview.translations.*',
+                            'translations.*',
                         ],
                         deep: {
                             category: { translations: true },
                             preview: { translations: true },
                             full: { translations: true },
+                            translations: true,
                         },
                     }),
                 );

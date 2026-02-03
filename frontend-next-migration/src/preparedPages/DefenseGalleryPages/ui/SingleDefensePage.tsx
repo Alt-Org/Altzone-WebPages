@@ -1,5 +1,6 @@
 'use client';
-import { HeroGroup } from '@/entities/Hero';
+import { HeroGroup, Hero } from '@/entities/Hero';
+import { useGetHeroGroupsQuery } from '@/entities/Hero/model/heroApi';
 import Image from 'next/image';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
 import { useClientTranslation } from '@/shared/i18n';
@@ -16,15 +17,27 @@ import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/Mobi
 import search from '@/shared/assets/icons/Search.svg';
 import cls from './DefenseGalleryPage.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
+import { useParams } from 'next/navigation';
+import type { StaticImageData } from 'next/image';
 
 export interface Props {
     heroGroup: HeroGroup;
 }
+
 export interface SearchBarProps {
     className: string;
     value: string;
     onChange: (value: string) => void;
 }
+
+type GroupInfoType = {
+    name: string;
+    description: string;
+    bgColour: string;
+    srcImg: string | StaticImageData;
+    heroes: Hero[];
+};
+
 export const SearchBar = (props: SearchBarProps) => {
     const { className, value, onChange } = props;
     return (
@@ -44,70 +57,88 @@ export const SearchBar = (props: SearchBarProps) => {
         </div>
     );
 };
-const SingleDefensePage = (props: Props) => {
-    const { heroGroup } = props;
-    const { t } = useClientTranslation('heroes');
-    const heroGroups = initializeHeroGroups(t);
-    const { isMobileSize, isTabletSize } = useSizes();
-    const [searchQuery, setSearchQuery] = React.useState('');
 
-    const filteredHeroes = React.useMemo(() => {
-        if (!searchQuery.trim()) {
-            return heroGroups[heroGroup].heroes;
-        }
+interface MobileViewProps {
+    heroGroup: HeroGroup;
+    heroGroups: Record<HeroGroup, GroupInfoType>;
+    filteredHeroes: Hero[];
+    searchQuery: string;
+    setSearchQuery: (value: string) => void;
+}
 
-        const query = searchQuery.toLowerCase();
-        return heroGroups[heroGroup].heroes.filter(
-            (hero) =>
-                hero.title.toLowerCase().includes(query) ||
-                heroGroups[heroGroup].name.toLowerCase().includes(query),
-        );
-    }, [searchQuery, heroGroup, heroGroups]);
-
-    if (isMobileSize)
-        return (
-            <div>
-                <SearchBar
-                    className={cls.SearchBarMobile}
-                    value={searchQuery}
-                    onChange={setSearchQuery}
-                />
-                <div style={{ marginBottom: '1em' }}>
-                    <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
-                        <DescriptionCardMobile.Texts title={heroGroups[heroGroup].name}>
-                            {heroGroups[heroGroup].description}
-                        </DescriptionCardMobile.Texts>
-                        <DescriptionCardMobile.Image
-                            src={heroGroups[heroGroup].srcImg}
-                            alt={heroGroups[heroGroup].name}
-                            backgroundColor={heroGroups[heroGroup].bgColour}
-                        />
-                    </DescriptionCardMobile>
-                </div>
-                <div className={cls.MobileCardContainer}>
-                    {filteredHeroes.map((hero, index) => (
-                        <MobileCardLink
-                            key={index}
-                            path={`/heroes/${hero.slug}`}
-                            ariaLabel={`link to ${hero.title} page`}
-                            withScalableLink={true}
-                        >
-                            <MobileCard theme={MobileCardTheme.DEFENSEGALLERY}>
-                                <MobileCard.Texts
-                                    title1={heroGroups[heroGroup].name}
-                                    title2={hero.title}
-                                />
-                                <MobileCard.Image
-                                    backgroundColor={heroGroups[heroGroup].bgColour}
-                                    src={hero.srcImg}
-                                    alt={hero.title}
-                                />
-                            </MobileCard>
-                        </MobileCardLink>
-                    ))}
-                </div>
+const MobileView = ({
+    heroGroup,
+    heroGroups,
+    filteredHeroes,
+    searchQuery,
+    setSearchQuery,
+}: MobileViewProps) => {
+    const group = heroGroups[heroGroup];
+    return (
+        <div>
+            <SearchBar
+                className={cls.SearchBarMobile}
+                value={searchQuery}
+                onChange={setSearchQuery}
+            />
+            <div style={{ marginBottom: '1em' }}>
+                <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
+                    <DescriptionCardMobile.Texts title={group?.name || ''}>
+                        {group?.description || ''}
+                    </DescriptionCardMobile.Texts>
+                    <DescriptionCardMobile.Image
+                        src={group?.srcImg || ''}
+                        alt={group?.name || ''}
+                        backgroundColor={group?.bgColour || '#000'}
+                    />
+                </DescriptionCardMobile>
             </div>
-        );
+            <div className={cls.MobileCardContainer}>
+                {filteredHeroes.map((hero: Hero, index: number) => (
+                    <MobileCardLink
+                        key={index}
+                        path={`/heroes/${hero.slug}`}
+                        ariaLabel={`link to ${hero.title} page`}
+                        withScalableLink={true}
+                    >
+                        <MobileCard theme={MobileCardTheme.DEFENSEGALLERY}>
+                            <MobileCard.Texts
+                                title1={group?.name || ''}
+                                title2={hero.title}
+                            />
+                            <MobileCard.Image
+                                backgroundColor={group?.bgColour || '#000'}
+                                src={hero.srcImg}
+                                alt={hero.title}
+                            />
+                        </MobileCard>
+                    </MobileCardLink>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+interface DesktopViewProps {
+    heroGroup: HeroGroup;
+    heroGroups: Record<HeroGroup, GroupInfoType>;
+    filteredHeroes: Hero[];
+    searchQuery: string;
+    setSearchQuery: (value: string) => void;
+    isTabletSize: boolean;
+    t: (key: string) => string;
+}
+
+const DesktopView = ({
+    heroGroup,
+    heroGroups,
+    filteredHeroes,
+    searchQuery,
+    setSearchQuery,
+    isTabletSize,
+    t,
+}: DesktopViewProps) => {
+    const group = heroGroups[heroGroup];
     return (
         <div className={cls.Container}>
             {isTabletSize ? (
@@ -132,25 +163,23 @@ const SingleDefensePage = (props: Props) => {
             )}
             <DescriptionCard theme={DescriptionCardTheme.DEFENSEGALLERY}>
                 <DescriptionCard.Texts>
-                    <DescriptionCard.Texts.Title>
-                        {heroGroups[heroGroup].name}
-                    </DescriptionCard.Texts.Title>
+                    <DescriptionCard.Texts.Title>{group?.name || ''}</DescriptionCard.Texts.Title>
                     <DescriptionCard.Texts.Body>
-                        {heroGroups[heroGroup].description}
+                        {group?.description || ''}
                     </DescriptionCard.Texts.Body>
                 </DescriptionCard.Texts>
-                <DescriptionCard.Image bgColour={heroGroups[heroGroup].bgColour}>
+                <DescriptionCard.Image bgColour={group?.bgColour || '#000'}>
                     <DescriptionCard.Image.Triangle />
                     <DescriptionCard.Image.Image
-                        src={heroGroups[heroGroup].srcImg}
-                        alt={heroGroups[heroGroup].name}
+                        src={group?.srcImg || ''}
+                        alt={group?.name || ''}
                         height={100}
                         marginLeft="20%"
                     />
                 </DescriptionCard.Image>
             </DescriptionCard>
             <div className={cls.DesktopCardContainer}>
-                {filteredHeroes.map((hero, index) => (
+                {filteredHeroes.map((hero: Hero, index: number) => (
                     <div
                         key={index}
                         style={{ width: 'calc(50% - .5em)' }}
@@ -163,14 +192,14 @@ const SingleDefensePage = (props: Props) => {
                         >
                             <ModularCard.Texts>
                                 <ModularCard.Texts.Title>
-                                    {heroGroups[heroGroup].name}
+                                    {group?.name || ''}
                                 </ModularCard.Texts.Title>
                                 <ModularCard.Texts.Body>{hero.title}</ModularCard.Texts.Body>
                             </ModularCard.Texts>
                             <ModularCard.Image
                                 style={
                                     {
-                                        '--before-color': heroGroups[heroGroup].bgColour,
+                                        '--before-color': group?.bgColour || '#000',
                                     } as React.CSSProperties
                                 }
                             >
@@ -184,6 +213,88 @@ const SingleDefensePage = (props: Props) => {
                 ))}
             </div>
         </div>
+    );
+};
+
+function getLocaleFromParams(params: ReturnType<typeof useParams>): 'en' | 'fi' | 'ru' {
+    const lng = (params?.lng as string) || 'en';
+    if (lng === 'en') return 'en';
+    if (lng === 'fi') return 'fi';
+    return 'ru';
+}
+
+function useHeroGroupsWithFallback(
+    locale: 'en' | 'fi' | 'ru',
+    t: (key: string) => string,
+): Record<HeroGroup, GroupInfoType> {
+    const { data: directusGroups, isError, error } = useGetHeroGroupsQuery({ locale });
+    const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
+    // Use Directus data only if it exists, has keys, and there's no error
+    const hasDirectusData = !isError && directusGroups && Object.keys(directusGroups).length > 0;
+    if (isError) {
+        // eslint-disable-next-line no-console
+        console.warn(
+            '[useHeroGroupsWithFallback] Directus query failed, using static data:',
+            error,
+        );
+    }
+    return React.useMemo(
+        () => (hasDirectusData ? directusGroups : staticGroups),
+        [hasDirectusData, directusGroups, staticGroups],
+    );
+}
+
+function filterHeroesByQuery(
+    heroGroups: Record<HeroGroup, GroupInfoType>,
+    heroGroup: HeroGroup,
+    searchQuery: string,
+): Hero[] {
+    const group = heroGroups[heroGroup];
+    if (!group) return [];
+    if (!searchQuery.trim()) return group.heroes;
+
+    const query = searchQuery.toLowerCase();
+    const matchesQuery = (hero: Hero) =>
+        hero.title.toLowerCase().includes(query) || group.name.toLowerCase().includes(query);
+    return group.heroes.filter(matchesQuery);
+}
+
+const SingleDefensePage = (props: Props) => {
+    const { heroGroup } = props;
+    const { t } = useClientTranslation('heroes');
+    const params = useParams();
+    const locale = getLocaleFromParams(params);
+    const heroGroups = useHeroGroupsWithFallback(locale, t);
+    const { isMobileSize, isTabletSize } = useSizes();
+    const [searchQuery, setSearchQuery] = React.useState('');
+
+    const filteredHeroes = React.useMemo(
+        () => filterHeroesByQuery(heroGroups, heroGroup, searchQuery),
+        [searchQuery, heroGroup, heroGroups],
+    );
+
+    if (isMobileSize) {
+        return (
+            <MobileView
+                heroGroup={heroGroup}
+                heroGroups={heroGroups}
+                filteredHeroes={filteredHeroes}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+            />
+        );
+    }
+
+    return (
+        <DesktopView
+            heroGroup={heroGroup}
+            heroGroups={heroGroups}
+            filteredHeroes={filteredHeroes}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            isTabletSize={isTabletSize}
+            t={t}
+        />
     );
 };
 

@@ -11,15 +11,17 @@ import localFont from 'next/font/local';
 //import CookieConsentV2 from '@/features/CookieConsentV2/CookieConsentV2';
 import { CookieConsentV3 } from '@/features/CookieConsentV3';
 import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { envHelper } from '@/shared/const/envHelper';
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
 //   display: 'swap',
 // });
 
-const sedgwickFont = localFont({
+const markoFont = localFont({
     src: [
         {
-            path: '../fonts/SedgwickAveDisplay-Regular.ttf',
+            path: '../fonts/MarkoOne-Regular.ttf',
             weight: '400',
             style: 'normal',
         },
@@ -99,11 +101,13 @@ export default function RootLayout(props: Props) {
 
     const { lng } = params;
 
+    const GA_ID = envHelper.isDevMode ? envHelper.gaDevId : envHelper.gaProdId;
+
     return (
         <html
             lang={lng}
             dir={dir(lng)}
-            className={`${urbanist.variable} ${rubik.variable} ${sedgwickFont.variable} ${dmSans.variable}`}
+            className={`${urbanist.variable} ${rubik.variable} ${markoFont.variable} ${dmSans.variable}`}
         >
             <head>
                 <link
@@ -128,6 +132,7 @@ export default function RootLayout(props: Props) {
                     </Providers>
                 </LayoutWithBackground>
             </body>
+            {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
         </html>
     );
 }

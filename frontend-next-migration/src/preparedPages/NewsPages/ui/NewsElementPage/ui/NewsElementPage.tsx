@@ -1,5 +1,4 @@
 'use client';
-import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import { Container } from '@/shared/ui/Container';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useScrollToTop } from '@/shared/lib/hooks';
@@ -16,9 +15,37 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import chevronleft from '@/shared/assets/icons/ChevronLeftBlack.svg';
 import chevronright from '@/shared/assets/icons/ChevronRightBlack.svg';
 import { useRouter, useParams } from 'next/navigation';
+import { linkify } from '@/shared/ui/v2/Chatbot/utils/linkify';
 import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
 import { ShareButton } from '@/shared/ui/v2/ShareButton';
+
+type HeroImageProps = {
+    picture?: string;
+};
+
+const HeroImage = ({ picture }: HeroImageProps) => {
+    if (!picture) return <div className={cls.noImageContainer} />;
+
+    return (
+        <div className={cls.imageContainer}>
+            <Image
+                src={picture}
+                alt=""
+                className={cls.imageBlur}
+                width={100}
+                height={600}
+            />
+            <Image
+                src={picture}
+                alt=""
+                className={cls.image}
+                width={100}
+                height={600}
+            />
+        </div>
+    );
+};
 
 const NewsElementPage = () => {
     useScrollToTop();
@@ -45,7 +72,10 @@ const NewsElementPage = () => {
     const groupedNews = formatNews(moreNews, lngCode || 'fi-FI');
     const picture = post.titlePicture?.id
         ? `${directusBaseUrl}/assets/${post.titlePicture.id}`
-        : hannu.src;
+        : undefined;
+
+    const bodyHtml = linkify(post?.bodyText ?? '');
+
     return (
         <Container>
             <div className={cls.navButtons}>
@@ -85,22 +115,8 @@ const NewsElementPage = () => {
                 </Button>
             </div>
             <div className={classNames(cls.NewsElementPage)}>
-                <div className={cls.imageContainer}>
-                    <Image
-                        src={picture}
-                        alt={''}
-                        className={cls.imageBlur}
-                        width={100}
-                        height={600}
-                    />
-                    <Image
-                        src={picture}
-                        alt={''}
-                        className={cls.image}
-                        width={100}
-                        height={600}
-                    />
-                </div>
+                <HeroImage picture={picture} />
+
                 <h1 className={cls.title}>{post?.title}</h1>
 
                 <h3 className={cls.subtitle}>{post?.previewText}</h3>
@@ -110,7 +126,10 @@ const NewsElementPage = () => {
                     <span className={cls.date}>{post?.date || 'Date/Time'}</span>
                 </div>
 
-                <p className={cls.text}>{post?.bodyText}</p>
+                <div
+                    className={cls.text}
+                    dangerouslySetInnerHTML={{ __html: bodyHtml }}
+                />
 
                 <div className={cls.shareButton}>
                     <ShareButton>
@@ -125,7 +144,7 @@ const NewsElementPage = () => {
                 {groupedNews.map((news) => {
                     const imageSrc = news.titlePicture?.id
                         ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
-                        : hannu.src;
+                        : undefined;
                     return (
                         <NewsCard
                             key={news.id}

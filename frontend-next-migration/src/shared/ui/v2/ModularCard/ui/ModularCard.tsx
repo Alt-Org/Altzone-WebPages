@@ -23,6 +23,7 @@ export enum ModularCardTheme {
     TITLEIMAGE = 'TitleImageCard',
     NEWSCARD = 'NewsImageCard',
     DEFENSECARD = 'DefenseCard',
+    CLANCARD = 'ClanCard',
     SECTIONCARD = 'SectionCard',
 }
 
@@ -210,8 +211,7 @@ const ModularCardImage = memo((props: ModularCardImageProps) => {
             className={classNames(cls.ModularCardImage, {}, [className])}
             src={src}
             alt={alt}
-            width={width}
-            height={height}
+            priority={true}
         />
     );
 });

@@ -122,6 +122,12 @@ const PRGPage = () => {
                         t={t}
                     />
                 </div>
+                <div
+                    className={cls.registryInfo}
+                    style={{ whiteSpace: 'pre-line' }}
+                >
+                    {t('registry-info')}
+                </div>
             </div>
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('prg-board')}</p>

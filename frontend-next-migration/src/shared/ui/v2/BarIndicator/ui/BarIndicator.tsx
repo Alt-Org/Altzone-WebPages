@@ -60,39 +60,32 @@ interface BarIndicatorProps {
 const BarIndicator = ({ value, maxValue = 24, label, developmentThreshold }: BarIndicatorProps) => {
     const { t } = useClientTranslation('barIndicator');
     const base: number[] = Array(24).fill(0);
-    let icon;
 
-    if (typeof value === 'string') {
-        maxValue = 0;
-    }
+    // Map label to icon with a simple lookup to keep complexity low
+    const ICONS: Record<string, any> = {
+        hp,
+        resistance,
+        size,
+        speed,
+        strike,
+    };
+    const normalizedLabel = label?.toLowerCase();
+    const icon = normalizedLabel ? ICONS[normalizedLabel] : undefined;
 
-    if (label) {
-        switch (label.toLowerCase()) {
-            case 'hp':
-                icon = hp;
-                break;
-            case 'resistance':
-                icon = resistance;
-                break;
-            case 'size':
-                icon = size;
-                break;
-            case 'speed':
-                icon = speed;
-                break;
-            case 'strike':
-                icon = strike;
-        }
-    }
+    // Treat string values as "no bars enabled"
+    const isStringValue = typeof value === 'string';
+    const maxEnabled = isStringValue ? 0 : maxValue;
+
     const Indicator = (
         <div className={cls.barIndicatorContainer}>
             {base.map((_, index) => {
-                let variantClass = cls.barWhite;
-                if (typeof value === 'number' && index < value) {
-                    variantClass = cls.barPrimary;
-                } else if (index < maxValue) {
-                    variantClass = cls.barBlack;
-                }
+                const isActive = typeof value === 'number' && index < value;
+                const isEnabled = index < (maxEnabled ?? 0);
+                const variantClass = isActive
+                    ? cls.barPrimary
+                    : isEnabled
+                      ? cls.barBlack
+                      : cls.barWhite;
                 return (
                     <div
                         key={index}

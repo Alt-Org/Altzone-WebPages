@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 import cls from './HeroGroupNavMenu.module.scss';
 import { HeroGroup } from '@/entities/Hero';
+import { useGetHeroGroupsQuery } from '@/entities/Hero/model/heroApi';
 import { useClientTranslation } from '@/shared/i18n';
 import { getRouteDefenseGalleryGroupPage } from '@/shared/appLinks/RoutePaths';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
@@ -18,8 +19,20 @@ interface HeroGroupNavMenuProps {
 const HeroGroupNavMenu: React.FC<HeroGroupNavMenuProps> = ({ className: _className }) => {
     const { t } = useClientTranslation('heroes');
     const pathname = usePathname();
+    const params = useParams();
+    const lng = (params?.lng as string) || 'en';
+    const locale = (lng === 'en' ? 'en' : lng === 'fi' ? 'fi' : 'ru') as 'en' | 'fi' | 'ru';
     const selectedHeroGroup = pathname.split('/')[3];
-    const allHeroGroups = initializeHeroGroups(t);
+
+    // Try to fetch from Directus first, fallback to static data
+    const { data: directusGroups } = useGetHeroGroupsQuery({ locale });
+    const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
+    const allHeroGroups = React.useMemo(() => {
+        if (directusGroups && Object.keys(directusGroups).length > 0) {
+            return directusGroups;
+        }
+        return staticGroups;
+    }, [directusGroups, staticGroups]);
 
     function capitalizeString(inputString: HeroGroup | string) {
         if (!inputString) return '';

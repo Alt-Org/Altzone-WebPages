@@ -2,7 +2,7 @@
     --border-radius-lg: 12px;
     --border-radius-md: 8px;
     --border-radius-sm: 4px;
-    --heading-font: 'Sedgwick Ave Display', cursive;
+    --heading-font: 'Marko One', cursive;
     --body-font: 'DM Sans', sans-serif;
     --heading-font-size: 24px;
     --h1-size-mobile: 32px;
@@ -345,6 +345,212 @@
     }
 }
 
+// ClanCard
+.Card.ClanCard {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: var(--background);
+  border: var(--border-desktop) solid var(--black);
+  border-radius: var(--border-radius-md);
+  box-shadow: 4px 8px 0 var(--black);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .3s ease-out;
+
+  //Labels
+  --label-font-size: 0.95rem;
+  --label-icon-box: 1.10em; 
+  --label-icon-scale: 1.35; 
+  --label-gap: 0.2rem;
+  --label-pad-y: 0.45rem;
+  --label-pad-x: 0.25rem;
+  --label-border: 1px;
+  --label-radius: 4px;
+
+  // Info row
+  --info-font-size: 0.9rem;
+  --info-col-gap: 0.75rem;
+
+  // Logo 
+  --logo-lane-w: clamp(96px, 10.5vw, 150px);
+  --logo-max-h: 64%;
+  min-height: 180px;
+
+  &:hover {
+    border-color: var(--primary-border);
+  }
+
+  @media (max-width: 1280px) {
+    --logo-lane-w: clamp(92px, 10vw, 140px);
+    --logo-max-h: 60%;
+    --label-font-size: 0.9rem;
+  }
+
+  @media (max-width: breakpoint(md)) {
+    border-width: var(--border-mobile);
+    box-shadow: 2px 4px 0 var(--black);
+    min-height: 152px;
+
+    --label-font-size: 0.85rem;
+
+    --logo-lane-w: clamp(88px, 18vw, 132px);
+    --logo-max-h: 58%;
+  }
+
+  @media (max-width: breakpoint(sm)) {
+    box-shadow: 1px 2px 0 var(--black);
+    height: 280px;
+    min-height: unset;
+    --logo-lane-w: clamp(84px, 26vw, 120px);
+    --logo-max-h: 56%;
+    --label-font-size: 0.8rem;
+  }
+}
+
+.Card.ClanCard > .ModularCardTexts {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: 1rem;
+  min-width: 0;
+
+  h2 {
+    font: var(--font-sw-l);
+    line-height: var(--font-line-l);
+    color: var(--white);
+    margin: 0 0 .18rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  > .ModularCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: .28rem;
+    min-width: 0;
+  }
+
+  @media (max-width: breakpoint(md)) {
+    padding: .75rem;
+    gap: .28rem;
+
+    h2 {
+      font: var(--font-sw-m);
+      margin-bottom: .12rem;
+    }
+  }
+
+  @media (max-width: breakpoint(sm)) {
+    padding: .5rem;
+    gap: .24rem;
+
+    h2 {
+      font: var(--font-sw-s);
+      margin-bottom: .1rem;
+    }
+  }
+}
+
+.Card.ClanCard > .ModularCardImageSection {
+  flex: 0 0 var(--logo-lane-w);
+  min-width: var(--logo-lane-w);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+
+  .ModularCardImage {
+    max-height: var(--logo-max-h);
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.ClanInfoRow {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--info-col-gap);
+  color: var(--white);
+  font-size: var(--info-font-size);
+  line-height: 1.28;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ClanInfoBadges,
+.ClanInfoStats {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  white-space: nowrap;
+  flex: 0 1 auto;
+}
+
+.ClanInfoIcon {
+  width: 1.2em;
+  height: 1.2em;
+  flex: 0 0 auto;
+}
+
+.ClanInfoValue {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.ClanLabels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+@media (max-width: breakpoint(sm)) {
+  .ClanLabels {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+}
+
+.ClanLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--label-gap);
+  background: var(--primary-color);
+  color: var(--black);
+  border: var(--label-border) solid var(--black);
+  border-radius: var(--label-radius);
+  padding: var(--label-pad-y) var(--label-pad-x);
+  font-size: var(--label-font-size);
+  font-weight: 700;
+  line-height: 1;
+  max-width: 100%;
+
+  .ClanLabelText {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  img,
+  svg {
+    width: var(--label-icon-box);
+    height: var(--label-icon-box);
+    flex: 0 0 var(--label-icon-box);
+    transform: scale(var(--label-icon-scale));
+  }
+}
 // SectionCard
 .Card.SectionCard {
     position: relative;

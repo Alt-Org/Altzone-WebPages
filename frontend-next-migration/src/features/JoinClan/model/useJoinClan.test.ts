@@ -30,13 +30,12 @@ describe('useJoinClan', () => {
         const { result } = renderHook(() => useJoinClan());
 
         await act(async () => {
-            await result.current.handleJoin('clan_id', 'player_id', 'join_message');
+            await result.current.handleJoin('clan_id', 'player_id');
         });
 
         expect(mockJoinClan).toHaveBeenCalledWith({
             clan_id: 'clan_id',
             player_id: 'player_id',
-            join_message: 'join_message',
         });
         expect(toast.success).toHaveBeenCalledWith('toast_join_success');
     });
@@ -48,13 +47,12 @@ describe('useJoinClan', () => {
         const { result } = renderHook(() => useJoinClan());
 
         await act(async () => {
-            await result.current.handleJoin('clan_id', 'player_id', 'join_message');
+            await result.current.handleJoin('clan_id', 'player_id');
         });
 
         expect(mockJoinClan).toHaveBeenCalledWith({
             clan_id: 'clan_id',
             player_id: 'player_id',
-            join_message: 'join_message',
         });
         expect(toast.error).toHaveBeenCalledWith(`"${errorMessage}"`);
     });
@@ -66,7 +64,7 @@ describe('useJoinClan', () => {
         const { result } = renderHook(() => useJoinClan());
 
         await act(async () => {
-            await result.current.handleJoin('clan_id', 'player_id', 'join_message', onSuccessMock);
+            await result.current.handleJoin('clan_id', 'player_id', onSuccessMock);
         });
 
         expect(onSuccessMock).toHaveBeenCalled();

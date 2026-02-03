@@ -92,9 +92,8 @@
 
 .PopupTitle {
     color: var(--primary-color);
-    font-size: 48px;
+    font: var(--font-sw-xxxl);
     margin: 0;
-    font-family: var(--font-family-title);
     font-weight: 100;
 }
 
@@ -155,4 +154,7 @@
         max-height: 300px;
         object-fit: contain;
     }
+}
+.Image {
+    width: auto;
 }

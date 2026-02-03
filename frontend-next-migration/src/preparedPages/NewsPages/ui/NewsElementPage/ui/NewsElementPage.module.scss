@@ -47,6 +47,17 @@
     justify-content: center;
 }
 
+.noImageContainer {
+    position: relative;
+    width: 100%;
+    height: 2vh;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
 .image {
     z-index: 1;
     width: 30vw;
@@ -54,6 +65,10 @@
     object-position: center;
     align-self: center;
     box-shadow: var(--s-blur);
+    @media (max-width: breakpoint(md)) {
+        width: auto;
+        height: 75%;
+    }
 }
 
 .imageBlur {
@@ -76,6 +91,8 @@
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-l);
+        padding: 10px 1em;
+        text-align: left;
     }
 }
 
@@ -88,14 +105,17 @@
     margin: 0 auto;
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-m);
+        padding: 10px 1em;
+        text-align: left;
     }
 }
 
 .text {
     color: var(--white);
     font: var(--font-dm-m);
+    line-height: 28px;
     padding: 10px 5em;
-    text-align: center;
+    text-align: left;
     width: 100%;
     white-space: pre-line;
 }
@@ -145,6 +165,13 @@
     padding: 0 40px 20px 40px;
     width: 100%;
     gap: 16px;
+    @media (max-width: breakpoint(md)) {
+        justify-content: flex-start;
+        padding: 10px 1em;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px
+    }
 }
 
 .shareButton {
@@ -152,8 +179,11 @@
     display: flex;
     align-items: center;
     align-self: flex-start;
-    padding: 0 5em;
+    padding: 0 5em; 
     margin-top: 16px;
+    @media (max-width: breakpoint(md)) {
+        padding: 0 1em;
+    }
 }
 
 .author {

@@ -9,6 +9,9 @@
     "not-found-check-heroes": "Проверить доступных героев",
 
     "section-title": "Герои",
+    "common": "Обычный",
+    "rare": "Редкий",
+    "epic": "Эпический",
 
     "RETROFLECTOR": {
         "name": "ОТРАЖАТЕЛИ",
