@@ -156,6 +156,7 @@ export const newsApi = directusApi.injectEndpoints({
                                 'extraPicture4.*',
                                 'category.translations.*',
                                 'translations.*',
+                                'translations.news_body',
                             ],
                             deep: {
                                 category: { translations: true },
