@@ -12,7 +12,7 @@
 'use client';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { socialIconLinks } from '@/shared/const/socialSectionMenu';
-import { HeaderDesktop } from '../HeaderDesktop/HeaderDesktop';
+import { HeaderDesktop } from '@/shared/ui/v2/Header';
 import { HeaderMobile } from '../HeaderMobile/HeaderMobile';
 
 interface Props {

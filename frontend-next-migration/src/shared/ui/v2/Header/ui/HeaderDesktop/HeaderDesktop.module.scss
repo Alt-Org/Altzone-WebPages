@@ -1,0 +1,116 @@
+.Header {
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  background: transparent;
+  color: var(--white);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  width: 100%;
+  min-height: clamp(560px, 72vh, 860px);
+  align-items: stretch;
+}
+
+.left {
+  position: relative;
+  overflow: hidden;
+}
+
+.left :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 36px 56px;
+  gap: 14px;
+
+  background: transparent;
+}
+
+.textBlock {
+  max-width: 560px;
+}
+
+.title {
+  margin: 0 0 10px 0;
+  color: var(--primary-color);
+
+  font: var(--font-sw-xxl);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 0;
+  font: var(--font-dm-m);
+  line-height: 1.45;
+  opacity: 0.95;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  font: var(--font-dm-m);
+  font-weight: 600;
+
+  border-radius: 999px;
+  padding: 10px 18px;
+  cursor: pointer;
+
+  background: var(--primary-color);
+  color: var(--black);
+  border: 1px solid var(--black);
+  box-shadow: 0.1rem 0.3rem var(--black);
+
+  transition: transform 0.2s ease;
+}
+
+.ctaPrimary:hover,
+.ctaSecondary:hover {
+  transform: scale(1.03);
+}
+
+.followText {
+  margin-top: 14px;
+  font: var(--font-dm-m);
+  font-weight: 700;
+  opacity: 0.95;
+}
+
+.socialSection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+  padding-top: 0;
+  width: 100%;
+}
+
+.socialSection > * {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 14px;
+}
+
+.socialSection a,
+.socialSection button {
+  display: inline-flex;
+  align-items: center;
+}
