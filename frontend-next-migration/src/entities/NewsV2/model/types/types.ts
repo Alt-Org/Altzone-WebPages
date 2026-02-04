@@ -22,6 +22,7 @@ export interface NewsTranslation {
     title: string;
     preview_text: string;
     body_text: string;
+    news_body?: string | null; // WYSIWYG field
 }
 
 export interface Category {
