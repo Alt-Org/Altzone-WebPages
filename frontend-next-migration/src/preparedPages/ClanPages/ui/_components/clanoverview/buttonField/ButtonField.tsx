@@ -211,7 +211,7 @@ const ClanInfo = (props: Props) => {
                     className={cls.JoinClanBtn}
                     theme={ButtonTheme.Graffiti}
                     size={ButtonSize.L}
-                    onClick={() => handleJoin(clanData._id, playerId ?? '', 'join')}
+                    onClick={() => handleJoin(clanData._id, playerId ?? '')}
                 >
                     {joinClanBtn}
                 </Button>

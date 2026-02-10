@@ -14,10 +14,22 @@ function getOgImageUrl(hero: HeroWithGroup) {
 export async function _getPage(lng: string, slug: string) {
     const { t } = await getServerTranslation(lng, 'heroes');
     const heroManager = new HeroManager(t);
-    const currentHero = heroManager.getHeroBySlug(slug as HeroSlug);
+
+    // Initialize from Directus first
+    await heroManager.initializeFromDirectus(lng as 'en' | 'fi' | 'ru');
+
+    // Try to get hero from Directus, fallback to static data
+    let currentHero = await heroManager.getHeroBySlugAsync(
+        slug as HeroSlug,
+        lng as 'en' | 'fi' | 'ru',
+    );
+    if (!currentHero) {
+        currentHero = heroManager.getHeroBySlug(slug as HeroSlug);
+    }
     if (!currentHero) {
         notFound();
     }
+
     currentHero.stats.forEach((stat) => {
         stat.color = color[stat.name];
     });

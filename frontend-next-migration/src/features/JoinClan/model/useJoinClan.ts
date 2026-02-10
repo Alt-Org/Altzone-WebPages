@@ -7,13 +7,8 @@ const useJoinClan = () => {
     const [joinClan] = useJoinClanMutation();
 
     // todo good function should not use too much params, think if you could group some or all params to object group(s)
-    const handleJoin = async (
-        clan_id: string,
-        player_id: string,
-        join_message: string,
-        onSuccess?: () => void,
-    ) => {
-        const result = await joinClan({ clan_id, player_id, join_message });
+    const handleJoin = async (clan_id: string, player_id: string, onSuccess?: () => void) => {
+        const result = await joinClan({ clan_id, player_id });
         // @ts-ignore todo figure out ts
         if (result?.error) {
             // @ts-ignore todo figure out ts

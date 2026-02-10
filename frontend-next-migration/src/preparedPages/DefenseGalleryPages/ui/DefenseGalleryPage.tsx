@@ -13,15 +13,34 @@ import { SearchBar } from './SingleDefensePage';
 import { useClientTranslation } from '@/shared/i18n';
 import { initializeHeroGroups } from '@/entities/Hero/model/initializeHeroGroups';
 import { Hero } from '@/entities/Hero';
+import { useGetHeroGroupsQuery } from '@/entities/Hero/model/heroApi';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { PageTitle } from '@/shared/ui/PageTitle';
+import { useParams } from 'next/navigation';
 
 const DefenseGalleryPage = () => {
     const { isMobileSize, isTabletSize } = useSizes();
     const [searchQuery, setSearchQuery] = React.useState('');
     const { t } = useClientTranslation('heroes');
-    const heroGroups = initializeHeroGroups(t);
+    const params = useParams();
+    const lng = (params?.lng as string) || 'en';
+    const locale = (lng === 'en' ? 'en' : lng === 'fi' ? 'fi' : 'ru') as 'en' | 'fi' | 'ru';
+
+    // Try to fetch from Directus first, fallback to static data
+    const { data: directusGroups, isError, error } = useGetHeroGroupsQuery({ locale });
+    const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
+    const heroGroups = React.useMemo(() => {
+        if (isError) {
+            // eslint-disable-next-line no-console
+            console.warn('[DefenseGalleryPage] Directus query failed, using static data:', error);
+            return staticGroups;
+        }
+        if (directusGroups && Object.keys(directusGroups).length > 0) {
+            return directusGroups;
+        }
+        return staticGroups;
+    }, [directusGroups, staticGroups, isError, error]);
 
     // Create an array of all heroes with their group information
     const allHeroesWithGroups = React.useMemo(() => {
@@ -31,11 +50,12 @@ const DefenseGalleryPage = () => {
             groupBgColor: string;
         }[] = [];
         Object.entries(heroGroups).forEach(([_, groupInfo]) => {
-            groupInfo.heroes.forEach((hero) => {
+            const group = groupInfo as { name: string; bgColour: string; heroes: Hero[] };
+            group.heroes.forEach((hero) => {
                 result.push({
                     hero,
-                    groupName: groupInfo.name,
-                    groupBgColor: groupInfo.bgColour,
+                    groupName: group.name,
+                    groupBgColor: group.bgColour,
                 });
             });
         });

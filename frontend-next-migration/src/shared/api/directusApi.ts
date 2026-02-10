@@ -17,5 +17,6 @@ export const directusApi = createApi({
             return headers;
         },
     }),
+    tagTypes: ['Hero'],
     endpoints: () => ({}),
 });
