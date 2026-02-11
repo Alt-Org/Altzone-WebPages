@@ -6,6 +6,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import type { SocialIconLink } from '@/shared/types';
 import topimage from '@/shared/assets/images/mainpage/topimage.png';
 import cls from './HeaderDesktop.module.scss';
+import { useRouter, useParams } from 'next/navigation';
 // InfoText is coming from here?
 import altZoneCls from '@/preparedPages/MainPage/ui/_components/sections/AltZone/AltZone.module.scss';
 
@@ -16,6 +17,10 @@ interface Props {
 
 const HeaderDesktopComponent = memo((props: Props) => {
     const { className = '', socialIconLinks } = props;
+
+    const router = useRouter();
+    const params = useParams();
+    const lng = params?.lng as string;
 
     return (
         <header className={classNames(cls.Header, {}, [className])}>
@@ -50,24 +55,24 @@ const HeaderDesktopComponent = memo((props: Props) => {
                         </p>
                     </div>
                     <div className={cls.ctaRow}>
-                        {' '}
-                        {/* Buttons currently not functioning */}
                         <button
                             type="button"
                             className={cls.ctaPrimary}
+                            onClick={() => router.push(`/${lng}/about`)}
                         >
                             ALT Zonen historia
                         </button>
                         <button
                             type="button"
                             className={cls.ctaSecondary}
+                            onClick={() => router.push(`/${lng}/prg`)}
                         >
                             Mikä on PRG
                         </button>
                     </div>
                     <div className={cls.followText}>Seuraa Alt Zonea somessa</div>{' '}
-                    {/* this is probably going to change */}
                     <SocialSection
+                        variant="header"
                         className={cls.socialSection}
                         socialIconLinks={socialIconLinks}
                     />

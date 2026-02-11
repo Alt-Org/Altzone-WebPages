@@ -6,11 +6,14 @@
   color: var(--white);
 }
 
+// Should be responsive across resolutions
 .container {
   display: grid;
   grid-template-columns: 60% 40%;
   width: 100%;
-  min-height: clamp(560px, 72vh, 860px);
+
+  min-height: clamp(600px, 70vh, 860px);
+
   align-items: stretch;
 }
 
@@ -20,18 +23,17 @@
 }
 
 .left :global(img) {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .right {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 36px 56px;
-  gap: 14px;
+
+  max-width: 768px;
+  padding: clamp(24px, 3vw, 56px);
+
   background: transparent;
 }
 
@@ -83,8 +85,7 @@
   align-items: center;
   gap: 14px;
 
-  margin-top:  8px;
-  
+  margin-top: 8px;
   margin-left: 0;
 
   padding-top: 0;
@@ -92,8 +93,7 @@
 }
 
 .socialSection > * {
-  display: flex;
-  justify-content: flex-start;
+  display: inline-flex;
   align-items: center;
   gap: 14px;
 }
@@ -102,4 +102,23 @@
 .socialSection button {
   display: inline-flex;
   align-items: center;
+}
+
+.socialSection img,
+.socialSection svg {
+  display: inline-block !important;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .left {
+    height: 56vh;
+  }
 }

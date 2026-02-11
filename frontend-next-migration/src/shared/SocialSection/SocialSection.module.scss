@@ -1,24 +1,35 @@
 .SocialSection {
-    margin: 0 auto;
-    max-width: 600px;
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
-    justify-items: center;
+  align-items: center;
 
-    & > * {
-        cursor: pointer;
-        @include link-scale-effect;
-        height: 35px;
-        width: 35px;
-    }
+  & > * {
+    cursor: pointer;
+    @include link-scale-effect;
+    height: 35px;
+    width: 35px;
+  }
+}
 
-    @media (max-width: 1023px) {
-        grid-template-columns: repeat(auto-fit, minmax(85px, 0fr));
-    }
+.footer {
+  margin: 0 auto;
+  max-width: 600px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 0.1fr));
+
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(auto-fit, minmax(85px, 0fr));
+  }
+}
+
+.header {
+  display: inline-flex;
+  justify-content: flex-start;
+  gap: 14px;
+  margin: 0;
+  max-width: none;
 }
 
 .item {
-    display: flex;
-    align-self: center;
+  display: flex;
+  align-self: center;
 }
