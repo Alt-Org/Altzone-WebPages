@@ -1,8 +1,8 @@
 {
     "header": "KÄYTÄMME EVÄSTEITÄ",
     "shortHeader": "EVÄSTEET",
-    "description": "Tämä verkkosivusto käyttää evästeitä ja paikallista tallennusta käyttäjäkokemuksen parantamiseksi.\nJos et hyväksy evästeitä voit silti jatkaa verkkosivuston käyttöä, mutta tietyt toiminnot voivat olla rajoitettuja.\nKäyttämällä verkkosivustoamme hyväksyt tietosuojan ja evästeiden käytön.",
+    "description": "Käytämme evästeitä ja paikallista tallennusta verkkosivuston toimivuuden varmistamiseksi sekä käyttökokemuksen kehittämiseksi. Käytämme lisäksi analytiikkaa (Google Analytics) sivuston käytön seuraamiseen ja opetustarkoituksiin koulutestausten yhteydessä. Analytiikkatieto on tilastollista eikä sitä käytetä yksittäisten käyttäjien tunnistamiseen tai mainontaan.\n\nVoit hyväksyä kaikki evästeet tai jatkaa sivuston käyttöä ilman analytiikkaevästeitä. Tällöin osa toiminnoista voi olla rajoitettu.\n\nTietosuojaseloste ja evästekäytäntö",
     "shortDescription": "Hyväksy tai kiellä tietosuojan ja evästeiden käyttö",
-    "declineButton": "Jatka hyväksymättä",
-    "acceptButton": "Hyväksy"
+    "declineButton": "Jatka ilman analytiikkaa",
+    "acceptButton": "Hyväksy kaikki"
 }

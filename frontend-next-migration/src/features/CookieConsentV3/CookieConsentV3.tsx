@@ -32,10 +32,10 @@ const CookieConsentV3: React.FC = () => {
     };
 
     const descriptionParts = t('description').split(
-        /(tietosuojan|evästeiden|privacy|cookies|конфиденциальности|файлов cookie)/,
+        /(Tietosuojaseloste|evästekäytäntö|Privacy Policy|Cookie Policy|конфиденциальности|файлов cookie)/,
     );
     const shortDescriptionParts = t('shortDescription').split(
-        /(tietosuojan|evästeiden|privacy|cookies|конфиденциальности|файлов cookie)/,
+        /(Tietosuojaseloste|evästekäytäntö|Privacy Policy|Cookie Policy|конфиденциальности|файлов cookie)/,
     );
 
     const getLocalizedUrl = (base: string) => {
@@ -47,7 +47,7 @@ const CookieConsentV3: React.FC = () => {
 
     const renderDescription = (descriptionParts: string[]) =>
         descriptionParts.map((part, index) => {
-            if (['tietosuojan', 'privacy', 'конфиденциальности'].includes(part)) {
+            if (['Tietosuojaseloste', 'Privacy Policy', 'конфиденциальности'].includes(part)) {
                 return (
                     <Link
                         key={index}
@@ -60,7 +60,7 @@ const CookieConsentV3: React.FC = () => {
                     </Link>
                 );
             }
-            if (['evästeiden', 'cookies', 'файлов cookie'].includes(part)) {
+            if (['evästekäytäntö', 'Cookie Policy', 'файлов cookie'].includes(part)) {
                 return (
                     <Link
                         key={index}

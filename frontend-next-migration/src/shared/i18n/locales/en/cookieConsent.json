@@ -1,8 +1,9 @@
 {
-    "header": "USE OF COOKIES",
+    "header": "WE USE COOKIES",
     "shortHeader": "COOKIES",
-    "description": "This website uses cookies and local storage to improve user experience.\nIf you do not accept cookies, you may still use the website, but some features may be restricted.\nBy using our website, you accept our privacy policy and cookie usage.",
+    "description": "We use cookies and local storage to ensure the technical functionality of the website and to improve user experience. We also use analytics (Google Analytics) to monitor website usage and for educational purposes during school-based testing. Analytics data is statistical and is not used to identify individual users or for advertising.\n\nYou may accept all cookies or continue using the site without analytics cookies. In this case, some features may be limited.\n\nPrivacy Policy and Cookie Policy",
     "shortDescription": "Accept or decline the use of privacy and cookies.",
-    "declineButton": "Continue without accepting",
-    "acceptButton": "Accept"
+    "link": "Privacy Policy and Cookie Policy",
+    "declineButton": "Continue without analytics",
+    "acceptButton": "Accept all"
 }
