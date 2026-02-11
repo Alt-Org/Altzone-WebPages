@@ -3,7 +3,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 780px;
+    width: 800px;
     padding: 24px;
     background: var(--background);
     border: solid var(--black);
@@ -18,7 +18,7 @@
     box-sizing: border-box;
     box-shadow: 8px 8px 1px #000000;
     transition: height 0.3s ease-in-out;
-    height: 360px;
+    height: 470px;
     @media (max-width: breakpoint(xs)) {
         height: 690px;
     }
@@ -98,6 +98,7 @@
 
 .cookieText {
     flex: 1;
+    white-space: pre-line;
 }
 
 .cookieHeader {
@@ -120,7 +121,7 @@
     line-height: 1.6 !important;
     letter-spacing: -0.01em;
     text-align: left;
-    width: 432px;
+    width: 492px;
     margin-bottom: 16px;
 }
 
