@@ -1,9 +1,11 @@
-import Image from 'next/image';
+'use client';
+import { CTASection } from '@/shared/ui/CtaSection';
 import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import { NavElement, NavItem } from './NavElement/NavElement';
+import Image from 'next/image';
+import googlePlayIcon from '@/shared/assets/google-play-badge.png';
+import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import cls from './PlayWithUs.module.scss';
-import { Container } from '@/shared/ui/Container';
 
 type WebGl = {
     title: string;
@@ -13,60 +15,69 @@ type WebGl = {
     downloadText?: string;
 };
 
+export type NavItem = {
+    title?: string;
+    body?: string;
+    link: string;
+    isExternal?: boolean;
+};
+
 export type Props = {
     title: string;
     webGl: WebGl;
     googlePLayLink: string;
     belowNavs: NavItem[];
     webGlNotice: string;
+    projectDescriptionText?: string;
+    projectSubDescriptionText?: string;
 };
 
 const PlayWithUs = (props: Props) => {
-    const { webGl, googlePLayLink = AppExternalLinks.downloadAndroid } = props;
+    const {
+        title,
+        webGl,
+        googlePLayLink = AppExternalLinks.downloadAndroid,
+        projectDescriptionText,
+        projectSubDescriptionText,
+    } = props;
+
+    const actions = (
+        <div className={cls.ButtonsWrapper}>
+            <a
+                href={googlePLayLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cls.GooglePlayButton}
+            >
+                <Image
+                    src={googlePlayIcon}
+                    alt="Get it on Google Play"
+                    className={cls.GooglePlayImage}
+                />
+            </a>
+
+            <Button
+                path={webGl.link}
+                isExternal={true}
+                theme={ButtonTheme.PRIMARY}
+                className={cls.WebGLButton}
+            >
+                {webGl.title}
+            </Button>
+        </div>
+    );
 
     return (
-        <Container
-            as={'section'}
+        <CTASection
             className={cls.SectionPlayWithUs}
-            fluid={true}
-        >
-            <div className={cls.Content}>
-                <div className={cls.imageHolder}>
-                    <Image
-                        src={sideImg}
-                        alt={'Side image with hero'}
-                        className={cls.sideImg}
-                        priority={true}
-                    />
-                </div>
-                <div className={cls.ContentWithNav}>
-                    <h2 className={cls.title}>{props.title}</h2>
-                    <div className={cls.Buttons}>
-                        <NavElement
-                            className={cls.webGl}
-                            navElem={{
-                                isExternal: true,
-                                title: webGl.title,
-                                link: webGl.link,
-                                body: webGl.text,
-                            }}
-                            key={webGl.title}
-                        />
-
-                        <NavElement
-                            className={cls.webGl}
-                            navElem={{
-                                isExternal: true,
-                                title: webGl.titleDownload,
-                                link: googlePLayLink,
-                                body: webGl.downloadText,
-                            }}
-                            key={webGl.titleDownload}
-                        />
-                    </div>
-                </div>
-            </div>
-        </Container>
+            title={title}
+            description={projectDescriptionText}
+            extraText={projectSubDescriptionText}
+            imageSrc={sideImg}
+            imageAlt="Side image with hero"
+            imagePosition="right"
+            actions={actions}
+        />
     );
 };
 

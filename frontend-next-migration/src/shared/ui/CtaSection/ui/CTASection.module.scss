@@ -1,0 +1,193 @@
+.CTASection {
+    max-width: 1920px;
+    margin: 0 auto;
+    background-color: var(--base-card-background);
+    padding: 1rem;
+}
+
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #1e3544;
+    border-radius: var(--border-radius-custom);
+}
+
+.imageLeft .Content {
+    flex-direction: row-reverse;
+}
+
+.TextBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex: 1 1 70%;
+}
+
+.Title {
+    font: var(--font-sw-xxl);
+    color: var(--primary-color);
+}
+
+.Description {
+    font: var(--font-dm-m);
+    white-space: pre-line;
+}
+
+.ExtraText {
+    font: var(--font-dm-l);
+    color: white;
+    font-weight: 600;
+    white-space: pre-line;
+}
+
+// ── Links Container ──
+
+.LinksContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.LinkButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 50px;
+    padding: 0.75rem 1.75rem;
+}
+
+.DiscordButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 50px;
+    padding: 0.75rem 1.75rem;
+    background-color: #1a2a38 ;
+    border: 2px solid var(--primary-color);
+
+    &:hover {
+        background-color: #243848 !important;
+    }
+
+    .LinkText {
+        color: var(--primary-color);
+    }
+}
+
+.LinkText {
+    font: var(--font-sw-m);
+}
+
+.LinkIcon {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.Actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    align-items: center;
+}
+
+.ImageBlock {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Image {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    object-fit: contain;
+}
+
+// ── Responsive ──
+
+@media (max-width: breakpoint(md)) {
+    .Content {
+        flex-direction: column !important;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .Title {
+        text-align: center;
+    }
+
+    .Description,
+    .ExtraText {
+        text-align: center;
+    }
+
+    .LinksContainer {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .Actions {
+        justify-content: center;
+    }
+
+    .LinkButton,
+    .DiscordButton {
+        padding: 0.6rem 1.25rem !important;
+    }
+
+    .LinkText {
+        font: var(--font-sw-s);
+    }
+
+    .LinkIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .Image {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: breakpoint(sm)) {
+    .CTASection {
+        padding: 1rem 0;
+    }
+
+    .Title {
+        font: var(--font-sw-l);
+    }
+
+    .LinkButton,
+    .DiscordButton {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .LinkText {
+        font: var(--font-sw-xs);
+    }
+
+    .LinkIcon {
+        width: 18px;
+        height: 18px;
+    }
+}

@@ -31,9 +31,9 @@ export async function _getPage(lng: string) {
         }),
         buildPage: () => ({
             playWithUs: {
-                title: t('playWithUs-title'),
+                title: t('main-title'),
                 webGl: {
-                    title: t('PlayOnline'),
+                    title: t('playWithUs-text'),
                     link: AppExternalLinks.webgl,
                     titleDownload: t('playWithUs-download'),
                     text: t('playWithUs-text'),
@@ -55,11 +55,10 @@ export async function _getPage(lng: string) {
                     },
                 ],
                 webGlNotice: t('playWithUs-WebGLNotice'),
+                projectDescriptionText: t('main-description'),
+                projectSubDescriptionText: t('main-sub-description'),
             },
             projectDescription: {
-                title: t('main-title'),
-                description: t('main-description'),
-                subDescription: t('main-sub-description'),
                 descriptionArray: t('project-description-array', {
                     returnObjects: true,
                 }) as unknown as string[],
@@ -98,8 +97,16 @@ export async function _getPage(lng: string) {
             },
             contactSection: {
                 title: t('contact-title'),
-                googlePLayLink: AppExternalLinks.duunitori,
-                linkText: t('contact-linkText'),
+                links: [
+                    {
+                        link: AppExternalLinks.duunitori,
+                        text: t('playWithUs-OpenPositions-body'),
+                    },
+                    {
+                        link: AppExternalLinks.discord,
+                        text: t('contact-discordLinkText'),
+                    },
+                ],
             },
             newsSection: {
                 mainTitle: t('newsSection-title'),
