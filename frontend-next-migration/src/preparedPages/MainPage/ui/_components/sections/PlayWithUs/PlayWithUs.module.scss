@@ -8,20 +8,6 @@
     justify-content: flex-start;
 }
 
-.ButtonsWrapper {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 20px;
-    
-    @media (max-width: breakpoint(md)) {
-        
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-}
 
 .GooglePlayButton {
     display: flex;
@@ -32,12 +18,5 @@
 
 .GooglePlayImage {
    max-height: 50px;
-    width: auto;
-}
-
-.WebGLButton {
-    
-    @media (max-width: breakpoint(md)) {
-        max-width: 300px;
-    }
+   width: auto;
 }

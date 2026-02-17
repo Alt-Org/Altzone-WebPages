@@ -1,10 +1,9 @@
 'use client';
-import { CTASection } from '@/shared/ui/CtaSection';
+import { CTASection, CTALink } from '@/shared/ui/CtaSection';
 import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import Image from 'next/image';
 import googlePlayIcon from '@/shared/assets/google-play-badge.png';
-import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import cls from './PlayWithUs.module.scss';
 
 type WebGl = {
@@ -41,30 +40,26 @@ const PlayWithUs = (props: Props) => {
         projectSubDescriptionText,
     } = props;
 
-    const actions = (
-        <div className={cls.ButtonsWrapper}>
-            <a
-                href={googlePLayLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cls.GooglePlayButton}
-            >
-                <Image
-                    src={googlePlayIcon}
-                    alt="Get it on Google Play"
-                    className={cls.GooglePlayImage}
-                />
-            </a>
+    const links: CTALink[] = [
+        {
+            text: webGl.title,
+            link: webGl.link,
+        },
+    ];
 
-            <Button
-                path={webGl.link}
-                isExternal={true}
-                theme={ButtonTheme.PRIMARY}
-                className={cls.WebGLButton}
-            >
-                {webGl.title}
-            </Button>
-        </div>
+    const actions = (
+        <a
+            href={googlePLayLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cls.GooglePlayButton}
+        >
+            <Image
+                src={googlePlayIcon}
+                alt="Get it on Google Play"
+                className={cls.GooglePlayImage}
+            />
+        </a>
     );
 
     return (
@@ -76,7 +71,9 @@ const PlayWithUs = (props: Props) => {
             imageSrc={sideImg}
             imageAlt="Side image with hero"
             imagePosition="right"
+            links={links}
             actions={actions}
+            mobileButtonLayout="row"
         />
     );
 };
