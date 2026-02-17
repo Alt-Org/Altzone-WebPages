@@ -1,3 +1,3 @@
 export { CTASection } from './ui/CTASection';
-export type { Props as CTASectionProps } from './ui/CTASection';
-export type { CTALink } from './ui/CTASection';
+export { CTAButton } from './ui/button/CTAButton';
+export type { CTASectionProps } from './ui/CTASection';

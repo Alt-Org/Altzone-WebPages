@@ -1,5 +1,5 @@
 'use client';
-import { CTASection } from '@/shared/ui/CtaSection';
+import { CTASection, CTAButton } from '@/shared/ui/CtaSection';
 import ContactImg from '@/shared/assets/images/Orang_hero.webp';
 
 export type ContactLink = {
@@ -15,13 +15,24 @@ export type ContactSectionProps = {
 export const ContactSection = (props: ContactSectionProps) => {
     const { title, links } = props;
 
+    const actions = (
+        <>
+            {links.map((link, index) => (
+                <CTAButton
+                    key={index}
+                    text={link.text}
+                    link={link.link}
+                />
+            ))}
+        </>
+    );
+
     return (
         <CTASection
             title={title}
             imageSrc={ContactImg}
-            imageAlt="Side image with hero"
             imagePosition="right"
-            links={links}
+            actions={actions}
         />
     );
 };

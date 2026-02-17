@@ -18,7 +18,7 @@
     border: 2px solid var(--primary-color);
 
     &:hover {
-        background-color: #243848 !important;
+        background-color: #243848;
     }
 
     .LinkText {
@@ -42,7 +42,7 @@
 @media (max-width: breakpoint(md)) {
     .LinkButton,
     .DiscordButton {
-        padding: 0.6rem 1.25rem !important;
+        padding: 0.6rem 1.25rem;
     }
 
     .LinkText {
@@ -58,7 +58,7 @@
 @media (max-width: breakpoint(sm)) {
     .LinkButton,
     .DiscordButton {
-        padding: 0.5rem 1rem !important;
+        padding: 0.5rem 1rem;
     }
 
     .LinkText {

@@ -1,6 +1,7 @@
 'use client';
 import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
-import { DiscordIcon } from './DiscordIcon';
+import Image from 'next/image';
+import DiscordIcon from '@/shared/assets/images/Discord2.svg';
 import cls from './CTAButton.module.scss';
 
 export type CTAButtonVariant = 'primary' | 'discord' | 'custom';
@@ -32,7 +33,14 @@ export const CTAButton = (props: CTAButtonProps) => {
             className={`${isDiscord ? cls.DiscordButton : cls.LinkButton} ${className}`}
         >
             <span className={cls.LinkText}>{text}</span>
-            {isDiscord && (icon ?? <DiscordIcon className={cls.LinkIcon} />)}
+            {isDiscord &&
+                (icon ?? (
+                    <Image
+                        src={DiscordIcon}
+                        alt="Discord"
+                        className={cls.LinkIcon}
+                    />
+                ))}
         </Button>
     );
 };

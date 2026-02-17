@@ -3,38 +3,53 @@ import { ReactNode } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Container } from '@/shared/ui/Container';
-import { CTAButton } from './CTAButton';
 import cls from './CTASection.module.scss';
 
-export type CTALink = {
-    text: string;
-    link: string;
-};
-
-export type Props = {
+/**
+ * Props for the CTASection component.
+ */
+export type CTASectionProps = {
+    /** Main heading text */
     title: string;
+    /** Optional content below the title */
     description?: ReactNode;
+    /** Additional content rendered after description */
     extraText?: ReactNode;
+    /** Image source (imported or URL) */
     imageSrc: StaticImageData | string;
-    imageAlt?: string;
+    /** @default 'right' */
     imagePosition?: 'left' | 'right';
+    /** Action buttons or links */
     actions?: ReactNode;
     className?: string;
-    links?: CTALink[];
+    /** Button layout on mobile screens @default 'column' */
     mobileButtonLayout?: 'column' | 'row';
 };
 
-export const CTASection = (props: Props) => {
+/**
+ * Call-to-action section with image and optional actions.
+ *
+ * @example
+ * ```tsx
+ *
+ * <CTASection
+ *   title="CTA"
+ *   description="Call to Action"
+ *   imageSrc={heroImage}
+ *   imagePosition="left"
+ *   actions={<Button>CTA section</Button>}
+ * />
+ * ```
+ */
+export const CTASection = (props: CTASectionProps) => {
     const {
         title,
         description,
         extraText,
         imageSrc,
-        imageAlt = '',
         imagePosition = 'right',
         actions,
         className = '',
-        links = [],
         mobileButtonLayout = 'column',
     } = props;
 
@@ -42,8 +57,6 @@ export const CTASection = (props: Props) => {
         [cls.imageLeft]: imagePosition === 'left',
         [cls.mobileRow]: mobileButtonLayout === 'row',
     };
-
-    const hasButtons = links.length > 0 || actions;
 
     return (
         <section className={classNames(cls.CTASection, mods, [className])}>
@@ -53,23 +66,12 @@ export const CTASection = (props: Props) => {
                         <h2 className={cls.Title}>{title}</h2>
                         {description && <div className={cls.Description}>{description}</div>}
                         {extraText && <div className={cls.ExtraText}>{extraText}</div>}
-                        {hasButtons && (
-                            <div className={cls.ButtonsWrapper}>
-                                {actions}
-                                {links.map((item, index) => (
-                                    <CTAButton
-                                        key={index}
-                                        text={item.text}
-                                        link={item.link}
-                                    />
-                                ))}
-                            </div>
-                        )}
+                        {actions && <div className={cls.ButtonsWrapper}>{actions}</div>}
                     </div>
                     <div className={cls.ImageBlock}>
                         <Image
                             src={imageSrc}
-                            alt={imageAlt}
+                            alt=""
                             className={cls.Image}
                             priority={false}
                         />

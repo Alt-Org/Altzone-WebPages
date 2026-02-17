@@ -1,9 +1,9 @@
 'use client';
-import { CTASection, CTALink } from '@/shared/ui/CtaSection';
+import { CTASection, CTAButton } from '@/shared/ui/CtaSection';
 import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import Image from 'next/image';
-import googlePlayIcon from '@/shared/assets/google-play-badge.png';
+import googlePlayIcon from '@/shared/assets/icons/google-play-badge.png';
 import cls from './PlayWithUs.module.scss';
 
 type WebGl = {
@@ -40,26 +40,25 @@ const PlayWithUs = (props: Props) => {
         projectSubDescriptionText,
     } = props;
 
-    const links: CTALink[] = [
-        {
-            text: webGl.title,
-            link: webGl.link,
-        },
-    ];
-
     const actions = (
-        <a
-            href={googlePLayLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cls.GooglePlayButton}
-        >
-            <Image
-                src={googlePlayIcon}
-                alt="Get it on Google Play"
-                className={cls.GooglePlayImage}
+        <>
+            <a
+                href={googlePLayLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cls.GooglePlayButton}
+            >
+                <Image
+                    src={googlePlayIcon}
+                    alt="Get it on Google Play"
+                    className={cls.GooglePlayImage}
+                />
+            </a>
+            <CTAButton
+                text={webGl.title}
+                link={webGl.link}
             />
-        </a>
+        </>
     );
 
     return (
@@ -69,9 +68,6 @@ const PlayWithUs = (props: Props) => {
             description={projectDescriptionText}
             extraText={projectSubDescriptionText}
             imageSrc={sideImg}
-            imageAlt="Side image with hero"
-            imagePosition="right"
-            links={links}
             actions={actions}
             mobileButtonLayout="row"
         />
