@@ -75,6 +75,14 @@
     object-fit: contain;
 }
 
+// ── CTA Button Overrides ──
+
+.DiscordIcon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
 // ── Responsive ──
 
 @media (max-width: breakpoint(md)) {
@@ -98,8 +106,7 @@
         justify-content: center;
         flex-direction: column;
     }
-
-    // Apply row layout on mobile if mobileRow class is present
+    
     .mobileRow .ButtonsWrapper {
         flex-direction: row;
         flex-wrap: wrap;

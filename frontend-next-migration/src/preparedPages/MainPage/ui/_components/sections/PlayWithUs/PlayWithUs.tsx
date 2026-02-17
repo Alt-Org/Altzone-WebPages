@@ -1,5 +1,6 @@
 'use client';
-import { CTASection, CTAButton } from '@/shared/ui/CtaSection';
+import { CTASection } from '@/shared/ui/CtaSection';
+import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import Image from 'next/image';
@@ -54,10 +55,13 @@ const PlayWithUs = (props: Props) => {
                     className={cls.GooglePlayImage}
                 />
             </a>
-            <CTAButton
-                text={webGl.title}
-                link={webGl.link}
-            />
+            <Button
+                path={webGl.link}
+                isExternal={true}
+                theme={ButtonTheme.PRIMARY}
+            >
+                {webGl.title}
+            </Button>
         </>
     );
 
