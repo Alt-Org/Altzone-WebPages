@@ -9,8 +9,8 @@ import { Paragraph } from '@/shared/ui/Paragraph';
 
 export interface Props {
     className?: string;
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     subDescription?: string;
     descriptionArray?: string[];
 }

@@ -75,7 +75,7 @@ export const CTASection = (props: CTASectionProps) => {
                     <div className={cls.ImageBlock}>
                         <Image
                             src={imageSrc}
-                            alt={imageAlt}
+                            alt={imageAlt ?? ''}
                             className={cls.Image}
                             priority={false}
                         />
