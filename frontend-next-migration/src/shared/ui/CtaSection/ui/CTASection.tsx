@@ -15,6 +15,8 @@ export type CTASectionProps = {
     description?: ReactNode;
     /** Additional content rendered after description */
     extraText?: ReactNode;
+    /** Alt text for the image (for accessibility) */
+    imageAlt?: string;
     /** Image source (imported or URL) */
     imageSrc: StaticImageData | string;
     /** @default 'right' */
@@ -36,6 +38,7 @@ export type CTASectionProps = {
  *   title="CTA"
  *   description="Call to Action"
  *   imageSrc={heroImage}
+ *   imageAlt="Hero illustration"
  *   imagePosition="left"
  *   actions={<Button>CTA section</Button>}
  * />
@@ -46,7 +49,8 @@ export const CTASection = (props: CTASectionProps) => {
         title,
         description,
         extraText,
-        imageSrc,
+        imageSrc = '',
+        imageAlt,
         imagePosition = 'right',
         actions,
         className = '',
@@ -71,7 +75,7 @@ export const CTASection = (props: CTASectionProps) => {
                     <div className={cls.ImageBlock}>
                         <Image
                             src={imageSrc}
-                            alt=""
+                            alt={imageAlt}
                             className={cls.Image}
                             priority={false}
                         />

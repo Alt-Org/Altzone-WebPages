@@ -2,6 +2,7 @@
     max-width: 1920px;
     margin: 0 auto;
     background-color: var(--base-card-background);
+    border-radius: var(--border-radius-custom);
     padding: 1rem;
 }
 
@@ -19,8 +20,6 @@
     gap: 3rem;
     width: 100%;
     max-width: 1200px;
-    background-color: #1e3544;
-    border-radius: var(--border-radius-custom);
 }
 
 .imageLeft .Content {
@@ -87,7 +86,7 @@
 
 @media (max-width: breakpoint(md)) {
     .Content {
-        flex-direction: column !important;
+        flex-direction: column;
         padding: 1.5rem;
         gap: 1.5rem;
     }
