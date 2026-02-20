@@ -4,7 +4,7 @@ import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import Image from 'next/image';
-import googlePlayIcon from '@/shared/assets/icons/google-play-badge.png';
+import googlePlayIcon from '@/shared/assets/images/google-play-badge.png';
 import cls from './PlayWithUs.module.scss';
 
 type WebGl = {

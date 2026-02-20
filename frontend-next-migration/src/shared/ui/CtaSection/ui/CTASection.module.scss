@@ -2,7 +2,6 @@
     max-width: 1920px;
     margin: 0 auto;
     background-color: var(--base-card-background);
-    border-radius: var(--border-radius-custom);
     padding: 1rem;
 }
 
@@ -74,15 +73,14 @@
     object-fit: contain;
 }
 
-// ── CTA Button Overrides ──
-
-.DiscordIcon {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-}
-
 // ── Responsive ──
+
+@media (min-width: 1921px){
+    .CTASection {
+        border-radius: var(--border-radius-custom);
+    }
+   
+}
 
 @media (max-width: breakpoint(md)) {
     .Content {
