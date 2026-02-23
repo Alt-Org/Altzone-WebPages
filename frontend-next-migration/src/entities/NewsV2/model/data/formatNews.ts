@@ -26,6 +26,7 @@ export function formatNewsSingle(newsItem: any, lngCode: string) {
         titlePicture: newsItem.titlePicture || null,
         previewText: translation?.preview_text || '',
         bodyText: translation?.body_text || '',
+        newsBody: translation?.news_body || null, // WYSIWYG field
         author: newsItem?.author || 'Anonymous',
     };
 }
