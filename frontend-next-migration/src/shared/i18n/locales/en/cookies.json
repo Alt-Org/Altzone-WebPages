@@ -10,11 +10,23 @@
 
     "policies-nav-menu-title": "ALT Zone",
     "policies-label": "Cookies Policy for ALT Zone",
-    "policies-description": "Last updated: March 12, 2025",
+    "policies-description": "Last updated: February 16, 2026",
 
     "cookies-nav-menu-title": "Policy",
     "cookies-label": "Cookies Policy",
     "cookies-description": "This Cookies Policy explains what Cookies are and how We use them. You should read this policy so You can understand what type of cookies We use, or the information We collect using Cookies and how that information is used. This Cookies Policy has been created with the help of the <a href=\"https://www.freeprivacypolicy.com/free-privacy-policy-generator/\" target=\"_blank\">Cookies Policy Generator</a>.<br><br>Cookies do not typically contain any information that personally identifies a user, but personal information that we store about You may be linked to the information stored in and obtained from Cookies. For further information on how We use, store and keep your personal data secure, see our Privacy Policy.<br><br>We do not store sensitive personal information, such as mailing addresses, account passwords, etc. in the Cookies We use.",
+
+    "cookies2-nav-menu-title": "Cookies",
+    "cookies2-label": "Cookies",
+    "cookies2-description": "The ALT Zone website uses cookies and local storage to ensure technical functionality and improve user experience.<br><br>The use of cookies is based on user consent, and cookie preferences are stored.",
+
+    "website-nav-menu-title": "Data Collected",
+    "website-label": "Data Collected",
+    "website-description": "<h3>Website</h3>When using the ALT Zone website, the following data may be processed:<br><br>●Technical log data (e.g. browser type, device type, time of access)<br>●Aggregated usage statistics via Google Analytics<br>●Cookie and local storage data required for technical functionality and usability<br><br>Google Analytics is used solely for website development, usability improvement, and educational purposes. IP addresses are anonymized, and data is not used to identify individual users or for advertising purposes.",
+
+    "analytics-nav-menu-title": "Google Analytics",
+    "analytics-label": "Google Analytics",
+    "analytics-description": "Google Analytics is used for:<br><br>●General monitoring of website traffic and usage<br>●Website development and usability improvement<br>●Educational purposes during school-based testing, to demonstrate what types of statistical and technical data websites may collect<br><br>IP addresses are anonymized, and analytics data is not linked to user accounts or used for advertising or profiling.",
 
     "interpretation-nav-menu-title": "Interpretation",
     "interpretation-label": "Interpretation and Definitions",
