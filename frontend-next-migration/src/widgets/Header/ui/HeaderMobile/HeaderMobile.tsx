@@ -1,4 +1,5 @@
 'use client';
+import { HeaderMobile as HeaderMobileV2 } from '@/shared/ui/v2/Header';
 import type { SocialIconLink } from '@/shared/types';
 
 interface Props {
@@ -6,6 +7,6 @@ interface Props {
     socialIconLinks: SocialIconLink[];
 }
 
-export const HeaderMobile = ({ className }: Props) => {
-    return <header className={className}>Header mobile</header>;
+export const HeaderMobile = (props: Props) => {
+    return <HeaderMobileV2 {...props} />;
 };
