@@ -1,13 +1,17 @@
 'use client';
 import { memo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SocialSection } from '@/shared/SocialSection/SocialSection';
 import type { SocialIconLink } from '@/shared/types';
 import topimage from '@/shared/assets/images/mainpage/topimage.png';
 import altZoneCls from '@/preparedPages/MainPage/ui/_components/sections/AltZone/AltZone.module.scss';
 import cls from './HeaderMobile.module.scss';
-import { useParams, useRouter } from 'next/navigation';
+import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
+import { Paragraph } from '@/shared/ui/Paragraph';
+import { useClientTranslation } from '@/shared/i18n';
 
 interface Props {
     className?: string;
@@ -17,9 +21,15 @@ interface Props {
 const HeaderMobileComponent = memo((props: Props) => {
     const { className = '', socialIconLinks } = props;
 
-    const router = useRouter();
     const params = useParams();
-    const lng = params?.lng as string;
+    const lng = (params?.lng as string) ?? 'fi';
+
+    const { t } = useClientTranslation('main');
+
+    const title = t('project-description-title');
+    const fullText = t('project-description-text');
+    const paragraphs = fullText.split('\n\n').filter(Boolean);
+    const followText = t('follow-us-text');
 
     return (
         <header className={classNames(cls.Header, {}, [className])}>
@@ -35,41 +45,44 @@ const HeaderMobileComponent = memo((props: Props) => {
             </div>
 
             <div className={cls.content}>
-                <h1 className={cls.title}>Mikä ALT Zone?</h1>
+                <h1 className={cls.title}>{title}</h1>
 
                 <div className={altZoneCls.InfoText}>
-                    <p>
-                        ALT Zone 1.0 on vapaaehtoistuotantona toteuttava taidemobiilipeli, jota
-                        tehdään yhteistyössä nuorten kanssa. Pelissä ihmisen suojautumismekanismit
-                        kohtaavat toisensa vuorovaikutustilanteiden taistelukentällä.
-                    </p>
-                    <p>
-                        Pelin oheen luodaan yläasteille ja toisen asteen oppilaitoksille suunnattu
-                        pelitaidekasvatuksen materiaali, jota opettaja voi helposti soveltaa
-                        käytännössä. Oppilailla on mahdollisuus jatkaa pelin kehittämistä. Ideoiden
-                        pohjalta valmistuva ALT Zone 2.0 -pelin tuotto lahjoitetaan lyhentämättömänä
-                        nuorten unelmien tukemiseksi.
-                    </p>
+                    {paragraphs.map((text, idx) => (
+                        <Paragraph
+                            key={idx}
+                            text={text}
+                        />
+                    ))}
                 </div>
 
                 <div className={cls.ctaCol}>
-                    <button
-                        type="button"
-                        className={cls.ctaPrimary}
-                        onClick={() => router.push(`/${lng}/about`)}
+                    <Link
+                        href={`/${lng}/about`}
+                        className={cls.ctaLink}
                     >
-                        ALT Zonen historia
-                    </button>
-                    <button
-                        type="button"
-                        className={cls.ctaSecondary}
-                        onClick={() => router.push(`/${lng}/prg`)}
+                        <Button
+                            theme={ButtonTheme.PRIMARY_2}
+                            size={ButtonSize.L}
+                        >
+                            {t('main-about')}
+                        </Button>
+                    </Link>
+
+                    <Link
+                        href={`/${lng}/prg`}
+                        className={cls.ctaLink}
                     >
-                        Mikä on PRG
-                    </button>
+                        <Button
+                            theme={ButtonTheme.PRIMARY_2}
+                            size={ButtonSize.L}
+                        >
+                            {t('main-prg')}
+                        </Button>
+                    </Link>
                 </div>
 
-                <div className={cls.followText}>Seuraa Alt Zonea somessa</div>
+                <div className={cls.followText}>{followText}</div>
 
                 <SocialSection
                     variant="header"
