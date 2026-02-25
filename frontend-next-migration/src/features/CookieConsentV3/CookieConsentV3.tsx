@@ -1,4 +1,22 @@
 'use client';
+/**
+ * CookieConsentV3 – GDPR-compliant cookie consent banner for ALT Zone.
+ *
+ * This client-side component displays a cookie consent banner that:
+ * - Allows users to accept or decline cookies
+ * - Stores consent persistently in a cookie for 1 year
+ * - Supports minimized and expanded banner states
+ * - Localizes text using `react-i18next`
+ * - Links to Privacy Policy and Cookie Policy pages based on the current locale
+ *
+ * If cookie consent has already been handled, the component renders nothing.
+ *
+ * UI Behavior:
+ * - Minimized mode shows a short description and action buttons
+ * - Expanded mode shows full description and a character image
+ *
+ * @returns {JSX.Element | null} The cookie consent banner, or null if consent exists
+ */
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
@@ -16,6 +34,7 @@ const CookieConsentV3: React.FC = () => {
     const [isMinimized, setIsMinimized] = useState(false);
     const [cookiesHandled, setCookiesHandled] = useState(false);
 
+    // Check if cookie consent is already present
     useEffect(() => {
         const consent = document.cookie.includes('AltZoneCookieConsent=');
         if (consent) {
@@ -23,6 +42,12 @@ const CookieConsentV3: React.FC = () => {
         }
     }, []);
 
+    /**
+     * Handles user action for cookie consent.
+     *
+     * @param action - 'accept' or 'decline'
+     * @returns void
+     */
     const handleEventCookies = (action: 'accept' | 'decline') => {
         const expirationDate = new Date();
         expirationDate.setFullYear(expirationDate.getFullYear() + 1);
@@ -38,6 +63,12 @@ const CookieConsentV3: React.FC = () => {
         /(Tietosuojaseloste|evästekäytäntö|Privacy Policy|Cookie Policy|конфиденциальности|файлов cookie)/,
     );
 
+    /**
+     * Returns a localized URL for privacy or cookie pages based on current language.
+     *
+     * @param base - 'privacy' or 'cookies'
+     * @returns {string} Localized URL
+     */
     const getLocalizedUrl = (base: string) => {
         const lang = i18n.language || 'en';
         if (base === 'privacy') return '/' + lang + '/privacy';
@@ -45,6 +76,12 @@ const CookieConsentV3: React.FC = () => {
         return '/';
     };
 
+    /**
+     * Renders description text with links for Privacy Policy / Cookie Policy.
+     *
+     * @param parts - Array of strings from description split by policy keywords
+     * @returns JSX.Element[]
+     */
     const renderDescription = (descriptionParts: string[]) =>
         descriptionParts.map((part, index) => {
             if (['Tietosuojaseloste', 'Privacy Policy', 'конфиденциальности'].includes(part)) {
