@@ -1,18 +1,59 @@
 .Paragraph {
-    padding: 2%;
-    background-color: var(--transparent-bg-darker);
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    width: 100%;
+  position: relative;
+  width: 100%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 
-    h2 {
-        margin-bottom: 1rem;
-    }
+  isolation: isolate;
 
-    p {
-        margin: 0.5rem 0;
-    }
+  border-radius: var(--border-radius-custom);
+  overflow: visible;
 
-    border-radius: var(--border-radius-custom);
+  &::before {
+    content: '';
+    position: absolute;
+
+    /* Background blur radius */
+    inset: -34px;
+
+    /* Must be the same with the radius */
+    border-radius: calc(var(--border-radius-custom) + 34px);
+
+    z-index: 0;
+
+    /* #172936 @ 80% */
+    background: rgba(23, 41, 54, 0.55);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: none;
+    box-shadow: none;
+
+    -webkit-mask-image: radial-gradient(
+      farthest-side,
+      rgba(0, 0, 0, 1) 55%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: radial-gradient(
+      farthest-side,
+      rgba(0, 0, 0, 1) 55%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
 }

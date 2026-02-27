@@ -62,7 +62,7 @@ const HeaderMobileComponent = memo((props: Props) => {
                         className={cls.ctaLink}
                     >
                         <Button
-                            theme={ButtonTheme.PRIMARY_2}
+                            theme={ButtonTheme.SECONDARY}
                             size={ButtonSize.L}
                         >
                             {t('main-about')}
@@ -74,7 +74,7 @@ const HeaderMobileComponent = memo((props: Props) => {
                         className={cls.ctaLink}
                     >
                         <Button
-                            theme={ButtonTheme.PRIMARY_2}
+                            theme={ButtonTheme.SECONDARY}
                             size={ButtonSize.L}
                         >
                             {t('main-prg')}
