@@ -70,14 +70,13 @@ export interface PhotoObjectV2Translations {
     languages_code: string;
     photo_object_id: string;
     title?: string;
-    author?: string;
     description?: string;
-    link?: string;
-    link2?: string;
-    image?: string;
-    image2?: string;
-    image3?: string;
-    animation?: string;
+    link_text?: string;
+    link_2_text?: string;
+    alt_text_img?: string;
+    alt_text_img_2?: string;
+    alt_text_img_3?: string;
+    alt_text_animation?: string;
 }
 
 export interface PhotoObjectV2 {
@@ -88,9 +87,15 @@ export interface PhotoObjectV2 {
     category?: Category;
     translations: PhotoObjectV2Translations[];
     link?: string;
+    link_text?: string;
     link2?: string;
+    link_2_text?: string;
     image: string;
+    alt_text_img?: string;
     image2?: string;
+    alt_text_img_2?: string;
     image3?: string;
+    alt_text_img_3?: string;
     animation?: string;
+    alt_text_animation?: string;
 }
