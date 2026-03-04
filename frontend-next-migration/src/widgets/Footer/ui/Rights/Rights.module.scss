@@ -3,11 +3,6 @@
   justify-content: center;
 }
 
-
-.Rights a:last-of-type {
-  margin-right: 1rem;
-}
-
 .Rights p {
   margin-left: 1rem;
 }
@@ -24,7 +19,7 @@
 }
 
 .ethics {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .RightContainer {
@@ -36,7 +31,7 @@
 .RightLinkContainer {
   display: flex;
   gap: 3.2rem;
-  padding: 0 2rem 0 1rem;
+  padding: 0 1rem;
   justify-content: center;
   padding-bottom: 0.5rem;
 
