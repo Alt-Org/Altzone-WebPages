@@ -64,3 +64,33 @@ export interface PhotoObject {
         full: PhotoVersion;
     };
 }
+
+export interface PhotoObjectV2Translations {
+    id: string;
+    languages_code: string;
+    photo_object_id: string;
+    title?: string;
+    author?: string;
+    description?: string;
+    link?: string;
+    link2?: string;
+    image?: string;
+    image2?: string;
+    image3?: string;
+    animation?: string;
+}
+
+export interface PhotoObjectV2 {
+    title: string;
+    author: string;
+    description?: string;
+    id: string;
+    category?: Category;
+    translations: PhotoObjectV2Translations[];
+    link?: string;
+    link2?: string;
+    image: string;
+    image2?: string;
+    image3?: string;
+    animation?: string;
+}
