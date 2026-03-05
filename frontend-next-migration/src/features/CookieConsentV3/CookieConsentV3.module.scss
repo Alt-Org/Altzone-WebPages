@@ -102,6 +102,8 @@
     line-height: 1.2 !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
+.alignVertically { display: flex; flex-direction: row; align-items: center !important; justify-content: space-between; } .cookieText { flex: 1; width: 100%; white-space: pre-line; overflow-wrap: break-word; word-break: break-word; }
+.cookieShortHeader { color: var(--primary-color); font: var(--font-sw-l); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18); }
 
 .cookieConsentContentText {
     flex: 1;
