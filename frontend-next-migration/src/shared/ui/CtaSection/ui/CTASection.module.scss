@@ -1,0 +1,125 @@
+.CTASection {
+    max-width: 1920px;
+    margin: 0 auto;
+    background-color: var(--base-card-background);
+    padding: 1rem;
+}
+
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.imageLeft .Content {
+    flex-direction: row-reverse;
+}
+
+.TextBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex: 1 1 70%;
+}
+
+.Title {
+    font: var(--font-sw-xxl);
+    color: var(--primary-color);
+}
+
+.Description {
+    font: var(--font-dm-m);
+    white-space: pre-line;
+}
+
+.ExtraText {
+    font: var(--font-dm-l);
+    color: white;
+    font-weight: 600;
+    white-space: pre-line;
+}
+
+// ── Buttons Wrapper (combines links and actions) ──
+
+.ButtonsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    align-items: center;
+}
+
+.ImageBlock {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Image {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    object-fit: contain;
+}
+
+// ── Responsive ──
+
+@media (min-width: 1921px){
+    .CTASection {
+        border-radius: var(--border-radius-custom);
+    }
+   
+}
+
+@media (max-width: breakpoint(md)) {
+    .Content {
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .Title {
+        text-align: center;
+    }
+
+    .Description,
+    .ExtraText {
+        text-align: center;
+    }
+
+    .ButtonsWrapper {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .mobileRow .ButtonsWrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .Image {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: breakpoint(sm)) {
+    .CTASection {
+        padding: 1rem 0;
+    }
+
+    .Title {
+        font: var(--font-sw-l);
+    }
+}

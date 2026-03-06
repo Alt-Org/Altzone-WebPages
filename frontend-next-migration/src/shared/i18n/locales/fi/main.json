@@ -45,12 +45,13 @@
     "gallery-seeMore": "Lue lisää meistä about sivuiltamme",
     "socials-text": "Seuraa Alt Zonea somessa",
 
-    "playWithUs-text": "Selaimessa",
+    "playWithUs-text": "Katso Selaimessa",
     "playWithUs-download-text": "Google play kaupasta",
 
     "contact-title": "Kiinnostuitko\ntyöskentelemään\nkanssamme?",
     "contact-linkText": "Ota yhteyttä",
 
     "newsSection-title": "ALT Uutiset",
-    "newsSection-seeMore": "Lue lisää"
+    "newsSection-seeMore": "Lue lisää",
+    "contact-discordLinkText": "Liity Discord-yhteisöön"
 }

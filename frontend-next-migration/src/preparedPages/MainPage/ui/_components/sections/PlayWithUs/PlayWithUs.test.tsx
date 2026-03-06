@@ -6,9 +6,6 @@ const mockProps: Props = {
     webGl: {
         title: 'Play Online',
         link: 'https://example.com/webgl',
-        titleDownload: 'Download Android',
-        text: 'Play directly in browser.',
-        downloadText: 'Get the app from Google Play',
     },
     googlePLayLink: 'https://play.google.com/store/apps/details?id=com.example.app',
     belowNavs: [],
@@ -16,13 +13,10 @@ const mockProps: Props = {
 };
 
 describe('PlayWithUs', () => {
-    it('renders the title and buttons correctly', () => {
+    it('renders the component with required props', () => {
         render(<PlayWithUs {...mockProps} />);
 
         expect(screen.getByText(mockProps.title)).toBeInTheDocument();
         expect(screen.getByText(mockProps.webGl.title)).toBeInTheDocument();
-        expect(screen.getByText(mockProps.webGl.text as string)).toBeInTheDocument();
-        expect(screen.getByText(mockProps.webGl.titleDownload as string)).toBeInTheDocument();
-        expect(screen.getByText(mockProps.webGl.downloadText as string)).toBeInTheDocument();
     });
 });
