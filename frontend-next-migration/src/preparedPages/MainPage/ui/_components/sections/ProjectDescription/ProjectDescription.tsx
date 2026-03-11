@@ -9,7 +9,7 @@
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import greenHaired from '@/shared/assets/images/mainpage/topimage.png';
+import topimage from '@/shared/assets/images/mainpage/topimage.png';
 import { Container } from '@/shared/ui/Container';
 import cls from './ProjectDescription.module.scss';
 import { Paragraph } from '@/shared/ui/Paragraph';
@@ -44,7 +44,7 @@ export const ProjectDescription = (props: Props) => {
             {showHeroImage && (
                 <div className={cls.imgHolder}>
                     <Image
-                        src={greenHaired}
+                        src={topimage}
                         priority
                         alt="description hero"
                         style={{ objectFit: 'cover' }}
