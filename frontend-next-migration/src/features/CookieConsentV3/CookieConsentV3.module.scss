@@ -189,7 +189,6 @@
     .cookieConsentContent {
         flex-direction: column;
         width: 100%;
-        padding-right: 35px;
     }
 
     .cookieHeader {
@@ -223,11 +222,12 @@
     .cookieConsentContent {
         flex-direction: column;
         width: 100%;
-        padding-right: 35px;
+        padding: 0;
     }
 
     .cookieHeader {
         font: var(--font-sw-l);
+        text-align: center;
     }
 
     .cookieConsentContentText {
@@ -236,6 +236,7 @@
         height: auto;
         line-height: 1.5 !important;
         padding-left: 8px;
+        text-align: center !important;
     }
 
     .cookieImage {
