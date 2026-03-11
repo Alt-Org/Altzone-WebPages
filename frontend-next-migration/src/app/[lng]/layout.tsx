@@ -125,7 +125,7 @@ export default function RootLayout(props: Props) {
                 />
             </head>
             <body>
-                <LayoutBackgroundController lng={lng}>
+                <LayoutBackgroundController>
                     <Providers>
                         <FeedbackSideButton />
                         <ChatBotToggleButton />

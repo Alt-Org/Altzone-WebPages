@@ -16,16 +16,7 @@ interface LayoutWithBackgroundProps {
  * Responsibilities:
  * - Provides a global background layer using CSS `background-image`.
  * - Keeps background rendering separate from page/feature logic.
- *
- * Non-responsibilities:
- * - Does NOT render hero images or page-specific visuals.
- * - Does NOT control animations or page transitions.
- *
- * Notes:
- * - Background visibility is controlled via `showBackground`.
  * - This component is intended to be used at layout level.
- * - Route-based background logic should be handled by a wrapper
- *   (e.g. LayoutBackgroundController), not inside this component.
  *
  * @param children - Page or layout content rendered above the background.
  * @param imagePath - Optional background image path (defaults to main background texture).

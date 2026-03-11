@@ -15,15 +15,12 @@
     content: '';
     position: absolute;
 
-    /* Background blur radius */
     inset: -34px;
 
-    /* Must be the same with the radius */
     border-radius: calc(var(--border-radius-custom) + 34px);
 
     z-index: 0;
 
-    /* #172936 @ 80% */
     background: rgba(23, 41, 54, 0.55);
 
     backdrop-filter: blur(18px);

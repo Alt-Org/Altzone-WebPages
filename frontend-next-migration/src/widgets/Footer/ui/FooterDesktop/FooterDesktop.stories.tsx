@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
-import { socialIconLinks } from '../../../../shared/const/socialSectionMenu';
+import { socialIconLinks } from '@/shared/const/socialSectionMenu';
 import FooterDesktop from './FooterDesktop';
 
 const meta = {
