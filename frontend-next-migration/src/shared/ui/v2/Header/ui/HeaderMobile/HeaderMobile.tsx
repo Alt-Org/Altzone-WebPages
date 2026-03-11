@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SocialSection } from '@/shared/SocialSection/SocialSection';
 import type { SocialIconLink } from '@/shared/types';
-import topimage from '@/shared/assets/images/mainpage/topimage.png';
+import topimage from '@/shared/assets/images/MainPage/topimage.png';
 import altZoneCls from '@/preparedPages/MainPage/ui/_components/sections/AltZone/AltZone.module.scss';
 import cls from './HeaderMobile.module.scss';
 import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
