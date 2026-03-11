@@ -11,7 +11,7 @@ jest.mock('@/shared/i18n', () => ({
 
 jest.mock('@/shared/ui/v2/Feedback');
 
-jest.mock('../../model/data/socialSectionMenu', () => ({
+jest.mock('@/shared/const/socialSectionMenu', () => ({
     socialIconLinks: [
         { link: 'https://facebook.com', icon: '/icons/facebook.svg', name: 'Facebook' },
         { link: 'https://twitter.com', icon: '/icons/twitter.svg', name: 'Twitter' },
