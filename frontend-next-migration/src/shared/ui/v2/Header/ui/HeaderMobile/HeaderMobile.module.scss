@@ -1,0 +1,66 @@
+.Header {
+  width: 100%;
+  background: transparent;
+  color: var(--white);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: min(46vh, 360px);
+  overflow: hidden;
+}
+
+.content {
+  padding: 18px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  margin: 0;
+  color: var(--primary-color);
+  font: var(--font-sw-4xl), sans-serif;
+  line-height: 1.05;
+}
+
+.ctaCol {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.ctaLink {
+  flex: 1 1 0;
+  display: flex;
+  text-decoration: none;
+}
+
+.ctaLink :global(button) {
+  width: 100%;
+  justify-content: center;
+
+  border-radius: 999px !important;
+  padding: 14px 18px !important;
+
+  white-space: nowrap;
+}
+
+.followText {
+  font: var(--font-dm-m);
+  font-weight: 700;
+  opacity: 0.95;
+
+  text-align: center;
+  align-self: center;
+}
+
+.socialSection {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

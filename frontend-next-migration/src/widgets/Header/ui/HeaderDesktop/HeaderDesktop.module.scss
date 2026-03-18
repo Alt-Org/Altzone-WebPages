@@ -1,0 +1,89 @@
+.Header {
+  width: 100%;
+  background: transparent;
+  color: var(--white);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: clamp(560px, 72vh, 860px);
+  width: 100%;
+  align-items: stretch;
+}
+
+/* left image flush to the left edge */
+.left {
+  position: relative;
+  overflow: hidden;
+}
+
+.left :global(img) {
+  object-fit: cover;
+}
+
+/* right column */
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 64px;
+  gap: 24px;
+
+  background: transparent;
+}
+
+.textBlock {
+  max-width: 520px;
+}
+
+.title {
+  font: var(--font-dm-xxl);
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.9;
+  line-height: 1.5;
+  font: var(--font-dm-m);
+}
+
+.ctaRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary,
+.ctaSecondary {
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font: var(--font-dm-m);
+}
+
+.ctaPrimary {
+  background: var(--primary-color);
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.ctaSecondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--primary-color);
+}
+
+.followText {
+  margin-top: 16px;
+  font: var(--font-dm-m);
+  opacity: 0.9;
+}
+
+.socialSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
