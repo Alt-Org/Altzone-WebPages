@@ -16,7 +16,7 @@ export default function WallIntroAnimation({ renderOnce }: WallLoaderProps) {
     useEffect(() => {
         mountedRef.current = true;
 
-        const hasRendered = renderOnce ? localStorage.getItem('isRendered') === 'true' : false;
+        const hasRendered = renderOnce ? sessionStorage.getItem('isRendered') === 'true' : false;
 
         if (renderOnce && hasRendered) {
             setIsVisible(false);
@@ -32,21 +32,18 @@ export default function WallIntroAnimation({ renderOnce }: WallLoaderProps) {
 
         const t2 = window.setTimeout(() => {
             if (!mountedRef.current) return;
-            setIsVisible(false);
-        }, 2000);
 
-        const t3 = renderOnce
-            ? window.setTimeout(() => {
-                  if (!mountedRef.current) return;
-                  localStorage.setItem('isRendered', 'true');
-              }, 400)
-            : undefined;
+            setIsVisible(false);
+
+            if (renderOnce) {
+                sessionStorage.setItem('isRendered', 'true');
+            }
+        }, 2000);
 
         return () => {
             mountedRef.current = false;
             window.clearTimeout(t1);
             window.clearTimeout(t2);
-            if (t3) window.clearTimeout(t3);
         };
     }, [renderOnce]);
 

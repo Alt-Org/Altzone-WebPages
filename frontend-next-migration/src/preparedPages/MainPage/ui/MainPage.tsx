@@ -49,7 +49,7 @@ function MainPage(props: Props) {
 
     return (
         <div className={cls.MainPage}>
-            <WallIntroAnimation />
+            <WallIntroAnimation renderOnce />
 
             <Header />
 
