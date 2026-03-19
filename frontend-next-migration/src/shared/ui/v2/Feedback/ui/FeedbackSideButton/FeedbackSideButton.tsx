@@ -14,7 +14,6 @@ type Props = {
 
 const FeedbackSideButton = (props: Props) => {
     const { disableMobile = true } = props;
-
     const { t } = useClientTranslation('translation');
     const { isMobileSize } = useIsMobileSize();
     const [isFeedbackVisible, setFeedbackVisible] = useState(false);
