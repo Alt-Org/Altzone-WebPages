@@ -128,7 +128,7 @@ export default function RootLayout(props: Props) {
                 <LayoutBackgroundController>
                     <Providers>
                         <FeedbackSideButton />
-                        <ChatBotToggleButton />
+                        {/* <ChatBotToggleButton /> */}
                         {children}
                         <CookieConsentV3 />
                     </Providers>
