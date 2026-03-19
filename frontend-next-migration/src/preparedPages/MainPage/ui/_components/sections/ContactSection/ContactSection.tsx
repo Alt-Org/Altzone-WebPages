@@ -1,43 +1,55 @@
 'use client';
+import { CTASection } from '@/shared/ui/CtaSection';
+import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import Image from 'next/image';
-import cls from './ContactSection.module.scss';
-import { Container } from '@/shared/ui/Container';
+import DiscordIcon from '@/shared/assets/images/Discord2.svg';
 import ContactImg from '@/shared/assets/images/Orang_hero.webp';
+import cls from './ContactSection.module.scss';
 
-export type Props = {
-    title: string;
-    backgroundImageSrc?: string;
-    googlePLayLink?: string;
-    linkText?: string;
+export type ContactLink = {
+    text: string;
+    link: string;
 };
 
-export const ContactSection = (props: Props) => {
-    const { googlePLayLink, linkText, title } = props;
-    return (
-        <Container
-            as={'section'}
-            className={cls.SectionPlayWithUs}
-            fluid={true}
-        >
-            <div className={cls.Content}>
-                <Image
-                    src={ContactImg}
-                    alt={'Side image with hero'}
-                    priority={true}
-                    className={cls.sideImg}
-                />
-                <div className={cls.ContentWithNav}>
-                    <h2 className={cls.title}>{title}</h2>
-                    <a
-                        className={cls.Link}
-                        href={googlePLayLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+export type ContactSectionProps = {
+    title: string;
+    links: ContactLink[];
+};
+
+export const ContactSection = (props: ContactSectionProps) => {
+    const { title, links } = props;
+
+    const actions = (
+        <>
+            {links.map((link, index) => {
+                const isDiscord = link.link.includes('discord');
+                return (
+                    <Button
+                        key={index}
+                        path={link.link}
+                        isExternal={true}
+                        theme={isDiscord ? ButtonTheme.OUTLINE : ButtonTheme.PRIMARY}
                     >
-                        {linkText}
-                    </a>
-                </div>
-            </div>
-        </Container>
+                        {link.text}
+                        {isDiscord && (
+                            <Image
+                                src={DiscordIcon}
+                                alt="Discord"
+                                className={cls.DiscordIcon}
+                            />
+                        )}
+                    </Button>
+                );
+            })}
+        </>
+    );
+
+    return (
+        <CTASection
+            title={title}
+            imageSrc={ContactImg}
+            imagePosition="right"
+            actions={actions}
+        />
     );
 };

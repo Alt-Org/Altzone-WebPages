@@ -1,4 +1,5 @@
 'use client';
+import { Header } from '@/widgets/Header';
 import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import {
@@ -20,12 +21,10 @@ import {
 } from './_components/sections/ProjectDescription';
 import { VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries';
 import cls from './page.module.scss';
-import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
-import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
 import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -37,14 +36,7 @@ export type Props = {
 };
 
 function MainPage(props: Props) {
-    const {
-        projectDescription,
-        playWithUs,
-        // getToKnowComics,
-        // classifiedHeroesBlocks,
-        altZone,
-        contactSection,
-    } = props;
+    const { projectDescription, playWithUs, altZone, contactSection } = props;
 
     const params = useParams();
     const lng = params.lng as string;
@@ -54,51 +46,12 @@ function MainPage(props: Props) {
     const directusBaseUrl = envHelper.directusHost;
     const groupedNews = formatNews(latestNews || [], lngCode || 'fi-FI');
     const { t } = useClientTranslation('main');
-    const router = useRouter();
 
     return (
         <div className={cls.MainPage}>
-            <WallIntroAnimation renderOnce={true} />
-            <div className={cls.mainImgWrapper}>
-                <div className={cls.buttonsOverlay}>
-                    <Button
-                        withScalableLink
-                        className={cls.aboutButton}
-                        theme={ButtonTheme.PRIMARY_2}
-                        size={ButtonSize.L}
-                        onClick={() => router.push('/about')}
-                    >
-                        {t('main-about')}
-                    </Button>
+            <WallIntroAnimation renderOnce />
 
-                    <Button
-                        withScalableLink
-                        className={cls.prgButton}
-                        theme={ButtonTheme.PRIMARY_2}
-                        size={ButtonSize.L}
-                        onClick={() => router.push('/prg')}
-                    >
-                        {t('main-prg')}
-                    </Button>
-
-                    {/**<Button
-                    withScalableLink
-                    className={cls.teachersButton}
-                    theme={ButtonTheme.PRIMARY_2}
-                    size={ButtonSize.L}>{t('main-teacherspage')}
-                </Button>**/}
-
-                    <Button
-                        withScalableLink
-                        className={cls.playButton}
-                        theme={ButtonTheme.SECONDARY}
-                        size={ButtonSize.L}
-                        onClick={() => window.open(AppExternalLinks.downloadAndroid, '_blank')}
-                    >
-                        {t('main-play')}
-                    </Button>
-                </div>
-            </div>
+            <Header />
 
             <ProjectDescription
                 className={cls.description}
@@ -107,11 +60,6 @@ function MainPage(props: Props) {
 
             <PlayWithUs {...playWithUs} />
 
-            {/*<HorizontalLines />*/}
-
-            {/*<VideoAndGalleries*/}
-            {/*    {...videoAndGalleries}*/}
-            {/*/>*/}
             {isMobileSize ? (
                 <div className={cls.descriptionCardMobile}>
                     <a
@@ -148,7 +96,9 @@ function MainPage(props: Props) {
                     </DescriptionCard>
                 </div>
             )}
+
             <AltZone {...altZone} />
+
             <div className={cls.newsSection}>
                 <h2 className={cls.newsHeader}>{t('newsSection-title')}</h2>
                 <div className={cls.newsGrid}>
@@ -156,6 +106,7 @@ function MainPage(props: Props) {
                         const imageSrc = news.titlePicture?.id
                             ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
                             : hannu.src;
+
                         return (
                             <NewsCard
                                 key={news.id}
@@ -168,6 +119,7 @@ function MainPage(props: Props) {
                         );
                     })}
                 </div>
+
                 <div className={cls.linkWrapper}>
                     <a
                         className={cls.link}
@@ -178,38 +130,8 @@ function MainPage(props: Props) {
                     </a>
                 </div>
             </div>
+
             <ContactSection {...contactSection} />
-
-            {/*<HorizontalLines />*/}
-            {/*<SectionRanking*/}
-            {/*    rankingPlayerText={t('ranking-player')}*/}
-            {/*    rankingScoreText={t('ranking-score')}*/}
-            {/*/>*/}
-
-            {/*<HorizontalLines />*/}
-            {/*<PlayWithUs*/}
-            {/*    {...playWithUs}*/}
-            {/*/>*/}
-
-            {/*<GetToKnowComics*/}
-            {/*    backgroundImageSrc={sameBg}*/}
-            {/*    {...getToKnowComics}*/}
-            {/*/>*/}
-
-            {/*<HorizontalLines />*/}
-            {/*<VideoAndGalleries*/}
-            {/*    backgroundImageSrc={sameBg}*/}
-            {/*    {...videoAndGalleries}*/}
-            {/*/>*/}
-            {/*<HorizontalLines />*/}
-            {/*<SectionNewsPreview/>*/}
-
-            {/*<SectionRanking*/}
-            {/*    rankingPlayerText={t('ranking-player')}*/}
-            {/*    rankingScoreText={t('ranking-score')}*/}
-
-            {/*/>*/}
-            {/*</div>*/}
         </div>
     );
 }

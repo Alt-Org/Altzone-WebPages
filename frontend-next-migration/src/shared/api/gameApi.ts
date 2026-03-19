@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { HYDRATE } from 'next-redux-wrapper';
 import { envHelper } from '@/shared/const/envHelper';
 import { LS_KEYS } from '@/shared/const/LS_KEYS';
-import { AccessTokenInfo } from '../types/shared';
+import { AccessTokenInfo } from '../types';
 
 export enum GameApiCacheTags {
     AUTH = 'Auth',

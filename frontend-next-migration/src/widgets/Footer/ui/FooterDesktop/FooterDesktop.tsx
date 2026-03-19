@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { Container } from '@/shared/ui/Container';
-import { SocialIconLink, Texts } from '../../model/types/types';
+import { SocialIconLink, Texts } from '../../../../shared/types/types';
 import { Rights } from '../Rights/Rights';
-import { SocialSection } from '../SocialSection/SocialSection';
+import { SocialSection } from '../../../../shared/SocialSection/SocialSection';
 import { Title } from '../Title/Title';
 import cls from './FooterDesktop.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';

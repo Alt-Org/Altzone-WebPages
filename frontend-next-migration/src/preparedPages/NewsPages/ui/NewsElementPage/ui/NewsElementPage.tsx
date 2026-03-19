@@ -47,6 +47,11 @@ const HeroImage = ({ picture }: HeroImageProps) => {
     );
 };
 
+const getBodyHtml = (newsBody: string | null | undefined, bodyText: string | undefined): string => {
+    const hasWysiwygContent = newsBody && newsBody.trim() !== '';
+    return hasWysiwygContent ? newsBody : linkify(bodyText ?? '');
+};
+
 const NewsElementPage = () => {
     useScrollToTop();
     const params = useParams();
@@ -74,7 +79,7 @@ const NewsElementPage = () => {
         ? `${directusBaseUrl}/assets/${post.titlePicture.id}`
         : undefined;
 
-    const bodyHtml = linkify(post?.bodyText ?? '');
+    const bodyHtml = getBodyHtml(post.newsBody, post?.bodyText);
 
     return (
         <Container>

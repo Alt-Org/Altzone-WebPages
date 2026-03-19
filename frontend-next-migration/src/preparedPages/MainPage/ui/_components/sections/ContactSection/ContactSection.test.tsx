@@ -4,16 +4,20 @@ import { ContactSection } from './ContactSection';
 describe('ContactSection', () => {
     const mockProps = {
         title: 'Test Title',
-        googlePLayLink: 'https://example.com',
-        linkText: 'Download App',
+        links: [
+            {
+                text: 'Download App',
+                link: 'https://example.com',
+            },
+        ],
     };
 
     it('renders the title and link correctly', () => {
         render(<ContactSection {...mockProps} />);
 
         expect(screen.getByText('Test Title')).toBeInTheDocument();
-        const link = screen.getByText('Download App') as HTMLAnchorElement;
+        const link = screen.getByRole('link', { name: 'Download App' }) as HTMLAnchorElement;
         expect(link).toBeInTheDocument();
-        expect(link.href).toBe('https://example.com/');
+        expect(link).toHaveAttribute('href', 'https://example.com');
     });
 });

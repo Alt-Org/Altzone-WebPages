@@ -3,6 +3,9 @@ import { createSection } from '../createSection';
 const i18nKeyPrefixes = [
     'policies',
     'cookies',
+    'cookies2',
+    'website',
+    'analytics',
     'interpretation',
     'type',
     'choices',

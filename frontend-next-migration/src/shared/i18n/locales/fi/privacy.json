@@ -10,11 +10,19 @@
 
     "interpretation-nav-menu-title": "Rekisterinpitäjä",
     "interpretation-label": "Rekisterinpitäjä",
-    "interpretation-description": "Rekisterinpitäjänä toimii Psyche’s Royale Gaming ry, joka vastaa henkilötietojesi käsittelystä tässä tietosuojaselosteessa kuvatulla tavalla.",
+    "interpretation-description": "Rekisterinpitäjä:<br><b>Psyche’s Royale Gaming ry</b><br><br>ALT Zone on voittoa tavoittelemattoman yhdistyksen kehittämä taiteellinen, pedagoginen ja tutkimuksellinen peliprojekti. Toiminnan lähtökohtana on kerätä vain välttämättömiä tietoja ja minimoida yksilöihin kohdistuvat tietosuojariskit.",
 
-    "collecting-nav-menu-title": "Henkilötiedot",
-    "collecting-label": "Kerättävät henkilötiedot ja käsittelyn tarkoitus",
-    "collecting-description": "Keräämme ja käsittelemme seuraavia henkilötietoja tarjotaksemme sinulle pääsyn Peliin ja sen toimintoihin:<br> ● <b>Käyttäjätunnus ja salasana</b>: Käyttäjän luoma käyttäjätunnus ja salasana tallennetaan, jotta käyttäjä voi kirjautua Peliin. Salasana tallennetaan suojatussa muodossa. Salasanan palautuskoodi tallennetaan myös käyttäjän pyynnöstä, jotta käyttäjä voi palauttaa salasanansa tarvittaessa.<br> ● <b>Klaani</b>: Tieto siitä, mihin klaaniin käyttäjä kuuluu, säilytetään. Tämä tieto liittyy käyttäjän osallistumiseen pelin sisäiseen yhteisötoimintaan.<br> ● <b>Pelihahmot ja muokkaukset</b>: Tallennamme tiedot käyttäjän keräämistä pelihahmoista ja kaikista niihin tehdyistä muokkauksista, jotta pelaaja voi jatkaa peliä myöhemminkin.<br> ● <b>Avatar ja muokkaukset</b>: Säilytämme käyttäjän luoman avatarin ja siihen tehdyt muokkaukset.<br> ● <b>Chat-viestit</b>: Käyttäjän pelin sisällä kirjoittamat chat-viestit tallennetaan, jotta ne ovat saatavilla myöhemmin ja tarvittaessa palautettavissa.<br> ● <b>Pelaajan ikä</b>: Kysymme pelaajan iän käyttäjätilin luomisen yhteydessä varmistaaksemme, että käyttäjä täyttää ikärajoitukset.<br> Näitä tietoja käsitellään palvelun tarjoamiseksi, käyttäjäkokemuksen parantamiseksi sekä lainmukaisten velvoitteiden täyttämiseksi.",
+    "user-nav-menu-title": "Käyttäjätilit ja tunnistautuminen",
+    "user-label": "Käyttäjätilit ja tunnistautuminen",
+    "user-description": "ALT Zone -peli ja ALT Zone -verkkosivusto käyttävät yhteistä tunnusjärjestelmää.<br><br>● Käyttäjä luo itse käyttäjätunnuksen ja salasanan.<br>● Kirjautuminen ei tapahdu Google-tilillä tai muilla kolmannen osapuolen tunnuksilla.<br>● Käyttäjältä ei edellytetä sähköpostiosoitetta pelaajatilin luomiseksi.<br>● Salasanoja ei voida palauttaa sähköpostitse, koska käyttäjistä ei kerätä tunnistavia henkilötietoja.<br>● Käyttäjälle tarjotaan salasanavihjeeseen perustuva muistutustoiminto.<br>● Toistuvat virheelliset palautusyritykset voivat johtaa tilin automaattiseen poistoon tietoturvasyistä, mikäli tili jää käyttämättömäksi.<br><br>Salasanat tallennetaan suojatussa muodossa, eikä niitä luovuteta tai näytetä kokonaisuudessaan.",
+
+    "collecting-nav-menu-title": "Kerättävät tiedot",
+    "collecting-label": "Kerättävät tiedot",
+    "collecting-description": "<h3>Kerättävät henkilötiedot ja käsittelyn tarkoitus</h3> Keräämme ja käsittelemme seuraavia henkilötietoja tarjotaksemme sinulle pääsyn Peliin ja sen toimintoihin:<br><br> ● Käyttäjätunnus ja salasana: Käyttäjän luoma käyttäjätunnus ja salasana tallennetaan, jotta käyttäjä voi kirjautua Peliin. Salasana tallennetaan suojatussa muodossa. Salasanan palautuskoodi tallennetaan myös käyttäjän pyynnöstä, jotta käyttäjä voi palauttaa salasanansa tarvittaessa.<br> ● Klaani: Tieto siitä, mihin klaaniin käyttäjä kuuluu, säilytetään. Tämä tieto liittyy käyttäjän osallistumiseen pelin sisäiseen yhteisötoimintaan.<br> ● Pelihahmot ja muokkaukset: Tallennamme tiedot käyttäjän keräämistä pelihahmoista ja kaikista niihin tehdyistä muokkauksista, jotta pelaaja voi jatkaa peliä myöhemminkin.<br> ● Avatar ja muokkaukset: Säilytämme käyttäjän luoman avatarin ja siihen tehdyt muokkaukset.<br> ● Chat-viestit: Käyttäjän pelin sisällä kirjoittamat chat-viestit tallennetaan, jotta ne ovat saatavilla myöhemmin ja tarvittaessa palautettavissa.<br> ● Pelaajan ikä: Kysymme pelaajan iän käyttäjätilin luomisen yhteydessä varmistaaksemme, että käyttäjä täyttää ikärajoitukset.<br><br> Näitä tietoja käsitellään palvelun tarjoamiseksi, käyttäjäkokemuksen parantamiseksi sekä lainmukaisten velvoitteiden täyttämiseksi.<br><br><h3>Mobiilipeli ALT Zone (Google Play – Demo)</h3> ALT Zone -mobiilipeli on ladattavissa Google Play -kaupasta (ALT Zone Demo).<br>Pelin yhteydessä voidaan käsitellä:<br><br>● Pelaajan profiilitiedot<br>● Avatar ja pelihahmoon liittyvät muokkaukset<br>● Klaaniin liittyvät tiedot<br>● Pelisuoritukset (esim. pisteet, voitot, eteneminen)<br>● Pelin sisäiset chat-viestit<br>● Pelaajan ilmoittama ikä<br><br>Pelin palvelin välittää osan tiedoista ALT Zone -verkkosivustolle (esim. profiilit, klaanit ja tulostaulukot), jotta käyttäjä voi tarkastella ja laajentaa pelissä syntynyttä sisältöä verkkoympäristössä.<br><br><h3>Käyttäjän tuottama sisältö</h3>Pelaaja voi verkkosivustolla:<br><br>● Laajentaa avatarinsa tarinaa<br>● Laajentaa<br>● Klaaninsa tarinaa<br><br>Sisältö on käyttäjän itsensä tuottamaa ja poistuu käyttäjätilin poistamisen yhteydessä.",
+
+    "testing-nav-menu-title": "Kouluissa tapahtuva testaus ja opettajatyökalut",
+    "testing-label": "Kouluissa tapahtuva testaus ja opettajatyökalut",
+    "testing-description": "ALT Zonea testataan kouluissa opetuskäytössä<br>Opettaja:<br><br>● Kirjautuu opettajatyökaluun omalla sähköpostiosoitteellaan tai erikseen luoduilla tunnuksilla<br>● Luo klaaneja opetustestausta varten<br>● Hallinnoi oppilaiden liittymistä klaaneihin<br>● Seuraa testauksen aikaisia pelisuorituksia<br><br> Testauksen aikana pelin ja verkkosivuston välillä välitetään testauksen kannalta olennaista tietoa (esim. pisteet, eteneminen ja klaanit).<br>Testauksen päätyttyä:<br><br>● Opettaja poistaa oppilaiden pelitilit<br>● Oppilaiden tiedot poistuvat palvelusta<br>● Opettaja voi poistaa myös oman tilinsä ja siihen liittyvän historian<br><br>ALT Zone ei kerää oppilaiden nimiä, sähköpostiosoitteita tai muita suoria tunnistetietoja.",
 
     "analytics-nav-menu-title": "Analytiikka",
     "analytics-label": "Analytiikka ja pelin käytön seuranta",
@@ -22,7 +30,19 @@
 
     "legal-basis-nav-menu-title": "Oikeusperusteet",
     "legal-basis-label": "Oikeusperusteet henkilötietojen käsittelylle",
-    "legal-basis-description": "Henkilötietojen käsittelyn oikeusperusteina ovat:<br> ● <b>Sopimuksen täytäntöönpano</b>: Käyttäjätunnuksen, salasanan ja muiden pelitietojen käsittely on tarpeen käyttäjän kanssa tehdyn sopimuksen, eli pelin käyttösopimuksen, täytäntöönpanemiseksi.<br> ● <b>Oikeutettu etu</b>: Analytiikkatietojen kerääminen pelin kehittämiseksi ja käyttäjäkokemuksen parantamiseksi perustuu oikeutettuun etuumme.<br> ● <b>Lakisääteinen velvoite</b>: Käyttäjän iän tarkistaminen varmistaa, että noudatamme ikärajoituksia ja alaikäisten tietosuojan varmistamista koskevia velvoitteita.",
+    "legal-basis-description": "Henkilötietojen käsittelyn oikeusperusteina ovat:<br><br> ● <b>Sopimuksen täytäntöönpano</b>: Käyttäjätunnuksen, salasanan ja muiden pelitietojen käsittely on tarpeen käyttäjän kanssa tehdyn sopimuksen, eli pelin käyttösopimuksen, täytäntöönpanemiseksi.<br> ● <b>Oikeutettu etu</b>: Analytiikkatietojen kerääminen pelin kehittämiseksi ja käyttäjäkokemuksen parantamiseksi perustuu oikeutettuun etuumme.<br> ● <b>Lakisääteinen velvoite</b>: Käyttäjän iän tarkistaminen varmistaa, että noudatamme ikärajoituksia ja alaikäisten tietosuojan varmistamista koskevia velvoitteita.",
+
+    "review-nav-menu-title": "Palautteen kerääminen",
+    "review-label": "Palautteen kerääminen",
+    "review-description": "Palautetta kerätään Google Forms-lomakkeiden kautta.<br><br>● Palautteet ovat anonyymejä tai pseudonyymejä<br>● Henkilötietoja ei edellytetä<br>● Palautteita käytetään pelin, verkkosivujen ja opetusmateriaalien kehittämiseen",
+
+    "gameteam-nav-menu-title": "Pelintekijät ja kehitystiimi",
+    "gameteam-label": "Pelintekijät ja kehitystiimi",
+    "gameteam-description": "Pelintekijöistä ja kehitystyöhön osallistuvista henkilöistä tallennetaan:<br><br>● Nimi<br>● Asuinpaikka<br>● Yhteystiedot<br><br>Tietoja käytetään projektin hallinnointiin ja viestintään. Tietojen poistamista voi pyytää sähköpostitse osoitteeseen proyaleg@gmail.com.",
+
+    "datasubject-nav-menu-title": "Rekisteröidyn oikeudet",
+    "datasubject-label": "Rekisteröidyn oikeudet",
+    "datasubject-description": "Käyttäjällä on oikeus:<br><br>● Saada tieto omien tietojensa käsittelystä<br>● Pyytää tietojen oikaisua<br>● Pyytää tietojen poistamista<br>● Rajoittaa käsittelyä<br><br>Tietosuojaan liittyvissä pyynnöissä voi ottaa yhteyttä rekisterinpitäjään sähköpostitse.",
 
     "data-retention-nav-menu-title": "Säilyttäminen",
     "data-retention-label": "Tietojen säilyttäminen",

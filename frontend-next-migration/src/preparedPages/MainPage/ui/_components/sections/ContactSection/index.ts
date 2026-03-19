@@ -1,2 +1,2 @@
 export { ContactSection } from './ContactSection';
-export type { Props as ContactSectionProps } from './ContactSection';
+export type { ContactSectionProps } from './ContactSection';
