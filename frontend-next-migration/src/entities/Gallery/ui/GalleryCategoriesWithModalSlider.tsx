@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 'use client';
 import Image from 'next/image';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { ReaderModal } from '@/entities/Gallery/ui/ReaderModal';
 import cls from './styles.module.scss';
@@ -22,6 +22,20 @@ export const GalleryCategoriesWithModalSlider = memo(
 
         const [isModalOpen, setIsModalOpen] = useState(false);
         const [pageIndex, setPageIndex] = useState(0);
+        const [isMobile, setIsMobile] = useState(false);
+        const touchStartX = useRef(0);
+        const touchEndX = useRef(0);
+
+        useEffect(() => {
+            const checkMobile = () => {
+                setIsMobile(window.innerWidth <= 768);
+            };
+
+            checkMobile();
+            window.addEventListener('resize', checkMobile);
+
+            return () => window.removeEventListener('resize', checkMobile);
+        }, []);
 
         const filteredSources = sources.filter((src) => src !== cover.url);
 
@@ -33,7 +47,7 @@ export const GalleryCategoriesWithModalSlider = memo(
 
         const allImages = [cover.url, ...sortedSources];
 
-        const maxPageIndex = Math.ceil(sortedSources.length / 2);
+        const maxPageIndex = isMobile ? sortedSources.length : Math.ceil(sortedSources.length / 2);
 
         const changePage = (direction: 'next' | 'prev') => {
             setPageIndex((prev) =>
@@ -50,10 +64,6 @@ export const GalleryCategoriesWithModalSlider = memo(
                 if (event.key === 'ArrowRight' && pageIndex < maxPageIndex) {
                     changePage('next');
                 }
-
-                if (event.key === 'Escape') {
-                    setIsModalOpen(false);
-                }
             };
 
             window.addEventListener('keydown', handleKeyDown);
@@ -61,16 +71,50 @@ export const GalleryCategoriesWithModalSlider = memo(
             return () => window.removeEventListener('keydown', handleKeyDown);
         }, [pageIndex, maxPageIndex]);
 
+        useEffect(() => {
+            if (isModalOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }, [isModalOpen]);
+
         const openModal = () => {
             setIsModalOpen(true);
         };
 
-        const renderImages = () => {
+        const handleTouchStart = (e: React.TouchEvent) => {
+            touchStartX.current = e.touches[0].clientX;
+        };
+
+        const handleTouchMove = (e: React.TouchEvent) => {
+            touchEndX.current = e.touches[0].clientX;
+        };
+
+        const handleTouchEnd = () => {
+            if (!isMobile) return;
+
+            const delta = touchStartX.current - touchEndX.current;
+
+            if (Math.abs(delta) < 50) return;
+
+            if (delta > 0 && pageIndex < maxPageIndex) {
+                changePage('next');
+            }
+
+            if (delta < 0 && pageIndex > 0) {
+                changePage('prev');
+            }
+        };
+
+        const renderImages = (isModal = false) => {
             return allImages.map((src, idx) => {
                 let visible = false;
 
                 if (pageIndex === 0) {
                     visible = idx === 0;
+                } else if (isMobile) {
+                    visible = idx === pageIndex;
                 } else {
                     const start = (pageIndex - 1) * 2;
                     const leftIdx = 1 + start;
@@ -87,9 +131,9 @@ export const GalleryCategoriesWithModalSlider = memo(
                     >
                         <Image
                             src={src}
-                            width={250}
-                            height={292}
-                            className={cls.coverImage}
+                            width={isModal ? 600 : 250}
+                            height={isModal ? 800 : 292}
+                            className={isModal ? cls.modalImage : cls.coverImage}
                             priority
                             alt={idx === 0 ? cover.name : `Page ${idx}`}
                             style={{ width: '100%', height: 'auto' }}
@@ -101,11 +145,11 @@ export const GalleryCategoriesWithModalSlider = memo(
 
         return (
             <div style={{ cursor: 'pointer' }}>
+                {/* GALLERY (PREVIEW) */}
                 <div
                     className={cls.galleryContainer}
                     style={{ minHeight: '80vh' }}
                 >
-                    {/* Zoom Button */}
                     <div
                         className={`${cls.zoomButtonWrapper} ${
                             pageIndex === 0 ? cls.coverZoomPosition : ''
@@ -125,84 +169,107 @@ export const GalleryCategoriesWithModalSlider = memo(
                         </button>
                     </div>
 
-                    {/* Viewer */}
-                    <div className={cls.cover}>
-                        <span
-                            onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
-                            className={`${cls.navSymbol} ${pageIndex === 0 ? cls.disabled : ''}`}
-                            role="button"
-                            tabIndex={pageIndex > 0 ? 0 : -1}
-                            aria-label="Previous"
-                        >
-                            {'<'}
-                        </span>
-
-                        {renderImages()}
-
-                        <span
-                            onClick={
-                                pageIndex < maxPageIndex ? () => changePage('next') : undefined
-                            }
-                            className={`${cls.navSymbol} ${
-                                pageIndex === maxPageIndex ? cls.disabled : ''
-                            }`}
-                            role="button"
-                            tabIndex={pageIndex < maxPageIndex ? 0 : -1}
-                            aria-label="Next"
-                        >
-                            {'>'}
-                        </span>
-                    </div>
-
-                    {/* Slider */}
-                    <div className={cls.sliderContainer}>
-                        <button
-                            className={cls.arrowButton}
-                            onClick={() => changePage('prev')}
-                            disabled={pageIndex === 0}
-                        >
-                            {'<'}
-                        </button>
-
-                        <span className={cls.pageNumber}>{pageIndex * 2 || 1}</span>
-
-                        <input
-                            type="range"
-                            min={0}
-                            max={maxPageIndex}
-                            value={pageIndex}
-                            onChange={(event) => setPageIndex(parseInt(event.target.value))}
-                            className={cls.pageSlider}
-                            style={
-                                {
-                                    '--percent':
-                                        maxPageIndex === 0
-                                            ? '0%'
-                                            : `${(pageIndex / maxPageIndex) * 100}%`,
-                                } as React.CSSProperties
-                            }
-                        />
-
-                        <span className={cls.pageNumber}>
-                            {Math.min(sortedSources.length, (pageIndex || 0) * 2 + 1)}
-                        </span>
-
-                        <button
-                            className={cls.arrowButton}
-                            onClick={() => changePage('next')}
-                            disabled={pageIndex === maxPageIndex}
-                        >
-                            {'>'}
-                        </button>
-                    </div>
+                    <div className={cls.cover}>{renderImages(false)}</div>
                 </div>
 
-                {/* Modal */}
+                {/* MODAL (READER) */}
                 <ReaderModal
                     open={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
                 >
-                    <div className={cls.modalViewer}>{renderImages()}</div>
+                    <div className={cls.modalViewer}>
+                        {/* Close */}
+                        <div className={cls.modalControls}>
+                            <button
+                                className={cls.modalButton}
+                                onClick={() => setIsModalOpen(false)}
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        {/* Reader viewer */}
+                        <div
+                            className={cls.cover}
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
+                            <span
+                                onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
+                                className={`${cls.navSymbol} ${
+                                    pageIndex === 0 ? cls.disabled : ''
+                                }`}
+                            >
+                                {'<'}
+                            </span>
+
+                            {renderImages(true)}
+
+                            <span
+                                onClick={
+                                    pageIndex < maxPageIndex ? () => changePage('next') : undefined
+                                }
+                                className={`${cls.navSymbol} ${
+                                    pageIndex === maxPageIndex ? cls.disabled : ''
+                                }`}
+                            >
+                                {'>'}
+                            </span>
+                        </div>
+
+                        {/* Bottom control bar */}
+                        <div className={cls.sliderContainer}>
+                            <button
+                                className={cls.arrowButton}
+                                onClick={() => changePage('prev')}
+                                disabled={pageIndex === 0}
+                            >
+                                {'<'}
+                            </button>
+
+                            <span className={cls.pageNumber}>
+                                {pageIndex === 0
+                                    ? 1
+                                    : isMobile
+                                      ? pageIndex + 1
+                                      : (pageIndex - 1) * 2 + 2}
+                            </span>
+
+                            <input
+                                type="range"
+                                min={0}
+                                max={maxPageIndex}
+                                value={pageIndex}
+                                onChange={(event) => setPageIndex(parseInt(event.target.value))}
+                                className={cls.pageSlider}
+                                style={
+                                    {
+                                        '--percent':
+                                            maxPageIndex === 0
+                                                ? '0%'
+                                                : `${(pageIndex / maxPageIndex) * 100}%`,
+                                    } as React.CSSProperties
+                                }
+                            />
+
+                            <span className={cls.pageNumber}>
+                                {pageIndex === 0
+                                    ? 1
+                                    : isMobile
+                                      ? pageIndex + 1
+                                      : Math.min(sortedSources.length, (pageIndex - 1) * 2 + 3)}
+                            </span>
+
+                            <button
+                                className={cls.arrowButton}
+                                onClick={() => changePage('next')}
+                                disabled={pageIndex === maxPageIndex}
+                            >
+                                {'>'}
+                            </button>
+                        </div>
+                    </div>
                 </ReaderModal>
             </div>
         );

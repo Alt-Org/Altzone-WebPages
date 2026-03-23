@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import cls from './ReaderModal.module.scss';
 
 type ReaderModalProps = {
     open: boolean;
@@ -12,31 +13,50 @@ export function ReaderModal({ open, onClose, children }: ReaderModalProps) {
 
     useEffect(() => {
         const dialog = dialogRef.current;
-
         if (!dialog) return;
 
-        if (open && !dialog.open) {
-            dialog.showModal();
-        }
-
-        if (!open && dialog.open) {
-            dialog.close();
+        if (open) {
+            if (!dialog.open) {
+                dialog.showModal();
+            }
+        } else {
+            if (dialog.open) {
+                dialog.close();
+            }
         }
     }, [open]);
+
+    useEffect(() => {
+        if (open) {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        };
+    }, [open]);
+
+    const handleClose = () => {
+        onClose();
+    };
 
     return (
         <dialog
             ref={dialogRef}
-            onClose={onClose}
-            style={{
-                width: '90vw',
-                height: '90vh',
-                padding: 0,
-                border: 'none',
-                background: 'transparent',
-            }}
+            className={cls.dialog}
+            onClose={handleClose}
         >
-            {children}
+            <div
+                className={cls.backdrop}
+                onClick={handleClose}
+            />
+
+            <div className={cls.content}>{children}</div>
         </dialog>
     );
 }
