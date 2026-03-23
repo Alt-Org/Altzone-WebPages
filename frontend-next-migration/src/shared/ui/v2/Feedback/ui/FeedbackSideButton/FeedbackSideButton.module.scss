@@ -25,7 +25,7 @@
 
   right: 10px;
   background-color: var(--black)!important;
-  z-index: var(--sideButton-z-index) !important;
+  z-index: 1000 !important;
   line-height: 1 !important;
   transform: rotate(180deg);
   padding: 14px 0 14px 0 !important;
@@ -62,7 +62,7 @@
   display: flex;
   position: fixed;
   right: calc(10px);
-  z-index: calc(var(--sideButton-z-index) + 1);
+  z-index: 1001;
 
   top: 50%;
   transform: translate(-18%, -40%);

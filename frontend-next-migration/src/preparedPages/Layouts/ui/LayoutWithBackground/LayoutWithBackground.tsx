@@ -6,22 +6,30 @@ interface LayoutWithBackgroundProps {
     imagePath?: string;
     alt?: string;
     shouldBeLazyLoaded?: boolean;
+    showBackground?: boolean;
 }
 
 /**
- * Layout component that provides a full-page background image.
- * Uses CSS background-image for optimal image quality and performance.
+ * LayoutWithBackground renders a fixed full-viewport background texture
+ * behind the application content.
  *
- * @param children - The content to render over the background
- * @param imagePath - Path to the background image (defaults to main background)
- * @param alt - Alt text for the background image (for accessibility)
- * @param shouldBeLazyLoaded - Whether to lazy load the background image (not used with CSS background)
+ * Responsibilities:
+ * - Provides a global background layer using CSS `background-image`.
+ * - Keeps background rendering separate from page/feature logic.
+ * - This component is intended to be used at layout level.
+ *
+ * @param children - Page or layout content rendered above the background.
+ * @param imagePath - Optional background image path (defaults to main background texture).
+ * @param alt - Accessible description for the background image.
+ * @param shouldBeLazyLoaded - Reserved for future use (not applicable to CSS backgrounds).
+ * @param showBackground - Enables or disables rendering of the background layer.
  */
 const LayoutWithBackground = (props: LayoutWithBackgroundProps) => {
     const {
         children,
         imagePath = bgPicture.src,
         alt = 'Main-Page underground style background',
+        showBackground = true,
     } = props;
 
     const backgroundStyle: CSSProperties = {
@@ -40,11 +48,13 @@ const LayoutWithBackground = (props: LayoutWithBackgroundProps) => {
 
     return (
         <>
-            <div
-                style={backgroundStyle}
-                role="img"
-                aria-label={alt}
-            />
+            {showBackground && (
+                <div
+                    style={backgroundStyle}
+                    role="img"
+                    aria-label={alt}
+                />
+            )}
             <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
         </>
     );

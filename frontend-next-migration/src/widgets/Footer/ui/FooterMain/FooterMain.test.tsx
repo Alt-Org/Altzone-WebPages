@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
 import { envHelper } from '@/shared/const/envHelper';
-import { socialIconLinks } from '../../model/data/socialSectionMenu';
+import { socialIconLinks } from '@/shared/const/socialSectionMenu';
 import { Footer } from './FooterMain';
 
 // Mock the useClientTranslation hook
@@ -11,7 +11,7 @@ jest.mock('@/shared/i18n', () => ({
 
 jest.mock('@/shared/ui/v2/Feedback');
 
-jest.mock('../../model/data/socialSectionMenu', () => ({
+jest.mock('@/shared/const/socialSectionMenu', () => ({
     socialIconLinks: [
         { link: 'https://facebook.com', icon: '/icons/facebook.svg', name: 'Facebook' },
         { link: 'https://twitter.com', icon: '/icons/twitter.svg', name: 'Twitter' },

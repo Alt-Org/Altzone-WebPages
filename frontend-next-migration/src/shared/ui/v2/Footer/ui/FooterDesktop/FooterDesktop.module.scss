@@ -19,7 +19,16 @@
 
 .socialSection {
     padding-top: 1rem;
-    justify-content: center;
+
+    /* Footer controls layout now (was previously inside SocialSection component) */
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    margin: 0 auto;
+    max-width: 600px;
+
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .rights {
@@ -39,4 +48,10 @@
 .FeedbackContainer {
     display: flex;
     justify-content: flex-end;
+}
+
+@media (max-width: 1023px) {
+    .socialSection {
+        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+    }
 }

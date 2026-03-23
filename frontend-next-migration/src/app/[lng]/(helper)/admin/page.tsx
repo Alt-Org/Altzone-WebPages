@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import { LayoutWithSidebars } from '@/preparedPages/Layouts';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { useClientTranslation } from '@/shared/i18n';
-import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import NavMenusBlock from './_components/NavMenusBlock';
 import DefenseGalleryGrid from './_components/DefenseGalleryGrid';
@@ -65,8 +64,6 @@ const Page = () => {
 
             <h2>Testing Defense Gallery ModularCard</h2>
             <DefenseGalleryGrid heroes={HERO_CARDS} />
-
-            <WallIntroAnimation renderOnce />
 
             <h4>NavMenuWithDropdownsV2 using Clan Example</h4>
             <NavMenusBlock variant="clans-collapsed" />
