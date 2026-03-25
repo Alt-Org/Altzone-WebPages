@@ -23,6 +23,7 @@
     margin-right: 28px; /* right gap */
     display: inline-flex; /* shrink to content width */
     float: right; /* align right when not inside a flex container */
+    z-index: 9999;
 
 
     opacity: 0;
