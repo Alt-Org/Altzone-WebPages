@@ -23,9 +23,9 @@ const i18nKeyPrefixes = [
     'literature',
 ];
 
-const imageSrcs = [info.src, intro.src, implementation.src, message.src, joinus.src];
+const imageSrcs = [info, intro, implementation, message, joinus];
 
-const logoSrc = gameArtLogo.src;
+const logoSrc = gameArtLogo;
 
 /**
  * The `ArtGameSections` array is created by mapping over `i18nKeyPrefixes`.
@@ -36,11 +36,11 @@ export const ArtGameSections = i18nKeyPrefixes.map((key, index) =>
         prefix: key,
         index,
         image: {
-            src: imageSrcs[index],
+            src: imageSrcs[index] as unknown as string,
             alt: `${key}-image`,
         },
         logo: {
-            src: logoSrc,
+            src: logoSrc as unknown as string,
             alt: `${key}-logo`,
         },
     }),
