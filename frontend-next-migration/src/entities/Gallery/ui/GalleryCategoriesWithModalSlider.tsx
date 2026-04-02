@@ -23,6 +23,7 @@ export const GalleryCategoriesWithModalSlider = memo(
         const [isModalOpen, setIsModalOpen] = useState(false);
         const [pageIndex, setPageIndex] = useState(0);
         const [isMobile, setIsMobile] = useState(false);
+
         const touchStartX = useRef(0);
         const touchEndX = useRef(0);
 
@@ -67,7 +68,6 @@ export const GalleryCategoriesWithModalSlider = memo(
             };
 
             window.addEventListener('keydown', handleKeyDown);
-
             return () => window.removeEventListener('keydown', handleKeyDown);
         }, [pageIndex, maxPageIndex]);
 
@@ -83,6 +83,7 @@ export const GalleryCategoriesWithModalSlider = memo(
             setIsModalOpen(true);
         };
 
+        // SWIPE
         const handleTouchStart = (e: React.TouchEvent) => {
             touchStartX.current = e.touches[0].clientX;
         };
@@ -145,7 +146,7 @@ export const GalleryCategoriesWithModalSlider = memo(
 
         return (
             <div style={{ cursor: 'pointer' }}>
-                {/* GALLERY (PREVIEW) */}
+                {/* GALLERY */}
                 <div
                     className={cls.galleryContainer}
                     style={{ minHeight: '80vh' }}
@@ -164,31 +165,24 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 width={20}
                                 height={20}
                                 alt="Zoom"
-                                style={{ width: 'auto', height: 'auto' }}
                             />
                         </button>
                     </div>
 
-                    <div className={cls.cover}>{renderImages(false)}</div>
+                    <div
+                        className={cls.cover}
+                        onClick={openModal}
+                    >
+                        {renderImages(false)}
+                    </div>
                 </div>
 
-                {/* MODAL (READER) */}
+                {/* MODAL */}
                 <ReaderModal
                     open={isModalOpen}
                     onClose={() => setIsModalOpen(false)}
                 >
                     <div className={cls.modalViewer}>
-                        {/* Close */}
-                        <div className={cls.modalControls}>
-                            <button
-                                className={cls.modalButton}
-                                onClick={() => setIsModalOpen(false)}
-                            >
-                                ✕
-                            </button>
-                        </div>
-
-                        {/* Reader viewer */}
                         <div
                             className={cls.cover}
                             onTouchStart={handleTouchStart}
@@ -196,7 +190,10 @@ export const GalleryCategoriesWithModalSlider = memo(
                             onTouchEnd={handleTouchEnd}
                         >
                             <span
-                                onClick={pageIndex > 0 ? () => changePage('prev') : undefined}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (pageIndex > 0) changePage('prev');
+                                }}
                                 className={`${cls.navSymbol} ${
                                     pageIndex === 0 ? cls.disabled : ''
                                 }`}
@@ -207,9 +204,10 @@ export const GalleryCategoriesWithModalSlider = memo(
                             {renderImages(true)}
 
                             <span
-                                onClick={
-                                    pageIndex < maxPageIndex ? () => changePage('next') : undefined
-                                }
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (pageIndex < maxPageIndex) changePage('next');
+                                }}
                                 className={`${cls.navSymbol} ${
                                     pageIndex === maxPageIndex ? cls.disabled : ''
                                 }`}
@@ -218,7 +216,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                             </span>
                         </div>
 
-                        {/* Bottom control bar */}
+                        {/* Slider */}
                         <div className={cls.sliderContainer}>
                             <button
                                 className={cls.arrowButton}
@@ -241,16 +239,8 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 min={0}
                                 max={maxPageIndex}
                                 value={pageIndex}
-                                onChange={(event) => setPageIndex(parseInt(event.target.value))}
+                                onChange={(e) => setPageIndex(parseInt(e.target.value))}
                                 className={cls.pageSlider}
-                                style={
-                                    {
-                                        '--percent':
-                                            maxPageIndex === 0
-                                                ? '0%'
-                                                : `${(pageIndex / maxPageIndex) * 100}%`,
-                                    } as React.CSSProperties
-                                }
                             />
 
                             <span className={cls.pageNumber}>

@@ -15,14 +15,12 @@ export function ReaderModal({ open, onClose, children }: ReaderModalProps) {
         const dialog = dialogRef.current;
         if (!dialog) return;
 
-        if (open) {
-            if (!dialog.open) {
-                dialog.showModal();
-            }
-        } else {
-            if (dialog.open) {
-                dialog.close();
-            }
+        if (open && !dialog.open) {
+            dialog.showModal();
+        }
+
+        if (!open && dialog.open) {
+            dialog.close();
         }
     }, [open]);
 
@@ -50,13 +48,14 @@ export function ReaderModal({ open, onClose, children }: ReaderModalProps) {
             ref={dialogRef}
             className={cls.dialog}
             onClose={handleClose}
+            onClick={onClose}
         >
             <div
-                className={cls.backdrop}
-                onClick={handleClose}
-            />
-
-            <div className={cls.content}>{children}</div>
+                className={cls.content}
+                onClick={(e) => e.stopPropagation()}
+            >
+                {children}
+            </div>
         </dialog>
     );
 }
