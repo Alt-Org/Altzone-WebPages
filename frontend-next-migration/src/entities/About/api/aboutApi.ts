@@ -26,7 +26,7 @@ export const aboutApi = directusApi.injectEndpoints({
             queryFn: async () => {
                 try {
                     const members = await client.request<Member[]>(
-                        readItems('members', { limit: 500 }),
+                        readItems('members_v2', { limit: 500 }),
                     );
 
                     const normalize = (input: unknown) =>

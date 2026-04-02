@@ -14,7 +14,7 @@ const client = createDirectus(directusBaseUrl).with(rest());
  * @module memberTeamsApi
  *
  * @endpoint getMemberTeams
- * Endpoint to fetch member teams from the Directus `teams` collection.
+ * Endpoint to fetch member teams from the Directus `teams_v2` collection.
  * Retrieves information about teams, including their translations.
  *
  * @returns {Record<string, any>[]} Response containing an array of teams.
@@ -25,7 +25,7 @@ const memberTeamsApi = directusApi.injectEndpoints({
         getMemberTeams: builder.query({
             queryFn: async (_arg: void) => {
                 const teams = await client.request(
-                    readItems('teams', {
+                    readItems('teams_v2', {
                         fields: ['id', 'translations.*'],
                         deep: { translations: true },
                     }),
