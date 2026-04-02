@@ -39,6 +39,7 @@ export interface Department {
 export interface Team {
     name: string;
     id: number;
+    order?: number | null;
     translations: TeamTranslation[];
     members: Member[];
     departments: Department[];

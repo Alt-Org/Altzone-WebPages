@@ -19,30 +19,6 @@ export const getLinks = () => {
     };
 };
 
-const enOrder = [
-    'Design Team',
-    'Technical Team',
-    'Artistic Team',
-    'Art Education',
-    'Production',
-    'Community Management',
-    'Community Content',
-    'Participated in the Development of the Project',
-    'Special Thanks',
-];
-
-const fiOrder = [
-    'Suunnittelutiimi',
-    'Tekninen Tiimi',
-    'Taiteellinen Tiimi',
-    'Taidekasvatus',
-    'Tuotanto',
-    'Yhteisömanagerointi',
-    'Yhteisösisältö',
-    'Projektin Kehityksessä Mukana Olleet',
-    'Erityiskiitokset',
-];
-
 // Define department order for each language
 const enDepartmentOrder = [
     'Coreteam',
@@ -94,6 +70,7 @@ const getOrCreateTeam = (
         team = {
             id: memberTeam.id,
             name: teamName || '',
+            order: memberTeam.order ?? null,
             translations: memberTeam.translations || [],
             members: [],
             departments: [],
@@ -185,8 +162,6 @@ const processRole = (
 export const organizeMembers = (members: Member[], lng: string) => {
     const teamsMap = new Map<number, Team>();
     const fullLanguageCode = getLanguageCode(lng);
-
-    const order = lng === 'fi' ? fiOrder : enOrder;
     const departmentOrder = lng === 'fi' ? fiDepartmentOrder : enDepartmentOrder;
 
     members.forEach((member: Member) => {
@@ -227,28 +202,16 @@ export const organizeMembers = (members: Member[], lng: string) => {
         (team) => team.name && team.name.trim() !== '',
     );
 
-    // Sort teams according to predefined order
-    // Teams not in the order array go to the end, sorted by name
+    // Sort teams by Directus-provided order first (ascending).
+    // Teams without an order go to the end and are sorted by name.
     const sortedTeams = validTeams.sort((a, b) => {
-        const indexA = order.indexOf(a.name);
-        const indexB = order.indexOf(b.name);
+        const orderA = a.order ?? Number.POSITIVE_INFINITY;
+        const orderB = b.order ?? Number.POSITIVE_INFINITY;
 
-        // Both teams are in the order array - sort by position
-        if (indexA !== -1 && indexB !== -1) {
-            return indexA - indexB;
+        if (orderA !== orderB) {
+            return orderA - orderB;
         }
 
-        // Team A is in order, Team B is not - A comes first
-        if (indexA !== -1 && indexB === -1) {
-            return -1;
-        }
-
-        // Team B is in order, Team A is not - B comes first
-        if (indexA === -1 && indexB !== -1) {
-            return 1;
-        }
-
-        // Neither team is in order array - sort alphabetically
         return a.name.localeCompare(b.name);
     });
 
@@ -263,13 +226,19 @@ export const organizeMembers = (members: Member[], lng: string) => {
  * @returns {Record<any, string>[]} The organized teams mapped by their IDs.
  */
 
-export const organizeTeams = (teamProps: Record<any, string>[], lng: string) => {
-    const order = lng === 'fi' ? fiOrder : enOrder;
-
+export const organizeTeams = (teamProps: Record<any, string>[], _lng: string) => {
     const sortedTeams = Array.from(teamProps).sort((a, b) => {
-        const indexA = order.indexOf(a.label);
-        const indexB = order.indexOf(b.label);
-        return indexA - indexB;
+        const orderA =
+            typeof (a as any).order === 'number'
+                ? ((a as any).order as number)
+                : Number.POSITIVE_INFINITY;
+        const orderB =
+            typeof (b as any).order === 'number'
+                ? ((b as any).order as number)
+                : Number.POSITIVE_INFINITY;
+
+        if (orderA !== orderB) return orderA - orderB;
+        return String(a.label ?? '').localeCompare(String(b.label ?? ''));
     });
 
     return sortedTeams;
