@@ -1,83 +1,81 @@
-//OLD FEEDBACK SCSS
+ @import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
 
-// @import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
+.feedbackForm {
+    border-radius: var(--border-radius-custom);
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
 
-// .feedbackForm {
-//     border-radius: var(--border-radius-custom);
-//     background-color: rgba(0, 0, 0, 0.9);
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-start;
-//     margin: 0 auto;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+}
 
-//     width: 100%;
-//     max-width: 350px;
-//     height: auto;
-// }
+.feedbackTitle {
+    width: 100%;
+    font-family: 'Joti One';
+    line-height: 32px !important;
+    font: var(--font-dm-l);
+    margin: 10px;
 
-// .feedbackTitle {
-//     width: 100%;
-//     font-family: 'Joti One';
-//     line-height: 32px !important;
-//     font: var(--font-dm-l);
-//     margin: 10px;
+    color: #ff0010;
+}
 
-//     color: #ff0010;
-// }
+.feedbackButton {
+    font: var(--font-dm-m);
+    font-size: 18px !important;
+    color: #000000 !important;
+    text-shadow: none !important;
 
-// .feedbackButton {
-//     font: var(--font-dm-m);
-//     font-size: 18px !important;
-//     color: #000000 !important;
-//     text-shadow: none !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 12px;
+    gap: 10px;
 
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-//     padding: 9px 12px;
-//     gap: 10px;
+    width: 95%;
+    height: 48px;
 
-//     width: 95%;
-//     height: 48px;
+    background: #ffa101 !important;
+    border: 2px solid #000000 !important;
+    border-radius: 12px !important;
+}
 
-//     background: #ffa101 !important;
-//     border: 2px solid #000000 !important;
-//     border-radius: 12px !important;
-// }
+.textInput {
+    width: 95%;
+}
 
-// .textInput {
-//     width: 95%;
-// }
+.feedbackEmojies {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 5px;
+}
 
-// .feedbackEmojies {
-//     display: flex !important;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-//     gap: 10px;
-//     padding-bottom: 5px;
-// }
+.emoji:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
 
-// .emoji:hover {
-//     transform: scale(1.05);
-//     cursor: pointer;
-// }
+.selectedEmoji {
+    transform: scale(1.25);
+}
+.linkToFormContainer {
+    flex-direction: row;
+    gap: 10px;
+}
+.linkToFormContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
 
-// .selectedEmoji {
-//     transform: scale(1.25);
-// }
-// .linkToFormContainer {
-//     flex-direction: row;
-//     gap: 10px;
-// }
-// .linkToFormContainer {
-//     display: flex;
-//     flex-direction: row;
-//     gap: 10px;
-// }
-
-// .linkToFormContainer > * {
-//     display: inline-block;
-//     vertical-align: middle;
-// }
+.linkToFormContainer > * {
+    display: inline-block;
+    vertical-align: middle;
+}
