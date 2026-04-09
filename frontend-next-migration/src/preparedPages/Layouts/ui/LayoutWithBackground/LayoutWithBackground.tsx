@@ -55,7 +55,7 @@ const LayoutWithBackground = (props: LayoutWithBackgroundProps) => {
                     aria-label={alt}
                 />
             )}
-            <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
+            <div style={{ position: 'relative', zIndex: 1, overflowX: 'hidden' }}>{children}</div>
         </>
     );
 };
