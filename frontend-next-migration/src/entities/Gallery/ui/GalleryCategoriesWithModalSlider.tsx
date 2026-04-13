@@ -132,8 +132,9 @@ export const GalleryCategoriesWithModalSlider = memo(
                     >
                         <Image
                             src={src}
-                            width={isModal ? 600 : 250}
-                            height={isModal ? 800 : 292}
+                            width={isModal ? 0 : 250}
+                            height={isModal ? 0 : 292}
+                            sizes={isModal ? '100vw' : undefined}
                             className={isModal ? cls.modalImage : cls.coverImage}
                             priority
                             alt={idx === 0 ? cover.name : `Page ${idx}`}

@@ -219,5 +219,9 @@
 .modalImage {
   max-height: 80vh;
   max-width: 90vw;
+
+  width: auto;
+  height: auto;
+
   object-fit: contain;
 }
