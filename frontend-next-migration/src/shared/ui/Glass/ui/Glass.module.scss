@@ -3,11 +3,14 @@
   display: block;
   width: 100%;
 
+  isolation: isolate;
+
   > * {
     position: relative;
     z-index: 1;
   }
 
+  /* BLUR CORE */
   &::before {
     content: '';
     position: absolute;
@@ -16,26 +19,18 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 160%;
-    height: 140%;
+    width: 55%;
+    height: 45%;
 
-    z-index: -1;
+    z-index: 0;
 
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 
-/* TWEAK RGBA VALUES FOR STRONGER EFFECTS */
-
-    background: radial-gradient(
-      ellipse at center,
-      rgba(23, 41, 54, 1) 0%,
-      rgba(23, 41, 54, 0.9) 35%,
-      rgba(23, 41, 54, 0.65) 55%,
-      rgba(23, 41, 54, 0.35) 75%,
-      rgba(23, 41, 54, 0) 100%
-    );
-
-    filter: blur(45px);
+    background: transparent;
   }
 
+  /* CLOUD */
   &::after {
     content: '';
     position: absolute;
@@ -44,18 +39,49 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 180%;
-    height: 160%;
+    width: 120%;
+    height: 100%;
 
-    z-index: -1;
+    z-index: 0;
 
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255, 255, 255, 0.06),
-      transparent 70%
-    );
+    background:
+      /* base */
+      radial-gradient(
+        ellipse at center,
+        rgba(23, 41, 54, 0.7) 0%,
+        rgba(23, 41, 54, 0.6) 50%,
+        rgba(23, 41, 54, 0.45) 75%,
+        rgba(23, 41, 54, 0.25) 90%,
+        rgba(23, 41, 54, 0) 100%
+      ),
 
-    filter: blur(80px);
-    pointer-events: none;
+      /* cloud 1 */
+      radial-gradient(
+        55% 50% at 35% 50%,
+        rgba(23, 41, 54, 0.5) 0%,
+        rgba(23, 41, 54, 0.4) 60%,
+        rgba(23, 41, 54, 0.25) 85%,
+        rgba(23, 41, 54, 0) 100%
+      ),
+
+      /* cloud 2 */
+      radial-gradient(
+        55% 50% at 65% 55%,
+        rgba(23, 41, 54, 0.48) 0%,
+        rgba(23, 41, 54, 0.38) 60%,
+        rgba(23, 41, 54, 0.25) 85%,
+        rgba(23, 41, 54, 0) 100%
+      ),
+
+      /* cloud 3 */
+      radial-gradient(
+        50% 45% at 50% 75%,
+        rgba(23, 41, 54, 0.45) 0%,
+        rgba(23, 41, 54, 0.35) 60%,
+        rgba(23, 41, 54, 0.25) 85%,
+        rgba(23, 41, 54, 0) 100%
+      );
+
+    filter: blur(18px);
   }
 }
