@@ -38,10 +38,8 @@ export enum ModularCardTheme {
  * @property {LegacyRef<HTMLDivElement>} [ref] - Reference to the card (optional)
  * @property {ReactNode} children - The content of the Card.
  */
-interface ModularCardProps extends DetailedHTMLProps<
-    HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-> {
+interface ModularCardProps
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     className?: string;
     theme?: ModularCardTheme;
     path?: string;
@@ -77,9 +75,10 @@ interface ModularCardImageSection extends FC<CardCompoundProps> {
     Triangle: FC<{ className?: string }>;
 }
 
-interface ModularCardComponent extends ForwardRefExoticComponent<
-    Omit<ModularCardProps, 'ref'> & RefAttributes<HTMLDivElement>
-> {
+interface ModularCardComponent
+    extends ForwardRefExoticComponent<
+        Omit<ModularCardProps, 'ref'> & RefAttributes<HTMLDivElement>
+    > {
     Texts: ModularCardTexts;
     Image: ModularCardImageSection;
 }
