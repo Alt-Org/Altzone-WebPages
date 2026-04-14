@@ -38,8 +38,10 @@ export enum DescriptionCardTheme {
  * @property {LegacyRef<HTMLDivElement>} [ref] - Reference to the card (optional)
  * @property {ReactNode} children - The content of the Card.
  */
-interface DescriptionCardProps
-    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface DescriptionCardProps extends DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+> {
     className?: string;
     theme?: DescriptionCardTheme;
     path?: string;
@@ -93,10 +95,9 @@ interface DescriptionCardImageSection extends FC<CardCompoundProps> {
     Triangle: FC<{ className?: string }>;
 }
 
-interface DescriptionCardComponent
-    extends ForwardRefExoticComponent<
-        Omit<DescriptionCardProps, 'ref'> & RefAttributes<HTMLDivElement>
-    > {
+interface DescriptionCardComponent extends ForwardRefExoticComponent<
+    Omit<DescriptionCardProps, 'ref'> & RefAttributes<HTMLDivElement>
+> {
     Texts: DescriptionCardTexts;
     Image: DescriptionCardImageSection;
 }

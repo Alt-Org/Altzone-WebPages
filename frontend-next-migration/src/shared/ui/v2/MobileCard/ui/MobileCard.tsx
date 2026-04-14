@@ -31,8 +31,10 @@ export enum MobileCardTheme {
  * @property {theme} [theme=MobileCardTheme.PRIMARY] - Theme for the Card.
  * @property {ReactNode} children - The content of the Card.
  */
-interface MobileCardProps
-    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface MobileCardProps extends DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+> {
     theme?: MobileCardTheme;
     className?: string;
     children: ReactNode;
@@ -78,10 +80,9 @@ interface MobileCardImageSectionProps {
     backgroundColor?: string;
 }
 
-interface MobileCardComponent
-    extends ForwardRefExoticComponent<
-        Omit<MobileCardProps, 'ref'> & RefAttributes<HTMLDivElement>
-    > {
+interface MobileCardComponent extends ForwardRefExoticComponent<
+    Omit<MobileCardProps, 'ref'> & RefAttributes<HTMLDivElement>
+> {
     Texts: React.FC<MobileCardTextsProps>;
     Image: React.FC<MobileCardImageSectionProps>;
 }
