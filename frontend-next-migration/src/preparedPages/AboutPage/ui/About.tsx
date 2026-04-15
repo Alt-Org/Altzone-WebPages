@@ -26,6 +26,8 @@ export interface Props {
     V2022: string;
     V2023: string;
     V2024: string;
+    V2025: string;
+    V2026: string;
 }
 
 const About = (props: Props) => {
@@ -44,6 +46,8 @@ const About = (props: Props) => {
         V2022,
         V2023,
         V2024,
+        V2025,
+        V2026,
     } = props;
 
     const { data: projectCount = 0, isLoading: membersLoading } = useGetMembersCountQuery();
@@ -188,6 +192,34 @@ const About = (props: Props) => {
                             />
                         </div>
                         <p className={cls.p}>{V2024}</p>
+                    </div>
+
+                    <p className={cls.yearh1}>2025</p>
+                    <div>
+                        <div className={cls.yearImgWrap}>
+                            <Image
+                                src={img2023}
+                                alt="2025 year image"
+                                fill
+                                className={cls.yearImg}
+                                sizes="(max-width: 768px) 94vw, 34vw"
+                            />
+                        </div>
+                        <p className={cls.p}>{V2025}</p>
+                    </div>
+
+                    <p className={cls.yearh1}>2026</p>
+                    <div>
+                        <div className={cls.yearImgWrap}>
+                            <Image
+                                src={img2023}
+                                alt="2026 year image"
+                                fill
+                                className={cls.yearImg}
+                                sizes="(max-width: 768px) 94vw, 34vw"
+                            />
+                        </div>
+                        <p className={cls.p}>{V2026}</p>
                     </div>
 
                     <Image
