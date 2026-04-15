@@ -3,9 +3,11 @@
     display: flex;
     flex-direction: column;
     max-width: 300px;
-    height: 450px;
+    height: 200px;
     align-items: center;
-    gap: 16px;
+    border-radius: 12px;
+    gap: 8px;
+    padding: 10px;
     box-shadow: 8px 8px 1px #000000;
     border-width: 4px;
     border-style: solid;
@@ -28,13 +30,12 @@
     justify-content: space-between;
     align-items: start;
     width: 100%;
-    height: 100px;
+    height: 150px !important;
 }
 
 .linkToFormLabel {
     font: var(--font-dm-m);
     color: var(--white);
-    margin: 0;
 }
 
 .linkToFormContainer {
