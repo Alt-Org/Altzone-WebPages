@@ -37,23 +37,45 @@ const FeedbackEmoji = ({ listClassName = '', value, onImageClick }: Props) => {
         { src: JoyEmoji.src, value: 4 },
         { src: LoveEmoji.src, value: 5 },
     ];
+    const RATING_LABELS: Record<number, string> = {
+        1: 'Huono',
+        2: 'Meh..',
+        3: 'Ihan ok',
+        4: 'Hyvä',
+        5: 'Loistava',
+    };
 
     return (
-        <div className={classNames(cls.emojiList, {}, [listClassName])}>
-            {emojies.map((image: any, index: number) => (
-                <Image
-                    src={image.src}
-                    alt={`Feedback Emoji ${image.value}`}
-                    key={index}
-                    width={48}
-                    height={48}
-                    quality={100}
-                    className={value === image.value ? cls.selectedEmoji : cls.Emoji}
-                    onClick={() =>
-                        value !== image.value ? onImageClick(image.value) : onImageClick(undefined)
-                    }
-                />
-            ))}
+        <div className={classNames(cls.emojiListContainer, {}, [listClassName])}>
+            <div className={cls.emojiList}>
+                {emojies.map((image: any, index: number) => (
+                    <Image
+                        src={image.src}
+                        alt={`Feedback Emoji ${image.value}`}
+                        key={index}
+                        width={48}
+                        height={48}
+                        quality={100}
+                        className={value === image.value ? cls.selectedEmoji : cls.Emoji}
+                        onClick={() =>
+                            value !== image.value
+                                ? onImageClick(image.value)
+                                : onImageClick(undefined)
+                        }
+                    />
+                ))}
+            </div>
+            {value && (
+                <div
+                    className={cls.ratingLabel}
+                    style={{
+                        left: `calc(50% + ${(emojies.findIndex((e) => e.value === value) - 2) * 52}px)`,
+                        transform: 'translateX(-50%)',
+                    }}
+                >
+                    <p className={cls.ratingText}>{RATING_LABELS[value]}</p>
+                </div>
+            )}
         </div>
     );
 };

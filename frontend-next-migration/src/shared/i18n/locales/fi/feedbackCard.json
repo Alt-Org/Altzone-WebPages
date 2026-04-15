@@ -1,10 +1,19 @@
 {
     "title": "Kerro mielipiteesi verkkosivuistamme",
-    "input-placeholder": "Kirjoita tähän",
+    "success-title": "Kiitos palautteestasi!",
+    "input-placeholder": "(Valinnainen)",
+    "input-placeholder-1": "Harmi! Mikä mätti eniten?",
+    "input-placeholder-2": "Voi ei - mikä jäi vajaaksi?",
+    "input-placeholder-3": "Mikä oli hyvää ja mitä parantaisit?",
+    "input-placeholder-4": "Kiva kuulla! Parannus ehdotuksia?",
+    "input-placeholder-5": "Ihanaa! Mikä oli parasta?",
     "send": "Lähetä",
+    "loading": "Lähetetään...",
     "href-to-fullform": "Siirry koko lomakkeeseen ->",
     "error": "Valitse mieliala ja sitten kirjoita palaute.",
+    "error-submit-failed": "Lähetys epäonnistui. Yritä uudelleen.",
+    "feedback-text": "Anna tarkempi palaute",
     "success": "Kiitos paljon! Arvostamme palautettasi.",
-    "href-to-webform": "Verkkosivulomake",
-    "href-to-gameform": "Pelilomake"
+    "href-to-webform": "Web lomake",
+    "href-to-gameform": "Peli lomake"
 }

@@ -2,12 +2,10 @@
     background-color: var(--base-card-background);
     display: flex;
     flex-direction: column;
-    margin: 5px;
-    width: 330px !important;
-    height: fit-content;
-    padding-top: 0;
+    max-width: 300px;
+    height: 400px;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     box-shadow: 8px 8px 1px #000000;
     border-width: 4px;
     border-style: solid;
@@ -15,10 +13,10 @@
 }
 
 .feedbackTitle {
-    line-height: 40px !important;
-    font:var(--font-sw-xl);
-    padding: 5px 1em 0 1em;
-    height: fit-content;
+    font-size: 24px;
+    font-family: 'Marko One';
+    font-weight: 400;
+    line-height: 100%;
     color: var(--primary-color);
     text-align: center;
     width: 100%;
@@ -36,7 +34,7 @@
     align-items: center;
     padding: 9px 12px;
     gap: 10px;
-    width: 300px;
+    width:250px;
     height: 48px;
     background: var(--primary-color) !important;
     border: 2px solid var(--drop-shadows) !important;
@@ -44,56 +42,60 @@
     box-shadow: 2px 4px 0 var(--black) !important;
 }
 
+.inputField {
+    width: 100%;
+
+    label {
+        font: var(--font-dm-m);
+        font-size: 14px;
+        color: var(--white);
+     
+        display: block;
+    }
+}
+
 .textInput {
     font: var(--font-dm-m);
     color: var(--black);
-    width: 300px !important;
-    height: 45px;
-    padding: 10px 10px;
+    height: 81px;
+    padding: 10px;
+    border-radius: 12px;
     background: #FFFFFF;
     border: 2px solid #000000;
     box-shadow: 2px 4px 0 #121212;
-    border-radius: 25px !important;
     box-sizing: border-box;
+    resize: none;
+    vertical-align: top;
 }
-
 .emojiList {
     display: inline-flex !important;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     width: 100%;
-    padding-bottom: 5px;
-    box-sizing: border-box;
+    height: 100px;
+}
+.linkToFormContainer {
+    max-width:fit-content;
+    display: inline-flex !important;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.linkToFormLabel {
+    font: var(--font-dm-m);
+    color: var(--white);
+    padding: 0;
+    margin: 0;
 }
 
 .linkToForm {
     display: flex;
     flex-direction: row;
+    align-items: center;
     font: var(--font-dm-m);
     color: var(--white);
 }
 
-.linkToFormContainer {
-    width: 300px;
-    display: inline-flex !important;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: unset;
-}
-
-.linkToFormContainer > * {
-    display: inline-block;
-    vertical-align: middle;
-    justify-items: end;
-    padding: 0 10px 0 10px;
-}
-
-.embedabbleVersion {
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
 .externalLinkIcon {
     display: inline;
     vertical-align: middle !important;
