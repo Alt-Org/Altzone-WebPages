@@ -1,3 +1,16 @@
+.emojiListContainer {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.emojiList {
+    display: flex;
+    gap: 8px; // adjust as needed
+    justify-content: center;
+    display: inline-flex !important;
+}
+
 .selectedEmoji {
     transition: 0.1s;
     transform: scale(1.2);
@@ -6,8 +19,7 @@
     outline-offset: -4px;
     box-shadow: 0px 1px 7px 1px rgba($color: #c5a804cc, $alpha: 1);
     cursor: pointer;
-    width: 48px;
-    height: 48px;
+
 }
 
 .Emoji:hover {
@@ -15,4 +27,39 @@
     cursor: pointer;
     border-radius: 25px;
     outline-offset: -4px;
+}
+
+.ratingLabel {
+    position: absolute;
+    top: 58px; 
+    margin: 0;
+    background-color: #ffa101;
+    color: white;
+    border: 1px solid black;
+    border-radius: 12px;
+    height: 25px;
+    width: 64px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.ratingLabel::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ffa101;
+}
+
+.ratingText {
+    padding: 5px;
+    font-size: 15px;
+    color: black !important;
 }
