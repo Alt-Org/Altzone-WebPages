@@ -115,7 +115,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
             />
             <CustomForm.TextareaField
                 className={cls.inputField}
-                label={feedbackEmoji ? currentPlaceholder : undefined}
+                label={feedbackEmoji ? currentPlaceholder : '\u00A0'}
                 textareaProps={{
                     className: cls.textInput,
                     placeholder: t('input-placeholder'),

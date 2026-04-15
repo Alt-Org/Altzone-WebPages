@@ -2,11 +2,12 @@
     position: relative;
     display: inline-block;
     width: 100%;
+    height: 100px;
 }
 
 .emojiList {
     display: flex;
-    gap: 8px; // adjust as needed
+    gap: 5px; 
     justify-content: center;
     display: inline-flex !important;
 }
@@ -39,7 +40,9 @@
     border-radius: 12px;
     height: 25px;
     width: 64px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 500;
     font-size: 16px;
     white-space: nowrap;
@@ -59,7 +62,8 @@
 }
 
 .ratingText {
-    padding: 5px;
+    margin: 0;
+    padding: 0;
     font-size: 15px;
     color: black !important;
 }
