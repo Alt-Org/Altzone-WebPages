@@ -70,7 +70,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
      * It sends the feedback data to the server if valid.
      */
     const submitFeedback = async () => {
-        if (!feedback || !feedbackEmoji) {
+        if (!feedbackEmoji) {
             showToast(t('error'), 'error');
             return;
         }
