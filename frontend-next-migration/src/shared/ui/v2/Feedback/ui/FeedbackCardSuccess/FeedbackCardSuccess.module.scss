@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     max-width: 300px;
-    height: 200px;
     align-items: center;
     border-radius: 12px;
     gap: 8px;
@@ -29,8 +28,7 @@
     display: inline-flex !important;
     justify-content: space-between;
     align-items: start;
-    width: 100%;
-    height: 150px !important;
+    height: 80px !important;
 }
 
 .linkToFormLabel {

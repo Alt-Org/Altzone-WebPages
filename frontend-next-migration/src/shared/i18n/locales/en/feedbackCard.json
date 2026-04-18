@@ -1,7 +1,7 @@
 {
     "title": "Tell your opinion about our websites",
     "success-title": "Thank you for your feedback!",
-    "input-placeholder": "Please write here",
+    "input-placeholder": "(Optional)",
     "input-placeholder-1": "What bothered you the most?",
     "input-placeholder-2": "What fell short of your expectations?",
     "input-placeholder-3": "What could be improved?",
@@ -15,5 +15,10 @@
     "feedback-text": "Give specific feedback",
     "success": "Thank you very much! We appreciate your feedback.",
     "href-to-webform": "Web form",
-    "href-to-gameform": "Game form"
+    "href-to-gameform": "Game form",
+    "rating-label-1": "Bad",
+    "rating-label-2": "Meh..",
+    "rating-label-3": "OK",
+    "rating-label-4": "Good",
+    "rating-label-5": "Great"
 }
