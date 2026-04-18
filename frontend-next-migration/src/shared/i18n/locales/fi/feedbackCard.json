@@ -15,5 +15,10 @@
     "feedback-text": "Anna tarkempi palaute",
     "success": "Kiitos paljon! Arvostamme palautettasi.",
     "href-to-webform": "Web lomake",
-    "href-to-gameform": "Peli lomake"
+    "href-to-gameform": "Peli lomake",
+    "rating-label-1": "Huono",
+    "rating-label-2": "Meh..",
+    "rating-label-3": "Ihan ok",
+    "rating-label-4": "Hyvä",
+    "rating-label-5": "Loistava"
 }
