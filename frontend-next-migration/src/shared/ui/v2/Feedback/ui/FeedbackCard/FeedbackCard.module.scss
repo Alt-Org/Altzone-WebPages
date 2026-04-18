@@ -43,13 +43,10 @@
 }
 
 .inputField {
-    width: 100%;
-
     label {
         font: var(--font-dm-m);
         font-size: 14px;
         color: var(--white);
-     
         display: block;
     }
 }
@@ -66,6 +63,7 @@
     box-sizing: border-box;
     resize: none;
     vertical-align: top;
+    outline: none;
 }
 .emojiList {
     display: inline-flex !important;
