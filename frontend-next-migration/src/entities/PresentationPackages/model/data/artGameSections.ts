@@ -34,7 +34,7 @@ const imageSrcs = [
     EMPTY_IMAGE,
 ];
 
-const logoSrc = gameArtLogo;
+const logoSrc = gameArtLogo.src;
 
 /**
  * The `ArtGameSections` array is created by mapping over `i18nKeyPrefixes`.
