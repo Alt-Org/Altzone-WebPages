@@ -196,29 +196,11 @@ const About = (props: Props) => {
 
                     <p className={cls.yearh1}>2025</p>
                     <div>
-                        <div className={cls.yearImgWrap}>
-                            <Image
-                                src={img2023}
-                                alt="2025 year image"
-                                fill
-                                className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 34vw"
-                            />
-                        </div>
                         <p className={cls.p}>{V2025}</p>
                     </div>
 
                     <p className={cls.yearh1}>2026</p>
                     <div>
-                        <div className={cls.yearImgWrap}>
-                            <Image
-                                src={img2023}
-                                alt="2026 year image"
-                                fill
-                                className={cls.yearImg}
-                                sizes="(max-width: 768px) 94vw, 34vw"
-                            />
-                        </div>
                         <p className={cls.p}>{V2026}</p>
                     </div>
 
