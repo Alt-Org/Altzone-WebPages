@@ -12,6 +12,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import cls from './FeedbackCard.module.scss';
 import FeedbackEmoji from '../FeedbackEmoji/FeedbackEmoji';
+import FeedbackCardSuccess from '../FeedbackCardSuccess/FeedbackCardSuccess';
 
 /**
  * Props for the FeedbackCard component.
@@ -35,7 +36,20 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
     const { t } = useClientTranslation('feedbackCard');
     const [feedback, setFeedback] = useState<string>('');
     const [feedbackEmoji, setFeedbackEmoji] = useState<number>();
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [addFeedback, { isLoading }] = useAddFeedbackMutation();
+
+    const RATING_PLACEHOLDERS: Record<number, string> = {
+        1: t('input-placeholder-1'),
+        2: t('input-placeholder-2'),
+        3: t('input-placeholder-3'),
+        4: t('input-placeholder-4'),
+        5: t('input-placeholder-5'),
+    };
+
+    const currentPlaceholder = feedbackEmoji
+        ? RATING_PLACEHOLDERS[feedbackEmoji]
+        : t('input-placeholder');
 
     /**
      * Display a toast message to the user.
@@ -56,7 +70,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
      * It sends the feedback data to the server if valid.
      */
     const submitFeedback = async () => {
-        if (!feedback || !feedbackEmoji) {
+        if (!feedbackEmoji) {
             showToast(t('error'), 'error');
             return;
         }
@@ -69,12 +83,21 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
             await addFeedback(feedbackData).unwrap();
 
             showToast(t('success'), 'success');
+            setIsSubmitted(true);
             setFeedback('');
-            setFeedbackEmoji(undefined);
         } catch {
             showToast(t('error-submit-failed'), 'error');
         }
     };
+
+    if (isSubmitted) {
+        return (
+            <FeedbackCardSuccess
+                className={variant === 'embedabble' ? cls.embedabbleVersion : ''}
+                rating={feedbackEmoji}
+            />
+        );
+    }
 
     return (
         <CustomForm
@@ -90,9 +113,10 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
                 value={feedbackEmoji}
                 onImageClick={setFeedbackEmoji}
             />
-            <CustomForm.InputField
-                label=""
-                inputProps={{
+            <CustomForm.TextareaField
+                className={cls.inputField}
+                label={feedbackEmoji ? currentPlaceholder : '\u00A0'}
+                textareaProps={{
                     className: cls.textInput,
                     placeholder: t('input-placeholder'),
                     value: feedback,
@@ -118,6 +142,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
                     </>
                 )}
             </CustomForm.Button>
+            <span className={cls.linkToFormLabel}>{t('feedback-text')}</span>
             <div className={cls.linkToFormContainer}>
                 <a
                     className={cls.linkToForm}
@@ -132,6 +157,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
                         icon={faExternalLink}
                     />
                 </a>
+
                 <a
                     className={cls.linkToForm}
                     href={AppExternalLinks.googleFeedback}

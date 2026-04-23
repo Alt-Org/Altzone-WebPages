@@ -1,0 +1,59 @@
+.successCard {
+    background-color: var(--base-card-background);
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    align-items: center;
+    border-radius: 12px;
+    gap: 8px;
+    padding: 10px;
+    box-shadow: 8px 8px 1px #000000;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #000000;
+}
+
+.successTitle {
+    font-size: 24px;
+    font-family: 'Marko One';
+    font-weight: 400;
+    line-height: 100%;
+    color: var(--primary-color);
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.emojiList {
+    display: inline-flex !important;
+    justify-content: space-between;
+    align-items: start;
+    height: 80px !important;
+}
+
+.linkToFormLabel {
+    font: var(--font-dm-m);
+    color: var(--white);
+}
+
+.linkToFormContainer {
+    max-width: fit-content;
+    display: inline-flex !important;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.linkToForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font: var(--font-dm-m);
+    color: var(--white);
+}
+
+.externalLinkIcon {
+    display: inline;
+    vertical-align: middle !important;
+    margin-left: 5px;
+    color: var(--primary-color);
+}
