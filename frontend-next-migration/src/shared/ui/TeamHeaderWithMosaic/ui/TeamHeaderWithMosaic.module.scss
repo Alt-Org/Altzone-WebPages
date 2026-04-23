@@ -21,6 +21,7 @@
         align-items: center;
         width: 100%;
         padding-right: 15vh;
+        padding-left: 15vh;
     }
 }
 
@@ -60,16 +61,6 @@
       }
 }
 
-.emptyContainer {
-    min-width: 300px;
-    overflow: hidden !important;
-    flex-basis: 0 !important;
-    margin-left: 1% !important;
-    
-    @media (max-width: breakpoint(lg)) {
-        width: 0;
-      }
-}
 
 .TitleSearchBarContainer {
     display: flex;

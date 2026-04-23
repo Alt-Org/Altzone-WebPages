@@ -115,6 +115,7 @@
     font: var(--font-dm-m);
     line-height: 28px;
     padding: 10px 5em;
+    padding-bottom: 0px;
     text-align: left;
     width: 100%;
     white-space: pre-line;
@@ -147,7 +148,7 @@
     font: var(--font-sw-xl), serif;
     text-align: left;
     width: 100%;
-    margin: 0 auto;
+    margin: 16px;
 }
 
 .date {

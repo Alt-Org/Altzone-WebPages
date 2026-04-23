@@ -12,6 +12,7 @@ import gameArtLogo from '@/shared/assets/images/gameArt/gameArtLogo.webp';
  * Define an array of keys that serve as prefixes for internationalization (i18n).
  * These keys will be used to dynamically generate i18n identifiers for different sections of the game.
  */
+const EMPTY_IMAGE = '';
 
 const i18nKeyPrefixes = [
     'info',
@@ -23,7 +24,15 @@ const i18nKeyPrefixes = [
     'literature',
 ];
 
-const imageSrcs = [info.src, intro.src, implementation.src, message.src, joinus.src];
+const imageSrcs = [
+    info.src,
+    intro.src,
+    implementation.src,
+    message.src,
+    EMPTY_IMAGE,
+    joinus.src,
+    EMPTY_IMAGE,
+];
 
 const logoSrc = gameArtLogo.src;
 

@@ -33,8 +33,8 @@ const NewsCard = (props: NewsCardProps) => {
                                 src={picture}
                                 alt={title}
                                 className={cls.image}
-                                width={100}
-                                height={600}
+                                width={1024}
+                                height={1024}
                             />
                         )}
                     </div>
