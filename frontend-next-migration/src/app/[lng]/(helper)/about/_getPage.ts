@@ -23,6 +23,8 @@ export async function _getPage(lng: any) {
             V2022: t('V2022'),
             V2023: t('V2023'),
             V2024: t('V2024'),
+            V2025: t('V2025'),
+            V2026: t('V2026'),
         }),
         buildSeo: () => ({
             title: t('head-title'),

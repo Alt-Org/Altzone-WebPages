@@ -93,11 +93,6 @@
   }
 }
 
-.zoomed {
-  transition: transform 0.2s ease;
-  cursor: zoom-out;
-}
-
 .sliderContainer {
   display: flex;
   align-items: center;
@@ -219,4 +214,14 @@
   .pageWrapper img {
     margin-bottom: 0;
   }
+}
+
+.modalImage {
+  max-height: 80vh;
+  max-width: 90vw;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
 }

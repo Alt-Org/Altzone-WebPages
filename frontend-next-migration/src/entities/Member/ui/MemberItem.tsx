@@ -6,7 +6,7 @@ import { getLinks } from '../api/mappers';
 import { Member } from '../model/types/types';
 import cls from './MemberItem.module.scss';
 import { envHelper } from '@/shared/const/envHelper';
-import { getTaskTranslation, getLanguageCode } from '../api/translations';
+import { getRoleTaskTranslation, getLanguageCode } from '../api/translations';
 
 interface MemberItemProps {
     member: Member;
@@ -36,7 +36,19 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
             : null;
 
     const fullLanguageCode = getLanguageCode(language);
-    const task = getTaskTranslation(member.translations || [], fullLanguageCode);
+    // Get all tasks from all roles, avoiding duplicates
+    const allTasks = member.roles
+        ? member.roles
+              .map((role) => {
+                  if (role.translations && role.translations.length > 0) {
+                      return getRoleTaskTranslation(role.translations, fullLanguageCode);
+                  }
+                  return '';
+              })
+              .filter((task) => task && task.trim() !== '')
+              .filter((task, index, array) => array.indexOf(task) === index) // Remove duplicates
+        : [];
+    const task = allTasks.join(', ');
 
     return (
         <li className={cls.workmanComponent}>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Joti+One&display=swap');
 
 .feedbackForm {
     border-radius: var(--border-radius-custom);
@@ -6,18 +6,19 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 10px;
+    margin: 0 auto;
 
-    width: 350px !important;
-    height: 325px !important;
+    width: 100%;
+    max-width: 350px;
+    height: auto;
 }
 
 .feedbackTitle {
-    width: 228px;
-    height: 64px;
+    width: 100%;
     font-family: 'Joti One';
     line-height: 32px !important;
     font: var(--font-dm-l);
+    margin: 10px;
 
     color: #ff0010;
 }

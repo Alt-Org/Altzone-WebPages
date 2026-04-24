@@ -33,15 +33,15 @@ const HeroImage = ({ picture }: HeroImageProps) => {
                 src={picture}
                 alt=""
                 className={cls.imageBlur}
-                width={100}
-                height={600}
+                width={1024}
+                height={1024}
             />
             <Image
                 src={picture}
                 alt=""
                 className={cls.image}
-                width={100}
-                height={600}
+                width={1024}
+                height={1024}
             />
         </div>
     );

@@ -1,4 +1,9 @@
-import { Translation, DepartmentTranslation, TeamTranslation } from '../model/types/types';
+import {
+    Translation,
+    DepartmentTranslation,
+    TeamTranslation,
+    RoleTranslation,
+} from '../model/types/types';
 
 /**
  * Returns the language code in a standardized format.
@@ -27,11 +32,49 @@ const getTranslation = <T extends { languages_code: string }>(
     key: keyof T,
     defaultValue: string = '',
 ): string => {
-    const translation = translations.find((t) => t.languages_code === languageCode);
-    return translation && key in translation ? (translation[key] as string) : defaultValue;
+    if (!translations || translations.length === 0) {
+        return defaultValue;
+    }
+
+    // Try exact match first
+    let translation = translations.find((t) => t.languages_code === languageCode);
+
+    // If no exact match, try fallback to 'en-US' or first available
+    if (!translation) {
+        translation =
+            translations.find((t) => t.languages_code === 'en-US') ||
+            translations.find((t) => t.languages_code === 'fi-FI') ||
+            translations[0];
+    }
+
+    if (translation) {
+        // Debug: log what keys are available
+        if (!(key in translation)) {
+            console.warn('[getTranslation] Key not found in translation:', {
+                key,
+                availableKeys: Object.keys(translation),
+                translation,
+                languageCode,
+            });
+        }
+
+        if (key in translation) {
+            const value = translation[key] as string;
+            return value || defaultValue;
+        }
+    }
+
+    return defaultValue;
 };
 
 export const getTaskTranslation = (translations: Translation[], languageCode: string): string => {
+    return getTranslation(translations, languageCode, 'task', '');
+};
+
+export const getRoleTaskTranslation = (
+    translations: RoleTranslation[],
+    languageCode: string,
+): string => {
     return getTranslation(translations, languageCode, 'task', '');
 };
 
@@ -39,12 +82,12 @@ export const getDepartmentTranslation = (
     translations: DepartmentTranslation[],
     languageCode: string,
 ): string => {
-    return getTranslation(translations, languageCode, 'department', '');
+    return getTranslation(translations, languageCode, 'name', '');
 };
 
 export const getTeamTranslation = (
     translations: TeamTranslation[],
     languageCode: string,
 ): string => {
-    return getTranslation(translations, languageCode, 'team', '');
+    return getTranslation(translations, languageCode, 'name', '');
 };

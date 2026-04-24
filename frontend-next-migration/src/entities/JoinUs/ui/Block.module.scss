@@ -99,9 +99,15 @@
             flex-direction: row;
 
             img{
-                filter: brightness(0) invert(1);
+                color: #ffa100;
                 width: 2.7vh;
+                transition: transform 0.15s ease;
+                
             }
+            
+            &:hover img {
+            transform: scale(1.1);
+        }
           }
 
         }
