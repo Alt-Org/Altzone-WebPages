@@ -188,22 +188,26 @@ export const SkeletonLoaderForNewsPage = ({
     const cards = Array(numberOfCards).fill(0);
 
     return (
-        <div className={classNames(cls.newsSkeletonGrid, {}, [className])}>
+        <>
             {cards.map((_, index) => (
                 <div
                     key={index}
-                    className={cls.newsSkeletonCard}
+                    className={classNames(cls.newsSkeletonCard, {}, [className])}
                 >
+                    <div className={cls.newsSkeletonContent}>
+                        <div className={cls.newsSkeletonTitle} />
+                        <div className={cls.newsSkeletonText} />
+                        <div className={cls.newsSkeletonTextShort} />
+                        <div className={cls.newsSkeletonDate} />
+                    </div>
+
                     <div className={cls.newsSkeletonImage} />
-                    <div className={cls.newsSkeletonDate} />
-                    <div className={cls.newsSkeletonTitle} />
-                    <div className={cls.newsSkeletonText} />
-                    <div className={cls.newsSkeletonTextShort} />
                 </div>
             ))}
-        </div>
+        </>
     );
 };
+
 export const SkeletonLoaderForNewsElementPage = ({ className = '' }: SkeletonLoaderProps) => {
     return (
         <div className={classNames(cls.newsElementSkeleton, {}, [className])}>
