@@ -181,3 +181,39 @@ export const SkeletonLoaderWithHeader = ({ sections = 1, className = '' }: Skele
         </div>
     );
 };
+export const SkeletonLoaderForNewsPage = ({
+    numberOfCards = 6,
+    className = '',
+}: SkeletonLoaderProps) => {
+    const cards = Array(numberOfCards).fill(0);
+
+    return (
+        <div className={classNames(cls.newsSkeletonGrid, {}, [className])}>
+            {cards.map((_, index) => (
+                <div
+                    key={index}
+                    className={cls.newsSkeletonCard}
+                >
+                    <div className={cls.newsSkeletonImage} />
+                    <div className={cls.newsSkeletonDate} />
+                    <div className={cls.newsSkeletonTitle} />
+                    <div className={cls.newsSkeletonText} />
+                    <div className={cls.newsSkeletonTextShort} />
+                </div>
+            ))}
+        </div>
+    );
+};
+export const SkeletonLoaderForNewsElementPage = ({ className = '' }: SkeletonLoaderProps) => {
+    return (
+        <div className={classNames(cls.newsElementSkeleton, {}, [className])}>
+            <div className={cls.newsElementSkeletonTitle} />
+            <div className={cls.newsElementSkeletonDate} />
+            <div className={cls.newsElementSkeletonImage} />
+            <div className={cls.newsElementSkeletonText} />
+            <div className={cls.newsElementSkeletonText} />
+            <div className={cls.newsElementSkeletonText} />
+            <div className={cls.newsElementSkeletonTextShort} />
+        </div>
+    );
+};

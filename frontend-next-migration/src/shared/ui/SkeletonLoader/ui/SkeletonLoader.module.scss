@@ -151,3 +151,118 @@
     width: 100%;
     margin-bottom: 8px;
 }
+
+/* Skeleton News */
+.newsSkeletonGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.newsSkeletonCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.newsSkeletonImage {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsSkeletonDate {
+    width: 35%;
+    height: 14px;
+    border-radius: 6px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsSkeletonTitle {
+    width: 85%;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsSkeletonText,
+.newsSkeletonTextShort {
+    height: 16px;
+    border-radius: 6px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsSkeletonText {
+    width: 100%;
+}
+
+.newsSkeletonTextShort {
+    width: 70%;
+}
+
+.newsElementSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+.newsElementSkeletonTitle {
+    width: 70%;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsElementSkeletonDate {
+    width: 160px;
+    height: 16px;
+    border-radius: 6px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsElementSkeletonImage {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsElementSkeletonText,
+.newsElementSkeletonTextShort {
+    height: 18px;
+    border-radius: 6px;
+    background: var(--skeleton-color, #e5e5e5);
+    animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.newsElementSkeletonText {
+    width: 100%;
+}
+
+.newsElementSkeletonTextShort {
+    width: 60%;
+}
+
+@keyframes skeletonPulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
