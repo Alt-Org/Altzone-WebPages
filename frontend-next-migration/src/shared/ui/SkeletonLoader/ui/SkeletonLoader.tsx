@@ -226,13 +226,34 @@ export const SkeletonLoaderForNewsPage = ({
 export const SkeletonLoaderForNewsElementPage = ({ className = '' }: SkeletonLoaderProps) => {
     return (
         <div className={classNames(cls.newsElementSkeleton, {}, [className])}>
+            <div className={cls.newsElementSkeletonHero} />
+
             <div className={cls.newsElementSkeletonTitle} />
-            <div className={cls.newsElementSkeletonDate} />
-            <div className={cls.newsElementSkeletonImage} />
-            <div className={cls.newsElementSkeletonText} />
-            <div className={cls.newsElementSkeletonText} />
-            <div className={cls.newsElementSkeletonText} />
-            <div className={cls.newsElementSkeletonTextShort} />
+            <div className={cls.newsElementSkeletonSubtitle} />
+
+            <div className={cls.newsElementSkeletonMeta}>
+                <div />
+                <div />
+            </div>
+
+            <div className={cls.newsElementSkeletonBody}>
+                <div />
+                <div />
+                <div />
+                <div />
+                <div className={cls.short} />
+            </div>
+
+            <div className={cls.newsElementSkeletonShare} />
+        </div>
+    );
+};
+export const SkeletonLoaderForReadMoreTitle = () => {
+    return (
+        <div className={cls.readMoreSkeletonContainer}>
+            <div className={cls.readMoreSkeletonWrapper}>
+                <div className={cls.readMoreSkeletonTitle} />
+            </div>
         </div>
     );
 };

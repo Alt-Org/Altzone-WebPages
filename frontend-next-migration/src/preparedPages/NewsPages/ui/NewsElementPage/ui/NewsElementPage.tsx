@@ -22,6 +22,7 @@ import { ShareButton } from '@/shared/ui/v2/ShareButton';
 import {
     SkeletonLoaderForNewsElementPage,
     SkeletonLoaderForNewsPage,
+    SkeletonLoaderForReadMoreTitle,
 } from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
 
 type HeroImageProps = {
@@ -85,11 +86,49 @@ const NewsElementPage = () => {
     if (pageIsLoading) {
         return (
             <Container>
+                <div className={cls.navButtons}>
+                    <Button
+                        disabled
+                        theme={ButtonTheme.PRIMARY}
+                        size={ButtonSize.M}
+                        className={classNames(cls.ButtonNewsNavigation)}
+                    >
+                        <Image
+                            loading="eager"
+                            alt="Pin"
+                            src={chevronleft}
+                            className={cls.buttonImage}
+                        />
+                        {t('previous-button')}
+                    </Button>
+
+                    <Button
+                        disabled
+                        theme={ButtonTheme.PRIMARY}
+                        size={ButtonSize.M}
+                        className={classNames(cls.ButtonNewsNavigation)}
+                    >
+                        {t('next-button')}
+                        <Image
+                            loading="eager"
+                            alt="Pin"
+                            src={chevronright}
+                            className={cls.buttonImage}
+                        />
+                    </Button>
+                </div>
+
                 <div className={classNames(cls.NewsElementPage)}>
                     <SkeletonLoaderForNewsElementPage />
                 </div>
 
-                <SkeletonLoaderForNewsPage numberOfCards={2} />
+                <div className={cls.readmoreText}>
+                    <SkeletonLoaderForReadMoreTitle />
+                </div>
+
+                <div className={cls.newsGrid}>
+                    <SkeletonLoaderForNewsPage numberOfCards={2} />
+                </div>
             </Container>
         );
     }
