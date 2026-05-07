@@ -19,11 +19,7 @@ import { linkify } from '@/shared/ui/v2/Chatbot/utils/linkify';
 import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
 import { ShareButton } from '@/shared/ui/v2/ShareButton';
-import {
-    SkeletonLoaderForNewsElementPage,
-    SkeletonLoaderForNewsPage,
-    SkeletonLoaderForReadMoreTitle,
-} from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
+import { SkeletonLoaderForNewsElementPage } from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
 
 type HeroImageProps = {
     picture?: string;
@@ -120,14 +116,6 @@ const NewsElementPage = () => {
 
                 <div className={classNames(cls.NewsElementPage)}>
                     <SkeletonLoaderForNewsElementPage />
-                </div>
-
-                <div className={cls.readmoreText}>
-                    <SkeletonLoaderForReadMoreTitle />
-                </div>
-
-                <div className={cls.newsGrid}>
-                    <SkeletonLoaderForNewsPage numberOfCards={2} />
                 </div>
             </Container>
         );

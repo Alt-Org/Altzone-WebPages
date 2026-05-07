@@ -233,7 +233,6 @@ export const SkeletonLoaderForNewsElementPage = ({ className = '' }: SkeletonLoa
 
             <div className={cls.newsElementSkeletonMeta}>
                 <div />
-                <div />
             </div>
 
             <div className={cls.newsElementSkeletonBody}>
@@ -241,18 +240,10 @@ export const SkeletonLoaderForNewsElementPage = ({ className = '' }: SkeletonLoa
                 <div />
                 <div />
                 <div />
+                <div />
+                <div />
+                <div />
                 <div className={cls.short} />
-            </div>
-
-            <div className={cls.newsElementSkeletonShare} />
-        </div>
-    );
-};
-export const SkeletonLoaderForReadMoreTitle = () => {
-    return (
-        <div className={cls.readMoreSkeletonContainer}>
-            <div className={cls.readMoreSkeletonWrapper}>
-                <div className={cls.readMoreSkeletonTitle} />
             </div>
         </div>
     );
