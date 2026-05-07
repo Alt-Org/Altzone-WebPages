@@ -127,13 +127,10 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         title: 'Join Us!',
-        discordBlock: mockDiscordBlock,
-        // redditBlock: mockRedditBlock,
-        teachersBlock: mockTeachersBlock,
+        getInTouchAndFollowBlock: mockConnectionBlock,
+        communityAndOpportunitiesBlock: mockDiscordBlock,
+        educationProfessionalsBlock: mockTeachersBlock,
         feedbackBlock: mockFeedbackBlock,
-        duunitoriBlock: mockDuunitoriBlock,
-        connectionBlock: mockConnectionBlock,
-        instagramBlock: mockInstagramBlock,
     },
     parameters: {
         layout: 'fullscreen',

@@ -16,8 +16,8 @@ import ytIcon from '@/shared/assets/images/Youtube2.svg';
  * Supports multiple links per block, internationalized text labels, descriptions, and an optional image.
  *
  * @param {string} section -
- * A section identifier (e.g., "discord", "teachers", "feedback") that is used to construct the correct
- * translation keys dynamically. These keys are combined to fetch the localized label, description, link texts, and alt texts.
+ * A section identifier used to construct translation keys dynamically.
+ * These keys are combined to fetch the localized label, description, link texts, and alt texts.
  *
  * @param {BlockSection['links']} link -
  * An array of link objects. Each object represents a link associated with the block and should include:
@@ -37,7 +37,7 @@ import ytIcon from '@/shared/assets/images/Youtube2.svg';
  *
  * @callback t
  * @param {string} key -
- * The translation key used to fetch the localized string (e.g., "block-label-discord", "block-description-feedback").
+ * The translation key used to fetch the localized string.
  *
  * @returns {string} -
  * The translated string value associated with the provided key.
@@ -64,11 +64,64 @@ export const makeBlocksWithI18n = (
     };
 };
 
+export const makeGetInTouchAndFollowBlock = makeBlocksWithI18n(
+    'getInTouchAndFollow',
+    [
+        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
+        { text: 'phone', url: 'tel:+358442407396', isExternal: true },
+        {
+            text: 'icone',
+            url: AppExternalLinks.discord,
+            isExternal: true,
+            iconSrc: discordIcon.src,
+        },
+        {
+            text: 'icone',
+            url: AppExternalLinks.facebook,
+            isExternal: true,
+            iconSrc: fbdIcon.src,
+        },
+        {
+            text: 'icone',
+            url: AppExternalLinks.youtube,
+            isExternal: true,
+            iconSrc: ytIcon.src,
+        },
+        {
+            text: 'icone',
+            url: AppExternalLinks.instagram,
+            isExternal: true,
+            iconSrc: igIcon.src,
+        },
+    ],
+    ConnectionImage.src.toString(),
+);
+
+export const makeCommunityAndOpportunitiesBlock = makeBlocksWithI18n(
+    'communityAndOpportunities',
+    [
+        { text: 'discord', url: AppExternalLinks.discord, isExternal: true },
+        { text: 'duunitori', url: AppExternalLinks.duunitori, isExternal: true },
+    ],
+    discordImage.src.toString(),
+);
+
+export const makeEducationProfessionalsBlock = makeBlocksWithI18n(
+    'educationProfessionals',
+    [
+        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
+        { text: 'phone', url: 'tel:+358442407396', isExternal: true },
+        { text: 'teacherPg', url: AppExternalLinks.dlpackage, isExternal: true },
+    ],
+    teachersImage.src.toString(),
+);
+
 export const makeDiscordBlock = makeBlocksWithI18n(
     'discord',
     [{ text: 'discord', url: AppExternalLinks.discord, isExternal: true }],
     discordImage.src.toString(),
 );
+
 export const makeRedditBlock = makeBlocksWithI18n(
     'connection',
     [
@@ -77,6 +130,7 @@ export const makeRedditBlock = makeBlocksWithI18n(
     ],
     ConnectionImage.src.toString(),
 );
+
 export const makeTeachersBlock = makeBlocksWithI18n(
     'teachers',
     [
@@ -86,6 +140,7 @@ export const makeTeachersBlock = makeBlocksWithI18n(
     ],
     teachersImage.src.toString(),
 );
+
 export const makeFeedbackBlock = makeBlocksWithI18n(
     'feedback',
     [
@@ -94,11 +149,13 @@ export const makeFeedbackBlock = makeBlocksWithI18n(
     ],
     feedbackImage.src.toString(),
 );
+
 export const makeDuunitoriBlock = makeBlocksWithI18n(
     'duunitori',
     [{ text: 'duunitori', url: AppExternalLinks.duunitori, isExternal: true }],
     duunitoriImage.src.toString(),
 );
+
 export const makeInstagramBlock = makeBlocksWithI18n(
     'instagram',
     [

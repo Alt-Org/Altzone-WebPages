@@ -1,6 +1,9 @@
 export { Block } from './ui/Block';
 
 export {
+    makeGetInTouchAndFollowBlock,
+    makeCommunityAndOpportunitiesBlock,
+    makeEducationProfessionalsBlock,
     makeDiscordBlock,
     makeRedditBlock,
     makeTeachersBlock,
