@@ -1,0 +1,71 @@
+/* Privacy Page Container */
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+/* Title at the top of the page */
+.pageTitle {
+    color: var(--primary-color);
+    font: var(--font-sw-5xl);
+    line-height: 1.5;
+    margin: 0 0 2rem;
+    text-align: center;
+}
+
+/* Container wrapper for page content and sections */
+.accordionContainer {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background-color: #3a4a5a;
+    border-radius: var(--border-radius-figmadesktop);
+}
+
+/* Info/Description Box - appears below title and before accordion items */
+.infoBox {
+    width: 100%;
+    padding: 2rem;
+    margin: 2rem 0 3rem 0;
+    background-color: #2a3a4a;
+    border-radius: var(--border-radius-figmadesktop);
+    border: none;
+    color: var(--white);
+    font: var(--font-dm-m);
+    line-height: 1.6;
+
+    p {
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 500px) {
+    .pageContainer {
+        padding: 1rem;
+    }
+
+    .pageTitle {
+        font: var(--font-sw-xxxl);
+        margin-bottom: 1.5rem;
+    }
+
+    .accordionContainer {
+        padding: 1.5rem 1rem;
+    }
+
+    .infoBox {
+        padding: 1.5rem;
+        margin: 1rem 0 2rem 0;
+
+        p {
+            font-size: 0.9rem;
+        }
+    }
+}

@@ -18,17 +18,27 @@ interface Section {
 export type Props = {
     sections: Section[];
     title: string;
+    pageDescription?: string;
 };
 
 const PrivacyPage = (props: Props) => {
-    const { sections = [], title } = props;
+    const { sections = [], title, pageDescription } = props;
 
     return (
         <div className={classNames(cls.pageContainer)}>
-            <WikiContentWithSidebar
-                title={title}
-                sections={sections}
-            />
+            <h1 className={cls.pageTitle}>{title}</h1>
+            <div className={classNames(cls.accordionContainer)}>
+                {pageDescription && (
+                    <div>
+                        <p dangerouslySetInnerHTML={{ __html: pageDescription }} />
+                    </div>
+                )}
+                <WikiContentWithSidebar
+                    title=""
+                    sections={sections}
+                    enableAccordion={true}
+                />
+            </div>
             <ScrollTop />
         </div>
     );
