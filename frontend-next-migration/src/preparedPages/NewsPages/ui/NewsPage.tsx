@@ -10,6 +10,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
 import { useClientTranslation } from '@/shared/i18n';
 import { PageTitle } from '@/shared/ui/PageTitle';
+import { SkeletonLoaderForNewsPage } from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
@@ -22,7 +23,6 @@ const NewsPage = () => {
     const currentSlug = typeof params.slug === 'string' ? params.slug : undefined;
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
     const directusBaseUrl = envHelper.directusHost;
-
     const limit = 6;
     const [currentPage, setCurrentPage] = useState(1);
     const [allNews, setAllNews] = useState<News[]>([]);
@@ -111,9 +111,11 @@ const NewsPage = () => {
                             />
                         );
                     })}
-                    {hasMoreNewsState && <div ref={observeElementRef} />}
+
+                    {isLoading && <SkeletonLoaderForNewsPage numberOfCards={limit} />}
+
+                    {hasMoreNewsState && !isLoading && <div ref={observeElementRef} />}
                 </div>
-                <div>{isLoading && 'Loading...'}</div>
                 {renderNoMoreNews()}
             </Container>
         </main>
