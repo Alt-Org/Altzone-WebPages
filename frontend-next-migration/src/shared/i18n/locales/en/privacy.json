@@ -1,65 +1,81 @@
 {
     "main-title": "Privacy Policy",
-    "page-description": "Updated: 1.17.2026<br>This privacy policy clarifies how the mobile game ALT Zone 1.0 handles and stores user personal data.",
+    "page-description": "Last updated: 17 January 2026<br>This document describes how Psyche's Royale Gaming ry processes data in connection with the ALT Zone mobile game, the ALT Zone website, teacher tools, school-based testing, analytics, feedback channels, and community activities.",
 
     "head-keywords": "altzone, game, community, comics, galleries, play, register, log in",
 
     "og-title": "Privacy Policy - ALT Zone",
     "og-description": "Find out how ALT Zone collects, stores, and protects your personal data in compliance with GDPR. We prioritize transparency and user data security.",
 
-    "interpretation-nav-menu-title": "Controller",
-    "interpretation-label": "Data Controller",
-    "interpretation-description": "Data Controller:<br><b>Psyche’s Royale Gaming ry</b><br><br>ALT Zone is an artistic, pedagogical, and research-oriented game project developed by a non-profit association. Our guiding principle is to collect only strictly necessary data and to minimize privacy risks for individuals.",
+    "interpretation-nav-menu-title": "1. Controller",
+    "interpretation-label": "1. Data Controller",
+    "interpretation-description": "Data Controller:<br><b>Psyche's Royale Gaming ry</b><br><br>ALT Zone is an artistic, pedagogical, and research-oriented game project developed by a non-profit association. Our guiding principle is to collect only strictly necessary data and to minimize privacy risks for individuals.",
 
-    "user-nav-menu-title": "User Accounts and Authentication",
-    "user-label": "User Accounts and Authentication",
-    "user-description": "The ALT Zone game and the ALT Zone website use a shared account system.<br><br>● Users create their own username and password.<br>● Login does not take place via Google accounts or other third-party authentication services.<br>● An email address is not required to create a player account.<br>● Passwords cannot be recovered via email, as no identifying personal data is collected from players.<br>● A password hint–based reminder tool is provided.<br>● Repeated failed recovery attempts may result in automatic account deletion for security reasons if the account remains inactive.<br><br>Passwords are stored in a secure, protected form and are never disclosed or displayed in full.",
+    "user-nav-menu-title": "2. User Accounts and Authentication",
+    "user-label": "2. User Accounts and Authentication",
+    "user-description": "The ALT Zone game and the ALT Zone website use a shared account system.<br><br>● Users create their own username and password.<br>● Login does not take place via Google accounts or other third-party authentication services.<br>● An email address is not required to create a player account.<br>● Passwords cannot be recovered via email, as no identifying personal data is collected from players.<br>● A password hint-based reminder tool is provided.<br>● Repeated failed recovery attempts may result in automatic account deletion for security reasons if the account remains inactive.<br><br>Passwords are stored in a secure, protected form and are never disclosed or displayed in full.",
 
-    "collecting-nav-menu-title": "Collected Data",
-    "collecting-label": "Collected Data",
-    "collecting-description": "<h3>Collected Personal Data and Purpose of Processing</h3>We collect and process the following personal data to provide you access to the Game and its features:<br><br>● Username and Password: The username and password created by the user are stored to allow the user to log in to the Game. The password is stored in a secure form. A password reset code is also stored at the user's request to allow password recovery if necessary.<br> ● Clan: Information about which clan the user belongs to is stored. This information is related to the user's participation in the game's community activities.<br> ● Game Characters and Modifications: We store information about the game characters collected by the user and all modifications made to them, allowing the player to continue the game later.<br> ● Avatar and Modifications: We store the user's created avatar and the modifications made to it.<br> ● Chat Messages: Chat messages written by the user within the game are stored to make them available later and restore them if necessary.<br> ● Player's Age: We ask for the player's age during the creation of the user account to ensure that the user meets the age restrictions.<br><br> This data is processed to provide the service, enhance user experience, and fulfill legal obligations.<br><br><h3>ALT Zone Mobile Game (Google Play – Demo)</h3> The ALT Zone mobile game is available via Google Play (ALT Zone Demo).<br>The following data may be processed in connection with the game:<br><br>● Player profile data<br>● Avatar and character customisation<br>● Clan-related data<br>● Gameplay data (e.g. points, wins, progression)<br>● In-game chat messages<br>● Player-declared age<br><br>Part of this data is transmitted via the game server to the ALT Zone website (e.g. player profiles, clan profiles, and leaderboards), allowing players to view and expand game-related content in a web environment.<br><br><h3>User-Generated Content</h3>Players may use the website to:<br><br>● Expand their avatar’s narrative<br>● Expand their clan’s narrative<br><br>This content is created by the user and is removed when the user account is deleted.",
+    "collecting-nav-menu-title": "3. Collected Data",
+    "collecting-label": "3. Data Collected",
+    "collecting-description": "<h3>3.1 Website</h3>When using the ALT Zone website, the following data may be processed:<br><br>? Technical log data (e.g. browser type, device type, time of access)<br>? Aggregated usage statistics via Google Analytics<br>? Cookie and local storage data required for technical functionality and usability<br><br>Google Analytics is used solely for website development, usability improvement, and educational purposes. IP addresses are anonymized, and data is not used to identify individual users or for advertising purposes.<br><br><h3>3.2 ALT Zone Mobile Game (Google Play � Demo)</h3>The ALT Zone mobile game is available via Google Play (ALT Zone Demo).<br>The following data may be processed in connection with the game:<br><br>? Player profile data<br>? Avatar and character customisation<br>? Clan-related data<br>? Gameplay data (e.g. points, wins, progression)<br>? In-game chat messages<br>? Player-declared age<br><br>Part of this data is transmitted via the game server to the ALT Zone website (e.g. player profiles, clan profiles, and leaderboards), allowing players to view and expand game-related content in a web environment.<br><br><h3>3.3 User-Generated Content</h3>Players may use the website to:<br><br>? Expand their avatar's narrative<br>? Expand their clan's narrative<br><br>This content is created by the user and is removed when the user account is deleted.",
 
-    "testing-nav-menu-title": "School-Based Testing and Teacher Tools",
-    "testing-label": "School-Based Testing and Teacher Tools",
-    "testing-description": "ALT Zone is tested in schools for educational purposes.<br>Teachers:<br><br>● Log in to the teacher tool using their email address or dedicated credentials<br>● Create clans for educational testing<br>● Manage student participation in clans<br>● Monitor gameplay-related outcomes during testing<br><br>During testing, relevant gameplay data (e.g. progression, points, clan information) is transferred between the game and the website.<br>After testing ends:<br><br>● Teachers delete student accounts<br>● Student data is removed from the service<br>● Teachers may also delete their own account and associated history via the website<br><br>ALT Zone does not collect students’ names, email addresses, or other direct identifiers.",
+    "testing-nav-menu-title": "4. School-Based Testing and Teacher Tools",
+    "testing-label": "4. School-Based Testing and Teacher Tools",
+    "testing-description": "ALT Zone is tested in schools for educational purposes.<br>Teachers:<br><br>? Log in to the teacher tool using their email address or dedicated credentials<br>? Create clans for educational testing<br>? Manage student participation in clans<br>? Monitor gameplay-related outcomes during testing<br><br>During testing, relevant gameplay data (e.g. progression, points, clan information) is transferred between the game and the website.<br>After testing ends:<br><br>? Teachers delete student accounts<br>? Student data is removed from the service<br>? Teachers may also delete their own account and associated history via the website<br><br>ALT Zone does not collect students' names, email addresses, or other direct identifiers.",
 
-    "analytics-nav-menu-title": "Analytics",
-    "analytics-label": "Analytics and Game Usage Monitoring",
-    "analytics-description": "We may use a third-party analytics tool to improve the game and enhance the user experience. This tool may collect information on how players use the game, including game progress, user choices, and time spent in the game. This data is collected anonymously and is not directly linked to the user's personal data.",
+    "age-limit-nav-menu-title": "5. Age Limits and Minors",
+    "age-limit-label": "5. Age Limits and Minors",
+    "age-limit-description": "The age limit for the ALT Zone game ecosystem is <b>13 years</b>.<br><br>This age limit is based on:<br>? The artistic themes of the game<br>? Community-based features (e.g. chat, clans, Discord)<br>? Participation possibilities within the development community<br><br>The game does not contain graphic or violent content and could be suitable for younger audiences in terms of content. However, the age limit is a deliberate ethical and pedagogical choice.<br><br>Participation of children under 13:<br>? Does not occur in open testing<br>? Does not occur in school-organised testing<br>? Is only possible with explicit parental consent on a case-by-case basis",
 
-    "legal-basis-nav-menu-title": "Legal Basis",
-    "legal-basis-label": "Legal Basis for Processing Personal Data",
+    "discord-nav-menu-title": "6. Discord Community",
+    "discord-label": "6. Discord Community",
+    "discord-description": "Players may optionally join the ALT Zone Discord server. Discord is not required to use the game.<br><br>Within the Discord community:<br>? All moderators are adults<br>? The community is actively moderated<br>? Safe space principles are applied<br><br>Discord is a separate service, and Discord's own privacy policies apply.",
+
+    "analytics-nav-menu-title": "7. Analytics",
+    "analytics-label": "7. Analytics and Educational Use",
+    "analytics-description": "<h3>7.1 Google Analytics</h3>Google Analytics is used for:<br>? General monitoring of website traffic and usage<br>? Website development and usability improvement<br>? Educational purposes during school-based testing, to demonstrate what types of statistical and technical data websites may collect<br><br>IP addresses are anonymized, and analytics data is not linked to user accounts or used for advertising or profiling.<br><br><h3>7.2 GameAnalytics</h3>GameAnalytics is used for:<br>? Game development and balancing<br>? Identifying technical issues and bugs<br>? Educational purposes during school-based testing, to demonstrate what kinds of technical and gameplay-related data digital games may collect<br><br>The data collected is technical and gameplay-related only. It is not used to identify individual players, for profiling, or for commercial exploitation.",
+
+    "review-nav-menu-title": "8. Feedback Collection",
+    "review-label": "8. Feedback Collection",
+    "review-description": "Feedback is collected via Google Forms.<br><br>? Feedback is anonymous or pseudonymous<br>? Providing personal data is not required<br>? Feedback is used to improve the game, website, and educational materials",
+
+    "gameteam-nav-menu-title": "9. Game Creators and Development Team",
+    "gameteam-label": "9. Game Creators and Development Team",
+    "gameteam-description": "The following data is stored for game creators and contributors:<br><br>? Name<br>? Place of residence<br>? Contact details<br><br>This data is used for project coordination and communication. Requests for data removal can be sent to proyaleg@gmail.com.",
+
+    "datasubject-nav-menu-title": "10. Data Subject Rights",
+    "datasubject-label": "10. Data Subject Rights",
+    "datasubject-description": "Users have the right to:<br><br>? Access information about their data<br>? Request correction of inaccurate data<br>? Request deletion of data<br>? Request restriction of processing<br><br>Privacy-related requests can be directed to the data controller via email.",
+
+    "cookies-nav-menu-title": "11. Cookies",
+    "cookies-label": "11. Cookies",
+    "cookies-description": "The ALT Zone website uses cookies and local storage to ensure technical functionality and improve user experience.<br><br>The use of cookies is based on user consent, and cookie preferences are stored.",
+
+    "ethical-principles-nav-menu-title": "12. Ethical Principles",
+    "ethical-principles-label": "12. Ethical Principles",
+    "ethical-principles-description": "ALT Zone activities are guided by the following principles:<br><br>? Respect for privacy<br>? Protection of minors<br>? Transparency<br>? No sale of user data or commercial profiling<br>? Adherence to research and educational ethics",
+
+    "legal-basis-nav-menu-title": "13. Legal Basis",
+    "legal-basis-label": "13. Legal Basis for Processing Personal Data",
     "legal-basis-description": "The legal bases for processing personal data are:<br><br> ● <b>Contract Performance</b>: The processing of the username, password, and other game data is necessary for the execution of the contract made with the user, i.e., the game usage agreement.<br> ● <b>Legitimate Interest</b>: The collection of analytics data to improve the game and enhance the user experience is based on our legitimate interest.<br> ● <b>Legal Obligation</b>: Verifying the user's age ensures compliance with age restrictions and obligations related to the protection of minors' personal data.",
 
-    "review-nav-menu-title": "Feedback Collection",
-    "review-label": "Feedback Collection",
-    "review-description": "Feedback is collected via Google Forms.<br><br>● Feedback is anonymous or pseudonymous<br>● Providing personal data is not required<br>● Feedback is used to improve the game, website, and educational materials",
-
-    "gameteam-nav-menu-title": "Game Creators and Development Team",
-    "gameteam-label": "Game Creators and Development Team",
-    "gameteam-description": "The following data is stored for game creators and contributors:<br><br>● Name<br>● Place of residence<br>● Contact details<br><br>This data is used for project coordination and communication. Requests for data removal can be sent to proyaleg@gmail.com.",
-
-    "datasubject-nav-menu-title": "Data Subject Rights",
-    "datasubject-label": "Data Subject Rights",
-    "datasubject-description": "Users have the right to:<br><br>● Access information about their data<br>● Request correction of inaccurate data<br>● Request deletion of data<br>● Request restriction of processing<br><br>Privacy-related requests can be directed to the data controller via email.",
-
-    "data-retention-nav-menu-title": "Retention",
-    "data-retention-label": "Data Retention",
+    "data-retention-nav-menu-title": "14. Retention",
+    "data-retention-label": "14. Data Retention",
     "data-retention-description": "We retain your personal data as long as necessary to fulfill the purposes described above or until you request the deletion of your data. You can request the deletion of your data at any time by sending an informal request via email to proyaleg@gmail.com. In that case, we will permanently and irrevocably delete all information related to you, unless the law requires its retention.",
 
-    "rights-nav-menu-title": "Rights",
-    "rights-label": "Your Rights",
+    "rights-nav-menu-title": "15. Rights",
+    "rights-label": "15. Your Rights",
     "rights-description": "Under the GDPR, you have the right to:<br> ● <b>Access Data</b>: You can request a copy of the personal data we have stored.<br> ● <b>Correct Data</b>: You can request the correction of incorrect or incomplete data.<br> ● <b>Delete Data</b>: You can request the deletion of your personal data ('right to be forgotten').<br> ● <b>Restrict Processing</b>: You can request the restriction of processing in certain situations.<br> ● <b>Data Portability</b>: You can request that your personal data be provided to you or another data controller in a structured, machine-readable format.<br> ● <b>Object to Processing</b>: You can object to the processing of your personal data if the processing is based on legitimate interest.<br> You can exercise these rights by contacting us via email at proyaleg@gmail.com. If you believe that your personal data has been processed unlawfully, you have the right to file a complaint with the supervisory authority.",
 
-    "security-nav-menu-title": "Protection",
-    "security-label": "Data Protection",
+    "security-nav-menu-title": "16. Protection",
+    "security-label": "16. Data Protection",
     "security-description": "Protecting your data is our top priority. We use appropriate technical and organizational measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction.",
 
-    "changes-nav-menu-title": "Changes",
-    "changes-label": "Changes to the Privacy Policy",
-    "changes-description": "We reserve the right to update this privacy policy as necessary, for example, due to changes in legislation or service development. We recommend reviewing the privacy policy regularly.",
+    "changes-nav-menu-title": "17. Changes",
+    "changes-label": "17. Changes to the Privacy Policy",
+    "changes-description": "This document may be updated as the project or applicable legislation evolves. The current version is always available on the ALT Zone website.",
 
-    "contact-nav-menu-title": "Contacts",
-    "contact-label": "Contact Information",
-    "contact-description": "If you have any questions or concerns regarding this privacy policy or the processing of your personal data, you can contact us via email at proyaleg@gmail.com. <br> <br> Updated: August 23, 2024"
+    "contact-nav-menu-title": "18. Contacts",
+    "contact-label": "18. Contact Information",
+    "contact-description": "If you have any questions or concerns regarding this privacy policy or the processing of your personal data, you can contact us via email at proyaleg@gmail.com."
 }
