@@ -23,8 +23,7 @@ const NewsPage = () => {
     const currentSlug = typeof params.slug === 'string' ? params.slug : undefined;
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
     const directusBaseUrl = envHelper.directusHost;
-    //limit for initial load(no news data fetched yet)
-    const limit = 12;
+    const limit = 6;
     const [currentPage, setCurrentPage] = useState(1);
     const [allNews, setAllNews] = useState<News[]>([]);
     const [hasMoreNewsState, setHasMoreNewsState] = useState<boolean>(false);
