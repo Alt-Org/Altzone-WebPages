@@ -30,9 +30,12 @@ export const Block = (props: Props) => {
                     alt={block.imgAlt}
                 />
             </div>
+
             <div className={cls.Content}>
                 <h2>{block.label}</h2>
+
                 <p className={cls.multilineText}>{block.description}</p>
+
                 <div className={cls.linkWrapper}>
                     {block.links.map((link, index) => (
                         <div
@@ -41,8 +44,8 @@ export const Block = (props: Props) => {
                         >
                             <a
                                 href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target={link.isExternal ? '_blank' : undefined}
+                                rel={link.isExternal ? 'noopener noreferrer' : undefined}
                             >
                                 {link.iconSrc && (
                                     // eslint-disable-next-line @next/next/no-img-element
@@ -52,6 +55,7 @@ export const Block = (props: Props) => {
                                         className={cls.icon}
                                     />
                                 )}
+
                                 {link.text}
                             </a>
                         </div>

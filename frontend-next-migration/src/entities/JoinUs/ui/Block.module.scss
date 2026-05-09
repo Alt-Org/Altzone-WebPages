@@ -1,19 +1,29 @@
 .Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    min-height: 240px;
+
     margin: auto 0;
-    padding: 24px;
+    padding: 40px 48px;
+    gap: 48px;
+
     text-align: left;
 
-    border-radius: var(--border-radius-custom);
+    border-radius: 24px;
     background-color: #1E3544;
-    border: 2px solid black;
-    box-shadow: 0.5rem 0.5rem black;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    border: 2px solid black;
+    box-shadow: 8px 8px 0 black;
 
     .Content {
-        flex-grow: 1;
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .multilineText {
@@ -22,28 +32,26 @@
 
     .ImageWrapper {
         width: fit-content;
-        height: 236px;
+        height: auto;
 
         display: flex;
         flex-shrink: 0;
         align-items: center;
-
-        margin: auto 10px;
-        padding: 10px;
+        justify-content: center;
 
         img {
-            width: 9em;
-            height: 9em;
-            object-fit: center;
+            width: 10em;
+            height: 10em;
+            object-fit: contain;
         }
     }
 
     h2 {
-        padding: 15px 0 0 0;
-        margin: 0;
+        margin: 0 0 16px;
 
         color: var(--primary-color);
         font: var(--font-sw-xxl);
+        line-height: 1.1;
 
         white-space: pre-line;
     }
@@ -54,18 +62,23 @@
     }
 
     p {
+        max-width: 720px;
+
+        margin: 0 0 24px;
+
         font: var(--font-dm-s);
-        margin: 15px 0;
 
         color: var(--text-color);
 
-        line-height: 1.1em;
+        line-height: 1.5;
         text-align: left;
-
-        align-self: flex-start;
     }
 
     a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
         font: var(--font-dm-s);
 
         color: var(--primary-color) !important;
@@ -85,23 +98,35 @@
     .linkWrapper {
         padding: 0;
         margin: 0;
-        line-height: 0.8em;
+        line-height: 1.4;
     }
 
     .linkWrapper:has(img) {
         display: flex;
         align-items: center;
+
         margin: 0 10px 0 0;
 
         a {
             display: inline-flex;
+            align-items: center;
             flex-direction: row;
 
             img {
-                color: #ffa100;
-                width: 2.7vh;
+                width: 28px;
+                height: 28px;
 
                 transition: transform 0.15s ease;
+
+                filter:
+                    brightness(0)
+                    saturate(100%)
+                    invert(70%)
+                    sepia(77%)
+                    saturate(2247%)
+                    hue-rotate(360deg)
+                    brightness(101%)
+                    contrast(105%);
             }
 
             &:hover img {
@@ -114,17 +139,22 @@
 @media (max-width: breakpoint(md)) {
     .Container {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
 
         width: 100%;
 
         margin: auto;
-        padding: 10px 0 0;
+        padding: 24px;
+        gap: 24px;
 
-        text-align: center;
+        text-align: left;
 
         box-shadow: 0.2rem 0.2rem #121212;
+
+        .Content {
+            width: 100%;
+        }
 
         .linkWrapper {
             margin: 0;
@@ -145,18 +175,22 @@
             img {
                 width: 8em;
                 height: 8em;
-                object-fit: center;
+                object-fit: contain;
             }
         }
 
+        h2 {
+            margin: 0 0 12px;
+        }
+
         p {
+            max-width: 100%;
+
+            margin: 0 0 20px;
+
             font: var(--font-dm-xs);
 
-            margin: 10px auto;
-            padding: 0 10px;
-
-            text-align: center;
-            max-width: 100%;
+            text-align: left;
         }
 
         .linkWrapper:has(img) {
@@ -172,6 +206,8 @@
 
 @media (min-width: breakpoint(md)) and (max-width: 900px) {
     .Container {
+        padding: 32px;
+
         .ImageWrapper {
             width: fit-content;
             height: auto;
@@ -186,7 +222,7 @@
             img {
                 width: 8em;
                 height: 8em;
-                object-fit: center;
+                object-fit: contain;
             }
         }
     }

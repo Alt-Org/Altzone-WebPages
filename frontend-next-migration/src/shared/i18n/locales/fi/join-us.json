@@ -1,8 +1,8 @@
 {
-    "join-us": "Tule mukaan!",
-    "head-title": "Tule mukaan - ALT Zone",
+    "join-us": "Ota yhteyttä",
+    "head-title": "Ota yhteyttä - ALT Zone",
     "head-description": "Liity ALT Zone -projektiin! Tule testaajaksi, tutustu opetuspaketteihin, hae työharjoitteluun, liity Discord-yhteisöömme tai jaa palautteesi pelimme parantamiseksi.",
-    "head-keywords": "ALT Zone tule mukaan, testaaja, opetuspaketti, työharjoittelu, vapaaehtoistyö, Discord",
+    "head-keywords": "ALT Zone yhteystiedot, testaaja, opetuspaketti, työharjoittelu, vapaaehtoistyö, Discord",
     "og-title": "Liity ALT Zone -projektiin",
     "og-description": "Ole osa ALT Zone -matkaa — testaa peliämme, tutustu opetusvälineisiin, liity Discordiin, hae työharjoittelua tai lähetä meille palautetta.",
 
@@ -13,12 +13,20 @@
     "block-label-instagram": "Keskustele lisää \nsomessa",
     "block-label-discord": "Tule Testaajaksi",
 
+    "block-label-getInTouchAndFollow": "Ole yhteydessä ja seuraa",
+    "block-label-communityAndOpportunities": "Työyhteisö ja mahdollisuudet",
+    "block-label-educationProfessionals": "Opetuksen ammattilaiselle",
+
     "block-description-discord": "Tule kertomaan ideasi liittymällä Discord- \npeliyhteisöömme",
     "block-description-connection": "Mikäli kiinnostuit projektistamme, ota rohkeasti yhteyttä",
     "block-description-teachers": "Ilmoittaudu testaamaan opetuspakettia",
     "block-description-duunitori": "Tarjoamme mahdollisuuksien mukaan palkatonta työkokeilua ja -harjoittelua projektimme parissa. Olet tervetullut tekemään hommia myös vapaaehtoisena. \n\nTarkastele avoimia paikkoja Duunitorista.",
-    "block-description-feedback": "Palautelomakkeen tavoite on kerätä palautetta \nnettisivuista ja mobiilipelistä jatkokehitystä varten. \nPalautteesi on ensisijaisen tärkeää ja  käsittelemme \npalautteet yhdessä kehitystiimin kanssa. \n\nKiitos vastauksistasi jo etukäteen!",
+    "block-description-feedback": "Palautelomakkeen tavoite on kerätä palautetta \nnettisivuista ja mobiilipelistä jatkokehitystä varten. \nPalautteesi on ensisijaisen tärkeää ja käsittelemme \npalautteet yhdessä kehitystiimin kanssa. \n\nKiitos vastauksistasi jo etukäteen!",
     "block-description-instagram": "",
+
+    "block-description-getInTouchAndFollow": "Mikäli kiinnostuit projektistamme, ota rohkeasti yhteyttä. Seuraa meitä myös somessa!",
+    "block-description-communityAndOpportunities": "Tule kertomaan ideasi liittymällä Discord-peliyhteisöömme! Tarjoamme mahdollisuuksien mukaan palkatonta työkokeilua ja -harjoittelua projektiemme parissa. Olet tervetullut tekemään hommia myös vapaaehtoisena. Tarkastele myös avoimia paikkoja Duunitorissa.",
+    "block-description-educationProfessionals": "Ilmoittaudu testaamaan opetuspakettia!",
 
     "block-link-text-discord": "discord.gg/mgjQkCR2Fg",
     "block-link-text-teacherPg": "Tutustu opetuspakettiin",
@@ -31,11 +39,15 @@
     "block-link-text-icone": "",
 
     "block-image-alt-discord": "Discord",
-    "block-image-alt-connection": "Reddit",
-    "block-image-alt-teachers": "Teacher!",
+    "block-image-alt-connection": "Yhteystiedot",
+    "block-image-alt-teachers": "Opetus",
     "block-image-alt-duunitori": "Duunitori",
-    "block-image-alt-feedback": "Feedback",
+    "block-image-alt-feedback": "Palaute",
     "block-image-alt-instagram": "Instagram",
+
+    "block-image-alt-getInTouchAndFollow": "Ota yhteyttä",
+    "block-image-alt-communityAndOpportunities": "Työyhteisö ja mahdollisuudet",
+    "block-image-alt-educationProfessionals": "Opetuksen ammattilaiselle",
 
     "block-website": "www.example.com"
 }

@@ -1,16 +1,15 @@
 .Container {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    gap: 35px;
-
-    margin: 10px auto 40px;
-    padding-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 48px;
 }
 
-@media screen and (max-width: breakpoint(sm)) {
+@media screen and (max-width: breakpoint(md)) {
     .Container {
-        gap: 20px;
-        margin: 0 auto;
+        gap: 24px;
+        padding-bottom: 32px;
     }
 }
