@@ -22,6 +22,10 @@ interface Section {
 export type Props = {
     sections: Section[];
     title: string;
+    /**
+     * Enables accordion mode for section content.
+     * When true, sections are rendered as collapsible panels instead of always-expanding blocks.
+     */
     enableAccordion?: boolean;
 };
 
@@ -162,16 +166,36 @@ const WikiContentWithSideBar = (props: Props) => {
     );
 };
 
-// Collapsible Section Component for Accordion Mode
+/**
+ * Props for a single accordion section wrapper.
+ *
+ * The accordion wrapper manages the section's expanded/collapsed state,
+ * renders the section header as a toggle button, and exposes the content area.
+ */
 interface CollapsibleSectionProps {
     section: Section;
+    /** Whether the accordion section is currently expanded. */
     isExpanded: boolean;
+    /** Callback to toggle the expanded/collapsed state of the section. */
     onToggle: () => void;
+    /** Tracks image loading failures per section. */
     imageErrors: { [key: string]: boolean };
+    /** Callback invoked when the section image fails to load. */
     onImageError: (id: string) => void;
+    /** Combined CSS module modifiers for responsive layout. */
     combinedModCss: Mods;
 }
 
+/**
+ * Renders a collapsible accordion section.
+ *
+ * When accordion mode is enabled, each section is wrapped in this component.
+ * It controls the animated expand/collapse behavior and renders the section header,
+ * body content, and optional image.
+ *
+ * @param props - The props for the collapsible section wrapper.
+ * @returns The rendered collapsible section.
+ */
 const CollapsibleSectionWrapper = (props: CollapsibleSectionProps) => {
     const { section, isExpanded, onToggle, imageErrors, onImageError, combinedModCss } = props;
     const contentRef = useRef<HTMLDivElement>(null);

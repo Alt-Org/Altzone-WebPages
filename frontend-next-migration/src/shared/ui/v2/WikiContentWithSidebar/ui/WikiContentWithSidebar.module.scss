@@ -142,7 +142,22 @@ $touchSize: 1024px;
     }
 }
 
-/* Accordion/Collapsible Section Styles */
+/**
+ * Accordion Styles Module
+ * 
+ * This section contains all CSS classes for the accordion/collapsible section functionality.
+ * The accordion allows sections to expand and collapse with smooth animations.
+ */
+
+/**
+ * Main collapsible section container
+ * 
+ * @styling
+ * - Creates the outer wrapper for each accordion item
+ * - Applies background color, border, and shadow styling consistent with section design
+ * - Provides container for header and collapsible content
+ * - Enhanced shadow on hover for visual feedback
+ */
 .collapsibleSection {
     width: 100%;
     margin: 0.75rem 0;
@@ -158,7 +173,16 @@ $touchSize: 1024px;
     }
 }
 
-/* Section Header (Clickable) */
+/**
+ * Section header (clickable button area)
+ * 
+ * @styling
+ * - Flexbox layout for aligning title and chevron icon
+ * - Full width, padded clickable area
+ * - Subtle background color change on hover for interactivity feedback
+ * - Focus visible outline for keyboard navigation accessibility
+ * - Text alignment set to left for proper content alignment
+ */
 .sectionHeader {
     display: flex;
     align-items: center;
@@ -181,7 +205,15 @@ $touchSize: 1024px;
     }
 }
 
-/* Section Title */
+/**
+ * Section title text styling
+ * 
+ * @styling
+ * - Primary color to match component branding
+ * - Large font size (font-sw-xl) for prominence
+ * - Flexible width to accommodate long titles
+ * - Word-break enabled to handle long text gracefully
+ */
 .sectionTitle {
     color: var(--primary-color);
     font: var(--font-sw-xl);
@@ -190,7 +222,16 @@ $touchSize: 1024px;
     word-break: break-word;
 }
 
-/* Chevron Icon Container */
+/**
+ * Chevron icon container for expand/collapse indicator
+ * 
+ * @styling
+ * - Initially rotated 270 degrees (pointing right/left depending on RTL)
+ * - Rotates to 0 degrees when section is expanded
+ * - Smooth transition animation (0.3s ease)
+ * - Flexbox centered alignment
+ * - No flex-shrink to maintain consistent size
+ */
 .chevronIcon {
     display: flex;
     align-items: center;
@@ -208,11 +249,28 @@ $touchSize: 1024px;
     }
 }
 
+/**
+ * Chevron icon rotated state
+ * 
+ * @styling
+ * - Applied when accordion section is expanded
+ * - Rotates chevron to 0 degrees (pointing down)
+ * - Pairs with animation defined in .chevronIcon
+ */
 .chevronIcon.rotated {
     transform: rotate(0deg);
 }
 
-/* Content Area with Smooth Transitions */
+/**
+ * Collapsible content area wrapper
+ * 
+ * @styling
+ * - Max-height starts at 0px (fully collapsed)
+ * - Content hidden when collapsed (overflow: hidden)
+ * - Smooth height and opacity transitions for expand/collapse animation
+ * - Opacity transition delayed to create staggered animation effect
+ * - Recalculates max-height dynamically based on content size
+ */
 .sectionContent {
     max-height: 0;
     overflow: hidden;
@@ -222,6 +280,14 @@ $touchSize: 1024px;
     opacity: 0;
 }
 
+/**
+ * Expanded state for section content
+ * 
+ * @styling
+ * - Applied to .sectionContent when parent .collapsibleSection.expanded
+ * - Opacity transitions to full visibility
+ * - Transition timing adjusted for smooth appear animation
+ */
 .collapsibleSection.expanded .sectionContent {
     opacity: 1;
     transition:
@@ -229,7 +295,15 @@ $touchSize: 1024px;
         opacity 0.2s ease;
 }
 
-/* Inner Content Wrapper */
+/**
+ * Inner content wrapper inside collapsible area
+ * 
+ * @styling
+ * - Padding applied to create spacing around content
+ * - Contains paragraphs and images with consistent typography
+ * - Paragraph styling with white color, readable line-height
+ * - Link colors with hover transitions for interactivity
+ */
 .contentInner {
     padding: 0 1.5rem 1.5rem 1.5rem;
 
@@ -252,6 +326,8 @@ $touchSize: 1024px;
         }
     }
 }
+
+/* Accordion/Collapsible Section Styles */
 
 .sectionImage {
     display: block;

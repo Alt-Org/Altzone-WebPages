@@ -1,4 +1,15 @@
-/* Privacy Page Container */
+/**
+ * Privacy Page Styles Module
+ *
+ * This module contains all the styling for the Privacy Policy page component.
+ * It provides responsive layout and visual styling for the privacy policy content,
+ * including the main container, title, accordion sections, and info boxes.
+ */
+
+/**
+ * Main container for the entire privacy page
+ * Provides the overall layout structure and spacing
+ */
 .pageContainer {
     display: flex;
     flex-direction: column;
@@ -8,7 +19,10 @@
     min-height: 100vh;
 }
 
-/* Title at the top of the page */
+/**
+ * Main title styling for the privacy policy page
+ * Uses primary color and large font size for prominence
+ */
 .pageTitle {
     color: var(--primary-color);
     font: var(--font-sw-5xl);
@@ -17,7 +31,10 @@
     text-align: center;
 }
 
-/* Container wrapper for page content and sections */
+/**
+ * Container for the accordion content and sections
+ * Provides background styling and spacing for the main content area
+ */
 .accordionContainer {
     width: 100%;
     max-width: 100%;
@@ -27,7 +44,10 @@
     border-radius: var(--border-radius-figmadesktop);
 }
 
-/* Info/Description Box - appears below title and before accordion items */
+/**
+ * Information box that appears below the title and before accordion items
+ * Used for displaying page descriptions or important notices
+ */
 .infoBox {
     width: 100%;
     padding: 2rem;
@@ -39,31 +59,53 @@
     font: var(--font-dm-m);
     line-height: 1.6;
 
+    /**
+     * Paragraph styling within the info box
+     * Provides consistent spacing and font size for text content
+     */
     p {
         margin: 0.5rem 0;
         font-size: 0.95rem;
     }
 }
 
-/* Responsive adjustments for mobile */
+/**
+ * Responsive design adjustments for mobile devices
+ * Optimizes layout and typography for smaller screens
+ */
 @media (max-width: 500px) {
+    /**
+     * Reduced padding for mobile container
+     */
     .pageContainer {
         padding: 1rem;
     }
 
+    /**
+     * Smaller font size for mobile title
+     */
     .pageTitle {
         font: var(--font-sw-xxxl);
         margin-bottom: 1.5rem;
     }
 
+    /**
+     * Reduced padding for mobile accordion container
+     */
     .accordionContainer {
         padding: 1.5rem 1rem;
     }
 
+    /**
+     * Adjusted spacing and padding for mobile info box
+     */
     .infoBox {
         padding: 1.5rem;
         margin: 1rem 0 2rem 0;
 
+        /**
+         * Smaller font size for mobile paragraphs
+         */
         p {
             font-size: 0.9rem;
         }
