@@ -67,7 +67,6 @@ export const makeBlocksWithI18n = (
 export const makeGetInTouchAndFollowBlock = makeBlocksWithI18n(
     'getInTouchAndFollow',
     [
-        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
         { text: 'phone', url: 'tel:+358442407396', isExternal: true },
         {
             text: 'icone',
@@ -93,6 +92,7 @@ export const makeGetInTouchAndFollowBlock = makeBlocksWithI18n(
             isExternal: true,
             iconSrc: igIcon.src,
         },
+        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
     ],
     ConnectionImage.src.toString(),
 );

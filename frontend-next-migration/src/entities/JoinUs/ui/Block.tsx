@@ -12,14 +12,15 @@ import cls from './Block.module.scss';
 
 interface Props {
     block: BlockSection;
+    reverse?: boolean;
 }
 
 export const Block = (props: Props) => {
-    const { block } = props;
+    const { block, reverse = false } = props;
 
     return (
         <div
-            className={cls.Container}
+            className={`${cls.Container} ${reverse ? cls.Reverse : ''}`}
             data-testid="block"
         >
             <div className={cls.ImageWrapper}>
