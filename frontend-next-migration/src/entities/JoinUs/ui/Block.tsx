@@ -19,6 +19,9 @@ interface Props {
 export const Block = (props: Props) => {
     const { block, reverse = false } = props;
 
+    const socialLinks = block.links.filter((link) => link.iconSrc);
+    const normalLinks = block.links.filter((link) => !link.iconSrc);
+
     return (
         <div
             className={`${cls.Container} ${reverse ? cls.Reverse : ''}`}
@@ -39,7 +42,7 @@ export const Block = (props: Props) => {
                 <p className={cls.multilineText}>{block.description}</p>
 
                 <div className={cls.linkWrapper}>
-                    {block.links.map((link, index) => (
+                    {normalLinks.slice(0, 1).map((link, index) => (
                         <div
                             key={index}
                             className={cls.linkWrapper}
@@ -49,18 +52,53 @@ export const Block = (props: Props) => {
                                 target={link.isExternal ? '_blank' : undefined}
                                 rel={link.isExternal ? 'noopener noreferrer' : undefined}
                             >
-                                {link.iconSrc && (
+                                {link.text}
+
+                                {link.showExternalIcon && (
                                     // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                        src={externalLinkIcon.src}
+                                        alt="External link"
+                                        className={cls.ExternalIcon}
+                                    />
+                                )}
+                            </a>
+                        </div>
+                    ))}
+
+                    {socialLinks.length > 0 && (
+                        <div className={cls.socialLinks}>
+                            {socialLinks.map((link, index) => (
+                                <a
+                                    key={index}
+                                    href={link.url}
+                                    target={link.isExternal ? '_blank' : undefined}
+                                    rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                                >
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
                                         src={link.iconSrc}
                                         alt={`${link.text} icon`}
                                         className={cls.icon}
                                     />
-                                )}
+                                </a>
+                            ))}
+                        </div>
+                    )}
 
+                    {normalLinks.slice(1).map((link, index) => (
+                        <div
+                            key={index}
+                            className={cls.linkWrapper}
+                        >
+                            <a
+                                href={link.url}
+                                target={link.isExternal ? '_blank' : undefined}
+                                rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                            >
                                 {link.text}
 
-                                {link.isExternal && !link.iconSrc && (
+                                {link.showExternalIcon && (
                                     // eslint-disable-next-line @next/next/no-img-element
                                     <img
                                         src={externalLinkIcon.src}

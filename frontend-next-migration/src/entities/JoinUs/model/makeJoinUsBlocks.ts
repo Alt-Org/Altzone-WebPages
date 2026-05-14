@@ -3,9 +3,7 @@ import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import ConnectionImage from '@/shared/assets/images/heros/mirror/Mirror.png';
 import teachersImage from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
 import feedbackImage from '@/shared/assets/images/heros/einstein/einstein.png';
-import duunitoriImage from '@/shared/assets/images/heros/purple-girls/purpel-girls-main.png';
 import discordImage from '@/shared/assets/images/heros/conman/conman.png';
-import instagramImage from '@/shared/assets/images/heros/fate-priest/Believer.png';
 import igIcon from '@/shared/assets/images/Insta2.svg';
 import fbdIcon from '@/shared/assets/images/Facebook2.svg';
 import discordIcon from '@/shared/assets/images/Discord2.svg';
@@ -57,6 +55,7 @@ export const makeBlocksWithI18n = (
                 text: t(`block-link-text-${linkItem.text}`),
                 isExternal: linkItem.isExternal ?? false,
                 iconSrc: linkItem.iconSrc,
+                showExternalIcon: linkItem.showExternalIcon,
             })),
             img: img || '',
             imgAlt: t(`block-image-alt-${section}`),
@@ -100,8 +99,24 @@ export const makeGetInTouchAndFollowBlock = makeBlocksWithI18n(
 export const makeCommunityAndOpportunitiesBlock = makeBlocksWithI18n(
     'communityAndOpportunities',
     [
-        { text: 'discord', url: AppExternalLinks.discord, isExternal: true },
-        { text: 'duunitori', url: AppExternalLinks.duunitori, isExternal: true },
+        {
+            text: 'discord',
+            url: AppExternalLinks.discord,
+            isExternal: true,
+            showExternalIcon: true,
+        },
+        {
+            text: 'news',
+            url: '/fi/news',
+            isExternal: true,
+            showExternalIcon: true,
+        },
+        {
+            text: 'duunitori',
+            url: AppExternalLinks.duunitori,
+            isExternal: true,
+            showExternalIcon: true,
+        },
     ],
     discordImage.src.toString(),
 );
@@ -109,34 +124,14 @@ export const makeCommunityAndOpportunitiesBlock = makeBlocksWithI18n(
 export const makeEducationProfessionalsBlock = makeBlocksWithI18n(
     'educationProfessionals',
     [
-        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
         { text: 'phone', url: 'tel:+358442407396', isExternal: true },
-        { text: 'teacherPg', url: AppExternalLinks.dlpackage, isExternal: true },
-    ],
-    teachersImage.src.toString(),
-);
-
-export const makeDiscordBlock = makeBlocksWithI18n(
-    'discord',
-    [{ text: 'discord', url: AppExternalLinks.discord, isExternal: true }],
-    discordImage.src.toString(),
-);
-
-export const makeRedditBlock = makeBlocksWithI18n(
-    'connection',
-    [
+        {
+            text: 'teacherPg',
+            url: AppExternalLinks.dlpackage,
+            isExternal: true,
+            showExternalIcon: true,
+        },
         { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
-        { text: 'phone', url: 'tel:+358442407396', isExternal: true },
-    ],
-    ConnectionImage.src.toString(),
-);
-
-export const makeTeachersBlock = makeBlocksWithI18n(
-    'teachers',
-    [
-        { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
-        { text: 'phone', url: 'tel:+358442407396', isExternal: true },
-        { text: 'teacherPg', url: AppExternalLinks.dlpackage, isExternal: true },
     ],
     teachersImage.src.toString(),
 );
@@ -144,45 +139,18 @@ export const makeTeachersBlock = makeBlocksWithI18n(
 export const makeFeedbackBlock = makeBlocksWithI18n(
     'feedback',
     [
-        { text: 'feedbackWep', url: AppExternalLinks.googleWebFeedback, isExternal: true },
-        { text: 'feedbackGame', url: AppExternalLinks.googleFeedback, isExternal: true },
+        {
+            text: 'feedbackWep',
+            url: AppExternalLinks.googleWebFeedback,
+            isExternal: true,
+            showExternalIcon: true,
+        },
+        {
+            text: 'feedbackGame',
+            url: AppExternalLinks.googleFeedback,
+            isExternal: true,
+            showExternalIcon: true,
+        },
     ],
     feedbackImage.src.toString(),
-);
-
-export const makeDuunitoriBlock = makeBlocksWithI18n(
-    'duunitori',
-    [{ text: 'duunitori', url: AppExternalLinks.duunitori, isExternal: true }],
-    duunitoriImage.src.toString(),
-);
-
-export const makeInstagramBlock = makeBlocksWithI18n(
-    'instagram',
-    [
-        {
-            text: 'icone',
-            url: AppExternalLinks.discord,
-            isExternal: true,
-            iconSrc: discordIcon.src,
-        },
-        {
-            text: 'icone',
-            url: AppExternalLinks.facebook,
-            isExternal: true,
-            iconSrc: fbdIcon.src,
-        },
-        {
-            text: 'icone',
-            url: AppExternalLinks.youtube,
-            isExternal: true,
-            iconSrc: ytIcon.src,
-        },
-        {
-            text: 'icone',
-            url: AppExternalLinks.instagram,
-            isExternal: true,
-            iconSrc: igIcon.src,
-        },
-    ],
-    instagramImage.src.toString(),
 );

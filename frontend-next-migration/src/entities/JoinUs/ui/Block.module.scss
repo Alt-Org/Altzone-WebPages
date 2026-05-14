@@ -84,22 +84,21 @@
 
     a {
         display: inline-flex;
+        flex-direction: row;
         align-items: center;
-        gap: 8px;
+        justify-content: center;
+
+        gap: 4px;
 
         font: var(--font-dm-s);
 
         color: var(--primary-color) !important;
         text-decoration: none;
 
+        white-space: nowrap;
+
         &:hover {
             color: var(--secondary-color) !important;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            padding: 0 0 10px;
         }
     }
 
@@ -108,7 +107,9 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        gap: 24px;
+
+        column-gap: 24px;
+        row-gap: 12px;
 
         padding: 0;
         margin: 0;
@@ -116,11 +117,30 @@
         line-height: 1.4;
     }
 
-    .linkWrapper:has(img) {
+    /* text link spacing */
+    .linkWrapper:not(:has(.icon)) {
+        margin: 0 24px;
+    }
+
+    /* social icon spacing */
+    .linkWrapper:has(.icon) {
+        margin: 0 -12px;
+    }
+
+    .socialLinks {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 4px;
+    }
+
+    .linkWrapper:has(.icon) {
         display: flex;
         align-items: center;
 
-        margin: 0;
+        margin-top: 0;
+        margin-bottom: 0;
 
         a {
             display: inline-flex;
@@ -152,13 +172,16 @@
 }
 
 .ExternalIcon {
-    width: 10px !important;
-    height: 10px !important;
+    width: 0.8em;
+    height: 0.8em;
 
-    min-width: 10px;
+    display: inline-block;
+
+    margin-left: 0.2em;
+
+    vertical-align: middle;
 
     object-fit: contain;
-    flex-shrink: 0;
 }
 
 .Reverse .ImageWrapper {
@@ -174,9 +197,11 @@
 
         width: 100%;
 
+        min-height: 520px;
+
         margin: auto;
-        padding: 24px;
-        gap: 24px;
+        padding: 56px 24px;
+        gap: 40px;
 
         text-align: center;
 
@@ -184,11 +209,38 @@
 
         .Content {
             width: 100%;
+
+            gap: 40px;
+        }
+
+        .Content > .linkWrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            row-gap: 20px;
         }
 
         .linkWrapper {
             margin: 0;
             padding: 0;
+
+            width: auto;
+        }
+
+        .socialLinks {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            gap: 4px;
+
+            img {
+                width: 32px !important;
+                height: 32px !important;
+            }
         }
 
         .ImageWrapper {
@@ -214,45 +266,91 @@
         }
 
         h2 {
-            margin: 0 0 12px;
+            margin: 0 0 36px;
         }
 
         p {
-            max-width: 100%;
+            max-width: 270px;
 
-            margin: 0 0 20px;
+            margin: 8px 0 56px;
 
-            font: var(--font-dm-xs);
+            font-size: 1.9rem;
+            font-weight: 400;
+            line-height: 1.65;
 
             text-align: center;
         }
 
-        .linkWrapper:has(img) {
+        a {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.9rem;
+            font-weight: 400;
+            line-height: 1.65;
+
+            gap: 2px;
+
+            text-align: center;
+
+            white-space: nowrap;
+        }
+
+        .ExternalIcon {
+            display: block;
+
+            width: 0.8em;
+            height: 0.8em;
+
+            margin-top: 2px;
+            margin-left: 0;
+        }
+
+        .linkWrapper:has(.icon) {
             display: flex;
             align-items: center;
 
-            width: 100%;
+            width: auto;
 
             margin: 0;
         }
     }
 }
 
-@media (min-width: breakpoint(md)) and (max-width: 900px) {
+@media (min-width: breakpoint(md)) and (max-width: 1200px) {
     .Container {
-        padding: 32px;
+        padding: 32px 32px 32px 140px;
 
         .ImageWrapper {
+            top: 24px;
+            left: 24px;
+            right: auto;
+
+            transform: none;
+
             img {
-                width: 8em;
-                height: 8em;
+                width: 6em;
+                height: 6em;
+            }
+        }
+    }
+
+    .Reverse.Container {
+        padding: 32px 140px 32px 32px;
+
+        .ImageWrapper {
+            top: 24px;
+            right: 24px;
+            left: auto;
+
+            transform: none;
+
+            img {
+                width: 6em;
+                height: 6em;
             }
         }
     }
 }
-
-
-
-
-
-
