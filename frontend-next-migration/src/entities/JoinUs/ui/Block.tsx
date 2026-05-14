@@ -1,5 +1,6 @@
 import type { BlockSection } from '../types';
 import cls from './Block.module.scss';
+import externalLinkIcon from '@/shared/assets/icons/ExternalLink.svg';
 
 /**
  * Block Component
@@ -58,6 +59,15 @@ export const Block = (props: Props) => {
                                 )}
 
                                 {link.text}
+
+                                {link.isExternal && !link.iconSrc && (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                        src={externalLinkIcon.src}
+                                        alt="External link"
+                                        className={cls.ExternalIcon}
+                                    />
+                                )}
                             </a>
                         </div>
                     ))}

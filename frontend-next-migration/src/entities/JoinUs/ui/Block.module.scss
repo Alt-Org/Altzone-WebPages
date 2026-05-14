@@ -127,7 +127,7 @@
             align-items: center;
             flex-direction: row;
 
-            img {
+            img:not(.ExternalIcon) {
                 width: 28px;
                 height: 28px;
 
@@ -144,11 +144,21 @@
                     contrast(105%);
             }
 
-            &:hover img {
+            &:hover img:not(.ExternalIcon) {
                 transform: scale(1.1);
             }
         }
     }
+}
+
+.ExternalIcon {
+    width: 10px !important;
+    height: 10px !important;
+
+    min-width: 10px;
+
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .Reverse .ImageWrapper {
