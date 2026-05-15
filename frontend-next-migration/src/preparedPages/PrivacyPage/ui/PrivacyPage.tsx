@@ -99,6 +99,17 @@ const PrivacyPage = (props: Props) => {
     );
 };
 
+/**
+ * AccordionSection component represents an individual collapsible section within the privacy policy page.
+ *
+ * @param props - Component props
+ * @param props.section - Section data including id, label, description, and image info
+ * @param props.isExpanded - Whether the section is currently expanded
+ * @param props.onToggle - Callback to toggle the expanded/collapsed state of the section
+ * @param props.imageErrors - Object tracking image loading errors by section ID
+ * @param props.onImageError - Callback invoked when the section image fails to load
+ * @returns JSX element representing a single accordion section
+ */
 interface AccordionSectionProps {
     section: Section;
     isExpanded: boolean;
@@ -107,6 +118,7 @@ interface AccordionSectionProps {
     onImageError: (id: string) => void;
 }
 
+/** AccordionSection component that renders a collapsible section with header and content */
 const AccordionSection = (props: AccordionSectionProps) => {
     const { section, isExpanded, onToggle, imageErrors, onImageError } = props;
     const contentRef = useRef<HTMLDivElement>(null);
