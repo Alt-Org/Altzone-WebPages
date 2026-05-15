@@ -6,10 +6,6 @@
  * including the main container, title, accordion sections, and info boxes.
  */
 
-/**
- * Main container for the entire privacy page
- * Provides the overall layout structure and spacing
- */
 .pageContainer {
     display: flex;
     flex-direction: column;
@@ -19,10 +15,6 @@
     min-height: 100vh;
 }
 
-/**
- * Main title styling for the privacy policy page
- * Uses primary color and large font size for prominence
- */
 .pageTitle {
     color: var(--primary-color);
     font: var(--font-sw-5xl);
@@ -31,10 +23,6 @@
     text-align: center;
 }
 
-/**
- * Container for the accordion content and sections
- * Provides background styling and spacing for the main content area
- */
 .accordionContainer {
     width: 100%;
     max-width: 100%;
@@ -44,10 +32,6 @@
     border-radius: var(--border-radius-figmadesktop);
 }
 
-/**
- * Information box that appears below the title and before accordion items
- * Used for displaying page descriptions or important notices
- */
 .infoBox {
     width: 100%;
     padding: 2rem;
@@ -59,53 +43,229 @@
     font: var(--font-dm-m);
     line-height: 1.6;
 
-    /**
-     * Paragraph styling within the info box
-     * Provides consistent spacing and font size for text content
-     */
     p {
         margin: 0.5rem 0;
         font-size: 0.95rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+
+        &:first-child {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
     }
 }
 
-/**
- * Responsive design adjustments for mobile devices
- * Optimizes layout and typography for smaller screens
- */
+.accordionWrapper {
+    width: 100%;
+}
+
+.collapsibleSection {
+    width: 100%;
+    margin: 0.75rem 0;
+    background-color: var(--background);
+    border-radius: var(--border-radius-figmadesktop);
+    border: 4px solid var(--drop-shadows);
+    box-shadow: 5px 7px var(--drop-shadows);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 6px 8px var(--drop-shadows);
+    }
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: left;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: -2px;
+    }
+}
+
+.sectionTitle {
+    color: var(--primary-color);
+    font: var(--font-sw-xl);
+    margin: 0;
+    flex: 1;
+    word-break: break-word;
+}
+
+.chevronIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    width: 24px;
+    height: 24px;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.chevronIcon.rotated {
+    transform: rotate(0deg);
+}
+
+.sectionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease 0.05s;
+    opacity: 0;
+}
+
+.collapsibleSection.expanded .sectionContent {
+    opacity: 1;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease;
+}
+
+.contentInner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+
+    p {
+        color: var(--white);
+        font: var(--font-dm-m);
+        line-height: 1.6;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        margin: 0;
+
+        a {
+            color: var(--inverted-primary-color);
+            text-decoration: underline;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+    }
+}
+
+.contentImage {
+    margin-top: 1.5rem;
+    border-radius: var(--border-radius-figmadesktop);
+    overflow: hidden;
+}
+
+.sectionImage {
+    display: block;
+    margin: 5% auto 0;
+    border-radius: 10px;
+    max-height: 350px;
+    width: auto;
+    object-fit: contain;
+
+    box-shadow: 0 0 4px var(--primary-color);
+}
+
+@media screen and (min-width: breakpoint(md)) {
+    .pageContainer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .collapsibleSection {
+        margin: 0.5rem 0;
+    }
+
+    .sectionHeader {
+        padding: 1rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sectionTitle {
+        font: var(--font-dm-bold-l);
+    }
+
+    .contentInner {
+        padding: 0 1rem 1rem 1rem;
+
+        p {
+            font-size: 0.85rem;
+        }
+    }
+
+    .chevronIcon {
+        width: 20px;
+        height: 20px;
+        margin-left: 0.75rem;
+    }
+}
+
+/* Accessibility: Ensure tap targets are large enough on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .sectionHeader {
+        padding: 1.25rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+}
+
 @media (max-width: 500px) {
-    /**
-     * Reduced padding for mobile container
-     */
     .pageContainer {
         padding: 1rem;
     }
 
-    /**
-     * Smaller font size for mobile title
-     */
     .pageTitle {
         font: var(--font-sw-xxxl);
         margin-bottom: 1.5rem;
     }
 
-    /**
-     * Reduced padding for mobile accordion container
-     */
     .accordionContainer {
         padding: 1.5rem 1rem;
     }
 
-    /**
-     * Adjusted spacing and padding for mobile info box
-     */
     .infoBox {
         padding: 1.5rem;
         margin: 1rem 0 2rem 0;
 
-        /**
-         * Smaller font size for mobile paragraphs
-         */
+        p {
+            font-size: 0.9rem;
+        }
+    }
+
+    .sectionHeader {
+        padding: 1rem;
+        border-radius: calc(var(--border-radius-figmadesktop) * 0.75);
+    }
+
+    .sectionTitle {
+        font-size: 1rem;
+    }
+
+    .contentInner {
+        padding: 1rem 1rem 1rem 0;
+
         p {
             font-size: 0.9rem;
         }

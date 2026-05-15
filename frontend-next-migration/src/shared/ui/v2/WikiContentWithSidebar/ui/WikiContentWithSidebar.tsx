@@ -174,15 +174,10 @@ const WikiContentWithSideBar = (props: Props) => {
  */
 interface CollapsibleSectionProps {
     section: Section;
-    /** Whether the accordion section is currently expanded. */
     isExpanded: boolean;
-    /** Callback to toggle the expanded/collapsed state of the section. */
     onToggle: () => void;
-    /** Tracks image loading failures per section. */
     imageErrors: { [key: string]: boolean };
-    /** Callback invoked when the section image fails to load. */
     onImageError: (id: string) => void;
-    /** Combined CSS module modifiers for responsive layout. */
     combinedModCss: Mods;
 }
 

@@ -226,7 +226,7 @@ $touchSize: 1024px;
  * Chevron icon container for expand/collapse indicator
  * 
  * @styling
- * - Initially rotated 270 degrees (pointing right/left depending on RTL)
+ * - Initially rotated 90 degrees (pointing right/left depending on RTL)
  * - Rotates to 0 degrees when section is expanded
  * - Smooth transition animation (0.3s ease)
  * - Flexbox centered alignment
@@ -240,7 +240,7 @@ $touchSize: 1024px;
     margin-left: 1rem;
     width: 24px;
     height: 24px;
-    transform: rotate(270deg);
+    transform: rotate(90deg);
     transition: transform 0.3s ease;
 
     img {
