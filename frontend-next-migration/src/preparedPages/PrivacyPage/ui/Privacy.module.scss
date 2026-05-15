@@ -1,0 +1,273 @@
+/**
+ * Privacy Page Styles Module
+ *
+ * This module contains all the styling for the Privacy Policy page component.
+ * It provides responsive layout and visual styling for the privacy policy content,
+ * including the main container, title, accordion sections, and info boxes.
+ */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.pageTitle {
+    color: var(--primary-color);
+    font: var(--font-sw-5xl);
+    line-height: 1.5;
+    margin: 0 0 2rem;
+    text-align: center;
+}
+
+.accordionContainer {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background-color: #1e3544;
+    border-radius: var(--border-radius-figmadesktop);
+}
+
+.infoBox {
+    width: 100%;
+    padding: 2rem;
+    margin: 2rem 0 3rem 0;
+    background-color: #1e3544;
+    border-radius: var(--border-radius-figmadesktop);
+    border: none;
+    color: var(--white);
+    font: var(--font-dm-m);
+    line-height: 1.6;
+
+    p {
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+
+        &:first-child {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+    }
+}
+
+.accordionWrapper {
+    width: 100%;
+}
+
+.collapsibleSection {
+    width: 100%;
+    margin: 0.75rem 0;
+    background-color: var(--background);
+    border-radius: var(--border-radius-figmadesktop);
+    border: 4px solid var(--drop-shadows);
+    box-shadow: 5px 7px var(--drop-shadows);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 6px 8px var(--drop-shadows);
+    }
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: left;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: -2px;
+    }
+}
+
+.sectionTitle {
+    color: var(--primary-color);
+    font: var(--font-sw-xl);
+    margin: 0;
+    flex: 1;
+    word-break: break-word;
+}
+
+.chevronIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    width: 24px;
+    height: 24px;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.chevronIcon.rotated {
+    transform: rotate(0deg);
+}
+
+.sectionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease 0.05s;
+    opacity: 0;
+}
+
+.collapsibleSection.expanded .sectionContent {
+    opacity: 1;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease;
+}
+
+.contentInner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+
+    p {
+        color: var(--white);
+        font: var(--font-dm-m);
+        line-height: 1.6;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        margin: 0;
+
+        a {
+            color: var(--inverted-primary-color);
+            text-decoration: underline;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+    }
+}
+
+.contentImage {
+    margin-top: 1.5rem;
+    border-radius: var(--border-radius-figmadesktop);
+    overflow: hidden;
+}
+
+.sectionImage {
+    display: block;
+    margin: 5% auto 0;
+    border-radius: 10px;
+    max-height: 350px;
+    width: auto;
+    object-fit: contain;
+
+    box-shadow: 0 0 4px var(--primary-color);
+}
+
+@media screen and (min-width: breakpoint(md)) {
+    .pageContainer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .collapsibleSection {
+        margin: 0.5rem 0;
+    }
+
+    .sectionHeader {
+        padding: 1rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sectionTitle {
+        font: var(--font-dm-bold-l);
+    }
+
+    .contentInner {
+        padding: 0 1rem 1rem 1rem;
+
+        p {
+            font-size: 0.85rem;
+        }
+    }
+
+    .chevronIcon {
+        width: 20px;
+        height: 20px;
+        margin-left: 0.75rem;
+    }
+}
+
+/* Accessibility: Ensure tap targets are large enough on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .sectionHeader {
+        padding: 1.25rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .pageContainer {
+        padding: 1rem;
+    }
+
+    .pageTitle {
+        font: var(--font-sw-xxxl);
+        margin-bottom: 1.5rem;
+    }
+
+    .accordionContainer {
+        padding: 1.5rem 1rem;
+    }
+
+    .infoBox {
+        padding: 1.5rem;
+        margin: 1rem 0 2rem 0;
+
+        p {
+            font-size: 0.9rem;
+        }
+    }
+
+    .sectionHeader {
+        padding: 1rem;
+        border-radius: calc(var(--border-radius-figmadesktop) * 0.75);
+    }
+
+    .sectionTitle {
+        font-size: 1rem;
+    }
+
+    .contentInner {
+        padding: 1rem 1rem 1rem 0;
+
+        p {
+            font-size: 0.9rem;
+        }
+    }
+}

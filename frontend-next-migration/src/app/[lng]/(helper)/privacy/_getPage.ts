@@ -12,6 +12,7 @@ export async function _getPage(lng: string) {
         buildPage: () => ({
             sections: makePrivacySectionsWithI18n(t),
             title: t('main-title'),
+            pageDescription: t('page-description'),
         }),
         buildSeo: () => ({
             title: t('main-title'),
