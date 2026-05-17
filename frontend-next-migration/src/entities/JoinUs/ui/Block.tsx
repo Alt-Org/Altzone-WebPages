@@ -19,7 +19,7 @@ interface Props {
 export const Block = (props: Props) => {
     const { block, reverse = false } = props;
 
-    const links = block.links ?? [];
+    const links = block?.links ?? [];
 
     const socialLinks = links.filter((link) => link.iconSrc);
     const normalLinks = links.filter((link) => !link.iconSrc);
