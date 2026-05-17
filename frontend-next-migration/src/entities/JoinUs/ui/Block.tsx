@@ -19,8 +19,10 @@ interface Props {
 export const Block = (props: Props) => {
     const { block, reverse = false } = props;
 
-    const socialLinks = block.links.filter((link) => link.iconSrc);
-    const normalLinks = block.links.filter((link) => !link.iconSrc);
+    const links = block.links ?? [];
+
+    const socialLinks = links.filter((link) => link.iconSrc);
+    const normalLinks = links.filter((link) => !link.iconSrc);
 
     return (
         <div
