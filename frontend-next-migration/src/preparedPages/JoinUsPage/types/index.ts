@@ -16,6 +16,7 @@ export interface BlockSection {
         text: string;
         url: string;
         isExternal?: boolean;
+        showExternalIcon?: boolean;
         iconSrc?: string;
         type?: string; // 'mail' for mailto, 'phone' for number, 'link' for normal links
         clickable?: boolean; // Set to false for numbers that should not be clickable
