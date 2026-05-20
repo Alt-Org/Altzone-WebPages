@@ -1,33 +1,71 @@
 .Footer {
-    font: var(--font-dm-xl);
-    background: var(--background);
+    --footer-bg: #1e3544;
+    --footer-bar-bg: #172f3d;
+    --footer-accent: #ffa100;
+    --footer-text: #faf9f6;
+    --footer-muted: #faf9f6;
+
+    font: var(--font-dm-s);
+    background: var(--footer-bg);
+    color: var(--footer-text);
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-    padding: 1.5rem 0 1rem 0;
+    align-items: stretch;
     position: relative;
     z-index: 20;
 }
 
-.title {
-    color: var(--primary-color);
-    font-family: var(--font-family-title);
+.SocialBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 38px;
+    background: var(--footer-bar-bg);
 }
 
 .socialSection {
     justify-content: center;
-    padding: 2rem 0 1rem 0;
+    padding: 0;
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+    margin: 0;
 }
 
-.rights {
-    text-align: center;
+.socialSection > * {
+    width: 18px;
+    height: 18px;
+}
+
+.socialSection img {
+    width: 18px;
+    height: 18px;
 }
 
 .FooterContainer {
-    gap: 5rem;
+    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 222px;
+    margin: 0 auto;
+    padding: 11px 16px 9px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-.FeedbackContainer {
-    display: flex;
-    justify-content: center;
+.contactSection,
+.infoSection {
+    align-items: center;
+}
+
+.Copyright {
+    margin: 0;
+    color: var(--footer-muted);
+    font: var(--font-dm-xs);
+}
+
+.CopySymbol {
+    margin-right: 0.25rem;
 }

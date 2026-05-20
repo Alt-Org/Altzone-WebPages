@@ -1,46 +1,89 @@
 import { memo } from 'react';
-import { Container } from '@/shared/ui/Container';
+import Image from 'next/image';
 import { SocialIconLink, Texts } from '@/shared/types/types';
-import { Rights } from '@/widgets/Footer/ui/Rights/Rights';
 import { SocialSection } from '@/shared/SocialSection/SocialSection';
-import { Title } from '@/widgets/Footer/ui/Title/Title';
+import { FooterContact } from '@/shared/ui/v2/Footer/ui/FooterContact';
+import { FooterInfo } from '@/shared/ui/v2/Footer/ui/FooterInfo';
 import cls from './FooterDesktop.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { FeedbackCard } from '@/shared/ui/v2/Feedback';
-import { RandomCharacter } from '@/shared/ui/v2/Footer/ui/FooterDesktop/RandomCharacter';
+import prgLogo from '@/shared/assets/images/PRG_Logo.png';
 
 interface Props {
-    title: string;
     socialIconLinks: SocialIconLink[];
     texts: Texts;
+    contactTitle: string;
+    contactEmailLabel?: string;
+    contactEmails: string[];
+    infoTitle: string;
+    infoLinks?: {
+        workWithUsLabel: string;
+        whatIsPrgLabel: string;
+        altZoneHistoryLabel: string;
+        developersDesignersLabel: string;
+        termsAndPrivacyLabel: string;
+    };
     className?: string;
 }
 
 const FooterDesktopComponent = memo((props: Props) => {
-    const { title, socialIconLinks, texts, className = '' } = props;
+    const {
+        socialIconLinks,
+        texts,
+        contactTitle,
+        contactEmailLabel,
+        contactEmails,
+        infoTitle,
+        infoLinks,
+        className = '',
+    } = props;
 
     return (
         <footer className={classNames(cls.Footer, {}, [className])}>
-            <Container className={cls.ImageContainer}>
-                <RandomCharacter size={256} />
-            </Container>
-            <Container className={cls.FooterContainer}>
-                <Title
-                    className={`${cls.title}`}
-                    title={title}
-                />
+            <div className={cls.SocialBar}>
                 <SocialSection
                     className={cls.socialSection}
                     socialIconLinks={socialIconLinks}
                 />
-                <Rights
-                    className={cls.rights}
-                    texts={texts}
-                />
-            </Container>
-            <Container className={cls.FeedbackContainer}>
-                <FeedbackCard variant={'embedabble'} />
-            </Container>
+            </div>
+            <div className={cls.Inner}>
+                <div className={cls.BrandColumn}>
+                    <Image
+                        className={cls.Logo}
+                        src={prgLogo}
+                        alt="PRG Logo"
+                        width={150}
+                        height={150}
+                        priority
+                    />
+                </div>
+
+                <div className={cls.ContentGrid}>
+                    <FooterContact
+                        className={cls.contactSection}
+                        title={contactTitle}
+                        emailLabel={contactEmailLabel}
+                        emails={contactEmails}
+                        workWithUsLabel={infoLinks?.workWithUsLabel}
+                    />
+                    {infoLinks && (
+                        <FooterInfo
+                            className={cls.infoSection}
+                            title={infoTitle}
+                            whatIsPrgLabel={infoLinks.whatIsPrgLabel}
+                            altZoneHistoryLabel={infoLinks.altZoneHistoryLabel}
+                            developersDesignersLabel={infoLinks.developersDesignersLabel}
+                            termsAndPrivacyLabel={infoLinks.termsAndPrivacyLabel}
+                        />
+                    )}
+                </div>
+            </div>
+
+            <div className={cls.BottomSection}>
+                <p className={cls.Copyright}>
+                    <span className={cls.CopySymbol}>&copy;</span> {texts.currentYear}{' '}
+                    {texts.companyName}
+                </p>
+            </div>
         </footer>
     );
 });

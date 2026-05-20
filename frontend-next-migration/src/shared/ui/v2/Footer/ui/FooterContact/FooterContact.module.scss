@@ -1,0 +1,63 @@
+.FooterContact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.Title {
+    margin: 0;
+    padding: 0;
+    color: var(--footer-accent, var(--primary-color));
+    font: var(--font-dm-bold-m);
+}
+
+.EmailLabel {
+    margin: 0;
+    color: var(--footer-text, var(--white));
+    font: var(--font-dm-bold-m);
+}
+
+.EmailList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.Email,
+.WorkWithUsLink {
+    color: var(--footer-text, var(--white));
+    text-decoration: none;
+    font: var(--font-dm-s);
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+
+    &:hover {
+        color: var(--footer-accent, var(--primary-color));
+    }
+
+    &:focus {
+        outline: 2px solid var(--footer-accent, var(--primary-color));
+        outline-offset: 2px;
+    }
+}
+
+.WorkWithUsLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.Email {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.ExternalIcon {
+    width: 0.65rem;
+    height: 0.65rem;
+    color: var(--footer-accent, var(--primary-color));
+}

@@ -1,0 +1,24 @@
+.FooterInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.Title {
+    margin: 0;
+    padding: 0;
+    color: var(--footer-accent, var(--primary-color));
+    font: var(--font-dm-bold-m);
+}
+
+.Links {
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media (max-width: 767px) {
+    .Links {
+        justify-content: center;
+        text-align: center;
+    }
+}
