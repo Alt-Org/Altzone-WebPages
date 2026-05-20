@@ -8,7 +8,6 @@ interface Props {
     className?: string;
 }
 
-// Contact emails - can be moved to config if needed
 const CONTACT_EMAILS = ['psykkis@hotmail.com', 'proyaleg@gmail.com'];
 
 export const Footer = (props: Props) => {
