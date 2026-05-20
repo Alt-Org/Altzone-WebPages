@@ -13,7 +13,11 @@ interface FooterInfoProps {
     termsAndPrivacyLabel: string;
 }
 
-/** Component for displaying informational links in the footer, such as "What is PRG", "ALT Zone history", etc. */
+/** Component for displaying informational links in the footer, such as "What is PRG", "ALT Zone history", etc.
+ * @param props - Props for the FooterInfo component, including title and labels for the informational links.
+ * @returns A React component that renders the footer information section with a title and a list of informational links.
+ * @remarks This component is memoized for performance optimization, preventing unnecessary re-renders when props do not change.
+ */
 export const FooterInfo = memo((props: FooterInfoProps) => {
     const {
         className = '',

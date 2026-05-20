@@ -16,7 +16,11 @@ interface FooterContactProps {
 
 const DUUNITORI_JOBS_URL = 'https://duunitori.fi/tyopaikat?haku=Psyche%27s%20Royale%20Gaming';
 
-/** Component for displaying contact information in the footer, including email addresses and a "Work with us" link. */
+/** Component for displaying contact information in the footer.
+ * @param props - Props for the FooterContact component, including title, optional email label, list of email addresses, and an optional "Work with us" label.
+ * @returns A React component that renders the footer contact section with the provided information.
+ * @remarks This component is memoized for performance optimization, preventing unnecessary re-renders when props do not change.
+ */
 export const FooterContact = memo((props: FooterContactProps) => {
     const { className = '', title, emailLabel, emails, workWithUsLabel } = props;
 
