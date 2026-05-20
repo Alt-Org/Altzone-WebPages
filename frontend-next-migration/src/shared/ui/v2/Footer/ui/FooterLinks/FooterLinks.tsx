@@ -9,6 +9,7 @@ import {
 } from '@/shared/appLinks/RoutePaths';
 import cls from './FooterLinks.module.scss';
 
+/** Props for the FooterLinks component, which displays a list of informational links in the footer. */
 interface FooterLinksProps {
     className?: string;
     whatIsPrgLabel: string;
@@ -17,6 +18,7 @@ interface FooterLinksProps {
     termsAndPrivacyLabel: string;
 }
 
+/** Component for displaying informational links in the footer, such as "What is PRG", "ALT Zone history", etc. */
 export const FooterLinks = memo((props: FooterLinksProps) => {
     const {
         className = '',
@@ -26,6 +28,7 @@ export const FooterLinks = memo((props: FooterLinksProps) => {
         termsAndPrivacyLabel,
     } = props;
 
+    /* Render the footer links as a navigation list with links to different informational pages. */
     return (
         <nav className={classNames(cls.FooterLinks, {}, [className])}>
             <ul className={cls.LinksList}>

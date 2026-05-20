@@ -3,6 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { FooterLinks } from '@/shared/ui/v2/Footer/ui/FooterLinks';
 import cls from './FooterInfo.module.scss';
 
+/** Props for the FooterInfo component, which displays informational links in the footer. */
 interface FooterInfoProps {
     className?: string;
     title: string;
@@ -12,6 +13,7 @@ interface FooterInfoProps {
     termsAndPrivacyLabel: string;
 }
 
+/** Component for displaying informational links in the footer, such as "What is PRG", "ALT Zone history", etc. */
 export const FooterInfo = memo((props: FooterInfoProps) => {
     const {
         className = '',
@@ -22,6 +24,7 @@ export const FooterInfo = memo((props: FooterInfoProps) => {
         termsAndPrivacyLabel,
     } = props;
 
+    /* Render the footer info section with a title and a list of informational links. */
     return (
         <div className={classNames(cls.FooterInfo, {}, [className])}>
             <h3 className={cls.Title}>{title}</h3>
