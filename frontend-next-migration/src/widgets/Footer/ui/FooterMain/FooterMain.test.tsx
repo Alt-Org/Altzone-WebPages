@@ -28,8 +28,8 @@ describe('Footer', () => {
     it('renders without crashing', () => {
         render(<Footer />);
 
-        // Check that the footer title is displayed
-        expect(screen.getByText('FooterTitle')).toBeInTheDocument();
+        expect(screen.getByText('Contact')).toBeInTheDocument();
+        expect(screen.getByText('Information')).toBeInTheDocument();
     });
 
     it('renders the correct current year and company name', () => {
@@ -40,13 +40,12 @@ describe('Footer', () => {
         expect(screen.getByText(`${currentYear} ${envHelper.companyName}`)).toBeInTheDocument();
     });
 
-    it('renders privacy, cookies, and consent texts', () => {
+    it('renders configured footer navigation texts', () => {
         render(<Footer />);
 
-        // Check that privacy, cookies, and consent texts are displayed
-        expect(screen.getByText('FooterPrivacy')).toBeInTheDocument();
-        expect(screen.getByText('FooterCookies')).toBeInTheDocument();
-        expect(screen.getByText('FooterConsent')).toBeInTheDocument();
+        expect(screen.getByText('WorkWithUs')).toBeInTheDocument();
+        expect(screen.getByText('WhatIsPRG')).toBeInTheDocument();
+        expect(screen.getByText('TermsAndPrivacy')).toBeInTheDocument();
     });
 
     it('renders social icon links', () => {

@@ -1,0 +1,36 @@
+/* Links section of the footer, containing informational links such as "What is PRG", "ALT Zone history", etc. */
+
+.FooterLinks {
+    width: 100%;
+}
+
+.LinksList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: var(--footer-text, var(--white));
+    text-decoration: none;
+    font: var(--font-dm-s);
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--footer-accent, var(--primary-color));
+    }
+
+    &:focus {
+        outline: 2px solid var(--footer-accent, var(--primary-color));
+        outline-offset: 2px;
+    }
+}

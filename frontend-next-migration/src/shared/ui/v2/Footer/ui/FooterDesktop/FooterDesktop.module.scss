@@ -1,57 +1,124 @@
 .Footer {
-    font: var(--font-dm-xl);
-    background: var(--background);
+    --footer-bg: #1e3544;
+    --footer-bar-bg: #172f3d;
+    --footer-accent: #ffa100;
+    --footer-text: #faf9f6;
+    --footer-muted: #faf9f6;
+
+    font: var(--font-dm-s);
+    background: var(--footer-bg);
+    color: var(--footer-text);
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 5px 25px 5px 25px;
+    flex-direction: column;
     position: relative;
     z-index: 20;
 }
 
-.title {
-    padding-top: 1rem;
-    color: var(--primary-color);
-    text-align: center;
-    font: var(--font-sw-xl);
+.SocialBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1920px;
+    height: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 22px;
+    background: var(--footer-bar-bg);
 }
 
 .socialSection {
-    padding-top: 1rem;
-
-    /* Footer controls layout now (was previously inside SocialSection component) */
-    display: grid;
-    align-items: center;
-    justify-items: center;
-
-    margin: 0 auto;
-    max-width: 600px;
-
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
-
-.rights {
-    padding: 1rem 0;
-    text-align: center;
-}
-
-.FooterContainer {
-    align-self: flex-start;
-    justify-items: center;
-}
-
-.ImageContainer {
-    justify-items: flex-start;
-}
-
-.FeedbackContainer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    width: 1920px;
+    height: 40px;
+    gap: 29px;
+    margin: 0;
+}
+
+.socialSection > * {
+    width: 40px;
+    height: 40px;
+}
+
+.socialSection img {
+    width: 40px;
+    height: 40px;
+}
+
+.Inner {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 372px);
+    align-items: start;
+    justify-content: center;
+    gap: 70px;
+    width: 100%;
+    min-height: 164px;
+    padding: 15px 24px 0;
+}
+
+.BrandColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Logo {
+    display: block;
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.ContentGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    padding-top: 24px;
+}
+
+.contactSection,
+.infoSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.BottomSection {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 12px;
+}
+
+.Copyright {
+    gap: 100px;
+    margin: 2rem 0 0;
+    color: #ffffff;
+    font: var(--font-dm-s);
+    size: 16px;
+    text-align: center;
+    width: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.CopySymbol {
+    margin-right: 0.25rem;
 }
 
 @media (max-width: 1023px) {
-    .socialSection {
-        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+    .Inner {
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 48px;
+        padding-inline: 32px;
+    }
+
+    .Logo {
+        width: 132px;
+        height: 132px;
+    }
+
+    .ContentGrid {
+        gap: 40px;
     }
 }
