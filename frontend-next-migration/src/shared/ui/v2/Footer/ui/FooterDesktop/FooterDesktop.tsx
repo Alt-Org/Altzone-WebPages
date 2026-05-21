@@ -51,8 +51,8 @@ const FooterDesktopComponent = memo((props: Props) => {
                         className={cls.Logo}
                         src={prgLogo}
                         alt="PRG Logo"
-                        width={150}
-                        height={150}
+                        width={132}
+                        height={132}
                         priority
                     />
                 </div>

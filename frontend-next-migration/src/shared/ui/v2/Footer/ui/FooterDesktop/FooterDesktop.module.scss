@@ -18,25 +18,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 54px;
+    width: 1920px;
+    height: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 22px;
     background: var(--footer-bar-bg);
 }
 
 .socialSection {
     display: flex;
     justify-content: center;
-    gap: 14px;
+    width: 1920px;
+    height: 40px;
+    gap: 29px;
     margin: 0;
 }
 
 .socialSection > * {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
 }
 
 .socialSection img {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
 }
 
 .Inner {
@@ -85,11 +91,15 @@
 }
 
 .Copyright {
+    gap: 100px;
     margin: 2rem 0 0;
-    padding: 0;
-    color: rgb(250 249 246 / 90%);
-    font: 10px / 14px var(--font-family-secondary);
+    color: #ffffff;
+    font: var(--font-dm-s);
+    size: 16px;
     text-align: center;
+    width: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
 }
 
 .CopySymbol {
@@ -104,8 +114,8 @@
     }
 
     .Logo {
-        width: 120px;
-        height: 120px;
+        width: 132px;
+        height: 132px;
     }
 
     .ContentGrid {
