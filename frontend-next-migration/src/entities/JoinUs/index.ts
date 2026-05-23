@@ -1,8 +1,8 @@
 export { Block } from './ui/Block';
 
 export {
-    makeGetInTouchAndFollowBlock,
-    makeCommunityAndOpportunitiesBlock,
-    makeEducationProfessionalsBlock,
-    makeFeedbackBlock,
+    makeGetInTouchAndFollow,
+    makeCommunityAndOpportunities,
+    makeEducationProfessionals,
+    makeFeedback,
 } from './model/makeJoinUsBlocks';

@@ -63,7 +63,7 @@ export const makeBlocksWithI18n = (
     };
 };
 
-export const makeGetInTouchAndFollowBlock = makeBlocksWithI18n(
+export const makeGetInTouchAndFollow = makeBlocksWithI18n(
     'getInTouchAndFollow',
     [
         { text: 'phone', url: 'tel:+358442407396', isExternal: true },
@@ -96,7 +96,7 @@ export const makeGetInTouchAndFollowBlock = makeBlocksWithI18n(
     ConnectionImage.src.toString(),
 );
 
-export const makeCommunityAndOpportunitiesBlock = makeBlocksWithI18n(
+export const makeCommunityAndOpportunities = makeBlocksWithI18n(
     'communityAndOpportunities',
     [
         {
@@ -108,8 +108,8 @@ export const makeCommunityAndOpportunitiesBlock = makeBlocksWithI18n(
         {
             text: 'news',
             url: '/fi/news',
-            isExternal: true,
-            showExternalIcon: true,
+            isExternal: false,
+            showExternalIcon: false,
         },
         {
             text: 'duunitori',
@@ -121,7 +121,7 @@ export const makeCommunityAndOpportunitiesBlock = makeBlocksWithI18n(
     discordImage.src.toString(),
 );
 
-export const makeEducationProfessionalsBlock = makeBlocksWithI18n(
+export const makeEducationProfessionals = makeBlocksWithI18n(
     'educationProfessionals',
     [
         { text: 'phone', url: 'tel:+358442407396', isExternal: true },
@@ -136,7 +136,7 @@ export const makeEducationProfessionalsBlock = makeBlocksWithI18n(
     teachersImage.src.toString(),
 );
 
-export const makeFeedbackBlock = makeBlocksWithI18n(
+export const makeFeedback = makeBlocksWithI18n(
     'feedback',
     [
         {
