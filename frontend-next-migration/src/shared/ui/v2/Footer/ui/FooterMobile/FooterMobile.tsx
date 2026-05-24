@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import Image from 'next/image';
 import { SocialIconLink, Texts } from '@/shared/types/types';
 import { SocialSection } from '@/shared/SocialSection/SocialSection';
 import { FooterContact } from '@/shared/ui/v2/Footer/ui/FooterContact';
@@ -6,6 +7,7 @@ import { FooterInfo } from '@/shared/ui/v2/Footer/ui/FooterInfo';
 import { FeedbackCard } from '@/shared/ui/v2/Feedback';
 import cls from './FooterMobile.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import prgLogo from '@/shared/assets/images/PRG_Logo.png';
 
 interface Props {
     socialIconLinks: SocialIconLink[];
@@ -42,6 +44,15 @@ const FooterMobileComponent = memo((props: Props) => {
                 <SocialSection
                     className={cls.socialSection}
                     socialIconLinks={socialIconLinks}
+                />
+            </div>
+            <div className={cls.LogoContainer}>
+                <Image
+                    src={prgLogo}
+                    alt="PRG Logo"
+                    width={70}
+                    height={69}
+                    priority
                 />
             </div>
             <div className={cls.FooterContainer}>
