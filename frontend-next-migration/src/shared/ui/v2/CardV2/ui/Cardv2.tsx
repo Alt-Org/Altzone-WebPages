@@ -55,7 +55,7 @@ const CardV2 = (props: Props) => {
     return (
         <section
             ref={ref}
-            className={classNames(cls.CardV2, { [cls.inView]: inView }, [className])}
+            className={classNames(cls.CardV2, { [cls.inView]: inView })}
         >
             <Container className={cls.Inner}>
                 <div className={cls.ImagesBlock}>
