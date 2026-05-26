@@ -3,7 +3,7 @@ import { CTASection } from '@/shared/ui/CtaSection';
 import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import Image from 'next/image';
 import DiscordIcon from '@/shared/assets/images/Discord2.svg';
-import ContactImg from '@/shared/assets/images/Orang_hero.webp';
+import ContactImg from '@/shared/assets/images/mainpage/Defencegallery401.png';
 import cls from './ContactSection.module.scss';
 
 export type ContactLink = {
@@ -29,6 +29,7 @@ export const ContactSection = (props: ContactSectionProps) => {
                         path={link.link}
                         isExternal={true}
                         theme={isDiscord ? ButtonTheme.OUTLINE : ButtonTheme.PRIMARY}
+                        className={isDiscord ? cls.DiscordButton : undefined}
                     >
                         {link.text}
                         {isDiscord && (
@@ -46,6 +47,8 @@ export const ContactSection = (props: ContactSectionProps) => {
 
     return (
         <CTASection
+            className={cls.ContactSection}
+            titleClassName={cls.contactTitle}
             title={title}
             imageSrc={ContactImg}
             imagePosition="right"

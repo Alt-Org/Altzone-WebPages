@@ -25,6 +25,11 @@ import { ContactSection, ContactSectionProps } from './_components/sections/Cont
 import { useParams } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
 import { WallIntroAnimation } from '@/shared/ui/v2/WallIntroAnimation';
+import { CardV2 } from '@/shared/ui/v2/CardV2';
+import char1 from '@/shared/assets/images/mainpage/Defencegallery202.png';
+import char2 from '@/shared/assets/images/mainpage/Defencegallery403.png';
+import char3 from '@/shared/assets/images/mainpage/Defencegallery603.png';
+import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -53,51 +58,25 @@ function MainPage(props: Props) {
 
             <Header />
 
-            <ProjectDescription
-                className={cls.description}
-                {...projectDescription}
-            />
-
             <PlayWithUs {...playWithUs} />
-
-            {isMobileSize ? (
-                <div className={cls.descriptionCardMobile}>
-                    <a
-                        className={cls.cardLink}
-                        href={`/defense-gallery`}
-                        rel="noopener noreferrer"
+            <CardV2
+                images={[
+                    { src: char1, alt: 'Defense character 1' },
+                    { src: char2, alt: 'Defense character 2' },
+                    { src: char3, alt: 'Defense character 3' },
+                ]}
+                title={t('descriptionCard-title')}
+                description={t('descriptionCard-description')}
+                actions={
+                    <Button
+                        path="/defense-gallery"
+                        theme={ButtonTheme.PRIMARY}
                     >
-                        <DescriptionCardMobile theme={DescriptionCardMobileTheme.DEFENSEGALLERY}>
-                            <DescriptionCardMobile.Texts title={t('descriptionCard-title')} />
-                            <DescriptionCardMobile.Image
-                                src={defenceGalleryMobile}
-                                alt="defense gallery mobile"
-                            />
-                        </DescriptionCardMobile>
-                    </a>
-                </div>
-            ) : (
-                <div className={cls.descriptionCard}>
-                    <DescriptionCard
-                        theme={DescriptionCardTheme.DEFENSEGALLERY}
-                        path={'/defense-gallery'}
-                    >
-                        <DescriptionCard.Texts width="35%">
-                            <DescriptionCard.Texts.Title>
-                                {t('descriptionCard-title')}
-                            </DescriptionCard.Texts.Title>
-                        </DescriptionCard.Texts>
-                        <DescriptionCard.Image width="65%">
-                            <DescriptionCard.Image.Image
-                                src={defenceGallery}
-                                alt="defence gallery"
-                            />
-                        </DescriptionCard.Image>
-                    </DescriptionCard>
-                </div>
-            )}
-
-            <AltZone {...altZone} />
+                        {t('descriptionCard-button')}
+                    </Button>
+                }
+            />
+            <ContactSection {...contactSection} />
 
             <div className={cls.newsSection}>
                 <h2 className={cls.newsHeader}>{t('newsSection-title')}</h2>
@@ -130,8 +109,6 @@ function MainPage(props: Props) {
                     </a>
                 </div>
             </div>
-
-            <ContactSection {...contactSection} />
         </div>
     );
 }

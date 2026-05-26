@@ -1,66 +1,88 @@
 .Header {
-  width: 100%;
-  background: transparent;
-  color: var(--white);
+    width: 100%;
+    background: transparent;
+    color: var(--white);
 }
 
 .imageWrap {
-  position: relative;
-  width: 100%;
-  height: min(46vh, 360px);
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 307px;
+    overflow: hidden;
 }
 
 .content {
-  padding: 18px 18px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+    padding: 20px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.content::before {
+    content: '';
+    position: absolute;
+    width: 355px;
+    height: 356px;
+    left: -13px;
+    top: -17px;
+    background: rgba(24, 39, 49, 0.8);
+    filter: blur(40px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.content > * {
+    position: relative;
+    z-index: 1;
 }
 
 .title {
-  margin: 0;
-  color: var(--primary-color);
-  font: var(--font-sw-4xl), sans-serif;
-  line-height: 1.05;
+    margin: 0;
+    color: var(--primary-color);
+    font-family: var(--font-family-title);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 43px;
+    letter-spacing: -0.04em;
 }
 
 .ctaCol {
-  display: flex;
-  gap: 12px;
-  width: 100%;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .ctaLink {
-  flex: 1 1 0;
-  display: flex;
-  text-decoration: none;
+    flex: 0 0 auto;
+    display: flex;
+    text-decoration: none;
 }
 
 .ctaLink :global(button) {
-  width: 100%;
-  justify-content: center;
-
-  border-radius: 999px !important;
-  padding: 14px 18px !important;
-
-  white-space: nowrap;
+    border-radius: 999px !important;
+    padding: 12px 20px !important;
+    white-space: nowrap;
 }
 
 .followText {
-  font: var(--font-dm-m);
-  font-weight: 700;
-  opacity: 0.95;
-
-  text-align: center;
-  align-self: center;
+    font-family: var(--font-family-secondary);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: -0.04em;
+    text-align: center;
+    align-self: center;
 }
 
 .socialSection {
-  margin-top: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 21px;
 }

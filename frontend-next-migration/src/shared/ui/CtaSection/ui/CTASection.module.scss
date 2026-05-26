@@ -1,14 +1,27 @@
 .CTASection {
-    max-width: 1920px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     background-color: var(--base-card-background);
-    padding: 1rem;
-}
+    padding: 71px 220px;
+    display: flex;
+    align-items: center;
+        overflow: visible;
 
+    
+
+    @media (max-width: breakpoint(md)) {
+        padding: 2rem 1rem;
+        min-height: unset;
+    }
+}
 .Container {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    position: relative;
+    overflow: visible;
 }
 
 .Content {
@@ -18,9 +31,11 @@
     justify-content: center;
     gap: 3rem;
     width: 100%;
-    max-width: 1200px;
 }
-
+.contactTitle {
+    font-size: 64px;
+    line-height: 86px;
+}
 .imageLeft .Content {
     flex-direction: row-reverse;
 }
@@ -29,23 +44,33 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    flex: 1 1 70%;
+    flex: 1 1 60%;
 }
 
 .Title {
-    font: var(--font-sw-xxl);
+    font-family: var(--font-family-title);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 64px;
+    letter-spacing: -0.04em;
     color: var(--primary-color);
 }
-
 .Description {
-    font: var(--font-dm-m);
+    font-family: var(--font-family-secondary);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: -0.04em;
+    color: var(--white);
     white-space: pre-line;
 }
 
 .ExtraText {
-    font: var(--font-dm-l);
-    color: white;
+    font-family: var(--font-family-secondary);
     font-weight: 600;
+    font-size: 32px;
+    line-height: 42px;
+    color: var(--white);
     white-space: pre-line;
 }
 
@@ -60,15 +85,15 @@
 }
 
 .ImageBlock {
-    flex: 1 1 40%;
+    flex: 1 1 20%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .Image {
     width: 100%;
-    height: auto;
+    max-height: 635px;
     max-width: 350px;
     object-fit: contain;
 }

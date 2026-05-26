@@ -1,7 +1,7 @@
 'use client';
 import { CTASection } from '@/shared/ui/CtaSection';
 import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
-import sideImg from '@/shared/assets/images/mainpage/HandGraphicWithBattle.png';
+import sideImg from '@/shared/assets/images/mainpage/HandGraphic.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import Image from 'next/image';
 import googlePlayIcon from '@/shared/assets/images/google-play-badge.png';
@@ -74,6 +74,7 @@ const PlayWithUs = (props: Props) => {
             imageSrc={sideImg}
             actions={actions}
             mobileButtonLayout="row"
+            imageBlockClassName={cls.imageBlock}
         />
     );
 };

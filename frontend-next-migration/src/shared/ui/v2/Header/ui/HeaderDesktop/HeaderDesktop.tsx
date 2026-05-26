@@ -7,7 +7,7 @@ import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
 import { SocialSection } from '@/shared/SocialSection/SocialSection';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import type { SocialIconLink } from '@/shared/types';
-import topimage from '@/shared/assets/images/mainpage/topimage.png';
+import topimage from '@/shared/assets/images/mainpage/Nettisivun-paakuva.png';
 import cls from './HeaderDesktop.module.scss';
 import altZoneCls from '@/preparedPages/MainPage/ui/_components/sections/AltZone/AltZone.module.scss';
 import { Glass } from '@/shared/ui/Glass';
