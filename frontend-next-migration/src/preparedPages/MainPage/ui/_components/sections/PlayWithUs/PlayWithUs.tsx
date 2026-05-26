@@ -74,7 +74,6 @@ const PlayWithUs = (props: Props) => {
             imageSrc={sideImg}
             actions={actions}
             mobileButtonLayout="row"
-            imageBlockClassName={cls.imageBlock}
         />
     );
 };
