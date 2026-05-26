@@ -46,7 +46,7 @@ const FooterDesktopComponent = memo((props: Props) => {
                 />
             </div>
             <div className={cls.Inner}>
-                <div className={cls.BrandColumn}>
+                <div className={classNames(cls.Column, {}, [cls.BrandColumn])}>
                     <Image
                         className={cls.Logo}
                         src={prgLogo}
@@ -57,7 +57,7 @@ const FooterDesktopComponent = memo((props: Props) => {
                     />
                 </div>
 
-                <div className={cls.ContentGrid}>
+                <div className={classNames(cls.Column, {}, [cls.ContactColumn])}>
                     <FooterContact
                         className={cls.contactSection}
                         title={contactTitle}
@@ -65,7 +65,9 @@ const FooterDesktopComponent = memo((props: Props) => {
                         emails={contactEmails}
                         workWithUsLabel={infoLinks?.workWithUsLabel}
                     />
-                    {infoLinks && (
+                </div>
+                {infoLinks && (
+                    <div className={classNames(cls.Column, {}, [cls.InfoColumn])}>
                         <FooterInfo
                             className={cls.infoSection}
                             title={infoTitle}
@@ -74,8 +76,8 @@ const FooterDesktopComponent = memo((props: Props) => {
                             developersDesignersLabel={infoLinks.developersDesignersLabel}
                             termsAndPrivacyLabel={infoLinks.termsAndPrivacyLabel}
                         />
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
 
             <div className={cls.BottomSection}>

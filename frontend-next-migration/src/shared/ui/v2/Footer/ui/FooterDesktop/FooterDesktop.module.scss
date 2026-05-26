@@ -1,143 +1,141 @@
 .Footer {
     --footer-bg: #1e3544;
-    --footer-bar-bg: #00000026; /* 15% opacity black, for the bar behind the social icons */
+    --footer-bar-bg: #00000026;
     --footer-accent: #ffa100;
     --footer-text: #faf9f6;
     --footer-muted: #faf9f6;
+    --footer-layout-width: min(100%, 120rem);
+    --footer-column-padding: clamp(2.5rem, 3.33vw, 4rem);
+    --footer-logo-width: clamp(12rem, 14.32vw, 17.1875rem);
+    --footer-logo-height: clamp(11.75rem, 14.06vw, 16.875rem);
+    --footer-social-icon-size: 2.5rem;
+    --footer-social-gap: 1.8125rem;
+    --footer-social-bar-height: 6.25rem;
+    --footer-copyright-size: 0.875rem;
 
-    font-family: DM Sans;
+    font-family: var(--font-dm-s);
     background: var(--footer-bg);
     color: var(--footer-text);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 1920;
-    height: 482;
-    gap: 30px;
-    opacity: 1;
-    top: 237px;
 }
 
 .SocialBar {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1920px;
-    height: 100px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    gap: 22px;
+    min-height: var(--footer-social-bar-height);
+    padding-block: 1.25rem;
     background: var(--footer-bar-bg);
-    opacity: 1;
+    box-sizing: border-box;
 }
 
 .socialSection {
     display: flex;
     justify-content: center;
-    width: 1920px;
-    height: 40px;
-    opacity: 1;
+    gap: var(--footer-social-gap);
+    margin: 0;
 }
 
 .socialSection > * {
-    width: 40;
-    height: 40;
-    opacity: 1;
-    top: 5.93px;
-    border-radius: 10px;
-    opacity: 1;
+    width: var(--footer-social-icon-size);
+    height: var(--footer-social-icon-size);
+    border-radius: 0.625rem;
 }
 
 .socialSection img {
-    width: 40px;
-    height: 40px;
-    top: 5.93px;
-    border-radius: 10px;
-    opacity: 1;
+    width: var(--footer-social-icon-size);
+    height: var(--footer-social-icon-size);
+    border-radius: 0.625rem;
 }
 
 .Inner {
     display: grid;
-    grid-template-columns: 132px minmax(0, 372px);
-    align-items: start;
-    justify-content: center;
-    gap: 70px;
-    width: 100%;
-    min-height: 164px;
-    padding: 15px 24px 0;
-    opacity: 1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    justify-items: stretch;
+    width: var(--footer-layout-width);
+    margin: 0 auto;
+    min-height: max(var(--footer-logo-height), 17rem);
 }
 
-.BrandColumn {
+.Column {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1;
+    min-width: 0;
+    padding: var(--footer-column-padding);
+    box-sizing: border-box;
+}
+
+.BrandColumn {
+    justify-content: center;
 }
 
 .Logo {
-    width: 275;
-    height: 270;
-    opacity: 1;
-}
-
-.ContentGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    padding-top: 24px;
-    padding-right: 64px;
-    padding-left: 64px;
-    opacity: 1;
+    display: block;
+    flex: 0 0 auto;
+    width: var(--footer-logo-width);
+    height: var(--footer-logo-height);
+    object-fit: cover;
+    border-radius: 50%;
+    transform: rotate(0deg);
 }
 
 .contactSection,
 .infoSection {
     display: flex;
     flex-direction: column;
-    opacity: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .BottomSection {
     display: flex;
     justify-content: center;
     width: 100%;
-    padding-bottom: 12px;
-    opacity: 1;
+    padding-bottom: 0.75rem;
 }
 
 .Copyright {
-    gap: 100px;
-    margin: 2rem 0 0;
+    margin: 0;
     color: #ffffff;
-    font-family: DM Sans;
-    size: 16px;
+    font: var(--font-dm-s);
+    font-size: var(--footer-copyright-size);
+    line-height: 1;
     text-align: center;
-    width: 400;
-    line-height: 100%;
-    letter-spacing: 0%;
-    opacity: 1;
 }
 
 .CopySymbol {
     margin-right: 0.25rem;
-    opacity: 1;
+}
+
+@media (max-width: 1279px) {
+    .Footer {
+        --footer-column-padding: clamp(2rem, 3vw, 3rem);
+        --footer-logo-width: clamp(10rem, 18vw, 14rem);
+        --footer-logo-height: clamp(9.75rem, 17.67vw, 13.75rem);
+    }
+}
+
+@media (min-width: 1920px) {
+    .Footer {
+        --footer-layout-width: min(100%, 160rem);
+        --footer-column-padding: clamp(4rem, 4vw, 8rem);
+        --footer-logo-width: clamp(17.1875rem, 10vw, 24rem);
+        --footer-logo-height: clamp(16.875rem, 9.82vw, 23.5rem);
+        --footer-social-icon-size: clamp(2.5rem, 1.5vw, 3.5rem);
+        --footer-social-gap: clamp(1.8125rem, 1.5vw, 3rem);
+        --footer-social-bar-height: clamp(6.25rem, 4vw, 8rem);
+        --footer-copyright-size: clamp(0.875rem, 0.65vw, 1.25rem);
+    }
 }
 
 @media (max-width: 1023px) {
+    .Footer {
+        --footer-column-padding: 2rem;
+    }
+
     .Inner {
-        grid-template-columns: 120px minmax(0, 1fr);
-        gap: 48px;
-        padding-inline: 32px;
-    }
-
-    .Logo {
-        width: 275;
-        height: 270;
-        opacity: 1;
-    }
-
-    .ContentGrid {
-        gap: 40px;
+        grid-template-columns: 1fr;
     }
 }

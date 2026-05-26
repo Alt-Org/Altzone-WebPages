@@ -5,7 +5,7 @@
     --footer-text: #faf9f6;
     --footer-muted: #faf9f6;
 
-    font-family: DM Sans;
+    font-family: var(--font-dm-s);
     background: var(--footer-bg);
     color: var(--footer-text);
     display: flex;
@@ -15,7 +15,6 @@
     width: 360;
     height: 584;
     gap: 20px;
-    opacity: 1;
     top: 117px;
 }
 
@@ -28,7 +27,6 @@
     width: 360;
     height: 60;
     gap: 21px;
-    opacity: 1;
     padding-top: 14px;
     padding-bottom: 14px;
 }
@@ -38,13 +36,11 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    opacity: 1;
 
     img {
         width: 70px;
         height: 69px;
         object-fit: contain;
-        opacity: 1;
     }
 }
 
@@ -57,7 +53,6 @@
     margin: 0;
     width: 16.4375;
     height: 16.4375;
-    opacity: 1;
     top: 7.78px;
     left: 7.78px;
 }
@@ -66,14 +61,12 @@
     width: 32px;
     height: 32px;
     color: #fda400;
-    opacity: 1;
 }
 
 .socialSection img {
     width: 32px;
     height: 32px;
     color: #fda400;
-    opacity: 1;
 }
 
 .FooterContainer {
@@ -82,7 +75,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 222px;
     margin: 0 auto;
     padding: 11px 16px 9px;
     box-sizing: border-box;
@@ -98,9 +90,8 @@
     margin: 0;
     width: 328;
     height: 18;
-    opacity: 1;
 
-    font-family: DM Sans;
+    font-family: var(--font-dm-s);
     font-weight: 400;
     font-style: 9pt Regular;
     font-size: 14px;
@@ -118,7 +109,6 @@
     width: 66;
     height: 231;
     gap: 10px;
-    opacity: 1;
     padding-top: 24px;
     padding-right: 16px;
     padding-bottom: 24px;

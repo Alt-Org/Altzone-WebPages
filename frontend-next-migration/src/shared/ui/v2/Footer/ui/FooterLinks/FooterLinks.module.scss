@@ -7,7 +7,8 @@
 .LinksList {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    gap: clamp(0.5rem, 0.45vw, 0.875rem);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -20,6 +21,8 @@
     color: var(--footer-text, var(--white));
     text-decoration: none;
     font: var(--font-dm-s);
+    font-size: clamp(0.875rem, 0.75vw, 1.25rem);
+    text-align: center;
     transition:
         color 0.2s ease,
         opacity 0.2s ease;

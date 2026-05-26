@@ -3,30 +3,27 @@
 .FooterInfo {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    width: 310;
-    height: 175;
-    opacity: 1;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: clamp(19.375rem, 16vw, 28rem);
+    gap: clamp(0.625rem, 0.6vw, 1.125rem);
+    text-align: center;
 }
 
 .Title {
+    margin: 0;
     color: #ffa100;
-    font-family: DM Sans;
+    font-family: var(--font-family-secondary);
     font-weight: 700;
-    font-style: Bold;
-    font-size: 24px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    width: 74;
-    height: 31;
-    opacity: 1;
+    font-size: clamp(1.5rem, 1.15vw, 2rem);
+    line-height: 1;
 }
 
 .Links {
     display: flex;
-    justify-content: flex-start;
-    opacity: 1;
+    justify-content: center;
+    text-align: center;
 }
 
 @media (max-width: 767px) {
