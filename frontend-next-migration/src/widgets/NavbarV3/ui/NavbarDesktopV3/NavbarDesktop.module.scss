@@ -1,0 +1,375 @@
+// NavbarDesktop V3 — pixel-accurate Figma implementation
+// Collapse/fix behavior fully preserved from V2
+
+// ─── Outer nav ────────────────────────────────────────────────────────────────
+.navbar {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 100%;
+    height: 110px;
+    background: #1e3544;
+    border-bottom: 2px solid #121212;
+    z-index: var(--navbar-z-index);
+    user-select: none;
+    overflow-y: visible;
+
+    &.fixed {
+        position: fixed;
+    }
+
+    &.collapsed {
+        overflow: hidden;
+    }
+}
+
+// ─── Frame 137: inner row ─────────────────────────────────────────────────────
+// padding: 0px 0px 0px 32px; gap: 20px
+.inner {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 0px 0px 32px;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    height: 110px;
+    transition: width 0.3s ease;
+
+    &.collapsed {
+        width: 50px;
+        overflow: hidden;
+    }
+}
+
+// ─── Frame 1499: logo slot ────────────────────────────────────────────────────
+// width: 90px; height: 92px; flex: none; flex-grow: 0
+.logoSlot {
+    position: relative;
+    flex: none;
+    flex-grow: 0;
+    width: 90px;
+    height: 92px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.collapsed {
+        opacity: 0;
+        transform: scaleX(0);
+        pointer-events: none;
+    }
+
+    // Logo image: position: absolute; width: 109px; height: 92px;
+    // left: calc(50% - 109px/2 - 1px); top: calc(50% - 92px/2)
+    a {
+        display: block;
+        position: absolute;
+        width: 109px;
+        height: 92px;
+        left: calc(50% - 109px / 2 - 1px);
+        top: calc(50% - 92px / 2);
+    }
+
+    img {
+        width: 109px;
+        height: 92px;
+        object-fit: contain;
+    }
+}
+
+// ─── Frame 138: nav links + actions wrapper ───────────────────────────────────
+// display: flex; flex-direction: row; align-items: center;
+// padding: 0px 50px 0px 0px; flex: none; flex-grow: 1; height: 60px
+.frame138 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 50px 0px 0px;
+    flex: none;
+    flex-grow: 1;
+    height: 60px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.collapsed {
+        opacity: 0;
+        transform: translateX(-20px);
+        pointer-events: none;
+    }
+}
+
+// ─── Navbar pages: nav links ──────────────────────────────────────────────────
+// display: flex; flex-direction: row; align-items: center;
+// padding: 0px; gap: 20px; flex: none; flex-grow: 1; height: 60px
+.navLinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+    flex: none;
+    flex-grow: 1;
+    height: 60px;
+    list-style: none;
+    margin: 0;
+
+    // Each nav item: padding: 10px 20px; height: 60px; border-radius: 12px
+    li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px 20px;
+        gap: 10px;
+        height: 60px;
+        border-radius: 12px;
+        flex: none;
+        flex-grow: 0;
+        position: relative;
+        cursor: pointer;
+        transition: background 0.15s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        &:global(.active) > a span,
+        &:global(.active) > div {
+            color: #faf9f6;
+            opacity: 1;
+        }
+    }
+
+    // H5 Alaotsikko: DM Sans 700, 24px, #FAF9F6
+    a,
+    :global(.col) {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 31px;
+        color: #faf9f6;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    // Dropdown chevron
+    :global(.itemNavbarDropDownContent) {
+        display: none;
+        position: absolute;
+        top: 62px;
+        left: 0;
+        background: #1e3544;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 8px 0;
+        min-width: 160px;
+        z-index: 10;
+        flex-direction: column;
+        gap: 2px;
+
+        a {
+            padding: 10px 20px;
+            font-size: 18px;
+            display: block;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.08);
+            }
+        }
+    }
+
+    li:hover :global(.itemNavbarDropDownContent) {
+        display: flex;
+    }
+}
+
+// ─── Frame 1425: right actions ────────────────────────────────────────────────
+// display: flex; flex-direction: row; align-items: center;
+// padding: 0px; gap: 30px; width: 182px; height: 38px; flex: none; flex-grow: 0
+.actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 30px;
+    width: 182px;
+    height: 38px;
+    flex: none;
+    flex-grow: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    &.collapsed {
+        opacity: 0;
+        transform: translateX(20px);
+        pointer-events: none;
+    }
+}
+
+// Search/Profile icons: width: 30px; height: 30px; padding: 4px
+.iconBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    gap: 10px;
+    width: 48px;
+    height: 38px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    img {
+        width: 30px;
+        height: 30px;
+        filter: brightness(0) invert(1);
+    }
+}
+
+// ─── Auth dropdown ────────────────────────────────────────────────────────────
+.authWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    background: #1e3544;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 260px;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px) scale(0.98);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+
+    &.dropdownOpen {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.profileMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profileLabel {
+    font-size: 14px;
+    color: #faf9f6;
+    opacity: 0.6;
+}
+
+.logoutBtn {
+    background: #faf9f6;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1e3544;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+// ─── Navbar Language: globe + "FI" ───────────────────────────────────────────
+// display: flex; flex-direction: row; align-items: center;
+// padding: 0px; gap: 8px; width: 64px; height: 38px
+.langWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    width: 64px;
+    height: 38px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+}
+
+// Globe icon: width: 38px; height: 38px; padding: 4px
+.langSwitcher {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    img {
+        width: 30px;
+        height: 30px;
+        filter: brightness(0) invert(1);
+    }
+
+    // "FI" text: DM Sans 400, 24px, letter-spacing: -0.04em
+    span,
+    p {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 31px;
+        letter-spacing: -0.04em;
+        color: #faf9f6;
+    }
+}
+
+// ─── Fix / Collapse buttons — preserved from V2 ───────────────────────────────
+.fixButtonWrapper {
+    list-style: none;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.collapsed {
+        transform: translateX(-100px) scaleX(0.7);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &.notFixed {
+        opacity: 0.6;
+    }
+}
+
+.fixButton {
+    cursor: pointer;
+}
+
+.collapseButtonWrapper {
+    position: absolute;
+    right: 1px;
+    top: 5px;
+    list-style: none;
+
+    &.collapsing {
+        .collapseButton {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    }
+}
+
+.collapseButton {
+    cursor: pointer;
+}

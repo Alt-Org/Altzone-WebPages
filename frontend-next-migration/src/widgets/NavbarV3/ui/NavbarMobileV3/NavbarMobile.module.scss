@@ -1,0 +1,157 @@
+.Navbar {
+    position: absolute;
+    font: var(--font-dm-bold-l);
+    background-color: var(--base-card-background);
+    border: 2px solid var(--black);
+    border-radius: var(--border-radius-xl);
+    margin-top: 35px;
+    z-index: var(--navbar-z-index);
+    box-shadow: 4px 4px black;
+    top: 0;
+    left: 10px;
+    right: 10px;
+
+    @media (min-width: 550px) {
+        margin-top: 50px;
+    }
+}
+
+// For implemeting height transition in css:
+// height: calc-size(auto); // experimental, low support
+.NavbarContent {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavbarDropdown {
+    display: flex;
+    justify-content: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    max-height: 0;
+    transition:
+        transform 0.3s ease,
+        max-height 0.3s ease;
+}
+.openDropdown {
+    padding: 10px;
+    transform: scaleY(1);
+    max-height: 450px;
+}
+
+.HamurgerBtn {
+    position: absolute;
+    margin-left: 15px;
+}
+
+.NavbarMobile__center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.navLogo {
+    height: 100%;
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+.fixed {
+    position: fixed;
+}
+
+.langSwitcher {
+    top: 10px;
+    color: var(--primary-color) !important;
+    color: white;
+    font: var(--font-dm-bold-l) !important;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0 12px;
+    flex-wrap: wrap;
+    ul {
+        height: max-content;
+        width: 100%;
+        list-style-type: none;
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 40px;
+    }
+
+    li {
+        height: 25px;
+        display: flex;
+        align-items: center;
+        color: white;
+    }
+
+    img {
+        width: 28px;
+    }
+}
+
+.buttonContainer {
+    display: flex;
+    margin-right: 15px;
+    text-align: center;
+    position: absolute;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    right: 0px;
+    width: fit-content;
+    gap: 5px;
+}
+
+.Button {
+    text-align: center;
+    margin-right: 12px;
+}
+
+.logoutButton {
+    background-color: var(--primary-color);
+    border: var(--border-mobile) solid var(--black);
+    border-radius: var(--border-radius-xl);
+    box-shadow: 2px 2px var(--black);
+    width: 100%;
+    padding: 10px;
+}
+.profileLabel {
+    font-size: 1.2em;
+}
+
+.navItem {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+    transform-origin: right;
+    transition:
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out;
+    visibility: visible;
+}
+
+.toggleAuthMode {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+    font: var(--font-dm-m);
+    padding: 5px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.toggleAuthMode:hover {
+    color: var(--secondary-color);
+}
+
+.logoutButton:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+}
