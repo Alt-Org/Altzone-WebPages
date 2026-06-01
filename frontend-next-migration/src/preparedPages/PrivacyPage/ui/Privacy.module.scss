@@ -6,45 +6,62 @@
  * including the main container, title, accordion sections, and info boxes.
  */
 
+.pageLayout {
+    display: flex;
+    flex-direction: column;
+    width: 1440px;
+    max-width: 100%;
+    margin: auto;
+    gap: 32px;
+}
+
 .pageContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: auto;
     padding: 2rem;
-    min-height: 100vh;
+    max-width: 1440px;
+    gap: 32px;
 }
 
 .pageTitle {
+    width: 1183px;
+    max-width: 100%;
+    height: 129px;
     color: var(--primary-color);
-    font: var(--font-sw-5xl);
-    line-height: 1.5;
-    margin: 0 0 2rem;
+    font-family: 'Marko One', serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 6rem;
+    line-height: 100%;
+    letter-spacing: -0.04em;
+    margin: 0 auto;
     text-align: center;
 }
 
 .accordionContainer {
     width: 100%;
-    max-width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 3rem 2rem;
-    background-color: #172936;
+    background-color: var(--Background-backgroundCard, #1e3544);
     border-radius: var(--border-radius-figmadesktop);
+}
 
-    > div:not(.accordionWrapper) {
-        padding: 0 1.5rem 2rem;
+.updateNotes {
+    padding: 0 1.5rem 2rem;
 
-        p {
-            margin: 0;
-            color: var(--Content-whiteText, #faf9f6);
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 24px;
-            line-height: 100%;
-            letter-spacing: -0.04em;
-            word-wrap: break-word;
-        }
+    gap: 10px;
+
+    p {
+        margin: 0;
+        color: var(--Content-whiteText, #faf9f6);
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: -0.04em;
+        word-wrap: break-word;
     }
 }
 
@@ -54,8 +71,6 @@
     margin: 2rem 0 3rem 0;
     background-color: #172936;
 
-    border-radius: var(--border-radius-figmadesktop);
-    border: none;
     color: var(--white);
     font: var(--font-dm-m);
     line-height: 1.6;
@@ -75,16 +90,18 @@
 }
 
 .accordionWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     width: 100%;
 }
 
 .collapsibleSection {
     width: 100%;
-    margin: 0.75rem 0;
-    background-color: var(--background);
-    overflow: hidden;
+    margin: 0;
+    background-color: transparent;
+    overflow: visible;
     transition: box-shadow 0.2s ease;
-    background-color: #172936;
 }
 
 .sectionHeader {
@@ -93,20 +110,26 @@
     justify-content: space-between;
     width: 100%;
     padding: 1.25rem 1.5rem;
-    background-color: transparent;
+    background-color: #172936;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease;
     text-align: left;
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: #1b3040;
     }
 
     &:focus-visible {
         outline: 2px solid var(--primary-color);
         outline-offset: -2px;
     }
+}
+
+.collapsibleSection.expanded .sectionHeader {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .sectionTitle {
@@ -141,6 +164,9 @@
 .sectionContent {
     max-height: 0;
     overflow: hidden;
+    background-color: #172936;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
     transition:
         max-height 0.3s ease,
         opacity 0.2s ease 0.05s;
@@ -149,6 +175,7 @@
 
 .collapsibleSection.expanded .sectionContent {
     opacity: 1;
+    box-sizing: border-box;
     transition:
         max-height 0.3s ease,
         opacity 0.2s ease;
@@ -201,11 +228,21 @@
     }
 }
 
-@media screen and (max-width: 500px) {
-    .collapsibleSection {
-        margin: 0.5rem 0;
+@media screen and (min-width: 501px) and (max-width: breakpoint(lg)) {
+    .pageLayout {
+        gap: 24px;
     }
 
+    .pageTitle {
+        width: 760px;
+        max-width: 100%;
+        height: auto;
+        font-size: 64px;
+        line-height: 108%;
+    }
+}
+
+@media screen and (max-width: 500px) {
     .sectionHeader {
         padding: 1rem;
         min-height: 44px;
@@ -243,21 +280,43 @@
 }
 
 @media (max-width: 500px) {
+    .pageLayout {
+        gap: 1.5rem;
+    }
+
     .pageContainer {
         padding: 1rem;
+        width: 100%;
+        max-width: 340px;
+        gap: 10px;
+        margin: 0 auto;
     }
 
     .pageTitle {
-        font: var(--font-sw-xxxl);
+        font-family: 'Marko One', serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 36px;
+        line-height: 100%;
+        letter-spacing: -0.04em;
+
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 0 1rem;
         margin-bottom: 1.5rem;
     }
 
     .accordionContainer {
         padding: 1.5rem 1rem;
+    }
 
-        > div:not(.accordionWrapper) {
-            padding: 0 1rem 1.5rem;
-        }
+    .accordionWrapper {
+        gap: 10px;
+    }
+
+    .updateNotes {
+        padding: 0 1rem 1.5rem;
     }
 
     .infoBox {

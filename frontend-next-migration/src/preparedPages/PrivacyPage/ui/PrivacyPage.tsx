@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { ScrollTop } from '@/features/ScrollTop';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 import cls from './Privacy.module.scss';
@@ -64,37 +63,38 @@ const PrivacyPage = (props: Props) => {
     };
 
     return (
-        <div className={classNames(cls.pageContainer)}>
+        <div className={cls.pageLayout}>
             <h1 className={cls.pageTitle}>{title}</h1>
-            {infoBox && (
-                <div className={cls.infoBox}>
-                    <p dangerouslySetInnerHTML={{ __html: infoBox }} />
-                </div>
-            )}
-            <div className={classNames(cls.accordionContainer)}>
-                {pageDescription && (
-                    <div>
-                        <p dangerouslySetInnerHTML={{ __html: pageDescription }} />
+            <div className={classNames(cls.pageContainer)}>
+                {infoBox && (
+                    <div className={cls.infoBox}>
+                        <p dangerouslySetInnerHTML={{ __html: infoBox }} />
                     </div>
                 )}
-                <div className={cls.accordionWrapper}>
-                    {sections.length > 0 ? (
-                        sections.map((section) => (
-                            <AccordionSection
-                                key={section.id}
-                                section={section}
-                                isExpanded={expandedSections.has(section.id)}
-                                onToggle={() => handleToggleSection(section.id)}
-                                imageErrors={imageErrors}
-                                onImageError={handleImageError}
-                            />
-                        ))
-                    ) : (
-                        <p>No sections available.</p>
+                <div className={classNames(cls.accordionContainer)}>
+                    {pageDescription && (
+                        <div className={cls.updateNotes}>
+                            <p dangerouslySetInnerHTML={{ __html: pageDescription }} />
+                        </div>
                     )}
+                    <div className={cls.accordionWrapper}>
+                        {sections.length > 0 ? (
+                            sections.map((section) => (
+                                <AccordionSection
+                                    key={section.id}
+                                    section={section}
+                                    isExpanded={expandedSections.has(section.id)}
+                                    onToggle={() => handleToggleSection(section.id)}
+                                    imageErrors={imageErrors}
+                                    onImageError={handleImageError}
+                                />
+                            ))
+                        ) : (
+                            <p>No sections available.</p>
+                        )}
+                    </div>
                 </div>
             </div>
-            <ScrollTop />
         </div>
     );
 };
