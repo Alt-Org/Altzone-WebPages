@@ -212,8 +212,9 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                     <Image
                                         src={profileIcon}
                                         alt="Profile Icon"
-                                        width={28}
-                                        height={28}
+                                        width={30}
+                                        height={30}
+                                        className={cls.profileIcon}
                                     />
                                 </div>
                                 <div
@@ -245,25 +246,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             isOpen={langDropdown.state.isOpen && !isCollapsed}
                         />
                     </div>
-
-                    {hasScrollbar && (
-                        <li
-                            data-testid="toggleFixButtonWrapper"
-                            onTransitionEnd={handleTransitionEnd}
-                            className={classNames(
-                                cls.fixButtonWrapper,
-                                { ...collapsedMod, [cls.fixed]: !isFixed },
-                                [cls.navItem],
-                            )}
-                        >
-                            <ToggleFixButton
-                                onClick={toggleFixed}
-                                isFixed={isFixed}
-                                className={cls.fixButton}
-                            />
-                        </li>
-                    )}
-
                     {isFixed && (
                         <li
                             data-testid="collapseExpandWrapper"

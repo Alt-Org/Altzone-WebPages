@@ -8,6 +8,8 @@ import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
 import { NavbarMenuItem } from '../../model/types';
 import cls from './NavbarDesktop.module.scss';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type NavItemProps = {
     item: NavbarMenuItem;
@@ -67,7 +69,13 @@ const NavItem = memo((props: NavItemProps) => {
                     disableClickToggle={true}
                     isOpen={mouseOver}
                 >
-                    <div className={cls.col}>{t(`${item.name}`)}</div>
+                    <div className={cls.col}>
+                        {t(`${item.name}`)}
+                        <FontAwesomeIcon
+                            icon={faChevronDown}
+                            className={cls.chevron}
+                        />
+                    </div>
                 </DropdownWrapper>
             </li>
         );

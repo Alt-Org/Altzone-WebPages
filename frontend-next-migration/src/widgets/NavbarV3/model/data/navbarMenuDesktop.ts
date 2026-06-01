@@ -1,5 +1,6 @@
 import img from '@/shared/assets/images/altLogo.png';
 import {
+    getRouteTeamPage,
     getRouteMainPage,
     getRouteAllNewsPage,
     getRouteLoginPage,
@@ -14,7 +15,7 @@ navbarBuilder.addDropDown('game', true, dropdowns.game);
 navbarBuilder.addDropDown('gallery', true, dropdowns.gallery);
 navbarBuilder.addDropDown('gameart', true, dropdowns.gameart);
 navbarBuilder.addDropDown('community', true, dropdowns.community);
-navbarBuilder.addDropDown('team', true, dropdowns.team);
+navbarBuilder.addLink('team', getRouteTeamPage(), true);
 navbarBuilder.addAuthProfile('profile', dropdowns.profile);
 navbarBuilder.addAuthLogin('login', getRouteLoginPage());
 
