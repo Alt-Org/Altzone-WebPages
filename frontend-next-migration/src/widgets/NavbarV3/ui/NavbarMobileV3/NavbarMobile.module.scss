@@ -2,25 +2,23 @@
     position: absolute;
     font: var(--font-dm-bold-l);
     background-color: var(--base-card-background);
-    border: 2px solid var(--black);
-    border-radius: var(--border-radius-xl);
-    margin-top: 35px;
-    z-index: var(--navbar-z-index);
-    box-shadow: 4px 4px black;
-    top: 0;
-    left: 10px;
-    right: 10px;
+    border-radius: 0px;
+    width: 100%;
+    height: 66px;
+    left: 0px;
+    top: 0px;
 
     @media (min-width: 550px) {
         margin-top: 50px;
     }
 }
 
+
 // For implemeting height transition in css:
 // height: calc-size(auto); // experimental, low support
 .NavbarContent {
     display: flex;
-    height: 50px;
+    height: 66px;
     align-items: center;
     justify-content: space-between;
 }
@@ -43,7 +41,8 @@
 
 .HamurgerBtn {
     position: absolute;
-    margin-left: 15px;
+    margin-right: 15px;
+    right: 0;
 }
 
 .NavbarMobile__center {
@@ -104,7 +103,7 @@
     justify-content: flex-end;
     align-items: center;
     flex-direction: row;
-    right: 0px;
+    left: 15px;
     width: fit-content;
     gap: 5px;
 }

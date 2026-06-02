@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Footer } from '@/widgets/Footer';
-import { Navbar } from '@/widgets/Navbar';
+import { Navbar } from '@/widgets/NavbarV3';
 import { ScrollTop } from '@/features/ScrollTop';
 import LayoutDefault from '../../../preparedPages/Layouts/ui/LayoutDefault/LayoutDefault';
 
