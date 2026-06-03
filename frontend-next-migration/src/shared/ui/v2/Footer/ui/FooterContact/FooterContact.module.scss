@@ -45,9 +45,8 @@
 .WorkWithUsLink {
     color: #faf9f6;
     text-decoration: none;
-    font-family: 'DM Sans';
+    font: var(--font-dm-s);
     font-style: normal;
-    font-size: clamp(0.875rem, 0.75vw, 1.25rem);
     transition:
         color 0.2s ease,
         opacity 0.2s ease;
