@@ -274,7 +274,7 @@
 
             margin: 8px 0 56px;
 
-            font-size: 1.9rem;
+            font-size: 1.6rem;
             font-weight: 400;
             line-height: 1.65;
 
@@ -287,7 +287,7 @@
             align-items: center;
             justify-content: center;
 
-            font-size: 1.9rem;
+            font-size: 1.6rem;
             font-weight: 400;
             line-height: 1.65;
 
@@ -320,36 +320,37 @@
 }
 
 @media (min-width: breakpoint(md)) and (max-width: 1200px) {
+
     .Container {
-        padding: 32px 32px 32px 140px;
+        padding: 80px 64px 32px;
 
         .ImageWrapper {
-            top: 24px;
+            top: 12px;
             left: 24px;
             right: auto;
 
             transform: none;
 
             img {
-                width: 6em;
-                height: 6em;
+                width: 5em;
+                height: 5em;
             }
         }
     }
 
     .Reverse.Container {
-        padding: 32px 140px 32px 32px;
+        padding: 80px 64px 32px;
 
         .ImageWrapper {
-            top: 24px;
+            top: 12px;
             right: 24px;
             left: auto;
 
             transform: none;
 
             img {
-                width: 6em;
-                height: 6em;
+                width: 5em;
+                height: 5em;
             }
         }
     }

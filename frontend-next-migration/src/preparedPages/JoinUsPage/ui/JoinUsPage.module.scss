@@ -20,7 +20,7 @@
 
 @media screen and (max-width: breakpoint(md)) {
     .Container {
-        padding: 0 16px 48px;
+        padding: 96px 16px 48px;
 
         h1 {
             margin: 32px 0 24px;
@@ -33,7 +33,7 @@
 
 @media screen and ((min-width: breakpoint(sm)) and (max-width: breakpoint(md))) {
     .Container {
-        padding: 0 24px 56px;
+        padding: 96px 24px 56px;
 
         h1 {
             margin: 48px 0 32px;
