@@ -6,35 +6,26 @@
  * including the main container, title, accordion sections, and info boxes.
  */
 
-.pageLayout {
-    display: flex;
-    flex-direction: column;
-    width: 1440px;
-    max-width: 100%;
-    margin: auto;
-    gap: 32px;
-}
-
 .pageContainer {
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    width: 100%;
     max-width: 1440px;
     gap: 32px;
 }
 
 .pageTitle {
-    width: 1183px;
+    width: 100%;
     max-width: 100%;
-    height: 129px;
-    color: var(--primary-color);
-    font-family: 'Marko One', serif;
+    height: auto;
+    color: var(--content-primaryText, #ffa100);
+    font: var(--font-sw-5xl);
     font-weight: 400;
     font-style: normal;
-    font-size: 6rem;
     line-height: 100%;
     letter-spacing: -0.04em;
-    margin: 0 auto;
+    margin: 0 0 2rem;
     text-align: center;
 }
 
@@ -55,10 +46,9 @@
     p {
         margin: 0;
         color: var(--Content-whiteText, #faf9f6);
-        font-family: 'DM Sans';
+        font: var(--font-dm-xl);
         font-weight: 400;
         font-style: normal;
-        font-size: 24px;
         line-height: 100%;
         letter-spacing: -0.04em;
         word-wrap: break-word;
@@ -228,20 +218,6 @@
     }
 }
 
-@media screen and (min-width: 501px) and (max-width: breakpoint(lg)) {
-    .pageLayout {
-        gap: 24px;
-    }
-
-    .pageTitle {
-        width: 760px;
-        max-width: 100%;
-        height: auto;
-        font-size: 64px;
-        line-height: 108%;
-    }
-}
-
 @media screen and (max-width: 500px) {
     .sectionHeader {
         padding: 1rem;
@@ -280,10 +256,6 @@
 }
 
 @media (max-width: 500px) {
-    .pageLayout {
-        gap: 1.5rem;
-    }
-
     .pageContainer {
         padding: 1rem;
         width: 100%;
@@ -293,10 +265,10 @@
     }
 
     .pageTitle {
-        font-family: 'Marko One', serif;
+        font: var(--font-sw-xxxl);
         font-weight: 400;
         font-style: normal;
-        font-size: 36px;
+
         line-height: 100%;
         letter-spacing: -0.04em;
 
