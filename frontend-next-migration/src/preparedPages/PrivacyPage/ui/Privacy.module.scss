@@ -28,7 +28,7 @@
     width: 100%;
     max-width: 100%;
     height: auto;
-    color: var(--content-primaryText, #ffa100);
+    color: var(--primary-color);
     font: var(--font-sw-5xl);
     font-weight: 400;
     font-style: normal;
@@ -43,7 +43,7 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 3rem 2rem;
-    background-color: var(--Background-backgroundCard, #1e3544);
+    background-color: var(--base-card-background);
     border-radius: var(--border-radius-figmadesktop);
 }
 
