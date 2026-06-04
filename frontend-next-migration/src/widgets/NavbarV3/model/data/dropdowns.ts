@@ -7,7 +7,6 @@ import {
     getRouteGameArtPage,
     getRouteDefenseGalleryPage,
     getRouteAllClanSearchPage,
-    //getRouteAllFurnitureSetsPage,
     getRouteAllCollectionsPage,
     getRouteJoinUsPage,
     getRouteAboutPage,
@@ -79,13 +78,6 @@ export const dropdowns = {
                 reason: 'Kirjaudu ensin!',
             },
         },
-        // {
-        //     elementText: 'leaderboard',
-        //     link: {
-        //         path: getRouteClanLeadeboardPage(),
-        //         isExternal: false,
-        //     },
-        // },
     ],
     gallery: [
         {
@@ -153,14 +145,5 @@ export const dropdowns = {
             },
         },
     ],
-    profile: [
-        //     {
-        //         elementText: 'forum',
-        //         link: {
-        //             path: AppExternalLinks.reddit,
-        //             isExternal: true
-        //         }
-        //     }
-        // ]
-    ],
+    profile: [],
 };

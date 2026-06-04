@@ -22,19 +22,23 @@ enum DropdownTypes {
 
 type DropdownType = DropdownTypes.EMPTY | DropdownTypes.HAMBURGER | DropdownTypes.AUTH;
 
+/**
+ * Properties for NavbarMobile component
+ *
+ * @property {number} [marginTop] Optional margin at the top in pixels
+ * @property {(isMenuOpen: boolean) => void} [onDropdownChange] Callback when dropdown state changes
+ * @property {NavbarBuild} [navbarBuild] Navigation menu structure
+ * @property {string} [className] Additional CSS classes
+ */
 export interface NavbarTouchProps {
     marginTop?: number;
     onDropdownChange?: (isMenuOpen: boolean) => void;
     navbarBuild?: NavbarBuild;
     className?: string;
-    isFixed: boolean;
-    isCollapsed: boolean;
-    toggleCollapsed: () => void;
-    toggleFixed: () => void;
 }
 
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
-    const { marginTop, navbarBuild, className = '', onDropdownChange, isFixed } = props;
+    const { marginTop, navbarBuild, className = '', onDropdownChange } = props;
 
     const { t } = useClientTranslation('navbar');
     const { t: tAuth } = useClientTranslation('auth');
@@ -126,28 +130,28 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     // Localize the elements within the dropdown, but skip if elementText equals "clanpage"
                     //todo looks like that this logic should not be here in ui component
                     const localizedElements = item.elements
-                        .map((element: any) => {
+                        .map((element) => {
                             if (
-                                // @ts-ignore todo add guard
+                                !element ||
+                                typeof element !== 'object' ||
+                                !('elementText' in element)
+                            )
+                                return null;
+                            if (
                                 element.elementText === 'clanpage' &&
                                 !permissionToSeeOwnClan.isGranted
                             ) {
                                 return null; // Return null if elementText is "clanpage"
                             }
                             return {
-                                // @ts-ignore todo add guard
                                 ...element,
-                                // @ts-ignore todo add guard
                                 elementText: t(`${element.elementText}`), // Localize elementText
-                                // @ts-ignore todo add guard
                                 active: realPath === element?.link?.path,
                             };
                         })
                         .filter((element) => element !== null); // Filter out any null elements
 
-                    const isDropdownActive = localizedElements.some(
-                        (element: any) => element.active,
-                    );
+                    const isDropdownActive = localizedElements.some((element) => element?.active);
                     // If there are no valid elements left, return null to skip this item
                     if (localizedElements.length === 0) {
                         return null;
@@ -225,10 +229,6 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
 
-    const mods: Record<string, boolean> = {
-        [cls.fixed]: isFixed,
-    };
-
     const getDropdownContent = (dropdownType: DropdownType) => {
         if (dropdownType === DropdownTypes.EMPTY) {
             return null;
@@ -239,7 +239,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
     return (
         <nav
             ref={navRef}
-            className={classNames(cls.Navbar, mods, [className])}
+            className={className ? `${cls.Navbar} ${className}` : cls.Navbar}
             style={style}
         >
             <div className={cls.NavbarContent}>
@@ -268,12 +268,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                     )}
                 </div>
                 <AppLink
-                    className={classNames(
-                        cls.navLogo + ' ' + cls.NavbarMobile__center + ' ' + cls.navItem,
-                        // { [cls.collapsed]: isCollapsed },
-                        {},
-                        [],
-                    )}
+                    className={`${cls.navLogo} ${cls.NavbarMobile__center} ${cls.navItem}`}
                     theme={AppLinkTheme.PRIMARY}
                     to={navbarBuild?.namedMenu?.navLogo?.path || ''}
                 >

@@ -37,19 +37,4 @@ export const navbarMenuDesktopMock: NavbarMenu = [
         type: ItemType.navLink,
         position: 'right',
     },
-
-    // {
-    //     name : 'Tekijat',
-    //     path: '/#workers',
-    //     isActive: false,
-    //     type: "navLink",
-    //     position : "right"
-    // },
-
-    // {
-    //     name : '⠀⠀⠀⠀',
-    //     type: "navLinkFake",
-    //     position : "right",
-    //     reactKey: 'somekeyhere'
-    // },
 ];

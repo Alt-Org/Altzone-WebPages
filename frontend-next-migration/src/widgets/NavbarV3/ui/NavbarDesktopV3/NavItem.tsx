@@ -45,14 +45,12 @@ const NavItem = memo((props: NavItemProps) => {
         const canUserSeeOwnClan = checkPermissionFor('clan:seeOwn').isGranted;
         const localizedElements = item.elements
             .map((element) => {
-                // @ts-ignore
+                if (!element || typeof element !== 'object' || !('elementText' in element))
+                    return null;
                 if (element.elementText === 'clanpage' && !canUserSeeOwnClan) return null;
                 return {
-                    // @ts-ignore
                     ...element,
-                    // @ts-ignore
                     elementText: t(`${element.elementText}`),
-                    // @ts-ignore
                     active: currentPath === element?.link?.path,
                 };
             })

@@ -3,7 +3,7 @@ import NavbarMobile from './NavbarMobile';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 
 const meta: Meta<typeof NavbarMobile> = {
-    title: '@/widgets/Navbar/ui/NavbarMobileV2/NavbarMobile',
+    title: '@/widgets/Navbar/ui/NavbarMobileV3/NavbarMobile',
     component: NavbarMobile,
     argTypes: {
         marginTop: {
@@ -37,9 +37,7 @@ export default meta;
 export const Default: StoryObj<typeof NavbarMobile> = {
     args: {
         marginTop: 0,
-        onDropdownChange: (_collapsed) => {
-            /*console.log(`dropdownChange ${_collapsed}`)*/
-        },
+        onDropdownChange: (_collapsed) => {},
         className: '',
         navbarBuild: getNavbarBuildBySize('mobile'),
     },
