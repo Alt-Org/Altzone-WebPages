@@ -1,79 +1,35 @@
 'use client';
-import { usePathname } from 'next/navigation';
-import { CSSProperties, memo, useEffect, useState } from 'react';
-import { LangSwitcher } from '@/features/LangSwitcher';
-import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
+import { CSSProperties, memo } from 'react';
+import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useClientTranslation } from '@/shared/i18n';
 import { NavbarBuild } from '../../model/types';
-import { useDropdownManager } from '@/shared/lib/hooks/useDropdownManager';
-import { LoginForm } from '@/features/AuthByUsername';
 import cls from './NavbarDesktop.module.scss';
 import NavItem from './NavItem';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import searchIcon from '@/shared/assets/icons/search.png';
-import Image from 'next/image';
+import languageIcon from '@/shared/assets/icons/langIcon.svg';
 
 export interface NavbarProps {
+    /** Space above the navbar in pixels */
     marginTop?: number;
+    /** Extra classes if you need to tweak the styling */
     className?: string;
+    /** The menu items and logo that show up in the navbar */
     navbarBuild: NavbarBuild;
+    /** When true the navbar shrinks down to a narrow collapsed state */
     isCollapsed?: boolean;
 }
 
+/**
+ * The main nav bar for desktop users.
+ *
+ * Shows the logo, nav links, search, profile icon and language picker.
+ * None of the buttons do anything yet — the functionality comes later.
+ */
 const NavbarDesktop = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', isCollapsed = false } = props;
 
-    const { checkPermissionFor } = useUserPermissionsV2();
-    const permissionToLogin = checkPermissionFor('login');
-    const permissionToLogout = checkPermissionFor('logout');
-    const [logout] = useLogoutMutation();
-    const { t } = useClientTranslation('auth');
-
-    const authDropdown = useDropdownManager();
-    const langDropdown = useDropdownManager();
-
-    const [isMouseOver, setIsMouseOver] = useState(false);
-    const [realPath, setRealPath] = useState('/');
-    const pathname = usePathname();
-
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
-
-    const handleDropdownClick = (dropdown: 'auth' | 'lang') => {
-        if (dropdown === 'auth') {
-            authDropdown.actions.toggle();
-            if (!authDropdown.state.isToggled) {
-                langDropdown.actions.reset();
-            }
-        } else {
-            langDropdown.actions.toggle();
-            if (!langDropdown.state.isToggled) {
-                authDropdown.actions.reset();
-            }
-        }
-    };
-
-    const handleNavbarMouseEnter = () => {
-        setIsMouseOver(true);
-        if (authDropdown.state.isToggled) {
-            authDropdown.actions.open();
-        }
-        if (langDropdown.state.isToggled) {
-            langDropdown.actions.open();
-        }
-    };
-
-    const handleNavbarMouseLeave = () => {
-        setIsMouseOver(false);
-        authDropdown.actions.close();
-        langDropdown.actions.close();
-    };
-
-    useEffect(() => {
-        const pathSegments = pathname.split('/').filter(Boolean);
-        const newPath = pathSegments.length === 1 ? '/' : `/${pathSegments[1] || ''}`;
-        setRealPath(newPath);
-    }, [pathname]);
 
     return (
         <nav
@@ -89,27 +45,17 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             <NavItem
                                 key={item.name}
                                 item={item}
-                                currentPath={realPath}
-                                mouseOver={isMouseOver}
-                                className=""
                             />
                         ))}
                 </div>
 
-                <ul
-                    className={cls.navLinks}
-                    onMouseEnter={handleNavbarMouseEnter}
-                    onMouseLeave={handleNavbarMouseLeave}
-                >
+                <ul className={cls.navLinks}>
                     {navbarBuild.menu
                         .filter((item) => item.type !== 'navLogo')
                         .map((item) => (
                             <NavItem
                                 key={item.name}
                                 item={item}
-                                currentPath={realPath}
-                                mouseOver={isMouseOver}
-                                className=""
                             />
                         ))}
                 </ul>
@@ -128,67 +74,24 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                     </button>
 
                     <div className={cls.authWrapper}>
-                        {permissionToLogin.isGranted ? (
-                            <div className={cls.authContainer}>
-                                <div
-                                    className={cls.authTrigger}
-                                    onClick={() => handleDropdownClick('auth')}
-                                >
-                                    <Image
-                                        src={profileIcon}
-                                        alt="Login Icon"
-                                        width={28}
-                                        height={28}
-                                    />
-                                </div>
-                                <div
-                                    className={classNames(cls.dropdown, {
-                                        [cls.dropdownOpen]: authDropdown.state.isOpen,
-                                    })}
-                                >
-                                    <LoginForm />
-                                </div>
+                        <div className={cls.authContainer}>
+                            <div className={cls.authTrigger}>
+                                <Image
+                                    src={profileIcon}
+                                    alt="Profile"
+                                    width={28}
+                                    height={28}
+                                />
                             </div>
-                        ) : permissionToLogout.isGranted ? (
-                            <div className={cls.authContainer}>
-                                <div
-                                    className={cls.authTrigger}
-                                    onClick={() => handleDropdownClick('auth')}
-                                >
-                                    <Image
-                                        src={profileIcon}
-                                        alt="Profile Icon"
-                                        width={28}
-                                        height={28}
-                                    />
-                                </div>
-                                <div
-                                    className={classNames(cls.dropdown, {
-                                        [cls.dropdownOpen]: authDropdown.state.isOpen,
-                                    })}
-                                >
-                                    <div className={cls.authDropdownContent}>
-                                        <div className={cls.profileLabel}>{t('ownProfile')}</div>
-                                        <button
-                                            className={cls.logoutButton}
-                                            onClick={() => logout()}
-                                        >
-                                            {t('logout')}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        ) : null}
+                        </div>
                     </div>
 
-                    <div
-                        onClick={() => handleDropdownClick('lang')}
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <LangSwitcher
-                            className={cls.langSwitcher}
-                            isOpen={langDropdown.state.isOpen}
+                    <div className={cls.langSwitcher}>
+                        <Image
+                            src={languageIcon}
+                            alt="Language"
                         />
+                        <span>EN</span>
                     </div>
                 </div>
             </div>

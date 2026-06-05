@@ -1,21 +1,22 @@
-import { dropdowns } from './dropdowns';
 import { NavbarBuilder } from './NavbarBuilder';
 import {
     getRouteMainPage,
     getRouteAllNewsPage,
-    getRouteLoginPage,
+    getRouteDefenseGalleryPage,
+    getRouteGalleryPage,
+    getRouteGameArtPage,
+    getRouteAboutPage,
+    getRouteTeamPage,
 } from '@/shared/appLinks/RoutePaths';
 import img from '@/shared/assets/images/altLogo.png';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLink('news', getRouteAllNewsPage(), true);
-navbarBuilder.addDropDown('game', false, dropdowns.game);
-navbarBuilder.addDropDown('gallery', false, dropdowns.gallery);
-navbarBuilder.addDropDown('gameart', false, dropdowns.gameart);
-navbarBuilder.addDropDown('community', false, dropdowns.community);
-navbarBuilder.addDropDown('team', false, dropdowns.team);
+navbarBuilder.addLink('game', getRouteDefenseGalleryPage(), true);
+navbarBuilder.addLink('gallery', getRouteGalleryPage(), true);
+navbarBuilder.addLink('education', getRouteGameArtPage(), true);
+navbarBuilder.addLink('prg', getRouteAboutPage(), true);
+navbarBuilder.addLink('contactUs', getRouteTeamPage(), true);
 navbarBuilder.addLogo('main', img as unknown as string, getRouteMainPage());
-navbarBuilder.addAuthProfile('profile', dropdowns.profile);
-navbarBuilder.addAuthLogin('login', getRouteLoginPage());
 
 export const navbarMenuMobile = navbarBuilder.build();

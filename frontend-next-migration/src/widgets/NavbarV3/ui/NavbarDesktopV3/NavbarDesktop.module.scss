@@ -10,10 +10,6 @@
     user-select: none;
     overflow-y: visible;
 
-    &.fixed {
-        position: fixed;
-    }
-
     &.collapsed {
         overflow: hidden;
     }
@@ -106,42 +102,6 @@
         &:hover {
             background: rgba(255, 255, 255, 0.06);
         }
-
-        &:global(.active) > a,
-        &:global(.active) > div {
-            opacity: 1;
-            color: #faf9f6;
-        }
-    }
-
-    :global(.itemNavbarDropDownContent) {
-        display: none;
-        position: absolute;
-        top: 62px;
-        left: 0;
-        background: #1e3544;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 12px;
-        padding: 8px 0;
-        min-width: 160px;
-        z-index: 10;
-        flex-direction: column;
-        gap: 2px;
-
-        a {
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: 400;
-            display: block;
-
-            &:hover {
-                background: rgba(255, 255, 255, 0.08);
-            }
-        }
-    }
-
-    li:hover :global(.itemNavbarDropDownContent) {
-        display: flex;
     }
 }
 
@@ -220,77 +180,6 @@
     cursor: pointer;
 }
 
-.profileIcon {
-    filter: brightness(0) invert(1);
-}
-
-.dropdown {
-    position: absolute;
-    top: calc(100% + 12px);
-    right: 0;
-    background: #1e3544;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    padding: 16px;
-    min-width: 260px;
-    z-index: 20;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-6px) scale(0.98);
-    transition: opacity 0.15s ease, transform 0.15s ease;
-
-    &.dropdownOpen {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.authDropdownContent {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.profileLabel {
-    font-size: 14px;
-    color: #faf9f6;
-    opacity: 0.6;
-}
-
-.logoutButton {
-    background: #faf9f6;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 0;
-    width: 100%;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: #1e3544;
-    cursor: pointer;
-    transition: opacity 0.15s ease;
-
-    &:hover {
-        opacity: 0.85;
-    }
-}
-
-.langWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    height: 38px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background 0.15s ease;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.08);
-    }
-}
-
 .langSwitcher {
     display: flex;
     align-items: center;
@@ -311,22 +200,4 @@
         letter-spacing: -0.04em;
         color: #faf9f6;
     }
-}
-
-.collapseButtonWrapper {
-    position: absolute;
-    right: 1px;
-    top: 5px;
-    list-style: none;
-
-    &.collapsing {
-        .collapseButton {
-            pointer-events: none;
-            opacity: 0.5;
-        }
-    }
-}
-
-.collapseButton {
-    cursor: pointer;
 }

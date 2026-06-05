@@ -7,8 +7,8 @@
     height: 66px;
     left: 0px;
     top: 0px;
-
 }
+
 .NavbarContent {
     display: flex;
     height: 66px;
@@ -22,10 +22,9 @@
     transform: scaleY(0);
     transform-origin: top;
     max-height: 0;
-    transition:
-        transform 0.3s ease,
-        max-height 0.3s ease;
+    transition: transform 0.3s ease, max-height 0.3s ease;
 }
+
 .openDropdown {
     padding: 10px;
     transform: scaleY(1);
@@ -45,46 +44,10 @@
 
 .navLogo {
     height: 100%;
+
     img {
         height: 100%;
         width: auto;
-    }
-}
-
-.fixed {
-    position: fixed;
-}
-
-.langSwitcher {
-    top: 10px;
-    color: var(--primary-color) !important;
-    color: white;
-    font: var(--font-dm-bold-l) !important;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 0 12px;
-    flex-wrap: wrap;
-    ul {
-        height: max-content;
-        width: 100%;
-        list-style-type: none;
-        padding: 4px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-left: 40px;
-    }
-
-    li {
-        height: 25px;
-        display: flex;
-        align-items: center;
-        color: white;
-    }
-
-    img {
-        width: 28px;
     }
 }
 
@@ -101,49 +64,10 @@
     gap: 5px;
 }
 
-.Button {
-    text-align: center;
-    margin-right: 12px;
-}
-
-.logoutButton {
-    background-color: var(--primary-color);
-    border: var(--border-mobile) solid var(--black);
-    border-radius: var(--border-radius-xl);
-    box-shadow: 2px 2px var(--black);
-    width: 100%;
-    padding: 10px;
-}
-.profileLabel {
-    font-size: 1.2em;
-}
-
 .navItem {
     opacity: 1;
     transform: translateX(0) scaleX(1);
     transform-origin: right;
-    transition:
-        transform 0.3s ease-out,
-        opacity 0.3s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
     visibility: visible;
-}
-
-.toggleAuthMode {
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    text-decoration: underline;
-    cursor: pointer;
-    font: var(--font-dm-m);
-    padding: 5px 0;
-    width: 100%;
-    text-align: center;
-}
-
-.toggleAuthMode:hover {
-    color: var(--secondary-color);
-}
-
-.logoutButton:hover {
-    background-color: rgba(255, 0, 0, 0.2);
 }

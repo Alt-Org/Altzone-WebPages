@@ -3,20 +3,20 @@ import {
     getRouteTeamPage,
     getRouteMainPage,
     getRouteAllNewsPage,
-    getRouteLoginPage,
+    getRouteDefenseGalleryPage,
+    getRouteGalleryPage,
+    getRouteGameArtPage,
+    getRouteAboutPage,
 } from '@/shared/appLinks/RoutePaths';
-import { dropdowns } from './dropdowns';
 import { NavbarBuilder } from './NavbarBuilder';
 
 const navbarBuilder = new NavbarBuilder();
 navbarBuilder.addLogo('Nav logo', img as unknown as string, getRouteMainPage());
 navbarBuilder.addLink('news', getRouteAllNewsPage(), true);
-navbarBuilder.addDropDown('game', true, dropdowns.game);
-navbarBuilder.addDropDown('gallery', true, dropdowns.gallery);
-navbarBuilder.addDropDown('gameart', true, dropdowns.gameart);
-navbarBuilder.addDropDown('community', true, dropdowns.community);
-navbarBuilder.addLink('team', getRouteTeamPage(), true);
-navbarBuilder.addAuthProfile('profile', dropdowns.profile);
-navbarBuilder.addAuthLogin('login', getRouteLoginPage());
+navbarBuilder.addLink('game', getRouteDefenseGalleryPage(), true);
+navbarBuilder.addLink('gallery', getRouteGalleryPage(), true);
+navbarBuilder.addLink('education', getRouteGameArtPage(), true);
+navbarBuilder.addLink('prg', getRouteAboutPage(), true);
+navbarBuilder.addLink('contactUs', getRouteTeamPage(), true);
 
 export const navbarMenuDesktop = navbarBuilder.build();
