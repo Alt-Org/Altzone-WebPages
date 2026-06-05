@@ -1,147 +1,22 @@
-.playWithUs {
+.SectionPlayWithUs {
     width: 100%;
-    background-color: var(--base-card-background);
-    padding: 71px 220px;
-    position: relative;
-    overflow: visible;
-    height: 635px;
-
-    @media (max-width: breakpoint(lg)) {
-        padding: 60px 120px;
-    }
-
-    @media (max-width: breakpoint(md)) {
-        padding: 2rem 1rem;
-        height: auto;
-    }
-}
-
-.content {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 400px;
-    height: 100%;
-
-    @media (max-width: breakpoint(md)) {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-}
-
-.textBlock {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    flex: 0 1 60%;
-    position: relative;
-    z-index: 1;
-
-    @media (max-width: breakpoint(md)) {
-        flex: 1 1 100%;
-        align-items: center;
-    }
-}
-
-.title {
-    font-family: var(--font-family-title);
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 64px;
-    letter-spacing: -0.04em;
-    color: var(--primary-color);
-
-    @media (max-width: breakpoint(md)) {
-        font-size: 32px;
-        line-height: 42px;
-        text-align: center;
-    }
-}
-
-.description {
-    font-family: var(--font-family-secondary);
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 31px;
-    letter-spacing: -0.04em;
-    color: var(--white);
-    white-space: pre-line;
-    margin: 0;
-
-    @media (max-width: breakpoint(md)) {
-        font-size: 18px;
-        line-height: 26px;
-        text-align: center;
-    }
-}
-
-.extraText {
-    font-family: var(--font-family-secondary);
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 42px;
-    color: var(--white);
-    white-space: pre-line;
-    margin: 0;
-
-    @media (max-width: breakpoint(md)) {
-        font-size: 20px;
-        line-height: 28px;
-        text-align: center;
-    }
-}
-
-.actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 0.5rem;
     align-items: center;
-    flex-direction: row;
-
-    @media (max-width: breakpoint(md)) {
-        justify-content: center;
-        flex-direction: column;
-        width: 100%;
-    }
+    position: relative;
+    gap: 20px;
+    justify-content: flex-start;
 }
 
-.googlePlayImage {
-    max-height: 50px;
-    width: auto;
+
+.GooglePlayButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
-.imageBlock {
-    position: absolute;
-    right: -300px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: auto;
-    flex: none;
-    z-index: 0;
-
-    @media (max-width: breakpoint(lg)) {
-        right: -80px;
-    }
-
-    @media (max-width: breakpoint(md)) {
-        position: static;
-        transform: none;
-        display: flex;
-        justify-content: center;
-        margin: 2rem auto 0;
-    }
-}
-
-.image {
-    height: 635px;
-    object-fit: contain;
-
-    @media (max-width: breakpoint(md)) {
-        max-width: 300px;
-        width: 100%;
-        height: auto;
-    }
+.GooglePlayImage {
+   max-height: 50px;
+   width: auto;
 }
