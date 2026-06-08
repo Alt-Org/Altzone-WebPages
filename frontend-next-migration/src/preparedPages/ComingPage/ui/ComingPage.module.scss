@@ -4,14 +4,92 @@
     align-items: flex-start;
 }
 
-.container {
-    display: grid;
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 96px 0px 0px;
+    isolation: isolate;
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+}
+
+.finnishTitleContainer {
+    position: relative;
+    width: 1478px;
+    max-width: 100%;
+    aspect-ratio: 1920 / 300;
+    overflow: visible;
+    z-index: 1;
+    margin: -156px 0px;
+}
+
+.letterPosition {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.titleFog {
+    position: absolute;
+    width: 1478px;
+    max-width: 100%;
+    height: 373px;
+    left: 228px;
+    top: -57px;
+    z-index: 0;
+}
+
+.titleSection {
+    position: relative;
+    width: 1440px;
+    max-width: 100%;
+    z-index: 1;
+    margin: -156px 0px;
+    display: flex;
     justify-content: center;
-    text-align: center;
-    font: var(--font-sw-xxxl);
-    color: var(--primary-color);
-    width: 80%;
-    padding-bottom: 100px;
+}
+
+.curvedText {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+}
+
+.curvedTextPath {
+    font-family: var(--font-family-title);
+    font-size: 96px;
+    fill: #FFA100;
+    font-weight: 400;
+}
+
+.bodySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 64px;
+    width: 1440px;
+    max-width: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.signWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+.signWrapper img {
+    width: 100%;
+    height: auto;
 }
 
 .title {
@@ -46,6 +124,9 @@
     .images {
         transform: scale(0.8);
     }
+    .curvedTextPath {
+        font-size: 64px;
+    }
 }
 
 @media (max-width: breakpoint(md)) {
@@ -55,6 +136,12 @@
     .title {
         font-size: var(--h3-size-desktop);
     }
+    .curvedTextPath {
+        font-size: 48px;
+    }
+    .bodySection {
+        gap: 40px;
+    }
 }
 
 @media (max-width: breakpoint(sm)) {
@@ -63,6 +150,12 @@
     }
     .title {
         font-size: var(--h1-size-mobile);
+    }
+    .curvedTextPath {
+        font-size: 32px;
+    }
+    .bodySection {
+        gap: 24px;
     }
 }
 
