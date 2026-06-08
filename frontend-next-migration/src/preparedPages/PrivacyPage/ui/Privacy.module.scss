@@ -54,14 +54,14 @@
 }
 
 .updateNotes {
+    width: 100%;
     padding: 0 1.5rem 2rem;
-
     gap: 10px;
 
     p {
         margin: 0;
-        color: var(--Content-whiteText, #faf9f6);
-        font: var(--font-dm-xl);
+        color: var(--white);
+        font: var(--font-dm-m);
         font-weight: 400;
         font-style: normal;
         line-height: 100%;
@@ -242,7 +242,7 @@
     }
 
     .sectionTitle {
-        font: var(--font-dm-bold-l);
+        font: var(--font-sw-xl);
     }
 
     .contentInner {
