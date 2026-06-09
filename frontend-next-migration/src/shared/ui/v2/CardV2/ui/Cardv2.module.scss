@@ -116,7 +116,7 @@
 
 .Title {
     font: var(--font-sw-5xl);
-    font-size: clamp(32px, 3.33vw, 64px);
+    font-size: clamp(var(--font-size-xl), 3.33vw, var(--font-size-5xl));
     line-height: 1;
     letter-spacing: -0.04em;
     color: var(--primary-color);
@@ -131,7 +131,7 @@
 
 .Description {
     font: var(--font-dm-l);
-    font-size: clamp(16px, 1.25vw, 24px);
+    font-size: clamp(var(--font-size-m), 1.25vw, var(--font-size-l));
     color: var(--white);
     margin: 0;
 

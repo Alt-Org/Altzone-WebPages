@@ -33,7 +33,7 @@
     width: 100%;
 }
 .contactTitle {
-    font-size: clamp(32px, 3.33vw, 64px);
+    font-size: clamp(var(--font-size-xl), 3.33vw, var(--font-size-5xl));
     line-height: clamp(43px, 4.48vw, 86px);
 }
 .imageLeft .Content {
@@ -44,19 +44,19 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    flex: 1 1 55%;
+    flex: 1 1 73%;
 }
 
 .Title {
     font: var(--font-sw-xxxl);
-    font-size: clamp(24px, 2.5vw, 48px);
-    line-height: clamp(32px, 3.33vw, 64px);
+    font-size: clamp(var(--font-size-l), 2.5vw, var(--font-size-xxxl));
+    line-height: clamp(var(--font-line-l), 3.33vw, var(--font-line-4xl));
     letter-spacing: -0.04em;
     color: var(--primary-color);
 }
 .Description {
     font: var(--font-dm-l);
-    font-size: clamp(16px, 1.25vw, 24px);
+    font-size: clamp(var(--font-size-m), 1.25vw, var(--font-size-l));
     line-height: clamp(21px, 1.61vw, 31px);
     letter-spacing: -0.04em;
     color: var(--white);
@@ -66,7 +66,7 @@
 .ExtraText {
     font: var(--font-dm-xl);
     font-weight: 600;
-    font-size: clamp(16px, 1.67vw, 32px);
+    font-size: clamp(var(--font-size-m), 1.67vw, var(--font-size-xl));
     line-height: clamp(21px, 2.19vw, 42px);
     color: var(--white);
     white-space: pre-line;
@@ -83,7 +83,7 @@
 }
 
 .ImageBlock {
-    flex: 1 1 30%;
+    flex: 1 1 27%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
