@@ -7,7 +7,9 @@
 .imageWrap {
     position: relative;
     width: 100%;
-    height: 307px;
+    height: auto;
+    aspect-ratio: 1163 / 792;
+    max-height: 60vh;
     overflow: hidden;
 }
 
@@ -42,9 +44,7 @@
 .title {
     margin: 0;
     color: var(--primary-color);
-    font-family: var(--font-family-title);
-    font-weight: 400;
-    font-size: 32px;
+    font: var(--font-sw-xl);
     line-height: 43px;
     letter-spacing: -0.04em;
 }
@@ -70,9 +70,7 @@
 }
 
 .followText {
-    font-family: var(--font-family-secondary);
-    font-weight: 400;
-    font-size: 16px;
+    font: var(--font-dm-m);
     line-height: 21px;
     letter-spacing: -0.04em;
     text-align: center;

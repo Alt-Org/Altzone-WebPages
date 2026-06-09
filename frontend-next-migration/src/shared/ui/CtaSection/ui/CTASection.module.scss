@@ -3,7 +3,7 @@
     max-width: 100%;
     margin: 0;
     background-color: var(--base-card-background);
-    padding: 71px 220px;
+    padding: clamp(2rem, 3.7vw, 71px) clamp(16px, 11.46vw, 220px);
     display: flex;
     align-items: center;
         overflow: visible;
@@ -33,8 +33,8 @@
     width: 100%;
 }
 .contactTitle {
-    font-size: 64px;
-    line-height: 86px;
+    font-size: clamp(32px, 3.33vw, 64px);
+    line-height: clamp(43px, 4.48vw, 86px);
 }
 .imageLeft .Content {
     flex-direction: row-reverse;
@@ -44,32 +44,30 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    flex: 1 1 60%;
+    flex: 1 1 55%;
 }
 
 .Title {
-    font-family: var(--font-family-title);
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 64px;
+    font: var(--font-sw-xxxl);
+    font-size: clamp(24px, 2.5vw, 48px);
+    line-height: clamp(32px, 3.33vw, 64px);
     letter-spacing: -0.04em;
     color: var(--primary-color);
 }
 .Description {
-    font-family: var(--font-family-secondary);
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 31px;
+    font: var(--font-dm-l);
+    font-size: clamp(16px, 1.25vw, 24px);
+    line-height: clamp(21px, 1.61vw, 31px);
     letter-spacing: -0.04em;
     color: var(--white);
     white-space: pre-line;
 }
 
 .ExtraText {
-    font-family: var(--font-family-secondary);
+    font: var(--font-dm-xl);
     font-weight: 600;
-    font-size: 32px;
-    line-height: 42px;
+    font-size: clamp(16px, 1.67vw, 32px);
+    line-height: clamp(21px, 2.19vw, 42px);
     color: var(--white);
     white-space: pre-line;
 }
@@ -85,7 +83,7 @@
 }
 
 .ImageBlock {
-    flex: 1 1 20%;
+    flex: 1 1 30%;
     display: flex;
     justify-content: flex-end;
     align-items: center;

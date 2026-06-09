@@ -40,7 +40,7 @@ const HeaderMobileComponent = memo((props: Props) => {
                     priority
                     fill
                     sizes="100vw"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center 25%' }}
                 />
             </div>
 

@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 60% 40%;
   width: 100%;
-  min-height: clamp(600px, 70vh, 860px);
+  min-height: clamp(400px, min(39.375vw, 70vh), 756px);
   align-items: stretch;
 }
 
@@ -28,19 +28,18 @@
     flex-direction: column;
     justify-content: center;
     max-width: 756px;
-    padding: 0px 40px;
-    gap: 30px;
+    padding: 0 clamp(16px, 2.08vw, 40px);
+    gap: clamp(12px, 1.56vw, 30px);
     background: transparent;
     position: relative;
 }
 
 .title {
-    margin: 0 0 10px 0;
+    margin: 0 0 clamp(4px, 0.52vw, 10px) 0;
     color: var(--primary-color);
-    font-family: var(--font-family-title);
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 86px;
+    font: var(--font-sw-5xl);
+    font-size: clamp(28px, 3.33vw, 64px);
+    line-height: clamp(36px, 4.48vw, 86px);
     letter-spacing: -0.04em;
 }
 
@@ -59,8 +58,8 @@
 
 .ctaLink :global(button) {
   border-radius: 999px !important;
-  padding-left: 30px !important;
-  padding-right: 30px !important;
+  padding-left: clamp(12px, 1.56vw, 30px) !important;
+  padding-right: clamp(12px, 1.56vw, 30px) !important;
 }
 
 
@@ -70,10 +69,10 @@
 
 
 .followText {
-    font-family: var(--font-family-secondary);
+    font: var(--font-dm-l);
     font-weight: 600;
-    font-size: 24px;
-    line-height: 31px;
+    font-size: clamp(12px, 1.25vw, 24px);
+    line-height: clamp(16px, 1.61vw, 31px);
     letter-spacing: -0.04em;
 }
 
@@ -81,9 +80,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 16px;
+  gap: clamp(8px, 0.83vw, 16px);
 
-  margin-top: 8px;
+  margin-top: clamp(2px, 0.42vw, 8px);
   width: 100%;
 }
 
@@ -98,7 +97,10 @@
   }
 
   .left {
-    height: 56vh;
+    min-height: 56vh;
+    height: auto;
+    aspect-ratio: 1163 / 792;
+    max-height: 70vh;
   }
 
   .ctaRow {

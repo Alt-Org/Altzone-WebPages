@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     background-color: transparent;
-    padding: 130px;
+    padding: clamp(24px, 6.77vw, 130px);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease, transform 0.8s ease;
@@ -25,7 +25,7 @@
     align-items: center;
     width: 100%;
     padding: 0px;
-    gap: 6rem;
+    gap: clamp(1.5rem, 5vw, 6rem);
 
 @media (max-width: breakpoint(md)) {
     flex-direction: column-reverse;
@@ -39,8 +39,8 @@
 .ImagesBlock {
     position: relative;
     flex-shrink: 0;
-    width: 540px;
-    height: 331px;
+    width: clamp(328px, 28.125vw, 540px);
+    height: clamp(233px, 17.24vw, 331px);
 
 @media (max-width: breakpoint(md)) {
     width: 328px;
@@ -52,24 +52,24 @@
 .ImgWrapper {
     position: absolute;
     bottom: 0;
-    width: 217px;
+    width: 40.19%;
     height: 90%;
 
     &:nth-child(1) {
         left: 0;
-        width: 286px;
+        width: 52.96%;
         z-index: 1;
     }
 
     &:nth-child(2) {
-        left: 140px;
-        width: 315px;
+        left: 25.93%;
+        width: 58.33%;
         z-index: 3;
     }
 
     &:nth-child(3) {
-        left: 313px;
-        width: 289px;
+        left: 57.96%;
+        width: 53.52%;
         z-index: 2;
     }
 
@@ -105,11 +105,9 @@
     flex-direction: column;
     gap: 20px;
     flex: 1;
-    min-width: 70%;
-    min-height: 100%;
+    min-width: 0;
 
     @media (max-width: breakpoint(md)) {
-        min-width: 0;
         width: 100%;
         align-items: center;
         padding: 0;
@@ -117,16 +115,15 @@
 }
 
 .Title {
-    font-family: var(--font-family-title);
-    font-weight: 400;
-    font-size: 64px;
+    font: var(--font-sw-5xl);
+    font-size: clamp(32px, 3.33vw, 64px);
     line-height: 1;
     letter-spacing: -0.04em;
     color: var(--primary-color);
     margin: 0;
 
     @media (max-width: breakpoint(md)) {
-        font-size: 32px;
+        font: var(--font-sw-xl);
         line-height: 43px;
         letter-spacing: -0.04em;
     }
@@ -134,12 +131,12 @@
 
 .Description {
     font: var(--font-dm-l);
-    font-size: 24px;
+    font-size: clamp(16px, 1.25vw, 24px);
     color: var(--white);
     margin: 0;
 
     @media (max-width: breakpoint(md)) {
-        font-size: 16px;
+        font: var(--font-dm-m);
         line-height: 21px;
         letter-spacing: -0.04em;
         text-align: center;

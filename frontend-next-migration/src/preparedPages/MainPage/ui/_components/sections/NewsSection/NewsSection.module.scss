@@ -9,8 +9,7 @@
     flex-direction: column;
     gap: 2rem;
     .mainTitle {
-        font-family: var(--font-family-title);
-        font-size: 2rem;
+        font: var(--font-sw-xl);
         color: var(--primary-color);
     }
 }
@@ -41,7 +40,7 @@
 .cardContent {
     padding: 1rem;
     flex: 1;
-    font-family: var(--font-family-secondary);
+    font: var(--font-dm-m);
 }
 
 .cardImage img {
@@ -51,8 +50,7 @@
 }
 
 .cardTitle {
-    font-family: var(--font-family-title);
-    font-size: var(--font-line-2xl);
+    font: var(--font-sw-xxxl);
     color: var(--primary-color);
 }
 
