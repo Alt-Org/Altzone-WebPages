@@ -1,0 +1,1 @@
+export { FooterContact } from './FooterContact';

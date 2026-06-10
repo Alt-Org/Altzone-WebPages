@@ -1,33 +1,121 @@
 .Footer {
-    font: var(--font-dm-xl);
-    background: var(--background);
+    --footer-bg: #1e3544;
+    --footer-bar-bg: #172936;
+    --footer-accent: #ffa100;
+    --footer-text: #faf9f6;
+    --footer-muted: #faf9f6;
+
+    font-family: var(--font-dm-s);
+    background: var(--footer-bg);
+    color: var(--footer-text);
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-    padding: 1.5rem 0 1rem 0;
+    align-items: stretch;
     position: relative;
-    z-index: 20;
+    width: 360;
+    height: 584;
+    gap: 20px;
+    top: 117px;
 }
 
-.title {
-    color: var(--primary-color);
-    font-family: var(--font-family-title);
+.SocialBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 38px;
+    background: var(--footer-bar-bg);
+    width: 360;
+    height: 60;
+    gap: 21px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.LogoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    img {
+        width: 70px;
+        height: 69px;
+        object-fit: contain;
+    }
 }
 
 .socialSection {
     justify-content: center;
-    padding: 2rem 0 1rem 0;
+    padding: 0;
+    display: flex;
+    gap: 13px;
+    flex-wrap: wrap;
+    margin: 0;
+    width: 16.4375;
+    height: 16.4375;
+    top: 7.78px;
+    left: 7.78px;
 }
 
-.rights {
-    text-align: center;
+.socialSection > * {
+    width: 32px;
+    height: 32px;
+    color: #fda400;
+}
+
+.socialSection img {
+    width: 32px;
+    height: 32px;
+    color: #fda400;
 }
 
 .FooterContainer {
-    gap: 5rem;
+    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 11px 16px 9px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-.FeedbackContainer {
-    display: flex;
-    justify-content: center;
+.contactSection,
+.infoSection {
+    align-items: center;
+}
+
+.Copyright {
+    margin: 0;
+    width: 328;
+    height: 18;
+
+    font-family: var(--font-dm-s);
+    font-weight: 400;
+    font-style: 9pt Regular;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #ffffff;
+}
+
+.CopySymbol {
+    margin-right: 0.25rem;
+}
+
+.FeedbackCard {
+    width: 66;
+    height: 231;
+    gap: 10px;
+    padding-top: 24px;
+    padding-right: 16px;
+    padding-bottom: 24px;
+    padding-left: 16px;
+    border-radius: 25px;
+    border-width: 4px;
+
+    background: var(--Background-primaryButtonPressed, #e89301);
+    border: 4px solid var(--Border-blackBorder, #121212);
 }

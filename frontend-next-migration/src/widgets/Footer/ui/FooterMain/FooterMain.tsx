@@ -8,6 +8,8 @@ interface Props {
     className?: string;
 }
 
+const CONTACT_EMAILS = ['psykkis@hotmail.com', 'proyaleg@gmail.com'];
+
 export const Footer = (props: Props) => {
     const { className } = props;
 
@@ -16,34 +18,42 @@ export const Footer = (props: Props) => {
     const { isMobileSize, isTabletSize } = useSizes();
     const isTouchSize = isMobileSize || isTabletSize;
 
+    const infoLinksProps = {
+        workWithUsLabel: t('WorkWithUs'),
+        whatIsPrgLabel: t('WhatIsPRG'),
+        altZoneHistoryLabel: t('AltZoneHistory'),
+        developersDesignersLabel: t('DevelopersDesigners'),
+        termsAndPrivacyLabel: t('TermsAndPrivacy'),
+    };
+
+    const texts = {
+        currentYear: new Date().getFullYear(),
+        privacy: t('FooterPrivacy'),
+        cookies: t('FooterCookies'),
+        consent: t('FooterConsent'),
+        ethics: t('FooterEthics'),
+        companyName: envHelper.companyName,
+    };
+
     return isTouchSize ? (
         <FooterMobile
             className={className}
-            title={t('FooterTitle')}
-            texts={{
-                currentYear: new Date().getFullYear(),
-                privacy: t('FooterPrivacy'),
-                cookies: t('FooterCookies'),
-                consent: t('FooterConsent'),
-                ethics: t('FooterEthics'),
-                companyName: envHelper.companyName,
-            }}
+            texts={texts}
             socialIconLinks={socialIconLinks}
+            contactTitle={t('Contact')}
+            contactEmails={CONTACT_EMAILS}
+            infoTitle={t('Information')}
+            infoLinks={infoLinksProps}
         />
     ) : (
         <FooterDesktop
             className={className}
-            title={t('FooterTitle')}
-            // todo probably it should be internalized as well
-            texts={{
-                currentYear: new Date().getFullYear(),
-                privacy: t('FooterPrivacy'),
-                cookies: t('FooterCookies'),
-                consent: t('FooterConsent'),
-                ethics: t('FooterEthics'),
-                companyName: envHelper.companyName,
-            }}
+            texts={texts}
             socialIconLinks={socialIconLinks}
+            contactTitle={t('Contact')}
+            contactEmails={CONTACT_EMAILS}
+            infoTitle={t('Information')}
+            infoLinks={infoLinksProps}
         />
     );
 };

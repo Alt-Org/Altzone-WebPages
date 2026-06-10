@@ -1,0 +1,34 @@
+/* Info section of the footer, containing title and links. */
+
+.FooterInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: clamp(19.375rem, 16vw, 28rem);
+    gap: clamp(0.625rem, 0.6vw, 1.125rem);
+    text-align: center;
+}
+
+.Title {
+    margin: 0;
+    color: #ffa100;
+    font-family: var(--font-family-secondary);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 1.15vw, 2rem);
+    line-height: 1;
+}
+
+.Links {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .Links {
+        justify-content: center;
+        text-align: center;
+    }
+}
