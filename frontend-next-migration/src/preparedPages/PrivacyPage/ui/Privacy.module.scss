@@ -56,6 +56,10 @@
 .updateNotes {
     width: 100%;
     padding: 0 1.5rem 2rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-top: -3.5rem;
+    margin-bottom: 1rem;
     gap: 10px;
 
     p {
@@ -242,7 +246,7 @@
     }
 
     .sectionTitle {
-        font: var(--font-sw-xl);
+        font: var(--font-sw-m);
     }
 
     .contentInner {
@@ -308,6 +312,9 @@
 
     .updateNotes {
         padding: 0 1rem 1.5rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        margin-top: -1rem;
     }
 
     .infoBox {
@@ -324,15 +331,98 @@
         border-radius: calc(var(--border-radius-figmadesktop) * 0.75);
     }
 
-    .sectionTitle {
-        font-size: 1rem;
-    }
-
     .contentInner {
         padding: 0 1rem 1rem 1rem;
 
         p {
             font-size: 0.9rem;
         }
+    }
+}
+
+/* 4K Support: Scaled layout for larger screens */
+@media screen and (min-width: 2560px) {
+    .pageLayout {
+        width: 2560px;
+        gap: 48px;
+    }
+
+    .pageContainer {
+        max-width: 2560px;
+        padding: 3rem;
+        gap: 48px;
+        border: 6px solid var(--ShadowblackShadow, #121212);
+        box-shadow: 12px 24px 0 0 var(--ShadowblackShadow, #121212);
+    }
+
+    .pageTitle {
+        font-size: 5rem;
+        line-height: 120%;
+        margin-bottom: 3rem;
+    }
+
+    .accordionContainer {
+        max-width: 2560px;
+        padding: 4rem 3rem;
+    }
+
+    .updateNotes {
+        padding: 0 2rem 3rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+        margin-top: -4rem;
+
+        p {
+            font-size: 1.5rem;
+            line-height: 140%;
+        }
+    }
+
+    .infoBox {
+        padding: 3rem;
+        margin: 3rem 0 4rem 0;
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+
+            &:first-child {
+                font-size: 1.4rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+
+    .accordionWrapper {
+        gap: 24px;
+    }
+
+    .sectionHeader {
+        padding: 1.75rem 2rem;
+        font-size: 1.25rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.25rem;
+    }
+
+    .chevronIcon {
+        width: 32px;
+        height: 32px;
+        margin-left: 1.5rem;
+    }
+
+    .contentInner {
+        padding: 0 2rem 2rem 2rem;
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+    }
+
+    .sectionImage {
+        max-height: 600px;
+        margin: 5% auto 0;
     }
 }
