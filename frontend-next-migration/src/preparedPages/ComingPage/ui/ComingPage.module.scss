@@ -37,7 +37,7 @@
     overflow: visible;
     position: relative;
     z-index: 1;
-    letter-spacing: 5px;
+    letter-spacing: 10px;
 }
 
 .curvedTextPath {
@@ -62,13 +62,15 @@
 .signWrapper {
     display: flex;
     justify-content: center;
-    width: 70%;
-    max-width: 700px;
+    width: 50%;
+    max-width: 554px;
 }
 
 .signWrapper img {
     width: 100%;
     height: auto;
+    transform-origin: top center;
+    animation: swing 2.5s ease-in-out;
 }
 
 .images {
@@ -101,34 +103,47 @@
         transform: scale(0.8);
     }
     .bodySection {
-        margin-top: 100px;
+        margin-top: 30px;
     }
 }
 
 @media (max-width: breakpoint(md)) {
     .pageContent {
-        padding-bottom: 80px;
+        padding: 0px 0px 0px;
     }
     .images {
         transform: scale(0.7);
     }
     .bodySection {
         gap: 40px;
-        margin-top: 120px;
+        margin-top: 20px;
     }
 }
 
 @media (max-width: breakpoint(sm)) {
     .pageContent {
-        padding-bottom: 60px;
+        padding: 0px 0px 0px;
+    }
+    .curvedTextPath {
+        letter-spacing: -10px;
     }
     .images {
         transform: scale(0.4);
     }
     .bodySection {
         gap: 24px;
-        margin-top: 140px;
+        margin-top: 10px;
     }
+}
+
+@keyframes swing {
+    0% { transform: rotate(-12deg); }
+    15% { transform: rotate(10deg); }
+    30% { transform: rotate(-8deg); }
+    45% { transform: rotate(6deg); }
+    60% { transform: rotate(-4deg); }
+    80% { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
 }
 
 @keyframes fadeIn {
