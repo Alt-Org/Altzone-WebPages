@@ -1,9 +1,9 @@
 import { BlockSection } from '../types';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
-import ConnectionImage from '@/shared/assets/images/heros/mirror/Mirror.png';
-import teachersImage from '@/shared/assets/images/heros/sleeper/Sleeper_new.png';
-import feedbackImage from '@/shared/assets/images/heros/einstein/einstein.png';
-import discordImage from '@/shared/assets/images/heros/conman/conman.png';
+import ArvotImage from '@/shared/assets/images/joinusPage/Arvot.png';
+import KaikkienKaveritImage from '@/shared/assets/images/joinusPage/KaikkienKaverit.png';
+import OpetusmaailmaImage from '@/shared/assets/images/joinusPage/Opetusmaailma.png';
+import ClanLabelImage from '@/shared/assets/images/joinusPage/ClanLabelSomePersons.png';
 import igIcon from '@/shared/assets/images/Insta2.svg';
 import fbdIcon from '@/shared/assets/images/Facebook2.svg';
 import discordIcon from '@/shared/assets/images/Discord2.svg';
@@ -93,7 +93,7 @@ export const makeGetInTouchAndFollow = makeBlocksWithI18n(
         },
         { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
     ],
-    ConnectionImage.src.toString(),
+    ClanLabelImage.src.toString(),
 );
 
 export const makeCommunityAndOpportunities = makeBlocksWithI18n(
@@ -118,7 +118,7 @@ export const makeCommunityAndOpportunities = makeBlocksWithI18n(
             showExternalIcon: true,
         },
     ],
-    discordImage.src.toString(),
+    KaikkienKaveritImage.src.toString(),
 );
 
 export const makeEducationProfessionals = makeBlocksWithI18n(
@@ -133,7 +133,7 @@ export const makeEducationProfessionals = makeBlocksWithI18n(
         },
         { text: 'email', url: 'mailto:proyaleg@gmail.com', isExternal: true },
     ],
-    teachersImage.src.toString(),
+    OpetusmaailmaImage.src.toString(),
 );
 
 export const makeFeedback = makeBlocksWithI18n(
@@ -152,5 +152,5 @@ export const makeFeedback = makeBlocksWithI18n(
             showExternalIcon: true,
         },
     ],
-    feedbackImage.src.toString(),
+    ArvotImage.src.toString(),
 );
