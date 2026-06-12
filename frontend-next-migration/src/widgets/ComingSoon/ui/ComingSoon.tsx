@@ -16,7 +16,6 @@ export const ComingSoon = memo(() => {
             <div className={cls.container}>
                 <h1>{t('title')}</h1>
                 <div className={cls.text}>
-                    <h3>{t('text')}</h3>
                     <div
                         role="button"
                         className={classNames(cls.NavGoBackButton)}

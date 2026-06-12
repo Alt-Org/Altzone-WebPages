@@ -1,5 +1,4 @@
 'use client';
-import { ReactNode } from 'react';
 import cls from './ComingPage.module.scss';
 import Image from 'next/image';
 import { Glass } from '@/shared/ui/Glass';
@@ -15,21 +14,20 @@ import pedant from '@/shared/assets/images/heros/pedant/Viisastelija.png';
 
 export type Props = {
     title: string;
-    text: ReactNode;
+    lng: string;
 };
 
 const ComingPage = (props: Props) => {
-    const { title } = props;
+    const { title, lng } = props;
 
-    const isFinnish = title === 'Jotain siistiä on tekeillä!';
-    const viewBox = isFinnish ? '0 0 1920 300' : '0 0 1700 300';
+    const isFinnish = lng === 'fi';
+    const viewBox = isFinnish ? '0 0 1920 350' : '0 0 1700 350';
     const pathId = isFinnish ? 'textArcFi' : 'textArc';
-    const pathD = isFinnish ? 'M 56 180 Q 960 -280 1864 180' : 'M 50 180 Q 850 -160 1650 180';
+    const pathD = isFinnish ? 'M 56 180 Q 960 -320 1864 180' : 'M 50 200 Q 850 -300 1650 200';
     const imgX = isFinnish ? '100' : '50';
-    const imgY = isFinnish ? '-270' : '-170';
+    const imgY = isFinnish ? '-320' : '-220';
     const imgW = isFinnish ? '1720' : '1600';
-    const imgH = isFinnish ? '600' : '340';
-    const text = isFinnish ? 'Jotain siistiä on tekeillä!' : title;
+    const imgH = isFinnish ? '670' : '420';
 
     return (
         <main className={cls.main}>
@@ -61,8 +59,9 @@ const ComingPage = (props: Props) => {
                                 startOffset="50%"
                                 textAnchor="middle"
                                 className={cls.curvedTextPath}
+                                letterSpacing={isFinnish ? '10' : '-10'}
                             >
-                                {text}
+                                {title}
                             </textPath>
                         </text>
                     </svg>

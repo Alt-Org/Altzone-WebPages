@@ -9,7 +9,7 @@ export async function _getPage(lng: string) {
     return createPage<ComingPageProps>({
         buildPage: () => ({
             title: t('title'),
-            text: t('text'),
+            lng,
         }),
         buildSeo: () => ({
             title: t('head-title'),
