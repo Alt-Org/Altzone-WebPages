@@ -237,6 +237,14 @@
     }
 }
 
+/* Tablet/Small Desktop Layout */
+@media screen and (min-width: 501px) and (max-width: 2559px) {
+    .pageLayout {
+        padding: 0 3rem;
+        gap: 2rem;
+    }
+}
+
 @media screen and (max-width: 500px) {
     .sectionHeader {
         padding: 1rem;
@@ -343,12 +351,12 @@
 /* 4K Support: Scaled layout for larger screens */
 @media screen and (min-width: 2560px) {
     .pageLayout {
-        width: 2560px;
+        max-width: 1440px;
         gap: 48px;
     }
 
     .pageContainer {
-        max-width: 2560px;
+        max-width: 1440px;
         padding: 3rem;
         gap: 48px;
         border: 6px solid var(--ShadowblackShadow, #121212);
@@ -362,7 +370,7 @@
     }
 
     .accordionContainer {
-        max-width: 2560px;
+        max-width: 1440px;
         padding: 4rem 3rem;
     }
 
