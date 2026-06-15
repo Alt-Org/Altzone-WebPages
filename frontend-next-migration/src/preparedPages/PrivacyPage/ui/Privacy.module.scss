@@ -36,9 +36,6 @@
     height: auto;
     color: var(--primary-color);
     font: var(--font-sw-5xl);
-    font-weight: 400;
-    font-style: normal;
-    line-height: 100%;
     letter-spacing: -0.04em;
     margin: 0 0 2rem;
     text-align: center;
@@ -66,9 +63,6 @@
         margin: 0;
         color: var(--white);
         font: var(--font-dm-l);
-        font-weight: 400;
-        font-style: normal;
-        line-height: 100%;
         letter-spacing: -0.04em;
         word-wrap: break-word;
     }
@@ -297,10 +291,6 @@
 
     .pageTitle {
         font: var(--font-sw-xxxl);
-        font-weight: 400;
-        font-style: normal;
-
-        line-height: 100%;
         letter-spacing: -0.04em;
 
         width: 100%;
