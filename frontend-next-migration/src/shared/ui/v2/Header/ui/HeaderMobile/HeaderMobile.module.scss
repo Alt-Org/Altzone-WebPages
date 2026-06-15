@@ -2,6 +2,9 @@
     width: 100%;
     background: transparent;
     color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
 }
 
 .imageWrap {

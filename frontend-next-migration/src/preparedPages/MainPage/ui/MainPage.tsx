@@ -56,57 +56,58 @@ function MainPage(props: Props) {
         <div className={cls.MainPage}>
             <WallIntroAnimation renderOnce />
 
-            <Header />
+            <div className={cls.sections}>
+                <Header />
+                <PlayWithUs {...playWithUs} />
+                <CardV2
+                    images={[
+                        { src: char1, alt: 'Defense character 1' },
+                        { src: char2, alt: 'Defense character 2' },
+                        { src: char3, alt: 'Defense character 3' },
+                    ]}
+                    title={t('descriptionCard-title')}
+                    description={t('descriptionCard-description')}
+                    actions={
+                        <Button
+                            path="/defense-gallery"
+                            theme={ButtonTheme.PRIMARY}
+                        >
+                            {t('descriptionCard-button')}
+                        </Button>
+                    }
+                />
+                <ContactSection {...contactSection} />
 
-            <PlayWithUs {...playWithUs} />
-            <CardV2
-                images={[
-                    { src: char1, alt: 'Defense character 1' },
-                    { src: char2, alt: 'Defense character 2' },
-                    { src: char3, alt: 'Defense character 3' },
-                ]}
-                title={t('descriptionCard-title')}
-                description={t('descriptionCard-description')}
-                actions={
-                    <Button
-                        path="/defense-gallery"
-                        theme={ButtonTheme.PRIMARY}
-                    >
-                        {t('descriptionCard-button')}
-                    </Button>
-                }
-            />
-            <ContactSection {...contactSection} />
+                <div className={cls.newsSection}>
+                    <h2 className={cls.newsHeader}>{t('newsSection-title')}</h2>
+                    <div className={cls.newsGrid}>
+                        {groupedNews.map((news) => {
+                            const imageSrc = news.titlePicture?.id
+                                ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
+                                : hannu.src;
 
-            <div className={cls.newsSection}>
-                <h2 className={cls.newsHeader}>{t('newsSection-title')}</h2>
-                <div className={cls.newsGrid}>
-                    {groupedNews.map((news) => {
-                        const imageSrc = news.titlePicture?.id
-                            ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
-                            : hannu.src;
+                            return (
+                                <NewsCard
+                                    key={news.id}
+                                    titlePicture={imageSrc}
+                                    title={news.title}
+                                    previewText={news.previewText}
+                                    date={news.date}
+                                    id={news.id}
+                                />
+                            );
+                        })}
+                    </div>
 
-                        return (
-                            <NewsCard
-                                key={news.id}
-                                titlePicture={imageSrc}
-                                title={news.title}
-                                previewText={news.previewText}
-                                date={news.date}
-                                id={news.id}
-                            />
-                        );
-                    })}
-                </div>
-
-                <div className={cls.linkWrapper}>
-                    <a
-                        className={cls.link}
-                        href={`/news`}
-                        rel="noopener noreferrer"
-                    >
-                        {t('newsSection-seeMore')}
-                    </a>
+                    <div className={cls.linkWrapper}>
+                        <a
+                            className={cls.link}
+                            href={`/news`}
+                            rel="noopener noreferrer"
+                        >
+                            {t('newsSection-seeMore')}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
