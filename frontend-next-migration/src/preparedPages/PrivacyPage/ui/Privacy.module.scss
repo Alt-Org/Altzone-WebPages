@@ -12,13 +12,14 @@
     width: 1440px;
     max-width: 100%;
     margin: auto;
-    gap: 32px;
+    gap: 96px;
+    padding: 0 15rem 15rem;
 }
 
 .pageContainer {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 3rem;
     width: 100%;
     max-width: 1440px;
     gap: 32px;
@@ -278,11 +279,12 @@
 
 @media (max-width: 500px) {
     .pageLayout {
+        padding: 0.625rem 0.625rem 5rem 0.625rem;
         gap: 1.5rem;
     }
 
     .pageContainer {
-        padding: 1rem;
+        padding: 1.5rem 1rem 1.5rem 1rem;
         width: 100%;
         max-width: 340px;
         gap: 10px;
