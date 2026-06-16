@@ -1,6 +1,9 @@
+import { DropDownElement } from '@/shared/ui/DropdownWrapper';
+
 export enum ItemType {
     navLink = 'navLink',
     navLogo = 'navLogo',
+    navDropDown = 'navDropDown',
 }
 
 export type NavbarLinkObject = {
@@ -8,6 +11,15 @@ export type NavbarLinkObject = {
     path: string;
     isActive: boolean;
     type: ItemType.navLink;
+    position?: string;
+    accessErrorMsg?: string;
+};
+
+export type NavbarDropDownObject = {
+    name: string;
+    isActive: boolean;
+    elements: Array<DropDownElement>;
+    type: ItemType.navDropDown;
     position?: string;
     accessErrorMsg?: string;
 };
@@ -21,7 +33,7 @@ export type NavLogoObject = {
     accessErrorMsg?: string;
 };
 
-export type NavbarMenuItem = NavbarLinkObject | NavLogoObject;
+export type NavbarMenuItem = NavbarLinkObject | NavLogoObject | NavbarDropDownObject;
 
 export type NavbarMenu = NavbarMenuItem[];
 

@@ -7,6 +7,7 @@
     height: 66px;
     left: 0px;
     top: 0px;
+    z-index: var(--navbar-z-index);
 }
 
 .NavbarContent {
@@ -23,6 +24,8 @@
     transform-origin: top;
     max-height: 0;
     transition: transform 0.3s ease, max-height 0.3s ease;
+    z-index: var(--navbar-z-index);
+    background: var(--base-card-background);
 }
 
 .openDropdown {

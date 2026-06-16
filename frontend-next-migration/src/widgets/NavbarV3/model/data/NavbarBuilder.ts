@@ -1,4 +1,5 @@
 import { ItemType, NamedMenu, NavbarBuild, NavbarMenuItem, NavLogoObject } from '../types';
+import { DropDownElement } from '@/shared/ui/DropdownWrapper';
 
 export class NavbarBuilder {
     private menu: NavbarMenuItem[] = [];
@@ -16,6 +17,23 @@ export class NavbarBuilder {
             path,
             isActive: true,
             type: ItemType.navLink,
+            position,
+            accessErrorMsg,
+        });
+    }
+
+    addDropDown(
+        name: string,
+        isActive: boolean,
+        elements: Array<DropDownElement>,
+        position?: string,
+        accessErrorMsg?: string,
+    ): void {
+        this.menu.push({
+            name,
+            isActive,
+            elements,
+            type: ItemType.navDropDown,
             position,
             accessErrorMsg,
         });
