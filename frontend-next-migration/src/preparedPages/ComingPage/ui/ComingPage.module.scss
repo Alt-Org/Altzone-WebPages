@@ -81,18 +81,14 @@
 }
 
 .images img {
-    margin-left: -25px;
-    margin-right: -20px;
+    margin-left: -27px;
+    margin-right: -27px;
 }
 
 .images .flipped {
     transform: scaleX(-1);
-    margin-left: -5px;
-    margin-right: -20px;
-}
-
-.images .pedant {
-    margin-left: -5px;
+    margin-left: -27px;
+    margin-right: -27px;
 }
 
 @media (max-width: breakpoint(lg)) {

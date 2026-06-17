@@ -4,30 +4,30 @@ import Image from 'next/image';
 import { Glass } from '@/shared/ui/Glass';
 import titleFogImg from '@/shared/assets/images/titlefog.png';
 import comingSoonSign from '@/shared/assets/images/Coming-soon-sign.png';
-import hateSpeech from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
-import jokester from '@/shared/assets/images/heros/jokester/Jokester.png';
-import believer from '@/shared/assets/images/heros/fate-priest/Believer.png';
-import provocator from '@/shared/assets/images/heros/provocator/Provokaattori.png';
-import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
-import purpleGirls from '@/shared/assets/images/heros/purple-girls/purpel-girls-main.png';
-import pedant from '@/shared/assets/images/heros/pedant/Viisastelija.png';
+import stoner from '@/shared/assets/images/comingPage/possyttelija.png';
+import delusion from '@/shared/assets/images/comingPage/harhaisuus.png';
+import fashionMadness from '@/shared/assets/images/comingPage/muotihulluus.png';
+import jokester from '@/shared/assets/images/comingPage/vitsinvaantaja.png';
+import veteran from '@/shared/assets/images/comingPage/posttraumaattinenveteraani.png';
+import pedant from '@/shared/assets/images/comingPage/viisastelija.png';
+import fatigue from '@/shared/assets/images/comingPage/vasyminen.png';
 
 export type Props = {
     title: string;
-    lng: string;
+    lng?: string;
 };
 
 const ComingPage = (props: Props) => {
     const { title, lng } = props;
-
     const isFinnish = lng === 'fi';
-    const viewBox = isFinnish ? '0 0 1920 350' : '0 0 1700 350';
-    const pathId = isFinnish ? 'textArcFi' : 'textArc';
-    const pathD = isFinnish ? 'M 56 180 Q 960 -320 1864 180' : 'M 50 200 Q 850 -300 1650 200';
-    const imgX = isFinnish ? '100' : '50';
-    const imgY = isFinnish ? '-320' : '-220';
-    const imgW = isFinnish ? '1720' : '1600';
-    const imgH = isFinnish ? '670' : '420';
+
+    const viewBox = '0 0 1700 120';
+    const pathId = 'textArc';
+    const pathD = 'M 50 200 Q 850 -300 1650 200';
+    const imgX = '50';
+    const imgY = '-220';
+    const imgW = '1600';
+    const imgH = '420';
 
     return (
         <main className={cls.main}>
@@ -59,7 +59,7 @@ const ComingPage = (props: Props) => {
                                 startOffset="50%"
                                 textAnchor="middle"
                                 className={cls.curvedTextPath}
-                                letterSpacing={isFinnish ? '10' : '-10'}
+                                letterSpacing={isFinnish ? '5' : '-10'}
                             >
                                 {title}
                             </textPath>
@@ -78,56 +78,54 @@ const ComingPage = (props: Props) => {
                     </div>
                     <div className={cls.images}>
                         <Image
-                            src={hateSpeech.src}
-                            alt="Hate Speech"
+                            src={stoner}
+                            alt="Pössyttelijä"
                             priority={true}
                             width={150}
                             height={150}
+                        />
+                        <Image
+                            src={delusion}
+                            alt="Harhaisuus"
+                            priority={true}
+                            width={150}
+                            height={150}
+                        />
+                        <Image
+                            src={fashionMadness}
+                            alt="Muotihulluus"
+                            priority={true}
+                            width={150}
+                            height={150}
+                            className={cls.flipped}
                         />
                         <Image
                             src={jokester}
-                            alt="Jokester"
+                            alt="Vitsinvääntäjä"
                             priority={true}
                             width={150}
                             height={150}
                         />
                         <Image
-                            src={believer}
-                            alt="Believer"
+                            src={veteran}
+                            alt="Posttraumaattinen veteraani"
                             priority={true}
                             width={150}
                             height={150}
-                        />
-                        <Image
-                            src={provocator}
-                            alt="Provocator"
-                            priority={true}
-                            width={150}
-                            height={150}
-                        />
-                        <Image
-                            src={alcoholic}
-                            alt="Alcoholic"
-                            width={150}
-                            height={150}
-                            priority={true}
-                            className={cls.flipped}
-                        />
-                        <Image
-                            src={purpleGirls}
-                            alt="Purple Girls"
-                            width={150}
-                            height={150}
-                            priority={true}
-                            className={cls.flipped}
                         />
                         <Image
                             src={pedant}
-                            alt="Pedant"
+                            alt="Viisastelija"
                             priority={true}
                             width={150}
                             height={150}
-                            className={cls.pedant}
+                        />
+                        <Image
+                            src={fatigue}
+                            alt="Väsyminen"
+                            priority={true}
+                            width={150}
+                            height={150}
                         />
                     </div>
                 </div>
