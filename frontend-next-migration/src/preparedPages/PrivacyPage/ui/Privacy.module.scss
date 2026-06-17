@@ -22,7 +22,7 @@
     padding: 3rem;
     width: 100%;
     max-width: 1440px;
-    gap: 32px;
+    gap: 64px;
 
     border: 4px solid var(--ShadowblackShadow, #121212);
     border-radius: var(--mediumRadius, 12px);
@@ -38,7 +38,7 @@
     color: var(--primary-color);
     font: var(--font-sw-5xl);
     letter-spacing: -0.04em;
-    margin: 0 0 2rem;
+    margin: 0 0 -2rem;
     text-align: center;
 }
 
@@ -225,18 +225,11 @@
     box-shadow: 0 0 4px var(--primary-color);
 }
 
-@media screen and (min-width: breakpoint(md)) {
-    .pageContainer {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-
-/* Tablet/Small Desktop Layout */
-@media screen and (min-width: 501px) and (max-width: 2559px) {
+/* Tablet Layout */
+@media screen and (min-width: 501px) and (max-width: 768px) {
     .pageLayout {
-        padding: 0 3rem;
-        gap: 2rem;
+        padding: 3rem;
+        gap: 6rem;
     }
 }
 
