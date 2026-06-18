@@ -107,8 +107,12 @@
     .pageContent {
         padding: 0px 0px 0px;
     }
+    .curvedTextPath {
+        font-size: 160px;
+    }
     .images {
         transform: scale(0.7);
+        margin-bottom: -45px;
     }
     .bodySection {
         gap: 40px;
@@ -125,6 +129,7 @@
     }
     .images {
         transform: scale(0.4);
+        margin-bottom: -90px;
     }
     .bodySection {
         gap: 24px;

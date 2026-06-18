@@ -3,7 +3,9 @@ import cls from './ComingPage.module.scss';
 import Image from 'next/image';
 import { Glass } from '@/shared/ui/Glass';
 import titleFogImg from '@/shared/assets/images/titlefog.png';
+import titleFogSmallImg from '@/shared/assets/images/titlefogsmall.png';
 import comingSoonSign from '@/shared/assets/images/Coming-soon-sign.png';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import stoner from '@/shared/assets/images/comingPage/possyttelija.png';
 import delusion from '@/shared/assets/images/comingPage/harhaisuus.png';
 import fashionMadness from '@/shared/assets/images/comingPage/muotihulluus.png';
@@ -20,13 +22,14 @@ export type Props = {
 const ComingPage = (props: Props) => {
     const { title, lng } = props;
     const isFinnish = lng === 'fi';
+    const { isMobileSize } = useIsMobileSize();
 
     const viewBox = '0 0 1700 120';
     const pathId = 'textArc';
     const pathD = 'M 50 200 Q 850 -300 1650 200';
-    const imgX = '50';
+    const imgX = isMobileSize ? '0' : '50';
     const imgY = '-220';
-    const imgW = '1600';
+    const imgW = isMobileSize ? '1700' : '1600';
     const imgH = '420';
 
     return (
@@ -41,7 +44,7 @@ const ComingPage = (props: Props) => {
                         className={cls.curvedText}
                     >
                         <image
-                            href={titleFogImg.src}
+                            href={isMobileSize ? titleFogSmallImg.src : titleFogImg.src}
                             x={imgX}
                             y={imgY}
                             width={imgW}
@@ -59,6 +62,9 @@ const ComingPage = (props: Props) => {
                                 startOffset="50%"
                                 textAnchor="middle"
                                 className={cls.curvedTextPath}
+                                {...(isMobileSize
+                                    ? { textLength: '1600', lengthAdjust: 'spacing' }
+                                    : {})}
                                 letterSpacing={isFinnish ? '5' : '-10'}
                             >
                                 {title}
