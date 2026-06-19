@@ -74,3 +74,36 @@
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
     visibility: visible;
 }
+
+.authDropdownContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.authFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+.profileLabel {
+    font-size: 1.2em;
+}
+
+.logoutButton {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius-xl);
+    box-shadow: 2px 2px var(--black);
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.logoutButton:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+}

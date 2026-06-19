@@ -1,38 +1,37 @@
 import { DropDownElement } from '@/shared/ui/DropdownWrapper';
 
+/** Tells apart the different kinds of navbar items. */
 export enum ItemType {
     navLink = 'navLink',
     navLogo = 'navLogo',
     navDropDown = 'navDropDown',
 }
 
+/** A basic link that goes somewhere. */
 export type NavbarLinkObject = {
     name: string;
     path: string;
-    isActive: boolean;
     type: ItemType.navLink;
-    position?: string;
-    accessErrorMsg?: string;
 };
 
+/** A dropdown that shows a popup menu; can also act as a link if `path` is set. */
 export type NavbarDropDownObject = {
     name: string;
-    isActive: boolean;
+    /** Where clicking the label takes you (optional). */
+    path?: string;
     elements: Array<DropDownElement>;
     type: ItemType.navDropDown;
-    position?: string;
-    accessErrorMsg?: string;
 };
 
+/** The site logo in the navbar. */
 export type NavLogoObject = {
     name: string;
     src: string;
     path: string;
     type: ItemType.navLogo;
-    position?: string;
-    accessErrorMsg?: string;
 };
 
+/** Any item that can appear in the navbar menu. */
 export type NavbarMenuItem = NavbarLinkObject | NavLogoObject | NavbarDropDownObject;
 
 export type NavbarMenu = NavbarMenuItem[];

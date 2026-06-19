@@ -1,8 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { CSSProperties, memo, useMemo, useState } from 'react';
-import { useClientTranslation } from '@/shared/i18n';
+import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { useClientTranslation } from '@/shared/i18n';
+import { LoginForm } from '@/features/AuthByUsername';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
 import { ItemType, NavbarBuild } from '../../model/types';
@@ -10,6 +12,8 @@ import cls from './NavbarMobile.module.scss';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import hamburgerIcon from '@/shared/assets/icons/hamburgerIcon.svg';
 import closeIcon from '@/shared/assets/icons/closeIcon.svg';
+
+type DropdownType = 'hamburger' | 'auth' | null;
 
 export interface NavbarTouchProps {
     marginTop?: number;
@@ -20,10 +24,18 @@ export interface NavbarTouchProps {
 const NavbarTouchComponent = (props: NavbarTouchProps) => {
     const { marginTop, navbarBuild, className = '' } = props;
     const { t } = useClientTranslation('navbar');
+    const { t: tAuth } = useClientTranslation('auth');
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { checkPermissionFor } = useUserPermissionsV2();
+    const permissionToLogin = checkPermissionFor('login');
+    const permissionToLogout = checkPermissionFor('logout');
+    const [logout] = useLogoutMutation();
+
+    const [dropdownType, setDropdownType] = useState<DropdownType>(null);
 
     const style: CSSProperties = marginTop ? { marginTop: `${marginTop}px` } : {};
+
+    const closeDropdown = () => setDropdownType(null);
 
     const navManuItemsList: INavMenuItem[] = useMemo(() => {
         return (navbarBuild?.menu || [])
@@ -43,12 +55,17 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
         >
             <div className={cls.NavbarContent}>
                 <div className={cls.buttonContainer}>
-                    <Image
-                        src={profileIcon}
-                        alt="Profile"
-                        width={20}
-                        height={20}
-                    />
+                    <div
+                        data-testid="mobile-navbar-profile-button"
+                        onClick={() => setDropdownType(dropdownType === 'auth' ? null : 'auth')}
+                    >
+                        <Image
+                            src={profileIcon}
+                            alt="Profile"
+                            width={20}
+                            height={20}
+                        />
+                    </div>
                 </div>
 
                 <AppLink
@@ -64,8 +81,8 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                 </AppLink>
 
                 <div className={cls.HamurgerBtn}>
-                    {isMenuOpen ? (
-                        <div onClick={() => setIsMenuOpen(false)}>
+                    {dropdownType === 'hamburger' ? (
+                        <div onClick={() => setDropdownType(null)}>
                             <Image
                                 src={closeIcon}
                                 alt="Close menu"
@@ -74,7 +91,7 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
                             />
                         </div>
                     ) : (
-                        <div onClick={() => setIsMenuOpen(true)}>
+                        <div onClick={() => setDropdownType('hamburger')}>
                             <Image
                                 src={hamburgerIcon}
                                 alt="Open menu"
@@ -88,10 +105,30 @@ const NavbarTouchComponent = (props: NavbarTouchProps) => {
 
             <div
                 className={classNames(cls.NavbarDropdown, {
-                    [cls.openDropdown]: isMenuOpen,
+                    [cls.openDropdown]: dropdownType !== null,
                 })}
             >
-                {isMenuOpen && <NavMenu dropdownItems={navManuItemsList} />}
+                {dropdownType === 'hamburger' && <NavMenu dropdownItems={navManuItemsList} />}
+                {dropdownType === 'auth' && (
+                    <div className={cls.authDropdownContent}>
+                        {permissionToLogin.isGranted ? (
+                            <LoginForm onSuccessLogin={closeDropdown} />
+                        ) : permissionToLogout.isGranted ? (
+                            <div className={cls.authFormContainer}>
+                                <div className={cls.profileLabel}>{tAuth('ownProfile')}</div>
+                                <button
+                                    className={cls.logoutButton}
+                                    onClick={() => {
+                                        logout();
+                                        closeDropdown();
+                                    }}
+                                >
+                                    {tAuth('logout')}
+                                </button>
+                            </div>
+                        ) : null}
+                    </div>
+                )}
             </div>
         </nav>
     );

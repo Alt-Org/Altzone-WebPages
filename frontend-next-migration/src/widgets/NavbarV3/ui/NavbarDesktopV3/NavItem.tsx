@@ -10,18 +10,28 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type NavItemProps = {
+    /** The menu item to render. */
     item: NavbarMenuItem;
+    /** Is the navbar being hovered? (opens dropdowns). */
     mouseOver?: boolean;
+    /** This dropdown's index among all dropdowns (for horizontal positioning). */
+    dropdownIndex?: number;
+    /** Total number of dropdowns (for horizontal centering). */
+    totalDropdowns?: number;
 };
 
 const CHEVRON_ITEMS = new Set(['game', 'gallery', 'gameart', 'community']);
 
+/** Renders one navbar item — a link, a dropdown (optionally linked), or the logo. */
 const NavItem = memo((props: NavItemProps) => {
     const { item, mouseOver = false } = props;
     const { type: itemType } = item;
     const { t } = useClientTranslation('navbar');
 
     if (itemType === ItemType.navDropDown) {
+        const { dropdownIndex = 0, totalDropdowns = 1 } = props;
+        const gap = 220;
+        const offset = (dropdownIndex - (totalDropdowns - 1) / 2) * gap;
         const elements = item.elements.map((el) => {
             if (el && typeof el === 'object' && 'elementText' in el) {
                 return { ...el, elementText: t(`${el.elementText}`) };
@@ -29,21 +39,37 @@ const NavItem = memo((props: NavItemProps) => {
             return el;
         });
 
+        const trigger = (
+            <>
+                <span className={cls.col}>{t(`${item.name}`)}</span>
+                {CHEVRON_ITEMS.has(item.name) && (
+                    <FontAwesomeIcon
+                        icon={faChevronDown}
+                        className={cls.chevron}
+                    />
+                )}
+            </>
+        );
+
         return (
-            <li>
+            <li style={{ '--az-dropdown-left': `calc(50% + ${offset}px)` } as React.CSSProperties}>
                 <DropdownWrapper
                     elements={elements}
                     contentAbsolute={true}
                     disableClickToggle={true}
                     isOpen={mouseOver}
+                    contentClassName={cls.navDropdownCenter}
                     contentItemClassName={cls.dropdownItem}
                 >
-                    <span className={cls.col}>{t(`${item.name}`)}</span>
-                    {CHEVRON_ITEMS.has(item.name) && (
-                        <FontAwesomeIcon
-                            icon={faChevronDown}
-                            className={cls.chevron}
-                        />
+                    {item.path ? (
+                        <AppLink
+                            theme={AppLinkTheme.PRIMARY}
+                            to={item.path}
+                        >
+                            {trigger}
+                        </AppLink>
+                    ) : (
+                        trigger
                     )}
                 </DropdownWrapper>
             </li>

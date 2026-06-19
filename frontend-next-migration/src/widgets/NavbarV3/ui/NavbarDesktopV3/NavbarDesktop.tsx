@@ -14,12 +14,16 @@ import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import searchIcon from '@/shared/assets/icons/search.png';
 
 export interface NavbarProps {
+    /** Pushes the bar down by this many pixels. */
     marginTop?: number;
     className?: string;
+    /** The menu structure (links, dropdowns, logo). */
     navbarBuild: NavbarBuild;
+    /** Collapse into a thin strip when true. */
     isCollapsed?: boolean;
 }
 
+/** Desktop navbar — hover dropdowns, auth/lang toggles, collapse support. */
 const NavbarDesktop = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', isCollapsed = false } = props;
 
@@ -34,6 +38,16 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const langDropdown = useDropdownManager();
 
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
+
+    const nonLogoItems = navbarBuild.menu.filter((item) => item.type !== 'navLogo');
+    let dropIdx = 0;
+    const dropdownIndices = new Map<string, number>();
+    nonLogoItems.forEach((item) => {
+        if (item.type === 'navDropDown') {
+            dropdownIndices.set(item.name, dropIdx++);
+        }
+    });
+    const totalDropdowns = dropIdx;
 
     const handleDropdownClick = (dropdown: 'auth' | 'lang') => {
         if (dropdown === 'auth') {
@@ -60,7 +74,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
             <div
                 className={classNames(cls.inner, {
                     [cls.collapsed]: isCollapsed,
-                    [cls.mouseOver]: isMouseOver,
                 })}
             >
                 <div className={classNames(cls.logoSlot, { [cls.collapsed]: isCollapsed })}>
@@ -75,15 +88,15 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                 </div>
 
                 <ul className={cls.navLinks}>
-                    {navbarBuild.menu
-                        .filter((item) => item.type !== 'navLogo')
-                        .map((item) => (
-                            <NavItem
-                                key={item.name}
-                                item={item}
-                                mouseOver={isMouseOver}
-                            />
-                        ))}
+                    {nonLogoItems.map((item) => (
+                        <NavItem
+                            key={item.name}
+                            item={item}
+                            mouseOver={isMouseOver}
+                            dropdownIndex={dropdownIndices.get(item.name) ?? -1}
+                            totalDropdowns={totalDropdowns}
+                        />
+                    ))}
                 </ul>
 
                 <div className={classNames(cls.actions, { [cls.collapsed]: isCollapsed })}>
