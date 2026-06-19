@@ -66,6 +66,9 @@ const ComingPage = (props: Props) => {
                                     ? { textLength: '1600', lengthAdjust: 'spacing' }
                                     : {})}
                                 letterSpacing={isFinnish ? '5' : '-10'}
+                                style={
+                                    !isFinnish && isMobileSize ? { fontSize: '130px' } : undefined
+                                }
                             >
                                 {title}
                             </textPath>

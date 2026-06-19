@@ -1,0 +1,76 @@
+.Navbar {
+    position: absolute;
+    font: var(--font-dm-bold-l);
+    background-color: var(--base-card-background);
+    border-radius: 0px;
+    width: 100%;
+    height: 66px;
+    left: 0px;
+    top: 0px;
+    z-index: var(--navbar-z-index);
+}
+
+.NavbarContent {
+    display: flex;
+    height: 66px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavbarDropdown {
+    display: flex;
+    justify-content: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    max-height: 0;
+    transition: transform 0.3s ease, max-height 0.3s ease;
+    z-index: var(--navbar-z-index);
+    background: var(--base-card-background);
+}
+
+.openDropdown {
+    padding: 10px;
+    transform: scaleY(1);
+    max-height: 450px;
+}
+
+.HamurgerBtn {
+    position: absolute;
+    margin-right: 15px;
+    right: 0;
+}
+
+.NavbarMobile__center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.navLogo {
+    height: 100%;
+
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+.buttonContainer {
+    display: flex;
+    margin-right: 15px;
+    text-align: center;
+    position: absolute;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    left: 15px;
+    width: fit-content;
+    gap: 5px;
+}
+
+.navItem {
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
+    transform-origin: right;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    visibility: visible;
+}
