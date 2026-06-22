@@ -1,3 +1,11 @@
+.sections {
+    @media (max-width: breakpoint(md)) {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+    }
+}
+
 .mainImgWrapper {
     position: relative;
     max-width: 1440px;

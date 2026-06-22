@@ -1,14 +1,27 @@
 .CTASection {
-    max-width: 1920px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     background-color: var(--base-card-background);
-    padding: 1rem;
-}
+    padding: clamp(2rem, 3.7vw, 71px) clamp(16px, 11.46vw, 220px);
+    display: flex;
+    align-items: center;
+        overflow: visible;
 
+    
+
+    @media (max-width: breakpoint(md)) {
+        padding: 2rem 1rem;
+        min-height: unset;
+    }
+}
 .Container {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    position: relative;
+    overflow: visible;
 }
 
 .Content {
@@ -18,9 +31,11 @@
     justify-content: center;
     gap: 3rem;
     width: 100%;
-    max-width: 1200px;
 }
-
+.contactTitle {
+    font-size: clamp(var(--font-size-xl), 3.33vw, var(--font-size-5xl));
+    line-height: clamp(43px, 4.48vw, 86px);
+}
 .imageLeft .Content {
     flex-direction: row-reverse;
 }
@@ -29,23 +44,31 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    flex: 1 1 70%;
+    flex: 1 1 73%;
 }
 
 .Title {
-    font: var(--font-sw-xxl);
+    font: var(--font-sw-xxxl);
+    font-size: clamp(var(--font-size-l), 2.5vw, var(--font-size-xxxl));
+    line-height: clamp(var(--font-line-l), 3.33vw, var(--font-line-4xl));
+    letter-spacing: -0.04em;
     color: var(--primary-color);
 }
-
 .Description {
-    font: var(--font-dm-m);
+    font: var(--font-dm-l);
+    font-size: clamp(var(--font-size-m), 1.25vw, var(--font-size-l));
+    line-height: clamp(21px, 1.61vw, 31px);
+    letter-spacing: -0.04em;
+    color: var(--white);
     white-space: pre-line;
 }
 
 .ExtraText {
-    font: var(--font-dm-l);
-    color: white;
+    font: var(--font-dm-xl);
     font-weight: 600;
+    font-size: clamp(var(--font-size-m), 1.67vw, var(--font-size-xl));
+    line-height: clamp(21px, 2.19vw, 42px);
+    color: var(--white);
     white-space: pre-line;
 }
 
@@ -60,15 +83,15 @@
 }
 
 .ImageBlock {
-    flex: 1 1 40%;
+    flex: 1 1 27%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .Image {
     width: 100%;
-    height: auto;
+    max-height: 635px;
     max-width: 350px;
     object-fit: contain;
 }
