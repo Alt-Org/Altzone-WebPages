@@ -15,22 +15,25 @@ import pedant from '@/shared/assets/images/comingPage/viisastelija.png';
 import fatigue from '@/shared/assets/images/comingPage/vasyminen.png';
 
 export type Props = {
+    /** the title text that goes on the curved path */
     title: string;
+    /** language code, like 'fi' for finnish. changes letter spacing a bit */
     lng?: string;
 };
 
+/** the "coming soon" page. curved title with fog, a sign, and characters*/
 const ComingPage = (props: Props) => {
     const { title, lng } = props;
     const isFinnish = lng === 'fi';
     const { isMobileSize } = useIsMobileSize();
 
-    const viewBox = '0 0 1700 120';
+    const viewBox = '0 -100 1700 200';
     const pathId = 'textArc';
     const pathD = 'M 50 200 Q 850 -300 1650 200';
     const imgX = isMobileSize ? '0' : '50';
-    const imgY = '-220';
+    const imgY = isMobileSize ? '-300' : '-220';
     const imgW = isMobileSize ? '1700' : '1600';
-    const imgH = '420';
+    const imgH = isMobileSize ? '600' : '420';
 
     return (
         <main className={cls.main}>
