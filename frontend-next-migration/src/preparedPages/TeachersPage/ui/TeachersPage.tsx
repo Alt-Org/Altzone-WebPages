@@ -1,8 +1,8 @@
 'use client';
-import { useClientTranslation } from '@/shared/i18n';
+import { TeacherSignInCard } from '@/features/TeacherSignIn';
 
 const TeachersPage = () => {
-    const { t } = useClientTranslation('teachers');
+    return <TeacherSignInCard />;
 };
 
 export default TeachersPage;

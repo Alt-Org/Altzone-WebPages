@@ -1,0 +1,13 @@
+{
+    "head-title": "Opettajien sivu",
+    "head-description": "Opi kuinka määrittää testisessioita luokkahuoneessa ALT Zonen kanssa neljässä yksinkertaisessa vaiheessa. Luo klaaneja, valmista materiaalia, jaa pelilinkkiä ja analysoi opiskelijoiden tuloksia - tee pelipohjaisesta oppimisesta hauskaa ja kilpailukykyistä.",
+    "head-keywords": "altzone, opettajat, luokkahuonetestaus, opetuspelit, pelipohjaiset oppiminen, testausohjeet, klaanin luominen, tulosten analyysi",
+    "og-title": "ALT Zonen opettajien sivu",
+    "og-description": "Vaiheittaiset ohjeet opettajille testisessioiden määrittämiseen ALT Zonen luokkahuoneissa. Luo klaaneja, valmista materiaalia, käynnistä peli ja analysoi opiskelijoiden suorituksia.",
+    "signin-card-title": "Opettajan kirjautuminen",
+    "signin-card-username-placeholder": "Käyttäjätunnus",
+    "signin-card-username-label": "Käyttäjätunnus",
+    "signin-card-password-placeholder": "Salasana",
+    "signin-card-password-label": "Salasana",
+    "signin-card-submit-button": "Kirjaudu sisään"
+}
