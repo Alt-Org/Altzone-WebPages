@@ -13,7 +13,7 @@
     max-width: 100%;
     margin: auto;
     gap: 96px;
-    padding: 0 15rem 15rem;
+    padding: clamp(1.5rem, 8vh, 15rem) clamp(1.5rem, 10vw, 15rem);
 }
 
 .pageContainer {
@@ -223,14 +223,6 @@
     object-fit: contain;
 
     box-shadow: 0 0 4px var(--primary-color);
-}
-
-/* Tablet Layout */
-@media screen and (min-width: 501px) and (max-width: 768px) {
-    .pageLayout {
-        padding: 3rem;
-        gap: 6rem;
-    }
 }
 
 @media screen and (max-width: 500px) {
