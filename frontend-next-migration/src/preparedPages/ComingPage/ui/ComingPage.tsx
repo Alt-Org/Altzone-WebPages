@@ -2,6 +2,7 @@
 import cls from './ComingPage.module.scss';
 import Image from 'next/image';
 import { Glass } from '@/shared/ui/Glass';
+import { useClientTranslation } from '@/shared/i18n';
 import titleFogImg from '@/shared/assets/images/titlefog.png';
 import titleFogSmallImg from '@/shared/assets/images/titlefogsmall.png';
 import comingSoonSign from '@/shared/assets/images/Coming-soon-sign.png';
@@ -24,6 +25,7 @@ export type Props = {
 /** the "coming soon" page. curved title with fog, a sign, and characters*/
 const ComingPage = (props: Props) => {
     const { title, lng } = props;
+    const { t } = useClientTranslation('coming');
     const isFinnish = lng === 'fi';
     const { isMobileSize } = useIsMobileSize();
 
@@ -87,6 +89,7 @@ const ComingPage = (props: Props) => {
                             width={700}
                             height={617}
                         />
+                        <span className={cls.signText}>{t('signTitle')}</span>
                     </div>
                     <div className={cls.images}>
                         <Image

@@ -63,15 +63,31 @@
 .signWrapper {
     display: flex;
     justify-content: center;
+    position: relative;
     width: 50%;
     max-width: 554px;
+    transform-origin: top center;
+    animation: swing 2.5s ease-in-out;
+    container-type: inline-size;
 }
 
 .signWrapper img {
     width: 100%;
     height: auto;
-    transform-origin: top center;
-    animation: swing 2.5s ease-in-out;
+}
+
+.signText {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-family-title);
+    font-size: clamp(20px, 11cqi, 64px);
+    color: var(--white);
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .images {
@@ -118,7 +134,7 @@
     }
     .images {
         transform: scale(0.4);
-        margin-bottom: -96px;
+        margin-bottom: -62px;
     }
     .bodySection {
         gap: 0px;
