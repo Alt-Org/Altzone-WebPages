@@ -73,16 +73,13 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
 
     return (
         <div className={classNames(cls.Container, {}, className ? [className] : [])}>
-            {/* Brick wall background */}
-            <div className={cls.BrickWall} />
-
             {/* ALT Logo */}
             <div className={cls.AltLogo}>
                 <Image
-                    src="/icons/alt_logo.ico"
+                    src="/images/gallery/Käyttöliittymä grafiikkaa 08-2025/CommonALT.png"
                     alt="ALT Zone Logo"
-                    width={80}
-                    height={80}
+                    width={193}
+                    height={161}
                 />
             </div>
 
@@ -153,8 +150,8 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
                 <Image
                     src="/images/Cartoon_character_ope.png"
                     alt="Teacher Character"
-                    width={200}
-                    height={200}
+                    width={282}
+                    height={282}
                 />
             </div>
         </div>
