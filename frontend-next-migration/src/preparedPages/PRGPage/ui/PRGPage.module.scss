@@ -233,16 +233,16 @@
   font-weight: bold;
 }
 
+.teamButton {
+  background: var(--primary-color);
+  color: black;
+
+  .label {
+    color: black;
+  }
+}
+
 .registryInfo {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
-  padding: 1rem;
-  border: 2px solid var(--primary-color);
-  border-radius: .8em;
+  text-align: center;
   white-space: pre-line;
 }

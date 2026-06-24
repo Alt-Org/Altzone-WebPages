@@ -93,43 +93,9 @@ const PRGPage = () => {
                 src={prgDeveloper}
                 alt="prgDeveloper"
             />
-            <div className={cls.TextContainer}>
-                <p className={cls.Subheading}>{t('prg')}</p>
-                <p className={cls.textColumns}>{t('prg-text')}</p>
-            </div>
-            <div className={cls.TextContainer}>
-                <p className={cls.Subheading}>{t('action-plan')}</p>
-                <p className={cls.textCenter}>{t('action-plan-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgActionPlan}
-                        t={t}
-                    />
-                </div>
-                <p className={cls.Subheading}>{t('activity-report')}</p>
-                <p className={cls.textCenter}>{t('activity-report-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgActivityReport}
-                        t={t}
-                    />
-                </div>
-                <p className={cls.Subheading}>{t('bylaws')}</p>
-                <p className={cls.textCenter}>{t('bylaws-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgBylaws}
-                        t={t}
-                    />
-                </div>
-                <div
-                    className={cls.registryInfo}
-                    style={{ whiteSpace: 'pre-line' }}
-                >
-                    {t('registry-info')}
-                </div>
-            </div>
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
+                <p className={cls.Subheading}>{t('prg')}</p>
+                <p className={cls.textCenter}>{t('prg-text')}</p>
                 <p className={cls.Subheading}>{t('prg-board')}</p>
                 {!isMobileSize && !isTabletSize ? (
                     <div className={cls.BoardCardContainer}>
@@ -186,16 +152,51 @@ const PRGPage = () => {
                         />
                     </div>
                 )}
-                <AppLink
-                    to={'/team'}
-                    className={cls.MeetBoard}
-                    aria-label={t('link-to-team-page')}
-                    isExternal={false}
+                <div className={cls.ButtonBlock}>
+                    <AppLink
+                        to={'/team'}
+                        className={classNames(cls.pdfButton, undefined, [cls.teamButton])}
+                        aria-label={t('link-to-team-page')}
+                        isExternal={false}
+                    >
+                        <span className={cls.label}>{t('alt-zone-team')}</span>
+                    </AppLink>
+                </div>
+            </div>
+            <div className={cls.TextContainer}>
+                <p className={cls.Subheading}>{t('action-plan')}</p>
+                <p className={cls.textCenter}>{t('action-plan-text')}</p>
+                <div className={cls.ButtonBlock}>
+                    <CheckPdfButton
+                        link={AppExternalLinks.prgActionPlan}
+                        t={t}
+                    />
+                </div>
+                <p className={cls.Subheading}>{t('activity-report')}</p>
+                <p className={cls.textCenter}>{t('activity-report-text')}</p>
+                <div className={cls.ButtonBlock}>
+                    <CheckPdfButton
+                        link={AppExternalLinks.prgActivityReport}
+                        t={t}
+                    />
+                </div>
+                <p className={cls.Subheading}>{t('bylaws')}</p>
+                <p className={cls.textCenter}>{t('bylaws-text')}</p>
+                <div className={cls.ButtonBlock}>
+                    <CheckPdfButton
+                        link={AppExternalLinks.prgBylaws}
+                        t={t}
+                    />
+                </div>
+            </div>
+            <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
+                <p className={cls.Subheading}>{t('registry-title')}</p>
+                <div
+                    className={cls.registryInfo}
+                    style={{ whiteSpace: 'pre-line' }}
                 >
-                    <span className={classNames(cls.label, undefined, [cls.bold, cls.Underline])}>
-                        {t('alt-zone-team')}&nbsp;
-                    </span>
-                </AppLink>
+                    {t('registry-info')}
+                </div>
             </div>
         </div>
     );
