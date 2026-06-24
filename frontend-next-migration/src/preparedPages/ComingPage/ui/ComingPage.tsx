@@ -1,7 +1,6 @@
 'use client';
 import cls from './ComingPage.module.scss';
 import Image from 'next/image';
-import { Glass } from '@/shared/ui/Glass';
 import { useClientTranslation } from '@/shared/i18n';
 import titleFogImg from '@/shared/assets/images/titlefog.png';
 import titleFogSmallImg from '@/shared/assets/images/titlefogsmall.png';
@@ -41,9 +40,6 @@ const ComingPage = (props: Props) => {
         <main className={cls.main}>
             <div className={cls.pageContent}>
                 <div className={cls.titleSection}>
-                    <Glass className={cls.titleFog}>
-                        <span />
-                    </Glass>
                     <svg
                         viewBox={viewBox}
                         className={cls.curvedText}
