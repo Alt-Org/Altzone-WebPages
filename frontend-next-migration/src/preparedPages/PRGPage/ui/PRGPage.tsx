@@ -11,9 +11,15 @@ import Helena from '@/shared/assets/images/board/helena.png';
 import Esa from '@/shared/assets/images/board/esa.png';
 import Emmi_Irina from '@/shared/assets/images/board/emmi-irina.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import actionPlanImg from '@/shared/assets/images/PRGPage/actionplan.png';
+import activityReportImg from '@/shared/assets/images/PRGPage/annualreport.png';
+import associationRulesImg from '@/shared/assets/images/PRGPage/associationrules.png';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState, useMemo } from 'react';
+import { CustomSwitch, CustomSwitchItems } from '@/shared/ui/CustomSwitch';
+import type { ToggleItem } from '@/shared/ui/CustomSwitch';
 
 type PrgT = TFunction<'prg'>;
 
@@ -78,9 +84,55 @@ const Boardcard = (props: BoardCardProps) => {
     );
 };
 
+const DOCUMENT_TABS = ['action-plan', 'activity-report', 'bylaws'] as const;
+
+type DocumentTab = (typeof DOCUMENT_TABS)[number];
+
+const tabTranslationKeys: Record<DocumentTab, string> = {
+    'action-plan': 'action-plan',
+    'activity-report': 'activity-report',
+    bylaws: 'bylaws',
+};
+
+const tabTextKeys: Record<DocumentTab, string> = {
+    'action-plan': 'action-plan-text',
+    'activity-report': 'activity-report-text',
+    bylaws: 'bylaws-text',
+};
+
+const tabLinks: Record<DocumentTab, string> = {
+    'action-plan': AppExternalLinks.prgActionPlan,
+    'activity-report': AppExternalLinks.prgActivityReport,
+    bylaws: AppExternalLinks.prgBylaws,
+};
+
+const tabImages: Record<DocumentTab, StaticImageData> = {
+    'action-plan': actionPlanImg,
+    'activity-report': activityReportImg,
+    bylaws: associationRulesImg,
+};
+
+const tabImageSide: Record<DocumentTab, 'left' | 'right'> = {
+    'action-plan': 'right',
+    'activity-report': 'left',
+    bylaws: 'right',
+};
+
 const PRGPage = () => {
     const { t } = useClientTranslation('prg');
     const { isMobileSize, isTabletSize } = useSizes();
+    const [activeTab, setActiveTab] = useState<DocumentTab>('action-plan');
+
+    const tabElements: ToggleItem[] = useMemo(
+        () =>
+            DOCUMENT_TABS.map((tab) => ({
+                type: CustomSwitchItems.ToggleItem,
+                isOpen: activeTab === tab,
+                onOpen: () => setActiveTab(tab),
+                children: <p>{t(tabTranslationKeys[tab])}</p>,
+            })),
+        [activeTab, t],
+    );
 
     return (
         <div className={cls.Container}>
@@ -96,7 +148,9 @@ const PRGPage = () => {
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('prg')}</p>
                 <p className={cls.textCenter}>{t('prg-text')}</p>
-                <p className={cls.Subheading}>{t('prg-board')}</p>
+                <div className={cls.headingWithLines}>
+                    <span className={cls.headingWithLinesText}>{t('prg-board')}</span>
+                </div>
                 {!isMobileSize && !isTabletSize ? (
                     <div className={cls.BoardCardContainer}>
                         <Boardcard
@@ -163,30 +217,33 @@ const PRGPage = () => {
                     </AppLink>
                 </div>
             </div>
-            <div className={cls.TextContainer}>
-                <p className={cls.Subheading}>{t('action-plan')}</p>
-                <p className={cls.textCenter}>{t('action-plan-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgActionPlan}
-                        t={t}
-                    />
-                </div>
-                <p className={cls.Subheading}>{t('activity-report')}</p>
-                <p className={cls.textCenter}>{t('activity-report-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgActivityReport}
-                        t={t}
-                    />
-                </div>
-                <p className={cls.Subheading}>{t('bylaws')}</p>
-                <p className={cls.textCenter}>{t('bylaws-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgBylaws}
-                        t={t}
-                    />
+            <CustomSwitch
+                elements={tabElements}
+                className={cls.prgTabSwitch}
+            />
+            <div className={classNames(cls.TextContainer, undefined, [cls.tabContentContainer])}>
+                <div
+                    className={classNames(cls.tabContentLayout, {
+                        [cls.tabContentLayoutReverse]: tabImageSide[activeTab] === 'left',
+                    })}
+                >
+                    <div className={cls.tabTextArea}>
+                        <p className={cls.Subheading}>{t(tabTranslationKeys[activeTab])}</p>
+                        <p className={cls.textCenter}>{t(tabTextKeys[activeTab])}</p>
+                        <div className={cls.ButtonBlock}>
+                            <CheckPdfButton
+                                link={tabLinks[activeTab]}
+                                t={t}
+                            />
+                        </div>
+                    </div>
+                    <div className={cls.tabImageArea}>
+                        <Image
+                            src={tabImages[activeTab]}
+                            alt={t(tabTranslationKeys[activeTab])}
+                            className={cls.tabImage}
+                        />
+                    </div>
                 </div>
             </div>
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>

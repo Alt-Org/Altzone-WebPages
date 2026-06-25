@@ -34,6 +34,126 @@
   }
 }
 
+.prgTabSwitch.prgTabSwitch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+  gap: 5px;
+  height: 80px;
+  background: var(--background);
+  border: 2px solid var(--black);
+  box-shadow: 2px 4px 0px var(--black);
+  border-radius: 35px;
+}
+
+.prgTabSwitch [class*="ToggleItem"] {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+  border-radius: 35px;
+  font: 500 var(--font-dm-xl);
+  letter-spacing: -0.04em;
+  color: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    height: 70px;
+  }
+}
+
+.prgTabSwitch > * > * {
+  padding: 0;
+  margin: 0;
+}
+
+.prgTabSwitch > * > * > * {
+  padding: 0;
+  margin: 0;
+}
+
+.prgTabSwitch [class*="OpenToggleItem"] {
+  background: var(--primary-color);
+  border: 2px solid var(--black);
+  height: 70px;
+  color: var(--black);
+}
+
+.tabContentContainer {
+  margin-top: 0.5rem;
+}
+
+.tabContentLayout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.tabContentLayoutReverse {
+  flex-direction: row-reverse;
+}
+
+.tabTextArea {
+  flex: 1;
+}
+
+.tabImageArea {
+  flex-shrink: 0;
+  width: 40%;
+}
+
+.tabImage {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.headingWithLines {
+  position: relative;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-inline: -1rem;
+}
+
+.headingWithLines::before,
+.headingWithLines::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background: var(--primary-color);
+  transform: translateY(-50%);
+}
+
+.headingWithLines::before {
+  left: 0;
+  width: 15%;
+}
+
+.headingWithLines::after {
+  right: 0;
+  width: 15%;
+}
+
+.headingWithLinesText {
+  font: var(--font-sw-xl);
+  color: var(--primary-color);
+  text-align: center;
+
+  @media (max-width: #{breakpoint(sm)}) {
+    font-size: 1.5rem;
+  }
+}
+
 .textColumns {
   box-sizing: border-box;
   padding-inline: 32px;
