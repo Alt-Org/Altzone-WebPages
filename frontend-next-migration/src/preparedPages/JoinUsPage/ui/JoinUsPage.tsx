@@ -5,24 +5,20 @@ import { BlockSection } from '../types';
 
 export interface Props {
     title: string;
-    discordBlock: BlockSection;
-    connectionBlock: BlockSection;
-    instagramBlock: BlockSection;
-    teachersBlock: BlockSection;
+    getInTouchAndFollowBlock: BlockSection;
+    communityAndOpportunitiesBlock: BlockSection;
+    educationProfessionalsBlock: BlockSection;
     feedbackBlock: BlockSection;
-    duunitoriBlock: BlockSection;
     navHeight?: number;
 }
 
 export const JoinUsPage = (props: Props) => {
     const {
         title,
-        discordBlock,
-        connectionBlock,
-        instagramBlock,
-        teachersBlock,
+        getInTouchAndFollowBlock,
+        communityAndOpportunitiesBlock,
+        educationProfessionalsBlock,
         feedbackBlock,
-        duunitoriBlock,
     } = props;
 
     return (
@@ -31,13 +27,12 @@ export const JoinUsPage = (props: Props) => {
                 <div>
                     <h1>{title}</h1>
                 </div>
+
                 <SectionJoinUs
                     blocks={[
-                        connectionBlock,
-                        instagramBlock,
-                        teachersBlock,
-                        discordBlock,
-                        duunitoriBlock,
+                        getInTouchAndFollowBlock,
+                        communityAndOpportunitiesBlock,
+                        educationProfessionalsBlock,
                         feedbackBlock,
                     ]}
                 />
