@@ -70,13 +70,13 @@
     text-transform: none;
 
     @media (max-width: 768px) {
-        font-size: 26px;
+        font: var(--font-sw-l);
         margin-bottom: 30px;
         letter-spacing: 0.5px;
     }
 
     @media (max-width: 480px) {
-        font-size: 22px;
+        font: var(--font-sw-l);
         margin-bottom: 20px;
     }
 }
@@ -97,6 +97,10 @@
 }
 
 .Input {
+    width: 438.51px;
+    height: 189.34px;
+    top: 614px;
+    left: 788px;
     padding: 14px 16px;
     font-size: 15px;
     background: var(--background);
@@ -200,12 +204,12 @@
 }
 
 .SubmitButton {
-    width: 176.09px;
-    height: 53.96px;
+    width: 180.01px;
+    height: 58px;
     top: 803px;
     left: 916.99px;
     border-radius: var(--border-radius-xl);
-    padding: 11.77px 23.54px 11.77px 23.54px;
+    padding: 1.96px 1.96px;
     gap: 9.81px;
 
     margin-top: 28px;
@@ -215,8 +219,10 @@
     border: 1.96px solid var(--Border-blackBorder, #121212);
     color: var(--black) !important;
 
-    font: var(font-dm-m);
-    display: block;
+    font: var(font-dm-bold-m);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: auto;
     margin-right: auto;
 

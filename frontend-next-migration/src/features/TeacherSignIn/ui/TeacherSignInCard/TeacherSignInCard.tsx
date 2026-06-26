@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useClientTranslation } from '@/shared/i18n';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { Button, ButtonSize } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './TeacherSignInCard.module.scss';
 
@@ -136,7 +136,6 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
 
                     <Button
                         type="submit"
-                        theme={ButtonTheme.Graffiti}
                         size={ButtonSize.L}
                         className={cls.SubmitButton}
                     >
