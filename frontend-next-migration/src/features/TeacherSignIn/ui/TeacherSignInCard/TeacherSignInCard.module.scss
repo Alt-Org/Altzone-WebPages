@@ -200,11 +200,17 @@
 }
 
 .SubmitButton {
+    width: 176.09px;
+    height: 53.96px;
+    top: 803px;
+    left: 916.99px;
+    border-radius: var(--border-radius-xl);
+    padding: 11.77px 23.54px 11.77px 23.54px;
+    gap: 9.81px;
+
     margin-top: 28px;
     letter-spacing: -4%;
 
-    padding: 18px 32px !important;
-    border-radius: 50px !important;
     background: var(--primary-color) !important;
     border: 1.96px solid var(--Border-blackBorder, #121212);
     color: var(--black) !important;
@@ -218,7 +224,6 @@
 
     @media (max-width: 480px) {
         margin-top: 20px;
-        padding: 14px 24px !important;
         min-width: auto;
     }
 }
