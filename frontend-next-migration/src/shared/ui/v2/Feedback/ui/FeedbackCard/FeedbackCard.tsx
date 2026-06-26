@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useAddFeedbackMutation, Feedback } from '@/entities/Feedback';
 import { CustomForm } from '@/shared/ui/CustomForm';
 import send from '@/shared/assets/icons/Feedback/Email Send.png';
@@ -12,15 +11,14 @@ import { useClientTranslation } from '@/shared/i18n';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import cls from './FeedbackCard.module.scss';
 import FeedbackEmoji from '../FeedbackEmoji/FeedbackEmoji';
-import FeedbackCardSuccess from '../FeedbackCardSuccess/FeedbackCardSuccess';
 
 /**
  * Props for the FeedbackCard component.
  * @interface FeedbackCardProps
- * @property {('full' | 'embedabble')} [variant='full'] - The variant type of the feedback card. Determines CSS styling.
+ * @property {('full' | 'borderless')} [variant='full'] - The variant type of the feedback card. Determines CSS styling.
  */
 interface FeedbackCardProps {
-    variant?: 'full' | 'embedabble';
+    variant?: 'full' | 'borderless';
 }
 
 /**
@@ -90,59 +88,62 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
         }
     };
 
-    if (isSubmitted) {
-        return (
-            <FeedbackCardSuccess
-                className={variant === 'embedabble' ? cls.embedabbleVersion : ''}
-                rating={feedbackEmoji}
-            />
-        );
-    }
-
     return (
         <CustomForm
-            className={`${cls.feedbackForm} ${variant === 'embedabble' ? cls.embedabbleVersion : ''}`}
+            className={`${cls.feedbackForm} ${
+                variant === 'borderless' ? cls.borderlessVersion : ''
+            } ${isSubmitted ? cls.collapsedVersion : ''}`}
             onSubmit={async (event) => {
                 event.preventDefault();
                 await submitFeedback();
             }}
         >
-            <h3 className={cls.feedbackTitle}>{t('title')}</h3>
+            {!isSubmitted && <h3 className={cls.feedbackTitle}>{t('title')}</h3>}
+            {isSubmitted && <div className={cls.feedbackTitle}>{t('success-title')}</div>}
+
             <FeedbackEmoji
                 listClassName={cls.emojiList}
                 value={feedbackEmoji}
-                onImageClick={setFeedbackEmoji}
+                onImageClick={isSubmitted ? () => {} : setFeedbackEmoji}
             />
-            <CustomForm.TextareaField
-                className={cls.inputField}
-                label={feedbackEmoji ? currentPlaceholder : '\u00A0'}
-                textareaProps={{
-                    className: cls.textInput,
-                    placeholder: t('input-placeholder'),
-                    value: feedback,
-                    onChange: (event) => setFeedback(event.target.value),
-                }}
-            />
-            <CustomForm.Button
-                className={cls.feedbackButton}
-                type="submit"
-                disabled={isLoading}
-            >
-                {isLoading ? (
-                    t('loading')
-                ) : (
-                    <>
-                        {t('send')}
-                        <Image
-                            src={send.src}
-                            alt="Send feedback icon"
-                            width={20}
-                            height={20}
-                        />
-                    </>
-                )}
-            </CustomForm.Button>
+
+            {!isSubmitted && (
+                <>
+                    <CustomForm.TextareaField
+                        className={cls.inputField}
+                        label={feedbackEmoji ? currentPlaceholder : '\u00A0'}
+                        textareaProps={{
+                            className: cls.textInput,
+                            placeholder: t('input-placeholder'),
+                            value: feedback,
+                            onChange: (event) => setFeedback(event.target.value),
+                        }}
+                    />
+
+                    <CustomForm.Button
+                        className={cls.feedbackButton}
+                        type="submit"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? (
+                            t('loading')
+                        ) : (
+                            <>
+                                {t('send')}
+                                <Image
+                                    src={send.src}
+                                    alt="Send feedback icon"
+                                    width={20}
+                                    height={20}
+                                />
+                            </>
+                        )}
+                    </CustomForm.Button>
+                </>
+            )}
+
             <span className={cls.linkToFormLabel}>{t('feedback-text')}</span>
+
             <div className={cls.linkToFormContainer}>
                 <a
                     className={cls.linkToForm}

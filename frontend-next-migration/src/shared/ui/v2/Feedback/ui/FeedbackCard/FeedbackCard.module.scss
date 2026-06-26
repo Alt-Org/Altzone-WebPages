@@ -1,26 +1,36 @@
 .feedbackForm {
+    font: var(--font-dm-xl);
     background-color: var(--base-card-background);
     display: flex;
     flex-direction: column;
-    max-width: 300px;
+    width: 320px;
     height: 400px;
     align-items: center;
-    gap: 8px;
+    gap: 5px;
     box-shadow: 8px 8px 1px #000000;
     border-width: 4px;
     border-style: solid;
     border-color: #000000;
 }
 
+.collapsedVersion {
+    height: 210px;
+}
+
+.borderlessVersion {
+    box-shadow: none;
+    border: none;
+}
+
 .feedbackTitle {
     font-size: 24px;
     font-family: 'Marko One';
-    font-weight: 400;
+    font-weight: bold;
     line-height: 100%;
     color: var(--primary-color);
     text-align: center;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 0 8px 0;
 }
 
 .feedbackButton {

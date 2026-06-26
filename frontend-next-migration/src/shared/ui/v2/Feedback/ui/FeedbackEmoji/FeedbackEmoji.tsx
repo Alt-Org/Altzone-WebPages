@@ -52,33 +52,32 @@ const FeedbackEmoji = ({ listClassName = '', value, onImageClick }: Props) => {
         <div className={classNames(cls.emojiListContainer, {}, [listClassName])}>
             <div className={cls.emojiList}>
                 {emojies.map((image: any, index: number) => (
-                    <Image
-                        src={image.src}
-                        alt={`Feedback Emoji ${image.value}`}
+                    <div
                         key={index}
-                        width={48}
-                        height={48}
-                        quality={100}
-                        className={value === image.value ? cls.selectedEmoji : cls.Emoji}
-                        onClick={() =>
-                            value !== image.value
-                                ? onImageClick(image.value)
-                                : onImageClick(undefined)
-                        }
-                    />
+                        className={cls.emojiWrapper}
+                    >
+                        <Image
+                            src={image.src}
+                            alt={`Feedback Emoji ${image.value}`}
+                            width={48}
+                            height={48}
+                            quality={100}
+                            className={value === image.value ? cls.selectedEmoji : cls.Emoji}
+                            onClick={() =>
+                                value !== image.value
+                                    ? onImageClick(image.value)
+                                    : onImageClick(undefined)
+                            }
+                        />
+
+                        {value === image.value && (
+                            <div className={cls.ratingLabel}>
+                                {value && <p className={cls.ratingText}>{RATING_LABELS[value]}</p>}
+                            </div>
+                        )}
+                    </div>
                 ))}
             </div>
-            {value && (
-                <div
-                    className={cls.ratingLabel}
-                    style={{
-                        left: `calc(50% + ${(emojies.findIndex((emoji) => emoji.value === value) - 2) * 52}px)`,
-                        transform: 'translateX(-50%)',
-                    }}
-                >
-                    <p className={cls.ratingText}>{RATING_LABELS[value]}</p>
-                </div>
-            )}
         </div>
     );
 };
