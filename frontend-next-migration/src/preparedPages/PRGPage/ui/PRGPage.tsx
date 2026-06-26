@@ -136,11 +136,13 @@ const PRGPage = () => {
 
     return (
         <div className={cls.Container}>
-            <PageTitle
-                titleText={t('head-title')}
-                alternate={true}
-                searchVisible={false}
-            />
+            <div className={cls.titleGap}>
+                <PageTitle
+                    titleText={t('head-title')}
+                    alternate={true}
+                    searchVisible={false}
+                />
+            </div>
             <Image
                 src={prgDeveloper}
                 alt="prgDeveloper"
