@@ -62,6 +62,11 @@
 }
 
 .Title {
+    width: 644;
+    height: 63;
+    top: 495px;
+    left: 685px;
+
     text-align: center;
     color: var(--primary-color);
     margin: 0 0 40px 0;
@@ -86,6 +91,11 @@
     flex-direction: column;
     gap: 20px;
 
+    width: 438.51px;
+    height: 189.34px;
+    top: 614px;
+    left: 788px;
+
     @media (max-width: 480px) {
         gap: 15px;
     }
@@ -96,19 +106,25 @@
     flex-direction: column;
 }
 
-.Input {
+.UsernameInputWrapper,
+.PasswordInputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.UsernameInput {
     width: 438.51px;
-    height: 189.34px;
-    top: 614px;
-    left: 788px;
-    padding: 14px 16px;
-    font-size: 15px;
+    height: 54.54px;
+    left: -21.58px;
+    padding: var(--spacing-250) var(--spacing-400) var(--spacing-250) var(--spacing-400);
+    gap: var(--spacing-400);
+    font: var(--font-dm-l);
     background: var(--background);
     border: 1.96px solid var(--Border-blackBorder, #121212);
-    border-radius: 8px;
+    border-radius: var(--border-radius-xl);
     color: var(--primary-color);
     transition: all 0.3s ease;
-    font-family: inherit;
 
     &::placeholder {
         color: var(--primary-color);
@@ -122,29 +138,23 @@
 
     @media (max-width: 480px) {
         padding: 12px 14px;
-        font-size: 14px;
+        font: var(--font-dm-m);
     }
 }
 
-.UsernameInputWrapper,
-.PasswordInputWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.UsernameInput,
 .PasswordInput {
-    padding: 14px 16px;
-    padding-right: 50px;
-    font-size: 15px;
+    width: 438.51px;
+    height: 54.54px;
+    top: 69.65px;
+    left: -21.58px;
+    padding: var(--spacing-250) var(--spacing-400) var(--spacing-250) var(--spacing-400);
+    gap: var(--spacing-400);
+    font: var(--font-dm-l);
     background: var(--background);
     border: 1.96px solid var(--Border-blackBorder, #121212);
-    border-radius: 8px;
+    border-radius: var(--border-radius-xl);
     color: var(--primary-color);
     transition: all 0.3s ease;
-    font-family: inherit;
-    width: 100%;
 
     &::placeholder {
         color: var(--primary-color);
@@ -159,12 +169,13 @@
     @media (max-width: 480px) {
         padding: 12px 14px;
         padding-right: 46px;
-        font-size: 14px;
+        font: var(--font-dm-m);
     }
 }
 
 .UsernameToggle,
 .PasswordToggle {
+    gap: 9.81px;
     position: absolute;
     right: 14px;
     top: 50%;
@@ -189,8 +200,8 @@
     }
 
     svg {
-        width: 20px;
-        height: 20px;
+        width: 19.62px;
+        height: 16.68px;
     }
 
     @media (max-width: 480px) {
@@ -198,7 +209,7 @@
 
         svg {
             width: 18px;
-            height: 18px;
+            height: 16px;
         }
     }
 }

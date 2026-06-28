@@ -54,7 +54,7 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
     const { t } = useClientTranslation('teachers');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [showUsername, setShowUsername] = useState(true);
+    const [showUsername, setShowUsername] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (event: React.FormEvent) => {
