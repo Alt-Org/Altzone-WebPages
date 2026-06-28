@@ -70,7 +70,7 @@
     text-transform: none;
 
     @media (max-width: 768px) {
-        font: var(--font-sw-l);
+        font: var(--font-sw-xl);
         margin-bottom: 30px;
         letter-spacing: 0.5px;
     }
@@ -208,18 +208,13 @@
     height: 58px;
     top: 803px;
     left: 916.99px;
-    border-radius: var(--border-radius-xl);
-    padding: 1.96px 1.96px;
+
+    padding: 11.77px 23.54px 11.77px 23.54px;
     gap: 9.81px;
 
     margin-top: 28px;
     letter-spacing: -4%;
 
-    background: var(--primary-color) !important;
-    border: 1.96px solid var(--Border-blackBorder, #121212);
-    color: var(--black) !important;
-
-    font: var(font-dm-bold-m);
     display: flex;
     align-items: center;
     justify-content: center;
