@@ -81,20 +81,20 @@
     }
 
     @media (max-width: 480px) {
-        font: var(--font-sw-l);
-        margin-bottom: 20px;
+        font: var(--font-sw-m);
+        margin-bottom: 5px;
     }
 }
 
 .Form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    align-self: center;
     gap: 20px;
 
     width: 438.51px;
-    height: 189.34px;
-    top: 614px;
-    left: 788px;
+    max-width: calc(100% - 40px);
 
     @media (max-width: 480px) {
         gap: 15px;
@@ -104,6 +104,8 @@
 .FormGroup {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .UsernameInputWrapper,
@@ -111,12 +113,14 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .UsernameInput {
     width: 438.51px;
+    max-width: 100%;
     height: 54.54px;
-    left: -21.58px;
     padding: var(--spacing-250) var(--spacing-400) var(--spacing-250) var(--spacing-400);
     gap: var(--spacing-400);
     font: var(--font-dm-l);
@@ -125,6 +129,7 @@
     border-radius: var(--border-radius-xl);
     color: var(--primary-color);
     transition: all 0.3s ease;
+    box-sizing: border-box;
 
     &::placeholder {
         color: var(--primary-color);
@@ -144,9 +149,8 @@
 
 .PasswordInput {
     width: 438.51px;
+    max-width: 100%;
     height: 54.54px;
-    top: 69.65px;
-    left: -21.58px;
     padding: var(--spacing-250) var(--spacing-400) var(--spacing-250) var(--spacing-400);
     gap: var(--spacing-400);
     font: var(--font-dm-l);
@@ -155,6 +159,7 @@
     border-radius: var(--border-radius-xl);
     color: var(--primary-color);
     transition: all 0.3s ease;
+    box-sizing: border-box;
 
     &::placeholder {
         color: var(--primary-color);
@@ -217,8 +222,6 @@
 .SubmitButton {
     width: 180.01px;
     height: 58px;
-    top: 803px;
-    left: 916.99px;
 
     padding: 11.77px 23.54px 11.77px 23.54px;
     gap: 9.81px;
@@ -229,8 +232,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
+    white-space: nowrap;
 
     box-shadow: 1.96px 3.92px 0px 0px var(--black);
 
