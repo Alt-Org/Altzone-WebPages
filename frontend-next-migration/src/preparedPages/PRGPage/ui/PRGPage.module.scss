@@ -219,6 +219,7 @@
   .headingWithLines {
     margin-inline: -0.5rem;
   }
+
 }
 
 .prgTabSwitch > * > * {
@@ -229,6 +230,12 @@
 .prgTabSwitch > * > * > * {
   padding: 0;
   margin: 0;
+}
+
+.tabIcon {
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .prgTabSwitch [class*="OpenToggleItem"] {

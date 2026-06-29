@@ -129,9 +129,18 @@ const PRGPage = () => {
                 type: CustomSwitchItems.ToggleItem,
                 isOpen: activeTab === tab,
                 onOpen: () => setActiveTab(tab),
-                children: <p>{t(tabTranslationKeys[tab])}</p>,
+                children: isMobileSize ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                        src={tabImages[tab].src}
+                        alt={t(tabTranslationKeys[tab])}
+                        className={cls.tabIcon}
+                    />
+                ) : (
+                    <p>{t(tabTranslationKeys[tab])}</p>
+                ),
             })),
-        [activeTab, t],
+        [activeTab, t, isMobileSize],
     );
 
     return (
