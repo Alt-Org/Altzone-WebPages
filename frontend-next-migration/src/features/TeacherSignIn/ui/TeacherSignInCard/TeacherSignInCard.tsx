@@ -7,14 +7,27 @@ import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './TeacherSignInCard.module.scss';
 
+/**
+ * TeacherSignInCardProps defines the properties for the TeacherSignInCard component.
+ * @property {string} [className] - An optional class name to apply to the component for styling purposes.
+ */
 interface TeacherSignInCardProps {
     className?: string;
 }
 
+/**
+ * VisibilityIconProps defines the properties for the VisibilityIcon component.
+ * @property {boolean} isVisible - A boolean indicating whether the icon should represent visibility (true) or invisibility (false).
+ */
 interface VisibilityIconProps {
     isVisible: boolean;
 }
 
+/**
+ * VisibilityIcon is a React functional component that renders an SVG icon representing visibility or invisibility based on the isVisible prop.
+ * @param isVisible - A boolean indicating whether the icon should represent visibility (true) or invisibility (false).
+ * @returns A JSX element containing the SVG icon.
+ */
 const VisibilityIcon: React.FC<VisibilityIconProps> = ({ isVisible }) => (
     <svg
         width="20"
@@ -49,6 +62,11 @@ const VisibilityIcon: React.FC<VisibilityIconProps> = ({ isVisible }) => (
     </svg>
 );
 
+/**
+ * TeacherSignInCard is a React functional component that renders a sign-in card for teachers. It includes input fields for username and password, along with visibility toggles for both fields. Upon submission, it navigates to the instructions page.
+ * @param className - An optional class name to apply to the component for styling purposes.
+ * @returns A JSX element containing the sign-in card UI.
+ */
 const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
     const router = useRouter();
     const { t } = useClientTranslation('teachers');
@@ -57,20 +75,33 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
     const [showUsername, setShowUsername] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
+    /**
+     * Handles the form submission event. Prevents the default form submission behavior and navigates to the instructions page.
+     * @param event - The form submission event.
+     */
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         // Navigate to instructions page
         router.push('/teachers/instructions');
     };
 
+    /**
+     * Toggles the visibility of the password input field. If the password is currently visible, it will be hidden, and vice versa.
+     */
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
+    /**
+     * Toggles the visibility of the username input field. If the username is currently visible, it will be hidden, and vice versa.
+     */
     const toggleUsernameVisibility = () => {
         setShowUsername(!showUsername);
     };
 
+    /**
+     * Renders the TeacherSignInCard component, which includes the ALT logo, sign-in form with username and password fields, and a teacher character image. The form includes visibility toggles for both input fields and a submit button that navigates to the instructions page upon submission.
+     */
     return (
         <div className={classNames(cls.Container, {}, className ? [className] : [])}>
             {/* ALT Logo */}
