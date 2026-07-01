@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, memo, useState } from 'react';
+import { CSSProperties, memo, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
@@ -7,11 +7,15 @@ import { useDropdownManager } from '@/shared/lib/hooks/useDropdownManager';
 import { useLogoutMutation, useUserPermissionsV2 } from '@/entities/Auth';
 import { LoginForm } from '@/features/AuthByUsername';
 import { LangSwitcher } from '@/features/LangSwitcher';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { NavbarBuild } from '../../model/types';
 import cls from './NavbarDesktop.module.scss';
-import NavItem from './NavItem';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
 import searchIcon from '@/shared/assets/icons/search.png';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const CHEVRON_ITEMS = new Set(['game', 'gallery', 'gameart', 'community']);
 
 export interface NavbarProps {
     /** Pushes the bar down by this many pixels. */
@@ -32,7 +36,8 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const permissionToLogin = checkPermissionFor('login');
     const permissionToLogout = checkPermissionFor('logout');
     const [logout] = useLogoutMutation();
-    const { t } = useClientTranslation('auth');
+    const { t: tAuth } = useClientTranslation('auth');
+    const { t: tNav } = useClientTranslation('navbar');
 
     const authDropdown = useDropdownManager();
     const langDropdown = useDropdownManager();
@@ -40,14 +45,17 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
 
     const nonLogoItems = navbarBuild.menu.filter((item) => item.type !== 'navLogo');
-    let dropIdx = 0;
-    const dropdownIndices = new Map<string, number>();
-    nonLogoItems.forEach((item) => {
-        if (item.type === 'navDropDown') {
-            dropdownIndices.set(item.name, dropIdx++);
-        }
-    });
-    const totalDropdowns = dropIdx;
+
+    const allDropdownElements = useMemo(
+        () =>
+            navbarBuild.menu
+                .filter((item) => item.type === 'navDropDown')
+                .map((item) => ({
+                    name: item.name,
+                    elements: item.elements,
+                })),
+        [navbarBuild],
+    );
 
     const handleDropdownClick = (dropdown: 'auth' | 'lang') => {
         if (dropdown === 'auth') {
@@ -65,7 +73,11 @@ const NavbarDesktop = memo((props: NavbarProps) => {
 
     return (
         <nav
-            className={classNames(cls.navbar, { [cls.collapsed]: isCollapsed }, [className])}
+            className={classNames(
+                cls.navbar,
+                { [cls.collapsed]: isCollapsed, [cls.noBorder]: isMouseOver },
+                [className],
+            )}
             style={style}
             aria-label="Nav menu"
             onMouseEnter={() => setIsMouseOver(true)}
@@ -80,23 +92,64 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                     {navbarBuild.menu
                         .filter((item) => item.type === 'navLogo')
                         .map((item) => (
-                            <NavItem
+                            <AppLink
                                 key={item.name}
-                                item={item}
-                            />
+                                theme={AppLinkTheme.PRIMARY}
+                                to={item.path}
+                            >
+                                <Image
+                                    priority
+                                    loading="eager"
+                                    alt={item.name || ''}
+                                    src={item.src || ''}
+                                    width={109}
+                                    height={92}
+                                    style={{ objectFit: 'contain' }}
+                                />
+                            </AppLink>
                         ))}
                 </div>
 
                 <ul className={cls.navLinks}>
-                    {nonLogoItems.map((item) => (
-                        <NavItem
-                            key={item.name}
-                            item={item}
-                            mouseOver={isMouseOver}
-                            dropdownIndex={dropdownIndices.get(item.name) ?? -1}
-                            totalDropdowns={totalDropdowns}
-                        />
-                    ))}
+                    {nonLogoItems.map((item) => {
+                        if (item.type === 'navDropDown') {
+                            const trigger = (
+                                <>
+                                    <span className={cls.col}>{tNav(`${item.name}`)}</span>
+                                    {CHEVRON_ITEMS.has(item.name) && (
+                                        <FontAwesomeIcon
+                                            icon={faChevronDown}
+                                            className={cls.chevron}
+                                        />
+                                    )}
+                                </>
+                            );
+                            return (
+                                <li key={item.name}>
+                                    {item.path ? (
+                                        <AppLink
+                                            theme={AppLinkTheme.PRIMARY}
+                                            to={item.path}
+                                        >
+                                            {trigger}
+                                        </AppLink>
+                                    ) : (
+                                        trigger
+                                    )}
+                                </li>
+                            );
+                        }
+                        return (
+                            <li key={item.name}>
+                                <AppLink
+                                    theme={AppLinkTheme.PRIMARY}
+                                    to={item.path}
+                                >
+                                    <span className={cls.col}>{tNav(`${item.name}`)}</span>
+                                </AppLink>
+                            </li>
+                        );
+                    })}
                 </ul>
 
                 <div className={classNames(cls.actions, { [cls.collapsed]: isCollapsed })}>
@@ -155,14 +208,16 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                     })}
                                 >
                                     <div className={cls.authDropdownContent}>
-                                        <div className={cls.profileLabel}>{t('ownProfile')}</div>
+                                        <div className={cls.profileLabel}>
+                                            {tAuth('ownProfile')}
+                                        </div>
                                         <button
                                             className={cls.logoutButton}
                                             onClick={() => {
                                                 logout();
                                             }}
                                         >
-                                            {t('logout')}
+                                            {tAuth('logout')}
                                         </button>
                                     </div>
                                 </div>
@@ -177,6 +232,38 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                         <LangSwitcher isOpen={langDropdown.state.isOpen && !isCollapsed} />
                     </div>
                 </div>
+            </div>
+
+            <div className={classNames(cls.navDropdownCenter, { [cls.open]: isMouseOver })}>
+                {allDropdownElements.map((group) => (
+                    <div
+                        key={group.name}
+                        className={cls.dropdownGroup}
+                    >
+                        {group.elements.map((el, idx) => {
+                            if (el && typeof el === 'object' && 'elementText' in el) {
+                                return (
+                                    <div key={idx}>
+                                        {el.link ? (
+                                            <AppLink
+                                                to={el.link.path}
+                                                isExternal={el.link.isExternal}
+                                                className={cls.dropdownItem}
+                                            >
+                                                {tNav(`${el.elementText}`)}
+                                            </AppLink>
+                                        ) : (
+                                            <span className={cls.dropdownItem}>
+                                                {tNav(`${el.elementText}`)}
+                                            </span>
+                                        )}
+                                    </div>
+                                );
+                            }
+                            return <div key={idx}>{el}</div>;
+                        })}
+                    </div>
+                ))}
             </div>
         </nav>
     );
