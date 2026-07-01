@@ -14,10 +14,11 @@ import mobileCardCls from '@/shared/ui/v2/MobileCard/ui/MobileCard.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
-import clanLogo from '@/shared/assets/images/clanLogos/CommonSelectHeart 1.png';
+import clanLogo from '@/shared/assets/images/clanLogos/ClanLogo_Placeholder.png';
 import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirstPlace.png';
 import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png';
-import starGray from '@/shared/assets/images/clanLogos/TopPanelMatchmakingPorvarit.png';
+import iconCommonLockOpen from '@/shared/assets/images/clanLogos/CommonLockOpen 1.png';
+import iconClanAgeTeenages from '/public/images/gallery/Käyttöliittymä grafiikkaa 08-2025/ClanAgeTeenages.png';
 
 type ClanItem = GetClansResponse['data']['Clan'][number];
 
@@ -134,11 +135,6 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                                 title2={''}
                             >
                                 <div className={mobileCardCls.ClanInfoRow}>
-                                    <Image
-                                        src={starGray}
-                                        alt="score"
-                                        className={mobileCardCls.ClanInfoIcon}
-                                    />
                                     <span className={mobileCardCls.ClanInfoValue}>
                                         {clan.gameCoins}
                                     </span>
@@ -194,8 +190,17 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                             alt="flag"
                                             className={cardCls.ClanInfoIcon}
                                         />
+                                        <Image
+                                            src={iconCommonLockOpen}
+                                            alt="lock"
+                                            className={cardCls.ClanInfoIcon}
+                                        />
+                                        <Image
+                                            src={iconClanAgeTeenages}
+                                            alt="teenage"
+                                            className={cardCls.ClanInfoIcon}
+                                        />
                                     </span>
-
                                     <span className={cardCls.ClanInfoStats}>
                                         <span className={cardCls.ClanInfoValue}>
                                             {t('members')} {clan.playerCount} / 30
@@ -218,7 +223,6 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                                 alt={label}
                                                 className={cardCls.ClanLabelIcon}
                                             />
-                                            <span className={cardCls.ClanLabelText}>{label}</span>
                                         </span>
                                     ))}
                                 </div>

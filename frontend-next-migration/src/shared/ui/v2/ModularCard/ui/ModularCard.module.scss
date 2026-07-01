@@ -353,8 +353,8 @@
 
     //Labels
     --label-font-size: 0.95rem;
-    --label-icon-box: 1.1em;
-    --label-icon-scale: 1.35;
+    --label-icon-box: 2.5em;
+    --label-icon-scale: 3.5em;
     --label-gap: 0.5rem;
     --label-pad-y: 0.5rem;
     --label-pad-x: 0.5rem;
@@ -470,7 +470,6 @@
     gap: var(--info-col-gap);
     color: var(--white);
     font-size: var(--info-font-size);
-    line-height: 1.28;
     min-width: 0;
     overflow: hidden;
 }
@@ -500,7 +499,7 @@
 .ClanLabels {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 10px;
     margin-top: 4px;
     align-items: flex-start;
     justify-content: flex-start;
