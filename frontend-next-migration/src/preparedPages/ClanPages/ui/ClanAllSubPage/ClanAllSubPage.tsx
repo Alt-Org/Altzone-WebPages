@@ -18,7 +18,7 @@ import clanLogo from '@/shared/assets/images/clanLogos/ClanLogo_Placeholder.png'
 import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirstPlace.png';
 import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png';
 import iconCommonLockOpen from '@/shared/assets/images/clanLogos/CommonLockOpen 1.png';
-import iconClanAgeTeenages from '/public/images/gallery/Käyttöliittymä grafiikkaa 08-2025/ClanAgeTeenages.png';
+import iconClanAgeTeenages from '@/shared/assets/images/clanLogos/ClanAgeTeenages.png';
 
 type ClanItem = GetClansResponse['data']['Clan'][number];
 
@@ -186,11 +186,6 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                             className={cardCls.ClanInfoIcon}
                                         />
                                         <Image
-                                            src={iconFlagFi}
-                                            alt="flag"
-                                            className={cardCls.ClanInfoIcon}
-                                        />
-                                        <Image
                                             src={iconCommonLockOpen}
                                             alt="lock"
                                             className={cardCls.ClanInfoIcon}
@@ -198,6 +193,11 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                         <Image
                                             src={iconClanAgeTeenages}
                                             alt="teenage"
+                                            className={cardCls.ClanInfoIcon}
+                                        />
+                                        <Image
+                                            src={iconFlagFi}
+                                            alt="flag"
                                             className={cardCls.ClanInfoIcon}
                                         />
                                     </span>
