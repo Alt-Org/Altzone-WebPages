@@ -10,7 +10,7 @@ import type { SocialIconLink } from '@/shared/types';
 import topimage from '@/shared/assets/images/mainpage/topimage.png';
 import cls from './HeaderDesktop.module.scss';
 import altZoneCls from '@/preparedPages/MainPage/ui/_components/sections/AltZone/AltZone.module.scss';
-import { Paragraph } from '@/shared/ui/Paragraph';
+import { Glass } from '@/shared/ui/Glass';
 import { useClientTranslation } from '@/shared/i18n';
 
 interface Props {
@@ -50,12 +50,11 @@ const HeaderDesktopComponent = memo((props: Props) => {
                     <h1 className={cls.title}>{title}</h1>
 
                     <div className={altZoneCls.InfoText}>
-                        {paragraphs.map((text, idx) => (
-                            <Paragraph
-                                key={idx}
-                                text={text}
-                            />
-                        ))}
+                        <Glass>
+                            {paragraphs.map((text, idx) => (
+                                <p key={idx}>{text}</p>
+                            ))}
+                        </Glass>
                     </div>
 
                     <div className={cls.ctaRow}>
