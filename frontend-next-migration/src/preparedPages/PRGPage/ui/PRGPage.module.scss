@@ -1,3 +1,39 @@
+%flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+%headingBase {
+  font-family: var(--font-family-title);
+  font-size: clamp(1.5rem, 4vw, var(--font-size-5xl));
+  line-height: var(--font-line-5xl);
+  color: var(--primary-color);
+  text-align: center;
+  padding-inline: 1rem;
+
+  @media (max-width: #{breakpoint(sm)}) {
+    font-size: 1.5rem;
+  }
+}
+
+%boardCardBase {
+  @extend %flexColumn;
+  border: 2px solid var(--primary-color);
+}
+
+%boardInfoBase {
+  @extend %flexColumn;
+  text-align: center;
+  height: 100%;
+}
+
+@mixin jobShared {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  padding-top: .2rem;
+  padding-bottom: 1rem;
+}
+
 .Container {
   margin-inline: auto;
   padding-inline: var(--spacer300);
@@ -41,18 +77,8 @@
 }
 
 .Subheading {
-  font-family: var(--font-family-title);
-  font-size: clamp(1.5rem, 4vw, var(--font-size-5xl));
-  line-height: var(--font-line-5xl);
-  color: var(--primary-color);
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-inline: 1rem;
-
-  @media (max-width: #{breakpoint(sm)}) {
-    font-size: 1.5rem;
-  }
+  @extend %headingBase;
+  padding: 1rem;
 }
 
 .prgTabSwitch.prgTabSwitch {
@@ -98,6 +124,19 @@
   min-width: 0;
 }
 
+.prgTabSwitch > * > *,
+.prgTabSwitch > * > * > * {
+  padding: 0;
+  margin: 0;
+}
+
+.prgTabSwitch [class*="OpenToggleItem"] {
+  background: var(--primary-color);
+  border: 2px solid var(--black);
+  height: 70px;
+  color: var(--black);
+}
+
 .tabContentLayoutReverse {
   flex-direction: row-reverse;
 }
@@ -111,8 +150,7 @@
 .headingWithLines {
   position: relative;
   text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-block: 1rem;
   margin-inline: -1rem;
 }
 
@@ -137,16 +175,246 @@
 }
 
 .headingWithLinesText {
-  font-family: var(--font-family-title);
-  font-size: clamp(1.5rem, 4vw, var(--font-size-5xl));
-  line-height: var(--font-line-5xl);
-  color: var(--primary-color);
-  text-align: center;
-  padding-inline: 1rem;
+  @extend %headingBase;
+}
 
-  @media (max-width: #{breakpoint(sm)}) {
-    font-size: 1.5rem;
+.tabIcon {
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.tabContentContainer {
+  margin-top: 0.5rem;
+  min-height: 359px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabContentLayout {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tabTextArea {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.tabImageArea {
+  flex-shrink: 0;
+  width: 40%;
+}
+
+.tabImage {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.textColumns {
+  box-sizing: border-box;
+  padding-inline: 32px;
+  column-count: 1;
+  column-gap: 24px;
+  column-fill: balance;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  padding-bottom: 1em;
+}
+
+@media (min-width: #{breakpoint(md)}) {
+  .textColumns {
+    column-count: 2;
   }
+}
+
+.pdfButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 304px;
+  padding: 6px 22px !important;
+  border: 2px solid var(--black, #000);
+  border-radius: 2em;
+  background: var(--background, #fff);
+  color: var(--primary-color, #000);
+  text-decoration: none;
+  cursor: pointer;
+  filter: drop-shadow(3px 3px var(--black, #000));
+  transition: transform 0.05s ease-in-out, box-shadow 0.05s ease-in-out;
+
+  &:hover {
+    transform: translate(-1px, -1px);
+  }
+
+  &:active {
+    transform: translate(0, 0);
+    filter: drop-shadow(1px 1px var(--black, #000));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--black, #000);
+    outline-offset: 2px;
+  }
+}
+
+.label {
+  font: var(--font-dm-l);
+  white-space: nowrap;
+  color: var(--primary-color, #000);
+}
+
+.externalLinkIcon {
+  color: var(--primary-color, #000);
+  width: 15px;
+  height: 15px;
+}
+
+.icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+
+.ButtonBlock {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.BoardCard {
+  @extend %boardCardBase;
+  border-radius: .8em;
+  width: calc(33% - 1.333rem);
+}
+
+.BoardCardInfoArea {
+  @extend %boardInfoBase;
+  outline: 2px solid var(--primary-color);
+  border-radius: .8em;
+}
+
+.BoardCardInfoAreaMobile {
+  @extend %boardInfoBase;
+  outline: 1px solid var(--primary-color);
+  border-bottom-right-radius: .6em;
+  border-bottom-left-radius: .6em;
+  width: 100%;
+}
+
+.BoardCardMobile {
+  @extend %boardCardBase;
+  border-radius: .6em;
+  width: 100%;
+  align-items: center;
+}
+
+.Name {
+  font: var(--font-sw-l);
+  color: var(--white);
+  padding-top: .5rem;
+}
+
+.Job {
+  font: var(--font-sw-m);
+  @include jobShared;
+}
+
+.Profession,
+.ProfessionMobile {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: .2rem;
+  text-align: center;
+  font: var(--font-dm-l);
+  color: var(--neutral);
+}
+
+.NameMobile {
+  font: var(--font-sw-m);
+  color: var(--white);
+  padding-top: .5rem;
+}
+
+.JobMobile {
+  font: var(--font-sw-s);
+  @include jobShared;
+}
+
+.BoardCardContainer {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-inline: 2rem;
+}
+
+.BoardCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MeetBoard {
+  padding-top: 1rem !important;
+  color: var(--primary-color) !important;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.SeeBoard {
+  padding-top: 2rem;
+}
+
+.BoardCardMobileContainer {
+  @extend %flexColumn;
+  gap: 1rem;
+  width: 100%;
+}
+
+.Underline {
+  &:hover {
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1.5px;
+  }
+}
+
+.MarginBottom {
+  margin-bottom: 2rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.teamButton {
+  background: var(--primary-color);
+  color: var(--black);
+
+  .label {
+    color: var(--black);
+  }
+}
+
+.registryInfo {
+  text-align: center;
+  white-space: pre-line;
+  font: var(--font-dm-l);
 }
 
 @media (max-width: #{breakpoint(sm)}) {
@@ -219,289 +487,4 @@
   .headingWithLines {
     margin-inline: -0.5rem;
   }
-
-}
-
-.prgTabSwitch > * > * {
-  padding: 0;
-  margin: 0;
-}
-
-.prgTabSwitch > * > * > * {
-  padding: 0;
-  margin: 0;
-}
-
-.tabIcon {
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-.prgTabSwitch [class*="OpenToggleItem"] {
-  background: var(--primary-color);
-  border: 2px solid var(--black);
-  height: 70px;
-  color: var(--black);
-}
-
-.tabContentContainer {
-  margin-top: 0.5rem;
-  min-height: 359px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tabContentLayout {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.tabTextArea {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: break-word;
-}
-
-.tabImageArea {
-  flex-shrink: 0;
-  width: 40%;
-}
-
-.tabImage {
-  width: 100%;
-  height: auto;
-  max-height: 200px;
-  object-fit: contain;
-  display: block;
-}
-
-.textColumns {
-  box-sizing: border-box;
-  padding-inline: 32px;
-  column-count: 1;
-  column-gap: 24px;
-  column-fill: balance;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  padding-bottom: 1em;
-}
-
-@media (min-width: #{breakpoint(md)}) {
-  .textColumns {
-    column-count: 2;
-  }
-}
-
-.pdfButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 304px;
-
-  padding: 6px 22px !important;
-  border: 2px solid var(--black, #000);
-  border-radius: 2em;
-  background: var(--background, #fff);
-  color: var(--primary-color, #000);
-  text-decoration: none;
-  cursor: pointer;
-  filter: drop-shadow(3px 3px var(--black, #000));
-  transition: transform 0.05s ease-in-out, box-shadow 0.05s ease-in-out;
-
-  &:hover {
-    transform: translate(-1px, -1px);
-  }
-
-  &:active {
-    transform: translate(0, 0);
-    filter: drop-shadow(1px 1px var(--black, #000));
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--black, #000);
-    outline-offset: 2px;
-  }
-}
-
-.label {
-  font: var(--font-dm-l);
-  white-space: nowrap;
-  color: var(--primary-color, #000);
-}
-
-.externalLinkIcon {
-  color: var(--primary-color, #000);
-  width: 15px;
-  height: 15px;
-}
-
-.icon {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-}
-
-.ButtonBlock {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.BoardCard {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid var(--primary-color);
-  border-radius: .8em;
-  width: calc(33% - 1.333rem);
-}
-
-.BoardCardInfoArea {
-  outline: 2px solid var(--primary-color);
-  border-radius: .8em;
-  text-align: center;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.BoardCardInfoAreaMobile {
-  outline: 1px solid var(--primary-color);
-  border-bottom-right-radius: .6em;
-  border-bottom-left-radius: .6em;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.BoardCardMobile {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid var(--primary-color);
-  border-radius: .6em;
-  width: 100%;
-  align-items: center;
-}
-
-.Name {
-  font: var(--font-sw-l);
-  color: var(--white);
-  padding-top: .5rem;
-}
-
-.Job {
-  font: var(--font-sw-m);
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  padding-top: .2rem;
-  padding-bottom: 1rem;
-}
-
-.Profession {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: .2rem;
-  text-align: center;
-  font: var(--font-dm-l);
-  color: var(--neutral);
-}
-
-.NameMobile {
-  font: var(--font-sw-m);
-  color: var(--white);
-  padding-top: .5rem;
-}
-
-.JobMobile {
-  font: var(--font-sw-s);
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  padding-top: .2rem;
-  padding-bottom: 1rem;
-}
-
-.ProfessionMobile {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: .2rem;
-  text-align: center;
-  font: var(--font-dm-l);
-  color: var(--neutral);
-}
-
-.BoardCardContainer {
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 1rem;
-  padding-inline: 2rem;
-}
-
-.BoardCardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.MeetBoard {
-  padding-top: 1rem !important;
-  color: var(--primary-color) !important;
-  text-align: center;
-  display: block;
-  width: 100%;
-}
-
-.SeeBoard {
-  padding-top: 2rem;
-}
-
-.BoardCardMobileContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-}
-
-.Underline {
-  &:hover {
-    text-decoration: underline !important;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1.5px;
-  }
-}
-
-.MarginBottom {
-  margin-bottom: 2rem;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.teamButton {
-  background: var(--primary-color);
-  color: var(--black);
-
-  .label {
-    color: var(--black);
-  }
-}
-
-.registryInfo {
-  text-align: center;
-  white-space: pre-line;
-  font: var(--font-dm-l);
 }
