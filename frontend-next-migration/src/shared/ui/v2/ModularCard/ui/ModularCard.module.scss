@@ -474,14 +474,22 @@
     overflow: hidden;
 }
 
-.ClanInfoBadges,
-.ClanInfoStats {
+.ClanInfoBadges {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
     min-width: 0;
     white-space: nowrap;
     flex: 0 1 auto;
+}
+
+.ClanInfoStats {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    white-space: nowrap;
+    margin-top: 0.5rem;
 }
 
 .ClanInfoIcon {

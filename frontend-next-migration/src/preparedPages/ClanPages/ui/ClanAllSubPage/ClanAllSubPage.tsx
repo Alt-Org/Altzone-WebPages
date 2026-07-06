@@ -130,18 +130,38 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                                 backgroundColor="transparent"
                             />
 
+                            <div className={mobileCardCls.ClanInfoRow}>
+                                <span className={mobileCardCls.ClanInfoBadges}>
+                                    <Image
+                                        src={iconLeaderboard}
+                                        alt="leaderboard"
+                                        className={mobileCardCls.ClanInfoIcon}
+                                    />
+                                    <Image
+                                        src={iconCommonLockOpen}
+                                        alt="lock"
+                                        className={mobileCardCls.ClanInfoIcon}
+                                    />
+                                    <Image
+                                        src={iconClanAgeTeenages}
+                                        alt="teenage"
+                                        className={mobileCardCls.ClanInfoIcon}
+                                    />
+                                    <Image
+                                        src={iconFlagFi}
+                                        alt="flag"
+                                        className={mobileCardCls.ClanInfoIcon}
+                                    />
+                                </span>
+                            </div>
+
                             <MobileCard.Texts
                                 title1={''}
                                 title2={''}
                             >
-                                <div className={mobileCardCls.ClanInfoRow}>
-                                    <span className={mobileCardCls.ClanInfoValue}>
-                                        {clan.gameCoins}
-                                    </span>
-                                </div>
-
                                 <div className={mobileCardCls.ClanMembersRow}>
-                                    {t('members')} {clan.playerCount} / 30
+                                    {t('members')} {clan.playerCount} / 30 · {t('position')}
+                                    {clan.positionLeaderboard ?? '-'}
                                 </div>
                             </MobileCard.Texts>
                         </MobileCard>
@@ -201,13 +221,13 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                             className={cardCls.ClanInfoIcon}
                                         />
                                     </span>
-                                    <span className={cardCls.ClanInfoStats}>
-                                        <span className={cardCls.ClanInfoValue}>
-                                            {t('members')} {clan.playerCount} / 30
-                                        </span>
-                                        <span className={cardCls.ClanInfoValue}>
-                                            {clan.gameCoins}
-                                        </span>
+                                </div>
+                                <div className={cardCls.ClanInfoStats}>
+                                    <span className={cardCls.ClanInfoValue}>
+                                        {t('members')} {clan.playerCount} / 30
+                                    </span>
+                                    <span className={cardCls.ClanInfoValue}>
+                                        {t('position')} {clan.positionLeaderboard ?? '-'}
                                     </span>
                                 </div>
                                 <div className={cardCls.ClanLabels}>
