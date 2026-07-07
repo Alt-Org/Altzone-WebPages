@@ -197,8 +197,7 @@
 
         .Title1 {
             color: var(--primary-color);
-            font: var(--font-sw-l);
-            line-height: 1.1;
+            font: var(--font-sw-xs);
             margin: 0;
             text-align: center;
             max-width: 100%;
@@ -279,15 +278,9 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
         font-size: 1.15rem;
-    }
-}
-
-@media (max-width: 360px) {
-    .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
-        font-size: 1rem;
     }
 }
 
