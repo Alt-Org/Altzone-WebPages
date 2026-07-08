@@ -1,4 +1,7 @@
 .Container {
+    --teacher-login-card-width: 760px;
+    --teacher-login-card-ratio: 917.68 / 532.58;
+
     position: relative;
     display: flex;
     align-items: center;
@@ -52,14 +55,19 @@
     justify-content: center;
     background: #2b353a;
     border: 7px solid var(--primary-color);
-    border-radius: 1px;
+    border-radius: var(--border-radius-md);
     padding: 10px;
     gap: 10px;
-    width: 917.68px;
-    height: 532.58px;
+    width: var(--teacher-login-card-width);
+    aspect-ratio: var(--teacher-login-card-ratio);
     max-width: 100%;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px 0px #000000c4;
+
+    @media (max-width: $breakpoint-md) {
+        width: 90%;
+        height: auto;
+    }
 
     @media (max-width: $breakpoint-sm) {
         max-width: 90%;
