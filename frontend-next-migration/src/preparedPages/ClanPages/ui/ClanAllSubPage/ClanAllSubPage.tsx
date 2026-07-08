@@ -159,9 +159,28 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                                 title1={''}
                                 title2={''}
                             >
-                                <div className={mobileCardCls.ClanMembersRow}>
-                                    {t('members')} {clan.playerCount} / 30 · {t('position')}
-                                    {clan.positionLeaderboard ?? '-'}
+                                <div className={mobileCardCls.ClanInfoStats}>
+                                    <span className={mobileCardCls.ClanInfoValue}>
+                                        {t('members')} {clan.playerCount} / 30
+                                    </span>
+                                    <span className={mobileCardCls.ClanInfoValue}>
+                                        {t('position')} {clan.positionLeaderboard ?? '-'}
+                                    </span>
+                                </div>
+                                <div className={mobileCardCls.ClanLabels}>
+                                    {clan.labels?.slice(0, 4).map((label) => (
+                                        <span
+                                            className={mobileCardCls.ClanLabel}
+                                            key={label}
+                                            title={label}
+                                        >
+                                            <Image
+                                                src={getClanLabelIcon(label)}
+                                                alt={label}
+                                                className={mobileCardCls.ClanLabelIcon}
+                                            />
+                                        </span>
+                                    ))}
                                 </div>
                             </MobileCard.Texts>
                         </MobileCard>

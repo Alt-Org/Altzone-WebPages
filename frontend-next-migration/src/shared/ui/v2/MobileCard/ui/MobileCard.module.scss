@@ -228,11 +228,12 @@
     }
 
     > .TextContainer:last-of-type {
-        height: 28%;
+        height: auto;
+        min-height: 28%;
         padding: 0.25rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 0.25rem;
         align-items: stretch;
         text-align: center;
@@ -240,34 +241,74 @@
         .ClanInfoRow {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            width: 100%;
+            padding: 0 0.188rem;
+        }
+
+        .ClanInfoBadges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .ClanInfoIcon {
+            width: 18px;
+            height: 18px;
+            flex: 0 0 auto;
+        }
+
+        .ClanInfoStats {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.15rem;
             width: 100%;
             padding: 0 0.25rem;
         }
 
-        .ClanInfoIcon {
-            width: 20px;
-            height: 20px;
-            flex: 0 0 auto;
-        }
-
         .ClanInfoValue {
             color: var(--white);
-            font-size: 0.98rem;
-            line-height: 1.05;
-            flex: 0 0 auto;
-            text-align: right;
+            font: var(--font-dm-xs);
+            text-align: center;
+            white-space: normal;
+            width: 100%;
+            overflow-wrap: anywhere;
         }
 
-        .ClanMembersRow {
+        .ClanLabels {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
             width: 100%;
-            margin-inline: auto;
-            color: var(--white);
-            font-size: 0.92rem;
-            line-height: 1.15;
+            gap: 0.25rem;
+            margin-top: 0.2rem;
+            padding: 0 0.25rem;
+        }
+
+        .ClanLabel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: var(--black);
+            border: 1px solid var(--black);
+            border-radius: 999px;
+            padding: 0.2rem 0.4rem;
+            font: var(--font-dm-xxs);
+            line-height: 1;
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        .ClanLabelIcon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
         }
     }
 }
@@ -296,7 +337,8 @@
         }
 
         > .TextContainer:last-of-type {
-            height: 28% !important;
+            height: auto !important;
+            min-height: 28% !important;
         }
     }
 }
