@@ -11,7 +11,7 @@
   text-align: center;
   padding-inline: 1rem;
 
-  @media (max-width: #{breakpoint(sm)}) {
+  @media (max-width: breakpoint(sm)) {
     font-size: 1.5rem;
   }
 }
@@ -60,11 +60,6 @@
   margin: 0 !important;
   padding: 0 !important;
   width: 100%;
-}
-
-.HeaderLine {
-  display: flex;
-  justify-content: space-between;
 }
 
 .TextContainer {
@@ -219,23 +214,6 @@
   display: block;
 }
 
-.textColumns {
-  box-sizing: border-box;
-  padding-inline: 32px;
-  column-count: 1;
-  column-gap: 24px;
-  column-fill: balance;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  padding-bottom: 1em;
-}
-
-@media (min-width: #{breakpoint(md)}) {
-  .textColumns {
-    column-count: 2;
-  }
-}
-
 .pdfButton {
   display: inline-flex;
   align-items: center;
@@ -275,12 +253,6 @@
 
 .externalLinkIcon {
   color: var(--primary-color, #000);
-  width: 15px;
-  height: 15px;
-}
-
-.icon {
-  display: inline-block;
   width: 15px;
   height: 15px;
 }
@@ -362,44 +334,14 @@
   padding-inline: 2rem;
 }
 
-.BoardCardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.MeetBoard {
-  padding-top: 1rem !important;
-  color: var(--primary-color) !important;
-  text-align: center;
-  display: block;
-  width: 100%;
-}
-
-.SeeBoard {
-  padding-top: 2rem;
-}
-
 .BoardCardMobileContainer {
   @extend %flexColumn;
   gap: 1rem;
   width: 100%;
 }
 
-.Underline {
-  &:hover {
-    text-decoration: underline !important;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1.5px;
-  }
-}
-
 .MarginBottom {
   margin-bottom: 2rem;
-}
-
-.bold {
-  font-weight: bold;
 }
 
 .teamButton {
@@ -417,7 +359,7 @@
   font: var(--font-dm-l);
 }
 
-@media (max-width: #{breakpoint(sm)}) {
+@media (max-width: breakpoint(sm)) {
   .prgTabSwitch {
     height: auto;
     padding: 4px 8px;
