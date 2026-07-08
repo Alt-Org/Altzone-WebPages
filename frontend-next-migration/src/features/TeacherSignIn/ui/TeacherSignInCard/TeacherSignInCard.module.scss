@@ -9,6 +9,7 @@
     margin: 0 auto;
     overflow: visible;
     box-sizing: border-box;
+    border: Mixed solid #ffa100;
 }
 
 .AltLogo {
@@ -28,14 +29,14 @@
         object-fit: contain;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
         top: 60px;
         left: 3px;
         width: 150px;
         height: 125px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         top: 95px;
         left: 5px;
         width: 120px;
@@ -55,10 +56,15 @@
     padding: 10px;
     gap: 10px;
     width: 917.68px;
-    aspect-ratio: 917.68 / 532.58;
-    max-width: calc(100% - 32px);
+    height: 532.58px;
+    max-width: 100%;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px 0px #000000c4;
+
+    @media (max-width: $breakpoint-sm) {
+        max-width: 90%;
+        height: auto;
+    }
 }
 
 .Title {
@@ -74,13 +80,13 @@
     font: var(--font-sw-xxxl);
     text-transform: none;
 
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
         font: var(--font-sw-xl);
         margin-bottom: 30px;
         letter-spacing: 0.5px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         font: var(--font-sw-m);
         margin-bottom: 5px;
     }
@@ -96,7 +102,7 @@
     width: 438.51px;
     max-width: calc(100% - 40px);
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         gap: 15px;
     }
 }
@@ -141,7 +147,7 @@
         background: var(--background);
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         padding: 12px 14px;
         font: var(--font-dm-m);
     }
@@ -171,7 +177,7 @@
         background: var(--background);
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         padding: 12px 14px;
         padding-right: 46px;
         font: var(--font-dm-m);
@@ -209,7 +215,7 @@
         height: 16.68px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         padding: 5px;
 
         svg {
@@ -238,9 +244,11 @@
     box-sizing: border-box;
     white-space: nowrap;
 
+    border-radius: var(--border-radius-xl);
+
     box-shadow: 1.96px 3.92px 0px 0px var(--black);
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         margin-top: 20px;
         min-width: auto;
     }
@@ -265,13 +273,13 @@
         object-fit: contain;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: $breakpoint-md) {
         width: 200px;
         height: 200px;
         bottom: 40px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: $breakpoint-sm) {
         width: 125px;
         height: 125px;
         bottom: 130px;

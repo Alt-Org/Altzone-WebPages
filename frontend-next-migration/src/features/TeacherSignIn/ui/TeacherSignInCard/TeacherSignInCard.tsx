@@ -107,7 +107,7 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
             {/* ALT Logo */}
             <div className={cls.AltLogo}>
                 <Image
-                    src="/images/gallery/Käyttöliittymä grafiikkaa 08-2025/CommonALT.png"
+                    src="/images/logos/CommonALT.png"
                     alt="ALT Zone Logo"
                     width={193}
                     height={161}
@@ -179,7 +179,7 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
             {/* Teacher Character */}
             <div className={cls.TeacherCharacter}>
                 <Image
-                    src="/images/Cartoon_character_ope.png"
+                    src="/images/characters/Cartoon_character_ope.png"
                     alt="Teacher Character"
                     width={282}
                     height={282}
