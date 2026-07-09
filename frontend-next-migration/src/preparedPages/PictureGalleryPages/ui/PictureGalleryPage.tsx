@@ -63,11 +63,13 @@ const PictureGalleryPage = () => {
     const categorySlug = params.category as string | undefined;
 
     const languageCode = getLanguageCode(lng);
+    // TODO: switch to V2 hook
     const { photoObjects, isLoading, error } = useGetDirectusGalleryImages(languageCode);
 
     const isBigDevice = isDesktopSize || isWidescreenSize;
     const allCategory = lng === 'en' ? 'all' : 'kaikki';
 
+    // figma shows the text should be present even on mobile, so this boolean will become unnecessary
     const showCreativity = useMemo(
         () => !isMobileSize && searchQuery.length === 0,
         [isMobileSize, searchQuery],
@@ -90,6 +92,8 @@ const PictureGalleryPage = () => {
         });
     }, [photoObjects, categorySlug, allCategory, languageCode]);
 
+    // keep this search filtering, see if it there are any new fields to add to the search
+    // need to update PhotoObject to v2
     const filteredImages: PhotoObject[] = useMemo(() => {
         const query = searchQuery.trim().toLowerCase();
         if (!query) return categoryFilteredImages;
@@ -150,7 +154,7 @@ const PictureGalleryPage = () => {
                 )}
                 <AnimationGallerySection
                     animations={filteredImages.map((photo) => ({
-                        // Adjust these mappings as needed based on your PhotoObject and FrameSet definitions
+                        // Adjust these mappings to match photo object v2 structure
                         title: photo.title || '',
                         author: photo.author || '',
                         description: photo.description || '',
@@ -160,7 +164,7 @@ const PictureGalleryPage = () => {
                                 : photo.versions?.preview
                                   ? [[photo.versions.preview.image]]
                                   : [],
-                        // Add other FrameSet properties if required
+                        // Add animation, and social media links
                     }))}
                 />
             </Container>

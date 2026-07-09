@@ -69,33 +69,45 @@ export interface PhotoObjectV2Translations {
     id: string;
     languages_code: string;
     photo_object_id: string;
-    title?: string;
-    description?: string;
-    link_text?: string;
-    link_2_text?: string;
-    alt_text_img?: string;
-    alt_text_img_2?: string;
-    alt_text_img_3?: string;
-    alt_text_animation?: string;
+    title?: string | null;
+    description?: string | null;
+}
+
+export interface DirectusPhotoObjectV2 {
+    id: string;
+    category: Category | null;
+    translations: PhotoObjectV2Translations[] | null;
+    author: string | null;
+    website: string | null;
+    github: string | null;
+    linkedin: string | null;
+    instagram: string | null;
+    facebook: string | null;
+    image_1: string | null;
+    image_2: string | null;
+    image_3: string | null;
+    animation: string | null;
+    date_created: string;
+}
+
+export interface PhotoCategory {
+    id: string;
+    name?: string;
 }
 
 export interface PhotoObjectV2 {
-    title: string;
-    author: string;
-    description?: string;
+    author?: string;
     id: string;
-    category?: Category;
-    translations: PhotoObjectV2Translations[];
-    link?: string;
-    link_text?: string;
-    link2?: string;
-    link_2_text?: string;
-    image: string;
-    alt_text_img?: string;
-    image2?: string;
-    alt_text_img_2?: string;
-    image3?: string;
-    alt_text_img_3?: string;
-    animation?: string;
-    alt_text_animation?: string;
+    date_created: string;
+    category: PhotoCategory;
+    title?: string;
+    description?: string;
+    links: {
+        website?: string;
+        github?: string;
+        linkedin?: string;
+        instagram?: string;
+        facebook?: string;
+    };
+    frames?: string[][];
 }

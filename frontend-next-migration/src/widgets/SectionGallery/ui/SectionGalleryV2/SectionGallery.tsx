@@ -16,6 +16,7 @@ interface AnimationGalleryProps {
     animations: FrameSet[];
 }
 
+// TODO: update to use V2 photo object
 export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) => {
     const { inView } = useInView({
         rootMargin: '-150px 0px',

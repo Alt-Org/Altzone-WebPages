@@ -8,7 +8,7 @@ export const getLanguageCode = (language: string): string => {
     return language === 'en' ? 'en-US' : language === 'fi' ? 'fi-FI' : 'default';
 };
 
-const getTranslation = <T extends { languages_code: string }>(
+export const getTranslation = <T extends { languages_code: string }>(
     translations: T[],
     languageCode: string,
     key: keyof T,
