@@ -103,87 +103,89 @@ const TeacherSignInCard: React.FC<TeacherSignInCardProps> = ({ className }) => {
      * Renders the TeacherSignInCard component, which includes the ALT logo, sign-in form with username and password fields, and a teacher character image. The form includes visibility toggles for both input fields and a submit button that navigates to the instructions page upon submission.
      */
     return (
-        <div className={classNames(cls.Container, {}, className ? [className] : [])}>
-            {/* ALT Logo */}
-            <div className={cls.AltLogo}>
-                <Image
-                    src="/images/logos/CommonALT.png"
-                    alt="ALT Zone Logo"
-                    width={193}
-                    height={161}
-                />
-            </div>
+        <div className={cls.PageLayout}>
+            <div className={classNames(cls.Container, {}, className ? [className] : [])}>
+                {/* ALT Logo */}
+                <div className={cls.AltLogo}>
+                    <Image
+                        src="/images/logos/CommonALT.png"
+                        alt="ALT Zone Logo"
+                        width={193}
+                        height={161}
+                    />
+                </div>
 
-            {/* Sign In Card */}
-            <div className={cls.Card}>
-                <h1 className={cls.Title}>{t('signin-card-title')}</h1>
+                {/* Sign In Card */}
+                <div className={cls.Card}>
+                    <h1 className={cls.Title}>{t('signin-card-title')}</h1>
 
-                <form
-                    onSubmit={handleSubmit}
-                    className={cls.Form}
-                >
-                    <div className={cls.FormGroup}>
-                        <div className={cls.UsernameInputWrapper}>
-                            <input
-                                type={showUsername ? 'text' : 'password'}
-                                placeholder={t('signin-card-username-placeholder')}
-                                value={username}
-                                onChange={(event) => setUsername(event.target.value)}
-                                className={cls.UsernameInput}
-                                aria-label={t('signin-card-username-label')}
-                                autoComplete="username"
-                            />
-                            <button
-                                type="button"
-                                className={cls.UsernameToggle}
-                                onClick={toggleUsernameVisibility}
-                                aria-label={showUsername ? 'Hide username' : 'Show username'}
-                            >
-                                <VisibilityIcon isVisible={showUsername} />
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className={cls.FormGroup}>
-                        <div className={cls.PasswordInputWrapper}>
-                            <input
-                                type={showPassword ? 'text' : 'password'}
-                                placeholder={t('signin-card-password-placeholder')}
-                                value={password}
-                                onChange={(event) => setPassword(event.target.value)}
-                                className={cls.PasswordInput}
-                                aria-label={t('signin-card-password-label')}
-                            />
-                            <button
-                                type="button"
-                                className={cls.PasswordToggle}
-                                onClick={togglePasswordVisibility}
-                                aria-label={showPassword ? 'Hide password' : 'Show password'}
-                            >
-                                <VisibilityIcon isVisible={showPassword} />
-                            </button>
-                        </div>
-                    </div>
-
-                    <Button
-                        type="submit"
-                        size={ButtonSize.L}
-                        theme={ButtonTheme.SECONDARY}
-                        className={cls.SubmitButton}
+                    <form
+                        onSubmit={handleSubmit}
+                        className={cls.Form}
                     >
-                        {t('signin-card-submit-button')}
-                    </Button>
-                </form>
-            </div>
+                        <div className={cls.FormGroup}>
+                            <div className={cls.UsernameInputWrapper}>
+                                <input
+                                    type={showUsername ? 'text' : 'password'}
+                                    placeholder={t('signin-card-username-placeholder')}
+                                    value={username}
+                                    onChange={(event) => setUsername(event.target.value)}
+                                    className={cls.UsernameInput}
+                                    aria-label={t('signin-card-username-label')}
+                                    autoComplete="username"
+                                />
+                                <button
+                                    type="button"
+                                    className={cls.UsernameToggle}
+                                    onClick={toggleUsernameVisibility}
+                                    aria-label={showUsername ? 'Hide username' : 'Show username'}
+                                >
+                                    <VisibilityIcon isVisible={showUsername} />
+                                </button>
+                            </div>
+                        </div>
 
-            {/* Teacher Character */}
-            <div className={cls.TeacherCharacter}>
-                <Image
-                    src="/images/characters/Cartoon_character_ope.png"
-                    alt="Teacher Character"
-                    width={282}
-                    height={282}
-                />
+                        <div className={cls.FormGroup}>
+                            <div className={cls.PasswordInputWrapper}>
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder={t('signin-card-password-placeholder')}
+                                    value={password}
+                                    onChange={(event) => setPassword(event.target.value)}
+                                    className={cls.PasswordInput}
+                                    aria-label={t('signin-card-password-label')}
+                                />
+                                <button
+                                    type="button"
+                                    className={cls.PasswordToggle}
+                                    onClick={togglePasswordVisibility}
+                                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                                >
+                                    <VisibilityIcon isVisible={showPassword} />
+                                </button>
+                            </div>
+                        </div>
+
+                        <Button
+                            type="submit"
+                            size={ButtonSize.L}
+                            theme={ButtonTheme.SECONDARY}
+                            className={cls.SubmitButton}
+                        >
+                            {t('signin-card-submit-button')}
+                        </Button>
+                    </form>
+                </div>
+
+                {/* Teacher Character */}
+                <div className={cls.TeacherCharacter}>
+                    <Image
+                        src="/images/characters/Cartoon_character_ope.png"
+                        alt="Teacher Character"
+                        width={282}
+                        height={282}
+                    />
+                </div>
             </div>
         </div>
     );

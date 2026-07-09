@@ -1,3 +1,13 @@
+.PageLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 1920;
+    height: 1656;
+}
+
 .Container {
     --teacher-login-card-width: 760px;
     --teacher-login-card-height: 532.58px;
@@ -290,6 +300,7 @@
     @media (max-width: $breakpoint-sm) {
         width: 125px;
         height: 125px;
+        right: -8px;
         bottom: 130px;
     }
 }
