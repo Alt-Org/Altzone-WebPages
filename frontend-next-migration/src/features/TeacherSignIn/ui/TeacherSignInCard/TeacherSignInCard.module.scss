@@ -1,6 +1,6 @@
 .Container {
     --teacher-login-card-width: 760px;
-    --teacher-login-card-ratio: 917.68 / 532.58;
+    --teacher-login-card-height: 532.58px;
 
     position: relative;
     display: flex;
@@ -16,8 +16,8 @@
 
 .AltLogo {
     position: absolute;
-    top: -5px;
-    left: -20px;
+    top: -7px;
+    left: 30px;
     z-index: 20;
     width: 193px;
     height: 161px;
@@ -32,7 +32,7 @@
     }
 
     @media (max-width: $breakpoint-md) {
-        top: 60px;
+        top: 100px;
         left: 3px;
         width: 150px;
         height: 125px;
@@ -58,13 +58,13 @@
     padding: 10px;
     gap: 10px;
     width: var(--teacher-login-card-width);
-    aspect-ratio: var(--teacher-login-card-ratio);
+    height: var(--teacher-login-card-height);
     max-width: 100%;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px 0px #000000c4;
 
     @media (max-width: $breakpoint-md) {
-        width: 90%;
+        max-width: 90%;
         height: auto;
     }
 
@@ -82,7 +82,7 @@
 
     text-align: center;
     color: var(--primary-color);
-    margin: 0 0 40px 0;
+    margin: 0 0 30px 0;
     letter-spacing: 1%;
     font: var(--font-sw-xxxl);
     text-transform: none;
@@ -270,7 +270,7 @@
 
     width: 282px;
     height: 282px;
-    right: -10px;
+    right: 70px;
     bottom: -45px;
 
     img {
@@ -283,7 +283,8 @@
     @media (max-width: $breakpoint-md) {
         width: 200px;
         height: 200px;
-        bottom: 40px;
+        right: 30px;
+        bottom: 75px;
     }
 
     @media (max-width: $breakpoint-sm) {
