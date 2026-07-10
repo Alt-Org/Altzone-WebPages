@@ -84,6 +84,22 @@ const Boardcard = (props: BoardCardProps) => {
     );
 };
 
+const BOARD_MEMBERS = [
+    {
+        picture: Helena,
+        name: 'Helena Pavloff-Pelkonen',
+        job: 'helena-job',
+        profession: 'helena-profession',
+    },
+    { picture: Esa, name: 'Esa Pavloff-Pelkonen', job: 'esa-job', profession: 'esa-profession' },
+    {
+        picture: Emmi_Irina,
+        name: 'Emmi-Irina Pavloff',
+        job: 'emmi-irina-job',
+        profession: 'emmi-irina-profession',
+    },
+] as const;
+
 const DOCUMENT_TABS = ['action-plan', 'activity-report', 'bylaws'] as const;
 
 type DocumentTab = (typeof DOCUMENT_TABS)[number];
@@ -162,61 +178,23 @@ const PRGPage = () => {
                 <div className={cls.headingWithLines}>
                     <span className={cls.headingWithLinesText}>{t('prg-board')}</span>
                 </div>
-                {!isMobileSize && !isTabletSize ? (
-                    <div className={cls.BoardCardContainer}>
+                <div
+                    className={classNames(cls.BoardCardContainer, {
+                        [cls.BoardCardMobileContainer]: isMobileSize || isTabletSize,
+                    })}
+                >
+                    {BOARD_MEMBERS.map((member) => (
                         <Boardcard
-                            picture={Helena}
-                            name={'Helena Pavloff-Pelkonen'}
-                            job={'helena-job'}
-                            profession={'helena-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                        <Boardcard
-                            picture={Esa}
-                            name={'Esa Pavloff-Pelkonen'}
-                            job={'esa-job'}
-                            profession={'esa-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                        <Boardcard
-                            picture={Emmi_Irina}
-                            name={'Emmi-Irina Pavloff'}
-                            job={'emmi-irina-job'}
-                            profession={'emmi-irina-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                    </div>
-                ) : (
-                    <div className={cls.BoardCardMobileContainer}>
-                        <Boardcard
-                            picture={Helena}
-                            name={'Helena Pavloff-Pelkonen'}
-                            job={'helena-job'}
-                            profession={'helena-profession'}
+                            key={member.name}
+                            picture={member.picture}
+                            name={member.name}
+                            job={member.job}
+                            profession={member.profession}
                             t={t}
                             isMobileSize={isMobileSize || isTabletSize}
                         />
-                        <Boardcard
-                            picture={Esa}
-                            name={'Esa Pavloff-Pelkonen'}
-                            job={'esa-job'}
-                            profession={'esa-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                        <Boardcard
-                            picture={Emmi_Irina}
-                            name={'Emmi-Irina Pavloff'}
-                            job={'emmi-irina-job'}
-                            profession={'emmi-irina-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                    </div>
-                )}
+                    ))}
+                </div>
                 <div className={cls.ButtonBlock}>
                     <AppLink
                         to={'/team'}
