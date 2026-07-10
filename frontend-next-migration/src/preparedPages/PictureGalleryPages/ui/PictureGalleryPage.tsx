@@ -1,12 +1,7 @@
 'use client';
 import React, { useState, useMemo } from 'react';
 import { AnimationGallerySection } from '@/widgets/SectionGallery/ui/SectionGalleryV2/SectionGallery';
-import {
-    getLanguageCode,
-    PhotoObject,
-    useGetDirectusGalleryImages,
-    getCategoryTranslation,
-} from '@/entities/Gallery';
+import { getLanguageCode, PhotoObjectV2, useGetDirectusGalleryImages } from '@/entities/Gallery';
 import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
@@ -63,7 +58,7 @@ const PictureGalleryPage = () => {
     const categorySlug = params.category as string | undefined;
 
     const languageCode = getLanguageCode(lng);
-    // TODO: switch to V2 hook
+    // TODO: switch to using the V2 hook
     const { photoObjects, isLoading, error } = useGetDirectusGalleryImages(languageCode);
 
     const isBigDevice = isDesktopSize || isWidescreenSize;
@@ -76,7 +71,7 @@ const PictureGalleryPage = () => {
     );
 
     // filter images by category from URL params
-    const categoryFilteredImages: PhotoObject[] = useMemo(() => {
+    const categoryFilteredImages: PhotoObjectV2[] = useMemo(() => {
         if (!photoObjects) return [];
         if (!categorySlug || categorySlug === allCategory) {
             return photoObjects;
@@ -84,17 +79,13 @@ const PictureGalleryPage = () => {
 
         return photoObjects.filter((photo) => {
             if (!photo.category) return false;
-            const translatedCategory = getCategoryTranslation(
-                photo.category.translations,
-                languageCode,
-            );
-            return translatedCategory === categorySlug;
+            return photo.category.name === categorySlug;
         });
     }, [photoObjects, categorySlug, allCategory, languageCode]);
 
     // keep this search filtering, see if it there are any new fields to add to the search
     // need to update PhotoObject to v2
-    const filteredImages: PhotoObject[] = useMemo(() => {
+    const filteredImages: PhotoObjectV2[] = useMemo(() => {
         const query = searchQuery.trim().toLowerCase();
         if (!query) return categoryFilteredImages;
         return categoryFilteredImages.filter((photo) => {
@@ -158,12 +149,7 @@ const PictureGalleryPage = () => {
                         title: photo.title || '',
                         author: photo.author || '',
                         description: photo.description || '',
-                        frames:
-                            photo.frames && photo.frames.length > 0
-                                ? photo.frames
-                                : photo.versions?.preview
-                                  ? [[photo.versions.preview.image]]
-                                  : [],
+                        frames: photo.frames && photo.frames.length > 0 ? photo.frames : [],
                         // Add animation, and social media links
                     }))}
                 />

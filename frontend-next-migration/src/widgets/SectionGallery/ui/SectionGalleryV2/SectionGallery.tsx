@@ -26,6 +26,7 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
     const mods = {
         [cls.inView]: inView,
     };
+    // frames will be: [["img src 1", "imgid 1", "image"], ["img src 2", "imgid 2", "image"], ...]
 
     return (
         <section className={cls.AnimationGallerySection}>
@@ -45,30 +46,28 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
                                 key={rowIndex}
                                 className={cls.frameRow}
                             >
-                                {row.map((imgSrc, imgIndex) => (
-                                    <div
-                                        key={imgIndex}
-                                        className={cls.imageWrapper}
-                                    >
-                                        <Image
-                                            src={imgSrc}
-                                            alt={`Frame ${imgIndex}`}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, 33vw"
-                                            className={cls.frameImage}
-                                        />
-                                    </div>
-                                ))}
-                                <div className={cls.buttonWrapper}>
-                                    <Button
-                                        theme={ButtonTheme.Graffiti}
-                                        className={classNames(cls.animateButton, mods)}
-                                    >
-                                        Animation
-                                    </Button>
+                                <div
+                                    key={rowIndex}
+                                    className={cls.imageWrapper}
+                                >
+                                    <Image
+                                        src={row[0]}
+                                        alt={`Frame ${rowIndex}`}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className={cls.frameImage}
+                                    />
                                 </div>
                             </div>
                         ))}
+                        <div className={cls.buttonWrapper}>
+                            <Button
+                                theme={ButtonTheme.Graffiti}
+                                className={classNames(cls.animateButton, mods)}
+                            >
+                                Animation
+                            </Button>
+                        </div>
                     </div>
                 </div>
             ))}

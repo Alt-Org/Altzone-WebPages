@@ -22,47 +22,9 @@ export interface CategoryTranslations {
     name: string;
 }
 
-export interface PhotoVersionTranslations {
-    id: string;
-    languages_code: string;
-    photo_version_id: string;
-    altText: string;
-}
-
-export interface PhotoObjectTranslations {
-    id: string;
-    languages_code: string;
-    photo_object_id: string;
-    title?: string;
-    author?: string;
-    description?: string;
-}
-
 export interface Category {
     id: string;
     translations: CategoryTranslations[];
-}
-
-export interface PhotoVersion {
-    id: string;
-    image: string;
-    width: number;
-    height: number;
-    altText: string;
-}
-
-export interface PhotoObject {
-    title?: string;
-    author?: string;
-    description?: string;
-    frames?: string[][];
-    id?: string;
-    category?: Category;
-    translations?: PhotoObjectTranslations[];
-    versions?: {
-        preview: PhotoVersion;
-        full: PhotoVersion;
-    };
 }
 
 export interface PhotoObjectV2Translations {
@@ -83,7 +45,7 @@ export interface DirectusPhotoObjectV2 {
     linkedin: string | null;
     instagram: string | null;
     facebook: string | null;
-    image_1: string | null;
+    image: string | null;
     image_2: string | null;
     image_3: string | null;
     animation: string | null;
@@ -97,6 +59,7 @@ export interface PhotoCategory {
 
 export interface PhotoObjectV2 {
     author?: string;
+    anchorId?: string;
     id: string;
     date_created: string;
     category: PhotoCategory;

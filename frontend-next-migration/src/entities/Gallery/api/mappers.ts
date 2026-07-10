@@ -19,7 +19,7 @@ export const mapDirectusToPhotoObjectV2 = (
             linkedin,
             instagram,
             facebook,
-            image_1,
+            image,
             image_2,
             image_3,
             animation,
@@ -50,13 +50,17 @@ export const mapDirectusToPhotoObjectV2 = (
             facebook: facebook || undefined,
         };
 
-        const mappedFrames = mapFrames(image_1, image_2, image_3, animation);
+        const mappedFrames = mapFrames(image, image_2, image_3, animation);
+
+        // url-safe anchor id from author's name
+        const anchorId = mapAnchorId(author);
 
         return {
             id,
             category: mappedCategory,
             title,
             description,
+            anchorId,
             author: author || undefined,
             links: mappedLinks,
             frames: mappedFrames,
@@ -66,7 +70,7 @@ export const mapDirectusToPhotoObjectV2 = (
 };
 
 const mapFrames = (
-    image_1: string | null,
+    image: string | null,
     image_2: string | null,
     image_3: string | null,
     animation: string | null,
@@ -79,10 +83,10 @@ const mapFrames = (
     const imageQuality = 80;
 
     // insert image url, image id, and type (image/animation) into frames
-    if (image_1) {
+    if (image) {
         frames.push([
-            `${directusBaseUrl}/assets/${image_1}?format=auto&width=${imageWidth}&quality=${imageQuality}`,
-            image_1,
+            `${directusBaseUrl}/assets/${image}?format=auto&width=${imageWidth}&quality=${imageQuality}`,
+            image,
             'image',
         ]);
     }
@@ -109,4 +113,14 @@ const mapFrames = (
     }
 
     return frames;
+};
+
+const mapAnchorId = (author: string | null): string => {
+    const anchorId = `${author || ''}`
+        .toLowerCase()
+        .normalize('NFD') // åäöé etc -> aaoe + diacritics separately
+        .replace(/[\u0300-\u036f]/g, '') // remove ¨´~ etc after normalization
+        .replace(/[^a-z0-9]+/g, '-') // replace non-alphanumeric characters with hyphens
+        .replace(/^-+|-+$/g, ''); // remove leading/trailing hyphens
+    return anchorId;
 };

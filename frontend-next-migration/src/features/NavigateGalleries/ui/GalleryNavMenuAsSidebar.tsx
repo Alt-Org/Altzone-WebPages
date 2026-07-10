@@ -1,11 +1,6 @@
 import { useParams, useRouter } from 'next/navigation';
 import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
-import {
-    getLanguageCode,
-    useGetDirectusGalleryImages,
-    getCategoryTranslation,
-    Category,
-} from '@/entities/Gallery';
+import { getLanguageCode, useGetDirectusGalleryImages, PhotoCategory } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './GalleryNavMenuAsSidebar.module.scss';
@@ -42,7 +37,7 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
         const category = findCorrectCategory(categories);
 
         if (category) {
-            const translatedName = getCategoryTranslation(category.translations, language);
+            const translatedName = category.name;
 
             if (translatedName && translatedName !== currentCategory) {
                 handleRouteChange(translatedName);
@@ -52,11 +47,9 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
         }
     }, [categories, lng]);
 
-    const findCorrectCategory = (categories: Category[]) => {
+    const findCorrectCategory = (categories: PhotoCategory[]) => {
         if (!categories) return null;
-        const category = categories.find((cat) =>
-            cat.translations.some((t) => t.name === currentCategory),
-        );
+        const category = categories.find((cat) => cat.name === currentCategory);
         return category ? category : null;
     };
 
@@ -70,23 +63,23 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
         [cls.Hidden]: !sidebarVisible,
     };
 
-    const getCategory = (category: Category, index: number) => {
-        const translatedCategory = getCategoryTranslation(category.translations, language);
-
-        if (sidebarVisible) {
+    const getCategory = (category: PhotoCategory, index: number) => {
+        if (category && sidebarVisible) {
             return (
                 <div
                     key={index}
-                    onClick={() => handleRouteChange(translatedCategory)}
+                    onClick={() => handleRouteChange(category.name ? category.name : allCategory)}
                     className={cls.Category}
                     style={
-                        selectedCategory === translatedCategory
+                        selectedCategory === category.name
                             ? { color: 'var(--secondary-color)' }
                             : {}
                     }
                 >
-                    {translatedCategory.charAt(0).toUpperCase() +
-                        translatedCategory.slice(1).replace('-', ' ')}
+                    {category.name
+                        ? category.name.charAt(0).toUpperCase() +
+                          category.name.slice(1).replace('-', ' ')
+                        : ''}
                 </div>
             );
         } else {
@@ -95,13 +88,15 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
                     key={index}
                     className={cls.Category}
                     style={
-                        selectedCategory === translatedCategory
+                        selectedCategory === category.name
                             ? { color: 'var(--secondary-color)' }
                             : {}
                     }
                 >
-                    {translatedCategory.charAt(0).toUpperCase() +
-                        translatedCategory.slice(1).replace('-', ' ')}
+                    {category.name
+                        ? category.name.charAt(0).toUpperCase() +
+                          category.name.slice(1).replace('-', ' ')
+                        : ''}
                 </div>
             );
         }

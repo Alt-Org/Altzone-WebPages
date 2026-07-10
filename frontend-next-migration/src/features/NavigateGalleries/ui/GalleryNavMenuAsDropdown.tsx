@@ -6,11 +6,7 @@ import {
     DropDownElementASTextOrLink,
 } from '@/shared/ui/NavMenuWithDropdownsV2';
 import { getRouteGalleryCategoryPage } from '@/shared/appLinks/RoutePaths';
-import {
-    getLanguageCode,
-    useGetDirectusGalleryImages,
-    getCategoryTranslation,
-} from '@/entities/Gallery';
+import { getLanguageCode, useGetDirectusGalleryImages } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useClientTranslation } from '@/shared/i18n';
@@ -40,15 +36,10 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
 
     useEffect(() => {
         if (categories) {
-            const matchingCategory = categories.find((cat) =>
-                cat.translations.some((t) => t.name === currentCategory),
-            );
+            const matchingCategory = categories.find((cat) => cat.name === currentCategory);
 
             if (matchingCategory) {
-                const translatedName = getCategoryTranslation(
-                    matchingCategory.translations,
-                    language,
-                );
+                const translatedName = matchingCategory.name;
 
                 if (translatedName && translatedName !== currentCategory) {
                     const newPath = getRouteGalleryCategoryPage(translatedName);
@@ -73,7 +64,7 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
             active: selectedCategory === allCategory,
         },
         ...categories.map((category) => {
-            const translatedName = getCategoryTranslation(category.translations, language);
+            const translatedName = category.name || '';
             return {
                 link: {
                     isExternal: false,
