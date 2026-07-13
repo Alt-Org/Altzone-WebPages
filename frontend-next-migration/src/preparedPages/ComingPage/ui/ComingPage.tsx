@@ -81,7 +81,6 @@ const ComingPage = (props: Props) => {
                         <Image
                             src={comingSoonSign}
                             alt="Coming soon sign"
-                            priority
                             width={700}
                             height={617}
                         />
@@ -91,21 +90,18 @@ const ComingPage = (props: Props) => {
                         <Image
                             src={stoner}
                             alt="Pössyttelijä"
-                            priority={true}
                             width={150}
                             height={150}
                         />
                         <Image
                             src={delusion}
                             alt="Harhaisuus"
-                            priority={true}
                             width={150}
                             height={150}
                         />
                         <Image
                             src={fashionMadness}
                             alt="Muotihulluus"
-                            priority={true}
                             width={150}
                             height={150}
                             className={cls.flipped}
@@ -113,28 +109,24 @@ const ComingPage = (props: Props) => {
                         <Image
                             src={jokester}
                             alt="Vitsinvääntäjä"
-                            priority={true}
                             width={150}
                             height={150}
                         />
                         <Image
                             src={veteran}
                             alt="Posttraumaattinen veteraani"
-                            priority={true}
                             width={150}
                             height={150}
                         />
                         <Image
                             src={pedant}
                             alt="Viisastelija"
-                            priority={true}
                             width={150}
                             height={150}
                         />
                         <Image
                             src={fatigue}
                             alt="Väsyminen"
-                            priority={true}
                             width={150}
                             height={150}
                         />
