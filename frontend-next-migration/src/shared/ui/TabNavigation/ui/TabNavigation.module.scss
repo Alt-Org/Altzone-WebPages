@@ -1,0 +1,36 @@
+.tabNavigation {
+    display: flex;
+}
+
+.tabsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: var(--base-card-background);
+    border-radius: var(--border-radius-figmadesktop);
+
+}
+
+.tab {
+    padding: 8px;
+    padding-inline: 60px;
+    min-width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--base-card-background);
+    color: var(--primary-color);
+    font: var(--font-dm-bold-m);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: var(--border-radius-figmadesktop);
+
+    @media (max-width: breakpoint(sm)) {
+        border-radius: var(--border-radius-figma);
+    }
+}

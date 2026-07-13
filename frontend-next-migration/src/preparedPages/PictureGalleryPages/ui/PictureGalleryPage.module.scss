@@ -4,12 +4,16 @@
   flex-direction: column;
   min-height: 100vh;
   padding-bottom: 20px;
+  margin-inline: auto;
+  padding-inline: 20px;
   //  background-color: rgba(109, 39, 39, 0.322);
 
   //@media (max-width: 1200px) {
   //  margin-top: 50px;
   //}
-
+  @media (min-width: breakpoint(md)) {
+    width: 60%;
+  }
 }
 .LeftSidebar{
   margin-top: 6rem;

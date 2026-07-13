@@ -4,20 +4,15 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import cls from './SectionGallery2.module.scss';
 import Image from 'next/image';
-
-interface FrameSet {
-    title: string;
-    author: string;
-    description: string;
-    frames: string[][]; // each row is an array of image paths
-}
+import { SocialMediaIcons } from '@/shared/ui/SocialMediaIcons';
+import { PhotoObject } from '@/entities/Gallery';
 
 interface AnimationGalleryProps {
-    animations: FrameSet[];
+    animations: PhotoObject[];
+    backgroundColor?: string;
 }
 
-// TODO: update to use V2 photo object
-export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) => {
+export const AnimationGallerySection = ({ animations, backgroundColor }: AnimationGalleryProps) => {
     const { inView } = useInView({
         rootMargin: '-150px 0px',
         triggerOnce: true,
@@ -26,26 +21,29 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
     const mods = {
         [cls.inView]: inView,
     };
-    // frames will be: [["img src 1", "imgid 1", "image"], ["img src 2", "imgid 2", "image"], ...]
 
     return (
-        <section className={cls.AnimationGallerySection}>
+        <section
+            className={cls.AnimationGallerySection}
+            style={{ backgroundColor }}
+        >
             {animations.map((set, index) => (
                 <div
                     key={index}
                     className={cls.block}
+                    id={set.anchorId}
                 >
                     <div className={cls.textBlock}>
                         <h1 className={cls.title}>{set.title}</h1>
                         <p className={cls.author}>{set.author}</p>
                         <p className={cls.description}>{set.description}</p>
                     </div>
+                    <div>
+                        <SocialMediaIcons links={set.links} />
+                    </div>
                     <div className={cls.framesContainer}>
-                        {set.frames.map((row, rowIndex) => (
-                            <div
-                                key={rowIndex}
-                                className={cls.frameRow}
-                            >
+                        <div className={cls.frameRow}>
+                            {set.frames?.map((row, rowIndex) => (
                                 <div
                                     key={rowIndex}
                                     className={cls.imageWrapper}
@@ -58,16 +56,19 @@ export const AnimationGallerySection = ({ animations }: AnimationGalleryProps) =
                                         className={cls.frameImage}
                                     />
                                 </div>
-                            </div>
-                        ))}
-                        <div className={cls.buttonWrapper}>
-                            <Button
-                                theme={ButtonTheme.Graffiti}
-                                className={classNames(cls.animateButton, mods)}
-                            >
-                                Animation
-                            </Button>
+                            ))}
                         </div>
+                        {set.animation && (
+                            <div className={cls.animationContainer}>
+                                <Image
+                                    src={set.animation ? set.animation[0] : ''}
+                                    alt="Animation"
+                                    width={720}
+                                    height={472}
+                                    className={cls.animationImage}
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
             ))}

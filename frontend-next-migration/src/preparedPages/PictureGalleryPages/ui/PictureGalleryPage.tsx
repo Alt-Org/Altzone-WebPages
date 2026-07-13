@@ -1,7 +1,12 @@
 'use client';
 import React, { useState, useMemo } from 'react';
 import { AnimationGallerySection } from '@/widgets/SectionGallery/ui/SectionGalleryV2/SectionGallery';
-import { getLanguageCode, PhotoObjectV2, useGetDirectusGalleryImages } from '@/entities/Gallery';
+import {
+    getLanguageCode,
+    PhotoCategory,
+    PhotoObject,
+    useGetDirectusGalleryImages,
+} from '@/entities/Gallery';
 import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
@@ -13,6 +18,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 // import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { useParams } from 'next/navigation';
 // import { useGetDirectusGalleryImages, getLanguageCode, getCategoryTranslation, } from '@/entities/Gallery';
+import { NavigateGalleryTabs } from '@/features/NavigateGalleryTabs';
 
 export interface Props {
     title: string;
@@ -52,17 +58,21 @@ const PictureGalleryPage = () => {
     const { t } = useClientTranslation('picture-galleries');
     const { isMobileSize, isDesktopSize, isWidescreenSize } = useSizes();
     const [searchQuery, setSearchQuery] = useState('');
+    const [currentCategory, setCurrentCategory] = useState<PhotoCategory>({
+        id: 'all-categories',
+        name: t('all-categories') ?? 'All',
+    });
+    const [sectionBG, setSectionBG] = useState('#527259');
 
     const params = useParams();
     const lng = params.lng as string;
-    const categorySlug = params.category as string | undefined;
+    // const categorySlug = params.category as string | undefined;
 
     const languageCode = getLanguageCode(lng);
-    // TODO: switch to using the V2 hook
-    const { photoObjects, isLoading, error } = useGetDirectusGalleryImages(languageCode);
+    const { photoObjects, categories, isLoading, error } =
+        useGetDirectusGalleryImages(languageCode);
 
     const isBigDevice = isDesktopSize || isWidescreenSize;
-    const allCategory = lng === 'en' ? 'all' : 'kaikki';
 
     // figma shows the text should be present even on mobile, so this boolean will become unnecessary
     const showCreativity = useMemo(
@@ -70,22 +80,31 @@ const PictureGalleryPage = () => {
         [isMobileSize, searchQuery],
     );
 
+    const allCategories: PhotoCategory[] = useMemo(() => {
+        if (!categories) return [];
+        return [
+            {
+                id: 'all-categories',
+                name: t('all-categories') ?? 'All',
+            },
+            ...categories,
+        ];
+    }, [categories, t]);
+
     // filter images by category from URL params
-    const categoryFilteredImages: PhotoObjectV2[] = useMemo(() => {
+    const categoryFilteredImages: PhotoObject[] = useMemo(() => {
         if (!photoObjects) return [];
-        if (!categorySlug || categorySlug === allCategory) {
+        if (!currentCategory || currentCategory.id === 'all-categories') {
             return photoObjects;
         }
 
         return photoObjects.filter((photo) => {
             if (!photo.category) return false;
-            return photo.category.name === categorySlug;
+            return photo.category.name === currentCategory.name;
         });
-    }, [photoObjects, categorySlug, allCategory, languageCode]);
+    }, [photoObjects, currentCategory, languageCode]);
 
-    // keep this search filtering, see if it there are any new fields to add to the search
-    // need to update PhotoObject to v2
-    const filteredImages: PhotoObjectV2[] = useMemo(() => {
+    const filteredImages: PhotoObject[] = useMemo(() => {
         const query = searchQuery.trim().toLowerCase();
         if (!query) return categoryFilteredImages;
         return categoryFilteredImages.filter((photo) => {
@@ -143,15 +162,15 @@ const PictureGalleryPage = () => {
                         <p className={cls.InfoText}>{t('info-text')}</p>
                     </div>
                 )}
+                <NavigateGalleryTabs
+                    categories={allCategories}
+                    setBackgroundColor={setSectionBG}
+                    currentCategory={currentCategory}
+                    setCurrentCategory={setCurrentCategory}
+                />
                 <AnimationGallerySection
-                    animations={filteredImages.map((photo) => ({
-                        // Adjust these mappings to match photo object v2 structure
-                        title: photo.title || '',
-                        author: photo.author || '',
-                        description: photo.description || '',
-                        frames: photo.frames && photo.frames.length > 0 ? photo.frames : [],
-                        // Add animation, and social media links
-                    }))}
+                    animations={filteredImages}
+                    backgroundColor={sectionBG}
                 />
             </Container>
         </div>

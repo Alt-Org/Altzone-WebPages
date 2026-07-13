@@ -57,7 +57,12 @@ export interface PhotoCategory {
     name?: string;
 }
 
-export interface PhotoObjectV2 {
+export interface PhotoObjectLink {
+    name: 'github' | 'linkedin' | 'instagram' | 'facebook' | 'website';
+    url: string;
+}
+
+export interface PhotoObject {
     author?: string;
     anchorId?: string;
     id: string;
@@ -65,12 +70,7 @@ export interface PhotoObjectV2 {
     category: PhotoCategory;
     title?: string;
     description?: string;
-    links: {
-        website?: string;
-        github?: string;
-        linkedin?: string;
-        instagram?: string;
-        facebook?: string;
-    };
+    links: PhotoObjectLink[];
     frames?: string[][];
+    animation?: string[];
 }

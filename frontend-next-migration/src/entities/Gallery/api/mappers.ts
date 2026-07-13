@@ -1,12 +1,12 @@
 import { envHelper } from '@/shared/const/envHelper';
-import { DirectusPhotoObjectV2, PhotoObjectV2 } from '../types/gallery';
-import { getTranslation } from './translations';
+import { DirectusPhotoObjectV2, PhotoObject, PhotoObjectLink } from '../types/gallery';
+import { getPhotoObjectTexts, getTranslation } from './translations';
 
 // for mapping DirectusPhotoObjectV2 to PhotoObjectV2
 export const mapDirectusToPhotoObjectV2 = (
     directusPhotoObject: DirectusPhotoObjectV2[],
     lng: string,
-): PhotoObjectV2[] => {
+): PhotoObject[] => {
     return directusPhotoObject.map((item) => {
         const {
             id,
@@ -30,27 +30,17 @@ export const mapDirectusToPhotoObjectV2 = (
             name: getTranslation(category?.translations || [], lng, 'name', ''),
         };
 
-        const mappedTranslations = translations
-            ? translations.map((t) => ({
-                  id: t.id,
-                  languages_code: t.languages_code,
-                  photo_object_id: t.photo_object_id,
-                  title: t.title || undefined,
-                  description: t.description || undefined,
-              }))
-            : [];
-        const title = getTranslation(mappedTranslations, lng, 'title', '');
-        const description = getTranslation(mappedTranslations, lng, 'description', '');
+        const { title, description } = getPhotoObjectTexts(translations ? translations : [], lng);
+        const mappedLinks = [
+            { name: 'website', url: sanitizeLink(website) },
+            { name: 'github', url: sanitizeLink(github) },
+            { name: 'linkedin', url: sanitizeLink(linkedin) },
+            { name: 'instagram', url: sanitizeLink(instagram) },
+            { name: 'facebook', url: sanitizeLink(facebook) },
+        ].filter((link) => link.url !== undefined) as PhotoObjectLink[];
 
-        const mappedLinks = {
-            website: website || undefined,
-            github: github || undefined,
-            linkedin: linkedin || undefined,
-            instagram: instagram || undefined,
-            facebook: facebook || undefined,
-        };
-
-        const mappedFrames = mapFrames(image, image_2, image_3, animation);
+        const mappedFrames = mapFrames(image, image_2, image_3);
+        const mappedAnimation = mapAnimation(animation);
 
         // url-safe anchor id from author's name
         const anchorId = mapAnchorId(author);
@@ -64,6 +54,7 @@ export const mapDirectusToPhotoObjectV2 = (
             author: author || undefined,
             links: mappedLinks,
             frames: mappedFrames,
+            animation: mappedAnimation,
             date_created,
         };
     });
@@ -73,7 +64,6 @@ const mapFrames = (
     image: string | null,
     image_2: string | null,
     image_3: string | null,
-    animation: string | null,
 ): string[][] => {
     const frames: string[][] = [];
     const directusBaseUrl = envHelper.directusHost;
@@ -82,37 +72,40 @@ const mapFrames = (
     const imageWidth = 800;
     const imageQuality = 80;
 
-    // insert image url, image id, and type (image/animation) into frames
+    // insert image url and image id into frames
     if (image) {
         frames.push([
             `${directusBaseUrl}/assets/${image}?format=auto&width=${imageWidth}&quality=${imageQuality}`,
             image,
-            'image',
         ]);
     }
     if (image_2) {
         frames.push([
             `${directusBaseUrl}/assets/${image_2}?format=auto&width=${imageWidth}&quality=${imageQuality}`,
             image_2,
-            'image',
         ]);
     }
     if (image_3) {
         frames.push([
             `${directusBaseUrl}/assets/${image_3}?format=auto&width=${imageWidth}&quality=${imageQuality}`,
             image_3,
-            'image',
-        ]);
-    }
-    if (animation) {
-        frames.push([
-            `${directusBaseUrl}/assets/${animation}?format=auto&width=${imageWidth}&quality=${imageQuality}`,
-            animation,
-            'animation',
         ]);
     }
 
     return frames;
+};
+
+const mapAnimation = (animation: string | null): string[] | undefined => {
+    if (!animation) return undefined;
+
+    const directusBaseUrl = envHelper.directusHost;
+    const imageWidth = 800;
+    const imageQuality = 80;
+
+    return [
+        `${directusBaseUrl}/assets/${animation}?format=auto&width=${imageWidth}&quality=${imageQuality}`,
+        animation,
+    ];
 };
 
 const mapAnchorId = (author: string | null): string => {
@@ -123,4 +116,19 @@ const mapAnchorId = (author: string | null): string => {
         .replace(/[^a-z0-9]+/g, '-') // replace non-alphanumeric characters with hyphens
         .replace(/^-+|-+$/g, ''); // remove leading/trailing hyphens
     return anchorId;
+};
+
+const sanitizeLink = (link: string | null): string | undefined => {
+    if (!link) return undefined;
+    // trim whitespace, check http/https prefix, and validate URL
+    const rawLink = link.trim();
+    if (!rawLink) return undefined;
+    const normalizedLink = /^https?:\/\//i.test(rawLink) ? rawLink : `https://${rawLink}`;
+    try {
+        const url = new URL(normalizedLink);
+        return url.href;
+    } catch (error) {
+        console.warn(`Invalid URL: ${link}, error: ${error}`);
+        return undefined;
+    }
 };
