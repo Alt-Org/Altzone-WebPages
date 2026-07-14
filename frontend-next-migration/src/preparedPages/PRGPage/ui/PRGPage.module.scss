@@ -274,6 +274,7 @@
   @extend %boardInfoBase;
   outline: 2px solid var(--primary-color);
   border-radius: .8em;
+  min-width: 0;
 }
 
 .BoardCardInfoAreaMobile {
@@ -282,6 +283,7 @@
   border-bottom-right-radius: .6em;
   border-bottom-left-radius: .6em;
   width: 100%;
+  min-width: 0;
 }
 
 .BoardCardMobile {
@@ -312,6 +314,8 @@
   text-align: center;
   font: var(--font-dm-l);
   color: var(--neutral);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .NameMobile {

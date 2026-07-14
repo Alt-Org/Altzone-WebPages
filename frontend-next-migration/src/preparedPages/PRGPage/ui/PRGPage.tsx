@@ -24,7 +24,9 @@ import type { ToggleItem } from '@/shared/ui/CustomSwitch';
 type PrgT = TFunction<'prg'>;
 
 interface CheckPdfButtonProps {
+    /** External URL to the PDF document. */
     link: string;
+    /** Translation function for button label. */
     t: PrgT;
 }
 
@@ -44,11 +46,17 @@ const CheckPdfButton = (checkPdfButtonProps: CheckPdfButtonProps) => (
 );
 
 interface BoardCardProps {
+    /** Board member portrait image. */
     picture: StaticImageData;
+    /** Full name of the board member. */
     name: string;
+    /** Translation key for the member's job title. */
     job: string;
+    /** Translation key for the member's profession. */
     profession: string;
+    /** Translation function for resolving job/profession labels. */
     t: PrgT;
+    /** When true, renders the compact mobile layout. */
     isMobileSize: boolean;
 }
 
