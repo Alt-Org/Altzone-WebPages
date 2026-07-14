@@ -36,10 +36,12 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                     <div className={cls.textBlock}>
                         <h1 className={cls.title}>{set.title}</h1>
                         <p className={cls.author}>{set.author}</p>
-                        <p className={cls.description}>{set.description}</p>
                     </div>
-                    <div>
+                    <div className={cls.socialsContainer}>
                         <SocialMediaIcons links={set.links} />
+                    </div>
+                    <div className={cls.descriptionContainer}>
+                        <p className={cls.description}>{set.description}</p>
                     </div>
                     <div className={cls.framesContainer}>
                         <div className={cls.frameRow}>
@@ -63,8 +65,7 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                                 <Image
                                     src={set.animation ? set.animation[0] : ''}
                                     alt="Animation"
-                                    width={720}
-                                    height={472}
+                                    fill
                                     className={cls.animationImage}
                                 />
                             </div>

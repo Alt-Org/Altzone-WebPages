@@ -31,7 +31,7 @@ export const TabNavigation = ({
                 {tabs.map((tab) => (
                     <div
                         key={tab}
-                        className={cls.tab}
+                        className={cls.tab + (activeTab === tab ? ` ${cls.activeTab}` : '')}
                         style={
                             activeTab === tab
                                 ? activeTabStyles

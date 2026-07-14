@@ -37,6 +37,8 @@ export const NavigateGalleryTabs = ({
         border: `2px solid`,
         borderColor:
             categoryColors[index % categoryColors.length]?.tabColor || categoryColors[0].tabColor,
+        color:
+            categoryColors[index % categoryColors.length]?.tabColor || categoryColors[0].tabColor,
     }));
 
     const onActiveTabChange = (tab: string) => {

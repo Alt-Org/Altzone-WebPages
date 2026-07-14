@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { AnimationGallerySection } from '@/widgets/SectionGallery/ui/SectionGalleryV2/SectionGallery';
 import {
     getLanguageCode,
@@ -112,6 +112,28 @@ const PictureGalleryPage = () => {
             return fields.some((find) => (find || '').toLowerCase().includes(query));
         });
     }, [searchQuery, categoryFilteredImages]);
+
+    // useEffect for smooth scrolling to anchor when hash changes or page loads with hash
+    useEffect(() => {
+        if (isLoading || error || filteredImages.length === 0) return;
+
+        const scrollToHash = () => {
+            const anchorId = window.location.hash.slice(1);
+            if (!anchorId) return;
+
+            const element = document.getElementById(anchorId.toLowerCase());
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        scrollToHash();
+        window.addEventListener('hashchange', scrollToHash);
+
+        return () => {
+            window.removeEventListener('hashchange', scrollToHash);
+        };
+    }, [isLoading, error, filteredImages]);
 
     if (isLoading) {
         return (

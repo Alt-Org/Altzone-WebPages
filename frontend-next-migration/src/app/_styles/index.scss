@@ -18,6 +18,9 @@
         overflow-x: hidden;
     }
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font: 16px/24px;

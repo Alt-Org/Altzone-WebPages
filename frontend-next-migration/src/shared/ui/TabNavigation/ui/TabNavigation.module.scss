@@ -1,5 +1,10 @@
 .tabNavigation {
     display: flex;
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem black;
+    border: 2px solid black;
+    border-radius: var(--border-radius-figma);
+    flex-direction: column;
 }
 
 .tabsContainer {
@@ -9,28 +14,41 @@
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
-    background-color: var(--base-card-background);
-    border-radius: var(--border-radius-figmadesktop);
-
+    gap: 0.5rem;
+    @media (max-width: breakpoint(md)) {
+        padding: 1rem;
+    }
 }
 
 .tab {
-    padding: 8px;
-    padding-inline: 60px;
+    padding: 12px;
     min-width: 150px;
-    height: 40px;
+    max-width: 200px;
+    height: 50px;
     display: flex;
+    flex: 1 1 0;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--base-card-background);
     color: var(--primary-color);
-    font: var(--font-dm-bold-m);
+    font: var(--font-dm-bold-l);
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: var(--border-radius-figmadesktop);
+    border-radius: var(--border-radius-figma);
 
-    @media (max-width: breakpoint(sm)) {
+    @media (max-width: breakpoint(md)) {
         border-radius: var(--border-radius-figma);
+        font: var(--font-dm-bold-m);
     }
+}
+
+.tab:hover {
+    text-decoration: underline;
+    outline: 2px solid black;
+}
+
+.activeTab {
+    outline: 2px solid black;
+    color: black;
+    background-color: var(--primary-color);
 }
