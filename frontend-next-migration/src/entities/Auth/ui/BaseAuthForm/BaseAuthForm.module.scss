@@ -1,34 +1,63 @@
 .baseAuthForm {
-    @media (max-width: breakpoint(xl)) {
-        width: 280px;
+    width: 100%;
+    max-width: 806px;
+    background: var(--base-card-background);
+    border: 2px solid #000000;
+    box-shadow: 6px 12px 0px var(--drop-shadows);
+    border-radius: 12px;
+    padding: 44px 80px;
+    gap: 36px;
+    box-sizing: border-box;
+
+    @media (max-width: breakpoint(md)) {
+        padding: 32px 40px;
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        padding: 24px 20px;
     }
 }
 
+.logo {
+    width: 282px;
+    height: 238px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
 .fields {
-    gap: 4px;
+    gap: 24px;
     font: var(--font-dm-bold-s);
 
     input {
-        background-color: var(--background-color);
-        color: white;
-        border: 2px solid rgba(18, 18, 18, 1);
+        background-color: #172936;
+        color: #cbcBCB;
+        border: none;
         border-radius: 25px;
+        padding: 12px 24px;
+        height: 47px;
+        box-sizing: border-box;
     }
+
     input::placeholder {
-        color: var(--primary-color);
+        color: #cbcBCB;
     }
+
     input:focus::placeholder {
         color: transparent;
     }
 }
+
 .header {
-    font: var(--font-dm-bold-m);
+    font: var(--font-sw-l);
     display: flex;
-    font-size: 0.7em;
-    justify-content: start;
-    font-weight: 300;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--content-primary);
 }
 
 .actions {
     text-align: center;
+    gap: 16px;
 }
