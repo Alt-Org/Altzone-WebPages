@@ -1,11 +1,10 @@
 'use client';
-import { useInView } from 'react-intersection-observer';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
 import cls from './SectionGallery2.module.scss';
 import Image from 'next/image';
 import { SocialMediaIcons } from '@/shared/ui/SocialMediaIcons';
 import { PhotoObject } from '@/entities/Gallery';
+import miellyttaja from '@/shared/assets/images/heros/people-pleaser/miellyttaja.png';
+import { useClientTranslation } from '@/shared/i18n';
 
 interface AnimationGalleryProps {
     animations: PhotoObject[];
@@ -13,15 +12,28 @@ interface AnimationGalleryProps {
 }
 
 export const AnimationGallerySection = ({ animations, backgroundColor }: AnimationGalleryProps) => {
-    const { inView } = useInView({
-        rootMargin: '-150px 0px',
-        triggerOnce: true,
-    });
-
-    const mods = {
-        [cls.inView]: inView,
-    };
-
+    const { t } = useClientTranslation('picture-galleries');
+    if (!animations || animations.length === 0) {
+        return (
+            <section
+                className={cls.AnimationGallerySection}
+                style={{ backgroundColor }}
+            >
+                <div className={cls.noAnimationsFoundContainer}>
+                    <div className={cls.noAnimationImageContainer}>
+                        <Image
+                            src={miellyttaja}
+                            alt={t('no-animations-title')}
+                            fill
+                            className={cls.noAnimationsImage}
+                        />
+                    </div>
+                    <h2 className={cls.noAnimationsTitle}>{t('no-animations-title')}</h2>
+                    <p className={cls.noAnimationsText}>{t('no-animations-text')}</p>
+                </div>
+            </section>
+        );
+    }
     return (
         <section
             className={cls.AnimationGallerySection}
@@ -37,9 +49,11 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                         <h1 className={cls.title}>{set.title}</h1>
                         <p className={cls.author}>{set.author}</p>
                     </div>
-                    <div className={cls.socialsContainer}>
-                        <SocialMediaIcons links={set.links} />
-                    </div>
+                    {set.links && (
+                        <div className={cls.socialsContainer}>
+                            <SocialMediaIcons links={set.links} />
+                        </div>
+                    )}
                     <div className={cls.descriptionContainer}>
                         <p className={cls.description}>{set.description}</p>
                     </div>
@@ -66,6 +80,7 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                                     src={set.animation ? set.animation[0] : ''}
                                     alt="Animation"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                     className={cls.animationImage}
                                 />
                             </div>

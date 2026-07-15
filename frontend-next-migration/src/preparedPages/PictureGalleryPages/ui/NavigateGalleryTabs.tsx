@@ -18,8 +18,8 @@ export const NavigateGalleryTabs = ({
 }: NavigateGalleryTabsProps) => {
     const { isMobileSize } = useSizes();
     const currentCategoryNumber = useMemo(
-        () => categories?.findIndex((category) => category.name === currentCategory.name),
-        [categories, currentCategory.name],
+        () => categories?.findIndex((category) => category.id === currentCategory.id),
+        [categories, currentCategory.id],
     );
     const categoryColors = [
         { tabColor: '#97C459', sectionBG: '#527259' },
@@ -42,10 +42,10 @@ export const NavigateGalleryTabs = ({
     }));
 
     const onActiveTabChange = (tab: string) => {
-        const selectedCategory = categories.find((category) => category.name === tab);
+        const selectedCategory = categories.find((category) => category.id === tab);
         if (selectedCategory) {
             const selectedCategoryNumber = categories.findIndex(
-                (category) => category.name === selectedCategory.name,
+                (category) => category.id === selectedCategory.id,
             );
             const sectionBGColor =
                 categoryColors[selectedCategoryNumber % categoryColors.length]?.sectionBG ||
@@ -54,12 +54,16 @@ export const NavigateGalleryTabs = ({
             setCurrentCategory?.(selectedCategory);
         }
     };
+    const tabs = categories.map((category) => ({
+        id: category.id,
+        label: (category.name || category.id).charAt(0).toUpperCase(),
+    }));
 
     return (
         <TabNavigation
-            tabs={categories.map((category) => category.name || category.id)}
+            tabs={tabs}
             tabsTitle="Categories"
-            activeTab={currentCategory.name || currentCategory.id}
+            activeTab={currentCategory.id}
             onTabClick={onActiveTabChange}
             tabStylesList={isMobileSize ? mobileTabStylesList : undefined}
             activeTabStyles={activeTabStyles}

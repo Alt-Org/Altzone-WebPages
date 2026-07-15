@@ -2,7 +2,7 @@ import cls from './TabNavigation.module.scss';
 import useSizes from '@/shared/lib/hooks/useSizes';
 
 interface TabNavigationProps {
-    tabs: string[];
+    tabs: { id: string; label: string }[];
     tabsTitle: string;
     activeTab: string;
     onTabClick: (tab: string) => void;
@@ -20,8 +20,8 @@ export const TabNavigation = ({
 }: TabNavigationProps) => {
     const { isMobileSize } = useSizes();
 
-    const handleTabClick = (tab: string) => {
-        onTabClick(tab);
+    const handleTabClick = (tabId: string) => {
+        onTabClick(tabId);
     };
 
     return (
@@ -30,16 +30,16 @@ export const TabNavigation = ({
             <div className={cls.tabsContainer}>
                 {tabs.map((tab) => (
                     <div
-                        key={tab}
-                        className={cls.tab + (activeTab === tab ? ` ${cls.activeTab}` : '')}
+                        key={tab.id}
+                        className={cls.tab + (activeTab === tab.id ? ` ${cls.activeTab}` : '')}
                         style={
-                            activeTab === tab
+                            activeTab === tab.id
                                 ? activeTabStyles
                                 : tabStylesList?.[tabs.indexOf(tab) % tabStylesList.length] || {}
                         }
-                        onClick={() => handleTabClick(tab)}
+                        onClick={() => handleTabClick(tab.id)}
                     >
-                        {tab.charAt(0).toUpperCase() + tab.slice(1).replace('-', ' ')}
+                        {tab.label}
                     </div>
                 ))}
             </div>

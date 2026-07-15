@@ -3,7 +3,10 @@
     flex-direction: column;
     gap: 2rem;
     padding: 2rem;
-
+    box-shadow: 0.3rem 0.3rem black;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: var(--base-card-background);
 }
 
 .block {
@@ -14,7 +17,6 @@
     box-shadow: 0.3rem 0.3rem black;
     border: 2px solid black;
     border-radius: 10px;
-    margin-bottom: 20px;
     padding: 20px;
 }
 
@@ -33,13 +35,18 @@
 }
 
 .author {
-    font: var(--font-sw-m);
+    font: var(--font-sw-l);
+}
+
+.socialsContainer {
+    display: flex;
+    margin-top: 0.5rem;
 }
 
 .description {
     font: var(--font-dm-m);
-    color: #faf9f6c0;
-    margin-top: 1rem;
+    color: #faf9f6;
+    margin: 0.5rem 0;
 }
 
 .framesContainer {
@@ -64,10 +71,10 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     flex: 1 1 0;
     aspect-ratio: 16 / 9;
-    width: 300px;
+    width: 374px;
+    height: 246px;
     min-height: 180px;
 }
 
@@ -83,11 +90,11 @@
     border-radius: 8px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     aspect-ratio: 16 / 9;
-    width: 500px;
-    height: 300px;
+    width: 720px;
+    height: 472px;
     display: flex;
+    max-width: 100%;
     justify-content: center;
     align-items: center;
     flex: 1 1 0;
@@ -99,6 +106,47 @@
     display: block;
     object-fit: contain;
     object-position: center;
+}
+
+.noAnimationsFoundContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color:var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem black;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.noAnimationImageContainer {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 1rem;
+}
+
+.noAnimationsImage {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.noAnimationsTitle {
+    font: var(--font-sw-l);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font: var(--font-sw-l);
+    color: #faf9f6;
+}
+
+.noAnimationsText {
+    font: var(--font-dm-m);
+    color: #faf9f6;
+    text-align: center;
 }
 
 @media (max-width: breakpoint(md)) {
@@ -129,6 +177,10 @@
     object-position: center;
     width: 100%;
     height: 100%;
+  }
+
+  .animationContainer {
+    width: 100%;
   }
 
   .buttonWrapper {
