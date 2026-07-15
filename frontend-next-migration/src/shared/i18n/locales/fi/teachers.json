@@ -29,6 +29,8 @@
     "no": "Ei",
     "yes": "Kyllä",
     "lesson": "Oppitunti",
+    "flow": "Pelitaiteen oppitunnin kulku",
+    "watch": "Katsokaa opetusvideo",
     "create": "Luo",
     "cancel": "Peruuta",
     "name-lesson": "Nimeä oppitunti",
