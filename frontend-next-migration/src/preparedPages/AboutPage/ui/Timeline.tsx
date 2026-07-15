@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 import img2019 from '@/shared/assets/images/aboutPage/about2019.png';
@@ -38,9 +39,28 @@ const Timeline = ({ V2019, V2020, V2021, V2022, V2023, V2024, V2025, V2026 }: Pr
         { year: 2026, image: null, text: V2026 },
     ];
 
+    const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
+    const sortedTimeline = [...timeline].sort((a, b) =>
+        sortOrder === 'desc' ? b.year - a.year : a.year - b.year,
+    );
+
     return (
         <>
-            {timeline.map((item) => (
+            <div className={cls.sortContainer}>
+                <label htmlFor="timeline-sort">Sort by: </label>
+
+                <select
+                    id="timeline-sort"
+                    value={sortOrder}
+                    onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
+                >
+                    <option value="asc">Oldest first</option>
+                    <option value="desc">Newest first</option>
+                </select>
+            </div>
+
+            {sortedTimeline.map((item) => (
                 <TimelineEntry
                     key={item.year}
                     year={item.year}
