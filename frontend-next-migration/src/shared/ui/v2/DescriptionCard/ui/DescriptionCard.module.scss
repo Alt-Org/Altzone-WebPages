@@ -407,3 +407,53 @@
             margin-top: 0.8em;
         }
 }
+// TeachersCard
+.Card.TeachersCard {
+    height: fit-content;
+    min-height: 200px;
+    width: 90%;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--black);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 4px 0 var(--black);
+    padding: 2em;
+}
+
+//Instruction
+
+.Card.InstructionsCard {
+    height: fit-content;
+    min-height: 200px;
+    width: 90%;
+    background-color: var(--background);
+    border: var(--border-desktop) solid var(--primary-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: 4px 4px 0 var(--black);
+    padding: 2em;
+}
+
+.Card.InstructionsCard  > .DescriptionCardTexts > .DescriptionCardTitle {
+    h2 {
+        margin: 0;
+        padding: 0;
+        font: var(--font-sw-xxxl);
+        color:var(--primary-color);
+    }
+    @media (max-width:breakpoint(md)) {
+        h2 {
+            font: var(--font-sw-xl);
+        }
+    }
+}
+.Card.InstructionsCard  > .DescriptionCardTexts {
+    h3 {
+        font: var(--font-sw-l);
+        line-height: 2;
+        margin-top: 0.5em;
+    }
+    p {
+        margin-bottom: 1em;
+        font: var(--font-dm-m);
+        color: var(--white);
+    }
+}
