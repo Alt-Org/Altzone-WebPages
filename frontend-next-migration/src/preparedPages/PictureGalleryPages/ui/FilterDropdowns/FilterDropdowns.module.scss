@@ -1,0 +1,123 @@
+.dropdownContainer {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: flex-end;
+    width: 100%;
+    @media (max-width: breakpoint(md)) {
+        background-color: var(--base-card-background);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0.3rem 0.3rem black;
+        border: 2px solid black;
+        border-radius: var(--border-radius-figma);
+        gap: 0;
+    }
+
+    label {
+        padding-left: 0.5rem;
+        font: var(--font-dm-m);
+    }
+}
+
+.dropdownTitleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    // .dropdownTitle {
+    //     font: var(--font-dm-m);
+    // }
+}
+
+.divider {
+    @media (max-width: breakpoint(md)) {
+        background-color: var(--primary-color);
+        height: 1px;
+        width: 100%;
+    }
+}
+
+.sortByDropdown {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: breakpoint(md)) {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.sortByDropdownContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @media (min-width: breakpoint(md)) {
+        background-color: var(--base-card-background);
+        box-shadow: 0.3rem 0.3rem black;
+        border: 2px solid black;
+        border-radius: var(--border-radius-figma);
+    }
+}
+
+.sortByOptions {
+    list-style: none;
+    accent-color: var(--primary-color);
+    padding: 0 1rem 0.5rem;
+}
+
+.dropdownTitle {
+    font: var(--font-dm-m);
+    color: var(--primary-color);
+    background-color: var(--base-card-background);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--border-radius-figma);
+    width: 100%;
+    @media (max-width: breakpoint(md)) {
+        width: 100%;
+        border: none;
+        font: var(--font-sw-m)
+    }
+}
+
+
+.authorsDropdown {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: breakpoint(md)) {
+    }
+    @media (max-width: breakpoint(md)) {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.authorsDropdownContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @media (min-width: breakpoint(md)) {
+        background-color: var(--base-card-background);
+        box-shadow: 0.3rem 0.3rem black;
+        border: 2px solid black;
+        border-radius: var(--border-radius-figma);
+    }
+}
+
+.authorsOptions {
+    list-style: none;
+    accent-color: var(--primary-color);
+    padding: 0 1rem 0.5rem;
+}
+
+.hidden {
+    display: none;
+}

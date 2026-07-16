@@ -15,6 +15,7 @@ import { useParams } from 'next/navigation';
 import { useFilterPhotoObjects } from '../model/useFilterPhotoObjects';
 import { NavigateGalleryTabs } from './NavigateGalleryTabs';
 // import { useGetDirectusGalleryImages, getLanguageCode, getCategoryTranslation, } from '@/entities/Gallery';
+import { FilterDropdowns } from './FilterDropdowns/FilterDropdowns';
 
 export interface Props {
     title: string;
@@ -103,16 +104,35 @@ const PictureGalleryPage = () => {
                         alternate={true}
                         searchVisible={false}
                     />
-                    <SearchBar
-                        className={isBigDevice ? cls.SearchBarDesktop : cls.short}
-                        value={filters.searchQuery}
-                        onChange={setFilters.setSearchQuery}
-                    />
+                    {isBigDevice && (
+                        <SearchBar
+                            className={cls.SearchBarDesktop}
+                            value={filters.searchQuery}
+                            onChange={setFilters.setSearchQuery}
+                        />
+                    )}
                 </div>
 
                 <div className={cls.Header}>
                     <h1 className={cls.Title}>{t('picture-galleries')}</h1>
                     <p className={cls.InfoText}>{t('info-text')}</p>
+                </div>
+                {!isBigDevice && (
+                    <SearchBar
+                        className={cls.short}
+                        value={filters.searchQuery}
+                        onChange={setFilters.setSearchQuery}
+                    />
+                )}
+
+                <div className={classNames(cls.Filters, { [cls.FiltersDesktop]: isBigDevice })}>
+                    <FilterDropdowns
+                        photoObjects={photoObjects}
+                        sortBy={filters.sortBy}
+                        setSortBy={setFilters.setSortBy}
+                        selectedAuthors={filters.selectedAuthors}
+                        setSelectedAuthors={setFilters.setSelectedAuthors}
+                    />
                 </div>
 
                 <NavigateGalleryTabs

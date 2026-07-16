@@ -56,7 +56,9 @@ export const NavigateGalleryTabs = ({
     };
     const tabs = categories.map((category) => ({
         id: category.id,
-        label: (category.name || category.id).charAt(0).toUpperCase(),
+        label:
+            (category.name || category.id).charAt(0).toUpperCase() +
+            (category.name || category.id).slice(1),
     }));
 
     return (
