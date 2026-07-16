@@ -3,6 +3,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { useLoginForm } from '../../model/useLoginForm';
 import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
+import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 
 export interface LoginFormProps {
     onSuccessLogin?: () => void;
@@ -27,7 +28,7 @@ const LoginForm = (props: LoginFormProps) => {
                         <BaseAuthForm.InputField
                             key={'username'}
                             error={errors?.username?.message && t(`${errors.username.message}`)}
-                            label={t('')}
+                            label={t('username')}
                             inputProps={{
                                 ...register('username'),
                                 required: true,
@@ -38,7 +39,7 @@ const LoginForm = (props: LoginFormProps) => {
                         <BaseAuthForm.InputField
                             key={'password'}
                             error={errors?.password?.message && t(`${errors.password.message}`)}
-                            label={t('')}
+                            label={t('password')}
                             inputProps={{
                                 ...register('password'),
                                 type: 'password',
@@ -53,6 +54,16 @@ const LoginForm = (props: LoginFormProps) => {
                 actions={
                     <>
                         <BaseAuthForm.SubmitButton>{t('log_in')}</BaseAuthForm.SubmitButton>
+                        <p>
+                            {t('register_in_game_prefix')}{' '}
+                            <a
+                                href={AppExternalLinks.downloadAndroid}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {t('register_in_game_link')}
+                            </a>
+                        </p>
                         {extraContent && <div>{extraContent}</div>}
                     </>
                 }
