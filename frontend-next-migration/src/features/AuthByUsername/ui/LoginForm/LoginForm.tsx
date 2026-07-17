@@ -49,6 +49,7 @@ const LoginForm = (props: LoginFormProps) => {
                             }}
                             showPasswordToggle={true}
                         />
+                        <BaseAuthForm.Checkbox label={t('remember_me')} />
                     </>
                 }
                 actions={

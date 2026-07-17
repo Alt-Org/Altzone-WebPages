@@ -1,4 +1,4 @@
-.baseAuthForm {
+.baseAuthForm.baseAuthForm {
     width: 100%;
     max-width: 806px;
     background: var(--base-card-background);
@@ -60,7 +60,7 @@
 }
 
 .header {
-    font: var(--font-sw-l);
+    font: var(--font-sw-xxxl);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,14 +75,6 @@
     max-width: 460px;
     margin: 0 auto;
     color: var(--white);
-
-    .submit {
-        background-color: var(--content-primary);
-        color: var(--drop-shadows);
-        border: 2px solid var(--drop-shadows);
-        box-shadow: 2px 4px 0px var(--drop-shadows);
-        border-radius: 25px;
-    }
 
     a {
         text-decoration: underline;
