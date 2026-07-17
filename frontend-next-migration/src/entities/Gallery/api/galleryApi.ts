@@ -9,6 +9,8 @@ const client = createDirectus(directusBaseUrl).with(rest());
 
 /**
  * API service for fetching gallery data from a Directus backend.
+ * Defined an endpoint for fetching photo objects from the Directus `photo_object_v2` collection.
+ * @returns DirectusPhotoObjectV2[] - An array of photo objects with their associated data.
  */
 const galleryApi = directusApi.injectEndpoints({
     endpoints: (builder) => ({

@@ -1,7 +1,7 @@
 import { useGetPhotoObjectsV2Query } from './galleryApi';
 import { useGetGalleryCategoriesQuery } from './galleryCategoriesApi';
 import { mapDirectusToPhotoObjectV2 } from './mappers';
-import { PhotoObjectV2, PhotoCategory } from '../types/gallery';
+import { PhotoObject, PhotoCategory } from '../types/gallery';
 import { useMemo } from 'react';
 import { getTranslation } from './translations';
 
@@ -20,7 +20,7 @@ export const useGetDirectusGalleryImages = (lng: string) => {
         }));
     }, [cData, lng]);
 
-    const photoObjects: PhotoObjectV2[] = useMemo(() => {
+    const photoObjects: PhotoObject[] = useMemo(() => {
         if (!poData) return [];
         return mapDirectusToPhotoObjectV2(poData, lng);
     }, [poData, lng]);

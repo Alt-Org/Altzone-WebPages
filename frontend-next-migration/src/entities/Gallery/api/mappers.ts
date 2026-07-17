@@ -2,7 +2,14 @@ import { envHelper } from '@/shared/const/envHelper';
 import { DirectusPhotoObjectV2, PhotoObject, PhotoObjectLink } from '../types/gallery';
 import { getPhotoObjectTexts, getTranslation } from './translations';
 
-// for mapping DirectusPhotoObjectV2 to PhotoObjectV2
+/**
+ * Maps an array of DirectusPhotoObjectV2 to an array of PhotoObject.
+ * Maps the fields and translations, assigns urls to images, sanitizes links,
+ * and generates an url-safe anchor id from the author's name.
+ * @param directusPhotoObject - The array of DirectusPhotoObjectV2 to map.
+ * @param lng - The language code for translations.
+ * @returns An array of PhotoObject.
+ */
 export const mapDirectusToPhotoObjectV2 = (
     directusPhotoObject: DirectusPhotoObjectV2[],
     lng: string,
@@ -33,10 +40,10 @@ export const mapDirectusToPhotoObjectV2 = (
         const { title, description } = getPhotoObjectTexts(translations ? translations : [], lng);
         const mappedLinks = [
             { name: 'website', url: sanitizeLink(website) },
-            { name: 'github', url: sanitizeLink(github) },
+            { name: 'facebook', url: sanitizeLink(facebook) },
             { name: 'linkedin', url: sanitizeLink(linkedin) },
             { name: 'instagram', url: sanitizeLink(instagram) },
-            { name: 'facebook', url: sanitizeLink(facebook) },
+            { name: 'github', url: sanitizeLink(github) },
         ].filter((link) => link.url !== undefined) as PhotoObjectLink[];
 
         const mappedFrames = mapFrames(image, image_2, image_3);
@@ -72,7 +79,7 @@ const mapFrames = (
     const imageWidth = 800;
     const imageQuality = 80;
 
-    // insert image url and image id into frames
+    // insert image url and image id into frames, id can be used for fetching original image for example
     if (image) {
         frames.push([
             `${directusBaseUrl}/assets/${image}?format=auto&width=${imageWidth}&quality=${imageQuality}`,

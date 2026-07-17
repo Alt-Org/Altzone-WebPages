@@ -8,15 +8,15 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        box-shadow: 0.3rem 0.3rem black;
-        border: 2px solid black;
+        box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+        border: 2px solid var(--drop-shadows);
         border-radius: var(--border-radius-figma);
         gap: 0;
     }
 
     label {
         padding-left: 0.5rem;
-        font: var(--font-dm-m);
+            font: var(--font-dm-s);
     }
 }
 
@@ -26,9 +26,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    // .dropdownTitle {
-    //     font: var(--font-dm-m);
-    // }
 }
 
 .divider {
@@ -56,8 +53,8 @@
     align-items: flex-start;
     @media (min-width: breakpoint(md)) {
         background-color: var(--base-card-background);
-        box-shadow: 0.3rem 0.3rem black;
-        border: 2px solid black;
+        box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+        border: 2px solid var(--drop-shadows);
         border-radius: var(--border-radius-figma);
     }
 }
@@ -83,10 +80,9 @@
     @media (max-width: breakpoint(md)) {
         width: 100%;
         border: none;
-        font: var(--font-sw-m)
+        font: var(--font-sw-m);
     }
 }
-
 
 .authorsDropdown {
     width: 300px;
@@ -106,18 +102,66 @@
     flex-direction: column;
     @media (min-width: breakpoint(md)) {
         background-color: var(--base-card-background);
-        box-shadow: 0.3rem 0.3rem black;
-        border: 2px solid black;
+        box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+        border: 2px solid var(--drop-shadows);
         border-radius: var(--border-radius-figma);
+    }
+}
+
+.authorsOptionsContainer {
+    @media (max-width: breakpoint(md)) {
+        background-color: #2B516A;
+        margin: 0 1rem 0.5rem;
+        padding-top: 0.2rem;
+        border-radius: 4px;
+        outline: 1px solid var(--drop-shadows);
     }
 }
 
 .authorsOptions {
     list-style: none;
+    width: calc(100% - 1.4rem);
+    max-height: 200px;
     accent-color: var(--primary-color);
-    padding: 0 1rem 0.5rem;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #2B516A;
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #2B516A;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 4px;
+    }
+    @media (max-width: breakpoint(md)) {
+        width: calc(100% - 0.3rem);
+        scrollbar-color: var(--primary-color) var(--base-card-background);
+        padding: 0 0.5rem;
+        margin-bottom: 0.2rem;
+
+    }
 }
 
 .hidden {
     display: none;
+}
+
+.resetButton {
+    background-color: var(--primary-color);
+    color: var(--drop-shadows);
+    width: 250px;
+    border: none;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-figma);
+    cursor: pointer;
+    font: var(--font-dm-m);
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }

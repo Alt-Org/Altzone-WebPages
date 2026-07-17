@@ -2,12 +2,13 @@ import { useMemo } from 'react';
 import { PhotoCategory } from '@/entities/Gallery';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { TabNavigation } from '@/shared/ui/TabNavigation';
+import { useClientTranslation } from '@/shared/i18n';
 
 interface NavigateGalleryTabsProps {
     categories: PhotoCategory[];
     setBackgroundColor: (color: string) => void;
     currentCategory: PhotoCategory;
-    setCurrentCategory?: (category: PhotoCategory) => void;
+    setCurrentCategory: (category: PhotoCategory) => void;
 }
 
 export const NavigateGalleryTabs = ({
@@ -21,6 +22,8 @@ export const NavigateGalleryTabs = ({
         () => categories?.findIndex((category) => category.id === currentCategory.id),
         [categories, currentCategory.id],
     );
+
+    const { t } = useClientTranslation('picture-galleries');
     const categoryColors = [
         { tabColor: '#97C459', sectionBG: '#527259' },
         { tabColor: '#5DCAA5', sectionBG: '#0C5450' },
@@ -33,7 +36,7 @@ export const NavigateGalleryTabs = ({
             categoryColors[0].tabColor,
         color: 'black',
     };
-    const mobileTabStylesList = categories.map((category, index) => ({
+    const mobileTabStylesList = categories.map((_category, index) => ({
         border: `2px solid`,
         borderColor:
             categoryColors[index % categoryColors.length]?.tabColor || categoryColors[0].tabColor,
@@ -51,7 +54,7 @@ export const NavigateGalleryTabs = ({
                 categoryColors[selectedCategoryNumber % categoryColors.length]?.sectionBG ||
                 categoryColors[0].sectionBG;
             setBackgroundColor(sectionBGColor);
-            setCurrentCategory?.(selectedCategory);
+            setCurrentCategory(selectedCategory);
         }
     };
     const tabs = categories.map((category) => ({
@@ -64,7 +67,7 @@ export const NavigateGalleryTabs = ({
     return (
         <TabNavigation
             tabs={tabs}
-            tabsTitle="Categories"
+            tabsTitle={t('category-menu-title')}
             activeTab={currentCategory.id}
             onTabClick={onActiveTabChange}
             tabStylesList={isMobileSize ? mobileTabStylesList : undefined}

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useMemo, useEffect } from 'react';
-import { AnimationGallerySection } from '@/widgets/SectionGallery/ui/SectionGalleryV2/SectionGallery';
+import { AnimationGallerySection } from '@/widgets/SectionGallery';
 import { getLanguageCode, PhotoCategory, useGetDirectusGalleryImages } from '@/entities/Gallery';
 import { Container } from '@/shared/ui/Container';
 import cls from './PictureGalleryPage.module.scss';
@@ -8,22 +8,10 @@ import { useClientTranslation } from '@/shared/i18n';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { SearchBar } from '@/preparedPages/DefenseGalleryPages/ui/SingleDefensePage';
 import { PageTitle } from '@/shared/ui/PageTitle';
-import { classNames } from '@/shared/lib/classNames/classNames';
-// import buttonImg from '@/shared/assets/images/gallery/Frame 526.png';
-// import { SectionGalleryV2 } from '@/widgets/SectionGallery';
 import { useParams } from 'next/navigation';
 import { useFilterPhotoObjects } from '../model/useFilterPhotoObjects';
 import { NavigateGalleryTabs } from './NavigateGalleryTabs';
-// import { useGetDirectusGalleryImages, getLanguageCode, getCategoryTranslation, } from '@/entities/Gallery';
 import { FilterDropdowns } from './FilterDropdowns/FilterDropdowns';
-
-export interface Props {
-    title: string;
-    infoText: string;
-    socialsText: string;
-    socialMediaLinks: string[];
-    videoLink: string;
-}
 
 const PictureGalleryPage = () => {
     const { t } = useClientTranslation('picture-galleries');
@@ -39,7 +27,8 @@ const PictureGalleryPage = () => {
         useGetDirectusGalleryImages(languageCode);
 
     // filters
-    const { filteredImages, filters, setFilters } = useFilterPhotoObjects(photoObjects);
+    const { filteredImages, filters, setFilters, resetFilters } =
+        useFilterPhotoObjects(photoObjects);
 
     // add "all categories" to categories
     const allCategories: PhotoCategory[] = useMemo(() => {
@@ -125,15 +114,14 @@ const PictureGalleryPage = () => {
                     />
                 )}
 
-                <div className={classNames(cls.Filters, { [cls.FiltersDesktop]: isBigDevice })}>
-                    <FilterDropdowns
-                        photoObjects={photoObjects}
-                        sortBy={filters.sortBy}
-                        setSortBy={setFilters.setSortBy}
-                        selectedAuthors={filters.selectedAuthors}
-                        setSelectedAuthors={setFilters.setSelectedAuthors}
-                    />
-                </div>
+                <FilterDropdowns
+                    photoObjects={photoObjects}
+                    sortBy={filters.sortBy}
+                    setSortBy={setFilters.setSortBy}
+                    selectedAuthors={filters.selectedAuthors}
+                    setSelectedAuthors={setFilters.setSelectedAuthors}
+                    resetFilters={resetFilters}
+                />
 
                 <NavigateGalleryTabs
                     categories={allCategories}

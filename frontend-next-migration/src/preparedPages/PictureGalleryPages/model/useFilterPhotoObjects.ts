@@ -2,6 +2,11 @@ import { useMemo, useState } from 'react';
 import { PhotoCategory, PhotoObject } from '@/entities/Gallery';
 import { useClientTranslation } from '@/shared/i18n';
 
+/**
+ * Custom hook for filtering and sorting photo objects based on various criteria.
+ * @param photoObjects - The array of PhotoObject to filter and sort.
+ * @returns An object containing filtered images, current filters, and functions to set and reset filters.
+ */
 export const useFilterPhotoObjects = (photoObjects: PhotoObject[]) => {
     const [searchQuery, setSearchQuery] = useState('');
     const { t } = useClientTranslation('picture-galleries');
@@ -58,6 +63,17 @@ export const useFilterPhotoObjects = (photoObjects: PhotoObject[]) => {
         });
     }, [photoObjects, currentCategory, searchQuery, selectedAuthors, sortBy]);
 
+    const resetAllFilters = () => {
+        setSearchQuery('');
+        setCurrentCategory({ id: 'all-categories', name: t('all-categories') ?? 'All' });
+        setSortBy('date_desc');
+        setSelectedAuthors([]);
+    };
+    const resetSelectionFilters = () => {
+        setSortBy('date_desc');
+        setSelectedAuthors([]);
+    };
+
     return {
         filteredImages,
         filters: {
@@ -71,6 +87,10 @@ export const useFilterPhotoObjects = (photoObjects: PhotoObject[]) => {
             setCurrentCategory,
             setSortBy,
             setSelectedAuthors,
+        },
+        resetFilters: {
+            resetAllFilters,
+            resetSelectionFilters,
         },
     };
 };

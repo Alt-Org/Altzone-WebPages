@@ -1,10 +1,10 @@
-.AnimationGallerySection {
+.animationGallerySection {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
-    box-shadow: 0.3rem 0.3rem black;
-    border: 2px solid black;
+    gap: 3rem;
+    padding: 3rem;
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
     border-radius: 10px;
     background-color: var(--base-card-background);
 }
@@ -12,16 +12,16 @@
 .block {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    background-color: #1E3544;
-    box-shadow: 0.3rem 0.3rem black;
-    border: 2px solid black;
+    align-items: flex-start;
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
     border-radius: 10px;
     padding: 20px;
 }
 
 .textBlock {
-    text-align: start;
+    text-align: flex-start;
     max-width: 800px;
     width: 100%;
 }
@@ -45,7 +45,7 @@
 
 .description {
     font: var(--font-dm-m);
-    color: #faf9f6;
+    color: var(--white-text);
     margin: 0.5rem 0;
 }
 
@@ -57,6 +57,7 @@
     justify-items: center;
     align-items: center;
     width: 100%;
+    margin-top: 1rem;
 }
 
 .frameRow {
@@ -115,9 +116,9 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background-color:var(--base-card-background);
-    box-shadow: 0.3rem 0.3rem black;
-    border: 2px solid black;
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
     border-radius: 10px;
 }
 
@@ -140,58 +141,89 @@
     font-weight: bold;
     margin-bottom: 0.5rem;
     font: var(--font-sw-l);
-    color: #faf9f6;
+    color: var(--white-text);
 }
 
 .noAnimationsText {
     font: var(--font-dm-m);
-    color: #faf9f6;
+    color: var(--white-text);
     text-align: center;
 }
 
 @media (max-width: breakpoint(md)) {
-  .framesContainer {
-    width: 100%;
-  }
+    .framesContainer {
+        width: 100%;
+    }
 
-  .frameRow {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
-  }
+    .frameRow {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
 
-  .imageWrapper {
-    width: 100%;
+    .imageWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        aspect-ratio: auto;
+        height: auto;
+    }
+
+    .frameImage {
+        object-fit: contain;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .animationContainer {
+        width: 100%;
+    }
+
+    .buttonWrapper {
+        width: 100%;
+        flex: 0 0 auto;
+        aspect-ratio: auto;
+        min-height: 0;
+    }
+
+    .textBlock {
+        text-align: center;
+    }
+    .author {
+        text-align: center;
+    }
+    .description {
+        text-align: flex-start;
+    }
+    .title {
+        font: var(--font-sw-l);
+    }
+}
+
+.footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    aspect-ratio: auto;
-    height: auto;
-  }
-
-  .frameImage {
-    object-fit: contain;
-    object-position: center;
     width: 100%;
-    height: 100%;
-  }
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
+    border-radius: var(--border-radius-figmadesktop);
+    padding: 20px;
+    text-align: center;
+    font: var(--font-dm-m);
+    color: var(--white-text);
 
-  .animationContainer {
-    width: 100%;
-  }
-
-  .buttonWrapper {
-    width: 100%;
-    flex: 0 0 auto;
-    aspect-ratio: auto;
-    min-height: 0;
-  }
-
-  .textBlock { text-align: center; }
-  .author { text-align: center; }
-  .description { text-align: start; }
-  .title { font: var(--font-sw-l); }
+    span {
+        color: var(--primary-color);
+        margin-left: 5px;
+    }
+    @media (max-width: breakpoint(md)) {
+        flex-direction: column;
+    }
 }

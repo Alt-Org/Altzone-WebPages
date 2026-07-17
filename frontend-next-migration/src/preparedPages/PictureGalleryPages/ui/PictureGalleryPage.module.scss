@@ -1,5 +1,4 @@
 .Wrapper {
-
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -28,9 +27,9 @@
 
 }
 .Header{
-  background-color: #1E3544;
-  box-shadow: 0.3rem 0.3rem black;
-  border: 2px solid black;
+  background-color: var(--base-card-background);
+  box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+  border: 2px solid var(--drop-shadows);
   border-radius: 5px;
   margin-bottom: 2rem;
   padding: 20px;
@@ -47,16 +46,7 @@
   margin-top: 10px;
   display:inline;
   font: var(--font-dm-m);
-  color: #faf9f6;
-}
-
-
-.galleries{
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-
+  color: var(--white-text);
 }
 
 @media (min-width: breakpoint(md)) {
@@ -83,11 +73,8 @@
 
 .short {
   width: 17.5rem;
-  @media (max-width: breakpoint(lg)){
     margin-inline: auto;
-  }
   @media (max-width: breakpoint(md)){
     width: 100%;
-    margin-inline: 0;
   }
 }

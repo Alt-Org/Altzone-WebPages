@@ -10,6 +10,15 @@ interface TabNavigationProps {
     activeTabStyles?: React.CSSProperties;
 }
 
+/**
+ * TabNavigation component renders a navigation bar with tabs.
+ * @param tabs - An array of tab objects containing id and label.
+ * @param tabsTitle - The title displayed above the tabs on mobile devices.
+ * @param activeTab - The id of the currently active tab.
+ * @param onTabClick - Callback function triggered when a tab is clicked.
+ * @param tabStylesList - Optional array of styles for each tab.
+ * @param activeTabStyles - Optional styles for the active tab.
+ */
 export const TabNavigation = ({
     tabs,
     tabsTitle,

@@ -15,5 +15,17 @@
     "all-categories": "Kaikki",
     "picture-galleries-title": "Näin teimme grafiikan",
     "no-animations-title": "Ei hakutuloksia",
-    "no-animations-text": "Tarkista kirjoititko oikein tai kokeile uutta hakua."
+    "no-animations-text": "Tarkista kirjoititko oikein tai kokeile uutta hakua.",
+    "loading": "Ladataan...",
+    "error-text": "Gallerian lataus epäonnistui.",
+    "filters": "Suodattimet",
+    "date-asc": "Vanhin ensin",
+    "date-desc": "Uusin ensin",
+    "title": "A - Ö",
+    "sort-by": "Järjestä",
+    "authors": "Tekijät",
+    "reset-filters": "Tyhjennä",
+    "page-planner": "Sivun suunnitellut",
+    "image-alt": "kuva",
+    "animation-alt": "animaatio"
 }

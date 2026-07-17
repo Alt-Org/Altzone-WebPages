@@ -16,7 +16,7 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
     if (!animations || animations.length === 0) {
         return (
             <section
-                className={cls.AnimationGallerySection}
+                className={cls.animationGallerySection}
                 style={{ backgroundColor }}
             >
                 <div className={cls.noAnimationsFoundContainer}>
@@ -31,12 +31,15 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                     <h2 className={cls.noAnimationsTitle}>{t('no-animations-title')}</h2>
                     <p className={cls.noAnimationsText}>{t('no-animations-text')}</p>
                 </div>
+                <div className={cls.footer}>
+                    {t('page-planner')}:<span>Sanna-Kaisa Mastokangas</span>
+                </div>
             </section>
         );
     }
     return (
         <section
-            className={cls.AnimationGallerySection}
+            className={cls.animationGallerySection}
             style={{ backgroundColor }}
         >
             {animations.map((set, index) => (
@@ -66,7 +69,7 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                                 >
                                     <Image
                                         src={row[0]}
-                                        alt={`Frame ${rowIndex}`}
+                                        alt={`${set.title} ${t('image-alt')}${rowIndex}`}
                                         fill
                                         sizes="(max-width: 768px) 100vw, 33vw"
                                         className={cls.frameImage}
@@ -78,7 +81,7 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                             <div className={cls.animationContainer}>
                                 <Image
                                     src={set.animation ? set.animation[0] : ''}
-                                    alt="Animation"
+                                    alt={`${set.title} ${t('animation-alt')}`}
                                     fill
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                     className={cls.animationImage}
@@ -88,6 +91,9 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                     </div>
                 </div>
             ))}
+            <div className={cls.footer}>
+                {t('page-planner')}:<span>Sanna-Kaisa Mastokangas</span>
+            </div>
         </section>
     );
 };

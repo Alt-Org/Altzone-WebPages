@@ -2,6 +2,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import cls from './FilterDropdowns.module.scss';
+import { useClientTranslation } from '@/shared/i18n';
 
 export const SortByDropdown = ({
     sortBy,
@@ -17,11 +18,12 @@ export const SortByDropdown = ({
     dropdownsOpen: boolean;
 }) => {
     const { isMobileSize } = useSizes();
+    const { t } = useClientTranslation('picture-galleries');
 
     const sortByOptions = [
-        { value: 'date_asc', label: 'Date (oldest first)' },
-        { value: 'date_desc', label: 'Date (newest first)' },
-        { value: 'title', label: 'Title' },
+        { value: 'date_desc', label: t('date-desc') },
+        { value: 'date_asc', label: t('date-asc') },
+        { value: 'title', label: t('title') },
     ] as const;
 
     return (
@@ -32,7 +34,7 @@ export const SortByDropdown = ({
                     className={`${cls.dropdownTitle} ${isMobileSize && !dropdownsOpen ? cls.hidden : ''}`}
                     onClick={() => setSortByOpen(!sortByOpen)}
                 >
-                    Sort by
+                    {t('sort-by')}
                     <FontAwesomeIcon icon={sortByOpen ? faChevronUp : faChevronDown} />
                 </button>
                 {sortByOpen && (!isMobileSize || dropdownsOpen) && (
