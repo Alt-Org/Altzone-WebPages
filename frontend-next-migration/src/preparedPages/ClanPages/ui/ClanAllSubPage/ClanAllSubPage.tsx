@@ -119,65 +119,59 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                         className={cls.MobileCardItem}
                     >
                         <MobileCard theme={MobileCardTheme.CLAN}>
-                            <MobileCard.Texts
-                                title1={clan.name}
-                                title2={''}
-                            />
-
                             <MobileCard.Image
                                 alt={`${clan.name} logo`}
                                 src={clanLogo}
                                 backgroundColor="transparent"
                             />
 
-                            <div className={mobileCardCls.ClanInfoRow}>
-                                <span className={mobileCardCls.ClanInfoBadges}>
-                                    <Image
-                                        src={iconLeaderboard}
-                                        alt="leaderboard"
-                                        className={mobileCardCls.ClanInfoIcon}
-                                    />
-                                    <Image
-                                        src={iconCommonLockOpen}
-                                        alt="lock"
-                                        className={mobileCardCls.ClanInfoIcon}
-                                    />
-                                    <Image
-                                        src={iconClanAgeTeenages}
-                                        alt="teenage"
-                                        className={mobileCardCls.ClanInfoIcon}
-                                    />
-                                    <Image
-                                        src={iconFlagFi}
-                                        alt="flag"
-                                        className={mobileCardCls.ClanInfoIcon}
-                                    />
-                                </span>
-                            </div>
-
                             <MobileCard.Texts
-                                title1={''}
-                                title2={''}
+                                title1={clan.name}
+                                title2={``}
                             >
-                                <div className={mobileCardCls.ClanInfoStats}>
-                                    <span className={mobileCardCls.ClanInfoValue}>
-                                        {t('members')} {clan.playerCount} / 30
-                                    </span>
-                                    <span className={mobileCardCls.ClanInfoValue}>
-                                        {t('position')} {clan.positionLeaderboard ?? '-'}
+                                <div className={mobileCardCls.ClanInfoRow}>
+                                    <span className={mobileCardCls.ClanInfoBadges}>
+                                        <Image
+                                            src={iconLeaderboard}
+                                            alt="leaderboard"
+                                            className={mobileCardCls.ClanInfoIcon}
+                                        />
+                                        <Image
+                                            src={iconCommonLockOpen}
+                                            alt="lock"
+                                            className={mobileCardCls.ClanInfoIcon}
+                                        />
+                                        <Image
+                                            src={iconClanAgeTeenages}
+                                            alt="teenage"
+                                            className={mobileCardCls.ClanInfoIcon}
+                                        />
+                                        <Image
+                                            src={iconFlagFi}
+                                            alt="flag"
+                                            className={mobileCardCls.ClanInfoIcon}
+                                        />
                                     </span>
                                 </div>
+
+                                <div className={mobileCardCls.ClanInfoStats}>
+                                    <p className={mobileCardCls.ClanInfoValue}>
+                                        {t('members')} {clan.playerCount} / 30
+                                    </p>
+                                    <p className={mobileCardCls.ClanInfoValue}>
+                                        {t('position')} {clan.positionLeaderboard ?? '-'}
+                                    </p>
+                                </div>
+
                                 <div className={mobileCardCls.ClanLabels}>
-                                    {clan.labels?.slice(0, 4).map((label) => (
+                                    {clan.labels?.slice(0, 3).map((label) => (
                                         <span
                                             className={mobileCardCls.ClanLabel}
                                             key={label}
-                                            title={label}
                                         >
                                             <Image
                                                 src={getClanLabelIcon(label)}
                                                 alt={label}
-                                                className={mobileCardCls.ClanLabelIcon}
                                             />
                                         </span>
                                     ))}
