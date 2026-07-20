@@ -4,20 +4,90 @@
     align-items: flex-start;
 }
 
-.container {
-    display: grid;
-    justify-content: center;
-    text-align: center;
-    font: var(--font-sw-xxxl);
-    color: var(--primary-color);
-    width: 80%;
-    padding-bottom: 100px;
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    isolation: isolate;
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
 }
 
-.title {
-    font-size: var(--h2-size-desktop);
-    padding: 10px;
+.titleFog {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.titleSection {
+    position: relative;
+    width: 1440px;
+    max-width: 100%;
+    z-index: 1;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.curvedText {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 10px;
+}
+
+.curvedTextPath {
+    font-family: var(--font-family-title);
+    font-size: 96px;
+    fill: var(--content-primary);
     font-weight: 400;
+}
+
+.bodySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 64px;
+    width: 1440px;
+    max-width: 100%;
+    z-index: 2;
+    position: relative;
+    margin-top: -10px;
+}
+
+.signWrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    max-width: 554px;
+    transform-origin: top center;
+    animation: swing 2.5s ease-in-out;
+    container-type: inline-size;
+}
+
+.signWrapper img {
+    width: 100%;
+    height: auto;
+}
+
+.signText {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-family-title);
+    font-size: clamp(20px, 11cqi, 64px);
+    color: var(--white);
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .images {
@@ -28,18 +98,14 @@
 }
 
 .images img {
-    margin-left: -25px;
-    margin-right: -20px;
+    margin-left: -27px;
+    margin-right: -27px;
 }
 
 .images .flipped {
     transform: scaleX(-1);
-    margin-left: -5px;
-    margin-right: -20px;
-}
-
-.images .pedant {
-    margin-left: -5px;
+    margin-left: -27px;
+    margin-right: -27px;
 }
 
 @media (max-width: breakpoint(lg)) {
@@ -49,25 +115,42 @@
 }
 
 @media (max-width: breakpoint(md)) {
+    .curvedTextPath {
+        font-size: 160px;
+    }
     .images {
         transform: scale(0.7);
+        margin-bottom: -45px;
     }
-    .title {
-        font-size: var(--h3-size-desktop);
+    .bodySection {
+        gap: 40px;
+        margin-top: -10px;
     }
 }
 
 @media (max-width: breakpoint(sm)) {
+    .curvedTextPath {
+        letter-spacing: -10px;
+    }
     .images {
         transform: scale(0.4);
+        margin-bottom: -62px;
     }
-    .title {
-        font-size: var(--h1-size-mobile);
+    .bodySection {
+        gap: 0px;
+        margin-top: -10px;
+    }
+    .main{
+        margin-top: -7vh;
     }
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+@keyframes swing {
+    0% { transform: rotate(-12deg); }
+    15% { transform: rotate(10deg); }
+    30% { transform: rotate(-8deg); }
+    45% { transform: rotate(6deg); }
+    60% { transform: rotate(-4deg); }
+    80% { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
 }
