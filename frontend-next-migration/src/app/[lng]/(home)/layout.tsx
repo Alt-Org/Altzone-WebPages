@@ -1,6 +1,6 @@
 'use client';
 import { ReactNode } from 'react';
-import { Navbar } from '@/widgets/Navbar';
+import { Navbar } from '@/widgets/NavbarV3';
 import { Footer } from '@/widgets/Footer';
 import { ScrollTop } from '@/features/ScrollTop';
 import cls from './homeLayout.module.scss';
