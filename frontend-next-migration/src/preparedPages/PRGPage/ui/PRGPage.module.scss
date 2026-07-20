@@ -203,7 +203,7 @@
 
 .tabImageArea {
   flex-shrink: 0;
-  width: 40%;
+  width: 30%;
 }
 
 .tabImage {
@@ -361,6 +361,8 @@
   text-align: center;
   white-space: pre-line;
   font: var(--font-dm-l);
+  font-size: 30px;
+  margin-top: 1rem;
 }
 
 @media (max-width: breakpoint(sm)) {
@@ -423,6 +425,10 @@
 
   .textCenter {
     padding-inline: 0.5rem;
+    font: var(--font-dm-m);
+  }
+
+  .registryInfo {
     font: var(--font-dm-m);
   }
 
