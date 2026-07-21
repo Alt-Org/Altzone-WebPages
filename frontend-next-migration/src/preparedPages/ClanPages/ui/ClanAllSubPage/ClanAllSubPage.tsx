@@ -16,8 +16,8 @@ import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/ClanLogo_Placeholder.png';
 import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirstPlace.png';
-import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland 1.png';
-import iconCommonLockOpen from '@/shared/assets/images/clanLogos/CommonLockOpen 1.png';
+import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland.png';
+import iconCommonLockOpen from '@/shared/assets/images/clanLogos/CommonLockOpen.png';
 import iconClanAgeTeenages from '@/shared/assets/images/clanLogos/ClanAgeTeenages.png';
 
 type ClanItem = GetClansResponse['data']['Clan'][number];
