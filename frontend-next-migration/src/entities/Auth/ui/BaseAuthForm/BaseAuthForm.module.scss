@@ -1,6 +1,10 @@
 .baseAuthForm.baseAuthForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     max-width: 806px;
+    margin: 0 auto;
     background: var(--base-card-background);
     border: 2px solid #000000;
     box-shadow: 6px 12px 0px var(--drop-shadows);
@@ -8,8 +12,6 @@
     padding: 44px 80px;
     gap: 36px;
     box-sizing: border-box;
-    justify-content: center;
-    align-items: center;
 
     @media (max-width: breakpoint(md)) {
         padding: 32px 40px;
@@ -47,6 +49,7 @@
         border-radius: 25px;
         padding: 12px 24px;
         height: 47px;
+        width: 100%;
         box-sizing: border-box;
     }
 
@@ -75,6 +78,14 @@
     max-width: 460px;
     margin: 0 auto;
     color: var(--white);
+
+    button {
+        width: 100%;
+    }
+
+    p {
+        color: var(--white);
+    }
 
     a {
         text-decoration: underline;

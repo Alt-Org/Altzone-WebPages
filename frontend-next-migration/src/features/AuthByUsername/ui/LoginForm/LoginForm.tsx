@@ -20,7 +20,10 @@ const LoginForm = (props: LoginFormProps) => {
     };
 
     return (
-        <div onMouseLeave={handleFormMouseEvents}>
+        <div
+            onMouseLeave={handleFormMouseEvents}
+            style={{ width: '100%' }}
+        >
             <BaseAuthForm
                 header={t('log_in')}
                 fields={
@@ -32,7 +35,6 @@ const LoginForm = (props: LoginFormProps) => {
                             inputProps={{
                                 ...register('username'),
                                 required: true,
-                                placeholder: t('username'),
                                 autoComplete: 'username',
                             }}
                         />
@@ -44,7 +46,6 @@ const LoginForm = (props: LoginFormProps) => {
                                 ...register('password'),
                                 type: 'password',
                                 required: true,
-                                placeholder: t('password'),
                                 autoComplete: 'current-password',
                             }}
                             showPasswordToggle={true}
