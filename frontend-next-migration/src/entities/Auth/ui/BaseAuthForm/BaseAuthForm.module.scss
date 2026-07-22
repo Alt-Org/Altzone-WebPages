@@ -13,6 +13,21 @@
     gap: 36px;
     box-sizing: border-box;
 
+    .actions button {
+        background-color: var(--content-primary);
+        color: var(--drop-shadows);
+        border: 2px solid var(--drop-shadows);
+        box-shadow: 2px 4px 0px var(--drop-shadows);
+        border-radius: 25px;
+        padding: 12px 24px;
+        height: 47px;
+        font-family: var(--font-family-secondary);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 23px;
+        letter-spacing: -0.04em;
+    }
+
     @media (max-width: breakpoint(md)) {
         padding: 32px 40px;
     }
@@ -40,6 +55,7 @@
         font: var(--font-dm-s);
         color: #faf9f6;
         margin-bottom: 8px;
+        padding-left: 8px;
     }
 
     input {
@@ -59,6 +75,13 @@
 
     input:focus::placeholder {
         color: transparent;
+    }
+
+    input[type='checkbox'] {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        cursor: pointer;
     }
 }
 

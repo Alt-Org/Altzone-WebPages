@@ -39,8 +39,8 @@ describe('LoginForm', () => {
         render(<LoginForm {...defaultProps} />);
 
         expect(screen.getAllByText('log_in').length).toBeGreaterThanOrEqual(1);
-        expect(screen.getByPlaceholderText('username')).toBeInTheDocument();
-        expect(screen.getByPlaceholderText('password')).toBeInTheDocument();
+        expect(screen.getByLabelText('username')).toBeInTheDocument();
+        expect(screen.getByLabelText('password')).toBeInTheDocument();
         expect(screen.getByRole('button', { name: 'log_in' })).toBeInTheDocument();
     });
 
