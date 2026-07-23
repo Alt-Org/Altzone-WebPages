@@ -340,7 +340,7 @@
     }
 }
 
-@media (max-width: breakpoint(md)) {
+@media (max-width: $breakpoint-md) {
     .MobileCard.ClanCard {
         width: 100%;
         min-width: 0;
@@ -348,13 +348,14 @@
         padding: 0.5rem;
     }
 
-    .MobileCard.ClanCard > .TextContainer:first-of-type {
-        gap: 0.35rem;
-    }
-
     .MobileCard.ClanCard > .ImageContainer {
         height: auto;
         padding: 0.25rem 0 0.3rem;
+    }
+
+    .MobileCard.ClanCard > .ImageContainer .Image {
+        width: 100%;
+        height: 100%;
     }
 
     .MobileCard.ClanCard > .TextContainer:last-of-type {
@@ -375,16 +376,12 @@
     }
 }
 
-@media (max-width: breakpoint(sm)) {
+@media (max-width: $breakpoint-sm) {
     .MobileCard.ClanCard {
         width: 100%;
         max-width: 100%;
         margin-inline: auto;
         padding: 0.4rem;
-    }
-
-    .MobileCard.ClanCard > .TextContainer:first-of-type {
-        padding: 0.25rem 0.2rem 0.1rem;
     }
 
     .MobileCard.ClanCard > .ImageContainer {
@@ -407,18 +404,6 @@
     .MobileCard.ClanCard .ClanLabel {
         font-size: 0.65rem;
         padding: 0.12rem 0.3rem;
-    }
-}
-
-@media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) {
-    .MobileCard.ClanCard {
-        > .ImageContainer .Image {
-            width: 100%;
-            height: 100%;
-        }
-        > .TextContainer:first-of-type .Title1 {
-            font-size: 1.15rem;
-        }
     }
 }
 
