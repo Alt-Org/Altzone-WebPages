@@ -65,7 +65,7 @@ jobs:
   build-and-push:
     name: Build and Push Docker Image
 #    needs: test
-    if: github.ref_name == 'main' || github.ref_name == 'dev'
+    if: github.ref_name == 'main' || github.ref_name == 'dev' || github.ref_name == 'MikhailDeriabin/feature/670-migrate-ci-gh-actions'
     runs-on: [self-hosted, gh-runner-common]
     steps:
       - name: Checkout code
