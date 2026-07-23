@@ -30,11 +30,20 @@ const galleryApi = directusApi.injectEndpoints({
                         }),
                     );
                     return { data: photoObjects as DirectusPhotoObjectV2[] };
-                } catch (error: any) {
+                } catch (error: unknown) {
+                    // narrowing the error status and message types
+                    const status =
+                        typeof error === 'object' &&
+                        error !== null &&
+                        'status' in error &&
+                        typeof error.status === 'number'
+                            ? error.status
+                            : 500;
+                    const message = error instanceof Error ? error.message : 'Data fetch failed';
                     return {
                         error: {
-                            status: error.status || 500,
-                            data: { message: error.message || 'Data fetch failed' } as any,
+                            status,
+                            data: { message: message },
                         },
                     };
                 }
