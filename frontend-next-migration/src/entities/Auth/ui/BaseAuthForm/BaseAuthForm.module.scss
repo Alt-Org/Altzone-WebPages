@@ -13,6 +13,34 @@
     gap: 36px;
     box-sizing: border-box;
 
+    input[type='checkbox'] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        margin-right: 8px;
+        cursor: pointer;
+        flex: none;
+        background: #FFA100;
+        border: 1px solid #121212;
+        border-radius: 4px;
+        box-shadow: 1px 1px 0px #121212;
+        position: relative;
+
+        &:checked::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 3px;
+            width: 8px;
+            height: 14px;
+            border: solid #121212;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+    }
+
     .actions button {
         background-color: var(--content-primary);
         color: var(--drop-shadows);
@@ -75,13 +103,6 @@
 
     input:focus::placeholder {
         color: transparent;
-    }
-
-    input[type='checkbox'] {
-        width: 16px;
-        height: 16px;
-        margin-right: 8px;
-        cursor: pointer;
     }
 }
 
