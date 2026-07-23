@@ -108,7 +108,7 @@ jobs:
           format: json
           ignore-unfixed: true
           exit-code: '0'
-          output: trivy-results.json
+          output: frontend-next-migration/trivy-results.json
 
       - name: Upload vulnerabilities to summary tab
         if: always()
