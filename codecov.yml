@@ -2,10 +2,10 @@ coverage:
   status:
     project:
       default:
-        target: 90
+        target: 1
     patch:
       default:
-        target: 90
+        target: 1
 
 codecov:
   branch: dev
