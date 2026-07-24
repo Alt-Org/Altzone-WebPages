@@ -4,6 +4,8 @@
     align-items: center;
     width: 100%;
     min-height: 80svh;
+    padding: 0 var(--spacing-md);
+    box-sizing: border-box;
 }
 
 @media (hover: none) {

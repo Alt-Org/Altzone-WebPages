@@ -12,6 +12,7 @@
     padding: 44px 80px;
     gap: 36px;
     box-sizing: border-box;
+    min-height: 852px;
 
     input[type='checkbox'] {
         appearance: none;
@@ -28,16 +29,11 @@
         box-shadow: 1px 1px 0px #121212;
         position: relative;
 
-        &:checked::after {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 3px;
-            width: 8px;
-            height: 14px;
-            border: solid #121212;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
+        &:checked {
+            background-image: url('../../../../shared/assets/icons/check.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 16px 14px;
         }
     }
 
@@ -84,6 +80,8 @@
         color: #faf9f6;
         margin-bottom: 8px;
         padding-left: 8px;
+        display: flex;
+        align-items: center;
     }
 
     input {
