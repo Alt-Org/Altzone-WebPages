@@ -1,0 +1,153 @@
+name: CI-CD
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - '**'
+
+defaults:
+  run:
+    working-directory: frontend-next-migration
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        env:
+          NEXT_PUBLIC_API_LINK: ${{ secrets.NEXT_PUBLIC_API_LINK }}
+          NEXT_PUBLIC_API_DOMAIN: ${{ secrets.NEXT_PUBLIC_API_DOMAIN }}
+          NEXT_PUBLIC_LOCAL_HOST: ${{ secrets.NEXT_PUBLIC_LOCAL_HOST }}
+          NEXT_PUBLIC_DIRECTUS_HOST: ${{ secrets.NEXT_PUBLIC_DIRECTUS_HOST }}
+        run: |
+          set +e
+          npm run test:ci
+          FIRST_RESULT=$?
+
+          if [ $FIRST_RESULT -ne 0 ]; then
+            echo "First test run failed, retrying failed tests..."
+            npm run test:ci-retry-failed
+            RETRY_RESULT=$?
+
+            if [ $RETRY_RESULT -ne 0 ]; then
+              echo "Tests failed after retry"
+              exit 1
+            fi
+          fi
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          url: ${{ secrets.CODECOV_URL }}
+          slug: Alt-Org/Altzone-WebPages
+          files: ./frontend-next-migration/coverage/coverage-final.json
+          fail_ci_if_error: true
+
+  build-and-push:
+    name: Build and Push Docker Image
+    needs: test
+    if: github.ref_name == 'main' || github.ref_name == 'dev'
+    runs-on: [self-hosted, gh-runner-common]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Write build env file
+        env:
+          ENV_LOCAL_BUILD: ${{ secrets.SITE_ENV_LOCAL_BUILD }}
+        run: printf '%s' "$ENV_LOCAL_BUILD" > .env.local
+
+      - name: Build and push image
+        uses: docker/build-push-action@v7
+        env:
+          DOCKER_BUILD_RECORD_UPLOAD: false
+        with:
+          context: frontend-next-migration
+          push: true
+          load: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}:${{ github.ref_name }}-${{ github.run_number }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}:${{ github.ref_name }}-latest
+
+      - name: Clean up build env file
+        if: always()
+        run: rm -f .env.local
+
+      - name: Scan image for vulnerabilities
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}:${{ github.ref_name }}-${{ github.run_number }}
+          format: json
+          ignore-unfixed: true
+          exit-code: '0'
+          output: frontend-next-migration/trivy-results.json
+
+      - name: Upload vulnerabilities to summary tab
+        if: always()
+        run: |
+          {
+            echo "## Vulnerability scan results"
+            echo ""
+            echo "| Target | Package | CVE | Severity | Installed | Fixed |"
+            echo "|---|---|---|---|---|---|"
+            jq -r '
+              .Results[]?
+              | select(.Vulnerabilities != null)
+              | .Target as $t
+              | .Vulnerabilities[]
+              | "| \($t) | \(.PkgName) | \(.VulnerabilityID) | \(.Severity) | \(.InstalledVersion) | \(.FixedVersion // "-") |"
+            ' trivy-results.json
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Convert scan results to SARIF format
+        if: always()
+        run: trivy convert --format sarif --output trivy-results.sarif trivy-results.json
+
+      - name: Upload vulnerabilities to Security tab
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: frontend-next-migration/trivy-results.sarif
+
+  notify:
+    name: Notify server about new image build
+    needs: build-and-push
+    if: github.ref_name == 'main' || github.ref_name == 'dev'
+    runs-on: [self-hosted, gh-runner-common]
+    steps:
+      - name: Notify server
+        env:
+          WEBHOOK_SECRET: ${{ secrets.SERVER_WEBHOOK_NOTIFY_SECRET }}
+          WEBHOOK_URL: ${{ secrets.SERVER_WEBHOOK_NOTIFY_URL }}
+          PAYLOAD: '{"name": "site", "tag": "${{ github.ref_name }}"}'
+        run: |
+          SIGNATURE=$(echo "$PAYLOAD" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
+
+          curl -s -o /dev/null -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -H "X-Hub-Signature: sha256=$SIGNATURE" \
+            -d "$PAYLOAD" \
+            --insecure
