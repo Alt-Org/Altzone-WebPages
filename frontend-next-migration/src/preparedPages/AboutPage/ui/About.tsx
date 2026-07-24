@@ -67,7 +67,7 @@ const About = (props: Props) => {
             >
                 <Image
                     src={heroTop}
-                    alt="Hero Image"
+                    alt="Hero Image. changed alt text"
                     fill
                     priority
                     className={cls.heroImg}
