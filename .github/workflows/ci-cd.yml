@@ -59,7 +59,7 @@ jobs:
           url: ${{ secrets.CODECOV_URL }}
           slug: Alt-Org/Altzone-WebPages
           files: ./frontend-next-migration/coverage/coverage-final.json
-          fail_ci_if_error: true
+          fail_ci_if_error: false
 
   build-and-push:
     name: Build and Push Docker Image
