@@ -6,6 +6,7 @@ on:
       - main
       - dev
       - MikhailDeriabin/feature/670-migrate-ci-gh-actions
+      - MikhailDeriabin/feature/670-migrate-ci-gh-actions-new
 #  pull_request:
 #    branches:
 #      - '**'
