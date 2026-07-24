@@ -212,20 +212,20 @@
         position: relative;
         z-index: 1;
 
-        .Title1 {
-            font: var(--font-sw-xs);
-            color: var(--primary-color);
-            margin: 0;
-            text-align: center;
-            max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
         .Text {
             margin: 0;
         }
+    }
+
+    > .TextContainer > .Title1 {
+        font: var(--font-sw-xs);
+        color: var(--primary-color);
+        margin: 0;
+        text-align: center;
+        max-width: 100%;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     > .ImageContainer {
@@ -270,7 +270,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.25rem;
+            gap: 0.313rem;
             flex-wrap: nowrap;
             width: 100%;
             max-width: 100%;
@@ -343,67 +343,8 @@
 @media (max-width: $breakpoint-md) {
     .MobileCard.ClanCard {
         width: 100%;
-        min-width: 0;
         height: auto;
         padding: 0.5rem;
-    }
-
-    .MobileCard.ClanCard > .ImageContainer {
-        height: auto;
-        padding: 0.25rem 0 0.3rem;
-    }
-
-    .MobileCard.ClanCard > .ImageContainer .Image {
-        width: 100%;
-        height: 100%;
-    }
-
-    .MobileCard.ClanCard > .TextContainer:last-of-type {
-        gap: 0.2rem;
-        padding: 0.2rem 0.15rem 0.25rem;
-    }
-
-    .MobileCard.ClanCard .ClanInfoStats {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.2rem;
-        width: 100%;
-    }
-
-    .MobileCard.ClanCard .ClanLabels {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-@media (max-width: $breakpoint-sm) {
-    .MobileCard.ClanCard {
-        width: 100%;
-        max-width: 100%;
-        margin-inline: auto;
-        padding: 0.4rem;
-    }
-
-    .MobileCard.ClanCard > .ImageContainer {
-        padding: 0.2rem 0 0.3rem;
-    }
-
-    .MobileCard.ClanCard > .ImageContainer .Image {
-        width: 50%;
-    }
-
-    .MobileCard.ClanCard .ClanInfoBadges {
-        gap: 0.2rem;
-        flex-wrap: wrap;
-    }
-
-    .MobileCard.ClanCard .ClanInfoValue {
-        font: var(--font-dm-xxs);
-    }
-
-    .MobileCard.ClanCard .ClanLabel {
-        font-size: 0.65rem;
-        padding: 0.12rem 0.3rem;
     }
 }
 
