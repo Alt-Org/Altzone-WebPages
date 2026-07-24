@@ -18,7 +18,8 @@ defaults:
 jobs:
   test:
     name: Run tests
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, gh-runner-common]
+#    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
