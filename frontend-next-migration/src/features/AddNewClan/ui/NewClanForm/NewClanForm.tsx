@@ -23,7 +23,7 @@ export const NewClanForm = ({ onSuccess, className = '' }: Props) => {
             className={classNames(cls.Form, {}, [className])}
             onSubmit={handleSubmit(onFormSubmit)}
         >
-            <CustomForm.Header>Luo Klaani. Changed</CustomForm.Header>
+            <CustomForm.Header>Luo Klaani</CustomForm.Header>
 
             <CustomForm.InputField
                 key={'name'}
