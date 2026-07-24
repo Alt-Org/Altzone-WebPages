@@ -7,9 +7,9 @@ on:
       - dev
       - MikhailDeriabin/feature/670-migrate-ci-gh-actions
       - MikhailDeriabin/feature/670-migrate-ci-gh-actions-new
-#  pull_request:
-#    branches:
-#      - '**'
+  pull_request:
+    branches:
+      - '**'
 
 defaults:
   run:
@@ -18,7 +18,7 @@ defaults:
 jobs:
   test:
     name: Run tests
-    runs-on: [ self-hosted, gh-runner-common ]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
