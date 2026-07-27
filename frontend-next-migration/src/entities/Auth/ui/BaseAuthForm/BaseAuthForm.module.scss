@@ -6,7 +6,7 @@
     max-width: 806px;
     margin: 0 auto;
     background: var(--base-card-background);
-    border: 2px solid #000000;
+    border: 2px solid var(--black);
     box-shadow: 6px 12px 0px var(--drop-shadows);
     border-radius: 12px;
     padding: 44px 80px;
@@ -23,11 +23,10 @@
         margin-right: 8px;
         cursor: pointer;
         flex: none;
-        background: #FFA100;
-        border: 1px solid #121212;
+        background: var(--content-primary);
+        border: 1px solid var(--black);
         border-radius: 4px;
-        box-shadow: 1px 1px 0px #121212;
-        position: relative;
+        box-shadow: 1px 1px 0px var(--drop-shadows);
 
         &:checked {
             background-image: url('../../../../shared/assets/icons/check.svg');
@@ -77,7 +76,7 @@
 
     label {
         font: var(--font-dm-s);
-        color: #faf9f6;
+        color: var(--white);
         margin-bottom: 8px;
         padding-left: 8px;
         display: flex;
@@ -86,7 +85,7 @@
 
     input {
         background-color: #172936;
-        color: #cbcBCB;
+        color: var(--neutral);
         border: none;
         border-radius: 25px;
         padding: 12px 24px;
@@ -96,7 +95,7 @@
     }
 
     input::placeholder {
-        color: #cbcBCB;
+        color: var(--neutral);
     }
 
     input:focus::placeholder {
