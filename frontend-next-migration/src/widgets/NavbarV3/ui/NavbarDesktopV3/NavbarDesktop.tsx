@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, memo, useMemo, useState } from 'react';
+import { CSSProperties, memo, useCallback, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
@@ -32,6 +32,30 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', isCollapsed = false } = props;
 
     const [isMouseOver, setIsMouseOver] = useState(false);
+    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+    const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const clearCloseTimer = useCallback(() => {
+        if (closeTimerRef.current) {
+            clearTimeout(closeTimerRef.current);
+            closeTimerRef.current = null;
+        }
+    }, []);
+
+    const handleItemEnter = useCallback(
+        (name: string) => {
+            clearCloseTimer();
+            setHoveredItem(name);
+        },
+        [clearCloseTimer],
+    );
+
+    const handleItemLeave = useCallback(() => {
+        closeTimerRef.current = setTimeout(() => {
+            setHoveredItem(null);
+        }, 200);
+    }, []);
+
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
     const permissionToLogout = checkPermissionFor('logout');
