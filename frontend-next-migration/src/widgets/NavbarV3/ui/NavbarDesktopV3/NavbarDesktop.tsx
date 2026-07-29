@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, memo, useCallback, useMemo, useRef, useState } from 'react';
+import { CSSProperties, memo, useCallback, useRef, useState } from 'react';
 import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
@@ -31,7 +31,6 @@ export interface NavbarProps {
 const NavbarDesktop = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', isCollapsed = false } = props;
 
-    const [isMouseOver, setIsMouseOver] = useState(false);
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
     const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -56,6 +55,14 @@ const NavbarDesktop = memo((props: NavbarProps) => {
         }, 200);
     }, []);
 
+    const handleNavMouseEnter = useCallback(() => {
+        clearCloseTimer();
+    }, [clearCloseTimer]);
+
+    const handleNavMouseLeave = useCallback(() => {
+        handleItemLeave();
+    }, [handleItemLeave]);
+
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
     const permissionToLogout = checkPermissionFor('logout');
@@ -69,17 +76,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
 
     const nonLogoItems = navbarBuild.menu.filter((item) => item.type !== 'navLogo');
-
-    const allDropdownElements = useMemo(
-        () =>
-            navbarBuild.menu
-                .filter((item) => item.type === 'navDropDown')
-                .map((item) => ({
-                    name: item.name,
-                    elements: item.elements,
-                })),
-        [navbarBuild],
-    );
 
     const handleDropdownClick = (dropdown: 'auth' | 'lang') => {
         if (dropdown === 'auth') {
@@ -97,15 +93,11 @@ const NavbarDesktop = memo((props: NavbarProps) => {
 
     return (
         <nav
-            className={classNames(
-                cls.navbar,
-                { [cls.collapsed]: isCollapsed, [cls.noBorder]: isMouseOver },
-                [className],
-            )}
+            className={classNames(cls.navbar, { [cls.collapsed]: isCollapsed }, [className])}
             style={style}
             aria-label="Nav menu"
-            onMouseEnter={() => setIsMouseOver(true)}
-            onMouseLeave={() => setIsMouseOver(false)}
+            onMouseEnter={handleNavMouseEnter}
+            onMouseLeave={handleNavMouseLeave}
         >
             <div
                 className={classNames(cls.inner, {
@@ -137,29 +129,77 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                 <ul className={cls.navLinks}>
                     {nonLogoItems.map((item) => {
                         if (item.type === 'navDropDown') {
+                            const isOpen = hoveredItem === item.name;
                             const trigger = (
                                 <>
                                     <span className={cls.col}>{tNav(`${item.name}`)}</span>
                                     {CHEVRON_ITEMS.has(item.name) && (
                                         <FontAwesomeIcon
                                             icon={faChevronDown}
-                                            className={cls.chevron}
+                                            className={classNames(cls.chevron, {
+                                                [cls.chevronOpen]: isOpen,
+                                            })}
                                         />
                                     )}
                                 </>
                             );
                             return (
-                                <li key={item.name}>
+                                <li
+                                    key={item.name}
+                                    onMouseEnter={() => handleItemEnter(item.name)}
+                                    onMouseLeave={handleItemLeave}
+                                >
                                     {item.path ? (
                                         <AppLink
                                             theme={AppLinkTheme.PRIMARY}
                                             to={item.path}
+                                            aria-haspopup="true"
+                                            aria-expanded={isOpen}
                                         >
                                             {trigger}
                                         </AppLink>
                                     ) : (
-                                        trigger
+                                        <span
+                                            aria-haspopup="true"
+                                            aria-expanded={isOpen}
+                                        >
+                                            {trigger}
+                                        </span>
                                     )}
+                                    <div
+                                        className={classNames(cls.dropdownMenu, {
+                                            [cls.dropdownMenuOpen]: isOpen,
+                                        })}
+                                        onMouseEnter={() => handleItemEnter(item.name)}
+                                        onMouseLeave={handleItemLeave}
+                                    >
+                                        {item.elements.map((el, idx) => {
+                                            if (
+                                                el &&
+                                                typeof el === 'object' &&
+                                                'elementText' in el
+                                            ) {
+                                                return (
+                                                    <div key={idx}>
+                                                        {el.link ? (
+                                                            <AppLink
+                                                                to={el.link.path}
+                                                                isExternal={el.link.isExternal}
+                                                                className={cls.dropdownItem}
+                                                            >
+                                                                {tNav(`${el.elementText}`)}
+                                                            </AppLink>
+                                                        ) : (
+                                                            <span className={cls.dropdownItem}>
+                                                                {tNav(`${el.elementText}`)}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                );
+                                            }
+                                            return <div key={idx}>{el}</div>;
+                                        })}
+                                    </div>
                                 </li>
                             );
                         }
@@ -256,38 +296,6 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                         <LangSwitcher isOpen={langDropdown.state.isOpen && !isCollapsed} />
                     </div>
                 </div>
-            </div>
-
-            <div className={classNames(cls.navDropdownCenter, { [cls.open]: isMouseOver })}>
-                {allDropdownElements.map((group) => (
-                    <div
-                        key={group.name}
-                        className={cls.dropdownGroup}
-                    >
-                        {group.elements.map((el, idx) => {
-                            if (el && typeof el === 'object' && 'elementText' in el) {
-                                return (
-                                    <div key={idx}>
-                                        {el.link ? (
-                                            <AppLink
-                                                to={el.link.path}
-                                                isExternal={el.link.isExternal}
-                                                className={cls.dropdownItem}
-                                            >
-                                                {tNav(`${el.elementText}`)}
-                                            </AppLink>
-                                        ) : (
-                                            <span className={cls.dropdownItem}>
-                                                {tNav(`${el.elementText}`)}
-                                            </span>
-                                        )}
-                                    </div>
-                                );
-                            }
-                            return <div key={idx}>{el}</div>;
-                        })}
-                    </div>
-                ))}
             </div>
         </nav>
     );
