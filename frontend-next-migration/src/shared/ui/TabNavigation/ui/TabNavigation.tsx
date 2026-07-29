@@ -8,6 +8,7 @@ interface TabNavigationProps {
     onTabClick: (tab: string) => void;
     tabStylesList?: React.CSSProperties[];
     activeTabStyles?: React.CSSProperties;
+    showTabTitle?: boolean;
 }
 
 /**
@@ -26,6 +27,7 @@ export const TabNavigation = ({
     onTabClick,
     tabStylesList,
     activeTabStyles,
+    showTabTitle = false,
 }: TabNavigationProps) => {
     const { isMobileSize } = useSizes();
 
@@ -35,7 +37,7 @@ export const TabNavigation = ({
 
     return (
         <div className={cls.tabNavigation}>
-            {isMobileSize && <div className={cls.tabsTitle}>{tabsTitle}</div>}
+            {isMobileSize || showTabTitle ? <div className={cls.tabsTitle}>{tabsTitle}</div> : null}
             <div className={cls.tabsContainer}>
                 {tabs.map((tab) => (
                     <div
