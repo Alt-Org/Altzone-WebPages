@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, memo, useCallback, useRef, useState } from 'react';
+import { CSSProperties, memo, useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
@@ -18,21 +18,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const CHEVRON_ITEMS = new Set(['game', 'gallery', 'gameart', 'community']);
 
 export interface NavbarProps {
-    /** Pushes the bar down by this many pixels. */
     marginTop?: number;
     className?: string;
-    /** The menu structure (links, dropdowns, logo). */
     navbarBuild: NavbarBuild;
-    /** Collapse into a thin strip when true. */
     isCollapsed?: boolean;
 }
 
-/** Desktop navbar — hover dropdowns, auth/lang toggles, collapse support. */
 const NavbarDesktop = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', isCollapsed = false } = props;
 
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
     const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const navRef = useRef<HTMLElement | null>(null);
 
     const clearCloseTimer = useCallback(() => {
         if (closeTimerRef.current) {
@@ -40,6 +37,31 @@ const NavbarDesktop = memo((props: NavbarProps) => {
             closeTimerRef.current = null;
         }
     }, []);
+
+    const closeDropdown = useCallback(() => {
+        clearCloseTimer();
+        setHoveredItem(null);
+    }, [clearCloseTimer]);
+
+    useEffect(() => {
+        if (!hoveredItem) return;
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') closeDropdown();
+        };
+        const handleClickOutside = (event: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
+                closeDropdown();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [hoveredItem, closeDropdown]);
 
     const handleItemEnter = useCallback(
         (name: string) => {
@@ -50,18 +72,11 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     );
 
     const handleItemLeave = useCallback(() => {
-        closeTimerRef.current = setTimeout(() => {
-            setHoveredItem(null);
-        }, 200);
+        closeTimerRef.current = setTimeout(() => setHoveredItem(null), 200);
     }, []);
 
-    const handleNavMouseEnter = useCallback(() => {
-        clearCloseTimer();
-    }, [clearCloseTimer]);
-
-    const handleNavMouseLeave = useCallback(() => {
-        handleItemLeave();
-    }, [handleItemLeave]);
+    const handleNavMouseEnter = useCallback(() => clearCloseTimer(), [clearCloseTimer]);
+    const handleNavMouseLeave = useCallback(() => handleItemLeave(), [handleItemLeave]);
 
     const { checkPermissionFor } = useUserPermissionsV2();
     const permissionToLogin = checkPermissionFor('login');
@@ -74,36 +89,28 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const langDropdown = useDropdownManager();
 
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
-
     const nonLogoItems = navbarBuild.menu.filter((item) => item.type !== 'navLogo');
 
     const handleDropdownClick = (dropdown: 'auth' | 'lang') => {
         if (dropdown === 'auth') {
             authDropdown.actions.toggle();
-            if (!authDropdown.state.isToggled) {
-                langDropdown.actions.reset();
-            }
+            if (!authDropdown.state.isToggled) langDropdown.actions.reset();
         } else {
             langDropdown.actions.toggle();
-            if (!langDropdown.state.isToggled) {
-                authDropdown.actions.reset();
-            }
+            if (!langDropdown.state.isToggled) authDropdown.actions.reset();
         }
     };
 
     return (
         <nav
+            ref={navRef}
             className={classNames(cls.navbar, { [cls.collapsed]: isCollapsed }, [className])}
             style={style}
             aria-label="Nav menu"
             onMouseEnter={handleNavMouseEnter}
             onMouseLeave={handleNavMouseLeave}
         >
-            <div
-                className={classNames(cls.inner, {
-                    [cls.collapsed]: isCollapsed,
-                })}
-            >
+            <div className={classNames(cls.inner, { [cls.collapsed]: isCollapsed })}>
                 <div className={classNames(cls.logoSlot, { [cls.collapsed]: isCollapsed })}>
                     {navbarBuild.menu
                         .filter((item) => item.type === 'navLogo')
@@ -277,9 +284,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                         </div>
                                         <button
                                             className={cls.logoutButton}
-                                            onClick={() => {
-                                                logout();
-                                            }}
+                                            onClick={() => logout()}
                                         >
                                             {tAuth('logout')}
                                         </button>
