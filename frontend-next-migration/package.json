@@ -39,6 +39,7 @@
     "@next/bundle-analyzer": "^14.0.1",
     "@next/third-parties": "^16.0.8",
     "@reduxjs/toolkit": "^1.9.7",
+    "@sentry/nextjs": "^10.68.0",
     "accept-language": "^3.0.18",
     "html-react-parser": "^5.1.1",
     "i18next": "^23.6.0",

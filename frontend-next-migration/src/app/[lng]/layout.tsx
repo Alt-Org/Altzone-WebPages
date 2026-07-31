@@ -13,6 +13,7 @@ import { baseUrl, defaultOpenGraph } from '@/shared/seoConstants';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { envHelper } from '@/shared/const/envHelper';
 import { LayoutBackgroundController } from './_components/LayoutBackgroundController';
+import { getTraceData } from '@sentry/nextjs';
 
 // const openSans = Open_Sans({
 //   subsets: ['latin'],
@@ -93,6 +94,9 @@ export function generateMetadata(): Metadata {
         metadataBase: new URL(baseUrl),
         openGraph: {
             ...defaultOpenGraph,
+        },
+        other: {
+            ...getTraceData(),
         },
     };
 }
