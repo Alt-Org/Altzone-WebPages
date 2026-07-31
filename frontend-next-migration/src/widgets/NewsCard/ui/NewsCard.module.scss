@@ -1,79 +1,42 @@
 .NewsCard {
     display: grid;
     grid-template-columns: 1fr;
-    align-items: center;
+    gap: 5rem;
+    align-items: stretch;
     justify-content: center;
     background-color: var(--base-card-background);
-    border: 3px solid var(--drop-shadows);
+    border: 4px;
     border-radius: var(--border-radius-figmadesktop);
-    filter: drop-shadow(8px 12px var(--drop-shadows));
-    height: 150px;
-    width: 100%;
-    max-width: 780px;
+    width: 1440px;
+    height: 255px;
+    max-width: 1440px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
     transition: border-color 0.3s ease-out;
-
-    @media (max-width: breakpoint(xl)) {
-        max-width: 500px;
-    }
-
-    @media (max-width: breakpoint(md)) {
-        height: 130px;
-        width: 70%;
-    }
-
-    @media (max-width: breakpoint(sm)) {
-        height: 120px;
-        width: 80%;
-    }
-
-    @media (max-width: breakpoint(xs)),
-    (max-width: 320px) {
-        height: 110px;
-        width: 70%;
-        margin: auto 0;
-    }
-
-    @media (max-width: 320px) {
-        width: 60%;
-    }
+    padding: 0 3rem 0;
 }
 
-
-.NewsCardLink:hover .NewsCard, .NewsCardLink:focus .NewsCard {
+.NewsCardLink:hover .NewsCard,
+.NewsCardLink:focus .NewsCard {
     border-color: var(--primary-color);
 }
 
-
 .imageContainer {
-    position: absolute;
-    right: 0;
-    top: 0;
+    width: 330px;
+    height: 255px;
+    min-height: 180px;
+    border-radius: var(--border-radius-figmadesktop);
     overflow: hidden;
-    width: 72%;
-    height: auto;
-    flex-shrink: 0;
-    border-radius: 10px;
-
-    @media (max-width: breakpoint(xs)) {
-        width: 90%;
-    }
+    background-color: #172936;
+    aspect-ratio: 4 / 3;
 }
 
 .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    margin-left: 32%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 -15%);
-    transform: translateY(-27%);
-
-    @media (max-width: breakpoint(xs)),
-    (max-width: 320px) {
-        margin-left: 35%;
-    }
+    display: block;
 }
 
 .NewsCardLink {
@@ -89,60 +52,72 @@
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 0.5rem 50% 0 0.5rem;
+    width: 981px;
+    height: 159px;
+    gap: 0.75rem;
     overflow: hidden;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.date,
+.publisher {
+    color: var(--primary-color);
+    font: var(--font-dm-s);
+}
+
+.publisher {
+    white-space: nowrap;
 }
 
 .title {
     font: var(--font-sw-l);
-    color: var(--primary-color);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    @media (max-width: breakpoint(sm)),
-    (max-width: breakpoint(xs)),
-    (max-width: 320px) {
-        padding-top: 10px;
-    }
+    color: var(--white);
+    margin: 0;
+    line-height: 1.2;
 }
 
 .text {
     color: var(--white);
-    line-height: 1.5em !important;
     font: var(--font-dm-s);
-    width: 255px;
-    margin-top: auto;
+    line-height: 1.6;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
 
-    @media (max-width: breakpoint(md)) {
-        line-height: 1rem !important;
-        font: var(--font-dm-s);
+@media (min-width: breakpoint(md)) {
+    .NewsCard {
+        grid-template-columns: minmax(260px, 320px) 1fr;
+        padding: 1.25rem;
     }
 
-    @media (max-width: breakpoint(sm)) {
-        font: var(--font-dm-s);
-        width: 200px;
-    }
-
-    @media (max-width: 390px) {
-        display: none;
+    .imageContainer {
+        min-height: 220px;
+        aspect-ratio: 1.4 / 1;
     }
 }
 
-.date {
-    color: var(--white) !important;
-    font: var(--font-dm-s);
-    margin-top: auto;
-    margin-bottom: 5px;
+@media (max-width: breakpoint(sm)) {
+    .NewsCard {
+        padding: 0.9rem;
+    }
+}
 
-    @media (max-width: breakpoint(xs)) {
+@media (max-width: breakpoint(xs)), (max-width: 320px) {
+    .NewsCard {
+        padding: 0.8rem;
+    }
+
+    .date,
+    .publisher {
         font: var(--font-dm-xs);
     }
 }

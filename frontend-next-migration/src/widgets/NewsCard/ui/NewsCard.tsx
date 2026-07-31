@@ -7,39 +7,45 @@ import Link from 'next/link';
 interface NewsCardProps {
     className?: string;
     title: string;
-    previewText: string;
+    previewText?: string;
+    description?: string;
     date: string;
+    publisher?: string;
     id: number;
     titlePicture?: string;
 }
 
 const NewsCard = (props: NewsCardProps) => {
-    const { title, date, id, previewText, titlePicture } = props;
+    const { title, date, id, previewText, description, publisher, titlePicture } = props;
     const picture = titlePicture;
+    const text = description ?? previewText ?? '';
+
     return (
         <Link
             rel="id"
             href={`/news/${id}`}
             className={classNames(cls.NewsCardLink)}
         >
-            <div className={classNames(cls.NewsCard, {})}>
-                <div className={cls.content}>
-                    <h2 className={cls.title}>{title}</h2>
-                    <p className={cls.text}>{previewText}</p>
-                    <span className={cls.date}>{date}</span>
+            <article className={classNames(cls.NewsCard, {})}>
+                {picture && (
                     <div className={cls.imageContainer}>
-                        {picture && (
-                            <Image
-                                src={picture}
-                                alt={title}
-                                className={cls.image}
-                                width={1024}
-                                height={1024}
-                            />
-                        )}
+                        <Image
+                            src={picture}
+                            alt={title}
+                            className={cls.image}
+                            width={342}
+                            height={255}
+                        />
                     </div>
+                )}
+                <div className={cls.content}>
+                    <div className={cls.meta} />
+                    <h2 className={cls.title}>{title}</h2>
+                    {text && <p className={cls.text}>{text}</p>}
+                    <span className={cls.date}>{date}</span>
+                    {publisher && <span className={cls.publisher}>{publisher}</span>}
                 </div>
-            </div>
+            </article>
         </Link>
     );
 };
