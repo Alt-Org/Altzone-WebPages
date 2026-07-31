@@ -18,12 +18,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const CHEVRON_ITEMS = new Set(['game', 'gallery', 'gameart', 'community']);
 
 export interface NavbarProps {
+    /** Adds some space above the navbar, useful when it would otherwise sit right at the top. */
     marginTop?: number;
     className?: string;
+    /** The full menu setup — links, dropdowns, and the logo. */
     navbarBuild: NavbarBuild;
+    /** When true, the navbar squishes down into a thin strip. */
     isCollapsed?: boolean;
 }
 
+/** Desktop navbar — dropdowns open on hover, auth/lang toggles, and collapse support. */
 const NavbarDesktop = memo((props: NavbarProps) => {
     const { navbarBuild, marginTop, className = '', isCollapsed = false } = props;
 
@@ -137,6 +141,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                     {nonLogoItems.map((item) => {
                         if (item.type === 'navDropDown') {
                             const isOpen = hoveredItem === item.name;
+                            const menuId = `navbar-dropdown-${item.name}`;
                             const trigger = (
                                 <>
                                     <span className={cls.col}>{tNav(`${item.name}`)}</span>
@@ -162,6 +167,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                             to={item.path}
                                             aria-haspopup="true"
                                             aria-expanded={isOpen}
+                                            aria-controls={menuId}
                                         >
                                             {trigger}
                                         </AppLink>
@@ -169,11 +175,13 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                         <span
                                             aria-haspopup="true"
                                             aria-expanded={isOpen}
+                                            aria-controls={menuId}
                                         >
                                             {trigger}
                                         </span>
                                     )}
                                     <div
+                                        id={menuId}
                                         className={classNames(cls.dropdownMenu, {
                                             [cls.dropdownMenuOpen]: isOpen,
                                         })}
