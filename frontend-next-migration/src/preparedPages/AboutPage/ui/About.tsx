@@ -1,8 +1,8 @@
 'use client';
+import { useState } from 'react';
 import cls from './About.module.scss';
-import Image from 'next/image';
-import heroTop from '@/shared/assets/images/aboutPage/hero-top.png';
 import { useGetMembersCountQuery, useGetDemographicsQuery, getBehindYears } from '@/entities/About';
+import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2/ui/DropdownWrapper';
 import Timeline from './Timeline';
 
 export interface Props {
@@ -54,21 +54,16 @@ const About = (props: Props) => {
     const behindCount = getBehindYears();
     const isLoading = membersLoading || demographicsLoading;
 
+    const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
     return (
         <main className={cls.main}>
-            <section
-                className={cls.hero}
-                aria-label="About hero image"
+            <p
+                className={cls.h1}
+                id={cls.History}
             >
-                <Image
-                    src={heroTop}
-                    alt="Hero Image"
-                    fill
-                    priority
-                    className={cls.heroImg}
-                    sizes="100vw"
-                />
-            </section>
+                {storytitle}
+            </p>
 
             <div className={cls.containerTop}>
                 <p className={cls.h1}>{title}</p>
@@ -103,18 +98,30 @@ const About = (props: Props) => {
             </div>
 
             <div className={cls.containerBottom}>
-                <p
-                    className={cls.h1}
-                    id={cls.History}
-                >
-                    {storytitle}
-                </p>
+                <div className={cls.sortContainer}>
+                    <DropdownWrapper
+                        dynamicTitle="Järjestä"
+                        showArrow
+                        autoClose
+                        elements={[
+                            {
+                                elementText: 'Uusin ensin',
+                                onClickCallback: () => setSortOrder('desc'),
+                            },
+                            {
+                                elementText: 'Vanhin ensin',
+                                onClickCallback: () => setSortOrder('asc'),
+                            },
+                        ]}
+                    />
+                </div>
 
                 <div
                     className={cls.storygrid}
                     id={cls.line}
                 >
                     <Timeline
+                        sortOrder={sortOrder}
                         V2019={V2019}
                         V2020={V2020}
                         V2021={V2021}

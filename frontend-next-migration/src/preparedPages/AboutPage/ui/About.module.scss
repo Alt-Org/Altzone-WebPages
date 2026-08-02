@@ -264,7 +264,10 @@
 
     cursor: pointer;
     user-select: none;
-    padding: var(--spacing-300) 0;
+
+    min-height: 48px;
+    padding: 0 var(--spacing-300);
+    margin-bottom: var(--spacing-300);
 }
 
 .timelineBody {

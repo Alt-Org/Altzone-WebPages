@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 import img2019 from '@/shared/assets/images/aboutPage/about2019.png';
@@ -11,6 +10,8 @@ import cls from './About.module.scss';
 import TimelineEntry from './TimelineEntry';
 
 interface Props {
+    sortOrder: 'asc' | 'desc';
+
     V2019: string;
     V2020: string;
     V2021: string;
@@ -27,7 +28,7 @@ interface TimelineItem {
     image: StaticImageData | null;
 }
 
-const Timeline = ({ V2019, V2020, V2021, V2022, V2023, V2024, V2025, V2026 }: Props) => {
+const Timeline = ({ sortOrder, V2019, V2020, V2021, V2022, V2023, V2024, V2025, V2026 }: Props) => {
     const timeline: TimelineItem[] = [
         { year: 2019, image: img2019, text: V2019 },
         { year: 2020, image: img2020, text: V2020 },
@@ -39,27 +40,12 @@ const Timeline = ({ V2019, V2020, V2021, V2022, V2023, V2024, V2025, V2026 }: Pr
         { year: 2026, image: null, text: V2026 },
     ];
 
-    const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
-
     const sortedTimeline = [...timeline].sort((a, b) =>
         sortOrder === 'desc' ? b.year - a.year : a.year - b.year,
     );
 
     return (
         <>
-            <div className={cls.sortContainer}>
-                <label htmlFor="timeline-sort">Sort by: </label>
-
-                <select
-                    id="timeline-sort"
-                    value={sortOrder}
-                    onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
-                >
-                    <option value="asc">Oldest first</option>
-                    <option value="desc">Newest first</option>
-                </select>
-            </div>
-
             {sortedTimeline.map((item) => (
                 <TimelineEntry
                     key={item.year}
