@@ -10,6 +10,7 @@
   color: var(--primary-color);
   text-align: center;
   padding-inline: 1rem;
+  overflow-wrap: break-word;
 
   @media (max-width: breakpoint(sm)) {
     font-size: 1.5rem;
@@ -140,6 +141,7 @@
   text-align: center;
   padding-inline: 2em;
   font: var(--font-dm-l);
+  overflow-wrap: break-word;
 }
 
 .headingWithLines {
@@ -173,10 +175,16 @@
   @extend %headingBase;
 }
 
-.tabIcon {
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
+.mobileTabs {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.mobileTabCard {
+  margin-top: 0;
+  min-height: 0;
 }
 
 .tabContentContainer {

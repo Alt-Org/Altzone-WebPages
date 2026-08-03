@@ -153,18 +153,68 @@ const PRGPage = () => {
                 type: CustomSwitchItems.ToggleItem,
                 isOpen: activeTab === tab,
                 onOpen: () => setActiveTab(tab),
-                children: isMobileSize ? (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img
-                        src={tabImages[tab].src}
-                        alt={t(tabTranslationKeys[tab])}
-                        className={cls.tabIcon}
-                    />
-                ) : (
-                    <p>{t(tabTranslationKeys[tab])}</p>
-                ),
+                children: <p>{t(tabTranslationKeys[tab])}</p>,
             })),
-        [activeTab, t, isMobileSize],
+        [activeTab, t],
+    );
+
+    const renderTabSwitch = () => (
+        <>
+            <CustomSwitch
+                elements={tabElements}
+                className={cls.prgTabSwitch}
+            />
+            <div className={classNames(cls.TextContainer, undefined, [cls.tabContentContainer])}>
+                <div
+                    className={classNames(cls.tabContentLayout, {
+                        [cls.tabContentLayoutReverse]: tabImageSide[activeTab] === 'left',
+                    })}
+                >
+                    <div className={cls.tabTextArea}>
+                        <p className={cls.Subheading}>{t(tabTranslationKeys[activeTab])}</p>
+                        <p className={cls.textCenter}>{t(tabTextKeys[activeTab])}</p>
+                        <div className={cls.ButtonBlock}>
+                            <CheckPdfButton
+                                link={tabLinks[activeTab]}
+                                t={t}
+                            />
+                        </div>
+                    </div>
+                    <div className={cls.tabImageArea}>
+                        <Image
+                            src={tabImages[activeTab]}
+                            alt={t(tabTranslationKeys[activeTab])}
+                            className={cls.tabImage}
+                        />
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+
+    const renderMobileTabs = () => (
+        <div className={cls.mobileTabs}>
+            {DOCUMENT_TABS.map((tab) => (
+                <div
+                    key={tab}
+                    className={classNames(cls.TextContainer, undefined, [cls.mobileTabCard])}
+                >
+                    <p className={cls.Subheading}>{t(tabTranslationKeys[tab])}</p>
+                    <p className={cls.textCenter}>{t(tabTextKeys[tab])}</p>
+                    <Image
+                        src={tabImages[tab]}
+                        alt={t(tabTranslationKeys[tab])}
+                        className={cls.tabImage}
+                    />
+                    <div className={cls.ButtonBlock}>
+                        <CheckPdfButton
+                            link={tabLinks[tab]}
+                            t={t}
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
     );
 
     return (
@@ -214,35 +264,7 @@ const PRGPage = () => {
                     </AppLink>
                 </div>
             </div>
-            <CustomSwitch
-                elements={tabElements}
-                className={cls.prgTabSwitch}
-            />
-            <div className={classNames(cls.TextContainer, undefined, [cls.tabContentContainer])}>
-                <div
-                    className={classNames(cls.tabContentLayout, {
-                        [cls.tabContentLayoutReverse]: tabImageSide[activeTab] === 'left',
-                    })}
-                >
-                    <div className={cls.tabTextArea}>
-                        <p className={cls.Subheading}>{t(tabTranslationKeys[activeTab])}</p>
-                        <p className={cls.textCenter}>{t(tabTextKeys[activeTab])}</p>
-                        <div className={cls.ButtonBlock}>
-                            <CheckPdfButton
-                                link={tabLinks[activeTab]}
-                                t={t}
-                            />
-                        </div>
-                    </div>
-                    <div className={cls.tabImageArea}>
-                        <Image
-                            src={tabImages[activeTab]}
-                            alt={t(tabTranslationKeys[activeTab])}
-                            className={cls.tabImage}
-                        />
-                    </div>
-                </div>
-            </div>
+            {isMobileSize ? renderMobileTabs() : renderTabSwitch()}
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('registry-title')}</p>
                 <div

@@ -7,7 +7,7 @@ jest.mock('@/shared/i18n', () => ({
 
 jest.mock('@/shared/lib/hooks/useSizes', () => ({
     __esModule: true,
-    default: () => ({ isMobileSize: false, isTabletSize: false }),
+    default: jest.fn(() => ({ isMobileSize: false, isTabletSize: false })),
 }));
 
 jest.mock('@/shared/ui/CustomSwitch', () => ({
@@ -51,6 +51,7 @@ jest.mock('@fortawesome/react-fontawesome', () => ({
 }));
 
 import { useClientTranslation } from '@/shared/i18n';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 describe('PRGPage', () => {
     beforeEach(() => {
@@ -72,5 +73,23 @@ describe('PRGPage', () => {
 
         const teamLink = screen.getByText('alt-zone-team').closest('a');
         expect(teamLink).toHaveAttribute('href', '/team');
+    });
+
+    it('renders the tab switch on desktop', () => {
+        (useSizes as jest.Mock).mockReturnValue({ isMobileSize: false, isTabletSize: false });
+        render(<PRGPage />);
+
+        expect(screen.getByTestId('custom-switch')).toBeInTheDocument();
+    });
+
+    it('loops all document tabs instead of the switch on mobile', () => {
+        (useSizes as jest.Mock).mockReturnValue({ isMobileSize: true, isTabletSize: false });
+        render(<PRGPage />);
+
+        expect(screen.queryByTestId('custom-switch')).not.toBeInTheDocument();
+        expect(screen.getByText('action-plan')).toBeInTheDocument();
+        expect(screen.getByText('activity-report')).toBeInTheDocument();
+        expect(screen.getByText('bylaws')).toBeInTheDocument();
+        expect(screen.getAllByText('check-pdf')).toHaveLength(3);
     });
 });
