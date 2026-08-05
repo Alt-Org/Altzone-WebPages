@@ -16,7 +16,16 @@ interface NewsCardProps {
 }
 
 const NewsCard = (props: NewsCardProps) => {
-    const { title, date, id, previewText, description, publisher, titlePicture } = props;
+    const {
+        className = '',
+        title,
+        date,
+        id,
+        previewText,
+        description,
+        publisher = 'ALT Zone tiimi',
+        titlePicture,
+    } = props;
     const picture = titlePicture;
     const text = description ?? previewText ?? '';
 
@@ -26,7 +35,7 @@ const NewsCard = (props: NewsCardProps) => {
             href={`/news/${id}`}
             className={classNames(cls.NewsCardLink)}
         >
-            <article className={classNames(cls.NewsCard, {})}>
+            <article className={classNames(cls.NewsCard, { [cls.noImage]: !picture }, [className])}>
                 {picture && (
                     <div className={cls.imageContainer}>
                         <Image
@@ -39,11 +48,12 @@ const NewsCard = (props: NewsCardProps) => {
                     </div>
                 )}
                 <div className={cls.content}>
-                    <div className={cls.meta} />
                     <h2 className={cls.title}>{title}</h2>
                     {text && <p className={cls.text}>{text}</p>}
-                    <span className={cls.date}>{date}</span>
-                    {publisher && <span className={cls.publisher}>{publisher}</span>}
+                    <div className={cls.meta}>
+                        <span className={cls.date}>{date}</span>
+                        {publisher && <span className={cls.publisher}>{publisher}</span>}
+                    </div>
                 </div>
             </article>
         </Link>

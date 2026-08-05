@@ -35,10 +35,11 @@ $touchSize: 1023px;
 .newsGrid {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    grid-template-columns: minmax(0, 716px);
     justify-content: center;
-    @media (max-width: 480px) {
-        grid-template-columns: 1fr;
+
+    @media (max-width: breakpoint(sm)) {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
