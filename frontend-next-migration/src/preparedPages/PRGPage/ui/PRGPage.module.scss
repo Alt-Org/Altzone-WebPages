@@ -227,7 +227,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 304px;
+  width: min(304px, 100%);
   padding: 6px 22px !important;
   border: 2px solid var(--black, #000);
   border-radius: 2em;

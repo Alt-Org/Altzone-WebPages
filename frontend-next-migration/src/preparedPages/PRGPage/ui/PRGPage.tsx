@@ -264,7 +264,7 @@ const PRGPage = () => {
                     </AppLink>
                 </div>
             </div>
-            {isMobileSize ? renderMobileTabs() : renderTabSwitch()}
+            {isMobileSize || isTabletSize ? renderMobileTabs() : renderTabSwitch()}
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('registry-title')}</p>
                 <div

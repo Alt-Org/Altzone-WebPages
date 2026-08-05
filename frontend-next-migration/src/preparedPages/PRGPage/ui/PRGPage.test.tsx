@@ -92,4 +92,12 @@ describe('PRGPage', () => {
         expect(screen.getByText('bylaws')).toBeInTheDocument();
         expect(screen.getAllByText('check-pdf')).toHaveLength(3);
     });
+
+    it('loops all document tabs instead of the switch on tablet', () => {
+        (useSizes as jest.Mock).mockReturnValue({ isMobileSize: false, isTabletSize: true });
+        render(<PRGPage />);
+
+        expect(screen.queryByTestId('custom-switch')).not.toBeInTheDocument();
+        expect(screen.getAllByText('check-pdf')).toHaveLength(3);
+    });
 });
