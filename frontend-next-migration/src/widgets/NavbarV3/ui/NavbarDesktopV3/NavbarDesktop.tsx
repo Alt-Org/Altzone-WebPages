@@ -15,7 +15,7 @@ import searchIcon from '@/shared/assets/icons/search.png';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const CHEVRON_ITEMS = new Set(['game', 'gallery', 'gameart', 'community']);
+const CHEVRON_ITEMS = new Set(['game', 'gallery', 'education', 'community']);
 
 export interface NavbarProps {
     /** Adds some space above the navbar, useful when it would otherwise sit right at the top. */

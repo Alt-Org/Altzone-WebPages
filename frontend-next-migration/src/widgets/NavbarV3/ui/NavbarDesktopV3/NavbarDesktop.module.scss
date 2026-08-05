@@ -265,12 +265,13 @@
 
 .dropdownMenu {
     position: absolute;
-    top: 100%;
+    /* the li is 60px tall and vertically centered in the 110px navbar,
+       so the extra 25px pushes the panel flush against the navbar's bottom edge */
+    top: calc(100% + 25px);
     left: 0;
     z-index: var(--navbar-z-index);
     min-width: 180px;
     padding: var(--spacing-200);
-    margin-top: var(--spacing-100);
     background: var(--base-card-background);
     border: 2px solid var(--black);
     border-radius: var(--border-radius-lg);
@@ -296,9 +297,11 @@
 }
 
 .dropdownItem {
-    padding: var(--spacing-100) var(--spacing-300);
+    padding: 0 var(--spacing-300);
     min-width: auto;
-    display: block;
+    display: flex;
+    align-items: center;
+    height: 65px;
     white-space: nowrap;
     font: var(--font-dm-bold-l);
     color: var(--white);
