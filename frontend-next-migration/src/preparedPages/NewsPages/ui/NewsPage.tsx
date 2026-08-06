@@ -9,7 +9,6 @@ import { useGetTotalNewsCountQuery } from '@/entities/NewsV2/Api/newsApi';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { News } from '@/entities/NewsV2/model/types/types';
 import { useClientTranslation } from '@/shared/i18n';
-import { PageTitle } from '@/shared/ui/PageTitle';
 import { SkeletonLoaderForNewsPage } from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
 
 const NewsPage = () => {
@@ -90,31 +89,29 @@ const NewsPage = () => {
     return (
         <main className={cls.NewsPage}>
             <Container>
-                <PageTitle
-                    titleText={t('head-title')}
-                    alternate={true}
-                    searchVisible={false}
-                />
-                <div className={cls.newsGrid}>
-                    {groupedNews.map((news) => {
-                        const imageSrc = news.titlePicture?.id
-                            ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
-                            : undefined;
-                        return (
-                            <NewsCard
-                                key={news.id}
-                                titlePicture={imageSrc}
-                                title={news.title}
-                                previewText={news.previewText}
-                                date={news.date}
-                                id={news.id}
-                            />
-                        );
-                    })}
+                <div className={cls.newsContent}>
+                    <h1 className={cls.title}>{t('head-title')}</h1>
+                    <div className={cls.newsGrid}>
+                        {groupedNews.map((news) => {
+                            const imageSrc = news.titlePicture?.id
+                                ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
+                                : undefined;
+                            return (
+                                <NewsCard
+                                    key={news.id}
+                                    titlePicture={imageSrc}
+                                    title={news.title}
+                                    previewText={news.previewText}
+                                    date={news.date}
+                                    id={news.id}
+                                />
+                            );
+                        })}
 
-                    {isLoading && <SkeletonLoaderForNewsPage numberOfCards={limit} />}
+                        {isLoading && <SkeletonLoaderForNewsPage numberOfCards={limit} />}
 
-                    {hasMoreNewsState && !isLoading && <div ref={observeElementRef} />}
+                        {hasMoreNewsState && !isLoading && <div ref={observeElementRef} />}
+                    </div>
                 </div>
                 {renderNoMoreNews()}
             </Container>

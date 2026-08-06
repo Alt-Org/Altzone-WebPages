@@ -2,11 +2,18 @@ $touchSize: 1023px;
 .NewsPage {
     min-height: 80vh;
 }
+
+.newsContent {
+    width: min(716px, 100%);
+    margin: 0 auto;
+}
+
 .title {
-    font: var(--font-sw-xxl);
-    text-align: center;
+    font: var(--font-sw-5xl);
+    text-align: left;
     padding: 0;
     color: var(--primary-color);
+    margin: 0 0 12px;
 
     @media (max-width: $touchSize) {
         order: 0;
@@ -15,7 +22,6 @@ $touchSize: 1023px;
 
     @media (max-width: breakpoint(md)) {
         order: 1;
-        margin-right: 30px;
     }
 }
 
@@ -35,11 +41,35 @@ $touchSize: 1023px;
 .newsGrid {
     display: grid;
     gap: 20px;
-    grid-template-columns: minmax(0, 716px);
-    justify-content: center;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
 
     @media (max-width: breakpoint(sm)) {
         grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: breakpoint(lg)) {
+    .title {
+        font: var(--font-sw-xxxl);
+    }
+}
+
+@media (max-width: breakpoint(sm)) {
+    .newsContent {
+        width: min(195px, calc(100% - 28px));
+        margin: 0 0 0 14px;
+    }
+
+    .title {
+        margin-bottom: 10px;
+        font-size: var(--h3-size-desktop);
+    }
+}
+
+@media (max-width: breakpoint(xs)) {
+    .title {
+        font-size: var(--h1-size-mobile);
     }
 }
 
