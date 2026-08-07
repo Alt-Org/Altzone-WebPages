@@ -228,7 +228,7 @@ const PRGPage = () => {
             </div>
             <Image
                 src={prgDeveloper}
-                alt="prgDeveloper"
+                alt={t('head-title')}
             />
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('prg')}</p>
@@ -267,12 +267,7 @@ const PRGPage = () => {
             {isMobileSize || isTabletSize ? renderMobileTabs() : renderTabSwitch()}
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('registry-title')}</p>
-                <div
-                    className={cls.registryInfo}
-                    style={{ whiteSpace: 'pre-line' }}
-                >
-                    {t('registry-info')}
-                </div>
+                <div className={cls.registryInfo}>{t('registry-info')}</div>
             </div>
         </div>
     );
