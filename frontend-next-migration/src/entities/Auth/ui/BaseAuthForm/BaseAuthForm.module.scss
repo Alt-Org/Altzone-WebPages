@@ -48,7 +48,17 @@
         font-size: 18px;
         font-weight: 500;
         line-height: 23px;
-        letter-spacing: -0.04em;
+
+        @media (max-width: breakpoint(sm)) {
+            background-color: #ffb703;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-300) var(--spacing-400);
+            height: 53px;
+            font: var(--font-dm-m);
+        }
     }
 
     @media (max-width: breakpoint(md)) {
@@ -56,7 +66,14 @@
     }
 
     @media (max-width: breakpoint(sm)) {
-        padding: 24px 20px;
+        box-shadow: var(--m);
+        padding: 15px 15px 10px;
+        gap: 18px;
+        min-height: 641px;
+
+        h1 {
+            margin-bottom: 17px;
+        }
     }
 }
 
@@ -65,6 +82,11 @@
     height: 238px;
     object-fit: contain;
     margin: 0 auto;
+
+    @media (max-width: breakpoint(sm)) {
+        width: 198px;
+        height: 167px;
+    }
 }
 
 .fields {
@@ -73,6 +95,11 @@
     max-width: 460px;
     margin: 0 auto;
     font: var(--font-dm-bold-s);
+
+    @media (max-width: breakpoint(sm)) {
+        gap: 8px;
+        margin-bottom: 6px;
+    }
 
     label {
         font: var(--font-dm-s);
@@ -110,6 +137,10 @@
     align-items: center;
     text-align: center;
     color: var(--content-primary);
+
+    @media (max-width: breakpoint(sm)) {
+        font: var(--font-sw-xl);
+    }
 }
 
 .actions {
@@ -126,6 +157,7 @@
 
     p {
         color: var(--white);
+        font: var(--font-dm-s);
     }
 
     a {
