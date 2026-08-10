@@ -11,6 +11,10 @@ $touchSize: 1023px;
 .title {
     font: var(--font-sw-5xl);
     text-align: left;
+    letter-spacing: -4%;
+    width: 1440px;
+    height: 129px;
+    gap: var(--spacing-800);
     padding: 0;
     color: var(--primary-color);
     margin: 0 0 12px;
@@ -49,12 +53,6 @@ $touchSize: 1023px;
     }
 }
 
-@media (max-width: breakpoint(lg)) {
-    .title {
-        font: var(--font-sw-xxxl);
-    }
-}
-
 @media (max-width: breakpoint(sm)) {
     .newsContent {
         width: min(195px, calc(100% - 28px));
@@ -63,13 +61,11 @@ $touchSize: 1023px;
 
     .title {
         margin-bottom: 10px;
-        font-size: var(--h3-size-desktop);
-    }
-}
-
-@media (max-width: breakpoint(xs)) {
-    .title {
+        gap: 10px;
+        width: 121px;
+        height: 48px;
         font-size: var(--h1-size-mobile);
+        text-align: center;
     }
 }
 

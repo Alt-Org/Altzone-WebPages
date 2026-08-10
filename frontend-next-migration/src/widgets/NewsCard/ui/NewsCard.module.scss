@@ -14,11 +14,12 @@
     display: grid;
     grid-template-columns: 182px minmax(0, 1fr);
     align-items: stretch;
-    width: 100%;
-    max-width: 716px;
+    width: 1440px;
+    height: 255px;
+    max-width: 1440px;
     min-height: 128px;
-    gap: 0;
-    padding: 0;
+    gap: 81px;
+    padding-right: 48px;
     overflow: hidden;
     background-color: var(--base-card-background);
     border: var(--border-desktop);
@@ -55,7 +56,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: left center;
+    left: -6px;
 }
 
 .content {
@@ -115,18 +116,26 @@
     .NewsCard {
         grid-template-columns: 1fr;
         max-width: 100%;
+        width: 328px;
+        height: 516px;
         min-height: 304px;
-        border-color: var(--drop-shadows);
         border-radius: var(--border-radius-figmadesktop);
+        border: 2px solid #000000;
+        box-shadow: 4px 8px 0px 0px var(--ShadowblackShadow);
     }
 
     .imageContainer {
-        aspect-ratio: 1.18 / 1;
+        width: 330px;
+        height: 280px;
         min-height: 0;
     }
 
     .image {
         object-fit: contain;
+        width: 264px;
+        height: 223px;
+        top: 29px;
+        left: 38px;
     }
 
     .content {
