@@ -58,79 +58,83 @@ const About = (props: Props) => {
 
     return (
         <main className={cls.main}>
-            <p
-                className={cls.h1}
-                id={cls.History}
-            >
-                {storytitle}
-            </p>
-
-            <div className={cls.containerTop}>
-                <p className={cls.h1}>{title}</p>
-
-                <p className={cls.gridp}>{description}</p>
-
-                <p className={cls.h1}>{keywords}</p>
-
-                <div className={cls.headergrid}>
-                    <div>
-                        <p className={cls.sValues}>{isLoading ? '...' : projectCount}</p>
-                        <p className={cls.gridp}>{project}</p>
-                    </div>
-
-                    <div>
-                        <p className={cls.sValues}>{isLoading ? '...' : demographics.localities}</p>
-                        <p className={cls.gridp}>{locality}</p>
-                    </div>
-
-                    <div>
-                        <p className={cls.sValues}>
-                            {isLoading ? '...' : demographics.nationalities}
-                        </p>
-                        <p className={cls.gridp}>{nationality}</p>
-                    </div>
-
-                    <div>
-                        <p className={cls.sValues}>{behindCount}</p>
-                        <p className={cls.gridp}>{behind}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className={cls.containerBottom}>
-                <div className={cls.sortContainer}>
-                    <DropdownWrapper
-                        dynamicTitle="Järjestä"
-                        showArrow
-                        autoClose
-                        elements={[
-                            {
-                                elementText: 'Uusin ensin',
-                                onClickCallback: () => setSortOrder('desc'),
-                            },
-                            {
-                                elementText: 'Vanhin ensin',
-                                onClickCallback: () => setSortOrder('asc'),
-                            },
-                        ]}
-                    />
-                </div>
-
-                <div
-                    className={cls.storygrid}
-                    id={cls.line}
+            <div className={cls.aboutContent}>
+                <p
+                    className={cls.h1}
+                    id={cls.History}
                 >
-                    <Timeline
-                        sortOrder={sortOrder}
-                        V2019={V2019}
-                        V2020={V2020}
-                        V2021={V2021}
-                        V2022={V2022}
-                        V2023={V2023}
-                        V2024={V2024}
-                        V2025={V2025}
-                        V2026={V2026}
-                    />
+                    {storytitle}
+                </p>
+
+                <div className={cls.containerTop}>
+                    <p className={cls.h1}>{title}</p>
+
+                    <p className={cls.gridp}>{description}</p>
+
+                    <p className={cls.h1}>{keywords}</p>
+
+                    <div className={cls.headergrid}>
+                        <div>
+                            <p className={cls.sValues}>{isLoading ? '...' : projectCount}</p>
+                            <p className={cls.gridp}>{project}</p>
+                        </div>
+
+                        <div>
+                            <p className={cls.sValues}>
+                                {isLoading ? '...' : demographics.localities}
+                            </p>
+                            <p className={cls.gridp}>{locality}</p>
+                        </div>
+
+                        <div>
+                            <p className={cls.sValues}>
+                                {isLoading ? '...' : demographics.nationalities}
+                            </p>
+                            <p className={cls.gridp}>{nationality}</p>
+                        </div>
+
+                        <div>
+                            <p className={cls.sValues}>{behindCount}</p>
+                            <p className={cls.gridp}>{behind}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={cls.containerBottom}>
+                    <div className={cls.sortContainer}>
+                        <DropdownWrapper
+                            dynamicTitle="Järjestä"
+                            showArrow
+                            autoClose
+                            elements={[
+                                {
+                                    elementText: 'Uusin ensin',
+                                    onClickCallback: () => setSortOrder('desc'),
+                                },
+                                {
+                                    elementText: 'Vanhin ensin',
+                                    onClickCallback: () => setSortOrder('asc'),
+                                },
+                            ]}
+                        />
+                    </div>
+
+                    <div
+                        className={cls.storygrid}
+                        id={cls.line}
+                    >
+                        <Timeline
+                            sortOrder={sortOrder}
+                            V2019={V2019}
+                            V2020={V2020}
+                            V2021={V2021}
+                            V2022={V2022}
+                            V2023={V2023}
+                            V2024={V2024}
+                            V2025={V2025}
+                            V2026={V2026}
+                        />
+                    </div>
                 </div>
             </div>
         </main>

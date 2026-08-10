@@ -197,7 +197,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                     transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                                     transition: 'transform 0.4s ease-in-out',
                                     position: 'absolute',
-                                    right: '10%',
+                                    right: '0',
                                     marginTop: '7px',
                                 }}
                             >

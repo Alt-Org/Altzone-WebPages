@@ -1,17 +1,14 @@
-import Image, { StaticImageData } from 'next/image';
-import chevronDown from '@/shared/assets/icons/chevronDown.svg';
+import { StaticImageData } from 'next/image';
 import img2019 from '@/shared/assets/images/aboutPage/about2019.png';
 import img2020 from '@/shared/assets/images/aboutPage/about2020.png';
 import img2021 from '@/shared/assets/images/aboutPage/about2021.png';
 import img2022 from '@/shared/assets/images/aboutPage/about2022.png';
 import img2023 from '@/shared/assets/images/aboutPage/about2023.png';
 import img2024 from '@/shared/assets/images/aboutPage/about2024.png';
-import cls from './About.module.scss';
 import TimelineEntry from './TimelineEntry';
 
 interface Props {
     sortOrder: 'asc' | 'desc';
-
     V2019: string;
     V2020: string;
     V2021: string;
@@ -54,14 +51,6 @@ const Timeline = ({ sortOrder, V2019, V2020, V2021, V2022, V2023, V2024, V2025, 
                     image={item.image}
                 />
             ))}
-
-            <Image
-                loading="eager"
-                alt="Chevron"
-                src={chevronDown}
-                className={cls.chevronImage}
-                width={50}
-            />
         </>
     );
 };

@@ -96,6 +96,7 @@
     flex-direction: column;
     gap: var(--spacing-400);
     white-space: pre-line;
+    width: 100%;
 }
 
 .yearImgWrap {
@@ -186,13 +187,38 @@
 }
 
 #line {
+    width: 95%;
     border-left: 10px solid orange;
     margin-left: 5%;
     margin-bottom: var(--spacing-600);
+    box-sizing: border-box;
 }
 
 #History {
+    width: 30%;
     padding-bottom: var(--spacing-600);
+    text-align: left;
+    margin-bottom: var(--spacing-400);
+
+    @media (min-width: breakpoint(xxl)) and (max-width: 2004px) {
+        width: 40%;
+    }
+
+    @media (max-width: breakpoint(xxl)) {
+        width: 50%;
+    }
+
+    @media (max-width: breakpoint(xl)) {
+        width: 50%;
+    }
+
+    @media (max-width: breakpoint(md)) {
+        width: 70%;
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        width: 90%;
+    }
 }
 
 .chevronImage {
@@ -267,7 +293,7 @@
 
     min-height: 48px;
     padding: 0 var(--spacing-300);
-    margin-bottom: var(--spacing-300);
+    margin-bottom: 0;
 }
 
 .timelineBody {
@@ -279,8 +305,12 @@
     color: var(--primary-color);
 }
 .timelineCard {
-    width: 100%;
+    width: calc(100% - var(--spacing-400));
+    box-sizing: border-box;
+
+    margin-left: var(--spacing-400);
     margin-bottom: var(--spacing-400);
+
     padding: var(--spacing-400);
 
     background: var(--background);
@@ -311,4 +341,10 @@
 
 .chevronOpen {
     transform: rotate(180deg);
+}
+
+.aboutContent {
+    width: 100%;
+    display: grid;
+    justify-items: center;
 }
