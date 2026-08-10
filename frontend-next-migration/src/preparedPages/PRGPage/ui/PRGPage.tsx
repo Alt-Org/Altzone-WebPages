@@ -135,7 +135,7 @@ const PRGPage = () => {
                     <div className={cls.BoardCardContainer}>
                         <Boardcard
                             picture={Helena}
-                            name={'Helena Pavloff-Pelkonen'}
+                            name={'Helena Pavloff'}
                             job={'helena-job'}
                             profession={'helena-profession'}
                             t={t}
@@ -143,7 +143,7 @@ const PRGPage = () => {
                         />
                         <Boardcard
                             picture={Esa}
-                            name={'Esa Pavloff-Pelkonen'}
+                            name={'Esa Pelkonen'}
                             job={'esa-job'}
                             profession={'esa-profession'}
                             t={t}
@@ -162,7 +162,7 @@ const PRGPage = () => {
                     <div className={cls.BoardCardMobileContainer}>
                         <Boardcard
                             picture={Helena}
-                            name={'Helena Pavloff-Pelkonen'}
+                            name={'Helena Pavloff'}
                             job={'helena-job'}
                             profession={'helena-profession'}
                             t={t}
@@ -170,7 +170,7 @@ const PRGPage = () => {
                         />
                         <Boardcard
                             picture={Esa}
-                            name={'Esa Pavloff-Pelkonen'}
+                            name={'Esa Pelkonen'}
                             job={'esa-job'}
                             profession={'esa-profession'}
                             t={t}
