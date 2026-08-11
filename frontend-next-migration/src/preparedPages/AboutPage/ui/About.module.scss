@@ -196,6 +196,7 @@
 
 #History {
     width: 30%;
+    font: var(--font-sw-4xl);
     padding-bottom: var(--spacing-600);
     text-align: left;
     margin-bottom: var(--spacing-400);
@@ -347,4 +348,10 @@
     width: 100%;
     display: grid;
     justify-items: center;
+}
+
+.statItem {
+    background: var(--background);
+    border: 2px solid var(--black);
+    border-radius: var(--corner-radius-web);
 }

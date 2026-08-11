@@ -69,31 +69,27 @@ const About = (props: Props) => {
                 <div className={cls.containerTop}>
                     <p className={cls.h1}>{title}</p>
 
-                    <p className={cls.gridp}>{description}</p>
-
-                    <p className={cls.h1}>{keywords}</p>
-
                     <div className={cls.headergrid}>
-                        <div>
+                        <div className={cls.statItem}>
                             <p className={cls.sValues}>{isLoading ? '...' : projectCount}</p>
                             <p className={cls.gridp}>{project}</p>
                         </div>
 
-                        <div>
+                        <div className={cls.statItem}>
                             <p className={cls.sValues}>
                                 {isLoading ? '...' : demographics.localities}
                             </p>
                             <p className={cls.gridp}>{locality}</p>
                         </div>
 
-                        <div>
+                        <div className={cls.statItem}>
                             <p className={cls.sValues}>
                                 {isLoading ? '...' : demographics.nationalities}
                             </p>
                             <p className={cls.gridp}>{nationality}</p>
                         </div>
 
-                        <div>
+                        <div className={cls.statItem}>
                             <p className={cls.sValues}>{behindCount}</p>
                             <p className={cls.gridp}>{behind}</p>
                         </div>
