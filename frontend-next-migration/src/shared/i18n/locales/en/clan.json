@@ -54,5 +54,7 @@
     "losses": "Losses",
     "leaderboard-title": "Leaderboard",
     "browse-clans": "Browse Clans",
-    "store-title": "Store"
+    "store-title": "Store",
+    "badge_adults": "Adults only",
+    "badge_closed": "Closed clan"
 }

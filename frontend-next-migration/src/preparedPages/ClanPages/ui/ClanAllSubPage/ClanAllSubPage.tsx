@@ -9,15 +9,14 @@ import { useClientTranslation } from '@/shared/i18n';
 import { ModularCard, ModularCardTheme } from '@/shared/ui/v2/ModularCard';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 import { getClanLabelIcon } from '@/entities/Clan/config/clanLabelIcons';
+import { getClanLanguageIcon } from '@/entities/Clan/config/clanLanguageIcons';
 import cardCls from '@/shared/ui/v2/ModularCard/ui/ModularCard.module.scss';
 import mobileCardCls from '@/shared/ui/v2/MobileCard/ui/MobileCard.module.scss';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/ClanLogo_Placeholder.png';
-import iconLeaderboard from '@/shared/assets/images/clanLogos/LeaderboardWinFirstPlace.png';
-import iconFlagFi from '@/shared/assets/images/clanLogos/CommonFlagFinland.png';
-import iconCommonLockOpen from '@/shared/assets/images/clanLogos/CommonLockOpen.png';
+import iconLockClosed from '@/shared/assets/images/clanLogos/lock.png';
 import iconClanAgeTeenages from '@/shared/assets/images/clanLogos/ClanAgeTeenages.png';
 
 type ClanItem = GetClansResponse['data']['Clan'][number];
@@ -131,26 +130,39 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                             >
                                 <div className={mobileCardCls.ClanInfoRow}>
                                     <span className={mobileCardCls.ClanInfoBadges}>
-                                        <Image
-                                            src={iconLeaderboard}
-                                            alt="leaderboard"
-                                            className={mobileCardCls.ClanInfoIcon}
-                                        />
-                                        <Image
-                                            src={iconCommonLockOpen}
-                                            alt="lock"
-                                            className={mobileCardCls.ClanInfoIcon}
-                                        />
-                                        <Image
-                                            src={iconClanAgeTeenages}
-                                            alt="teenage"
-                                            className={mobileCardCls.ClanInfoIcon}
-                                        />
-                                        <Image
-                                            src={iconFlagFi}
-                                            alt="flag"
-                                            className={mobileCardCls.ClanInfoIcon}
-                                        />
+                                        {/* Status badges: render based on backend data */}
+                                        {clan.isOpen === false && (
+                                            <span title={t('badge_closed')}>
+                                                <Image
+                                                    src={iconLockClosed}
+                                                    alt={t('badge_closed')}
+                                                    className={mobileCardCls.ClanInfoIcon}
+                                                />
+                                            </span>
+                                        )}
+
+                                        {clan.ageRange === 'Adults' && (
+                                            <span title={t('badge_adults')}>
+                                                <Image
+                                                    src={iconClanAgeTeenages}
+                                                    alt={t('badge_adults')}
+                                                    className={mobileCardCls.ClanInfoIcon}
+                                                />
+                                            </span>
+                                        )}
+
+                                        {(() => {
+                                            const languageIcon = getClanLanguageIcon(clan.language);
+                                            return languageIcon ? (
+                                                <span title={`${t('language')}: ${clan.language}`}>
+                                                    <Image
+                                                        src={languageIcon}
+                                                        alt={clan.language ?? t('language')}
+                                                        className={mobileCardCls.ClanInfoIcon}
+                                                    />
+                                                </span>
+                                            ) : null;
+                                        })()}
                                     </span>
                                 </div>
 
@@ -168,6 +180,7 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                                         <span
                                             className={mobileCardCls.ClanLabel}
                                             key={label}
+                                            title={label}
                                         >
                                             <Image
                                                 src={getClanLabelIcon(label)}
@@ -213,26 +226,38 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                             <ModularCard.Texts.Body>
                                 <div className={cardCls.ClanInfoRow}>
                                     <span className={cardCls.ClanInfoBadges}>
-                                        <Image
-                                            src={iconLeaderboard}
-                                            alt="leaderboard"
-                                            className={cardCls.ClanInfoIcon}
-                                        />
-                                        <Image
-                                            src={iconCommonLockOpen}
-                                            alt="lock"
-                                            className={cardCls.ClanInfoIcon}
-                                        />
-                                        <Image
-                                            src={iconClanAgeTeenages}
-                                            alt="teenage"
-                                            className={cardCls.ClanInfoIcon}
-                                        />
-                                        <Image
-                                            src={iconFlagFi}
-                                            alt="flag"
-                                            className={cardCls.ClanInfoIcon}
-                                        />
+                                        {clan.isOpen === false && (
+                                            <span title={t('badge_closed')}>
+                                                <Image
+                                                    src={iconLockClosed}
+                                                    alt={t('badge_closed')}
+                                                    className={cardCls.ClanInfoIcon}
+                                                />
+                                            </span>
+                                        )}
+
+                                        {clan.ageRange === 'Adults' && (
+                                            <span title={t('badge_adults')}>
+                                                <Image
+                                                    src={iconClanAgeTeenages}
+                                                    alt={t('badge_adults')}
+                                                    className={cardCls.ClanInfoIcon}
+                                                />
+                                            </span>
+                                        )}
+
+                                        {(() => {
+                                            const languageIcon = getClanLanguageIcon(clan.language);
+                                            return languageIcon ? (
+                                                <span title={`${t('language')}: ${clan.language}`}>
+                                                    <Image
+                                                        src={languageIcon}
+                                                        alt={clan.language ?? t('language')}
+                                                        className={cardCls.ClanInfoIcon}
+                                                    />
+                                                </span>
+                                            ) : null;
+                                        })()}
                                     </span>
                                 </div>
                                 <div className={cardCls.ClanInfoStats}>
