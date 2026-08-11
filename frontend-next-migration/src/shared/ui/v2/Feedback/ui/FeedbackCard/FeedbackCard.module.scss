@@ -1,9 +1,9 @@
 .feedbackForm {
     font: var(--font-dm-xl);
     background-color: var(--base-card-background);
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    width: 320px;
+    width: 320px !important;
     height: 400px;
     align-items: center;
     gap: 5px;
@@ -94,6 +94,7 @@
     color: var(--white);
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 .linkToForm {
