@@ -4,6 +4,7 @@ import { useLoginForm } from '../../model/useLoginForm';
 import { BaseAuthForm } from '@/entities/Auth';
 import { ReactNode } from 'react';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 
 export interface LoginFormProps {
     onSuccessLogin?: () => void;
@@ -13,6 +14,7 @@ export interface LoginFormProps {
 const LoginForm = (props: LoginFormProps) => {
     const { onSuccessLogin = function () {}, extraContent } = props;
     const { t } = useClientTranslation('auth');
+    const { isMobileSize } = useIsMobileSize();
     const { register, handleSubmit, onFormSubmit, errors } = useLoginForm({ onSuccessLogin });
 
     const handleFormMouseEvents = (event: React.MouseEvent) => {
@@ -31,7 +33,7 @@ const LoginForm = (props: LoginFormProps) => {
                         <BaseAuthForm.InputField
                             key={'username'}
                             error={errors?.username?.message && t(`${errors.username.message}`)}
-                            label={t('username')}
+                            label={isMobileSize ? t('username_email') : t('username')}
                             inputProps={{
                                 ...register('username'),
                                 required: true,
