@@ -45,7 +45,6 @@
 .imageContainer {
     width: 100%;
     height: 100%;
-    min-width: 0;
     min-height: 128px;
     overflow: hidden;
     background-color: #172936;
@@ -55,13 +54,12 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     left: -6px;
 }
 
 .content {
     display: flex;
-    min-width: 0;
     flex-direction: column;
     justify-content: center;
     gap: 13px;
@@ -75,6 +73,7 @@
     overflow: hidden;
     color: var(--white);
     font: var(--font-sw-xl);
+    letter-spacing: -4%;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -88,18 +87,23 @@
     overflow: hidden;
     color: var(--white);
     font: var(--font-dm-l);
+    letter-spacing: -4%;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
+    gap: 10px;
 }
 
 .meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    width: 209px;
+    height: 26px;
     gap: 4px;
     color: var(--primary-color);
-    font: var(--font-dm-m);
+    font: var(--font-dm-l);
+    letter-spacing: -4%;
 }
 
 .date,
@@ -125,13 +129,11 @@
     }
 
     .imageContainer {
-        width: 330px;
-        height: 280px;
-        min-height: 0;
+        width: 100%;
+        height: 100%;
     }
 
     .image {
-        object-fit: contain;
         width: 264px;
         height: 223px;
         top: 29px;
@@ -140,26 +142,24 @@
 
     .content {
         justify-content: flex-start;
-        gap: 8px;
-        padding: 14px 14px 16px;
+        gap: 16px;
     }
 
     .meta {
+        width: 174px;
+        height: 21px;
         order: -1;
-        font: var(--font-dm-xs);
-        line-height: 14px;
+        font: var(--font-dm-m);
     }
 
     .title {
-        font: var(--font-sw-s);
-        line-height: 20px;
+        font: var(--font-sw-m);
         -webkit-line-clamp: 3;
         line-clamp: 3;
     }
 
     .text {
-        font: var(--font-dm-xs);
-        line-height: 14px;
+        font: var(--font-dm-m);
         -webkit-line-clamp: 3;
         line-clamp: 3;
     }
