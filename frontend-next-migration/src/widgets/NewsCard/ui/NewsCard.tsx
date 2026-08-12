@@ -23,7 +23,7 @@ const NewsCard = (props: NewsCardProps) => {
         id,
         previewText,
         description,
-        publisher = 'ALT Zone tiimi',
+        publisher,
         titlePicture,
     } = props;
     const picture = titlePicture;
