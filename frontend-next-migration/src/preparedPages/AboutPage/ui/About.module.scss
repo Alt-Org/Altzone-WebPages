@@ -26,7 +26,7 @@
     padding: 1.2rem;
     width: 30%;
 
-    @media (min-width: 1400px) and (max-width: 2004px) {
+    @media (min-width: breakpoint(xxl)) and (max-width: 2004px) {
         width: 40%;
     }
 
@@ -79,15 +79,19 @@
 
 .headergrid {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 0 64px;
     grid-template-rows: 1;
 
     @media (max-width: breakpoint(md)) {
         grid-template-columns: 50% 50%;
+        padding: 0 24px;
     }
 
     @media (max-width: breakpoint(sm)) {
         grid-template-columns: 50% 50%;
+        padding: 0 16px;
     }
 }
 
@@ -154,9 +158,14 @@
 }
 
 .sValues {
-    font: var(font-sw-xl);
+    font: var(--font-sw-xxl);
+    color: #FFA100;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.04em;
     text-align: center;
-    padding: 1%;
+    padding: 0;
+    margin: 0 0 2px;
 }
 .yearh1 {
     font: var(--font-sw-xl);
@@ -351,7 +360,31 @@
 }
 
 .statItem {
-    background: var(--background);
+    background: #2B516A;
     border: 2px solid var(--black);
     border-radius: var(--corner-radius-web);
+    padding: 6px 8px;
+    min-height: 68px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.statItem .gridp {
+    font: var(--font-dm-bold-s);
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.statsTitle {
+    font: var(--font-sw-l);
+    color: var(--primary-color);
+    text-align: center;
+    margin: 0;
 }

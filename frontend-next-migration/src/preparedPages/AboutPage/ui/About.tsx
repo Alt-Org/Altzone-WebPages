@@ -27,8 +27,6 @@ export interface Props {
 const About = (props: Props) => {
     const {
         title,
-        description,
-        keywords,
         storytitle,
         project,
         locality,
@@ -67,7 +65,7 @@ const About = (props: Props) => {
                 </p>
 
                 <div className={cls.containerTop}>
-                    <p className={cls.h1}>{title}</p>
+                    <p className={cls.statsTitle}>{title}</p>
 
                     <div className={cls.headergrid}>
                         <div className={cls.statItem}>
