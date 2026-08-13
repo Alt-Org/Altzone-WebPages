@@ -3,19 +3,6 @@
     justify-items: center;
 }
 
-.hero {
-    position: relative;
-    width: 100%;
-    max-width: 1400px;
-    aspect-ratio: 16 / 9;
-    margin-bottom: var(--spacing-600);
-}
-
-.heroImg {
-    object-fit: cover;
-    max-width: 1400px;
-}
-
 .containerTop {
     background: var(--background);
     text-align: center;
@@ -25,6 +12,7 @@
     margin-bottom: 5%;
     padding: 1.2rem;
     width: 30%;
+    box-sizing: border-box;
 
     @media (min-width: breakpoint(xxl)) and (max-width: 2004px) {
         width: 40%;
@@ -79,19 +67,48 @@
 
 .headergrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 130px);
     gap: 32px;
-    padding: 0 64px;
+    padding: 8px 0 0;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
     grid-template-rows: 1;
 
+    @media (max-width: breakpoint(xxl)) {
+        grid-template-columns: repeat(2, 130px);
+        gap: 20px 28px;
+        justify-content: center;
+    }
+
+    @media (max-width: breakpoint(xl)) {
+        grid-template-columns: repeat(2, 130px);
+        gap: 16px 24px;
+        justify-content: center;
+    }
+
+    @media (max-width: breakpoint(lg)) {
+        grid-template-columns: repeat(2, 130px);
+        gap: 16px;
+        justify-content: center;
+    }
+
     @media (max-width: breakpoint(md)) {
-        grid-template-columns: 50% 50%;
-        padding: 0 24px;
+        grid-template-columns: repeat(2, 130px);
+        gap: 12px;
+        justify-content: center;
     }
 
     @media (max-width: breakpoint(sm)) {
-        grid-template-columns: 50% 50%;
-        padding: 0 16px;
+        grid-template-columns: repeat(2, 130px);
+        gap: 12px;
+        justify-content: center;
+    }
+
+    @media (max-width: 1600px) {
+        grid-template-columns: repeat(2, 130px);
+        gap: 16px 24px;
+        justify-content: center;
     }
 }
 
@@ -364,13 +381,20 @@
     border: 2px solid var(--black);
     border-radius: var(--corner-radius-web);
     padding: 6px 8px;
-    min-height: 68px;
+    width: 130px;
+    height: 84px;
     box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.statItemNarrow .gridp {
+    max-width: 90px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .statItem .gridp {
@@ -380,11 +404,34 @@
     text-align: center;
     padding: 0;
     margin: 0;
+    white-space: normal;
 }
 
 .statsTitle {
     font: var(--font-sw-l);
+    font-size: 22px;
     color: var(--primary-color);
     text-align: center;
-    margin: 0;
+    margin: 0 auto;
+    letter-spacing: -0.03em;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: break-word;
+
+    @media (max-width: breakpoint(xl)) {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+
+    @media (max-width: breakpoint(md)) {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        font-size: 16px;
+        line-height: 1.2;
+    }
 }

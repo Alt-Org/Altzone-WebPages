@@ -73,14 +73,14 @@ const About = (props: Props) => {
                             <p className={cls.gridp}>{project}</p>
                         </div>
 
-                        <div className={cls.statItem}>
+                        <div className={`${cls.statItem} ${cls.statItemNarrow}`}>
                             <p className={cls.sValues}>
                                 {isLoading ? '...' : demographics.localities}
                             </p>
                             <p className={cls.gridp}>{locality}</p>
                         </div>
 
-                        <div className={cls.statItem}>
+                        <div className={`${cls.statItem} ${cls.statItemNarrow}`}>
                             <p className={cls.sValues}>
                                 {isLoading ? '...' : demographics.nationalities}
                             </p>
