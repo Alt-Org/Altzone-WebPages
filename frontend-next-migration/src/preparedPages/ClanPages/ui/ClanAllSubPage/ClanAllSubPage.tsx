@@ -17,6 +17,7 @@ import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/ClanLogo_Placeholder.png';
 import iconLockClosed from '@/shared/assets/images/clanLogos/lock.png';
+import iconLockOpen from '@/shared/assets/images/clanLogos/CommonLockOpen.png';
 import iconClanAgeTeenages from '@/shared/assets/images/clanLogos/ClanAgeTeenages.png';
 
 type ClanItem = GetClansResponse['data']['Clan'][number];
@@ -141,6 +142,16 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                                             </span>
                                         )}
 
+                                        {clan.isOpen === true && (
+                                            <span title={t('badge_open')}>
+                                                <Image
+                                                    src={iconLockOpen}
+                                                    alt={t('badge_open')}
+                                                    className={mobileCardCls.ClanInfoIcon}
+                                                />
+                                            </span>
+                                        )}
+
                                         {clan.ageRange === 'Adults' && (
                                             <span title={t('badge_adults')}>
                                                 <Image
@@ -231,6 +242,16 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                                 <Image
                                                     src={iconLockClosed}
                                                     alt={t('badge_closed')}
+                                                    className={cardCls.ClanInfoIcon}
+                                                />
+                                            </span>
+                                        )}
+
+                                        {clan.isOpen === true && (
+                                            <span title={t('badge_open')}>
+                                                <Image
+                                                    src={iconLockOpen}
+                                                    alt={t('badge_open')}
                                                     className={cardCls.ClanInfoIcon}
                                                 />
                                             </span>
