@@ -213,11 +213,48 @@
 }
 
 #line {
+    position: relative;
+
     width: 95%;
-    border-left: 10px solid orange;
     margin-left: 5%;
     margin-bottom: var(--spacing-600);
+
     box-sizing: border-box;
+    border-left: none;
+}
+
+#line::before {
+    content: '';
+    position: absolute;
+
+    width: 5px;
+
+    background: #FFA100;
+
+    left: -9px;
+    top: 38px;
+    bottom: 40px;
+
+    z-index: 1;
+}
+
+#line::after {
+    content: '';
+    position: absolute;
+
+    width: 16px;
+    height: 16px;
+
+    border-left: 4px solid #FFA100;
+    border-top: 4px solid #FFA100;
+
+    left: -14.5px;
+    top: 28px;
+
+    transform: rotate(45deg);
+
+    box-sizing: border-box;
+    z-index: 2;
 }
 
 #History {
@@ -318,9 +355,13 @@
     cursor: pointer;
     user-select: none;
 
-    min-height: 48px;
-    padding: 0 var(--spacing-300);
+    min-height: 64px;
+    padding: 0 16px;
     margin-bottom: 0;
+}
+
+.timelineHeader .yearh1::before {
+    display: none;
 }
 
 .timelineBody {
@@ -331,21 +372,50 @@
     font-size: 1.5rem;
     color: var(--primary-color);
 }
+
 .timelineCard {
-    width: calc(100% - var(--spacing-400));
+    position: relative;
+
+    width: calc(100% - (2 * var(--spacing-400)));
     box-sizing: border-box;
 
     margin-left: var(--spacing-400);
-    margin-bottom: var(--spacing-400);
+    margin-bottom: 20px;
 
-    padding: var(--spacing-400);
+    padding: 0 24px;
 
-    background: var(--background);
+    min-height: 64px;
+
+    background: #2B516A;
 
     border-radius: var(--corner-radius-web);
     outline: var(--thickness-web) solid var(--black);
 
     box-shadow: 6px 6px #121212;
+}
+
+.timelineCard::before {
+    content: '';
+    position: absolute;
+
+    width: 28px;
+    height: 28px;
+
+    border: 4px solid #FFA100;
+    border-radius: 50%;
+
+    background: var(--background);
+
+    left: -45px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.timelineCard:first-child::before {
+    display: none;
 }
 
 .chevron {
