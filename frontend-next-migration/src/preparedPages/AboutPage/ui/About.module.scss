@@ -36,6 +36,8 @@
 }
 
 .containerBottom {
+    position: relative;
+
     background: var(--background);
     text-align: center;
     border-radius: var(--corner-radius-web);
@@ -158,6 +160,7 @@
         font: var(--font-sw-l);
     }
 }
+
 .p {
     font: var(--font-dm-s);
     text-align: left;
@@ -184,6 +187,7 @@
     padding: 0;
     margin: 0 0 2px;
 }
+
 .yearh1 {
     font: var(--font-sw-xl);
     color: var(--primary-color);
@@ -214,11 +218,9 @@
 
 #line {
     position: relative;
-
     width: 95%;
     margin-left: 5%;
     margin-bottom: var(--spacing-600);
-
     box-sizing: border-box;
     border-left: none;
 }
@@ -226,35 +228,48 @@
 #line::before {
     content: '';
     position: absolute;
-
     width: 5px;
-
     background: #FFA100;
-
     left: -9px;
     top: 38px;
     bottom: 40px;
-
     z-index: 1;
 }
 
 #line::after {
     content: '';
     position: absolute;
-
     width: 16px;
     height: 16px;
-
     border-left: 4px solid #FFA100;
     border-top: 4px solid #FFA100;
-
     left: -14.5px;
     top: 28px;
-
     transform: rotate(45deg);
-
     box-sizing: border-box;
     z-index: 2;
+}
+
+#line.timelineNewest::before {
+    top: 4px;
+    bottom: 40px;
+}
+
+#line.timelineOldest::before {
+    top: 40px;
+    bottom: 4px;
+}
+
+#line.timelineNewest::after {
+    top: 2px;
+    bottom: auto;
+    transform: rotate(45deg);
+}
+
+#line.timelineOldest::after {
+    top: auto;
+    bottom: -2px;
+    transform: rotate(225deg);
 }
 
 #History {
@@ -330,21 +345,106 @@
     }
 }
 
+/*
+ * Timeline sort dropdown
+ */
 .sortContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-400);
-    padding-right: var(--spacing-400);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
 }
 
-.sortContainer select {
-    padding: 0.4rem 0.8rem;
+.timelineSortDropdown {
+    position: relative;
+    width: 180px;
+    z-index: 20;
+}
+
+.timelineSortHeader {
+    position: relative;
+    box-sizing: border-box;
+    width: 180px;
+    min-height: 40px;
+    padding: 8px 14px;
+
+    background: #1E3544;
     border-radius: var(--corner-radius-web);
-    border: 2px solid var(--black);
-    background: var(--background);
+    outline: var(--thickness-web) solid var(--black);
+    box-shadow: 6px 6px #121212;
+}
+
+.timelineSortContent {
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    box-sizing: border-box;
+    width: 180px;
+    padding: 8px 10px 10px;
+
+    background: #1E3544;
+    border-radius: 0 0 var(--corner-radius-web) var(--corner-radius-web);
+    outline: var(--thickness-web) solid var(--black);
+    box-shadow: 6px 6px #121212;
+
+    z-index: 21;
+}
+
+.timelineSortItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    min-height: 40px;
+    padding-left: 34px;
+
+    box-sizing: border-box;
+
+    color: var(--white);
     cursor: pointer;
+    text-decoration: none;
+}
+
+.timelineSortItem::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    box-sizing: border-box;
+
+    background: #d9d9d9;
+    border: 1px solid #121212;
+    border-radius: 2px;
+}
+
+.timelineSortItem.active {
+    color: var(--white) !important;
+    text-decoration: none !important;
+}
+
+.timelineSortItem.active::before {
+    background: #FFA100;
+}
+
+.timelineSortItem.active::after {
+    content: '';
+
+    position: absolute;
+    left: 5px;
+    top: 12px;
+
+    width: 8px;
+    height: 4px;
+
+    border-left: 3px solid #121212;
+    border-bottom: 3px solid #121212;
+
+    transform: rotate(-45deg);
 }
 
 .timelineHeader {
@@ -366,11 +466,6 @@
 
 .timelineBody {
     width: 100%;
-}
-
-.chevron {
-    font-size: 1.5rem;
-    color: var(--primary-color);
 }
 
 .timelineCard {
@@ -414,7 +509,11 @@
     z-index: 2;
 }
 
-.timelineCard:first-child::before {
+.timelineNewest .timelineStart::before {
+    display: none;
+}
+
+.timelineOldest .timelineEnd::before {
     display: none;
 }
 

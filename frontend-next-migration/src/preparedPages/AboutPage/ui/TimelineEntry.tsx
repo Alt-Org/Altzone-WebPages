@@ -7,13 +7,20 @@ interface TimelineEntryProps {
     year: number;
     text: string;
     image?: StaticImageData | null;
+    sortOrder: 'asc' | 'desc';
+    isFirst: boolean;
+    isLast: boolean;
 }
 
-const TimelineEntry = ({ year, text, image }: TimelineEntryProps) => {
+const TimelineEntry = ({ year, text, image, sortOrder, isFirst, isLast }: TimelineEntryProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className={cls.timelineCard}>
+        <div
+            className={`${cls.timelineCard} ${
+                isFirst && sortOrder === 'desc' ? cls.timelineStart : ''
+            } ${isLast && sortOrder === 'asc' ? cls.timelineEnd : ''}`}
+        >
             <div
                 className={cls.timelineHeader}
                 onClick={() => setIsOpen(!isOpen)}

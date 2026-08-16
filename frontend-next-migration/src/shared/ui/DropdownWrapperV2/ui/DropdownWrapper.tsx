@@ -272,7 +272,9 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                         </AppLink>
                                     ) : (
                                         <span
-                                            className={''}
+                                            className={classNames(contentItemClassName, {
+                                                [cls.active]: element.active,
+                                            })}
                                             style={{
                                                 cursor: 'pointer',
                                                 color: element.active

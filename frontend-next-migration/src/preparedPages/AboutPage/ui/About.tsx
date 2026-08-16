@@ -100,13 +100,19 @@ const About = (props: Props) => {
                             dynamicTitle="Järjestä"
                             showArrow
                             autoClose
+                            className={cls.timelineSortDropdown}
+                            headerClassName={cls.timelineSortHeader}
+                            contentClassName={cls.timelineSortContent}
+                            contentItemClassName={cls.timelineSortItem}
                             elements={[
                                 {
                                     elementText: 'Uusin ensin',
+                                    active: sortOrder === 'desc',
                                     onClickCallback: () => setSortOrder('desc'),
                                 },
                                 {
                                     elementText: 'Vanhin ensin',
+                                    active: sortOrder === 'asc',
                                     onClickCallback: () => setSortOrder('asc'),
                                 },
                             ]}
@@ -114,7 +120,9 @@ const About = (props: Props) => {
                     </div>
 
                     <div
-                        className={cls.storygrid}
+                        className={`${cls.storygrid} ${
+                            sortOrder === 'desc' ? cls.timelineNewest : cls.timelineOldest
+                        }`}
                         id={cls.line}
                     >
                         <Timeline

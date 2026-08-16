@@ -43,12 +43,15 @@ const Timeline = ({ sortOrder, V2019, V2020, V2021, V2022, V2023, V2024, V2025, 
 
     return (
         <>
-            {sortedTimeline.map((item) => (
+            {sortedTimeline.map((item, index) => (
                 <TimelineEntry
                     key={item.year}
                     year={item.year}
                     text={item.text}
                     image={item.image}
+                    sortOrder={sortOrder}
+                    isFirst={index === 0}
+                    isLast={index === sortedTimeline.length - 1}
                 />
             ))}
         </>
