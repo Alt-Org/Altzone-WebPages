@@ -6,6 +6,11 @@ $touchSize: 1023px;
 .newsContent {
     width: min(716px, 100%);
     margin: 0 auto;
+
+    @media (max-width: breakpoint(sm)) {
+        width: min(195px, calc(100% - 28px));
+        margin: 0 0 0 14px;
+    }
 }
 
 .title {
@@ -26,6 +31,15 @@ $touchSize: 1023px;
 
     @media (max-width: breakpoint(md)) {
         order: 1;
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        margin-bottom: 10px;
+        gap: 10px;
+        width: 121px;
+        height: 48px;
+        font-size: var(--h1-size-mobile);
+        text-align: center;
     }
 }
 
@@ -50,22 +64,6 @@ $touchSize: 1023px;
 
     @media (max-width: breakpoint(sm)) {
         grid-template-columns: minmax(0, 1fr);
-    }
-}
-
-@media (max-width: breakpoint(sm)) {
-    .newsContent {
-        width: min(195px, calc(100% - 28px));
-        margin: 0 0 0 14px;
-    }
-
-    .title {
-        margin-bottom: 10px;
-        gap: 10px;
-        width: 121px;
-        height: 48px;
-        font-size: var(--h1-size-mobile);
-        text-align: center;
     }
 }
 

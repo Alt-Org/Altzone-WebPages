@@ -15,7 +15,6 @@
     grid-template-columns: 182px minmax(0, 1fr);
     align-items: stretch;
     width: 1440px;
-    height: 255px;
     max-width: 1440px;
     min-height: 128px;
     gap: 81px;
@@ -121,8 +120,6 @@
         grid-template-columns: 1fr;
         max-width: 100%;
         width: 328px;
-        height: 516px;
-        min-height: 304px;
         border-radius: var(--border-radius-figmadesktop);
         border: 2px solid #000000;
         box-shadow: 4px 8px 0px 0px var(--ShadowblackShadow);
@@ -142,7 +139,6 @@
 
     .content {
         justify-content: flex-start;
-        gap: 16px;
     }
 
     .meta {
