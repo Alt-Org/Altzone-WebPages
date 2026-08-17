@@ -25,8 +25,8 @@ const InstructionsPage = () => {
 
                         <DescriptionCard.Texts.Body>{t('watch')}</DescriptionCard.Texts.Body>
                     </DescriptionCard.Texts>
+                    <NavigateTeachers />
                 </DescriptionCard>
-                <NavigateTeachers />
                 <SectionLessonFlow />
             </div>
         </Container>
