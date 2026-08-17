@@ -1,39 +1,68 @@
 'use client';
-import { usePathname } from 'next/navigation';
-import { CustomSwitch, CustomSwitchItems } from '@/shared/ui/CustomSwitch';
 import { useMemo } from 'react';
+import { CustomSwitch, CustomSwitchItems } from '@/shared/ui/CustomSwitch';
 import { ProgressIndicator } from '@/shared/ui/CustomSwitch/model/types';
 import { useClientTranslation } from '@/shared/i18n';
 
-const NavigateTeachers = () => {
+interface NavigateTeachersProps {
+    activeStep: number;
+    onBack: () => void;
+    onNext: () => void;
+}
+
+const MIN_STEP = 1;
+const MAX_STEP = 4;
+
+const NavigateTeachers = ({ activeStep, onBack, onNext }: NavigateTeachersProps) => {
     const { t } = useClientTranslation('teachers');
-    const path = usePathname().replace(/^\/[^/]+(?=\/teachers(?:\/|$))/, '');
     const CustomSwitchElements: ProgressIndicator[] = useMemo(() => {
         return [
             {
                 children: <p>{t('instructions')}</p>,
-                isOpen: path === '/teachers/instructions',
+                isOpen: activeStep === 1,
                 type: CustomSwitchItems.ProgressIndicator,
             },
             {
                 children: <p>{t('preparation')}</p>,
-                isOpen: path === '/teachers/preparation',
+                isOpen: activeStep === 2,
                 type: CustomSwitchItems.ProgressIndicator,
             },
             {
                 children: <p>{t('gaming')}</p>,
-                isOpen: path === '/teachers/gaming',
+                isOpen: activeStep === 3,
                 type: CustomSwitchItems.ProgressIndicator,
             },
             {
                 children: <p>{t('results')}</p>,
-                isOpen: path === '/teachers/results',
+                isOpen: activeStep === 4,
                 type: CustomSwitchItems.ProgressIndicator,
             },
         ];
-    }, [path]);
+    }, [activeStep, t]);
 
-    return <CustomSwitch elements={CustomSwitchElements} />;
+    return (
+        <div>
+            <button
+                type="button"
+                onClick={onBack}
+                disabled={activeStep === MIN_STEP}
+                aria-label="Previous step"
+            >
+                ←
+            </button>
+
+            <CustomSwitch elements={CustomSwitchElements} />
+
+            <button
+                type="button"
+                onClick={onNext}
+                disabled={activeStep === MAX_STEP}
+                aria-label="Next step"
+            >
+                →
+            </button>
+        </div>
+    );
 };
 
 export default NavigateTeachers;
