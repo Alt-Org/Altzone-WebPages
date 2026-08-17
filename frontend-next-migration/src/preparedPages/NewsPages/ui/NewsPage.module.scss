@@ -4,12 +4,15 @@ $touchSize: 1023px;
 }
 
 .newsContent {
-    width: min(716px, 100%);
+    width: min(1440px, 100%);
     margin: 0 auto;
+
+    @media (max-width: breakpoint(md)) {
+        width: min(768px, 100% - 28px);
+    }
 
     @media (max-width: breakpoint(sm)) {
         width: min(328px, calc(100% - 28px));
-        margin: 0 auto;
     }
 }
 
@@ -34,7 +37,7 @@ $touchSize: 1023px;
     }
 
     @media (max-width: breakpoint(sm)) {
-        margin-bottom: 20px;
+        margin-bottom: 8px;
         gap: 10px;
         width: auto;
         height: auto;
