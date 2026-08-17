@@ -17,6 +17,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         className = '',
         contentClassName = '',
         contentItemClassName = '',
+        activeItemClassName = '',
         elements,
         isDisabled,
         children,
@@ -153,6 +154,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
     };
 
     const mainElementClass = isDisabled?.status ? cls.disabled : '';
+
     return (
         <div
             ref={rootRef}
@@ -203,7 +205,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                             >
                                 <Image
                                     loading="eager"
-                                    alt={'Chevron'}
+                                    alt="Chevron"
                                     src={chevronDown}
                                     className={cls.chevronImage}
                                 />
@@ -220,6 +222,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                     </div>
                 </div>
             )}
+
             {shouldRender && (
                 <div
                     className={classNames(cls.dropdownContent, modsContent, [contentClassName])}
@@ -247,6 +250,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             isExternal={element.link.isExternal}
                                             className={classNames(contentItemClassName, {
                                                 [cls.active]: element.active,
+                                                [activeItemClassName]: element.active,
                                             })}
                                             onClick={() => {
                                                 if (!openByDefault && !staticDropdown) {
@@ -259,7 +263,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                             {element.link.isExternal && (
                                                 <FontAwesomeIcon
                                                     className={cls.externalLinkIcon}
-                                                    size={'2xs'}
+                                                    size="2xs"
                                                     icon={faExternalLink}
                                                     style={{
                                                         display: 'inline',
@@ -274,6 +278,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                         <span
                                             className={classNames(contentItemClassName, {
                                                 [cls.active]: element.active,
+                                                [activeItemClassName]: element.active,
                                             })}
                                             style={{
                                                 cursor: 'pointer',

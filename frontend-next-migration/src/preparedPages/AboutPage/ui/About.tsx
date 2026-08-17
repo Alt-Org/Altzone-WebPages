@@ -94,31 +94,32 @@ const About = (props: Props) => {
                     </div>
                 </div>
 
-                <div className={cls.containerBottom}>
-                    <div className={cls.sortContainer}>
-                        <DropdownWrapper
-                            dynamicTitle="Järjestä"
-                            showArrow
-                            autoClose
-                            className={cls.timelineSortDropdown}
-                            headerClassName={cls.timelineSortHeader}
-                            contentClassName={cls.timelineSortContent}
-                            contentItemClassName={cls.timelineSortItem}
-                            elements={[
-                                {
-                                    elementText: 'Uusin ensin',
-                                    active: sortOrder === 'desc',
-                                    onClickCallback: () => setSortOrder('desc'),
-                                },
-                                {
-                                    elementText: 'Vanhin ensin',
-                                    active: sortOrder === 'asc',
-                                    onClickCallback: () => setSortOrder('asc'),
-                                },
-                            ]}
-                        />
-                    </div>
+                <div className={cls.sortContainer}>
+                    <DropdownWrapper
+                        dynamicTitle="Järjestä"
+                        showArrow
+                        autoClose
+                        className={cls.timelineSortDropdown}
+                        headerClassName={cls.timelineSortHeader}
+                        contentClassName={cls.timelineSortContent}
+                        contentItemClassName={cls.timelineSortItem}
+                        activeItemClassName={cls.timelineSortItemActive}
+                        elements={[
+                            {
+                                elementText: 'Uusin ensin',
+                                active: sortOrder === 'desc',
+                                onClickCallback: () => setSortOrder('desc'),
+                            },
+                            {
+                                elementText: 'Vanhin ensin',
+                                active: sortOrder === 'asc',
+                                onClickCallback: () => setSortOrder('asc'),
+                            },
+                        ]}
+                    />
+                </div>
 
+                <div className={cls.containerBottom}>
                     <div
                         className={`${cls.storygrid} ${
                             sortOrder === 'desc' ? cls.timelineNewest : cls.timelineOldest

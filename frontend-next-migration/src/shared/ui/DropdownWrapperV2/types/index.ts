@@ -25,6 +25,7 @@ export type DropdownWrapperProps = {
     className?: string;
     contentClassName?: string;
     contentItemClassName?: string;
+    activeItemClassName?: string;
     contentAbsolute?: boolean;
     elements: Array<DropDownElement>;
     onOpen?: () => void;
