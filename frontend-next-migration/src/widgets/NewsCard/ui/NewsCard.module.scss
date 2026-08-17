@@ -14,9 +14,9 @@
     display: grid;
     grid-template-columns: 182px minmax(0, 1fr);
     align-items: stretch;
-    width: 1440px;
-    max-width: 1440px;
-    min-height: 128px;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
     gap: 81px;
     padding-right: 48px;
     overflow: hidden;
@@ -118,46 +118,53 @@
 @media (max-width: breakpoint(sm)) {
     .NewsCard {
         grid-template-columns: 1fr;
-        max-width: 100%;
-        width: 328px;
+        gap: 12px;
+        padding: 0;
         border-radius: var(--border-radius-figmadesktop);
         border: 2px solid #000000;
         box-shadow: 4px 8px 0px 0px var(--ShadowblackShadow);
+        min-height: auto;
     }
 
     .imageContainer {
         width: 100%;
-        height: 100%;
+        height: 180px;
+        min-height: 180px;
     }
 
     .image {
-        width: 264px;
-        height: 223px;
-        top: 29px;
-        left: 38px;
+        width: 100%;
+        height: 100%;
+        top: auto;
+        left: auto;
     }
 
     .content {
         justify-content: flex-start;
+        padding: 14px 14px;
+        gap: 8px;
     }
 
     .meta {
-        width: 174px;
-        height: 21px;
+        width: auto;
+        height: auto;
         order: -1;
         font: var(--font-dm-m);
+        margin-bottom: 4px;
     }
 
     .title {
         font: var(--font-sw-m);
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        margin: 0;
     }
 
     .text {
         font: var(--font-dm-m);
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        margin: 0;
     }
 }
 

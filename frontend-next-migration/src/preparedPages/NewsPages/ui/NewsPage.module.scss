@@ -8,8 +8,8 @@ $touchSize: 1023px;
     margin: 0 auto;
 
     @media (max-width: breakpoint(sm)) {
-        width: min(195px, calc(100% - 28px));
-        margin: 0 0 0 14px;
+        width: min(328px, calc(100% - 28px));
+        margin: 0 auto;
     }
 }
 
@@ -34,10 +34,10 @@ $touchSize: 1023px;
     }
 
     @media (max-width: breakpoint(sm)) {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         gap: 10px;
-        width: 121px;
-        height: 48px;
+        width: auto;
+        height: auto;
         font-size: var(--h1-size-mobile);
         text-align: center;
     }
