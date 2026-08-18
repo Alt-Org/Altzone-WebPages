@@ -18,22 +18,22 @@ const NavigateTeachers = ({ activeStep, onBack, onNext }: NavigateTeachersProps)
     const CustomSwitchElements: ProgressIndicator[] = useMemo(() => {
         return [
             {
-                children: <p>{t('instructions')}</p>,
+                children: <p>{t('1')}</p>,
                 isOpen: activeStep === 1,
                 type: CustomSwitchItems.ProgressIndicator,
             },
             {
-                children: <p>{t('preparation')}</p>,
+                children: <p>{t('2')}</p>,
                 isOpen: activeStep === 2,
                 type: CustomSwitchItems.ProgressIndicator,
             },
             {
-                children: <p>{t('gaming')}</p>,
+                children: <p>{t('3')}</p>,
                 isOpen: activeStep === 3,
                 type: CustomSwitchItems.ProgressIndicator,
             },
             {
-                children: <p>{t('results')}</p>,
+                children: <p>{t('4')}</p>,
                 isOpen: activeStep === 4,
                 type: CustomSwitchItems.ProgressIndicator,
             },
