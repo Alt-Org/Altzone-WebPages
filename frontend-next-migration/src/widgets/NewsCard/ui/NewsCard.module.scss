@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: 182px minmax(0, 1fr);
     align-items: stretch;
-    width: 100%;
+    width: 1920px;
     max-width: 100%;
     min-height: auto;
     gap: 81px;
@@ -118,7 +118,8 @@
 @media (max-width: breakpoint(sm)) {
     .NewsCard {
         grid-template-columns: 1fr;
-        gap: 12px;
+        width: 360px;
+        gap: 32px;
         padding: 0;
         border-radius: var(--border-radius-figmadesktop);
         border: 2px solid #000000;
