@@ -1,9 +1,11 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 import cls from './About.module.scss';
 import { useGetMembersCountQuery, useGetDemographicsQuery, getBehindYears } from '@/entities/About';
 import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2/ui/DropdownWrapper';
 import Timeline from './Timeline';
+import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 
 export interface Props {
     title: string;
@@ -126,6 +128,13 @@ const About = (props: Props) => {
                         }`}
                         id={cls.line}
                     >
+                        <Image
+                            src={chevronDown}
+                            alt=""
+                            aria-hidden="true"
+                            className={cls.timelineChevron}
+                        />
+
                         <Timeline
                             sortOrder={sortOrder}
                             V2019={V2019}

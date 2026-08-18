@@ -119,9 +119,13 @@
 .storygrid {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-400);
+    gap: 36px;
     white-space: pre-line;
     width: 100%;
+    box-sizing: border-box;
+
+    margin-top: 28px;
+    margin-bottom: 28px;
 }
 
 .yearImgWrap {
@@ -194,7 +198,7 @@
     font: var(--font-sw-xl);
     color: var(--primary-color);
     text-align: left;
-    margin-top: -16px;
+    margin-top: 0;
 
     @media (max-width: breakpoint(sm)) {
         text-align: left;
@@ -210,7 +214,7 @@
 
     @media (max-width: breakpoint(lg)) {
         font: var(--font-sw-l);
-        margin-top: -12px;
+        margin-top: 0;
     }
 }
 
@@ -222,9 +226,19 @@
     position: relative;
     width: 95%;
     margin-left: 5%;
-    margin-bottom: var(--spacing-600);
     box-sizing: border-box;
     border-left: none;
+}
+
+.timelineChevron {
+    position: absolute;
+
+    width: 24px;
+    height: 24px;
+
+    left: -18.5px;
+
+    z-index: 2;
 }
 
 #line::before {
@@ -236,42 +250,26 @@
     top: 38px;
     bottom: 40px;
     z-index: 1;
-}
-
-#line::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-left: 4px solid #FFA100;
-    border-top: 4px solid #FFA100;
-    left: -14.5px;
-    top: 28px;
-    transform: rotate(45deg);
-    box-sizing: border-box;
-    z-index: 2;
+    border-radius: 999px;
 }
 
 #line.timelineNewest::before {
-    top: 4px;
+    top: 40px;
     bottom: 40px;
 }
 
 #line.timelineOldest::before {
     top: 40px;
-    bottom: 4px;
+    bottom: 40px;
 }
 
-#line.timelineNewest::after {
-    top: 2px;
-    bottom: auto;
-    transform: rotate(45deg);
+.timelineNewest .timelineChevron {
+    top: 22px;
+    transform: rotate(180deg);
 }
 
-#line.timelineOldest::after {
-    top: auto;
-    bottom: -2px;
-    transform: rotate(225deg);
+.timelineOldest .timelineChevron {
+    bottom: 22px;
 }
 
 #History {
@@ -347,12 +345,6 @@
     }
 }
 
-/*
- * Timeline sort dropdown
- */
-/*
- * Timeline sort dropdown
- */
 .sortContainer {
     width: 30%;
     display: flex;
@@ -509,7 +501,6 @@
     box-sizing: border-box;
 
     margin-left: var(--spacing-400);
-    margin-bottom: 20px;
 
     padding: 0 24px;
 
@@ -521,6 +512,10 @@
     outline: var(--thickness-web) solid var(--black);
 
     box-shadow: 6px 6px #121212;
+}
+
+.timelineCard:last-child {
+    margin-bottom: 0;
 }
 
 .timelineCard::before {
