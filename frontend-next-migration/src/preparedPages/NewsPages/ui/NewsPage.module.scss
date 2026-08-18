@@ -9,7 +9,7 @@ $touchSize: 1023px;
     margin: 0 auto;
 
     @media (max-width: breakpoint(md)) {
-        width: min(768px, 100% - 28px);
+        width: min(768px, calc(100% - 28px));
     }
 
     @media (max-width: breakpoint(sm)) {
