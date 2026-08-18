@@ -5,6 +5,7 @@ $touchSize: 1023px;
 
 .newsContent {
     width: min(1440px, 100%);
+    height: min(255px, 100%);
     margin: 0 auto;
 
     @media (max-width: breakpoint(md)) {
@@ -13,6 +14,7 @@ $touchSize: 1023px;
 
     @media (max-width: breakpoint(sm)) {
         width: min(328px, calc(100% - 28px));
+        height: min(516px, 100%);
     }
 }
 
