@@ -106,6 +106,7 @@ const About = (props: Props) => {
                         contentClassName={cls.timelineSortContent}
                         contentItemClassName={cls.timelineSortItem}
                         activeItemClassName={cls.timelineSortItemActive}
+                        chevronClassName={cls.timelineSortChevron}
                         elements={[
                             {
                                 elementText: 'Uusin ensin',

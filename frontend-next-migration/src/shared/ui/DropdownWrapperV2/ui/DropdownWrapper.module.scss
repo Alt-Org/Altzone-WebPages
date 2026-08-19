@@ -11,6 +11,29 @@
     }
 }
 
+.chevronWrapper {
+    position: absolute;
+    right: 0;
+    top: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    transform: translateY(-50%) rotate(0deg);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.chevronWrapperOpen {
+    transform: translateY(-50%) rotate(180deg);
+}
+
 .dropdownContent {
     padding-top: 10px;
     line-height: 40px !important;

@@ -31,6 +31,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         autoClose = false,
         headerClassName = '',
         childrenWrapperClassName = '',
+        chevronClassName = '',
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
@@ -78,6 +79,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                 setIsOpen(false);
             }
         };
+
         document.addEventListener('az:dropdown-select' as any, handleDropdownSelect as any);
         return () => {
             document.removeEventListener('az:dropdown-select' as any, handleDropdownSelect as any);
@@ -109,6 +111,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             clearTimeout(closeTimer);
             setCloseTimer(null);
         }
+
         setIsOpen(true);
     };
 
@@ -119,6 +122,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
             setIsOpen(false);
             setCloseTimer(null);
         }, 200);
+
         setCloseTimer(timer);
     };
 
@@ -159,9 +163,17 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         <div
             ref={rootRef}
             className={classNames(cls.DropdownWrapper, mods, [className])}
+            data-dropdown-state={
+                isOpen
+                    ? animationState === 'opening'
+                        ? 'opening'
+                        : 'open'
+                    : animationState === 'closing'
+                      ? 'closing'
+                      : 'closed'
+            }
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            // onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             tabIndex={0}
             role="button"
@@ -195,19 +207,13 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                         {dynamicTitle}
                         {showArrow && (
                             <span
-                                style={{
-                                    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                                    transition: 'transform 0.4s ease-in-out',
-                                    position: 'absolute',
-                                    right: '0',
-                                    marginTop: '7px',
-                                }}
+                                className={`${cls.chevronWrapper} ${isOpen ? cls.chevronWrapperOpen : ''}`}
                             >
                                 <Image
                                     loading="eager"
                                     alt="Chevron"
                                     src={chevronDown}
-                                    className={cls.chevronImage}
+                                    className={`${cls.chevronImage} ${chevronClassName}`}
                                 />
                             </span>
                         )}
@@ -294,7 +300,6 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                                                 element.onClickCallback?.();
                                             }}
                                         >
-                                            {/*<span className={contentItemClassName}>*/}
                                             {element.elementText}
                                         </span>
                                     )}

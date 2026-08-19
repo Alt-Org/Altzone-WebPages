@@ -46,4 +46,5 @@ export type DropdownWrapperProps = {
     autoClose?: boolean;
     headerClassName?: string;
     childrenWrapperClassName?: string;
+    chevronClassName?: string;
 };
