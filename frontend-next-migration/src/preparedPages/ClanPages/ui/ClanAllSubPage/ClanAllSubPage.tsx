@@ -17,7 +17,6 @@ import { SearchBar } from '../ClanLayout/ClanLayout';
 import cls from './ClanAllSubPage.module.scss';
 import clanLogo from '@/shared/assets/images/clanLogos/ClanLogo_Placeholder.png';
 import iconLockClosed from '@/shared/assets/images/clanLogos/lock.png';
-import iconLockOpen from '@/shared/assets/images/clanLogos/CommonLockOpen.png';
 import iconClanAgeTeenages from '@/shared/assets/images/clanLogos/ClanAgeTeenages.png';
 
 type ClanItem = GetClansResponse['data']['Clan'][number];
@@ -131,7 +130,6 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                             >
                                 <div className={mobileCardCls.ClanInfoRow}>
                                     <span className={mobileCardCls.ClanInfoBadges}>
-                                        {/* Status badges: render based on backend data */}
                                         {clan.isOpen === false && (
                                             <span title={t('badge_closed')}>
                                                 <Image
@@ -142,47 +140,44 @@ const ClansViewMobile = ({ clans }: MobileProps) => {
                                             </span>
                                         )}
 
-                                        {clan.isOpen === true && (
-                                            <span title={t('badge_open')}>
-                                                <Image
-                                                    src={iconLockOpen}
-                                                    alt={t('badge_open')}
-                                                    className={mobileCardCls.ClanInfoIcon}
-                                                />
-                                            </span>
-                                        )}
+                                        {clan.isOpen === false && (
+                                            <>
+                                                {clan.ageRange === 'Adults' && (
+                                                    <span title={t('badge_adults')}>
+                                                        <Image
+                                                            src={iconClanAgeTeenages}
+                                                            alt={t('badge_adults')}
+                                                            className={mobileCardCls.ClanInfoIcon}
+                                                        />
+                                                    </span>
+                                                )}
 
-                                        {clan.ageRange === 'Adults' && (
-                                            <span title={t('badge_adults')}>
-                                                <Image
-                                                    src={iconClanAgeTeenages}
-                                                    alt={t('badge_adults')}
-                                                    className={mobileCardCls.ClanInfoIcon}
-                                                />
-                                            </span>
+                                                {(() => {
+                                                    const languageIcon = getClanLanguageIcon(
+                                                        clan.language,
+                                                    );
+                                                    return languageIcon ? (
+                                                        <span
+                                                            title={`${t('language')}: ${clan.language}`}
+                                                        >
+                                                            <Image
+                                                                src={languageIcon}
+                                                                alt={clan.language ?? t('language')}
+                                                                className={
+                                                                    mobileCardCls.ClanInfoIcon
+                                                                }
+                                                            />
+                                                        </span>
+                                                    ) : null;
+                                                })()}
+                                            </>
                                         )}
-
-                                        {(() => {
-                                            const languageIcon = getClanLanguageIcon(clan.language);
-                                            return languageIcon ? (
-                                                <span title={`${t('language')}: ${clan.language}`}>
-                                                    <Image
-                                                        src={languageIcon}
-                                                        alt={clan.language ?? t('language')}
-                                                        className={mobileCardCls.ClanInfoIcon}
-                                                    />
-                                                </span>
-                                            ) : null;
-                                        })()}
                                     </span>
                                 </div>
 
                                 <div className={mobileCardCls.ClanInfoStats}>
                                     <p className={mobileCardCls.ClanInfoValue}>
                                         {t('members')} {clan.playerCount} / 30
-                                    </p>
-                                    <p className={mobileCardCls.ClanInfoValue}>
-                                        {t('position')} {clan.positionLeaderboard ?? '-'}
                                     </p>
                                 </div>
 
@@ -247,46 +242,41 @@ const ClansViewDesktop = ({ clans, onClickToClan }: DesktopProps) => {
                                             </span>
                                         )}
 
-                                        {clan.isOpen === true && (
-                                            <span title={t('badge_open')}>
-                                                <Image
-                                                    src={iconLockOpen}
-                                                    alt={t('badge_open')}
-                                                    className={cardCls.ClanInfoIcon}
-                                                />
-                                            </span>
-                                        )}
+                                        {clan.isOpen === false && (
+                                            <>
+                                                {clan.ageRange === 'Adults' && (
+                                                    <span title={t('badge_adults')}>
+                                                        <Image
+                                                            src={iconClanAgeTeenages}
+                                                            alt={t('badge_adults')}
+                                                            className={cardCls.ClanInfoIcon}
+                                                        />
+                                                    </span>
+                                                )}
 
-                                        {clan.ageRange === 'Adults' && (
-                                            <span title={t('badge_adults')}>
-                                                <Image
-                                                    src={iconClanAgeTeenages}
-                                                    alt={t('badge_adults')}
-                                                    className={cardCls.ClanInfoIcon}
-                                                />
-                                            </span>
+                                                {(() => {
+                                                    const languageIcon = getClanLanguageIcon(
+                                                        clan.language,
+                                                    );
+                                                    return languageIcon ? (
+                                                        <span
+                                                            title={`${t('language')}: ${clan.language}`}
+                                                        >
+                                                            <Image
+                                                                src={languageIcon}
+                                                                alt={clan.language ?? t('language')}
+                                                                className={cardCls.ClanInfoIcon}
+                                                            />
+                                                        </span>
+                                                    ) : null;
+                                                })()}
+                                            </>
                                         )}
-
-                                        {(() => {
-                                            const languageIcon = getClanLanguageIcon(clan.language);
-                                            return languageIcon ? (
-                                                <span title={`${t('language')}: ${clan.language}`}>
-                                                    <Image
-                                                        src={languageIcon}
-                                                        alt={clan.language ?? t('language')}
-                                                        className={cardCls.ClanInfoIcon}
-                                                    />
-                                                </span>
-                                            ) : null;
-                                        })()}
                                     </span>
                                 </div>
                                 <div className={cardCls.ClanInfoStats}>
                                     <span className={cardCls.ClanInfoValue}>
                                         {t('members')} {clan.playerCount} / 30
-                                    </span>
-                                    <span className={cardCls.ClanInfoValue}>
-                                        {t('position')} {clan.positionLeaderboard ?? '-'}
                                     </span>
                                 </div>
                                 <div className={cardCls.ClanLabels}>

@@ -362,7 +362,7 @@
     --label-radius: 12px;
 
     // Info row
-    --info-font-size: 1.125rem;
+    --info-font: var(--font-dm-m);
     --info-col-gap: 0.625rem;
 
     // Logo
@@ -469,7 +469,7 @@
     align-items: center;
     gap: var(--info-col-gap);
     color: var(--white);
-    font-size: var(--info-font-size);
+    font: var(--info-font);
     min-width: 0;
     overflow: hidden;
 }
