@@ -37,8 +37,8 @@ const TimelineEntry = ({ year, text, image, sortOrder, isFirst, isLast }: Timeli
                 />
             </div>
 
-            {isOpen && (
-                <div className={cls.timelineBody}>
+            <div className={`${cls.timelineBody} ${isOpen ? cls.timelineBodyOpen : ''}`}>
+                <div className={cls.timelineBodyInner}>
                     {image && (
                         <div className={cls.yearImgWrap}>
                             <Image
@@ -52,8 +52,20 @@ const TimelineEntry = ({ year, text, image, sortOrder, isFirst, isLast }: Timeli
                     )}
 
                     <p className={cls.p}>{text}</p>
+
+                    <div className={cls.timelineCloseArea}>
+                        <div className={cls.timelineDivider} />
+
+                        <button
+                            type="button"
+                            className={cls.timelineCloseButton}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Sulje
+                        </button>
+                    </div>
                 </div>
-            )}
+            </div>
         </div>
     );
 };

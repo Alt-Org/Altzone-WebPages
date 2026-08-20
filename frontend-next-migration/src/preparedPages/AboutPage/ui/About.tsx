@@ -109,12 +109,12 @@ const About = (props: Props) => {
                         chevronClassName={cls.timelineSortChevron}
                         elements={[
                             {
-                                elementText: 'Uusin ensin',
+                                elementText: 'Uusin',
                                 active: sortOrder === 'desc',
                                 onClickCallback: () => setSortOrder('desc'),
                             },
                             {
-                                elementText: 'Vanhin ensin',
+                                elementText: 'Vanhin',
                                 active: sortOrder === 'asc',
                                 onClickCallback: () => setSortOrder('asc'),
                             },

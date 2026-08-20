@@ -134,9 +134,7 @@
     aspect-ratio: 16 / 9;
     border-radius: var(--corner-radius-web);
     overflow: hidden;
-    outline: 4px solid var(--black);
-    box-shadow: 6px 6px #121212;
-    margin: -16px 0 var(--spacing-400) 0;
+    margin: 0 0 var(--spacing-400) 0;
 
     @media (max-width: breakpoint(sm)) {
         max-width: none;
@@ -524,7 +522,66 @@
 }
 
 .timelineBody {
+    display: grid;
+    grid-template-rows: 0fr;
     width: 100%;
+
+    opacity: 0;
+
+    transition:
+        grid-template-rows 0.3s ease,
+        opacity 0.2s ease;
+}
+
+.timelineBodyOpen {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.timelineBodyInner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.timelineCloseArea {
+    width: 100%;
+    padding-top: var(--spacing-400);
+    padding-bottom: var(--spacing-400);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timelineDivider {
+    width: 100%;
+    height: 4px;
+    background: #FFA100;
+    margin-bottom: var(--spacing-400);
+}
+
+.timelineCloseButton {
+    width: 250px;
+    min-height: 40px;
+
+    padding: 6px 24px;
+
+    background: #FFA100;
+    color: #121212;
+
+    border: var(--thickness-web) solid #121212;
+    border-radius: 999px;
+
+    box-shadow: 4px 4px #121212;
+
+    font: var(--font-dm-bold-s);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
 }
 
 .timelineCard {
