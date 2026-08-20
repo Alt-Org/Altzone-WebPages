@@ -1,4 +1,5 @@
 import { ReactNode, FC } from 'react';
+import Image from 'next/image';
 import { CustomForm } from '@/shared/ui/CustomForm';
 import cls from './BaseAuthForm.module.scss';
 import defaultLogo from '@/shared/assets/images/Alt_zone_logo_teksti.png';
@@ -25,10 +26,12 @@ const BaseAuthForm: FC<BaseAuthFormProps> & {
             onSubmit={onSubmit}
         >
             {logo !== null && (
-                <img
+                <Image
                     className={cls.logo}
-                    src={logo || defaultLogo.src}
+                    src={logo || defaultLogo}
                     alt="AltZone Logo"
+                    width={282}
+                    height={238}
                 />
             )}
             <BaseAuthForm.Header>{header}</BaseAuthForm.Header>
