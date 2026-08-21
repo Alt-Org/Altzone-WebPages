@@ -27,14 +27,20 @@ const TimelineEntry = ({ year, text, image, sortOrder, isFirst, isLast }: Timeli
             >
                 <p className={cls.yearh1}>{year}</p>
 
-                <Image
-                    src={chevronDown}
-                    alt=""
-                    width={20}
-                    height={20}
-                    aria-hidden="true"
-                    className={`${cls.chevron} ${isOpen ? cls.chevronOpen : ''}`}
-                />
+                <span
+                    className={`${cls.timelineChevronWrapper} ${
+                        isOpen ? cls.timelineChevronWrapperOpen : ''
+                    }`}
+                >
+                    <Image
+                        src={chevronDown}
+                        alt=""
+                        width={20}
+                        height={20}
+                        aria-hidden="true"
+                        className={cls.chevron}
+                    />
+                </span>
             </div>
 
             <div className={`${cls.timelineBody} ${isOpen ? cls.timelineBodyOpen : ''}`}>
