@@ -47,4 +47,5 @@ export type DropdownWrapperProps = {
     headerClassName?: string;
     childrenWrapperClassName?: string;
     chevronClassName?: string;
+    chevronWrapperClassName?: string;
 };

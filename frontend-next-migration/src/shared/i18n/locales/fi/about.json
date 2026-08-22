@@ -9,6 +9,12 @@
     "locality": "Eri paikkakunnalta",
     "nationality": "Eri kansalaisuutta",
     "behind": "Vuotta matkaa takana",
+    "timeline": {
+        "sort": "Järjestä",
+        "newest": "Uusin",
+        "oldest": "Vanhin",
+        "close": "Sulje"
+    },
 
     "story-title": "ALT Zonen historia",
 

@@ -32,6 +32,7 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
         headerClassName = '',
         childrenWrapperClassName = '',
         chevronClassName = '',
+        chevronWrapperClassName = '',
     } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(openByDefault || staticDropdown);
@@ -207,7 +208,9 @@ export const DropdownWrapper = (props: DropdownWrapperProps) => {
                         {dynamicTitle}
                         {showArrow && (
                             <span
-                                className={`${cls.chevronWrapper} ${isOpen ? cls.chevronWrapperOpen : ''}`}
+                                className={`${cls.chevronWrapper} ${isOpen ? cls.chevronWrapperOpen : ''} ${
+                                    chevronWrapperClassName ?? ''
+                                }`}
                             >
                                 <Image
                                     loading="eager"

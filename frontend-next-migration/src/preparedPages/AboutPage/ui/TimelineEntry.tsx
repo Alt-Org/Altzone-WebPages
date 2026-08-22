@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
 import cls from './About.module.scss';
+import { useClientTranslation } from '@/shared/i18n';
 
 interface TimelineEntryProps {
     year: number;
@@ -14,6 +15,7 @@ interface TimelineEntryProps {
 
 const TimelineEntry = ({ year, text, image, sortOrder, isFirst, isLast }: TimelineEntryProps) => {
     const [isOpen, setIsOpen] = useState(false);
+    const { t } = useClientTranslation('about');
 
     return (
         <div
@@ -67,7 +69,7 @@ const TimelineEntry = ({ year, text, image, sortOrder, isFirst, isLast }: Timeli
                             className={cls.timelineCloseButton}
                             onClick={() => setIsOpen(false)}
                         >
-                            Sulje
+                            {t('timeline.close')}
                         </button>
                     </div>
                 </div>

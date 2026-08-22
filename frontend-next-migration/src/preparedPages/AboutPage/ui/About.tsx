@@ -6,6 +6,7 @@ import { useGetMembersCountQuery, useGetDemographicsQuery, getBehindYears } from
 import { DropdownWrapper } from '@/shared/ui/DropdownWrapperV2/ui/DropdownWrapper';
 import Timeline from './Timeline';
 import chevronDown from '@/shared/assets/icons/chevronDown.svg';
+import { useClientTranslation } from '@/shared/i18n';
 
 export interface Props {
     title: string;
@@ -43,6 +44,8 @@ const About = (props: Props) => {
         V2025,
         V2026,
     } = props;
+
+    const { t } = useClientTranslation('about');
 
     const { data: projectCount = 0, isLoading: membersLoading } = useGetMembersCountQuery();
 
@@ -98,7 +101,7 @@ const About = (props: Props) => {
 
                 <div className={cls.sortContainer}>
                     <DropdownWrapper
-                        dynamicTitle="Järjestä"
+                        dynamicTitle={t('timeline.sort')}
                         showArrow
                         autoClose
                         className={cls.timelineSortDropdown}
@@ -106,15 +109,15 @@ const About = (props: Props) => {
                         contentClassName={cls.timelineSortContent}
                         contentItemClassName={cls.timelineSortItem}
                         activeItemClassName={cls.timelineSortItemActive}
-                        chevronClassName={cls.timelineSortChevron}
+                        chevronWrapperClassName={cls.timelineSortChevronWrapper}
                         elements={[
                             {
-                                elementText: 'Uusin',
+                                elementText: t('timeline.newest'),
                                 active: sortOrder === 'desc',
                                 onClickCallback: () => setSortOrder('desc'),
                             },
                             {
-                                elementText: 'Vanhin',
+                                elementText: t('timeline.oldest'),
                                 active: sortOrder === 'asc',
                                 onClickCallback: () => setSortOrder('asc'),
                             },

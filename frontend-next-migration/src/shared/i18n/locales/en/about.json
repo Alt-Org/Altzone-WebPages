@@ -5,11 +5,16 @@
   "head-keywords": "ALT Zone, ALT Zone mobile game, community game development, participate in game creation, game art mobile game",
   "og-title": "Psyche's Royale Gaming ry – Creators and Community of ALT Zone Game Art",
   "og-description": "PRG ry is a Finnish non-profit association developing the ALT Zone mobile game in collaboration with youth, volunteers, and game industry professionals.",
-
   "project": "Has worked on this project",
   "locality": "Localities represented",
   "nationality": "Nationalities represented",
   "behind": "Years into the journey",
+  "timeline": {
+        "sort": "Sort by",
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "close": "Close"
+    },
 
   "story-title": "ALT Zone's history",
   
