@@ -47,6 +47,10 @@ const About = (props: Props) => {
 
     const { t } = useClientTranslation('about');
 
+    const designers = t('designer.names', {
+        returnObjects: true,
+    }) as { name: string; url: string }[];
+
     const { data: projectCount = 0, isLoading: membersLoading } = useGetMembersCountQuery();
 
     const {
@@ -151,6 +155,24 @@ const About = (props: Props) => {
                             V2026={V2026}
                         />
                     </div>
+                </div>
+
+                <div className={cls.designerContainer}>
+                    <p className={cls.designerText}>
+                        {t('designer.label')}{' '}
+                        {designers.map((designer, index) => (
+                            <span key={designer.name}>
+                                {index > 0 && ', '}
+                                <a
+                                    href={designer.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {designer.name}
+                                </a>
+                            </span>
+                        ))}
+                    </p>
                 </div>
             </div>
         </main>
