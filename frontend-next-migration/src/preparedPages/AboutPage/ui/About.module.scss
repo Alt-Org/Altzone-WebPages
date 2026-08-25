@@ -677,6 +677,10 @@
     justify-content: center;
 
     box-sizing: border-box;
+
+    @media (max-width: 400px) {
+        width: calc(100% - 16px);
+    }
 }
 
 .timelineCard {
