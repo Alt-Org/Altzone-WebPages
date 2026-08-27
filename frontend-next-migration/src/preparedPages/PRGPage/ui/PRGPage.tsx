@@ -8,7 +8,6 @@ import Image, { StaticImageData } from 'next/image';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import Helena from '@/shared/assets/images/board/helena.png';
-import Esa from '@/shared/assets/images/board/esa.png';
 import Emmi_Irina from '@/shared/assets/images/board/emmi-irina.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -142,10 +141,10 @@ const PRGPage = () => {
                             isMobileSize={isMobileSize}
                         />
                         <Boardcard
-                            picture={Esa}
-                            name={'Esa Pavloff-Pelkonen'}
-                            job={'esa-job'}
-                            profession={'esa-profession'}
+                            picture={Helena}
+                            name={'Miko Murto'}
+                            job={'miko-murto-job'}
+                            profession={'miko-murto-profession'}
                             t={t}
                             isMobileSize={isMobileSize}
                         />
@@ -169,10 +168,10 @@ const PRGPage = () => {
                             isMobileSize={isMobileSize || isTabletSize}
                         />
                         <Boardcard
-                            picture={Esa}
-                            name={'Esa Pavloff-Pelkonen'}
-                            job={'esa-job'}
-                            profession={'esa-profession'}
+                            picture={Helena}
+                            name={'Miko Murto'}
+                            job={'miko-murto-job'}
+                            profession={'miko-murto-profession'}
                             t={t}
                             isMobileSize={isMobileSize || isTabletSize}
                         />
