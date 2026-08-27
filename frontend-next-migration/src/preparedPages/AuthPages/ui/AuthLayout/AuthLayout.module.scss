@@ -2,7 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     min-height: 80svh;
+    padding: 0 var(--spacing-md);
+    box-sizing: border-box;
 }
 
 @media (hover: none) {
@@ -10,3 +13,11 @@
         min-height: 100lvh;
     }
 }
+
+@media (max-width: breakpoint(sm)) {
+    .authLayout {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
