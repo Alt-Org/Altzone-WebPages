@@ -46,6 +46,7 @@ function pickTranslationByLocale<T extends { languages_code?: string }>(
 const FIELDS = [
     'id',
     'slug',
+    'status',
     'order',
     ...HERO_IMG_KEYS.flatMap((key) => [`${key}.id`, `${key}.width`, `${key}.height`]),
     ...HERO_GIF_KEYS.flatMap((key) => [`${key}.id`, `${key}.width`, `${key}.height`]),
@@ -175,6 +176,7 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
 function buildParams(locale: Locale, options?: { slug?: string; limit?: string }) {
     const params = new URLSearchParams();
     if (options?.slug) params.set('filter[slug][_eq]', options.slug);
+    params.set('filter[status][_eq]', 'Published');
     if (options?.limit) params.set('limit', options.limit);
     params.set('fields', FIELDS);
     params.set('sort', 'order');
