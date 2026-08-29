@@ -1,10 +1,8 @@
 export { Block } from './ui/Block';
 
 export {
-    makeDiscordBlock,
-    makeRedditBlock,
-    makeTeachersBlock,
-    makeDuunitoriBlock,
-    makeFeedbackBlock,
-    makeInstagramBlock,
+    makeGetInTouchAndFollow,
+    makeCommunityAndOpportunities,
+    makeEducationProfessionals,
+    makeFeedback,
 } from './model/makeJoinUsBlocks';

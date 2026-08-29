@@ -4,19 +4,7 @@ $touchSize: 1024px;
     display: flex;
     flex-direction: column;
     margin: auto;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    padding: 0;
-    font: var(--font-dm-m);
-    margin: auto;
-
-    a {
-        word-wrap: break-word;
-    }
+    width: 100%;
 }
 
 .mainContent {
@@ -27,10 +15,9 @@ $touchSize: 1024px;
     flex-direction: row;
     width: 100%;
     position: relative;
-    margin-bottom: 10%;
-    overflow: visible; // Ensure this is set
+    margin-bottom: 5%;
+    overflow: visible;
 }
-
 
 .navbarSide {
     position: sticky;
@@ -72,7 +59,9 @@ $touchSize: 1024px;
         margin-top: 10px;
         cursor: pointer;
         padding: 10px;
-        transition: color 0.5s, border-left 0.2s;
+        transition:
+            color 0.5s,
+            border-left 0.2s;
 
         &:hover {
             color: var(--primary-color);
@@ -90,27 +79,30 @@ $touchSize: 1024px;
     }
 }
 
-
 .content {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     font: var(--font-dm-m);
+    margin: 0;
+    padding: 0;
 
     h1 {
         font: var(--font-sw-5xl);
         color: var(--primary-color);
         line-height: 1.5 !important;
         text-align: center;
+        margin-bottom: 2rem;
+        margin-top: 0;
     }
 
-    @media(max-width: 500px){
+    @media (max-width: 500px) {
         h1 {
             font: var(--font-sw-xxxl);
+            margin-bottom: 1.5rem;
         }
     }
 }
-
 
 .section {
     width: 100%;
@@ -146,9 +138,196 @@ $touchSize: 1024px;
     }
 
     a:hover {
-        color: var(--primary-color)
+        color: var(--primary-color);
     }
 }
+
+/**
+ * Accordion Styles Module
+ * 
+ * This section contains all CSS classes for the accordion/collapsible section functionality.
+ * The accordion allows sections to expand and collapse with smooth animations.
+ */
+
+/**
+ * Main collapsible section container
+ * 
+ * @styling
+ * - Creates the outer wrapper for each accordion item
+ * - Applies background color, border, and shadow styling consistent with section design
+ * - Provides container for header and collapsible content
+ * - Enhanced shadow on hover for visual feedback
+ */
+.collapsibleSection {
+    width: 100%;
+    margin: 0.75rem 0;
+    background-color: var(--background);
+    border-radius: var(--border-radius-figmadesktop);
+    border: 4px solid var(--drop-shadows);
+    box-shadow: 5px 7px var(--drop-shadows);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 6px 8px var(--drop-shadows);
+    }
+}
+
+/**
+ * Section header (clickable button area)
+ * 
+ * @styling
+ * - Flexbox layout for aligning title and chevron icon
+ * - Full width, padded clickable area
+ * - Subtle background color change on hover for interactivity feedback
+ * - Focus visible outline for keyboard navigation accessibility
+ * - Text alignment set to left for proper content alignment
+ */
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: left;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: -2px;
+    }
+}
+
+/**
+ * Section title text styling
+ * 
+ * @styling
+ * - Primary color to match component branding
+ * - Large font size (font-sw-xl) for prominence
+ * - Flexible width to accommodate long titles
+ * - Word-break enabled to handle long text gracefully
+ */
+.sectionTitle {
+    color: var(--primary-color);
+    font: var(--font-sw-xl);
+    margin: 0;
+    flex: 1;
+    word-break: break-word;
+}
+
+/**
+ * Chevron icon container for expand/collapse indicator
+ * 
+ * @styling
+ * - Initially rotated 90 degrees (pointing right/left depending on RTL)
+ * - Rotates to 0 degrees when section is expanded
+ * - Smooth transition animation (0.3s ease)
+ * - Flexbox centered alignment
+ * - No flex-shrink to maintain consistent size
+ */
+.chevronIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    width: 24px;
+    height: 24px;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/**
+ * Chevron icon rotated state
+ * 
+ * @styling
+ * - Applied when accordion section is expanded
+ * - Rotates chevron to 0 degrees (pointing down)
+ * - Pairs with animation defined in .chevronIcon
+ */
+.chevronIcon.rotated {
+    transform: rotate(0deg);
+}
+
+/**
+ * Collapsible content area wrapper
+ * 
+ * @styling
+ * - Max-height starts at 0px (fully collapsed)
+ * - Content hidden when collapsed (overflow: hidden)
+ * - Smooth height and opacity transitions for expand/collapse animation
+ * - Opacity transition delayed to create staggered animation effect
+ * - Recalculates max-height dynamically based on content size
+ */
+.sectionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease 0.05s;
+    opacity: 0;
+}
+
+/**
+ * Expanded state for section content
+ * 
+ * @styling
+ * - Applied to .sectionContent when parent .collapsibleSection.expanded
+ * - Opacity transitions to full visibility
+ * - Transition timing adjusted for smooth appear animation
+ */
+.collapsibleSection.expanded .sectionContent {
+    opacity: 1;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.2s ease;
+}
+
+/**
+ * Inner content wrapper inside collapsible area
+ * 
+ * @styling
+ * - Padding applied to create spacing around content
+ * - Contains paragraphs and images with consistent typography
+ * - Paragraph styling with white color, readable line-height
+ * - Link colors with hover transitions for interactivity
+ */
+.contentInner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+
+    p {
+        color: var(--white);
+        font: var(--font-dm-m);
+        line-height: 1.6;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        margin: 0;
+
+        a {
+            color: var(--inverted-primary-color);
+            text-decoration: underline;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+        }
+    }
+}
+
+/* Accordion/Collapsible Section Styles */
 
 .sectionImage {
     display: block;
@@ -158,9 +337,7 @@ $touchSize: 1024px;
     width: auto;
     object-fit: contain;
 
-
     box-shadow: 0 0 4px var(--primary-color);
-
 }
 
 @media screen and (min-width: breakpoint(md)) {
@@ -168,31 +345,51 @@ $touchSize: 1024px;
         padding-left: 2rem;
         padding-right: 2rem;
     }
-
-    .section {
-        padding: 5%;
-    }
-
 }
 
 @media screen and (min-width: $touchSize) {
-    .section {
-        margin: 5%;
-    }
-
     .content {
-        width: 70%;
-        margin: 0;
-
-        h1 {
-            text-align: left;
-            padding-left: 5%;
-        }
+        width: 100%;
     }
 }
 
-@media screen and (min-width: breakpoint(xxl)) {
-    .pageContainer {
-        max-width: 1500px;
+@media screen and (max-width: 500px) {
+    .collapsibleSection {
+        margin: 0.5rem 0;
+    }
+
+    .sectionHeader {
+        padding: 1rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sectionTitle {
+        font: var(--font-dm-bold-l);
+    }
+
+    .contentInner {
+        padding: 0 1rem 1rem 1rem;
+
+        p {
+            font-size: 0.85rem;
+        }
+    }
+
+    .chevronIcon {
+        width: 20px;
+        height: 20px;
+        margin-left: 0.75rem;
+    }
+}
+
+/* Accessibility: Ensure tap targets are large enough on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .sectionHeader {
+        padding: 1.25rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
 }

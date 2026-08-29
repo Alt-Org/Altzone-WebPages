@@ -1,81 +1,136 @@
 'use client';
-import { ReactNode } from 'react';
 import cls from './ComingPage.module.scss';
 import Image from 'next/image';
-import hateSpeech from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
-import jokester from '@/shared/assets/images/heros/jokester/Jokester.png';
-import believer from '@/shared/assets/images/heros/fate-priest/Believer.png';
-import provocator from '@/shared/assets/images/heros/provocator/Provokaattori.png';
-import alcoholic from '@/shared/assets/images/heros/alcoholic/Alkoholisti.png';
-import purpleGirls from '@/shared/assets/images/heros/purple-girls/purpel-girls-main.png';
-import pedant from '@/shared/assets/images/heros/pedant/Viisastelija.png';
+import { useClientTranslation } from '@/shared/i18n';
+import titleFogImg from '@/shared/assets/images/titlefog.png';
+import titleFogSmallImg from '@/shared/assets/images/titlefogsmall.png';
+import comingSoonSign from '@/shared/assets/images/Coming-soon-sign.png';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
+import stoner from '@/shared/assets/images/comingPage/possyttelija.png';
+import delusion from '@/shared/assets/images/comingPage/harhaisuus.png';
+import fashionMadness from '@/shared/assets/images/comingPage/muotihulluus.png';
+import jokester from '@/shared/assets/images/comingPage/vitsinvaantaja.png';
+import veteran from '@/shared/assets/images/comingPage/posttraumaattinenveteraani.png';
+import pedant from '@/shared/assets/images/comingPage/viisastelija.png';
+import fatigue from '@/shared/assets/images/comingPage/vasyminen.png';
 
 export type Props = {
+    /** the title text that goes on the curved path */
     title: string;
-    text: ReactNode;
+    /** language code, like 'fi' for finnish. changes letter spacing a bit */
+    lng?: string;
 };
 
+/** the "coming soon" page. curved title with fog, a sign, and characters*/
 const ComingPage = (props: Props) => {
-    const { title, text } = props;
+    const { title, lng } = props;
+    const { t } = useClientTranslation('coming');
+    const isFinnish = lng === 'fi';
+    const { isMobileSize } = useIsMobileSize();
+
+    const viewBox = '0 -100 1700 200';
+    const pathId = 'textArc';
+    const pathD = 'M 50 200 Q 850 -300 1650 200';
+    const imgX = isMobileSize ? '0' : '50';
+    const imgY = isMobileSize ? '-300' : '-220';
+    const imgW = isMobileSize ? '1700' : '1600';
+    const imgH = isMobileSize ? '600' : '420';
 
     return (
         <main className={cls.main}>
-            <div className={cls.container}>
-                <h1 className={cls.title}>{title}</h1>
-                <div className={cls.title}>{text}</div>
-                <div className={cls.images}>
-                    <Image
-                        src={hateSpeech.src}
-                        alt="Hate Speech"
-                        priority={true}
-                        width={150}
-                        height={150}
-                    />
-                    <Image
-                        src={jokester}
-                        alt="Jokester"
-                        priority={true}
-                        width={150}
-                        height={150}
-                    />
-                    <Image
-                        src={believer}
-                        alt="Believer"
-                        priority={true}
-                        width={150}
-                        height={150}
-                    />
-                    <Image
-                        src={provocator}
-                        alt="Provocator"
-                        priority={true}
-                        width={150}
-                        height={150}
-                    />
-                    <Image
-                        src={alcoholic}
-                        alt="Alcoholic"
-                        width={150}
-                        height={150}
-                        priority={true}
-                        className={cls.flipped}
-                    />
-                    <Image
-                        src={purpleGirls}
-                        alt="Purple Girls"
-                        width={150}
-                        height={150}
-                        priority={true}
-                        className={cls.flipped}
-                    />
-                    <Image
-                        src={pedant}
-                        alt="Pedant"
-                        priority={true}
-                        width={150}
-                        height={150}
-                        className={cls.pedant}
-                    />
+            <div className={cls.pageContent}>
+                <div className={cls.titleSection}>
+                    <svg
+                        viewBox={viewBox}
+                        className={cls.curvedText}
+                    >
+                        <image
+                            href={isMobileSize ? titleFogSmallImg.src : titleFogImg.src}
+                            x={imgX}
+                            y={imgY}
+                            width={imgW}
+                            height={imgH}
+                            preserveAspectRatio="xMidYMid slice"
+                        />
+                        <path
+                            id={pathId}
+                            d={pathD}
+                            fill="none"
+                        />
+                        <text>
+                            <textPath
+                                href={`#${pathId}`}
+                                startOffset="50%"
+                                textAnchor="middle"
+                                className={cls.curvedTextPath}
+                                {...(isMobileSize
+                                    ? { textLength: '1600', lengthAdjust: 'spacing' }
+                                    : {})}
+                                letterSpacing={isFinnish ? '5' : '-10'}
+                                style={
+                                    !isFinnish && isMobileSize ? { fontSize: '130px' } : undefined
+                                }
+                            >
+                                {title}
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <div className={cls.bodySection}>
+                    <div className={cls.signWrapper}>
+                        <Image
+                            src={comingSoonSign}
+                            alt="Coming soon sign"
+                            width={700}
+                            height={617}
+                        />
+                        <span className={cls.signText}>{t('signTitle')}</span>
+                    </div>
+                    <div className={cls.images}>
+                        <Image
+                            src={stoner}
+                            alt="Pössyttelijä"
+                            width={150}
+                            height={150}
+                        />
+                        <Image
+                            src={delusion}
+                            alt="Harhaisuus"
+                            width={150}
+                            height={150}
+                        />
+                        <Image
+                            src={fashionMadness}
+                            alt="Muotihulluus"
+                            width={150}
+                            height={150}
+                            className={cls.flipped}
+                        />
+                        <Image
+                            src={jokester}
+                            alt="Vitsinvääntäjä"
+                            width={150}
+                            height={150}
+                        />
+                        <Image
+                            src={veteran}
+                            alt="Posttraumaattinen veteraani"
+                            width={150}
+                            height={150}
+                        />
+                        <Image
+                            src={pedant}
+                            alt="Viisastelija"
+                            width={150}
+                            height={150}
+                        />
+                        <Image
+                            src={fatigue}
+                            alt="Väsyminen"
+                            width={150}
+                            height={150}
+                        />
+                    </div>
                 </div>
             </div>
         </main>

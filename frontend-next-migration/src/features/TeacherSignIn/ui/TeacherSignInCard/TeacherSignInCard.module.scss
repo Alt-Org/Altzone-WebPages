@@ -1,0 +1,306 @@
+.PageLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 1920;
+    height: 1656;
+}
+
+.Container {
+    --teacher-login-card-width: 760px;
+    --teacher-login-card-height: 532.58px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 950px;
+    height: 634px;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: visible;
+    box-sizing: border-box;
+}
+
+.AltLogo {
+    position: absolute;
+    top: -7px;
+    left: 30px;
+    z-index: 20;
+    width: 193px;
+    height: 161px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        top: 100px;
+        left: 3px;
+        width: 150px;
+        height: 125px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        top: 95px;
+        left: 5px;
+        width: 120px;
+        height: 100px;
+    }
+}
+
+// Main card container
+.Card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #2b353a;
+    border: 7px solid var(--primary-color);
+    border-radius: var(--border-radius-md);
+    padding: 10px;
+    gap: 10px;
+    width: var(--teacher-login-card-width);
+    height: var(--teacher-login-card-height);
+    max-width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px 0px #000000c4;
+
+    @media (max-width: $breakpoint-md) {
+        max-width: 90%;
+        height: auto;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        max-width: 90%;
+        height: auto;
+    }
+}
+
+.Title {
+    width: 644;
+    height: 63;
+    top: 495px;
+    left: 685px;
+
+    text-align: center;
+    color: var(--primary-color);
+    margin: 0 0 30px 0;
+    letter-spacing: 1%;
+    font: var(--font-sw-xxxl);
+    text-transform: none;
+
+    @media (max-width: $breakpoint-md) {
+        font: var(--font-sw-xl);
+        margin-bottom: 30px;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        font: var(--font-sw-m);
+        margin-bottom: 5px;
+    }
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    gap: 20px;
+
+    width: 438.51px;
+    max-width: calc(100% - 40px);
+
+    @media (max-width: $breakpoint-sm) {
+        gap: 15px;
+    }
+}
+
+.FormGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.UsernameInputWrapper,
+.PasswordInputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.UsernameInput {
+    width: 438.51px;
+    max-width: 100%;
+    height: 54.54px;
+    padding: var(--spacing-250) var(--spacing-400) var(--spacing-250) var(--spacing-400);
+    gap: var(--spacing-400);
+    font: var(--font-dm-l);
+    background: var(--background);
+    border: 1.96px solid var(--Border-blackBorder, #121212);
+    border-radius: var(--border-radius-xl);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: var(--primary-color);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--black);
+        background: var(--background);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        padding: 12px 14px;
+        font: var(--font-dm-m);
+    }
+}
+
+.PasswordInput {
+    width: 438.51px;
+    max-width: 100%;
+    height: 54.54px;
+    padding: var(--spacing-250) var(--spacing-400) var(--spacing-250) var(--spacing-400);
+    gap: var(--spacing-400);
+    font: var(--font-dm-l);
+    background: var(--background);
+    border: 1.96px solid var(--Border-blackBorder, #121212);
+    border-radius: var(--border-radius-xl);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: var(--primary-color);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--black);
+        background: var(--background);
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        padding: 12px 14px;
+        padding-right: 46px;
+        font: var(--font-dm-m);
+    }
+}
+
+.UsernameToggle,
+.PasswordToggle {
+    gap: 9.81px;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+
+    &:focus {
+        outline: none;
+        color: var(--primary-color);
+    }
+
+    svg {
+        width: 19.62px;
+        height: 16.68px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        padding: 5px;
+
+        svg {
+            width: 18px;
+            height: 16px;
+        }
+    }
+}
+
+.SubmitButton {
+    width: 180.01px;
+    height: 58px;
+
+    padding: 11.77px 23.54px 11.77px 23.54px;
+    gap: 9.81px;
+
+    margin-top: 28px;
+    letter-spacing: -4%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    white-space: nowrap;
+
+    border-radius: var(--border-radius-xl);
+
+    box-shadow: 1.96px 3.92px 0px 0px var(--black);
+
+    @media (max-width: $breakpoint-sm) {
+        margin-top: 20px;
+        min-width: auto;
+    }
+}
+
+.TeacherCharacter {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+
+    width: 282px;
+    height: 282px;
+    right: 70px;
+    bottom: -45px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: contain;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        width: 200px;
+        height: 200px;
+        right: 30px;
+        bottom: 75px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        width: 125px;
+        height: 125px;
+        right: -8px;
+        bottom: 130px;
+    }
+}

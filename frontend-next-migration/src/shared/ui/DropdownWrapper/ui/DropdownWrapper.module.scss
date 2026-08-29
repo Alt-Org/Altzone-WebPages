@@ -57,7 +57,7 @@
 }
 .childrenWrapper {
     display: flex;
-    inline-size: 110px;
+    inline-size: fit-content;
     overflow-wrap: break-word;
 }
 

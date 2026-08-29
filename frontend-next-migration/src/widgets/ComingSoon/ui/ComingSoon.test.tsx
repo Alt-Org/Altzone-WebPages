@@ -29,7 +29,6 @@ describe('ComingSoon', () => {
         render(<ComingSoon />);
 
         expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('title');
-        expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('text');
         expect(screen.getByRole('button', { name: /backText/i })).toBeInTheDocument();
     });
 
