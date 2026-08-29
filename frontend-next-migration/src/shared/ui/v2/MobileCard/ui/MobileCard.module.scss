@@ -1,309 +1,367 @@
 @mixin card-dimensions {
-  --gap: 0.5rem;
-  width: calc(33.333% - 2 * var(--gap) / 3);
-  height: calc(33.333vh - 2 * var(--gap) / 3);
+    --gap: 0.5rem;
+    width: calc(33.333% - 2 * var(--gap) / 3);
+    height: calc(33.333vh - 2 * var(--gap) / 3);
 }
 
-.MobileCard.DefenseGalleryCard  {
-  @include card-dimensions;
-  overflow: hidden;
-  border-radius: var(--corner-radius-web);
-  background-color: var(--base-card-background);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  border: var(--border-mobile) solid var(--black);
-  box-shadow: var(--black) 4px 6px 0;
+.MobileCard.DefenseGalleryCard {
+    @include card-dimensions;
+    overflow: hidden;
+    border-radius: var(--corner-radius-web);
+    background-color: var(--base-card-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border: var(--border-mobile) solid var(--black);
+    box-shadow: var(--black) 4px 6px 0;
 }
 .withScalableLink {
-  transition: border-color ease .4s;
-  .TextContainer {
-    transition: height ease .4s;
-  }
-  .ImageContainer{
-    transition: height ease .4s;
-  }
-  &:active {
-    .MobileCard {
-      border-color: var(--primary-color);
-    }
+    transition: border-color ease 0.4s;
     .TextContainer {
-      height: 20% !important;
+        transition: height ease 0.4s;
     }
     .ImageContainer {
-      height: 80% !important;
+        transition: height ease 0.4s;
     }
-  }
-  &:hover {
-    .MobileCard {
-      border-color: var(--primary-color);
+    &:active {
+        .MobileCard {
+            border-color: var(--primary-color);
+        }
+        .TextContainer {
+            height: 20% !important;
+        }
+        .ImageContainer {
+            height: 80% !important;
+        }
     }
-    .TextContainer {
-      height: 20% !important;
+    &:hover {
+        .MobileCard {
+            border-color: var(--primary-color);
+        }
+        .TextContainer {
+            height: 20% !important;
+        }
+        .ImageContainer {
+            height: 80% !important;
+        }
     }
-    .ImageContainer {
-      height: 80% !important;
-    }
-  }
 }
 
 .MobileCard {
-  transition: border-color ease .4s;
+    transition: border-color ease 0.4s;
 }
 .AppLink {
-  @include card-dimensions;
+    @include card-dimensions;
 }
 
 .AppLink .MobileCard {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .MobileCard.DefenseGalleryCard > .ImageContainer {
-  height: 70%;
-  width: 100%;
-  overflow: hidden;
-  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-  padding-top: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+    padding-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .MobileCard.DefenseGalleryCard > .TextContainer {
-  margin-top: 10%;
+    margin-top: 10%;
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title1 {
-  color:var(--white);
-  @media (max-width: breakpoint(sm)) {
-    font: var(--font-sw-m);
-  }
-  @media (max-width: breakpoint(xs)) {
-    font: var(--font-sw-s);
-  }
+    color: var(--white);
+    @media (max-width: breakpoint(sm)) {
+        font: var(--font-sw-m);
+    }
+    @media (max-width: breakpoint(xs)) {
+        font: var(--font-sw-s);
+    }
 }
 .MobileCard.DefenseGalleryCard > .TextContainer > .Title2 {
-  color:var(--primary-color);
-  @media (max-width: breakpoint(sm)) {
-    font: var(--font-sw-m);
-  }
-  @media (max-width: breakpoint(xs)) {
-    font: var(--font-sw-s);
-  }
-
+    color: var(--primary-color);
+    @media (max-width: breakpoint(sm)) {
+        font: var(--font-sw-m);
+    }
+    @media (max-width: breakpoint(xs)) {
+        font: var(--font-sw-s);
+    }
 }
 
 // FurnitureCollectionsCard
 
 @mixin furniture-card-dimensions {
-  --gap: 2em;
-  width: 100%;
-  height: 400px;
+    --gap: 2em;
+    width: 100%;
+    height: 400px;
 }
 
-.MobileCard.FurnitureCollectionsCard  {
-  @include furniture-card-dimensions;
-  overflow: hidden;
-  border-radius: var(--corner-radius-web);
-  background-color: var(--base-card-background);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  border: var(--border-mobile) solid var(--black);
-  box-shadow: var(--black) 4px 6px 0;
-  position: relative;
+.MobileCard.FurnitureCollectionsCard {
+    @include furniture-card-dimensions;
+    overflow: hidden;
+    border-radius: var(--corner-radius-web);
+    background-color: var(--base-card-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border: var(--border-mobile) solid var(--black);
+    box-shadow: var(--black) 4px 6px 0;
+    position: relative;
 }
 
-.FurnitureCollectionsCard.MobileCard  {
-  transition: border-color ease .4s;
+.FurnitureCollectionsCard.MobileCard {
+    transition: border-color ease 0.4s;
 }
-.FurnitureCollectionsCard.AppLink  {
-  @include furniture-card-dimensions;
+.FurnitureCollectionsCard.AppLink {
+    @include furniture-card-dimensions;
 }
 
 .AppLink .MobileCard {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 .MobileCard.FurnitureCollectionsCard > .ImageContainer {
-  width: 100%;
-  height: 70%;
-  background-color: transparent;
-  overflow: hidden;
-  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-  
-  .Image {
-    object-fit: cover !important;
-    object-position: center bottom;
     width: 100%;
-    height: auto;
-    max-height: none;
-  }
+    height: 70%;
+    background-color: transparent;
+    overflow: hidden;
+    clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+
+    .Image {
+        object-fit: cover !important;
+        object-position: center bottom;
+        width: 100%;
+        height: auto;
+        max-height: none;
+    }
 }
 .MobileCard.FurnitureCollectionsCard > .TextContainer {
-  margin-top: 10%;
+    margin-top: 10%;
 }
 .MobileCard.FurnitureCollectionsCard > .TextContainer > .Title1 {
-  color:var(--white);
-  font-family: var(--font-family-title);
-  font-size: 1.5rem;
-  font-weight: 400;
-  @media (max-width: breakpoint(sm)) {
-    font-size: 1.2rem;
-  }
-  @media (max-width: breakpoint(xs)) {
-    font-size: .9rem;
-  }
+    color: var(--white);
+    font-family: var(--font-family-title);
+    font-size: 1.5rem;
+    font-weight: 400;
+    @media (max-width: breakpoint(sm)) {
+        font-size: 1.2rem;
+    }
+    @media (max-width: breakpoint(xs)) {
+        font-size: 0.9rem;
+    }
 }
 .MobileCard.FurnitureCollectionsCard > .TextContainer > .Title2 {
-  color:var(--primary-color);
-  font-family: var(--font-family-title);
-  font-size: 1.5rem;
-  font-weight: 400;
-  @media (max-width: breakpoint(sm)) {
-    font-size: 1rem;
-  }
-  @media (max-width: breakpoint(xs)) {
-    font-size: .8rem;
-  }
-
+    color: var(--primary-color);
+    font-family: var(--font-family-title);
+    font-size: 1.5rem;
+    font-weight: 400;
+    @media (max-width: breakpoint(sm)) {
+        font-size: 1rem;
+    }
+    @media (max-width: breakpoint(xs)) {
+        font-size: 0.8rem;
+    }
 }
 
 // ClanCard
 .MobileCard.ClanCard {
-  @include card-dimensions;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--corner-radius-web);
-  background-color: var(--base-card-background);
-  display: flex;
-  flex-direction: column;
-  border: var(--border-mobile) solid var(--black);
-  box-shadow: var(--black) 4px 6px 0;
-  padding: 0.5rem;
-
-  > .TextContainer:first-of-type {
-    height: 24%;
-    padding: 0.25rem 0.25rem 0;
+    @include card-dimensions;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--corner-radius-web);
+    background-color: var(--base-card-background);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 0.25rem;
     align-items: center;
-    position: relative;
-    z-index: 1;
+    justify-content: flex-start;
+    border: var(--border-mobile) solid var(--black);
+    box-shadow: 4px 8px 0px 0px var(--black);
+    padding: 0.625rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease-out;
 
-    .Title1 {
-      color: var(--white);
-      font: var(--font-sw-l);
-      line-height: 1.1;
-      margin: 0;
-      text-align: center;
-      max-width: 100%;
-      white-space: normal;
-      word-break: break-word;
+    /* Fluid Variables */
+    --label-font-size: clamp(0.6rem, 2.5vw, 0.75rem);
+    --label-icon-box: 1.375rem;
+    --label-icon-scale: 2.2em;
+    --label-gap: 0.313rem;
+    --label-pad-y: 0.2em;
+    --label-pad-x: 0.4em;
+    --label-border: 1px;
+    --label-radius: 6px;
+    --info-font-size: clamp(0.65rem, 2.2vw, 0.75rem);
+    --info-col-gap: 0.188rem;
+
+    > .TextContainer:first-of-type {
+        width: 100%;
+        height: auto;
+        padding: 0.2rem 0.1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.625rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+
+        .Text {
+            margin: 0;
+        }
     }
 
-    .Text { margin: 0; }
-  }
-
-  > .ImageContainer {
-    height: 48%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.25rem 0;
-    position: relative;
-    z-index: 0;
-
-    .Image {
-      height: auto;
-      max-width: 100%;
-      object-fit: contain !important;
-      transform-origin: center;
-    }
-  }
-
-  > .TextContainer:last-of-type {
-    height: 28%;
-    padding: 0.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.25rem;
-    align-items: stretch;
-    text-align: center;
-
-    .ClanInfoRow {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      padding: 0 0.25rem;
+    > .TextContainer > .Title1 {
+        font: var(--font-sw-xs);
+        color: var(--primary-color);
+        margin: 0;
+        text-align: center;
+        max-width: 100%;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .ClanInfoIcon {
-      width: 20px;
-      height: 20px;
-      flex: 0 0 auto;
+    > .ImageContainer {
+        width: 100%;
+        height: 80px;
+        max-height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.25rem 0 0.4rem;
+        position: relative;
+        z-index: 0;
+
+        .Image {
+            max-height: 100% !important;
+            width: auto !important;
+            object-fit: contain !important;
+            transform-origin: center;
+        }
     }
 
-    .ClanInfoValue {
-      color: var(--white);
-      font-size: 0.98rem;
-      line-height: 1.05;
-      flex: 0 0 auto;
-      text-align: right;
-    }
+    > .TextContainer:last-of-type {
+        flex: 1;
+        height: 100%;
+        padding: 0.2rem 0.2rem 0.3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.25rem;
+        align-items: center;
+        text-align: center;
 
-    .ClanMembersRow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-inline: auto;
-      color: var(--white);
-      font-size: 0.92rem;
-      line-height: 1.15;
+        .ClanInfoRow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0 0.125rem;
+        }
+
+        .ClanInfoBadges {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.313rem;
+            flex-wrap: nowrap;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .ClanInfoIcon {
+            width: clamp(14px, 4vw, 20px);
+            height: clamp(14px, 4vw, 20px);
+        }
+
+        .ClanInfoStats {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.1rem;
+            width: 100%;
+            padding: 0;
+        }
+
+        .ClanInfoValue {
+            color: var(--white);
+            font: var(--font-dm-xs);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .ClanLabels {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            gap: 0.313rem;
+            margin-top: 0.2rem;
+            padding: 0 0.2rem;
+        }
+
+        .ClanLabel {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--label-gap);
+            background: var(--primary-color);
+            color: var(--black);
+            border: var(--label-border) solid var(--black);
+            border-radius: var(--label-radius);
+            padding: var(--label-pad-y) var(--label-pad-x);
+            font-size: var(--label-font-size);
+            line-height: 1;
+            white-space: nowrap;
+            min-width: 0;
+            max-width: 100%;
+            font-weight: 700;
+
+            img,
+            svg {
+                width: clamp(12px, 3.5vw, 21px);
+                height: clamp(12px, 3.5vw, 21px);
+            }
+        }
     }
-  }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .MobileCard.ClanCard > .ImageContainer .Image {
-    width: 80%;
-  }
-}
-
-@media (max-width: 400px) {
-  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
-    font-size: 1.15rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .MobileCard.ClanCard > .TextContainer:first-of-type .Title1 {
-    font-size: 1rem;
-  }
+@media (max-width: $breakpoint-md) {
+    .MobileCard.ClanCard {
+        width: 100%;
+        height: auto;
+        padding: 0.5rem;
+    }
 }
 
 // Override withScalableLink behaviour for ClanCard only
 .withScalableLink {
-  .MobileCard.ClanCard {
-    > .TextContainer:first-of-type {
-      height: 24% !important;
-    }
+    .MobileCard.ClanCard {
+        > .TextContainer:first-of-type {
+            height: auto !important;
+        }
 
-    > .ImageContainer {
-      height: 48% !important;
-    }
+        > .ImageContainer {
+            height: 60px !important;
+            max-height: 60px !important;
+        }
 
-    > .TextContainer:last-of-type {
-      height: 28% !important;
+        > .TextContainer:last-of-type {
+            height: auto !important;
+        }
     }
-  }
 }
