@@ -44,7 +44,7 @@
     align-items: center;
     padding: 9px 12px;
     gap: 10px;
-    width:250px;
+    width:100%;
     height: 48px;
     background: var(--primary-color) !important;
     border: 2px solid var(--drop-shadows) !important;
@@ -53,6 +53,7 @@
 }
 
 .inputField {
+    width: 100%;
     label {
         font: var(--font-dm-m);
         font-size: 14px;
