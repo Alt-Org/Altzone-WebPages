@@ -23,13 +23,11 @@ export interface NavbarProps {
     className?: string;
     /** The full menu setup — links, dropdowns, and the logo. */
     navbarBuild: NavbarBuild;
-    /** When true, the navbar squishes down into a thin strip. */
-    isCollapsed?: boolean;
 }
 
-/** Desktop navbar — dropdowns open on hover, auth/lang toggles, and collapse support. */
+/** Desktop navbar — dropdowns open on hover, auth/lang toggles. */
 const NavbarDesktop = memo((props: NavbarProps) => {
-    const { navbarBuild, marginTop, className = '', isCollapsed = false } = props;
+    const { navbarBuild, marginTop, className = '' } = props;
 
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
     const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -108,14 +106,14 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     return (
         <nav
             ref={navRef}
-            className={classNames(cls.navbar, { [cls.collapsed]: isCollapsed }, [className])}
+            className={classNames(cls.navbar, {}, [className])}
             style={style}
             aria-label="Nav menu"
             onMouseEnter={handleNavMouseEnter}
             onMouseLeave={handleNavMouseLeave}
         >
-            <div className={classNames(cls.inner, { [cls.collapsed]: isCollapsed })}>
-                <div className={classNames(cls.logoSlot, { [cls.collapsed]: isCollapsed })}>
+            <div className={cls.inner}>
+                <div className={cls.logoSlot}>
                     {navbarBuild.menu
                         .filter((item) => item.type === 'navLogo')
                         .map((item) => (
@@ -231,7 +229,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                     })}
                 </ul>
 
-                <div className={classNames(cls.actions, { [cls.collapsed]: isCollapsed })}>
+                <div className={cls.actions}>
                     <button
                         className={cls.iconBtn}
                         aria-label="Search"
@@ -260,8 +258,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                 </div>
                                 <div
                                     className={classNames(cls.authDropdown, {
-                                        [cls.authDropdownVisible]:
-                                            authDropdown.state.isOpen && !isCollapsed,
+                                        [cls.authDropdownVisible]: authDropdown.state.isOpen,
                                     })}
                                 >
                                     <LoginForm />
@@ -282,8 +279,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                 </div>
                                 <div
                                     className={classNames(cls.authDropdown, {
-                                        [cls.authDropdownVisible]:
-                                            authDropdown.state.isOpen && !isCollapsed,
+                                        [cls.authDropdownVisible]: authDropdown.state.isOpen,
                                     })}
                                 >
                                     <div className={cls.authDropdownContent}>
@@ -306,7 +302,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                         className={cls.langSwitcher}
                         onClick={() => handleDropdownClick('lang')}
                     >
-                        <LangSwitcher isOpen={langDropdown.state.isOpen && !isCollapsed} />
+                        <LangSwitcher isOpen={langDropdown.state.isOpen} />
                     </div>
                 </div>
             </div>

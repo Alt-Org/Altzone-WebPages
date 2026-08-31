@@ -9,10 +9,6 @@
     z-index: var(--navbar-z-index);
     user-select: none;
     overflow-y: visible;
-
-    &.collapsed {
-        overflow: hidden;
-    }
 }
 
 .inner {
@@ -26,12 +22,6 @@
     height: 110px;
     transition: width 0.3s ease, height 0.3s ease;
     position: relative;
-
-    &.collapsed {
-        width: 50px;
-        overflow: hidden;
-    }
-
 }
 
 .logoSlot {
@@ -40,12 +30,6 @@
     width: 90px;
     height: 92px;
     transition: opacity 0.3s ease, transform 0.3s ease;
-
-    &.collapsed {
-        opacity: 0;
-        transform: scaleX(0);
-        pointer-events: none;
-    }
 
     a {
         display: block;
@@ -131,12 +115,6 @@
     flex: none;
     margin-left: auto;
     transition: opacity 0.3s ease, transform 0.3s ease;
-
-    &.collapsed {
-        opacity: 0;
-        transform: translateX(20px);
-        pointer-events: none;
-    }
 }
 
 .iconBtn {
