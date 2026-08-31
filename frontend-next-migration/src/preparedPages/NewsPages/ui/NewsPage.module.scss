@@ -18,33 +18,36 @@ $touchSize: 1023px;
     }
 }
 
-.title {
-    font: var(--font-sw-5xl);
-    text-align: left;
-    letter-spacing: -4%;
-    width: 1440px;
-    height: 129px;
-    gap: var(--spacing-800);
-    padding: 0;
-    color: var(--primary-color);
+.PageTitle {
     margin: 0 0 12px;
 
-    @media (max-width: $touchSize) {
-        order: 0;
-        border-right: unset;
+    h1 {
+        font: var(--font-sw-5xl);
+        text-align: left;
+        letter-spacing: -4%;
+        width: 1440px;
+        height: 129px;
+        gap: var(--spacing-800);
+        padding: 0;
+        color: var(--primary-color);
+        margin: 0;
     }
 
-    @media (max-width: breakpoint(md)) {
-        order: 1;
+    @media (max-width: $touchSize) {
+        h1 {
+            text-align: left;
+        }
     }
 
     @media (max-width: breakpoint(sm)) {
-        margin-bottom: 8px;
-        gap: 10px;
-        width: auto;
-        height: auto;
-        font: var(--font-sw-xl);
-        text-align: center;
+        h1 {
+            gap: 10px;
+            width: auto;
+            height: auto;
+            margin-bottom: 8px;
+            font: var(--font-sw-xl);
+            text-align: center;
+        }
     }
 }
 

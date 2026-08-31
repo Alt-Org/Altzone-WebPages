@@ -90,7 +90,9 @@ const NewsPage = () => {
         <main className={cls.NewsPage}>
             <Container>
                 <div className={cls.newsContent}>
-                    <h1 className={cls.title}>{t('head-title')}</h1>
+                    <div className={cls.PageTitle}>
+                        <h1>{t('head-title')}</h1>
+                    </div>
                     <div className={cls.newsGrid}>
                         {groupedNews.map((news) => {
                             const imageSrc = news.titlePicture?.id
