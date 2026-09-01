@@ -10,8 +10,6 @@ import { useClientTranslation } from '@/shared/i18n';
 
 export interface Props {
     title: string;
-    description: string;
-    keywords: string;
     storytitle: string;
     project: string;
     locality: string;
