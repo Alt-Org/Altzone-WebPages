@@ -7,6 +7,7 @@ const mockIntersectionObservers: MockIntersectionObserver[] = [];
 
 jest.mock('next/navigation', () => ({
     useParams: jest.fn(() => ({ lng: 'en' })),
+    usePathname: jest.fn(() => '/en/news'),
 }));
 
 jest.mock('@/shared/i18n', () => ({
@@ -94,6 +95,7 @@ describe('NewsPage', () => {
             writable: true,
             value: MockIntersectionObserver,
         });
+        jest.requireMock('next/navigation').usePathname.mockReturnValue('/en/news');
         mockUseGetNewsQuery.mockImplementation(({ page }: { page: number }) => ({
             data: page === 1 ? firstPageNews : secondPageNews,
         }));
