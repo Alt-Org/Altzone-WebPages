@@ -1,0 +1,58 @@
+.app-main-theme {
+    // ==========================================
+    // Toastify variables -> Altzone design system
+    // ==========================================
+    --toastify-toast-width: 380px;
+    --toastify-toast-min-height: 64px;
+    --toastify-toast-background: var(--background);
+    --toastify-font-family: var(--body-font, 'DM Sans', sans-serif);
+    --toastify-text-color-dark: var(--white);
+    --toastify-text-color-info: var(--white);
+    --toastify-text-color-success: var(--white);
+    --toastify-text-color-warning: var(--white);
+    --toastify-text-color-error: var(--white);
+
+    // Status colors mapped from the Altzone design system
+    --toastify-color-success: var(--success);
+    --toastify-color-error: var(--error);
+    --toastify-color-info: var(--charts-impact-force-default);
+    --toastify-color-warning: var(--primary-color);
+
+    --toastify-icon-color-success: var(--success);
+    --toastify-icon-color-error: var(--error);
+    --toastify-icon-color-info: var(--toastify-color-info);
+    --toastify-icon-color-warning: var(--toastify-color-warning);
+
+    --toastify-color-progress-success: var(--success);
+    --toastify-color-progress-error: var(--error);
+    --toastify-color-progress-info: var(--toastify-color-info);
+    --toastify-color-progress-warning: var(--toastify-color-warning);
+
+    // Colored theme: each toast has a solid Altzone background
+    .Toastify__toast-theme--colored {
+        &.Toastify__toast--success {
+            background: var(--success);
+        }
+
+        &.Toastify__toast--error {
+            background: var(--error);
+        }
+
+        &.Toastify__toast--info {
+            background: var(--toastify-color-info);
+        }
+
+        &.Toastify__toast--warning {
+            background: var(--toastify-color-warning);
+        }
+    }
+
+    .Toastify__toast {
+        border-radius: var(--corner-radius-web);
+        box-shadow: var(--m), var(--s-blur);
+    }
+
+    .Toastify__progress-bar {
+        opacity: 0.9;
+    }
+}
