@@ -1,10 +1,7 @@
 .app-main-theme {
-    // ==========================================
-    // Toastify variables -> Altzone design system
-    // ==========================================
     --toastify-toast-width: 380px;
     --toastify-toast-min-height: 64px;
-    --toastify-toast-background: var(--background);
+    --toastify-toast-background: var(--base-card-background);
     --toastify-font-family: var(--body-font, 'DM Sans', sans-serif);
     --toastify-text-color-dark: var(--white);
     --toastify-text-color-info: var(--white);
@@ -12,7 +9,6 @@
     --toastify-text-color-warning: var(--white);
     --toastify-text-color-error: var(--white);
 
-    // Status colors mapped from the Altzone design system
     --toastify-color-success: var(--success);
     --toastify-color-error: var(--error);
     --toastify-color-info: var(--charts-impact-force-default);
@@ -27,32 +23,96 @@
     --toastify-color-progress-error: var(--error);
     --toastify-color-progress-info: var(--toastify-color-info);
     --toastify-color-progress-warning: var(--toastify-color-warning);
+}
 
-    // Colored theme: each toast has a solid Altzone background
-    .Toastify__toast-theme--colored {
-        &.Toastify__toast--success {
-            background: var(--success);
-        }
+.app_light_theme {
+    --toastify-toast-width: 380px;
+    --toastify-toast-min-height: 64px;
+    --toastify-toast-background: #ffffff;
+    --toastify-font-family: var(--body-font, 'DM Sans', sans-serif);
+    --toastify-text-color-light: var(--black, #121212);
+    --toastify-text-color-dark: #ffffff;
+    --toastify-text-color-info: #ffffff;
+    --toastify-text-color-success: #ffffff;
+    --toastify-text-color-warning: #ffffff;
+    --toastify-text-color-error: #ffffff;
 
-        &.Toastify__toast--error {
-            background: var(--error);
-        }
+    --toastify-color-success: var(--success, #10d131);
+    --toastify-color-error: var(--error, #ff0010);
+    --toastify-color-info: #3498db;
+    --toastify-color-warning: #f1c40f;
 
-        &.Toastify__toast--info {
-            background: var(--toastify-color-info);
-        }
+    --toastify-icon-color-success: #ffffff;
+    --toastify-icon-color-error: #ffffff;
+    --toastify-icon-color-info: #ffffff;
+    --toastify-icon-color-warning: #ffffff;
 
-        &.Toastify__toast--warning {
-            background: var(--toastify-color-warning);
-        }
+    --toastify-color-progress-success: var(--success, #10d131);
+    --toastify-color-progress-error: var(--error, #ff0010);
+    --toastify-color-progress-info: #3498db;
+    --toastify-color-progress-warning: #f1c40f;
+}
+
+.app-main-theme,
+.app_light_theme {
+    .Toastify__toast {
+        border: 3px solid var(--drop-shadows, #121212);
+        border-radius: var(--border-radius-figmadesktop, 12px);
+        filter: drop-shadow(8px 12px var(--drop-shadows, #121212));
+        font-size: var(--font-size-m);
+        line-height: var(--font-line-m);
+        color: var(--toastify-text-color-dark);
     }
 
-    .Toastify__toast {
-        border-radius: var(--corner-radius-web);
-        box-shadow: var(--m), var(--s-blur);
+    .Toastify__toast--success {
+        border-left: 8px solid var(--toastify-color-success);
+    }
+
+    .Toastify__toast--error {
+        border-left: 8px solid var(--toastify-color-error);
+    }
+
+    .Toastify__toast--info {
+        border-left: 8px solid var(--toastify-color-info);
+    }
+
+    .Toastify__toast--warning {
+        border-left: 8px solid var(--toastify-color-warning);
+    }
+
+    .Toastify__toast-body {
+        gap: var(--spacing-200);
+    }
+
+    .Toastify__toast-icon {
+        font-size: 1.25rem;
+        color: var(--toastify-color-success);
+    }
+
+    .Toastify__toast--error .Toastify__toast-icon {
+        color: var(--toastify-color-error);
+    }
+
+    .Toastify__toast--info .Toastify__toast-icon {
+        color: var(--toastify-color-info);
+    }
+
+    .Toastify__toast--warning .Toastify__toast-icon {
+        color: var(--toastify-color-warning);
     }
 
     .Toastify__progress-bar {
         opacity: 0.9;
+        height: 4px;
+    }
+
+    .Toastify__close-button {
+        color: var(--white);
+        opacity: 0.8;
+
+        &:hover,
+        &:focus {
+            opacity: 1;
+        }
     }
 }
