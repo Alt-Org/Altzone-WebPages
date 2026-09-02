@@ -23,12 +23,12 @@ const meta = {
     argTypes: {
         /**
          * Defines the variant of the feedback card, which determines the layout style.
-         * @type {('full' | 'embedabble')}
+         * @type {('full' | 'borderless')}
          */
         variant: {
             control: 'select',
-            description: 'The variant of the FeedbackCard (either "full" or "embedabble").',
-            options: ['full', 'embedabble'],
+            description: 'The variant of the FeedbackCard ("full", "borderless").',
+            options: ['full', 'borderless'],
         },
     },
 } satisfies Meta<typeof FeedbackCard>;
@@ -43,7 +43,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = {
     args: {
-        variant: 'full', // Default is 'full'
+        variant: 'full',
     },
     parameters: {
         docs: {
@@ -54,18 +54,14 @@ export const Default: Story = {
     },
 };
 
-/**
- * Story for the `FeedbackCard` component with the "embedabble" variant.
- * A more compact version of the feedback card suitable for embedding in other sections of the app.
- */
-export const Embedabble: Story = {
+export const BorderlessVersion: Story = {
     args: {
-        variant: 'embedabble', // Embedabble version for compact display
+        variant: 'borderless',
     },
     parameters: {
         docs: {
             description: {
-                story: 'Displays the `FeedbackCard` component with the "embedabble" variant, rendering a smaller, more compact layout.',
+                story: 'Displays the `FeedbackCard` component with the "borderless" variant, rendering the card without border and shadow styles.',
             },
         },
     },

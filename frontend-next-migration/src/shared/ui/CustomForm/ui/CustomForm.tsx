@@ -8,6 +8,7 @@ import React, {
     memo,
     DetailedHTMLProps,
     InputHTMLAttributes,
+    TextareaHTMLAttributes,
     useState,
     useEffect,
     useId,
@@ -318,12 +319,52 @@ function MultiSelectionDropdown<T>({
     );
 }
 
+type TextareaFieldProps = {
+    label?: string;
+    error?: any;
+    className?: string;
+    textareaProps?: DetailedHTMLProps<
+        TextareaHTMLAttributes<HTMLTextAreaElement>,
+        HTMLTextAreaElement
+    >;
+};
+
+function TextareaField({ label, error, textareaProps, className = '' }: TextareaFieldProps) {
+    const reactId = useId();
+    const slug = slugifyLabel(label);
+    const normalizedReactId = reactId
+        .toString()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-');
+    const textareaId =
+        textareaProps?.id || (slug ? `textarea-${slug}` : `textarea-${normalizedReactId}`);
+
+    return (
+        <div className={classNames(cls.field, {}, [className])}>
+            {label && <label htmlFor={textareaId}>{label}</label>}
+            <textarea
+                id={textareaId}
+                {...textareaProps}
+            />
+            {error && (
+                <p
+                    role="alert"
+                    className={cls.error}
+                >
+                    {error}
+                </p>
+            )}
+        </div>
+    );
+}
+
 interface IFormProps extends HTMLAttributes<HTMLFormElement> {}
 
 interface MemoizedFormCompose {
     Button: typeof Button;
     Header: typeof Header;
     InputField: typeof InputField;
+    TextareaField: typeof TextareaField;
     Checkbox: typeof Checkbox;
     MultiSelectionDropdown: typeof MultiSelectionDropdown;
 }
@@ -359,6 +400,7 @@ const MemoizedForm = memo(BaseForm) as NamedExoticComponent<IFormProps> & Memoiz
 MemoizedForm.Button = Button;
 MemoizedForm.Header = Header;
 MemoizedForm.InputField = InputField;
+MemoizedForm.TextareaField = TextareaField;
 MemoizedForm.Checkbox = Checkbox;
 MemoizedForm.MultiSelectionDropdown = MultiSelectionDropdown;
 
