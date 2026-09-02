@@ -11,14 +11,22 @@ import Helena from '@/shared/assets/images/board/helena.png';
 import Esa from '@/shared/assets/images/board/esa.png';
 import Emmi_Irina from '@/shared/assets/images/board/emmi-irina.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
+import actionPlanImg from '@/shared/assets/images/PRGPage/actionplan.png';
+import activityReportImg from '@/shared/assets/images/PRGPage/annualreport.png';
+import associationRulesImg from '@/shared/assets/images/PRGPage/associationrules.png';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState, useMemo } from 'react';
+import { CustomSwitch, CustomSwitchItems } from '@/shared/ui/CustomSwitch';
+import type { ToggleItem } from '@/shared/ui/CustomSwitch';
 
 type PrgT = TFunction<'prg'>;
 
 interface CheckPdfButtonProps {
+    /** External URL to the PDF document. */
     link: string;
+    /** Translation function for button label. */
     t: PrgT;
 }
 
@@ -38,11 +46,17 @@ const CheckPdfButton = (checkPdfButtonProps: CheckPdfButtonProps) => (
 );
 
 interface BoardCardProps {
+    /** Board member portrait image. */
     picture: StaticImageData;
+    /** Full name of the board member. */
     name: string;
+    /** Translation key for the member's job title. */
     job: string;
+    /** Translation key for the member's profession. */
     profession: string;
+    /** Translation function for resolving job/profession labels. */
     t: PrgT;
+    /** When true, renders the compact mobile layout. */
     isMobileSize: boolean;
 }
 
@@ -78,124 +92,182 @@ const Boardcard = (props: BoardCardProps) => {
     );
 };
 
+const BOARD_MEMBERS = [
+    {
+        picture: Helena,
+        name: 'Helena Pavloff-Pelkonen',
+        job: 'helena-job',
+        profession: 'helena-profession',
+    },
+    { picture: Esa, name: 'Esa Pavloff-Pelkonen', job: 'esa-job', profession: 'esa-profession' },
+    {
+        picture: Emmi_Irina,
+        name: 'Emmi-Irina Pavloff',
+        job: 'emmi-irina-job',
+        profession: 'emmi-irina-profession',
+    },
+] as const;
+
+const DOCUMENT_TABS = ['action-plan', 'activity-report', 'bylaws'] as const;
+
+type DocumentTab = (typeof DOCUMENT_TABS)[number];
+
+const tabTranslationKeys: Record<DocumentTab, string> = {
+    'action-plan': 'action-plan',
+    'activity-report': 'activity-report',
+    bylaws: 'bylaws',
+};
+
+const tabTextKeys: Record<DocumentTab, string> = {
+    'action-plan': 'action-plan-text',
+    'activity-report': 'activity-report-text',
+    bylaws: 'bylaws-text',
+};
+
+const tabLinks: Record<DocumentTab, string> = {
+    'action-plan': AppExternalLinks.prgActionPlan,
+    'activity-report': AppExternalLinks.prgActivityReport,
+    bylaws: AppExternalLinks.prgBylaws,
+};
+
+const tabImages: Record<DocumentTab, StaticImageData> = {
+    'action-plan': actionPlanImg,
+    'activity-report': activityReportImg,
+    bylaws: associationRulesImg,
+};
+
+const tabImageSide: Record<DocumentTab, 'left' | 'right'> = {
+    'action-plan': 'right',
+    'activity-report': 'left',
+    bylaws: 'right',
+};
+
 const PRGPage = () => {
     const { t } = useClientTranslation('prg');
     const { isMobileSize, isTabletSize } = useSizes();
+    const [activeTab, setActiveTab] = useState<DocumentTab>('action-plan');
+
+    const tabElements: ToggleItem[] = useMemo(
+        () =>
+            DOCUMENT_TABS.map((tab) => ({
+                type: CustomSwitchItems.ToggleItem,
+                isOpen: activeTab === tab,
+                onOpen: () => setActiveTab(tab),
+                children: <p>{t(tabTranslationKeys[tab])}</p>,
+            })),
+        [activeTab, t],
+    );
+
+    const renderTabSwitch = () => (
+        <>
+            <CustomSwitch
+                elements={tabElements}
+                className={cls.prgTabSwitch}
+            />
+            <div className={classNames(cls.TextContainer, undefined, [cls.tabContentContainer])}>
+                <div
+                    className={classNames(cls.tabContentLayout, {
+                        [cls.tabContentLayoutReverse]: tabImageSide[activeTab] === 'left',
+                    })}
+                >
+                    <div className={cls.tabTextArea}>
+                        <p className={cls.Subheading}>{t(tabTranslationKeys[activeTab])}</p>
+                        <p className={cls.textCenter}>{t(tabTextKeys[activeTab])}</p>
+                        <div className={cls.ButtonBlock}>
+                            <CheckPdfButton
+                                link={tabLinks[activeTab]}
+                                t={t}
+                            />
+                        </div>
+                    </div>
+                    <div className={cls.tabImageArea}>
+                        <Image
+                            src={tabImages[activeTab]}
+                            alt={t(tabTranslationKeys[activeTab])}
+                            className={cls.tabImage}
+                        />
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+
+    const renderMobileTabs = () => (
+        <div className={cls.mobileTabs}>
+            {DOCUMENT_TABS.map((tab) => (
+                <div
+                    key={tab}
+                    className={classNames(cls.TextContainer, undefined, [cls.mobileTabCard])}
+                >
+                    <p className={cls.Subheading}>{t(tabTranslationKeys[tab])}</p>
+                    <p className={cls.textCenter}>{t(tabTextKeys[tab])}</p>
+                    <Image
+                        src={tabImages[tab]}
+                        alt={t(tabTranslationKeys[tab])}
+                        className={cls.tabImage}
+                    />
+                    <div className={cls.ButtonBlock}>
+                        <CheckPdfButton
+                            link={tabLinks[tab]}
+                            t={t}
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 
     return (
         <div className={cls.Container}>
-            <PageTitle
-                titleText={t('head-title')}
-                alternate={true}
-                searchVisible={false}
-            />
+            <div className={cls.titleGap}>
+                <PageTitle
+                    titleText={t('head-title')}
+                    alternate={true}
+                    searchVisible={false}
+                />
+            </div>
             <Image
                 src={prgDeveloper}
-                alt="prgDeveloper"
+                alt={t('head-title')}
             />
-            <div className={cls.TextContainer}>
+            <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('prg')}</p>
-                <p className={cls.textColumns}>{t('prg-text')}</p>
-            </div>
-            <div className={cls.TextContainer}>
-                <p className={cls.Subheading}>{t('action-plan')}</p>
-                <p className={cls.textCenter}>{t('action-plan-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgActionPlan}
-                        t={t}
-                    />
-                </div>
-                <p className={cls.Subheading}>{t('activity-report')}</p>
-                <p className={cls.textCenter}>{t('activity-report-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgActivityReport}
-                        t={t}
-                    />
-                </div>
-                <p className={cls.Subheading}>{t('bylaws')}</p>
-                <p className={cls.textCenter}>{t('bylaws-text')}</p>
-                <div className={cls.ButtonBlock}>
-                    <CheckPdfButton
-                        link={AppExternalLinks.prgBylaws}
-                        t={t}
-                    />
+                <p className={cls.textCenter}>{t('prg-text')}</p>
+                <div className={cls.headingWithLines}>
+                    <span className={cls.headingWithLinesText}>{t('prg-board')}</span>
                 </div>
                 <div
-                    className={cls.registryInfo}
-                    style={{ whiteSpace: 'pre-line' }}
+                    className={classNames(cls.BoardCardContainer, {
+                        [cls.BoardCardMobileContainer]: isMobileSize || isTabletSize,
+                    })}
                 >
-                    {t('registry-info')}
+                    {BOARD_MEMBERS.map((member) => (
+                        <Boardcard
+                            key={member.name}
+                            picture={member.picture}
+                            name={member.name}
+                            job={member.job}
+                            profession={member.profession}
+                            t={t}
+                            isMobileSize={isMobileSize || isTabletSize}
+                        />
+                    ))}
+                </div>
+                <div className={cls.ButtonBlock}>
+                    <AppLink
+                        to={'/team'}
+                        className={classNames(cls.pdfButton, undefined, [cls.teamButton])}
+                        aria-label={t('link-to-team-page')}
+                        isExternal={false}
+                    >
+                        <span className={cls.label}>{t('alt-zone-team')}</span>
+                    </AppLink>
                 </div>
             </div>
+            {isMobileSize || isTabletSize ? renderMobileTabs() : renderTabSwitch()}
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
-                <p className={cls.Subheading}>{t('prg-board')}</p>
-                {!isMobileSize && !isTabletSize ? (
-                    <div className={cls.BoardCardContainer}>
-                        <Boardcard
-                            picture={Helena}
-                            name={'Helena Pavloff'}
-                            job={'helena-job'}
-                            profession={'helena-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                        <Boardcard
-                            picture={Esa}
-                            name={'Esa Pelkonen'}
-                            job={'esa-job'}
-                            profession={'esa-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                        <Boardcard
-                            picture={Emmi_Irina}
-                            name={'Emmi-Irina Pavloff'}
-                            job={'emmi-irina-job'}
-                            profession={'emmi-irina-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                    </div>
-                ) : (
-                    <div className={cls.BoardCardMobileContainer}>
-                        <Boardcard
-                            picture={Helena}
-                            name={'Helena Pavloff'}
-                            job={'helena-job'}
-                            profession={'helena-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                        <Boardcard
-                            picture={Esa}
-                            name={'Esa Pelkonen'}
-                            job={'esa-job'}
-                            profession={'esa-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                        <Boardcard
-                            picture={Emmi_Irina}
-                            name={'Emmi-Irina Pavloff'}
-                            job={'emmi-irina-job'}
-                            profession={'emmi-irina-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                    </div>
-                )}
-                <AppLink
-                    to={'/team'}
-                    className={cls.MeetBoard}
-                    aria-label={t('link-to-team-page')}
-                    isExternal={false}
-                >
-                    <span className={classNames(cls.label, undefined, [cls.bold, cls.Underline])}>
-                        {t('alt-zone-team')}&nbsp;
-                    </span>
-                </AppLink>
+                <p className={cls.Subheading}>{t('registry-title')}</p>
+                <div className={cls.registryInfo}>{t('registry-info')}</div>
             </div>
         </div>
     );
