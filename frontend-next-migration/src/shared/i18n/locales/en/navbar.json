@@ -35,5 +35,20 @@
   "about": "About",
   "education": "Education",
   "prg": "PRG",
-  "contactUs": "Contact us"
+  "contactUs": "Contact us",
+  "learnTheGame": "Get to know the game",
+  "story": "Story",
+  "defenseHeroes": "Defense heroes",
+  "balanceVoting": "Balance voting",
+  "scoreboard": "Scoreboard",
+  "sarjakuvat": "Comics",
+  "characterDevelopment": "Character development arc",
+  "soulCastleFurniture": "Soul castle furniture",
+  "gameIcons": "Other game icons",
+  "gameMusic": "Game music",
+  "opetuspaketti": "Teaching package",
+  "pelitaide": "Game art",
+  "whatIsPrg": "What is PRG",
+  "altZoneHistory": "ALT Zone's history",
+  "developersAndDesigners": "Developers and designers"
 }

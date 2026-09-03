@@ -9,14 +9,6 @@
     z-index: var(--navbar-z-index);
     user-select: none;
     overflow-y: visible;
-
-    &.collapsed {
-        overflow: hidden;
-    }
-
-    &.noBorder {
-        border-bottom: none;
-    }
 }
 
 .inner {
@@ -30,12 +22,6 @@
     height: 110px;
     transition: width 0.3s ease, height 0.3s ease;
     position: relative;
-
-    &.collapsed {
-        width: 50px;
-        overflow: hidden;
-    }
-
 }
 
 .logoSlot {
@@ -44,12 +30,6 @@
     width: 90px;
     height: 92px;
     transition: opacity 0.3s ease, transform 0.3s ease;
-
-    &.collapsed {
-        opacity: 0;
-        transform: scaleX(0);
-        pointer-events: none;
-    }
 
     a {
         display: block;
@@ -118,6 +98,11 @@
     margin-left: 6px;
     font-size: 18px;
     color: var(--white);
+    transition: transform 0.2s ease;
+
+    &.chevronOpen {
+        transform: rotate(180deg);
+    }
 }
 
 .actions {
@@ -130,12 +115,6 @@
     flex: none;
     margin-left: auto;
     transition: opacity 0.3s ease, transform 0.3s ease;
-
-    &.collapsed {
-        opacity: 0;
-        transform: translateX(20px);
-        pointer-events: none;
-    }
 }
 
 .iconBtn {
@@ -262,44 +241,45 @@
     }
 }
 
-.navDropdownCenter {
-    position: fixed !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: 110px !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: none !important;
-
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: var(--spacing-300) !important;
-
+.dropdownMenu {
+    position: absolute;
+    /* the li is 60px tall and vertically centered in the 110px navbar,
+       so the extra 25px pushes the panel flush against the navbar's bottom edge */
+    top: calc(100% + 25px);
+    left: 0;
+    z-index: var(--navbar-z-index);
+    min-width: 180px;
+    padding: var(--spacing-200);
     background: var(--base-card-background);
-    border-bottom: 2px solid var(--black);
+    border: 2px solid var(--black);
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--m);
-
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
-
-    &.open {
-        opacity: 1;
-        visibility: visible;
-    }
-}
-
-.dropdownGroup {
     display: flex;
     flex-direction: column;
     gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
+    pointer-events: none;
+
+    &.dropdownMenuOpen {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
 }
 
-.navDropdownCenter .dropdownItem {
-    padding: var(--spacing-100) var(--spacing-300);
+.dropdownItem {
+    padding: 0 var(--spacing-300);
     min-width: auto;
-    display: block;
+    display: flex;
+    align-items: center;
+    height: 65px;
     white-space: nowrap;
     font: var(--font-dm-bold-l);
     color: var(--white);
