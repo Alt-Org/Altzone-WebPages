@@ -1,148 +1,203 @@
-.NewsCard {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--base-card-background);
-    border: 3px solid var(--drop-shadows);
-    border-radius: var(--border-radius-figmadesktop);
-    filter: drop-shadow(8px 12px var(--drop-shadows));
-    height: 150px;
-    width: 100%;
-    max-width: 780px;
-    margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-    transition: border-color 0.3s ease-out;
-
-    @media (max-width: breakpoint(xl)) {
-        max-width: 500px;
-    }
-
-    @media (max-width: breakpoint(md)) {
-        height: 130px;
-        width: 70%;
-    }
-
-    @media (max-width: breakpoint(sm)) {
-        height: 120px;
-        width: 80%;
-    }
-
-    @media (max-width: breakpoint(xs)),
-    (max-width: 320px) {
-        height: 110px;
-        width: 70%;
-        margin: auto 0;
-    }
-
-    @media (max-width: 320px) {
-        width: 60%;
-    }
-}
-
-
-.NewsCardLink:hover .NewsCard, .NewsCardLink:focus .NewsCard {
-    border-color: var(--primary-color);
-}
-
-
-.imageContainer {
-    position: absolute;
-    right: 0;
-    top: 0;
-    overflow: hidden;
-    width: 72%;
-    height: auto;
-    flex-shrink: 0;
-    border-radius: 10px;
-
-    @media (max-width: breakpoint(xs)) {
-        width: 90%;
-    }
-}
-
-.image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin-left: 32%;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 -15%);
-    transform: translateY(-27%);
-
-    @media (max-width: breakpoint(xs)),
-    (max-width: 320px) {
-        margin-left: 35%;
-    }
-}
-
 .NewsCardLink {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
 
     &:focus {
         outline: none;
     }
 }
 
+.NewsCard {
+    display: grid;
+    grid-template-columns: 182px minmax(0, 1fr);
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    gap: 32px;
+    padding-right: var(--spacing-600);
+    overflow: hidden;
+    background-color: var(--base-card-background);
+    border: var(--border-desktop);
+    border-radius: var(--border-radius-figmadesktop);
+    transition:
+        border-color 0.2s ease-out,
+        transform 0.2s ease-out;
+}
+
+.NewsCardLink:hover .NewsCard,
+.NewsCardLink:focus-visible .NewsCard {
+    border-color: var(--primary-color);
+}
+
+.NewsCardLink:active .NewsCard {
+    transform: scale(0.99);
+}
+
+.noImage {
+    grid-template-columns: 182px minmax(0, 1fr);
+    padding-right: var(--spacing-600);
+}
+
+.noImage .content {
+    grid-column: 2;
+    justify-content: center;
+    padding-right: 0;
+    padding-block: 24px 18px;
+}
+
+.noImage .meta {
+    margin-top: 2px;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    min-height: 255px;
+    overflow: hidden;
+    background-color: #172936;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    left: -6px;
+}
+
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 0.5rem 50% 0 0.5rem;
-    overflow: hidden;
+    justify-content: center;
+    gap: 13px;
+    color: var(--white);
 }
 
 .title {
-    font: var(--font-sw-l);
-    color: var(--primary-color);
-    white-space: nowrap;
+    display: -webkit-box;
+    margin: 0;
     overflow: hidden;
-    text-overflow: ellipsis;
-
-    @media (max-width: breakpoint(sm)),
-    (max-width: breakpoint(xs)),
-    (max-width: 320px) {
-        padding-top: 10px;
-    }
+    color: var(--white);
+    font: var(--font-sw-xl);
+    letter-spacing: -4%;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    gap: 10px;
 }
 
 .text {
-    color: var(--white);
-    line-height: 1.5em !important;
-    font: var(--font-dm-s);
-    width: 255px;
-    margin-top: auto;
     display: -webkit-box;
+    max-width: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: var(--white);
+    font: var(--font-dm-l);
+    letter-spacing: -4%;
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    gap: 10px;
+}
 
-    @media (max-width: breakpoint(md)) {
-        line-height: 1rem !important;
-        font: var(--font-dm-s);
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 209px;
+    height: 26px;
+    gap: 4px;
+    color: var(--primary-color);
+    font: var(--font-dm-l);
+    letter-spacing: -4%;
+}
+
+.date,
+.publisher {
+    color: inherit;
+    font: inherit;
+}
+
+.publisher {
+    white-space: nowrap;
+}
+
+@media (max-width: breakpoint(sm)) {
+    .NewsCard {
+        grid-template-columns: 1fr;
+        width: 360px;
+        gap: 24px;
+        padding: 0;
+        border-radius: var(--border-radius-figmadesktop);
+        border: 2px solid #000000;
+        box-shadow: 4px 8px 0px 0px var(--ShadowblackShadow);
     }
 
-    @media (max-width: breakpoint(sm)) {
-        font: var(--font-dm-s);
-        width: 200px;
+    .imageContainer {
+        width: 100%;
+        height: 180px;
+        min-height: 180px;
     }
 
-    @media (max-width: 390px) {
-        display: none;
+    .image {
+        width: 100%;
+        height: 100%;
+        top: auto;
+        left: auto;
+    }
+
+    .noImage {
+        grid-template-columns: 1fr;
+        min-height: 180px;
+        padding-right: 0;
+    }
+
+    .noImage .content {
+        justify-content: flex-start;
+        padding: 14px 14px;
+        gap: 16px;
+        text-align: left;
+    }
+
+    .content {
+        justify-content: flex-start;
+        padding: 14px 14px;
+        gap: 16px;
+    }
+
+    .meta {
+        width: auto;
+        height: auto;
+        order: -1;
+        font: var(--font-dm-m);
+        margin-bottom: 4px;
+    }
+
+    .title {
+        font: var(--font-sw-m);
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        margin: 0;
+    }
+
+    .text {
+        font: var(--font-dm-m);
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        margin: 0;
     }
 }
 
-.date {
-    color: var(--white) !important;
-    font: var(--font-dm-s);
-    margin-top: auto;
-    margin-bottom: 5px;
+@media (max-width: breakpoint(xs)) {
+    .NewsCard {
+        min-height: 286px;
+    }
 
-    @media (max-width: breakpoint(xs)) {
-        font: var(--font-dm-xs);
+    .content {
+        padding: 12px 14px 14px;
     }
 }
