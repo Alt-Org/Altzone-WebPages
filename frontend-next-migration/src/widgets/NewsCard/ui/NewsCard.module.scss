@@ -17,7 +17,7 @@
     width: 100%;
     max-width: 100%;
     min-height: auto;
-    gap: 81px;
+    gap: 32px;
     padding-right: var(--spacing-600);
     overflow: hidden;
     background-color: var(--base-card-background);
@@ -130,7 +130,7 @@
     .NewsCard {
         grid-template-columns: 1fr;
         width: 360px;
-        gap: 32px;
+        gap: 24px;
         padding: 0;
         border-radius: var(--border-radius-figmadesktop);
         border: 2px solid #000000;
