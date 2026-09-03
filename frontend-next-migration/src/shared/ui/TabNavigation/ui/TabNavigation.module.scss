@@ -1,0 +1,65 @@
+.tabNavigation {
+    display: flex;
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
+    border-radius: var(--border-radius-figma);
+    flex-direction: column;
+}
+
+.tabsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    @media (max-width: breakpoint(md)) {
+        padding: 1rem 1.5rem;
+        gap: 0.5rem;
+    }
+}
+
+.tabsTitle {
+    font: var(--font-sw-xl);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    @media (min-width: breakpoint(md)) {
+        padding-bottom: 0.5rem;
+    }
+}
+
+.tab {
+    padding: 12px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--primary-color);
+    font: var(--font-dm-bold-l);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: var(--border-radius-figma);
+
+    @media (max-width: breakpoint(md)) {
+        border-radius: var(--border-radius-figma);
+        font: var(--font-dm-m);
+        height: 35px;
+        width: 140px;
+    }
+}
+
+.tab:hover {
+    text-decoration: underline;
+}
+
+.activeTab {
+    outline: 2px solid var(--drop-shadows);
+    color: black;
+    background-color: var(--primary-color);
+}

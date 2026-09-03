@@ -1,52 +1,27 @@
-.buttonContainer {
-    text-align: center;
-}
-
-.SeeMore {
-    margin-top: 3rem;
-    opacity: 0;
-    filter: blur(5px);
-    transform: scale(0.9) rotate(-5deg);
-    background-color: rgba(0, 0, 0, 0);
-    transition: opacity .5s ease-out, filter .5s ease-out, transform .5s ease-out, background-color 1.5s ease-out;
-}
-
-.SeeMore.inView {
-    opacity: 1;
-    filter: blur(0);
-    background-color: rgba(0, 0, 0, 0.7);
-    transform: scale(1) rotate(0deg);
-}
-
-.SeeMore:hover {
-    filter: blur(0);
-    background-color: rgba(0, 0, 0, 0.9);
-    transform: scale(1.05) rotate(0deg);
-    transition: filter 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-}
-
-.AnimationGallerySection {
+.animationGallerySection {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem 0;
+    gap: 3rem;
+    padding: 3rem;
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
+    border-radius: 10px;
+    background-color: var(--base-card-background);
 }
 
 .block {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    gap: 2rem;
-    background-color: #1E3544;
-    box-shadow: 0.3rem 0.3rem black;
-    border: 2px solid black;
+    align-items: flex-start;
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
     border-radius: 10px;
-    margin-bottom: 20px;
     padding: 20px;
 }
 
 .textBlock {
-    text-align: start;
+    text-align: flex-start;
     max-width: 800px;
     width: 100%;
 }
@@ -60,19 +35,29 @@
 }
 
 .author {
-    font: var(--font-sw-m);
+    font: var(--font-sw-l);
+}
+
+.socialsContainer {
+    display: flex;
+    margin-top: 0.5rem;
 }
 
 .description {
     font: var(--font-dm-m);
-    color: #faf9f6c0;
-    margin-top: 1rem;
+    color: var(--white-text);
+    margin: 0.5rem 0;
 }
 
 .framesContainer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .frameRow {
@@ -83,14 +68,14 @@
     gap: 1rem;
 }
 
-.imageWrapper,
-.buttonWrapper {
+.imageWrapper {
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     flex: 1 1 0;
     aspect-ratio: 16 / 9;
+    width: 374px;
+    height: 246px;
     min-height: 180px;
 }
 
@@ -102,53 +87,143 @@
     object-position: center;
 }
 
-.animateButton {
+.animationContainer {
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    width: 720px;
+    height: 472px;
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 0;
+}
+
+.animationImage {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+.noAnimationsFoundContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
+    border-radius: 10px;
+}
+
+.noAnimationImageContainer {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 1rem;
+}
+
+.noAnimationsImage {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.noAnimationsTitle {
+    font: var(--font-sw-l);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font: var(--font-sw-l);
+    color: var(--white-text);
+}
+
+.noAnimationsText {
+    font: var(--font-dm-m);
+    color: var(--white-text);
+    text-align: center;
 }
 
 @media (max-width: breakpoint(md)) {
-  .framesContainer {
-    width: 100%;
-  }
+    .framesContainer {
+        width: 100%;
+    }
 
-  .frameRow {
-    width: 100%;
+    .frameRow {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .imageWrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        aspect-ratio: auto;
+        height: auto;
+    }
+
+    .frameImage {
+        object-fit: contain;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .animationContainer {
+        width: 100%;
+    }
+
+    .buttonWrapper {
+        width: 100%;
+        flex: 0 0 auto;
+        aspect-ratio: auto;
+        min-height: 0;
+    }
+
+    .textBlock {
+        text-align: center;
+    }
+    .author {
+        text-align: center;
+    }
+    .description {
+        text-align: flex-start;
+    }
+    .title {
+        font: var(--font-sw-l);
+    }
+}
+
+.footer {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
-  }
-
-  .imageWrapper {
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    flex: 0 0 auto;
-    aspect-ratio: auto;
-    min-height: 0;
-    height: clamp(280px, 55vh, 560px);
-  }
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
+    border-radius: var(--border-radius-figmadesktop);
+    padding: 20px;
+    text-align: center;
+    font: var(--font-dm-m);
+    color: var(--white-text);
 
-  .frameImage {
-    object-fit: contain;
-    object-position: center;
-  }
-
-  .buttonWrapper {
-    width: 100%;
-    flex: 0 0 auto;
-    aspect-ratio: auto;
-    min-height: 0;
-  }
-
-  .animateButton {
-    width: 100%;
-    height: clamp(120px, 18vh, 180px);
-  }
-
-  .textBlock { text-align: center; }
-  .author { text-align: center; }
-  .description { text-align: start; }
-  .title { font: var(--font-sw-l); }
+    span {
+        color: var(--primary-color);
+        margin-left: 5px;
+    }
+    @media (max-width: breakpoint(md)) {
+        flex-direction: column;
+    }
 }
