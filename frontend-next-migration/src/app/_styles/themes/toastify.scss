@@ -2,6 +2,7 @@
     --toastify-toast-width: 380px;
     --toastify-toast-min-height: 64px;
     --toastify-toast-background: var(--base-card-background);
+    --toastify-color-dark: var(--base-card-background);
     --toastify-font-family: var(--body-font, 'DM Sans', sans-serif);
     --toastify-text-color-dark: var(--white);
     --toastify-text-color-info: var(--white);
@@ -29,9 +30,10 @@
     --toastify-toast-width: 380px;
     --toastify-toast-min-height: 64px;
     --toastify-toast-background: #ffffff;
+    --toastify-color-dark: #ffffff;
     --toastify-font-family: var(--body-font, 'DM Sans', sans-serif);
     --toastify-text-color-light: var(--black, #121212);
-    --toastify-text-color-dark: #ffffff;
+    --toastify-text-color-dark: var(--black, #121212);
     --toastify-text-color-info: #ffffff;
     --toastify-text-color-success: #ffffff;
     --toastify-text-color-warning: #ffffff;
@@ -62,6 +64,7 @@
         font-size: var(--font-size-m);
         line-height: var(--font-line-m);
         color: var(--toastify-text-color-dark);
+        background: var(--toastify-toast-background);
     }
 
     .Toastify__toast--success {
