@@ -43,11 +43,11 @@ describe('heroApi status gating', () => {
         global.fetch = fetchMock;
     });
 
-    it('does not return an unpublished hero by slug', async () => {
+    it.each(['Draft', 'Archived'])('does not return a %s hero by slug', async (status) => {
         fetchMock.mockImplementation(async (input) => {
             const url = new URL(String(input));
             expect(url.searchParams.get('filter[status][_eq]')).toBe('Published');
-            return response([]);
+            return response([{ ...publishedHero, status }]);
         });
 
         await expect(fetchHeroBySlug('draft-hero' as HeroSlug)).resolves.toBeUndefined();

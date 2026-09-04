@@ -34,6 +34,7 @@ const normalizeLocale = (locale: Locale): string => {
     return localeMap[locale] || locale;
 };
 const languageCode = (locale: Locale): string => normalizeLocale(locale);
+const isPublished = (item: any): boolean => item?.status === 'Published';
 
 function pickTranslationByLocale<T extends { languages_code?: string }>(
     arr: T[] | undefined,
@@ -197,7 +198,9 @@ export const heroApi = directusApi.injectEndpoints({
             }),
             transformResponse: (resp: any, _meta, args) => {
                 const item = resp?.data?.[0];
-                return item ? mapHero(item, (args?.locale ?? 'en') as Locale) : undefined;
+                return item && isPublished(item)
+                    ? mapHero(item, (args?.locale ?? 'en') as Locale)
+                    : undefined;
             },
             providesTags: (_res, _err, args) => [{ type: 'Hero' as const, id: args.slug }],
         }),
@@ -218,7 +221,7 @@ export const heroApi = directusApi.injectEndpoints({
                 url: `/items/heroes?${buildParams(locale, { limit: '-1' }).toString()}`,
             }),
             transformResponse: (resp: any, _meta, args) => {
-                const items = resp?.data || [];
+                const items = (resp?.data || []).filter(isPublished);
                 return items.map((item: any) => mapHero(item, (args?.locale ?? 'en') as Locale));
             },
             providesTags: () => [{ type: 'Hero' as const, id: 'LIST' }],
@@ -228,7 +231,7 @@ export const heroApi = directusApi.injectEndpoints({
                 url: `/items/heroes?${buildParams(locale, { limit: '-1' }).toString()}`,
             }),
             transformResponse: (resp: any, _meta, args) => {
-                const items = resp?.data || [];
+                const items = (resp?.data || []).filter(isPublished);
                 const heroes = items.map((item: any) =>
                     mapHero(item, (args?.locale ?? 'en') as Locale),
                 );
@@ -275,7 +278,7 @@ export async function fetchHeroBySlug(
 
         const json = await res.json();
         const item = json?.data?.[0];
-        if (!item) {
+        if (!item || !isPublished(item)) {
             // eslint-disable-next-line no-console
             console.warn(
                 `[fetchHeroBySlug] No hero found in Directus for slug "${slug}" (response had ${json?.data?.length || 0} items)`,
@@ -320,7 +323,7 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
         }
 
         const json = await res.json();
-        const items = json?.data || [];
+        const items = (json?.data || []).filter(isPublished);
         return items.map((item: any) => mapHero(item, locale));
     } catch (error) {
         // eslint-disable-next-line no-console
