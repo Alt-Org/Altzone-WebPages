@@ -60,7 +60,7 @@
     .Toastify__toast {
         border: 3px solid var(--drop-shadows, #121212);
         border-radius: var(--border-radius-figmadesktop, 12px);
-        filter: drop-shadow(8px 12px var(--drop-shadows, #121212));
+        box-shadow: var(--s-blur, 0px 3px 10px 5px rgba(0, 0, 0, 0.5));
         font-size: var(--font-size-m);
         line-height: var(--font-line-m);
         color: var(--toastify-text-color-dark);
