@@ -61,34 +61,30 @@
         border: 3px solid var(--drop-shadows, #121212);
         border-radius: var(--border-radius-figmadesktop, 12px);
         box-shadow: var(--s-blur, 0px 3px 10px 5px rgba(0, 0, 0, 0.5));
-        font-size: var(--font-size-m);
-        line-height: var(--font-line-m);
+        font-family: var(--body-font, 'DM Sans', sans-serif);
+        font-size: var(--font-size-m, 16px);
+        line-height: var(--font-line-m, 24px);
         color: var(--toastify-text-color-dark);
         background: var(--toastify-toast-background);
-    }
-
-    .Toastify__toast--success {
-        border-left: 8px solid var(--toastify-color-success);
-    }
-
-    .Toastify__toast--error {
-        border-left: 8px solid var(--toastify-color-error);
-    }
-
-    .Toastify__toast--info {
-        border-left: 8px solid var(--toastify-color-info);
-    }
-
-    .Toastify__toast--warning {
-        border-left: 8px solid var(--toastify-color-warning);
+        padding: var(--spacing-250, 12px);
+        min-height: var(--toastify-toast-min-height);
     }
 
     .Toastify__toast-body {
-        gap: var(--spacing-200);
+        gap: var(--spacing-300, 16px);
+        padding: 0;
+        align-items: center;
     }
 
     .Toastify__toast-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
         font-size: 1.25rem;
+        margin-inline-end: var(--spacing-200, 8px);
         color: var(--toastify-color-success);
     }
 
@@ -104,18 +100,50 @@
         color: var(--toastify-color-warning);
     }
 
-    .Toastify__progress-bar {
-        opacity: 0.9;
-        height: 4px;
+    .Toastify__toast-body > div:last-child {
+        word-break: break-word;
+        flex: 1;
     }
 
     .Toastify__close-button {
-        color: var(--white);
+        color: var(--white, #faf9f6);
         opacity: 0.8;
+        padding: var(--spacing-100, 4px);
+        transition: opacity 0.2s ease;
+        align-self: flex-start;
 
         &:hover,
         &:focus {
             opacity: 1;
         }
+    }
+
+    .Toastify__progress-bar {
+        opacity: 0.9;
+        height: 4px;
+        border-radius: 0 0 var(--border-radius-figmadesktop, 12px) var(--border-radius-figmadesktop, 12px);
+    }
+
+    .Toastify__toast--success,
+    .Toastify__toast--error,
+    .Toastify__toast--info,
+    .Toastify__toast--warning {
+        border-left: 8px solid transparent;
+    }
+
+    .Toastify__toast--success {
+        border-left-color: var(--toastify-color-success);
+    }
+
+    .Toastify__toast--error {
+        border-left-color: var(--toastify-color-error);
+    }
+
+    .Toastify__toast--info {
+        border-left-color: var(--toastify-color-info);
+    }
+
+    .Toastify__toast--warning {
+        border-left-color: var(--toastify-color-warning);
     }
 }
