@@ -20,6 +20,7 @@ const languageCode = (locale: Locale): string => locale;
 export const FIELDS = [
     'id',
     'slug',
+    'status',
     'order',
     ...HERO_IMG_KEYS.flatMap((key) => [`${key}.id`, `${key}.width`, `${key}.height`]),
     ...HERO_GIF_KEYS.flatMap((key) => [`${key}.id`, `${key}.width`, `${key}.height`]),
@@ -67,6 +68,7 @@ export function buildHeroQueryParams(
 ): URLSearchParams {
     const params = new URLSearchParams();
     if (options?.slug) params.set('filter[slug][_eq]', options.slug);
+    params.set('filter[status][_eq]', 'Published');
     if (options?.limit) params.set('limit', options.limit);
     params.set('fields', FIELDS);
     params.set('sort', 'order');
