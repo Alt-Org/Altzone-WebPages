@@ -14,7 +14,7 @@ interface TimelineEntryProps {
 }
 
 const TimelineEntry = ({ year, text, image, sortOrder, isFirst, isLast }: TimelineEntryProps) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(isFirst);
     const { t } = useClientTranslation('about');
 
     return (
