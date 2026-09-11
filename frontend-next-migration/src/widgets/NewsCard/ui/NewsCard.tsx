@@ -26,7 +26,7 @@ const NewsCard = (props: NewsCardProps) => {
         publisher,
         titlePicture,
     } = props;
-    const picture = titlePicture;
+    const picture = titlePicture || '/images/logos/CommonALT.png';
     const text = description ?? previewText ?? '';
 
     return (
@@ -35,18 +35,16 @@ const NewsCard = (props: NewsCardProps) => {
             href={`/news/${id}`}
             className={classNames(cls.NewsCardLink)}
         >
-            <article className={classNames(cls.NewsCard, { [cls.noImage]: !picture }, [className])}>
-                {picture && (
-                    <div className={cls.imageContainer}>
-                        <Image
-                            src={picture}
-                            alt={title}
-                            className={cls.image}
-                            width={342}
-                            height={255}
-                        />
-                    </div>
-                )}
+            <article className={classNames(cls.NewsCard, {}, [className])}>
+                <div className={cls.imageContainer}>
+                    <Image
+                        src={picture}
+                        alt={title}
+                        className={cls.image}
+                        width={342}
+                        height={255}
+                    />
+                </div>
                 <div className={cls.content}>
                     <h2 className={cls.title}>{title}</h2>
                     {text && <p className={cls.text}>{text}</p>}
