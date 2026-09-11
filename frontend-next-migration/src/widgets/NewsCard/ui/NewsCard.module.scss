@@ -12,12 +12,13 @@
 
 .NewsCard {
     display: grid;
-    grid-template-columns: 182px minmax(0, 1fr);
+    grid-template-columns: 342px minmax(0, 1fr);
     align-items: stretch;
     width: 100%;
     max-width: 100%;
     min-height: auto;
     gap: 32px;
+    padding: 0;
     padding-right: var(--spacing-600);
     overflow: hidden;
     background-color: var(--base-card-background);
@@ -38,7 +39,7 @@
 }
 
 .noImage {
-    grid-template-columns: 182px minmax(0, 1fr);
+    grid-template-columns: 342px minmax(0, 1fr);
     padding-right: var(--spacing-600);
 }
 
@@ -54,8 +55,9 @@
 }
 
 .imageContainer {
-    width: 100%;
-    height: 100%;
+    width: 342px;
+    min-width: 342px;
+    height: 255px;
     min-height: 255px;
     overflow: hidden;
     background-color: #172936;
@@ -138,9 +140,10 @@
     }
 
     .imageContainer {
-        width: 100%;
-        height: 180px;
-        min-height: 180px;
+        width: 330px;
+        min-width: 330px;
+        height: 280px;
+        min-height: 280px;
     }
 
     .image {
