@@ -100,6 +100,28 @@
         color: var(--toastify-color-warning);
     }
 
+    .Toastify__toast--success .Toastify__toast-icon {
+        color: var(--toastify-color-success);
+        -webkit-mask: url('../../../shared/assets/icons/check.svg') center / contain no-repeat;
+        mask: url('../../../shared/assets/icons/check.svg') center / contain no-repeat;
+        background-color: var(--toastify-color-success);
+
+        > svg {
+            display: none;
+        }
+    }
+
+    .Toastify__toast--error .Toastify__toast-icon {
+        color: var(--toastify-color-error);
+        -webkit-mask: url('../../../shared/assets/icons/X.svg') center / contain no-repeat;
+        mask: url('../../../shared/assets/icons/X.svg') center / contain no-repeat;
+        background-color: var(--toastify-color-error);
+
+        > svg {
+            display: none;
+        }
+    }
+
     .Toastify__toast-body > div:last-child {
         word-break: break-word;
         flex: 1;
