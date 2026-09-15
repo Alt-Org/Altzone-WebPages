@@ -259,7 +259,7 @@ export async function fetchHeroBySlug(
         console.warn(
             '[fetchHeroBySlug] Directus host not configured - check NEXT_PUBLIC_DIRECTUS_HOST env var',
         );
-        return undefined;
+        throw new Error('Directus host is not configured');
     }
 
     const params = buildParams(locale, { slug, limit: '1' });
@@ -273,7 +273,7 @@ export async function fetchHeroBySlug(
             console.warn(
                 `[fetchHeroBySlug] Directus error ${res.status} for "${slug}": ${errorText.substring(0, 200)}`,
             );
-            return undefined;
+            throw new Error(`Directus request failed with status ${res.status}`);
         }
 
         const json = await res.json();
@@ -293,7 +293,7 @@ export async function fetchHeroBySlug(
             `[fetchHeroBySlug] ✗ Error fetching "${slug}":`,
             error instanceof Error ? error.message : error,
         );
-        return undefined;
+        throw error;
     }
 }
 
@@ -304,7 +304,7 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
         console.warn(
             '[fetchAllHeroes] Directus host not configured - check NEXT_PUBLIC_DIRECTUS_HOST env var',
         );
-        return [];
+        throw new Error('Directus host is not configured');
     }
 
     const params = buildParams(locale, { limit: '-1' });
@@ -319,7 +319,7 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
             console.warn(
                 `[fetchAllHeroes] Directus error ${res.status}: ${errorText.substring(0, 200)}`,
             );
-            return [];
+            throw new Error(`Directus request failed with status ${res.status}`);
         }
 
         const json = await res.json();
@@ -331,6 +331,6 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
             '[fetchAllHeroes] ✗ Fetch error:',
             error instanceof Error ? error.message : error,
         );
-        return [];
+        throw error;
     }
 }

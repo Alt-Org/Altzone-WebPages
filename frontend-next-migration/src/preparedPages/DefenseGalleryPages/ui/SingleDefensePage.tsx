@@ -229,8 +229,6 @@ function useHeroGroupsWithFallback(
 ): Record<HeroGroup, GroupInfoType> {
     const { data: directusGroups, isError, error } = useGetHeroGroupsQuery({ locale });
     const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
-    // Use Directus data only if it exists, has keys, and there's no error
-    const hasDirectusData = !isError && directusGroups && Object.keys(directusGroups).length > 0;
     if (isError) {
         // eslint-disable-next-line no-console
         console.warn(
@@ -239,8 +237,9 @@ function useHeroGroupsWithFallback(
         );
     }
     return React.useMemo(
-        () => (hasDirectusData ? directusGroups : staticGroups),
-        [hasDirectusData, directusGroups, staticGroups],
+        () =>
+            isError ? staticGroups : (directusGroups ?? ({} as Record<HeroGroup, GroupInfoType>)),
+        [directusGroups, isError, staticGroups],
     );
 }
 

@@ -27,7 +27,7 @@ const DefenseGalleryPage = () => {
     const lng = (params?.lng as string) || 'en';
     const locale = (lng === 'en' ? 'en' : lng === 'fi' ? 'fi' : 'ru') as 'en' | 'fi' | 'ru';
 
-    // Try to fetch from Directus first, fallback to static data
+    // Try to fetch from Directus
     const { data: directusGroups, isError, error } = useGetHeroGroupsQuery({ locale });
     const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
     const heroGroups = React.useMemo(() => {
@@ -36,10 +36,7 @@ const DefenseGalleryPage = () => {
             console.warn('[DefenseGalleryPage] Directus query failed, using static data:', error);
             return staticGroups;
         }
-        if (directusGroups && Object.keys(directusGroups).length > 0) {
-            return directusGroups;
-        }
-        return staticGroups;
+        return directusGroups ?? {};
     }, [directusGroups, staticGroups, isError, error]);
 
     // Create an array of all heroes with their group information
