@@ -22,16 +22,6 @@ export const initializeHeroGroups = (t: (key: string) => string): Record<HeroGro
 export async function initializeHeroGroupsFromDirectus(
     locale: Locale = 'en',
 ): Promise<Record<HeroGroup, GroupInfo>> {
-    try {
-        const heroes = await fetchAllHeroes(locale);
-        return groupHeroesByGroup(heroes);
-    } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(
-            '[initializeHeroGroupsFromDirectus] Failed to fetch hero groups from Directus:',
-            error,
-        );
-        // Return empty record - caller should check and keep static data
-        return {} as Record<HeroGroup, GroupInfo>;
-    }
+    const heroes = await fetchAllHeroes(locale);
+    return groupHeroesByGroup(heroes);
 }
