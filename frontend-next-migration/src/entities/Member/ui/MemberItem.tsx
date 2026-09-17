@@ -11,9 +11,10 @@ import { getRoleTaskTranslation, getLanguageCode } from '../api/translations';
 interface MemberItemProps {
     member: Member;
     language: string;
+    anchorId?: string;
 }
 
-const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
+const MemberItem: FC<MemberItemProps> = ({ member, language, anchorId }) => {
     /**
      * Manage the enlarged mode of the image.
      * @description When the boolean value is true, image is enlarged.
@@ -51,7 +52,10 @@ const MemberItem: FC<MemberItemProps> = ({ member, language }) => {
     const task = allTasks.join(', ');
 
     return (
-        <li className={cls.workmanComponent}>
+        <li
+            id={anchorId}
+            className={cls.workmanComponent}
+        >
             <div className={cls.memberRow}>
                 <div className={cls.centerContainer}>
                     <div className={cls.textContainer}>

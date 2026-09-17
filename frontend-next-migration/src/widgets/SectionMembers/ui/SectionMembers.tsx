@@ -28,6 +28,25 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
 
     const { teamsMap } = organizeMembers(members, lng);
 
+    const firstOccurrenceMemberIds = new Set<number>();
+    const seenMemberIds = new Set<number>();
+    teamsMap.forEach((team) => {
+        team.members.forEach((member) => {
+            if (!seenMemberIds.has(member.id)) {
+                seenMemberIds.add(member.id);
+                firstOccurrenceMemberIds.add(member.id);
+            }
+        });
+        team.departments.forEach((department) => {
+            department.members.forEach((member) => {
+                if (!seenMemberIds.has(member.id)) {
+                    seenMemberIds.add(member.id);
+                    firstOccurrenceMemberIds.add(member.id);
+                }
+            });
+        });
+    });
+
     return (
         <div className={classNames(cls.MembersSection, {}, [className])}>
             {/*<ScrollBottomButton
@@ -52,6 +71,11 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                             key={member.id}
                                             member={member}
                                             language={lng}
+                                            anchorId={
+                                                firstOccurrenceMemberIds.has(member.id)
+                                                    ? `member-${member.id}`
+                                                    : undefined
+                                            }
                                         />
                                     ))}
                                 </ul>
@@ -67,6 +91,11 @@ export const SectionMembers: FC<WorkersSectionProps> = ({ className = '' }) => {
                                                     key={member.id}
                                                     member={member}
                                                     language={lng}
+                                                    anchorId={
+                                                        firstOccurrenceMemberIds.has(member.id)
+                                                            ? `member-${member.id}`
+                                                            : undefined
+                                                    }
                                                 />
                                             ))}
                                         </ul>
