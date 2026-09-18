@@ -6,6 +6,7 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 import { useMemo } from 'react';
 import { envHelper } from '@/shared/const/envHelper';
 import altLogo from '@/shared/assets/images/altLogo.png';
+import { useClientTranslation } from '@/shared/i18n';
 
 export interface MosaicGridProps {
     className?: string;
@@ -14,7 +15,15 @@ export interface MosaicGridProps {
 
 const MosaicGrid = ({ className, members }: MosaicGridProps) => {
     const { isMobileSize } = useSizes();
+    const { t } = useClientTranslation('members');
     const directusBaseUrl = envHelper.directusHost;
+
+    const scrollToMember = (memberId: number) => {
+        const element = document.getElementById(`member-${memberId}`);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     // shuffle members to fill the grid randomly
     const shuffledMembers = useMemo(() => {
@@ -56,14 +65,21 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
                     ? `${directusBaseUrl}/assets/${member.portrait.id}`
                     : altLogo;
                 return member ? (
-                    <Image
+                    <button
                         key={`${member.id}-${index}`}
-                        src={imageSrc}
-                        alt={member.name}
-                        className={classNames(cls.MosaicGridImage)}
-                        width={252}
-                        height={252}
-                    />
+                        type="button"
+                        className={cls.MosaicGridButton}
+                        onClick={() => scrollToMember(member.id)}
+                        aria-label={t('go-to-member', { name: member.name })}
+                    >
+                        <Image
+                            src={imageSrc}
+                            alt={member.name}
+                            className={classNames(cls.MosaicGridImage)}
+                            width={252}
+                            height={252}
+                        />
+                    </button>
                 ) : null;
             })}
         </div>

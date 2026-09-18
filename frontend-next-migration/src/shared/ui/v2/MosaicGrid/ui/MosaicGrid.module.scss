@@ -25,6 +25,14 @@
 
 }
 
+.MosaicGridButton {
+    display: flex;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .MosaicGridImage {
     object-fit: cover;
     background: var(--base-card-background);
