@@ -1,5 +1,8 @@
+import { useLayoutEffect, useRef, useState } from 'react';
 import cls from './TabNavigation.module.scss';
 import useSizes from '@/shared/lib/hooks/useSizes';
+
+const DESKTOP_TAB_WIDTH = 200;
 
 interface TabNavigationProps {
     tabs: { id: string; label: string }[];
@@ -7,8 +10,8 @@ interface TabNavigationProps {
     activeTab: string;
     onTabClick: (tab: string) => void;
     tabStylesList?: React.CSSProperties[];
+    mobileTabStylesList?: React.CSSProperties[];
     activeTabStyles?: React.CSSProperties;
-    showTabTitle?: boolean;
 }
 
 /**
@@ -26,10 +29,41 @@ export const TabNavigation = ({
     activeTab,
     onTabClick,
     tabStylesList,
+    mobileTabStylesList,
     activeTabStyles,
-    showTabTitle = false,
 }: TabNavigationProps) => {
-    const { isMobileSize } = useSizes();
+    const sizes = useSizes();
+    const { isMobileSize } = sizes;
+    const tabsContainerRef = useRef<HTMLDivElement>(null);
+    const [tabsNeedMobileStyles, setTabsNeedMobileStyles] = useState(false);
+    const [mobileColumns, setMobileColumns] = useState(2);
+    const useMobileStyles = isMobileSize || tabsNeedMobileStyles;
+
+    // determine if the tabs need to use mobile styles based on the container width and number of tabs
+    useLayoutEffect(() => {
+        const container = tabsContainerRef.current;
+        if (!container) return;
+
+        setTabsNeedMobileStyles(container.clientWidth < tabs.length * DESKTOP_TAB_WIDTH);
+    }, [sizes, tabs.length]);
+
+    // determine the number of columns for mobile styles based on the container width and number of tabs
+    useLayoutEffect(() => {
+        const container = tabsContainerRef.current;
+        if (!container || !useMobileStyles) return;
+
+        const styles = getComputedStyle(container);
+        const availableWidth =
+            container.clientWidth -
+            parseFloat(styles.paddingLeft) -
+            parseFloat(styles.paddingRight);
+        const gap = parseFloat(styles.columnGap);
+        const minimumTabWidth = parseFloat(styles.getPropertyValue('--mobile-tab-min-width'));
+        const tabsThatFit = Math.floor((availableWidth + gap) / (minimumTabWidth + gap));
+
+        // if all tabs fit at mobile size, use tab # columns, otherwise 2
+        setMobileColumns(tabsThatFit >= tabs.length ? Math.max(1, tabs.length) : 2);
+    }, [sizes, tabs.length, useMobileStyles]);
 
     const handleTabClick = (tabId: string) => {
         onTabClick(tabId);
@@ -37,17 +71,31 @@ export const TabNavigation = ({
 
     return (
         <div className={cls.tabNavigation}>
-            {isMobileSize || showTabTitle ? <div className={cls.tabsTitle}>{tabsTitle}</div> : null}
-            <div className={cls.tabsContainer}>
-                {tabs.map((tab) => (
+            {useMobileStyles && <div className={cls.tabsTitle}>{tabsTitle}</div>}
+            <div
+                ref={tabsContainerRef}
+                className={`${cls.tabsContainer}${useMobileStyles ? ` ${cls.mobileTabs}` : ''}${useMobileStyles && mobileColumns === 2 && tabs.length > 2 ? ` ${cls.twoColumnTabs}` : ''}`}
+                style={
+                    useMobileStyles
+                        ? {
+                              gridTemplateColumns: `repeat(${mobileColumns}, minmax(0, 1fr))`,
+                          }
+                        : undefined
+                }
+            >
+                {tabs.map((tab, index) => (
                     <div
                         key={tab.id}
-                        className={cls.tab + (activeTab === tab.id ? ` ${cls.activeTab}` : '')}
-                        style={
-                            activeTab === tab.id
+                        className={`${cls.tab}${activeTab === tab.id ? ` ${cls.activeTab}` : ''}`}
+                        style={{
+                            ...(activeTab === tab.id
                                 ? activeTabStyles
-                                : tabStylesList?.[tabs.indexOf(tab) % tabStylesList.length] || {}
-                        }
+                                : useMobileStyles
+                                  ? mobileTabStylesList?.[
+                                        index % (mobileTabStylesList?.length || 1)
+                                    ]
+                                  : tabStylesList?.[index % (tabStylesList?.length || 1)]),
+                        }}
                         onClick={() => handleTabClick(tab.id)}
                     >
                         {tab.label}
