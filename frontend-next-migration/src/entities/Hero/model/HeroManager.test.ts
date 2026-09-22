@@ -23,6 +23,32 @@ describe('HeroManager Directus fallback behavior', () => {
         await expect(manager().getAllHeroesFromDirectus()).resolves.toEqual([]);
     });
 
+    it('uses static heroes after a failed all-heroes request', async () => {
+        mockedFetchAllHeroes.mockRejectedValue(new Error('network failure'));
+
+        await expect(manager().getAllHeroesFromDirectus()).resolves.toEqual(
+            manager().getAllHeroes(),
+        );
+    });
+
+    it('keeps groups empty after a successful empty initialization response', async () => {
+        mockedFetchAllHeroes.mockResolvedValue([]);
+        const heroManager = manager();
+
+        await heroManager.initializeFromDirectus();
+
+        expect(heroManager.getGroupsWithHeroes()).toEqual({});
+    });
+
+    it('keeps static groups after a failed initialization request', async () => {
+        mockedFetchAllHeroes.mockRejectedValue(new Error('network failure'));
+        const heroManager = manager();
+
+        await heroManager.initializeFromDirectus();
+
+        expect(Object.keys(heroManager.getGroupsWithHeroes()).length).toBeGreaterThan(0);
+    });
+
     it('does not use a static hero after a successful no-match slug response', async () => {
         mockedFetchHeroBySlug.mockResolvedValue(undefined);
 
