@@ -34,10 +34,6 @@ export async function _getPage(lng: string, heroGroup: string) {
     let groups: Record<HeroGroup, GroupInfo>;
     try {
         groups = await initializeHeroGroupsFromDirectus(lng as 'en' | 'fi' | 'ru');
-        // If Directus returns empty, fallback to static
-        if (Object.keys(groups).length === 0) {
-            groups = initializeHeroGroups(t);
-        }
     } catch {
         groups = initializeHeroGroups(t);
     }
