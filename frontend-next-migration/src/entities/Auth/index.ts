@@ -11,6 +11,7 @@ export {
     useLoginMutation,
     useRegisterMutation,
     useLogoutMutation,
+    useRefreshAuthMutation,
     authEndpoints,
 } from './model/authApi';
 
