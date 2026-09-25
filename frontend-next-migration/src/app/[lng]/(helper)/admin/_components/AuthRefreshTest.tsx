@@ -15,11 +15,12 @@ const AuthRefreshTest = () => {
         selectAuthUserState(state),
     );
     const [response, setResponse] = useState<AccessTokenInfoResponse | null>(null);
+    const [refreshToken, setRefreshToken] = useState('');
     const [storedAuthUser, setStoredAuthUser] = useState<string | null>(null);
 
     const handleRefresh = async () => {
         try {
-            const refreshResponse = await refreshAuth().unwrap();
+            const refreshResponse = await refreshAuth({ refreshToken }).unwrap();
             setResponse(refreshResponse);
             setStoredAuthUser(localStorage.getItem(LS_KEYS.AUTH_USER));
         } catch {
@@ -31,11 +32,19 @@ const AuthRefreshTest = () => {
     return (
         <section>
             <h2>Auth refresh test</h2>
+            <label htmlFor="refresh-token">Refresh token</label>
+            <input
+                id="refresh-token"
+                type="text"
+                required
+                value={refreshToken}
+                onChange={(event) => setRefreshToken(event.target.value)}
+            />
             <br />
             <button
                 type="button"
                 onClick={handleRefresh}
-                disabled={isLoading}
+                disabled={isLoading || !refreshToken}
             >
                 {isLoading ? 'Refreshing...' : 'Refresh auth'}
             </button>

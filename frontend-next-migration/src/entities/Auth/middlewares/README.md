@@ -2,7 +2,7 @@
 
 ## Current implementation
 
-`authApi.ts` exposes `refreshAuth` as a no-argument `POST /auth/refresh` mutation. It returns `AccessTokenInfoResponse`, matching the token-only response shape already used by the auth types. The mutation is intentionally not called by production authentication code yet.
+`authApi.ts` exposes `refreshAuth` as a `POST /auth/refresh` mutation with the required `{ refreshToken }` JSON body. It returns `AccessTokenInfoResponse`, containing the new access and refresh tokens. The mutation is intentionally not called by production authentication code yet.
 
 The admin page contains a manual probe at `/{lng}/admin`. It displays the refresh response, the current Redux auth state, and an `AuthUser` localStorage snapshot after the request. This makes it possible to verify the backend contract without changing the normal login flow.
 

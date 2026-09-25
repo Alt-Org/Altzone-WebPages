@@ -1,6 +1,7 @@
 export type {
     IUserRegisterDto,
     IUserLoginDto,
+    IRefreshAuthDto,
     IPlayerRegisterPartDto,
     AuthUserSchema,
     ILoginResponse,
