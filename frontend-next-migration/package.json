@@ -9,6 +9,7 @@
     "dev": "next dev -p 5173",
     "build": "next build --no-lint",
     "start": "next start",
+    "start-dev": "next start -p 5173",
     "test": "jest",
     "test:ci": "jest --ci --config=jest.ci-config.ts",
     "test:ci-retry-failed": "jest --ci --onlyFailures --config=jest.ci-config.ts",

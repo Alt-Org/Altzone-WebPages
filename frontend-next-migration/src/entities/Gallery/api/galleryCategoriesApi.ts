@@ -1,6 +1,7 @@
 import { directusApi } from '@/shared/api';
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems } from '@directus/sdk';
+import { Category } from '../types/gallery';
 
 const directusBaseUrl = envHelper.directusHost;
 const client = createDirectus(directusBaseUrl).with(rest());
@@ -30,7 +31,7 @@ const galleryCategoryApi = directusApi.injectEndpoints({
                         deep: { translations: true },
                     }),
                 );
-                return { data: categories };
+                return { data: categories as Category[] };
             },
         }),
     }),

@@ -12,5 +12,20 @@
     "socials-text": "Also, check out our socials!",
     "explore": "Explore",
     "category-menu-title": "Categories",
-    "picture-galleries-title": "GALLERY"
+    "all-categories": "All",
+    "picture-galleries-title": "How We Made the Graphics",
+    "no-animations-title": "No Results Found",
+    "no-animations-text": "Please check your spelling or try a new search.",
+    "loading": "Loading...",
+    "error-text": "Error loading gallery.",
+    "filters": "Filters",
+    "date-asc": "Oldest first",
+    "date-desc": "Newest first",
+    "title": "Alphabetical",
+    "sort-by": "Sort by",
+    "authors": "Authors",
+    "reset-filters": "Reset",
+    "page-planner": "Page designed by",
+    "image-alt": "image",
+    "animation-alt": "animation"
 }
