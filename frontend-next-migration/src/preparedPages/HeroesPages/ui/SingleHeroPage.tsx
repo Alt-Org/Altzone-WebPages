@@ -56,7 +56,7 @@ const SingleHeroPage = (props: Props) => {
     const { isMobileSize, isTabletSize } = useSizes();
 
     // Try to fetch from Directus if hero not provided from server
-    const { data: directusHero } = useGetHeroBySlugQuery(
+    const { data: directusHero, isError: isDirectusHeroError } = useGetHeroBySlugQuery(
         { slug, locale },
         { skip: !!newSelectedHero },
     );
@@ -73,7 +73,7 @@ const SingleHeroPage = (props: Props) => {
 
     // Determine selected hero and its group to populate localized titles
     const { titleText, hero } = useMemo<{ titleText: string; hero?: Hero }>(() => {
-        // Priority: 1. Server-provided hero, 2. Directus hero, 3. Static data fallback
+        // Priority: 1. Server-provided hero, 2. Directus hero, 3. static fallback after failure
         const selectedHero = newSelectedHero || directusHero;
         if (selectedHero) {
             // Merge Directus stats (levels) with baseline tiers (rarityClass) from the hero data.
@@ -109,7 +109,11 @@ const SingleHeroPage = (props: Props) => {
             };
         }
 
-        // Fallback to static data
+        if (!isDirectusHeroError) {
+            return { titleText: '', hero: undefined };
+        }
+
+        // Fall back to static data only when the Directus request failed.
         const heroGroups = initializeHeroGroups(t);
         for (const groupKey in heroGroups) {
             const group = heroGroups[groupKey as keyof typeof heroGroups];
@@ -122,7 +126,7 @@ const SingleHeroPage = (props: Props) => {
             }
         }
         return { titleText: '', hero: undefined };
-    }, [newSelectedHero, directusHero, directusStats, slug, t]);
+    }, [newSelectedHero, directusHero, directusStats, isDirectusHeroError, slug, t]);
 
     const rarityLabel = useMemo(() => {
         if (!hero?.rarityClass) return '';

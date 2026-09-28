@@ -1,11 +1,14 @@
 'use client';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { HeroManager } from '@/entities/Hero';
+import { useGetHeroGroupsQuery } from '@/entities/Hero/model/heroApi';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useClientTranslation } from '@/shared/i18n';
 import { Container } from '@/shared/ui/Container';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { useParams } from 'next/navigation';
 import HeroesBlocks from './heroesBlocks/HeroesBlocks';
 import cls from './main.module.scss';
 
@@ -34,8 +37,16 @@ function Main(props: Props) {
     };
 
     const { t } = useClientTranslation('heroes');
-    const heroManager = new HeroManager(t);
-    const heroesGroups2 = heroManager.getGroupsWithHeroesAsArray();
+    const params = useParams();
+    const lng = (params?.lng as string) || 'en';
+    const locale = (lng === 'en' ? 'en' : lng === 'fi' ? 'fi' : 'ru') as 'en' | 'fi' | 'ru';
+    const { data: directusGroups, isError, isLoading } = useGetHeroGroupsQuery({ locale });
+    const staticGroups = React.useMemo(() => new HeroManager(t).getGroupsWithHeroesAsArray(), [t]);
+    const heroesGroups2 = React.useMemo(() => {
+        if (isLoading) return [];
+        if (isError) return staticGroups;
+        return directusGroups ? Object.values(directusGroups) : [];
+    }, [directusGroups, isError, isLoading, staticGroups]);
 
     const displayedGroups = maxGroupsPerPage
         ? heroesGroups2.slice(0, maxGroupsPerPage)
