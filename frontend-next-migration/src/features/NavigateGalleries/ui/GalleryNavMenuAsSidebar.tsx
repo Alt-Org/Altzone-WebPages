@@ -4,6 +4,7 @@ import {
     getLanguageCode,
     useGetDirectusGalleryImages,
     getCategoryTranslation,
+    getGalleryNavigationLabel,
     Category,
 } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
@@ -72,6 +73,7 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
 
     const getCategory = (category: Category, index: number) => {
         const translatedCategory = getCategoryTranslation(category.translations, language);
+        const navigationLabel = getGalleryNavigationLabel(translatedCategory, language);
 
         if (sidebarVisible) {
             return (
@@ -85,8 +87,8 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
                             : {}
                     }
                 >
-                    {translatedCategory.charAt(0).toUpperCase() +
-                        translatedCategory.slice(1).replace('-', ' ')}
+                    {navigationLabel.charAt(0).toUpperCase() +
+                        navigationLabel.slice(1).replace('-', ' ')}
                 </div>
             );
         } else {
@@ -100,8 +102,8 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
                             : {}
                     }
                 >
-                    {translatedCategory.charAt(0).toUpperCase() +
-                        translatedCategory.slice(1).replace('-', ' ')}
+                    {navigationLabel.charAt(0).toUpperCase() +
+                        navigationLabel.slice(1).replace('-', ' ')}
                 </div>
             );
         }

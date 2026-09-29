@@ -25,6 +25,21 @@ export const getCategoryTranslation = (
     return getTranslation(translations, languageCode, 'name', '');
 };
 
+const galleryNavigationLabels: Record<string, Record<string, string>> = {
+    'fi-FI': {
+        hahmot: 'Pelihahmot',
+        sielunkoti: 'Sielunlinna',
+    },
+    'en-US': {
+        heroes: 'Game characters',
+        sielunkoti: 'Soul Castle',
+    },
+};
+
+/** Applies the navigation names from the updated information architecture. */
+export const getGalleryNavigationLabel = (categoryName: string, languageCode: string) =>
+    galleryNavigationLabels[languageCode]?.[categoryName.toLowerCase()] ?? categoryName;
+
 export const getPhotoVersionTranslation = (
     translations: PhotoVersionTranslations[],
     languageCode: string,
