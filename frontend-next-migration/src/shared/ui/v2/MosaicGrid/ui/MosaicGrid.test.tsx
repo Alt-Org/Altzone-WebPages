@@ -95,7 +95,42 @@ describe('MosaicGrid', () => {
         fireEvent.click(screen.getAllByRole('button', { name: 'Go to Test Member' })[0]);
 
         expect(scrollIntoView).toHaveBeenCalledTimes(1);
-        expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+        expect(scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'center' });
+    });
+
+    it('highlights the scrolled-to member row', () => {
+        Object.defineProperty(Element.prototype, 'scrollIntoView', {
+            configurable: true,
+            value: jest.fn(),
+        });
+        document.body.innerHTML = '<div id="member-1"></div>';
+        const target = document.getElementById('member-1');
+
+        renderMosaic({ members });
+        expect(target).not.toHaveAttribute('data-highlight');
+
+        fireEvent.click(screen.getAllByRole('button', { name: 'Go to Test Member' })[0]);
+
+        expect(target).toHaveAttribute('data-highlight', 'true');
+    });
+
+    it('clears the highlight from the member row after the highlight duration', () => {
+        jest.useFakeTimers();
+        Object.defineProperty(Element.prototype, 'scrollIntoView', {
+            configurable: true,
+            value: jest.fn(),
+        });
+        document.body.innerHTML = '<div id="member-1"></div>';
+        const target = document.getElementById('member-1');
+
+        renderMosaic({ members });
+        fireEvent.click(screen.getAllByRole('button', { name: 'Go to Test Member' })[0]);
+
+        expect(target).toHaveAttribute('data-highlight', 'true');
+
+        jest.advanceTimersByTime(2000);
+        expect(target).not.toHaveAttribute('data-highlight');
+        jest.useRealTimers();
     });
 
     it('does nothing when the member row does not exist in the page', () => {

@@ -8,6 +8,8 @@ import { envHelper } from '@/shared/const/envHelper';
 import altLogo from '@/shared/assets/images/altLogo.png';
 import { useClientTranslation } from '@/shared/i18n';
 
+const SCROLL_HIGHLIGHT_DURATION = 2000;
+
 export interface MosaicGridProps {
     className?: string;
     members: Member[];
@@ -20,9 +22,15 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
 
     const scrollToMember = (memberId: number) => {
         const element = document.getElementById(`member-${memberId}`);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (!element) return;
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        element.removeAttribute('data-highlight');
+        void element.offsetHeight;
+        element.setAttribute('data-highlight', 'true');
+        window.setTimeout(
+            () => element.removeAttribute('data-highlight'),
+            SCROLL_HIGHLIGHT_DURATION,
+        );
     };
 
     // shuffle members to fill the grid randomly
