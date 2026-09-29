@@ -1,10 +1,24 @@
 {
     "title": "Tell your opinion about our websites",
-    "input-placeholder": "Please write here",
+    "success-title": "Thank you for your feedback!",
+    "input-placeholder": "(Optional)",
+    "input-placeholder-1": "What bothered you the most?",
+    "input-placeholder-2": "What fell short of your expectations?",
+    "input-placeholder-3": "What could be improved?",
+    "input-placeholder-4": "Any suggestions for improvement?",
+    "input-placeholder-5": "Wonderful! What did you like the most?",
     "send": "Send",
+    "loading": "Sending...",
     "href-to-fullform": "Go to the full form ->",
     "error": "Select emote and then write feedback",
+    "error-submit-failed": "Submission failed. Please try again.",
+    "feedback-text": "Give specific feedback",
     "success": "Thank you very much! We appreciate your feedback.",
-    "href-to-webform": "Website form",
-    "href-to-gameform": "Game form"
+    "href-to-webform": "Web form",
+    "href-to-gameform": "Game form",
+    "rating-label-1": "Bad",
+    "rating-label-2": "Meh..",
+    "rating-label-3": "OK",
+    "rating-label-4": "Good",
+    "rating-label-5": "Great"
 }
