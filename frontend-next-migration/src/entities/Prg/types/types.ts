@@ -1,26 +1,26 @@
 // Directus data
 export interface PrgPage {
     id: number;
-    created_at: string;
-    updated_at: string;
+    date_created: string;
+    date_updated: string | null;
     status?: 'draft' | 'published' | 'archived' | null;
-    hero_image?: string | null;
+    hero_image: string | null;
     registry_info_fi: string | null;
     registry_info_en: string | null;
 }
 
-export interface PrgDocuments {
+export interface PrgDocument {
     key: string | null; // e.g. action_plan, activity_report, bylaws
-    created_at: string;
-    updated_at: string;
+    date_created: string;
+    date_updated: string | null;
     status?: 'draft' | 'published' | 'archived' | null;
     url: string | null;
 }
 
-export interface PrgBoardMembers {
+export interface PrgBoardMemberDirectus {
     id: number;
-    created_at: string;
-    updated_at: string;
+    date_created: string;
+    date_updated: string | null;
     status?: 'draft' | 'published' | 'archived' | null;
     name: string;
     job_title_fi: string | null;
@@ -28,6 +28,13 @@ export interface PrgBoardMembers {
     profession_fi: string | null;
     profession_en: string | null;
     image: string | null;
+    sort: number | null;
+}
+
+export interface PrgDirectusSchema {
+    prg_page: PrgPage;
+    prg_documents: PrgDocument[];
+    prg_board_members: PrgBoardMemberDirectus[];
 }
 
 // Mapped data, localized

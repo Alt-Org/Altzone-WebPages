@@ -1,11 +1,11 @@
 import { directusApi } from '@/shared/api';
 import { envHelper } from '@/shared/const/envHelper';
-import { createDirectus, rest, readItems } from '@directus/sdk';
-import { PrgPage, PrgDocuments, PrgBoardMembers } from '../types/types';
+import { createDirectus, rest, readItems, readSingleton } from '@directus/sdk';
+import { PrgPage, PrgDocument, PrgBoardMemberDirectus, PrgDirectusSchema } from '../types/types';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/react';
 
 const directusBaseUrl = envHelper.directusHost || '';
-const client = createDirectus(directusBaseUrl).with(rest());
+const client = createDirectus<PrgDirectusSchema>(directusBaseUrl).with(rest());
 
 const errorHandler = (error: unknown): FetchBaseQueryError => {
     const status =
@@ -22,45 +22,53 @@ const errorHandler = (error: unknown): FetchBaseQueryError => {
     };
 };
 
+/**
+ * Fetches the PRG page data from Directus, including the PRG page hero image and registroy info, document links, and board members.
+ *
+ * @returns An object containing the PRG page data, loading state, and any error that occurred during the fetch.
+ */
 const prgPageApi = directusApi.injectEndpoints({
     endpoints: (builder) => ({
         getPrgPage: builder.query({
             queryFn: async (
                 _arg: void,
-            ): Promise<{ data: PrgPage[] } | { error: FetchBaseQueryError }> => {
+            ): Promise<{ data: PrgPage } | { error: FetchBaseQueryError }> => {
                 try {
                     const prgPage = await client.request(
-                        readItems('prg_page', { fields: ['*'], limit: 1 }),
+                        readSingleton('prg_page', { fields: ['*'] }),
                     );
-                    return { data: prgPage as PrgPage[] };
+                    return { data: prgPage };
                 } catch (error: unknown) {
                     return { error: errorHandler(error) };
                 }
             },
         }),
-        getPrgDocuments: builder.query<PrgDocuments[], void>({
+        getPrgDocuments: builder.query<PrgDocument[], void>({
             queryFn: async (): Promise<
-                { data: PrgDocuments[] } | { error: FetchBaseQueryError }
+                { data: PrgDocument[] } | { error: FetchBaseQueryError }
             > => {
                 try {
                     const prgDocuments = await client.request(
                         readItems('prg_documents', { fields: ['*'] }),
                     );
-                    return { data: prgDocuments as PrgDocuments[] };
+                    return { data: prgDocuments };
                 } catch (error) {
                     return { error: errorHandler(error) };
                 }
             },
         }),
-        getPrgBoardMembers: builder.query<PrgBoardMembers[], void>({
+        getPrgBoardMembers: builder.query<PrgBoardMemberDirectus[], void>({
             queryFn: async (): Promise<
-                { data: PrgBoardMembers[] } | { error: FetchBaseQueryError }
+                { data: PrgBoardMemberDirectus[] } | { error: FetchBaseQueryError }
             > => {
                 try {
                     const prgBoardMembers = await client.request(
-                        readItems('prg_board_members', { fields: ['*'] }),
+                        readItems('prg_board_members', {
+                            fields: ['*'],
+                            sort: ['sort', 'id'],
+                        }),
                     );
-                    return { data: prgBoardMembers as PrgBoardMembers[] };
+                    return { data: prgBoardMembers };
                 } catch (error) {
                     return { error: errorHandler(error) };
                 }

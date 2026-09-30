@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import PRGPage from './PRGPage';
+import { useParams } from 'next/navigation';
+import { useGetPrgPageData } from '@/entities/Prg';
 
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
@@ -19,6 +21,14 @@ jest.mock('@/shared/ui/CustomSwitch', () => ({
         </div>
     ),
     CustomSwitchItems: { ToggleItem: 'ToggleItem' },
+}));
+
+jest.mock('next/navigation', () => ({
+    useParams: jest.fn(),
+}));
+
+jest.mock('@/entities/Prg', () => ({
+    useGetPrgPageData: jest.fn(),
 }));
 
 jest.mock('@/shared/ui/AppLink/AppLink', () => ({
@@ -55,6 +65,39 @@ import useSizes from '@/shared/lib/hooks/useSizes';
 
 describe('PRGPage', () => {
     beforeEach(() => {
+        (useParams as jest.Mock).mockReturnValue({ lng: 'en' });
+
+        (useGetPrgPageData as jest.Mock).mockReturnValue({
+            fullPrgPageData: {
+                heroImageUrl: undefined,
+                documents: {
+                    actionPlanUrl: 'https://example.com/action-plan.pdf',
+                    activityReportUrl: 'https://example.com/activity-report.pdf',
+                    bylawsUrl: 'https://example.com/bylaws.pdf',
+                },
+                registryInfo: 'Test registry information',
+                boardMembers: [
+                    {
+                        name: 'Helena Pavloff-Pelkonen',
+                        jobTitle: 'Chairperson',
+                        profession: 'Profession',
+                    },
+                    {
+                        name: 'Esa Pavloff-Pelkonen',
+                        jobTitle: 'Member',
+                        profession: 'Profession',
+                    },
+                    {
+                        name: 'Emmi-Irina Pavloff',
+                        jobTitle: 'Member',
+                        profession: 'Profession',
+                    },
+                ],
+            },
+            isLoading: false,
+            error: undefined,
+        });
+
         (useClientTranslation as jest.Mock).mockReturnValue({
             t: (key: string) => key,
         });

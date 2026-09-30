@@ -6,6 +6,12 @@ import {
 import { mapPrgPageData } from './mappers';
 import { useMemo } from 'react';
 
+/**
+ * Custom hook to fetch and combine PRG page data, documents, and board members.
+ *
+ * @param lng - The language code ('fi' or 'en') for localization. Defaults to 'en'.
+ * @returns An object containing the combined PRG page data, loading state, and any error that occurred during the fetch.
+ */
 export const useGetPrgPageData = (lng: 'fi' | 'en' = 'en') => {
     const {
         data: prgPageData,
@@ -27,7 +33,7 @@ export const useGetPrgPageData = (lng: 'fi' | 'en' = 'en') => {
     const error = prgPageError || prgDocumentsError || prgBoardMembersError;
 
     const fullPrgPageData = useMemo(() => {
-        return mapPrgPageData(prgPageData?.[0], prgDocumentsData, prgBoardMembersData, lng);
+        return mapPrgPageData(prgPageData, prgDocumentsData, prgBoardMembersData, lng);
     }, [prgPageData, prgDocumentsData, prgBoardMembersData, lng]);
 
     return { fullPrgPageData, isLoading, error };
