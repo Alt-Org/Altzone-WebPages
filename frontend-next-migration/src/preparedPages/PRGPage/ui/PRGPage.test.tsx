@@ -94,8 +94,12 @@ describe('PRGPage', () => {
                     },
                 ],
             },
-            isLoading: false,
-            error: undefined,
+            loading: {
+                prgPageIsLoading: false,
+                prgDocumentsIsLoading: false,
+                prgBoardMembersIsLoading: false,
+            },
+            error: { prgPageError: null, prgDocumentsError: null, prgBoardMembersError: null },
         });
 
         (useClientTranslation as jest.Mock).mockReturnValue({

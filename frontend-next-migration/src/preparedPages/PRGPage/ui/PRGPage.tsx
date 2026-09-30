@@ -122,14 +122,45 @@ const tabImageSide: Record<DocumentTab, 'left' | 'right'> = {
     bylaws: 'right',
 };
 
+const BoardMembers = (props: {
+    boardMembers?: PrgBoardMember[];
+    isMobileSize: boolean;
+    loading: boolean;
+    error: boolean;
+    t: PrgT;
+}) => {
+    const { boardMembers, isMobileSize, loading, error, t } = props;
+    if (loading) return <p>{t('loading')}</p>;
+    if (error) return <p>{t('load-error')}</p>;
+    return (
+        <div
+            className={classNames(cls.BoardCardContainer, {
+                [cls.BoardCardMobileContainer]: isMobileSize,
+            })}
+        >
+            {boardMembers?.map((member) => (
+                <Boardcard
+                    key={member.name}
+                    boardMember={member}
+                    isMobileSize={isMobileSize}
+                />
+            ))}
+        </div>
+    );
+};
+
 const PRGPage = () => {
     const { t } = useClientTranslation('prg');
     const { isMobileSize, isTabletSize } = useSizes();
     const [activeTab, setActiveTab] = useState<DocumentTab>('action-plan');
     const params = useParams();
     const lng = params.lng;
-    const prgData = useGetPrgPageData(lng === 'fi' ? 'fi' : 'en');
-    const prgPageData = prgData.fullPrgPageData;
+    const {
+        fullPrgPageData: prgPageData,
+        loading,
+        error,
+    } = useGetPrgPageData(lng === 'fi' ? 'fi' : 'en');
+    const isSmallScreen = isMobileSize || isTabletSize;
 
     const tabElements: ToggleItem[] = useMemo(
         () =>
@@ -229,19 +260,13 @@ const PRGPage = () => {
                 <div className={cls.headingWithLines}>
                     <span className={cls.headingWithLinesText}>{t('prg-board')}</span>
                 </div>
-                <div
-                    className={classNames(cls.BoardCardContainer, {
-                        [cls.BoardCardMobileContainer]: isMobileSize || isTabletSize,
-                    })}
-                >
-                    {prgPageData.boardMembers?.map((member) => (
-                        <Boardcard
-                            key={member.name}
-                            boardMember={member}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                    ))}
-                </div>
+                <BoardMembers
+                    boardMembers={prgPageData.boardMembers}
+                    isMobileSize={isSmallScreen}
+                    loading={loading.prgBoardMembersIsLoading}
+                    error={!!error.prgBoardMembersError}
+                    t={t}
+                />
                 <div className={cls.ButtonBlock}>
                     <AppLink
                         to={'/team'}
@@ -253,10 +278,16 @@ const PRGPage = () => {
                     </AppLink>
                 </div>
             </div>
-            {isMobileSize || isTabletSize ? renderMobileTabs() : renderTabSwitch()}
+            {isSmallScreen ? renderMobileTabs() : renderTabSwitch()}
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
                 <p className={cls.Subheading}>{t('registry-title')}</p>
-                <div className={cls.registryInfo}>{prgPageData.registryInfo}</div>
+                <div className={cls.registryInfo}>
+                    {loading.prgPageIsLoading
+                        ? t('loading')
+                        : error.prgPageError
+                          ? t('load-error')
+                          : prgPageData.registryInfo}
+                </div>
             </div>
         </div>
     );

@@ -13,5 +13,7 @@
   "alt-zone-team": "ALT Zone Team here",
   "open-pdf": "Open the PDF in a new tab",
   "link-to-team-page": "Open the ALT Zone team page in a new tab.",
-  "registry-title": "Company info"
+  "registry-title": "Company info",
+  "loading": "Loading...",
+  "load-error": "Error loading data."
 }

@@ -29,12 +29,13 @@ export const useGetPrgPageData = (lng: 'fi' | 'en' = 'en') => {
         isLoading: prgBoardMembersIsLoading,
     } = useGetPrgBoardMembersQuery();
 
-    const isLoading = prgPageIsLoading || prgDocumentsIsLoading || prgBoardMembersIsLoading;
-    const error = prgPageError || prgDocumentsError || prgBoardMembersError;
-
     const fullPrgPageData = useMemo(() => {
         return mapPrgPageData(prgPageData, prgDocumentsData, prgBoardMembersData, lng);
     }, [prgPageData, prgDocumentsData, prgBoardMembersData, lng]);
 
-    return { fullPrgPageData, isLoading, error };
+    return {
+        fullPrgPageData,
+        loading: { prgPageIsLoading, prgDocumentsIsLoading, prgBoardMembersIsLoading },
+        error: { prgPageError, prgDocumentsError, prgBoardMembersError },
+    };
 };
