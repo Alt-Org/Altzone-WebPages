@@ -36,6 +36,14 @@ const galleryNavigationLabels: Record<string, Record<string, string>> = {
     },
 };
 
+const hiddenGalleryNavigationCategories = new Set(['sekalaista', 'tunnetilat']);
+
+/** Keeps legacy categories accessible by URL without showing them in Gallery navigation. */
+export const isVisibleInGalleryNavigation = (translations: CategoryTranslations[]) => {
+    const finnishCategoryName = getCategoryTranslation(translations, 'fi-FI');
+    return !hiddenGalleryNavigationCategories.has(finnishCategoryName.toLowerCase());
+};
+
 /** Applies the navigation names from the updated information architecture. */
 export const getGalleryNavigationLabel = (categoryName: string, languageCode: string) =>
     galleryNavigationLabels[languageCode]?.[categoryName.toLowerCase()] ?? categoryName;

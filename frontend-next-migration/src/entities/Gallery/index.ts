@@ -25,6 +25,7 @@ export { useGetGalleryCategoriesQuery } from './api/galleryCategoriesApi';
 export {
     getCategoryTranslation,
     getGalleryNavigationLabel,
+    isVisibleInGalleryNavigation,
     getPhotoVersionTranslation,
     getLanguageCode,
 } from './api/translations';

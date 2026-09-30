@@ -1,11 +1,11 @@
 import img from '@/shared/assets/images/altLogo.png';
 import { dropdowns } from '@/widgets/Navbar/model/data/dropdowns';
 import {
-    getRouteTeamPage,
     getRouteMainPage,
     getRouteAllNewsPage,
-    getRouteComingSoonPage,
     getRouteGalleryPage,
+    getRouteAllFurnitureCollectionItemsPage,
+    getRouteJoinUsPage,
 } from '@/shared/appLinks/RoutePaths';
 import { NavbarBuilder } from './NavbarBuilder';
 
@@ -17,7 +17,7 @@ const galleryDropdownItems = [
     dropdowns.gallery[0],
     {
         elementText: 'soulCastleFurniture',
-        link: { path: getRouteComingSoonPage(), isExternal: false },
+        link: { path: getRouteAllFurnitureCollectionItemsPage(), isExternal: false },
     },
     dropdowns.gallery[4],
 ];
@@ -29,6 +29,6 @@ navbarBuilder.addDropDown('game', dropdowns.game);
 navbarBuilder.addDropDown('gallery', galleryDropdownItems);
 navbarBuilder.addDropDown('education', dropdowns.gameart);
 navbarBuilder.addDropDown('community', dropdowns.community);
-navbarBuilder.addLink('contactUs', getRouteTeamPage());
+navbarBuilder.addLink('contactUs', getRouteJoinUsPage());
 
 export const navbarMenuDesktop = navbarBuilder.build();

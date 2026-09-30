@@ -11,6 +11,7 @@ import {
     useGetDirectusGalleryImages,
     getCategoryTranslation,
     getGalleryNavigationLabel,
+    isVisibleInGalleryNavigation,
 } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
@@ -73,20 +74,22 @@ const GalleryNavMenuAsDropdown = (props: GalleryNavMenuProps) => {
             elementText: allCategory.charAt(0).toUpperCase() + allCategory.slice(1),
             active: selectedCategory === allCategory,
         },
-        ...categories.map((category) => {
-            const translatedName = getCategoryTranslation(category.translations, language);
-            const navigationLabel = getGalleryNavigationLabel(translatedName, language);
-            return {
-                link: {
-                    isExternal: false,
-                    path: getRouteGalleryCategoryPage(translatedName),
-                },
-                elementText:
-                    navigationLabel.charAt(0).toUpperCase() +
-                    navigationLabel.slice(1).replace('-', ' '),
-                active: translatedName === selectedCategory,
-            };
-        }),
+        ...categories
+            .filter((category) => isVisibleInGalleryNavigation(category.translations))
+            .map((category) => {
+                const translatedName = getCategoryTranslation(category.translations, language);
+                const navigationLabel = getGalleryNavigationLabel(translatedName, language);
+                return {
+                    link: {
+                        isExternal: false,
+                        path: getRouteGalleryCategoryPage(translatedName),
+                    },
+                    elementText:
+                        navigationLabel.charAt(0).toUpperCase() +
+                        navigationLabel.slice(1).replace('-', ' '),
+                    active: translatedName === selectedCategory,
+                };
+            }),
     ];
 
     const navMenuWithDropdownsMobileProps: NavMenuWithDropdownsProps = {

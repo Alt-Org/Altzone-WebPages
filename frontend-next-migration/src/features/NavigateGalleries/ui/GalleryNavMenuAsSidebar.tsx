@@ -5,6 +5,7 @@ import {
     useGetDirectusGalleryImages,
     getCategoryTranslation,
     getGalleryNavigationLabel,
+    isVisibleInGalleryNavigation,
     Category,
 } from '@/entities/Gallery';
 import { useEffect, useState } from 'react';
@@ -121,7 +122,9 @@ const GalleryNavMenuAsSidebar = (props: SidebarProps) => {
                 {allCategory.charAt(0).toUpperCase() + allCategory.slice(1)}
             </div>
 
-            {categories.map((cat, index) => getCategory(cat, index))}
+            {categories
+                .filter((category) => isVisibleInGalleryNavigation(category.translations))
+                .map((category, index) => getCategory(category, index))}
         </div>
     );
 

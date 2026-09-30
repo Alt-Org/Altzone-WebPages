@@ -7,6 +7,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { LoginForm } from '@/features/AuthByUsername';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { NavMenu, INavMenuItem, NavMenuItemType } from '@/shared/ui/NavMenu';
+import { DropDownElement, DropDownElementASTextOrLink } from '@/shared/ui/DropdownWrapper';
 import { ItemType, NavbarBuild, NavbarMenuItem } from '../../model/types';
 import cls from './NavbarMobile.module.scss';
 import profileIcon from '@/shared/assets/icons/profileIcon.svg';
@@ -20,6 +21,21 @@ type NavbarNavigationItem = Exclude<NavbarMenuItem, { type: ItemType.navLogo }>;
 const isNavbarNavigationItem = (item: NavbarMenuItem): item is NavbarNavigationItem =>
     item.type !== ItemType.navLogo;
 
+const isTextOrLinkDropdownElement = (
+    element: DropDownElement,
+): element is DropDownElementASTextOrLink =>
+    typeof element === 'object' && element !== null && 'elementText' in element;
+
+const translateDropdownElements = (
+    elements: DropDownElement[],
+    translate: (key: string) => string,
+) =>
+    elements.map((element) =>
+        isTextOrLinkDropdownElement(element)
+            ? { ...element, elementText: translate(element.elementText) }
+            : element,
+    );
+
 const toNavMenuItem = (
     item: NavbarNavigationItem,
     translate: (key: string) => string,
@@ -32,7 +48,7 @@ const toNavMenuItem = (
           }
         : {
               name: translate(item.name),
-              elements: item.elements,
+              elements: translateDropdownElements(item.elements, translate),
               type: NavMenuItemType.Dropdown,
           };
 

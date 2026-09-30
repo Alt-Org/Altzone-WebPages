@@ -140,6 +140,7 @@ export const getRoute404Page = () => '/404';
 
 export const getRouteAllCollectionsPage = () => '/collections';
 export const getRouteAllFurnitureSetsPage = () => '/collections/furniture';
+export const getRouteAllFurnitureCollectionItemsPage = () => '/collections/furniture/all';
 export const getRouteOneFurnitureSetPage = (id: string) => `/furniture/set/${id}`;
 export const getRouteFurnitureSearchPage = () => '/furniture/search';
 export const getRouteFurnitureCategoryPage = () => '/furniture/category';
