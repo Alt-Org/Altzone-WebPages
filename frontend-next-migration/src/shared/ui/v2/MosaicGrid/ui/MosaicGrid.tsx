@@ -9,6 +9,39 @@ import altLogo from '@/shared/assets/images/altLogo.png';
 import { useClientTranslation } from '@/shared/i18n';
 
 const SCROLL_HIGHLIGHT_DURATION = 2000;
+const SCROLL_SETTLE_TIMEOUT = 3000;
+const SCROLL_SETTLE_TOLERANCE = 8;
+const SCROLL_POLL_INTERVAL = 50;
+
+const getTargetScrollPosition = (element: HTMLElement): number => {
+    const viewportHeight = window.innerHeight;
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - viewportHeight);
+    const rect = element.getBoundingClientRect();
+    const centered = rect.top + window.scrollY - (viewportHeight - rect.height) / 2;
+    return Math.min(Math.max(centered, 0), maxScroll);
+};
+
+const waitForScrollArrival = (targetScrollY: number, onArrived: () => void) => {
+    const startTime = performance.now();
+    const tick = (time: number) => {
+        if (
+            time - startTime >= SCROLL_SETTLE_TIMEOUT ||
+            Math.abs(window.scrollY - targetScrollY) <= SCROLL_SETTLE_TOLERANCE
+        ) {
+            onArrived();
+            return;
+        }
+        requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+};
+
+const highlightMember = (element: HTMLElement) => {
+    element.removeAttribute('data-highlight');
+    void element.offsetHeight;
+    element.setAttribute('data-highlight', 'true');
+    window.setTimeout(() => element.removeAttribute('data-highlight'), SCROLL_HIGHLIGHT_DURATION);
+};
 
 export interface MosaicGridProps {
     className?: string;
@@ -24,13 +57,8 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
         const element = document.getElementById(`member-${memberId}`);
         if (!element) return;
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        element.removeAttribute('data-highlight');
-        void element.offsetHeight;
-        element.setAttribute('data-highlight', 'true');
-        window.setTimeout(
-            () => element.removeAttribute('data-highlight'),
-            SCROLL_HIGHLIGHT_DURATION,
-        );
+        const targetScrollY = getTargetScrollPosition(element);
+        waitForScrollArrival(targetScrollY, () => highlightMember(element));
     };
 
     // shuffle members to fill the grid randomly

@@ -25,6 +25,8 @@ const manyMembers: Member[] = Array.from({ length: 14 }, (_, i) => ({
 const renderMosaic = (props: React.ComponentProps<typeof MosaicGrid>) =>
     render(<MosaicGrid {...props} />);
 
+const SCROLL_POLL_INTERVAL = 50;
+
 describe('MosaicGrid', () => {
     beforeEach(() => {
         document.body.innerHTML = '';
@@ -99,6 +101,7 @@ describe('MosaicGrid', () => {
     });
 
     it('highlights the scrolled-to member row', () => {
+        jest.useFakeTimers();
         Object.defineProperty(Element.prototype, 'scrollIntoView', {
             configurable: true,
             value: jest.fn(),
@@ -110,8 +113,11 @@ describe('MosaicGrid', () => {
         expect(target).not.toHaveAttribute('data-highlight');
 
         fireEvent.click(screen.getAllByRole('button', { name: 'Go to Test Member' })[0]);
+        jest.advanceTimersByTime(SCROLL_POLL_INTERVAL * 2);
 
         expect(target).toHaveAttribute('data-highlight', 'true');
+        jest.runOnlyPendingTimers();
+        jest.useRealTimers();
     });
 
     it('clears the highlight from the member row after the highlight duration', () => {
@@ -125,6 +131,7 @@ describe('MosaicGrid', () => {
 
         renderMosaic({ members });
         fireEvent.click(screen.getAllByRole('button', { name: 'Go to Test Member' })[0]);
+        jest.advanceTimersByTime(SCROLL_POLL_INTERVAL * 2);
 
         expect(target).toHaveAttribute('data-highlight', 'true');
 
