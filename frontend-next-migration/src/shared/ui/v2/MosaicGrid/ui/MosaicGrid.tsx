@@ -13,6 +13,14 @@ const SCROLL_SETTLE_TIMEOUT = 3000;
 const SCROLL_SETTLE_TOLERANCE = 8;
 const SCROLL_POLL_INTERVAL = 50;
 
+/**
+ * works out how far to scroll to put an element in the middle of the screen
+ * @description same maths as `block: 'center'` in scrollIntoView, so we can check
+ * when the smooth scroll has actually landed. clamped to whatever the page can
+ * really scroll to.
+ * @param {HTMLElement} element - the element we want in view
+ * @returns {number} the scrollY value that centres it
+ */
 const getTargetScrollPosition = (element: HTMLElement): number => {
     const viewportHeight = window.innerHeight;
     const maxScroll = Math.max(0, document.documentElement.scrollHeight - viewportHeight);
@@ -21,6 +29,14 @@ const getTargetScrollPosition = (element: HTMLElement): number => {
     return Math.min(Math.max(centered, 0), maxScroll);
 };
 
+/**
+ * runs a callback once the page has stopped scrolling
+ * @description smooth scrolling doesn't tell you when it's done, so we just check
+ * every animation frame until we're close enough to where we wanted to go. gives
+ * up after a timeout in case we never get there.
+ * @param {number} targetScrollY - where we ended up wanting to scroll to
+ * @param {() => void} onArrived - what to run once scrolling has settled
+ */
 const waitForScrollArrival = (targetScrollY: number, onArrived: () => void) => {
     const startTime = performance.now();
     const tick = (time: number) => {
@@ -36,6 +52,13 @@ const waitForScrollArrival = (targetScrollY: number, onArrived: () => void) => {
     requestAnimationFrame(tick);
 };
 
+/**
+ * gives a member row a quick glow so you can see where you ended up
+ * @description sets `data-highlight`, which kicks off the `member-highlight`
+ * animation in MemberItem.module.scss. we strip the attribute and force a
+ * repaint first, otherwise clicking the same portrait twice won't restart it.
+ * @param {HTMLElement} element - the member row to highlight
+ */
 const highlightMember = (element: HTMLElement) => {
     element.removeAttribute('data-highlight');
     void element.offsetHeight;
@@ -43,6 +66,12 @@ const highlightMember = (element: HTMLElement) => {
     window.setTimeout(() => element.removeAttribute('data-highlight'), SCROLL_HIGHLIGHT_DURATION);
 };
 
+/**
+ * props for the MosaicGrid component
+ * {Object} MosaicGridProps
+ * @property {string} [className] - extra class name(s) for the grid
+ * @property {Member[]} members - members to show as clickable portraits
+ */
 export interface MosaicGridProps {
     className?: string;
     members: Member[];
@@ -53,6 +82,13 @@ const MosaicGrid = ({ className, members }: MosaicGridProps) => {
     const { t } = useClientTranslation('members');
     const directusBaseUrl = envHelper.directusHost;
 
+    /**
+     * scrolls down to a member's row and gives it a highlight once we get there
+     * @description uses the id SectionMembers puts on the member's first row.
+     * does nothing if there's no match, so portraits on pages without a member
+     * list just sit there instead of blowing up.
+     * @param {number} memberId - the Directus id of the member we're after
+     */
     const scrollToMember = (memberId: number) => {
         const element = document.getElementById(`member-${memberId}`);
         if (!element) return;
