@@ -1,0 +1,89 @@
+.tabNavigation {
+    display: flex;
+    background-color: var(--base-card-background);
+    box-shadow: 0.3rem 0.3rem var(--drop-shadows);
+    border: 2px solid var(--drop-shadows);
+    border-radius: var(--border-radius-figma);
+    flex-direction: column;
+}
+
+.tabsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.mobileTabs {
+    --mobile-tab-min-width: 140px;
+    display: grid;
+    padding: 1rem;
+    gap: 0.5rem;
+
+    > .tab:only-child {
+        justify-self: center;
+        width: min(100%, var(--mobile-tab-min-width));
+    }
+}
+
+.twoColumnTabs {
+    > .tab:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - 0.5rem) / 2);
+    }
+}
+
+.tabsTitle {
+    font: var(--font-sw-xl);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    @media (min-width: breakpoint(md)) {
+        padding-bottom: 0.5rem;
+    }
+}
+
+.tab {
+    padding: 12px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--primary-color);
+    font: var(--font-dm-bold-l);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: var(--border-radius-figma);
+
+    .mobileTabs & {
+        border-radius: var(--border-radius-figma);
+        font: var(--font-dm-m);
+        height: 40px;
+        width: 100%;
+    }
+}
+
+.tab:only-child {
+    margin-inline: auto;
+}
+
+.tab:hover {
+    text-decoration: underline;
+}
+
+.activeTab {
+    outline: 2px solid var(--drop-shadows);
+    color: black;
+    background-color: var(--primary-color);
+
+    .mobileTabs & {
+        font: var(--font-dm-bold-m);
+    }
+}
