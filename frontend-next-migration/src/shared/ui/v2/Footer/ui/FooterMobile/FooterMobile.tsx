@@ -73,7 +73,7 @@ const FooterMobileComponent = memo((props: Props) => {
                         termsAndPrivacyLabel={infoLinks.termsAndPrivacyLabel}
                     />
                 )}
-                <FeedbackCard variant="embedabble" />
+                <FeedbackCard variant="borderless" />
                 <p className={cls.Copyright}>
                     <span className={cls.CopySymbol}>&copy;</span> {texts.currentYear}{' '}
                     {texts.companyName}
