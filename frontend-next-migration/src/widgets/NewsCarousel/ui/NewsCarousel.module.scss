@@ -1,0 +1,78 @@
+.NewsCarousel {
+    position: relative;
+    width: 100%;
+}
+
+.viewport {
+    overflow: hidden;
+}
+
+.track {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.slideLink {
+    display: block;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+}
+
+.cardWithImage {
+    grid-template-columns: 1.1fr 1fr;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.title,
+.text {
+    margin: 0;
+    overflow: hidden;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    object-fit: cover;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+}
+
+.dot,
+.arrowButton {
+    padding: 0;
+    cursor: pointer;
+}
+
+.arrowButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
