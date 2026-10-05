@@ -95,26 +95,28 @@ const NewsPage = () => {
                     alternate={true}
                     searchVisible={false}
                 />
-                <div className={cls.newsGrid}>
-                    {groupedNews.map((news) => {
-                        const imageSrc = news.titlePicture?.id
-                            ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
-                            : undefined;
-                        return (
-                            <NewsCard
-                                key={news.id}
-                                titlePicture={imageSrc}
-                                title={news.title}
-                                previewText={news.previewText}
-                                date={news.date}
-                                id={news.id}
-                            />
-                        );
-                    })}
+                <div className={cls.newsContent}>
+                    <div className={cls.newsGrid}>
+                        {groupedNews.map((news) => {
+                            const imageSrc = news.titlePicture?.id
+                                ? `${directusBaseUrl}/assets/${news.titlePicture.id}`
+                                : undefined;
+                            return (
+                                <NewsCard
+                                    key={news.id}
+                                    titlePicture={imageSrc}
+                                    title={news.title}
+                                    previewText={news.previewText}
+                                    date={news.date}
+                                    id={news.id}
+                                />
+                            );
+                        })}
 
-                    {isLoading && <SkeletonLoaderForNewsPage numberOfCards={limit} />}
+                        {isLoading && <SkeletonLoaderForNewsPage numberOfCards={limit} />}
 
-                    {hasMoreNewsState && !isLoading && <div ref={observeElementRef} />}
+                        {hasMoreNewsState && !isLoading && <div ref={observeElementRef} />}
+                    </div>
                 </div>
                 {renderNoMoreNews()}
             </Container>

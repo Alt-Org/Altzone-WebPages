@@ -2,20 +2,52 @@ $touchSize: 1023px;
 .NewsPage {
     min-height: 80vh;
 }
-.title {
-    font: var(--font-sw-xxl);
-    text-align: center;
-    padding: 0;
-    color: var(--primary-color);
 
-    @media (max-width: $touchSize) {
-        order: 0;
-        border-right: unset;
-    }
+.newsContent {
+    width: min(1440px, 100%);
+    height: min(255px, 100%);
+    margin: 0 auto;
 
     @media (max-width: breakpoint(md)) {
-        order: 1;
-        margin-right: 30px;
+        width: min(768px, calc(100% - 28px));
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        width: min(328px, calc(100% - 28px));
+        height: min(516px, 100%);
+    }
+}
+
+.title {
+    margin: 0 0 12px;
+
+    h1 {
+        font: var(--font-sw-5xl);
+        text-align: left;
+        letter-spacing: -4%;
+        width: 1440px;
+        height: 129px;
+        gap: var(--spacing-800);
+        padding: 0;
+        color: var(--primary-color);
+        margin: 0;
+    }
+
+    @media (max-width: $touchSize) {
+        h1 {
+            text-align: left;
+        }
+    }
+
+    @media (max-width: breakpoint(sm)) {
+        h1 {
+            gap: 10px;
+            width: auto;
+            height: auto;
+            margin-bottom: 8px;
+            font: var(--font-sw-xl);
+            text-align: center;
+        }
     }
 }
 
@@ -35,10 +67,11 @@ $touchSize: 1023px;
 .newsGrid {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    justify-content: center;
-    @media (max-width: 480px) {
-        grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+
+    @media (max-width: breakpoint(sm)) {
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 
