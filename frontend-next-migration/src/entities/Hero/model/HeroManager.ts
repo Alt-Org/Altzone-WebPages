@@ -22,13 +22,8 @@ export class HeroManager {
     public async initializeFromDirectus(locale: Locale = 'en'): Promise<void> {
         try {
             const directusGroups = await initializeHeroGroupsFromDirectus(locale);
-            // Only replace static data if Directus returned non-empty groups
-            if (directusGroups && Object.keys(directusGroups).length > 0) {
-                this.heroGroups = directusGroups;
-                this.heroesCache = null; // Clear cache to force recalculation
-            } else {
-                console.warn('[HeroManager] Directus returned empty groups, keeping static data');
-            }
+            this.heroGroups = directusGroups;
+            this.heroesCache = null; // Clear cache to force recalculation
         } catch (error) {
             console.error('[HeroManager] Failed to initialize hero groups from Directus:', error);
             // Keep existing static data as fallback
@@ -71,15 +66,7 @@ export class HeroManager {
      */
     public async getAllHeroesFromDirectus(locale: Locale = 'en'): Promise<HeroWithGroup[]> {
         try {
-            const heroes = await fetchAllHeroes(locale);
-            // If Directus returns empty array, fallback to static data
-            if (heroes.length === 0) {
-                console.warn(
-                    '[HeroManager] Directus returned empty heroes array, using static data',
-                );
-                return this.getAllHeroes();
-            }
-            return heroes;
+            return await fetchAllHeroes(locale);
         } catch (error) {
             console.error('[HeroManager] Failed to fetch all heroes from Directus:', error);
             // Fallback to static data
@@ -114,12 +101,11 @@ export class HeroManager {
         locale: Locale = 'en',
     ): Promise<HeroWithGroup | undefined> {
         try {
-            const hero = await fetchHeroBySlug(slug, locale);
-            if (hero) return hero;
+            return await fetchHeroBySlug(slug, locale);
         } catch {
             // ignore error and fallback
+            return this.getHeroBySlug(slug);
         }
-        return this.getHeroBySlug(slug);
     }
 
     public getHeroesBySpecificGroup(group: HeroGroup): HeroWithGroup[] | undefined {

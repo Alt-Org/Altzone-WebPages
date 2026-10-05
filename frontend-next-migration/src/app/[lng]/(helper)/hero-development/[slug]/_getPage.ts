@@ -18,14 +18,11 @@ export async function _getPage(lng: string, slug: string) {
     // Initialize from Directus first
     await heroManager.initializeFromDirectus(lng as 'en' | 'fi' | 'ru');
 
-    // Try to get hero from Directus, fallback to static data
-    let currentHero = await heroManager.getHeroBySlugAsync(
+    // Only a failed Directus request may use the static fallback.
+    const currentHero = await heroManager.getHeroBySlugAsync(
         slug as HeroSlug,
         lng as 'en' | 'fi' | 'ru',
     );
-    if (!currentHero) {
-        currentHero = heroManager.getHeroBySlug(slug as HeroSlug);
-    }
     if (!currentHero) {
         notFound();
     }

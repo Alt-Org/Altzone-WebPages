@@ -66,6 +66,18 @@ describe('heroApi status gating', () => {
         expect(heroes[0].slug).toBe(HeroSlug.OVEREATER);
     });
 
+    it('keeps a successful empty all-heroes response empty', async () => {
+        fetchMock.mockResolvedValue(response([]));
+
+        await expect(fetchAllHeroes()).resolves.toEqual([]);
+    });
+
+    it('rejects when the all-heroes request fails', async () => {
+        fetchMock.mockResolvedValue({ ok: false, status: 503, text: async () => '' } as Response);
+
+        await expect(fetchAllHeroes()).rejects.toThrow('Directus request failed with status 503');
+    });
+
     it('groups the published heroes returned by the filtered request', async () => {
         fetchMock.mockImplementation(async (input) => {
             const url = new URL(String(input));

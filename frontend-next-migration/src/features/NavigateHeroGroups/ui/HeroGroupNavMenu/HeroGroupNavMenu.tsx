@@ -25,14 +25,11 @@ const HeroGroupNavMenu: React.FC<HeroGroupNavMenuProps> = ({ className: _classNa
     const selectedHeroGroup = pathname.split('/')[3];
 
     // Try to fetch from Directus first, fallback to static data
-    const { data: directusGroups } = useGetHeroGroupsQuery({ locale });
+    const { data: directusGroups, isError } = useGetHeroGroupsQuery({ locale });
     const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
     const allHeroGroups = React.useMemo(() => {
-        if (directusGroups && Object.keys(directusGroups).length > 0) {
-            return directusGroups;
-        }
-        return staticGroups;
-    }, [directusGroups, staticGroups]);
+        return isError ? staticGroups : (directusGroups ?? ({} as typeof staticGroups));
+    }, [directusGroups, isError, staticGroups]);
 
     function capitalizeString(inputString: HeroGroup | string) {
         if (!inputString) return '';
