@@ -14,12 +14,17 @@ export type IUserRegisterDto = Pick<IProfile<IPlayer>, 'username'> & {
 
 export type IUserLoginDto = Pick<IProfile<IPlayer>, 'username'> & { password: string };
 
+export type IRefreshAuthDto = {
+    refreshToken: string;
+};
+
 export type ILoginResponse = IProfile<IPlayer> & {
     accessToken: string;
 };
 
 export type AccessTokenInfoResponse = {
     accessToken: string;
+    refreshToken: string;
     accessTokenExpiresInSecIn: number;
 };
 
