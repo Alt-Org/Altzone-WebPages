@@ -1,10 +1,16 @@
 .NewsCarousel {
     position: relative;
     width: 100%;
+    margin: 0 auto 40px;
+
+    @media (max-width: breakpoint(xl)) {
+        margin-bottom: 30px;
+    }
 }
 
 .viewport {
     overflow: hidden;
+    border-radius: var(--border-radius-figmadesktop);
 }
 
 .track {
@@ -12,6 +18,8 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    transition: transform 0.4s ease-out;
+    will-change: transform;
 }
 
 .slide {
@@ -22,32 +30,117 @@
 
 .slideLink {
     display: block;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .card {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: center;
+    background-color: var(--base-card-background);
+    border: 3px solid var(--drop-shadows);
+    border-radius: var(--border-radius-figmadesktop);
+    filter: drop-shadow(8px 12px var(--drop-shadows));
     overflow: hidden;
+    min-height: 320px;
+    transition: border-color 0.3s ease-out;
+
+    @media (max-width: breakpoint(md)) {
+        min-height: auto;
+    }
 }
 
 .cardWithImage {
     grid-template-columns: 1.1fr 1fr;
+    padding-right: 0;
+
+    @media (max-width: breakpoint(md)) {
+        grid-template-columns: 1fr;
+        padding-right: 3px;
+    }
+}
+
+.slideLink:hover .card,
+.slideLink:focus .card {
+    border-color: var(--primary-color);
 }
 
 .content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 32px;
+
+    @media (max-width: breakpoint(md)) {
+        padding: 20px;
+    }
+
+    @media (max-width: breakpoint(xs)) {
+        padding: 16px;
+        gap: 8px;
+    }
 }
 
-.title,
-.text {
+.title {
+    font: var(--font-sw-l);
+    color: var(--primary-color);
     margin: 0;
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    @media (max-width: breakpoint(md)) {
+        font: var(--font-sw-m);
+    }
+}
+
+.text {
+    font: var(--font-dm-s);
+    color: var(--white);
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+    @media (max-width: breakpoint(xs)) {
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+    }
+}
+
+.date {
+    font: var(--font-dm-s);
+    color: var(--white);
+    opacity: 0.7;
+
+    @media (max-width: breakpoint(xs)) {
+        font: var(--font-dm-xs);
+    }
 }
 
 .imageContainer {
     position: relative;
     width: 100%;
+    height: 100%;
+    min-height: 320px;
+    overflow: hidden;
+
+    @media (max-width: breakpoint(md)) {
+        min-height: 220px;
+        order: -1;
+    }
+
+    @media (max-width: breakpoint(xs)) {
+        min-height: 170px;
+    }
 }
 
 .image {
@@ -58,21 +151,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    gap: 24px;
+    margin-top: 20px;
 
-.dots {
-    display: flex;
-    align-items: center;
-}
-
-.dot,
-.arrowButton {
-    padding: 0;
-    cursor: pointer;
+    @media (max-width: breakpoint(xs)) {
+        gap: 16px;
+        margin-top: 14px;
+    }
 }
 
 .arrowButton {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 3px solid var(--drop-shadows);
+    border-radius: 50%;
+    background-color: var(--base-card-background);
+    cursor: pointer;
+    transition: border-color 0.3s ease-out;
+
+    &:hover,
+    &:focus-visible {
+        border-color: var(--primary-color);
+    }
+
+    @media (max-width: breakpoint(xs)) {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius-pill);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+}
+
+.dotActive {
+    background-color: var(--primary-color);
 }
