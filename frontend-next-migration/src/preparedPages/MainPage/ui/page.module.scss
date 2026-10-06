@@ -142,3 +142,85 @@
     padding: 20px;
     border: solid 1px var(--white);
 }
+
+.aiDisclaimer {
+    border-block: 2px solid var(--primary-color);
+    background: var(--background);
+    color: var(--white);
+}
+
+.aiDisclaimerContent {
+    width: min(100% - 48px, 1280px);
+    margin: 0 auto;
+    padding: 72px 0 56px;
+}
+
+.aiDisclaimerHeader {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 28px;
+}
+
+.aiDisclaimerIcon {
+    width: 76px;
+    height: 76px;
+}
+
+.aiDisclaimerTitle {
+    margin: 0;
+    color: var(--primary-color);
+    font: var(--font-sw-xxl);
+}
+
+.aiDisclaimerLead,
+.aiDisclaimerText {
+    margin: 0;
+    font: var(--font-dm-l);
+}
+
+.aiDisclaimerLead {
+    max-width: 1120px;
+    font-weight: 700;
+}
+
+.aiDisclaimerText {
+    margin-top: 20px;
+}
+
+@media (max-width: breakpoint(md)) {
+    .aiDisclaimerContent {
+        width: min(100% - 32px, 1280px);
+        padding: 40px 0;
+    }
+
+    .aiDisclaimerHeader {
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .aiDisclaimerIcon {
+        width: 54px;
+        height: 54px;
+    }
+
+    .aiDisclaimerTitle {
+        margin-bottom: 20px;
+        font: var(--font-sw-xl);
+    }
+
+    .aiDisclaimerLead,
+    .aiDisclaimerText {
+        font: var(--font-dm-m);
+    }
+
+    .aiDisclaimerLead {
+        font-weight: 700;
+    }
+}
+
+@media (max-width: breakpoint(sm)) {
+    .aiDisclaimerHeader {
+        align-items: flex-start;
+    }
+}
