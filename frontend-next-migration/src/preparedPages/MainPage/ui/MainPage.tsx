@@ -30,6 +30,7 @@ import char1 from '@/shared/assets/images/mainpage/Defencegallery202.png';
 import char2 from '@/shared/assets/images/mainpage/Defencegallery403.png';
 import char3 from '@/shared/assets/images/mainpage/Defencegallery603.png';
 import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
+import Image from 'next/image';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -51,6 +52,7 @@ function MainPage(props: Props) {
     const directusBaseUrl = envHelper.directusHost;
     const groupedNews = formatNews(latestNews || [], lngCode || 'fi-FI');
     const { t } = useClientTranslation('main');
+    const { t: tAiDisclaimer } = useClientTranslation('ai-disclaimer');
 
     return (
         <div className={cls.MainPage}>
@@ -110,6 +112,31 @@ function MainPage(props: Props) {
                     </div>
                 </div>
             </div>
+
+            <section
+                className={cls.aiDisclaimer}
+                aria-labelledby="ai-disclaimer-title"
+            >
+                <div className={cls.aiDisclaimerContent}>
+                    <div className={cls.aiDisclaimerHeader}>
+                        <Image
+                            className={cls.aiDisclaimerIcon}
+                            src="/images/gallery/Käyttöliittymä grafiikkaa 08-2025/CommonLogoAIContent.png"
+                            alt=""
+                            width={256}
+                            height={256}
+                        />
+                        <h2
+                            id="ai-disclaimer-title"
+                            className={cls.aiDisclaimerTitle}
+                        >
+                            {tAiDisclaimer('title')}
+                        </h2>
+                    </div>
+                    <p className={cls.aiDisclaimerLead}>{tAiDisclaimer('lead')}</p>
+                    <p className={cls.aiDisclaimerText}>{tAiDisclaimer('detail')}</p>
+                </div>
+            </section>
         </div>
     );
 }
