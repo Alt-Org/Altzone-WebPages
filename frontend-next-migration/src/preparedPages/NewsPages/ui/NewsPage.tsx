@@ -1,6 +1,7 @@
 'use client';
 import { Container } from '@/shared/ui/Container';
 import { NewsCard } from '@/widgets/NewsCard';
+import { NewsCarousel, type NewsCarouselItem } from '@/widgets/NewsCarousel';
 import cls from './NewsPage.module.scss';
 import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
 import { useParams } from 'next/navigation';
@@ -11,6 +12,32 @@ import { News } from '@/entities/NewsV2/model/types/types';
 import { useClientTranslation } from '@/shared/i18n';
 import { PageTitle } from '@/shared/ui/PageTitle';
 import { SkeletonLoaderForNewsPage } from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
+
+const highlightedNews: NewsCarouselItem[] = [
+    {
+        id: 1,
+        title: 'Alt Zone Season 4 is here',
+        text: 'The new season brings a refreshed battle pass, two new factions and a reworked ranked ladder.',
+        date: '12.04.2025',
+        image: '/images/opengraph-image.png',
+        href: '/news/1',
+    },
+    {
+        id: 2,
+        title: 'Community event weekend',
+        text: 'Join the community for a weekend of double rewards and a community-built tournament.',
+        date: '05.04.2025',
+        image: '/images/opengraph-image.png',
+        href: '/news/2',
+    },
+    {
+        id: 3,
+        title: 'Server maintenance completed',
+        text: 'The scheduled maintenance has finished and all services are back online.',
+        date: '01.04.2025',
+        href: '/news/3',
+    },
+];
 
 const NewsPage = () => {
     // later use this to fetch data from the backend
@@ -94,6 +121,11 @@ const NewsPage = () => {
                     titleText={t('head-title')}
                     alternate={true}
                     searchVisible={false}
+                />
+                <NewsCarousel
+                    items={highlightedNews}
+                    previousLabel={t('previous-button')}
+                    nextLabel={t('next-button')}
                 />
                 <div className={cls.newsGrid}>
                     {groupedNews.map((news) => {
