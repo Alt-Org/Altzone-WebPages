@@ -10,7 +10,9 @@
 
 .viewport {
     overflow: hidden;
+    border: 1px solid rgba(253, 163, 38, 0.45);
     border-radius: var(--border-radius-figmadesktop);
+    filter: drop-shadow(4px 8px 0px var(--black));
 }
 
 .track {
@@ -31,51 +33,44 @@
 .slideLink {
     display: block;
 
-    &:focus {
-        outline: none;
+    &:focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: -2px;
     }
 }
 
 .card {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 81px;
+    padding: 0 48px 0 0;
+    width: 100%;
+    height: 253px;
     background-color: var(--base-card-background);
-    border: 3px solid var(--drop-shadows);
     border-radius: var(--border-radius-figmadesktop);
-    filter: drop-shadow(8px 12px var(--drop-shadows));
     overflow: hidden;
-    min-height: 320px;
-    transition: border-color 0.3s ease-out;
 
     @media (max-width: breakpoint(md)) {
-        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0;
+        height: auto;
     }
-}
-
-.cardWithImage {
-    grid-template-columns: 1.1fr 1fr;
-    padding-right: 0;
-
-    @media (max-width: breakpoint(md)) {
-        grid-template-columns: 1fr;
-        padding-right: 3px;
-    }
-}
-
-.slideLink:hover .card,
-.slideLink:focus .card {
-    border-color: var(--primary-color);
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    padding: 32px;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
 
     @media (max-width: breakpoint(md)) {
+        flex: none;
+        width: 100%;
         padding: 20px;
     }
 
@@ -85,10 +80,43 @@
     }
 }
 
+.card:not(.cardWithImage) .content {
+    padding-left: 48px;
+
+    @media (max-width: breakpoint(md)) {
+        padding: 20px;
+    }
+
+    @media (max-width: breakpoint(xs)) {
+        padding: 16px;
+    }
+}
+
 .title {
     font: var(--font-sw-l);
-    color: var(--primary-color);
+    color: var(--white);
     margin: 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: breakpoint(md)) {
+        font: var(--font-sw-m);
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+}
+
+.text {
+    font: var(--font-dm-l);
+    color: var(--white);
+    margin: 0;
+    width: 100%;
+    letter-spacing: -0.04em;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -96,19 +124,8 @@
     -webkit-box-orient: vertical;
 
     @media (max-width: breakpoint(md)) {
-        font: var(--font-sw-m);
+        font: var(--font-dm-m);
     }
-}
-
-.text {
-    font: var(--font-dm-s);
-    color: var(--white);
-    margin: 0;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-    -webkit-box-orient: vertical;
 
     @media (max-width: breakpoint(xs)) {
         -webkit-line-clamp: 3;
@@ -117,29 +134,35 @@
 }
 
 .date {
-    font: var(--font-dm-s);
-    color: var(--white);
-    opacity: 0.7;
+    font: 500 20px/26px var(--font-family-secondary);
+    color: var(--primary-color);
+    letter-spacing: -0.04em;
 
-    @media (max-width: breakpoint(xs)) {
-        font: var(--font-dm-xs);
+    @media (max-width: breakpoint(md)) {
+        font-size: 16px;
+        line-height: 24px;
     }
 }
 
 .imageContainer {
     position: relative;
-    width: 100%;
+    flex: 0 0 340px;
+    width: 340px;
     height: 100%;
-    min-height: 320px;
+    background-color: #1c1c1c;
+    border-right: 1px solid rgba(253, 163, 38, 0.45);
     overflow: hidden;
 
     @media (max-width: breakpoint(md)) {
-        min-height: 220px;
-        order: -1;
+        flex: none;
+        width: 100%;
+        height: 220px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(253, 163, 38, 0.45);
     }
 
     @media (max-width: breakpoint(xs)) {
-        min-height: 170px;
+        height: 170px;
     }
 }
 
@@ -168,7 +191,7 @@
     height: 48px;
     padding: 0;
     border: 3px solid var(--drop-shadows);
-    border-radius: 50%;
+    border-radius: var(--border-radius-md);
     background-color: var(--base-card-background);
     cursor: pointer;
     transition: border-color 0.3s ease-out;
@@ -191,16 +214,39 @@
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     padding: 0;
-    border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius-pill);
-    background-color: transparent;
+    border: 3px solid var(--drop-shadows);
+    border-radius: var(--border-radius-md);
+    background-color: var(--base-card-background);
+    color: var(--white);
+    font: var(--font-dm-s);
+    line-height: 1;
     cursor: pointer;
-    transition: background-color 0.3s ease-out;
+    transition: background-color 0.3s ease-out, border-color 0.3s ease-out, color 0.3s ease-out;
+
+    &:hover,
+    &:focus-visible {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    @media (max-width: breakpoint(xs)) {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        line-height: 18px;
+    }
 }
 
-.dotActive {
+.dotActive,
+.dotActive:hover,
+.dotActive:focus-visible {
     background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--black);
 }

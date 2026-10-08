@@ -71,11 +71,6 @@ const NewsCarousel = (props: NewsCarouselProps) => {
 
     const renderSlideContent = (item: NewsCarouselItem) => (
         <div className={classNames(cls.card, { [cls.cardWithImage]: Boolean(item.image) })}>
-            <div className={cls.content}>
-                {item.date && <span className={cls.date}>{item.date}</span>}
-                <h2 className={cls.title}>{item.title}</h2>
-                <p className={cls.text}>{item.text}</p>
-            </div>
             {item.image && (
                 <div className={cls.imageContainer}>
                     <Image
@@ -83,10 +78,15 @@ const NewsCarousel = (props: NewsCarouselProps) => {
                         alt={item.title}
                         className={cls.image}
                         fill
-                        sizes="(max-width: 768px) 100vw, 45vw"
+                        sizes="(max-width: 768px) 100vw, 340px"
                     />
                 </div>
             )}
+            <div className={cls.content}>
+                <h2 className={cls.title}>{item.title}</h2>
+                <p className={cls.text}>{item.text}</p>
+                {item.date && <span className={cls.date}>{item.date}</span>}
+            </div>
         </div>
     );
 
@@ -155,7 +155,9 @@ const NewsCarousel = (props: NewsCarouselProps) => {
                             onClick={() => setActiveIndex(index)}
                             aria-label={`Go to slide ${index + 1}`}
                             aria-current={index === activeIndex}
-                        />
+                        >
+                            {index + 1}
+                        </button>
                     ))}
                 </div>
 
