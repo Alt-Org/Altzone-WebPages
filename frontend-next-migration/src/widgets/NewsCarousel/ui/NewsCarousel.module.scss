@@ -187,8 +187,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     padding: 0;
     border: 3px solid var(--drop-shadows);
     border-radius: var(--border-radius-md);
@@ -196,14 +196,23 @@
     cursor: pointer;
     transition: border-color 0.3s ease-out;
 
+    img {
+        width: auto;
+        height: 16px;
+    }
+
     &:hover,
     &:focus-visible {
         border-color: var(--primary-color);
     }
 
     @media (max-width: breakpoint(xs)) {
-        width: 40px;
-        height: 40px;
+        width: 28px;
+        height: 28px;
+
+        img {
+            height: 14px;
+        }
     }
 }
 
