@@ -1,6 +1,43 @@
+%flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+%headingBase {
+  font-family: var(--font-family-title);
+  font-size: clamp(1.5rem, 4vw, var(--font-size-5xl));
+  line-height: var(--font-line-5xl);
+  color: var(--primary-color);
+  text-align: center;
+  padding-inline: 1rem;
+  overflow-wrap: break-word;
+
+  @media (max-width: breakpoint(sm)) {
+    font-size: 1.5rem;
+  }
+}
+
+%boardCardBase {
+  @extend %flexColumn;
+  border: 2px solid var(--primary-color);
+}
+
+%boardInfoBase {
+  @extend %flexColumn;
+  text-align: center;
+  height: 100%;
+}
+
+@mixin jobShared {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  padding-top: .2rem;
+  padding-bottom: 1rem;
+}
+
 .Container {
   margin-inline: auto;
-  padding-inline: 16px;
+  padding-inline: var(--spacer300);
   font: var(--font-dm-m) !important;
 
   @media (min-width: breakpoint(md)) {
@@ -8,9 +45,22 @@
   }
 }
 
-.HeaderLine {
-  display: flex;
-  justify-content: space-between;
+.titleGap {
+  margin-bottom: 3rem;
+  text-align: left;
+  width: 100%;
+}
+
+.titleGap h1 {
+  font-size: clamp(2rem, 6vw, 128px) !important;
+  text-align: left;
+}
+
+.titleGap > div {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
 }
 
 .TextContainer {
@@ -23,44 +73,161 @@
 }
 
 .Subheading {
-  font: var(--font-sw-xl);
+  @extend %headingBase;
+  padding: 1rem;
+}
+
+.prgTabSwitch.prgTabSwitch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+  gap: 5px;
+  height: 80px;
+  background: var(--background);
+  border: 2px solid var(--black);
+  box-shadow: 2px 4px 0px var(--black);
+  border-radius: 35px;
+}
+
+.prgTabSwitch [class*="ToggleItem"] {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+  border-radius: 35px;
+  font: 500 var(--font-dm-xl);
+  letter-spacing: -0.04em;
   color: var(--primary-color);
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  padding: 0 4px;
+  min-width: 0;
 
-  @media (max-width: #{breakpoint(sm)}) {
-    font-size: 1.5rem;
+  &:hover {
+    height: 70px;
   }
 }
 
-.textColumns {
-  box-sizing: border-box;
-  padding-inline: 32px;
-  column-count: 1;
-  column-gap: 24px;
-  column-fill: balance;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  padding-bottom: 1em;
+.prgTabSwitch [class*="ToggleItem"] > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
-@media (min-width: #{breakpoint(md)}) {
-  .textColumns {
-    column-count: 2;
-  }
+.prgTabSwitch > * > *,
+.prgTabSwitch > * > * > * {
+  padding: 0;
+  margin: 0;
+}
+
+.prgTabSwitch [class*="OpenToggleItem"] {
+  background: var(--primary-color);
+  border: 2px solid var(--black);
+  height: 70px;
+  color: var(--black);
+}
+
+.tabContentLayoutReverse {
+  flex-direction: row-reverse;
 }
 
 .textCenter {
   text-align: center;
   padding-inline: 2em;
+  font: var(--font-dm-l);
+  overflow-wrap: break-word;
+}
+
+.headingWithLines {
+  position: relative;
+  text-align: center;
+  padding-block: 1rem;
+  margin-inline: -1rem;
+}
+
+.headingWithLines::before,
+.headingWithLines::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background: var(--primary-color);
+  transform: translateY(-50%);
+}
+
+.headingWithLines::before {
+  left: 0;
+  width: 15%;
+}
+
+.headingWithLines::after {
+  right: 0;
+  width: 15%;
+}
+
+.headingWithLinesText {
+  @extend %headingBase;
+}
+
+.mobileTabs {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.mobileTabCard {
+  margin-top: 0;
+  min-height: 0;
+}
+
+.tabContentContainer {
+  margin-top: 0.5rem;
+  min-height: 359px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabContentLayout {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tabTextArea {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.tabImageArea {
+  flex-shrink: 0;
+  width: 30%;
+}
+
+.tabImage {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
 }
 
 .pdfButton {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-
+  width: min(304px, 100%);
   padding: 6px 22px !important;
   border: 2px solid var(--black, #000);
   border-radius: 2em;
@@ -87,20 +254,13 @@
 }
 
 .label {
-  font: var(--font-dm-m, inherit);
-  line-height: var(--font-line-m, 1.3);
+  font: var(--font-dm-l);
   white-space: nowrap;
   color: var(--primary-color, #000);
 }
 
 .externalLinkIcon {
   color: var(--primary-color, #000);
-  width: 15px;
-  height: 15px;
-}
-
-.icon {
-  display: inline-block;
   width: 15px;
   height: 15px;
 }
@@ -113,33 +273,29 @@
 }
 
 .BoardCard {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid var(--primary-color);
+  @extend %boardCardBase;
   border-radius: .8em;
   width: calc(33% - 1.333rem);
 }
 
 .BoardCardInfoArea {
+  @extend %boardInfoBase;
   outline: 2px solid var(--primary-color);
   border-radius: .8em;
-  text-align: center;
-  height: 100%;
+  min-width: 0;
 }
 
 .BoardCardInfoAreaMobile {
+  @extend %boardInfoBase;
   outline: 1px solid var(--primary-color);
   border-bottom-right-radius: .6em;
   border-bottom-left-radius: .6em;
-  text-align: center;
-  height: 100%;
   width: 100%;
+  min-width: 0;
 }
 
 .BoardCardMobile {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid var(--primary-color);
+  @extend %boardCardBase;
   border-radius: .6em;
   width: 100%;
   align-items: center;
@@ -153,15 +309,21 @@
 
 .Job {
   font: var(--font-sw-m);
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  padding-top: .2rem;
+  @include jobShared;
 }
 
-.Profession {
-  padding-top: .2rem;
+.Profession,
+.ProfessionMobile {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-bottom: .2rem;
-
+  text-align: center;
+  font: var(--font-dm-l);
+  color: var(--neutral);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .NameMobile {
@@ -172,15 +334,7 @@
 
 .JobMobile {
   font: var(--font-sw-s);
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  padding-top: .2rem;
-}
-
-.ProfessionMobile {
-  padding-top: .2rem;
-  padding-bottom: .2rem;
-  font-size: .8rem;
+  @include jobShared;
 }
 
 .BoardCardContainer {
@@ -192,57 +346,105 @@
   padding-inline: 2rem;
 }
 
-.BoardCardHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.MeetBoard {
-  padding-top: 1rem !important;
-  color: var(--primary-color) !important;
-  text-align: center;
-  display: block;
-  width: 100%;
-}
-
-.SeeBoard {
-  padding-top: 2rem;
-}
-
 .BoardCardMobileContainer {
-  display: flex;
-  flex-direction: column;
+  @extend %flexColumn;
   gap: 1rem;
   width: 100%;
-}
-
-.Underline {
-  &:hover {
-    text-decoration: underline !important;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1.5px;
-  }
 }
 
 .MarginBottom {
   margin-bottom: 2rem;
 }
 
-.bold {
-  font-weight: bold;
+.teamButton {
+  background: var(--primary-color);
+  color: var(--black);
+
+  .label {
+    color: var(--black);
+  }
 }
 
 .registryInfo {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
-  padding: 1rem;
-  border: 2px solid var(--primary-color);
-  border-radius: .8em;
+  text-align: center;
   white-space: pre-line;
+  font: var(--font-dm-l);
+  font-size: 30px;
+  margin-top: 1rem;
+}
+
+@media (max-width: breakpoint(sm)) {
+  .prgTabSwitch {
+    height: auto;
+    padding: 4px 8px;
+    gap: 3px;
+  }
+
+  .prgTabSwitch [class*="ToggleItem"] {
+    height: 50px;
+    font: 500 var(--font-dm-m);
+  }
+
+  .prgTabSwitch [class*="ToggleItem"]:hover {
+    height: 54px;
+  }
+
+  .prgTabSwitch [class*="OpenToggleItem"] {
+    height: 54px;
+  }
+
+  .tabContentLayout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tabContentLayoutReverse {
+    flex-direction: column;
+  }
+
+  .tabTextArea {
+    display: contents;
+  }
+
+  .tabTextArea > *:nth-child(1) {
+    order: 0;
+  }
+
+  .tabTextArea > *:nth-child(2) {
+    order: 1;
+  }
+
+  .tabTextArea > *:nth-child(3) {
+    order: 3;
+  }
+
+  .tabImageArea {
+    width: 100%;
+    order: 2;
+  }
+
+  .tabContentContainer .Subheading {
+    padding: 0;
+  }
+
+  .tabContentContainer {
+    min-height: auto;
+  }
+
+  .textCenter {
+    padding-inline: 0.5rem;
+    font: var(--font-dm-m);
+  }
+
+  .registryInfo {
+    font: var(--font-dm-m);
+  }
+
+  .TextContainer {
+    padding: 0.5rem;
+  }
+
+  .headingWithLines {
+    margin-inline: -0.5rem;
+  }
 }

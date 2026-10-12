@@ -6,6 +6,7 @@
     "clan_deleted": "Klaani poistettiin onnistuneesti",
     "clan_delete_cancelled": "Poisto peruutettiin",
     "rating": "Rating",
+    "position": "Sijoitus:",
     "clan": "Klaani",
     "clans": "Klaanit",
     "clans_title": "Kaikki Klaanit",
@@ -53,5 +54,7 @@
     "losses": "Tappiot",
     "leaderboard-title": "Tulostaulukko",
     "browse-clans": "Selaa Klaaneja",
-    "store-title": "Kauppa"
+    "store-title": "Kauppa",
+    "badge_adults": "Vain aikuisille",
+    "badge_closed": "Suljettu klaani"
 }

@@ -1,139 +1,134 @@
-import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import {
-    getRouteHeroDevPage,
-    getRouteMyClanPage,
     getRouteComicsPage,
-    getRouteGalleryPage,
     getRouteGameArtPage,
     getRouteDefenseGalleryPage,
-    getRouteAllClanSearchPage,
-    //getRouteAllFurnitureSetsPage,
-    getRouteAllCollectionsPage,
-    getRouteJoinUsPage,
+    getRouteAllFurnitureSetsPage,
+    getRouteAllMusicCollectionsPage,
     getRouteAboutPage,
     getRouteTeamPage,
     getRoutePrgPage,
+    getRouteGamePage,
+    getRouteComingSoonPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
     community: [
         {
-            elementText: 'clanpage',
+            elementText: 'whatIsPrg',
             link: {
-                path: getRouteMyClanPage(),
+                path: getRoutePrgPage(),
                 isExternal: false,
             },
         },
         {
-            elementText: 'join',
-            link: {
-                path: getRouteJoinUsPage(),
-                isExternal: false,
-            },
-        },
-        {
-            elementText: 'forum',
-            link: {
-                path: AppExternalLinks.reddit,
-                isExternal: true,
-            },
-        },
-        {
-            elementText: 'about',
+            elementText: 'altZoneHistory',
             link: {
                 path: getRouteAboutPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'developersAndDesigners',
+            link: {
+                path: getRouteTeamPage(),
                 isExternal: false,
             },
         },
     ],
     game: [
         {
-            elementText: 'play',
+            elementText: 'learnTheGame',
             link: {
-                path: AppExternalLinks.webgl,
-                isExternal: true,
+                path: getRouteGamePage(),
+                isExternal: false,
             },
         },
         {
-            elementText: 'heroes',
+            elementText: 'story',
+            link: {
+                path: getRouteComingSoonPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'defenseHeroes',
             link: {
                 path: getRouteDefenseGalleryPage(),
                 isExternal: false,
             },
         },
         {
-            elementText: 'development',
+            elementText: 'balanceVoting',
             link: {
-                path: getRouteHeroDevPage(),
+                path: getRouteComingSoonPage(),
                 isExternal: false,
             },
         },
         {
             elementText: 'clans',
             link: {
-                path: getRouteAllClanSearchPage(),
+                path: getRouteComingSoonPage(),
                 isExternal: false,
             },
-            isDisabled: {
-                status: false,
-                reason: 'Kirjaudu ensin!',
+        },
+        {
+            elementText: 'scoreboard',
+            link: {
+                path: getRouteComingSoonPage(),
+                isExternal: false,
             },
         },
-        // {
-        //     elementText: 'leaderboard',
-        //     link: {
-        //         path: getRouteClanLeadeboardPage(),
-        //         isExternal: false,
-        //     },
-        // },
     ],
     gallery: [
         {
-            elementText: 'pictures',
-            link: {
-                path: getRouteGalleryPage(),
-                isExternal: false,
-            },
-        },
-        {
-            elementText: 'comics',
+            elementText: 'sarjakuvat',
             link: {
                 path: getRouteComicsPage(),
                 isExternal: false,
             },
         },
         {
-            elementText: 'collections',
+            elementText: 'characterDevelopment',
             link: {
-                path: getRouteAllCollectionsPage(),
+                path: getRouteComingSoonPage(),
                 isExternal: false,
             },
-            isDisabled: {
-                status: false,
-                reason: 'Kirjaudu ensin!',
+        },
+        {
+            elementText: 'soulCastleFurniture',
+            link: {
+                path: getRouteAllFurnitureSetsPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'gameIcons',
+            link: {
+                path: getRouteComingSoonPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'gameMusic',
+            link: {
+                path: getRouteAllMusicCollectionsPage(),
+                isExternal: false,
             },
         },
     ],
     gameart: [
         {
-            elementText: 'gameart',
+            elementText: 'opetuspaketti',
             link: {
                 path: getRouteGameArtPage(),
                 isExternal: false,
             },
         },
         {
-            elementText: 'dlPackage',
+            elementText: 'pelitaide',
             link: {
-                path: AppExternalLinks.dlpackage,
-                isExternal: true,
-            },
-        },
-        {
-            elementText: 'pastversions',
-            link: {
-                path: AppExternalLinks.pastversions,
-                isExternal: true,
+                path: getRouteComingSoonPage(),
+                isExternal: false,
             },
         },
     ],
