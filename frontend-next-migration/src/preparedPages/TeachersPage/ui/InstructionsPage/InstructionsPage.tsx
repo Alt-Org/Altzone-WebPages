@@ -37,6 +37,9 @@ const InstructionsPage = () => {
 
                         <DescriptionCard.Texts.Body>{t('watch')}</DescriptionCard.Texts.Body>
                     </DescriptionCard.Texts>
+
+                    <SectionLessonFlow activeStep={activeStep} />
+
                     <NavigateTeachers
                         activeStep={activeStep}
                         onBack={handleBack}
@@ -45,8 +48,6 @@ const InstructionsPage = () => {
                         nextDisabled={activeStep === MAX_STEP}
                     />
                 </DescriptionCard>
-
-                <SectionLessonFlow activeStep={activeStep} />
             </div>
         </Container>
     );
