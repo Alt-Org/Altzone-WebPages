@@ -1,15 +1,30 @@
 {
   "title": "About Us",
-  "head-title": "What is PRG?",
+  "head-title": "A lot of talented people work on this project",
   "head-description": "Psyche's Royale Gaming ry is a non-profit game art association that is collaboratively developing the mobile game ALT Zone 1.0",
   "head-keywords": "ALT Zone, ALT Zone mobile game, community game development, participate in game creation, game art mobile game",
   "og-title": "Psyche's Royale Gaming ry – Creators and Community of ALT Zone Game Art",
   "og-description": "PRG ry is a Finnish non-profit association developing the ALT Zone mobile game in collaboration with youth, volunteers, and game industry professionals.",
-
   "project": "Has worked on this project",
-  "locality": "From a different locality",
-  "nationality": "From a different nationality",
+  "locality": "Localities represented",
+  "nationality": "Nationalities represented",
   "behind": "Years into the journey",
+  "timeline": {
+        "sort": "Sort by",
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "close": "Close"
+    },
+
+    "designer": {
+    "label": "Designed by:",
+    "names": [
+        {
+            "name": "Sanna-Kaisa Mastokangas",
+            "url": "https://piisamisiili.artstation.com/"
+        }
+    ]
+},
 
   "story-title": "ALT Zone's history",
   
