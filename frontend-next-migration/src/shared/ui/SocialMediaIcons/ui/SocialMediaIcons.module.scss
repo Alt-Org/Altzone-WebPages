@@ -1,0 +1,19 @@
+.socialMediaIcons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--font-dm-l);
+  cursor: pointer;
+  color: var(--primary-color);
+    @include link-scale-effect('icon');
+
+  @media (max-width: breakpoint(sm)) {
+    font: var(--font-dm-m);
+  }
+}
