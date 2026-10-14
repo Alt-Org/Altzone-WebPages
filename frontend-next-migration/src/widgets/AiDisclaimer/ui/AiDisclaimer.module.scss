@@ -1,0 +1,84 @@
+.AiDisclaimer {
+    border-block: 2px solid var(--primary-color);
+    background: var(--background);
+    color: var(--white);
+    // Same horizontal inset as CTASection so the text lines up with the other main page sections
+    padding: 72px clamp(16px, 11.46vw, 220px) 56px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 28px;
+}
+
+.icon {
+    width: 76px;
+    height: 76px;
+}
+
+.title {
+    margin: 0;
+    color: var(--primary-color);
+    font: var(--font-sw-xxl);
+}
+
+.lead,
+.text {
+    margin: 0;
+    font: var(--font-dm-l);
+}
+
+.lead {
+    max-width: 1120px;
+    font-weight: 700;
+}
+
+.text {
+    margin-top: 20px;
+}
+
+@media (max-width: breakpoint(md)) {
+    .AiDisclaimer {
+        padding: 40px 1rem;
+    }
+
+    .content {
+        padding: 0 1.5rem;
+    }
+
+    .header {
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .icon {
+        width: 54px;
+        height: 54px;
+    }
+
+    .title {
+        margin-bottom: 20px;
+        font: var(--font-sw-xl);
+    }
+
+    .lead,
+    .text {
+        font: var(--font-dm-m);
+    }
+
+    .lead {
+        font-weight: 700;
+    }
+}
+
+@media (max-width: breakpoint(sm)) {
+    .AiDisclaimer {
+        padding-inline: 0;
+    }
+
+    .header {
+        align-items: flex-start;
+    }
+}
