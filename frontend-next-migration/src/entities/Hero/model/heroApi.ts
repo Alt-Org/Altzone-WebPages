@@ -174,13 +174,13 @@ function mapHero(item: any, locale: Locale): HeroWithGroup {
     };
 }
 
-function buildParams(locale: Locale, options?: { slug?: string; limit?: string }) {
+function buildParams(locale: Locale, options?: { slug?: string; limit?: string; sort?: string }) {
     const params = new URLSearchParams();
     if (options?.slug) params.set('filter[slug][_eq]', options.slug);
     params.set('filter[status][_eq]', 'Published');
     if (options?.limit) params.set('limit', options.limit);
     params.set('fields', FIELDS);
-    params.set('sort', 'order');
+    params.set('sort', options?.sort ?? 'order');
     for (const key of HERO_TR_KEYS) {
         params.set(`deep[${key}][filter][languages_code][_eq]`, languageCode(locale));
     }
@@ -228,7 +228,7 @@ export const heroApi = directusApi.injectEndpoints({
         }),
         getHeroGroups: build.query<Record<HeroGroup, GroupInfo>, { locale?: Locale }>({
             query: ({ locale = 'en' }) => ({
-                url: `/items/heroes?${buildParams(locale, { limit: '-1' }).toString()}`,
+                url: `/items/heroes?${buildParams(locale, { limit: '-1', sort: 'group.order,order,id' }).toString()}`,
             }),
             transformResponse: (resp: any, _meta, args) => {
                 const items = (resp?.data || []).filter(isPublished);
