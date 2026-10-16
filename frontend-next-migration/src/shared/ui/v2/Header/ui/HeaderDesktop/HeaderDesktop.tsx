@@ -37,7 +37,7 @@ const HeaderDesktopComponent = memo((props: Props) => {
             <div className={cls.container}>
                 <div className={cls.left}>
                     <Image
-                        src={topimage}
+                        src={`${topimage.src}?v=2`}
                         alt="Main page hero"
                         priority
                         fill
