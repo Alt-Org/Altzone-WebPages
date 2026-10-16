@@ -10,6 +10,7 @@ import NewsCardsGrid from './_components/NewsCardsGrid';
 import DescriptionCardsSection from './_components/DescriptionCardsSection';
 import MobileCardsGrid from './_components/MobileCardsGrid';
 import BarIndicatorBlock from '@/app/[lng]/(helper)/admin/_components/BarIndicatorBlock';
+import AuthRefreshTest from './_components/AuthRefreshTest';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import vihapuhe from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
@@ -48,6 +49,8 @@ const Page = () => {
                 component: <NavMenusBlock variant="forum" />,
             }}
         >
+            <AuthRefreshTest />
+
             <button
                 style={{
                     paddingLeft: '1em',

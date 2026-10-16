@@ -1,5 +1,11 @@
 import { gameApi } from '@/shared/api';
-import { IUserRegisterDto, IUserLoginDto, ILoginResponse } from '../types/authUser';
+import {
+    IUserRegisterDto,
+    IUserLoginDto,
+    IRefreshAuthDto,
+    ILoginResponse,
+    AccessTokenInfoResponse,
+} from '../types/authUser';
 
 const authApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -23,6 +29,13 @@ const authApi = gameApi.injectEndpoints({
                 method: 'POST',
             }),
         }),
+        refreshAuth: builder.mutation<AccessTokenInfoResponse, IRefreshAuthDto>({
+            query: (refreshAuthDto) => ({
+                url: '/auth/refresh',
+                method: 'POST',
+                body: refreshAuthDto,
+            }),
+        }),
     }),
     overrideExisting: false,
 });
@@ -31,5 +44,6 @@ export const {
     useLoginMutation,
     useRegisterMutation,
     useLogoutMutation,
+    useRefreshAuthMutation,
     endpoints: authEndpoints,
 } = authApi;
