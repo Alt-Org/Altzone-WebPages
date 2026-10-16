@@ -9,6 +9,8 @@ import {
     getRoutePrgPage,
     getRouteGamePage,
     getRouteComingSoonPage,
+    getRouteAllClanSearchPage,
+    getRouteLeaderboardPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -67,14 +69,14 @@ export const dropdowns = {
         {
             elementText: 'clans',
             link: {
-                path: getRouteComingSoonPage(),
+                path: getRouteAllClanSearchPage(),
                 isExternal: false,
             },
         },
         {
             elementText: 'scoreboard',
             link: {
-                path: getRouteComingSoonPage(),
+                path: getRouteLeaderboardPage(),
                 isExternal: false,
             },
         },
@@ -120,14 +122,14 @@ export const dropdowns = {
         {
             elementText: 'opetuspaketti',
             link: {
-                path: getRouteGameArtPage(),
+                path: getRouteComingSoonPage(),
                 isExternal: false,
             },
         },
         {
             elementText: 'pelitaide',
             link: {
-                path: getRouteComingSoonPage(),
+                path: getRouteGameArtPage(),
                 isExternal: false,
             },
         },
