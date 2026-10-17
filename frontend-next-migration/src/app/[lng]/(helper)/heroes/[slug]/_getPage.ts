@@ -17,15 +17,8 @@ async function getCurrentHero(
     lng: string,
 ): Promise<HeroWithGroup> {
     const locale = lng as 'en' | 'fi' | 'ru';
-    let currentHero = await heroManager.getHeroBySlugAsync(slug as HeroSlug, locale);
+    const currentHero = await heroManager.getHeroBySlugAsync(slug as HeroSlug, locale);
     if (!currentHero) {
-        // eslint-disable-next-line no-console
-        console.log(`[heroes/_getPage] Hero "${slug}" not found in Directus, trying static data`);
-        currentHero = heroManager.getHeroBySlug(slug as HeroSlug);
-    }
-    if (!currentHero) {
-        // eslint-disable-next-line no-console
-        console.error(`[heroes/_getPage] Hero "${slug}" not found in Directus or static data`);
         notFound();
     }
     return currentHero;
@@ -83,11 +76,8 @@ export async function _getPage(lng: string, slug: string) {
     // Get current hero with fallback
     const currentHero = await getCurrentHero(heroManager, slug, lng);
 
-    // Get all heroes for navigation (try Directus first, fallback to static)
-    let heroes = await heroManager.getAllHeroesFromDirectus(lng as 'en' | 'fi' | 'ru');
-    if (heroes.length === 0) {
-        heroes = heroManager.getAllHeroes();
-    }
+    // Get all published heroes for navigation.
+    const heroes = await heroManager.getAllHeroesFromDirectus(lng as 'en' | 'fi' | 'ru');
 
     const { prevHero, nextHero } = getNavigationHeroes(heroes, currentHero);
     const prevHeroLink = getRouteOneHeroPage(prevHero.slug);

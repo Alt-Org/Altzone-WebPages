@@ -30,6 +30,7 @@ import char1 from '@/shared/assets/images/mainpage/Defencegallery202.png';
 import char2 from '@/shared/assets/images/mainpage/Defencegallery403.png';
 import char3 from '@/shared/assets/images/mainpage/Defencegallery603.png';
 import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
+import { AiDisclaimer } from '@/widgets/AiDisclaimer';
 
 export type Props = {
     projectDescription: ProjectDescriptionProps;
@@ -110,6 +111,8 @@ function MainPage(props: Props) {
                     </div>
                 </div>
             </div>
+
+            <AiDisclaimer />
         </div>
     );
 }
