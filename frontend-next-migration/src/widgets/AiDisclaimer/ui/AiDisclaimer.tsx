@@ -21,7 +21,7 @@ export const AiDisclaimer = ({ className = '' }: AiDisclaimerProps) => {
                 <div className={cls.header}>
                     <Image
                         className={cls.icon}
-                        src="/images/gallery/Käyttöliittymä grafiikkaa 08-2025/CommonLogoAIContent.png"
+                        src="/images/logos/CommonLogoAIContent.png"
                         alt=""
                         width={256}
                         height={256}
