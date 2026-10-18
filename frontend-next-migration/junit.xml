@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="275" failures="1" errors="0" time="43.051">
+  <testsuite name="NavItem Component" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:12" time="12.986" tests="10">
+    <testcase classname="NavItem Component should render navDropDown correctly with permitted elements" name="NavItem Component should render navDropDown correctly with permitted elements" time="0.1">
+    </testcase>
+    <testcase classname="NavItem Component should render clan page link if user has permission" name="NavItem Component should render clan page link if user has permission" time="0.033">
+    </testcase>
+    <testcase classname="NavItem Component should not render clan page link if user does not have permission" name="NavItem Component should not render clan page link if user does not have permission" time="0.004">
+    </testcase>
+    <testcase classname="NavItem Component should open dropdown menu on hover" name="NavItem Component should open dropdown menu on hover" time="0.014">
+    </testcase>
+    <testcase classname="NavItem Component should render navLink correctly" name="NavItem Component should render navLink correctly" time="0.01">
+    </testcase>
+    <testcase classname="NavItem Component should render navLogo correctly" name="NavItem Component should render navLogo correctly" time="0.081">
+    </testcase>
+    <testcase classname="NavItem Component should apply active class to navLink when currentPath matches" name="NavItem Component should apply active class to navLink when currentPath matches" time="0.006">
+    </testcase>
+    <testcase classname="NavItem Component should apply active class to navDropDown when any element is active" name="NavItem Component should apply active class to navDropDown when any element is active" time="0.022">
+    </testcase>
+    <testcase classname="NavItem Component should render navDropDown with disableClickToggle prop" name="NavItem Component should render navDropDown with disableClickToggle prop" time="0.003">
+    </testcase>
+    <testcase classname="NavItem Component Custom Styling should apply custom className when provided" name="NavItem Component Custom Styling should apply custom className when provided" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="NavItem Component" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:26" time="0.384" tests="11">
+    <testcase classname="NavItem Component should render navLink correctly" name="NavItem Component should render navLink correctly" time="0.019">
+    </testcase>
+    <testcase classname="NavItem Component should render navDropDown correctly with permitted elements" name="NavItem Component should render navDropDown correctly with permitted elements" time="0.013">
+    </testcase>
+    <testcase classname="NavItem Component should render navLogo correctly" name="NavItem Component should render navLogo correctly" time="0.04">
+    </testcase>
+    <testcase classname="NavItem Component should not render clan page link if user does not have permission" name="NavItem Component should not render clan page link if user does not have permission" time="0.003">
+    </testcase>
+    <testcase classname="NavItem Component should render clan page link if user has permission" name="NavItem Component should render clan page link if user has permission" time="0.015">
+    </testcase>
+    <testcase classname="NavItem Component should not render anything for unknown item type" name="NavItem Component should not render anything for unknown item type" time="0.001">
+    </testcase>
+    <testcase classname="NavItem Component should translate item names" name="NavItem Component should translate item names" time="0.002">
+    </testcase>
+    <testcase classname="NavItem Component should not apply active class when item is not active" name="NavItem Component should not apply active class when item is not active" time="0.003">
+    </testcase>
+    <testcase classname="NavItem Component should apply passed className" name="NavItem Component should apply passed className" time="0.005">
+    </testcase>
+    <testcase classname="NavItem Component should open dropdown menu on hover" name="NavItem Component should open dropdown menu on hover" time="0.021">
+    </testcase>
+    <testcase classname="NavItem Component should have correct href in navLink" name="NavItem Component should have correct href in navLink" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="useUserPermissionsV2" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:13" time="13.939" tests="16">
+    <testcase classname="useUserPermissionsV2 login permission should grant login permission when not authenticated" name="useUserPermissionsV2 login permission should grant login permission when not authenticated" time="0.021">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 login permission should deny login permission when already authenticated" name="useUserPermissionsV2 login permission should deny login permission when already authenticated" time="0.003">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 logout permission should grant logout permission when authenticated" name="useUserPermissionsV2 logout permission should grant logout permission when authenticated" time="0.002">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 logout permission should deny logout permission when not authenticated" name="useUserPermissionsV2 logout permission should deny logout permission when not authenticated" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:create permission should grant clan:create permission when authenticated and not in a clan" name="useUserPermissionsV2 clan:create permission should grant clan:create permission when authenticated and not in a clan" time="0.003">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:create permission should deny clan:create permission when authenticated and already in a clan" name="useUserPermissionsV2 clan:create permission should deny clan:create permission when authenticated and already in a clan" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:create permission should deny clan:create permission when not authenticated" name="useUserPermissionsV2 clan:create permission should deny clan:create permission when not authenticated" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:seeAll permission should grant clan:seeAll permission when authenticated" name="useUserPermissionsV2 clan:seeAll permission should grant clan:seeAll permission when authenticated" time="0.002">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:seeAll permission should deny clan:seeAll permission when not authenticated" name="useUserPermissionsV2 clan:seeAll permission should deny clan:seeAll permission when not authenticated" time="0.002">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:seeOwn permission should grant clan:seeOwn permission when authenticated and in a clan" name="useUserPermissionsV2 clan:seeOwn permission should grant clan:seeOwn permission when authenticated and in a clan" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:seeOwn permission should deny clan:seeOwn permission when authenticated and not in a clan" name="useUserPermissionsV2 clan:seeOwn permission should deny clan:seeOwn permission when authenticated and not in a clan" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:seeOwn permission should deny clan:seeOwn permission when not authenticated" name="useUserPermissionsV2 clan:seeOwn permission should deny clan:seeOwn permission when not authenticated" time="0.002">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:join permission should grant clan:join permission when authenticated and not in a clan" name="useUserPermissionsV2 clan:join permission should grant clan:join permission when authenticated and not in a clan" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:join permission should deny clan:join permission when authenticated and already in a clan" name="useUserPermissionsV2 clan:join permission should deny clan:join permission when authenticated and already in a clan" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 clan:join permission should deny clan:join permission when not authenticated" name="useUserPermissionsV2 clan:join permission should deny clan:join permission when not authenticated" time="0.001">
+    </testcase>
+    <testcase classname="useUserPermissionsV2 unknown permission should return unknown permission error for unhandled permissions" name="useUserPermissionsV2 unknown permission should return unknown permission error for unhandled permissions" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="useGetDirectusGalleryImages" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:26" time="0.23" tests="4">
+    <testcase classname="useGetDirectusGalleryImages returns empty arrays when no data is available" name="useGetDirectusGalleryImages returns empty arrays when no data is available" time="0.003">
+    </testcase>
+    <testcase classname="useGetDirectusGalleryImages transforms data correctly" name="useGetDirectusGalleryImages transforms data correctly" time="0.003">
+    </testcase>
+    <testcase classname="useGetDirectusGalleryImages handles loading states" name="useGetDirectusGalleryImages handles loading states" time="0">
+    </testcase>
+    <testcase classname="useGetDirectusGalleryImages handles errors" name="useGetDirectusGalleryImages handles errors" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="organizeMembers" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:27" time="0.287" tests="3">
+    <testcase classname="organizeMembers should organize members into teams and departments with correct English translations" name="organizeMembers should organize members into teams and departments with correct English translations" time="0.013">
+    </testcase>
+    <testcase classname="organizeMembers should organize members into teams and departments with correct Finnish translations" name="organizeMembers should organize members into teams and departments with correct Finnish translations" time="0.001">
+    </testcase>
+    <testcase classname="organizeMembers should return an empty teams map if no members are provided" name="organizeMembers should return an empty teams map if no members are provided" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="SectionHeroesBlocks" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:27" time="0.267" tests="8">
+    <testcase classname="SectionHeroesBlocks renders no groups while Directus is loading" name="SectionHeroesBlocks renders no groups while Directus is loading" time="0.014">
+    </testcase>
+    <testcase classname="SectionHeroesBlocks uses static groups after a Directus error" name="SectionHeroesBlocks uses static groups after a Directus error" time="0.006">
+    </testcase>
+    <testcase classname="SectionHeroesBlocks renders Directus groups and the see-more link after success" name="SectionHeroesBlocks renders Directus groups and the see-more link after success" time="0.006">
+    </testcase>
+    <testcase classname="SectionHeroesBlocks keeps the group list empty after a successful empty response" name="SectionHeroesBlocks keeps the group list empty after a successful empty response" time="0.002">
+    </testcase>
+    <testcase classname="SectionHeroesBlocks does not limit groups when maxGroupsPerPage is zero" name="SectionHeroesBlocks does not limit groups when maxGroupsPerPage is zero" time="0.003">
+    </testcase>
+    <testcase classname="SectionHeroesBlocks maps the fi route locale for Directus" name="SectionHeroesBlocks maps the fi route locale for Directus" time="0.002">
+    </testcase>
+    <testcase classname="SectionHeroesBlocks maps the ru route locale for Directus" name="SectionHeroesBlocks maps the ru route locale for Directus" time="0.002">
+    </testcase>
+    <testcase classname="SectionHeroesBlocks defaults to English when the route has no locale" name="SectionHeroesBlocks defaults to English when the route has no locale" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="NewsPage" errors="0" failures="1" skipped="0" timestamp="2026-10-18T18:40:27" time="0.438" tests="4">
+    <testcase classname="NewsPage renders the translated page title and fetched news cards" name="NewsPage renders the translated page title and fetched news cards" time="0.065">
+    </testcase>
+    <testcase classname="NewsPage shows six skeleton cards while news is loading" name="NewsPage shows six skeleton cards while news is loading" time="0.008">
+      <failure>TestingLibraryElementError: Unable to find an element by: [data-testid=&quot;news-skeleton&quot;]
+
+Ignored nodes: comments, script, style
+&lt;body&gt;
+  &lt;div&gt;
+    &lt;main
+      class=&quot;NewsPage&quot;
+    &gt;
+      &lt;div
+        class=&quot;Container&quot;
+      &gt;
+        &lt;div
+          class=&quot;Container PageTitleContainer&quot;
+        &gt;
+          &lt;a
+            href=&quot;&quot;
+          &gt;
+            &lt;div
+              class=&quot;PageTitleAlt&quot;
+            &gt;
+              &lt;h1&gt;
+                head-title
+              &lt;/h1&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div
+          class=&quot;newsContent&quot;
+        &gt;
+          &lt;div
+            class=&quot;newsGrid&quot;
+          /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          Loading...
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+    at Object.getElementError (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\@testing-library\dom\dist\config.js:37:19)
+    at F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\@testing-library\dom\dist\query-helpers.js:76:38
+    at F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\@testing-library\dom\dist\query-helpers.js:52:17
+    at F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\@testing-library\dom\dist\query-helpers.js:95:19
+    at Object.getByTestId (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\src\preparedPages\NewsPages\ui\NewsPage.test.tsx:125:23)
+    at Promise.then.completed (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\run.js:316:40)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at processTimers (node:internal/timers:523:7)
+    at _runTest (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\run.js:121:9)
+    at run (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-runner\build\runTest.js:444:34)
+    at Object.worker (F:\WebDev\PRG\Altzone-WebPages\frontend-next-migration\node_modules\jest-runner\build\testWorker.js:106:12)</failure>
+    </testcase>
+    <testcase classname="NewsPage shows the no-more-news message after the final page" name="NewsPage shows the no-more-news message after the final page" time="0.014">
+    </testcase>
+    <testcase classname="NewsPage loads the next page when the sentinel intersects" name="NewsPage loads the next page when the sentinel intersects" time="0.019">
+    </testcase>
+  </testsuite>
+  <testsuite name="PRGPage" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:28" time="0.263" tests="5">
+    <testcase classname="PRGPage renders all board members" name="PRGPage renders all board members" time="0.015">
+    </testcase>
+    <testcase classname="PRGPage renders team link pointing to /team" name="PRGPage renders team link pointing to /team" time="0.006">
+    </testcase>
+    <testcase classname="PRGPage renders the tab switch on desktop" name="PRGPage renders the tab switch on desktop" time="0.004">
+    </testcase>
+    <testcase classname="PRGPage loops all document tabs instead of the switch on mobile" name="PRGPage loops all document tabs instead of the switch on mobile" time="0.009">
+    </testcase>
+    <testcase classname="PRGPage loops all document tabs instead of the switch on tablet" name="PRGPage loops all document tabs instead of the switch on tablet" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="useLoginForm" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:28" time="0.309" tests="4">
+    <testcase classname="useLoginForm should return register, handleSubmit, onFormSubmit and errors from useForm" name="useLoginForm should return register, handleSubmit, onFormSubmit and errors from useForm" time="0.003">
+    </testcase>
+    <testcase classname="useLoginForm should call login on form submit" name="useLoginForm should call login on form submit" time="0.001">
+    </testcase>
+    <testcase classname="useLoginForm should dispatch actions and show success toast on successful login" name="useLoginForm should dispatch actions and show success toast on successful login" time="0.002">
+    </testcase>
+    <testcase classname="useLoginForm should show error toast if there is an error" name="useLoginForm should show error toast if there is an error" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Navbar" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:26" time="2.742" tests="8">
+    <testcase classname="Navbar render components" name="Navbar render components" time="0.003">
+    </testcase>
+    <testcase classname="NavbarDesktop renders basic navbar structure" name="NavbarDesktop renders basic navbar structure" time="0.447">
+    </testcase>
+    <testcase classname="NavbarDesktop applies correct classes when fixed" name="NavbarDesktop applies correct classes when fixed" time="0.028">
+    </testcase>
+    <testcase classname="NavbarDesktop handles collapse button click" name="NavbarDesktop handles collapse button click" time="0.02">
+    </testcase>
+    <testcase classname="NavbarDesktop handles fix button click" name="NavbarDesktop handles fix button click" time="0.013">
+    </testcase>
+    <testcase classname="NavbarDesktop applies mouseOver styles when isMouseOver is true" name="NavbarDesktop applies mouseOver styles when isMouseOver is true" time="0.041">
+    </testcase>
+    <testcase classname="NavbarDesktop does not show collapse button when not fixed" name="NavbarDesktop does not show collapse button when not fixed" time="0.018">
+    </testcase>
+    <testcase classname="NavbarDesktop handles transition end" name="NavbarDesktop handles transition end" time="0.023">
+    </testcase>
+  </testsuite>
+  <testsuite name="NavbarDesktopV3" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:28" time="0.363" tests="6">
+    <testcase classname="NavbarDesktopV3 renders nav element" name="NavbarDesktopV3 renders nav element" time="0.031">
+    </testcase>
+    <testcase classname="NavbarDesktopV3 renders top-level triggers" name="NavbarDesktopV3 renders top-level triggers" time="0.01">
+    </testcase>
+    <testcase classname="NavbarDesktopV3 dropdown opens on hover and closes on leave" name="NavbarDesktopV3 dropdown opens on hover and closes on leave" time="0.015">
+    </testcase>
+    <testcase classname="NavbarDesktopV3 escape closes the dropdown" name="NavbarDesktopV3 escape closes the dropdown" time="0.007">
+    </testcase>
+    <testcase classname="NavbarDesktopV3 applies marginTop style when provided" name="NavbarDesktopV3 applies marginTop style when provided" time="0.007">
+    </testcase>
+    <testcase classname="NavbarDesktopV3 applies custom className" name="NavbarDesktopV3 applies custom className" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="authUserSlice" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:29" time="0.142" tests="7">
+    <testcase classname="authUserSlice should return the initial state when passed an empty action" name="authUserSlice should return the initial state when passed an empty action" time="0.001">
+    </testcase>
+    <testcase classname="authUserSlice should handle setAccessTokenInfo" name="authUserSlice should handle setAccessTokenInfo" time="0.001">
+    </testcase>
+    <testcase classname="authUserSlice should handle setIsSessionExpired" name="authUserSlice should handle setIsSessionExpired" time="0">
+    </testcase>
+    <testcase classname="authUserSlice should handle logout" name="authUserSlice should handle logout" time="0.001">
+    </testcase>
+    <testcase classname="authUserSlice should handle PURGE action" name="authUserSlice should handle PURGE action" time="0">
+    </testcase>
+    <testcase classname="authUserSlice selectIsAuthenticated should return false if accessToken doesnt exist" name="authUserSlice selectIsAuthenticated should return false if accessToken doesnt exist" time="0.001">
+    </testcase>
+    <testcase classname="authUserSlice selectIsAuthenticated should return true if accessTokenInfo exists" name="authUserSlice selectIsAuthenticated should return true if accessTokenInfo exists" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="profileSlice" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:29" time="0.103" tests="6">
+    <testcase classname="profileSlice should return the initial state when passed an empty action" name="profileSlice should return the initial state when passed an empty action" time="0">
+    </testcase>
+    <testcase classname="profileSlice should handle setProfile" name="profileSlice should handle setProfile" time="0">
+    </testcase>
+    <testcase classname="profileSlice should handle PURGE action" name="profileSlice should handle PURGE action" time="0">
+    </testcase>
+    <testcase classname="profileSlice selectHasClan should return TRUE since user has a clan" name="profileSlice selectHasClan should return TRUE since user has a clan" time="0.001">
+    </testcase>
+    <testcase classname="profileSlice selectClanId should return the set clan_id since user has a clan" name="profileSlice selectClanId should return the set clan_id since user has a clan" time="0">
+    </testcase>
+    <testcase classname="profileSlice selectHasClan should return FALSE since user does not have a clan" name="profileSlice selectHasClan should return FALSE since user does not have a clan" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:29" time="0.242" tests="2">
+    <testcase classname=" should show error toast if login fails after registration" name=" should show error toast if login fails after registration" time="0.004">
+    </testcase>
+    <testcase classname=" should call register and login on form submit" name=" should call register and login on form submit" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="ScrollTop" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:29" time="0.217" tests="5">
+    <testcase classname="ScrollTop renders correctly with default props" name="ScrollTop renders correctly with default props" time="0.004">
+    </testcase>
+    <testcase classname="ScrollTop renders correctly with custom innerText" name="ScrollTop renders correctly with custom innerText" time="0.001">
+    </testcase>
+    <testcase classname="ScrollTop shows button when scrolled down" name="ScrollTop shows button when scrolled down" time="0.002">
+    </testcase>
+    <testcase classname="ScrollTop hides button when scrolled up" name="ScrollTop hides button when scrolled up" time="0.001">
+    </testcase>
+    <testcase classname="ScrollTop scrolls to top when button is clicked" name="ScrollTop scrolls to top when button is clicked" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="ScrollTop" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:29" time="0.22" tests="5">
+    <testcase classname="ScrollTop renders correctly with default props" name="ScrollTop renders correctly with default props" time="0.005">
+    </testcase>
+    <testcase classname="ScrollTop hides button when scrolled up" name="ScrollTop hides button when scrolled up" time="0.002">
+    </testcase>
+    <testcase classname="ScrollTop should be visible when scrolling to the middle of the page" name="ScrollTop should be visible when scrolling to the middle of the page" time="0.004">
+    </testcase>
+    <testcase classname="ScrollTop should be visible when scrolled down more than 100px" name="ScrollTop should be visible when scrolled down more than 100px" time="0.002">
+    </testcase>
+    <testcase classname="ScrollTop scrolls to top when button is clicked" name="ScrollTop scrolls to top when button is clicked" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="LangSwitcher" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:30" time="0.2" tests="5">
+    <testcase classname="LangSwitcher renders with the correct default language" name="LangSwitcher renders with the correct default language" time="0.009">
+    </testcase>
+    <testcase classname="LangSwitcher changes the language when clicked" name="LangSwitcher changes the language when clicked" time="0.011">
+    </testcase>
+    <testcase classname="LangSwitcher does not change the URL if the same language is selected" name="LangSwitcher does not change the URL if the same language is selected" time="0.007">
+    </testcase>
+    <testcase classname="LangSwitcher contains all available language options" name="LangSwitcher contains all available language options" time="0.007">
+    </testcase>
+    <testcase classname="LangSwitcher renders with a custom class name" name="LangSwitcher renders with a custom class name" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="useLeaveClan" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:30" time="0.19" tests="4">
+    <testcase classname="useLeaveClan should leave the clan successfully" name="useLeaveClan should leave the clan successfully" time="0.003">
+    </testcase>
+    <testcase classname="useLeaveClan should handle error when leaving the clan" name="useLeaveClan should handle error when leaving the clan" time="0.001">
+    </testcase>
+    <testcase classname="useLeaveClan should cancel action if not confirmed" name="useLeaveClan should cancel action if not confirmed" time="0.001">
+    </testcase>
+    <testcase classname="useLeaveClan should call onSuccess callback if provided" name="useLeaveClan should call onSuccess callback if provided" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="HeroGroupNavMenu" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:30" time="0.201" tests="6">
+    <testcase classname="HeroGroupNavMenu uses static groups when Directus fails" name="HeroGroupNavMenu uses static groups when Directus fails" time="0.004">
+    </testcase>
+    <testcase classname="HeroGroupNavMenu uses published Directus groups when the request succeeds" name="HeroGroupNavMenu uses published Directus groups when the request succeeds" time="0.001">
+    </testcase>
+    <testcase classname="HeroGroupNavMenu keeps the navigation empty after a successful empty response" name="HeroGroupNavMenu keeps the navigation empty after a successful empty response" time="0.001">
+    </testcase>
+    <testcase classname="HeroGroupNavMenu maps the fi route locale for Directus" name="HeroGroupNavMenu maps the fi route locale for Directus" time="0.001">
+    </testcase>
+    <testcase classname="HeroGroupNavMenu maps the ru route locale for Directus" name="HeroGroupNavMenu maps the ru route locale for Directus" time="0.001">
+    </testcase>
+    <testcase classname="HeroGroupNavMenu defaults to English and handles an empty group name" name="HeroGroupNavMenu defaults to English and handles an empty group name" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Navbar mobile" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:29" time="2.799" tests="5">
+    <testcase classname="Navbar mobile renders NavbarMobile component" name="Navbar mobile renders NavbarMobile component" time="0.011">
+    </testcase>
+    <testcase classname="Navbar mobile toggles nav-menu on burger button click" name="Navbar mobile toggles nav-menu on burger button click" time="0.037">
+    </testcase>
+    <testcase classname="Navbar mobile toggles profile on profile button click" name="Navbar mobile toggles profile on profile button click" time="0.044">
+    </testcase>
+    <testcase classname="Navbar mobile shows login form when user can login" name="Navbar mobile shows login form when user can login" time="0.06">
+    </testcase>
+    <testcase classname="Navbar mobile can toggle between login and register forms" name="Navbar mobile can toggle between login and register forms" time="0.063">
+    </testcase>
+  </testsuite>
+  <testsuite name="FurnitureManager" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:30" time="1.296" tests="7">
+    <testcase classname="FurnitureManager should return set id within set info" name="FurnitureManager should return set id within set info" time="0.001">
+    </testcase>
+    <testcase classname="FurnitureManager should return pieces in only same category" name="FurnitureManager should return pieces in only same category" time="0.004">
+    </testcase>
+    <testcase classname="FurnitureManager should return correct info with search keywords" name="FurnitureManager should return correct info with search keywords" time="0.032">
+    </testcase>
+    <testcase classname="FurnitureManager should return set reference within piece info neuro" name="FurnitureManager should return set reference within piece info neuro" time="0">
+    </testcase>
+    <testcase classname="FurnitureManager should return set reference within piece info taakka" name="FurnitureManager should return set reference within piece info taakka" time="0.001">
+    </testcase>
+    <testcase classname="FurnitureManager should return set reference within piece info rakkaus" name="FurnitureManager should return set reference within piece info rakkaus" time="0.001">
+    </testcase>
+    <testcase classname="FurnitureManager should return set reference within piece info muistoja" name="FurnitureManager should return set reference within piece info muistoja" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="heroApi status gating" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:32" time="0.275" tests="6">
+    <testcase classname="heroApi status gating does not return a Draft hero by slug" name="heroApi status gating does not return a Draft hero by slug" time="0.005">
+    </testcase>
+    <testcase classname="heroApi status gating does not return a Archived hero by slug" name="heroApi status gating does not return a Archived hero by slug" time="0.005">
+    </testcase>
+    <testcase classname="heroApi status gating returns only the published heroes from the all-heroes request" name="heroApi status gating returns only the published heroes from the all-heroes request" time="0.003">
+    </testcase>
+    <testcase classname="heroApi status gating keeps a successful empty all-heroes response empty" name="heroApi status gating keeps a successful empty all-heroes response empty" time="0.001">
+    </testcase>
+    <testcase classname="heroApi status gating rejects when the all-heroes request fails" name="heroApi status gating rejects when the all-heroes request fails" time="0.014">
+    </testcase>
+    <testcase classname="heroApi status gating groups the published heroes returned by the filtered request" name="heroApi status gating groups the published heroes returned by the filtered request" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="JoinUsPage" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:32" time="0.292" tests="3">
+    <testcase classname="JoinUsPage renders the page title correctly" name="JoinUsPage renders the page title correctly" time="0.007">
+    </testcase>
+    <testcase classname="JoinUsPage renders all block labels, descriptions, and links correctly" name="JoinUsPage renders all block labels, descriptions, and links correctly" time="0.014">
+    </testcase>
+    <testcase classname="JoinUsPage applies the correct wrapper class" name="JoinUsPage applies the correct wrapper class" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="RegisterForm" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:32" time="0.431" tests="2">
+    <testcase classname="RegisterForm should render form with username, password, repeatPassword fields and age consent checkbox" name="RegisterForm should render form with username, password, repeatPassword fields and age consent checkbox" time="0.076">
+    </testcase>
+    <testcase classname="RegisterForm should display validation errors if present" name="RegisterForm should display validation errors if present" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="LoginForm" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:32" time="0.573" tests="4">
+    <testcase classname="LoginForm should render form with username and password fields" name="LoginForm should render form with username and password fields" time="0.081">
+    </testcase>
+    <testcase classname="LoginForm should render combined username/email label on mobile" name="LoginForm should render combined username/email label on mobile" time="0.005">
+    </testcase>
+    <testcase classname="LoginForm should render register in-game link pointing to the app store" name="LoginForm should render register in-game link pointing to the app store" time="0.004">
+    </testcase>
+    <testcase classname="LoginForm should display validation errors if present" name="LoginForm should display validation errors if present" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="useDeleteClan" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:32" time="0.179" tests="4">
+    <testcase classname="useDeleteClan should call deleteClan and show success toast on successful deletion" name="useDeleteClan should call deleteClan and show success toast on successful deletion" time="0.003">
+    </testcase>
+    <testcase classname="useDeleteClan should show error toast if deleteClan fails" name="useDeleteClan should show error toast if deleteClan fails" time="0.004">
+    </testcase>
+    <testcase classname="useDeleteClan should show info toast if deletion is cancelled" name="useDeleteClan should show info toast if deletion is cancelled" time="0.002">
+    </testcase>
+    <testcase classname="useDeleteClan should call onSuccess callback if deletion is successful" name="useDeleteClan should call onSuccess callback if deletion is successful" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="FooterDesktop" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:32" time="0.292" tests="3">
+    <testcase classname="FooterDesktop renders the logo, contact section, and info links" name="FooterDesktop renders the logo, contact section, and info links" time="0.018">
+    </testcase>
+    <testcase classname="FooterDesktop renders the SocialSection with correct social links" name="FooterDesktop renders the SocialSection with correct social links" time="0.007">
+    </testcase>
+    <testcase classname="FooterDesktop renders copyright with the current company" name="FooterDesktop renders copyright with the current company" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="useDeleteProfile" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.183" tests="3">
+    <testcase classname="useDeleteProfile should handle successful profile deletion" name="useDeleteProfile should handle successful profile deletion" time="0.003">
+    </testcase>
+    <testcase classname="useDeleteProfile should handle deletion error" name="useDeleteProfile should handle deletion error" time="0.004">
+    </testcase>
+    <testcase classname="useDeleteProfile should handle deletion cancellation by user" name="useDeleteProfile should handle deletion cancellation by user" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="SidebarItem" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.184" tests="3">
+    <testcase classname="SidebarItem renders a basic sidebar item correctly" name="SidebarItem renders a basic sidebar item correctly" time="0.007">
+    </testcase>
+    <testcase classname="SidebarItem renders a dropdown sidebar item correctly" name="SidebarItem renders a dropdown sidebar item correctly" time="0.002">
+    </testcase>
+    <testcase classname="SidebarItem returns null for an unsupported item type" name="SidebarItem returns null for an unsupported item type" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="FooterMobile" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.238" tests="2">
+    <testcase classname="FooterMobile renders the PRG footer content" name="FooterMobile renders the PRG footer content" time="0.016">
+    </testcase>
+    <testcase classname="FooterMobile renders the SocialSection with correct social links" name="FooterMobile renders the SocialSection with correct social links" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="SectionJoinUs" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.17" tests="3">
+    <testcase classname="SectionJoinUs renders all the labels, descriptions, and links correctly" name="SectionJoinUs renders all the labels, descriptions, and links correctly" time="0.008">
+    </testcase>
+    <testcase classname="SectionJoinUs applies the correct container class" name="SectionJoinUs applies the correct container class" time="0.002">
+    </testcase>
+    <testcase classname="SectionJoinUs renders the correct number of blocks" name="SectionJoinUs renders the correct number of blocks" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="SocialSection" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.166" tests="4">
+    <testcase classname="SocialSection renders without crashing and displays social links" name="SocialSection renders without crashing and displays social links" time="0.003">
+    </testcase>
+    <testcase classname="SocialSection applies the default class name" name="SocialSection applies the default class name" time="0.002">
+    </testcase>
+    <testcase classname="SocialSection applies additional class names when provided" name="SocialSection applies additional class names when provided" time="0.001">
+    </testcase>
+    <testcase classname="SocialSection renders the correct number of social links" name="SocialSection renders the correct number of social links" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="MainPage" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.278" tests="1">
+    <testcase classname="MainPage renders the localized AI disclaimer" name="MainPage renders the localized AI disclaimer" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="HeroManager Directus fallback behavior" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.218" tests="6">
+    <testcase classname="HeroManager Directus fallback behavior does not use static heroes after a successful empty all-heroes response" name="HeroManager Directus fallback behavior does not use static heroes after a successful empty all-heroes response" time="0.002">
+    </testcase>
+    <testcase classname="HeroManager Directus fallback behavior uses static heroes after a failed all-heroes request" name="HeroManager Directus fallback behavior uses static heroes after a failed all-heroes request" time="0.008">
+    </testcase>
+    <testcase classname="HeroManager Directus fallback behavior keeps groups empty after a successful empty initialization response" name="HeroManager Directus fallback behavior keeps groups empty after a successful empty initialization response" time="0.001">
+    </testcase>
+    <testcase classname="HeroManager Directus fallback behavior keeps static groups after a failed initialization request" name="HeroManager Directus fallback behavior keeps static groups after a failed initialization request" time="0.001">
+    </testcase>
+    <testcase classname="HeroManager Directus fallback behavior does not use a static hero after a successful no-match slug response" name="HeroManager Directus fallback behavior does not use a static hero after a successful no-match slug response" time="0">
+    </testcase>
+    <testcase classname="HeroManager Directus fallback behavior uses static heroes after a failed Directus request" name="HeroManager Directus fallback behavior uses static heroes after a failed Directus request" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="makeJoinUsBlocks" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.092" tests="2">
+    <testcase classname="makeJoinUsBlocks should generate a Discord block with correct translations" name="makeJoinUsBlocks should generate a Discord block with correct translations" time="0.003">
+    </testcase>
+    <testcase classname="makeJoinUsBlocks should generate a Reddit block with correct translations" name="makeJoinUsBlocks should generate a Reddit block with correct translations" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="FeedbackSideButton" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:33" time="0.458" tests="5">
+    <testcase classname="FeedbackSideButton renders the button when not on mobile or mobile is not disabled" name="FeedbackSideButton renders the button when not on mobile or mobile is not disabled" time="0.015">
+    </testcase>
+    <testcase classname="FeedbackSideButton does not render the button when on mobile and mobile is disabled" name="FeedbackSideButton does not render the button when on mobile and mobile is disabled" time="0.001">
+    </testcase>
+    <testcase classname="FeedbackSideButton renders the button when on mobile and mobile is not disabled" name="FeedbackSideButton renders the button when on mobile and mobile is not disabled" time="0.006">
+    </testcase>
+    <testcase classname="FeedbackSideButton renders a disabled button when on mobile and disableMobile is true" name="FeedbackSideButton renders a disabled button when on mobile and disableMobile is true" time="0.001">
+    </testcase>
+    <testcase classname="FeedbackSideButton renders an enabled button when on mobile and disableMobile is false" name="FeedbackSideButton renders an enabled button when on mobile and disableMobile is false" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="Rights" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.177" tests="3">
+    <testcase classname="Rights renders without crashing and displays correct texts" name="Rights renders without crashing and displays correct texts" time="0.005">
+    </testcase>
+    <testcase classname="Rights calls handleResetCookies when consent span is clicked" name="Rights calls handleResetCookies when consent span is clicked" time="0.003">
+    </testcase>
+    <testcase classname="Rights renders with additional class names" name="Rights renders with additional class names" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="FeedbackSideButton" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.286" tests="5">
+    <testcase classname="FeedbackSideButton renders the button when not on mobile or mobile is not disabled" name="FeedbackSideButton renders the button when not on mobile or mobile is not disabled" time="0.013">
+    </testcase>
+    <testcase classname="FeedbackSideButton does not render the button when on mobile and mobile is disabled" name="FeedbackSideButton does not render the button when on mobile and mobile is disabled" time="0.001">
+    </testcase>
+    <testcase classname="FeedbackSideButton renders the button when on mobile and mobile is not disabled" name="FeedbackSideButton renders the button when on mobile and mobile is not disabled" time="0.004">
+    </testcase>
+    <testcase classname="FeedbackSideButton renders a disabled button when on mobile and disableMobile is true" name="FeedbackSideButton renders a disabled button when on mobile and disableMobile is true" time="0.001">
+    </testcase>
+    <testcase classname="FeedbackSideButton renders an enabled button when on mobile and disableMobile is false" name="FeedbackSideButton renders an enabled button when on mobile and disableMobile is false" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="useBottomAnimationCancellation" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.199" tests="2">
+    <testcase classname="useBottomAnimationCancellation should cancel animation on Escape key press" name="useBottomAnimationCancellation should cancel animation on Escape key press" time="0.003">
+    </testcase>
+    <testcase classname="useBottomAnimationCancellation should not cancel animation if the start button is clicked" name="useBottomAnimationCancellation should not cancel animation if the start button is clicked" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="useJoinClan" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.175" tests="3">
+    <testcase classname="useJoinClan should successfully join a clan" name="useJoinClan should successfully join a clan" time="0.004">
+    </testcase>
+    <testcase classname="useJoinClan should handle error when joining a clan" name="useJoinClan should handle error when joining a clan" time="0.004">
+    </testcase>
+    <testcase classname="useJoinClan should call onSuccess callback if provided" name="useJoinClan should call onSuccess callback if provided" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Navbar mobile" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.171" tests="1">
+    <testcase classname="Navbar mobile render components" name="Navbar mobile render components" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Navbar" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.154" tests="1">
+    <testcase classname="Navbar render components" name="Navbar render components" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="onFormSubmit" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.194" tests="1">
+    <testcase classname="onFormSubmit should check that onSubmitForm correctly convert data for api" name="onFormSubmit should check that onSubmitForm correctly convert data for api" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="scrollToBottom" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.173" tests="2">
+    <testcase classname="scrollToBottom should initiate scrolling animation" name="scrollToBottom should initiate scrolling animation" time="0.001">
+    </testcase>
+    <testcase classname="scrollToBottom should scroll smoothly over the adjusted duration" name="scrollToBottom should scroll smoothly over the adjusted duration" time="0.077">
+    </testcase>
+  </testsuite>
+  <testsuite name="FooterDesktop" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.227" tests="3">
+    <testcase classname="FooterDesktop renders without crashing and displays the title" name="FooterDesktop renders without crashing and displays the title" time="0.008">
+    </testcase>
+    <testcase classname="FooterDesktop renders the SocialSection with correct social links" name="FooterDesktop renders the SocialSection with correct social links" time="0.005">
+    </testcase>
+    <testcase classname="FooterDesktop renders the Rights component with correct texts" name="FooterDesktop renders the Rights component with correct texts" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Footer" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:34" time="0.332" tests="4">
+    <testcase classname="Footer renders without crashing" name="Footer renders without crashing" time="0.018">
+    </testcase>
+    <testcase classname="Footer renders the correct current year and company name" name="Footer renders the correct current year and company name" time="0.007">
+    </testcase>
+    <testcase classname="Footer renders configured footer navigation texts" name="Footer renders configured footer navigation texts" time="0.007">
+    </testcase>
+    <testcase classname="Footer renders social icon links" name="Footer renders social icon links" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="Block" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.165" tests="4">
+    <testcase classname="Block renders the label, description, and link text" name="Block renders the label, description, and link text" time="0.005">
+    </testcase>
+    <testcase classname="Block link has correct href attribute" name="Block link has correct href attribute" time="0.002">
+    </testcase>
+    <testcase classname="Block handles missing label and description gracefully" name="Block handles missing label and description gracefully" time="0.002">
+    </testcase>
+    <testcase classname="Block applies the correct container class" name="Block applies the correct container class" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="NavGoBackButton component" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.172" tests="3">
+    <testcase classname="NavGoBackButton component renders correctly" name="NavGoBackButton component renders correctly" time="0.003">
+    </testcase>
+    <testcase classname="NavGoBackButton component handles click event correctly" name="NavGoBackButton component handles click event correctly" time="0.002">
+    </testcase>
+    <testcase classname="NavGoBackButton component applies className prop correctly" name="NavGoBackButton component applies className prop correctly" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="classNames" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.096" tests="7">
+    <testcase classname="classNames " name="classNames " time="0">
+    </testcase>
+    <testcase classname="classNames should return a string of class names separated by a space" name="classNames should return a string of class names separated by a space" time="0.001">
+    </testcase>
+    <testcase classname="classNames should return an empty string if no class names are provided" name="classNames should return an empty string if no class names are provided" time="0">
+    </testcase>
+    <testcase classname="classNames should support a class name being an empty string" name="classNames should support a class name being an empty string" time="0">
+    </testcase>
+    <testcase classname="classNames should support multiple mods" name="classNames should support multiple mods" time="0.001">
+    </testcase>
+    <testcase classname="classNames should not include falsy mod values in the class names" name="classNames should not include falsy mod values in the class names" time="0">
+    </testcase>
+    <testcase classname="classNames should support additional class names" name="classNames should support additional class names" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppLink" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.177" tests="4">
+    <testcase classname="AppLink renders internal link" name="AppLink renders internal link" time="0.004">
+    </testcase>
+    <testcase classname="AppLink renders external link" name="AppLink renders external link" time="0.002">
+    </testcase>
+    <testcase classname="AppLink applies custom class name" name="AppLink applies custom class name" time="0.002">
+    </testcase>
+    <testcase classname="AppLink defaults to primary theme" name="AppLink defaults to primary theme" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="NewsCard" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.192" tests="4">
+    <testcase classname="NewsCard renders the title, preview text, and date" name="NewsCard renders the title, preview text, and date" time="0.015">
+    </testcase>
+    <testcase classname="NewsCard links to the news item and renders its image" name="NewsCard links to the news item and renders its image" time="0.007">
+    </testcase>
+    <testcase classname="NewsCard uses description instead of preview text when both are provided" name="NewsCard uses description instead of preview text when both are provided" time="0.002">
+    </testcase>
+    <testcase classname="NewsCard renders the publisher when provided" name="NewsCard renders the publisher when provided" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="FeedbackCard" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.195" tests="2">
+    <testcase classname="FeedbackCard shows error toast if feedback is missing or emoji is not selected" name="FeedbackCard shows error toast if feedback is missing or emoji is not selected" time="0.017">
+    </testcase>
+    <testcase classname="FeedbackCard disables send button while submitting feedback" name="FeedbackCard disables send button while submitting feedback" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="Title" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.151" tests="4">
+    <testcase classname="Title renders without crashing" name="Title renders without crashing" time="0.002">
+    </testcase>
+    <testcase classname="Title renders the title correctly" name="Title renders the title correctly" time="0.002">
+    </testcase>
+    <testcase classname="Title applies the default class name" name="Title applies the default class name" time="0.001">
+    </testcase>
+    <testcase classname="Title applies additional class names when provided" name="Title applies additional class names when provided" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="FeedbackCard" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:35" time="0.221" tests="2">
+    <testcase classname="FeedbackCard shows error toast if feedback is missing or emoji is not selected" name="FeedbackCard shows error toast if feedback is missing or emoji is not selected" time="0.015">
+    </testcase>
+    <testcase classname="FeedbackCard disables send button while submitting feedback" name="FeedbackCard disables send button while submitting feedback" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="ThemeSwitcher" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.183" tests="3">
+    <testcase classname="ThemeSwitcher should render the button with LightIcon when theme is light" name="ThemeSwitcher should render the button with LightIcon when theme is light" time="0.008">
+    </testcase>
+    <testcase classname="ThemeSwitcher should render the button with DarkIcon when theme is dark" name="ThemeSwitcher should render the button with DarkIcon when theme is dark" time="0.003">
+    </testcase>
+    <testcase classname="ThemeSwitcher should toggle theme when button is clicked" name="ThemeSwitcher should toggle theme when button is clicked" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="Container" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.158" tests="3">
+    <testcase classname="Container renders children" name="Container renders children" time="0.002">
+    </testcase>
+    <testcase classname="Container applies additional className" name="Container applies additional className" time="0.001">
+    </testcase>
+    <testcase classname="Container renders as fluid" name="Container renders as fluid" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="ScrollBottomButton" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.203" tests="3">
+    <testcase classname="ScrollBottomButton renders the button with default text" name="ScrollBottomButton renders the button with default text" time="0.009">
+    </testcase>
+    <testcase classname="ScrollBottomButton renders the button with custom text" name="ScrollBottomButton renders the button with custom text" time="0.007">
+    </testcase>
+    <testcase classname="ScrollBottomButton applies custom className" name="ScrollBottomButton applies custom className" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="AltZone" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.222" tests="2">
+    <testcase classname="AltZone renders title, info text and see more link" name="AltZone renders title, info text and see more link" time="0.015">
+    </testcase>
+    <testcase classname="AltZone renders at least one link element" name="AltZone renders at least one link element" time="0.021">
+    </testcase>
+  </testsuite>
+  <testsuite name="ComingSoon" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.206" tests="2">
+    <testcase classname="ComingSoon renders all expected elements" name="ComingSoon renders all expected elements" time="0.013">
+    </testcase>
+    <testcase classname="ComingSoon calls router.back() when the Go Back button is clicked" name="ComingSoon calls router.back() when the Go Back button is clicked" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProjectDescription" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.322" tests="1">
+    <testcase classname="ProjectDescription renders the title, description and sub-description correctly" name="ProjectDescription renders the title, description and sub-description correctly" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="initializeHeroGroupsFromDirectus" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.092" tests="1">
+    <testcase classname="initializeHeroGroupsFromDirectus groups the heroes returned by Directus" name="initializeHeroGroupsFromDirectus groups the heroes returned by Directus" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="withBackgroundImage" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.183" tests="1">
+    <testcase classname="withBackgroundImage returns a function that renders a component with a lazy loaded background image" name="withBackgroundImage returns a function that renders a component with a lazy loaded background image" time="0.006">
+    </testcase>
+  </testsuite>
+  <testsuite name="removeEventListeners" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.085" tests="2">
+    <testcase classname="removeEventListeners should remove the event listeners from the window" name="removeEventListeners should remove the event listeners from the window" time="0.001">
+    </testcase>
+    <testcase classname="removeEventListeners should not remove event listeners for events not in eventNames array" name="removeEventListeners should not remove event listeners for events not in eventNames array" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="addEventListeners" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.085" tests="3">
+    <testcase classname="addEventListeners should attach event listeners to the window object" name="addEventListeners should attach event listeners to the window object" time="0.001">
+    </testcase>
+    <testcase classname="addEventListeners should handle multiple event names" name="addEventListeners should handle multiple event names" time="0">
+    </testcase>
+    <testcase classname="addEventListeners should not call addEventListener if no events are provided" name="addEventListeners should not call addEventListener if no events are provided" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="BarChart" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:36" time="0.176" tests="1">
+    <testcase classname="BarChart render components" name="BarChart render components" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="truncateText" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.099" tests="3">
+    <testcase classname="truncateText should truncate a string that is longer than the maximum length and add an ellipsis" name="truncateText should truncate a string that is longer than the maximum length and add an ellipsis" time="0.001">
+    </testcase>
+    <testcase classname="truncateText should not modify a string that is shorter than or equal to the maximum length" name="truncateText should not modify a string that is shorter than or equal to the maximum length" time="0.001">
+    </testcase>
+    <testcase classname="truncateText should correctly handle a string that ends with a period" name="truncateText should correctly handle a string that ends with a period" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="AiDisclaimer" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.192" tests="1">
+    <testcase classname="AiDisclaimer renders the localized AI disclaimer" name="AiDisclaimer renders the localized AI disclaimer" time="0.015">
+    </testcase>
+  </testsuite>
+  <testsuite name="openLinkInNewTab" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.104" tests="4">
+    <testcase classname="openLinkInNewTab should open the provided valid URL in a new tab" name="openLinkInNewTab should open the provided valid URL in a new tab" time="0.001">
+    </testcase>
+    <testcase classname="openLinkInNewTab should open a blank tab if the URL is invalid" name="openLinkInNewTab should open a blank tab if the URL is invalid" time="0.001">
+    </testcase>
+    <testcase classname="openLinkInNewTab should open a blank tab if no URL is provided" name="openLinkInNewTab should open a blank tab if no URL is provided" time="0">
+    </testcase>
+    <testcase classname="openLinkInNewTab should open a valid URL with special characters" name="openLinkInNewTab should open a valid URL with special characters" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="PlayWithUs" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.214" tests="1">
+    <testcase classname="PlayWithUs renders the component with required props" name="PlayWithUs renders the component with required props" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="ContactSection" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.224" tests="1">
+    <testcase classname="ContactSection renders the title and link correctly" name="ContactSection renders the title and link correctly" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="Testing feedbackApi" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.083" tests="1">
+    <testcase classname="Testing feedbackApi Adds feedback to directus" name="Testing feedbackApi Adds feedback to directus" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="IntroWall" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.193" tests="2">
+    <testcase classname="IntroWall renders wall correctly" name="IntroWall renders wall correctly" time="0.016">
+    </testcase>
+    <testcase classname="IntroWall renders tiles correctly" name="IntroWall renders tiles correctly" time="0.013">
+    </testcase>
+  </testsuite>
+  <testsuite name="Button" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.163" tests="2">
+    <testcase classname="Button test render" name="Button test render" time="0.003">
+    </testcase>
+    <testcase classname="Button should have a theme classname" name="Button should have a theme classname" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="WallIntroanimation" errors="0" failures="0" skipped="0" timestamp="2026-10-18T18:40:37" time="0.197" tests="1">
+    <testcase classname="WallIntroanimation renders walls correctly" name="WallIntroanimation renders walls correctly" time="0.013">
+    </testcase>
+  </testsuite>
+</testsuites>

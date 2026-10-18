@@ -1,32 +1,38 @@
 {
-    "join-us": "Join us!",
-    "head-title": "Join us - ALT Zone",
-    "head-description": "Join the ALT Zone project! Become a tester, explore teaching packages, apply for internships, join our Discord community, or share your feedback to improve our game.",
-    "head-keywords": "ALT Zone join us, tester, teaching package, internship, volunteer, Discord",
+    "join-us": "Get in touch",
+
+    "head-title": "Get in touch - ALT Zone",
+    "head-description": "Join the ALT Zone project! Become a tester, explore our educational materials, apply for an internship, join our Discord community, or share feedback to help improve our game.",
+    "head-keywords": "ALT Zone contact, tester, educational materials, internship, volunteer work, Discord",
+
     "og-title": "Join the ALT Zone Project",
-    "og-description": "Be part of the ALT Zone journey — test our game, explore teaching tools, join our Discord, apply for internships, or send us your feedback.",
+    "og-description": "Be a part of the ALT Zone journey — test our game, explore educational materials, join our Discord community, apply for an internship, or send us feedback.",
 
-    "block-label-discord": "Become a Tester",
-    "block-label-connection": "Contact Us",
-    "block-label-teachers": "Are You a Teacher?",
-    "block-label-duunitori": "Work With Us",
+    "block-label-getInTouchAndFollow": "Get in touch and follow us",
+    "block-label-communityAndOpportunities": "Community and opportunities",
+    "block-label-educationProfessionals": "For education professionals",
     "block-label-feedback": "Give feedback",
-    "block-label-instagram": "Chat More on \nSocial Media",
 
-    "block-description-discord": "Share your ideas by joining our Discord community",
-    "block-description-connection": "If you're interested in our project, feel free to get in touch",
-    "block-description-teachers": "Sign up to test the teaching package",
-    "block-description-duunitori": "We offer unpaid internship and volunteer opportunities within our project. You're also welcome to join as a volunteer. Check open positions on Duunitori.",
-    "block-description-feedback": "Our feedback form helps us improve our website and mobile game. Your input is valuable and will be reviewed by our development team. Thank you in advance!",
-    "block-description-instagram": "",
+    "block-description-getInTouchAndFollow": "If you're interested in our project, don't hesitate to get in touch. You can also follow us on social media!",
+    "block-description-communityAndOpportunities": "Share your ideas by joining our Discord gaming community! We occasionally offer unpaid work experience and internship opportunities within our projects. You're also welcome to contribute as a volunteer. Check out our open positions on Duunitori.",
+    "block-description-educationProfessionals": "Sign up to test our educational materials!",
+    "block-description-feedback": "The purpose of our feedback forms is to collect feedback on both the website and the mobile game to support future development. Your feedback is extremely valuable to us and will be reviewed together with our development team.\n\nThank you in advance for your responses!",
 
     "block-link-text-discord": "discord.gg/mgjQkCR2Fg",
-    "block-link-text-teacherPg": "Explore the teaching package",
+    "block-link-text-teacherPg": "Explore educational materials",
+    "block-link-text-news": "Learn more about us in the news",
     "block-link-text-duunitori": "Open positions on Duunitori",
-    "block-link-text-feedbackWep": "Website feedback",
-    "block-link-text-feedbackGame": "Game feedback",
+    "block-link-text-feedbackWep": "Website feedback form",
+    "block-link-text-feedbackGame": "Game feedback form",
     "block-link-text-instagram": "@gamingpsyche",
     "block-link-text-email": "proyaleg@gmail.com",
     "block-link-text-phone": "+358442407396",
-    "block-link-text-icone": ""
+    "block-link-text-icone": "",
+
+    "block-image-alt-getInTouchAndFollow": "Get in touch",
+    "block-image-alt-communityAndOpportunities": "Community and opportunities",
+    "block-image-alt-educationProfessionals": "For education professionals",
+    "block-image-alt-feedback": "Feedback",
+
+    "block-website": "www.example.com"
 }

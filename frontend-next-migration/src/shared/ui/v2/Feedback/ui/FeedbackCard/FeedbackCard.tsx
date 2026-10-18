@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useAddFeedbackMutation, Feedback } from '@/entities/Feedback';
 import { CustomForm } from '@/shared/ui/CustomForm';
 import send from '@/shared/assets/icons/Feedback/Email Send.png';
@@ -16,10 +15,10 @@ import FeedbackEmoji from '../FeedbackEmoji/FeedbackEmoji';
 /**
  * Props for the FeedbackCard component.
  * @interface FeedbackCardProps
- * @property {('full' | 'embedabble')} [variant='full'] - The variant type of the feedback card. Determines CSS styling.
+ * @property {('full' | 'borderless')} [variant='full'] - The variant type of the feedback card. Determines CSS styling.
  */
 interface FeedbackCardProps {
-    variant?: 'full' | 'embedabble';
+    variant?: 'full' | 'borderless';
 }
 
 /**
@@ -35,7 +34,20 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
     const { t } = useClientTranslation('feedbackCard');
     const [feedback, setFeedback] = useState<string>('');
     const [feedbackEmoji, setFeedbackEmoji] = useState<number>();
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [addFeedback, { isLoading }] = useAddFeedbackMutation();
+
+    const RATING_PLACEHOLDERS: Record<number, string> = {
+        1: t('input-placeholder-1'),
+        2: t('input-placeholder-2'),
+        3: t('input-placeholder-3'),
+        4: t('input-placeholder-4'),
+        5: t('input-placeholder-5'),
+    };
+
+    const currentPlaceholder = feedbackEmoji
+        ? RATING_PLACEHOLDERS[feedbackEmoji]
+        : t('input-placeholder');
 
     /**
      * Display a toast message to the user.
@@ -56,7 +68,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
      * It sends the feedback data to the server if valid.
      */
     const submitFeedback = async () => {
-        if (!feedback || !feedbackEmoji) {
+        if (!feedbackEmoji) {
             showToast(t('error'), 'error');
             return;
         }
@@ -69,8 +81,8 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
             await addFeedback(feedbackData).unwrap();
 
             showToast(t('success'), 'success');
+            setIsSubmitted(true);
             setFeedback('');
-            setFeedbackEmoji(undefined);
         } catch {
             showToast(t('error-submit-failed'), 'error');
         }
@@ -78,46 +90,60 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
 
     return (
         <CustomForm
-            className={`${cls.feedbackForm} ${variant === 'embedabble' ? cls.embedabbleVersion : ''}`}
+            className={`${cls.feedbackForm} ${
+                variant === 'borderless' ? cls.borderlessVersion : ''
+            } ${isSubmitted ? cls.collapsedVersion : ''}`}
             onSubmit={async (event) => {
                 event.preventDefault();
                 await submitFeedback();
             }}
         >
-            <h3 className={cls.feedbackTitle}>{t('title')}</h3>
+            {!isSubmitted && <h3 className={cls.feedbackTitle}>{t('title')}</h3>}
+            {isSubmitted && <div className={cls.feedbackTitle}>{t('success-title')}</div>}
+
             <FeedbackEmoji
                 listClassName={cls.emojiList}
                 value={feedbackEmoji}
-                onImageClick={setFeedbackEmoji}
+                onImageClick={isSubmitted ? () => {} : setFeedbackEmoji}
             />
-            <CustomForm.InputField
-                label=""
-                inputProps={{
-                    className: cls.textInput,
-                    placeholder: t('input-placeholder'),
-                    value: feedback,
-                    onChange: (event) => setFeedback(event.target.value),
-                }}
-            />
-            <CustomForm.Button
-                className={cls.feedbackButton}
-                type="submit"
-                disabled={isLoading}
-            >
-                {isLoading ? (
-                    t('loading')
-                ) : (
-                    <>
-                        {t('send')}
-                        <Image
-                            src={send.src}
-                            alt="Send feedback icon"
-                            width={20}
-                            height={20}
-                        />
-                    </>
-                )}
-            </CustomForm.Button>
+
+            {!isSubmitted && (
+                <>
+                    <CustomForm.TextareaField
+                        className={cls.inputField}
+                        label={feedbackEmoji ? currentPlaceholder : '\u00A0'}
+                        textareaProps={{
+                            className: cls.textInput,
+                            placeholder: t('input-placeholder'),
+                            value: feedback,
+                            onChange: (event) => setFeedback(event.target.value),
+                        }}
+                    />
+
+                    <CustomForm.Button
+                        className={cls.feedbackButton}
+                        type="submit"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? (
+                            t('loading')
+                        ) : (
+                            <>
+                                {t('send')}
+                                <Image
+                                    src={send.src}
+                                    alt="Send feedback icon"
+                                    width={20}
+                                    height={20}
+                                />
+                            </>
+                        )}
+                    </CustomForm.Button>
+                </>
+            )}
+
+            <span className={cls.linkToFormLabel}>{t('feedback-text')}</span>
+
             <div className={cls.linkToFormContainer}>
                 <a
                     className={cls.linkToForm}
@@ -132,6 +158,7 @@ export default function FeedbackCard({ variant = 'full' }: FeedbackCardProps): J
                         icon={faExternalLink}
                     />
                 </a>
+
                 <a
                     className={cls.linkToForm}
                     href={AppExternalLinks.googleFeedback}

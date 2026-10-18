@@ -1,5 +1,6 @@
 import type { BlockSection } from '../types';
 import cls from './Block.module.scss';
+import externalLinkIcon from '@/shared/assets/icons/ExternalLink.svg';
 
 /**
  * Block Component
@@ -12,14 +13,24 @@ import cls from './Block.module.scss';
 
 interface Props {
     block: BlockSection;
+    reverse?: boolean;
 }
 
 export const Block = (props: Props) => {
-    const { block } = props;
+    const { block, reverse = false } = props;
+
+    if (!block) {
+        return null;
+    }
+
+    const links = block.links ?? [];
+
+    const socialLinks = links.filter((link) => link.iconSrc);
+    const normalLinks = links.filter((link) => !link.iconSrc);
 
     return (
         <div
-            className={cls.Container}
+            className={`${cls.Container} ${reverse ? cls.Reverse : ''}`}
             data-testid="block"
         >
             <div className={cls.ImageWrapper}>
@@ -30,29 +41,77 @@ export const Block = (props: Props) => {
                     alt={block.imgAlt}
                 />
             </div>
+
             <div className={cls.Content}>
                 <h2>{block.label}</h2>
+
                 <p className={cls.multilineText}>{block.description}</p>
+
                 <div className={cls.linkWrapper}>
-                    {block.links.map((link, index) => (
+                    {normalLinks.slice(0, 1).map((link, index) => (
                         <div
                             key={index}
                             className={cls.linkWrapper}
                         >
                             <a
                                 href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target={link.isExternal ? '_blank' : undefined}
+                                rel={link.isExternal ? 'noopener noreferrer' : undefined}
                             >
-                                {link.iconSrc && (
+                                {link.text}
+
+                                {link.showExternalIcon && (
                                     // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                        src={externalLinkIcon.src}
+                                        alt="External link"
+                                        className={cls.ExternalIcon}
+                                    />
+                                )}
+                            </a>
+                        </div>
+                    ))}
+
+                    {socialLinks.length > 0 && (
+                        <div className={cls.socialLinks}>
+                            {socialLinks.map((link, index) => (
+                                <a
+                                    key={index}
+                                    href={link.url}
+                                    target={link.isExternal ? '_blank' : undefined}
+                                    rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                                >
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
                                         src={link.iconSrc}
                                         alt={`${link.text} icon`}
                                         className={cls.icon}
                                     />
-                                )}
+                                </a>
+                            ))}
+                        </div>
+                    )}
+
+                    {normalLinks.slice(1).map((link, index) => (
+                        <div
+                            key={index}
+                            className={cls.linkWrapper}
+                        >
+                            <a
+                                href={link.url}
+                                target={link.isExternal ? '_blank' : undefined}
+                                rel={link.isExternal ? 'noopener noreferrer' : undefined}
+                            >
                                 {link.text}
+
+                                {link.showExternalIcon && (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                        src={externalLinkIcon.src}
+                                        alt="External link"
+                                        className={cls.ExternalIcon}
+                                    />
+                                )}
                             </a>
                         </div>
                     ))}

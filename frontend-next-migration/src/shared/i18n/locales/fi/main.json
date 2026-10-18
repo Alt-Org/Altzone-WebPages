@@ -15,12 +15,12 @@
     "main-teacherspage": "Opettajan sivut",
     "main-play": "Pelaa peliä!",
 
-    "main-title": "TEHDÄÄN YHDESSÄ \nMAAILMAN PARAS PELI!",
+    "main-title": "Tehdään yhdessä maailman paras peli!",
     "main-description": "ALT Zone -mobiilipelissä astut ihmismielen syövereihin, jossa pelihahmot edustavat suojautumismekanismeja ja kohtaavat toisensa vuorovaikutustilanteiden taistelukentällä.",
     "main-sub-description": "Seikkaile sielujemme labyrintissa \nPystytkö kohtaamaan defenssisi?",
 
     "project-description-title": "Mikä ALT Zone?",
-    "project-description-text": "ALT Zone on vapaaehtoistuotantona toteuttava taidemobiilipeli, jota tehdään yhteistyössä nuorten kanssa. Pelissä ihmisen suojautumismekanismit kohtaavat toisensa vuorovaikutustilanteiden taistelukentällä.\n\nPelin oheen luodaan yläasteille ja toisen asteen oppilaitoksille suunnattu pelitaidekasvatuksen materiaali, jota opettaja voi helposti soveltaa käytännössä. Oppilailla on mahdollisuus jatkaa pelin kehittämistä. Ideoiden pohjalta valmistuva ALT Zone 2.0 -pelin tuotto lahjoitetaan lyhentämättömänä nuorten unelmien tukemiseksi.",
+    "project-description-text": "ALT Zone 1.0 on vapaaehtoistuotantona toteuttava taidemobiilipeli, jota tehdään yhteistyössä nuorten kanssa. Pelissä ihmisen suojautumismekanismit kohtaavat toisensa vuorovaikutustilanteiden taistelukentällä.\n\nPelin oheen luodaan yläasteille ja toisen asteen oppilaitoksille suunnattu pelitaidekasvatuksen materiaali, jota opettaja voi helposti soveltaa käytännössä. Oppilailla on mahdollisuus jatkaa pelin kehittämistä. Ideoiden pohjalta valmistuva ALT Zone 2.0 -pelin tuotto lahjoitetaan lyhentämättömänä nuorten unelmien tukemiseksi.",
     "project-description-array": [
         "ALT Zone on taiteellisella sisällöllä varustettu mobiilipeli, jota kehitetään peruskoulujen taideopetuksen opetusvälineeksi. Pelitaiteen opetus on itsessään haastavaa, opetus perustuu vahvasti omakohtaiseen kokemukseen ja analysointiin, yhteistä kokemusta on lähes mahdotonta saavuttaa.",
         "ALT Zone tarjoaa yhteisen pohjan pelitaiteen opetukselle. Opetuspaketti on helppo toteuttaa; se sisältää mobiili- tai pc-laitteella testattavan demopelin, sekä pelitaiteen ajatteluun ohjaavia kysymyksiä. Peliä voidaan myös analysoida pelkästään videoiden ja kuvien avulla.",
@@ -40,7 +40,9 @@
     "playWithUs-BecomeATester-body": "Tee sovelluksesta parempi",
     "playWithUs-WebGLNotice": "Tunnettujen WebGL-yhteensopivuusongelmien vuoksi WebGL-pelimme ei välttämättä toimi oikein iPhonessa tai Macissa.",
 
-    "descriptionCard-title": "Tutustu Defenssiluokkiimme",
+    "descriptionCard-title": "Tutustu defenssisotureihin",
+    "descriptionCard-description": "Sielumme linnaa ympäröivät suuret ja vahvat muurit, jota puolustavat sen omat defenssisoturit.",
+    "descriptionCard-button": "Tutustu kaikkiin hahmoihin",
 
     "gallery-seeMore": "Lue lisää meistä about sivuiltamme",
     "socials-text": "Seuraa Alt Zonea somessa",

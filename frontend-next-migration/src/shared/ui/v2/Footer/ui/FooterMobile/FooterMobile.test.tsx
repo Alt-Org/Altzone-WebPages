@@ -1,23 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import { SocialIconLink, Texts } from '@/shared/types/types';
 import FooterMobile from './FooterMobile';
-import { beforeEach } from 'node:test';
-import { useClientTranslation } from '@/shared/i18n';
 
-jest.mock('@/shared/i18n', () => ({
-    useClientTranslation: jest.fn(),
+jest.mock('next/image', () => ({
+    __esModule: true,
+    default: ({ priority, alt, ...props }: any) => (
+        <img
+            alt={alt}
+            {...props}
+        />
+    ),
 }));
 
-jest.mock('react-i18next', () => ({
-    useTranslation: jest.fn().mockReturnValue({
-        t: jest.fn((key) => key),
-        i18n: { language: 'en', changeLanguage: jest.fn() },
-    }),
+jest.mock('@/shared/ui/v2/Feedback', () => ({
+    FeedbackCard: () => <div>FeedbackCard</div>,
 }));
 
-jest.mock('@/shared/ui/v2/Feedback');
-
-// Mock data for social links and texts
 const mockSocialLinks: SocialIconLink[] = [
     { link: 'https://discord.gg', icon: '/images/Discord2.svg', name: 'Discord' },
     { link: 'https://www.instagram.com', icon: '/images/Insta2.svg', name: 'Instagram' },
@@ -34,34 +32,49 @@ const mockTexts: Texts = {
     companyName: 'My Company',
 };
 
+const mockFooterLinks = {
+    workWithUsLabel: 'Apply to us',
+    whatIsPrgLabel: 'What is PRG',
+    altZoneHistoryLabel: 'ALT Zone history',
+    developersDesignersLabel: 'Developers and designers',
+    termsAndPrivacyLabel: 'Terms and privacy policy',
+};
+
 describe('FooterMobile', () => {
-    beforeEach(() => {
-        (useClientTranslation as jest.Mock).mockReturnValue({ t: jest.fn((key) => key) });
+    it('renders the PRG footer content', () => {
+        render(
+            <FooterMobile
+                socialIconLinks={mockSocialLinks}
+                texts={mockTexts}
+                contactTitle="Contact information"
+                contactEmailLabel="Email addresses"
+                contactEmails={['hello@example.com']}
+                infoTitle="Information"
+                infoLinks={mockFooterLinks}
+            />,
+        );
+
+        expect(screen.getByText('Contact information')).toBeInTheDocument();
+        expect(screen.getByText('Email addresses')).toBeInTheDocument();
+        expect(screen.getByText('hello@example.com')).toBeInTheDocument();
+        expect(screen.getByText('Information')).toBeInTheDocument();
+        expect(screen.getByText('FeedbackCard')).toBeInTheDocument();
     });
 
     it('renders the SocialSection with correct social links', () => {
         render(
             <FooterMobile
-                title="Test Title"
                 socialIconLinks={mockSocialLinks}
                 texts={mockTexts}
+                contactTitle="Contact information"
+                contactEmails={['hello@example.com']}
+                infoTitle="Information"
+                infoLinks={mockFooterLinks}
             />,
         );
 
         mockSocialLinks.forEach((link) => {
             expect(screen.getByAltText(link.name)).toBeInTheDocument();
         });
-    });
-
-    it('Renders the title correctly', () => {
-        render(
-            <FooterMobile
-                title="Testing Title"
-                socialIconLinks={mockSocialLinks}
-                texts={mockTexts}
-            />,
-        );
-
-        expect(screen.getByText('Testing Title')).toBeInTheDocument();
     });
 });

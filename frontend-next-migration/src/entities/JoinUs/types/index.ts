@@ -16,6 +16,7 @@ export interface BlockSection {
         text: string;
         url: string;
         isExternal?: boolean;
+        showExternalIcon?: boolean;
         iconSrc?: string;
     }[];
     img: string;

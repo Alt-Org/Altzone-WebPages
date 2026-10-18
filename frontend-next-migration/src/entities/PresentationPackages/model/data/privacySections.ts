@@ -1,20 +1,23 @@
 import { createSection } from '../createSection';
 
 const i18nKeyPrefixes = [
-    'privacy',
     'interpretation',
     'user',
     'collecting',
     'testing',
+    'age-limit',
+    'discord',
     'analytics',
-    'legal-basis',
     'review',
     'gameteam',
     'datasubject',
+    'cookies',
+    'ethical-principles',
+    'changes',
+    'legal-basis',
     'data-retention',
     'rights',
     'security',
-    'changes',
     'contact',
 ];
 

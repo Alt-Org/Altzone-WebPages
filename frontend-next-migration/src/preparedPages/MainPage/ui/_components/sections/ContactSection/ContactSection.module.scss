@@ -3,3 +3,19 @@
     height: 24px;
     flex-shrink: 0;
 }
+.DiscordButton{
+    border-color: var(--primary-color);
+    box-shadow: black;
+}
+.ContactSection {
+    min-height: 401px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: breakpoint(md)) {
+        padding: 2rem 1rem;
+        min-height: unset;
+    }
+}
+
+

@@ -1,57 +1,141 @@
 .Footer {
-    font: var(--font-dm-xl);
-    background: var(--background);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 5px 25px 5px 25px;
-    position: relative;
-    z-index: 20;
+    --footer-bg: #1e3544;
+    --footer-bar-bg: #00000026;
+    --footer-accent: #ffa100;
+    --footer-text: #faf9f6;
+    --footer-muted: #faf9f6;
+    --footer-layout-width: min(100%, 120rem);
+    --footer-column-padding: clamp(2.5rem, 3.33vw, 4rem);
+    --footer-logo-width: clamp(12rem, 14.32vw, 17.1875rem);
+    --footer-logo-height: clamp(11.75rem, 14.06vw, 16.875rem);
+    --footer-social-icon-size: 2.5rem;
+    --footer-social-gap: 1.8125rem;
+    --footer-social-bar-height: 6.25rem;
+    --footer-copyright-size: 0.875rem;
+
+    font-family: var(--font-dm-s);
+    background: var(--footer-bg);
+    color: var(--footer-text);
 }
 
-.title {
-    padding-top: 1rem;
-    color: var(--primary-color);
-    text-align: center;
-    font: var(--font-sw-xl);
+.SocialBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: var(--footer-social-bar-height);
+    padding-block: 1.25rem;
+    background: var(--footer-bar-bg);
+    box-sizing: border-box;
 }
 
 .socialSection {
-    padding-top: 1rem;
-
-    /* Footer controls layout now (was previously inside SocialSection component) */
-    display: grid;
-    align-items: center;
-    justify-items: center;
-
-    margin: 0 auto;
-    max-width: 600px;
-
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    display: flex;
+    justify-content: center;
+    gap: var(--footer-social-gap);
+    margin: 0;
 }
 
-.rights {
-    padding: 1rem 0;
+.socialSection > * {
+    width: var(--footer-social-icon-size);
+    height: var(--footer-social-icon-size);
+    border-radius: 0.625rem;
+}
+
+.socialSection img {
+    width: var(--footer-social-icon-size);
+    height: var(--footer-social-icon-size);
+    border-radius: 0.625rem;
+}
+
+.Inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    justify-items: stretch;
+    width: var(--footer-layout-width);
+    margin: 0 auto;
+    min-height: max(var(--footer-logo-height), 17rem);
+}
+
+.Column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: var(--footer-column-padding);
+    box-sizing: border-box;
+}
+
+.BrandColumn {
+    justify-content: center;
+}
+
+.Logo {
+    display: block;
+    flex: 0 0 auto;
+    width: var(--footer-logo-width);
+    height: var(--footer-logo-height);
+    object-fit: cover;
+    border-radius: 50%;
+    transform: rotate(0deg);
+}
+
+.contactSection,
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.BottomSection {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 0.75rem;
+}
+
+.Copyright {
+    margin: 0;
+    color: #ffffff;
+    font: var(--font-dm-s);
+    font-size: var(--footer-copyright-size);
+    line-height: 1;
     text-align: center;
 }
 
-.FooterContainer {
-    align-self: flex-start;
-    justify-items: center;
+.CopySymbol {
+    margin-right: 0.25rem;
 }
 
-.ImageContainer {
-    justify-items: flex-start;
+@media (max-width: 1279px) {
+    .Footer {
+        --footer-column-padding: clamp(2rem, 3vw, 3rem);
+        --footer-logo-width: clamp(10rem, 18vw, 14rem);
+        --footer-logo-height: clamp(9.75rem, 17.67vw, 13.75rem);
+    }
 }
 
-.FeedbackContainer {
-    display: flex;
-    justify-content: flex-end;
+@media (min-width: 1920px) {
+    .Footer {
+        --footer-layout-width: min(100%, 160rem);
+        --footer-column-padding: clamp(4rem, 4vw, 8rem);
+        --footer-logo-width: clamp(17.1875rem, 10vw, 24rem);
+        --footer-logo-height: clamp(16.875rem, 9.82vw, 23.5rem);
+        --footer-social-icon-size: clamp(2.5rem, 1.5vw, 3.5rem);
+        --footer-social-gap: clamp(1.8125rem, 1.5vw, 3rem);
+        --footer-social-bar-height: clamp(6.25rem, 4vw, 8rem);
+        --footer-copyright-size: clamp(0.875rem, 0.65vw, 1.25rem);
+    }
 }
 
 @media (max-width: 1023px) {
-    .socialSection {
-        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+    .Footer {
+        --footer-column-padding: 2rem;
+    }
+
+    .Inner {
+        grid-template-columns: 1fr;
     }
 }

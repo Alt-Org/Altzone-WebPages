@@ -2,7 +2,6 @@
     display: flex;
     opacity: 0;
     flex-direction: column;
-    //margin-top: -10vh;
     &.inView {
         animation: fadeIn 1s ease-in-out;
         opacity: 1;
@@ -138,7 +137,7 @@
 }
 
 .titleQuestion {
-    font: var(--font-sw-4xl), sans-serif;
+    font: var(--font-sw-4xl);
     text-align: center;
     color: var(--primary-color);
     padding: 15px;

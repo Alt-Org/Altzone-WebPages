@@ -25,6 +25,7 @@ interface Props {
 
 export const SectionJoinUs = (props: Props) => {
     const { blocks } = props;
+
     return (
         <Container
             as={'section'}
@@ -34,6 +35,7 @@ export const SectionJoinUs = (props: Props) => {
                 <Block
                     key={index}
                     block={block}
+                    reverse={index % 2 !== 0}
                 />
             ))}
         </Container>

@@ -1,5 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { useClientTranslation } from '@/shared/i18n';
+import useIsMobileSize from '@/shared/lib/hooks/useIsMobileSize';
 import { useLoginForm } from '../../model/useLoginForm';
 import LoginForm from './LoginForm';
 
@@ -7,19 +8,21 @@ jest.mock('@/shared/i18n', () => ({
     useClientTranslation: jest.fn(),
 }));
 
+jest.mock('@/shared/lib/hooks/useIsMobileSize');
+
 jest.mock('../../model/useLoginForm', () => ({
     useLoginForm: jest.fn(),
 }));
 
 describe('LoginForm', () => {
     const mockT = jest.fn((key) => key);
-    const mockHandleSubmit = jest.fn((fn) => fn);
     const mockOnFormSubmit = jest.fn();
     const mockOnSuccessLogin = jest.fn();
     const mockErrors = {};
 
     beforeEach(() => {
         (useClientTranslation as jest.Mock).mockReturnValue({ t: mockT });
+        (useIsMobileSize as jest.Mock).mockReturnValue({ isMobileSize: false });
         (useLoginForm as jest.Mock).mockReturnValue({
             register: jest.fn(),
             handleSubmit: jest.fn((callback) => () => callback()),
@@ -30,30 +33,35 @@ describe('LoginForm', () => {
     });
 
     const defaultProps = {
-        toRegisterPage: '/register',
         onSuccessLogin: mockOnSuccessLogin,
-        toForgottenPwPage: '/forgot-password',
     };
 
     it('should render form with username and password fields', () => {
         render(<LoginForm {...defaultProps} />);
 
         expect(screen.getAllByText('log_in').length).toBeGreaterThanOrEqual(1);
-        expect(screen.getByPlaceholderText('username')).toBeInTheDocument();
-        expect(screen.getByPlaceholderText('password')).toBeInTheDocument();
+        expect(screen.getByLabelText('username')).toBeInTheDocument();
+        expect(screen.getByLabelText('password')).toBeInTheDocument();
         expect(screen.getByRole('button', { name: 'log_in' })).toBeInTheDocument();
     });
 
-    // todo
-    // it('should call handleSubmit and onFormSubmit on form submit', () => {
-    //     render(<LoginForm {...defaultProps} />);
-    //
-    //     const submitButton = screen.getByRole('button', { name: 'send' });
-    //     fireEvent.click(submitButton);
-    //
-    //     expect(mockHandleSubmit).toHaveBeenCalledWith(mockOnFormSubmit);
-    //     expect(mockOnFormSubmit).toHaveBeenCalled();
-    // });
+    it('should render combined username/email label on mobile', () => {
+        (useIsMobileSize as jest.Mock).mockReturnValue({ isMobileSize: true });
+
+        render(<LoginForm {...defaultProps} />);
+
+        expect(screen.getByLabelText('username_email')).toBeInTheDocument();
+        expect(screen.queryByLabelText('username')).not.toBeInTheDocument();
+    });
+
+    it('should render register in-game link pointing to the app store', () => {
+        render(<LoginForm {...defaultProps} />);
+
+        const link = screen.getByText('register_in_game_link');
+        expect(link).toBeInTheDocument();
+        expect(link).toHaveAttribute('target', '_blank');
+        expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    });
 
     it('should display validation errors if present', () => {
         const mockErrorsWithMessages = {
@@ -62,7 +70,7 @@ describe('LoginForm', () => {
         };
         (useLoginForm as jest.Mock).mockReturnValue({
             register: jest.fn(),
-            handleSubmit: mockHandleSubmit,
+            handleSubmit: jest.fn((callback) => () => callback()),
             onFormSubmit: mockOnFormSubmit,
             errors: mockErrorsWithMessages,
         });

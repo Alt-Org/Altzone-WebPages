@@ -64,15 +64,16 @@ const NavbarDesktop = memo((props: NavbarProps) => {
     const pathname = usePathname();
 
     const style = marginTop ? ({ marginTop: `${marginTop}px` } as CSSProperties) : {};
+    const effectiveIsCollapsed = isFixed && isCollapsed;
 
     const mods: Record<string, boolean> = {
         [cls.fixed]: isFixed,
-        [cls.collapsed]: isCollapsed,
+        [cls.collapsed]: effectiveIsCollapsed,
         [cls.collapsing]: isAnimating,
     };
 
     const ModsUlAndLi: Record<string, boolean> = {
-        [cls.collapsed]: isCollapsed,
+        [cls.collapsed]: effectiveIsCollapsed,
     };
 
     // Shared dropdown handler
@@ -169,7 +170,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                     <div
                                         className={classNames(cls.authDropdown, {
                                             [cls.authDropdownVisible]:
-                                                authDropdown.state.isOpen && !isCollapsed,
+                                                authDropdown.state.isOpen && !effectiveIsCollapsed,
                                         })}
                                     >
                                         <LoginForm />
@@ -191,7 +192,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                                     <div
                                         className={classNames(cls.authDropdown, {
                                             [cls.authDropdownVisible]:
-                                                authDropdown.state.isOpen && !isCollapsed,
+                                                authDropdown.state.isOpen && !effectiveIsCollapsed,
                                         })}
                                     >
                                         <div className={cls.authDropdownContent}>
@@ -222,7 +223,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             >
                                 <LangSwitcher
                                     className={cls.langSwitcher}
-                                    isOpen={langDropdown.state.isOpen && !isCollapsed}
+                                    isOpen={langDropdown.state.isOpen && !effectiveIsCollapsed}
                                 />
                             </div>
                         </li>
@@ -255,7 +256,7 @@ const NavbarDesktop = memo((props: NavbarProps) => {
                             >
                                 <ToggleCollapseButton
                                     onClick={handleCollapseClick}
-                                    isCollapsed={isCollapsed}
+                                    isCollapsed={effectiveIsCollapsed}
                                     className={cls.CollapseButton}
                                     disabled={isAnimating}
                                 />

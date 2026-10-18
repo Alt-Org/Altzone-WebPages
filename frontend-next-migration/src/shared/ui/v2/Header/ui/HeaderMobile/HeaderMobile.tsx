@@ -6,11 +6,11 @@ import { useParams } from 'next/navigation';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SocialSection } from '@/shared/SocialSection/SocialSection';
 import type { SocialIconLink } from '@/shared/types';
-import topimage from '@/shared/assets/images/mainpage/topimage.png';
+import topimage from '@/shared/assets/images/mainpage/Nettisivun-paakuva.png';
 import altZoneCls from '@/preparedPages/MainPage/ui/_components/sections/AltZone/AltZone.module.scss';
 import cls from './HeaderMobile.module.scss';
 import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
-import { Paragraph } from '@/shared/ui/Paragraph';
+import { Glass } from '@/shared/ui/Glass';
 import { useClientTranslation } from '@/shared/i18n';
 
 interface Props {
@@ -40,7 +40,7 @@ const HeaderMobileComponent = memo((props: Props) => {
                     priority
                     fill
                     sizes="100vw"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center 25%' }}
                 />
             </div>
 
@@ -48,12 +48,11 @@ const HeaderMobileComponent = memo((props: Props) => {
                 <h1 className={cls.title}>{title}</h1>
 
                 <div className={altZoneCls.InfoText}>
-                    {paragraphs.map((text, idx) => (
-                        <Paragraph
-                            key={idx}
-                            text={text}
-                        />
-                    ))}
+                    <Glass>
+                        {paragraphs.map((text, idx) => (
+                            <p key={idx}>{text}</p>
+                        ))}
+                    </Glass>
                 </div>
 
                 <div className={cls.ctaCol}>

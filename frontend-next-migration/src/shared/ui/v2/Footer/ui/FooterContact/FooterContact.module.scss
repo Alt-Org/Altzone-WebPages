@@ -1,0 +1,81 @@
+/* Contact section of the footer, containing title, email addresses and "Work with us" link. */
+
+.FooterContact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: clamp(19.375rem, 16vw, 28rem);
+    gap: clamp(0.9375rem, 0.8vw, 1.5rem);
+    text-align: center;
+}
+
+.Title {
+    margin: 0;
+    font-family: var(--font-family-secondary);
+    font-weight: 700;
+    line-height: 1;
+    color: #ffa100;
+    font-size: clamp(1.5rem, 1.15vw, 2rem);
+}
+
+.EmailLabel {
+    margin: 0;
+    color: #faf9f6;
+    font-family: var(--font-family-secondary);
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    font-size: clamp(1.25rem, 0.95vw, 1.625rem);
+}
+
+.EmailList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.Email,
+.WorkWithUsLink {
+    color: #faf9f6;
+    text-decoration: none;
+    font: var(--font-dm-s);
+    font-style: normal;
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+
+    &:hover {
+        color: var(--footer-accent, var(--primary-color));
+        opacity: 0.8;
+    }
+
+    &:focus {
+        outline: 2px solid var(--footer-accent, var(--primary-color));
+        outline-offset: 2px;
+    }
+}
+
+.WorkWithUsLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.Email {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.ExternalIcon {
+    width: 0.65rem;
+    height: 0.65rem;
+    color: var(--footer-accent, var(--primary-color));
+}

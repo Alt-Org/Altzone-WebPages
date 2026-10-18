@@ -2,9 +2,16 @@ import { render, screen } from '@testing-library/react';
 import { SocialIconLink, Texts } from '@/shared/types/types';
 import FooterDesktop from './FooterDesktop';
 
-jest.mock('@/shared/ui/v2/Feedback');
+jest.mock('next/image', () => ({
+    __esModule: true,
+    default: ({ priority, alt, ...props }: any) => (
+        <img
+            alt={alt}
+            {...props}
+        />
+    ),
+}));
 
-// Mock data for social links and texts
 const mockSocialLinks: SocialIconLink[] = [
     { link: 'https://facebook.com', icon: '/icons/facebook.svg', name: 'Facebook' },
     { link: 'https://twitter.com', icon: '/icons/twitter.svg', name: 'Twitter' },
@@ -19,47 +26,64 @@ const mockTexts: Texts = {
     companyName: 'My Company',
 };
 
-describe('FooterDesktop', () => {
-    it('renders without crashing and displays the title', () => {
-        const title = 'Footer Title';
+const mockFooterLinks = {
+    workWithUsLabel: 'Apply to us',
+    whatIsPrgLabel: 'What is PRG',
+    altZoneHistoryLabel: 'ALT Zone history',
+    developersDesignersLabel: 'Developers and designers',
+    termsAndPrivacyLabel: 'Terms and privacy policy',
+};
 
+describe('FooterDesktop', () => {
+    it('renders the logo, contact section, and info links', () => {
         render(
             <FooterDesktop
-                title={title}
                 socialIconLinks={mockSocialLinks}
                 texts={mockTexts}
+                contactTitle="Contact information"
+                contactEmailLabel="Email addresses"
+                contactEmails={['hello@example.com']}
+                infoTitle="Information"
+                infoLinks={mockFooterLinks}
             />,
         );
 
-        // Check if the title is displayed correctly
-        expect(screen.getByText(title)).toBeInTheDocument();
+        expect(screen.getByAltText('PRG Logo')).toBeInTheDocument();
+        expect(screen.getByText('Contact information')).toBeInTheDocument();
+        expect(screen.getByText('Email addresses')).toBeInTheDocument();
+        expect(screen.getByText('hello@example.com')).toBeInTheDocument();
+        expect(screen.getByText('Information')).toBeInTheDocument();
+        expect(screen.getByText('Apply to us')).toBeInTheDocument();
     });
 
     it('renders the SocialSection with correct social links', () => {
         render(
             <FooterDesktop
-                title="Test Title"
                 socialIconLinks={mockSocialLinks}
                 texts={mockTexts}
+                contactTitle="Contact information"
+                contactEmails={['hello@example.com']}
+                infoTitle="Information"
+                infoLinks={mockFooterLinks}
             />,
         );
 
-        // Check if the social links are rendered
         mockSocialLinks.forEach((link) => {
-            expect(screen.getByAltText(link.name)).toBeInTheDocument(); // Check for images using alt text
+            expect(screen.getByAltText(link.name)).toBeInTheDocument();
         });
     });
 
-    it('renders the Rights component with correct texts', () => {
+    it('renders copyright with the current company', () => {
         render(
             <FooterDesktop
-                title="Test Title"
                 socialIconLinks={mockSocialLinks}
                 texts={mockTexts}
+                contactTitle="Contact information"
+                contactEmails={['hello@example.com']}
+                infoTitle="Information"
             />,
         );
 
-        // Check if the Rights component displays the correct year and company name
         expect(
             screen.getByText(`${mockTexts.currentYear} ${mockTexts.companyName}`),
         ).toBeInTheDocument();

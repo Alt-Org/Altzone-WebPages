@@ -26,6 +26,7 @@ export type CTASectionProps = {
     className?: string;
     /** Button layout on mobile screens @default 'column' */
     mobileButtonLayout?: 'column' | 'row';
+    titleClassName?: string;
 };
 
 /**
@@ -55,6 +56,7 @@ export const CTASection = (props: CTASectionProps) => {
         actions,
         className = '',
         mobileButtonLayout = 'column',
+        titleClassName = '',
     } = props;
 
     const mods: Record<string, boolean> = {
@@ -67,7 +69,7 @@ export const CTASection = (props: CTASectionProps) => {
             <Container className={cls.Container}>
                 <div className={cls.Content}>
                     <div className={cls.TextBlock}>
-                        <h2 className={cls.Title}>{title}</h2>
+                        <h2 className={classNames(cls.Title, {}, [titleClassName])}>{title}</h2>
                         {description && <div className={cls.Description}>{description}</div>}
                         {extraText && <div className={cls.ExtraText}>{extraText}</div>}
                         {actions && <div className={cls.ButtonsWrapper}>{actions}</div>}

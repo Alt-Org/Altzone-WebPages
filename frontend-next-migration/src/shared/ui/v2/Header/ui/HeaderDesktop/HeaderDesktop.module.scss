@@ -10,7 +10,8 @@
   display: grid;
   grid-template-columns: 60% 40%;
   width: 100%;
-  min-height: clamp(600px, 70vh, 860px);
+  height: calc(60vw * 792 / 1163);
+  max-height: 70vh;
   align-items: stretch;
 }
 
@@ -24,29 +25,35 @@
 }
 
 .right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1.5vw;
+    gap: 1vw;
+    background: transparent;
+    position: relative;
+}
 
-  max-width: 768px;
-  padding: clamp(24px, 3vw, 56px);
-
-  background: transparent;
+.right p {
+    font: var(--font-dm-l);
+    font-size: 1.25vw;
+    line-height: 1.67vw;
 }
 
 .title {
-  margin: 0 0 10px 0;
-  color: var(--primary-color);
-  font: var(--font-sw-4xl), sans-serif;
-  line-height: 1.05;
+    margin: 0 0 0.4vw 0;
+    color: var(--primary-color);
+    font: var(--font-sw-5xl);
+    font-size: 3.33vw;
+    line-height: 4.48vw;
+    letter-spacing: -0.04em;
 }
 
 .ctaRow {
-  display: flex;
-  gap: 16px;
-  margin-top: 20px;
-  align-items: center;
-  flex-wrap: nowrap;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .ctaLink {
@@ -57,30 +64,26 @@
 
 .ctaLink :global(button) {
   border-radius: 999px !important;
-  padding-left: 30px !important;
-  padding-right: 30px !important;
-}
-
-
-.ctaLink :global(button) {
+  padding: 0.3vw 1.5vw !important;
+  font-size: 1.04vw !important;
+  line-height: 1.67vw !important;
   white-space: nowrap;
 }
 
-
 .followText {
-  margin-top: 20px;
-  font: var(--font-dm-m);
-  font-weight: 700;
-  opacity: 0.95;
+    font: var(--font-dm-l);
+    font-weight: 600;
+    font-size: 1.25vw;
+    line-height: 1.61vw;
+    letter-spacing: -0.04em;
 }
 
 .socialSection {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 16px;
-
-  margin-top: 8px;
+  gap: 0.7vw;
+  margin-top: 0.3vw;
   width: 100%;
 }
 
@@ -88,14 +91,26 @@
   flex: 0 0 auto;
 }
 
+.socialSection a {
+  width: 1.82vw;
+  height: 1.82vw;
+}
+
+.socialSection img {
+  width: 1.82vw;
+  height: 1.82vw;
+}
+
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
-    min-height: auto;
+    height: auto;
+    max-height: none;
   }
 
   .left {
-    height: 56vh;
+    height: auto;
+    aspect-ratio: 1163 / 792;
   }
 
   .ctaRow {
