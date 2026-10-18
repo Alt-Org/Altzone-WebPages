@@ -19,7 +19,6 @@ import { linkify } from '@/shared/ui/v2/Chatbot/utils/linkify';
 import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
 import { ShareButton } from '@/shared/ui/v2/ShareButton';
-import { SkeletonLoaderForNewsElementPage } from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
 
 type HeroImageProps = {
     picture?: string;
@@ -60,65 +59,18 @@ const NewsElementPage = () => {
     const lng = params.lng as string;
 
     const { t } = useClientTranslation('news');
-    const { data: moreNews, isLoading: isMoreNewsLoading } = useGetNewsQuery({ limit: 2 });
-    const { data, isLoading: isNewsLoading } = useGetNewsByIdQuery(id as string);
+    const { data: moreNews } = useGetNewsQuery({ limit: 2 });
+    const { data, isLoading } = useGetNewsByIdQuery(id as string);
     const directusBaseUrl = envHelper.directusHost;
     const router = useRouter();
-
-    const pageIsLoading = isNewsLoading || isMoreNewsLoading || !data || !moreNews;
-
-    const getLngCode = (lng: string) => {
-        if (lng === 'en') return 'en-US';
-        if (lng === 'fi') return 'fi-FI';
-        return lng;
-    };
-
-    const lngCode = getLngCode(lng);
+    const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
 
     const handleNextNews = (newsId: string) => {
         if (newsId) router.push(`/news/${newsId}`);
     };
 
-    if (pageIsLoading) {
-        return (
-            <Container>
-                <div className={cls.navButtons}>
-                    <Button
-                        disabled
-                        theme={ButtonTheme.PRIMARY}
-                        size={ButtonSize.M}
-                        className={classNames(cls.ButtonNewsNavigation)}
-                    >
-                        <Image
-                            loading="eager"
-                            alt="Pin"
-                            src={chevronleft}
-                            className={cls.buttonImage}
-                        />
-                        {t('previous-button')}
-                    </Button>
-
-                    <Button
-                        disabled
-                        theme={ButtonTheme.PRIMARY}
-                        size={ButtonSize.M}
-                        className={classNames(cls.ButtonNewsNavigation)}
-                    >
-                        {t('next-button')}
-                        <Image
-                            loading="eager"
-                            alt="Pin"
-                            src={chevronright}
-                            className={cls.buttonImage}
-                        />
-                    </Button>
-                </div>
-
-                <div className={classNames(cls.NewsElementPage)}>
-                    <SkeletonLoaderForNewsElementPage />
-                </div>
-            </Container>
-        );
+    if (isLoading || !data) {
+        return <div>Loading...</div>;
     }
 
     const post = formatNewsSingle(data, lngCode || 'fi-FI');
