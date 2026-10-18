@@ -181,3 +181,70 @@ export const SkeletonLoaderWithHeader = ({ sections = 1, className = '' }: Skele
         </div>
     );
 };
+
+/**
+ * Renders skeleton cards for the news listing page.
+ * Used while news data is loading to preserve layout and improve UX.
+ *
+ * @param {Object} props - Component props
+ * @param {number} [props.numberOfCards=12] - Number of skeleton cards to render
+ * @param {string} [props.className] - Optional additional CSS classes
+ * @returns {JSX.Element} List of skeleton news cards
+ */
+export const SkeletonLoaderForNewsPage = ({
+    numberOfCards = 12,
+    className = '',
+}: SkeletonLoaderProps) => {
+    const cards = Array(numberOfCards).fill(0);
+
+    return (
+        <>
+            {cards.map((_, index) => (
+                <div
+                    key={index}
+                    className={classNames(cls.newsSkeletonCard, {}, [className])}
+                >
+                    <div className={cls.newsSkeletonContent}>
+                        <div className={cls.newsSkeletonTitle} />
+                        <div className={cls.newsSkeletonText} />
+                        <div className={cls.newsSkeletonTextShort} />
+                        <div className={cls.newsSkeletonDate} />
+                    </div>
+
+                    <div className={cls.newsSkeletonImage} />
+                </div>
+            ))}
+        </>
+    );
+};
+
+/**
+ * Renders a skeleton layout for a single news article page
+ * while the article content is loading.
+ */
+
+export const SkeletonLoaderForNewsElementPage = ({ className = '' }: SkeletonLoaderProps) => {
+    return (
+        <div className={classNames(cls.newsElementSkeleton, {}, [className])}>
+            <div className={cls.newsElementSkeletonHero} />
+
+            <div className={cls.newsElementSkeletonTitle} />
+            <div className={cls.newsElementSkeletonSubtitle} />
+
+            <div className={cls.newsElementSkeletonMeta}>
+                <div />
+            </div>
+
+            <div className={cls.newsElementSkeletonBody}>
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div />
+                <div className={cls.short} />
+            </div>
+        </div>
+    );
+};
