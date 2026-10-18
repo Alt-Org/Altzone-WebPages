@@ -116,6 +116,8 @@ const NewsPage = () => {
 
                         {isLoading && <SkeletonLoaderForNewsPage numberOfCards={limit} />}
 
+                        {isLoading && <SkeletonLoaderForNewsPage numberOfCards={limit} />}
+
                         {hasMoreNewsState && !isLoading && <div ref={observeElementRef} />}
                     </div>
                 </div>
