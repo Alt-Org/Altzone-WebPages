@@ -1,9 +1,4 @@
 import { createSection } from '../createSection';
-import info from '@/shared/assets/images/gameArt/videogames.png';
-import intro from '@/shared/assets/images/gameArt/teachingpackage.png';
-import implementation from '@/shared/assets/images/gameArt/teacherspage.png';
-import message from '@/shared/assets/images/gameArt/structure.png';
-import joinus from '@/shared/assets/images/gameArt/taskthemes.png';
 import gameArtLogo from '@/shared/assets/images/gameArt/gameArtLogo.webp';
 
 /**
@@ -24,13 +19,15 @@ const i18nKeyPrefixes = [
     'literature',
 ];
 
+const AI_IMAGES_PATH = '/images/gameart_AI';
+
 const imageSrcs = [
-    info.src,
-    intro.src,
-    implementation.src,
-    message.src,
+    `${AI_IMAGES_PATH}/videogames_AI.png`,
+    `${AI_IMAGES_PATH}/teachingpackage_AI.png`,
+    `${AI_IMAGES_PATH}/teacherspage_AI.png`,
+    `${AI_IMAGES_PATH}/structure_AI.png`,
     EMPTY_IMAGE,
-    joinus.src,
+    `${AI_IMAGES_PATH}/taskthemes_AI.png`,
     EMPTY_IMAGE,
 ];
 
