@@ -46,23 +46,9 @@ export const dropdowns = {
             },
         },
         {
-            elementText: 'story',
-            link: {
-                path: getRouteComingSoonPage(),
-                isExternal: false,
-            },
-        },
-        {
             elementText: 'defenseHeroes',
             link: {
                 path: getRouteDefenseGalleryPage(),
-                isExternal: false,
-            },
-        },
-        {
-            elementText: 'balanceVoting',
-            link: {
-                path: getRouteComingSoonPage(),
                 isExternal: false,
             },
         },
@@ -119,13 +105,6 @@ export const dropdowns = {
         },
     ],
     gameart: [
-        {
-            elementText: 'opetuspaketti',
-            link: {
-                path: getRouteComingSoonPage(),
-                isExternal: false,
-            },
-        },
         {
             elementText: 'pelitaide',
             link: {
