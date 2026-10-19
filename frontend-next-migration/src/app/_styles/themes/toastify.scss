@@ -57,6 +57,12 @@
 
 .app-main-theme,
 .app_light_theme {
+    --toastify-color-progress-light: linear-gradient(
+        to right,
+        #ffa100,
+        #e89301
+    );
+
     .Toastify__toast {
         border: 3px solid var(--drop-shadows, #121212);
         border-radius: var(--border-radius-figmadesktop, 12px);
@@ -146,26 +152,4 @@
         border-radius: 0 0 var(--border-radius-figmadesktop, 12px) var(--border-radius-figmadesktop, 12px);
     }
 
-    .Toastify__toast--success,
-    .Toastify__toast--error,
-    .Toastify__toast--info,
-    .Toastify__toast--warning {
-        border-left: 8px solid transparent;
-    }
-
-    .Toastify__toast--success {
-        border-left-color: var(--toastify-color-success);
-    }
-
-    .Toastify__toast--error {
-        border-left-color: var(--toastify-color-error);
-    }
-
-    .Toastify__toast--info {
-        border-left-color: var(--toastify-color-info);
-    }
-
-    .Toastify__toast--warning {
-        border-left-color: var(--toastify-color-warning);
-    }
 }
