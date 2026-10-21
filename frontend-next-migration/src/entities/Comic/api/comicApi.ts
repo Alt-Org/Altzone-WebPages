@@ -39,7 +39,7 @@ type GetAllDirectoryPhotosQueryArgs = {
     parentDirectory: ParentDirectory;
 };
 
-const galleryApi = gameApi.injectEndpoints({
+const comicApi = gameApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllDirectoryPhotos: builder.query<DirectoryWithPhotos[], GetAllDirectoryPhotosQueryArgs>(
             {
@@ -85,4 +85,4 @@ const galleryApi = gameApi.injectEndpoints({
     }),
     overrideExisting: false,
 });
-export const { useGetAllDirectoryPhotosQuery } = galleryApi;
+export const { useGetAllDirectoryPhotosQuery } = comicApi;

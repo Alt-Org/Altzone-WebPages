@@ -1,5 +1,5 @@
 'use client';
-import { GalleryCategoriesWithModalSlider, ParentDirectory } from '@/entities/Gallery';
+import { ComicReader, ParentDirectory } from '@/entities/Comic';
 import useSectionGallerias from '../model/useSectionGallerias';
 import cls from './SectionGallerias.module.scss';
 
@@ -17,7 +17,7 @@ export const SectionGallerias = ({ parentDirectory }: Props) => {
     return (
         <div className={cls.galleries}>
             {transformedGalleryCategories.map((gallery) => (
-                <GalleryCategoriesWithModalSlider
+                <ComicReader
                     cover={gallery.cover}
                     followLastImage={gallery.followLastImage}
                     key={gallery.title}

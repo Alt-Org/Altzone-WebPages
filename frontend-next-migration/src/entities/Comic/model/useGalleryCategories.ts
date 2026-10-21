@@ -1,12 +1,12 @@
 'use client';
-import { GalleryCategoriesWithModalSliderProps } from '../ui/GalleryCategoriesWithModalSlider';
-import { ParentDirectory, useGetAllDirectoryPhotosQuery } from './galleryApi';
+import { ComicReaderProps } from '../ui/ComicReader';
+import { ParentDirectory, useGetAllDirectoryPhotosQuery } from '../api/comicApi';
 import { transformToGalleryPropsFormat } from './transformToGalleryPropsFormat';
 
 export const useGalleryCategories = (parentDirectory: ParentDirectory) => {
     const { data, isError, isLoading } = useGetAllDirectoryPhotosQuery({ parentDirectory });
 
-    let transformedGalleryCategories: GalleryCategoriesWithModalSliderProps[] = [];
+    let transformedGalleryCategories: ComicReaderProps[] = [];
     if (data) {
         transformedGalleryCategories = transformToGalleryPropsFormat(data);
     }

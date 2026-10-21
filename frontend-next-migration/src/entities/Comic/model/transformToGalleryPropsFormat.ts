@@ -1,9 +1,7 @@
-import { GalleryCategoriesWithModalSliderProps } from '../ui/GalleryCategoriesWithModalSlider';
-import { DirectoryWithPhotos } from './galleryApi';
+import { ComicReaderProps } from '../ui/ComicReader';
+import { DirectoryWithPhotos } from '../api/comicApi';
 
-export const transformToGalleryPropsFormat = (
-    data: DirectoryWithPhotos[],
-): GalleryCategoriesWithModalSliderProps[] => {
+export const transformToGalleryPropsFormat = (data: DirectoryWithPhotos[]): ComicReaderProps[] => {
     return data?.map((category) => ({
         key: category.directoryName,
         sources: category.photos.map((photo) => photo.url),
