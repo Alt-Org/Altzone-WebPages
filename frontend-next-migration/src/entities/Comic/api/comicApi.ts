@@ -1,88 +1,41 @@
+import { createDirectus, readItems, rest } from '@directus/sdk';
+import { directusApi } from '@/shared/api';
 import { envHelper } from '@/shared/const/envHelper';
-import { gameApi } from '@/shared/api';
-import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
+import type { Comics } from '../types/types';
 
-const url = 'public/site';
+const client = createDirectus(envHelper.directusHost).with(rest());
 
-const constructFileURL = (
-    parentDirectory: string,
-    directoryName: string,
-    fileName: string,
-): string => {
-    return `${envHelper.apiLink}/${url}/${parentDirectory}/${directoryName}/${fileName}`;
-};
-
-type Directory = {
-    name: string;
-};
-
-type File = {
-    name: string;
-    type: string;
-    mtime: string;
-    size: number;
-};
-
-type ModifiedFile = File & {
-    url: string;
-};
-
-export type DirectoryWithPhotos = {
-    directoryName: string;
-    cover: ModifiedFile;
-    photos: ModifiedFile[];
-};
-
-export type ParentDirectory = SectionGalleriasPaths;
-
-type GetAllDirectoryPhotosQueryArgs = {
-    parentDirectory: ParentDirectory;
-};
-
-const comicApi = gameApi.injectEndpoints({
+export const comicApi = directusApi.injectEndpoints({
     endpoints: (builder) => ({
-        getAllDirectoryPhotos: builder.query<DirectoryWithPhotos[], GetAllDirectoryPhotosQueryArgs>(
-            {
-                queryFn: async (args, _queryApi, _extraOptions, fetchWithBQ) => {
-                    const parentDirectory = args.parentDirectory;
-                    const directoriesResult = await fetchWithBQ(`${url}/${parentDirectory}`);
-                    if (directoriesResult.error) throw directoriesResult.error;
-                    const directories: Directory[] = directoriesResult.data as Directory[];
-
-                    const photosPromises = directories.map(
-                        async (dir): Promise<DirectoryWithPhotos> => {
-                            const photosResult = await fetchWithBQ(
-                                `${url}/${parentDirectory}/${dir.name}`,
-                            );
-                            if (photosResult.error) throw photosResult.error;
-
-                            const photos: File[] = photosResult.data as File[];
-
-                            const cover = photos[0];
-
-                            // Set URL for every file
-                            const photosWithUrls = photos.map((file) => ({
-                                ...file,
-                                url: constructFileURL(parentDirectory, dir.name, file.name),
-                            })) as ModifiedFile[];
-
-                            return {
-                                directoryName: dir.name,
-                                cover: {
-                                    ...cover,
-                                    url: constructFileURL(parentDirectory, dir.name, cover.name),
-                                },
-                                photos: photosWithUrls,
-                            };
-                        },
+        getComics: builder.query<Comics[], void>({
+            queryFn: async () => {
+                try {
+                    const comics = await client.request(
+                        readItems('Comics', {
+                            fields: ['*', 'pages.*', 'translations.*'],
+                            filter: { status: { _eq: 'published' } },
+                            sort: ['sort', 'id'],
+                            limit: -1,
+                            deep: { pages: { _limit: -1, _sort: 'order' } },
+                        }),
                     );
-
-                    const allDirectoriesWithPhotos = await Promise.all(photosPromises);
-                    return { data: allDirectoriesWithPhotos };
-                },
+                    return { data: comics as Comics[] };
+                } catch (error: unknown) {
+                    const status =
+                        typeof error === 'object' &&
+                        error !== null &&
+                        'status' in error &&
+                        typeof error.status === 'number'
+                            ? error.status
+                            : 500;
+                    const message = error instanceof Error ? error.message : 'Data fetch failed';
+                    return {
+                        error: { status, data: { message } },
+                    };
+                }
             },
-        ),
+        }),
     }),
-    overrideExisting: false,
 });
-export const { useGetAllDirectoryPhotosQuery } = comicApi;
+
+export const { useGetComicsQuery } = comicApi;

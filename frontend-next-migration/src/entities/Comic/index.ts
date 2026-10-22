@@ -1,4 +1,4 @@
 export { ComicReader } from './ui/ComicReader';
-export type { ComicReaderProps } from './ui/ComicReader';
-export { useGalleryCategories } from './model/useGalleryCategories';
-export type { ParentDirectory } from './api/comicApi';
+export type { ComicReaderProps } from './types/types';
+export { useComics } from './model/useComics';
+export { useGetComicsQuery } from './api/comicApi';

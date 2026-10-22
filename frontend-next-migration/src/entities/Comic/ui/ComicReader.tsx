@@ -1,53 +1,28 @@
-/* eslint-disable complexity */
 'use client';
 import Image from 'next/image';
 import { memo, useEffect, useState, useRef } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { ReaderModal } from './ReaderModal';
+import { RenderImages } from './RenderImages';
 import cls from './ComicReader.module.scss';
-
-export type ComicReaderProps = {
-    title?: string;
-    followLastImage?: boolean;
-    sources: string[];
-    cover: {
-        name: string;
-        url: string;
-    };
-};
+import type { ComicReaderProps } from '../types/types';
+import useSizes from '@/shared/lib/hooks/useSizes';
 
 export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
     useClientTranslation('picture-galleries');
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [pageIndex, setPageIndex] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
+    const { isMobileSize } = useSizes();
 
     const touchStartX = useRef(0);
     const touchEndX = useRef(0);
 
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
-
-    const filteredSources = sources.filter((src) => src !== cover.url);
-
-    const sortedSources = [...filteredSources].sort((a, b) => {
-        const numA = parseInt(a.match(/\d+/)?.[0] || '', 10);
-        const numB = parseInt(b.match(/\d+/)?.[0] || '', 10);
-        return numA - numB;
-    });
+    const sortedSources = sources.filter((src) => src !== cover.url);
 
     const allImages = [cover.url, ...sortedSources];
 
-    const maxPageIndex = isMobile ? sortedSources.length : Math.ceil(sortedSources.length / 2);
+    const maxPageIndex = isMobileSize ? sortedSources.length : Math.ceil(sortedSources.length / 2);
 
     const changePage = (direction: 'next' | 'prev') => {
         setPageIndex((prev) =>
@@ -56,6 +31,7 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
     };
 
     useEffect(() => {
+        if (!isModalOpen) return;
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'ArrowLeft' && pageIndex > 0) {
                 changePage('prev');
@@ -70,30 +46,21 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [pageIndex, maxPageIndex]);
 
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }, [isModalOpen]);
-
     const openModal = () => {
         setIsModalOpen(true);
     };
 
     // SWIPE
-    const handleTouchStart = (e: React.TouchEvent) => {
-        touchStartX.current = e.touches[0].clientX;
+    const handleTouchStart = (event: React.TouchEvent) => {
+        touchStartX.current = event.touches[0].clientX;
+        touchEndX.current = touchStartX.current;
     };
 
-    const handleTouchMove = (e: React.TouchEvent) => {
-        touchEndX.current = e.touches[0].clientX;
+    const handleTouchMove = (event: React.TouchEvent) => {
+        touchEndX.current = event.touches[0].clientX;
     };
 
     const handleTouchEnd = () => {
-        if (!isMobile) return;
-
         const delta = touchStartX.current - touchEndX.current;
 
         if (Math.abs(delta) < 50) return;
@@ -107,41 +74,12 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
         }
     };
 
-    const renderImages = (isModal = false) => {
-        return allImages.map((src, idx) => {
-            let visible = false;
-
-            if (pageIndex === 0) {
-                visible = idx === 0;
-            } else if (isMobile) {
-                visible = idx === pageIndex;
-            } else {
-                const start = (pageIndex - 1) * 2;
-                const leftIdx = 1 + start;
-                const rightIdx = 2 + start;
-
-                visible = idx === leftIdx || idx === rightIdx;
-            }
-
-            return (
-                <div
-                    className={cls.pageWrapper}
-                    key={idx}
-                    style={{ display: visible ? 'flex' : 'none' }}
-                >
-                    <Image
-                        src={src}
-                        width={isModal ? 0 : 250}
-                        height={isModal ? 0 : 292}
-                        sizes={isModal ? '100vw' : undefined}
-                        className={isModal ? cls.modalImage : cls.coverImage}
-                        priority
-                        alt={idx === 0 ? cover.name : `Page ${idx}`}
-                        style={{ width: '100%', height: 'auto' }}
-                    />
-                </div>
-            );
-        });
+    const imageProps = {
+        images: allImages,
+        coverName: cover.name,
+        pageIndex,
+        isMobile: isMobileSize,
+        isModalOpen,
     };
 
     return (
@@ -173,7 +111,7 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
                     className={cls.cover}
                     onClick={openModal}
                 >
-                    {renderImages(false)}
+                    <RenderImages {...imageProps} />
                 </div>
             </div>
 
@@ -190,8 +128,8 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
                         onTouchEnd={handleTouchEnd}
                     >
                         <span
-                            onClick={(e) => {
-                                e.stopPropagation();
+                            onClick={(event) => {
+                                event.stopPropagation();
                                 if (pageIndex > 0) changePage('prev');
                             }}
                             className={`${cls.navSymbol} ${pageIndex === 0 ? cls.disabled : ''}`}
@@ -199,11 +137,14 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
                             {'<'}
                         </span>
 
-                        {renderImages(true)}
+                        <RenderImages
+                            {...imageProps}
+                            isModal
+                        />
 
                         <span
-                            onClick={(e) => {
-                                e.stopPropagation();
+                            onClick={(event) => {
+                                event.stopPropagation();
                                 if (pageIndex < maxPageIndex) changePage('next');
                             }}
                             className={`${cls.navSymbol} ${
@@ -227,7 +168,7 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
                         <span className={cls.pageNumber}>
                             {pageIndex === 0
                                 ? 1
-                                : isMobile
+                                : isMobileSize
                                   ? pageIndex + 1
                                   : (pageIndex - 1) * 2 + 2}
                         </span>
@@ -237,16 +178,16 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
                             min={0}
                             max={maxPageIndex}
                             value={pageIndex}
-                            onChange={(e) => setPageIndex(parseInt(e.target.value))}
+                            onChange={(event) => setPageIndex(parseInt(event.target.value))}
                             className={cls.pageSlider}
                         />
 
                         <span className={cls.pageNumber}>
                             {pageIndex === 0
                                 ? 1
-                                : isMobile
+                                : isMobileSize
                                   ? pageIndex + 1
-                                  : Math.min(sortedSources.length, (pageIndex - 1) * 2 + 3)}
+                                  : Math.min(allImages.length, (pageIndex - 1) * 2 + 3)}
                         </span>
 
                         <button
