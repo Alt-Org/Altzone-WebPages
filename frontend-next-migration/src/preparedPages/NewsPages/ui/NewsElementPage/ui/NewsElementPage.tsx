@@ -21,6 +21,8 @@ import { NewsCard } from '@/widgets/NewsCard';
 import { ShareButton } from '@/shared/ui/v2/ShareButton';
 import { SkeletonLoaderForNewsElementPage } from '@/shared/ui/SkeletonLoader/ui/SkeletonLoader';
 
+// asd
+
 type HeroImageProps = {
     picture?: string;
 };
