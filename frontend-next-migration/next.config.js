@@ -12,6 +12,7 @@ const nextConfig = {
             { hostname: 'raw.githubusercontent.com' },
             { hostname: 'localhost' },
             { hostname: getSafeHostname(process.env.NEXT_PUBLIC_STRAPI_HOST) },
+            { hostname: getSafeHostname(process.env.NEXT_PUBLIC_DIRECTUS_HOST) },
         ],
     },
     sassOptions: {
