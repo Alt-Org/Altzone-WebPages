@@ -183,8 +183,7 @@
         width: 80%;
     }
 
-    @media (max-width: breakpoint(xs)),
-    (max-width: 320px) {
+    @media (max-width: breakpoint(xs)), (max-width: 320px) {
         height: 110px;
         width: 70%;
         margin: auto 0;

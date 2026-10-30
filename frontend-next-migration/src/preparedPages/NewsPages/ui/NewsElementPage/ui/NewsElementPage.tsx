@@ -23,6 +23,8 @@ import { SkeletonLoaderForNewsElementPage } from '@/shared/ui/SkeletonLoader/ui/
 
 // asd
 
+// asd
+
 type HeroImageProps = {
     picture?: string;
 };
