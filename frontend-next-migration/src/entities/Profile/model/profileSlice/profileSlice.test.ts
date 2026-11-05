@@ -80,7 +80,7 @@ describe('profileSlice', () => {
                 },
             },
         };
-        expect(selectHasClan(state)).toBe(true);
+        expect(selectHasClan({ profile: state })).toBe(true);
     });
 
     it('selectClanId should return the set clan_id since user has a clan', () => {
@@ -102,7 +102,7 @@ describe('profileSlice', () => {
                 },
             },
         };
-        expect(selectClanId(state)).toBe(clan_id);
+        expect(selectClanId({ profile: state })).toBe(clan_id);
     });
 
     it('selectHasClan should return FALSE since user does not have a clan', () => {
@@ -116,13 +116,13 @@ describe('profileSlice', () => {
                     backpackCapacity: 200,
                     uniqueIdentifier: '200',
                     profile_id: 'string',
-                    clan_id: undefined,
+                    clan_id: '',
                     above13: true,
                     points: 0,
                     parentalAuth: false,
                 },
             },
         };
-        expect(selectHasClan(state)).toBe(false);
+        expect(selectHasClan({ profile: state })).toBe(false);
     });
 });

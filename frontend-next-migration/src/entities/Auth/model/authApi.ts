@@ -1,4 +1,4 @@
-import { gameApi } from '@/shared/api';
+import { gameApi } from '@/shared/api/gameApi';
 import { IUserRegisterDto, IUserLoginDto, ILoginResponse } from '../types/authUser';
 
 const authApi = gameApi.injectEndpoints({

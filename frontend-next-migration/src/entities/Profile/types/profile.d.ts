@@ -1,3 +1,5 @@
+import type { IPlayer } from '@/entities/User';
+
 export type IProfile<Player> = {
     _id: string | null;
     username: string | null;

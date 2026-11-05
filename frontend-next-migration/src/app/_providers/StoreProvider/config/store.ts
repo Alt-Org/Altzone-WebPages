@@ -1,65 +1,49 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
-import {
-    FLUSH,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-    REHYDRATE,
-    persistStore,
-    persistReducer,
-} from 'redux-persist';
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
+import { combineReducers, configureStore, type UnknownAction } from '@reduxjs/toolkit';
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer } from 'redux-persist';
+import type { PersistConfig } from 'redux-persist';
 import { authUserReducer, authMiddleware } from '@/entities/Auth';
+import { profileReducer } from '@/entities/Profile';
+import { navBarReducer } from '@/widgets/Navbar';
 import { envHelper } from '@/shared/const/envHelper';
-import { gameApi, strapiApi, directusApi } from '@/shared/api';
-import { StateSchema } from './StateSchema';
-import { navBarReducer } from '@/widgets/Navbar/model/navbarSlice/navBarSlice';
+import { gameApi } from '@/shared/api/gameApi';
+import { strapiApi } from '@/shared/api/strapiApi';
+import { directusApi } from '@/shared/api/directusApi';
+import { createPersistenceStorage, migratePersistedState, PERSIST_VERSION } from './persistence';
 
-const createNoopStorage = () => {
-    return {
-        // todo check if can delete the params
-        // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-        getItem(_key: any) {
-            return Promise.resolve(null);
-        },
-        // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-        setItem(_key: any, value: any) {
-            return Promise.resolve(value);
-        },
-        // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-        removeItem(_key: any) {
-            return Promise.resolve();
-        },
-    };
-};
+export const rootReducer = combineReducers({
+    authUser: authUserReducer,
+    profile: profileReducer,
+    navbar: navBarReducer,
+    [gameApi.reducerPath]: gameApi.reducer,
+    [strapiApi.reducerPath]: strapiApi.reducer,
+    [directusApi.reducerPath]: directusApi.reducer,
+});
 
-const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
+export type RootState = ReturnType<typeof rootReducer>;
+export type InitialState = Partial<RootState>;
 
-export function createReduxStore(initialState?: StateSchema) {
-    const rootReducer = combineReducers({
-        authUser: authUserReducer,
-        navbar: navBarReducer,
-        [gameApi.reducerPath]: gameApi.reducer,
-        [strapiApi.reducerPath]: strapiApi.reducer,
-        [directusApi.reducerPath]: directusApi.reducer,
-    });
+export function createReduxStore(initialState?: InitialState) {
+    const storage = createPersistenceStorage();
+    const defaults = rootReducer(initialState, { type: '@@INIT' });
 
-    const persistConfig = {
+    const persistConfig: PersistConfig<RootState> = {
         key: 'root',
+        version: PERSIST_VERSION,
         storage,
         blacklist: [gameApi.reducerPath, strapiApi.reducerPath, directusApi.reducerPath],
+        migrate: (state) => migratePersistedState(state, storage, defaults),
     };
 
-    const persistedReducer = persistReducer(persistConfig, rootReducer);
+    // Seed the base reducer without requiring callers to supply internal _persist metadata.
+    const persistedReducer = persistReducer(
+        persistConfig,
+        (state: RootState | undefined, action: UnknownAction) =>
+            rootReducer(state ?? defaults, action),
+    );
 
-    const store = configureStore({
-        // reducer: rootReducer,
+    return configureStore({
         reducer: persistedReducer,
-        //only in dev mode
         devTools: envHelper.isDevMode,
-        preloadedState: initialState,
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({
                 serializableCheck: {
@@ -72,10 +56,7 @@ export function createReduxStore(initialState?: StateSchema) {
                 authMiddleware,
             ),
     });
-
-    const persistor = persistStore(store);
-
-    setupListeners(store.dispatch);
-
-    return { store, persistor };
 }
+
+export type AppStore = ReturnType<typeof createReduxStore>;
+export type AppDispatch = AppStore['dispatch'];

@@ -1,5 +1,6 @@
 import { IPlayer } from '@/entities/User';
 import { IProfile } from '@/entities/Profile';
+import type { AccessTokenInfo } from '@/shared/types/auth';
 
 export type IPlayerRegisterPartDto = Pick<
     IPlayer,
@@ -23,7 +24,7 @@ export type AccessTokenInfoResponse = {
     accessTokenExpiresInSecIn: number;
 };
 
-export type { AccessTokenInfo } from '@/shared/types/shared';
+export type { AccessTokenInfo } from '@/shared/types/auth';
 
 export type AuthUserSchema = {
     accessTokenInfo?: AccessTokenInfo;
