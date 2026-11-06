@@ -2,7 +2,7 @@
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import { toast } from 'react-toastify';
 import { useAddFeedbackMutation, Feedback } from '@/entities/Feedback';
 import { CustomForm } from '@/shared/ui/CustomForm';

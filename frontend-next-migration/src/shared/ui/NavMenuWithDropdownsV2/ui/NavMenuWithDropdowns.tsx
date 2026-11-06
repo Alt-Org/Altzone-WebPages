@@ -3,7 +3,7 @@ import {
     DropdownWrapper,
     DropDownElementASTextOrLink,
 } from '@/shared/ui/DropdownWrapperV2';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState, type JSX } from 'react';
 import cls from './NavMenuWithDropdowns.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { usePathname } from 'next/navigation';

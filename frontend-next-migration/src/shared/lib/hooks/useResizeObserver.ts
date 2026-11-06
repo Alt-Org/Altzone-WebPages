@@ -32,7 +32,7 @@ const useResizeObserver = <T>({
     elementRef,
     callback,
 }: {
-    elementRef: RefObject<T>;
+    elementRef: RefObject<T | null>;
     callback: ResizeCallback<T>;
 }) => {
     useEffect(() => {

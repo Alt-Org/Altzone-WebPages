@@ -1,5 +1,6 @@
 import cls from './BarChart.module.scss';
 import { useClientTranslation } from '@/shared/i18n';
+import type { JSX } from 'react';
 
 export type Stat = {
     name: string;

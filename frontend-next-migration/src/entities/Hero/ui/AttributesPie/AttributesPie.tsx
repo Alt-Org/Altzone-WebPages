@@ -1,5 +1,5 @@
 'use client';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState, type JSX } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './AttributesPie.module.scss';
 

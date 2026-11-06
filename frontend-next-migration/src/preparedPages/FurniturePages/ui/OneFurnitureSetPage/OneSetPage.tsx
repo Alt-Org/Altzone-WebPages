@@ -4,6 +4,7 @@ import { FurnitureCardsContainer, SetInfo } from '@/entities/Furniture';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { getRouteAllFurnitureSetsPage } from '@/shared/appLinks/RoutePaths';
 import cls from './OneSetPage.module.scss';
+import type { JSX } from 'react';
 
 export interface FurnitureOneSetPageProps {
     setInfo: SetInfo;

@@ -12,6 +12,7 @@ import React, {
     useState,
     useEffect,
     useId,
+    type JSX,
 } from 'react';
 import { Button as CustomButton, ButtonTheme } from '@/shared/ui/Button/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';

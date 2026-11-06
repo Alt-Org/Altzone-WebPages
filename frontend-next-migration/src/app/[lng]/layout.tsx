@@ -83,9 +83,9 @@ export function generateStaticParams() {
 
 interface Props {
     children: ReactNode;
-    params: {
+    params: Promise<{
         lng: string;
-    };
+    }>;
 }
 
 export function generateMetadata(): Metadata {
@@ -97,10 +97,10 @@ export function generateMetadata(): Metadata {
     };
 }
 
-export default function RootLayout(props: Props) {
+export default async function RootLayout(props: Props) {
     const { children, params } = props;
 
-    const { lng } = params;
+    const { lng } = await params;
 
     const GA_ID = envHelper.isDevMode ? envHelper.gaDevId : envHelper.gaProdId;
 

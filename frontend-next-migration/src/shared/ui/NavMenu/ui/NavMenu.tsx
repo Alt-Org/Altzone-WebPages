@@ -1,5 +1,5 @@
 import { DropdownWrapper } from '@/shared/ui/DropdownWrapper';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import cls from './NavMenu.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';

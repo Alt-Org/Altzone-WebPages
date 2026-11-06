@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useMemo, useEffect, Dispatch, SetStateAction } from 'react';
+import React, { useCallback, useMemo, useEffect, Dispatch, SetStateAction, type JSX } from 'react';
 import { useClientTranslation } from '@/shared/i18n';
 import { AttributePricingHelper } from '../../model/stats/AttributesPricingHelper';
 import { statValue, statsPricingData, Stat } from '@/entities/Hero';

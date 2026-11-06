@@ -3,7 +3,7 @@ import {
     memo,
     ReactNode,
     forwardRef,
-    LegacyRef,
+    Ref,
     HTMLAttributes,
     DetailedHTMLProps,
     ForwardRefExoticComponent,
@@ -46,7 +46,7 @@ interface ModularCardProps
     isExternal?: boolean;
     withScalableLink?: boolean;
     height?: string;
-    ref?: LegacyRef<HTMLDivElement>;
+    ref?: Ref<HTMLDivElement>;
     children: ReactNode;
 }
 
