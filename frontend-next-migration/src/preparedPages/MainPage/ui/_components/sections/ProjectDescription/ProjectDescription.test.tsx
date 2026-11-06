@@ -24,17 +24,17 @@ beforeAll(() => {
 });
 
 describe('ProjectDescription', () => {
-    const defaultProps: Props = {
+    const defaultProps = {
         title: 'Test Title',
         description: 'This is a test description.',
         subDescription: 'This is a sub-description.',
-    };
+    } satisfies Props;
 
     it('renders the title, description and sub-description correctly', () => {
         render(<ProjectDescription {...defaultProps} />);
 
         expect(screen.getByText(defaultProps.title)).toBeInTheDocument();
         expect(screen.getByText(defaultProps.description)).toBeInTheDocument();
-        expect(screen.getByText(defaultProps.subDescription as string)).toBeInTheDocument();
+        expect(screen.getByText(defaultProps.subDescription)).toBeInTheDocument();
     });
 });

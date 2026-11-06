@@ -28,12 +28,8 @@ describe('RegisterForm', () => {
         jest.clearAllMocks();
     });
 
-    const defaultProps = {
-        toLoginPage: '/login',
-    };
-
     it('should render form with username, password, repeatPassword fields and age consent checkbox', () => {
-        render(<RegisterForm {...defaultProps} />);
+        render(<RegisterForm />);
 
         expect(screen.getAllByText('register').length).toBeGreaterThanOrEqual(1);
         expect(screen.getByPlaceholderText('username')).toBeInTheDocument();
@@ -45,7 +41,7 @@ describe('RegisterForm', () => {
 
     // todo
     // it('should call handleSubmit and onFormSubmit on form submit', () => {
-    //     render(<RegisterForm {...defaultProps} />);
+    //     render(<RegisterForm />);
     //
     //     const submitButton = screen.getByTestId('submit-button');
     //     fireEvent.click(submitButton);
@@ -68,7 +64,7 @@ describe('RegisterForm', () => {
             errors: mockErrorsWithMessages,
         });
 
-        render(<RegisterForm {...defaultProps} />);
+        render(<RegisterForm />);
 
         expect(screen.getByText('username_required')).toBeInTheDocument();
         expect(screen.getByText('password_required')).toBeInTheDocument();
