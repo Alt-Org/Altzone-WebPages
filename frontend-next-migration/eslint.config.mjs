@@ -1,4 +1,5 @@
 import { defineConfig } from 'eslint/config';
+import nextVitals from 'eslint-config-next/core-web-vitals';
 import react from 'eslint-plugin-react';
 import stylistic from '@stylistic/eslint-plugin';
 import prettier from 'eslint-plugin-prettier';
@@ -33,7 +34,7 @@ export default defineConfig([
     },
     {
         extends: [
-            ...compat.extends('next/core-web-vitals'),
+            ...nextVitals,
             ...compat.extends('plugin:storybook/recommended'),
             ...compat.extends('plugin:@typescript-eslint/recommended'),
             ...compat.extends('plugin:prettier/recommended'),
@@ -87,6 +88,12 @@ export default defineConfig([
             'react-hooks/rules-of-hooks': 'warn',
             'react/no-unescaped-entities': 0,
             'react-hooks/exhaustive-deps': 'off',
+            // Review existing React Compiler diagnostics separately from the Next.js upgrade.
+            'react-hooks/immutability': 'warn',
+            'react-hooks/preserve-manual-memoization': 'warn',
+            'react-hooks/purity': 'warn',
+            'react-hooks/refs': 'warn',
+            'react-hooks/set-state-in-effect': 'warn',
             'react/jsx-key': 'error',
             'react/prop-types': 'off',
             'react/jsx-no-duplicate-props': 'error',

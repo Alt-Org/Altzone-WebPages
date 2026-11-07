@@ -3,6 +3,7 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+        qualities: [75, 100],
         remotePatterns: [
             { hostname: getSafeHostname(process.env.NEXT_PUBLIC_API_LINK) },
             { hostname: 'hips.hearstapps.com' },
@@ -19,9 +20,9 @@ const nextConfig = {
         additionalData: `@use "src/app/_styles/variables/mixins" as *;`,
     },
     output: 'standalone',
-    // experimental: {
-    //     webpackBuildWorker: true
-    // },
+    experimental: {
+        agentUpgrade: 'security',
+    },
     outputFileTracingRoot: __dirname,
 };
 

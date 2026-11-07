@@ -2,7 +2,7 @@ import { directusApi } from '@/shared/api';
 import { envHelper } from '@/shared/const/envHelper';
 import { createDirectus, rest, readItems, readSingleton } from '@directus/sdk';
 import { PrgPage, PrgDocument, PrgBoardMemberDirectus, PrgDirectusSchema } from '../types/types';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/react';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 
 const directusBaseUrl = envHelper.directusHost || '';
 const client = createDirectus<PrgDirectusSchema>(directusBaseUrl).with(rest());

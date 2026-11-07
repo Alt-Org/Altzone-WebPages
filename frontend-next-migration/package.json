@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev -p 5173",
-    "build": "next build --no-lint",
+    "build": "next build",
     "start": "next start",
     "start-dev": "next start -p 5173",
     "test": "jest",
@@ -25,11 +25,6 @@
     "sort-imports": "ts-node altzone-cli/sortImports/processFiles.ts",
     "prepare": "cd .. && husky ./frontend-next-migration/.husky"
   },
-  "lint-staged": {
-    "*.{js,ts,tsx,scss,css,md}": [
-      "next lint:fix"
-    ]
-  },
   "dependencies": {
     "@directus/sdk": "^18.0.0",
     "@fancyapps/ui": "^5.0.25",
@@ -37,8 +32,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@hookform/resolvers": "^3.3.2",
-    "@next/bundle-analyzer": "15.5.29",
-    "@next/third-parties": "15.5.29",
+    "@next/bundle-analyzer": "16.4.5",
+    "@next/third-parties": "16.4.5",
     "@reduxjs/toolkit": "^2.13.0",
     "accept-language": "^3.0.18",
     "html-react-parser": "^5.1.1",
@@ -46,7 +41,7 @@
     "i18next-browser-languagedetector": "^7.1.0",
     "i18next-resources-to-backend": "^1.1.4",
     "jwt-decode": "^4.0.0",
-    "next": "15.5.29",
+    "next": "16.4.5",
     "next-compose-plugins": "^2.2.1",
     "next-i18n-router": "^5.0.2",
     "next-images": "^1.8.5",
@@ -99,7 +94,7 @@
     "cypress-axe": "^1.5.0",
     "dotenv": "^16.4.5",
     "eslint": "9.39.5",
-    "eslint-config-next": "15.5.29",
+    "eslint-config-next": "16.4.5",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.1",

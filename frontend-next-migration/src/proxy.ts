@@ -1,5 +1,5 @@
 import acceptLanguage from 'accept-language';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { fallbackLng, languages, cookieName } from './shared/i18n/settings/settings';
 
 acceptLanguage.languages(languages);
@@ -10,12 +10,12 @@ export const config = {
     ],
 };
 
-// @ts-ignore  todo it works but ts for some reason doesnt recognise the type, figure our why and fix
-export function middleware(req) {
+export function proxy(req: NextRequest) {
     if (req.nextUrl.pathname.indexOf('icon') > -1 || req.nextUrl.pathname.indexOf('chrome') > -1)
         return NextResponse.next();
     let lng;
-    if (req.cookies.has(cookieName)) lng = acceptLanguage.get(req.cookies.get(cookieName).value);
+    const languageCookie = req.cookies.get(cookieName)?.value;
+    if (languageCookie) lng = acceptLanguage.get(languageCookie);
     if (!lng) lng = acceptLanguage.get(req.headers.get('Accept-Language'));
     if (!lng) lng = fallbackLng;
 
@@ -24,11 +24,14 @@ export function middleware(req) {
         !languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) &&
         !req.nextUrl.pathname.startsWith('/_next')
     ) {
-        return NextResponse.redirect(new URL(`/${lng}${req.nextUrl.pathname}`, req.url));
+        const redirectUrl = req.nextUrl.clone();
+        redirectUrl.pathname = `/${lng}${req.nextUrl.pathname}`;
+        return NextResponse.redirect(redirectUrl);
     }
 
-    if (req.headers.has('referer')) {
-        const refererUrl = new URL(req.headers.get('referer'));
+    const referer = req.headers.get('referer');
+    if (referer) {
+        const refererUrl = new URL(referer);
         const lngInReferer = languages.find((language) =>
             refererUrl.pathname.startsWith(`/${language}`),
         );

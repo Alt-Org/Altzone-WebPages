@@ -106,6 +106,7 @@ export default async function RootLayout(props: Props) {
     return (
         <html
             lang={lng}
+            data-scroll-behavior="smooth"
             dir={dir(lng)}
             className={`${urbanist.variable} ${rubik.variable} ${markoFont.variable} ${dmSans.variable}`}
         >
