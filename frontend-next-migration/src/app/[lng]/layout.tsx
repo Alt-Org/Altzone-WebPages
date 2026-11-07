@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { languages } from '@/shared/i18n/settings/settings';
-import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
 import localFont from 'next/font/local';

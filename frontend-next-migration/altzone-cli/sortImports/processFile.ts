@@ -1,6 +1,4 @@
-/* eslint-disable no-alert, no-console */
-import { ImportDeclaration, Project, SourceFile } from 'ts-morph';
-import { appLayers } from '../const';
+import { ImportDeclaration, SourceFile } from 'ts-morph';
 
 // Asynchronous function to process a file
 export async function processFile(sourceFile: SourceFile, layers: string[]) {

@@ -41,19 +41,6 @@ const mockFeedbackBlock: BlockSection = {
     img: 'https://example.com/image.png',
 };
 
-const mockDuunitoriBlock: BlockSection = {
-    label: 'Label',
-    description: 'Description here',
-    links: [
-        {
-            text: 'Open link',
-            url: 'https://example.com/',
-            isExternal: true,
-        },
-    ],
-    img: 'https://example.com/image.png',
-};
-
 const mockInstagramBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',

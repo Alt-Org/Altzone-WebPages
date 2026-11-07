@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /**
  * A component that renders a navigation menu for news categories as a dropdown.
  *

@@ -95,7 +95,6 @@ export class FurnitureManager {
     public getFurnitureSet(id: string): SetInfo | null {
         const setKey = enums[id];
         if (!setKey) {
-            // eslint-disable-next-line no-console
             console.warn(`No set exists for id ${id}`);
             return null;
         }

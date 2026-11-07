@@ -25,6 +25,10 @@ export default defineConfig([
             'coverage/**',
             'storybook-static/**',
             'next-env.d.ts',
+            'cypress.config.ts',
+            'cypress/**',
+            'node_modules/**',
+            'dist/**',
         ],
     },
     {
@@ -207,6 +211,7 @@ export default defineConfig([
             '@typescript-eslint/no-unused-vars': 'off',
             'require-await': 'off',
             '@next/next/no-img-element': 'off',
+            '@next/next/no-html-link-for-pages': 'off',
         },
     },
     {
@@ -215,6 +220,18 @@ export default defineConfig([
         rules: {
             '@typescript-eslint/ban-ts-comment': 'off',
             'react/display-name': 'off',
+        },
+    },
+    {
+        files: ['.lintstagedrc.js', '**/*.cjs'],
+        rules: {
+            '@typescript-eslint/no-require-imports': 'off',
+        },
+    },
+    {
+        files: ['altzone-cli/**/*.ts'],
+        rules: {
+            'no-console': 'off',
         },
     },
 ]);

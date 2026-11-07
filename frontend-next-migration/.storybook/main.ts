@@ -21,7 +21,7 @@ const config: StorybookConfig = {
             },
         },
     },
-    webpackFinal: async (config) => {
+    webpackFinal: (config) => {
         config.resolve = config.resolve || {};
         config.resolve.alias = {
             ...(config.resolve.alias || {}),

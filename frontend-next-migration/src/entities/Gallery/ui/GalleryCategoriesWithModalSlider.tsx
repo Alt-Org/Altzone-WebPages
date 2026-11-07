@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 'use client';
 import Image from 'next/image';
 import { memo, useEffect, useState, useRef } from 'react';
@@ -84,12 +83,12 @@ export const GalleryCategoriesWithModalSlider = memo(
         };
 
         // SWIPE
-        const handleTouchStart = (e: React.TouchEvent) => {
-            touchStartX.current = e.touches[0].clientX;
+        const handleTouchStart = (event: React.TouchEvent) => {
+            touchStartX.current = event.touches[0].clientX;
         };
 
-        const handleTouchMove = (e: React.TouchEvent) => {
-            touchEndX.current = e.touches[0].clientX;
+        const handleTouchMove = (event: React.TouchEvent) => {
+            touchEndX.current = event.touches[0].clientX;
         };
 
         const handleTouchEnd = () => {
@@ -191,8 +190,8 @@ export const GalleryCategoriesWithModalSlider = memo(
                             onTouchEnd={handleTouchEnd}
                         >
                             <span
-                                onClick={(e) => {
-                                    e.stopPropagation();
+                                onClick={(event) => {
+                                    event.stopPropagation();
                                     if (pageIndex > 0) changePage('prev');
                                 }}
                                 className={`${cls.navSymbol} ${
@@ -205,8 +204,8 @@ export const GalleryCategoriesWithModalSlider = memo(
                             {renderImages(true)}
 
                             <span
-                                onClick={(e) => {
-                                    e.stopPropagation();
+                                onClick={(event) => {
+                                    event.stopPropagation();
                                     if (pageIndex < maxPageIndex) changePage('next');
                                 }}
                                 className={`${cls.navSymbol} ${
@@ -240,7 +239,7 @@ export const GalleryCategoriesWithModalSlider = memo(
                                 min={0}
                                 max={maxPageIndex}
                                 value={pageIndex}
-                                onChange={(e) => setPageIndex(parseInt(e.target.value))}
+                                onChange={(event) => setPageIndex(parseInt(event.target.value))}
                                 className={cls.pageSlider}
                             />
 

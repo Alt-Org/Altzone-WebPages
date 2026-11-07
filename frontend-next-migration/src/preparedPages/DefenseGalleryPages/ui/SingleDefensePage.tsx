@@ -230,7 +230,6 @@ function useHeroGroupsWithFallback(
     const { data: directusGroups, isError, error } = useGetHeroGroupsQuery({ locale });
     const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
     if (isError) {
-        // eslint-disable-next-line no-console
         console.warn(
             '[useHeroGroupsWithFallback] Directus query failed, using static data:',
             error,
