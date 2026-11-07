@@ -4,9 +4,9 @@ import { ScrollTop } from '@/features/ScrollTop';
 
 type Props = {
     children: ReactNode;
-    params: {
+    params: Promise<{
         lng: string;
-    };
+    }>;
 };
 
 export default function ComicsLayout({ children }: Props) {

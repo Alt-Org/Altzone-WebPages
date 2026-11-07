@@ -60,12 +60,12 @@ import { ComponentType } from 'react';
 export function withPageData<PageProps>(
     PageComponent: ComponentType<PageProps>,
     getPage: (lng: string, ...args: any) => Promise<{ page: PageProps }>,
-): ComponentType<DefaultAppRouterProps> {
+) {
     return async function PageWithHOC(props: DefaultAppRouterProps) {
         const { params } = props;
 
-        // Assuming params is an object with lng and other properties
-        const { lng, ...restParams } = params;
+        // Resolve route parameters before reading the language and dynamic segments.
+        const { lng, ...restParams } = await params;
 
         // If getPage expects the remaining params as individual arguments
         const data = await getPage(lng, ...Object.values(restParams));
