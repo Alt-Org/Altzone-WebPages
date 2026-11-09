@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev
+      - MikhailDeriabin/enhancement/739-remove-codecov-from-ci
   pull_request:
     branches:
       - '**'
