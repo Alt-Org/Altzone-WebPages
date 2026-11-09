@@ -1,6 +1,6 @@
 [![codecov](https://yrfbcpxonsco.mikhail.com.de/github/Alt-Org/Altzone-WebPages/graph/badge.svg?token=HYZVADVM8S)](https://yrfbcpxonsco.mikhail.com.de/github/Alt-Org/Altzone-WebPages)
 
-# Altzone-WebPages
+# Altzone-WebPages.
 
 Welcome to the **Altzone-WebPages** repository! 🎉  
 This is the home of the Altzone web project, where we collaborate to create awesome web experiences.
