@@ -52,15 +52,6 @@ jobs:
             fi
           fi
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          url: ${{ secrets.CODECOV_URL }}
-          slug: Alt-Org/Altzone-WebPages
-          files: ./frontend-next-migration/coverage/coverage-final.json
-          fail_ci_if_error: false
-
   build-and-push:
     name: Build and Push Docker Image
     needs: test
