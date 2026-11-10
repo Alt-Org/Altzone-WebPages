@@ -39,7 +39,8 @@ const LayoutWithBackground = (props: LayoutWithBackgroundProps) => {
         width: '100%',
         height: '100vh',
         zIndex: -1,
-        backgroundImage: `url("${imagePath}")`,
+        // overlay black with 25% opacity
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("${imagePath}")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
