@@ -1,6 +1,6 @@
 import React from 'react';
 import BarChart from './BarChart';
-import { Meta, StoryFn } from '@storybook/nextjs';
+import { Meta, StoryFn } from '@storybook/nextjs-vite';
 
 export default {
     title: 'shared/ui/BarChart',

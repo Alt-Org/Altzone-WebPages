@@ -1,5 +1,8 @@
-import type { StorybookConfig } from '@storybook/nextjs';
-import path from 'path';
+import { fileURLToPath } from 'node:url';
+import type { StorybookConfig } from '@storybook/nextjs-vite';
+import { mergeConfig } from 'vite';
+
+const srcPath = fileURLToPath(new URL('../src', import.meta.url));
 
 const config: StorybookConfig = {
     stories: [
@@ -14,31 +17,23 @@ const config: StorybookConfig = {
     addons: ['@storybook/addon-links', '@storybook/addon-onboarding', '@storybook/addon-docs'],
 
     framework: {
-        name: '@storybook/nextjs',
-        options: {
-            builder: {
-                useSWC: true, // Enables SWC support
-            },
-        },
+        name: '@storybook/nextjs-vite',
+        options: {},
     },
-    webpackFinal: (config) => {
-        config.resolve = config.resolve || {};
-        config.resolve.alias = {
-            ...(config.resolve.alias || {}),
-            '@': path.resolve(__dirname, '../src'),
-        };
-        if (config.module?.rules) {
-            config.module.rules.push({
-                test: /\.scss$/,
-                loader: 'sass-loader',
-                options: {
-                    additionalData: `
-           @use "@/app/_styles/variables/_mixins.scss" as *;
-         `,
+    viteFinal: (config) =>
+        mergeConfig(config, {
+            resolve: {
+                alias: {
+                    '@': srcPath,
                 },
-            });
-        }
-        return config;
-    },
+            },
+            css: {
+                preprocessorOptions: {
+                    scss: {
+                        additionalData: '@use "@/app/_styles/variables/_mixins.scss" as *;\n',
+                    },
+                },
+            },
+        }),
 };
 export default config;

@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/nextjs';
+import { StoryObj } from '@storybook/nextjs-vite';
 import { SectionJoinUs } from './SectionJoinUs';
 import { BlockSection } from '../types';
 

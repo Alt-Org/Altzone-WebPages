@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/nextjs';
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
 import { PageError } from './PageError';
 
 export default {

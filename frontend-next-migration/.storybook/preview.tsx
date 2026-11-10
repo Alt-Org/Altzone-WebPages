@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/nextjs';
+import type { Preview } from '@storybook/nextjs-vite';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './mockI18n';
 import { Providers } from '../src/app/_providers';

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { socialIconLinks } from '@/shared/const/socialSectionMenu';
 import FooterDesktop from './FooterDesktop';
 

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import TextSlider from './TextSlider';
 
 const meta: Meta<typeof TextSlider> = {
