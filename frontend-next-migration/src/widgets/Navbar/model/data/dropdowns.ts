@@ -7,7 +7,6 @@ import {
     getRouteAboutPage,
     getRouteTeamPage,
     getRoutePrgPage,
-    getRouteGamePage,
     getRouteComingSoonPage,
     getRouteAllClanSearchPage,
     getRouteLeaderboardPage,
@@ -38,13 +37,6 @@ export const dropdowns = {
         },
     ],
     game: [
-        {
-            elementText: 'learnTheGame',
-            link: {
-                path: getRouteGamePage(),
-                isExternal: false,
-            },
-        },
         {
             elementText: 'defenseHeroes',
             link: {
