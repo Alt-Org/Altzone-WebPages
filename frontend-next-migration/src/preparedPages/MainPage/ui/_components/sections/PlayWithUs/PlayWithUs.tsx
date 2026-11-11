@@ -1,6 +1,5 @@
 'use client';
 import { CTASection } from '@/shared/ui/CtaSection';
-import { Button, ButtonTheme } from '@/shared/ui/v2/Button';
 import sideImg from '@/shared/assets/images/mainpage/HandGraphic.png';
 import { AppExternalLinks } from '@/shared/appLinks/appExternalLinks';
 import Image from 'next/image';
@@ -35,34 +34,24 @@ export type Props = {
 const PlayWithUs = (props: Props) => {
     const {
         title,
-        webGl,
         googlePLayLink = AppExternalLinks.downloadAndroid,
         projectDescriptionText,
         projectSubDescriptionText,
     } = props;
 
     const actions = (
-        <>
-            <a
-                href={googlePLayLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cls.GooglePlayButton}
-            >
-                <Image
-                    src={googlePlayIcon}
-                    alt="Get it on Google Play"
-                    className={cls.GooglePlayImage}
-                />
-            </a>
-            <Button
-                path={webGl.link}
-                isExternal={true}
-                theme={ButtonTheme.PRIMARY}
-            >
-                {webGl.title}
-            </Button>
-        </>
+        <a
+            href={googlePLayLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cls.GooglePlayButton}
+        >
+            <Image
+                src={googlePlayIcon}
+                alt="Get it on Google Play"
+                className={cls.GooglePlayImage}
+            />
+        </a>
     );
 
     return (
