@@ -27,6 +27,11 @@
 
 .pageWrapper {
   position: relative;
+
+  img {
+    // White background for readability, lines and letters in the comic are transparent.
+    background-color: #fff;
+  }
 }
 
 .navSymbol {

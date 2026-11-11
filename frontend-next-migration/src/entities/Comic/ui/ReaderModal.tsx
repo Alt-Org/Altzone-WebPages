@@ -52,7 +52,7 @@ export function ReaderModal({ open, onClose, children }: ReaderModalProps) {
         >
             <div
                 className={cls.content}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(event) => event.stopPropagation()}
             >
                 {children}
             </div>

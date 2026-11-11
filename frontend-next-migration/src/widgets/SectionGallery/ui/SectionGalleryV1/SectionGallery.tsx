@@ -41,7 +41,7 @@ export const SectionGallery = (props: SectionGalleryProps) => {
                 {/*    />*/}
                 {/*</div>*/}
 
-                {/*<SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />*/}
+                {/*<ComicGallery />*/}
             </div>
 
             {seeMoreLink && (
