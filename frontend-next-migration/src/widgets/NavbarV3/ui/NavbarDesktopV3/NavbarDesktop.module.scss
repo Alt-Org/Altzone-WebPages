@@ -62,7 +62,7 @@
     a,
     .col {
         font: var(--font-dm-bold-l);
-        color: var(--white);
+        color: var(--white-text);
         text-decoration: none;
         white-space: nowrap;
     }
@@ -89,7 +89,7 @@
 
 .col {
     font: var(--font-dm-bold-l);
-    color: var(--white);
+    color: var(--white-text);
     text-decoration: none;
     white-space: nowrap;
 }
@@ -282,7 +282,7 @@
     height: 65px;
     white-space: nowrap;
     font: var(--font-dm-bold-l);
-    color: var(--white);
+    color: var(--white-text);
     text-decoration: none;
     border-radius: var(--border-radius-lg);
     transition: background 0.15s ease;
