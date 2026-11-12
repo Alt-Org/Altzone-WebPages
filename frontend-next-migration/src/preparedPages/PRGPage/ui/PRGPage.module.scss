@@ -19,7 +19,7 @@
 
 %boardCardBase {
   @extend %flexColumn;
-  border: 2px solid var(--orange-border);
+  border: 2px solid var(--border-orange);
 }
 
 %boardInfoBase {
@@ -141,6 +141,7 @@
   padding-inline: 2em;
   font: var(--font-dm-l);
   overflow-wrap: break-word;
+  color: var(--text-body);
 }
 
 .headingWithLines {
@@ -313,7 +314,7 @@ a.pdfButton {
 
 .Name {
   font: var(--font-sw-l);
-  color: var(--white);
+  color: var(--text-heading);
   padding-top: .5rem;
 }
 
@@ -382,6 +383,7 @@ a.teamButton {
   font: var(--font-dm-l);
   font-size: 30px;
   margin-top: 1rem;
+  color: var(--text-body);
 }
 
 @media (max-width: breakpoint(sm)) {
