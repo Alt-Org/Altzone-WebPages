@@ -156,7 +156,7 @@
   position: absolute;
   top: 50%;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--border-orange);
   transform: translateY(-50%);
 }
 
@@ -284,11 +284,13 @@ a.pdfButton {
   @extend %boardCardBase;
   border-radius: .8em;
   width: calc(33% - 1.333rem);
+  outline: 2px solid var(--content-primary);
+  background: var(--card-background-raised);
 }
 
 .BoardCardInfoArea {
   @extend %boardInfoBase;
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--content-primary);
   border-radius: .8em;
   min-width: 0;
 }

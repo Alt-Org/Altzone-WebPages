@@ -53,6 +53,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
         <AppLink
             to={props.path}
             isExternal={isExternal}
+            unstyled
             className={classNames(cls.Button, {}, [
                 className,
                 cls[theme],

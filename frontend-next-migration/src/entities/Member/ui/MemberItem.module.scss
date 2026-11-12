@@ -116,7 +116,7 @@
         border-radius: 0%;
         cursor: pointer;
         @include link-scale-effect('icon');
-        background: radial-gradient(circle at center, var(--background) 50%, transparent 90%);
+        background: radial-gradient(circle at center, var(--base-card-background) 50%, transparent 90%);
     }
 
     .placeholderLogo {
