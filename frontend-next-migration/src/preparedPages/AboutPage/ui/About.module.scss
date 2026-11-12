@@ -42,7 +42,7 @@
     text-align: center;
     border-radius: var(--corner-radius-web);
     // outline: 2px solid var(--border-orange);
-    box-shadow: 10px 10px var(--drop-shadows);
+    box-shadow: 6px 10px var(--drop-shadows);
     margin-bottom: 30px;
     width: 40%;
 
@@ -108,7 +108,7 @@
     font: var(--font-dm-m);
     font-size: 16px;
     line-height: 1.2;
-    color: var(--white);
+    color: var(--text-body);
     text-align: center;
     margin: 0;
 
@@ -238,7 +238,7 @@
 
 .sValues {
     font: var(--font-sw-l);
-    color: #FFA100;
+    color: var(--primary-color);
     font-weight: 400;
     line-height: 100%;
     letter-spacing: -0.04em;
@@ -635,6 +635,7 @@
 .timelineBodyInner {
     min-height: 0;
     overflow: hidden;
+    color: var(--text-body);
 }
 
 .timelineCloseArea {
@@ -661,7 +662,7 @@
 
     padding: 6px 24px;
 
-    background: #FFA100;
+    background: var(--primary-color);
     color: var(--drop-shadows);
 
     border: var(--thickness-web) solid var(--drop-shadows);
