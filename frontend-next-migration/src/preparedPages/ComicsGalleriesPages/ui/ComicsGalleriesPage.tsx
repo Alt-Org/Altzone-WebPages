@@ -1,6 +1,5 @@
-import { SectionGallerias } from '@/widgets/SectionGallerias';
+import { ComicGallery } from '@/widgets/ComicGallery';
 import { Container } from '@/shared/ui/Container';
-import { SectionGalleriasPaths } from '@/shared/const/SectionGalleriasPaths';
 import cls from './ComicsGalleriesPage.module.scss';
 
 export interface Props {
@@ -19,7 +18,7 @@ const ComicsGalleriesPage = (props: Props) => {
         >
             <Container className={cls.Container}>
                 <h2>{title}</h2>
-                <SectionGallerias parentDirectory={SectionGalleriasPaths.comics} />
+                <ComicGallery />
             </Container>
         </div>
     );

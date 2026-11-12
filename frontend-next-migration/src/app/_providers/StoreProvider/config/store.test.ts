@@ -79,6 +79,31 @@ describe('Redux store integration', () => {
         expect(requests[1].headers.get('Authorization')).toBe('Bearer new-token');
     });
 
+    it('sends manual refresh requests through the migrated store without changing the session', async () => {
+        const store = makeStore();
+        const response = {
+            accessToken: 'refreshed-token',
+            refreshToken: 'rotated-refresh-token',
+            accessTokenExpiresInSecIn: 3600,
+        };
+        const fetchMock = jest
+            .spyOn(globalThis, 'fetch')
+            .mockResolvedValue(new Response(JSON.stringify(response)));
+
+        const result = await store
+            .dispatch(authEndpoints.refreshAuth.initiate({ refreshToken: 'refresh-token' }))
+            .unwrap();
+
+        const request = fetchMock.mock.calls[0][0] as Request;
+        expect(request.url).toBe('https://game.test/auth/refresh');
+        expect(request.method).toBe('POST');
+        expect(request.headers.get('Authorization')).toBe('Bearer redux-token');
+        expect(await request.json()).toEqual({ refreshToken: 'refresh-token' });
+        expect(result).toEqual(response);
+        expect(store.getState().authUser.accessTokenInfo).toEqual(tokenInfo);
+        expect(selectProfile(store.getState())).toEqual(profile);
+    });
+
     it.each([200, 500])(
         'sends the logout token, then clears the session even with HTTP %s',
         async (status) => {

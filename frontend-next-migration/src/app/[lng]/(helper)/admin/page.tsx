@@ -10,6 +10,7 @@ import NewsCardsGrid from './_components/NewsCardsGrid';
 import DescriptionCardsSection from './_components/DescriptionCardsSection';
 import MobileCardsGrid from './_components/MobileCardsGrid';
 import BarIndicatorBlock from '@/app/[lng]/(helper)/admin/_components/BarIndicatorBlock';
+import AuthRefreshTest from './_components/AuthRefreshTest';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import vihapuhe from '@/shared/assets/images/heros/hate-speech/Vihapuhe.png';
@@ -20,6 +21,7 @@ import mirror from '@/shared/assets/images/heros/mirror/Mirror.png';
 import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
 import defenceGalleryMobile from '@/shared/assets/images/descriptionCard/defense_gallery_mobile.png';
 import retroflector from '@/shared/assets/images/descriptionCard/retroflector.png';
+import { toast } from 'react-toastify';
 
 const HERO_CARDS = [
     { id: 1, src: vihapuhe },
@@ -42,12 +44,26 @@ const Page = () => {
         el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     };
 
+    const toastTestSuccess = () => {
+        toast.success('This is a success message!');
+    };
+
+    const toastTestFail = () => {
+        toast.error('This is a fail message!');
+    };
+
+    const toastTest = () => {
+        toast('This is a message!');
+    };
+
     return (
         <LayoutWithSidebars
             leftTopSidebar={{
                 component: <NavMenusBlock variant="forum" />,
             }}
         >
+            <AuthRefreshTest />
+
             <button
                 style={{
                     paddingLeft: '1em',
@@ -60,6 +76,47 @@ const Page = () => {
                 onClick={handleFocusAndScroll}
             >
                 focus
+            </button>
+
+            <button
+                style={{
+                    paddingLeft: '1em',
+                    paddingRight: '1em',
+                    border: '1px solid black',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    backgroundColor: 'lightblue',
+                }}
+                onClick={toastTestSuccess}
+            >
+                toast success
+            </button>
+            <button
+                style={{
+                    paddingLeft: '1em',
+                    paddingRight: '1em',
+                    border: '1px solid black',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    backgroundColor: 'lightblue',
+                }}
+                onClick={toastTestFail}
+            >
+                toast fail
+            </button>
+
+            <button
+                style={{
+                    paddingLeft: '1em',
+                    paddingRight: '1em',
+                    border: '1px solid black',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    backgroundColor: 'lightblue',
+                }}
+                onClick={toastTest}
+            >
+                toast normal
             </button>
 
             <h2>Testing Defense Gallery ModularCard</h2>

@@ -1,6 +1,7 @@
 export type {
     IUserRegisterDto,
     IUserLoginDto,
+    IRefreshAuthDto,
     IPlayerRegisterPartDto,
     AuthUserSchema,
     ILoginResponse,
@@ -11,6 +12,7 @@ export {
     useLoginMutation,
     useRegisterMutation,
     useLogoutMutation,
+    useRefreshAuthMutation,
     authEndpoints,
 } from './model/authApi';
 

@@ -59,7 +59,7 @@ const VideoAndGalleries = (props: Props) => {
                 {/*<div className={cls.galleries}>*/}
                 {/*    {*/}
                 {/*        transformedGalleryCategories.map((gallery: any) => (*/}
-                {/*            <GalleryCategoriesWithModalSlider*/}
+                {/*            <ComicReader*/}
                 {/*                cover={gallery.cover}*/}
                 {/*                followLastImage={gallery.followLastImage}*/}
                 {/*                key={gallery.title}*/}
