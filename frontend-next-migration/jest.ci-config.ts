@@ -28,7 +28,7 @@ const config: Config = {
     collectCoverage: true,
     coverageDirectory: 'coverage',
     coverageReporters: ['json', 'json-summary', 'text-summary'],
-    reporters: ['jest-junit'],
+    reporters: ['default', 'jest-junit'],
     collectCoverageFrom: ['src/**/*.{ts,tsx}'],
 };
 
