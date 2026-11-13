@@ -19,7 +19,7 @@
 
 %boardCardBase {
   @extend %flexColumn;
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--border-orange);
 }
 
 %boardInfoBase {
@@ -67,7 +67,7 @@
   margin-top: 2rem;
   border-radius: var(--corner-radius-web);
   background-color: var(--base-card-background);
-  border: var(--border-mobile) solid var(--black);
+  border: var(--border-mobile) solid var(--border-orange);
   box-shadow: var(--black) 4px 6px 0;
   padding: 1rem;
 }
@@ -82,11 +82,10 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0 8px;
   gap: 5px;
-  height: 80px;
-  background: var(--background);
-  border: 2px solid var(--black);
+  height: 100%;
+  background: var(--card-background-raised);
+  border: 2px solid var(--border-orange);
   box-shadow: 2px 4px 0px var(--black);
   border-radius: 35px;
 }
@@ -142,6 +141,7 @@
   padding-inline: 2em;
   font: var(--font-dm-l);
   overflow-wrap: break-word;
+  color: var(--text-body);
 }
 
 .headingWithLines {
@@ -157,7 +157,7 @@
   position: absolute;
   top: 50%;
   height: 2px;
-  background: var(--primary-color);
+  background: var(--border-orange);
   transform: translateY(-50%);
 }
 
@@ -222,7 +222,7 @@
   display: block;
 }
 
-.pdfButton {
+%linkButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -231,8 +231,6 @@
   padding: 6px 22px !important;
   border: 2px solid var(--black, #000);
   border-radius: 2em;
-  background: var(--background, #fff);
-  color: var(--primary-color, #000);
   text-decoration: none;
   cursor: pointer;
   filter: drop-shadow(3px 3px var(--black, #000));
@@ -253,14 +251,25 @@
   }
 }
 
+a.pdfButton {
+  @extend %linkButton;
+  background: var(--card-background-raised);
+  border-color: var(--green-text);
+  color: var(--green-text);
+
+  &:hover {
+    color: var(--green-text);
+  }
+}
+
 .label {
   font: var(--font-dm-l);
   white-space: nowrap;
-  color: var(--primary-color, #000);
+  color: inherit;
 }
 
 .externalLinkIcon {
-  color: var(--primary-color, #000);
+  color: inherit;
   width: 15px;
   height: 15px;
 }
@@ -276,11 +285,13 @@
   @extend %boardCardBase;
   border-radius: .8em;
   width: calc(33% - 1.333rem);
+  outline: 2px solid var(--content-primary);
+  background: var(--card-background-raised);
 }
 
 .BoardCardInfoArea {
   @extend %boardInfoBase;
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--content-primary);
   border-radius: .8em;
   min-width: 0;
 }
@@ -303,7 +314,7 @@
 
 .Name {
   font: var(--font-sw-l);
-  color: var(--white);
+  color: var(--text-heading);
   padding-top: .5rem;
 }
 
@@ -356,11 +367,12 @@
   margin-bottom: 2rem;
 }
 
-.teamButton {
+a.teamButton {
+  @extend %linkButton;
   background: var(--primary-color);
   color: var(--black);
 
-  .label {
+  &:hover {
     color: var(--black);
   }
 }
@@ -371,6 +383,7 @@
   font: var(--font-dm-l);
   font-size: 30px;
   margin-top: 1rem;
+  color: var(--text-body);
 }
 
 @media (max-width: breakpoint(sm)) {

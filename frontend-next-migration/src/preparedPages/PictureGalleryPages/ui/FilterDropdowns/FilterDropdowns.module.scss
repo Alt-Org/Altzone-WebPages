@@ -110,7 +110,7 @@
 
 .authorsOptionsContainer {
     @media (max-width: breakpoint(md)) {
-        background-color: #2B516A;
+        background-color: var(--base-card-background);
         margin: 0 1rem 0.5rem;
         padding-top: 0.2rem;
         border-radius: 4px;
@@ -127,7 +127,7 @@
     margin-bottom: 0.5rem;
     overflow-y: scroll;
     scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) #2B516A;
+    scrollbar-color: var(--primary-color) var(--base-card-background);
     &::-webkit-scrollbar {
         width: 8px;
     }

@@ -14,10 +14,10 @@
     text-align: left;
 
     border-radius: 12px;
-    background-color: #1E3544;
+    background-color: var(--base-card-background);
 
-    border: 2px solid black;
-    box-shadow: 8px 8px 0 black;
+    border: 2px solid var(--border-orange);
+    box-shadow: 8px 8px 0 var(--drop-shadows);
 
     .Content {
         width: 100%;
@@ -71,13 +71,9 @@
 
     p {
         max-width: 720px;
-
         margin: 0 0 24px;
-
         font: var(--font-dm-s);
-
-        color: var(--text-color);
-
+        color: var(--white-text);
         line-height: 1.5;
         text-align: center;
     }
@@ -87,18 +83,14 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-
         gap: 4px;
-
         font: var(--font-dm-s);
-
         color: var(--primary-color) !important;
         text-decoration: none;
-
         white-space: nowrap;
 
         &:hover {
-            color: var(--secondary-color) !important;
+            color: var(--orange-hover) !important;
         }
     }
 
@@ -153,15 +145,8 @@
 
                 transition: transform 0.15s ease;
 
-                filter:
-                    brightness(0)
-                    saturate(100%)
-                    invert(70%)
-                    sepia(77%)
-                    saturate(2247%)
-                    hue-rotate(360deg)
-                    brightness(101%)
-                    contrast(105%);
+                filter: brightness(0) saturate(100%) invert(70%) sepia(77%) saturate(2247%)
+                    hue-rotate(360deg) brightness(101%) contrast(105%);
             }
 
             &:hover img:not(.ExternalIcon) {
@@ -205,7 +190,7 @@
 
         text-align: center;
 
-        box-shadow: 0.2rem 0.2rem #121212;
+        box-shadow: 0.2rem 0.2rem var(--drop-shadows);
 
         .Content {
             width: 100%;
@@ -321,7 +306,6 @@
 }
 
 @media (min-width: breakpoint(md)) and (max-width: 1200px) {
-
     .Container {
         padding: 80px 64px 32px;
 

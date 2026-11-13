@@ -42,10 +42,10 @@
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: var(--border-radius-custom);
   padding: 0.7rem 1rem 1rem 1rem;
-  background-color: var(--background);
+  background-color: var(--base-card-background);
   width: 100%;
   border-style: solid;
-  border-color: var(--black);
+  border-color: var(--border-orange);
   border-width: var(--border-desktop);
 
   @media (max-width: breakpoint(lg)) {

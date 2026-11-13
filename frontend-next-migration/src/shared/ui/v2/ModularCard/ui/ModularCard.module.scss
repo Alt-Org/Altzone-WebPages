@@ -1,23 +1,19 @@
 .Card {
-    --border-radius-lg: 12px;
-    --border-radius-md: 8px;
-    --border-radius-sm: 4px;
-    --heading-font: 'Marko One', cursive;
-    --body-font: 'DM Sans', sans-serif;
-    --heading-font-size: 24px;
-    --h1-size-mobile: 32px;
-    --h2-size-mobile: 24px;
-    --h2-size-desktop: 64px;
-    --h3-size-desktop: 48px;
-    --body-size-desktop: 16px;
-    --small-size-desktop: 14px;
     --border-desktop: 4px;
     --border-mobile: 2px;
-    --primary-color: #ffa100;
-    --primary-border: #ffa100;
-    --background: #1e3544;
-    --white: #faf9f6;
-    --black: #121212;
+
+    font: var(--font-dm-m);
+    color: var(--text-body);
+}
+
+.Card > .ModularCardTexts > .ModularCardTitle h2 {
+    font: var(--font-sw-xl);
+    color: var(--content-primary);
+}
+
+.Card > .ModularCardTexts > .ModularCardFootnote {
+    font: var(--font-dm-s);
+    color: var(--text-caption);
 }
 
 .withScalableLink {
@@ -35,24 +31,24 @@
 // NewsImageCard
 .Card.NewsImageCard {
     position: relative;
-    background-color: var(--background);
+    background-color: var(--base-card-background);
     height: 203px;
-    border: var(--border-desktop) solid var(--black);
-    border-radius: var(--border-radius-md);
+    border: var(--border-mobile) solid var(--border-orange);
+    border-radius: var(--border-radius-full);
     display: flex;
-    box-shadow: 4px 8px 0 var(--black);
+    box-shadow: 4px 8px 0 var(--drop-shadows);
     @media (max-width: breakpoint(xxl)) {
         height: 155px;
     }
     @media (max-width: breakpoint(md)) {
         height: 127px;
-        border: var(--border-mobile) solid var(--black);
-        box-shadow: 2px 4px 0 var(--black);
+        border: var(--border-mobile) solid var(--border-orange);
+        box-shadow: 2px 4px 0 var(--drop-shadows);
     }
 }
 .Card.NewsImageCard > .ModularCardTexts {
     font: var(--font-dm-m);
-    color: var(--white);
+    color: var(--text-body);
     flex-basis: 50%;
     // overflow: hidden;
     display: flex;
@@ -72,7 +68,7 @@
     overflow: hidden;
     h2 {
         font: var(--font-sw-l);
-        color: var(--primary-color);
+        color: var(--content-primary);
     }
     @media (max-width: breakpoint(md)) {
         h2 {
@@ -121,14 +117,14 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-bottom: 195px solid var(--background);
+    border-bottom: 195px solid var(--base-card-background);
     border-right: 157px solid transparent;
     @media (max-width: breakpoint(xxl)) {
-        border-bottom: 147px solid var(--background);
+        border-bottom: 147px solid var(--base-card-background);
         border-right: 130px solid transparent;
     }
     @media (max-width: breakpoint(md)) {
-        border-bottom: 123px solid var(--background);
+        border-bottom: 123px solid var(--base-card-background);
         border-right: 80px solid transparent;
     }
 }
@@ -136,15 +132,15 @@
 // TItleImageCard
 .Card.TitleImageCard {
     position: relative;
-    background-color: var(--background);
+    background-color: var(--base-card-background);
     height: 220px;
-    border: var(--border-desktop) solid var(--black);
-    border-radius: var(--border-radius-md);
+    border: var(--border-mobile) solid var(--border-orange);
+    border-radius: var(--border-radius-full);
     display: flex;
-    box-shadow: 4px 8px 0 var(--black);
+    box-shadow: 4px 8px 0 var(--drop-shadows);
     @media (max-width: breakpoint(md)) {
         height: 160px;
-        box-shadow: 2px 4px 0 var(--black);
+        box-shadow: 2px 4px 0 var(--drop-shadows);
     }
 }
 .Card.TitleImageCard > div {
@@ -164,7 +160,7 @@
     margin-bottom: 0.5em;
     h2 {
         font: var(--font-sw-xl);
-        color: var(--primary-color);
+        color: var(--content-primary);
         margin-left: 30px;
     }
     @media (max-width: breakpoint(md)) {
@@ -184,10 +180,10 @@
     position: absolute;
     width: 0;
     height: 0;
-    border-bottom: 212px solid var(--background);
+    border-bottom: 212px solid var(--base-card-background);
     border-right: 140px solid transparent;
     @media (max-width: breakpoint(md)) {
-        border-bottom: 152px solid var(--background);
+        border-bottom: 152px solid var(--base-card-background);
         border-right: 85px solid transparent;
     }
 }
@@ -197,28 +193,28 @@
     position: relative;
     display: flex;
     height: 192px;
-    background-color: var(--background);
-    border: var(--border-desktop) solid var(--black);
-    border-radius: var(--border-radius-md);
-    box-shadow: 4px 8px 0 var(--black);
+    background-color: var(--base-card-background);
+    border: var(--border-mobile) solid var(--border-orange);
+    border-radius: var(--border-radius-full);
+    box-shadow: 4px 8px 0 var(--drop-shadows);
     overflow: hidden;
     transition: border-color 0.3s ease-out;
     &:hover {
-        border-color: var(--primary-border);
+        border-color: var(--orange-hover);
     }
     @media (max-width: breakpoint(xl)) {
         height: 184px;
     }
     @media (max-width: breakpoint(md)) {
         height: 152px;
-        box-shadow: 2px 4px 0 var(--black);
+        box-shadow: 2px 4px 0 var(--drop-shadows);
     }
     @media (max-width: 640px) {
         height: 144px;
     }
     @media (max-width: breakpoint(sm)) {
         height: 120px;
-        box-shadow: 1px 2px 0 var(--black);
+        box-shadow: 1px 2px 0 var(--drop-shadows);
     }
 }
 
@@ -230,11 +226,10 @@
     padding-left: var(--spacing-300);
     justify-content: center;
     //margin-top: calc(var(--spacing-600) + 8px);
-    font: var(--font-sw-m);
+    font: var(--font-dm-m);
     h2 {
-        line-height: var(--font-line-l) !important;
         font: var(--font-sw-m);
-        color: var(--white);
+        color: var(--text-heading);
     }
     @media (max-width: breakpoint(xl)) {
         //margin-top: var(--spacing-600);
@@ -245,20 +240,17 @@
     @media (max-width: breakpoint(md)) {
         padding-left: var(--spacing-200);
         h2 {
-            line-height: var(--font-line-m) !important;
             font: var(--font-sw-m);
         }
     }
     @media (max-width: 640px) {
         h2 {
-            line-height: var(--font-line-xs) !important;
             font: var(--font-sw-s);
         }
     }
     @media (max-width: breakpoint(sm)) {
         //margin-top: calc(var(--spacing-500) + 4px);
         h2 {
-            line-height: 16px !important;
             font: var(--font-sw-xs);
         }
     }
@@ -273,8 +265,8 @@
 }
 
 .Card.DefenseCard > .ModularCardTexts > .ModularCardBody {
-    line-height: calc(var(--font-line-xl) + 6px) !important;
-    color: var(--primary-color);
+    // This body slot displays the hero name as a heading.
+    color: var(--content-primary);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
@@ -283,18 +275,15 @@
     padding-bottom: 5px; // prevent descender clipping (e.g., 'y')
     font: var(--font-sw-xl);
     @media (max-width: breakpoint(xl)) {
-        line-height: calc(var(--font-line-l) + 5px) !important;
         font: var(--font-sw-l);
     }
     @media (max-width: breakpoint(md)) {
         font: var(--font-sw-l);
     }
     @media (max-width: 640px) {
-        line-height: calc(var(--font-line-m) + 5px) !important;
         font: var(--font-sw-m);
     }
     @media (max-width: breakpoint(sm)) {
-        line-height: calc(var(--font-line-s) + 4px) !important;
         font: var(--font-sw-s);
     }
 }
@@ -313,7 +302,7 @@
     width: 150%;
     height: 100%;
     transform: skewX(20deg);
-    background-color: var(--before-color, red);
+    background-color: var(--before-color, var(--defense-class-colors-retroflector));
 }
 
 .Card.DefenseCard > .ModularCardImageSection > .ModularCardImage {
@@ -343,26 +332,24 @@
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    background-color: var(--background);
-    border: var(--border-desktop) solid var(--black);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 6px 12px 0px 0px var(--ShadowblackShadow);
+    background-color: var(--base-card-background);
+    border: var(--border-mobile) solid var(--border-orange);
+    border-radius: var(--border-radius-full);
+    box-shadow: 6px 12px 0px 0px var(--drop-shadows);
     overflow: hidden;
     cursor: pointer;
     transition: border-color 0.3s ease-out;
 
     //Labels
-    --label-font-size: 0.95rem;
+    --label-font: var(--font-dm-bold-m);
     --label-icon-box: 2.5em;
     --label-icon-scale: 3.5em;
     --label-gap: 0.5rem;
     --label-pad-y: 0.5rem;
     --label-pad-x: 0.5rem;
     --label-border: 2px;
-    --label-radius: 12px;
 
     // Info row
-    --info-font: var(--font-dm-m);
     --info-col-gap: 0.625rem;
 
     // Logo
@@ -371,33 +358,33 @@
     min-height: 180px;
 
     &:hover {
-        border-color: var(--primary-border);
+        border-color: var(--orange-hover);
     }
 
     @media (max-width: 1280px) {
         --logo-lane-w: clamp(92px, 10vw, 140px);
         --logo-max-h: 60%;
-        --label-font-size: 0.9rem;
+        --label-font: var(--font-dm-bold-s);
     }
 
     @media (max-width: breakpoint(md)) {
         border-width: var(--border-mobile);
-        box-shadow: 2px 4px 0 var(--black);
+        box-shadow: 2px 4px 0 var(--drop-shadows);
         min-height: 152px;
 
-        --label-font-size: 0.85rem;
+        --label-font: var(--font-dm-bold-s);
 
         --logo-lane-w: clamp(88px, 18vw, 132px);
         --logo-max-h: 58%;
     }
 
     @media (max-width: breakpoint(sm)) {
-        box-shadow: 1px 2px 0 var(--black);
+        box-shadow: 1px 2px 0 var(--drop-shadows);
         height: 280px;
         min-height: unset;
         --logo-lane-w: clamp(84px, 26vw, 120px);
         --logo-max-h: 56%;
-        --label-font-size: 0.8rem;
+        --label-font: var(--font-dm-bold-xs);
     }
 }
 
@@ -412,7 +399,7 @@
     h2 {
         font: var(--font-sw-xxl);
 
-        color: var(--primary-color);
+        color: var(--content-primary);
         margin: 0 0 0.18rem 0;
         white-space: normal;
         overflow: hidden;
@@ -468,8 +455,8 @@
     flex-wrap: nowrap;
     align-items: center;
     gap: var(--info-col-gap);
-    color: var(--white);
-    font: var(--info-font);
+    color: var(--text-body);
+    font: var(--font-dm-m);
     min-width: 0;
     overflow: hidden;
 }
@@ -525,14 +512,12 @@
     display: inline-flex;
     align-items: center;
     gap: var(--label-gap);
-    background: var(--primary-color);
-    color: var(--black);
-    border: var(--label-border) solid var(--black);
-    border-radius: var(--label-radius);
+    background: var(--content-primary);
+    color: var(--text-on-orange);
+    border: var(--label-border) solid var(--text-on-orange);
+    border-radius: var(--border-radius-full);
     padding: var(--label-pad-y) var(--label-pad-x);
-    font-size: var(--label-font-size);
-    font-weight: 700;
-    line-height: 1;
+    font: var(--label-font);
     max-width: 100%;
 
     .ClanLabelText {
@@ -554,10 +539,10 @@
 .Card.SectionCard {
     position: relative;
     display: flex;
-    background-color: var(--background);
-    border: var(--border-desktop) solid var(--black);
-    border-radius: var(--border-radius-md);
-    box-shadow: 4px 8px 0 var(--black);
+    background-color: var(--base-card-background);
+    border: var(--border-mobile) solid var(--border-orange);
+    border-radius: var(--border-radius-full);
+    box-shadow: 4px 8px 0 var(--drop-shadows);
     overflow: hidden;
     margin-left: 50px;
     margin-bottom: 50px;
@@ -587,7 +572,7 @@
     padding-bottom: 10px;
     h2 {
         font: var(--font-sw-xxl);
-        color: var(--primary-color);
+        color: var(--content-primary);
     }
     @media (max-width: breakpoint(md)) {
         h2 {

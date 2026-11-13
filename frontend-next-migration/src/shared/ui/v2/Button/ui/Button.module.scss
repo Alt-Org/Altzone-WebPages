@@ -1,11 +1,15 @@
+// Keep button styles more specific than the default AppLink styles.
+.Button.primary {
+    color: var(--black);
+    padding: 5px 15px;
+    font: var(--font-dm-m);
+}
+
 .primary {
     background-color: var(--primary-color);
-    color: var(--black);
     border: 2px solid var(--black);
     border-radius: 1rem;
     box-shadow: var(--black) 3px 3px 0;
-    padding: 5px 15px;
-    font: var(--font-dm-m);
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -16,6 +20,8 @@
 }
 .primary:hover {
     background-color: var(--primary-color-variant-hover-light);
+}
+.Button.primary:hover {
     color:var(--black);
 }
 .disabled {
@@ -23,14 +29,17 @@
     pointer-events: none;
 }
 
+.Button.outline {
+    color: var(--primary-color);
+    padding: 5px 10px;
+    font: var(--font-dm-m);
+}
+
 .outline {
     background-color: transparent;
-    color: var(--primary-color);
     border: 2px solid var(--black);
     border-radius: 1rem;
     box-shadow: var(--black) 3px 3px 0;
-    padding: 5px 10px;
-    font: var(--font-dm-m);
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -41,4 +50,8 @@
 
 .outline:hover {
     border-color: var(--primary-color);
+}
+
+.Button.outline:hover {
+    color: var(--primary-color);
 }

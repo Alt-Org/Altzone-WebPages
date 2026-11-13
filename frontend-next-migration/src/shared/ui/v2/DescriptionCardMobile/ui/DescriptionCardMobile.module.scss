@@ -7,14 +7,14 @@
   @include card-dimensions;
   position: relative;
   overflow: hidden;
-  border-radius: var(--corner-radius-web);
+  border-radius: var(--border-radius-full);
   background-color: var(--base-card-background);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  border: var(--border-mobile) solid var(--black);
-  box-shadow: var(--black) 4px 6px 0;
+  border: var(--border-mobile) solid var(--border-orange);
+  box-shadow: var(--drop-shadows) 4px 6px 0;
 }
 
 .withScalableLink {
@@ -27,7 +27,7 @@
   }
   &:active {
     .DescriptionCardMobile {
-      border-color: var(--primary-color);
+      border-color: var(--orange-hover);
     }
     .TextContainer {
       height: 20% !important;
@@ -39,6 +39,7 @@
 }
 
 .DescriptionCardMobile {
+  font: var(--font-dm-s);
   transition: border-color ease .4s;
 }
 .AppLink {
@@ -80,11 +81,11 @@
 .DescriptionCardMobile.DefenseGalleryCard > .TextContainer {
   margin: 1em 1em 0 1em;
   text-align: left;
-  color:var(--white);
+  color:var(--text-body);
   font: var(--font-dm-s);
 }
 .DescriptionCardMobile.DefenseGalleryCard > .TextContainer > .Title {
-  color:var(--primary-color);
+  color:var(--content-primary);
   font: var(--font-sw-l);
 
 
@@ -96,14 +97,14 @@
   @include card-dimensions;
   position: relative;
   overflow: hidden;
-  border-radius: var(--corner-radius-web);
+  border-radius: var(--border-radius-full);
   background-color: var(--base-card-background);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  border: var(--border-mobile) solid var(--black);
-  box-shadow: var(--black) 4px 6px 0;
+  border: var(--border-mobile) solid var(--border-orange);
+  box-shadow: var(--drop-shadows) 4px 6px 0;
 }
 .DescriptionCardMobile.FurnitureCollectionsCard > div > .ImageContainer {
   position: absolute;
@@ -137,13 +138,11 @@
 .DescriptionCardMobile.FurnitureCollectionsCard > .TextContainer {
   margin: 1em 1em 0 1em;
   text-align: left;
-  color:var(--white);
+  color:var(--text-body);
 }
 .DescriptionCardMobile.FurnitureCollectionsCard > .TextContainer > .Title {
-  color:var(--primary-color);
-  font-family: var(--font-family-title);
-  font-size: 1.5rem;
-  font-weight: 400;
+  color:var(--content-primary);
+  font: var(--font-sw-l);
 
 
 }

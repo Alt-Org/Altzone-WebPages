@@ -4,13 +4,13 @@
 
 // Primary color and variants
 .app-main-theme {
-    --primary-color: #ffa100;
-    --primary-color-variant-hover: #ffb434;
+    --primary-color: var(--primary-orange);
+    --primary-color-variant-hover: var(--orange-hover);
     --primary-color-variant-hover-light: #f3c068;
     --primary-color-variant-pressed: #e89301;
 
     // Secondary color and variants
-    --secondary-color: #10d131;
+    --secondary-color: var(--green-accent);
     --secondary-color-variant-hover: #41d95b;
     --secondary-color-variant-pressed: #0fbd2e;
 
@@ -18,16 +18,14 @@
     --tertiary-color: #c0ff43;
 
     // Background, text, and neutral colors
-    --background: #1e3544;
+    --background: var(--base-card-background);
     --white: #faf9f6;
-    --black: #121212;
+    --black: #000000;
     --neutral: #cbcbcb;
 
     // ==========================================
     // Status Colors
     // ==========================================
-
-    --error: #ff0010;
     --success: #10d131;
 
     // ==========================================

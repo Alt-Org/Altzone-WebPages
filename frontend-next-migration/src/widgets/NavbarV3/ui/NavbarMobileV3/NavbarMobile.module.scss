@@ -1,7 +1,7 @@
 .Navbar {
     position: absolute;
     font: var(--font-dm-bold-l);
-    background-color: var(--base-card-background);
+    background-color: var(--black);
     border-radius: 0;
     width: 100%;
     height: 66px;
@@ -25,7 +25,11 @@
     max-height: 0;
     transition: transform 0.3s ease, max-height 0.3s ease;
     z-index: var(--navbar-z-index);
-    background: var(--base-card-background);
+    background: var(--black);
+
+    a {
+        color: var(--white-text);
+    }
 }
 
 .openDropdown {
