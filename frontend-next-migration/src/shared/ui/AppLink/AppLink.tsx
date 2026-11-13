@@ -13,7 +13,6 @@ interface AppLinkProps {
     to: string;
     className?: string;
     theme?: AppLinkTheme;
-    unstyled?: boolean;
     isExternal?: boolean;
     children: ReactNode;
     'data-fancybox'?: string;
@@ -49,24 +48,18 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
         className = '',
         children,
         theme = AppLinkTheme.PRIMARY,
-        unstyled = false,
         isExternal,
         role = 'link',
         ariaLabel,
         'data-fancybox': dataFancybox,
     } = props;
     const { onClick } = props;
-    // Components such as Button provide their own visual styles.
-    const linkClassName = classNames(unstyled ? '' : cls.AppLink, {}, [
-        className,
-        unstyled ? '' : cls[theme],
-    ]);
 
     if (isExternal) {
         return (
             <a
                 href={to}
-                className={linkClassName}
+                className={classNames(cls.AppLink, {}, [className, cls[theme]])}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-fancybox={dataFancybox}
@@ -84,7 +77,7 @@ export const AppLink: FC<AppLinkProps> = memo((props) => {
             href={to}
             role={role}
             aria-label={ariaLabel}
-            className={linkClassName}
+            className={classNames(cls.AppLink, {}, [className, cls[theme]])}
             data-fancybox={dataFancybox}
             onClick={onClick}
         >
