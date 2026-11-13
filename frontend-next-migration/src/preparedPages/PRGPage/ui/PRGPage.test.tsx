@@ -1,3 +1,4 @@
+// src/preparedPages/PRGPage/ui/PRGPage.test.tsx
 import { render, screen } from '@testing-library/react';
 import PRGPage from './PRGPage';
 import { useParams } from 'next/navigation';
@@ -82,16 +83,8 @@ describe('PRGPage', () => {
                         jobTitle: 'Chairperson',
                         profession: 'Profession',
                     },
-                    {
-                        name: 'Esa Pavloff-Pelkonen',
-                        jobTitle: 'Member',
-                        profession: 'Profession',
-                    },
-                    {
-                        name: 'Emmi-Irina Pavloff',
-                        jobTitle: 'Member',
-                        profession: 'Profession',
-                    },
+                    { name: 'Esa Pavloff-Pelkonen', jobTitle: 'Member', profession: 'Profession' },
+                    { name: 'Emmi-Irina Pavloff', jobTitle: 'Member', profession: 'Profession' },
                 ],
             },
             loading: {

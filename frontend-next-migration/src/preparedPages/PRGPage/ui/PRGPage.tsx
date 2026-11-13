@@ -280,72 +280,14 @@ const PRGPage = () => {
             </div>
             {isSmallScreen ? renderMobileTabs() : renderTabSwitch()}
             <div className={classNames(cls.TextContainer, undefined, [cls.MarginBottom])}>
-                <p className={cls.Subheading}>{t('prg-board')}</p>
-                {!isMobileSize && !isTabletSize ? (
-                    <div className={cls.BoardCardContainer}>
-                        <Boardcard
-                            picture={Helena}
-                            name={'Helena Pavloff-Pelkonen'}
-                            job={'helena-job'}
-                            profession={'helena-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                        <Boardcard
-                            picture={Helena}
-                            name={'Miko Murto'}
-                            job={'miko-murto-job'}
-                            profession={'miko-murto-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                        <Boardcard
-                            picture={Emmi_Irina}
-                            name={'Emmi-Irina Pavloff'}
-                            job={'emmi-irina-job'}
-                            profession={'emmi-irina-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize}
-                        />
-                    </div>
-                ) : (
-                    <div className={cls.BoardCardMobileContainer}>
-                        <Boardcard
-                            picture={Helena}
-                            name={'Helena Pavloff-Pelkonen'}
-                            job={'helena-job'}
-                            profession={'helena-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                        <Boardcard
-                            picture={Helena}
-                            name={'Miko Murto'}
-                            job={'miko-murto-job'}
-                            profession={'miko-murto-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                        <Boardcard
-                            picture={Emmi_Irina}
-                            name={'Emmi-Irina Pavloff'}
-                            job={'emmi-irina-job'}
-                            profession={'emmi-irina-profession'}
-                            t={t}
-                            isMobileSize={isMobileSize || isTabletSize}
-                        />
-                    </div>
-                )}
-                <AppLink
-                    to={'/team'}
-                    className={cls.MeetBoard}
-                    aria-label={t('link-to-team-page')}
-                    isExternal={false}
-                >
-                    <span className={classNames(cls.label, undefined, [cls.bold, cls.Underline])}>
-                        {t('alt-zone-team')}&nbsp;
-                    </span>
-                </AppLink>
+                <p className={cls.Subheading}>{t('registry-title')}</p>
+                <div className={cls.registryInfo}>
+                    {loading.prgPageIsLoading
+                        ? t('loading')
+                        : error.prgPageError
+                          ? t('load-error')
+                          : prgPageData.registryInfo}
+                </div>
             </div>
         </div>
     );
