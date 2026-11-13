@@ -20,6 +20,10 @@ import { useClientTranslation } from '@/shared/i18n';
 import { NewsCard } from '@/widgets/NewsCard';
 import { ShareButton } from '@/shared/ui/v2/ShareButton';
 
+// asd
+
+// asd
+
 type HeroImageProps = {
     picture?: string;
 };

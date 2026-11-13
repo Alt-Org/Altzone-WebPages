@@ -47,8 +47,16 @@ jest.mock('@/widgets/NewsCard', () => ({
 
 jest.mock('@/shared/ui/SkeletonLoader/ui/SkeletonLoader', () => ({
     SkeletonLoaderForNewsPage: ({ numberOfCards }: { numberOfCards: number }) => (
-        <div data-testid="news-skeleton">{numberOfCards}</div>
+        <>
+            {Array.from({ length: numberOfCards }).map((_, i) => (
+                <div
+                    key={i}
+                    data-testid="news-skeleton"
+                />
+            ))}
+        </>
     ),
+    SkeletonLoaderForNewsElementPage: () => <div data-testid="news-element-skeleton" />,
 }));
 
 class MockIntersectionObserver {
@@ -119,10 +127,10 @@ describe('NewsPage', () => {
 
     it('shows six skeleton cards while news is loading', () => {
         mockUseGetNewsQuery.mockReturnValue({ data: undefined });
-
         render(<NewsPage />);
 
-        expect(screen.getByTestId('news-skeleton')).toHaveTextContent('6');
+        const skeletons = screen.getAllByTestId('news-skeleton');
+        expect(skeletons).toHaveLength(6);
     });
 
     it('shows the no-more-news message after the final page', async () => {

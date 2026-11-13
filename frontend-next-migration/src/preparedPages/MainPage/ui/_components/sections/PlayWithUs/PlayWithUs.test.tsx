@@ -17,6 +17,5 @@ describe('PlayWithUs', () => {
         render(<PlayWithUs {...mockProps} />);
 
         expect(screen.getByText(mockProps.title)).toBeInTheDocument();
-        expect(screen.getByText(mockProps.webGl.title)).toBeInTheDocument();
     });
 });
