@@ -162,7 +162,7 @@ const ModularCardBody = memo((props: CardCompoundProps) => {
 
     return (
         <div className={classNames(cls.ModularCardBody, {}, [className])}>
-            <p>{children}</p>
+            <div>{children}</div>
         </div>
     );
 });
@@ -183,7 +183,7 @@ const ModularCardFootnote = memo((props: CardCompoundProps) => {
 
     return (
         <div className={classNames(cls.ModularCardFootnote, {}, [className])}>
-            <p>{children}</p>
+            <div>{children}</div>
         </div>
     );
 });
