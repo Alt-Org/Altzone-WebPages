@@ -2,6 +2,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { LangSwitcher } from './LangSwitcher';
+import { navigateTo } from '../lib/navigateTo';
+
+jest.mock('../lib/navigateTo', () => ({
+    navigateTo: jest.fn(),
+}));
 
 // Mock the usePathname hook to return a test path
 jest.mock('next/navigation', () => ({
@@ -15,6 +20,7 @@ jest.mock('react-i18next', () => ({
 
 describe('LangSwitcher', () => {
     beforeEach(() => {
+        jest.mocked(navigateTo).mockClear();
         (usePathname as jest.Mock).mockReturnValue('/en/some-path');
         (useTranslation as jest.Mock).mockReturnValue({
             t: (str: string) => (str === 'FIN' ? 'FIN' : 'ENG'),
@@ -29,11 +35,6 @@ describe('LangSwitcher', () => {
     });
 
     it('changes the language when clicked', () => {
-        Object.defineProperty(window, 'location', {
-            value: { href: '' },
-            writable: true,
-        });
-
         render(<LangSwitcher isOpen={true} />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
@@ -45,15 +46,11 @@ describe('LangSwitcher', () => {
         const finnishOption = screen.getByRole('option', { name: 'FIN' });
         fireEvent.click(finnishOption);
 
-        expect(window.location.href).toBe('/fi/some-path');
+        expect(navigateTo).toHaveBeenCalledTimes(1);
+        expect(navigateTo).toHaveBeenCalledWith('/fi/some-path');
     });
 
-    it('does not change the URL if the same language is selected', () => {
-        Object.defineProperty(window, 'location', {
-            value: { href: '/en/some-path' },
-            writable: true,
-        });
-
+    it('keeps the same URL when the current language is selected', () => {
         render(<LangSwitcher isOpen={true} />);
 
         const langSwitcher = screen.getByTestId('language-switcher');
@@ -65,7 +62,8 @@ describe('LangSwitcher', () => {
         const englishOption = screen.getByRole('option', { name: 'ENG' });
         fireEvent.click(englishOption);
 
-        expect(window.location.href).toBe('/en/some-path');
+        expect(navigateTo).toHaveBeenCalledTimes(1);
+        expect(navigateTo).toHaveBeenCalledWith('/en/some-path');
     });
 
     //THIS SHOULD BE WORKING, BUT COULDNT FIGURE IT OUT
