@@ -15,7 +15,10 @@ export function Providers({ children }: ProvidersProps) {
         <StoreProvider>
             <CookiesProvider>
                 <ThemeProvider>
-                    <ToastContainer />
+                    <ToastContainer
+                        closeOnClick
+                        draggable
+                    />
                     {children}
                 </ThemeProvider>
             </CookiesProvider>

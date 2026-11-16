@@ -3,7 +3,7 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer } fro
 import type { PersistConfig } from 'redux-persist';
 import { authUserReducer, authMiddleware } from '@/entities/Auth';
 import { profileReducer } from '@/entities/Profile';
-import { navBarReducer } from '@/widgets/Navbar';
+import { navBarReducer } from '@/widgets/Navbar/model/navbarSlice/navBarSlice';
 import { envHelper } from '@/shared/const/envHelper';
 import { gameApi } from '@/shared/api/gameApi';
 import { strapiApi } from '@/shared/api/strapiApi';
