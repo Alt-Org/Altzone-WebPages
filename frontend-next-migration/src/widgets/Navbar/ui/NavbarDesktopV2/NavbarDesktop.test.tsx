@@ -83,7 +83,7 @@ jest.mock('next/navigation', () => ({
 const mockReducer = (state = {}) => state;
 const mockStore = configureStore({ reducer: mockReducer });
 
-const withProvider = (ui: React.ReactElement) => <Provider store={mockStore}>{ui}</Provider>;
+const withProvider = (ui: React.ReactElement<any>) => <Provider store={mockStore}>{ui}</Provider>;
 
 describe('Navbar', () => {
     beforeEach(() => {

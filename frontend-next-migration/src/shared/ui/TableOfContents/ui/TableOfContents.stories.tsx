@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import TableOfContents from './TableOfContents';
 import { useState } from 'react';
 

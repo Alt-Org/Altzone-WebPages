@@ -5,9 +5,8 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { IClanCreateDto, useCreateClanMutation } from '@/entities/Clan';
-import { profileActions, selectProfile } from '@/entities/Profile/model/profileSlice/profileSlice';
+import { profileActions, selectProfile } from '@/entities/Profile';
 import { ValidationAddNewClan } from '../validations';
-import { ProfileSchema } from '@/entities/Profile/types/profile';
 
 type Props = {
     onSuccess?: () => void;
@@ -33,12 +32,12 @@ export const useNewClanForm = ({ onSuccess }: Props) => {
         },
     ] = useCreateClanMutation();
 
-    const profile = useSelector((state: ProfileSchema) => selectProfile(state));
+    const profile = useSelector(selectProfile);
     const dispatch = useDispatch();
 
     //update store profile after creating new clan
     const handleUpdateClanId = (newClanId: string) => {
-        if (profile) {
+        if (profile?.Player) {
             const updatedProfile = {
                 ...profile,
                 Player: {

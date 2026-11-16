@@ -1,5 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './HorizontalLines.module.scss';
+import type { JSX } from 'react';
 
 /**
  * Represents a component that renders horizontal lines.

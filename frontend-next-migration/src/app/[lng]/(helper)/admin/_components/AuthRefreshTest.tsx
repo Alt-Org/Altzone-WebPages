@@ -7,7 +7,6 @@ import {
     AccessTokenInfoResponse,
     AuthUserSchema,
 } from '@/entities/Auth';
-import { LS_KEYS } from '@/shared/const/LS_KEYS';
 
 const AuthRefreshTest = () => {
     const [refreshAuth, { isLoading, error }] = useRefreshAuthMutation();
@@ -16,16 +15,16 @@ const AuthRefreshTest = () => {
     );
     const [response, setResponse] = useState<AccessTokenInfoResponse | null>(null);
     const [refreshToken, setRefreshToken] = useState('');
-    const [storedAuthUser, setStoredAuthUser] = useState<string | null>(null);
+    const [storedReduxState, setStoredReduxState] = useState<string | null>(null);
 
     const handleRefresh = async () => {
         try {
             const refreshResponse = await refreshAuth({ refreshToken }).unwrap();
             setResponse(refreshResponse);
-            setStoredAuthUser(localStorage.getItem(LS_KEYS.AUTH_USER));
         } catch {
             setResponse(null);
-            setStoredAuthUser(localStorage.getItem(LS_KEYS.AUTH_USER));
+        } finally {
+            setStoredReduxState(localStorage.getItem('persist:root'));
         }
     };
 
@@ -54,8 +53,8 @@ const AuthRefreshTest = () => {
             <h3>Redux auth state</h3>
             <pre>{JSON.stringify(authUser, null, 2)}</pre>
             <br />
-            <h3>localStorage AuthUser after request</h3>
-            <pre>{storedAuthUser ?? 'No localStorage snapshot yet'}</pre>
+            <h3>localStorage persisted Redux state after request</h3>
+            <pre>{storedReduxState ?? 'No localStorage snapshot yet'}</pre>
             <br />
         </section>
     );

@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/nextjs';
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
 import { default as FeedbackSideButton } from './FeedbackSideButton';
 
 export default {

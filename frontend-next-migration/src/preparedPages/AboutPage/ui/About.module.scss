@@ -132,7 +132,7 @@
     width: 100%;
     box-sizing: border-box;
     justify-content: center;
-    grid-template-rows: 1;
+    grid-template-rows: auto;
 
     @media (max-width: breakpoint(xxl)) {
         grid-template-columns: repeat(2, 130px);

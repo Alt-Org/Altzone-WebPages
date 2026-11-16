@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/nextjs';
+import { StoryObj } from '@storybook/nextjs-vite';
 import { JoinUsPage } from './JoinUsPage';
 import { BlockSection } from '../types';
 
@@ -29,19 +29,6 @@ const mockTeachersBlock: BlockSection = {
 };
 
 const mockFeedbackBlock: BlockSection = {
-    label: 'Label',
-    description: 'Description here',
-    links: [
-        {
-            text: 'Open link',
-            url: 'https://example.com/',
-            isExternal: true,
-        },
-    ],
-    img: 'https://example.com/image.png',
-};
-
-const mockDuunitoriBlock: BlockSection = {
     label: 'Label',
     description: 'Description here',
     links: [

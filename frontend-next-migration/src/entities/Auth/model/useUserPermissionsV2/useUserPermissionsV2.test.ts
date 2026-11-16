@@ -5,6 +5,7 @@ import { selectHasClan } from '@/entities/Profile';
 import { useUserPermissionsV2, PermissionError } from './useUserPermissionsV2';
 
 jest.mock('react-redux', () => ({
+    ...jest.requireActual('react-redux'),
     useSelector: jest.fn(),
 }));
 

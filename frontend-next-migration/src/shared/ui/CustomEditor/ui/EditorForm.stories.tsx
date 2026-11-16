@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { EditorForm } from './EditorForm';
 import { ChangeEvent, FormEvent } from 'react';
 import 'react-quill-new/dist/quill.snow.css';

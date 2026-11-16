@@ -99,8 +99,12 @@ describe('NavbarDesktopV3', () => {
 
     test('dropdown opens on hover and closes on leave', () => {
         render(<NavbarDesktop navbarBuild={navbarBuild} />);
-        const gameTrigger = screen.getByText('game').closest('li')!;
-        const dropdown = document.getElementById('navbar-dropdown-game')!;
+        const gameTrigger = screen.getByText('game').closest('li');
+        const dropdown = document.getElementById('navbar-dropdown-game');
+
+        if (!gameTrigger || !dropdown) {
+            throw new Error('Expected the game menu item and dropdown to be rendered');
+        }
 
         expect(dropdown).not.toHaveClass('dropdownMenuOpen');
 
@@ -122,10 +126,19 @@ describe('NavbarDesktopV3', () => {
 
     test('escape closes the dropdown', () => {
         render(<NavbarDesktop navbarBuild={navbarBuild} />);
-        const gameTrigger = screen.getByText('game').closest('li')!;
+        const gameTrigger = screen.getByText('game').closest('li');
+
+        if (!gameTrigger) {
+            throw new Error('Expected the game menu item to be rendered');
+        }
+
         fireEvent.mouseEnter(gameTrigger);
 
-        const dropdown = document.getElementById('navbar-dropdown-game')!;
+        const dropdown = document.getElementById('navbar-dropdown-game');
+
+        if (!dropdown) {
+            throw new Error('Expected the game dropdown to be rendered');
+        }
         expect(dropdown).toHaveClass('dropdownMenuOpen');
 
         fireEvent.keyDown(document, { key: 'Escape' });
@@ -133,24 +146,24 @@ describe('NavbarDesktopV3', () => {
     });
 
     test('applies marginTop style when provided', () => {
-        const { container } = render(
+        render(
             <NavbarDesktop
                 navbarBuild={navbarBuild}
                 marginTop={40}
             />,
         );
-        const nav = container.querySelector('nav')!;
+        const nav = screen.getByRole('navigation', { name: 'Nav menu' });
         expect(nav).toHaveStyle({ marginTop: '40px' });
     });
 
     test('applies custom className', () => {
-        const { container } = render(
+        render(
             <NavbarDesktop
                 navbarBuild={navbarBuild}
                 className="myClass"
             />,
         );
-        const nav = container.querySelector('nav')!;
+        const nav = screen.getByRole('navigation', { name: 'Nav menu' });
         expect(nav.className).toContain('myClass');
     });
 });

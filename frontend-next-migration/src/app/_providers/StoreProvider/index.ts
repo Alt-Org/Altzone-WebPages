@@ -1,4 +1,5 @@
 'use client';
-export { StoreProvider, store, persistor } from './ui/StoreProvider';
+export { StoreProvider } from './ui/StoreProvider';
 export { createReduxStore } from './config/store';
-export type { StateSchema } from './config/StateSchema';
+export type { AppStore, AppDispatch, RootState, InitialState } from './config/store';
+export { useAppDispatch, useAppSelector, useAppStore } from './lib/hooks';

@@ -1,24 +1,13 @@
 'use client';
 import { Header } from '@/widgets/Header';
-import { DescriptionCard, DescriptionCardTheme } from '@/shared/ui/v2/DescriptionCard';
-import defenceGallery from '@/shared/assets/images/descriptionCard/defense_gallery.png';
-import {
-    DescriptionCardMobile,
-    DescriptionCardMobileTheme,
-} from '@/shared/ui/v2/DescriptionCardMobile';
-import defenceGalleryMobile from '@/shared/assets/images/descriptionCard/defense_gallery_mobile.png';
-import useSizes from '@/shared/lib/hooks/useSizes';
-import { AltZone, AltZoneProps } from './_components/sections/AltZone';
+import type { AltZoneProps } from './_components/sections/AltZone';
 import { GetToKnowComicsProps } from './_components/sections/GetToKnowComics';
 import { PlayWithUs, PlayWithUsProps } from './_components/sections/PlayWithUs';
 import { NewsCard } from '@/widgets/NewsCard';
 import { useGetNewsQuery, formatNews } from '@/entities/NewsV2';
 import { envHelper } from '@/shared/const/envHelper';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
-import {
-    ProjectDescription,
-    ProjectDescriptionProps,
-} from './_components/sections/ProjectDescription';
+import type { ProjectDescriptionProps } from './_components/sections/ProjectDescription';
 import { VideoAndGalleriesProps } from './_components/sections/VideoAndGalleries';
 import cls from './page.module.scss';
 import { ContactSection, ContactSectionProps } from './_components/sections/ContactSection';
@@ -42,12 +31,11 @@ export type Props = {
 };
 
 function MainPage(props: Props) {
-    const { projectDescription, playWithUs, altZone, contactSection } = props;
+    const { playWithUs, contactSection } = props;
 
     const params = useParams();
     const lng = params.lng as string;
     const lngCode = lng === 'en' ? 'en-US' : lng === 'fi' ? 'fi-FI' : lng;
-    const { isMobileSize } = useSizes();
     const { data: latestNews } = useGetNewsQuery({ limit: 2, page: 1 });
     const directusBaseUrl = envHelper.directusHost;
     const groupedNews = formatNews(latestNews || [], lngCode || 'fi-FI');

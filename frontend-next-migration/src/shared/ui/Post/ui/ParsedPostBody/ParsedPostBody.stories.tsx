@@ -1,5 +1,5 @@
 // ParsedPostBody.stories.tsx
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { ParsedPostBody } from './ParsedPostBody';
 
 const meta = {

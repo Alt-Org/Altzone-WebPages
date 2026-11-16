@@ -6,13 +6,18 @@ const mockProps: Props = {
     title: 'Test Title',
     infoText: 'This is info text',
     socialsText: 'Follow us',
+    followUsText: 'Follow us on social media',
     seeMoreLink: {
         text: 'More',
         href: 'https://example.com',
     },
     socialMediaLinks: ['https://social1.com', 'https://social2.com'],
     videoLink: 'https://video.com',
-    gameImg: '/test-image.png',
+    gameImg: {
+        src: '/test-image.png',
+        width: 677,
+        height: 978,
+    },
 };
 
 jest.mock('react-intersection-observer', () => ({

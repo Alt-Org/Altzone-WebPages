@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/nextjs';
+import { Meta } from '@storybook/nextjs-vite';
 import React from 'react';
 import NavbarMobile, { NavbarTouchProps } from './NavbarMobile';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';

@@ -1,4 +1,4 @@
-import { StoryObj, Meta } from '@storybook/nextjs';
+import { StoryObj, Meta } from '@storybook/nextjs-vite';
 import { MasonryWrapper } from './MasonryWrapper';
 import Image from 'next/image';
 

@@ -255,7 +255,6 @@ export async function fetchHeroBySlug(
 ): Promise<HeroWithGroup | undefined> {
     const base = (envHelper.directusHost || '').replace(/\/$/, '');
     if (!base) {
-        // eslint-disable-next-line no-console
         console.warn(
             '[fetchHeroBySlug] Directus host not configured - check NEXT_PUBLIC_DIRECTUS_HOST env var',
         );
@@ -269,7 +268,7 @@ export async function fetchHeroBySlug(
         const res = await fetch(url, { next: { revalidate: 60 } });
         if (!res.ok) {
             const errorText = await res.text().catch(() => '');
-            // eslint-disable-next-line no-console
+
             console.warn(
                 `[fetchHeroBySlug] Directus error ${res.status} for "${slug}": ${errorText.substring(0, 200)}`,
             );
@@ -279,7 +278,6 @@ export async function fetchHeroBySlug(
         const json = await res.json();
         const item = json?.data?.[0];
         if (!item || !isPublished(item)) {
-            // eslint-disable-next-line no-console
             console.warn(
                 `[fetchHeroBySlug] No hero found in Directus for slug "${slug}" (response had ${json?.data?.length || 0} items)`,
             );
@@ -288,7 +286,6 @@ export async function fetchHeroBySlug(
 
         return mapHero(item, locale);
     } catch (error) {
-        // eslint-disable-next-line no-console
         console.error(
             `[fetchHeroBySlug] ✗ Error fetching "${slug}":`,
             error instanceof Error ? error.message : error,
@@ -300,7 +297,6 @@ export async function fetchHeroBySlug(
 export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGroup[]> {
     const base = (envHelper.directusHost || '').replace(/\/$/, '');
     if (!base) {
-        // eslint-disable-next-line no-console
         console.warn(
             '[fetchAllHeroes] Directus host not configured - check NEXT_PUBLIC_DIRECTUS_HOST env var',
         );
@@ -315,7 +311,7 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
 
         if (!res.ok) {
             const errorText = await res.text().catch(() => '');
-            // eslint-disable-next-line no-console
+
             console.warn(
                 `[fetchAllHeroes] Directus error ${res.status}: ${errorText.substring(0, 200)}`,
             );
@@ -326,7 +322,6 @@ export async function fetchAllHeroes(locale: Locale = 'en'): Promise<HeroWithGro
         const items = (json?.data || []).filter(isPublished);
         return items.map((item: any) => mapHero(item, locale));
     } catch (error) {
-        // eslint-disable-next-line no-console
         console.error(
             '[fetchAllHeroes] ✗ Fetch error:',
             error instanceof Error ? error.message : error,

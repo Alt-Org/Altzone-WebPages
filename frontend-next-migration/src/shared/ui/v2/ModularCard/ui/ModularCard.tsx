@@ -3,7 +3,7 @@ import {
     memo,
     ReactNode,
     forwardRef,
-    LegacyRef,
+    Ref,
     HTMLAttributes,
     DetailedHTMLProps,
     ForwardRefExoticComponent,
@@ -46,7 +46,7 @@ interface ModularCardProps
     isExternal?: boolean;
     withScalableLink?: boolean;
     height?: string;
-    ref?: LegacyRef<HTMLDivElement>;
+    ref?: Ref<HTMLDivElement>;
     children: ReactNode;
 }
 
@@ -162,7 +162,7 @@ const ModularCardBody = memo((props: CardCompoundProps) => {
 
     return (
         <div className={classNames(cls.ModularCardBody, {}, [className])}>
-            <p>{children}</p>
+            <div>{children}</div>
         </div>
     );
 });
@@ -183,7 +183,7 @@ const ModularCardFootnote = memo((props: CardCompoundProps) => {
 
     return (
         <div className={classNames(cls.ModularCardFootnote, {}, [className])}>
-            <p>{children}</p>
+            <div>{children}</div>
         </div>
     );
 });

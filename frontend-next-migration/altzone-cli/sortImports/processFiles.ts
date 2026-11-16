@@ -1,9 +1,10 @@
-import { Project, QuoteKind } from "ts-morph";
-import { processFile } from "./processFile";
-import { appLayers } from "../const";
-import { exec } from "child_process";
-import path from "path";
-import { promisify } from "util";
+import { Project, QuoteKind } from 'ts-morph';
+import { processFile } from './processFile';
+import { appLayers } from '../const';
+import { exec } from 'child_process';
+import path from 'path';
+import { promisify } from 'util';
+import { existsSync } from 'node:fs';
 
 // Convert exec to async function
 const execAsync = promisify(exec);
@@ -12,8 +13,8 @@ const execAsync = promisify(exec);
 async function processFiles(paths: string[]) {
     const project = new Project({
         manipulationSettings: {
-            quoteKind: QuoteKind.Single
-        }
+            quoteKind: QuoteKind.Single,
+        },
     });
 
     // Add files from specified paths/patterns
@@ -33,7 +34,7 @@ async function processFiles(paths: string[]) {
 }
 
 // Wrapping the code in an immediately invoked async function
-(async function() {
+(async function () {
     // Get command-line arguments
     const args = process.argv.slice(2);
     let paths = args.length ? args : [`src/**/*.ts{,x}`];
@@ -57,13 +58,16 @@ async function processFiles(paths: string[]) {
             // Filter only files from the 'src' folder and remove the 'frontend-next-migration/' prefix
 
             const filteredFiles = gitChangedFiles
-                .filter(file => file.startsWith('frontend-next-migration/src/') && (file.endsWith('.ts') || file.endsWith('.tsx')))
-                .map(file => path.resolve(file.replace('frontend-next-migration/', ''))); // Convert to absolute path
-
+                .filter(
+                    (file) =>
+                        file.startsWith('frontend-next-migration/src/') &&
+                        (file.endsWith('.ts') || file.endsWith('.tsx')),
+                )
+                .map((file) => path.resolve(file.replace('frontend-next-migration/', ''))); // Convert to absolute path
 
             // Remove files that have been deleted from the filtered list
-            const existingFiles = filteredFiles.filter(file => {
-                return require('fs').existsSync(file); // Check if the file exists
+            const existingFiles = filteredFiles.filter((file) => {
+                return existsSync(file); // Check if the file exists
             });
 
             if (existingFiles.length > 0) {
