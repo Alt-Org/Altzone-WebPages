@@ -119,6 +119,7 @@ const NewsPage = () => {
                         {hasMoreNewsState && !isLoading && <div ref={observeElementRef} />}
                     </div>
                 </div>
+                <div>{isLoading && 'Loading...'}</div>
                 {renderNoMoreNews()}
             </Container>
         </main>
