@@ -1,6 +1,6 @@
 .AiDisclaimer {
-    border-block: 2px solid var(--primary-color);
-    background: var(--background);
+    border-top: 2px solid var(--border-orange);
+    background: var(--base-card-background);
     color: var(--white);
     // Same horizontal inset as CTASection so the text lines up with the other main page sections
     padding: 72px clamp(16px, 11.46vw, 220px) 56px;
