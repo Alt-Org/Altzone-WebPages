@@ -11,6 +11,7 @@ import {
     getRouteComingSoonPage,
     getRouteAllClanSearchPage,
     getRouteLeaderboardPage,
+    getRouteCCPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -19,6 +20,13 @@ export const dropdowns = {
             elementText: 'whatIsPrg',
             link: {
                 path: getRoutePrgPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'creativeCrossroads',
+            link: {
+                path: getRouteCCPage(),
                 isExternal: false,
             },
         },
