@@ -85,6 +85,10 @@
   --font-line-5xl: 72px;
   --font-sw-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-title);
 
+  --font-size-maxl: 128px;
+  --font-line-maxl: 136px;
+  --font-sw-maxl: var(--font-size-maxl) / var(--font-line-maxl) var(--font-family-title);
+
 // Fonts using DM_SANS BODY, P, NORMAL TEXT
 // NOTE: You might have noticed, that the px values are different to Figma Design System. This is simply to compensate for the 2K layout that they for some reason desided to use instead of FullHD. (text appear smaller than they actually are when implemented here. idk why they didnt just use responsive font units originally?)
   --font-size-s: 14px;
@@ -137,6 +141,10 @@
 
   //figma spacers
   --spacer300: 16px;
+  --spacer400: 24px;
+  --spacer500: 32px;
+  --spacer600: 48px;
+  --spacer700: 64px;
 
   // sizes
   --navbar-height: 150px;
