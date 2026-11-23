@@ -1,7 +1,7 @@
 .CustomSwitch {
     display: flex;
     width: 100%;
-    background-color: var(--background);
+    background-color: var(--card-background-raised);
     border: var(--border-desktop) solid var(--black);
     border-radius: var(--border-radius-lg);
 
@@ -15,7 +15,7 @@
     text-align: center;
     color: var(--primary-color);
     font: var(--font-dm-m);
-    border: var(--border-mobile) solid var(--background);
+    border: var(--border-mobile) solid var(--card-background-raised);
     border-radius: var(--border-radius-lg);
     padding: 0.2em;
     cursor: pointer;

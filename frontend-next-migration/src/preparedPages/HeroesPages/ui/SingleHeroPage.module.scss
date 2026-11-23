@@ -20,7 +20,7 @@
   display: contents; /* grid child wrappers not needed */
 }
 .Card {
-  background-color: var(--background);
+  background-color: var(--base-card-background);
   border-radius: var(--border-radius-lg);
   border: 4px solid var(--black);
   filter: drop-shadow(8px 12px var(--black));

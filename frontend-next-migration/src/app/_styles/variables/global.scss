@@ -85,6 +85,10 @@
   --font-line-5xl: 72px;
   --font-sw-5xl: var(--font-size-5xl) / var(--font-line-5xl) var(--font-family-title);
 
+  --font-size-maxl: 128px;
+  --font-line-maxl: 136px;
+  --font-sw-maxl: var(--font-size-maxl) / var(--font-line-maxl) var(--font-family-title);
+
 // Fonts using DM_SANS BODY, P, NORMAL TEXT
 // NOTE: You might have noticed, that the px values are different to Figma Design System. This is simply to compensate for the 2K layout that they for some reason desided to use instead of FullHD. (text appear smaller than they actually are when implemented here. idk why they didnt just use responsive font units originally?)
   --font-size-s: 14px;
@@ -137,6 +141,10 @@
 
   //figma spacers
   --spacer300: 16px;
+  --spacer400: 24px;
+  --spacer500: 32px;
+  --spacer600: 48px;
+  --spacer700: 64px;
 
   // sizes
   --navbar-height: 150px;
@@ -164,18 +172,39 @@
   --red-light: #f80606;
   --red-dark: #c50404;
 
-  --content-primary: #FFA100;
-  --base-card-background: #1E3544;
+  // Brand and status colors
+  --primary-orange: #ffa100;
+  --content-primary: #fda326;
+  --orange-hover: #ffbb56;
+  --green-accent: #4fe04f;
+  --green-text: #7bee7b;
+  --error: #ff6b57;
+
+  // Backgrounds and surfaces
+  --base-card-background: #0b0b0b;
+  --card-background-raised: #1c1c1c;
   --drop-shadows: #121212;
   --white-text: #faf9f6;
 
+  // Text colors
+  --text-heading: #f5ede3;
+  --text-body: #e8e0d6;
+  --text-secondary: #c9beb2;
+  --text-caption: #b7aa9d;
+  --text-on-orange: #141010;
+  --text-disabled: #6b6b6b;
 
   // border-radius
+  --border-radius-full: 12px; // Figma fullRadius
   --border-radius-custom: 15px;
   --border-radius-figma: 25px;
   --border-radius-figmadesktop: 12px;
 
   //borders
+  --border-orange: rgba(253, 163, 38, 0.45);
+  --border-green: rgba(79, 224, 79, 0.45);
+  --border-white: rgba(255, 255, 255, 0.1);
+  --border-disabled: rgba(38, 38, 38, 0.45);
   --border-thick-yellow: 5px solid yellow;
   --border-thick-black: 5px solid black;
 

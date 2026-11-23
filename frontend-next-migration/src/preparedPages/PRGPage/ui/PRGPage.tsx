@@ -270,7 +270,7 @@ const PRGPage = () => {
                 <div className={cls.ButtonBlock}>
                     <AppLink
                         to={'/team'}
-                        className={classNames(cls.pdfButton, undefined, [cls.teamButton])}
+                        className={cls.teamButton}
                         aria-label={t('link-to-team-page')}
                         isExternal={false}
                     >

@@ -4,8 +4,11 @@
     flex-shrink: 0;
 }
 .DiscordButton{
-    border-color: var(--primary-color);
+    border-color: var(--border-orange);
     box-shadow: black;
+    &:hover {
+        border-color: var(--primary-orange);
+    }
 }
 .ContactSection {
     min-height: 401px;

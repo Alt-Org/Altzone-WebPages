@@ -1,6 +1,6 @@
 .Footer {
-    --footer-bg: #1e3544;
-    --footer-bar-bg: #00000026;
+    --footer-bg: var(--black);
+    --footer-bar-bg: var(--black);
     --footer-accent: #ffa100;
     --footer-text: #faf9f6;
     --footer-muted: #faf9f6;
@@ -26,6 +26,7 @@
     padding-block: 1.25rem;
     background: var(--footer-bar-bg);
     box-sizing: border-box;
+    border-bottom: 1px solid var(--border-orange);
 }
 
 .socialSection {

@@ -4,11 +4,11 @@
 }
 
 .containerTop {
-    background: var(--background);
+    background: var(--base-card-background);
     text-align: center;
     border-radius: var(--corner-radius-web);
-    outline: var(--thickness-web) solid var(--black);
-    box-shadow: 10px 10px #121212;
+    outline: 2px solid var(--border-orange);
+    box-shadow: 10px 10px var(--drop-shadows);
     margin-bottom: 2%;
     padding: 1.2rem;
     width: 40%;
@@ -38,11 +38,11 @@
 .containerBottom {
     position: relative;
 
-    background: var(--background);
+    background: var(--base-card-background);
     text-align: center;
     border-radius: var(--corner-radius-web);
-    outline: var(--thickness-web) solid var(--black);
-    box-shadow: 10px 10px #121212;
+    // outline: 2px solid var(--border-orange);
+    box-shadow: 6px 10px var(--drop-shadows);
     margin-bottom: 30px;
     width: 40%;
 
@@ -73,10 +73,10 @@
     width: 40%;
     box-sizing: border-box;
 
-    background: var(--background);
+    background: var(--base-card-background);
     border-radius: var(--corner-radius-web);
-    outline: var(--thickness-web) solid var(--black);
-    box-shadow: 10px 10px #121212;
+    outline: 2px solid var(--border-orange);
+    box-shadow: 10px 10px var(--drop-shadows);
 
     padding: 16px 16px;
 
@@ -108,7 +108,7 @@
     font: var(--font-dm-m);
     font-size: 16px;
     line-height: 1.2;
-    color: var(--white);
+    color: var(--text-body);
     text-align: center;
     margin: 0;
 
@@ -238,7 +238,7 @@
 
 .sValues {
     font: var(--font-sw-l);
-    color: #FFA100;
+    color: var(--primary-color);
     font-weight: 400;
     line-height: 100%;
     letter-spacing: -0.04em;
@@ -458,11 +458,11 @@
     overflow: hidden;
     box-sizing: border-box;
 
-    background: #1E3544;
+    background: var(--card-background-raised);
 
-    border-radius: var(--corner-radius-web);
-    outline: var(--thickness-web) solid var(--black);
-    box-shadow: 6px 6px #121212;
+    border-radius: var(--border-radius-figma);
+    outline: 2px solid var(--border-orange);
+    box-shadow: 6px 6px var(--drop-shadows);
 
     z-index: 20;
 
@@ -554,7 +554,7 @@
     box-sizing: border-box;
 
     background: #d9d9d9;
-    border: 1px solid #121212;
+    border: 1px solid var(--drop-shadows);
     border-radius: 2px;
 
     transform: translateY(-50%);
@@ -566,7 +566,7 @@
 }
 
 .timelineSortItemActive::before {
-    background: #FFA100;
+    background: var(--primary-color);
 }
 
 .timelineSortItemActive::after {
@@ -579,8 +579,8 @@
     width: 6px;
     height: 11px;
 
-    border-right: 3px solid #121212;
-    border-bottom: 3px solid #121212;
+    border-right: 3px solid var(--drop-shadows);
+    border-bottom: 3px solid var(--drop-shadows);
 
     transform: translateY(-65%) rotate(45deg);
 }
@@ -635,6 +635,7 @@
 .timelineBodyInner {
     min-height: 0;
     overflow: hidden;
+    color: var(--text-body);
 }
 
 .timelineCloseArea {
@@ -650,7 +651,7 @@
 .timelineDivider {
     width: 100%;
     height: 4px;
-    background: #FFA100;
+    background: var(--border-orange);
     margin-bottom: var(--spacing-400);
     border-radius: 999px;
 }
@@ -661,13 +662,13 @@
 
     padding: 6px 24px;
 
-    background: #FFA100;
-    color: #121212;
+    background: var(--primary-color);
+    color: var(--drop-shadows);
 
-    border: var(--thickness-web) solid #121212;
+    border: var(--thickness-web) solid var(--drop-shadows);
     border-radius: 999px;
 
-    box-shadow: 4px 4px #121212;
+    box-shadow: 4px 4px var(--drop-shadows);
 
     font: var(--font-dm-s);
     cursor: pointer;
@@ -695,12 +696,12 @@
 
     min-height: 64px;
 
-    background: #2B516A;
+    background: var(--card-background-raised);
 
     border-radius: var(--corner-radius-web);
-    outline: var(--thickness-web) solid var(--black);
+    border: 1px solid var(--border-white);
 
-    box-shadow: 6px 6px #121212;
+    box-shadow: 4px 6px var(--drop-shadows);
 }
 
 .timelineCard:last-child {
@@ -717,7 +718,7 @@
     border: 4px solid #FFA100;
     border-radius: 50%;
 
-    background: var(--background);
+    background: var(--base-card-background);
 
     left: -45px;
     top: 50%;
@@ -781,7 +782,7 @@
 }
 
 .statItem {
-    background: #2B516A;
+    background: var(--card-background-raised);
     border: 2px solid var(--black);
     border-radius: var(--corner-radius-web);
     padding: 6px 8px;
