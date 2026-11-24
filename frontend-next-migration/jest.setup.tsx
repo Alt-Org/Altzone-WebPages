@@ -1,5 +1,11 @@
 import '@testing-library/jest-dom';
 
+// JSDOM does not expose fetch. Tests that make requests provide their own mock.
+globalThis.fetch ??= () =>
+    Promise.reject(
+        new Error('Unexpected fetch in a Jest test. Mock fetch before making requests.'),
+    );
+
 jest.mock('next/image', () => {
     // @ts-ignore
     const MockImage = ({ src, alt, width = 24, height = 24 }) => (

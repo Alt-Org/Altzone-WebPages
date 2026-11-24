@@ -107,8 +107,8 @@ describe('NavbarDesktop', () => {
         jest.clearAllMocks();
     });
 
-    const renderNavbar = (props = {}) => {
-        return render(
+    const renderNavbar = async (props = {}) => {
+        render(
             withProvider(
                 <NavbarDesktop
                     toggleCollapsed={mockToggleCollapsed}
@@ -120,25 +120,27 @@ describe('NavbarDesktop', () => {
                 />,
             ),
         );
+
+        await screen.findByRole('button', { name: 'log_in' });
     };
 
-    test('renders basic navbar structure', () => {
-        renderNavbar();
+    test('renders basic navbar structure', async () => {
+        await renderNavbar();
 
         expect(screen.getByRole('navigation')).toBeInTheDocument();
         expect(screen.getByTestId('toggleFixButtonWrapper')).toBeInTheDocument();
     });
 
-    test('applies correct classes when fixed', () => {
-        renderNavbar({ isFixed: true });
+    test('applies correct classes when fixed', async () => {
+        await renderNavbar({ isFixed: true });
 
         const nav = screen.getByRole('navigation');
         expect(nav).toHaveClass(cls.fixed);
         expect(screen.getByTestId('collapseExpandWrapper')).toBeInTheDocument();
     });
 
-    test('handles collapse button click', () => {
-        renderNavbar({ isFixed: true });
+    test('handles collapse button click', async () => {
+        await renderNavbar({ isFixed: true });
 
         const collapseButton = screen.getByTestId('collapseExpandWrapper');
         const button = collapseButton.querySelector('button');
@@ -148,8 +150,8 @@ describe('NavbarDesktop', () => {
         expect(mockToggleCollapsed).toHaveBeenCalled();
     });
 
-    test('handles fix button click', () => {
-        renderNavbar();
+    test('handles fix button click', async () => {
+        await renderNavbar();
 
         const fixButton = screen.getByTestId('toggleFixButton');
         fireEvent.click(fixButton);
@@ -157,8 +159,8 @@ describe('NavbarDesktop', () => {
         expect(mockToggleFixed).toHaveBeenCalled();
     });
 
-    test('applies mouseOver styles when isMouseOver is true', () => {
-        renderNavbar();
+    test('applies mouseOver styles when isMouseOver is true', async () => {
+        await renderNavbar();
 
         const navList = screen.getByRole('list');
         fireEvent.mouseEnter(navList);
@@ -167,14 +169,14 @@ describe('NavbarDesktop', () => {
         expect(navList).not.toHaveClass(cls.mouseOver);
     });
 
-    test('does not show collapse button when not fixed', () => {
-        renderNavbar({ isFixed: false });
+    test('does not show collapse button when not fixed', async () => {
+        await renderNavbar({ isFixed: false });
 
         expect(screen.queryByTestId('collapseExpandWrapper')).not.toBeInTheDocument();
     });
 
-    test('handles transition end', () => {
-        renderNavbar({ isFixed: true });
+    test('handles transition end', async () => {
+        await renderNavbar({ isFixed: true });
 
         const fixButtonWrapper = screen.getByTestId('toggleFixButtonWrapper');
         fireEvent.transitionEnd(fixButtonWrapper);

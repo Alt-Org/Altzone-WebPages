@@ -36,14 +36,18 @@ const response = (data: unknown) =>
     }) as Response;
 
 describe('heroApi status gating', () => {
-    const fetchMock = jest.fn() as jest.MockedFunction<typeof fetch>;
+    let fetchMock: jest.SpiedFunction<typeof fetch>;
 
     beforeEach(() => {
-        fetchMock.mockReset();
-        global.fetch = fetchMock;
+        fetchMock = jest.spyOn(globalThis, 'fetch');
+    });
+
+    afterEach(() => {
+        jest.restoreAllMocks();
     });
 
     it.each(['Draft', 'Archived'])('does not return a %s hero by slug', async (status) => {
+        const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
         fetchMock.mockImplementation(async (input) => {
             const url = new URL(String(input));
             expect(url.searchParams.get('filter[status][_eq]')).toBe('Published');
@@ -51,6 +55,11 @@ describe('heroApi status gating', () => {
         });
 
         await expect(fetchHeroBySlug('draft-hero' as HeroSlug)).resolves.toBeUndefined();
+        expect(warn.mock.calls).toEqual([
+            [
+                '[fetchHeroBySlug] No hero found in Directus for slug "draft-hero" (response had 1 items)',
+            ],
+        ]);
     });
 
     it('returns only the published heroes from the all-heroes request', async () => {
@@ -73,9 +82,15 @@ describe('heroApi status gating', () => {
     });
 
     it('rejects when the all-heroes request fails', async () => {
+        const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+        const logError = jest.spyOn(console, 'error').mockImplementation(() => {});
         fetchMock.mockResolvedValue({ ok: false, status: 503, text: async () => '' } as Response);
 
         await expect(fetchAllHeroes()).rejects.toThrow('Directus request failed with status 503');
+        expect(warn.mock.calls).toEqual([['[fetchAllHeroes] Directus error 503: ']]);
+        expect(logError.mock.calls).toEqual([
+            ['[fetchAllHeroes] ✗ Fetch error:', 'Directus request failed with status 503'],
+        ]);
     });
 
     it('groups the published heroes returned by the filtered request', async () => {
