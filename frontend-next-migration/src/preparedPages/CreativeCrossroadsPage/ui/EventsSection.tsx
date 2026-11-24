@@ -24,7 +24,7 @@ const EventsSection = () => {
             </div>
             <h2 className={cls.panelTitle}>{t('upcoming-events')}</h2>
             <div className={cls.events}>
-                <div className={cls.eventDate}>27.1.2027</div>
+                <div className={cls.eventDate}>22.1.2027</div>
                 <div className={cls.eventDescription}>
                     <div className={cls.eventTitle}>{t('event3-title')}</div>
                     <div className={cls.eventDetails}>{t('event3-details')}</div>
