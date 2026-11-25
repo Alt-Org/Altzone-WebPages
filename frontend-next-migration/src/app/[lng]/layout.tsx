@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 import { FeedbackSideButton } from '@/shared/ui/v2/Feedback';
 import { languages } from '@/shared/i18n/settings/settings';
-import { LayoutWithBackground } from '@/preparedPages/Layouts';
 import { Providers } from '../_providers';
 import '../_styles/index.scss';
 import localFont from 'next/font/local';
@@ -83,9 +82,9 @@ export function generateStaticParams() {
 
 interface Props {
     children: ReactNode;
-    params: {
+    params: Promise<{
         lng: string;
-    };
+    }>;
 }
 
 export function generateMetadata(): Metadata {
@@ -97,16 +96,17 @@ export function generateMetadata(): Metadata {
     };
 }
 
-export default function RootLayout(props: Props) {
+export default async function RootLayout(props: Props) {
     const { children, params } = props;
 
-    const { lng } = params;
+    const { lng } = await params;
 
     const GA_ID = envHelper.isDevMode ? envHelper.gaDevId : envHelper.gaProdId;
 
     return (
         <html
             lang={lng}
+            data-scroll-behavior="smooth"
             dir={dir(lng)}
             className={`${urbanist.variable} ${rubik.variable} ${markoFont.variable} ${dmSans.variable}`}
         >

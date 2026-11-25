@@ -3,7 +3,7 @@ import type { RefObject } from 'react';
 import { MobileCard, MobileCardLink, MobileCardTheme } from '@/shared/ui/v2/MobileCard';
 
 type Props = {
-    cardRef: RefObject<HTMLDivElement>;
+    cardRef: RefObject<HTMLDivElement | null>;
     primary: any;
     secondary: any;
 };

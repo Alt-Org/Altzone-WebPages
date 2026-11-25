@@ -32,7 +32,6 @@ const DefenseGalleryPage = () => {
     const staticGroups = React.useMemo(() => initializeHeroGroups(t), [t]);
     const heroGroups = React.useMemo(() => {
         if (isError) {
-            // eslint-disable-next-line no-console
             console.warn('[DefenseGalleryPage] Directus query failed, using static data:', error);
             return staticGroups;
         }

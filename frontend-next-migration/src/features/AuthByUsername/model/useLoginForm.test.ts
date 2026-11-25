@@ -8,6 +8,7 @@ import { useClientTranslation } from '@/shared/i18n';
 import { useLoginForm } from './useLoginForm';
 
 jest.mock('react-redux', () => ({
+    ...jest.requireActual('react-redux'),
     useDispatch: jest.fn(),
 }));
 
@@ -49,7 +50,7 @@ describe('useLoginForm', () => {
     const mockT = jest.fn((key) => key);
 
     beforeEach(() => {
-        (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
+        jest.mocked(useDispatch).mockReturnValue(mockDispatch);
         (useForm as jest.Mock).mockReturnValue({
             register: jest.fn(),
             handleSubmit: jest.fn(),

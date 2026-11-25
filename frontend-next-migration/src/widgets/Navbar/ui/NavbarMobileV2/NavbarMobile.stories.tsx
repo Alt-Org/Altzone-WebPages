@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import NavbarMobile from './NavbarMobile';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 

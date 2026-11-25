@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/nextjs';
+import { Meta } from '@storybook/nextjs-vite';
 import NavbarDesktop, { NavbarProps } from './NavbarDesktop';
 import { getNavbarBuildBySize } from '../../model/getNavbarBuildBySize';
 

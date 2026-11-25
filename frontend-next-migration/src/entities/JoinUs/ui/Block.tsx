@@ -34,12 +34,14 @@ export const Block = (props: Props) => {
             data-testid="block"
         >
             <div className={cls.ImageWrapper}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    className={cls.Image}
-                    src={block.img}
-                    alt={block.imgAlt}
-                />
+                {block.img && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                        className={cls.Image}
+                        src={block.img}
+                        alt={block.imgAlt}
+                    />
+                )}
             </div>
 
             <div className={cls.Content}>

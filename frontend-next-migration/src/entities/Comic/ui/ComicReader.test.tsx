@@ -20,6 +20,33 @@ jest.mock('next/image', () => ({
 const previewImage = (name: string) => screen.getAllByAltText(name)[0];
 
 describe('ComicReader', () => {
+    it('enables keyboard navigation when opened and stops it when closed', () => {
+        render(
+            <ComicReader
+                cover={{ name: 'Comic', url: '/assets/cover' }}
+                sources={['/assets/page-1', '/assets/page-2', '/assets/page-3']}
+            />,
+        );
+
+        const dialog = screen.getByRole('dialog', { hidden: true }) as HTMLDialogElement;
+        dialog.showModal = jest.fn(() => dialog.setAttribute('open', ''));
+        dialog.close = jest.fn(() => dialog.removeAttribute('open'));
+        const slider = screen.getByRole('slider', { hidden: true });
+
+        fireEvent.keyDown(window, { key: 'ArrowRight' });
+        expect(slider).toHaveValue('0');
+
+        fireEvent.click(screen.getByRole('button', { name: 'Zoom' }));
+        fireEvent.keyDown(window, { key: 'ArrowRight' });
+        expect(slider).toHaveValue('1');
+        fireEvent.keyDown(window, { key: 'ArrowLeft' });
+        expect(slider).toHaveValue('0');
+
+        fireEvent.click(dialog);
+        fireEvent.keyDown(window, { key: 'ArrowRight' });
+        expect(slider).toHaveValue('0');
+    });
+
     it('loads only the cover and next two images while the modal is closed', () => {
         render(
             <ComicReader

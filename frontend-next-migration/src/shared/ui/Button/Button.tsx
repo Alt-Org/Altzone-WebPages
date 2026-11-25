@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, forwardRef, LegacyRef, memo } from 'react';
+import { ButtonHTMLAttributes, forwardRef, Ref, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Button.module.scss';
 
@@ -44,7 +44,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean;
     withScalableLink?: boolean;
     disabled?: boolean;
-    ref?: LegacyRef<HTMLButtonElement>;
+    ref?: Ref<HTMLButtonElement>;
 }
 
 /**

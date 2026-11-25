@@ -17,6 +17,10 @@ describe('HeroManager Directus fallback behavior', () => {
         jest.clearAllMocks();
     });
 
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
     it('does not use static heroes after a successful empty all-heroes response', async () => {
         mockedFetchAllHeroes.mockResolvedValue([]);
 
@@ -24,11 +28,16 @@ describe('HeroManager Directus fallback behavior', () => {
     });
 
     it('uses static heroes after a failed all-heroes request', async () => {
-        mockedFetchAllHeroes.mockRejectedValue(new Error('network failure'));
+        const error = new Error('network failure');
+        const logError = jest.spyOn(console, 'error').mockImplementation(() => {});
+        mockedFetchAllHeroes.mockRejectedValue(error);
 
         await expect(manager().getAllHeroesFromDirectus()).resolves.toEqual(
             manager().getAllHeroes(),
         );
+        expect(logError.mock.calls).toEqual([
+            ['[HeroManager] Failed to fetch all heroes from Directus:', error],
+        ]);
     });
 
     it('keeps groups empty after a successful empty initialization response', async () => {
@@ -41,12 +50,17 @@ describe('HeroManager Directus fallback behavior', () => {
     });
 
     it('keeps static groups after a failed initialization request', async () => {
-        mockedFetchAllHeroes.mockRejectedValue(new Error('network failure'));
+        const error = new Error('network failure');
+        const logError = jest.spyOn(console, 'error').mockImplementation(() => {});
+        mockedFetchAllHeroes.mockRejectedValue(error);
         const heroManager = manager();
 
         await heroManager.initializeFromDirectus();
 
         expect(Object.keys(heroManager.getGroupsWithHeroes()).length).toBeGreaterThan(0);
+        expect(logError.mock.calls).toEqual([
+            ['[HeroManager] Failed to initialize hero groups from Directus:', error],
+        ]);
     });
 
     it('does not use a static hero after a successful no-match slug response', async () => {

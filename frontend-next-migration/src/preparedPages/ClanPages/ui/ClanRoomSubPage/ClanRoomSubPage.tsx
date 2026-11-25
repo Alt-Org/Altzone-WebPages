@@ -13,6 +13,7 @@ import {
     ClansViewAndSearchMobile,
 } from '../_components/clanoverview/clanViewAndSearch';
 import cls from './ClanRoomSubPage.module.scss';
+import Link from 'next/link';
 
 export type Props = {
     translations: {
@@ -74,12 +75,12 @@ const ClanRoomSubPage = (props: Props) => {
                             className={cls.clanLogo}
                         />
                         <span className={cls.clanName}>{clanName}</span>
-                        <a
+                        <Link
                             className={cls.number}
                             href="/leaderboardjne"
                         >
                             ♛12
-                        </a>
+                        </Link>
                     </div>
                     <div className={cls.clanList}>
                         {!isMobileSize && <ClansViewAndSearchDesktop />}

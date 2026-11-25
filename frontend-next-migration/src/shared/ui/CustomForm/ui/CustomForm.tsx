@@ -12,11 +12,12 @@ import React, {
     useState,
     useEffect,
     useId,
+    type JSX,
 } from 'react';
 import { Button as CustomButton, ButtonTheme } from '@/shared/ui/Button/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './CustomForm.module.scss';
-import { MultiSelect } from 'react-multi-select-component';
+import { MultiSelect } from 'react-multi-select-component-19';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 

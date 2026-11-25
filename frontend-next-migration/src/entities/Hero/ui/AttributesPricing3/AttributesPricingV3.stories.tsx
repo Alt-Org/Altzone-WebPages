@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/nextjs';
+import { Meta } from '@storybook/nextjs-vite';
 import React from 'react';
 import { AttributesPricing3 } from './AttributesPricingV3';
 

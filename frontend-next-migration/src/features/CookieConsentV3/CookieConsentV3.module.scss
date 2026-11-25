@@ -181,7 +181,7 @@
         text-align: center !important;
         margin: 0 auto 16px auto;
     }
-    button:not(.processButton) + button:not(.processButton) {
+    .cookieConsentV2 button:not(.processButton) + button:not(.processButton) {
         margin-left: 0px;
         padding-top: 10px;
     }
@@ -214,7 +214,7 @@
         width: 88%;
     }
 
-    button:not(.processButton) + button:not(.processButton) {
+    .cookieConsentV2 button:not(.processButton) + button:not(.processButton) {
         margin-left: 0px;
         margin-top: 10px;
     }

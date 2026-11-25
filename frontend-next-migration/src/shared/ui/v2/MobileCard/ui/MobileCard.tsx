@@ -2,11 +2,12 @@ import React, {
     memo,
     ReactNode,
     forwardRef,
-    LegacyRef,
+    Ref,
     HTMLAttributes,
     DetailedHTMLProps,
     ForwardRefExoticComponent,
     RefAttributes,
+    type JSX,
 } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import cls from './MobileCard.module.scss';
@@ -36,7 +37,7 @@ interface MobileCardProps
     theme?: MobileCardTheme;
     className?: string;
     children: ReactNode;
-    ref?: LegacyRef<HTMLDivElement>;
+    ref?: Ref<HTMLDivElement>;
     height?: string;
 }
 

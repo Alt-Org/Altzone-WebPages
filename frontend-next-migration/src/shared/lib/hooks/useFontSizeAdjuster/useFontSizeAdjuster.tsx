@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
 const useFontSizeAdjuster = (
-    elementRefs: React.RefObject<HTMLElement>[],
-    containerRef: React.RefObject<HTMLElement>,
+    elementRefs: React.RefObject<HTMLElement | null>[],
+    containerRef: React.RefObject<HTMLElement | null>,
     adjustFontSize: (element: HTMLElement, container: HTMLElement) => void,
 ) => {
     useEffect(() => {

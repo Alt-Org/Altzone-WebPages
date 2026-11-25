@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { DropdownWrapper } from './DropdownWrapper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DropDownElement, DropdownWrapperProps } from '../types';
