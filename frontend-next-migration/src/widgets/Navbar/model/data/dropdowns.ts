@@ -11,6 +11,7 @@ import {
     getRouteAllClanSearchPage,
     getRouteLeaderboardPage,
     getRouteCCPage,
+    getRoutePitchaamoPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -26,6 +27,13 @@ export const dropdowns = {
             elementText: 'creativeCrossroads',
             link: {
                 path: getRouteCCPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'pitchaamo',
+            link: {
+                path: getRoutePitchaamoPage(),
                 isExternal: false,
             },
         },
