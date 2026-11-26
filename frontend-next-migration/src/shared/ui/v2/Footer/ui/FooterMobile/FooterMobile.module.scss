@@ -12,8 +12,7 @@
     flex-direction: column;
     align-items: stretch;
     position: relative;
-    width: 360;
-    height: 584;
+    width: 100%;
     gap: 20px;
     top: 0;
 }
@@ -24,11 +23,10 @@
     align-items: center;
     min-height: 38px;
     background: var(--footer-bar-bg);
-    width: 360;
-    height: 60;
+    width: 100%;
+    height: 60px;
     gap: 21px;
     padding-top: 14px;
-    padding-bottom: 14px;
 }
 
 .LogoContainer {
@@ -46,15 +44,12 @@
 
 .socialSection {
     justify-content: center;
+    align-items: center;
     padding: 0;
     display: flex;
     gap: 13px;
     flex-wrap: wrap;
     margin: 0;
-    width: 16.4375;
-    height: 16.4375;
-    top: 7.78px;
-    left: 7.78px;
 }
 
 .socialSection > * {
