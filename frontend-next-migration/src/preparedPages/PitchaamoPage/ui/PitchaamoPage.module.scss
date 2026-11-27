@@ -1,6 +1,5 @@
-.main {
+.container {
     margin-inline: auto;
-    padding-inline: var(--spacer300);
     width: min(1440px, 100%);
 
     @media (min-width: breakpoint(md)) {

@@ -11,6 +11,7 @@ import PitchaamoFlow from './PitchaamoFlow';
 import PitchaamoProjects from './PitchaamoProjects';
 import correctIcon from '@/shared/assets/icons/pitchaamoCorrect.svg';
 import WhyJoinPitchaamo from './WhyJoinPitchaamo';
+import { Container } from '@/shared/ui/Container';
 
 const pitchOfferKeys = [
     'pitch-offer-1',
@@ -47,7 +48,7 @@ const PitchaamoPage = () => {
     const { t } = useTranslation('pitchaamo');
 
     return (
-        <main className={cls.main}>
+        <Container className={cls.container}>
             <div className={cls.header}>
                 <Image
                     src={ccimage}
@@ -106,7 +107,7 @@ const PitchaamoPage = () => {
                     </AppLink>
                 </div>
             </div>
-        </main>
+        </Container>
     );
 };
 
