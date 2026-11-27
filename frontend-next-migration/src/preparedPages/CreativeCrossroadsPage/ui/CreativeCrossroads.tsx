@@ -2,7 +2,7 @@
 import cls from './CreativeCrossroads.module.scss';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import ccimage from '@/shared/assets/images/creativeCrossroads/creative_crossroads.png';
+import ccimage from '@/shared/assets/images/creativeCrossroads/Creative_CrossRoads-Pohja.png';
 import logo from '@/shared/assets/images/creativeCrossroads/logo.png';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import EventsSection from './EventsSection';

@@ -148,7 +148,7 @@
 .eventDate {
     font: var(--font-dm-bold-xl);
     color: var(--green-text);
-    align-self: center;
+    align-self: flex-start;
 
     @media (max-width: breakpoint(lg)) {
         padding-top: var(--spacer200);

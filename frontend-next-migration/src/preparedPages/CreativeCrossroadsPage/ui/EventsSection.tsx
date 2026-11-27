@@ -9,6 +9,19 @@ const EventsSection = () => {
                 <p>{t('events-description')}</p>
                 <p>{t('events-description2')}</p>
             </div>
+            <h2 className={cls.panelTitle}>{t('upcoming-events')}</h2>
+            <div className={cls.events}>
+                <div className={cls.eventDate}>27.11.2026-7.1.2027</div>
+                <div className={cls.eventDescription}>
+                    <div className={cls.eventTitle}>{t('event4-title')}</div>
+                    <div className={cls.eventDetails}>{t('event4-details')}</div>
+                </div>
+                <div className={cls.eventDate}>22.1.2027</div>
+                <div className={cls.eventDescription}>
+                    <div className={cls.eventTitle}>{t('event3-title')}</div>
+                    <div className={cls.eventDetails}>{t('event3-details')}</div>
+                </div>
+            </div>
             <h2 className={cls.panelTitle}>{t('previous-events')}</h2>
             <div className={cls.events}>
                 <div className={cls.eventDate}>26.2.2026</div>
@@ -16,18 +29,10 @@ const EventsSection = () => {
                     <div className={cls.eventTitle}>{t('event1-title')}</div>
                     <div className={cls.eventDetails}>{t('event1-details')}</div>
                 </div>
-                <div className={cls.eventDate}>13.6.-31.7.2026</div>
+                <div className={cls.eventDate}>13.6.-26.11.2026</div>
                 <div className={cls.eventDescription}>
                     <div className={cls.eventTitle}>{t('event2-title')}</div>
                     <div className={cls.eventDetails}>{t('event2-details')}</div>
-                </div>
-            </div>
-            <h2 className={cls.panelTitle}>{t('upcoming-events')}</h2>
-            <div className={cls.events}>
-                <div className={cls.eventDate}>22.1.2027</div>
-                <div className={cls.eventDescription}>
-                    <div className={cls.eventTitle}>{t('event3-title')}</div>
-                    <div className={cls.eventDetails}>{t('event3-details')}</div>
                 </div>
             </div>
         </div>
