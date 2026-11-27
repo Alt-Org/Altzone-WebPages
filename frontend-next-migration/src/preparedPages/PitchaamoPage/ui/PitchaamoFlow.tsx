@@ -1,5 +1,3 @@
-// Miten Pitchaamo toimii
-
 import demoIcon from '@/shared/assets/icons/pitchaamoDemo.svg';
 import developmentIcon from '@/shared/assets/icons/pitchaamoDevelopment.svg';
 import ideaIcon from '@/shared/assets/icons/pitchaamoIdea.svg';
