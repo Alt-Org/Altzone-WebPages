@@ -1,6 +1,6 @@
 .Footer {
-    --footer-bg: #1e3544;
-    --footer-bar-bg: #172936;
+    --footer-bg: var(--black);
+    --footer-bar-bg: var(--black);
     --footer-accent: #ffa100;
     --footer-text: #faf9f6;
     --footer-muted: #faf9f6;
@@ -12,8 +12,7 @@
     flex-direction: column;
     align-items: stretch;
     position: relative;
-    width: 360;
-    height: 584;
+    width: 100%;
     gap: 20px;
     top: 0;
 }
@@ -24,11 +23,10 @@
     align-items: center;
     min-height: 38px;
     background: var(--footer-bar-bg);
-    width: 360;
-    height: 60;
+    width: 100%;
+    height: 60px;
     gap: 21px;
     padding-top: 14px;
-    padding-bottom: 14px;
 }
 
 .LogoContainer {
@@ -46,15 +44,12 @@
 
 .socialSection {
     justify-content: center;
+    align-items: center;
     padding: 0;
     display: flex;
     gap: 13px;
     flex-wrap: wrap;
     margin: 0;
-    width: 16.4375;
-    height: 16.4375;
-    top: 7.78px;
-    left: 7.78px;
 }
 
 .socialSection > * {

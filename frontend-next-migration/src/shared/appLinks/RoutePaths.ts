@@ -155,5 +155,7 @@ export const getRouteGamePage = () => '/peli';
 export const getRouteProfilePage = () => '/profile';
 
 export const getRoutePrgPage = () => '/prg';
+export const getRouteCCPage = () => '/creative-crossroads';
+export const getRoutePitchaamoPage = () => '/pitchaamo';
 export const getRouteSingleHeroPage = (group: string, hero: string) =>
     `/defense-gallery/${group}/${hero}`;

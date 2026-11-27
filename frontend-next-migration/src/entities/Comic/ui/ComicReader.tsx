@@ -44,7 +44,7 @@ export const ComicReader = memo(({ sources, cover }: ComicReaderProps) => {
 
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [pageIndex, maxPageIndex]);
+    }, [isModalOpen, pageIndex, maxPageIndex]);
 
     const openModal = () => {
         setIsModalOpen(true);

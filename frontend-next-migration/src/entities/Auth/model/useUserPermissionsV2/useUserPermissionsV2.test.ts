@@ -5,12 +5,14 @@ import { selectHasClan } from '@/entities/Profile';
 import { useUserPermissionsV2, PermissionError } from './useUserPermissionsV2';
 
 jest.mock('react-redux', () => ({
+    ...jest.requireActual('react-redux'),
     useSelector: jest.fn(),
 }));
 
 describe('useUserPermissionsV2', () => {
     afterEach(() => {
         jest.clearAllMocks();
+        jest.restoreAllMocks();
     });
 
     describe('login permission', () => {
@@ -255,6 +257,7 @@ describe('useUserPermissionsV2', () => {
 
     describe('unknown permission', () => {
         it('should return unknown permission error for unhandled permissions', () => {
+            const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
             const { result } = renderHook(() => useUserPermissionsV2());
             // @ts-ignore
             const permissionResult = result.current.checkPermissionFor('unknown:permission');
@@ -263,6 +266,7 @@ describe('useUserPermissionsV2', () => {
                 isGranted: false,
                 error: PermissionError.UnknownPermission,
             });
+            expect(warn.mock.calls).toEqual([['Unhandled permission type: unknown:permission']]);
         });
     });
 });

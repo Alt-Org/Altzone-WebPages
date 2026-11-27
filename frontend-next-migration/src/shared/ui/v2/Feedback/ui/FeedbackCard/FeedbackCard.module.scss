@@ -11,6 +11,10 @@
     border-width: 4px;
     border-style: solid;
     border-color: #000000;
+
+    @media (max-width: breakpoint(md)) {
+        background-color: var(--black);
+    }
 }
 
 .collapsedVersion {

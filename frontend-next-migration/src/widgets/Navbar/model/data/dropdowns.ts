@@ -7,10 +7,11 @@ import {
     getRouteAboutPage,
     getRouteTeamPage,
     getRoutePrgPage,
-    getRouteGamePage,
     getRouteComingSoonPage,
     getRouteAllClanSearchPage,
     getRouteLeaderboardPage,
+    getRouteCCPage,
+    getRoutePitchaamoPage,
 } from '@/shared/appLinks/RoutePaths';
 
 export const dropdowns = {
@@ -19,6 +20,20 @@ export const dropdowns = {
             elementText: 'whatIsPrg',
             link: {
                 path: getRoutePrgPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'creativeCrossroads',
+            link: {
+                path: getRouteCCPage(),
+                isExternal: false,
+            },
+        },
+        {
+            elementText: 'pitchaamo',
+            link: {
+                path: getRoutePitchaamoPage(),
                 isExternal: false,
             },
         },
@@ -38,13 +53,6 @@ export const dropdowns = {
         },
     ],
     game: [
-        {
-            elementText: 'learnTheGame',
-            link: {
-                path: getRouteGamePage(),
-                isExternal: false,
-            },
-        },
         {
             elementText: 'defenseHeroes',
             link: {

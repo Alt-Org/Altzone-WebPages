@@ -14,6 +14,7 @@ jest.mock('@/entities/Auth', () => ({
     },
 }));
 jest.mock('react-redux', () => ({
+    ...jest.requireActual('react-redux'),
     useDispatch: jest.fn(),
 }));
 jest.mock('react-hook-form', () => ({
@@ -31,7 +32,7 @@ const mockRouter = { push: jest.fn() };
 const mockT = jest.fn((key) => key);
 
 beforeEach(() => {
-    (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
+    jest.mocked(useDispatch).mockReturnValue(mockDispatch);
     (useForm as jest.Mock).mockReturnValue({
         register: jest.fn(),
         handleSubmit: jest.fn(),

@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import { ReactNode, type JSX } from 'react';
 import styles from './ShareButton.module.scss';
 import { toast } from 'react-toastify';
 import ShareIcon from '@/shared/assets/icons/ShareIcon.svg';

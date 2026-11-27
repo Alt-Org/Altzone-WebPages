@@ -1,4 +1,4 @@
-import { gameApi } from '@/shared/api';
+import { gameApi } from '@/shared/api/gameApi';
 import {
     IUserRegisterDto,
     IUserLoginDto,

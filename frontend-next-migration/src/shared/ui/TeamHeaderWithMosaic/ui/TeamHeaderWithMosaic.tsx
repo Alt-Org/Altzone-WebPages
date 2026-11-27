@@ -1,6 +1,6 @@
 import { useClientTranslation } from '@/shared/i18n';
 import cls from './TeamHeaderWithMosaic.module.scss';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import useSizes from '@/shared/lib/hooks/useSizes';
 import { useGetMembersQuery } from '@/entities/Member/api/membersApi';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -54,7 +54,10 @@ export function TeamHeaderWithMosaic(props: Props) {
     } = useGetMembersQuery(undefined, {
         refetchOnMountOrArgChange: false,
     });
-    const membersWithPortrait = members.filter((member) => member.portrait);
+    const membersWithPortrait = useMemo(
+        () => members.filter((member) => member.portrait),
+        [members],
+    );
 
     if (isLoading) {
         return (

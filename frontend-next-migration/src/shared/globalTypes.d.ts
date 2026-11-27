@@ -33,7 +33,7 @@ declare type ResponseShapeArray<K extends string, T> = {
 };
 
 declare interface DefaultAppRouterProps {
-    params: { lng: string };
+    params: Promise<{ lng: string }>;
 }
 
 declare interface DefaultSeo {

@@ -5,17 +5,6 @@ import NavItem from './NavItem';
 import { PermissionError, useUserPermissionsV2 } from '@/entities/Auth';
 import cls from './NavbarDesktop.module.scss';
 
-// Mock next/image
-jest.mock('next/image', () => ({
-    __esModule: true,
-    default: (props: any) => (
-        <img
-            alt=""
-            {...props}
-        />
-    ),
-}));
-
 // Mock translations
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: () => ({

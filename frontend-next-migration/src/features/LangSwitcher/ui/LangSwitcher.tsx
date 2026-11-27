@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import languageIcon from '@/shared/assets/icons/langIcon.svg';
 import Image from 'next/image';
+import { navigateTo } from '../lib/navigateTo';
 
 type LangSwitcherProps = {
     className?: string;
@@ -36,7 +37,7 @@ export const LangSwitcher = ({ className = '', isOpen = false }: LangSwitcherPro
     );
 
     const handleChangeLanguage = (newLanguage: AppLanguage) => {
-        window.location.href = currentPathname.replace(`/${language}`, `/${newLanguage}`);
+        navigateTo(currentPathname.replace(`/${language}`, `/${newLanguage}`));
     };
 
     const handleOptionClick = (option: Option) => {

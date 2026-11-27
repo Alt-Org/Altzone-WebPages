@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import hannu from '@/shared/assets/images/heros/hannu-hodari/hannu-hodari.png';
 import ModularCard, { ModularCardTheme } from './ModularCard'; // Import your component
 

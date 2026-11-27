@@ -10,17 +10,6 @@ import {
 } from '../../model/types';
 import { PermissionError, useUserPermissionsV2 } from '@/entities/Auth';
 
-// Mock next/image
-jest.mock('next/image', () => ({
-    __esModule: true,
-    default: (props: any) => (
-        <img
-            alt={props.alt ?? ''}
-            {...props}
-        />
-    ),
-}));
-
 // Mock translations
 jest.mock('@/shared/i18n', () => ({
     useClientTranslation: () => ({

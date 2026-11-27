@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Sidebar } from './Sidebar';
 import { ISidebarItem, sidebarItemType } from '../../model/items';
 import { DropDownElement } from '@/shared/ui/DropdownWrapper';

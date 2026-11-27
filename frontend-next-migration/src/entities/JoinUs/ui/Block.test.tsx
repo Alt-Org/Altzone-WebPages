@@ -17,11 +17,11 @@ describe('Block', () => {
                 isExternal: true,
             },
         ],
-        img: '',
+        img: '/join-us.png',
         imgAlt: 'Mock alt text',
     };
 
-    it('renders the label, description, and link text', () => {
+    it('renders the label, description, link text, and image', () => {
         render(<Block block={mockBlock} />);
 
         expect(screen.getByText('Test label')).toBeInTheDocument();
@@ -29,6 +29,10 @@ describe('Block', () => {
         expect(screen.getByText('Mock description')).toBeInTheDocument();
 
         expect(screen.getByText('Click here')).toBeInTheDocument();
+        expect(screen.getByRole('img', { name: 'Mock alt text' })).toHaveAttribute(
+            'src',
+            '/join-us.png',
+        );
     });
 
     it('link has correct href attribute', () => {
@@ -38,7 +42,7 @@ describe('Block', () => {
         expect(linkElement).toHaveAttribute('href', 'https://example.com');
     });
 
-    it('handles missing label and description gracefully', () => {
+    it('handles a missing label, description, and image', () => {
         const mockEmptyBlock: BlockSection = {
             label: '',
             description: '',
@@ -57,6 +61,7 @@ describe('Block', () => {
 
         expect(container).toBeInTheDocument();
         expect(screen.getByText('Click here')).toBeInTheDocument();
+        expect(container.querySelector('img')).not.toBeInTheDocument();
     });
 
     it('applies the correct container class', () => {

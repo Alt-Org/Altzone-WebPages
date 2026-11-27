@@ -81,7 +81,7 @@ const config: Config = {
     //   "node_modules"
     // ],
 
-    moduleDirectories: ['node_modules', __dirname],
+    moduleDirectories: ['node_modules', '<rootDir>'],
 
     // An array of file extensions your modules use
     // moduleFileExtensions: [

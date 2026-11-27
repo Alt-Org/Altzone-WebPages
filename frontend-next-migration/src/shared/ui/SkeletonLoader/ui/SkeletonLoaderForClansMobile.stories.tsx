@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { SkeletonLoaderForClansMobile } from './SkeletonLoader';
 
 const meta = {

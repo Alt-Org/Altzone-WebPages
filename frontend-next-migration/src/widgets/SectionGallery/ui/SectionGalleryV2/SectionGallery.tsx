@@ -80,7 +80,7 @@ export const AnimationGallerySection = ({ animations, backgroundColor }: Animati
                         {set.animation && (
                             <div className={cls.animationContainer}>
                                 <Image
-                                    src={set.animation ? set.animation[0] : ''}
+                                    src={set.animation[0]}
                                     alt={`${set.title} ${t('animation-alt')}`}
                                     fill
                                     sizes="(max-width: 768px) 100vw, 50vw"
